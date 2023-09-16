@@ -18,9 +18,9 @@ jobs:
 
       - uses: ./.github/actions/setup-node
 
-      - name: Build packages
+      - name: Install dependencies
         run: |
-          make build
+          make node_modules/ci
 
       - name: Publish packages
         run: |
