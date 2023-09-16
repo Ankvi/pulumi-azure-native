@@ -6,11 +6,7 @@ settings:
 
 importers:
 
-  .:
-    devDependencies:
-      typescript:
-        specifier: ^5.2.2
-        version: 5.2.2
+  .: {}
 
   packages/aad:
     dependencies:
@@ -20,6 +16,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/aadiam:
     dependencies:
@@ -29,6 +32,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/addons:
     dependencies:
@@ -38,6 +48,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/advisor:
     dependencies:
@@ -47,6 +64,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/agfoodplatform:
     dependencies:
@@ -56,6 +80,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/alertsmanagement:
     dependencies:
@@ -65,6 +96,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/analysisservices:
     dependencies:
@@ -74,6 +112,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/apicenter:
     dependencies:
@@ -83,6 +128,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/apimanagement:
     dependencies:
@@ -92,6 +144,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/app:
     dependencies:
@@ -101,6 +160,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/appcomplianceautomation:
     dependencies:
@@ -110,6 +176,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/appconfiguration:
     dependencies:
@@ -119,6 +192,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/appplatform:
     dependencies:
@@ -128,6 +208,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/attestation:
     dependencies:
@@ -137,6 +224,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/authorization:
     dependencies:
@@ -146,6 +240,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/automanage:
     dependencies:
@@ -155,6 +256,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/automation:
     dependencies:
@@ -164,6 +272,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/autonomousdevelopmentplatform:
     dependencies:
@@ -173,6 +288,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/avs:
     dependencies:
@@ -182,6 +304,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/azureactivedirectory:
     dependencies:
@@ -191,6 +320,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/azurearcdata:
     dependencies:
@@ -200,6 +336,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/azuredata:
     dependencies:
@@ -209,6 +352,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/azureplaywrightservice:
     dependencies:
@@ -218,6 +368,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/azuresphere:
     dependencies:
@@ -227,6 +384,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/azurestack:
     dependencies:
@@ -236,6 +400,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/azurestackhci:
     dependencies:
@@ -245,6 +416,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/baremetalinfrastructure:
     dependencies:
@@ -254,6 +432,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/batch:
     dependencies:
@@ -263,6 +448,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/billing:
     dependencies:
@@ -272,6 +464,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/blockchain:
     dependencies:
@@ -281,6 +480,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/blueprint:
     dependencies:
@@ -290,6 +496,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/botservice:
     dependencies:
@@ -299,6 +512,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/cache:
     dependencies:
@@ -308,6 +528,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/cdn:
     dependencies:
@@ -317,6 +544,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/certificateregistration:
     dependencies:
@@ -326,6 +560,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/changeanalysis:
     dependencies:
@@ -335,6 +576,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/chaos:
     dependencies:
@@ -344,6 +592,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/cognitiveservices:
     dependencies:
@@ -353,6 +608,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/communication:
     dependencies:
@@ -362,6 +624,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/compute:
     dependencies:
@@ -371,6 +640,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/confidentialledger:
     dependencies:
@@ -380,6 +656,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/config:
     dependencies:
@@ -389,6 +672,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/confluent:
     dependencies:
@@ -398,6 +688,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/connectedvmwarevsphere:
     dependencies:
@@ -407,6 +704,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/consumption:
     dependencies:
@@ -416,6 +720,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/containerinstance:
     dependencies:
@@ -425,6 +736,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/containerregistry:
     dependencies:
@@ -434,6 +752,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/containerservice:
     dependencies:
@@ -443,6 +768,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/containerstorage:
     dependencies:
@@ -452,12 +784,26 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/core:
     dependencies:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/costmanagement:
     dependencies:
@@ -467,6 +813,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/customerinsights:
     dependencies:
@@ -476,6 +829,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/customproviders:
     dependencies:
@@ -485,6 +845,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/dashboard:
     dependencies:
@@ -494,6 +861,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/databox:
     dependencies:
@@ -503,6 +877,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/databoxedge:
     dependencies:
@@ -512,6 +893,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/databricks:
     dependencies:
@@ -521,6 +909,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/datacatalog:
     dependencies:
@@ -530,6 +925,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/datadog:
     dependencies:
@@ -539,6 +941,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/datafactory:
     dependencies:
@@ -548,6 +957,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/datalakeanalytics:
     dependencies:
@@ -557,6 +973,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/datalakestore:
     dependencies:
@@ -566,6 +989,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/datamigration:
     dependencies:
@@ -575,6 +1005,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/dataprotection:
     dependencies:
@@ -584,6 +1021,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/datareplication:
     dependencies:
@@ -593,6 +1037,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/datashare:
     dependencies:
@@ -602,6 +1053,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/dbformariadb:
     dependencies:
@@ -611,6 +1069,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/dbformysql:
     dependencies:
@@ -620,6 +1085,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/dbforpostgresql:
     dependencies:
@@ -629,6 +1101,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/delegatednetwork:
     dependencies:
@@ -638,6 +1117,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/deploymentmanager:
     dependencies:
@@ -647,6 +1133,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/desktopvirtualization:
     dependencies:
@@ -656,6 +1149,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/devcenter:
     dependencies:
@@ -665,6 +1165,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/devhub:
     dependencies:
@@ -674,6 +1181,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/devices:
     dependencies:
@@ -683,6 +1197,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/deviceupdate:
     dependencies:
@@ -692,6 +1213,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/devspaces:
     dependencies:
@@ -701,6 +1229,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/devtestlab:
     dependencies:
@@ -710,6 +1245,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/digitaltwins:
     dependencies:
@@ -719,6 +1261,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/documentdb:
     dependencies:
@@ -730,10 +1279,10 @@ importers:
         version: 3.82.1
     devDependencies:
       '@types/node':
-        specifier: ^20.6.2
+        specifier: ^20.0.0
         version: 20.6.2
       typescript:
-        specifier: ^5.2.2
+        specifier: ^5.0.0
         version: 5.2.2
 
   packages/domainregistration:
@@ -744,6 +1293,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/dynamics365fraudprotection:
     dependencies:
@@ -753,6 +1309,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/easm:
     dependencies:
@@ -762,6 +1325,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/edgeorder:
     dependencies:
@@ -771,6 +1341,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/education:
     dependencies:
@@ -780,6 +1357,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/elastic:
     dependencies:
@@ -789,6 +1373,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/elasticsan:
     dependencies:
@@ -798,6 +1389,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/engagementfabric:
     dependencies:
@@ -807,6 +1405,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/enterpriseknowledgegraph:
     dependencies:
@@ -816,6 +1421,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/eventgrid:
     dependencies:
@@ -825,6 +1437,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/eventhub:
     dependencies:
@@ -834,6 +1453,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/extendedlocation:
     dependencies:
@@ -843,6 +1469,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/features:
     dependencies:
@@ -852,6 +1485,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/fluidrelay:
     dependencies:
@@ -861,6 +1501,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/graphservices:
     dependencies:
@@ -870,6 +1517,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/guestconfiguration:
     dependencies:
@@ -879,6 +1533,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/hanaonazure:
     dependencies:
@@ -888,6 +1549,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/hardwaresecuritymodules:
     dependencies:
@@ -897,6 +1565,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/hdinsight:
     dependencies:
@@ -906,6 +1581,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/healthbot:
     dependencies:
@@ -915,6 +1597,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/healthcareapis:
     dependencies:
@@ -924,6 +1613,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/hybridcloud:
     dependencies:
@@ -933,6 +1629,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/hybridcompute:
     dependencies:
@@ -942,6 +1645,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/hybridconnectivity:
     dependencies:
@@ -951,6 +1661,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/hybridcontainerservice:
     dependencies:
@@ -960,6 +1677,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/hybriddata:
     dependencies:
@@ -969,6 +1693,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/hybridnetwork:
     dependencies:
@@ -978,6 +1709,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/importexport:
     dependencies:
@@ -987,6 +1725,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/insights:
     dependencies:
@@ -996,6 +1741,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/intune:
     dependencies:
@@ -1005,6 +1757,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/iotcentral:
     dependencies:
@@ -1014,6 +1773,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/iotfirmwaredefense:
     dependencies:
@@ -1023,6 +1789,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/iotsecurity:
     dependencies:
@@ -1032,6 +1805,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/keyvault:
     dependencies:
@@ -1041,6 +1821,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/kubernetes:
     dependencies:
@@ -1050,6 +1837,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/kubernetesconfiguration:
     dependencies:
@@ -1059,6 +1853,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/kusto:
     dependencies:
@@ -1068,6 +1869,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/labservices:
     dependencies:
@@ -1077,6 +1885,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/loadtestservice:
     dependencies:
@@ -1086,6 +1901,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/logic:
     dependencies:
@@ -1095,6 +1917,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/logz:
     dependencies:
@@ -1104,6 +1933,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/m365securityandcompliance:
     dependencies:
@@ -1113,6 +1949,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/machinelearning:
     dependencies:
@@ -1122,6 +1965,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/machinelearningcompute:
     dependencies:
@@ -1131,6 +1981,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/machinelearningexperimentation:
     dependencies:
@@ -1140,6 +1997,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/machinelearningservices:
     dependencies:
@@ -1149,6 +2013,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/maintenance:
     dependencies:
@@ -1158,6 +2029,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/managedidentity:
     dependencies:
@@ -1167,6 +2045,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/managednetwork:
     dependencies:
@@ -1176,6 +2061,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/managednetworkfabric:
     dependencies:
@@ -1185,6 +2077,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/managedservices:
     dependencies:
@@ -1194,6 +2093,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/management:
     dependencies:
@@ -1203,6 +2109,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/managementpartner:
     dependencies:
@@ -1212,6 +2125,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/maps:
     dependencies:
@@ -1221,6 +2141,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/marketplace:
     dependencies:
@@ -1230,6 +2157,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/media:
     dependencies:
@@ -1239,6 +2173,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/migrate:
     dependencies:
@@ -1248,6 +2189,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/mixedreality:
     dependencies:
@@ -1257,6 +2205,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/mobilenetwork:
     dependencies:
@@ -1266,6 +2221,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/mobilepacketcore:
     dependencies:
@@ -1275,6 +2237,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/monitor:
     dependencies:
@@ -1284,6 +2253,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/netapp:
     dependencies:
@@ -1293,6 +2269,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/network:
     dependencies:
@@ -1302,6 +2285,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/networkcloud:
     dependencies:
@@ -1311,6 +2301,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/networkfunction:
     dependencies:
@@ -1320,6 +2317,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/notificationhubs:
     dependencies:
@@ -1329,6 +2333,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/offazure:
     dependencies:
@@ -1338,6 +2349,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/openenergyplatform:
     dependencies:
@@ -1347,6 +2365,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/operationalinsights:
     dependencies:
@@ -1356,6 +2381,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/operationsmanagement:
     dependencies:
@@ -1365,6 +2397,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/orbital:
     dependencies:
@@ -1374,6 +2413,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/peering:
     dependencies:
@@ -1383,6 +2429,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/policyinsights:
     dependencies:
@@ -1392,6 +2445,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/portal:
     dependencies:
@@ -1401,6 +2461,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/powerbi:
     dependencies:
@@ -1410,6 +2477,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/powerbidedicated:
     dependencies:
@@ -1419,6 +2493,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/powerplatform:
     dependencies:
@@ -1428,6 +2509,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/professionalservice:
     dependencies:
@@ -1437,6 +2525,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/providerhub:
     dependencies:
@@ -1446,6 +2541,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/purview:
     dependencies:
@@ -1455,6 +2557,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/quantum:
     dependencies:
@@ -1464,6 +2573,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/quota:
     dependencies:
@@ -1473,6 +2589,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/recommendationsservice:
     dependencies:
@@ -1482,6 +2605,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/recoveryservices:
     dependencies:
@@ -1491,6 +2621,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/redhatopenshift:
     dependencies:
@@ -1500,6 +2637,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/relay:
     dependencies:
@@ -1509,6 +2653,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/resourceconnector:
     dependencies:
@@ -1518,6 +2669,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/resourcegraph:
     dependencies:
@@ -1527,6 +2685,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/resourcehealth:
     dependencies:
@@ -1536,6 +2701,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/resources:
     dependencies:
@@ -1545,6 +2717,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/saas:
     dependencies:
@@ -1554,6 +2733,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/scheduler:
     dependencies:
@@ -1563,6 +2749,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/scom:
     dependencies:
@@ -1572,6 +2765,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/scvmm:
     dependencies:
@@ -1581,6 +2781,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/search:
     dependencies:
@@ -1590,6 +2797,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/security:
     dependencies:
@@ -1599,6 +2813,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/securityandcompliance:
     dependencies:
@@ -1608,6 +2829,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/securitydevops:
     dependencies:
@@ -1617,6 +2845,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/securityinsights:
     dependencies:
@@ -1626,6 +2861,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/serialconsole:
     dependencies:
@@ -1635,6 +2877,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/servicebus:
     dependencies:
@@ -1644,6 +2893,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/servicefabric:
     dependencies:
@@ -1653,6 +2909,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/servicefabricmesh:
     dependencies:
@@ -1662,6 +2925,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/servicelinker:
     dependencies:
@@ -1671,6 +2941,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/servicenetworking:
     dependencies:
@@ -1680,6 +2957,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/signalrservice:
     dependencies:
@@ -1689,6 +2973,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/softwareplan:
     dependencies:
@@ -1698,6 +2989,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/solutions:
     dependencies:
@@ -1707,6 +3005,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/sql:
     dependencies:
@@ -1716,6 +3021,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/sqlvirtualmachine:
     dependencies:
@@ -1725,6 +3037,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/storage:
     dependencies:
@@ -1734,6 +3053,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/storagecache:
     dependencies:
@@ -1743,6 +3069,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/storagemover:
     dependencies:
@@ -1752,6 +3085,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/storagepool:
     dependencies:
@@ -1761,6 +3101,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/storagesync:
     dependencies:
@@ -1770,6 +3117,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/storagetasks:
     dependencies:
@@ -1779,6 +3133,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/storsimple:
     dependencies:
@@ -1788,6 +3149,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/streamanalytics:
     dependencies:
@@ -1797,6 +3165,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/subscription:
     dependencies:
@@ -1806,6 +3181,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/synapse:
     dependencies:
@@ -1815,6 +3197,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/syntex:
     dependencies:
@@ -1824,6 +3213,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/testbase:
     dependencies:
@@ -1833,6 +3229,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/timeseriesinsights:
     dependencies:
@@ -1842,6 +3245,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/videoanalyzer:
     dependencies:
@@ -1851,6 +3261,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/videoindexer:
     dependencies:
@@ -1860,6 +3277,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/virtualmachineimages:
     dependencies:
@@ -1869,6 +3293,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/visualstudio:
     dependencies:
@@ -1878,6 +3309,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/vmwarecloudsimple:
     dependencies:
@@ -1887,6 +3325,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/voiceservices:
     dependencies:
@@ -1896,6 +3341,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/web:
     dependencies:
@@ -1905,6 +3357,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/webpubsub:
     dependencies:
@@ -1914,6 +3373,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/windowsesu:
     dependencies:
@@ -1923,6 +3389,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/windowsiot:
     dependencies:
@@ -1932,6 +3405,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
   packages/workloads:
     dependencies:
@@ -1941,6 +3421,13 @@ importers:
       '@pulumi/pulumi':
         specifier: ^3.0.0
         version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
 
 packages:
 

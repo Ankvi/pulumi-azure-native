@@ -20,8 +20,8 @@ jobs:
 
       - name: Build packages
         run: |
-          make output
+          make build
 
       - name: Publish packages
         run: |
-          make publish
+          pnpm publish -r

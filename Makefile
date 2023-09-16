@@ -1,8 +1,11 @@
 node_modules:
-    pnpm install
+	pnpm install
+
+node_modules/ci:
+	IGNORE_PULUMI_SCRIPTS=1 pnpm install --frozen-lockfile
 
 lint:
-    pnpm run lint
+	pnpm run lint
 
 build:
-    pnpm run build
+	pnpm run build

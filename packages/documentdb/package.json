@@ -11,22 +11,24 @@
     ],
     "homepage": "https://pulumi.com",
     "repository": {
-        "url": "git+https://github.com/Ankvi/pulumi-transformer.git",
+        "url": "git+https://github.com/Ankvi/pulumi-azure-native.git",
         "type": "git"
     },
     "dependencies": {
-        "@kengachu-pulumi/azure-native-core": "workspace:^",
-        "@pulumi/pulumi": "^3.0.0"
+        "@pulumi/pulumi": "^3.0.0",
+        "@kengachu-pulumi/azure-native-core": "workspace:^"
     },
     "publishConfig": {
         "access": "public"
     },
+    "devDependencies": {
+        "typescript": "^5.0.0",
+        "@types/node": "^20.0.0"
+    },
     "scripts": {
         "build": "tsc",
-        "install": "node scripts/install-pulumi-plugin.js resource azure-native v2.7.0"
-    },
-    "devDependencies": {
-        "@types/node": "^20.6.2",
-        "typescript": "^5.2.2"
+        "lint": "tsc --noEmit",
+        "install": "node scripts/install-pulumi-plugin.js resource azure-native v2.7.0",
+        "prepublish": "pnpm run build"
     }
 }

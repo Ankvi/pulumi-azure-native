@@ -1,11 +1,4 @@
 {
     "name": "@kengachu-pulumi/azure-native",
-    "private": true,
-    "scripts": {
-        "lint": "tsc --noEmit",
-        "build": "tsc"
-    },
-    "devDependencies": {
-        "typescript": "^5.2.2"
-    }
+    "private": true
 }
