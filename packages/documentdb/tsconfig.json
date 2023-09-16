@@ -1,0 +1,17 @@
+
+{
+    "compilerOptions": {
+        "target": "ES2016",
+        "module": "CommonJS",
+        "skipLibCheck": true,
+        "skipDefaultLibCheck": true,
+        "moduleResolution": "node",
+        "declaration": true,
+        "inlineSourceMap": true,
+        "experimentalDecorators": true,
+        "forceConsistentCasingInFileNames": true,
+        "strict": true
+    },
+    "include": ["**/*.ts"],
+    "exclude": ["**/*.d.ts"]
+}

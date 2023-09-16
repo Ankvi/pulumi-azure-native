@@ -1,0 +1,94 @@
+import * as pulumi from "@pulumi/pulumi";
+import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
+import * as types from "../types";
+/**
+ * Gets the properties of the specified credential set resource.
+ */
+export function getCredentialSet(args: GetCredentialSetArgs, opts?: pulumi.InvokeOptions): Promise<GetCredentialSetResult> {
+
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invoke("azure-native:containerregistry/v20230701:getCredentialSet", {
+        "credentialSetName": args.credentialSetName,
+        "registryName": args.registryName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
+}
+
+export interface GetCredentialSetArgs {
+    /**
+     * The name of the credential set.
+     */
+    credentialSetName: string;
+    /**
+     * The name of the container registry.
+     */
+    registryName: string;
+    /**
+     * The name of the resource group. The name is case insensitive.
+     */
+    resourceGroupName: string;
+}
+
+/**
+ * An object that represents a credential set resource for a container registry.
+ */
+export interface GetCredentialSetResult {
+    /**
+     * List of authentication credentials stored for an upstream.
+     * Usually consists of a primary and an optional secondary credential.
+     */
+    readonly authCredentials?: types.outputs.containerregistry.v20230701.AuthCredentialResponse[];
+    /**
+     * The creation date of credential store resource.
+     */
+    readonly creationDate: string;
+    /**
+     * The resource ID.
+     */
+    readonly id: string;
+    /**
+     * Identities associated with the resource. This is used to access the KeyVault secrets.
+     */
+    readonly identity?: types.outputs.containerregistry.v20230701.IdentityPropertiesResponse;
+    /**
+     * The credentials are stored for this upstream or login server.
+     */
+    readonly loginServer?: string;
+    /**
+     * The name of the resource.
+     */
+    readonly name: string;
+    /**
+     * Provisioning state of the resource.
+     */
+    readonly provisioningState: string;
+    /**
+     * Metadata pertaining to creation and last modification of the resource.
+     */
+    readonly systemData: types.outputs.containerregistry.v20230701.SystemDataResponse;
+    /**
+     * The type of the resource.
+     */
+    readonly type: string;
+}
+/**
+ * Gets the properties of the specified credential set resource.
+ */
+export function getCredentialSetOutput(args: GetCredentialSetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCredentialSetResult> {
+    return pulumi.output(args).apply((a: any) => getCredentialSet(a, opts))
+}
+
+export interface GetCredentialSetOutputArgs {
+    /**
+     * The name of the credential set.
+     */
+    credentialSetName: pulumi.Input<string>;
+    /**
+     * The name of the container registry.
+     */
+    registryName: pulumi.Input<string>;
+    /**
+     * The name of the resource group. The name is case insensitive.
+     */
+    resourceGroupName: pulumi.Input<string>;
+}

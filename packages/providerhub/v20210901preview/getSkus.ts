@@ -1,0 +1,71 @@
+import * as pulumi from "@pulumi/pulumi";
+import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
+import * as types from "../types";
+/**
+ * Gets the sku details for the given resource type and sku name.
+ */
+export function getSkus(args: GetSkusArgs, opts?: pulumi.InvokeOptions): Promise<GetSkusResult> {
+
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invoke("azure-native:providerhub/v20210901preview:getSkus", {
+        "providerNamespace": args.providerNamespace,
+        "resourceType": args.resourceType,
+        "sku": args.sku,
+    }, opts);
+}
+
+export interface GetSkusArgs {
+    /**
+     * The name of the resource provider hosted within ProviderHub.
+     */
+    providerNamespace: string;
+    /**
+     * The resource type.
+     */
+    resourceType: string;
+    /**
+     * The SKU.
+     */
+    sku: string;
+}
+
+export interface GetSkusResult {
+    /**
+     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     */
+    readonly id: string;
+    /**
+     * The name of the resource
+     */
+    readonly name: string;
+    readonly properties: types.outputs.providerhub.v20210901preview.SkuResourceResponseProperties;
+    /**
+     * Metadata pertaining to creation and last modification of the resource.
+     */
+    readonly systemData: types.outputs.providerhub.v20210901preview.SystemDataResponse;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+     */
+    readonly type: string;
+}
+/**
+ * Gets the sku details for the given resource type and sku name.
+ */
+export function getSkusOutput(args: GetSkusOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSkusResult> {
+    return pulumi.output(args).apply((a: any) => getSkus(a, opts))
+}
+
+export interface GetSkusOutputArgs {
+    /**
+     * The name of the resource provider hosted within ProviderHub.
+     */
+    providerNamespace: pulumi.Input<string>;
+    /**
+     * The resource type.
+     */
+    resourceType: pulumi.Input<string>;
+    /**
+     * The SKU.
+     */
+    sku: pulumi.Input<string>;
+}

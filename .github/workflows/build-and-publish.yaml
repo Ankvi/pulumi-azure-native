@@ -1,0 +1,27 @@
+name: Build and publish packages
+
+on:
+  workflow_dispatch:
+
+jobs:
+  prepare-cache:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ./.github/actions/setup-node
+
+  build-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ./.github/actions/setup-node
+
+      - name: Build packages
+        run: |
+          make output
+
+      - name: Publish packages
+        run: |
+          make publish

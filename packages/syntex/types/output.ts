@@ -1,0 +1,101 @@
+import * as pulumi from "@pulumi/pulumi";
+export namespace syntex {
+    /**
+     * Document processor properties
+     */
+    export interface DocumentProcessorPropertiesResponse {
+        /**
+         * The managed resource provisioning state.
+         */
+        provisioningState: string;
+        /**
+         * The ID (GUID) of an SharePoint Online (SPO) tenant associated with this document processor resource
+         */
+        spoTenantId: string;
+        /**
+         * The URL of an SharePoint Online (SPO) tenant associated with this document processor resource
+         */
+        spoTenantUrl: string;
+    }
+
+    /**
+     * Metadata pertaining to creation and last modification of the resource.
+     */
+    export interface SystemDataResponse {
+        /**
+         * The timestamp of resource creation (UTC).
+         */
+        createdAt?: string;
+        /**
+         * The identity that created the resource.
+         */
+        createdBy?: string;
+        /**
+         * The type of identity that created the resource.
+         */
+        createdByType?: string;
+        /**
+         * The timestamp of resource last modification (UTC)
+         */
+        lastModifiedAt?: string;
+        /**
+         * The identity that last modified the resource.
+         */
+        lastModifiedBy?: string;
+        /**
+         * The type of identity that last modified the resource.
+         */
+        lastModifiedByType?: string;
+    }
+
+    export namespace v20220915preview {
+        /**
+         * Document processor properties
+         */
+        export interface DocumentProcessorPropertiesResponse {
+            /**
+             * The managed resource provisioning state.
+             */
+            provisioningState: string;
+            /**
+             * The ID (GUID) of an SharePoint Online (SPO) tenant associated with this document processor resource
+             */
+            spoTenantId: string;
+            /**
+             * The URL of an SharePoint Online (SPO) tenant associated with this document processor resource
+             */
+            spoTenantUrl: string;
+        }
+
+        /**
+         * Metadata pertaining to creation and last modification of the resource.
+         */
+        export interface SystemDataResponse {
+            /**
+             * The timestamp of resource creation (UTC).
+             */
+            createdAt?: string;
+            /**
+             * The identity that created the resource.
+             */
+            createdBy?: string;
+            /**
+             * The type of identity that created the resource.
+             */
+            createdByType?: string;
+            /**
+             * The timestamp of resource last modification (UTC)
+             */
+            lastModifiedAt?: string;
+            /**
+             * The identity that last modified the resource.
+             */
+            lastModifiedBy?: string;
+            /**
+             * The type of identity that last modified the resource.
+             */
+            lastModifiedByType?: string;
+        }
+
+    }
+}

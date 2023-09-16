@@ -1,0 +1,32 @@
+{
+    "name": "@kengachu-pulumi/azure-native-documentdb",
+    "version": "2.7.0",
+    "description": "Pulumi Azure Native package for documentdb",
+    "keywords": [
+        "pulumi",
+        "azure",
+        "azure-native",
+        "category/cloud",
+        "kind/native"
+    ],
+    "homepage": "https://pulumi.com",
+    "repository": {
+        "url": "git+https://github.com/Ankvi/pulumi-transformer.git",
+        "type": "git"
+    },
+    "dependencies": {
+        "@kengachu-pulumi/azure-native-core": "workspace:^",
+        "@pulumi/pulumi": "^3.0.0"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "scripts": {
+        "build": "tsc",
+        "install": "node scripts/install-pulumi-plugin.js resource azure-native v2.7.0"
+    },
+    "devDependencies": {
+        "@types/node": "^20.6.2",
+        "typescript": "^5.2.2"
+    }
+}

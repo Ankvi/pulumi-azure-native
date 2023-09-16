@@ -1,0 +1,43 @@
+import * as pulumi from "@pulumi/pulumi";
+import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
+import * as types from "../types";
+/**
+ * List labs for the user.
+ */
+export function listGlobalUserLabs(args: ListGlobalUserLabsArgs, opts?: pulumi.InvokeOptions): Promise<ListGlobalUserLabsResult> {
+
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invoke("azure-native:labservices/v20181015:listGlobalUserLabs", {
+        "userName": args.userName,
+    }, opts);
+}
+
+export interface ListGlobalUserLabsArgs {
+    /**
+     * The name of the user.
+     */
+    userName: string;
+}
+
+/**
+ * Lists the labs owned by a user
+ */
+export interface ListGlobalUserLabsResult {
+    /**
+     * List of all the labs
+     */
+    readonly labs?: types.outputs.labservices.v20181015.LabDetailsResponse[];
+}
+/**
+ * List labs for the user.
+ */
+export function listGlobalUserLabsOutput(args: ListGlobalUserLabsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListGlobalUserLabsResult> {
+    return pulumi.output(args).apply((a: any) => listGlobalUserLabs(a, opts))
+}
+
+export interface ListGlobalUserLabsOutputArgs {
+    /**
+     * The name of the user.
+     */
+    userName: pulumi.Input<string>;
+}

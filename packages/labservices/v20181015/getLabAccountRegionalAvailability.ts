@@ -1,0 +1,52 @@
+import * as pulumi from "@pulumi/pulumi";
+import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
+import * as types from "../types";
+/**
+ * Get regional availability information for each size category configured under a lab account
+ */
+export function getLabAccountRegionalAvailability(args: GetLabAccountRegionalAvailabilityArgs, opts?: pulumi.InvokeOptions): Promise<GetLabAccountRegionalAvailabilityResult> {
+
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invoke("azure-native:labservices/v20181015:getLabAccountRegionalAvailability", {
+        "labAccountName": args.labAccountName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
+}
+
+export interface GetLabAccountRegionalAvailabilityArgs {
+    /**
+     * The name of the lab Account.
+     */
+    labAccountName: string;
+    /**
+     * The name of the resource group.
+     */
+    resourceGroupName: string;
+}
+
+/**
+ * The response model from the GetRegionalAvailability action
+ */
+export interface GetLabAccountRegionalAvailabilityResult {
+    /**
+     * Availability information for different size categories per region
+     */
+    readonly regionalAvailability?: types.outputs.labservices.v20181015.RegionalAvailabilityResponse[];
+}
+/**
+ * Get regional availability information for each size category configured under a lab account
+ */
+export function getLabAccountRegionalAvailabilityOutput(args: GetLabAccountRegionalAvailabilityOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLabAccountRegionalAvailabilityResult> {
+    return pulumi.output(args).apply((a: any) => getLabAccountRegionalAvailability(a, opts))
+}
+
+export interface GetLabAccountRegionalAvailabilityOutputArgs {
+    /**
+     * The name of the lab Account.
+     */
+    labAccountName: pulumi.Input<string>;
+    /**
+     * The name of the resource group.
+     */
+    resourceGroupName: pulumi.Input<string>;
+}

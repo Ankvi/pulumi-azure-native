@@ -1,0 +1,27 @@
+{
+    "name": "@kengachu-pulumi/azure-native-blueprint",
+    "version": "2.7.0",
+    "description": "Pulumi Azure Native package for blueprint",
+    "keywords": [
+        "pulumi",
+        "azure",
+        "azure-native",
+        "category/cloud",
+        "kind/native"
+    ],
+    "homepage": "https://pulumi.com",
+    "repository": {
+        "url": "git+https://github.com/Ankvi/pulumi-transformer.git",
+        "type": "git"
+    },
+    "dependencies": {
+        "@pulumi/pulumi": "^3.0.0",
+        "@kengachu-pulumi/azure-native-core": "workspace:^"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "scripts": {
+        "install": "node scripts/install-pulumi-plugin.js resource azure-native v2.7.0"
+    }
+}

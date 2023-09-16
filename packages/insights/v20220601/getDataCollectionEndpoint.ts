@@ -1,0 +1,124 @@
+import * as pulumi from "@pulumi/pulumi";
+import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
+import * as types from "../types";
+/**
+ * Definition of ARM tracked top level resource.
+ */
+export function getDataCollectionEndpoint(args: GetDataCollectionEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetDataCollectionEndpointResult> {
+
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invoke("azure-native:insights/v20220601:getDataCollectionEndpoint", {
+        "dataCollectionEndpointName": args.dataCollectionEndpointName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
+}
+
+export interface GetDataCollectionEndpointArgs {
+    /**
+     * The name of the data collection endpoint. The name is case insensitive.
+     */
+    dataCollectionEndpointName: string;
+    /**
+     * The name of the resource group. The name is case insensitive.
+     */
+    resourceGroupName: string;
+}
+
+/**
+ * Definition of ARM tracked top level resource.
+ */
+export interface GetDataCollectionEndpointResult {
+    /**
+     * The endpoint used by clients to access their configuration.
+     */
+    readonly configurationAccess?: types.outputs.insights.v20220601.DataCollectionEndpointResponseConfigurationAccess;
+    /**
+     * Description of the data collection endpoint.
+     */
+    readonly description?: string;
+    /**
+     * Resource entity tag (ETag).
+     */
+    readonly etag: string;
+    /**
+     * Failover configuration on this endpoint. This property is READ-ONLY.
+     */
+    readonly failoverConfiguration: types.outputs.insights.v20220601.DataCollectionEndpointResponseFailoverConfiguration;
+    /**
+     * Fully qualified ID of the resource.
+     */
+    readonly id: string;
+    /**
+     * Managed service identity of the resource.
+     */
+    readonly identity?: types.outputs.insights.v20220601.DataCollectionEndpointResourceResponseIdentity;
+    /**
+     * The immutable ID of this data collection endpoint resource. This property is READ-ONLY.
+     */
+    readonly immutableId?: string;
+    /**
+     * The kind of the resource.
+     */
+    readonly kind?: string;
+    /**
+     * The geo-location where the resource lives.
+     */
+    readonly location: string;
+    /**
+     * The endpoint used by clients to ingest logs.
+     */
+    readonly logsIngestion?: types.outputs.insights.v20220601.DataCollectionEndpointResponseLogsIngestion;
+    /**
+     * Metadata for the resource. This property is READ-ONLY.
+     */
+    readonly metadata: types.outputs.insights.v20220601.DataCollectionEndpointResponseMetadata;
+    /**
+     * The endpoint used by clients to ingest metrics.
+     */
+    readonly metricsIngestion?: types.outputs.insights.v20220601.DataCollectionEndpointResponseMetricsIngestion;
+    /**
+     * The name of the resource.
+     */
+    readonly name: string;
+    /**
+     * Network access control rules for the endpoints.
+     */
+    readonly networkAcls?: types.outputs.insights.v20220601.DataCollectionEndpointResponseNetworkAcls;
+    /**
+     * List of Azure Monitor Private Link Scope Resources to which this data collection endpoint resource is associated. This property is READ-ONLY.
+     */
+    readonly privateLinkScopedResources: types.outputs.insights.v20220601.PrivateLinkScopedResourceResponse[];
+    /**
+     * The resource provisioning state. This property is READ-ONLY.
+     */
+    readonly provisioningState: string;
+    /**
+     * Metadata pertaining to creation and last modification of the resource.
+     */
+    readonly systemData: types.outputs.insights.v20220601.DataCollectionEndpointResourceResponseSystemData;
+    /**
+     * Resource tags.
+     */
+    readonly tags?: {[key: string]: string};
+    /**
+     * The type of the resource.
+     */
+    readonly type: string;
+}
+/**
+ * Definition of ARM tracked top level resource.
+ */
+export function getDataCollectionEndpointOutput(args: GetDataCollectionEndpointOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDataCollectionEndpointResult> {
+    return pulumi.output(args).apply((a: any) => getDataCollectionEndpoint(a, opts))
+}
+
+export interface GetDataCollectionEndpointOutputArgs {
+    /**
+     * The name of the data collection endpoint. The name is case insensitive.
+     */
+    dataCollectionEndpointName: pulumi.Input<string>;
+    /**
+     * The name of the resource group. The name is case insensitive.
+     */
+    resourceGroupName: pulumi.Input<string>;
+}

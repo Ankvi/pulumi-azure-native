@@ -1,0 +1,67 @@
+import * as pulumi from "@pulumi/pulumi";
+import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
+import * as types from "../types";
+/**
+ * Get a specified connection created by this subscription.
+ */
+export function getSubscriptionNetworkManagerConnection(args: GetSubscriptionNetworkManagerConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetSubscriptionNetworkManagerConnectionResult> {
+
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invoke("azure-native:network/v20230201:getSubscriptionNetworkManagerConnection", {
+        "networkManagerConnectionName": args.networkManagerConnectionName,
+    }, opts);
+}
+
+export interface GetSubscriptionNetworkManagerConnectionArgs {
+    /**
+     * Name for the network manager connection.
+     */
+    networkManagerConnectionName: string;
+}
+
+/**
+ * The Network Manager Connection resource
+ */
+export interface GetSubscriptionNetworkManagerConnectionResult {
+    /**
+     * A description of the network manager connection.
+     */
+    readonly description?: string;
+    /**
+     * A unique read-only string that changes whenever the resource is updated.
+     */
+    readonly etag: string;
+    /**
+     * Resource ID.
+     */
+    readonly id: string;
+    /**
+     * Resource name.
+     */
+    readonly name: string;
+    /**
+     * Network Manager Id.
+     */
+    readonly networkManagerId?: string;
+    /**
+     * The system metadata related to this resource.
+     */
+    readonly systemData: types.outputs.network.v20230201.SystemDataResponse;
+    /**
+     * Resource type.
+     */
+    readonly type: string;
+}
+/**
+ * Get a specified connection created by this subscription.
+ */
+export function getSubscriptionNetworkManagerConnectionOutput(args: GetSubscriptionNetworkManagerConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubscriptionNetworkManagerConnectionResult> {
+    return pulumi.output(args).apply((a: any) => getSubscriptionNetworkManagerConnection(a, opts))
+}
+
+export interface GetSubscriptionNetworkManagerConnectionOutputArgs {
+    /**
+     * Name for the network manager connection.
+     */
+    networkManagerConnectionName: pulumi.Input<string>;
+}
