@@ -1,13 +1,18 @@
 name: Publish packages to npm
 
 on:
-  workflow_dispatch:
+  schedule:
+    - cron: "15 * * * *"
 
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
 
       - uses: ./.github/actions/setup-node
 
@@ -17,6 +22,7 @@ jobs:
 
       - name: Publish packages
         run: |
-          pnpm publish -r
+          bun scripts/publish-packages-for-current-hour.ts --yes
+
     env:
       NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

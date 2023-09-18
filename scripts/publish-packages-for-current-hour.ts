@@ -1,8 +1,13 @@
+import { program } from "commander";
 import { getPackageNames } from "./packages";
 
 const DAYS = 2;
 const HOURS = 24;
 const BATCH_SIZE = DAYS * HOURS;
+
+program
+    .option("-y, --yes", "Always publish")
+    .parse();
 
 const packageNames = await getPackageNames();
 
@@ -39,10 +44,14 @@ if (!packagesForCurrentHour) {
 console.log("Packages to publish:");
 console.log(JSON.stringify(packagesForCurrentHour, null, 4));
 
-const result = prompt("Continue? [y/N] ");
-if (result?.toLowerCase() !== "y") {
-    console.log("Will not publish. Exiting.");
-    process.exit(0);
+const options = program.opts();
+
+if (!options.yes) {
+    const result = prompt("Continue? [y/N] ");
+    if (result?.toLowerCase() !== "y") {
+        console.log("Will not publish. Exiting.");
+        process.exit(0);
+    }
 }
 
 for (const name of packagesForCurrentHour) {
