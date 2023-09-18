@@ -15,15 +15,15 @@
         "type": "git"
     },
     "dependencies": {
-        "@pulumi/pulumi": "^3.0.0",
-        "@kengachu-pulumi/azure-native-core": "workspace:^"
+        "@kengachu-pulumi/azure-native-core": "workspace:^",
+        "@pulumi/pulumi": "^3.0.0"
     },
     "publishConfig": {
         "access": "public"
     },
     "devDependencies": {
-        "typescript": "^5.0.0",
-        "@types/node": "^20.0.0"
+        "@types/node": "^20.0.0",
+        "typescript": "^5.0.0"
     },
     "scripts": {
         "build": "tsc",
