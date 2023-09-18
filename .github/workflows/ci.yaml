@@ -42,4 +42,4 @@ jobs:
 
       - name: Lint
         run: |
-          pnpm --filter=${{ matrix.name }} run lint
+          pnpm --filter=@kengachu-pulumi/azure-native-${{ matrix.name }} run lint

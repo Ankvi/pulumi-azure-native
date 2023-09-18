@@ -1,5 +1,15 @@
 import { readdir } from "node:fs/promises";
 
+export async function getPackageFolderNames(): Promise<string[]> {
+    const dirents = await readdir(`${import.meta.dir}/../packages`, {
+        withFileTypes: true
+    });
+
+    const folders = dirents.filter(dirent => dirent.isDirectory() && dirent.name != "node_modules");
+
+    return folders.map(folder => folder.name).sort();
+}
+
 export async function getPackageNames(): Promise<string[]> {
     const dirents = await readdir(`${import.meta.dir}/../packages`, {
         withFileTypes: true
