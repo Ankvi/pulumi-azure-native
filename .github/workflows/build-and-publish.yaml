@@ -21,7 +21,11 @@ jobs:
       - name: Install dependencies
         run: |
           make node_modules/ci
+
+      - name: Setup Bun
+        run: |
           bun install
+        working-directory: scripts
 
       - name: Publish packages
         run: |

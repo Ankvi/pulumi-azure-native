@@ -1,8 +1,4 @@
 {
     "name": "@kengachu-pulumi/azure-native",
-    "workspaces": [
-        "packages/*",
-        "scripts"
-    ],
     "private": true
 }
