@@ -1,6 +1,8 @@
 name: Publish packages to npm
 
 on:
+  workflow_dispatch:
+
   schedule:
     - cron: "50 * * * 1,2"
 
@@ -19,6 +21,7 @@ jobs:
       - name: Install dependencies
         run: |
           make node_modules/ci
+          bun install
 
       - name: Publish packages
         run: |
