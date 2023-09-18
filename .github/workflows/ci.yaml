@@ -23,7 +23,7 @@ jobs:
       - name: Get list of packages
         id: get-packages
         run: |
-          echo "matrix=$(make list-sub-modules)" >> "$GITHUB_OUTPUT"
+          echo "matrix=\"$(make list-sub-modules)\"" >> "$GITHUB_OUTPUT"
 
   build-and-run-checks:
     runs-on: ubuntu-latest
