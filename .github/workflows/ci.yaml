@@ -9,28 +9,28 @@ on:
       - main
 
 jobs:
-  get-package-matrix:
-    runs-on: ubuntu-latest
-    outputs:
-      matrix: ${{ steps.get-packages.outputs.matrix }}
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: oven-sh/setup-bun@v1
-        with:
-          bun-version: latest
-
-      - name: Get list of packages
-        id: get-packages
-        run: |
-          echo "matrix=$(bun scripts/list-packages.ts)" >> "$GITHUB_OUTPUT"
+  # get-package-matrix:
+  #   runs-on: ubuntu-latest
+  #   outputs:
+  #     matrix: ${{ steps.get-packages.outputs.matrix }}
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #
+  #     - uses: oven-sh/setup-bun@v1
+  #       with:
+  #         bun-version: latest
+  #
+  #     - name: Get list of packages
+  #       id: get-packages
+  #       run: |
+  #         echo "matrix=$(bun scripts/list-packages.ts)" >> "$GITHUB_OUTPUT"
 
   build-and-run-checks:
     runs-on: ubuntu-latest
-    needs: [get-package-matrix]
-    strategy:
-      fail-fast: false
-      matrix: ${{ fromJSON(needs.get-package-matrix.outputs.matrix) }}
+    # needs: [get-package-matrix]
+    # strategy:
+    #   fail-fast: false
+    #   matrix: ${{ fromJSON(needs.get-package-matrix.outputs.matrix) }}
     steps:
       - uses: actions/checkout@v4
 
@@ -42,4 +42,5 @@ jobs:
 
       - name: Lint
         run: |
-          pnpm --filter=@kengachu-pulumi/azure-native-${{ matrix.name }} run lint
+          make lint
+          # pnpm --filter=@kengachu-pulumi/azure-native-${{ matrix.name }} run lint
