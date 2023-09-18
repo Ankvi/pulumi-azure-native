@@ -1,0 +1,14 @@
+@kengachu-pulumi/azure-native-syntex
+@kengachu-pulumi/azure-native-testbase
+@kengachu-pulumi/azure-native-timeseriesinsights
+@kengachu-pulumi/azure-native-videoanalyzer
+@kengachu-pulumi/azure-native-videoindexer
+@kengachu-pulumi/azure-native-virtualmachineimages
+@kengachu-pulumi/azure-native-visualstudio
+@kengachu-pulumi/azure-native-vmwarecloudsimple
+@kengachu-pulumi/azure-native-voiceservices
+@kengachu-pulumi/azure-native-web
+@kengachu-pulumi/azure-native-webpubsub
+@kengachu-pulumi/azure-native-windowsesu
+@kengachu-pulumi/azure-native-windowsiot
+@kengachu-pulumi/azure-native-workloads
