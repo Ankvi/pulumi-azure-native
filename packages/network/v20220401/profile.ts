@@ -144,6 +144,7 @@ export interface ProfileArgs {
     dnsConfig?: pulumi.Input<types.inputs.network.v20220401.DnsConfigArgs>;
     /**
      * The list of endpoints in the Traffic Manager profile.
+     * These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
      */
     endpoints?: pulumi.Input<pulumi.Input<types.inputs.network.v20220401.EndpointArgs>[]>;
     /**

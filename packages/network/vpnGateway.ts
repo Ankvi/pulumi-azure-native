@@ -153,6 +153,7 @@ export interface VpnGatewayArgs {
     bgpSettings?: pulumi.Input<types.inputs.network.BgpSettingsArgs>;
     /**
      * List of all vpn connections to the gateway.
+     * These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
      */
     connections?: pulumi.Input<pulumi.Input<types.inputs.network.VpnConnectionArgs>[]>;
     /**
@@ -177,6 +178,7 @@ export interface VpnGatewayArgs {
     location?: pulumi.Input<string>;
     /**
      * List of all the nat Rules associated with the gateway.
+     * These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
      */
     natRules?: pulumi.Input<pulumi.Input<types.inputs.network.VpnGatewayNatRuleArgs>[]>;
     /**

@@ -130,6 +130,7 @@ export class NetworkSecurityGroup extends pulumi.CustomResource {
 export interface NetworkSecurityGroupArgs {
     /**
      * The default security rules of network security group.
+     * These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
      */
     defaultSecurityRules?: pulumi.Input<pulumi.Input<types.inputs.network.v20190801.SecurityRuleArgs>[]>;
     /**
@@ -154,6 +155,7 @@ export interface NetworkSecurityGroupArgs {
     resourceGuid?: pulumi.Input<string>;
     /**
      * A collection of security rules of the network security group.
+     * These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
      */
     securityRules?: pulumi.Input<pulumi.Input<types.inputs.network.v20190801.SecurityRuleArgs>[]>;
     /**
