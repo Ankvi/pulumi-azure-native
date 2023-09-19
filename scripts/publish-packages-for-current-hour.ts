@@ -1,37 +1,13 @@
 import { program } from "commander";
-import { getPackageNames } from "./packages";
-
-const DAYS = 2;
-const HOURS = 24;
-const BATCH_SIZE = DAYS * HOURS;
+import { getBatches, getCurrentBatchNumber } from "./batches";
 
 program
     .option("-y, --yes", "Always publish")
     .parse();
 
-const packageNames = await getPackageNames();
+const batches = await getBatches();
 
-console.log(`Total number of packages: ${packageNames.length}`);
-
-const batches: { [key: number]: string[] } = {};
-
-for (const [index, name] of packageNames.entries()) {
-    const batchNumber = index % BATCH_SIZE;
-
-    if (!batches[batchNumber]) {
-        batches[batchNumber] = [];
-    }
-
-    batches[batchNumber].push(name);
-}
-
-const now = new Date();
-const currentDay = now.getDay() % 2;
-const currentHour = now.getHours();
-const batchNumber = (currentDay * HOURS) + currentHour;
-
-console.log(`Current day: ${currentDay}`)
-console.log(`Current hour: ${currentHour}`);
+const batchNumber = getCurrentBatchNumber();
 console.log(`Batch number: ${batchNumber}`)
 
 const packagesForCurrentHour = batches[batchNumber];
