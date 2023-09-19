@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A gateway resource.
  */
@@ -38,11 +38,11 @@ export class ManagedGateway extends pulumi.CustomResource {
     /**
      * The properties of a gateway resource.
      */
-    public /*out*/ readonly properties!: pulumi.Output<types.outputs.scom.v20230707preview.ManagedGatewayPropertiesResponse>;
+    public /*out*/ readonly properties!: pulumi.Output<types.outputs.ManagedGatewayPropertiesResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.scom.v20230707preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

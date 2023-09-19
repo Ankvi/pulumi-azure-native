@@ -36,11 +36,11 @@ export interface GetSnapshotResult {
     /**
      * Indicates the error details if the background copy of a resource created via the CopyStart operation fails.
      */
-    readonly copyCompletionError?: types.outputs.compute.CopyCompletionErrorResponse;
+    readonly copyCompletionError?: types.outputs.CopyCompletionErrorResponse;
     /**
      * Disk source information. CreationData information cannot be changed after the disk has been created.
      */
-    readonly creationData: types.outputs.compute.CreationDataResponse;
+    readonly creationData: types.outputs.CreationDataResponse;
     /**
      * Additional authentication requirements when exporting or uploading to a disk or snapshot.
      */
@@ -64,15 +64,15 @@ export interface GetSnapshotResult {
     /**
      * Encryption property can be used to encrypt data at rest with customer managed keys or platform managed keys.
      */
-    readonly encryption?: types.outputs.compute.EncryptionResponse;
+    readonly encryption?: types.outputs.EncryptionResponse;
     /**
      * Encryption settings collection used be Azure Disk Encryption, can contain multiple encryption settings per disk or snapshot.
      */
-    readonly encryptionSettingsCollection?: types.outputs.compute.EncryptionSettingsCollectionResponse;
+    readonly encryptionSettingsCollection?: types.outputs.EncryptionSettingsCollectionResponse;
     /**
      * The extended location where the snapshot will be created. Extended location cannot be changed.
      */
-    readonly extendedLocation?: types.outputs.compute.ExtendedLocationResponse;
+    readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
     /**
      * The hypervisor generation of the Virtual Machine. Applicable to OS disks only.
      */
@@ -120,19 +120,19 @@ export interface GetSnapshotResult {
     /**
      * Purchase plan information for the image from which the source disk for the snapshot was originally created.
      */
-    readonly purchasePlan?: types.outputs.compute.PurchasePlanResponse;
+    readonly purchasePlan?: types.outputs.PurchasePlanResponse;
     /**
      * Contains the security related information for the resource.
      */
-    readonly securityProfile?: types.outputs.compute.DiskSecurityProfileResponse;
+    readonly securityProfile?: types.outputs.DiskSecurityProfileResponse;
     /**
      * The snapshots sku name. Can be Standard_LRS, Premium_LRS, or Standard_ZRS. This is an optional parameter for incremental snapshot and the default behavior is the SKU will be set to the same sku as the previous snapshot
      */
-    readonly sku?: types.outputs.compute.SnapshotSkuResponse;
+    readonly sku?: types.outputs.SnapshotSkuResponse;
     /**
      * List of supported capabilities for the image from which the source disk from the snapshot was originally created.
      */
-    readonly supportedCapabilities?: types.outputs.compute.SupportedCapabilitiesResponse;
+    readonly supportedCapabilities?: types.outputs.SupportedCapabilitiesResponse;
     /**
      * Indicates the OS on a snapshot supports hibernation.
      */

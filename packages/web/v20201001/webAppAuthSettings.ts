@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Configuration settings for the Azure App Service Authentication / Authorization feature.
  */
@@ -206,7 +206,7 @@ export class WebAppAuthSettings extends pulumi.CustomResource {
     /**
      * The system metadata relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.web.v20201001.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The number of hours after session token expiration that a session token can be used to
      * call the token refresh API. The default is 72 hours.
@@ -414,7 +414,7 @@ export interface WebAppAuthSettingsArgs {
      * This setting is only needed if multiple providers are configured and the unauthenticated client
      * action is set to "RedirectToLoginPage".
      */
-    defaultProvider?: pulumi.Input<types.enums.v20201001.BuiltInAuthenticationProvider>;
+    defaultProvider?: pulumi.Input<types.enums.BuiltInAuthenticationProvider>;
     /**
      * <code>true</code> if the Authentication / Authorization feature is enabled for the current app; otherwise, <code>false</code>.
      */
@@ -566,7 +566,7 @@ export interface WebAppAuthSettingsArgs {
     /**
      * The action to take when an unauthenticated client attempts to access the app.
      */
-    unauthenticatedClientAction?: pulumi.Input<types.enums.v20201001.UnauthenticatedClientAction>;
+    unauthenticatedClientAction?: pulumi.Input<types.enums.UnauthenticatedClientAction>;
     /**
      * Gets a value indicating whether the issuer should be a valid HTTPS url and be validated as such.
      */

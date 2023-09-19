@@ -36,7 +36,7 @@ export interface ListGitHubOwnerAvailableResult {
     /**
      * Gets or sets list of resources.
      */
-    readonly value?: types.outputs.security.GitHubOwnerResponse[];
+    readonly value?: types.outputs.GitHubOwnerResponse[];
 }
 /**
  * List of RP resources which supports pagination.

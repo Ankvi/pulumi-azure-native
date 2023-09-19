@@ -45,7 +45,7 @@ export interface GetUserResult {
     /**
      * Collection of groups user is part of.
      */
-    readonly groups: types.outputs.apimanagement.GroupContractPropertiesResponse[];
+    readonly groups: types.outputs.GroupContractPropertiesResponse[];
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -53,7 +53,7 @@ export interface GetUserResult {
     /**
      * Collection of user identities.
      */
-    readonly identities?: types.outputs.apimanagement.UserIdentityContractResponse[];
+    readonly identities?: types.outputs.UserIdentityContractResponse[];
     /**
      * Last name.
      */

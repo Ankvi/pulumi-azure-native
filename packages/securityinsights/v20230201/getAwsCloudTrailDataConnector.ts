@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a data connector.
  */
@@ -40,7 +40,7 @@ export interface GetAwsCloudTrailDataConnectorResult {
     /**
      * The available data types for the connector.
      */
-    readonly dataTypes?: types.outputs.securityinsights.v20230201.AwsCloudTrailDataConnectorDataTypesResponse;
+    readonly dataTypes?: types.outputs.AwsCloudTrailDataConnectorDataTypesResponse;
     /**
      * Etag of the azure resource
      */
@@ -61,7 +61,7 @@ export interface GetAwsCloudTrailDataConnectorResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.securityinsights.v20230201.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

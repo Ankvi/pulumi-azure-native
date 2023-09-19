@@ -36,7 +36,7 @@ export interface ListMonitoredResourceResult {
     /**
      * Results of a list operation.
      */
-    readonly value?: types.outputs.elastic.MonitoredResourceResponse[];
+    readonly value?: types.outputs.MonitoredResourceResponse[];
 }
 /**
  * Response of a list operation.

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A SQL Migration Service.
  */
@@ -41,7 +41,7 @@ export class SqlMigrationService extends pulumi.CustomResource {
      * Provisioning state to track the async operation status.
      */
     public /*out*/ readonly provisioningState!: pulumi.Output<string>;
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.datamigration.v20220330preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     public /*out*/ readonly type!: pulumi.Output<string>;
 

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Spring Cloud Gateway resource
  */
@@ -38,15 +38,15 @@ export class Gateway extends pulumi.CustomResource {
     /**
      * Spring Cloud Gateway properties payload
      */
-    public readonly properties!: pulumi.Output<types.outputs.appplatform.v20230901preview.GatewayPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.GatewayPropertiesResponse>;
     /**
      * Sku of the Spring Cloud Gateway resource
      */
-    public readonly sku!: pulumi.Output<types.outputs.appplatform.v20230901preview.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.appplatform.v20230901preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource.
      */
@@ -70,10 +70,10 @@ export class Gateway extends pulumi.CustomResource {
                 throw new Error("Missing required property 'serviceName'");
             }
             resourceInputs["gatewayName"] = args ? args.gatewayName : undefined;
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.appplatform.v20230901preview.gatewayPropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.gatewayPropertiesArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
-            resourceInputs["sku"] = args ? (args.sku ? pulumi.output(args.sku).apply(types.inputs.appplatform.v20230901preview.skuArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["sku"] = args ? (args.sku ? pulumi.output(args.sku).apply(types.inputs.skuArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
@@ -102,7 +102,7 @@ export interface GatewayArgs {
     /**
      * Spring Cloud Gateway properties payload
      */
-    properties?: pulumi.Input<types.inputs.appplatform.v20230901preview.GatewayPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.GatewayPropertiesArgs>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */
@@ -114,5 +114,5 @@ export interface GatewayArgs {
     /**
      * Sku of the Spring Cloud Gateway resource
      */
-    sku?: pulumi.Input<types.inputs.appplatform.v20230901preview.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
 }

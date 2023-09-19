@@ -73,7 +73,7 @@ utilities.lazyLoad(exports, ["SqlServerInstance"], () => require("./sqlServerIns
 
 
 // Export enums:
-export * from "../types/enums/v20230115preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

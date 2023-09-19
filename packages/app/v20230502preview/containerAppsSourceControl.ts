@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Container App SourceControl.
  */
@@ -40,7 +40,7 @@ export class ContainerAppsSourceControl extends pulumi.CustomResource {
      * defaults if user did not provide them. The defaults are populated
      * as they were at the creation time
      */
-    public readonly githubActionConfiguration!: pulumi.Output<types.outputs.app.v20230502preview.GithubActionConfigurationResponse | undefined>;
+    public readonly githubActionConfiguration!: pulumi.Output<types.outputs.GithubActionConfigurationResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -56,7 +56,7 @@ export class ContainerAppsSourceControl extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.app.v20230502preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -122,7 +122,7 @@ export interface ContainerAppsSourceControlArgs {
      * defaults if user did not provide them. The defaults are populated
      * as they were at the creation time
      */
-    githubActionConfiguration?: pulumi.Input<types.inputs.app.v20230502preview.GithubActionConfigurationArgs>;
+    githubActionConfiguration?: pulumi.Input<types.inputs.GithubActionConfigurationArgs>;
     /**
      * The repo url which will be integrated to ContainerApp.
      */

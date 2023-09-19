@@ -62,7 +62,7 @@ export interface GetManagedClusterApplicationTypeVersionResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.servicefabric.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Azure resource tags.
      */

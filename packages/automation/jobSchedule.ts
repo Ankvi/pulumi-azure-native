@@ -51,11 +51,11 @@ export class JobSchedule extends pulumi.CustomResource {
     /**
      * Gets or sets the runbook.
      */
-    public readonly runbook!: pulumi.Output<types.outputs.automation.RunbookAssociationPropertyResponse | undefined>;
+    public readonly runbook!: pulumi.Output<types.outputs.RunbookAssociationPropertyResponse | undefined>;
     /**
      * Gets or sets the schedule.
      */
-    public readonly schedule!: pulumi.Output<types.outputs.automation.ScheduleAssociationPropertyResponse | undefined>;
+    public readonly schedule!: pulumi.Output<types.outputs.ScheduleAssociationPropertyResponse | undefined>;
     /**
      * Resource type
      */
@@ -136,9 +136,9 @@ export interface JobScheduleArgs {
     /**
      * Gets or sets the runbook.
      */
-    runbook: pulumi.Input<types.inputs.automation.RunbookAssociationPropertyArgs>;
+    runbook: pulumi.Input<types.inputs.RunbookAssociationPropertyArgs>;
     /**
      * Gets or sets the schedule.
      */
-    schedule: pulumi.Input<types.inputs.automation.ScheduleAssociationPropertyArgs>;
+    schedule: pulumi.Input<types.inputs.ScheduleAssociationPropertyArgs>;
 }

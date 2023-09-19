@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get lab.
  */
@@ -36,7 +36,7 @@ export interface GetLabResult {
     /**
      * The properties of any lab announcement associated with this lab
      */
-    readonly announcement?: types.outputs.devtestlab.v20180915.LabAnnouncementPropertiesResponse;
+    readonly announcement?: types.outputs.LabAnnouncementPropertiesResponse;
     /**
      * The lab's artifact storage account.
      */
@@ -114,7 +114,7 @@ export interface GetLabResult {
     /**
      * The properties of any lab support message associated with this lab
      */
-    readonly support?: types.outputs.devtestlab.v20180915.LabSupportPropertiesResponse;
+    readonly support?: types.outputs.LabSupportPropertiesResponse;
     /**
      * The tags of the resource.
      */

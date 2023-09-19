@@ -45,7 +45,7 @@ export interface GetSoftwareUpdateConfigurationByNameResult {
     /**
      * Details of provisioning error
      */
-    readonly error?: types.outputs.automation.ErrorResponseResponse;
+    readonly error?: types.outputs.ErrorResponseResponse;
     /**
      * Resource Id.
      */
@@ -69,11 +69,11 @@ export interface GetSoftwareUpdateConfigurationByNameResult {
     /**
      * Schedule information for the Software update configuration
      */
-    readonly scheduleInfo: types.outputs.automation.SUCSchedulePropertiesResponse;
+    readonly scheduleInfo: types.outputs.SUCSchedulePropertiesResponse;
     /**
      * Tasks information for the Software update configuration.
      */
-    readonly tasks?: types.outputs.automation.SoftwareUpdateConfigurationTasksResponse;
+    readonly tasks?: types.outputs.SoftwareUpdateConfigurationTasksResponse;
     /**
      * Resource type
      */
@@ -81,7 +81,7 @@ export interface GetSoftwareUpdateConfigurationByNameResult {
     /**
      * update specific properties for the Software update configuration
      */
-    readonly updateConfiguration: types.outputs.automation.UpdateConfigurationResponse;
+    readonly updateConfiguration: types.outputs.UpdateConfigurationResponse;
 }
 /**
  * Get a single software update configuration by name.

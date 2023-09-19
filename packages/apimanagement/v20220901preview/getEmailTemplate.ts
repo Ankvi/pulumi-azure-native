@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the details of the email template specified by its identifier.
  */
@@ -56,7 +56,7 @@ export interface GetEmailTemplateResult {
     /**
      * Email Template Parameter values.
      */
-    readonly parameters?: types.outputs.apimanagement.v20220901preview.EmailTemplateParametersContractPropertiesResponse[];
+    readonly parameters?: types.outputs.EmailTemplateParametersContractPropertiesResponse[];
     /**
      * Subject of the Template.
      */

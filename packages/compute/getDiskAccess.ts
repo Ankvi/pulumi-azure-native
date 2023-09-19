@@ -32,7 +32,7 @@ export interface GetDiskAccessResult {
     /**
      * The extended location where the disk access will be created. Extended location cannot be changed.
      */
-    readonly extendedLocation?: types.outputs.compute.ExtendedLocationResponse;
+    readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
     /**
      * Resource Id
      */
@@ -48,7 +48,7 @@ export interface GetDiskAccessResult {
     /**
      * A readonly collection of private endpoint connections created on the disk. Currently only one endpoint connection is supported.
      */
-    readonly privateEndpointConnections: types.outputs.compute.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections: types.outputs.PrivateEndpointConnectionResponse[];
     /**
      * The disk access resource provisioning state.
      */

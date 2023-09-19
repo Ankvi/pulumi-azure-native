@@ -43,7 +43,7 @@ export class Network extends pulumi.CustomResource {
     /**
      * Describes properties of a network resource.
      */
-    public readonly properties!: pulumi.Output<types.outputs.servicefabricmesh.NetworkResourcePropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.NetworkResourcePropertiesResponse>;
     /**
      * Resource tags.
      */
@@ -106,7 +106,7 @@ export interface NetworkArgs {
     /**
      * Describes properties of a network resource.
      */
-    properties: pulumi.Input<types.inputs.servicefabricmesh.NetworkResourcePropertiesArgs>;
+    properties: pulumi.Input<types.inputs.NetworkResourcePropertiesArgs>;
     /**
      * Azure resource group name
      */

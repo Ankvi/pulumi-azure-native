@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A database resource.
  */
@@ -54,7 +54,7 @@ export class Database extends pulumi.CustomResource {
     /**
      * The name and tier of the SKU.
      */
-    public /*out*/ readonly currentSku!: pulumi.Output<types.outputs.sql.v20200801preview.SkuResponse>;
+    public /*out*/ readonly currentSku!: pulumi.Output<types.outputs.SkuResponse>;
     /**
      * The ID of the database.
      */
@@ -148,7 +148,7 @@ export class Database extends pulumi.CustomResource {
      * Get-AzSqlServerServiceObjective -Location <location>
      * ````
      */
-    public readonly sku!: pulumi.Output<types.outputs.sql.v20200801preview.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * The status of the database.
      */
@@ -283,7 +283,7 @@ export interface DatabaseArgs {
     /**
      * Collation of the metadata catalog.
      */
-    catalogCollation?: pulumi.Input<string | types.enums.v20200801preview.CatalogCollationType>;
+    catalogCollation?: pulumi.Input<string | types.enums.CatalogCollationType>;
     /**
      * The collation of the database.
      */
@@ -307,7 +307,7 @@ export interface DatabaseArgs {
      * 
      * Copy, Secondary, and RestoreLongTermRetentionBackup are not supported for DataWarehouse edition.
      */
-    createMode?: pulumi.Input<string | types.enums.v20200801preview.CreateMode>;
+    createMode?: pulumi.Input<string | types.enums.CreateMode>;
     /**
      * The name of the database.
      */
@@ -323,7 +323,7 @@ export interface DatabaseArgs {
     /**
      * The license type to apply for this database. `LicenseIncluded` if you need a license, or `BasePrice` if you have a license and are eligible for the Azure Hybrid Benefit.
      */
-    licenseType?: pulumi.Input<string | types.enums.v20200801preview.DatabaseLicenseType>;
+    licenseType?: pulumi.Input<string | types.enums.DatabaseLicenseType>;
     /**
      * Resource location.
      */
@@ -347,7 +347,7 @@ export interface DatabaseArgs {
     /**
      * The state of read-only routing. If enabled, connections that have application intent set to readonly in their connection string may be routed to a readonly secondary replica in the same region.
      */
-    readScale?: pulumi.Input<string | types.enums.v20200801preview.DatabaseReadScale>;
+    readScale?: pulumi.Input<string | types.enums.DatabaseReadScale>;
     /**
      * The resource identifier of the recoverable database associated with create operation of this database.
      */
@@ -371,11 +371,11 @@ export interface DatabaseArgs {
     /**
      * The name of the sample schema to apply when creating this database.
      */
-    sampleName?: pulumi.Input<string | types.enums.v20200801preview.SampleName>;
+    sampleName?: pulumi.Input<string | types.enums.SampleName>;
     /**
      * The secondary type of the database if it is a secondary.  Valid values are Geo and Named.
      */
-    secondaryType?: pulumi.Input<string | types.enums.v20200801preview.SecondaryType>;
+    secondaryType?: pulumi.Input<string | types.enums.SecondaryType>;
     /**
      * The name of the server.
      */
@@ -393,7 +393,7 @@ export interface DatabaseArgs {
      * Get-AzSqlServerServiceObjective -Location <location>
      * ````
      */
-    sku?: pulumi.Input<types.inputs.sql.v20200801preview.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Specifies the time that the database was deleted.
      */
@@ -405,7 +405,7 @@ export interface DatabaseArgs {
     /**
      * The storage account type used to store backups for this database.
      */
-    storageAccountType?: pulumi.Input<string | types.enums.v20200801preview.StorageAccountType>;
+    storageAccountType?: pulumi.Input<string | types.enums.StorageAccountType>;
     /**
      * Resource tags.
      */

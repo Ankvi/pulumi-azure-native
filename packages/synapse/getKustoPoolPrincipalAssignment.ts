@@ -74,7 +74,7 @@ export interface GetKustoPoolPrincipalAssignmentResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.synapse.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The tenant id of the principal
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Obtains the details of a suppression.
  */
@@ -52,7 +52,7 @@ export interface GetSuppressionResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.advisor.v20230101.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The duration for which the suppression is valid.
      */

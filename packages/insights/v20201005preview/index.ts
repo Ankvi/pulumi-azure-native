@@ -13,7 +13,7 @@ utilities.lazyLoad(exports, ["WebTest"], () => require("./webTest"));
 
 
 // Export enums:
-export * from "../types/enums/v20201005preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

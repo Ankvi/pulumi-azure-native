@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a given StorageSyncService.
  */
@@ -55,7 +55,7 @@ export interface GetStorageSyncServiceResult {
     /**
      * List of private endpoint connection associated with the specified storage sync service
      */
-    readonly privateEndpointConnections: types.outputs.storagesync.v20220601.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections: types.outputs.PrivateEndpointConnectionResponse[];
     /**
      * StorageSyncService Provisioning State
      */
@@ -71,7 +71,7 @@ export interface GetStorageSyncServiceResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.storagesync.v20220601.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

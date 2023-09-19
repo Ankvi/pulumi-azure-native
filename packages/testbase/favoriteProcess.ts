@@ -43,7 +43,7 @@ export class FavoriteProcess extends pulumi.CustomResource {
     /**
      * The system metadata relating to this resource
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.testbase.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource type.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents Dynamics365 data connector.
  */
@@ -34,7 +34,7 @@ export class Dynamics365DataConnector extends pulumi.CustomResource {
     /**
      * The available data types for the connector.
      */
-    public readonly dataTypes!: pulumi.Output<types.outputs.securityinsights.v20210301preview.Dynamics365DataConnectorDataTypesResponse>;
+    public readonly dataTypes!: pulumi.Output<types.outputs.Dynamics365DataConnectorDataTypesResponse>;
     /**
      * Etag of the azure resource
      */
@@ -51,7 +51,7 @@ export class Dynamics365DataConnector extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.securityinsights.v20210301preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The tenant id to connect to, and get the data from.
      */
@@ -128,7 +128,7 @@ export interface Dynamics365DataConnectorArgs {
     /**
      * The available data types for the connector.
      */
-    dataTypes: pulumi.Input<types.inputs.securityinsights.v20210301preview.Dynamics365DataConnectorDataTypesArgs>;
+    dataTypes: pulumi.Input<types.inputs.Dynamics365DataConnectorDataTypesArgs>;
     /**
      * The kind of the data connector
      * Expected value is 'Dynamics365'.

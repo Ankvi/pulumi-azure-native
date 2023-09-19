@@ -43,7 +43,7 @@ export class Group extends pulumi.CustomResource {
     /**
      * Properties of the group.
      */
-    public readonly properties!: pulumi.Output<types.outputs.migrate.GroupPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.GroupPropertiesResponse>;
     /**
      * Type of the object = [Microsoft.Migrate/assessmentProjects/groups].
      */
@@ -108,7 +108,7 @@ export interface GroupArgs {
     /**
      * Properties of the group.
      */
-    properties: pulumi.Input<types.inputs.migrate.GroupPropertiesArgs>;
+    properties: pulumi.Input<types.inputs.GroupPropertiesArgs>;
     /**
      * Name of the Azure Resource Group that project is part of.
      */

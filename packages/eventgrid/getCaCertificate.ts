@@ -65,7 +65,7 @@ export interface GetCaCertificateResult {
     /**
      * The system metadata relating to the CaCertificate resource.
      */
-    readonly systemData: types.outputs.eventgrid.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Type of the resource.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a host pool.
  */
@@ -31,7 +31,7 @@ export interface GetHostPoolResult {
     /**
      * The session host configuration for updating agent, monitoring agent, and stack component.
      */
-    readonly agentUpdate?: types.outputs.desktopvirtualization.v20230707preview.AgentUpdatePropertiesResponse;
+    readonly agentUpdate?: types.outputs.AgentUpdatePropertiesResponse;
     /**
      * List of applicationGroup links.
      */
@@ -64,7 +64,7 @@ export interface GetHostPoolResult {
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
     readonly id: string;
-    readonly identity?: types.outputs.desktopvirtualization.v20230707preview.ResourceModelWithAllowedPropertySetResponseIdentity;
+    readonly identity?: types.outputs.ResourceModelWithAllowedPropertySetResponseIdentity;
     /**
      * Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
      */
@@ -97,7 +97,7 @@ export interface GetHostPoolResult {
      * PersonalDesktopAssignment type for HostPool.
      */
     readonly personalDesktopAssignmentType?: string;
-    readonly plan?: types.outputs.desktopvirtualization.v20230707preview.ResourceModelWithAllowedPropertySetResponsePlan;
+    readonly plan?: types.outputs.ResourceModelWithAllowedPropertySetResponsePlan;
     /**
      * The type of preferred application group type, default to Desktop Application Group
      */
@@ -105,7 +105,7 @@ export interface GetHostPoolResult {
     /**
      * List of private endpoint connection associated with the specified resource
      */
-    readonly privateEndpointConnections: types.outputs.desktopvirtualization.v20230707preview.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections: types.outputs.PrivateEndpointConnectionResponse[];
     /**
      * Enabled allows this resource to be accessed from both public and private networks, Disabled allows this resource to only be accessed via private endpoints
      */
@@ -113,12 +113,12 @@ export interface GetHostPoolResult {
     /**
      * The registration info of HostPool.
      */
-    readonly registrationInfo?: types.outputs.desktopvirtualization.v20230707preview.RegistrationInfoResponse;
+    readonly registrationInfo?: types.outputs.RegistrationInfoResponse;
     /**
      * The ring number of HostPool.
      */
     readonly ring?: number;
-    readonly sku?: types.outputs.desktopvirtualization.v20230707preview.ResourceModelWithAllowedPropertySetResponseSku;
+    readonly sku?: types.outputs.ResourceModelWithAllowedPropertySetResponseSku;
     /**
      * ClientId for the registered Relying Party used to issue WVD SSO certificates.
      */
@@ -142,7 +142,7 @@ export interface GetHostPoolResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.desktopvirtualization.v20230707preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the details of the agent pool by managed cluster and resource group.
  */
@@ -60,7 +60,7 @@ export interface GetAgentPoolResult {
     /**
      * KubeletConfig specifies the configuration of kubelet on agent nodes.
      */
-    readonly kubeletConfig?: types.outputs.containerservice.v20210201.KubeletConfigResponse;
+    readonly kubeletConfig?: types.outputs.KubeletConfigResponse;
     /**
      * KubeletDiskType determines the placement of emptyDir volumes, container runtime data root, and Kubelet ephemeral storage. Currently allows one value, OS, resulting in Kubelet using the OS disk for data.
      */
@@ -68,7 +68,7 @@ export interface GetAgentPoolResult {
     /**
      * LinuxOSConfig specifies the OS configuration of linux agent nodes.
      */
-    readonly linuxOSConfig?: types.outputs.containerservice.v20210201.LinuxOSConfigResponse;
+    readonly linuxOSConfig?: types.outputs.LinuxOSConfigResponse;
     /**
      * Maximum number of nodes for auto-scaling
      */
@@ -128,7 +128,7 @@ export interface GetAgentPoolResult {
     /**
      * Describes whether the Agent Pool is Running or Stopped
      */
-    readonly powerState: types.outputs.containerservice.v20210201.PowerStateResponse;
+    readonly powerState: types.outputs.PowerStateResponse;
     /**
      * The current deployment or provisioning state, which only appears in the response.
      */
@@ -160,7 +160,7 @@ export interface GetAgentPoolResult {
     /**
      * Settings for upgrading the agentpool
      */
-    readonly upgradeSettings?: types.outputs.containerservice.v20210201.AgentPoolUpgradeSettingsResponse;
+    readonly upgradeSettings?: types.outputs.AgentPoolUpgradeSettingsResponse;
     /**
      * Size of agent VMs.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The Get ManagedNetworks operation gets a Managed Network Resource, specified by the resource group and Managed Network name
  */
@@ -31,7 +31,7 @@ export interface GetManagedNetworkResult {
     /**
      * The collection of groups and policies concerned with connectivity
      */
-    readonly connectivity: types.outputs.managednetwork.v20190601preview.ConnectivityCollectionResponse;
+    readonly connectivity: types.outputs.ConnectivityCollectionResponse;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -55,7 +55,7 @@ export interface GetManagedNetworkResult {
     /**
      * The collection of management groups, subscriptions, virtual networks, and subnets by the Managed Network. This is a read-only property that is reflective of all ScopeAssignments for this Managed Network
      */
-    readonly scope?: types.outputs.managednetwork.v20190601preview.ScopeResponse;
+    readonly scope?: types.outputs.ScopeResponse;
     /**
      * Resource tags
      */

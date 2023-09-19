@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets marketplacegalleryimages by resource name
  */
@@ -39,7 +39,7 @@ export interface GetMarketplacegalleryimageResult {
     /**
      * The extendedLocation of the resource.
      */
-    readonly extendedLocation?: types.outputs.azurestackhci.v20210901preview.ExtendedLocationResponse;
+    readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
     /**
      * The hypervisor generation of the Virtual Machine [V1, V2]
      */
@@ -51,7 +51,7 @@ export interface GetMarketplacegalleryimageResult {
     /**
      * This is the gallery image definition identifier.
      */
-    readonly identifier?: types.outputs.azurestackhci.v20210901preview.GalleryImageIdentifierResponse;
+    readonly identifier?: types.outputs.GalleryImageIdentifierResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -75,11 +75,11 @@ export interface GetMarketplacegalleryimageResult {
     /**
      * MarketplaceGalleryImageStatus defines the observed state of marketplacegalleryimages
      */
-    readonly status: types.outputs.azurestackhci.v20210901preview.MarketplaceGalleryImageStatusResponse;
+    readonly status: types.outputs.MarketplaceGalleryImageStatusResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.azurestackhci.v20210901preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -91,7 +91,7 @@ export interface GetMarketplacegalleryimageResult {
     /**
      * Specifies information about the gallery image version that you want to create or update.
      */
-    readonly version?: types.outputs.azurestackhci.v20210901preview.GalleryImageVersionResponse;
+    readonly version?: types.outputs.GalleryImageVersionResponse;
 }
 /**
  * Gets marketplacegalleryimages by resource name

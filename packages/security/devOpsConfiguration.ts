@@ -39,11 +39,11 @@ export class DevOpsConfiguration extends pulumi.CustomResource {
     /**
      * DevOps Configuration properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.security.DevOpsConfigurationPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.DevOpsConfigurationPropertiesResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.security.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -92,7 +92,7 @@ export interface DevOpsConfigurationArgs {
     /**
      * DevOps Configuration properties.
      */
-    properties?: pulumi.Input<types.inputs.security.DevOpsConfigurationPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.DevOpsConfigurationPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

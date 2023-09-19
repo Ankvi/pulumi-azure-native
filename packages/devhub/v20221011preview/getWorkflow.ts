@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Resource representation of a workflow
  */
@@ -31,7 +31,7 @@ export interface GetWorkflowResult {
     /**
      * Information on the azure container registry
      */
-    readonly acr?: types.outputs.devhub.v20221011preview.ACRResponse;
+    readonly acr?: types.outputs.ACRResponse;
     /**
      * The Azure Kubernetes Cluster Resource the application will be deployed to.
      */
@@ -52,7 +52,7 @@ export interface GetWorkflowResult {
      * The version of the language image used for building the code in the generated dockerfile.
      */
     readonly builderVersion?: string;
-    readonly deploymentProperties?: types.outputs.devhub.v20221011preview.DeploymentPropertiesResponse;
+    readonly deploymentProperties?: types.outputs.DeploymentPropertiesResponse;
     /**
      * Path to Dockerfile Build Context within the repository.
      */
@@ -89,7 +89,7 @@ export interface GetWorkflowResult {
      * The version of the language image used for execution in the generated dockerfile.
      */
     readonly languageVersion?: string;
-    readonly lastWorkflowRun?: types.outputs.devhub.v20221011preview.WorkflowRunResponse;
+    readonly lastWorkflowRun?: types.outputs.WorkflowRunResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -117,7 +117,7 @@ export interface GetWorkflowResult {
     /**
      * The fields needed for OIDC with GitHub.
      */
-    readonly oidcCredentials?: types.outputs.devhub.v20221011preview.GitHubWorkflowProfileResponseOidcCredentials;
+    readonly oidcCredentials?: types.outputs.GitHubWorkflowProfileResponseOidcCredentials;
     /**
      * The port the application is exposed on.
      */
@@ -145,7 +145,7 @@ export interface GetWorkflowResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.devhub.v20221011preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

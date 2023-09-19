@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Role Assignments
  */
@@ -173,7 +173,7 @@ export interface RoleAssignmentArgs {
     /**
      * The principal type of the assigned principal ID.
      */
-    principalType?: pulumi.Input<string | types.enums.v20200301preview.PrincipalType>;
+    principalType?: pulumi.Input<string | types.enums.PrincipalType>;
     /**
      * The name of the role assignment. It can be any valid GUID.
      */

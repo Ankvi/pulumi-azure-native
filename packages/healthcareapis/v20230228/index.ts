@@ -83,7 +83,7 @@ utilities.lazyLoad(exports, ["WorkspacePrivateEndpointConnection"], () => requir
 
 
 // Export enums:
-export * from "../types/enums/v20230228";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

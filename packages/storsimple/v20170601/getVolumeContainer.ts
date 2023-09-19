@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the properties of the specified volume container name.
  */
@@ -49,7 +49,7 @@ export interface GetVolumeContainerResult {
     /**
      * The key used to encrypt data in the volume container. It is required when property 'EncryptionStatus' is "Enabled".
      */
-    readonly encryptionKey?: types.outputs.storsimple.v20170601.AsymmetricEncryptedSecretResponse;
+    readonly encryptionKey?: types.outputs.AsymmetricEncryptedSecretResponse;
     /**
      * The flag to denote whether encryption is enabled or not.
      */

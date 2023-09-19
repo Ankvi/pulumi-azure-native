@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Configuration Assignment
  */
@@ -34,7 +34,7 @@ export class ConfigurationAssignment extends pulumi.CustomResource {
     /**
      * Properties of the configuration assignment
      */
-    public readonly filter!: pulumi.Output<types.outputs.maintenance.v20230401.ConfigurationAssignmentFilterPropertiesResponse | undefined>;
+    public readonly filter!: pulumi.Output<types.outputs.ConfigurationAssignmentFilterPropertiesResponse | undefined>;
     /**
      * Location of the resource
      */
@@ -54,7 +54,7 @@ export class ConfigurationAssignment extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.maintenance.v20230401.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Type of the resource
      */
@@ -122,7 +122,7 @@ export interface ConfigurationAssignmentArgs {
     /**
      * Properties of the configuration assignment
      */
-    filter?: pulumi.Input<types.inputs.maintenance.v20230401.ConfigurationAssignmentFilterPropertiesArgs>;
+    filter?: pulumi.Input<types.inputs.ConfigurationAssignmentFilterPropertiesArgs>;
     /**
      * Location of the resource
      */

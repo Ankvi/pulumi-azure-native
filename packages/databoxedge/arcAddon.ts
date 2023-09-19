@@ -72,7 +72,7 @@ export class ArcAddon extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of Addon
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.databoxedge.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The hierarchical type of the object.
      */

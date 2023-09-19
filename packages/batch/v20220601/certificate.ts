@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Contains information about a certificate.
  */
@@ -34,7 +34,7 @@ export class Certificate extends pulumi.CustomResource {
     /**
      * This is only returned when the certificate provisioningState is 'Failed'.
      */
-    public /*out*/ readonly deleteCertificateError!: pulumi.Output<types.outputs.batch.v20220601.DeleteCertificateErrorResponse>;
+    public /*out*/ readonly deleteCertificateError!: pulumi.Output<types.outputs.DeleteCertificateErrorResponse>;
     /**
      * The ETag of the resource, used for concurrency statements.
      */
@@ -148,7 +148,7 @@ export interface CertificateArgs {
     /**
      * The format of the certificate - either Pfx or Cer. If omitted, the default is Pfx.
      */
-    format?: pulumi.Input<types.enums.v20220601.CertificateFormat>;
+    format?: pulumi.Input<types.enums.CertificateFormat>;
     /**
      * This must not be specified if the certificate format is Cer.
      */

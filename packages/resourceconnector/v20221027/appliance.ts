@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Appliances definition.
  */
@@ -38,11 +38,11 @@ export class Appliance extends pulumi.CustomResource {
     /**
      * Identity for the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.resourceconnector.v20221027.IdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityResponse | undefined>;
     /**
      * Contains infrastructure information about the Appliance
      */
-    public readonly infrastructureConfig!: pulumi.Output<types.outputs.resourceconnector.v20221027.AppliancePropertiesResponseInfrastructureConfig | undefined>;
+    public readonly infrastructureConfig!: pulumi.Output<types.outputs.AppliancePropertiesResponseInfrastructureConfig | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -66,7 +66,7 @@ export class Appliance extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.resourceconnector.v20221027.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -136,15 +136,15 @@ export interface ApplianceArgs {
     /**
      * Represents a supported Fabric/Infra. (AKSEdge etc...).
      */
-    distro?: pulumi.Input<string | types.enums.v20221027.Distro>;
+    distro?: pulumi.Input<string | types.enums.Distro>;
     /**
      * Identity for the resource.
      */
-    identity?: pulumi.Input<types.inputs.resourceconnector.v20221027.IdentityArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityArgs>;
     /**
      * Contains infrastructure information about the Appliance
      */
-    infrastructureConfig?: pulumi.Input<types.inputs.resourceconnector.v20221027.AppliancePropertiesInfrastructureConfigArgs>;
+    infrastructureConfig?: pulumi.Input<types.inputs.AppliancePropertiesInfrastructureConfigArgs>;
     /**
      * The geo-location where the resource lives
      */

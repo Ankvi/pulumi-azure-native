@@ -39,7 +39,7 @@ export class DedicatedHsm extends pulumi.CustomResource {
     /**
      * Specifies the management network interfaces of the dedicated hsm.
      */
-    public readonly managementNetworkProfile!: pulumi.Output<types.outputs.hardwaresecuritymodules.NetworkProfileResponse | undefined>;
+    public readonly managementNetworkProfile!: pulumi.Output<types.outputs.NetworkProfileResponse | undefined>;
     /**
      * The name of the dedicated HSM.
      */
@@ -47,7 +47,7 @@ export class DedicatedHsm extends pulumi.CustomResource {
     /**
      * Specifies the network interfaces of the dedicated hsm.
      */
-    public readonly networkProfile!: pulumi.Output<types.outputs.hardwaresecuritymodules.NetworkProfileResponse | undefined>;
+    public readonly networkProfile!: pulumi.Output<types.outputs.NetworkProfileResponse | undefined>;
     /**
      * Provisioning state.
      */
@@ -55,7 +55,7 @@ export class DedicatedHsm extends pulumi.CustomResource {
     /**
      * SKU details
      */
-    public readonly sku!: pulumi.Output<types.outputs.hardwaresecuritymodules.SkuResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse>;
     /**
      * This field will be used when RP does not support Availability zones.
      */
@@ -67,7 +67,7 @@ export class DedicatedHsm extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.hardwaresecuritymodules.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags
      */
@@ -143,7 +143,7 @@ export interface DedicatedHsmArgs {
     /**
      * Specifies the management network interfaces of the dedicated hsm.
      */
-    managementNetworkProfile?: pulumi.Input<types.inputs.hardwaresecuritymodules.NetworkProfileArgs>;
+    managementNetworkProfile?: pulumi.Input<types.inputs.NetworkProfileArgs>;
     /**
      * Name of the dedicated Hsm
      */
@@ -151,7 +151,7 @@ export interface DedicatedHsmArgs {
     /**
      * Specifies the network interfaces of the dedicated hsm.
      */
-    networkProfile?: pulumi.Input<types.inputs.hardwaresecuritymodules.NetworkProfileArgs>;
+    networkProfile?: pulumi.Input<types.inputs.NetworkProfileArgs>;
     /**
      * The name of the Resource Group to which the resource belongs.
      */
@@ -159,7 +159,7 @@ export interface DedicatedHsmArgs {
     /**
      * SKU details
      */
-    sku: pulumi.Input<types.inputs.hardwaresecuritymodules.SkuArgs>;
+    sku: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * This field will be used when RP does not support Availability zones.
      */

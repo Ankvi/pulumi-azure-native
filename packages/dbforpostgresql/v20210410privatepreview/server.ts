@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents a server.
  */
@@ -43,7 +43,7 @@ export class Server extends pulumi.CustomResource {
      * Status showing whether the data encryption is enabled with customer-managed keys.
      */
     public /*out*/ readonly byokEnforcement!: pulumi.Output<string>;
-    public readonly delegatedSubnetArguments!: pulumi.Output<types.outputs.dbforpostgresql.v20210410privatepreview.ServerPropertiesResponseDelegatedSubnetArguments | undefined>;
+    public readonly delegatedSubnetArguments!: pulumi.Output<types.outputs.ServerPropertiesResponseDelegatedSubnetArguments | undefined>;
     /**
      * The display name of a server.
      */
@@ -63,7 +63,7 @@ export class Server extends pulumi.CustomResource {
     /**
      * The Azure Active Directory identity of the server.
      */
-    public readonly identity!: pulumi.Output<types.outputs.dbforpostgresql.v20210410privatepreview.IdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -71,7 +71,7 @@ export class Server extends pulumi.CustomResource {
     /**
      * Maintenance window of a server.
      */
-    public readonly maintenanceWindow!: pulumi.Output<types.outputs.dbforpostgresql.v20210410privatepreview.MaintenanceWindowResponse | undefined>;
+    public readonly maintenanceWindow!: pulumi.Output<types.outputs.MaintenanceWindowResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -80,7 +80,7 @@ export class Server extends pulumi.CustomResource {
      * Restore point creation time (ISO8601 format), specifying the time to restore from.
      */
     public readonly pointInTimeUTC!: pulumi.Output<string | undefined>;
-    public readonly privateDnsZoneArguments!: pulumi.Output<types.outputs.dbforpostgresql.v20210410privatepreview.ServerPropertiesResponsePrivateDnsZoneArguments | undefined>;
+    public readonly privateDnsZoneArguments!: pulumi.Output<types.outputs.ServerPropertiesResponsePrivateDnsZoneArguments | undefined>;
     /**
      * public network access is enabled or not
      */
@@ -88,7 +88,7 @@ export class Server extends pulumi.CustomResource {
     /**
      * The SKU (pricing tier) of the server.
      */
-    public readonly sku!: pulumi.Output<types.outputs.dbforpostgresql.v20210410privatepreview.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * The resource group name of source PostgreSQL server name to restore from.
      */
@@ -112,7 +112,7 @@ export class Server extends pulumi.CustomResource {
     /**
      * Storage profile of a server.
      */
-    public readonly storageProfile!: pulumi.Output<types.outputs.dbforpostgresql.v20210410privatepreview.StorageProfileResponse | undefined>;
+    public readonly storageProfile!: pulumi.Output<types.outputs.StorageProfileResponse | undefined>;
     /**
      * Resource tags.
      */
@@ -222,8 +222,8 @@ export interface ServerArgs {
     /**
      * The mode to create a new PostgreSQL server.
      */
-    createMode?: pulumi.Input<string | types.enums.v20210410privatepreview.CreateMode>;
-    delegatedSubnetArguments?: pulumi.Input<types.inputs.dbforpostgresql.v20210410privatepreview.ServerPropertiesDelegatedSubnetArgumentsArgs>;
+    createMode?: pulumi.Input<string | types.enums.CreateMode>;
+    delegatedSubnetArguments?: pulumi.Input<types.inputs.ServerPropertiesDelegatedSubnetArgumentsArgs>;
     /**
      * The display name of a server.
      */
@@ -231,11 +231,11 @@ export interface ServerArgs {
     /**
      * stand by count value can be either enabled or disabled
      */
-    haEnabled?: pulumi.Input<types.enums.v20210410privatepreview.HAEnabledEnum>;
+    haEnabled?: pulumi.Input<types.enums.HAEnabledEnum>;
     /**
      * The Azure Active Directory identity of the server.
      */
-    identity?: pulumi.Input<types.inputs.dbforpostgresql.v20210410privatepreview.IdentityArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -243,12 +243,12 @@ export interface ServerArgs {
     /**
      * Maintenance window of a server.
      */
-    maintenanceWindow?: pulumi.Input<types.inputs.dbforpostgresql.v20210410privatepreview.MaintenanceWindowArgs>;
+    maintenanceWindow?: pulumi.Input<types.inputs.MaintenanceWindowArgs>;
     /**
      * Restore point creation time (ISO8601 format), specifying the time to restore from.
      */
     pointInTimeUTC?: pulumi.Input<string>;
-    privateDnsZoneArguments?: pulumi.Input<types.inputs.dbforpostgresql.v20210410privatepreview.ServerPropertiesPrivateDnsZoneArgumentsArgs>;
+    privateDnsZoneArguments?: pulumi.Input<types.inputs.ServerPropertiesPrivateDnsZoneArgumentsArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -260,7 +260,7 @@ export interface ServerArgs {
     /**
      * The SKU (pricing tier) of the server.
      */
-    sku?: pulumi.Input<types.inputs.dbforpostgresql.v20210410privatepreview.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * The resource group name of source PostgreSQL server name to restore from.
      */
@@ -276,7 +276,7 @@ export interface ServerArgs {
     /**
      * Storage profile of a server.
      */
-    storageProfile?: pulumi.Input<types.inputs.dbforpostgresql.v20210410privatepreview.StorageProfileArgs>;
+    storageProfile?: pulumi.Input<types.inputs.StorageProfileArgs>;
     /**
      * Resource tags.
      */
@@ -284,5 +284,5 @@ export interface ServerArgs {
     /**
      * PostgreSQL Server version.
      */
-    version?: pulumi.Input<string | types.enums.v20210410privatepreview.ServerVersion>;
+    version?: pulumi.Input<string | types.enums.ServerVersion>;
 }

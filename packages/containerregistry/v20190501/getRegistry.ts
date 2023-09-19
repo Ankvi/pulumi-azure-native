@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the properties of the specified container registry.
  */
@@ -55,11 +55,11 @@ export interface GetRegistryResult {
     /**
      * The network rule set for a container registry.
      */
-    readonly networkRuleSet?: types.outputs.containerregistry.v20190501.NetworkRuleSetResponse;
+    readonly networkRuleSet?: types.outputs.NetworkRuleSetResponse;
     /**
      * The policies for a container registry.
      */
-    readonly policies?: types.outputs.containerregistry.v20190501.PoliciesResponse;
+    readonly policies?: types.outputs.PoliciesResponse;
     /**
      * The provisioning state of the container registry at the time the operation was called.
      */
@@ -67,15 +67,15 @@ export interface GetRegistryResult {
     /**
      * The SKU of the container registry.
      */
-    readonly sku: types.outputs.containerregistry.v20190501.SkuResponse;
+    readonly sku: types.outputs.SkuResponse;
     /**
      * The status of the container registry at the time the operation was called.
      */
-    readonly status: types.outputs.containerregistry.v20190501.StatusResponse;
+    readonly status: types.outputs.StatusResponse;
     /**
      * The properties of the storage account for the container registry. Only applicable to Classic SKU.
      */
-    readonly storageAccount?: types.outputs.containerregistry.v20190501.StorageAccountPropertiesResponse;
+    readonly storageAccount?: types.outputs.StorageAccountPropertiesResponse;
     /**
      * The tags of the resource.
      */

@@ -40,7 +40,7 @@ export interface GetApplicationResult {
     /**
      * Describes the diagnostics definition and usage for an application resource.
      */
-    readonly diagnostics?: types.outputs.servicefabricmesh.DiagnosticsDescriptionResponse;
+    readonly diagnostics?: types.outputs.DiagnosticsDescriptionResponse;
     /**
      * Describes the health state of an application resource.
      */
@@ -68,7 +68,7 @@ export interface GetApplicationResult {
     /**
      * Describes the services in the application. This property is used to create or modify services of the application. On get only the name of the service is returned. The service description can be obtained by querying for the service resource.
      */
-    readonly services?: types.outputs.servicefabricmesh.ServiceResourceDescriptionResponse[];
+    readonly services?: types.outputs.ServiceResourceDescriptionResponse[];
     /**
      * Status of the application.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The backup schedule.
  */
@@ -54,7 +54,7 @@ export class BackupSchedule extends pulumi.CustomResource {
     /**
      * The schedule recurrence.
      */
-    public readonly scheduleRecurrence!: pulumi.Output<types.outputs.storsimple.v20170601.ScheduleRecurrenceResponse>;
+    public readonly scheduleRecurrence!: pulumi.Output<types.outputs.ScheduleRecurrenceResponse>;
     /**
      * The schedule status.
      */
@@ -153,7 +153,7 @@ export interface BackupScheduleArgs {
     /**
      * The type of backup which needs to be taken.
      */
-    backupType: pulumi.Input<types.enums.v20170601.BackupType>;
+    backupType: pulumi.Input<types.enums.BackupType>;
     /**
      * The device name
      */
@@ -161,7 +161,7 @@ export interface BackupScheduleArgs {
     /**
      * The Kind of the object. Currently only Series8000 is supported
      */
-    kind?: pulumi.Input<types.enums.v20170601.Kind>;
+    kind?: pulumi.Input<types.enums.Kind>;
     /**
      * The manager name
      */
@@ -177,11 +177,11 @@ export interface BackupScheduleArgs {
     /**
      * The schedule recurrence.
      */
-    scheduleRecurrence: pulumi.Input<types.inputs.storsimple.v20170601.ScheduleRecurrenceArgs>;
+    scheduleRecurrence: pulumi.Input<types.inputs.ScheduleRecurrenceArgs>;
     /**
      * The schedule status.
      */
-    scheduleStatus: pulumi.Input<types.enums.v20170601.ScheduleStatus>;
+    scheduleStatus: pulumi.Input<types.enums.ScheduleStatus>;
     /**
      * The start time of the schedule.
      */

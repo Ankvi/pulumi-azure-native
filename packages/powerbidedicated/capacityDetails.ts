@@ -35,7 +35,7 @@ export class CapacityDetails extends pulumi.CustomResource {
     /**
      * A collection of Dedicated capacity administrators
      */
-    public readonly administration!: pulumi.Output<types.outputs.powerbidedicated.DedicatedCapacityAdministratorsResponse | undefined>;
+    public readonly administration!: pulumi.Output<types.outputs.DedicatedCapacityAdministratorsResponse | undefined>;
     /**
      * Capacity name
      */
@@ -59,7 +59,7 @@ export class CapacityDetails extends pulumi.CustomResource {
     /**
      * The SKU of the PowerBI Dedicated capacity resource.
      */
-    public readonly sku!: pulumi.Output<types.outputs.powerbidedicated.CapacitySkuResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.CapacitySkuResponse>;
     /**
      * The current state of PowerBI Dedicated resource. The state is to indicate more states outside of resource provisioning.
      */
@@ -67,7 +67,7 @@ export class CapacityDetails extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public readonly systemData!: pulumi.Output<types.outputs.powerbidedicated.SystemDataResponse | undefined>;
+    public readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse | undefined>;
     /**
      * Key-value pairs of additional resource provisioning properties.
      */
@@ -140,7 +140,7 @@ export interface CapacityDetailsArgs {
     /**
      * A collection of Dedicated capacity administrators
      */
-    administration?: pulumi.Input<types.inputs.powerbidedicated.DedicatedCapacityAdministratorsArgs>;
+    administration?: pulumi.Input<types.inputs.DedicatedCapacityAdministratorsArgs>;
     /**
      * The name of the Dedicated capacity. It must be a minimum of 3 characters, and a maximum of 63.
      */
@@ -160,11 +160,11 @@ export interface CapacityDetailsArgs {
     /**
      * The SKU of the PowerBI Dedicated capacity resource.
      */
-    sku: pulumi.Input<types.inputs.powerbidedicated.CapacitySkuArgs>;
+    sku: pulumi.Input<types.inputs.CapacitySkuArgs>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    systemData?: pulumi.Input<types.inputs.powerbidedicated.SystemDataArgs>;
+    systemData?: pulumi.Input<types.inputs.SystemDataArgs>;
     /**
      * Key-value pairs of additional resource provisioning properties.
      */

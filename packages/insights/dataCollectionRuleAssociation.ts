@@ -51,7 +51,7 @@ export class DataCollectionRuleAssociation extends pulumi.CustomResource {
     /**
      * Metadata about the resource
      */
-    public /*out*/ readonly metadata!: pulumi.Output<types.outputs.insights.DataCollectionRuleAssociationResponseMetadata>;
+    public /*out*/ readonly metadata!: pulumi.Output<types.outputs.DataCollectionRuleAssociationResponseMetadata>;
     /**
      * The name of the resource.
      */
@@ -63,7 +63,7 @@ export class DataCollectionRuleAssociation extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.insights.DataCollectionRuleAssociationProxyOnlyResourceResponseSystemData>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.DataCollectionRuleAssociationProxyOnlyResourceResponseSystemData>;
     /**
      * The type of the resource.
      */

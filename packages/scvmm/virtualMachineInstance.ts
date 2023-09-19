@@ -35,19 +35,19 @@ export class VirtualMachineInstance extends pulumi.CustomResource {
     /**
      * Availability Sets in vm.
      */
-    public readonly availabilitySets!: pulumi.Output<types.outputs.scvmm.VirtualMachineInstancePropertiesResponseAvailabilitySets[] | undefined>;
+    public readonly availabilitySets!: pulumi.Output<types.outputs.VirtualMachineInstancePropertiesResponseAvailabilitySets[] | undefined>;
     /**
      * Gets or sets the extended location.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.scvmm.ExtendedLocationResponse>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse>;
     /**
      * Hardware properties.
      */
-    public readonly hardwareProfile!: pulumi.Output<types.outputs.scvmm.HardwareProfileResponse | undefined>;
+    public readonly hardwareProfile!: pulumi.Output<types.outputs.HardwareProfileResponse | undefined>;
     /**
      * Gets the infrastructure profile.
      */
-    public readonly infrastructureProfile!: pulumi.Output<types.outputs.scvmm.InfrastructureProfileResponse | undefined>;
+    public readonly infrastructureProfile!: pulumi.Output<types.outputs.InfrastructureProfileResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -55,11 +55,11 @@ export class VirtualMachineInstance extends pulumi.CustomResource {
     /**
      * Network properties.
      */
-    public readonly networkProfile!: pulumi.Output<types.outputs.scvmm.NetworkProfileResponse | undefined>;
+    public readonly networkProfile!: pulumi.Output<types.outputs.NetworkProfileResponse | undefined>;
     /**
      * OS properties.
      */
-    public readonly osProfile!: pulumi.Output<types.outputs.scvmm.OsProfileForVMInstanceResponse | undefined>;
+    public readonly osProfile!: pulumi.Output<types.outputs.OsProfileForVMInstanceResponse | undefined>;
     /**
      * Gets the power state of the virtual machine.
      */
@@ -71,11 +71,11 @@ export class VirtualMachineInstance extends pulumi.CustomResource {
     /**
      * Storage properties.
      */
-    public readonly storageProfile!: pulumi.Output<types.outputs.scvmm.StorageProfileResponse | undefined>;
+    public readonly storageProfile!: pulumi.Output<types.outputs.StorageProfileResponse | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.scvmm.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -139,27 +139,27 @@ export interface VirtualMachineInstanceArgs {
     /**
      * Availability Sets in vm.
      */
-    availabilitySets?: pulumi.Input<pulumi.Input<types.inputs.scvmm.VirtualMachineInstancePropertiesAvailabilitySetsArgs>[]>;
+    availabilitySets?: pulumi.Input<pulumi.Input<types.inputs.VirtualMachineInstancePropertiesAvailabilitySetsArgs>[]>;
     /**
      * Gets or sets the extended location.
      */
-    extendedLocation: pulumi.Input<types.inputs.scvmm.ExtendedLocationArgs>;
+    extendedLocation: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * Hardware properties.
      */
-    hardwareProfile?: pulumi.Input<types.inputs.scvmm.HardwareProfileArgs>;
+    hardwareProfile?: pulumi.Input<types.inputs.HardwareProfileArgs>;
     /**
      * Gets the infrastructure profile.
      */
-    infrastructureProfile?: pulumi.Input<types.inputs.scvmm.InfrastructureProfileArgs>;
+    infrastructureProfile?: pulumi.Input<types.inputs.InfrastructureProfileArgs>;
     /**
      * Network properties.
      */
-    networkProfile?: pulumi.Input<types.inputs.scvmm.NetworkProfileArgs>;
+    networkProfile?: pulumi.Input<types.inputs.NetworkProfileArgs>;
     /**
      * OS properties.
      */
-    osProfile?: pulumi.Input<types.inputs.scvmm.OsProfileForVMInstanceArgs>;
+    osProfile?: pulumi.Input<types.inputs.OsProfileForVMInstanceArgs>;
     /**
      * The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
      */
@@ -167,5 +167,5 @@ export interface VirtualMachineInstanceArgs {
     /**
      * Storage properties.
      */
-    storageProfile?: pulumi.Input<types.inputs.scvmm.StorageProfileArgs>;
+    storageProfile?: pulumi.Input<types.inputs.StorageProfileArgs>;
 }

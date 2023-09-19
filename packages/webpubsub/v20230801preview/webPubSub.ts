@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A class represent a resource.
  */
@@ -58,7 +58,7 @@ export class WebPubSub extends pulumi.CustomResource {
     /**
      * A class represent managed identities used for request and response
      */
-    public readonly identity!: pulumi.Output<types.outputs.webpubsub.v20230801preview.ManagedIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedIdentityResponse | undefined>;
     /**
      * The kind of the service
      */
@@ -66,7 +66,7 @@ export class WebPubSub extends pulumi.CustomResource {
     /**
      * Live trace configuration of a Microsoft.SignalRService resource.
      */
-    public readonly liveTraceConfiguration!: pulumi.Output<types.outputs.webpubsub.v20230801preview.LiveTraceConfigurationResponse | undefined>;
+    public readonly liveTraceConfiguration!: pulumi.Output<types.outputs.LiveTraceConfigurationResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -78,11 +78,11 @@ export class WebPubSub extends pulumi.CustomResource {
     /**
      * Network ACLs for the resource
      */
-    public readonly networkACLs!: pulumi.Output<types.outputs.webpubsub.v20230801preview.WebPubSubNetworkACLsResponse | undefined>;
+    public readonly networkACLs!: pulumi.Output<types.outputs.WebPubSubNetworkACLsResponse | undefined>;
     /**
      * Private endpoint connections to the resource.
      */
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.webpubsub.v20230801preview.PrivateEndpointConnectionResponse[]>;
+    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[]>;
     /**
      * Provisioning state of the resource.
      */
@@ -106,7 +106,7 @@ export class WebPubSub extends pulumi.CustomResource {
     /**
      * Resource log configuration of a Microsoft.SignalRService resource.
      */
-    public readonly resourceLogConfiguration!: pulumi.Output<types.outputs.webpubsub.v20230801preview.ResourceLogConfigurationResponse | undefined>;
+    public readonly resourceLogConfiguration!: pulumi.Output<types.outputs.ResourceLogConfigurationResponse | undefined>;
     /**
      * Stop or start the resource.  Default to "false".
      * When it's true, the data plane of the resource is shutdown.
@@ -120,15 +120,15 @@ export class WebPubSub extends pulumi.CustomResource {
     /**
      * The list of shared private link resources.
      */
-    public /*out*/ readonly sharedPrivateLinkResources!: pulumi.Output<types.outputs.webpubsub.v20230801preview.SharedPrivateLinkResourceResponse[]>;
+    public /*out*/ readonly sharedPrivateLinkResources!: pulumi.Output<types.outputs.SharedPrivateLinkResourceResponse[]>;
     /**
      * The billing information of the resource.
      */
-    public readonly sku!: pulumi.Output<types.outputs.webpubsub.v20230801preview.ResourceSkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.ResourceSkuResponse | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.webpubsub.v20230801preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -136,7 +136,7 @@ export class WebPubSub extends pulumi.CustomResource {
     /**
      * TLS settings for the resource
      */
-    public readonly tls!: pulumi.Output<types.outputs.webpubsub.v20230801preview.WebPubSubTlsSettingsResponse | undefined>;
+    public readonly tls!: pulumi.Output<types.outputs.WebPubSubTlsSettingsResponse | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -164,7 +164,7 @@ export class WebPubSub extends pulumi.CustomResource {
             resourceInputs["disableLocalAuth"] = (args ? args.disableLocalAuth : undefined) ?? false;
             resourceInputs["identity"] = args ? args.identity : undefined;
             resourceInputs["kind"] = args ? args.kind : undefined;
-            resourceInputs["liveTraceConfiguration"] = args ? (args.liveTraceConfiguration ? pulumi.output(args.liveTraceConfiguration).apply(types.inputs.webpubsub.v20230801preview.liveTraceConfigurationArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["liveTraceConfiguration"] = args ? (args.liveTraceConfiguration ? pulumi.output(args.liveTraceConfiguration).apply(types.inputs.liveTraceConfigurationArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["networkACLs"] = args ? args.networkACLs : undefined;
             resourceInputs["publicNetworkAccess"] = (args ? args.publicNetworkAccess : undefined) ?? "Enabled";
@@ -175,7 +175,7 @@ export class WebPubSub extends pulumi.CustomResource {
             resourceInputs["resourceStopped"] = (args ? args.resourceStopped : undefined) ?? "false";
             resourceInputs["sku"] = args ? args.sku : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["tls"] = args ? (args.tls ? pulumi.output(args.tls).apply(types.inputs.webpubsub.v20230801preview.webPubSubTlsSettingsArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["tls"] = args ? (args.tls ? pulumi.output(args.tls).apply(types.inputs.webPubSubTlsSettingsArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["externalIP"] = undefined /*out*/;
             resourceInputs["hostName"] = undefined /*out*/;
             resourceInputs["hostNamePrefix"] = undefined /*out*/;
@@ -242,15 +242,15 @@ export interface WebPubSubArgs {
     /**
      * A class represent managed identities used for request and response
      */
-    identity?: pulumi.Input<types.inputs.webpubsub.v20230801preview.ManagedIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedIdentityArgs>;
     /**
      * The kind of the service
      */
-    kind?: pulumi.Input<string | types.enums.v20230801preview.ServiceKind>;
+    kind?: pulumi.Input<string | types.enums.ServiceKind>;
     /**
      * Live trace configuration of a Microsoft.SignalRService resource.
      */
-    liveTraceConfiguration?: pulumi.Input<types.inputs.webpubsub.v20230801preview.LiveTraceConfigurationArgs>;
+    liveTraceConfiguration?: pulumi.Input<types.inputs.LiveTraceConfigurationArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -258,7 +258,7 @@ export interface WebPubSubArgs {
     /**
      * Network ACLs for the resource
      */
-    networkACLs?: pulumi.Input<types.inputs.webpubsub.v20230801preview.WebPubSubNetworkACLsArgs>;
+    networkACLs?: pulumi.Input<types.inputs.WebPubSubNetworkACLsArgs>;
     /**
      * Enable or disable public network access. Default to "Enabled".
      * When it's Enabled, network ACLs still apply.
@@ -278,7 +278,7 @@ export interface WebPubSubArgs {
     /**
      * Resource log configuration of a Microsoft.SignalRService resource.
      */
-    resourceLogConfiguration?: pulumi.Input<types.inputs.webpubsub.v20230801preview.ResourceLogConfigurationArgs>;
+    resourceLogConfiguration?: pulumi.Input<types.inputs.ResourceLogConfigurationArgs>;
     /**
      * The name of the resource.
      */
@@ -292,7 +292,7 @@ export interface WebPubSubArgs {
     /**
      * The billing information of the resource.
      */
-    sku?: pulumi.Input<types.inputs.webpubsub.v20230801preview.ResourceSkuArgs>;
+    sku?: pulumi.Input<types.inputs.ResourceSkuArgs>;
     /**
      * Resource tags.
      */
@@ -300,5 +300,5 @@ export interface WebPubSubArgs {
     /**
      * TLS settings for the resource
      */
-    tls?: pulumi.Input<types.inputs.webpubsub.v20230801preview.WebPubSubTlsSettingsArgs>;
+    tls?: pulumi.Input<types.inputs.WebPubSubTlsSettingsArgs>;
 }

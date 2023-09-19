@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A private link scoped resource
  */
@@ -46,7 +46,7 @@ export class PrivateLinkScopedResource extends pulumi.CustomResource {
     /**
      * System data
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.insights.v20210701preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

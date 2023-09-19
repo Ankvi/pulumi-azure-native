@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The alert rule information
  */
@@ -34,7 +34,7 @@ export class SmartDetectorAlertRule extends pulumi.CustomResource {
     /**
      * The alert rule actions.
      */
-    public readonly actionGroups!: pulumi.Output<types.outputs.alertsmanagement.v20210401.ActionGroupsInformationResponse>;
+    public readonly actionGroups!: pulumi.Output<types.outputs.ActionGroupsInformationResponse>;
     /**
      * The alert rule description.
      */
@@ -42,7 +42,7 @@ export class SmartDetectorAlertRule extends pulumi.CustomResource {
     /**
      * The alert rule's detector.
      */
-    public readonly detector!: pulumi.Output<types.outputs.alertsmanagement.v20210401.DetectorResponse>;
+    public readonly detector!: pulumi.Output<types.outputs.DetectorResponse>;
     /**
      * The alert rule frequency in ISO8601 format. The time granularity must be in minutes and minimum value is 1 minute, depending on the detector.
      */
@@ -74,7 +74,7 @@ export class SmartDetectorAlertRule extends pulumi.CustomResource {
     /**
      * The alert rule throttling information.
      */
-    public readonly throttling!: pulumi.Output<types.outputs.alertsmanagement.v20210401.ThrottlingInformationResponse | undefined>;
+    public readonly throttling!: pulumi.Output<types.outputs.ThrottlingInformationResponse | undefined>;
     /**
      * The resource type.
      */
@@ -154,7 +154,7 @@ export interface SmartDetectorAlertRuleArgs {
     /**
      * The alert rule actions.
      */
-    actionGroups: pulumi.Input<types.inputs.alertsmanagement.v20210401.ActionGroupsInformationArgs>;
+    actionGroups: pulumi.Input<types.inputs.ActionGroupsInformationArgs>;
     /**
      * The name of the alert rule.
      */
@@ -166,7 +166,7 @@ export interface SmartDetectorAlertRuleArgs {
     /**
      * The alert rule's detector.
      */
-    detector: pulumi.Input<types.inputs.alertsmanagement.v20210401.DetectorArgs>;
+    detector: pulumi.Input<types.inputs.DetectorArgs>;
     /**
      * The alert rule frequency in ISO8601 format. The time granularity must be in minutes and minimum value is 1 minute, depending on the detector.
      */
@@ -186,11 +186,11 @@ export interface SmartDetectorAlertRuleArgs {
     /**
      * The alert rule severity.
      */
-    severity: pulumi.Input<string | types.enums.v20210401.Severity>;
+    severity: pulumi.Input<string | types.enums.Severity>;
     /**
      * The alert rule state.
      */
-    state: pulumi.Input<string | types.enums.v20210401.AlertRuleState>;
+    state: pulumi.Input<string | types.enums.AlertRuleState>;
     /**
      * The resource tags.
      */
@@ -198,5 +198,5 @@ export interface SmartDetectorAlertRuleArgs {
     /**
      * The alert rule throttling information.
      */
-    throttling?: pulumi.Input<types.inputs.alertsmanagement.v20210401.ThrottlingInformationArgs>;
+    throttling?: pulumi.Input<types.inputs.ThrottlingInformationArgs>;
 }

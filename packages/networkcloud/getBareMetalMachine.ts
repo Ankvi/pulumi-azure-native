@@ -37,7 +37,7 @@ export interface GetBareMetalMachineResult {
     /**
      * The credentials of the baseboard management controller on this bare metal machine.
      */
-    readonly bmcCredentials: types.outputs.networkcloud.AdministrativeCredentialsResponse;
+    readonly bmcCredentials: types.outputs.AdministrativeCredentialsResponse;
     /**
      * The MAC address of the BMC device.
      */
@@ -65,15 +65,15 @@ export interface GetBareMetalMachineResult {
     /**
      * The extended location of the cluster associated with the resource.
      */
-    readonly extendedLocation: types.outputs.networkcloud.ExtendedLocationResponse;
+    readonly extendedLocation: types.outputs.ExtendedLocationResponse;
     /**
      * The hardware inventory, including information acquired from the model/sku information and from the ironic inspector.
      */
-    readonly hardwareInventory: types.outputs.networkcloud.HardwareInventoryResponse;
+    readonly hardwareInventory: types.outputs.HardwareInventoryResponse;
     /**
      * The details of the latest hardware validation performed for this bare metal machine.
      */
-    readonly hardwareValidationStatus: types.outputs.networkcloud.HardwareValidationStatusResponse;
+    readonly hardwareValidationStatus: types.outputs.HardwareValidationStatusResponse;
     /**
      * Field Deprecated. These fields will be empty/omitted. The list of the resource IDs for the HybridAksClusters that have nodes hosted on this bare metal machine.
      */
@@ -153,7 +153,7 @@ export interface GetBareMetalMachineResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.networkcloud.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

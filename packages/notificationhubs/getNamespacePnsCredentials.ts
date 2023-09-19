@@ -46,11 +46,11 @@ export interface GetNamespacePnsCredentialsResult {
     /**
      * Collection of Notification Hub or Notification Hub Namespace PNS credentials.
      */
-    readonly properties: types.outputs.notificationhubs.PnsCredentialsResponse;
+    readonly properties: types.outputs.PnsCredentialsResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.notificationhubs.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Deprecated - only for compatibility.
      */

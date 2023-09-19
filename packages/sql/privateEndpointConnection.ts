@@ -43,11 +43,11 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * Private endpoint which the connection belongs to.
      */
-    public readonly privateEndpoint!: pulumi.Output<types.outputs.sql.PrivateEndpointPropertyResponse | undefined>;
+    public readonly privateEndpoint!: pulumi.Output<types.outputs.PrivateEndpointPropertyResponse | undefined>;
     /**
      * Connection state of the private endpoint connection.
      */
-    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.sql.PrivateLinkServiceConnectionStatePropertyResponse | undefined>;
+    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.PrivateLinkServiceConnectionStatePropertyResponse | undefined>;
     /**
      * State of the private endpoint connection.
      */
@@ -105,12 +105,12 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * Private endpoint which the connection belongs to.
      */
-    privateEndpoint?: pulumi.Input<types.inputs.sql.PrivateEndpointPropertyArgs>;
+    privateEndpoint?: pulumi.Input<types.inputs.PrivateEndpointPropertyArgs>;
     privateEndpointConnectionName?: pulumi.Input<string>;
     /**
      * Connection state of the private endpoint connection.
      */
-    privateLinkServiceConnectionState?: pulumi.Input<types.inputs.sql.PrivateLinkServiceConnectionStatePropertyArgs>;
+    privateLinkServiceConnectionState?: pulumi.Input<types.inputs.PrivateLinkServiceConnectionStatePropertyArgs>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */

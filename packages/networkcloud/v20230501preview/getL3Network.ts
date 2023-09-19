@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get properties of the provided layer 3 (L3) network.
  */
@@ -44,7 +44,7 @@ export interface GetL3NetworkResult {
     /**
      * The extended location of the cluster associated with the resource.
      */
-    readonly extendedLocation: types.outputs.networkcloud.v20230501preview.ExtendedLocationResponse;
+    readonly extendedLocation: types.outputs.ExtendedLocationResponse;
     /**
      * Field Deprecated. These fields will be empty/omitted. The list of Hybrid AKS cluster resource IDs that are associated with this L3 network.
      */
@@ -98,7 +98,7 @@ export interface GetL3NetworkResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.networkcloud.v20230501preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

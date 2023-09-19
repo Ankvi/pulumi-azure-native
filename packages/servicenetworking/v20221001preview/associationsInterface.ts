@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Association Subresource of Traffic Controller
  */
@@ -50,11 +50,11 @@ export class AssociationsInterface extends pulumi.CustomResource {
     /**
      * Association Subnet
      */
-    public readonly subnet!: pulumi.Output<types.outputs.servicenetworking.v20221001preview.AssociationSubnetResponse | undefined>;
+    public readonly subnet!: pulumi.Output<types.outputs.AssociationSubnetResponse | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.servicenetworking.v20221001preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -123,7 +123,7 @@ export interface AssociationsInterfaceArgs {
     /**
      * Association Type
      */
-    associationType: pulumi.Input<types.enums.v20221001preview.AssociationType>;
+    associationType: pulumi.Input<types.enums.AssociationType>;
     /**
      * The geo-location where the resource lives
      */
@@ -135,7 +135,7 @@ export interface AssociationsInterfaceArgs {
     /**
      * Association Subnet
      */
-    subnet?: pulumi.Input<types.inputs.servicenetworking.v20221001preview.AssociationSubnetArgs>;
+    subnet?: pulumi.Input<types.inputs.AssociationSubnetArgs>;
     /**
      * Resource tags.
      */

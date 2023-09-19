@@ -39,7 +39,7 @@ export class TransactionNode extends pulumi.CustomResource {
     /**
      * Gets or sets the firewall rules.
      */
-    public readonly firewallRules!: pulumi.Output<types.outputs.blockchain.FirewallRuleResponse[] | undefined>;
+    public readonly firewallRules!: pulumi.Output<types.outputs.FirewallRuleResponse[] | undefined>;
     /**
      * Gets or sets the transaction node location.
      */
@@ -127,7 +127,7 @@ export interface TransactionNodeArgs {
     /**
      * Gets or sets the firewall rules.
      */
-    firewallRules?: pulumi.Input<pulumi.Input<types.inputs.blockchain.FirewallRuleArgs>[]>;
+    firewallRules?: pulumi.Input<pulumi.Input<types.inputs.FirewallRuleArgs>[]>;
     /**
      * Gets or sets the transaction node location.
      */

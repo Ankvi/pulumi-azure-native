@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a privateLinkHub
  */
@@ -43,7 +43,7 @@ export interface GetPrivateLinkHubResult {
     /**
      * List of private endpoint connections
      */
-    readonly privateEndpointConnections: types.outputs.synapse.v20210601preview.PrivateEndpointConnectionForPrivateLinkHubBasicResponse[];
+    readonly privateEndpointConnections: types.outputs.PrivateEndpointConnectionForPrivateLinkHubBasicResponse[];
     /**
      * PrivateLinkHub provisioning state
      */

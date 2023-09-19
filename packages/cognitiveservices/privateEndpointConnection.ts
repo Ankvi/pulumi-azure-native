@@ -47,11 +47,11 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * Resource properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.cognitiveservices.PrivateEndpointConnectionPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.PrivateEndpointConnectionPropertiesResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.cognitiveservices.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -117,7 +117,7 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * Resource properties.
      */
-    properties?: pulumi.Input<types.inputs.cognitiveservices.PrivateEndpointConnectionPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.PrivateEndpointConnectionPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

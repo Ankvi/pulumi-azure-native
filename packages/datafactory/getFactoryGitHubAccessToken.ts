@@ -38,7 +38,7 @@ export interface GetFactoryGitHubAccessTokenArgs {
     /**
      * GitHub bring your own app client secret information.
      */
-    gitHubClientSecret?: types.inputs.datafactory.GitHubClientSecret;
+    gitHubClientSecret?: types.inputs.GitHubClientSecret;
     /**
      * The resource group name.
      */
@@ -82,7 +82,7 @@ export interface GetFactoryGitHubAccessTokenOutputArgs {
     /**
      * GitHub bring your own app client secret information.
      */
-    gitHubClientSecret?: pulumi.Input<types.inputs.datafactory.GitHubClientSecretArgs>;
+    gitHubClientSecret?: pulumi.Input<types.inputs.GitHubClientSecretArgs>;
     /**
      * The resource group name.
      */

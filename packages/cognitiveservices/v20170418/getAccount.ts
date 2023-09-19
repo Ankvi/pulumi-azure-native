@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns a Cognitive Services account specified by the parameters.
  */
@@ -39,7 +39,7 @@ export interface GetAccountResult {
     /**
      * The identity of Cognitive Services account.
      */
-    readonly identity?: types.outputs.cognitiveservices.v20170418.IdentityResponse;
+    readonly identity?: types.outputs.IdentityResponse;
     /**
      * The Kind of the resource.
      */
@@ -55,11 +55,11 @@ export interface GetAccountResult {
     /**
      * Properties of Cognitive Services account.
      */
-    readonly properties: types.outputs.cognitiveservices.v20170418.CognitiveServicesAccountPropertiesResponse;
+    readonly properties: types.outputs.CognitiveServicesAccountPropertiesResponse;
     /**
      * The SKU of Cognitive Services account.
      */
-    readonly sku?: types.outputs.cognitiveservices.v20170418.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters.
      */

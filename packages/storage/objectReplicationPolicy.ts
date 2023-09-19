@@ -51,7 +51,7 @@ export class ObjectReplicationPolicy extends pulumi.CustomResource {
     /**
      * The storage account object replication rules.
      */
-    public readonly rules!: pulumi.Output<types.outputs.storage.ObjectReplicationPolicyRuleResponse[] | undefined>;
+    public readonly rules!: pulumi.Output<types.outputs.ObjectReplicationPolicyRuleResponse[] | undefined>;
     /**
      * Required. Source account name. It should be full resource id if allowCrossTenantReplication set to false.
      */
@@ -133,7 +133,7 @@ export interface ObjectReplicationPolicyArgs {
     /**
      * The storage account object replication rules.
      */
-    rules?: pulumi.Input<pulumi.Input<types.inputs.storage.ObjectReplicationPolicyRuleArgs>[]>;
+    rules?: pulumi.Input<pulumi.Input<types.inputs.ObjectReplicationPolicyRuleArgs>[]>;
     /**
      * Required. Source account name. It should be full resource id if allowCrossTenantReplication set to false.
      */

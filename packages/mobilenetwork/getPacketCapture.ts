@@ -69,7 +69,7 @@ export interface GetPacketCaptureResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.mobilenetwork.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Maximum duration of the capture session in seconds.
      */

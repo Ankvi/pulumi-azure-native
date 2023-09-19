@@ -50,7 +50,7 @@ export interface GetArchifeResult {
     /**
      * The package source of the archive.
      */
-    readonly packageSource?: types.outputs.containerregistry.ArchivePackageSourcePropertiesResponse;
+    readonly packageSource?: types.outputs.ArchivePackageSourcePropertiesResponse;
     /**
      * The provisioning state of the archive at the time the operation was called.
      */
@@ -64,7 +64,7 @@ export interface GetArchifeResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.containerregistry.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource.
      */

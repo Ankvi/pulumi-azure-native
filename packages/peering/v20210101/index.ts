@@ -13,7 +13,7 @@ utilities.lazyLoad(exports, ["PeerAsn"], () => require("./peerAsn"));
 
 
 // Export enums:
-export * from "../types/enums/v20210101";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

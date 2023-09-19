@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Describes a Virtual Machine.
  */
@@ -34,27 +34,27 @@ export class VirtualMachine extends pulumi.CustomResource {
     /**
      * Specifies additional capabilities enabled or disabled on the virtual machine.
      */
-    public readonly additionalCapabilities!: pulumi.Output<types.outputs.compute.v20230701.AdditionalCapabilitiesResponse | undefined>;
+    public readonly additionalCapabilities!: pulumi.Output<types.outputs.AdditionalCapabilitiesResponse | undefined>;
     /**
      * Specifies the gallery applications that should be made available to the VM/VMSS.
      */
-    public readonly applicationProfile!: pulumi.Output<types.outputs.compute.v20230701.ApplicationProfileResponse | undefined>;
+    public readonly applicationProfile!: pulumi.Output<types.outputs.ApplicationProfileResponse | undefined>;
     /**
      * Specifies information about the availability set that the virtual machine should be assigned to. Virtual machines specified in the same availability set are allocated to different nodes to maximize availability. For more information about availability sets, see [Availability sets overview](https://docs.microsoft.com/azure/virtual-machines/availability-set-overview). For more information on Azure planned maintenance, see [Maintenance and updates for Virtual Machines in Azure](https://docs.microsoft.com/azure/virtual-machines/maintenance-and-updates). Currently, a VM can only be added to availability set at creation time. The availability set to which the VM is being added should be under the same resource group as the availability set resource. An existing VM cannot be added to an availability set. This property cannot exist along with a non-null properties.virtualMachineScaleSet reference.
      */
-    public readonly availabilitySet!: pulumi.Output<types.outputs.compute.v20230701.SubResourceResponse | undefined>;
+    public readonly availabilitySet!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * Specifies the billing related details of a Azure Spot virtual machine. Minimum api-version: 2019-03-01.
      */
-    public readonly billingProfile!: pulumi.Output<types.outputs.compute.v20230701.BillingProfileResponse | undefined>;
+    public readonly billingProfile!: pulumi.Output<types.outputs.BillingProfileResponse | undefined>;
     /**
      * Specifies information about the capacity reservation that is used to allocate virtual machine. Minimum api-version: 2021-04-01.
      */
-    public readonly capacityReservation!: pulumi.Output<types.outputs.compute.v20230701.CapacityReservationProfileResponse | undefined>;
+    public readonly capacityReservation!: pulumi.Output<types.outputs.CapacityReservationProfileResponse | undefined>;
     /**
      * Specifies the boot diagnostic settings state. Minimum api-version: 2015-06-15.
      */
-    public readonly diagnosticsProfile!: pulumi.Output<types.outputs.compute.v20230701.DiagnosticsProfileResponse | undefined>;
+    public readonly diagnosticsProfile!: pulumi.Output<types.outputs.DiagnosticsProfileResponse | undefined>;
     /**
      * Specifies the eviction policy for the Azure Spot virtual machine and Azure Spot scale set. For Azure Spot virtual machines, both 'Deallocate' and 'Delete' are supported and the minimum api-version is 2019-03-01. For Azure Spot scale sets, both 'Deallocate' and 'Delete' are supported and the minimum api-version is 2017-10-30-preview.
      */
@@ -62,7 +62,7 @@ export class VirtualMachine extends pulumi.CustomResource {
     /**
      * The extended location of the Virtual Machine.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.compute.v20230701.ExtendedLocationResponse | undefined>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
     /**
      * Specifies the time alloted for all extensions to start. The time duration should be between 15 minutes and 120 minutes (inclusive) and should be specified in ISO 8601 format. The default value is 90 minutes (PT1H30M). Minimum api-version: 2020-06-01.
      */
@@ -70,23 +70,23 @@ export class VirtualMachine extends pulumi.CustomResource {
     /**
      * Specifies the hardware settings for the virtual machine.
      */
-    public readonly hardwareProfile!: pulumi.Output<types.outputs.compute.v20230701.HardwareProfileResponse | undefined>;
+    public readonly hardwareProfile!: pulumi.Output<types.outputs.HardwareProfileResponse | undefined>;
     /**
      * Specifies information about the dedicated host that the virtual machine resides in. Minimum api-version: 2018-10-01.
      */
-    public readonly host!: pulumi.Output<types.outputs.compute.v20230701.SubResourceResponse | undefined>;
+    public readonly host!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * Specifies information about the dedicated host group that the virtual machine resides in. **Note:** User cannot specify both host and hostGroup properties. Minimum api-version: 2020-06-01.
      */
-    public readonly hostGroup!: pulumi.Output<types.outputs.compute.v20230701.SubResourceResponse | undefined>;
+    public readonly hostGroup!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * The identity of the virtual machine, if configured.
      */
-    public readonly identity!: pulumi.Output<types.outputs.compute.v20230701.VirtualMachineIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.VirtualMachineIdentityResponse | undefined>;
     /**
      * The virtual machine instance view.
      */
-    public /*out*/ readonly instanceView!: pulumi.Output<types.outputs.compute.v20230701.VirtualMachineInstanceViewResponse>;
+    public /*out*/ readonly instanceView!: pulumi.Output<types.outputs.VirtualMachineInstanceViewResponse>;
     /**
      * Specifies that the image or disk that is being used was licensed on-premises. <br><br> Possible values for Windows Server operating system are: <br><br> Windows_Client <br><br> Windows_Server <br><br> Possible values for Linux Server operating system are: <br><br> RHEL_BYOS (for RHEL) <br><br> SLES_BYOS (for SUSE) <br><br> For more information, see [Azure Hybrid Use Benefit for Windows Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) <br><br> [Azure Hybrid Use Benefit for Linux Server](https://docs.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux) <br><br> Minimum api-version: 2015-06-15
      */
@@ -102,15 +102,15 @@ export class VirtualMachine extends pulumi.CustomResource {
     /**
      * Specifies the network interfaces of the virtual machine.
      */
-    public readonly networkProfile!: pulumi.Output<types.outputs.compute.v20230701.NetworkProfileResponse | undefined>;
+    public readonly networkProfile!: pulumi.Output<types.outputs.NetworkProfileResponse | undefined>;
     /**
      * Specifies the operating system settings used while creating the virtual machine. Some of the settings cannot be changed once VM is provisioned.
      */
-    public readonly osProfile!: pulumi.Output<types.outputs.compute.v20230701.OSProfileResponse | undefined>;
+    public readonly osProfile!: pulumi.Output<types.outputs.OSProfileResponse | undefined>;
     /**
      * Specifies information about the marketplace image used to create the virtual machine. This element is only used for marketplace images. Before you can use a marketplace image from an API, you must enable the image for programmatic use.  In the Azure portal, find the marketplace image that you want to use and then click **Want to deploy programmatically, Get Started ->**. Enter any required information and then click **Save**.
      */
-    public readonly plan!: pulumi.Output<types.outputs.compute.v20230701.PlanResponse | undefined>;
+    public readonly plan!: pulumi.Output<types.outputs.PlanResponse | undefined>;
     /**
      * Specifies the scale set logical fault domain into which the Virtual Machine will be created. By default, the Virtual Machine will by automatically assigned to a fault domain that best maintains balance across available fault domains. This is applicable only if the 'virtualMachineScaleSet' property of this Virtual Machine is set. The Virtual Machine Scale Set that is referenced, must have 'platformFaultDomainCount' greater than 1. This property cannot be updated once the Virtual Machine is created. Fault domain assignment can be viewed in the Virtual Machine Instance View. Minimum api‐version: 2020‐12‐01.
      */
@@ -126,23 +126,23 @@ export class VirtualMachine extends pulumi.CustomResource {
     /**
      * Specifies information about the proximity placement group that the virtual machine should be assigned to. Minimum api-version: 2018-04-01.
      */
-    public readonly proximityPlacementGroup!: pulumi.Output<types.outputs.compute.v20230701.SubResourceResponse | undefined>;
+    public readonly proximityPlacementGroup!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * The virtual machine child extension resources.
      */
-    public /*out*/ readonly resources!: pulumi.Output<types.outputs.compute.v20230701.VirtualMachineExtensionResponse[]>;
+    public /*out*/ readonly resources!: pulumi.Output<types.outputs.VirtualMachineExtensionResponse[]>;
     /**
      * Specifies Scheduled Event related configurations.
      */
-    public readonly scheduledEventsProfile!: pulumi.Output<types.outputs.compute.v20230701.ScheduledEventsProfileResponse | undefined>;
+    public readonly scheduledEventsProfile!: pulumi.Output<types.outputs.ScheduledEventsProfileResponse | undefined>;
     /**
      * Specifies the Security related profile settings for the virtual machine.
      */
-    public readonly securityProfile!: pulumi.Output<types.outputs.compute.v20230701.SecurityProfileResponse | undefined>;
+    public readonly securityProfile!: pulumi.Output<types.outputs.SecurityProfileResponse | undefined>;
     /**
      * Specifies the storage settings for the virtual machine disks.
      */
-    public readonly storageProfile!: pulumi.Output<types.outputs.compute.v20230701.StorageProfileResponse | undefined>;
+    public readonly storageProfile!: pulumi.Output<types.outputs.StorageProfileResponse | undefined>;
     /**
      * Resource tags
      */
@@ -162,7 +162,7 @@ export class VirtualMachine extends pulumi.CustomResource {
     /**
      * Specifies information about the virtual machine scale set that the virtual machine should be assigned to. Virtual machines specified in the same virtual machine scale set are allocated to different nodes to maximize availability. Currently, a VM can only be added to virtual machine scale set at creation time. An existing VM cannot be added to a virtual machine scale set. This property cannot exist along with a non-null properties.availabilitySet reference. Minimum api‐version: 2019‐03‐01.
      */
-    public readonly virtualMachineScaleSet!: pulumi.Output<types.outputs.compute.v20230701.SubResourceResponse | undefined>;
+    public readonly virtualMachineScaleSet!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * Specifies the VM unique ID which is a 128-bits identifier that is encoded and stored in all Azure IaaS VMs SMBIOS and can be read using platform BIOS commands.
      */
@@ -274,35 +274,35 @@ export interface VirtualMachineArgs {
     /**
      * Specifies additional capabilities enabled or disabled on the virtual machine.
      */
-    additionalCapabilities?: pulumi.Input<types.inputs.compute.v20230701.AdditionalCapabilitiesArgs>;
+    additionalCapabilities?: pulumi.Input<types.inputs.AdditionalCapabilitiesArgs>;
     /**
      * Specifies the gallery applications that should be made available to the VM/VMSS.
      */
-    applicationProfile?: pulumi.Input<types.inputs.compute.v20230701.ApplicationProfileArgs>;
+    applicationProfile?: pulumi.Input<types.inputs.ApplicationProfileArgs>;
     /**
      * Specifies information about the availability set that the virtual machine should be assigned to. Virtual machines specified in the same availability set are allocated to different nodes to maximize availability. For more information about availability sets, see [Availability sets overview](https://docs.microsoft.com/azure/virtual-machines/availability-set-overview). For more information on Azure planned maintenance, see [Maintenance and updates for Virtual Machines in Azure](https://docs.microsoft.com/azure/virtual-machines/maintenance-and-updates). Currently, a VM can only be added to availability set at creation time. The availability set to which the VM is being added should be under the same resource group as the availability set resource. An existing VM cannot be added to an availability set. This property cannot exist along with a non-null properties.virtualMachineScaleSet reference.
      */
-    availabilitySet?: pulumi.Input<types.inputs.compute.v20230701.SubResourceArgs>;
+    availabilitySet?: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * Specifies the billing related details of a Azure Spot virtual machine. Minimum api-version: 2019-03-01.
      */
-    billingProfile?: pulumi.Input<types.inputs.compute.v20230701.BillingProfileArgs>;
+    billingProfile?: pulumi.Input<types.inputs.BillingProfileArgs>;
     /**
      * Specifies information about the capacity reservation that is used to allocate virtual machine. Minimum api-version: 2021-04-01.
      */
-    capacityReservation?: pulumi.Input<types.inputs.compute.v20230701.CapacityReservationProfileArgs>;
+    capacityReservation?: pulumi.Input<types.inputs.CapacityReservationProfileArgs>;
     /**
      * Specifies the boot diagnostic settings state. Minimum api-version: 2015-06-15.
      */
-    diagnosticsProfile?: pulumi.Input<types.inputs.compute.v20230701.DiagnosticsProfileArgs>;
+    diagnosticsProfile?: pulumi.Input<types.inputs.DiagnosticsProfileArgs>;
     /**
      * Specifies the eviction policy for the Azure Spot virtual machine and Azure Spot scale set. For Azure Spot virtual machines, both 'Deallocate' and 'Delete' are supported and the minimum api-version is 2019-03-01. For Azure Spot scale sets, both 'Deallocate' and 'Delete' are supported and the minimum api-version is 2017-10-30-preview.
      */
-    evictionPolicy?: pulumi.Input<string | types.enums.v20230701.VirtualMachineEvictionPolicyTypes>;
+    evictionPolicy?: pulumi.Input<string | types.enums.VirtualMachineEvictionPolicyTypes>;
     /**
      * The extended location of the Virtual Machine.
      */
-    extendedLocation?: pulumi.Input<types.inputs.compute.v20230701.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * Specifies the time alloted for all extensions to start. The time duration should be between 15 minutes and 120 minutes (inclusive) and should be specified in ISO 8601 format. The default value is 90 minutes (PT1H30M). Minimum api-version: 2020-06-01.
      */
@@ -310,19 +310,19 @@ export interface VirtualMachineArgs {
     /**
      * Specifies the hardware settings for the virtual machine.
      */
-    hardwareProfile?: pulumi.Input<types.inputs.compute.v20230701.HardwareProfileArgs>;
+    hardwareProfile?: pulumi.Input<types.inputs.HardwareProfileArgs>;
     /**
      * Specifies information about the dedicated host that the virtual machine resides in. Minimum api-version: 2018-10-01.
      */
-    host?: pulumi.Input<types.inputs.compute.v20230701.SubResourceArgs>;
+    host?: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * Specifies information about the dedicated host group that the virtual machine resides in. **Note:** User cannot specify both host and hostGroup properties. Minimum api-version: 2020-06-01.
      */
-    hostGroup?: pulumi.Input<types.inputs.compute.v20230701.SubResourceArgs>;
+    hostGroup?: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * The identity of the virtual machine, if configured.
      */
-    identity?: pulumi.Input<types.inputs.compute.v20230701.VirtualMachineIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.VirtualMachineIdentityArgs>;
     /**
      * Specifies that the image or disk that is being used was licensed on-premises. <br><br> Possible values for Windows Server operating system are: <br><br> Windows_Client <br><br> Windows_Server <br><br> Possible values for Linux Server operating system are: <br><br> RHEL_BYOS (for RHEL) <br><br> SLES_BYOS (for SUSE) <br><br> For more information, see [Azure Hybrid Use Benefit for Windows Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) <br><br> [Azure Hybrid Use Benefit for Linux Server](https://docs.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux) <br><br> Minimum api-version: 2015-06-15
      */
@@ -334,15 +334,15 @@ export interface VirtualMachineArgs {
     /**
      * Specifies the network interfaces of the virtual machine.
      */
-    networkProfile?: pulumi.Input<types.inputs.compute.v20230701.NetworkProfileArgs>;
+    networkProfile?: pulumi.Input<types.inputs.NetworkProfileArgs>;
     /**
      * Specifies the operating system settings used while creating the virtual machine. Some of the settings cannot be changed once VM is provisioned.
      */
-    osProfile?: pulumi.Input<types.inputs.compute.v20230701.OSProfileArgs>;
+    osProfile?: pulumi.Input<types.inputs.OSProfileArgs>;
     /**
      * Specifies information about the marketplace image used to create the virtual machine. This element is only used for marketplace images. Before you can use a marketplace image from an API, you must enable the image for programmatic use.  In the Azure portal, find the marketplace image that you want to use and then click **Want to deploy programmatically, Get Started ->**. Enter any required information and then click **Save**.
      */
-    plan?: pulumi.Input<types.inputs.compute.v20230701.PlanArgs>;
+    plan?: pulumi.Input<types.inputs.PlanArgs>;
     /**
      * Specifies the scale set logical fault domain into which the Virtual Machine will be created. By default, the Virtual Machine will by automatically assigned to a fault domain that best maintains balance across available fault domains. This is applicable only if the 'virtualMachineScaleSet' property of this Virtual Machine is set. The Virtual Machine Scale Set that is referenced, must have 'platformFaultDomainCount' greater than 1. This property cannot be updated once the Virtual Machine is created. Fault domain assignment can be viewed in the Virtual Machine Instance View. Minimum api‐version: 2020‐12‐01.
      */
@@ -350,11 +350,11 @@ export interface VirtualMachineArgs {
     /**
      * Specifies the priority for the virtual machine. Minimum api-version: 2019-03-01
      */
-    priority?: pulumi.Input<string | types.enums.v20230701.VirtualMachinePriorityTypes>;
+    priority?: pulumi.Input<string | types.enums.VirtualMachinePriorityTypes>;
     /**
      * Specifies information about the proximity placement group that the virtual machine should be assigned to. Minimum api-version: 2018-04-01.
      */
-    proximityPlacementGroup?: pulumi.Input<types.inputs.compute.v20230701.SubResourceArgs>;
+    proximityPlacementGroup?: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * The name of the resource group.
      */
@@ -362,15 +362,15 @@ export interface VirtualMachineArgs {
     /**
      * Specifies Scheduled Event related configurations.
      */
-    scheduledEventsProfile?: pulumi.Input<types.inputs.compute.v20230701.ScheduledEventsProfileArgs>;
+    scheduledEventsProfile?: pulumi.Input<types.inputs.ScheduledEventsProfileArgs>;
     /**
      * Specifies the Security related profile settings for the virtual machine.
      */
-    securityProfile?: pulumi.Input<types.inputs.compute.v20230701.SecurityProfileArgs>;
+    securityProfile?: pulumi.Input<types.inputs.SecurityProfileArgs>;
     /**
      * Specifies the storage settings for the virtual machine disks.
      */
-    storageProfile?: pulumi.Input<types.inputs.compute.v20230701.StorageProfileArgs>;
+    storageProfile?: pulumi.Input<types.inputs.StorageProfileArgs>;
     /**
      * Resource tags
      */
@@ -382,7 +382,7 @@ export interface VirtualMachineArgs {
     /**
      * Specifies information about the virtual machine scale set that the virtual machine should be assigned to. Virtual machines specified in the same virtual machine scale set are allocated to different nodes to maximize availability. Currently, a VM can only be added to virtual machine scale set at creation time. An existing VM cannot be added to a virtual machine scale set. This property cannot exist along with a non-null properties.availabilitySet reference. Minimum api‐version: 2019‐03‐01.
      */
-    virtualMachineScaleSet?: pulumi.Input<types.inputs.compute.v20230701.SubResourceArgs>;
+    virtualMachineScaleSet?: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * The name of the virtual machine.
      */

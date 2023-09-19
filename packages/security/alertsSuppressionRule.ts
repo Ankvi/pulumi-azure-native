@@ -63,7 +63,7 @@ export class AlertsSuppressionRule extends pulumi.CustomResource {
     /**
      * The suppression conditions
      */
-    public readonly suppressionAlertsScope!: pulumi.Output<types.outputs.security.SuppressionAlertsScopeResponse | undefined>;
+    public readonly suppressionAlertsScope!: pulumi.Output<types.outputs.SuppressionAlertsScopeResponse | undefined>;
     /**
      * Resource type
      */
@@ -148,5 +148,5 @@ export interface AlertsSuppressionRuleArgs {
     /**
      * The suppression conditions
      */
-    suppressionAlertsScope?: pulumi.Input<types.inputs.security.SuppressionAlertsScopeArgs>;
+    suppressionAlertsScope?: pulumi.Input<types.inputs.SuppressionAlertsScopeArgs>;
 }

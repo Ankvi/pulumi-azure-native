@@ -37,7 +37,7 @@ export interface GetConnectivityConfigurationResult {
     /**
      * Groups for configuration
      */
-    readonly appliesToGroups: types.outputs.network.ConnectivityGroupItemResponse[];
+    readonly appliesToGroups: types.outputs.ConnectivityGroupItemResponse[];
     /**
      * Connectivity topology type.
      */
@@ -57,7 +57,7 @@ export interface GetConnectivityConfigurationResult {
     /**
      * List of hubItems
      */
-    readonly hubs?: types.outputs.network.HubResponse[];
+    readonly hubs?: types.outputs.HubResponse[];
     /**
      * Resource ID.
      */
@@ -81,7 +81,7 @@ export interface GetConnectivityConfigurationResult {
     /**
      * The system metadata related to this resource.
      */
-    readonly systemData: types.outputs.network.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource type.
      */

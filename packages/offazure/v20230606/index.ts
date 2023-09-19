@@ -148,7 +148,7 @@ utilities.lazyLoad(exports, ["WebAppSitesController"], () => require("./webAppSi
 
 
 // Export enums:
-export * from "../types/enums/v20230606";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

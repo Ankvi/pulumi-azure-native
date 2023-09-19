@@ -36,7 +36,7 @@ export interface ListClusterStreamingJobsResult {
     /**
      * A list of streaming jobs.
      */
-    readonly value: types.outputs.streamanalytics.ClusterJobResponse[];
+    readonly value: types.outputs.ClusterJobResponse[];
 }
 /**
  * Lists all of the streaming jobs in the given cluster.

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents an instance of a DFP instance resource.
  */
@@ -34,7 +34,7 @@ export class InstanceDetails extends pulumi.CustomResource {
     /**
      * A collection of DFP instance administrators
      */
-    public readonly administration!: pulumi.Output<types.outputs.dynamics365fraudprotection.v20210201preview.DFPInstanceAdministratorsResponse | undefined>;
+    public readonly administration!: pulumi.Output<types.outputs.DFPInstanceAdministratorsResponse | undefined>;
     /**
      * Location of the DFP resource.
      */
@@ -50,7 +50,7 @@ export class InstanceDetails extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.dynamics365fraudprotection.v20210201preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Key-value pairs of additional resource provisioning properties.
      */
@@ -106,7 +106,7 @@ export interface InstanceDetailsArgs {
     /**
      * A collection of DFP instance administrators
      */
-    administration?: pulumi.Input<types.inputs.dynamics365fraudprotection.v20210201preview.DFPInstanceAdministratorsArgs>;
+    administration?: pulumi.Input<types.inputs.DFPInstanceAdministratorsArgs>;
     /**
      * The name of the DFP instances. It must be a minimum of 3 characters, and a maximum of 63.
      */

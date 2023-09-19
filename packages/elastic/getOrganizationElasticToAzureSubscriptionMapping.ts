@@ -23,7 +23,7 @@ export interface GetOrganizationElasticToAzureSubscriptionMappingResult {
     /**
      * The properties of Azure Subscription ID to which the Organization of the logged in user belongs and gets billed into.
      */
-    readonly properties: types.outputs.elastic.ElasticOrganizationToAzureSubscriptionMappingResponsePropertiesResponse;
+    readonly properties: types.outputs.ElasticOrganizationToAzureSubscriptionMappingResponsePropertiesResponse;
 }
 /**
  * Get Elastic Organization To Azure Subscription Mapping details for the logged-in user.

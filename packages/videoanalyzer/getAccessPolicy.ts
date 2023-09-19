@@ -37,7 +37,7 @@ export interface GetAccessPolicyResult {
     /**
      * Authentication method to be used when validating client API access.
      */
-    readonly authentication?: types.outputs.videoanalyzer.JwtAuthenticationResponse;
+    readonly authentication?: types.outputs.JwtAuthenticationResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -53,7 +53,7 @@ export interface GetAccessPolicyResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.videoanalyzer.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

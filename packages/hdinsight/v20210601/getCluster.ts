@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the specified cluster.
  */
@@ -39,7 +39,7 @@ export interface GetClusterResult {
     /**
      * The identity of the cluster, if configured.
      */
-    readonly identity?: types.outputs.hdinsight.v20210601.ClusterIdentityResponse;
+    readonly identity?: types.outputs.ClusterIdentityResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -51,11 +51,11 @@ export interface GetClusterResult {
     /**
      * The properties of the cluster.
      */
-    readonly properties: types.outputs.hdinsight.v20210601.ClusterGetPropertiesResponse;
+    readonly properties: types.outputs.ClusterGetPropertiesResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.hdinsight.v20210601.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

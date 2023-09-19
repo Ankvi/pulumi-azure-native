@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Virtual Appliance Site resource.
  */
@@ -42,7 +42,7 @@ export class VirtualHubBgpConnection extends pulumi.CustomResource {
     /**
      * The reference to the HubVirtualNetworkConnection resource.
      */
-    public readonly hubVirtualNetworkConnection!: pulumi.Output<types.outputs.network.v20230401.SubResourceResponse | undefined>;
+    public readonly hubVirtualNetworkConnection!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * Name of the connection.
      */
@@ -121,7 +121,7 @@ export interface VirtualHubBgpConnectionArgs {
     /**
      * The reference to the HubVirtualNetworkConnection resource.
      */
-    hubVirtualNetworkConnection?: pulumi.Input<types.inputs.network.v20230401.SubResourceArgs>;
+    hubVirtualNetworkConnection?: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * Resource ID.
      */

@@ -13,7 +13,7 @@ utilities.lazyLoad(exports, ["getAzureTrafficCollector","getAzureTrafficCollecto
 
 
 // Export enums:
-export * from "../types/enums/v20220801";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

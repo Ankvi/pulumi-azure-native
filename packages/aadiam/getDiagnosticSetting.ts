@@ -39,7 +39,7 @@ export interface GetDiagnosticSettingResult {
     /**
      * The list of logs settings.
      */
-    readonly logs?: types.outputs.aadiam.LogSettingsResponse[];
+    readonly logs?: types.outputs.LogSettingsResponse[];
     /**
      * Azure resource name
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns an Application Insights component.
  */
@@ -111,7 +111,7 @@ export interface GetComponentResult {
     /**
      * List of linked private link scope resources.
      */
-    readonly privateLinkScopedResources: types.outputs.insights.v20200202preview.PrivateLinkScopedResourceResponse[];
+    readonly privateLinkScopedResources: types.outputs.PrivateLinkScopedResourceResponse[];
     /**
      * Current state of this component: whether or not is has been provisioned within the resource group it is defined. Users cannot change this value but are able to read from it. Values will include Succeeded, Deploying, Canceled, and Failed.
      */

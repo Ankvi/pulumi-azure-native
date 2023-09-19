@@ -35,7 +35,7 @@ export class ExportPipeline extends pulumi.CustomResource {
     /**
      * The identity of the export pipeline.
      */
-    public readonly identity!: pulumi.Output<types.outputs.containerregistry.IdentityPropertiesResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityPropertiesResponse | undefined>;
     /**
      * The location of the export pipeline.
      */
@@ -55,11 +55,11 @@ export class ExportPipeline extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.containerregistry.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The target properties of the export pipeline.
      */
-    public readonly target!: pulumi.Output<types.outputs.containerregistry.ExportPipelineTargetPropertiesResponse>;
+    public readonly target!: pulumi.Output<types.outputs.ExportPipelineTargetPropertiesResponse>;
     /**
      * The type of the resource.
      */
@@ -124,7 +124,7 @@ export interface ExportPipelineArgs {
     /**
      * The identity of the export pipeline.
      */
-    identity?: pulumi.Input<types.inputs.containerregistry.IdentityPropertiesArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityPropertiesArgs>;
     /**
      * The location of the export pipeline.
      */
@@ -144,5 +144,5 @@ export interface ExportPipelineArgs {
     /**
      * The target properties of the export pipeline.
      */
-    target: pulumi.Input<types.inputs.containerregistry.ExportPipelineTargetPropertiesArgs>;
+    target: pulumi.Input<types.inputs.ExportPipelineTargetPropertiesArgs>;
 }

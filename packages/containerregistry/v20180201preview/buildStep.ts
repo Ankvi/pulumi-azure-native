@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Build step resource properties
  */
@@ -38,7 +38,7 @@ export class BuildStep extends pulumi.CustomResource {
     /**
      * The properties of a build step.
      */
-    public /*out*/ readonly properties!: pulumi.Output<types.outputs.containerregistry.v20180201preview.DockerBuildStepResponse>;
+    public /*out*/ readonly properties!: pulumi.Output<types.outputs.DockerBuildStepResponse>;
     /**
      * The type of the resource.
      */

@@ -39,12 +39,12 @@ export class DataCollectionRule extends pulumi.CustomResource {
     /**
      * The specification of data flows.
      */
-    public readonly dataFlows!: pulumi.Output<types.outputs.insights.DataFlowResponse[] | undefined>;
+    public readonly dataFlows!: pulumi.Output<types.outputs.DataFlowResponse[] | undefined>;
     /**
      * The specification of data sources. 
      * This property is optional and can be omitted if the rule is meant to be used via direct calls to the provisioned endpoint.
      */
-    public readonly dataSources!: pulumi.Output<types.outputs.insights.DataCollectionRuleResponseDataSources | undefined>;
+    public readonly dataSources!: pulumi.Output<types.outputs.DataCollectionRuleResponseDataSources | undefined>;
     /**
      * Description of the data collection rule.
      */
@@ -52,7 +52,7 @@ export class DataCollectionRule extends pulumi.CustomResource {
     /**
      * The specification of destinations.
      */
-    public readonly destinations!: pulumi.Output<types.outputs.insights.DataCollectionRuleResponseDestinations | undefined>;
+    public readonly destinations!: pulumi.Output<types.outputs.DataCollectionRuleResponseDestinations | undefined>;
     /**
      * Resource entity tag (ETag).
      */
@@ -60,7 +60,7 @@ export class DataCollectionRule extends pulumi.CustomResource {
     /**
      * Managed service identity of the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.insights.DataCollectionRuleResourceResponseIdentity | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.DataCollectionRuleResourceResponseIdentity | undefined>;
     /**
      * The immutable ID of this data collection rule. This property is READ-ONLY.
      */
@@ -76,7 +76,7 @@ export class DataCollectionRule extends pulumi.CustomResource {
     /**
      * Metadata about the resource
      */
-    public /*out*/ readonly metadata!: pulumi.Output<types.outputs.insights.DataCollectionRuleResponseMetadata>;
+    public /*out*/ readonly metadata!: pulumi.Output<types.outputs.DataCollectionRuleResponseMetadata>;
     /**
      * The name of the resource.
      */
@@ -88,11 +88,11 @@ export class DataCollectionRule extends pulumi.CustomResource {
     /**
      * Declaration of custom streams used in this rule.
      */
-    public readonly streamDeclarations!: pulumi.Output<{[key: string]: types.outputs.insights.StreamDeclarationResponse} | undefined>;
+    public readonly streamDeclarations!: pulumi.Output<{[key: string]: types.outputs.StreamDeclarationResponse} | undefined>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.insights.DataCollectionRuleResourceResponseSystemData>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.DataCollectionRuleResourceResponseSystemData>;
     /**
      * Resource tags.
      */
@@ -176,12 +176,12 @@ export interface DataCollectionRuleArgs {
     /**
      * The specification of data flows.
      */
-    dataFlows?: pulumi.Input<pulumi.Input<types.inputs.insights.DataFlowArgs>[]>;
+    dataFlows?: pulumi.Input<pulumi.Input<types.inputs.DataFlowArgs>[]>;
     /**
      * The specification of data sources. 
      * This property is optional and can be omitted if the rule is meant to be used via direct calls to the provisioned endpoint.
      */
-    dataSources?: pulumi.Input<types.inputs.insights.DataCollectionRuleDataSourcesArgs>;
+    dataSources?: pulumi.Input<types.inputs.DataCollectionRuleDataSourcesArgs>;
     /**
      * Description of the data collection rule.
      */
@@ -189,11 +189,11 @@ export interface DataCollectionRuleArgs {
     /**
      * The specification of destinations.
      */
-    destinations?: pulumi.Input<types.inputs.insights.DataCollectionRuleDestinationsArgs>;
+    destinations?: pulumi.Input<types.inputs.DataCollectionRuleDestinationsArgs>;
     /**
      * Managed service identity of the resource.
      */
-    identity?: pulumi.Input<types.inputs.insights.DataCollectionRuleResourceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.DataCollectionRuleResourceIdentityArgs>;
     /**
      * The kind of the resource.
      */
@@ -209,7 +209,7 @@ export interface DataCollectionRuleArgs {
     /**
      * Declaration of custom streams used in this rule.
      */
-    streamDeclarations?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.insights.StreamDeclarationArgs>}>;
+    streamDeclarations?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.StreamDeclarationArgs>}>;
     /**
      * Resource tags.
      */

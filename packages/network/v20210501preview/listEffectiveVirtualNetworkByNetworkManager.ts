@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * List effective virtual networks in a network manager.
  */
@@ -50,7 +50,7 @@ export interface ListEffectiveVirtualNetworkByNetworkManagerResult {
     /**
      * Gets a page of EffectiveVirtualNetwork
      */
-    readonly value?: types.outputs.network.v20210501preview.EffectiveVirtualNetworkResponse[];
+    readonly value?: types.outputs.EffectiveVirtualNetworkResponse[];
 }
 /**
  * List effective virtual networks in a network manager.

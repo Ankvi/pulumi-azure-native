@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * HANA instance info on Azure (ARM properties and HANA properties)
  */
@@ -38,7 +38,7 @@ export class HanaInstance extends pulumi.CustomResource {
     /**
      * Specifies the hardware settings for the HANA instance.
      */
-    public /*out*/ readonly hardwareProfile!: pulumi.Output<types.outputs.hanaonazure.v20171103preview.HardwareProfileResponse | undefined>;
+    public /*out*/ readonly hardwareProfile!: pulumi.Output<types.outputs.HardwareProfileResponse | undefined>;
     /**
      * Hardware revision of a HANA instance
      */
@@ -54,11 +54,11 @@ export class HanaInstance extends pulumi.CustomResource {
     /**
      * Specifies the network settings for the HANA instance.
      */
-    public readonly networkProfile!: pulumi.Output<types.outputs.hanaonazure.v20171103preview.NetworkProfileResponse | undefined>;
+    public readonly networkProfile!: pulumi.Output<types.outputs.NetworkProfileResponse | undefined>;
     /**
      * Specifies the operating system settings for the HANA instance.
      */
-    public readonly osProfile!: pulumi.Output<types.outputs.hanaonazure.v20171103preview.OSProfileResponse | undefined>;
+    public readonly osProfile!: pulumi.Output<types.outputs.OSProfileResponse | undefined>;
     /**
      * ARM ID of another HanaInstance that will share a network with this HanaInstance
      */
@@ -78,7 +78,7 @@ export class HanaInstance extends pulumi.CustomResource {
     /**
      * Specifies the storage settings for the HANA instance disks.
      */
-    public readonly storageProfile!: pulumi.Output<types.outputs.hanaonazure.v20171103preview.StorageProfileResponse | undefined>;
+    public readonly storageProfile!: pulumi.Output<types.outputs.StorageProfileResponse | undefined>;
     /**
      * Resource tags
      */
@@ -154,11 +154,11 @@ export interface HanaInstanceArgs {
     /**
      * Specifies the network settings for the HANA instance.
      */
-    networkProfile?: pulumi.Input<types.inputs.hanaonazure.v20171103preview.NetworkProfileArgs>;
+    networkProfile?: pulumi.Input<types.inputs.NetworkProfileArgs>;
     /**
      * Specifies the operating system settings for the HANA instance.
      */
-    osProfile?: pulumi.Input<types.inputs.hanaonazure.v20171103preview.OSProfileArgs>;
+    osProfile?: pulumi.Input<types.inputs.OSProfileArgs>;
     /**
      * ARM ID of another HanaInstance that will share a network with this HanaInstance
      */
@@ -170,7 +170,7 @@ export interface HanaInstanceArgs {
     /**
      * Specifies the storage settings for the HANA instance disks.
      */
-    storageProfile?: pulumi.Input<types.inputs.hanaonazure.v20171103preview.StorageProfileArgs>;
+    storageProfile?: pulumi.Input<types.inputs.StorageProfileArgs>;
     /**
      * Resource tags
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The Test Base Account resource.
  */
@@ -54,11 +54,11 @@ export class TestBaseAccount extends pulumi.CustomResource {
     /**
      * The SKU of the Test Base Account.
      */
-    public readonly sku!: pulumi.Output<types.outputs.testbase.v20220401preview.TestBaseAccountSKUResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.TestBaseAccountSKUResponse>;
     /**
      * The system metadata relating to this resource
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.testbase.v20220401preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The tags of the resource.
      */
@@ -134,7 +134,7 @@ export interface TestBaseAccountArgs {
     /**
      * The SKU of the Test Base Account.
      */
-    sku: pulumi.Input<types.inputs.testbase.v20220401preview.TestBaseAccountSKUArgs>;
+    sku: pulumi.Input<types.inputs.TestBaseAccountSKUArgs>;
     /**
      * The tags of the resource.
      */

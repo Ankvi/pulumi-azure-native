@@ -39,7 +39,7 @@ export class WatchlistItem extends pulumi.CustomResource {
     /**
      * Describes a user that created the watchlist item
      */
-    public readonly createdBy!: pulumi.Output<types.outputs.securityinsights.WatchlistUserInfoResponse | undefined>;
+    public readonly createdBy!: pulumi.Output<types.outputs.WatchlistUserInfoResponse | undefined>;
     /**
      * key-value pairs for a watchlist item entity mapping
      */
@@ -63,7 +63,7 @@ export class WatchlistItem extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.securityinsights.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The tenantId to which the watchlist item belongs to
      */
@@ -79,7 +79,7 @@ export class WatchlistItem extends pulumi.CustomResource {
     /**
      * Describes a user that updated the watchlist item
      */
-    public readonly updatedBy!: pulumi.Output<types.outputs.securityinsights.WatchlistUserInfoResponse | undefined>;
+    public readonly updatedBy!: pulumi.Output<types.outputs.WatchlistUserInfoResponse | undefined>;
     /**
      * The id (a Guid) of the watchlist item
      */
@@ -163,7 +163,7 @@ export interface WatchlistItemArgs {
     /**
      * Describes a user that created the watchlist item
      */
-    createdBy?: pulumi.Input<types.inputs.securityinsights.WatchlistUserInfoArgs>;
+    createdBy?: pulumi.Input<types.inputs.WatchlistUserInfoArgs>;
     /**
      * key-value pairs for a watchlist item entity mapping
      */
@@ -191,7 +191,7 @@ export interface WatchlistItemArgs {
     /**
      * Describes a user that updated the watchlist item
      */
-    updatedBy?: pulumi.Input<types.inputs.securityinsights.WatchlistUserInfoArgs>;
+    updatedBy?: pulumi.Input<types.inputs.WatchlistUserInfoArgs>;
     /**
      * The watchlist alias
      */

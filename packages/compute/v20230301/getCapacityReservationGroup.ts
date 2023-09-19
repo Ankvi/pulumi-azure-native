@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The operation that retrieves information about a capacity reservation group.
  */
@@ -36,7 +36,7 @@ export interface GetCapacityReservationGroupResult {
     /**
      * A list of all capacity reservation resource ids that belong to capacity reservation group.
      */
-    readonly capacityReservations: types.outputs.compute.v20230301.SubResourceReadOnlyResponse[];
+    readonly capacityReservations: types.outputs.SubResourceReadOnlyResponse[];
     /**
      * Resource Id
      */
@@ -44,7 +44,7 @@ export interface GetCapacityReservationGroupResult {
     /**
      * The capacity reservation group instance view which has the list of instance views for all the capacity reservations that belong to the capacity reservation group.
      */
-    readonly instanceView: types.outputs.compute.v20230301.CapacityReservationGroupInstanceViewResponse;
+    readonly instanceView: types.outputs.CapacityReservationGroupInstanceViewResponse;
     /**
      * Resource location
      */
@@ -64,7 +64,7 @@ export interface GetCapacityReservationGroupResult {
     /**
      * A list of references to all virtual machines associated to the capacity reservation group.
      */
-    readonly virtualMachinesAssociated: types.outputs.compute.v20230301.SubResourceReadOnlyResponse[];
+    readonly virtualMachinesAssociated: types.outputs.SubResourceReadOnlyResponse[];
     /**
      * Availability Zones to use for this capacity reservation group. The zones can be assigned only during creation. If not provided, the group supports only regional resources in the region. If provided, enforces each capacity reservation in the group to be in one of the zones.
      */

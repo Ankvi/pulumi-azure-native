@@ -36,7 +36,7 @@ export interface GetSystemTopicResult {
     /**
      * Identity information for the resource.
      */
-    readonly identity?: types.outputs.eventgrid.IdentityInfoResponse;
+    readonly identity?: types.outputs.IdentityInfoResponse;
     /**
      * Location of the resource.
      */
@@ -60,7 +60,7 @@ export interface GetSystemTopicResult {
     /**
      * The system metadata relating to System Topic resource.
      */
-    readonly systemData: types.outputs.eventgrid.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Tags of the resource.
      */

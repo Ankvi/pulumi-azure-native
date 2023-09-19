@@ -38,7 +38,7 @@ export interface GetModernizeProjectResult {
      * Gets or sets the Id of the resource.
      */
     readonly id: string;
-    readonly identity?: types.outputs.migrate.ResourceIdentityResponse;
+    readonly identity?: types.outputs.ResourceIdentityResponse;
     /**
      * Gets or sets the location of the modernizeProject.
      */
@@ -50,8 +50,8 @@ export interface GetModernizeProjectResult {
     /**
      * ModernizeProject properties.
      */
-    readonly properties: types.outputs.migrate.ModernizeProjectModelPropertiesResponse;
-    readonly systemData: types.outputs.migrate.ModernizeProjectModelResponseSystemData;
+    readonly properties: types.outputs.ModernizeProjectModelPropertiesResponse;
+    readonly systemData: types.outputs.ModernizeProjectModelResponseSystemData;
     /**
      * Gets or sets the resource tags.
      */

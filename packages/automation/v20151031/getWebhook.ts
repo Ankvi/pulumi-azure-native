@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieve the webhook identified by webhook name.
  */
@@ -80,7 +80,7 @@ export interface GetWebhookResult {
     /**
      * Gets or sets the runbook the webhook is associated with.
      */
-    readonly runbook?: types.outputs.automation.v20151031.RunbookAssociationPropertyResponse;
+    readonly runbook?: types.outputs.RunbookAssociationPropertyResponse;
     /**
      * The type of the resource.
      */

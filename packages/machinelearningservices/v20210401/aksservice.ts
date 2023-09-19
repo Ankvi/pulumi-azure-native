@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Machine Learning service object wrapped into ARM resource envelope.
  */
@@ -34,7 +34,7 @@ export class AKSService extends pulumi.CustomResource {
     /**
      * The identity of the resource.
      */
-    public /*out*/ readonly identity!: pulumi.Output<types.outputs.machinelearningservices.v20210401.IdentityResponse | undefined>;
+    public /*out*/ readonly identity!: pulumi.Output<types.outputs.IdentityResponse | undefined>;
     /**
      * Specifies the location of the resource.
      */
@@ -46,15 +46,15 @@ export class AKSService extends pulumi.CustomResource {
     /**
      * Service properties
      */
-    public readonly properties!: pulumi.Output<types.outputs.machinelearningservices.v20210401.ACIServiceResponseResponse | types.outputs.machinelearningservices.v20210401.AKSServiceResponseResponse | types.outputs.machinelearningservices.v20210401.AKSVariantResponseResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ACIServiceResponseResponse | types.outputs.AKSServiceResponseResponse | types.outputs.AKSVariantResponseResponse>;
     /**
      * The sku of the workspace.
      */
-    public /*out*/ readonly sku!: pulumi.Output<types.outputs.machinelearningservices.v20210401.SkuResponse | undefined>;
+    public /*out*/ readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Read only system data
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.machinelearningservices.v20210401.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Contains resource tags defined as key/value pairs.
      */
@@ -151,7 +151,7 @@ export interface AKSServiceArgs {
     /**
      * The auto scaler properties.
      */
-    autoScaler?: pulumi.Input<types.inputs.machinelearningservices.v20210401.AKSServiceCreateRequestAutoScalerArgs>;
+    autoScaler?: pulumi.Input<types.inputs.AKSServiceCreateRequestAutoScalerArgs>;
     /**
      * The name of the compute resource.
      */
@@ -164,11 +164,11 @@ export interface AKSServiceArgs {
     /**
      * The container resource requirements.
      */
-    containerResourceRequirements?: pulumi.Input<types.inputs.machinelearningservices.v20210401.ContainerResourceRequirementsArgs>;
+    containerResourceRequirements?: pulumi.Input<types.inputs.ContainerResourceRequirementsArgs>;
     /**
      * Details of the data collection options specified.
      */
-    dataCollection?: pulumi.Input<types.inputs.machinelearningservices.v20210401.AKSServiceCreateRequestDataCollectionArgs>;
+    dataCollection?: pulumi.Input<types.inputs.AKSServiceCreateRequestDataCollectionArgs>;
     /**
      * The description of the service.
      */
@@ -176,7 +176,7 @@ export interface AKSServiceArgs {
     /**
      * The Environment, models and assets needed for inferencing.
      */
-    environmentImageRequest?: pulumi.Input<types.inputs.machinelearningservices.v20210401.CreateServiceRequestEnvironmentImageRequestArgs>;
+    environmentImageRequest?: pulumi.Input<types.inputs.CreateServiceRequestEnvironmentImageRequestArgs>;
     /**
      * Is this the default variant.
      */
@@ -184,7 +184,7 @@ export interface AKSServiceArgs {
     /**
      * The authentication keys.
      */
-    keys?: pulumi.Input<types.inputs.machinelearningservices.v20210401.CreateServiceRequestKeysArgs>;
+    keys?: pulumi.Input<types.inputs.CreateServiceRequestKeysArgs>;
     /**
      * The service tag dictionary. Tags are mutable.
      */
@@ -192,7 +192,7 @@ export interface AKSServiceArgs {
     /**
      * The liveness probe requirements.
      */
-    livenessProbeRequirements?: pulumi.Input<types.inputs.machinelearningservices.v20210401.AKSServiceCreateRequestLivenessProbeRequirementsArgs>;
+    livenessProbeRequirements?: pulumi.Input<types.inputs.AKSServiceCreateRequestLivenessProbeRequirementsArgs>;
     /**
      * The name of the Azure location/region.
      */
@@ -236,7 +236,7 @@ export interface AKSServiceArgs {
     /**
      * The type of the variant.
      */
-    type?: pulumi.Input<string | types.enums.v20210401.VariantType>;
+    type?: pulumi.Input<string | types.enums.VariantType>;
     /**
      * Name of Azure Machine Learning workspace.
      */

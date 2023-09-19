@@ -56,7 +56,7 @@ export interface GetSqlServerRegistrationResult {
     /**
      * Read only system data
      */
-    readonly systemData: types.outputs.azuredata.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

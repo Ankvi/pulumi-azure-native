@@ -39,11 +39,11 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * The resource of private endpoint.
      */
-    public readonly privateEndpoint!: pulumi.Output<types.outputs.containerregistry.PrivateEndpointResponse | undefined>;
+    public readonly privateEndpoint!: pulumi.Output<types.outputs.PrivateEndpointResponse | undefined>;
     /**
      * A collection of information about the state of the connection between service consumer and provider.
      */
-    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.containerregistry.PrivateLinkServiceConnectionStateResponse | undefined>;
+    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.PrivateLinkServiceConnectionStateResponse | undefined>;
     /**
      * The provisioning state of private endpoint connection resource.
      */
@@ -51,7 +51,7 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.containerregistry.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource.
      */
@@ -105,7 +105,7 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * The resource of private endpoint.
      */
-    privateEndpoint?: pulumi.Input<types.inputs.containerregistry.PrivateEndpointArgs>;
+    privateEndpoint?: pulumi.Input<types.inputs.PrivateEndpointArgs>;
     /**
      * The name of the private endpoint connection.
      */
@@ -113,7 +113,7 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * A collection of information about the state of the connection between service consumer and provider.
      */
-    privateLinkServiceConnectionState?: pulumi.Input<types.inputs.containerregistry.PrivateLinkServiceConnectionStateArgs>;
+    privateLinkServiceConnectionState?: pulumi.Input<types.inputs.PrivateLinkServiceConnectionStateArgs>;
     /**
      * The name of the container registry.
      */

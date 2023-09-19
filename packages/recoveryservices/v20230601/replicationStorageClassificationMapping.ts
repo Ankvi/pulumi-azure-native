@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Storage mapping object.
  */
@@ -42,7 +42,7 @@ export class ReplicationStorageClassificationMapping extends pulumi.CustomResour
     /**
      * Properties of the storage mapping object.
      */
-    public readonly properties!: pulumi.Output<types.outputs.recoveryservices.v20230601.StorageClassificationMappingPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.StorageClassificationMappingPropertiesResponse>;
     /**
      * Resource Type
      */
@@ -104,7 +104,7 @@ export interface ReplicationStorageClassificationMappingArgs {
     /**
      * Storage mapping input properties.
      */
-    properties?: pulumi.Input<types.inputs.recoveryservices.v20230601.StorageMappingInputPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.StorageMappingInputPropertiesArgs>;
     /**
      * The name of the resource group where the recovery services vault is present.
      */

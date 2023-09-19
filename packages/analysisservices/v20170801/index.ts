@@ -18,7 +18,7 @@ utilities.lazyLoad(exports, ["ServerDetails"], () => require("./serverDetails"))
 
 
 // Export enums:
-export * from "../types/enums/v20170801";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

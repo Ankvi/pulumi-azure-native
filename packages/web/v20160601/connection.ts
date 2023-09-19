@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * API connection
  */
@@ -43,7 +43,7 @@ export class Connection extends pulumi.CustomResource {
      * Resource name
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
-    public readonly properties!: pulumi.Output<types.outputs.web.v20160601.ApiConnectionDefinitionResponseProperties>;
+    public readonly properties!: pulumi.Output<types.outputs.ApiConnectionDefinitionResponseProperties>;
     /**
      * Resource tags
      */
@@ -103,7 +103,7 @@ export interface ConnectionArgs {
      * Resource location
      */
     location?: pulumi.Input<string>;
-    properties?: pulumi.Input<types.inputs.web.v20160601.ApiConnectionDefinitionPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ApiConnectionDefinitionPropertiesArgs>;
     /**
      * The resource group
      */

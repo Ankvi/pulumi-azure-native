@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves information about an availability set.
  */
@@ -51,15 +51,15 @@ export interface GetAvailabilitySetResult {
     /**
      * Specifies information about the proximity placement group that the availability set should be assigned to. Minimum api-version: 2018-04-01.
      */
-    readonly proximityPlacementGroup?: types.outputs.compute.v20230701.SubResourceResponse;
+    readonly proximityPlacementGroup?: types.outputs.SubResourceResponse;
     /**
      * Sku of the availability set, only name is required to be set. See AvailabilitySetSkuTypes for possible set of values. Use 'Aligned' for virtual machines with managed disks and 'Classic' for virtual machines with unmanaged disks. Default value is 'Classic'.
      */
-    readonly sku?: types.outputs.compute.v20230701.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * The resource status information.
      */
-    readonly statuses: types.outputs.compute.v20230701.InstanceViewStatusResponse[];
+    readonly statuses: types.outputs.InstanceViewStatusResponse[];
     /**
      * Resource tags
      */
@@ -71,7 +71,7 @@ export interface GetAvailabilitySetResult {
     /**
      * A list of references to all virtual machines in the availability set.
      */
-    readonly virtualMachines?: types.outputs.compute.v20230701.SubResourceResponse[];
+    readonly virtualMachines?: types.outputs.SubResourceResponse[];
 }
 /**
  * Retrieves information about an availability set.

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Method that gets called when list of partitions is requested.
  */
@@ -31,7 +31,7 @@ export interface ListEnergyServicePartitionsResult {
     /**
      * List of data partitions along with their properties in a given OEP resource.
      */
-    readonly dataPartitionInfo?: types.outputs.openenergyplatform.v20220404preview.DataPartitionPropertiesResponse[];
+    readonly dataPartitionInfo?: types.outputs.DataPartitionPropertiesResponse[];
 }
 /**
  * Method that gets called when list of partitions is requested.

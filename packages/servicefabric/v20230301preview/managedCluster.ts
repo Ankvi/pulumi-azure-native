@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The managed cluster resource
  */
@@ -50,15 +50,15 @@ export class ManagedCluster extends pulumi.CustomResource {
     /**
      * The policy used to clean up unused versions.
      */
-    public readonly applicationTypeVersionsCleanupPolicy!: pulumi.Output<types.outputs.servicefabric.v20230301preview.ApplicationTypeVersionsCleanupPolicyResponse | undefined>;
+    public readonly applicationTypeVersionsCleanupPolicy!: pulumi.Output<types.outputs.ApplicationTypeVersionsCleanupPolicyResponse | undefined>;
     /**
      * Auxiliary subnets for the cluster.
      */
-    public readonly auxiliarySubnets!: pulumi.Output<types.outputs.servicefabric.v20230301preview.SubnetResponse[] | undefined>;
+    public readonly auxiliarySubnets!: pulumi.Output<types.outputs.SubnetResponse[] | undefined>;
     /**
      * The AAD authentication settings of the cluster.
      */
-    public readonly azureActiveDirectory!: pulumi.Output<types.outputs.servicefabric.v20230301preview.AzureActiveDirectoryResponse | undefined>;
+    public readonly azureActiveDirectory!: pulumi.Output<types.outputs.AzureActiveDirectoryResponse | undefined>;
     /**
      * The port used for client connections to the cluster.
      */
@@ -66,7 +66,7 @@ export class ManagedCluster extends pulumi.CustomResource {
     /**
      * Client certificates that are allowed to manage the cluster.
      */
-    public readonly clients!: pulumi.Output<types.outputs.servicefabric.v20230301preview.ClientCertificateResponse[] | undefined>;
+    public readonly clients!: pulumi.Output<types.outputs.ClientCertificateResponse[] | undefined>;
     /**
      * List of thumbprints of the cluster certificates.
      */
@@ -114,7 +114,7 @@ export class ManagedCluster extends pulumi.CustomResource {
     /**
      * The list of custom fabric settings to configure the cluster.
      */
-    public readonly fabricSettings!: pulumi.Output<types.outputs.servicefabric.v20230301preview.SettingsSectionDescriptionResponse[] | undefined>;
+    public readonly fabricSettings!: pulumi.Output<types.outputs.SettingsSectionDescriptionResponse[] | undefined>;
     /**
      * The fully qualified domain name associated with the public load balancer of the cluster.
      */
@@ -126,7 +126,7 @@ export class ManagedCluster extends pulumi.CustomResource {
     /**
      * The list of IP tags associated with the default public IP address of the cluster.
      */
-    public readonly ipTags!: pulumi.Output<types.outputs.servicefabric.v20230301preview.IPTagResponse[] | undefined>;
+    public readonly ipTags!: pulumi.Output<types.outputs.IPTagResponse[] | undefined>;
     /**
      * The IPv4 address associated with the public load balancer of the cluster.
      */
@@ -138,7 +138,7 @@ export class ManagedCluster extends pulumi.CustomResource {
     /**
      * Load balancing rules that are applied to the public load balancer of the cluster.
      */
-    public readonly loadBalancingRules!: pulumi.Output<types.outputs.servicefabric.v20230301preview.LoadBalancingRuleResponse[] | undefined>;
+    public readonly loadBalancingRules!: pulumi.Output<types.outputs.LoadBalancingRuleResponse[] | undefined>;
     /**
      * Azure resource location.
      */
@@ -150,7 +150,7 @@ export class ManagedCluster extends pulumi.CustomResource {
     /**
      * Custom Network Security Rules that are applied to the Virtual Network of the cluster.
      */
-    public readonly networkSecurityRules!: pulumi.Output<types.outputs.servicefabric.v20230301preview.NetworkSecurityRuleResponse[] | undefined>;
+    public readonly networkSecurityRules!: pulumi.Output<types.outputs.NetworkSecurityRuleResponse[] | undefined>;
     /**
      * The provisioning state of the managed cluster resource.
      */
@@ -162,11 +162,11 @@ export class ManagedCluster extends pulumi.CustomResource {
     /**
      * Service endpoints for subnets in the cluster.
      */
-    public readonly serviceEndpoints!: pulumi.Output<types.outputs.servicefabric.v20230301preview.ServiceEndpointResponse[] | undefined>;
+    public readonly serviceEndpoints!: pulumi.Output<types.outputs.ServiceEndpointResponse[] | undefined>;
     /**
      * The sku of the managed cluster
      */
-    public readonly sku!: pulumi.Output<types.outputs.servicefabric.v20230301preview.SkuResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse>;
     /**
      * If specified, the node types for the cluster are created in this subnet instead of the default VNet. The **networkSecurityRules** specified for the cluster are also applied to this subnet. This setting cannot be changed once the cluster is created.
      */
@@ -174,7 +174,7 @@ export class ManagedCluster extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.servicefabric.v20230301preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Azure resource tags.
      */
@@ -319,7 +319,7 @@ export interface ManagedClusterArgs {
     /**
      * List of add-on features to enable on the cluster.
      */
-    addonFeatures?: pulumi.Input<pulumi.Input<string | types.enums.v20230301preview.ManagedClusterAddOnFeature>[]>;
+    addonFeatures?: pulumi.Input<pulumi.Input<string | types.enums.ManagedClusterAddOnFeature>[]>;
     /**
      * VM admin user password.
      */
@@ -335,15 +335,15 @@ export interface ManagedClusterArgs {
     /**
      * The policy used to clean up unused versions.
      */
-    applicationTypeVersionsCleanupPolicy?: pulumi.Input<types.inputs.servicefabric.v20230301preview.ApplicationTypeVersionsCleanupPolicyArgs>;
+    applicationTypeVersionsCleanupPolicy?: pulumi.Input<types.inputs.ApplicationTypeVersionsCleanupPolicyArgs>;
     /**
      * Auxiliary subnets for the cluster.
      */
-    auxiliarySubnets?: pulumi.Input<pulumi.Input<types.inputs.servicefabric.v20230301preview.SubnetArgs>[]>;
+    auxiliarySubnets?: pulumi.Input<pulumi.Input<types.inputs.SubnetArgs>[]>;
     /**
      * The AAD authentication settings of the cluster.
      */
-    azureActiveDirectory?: pulumi.Input<types.inputs.servicefabric.v20230301preview.AzureActiveDirectoryArgs>;
+    azureActiveDirectory?: pulumi.Input<types.inputs.AzureActiveDirectoryArgs>;
     /**
      * The port used for client connections to the cluster.
      */
@@ -351,7 +351,7 @@ export interface ManagedClusterArgs {
     /**
      * Client certificates that are allowed to manage the cluster.
      */
-    clients?: pulumi.Input<pulumi.Input<types.inputs.servicefabric.v20230301preview.ClientCertificateArgs>[]>;
+    clients?: pulumi.Input<pulumi.Input<types.inputs.ClientCertificateArgs>[]>;
     /**
      * The Service Fabric runtime version of the cluster. This property is required when **clusterUpgradeMode** is set to 'Manual'. To get list of available Service Fabric versions for new clusters use [ClusterVersion API](./ClusterVersion.md). To get the list of available version for existing clusters use **availableClusterVersions**.
      */
@@ -363,11 +363,11 @@ export interface ManagedClusterArgs {
     /**
      * Indicates when new cluster runtime version upgrades will be applied after they are released. By default is Wave0. Only applies when **clusterUpgradeMode** is set to 'Automatic'.
      */
-    clusterUpgradeCadence?: pulumi.Input<string | types.enums.v20230301preview.ClusterUpgradeCadence>;
+    clusterUpgradeCadence?: pulumi.Input<string | types.enums.ClusterUpgradeCadence>;
     /**
      * The upgrade mode of the cluster when new Service Fabric runtime version is available.
      */
-    clusterUpgradeMode?: pulumi.Input<string | types.enums.v20230301preview.ClusterUpgradeMode>;
+    clusterUpgradeMode?: pulumi.Input<string | types.enums.ClusterUpgradeMode>;
     /**
      * The cluster dns name.
      */
@@ -387,7 +387,7 @@ export interface ManagedClusterArgs {
     /**
      * The list of custom fabric settings to configure the cluster.
      */
-    fabricSettings?: pulumi.Input<pulumi.Input<types.inputs.servicefabric.v20230301preview.SettingsSectionDescriptionArgs>[]>;
+    fabricSettings?: pulumi.Input<pulumi.Input<types.inputs.SettingsSectionDescriptionArgs>[]>;
     /**
      * The port used for HTTP connections to the cluster.
      */
@@ -395,11 +395,11 @@ export interface ManagedClusterArgs {
     /**
      * The list of IP tags associated with the default public IP address of the cluster.
      */
-    ipTags?: pulumi.Input<pulumi.Input<types.inputs.servicefabric.v20230301preview.IPTagArgs>[]>;
+    ipTags?: pulumi.Input<pulumi.Input<types.inputs.IPTagArgs>[]>;
     /**
      * Load balancing rules that are applied to the public load balancer of the cluster.
      */
-    loadBalancingRules?: pulumi.Input<pulumi.Input<types.inputs.servicefabric.v20230301preview.LoadBalancingRuleArgs>[]>;
+    loadBalancingRules?: pulumi.Input<pulumi.Input<types.inputs.LoadBalancingRuleArgs>[]>;
     /**
      * Azure resource location.
      */
@@ -407,7 +407,7 @@ export interface ManagedClusterArgs {
     /**
      * Custom Network Security Rules that are applied to the Virtual Network of the cluster.
      */
-    networkSecurityRules?: pulumi.Input<pulumi.Input<types.inputs.servicefabric.v20230301preview.NetworkSecurityRuleArgs>[]>;
+    networkSecurityRules?: pulumi.Input<pulumi.Input<types.inputs.NetworkSecurityRuleArgs>[]>;
     /**
      * Specify the resource id of a public IP prefix that the load balancer will allocate a public IP address from. Only supports IPv4.
      */
@@ -419,11 +419,11 @@ export interface ManagedClusterArgs {
     /**
      * Service endpoints for subnets in the cluster.
      */
-    serviceEndpoints?: pulumi.Input<pulumi.Input<types.inputs.servicefabric.v20230301preview.ServiceEndpointArgs>[]>;
+    serviceEndpoints?: pulumi.Input<pulumi.Input<types.inputs.ServiceEndpointArgs>[]>;
     /**
      * The sku of the managed cluster
      */
-    sku: pulumi.Input<types.inputs.servicefabric.v20230301preview.SkuArgs>;
+    sku: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * If specified, the node types for the cluster are created in this subnet instead of the default VNet. The **networkSecurityRules** specified for the cluster are also applied to this subnet. This setting cannot be changed once the cluster is created.
      */
@@ -443,5 +443,5 @@ export interface ManagedClusterArgs {
     /**
      * Indicates the update mode for Cross Az clusters.
      */
-    zonalUpdateMode?: pulumi.Input<string | types.enums.v20230301preview.ZonalUpdateMode>;
+    zonalUpdateMode?: pulumi.Input<string | types.enums.ZonalUpdateMode>;
 }

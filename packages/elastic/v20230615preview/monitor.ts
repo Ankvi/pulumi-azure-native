@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Monitor resource.
  */
@@ -34,7 +34,7 @@ export class Monitor extends pulumi.CustomResource {
     /**
      * Identity properties of the monitor resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.elastic.v20230615preview.IdentityPropertiesResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityPropertiesResponse | undefined>;
     /**
      * The location of the monitor resource
      */
@@ -46,15 +46,15 @@ export class Monitor extends pulumi.CustomResource {
     /**
      * Properties of the monitor resource.
      */
-    public readonly properties!: pulumi.Output<types.outputs.elastic.v20230615preview.MonitorPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.MonitorPropertiesResponse>;
     /**
      * SKU of the monitor resource.
      */
-    public readonly sku!: pulumi.Output<types.outputs.elastic.v20230615preview.ResourceSkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.ResourceSkuResponse | undefined>;
     /**
      * The system metadata relating to this resource
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.elastic.v20230615preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The tags of the monitor resource.
      */
@@ -112,7 +112,7 @@ export interface MonitorArgs {
     /**
      * Identity properties of the monitor resource.
      */
-    identity?: pulumi.Input<types.inputs.elastic.v20230615preview.IdentityPropertiesArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityPropertiesArgs>;
     /**
      * The location of the monitor resource
      */
@@ -124,7 +124,7 @@ export interface MonitorArgs {
     /**
      * Properties of the monitor resource.
      */
-    properties?: pulumi.Input<types.inputs.elastic.v20230615preview.MonitorPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.MonitorPropertiesArgs>;
     /**
      * The name of the resource group to which the Elastic resource belongs.
      */
@@ -132,7 +132,7 @@ export interface MonitorArgs {
     /**
      * SKU of the monitor resource.
      */
-    sku?: pulumi.Input<types.inputs.elastic.v20230615preview.ResourceSkuArgs>;
+    sku?: pulumi.Input<types.inputs.ResourceSkuArgs>;
     /**
      * The tags of the monitor resource.
      */

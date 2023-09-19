@@ -51,7 +51,7 @@ export class FirewallPolicyRuleCollectionGroup extends pulumi.CustomResource {
     /**
      * Group of Firewall Policy rule collections.
      */
-    public readonly ruleCollections!: pulumi.Output<(types.outputs.network.FirewallPolicyFilterRuleCollectionResponse | types.outputs.network.FirewallPolicyNatRuleCollectionResponse)[] | undefined>;
+    public readonly ruleCollections!: pulumi.Output<(types.outputs.FirewallPolicyFilterRuleCollectionResponse | types.outputs.FirewallPolicyNatRuleCollectionResponse)[] | undefined>;
     /**
      * Rule Group type.
      */
@@ -130,5 +130,5 @@ export interface FirewallPolicyRuleCollectionGroupArgs {
     /**
      * Group of Firewall Policy rule collections.
      */
-    ruleCollections?: pulumi.Input<pulumi.Input<types.inputs.network.FirewallPolicyFilterRuleCollectionArgs | types.inputs.network.FirewallPolicyNatRuleCollectionArgs>[]>;
+    ruleCollections?: pulumi.Input<pulumi.Input<types.inputs.FirewallPolicyFilterRuleCollectionArgs | types.inputs.FirewallPolicyNatRuleCollectionArgs>[]>;
 }

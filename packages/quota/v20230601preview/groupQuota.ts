@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Properties and filters for ShareQuota. The request parameter is optional, if there are no filters specified.
  */
@@ -38,11 +38,11 @@ export class GroupQuota extends pulumi.CustomResource {
     /**
      * Properties and filters for ShareQuota. The request parameter is optional, if there are no filters specified.
      */
-    public readonly properties!: pulumi.Output<types.outputs.quota.v20230601preview.GroupQuotasEntityBaseResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.GroupQuotasEntityBaseResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.quota.v20230601preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -96,5 +96,5 @@ export interface GroupQuotaArgs {
     /**
      * Properties and filters for ShareQuota. The request parameter is optional, if there are no filters specified.
      */
-    properties?: pulumi.Input<types.inputs.quota.v20230601preview.GroupQuotasEntityBaseArgs>;
+    properties?: pulumi.Input<types.inputs.GroupQuotasEntityBaseArgs>;
 }

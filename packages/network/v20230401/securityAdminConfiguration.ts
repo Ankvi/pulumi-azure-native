@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Defines the security admin configuration
  */
@@ -58,7 +58,7 @@ export class SecurityAdminConfiguration extends pulumi.CustomResource {
     /**
      * The system metadata related to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.network.v20230401.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource type.
      */
@@ -116,7 +116,7 @@ export interface SecurityAdminConfigurationArgs {
     /**
      * Enum list of network intent policy based services.
      */
-    applyOnNetworkIntentPolicyBasedServices?: pulumi.Input<pulumi.Input<string | types.enums.v20230401.NetworkIntentPolicyBasedService>[]>;
+    applyOnNetworkIntentPolicyBasedServices?: pulumi.Input<pulumi.Input<string | types.enums.NetworkIntentPolicyBasedService>[]>;
     /**
      * The name of the network manager Security Configuration.
      */

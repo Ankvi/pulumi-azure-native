@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A user-defined logical grouping of machines.
  */
@@ -55,7 +55,7 @@ export class MachineGroup extends pulumi.CustomResource {
     /**
      * References of the machines in this group. The hints within each reference do not represent the current value of the corresponding fields. They are a snapshot created during the last time the machine group was updated.
      */
-    public readonly machines!: pulumi.Output<types.outputs.operationalinsights.v20151101preview.MachineReferenceWithHintsResponse[] | undefined>;
+    public readonly machines!: pulumi.Output<types.outputs.MachineReferenceWithHintsResponse[] | undefined>;
     /**
      * Resource name.
      */
@@ -131,7 +131,7 @@ export interface MachineGroupArgs {
     /**
      * Type of the machine group
      */
-    groupType?: pulumi.Input<string | types.enums.v20151101preview.MachineGroupType>;
+    groupType?: pulumi.Input<string | types.enums.MachineGroupType>;
     /**
      * Additional resource type qualifier.
      * Expected value is 'machineGroup'.
@@ -144,7 +144,7 @@ export interface MachineGroupArgs {
     /**
      * References of the machines in this group. The hints within each reference do not represent the current value of the corresponding fields. They are a snapshot created during the last time the machine group was updated.
      */
-    machines?: pulumi.Input<pulumi.Input<types.inputs.operationalinsights.v20151101preview.MachineReferenceWithHintsArgs>[]>;
+    machines?: pulumi.Input<pulumi.Input<types.inputs.MachineReferenceWithHintsArgs>[]>;
     /**
      * Resource group name within the specified subscriptionId.
      */

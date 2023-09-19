@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a specific gateway under a subscription and in a specific resource group
  */
@@ -49,7 +49,7 @@ export interface GetConnectionGatewayResult {
      * Resource name
      */
     readonly name: string;
-    readonly properties: types.outputs.web.v20160601.ConnectionGatewayDefinitionResponseProperties;
+    readonly properties: types.outputs.ConnectionGatewayDefinitionResponseProperties;
     /**
      * Resource tags
      */

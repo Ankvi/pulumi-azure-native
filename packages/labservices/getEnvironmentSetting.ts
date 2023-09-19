@@ -67,7 +67,7 @@ export interface GetEnvironmentSettingResult {
     /**
      * The details of the latest operation. ex: status, error
      */
-    readonly latestOperationResult: types.outputs.labservices.LatestOperationResultResponse;
+    readonly latestOperationResult: types.outputs.LatestOperationResultResponse;
     /**
      * The location of the resource.
      */
@@ -87,7 +87,7 @@ export interface GetEnvironmentSettingResult {
     /**
      * The resource specific settings
      */
-    readonly resourceSettings: types.outputs.labservices.ResourceSettingsResponse;
+    readonly resourceSettings: types.outputs.ResourceSettingsResponse;
     /**
      * The tags of the resource.
      */

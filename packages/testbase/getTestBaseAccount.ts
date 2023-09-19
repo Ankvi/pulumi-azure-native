@@ -56,11 +56,11 @@ export interface GetTestBaseAccountResult {
     /**
      * The SKU of the Test Base Account.
      */
-    readonly sku: types.outputs.testbase.TestBaseAccountSKUResponse;
+    readonly sku: types.outputs.TestBaseAccountSKUResponse;
     /**
      * The system metadata relating to this resource
      */
-    readonly systemData: types.outputs.testbase.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The tags of the resource.
      */

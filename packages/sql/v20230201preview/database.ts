@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A database resource.
  */
@@ -62,7 +62,7 @@ export class Database extends pulumi.CustomResource {
     /**
      * The name and tier of the SKU.
      */
-    public /*out*/ readonly currentSku!: pulumi.Output<types.outputs.sql.v20230201preview.SkuResponse>;
+    public /*out*/ readonly currentSku!: pulumi.Output<types.outputs.SkuResponse>;
     /**
      * The ID of the database.
      */
@@ -110,7 +110,7 @@ export class Database extends pulumi.CustomResource {
     /**
      * The Azure Active Directory identity of the database.
      */
-    public readonly identity!: pulumi.Output<types.outputs.sql.v20230201preview.DatabaseIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.DatabaseIdentityResponse | undefined>;
     /**
      * Infra encryption is enabled for this database.
      */
@@ -122,7 +122,7 @@ export class Database extends pulumi.CustomResource {
     /**
      * The resource ids of the user assigned identities to use
      */
-    public readonly keys!: pulumi.Output<{[key: string]: types.outputs.sql.v20230201preview.DatabaseKeyResponse} | undefined>;
+    public readonly keys!: pulumi.Output<{[key: string]: types.outputs.DatabaseKeyResponse} | undefined>;
     /**
      * Kind of database. This is metadata used for the Azure portal experience.
      */
@@ -220,7 +220,7 @@ export class Database extends pulumi.CustomResource {
      * Get-AzSqlServerServiceObjective -Location <location>
      * ````
      */
-    public readonly sku!: pulumi.Output<types.outputs.sql.v20230201preview.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * The status of the database.
      */
@@ -384,11 +384,11 @@ export interface DatabaseArgs {
     /**
      * Specifies the availability zone the database is pinned to.
      */
-    availabilityZone?: pulumi.Input<string | types.enums.v20230201preview.AvailabilityZoneType>;
+    availabilityZone?: pulumi.Input<string | types.enums.AvailabilityZoneType>;
     /**
      * Collation of the metadata catalog.
      */
-    catalogCollation?: pulumi.Input<string | types.enums.v20230201preview.CatalogCollationType>;
+    catalogCollation?: pulumi.Input<string | types.enums.CatalogCollationType>;
     /**
      * The collation of the database.
      */
@@ -412,7 +412,7 @@ export interface DatabaseArgs {
      * 
      * Copy, Secondary, and RestoreLongTermRetentionBackup are not supported for DataWarehouse edition.
      */
-    createMode?: pulumi.Input<string | types.enums.v20230201preview.CreateMode>;
+    createMode?: pulumi.Input<string | types.enums.CreateMode>;
     /**
      * The name of the database.
      */
@@ -440,7 +440,7 @@ export interface DatabaseArgs {
      * 
      * BillForUsage: The database will continue to be online upon exhaustion of free limits and any overage will be billed.
      */
-    freeLimitExhaustionBehavior?: pulumi.Input<string | types.enums.v20230201preview.FreeLimitExhaustionBehavior>;
+    freeLimitExhaustionBehavior?: pulumi.Input<string | types.enums.FreeLimitExhaustionBehavior>;
     /**
      * The number of secondary replicas associated with the database that are used to provide high availability. Not applicable to a Hyperscale database within an elastic pool.
      */
@@ -448,7 +448,7 @@ export interface DatabaseArgs {
     /**
      * The Azure Active Directory identity of the database.
      */
-    identity?: pulumi.Input<types.inputs.sql.v20230201preview.DatabaseIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.DatabaseIdentityArgs>;
     /**
      * Whether or not this database is a ledger database, which means all tables in the database are ledger tables. Note: the value of this property cannot be changed after the database has been created.
      */
@@ -460,7 +460,7 @@ export interface DatabaseArgs {
     /**
      * The license type to apply for this database. `LicenseIncluded` if you need a license, or `BasePrice` if you have a license and are eligible for the Azure Hybrid Benefit.
      */
-    licenseType?: pulumi.Input<string | types.enums.v20230201preview.DatabaseLicenseType>;
+    licenseType?: pulumi.Input<string | types.enums.DatabaseLicenseType>;
     /**
      * Resource location.
      */
@@ -504,11 +504,11 @@ export interface DatabaseArgs {
     /**
      * Type of enclave requested on the database i.e. Default or VBS enclaves.
      */
-    preferredEnclaveType?: pulumi.Input<string | types.enums.v20230201preview.AlwaysEncryptedEnclaveType>;
+    preferredEnclaveType?: pulumi.Input<string | types.enums.AlwaysEncryptedEnclaveType>;
     /**
      * The state of read-only routing. If enabled, connections that have application intent set to readonly in their connection string may be routed to a readonly secondary replica in the same region. Not applicable to a Hyperscale database within an elastic pool.
      */
-    readScale?: pulumi.Input<string | types.enums.v20230201preview.DatabaseReadScale>;
+    readScale?: pulumi.Input<string | types.enums.DatabaseReadScale>;
     /**
      * The resource identifier of the recoverable database associated with create operation of this database.
      */
@@ -520,7 +520,7 @@ export interface DatabaseArgs {
     /**
      * The storage account type to be used to store backups for this database.
      */
-    requestedBackupStorageRedundancy?: pulumi.Input<string | types.enums.v20230201preview.BackupStorageRedundancy>;
+    requestedBackupStorageRedundancy?: pulumi.Input<string | types.enums.BackupStorageRedundancy>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */
@@ -536,11 +536,11 @@ export interface DatabaseArgs {
     /**
      * The name of the sample schema to apply when creating this database.
      */
-    sampleName?: pulumi.Input<string | types.enums.v20230201preview.SampleName>;
+    sampleName?: pulumi.Input<string | types.enums.SampleName>;
     /**
      * The secondary type of the database if it is a secondary.  Valid values are Geo, Named and Standby.
      */
-    secondaryType?: pulumi.Input<string | types.enums.v20230201preview.SecondaryType>;
+    secondaryType?: pulumi.Input<string | types.enums.SecondaryType>;
     /**
      * The name of the server.
      */
@@ -558,7 +558,7 @@ export interface DatabaseArgs {
      * Get-AzSqlServerServiceObjective -Location <location>
      * ````
      */
-    sku?: pulumi.Input<types.inputs.sql.v20230201preview.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Specifies the time that the database was deleted.
      */

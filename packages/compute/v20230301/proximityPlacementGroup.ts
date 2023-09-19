@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Specifies information about the proximity placement group.
  */
@@ -34,15 +34,15 @@ export class ProximityPlacementGroup extends pulumi.CustomResource {
     /**
      * A list of references to all availability sets in the proximity placement group.
      */
-    public /*out*/ readonly availabilitySets!: pulumi.Output<types.outputs.compute.v20230301.SubResourceWithColocationStatusResponse[]>;
+    public /*out*/ readonly availabilitySets!: pulumi.Output<types.outputs.SubResourceWithColocationStatusResponse[]>;
     /**
      * Describes colocation status of the Proximity Placement Group.
      */
-    public readonly colocationStatus!: pulumi.Output<types.outputs.compute.v20230301.InstanceViewStatusResponse | undefined>;
+    public readonly colocationStatus!: pulumi.Output<types.outputs.InstanceViewStatusResponse | undefined>;
     /**
      * Specifies the user intent of the proximity placement group.
      */
-    public readonly intent!: pulumi.Output<types.outputs.compute.v20230301.ProximityPlacementGroupPropertiesResponseIntent | undefined>;
+    public readonly intent!: pulumi.Output<types.outputs.ProximityPlacementGroupPropertiesResponseIntent | undefined>;
     /**
      * Resource location
      */
@@ -66,11 +66,11 @@ export class ProximityPlacementGroup extends pulumi.CustomResource {
     /**
      * A list of references to all virtual machine scale sets in the proximity placement group.
      */
-    public /*out*/ readonly virtualMachineScaleSets!: pulumi.Output<types.outputs.compute.v20230301.SubResourceWithColocationStatusResponse[]>;
+    public /*out*/ readonly virtualMachineScaleSets!: pulumi.Output<types.outputs.SubResourceWithColocationStatusResponse[]>;
     /**
      * A list of references to all virtual machines in the proximity placement group.
      */
-    public /*out*/ readonly virtualMachines!: pulumi.Output<types.outputs.compute.v20230301.SubResourceWithColocationStatusResponse[]>;
+    public /*out*/ readonly virtualMachines!: pulumi.Output<types.outputs.SubResourceWithColocationStatusResponse[]>;
     /**
      * Specifies the Availability Zone where virtual machine, virtual machine scale set or availability set associated with the  proximity placement group can be created.
      */
@@ -130,11 +130,11 @@ export interface ProximityPlacementGroupArgs {
     /**
      * Describes colocation status of the Proximity Placement Group.
      */
-    colocationStatus?: pulumi.Input<types.inputs.compute.v20230301.InstanceViewStatusArgs>;
+    colocationStatus?: pulumi.Input<types.inputs.InstanceViewStatusArgs>;
     /**
      * Specifies the user intent of the proximity placement group.
      */
-    intent?: pulumi.Input<types.inputs.compute.v20230301.ProximityPlacementGroupPropertiesIntentArgs>;
+    intent?: pulumi.Input<types.inputs.ProximityPlacementGroupPropertiesIntentArgs>;
     /**
      * Resource location
      */
@@ -146,7 +146,7 @@ export interface ProximityPlacementGroupArgs {
     /**
      * Specifies the type of the proximity placement group. Possible values are: **Standard** : Co-locate resources within an Azure region or Availability Zone. **Ultra** : For future use.
      */
-    proximityPlacementGroupType?: pulumi.Input<string | types.enums.v20230301.ProximityPlacementGroupType>;
+    proximityPlacementGroupType?: pulumi.Input<string | types.enums.ProximityPlacementGroupType>;
     /**
      * The name of the resource group.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get user
  */
@@ -62,7 +62,7 @@ export interface GetUserResult {
     /**
      * The details of the latest operation. ex: status, error
      */
-    readonly latestOperationResult: types.outputs.labservices.v20181015.LatestOperationResultResponse;
+    readonly latestOperationResult: types.outputs.LatestOperationResultResponse;
     /**
      * The location of the resource.
      */

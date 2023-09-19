@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Definition of the webhook type.
  */
@@ -74,7 +74,7 @@ export class Webhook extends pulumi.CustomResource {
     /**
      * Gets or sets the runbook the webhook is associated with.
      */
-    public readonly runbook!: pulumi.Output<types.outputs.automation.v20151031.RunbookAssociationPropertyResponse | undefined>;
+    public readonly runbook!: pulumi.Output<types.outputs.RunbookAssociationPropertyResponse | undefined>;
     /**
      * The type of the resource.
      */
@@ -177,7 +177,7 @@ export interface WebhookArgs {
     /**
      * Gets or sets the runbook.
      */
-    runbook?: pulumi.Input<types.inputs.automation.v20151031.RunbookAssociationPropertyArgs>;
+    runbook?: pulumi.Input<types.inputs.RunbookAssociationPropertyArgs>;
     /**
      * Gets or sets the uri.
      */

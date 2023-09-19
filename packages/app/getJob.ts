@@ -32,7 +32,7 @@ export interface GetJobResult {
     /**
      * Container Apps Job configuration properties.
      */
-    readonly configuration?: types.outputs.app.JobConfigurationResponse;
+    readonly configuration?: types.outputs.JobConfigurationResponse;
     /**
      * Resource ID of environment.
      */
@@ -48,7 +48,7 @@ export interface GetJobResult {
     /**
      * Managed identities needed by a container app job to interact with other Azure services to not maintain any secrets or credentials in code.
      */
-    readonly identity?: types.outputs.app.ManagedServiceIdentityResponse;
+    readonly identity?: types.outputs.ManagedServiceIdentityResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -68,7 +68,7 @@ export interface GetJobResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.app.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -76,7 +76,7 @@ export interface GetJobResult {
     /**
      * Container Apps job definition.
      */
-    readonly template?: types.outputs.app.JobTemplateResponse;
+    readonly template?: types.outputs.JobTemplateResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

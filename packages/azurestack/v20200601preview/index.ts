@@ -53,7 +53,7 @@ utilities.lazyLoad(exports, ["Registration"], () => require("./registration"));
 
 
 // Export enums:
-export * from "../types/enums/v20200601preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

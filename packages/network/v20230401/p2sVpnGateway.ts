@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * P2SVpnGateway Resource.
  */
@@ -54,7 +54,7 @@ export class P2sVpnGateway extends pulumi.CustomResource {
     /**
      * List of all p2s connection configurations of the gateway.
      */
-    public readonly p2SConnectionConfigurations!: pulumi.Output<types.outputs.network.v20230401.P2SConnectionConfigurationResponse[] | undefined>;
+    public readonly p2SConnectionConfigurations!: pulumi.Output<types.outputs.P2SConnectionConfigurationResponse[] | undefined>;
     /**
      * The provisioning state of the P2S VPN gateway resource.
      */
@@ -70,11 +70,11 @@ export class P2sVpnGateway extends pulumi.CustomResource {
     /**
      * The VirtualHub to which the gateway belongs.
      */
-    public readonly virtualHub!: pulumi.Output<types.outputs.network.v20230401.SubResourceResponse | undefined>;
+    public readonly virtualHub!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * All P2S VPN clients' connection health status.
      */
-    public /*out*/ readonly vpnClientConnectionHealth!: pulumi.Output<types.outputs.network.v20230401.VpnClientConnectionHealthResponse>;
+    public /*out*/ readonly vpnClientConnectionHealth!: pulumi.Output<types.outputs.VpnClientConnectionHealthResponse>;
     /**
      * The scale unit for this p2s vpn gateway.
      */
@@ -82,7 +82,7 @@ export class P2sVpnGateway extends pulumi.CustomResource {
     /**
      * The VpnServerConfiguration to which the p2sVpnGateway is attached to.
      */
-    public readonly vpnServerConfiguration!: pulumi.Output<types.outputs.network.v20230401.SubResourceResponse | undefined>;
+    public readonly vpnServerConfiguration!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
 
     /**
      * Create a P2sVpnGateway resource with the given unique name, arguments, and options.
@@ -163,7 +163,7 @@ export interface P2sVpnGatewayArgs {
     /**
      * List of all p2s connection configurations of the gateway.
      */
-    p2SConnectionConfigurations?: pulumi.Input<pulumi.Input<types.inputs.network.v20230401.P2SConnectionConfigurationArgs>[]>;
+    p2SConnectionConfigurations?: pulumi.Input<pulumi.Input<types.inputs.P2SConnectionConfigurationArgs>[]>;
     /**
      * The resource group name of the P2SVpnGateway.
      */
@@ -175,7 +175,7 @@ export interface P2sVpnGatewayArgs {
     /**
      * The VirtualHub to which the gateway belongs.
      */
-    virtualHub?: pulumi.Input<types.inputs.network.v20230401.SubResourceArgs>;
+    virtualHub?: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * The scale unit for this p2s vpn gateway.
      */
@@ -183,5 +183,5 @@ export interface P2sVpnGatewayArgs {
     /**
      * The VpnServerConfiguration to which the p2sVpnGateway is attached to.
      */
-    vpnServerConfiguration?: pulumi.Input<types.inputs.network.v20230401.SubResourceArgs>;
+    vpnServerConfiguration?: pulumi.Input<types.inputs.SubResourceArgs>;
 }

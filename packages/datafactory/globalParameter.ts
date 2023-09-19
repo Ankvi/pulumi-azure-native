@@ -43,7 +43,7 @@ export class GlobalParameter extends pulumi.CustomResource {
     /**
      * Properties of the global parameter.
      */
-    public readonly properties!: pulumi.Output<{[key: string]: types.outputs.datafactory.GlobalParameterSpecificationResponse}>;
+    public readonly properties!: pulumi.Output<{[key: string]: types.outputs.GlobalParameterSpecificationResponse}>;
     /**
      * The resource type.
      */
@@ -104,7 +104,7 @@ export interface GlobalParameterArgs {
     /**
      * Properties of the global parameter.
      */
-    properties: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.datafactory.GlobalParameterSpecificationArgs>}>;
+    properties: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.GlobalParameterSpecificationArgs>}>;
     /**
      * The resource group name.
      */

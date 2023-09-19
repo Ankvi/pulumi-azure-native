@@ -47,7 +47,7 @@ export class NotificationChannel extends pulumi.CustomResource {
     /**
      * The list of event for which this notification is enabled.
      */
-    public readonly events!: pulumi.Output<types.outputs.devtestlab.EventResponse[] | undefined>;
+    public readonly events!: pulumi.Output<types.outputs.EventResponse[] | undefined>;
     /**
      * The location of the resource.
      */
@@ -148,7 +148,7 @@ export interface NotificationChannelArgs {
     /**
      * The list of event for which this notification is enabled.
      */
-    events?: pulumi.Input<pulumi.Input<types.inputs.devtestlab.EventArgs>[]>;
+    events?: pulumi.Input<pulumi.Input<types.inputs.EventArgs>[]>;
     /**
      * The name of the lab.
      */

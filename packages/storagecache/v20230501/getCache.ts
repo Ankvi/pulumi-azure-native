@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns a cache.
  */
@@ -35,15 +35,15 @@ export interface GetCacheResult {
     /**
      * Specifies Directory Services settings of the cache.
      */
-    readonly directoryServicesSettings?: types.outputs.storagecache.v20230501.CacheDirectorySettingsResponse;
+    readonly directoryServicesSettings?: types.outputs.CacheDirectorySettingsResponse;
     /**
      * Specifies encryption settings of the cache.
      */
-    readonly encryptionSettings?: types.outputs.storagecache.v20230501.CacheEncryptionSettingsResponse;
+    readonly encryptionSettings?: types.outputs.CacheEncryptionSettingsResponse;
     /**
      * Health of the cache.
      */
-    readonly health: types.outputs.storagecache.v20230501.CacheHealthResponse;
+    readonly health: types.outputs.CacheHealthResponse;
     /**
      * Resource ID of the cache.
      */
@@ -51,7 +51,7 @@ export interface GetCacheResult {
     /**
      * The identity of the cache, if configured.
      */
-    readonly identity?: types.outputs.storagecache.v20230501.CacheIdentityResponse;
+    readonly identity?: types.outputs.CacheIdentityResponse;
     /**
      * Region name string.
      */
@@ -67,11 +67,11 @@ export interface GetCacheResult {
     /**
      * Specifies network settings of the cache.
      */
-    readonly networkSettings?: types.outputs.storagecache.v20230501.CacheNetworkSettingsResponse;
+    readonly networkSettings?: types.outputs.CacheNetworkSettingsResponse;
     /**
      * Specifies the priming jobs defined in the cache.
      */
-    readonly primingJobs: types.outputs.storagecache.v20230501.PrimingJobResponse[];
+    readonly primingJobs: types.outputs.PrimingJobResponse[];
     /**
      * ARM provisioning state, see https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/Addendum.md#provisioningstate-property
      */
@@ -79,15 +79,15 @@ export interface GetCacheResult {
     /**
      * Specifies security settings of the cache.
      */
-    readonly securitySettings?: types.outputs.storagecache.v20230501.CacheSecuritySettingsResponse;
+    readonly securitySettings?: types.outputs.CacheSecuritySettingsResponse;
     /**
      * SKU for the cache.
      */
-    readonly sku?: types.outputs.storagecache.v20230501.CacheResponseSku;
+    readonly sku?: types.outputs.CacheResponseSku;
     /**
      * Specifies the space allocation percentage for each storage target in the cache.
      */
-    readonly spaceAllocation: types.outputs.storagecache.v20230501.StorageTargetSpaceAllocationResponse[];
+    readonly spaceAllocation: types.outputs.StorageTargetSpaceAllocationResponse[];
     /**
      * Subnet used for the cache.
      */
@@ -95,7 +95,7 @@ export interface GetCacheResult {
     /**
      * The system meta data relating to this resource.
      */
-    readonly systemData: types.outputs.storagecache.v20230501.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -107,11 +107,11 @@ export interface GetCacheResult {
     /**
      * Upgrade settings of the cache.
      */
-    readonly upgradeSettings?: types.outputs.storagecache.v20230501.CacheUpgradeSettingsResponse;
+    readonly upgradeSettings?: types.outputs.CacheUpgradeSettingsResponse;
     /**
      * Upgrade status of the cache.
      */
-    readonly upgradeStatus: types.outputs.storagecache.v20230501.CacheUpgradeStatusResponse;
+    readonly upgradeStatus: types.outputs.CacheUpgradeStatusResponse;
     /**
      * Availability zones for resources. This field should only contain a single element in the array.
      */

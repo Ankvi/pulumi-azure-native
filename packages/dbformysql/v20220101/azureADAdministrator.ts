@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents a Administrator.
  */
@@ -54,7 +54,7 @@ export class AzureADAdministrator extends pulumi.CustomResource {
     /**
      * The system metadata relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.dbformysql.v20220101.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Tenant ID of the administrator.
      */
@@ -120,7 +120,7 @@ export interface AzureADAdministratorArgs {
     /**
      * Type of the sever administrator.
      */
-    administratorType?: pulumi.Input<string | types.enums.v20220101.AdministratorType>;
+    administratorType?: pulumi.Input<string | types.enums.AdministratorType>;
     /**
      * The resource id of the identity used for AAD Authentication.
      */

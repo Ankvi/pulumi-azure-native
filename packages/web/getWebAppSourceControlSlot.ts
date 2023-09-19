@@ -45,7 +45,7 @@ export interface GetWebAppSourceControlSlotResult {
     /**
      * If GitHub Action is selected, than the associated configuration.
      */
-    readonly gitHubActionConfiguration?: types.outputs.web.GitHubActionConfigurationResponse;
+    readonly gitHubActionConfiguration?: types.outputs.GitHubActionConfigurationResponse;
     /**
      * Resource Id.
      */

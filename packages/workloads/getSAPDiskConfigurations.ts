@@ -57,7 +57,7 @@ export interface GetSAPDiskConfigurationsResult {
     /**
      * The disk configuration for the db volume. For HANA, Required volumes are: ['hana/data', 'hana/log', hana/shared', 'usr/sap', 'os'], Optional volume : ['backup'].
      */
-    readonly volumeConfigurations?: {[key: string]: types.outputs.workloads.SAPDiskConfigurationResponse};
+    readonly volumeConfigurations?: {[key: string]: types.outputs.SAPDiskConfigurationResponse};
 }
 /**
  * Get the SAP Disk Configuration Layout prod/non-prod SAP System.

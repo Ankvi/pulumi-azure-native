@@ -18,7 +18,7 @@ utilities.lazyLoad(exports, ["listAccountKeys","listAccountKeysOutput"], () => r
 
 
 // Export enums:
-export * from "../types/enums/v20201201preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

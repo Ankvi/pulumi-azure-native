@@ -54,7 +54,7 @@ export interface GetFavoriteProcessResult {
     /**
      * The system metadata relating to this resource
      */
-    readonly systemData: types.outputs.testbase.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource type.
      */

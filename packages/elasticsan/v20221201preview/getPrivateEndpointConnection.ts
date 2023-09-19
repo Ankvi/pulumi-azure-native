@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the specified private endpoint connection associated with the Elastic San
  */
@@ -48,11 +48,11 @@ export interface GetPrivateEndpointConnectionResult {
     /**
      * Private Endpoint resource
      */
-    readonly privateEndpoint?: types.outputs.elasticsan.v20221201preview.PrivateEndpointResponse;
+    readonly privateEndpoint?: types.outputs.PrivateEndpointResponse;
     /**
      * Private Link Service Connection State.
      */
-    readonly privateLinkServiceConnectionState: types.outputs.elasticsan.v20221201preview.PrivateLinkServiceConnectionStateResponse;
+    readonly privateLinkServiceConnectionState: types.outputs.PrivateLinkServiceConnectionStateResponse;
     /**
      * Provisioning State of Private Endpoint connection resource
      */
@@ -60,7 +60,7 @@ export interface GetPrivateEndpointConnectionResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.elasticsan.v20221201preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

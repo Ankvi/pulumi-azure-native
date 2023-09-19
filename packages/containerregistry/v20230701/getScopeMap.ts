@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the properties of the specified scope map.
  */
@@ -62,7 +62,7 @@ export interface GetScopeMapResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.containerregistry.v20230701.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource.
      */

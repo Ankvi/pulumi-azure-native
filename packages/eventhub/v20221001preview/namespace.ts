@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Single Namespace item in List or Get Operation
  */
@@ -50,11 +50,11 @@ export class Namespace extends pulumi.CustomResource {
     /**
      * Properties of BYOK Encryption description
      */
-    public readonly encryption!: pulumi.Output<types.outputs.eventhub.v20221001preview.EncryptionResponse | undefined>;
+    public readonly encryption!: pulumi.Output<types.outputs.EncryptionResponse | undefined>;
     /**
      * Properties of BYOK Identity description
      */
-    public readonly identity!: pulumi.Output<types.outputs.eventhub.v20221001preview.IdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityResponse | undefined>;
     /**
      * Value that indicates whether AutoInflate is enabled for eventhub namespace.
      */
@@ -86,7 +86,7 @@ export class Namespace extends pulumi.CustomResource {
     /**
      * List of private endpoint connections.
      */
-    public readonly privateEndpointConnections!: pulumi.Output<types.outputs.eventhub.v20221001preview.PrivateEndpointConnectionResponse[] | undefined>;
+    public readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[] | undefined>;
     /**
      * Provisioning state of the Namespace.
      */
@@ -102,7 +102,7 @@ export class Namespace extends pulumi.CustomResource {
     /**
      * Properties of sku resource
      */
-    public readonly sku!: pulumi.Output<types.outputs.eventhub.v20221001preview.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Status of the Namespace.
      */
@@ -110,7 +110,7 @@ export class Namespace extends pulumi.CustomResource {
     /**
      * The system meta data relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.eventhub.v20221001preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -145,7 +145,7 @@ export class Namespace extends pulumi.CustomResource {
             resourceInputs["alternateName"] = args ? args.alternateName : undefined;
             resourceInputs["clusterArmId"] = args ? args.clusterArmId : undefined;
             resourceInputs["disableLocalAuth"] = args ? args.disableLocalAuth : undefined;
-            resourceInputs["encryption"] = args ? (args.encryption ? pulumi.output(args.encryption).apply(types.inputs.eventhub.v20221001preview.encryptionArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["encryption"] = args ? (args.encryption ? pulumi.output(args.encryption).apply(types.inputs.encryptionArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["identity"] = args ? args.identity : undefined;
             resourceInputs["isAutoInflateEnabled"] = args ? args.isAutoInflateEnabled : undefined;
             resourceInputs["kafkaEnabled"] = args ? args.kafkaEnabled : undefined;
@@ -220,11 +220,11 @@ export interface NamespaceArgs {
     /**
      * Properties of BYOK Encryption description
      */
-    encryption?: pulumi.Input<types.inputs.eventhub.v20221001preview.EncryptionArgs>;
+    encryption?: pulumi.Input<types.inputs.EncryptionArgs>;
     /**
      * Properties of BYOK Identity description
      */
-    identity?: pulumi.Input<types.inputs.eventhub.v20221001preview.IdentityArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityArgs>;
     /**
      * Value that indicates whether AutoInflate is enabled for eventhub namespace.
      */
@@ -244,7 +244,7 @@ export interface NamespaceArgs {
     /**
      * The minimum TLS version for the cluster to support, e.g. '1.2'
      */
-    minimumTlsVersion?: pulumi.Input<string | types.enums.v20221001preview.TlsVersion>;
+    minimumTlsVersion?: pulumi.Input<string | types.enums.TlsVersion>;
     /**
      * The Namespace name
      */
@@ -253,11 +253,11 @@ export interface NamespaceArgs {
      * List of private endpoint connections.
      * These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
      */
-    privateEndpointConnections?: pulumi.Input<pulumi.Input<types.inputs.eventhub.v20221001preview.PrivateEndpointConnectionArgs>[]>;
+    privateEndpointConnections?: pulumi.Input<pulumi.Input<types.inputs.PrivateEndpointConnectionArgs>[]>;
     /**
      * This determines if traffic is allowed over public network. By default it is enabled.
      */
-    publicNetworkAccess?: pulumi.Input<string | types.enums.v20221001preview.PublicNetworkAccess>;
+    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess>;
     /**
      * Name of the resource group within the azure subscription.
      */
@@ -265,7 +265,7 @@ export interface NamespaceArgs {
     /**
      * Properties of sku resource
      */
-    sku?: pulumi.Input<types.inputs.eventhub.v20221001preview.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Resource tags.
      */

@@ -46,11 +46,11 @@ export interface GetApiDiagnosticResult {
     /**
      * Diagnostic settings for incoming/outgoing HTTP messages to the Backend
      */
-    readonly backend?: types.outputs.apimanagement.PipelineDiagnosticSettingsResponse;
+    readonly backend?: types.outputs.PipelineDiagnosticSettingsResponse;
     /**
      * Diagnostic settings for incoming/outgoing HTTP messages to the Gateway.
      */
-    readonly frontend?: types.outputs.apimanagement.PipelineDiagnosticSettingsResponse;
+    readonly frontend?: types.outputs.PipelineDiagnosticSettingsResponse;
     /**
      * Sets correlation protocol to use for Application Insights diagnostics.
      */
@@ -82,7 +82,7 @@ export interface GetApiDiagnosticResult {
     /**
      * Sampling settings for Diagnostic.
      */
-    readonly sampling?: types.outputs.apimanagement.SamplingSettingsResponse;
+    readonly sampling?: types.outputs.SamplingSettingsResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the specific private end point connection by specific private link service in the resource group.
  */
@@ -57,7 +57,7 @@ export interface GetPrivateLinkServicePrivateEndpointConnectionResult {
     /**
      * The resource of private end point.
      */
-    readonly privateEndpoint: types.outputs.network.v20230501.PrivateEndpointResponse;
+    readonly privateEndpoint: types.outputs.PrivateEndpointResponse;
     /**
      * The location of the private endpoint.
      */
@@ -65,7 +65,7 @@ export interface GetPrivateLinkServicePrivateEndpointConnectionResult {
     /**
      * A collection of information about the state of the connection between service consumer and provider.
      */
-    readonly privateLinkServiceConnectionState?: types.outputs.network.v20230501.PrivateLinkServiceConnectionStateResponse;
+    readonly privateLinkServiceConnectionState?: types.outputs.PrivateLinkServiceConnectionStateResponse;
     /**
      * The provisioning state of the private endpoint connection resource.
      */

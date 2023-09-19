@@ -34,7 +34,7 @@ export interface ListControllerConnectionDetailsResult {
     /**
      * List of Azure Dev Spaces Controller connection details.
      */
-    readonly connectionDetailsList?: types.outputs.devspaces.ControllerConnectionDetailsResponse[];
+    readonly connectionDetailsList?: types.outputs.ControllerConnectionDetailsResponse[];
 }
 /**
  * Lists connection details for the underlying container resources of an Azure Dev Spaces Controller.

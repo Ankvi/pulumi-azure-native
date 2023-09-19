@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a specific standard assignment for the requested scope by resourceId
  */
@@ -31,15 +31,15 @@ export interface GetAssignmentResult {
     /**
      * Additional data about the assignment
      */
-    readonly additionalData?: types.outputs.security.v20210801preview.AssignmentPropertiesResponseAdditionalData;
+    readonly additionalData?: types.outputs.AssignmentPropertiesResponseAdditionalData;
     /**
      * Component item with key as applied to this standard assignment over the given scope
      */
-    readonly assignedComponent?: types.outputs.security.v20210801preview.AssignedComponentItemResponse;
+    readonly assignedComponent?: types.outputs.AssignedComponentItemResponse;
     /**
      * Standard item with key as applied to this standard assignment over the given scope
      */
-    readonly assignedStandard?: types.outputs.security.v20210801preview.AssignedStandardItemResponse;
+    readonly assignedStandard?: types.outputs.AssignedStandardItemResponse;
     /**
      * description of the standardAssignment
      */
@@ -87,7 +87,7 @@ export interface GetAssignmentResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.security.v20210801preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * A list of key value pairs that describe the resource.
      */

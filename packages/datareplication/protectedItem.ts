@@ -39,8 +39,8 @@ export class ProtectedItem extends pulumi.CustomResource {
     /**
      * Protected item model properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.datareplication.ProtectedItemModelPropertiesResponse>;
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.datareplication.ProtectedItemModelResponseSystemData>;
+    public readonly properties!: pulumi.Output<types.outputs.ProtectedItemModelPropertiesResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.ProtectedItemModelResponseSystemData>;
     /**
      * Gets or sets the type of the resource.
      */
@@ -93,7 +93,7 @@ export interface ProtectedItemArgs {
     /**
      * Protected item model properties.
      */
-    properties: pulumi.Input<types.inputs.datareplication.ProtectedItemModelPropertiesArgs>;
+    properties: pulumi.Input<types.inputs.ProtectedItemModelPropertiesArgs>;
     /**
      * The protected item name.
      */

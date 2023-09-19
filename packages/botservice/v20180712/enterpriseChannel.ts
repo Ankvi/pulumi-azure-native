@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Enterprise Channel resource definition
  */
@@ -50,11 +50,11 @@ export class EnterpriseChannel extends pulumi.CustomResource {
     /**
      * The set of properties specific to an Enterprise Channel resource.
      */
-    public readonly properties!: pulumi.Output<types.outputs.botservice.v20180712.EnterpriseChannelPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.EnterpriseChannelPropertiesResponse>;
     /**
      * Gets or sets the SKU of the resource.
      */
-    public readonly sku!: pulumi.Output<types.outputs.botservice.v20180712.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Contains resource tags defined as key/value pairs.
      */
@@ -110,7 +110,7 @@ export interface EnterpriseChannelArgs {
     /**
      * Required. Gets or sets the Kind of the resource.
      */
-    kind?: pulumi.Input<string | types.enums.v20180712.Kind>;
+    kind?: pulumi.Input<string | types.enums.Kind>;
     /**
      * Specifies the location of the resource.
      */
@@ -118,7 +118,7 @@ export interface EnterpriseChannelArgs {
     /**
      * The set of properties specific to an Enterprise Channel resource.
      */
-    properties?: pulumi.Input<types.inputs.botservice.v20180712.EnterpriseChannelPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.EnterpriseChannelPropertiesArgs>;
     /**
      * The name of the Bot resource group in the user subscription.
      */
@@ -130,7 +130,7 @@ export interface EnterpriseChannelArgs {
     /**
      * Gets or sets the SKU of the resource.
      */
-    sku?: pulumi.Input<types.inputs.botservice.v20180712.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Contains resource tags defined as key/value pairs.
      */

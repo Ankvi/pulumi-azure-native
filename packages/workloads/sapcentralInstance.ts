@@ -35,19 +35,19 @@ export class SAPCentralInstance extends pulumi.CustomResource {
     /**
      * Defines the SAP Enqueue Replication Server (ERS) properties.
      */
-    public /*out*/ readonly enqueueReplicationServerProperties!: pulumi.Output<types.outputs.workloads.EnqueueReplicationServerPropertiesResponse | undefined>;
+    public /*out*/ readonly enqueueReplicationServerProperties!: pulumi.Output<types.outputs.EnqueueReplicationServerPropertiesResponse | undefined>;
     /**
      * Defines the SAP Enqueue Server properties.
      */
-    public /*out*/ readonly enqueueServerProperties!: pulumi.Output<types.outputs.workloads.EnqueueServerPropertiesResponse | undefined>;
+    public /*out*/ readonly enqueueServerProperties!: pulumi.Output<types.outputs.EnqueueServerPropertiesResponse | undefined>;
     /**
      * Defines the errors related to SAP Central Services Instance resource.
      */
-    public /*out*/ readonly errors!: pulumi.Output<types.outputs.workloads.SAPVirtualInstanceErrorResponse>;
+    public /*out*/ readonly errors!: pulumi.Output<types.outputs.SAPVirtualInstanceErrorResponse>;
     /**
      * Defines the SAP Gateway Server properties.
      */
-    public /*out*/ readonly gatewayServerProperties!: pulumi.Output<types.outputs.workloads.GatewayServerPropertiesResponse | undefined>;
+    public /*out*/ readonly gatewayServerProperties!: pulumi.Output<types.outputs.GatewayServerPropertiesResponse | undefined>;
     /**
      * Defines the health of SAP Instances.
      */
@@ -67,7 +67,7 @@ export class SAPCentralInstance extends pulumi.CustomResource {
     /**
      * The Load Balancer details such as LoadBalancer ID attached to ASCS Virtual Machines
      */
-    public /*out*/ readonly loadBalancerDetails!: pulumi.Output<types.outputs.workloads.LoadBalancerDetailsResponse>;
+    public /*out*/ readonly loadBalancerDetails!: pulumi.Output<types.outputs.LoadBalancerDetailsResponse>;
     /**
      * The geo-location where the resource lives
      */
@@ -75,7 +75,7 @@ export class SAPCentralInstance extends pulumi.CustomResource {
     /**
      * Defines the SAP Message Server properties.
      */
-    public /*out*/ readonly messageServerProperties!: pulumi.Output<types.outputs.workloads.MessageServerPropertiesResponse | undefined>;
+    public /*out*/ readonly messageServerProperties!: pulumi.Output<types.outputs.MessageServerPropertiesResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -95,7 +95,7 @@ export class SAPCentralInstance extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.workloads.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -107,7 +107,7 @@ export class SAPCentralInstance extends pulumi.CustomResource {
     /**
      * The list of virtual machines corresponding to the Central Services instance.
      */
-    public /*out*/ readonly vmDetails!: pulumi.Output<types.outputs.workloads.CentralServerVmDetailsResponse[]>;
+    public /*out*/ readonly vmDetails!: pulumi.Output<types.outputs.CentralServerVmDetailsResponse[]>;
 
     /**
      * Create a SAPCentralInstance resource with the given unique name, arguments, and options.

@@ -37,11 +37,11 @@ export interface GetContactResult {
     /**
      * The configuration associated with the allocated antenna.
      */
-    readonly antennaConfiguration: types.outputs.orbital.ContactsPropertiesResponseAntennaConfiguration;
+    readonly antennaConfiguration: types.outputs.ContactsPropertiesResponseAntennaConfiguration;
     /**
      * The reference to the contact profile resource.
      */
-    readonly contactProfile: types.outputs.orbital.ContactsPropertiesResponseContactProfile;
+    readonly contactProfile: types.outputs.ContactsPropertiesResponseContactProfile;
     /**
      * Azimuth of the antenna at the end of the contact in decimal degrees.
      */
@@ -101,7 +101,7 @@ export interface GetContactResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.orbital.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Transmit end time of a contact (ISO 8601 UTC standard).
      */

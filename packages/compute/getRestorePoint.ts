@@ -46,7 +46,7 @@ export interface GetRestorePointResult {
     /**
      * List of disk resource ids that the customer wishes to exclude from the restore point. If no disks are specified, all disks will be included.
      */
-    readonly excludeDisks?: types.outputs.compute.ApiEntityReferenceResponse[];
+    readonly excludeDisks?: types.outputs.ApiEntityReferenceResponse[];
     /**
      * Resource Id
      */
@@ -54,7 +54,7 @@ export interface GetRestorePointResult {
     /**
      * The restore point instance view.
      */
-    readonly instanceView: types.outputs.compute.RestorePointInstanceViewResponse;
+    readonly instanceView: types.outputs.RestorePointInstanceViewResponse;
     /**
      * Resource name
      */
@@ -66,11 +66,11 @@ export interface GetRestorePointResult {
     /**
      * Gets the details of the VM captured at the time of the restore point creation.
      */
-    readonly sourceMetadata?: types.outputs.compute.RestorePointSourceMetadataResponse;
+    readonly sourceMetadata?: types.outputs.RestorePointSourceMetadataResponse;
     /**
      * Resource Id of the source restore point from which a copy needs to be created.
      */
-    readonly sourceRestorePoint?: types.outputs.compute.ApiEntityReferenceResponse;
+    readonly sourceRestorePoint?: types.outputs.ApiEntityReferenceResponse;
     /**
      * Gets the creation time of the restore point.
      */

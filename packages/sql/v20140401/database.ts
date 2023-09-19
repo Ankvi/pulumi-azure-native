@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents a database.
  */
@@ -104,7 +104,7 @@ export class Database extends pulumi.CustomResource {
     /**
      * The recommended indices for this database.
      */
-    public /*out*/ readonly recommendedIndex!: pulumi.Output<types.outputs.sql.v20140401.RecommendedIndexResponse[]>;
+    public /*out*/ readonly recommendedIndex!: pulumi.Output<types.outputs.RecommendedIndexResponse[]>;
     /**
      * The configured service level objective ID of the database. This is the service level objective that is in the process of being applied to the database. Once successfully updated, it will match the value of currentServiceObjectiveId property. If requestedServiceObjectiveId and requestedServiceObjectiveName are both updated, the value of requestedServiceObjectiveId overrides the value of requestedServiceObjectiveName.
      * 
@@ -132,7 +132,7 @@ export class Database extends pulumi.CustomResource {
     /**
      * The list of service tier advisors for this database. Expanded property
      */
-    public /*out*/ readonly serviceTierAdvisors!: pulumi.Output<types.outputs.sql.v20140401.ServiceTierAdvisorResponse[]>;
+    public /*out*/ readonly serviceTierAdvisors!: pulumi.Output<types.outputs.ServiceTierAdvisorResponse[]>;
     /**
      * The status of the database.
      */
@@ -144,7 +144,7 @@ export class Database extends pulumi.CustomResource {
     /**
      * The transparent data encryption info for this database.
      */
-    public /*out*/ readonly transparentDataEncryption!: pulumi.Output<types.outputs.sql.v20140401.TransparentDataEncryptionResponse[]>;
+    public /*out*/ readonly transparentDataEncryption!: pulumi.Output<types.outputs.TransparentDataEncryptionResponse[]>;
     /**
      * Resource type.
      */
@@ -266,7 +266,7 @@ export interface DatabaseArgs {
      *
      * Copy, NonReadableSecondary, OnlineSecondary and RestoreLongTermRetentionBackup are not supported for DataWarehouse edition.
      */
-    createMode?: pulumi.Input<string | types.enums.v20140401.CreateMode>;
+    createMode?: pulumi.Input<string | types.enums.CreateMode>;
     /**
      * The name of the database to be operated on (updated or created).
      */
@@ -284,7 +284,7 @@ export interface DatabaseArgs {
      * Get-AzSqlServerServiceObjective -Location <location>
      * ````
      */
-    edition?: pulumi.Input<string | types.enums.v20140401.DatabaseEdition>;
+    edition?: pulumi.Input<string | types.enums.DatabaseEdition>;
     /**
      * The name of the elastic pool the database is in. If elasticPoolName and requestedServiceObjectiveName are both updated, the value of requestedServiceObjectiveName is ignored. Not supported for DataWarehouse edition.
      */
@@ -300,7 +300,7 @@ export interface DatabaseArgs {
     /**
      * Conditional. If the database is a geo-secondary, readScale indicates whether read-only connections are allowed to this database or not. Not supported for DataWarehouse edition.
      */
-    readScale?: pulumi.Input<string | types.enums.v20140401.ReadScale>;
+    readScale?: pulumi.Input<string | types.enums.ReadScale>;
     /**
      * Conditional. If createMode is RestoreLongTermRetentionBackup, then this value is required. Specifies the resource ID of the recovery point to restore from.
      */
@@ -324,7 +324,7 @@ export interface DatabaseArgs {
      * Get-AzSqlServerServiceObjective -Location <location>
      * ````
      */
-    requestedServiceObjectiveName?: pulumi.Input<string | types.enums.v20140401.ServiceObjectiveName>;
+    requestedServiceObjectiveName?: pulumi.Input<string | types.enums.ServiceObjectiveName>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */
@@ -336,7 +336,7 @@ export interface DatabaseArgs {
     /**
      * Indicates the name of the sample schema to apply when creating this database. If createMode is not Default, this value is ignored. Not supported for DataWarehouse edition.
      */
-    sampleName?: pulumi.Input<string | types.enums.v20140401.SampleName>;
+    sampleName?: pulumi.Input<string | types.enums.SampleName>;
     /**
      * The name of the server.
      */

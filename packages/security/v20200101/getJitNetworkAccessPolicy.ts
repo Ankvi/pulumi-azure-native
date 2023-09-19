@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Policies for protecting resources using Just-in-Time access control for the subscription, location
  */
@@ -50,7 +50,7 @@ export interface GetJitNetworkAccessPolicyResult {
      * Gets the provisioning state of the Just-in-Time policy.
      */
     readonly provisioningState: string;
-    readonly requests?: types.outputs.security.v20200101.JitNetworkAccessRequestResponse[];
+    readonly requests?: types.outputs.JitNetworkAccessRequestResponse[];
     /**
      * Resource type
      */
@@ -58,7 +58,7 @@ export interface GetJitNetworkAccessPolicyResult {
     /**
      * Configurations for Microsoft.Compute/virtualMachines resource type.
      */
-    readonly virtualMachines: types.outputs.security.v20200101.JitNetworkAccessPolicyVirtualMachineResponse[];
+    readonly virtualMachines: types.outputs.JitNetworkAccessPolicyVirtualMachineResponse[];
 }
 /**
  * Policies for protecting resources using Just-in-Time access control for the subscription, location

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Class representing a cluster principal assignment.
  */
@@ -149,7 +149,7 @@ export interface ClusterPrincipalAssignmentArgs {
     /**
      * Principal type.
      */
-    principalType: pulumi.Input<string | types.enums.v20221229.PrincipalType>;
+    principalType: pulumi.Input<string | types.enums.PrincipalType>;
     /**
      * The name of the resource group containing the Kusto cluster.
      */
@@ -157,7 +157,7 @@ export interface ClusterPrincipalAssignmentArgs {
     /**
      * Cluster principal role.
      */
-    role: pulumi.Input<string | types.enums.v20221229.ClusterPrincipalRole>;
+    role: pulumi.Input<string | types.enums.ClusterPrincipalRole>;
     /**
      * The tenant id of the principal
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get Data Plane access.
  */
@@ -64,7 +64,7 @@ export interface GetFactoryDataPlaneAccessResult {
     /**
      * The user access policy.
      */
-    readonly policy?: types.outputs.datafactory.v20180601.UserAccessPolicyResponse;
+    readonly policy?: types.outputs.UserAccessPolicyResponse;
 }
 /**
  * Get Data Plane access.

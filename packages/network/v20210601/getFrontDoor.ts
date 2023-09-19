@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a Front Door with the specified Front Door name under the specified subscription and resource group.
  */
@@ -31,11 +31,11 @@ export interface GetFrontDoorResult {
     /**
      * Backend pools available to routing rules.
      */
-    readonly backendPools?: types.outputs.network.v20210601.BackendPoolResponse[];
+    readonly backendPools?: types.outputs.BackendPoolResponse[];
     /**
      * Settings for all backendPools
      */
-    readonly backendPoolsSettings?: types.outputs.network.v20210601.BackendPoolsSettingsResponse;
+    readonly backendPoolsSettings?: types.outputs.BackendPoolsSettingsResponse;
     /**
      * The host that each frontendEndpoint must CNAME to.
      */
@@ -59,11 +59,11 @@ export interface GetFrontDoorResult {
     /**
      * Frontend endpoints available to routing rules.
      */
-    readonly frontendEndpoints?: types.outputs.network.v20210601.FrontendEndpointResponse[];
+    readonly frontendEndpoints?: types.outputs.FrontendEndpointResponse[];
     /**
      * Health probe settings associated with this Front Door instance.
      */
-    readonly healthProbeSettings?: types.outputs.network.v20210601.HealthProbeSettingsModelResponse[];
+    readonly healthProbeSettings?: types.outputs.HealthProbeSettingsModelResponse[];
     /**
      * Resource ID.
      */
@@ -71,7 +71,7 @@ export interface GetFrontDoorResult {
     /**
      * Load balancing settings associated with this Front Door instance.
      */
-    readonly loadBalancingSettings?: types.outputs.network.v20210601.LoadBalancingSettingsModelResponse[];
+    readonly loadBalancingSettings?: types.outputs.LoadBalancingSettingsModelResponse[];
     /**
      * Resource location.
      */
@@ -91,11 +91,11 @@ export interface GetFrontDoorResult {
     /**
      * Routing rules associated with this Front Door.
      */
-    readonly routingRules?: types.outputs.network.v20210601.RoutingRuleResponse[];
+    readonly routingRules?: types.outputs.RoutingRuleResponse[];
     /**
      * Rules Engine Configurations available to routing rules.
      */
-    readonly rulesEngines: types.outputs.network.v20210601.RulesEngineResponse[];
+    readonly rulesEngines: types.outputs.RulesEngineResponse[];
     /**
      * Resource tags.
      */

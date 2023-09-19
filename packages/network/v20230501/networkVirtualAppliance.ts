@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * NetworkVirtualAppliance Resource.
  */
@@ -34,7 +34,7 @@ export class NetworkVirtualAppliance extends pulumi.CustomResource {
     /**
      * Details required for Additional Network Interface.
      */
-    public readonly additionalNics!: pulumi.Output<types.outputs.network.v20230501.VirtualApplianceAdditionalNicPropertiesResponse[] | undefined>;
+    public readonly additionalNics!: pulumi.Output<types.outputs.VirtualApplianceAdditionalNicPropertiesResponse[] | undefined>;
     /**
      * Address Prefix.
      */
@@ -54,7 +54,7 @@ export class NetworkVirtualAppliance extends pulumi.CustomResource {
     /**
      * The delegation for the Virtual Appliance
      */
-    public readonly delegation!: pulumi.Output<types.outputs.network.v20230501.DelegationPropertiesResponse | undefined>;
+    public readonly delegation!: pulumi.Output<types.outputs.DelegationPropertiesResponse | undefined>;
     /**
      * The deployment type. PartnerManaged for the SaaS NVA
      */
@@ -66,11 +66,11 @@ export class NetworkVirtualAppliance extends pulumi.CustomResource {
     /**
      * The service principal that has read access to cloud-init and config blob.
      */
-    public readonly identity!: pulumi.Output<types.outputs.network.v20230501.ManagedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * List of references to InboundSecurityRules.
      */
-    public /*out*/ readonly inboundSecurityRules!: pulumi.Output<types.outputs.network.v20230501.SubResourceResponse[]>;
+    public /*out*/ readonly inboundSecurityRules!: pulumi.Output<types.outputs.SubResourceResponse[]>;
     /**
      * Resource location.
      */
@@ -82,11 +82,11 @@ export class NetworkVirtualAppliance extends pulumi.CustomResource {
     /**
      * Network Virtual Appliance SKU.
      */
-    public readonly nvaSku!: pulumi.Output<types.outputs.network.v20230501.VirtualApplianceSkuPropertiesResponse | undefined>;
+    public readonly nvaSku!: pulumi.Output<types.outputs.VirtualApplianceSkuPropertiesResponse | undefined>;
     /**
      * The delegation for the Virtual Appliance
      */
-    public /*out*/ readonly partnerManagedResource!: pulumi.Output<types.outputs.network.v20230501.PartnerManagedResourcePropertiesResponse | undefined>;
+    public /*out*/ readonly partnerManagedResource!: pulumi.Output<types.outputs.PartnerManagedResourcePropertiesResponse | undefined>;
     /**
      * The provisioning state of the resource.
      */
@@ -110,19 +110,19 @@ export class NetworkVirtualAppliance extends pulumi.CustomResource {
     /**
      * List of references to VirtualApplianceConnections.
      */
-    public /*out*/ readonly virtualApplianceConnections!: pulumi.Output<types.outputs.network.v20230501.SubResourceResponse[]>;
+    public /*out*/ readonly virtualApplianceConnections!: pulumi.Output<types.outputs.SubResourceResponse[]>;
     /**
      * List of Virtual Appliance Network Interfaces.
      */
-    public /*out*/ readonly virtualApplianceNics!: pulumi.Output<types.outputs.network.v20230501.VirtualApplianceNicPropertiesResponse[]>;
+    public /*out*/ readonly virtualApplianceNics!: pulumi.Output<types.outputs.VirtualApplianceNicPropertiesResponse[]>;
     /**
      * List of references to VirtualApplianceSite.
      */
-    public /*out*/ readonly virtualApplianceSites!: pulumi.Output<types.outputs.network.v20230501.SubResourceResponse[]>;
+    public /*out*/ readonly virtualApplianceSites!: pulumi.Output<types.outputs.SubResourceResponse[]>;
     /**
      * The Virtual Hub where Network Virtual Appliance is being deployed.
      */
-    public readonly virtualHub!: pulumi.Output<types.outputs.network.v20230501.SubResourceResponse | undefined>;
+    public readonly virtualHub!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
 
     /**
      * Create a NetworkVirtualAppliance resource with the given unique name, arguments, and options.
@@ -203,7 +203,7 @@ export interface NetworkVirtualApplianceArgs {
     /**
      * Details required for Additional Network Interface.
      */
-    additionalNics?: pulumi.Input<pulumi.Input<types.inputs.network.v20230501.VirtualApplianceAdditionalNicPropertiesArgs>[]>;
+    additionalNics?: pulumi.Input<pulumi.Input<types.inputs.VirtualApplianceAdditionalNicPropertiesArgs>[]>;
     /**
      * BootStrapConfigurationBlobs storage URLs.
      */
@@ -219,7 +219,7 @@ export interface NetworkVirtualApplianceArgs {
     /**
      * The delegation for the Virtual Appliance
      */
-    delegation?: pulumi.Input<types.inputs.network.v20230501.DelegationPropertiesArgs>;
+    delegation?: pulumi.Input<types.inputs.DelegationPropertiesArgs>;
     /**
      * Resource ID.
      */
@@ -227,7 +227,7 @@ export interface NetworkVirtualApplianceArgs {
     /**
      * The service principal that has read access to cloud-init and config blob.
      */
-    identity?: pulumi.Input<types.inputs.network.v20230501.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
      * Resource location.
      */
@@ -239,7 +239,7 @@ export interface NetworkVirtualApplianceArgs {
     /**
      * Network Virtual Appliance SKU.
      */
-    nvaSku?: pulumi.Input<types.inputs.network.v20230501.VirtualApplianceSkuPropertiesArgs>;
+    nvaSku?: pulumi.Input<types.inputs.VirtualApplianceSkuPropertiesArgs>;
     /**
      * The name of the resource group.
      */
@@ -259,5 +259,5 @@ export interface NetworkVirtualApplianceArgs {
     /**
      * The Virtual Hub where Network Virtual Appliance is being deployed.
      */
-    virtualHub?: pulumi.Input<types.inputs.network.v20230501.SubResourceArgs>;
+    virtualHub?: pulumi.Input<types.inputs.SubResourceArgs>;
 }

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * List of the EngagementFabric channel descriptions
  */
@@ -31,7 +31,7 @@ export interface ListAccountChannelTypesResult {
     /**
      * Channel descriptions
      */
-    readonly value?: types.outputs.engagementfabric.v20180901preview.ChannelTypeDescriptionResponse[];
+    readonly value?: types.outputs.ChannelTypeDescriptionResponse[];
 }
 /**
  * List of the EngagementFabric channel descriptions

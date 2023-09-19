@@ -39,7 +39,7 @@ export class Service extends pulumi.CustomResource {
     /**
      * Services response resource.
      */
-    public /*out*/ readonly properties!: pulumi.Output<types.outputs.documentdb.DataTransferServiceResourcePropertiesResponse | types.outputs.documentdb.GraphAPIComputeServiceResourcePropertiesResponse | types.outputs.documentdb.MaterializedViewsBuilderServiceResourcePropertiesResponse | types.outputs.documentdb.SqlDedicatedGatewayServiceResourcePropertiesResponse>;
+    public /*out*/ readonly properties!: pulumi.Output<types.outputs.DataTransferServiceResourcePropertiesResponse | types.outputs.GraphAPIComputeServiceResourcePropertiesResponse | types.outputs.MaterializedViewsBuilderServiceResourcePropertiesResponse | types.outputs.SqlDedicatedGatewayServiceResourcePropertiesResponse>;
     /**
      * The type of Azure resource.
      */

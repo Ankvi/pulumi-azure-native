@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a flow log resource by name.
  */
@@ -44,11 +44,11 @@ export interface GetFlowLogResult {
     /**
      * Parameters that define the configuration of traffic analytics.
      */
-    readonly flowAnalyticsConfiguration?: types.outputs.network.v20230401.TrafficAnalyticsPropertiesResponse;
+    readonly flowAnalyticsConfiguration?: types.outputs.TrafficAnalyticsPropertiesResponse;
     /**
      * Parameters that define the flow log format.
      */
-    readonly format?: types.outputs.network.v20230401.FlowLogFormatParametersResponse;
+    readonly format?: types.outputs.FlowLogFormatParametersResponse;
     /**
      * Resource ID.
      */
@@ -68,7 +68,7 @@ export interface GetFlowLogResult {
     /**
      * Parameters that define the retention policy for flow log.
      */
-    readonly retentionPolicy?: types.outputs.network.v20230401.RetentionPolicyParametersResponse;
+    readonly retentionPolicy?: types.outputs.RetentionPolicyParametersResponse;
     /**
      * ID of the storage account which is used to store the flow log.
      */

@@ -42,7 +42,7 @@ export class DefaultCniNetwork extends pulumi.CustomResource {
     /**
      * The Calico BGP configuration.
      */
-    public readonly cniBgpConfiguration!: pulumi.Output<types.outputs.networkcloud.CniBgpConfigurationResponse | undefined>;
+    public readonly cniBgpConfiguration!: pulumi.Output<types.outputs.CniBgpConfigurationResponse | undefined>;
     /**
      * The more detailed status of the default CNI network.
      */
@@ -54,11 +54,11 @@ export class DefaultCniNetwork extends pulumi.CustomResource {
     /**
      * The extended location of the cluster associated with the resource.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.networkcloud.ExtendedLocationResponse>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse>;
     /**
      * The L3 isolation fabric BGP peering connectivity information necessary for BGP peering the Hybrid AKS Cluster with the switch fabric.
      */
-    public /*out*/ readonly fabricBgpPeers!: pulumi.Output<types.outputs.networkcloud.BgpPeerResponse[]>;
+    public /*out*/ readonly fabricBgpPeers!: pulumi.Output<types.outputs.BgpPeerResponse[]>;
     /**
      * The list of Hybrid AKS cluster resource ID(s) that are associated with this default CNI network.
      */
@@ -100,7 +100,7 @@ export class DefaultCniNetwork extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.networkcloud.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -195,7 +195,7 @@ export interface DefaultCniNetworkArgs {
     /**
      * The Calico BGP configuration.
      */
-    cniBgpConfiguration?: pulumi.Input<types.inputs.networkcloud.CniBgpConfigurationArgs>;
+    cniBgpConfiguration?: pulumi.Input<types.inputs.CniBgpConfigurationArgs>;
     /**
      * The name of the default CNI network.
      */
@@ -203,7 +203,7 @@ export interface DefaultCniNetworkArgs {
     /**
      * The extended location of the cluster associated with the resource.
      */
-    extendedLocation: pulumi.Input<types.inputs.networkcloud.ExtendedLocationArgs>;
+    extendedLocation: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * The type of the IP address allocation.
      */

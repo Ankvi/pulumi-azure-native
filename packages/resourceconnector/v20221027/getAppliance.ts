@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the details of an Appliance with a specified resource group and name.
  */
@@ -39,11 +39,11 @@ export interface GetApplianceResult {
     /**
      * Identity for the resource.
      */
-    readonly identity?: types.outputs.resourceconnector.v20221027.IdentityResponse;
+    readonly identity?: types.outputs.IdentityResponse;
     /**
      * Contains infrastructure information about the Appliance
      */
-    readonly infrastructureConfig?: types.outputs.resourceconnector.v20221027.AppliancePropertiesResponseInfrastructureConfig;
+    readonly infrastructureConfig?: types.outputs.AppliancePropertiesResponseInfrastructureConfig;
     /**
      * The geo-location where the resource lives
      */
@@ -67,7 +67,7 @@ export interface GetApplianceResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.resourceconnector.v20221027.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

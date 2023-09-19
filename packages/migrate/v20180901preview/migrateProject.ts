@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Migrate Project REST Resource.
  */
@@ -46,11 +46,11 @@ export class MigrateProject extends pulumi.CustomResource {
     /**
      * Gets or sets the nested properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.migrate.v20180901preview.MigrateProjectPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.MigrateProjectPropertiesResponse>;
     /**
      * Gets or sets the tags.
      */
-    public readonly tags!: pulumi.Output<types.outputs.migrate.v20180901preview.MigrateProjectResponseTags | undefined>;
+    public readonly tags!: pulumi.Output<types.outputs.MigrateProjectResponseTags | undefined>;
     /**
      * Handled by resource provider. Type = Microsoft.Migrate/MigrateProject.
      */
@@ -112,7 +112,7 @@ export interface MigrateProjectArgs {
     /**
      * Gets or sets the nested properties.
      */
-    properties?: pulumi.Input<types.inputs.migrate.v20180901preview.MigrateProjectPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.MigrateProjectPropertiesArgs>;
     /**
      * Name of the Azure Resource Group that migrate project is part of.
      */
@@ -120,5 +120,5 @@ export interface MigrateProjectArgs {
     /**
      * Gets or sets the tags.
      */
-    tags?: pulumi.Input<types.inputs.migrate.v20180901preview.MigrateProjectTagsArgs>;
+    tags?: pulumi.Input<types.inputs.MigrateProjectTagsArgs>;
 }

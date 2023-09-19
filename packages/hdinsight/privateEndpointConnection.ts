@@ -43,11 +43,11 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * The private endpoint of the private endpoint connection
      */
-    public /*out*/ readonly privateEndpoint!: pulumi.Output<types.outputs.hdinsight.PrivateEndpointResponse>;
+    public /*out*/ readonly privateEndpoint!: pulumi.Output<types.outputs.PrivateEndpointResponse>;
     /**
      * The private link service connection state.
      */
-    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.hdinsight.PrivateLinkServiceConnectionStateResponse>;
+    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.PrivateLinkServiceConnectionStateResponse>;
     /**
      * The provisioning state, which only appears in the response.
      */
@@ -55,7 +55,7 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.hdinsight.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -122,7 +122,7 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * The private link service connection state.
      */
-    privateLinkServiceConnectionState: pulumi.Input<types.inputs.hdinsight.PrivateLinkServiceConnectionStateArgs>;
+    privateLinkServiceConnectionState: pulumi.Input<types.inputs.PrivateLinkServiceConnectionStateArgs>;
     /**
      * The name of the resource group.
      */

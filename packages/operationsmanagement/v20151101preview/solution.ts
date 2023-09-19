@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The container for solution.
  */
@@ -42,11 +42,11 @@ export class Solution extends pulumi.CustomResource {
     /**
      * Plan for solution object supported by the OperationsManagement resource provider.
      */
-    public readonly plan!: pulumi.Output<types.outputs.operationsmanagement.v20151101preview.SolutionPlanResponse | undefined>;
+    public readonly plan!: pulumi.Output<types.outputs.SolutionPlanResponse | undefined>;
     /**
      * Properties for solution object supported by the OperationsManagement resource provider.
      */
-    public readonly properties!: pulumi.Output<types.outputs.operationsmanagement.v20151101preview.SolutionPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.SolutionPropertiesResponse>;
     /**
      * Resource tags
      */
@@ -104,11 +104,11 @@ export interface SolutionArgs {
     /**
      * Plan for solution object supported by the OperationsManagement resource provider.
      */
-    plan?: pulumi.Input<types.inputs.operationsmanagement.v20151101preview.SolutionPlanArgs>;
+    plan?: pulumi.Input<types.inputs.SolutionPlanArgs>;
     /**
      * Properties for solution object supported by the OperationsManagement resource provider.
      */
-    properties?: pulumi.Input<types.inputs.operationsmanagement.v20151101preview.SolutionPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.SolutionPropertiesArgs>;
     /**
      * The name of the resource group to get. The name is case insensitive.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Properties for the database account.
  */
@@ -38,7 +38,7 @@ export class Service extends pulumi.CustomResource {
     /**
      * Services response resource.
      */
-    public /*out*/ readonly properties!: pulumi.Output<types.outputs.documentdb.v20230415.DataTransferServiceResourcePropertiesResponse | types.outputs.documentdb.v20230415.GraphAPIComputeServiceResourcePropertiesResponse | types.outputs.documentdb.v20230415.MaterializedViewsBuilderServiceResourcePropertiesResponse | types.outputs.documentdb.v20230415.SqlDedicatedGatewayServiceResourcePropertiesResponse>;
+    public /*out*/ readonly properties!: pulumi.Output<types.outputs.DataTransferServiceResourcePropertiesResponse | types.outputs.GraphAPIComputeServiceResourcePropertiesResponse | types.outputs.MaterializedViewsBuilderServiceResourcePropertiesResponse | types.outputs.SqlDedicatedGatewayServiceResourcePropertiesResponse>;
     /**
      * The type of Azure resource.
      */
@@ -97,7 +97,7 @@ export interface ServiceArgs {
     /**
      * Instance type for the service.
      */
-    instanceSize?: pulumi.Input<string | types.enums.v20230415.ServiceSize>;
+    instanceSize?: pulumi.Input<string | types.enums.ServiceSize>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -109,5 +109,5 @@ export interface ServiceArgs {
     /**
      * ServiceType for the service.
      */
-    serviceType?: pulumi.Input<string | types.enums.v20230415.ServiceType>;
+    serviceType?: pulumi.Input<string | types.enums.ServiceType>;
 }

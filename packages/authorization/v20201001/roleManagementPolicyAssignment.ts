@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Role management policy
  */
@@ -34,7 +34,7 @@ export class RoleManagementPolicyAssignment extends pulumi.CustomResource {
     /**
      * The readonly computed rule applied to the policy.
      */
-    public /*out*/ readonly effectiveRules!: pulumi.Output<(types.outputs.authorization.v20201001.RoleManagementPolicyApprovalRuleResponse | types.outputs.authorization.v20201001.RoleManagementPolicyAuthenticationContextRuleResponse | types.outputs.authorization.v20201001.RoleManagementPolicyEnablementRuleResponse | types.outputs.authorization.v20201001.RoleManagementPolicyExpirationRuleResponse | types.outputs.authorization.v20201001.RoleManagementPolicyNotificationRuleResponse)[]>;
+    public /*out*/ readonly effectiveRules!: pulumi.Output<(types.outputs.RoleManagementPolicyApprovalRuleResponse | types.outputs.RoleManagementPolicyAuthenticationContextRuleResponse | types.outputs.RoleManagementPolicyEnablementRuleResponse | types.outputs.RoleManagementPolicyExpirationRuleResponse | types.outputs.RoleManagementPolicyNotificationRuleResponse)[]>;
     /**
      * The role management policy name.
      */
@@ -42,7 +42,7 @@ export class RoleManagementPolicyAssignment extends pulumi.CustomResource {
     /**
      * Additional properties of scope, role definition and policy
      */
-    public /*out*/ readonly policyAssignmentProperties!: pulumi.Output<types.outputs.authorization.v20201001.PolicyAssignmentPropertiesResponse>;
+    public /*out*/ readonly policyAssignmentProperties!: pulumi.Output<types.outputs.PolicyAssignmentPropertiesResponse>;
     /**
      * The policy id role management policy assignment.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The X509 Certificate.
  */
@@ -42,7 +42,7 @@ export class Certificate extends pulumi.CustomResource {
     /**
      * The description of an X509 CA Certificate.
      */
-    public /*out*/ readonly properties!: pulumi.Output<types.outputs.devices.v20200401.CertificatePropertiesResponse>;
+    public /*out*/ readonly properties!: pulumi.Output<types.outputs.CertificatePropertiesResponse>;
     /**
      * The resource type.
      */

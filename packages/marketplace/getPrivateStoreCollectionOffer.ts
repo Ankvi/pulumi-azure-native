@@ -65,7 +65,7 @@ export interface GetPrivateStoreCollectionOfferResult {
     /**
      * Offer plans
      */
-    readonly plans?: types.outputs.marketplace.PlanResponse[];
+    readonly plans?: types.outputs.PlanResponse[];
     /**
      * Private store unique id
      */
@@ -81,7 +81,7 @@ export interface GetPrivateStoreCollectionOfferResult {
     /**
      * Metadata pertaining to creation and last modification of the resource
      */
-    readonly systemData: types.outputs.marketplace.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource.
      */

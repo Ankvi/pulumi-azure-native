@@ -57,11 +57,11 @@ export interface GetTransformResult {
     /**
      * An array of one or more TransformOutputs that the Transform should generate.
      */
-    readonly outputs: types.outputs.media.TransformOutputResponse[];
+    readonly outputs: types.outputs.TransformOutputResponse[];
     /**
      * The system metadata relating to this resource.
      */
-    readonly systemData: types.outputs.media.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

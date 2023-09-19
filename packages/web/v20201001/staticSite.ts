@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Static Site ARM resource.
  */
@@ -38,7 +38,7 @@ export class StaticSite extends pulumi.CustomResource {
     /**
      * Build properties to configure on the repository.
      */
-    public readonly buildProperties!: pulumi.Output<types.outputs.web.v20201001.StaticSiteBuildPropertiesResponse | undefined>;
+    public readonly buildProperties!: pulumi.Output<types.outputs.StaticSiteBuildPropertiesResponse | undefined>;
     /**
      * The custom domains associated with this static site.
      */
@@ -70,11 +70,11 @@ export class StaticSite extends pulumi.CustomResource {
     /**
      * Description of a SKU for a scalable resource.
      */
-    public readonly sku!: pulumi.Output<types.outputs.web.v20201001.SkuDescriptionResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuDescriptionResponse | undefined>;
     /**
      * The system metadata relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.web.v20201001.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -145,7 +145,7 @@ export interface StaticSiteArgs {
     /**
      * Build properties to configure on the repository.
      */
-    buildProperties?: pulumi.Input<types.inputs.web.v20201001.StaticSiteBuildPropertiesArgs>;
+    buildProperties?: pulumi.Input<types.inputs.StaticSiteBuildPropertiesArgs>;
     /**
      * Kind of resource.
      */
@@ -173,7 +173,7 @@ export interface StaticSiteArgs {
     /**
      * Description of a SKU for a scalable resource.
      */
-    sku?: pulumi.Input<types.inputs.web.v20201001.SkuDescriptionArgs>;
+    sku?: pulumi.Input<types.inputs.SkuDescriptionArgs>;
     /**
      * Resource tags.
      */

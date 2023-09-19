@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets details of a migration.
  */
@@ -45,7 +45,7 @@ export interface GetMigrationResult {
     /**
      * Current status of migration
      */
-    readonly currentStatus: types.outputs.dbforpostgresql.v20230301preview.MigrationStatusResponse;
+    readonly currentStatus: types.outputs.MigrationStatusResponse;
     /**
      * When you want to trigger cancel for specific databases send cancel flag as True and database names in this array
      */
@@ -101,7 +101,7 @@ export interface GetMigrationResult {
     /**
      * Metadata of the source database server
      */
-    readonly sourceDbServerMetadata: types.outputs.dbforpostgresql.v20230301preview.DbServerMetadataResponse;
+    readonly sourceDbServerMetadata: types.outputs.DbServerMetadataResponse;
     /**
      * ResourceId of the source database server
      */
@@ -113,7 +113,7 @@ export interface GetMigrationResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.dbforpostgresql.v20230301preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -125,7 +125,7 @@ export interface GetMigrationResult {
     /**
      * Metadata of the target database server
      */
-    readonly targetDbServerMetadata: types.outputs.dbforpostgresql.v20230301preview.DbServerMetadataResponse;
+    readonly targetDbServerMetadata: types.outputs.DbServerMetadataResponse;
     /**
      * ResourceId of the source database server
      */

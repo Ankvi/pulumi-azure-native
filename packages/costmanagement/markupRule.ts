@@ -35,7 +35,7 @@ export class MarkupRule extends pulumi.CustomResource {
     /**
      * Customer information for the markup rule.
      */
-    public readonly customerDetails!: pulumi.Output<types.outputs.costmanagement.CustomerMetadataResponse>;
+    public readonly customerDetails!: pulumi.Output<types.outputs.CustomerMetadataResponse>;
     /**
      * The description of the markup rule.
      */
@@ -133,7 +133,7 @@ export interface MarkupRuleArgs {
     /**
      * Customer information for the markup rule.
      */
-    customerDetails: pulumi.Input<types.inputs.costmanagement.CustomerMetadataArgs>;
+    customerDetails: pulumi.Input<types.inputs.CustomerMetadataArgs>;
     /**
      * The description of the markup rule.
      */

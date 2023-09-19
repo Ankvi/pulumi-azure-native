@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The integration account partner.
  */
@@ -38,7 +38,7 @@ export class Partner extends pulumi.CustomResource {
     /**
      * The partner content.
      */
-    public readonly content!: pulumi.Output<types.outputs.logic.v20160601.PartnerContentResponse>;
+    public readonly content!: pulumi.Output<types.outputs.PartnerContentResponse>;
     /**
      * The created time.
      */
@@ -128,7 +128,7 @@ export interface PartnerArgs {
     /**
      * The partner content.
      */
-    content: pulumi.Input<types.inputs.logic.v20160601.PartnerContentArgs>;
+    content: pulumi.Input<types.inputs.PartnerContentArgs>;
     /**
      * The integration account name.
      */
@@ -148,7 +148,7 @@ export interface PartnerArgs {
     /**
      * The partner type.
      */
-    partnerType: pulumi.Input<types.enums.v20160601.PartnerType>;
+    partnerType: pulumi.Input<types.enums.PartnerType>;
     /**
      * The resource group name.
      */

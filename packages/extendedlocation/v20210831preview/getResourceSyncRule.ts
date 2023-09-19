@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the details of the resourceSyncRule with a specified resource group, subscription id Custom Location resource name and Resource Sync Rule name.
  */
@@ -56,11 +56,11 @@ export interface GetResourceSyncRuleResult {
     /**
      * A label selector is composed of two parts, matchLabels and matchExpressions. The first part, matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is 'key', the operator is 'In', and the values array contains only 'value'. The second part, matchExpressions is a list of resource selector requirements. Valid operators include In, NotIn, Exists, and DoesNotExist. The values set must be non-empty in the case of In and NotIn. The values set must be empty in the case of Exists and DoesNotExist. All of the requirements, from both matchLabels and matchExpressions must all be satisfied in order to match.
      */
-    readonly selector?: types.outputs.extendedlocation.v20210831preview.ResourceSyncRulePropertiesResponseSelector;
+    readonly selector?: types.outputs.ResourceSyncRulePropertiesResponseSelector;
     /**
      * Metadata pertaining to creation and last modification of the resource
      */
-    readonly systemData: types.outputs.extendedlocation.v20210831preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

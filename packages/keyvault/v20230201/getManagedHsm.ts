@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the specified managed HSM Pool.
  */
@@ -43,15 +43,15 @@ export interface GetManagedHsmResult {
     /**
      * Properties of the managed HSM
      */
-    readonly properties: types.outputs.keyvault.v20230201.ManagedHsmPropertiesResponse;
+    readonly properties: types.outputs.ManagedHsmPropertiesResponse;
     /**
      * SKU details
      */
-    readonly sku?: types.outputs.keyvault.v20230201.ManagedHsmSkuResponse;
+    readonly sku?: types.outputs.ManagedHsmSkuResponse;
     /**
      * Metadata pertaining to creation and last modification of the key vault resource.
      */
-    readonly systemData: types.outputs.keyvault.v20230201.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags
      */

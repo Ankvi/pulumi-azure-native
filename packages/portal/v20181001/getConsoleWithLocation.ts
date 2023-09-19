@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the console for the user.
  */
@@ -31,7 +31,7 @@ export interface GetConsoleWithLocationResult {
     /**
      * Cloud shell console properties.
      */
-    readonly properties: types.outputs.portal.v20181001.ConsolePropertiesResponse;
+    readonly properties: types.outputs.ConsolePropertiesResponse;
 }
 /**
  * Gets the console for the user.

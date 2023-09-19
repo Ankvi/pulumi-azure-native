@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A private endpoint connection
  */
@@ -42,11 +42,11 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * Private endpoint which the connection belongs to.
      */
-    public /*out*/ readonly privateEndpoint!: pulumi.Output<types.outputs.kusto.v20230502.PrivateEndpointPropertyResponse>;
+    public /*out*/ readonly privateEndpoint!: pulumi.Output<types.outputs.PrivateEndpointPropertyResponse>;
     /**
      * Connection State of the Private Endpoint Connection.
      */
-    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.kusto.v20230502.PrivateLinkServiceConnectionStatePropertyResponse>;
+    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.PrivateLinkServiceConnectionStatePropertyResponse>;
     /**
      * Provisioning state of the private endpoint.
      */
@@ -54,7 +54,7 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.kusto.v20230502.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -121,7 +121,7 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * Connection State of the Private Endpoint Connection.
      */
-    privateLinkServiceConnectionState: pulumi.Input<types.inputs.kusto.v20230502.PrivateLinkServiceConnectionStatePropertyArgs>;
+    privateLinkServiceConnectionState: pulumi.Input<types.inputs.PrivateLinkServiceConnectionStatePropertyArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

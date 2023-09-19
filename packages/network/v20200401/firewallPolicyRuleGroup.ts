@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Rule Group resource.
  */
@@ -50,7 +50,7 @@ export class FirewallPolicyRuleGroup extends pulumi.CustomResource {
     /**
      * Group of Firewall Policy rules.
      */
-    public readonly rules!: pulumi.Output<(types.outputs.network.v20200401.FirewallPolicyFilterRuleResponse | types.outputs.network.v20200401.FirewallPolicyNatRuleResponse)[] | undefined>;
+    public readonly rules!: pulumi.Output<(types.outputs.FirewallPolicyFilterRuleResponse | types.outputs.FirewallPolicyNatRuleResponse)[] | undefined>;
     /**
      * Rule Group type.
      */
@@ -129,5 +129,5 @@ export interface FirewallPolicyRuleGroupArgs {
     /**
      * Group of Firewall Policy rules.
      */
-    rules?: pulumi.Input<pulumi.Input<types.inputs.network.v20200401.FirewallPolicyFilterRuleArgs | types.inputs.network.v20200401.FirewallPolicyNatRuleArgs>[]>;
+    rules?: pulumi.Input<pulumi.Input<types.inputs.FirewallPolicyFilterRuleArgs | types.inputs.FirewallPolicyNatRuleArgs>[]>;
 }

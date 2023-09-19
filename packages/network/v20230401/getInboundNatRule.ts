@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the specified load balancer inbound NAT rule.
  */
@@ -41,11 +41,11 @@ export interface GetInboundNatRuleResult {
     /**
      * A reference to backendAddressPool resource.
      */
-    readonly backendAddressPool?: types.outputs.network.v20230401.SubResourceResponse;
+    readonly backendAddressPool?: types.outputs.SubResourceResponse;
     /**
      * A reference to a private IP address defined on a network interface of a VM. Traffic sent to the frontend port of each of the frontend IP configurations is forwarded to the backend IP.
      */
-    readonly backendIPConfiguration: types.outputs.network.v20230401.NetworkInterfaceIPConfigurationResponse;
+    readonly backendIPConfiguration: types.outputs.NetworkInterfaceIPConfigurationResponse;
     /**
      * The port used for the internal endpoint. Acceptable values range from 1 to 65535.
      */
@@ -65,7 +65,7 @@ export interface GetInboundNatRuleResult {
     /**
      * A reference to frontend IP addresses.
      */
-    readonly frontendIPConfiguration?: types.outputs.network.v20230401.SubResourceResponse;
+    readonly frontendIPConfiguration?: types.outputs.SubResourceResponse;
     /**
      * The port for the external endpoint. Port numbers for each rule must be unique within the Load Balancer. Acceptable values range from 1 to 65534.
      */

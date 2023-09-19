@@ -36,7 +36,7 @@ export interface GetMonitorResult {
     /**
      * Defines the SAP monitor errors.
      */
-    readonly errors: types.outputs.workloads.MonitorPropertiesResponseErrors;
+    readonly errors: types.outputs.MonitorPropertiesResponseErrors;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -44,7 +44,7 @@ export interface GetMonitorResult {
     /**
      * [currently not in use] Managed service identity(user assigned identities)
      */
-    readonly identity?: types.outputs.workloads.UserAssignedServiceIdentityResponse;
+    readonly identity?: types.outputs.UserAssignedServiceIdentityResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -56,7 +56,7 @@ export interface GetMonitorResult {
     /**
      * Managed resource group configuration
      */
-    readonly managedResourceGroupConfiguration?: types.outputs.workloads.ManagedRGConfigurationResponse;
+    readonly managedResourceGroupConfiguration?: types.outputs.ManagedRGConfigurationResponse;
     /**
      * The subnet which the SAP monitor will be deployed in
      */
@@ -84,7 +84,7 @@ export interface GetMonitorResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.workloads.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

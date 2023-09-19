@@ -51,7 +51,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * The Key Vault encryption configuration.
      */
-    public readonly encryptionConfig!: pulumi.Output<types.outputs.datalakestore.EncryptionConfigResponse>;
+    public readonly encryptionConfig!: pulumi.Output<types.outputs.EncryptionConfigResponse>;
     /**
      * The current state of encryption provisioning for this Data Lake Store account.
      */
@@ -71,7 +71,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * The list of firewall rules associated with this Data Lake Store account.
      */
-    public readonly firewallRules!: pulumi.Output<types.outputs.datalakestore.FirewallRuleResponse[]>;
+    public readonly firewallRules!: pulumi.Output<types.outputs.FirewallRuleResponse[]>;
     /**
      * The current state of the IP address firewall for this Data Lake Store account.
      */
@@ -79,7 +79,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * The Key Vault encryption identity, if any.
      */
-    public readonly identity!: pulumi.Output<types.outputs.datalakestore.EncryptionIdentityResponse>;
+    public readonly identity!: pulumi.Output<types.outputs.EncryptionIdentityResponse>;
     /**
      * The account last modified time.
      */
@@ -115,7 +115,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * The list of trusted identity providers associated with this Data Lake Store account.
      */
-    public readonly trustedIdProviders!: pulumi.Output<types.outputs.datalakestore.TrustedIdProviderResponse[]>;
+    public readonly trustedIdProviders!: pulumi.Output<types.outputs.TrustedIdProviderResponse[]>;
     /**
      * The resource type.
      */
@@ -123,7 +123,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * The list of virtual network rules associated with this Data Lake Store account.
      */
-    public readonly virtualNetworkRules!: pulumi.Output<types.outputs.datalakestore.VirtualNetworkRuleResponse[]>;
+    public readonly virtualNetworkRules!: pulumi.Output<types.outputs.VirtualNetworkRuleResponse[]>;
 
     /**
      * Create a Account resource with the given unique name, arguments, and options.
@@ -211,7 +211,7 @@ export interface AccountArgs {
     /**
      * The Key Vault encryption configuration.
      */
-    encryptionConfig?: pulumi.Input<types.inputs.datalakestore.EncryptionConfigArgs>;
+    encryptionConfig?: pulumi.Input<types.inputs.EncryptionConfigArgs>;
     /**
      * The current state of encryption for this Data Lake Store account.
      */
@@ -223,7 +223,7 @@ export interface AccountArgs {
     /**
      * The list of firewall rules associated with this Data Lake Store account.
      */
-    firewallRules?: pulumi.Input<pulumi.Input<types.inputs.datalakestore.CreateFirewallRuleWithAccountParametersArgs>[]>;
+    firewallRules?: pulumi.Input<pulumi.Input<types.inputs.CreateFirewallRuleWithAccountParametersArgs>[]>;
     /**
      * The current state of the IP address firewall for this Data Lake Store account.
      */
@@ -231,7 +231,7 @@ export interface AccountArgs {
     /**
      * The Key Vault encryption identity, if any.
      */
-    identity?: pulumi.Input<types.inputs.datalakestore.EncryptionIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.EncryptionIdentityArgs>;
     /**
      * The resource location.
      */
@@ -255,9 +255,9 @@ export interface AccountArgs {
     /**
      * The list of trusted identity providers associated with this Data Lake Store account.
      */
-    trustedIdProviders?: pulumi.Input<pulumi.Input<types.inputs.datalakestore.CreateTrustedIdProviderWithAccountParametersArgs>[]>;
+    trustedIdProviders?: pulumi.Input<pulumi.Input<types.inputs.CreateTrustedIdProviderWithAccountParametersArgs>[]>;
     /**
      * The list of virtual network rules associated with this Data Lake Store account.
      */
-    virtualNetworkRules?: pulumi.Input<pulumi.Input<types.inputs.datalakestore.CreateVirtualNetworkRuleWithAccountParametersArgs>[]>;
+    virtualNetworkRules?: pulumi.Input<pulumi.Input<types.inputs.CreateVirtualNetworkRuleWithAccountParametersArgs>[]>;
 }

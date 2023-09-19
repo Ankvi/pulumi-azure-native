@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a Redis cache (resource description).
  */
@@ -31,7 +31,7 @@ export interface GetRedisResult {
     /**
      * The keys of the Redis cache - not set if this object is not the response to Create or Update redis cache
      */
-    readonly accessKeys: types.outputs.cache.v20200601.RedisAccessKeysResponse;
+    readonly accessKeys: types.outputs.RedisAccessKeysResponse;
     /**
      * Specifies whether the non-ssl Redis server port (6379) is enabled.
      */
@@ -47,11 +47,11 @@ export interface GetRedisResult {
     /**
      * List of the Redis instances associated with the cache
      */
-    readonly instances: types.outputs.cache.v20200601.RedisInstanceDetailsResponse[];
+    readonly instances: types.outputs.RedisInstanceDetailsResponse[];
     /**
      * List of the linked servers associated with the cache
      */
-    readonly linkedServers: types.outputs.cache.v20200601.RedisLinkedServerResponse[];
+    readonly linkedServers: types.outputs.RedisLinkedServerResponse[];
     /**
      * The geo-location where the resource lives
      */
@@ -71,7 +71,7 @@ export interface GetRedisResult {
     /**
      * List of private endpoint connection associated with the specified redis cache
      */
-    readonly privateEndpointConnections: types.outputs.cache.v20200601.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections: types.outputs.PrivateEndpointConnectionResponse[];
     /**
      * Redis instance provisioning status.
      */
@@ -83,7 +83,7 @@ export interface GetRedisResult {
     /**
      * All Redis Settings. Few possible keys: rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta,maxmemory-policy,notify-keyspace-events,maxmemory-samples,slowlog-log-slower-than,slowlog-max-len,list-max-ziplist-entries,list-max-ziplist-value,hash-max-ziplist-entries,hash-max-ziplist-value,set-max-intset-entries,zset-max-ziplist-entries,zset-max-ziplist-value etc.
      */
-    readonly redisConfiguration?: types.outputs.cache.v20200601.RedisCommonPropertiesResponseRedisConfiguration;
+    readonly redisConfiguration?: types.outputs.RedisCommonPropertiesResponseRedisConfiguration;
     /**
      * Redis version.
      */
@@ -99,7 +99,7 @@ export interface GetRedisResult {
     /**
      * The SKU of the Redis cache to deploy.
      */
-    readonly sku: types.outputs.cache.v20200601.SkuResponse;
+    readonly sku: types.outputs.SkuResponse;
     /**
      * Redis SSL port.
      */

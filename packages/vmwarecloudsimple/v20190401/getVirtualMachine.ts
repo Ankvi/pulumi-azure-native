@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get virtual machine
  */
@@ -35,15 +35,15 @@ export interface GetVirtualMachineResult {
     /**
      * The list of Virtual Disks' Controllers
      */
-    readonly controllers: types.outputs.vmwarecloudsimple.v20190401.VirtualDiskControllerResponse[];
+    readonly controllers: types.outputs.VirtualDiskControllerResponse[];
     /**
      * Virtual machine properties
      */
-    readonly customization?: types.outputs.vmwarecloudsimple.v20190401.GuestOSCustomizationResponse;
+    readonly customization?: types.outputs.GuestOSCustomizationResponse;
     /**
      * The list of Virtual Disks
      */
-    readonly disks?: types.outputs.vmwarecloudsimple.v20190401.VirtualDiskResponse[];
+    readonly disks?: types.outputs.VirtualDiskResponse[];
     /**
      * The DNS name of Virtual Machine in VCenter
      */
@@ -79,7 +79,7 @@ export interface GetVirtualMachineResult {
     /**
      * The list of Virtual NICs
      */
-    readonly nics?: types.outputs.vmwarecloudsimple.v20190401.VirtualNicResponse[];
+    readonly nics?: types.outputs.VirtualNicResponse[];
     /**
      * The number of CPU cores
      */
@@ -103,7 +103,7 @@ export interface GetVirtualMachineResult {
     /**
      * Virtual Machines Resource Pool
      */
-    readonly resourcePool?: types.outputs.vmwarecloudsimple.v20190401.ResourcePoolResponse;
+    readonly resourcePool?: types.outputs.ResourcePoolResponse;
     /**
      * The status of Virtual machine
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The HDInsight cluster application
  */
@@ -42,11 +42,11 @@ export class Application extends pulumi.CustomResource {
     /**
      * The properties of the application.
      */
-    public readonly properties!: pulumi.Output<types.outputs.hdinsight.v20230815preview.ApplicationPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ApplicationPropertiesResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.hdinsight.v20230815preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The tags for the application.
      */
@@ -112,7 +112,7 @@ export interface ApplicationArgs {
     /**
      * The properties of the application.
      */
-    properties?: pulumi.Input<types.inputs.hdinsight.v20230815preview.ApplicationPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ApplicationPropertiesArgs>;
     /**
      * The name of the resource group.
      */

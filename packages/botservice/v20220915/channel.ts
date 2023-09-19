@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Bot channel resource definition
  */
@@ -50,11 +50,11 @@ export class Channel extends pulumi.CustomResource {
     /**
      * The set of properties specific to bot channel resource
      */
-    public readonly properties!: pulumi.Output<types.outputs.botservice.v20220915.AcsChatChannelResponse | types.outputs.botservice.v20220915.AlexaChannelResponse | types.outputs.botservice.v20220915.DirectLineChannelResponse | types.outputs.botservice.v20220915.DirectLineSpeechChannelResponse | types.outputs.botservice.v20220915.EmailChannelResponse | types.outputs.botservice.v20220915.FacebookChannelResponse | types.outputs.botservice.v20220915.KikChannelResponse | types.outputs.botservice.v20220915.LineChannelResponse | types.outputs.botservice.v20220915.M365ExtensionsResponse | types.outputs.botservice.v20220915.MsTeamsChannelResponse | types.outputs.botservice.v20220915.OmnichannelResponse | types.outputs.botservice.v20220915.OutlookChannelResponse | types.outputs.botservice.v20220915.SearchAssistantResponse | types.outputs.botservice.v20220915.SkypeChannelResponse | types.outputs.botservice.v20220915.SlackChannelResponse | types.outputs.botservice.v20220915.SmsChannelResponse | types.outputs.botservice.v20220915.TelegramChannelResponse | types.outputs.botservice.v20220915.TelephonyChannelResponse | types.outputs.botservice.v20220915.WebChatChannelResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.AcsChatChannelResponse | types.outputs.AlexaChannelResponse | types.outputs.DirectLineChannelResponse | types.outputs.DirectLineSpeechChannelResponse | types.outputs.EmailChannelResponse | types.outputs.FacebookChannelResponse | types.outputs.KikChannelResponse | types.outputs.LineChannelResponse | types.outputs.M365ExtensionsResponse | types.outputs.MsTeamsChannelResponse | types.outputs.OmnichannelResponse | types.outputs.OutlookChannelResponse | types.outputs.SearchAssistantResponse | types.outputs.SkypeChannelResponse | types.outputs.SlackChannelResponse | types.outputs.SmsChannelResponse | types.outputs.TelegramChannelResponse | types.outputs.TelephonyChannelResponse | types.outputs.WebChatChannelResponse>;
     /**
      * Gets or sets the SKU of the resource.
      */
-    public readonly sku!: pulumi.Output<types.outputs.botservice.v20220915.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Contains resource tags defined as key/value pairs.
      */
@@ -126,7 +126,7 @@ export interface ChannelArgs {
     /**
      * Required. Gets or sets the Kind of the resource.
      */
-    kind?: pulumi.Input<string | types.enums.v20220915.Kind>;
+    kind?: pulumi.Input<string | types.enums.Kind>;
     /**
      * Specifies the location of the resource.
      */
@@ -134,7 +134,7 @@ export interface ChannelArgs {
     /**
      * The set of properties specific to bot channel resource
      */
-    properties?: pulumi.Input<types.inputs.botservice.v20220915.AcsChatChannelArgs | types.inputs.botservice.v20220915.AlexaChannelArgs | types.inputs.botservice.v20220915.DirectLineChannelArgs | types.inputs.botservice.v20220915.DirectLineSpeechChannelArgs | types.inputs.botservice.v20220915.EmailChannelArgs | types.inputs.botservice.v20220915.FacebookChannelArgs | types.inputs.botservice.v20220915.KikChannelArgs | types.inputs.botservice.v20220915.LineChannelArgs | types.inputs.botservice.v20220915.M365ExtensionsArgs | types.inputs.botservice.v20220915.MsTeamsChannelArgs | types.inputs.botservice.v20220915.OmnichannelArgs | types.inputs.botservice.v20220915.OutlookChannelArgs | types.inputs.botservice.v20220915.SearchAssistantArgs | types.inputs.botservice.v20220915.SkypeChannelArgs | types.inputs.botservice.v20220915.SlackChannelArgs | types.inputs.botservice.v20220915.SmsChannelArgs | types.inputs.botservice.v20220915.TelegramChannelArgs | types.inputs.botservice.v20220915.TelephonyChannelArgs | types.inputs.botservice.v20220915.WebChatChannelArgs>;
+    properties?: pulumi.Input<types.inputs.AcsChatChannelArgs | types.inputs.AlexaChannelArgs | types.inputs.DirectLineChannelArgs | types.inputs.DirectLineSpeechChannelArgs | types.inputs.EmailChannelArgs | types.inputs.FacebookChannelArgs | types.inputs.KikChannelArgs | types.inputs.LineChannelArgs | types.inputs.M365ExtensionsArgs | types.inputs.MsTeamsChannelArgs | types.inputs.OmnichannelArgs | types.inputs.OutlookChannelArgs | types.inputs.SearchAssistantArgs | types.inputs.SkypeChannelArgs | types.inputs.SlackChannelArgs | types.inputs.SmsChannelArgs | types.inputs.TelegramChannelArgs | types.inputs.TelephonyChannelArgs | types.inputs.WebChatChannelArgs>;
     /**
      * The name of the Bot resource group in the user subscription.
      */
@@ -146,7 +146,7 @@ export interface ChannelArgs {
     /**
      * Gets or sets the SKU of the resource.
      */
-    sku?: pulumi.Input<types.inputs.botservice.v20220915.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Contains resource tags defined as key/value pairs.
      */

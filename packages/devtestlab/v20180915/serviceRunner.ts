@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A container for a managed identity to execute DevTest lab services.
  */
@@ -34,7 +34,7 @@ export class ServiceRunner extends pulumi.CustomResource {
     /**
      * The identity of the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.devtestlab.v20180915.IdentityPropertiesResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityPropertiesResponse | undefined>;
     /**
      * The location of the resource.
      */
@@ -97,7 +97,7 @@ export interface ServiceRunnerArgs {
     /**
      * The identity of the resource.
      */
-    identity?: pulumi.Input<types.inputs.devtestlab.v20180915.IdentityPropertiesArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityPropertiesArgs>;
     /**
      * The name of the lab.
      */

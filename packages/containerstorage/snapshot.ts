@@ -47,11 +47,11 @@ export class Snapshot extends pulumi.CustomResource {
     /**
      * The status of the resource.
      */
-    public /*out*/ readonly status!: pulumi.Output<types.outputs.containerstorage.ResourceOperationalStatusResponse>;
+    public /*out*/ readonly status!: pulumi.Output<types.outputs.ResourceOperationalStatusResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.containerstorage.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

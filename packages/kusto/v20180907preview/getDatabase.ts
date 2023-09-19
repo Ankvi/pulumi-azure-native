@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns a database.
  */
@@ -64,7 +64,7 @@ export interface GetDatabaseResult {
     /**
      * The statistics of the database.
      */
-    readonly statistics: types.outputs.kusto.v20180907preview.DatabaseStatisticsResponse;
+    readonly statistics: types.outputs.DatabaseStatisticsResponse;
     /**
      * Resource tags.
      */

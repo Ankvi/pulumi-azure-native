@@ -32,7 +32,7 @@ export interface GetSimGroupResult {
     /**
      * A key to encrypt the SIM data that belongs to this SIM group.
      */
-    readonly encryptionKey?: types.outputs.mobilenetwork.KeyVaultKeyResponse;
+    readonly encryptionKey?: types.outputs.KeyVaultKeyResponse;
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -40,7 +40,7 @@ export interface GetSimGroupResult {
     /**
      * The identity used to retrieve the encryption key from Azure key vault.
      */
-    readonly identity?: types.outputs.mobilenetwork.ManagedServiceIdentityResponse;
+    readonly identity?: types.outputs.ManagedServiceIdentityResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -48,7 +48,7 @@ export interface GetSimGroupResult {
     /**
      * Mobile network that this SIM group belongs to. The mobile network must be in the same location as the SIM group.
      */
-    readonly mobileNetwork?: types.outputs.mobilenetwork.MobileNetworkResourceIdResponse;
+    readonly mobileNetwork?: types.outputs.MobileNetworkResourceIdResponse;
     /**
      * The name of the resource
      */
@@ -60,7 +60,7 @@ export interface GetSimGroupResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.mobilenetwork.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

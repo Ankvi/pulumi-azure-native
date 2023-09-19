@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a managed instance.
  */
@@ -40,7 +40,7 @@ export interface GetManagedInstanceResult {
     /**
      * The Azure Active Directory administrator of the server.
      */
-    readonly administrators?: types.outputs.sql.v20211101.ManagedInstanceExternalAdministratorResponse;
+    readonly administrators?: types.outputs.ManagedInstanceExternalAdministratorResponse;
     /**
      * Collation of the managed instance.
      */
@@ -64,7 +64,7 @@ export interface GetManagedInstanceResult {
     /**
      * The Azure Active Directory identity of the managed instance.
      */
-    readonly identity?: types.outputs.sql.v20211101.ResourceIdentityResponse;
+    readonly identity?: types.outputs.ResourceIdentityResponse;
     /**
      * The Id of the instance pool this managed server belongs to.
      */
@@ -100,7 +100,7 @@ export interface GetManagedInstanceResult {
     /**
      * List of private endpoint connections on a managed instance.
      */
-    readonly privateEndpointConnections: types.outputs.sql.v20211101.ManagedInstancePecPropertyResponse[];
+    readonly privateEndpointConnections: types.outputs.ManagedInstancePecPropertyResponse[];
     readonly provisioningState: string;
     /**
      * Connection type used for connecting to the instance.
@@ -117,11 +117,11 @@ export interface GetManagedInstanceResult {
     /**
      * The managed instance's service principal.
      */
-    readonly servicePrincipal?: types.outputs.sql.v20211101.ServicePrincipalResponse;
+    readonly servicePrincipal?: types.outputs.ServicePrincipalResponse;
     /**
      * Managed instance SKU. Allowed values for sku.name: GP_Gen5, GP_G8IM, GP_G8IH, BC_Gen5, BC_G8IM, BC_G8IH
      */
-    readonly sku?: types.outputs.sql.v20211101.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * The state of the managed instance.
      */

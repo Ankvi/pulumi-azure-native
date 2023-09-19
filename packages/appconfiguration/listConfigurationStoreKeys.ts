@@ -41,7 +41,7 @@ export interface ListConfigurationStoreKeysResult {
     /**
      * The collection value.
      */
-    readonly value?: types.outputs.appconfiguration.ApiKeyResponse[];
+    readonly value?: types.outputs.ApiKeyResponse[];
 }
 /**
  * Lists the access key for the specified configuration store.

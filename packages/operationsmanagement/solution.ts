@@ -43,11 +43,11 @@ export class Solution extends pulumi.CustomResource {
     /**
      * Plan for solution object supported by the OperationsManagement resource provider.
      */
-    public readonly plan!: pulumi.Output<types.outputs.operationsmanagement.SolutionPlanResponse | undefined>;
+    public readonly plan!: pulumi.Output<types.outputs.SolutionPlanResponse | undefined>;
     /**
      * Properties for solution object supported by the OperationsManagement resource provider.
      */
-    public readonly properties!: pulumi.Output<types.outputs.operationsmanagement.SolutionPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.SolutionPropertiesResponse>;
     /**
      * Resource tags
      */
@@ -105,11 +105,11 @@ export interface SolutionArgs {
     /**
      * Plan for solution object supported by the OperationsManagement resource provider.
      */
-    plan?: pulumi.Input<types.inputs.operationsmanagement.SolutionPlanArgs>;
+    plan?: pulumi.Input<types.inputs.SolutionPlanArgs>;
     /**
      * Properties for solution object supported by the OperationsManagement resource provider.
      */
-    properties?: pulumi.Input<types.inputs.operationsmanagement.SolutionPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.SolutionPropertiesArgs>;
     /**
      * The name of the resource group to get. The name is case insensitive.
      */

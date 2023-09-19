@@ -43,7 +43,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * Managed service identity (system assigned and/or user assigned identities)
      */
-    public readonly identity!: pulumi.Output<types.outputs.videoindexer.ManagedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -51,7 +51,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * The media services details
      */
-    public readonly mediaServices!: pulumi.Output<types.outputs.videoindexer.MediaServicesForPutRequestResponse | undefined>;
+    public readonly mediaServices!: pulumi.Output<types.outputs.MediaServicesForPutRequestResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -63,7 +63,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * The system meta data relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.videoindexer.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -144,7 +144,7 @@ export interface AccountArgs {
     /**
      * Managed service identity (system assigned and/or user assigned identities)
      */
-    identity?: pulumi.Input<types.inputs.videoindexer.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -152,7 +152,7 @@ export interface AccountArgs {
     /**
      * The media services details
      */
-    mediaServices?: pulumi.Input<types.inputs.videoindexer.MediaServicesForPutRequestArgs>;
+    mediaServices?: pulumi.Input<types.inputs.MediaServicesForPutRequestArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

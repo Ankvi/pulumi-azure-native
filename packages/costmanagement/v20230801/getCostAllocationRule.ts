@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a cost allocation rule by rule name and billing account or enterprise enrollment.
  */
@@ -39,7 +39,7 @@ export interface GetCostAllocationRuleResult {
     /**
      * Cost allocation rule properties
      */
-    readonly properties: types.outputs.costmanagement.v20230801.CostAllocationRulePropertiesResponse;
+    readonly properties: types.outputs.CostAllocationRulePropertiesResponse;
     /**
      * Resource type of the rule. This is a read only value of Microsoft.CostManagement/CostAllocationRule.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the GroupQuotas for the name passed. It will return the GroupQuotas properties only. The details on groupQuota can be access from the groupQuota APIs.
  */
@@ -39,11 +39,11 @@ export interface GetGroupQuotaResult {
     /**
      * Properties and filters for ShareQuota. The request parameter is optional, if there are no filters specified.
      */
-    readonly properties: types.outputs.quota.v20230601preview.GroupQuotasEntityBaseResponse;
+    readonly properties: types.outputs.GroupQuotasEntityBaseResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.quota.v20230601preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

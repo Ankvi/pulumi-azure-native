@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Description for Get an App Service plan.
  */
@@ -35,7 +35,7 @@ export interface GetAppServicePlanResult {
     /**
      * Extended Location.
      */
-    readonly extendedLocation?: types.outputs.web.v20220901.ExtendedLocationResponse;
+    readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
     /**
      * The time when the server farm free offer expires.
      */
@@ -47,7 +47,7 @@ export interface GetAppServicePlanResult {
     /**
      * Specification for the App Service Environment to use for the App Service plan.
      */
-    readonly hostingEnvironmentProfile?: types.outputs.web.v20220901.HostingEnvironmentProfileResponse;
+    readonly hostingEnvironmentProfile?: types.outputs.HostingEnvironmentProfileResponse;
     /**
      * If Hyper-V container app service plan <code>true</code>, <code>false</code> otherwise.
      */
@@ -71,7 +71,7 @@ export interface GetAppServicePlanResult {
     /**
      * Specification for the Kubernetes Environment to use for the App Service plan.
      */
-    readonly kubeEnvironmentProfile?: types.outputs.web.v20220901.KubeEnvironmentProfileResponse;
+    readonly kubeEnvironmentProfile?: types.outputs.KubeEnvironmentProfileResponse;
     /**
      * Resource Location.
      */
@@ -116,7 +116,7 @@ export interface GetAppServicePlanResult {
     /**
      * Description of a SKU for a scalable resource.
      */
-    readonly sku?: types.outputs.web.v20220901.SkuDescriptionResponse;
+    readonly sku?: types.outputs.SkuDescriptionResponse;
     /**
      * The time when the server farm expires. Valid only if it is a spot server farm.
      */

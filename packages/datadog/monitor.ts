@@ -31,7 +31,7 @@ export class Monitor extends pulumi.CustomResource {
         return obj['__pulumiType'] === Monitor.__pulumiType;
     }
 
-    public readonly identity!: pulumi.Output<types.outputs.datadog.IdentityPropertiesResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityPropertiesResponse | undefined>;
     public readonly location!: pulumi.Output<string>;
     /**
      * Name of the monitor resource.
@@ -40,12 +40,12 @@ export class Monitor extends pulumi.CustomResource {
     /**
      * Properties specific to the monitor resource.
      */
-    public readonly properties!: pulumi.Output<types.outputs.datadog.MonitorPropertiesResponse>;
-    public readonly sku!: pulumi.Output<types.outputs.datadog.ResourceSkuResponse | undefined>;
+    public readonly properties!: pulumi.Output<types.outputs.MonitorPropertiesResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.ResourceSkuResponse | undefined>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.datadog.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The type of the monitor resource.
@@ -97,7 +97,7 @@ export class Monitor extends pulumi.CustomResource {
  * The set of arguments for constructing a Monitor resource.
  */
 export interface MonitorArgs {
-    identity?: pulumi.Input<types.inputs.datadog.IdentityPropertiesArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityPropertiesArgs>;
     location?: pulumi.Input<string>;
     /**
      * Monitor resource name
@@ -106,11 +106,11 @@ export interface MonitorArgs {
     /**
      * Properties specific to the monitor resource.
      */
-    properties?: pulumi.Input<types.inputs.datadog.MonitorPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.MonitorPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
-    sku?: pulumi.Input<types.inputs.datadog.ResourceSkuArgs>;
+    sku?: pulumi.Input<types.inputs.ResourceSkuArgs>;
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

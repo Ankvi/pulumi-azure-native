@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A reference data set provides metadata about the events in an environment. Metadata in the reference data set will be joined with events as they are read from event sources. The metadata that makes up the reference data set is uploaded or modified through the Time Series Insights data plane APIs.
  */
@@ -42,7 +42,7 @@ export class ReferenceDataSet extends pulumi.CustomResource {
     /**
      * The list of key properties for the reference data set.
      */
-    public readonly keyProperties!: pulumi.Output<types.outputs.timeseriesinsights.v20210630preview.ReferenceDataSetKeyPropertyResponse[]>;
+    public readonly keyProperties!: pulumi.Output<types.outputs.ReferenceDataSetKeyPropertyResponse[]>;
     /**
      * Resource location
      */
@@ -119,7 +119,7 @@ export interface ReferenceDataSetArgs {
     /**
      * The reference data set key comparison behavior can be set using this property. By default, the value is 'Ordinal' - which means case sensitive key comparison will be performed while joining reference data with events or while adding new reference data. When 'OrdinalIgnoreCase' is set, case insensitive comparison will be used.
      */
-    dataStringComparisonBehavior?: pulumi.Input<string | types.enums.v20210630preview.DataStringComparisonBehavior>;
+    dataStringComparisonBehavior?: pulumi.Input<string | types.enums.DataStringComparisonBehavior>;
     /**
      * The name of the Time Series Insights environment associated with the specified resource group.
      */
@@ -127,7 +127,7 @@ export interface ReferenceDataSetArgs {
     /**
      * The list of key properties for the reference data set.
      */
-    keyProperties: pulumi.Input<pulumi.Input<types.inputs.timeseriesinsights.v20210630preview.ReferenceDataSetKeyPropertyArgs>[]>;
+    keyProperties: pulumi.Input<pulumi.Input<types.inputs.ReferenceDataSetKeyPropertyArgs>[]>;
     /**
      * The location of the resource.
      */

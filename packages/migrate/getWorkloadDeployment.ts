@@ -50,8 +50,8 @@ export interface GetWorkloadDeploymentResult {
     /**
      * Workload deployment model properties.
      */
-    readonly properties: types.outputs.migrate.WorkloadDeploymentModelPropertiesResponse;
-    readonly systemData: types.outputs.migrate.WorkloadDeploymentModelResponseSystemData;
+    readonly properties: types.outputs.WorkloadDeploymentModelPropertiesResponse;
+    readonly systemData: types.outputs.WorkloadDeploymentModelResponseSystemData;
     /**
      * Gets or sets the resource tags.
      */

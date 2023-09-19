@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns a Azure Arc PrivateLinkScope.
  */
@@ -43,11 +43,11 @@ export interface GetPrivateLinkScopeResult {
     /**
      * Properties that define a Azure Arc PrivateLinkScope resource.
      */
-    readonly properties: types.outputs.hybridcompute.v20230620preview.HybridComputePrivateLinkScopePropertiesResponse;
+    readonly properties: types.outputs.HybridComputePrivateLinkScopePropertiesResponse;
     /**
      * The system meta data relating to this resource.
      */
-    readonly systemData: types.outputs.hybridcompute.v20230620preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags
      */

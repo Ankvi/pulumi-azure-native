@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the hybrid identity metadata proxy resource.
  */
@@ -40,7 +40,7 @@ export interface GetHybridIdentityMetadatumResult {
     /**
      * The identity of the provisioned cluster.
      */
-    readonly identity?: types.outputs.hybridcontainerservice.v20220501preview.ProvisionedClusterIdentityResponse;
+    readonly identity?: types.outputs.ProvisionedClusterIdentityResponse;
     /**
      * The name of the resource
      */
@@ -60,7 +60,7 @@ export interface GetHybridIdentityMetadatumResult {
     /**
      * The system data.
      */
-    readonly systemData: types.outputs.hybridcontainerservice.v20220501preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

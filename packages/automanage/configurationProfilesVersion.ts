@@ -43,11 +43,11 @@ export class ConfigurationProfilesVersion extends pulumi.CustomResource {
     /**
      * Properties of the configuration profile.
      */
-    public readonly properties!: pulumi.Output<types.outputs.automanage.ConfigurationProfilePropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ConfigurationProfilePropertiesResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.automanage.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -113,7 +113,7 @@ export interface ConfigurationProfilesVersionArgs {
     /**
      * Properties of the configuration profile.
      */
-    properties?: pulumi.Input<types.inputs.automanage.ConfigurationProfilePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ConfigurationProfilePropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

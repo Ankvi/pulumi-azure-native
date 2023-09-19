@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets information about the specified certificate.
  */
@@ -36,7 +36,7 @@ export interface GetCertificateResult {
     /**
      * This is only returned when the certificate provisioningState is 'Failed'.
      */
-    readonly deleteCertificateError: types.outputs.batch.v20220601.DeleteCertificateErrorResponse;
+    readonly deleteCertificateError: types.outputs.DeleteCertificateErrorResponse;
     /**
      * The ETag of the resource, used for concurrency statements.
      */

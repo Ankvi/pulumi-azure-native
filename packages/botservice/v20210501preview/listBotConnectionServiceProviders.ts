@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Lists the available Service Providers for creating Connection Settings
  */
@@ -26,7 +26,7 @@ export interface ListBotConnectionServiceProvidersResult {
     /**
      * Gets the list of bot service providers and their properties.
      */
-    readonly value: types.outputs.botservice.v20210501preview.ServiceProviderResponse[];
+    readonly value: types.outputs.ServiceProviderResponse[];
 }
 /**
  * Lists the available Service Providers for creating Connection Settings

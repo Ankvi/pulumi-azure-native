@@ -45,11 +45,11 @@ export interface GetManagedInstancePrivateEndpointConnectionResult {
     /**
      * Private endpoint which the connection belongs to.
      */
-    readonly privateEndpoint?: types.outputs.sql.ManagedInstancePrivateEndpointPropertyResponse;
+    readonly privateEndpoint?: types.outputs.ManagedInstancePrivateEndpointPropertyResponse;
     /**
      * Connection State of the Private Endpoint Connection.
      */
-    readonly privateLinkServiceConnectionState?: types.outputs.sql.ManagedInstancePrivateLinkServiceConnectionStatePropertyResponse;
+    readonly privateLinkServiceConnectionState?: types.outputs.ManagedInstancePrivateLinkServiceConnectionStatePropertyResponse;
     /**
      * State of the Private Endpoint Connection.
      */

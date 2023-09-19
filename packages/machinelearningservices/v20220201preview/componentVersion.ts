@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Azure Resource Manager resource envelope.
  */
@@ -34,7 +34,7 @@ export class ComponentVersion extends pulumi.CustomResource {
     /**
      * [Required] Additional attributes of the entity.
      */
-    public readonly componentVersionDetails!: pulumi.Output<types.outputs.machinelearningservices.v20220201preview.ComponentVersionResponse>;
+    public readonly componentVersionDetails!: pulumi.Output<types.outputs.ComponentVersionResponse>;
     /**
      * The name of the resource
      */
@@ -42,7 +42,7 @@ export class ComponentVersion extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.machinelearningservices.v20220201preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -71,7 +71,7 @@ export class ComponentVersion extends pulumi.CustomResource {
             if ((!args || args.workspaceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workspaceName'");
             }
-            resourceInputs["componentVersionDetails"] = args ? (args.componentVersionDetails ? pulumi.output(args.componentVersionDetails).apply(types.inputs.machinelearningservices.v20220201preview.componentVersionArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["componentVersionDetails"] = args ? (args.componentVersionDetails ? pulumi.output(args.componentVersionDetails).apply(types.inputs.componentVersionArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["version"] = args ? args.version : undefined;
@@ -98,7 +98,7 @@ export interface ComponentVersionArgs {
     /**
      * [Required] Additional attributes of the entity.
      */
-    componentVersionDetails: pulumi.Input<types.inputs.machinelearningservices.v20220201preview.ComponentVersionArgs>;
+    componentVersionDetails: pulumi.Input<types.inputs.ComponentVersionArgs>;
     /**
      * Container name.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 export class IntegrationAccount extends pulumi.CustomResource {
     /**
      * Get an existing IntegrationAccount resource's state with the given name, ID, and optional extra
@@ -39,7 +39,7 @@ export class IntegrationAccount extends pulumi.CustomResource {
     /**
      * The sku.
      */
-    public readonly sku!: pulumi.Output<types.outputs.logic.v20150801preview.IntegrationAccountSkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.IntegrationAccountSkuResponse | undefined>;
     /**
      * The resource tags.
      */
@@ -112,7 +112,7 @@ export interface IntegrationAccountArgs {
     /**
      * The sku.
      */
-    sku?: pulumi.Input<types.inputs.logic.v20150801preview.IntegrationAccountSkuArgs>;
+    sku?: pulumi.Input<types.inputs.IntegrationAccountSkuArgs>;
     /**
      * The resource tags.
      */

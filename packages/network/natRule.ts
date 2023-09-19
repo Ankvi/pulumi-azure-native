@@ -35,7 +35,7 @@ export class NatRule extends pulumi.CustomResource {
     /**
      * List of egress VpnSiteLinkConnections.
      */
-    public /*out*/ readonly egressVpnSiteLinkConnections!: pulumi.Output<types.outputs.network.SubResourceResponse[]>;
+    public /*out*/ readonly egressVpnSiteLinkConnections!: pulumi.Output<types.outputs.SubResourceResponse[]>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -43,15 +43,15 @@ export class NatRule extends pulumi.CustomResource {
     /**
      * The private IP address external mapping for NAT.
      */
-    public readonly externalMappings!: pulumi.Output<types.outputs.network.VpnNatRuleMappingResponse[] | undefined>;
+    public readonly externalMappings!: pulumi.Output<types.outputs.VpnNatRuleMappingResponse[] | undefined>;
     /**
      * List of ingress VpnSiteLinkConnections.
      */
-    public /*out*/ readonly ingressVpnSiteLinkConnections!: pulumi.Output<types.outputs.network.SubResourceResponse[]>;
+    public /*out*/ readonly ingressVpnSiteLinkConnections!: pulumi.Output<types.outputs.SubResourceResponse[]>;
     /**
      * The private IP address internal mapping for NAT.
      */
-    public readonly internalMappings!: pulumi.Output<types.outputs.network.VpnNatRuleMappingResponse[] | undefined>;
+    public readonly internalMappings!: pulumi.Output<types.outputs.VpnNatRuleMappingResponse[] | undefined>;
     /**
      * The IP Configuration ID this NAT rule applies to.
      */
@@ -130,7 +130,7 @@ export interface NatRuleArgs {
     /**
      * The private IP address external mapping for NAT.
      */
-    externalMappings?: pulumi.Input<pulumi.Input<types.inputs.network.VpnNatRuleMappingArgs>[]>;
+    externalMappings?: pulumi.Input<pulumi.Input<types.inputs.VpnNatRuleMappingArgs>[]>;
     /**
      * The name of the gateway.
      */
@@ -142,7 +142,7 @@ export interface NatRuleArgs {
     /**
      * The private IP address internal mapping for NAT.
      */
-    internalMappings?: pulumi.Input<pulumi.Input<types.inputs.network.VpnNatRuleMappingArgs>[]>;
+    internalMappings?: pulumi.Input<pulumi.Input<types.inputs.VpnNatRuleMappingArgs>[]>;
     /**
      * The IP Configuration ID this NAT rule applies to.
      */

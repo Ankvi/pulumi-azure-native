@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The Connector model definition
  */
@@ -34,7 +34,7 @@ export class Connector extends pulumi.CustomResource {
     /**
      * Collection information
      */
-    public /*out*/ readonly collection!: pulumi.Output<types.outputs.costmanagement.v20180801preview.ConnectorCollectionInfoResponse>;
+    public /*out*/ readonly collection!: pulumi.Output<types.outputs.ConnectorCollectionInfoResponse>;
     /**
      * Connector definition creation datetime
      */
@@ -175,7 +175,7 @@ export interface ConnectorArgs {
     /**
      * Connector status
      */
-    status?: pulumi.Input<string | types.enums.v20180801preview.ConnectorStatus>;
+    status?: pulumi.Input<string | types.enums.ConnectorStatus>;
     /**
      * Resource tags.
      */

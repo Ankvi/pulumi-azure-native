@@ -69,7 +69,7 @@ export interface GetSavedSearchResult {
     /**
      * The tags attached to the saved search.
      */
-    readonly tags?: types.outputs.operationalinsights.TagResponse[];
+    readonly tags?: types.outputs.TagResponse[];
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

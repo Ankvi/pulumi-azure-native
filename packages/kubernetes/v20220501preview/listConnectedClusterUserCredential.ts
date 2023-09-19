@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets cluster user credentials of the connected cluster with a specified resource group and name.
  */
@@ -19,7 +19,7 @@ export interface ListConnectedClusterUserCredentialArgs {
     /**
      * The mode of client authentication.
      */
-    authenticationMethod: string | types.enums.v20220501preview.AuthenticationMethod;
+    authenticationMethod: string | types.enums.AuthenticationMethod;
     /**
      * Boolean value to indicate whether the request is for client side proxy or not
      */
@@ -41,11 +41,11 @@ export interface ListConnectedClusterUserCredentialResult {
     /**
      * Contains the REP (rendezvous endpoint) and “Sender” access token.
      */
-    readonly hybridConnectionConfig: types.outputs.kubernetes.v20220501preview.HybridConnectionConfigResponse;
+    readonly hybridConnectionConfig: types.outputs.HybridConnectionConfigResponse;
     /**
      * Base64-encoded Kubernetes configuration file.
      */
-    readonly kubeconfigs: types.outputs.kubernetes.v20220501preview.CredentialResultResponse[];
+    readonly kubeconfigs: types.outputs.CredentialResultResponse[];
 }
 /**
  * Gets cluster user credentials of the connected cluster with a specified resource group and name.
@@ -58,7 +58,7 @@ export interface ListConnectedClusterUserCredentialOutputArgs {
     /**
      * The mode of client authentication.
      */
-    authenticationMethod: pulumi.Input<string | types.enums.v20220501preview.AuthenticationMethod>;
+    authenticationMethod: pulumi.Input<string | types.enums.AuthenticationMethod>;
     /**
      * Boolean value to indicate whether the request is for client side proxy or not
      */

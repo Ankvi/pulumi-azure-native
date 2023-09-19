@@ -76,7 +76,7 @@ export interface GetClusterResult {
     /**
      * Maintenance window of a cluster.
      */
-    readonly maintenanceWindow?: types.outputs.dbforpostgresql.MaintenanceWindowResponse;
+    readonly maintenanceWindow?: types.outputs.MaintenanceWindowResponse;
     /**
      * The name of the resource
      */
@@ -116,7 +116,7 @@ export interface GetClusterResult {
     /**
      * The private endpoint connections for a cluster.
      */
-    readonly privateEndpointConnections: types.outputs.dbforpostgresql.SimplePrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections: types.outputs.SimplePrivateEndpointConnectionResponse[];
     /**
      * Provisioning state of the cluster
      */
@@ -128,7 +128,7 @@ export interface GetClusterResult {
     /**
      * The list of server names in the cluster
      */
-    readonly serverNames: types.outputs.dbforpostgresql.ServerNameItemResponse[];
+    readonly serverNames: types.outputs.ServerNameItemResponse[];
     /**
      * The Azure region of source cluster for read replica clusters.
      */
@@ -144,7 +144,7 @@ export interface GetClusterResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.dbforpostgresql.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

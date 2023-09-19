@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Response for list of user's role for Logz.io account.
  */
@@ -40,7 +40,7 @@ export interface ListMonitorUserRolesResult {
     /**
      * List of user roles for Logz.io account.
      */
-    readonly value?: types.outputs.logz.v20220101preview.UserRoleResponseResponse[];
+    readonly value?: types.outputs.UserRoleResponseResponse[];
 }
 /**
  * Response for list of user's role for Logz.io account.

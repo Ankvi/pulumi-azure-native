@@ -55,7 +55,7 @@ export class StorageSyncService extends pulumi.CustomResource {
     /**
      * List of private endpoint connection associated with the specified storage sync service
      */
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.storagesync.PrivateEndpointConnectionResponse[]>;
+    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[]>;
     /**
      * StorageSyncService Provisioning State
      */
@@ -71,7 +71,7 @@ export class StorageSyncService extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.storagesync.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */

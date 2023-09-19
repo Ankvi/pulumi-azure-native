@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets properties of the specified application.
  */
@@ -48,11 +48,11 @@ export interface GetApplicationResult {
     /**
      * The properties of the application.
      */
-    readonly properties: types.outputs.hdinsight.v20230815preview.ApplicationPropertiesResponse;
+    readonly properties: types.outputs.ApplicationPropertiesResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.hdinsight.v20230815preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The tags for the application.
      */

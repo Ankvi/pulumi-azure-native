@@ -39,11 +39,11 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * The resource of private endpoint.
      */
-    public readonly privateEndpoint!: pulumi.Output<types.outputs.containerservice.PrivateEndpointResponse | undefined>;
+    public readonly privateEndpoint!: pulumi.Output<types.outputs.PrivateEndpointResponse | undefined>;
     /**
      * A collection of information about the state of the connection between service consumer and provider.
      */
-    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.containerservice.PrivateLinkServiceConnectionStateResponse>;
+    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.PrivateLinkServiceConnectionStateResponse>;
     /**
      * The current provisioning state.
      */
@@ -102,7 +102,7 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * The resource of private endpoint.
      */
-    privateEndpoint?: pulumi.Input<types.inputs.containerservice.PrivateEndpointArgs>;
+    privateEndpoint?: pulumi.Input<types.inputs.PrivateEndpointArgs>;
     /**
      * The name of the private endpoint connection.
      */
@@ -110,7 +110,7 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * A collection of information about the state of the connection between service consumer and provider.
      */
-    privateLinkServiceConnectionState: pulumi.Input<types.inputs.containerservice.PrivateLinkServiceConnectionStateArgs>;
+    privateLinkServiceConnectionState: pulumi.Input<types.inputs.PrivateLinkServiceConnectionStateArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

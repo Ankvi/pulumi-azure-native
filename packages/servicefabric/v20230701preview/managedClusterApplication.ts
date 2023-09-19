@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The application resource.
  */
@@ -34,7 +34,7 @@ export class ManagedClusterApplication extends pulumi.CustomResource {
     /**
      * Describes the managed identities for an Azure resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.servicefabric.v20230701preview.ManagedIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedIdentityResponse | undefined>;
     /**
      * Resource location depends on the parent resource.
      */
@@ -42,7 +42,7 @@ export class ManagedClusterApplication extends pulumi.CustomResource {
     /**
      * List of user assigned identities for the application, each mapped to a friendly name.
      */
-    public readonly managedIdentities!: pulumi.Output<types.outputs.servicefabric.v20230701preview.ApplicationUserAssignedIdentityResponse[] | undefined>;
+    public readonly managedIdentities!: pulumi.Output<types.outputs.ApplicationUserAssignedIdentityResponse[] | undefined>;
     /**
      * Azure resource name.
      */
@@ -58,7 +58,7 @@ export class ManagedClusterApplication extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.servicefabric.v20230701preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Azure resource tags.
      */
@@ -70,7 +70,7 @@ export class ManagedClusterApplication extends pulumi.CustomResource {
     /**
      * Describes the policy for a monitored application upgrade.
      */
-    public readonly upgradePolicy!: pulumi.Output<types.outputs.servicefabric.v20230701preview.ApplicationUpgradePolicyResponse | undefined>;
+    public readonly upgradePolicy!: pulumi.Output<types.outputs.ApplicationUpgradePolicyResponse | undefined>;
     /**
      * The version of the application type as defined in the application manifest.
      * This name must be the full Arm Resource ID for the referenced application type version.
@@ -143,7 +143,7 @@ export interface ManagedClusterApplicationArgs {
     /**
      * Describes the managed identities for an Azure resource.
      */
-    identity?: pulumi.Input<types.inputs.servicefabric.v20230701preview.ManagedIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedIdentityArgs>;
     /**
      * Resource location depends on the parent resource.
      */
@@ -151,7 +151,7 @@ export interface ManagedClusterApplicationArgs {
     /**
      * List of user assigned identities for the application, each mapped to a friendly name.
      */
-    managedIdentities?: pulumi.Input<pulumi.Input<types.inputs.servicefabric.v20230701preview.ApplicationUserAssignedIdentityArgs>[]>;
+    managedIdentities?: pulumi.Input<pulumi.Input<types.inputs.ApplicationUserAssignedIdentityArgs>[]>;
     /**
      * List of application parameters with overridden values from their default values specified in the application manifest.
      */
@@ -167,7 +167,7 @@ export interface ManagedClusterApplicationArgs {
     /**
      * Describes the policy for a monitored application upgrade.
      */
-    upgradePolicy?: pulumi.Input<types.inputs.servicefabric.v20230701preview.ApplicationUpgradePolicyArgs>;
+    upgradePolicy?: pulumi.Input<types.inputs.ApplicationUpgradePolicyArgs>;
     /**
      * The version of the application type as defined in the application manifest.
      * This name must be the full Arm Resource ID for the referenced application type version.

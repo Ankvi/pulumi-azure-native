@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The Live Output.
  */
@@ -50,7 +50,7 @@ export class LiveOutput extends pulumi.CustomResource {
     /**
      * HTTP Live Streaming (HLS) packing setting for the live output.
      */
-    public readonly hls!: pulumi.Output<types.outputs.media.v20221101.HlsResponse | undefined>;
+    public readonly hls!: pulumi.Output<types.outputs.HlsResponse | undefined>;
     /**
      * The time the live output was last modified.
      */
@@ -82,7 +82,7 @@ export class LiveOutput extends pulumi.CustomResource {
     /**
      * The system metadata relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.media.v20221101.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -178,7 +178,7 @@ export interface LiveOutputArgs {
     /**
      * HTTP Live Streaming (HLS) packing setting for the live output.
      */
-    hls?: pulumi.Input<types.inputs.media.v20221101.HlsArgs>;
+    hls?: pulumi.Input<types.inputs.HlsArgs>;
     /**
      * The name of the live event, maximum length is 32.
      */

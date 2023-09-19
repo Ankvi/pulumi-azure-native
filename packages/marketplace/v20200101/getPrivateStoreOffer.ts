@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets information about a specific offer.
  */
@@ -59,7 +59,7 @@ export interface GetPrivateStoreOfferResult {
     /**
      * Offer plans
      */
-    readonly plans?: types.outputs.marketplace.v20200101.PlanResponse[];
+    readonly plans?: types.outputs.PlanResponse[];
     /**
      * Private store unique id
      */

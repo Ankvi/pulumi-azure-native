@@ -27,7 +27,7 @@ export interface GetBastionShareableLinkArgs {
     /**
      * List of VM references.
      */
-    vms?: types.inputs.network.BastionShareableLink[];
+    vms?: types.inputs.BastionShareableLink[];
 }
 
 /**
@@ -41,7 +41,7 @@ export interface GetBastionShareableLinkResult {
     /**
      * List of Bastion Shareable Links for the request.
      */
-    readonly value?: types.outputs.network.BastionShareableLinkResponse[];
+    readonly value?: types.outputs.BastionShareableLinkResponse[];
 }
 /**
  * Return the Bastion Shareable Links for all the VMs specified in the request.
@@ -63,5 +63,5 @@ export interface GetBastionShareableLinkOutputArgs {
     /**
      * List of VM references.
      */
-    vms?: pulumi.Input<pulumi.Input<types.inputs.network.BastionShareableLinkArgs>[]>;
+    vms?: pulumi.Input<pulumi.Input<types.inputs.BastionShareableLinkArgs>[]>;
 }

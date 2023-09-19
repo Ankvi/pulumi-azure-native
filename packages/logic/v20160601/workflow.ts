@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The workflow type.
  */
@@ -50,7 +50,7 @@ export class Workflow extends pulumi.CustomResource {
     /**
      * The integration account.
      */
-    public /*out*/ readonly integrationAccount!: pulumi.Output<types.outputs.logic.v20160601.ResourceReferenceResponse | undefined>;
+    public /*out*/ readonly integrationAccount!: pulumi.Output<types.outputs.ResourceReferenceResponse | undefined>;
     /**
      * The resource location.
      */
@@ -62,7 +62,7 @@ export class Workflow extends pulumi.CustomResource {
     /**
      * The parameters.
      */
-    public readonly parameters!: pulumi.Output<{[key: string]: types.outputs.logic.v20160601.WorkflowParameterResponse} | undefined>;
+    public readonly parameters!: pulumi.Output<{[key: string]: types.outputs.WorkflowParameterResponse} | undefined>;
     /**
      * Gets the provisioning state.
      */
@@ -70,7 +70,7 @@ export class Workflow extends pulumi.CustomResource {
     /**
      * The sku.
      */
-    public readonly sku!: pulumi.Output<types.outputs.logic.v20160601.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * The state.
      */
@@ -156,7 +156,7 @@ export interface WorkflowArgs {
     /**
      * The parameters.
      */
-    parameters?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.logic.v20160601.WorkflowParameterArgs>}>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.WorkflowParameterArgs>}>;
     /**
      * The resource group name.
      */
@@ -164,11 +164,11 @@ export interface WorkflowArgs {
     /**
      * The sku.
      */
-    sku?: pulumi.Input<types.inputs.logic.v20160601.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * The state.
      */
-    state?: pulumi.Input<types.enums.v20160601.WorkflowState>;
+    state?: pulumi.Input<types.enums.WorkflowState>;
     /**
      * The resource tags.
      */

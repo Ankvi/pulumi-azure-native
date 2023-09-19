@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the description of an existing time series database connection.
  */
@@ -44,11 +44,11 @@ export interface GetTimeSeriesDatabaseConnectionResult {
     /**
      * Properties of a specific time series database connection.
      */
-    readonly properties: types.outputs.digitaltwins.v20230131.AzureDataExplorerConnectionPropertiesResponse;
+    readonly properties: types.outputs.AzureDataExplorerConnectionPropertiesResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.digitaltwins.v20230131.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The resource type.
      */

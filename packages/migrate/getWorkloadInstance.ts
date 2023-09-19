@@ -50,8 +50,8 @@ export interface GetWorkloadInstanceResult {
     /**
      * Workload instance model properties.
      */
-    readonly properties: types.outputs.migrate.WorkloadInstanceModelPropertiesResponse;
-    readonly systemData: types.outputs.migrate.WorkloadInstanceModelResponseSystemData;
+    readonly properties: types.outputs.WorkloadInstanceModelPropertiesResponse;
+    readonly systemData: types.outputs.WorkloadInstanceModelResponseSystemData;
     /**
      * Gets or sets the resource tags.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * vCenter definition.
  */
@@ -42,7 +42,7 @@ export class ReplicationvCenter extends pulumi.CustomResource {
     /**
      * VCenter related data.
      */
-    public readonly properties!: pulumi.Output<types.outputs.recoveryservices.v20230401.VCenterPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.VCenterPropertiesResponse>;
     /**
      * Resource Type
      */
@@ -100,7 +100,7 @@ export interface ReplicationvCenterArgs {
     /**
      * The properties of an add vCenter request.
      */
-    properties?: pulumi.Input<types.inputs.recoveryservices.v20230401.AddVCenterRequestPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.AddVCenterRequestPropertiesArgs>;
     /**
      * The name of the resource group where the recovery services vault is present.
      */

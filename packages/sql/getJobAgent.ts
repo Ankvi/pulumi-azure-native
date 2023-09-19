@@ -53,7 +53,7 @@ export interface GetJobAgentResult {
     /**
      * The name and tier of the SKU.
      */
-    readonly sku?: types.outputs.sql.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * The state of the job agent.
      */

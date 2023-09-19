@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Describes an inbound endpoint for a DNS resolver.
  */
@@ -38,7 +38,7 @@ export class InboundEndpoint extends pulumi.CustomResource {
     /**
      * IP configurations for the inbound endpoint.
      */
-    public readonly ipConfigurations!: pulumi.Output<types.outputs.network.v20220701.InboundEndpointIPConfigurationResponse[]>;
+    public readonly ipConfigurations!: pulumi.Output<types.outputs.InboundEndpointIPConfigurationResponse[]>;
     /**
      * The geo-location where the resource lives
      */
@@ -58,7 +58,7 @@ export class InboundEndpoint extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.network.v20220701.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -133,7 +133,7 @@ export interface InboundEndpointArgs {
     /**
      * IP configurations for the inbound endpoint.
      */
-    ipConfigurations: pulumi.Input<pulumi.Input<types.inputs.network.v20220701.InboundEndpointIPConfigurationArgs>[]>;
+    ipConfigurations: pulumi.Input<pulumi.Input<types.inputs.InboundEndpointIPConfigurationArgs>[]>;
     /**
      * The geo-location where the resource lives
      */

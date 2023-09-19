@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The storage container resource definition.
  */
@@ -34,7 +34,7 @@ export class StorageContainer extends pulumi.CustomResource {
     /**
      * The extendedLocation of the resource.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.azurestackhci.v20221215preview.ExtendedLocationResponse | undefined>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -54,11 +54,11 @@ export class StorageContainer extends pulumi.CustomResource {
     /**
      * The observed state of storage containers
      */
-    public /*out*/ readonly status!: pulumi.Output<types.outputs.azurestackhci.v20221215preview.StorageContainerStatusResponse>;
+    public /*out*/ readonly status!: pulumi.Output<types.outputs.StorageContainerStatusResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.azurestackhci.v20221215preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -118,7 +118,7 @@ export interface StorageContainerArgs {
     /**
      * The extendedLocation of the resource.
      */
-    extendedLocation?: pulumi.Input<types.inputs.azurestackhci.v20221215preview.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * The geo-location where the resource lives
      */

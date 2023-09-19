@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * VirtualWAN Resource.
  */
@@ -74,11 +74,11 @@ export class VirtualWan extends pulumi.CustomResource {
     /**
      * List of VirtualHubs in the VirtualWAN.
      */
-    public /*out*/ readonly virtualHubs!: pulumi.Output<types.outputs.network.v20230201.SubResourceResponse[]>;
+    public /*out*/ readonly virtualHubs!: pulumi.Output<types.outputs.SubResourceResponse[]>;
     /**
      * List of VpnSites in the VirtualWAN.
      */
-    public /*out*/ readonly vpnSites!: pulumi.Output<types.outputs.network.v20230201.SubResourceResponse[]>;
+    public /*out*/ readonly vpnSites!: pulumi.Output<types.outputs.SubResourceResponse[]>;
 
     /**
      * Create a VirtualWan resource with the given unique name, arguments, and options.

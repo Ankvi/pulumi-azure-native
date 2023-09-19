@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns the specified machine group as it existed during the specified time interval.
  */
@@ -71,7 +71,7 @@ export interface GetMachineGroupResult {
     /**
      * References of the machines in this group. The hints within each reference do not represent the current value of the corresponding fields. They are a snapshot created during the last time the machine group was updated.
      */
-    readonly machines?: types.outputs.operationalinsights.v20151101preview.MachineReferenceWithHintsResponse[];
+    readonly machines?: types.outputs.MachineReferenceWithHintsResponse[];
     /**
      * Resource name.
      */

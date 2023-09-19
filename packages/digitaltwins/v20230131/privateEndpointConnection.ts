@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The private endpoint connection of a Digital Twin.
  */
@@ -38,11 +38,11 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * The connection properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.digitaltwins.v20230131.ConnectionPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ConnectionPropertiesResponse>;
     /**
      * Metadata pertaining to creation and last modification of the private endpoint connection.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.digitaltwins.v20230131.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The resource type.
      */
@@ -99,7 +99,7 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * The connection properties.
      */
-    properties: pulumi.Input<types.inputs.digitaltwins.v20230131.ConnectionPropertiesArgs>;
+    properties: pulumi.Input<types.inputs.ConnectionPropertiesArgs>;
     /**
      * The name of the resource group that contains the DigitalTwinsInstance.
      */

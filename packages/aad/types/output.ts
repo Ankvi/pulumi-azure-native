@@ -1,802 +1,399 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
-export namespace aad {
+/**
+ * Configuration Diagnostics
+ */
+export interface ConfigDiagnosticsResponse {
     /**
-     * Configuration Diagnostics
+     * Last domain configuration diagnostics DateTime
      */
-    export interface ConfigDiagnosticsResponse {
-        /**
-         * Last domain configuration diagnostics DateTime
-         */
-        lastExecuted?: string;
-        /**
-         * List of Configuration Diagnostics validator results.
-         */
-        validatorResults?: ConfigDiagnosticsValidatorResultResponse[];
-    }
+    lastExecuted?: string;
+    /**
+     * List of Configuration Diagnostics validator results.
+     */
+    validatorResults?: ConfigDiagnosticsValidatorResultResponse[];
+}
 
+/**
+ * Specific issue for a particular config diagnostics validator
+ */
+export interface ConfigDiagnosticsValidatorResultIssueResponse {
     /**
-     * Specific issue for a particular config diagnostics validator
+     * List of domain resource property name or values used to compose a rich description.
      */
-    export interface ConfigDiagnosticsValidatorResultIssueResponse {
-        /**
-         * List of domain resource property name or values used to compose a rich description.
-         */
-        descriptionParams?: string[];
-        /**
-         * Validation issue identifier.
-         */
-        id?: string;
-    }
+    descriptionParams?: string[];
+    /**
+     * Validation issue identifier.
+     */
+    id?: string;
+}
 
+/**
+ * Config Diagnostics validator result data
+ */
+export interface ConfigDiagnosticsValidatorResultResponse {
     /**
-     * Config Diagnostics validator result data
+     * List of resource config validation issues.
      */
-    export interface ConfigDiagnosticsValidatorResultResponse {
-        /**
-         * List of resource config validation issues.
-         */
-        issues?: ConfigDiagnosticsValidatorResultIssueResponse[];
-        /**
-         * Replica set location and subnet name
-         */
-        replicaSetSubnetDisplayName?: string;
-        /**
-         * Status for individual validator after running diagnostics.
-         */
-        status?: string;
-        /**
-         * Validator identifier
-         */
-        validatorId?: string;
-    }
+    issues?: ConfigDiagnosticsValidatorResultIssueResponse[];
     /**
-     * configDiagnosticsValidatorResultResponseProvideDefaults sets the appropriate defaults for ConfigDiagnosticsValidatorResultResponse
+     * Replica set location and subnet name
      */
-    export function configDiagnosticsValidatorResultResponseProvideDefaults(val: ConfigDiagnosticsValidatorResultResponse): ConfigDiagnosticsValidatorResultResponse {
-        return {
-            ...val,
-            status: (val.status) ?? "None",
-        };
-    }
+    replicaSetSubnetDisplayName?: string;
+    /**
+     * Status for individual validator after running diagnostics.
+     */
+    status?: string;
+    /**
+     * Validator identifier
+     */
+    validatorId?: string;
+}
+/**
+ * configDiagnosticsValidatorResultResponseProvideDefaults sets the appropriate defaults for ConfigDiagnosticsValidatorResultResponse
+ */
+export function configDiagnosticsValidatorResultResponseProvideDefaults(val: ConfigDiagnosticsValidatorResultResponse): ConfigDiagnosticsValidatorResultResponse {
+    return {
+        ...val,
+        status: (val.status) ?? "None",
+    };
+}
 
+/**
+ * Container Account Description
+ */
+export interface ContainerAccountResponse {
     /**
-     * Container Account Description
+     * The account name
      */
-    export interface ContainerAccountResponse {
-        /**
-         * The account name
-         */
-        accountName?: string;
-        /**
-         * The account password
-         */
-        password?: string;
-        /**
-         * The account spn
-         */
-        spn?: string;
-    }
+    accountName?: string;
+    /**
+     * The account password
+     */
+    password?: string;
+    /**
+     * The account spn
+     */
+    spn?: string;
+}
 
+/**
+ * Domain Security Settings
+ */
+export interface DomainSecuritySettingsResponse {
     /**
-     * Domain Security Settings
+     * A flag to determine whether or not ChannelBinding is enabled or disabled.
      */
-    export interface DomainSecuritySettingsResponse {
-        /**
-         * A flag to determine whether or not ChannelBinding is enabled or disabled.
-         */
-        channelBinding?: string;
-        /**
-         * A flag to determine whether or not KerberosArmoring is enabled or disabled.
-         */
-        kerberosArmoring?: string;
-        /**
-         * A flag to determine whether or not KerberosRc4Encryption is enabled or disabled.
-         */
-        kerberosRc4Encryption?: string;
-        /**
-         * A flag to determine whether or not LdapSigning is enabled or disabled.
-         */
-        ldapSigning?: string;
-        /**
-         * A flag to determine whether or not NtlmV1 is enabled or disabled.
-         */
-        ntlmV1?: string;
-        /**
-         * A flag to determine whether or not SyncKerberosPasswords is enabled or disabled.
-         */
-        syncKerberosPasswords?: string;
-        /**
-         * A flag to determine whether or not SyncNtlmPasswords is enabled or disabled.
-         */
-        syncNtlmPasswords?: string;
-        /**
-         * A flag to determine whether or not SyncOnPremPasswords is enabled or disabled.
-         */
-        syncOnPremPasswords?: string;
-        /**
-         * A flag to determine whether or not TlsV1 is enabled or disabled.
-         */
-        tlsV1?: string;
-    }
+    channelBinding?: string;
     /**
-     * domainSecuritySettingsResponseProvideDefaults sets the appropriate defaults for DomainSecuritySettingsResponse
+     * A flag to determine whether or not KerberosArmoring is enabled or disabled.
      */
-    export function domainSecuritySettingsResponseProvideDefaults(val: DomainSecuritySettingsResponse): DomainSecuritySettingsResponse {
-        return {
-            ...val,
-            channelBinding: (val.channelBinding) ?? "Disabled",
-            kerberosArmoring: (val.kerberosArmoring) ?? "Disabled",
-            kerberosRc4Encryption: (val.kerberosRc4Encryption) ?? "Enabled",
-            ldapSigning: (val.ldapSigning) ?? "Disabled",
-            ntlmV1: (val.ntlmV1) ?? "Enabled",
-            syncKerberosPasswords: (val.syncKerberosPasswords) ?? "Enabled",
-            syncNtlmPasswords: (val.syncNtlmPasswords) ?? "Enabled",
-            syncOnPremPasswords: (val.syncOnPremPasswords) ?? "Enabled",
-            tlsV1: (val.tlsV1) ?? "Enabled",
-        };
-    }
+    kerberosArmoring?: string;
+    /**
+     * A flag to determine whether or not KerberosRc4Encryption is enabled or disabled.
+     */
+    kerberosRc4Encryption?: string;
+    /**
+     * A flag to determine whether or not LdapSigning is enabled or disabled.
+     */
+    ldapSigning?: string;
+    /**
+     * A flag to determine whether or not NtlmV1 is enabled or disabled.
+     */
+    ntlmV1?: string;
+    /**
+     * A flag to determine whether or not SyncKerberosPasswords is enabled or disabled.
+     */
+    syncKerberosPasswords?: string;
+    /**
+     * A flag to determine whether or not SyncNtlmPasswords is enabled or disabled.
+     */
+    syncNtlmPasswords?: string;
+    /**
+     * A flag to determine whether or not SyncOnPremPasswords is enabled or disabled.
+     */
+    syncOnPremPasswords?: string;
+    /**
+     * A flag to determine whether or not TlsV1 is enabled or disabled.
+     */
+    tlsV1?: string;
+}
+/**
+ * domainSecuritySettingsResponseProvideDefaults sets the appropriate defaults for DomainSecuritySettingsResponse
+ */
+export function domainSecuritySettingsResponseProvideDefaults(val: DomainSecuritySettingsResponse): DomainSecuritySettingsResponse {
+    return {
+        ...val,
+        channelBinding: (val.channelBinding) ?? "Disabled",
+        kerberosArmoring: (val.kerberosArmoring) ?? "Disabled",
+        kerberosRc4Encryption: (val.kerberosRc4Encryption) ?? "Enabled",
+        ldapSigning: (val.ldapSigning) ?? "Disabled",
+        ntlmV1: (val.ntlmV1) ?? "Enabled",
+        syncKerberosPasswords: (val.syncKerberosPasswords) ?? "Enabled",
+        syncNtlmPasswords: (val.syncNtlmPasswords) ?? "Enabled",
+        syncOnPremPasswords: (val.syncOnPremPasswords) ?? "Enabled",
+        tlsV1: (val.tlsV1) ?? "Enabled",
+    };
+}
 
+/**
+ * Forest Trust Setting
+ */
+export interface ForestTrustResponse {
     /**
-     * Forest Trust Setting
+     * Friendly Name
      */
-    export interface ForestTrustResponse {
-        /**
-         * Friendly Name
-         */
-        friendlyName?: string;
-        /**
-         * Remote Dns ips
-         */
-        remoteDnsIps?: string;
-        /**
-         * Trust Direction
-         */
-        trustDirection?: string;
-        /**
-         * Trust Password
-         */
-        trustPassword?: string;
-        /**
-         * Trusted Domain FQDN
-         */
-        trustedDomainFqdn?: string;
-    }
+    friendlyName?: string;
+    /**
+     * Remote Dns ips
+     */
+    remoteDnsIps?: string;
+    /**
+     * Trust Direction
+     */
+    trustDirection?: string;
+    /**
+     * Trust Password
+     */
+    trustPassword?: string;
+    /**
+     * Trusted Domain FQDN
+     */
+    trustedDomainFqdn?: string;
+}
 
+/**
+ * Health Alert Description
+ */
+export interface HealthAlertResponse {
     /**
-     * Health Alert Description
+     * Health Alert Id
      */
-    export interface HealthAlertResponse {
-        /**
-         * Health Alert Id
-         */
-        id: string;
-        /**
-         * Health Alert Issue
-         */
-        issue: string;
-        /**
-         * Health Alert Last Detected DateTime
-         */
-        lastDetected: string;
-        /**
-         * Health Alert Name
-         */
-        name: string;
-        /**
-         * Health Alert Raised DateTime
-         */
-        raised: string;
-        /**
-         * Health Alert TSG Link
-         */
-        resolutionUri: string;
-        /**
-         * Health Alert Severity
-         */
-        severity: string;
-    }
+    id: string;
+    /**
+     * Health Alert Issue
+     */
+    issue: string;
+    /**
+     * Health Alert Last Detected DateTime
+     */
+    lastDetected: string;
+    /**
+     * Health Alert Name
+     */
+    name: string;
+    /**
+     * Health Alert Raised DateTime
+     */
+    raised: string;
+    /**
+     * Health Alert TSG Link
+     */
+    resolutionUri: string;
+    /**
+     * Health Alert Severity
+     */
+    severity: string;
+}
 
+/**
+ * Health Monitor Description
+ */
+export interface HealthMonitorResponse {
     /**
-     * Health Monitor Description
+     * Health Monitor Details
      */
-    export interface HealthMonitorResponse {
-        /**
-         * Health Monitor Details
-         */
-        details: string;
-        /**
-         * Health Monitor Id
-         */
-        id: string;
-        /**
-         * Health Monitor Name
-         */
-        name: string;
-    }
+    details: string;
+    /**
+     * Health Monitor Id
+     */
+    id: string;
+    /**
+     * Health Monitor Name
+     */
+    name: string;
+}
 
+/**
+ * Secure LDAP Settings
+ */
+export interface LdapsSettingsResponse {
     /**
-     * Secure LDAP Settings
+     * NotAfter DateTime of configure ldaps certificate.
      */
-    export interface LdapsSettingsResponse {
-        /**
-         * NotAfter DateTime of configure ldaps certificate.
-         */
-        certificateNotAfter: string;
-        /**
-         * Thumbprint of configure ldaps certificate.
-         */
-        certificateThumbprint: string;
-        /**
-         * A flag to determine whether or not Secure LDAP access over the internet is enabled or disabled.
-         */
-        externalAccess?: string;
-        /**
-         * A flag to determine whether or not Secure LDAP is enabled or disabled.
-         */
-        ldaps?: string;
-        /**
-         * The certificate required to configure Secure LDAP. The parameter passed here should be a base64encoded representation of the certificate pfx file.
-         */
-        pfxCertificate?: string;
-        /**
-         * The password to decrypt the provided Secure LDAP certificate pfx file.
-         */
-        pfxCertificatePassword?: string;
-        /**
-         * Public certificate used to configure secure ldap.
-         */
-        publicCertificate: string;
-    }
+    certificateNotAfter: string;
     /**
-     * ldapsSettingsResponseProvideDefaults sets the appropriate defaults for LdapsSettingsResponse
+     * Thumbprint of configure ldaps certificate.
      */
-    export function ldapsSettingsResponseProvideDefaults(val: LdapsSettingsResponse): LdapsSettingsResponse {
-        return {
-            ...val,
-            externalAccess: (val.externalAccess) ?? "Disabled",
-            ldaps: (val.ldaps) ?? "Disabled",
-        };
-    }
+    certificateThumbprint: string;
+    /**
+     * A flag to determine whether or not Secure LDAP access over the internet is enabled or disabled.
+     */
+    externalAccess?: string;
+    /**
+     * A flag to determine whether or not Secure LDAP is enabled or disabled.
+     */
+    ldaps?: string;
+    /**
+     * The certificate required to configure Secure LDAP. The parameter passed here should be a base64encoded representation of the certificate pfx file.
+     */
+    pfxCertificate?: string;
+    /**
+     * The password to decrypt the provided Secure LDAP certificate pfx file.
+     */
+    pfxCertificatePassword?: string;
+    /**
+     * Public certificate used to configure secure ldap.
+     */
+    publicCertificate: string;
+}
+/**
+ * ldapsSettingsResponseProvideDefaults sets the appropriate defaults for LdapsSettingsResponse
+ */
+export function ldapsSettingsResponseProvideDefaults(val: LdapsSettingsResponse): LdapsSettingsResponse {
+    return {
+        ...val,
+        externalAccess: (val.externalAccess) ?? "Disabled",
+        ldaps: (val.ldaps) ?? "Disabled",
+    };
+}
 
+/**
+ * Migration Progress
+ */
+export interface MigrationProgressResponse {
+    /**
+     * Completion Percentage
+     */
+    completionPercentage?: number;
+    /**
+     * Progress Message
+     */
+    progressMessage?: string;
+}
+
+/**
+ * Migration Properties
+ */
+export interface MigrationPropertiesResponse {
     /**
      * Migration Progress
      */
-    export interface MigrationProgressResponse {
-        /**
-         * Completion Percentage
-         */
-        completionPercentage?: number;
-        /**
-         * Progress Message
-         */
-        progressMessage?: string;
-    }
-
+    migrationProgress: MigrationProgressResponse;
     /**
-     * Migration Properties
+     * Old Subnet Id
      */
-    export interface MigrationPropertiesResponse {
-        /**
-         * Migration Progress
-         */
-        migrationProgress: MigrationProgressResponse;
-        /**
-         * Old Subnet Id
-         */
-        oldSubnetId: string;
-        /**
-         * Old Vnet Site Id
-         */
-        oldVnetSiteId: string;
-    }
-
+    oldSubnetId: string;
     /**
-     * Settings for notification
+     * Old Vnet Site Id
      */
-    export interface NotificationSettingsResponse {
-        /**
-         * The list of additional recipients
-         */
-        additionalRecipients?: string[];
-        /**
-         * Should domain controller admins be notified
-         */
-        notifyDcAdmins?: string;
-        /**
-         * Should global admins be notified
-         */
-        notifyGlobalAdmins?: string;
-    }
+    oldVnetSiteId: string;
+}
 
+/**
+ * Settings for notification
+ */
+export interface NotificationSettingsResponse {
     /**
-     * Replica Set Definition
+     * The list of additional recipients
      */
-    export interface ReplicaSetResponse {
-        /**
-         * List of Domain Controller IP Address
-         */
-        domainControllerIpAddress: string[];
-        /**
-         * External access ip address.
-         */
-        externalAccessIpAddress: string;
-        /**
-         * List of Domain Health Alerts
-         */
-        healthAlerts: HealthAlertResponse[];
-        /**
-         * Last domain evaluation run DateTime
-         */
-        healthLastEvaluated: string;
-        /**
-         * List of Domain Health Monitors
-         */
-        healthMonitors: HealthMonitorResponse[];
-        /**
-         * Virtual network location
-         */
-        location?: string;
-        /**
-         * ReplicaSet Id
-         */
-        replicaSetId: string;
-        /**
-         * Status of Domain Service instance
-         */
-        serviceStatus: string;
-        /**
-         * The name of the virtual network that Domain Services will be deployed on. The id of the subnet that Domain Services will be deployed on. /virtualNetwork/vnetName/subnets/subnetName.
-         */
-        subnetId?: string;
-        /**
-         * Virtual network site id
-         */
-        vnetSiteId: string;
-    }
-
+    additionalRecipients?: string[];
     /**
-     * Settings for Resource Forest
+     * Should domain controller admins be notified
      */
-    export interface ResourceForestSettingsResponse {
-        /**
-         * Resource Forest
-         */
-        resourceForest?: string;
-        /**
-         * List of settings for Resource Forest
-         */
-        settings?: ForestTrustResponse[];
-    }
-
+    notifyDcAdmins?: string;
     /**
-     * Metadata pertaining to creation and last modification of the resource.
+     * Should global admins be notified
      */
-    export interface SystemDataResponse {
-        /**
-         * The timestamp of resource creation (UTC).
-         */
-        createdAt?: string;
-        /**
-         * The identity that created the resource.
-         */
-        createdBy?: string;
-        /**
-         * The type of identity that created the resource.
-         */
-        createdByType?: string;
-        /**
-         * The timestamp of resource last modification (UTC)
-         */
-        lastModifiedAt?: string;
-        /**
-         * The identity that last modified the resource.
-         */
-        lastModifiedBy?: string;
-        /**
-         * The type of identity that last modified the resource.
-         */
-        lastModifiedByType?: string;
-    }
+    notifyGlobalAdmins?: string;
+}
 
-    export namespace v20221201 {
-        /**
-         * Configuration Diagnostics
-         */
-        export interface ConfigDiagnosticsResponse {
-            /**
-             * Last domain configuration diagnostics DateTime
-             */
-            lastExecuted?: string;
-            /**
-             * List of Configuration Diagnostics validator results.
-             */
-            validatorResults?: v20221201.ConfigDiagnosticsValidatorResultResponse[];
-        }
+/**
+ * Replica Set Definition
+ */
+export interface ReplicaSetResponse {
+    /**
+     * List of Domain Controller IP Address
+     */
+    domainControllerIpAddress: string[];
+    /**
+     * External access ip address.
+     */
+    externalAccessIpAddress: string;
+    /**
+     * List of Domain Health Alerts
+     */
+    healthAlerts: HealthAlertResponse[];
+    /**
+     * Last domain evaluation run DateTime
+     */
+    healthLastEvaluated: string;
+    /**
+     * List of Domain Health Monitors
+     */
+    healthMonitors: HealthMonitorResponse[];
+    /**
+     * Virtual network location
+     */
+    location?: string;
+    /**
+     * ReplicaSet Id
+     */
+    replicaSetId: string;
+    /**
+     * Status of Domain Service instance
+     */
+    serviceStatus: string;
+    /**
+     * The name of the virtual network that Domain Services will be deployed on. The id of the subnet that Domain Services will be deployed on. /virtualNetwork/vnetName/subnets/subnetName.
+     */
+    subnetId?: string;
+    /**
+     * Virtual network site id
+     */
+    vnetSiteId: string;
+}
 
-        /**
-         * Specific issue for a particular config diagnostics validator
-         */
-        export interface ConfigDiagnosticsValidatorResultIssueResponse {
-            /**
-             * List of domain resource property name or values used to compose a rich description.
-             */
-            descriptionParams?: string[];
-            /**
-             * Validation issue identifier.
-             */
-            id?: string;
-        }
+/**
+ * Settings for Resource Forest
+ */
+export interface ResourceForestSettingsResponse {
+    /**
+     * Resource Forest
+     */
+    resourceForest?: string;
+    /**
+     * List of settings for Resource Forest
+     */
+    settings?: ForestTrustResponse[];
+}
 
-        /**
-         * Config Diagnostics validator result data
-         */
-        export interface ConfigDiagnosticsValidatorResultResponse {
-            /**
-             * List of resource config validation issues.
-             */
-            issues?: v20221201.ConfigDiagnosticsValidatorResultIssueResponse[];
-            /**
-             * Replica set location and subnet name
-             */
-            replicaSetSubnetDisplayName?: string;
-            /**
-             * Status for individual validator after running diagnostics.
-             */
-            status?: string;
-            /**
-             * Validator identifier
-             */
-            validatorId?: string;
-        }
-        /**
-         * configDiagnosticsValidatorResultResponseProvideDefaults sets the appropriate defaults for ConfigDiagnosticsValidatorResultResponse
-         */
-        export function configDiagnosticsValidatorResultResponseProvideDefaults(val: ConfigDiagnosticsValidatorResultResponse): ConfigDiagnosticsValidatorResultResponse {
-            return {
-                ...val,
-                status: (val.status) ?? "None",
-            };
-        }
-
-        /**
-         * Container Account Description
-         */
-        export interface ContainerAccountResponse {
-            /**
-             * The account name
-             */
-            accountName?: string;
-            /**
-             * The account password
-             */
-            password?: string;
-            /**
-             * The account spn
-             */
-            spn?: string;
-        }
-
-        /**
-         * Domain Security Settings
-         */
-        export interface DomainSecuritySettingsResponse {
-            /**
-             * A flag to determine whether or not ChannelBinding is enabled or disabled.
-             */
-            channelBinding?: string;
-            /**
-             * A flag to determine whether or not KerberosArmoring is enabled or disabled.
-             */
-            kerberosArmoring?: string;
-            /**
-             * A flag to determine whether or not KerberosRc4Encryption is enabled or disabled.
-             */
-            kerberosRc4Encryption?: string;
-            /**
-             * A flag to determine whether or not LdapSigning is enabled or disabled.
-             */
-            ldapSigning?: string;
-            /**
-             * A flag to determine whether or not NtlmV1 is enabled or disabled.
-             */
-            ntlmV1?: string;
-            /**
-             * A flag to determine whether or not SyncKerberosPasswords is enabled or disabled.
-             */
-            syncKerberosPasswords?: string;
-            /**
-             * A flag to determine whether or not SyncNtlmPasswords is enabled or disabled.
-             */
-            syncNtlmPasswords?: string;
-            /**
-             * A flag to determine whether or not SyncOnPremPasswords is enabled or disabled.
-             */
-            syncOnPremPasswords?: string;
-            /**
-             * A flag to determine whether or not TlsV1 is enabled or disabled.
-             */
-            tlsV1?: string;
-        }
-        /**
-         * domainSecuritySettingsResponseProvideDefaults sets the appropriate defaults for DomainSecuritySettingsResponse
-         */
-        export function domainSecuritySettingsResponseProvideDefaults(val: DomainSecuritySettingsResponse): DomainSecuritySettingsResponse {
-            return {
-                ...val,
-                channelBinding: (val.channelBinding) ?? "Disabled",
-                kerberosArmoring: (val.kerberosArmoring) ?? "Disabled",
-                kerberosRc4Encryption: (val.kerberosRc4Encryption) ?? "Enabled",
-                ldapSigning: (val.ldapSigning) ?? "Disabled",
-                ntlmV1: (val.ntlmV1) ?? "Enabled",
-                syncKerberosPasswords: (val.syncKerberosPasswords) ?? "Enabled",
-                syncNtlmPasswords: (val.syncNtlmPasswords) ?? "Enabled",
-                syncOnPremPasswords: (val.syncOnPremPasswords) ?? "Enabled",
-                tlsV1: (val.tlsV1) ?? "Enabled",
-            };
-        }
-
-        /**
-         * Forest Trust Setting
-         */
-        export interface ForestTrustResponse {
-            /**
-             * Friendly Name
-             */
-            friendlyName?: string;
-            /**
-             * Remote Dns ips
-             */
-            remoteDnsIps?: string;
-            /**
-             * Trust Direction
-             */
-            trustDirection?: string;
-            /**
-             * Trust Password
-             */
-            trustPassword?: string;
-            /**
-             * Trusted Domain FQDN
-             */
-            trustedDomainFqdn?: string;
-        }
-
-        /**
-         * Health Alert Description
-         */
-        export interface HealthAlertResponse {
-            /**
-             * Health Alert Id
-             */
-            id: string;
-            /**
-             * Health Alert Issue
-             */
-            issue: string;
-            /**
-             * Health Alert Last Detected DateTime
-             */
-            lastDetected: string;
-            /**
-             * Health Alert Name
-             */
-            name: string;
-            /**
-             * Health Alert Raised DateTime
-             */
-            raised: string;
-            /**
-             * Health Alert TSG Link
-             */
-            resolutionUri: string;
-            /**
-             * Health Alert Severity
-             */
-            severity: string;
-        }
-
-        /**
-         * Health Monitor Description
-         */
-        export interface HealthMonitorResponse {
-            /**
-             * Health Monitor Details
-             */
-            details: string;
-            /**
-             * Health Monitor Id
-             */
-            id: string;
-            /**
-             * Health Monitor Name
-             */
-            name: string;
-        }
-
-        /**
-         * Secure LDAP Settings
-         */
-        export interface LdapsSettingsResponse {
-            /**
-             * NotAfter DateTime of configure ldaps certificate.
-             */
-            certificateNotAfter: string;
-            /**
-             * Thumbprint of configure ldaps certificate.
-             */
-            certificateThumbprint: string;
-            /**
-             * A flag to determine whether or not Secure LDAP access over the internet is enabled or disabled.
-             */
-            externalAccess?: string;
-            /**
-             * A flag to determine whether or not Secure LDAP is enabled or disabled.
-             */
-            ldaps?: string;
-            /**
-             * The certificate required to configure Secure LDAP. The parameter passed here should be a base64encoded representation of the certificate pfx file.
-             */
-            pfxCertificate?: string;
-            /**
-             * The password to decrypt the provided Secure LDAP certificate pfx file.
-             */
-            pfxCertificatePassword?: string;
-            /**
-             * Public certificate used to configure secure ldap.
-             */
-            publicCertificate: string;
-        }
-        /**
-         * ldapsSettingsResponseProvideDefaults sets the appropriate defaults for LdapsSettingsResponse
-         */
-        export function ldapsSettingsResponseProvideDefaults(val: LdapsSettingsResponse): LdapsSettingsResponse {
-            return {
-                ...val,
-                externalAccess: (val.externalAccess) ?? "Disabled",
-                ldaps: (val.ldaps) ?? "Disabled",
-            };
-        }
-
-        /**
-         * Migration Progress
-         */
-        export interface MigrationProgressResponse {
-            /**
-             * Completion Percentage
-             */
-            completionPercentage?: number;
-            /**
-             * Progress Message
-             */
-            progressMessage?: string;
-        }
-
-        /**
-         * Migration Properties
-         */
-        export interface MigrationPropertiesResponse {
-            /**
-             * Migration Progress
-             */
-            migrationProgress: v20221201.MigrationProgressResponse;
-            /**
-             * Old Subnet Id
-             */
-            oldSubnetId: string;
-            /**
-             * Old Vnet Site Id
-             */
-            oldVnetSiteId: string;
-        }
-
-        /**
-         * Settings for notification
-         */
-        export interface NotificationSettingsResponse {
-            /**
-             * The list of additional recipients
-             */
-            additionalRecipients?: string[];
-            /**
-             * Should domain controller admins be notified
-             */
-            notifyDcAdmins?: string;
-            /**
-             * Should global admins be notified
-             */
-            notifyGlobalAdmins?: string;
-        }
-
-        /**
-         * Replica Set Definition
-         */
-        export interface ReplicaSetResponse {
-            /**
-             * List of Domain Controller IP Address
-             */
-            domainControllerIpAddress: string[];
-            /**
-             * External access ip address.
-             */
-            externalAccessIpAddress: string;
-            /**
-             * List of Domain Health Alerts
-             */
-            healthAlerts: v20221201.HealthAlertResponse[];
-            /**
-             * Last domain evaluation run DateTime
-             */
-            healthLastEvaluated: string;
-            /**
-             * List of Domain Health Monitors
-             */
-            healthMonitors: v20221201.HealthMonitorResponse[];
-            /**
-             * Virtual network location
-             */
-            location?: string;
-            /**
-             * ReplicaSet Id
-             */
-            replicaSetId: string;
-            /**
-             * Status of Domain Service instance
-             */
-            serviceStatus: string;
-            /**
-             * The name of the virtual network that Domain Services will be deployed on. The id of the subnet that Domain Services will be deployed on. /virtualNetwork/vnetName/subnets/subnetName.
-             */
-            subnetId?: string;
-            /**
-             * Virtual network site id
-             */
-            vnetSiteId: string;
-        }
-
-        /**
-         * Settings for Resource Forest
-         */
-        export interface ResourceForestSettingsResponse {
-            /**
-             * Resource Forest
-             */
-            resourceForest?: string;
-            /**
-             * List of settings for Resource Forest
-             */
-            settings?: v20221201.ForestTrustResponse[];
-        }
-
-        /**
-         * Metadata pertaining to creation and last modification of the resource.
-         */
-        export interface SystemDataResponse {
-            /**
-             * The timestamp of resource creation (UTC).
-             */
-            createdAt?: string;
-            /**
-             * The identity that created the resource.
-             */
-            createdBy?: string;
-            /**
-             * The type of identity that created the resource.
-             */
-            createdByType?: string;
-            /**
-             * The timestamp of resource last modification (UTC)
-             */
-            lastModifiedAt?: string;
-            /**
-             * The identity that last modified the resource.
-             */
-            lastModifiedBy?: string;
-            /**
-             * The type of identity that last modified the resource.
-             */
-            lastModifiedByType?: string;
-        }
-
-    }
+/**
+ * Metadata pertaining to creation and last modification of the resource.
+ */
+export interface SystemDataResponse {
+    /**
+     * The timestamp of resource creation (UTC).
+     */
+    createdAt?: string;
+    /**
+     * The identity that created the resource.
+     */
+    createdBy?: string;
+    /**
+     * The type of identity that created the resource.
+     */
+    createdByType?: string;
+    /**
+     * The timestamp of resource last modification (UTC)
+     */
+    lastModifiedAt?: string;
+    /**
+     * The identity that last modified the resource.
+     */
+    lastModifiedBy?: string;
+    /**
+     * The type of identity that last modified the resource.
+     */
+    lastModifiedByType?: string;
 }

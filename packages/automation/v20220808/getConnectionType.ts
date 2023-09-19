@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieve the connection type identified by connection type name.
  */
@@ -44,7 +44,7 @@ export interface GetConnectionTypeResult {
     /**
      * Gets the field definitions of the connection type.
      */
-    readonly fieldDefinitions: {[key: string]: types.outputs.automation.v20220808.FieldDefinitionResponse};
+    readonly fieldDefinitions: {[key: string]: types.outputs.FieldDefinitionResponse};
     /**
      * Gets the id of the resource.
      */

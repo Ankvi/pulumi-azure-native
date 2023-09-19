@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The IpExtendedCommunity resource definition.
  */
@@ -58,7 +58,7 @@ export class IpExtendedCommunity extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.managednetworkfabric.v20230201preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -124,7 +124,7 @@ export interface IpExtendedCommunityArgs {
     /**
      * Action to be taken on the configuration. Example: Permit | Deny.
      */
-    action: pulumi.Input<string | types.enums.v20230201preview.CommunityActionTypes>;
+    action: pulumi.Input<string | types.enums.CommunityActionTypes>;
     /**
      * Switch configuration description.
      */

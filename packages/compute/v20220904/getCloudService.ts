@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Display information about a cloud service.
  */
@@ -43,11 +43,11 @@ export interface GetCloudServiceResult {
     /**
      * Cloud service properties
      */
-    readonly properties: types.outputs.compute.v20220904.CloudServicePropertiesResponse;
+    readonly properties: types.outputs.CloudServicePropertiesResponse;
     /**
      * The system meta data relating to this resource.
      */
-    readonly systemData?: types.outputs.compute.v20220904.SystemDataResponse;
+    readonly systemData?: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

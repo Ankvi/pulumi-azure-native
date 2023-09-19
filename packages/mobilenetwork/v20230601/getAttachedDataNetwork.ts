@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets information about the specified attached data network.
  */
@@ -58,7 +58,7 @@ export interface GetAttachedDataNetworkResult {
      * The network address and port translation (NAPT) configuration.
      * If this is not specified, the attached data network will use a default NAPT configuration with NAPT enabled.
      */
-    readonly naptConfiguration?: types.outputs.mobilenetwork.v20230601.NaptConfigurationResponse;
+    readonly naptConfiguration?: types.outputs.NaptConfigurationResponse;
     /**
      * The provisioning state of the attached data network resource.
      */
@@ -66,7 +66,7 @@ export interface GetAttachedDataNetworkResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.mobilenetwork.v20230601.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -90,7 +90,7 @@ export interface GetAttachedDataNetworkResult {
     /**
      * The user plane interface on the data network. For 5G networks, this is the N6 interface. For 4G networks, this is the SGi interface.
      */
-    readonly userPlaneDataInterface: types.outputs.mobilenetwork.v20230601.InterfacePropertiesResponse;
+    readonly userPlaneDataInterface: types.outputs.InterfacePropertiesResponse;
 }
 /**
  * Gets information about the specified attached data network.

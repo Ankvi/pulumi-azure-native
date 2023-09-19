@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the details of the authorization provider specified by its identifier.
  */
@@ -52,7 +52,7 @@ export interface GetAuthorizationProviderResult {
     /**
      * OAuth2 settings
      */
-    readonly oauth2?: types.outputs.apimanagement.v20230301preview.AuthorizationProviderOAuth2SettingsResponse;
+    readonly oauth2?: types.outputs.AuthorizationProviderOAuth2SettingsResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Describes a virtual network link.
  */
@@ -50,7 +50,7 @@ export class PrivateResolverVirtualNetworkLink extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.network.v20200401preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -58,7 +58,7 @@ export class PrivateResolverVirtualNetworkLink extends pulumi.CustomResource {
     /**
      * The reference to the virtual network. This cannot be changed after creation.
      */
-    public readonly virtualNetwork!: pulumi.Output<types.outputs.network.v20200401preview.SubResourceResponse | undefined>;
+    public readonly virtualNetwork!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
 
     /**
      * Create a PrivateResolverVirtualNetworkLink resource with the given unique name, arguments, and options.
@@ -122,7 +122,7 @@ export interface PrivateResolverVirtualNetworkLinkArgs {
     /**
      * The reference to the virtual network. This cannot be changed after creation.
      */
-    virtualNetwork?: pulumi.Input<types.inputs.network.v20200401preview.SubResourceArgs>;
+    virtualNetwork?: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * The name of the virtual network link.
      */

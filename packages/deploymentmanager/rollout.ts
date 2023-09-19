@@ -43,7 +43,7 @@ export class Rollout extends pulumi.CustomResource {
     /**
      * Identity for the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.deploymentmanager.IdentityResponse>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityResponse>;
     /**
      * The geo-location where the resource lives
      */
@@ -55,7 +55,7 @@ export class Rollout extends pulumi.CustomResource {
     /**
      * The list of step groups that define the orchestration.
      */
-    public readonly stepGroups!: pulumi.Output<types.outputs.deploymentmanager.StepGroupResponse[]>;
+    public readonly stepGroups!: pulumi.Output<types.outputs.StepGroupResponse[]>;
     /**
      * Resource tags.
      */
@@ -139,7 +139,7 @@ export interface RolloutArgs {
     /**
      * Identity for the resource.
      */
-    identity: pulumi.Input<types.inputs.deploymentmanager.IdentityArgs>;
+    identity: pulumi.Input<types.inputs.IdentityArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -155,7 +155,7 @@ export interface RolloutArgs {
     /**
      * The list of step groups that define the orchestration.
      */
-    stepGroups: pulumi.Input<pulumi.Input<types.inputs.deploymentmanager.StepGroupArgs>[]>;
+    stepGroups: pulumi.Input<pulumi.Input<types.inputs.StepGroupArgs>[]>;
     /**
      * Resource tags.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents a server.
  */
@@ -155,5 +155,5 @@ export interface ServerArgs {
     /**
      * The version of the server.
      */
-    version?: pulumi.Input<string | types.enums.v20140401.ServerVersion>;
+    version?: pulumi.Input<string | types.enums.ServerVersion>;
 }

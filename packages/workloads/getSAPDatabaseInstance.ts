@@ -45,7 +45,7 @@ export interface GetSAPDatabaseInstanceResult {
     /**
      * Defines the errors related to Database resource.
      */
-    readonly errors: types.outputs.workloads.SAPVirtualInstanceErrorResponse;
+    readonly errors: types.outputs.SAPVirtualInstanceErrorResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -57,7 +57,7 @@ export interface GetSAPDatabaseInstanceResult {
     /**
      * The Load Balancer details such as LoadBalancer ID attached to Database Virtual Machines
      */
-    readonly loadBalancerDetails: types.outputs.workloads.LoadBalancerDetailsResponse;
+    readonly loadBalancerDetails: types.outputs.LoadBalancerDetailsResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -81,7 +81,7 @@ export interface GetSAPDatabaseInstanceResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.workloads.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -93,7 +93,7 @@ export interface GetSAPDatabaseInstanceResult {
     /**
      * The list of virtual machines corresponding to the Database resource.
      */
-    readonly vmDetails: types.outputs.workloads.DatabaseVmDetailsResponse[];
+    readonly vmDetails: types.outputs.DatabaseVmDetailsResponse[];
 }
 /**
  * Gets the SAP Database Instance resource.

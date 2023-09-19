@@ -32,11 +32,11 @@ export interface GetFrontDoorResult {
     /**
      * Backend pools available to routing rules.
      */
-    readonly backendPools?: types.outputs.network.BackendPoolResponse[];
+    readonly backendPools?: types.outputs.BackendPoolResponse[];
     /**
      * Settings for all backendPools
      */
-    readonly backendPoolsSettings?: types.outputs.network.BackendPoolsSettingsResponse;
+    readonly backendPoolsSettings?: types.outputs.BackendPoolsSettingsResponse;
     /**
      * The host that each frontendEndpoint must CNAME to.
      */
@@ -60,11 +60,11 @@ export interface GetFrontDoorResult {
     /**
      * Frontend endpoints available to routing rules.
      */
-    readonly frontendEndpoints?: types.outputs.network.FrontendEndpointResponse[];
+    readonly frontendEndpoints?: types.outputs.FrontendEndpointResponse[];
     /**
      * Health probe settings associated with this Front Door instance.
      */
-    readonly healthProbeSettings?: types.outputs.network.HealthProbeSettingsModelResponse[];
+    readonly healthProbeSettings?: types.outputs.HealthProbeSettingsModelResponse[];
     /**
      * Resource ID.
      */
@@ -72,7 +72,7 @@ export interface GetFrontDoorResult {
     /**
      * Load balancing settings associated with this Front Door instance.
      */
-    readonly loadBalancingSettings?: types.outputs.network.LoadBalancingSettingsModelResponse[];
+    readonly loadBalancingSettings?: types.outputs.LoadBalancingSettingsModelResponse[];
     /**
      * Resource location.
      */
@@ -92,11 +92,11 @@ export interface GetFrontDoorResult {
     /**
      * Routing rules associated with this Front Door.
      */
-    readonly routingRules?: types.outputs.network.RoutingRuleResponse[];
+    readonly routingRules?: types.outputs.RoutingRuleResponse[];
     /**
      * Rules Engine Configurations available to routing rules.
      */
-    readonly rulesEngines: types.outputs.network.RulesEngineResponse[];
+    readonly rulesEngines: types.outputs.RulesEngineResponse[];
     /**
      * Resource tags.
      */

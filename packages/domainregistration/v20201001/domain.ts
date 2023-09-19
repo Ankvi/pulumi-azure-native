@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Information about a domain.
  */
@@ -71,7 +71,7 @@ export class Domain extends pulumi.CustomResource {
     /**
      * All hostnames derived from the domain and assigned to Azure resources.
      */
-    public /*out*/ readonly managedHostNames!: pulumi.Output<types.outputs.domainregistration.v20201001.HostNameResponse[]>;
+    public /*out*/ readonly managedHostNames!: pulumi.Output<types.outputs.HostNameResponse[]>;
     /**
      * Resource Name.
      */
@@ -100,7 +100,7 @@ export class Domain extends pulumi.CustomResource {
     /**
      * The system metadata relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.domainregistration.v20201001.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -213,27 +213,27 @@ export interface DomainArgs {
     /**
      * Legal agreement consent.
      */
-    consent: pulumi.Input<types.inputs.domainregistration.v20201001.DomainPurchaseConsentArgs>;
+    consent: pulumi.Input<types.inputs.DomainPurchaseConsentArgs>;
     /**
      * Administrative contact.
      */
-    contactAdmin: pulumi.Input<types.inputs.domainregistration.v20201001.ContactArgs>;
+    contactAdmin: pulumi.Input<types.inputs.ContactArgs>;
     /**
      * Billing contact.
      */
-    contactBilling: pulumi.Input<types.inputs.domainregistration.v20201001.ContactArgs>;
+    contactBilling: pulumi.Input<types.inputs.ContactArgs>;
     /**
      * Registrant contact.
      */
-    contactRegistrant: pulumi.Input<types.inputs.domainregistration.v20201001.ContactArgs>;
+    contactRegistrant: pulumi.Input<types.inputs.ContactArgs>;
     /**
      * Technical contact.
      */
-    contactTech: pulumi.Input<types.inputs.domainregistration.v20201001.ContactArgs>;
+    contactTech: pulumi.Input<types.inputs.ContactArgs>;
     /**
      * Current DNS type
      */
-    dnsType?: pulumi.Input<types.enums.v20201001.DnsType>;
+    dnsType?: pulumi.Input<types.enums.DnsType>;
     /**
      * Azure DNS Zone to use
      */
@@ -265,5 +265,5 @@ export interface DomainArgs {
     /**
      * Target DNS type (would be used for migration)
      */
-    targetDnsType?: pulumi.Input<types.enums.v20201001.DnsType>;
+    targetDnsType?: pulumi.Input<types.enums.DnsType>;
 }

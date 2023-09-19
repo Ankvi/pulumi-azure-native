@@ -42,7 +42,7 @@ export interface GetNamespaceTopicEventSubscriptionResult {
     /**
      * Information about the delivery configuration of the event subscription.
      */
-    readonly deliveryConfiguration?: types.outputs.eventgrid.DeliveryConfigurationResponse;
+    readonly deliveryConfiguration?: types.outputs.DeliveryConfigurationResponse;
     /**
      * The event delivery schema for the event subscription.
      */
@@ -50,7 +50,7 @@ export interface GetNamespaceTopicEventSubscriptionResult {
     /**
      * Information about the filter for the event subscription.
      */
-    readonly filtersConfiguration?: types.outputs.eventgrid.FiltersConfigurationResponse;
+    readonly filtersConfiguration?: types.outputs.FiltersConfigurationResponse;
     /**
      * Fully qualified identifier of the resource.
      */
@@ -66,7 +66,7 @@ export interface GetNamespaceTopicEventSubscriptionResult {
     /**
      * The system metadata relating to Event Subscription resource.
      */
-    readonly systemData: types.outputs.eventgrid.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Type of the resource.
      */

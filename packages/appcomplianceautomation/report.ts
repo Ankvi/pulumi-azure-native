@@ -39,11 +39,11 @@ export class Report extends pulumi.CustomResource {
     /**
      * Report property.
      */
-    public readonly properties!: pulumi.Output<types.outputs.appcomplianceautomation.ReportPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ReportPropertiesResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.appcomplianceautomation.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -88,7 +88,7 @@ export interface ReportArgs {
     /**
      * Report property.
      */
-    properties: pulumi.Input<types.inputs.appcomplianceautomation.ReportPropertiesArgs>;
+    properties: pulumi.Input<types.inputs.ReportPropertiesArgs>;
     /**
      * Report Name.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the properties of a Managed Environment used to host container apps.
  */
@@ -33,7 +33,7 @@ export interface GetManagedEnvironmentResult {
      * app logs to a destination. Currently only "log-analytics" is
      * supported
      */
-    readonly appLogsConfiguration?: types.outputs.app.v20220101preview.AppLogsConfigurationResponse;
+    readonly appLogsConfiguration?: types.outputs.AppLogsConfigurationResponse;
     /**
      * Azure Monitor instrumentation key used by Dapr to export Service to Service communication telemetry
      */
@@ -69,7 +69,7 @@ export interface GetManagedEnvironmentResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.app.v20220101preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -81,7 +81,7 @@ export interface GetManagedEnvironmentResult {
     /**
      * Vnet configuration for the environment
      */
-    readonly vnetConfiguration?: types.outputs.app.v20220101preview.VnetConfigurationResponse;
+    readonly vnetConfiguration?: types.outputs.VnetConfigurationResponse;
 }
 /**
  * Get the properties of a Managed Environment used to host container apps.

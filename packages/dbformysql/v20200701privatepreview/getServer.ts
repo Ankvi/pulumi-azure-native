@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets information about a server.
  */
@@ -43,7 +43,7 @@ export interface GetServerResult {
     /**
      * Delegated subnet arguments.
      */
-    readonly delegatedSubnetArguments?: types.outputs.dbformysql.v20200701privatepreview.DelegatedSubnetArgumentsResponse;
+    readonly delegatedSubnetArguments?: types.outputs.DelegatedSubnetArgumentsResponse;
     /**
      * Earliest restore point creation time (ISO8601 format)
      */
@@ -67,7 +67,7 @@ export interface GetServerResult {
     /**
      * The Azure Active Directory identity of the server.
      */
-    readonly identity?: types.outputs.dbformysql.v20200701privatepreview.IdentityResponse;
+    readonly identity?: types.outputs.IdentityResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -75,7 +75,7 @@ export interface GetServerResult {
     /**
      * Maintenance window of a server.
      */
-    readonly maintenanceWindow?: types.outputs.dbformysql.v20200701privatepreview.MaintenanceWindowResponse;
+    readonly maintenanceWindow?: types.outputs.MaintenanceWindowResponse;
     /**
      * The name of the resource
      */
@@ -95,7 +95,7 @@ export interface GetServerResult {
     /**
      * The SKU (pricing tier) of the server.
      */
-    readonly sku?: types.outputs.dbformysql.v20200701privatepreview.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * The source MySQL server id.
      */
@@ -115,7 +115,7 @@ export interface GetServerResult {
     /**
      * Storage profile of a server.
      */
-    readonly storageProfile?: types.outputs.dbformysql.v20200701privatepreview.StorageProfileResponse;
+    readonly storageProfile?: types.outputs.StorageProfileResponse;
     /**
      * Resource tags.
      */

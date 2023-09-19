@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the details of the Wiki for an API specified by its identifier.
  */
@@ -36,7 +36,7 @@ export interface GetApiWikiResult {
     /**
      * Collection wiki documents included into this wiki.
      */
-    readonly documents?: types.outputs.apimanagement.v20220901preview.WikiDocumentationContractResponse[];
+    readonly documents?: types.outputs.WikiDocumentationContractResponse[];
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */

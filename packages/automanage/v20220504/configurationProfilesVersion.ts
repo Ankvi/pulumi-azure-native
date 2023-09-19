@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Definition of the configuration profile.
  */
@@ -42,11 +42,11 @@ export class ConfigurationProfilesVersion extends pulumi.CustomResource {
     /**
      * Properties of the configuration profile.
      */
-    public readonly properties!: pulumi.Output<types.outputs.automanage.v20220504.ConfigurationProfilePropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ConfigurationProfilePropertiesResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.automanage.v20220504.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -112,7 +112,7 @@ export interface ConfigurationProfilesVersionArgs {
     /**
      * Properties of the configuration profile.
      */
-    properties?: pulumi.Input<types.inputs.automanage.v20220504.ConfigurationProfilePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ConfigurationProfilePropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

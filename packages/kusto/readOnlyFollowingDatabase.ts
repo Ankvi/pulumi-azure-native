@@ -80,11 +80,11 @@ export class ReadOnlyFollowingDatabase extends pulumi.CustomResource {
     /**
      * The statistics of the database.
      */
-    public /*out*/ readonly statistics!: pulumi.Output<types.outputs.kusto.DatabaseStatisticsResponse>;
+    public /*out*/ readonly statistics!: pulumi.Output<types.outputs.DatabaseStatisticsResponse>;
     /**
      * Table level sharing specifications
      */
-    public /*out*/ readonly tableLevelSharingProperties!: pulumi.Output<types.outputs.kusto.TableLevelSharingPropertiesResponse>;
+    public /*out*/ readonly tableLevelSharingProperties!: pulumi.Output<types.outputs.TableLevelSharingPropertiesResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

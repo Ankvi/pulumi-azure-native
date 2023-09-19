@@ -51,11 +51,11 @@ export class Namespace extends pulumi.CustomResource {
     /**
      * Properties of BYOK Encryption description
      */
-    public readonly encryption!: pulumi.Output<types.outputs.eventhub.EncryptionResponse | undefined>;
+    public readonly encryption!: pulumi.Output<types.outputs.EncryptionResponse | undefined>;
     /**
      * Properties of BYOK Identity description
      */
-    public readonly identity!: pulumi.Output<types.outputs.eventhub.IdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityResponse | undefined>;
     /**
      * Value that indicates whether AutoInflate is enabled for eventhub namespace.
      */
@@ -87,7 +87,7 @@ export class Namespace extends pulumi.CustomResource {
     /**
      * List of private endpoint connections.
      */
-    public readonly privateEndpointConnections!: pulumi.Output<types.outputs.eventhub.PrivateEndpointConnectionResponse[] | undefined>;
+    public readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[] | undefined>;
     /**
      * Provisioning state of the Namespace.
      */
@@ -103,7 +103,7 @@ export class Namespace extends pulumi.CustomResource {
     /**
      * Properties of sku resource
      */
-    public readonly sku!: pulumi.Output<types.outputs.eventhub.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Status of the Namespace.
      */
@@ -111,7 +111,7 @@ export class Namespace extends pulumi.CustomResource {
     /**
      * The system meta data relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.eventhub.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -146,7 +146,7 @@ export class Namespace extends pulumi.CustomResource {
             resourceInputs["alternateName"] = args ? args.alternateName : undefined;
             resourceInputs["clusterArmId"] = args ? args.clusterArmId : undefined;
             resourceInputs["disableLocalAuth"] = args ? args.disableLocalAuth : undefined;
-            resourceInputs["encryption"] = args ? (args.encryption ? pulumi.output(args.encryption).apply(types.inputs.eventhub.encryptionArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["encryption"] = args ? (args.encryption ? pulumi.output(args.encryption).apply(types.inputs.encryptionArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["identity"] = args ? args.identity : undefined;
             resourceInputs["isAutoInflateEnabled"] = args ? args.isAutoInflateEnabled : undefined;
             resourceInputs["kafkaEnabled"] = args ? args.kafkaEnabled : undefined;
@@ -221,11 +221,11 @@ export interface NamespaceArgs {
     /**
      * Properties of BYOK Encryption description
      */
-    encryption?: pulumi.Input<types.inputs.eventhub.EncryptionArgs>;
+    encryption?: pulumi.Input<types.inputs.EncryptionArgs>;
     /**
      * Properties of BYOK Identity description
      */
-    identity?: pulumi.Input<types.inputs.eventhub.IdentityArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityArgs>;
     /**
      * Value that indicates whether AutoInflate is enabled for eventhub namespace.
      */
@@ -254,7 +254,7 @@ export interface NamespaceArgs {
      * List of private endpoint connections.
      * These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
      */
-    privateEndpointConnections?: pulumi.Input<pulumi.Input<types.inputs.eventhub.PrivateEndpointConnectionArgs>[]>;
+    privateEndpointConnections?: pulumi.Input<pulumi.Input<types.inputs.PrivateEndpointConnectionArgs>[]>;
     /**
      * This determines if traffic is allowed over public network. By default it is enabled.
      */
@@ -266,7 +266,7 @@ export interface NamespaceArgs {
     /**
      * Properties of sku resource
      */
-    sku?: pulumi.Input<types.inputs.eventhub.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Resource tags.
      */

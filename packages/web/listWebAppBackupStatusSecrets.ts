@@ -11,7 +11,7 @@ export function listWebAppBackupStatusSecrets(args: ListWebAppBackupStatusSecret
     return pulumi.runtime.invoke("azure-native:web:listWebAppBackupStatusSecrets", {
         "backupId": args.backupId,
         "backupName": args.backupName,
-        "backupSchedule": args.backupSchedule ? types.inputs.web.backupScheduleProvideDefaults(args.backupSchedule) : undefined,
+        "backupSchedule": args.backupSchedule ? types.inputs.backupScheduleProvideDefaults(args.backupSchedule) : undefined,
         "databases": args.databases,
         "enabled": args.enabled,
         "kind": args.kind,
@@ -33,11 +33,11 @@ export interface ListWebAppBackupStatusSecretsArgs {
     /**
      * Schedule for the backup if it is executed periodically.
      */
-    backupSchedule?: types.inputs.web.BackupSchedule;
+    backupSchedule?: types.inputs.BackupSchedule;
     /**
      * Databases included in the backup.
      */
-    databases?: types.inputs.web.DatabaseBackupSetting[];
+    databases?: types.inputs.DatabaseBackupSetting[];
     /**
      * True if the backup schedule is enabled (must be included in that case), false if the backup schedule should be disabled.
      */
@@ -83,7 +83,7 @@ export interface ListWebAppBackupStatusSecretsResult {
     /**
      * List of databases included in the backup.
      */
-    readonly databases: types.outputs.web.DatabaseBackupSettingResponse[];
+    readonly databases: types.outputs.DatabaseBackupSettingResponse[];
     /**
      * Timestamp when this backup finished.
      */
@@ -153,11 +153,11 @@ export interface ListWebAppBackupStatusSecretsOutputArgs {
     /**
      * Schedule for the backup if it is executed periodically.
      */
-    backupSchedule?: pulumi.Input<types.inputs.web.BackupScheduleArgs>;
+    backupSchedule?: pulumi.Input<types.inputs.BackupScheduleArgs>;
     /**
      * Databases included in the backup.
      */
-    databases?: pulumi.Input<pulumi.Input<types.inputs.web.DatabaseBackupSettingArgs>[]>;
+    databases?: pulumi.Input<pulumi.Input<types.inputs.DatabaseBackupSettingArgs>[]>;
     /**
      * True if the backup schedule is enabled (must be included in that case), false if the backup schedule should be disabled.
      */

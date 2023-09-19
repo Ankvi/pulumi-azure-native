@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * List product families for the given subscription.
  */
@@ -19,7 +19,7 @@ export interface ListProductsAndConfigurationProductFamiliesArgs {
     /**
      * Customer subscription properties. Clients can display available products to unregistered customers by explicitly passing subscription details.
      */
-    customerSubscriptionDetails?: types.inputs.edgeorder.v20220501preview.CustomerSubscriptionDetails;
+    customerSubscriptionDetails?: types.inputs.CustomerSubscriptionDetails;
     /**
      * $expand is supported on configurations parameter for product, which provides details on the configurations for the product.
      */
@@ -27,7 +27,7 @@ export interface ListProductsAndConfigurationProductFamiliesArgs {
     /**
      * Dictionary of filterable properties on product family.
      */
-    filterableProperties: {[key: string]: types.inputs.edgeorder.v20220501preview.FilterableProperty[]};
+    filterableProperties: {[key: string]: types.inputs.FilterableProperty[]};
     /**
      * $skipToken is supported on list of product families, which provides the next page in the list of product families.
      */
@@ -45,7 +45,7 @@ export interface ListProductsAndConfigurationProductFamiliesResult {
     /**
      * List of product families.
      */
-    readonly value: types.outputs.edgeorder.v20220501preview.ProductFamilyResponse[];
+    readonly value: types.outputs.ProductFamilyResponse[];
 }
 /**
  * List product families for the given subscription.
@@ -58,7 +58,7 @@ export interface ListProductsAndConfigurationProductFamiliesOutputArgs {
     /**
      * Customer subscription properties. Clients can display available products to unregistered customers by explicitly passing subscription details.
      */
-    customerSubscriptionDetails?: pulumi.Input<types.inputs.edgeorder.v20220501preview.CustomerSubscriptionDetailsArgs>;
+    customerSubscriptionDetails?: pulumi.Input<types.inputs.CustomerSubscriptionDetailsArgs>;
     /**
      * $expand is supported on configurations parameter for product, which provides details on the configurations for the product.
      */
@@ -66,7 +66,7 @@ export interface ListProductsAndConfigurationProductFamiliesOutputArgs {
     /**
      * Dictionary of filterable properties on product family.
      */
-    filterableProperties: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<types.inputs.edgeorder.v20220501preview.FilterablePropertyArgs>[]>}>;
+    filterableProperties: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<types.inputs.FilterablePropertyArgs>[]>}>;
     /**
      * $skipToken is supported on list of product families, which provides the next page in the list of product families.
      */

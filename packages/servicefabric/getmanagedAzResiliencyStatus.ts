@@ -32,7 +32,7 @@ export interface GetmanagedAzResiliencyStatusResult {
     /**
      * List of Managed VM Sizes for Service Fabric Managed Clusters.
      */
-    readonly baseResourceStatus?: types.outputs.servicefabric.ResourceAzStatusResponse[];
+    readonly baseResourceStatus?: types.outputs.ResourceAzStatusResponse[];
     /**
      * URL to get the next set of Managed VM Sizes if there are any.
      */

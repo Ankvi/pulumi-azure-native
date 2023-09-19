@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Lists a workflow run expression trace.
  */
@@ -43,7 +43,7 @@ export interface ListWorkflowRunActionExpressionTracesArgs {
  * The expression traces.
  */
 export interface ListWorkflowRunActionExpressionTracesResult {
-    readonly inputs?: types.outputs.web.v20220901.ExpressionRootResponse[];
+    readonly inputs?: types.outputs.ExpressionRootResponse[];
     /**
      * The link used to get the next page of recommendations.
      */

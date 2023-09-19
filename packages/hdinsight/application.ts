@@ -43,11 +43,11 @@ export class Application extends pulumi.CustomResource {
     /**
      * The properties of the application.
      */
-    public readonly properties!: pulumi.Output<types.outputs.hdinsight.ApplicationPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ApplicationPropertiesResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.hdinsight.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The tags for the application.
      */
@@ -113,7 +113,7 @@ export interface ApplicationArgs {
     /**
      * The properties of the application.
      */
-    properties?: pulumi.Input<types.inputs.hdinsight.ApplicationPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ApplicationPropertiesArgs>;
     /**
      * The name of the resource group.
      */

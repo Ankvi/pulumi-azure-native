@@ -52,27 +52,27 @@ export class PipelineTopology extends pulumi.CustomResource {
     /**
      * List of the topology parameter declarations. Parameters declared here can be referenced throughout the topology nodes through the use of "${PARAMETER_NAME}" string pattern. Parameters can have optional default values and can later be defined in individual instances of the pipeline.
      */
-    public readonly parameters!: pulumi.Output<types.outputs.videoanalyzer.ParameterDeclarationResponse[] | undefined>;
+    public readonly parameters!: pulumi.Output<types.outputs.ParameterDeclarationResponse[] | undefined>;
     /**
      * List of the topology processor nodes. Processor nodes enable pipeline data to be analyzed, processed or transformed.
      */
-    public readonly processors!: pulumi.Output<types.outputs.videoanalyzer.EncoderProcessorResponse[] | undefined>;
+    public readonly processors!: pulumi.Output<types.outputs.EncoderProcessorResponse[] | undefined>;
     /**
      * List of the topology sink nodes. Sink nodes allow pipeline data to be stored or exported.
      */
-    public readonly sinks!: pulumi.Output<types.outputs.videoanalyzer.VideoSinkResponse[]>;
+    public readonly sinks!: pulumi.Output<types.outputs.VideoSinkResponse[]>;
     /**
      * Describes the properties of a SKU.
      */
-    public readonly sku!: pulumi.Output<types.outputs.videoanalyzer.SkuResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse>;
     /**
      * List of the topology source nodes. Source nodes enable external data to be ingested by the pipeline.
      */
-    public readonly sources!: pulumi.Output<(types.outputs.videoanalyzer.RtspSourceResponse | types.outputs.videoanalyzer.VideoSourceResponse)[]>;
+    public readonly sources!: pulumi.Output<(types.outputs.RtspSourceResponse | types.outputs.VideoSourceResponse)[]>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.videoanalyzer.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -158,7 +158,7 @@ export interface PipelineTopologyArgs {
     /**
      * List of the topology parameter declarations. Parameters declared here can be referenced throughout the topology nodes through the use of "${PARAMETER_NAME}" string pattern. Parameters can have optional default values and can later be defined in individual instances of the pipeline.
      */
-    parameters?: pulumi.Input<pulumi.Input<types.inputs.videoanalyzer.ParameterDeclarationArgs>[]>;
+    parameters?: pulumi.Input<pulumi.Input<types.inputs.ParameterDeclarationArgs>[]>;
     /**
      * Pipeline topology unique identifier.
      */
@@ -166,7 +166,7 @@ export interface PipelineTopologyArgs {
     /**
      * List of the topology processor nodes. Processor nodes enable pipeline data to be analyzed, processed or transformed.
      */
-    processors?: pulumi.Input<pulumi.Input<types.inputs.videoanalyzer.EncoderProcessorArgs>[]>;
+    processors?: pulumi.Input<pulumi.Input<types.inputs.EncoderProcessorArgs>[]>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -174,13 +174,13 @@ export interface PipelineTopologyArgs {
     /**
      * List of the topology sink nodes. Sink nodes allow pipeline data to be stored or exported.
      */
-    sinks: pulumi.Input<pulumi.Input<types.inputs.videoanalyzer.VideoSinkArgs>[]>;
+    sinks: pulumi.Input<pulumi.Input<types.inputs.VideoSinkArgs>[]>;
     /**
      * Describes the properties of a SKU.
      */
-    sku: pulumi.Input<types.inputs.videoanalyzer.SkuArgs>;
+    sku: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * List of the topology source nodes. Source nodes enable external data to be ingested by the pipeline.
      */
-    sources: pulumi.Input<pulumi.Input<types.inputs.videoanalyzer.RtspSourceArgs | types.inputs.videoanalyzer.VideoSourceArgs>[]>;
+    sources: pulumi.Input<pulumi.Input<types.inputs.RtspSourceArgs | types.inputs.VideoSourceArgs>[]>;
 }

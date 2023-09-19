@@ -36,7 +36,7 @@ export interface ListJobCredentialsResult {
     /**
      * List of unencrypted credentials.
      */
-    readonly value?: types.outputs.databox.UnencryptedCredentialsResponse[];
+    readonly value?: types.outputs.UnencryptedCredentialsResponse[];
 }
 /**
  * This method gets the unencrypted secrets related to the job.

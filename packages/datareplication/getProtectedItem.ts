@@ -45,8 +45,8 @@ export interface GetProtectedItemResult {
     /**
      * Protected item model properties.
      */
-    readonly properties: types.outputs.datareplication.ProtectedItemModelPropertiesResponse;
-    readonly systemData: types.outputs.datareplication.ProtectedItemModelResponseSystemData;
+    readonly properties: types.outputs.ProtectedItemModelPropertiesResponse;
+    readonly systemData: types.outputs.ProtectedItemModelResponseSystemData;
     /**
      * Gets or sets the type of the resource.
      */

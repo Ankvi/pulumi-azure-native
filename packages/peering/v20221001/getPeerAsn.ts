@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the peer ASN with the specified name under the given subscription.
  */
@@ -42,7 +42,7 @@ export interface GetPeerAsnResult {
     /**
      * The contact details of the peer.
      */
-    readonly peerContactDetail?: types.outputs.peering.v20221001.ContactDetailResponse[];
+    readonly peerContactDetail?: types.outputs.ContactDetailResponse[];
     /**
      * The name of the peer.
      */

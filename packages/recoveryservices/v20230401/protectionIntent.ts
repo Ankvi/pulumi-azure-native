@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Base class for backup ProtectionIntent.
  */
@@ -46,7 +46,7 @@ export class ProtectionIntent extends pulumi.CustomResource {
     /**
      * ProtectionIntentResource properties
      */
-    public readonly properties!: pulumi.Output<types.outputs.recoveryservices.v20230401.AzureRecoveryServiceVaultProtectionIntentResponse | types.outputs.recoveryservices.v20230401.AzureResourceProtectionIntentResponse | types.outputs.recoveryservices.v20230401.AzureWorkloadAutoProtectionIntentResponse | types.outputs.recoveryservices.v20230401.AzureWorkloadContainerAutoProtectionIntentResponse | types.outputs.recoveryservices.v20230401.AzureWorkloadSQLAutoProtectionIntentResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.AzureRecoveryServiceVaultProtectionIntentResponse | types.outputs.AzureResourceProtectionIntentResponse | types.outputs.AzureWorkloadAutoProtectionIntentResponse | types.outputs.AzureWorkloadContainerAutoProtectionIntentResponse | types.outputs.AzureWorkloadSQLAutoProtectionIntentResponse>;
     /**
      * Resource tags.
      */
@@ -124,7 +124,7 @@ export interface ProtectionIntentArgs {
     /**
      * ProtectionIntentResource properties
      */
-    properties?: pulumi.Input<types.inputs.recoveryservices.v20230401.AzureRecoveryServiceVaultProtectionIntentArgs | types.inputs.recoveryservices.v20230401.AzureResourceProtectionIntentArgs | types.inputs.recoveryservices.v20230401.AzureWorkloadAutoProtectionIntentArgs | types.inputs.recoveryservices.v20230401.AzureWorkloadContainerAutoProtectionIntentArgs | types.inputs.recoveryservices.v20230401.AzureWorkloadSQLAutoProtectionIntentArgs>;
+    properties?: pulumi.Input<types.inputs.AzureRecoveryServiceVaultProtectionIntentArgs | types.inputs.AzureResourceProtectionIntentArgs | types.inputs.AzureWorkloadAutoProtectionIntentArgs | types.inputs.AzureWorkloadContainerAutoProtectionIntentArgs | types.inputs.AzureWorkloadSQLAutoProtectionIntentArgs>;
     /**
      * The name of the resource group where the recovery services vault is present.
      */

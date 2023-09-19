@@ -23,4 +23,4 @@ utilities.lazyLoad(exports, ["getSAPSupportedSku","getSAPSupportedSkuOutput"], (
 
 
 // Export enums:
-export * from "../types/enums/v20221101preview";
+export * from "./types/enums";

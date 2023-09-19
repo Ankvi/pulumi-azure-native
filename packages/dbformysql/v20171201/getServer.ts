@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets information about a server.
  */
@@ -51,7 +51,7 @@ export interface GetServerResult {
     /**
      * The Azure Active Directory identity of the server.
      */
-    readonly identity?: types.outputs.dbformysql.v20171201.ResourceIdentityResponse;
+    readonly identity?: types.outputs.ResourceIdentityResponse;
     /**
      * Status showing whether the server enabled infrastructure encryption.
      */
@@ -75,7 +75,7 @@ export interface GetServerResult {
     /**
      * List of private endpoint connections on a server
      */
-    readonly privateEndpointConnections: types.outputs.dbformysql.v20171201.ServerPrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections: types.outputs.ServerPrivateEndpointConnectionResponse[];
     /**
      * Whether or not public network access is allowed for this server. Value is optional but if passed in, must be 'Enabled' or 'Disabled'
      */
@@ -91,7 +91,7 @@ export interface GetServerResult {
     /**
      * The SKU (pricing tier) of the server.
      */
-    readonly sku?: types.outputs.dbformysql.v20171201.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * Enable ssl enforcement or not when connect to server.
      */
@@ -99,7 +99,7 @@ export interface GetServerResult {
     /**
      * Storage profile of a server.
      */
-    readonly storageProfile?: types.outputs.dbformysql.v20171201.StorageProfileResponse;
+    readonly storageProfile?: types.outputs.StorageProfileResponse;
     /**
      * Resource tags.
      */

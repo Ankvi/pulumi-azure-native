@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the source control properties for a build task.
  */
@@ -44,7 +44,7 @@ export interface ListBuildTaskSourceRepositoryPropertiesResult {
     /**
      * The authorization properties for accessing the source code repository.
      */
-    readonly sourceControlAuthProperties?: types.outputs.containerregistry.v20180201preview.SourceControlAuthInfoResponse;
+    readonly sourceControlAuthProperties?: types.outputs.SourceControlAuthInfoResponse;
     /**
      * The type of source control service.
      */

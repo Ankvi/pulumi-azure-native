@@ -55,15 +55,15 @@ export class WorkspaceApiOperation extends pulumi.CustomResource {
     /**
      * An entity containing request details.
      */
-    public readonly request!: pulumi.Output<types.outputs.apimanagement.RequestContractResponse | undefined>;
+    public readonly request!: pulumi.Output<types.outputs.RequestContractResponse | undefined>;
     /**
      * Array of Operation responses.
      */
-    public readonly responses!: pulumi.Output<types.outputs.apimanagement.ResponseContractResponse[] | undefined>;
+    public readonly responses!: pulumi.Output<types.outputs.ResponseContractResponse[] | undefined>;
     /**
      * Collection of URL template parameters.
      */
-    public readonly templateParameters!: pulumi.Output<types.outputs.apimanagement.ParameterContractResponse[] | undefined>;
+    public readonly templateParameters!: pulumi.Output<types.outputs.ParameterContractResponse[] | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -170,7 +170,7 @@ export interface WorkspaceApiOperationArgs {
     /**
      * An entity containing request details.
      */
-    request?: pulumi.Input<types.inputs.apimanagement.RequestContractArgs>;
+    request?: pulumi.Input<types.inputs.RequestContractArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -178,7 +178,7 @@ export interface WorkspaceApiOperationArgs {
     /**
      * Array of Operation responses.
      */
-    responses?: pulumi.Input<pulumi.Input<types.inputs.apimanagement.ResponseContractArgs>[]>;
+    responses?: pulumi.Input<pulumi.Input<types.inputs.ResponseContractArgs>[]>;
     /**
      * The name of the API Management service.
      */
@@ -186,7 +186,7 @@ export interface WorkspaceApiOperationArgs {
     /**
      * Collection of URL template parameters.
      */
-    templateParameters?: pulumi.Input<pulumi.Input<types.inputs.apimanagement.ParameterContractArgs>[]>;
+    templateParameters?: pulumi.Input<pulumi.Input<types.inputs.ParameterContractArgs>[]>;
     /**
      * Relative URL template identifying the target resource for this operation. May include parameters. Example: /customers/{cid}/orders/{oid}/?date={date}
      */

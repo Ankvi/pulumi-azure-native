@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieve the Dsc node configurations by node configuration.
  */
@@ -36,7 +36,7 @@ export interface GetDscNodeConfigurationResult {
     /**
      * Gets or sets the configuration of the node.
      */
-    readonly configuration?: types.outputs.automation.v20220808.DscConfigurationAssociationPropertyResponse;
+    readonly configuration?: types.outputs.DscConfigurationAssociationPropertyResponse;
     /**
      * Gets or sets creation time.
      */

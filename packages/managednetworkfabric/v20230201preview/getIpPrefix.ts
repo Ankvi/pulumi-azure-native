@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Implements IP Prefix GET method.
  */
@@ -39,7 +39,7 @@ export interface GetIpPrefixResult {
     /**
      * IpPrefix contains the list of IP PrefixRules objects.
      */
-    readonly ipPrefixRules: types.outputs.managednetworkfabric.v20230201preview.IpPrefixPropertiesResponseIpPrefixRules[];
+    readonly ipPrefixRules: types.outputs.IpPrefixPropertiesResponseIpPrefixRules[];
     /**
      * The geo-location where the resource lives
      */
@@ -55,7 +55,7 @@ export interface GetIpPrefixResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.managednetworkfabric.v20230201preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

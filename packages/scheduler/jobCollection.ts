@@ -42,7 +42,7 @@ export class JobCollection extends pulumi.CustomResource {
     /**
      * Gets or sets the job collection properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.scheduler.JobCollectionPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.JobCollectionPropertiesResponse>;
     /**
      * Gets or sets the tags.
      */
@@ -106,7 +106,7 @@ export interface JobCollectionArgs {
     /**
      * Gets or sets the job collection properties.
      */
-    properties?: pulumi.Input<types.inputs.scheduler.JobCollectionPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.JobCollectionPropertiesArgs>;
     /**
      * The resource group name.
      */

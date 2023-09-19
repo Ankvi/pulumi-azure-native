@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets an integration service environment.
  */
@@ -35,7 +35,7 @@ export interface GetIntegrationServiceEnvironmentResult {
     /**
      * Managed service identity properties.
      */
-    readonly identity?: types.outputs.logic.v20190501.ManagedServiceIdentityResponse;
+    readonly identity?: types.outputs.ManagedServiceIdentityResponse;
     /**
      * The resource location.
      */
@@ -47,11 +47,11 @@ export interface GetIntegrationServiceEnvironmentResult {
     /**
      * The integration service environment properties.
      */
-    readonly properties: types.outputs.logic.v20190501.IntegrationServiceEnvironmentPropertiesResponse;
+    readonly properties: types.outputs.IntegrationServiceEnvironmentPropertiesResponse;
     /**
      * The sku.
      */
-    readonly sku?: types.outputs.logic.v20190501.IntegrationServiceEnvironmentSkuResponse;
+    readonly sku?: types.outputs.IntegrationServiceEnvironmentSkuResponse;
     /**
      * The resource tags.
      */

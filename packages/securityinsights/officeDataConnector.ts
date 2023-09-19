@@ -35,7 +35,7 @@ export class OfficeDataConnector extends pulumi.CustomResource {
     /**
      * The available data types for the connector.
      */
-    public readonly dataTypes!: pulumi.Output<types.outputs.securityinsights.OfficeDataConnectorDataTypesResponse | undefined>;
+    public readonly dataTypes!: pulumi.Output<types.outputs.OfficeDataConnectorDataTypesResponse | undefined>;
     /**
      * Etag of the azure resource
      */
@@ -52,7 +52,7 @@ export class OfficeDataConnector extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.securityinsights.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The tenant id to connect to, and get the data from.
      */
@@ -119,7 +119,7 @@ export interface OfficeDataConnectorArgs {
     /**
      * The available data types for the connector.
      */
-    dataTypes?: pulumi.Input<types.inputs.securityinsights.OfficeDataConnectorDataTypesArgs>;
+    dataTypes?: pulumi.Input<types.inputs.OfficeDataConnectorDataTypesArgs>;
     /**
      * The kind of the data connector
      * Expected value is 'Office365'.

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the active management group diagnostic settings for the specified resource.
  */
@@ -47,7 +47,7 @@ export interface GetManagementGroupDiagnosticSettingResult {
     /**
      * The list of logs settings.
      */
-    readonly logs?: types.outputs.insights.v20200101preview.ManagementGroupLogSettingsResponse[];
+    readonly logs?: types.outputs.ManagementGroupLogSettingsResponse[];
     /**
      * Azure resource name
      */

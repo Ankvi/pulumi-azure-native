@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns the extended properties of a product.
  */
@@ -40,7 +40,7 @@ export interface ListProductDetailsResult {
     /**
      * List of attached data disks.
      */
-    readonly dataDiskImages: types.outputs.azurestack.v20200601preview.DataDiskImageResponse[];
+    readonly dataDiskImages: types.outputs.DataDiskImageResponse[];
     /**
      * The URI to the .azpkg file that provides information required for showing product in the gallery.
      */
@@ -52,7 +52,7 @@ export interface ListProductDetailsResult {
     /**
      * OS disk image used by product.
      */
-    readonly osDiskImage: types.outputs.azurestack.v20200601preview.OsDiskImageResponse;
+    readonly osDiskImage: types.outputs.OsDiskImageResponse;
     /**
      * Specifies the kind of the product (virtualMachine or virtualMachineExtension).
      */

@@ -61,7 +61,7 @@ export interface GetRouteMapResult {
     /**
      * List of RouteMap rules to be applied.
      */
-    readonly rules?: types.outputs.network.RouteMapRuleResponse[];
+    readonly rules?: types.outputs.RouteMapRuleResponse[];
     /**
      * Resource type.
      */

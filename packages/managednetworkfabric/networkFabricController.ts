@@ -39,11 +39,11 @@ export class NetworkFabricController extends pulumi.CustomResource {
     /**
      * As part of an update, the Infrastructure ExpressRoute CircuitID should be provided to create and Provision a NFC. This Express route is dedicated for Infrastructure services. (This is a Mandatory attribute)
      */
-    public readonly infrastructureExpressRouteConnections!: pulumi.Output<types.outputs.managednetworkfabric.ExpressRouteConnectionInformationResponse[] | undefined>;
+    public readonly infrastructureExpressRouteConnections!: pulumi.Output<types.outputs.ExpressRouteConnectionInformationResponse[] | undefined>;
     /**
      * InfrastructureServices IP ranges.
      */
-    public /*out*/ readonly infrastructureServices!: pulumi.Output<types.outputs.managednetworkfabric.InfrastructureServicesResponse>;
+    public /*out*/ readonly infrastructureServices!: pulumi.Output<types.outputs.InfrastructureServicesResponse>;
     /**
      * IPv4 Network Fabric Controller Address Space.
      */
@@ -59,7 +59,7 @@ export class NetworkFabricController extends pulumi.CustomResource {
     /**
      * Managed Resource Group configuration properties.
      */
-    public readonly managedResourceGroupConfiguration!: pulumi.Output<types.outputs.managednetworkfabric.ManagedResourceGroupConfigurationResponse | undefined>;
+    public readonly managedResourceGroupConfiguration!: pulumi.Output<types.outputs.ManagedResourceGroupConfigurationResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -79,7 +79,7 @@ export class NetworkFabricController extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.managednetworkfabric.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -91,7 +91,7 @@ export class NetworkFabricController extends pulumi.CustomResource {
     /**
      * As part of an update, the workload ExpressRoute CircuitID should be provided to create and Provision a NFC. This Express route is dedicated for Workload services. (This is a Mandatory attribute).
      */
-    public readonly workloadExpressRouteConnections!: pulumi.Output<types.outputs.managednetworkfabric.ExpressRouteConnectionInformationResponse[] | undefined>;
+    public readonly workloadExpressRouteConnections!: pulumi.Output<types.outputs.ExpressRouteConnectionInformationResponse[] | undefined>;
     /**
      * A workload management network is required for all the tenant (workload) traffic. This traffic is only dedicated for Tenant workloads which are required to access internet or any other MSFT/Public endpoints.
      */
@@ -99,7 +99,7 @@ export class NetworkFabricController extends pulumi.CustomResource {
     /**
      * WorkloadServices IP ranges.
      */
-    public /*out*/ readonly workloadServices!: pulumi.Output<types.outputs.managednetworkfabric.WorkloadServicesResponse>;
+    public /*out*/ readonly workloadServices!: pulumi.Output<types.outputs.WorkloadServicesResponse>;
 
     /**
      * Create a NetworkFabricController resource with the given unique name, arguments, and options.
@@ -171,7 +171,7 @@ export interface NetworkFabricControllerArgs {
     /**
      * As part of an update, the Infrastructure ExpressRoute CircuitID should be provided to create and Provision a NFC. This Express route is dedicated for Infrastructure services. (This is a Mandatory attribute)
      */
-    infrastructureExpressRouteConnections?: pulumi.Input<pulumi.Input<types.inputs.managednetworkfabric.ExpressRouteConnectionInformationArgs>[]>;
+    infrastructureExpressRouteConnections?: pulumi.Input<pulumi.Input<types.inputs.ExpressRouteConnectionInformationArgs>[]>;
     /**
      * IPv4 Network Fabric Controller Address Space.
      */
@@ -187,7 +187,7 @@ export interface NetworkFabricControllerArgs {
     /**
      * Managed Resource Group configuration properties.
      */
-    managedResourceGroupConfiguration?: pulumi.Input<types.inputs.managednetworkfabric.ManagedResourceGroupConfigurationArgs>;
+    managedResourceGroupConfiguration?: pulumi.Input<types.inputs.ManagedResourceGroupConfigurationArgs>;
     /**
      * Name of the Network Fabric Controller
      */
@@ -203,5 +203,5 @@ export interface NetworkFabricControllerArgs {
     /**
      * As part of an update, the workload ExpressRoute CircuitID should be provided to create and Provision a NFC. This Express route is dedicated for Workload services. (This is a Mandatory attribute).
      */
-    workloadExpressRouteConnections?: pulumi.Input<pulumi.Input<types.inputs.managednetworkfabric.ExpressRouteConnectionInformationArgs>[]>;
+    workloadExpressRouteConnections?: pulumi.Input<pulumi.Input<types.inputs.ExpressRouteConnectionInformationArgs>[]>;
 }

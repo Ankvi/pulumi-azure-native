@@ -37,7 +37,7 @@ export interface GetLiveEventTrackIngestHeartbeatsResult {
     /**
      * The result of the get live event track events.
      */
-    readonly value?: types.outputs.media.LiveEventTrackEventResponse[];
+    readonly value?: types.outputs.LiveEventTrackEventResponse[];
 }
 /**
  * Get track ingest heartbeat events telemetry of a live event.

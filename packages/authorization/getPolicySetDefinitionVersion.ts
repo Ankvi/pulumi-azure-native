@@ -52,15 +52,15 @@ export interface GetPolicySetDefinitionVersionResult {
     /**
      * The policy set definition parameters that can be used in policy definition references.
      */
-    readonly parameters?: {[key: string]: types.outputs.authorization.ParameterDefinitionsValueResponse};
+    readonly parameters?: {[key: string]: types.outputs.ParameterDefinitionsValueResponse};
     /**
      * The metadata describing groups of policy definition references within the policy set definition.
      */
-    readonly policyDefinitionGroups?: types.outputs.authorization.PolicyDefinitionGroupResponse[];
+    readonly policyDefinitionGroups?: types.outputs.PolicyDefinitionGroupResponse[];
     /**
      * An array of policy definition references.
      */
-    readonly policyDefinitions: types.outputs.authorization.PolicyDefinitionReferenceResponse[];
+    readonly policyDefinitions: types.outputs.PolicyDefinitionReferenceResponse[];
     /**
      * The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
      */
@@ -68,7 +68,7 @@ export interface GetPolicySetDefinitionVersionResult {
     /**
      * The system metadata relating to this resource.
      */
-    readonly systemData: types.outputs.authorization.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource (Microsoft.Authorization/policySetDefinitions/versions).
      */

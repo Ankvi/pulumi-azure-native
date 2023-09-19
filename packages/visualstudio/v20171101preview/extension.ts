@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The response to an extension resource GET request.
  */
@@ -42,7 +42,7 @@ export class Extension extends pulumi.CustomResource {
     /**
      * The extension plan that was purchased.
      */
-    public readonly plan!: pulumi.Output<types.outputs.visualstudio.v20171101preview.ExtensionResourcePlanResponse | undefined>;
+    public readonly plan!: pulumi.Output<types.outputs.ExtensionResourcePlanResponse | undefined>;
     /**
      * Resource properties.
      */
@@ -116,7 +116,7 @@ export interface ExtensionArgs {
     /**
      * Extended information about the plan being purchased for this extension resource.
      */
-    plan?: pulumi.Input<types.inputs.visualstudio.v20171101preview.ExtensionResourcePlanArgs>;
+    plan?: pulumi.Input<types.inputs.ExtensionResourcePlanArgs>;
     /**
      * A dictionary of extended properties. This property is currently unused.
      */

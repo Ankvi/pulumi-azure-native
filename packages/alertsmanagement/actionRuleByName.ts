@@ -43,7 +43,7 @@ export class ActionRuleByName extends pulumi.CustomResource {
     /**
      * action rule properties
      */
-    public readonly properties!: pulumi.Output<types.outputs.alertsmanagement.ActionGroupResponse | types.outputs.alertsmanagement.DiagnosticsResponse | types.outputs.alertsmanagement.SuppressionResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ActionGroupResponse | types.outputs.DiagnosticsResponse | types.outputs.SuppressionResponse>;
     /**
      * Resource tags
      */
@@ -103,7 +103,7 @@ export interface ActionRuleByNameArgs {
     /**
      * action rule properties
      */
-    properties?: pulumi.Input<types.inputs.alertsmanagement.ActionGroupArgs | types.inputs.alertsmanagement.DiagnosticsArgs | types.inputs.alertsmanagement.SuppressionArgs>;
+    properties?: pulumi.Input<types.inputs.ActionGroupArgs | types.inputs.DiagnosticsArgs | types.inputs.SuppressionArgs>;
     /**
      * Resource group name where the resource is created.
      */

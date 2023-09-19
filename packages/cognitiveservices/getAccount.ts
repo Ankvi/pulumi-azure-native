@@ -40,7 +40,7 @@ export interface GetAccountResult {
     /**
      * Identity for the resource.
      */
-    readonly identity?: types.outputs.cognitiveservices.IdentityResponse;
+    readonly identity?: types.outputs.IdentityResponse;
     /**
      * The Kind of the resource.
      */
@@ -56,15 +56,15 @@ export interface GetAccountResult {
     /**
      * Properties of Cognitive Services account.
      */
-    readonly properties: types.outputs.cognitiveservices.AccountPropertiesResponse;
+    readonly properties: types.outputs.AccountPropertiesResponse;
     /**
      * The resource model definition representing SKU
      */
-    readonly sku?: types.outputs.cognitiveservices.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.cognitiveservices.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

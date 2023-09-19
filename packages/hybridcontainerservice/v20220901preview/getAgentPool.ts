@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the agent pool in the Hybrid AKS provisioned cluster
  */
@@ -40,12 +40,12 @@ export interface GetAgentPoolResult {
     /**
      * The underlying cloud infra provider properties.
      */
-    readonly cloudProviderProfile?: types.outputs.hybridcontainerservice.v20220901preview.CloudProviderProfileResponse;
+    readonly cloudProviderProfile?: types.outputs.CloudProviderProfileResponse;
     /**
      * Count - Number of agents to host docker containers. Allowed values must be in the range of 1 to 100 (inclusive). The default value is 1.
      */
     readonly count?: number;
-    readonly extendedLocation?: types.outputs.hybridcontainerservice.v20220901preview.AgentPoolResponseExtendedLocation;
+    readonly extendedLocation?: types.outputs.AgentPoolResponseExtendedLocation;
     /**
      * Resource Id
      */
@@ -94,11 +94,11 @@ export interface GetAgentPoolResult {
     /**
      * HybridAKSNodePoolStatus defines the observed state of HybridAKSNodePool
      */
-    readonly status?: types.outputs.hybridcontainerservice.v20220901preview.AgentPoolProvisioningStatusResponseStatus;
+    readonly status?: types.outputs.AgentPoolProvisioningStatusResponseStatus;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.hybridcontainerservice.v20220901preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags
      */

@@ -43,11 +43,11 @@ export class Subscription extends pulumi.CustomResource {
     /**
      * Properties specific to client affine subscriptions.
      */
-    public readonly clientAffineProperties!: pulumi.Output<types.outputs.servicebus.SBClientAffinePropertiesResponse | undefined>;
+    public readonly clientAffineProperties!: pulumi.Output<types.outputs.SBClientAffinePropertiesResponse | undefined>;
     /**
      * Message count details
      */
-    public /*out*/ readonly countDetails!: pulumi.Output<types.outputs.servicebus.MessageCountDetailsResponse>;
+    public /*out*/ readonly countDetails!: pulumi.Output<types.outputs.MessageCountDetailsResponse>;
     /**
      * Exact time the message was created.
      */
@@ -115,7 +115,7 @@ export class Subscription extends pulumi.CustomResource {
     /**
      * The system meta data relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.servicebus.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
      */
@@ -215,7 +215,7 @@ export interface SubscriptionArgs {
     /**
      * Properties specific to client affine subscriptions.
      */
-    clientAffineProperties?: pulumi.Input<types.inputs.servicebus.SBClientAffinePropertiesArgs>;
+    clientAffineProperties?: pulumi.Input<types.inputs.SBClientAffinePropertiesArgs>;
     /**
      * Value that indicates whether a subscription has dead letter support on filter evaluation exceptions.
      */

@@ -43,7 +43,7 @@ export class AgentPool extends pulumi.CustomResource {
     /**
      * CreationData to be used to specify the source Snapshot ID if the node pool will be created/upgraded using a snapshot.
      */
-    public readonly creationData!: pulumi.Output<types.outputs.containerservice.CreationDataResponse | undefined>;
+    public readonly creationData!: pulumi.Output<types.outputs.CreationDataResponse | undefined>;
     /**
      * If orchestratorVersion is a fully specified version <major.minor.patch>, this field will be exactly equal to it. If orchestratorVersion is <major.minor>, this field will contain the full <major.minor.patch> version being used.
      */
@@ -79,7 +79,7 @@ export class AgentPool extends pulumi.CustomResource {
     /**
      * The Kubelet configuration on the agent pool nodes.
      */
-    public readonly kubeletConfig!: pulumi.Output<types.outputs.containerservice.KubeletConfigResponse | undefined>;
+    public readonly kubeletConfig!: pulumi.Output<types.outputs.KubeletConfigResponse | undefined>;
     /**
      * Determines the placement of emptyDir volumes, container runtime data root, and Kubelet ephemeral storage.
      */
@@ -87,7 +87,7 @@ export class AgentPool extends pulumi.CustomResource {
     /**
      * The OS configuration of Linux agent nodes.
      */
-    public readonly linuxOSConfig!: pulumi.Output<types.outputs.containerservice.LinuxOSConfigResponse | undefined>;
+    public readonly linuxOSConfig!: pulumi.Output<types.outputs.LinuxOSConfigResponse | undefined>;
     /**
      * The maximum number of nodes for auto-scaling
      */
@@ -151,7 +151,7 @@ export class AgentPool extends pulumi.CustomResource {
     /**
      * When an Agent Pool is first created it is initially Running. The Agent Pool can be stopped by setting this field to Stopped. A stopped Agent Pool stops all of its VMs and does not accrue billing charges. An Agent Pool can only be stopped if it is Running and provisioning state is Succeeded
      */
-    public readonly powerState!: pulumi.Output<types.outputs.containerservice.PowerStateResponse | undefined>;
+    public readonly powerState!: pulumi.Output<types.outputs.PowerStateResponse | undefined>;
     /**
      * The current deployment or provisioning state.
      */
@@ -187,7 +187,7 @@ export class AgentPool extends pulumi.CustomResource {
     /**
      * Settings for upgrading the agentpool
      */
-    public readonly upgradeSettings!: pulumi.Output<types.outputs.containerservice.AgentPoolUpgradeSettingsResponse | undefined>;
+    public readonly upgradeSettings!: pulumi.Output<types.outputs.AgentPoolUpgradeSettingsResponse | undefined>;
     /**
      * VM size availability varies by region. If a node contains insufficient compute resources (memory, cpu, etc) pods might fail to run correctly. For more details on restricted VM sizes, see: https://docs.microsoft.com/azure/aks/quotas-skus-regions
      */
@@ -333,7 +333,7 @@ export interface AgentPoolArgs {
     /**
      * CreationData to be used to specify the source Snapshot ID if the node pool will be created/upgraded using a snapshot.
      */
-    creationData?: pulumi.Input<types.inputs.containerservice.CreationDataArgs>;
+    creationData?: pulumi.Input<types.inputs.CreationDataArgs>;
     /**
      * Whether to enable auto-scaler
      */
@@ -365,7 +365,7 @@ export interface AgentPoolArgs {
     /**
      * The Kubelet configuration on the agent pool nodes.
      */
-    kubeletConfig?: pulumi.Input<types.inputs.containerservice.KubeletConfigArgs>;
+    kubeletConfig?: pulumi.Input<types.inputs.KubeletConfigArgs>;
     /**
      * Determines the placement of emptyDir volumes, container runtime data root, and Kubelet ephemeral storage.
      */
@@ -373,7 +373,7 @@ export interface AgentPoolArgs {
     /**
      * The OS configuration of Linux agent nodes.
      */
-    linuxOSConfig?: pulumi.Input<types.inputs.containerservice.LinuxOSConfigArgs>;
+    linuxOSConfig?: pulumi.Input<types.inputs.LinuxOSConfigArgs>;
     /**
      * The maximum number of nodes for auto-scaling
      */
@@ -429,7 +429,7 @@ export interface AgentPoolArgs {
     /**
      * When an Agent Pool is first created it is initially Running. The Agent Pool can be stopped by setting this field to Stopped. A stopped Agent Pool stops all of its VMs and does not accrue billing charges. An Agent Pool can only be stopped if it is Running and provisioning state is Succeeded
      */
-    powerState?: pulumi.Input<types.inputs.containerservice.PowerStateArgs>;
+    powerState?: pulumi.Input<types.inputs.PowerStateArgs>;
     /**
      * The ID for Proximity Placement Group.
      */
@@ -469,7 +469,7 @@ export interface AgentPoolArgs {
     /**
      * Settings for upgrading the agentpool
      */
-    upgradeSettings?: pulumi.Input<types.inputs.containerservice.AgentPoolUpgradeSettingsArgs>;
+    upgradeSettings?: pulumi.Input<types.inputs.AgentPoolUpgradeSettingsArgs>;
     /**
      * VM size availability varies by region. If a node contains insufficient compute resources (memory, cpu, etc) pods might fail to run correctly. For more details on restricted VM sizes, see: https://docs.microsoft.com/azure/aks/quotas-skus-regions
      */

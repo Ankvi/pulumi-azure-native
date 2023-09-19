@@ -43,7 +43,7 @@ export class MarketplaceGalleryImage extends pulumi.CustomResource {
     /**
      * The extendedLocation of the resource.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.azurestackhci.ExtendedLocationResponse | undefined>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
     /**
      * The hypervisor generation of the Virtual Machine [V1, V2]
      */
@@ -51,7 +51,7 @@ export class MarketplaceGalleryImage extends pulumi.CustomResource {
     /**
      * This is the gallery image definition identifier.
      */
-    public readonly identifier!: pulumi.Output<types.outputs.azurestackhci.GalleryImageIdentifierResponse | undefined>;
+    public readonly identifier!: pulumi.Output<types.outputs.GalleryImageIdentifierResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -71,11 +71,11 @@ export class MarketplaceGalleryImage extends pulumi.CustomResource {
     /**
      * The observed state of marketplace gallery images
      */
-    public /*out*/ readonly status!: pulumi.Output<types.outputs.azurestackhci.MarketplaceGalleryImageStatusResponse>;
+    public /*out*/ readonly status!: pulumi.Output<types.outputs.MarketplaceGalleryImageStatusResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.azurestackhci.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -87,7 +87,7 @@ export class MarketplaceGalleryImage extends pulumi.CustomResource {
     /**
      * Specifies information about the gallery image version that you want to create or update.
      */
-    public readonly version!: pulumi.Output<types.outputs.azurestackhci.GalleryImageVersionResponse | undefined>;
+    public readonly version!: pulumi.Output<types.outputs.GalleryImageVersionResponse | undefined>;
 
     /**
      * Create a MarketplaceGalleryImage resource with the given unique name, arguments, and options.
@@ -157,7 +157,7 @@ export interface MarketplaceGalleryImageArgs {
     /**
      * The extendedLocation of the resource.
      */
-    extendedLocation?: pulumi.Input<types.inputs.azurestackhci.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * The hypervisor generation of the Virtual Machine [V1, V2]
      */
@@ -165,7 +165,7 @@ export interface MarketplaceGalleryImageArgs {
     /**
      * This is the gallery image definition identifier.
      */
-    identifier?: pulumi.Input<types.inputs.azurestackhci.GalleryImageIdentifierArgs>;
+    identifier?: pulumi.Input<types.inputs.GalleryImageIdentifierArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -189,5 +189,5 @@ export interface MarketplaceGalleryImageArgs {
     /**
      * Specifies information about the gallery image version that you want to create or update.
      */
-    version?: pulumi.Input<types.inputs.azurestackhci.GalleryImageVersionArgs>;
+    version?: pulumi.Input<types.inputs.GalleryImageVersionArgs>;
 }

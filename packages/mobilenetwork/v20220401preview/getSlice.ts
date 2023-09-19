@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets information about the specified network slice.
  */
@@ -80,11 +80,11 @@ export interface GetSliceResult {
     /**
      * Single-network slice selection assistance information (S-NSSAI). Unique at the scope of a mobile network.
      */
-    readonly snssai: types.outputs.mobilenetwork.v20220401preview.SnssaiResponse;
+    readonly snssai: types.outputs.SnssaiResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.mobilenetwork.v20220401preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

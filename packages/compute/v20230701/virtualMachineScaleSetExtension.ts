@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Describes a Virtual Machine Scale Set Extension.
  */
@@ -54,7 +54,7 @@ export class VirtualMachineScaleSetExtension extends pulumi.CustomResource {
     /**
      * The extensions protected settings that are passed by reference, and consumed from key vault
      */
-    public readonly protectedSettingsFromKeyVault!: pulumi.Output<types.outputs.compute.v20230701.KeyVaultSecretReferenceResponse | undefined>;
+    public readonly protectedSettingsFromKeyVault!: pulumi.Output<types.outputs.KeyVaultSecretReferenceResponse | undefined>;
     /**
      * Collection of extension names after which this extension needs to be provisioned.
      */
@@ -166,7 +166,7 @@ export interface VirtualMachineScaleSetExtensionArgs {
     /**
      * The extensions protected settings that are passed by reference, and consumed from key vault
      */
-    protectedSettingsFromKeyVault?: pulumi.Input<types.inputs.compute.v20230701.KeyVaultSecretReferenceArgs>;
+    protectedSettingsFromKeyVault?: pulumi.Input<types.inputs.KeyVaultSecretReferenceArgs>;
     /**
      * Collection of extension names after which this extension needs to be provisioned.
      */

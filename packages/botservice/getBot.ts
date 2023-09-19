@@ -52,11 +52,11 @@ export interface GetBotResult {
     /**
      * The set of properties specific to bot resource
      */
-    readonly properties: types.outputs.botservice.BotPropertiesResponse;
+    readonly properties: types.outputs.BotPropertiesResponse;
     /**
      * Gets or sets the SKU of the resource.
      */
-    readonly sku?: types.outputs.botservice.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * Contains resource tags defined as key/value pairs.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets an elastic pool.
  */
@@ -76,7 +76,7 @@ export interface GetElasticPoolResult {
     /**
      * The per database settings for the elastic pool.
      */
-    readonly perDatabaseSettings?: types.outputs.sql.v20211101.ElasticPoolPerDatabaseSettingsResponse;
+    readonly perDatabaseSettings?: types.outputs.ElasticPoolPerDatabaseSettingsResponse;
     /**
      * The elastic pool SKU.
      * 
@@ -86,7 +86,7 @@ export interface GetElasticPoolResult {
      * az sql elastic-pool list-editions -l <location> -o table
      * ````
      */
-    readonly sku?: types.outputs.sql.v20211101.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * The state of the elastic pool.
      */

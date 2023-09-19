@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets information about the specified Private Endpoint.
  */
@@ -48,7 +48,7 @@ export interface GetPrivateEndpointResult {
     /**
      * A list of connections to the remote resource. Immutable after it is set.
      */
-    readonly manualPrivateLinkServiceConnections?: types.outputs.streamanalytics.v20200301.PrivateLinkServiceConnectionResponse[];
+    readonly manualPrivateLinkServiceConnections?: types.outputs.PrivateLinkServiceConnectionResponse[];
     /**
      * The name of the resource
      */

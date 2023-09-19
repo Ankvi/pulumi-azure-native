@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves the details of a VirtualHub.
  */
@@ -39,7 +39,7 @@ export interface GetVirtualHubResult {
     /**
      * list of all vnet connections with this VirtualHub.
      */
-    readonly hubVirtualNetworkConnections?: types.outputs.network.v20180701.HubVirtualNetworkConnectionResponse[];
+    readonly hubVirtualNetworkConnections?: types.outputs.HubVirtualNetworkConnectionResponse[];
     /**
      * Resource ID.
      */
@@ -67,7 +67,7 @@ export interface GetVirtualHubResult {
     /**
      * The VirtualWAN to which the VirtualHub belongs
      */
-    readonly virtualWan?: types.outputs.network.v20180701.SubResourceResponse;
+    readonly virtualWan?: types.outputs.SubResourceResponse;
 }
 /**
  * Retrieves the details of a VirtualHub.

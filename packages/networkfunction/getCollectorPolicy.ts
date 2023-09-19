@@ -37,7 +37,7 @@ export interface GetCollectorPolicyResult {
     /**
      * Emission policies.
      */
-    readonly emissionPolicies?: types.outputs.networkfunction.EmissionPoliciesPropertiesFormatResponse[];
+    readonly emissionPolicies?: types.outputs.EmissionPoliciesPropertiesFormatResponse[];
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -49,7 +49,7 @@ export interface GetCollectorPolicyResult {
     /**
      * Ingestion policies.
      */
-    readonly ingestionPolicy?: types.outputs.networkfunction.IngestionPolicyPropertiesFormatResponse;
+    readonly ingestionPolicy?: types.outputs.IngestionPolicyPropertiesFormatResponse;
     /**
      * Resource location.
      */
@@ -65,7 +65,7 @@ export interface GetCollectorPolicyResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.networkfunction.TrackedResourceResponseSystemData;
+    readonly systemData: types.outputs.TrackedResourceResponseSystemData;
     /**
      * Resource tags.
      */

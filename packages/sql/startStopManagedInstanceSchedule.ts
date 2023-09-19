@@ -51,11 +51,11 @@ export class StartStopManagedInstanceSchedule extends pulumi.CustomResource {
     /**
      * Schedule list.
      */
-    public readonly scheduleList!: pulumi.Output<types.outputs.sql.ScheduleItemResponse[]>;
+    public readonly scheduleList!: pulumi.Output<types.outputs.ScheduleItemResponse[]>;
     /**
      * System data of the scheduled resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.sql.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The time zone of the schedule.
      */
@@ -132,7 +132,7 @@ export interface StartStopManagedInstanceScheduleArgs {
     /**
      * Schedule list.
      */
-    scheduleList: pulumi.Input<pulumi.Input<types.inputs.sql.ScheduleItemArgs>[]>;
+    scheduleList: pulumi.Input<pulumi.Input<types.inputs.ScheduleItemArgs>[]>;
     /**
      * Name of the managed instance Start/Stop schedule.
      */

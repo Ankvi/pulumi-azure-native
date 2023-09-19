@@ -35,19 +35,19 @@ export class FhirService extends pulumi.CustomResource {
     /**
      * Fhir Service access policies.
      */
-    public readonly accessPolicies!: pulumi.Output<types.outputs.healthcareapis.FhirServiceAccessPolicyEntryResponse[] | undefined>;
+    public readonly accessPolicies!: pulumi.Output<types.outputs.FhirServiceAccessPolicyEntryResponse[] | undefined>;
     /**
      * Fhir Service Azure container registry configuration.
      */
-    public readonly acrConfiguration!: pulumi.Output<types.outputs.healthcareapis.FhirServiceAcrConfigurationResponse | undefined>;
+    public readonly acrConfiguration!: pulumi.Output<types.outputs.FhirServiceAcrConfigurationResponse | undefined>;
     /**
      * Fhir Service authentication configuration.
      */
-    public readonly authenticationConfiguration!: pulumi.Output<types.outputs.healthcareapis.FhirServiceAuthenticationConfigurationResponse | undefined>;
+    public readonly authenticationConfiguration!: pulumi.Output<types.outputs.FhirServiceAuthenticationConfigurationResponse | undefined>;
     /**
      * Fhir Service Cors configuration.
      */
-    public readonly corsConfiguration!: pulumi.Output<types.outputs.healthcareapis.FhirServiceCorsConfigurationResponse | undefined>;
+    public readonly corsConfiguration!: pulumi.Output<types.outputs.FhirServiceCorsConfigurationResponse | undefined>;
     /**
      * An etag associated with the resource, used for optimistic concurrency when editing it.
      */
@@ -59,19 +59,19 @@ export class FhirService extends pulumi.CustomResource {
     /**
      * Fhir Service export configuration.
      */
-    public readonly exportConfiguration!: pulumi.Output<types.outputs.healthcareapis.FhirServiceExportConfigurationResponse | undefined>;
+    public readonly exportConfiguration!: pulumi.Output<types.outputs.FhirServiceExportConfigurationResponse | undefined>;
     /**
      * Setting indicating whether the service has a managed identity associated with it.
      */
-    public readonly identity!: pulumi.Output<types.outputs.healthcareapis.ServiceManagedIdentityResponseIdentity | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ServiceManagedIdentityResponseIdentity | undefined>;
     /**
      * Implementation Guides configuration.
      */
-    public readonly implementationGuidesConfiguration!: pulumi.Output<types.outputs.healthcareapis.ImplementationGuidesConfigurationResponse | undefined>;
+    public readonly implementationGuidesConfiguration!: pulumi.Output<types.outputs.ImplementationGuidesConfigurationResponse | undefined>;
     /**
      * Fhir Service import configuration.
      */
-    public readonly importConfiguration!: pulumi.Output<types.outputs.healthcareapis.FhirServiceImportConfigurationResponse | undefined>;
+    public readonly importConfiguration!: pulumi.Output<types.outputs.FhirServiceImportConfigurationResponse | undefined>;
     /**
      * The kind of the service.
      */
@@ -87,7 +87,7 @@ export class FhirService extends pulumi.CustomResource {
     /**
      * The list of private endpoint connections that are set up for this resource.
      */
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.healthcareapis.PrivateEndpointConnectionResponse[]>;
+    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[]>;
     /**
      * The provisioning state.
      */
@@ -99,11 +99,11 @@ export class FhirService extends pulumi.CustomResource {
     /**
      * Determines tracking of history for resources.
      */
-    public readonly resourceVersionPolicyConfiguration!: pulumi.Output<types.outputs.healthcareapis.ResourceVersionPolicyConfigurationResponse | undefined>;
+    public readonly resourceVersionPolicyConfiguration!: pulumi.Output<types.outputs.ResourceVersionPolicyConfigurationResponse | undefined>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.healthcareapis.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -189,23 +189,23 @@ export interface FhirServiceArgs {
     /**
      * Fhir Service access policies.
      */
-    accessPolicies?: pulumi.Input<pulumi.Input<types.inputs.healthcareapis.FhirServiceAccessPolicyEntryArgs>[]>;
+    accessPolicies?: pulumi.Input<pulumi.Input<types.inputs.FhirServiceAccessPolicyEntryArgs>[]>;
     /**
      * Fhir Service Azure container registry configuration.
      */
-    acrConfiguration?: pulumi.Input<types.inputs.healthcareapis.FhirServiceAcrConfigurationArgs>;
+    acrConfiguration?: pulumi.Input<types.inputs.FhirServiceAcrConfigurationArgs>;
     /**
      * Fhir Service authentication configuration.
      */
-    authenticationConfiguration?: pulumi.Input<types.inputs.healthcareapis.FhirServiceAuthenticationConfigurationArgs>;
+    authenticationConfiguration?: pulumi.Input<types.inputs.FhirServiceAuthenticationConfigurationArgs>;
     /**
      * Fhir Service Cors configuration.
      */
-    corsConfiguration?: pulumi.Input<types.inputs.healthcareapis.FhirServiceCorsConfigurationArgs>;
+    corsConfiguration?: pulumi.Input<types.inputs.FhirServiceCorsConfigurationArgs>;
     /**
      * Fhir Service export configuration.
      */
-    exportConfiguration?: pulumi.Input<types.inputs.healthcareapis.FhirServiceExportConfigurationArgs>;
+    exportConfiguration?: pulumi.Input<types.inputs.FhirServiceExportConfigurationArgs>;
     /**
      * The name of FHIR Service resource.
      */
@@ -213,15 +213,15 @@ export interface FhirServiceArgs {
     /**
      * Setting indicating whether the service has a managed identity associated with it.
      */
-    identity?: pulumi.Input<types.inputs.healthcareapis.ServiceManagedIdentityIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ServiceManagedIdentityIdentityArgs>;
     /**
      * Implementation Guides configuration.
      */
-    implementationGuidesConfiguration?: pulumi.Input<types.inputs.healthcareapis.ImplementationGuidesConfigurationArgs>;
+    implementationGuidesConfiguration?: pulumi.Input<types.inputs.ImplementationGuidesConfigurationArgs>;
     /**
      * Fhir Service import configuration.
      */
-    importConfiguration?: pulumi.Input<types.inputs.healthcareapis.FhirServiceImportConfigurationArgs>;
+    importConfiguration?: pulumi.Input<types.inputs.FhirServiceImportConfigurationArgs>;
     /**
      * The kind of the service.
      */
@@ -237,7 +237,7 @@ export interface FhirServiceArgs {
     /**
      * Determines tracking of history for resources.
      */
-    resourceVersionPolicyConfiguration?: pulumi.Input<types.inputs.healthcareapis.ResourceVersionPolicyConfigurationArgs>;
+    resourceVersionPolicyConfiguration?: pulumi.Input<types.inputs.ResourceVersionPolicyConfigurationArgs>;
     /**
      * Resource tags.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets details about the specified dnc DelegatedSubnet Link.
  */
@@ -31,7 +31,7 @@ export interface GetDelegatedSubnetServiceDetailsResult {
     /**
      * Properties of the controller.
      */
-    readonly controllerDetails?: types.outputs.delegatednetwork.v20230518preview.ControllerDetailsResponse;
+    readonly controllerDetails?: types.outputs.ControllerDetailsResponse;
     /**
      * An identifier that represents the resource.
      */
@@ -55,7 +55,7 @@ export interface GetDelegatedSubnetServiceDetailsResult {
     /**
      * subnet details
      */
-    readonly subnetDetails?: types.outputs.delegatednetwork.v20230518preview.SubnetDetailsResponse;
+    readonly subnetDetails?: types.outputs.SubnetDetailsResponse;
     /**
      * The resource tags.
      */

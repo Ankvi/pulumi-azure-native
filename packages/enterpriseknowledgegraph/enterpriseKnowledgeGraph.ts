@@ -43,11 +43,11 @@ export class EnterpriseKnowledgeGraph extends pulumi.CustomResource {
     /**
      * The set of properties specific to EnterpriseKnowledgeGraph resource
      */
-    public readonly properties!: pulumi.Output<types.outputs.enterpriseknowledgegraph.EnterpriseKnowledgeGraphPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.EnterpriseKnowledgeGraphPropertiesResponse>;
     /**
      * Gets or sets the SKU of the resource.
      */
-    public readonly sku!: pulumi.Output<types.outputs.enterpriseknowledgegraph.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Contains resource tags defined as key/value pairs.
      */
@@ -105,7 +105,7 @@ export interface EnterpriseKnowledgeGraphArgs {
     /**
      * The set of properties specific to EnterpriseKnowledgeGraph resource
      */
-    properties?: pulumi.Input<types.inputs.enterpriseknowledgegraph.EnterpriseKnowledgeGraphPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.EnterpriseKnowledgeGraphPropertiesArgs>;
     /**
      * The name of the EnterpriseKnowledgeGraph resource group in the user subscription.
      */
@@ -117,7 +117,7 @@ export interface EnterpriseKnowledgeGraphArgs {
     /**
      * Gets or sets the SKU of the resource.
      */
-    sku?: pulumi.Input<types.inputs.enterpriseknowledgegraph.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Contains resource tags defined as key/value pairs.
      */

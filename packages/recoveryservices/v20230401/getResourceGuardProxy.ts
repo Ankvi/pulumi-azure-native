@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns ResourceGuardProxy under vault and with the name referenced in request
  */
@@ -46,7 +46,7 @@ export interface GetResourceGuardProxyResult {
     /**
      * ResourceGuardProxyBaseResource properties
      */
-    readonly properties: types.outputs.recoveryservices.v20230401.ResourceGuardProxyBaseResponse;
+    readonly properties: types.outputs.ResourceGuardProxyBaseResponse;
     /**
      * Resource tags.
      */

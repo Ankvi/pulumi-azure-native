@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets information about the specified profile.
  */
@@ -61,7 +61,7 @@ export interface GetProfileResult {
     /**
      * The properties of the Profile.
      */
-    readonly fields?: types.outputs.customerinsights.v20170426.PropertyDefinitionResponse[];
+    readonly fields?: types.outputs.PropertyDefinitionResponse[];
     /**
      * Resource ID.
      */
@@ -105,7 +105,7 @@ export interface GetProfileResult {
     /**
      * The strong IDs.
      */
-    readonly strongIds?: types.outputs.customerinsights.v20170426.StrongIdResponse[];
+    readonly strongIds?: types.outputs.StrongIdResponse[];
     /**
      * The hub name.
      */

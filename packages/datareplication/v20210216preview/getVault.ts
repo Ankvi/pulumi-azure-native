@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the details of the vault.
  */
@@ -43,8 +43,8 @@ export interface GetVaultResult {
     /**
      * Vault properties.
      */
-    readonly properties: types.outputs.datareplication.v20210216preview.VaultModelPropertiesResponse;
-    readonly systemData: types.outputs.datareplication.v20210216preview.VaultModelResponseSystemData;
+    readonly properties: types.outputs.VaultModelPropertiesResponse;
+    readonly systemData: types.outputs.VaultModelResponseSystemData;
     /**
      * Gets or sets the resource tags.
      */

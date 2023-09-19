@@ -44,11 +44,11 @@ export interface GetAzureCliScriptResult {
     /**
      * Container settings.
      */
-    readonly containerSettings?: types.outputs.resources.ContainerConfigurationResponse;
+    readonly containerSettings?: types.outputs.ContainerConfigurationResponse;
     /**
      * The environment variables to pass over to the script.
      */
-    readonly environmentVariables?: types.outputs.resources.EnvironmentVariableResponse[];
+    readonly environmentVariables?: types.outputs.EnvironmentVariableResponse[];
     /**
      * Gets or sets how the deployment script should be forced to execute even if the script resource has not changed. Can be current time stamp or a GUID.
      */
@@ -60,7 +60,7 @@ export interface GetAzureCliScriptResult {
     /**
      * Optional property. Managed identity to be used for this deployment script. Currently, only user-assigned MSI is supported.
      */
-    readonly identity?: types.outputs.resources.ManagedServiceIdentityResponse;
+    readonly identity?: types.outputs.ManagedServiceIdentityResponse;
     /**
      * Type of the script.
      * Expected value is 'AzureCLI'.
@@ -97,11 +97,11 @@ export interface GetAzureCliScriptResult {
     /**
      * Contains the results of script execution.
      */
-    readonly status: types.outputs.resources.ScriptStatusResponse;
+    readonly status: types.outputs.ScriptStatusResponse;
     /**
      * Storage Account settings.
      */
-    readonly storageAccountSettings?: types.outputs.resources.StorageAccountConfigurationResponse;
+    readonly storageAccountSettings?: types.outputs.StorageAccountConfigurationResponse;
     /**
      * Supporting files for the external script.
      */
@@ -109,7 +109,7 @@ export interface GetAzureCliScriptResult {
     /**
      * The system metadata related to this resource.
      */
-    readonly systemData: types.outputs.resources.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

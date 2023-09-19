@@ -35,7 +35,7 @@ export class DataCollectionEndpoint extends pulumi.CustomResource {
     /**
      * The endpoint used by clients to access their configuration.
      */
-    public /*out*/ readonly configurationAccess!: pulumi.Output<types.outputs.insights.DataCollectionEndpointResponseConfigurationAccess | undefined>;
+    public /*out*/ readonly configurationAccess!: pulumi.Output<types.outputs.DataCollectionEndpointResponseConfigurationAccess | undefined>;
     /**
      * Description of the data collection endpoint.
      */
@@ -47,11 +47,11 @@ export class DataCollectionEndpoint extends pulumi.CustomResource {
     /**
      * Failover configuration on this endpoint. This property is READ-ONLY.
      */
-    public /*out*/ readonly failoverConfiguration!: pulumi.Output<types.outputs.insights.DataCollectionEndpointResponseFailoverConfiguration>;
+    public /*out*/ readonly failoverConfiguration!: pulumi.Output<types.outputs.DataCollectionEndpointResponseFailoverConfiguration>;
     /**
      * Managed service identity of the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.insights.DataCollectionEndpointResourceResponseIdentity | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.DataCollectionEndpointResourceResponseIdentity | undefined>;
     /**
      * The immutable ID of this data collection endpoint resource. This property is READ-ONLY.
      */
@@ -67,15 +67,15 @@ export class DataCollectionEndpoint extends pulumi.CustomResource {
     /**
      * The endpoint used by clients to ingest logs.
      */
-    public /*out*/ readonly logsIngestion!: pulumi.Output<types.outputs.insights.DataCollectionEndpointResponseLogsIngestion | undefined>;
+    public /*out*/ readonly logsIngestion!: pulumi.Output<types.outputs.DataCollectionEndpointResponseLogsIngestion | undefined>;
     /**
      * Metadata for the resource. This property is READ-ONLY.
      */
-    public /*out*/ readonly metadata!: pulumi.Output<types.outputs.insights.DataCollectionEndpointResponseMetadata>;
+    public /*out*/ readonly metadata!: pulumi.Output<types.outputs.DataCollectionEndpointResponseMetadata>;
     /**
      * The endpoint used by clients to ingest metrics.
      */
-    public /*out*/ readonly metricsIngestion!: pulumi.Output<types.outputs.insights.DataCollectionEndpointResponseMetricsIngestion | undefined>;
+    public /*out*/ readonly metricsIngestion!: pulumi.Output<types.outputs.DataCollectionEndpointResponseMetricsIngestion | undefined>;
     /**
      * The name of the resource.
      */
@@ -83,11 +83,11 @@ export class DataCollectionEndpoint extends pulumi.CustomResource {
     /**
      * Network access control rules for the endpoints.
      */
-    public readonly networkAcls!: pulumi.Output<types.outputs.insights.DataCollectionEndpointResponseNetworkAcls | undefined>;
+    public readonly networkAcls!: pulumi.Output<types.outputs.DataCollectionEndpointResponseNetworkAcls | undefined>;
     /**
      * List of Azure Monitor Private Link Scope Resources to which this data collection endpoint resource is associated. This property is READ-ONLY.
      */
-    public /*out*/ readonly privateLinkScopedResources!: pulumi.Output<types.outputs.insights.PrivateLinkScopedResourceResponse[]>;
+    public /*out*/ readonly privateLinkScopedResources!: pulumi.Output<types.outputs.PrivateLinkScopedResourceResponse[]>;
     /**
      * The resource provisioning state. This property is READ-ONLY.
      */
@@ -95,7 +95,7 @@ export class DataCollectionEndpoint extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.insights.DataCollectionEndpointResourceResponseSystemData>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.DataCollectionEndpointResourceResponseSystemData>;
     /**
      * Resource tags.
      */
@@ -181,7 +181,7 @@ export interface DataCollectionEndpointArgs {
     /**
      * Managed service identity of the resource.
      */
-    identity?: pulumi.Input<types.inputs.insights.DataCollectionEndpointResourceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.DataCollectionEndpointResourceIdentityArgs>;
     /**
      * The immutable ID of this data collection endpoint resource. This property is READ-ONLY.
      */
@@ -197,7 +197,7 @@ export interface DataCollectionEndpointArgs {
     /**
      * Network access control rules for the endpoints.
      */
-    networkAcls?: pulumi.Input<types.inputs.insights.DataCollectionEndpointNetworkAclsArgs>;
+    networkAcls?: pulumi.Input<types.inputs.DataCollectionEndpointNetworkAclsArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

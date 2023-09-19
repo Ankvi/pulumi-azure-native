@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Container App Job
  */
@@ -34,7 +34,7 @@ export class Job extends pulumi.CustomResource {
     /**
      * Container Apps Job configuration properties.
      */
-    public readonly configuration!: pulumi.Output<types.outputs.app.v20230401preview.JobConfigurationResponse | undefined>;
+    public readonly configuration!: pulumi.Output<types.outputs.JobConfigurationResponse | undefined>;
     /**
      * Resource ID of environment.
      */
@@ -46,7 +46,7 @@ export class Job extends pulumi.CustomResource {
     /**
      * Managed identities needed by a container app job to interact with other Azure services to not maintain any secrets or credentials in code.
      */
-    public readonly identity!: pulumi.Output<types.outputs.app.v20230401preview.ManagedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -66,7 +66,7 @@ export class Job extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.app.v20230401preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -74,7 +74,7 @@ export class Job extends pulumi.CustomResource {
     /**
      * Container Apps job definition.
      */
-    public readonly template!: pulumi.Output<types.outputs.app.v20230401preview.JobTemplateResponse | undefined>;
+    public readonly template!: pulumi.Output<types.outputs.JobTemplateResponse | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -98,7 +98,7 @@ export class Job extends pulumi.CustomResource {
             if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["configuration"] = args ? (args.configuration ? pulumi.output(args.configuration).apply(types.inputs.app.v20230401preview.jobConfigurationArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["configuration"] = args ? (args.configuration ? pulumi.output(args.configuration).apply(types.inputs.jobConfigurationArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["environmentId"] = args ? args.environmentId : undefined;
             resourceInputs["identity"] = args ? args.identity : undefined;
             resourceInputs["jobName"] = args ? args.jobName : undefined;
@@ -142,7 +142,7 @@ export interface JobArgs {
     /**
      * Container Apps Job configuration properties.
      */
-    configuration?: pulumi.Input<types.inputs.app.v20230401preview.JobConfigurationArgs>;
+    configuration?: pulumi.Input<types.inputs.JobConfigurationArgs>;
     /**
      * Resource ID of environment.
      */
@@ -150,7 +150,7 @@ export interface JobArgs {
     /**
      * Managed identities needed by a container app job to interact with other Azure services to not maintain any secrets or credentials in code.
      */
-    identity?: pulumi.Input<types.inputs.app.v20230401preview.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
      * Job Name
      */
@@ -170,7 +170,7 @@ export interface JobArgs {
     /**
      * Container Apps job definition.
      */
-    template?: pulumi.Input<types.inputs.app.v20230401preview.JobTemplateArgs>;
+    template?: pulumi.Input<types.inputs.JobTemplateArgs>;
     /**
      * Workload profile name to pin for container apps job execution.
      */

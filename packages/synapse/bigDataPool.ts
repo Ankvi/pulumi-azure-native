@@ -35,11 +35,11 @@ export class BigDataPool extends pulumi.CustomResource {
     /**
      * Auto-pausing properties
      */
-    public readonly autoPause!: pulumi.Output<types.outputs.synapse.AutoPausePropertiesResponse | undefined>;
+    public readonly autoPause!: pulumi.Output<types.outputs.AutoPausePropertiesResponse | undefined>;
     /**
      * Auto-scaling properties
      */
-    public readonly autoScale!: pulumi.Output<types.outputs.synapse.AutoScalePropertiesResponse | undefined>;
+    public readonly autoScale!: pulumi.Output<types.outputs.AutoScalePropertiesResponse | undefined>;
     /**
      * The cache size
      */
@@ -51,7 +51,7 @@ export class BigDataPool extends pulumi.CustomResource {
     /**
      * List of custom libraries/packages associated with the spark pool.
      */
-    public readonly customLibraries!: pulumi.Output<types.outputs.synapse.LibraryInfoResponse[] | undefined>;
+    public readonly customLibraries!: pulumi.Output<types.outputs.LibraryInfoResponse[] | undefined>;
     /**
      * The default folder where Spark logs will be written.
      */
@@ -59,7 +59,7 @@ export class BigDataPool extends pulumi.CustomResource {
     /**
      * Dynamic Executor Allocation
      */
-    public readonly dynamicExecutorAllocation!: pulumi.Output<types.outputs.synapse.DynamicExecutorAllocationResponse | undefined>;
+    public readonly dynamicExecutorAllocation!: pulumi.Output<types.outputs.DynamicExecutorAllocationResponse | undefined>;
     /**
      * Whether autotune is required or not.
      */
@@ -75,7 +75,7 @@ export class BigDataPool extends pulumi.CustomResource {
     /**
      * Library version requirements
      */
-    public readonly libraryRequirements!: pulumi.Output<types.outputs.synapse.LibraryRequirementsResponse | undefined>;
+    public readonly libraryRequirements!: pulumi.Output<types.outputs.LibraryRequirementsResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -107,7 +107,7 @@ export class BigDataPool extends pulumi.CustomResource {
     /**
      * Spark configuration file to specify additional properties
      */
-    public readonly sparkConfigProperties!: pulumi.Output<types.outputs.synapse.SparkConfigPropertiesResponse | undefined>;
+    public readonly sparkConfigProperties!: pulumi.Output<types.outputs.SparkConfigPropertiesResponse | undefined>;
     /**
      * The Spark events folder
      */
@@ -208,11 +208,11 @@ export interface BigDataPoolArgs {
     /**
      * Auto-pausing properties
      */
-    autoPause?: pulumi.Input<types.inputs.synapse.AutoPausePropertiesArgs>;
+    autoPause?: pulumi.Input<types.inputs.AutoPausePropertiesArgs>;
     /**
      * Auto-scaling properties
      */
-    autoScale?: pulumi.Input<types.inputs.synapse.AutoScalePropertiesArgs>;
+    autoScale?: pulumi.Input<types.inputs.AutoScalePropertiesArgs>;
     /**
      * Big Data pool name
      */
@@ -220,7 +220,7 @@ export interface BigDataPoolArgs {
     /**
      * List of custom libraries/packages associated with the spark pool.
      */
-    customLibraries?: pulumi.Input<pulumi.Input<types.inputs.synapse.LibraryInfoArgs>[]>;
+    customLibraries?: pulumi.Input<pulumi.Input<types.inputs.LibraryInfoArgs>[]>;
     /**
      * The default folder where Spark logs will be written.
      */
@@ -228,7 +228,7 @@ export interface BigDataPoolArgs {
     /**
      * Dynamic Executor Allocation
      */
-    dynamicExecutorAllocation?: pulumi.Input<types.inputs.synapse.DynamicExecutorAllocationArgs>;
+    dynamicExecutorAllocation?: pulumi.Input<types.inputs.DynamicExecutorAllocationArgs>;
     /**
      * Whether to stop any running jobs in the Big Data pool
      */
@@ -244,7 +244,7 @@ export interface BigDataPoolArgs {
     /**
      * Library version requirements
      */
-    libraryRequirements?: pulumi.Input<types.inputs.synapse.LibraryRequirementsArgs>;
+    libraryRequirements?: pulumi.Input<types.inputs.LibraryRequirementsArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -276,7 +276,7 @@ export interface BigDataPoolArgs {
     /**
      * Spark configuration file to specify additional properties
      */
-    sparkConfigProperties?: pulumi.Input<types.inputs.synapse.SparkConfigPropertiesArgs>;
+    sparkConfigProperties?: pulumi.Input<types.inputs.SparkConfigPropertiesArgs>;
     /**
      * The Spark events folder
      */

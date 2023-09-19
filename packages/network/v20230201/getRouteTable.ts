@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the specified route table.
  */
@@ -64,11 +64,11 @@ export interface GetRouteTableResult {
     /**
      * Collection of routes contained within a route table.
      */
-    readonly routes?: types.outputs.network.v20230201.RouteResponse[];
+    readonly routes?: types.outputs.RouteResponse[];
     /**
      * A collection of references to subnets.
      */
-    readonly subnets: types.outputs.network.v20230201.SubnetResponse[];
+    readonly subnets: types.outputs.SubnetResponse[];
     /**
      * Resource tags.
      */

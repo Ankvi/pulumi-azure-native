@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get HCI cluster.
  */
@@ -71,7 +71,7 @@ export interface GetClusterResult {
     /**
      * Desired properties of the cluster.
      */
-    readonly desiredProperties?: types.outputs.azurestackhci.v20220901.ClusterDesiredPropertiesResponse;
+    readonly desiredProperties?: types.outputs.ClusterDesiredPropertiesResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -115,7 +115,7 @@ export interface GetClusterResult {
     /**
      * Properties reported by cluster agent.
      */
-    readonly reportedProperties: types.outputs.azurestackhci.v20220901.ClusterReportedPropertiesResponse;
+    readonly reportedProperties: types.outputs.ClusterReportedPropertiesResponse;
     /**
      * Region specific DataPath Endpoint of the cluster.
      */
@@ -123,7 +123,7 @@ export interface GetClusterResult {
     /**
      * Software Assurance properties of the cluster.
      */
-    readonly softwareAssuranceProperties?: types.outputs.azurestackhci.v20220901.SoftwareAssurancePropertiesResponse;
+    readonly softwareAssuranceProperties?: types.outputs.SoftwareAssurancePropertiesResponse;
     /**
      * Status of the cluster agent.
      */

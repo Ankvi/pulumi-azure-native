@@ -68,7 +68,7 @@ export interface GetClusterResult {
     /**
      * The SKU of the cluster. This determines the size/capacity of the cluster. Required on PUT (CreateOrUpdate) requests.
      */
-    readonly sku?: types.outputs.streamanalytics.ClusterSkuResponse;
+    readonly sku?: types.outputs.ClusterSkuResponse;
     /**
      * Resource tags.
      */

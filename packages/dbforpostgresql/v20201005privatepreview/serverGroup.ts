@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents a server group for create.
  */
@@ -50,7 +50,7 @@ export class ServerGroup extends pulumi.CustomResource {
     /**
      * The delegated subnet arguments for a server group.
      */
-    public readonly delegatedSubnetArguments!: pulumi.Output<types.outputs.dbforpostgresql.v20201005privatepreview.ServerGroupPropertiesResponseDelegatedSubnetArguments | undefined>;
+    public readonly delegatedSubnetArguments!: pulumi.Output<types.outputs.ServerGroupPropertiesResponseDelegatedSubnetArguments | undefined>;
     /**
      * The earliest restore point time (ISO8601 format) for server group.
      */
@@ -74,7 +74,7 @@ export class ServerGroup extends pulumi.CustomResource {
     /**
      * Maintenance window of a server group.
      */
-    public readonly maintenanceWindow!: pulumi.Output<types.outputs.dbforpostgresql.v20201005privatepreview.MaintenanceWindowResponse | undefined>;
+    public readonly maintenanceWindow!: pulumi.Output<types.outputs.MaintenanceWindowResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -86,7 +86,7 @@ export class ServerGroup extends pulumi.CustomResource {
     /**
      * The private dns zone arguments for a server group.
      */
-    public readonly privateDnsZoneArguments!: pulumi.Output<types.outputs.dbforpostgresql.v20201005privatepreview.ServerGroupPropertiesResponsePrivateDnsZoneArguments | undefined>;
+    public readonly privateDnsZoneArguments!: pulumi.Output<types.outputs.ServerGroupPropertiesResponsePrivateDnsZoneArguments | undefined>;
     /**
      * The array of read replica server groups.
      */
@@ -98,7 +98,7 @@ export class ServerGroup extends pulumi.CustomResource {
     /**
      * The list of server role groups.
      */
-    public readonly serverRoleGroups!: pulumi.Output<types.outputs.dbforpostgresql.v20201005privatepreview.ServerRoleGroupResponse[] | undefined>;
+    public readonly serverRoleGroups!: pulumi.Output<types.outputs.ServerRoleGroupResponse[] | undefined>;
     /**
      * The source server group id for read replica server groups.
      */
@@ -114,7 +114,7 @@ export class ServerGroup extends pulumi.CustomResource {
     /**
      * The system metadata relating to this resource
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.dbforpostgresql.v20201005privatepreview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -225,15 +225,15 @@ export interface ServerGroupArgs {
     /**
      * The Citus version of server group.
      */
-    citusVersion?: pulumi.Input<string | types.enums.v20201005privatepreview.CitusVersion>;
+    citusVersion?: pulumi.Input<string | types.enums.CitusVersion>;
     /**
      * The mode to create a new server group.
      */
-    createMode?: pulumi.Input<string | types.enums.v20201005privatepreview.CreateMode>;
+    createMode?: pulumi.Input<string | types.enums.CreateMode>;
     /**
      * The delegated subnet arguments for a server group.
      */
-    delegatedSubnetArguments?: pulumi.Input<types.inputs.dbforpostgresql.v20201005privatepreview.ServerGroupPropertiesDelegatedSubnetArgumentsArgs>;
+    delegatedSubnetArguments?: pulumi.Input<types.inputs.ServerGroupPropertiesDelegatedSubnetArgumentsArgs>;
     /**
      * If Citus MX is enabled or not for the server group.
      */
@@ -253,7 +253,7 @@ export interface ServerGroupArgs {
     /**
      * Maintenance window of a server group.
      */
-    maintenanceWindow?: pulumi.Input<types.inputs.dbforpostgresql.v20201005privatepreview.MaintenanceWindowArgs>;
+    maintenanceWindow?: pulumi.Input<types.inputs.MaintenanceWindowArgs>;
     /**
      * Restore point creation time (ISO8601 format), specifying the time to restore from. It's required when 'createMode' is 'PointInTimeRestore'
      */
@@ -261,11 +261,11 @@ export interface ServerGroupArgs {
     /**
      * The PostgreSQL version of server group.
      */
-    postgresqlVersion?: pulumi.Input<string | types.enums.v20201005privatepreview.PostgreSQLVersion>;
+    postgresqlVersion?: pulumi.Input<string | types.enums.PostgreSQLVersion>;
     /**
      * The private dns zone arguments for a server group.
      */
-    privateDnsZoneArguments?: pulumi.Input<types.inputs.dbforpostgresql.v20201005privatepreview.ServerGroupPropertiesPrivateDnsZoneArgumentsArgs>;
+    privateDnsZoneArguments?: pulumi.Input<types.inputs.ServerGroupPropertiesPrivateDnsZoneArgumentsArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -277,7 +277,7 @@ export interface ServerGroupArgs {
     /**
      * The list of server role groups.
      */
-    serverRoleGroups?: pulumi.Input<pulumi.Input<types.inputs.dbforpostgresql.v20201005privatepreview.ServerRoleGroupArgs>[]>;
+    serverRoleGroups?: pulumi.Input<pulumi.Input<types.inputs.ServerRoleGroupArgs>[]>;
     /**
      * The source server group location to restore from. It's required when 'createMode' is 'PointInTimeRestore' or 'ReadReplica'
      */

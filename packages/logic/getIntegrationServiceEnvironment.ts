@@ -36,7 +36,7 @@ export interface GetIntegrationServiceEnvironmentResult {
     /**
      * Managed service identity properties.
      */
-    readonly identity?: types.outputs.logic.ManagedServiceIdentityResponse;
+    readonly identity?: types.outputs.ManagedServiceIdentityResponse;
     /**
      * The resource location.
      */
@@ -48,11 +48,11 @@ export interface GetIntegrationServiceEnvironmentResult {
     /**
      * The integration service environment properties.
      */
-    readonly properties: types.outputs.logic.IntegrationServiceEnvironmentPropertiesResponse;
+    readonly properties: types.outputs.IntegrationServiceEnvironmentPropertiesResponse;
     /**
      * The sku.
      */
-    readonly sku?: types.outputs.logic.IntegrationServiceEnvironmentSkuResponse;
+    readonly sku?: types.outputs.IntegrationServiceEnvironmentSkuResponse;
     /**
      * The resource tags.
      */

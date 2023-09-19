@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents a Blueprint definition.
  */
@@ -50,15 +50,15 @@ export class Blueprint extends pulumi.CustomResource {
     /**
      * Parameters required by this blueprint definition.
      */
-    public readonly parameters!: pulumi.Output<{[key: string]: types.outputs.blueprint.v20181101preview.ParameterDefinitionResponse} | undefined>;
+    public readonly parameters!: pulumi.Output<{[key: string]: types.outputs.ParameterDefinitionResponse} | undefined>;
     /**
      * Resource group placeholders defined by this blueprint definition.
      */
-    public readonly resourceGroups!: pulumi.Output<{[key: string]: types.outputs.blueprint.v20181101preview.ResourceGroupDefinitionResponse} | undefined>;
+    public readonly resourceGroups!: pulumi.Output<{[key: string]: types.outputs.ResourceGroupDefinitionResponse} | undefined>;
     /**
      * Status of the blueprint. This field is readonly.
      */
-    public /*out*/ readonly status!: pulumi.Output<types.outputs.blueprint.v20181101preview.BlueprintStatusResponse>;
+    public /*out*/ readonly status!: pulumi.Output<types.outputs.BlueprintStatusResponse>;
     /**
      * The scope where this blueprint definition can be assigned.
      */
@@ -139,11 +139,11 @@ export interface BlueprintArgs {
     /**
      * Parameters required by this blueprint definition.
      */
-    parameters?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.blueprint.v20181101preview.ParameterDefinitionArgs>}>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.ParameterDefinitionArgs>}>;
     /**
      * Resource group placeholders defined by this blueprint definition.
      */
-    resourceGroups?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.blueprint.v20181101preview.ResourceGroupDefinitionArgs>}>;
+    resourceGroups?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.ResourceGroupDefinitionArgs>}>;
     /**
      * The scope of the resource. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}').
      */
@@ -151,7 +151,7 @@ export interface BlueprintArgs {
     /**
      * The scope where this blueprint definition can be assigned.
      */
-    targetScope: pulumi.Input<string | types.enums.v20181101preview.BlueprintTargetScope>;
+    targetScope: pulumi.Input<string | types.enums.BlueprintTargetScope>;
     /**
      * Published versions of this blueprint definition.
      */

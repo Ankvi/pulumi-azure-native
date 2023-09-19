@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 export function getOnlineDeployment(args: GetOnlineDeploymentArgs, opts?: pulumi.InvokeOptions): Promise<GetOnlineDeploymentResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -39,7 +39,7 @@ export interface GetOnlineDeploymentResult {
     /**
      * Managed service identity (system assigned and/or user assigned identities)
      */
-    readonly identity?: types.outputs.machinelearningservices.v20230401preview.ManagedServiceIdentityResponse;
+    readonly identity?: types.outputs.ManagedServiceIdentityResponse;
     /**
      * Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
      */
@@ -55,15 +55,15 @@ export interface GetOnlineDeploymentResult {
     /**
      * [Required] Additional attributes of the entity.
      */
-    readonly onlineDeploymentProperties: types.outputs.machinelearningservices.v20230401preview.KubernetesOnlineDeploymentResponse | types.outputs.machinelearningservices.v20230401preview.ManagedOnlineDeploymentResponse;
+    readonly onlineDeploymentProperties: types.outputs.KubernetesOnlineDeploymentResponse | types.outputs.ManagedOnlineDeploymentResponse;
     /**
      * Sku details required for ARM contract for Autoscaling.
      */
-    readonly sku?: types.outputs.machinelearningservices.v20230401preview.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.machinelearningservices.v20230401preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

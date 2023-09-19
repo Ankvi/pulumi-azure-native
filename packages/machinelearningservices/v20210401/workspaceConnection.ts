@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Workspace connection.
  */
@@ -138,7 +138,7 @@ export interface WorkspaceConnectionArgs {
     /**
      * format for the workspace connection value
      */
-    valueFormat?: pulumi.Input<string | types.enums.v20210401.ValueFormat>;
+    valueFormat?: pulumi.Input<string | types.enums.ValueFormat>;
     /**
      * Name of Azure Machine Learning workspace.
      */

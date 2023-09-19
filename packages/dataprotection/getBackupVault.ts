@@ -40,7 +40,7 @@ export interface GetBackupVaultResult {
     /**
      * Input Managed Identity Details
      */
-    readonly identity?: types.outputs.dataprotection.DppIdentityDetailsResponse;
+    readonly identity?: types.outputs.DppIdentityDetailsResponse;
     /**
      * Resource location.
      */
@@ -52,11 +52,11 @@ export interface GetBackupVaultResult {
     /**
      * BackupVaultResource properties
      */
-    readonly properties: types.outputs.dataprotection.BackupVaultResponse;
+    readonly properties: types.outputs.BackupVaultResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.dataprotection.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

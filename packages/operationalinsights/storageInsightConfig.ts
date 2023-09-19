@@ -47,11 +47,11 @@ export class StorageInsightConfig extends pulumi.CustomResource {
     /**
      * The status of the storage insight
      */
-    public /*out*/ readonly status!: pulumi.Output<types.outputs.operationalinsights.StorageInsightStatusResponse>;
+    public /*out*/ readonly status!: pulumi.Output<types.outputs.StorageInsightStatusResponse>;
     /**
      * The storage account connection details
      */
-    public readonly storageAccount!: pulumi.Output<types.outputs.operationalinsights.StorageAccountResponse>;
+    public readonly storageAccount!: pulumi.Output<types.outputs.StorageAccountResponse>;
     /**
      * The names of the Azure tables that the workspace should read
      */
@@ -132,7 +132,7 @@ export interface StorageInsightConfigArgs {
     /**
      * The storage account connection details
      */
-    storageAccount: pulumi.Input<types.inputs.operationalinsights.StorageAccountArgs>;
+    storageAccount: pulumi.Input<types.inputs.StorageAccountArgs>;
     /**
      * Name of the storageInsightsConfigs resource
      */

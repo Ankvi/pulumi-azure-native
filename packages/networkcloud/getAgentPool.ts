@@ -34,15 +34,15 @@ export interface GetAgentPoolResult {
     /**
      * The administrator credentials to be used for the nodes in this agent pool.
      */
-    readonly administratorConfiguration?: types.outputs.networkcloud.AdministratorConfigurationResponse;
+    readonly administratorConfiguration?: types.outputs.AdministratorConfigurationResponse;
     /**
      * The configurations that will be applied to each agent in this agent pool.
      */
-    readonly agentOptions?: types.outputs.networkcloud.AgentOptionsResponse;
+    readonly agentOptions?: types.outputs.AgentOptionsResponse;
     /**
      * The configuration of networks being attached to the agent pool for use by the workloads that run on this Kubernetes cluster.
      */
-    readonly attachedNetworkConfiguration?: types.outputs.networkcloud.AttachedNetworkConfigurationResponse;
+    readonly attachedNetworkConfiguration?: types.outputs.AttachedNetworkConfigurationResponse;
     /**
      * The list of availability zones of the Network Cloud cluster used for the provisioning of nodes in this agent pool. If not specified, all availability zones will be used.
      */
@@ -62,7 +62,7 @@ export interface GetAgentPoolResult {
     /**
      * The extended location of the cluster associated with the resource.
      */
-    readonly extendedLocation?: types.outputs.networkcloud.ExtendedLocationResponse;
+    readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -74,7 +74,7 @@ export interface GetAgentPoolResult {
     /**
      * The labels applied to the nodes in this agent pool.
      */
-    readonly labels?: types.outputs.networkcloud.KubernetesLabelResponse[];
+    readonly labels?: types.outputs.KubernetesLabelResponse[];
     /**
      * The geo-location where the resource lives
      */
@@ -94,7 +94,7 @@ export interface GetAgentPoolResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.networkcloud.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -102,7 +102,7 @@ export interface GetAgentPoolResult {
     /**
      * The taints applied to the nodes in this agent pool.
      */
-    readonly taints?: types.outputs.networkcloud.KubernetesLabelResponse[];
+    readonly taints?: types.outputs.KubernetesLabelResponse[];
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -110,7 +110,7 @@ export interface GetAgentPoolResult {
     /**
      * The configuration of the agent pool.
      */
-    readonly upgradeSettings?: types.outputs.networkcloud.AgentPoolUpgradeSettingsResponse;
+    readonly upgradeSettings?: types.outputs.AgentPoolUpgradeSettingsResponse;
     /**
      * The name of the VM SKU that determines the size of resources allocated for node VMs.
      */

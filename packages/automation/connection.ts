@@ -35,7 +35,7 @@ export class Connection extends pulumi.CustomResource {
     /**
      * Gets or sets the connectionType of the connection.
      */
-    public readonly connectionType!: pulumi.Output<types.outputs.automation.ConnectionTypeAssociationPropertyResponse | undefined>;
+    public readonly connectionType!: pulumi.Output<types.outputs.ConnectionTypeAssociationPropertyResponse | undefined>;
     /**
      * Gets the creation time.
      */
@@ -125,7 +125,7 @@ export interface ConnectionArgs {
     /**
      * Gets or sets the connectionType of the connection.
      */
-    connectionType: pulumi.Input<types.inputs.automation.ConnectionTypeAssociationPropertyArgs>;
+    connectionType: pulumi.Input<types.inputs.ConnectionTypeAssociationPropertyArgs>;
     /**
      * Gets or sets the description of the connection.
      */

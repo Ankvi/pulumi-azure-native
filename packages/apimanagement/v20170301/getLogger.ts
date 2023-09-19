@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the details of the logger specified by its identifier.
  */
@@ -61,7 +61,7 @@ export interface GetLoggerResult {
     /**
      * Sampling settings for an ApplicationInsights logger.
      */
-    readonly sampling?: types.outputs.apimanagement.v20170301.LoggerSamplingContractResponse;
+    readonly sampling?: types.outputs.LoggerSamplingContractResponse;
     /**
      * Resource type for API Management resource.
      */

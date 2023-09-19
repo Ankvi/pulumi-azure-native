@@ -71,7 +71,7 @@ export class AttachedDatabaseConfiguration extends pulumi.CustomResource {
     /**
      * Table level sharing specifications
      */
-    public readonly tableLevelSharingProperties!: pulumi.Output<types.outputs.kusto.TableLevelSharingPropertiesResponse | undefined>;
+    public readonly tableLevelSharingProperties!: pulumi.Output<types.outputs.TableLevelSharingPropertiesResponse | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -180,5 +180,5 @@ export interface AttachedDatabaseConfigurationArgs {
     /**
      * Table level sharing specifications
      */
-    tableLevelSharingProperties?: pulumi.Input<types.inputs.kusto.TableLevelSharingPropertiesArgs>;
+    tableLevelSharingProperties?: pulumi.Input<types.inputs.TableLevelSharingPropertiesArgs>;
 }

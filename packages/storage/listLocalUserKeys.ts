@@ -41,7 +41,7 @@ export interface ListLocalUserKeysResult {
     /**
      * Optional, local user ssh authorized keys for SFTP.
      */
-    readonly sshAuthorizedKeys?: types.outputs.storage.SshPublicKeyResponse[];
+    readonly sshAuthorizedKeys?: types.outputs.SshPublicKeyResponse[];
 }
 /**
  * List SSH authorized keys and shared key of the local user.

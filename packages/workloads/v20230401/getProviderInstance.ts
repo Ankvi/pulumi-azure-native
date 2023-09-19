@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets properties of a provider instance for the specified subscription, resource group, SAP monitor name, and resource name.
  */
@@ -36,7 +36,7 @@ export interface GetProviderInstanceResult {
     /**
      * Defines the provider instance errors.
      */
-    readonly errors: types.outputs.workloads.v20230401.ProviderInstancePropertiesResponseErrors;
+    readonly errors: types.outputs.ProviderInstancePropertiesResponseErrors;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -44,7 +44,7 @@ export interface GetProviderInstanceResult {
     /**
      * [currently not in use] Managed service identity(user assigned identities)
      */
-    readonly identity?: types.outputs.workloads.v20230401.UserAssignedServiceIdentityResponse;
+    readonly identity?: types.outputs.UserAssignedServiceIdentityResponse;
     /**
      * The name of the resource
      */
@@ -52,7 +52,7 @@ export interface GetProviderInstanceResult {
     /**
      * Defines the provider specific properties.
      */
-    readonly providerSettings?: types.outputs.workloads.v20230401.DB2ProviderInstancePropertiesResponse | types.outputs.workloads.v20230401.HanaDbProviderInstancePropertiesResponse | types.outputs.workloads.v20230401.MsSqlServerProviderInstancePropertiesResponse | types.outputs.workloads.v20230401.PrometheusHaClusterProviderInstancePropertiesResponse | types.outputs.workloads.v20230401.PrometheusOSProviderInstancePropertiesResponse | types.outputs.workloads.v20230401.SapNetWeaverProviderInstancePropertiesResponse;
+    readonly providerSettings?: types.outputs.DB2ProviderInstancePropertiesResponse | types.outputs.HanaDbProviderInstancePropertiesResponse | types.outputs.MsSqlServerProviderInstancePropertiesResponse | types.outputs.PrometheusHaClusterProviderInstancePropertiesResponse | types.outputs.PrometheusOSProviderInstancePropertiesResponse | types.outputs.SapNetWeaverProviderInstancePropertiesResponse;
     /**
      * State of provisioning of the provider instance
      */
@@ -60,7 +60,7 @@ export interface GetProviderInstanceResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.workloads.v20230401.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

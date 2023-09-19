@@ -65,11 +65,11 @@ export interface GetHubVirtualNetworkConnectionResult {
     /**
      * Reference to the remote virtual network.
      */
-    readonly remoteVirtualNetwork?: types.outputs.network.SubResourceResponse;
+    readonly remoteVirtualNetwork?: types.outputs.SubResourceResponse;
     /**
      * The Routing Configuration indicating the associated and propagated route tables on this connection.
      */
-    readonly routingConfiguration?: types.outputs.network.RoutingConfigurationResponse;
+    readonly routingConfiguration?: types.outputs.RoutingConfigurationResponse;
 }
 /**
  * Retrieves the details of a HubVirtualNetworkConnection.

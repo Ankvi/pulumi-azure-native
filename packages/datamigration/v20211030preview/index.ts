@@ -13,7 +13,7 @@ utilities.lazyLoad(exports, ["Project"], () => require("./project"));
 
 
 // Export enums:
-export * from "../types/enums/v20211030preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

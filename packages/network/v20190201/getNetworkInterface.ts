@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets information about the specified network interface.
  */
@@ -36,7 +36,7 @@ export interface GetNetworkInterfaceResult {
     /**
      * The DNS settings in network interface.
      */
-    readonly dnsSettings?: types.outputs.network.v20190201.NetworkInterfaceDnsSettingsResponse;
+    readonly dnsSettings?: types.outputs.NetworkInterfaceDnsSettingsResponse;
     /**
      * If the network interface is accelerated networking enabled.
      */
@@ -60,11 +60,11 @@ export interface GetNetworkInterfaceResult {
     /**
      * A reference to the interface endpoint to which the network interface is linked.
      */
-    readonly interfaceEndpoint: types.outputs.network.v20190201.InterfaceEndpointResponse;
+    readonly interfaceEndpoint: types.outputs.InterfaceEndpointResponse;
     /**
      * A list of IPConfigurations of the network interface.
      */
-    readonly ipConfigurations?: types.outputs.network.v20190201.NetworkInterfaceIPConfigurationResponse[];
+    readonly ipConfigurations?: types.outputs.NetworkInterfaceIPConfigurationResponse[];
     /**
      * Resource location.
      */
@@ -80,7 +80,7 @@ export interface GetNetworkInterfaceResult {
     /**
      * The reference of the NetworkSecurityGroup resource.
      */
-    readonly networkSecurityGroup?: types.outputs.network.v20190201.NetworkSecurityGroupResponse;
+    readonly networkSecurityGroup?: types.outputs.NetworkSecurityGroupResponse;
     /**
      * Gets whether this is a primary network interface on a virtual machine.
      */
@@ -100,7 +100,7 @@ export interface GetNetworkInterfaceResult {
     /**
      * A list of TapConfigurations of the network interface.
      */
-    readonly tapConfigurations?: types.outputs.network.v20190201.NetworkInterfaceTapConfigurationResponse[];
+    readonly tapConfigurations?: types.outputs.NetworkInterfaceTapConfigurationResponse[];
     /**
      * Resource type.
      */
@@ -108,7 +108,7 @@ export interface GetNetworkInterfaceResult {
     /**
      * The reference of a virtual machine.
      */
-    readonly virtualMachine: types.outputs.network.v20190201.SubResourceResponse;
+    readonly virtualMachine: types.outputs.SubResourceResponse;
 }
 /**
  * Gets information about the specified network interface.

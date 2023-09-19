@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the details of the transaction node.
  */
@@ -40,7 +40,7 @@ export interface GetTransactionNodeResult {
     /**
      * Gets or sets the firewall rules.
      */
-    readonly firewallRules?: types.outputs.blockchain.v20180601preview.FirewallRuleResponse[];
+    readonly firewallRules?: types.outputs.FirewallRuleResponse[];
     /**
      * Fully qualified resource Id of the resource.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Marketplace Subscription and Organization details to which resource gets billed into.
  */
@@ -31,11 +31,11 @@ export interface GetBillingInfoResult {
     /**
      * Marketplace Subscription details
      */
-    readonly marketplaceSaasInfo?: types.outputs.elastic.v20230701preview.MarketplaceSaaSInfoResponse;
+    readonly marketplaceSaasInfo?: types.outputs.MarketplaceSaaSInfoResponse;
     /**
      * Partner Billing Entity details: Organization Info
      */
-    readonly partnerBillingEntity?: types.outputs.elastic.v20230701preview.PartnerBillingEntityResponse;
+    readonly partnerBillingEntity?: types.outputs.PartnerBillingEntityResponse;
 }
 /**
  * Marketplace Subscription and Organization details to which resource gets billed into.

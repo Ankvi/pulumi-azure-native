@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the detailed information for a given pipeline run.
  */
@@ -52,15 +52,15 @@ export interface GetPipelineRunResult {
     /**
      * The request parameters for a pipeline run.
      */
-    readonly request?: types.outputs.containerregistry.v20230101preview.PipelineRunRequestResponse;
+    readonly request?: types.outputs.PipelineRunRequestResponse;
     /**
      * The response of a pipeline run.
      */
-    readonly response: types.outputs.containerregistry.v20230101preview.PipelineRunResponseResponse;
+    readonly response: types.outputs.PipelineRunResponseResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.containerregistry.v20230101preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource.
      */

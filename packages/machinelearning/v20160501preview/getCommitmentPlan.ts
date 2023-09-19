@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieve an Azure ML commitment plan by its subscription, resource group and name.
  */
@@ -47,11 +47,11 @@ export interface GetCommitmentPlanResult {
     /**
      * The commitment plan properties.
      */
-    readonly properties: types.outputs.machinelearning.v20160501preview.CommitmentPlanPropertiesResponse;
+    readonly properties: types.outputs.CommitmentPlanPropertiesResponse;
     /**
      * The commitment plan SKU.
      */
-    readonly sku?: types.outputs.machinelearning.v20160501preview.ResourceSkuResponse;
+    readonly sku?: types.outputs.ResourceSkuResponse;
     /**
      * User-defined tags for the resource.
      */

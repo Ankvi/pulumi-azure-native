@@ -39,7 +39,7 @@ export class ExpressRouteCircuitPeering extends pulumi.CustomResource {
     /**
      * The list of circuit connections associated with Azure Private Peering for this circuit.
      */
-    public readonly connections!: pulumi.Output<types.outputs.network.ExpressRouteCircuitConnectionResponse[] | undefined>;
+    public readonly connections!: pulumi.Output<types.outputs.ExpressRouteCircuitConnectionResponse[] | undefined>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -47,7 +47,7 @@ export class ExpressRouteCircuitPeering extends pulumi.CustomResource {
     /**
      * The ExpressRoute connection.
      */
-    public /*out*/ readonly expressRouteConnection!: pulumi.Output<types.outputs.network.ExpressRouteConnectionIdResponse | undefined>;
+    public /*out*/ readonly expressRouteConnection!: pulumi.Output<types.outputs.ExpressRouteConnectionIdResponse | undefined>;
     /**
      * The GatewayManager Etag.
      */
@@ -55,7 +55,7 @@ export class ExpressRouteCircuitPeering extends pulumi.CustomResource {
     /**
      * The IPv6 peering configuration.
      */
-    public readonly ipv6PeeringConfig!: pulumi.Output<types.outputs.network.Ipv6ExpressRouteCircuitPeeringConfigResponse | undefined>;
+    public readonly ipv6PeeringConfig!: pulumi.Output<types.outputs.Ipv6ExpressRouteCircuitPeeringConfigResponse | undefined>;
     /**
      * Who was the last to modify the peering.
      */
@@ -63,7 +63,7 @@ export class ExpressRouteCircuitPeering extends pulumi.CustomResource {
     /**
      * The Microsoft peering configuration.
      */
-    public readonly microsoftPeeringConfig!: pulumi.Output<types.outputs.network.ExpressRouteCircuitPeeringConfigResponse | undefined>;
+    public readonly microsoftPeeringConfig!: pulumi.Output<types.outputs.ExpressRouteCircuitPeeringConfigResponse | undefined>;
     /**
      * The name of the resource that is unique within a resource group. This name can be used to access the resource.
      */
@@ -75,7 +75,7 @@ export class ExpressRouteCircuitPeering extends pulumi.CustomResource {
     /**
      * The list of peered circuit connections associated with Azure Private Peering for this circuit.
      */
-    public /*out*/ readonly peeredConnections!: pulumi.Output<types.outputs.network.PeerExpressRouteCircuitConnectionResponse[]>;
+    public /*out*/ readonly peeredConnections!: pulumi.Output<types.outputs.PeerExpressRouteCircuitConnectionResponse[]>;
     /**
      * The peering type.
      */
@@ -95,7 +95,7 @@ export class ExpressRouteCircuitPeering extends pulumi.CustomResource {
     /**
      * The reference to the RouteFilter resource.
      */
-    public readonly routeFilter!: pulumi.Output<types.outputs.network.SubResourceResponse | undefined>;
+    public readonly routeFilter!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * The secondary port.
      */
@@ -115,7 +115,7 @@ export class ExpressRouteCircuitPeering extends pulumi.CustomResource {
     /**
      * The peering stats of express route circuit.
      */
-    public readonly stats!: pulumi.Output<types.outputs.network.ExpressRouteCircuitStatsResponse | undefined>;
+    public readonly stats!: pulumi.Output<types.outputs.ExpressRouteCircuitStatsResponse | undefined>;
     /**
      * Type of the resource.
      */
@@ -217,7 +217,7 @@ export interface ExpressRouteCircuitPeeringArgs {
      * The list of circuit connections associated with Azure Private Peering for this circuit.
      * These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
      */
-    connections?: pulumi.Input<pulumi.Input<types.inputs.network.ExpressRouteCircuitConnectionArgs>[]>;
+    connections?: pulumi.Input<pulumi.Input<types.inputs.ExpressRouteCircuitConnectionArgs>[]>;
     /**
      * The GatewayManager Etag.
      */
@@ -229,11 +229,11 @@ export interface ExpressRouteCircuitPeeringArgs {
     /**
      * The IPv6 peering configuration.
      */
-    ipv6PeeringConfig?: pulumi.Input<types.inputs.network.Ipv6ExpressRouteCircuitPeeringConfigArgs>;
+    ipv6PeeringConfig?: pulumi.Input<types.inputs.Ipv6ExpressRouteCircuitPeeringConfigArgs>;
     /**
      * The Microsoft peering configuration.
      */
-    microsoftPeeringConfig?: pulumi.Input<types.inputs.network.ExpressRouteCircuitPeeringConfigArgs>;
+    microsoftPeeringConfig?: pulumi.Input<types.inputs.ExpressRouteCircuitPeeringConfigArgs>;
     /**
      * The name of the resource that is unique within a resource group. This name can be used to access the resource.
      */
@@ -265,7 +265,7 @@ export interface ExpressRouteCircuitPeeringArgs {
     /**
      * The reference to the RouteFilter resource.
      */
-    routeFilter?: pulumi.Input<types.inputs.network.SubResourceArgs>;
+    routeFilter?: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * The secondary port.
      */
@@ -285,7 +285,7 @@ export interface ExpressRouteCircuitPeeringArgs {
     /**
      * The peering stats of express route circuit.
      */
-    stats?: pulumi.Input<types.inputs.network.ExpressRouteCircuitStatsArgs>;
+    stats?: pulumi.Input<types.inputs.ExpressRouteCircuitStatsArgs>;
     /**
      * The VLAN ID.
      */

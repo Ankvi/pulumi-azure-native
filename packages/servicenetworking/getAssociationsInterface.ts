@@ -57,11 +57,11 @@ export interface GetAssociationsInterfaceResult {
     /**
      * Association Subnet
      */
-    readonly subnet?: types.outputs.servicenetworking.AssociationSubnetResponse;
+    readonly subnet?: types.outputs.AssociationSubnetResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.servicenetworking.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

@@ -63,11 +63,11 @@ export class ExternalNetwork extends pulumi.CustomResource {
     /**
      * option A properties object
      */
-    public readonly optionAProperties!: pulumi.Output<types.outputs.managednetworkfabric.ExternalNetworkPropertiesResponseOptionAProperties | undefined>;
+    public readonly optionAProperties!: pulumi.Output<types.outputs.ExternalNetworkPropertiesResponseOptionAProperties | undefined>;
     /**
      * option B properties object
      */
-    public readonly optionBProperties!: pulumi.Output<types.outputs.managednetworkfabric.OptionBPropertiesResponse | undefined>;
+    public readonly optionBProperties!: pulumi.Output<types.outputs.OptionBPropertiesResponse | undefined>;
     /**
      * Peering option list.
      */
@@ -79,7 +79,7 @@ export class ExternalNetwork extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.managednetworkfabric.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -110,7 +110,7 @@ export class ExternalNetwork extends pulumi.CustomResource {
             resourceInputs["externalNetworkName"] = args ? args.externalNetworkName : undefined;
             resourceInputs["importRoutePolicyId"] = args ? args.importRoutePolicyId : undefined;
             resourceInputs["l3IsolationDomainName"] = args ? args.l3IsolationDomainName : undefined;
-            resourceInputs["optionAProperties"] = args ? (args.optionAProperties ? pulumi.output(args.optionAProperties).apply(types.inputs.managednetworkfabric.externalNetworkPropertiesOptionAPropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["optionAProperties"] = args ? (args.optionAProperties ? pulumi.output(args.optionAProperties).apply(types.inputs.externalNetworkPropertiesOptionAPropertiesArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["optionBProperties"] = args ? args.optionBProperties : undefined;
             resourceInputs["peeringOption"] = args ? args.peeringOption : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
@@ -170,11 +170,11 @@ export interface ExternalNetworkArgs {
     /**
      * option A properties object
      */
-    optionAProperties?: pulumi.Input<types.inputs.managednetworkfabric.ExternalNetworkPropertiesOptionAPropertiesArgs>;
+    optionAProperties?: pulumi.Input<types.inputs.ExternalNetworkPropertiesOptionAPropertiesArgs>;
     /**
      * option B properties object
      */
-    optionBProperties?: pulumi.Input<types.inputs.managednetworkfabric.OptionBPropertiesArgs>;
+    optionBProperties?: pulumi.Input<types.inputs.OptionBPropertiesArgs>;
     /**
      * Peering option list.
      */

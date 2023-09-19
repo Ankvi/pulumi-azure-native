@@ -47,7 +47,7 @@ export class InstancePool extends pulumi.CustomResource {
     /**
      * The name and tier of the SKU.
      */
-    public readonly sku!: pulumi.Output<types.outputs.sql.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Resource ID of the subnet to place this instance pool in.
      */
@@ -138,7 +138,7 @@ export interface InstancePoolArgs {
     /**
      * The name and tier of the SKU.
      */
-    sku?: pulumi.Input<types.inputs.sql.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Resource ID of the subnet to place this instance pool in.
      */

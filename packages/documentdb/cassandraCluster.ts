@@ -35,7 +35,7 @@ export class CassandraCluster extends pulumi.CustomResource {
     /**
      * Identity for the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.documentdb.ManagedCassandraManagedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedCassandraManagedServiceIdentityResponse | undefined>;
     /**
      * The location of the resource group to which the resource belongs.
      */
@@ -47,7 +47,7 @@ export class CassandraCluster extends pulumi.CustomResource {
     /**
      * Properties of a managed Cassandra cluster.
      */
-    public readonly properties!: pulumi.Output<types.outputs.documentdb.ClusterResourceResponseProperties>;
+    public readonly properties!: pulumi.Output<types.outputs.ClusterResourceResponseProperties>;
     /**
      * Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB".
      */
@@ -105,7 +105,7 @@ export interface CassandraClusterArgs {
     /**
      * Identity for the resource.
      */
-    identity?: pulumi.Input<types.inputs.documentdb.ManagedCassandraManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedCassandraManagedServiceIdentityArgs>;
     /**
      * The location of the resource group to which the resource belongs.
      */
@@ -113,7 +113,7 @@ export interface CassandraClusterArgs {
     /**
      * Properties of a managed Cassandra cluster.
      */
-    properties?: pulumi.Input<types.inputs.documentdb.ClusterResourcePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ClusterResourcePropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

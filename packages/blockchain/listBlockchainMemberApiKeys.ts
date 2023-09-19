@@ -32,7 +32,7 @@ export interface ListBlockchainMemberApiKeysResult {
     /**
      * Gets or sets the collection of API key.
      */
-    readonly keys?: types.outputs.blockchain.ApiKeyResponse[];
+    readonly keys?: types.outputs.ApiKeyResponse[];
 }
 /**
  * Lists the API keys for a blockchain member.

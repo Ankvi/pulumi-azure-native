@@ -43,11 +43,11 @@ export class LoadTest extends pulumi.CustomResource {
     /**
      * CMK Encryption property.
      */
-    public readonly encryption!: pulumi.Output<types.outputs.loadtestservice.EncryptionPropertiesResponse | undefined>;
+    public readonly encryption!: pulumi.Output<types.outputs.EncryptionPropertiesResponse | undefined>;
     /**
      * The type of identity used for the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.loadtestservice.ManagedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -63,7 +63,7 @@ export class LoadTest extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.loadtestservice.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -129,11 +129,11 @@ export interface LoadTestArgs {
     /**
      * CMK Encryption property.
      */
-    encryption?: pulumi.Input<types.inputs.loadtestservice.EncryptionPropertiesArgs>;
+    encryption?: pulumi.Input<types.inputs.EncryptionPropertiesArgs>;
     /**
      * The type of identity used for the resource.
      */
-    identity?: pulumi.Input<types.inputs.loadtestservice.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
      * Load Test name.
      */

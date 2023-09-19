@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves an existing Power BI Workspace Collection.
  */
@@ -41,7 +41,7 @@ export interface GetWorkspaceCollectionResult {
      * Properties
      */
     readonly properties: any;
-    readonly sku?: types.outputs.powerbi.v20160129.AzureSkuResponse;
+    readonly sku?: types.outputs.AzureSkuResponse;
     readonly tags?: {[key: string]: string};
     /**
      * Resource type

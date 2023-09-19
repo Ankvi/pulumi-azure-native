@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Managed private endpoint resource type.
  */
@@ -42,7 +42,7 @@ export class ManagedPrivateEndpoint extends pulumi.CustomResource {
     /**
      * Managed private endpoint properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.datafactory.v20180601.ManagedPrivateEndpointResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ManagedPrivateEndpointResponse>;
     /**
      * The resource type.
      */
@@ -111,7 +111,7 @@ export interface ManagedPrivateEndpointArgs {
     /**
      * Managed private endpoint properties.
      */
-    properties: pulumi.Input<types.inputs.datafactory.v20180601.ManagedPrivateEndpointArgs>;
+    properties: pulumi.Input<types.inputs.ManagedPrivateEndpointArgs>;
     /**
      * The resource group name.
      */

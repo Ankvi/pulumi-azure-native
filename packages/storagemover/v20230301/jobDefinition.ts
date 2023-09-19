@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The Job Definition resource.
  */
@@ -82,7 +82,7 @@ export class JobDefinition extends pulumi.CustomResource {
     /**
      * Resource system metadata.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.storagemover.v20230301.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The name of the target Endpoint.
      */
@@ -187,7 +187,7 @@ export interface JobDefinitionArgs {
     /**
      * Strategy to use for copy.
      */
-    copyMode: pulumi.Input<string | types.enums.v20230301.CopyMode>;
+    copyMode: pulumi.Input<string | types.enums.CopyMode>;
     /**
      * A description for the Job Definition.
      */

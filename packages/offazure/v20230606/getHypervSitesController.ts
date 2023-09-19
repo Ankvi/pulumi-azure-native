@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a HypervSite
  */
@@ -31,7 +31,7 @@ export interface GetHypervSitesControllerResult {
     /**
      * Gets or sets the on-premises agent details.
      */
-    readonly agentDetails?: types.outputs.offazure.v20230606.SiteAgentPropertiesResponse;
+    readonly agentDetails?: types.outputs.SiteAgentPropertiesResponse;
     /**
      * Gets or sets the Appliance Name.
      */
@@ -69,11 +69,11 @@ export interface GetHypervSitesControllerResult {
      * communication
      *             to the service.
      */
-    readonly servicePrincipalIdentityDetails?: types.outputs.offazure.v20230606.SiteSpnPropertiesResponse;
+    readonly servicePrincipalIdentityDetails?: types.outputs.SiteSpnPropertiesResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.offazure.v20230606.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The diagnostic setting resource.
  */
@@ -42,7 +42,7 @@ export class DiagnosticSetting extends pulumi.CustomResource {
     /**
      * The list of logs settings.
      */
-    public readonly logs!: pulumi.Output<types.outputs.aadiam.v20170401.LogSettingsResponse[] | undefined>;
+    public readonly logs!: pulumi.Output<types.outputs.LogSettingsResponse[] | undefined>;
     /**
      * Azure resource name
      */
@@ -115,7 +115,7 @@ export interface DiagnosticSettingArgs {
     /**
      * The list of logs settings.
      */
-    logs?: pulumi.Input<pulumi.Input<types.inputs.aadiam.v20170401.LogSettingsArgs>[]>;
+    logs?: pulumi.Input<pulumi.Input<types.inputs.LogSettingsArgs>[]>;
     /**
      * The name of the diagnostic setting.
      */

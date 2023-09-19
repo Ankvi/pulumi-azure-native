@@ -41,7 +41,7 @@ export interface ListWebhookEventsResult {
     /**
      * The list of events. Since this list may be incomplete, the nextLink field should be used to request the next list of events.
      */
-    readonly value?: types.outputs.containerregistry.EventResponse[];
+    readonly value?: types.outputs.EventResponse[];
 }
 /**
  * Lists recent events for the specified webhook.

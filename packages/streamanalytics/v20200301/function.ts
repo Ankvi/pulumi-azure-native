@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A function object, containing all information associated with the named function. All functions are contained under a streaming job.
  */
@@ -38,7 +38,7 @@ export class Function extends pulumi.CustomResource {
     /**
      * The properties that are associated with a function.
      */
-    public readonly properties!: pulumi.Output<types.outputs.streamanalytics.v20200301.AggregateFunctionPropertiesResponse | types.outputs.streamanalytics.v20200301.ScalarFunctionPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.AggregateFunctionPropertiesResponse | types.outputs.ScalarFunctionPropertiesResponse>;
     /**
      * Resource type
      */
@@ -98,7 +98,7 @@ export interface FunctionArgs {
     /**
      * The properties that are associated with a function.
      */
-    properties?: pulumi.Input<types.inputs.streamanalytics.v20200301.AggregateFunctionPropertiesArgs | types.inputs.streamanalytics.v20200301.ScalarFunctionPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.AggregateFunctionPropertiesArgs | types.inputs.ScalarFunctionPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

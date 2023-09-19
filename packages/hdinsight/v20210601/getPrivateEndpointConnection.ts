@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the specific private endpoint connection.
  */
@@ -48,11 +48,11 @@ export interface GetPrivateEndpointConnectionResult {
     /**
      * The private endpoint of the private endpoint connection
      */
-    readonly privateEndpoint: types.outputs.hdinsight.v20210601.PrivateEndpointResponse;
+    readonly privateEndpoint: types.outputs.PrivateEndpointResponse;
     /**
      * The private link service connection state.
      */
-    readonly privateLinkServiceConnectionState: types.outputs.hdinsight.v20210601.PrivateLinkServiceConnectionStateResponse;
+    readonly privateLinkServiceConnectionState: types.outputs.PrivateLinkServiceConnectionStateResponse;
     /**
      * The provisioning state, which only appears in the response.
      */
@@ -60,7 +60,7 @@ export interface GetPrivateEndpointConnectionResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.hdinsight.v20210601.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

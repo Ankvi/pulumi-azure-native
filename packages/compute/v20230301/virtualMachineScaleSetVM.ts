@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Describes a virtual machine scale set virtual machine.
  */
@@ -34,23 +34,23 @@ export class VirtualMachineScaleSetVM extends pulumi.CustomResource {
     /**
      * Specifies additional capabilities enabled or disabled on the virtual machine in the scale set. For instance: whether the virtual machine has the capability to support attaching managed data disks with UltraSSD_LRS storage account type.
      */
-    public readonly additionalCapabilities!: pulumi.Output<types.outputs.compute.v20230301.AdditionalCapabilitiesResponse | undefined>;
+    public readonly additionalCapabilities!: pulumi.Output<types.outputs.AdditionalCapabilitiesResponse | undefined>;
     /**
      * Specifies information about the availability set that the virtual machine should be assigned to. Virtual machines specified in the same availability set are allocated to different nodes to maximize availability. For more information about availability sets, see [Availability sets overview](https://docs.microsoft.com/azure/virtual-machines/availability-set-overview). For more information on Azure planned maintenance, see [Maintenance and updates for Virtual Machines in Azure](https://docs.microsoft.com/azure/virtual-machines/maintenance-and-updates). Currently, a VM can only be added to availability set at creation time. An existing VM cannot be added to an availability set.
      */
-    public readonly availabilitySet!: pulumi.Output<types.outputs.compute.v20230301.SubResourceResponse | undefined>;
+    public readonly availabilitySet!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * Specifies the boot diagnostic settings state. Minimum api-version: 2015-06-15.
      */
-    public readonly diagnosticsProfile!: pulumi.Output<types.outputs.compute.v20230301.DiagnosticsProfileResponse | undefined>;
+    public readonly diagnosticsProfile!: pulumi.Output<types.outputs.DiagnosticsProfileResponse | undefined>;
     /**
      * Specifies the hardware settings for the virtual machine.
      */
-    public readonly hardwareProfile!: pulumi.Output<types.outputs.compute.v20230301.HardwareProfileResponse | undefined>;
+    public readonly hardwareProfile!: pulumi.Output<types.outputs.HardwareProfileResponse | undefined>;
     /**
      * The identity of the virtual machine, if configured.
      */
-    public readonly identity!: pulumi.Output<types.outputs.compute.v20230301.VirtualMachineIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.VirtualMachineIdentityResponse | undefined>;
     /**
      * The virtual machine instance ID.
      */
@@ -58,7 +58,7 @@ export class VirtualMachineScaleSetVM extends pulumi.CustomResource {
     /**
      * The virtual machine instance view.
      */
-    public /*out*/ readonly instanceView!: pulumi.Output<types.outputs.compute.v20230301.VirtualMachineScaleSetVMInstanceViewResponse>;
+    public /*out*/ readonly instanceView!: pulumi.Output<types.outputs.VirtualMachineScaleSetVMInstanceViewResponse>;
     /**
      * Specifies whether the latest model has been applied to the virtual machine.
      */
@@ -82,23 +82,23 @@ export class VirtualMachineScaleSetVM extends pulumi.CustomResource {
     /**
      * Specifies the network interfaces of the virtual machine.
      */
-    public readonly networkProfile!: pulumi.Output<types.outputs.compute.v20230301.NetworkProfileResponse | undefined>;
+    public readonly networkProfile!: pulumi.Output<types.outputs.NetworkProfileResponse | undefined>;
     /**
      * Specifies the network profile configuration of the virtual machine.
      */
-    public readonly networkProfileConfiguration!: pulumi.Output<types.outputs.compute.v20230301.VirtualMachineScaleSetVMNetworkProfileConfigurationResponse | undefined>;
+    public readonly networkProfileConfiguration!: pulumi.Output<types.outputs.VirtualMachineScaleSetVMNetworkProfileConfigurationResponse | undefined>;
     /**
      * Specifies the operating system settings for the virtual machine.
      */
-    public readonly osProfile!: pulumi.Output<types.outputs.compute.v20230301.OSProfileResponse | undefined>;
+    public readonly osProfile!: pulumi.Output<types.outputs.OSProfileResponse | undefined>;
     /**
      * Specifies information about the marketplace image used to create the virtual machine. This element is only used for marketplace images. Before you can use a marketplace image from an API, you must enable the image for programmatic use.  In the Azure portal, find the marketplace image that you want to use and then click **Want to deploy programmatically, Get Started ->**. Enter any required information and then click **Save**.
      */
-    public readonly plan!: pulumi.Output<types.outputs.compute.v20230301.PlanResponse | undefined>;
+    public readonly plan!: pulumi.Output<types.outputs.PlanResponse | undefined>;
     /**
      * Specifies the protection policy of the virtual machine.
      */
-    public readonly protectionPolicy!: pulumi.Output<types.outputs.compute.v20230301.VirtualMachineScaleSetVMProtectionPolicyResponse | undefined>;
+    public readonly protectionPolicy!: pulumi.Output<types.outputs.VirtualMachineScaleSetVMProtectionPolicyResponse | undefined>;
     /**
      * The provisioning state, which only appears in the response.
      */
@@ -106,19 +106,19 @@ export class VirtualMachineScaleSetVM extends pulumi.CustomResource {
     /**
      * The virtual machine child extension resources.
      */
-    public /*out*/ readonly resources!: pulumi.Output<types.outputs.compute.v20230301.VirtualMachineExtensionResponse[]>;
+    public /*out*/ readonly resources!: pulumi.Output<types.outputs.VirtualMachineExtensionResponse[]>;
     /**
      * Specifies the Security related profile settings for the virtual machine.
      */
-    public readonly securityProfile!: pulumi.Output<types.outputs.compute.v20230301.SecurityProfileResponse | undefined>;
+    public readonly securityProfile!: pulumi.Output<types.outputs.SecurityProfileResponse | undefined>;
     /**
      * The virtual machine SKU.
      */
-    public /*out*/ readonly sku!: pulumi.Output<types.outputs.compute.v20230301.SkuResponse>;
+    public /*out*/ readonly sku!: pulumi.Output<types.outputs.SkuResponse>;
     /**
      * Specifies the storage settings for the virtual machine disks.
      */
-    public readonly storageProfile!: pulumi.Output<types.outputs.compute.v20230301.StorageProfileResponse | undefined>;
+    public readonly storageProfile!: pulumi.Output<types.outputs.StorageProfileResponse | undefined>;
     /**
      * Resource tags
      */
@@ -229,23 +229,23 @@ export interface VirtualMachineScaleSetVMArgs {
     /**
      * Specifies additional capabilities enabled or disabled on the virtual machine in the scale set. For instance: whether the virtual machine has the capability to support attaching managed data disks with UltraSSD_LRS storage account type.
      */
-    additionalCapabilities?: pulumi.Input<types.inputs.compute.v20230301.AdditionalCapabilitiesArgs>;
+    additionalCapabilities?: pulumi.Input<types.inputs.AdditionalCapabilitiesArgs>;
     /**
      * Specifies information about the availability set that the virtual machine should be assigned to. Virtual machines specified in the same availability set are allocated to different nodes to maximize availability. For more information about availability sets, see [Availability sets overview](https://docs.microsoft.com/azure/virtual-machines/availability-set-overview). For more information on Azure planned maintenance, see [Maintenance and updates for Virtual Machines in Azure](https://docs.microsoft.com/azure/virtual-machines/maintenance-and-updates). Currently, a VM can only be added to availability set at creation time. An existing VM cannot be added to an availability set.
      */
-    availabilitySet?: pulumi.Input<types.inputs.compute.v20230301.SubResourceArgs>;
+    availabilitySet?: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * Specifies the boot diagnostic settings state. Minimum api-version: 2015-06-15.
      */
-    diagnosticsProfile?: pulumi.Input<types.inputs.compute.v20230301.DiagnosticsProfileArgs>;
+    diagnosticsProfile?: pulumi.Input<types.inputs.DiagnosticsProfileArgs>;
     /**
      * Specifies the hardware settings for the virtual machine.
      */
-    hardwareProfile?: pulumi.Input<types.inputs.compute.v20230301.HardwareProfileArgs>;
+    hardwareProfile?: pulumi.Input<types.inputs.HardwareProfileArgs>;
     /**
      * The identity of the virtual machine, if configured.
      */
-    identity?: pulumi.Input<types.inputs.compute.v20230301.VirtualMachineIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.VirtualMachineIdentityArgs>;
     /**
      * The instance ID of the virtual machine.
      */
@@ -261,23 +261,23 @@ export interface VirtualMachineScaleSetVMArgs {
     /**
      * Specifies the network interfaces of the virtual machine.
      */
-    networkProfile?: pulumi.Input<types.inputs.compute.v20230301.NetworkProfileArgs>;
+    networkProfile?: pulumi.Input<types.inputs.NetworkProfileArgs>;
     /**
      * Specifies the network profile configuration of the virtual machine.
      */
-    networkProfileConfiguration?: pulumi.Input<types.inputs.compute.v20230301.VirtualMachineScaleSetVMNetworkProfileConfigurationArgs>;
+    networkProfileConfiguration?: pulumi.Input<types.inputs.VirtualMachineScaleSetVMNetworkProfileConfigurationArgs>;
     /**
      * Specifies the operating system settings for the virtual machine.
      */
-    osProfile?: pulumi.Input<types.inputs.compute.v20230301.OSProfileArgs>;
+    osProfile?: pulumi.Input<types.inputs.OSProfileArgs>;
     /**
      * Specifies information about the marketplace image used to create the virtual machine. This element is only used for marketplace images. Before you can use a marketplace image from an API, you must enable the image for programmatic use.  In the Azure portal, find the marketplace image that you want to use and then click **Want to deploy programmatically, Get Started ->**. Enter any required information and then click **Save**.
      */
-    plan?: pulumi.Input<types.inputs.compute.v20230301.PlanArgs>;
+    plan?: pulumi.Input<types.inputs.PlanArgs>;
     /**
      * Specifies the protection policy of the virtual machine.
      */
-    protectionPolicy?: pulumi.Input<types.inputs.compute.v20230301.VirtualMachineScaleSetVMProtectionPolicyArgs>;
+    protectionPolicy?: pulumi.Input<types.inputs.VirtualMachineScaleSetVMProtectionPolicyArgs>;
     /**
      * The name of the resource group.
      */
@@ -285,11 +285,11 @@ export interface VirtualMachineScaleSetVMArgs {
     /**
      * Specifies the Security related profile settings for the virtual machine.
      */
-    securityProfile?: pulumi.Input<types.inputs.compute.v20230301.SecurityProfileArgs>;
+    securityProfile?: pulumi.Input<types.inputs.SecurityProfileArgs>;
     /**
      * Specifies the storage settings for the virtual machine disks.
      */
-    storageProfile?: pulumi.Input<types.inputs.compute.v20230301.StorageProfileArgs>;
+    storageProfile?: pulumi.Input<types.inputs.StorageProfileArgs>;
     /**
      * Resource tags
      */

@@ -36,7 +36,7 @@ export interface GetNetworkFabricTopologyResult {
     /**
      * The error object.
      */
-    readonly error?: types.outputs.managednetworkfabric.ErrorDetailResponse;
+    readonly error?: types.outputs.ErrorDetailResponse;
     /**
      * URL for the details of the response.
      */

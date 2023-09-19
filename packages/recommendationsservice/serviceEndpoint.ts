@@ -43,11 +43,11 @@ export class ServiceEndpoint extends pulumi.CustomResource {
     /**
      * ServiceEndpoint resource properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.recommendationsservice.ServiceEndpointResourceResponseProperties>;
+    public readonly properties!: pulumi.Output<types.outputs.ServiceEndpointResourceResponseProperties>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.recommendationsservice.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -113,7 +113,7 @@ export interface ServiceEndpointArgs {
     /**
      * ServiceEndpoint resource properties.
      */
-    properties?: pulumi.Input<types.inputs.recommendationsservice.ServiceEndpointResourcePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ServiceEndpointResourcePropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

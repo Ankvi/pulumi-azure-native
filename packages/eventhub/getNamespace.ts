@@ -48,7 +48,7 @@ export interface GetNamespaceResult {
     /**
      * Properties of BYOK Encryption description
      */
-    readonly encryption?: types.outputs.eventhub.EncryptionResponse;
+    readonly encryption?: types.outputs.EncryptionResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -56,7 +56,7 @@ export interface GetNamespaceResult {
     /**
      * Properties of BYOK Identity description
      */
-    readonly identity?: types.outputs.eventhub.IdentityResponse;
+    readonly identity?: types.outputs.IdentityResponse;
     /**
      * Value that indicates whether AutoInflate is enabled for eventhub namespace.
      */
@@ -88,7 +88,7 @@ export interface GetNamespaceResult {
     /**
      * List of private endpoint connections.
      */
-    readonly privateEndpointConnections?: types.outputs.eventhub.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections?: types.outputs.PrivateEndpointConnectionResponse[];
     /**
      * Provisioning state of the Namespace.
      */
@@ -104,7 +104,7 @@ export interface GetNamespaceResult {
     /**
      * Properties of sku resource
      */
-    readonly sku?: types.outputs.eventhub.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * Status of the Namespace.
      */
@@ -112,7 +112,7 @@ export interface GetNamespaceResult {
     /**
      * The system meta data relating to this resource.
      */
-    readonly systemData: types.outputs.eventhub.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the properties of the specified cache rule resource.
  */
@@ -60,7 +60,7 @@ export interface GetCacheRuleResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.containerregistry.v20230601preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Target repository specified in docker pull command.
      * Eg: docker pull myregistry.azurecr.io/{targetRepository}:{tag}

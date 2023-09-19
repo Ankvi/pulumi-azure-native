@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A class represent a resource.
  */
@@ -34,7 +34,7 @@ export class WebPubSub extends pulumi.CustomResource {
     /**
      * The settings for event handler in webpubsub service.
      */
-    public readonly eventHandler!: pulumi.Output<types.outputs.webpubsub.v20210401preview.EventHandlerSettingsResponse | undefined>;
+    public readonly eventHandler!: pulumi.Output<types.outputs.EventHandlerSettingsResponse | undefined>;
     /**
      * The publicly accessible IP of the resource.
      */
@@ -47,7 +47,7 @@ export class WebPubSub extends pulumi.CustomResource {
      * When a featureFlag is not explicitly set, its globally default value will be used
      * But keep in mind, the default value doesn't mean "false". It varies in terms of different FeatureFlags.
      */
-    public readonly features!: pulumi.Output<types.outputs.webpubsub.v20210401preview.WebPubSubFeatureResponse[] | undefined>;
+    public readonly features!: pulumi.Output<types.outputs.WebPubSubFeatureResponse[] | undefined>;
     /**
      * FQDN of the service instance.
      */
@@ -55,7 +55,7 @@ export class WebPubSub extends pulumi.CustomResource {
     /**
      * The managed identity response
      */
-    public readonly identity!: pulumi.Output<types.outputs.webpubsub.v20210401preview.ManagedIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedIdentityResponse | undefined>;
     /**
      * The GEO location of the resource. e.g. West US | East US | North Central US | South Central US.
      */
@@ -67,11 +67,11 @@ export class WebPubSub extends pulumi.CustomResource {
     /**
      * Network ACLs
      */
-    public readonly networkACLs!: pulumi.Output<types.outputs.webpubsub.v20210401preview.WebPubSubNetworkACLsResponse | undefined>;
+    public readonly networkACLs!: pulumi.Output<types.outputs.WebPubSubNetworkACLsResponse | undefined>;
     /**
      * Private endpoint connections to the resource.
      */
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.webpubsub.v20210401preview.PrivateEndpointConnectionResponse[]>;
+    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[]>;
     /**
      * Provisioning state of the resource.
      */
@@ -93,15 +93,15 @@ export class WebPubSub extends pulumi.CustomResource {
     /**
      * The list of shared private link resources.
      */
-    public /*out*/ readonly sharedPrivateLinkResources!: pulumi.Output<types.outputs.webpubsub.v20210401preview.SharedPrivateLinkResourceResponse[]>;
+    public /*out*/ readonly sharedPrivateLinkResources!: pulumi.Output<types.outputs.SharedPrivateLinkResourceResponse[]>;
     /**
      * The billing information of the resource.(e.g. Free, Standard)
      */
-    public readonly sku!: pulumi.Output<types.outputs.webpubsub.v20210401preview.ResourceSkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.ResourceSkuResponse | undefined>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.webpubsub.v20210401preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Tags of the service which is a list of key value pairs that describe the resource.
      */
@@ -109,7 +109,7 @@ export class WebPubSub extends pulumi.CustomResource {
     /**
      * TLS settings.
      */
-    public readonly tls!: pulumi.Output<types.outputs.webpubsub.v20210401preview.WebPubSubTlsSettingsResponse | undefined>;
+    public readonly tls!: pulumi.Output<types.outputs.WebPubSubTlsSettingsResponse | undefined>;
     /**
      * The type of the resource - e.g. "Microsoft.SignalRService/SignalR"
      */
@@ -137,13 +137,13 @@ export class WebPubSub extends pulumi.CustomResource {
             resourceInputs["features"] = args ? args.features : undefined;
             resourceInputs["identity"] = args ? args.identity : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["networkACLs"] = args ? (args.networkACLs ? pulumi.output(args.networkACLs).apply(types.inputs.webpubsub.v20210401preview.webPubSubNetworkACLsArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["networkACLs"] = args ? (args.networkACLs ? pulumi.output(args.networkACLs).apply(types.inputs.webPubSubNetworkACLsArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["publicNetworkAccess"] = (args ? args.publicNetworkAccess : undefined) ?? "Enabled";
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["resourceName"] = args ? args.resourceName : undefined;
             resourceInputs["sku"] = args ? args.sku : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["tls"] = args ? (args.tls ? pulumi.output(args.tls).apply(types.inputs.webpubsub.v20210401preview.webPubSubTlsSettingsArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["tls"] = args ? (args.tls ? pulumi.output(args.tls).apply(types.inputs.webPubSubTlsSettingsArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["externalIP"] = undefined /*out*/;
             resourceInputs["hostName"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -191,7 +191,7 @@ export interface WebPubSubArgs {
     /**
      * The settings for event handler in webpubsub service.
      */
-    eventHandler?: pulumi.Input<types.inputs.webpubsub.v20210401preview.EventHandlerSettingsArgs>;
+    eventHandler?: pulumi.Input<types.inputs.EventHandlerSettingsArgs>;
     /**
      * List of the featureFlags.
      * 
@@ -200,11 +200,11 @@ export interface WebPubSubArgs {
      * When a featureFlag is not explicitly set, its globally default value will be used
      * But keep in mind, the default value doesn't mean "false". It varies in terms of different FeatureFlags.
      */
-    features?: pulumi.Input<pulumi.Input<types.inputs.webpubsub.v20210401preview.WebPubSubFeatureArgs>[]>;
+    features?: pulumi.Input<pulumi.Input<types.inputs.WebPubSubFeatureArgs>[]>;
     /**
      * The managed identity response
      */
-    identity?: pulumi.Input<types.inputs.webpubsub.v20210401preview.ManagedIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedIdentityArgs>;
     /**
      * The GEO location of the resource. e.g. West US | East US | North Central US | South Central US.
      */
@@ -212,7 +212,7 @@ export interface WebPubSubArgs {
     /**
      * Network ACLs
      */
-    networkACLs?: pulumi.Input<types.inputs.webpubsub.v20210401preview.WebPubSubNetworkACLsArgs>;
+    networkACLs?: pulumi.Input<types.inputs.WebPubSubNetworkACLsArgs>;
     /**
      * Enable or disable public network access. Default to "Enabled".
      * When it's Enabled, network ACLs still apply.
@@ -230,7 +230,7 @@ export interface WebPubSubArgs {
     /**
      * The billing information of the resource.(e.g. Free, Standard)
      */
-    sku?: pulumi.Input<types.inputs.webpubsub.v20210401preview.ResourceSkuArgs>;
+    sku?: pulumi.Input<types.inputs.ResourceSkuArgs>;
     /**
      * Tags of the service which is a list of key value pairs that describe the resource.
      */
@@ -238,5 +238,5 @@ export interface WebPubSubArgs {
     /**
      * TLS settings.
      */
-    tls?: pulumi.Input<types.inputs.webpubsub.v20210401preview.WebPubSubTlsSettingsArgs>;
+    tls?: pulumi.Input<types.inputs.WebPubSubTlsSettingsArgs>;
 }

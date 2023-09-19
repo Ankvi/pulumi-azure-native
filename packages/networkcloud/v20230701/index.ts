@@ -173,7 +173,7 @@ utilities.lazyLoad(exports, ["Volume"], () => require("./volume"));
 
 
 // Export enums:
-export * from "../types/enums/v20230701";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

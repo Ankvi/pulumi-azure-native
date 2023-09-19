@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a Kusto pool.
  */
@@ -56,7 +56,7 @@ export interface GetKustoPoolResult {
     /**
      * List of the Kusto Pool's language extensions.
      */
-    readonly languageExtensions: types.outputs.synapse.v20210601preview.LanguageExtensionsListResponse;
+    readonly languageExtensions: types.outputs.LanguageExtensionsListResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -68,7 +68,7 @@ export interface GetKustoPoolResult {
     /**
      * Optimized auto scale definition.
      */
-    readonly optimizedAutoscale?: types.outputs.synapse.v20210601preview.OptimizedAutoscaleResponse;
+    readonly optimizedAutoscale?: types.outputs.OptimizedAutoscaleResponse;
     /**
      * The provisioned state of the resource.
      */
@@ -76,7 +76,7 @@ export interface GetKustoPoolResult {
     /**
      * The SKU of the kusto pool.
      */
-    readonly sku: types.outputs.synapse.v20210601preview.AzureSkuResponse;
+    readonly sku: types.outputs.AzureSkuResponse;
     /**
      * The state of the resource.
      */
@@ -88,7 +88,7 @@ export interface GetKustoPoolResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.synapse.v20210601preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

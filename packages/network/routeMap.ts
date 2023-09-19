@@ -55,7 +55,7 @@ export class RouteMap extends pulumi.CustomResource {
     /**
      * List of RouteMap rules to be applied.
      */
-    public readonly rules!: pulumi.Output<types.outputs.network.RouteMapRuleResponse[] | undefined>;
+    public readonly rules!: pulumi.Output<types.outputs.RouteMapRuleResponse[] | undefined>;
     /**
      * Resource type.
      */
@@ -132,7 +132,7 @@ export interface RouteMapArgs {
     /**
      * List of RouteMap rules to be applied.
      */
-    rules?: pulumi.Input<pulumi.Input<types.inputs.network.RouteMapRuleArgs>[]>;
+    rules?: pulumi.Input<pulumi.Input<types.inputs.RouteMapRuleArgs>[]>;
     /**
      * The name of the VirtualHub containing the RouteMap.
      */

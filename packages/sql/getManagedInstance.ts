@@ -41,7 +41,7 @@ export interface GetManagedInstanceResult {
     /**
      * The Azure Active Directory administrator of the server.
      */
-    readonly administrators?: types.outputs.sql.ManagedInstanceExternalAdministratorResponse;
+    readonly administrators?: types.outputs.ManagedInstanceExternalAdministratorResponse;
     /**
      * Collation of the managed instance.
      */
@@ -65,7 +65,7 @@ export interface GetManagedInstanceResult {
     /**
      * The Azure Active Directory identity of the managed instance.
      */
-    readonly identity?: types.outputs.sql.ResourceIdentityResponse;
+    readonly identity?: types.outputs.ResourceIdentityResponse;
     /**
      * The Id of the instance pool this managed server belongs to.
      */
@@ -101,7 +101,7 @@ export interface GetManagedInstanceResult {
     /**
      * List of private endpoint connections on a managed instance.
      */
-    readonly privateEndpointConnections: types.outputs.sql.ManagedInstancePecPropertyResponse[];
+    readonly privateEndpointConnections: types.outputs.ManagedInstancePecPropertyResponse[];
     readonly provisioningState: string;
     /**
      * Connection type used for connecting to the instance.
@@ -118,11 +118,11 @@ export interface GetManagedInstanceResult {
     /**
      * The managed instance's service principal.
      */
-    readonly servicePrincipal?: types.outputs.sql.ServicePrincipalResponse;
+    readonly servicePrincipal?: types.outputs.ServicePrincipalResponse;
     /**
      * Managed instance SKU. Allowed values for sku.name: GP_Gen5, GP_G8IM, GP_G8IH, BC_Gen5, BC_G8IM, BC_G8IH
      */
-    readonly sku?: types.outputs.sql.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * The state of the managed instance.
      */

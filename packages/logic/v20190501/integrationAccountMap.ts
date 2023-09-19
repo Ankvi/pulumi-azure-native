@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The integration account map.
  */
@@ -42,7 +42,7 @@ export class IntegrationAccountMap extends pulumi.CustomResource {
     /**
      * The content link.
      */
-    public /*out*/ readonly contentLink!: pulumi.Output<types.outputs.logic.v20190501.ContentLinkResponse>;
+    public /*out*/ readonly contentLink!: pulumi.Output<types.outputs.ContentLinkResponse>;
     /**
      * The content type.
      */
@@ -70,7 +70,7 @@ export class IntegrationAccountMap extends pulumi.CustomResource {
     /**
      * The parameters schema of integration account map.
      */
-    public readonly parametersSchema!: pulumi.Output<types.outputs.logic.v20190501.IntegrationAccountMapPropertiesResponseParametersSchema | undefined>;
+    public readonly parametersSchema!: pulumi.Output<types.outputs.IntegrationAccountMapPropertiesResponseParametersSchema | undefined>;
     /**
      * The resource tags.
      */
@@ -163,7 +163,7 @@ export interface IntegrationAccountMapArgs {
     /**
      * The map type.
      */
-    mapType: pulumi.Input<string | types.enums.v20190501.MapType>;
+    mapType: pulumi.Input<string | types.enums.MapType>;
     /**
      * The metadata.
      */
@@ -171,7 +171,7 @@ export interface IntegrationAccountMapArgs {
     /**
      * The parameters schema of integration account map.
      */
-    parametersSchema?: pulumi.Input<types.inputs.logic.v20190501.IntegrationAccountMapPropertiesParametersSchemaArgs>;
+    parametersSchema?: pulumi.Input<types.inputs.IntegrationAccountMapPropertiesParametersSchemaArgs>;
     /**
      * The resource group name.
      */

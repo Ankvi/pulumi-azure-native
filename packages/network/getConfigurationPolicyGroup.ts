@@ -53,11 +53,11 @@ export interface GetConfigurationPolicyGroupResult {
     /**
      * List of references to P2SConnectionConfigurations.
      */
-    readonly p2SConnectionConfigurations: types.outputs.network.SubResourceResponse[];
+    readonly p2SConnectionConfigurations: types.outputs.SubResourceResponse[];
     /**
      * Multiple PolicyMembers for VpnServerConfigurationPolicyGroup.
      */
-    readonly policyMembers?: types.outputs.network.VpnServerConfigurationPolicyGroupMemberResponse[];
+    readonly policyMembers?: types.outputs.VpnServerConfigurationPolicyGroupMemberResponse[];
     /**
      * Priority for VpnServerConfigurationPolicyGroup.
      */

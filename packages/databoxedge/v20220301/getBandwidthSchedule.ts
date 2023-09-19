@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the properties of the specified bandwidth schedule.
  */
@@ -60,7 +60,7 @@ export interface GetBandwidthScheduleResult {
     /**
      * Metadata pertaining to creation and last modification of BandwidthSchedule
      */
-    readonly systemData: types.outputs.databoxedge.v20220301.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The hierarchical type of the object.
      */

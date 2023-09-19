@@ -35,11 +35,11 @@ export class OpenShiftManagedCluster extends pulumi.CustomResource {
     /**
      * Configuration of OpenShift cluster VMs.
      */
-    public readonly agentPoolProfiles!: pulumi.Output<types.outputs.containerservice.OpenShiftManagedClusterAgentPoolProfileResponse[] | undefined>;
+    public readonly agentPoolProfiles!: pulumi.Output<types.outputs.OpenShiftManagedClusterAgentPoolProfileResponse[] | undefined>;
     /**
      * Configures OpenShift authentication.
      */
-    public readonly authProfile!: pulumi.Output<types.outputs.containerservice.OpenShiftManagedClusterAuthProfileResponse | undefined>;
+    public readonly authProfile!: pulumi.Output<types.outputs.OpenShiftManagedClusterAuthProfileResponse | undefined>;
     /**
      * Version of OpenShift specified when creating the cluster.
      */
@@ -55,11 +55,11 @@ export class OpenShiftManagedCluster extends pulumi.CustomResource {
     /**
      * Configuration for OpenShift master VMs.
      */
-    public readonly masterPoolProfile!: pulumi.Output<types.outputs.containerservice.OpenShiftManagedClusterMasterPoolProfileResponse | undefined>;
+    public readonly masterPoolProfile!: pulumi.Output<types.outputs.OpenShiftManagedClusterMasterPoolProfileResponse | undefined>;
     /**
      * Configures Log Analytics integration.
      */
-    public readonly monitorProfile!: pulumi.Output<types.outputs.containerservice.OpenShiftManagedClusterMonitorProfileResponse | undefined>;
+    public readonly monitorProfile!: pulumi.Output<types.outputs.OpenShiftManagedClusterMonitorProfileResponse | undefined>;
     /**
      * Resource name
      */
@@ -67,7 +67,7 @@ export class OpenShiftManagedCluster extends pulumi.CustomResource {
     /**
      * Configuration for OpenShift networking.
      */
-    public readonly networkProfile!: pulumi.Output<types.outputs.containerservice.NetworkProfileResponse | undefined>;
+    public readonly networkProfile!: pulumi.Output<types.outputs.NetworkProfileResponse | undefined>;
     /**
      * Version of OpenShift specified when creating the cluster.
      */
@@ -75,7 +75,7 @@ export class OpenShiftManagedCluster extends pulumi.CustomResource {
     /**
      * Define the resource plan as required by ARM for billing purposes
      */
-    public readonly plan!: pulumi.Output<types.outputs.containerservice.PurchasePlanResponse | undefined>;
+    public readonly plan!: pulumi.Output<types.outputs.PurchasePlanResponse | undefined>;
     /**
      * The current deployment or provisioning state, which only appears in the response.
      */
@@ -91,7 +91,7 @@ export class OpenShiftManagedCluster extends pulumi.CustomResource {
     /**
      * Configuration for OpenShift router(s).
      */
-    public readonly routerProfiles!: pulumi.Output<types.outputs.containerservice.OpenShiftRouterProfileResponse[] | undefined>;
+    public readonly routerProfiles!: pulumi.Output<types.outputs.OpenShiftRouterProfileResponse[] | undefined>;
     /**
      * Resource tags
      */
@@ -123,7 +123,7 @@ export class OpenShiftManagedCluster extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["masterPoolProfile"] = args ? args.masterPoolProfile : undefined;
             resourceInputs["monitorProfile"] = args ? args.monitorProfile : undefined;
-            resourceInputs["networkProfile"] = args ? (args.networkProfile ? pulumi.output(args.networkProfile).apply(types.inputs.containerservice.networkProfileArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["networkProfile"] = args ? (args.networkProfile ? pulumi.output(args.networkProfile).apply(types.inputs.networkProfileArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["openShiftVersion"] = args ? args.openShiftVersion : undefined;
             resourceInputs["plan"] = args ? args.plan : undefined;
             resourceInputs["refreshCluster"] = args ? args.refreshCluster : undefined;
@@ -170,11 +170,11 @@ export interface OpenShiftManagedClusterArgs {
     /**
      * Configuration of OpenShift cluster VMs.
      */
-    agentPoolProfiles?: pulumi.Input<pulumi.Input<types.inputs.containerservice.OpenShiftManagedClusterAgentPoolProfileArgs>[]>;
+    agentPoolProfiles?: pulumi.Input<pulumi.Input<types.inputs.OpenShiftManagedClusterAgentPoolProfileArgs>[]>;
     /**
      * Configures OpenShift authentication.
      */
-    authProfile?: pulumi.Input<types.inputs.containerservice.OpenShiftManagedClusterAuthProfileArgs>;
+    authProfile?: pulumi.Input<types.inputs.OpenShiftManagedClusterAuthProfileArgs>;
     /**
      * Resource location
      */
@@ -182,15 +182,15 @@ export interface OpenShiftManagedClusterArgs {
     /**
      * Configuration for OpenShift master VMs.
      */
-    masterPoolProfile?: pulumi.Input<types.inputs.containerservice.OpenShiftManagedClusterMasterPoolProfileArgs>;
+    masterPoolProfile?: pulumi.Input<types.inputs.OpenShiftManagedClusterMasterPoolProfileArgs>;
     /**
      * Configures Log Analytics integration.
      */
-    monitorProfile?: pulumi.Input<types.inputs.containerservice.OpenShiftManagedClusterMonitorProfileArgs>;
+    monitorProfile?: pulumi.Input<types.inputs.OpenShiftManagedClusterMonitorProfileArgs>;
     /**
      * Configuration for OpenShift networking.
      */
-    networkProfile?: pulumi.Input<types.inputs.containerservice.NetworkProfileArgs>;
+    networkProfile?: pulumi.Input<types.inputs.NetworkProfileArgs>;
     /**
      * Version of OpenShift specified when creating the cluster.
      */
@@ -198,7 +198,7 @@ export interface OpenShiftManagedClusterArgs {
     /**
      * Define the resource plan as required by ARM for billing purposes
      */
-    plan?: pulumi.Input<types.inputs.containerservice.PurchasePlanArgs>;
+    plan?: pulumi.Input<types.inputs.PurchasePlanArgs>;
     /**
      * Allows node rotation
      */
@@ -214,7 +214,7 @@ export interface OpenShiftManagedClusterArgs {
     /**
      * Configuration for OpenShift router(s).
      */
-    routerProfiles?: pulumi.Input<pulumi.Input<types.inputs.containerservice.OpenShiftRouterProfileArgs>[]>;
+    routerProfiles?: pulumi.Input<pulumi.Input<types.inputs.OpenShiftRouterProfileArgs>[]>;
     /**
      * Resource tags
      */

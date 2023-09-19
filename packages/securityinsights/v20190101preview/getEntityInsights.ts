@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Execute Insights for an entity.
  */
@@ -61,11 +61,11 @@ export interface GetEntityInsightsResult {
     /**
      * The metadata from the get insights operation results.
      */
-    readonly metaData?: types.outputs.securityinsights.v20190101preview.GetInsightsResultsMetadataResponse;
+    readonly metaData?: types.outputs.GetInsightsResultsMetadataResponse;
     /**
      * The insights result values.
      */
-    readonly value?: types.outputs.securityinsights.v20190101preview.EntityInsightItemResponse[];
+    readonly value?: types.outputs.EntityInsightItemResponse[];
 }
 /**
  * Execute Insights for an entity.

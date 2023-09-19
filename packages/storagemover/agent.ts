@@ -52,7 +52,7 @@ export class Agent extends pulumi.CustomResource {
      * A description for the Agent.
      */
     public readonly description!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly errorDetails!: pulumi.Output<types.outputs.storagemover.AgentPropertiesResponseErrorDetails>;
+    public /*out*/ readonly errorDetails!: pulumi.Output<types.outputs.AgentPropertiesResponseErrorDetails>;
     /**
      * The last updated time of the Agent status.
      */
@@ -80,7 +80,7 @@ export class Agent extends pulumi.CustomResource {
     /**
      * Resource system metadata.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.storagemover.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

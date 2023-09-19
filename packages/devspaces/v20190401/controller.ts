@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 export class Controller extends pulumi.CustomResource {
     /**
      * Get an existing Controller resource's state with the given name, ID, and optional extra
@@ -51,7 +51,7 @@ export class Controller extends pulumi.CustomResource {
     /**
      * Model representing SKU for Azure Dev Spaces Controller.
      */
-    public readonly sku!: pulumi.Output<types.outputs.devspaces.v20190401.SkuResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse>;
     /**
      * Tags for the Azure resource.
      */
@@ -142,7 +142,7 @@ export interface ControllerArgs {
     /**
      * Model representing SKU for Azure Dev Spaces Controller.
      */
-    sku: pulumi.Input<types.inputs.devspaces.v20190401.SkuArgs>;
+    sku: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Tags for the Azure resource.
      */

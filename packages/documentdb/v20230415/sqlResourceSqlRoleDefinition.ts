@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An Azure Cosmos DB SQL Role Definition.
  */
@@ -42,7 +42,7 @@ export class SqlResourceSqlRoleDefinition extends pulumi.CustomResource {
     /**
      * The set of operations allowed through this Role Definition.
      */
-    public readonly permissions!: pulumi.Output<types.outputs.documentdb.v20230415.PermissionResponse[] | undefined>;
+    public readonly permissions!: pulumi.Output<types.outputs.PermissionResponse[] | undefined>;
     /**
      * A user-friendly name for the Role Definition. Must be unique for the database account.
      */
@@ -106,7 +106,7 @@ export interface SqlResourceSqlRoleDefinitionArgs {
     /**
      * The set of operations allowed through this Role Definition.
      */
-    permissions?: pulumi.Input<pulumi.Input<types.inputs.documentdb.v20230415.PermissionArgs>[]>;
+    permissions?: pulumi.Input<pulumi.Input<types.inputs.PermissionArgs>[]>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -122,5 +122,5 @@ export interface SqlResourceSqlRoleDefinitionArgs {
     /**
      * Indicates whether the Role Definition was built-in or user created.
      */
-    type?: pulumi.Input<types.enums.v20230415.RoleDefinitionType>;
+    type?: pulumi.Input<types.enums.RoleDefinitionType>;
 }

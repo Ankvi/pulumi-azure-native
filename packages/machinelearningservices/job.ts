@@ -35,7 +35,7 @@ export class Job extends pulumi.CustomResource {
     /**
      * [Required] Additional attributes of the entity.
      */
-    public readonly jobBaseProperties!: pulumi.Output<types.outputs.machinelearningservices.AutoMLJobResponse | types.outputs.machinelearningservices.CommandJobResponse | types.outputs.machinelearningservices.PipelineJobResponse | types.outputs.machinelearningservices.SweepJobResponse>;
+    public readonly jobBaseProperties!: pulumi.Output<types.outputs.AutoMLJobResponse | types.outputs.CommandJobResponse | types.outputs.PipelineJobResponse | types.outputs.SweepJobResponse>;
     /**
      * The name of the resource
      */
@@ -43,7 +43,7 @@ export class Job extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.machinelearningservices.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -100,7 +100,7 @@ export interface JobArgs {
     /**
      * [Required] Additional attributes of the entity.
      */
-    jobBaseProperties: pulumi.Input<types.inputs.machinelearningservices.AutoMLJobArgs | types.inputs.machinelearningservices.CommandJobArgs | types.inputs.machinelearningservices.PipelineJobArgs | types.inputs.machinelearningservices.SweepJobArgs>;
+    jobBaseProperties: pulumi.Input<types.inputs.AutoMLJobArgs | types.inputs.CommandJobArgs | types.inputs.PipelineJobArgs | types.inputs.SweepJobArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

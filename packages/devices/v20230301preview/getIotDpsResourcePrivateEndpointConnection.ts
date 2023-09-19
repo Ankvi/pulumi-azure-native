@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get private endpoint connection properties
  */
@@ -44,11 +44,11 @@ export interface GetIotDpsResourcePrivateEndpointConnectionResult {
     /**
      * The properties of a private endpoint connection
      */
-    readonly properties: types.outputs.devices.v20230301preview.PrivateEndpointConnectionPropertiesResponse;
+    readonly properties: types.outputs.PrivateEndpointConnectionPropertiesResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.devices.v20230301preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The resource type.
      */

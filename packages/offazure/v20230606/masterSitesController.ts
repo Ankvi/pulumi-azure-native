@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A MasterSite
  */
@@ -55,7 +55,7 @@ export class MasterSitesController extends pulumi.CustomResource {
     /**
      * Gets the private endpoint connections.
      */
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.offazure.v20230606.PrivateEndpointConnectionResponse[]>;
+    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[]>;
     /**
      * provisioning state enum
      */
@@ -73,7 +73,7 @@ export class MasterSitesController extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.offazure.v20230606.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -152,7 +152,7 @@ export interface MasterSitesControllerArgs {
     /**
      * Gets or sets the state of public network access.
      */
-    publicNetworkAccess?: pulumi.Input<string | types.enums.v20230606.MasterSitePropertiesPublicNetworkAccess>;
+    publicNetworkAccess?: pulumi.Input<string | types.enums.MasterSitePropertiesPublicNetworkAccess>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

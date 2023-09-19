@@ -43,7 +43,7 @@ export class DedicatedHost extends pulumi.CustomResource {
     /**
      * The dedicated host instance view.
      */
-    public /*out*/ readonly instanceView!: pulumi.Output<types.outputs.compute.DedicatedHostInstanceViewResponse>;
+    public /*out*/ readonly instanceView!: pulumi.Output<types.outputs.DedicatedHostInstanceViewResponse>;
     /**
      * Specifies the software license type that will be applied to the VMs deployed on the dedicated host. Possible values are: **None,** **Windows_Server_Hybrid,** **Windows_Server_Perpetual.** The default value is: **None.**
      */
@@ -71,7 +71,7 @@ export class DedicatedHost extends pulumi.CustomResource {
     /**
      * SKU of the dedicated host for Hardware Generation and VM family. Only name is required to be set. List Microsoft.Compute SKUs for a list of possible values.
      */
-    public readonly sku!: pulumi.Output<types.outputs.compute.SkuResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse>;
     /**
      * Resource tags
      */
@@ -87,7 +87,7 @@ export class DedicatedHost extends pulumi.CustomResource {
     /**
      * A list of references to all virtual machines in the Dedicated Host.
      */
-    public /*out*/ readonly virtualMachines!: pulumi.Output<types.outputs.compute.SubResourceReadOnlyResponse[]>;
+    public /*out*/ readonly virtualMachines!: pulumi.Output<types.outputs.SubResourceReadOnlyResponse[]>;
 
     /**
      * Create a DedicatedHost resource with the given unique name, arguments, and options.
@@ -184,7 +184,7 @@ export interface DedicatedHostArgs {
     /**
      * SKU of the dedicated host for Hardware Generation and VM family. Only name is required to be set. List Microsoft.Compute SKUs for a list of possible values.
      */
-    sku: pulumi.Input<types.inputs.compute.SkuArgs>;
+    sku: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Resource tags
      */

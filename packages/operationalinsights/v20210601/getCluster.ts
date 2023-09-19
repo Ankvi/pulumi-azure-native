@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a Log Analytics cluster instance.
  */
@@ -31,7 +31,7 @@ export interface GetClusterResult {
     /**
      * The list of Log Analytics workspaces associated with the cluster
      */
-    readonly associatedWorkspaces?: types.outputs.operationalinsights.v20210601.AssociatedWorkspaceResponse[];
+    readonly associatedWorkspaces?: types.outputs.AssociatedWorkspaceResponse[];
     /**
      * The cluster's billing type.
      */
@@ -39,7 +39,7 @@ export interface GetClusterResult {
     /**
      * Additional properties for capacity reservation
      */
-    readonly capacityReservationProperties?: types.outputs.operationalinsights.v20210601.CapacityReservationPropertiesResponse;
+    readonly capacityReservationProperties?: types.outputs.CapacityReservationPropertiesResponse;
     /**
      * The ID associated with the cluster.
      */
@@ -55,7 +55,7 @@ export interface GetClusterResult {
     /**
      * The identity of the resource.
      */
-    readonly identity?: types.outputs.operationalinsights.v20210601.IdentityResponse;
+    readonly identity?: types.outputs.IdentityResponse;
     /**
      * Sets whether the cluster will support availability zones. This can be set as true only in regions where Azure Data Explorer support Availability Zones. This Property can not be modified after cluster creation. Default value is 'true' if region supports Availability Zones.
      */
@@ -63,7 +63,7 @@ export interface GetClusterResult {
     /**
      * The associated key properties.
      */
-    readonly keyVaultProperties?: types.outputs.operationalinsights.v20210601.KeyVaultPropertiesResponse;
+    readonly keyVaultProperties?: types.outputs.KeyVaultPropertiesResponse;
     /**
      * The last time the cluster was updated.
      */
@@ -83,7 +83,7 @@ export interface GetClusterResult {
     /**
      * The sku properties.
      */
-    readonly sku?: types.outputs.operationalinsights.v20210601.ClusterSkuResponse;
+    readonly sku?: types.outputs.ClusterSkuResponse;
     /**
      * Resource tags.
      */

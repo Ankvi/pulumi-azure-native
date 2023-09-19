@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets details of the Source Control Configuration.
  */
@@ -46,7 +46,7 @@ export interface GetSourceControlConfigurationResult {
     /**
      * Compliance Status of the Configuration
      */
-    readonly complianceStatus: types.outputs.kubernetesconfiguration.v20230501.ComplianceStatusResponse;
+    readonly complianceStatus: types.outputs.ComplianceStatusResponse;
     /**
      * Name-value pairs of protected configuration settings for the configuration
      */
@@ -58,7 +58,7 @@ export interface GetSourceControlConfigurationResult {
     /**
      * Properties for Helm operator.
      */
-    readonly helmOperatorProperties?: types.outputs.kubernetesconfiguration.v20230501.HelmOperatorPropertiesResponse;
+    readonly helmOperatorProperties?: types.outputs.HelmOperatorPropertiesResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -106,7 +106,7 @@ export interface GetSourceControlConfigurationResult {
     /**
      * Top level metadata https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-contracts.md#system-metadata-for-all-azure-resources
      */
-    readonly systemData: types.outputs.kubernetesconfiguration.v20230501.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

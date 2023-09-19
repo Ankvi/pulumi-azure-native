@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A Blob data set mapping.
  */
@@ -79,7 +79,7 @@ export class BlobDataSetMapping extends pulumi.CustomResource {
     /**
      * System Data of the Azure resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.datashare.v20210801.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Type of the azure resource
      */
@@ -197,7 +197,7 @@ export interface BlobDataSetMappingArgs {
     /**
      * File output type
      */
-    outputType?: pulumi.Input<string | types.enums.v20210801.OutputType>;
+    outputType?: pulumi.Input<string | types.enums.OutputType>;
     /**
      * Resource group of storage account.
      */

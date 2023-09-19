@@ -39,11 +39,11 @@ export class MonitoringSetting extends pulumi.CustomResource {
     /**
      * Properties of the Monitoring Setting resource
      */
-    public readonly properties!: pulumi.Output<types.outputs.appplatform.MonitoringSettingPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.MonitoringSettingPropertiesResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.appplatform.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource.
      */
@@ -92,7 +92,7 @@ export interface MonitoringSettingArgs {
     /**
      * Properties of the Monitoring Setting resource
      */
-    properties?: pulumi.Input<types.inputs.appplatform.MonitoringSettingPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.MonitoringSettingPropertiesArgs>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */

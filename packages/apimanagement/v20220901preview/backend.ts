@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Backend details.
  */
@@ -34,11 +34,11 @@ export class Backend extends pulumi.CustomResource {
     /**
      * Backend Circuit Breaker Configuration
      */
-    public readonly circuitBreaker!: pulumi.Output<types.outputs.apimanagement.v20220901preview.BackendCircuitBreakerResponse | undefined>;
+    public readonly circuitBreaker!: pulumi.Output<types.outputs.BackendCircuitBreakerResponse | undefined>;
     /**
      * Backend Credentials Contract Properties
      */
-    public readonly credentials!: pulumi.Output<types.outputs.apimanagement.v20220901preview.BackendCredentialsContractResponse | undefined>;
+    public readonly credentials!: pulumi.Output<types.outputs.BackendCredentialsContractResponse | undefined>;
     /**
      * Backend Description.
      */
@@ -50,7 +50,7 @@ export class Backend extends pulumi.CustomResource {
     /**
      * Backend Properties contract
      */
-    public readonly properties!: pulumi.Output<types.outputs.apimanagement.v20220901preview.BackendPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.BackendPropertiesResponse>;
     /**
      * Backend communication protocol.
      */
@@ -58,7 +58,7 @@ export class Backend extends pulumi.CustomResource {
     /**
      * Backend gateway Contract Properties
      */
-    public readonly proxy!: pulumi.Output<types.outputs.apimanagement.v20220901preview.BackendProxyContractResponse | undefined>;
+    public readonly proxy!: pulumi.Output<types.outputs.BackendProxyContractResponse | undefined>;
     /**
      * Management Uri of the Resource in External System. This URL can be the Arm Resource Id of Logic Apps, Function Apps or API Apps.
      */
@@ -70,7 +70,7 @@ export class Backend extends pulumi.CustomResource {
     /**
      * Backend TLS Properties
      */
-    public readonly tls!: pulumi.Output<types.outputs.apimanagement.v20220901preview.BackendTlsPropertiesResponse | undefined>;
+    public readonly tls!: pulumi.Output<types.outputs.BackendTlsPropertiesResponse | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -114,7 +114,7 @@ export class Backend extends pulumi.CustomResource {
             resourceInputs["resourceId"] = args ? args.resourceId : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
             resourceInputs["title"] = args ? args.title : undefined;
-            resourceInputs["tls"] = args ? (args.tls ? pulumi.output(args.tls).apply(types.inputs.apimanagement.v20220901preview.backendTlsPropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["tls"] = args ? (args.tls ? pulumi.output(args.tls).apply(types.inputs.backendTlsPropertiesArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["url"] = args ? args.url : undefined;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
@@ -150,11 +150,11 @@ export interface BackendArgs {
     /**
      * Backend Circuit Breaker Configuration
      */
-    circuitBreaker?: pulumi.Input<types.inputs.apimanagement.v20220901preview.BackendCircuitBreakerArgs>;
+    circuitBreaker?: pulumi.Input<types.inputs.BackendCircuitBreakerArgs>;
     /**
      * Backend Credentials Contract Properties
      */
-    credentials?: pulumi.Input<types.inputs.apimanagement.v20220901preview.BackendCredentialsContractArgs>;
+    credentials?: pulumi.Input<types.inputs.BackendCredentialsContractArgs>;
     /**
      * Backend Description.
      */
@@ -162,15 +162,15 @@ export interface BackendArgs {
     /**
      * Backend Properties contract
      */
-    properties?: pulumi.Input<types.inputs.apimanagement.v20220901preview.BackendPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.BackendPropertiesArgs>;
     /**
      * Backend communication protocol.
      */
-    protocol: pulumi.Input<string | types.enums.v20220901preview.BackendProtocol>;
+    protocol: pulumi.Input<string | types.enums.BackendProtocol>;
     /**
      * Backend gateway Contract Properties
      */
-    proxy?: pulumi.Input<types.inputs.apimanagement.v20220901preview.BackendProxyContractArgs>;
+    proxy?: pulumi.Input<types.inputs.BackendProxyContractArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -190,7 +190,7 @@ export interface BackendArgs {
     /**
      * Backend TLS Properties
      */
-    tls?: pulumi.Input<types.inputs.apimanagement.v20220901preview.BackendTlsPropertiesArgs>;
+    tls?: pulumi.Input<types.inputs.BackendTlsPropertiesArgs>;
     /**
      * Runtime Url of the Backend.
      */

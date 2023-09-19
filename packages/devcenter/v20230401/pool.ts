@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A pool of Virtual Machines.
  */
@@ -42,7 +42,7 @@ export class Pool extends pulumi.CustomResource {
     /**
      * Details on the Pool health status to help diagnose issues. This is only populated when the pool status indicates the pool is in a non-healthy state
      */
-    public /*out*/ readonly healthStatusDetails!: pulumi.Output<types.outputs.devcenter.v20230401.HealthStatusDetailResponse[]>;
+    public /*out*/ readonly healthStatusDetails!: pulumi.Output<types.outputs.HealthStatusDetailResponse[]>;
     /**
      * Specifies the license type indicating the caller has already acquired licenses for the Dev Boxes that will be created.
      */
@@ -70,11 +70,11 @@ export class Pool extends pulumi.CustomResource {
     /**
      * Stop on disconnect configuration settings for Dev Boxes created in this pool.
      */
-    public readonly stopOnDisconnect!: pulumi.Output<types.outputs.devcenter.v20230401.StopOnDisconnectConfigurationResponse | undefined>;
+    public readonly stopOnDisconnect!: pulumi.Output<types.outputs.StopOnDisconnectConfigurationResponse | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.devcenter.v20230401.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -162,11 +162,11 @@ export interface PoolArgs {
     /**
      * Specifies the license type indicating the caller has already acquired licenses for the Dev Boxes that will be created.
      */
-    licenseType: pulumi.Input<string | types.enums.v20230401.LicenseType>;
+    licenseType: pulumi.Input<string | types.enums.LicenseType>;
     /**
      * Indicates whether owners of Dev Boxes in this pool are added as local administrators on the Dev Box.
      */
-    localAdministrator: pulumi.Input<string | types.enums.v20230401.LocalAdminStatus>;
+    localAdministrator: pulumi.Input<string | types.enums.LocalAdminStatus>;
     /**
      * The geo-location where the resource lives
      */
@@ -190,7 +190,7 @@ export interface PoolArgs {
     /**
      * Stop on disconnect configuration settings for Dev Boxes created in this pool.
      */
-    stopOnDisconnect?: pulumi.Input<types.inputs.devcenter.v20230401.StopOnDisconnectConfigurationArgs>;
+    stopOnDisconnect?: pulumi.Input<types.inputs.StopOnDisconnectConfigurationArgs>;
     /**
      * Resource tags.
      */

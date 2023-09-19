@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * ServiceEndpoint resource details.
  */
@@ -42,11 +42,11 @@ export class ServiceEndpoint extends pulumi.CustomResource {
     /**
      * ServiceEndpoint resource properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.recommendationsservice.v20220201.ServiceEndpointResourceResponseProperties>;
+    public readonly properties!: pulumi.Output<types.outputs.ServiceEndpointResourceResponseProperties>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.recommendationsservice.v20220201.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -112,7 +112,7 @@ export interface ServiceEndpointArgs {
     /**
      * ServiceEndpoint resource properties.
      */
-    properties?: pulumi.Input<types.inputs.recommendationsservice.v20220201.ServiceEndpointResourcePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ServiceEndpointResourcePropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

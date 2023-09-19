@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the specified interface endpoint by resource group.
  */
@@ -36,7 +36,7 @@ export interface GetInterfaceEndpointResult {
     /**
      * A reference to the service being brought into the virtual network.
      */
-    readonly endpointService?: types.outputs.network.v20190201.EndpointServiceResponse;
+    readonly endpointService?: types.outputs.EndpointServiceResponse;
     /**
      * Gets a unique read-only string that changes whenever the resource is updated.
      */
@@ -60,7 +60,7 @@ export interface GetInterfaceEndpointResult {
     /**
      * Gets an array of references to the network interfaces created for this interface endpoint.
      */
-    readonly networkInterfaces: types.outputs.network.v20190201.NetworkInterfaceResponse[];
+    readonly networkInterfaces: types.outputs.NetworkInterfaceResponse[];
     /**
      * A read-only property that identifies who created this interface endpoint.
      */
@@ -72,7 +72,7 @@ export interface GetInterfaceEndpointResult {
     /**
      * The ID of the subnet from which the private IP will be allocated.
      */
-    readonly subnet?: types.outputs.network.v20190201.SubnetResponse;
+    readonly subnet?: types.outputs.SubnetResponse;
     /**
      * Resource tags.
      */

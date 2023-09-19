@@ -34,7 +34,7 @@ export class Registry extends pulumi.CustomResource {
     /**
      * Managed service identity (system assigned and/or user assigned identities)
      */
-    public readonly identity!: pulumi.Output<types.outputs.machinelearningservices.ManagedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
      */
@@ -50,15 +50,15 @@ export class Registry extends pulumi.CustomResource {
     /**
      * [Required] Additional attributes of the entity.
      */
-    public readonly registryProperties!: pulumi.Output<types.outputs.machinelearningservices.RegistryResponse>;
+    public readonly registryProperties!: pulumi.Output<types.outputs.RegistryResponse>;
     /**
      * Sku details required for ARM contract for Autoscaling.
      */
-    public readonly sku!: pulumi.Output<types.outputs.machinelearningservices.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.machinelearningservices.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -121,7 +121,7 @@ export interface RegistryArgs {
     /**
      * Managed service identity (system assigned and/or user assigned identities)
      */
-    identity?: pulumi.Input<types.inputs.machinelearningservices.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
      * Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
      */
@@ -137,7 +137,7 @@ export interface RegistryArgs {
     /**
      * [Required] Additional attributes of the entity.
      */
-    registryProperties: pulumi.Input<types.inputs.machinelearningservices.RegistryArgs>;
+    registryProperties: pulumi.Input<types.inputs.RegistryArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -145,7 +145,7 @@ export interface RegistryArgs {
     /**
      * Sku details required for ARM contract for Autoscaling.
      */
-    sku?: pulumi.Input<types.inputs.machinelearningservices.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Resource tags.
      */

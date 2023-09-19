@@ -47,7 +47,7 @@ export class TopicSpace extends pulumi.CustomResource {
     /**
      * The system metadata relating to the TopicSpace resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.eventgrid.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The topic filters in the topic space.
      * Example: "topicTemplates": [ 

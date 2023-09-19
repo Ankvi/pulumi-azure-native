@@ -42,19 +42,19 @@ export interface GetVirtualMachineScaleSetVMResult {
     /**
      * Specifies additional capabilities enabled or disabled on the virtual machine in the scale set. For instance: whether the virtual machine has the capability to support attaching managed data disks with UltraSSD_LRS storage account type.
      */
-    readonly additionalCapabilities?: types.outputs.compute.AdditionalCapabilitiesResponse;
+    readonly additionalCapabilities?: types.outputs.AdditionalCapabilitiesResponse;
     /**
      * Specifies information about the availability set that the virtual machine should be assigned to. Virtual machines specified in the same availability set are allocated to different nodes to maximize availability. For more information about availability sets, see [Availability sets overview](https://docs.microsoft.com/azure/virtual-machines/availability-set-overview). For more information on Azure planned maintenance, see [Maintenance and updates for Virtual Machines in Azure](https://docs.microsoft.com/azure/virtual-machines/maintenance-and-updates). Currently, a VM can only be added to availability set at creation time. An existing VM cannot be added to an availability set.
      */
-    readonly availabilitySet?: types.outputs.compute.SubResourceResponse;
+    readonly availabilitySet?: types.outputs.SubResourceResponse;
     /**
      * Specifies the boot diagnostic settings state. Minimum api-version: 2015-06-15.
      */
-    readonly diagnosticsProfile?: types.outputs.compute.DiagnosticsProfileResponse;
+    readonly diagnosticsProfile?: types.outputs.DiagnosticsProfileResponse;
     /**
      * Specifies the hardware settings for the virtual machine.
      */
-    readonly hardwareProfile?: types.outputs.compute.HardwareProfileResponse;
+    readonly hardwareProfile?: types.outputs.HardwareProfileResponse;
     /**
      * Resource Id
      */
@@ -62,7 +62,7 @@ export interface GetVirtualMachineScaleSetVMResult {
     /**
      * The identity of the virtual machine, if configured.
      */
-    readonly identity?: types.outputs.compute.VirtualMachineIdentityResponse;
+    readonly identity?: types.outputs.VirtualMachineIdentityResponse;
     /**
      * The virtual machine instance ID.
      */
@@ -70,7 +70,7 @@ export interface GetVirtualMachineScaleSetVMResult {
     /**
      * The virtual machine instance view.
      */
-    readonly instanceView: types.outputs.compute.VirtualMachineScaleSetVMInstanceViewResponse;
+    readonly instanceView: types.outputs.VirtualMachineScaleSetVMInstanceViewResponse;
     /**
      * Specifies whether the latest model has been applied to the virtual machine.
      */
@@ -94,23 +94,23 @@ export interface GetVirtualMachineScaleSetVMResult {
     /**
      * Specifies the network interfaces of the virtual machine.
      */
-    readonly networkProfile?: types.outputs.compute.NetworkProfileResponse;
+    readonly networkProfile?: types.outputs.NetworkProfileResponse;
     /**
      * Specifies the network profile configuration of the virtual machine.
      */
-    readonly networkProfileConfiguration?: types.outputs.compute.VirtualMachineScaleSetVMNetworkProfileConfigurationResponse;
+    readonly networkProfileConfiguration?: types.outputs.VirtualMachineScaleSetVMNetworkProfileConfigurationResponse;
     /**
      * Specifies the operating system settings for the virtual machine.
      */
-    readonly osProfile?: types.outputs.compute.OSProfileResponse;
+    readonly osProfile?: types.outputs.OSProfileResponse;
     /**
      * Specifies information about the marketplace image used to create the virtual machine. This element is only used for marketplace images. Before you can use a marketplace image from an API, you must enable the image for programmatic use.  In the Azure portal, find the marketplace image that you want to use and then click **Want to deploy programmatically, Get Started ->**. Enter any required information and then click **Save**.
      */
-    readonly plan?: types.outputs.compute.PlanResponse;
+    readonly plan?: types.outputs.PlanResponse;
     /**
      * Specifies the protection policy of the virtual machine.
      */
-    readonly protectionPolicy?: types.outputs.compute.VirtualMachineScaleSetVMProtectionPolicyResponse;
+    readonly protectionPolicy?: types.outputs.VirtualMachineScaleSetVMProtectionPolicyResponse;
     /**
      * The provisioning state, which only appears in the response.
      */
@@ -118,19 +118,19 @@ export interface GetVirtualMachineScaleSetVMResult {
     /**
      * The virtual machine child extension resources.
      */
-    readonly resources: types.outputs.compute.VirtualMachineExtensionResponse[];
+    readonly resources: types.outputs.VirtualMachineExtensionResponse[];
     /**
      * Specifies the Security related profile settings for the virtual machine.
      */
-    readonly securityProfile?: types.outputs.compute.SecurityProfileResponse;
+    readonly securityProfile?: types.outputs.SecurityProfileResponse;
     /**
      * The virtual machine SKU.
      */
-    readonly sku: types.outputs.compute.SkuResponse;
+    readonly sku: types.outputs.SkuResponse;
     /**
      * Specifies the storage settings for the virtual machine disks.
      */
-    readonly storageProfile?: types.outputs.compute.StorageProfileResponse;
+    readonly storageProfile?: types.outputs.StorageProfileResponse;
     /**
      * Resource tags
      */

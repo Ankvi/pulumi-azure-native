@@ -55,11 +55,11 @@ export class KubernetesRole extends pulumi.CustomResource {
     /**
      * Kubernetes cluster configuration
      */
-    public readonly kubernetesClusterInfo!: pulumi.Output<types.outputs.databoxedge.KubernetesClusterInfoResponse>;
+    public readonly kubernetesClusterInfo!: pulumi.Output<types.outputs.KubernetesClusterInfoResponse>;
     /**
      * Kubernetes role resources
      */
-    public readonly kubernetesRoleResources!: pulumi.Output<types.outputs.databoxedge.KubernetesRoleResourcesResponse>;
+    public readonly kubernetesRoleResources!: pulumi.Output<types.outputs.KubernetesRoleResourcesResponse>;
     /**
      * The object name.
      */
@@ -75,7 +75,7 @@ export class KubernetesRole extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of Role
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.databoxedge.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The hierarchical type of the object.
      */
@@ -164,11 +164,11 @@ export interface KubernetesRoleArgs {
     /**
      * Kubernetes cluster configuration
      */
-    kubernetesClusterInfo: pulumi.Input<types.inputs.databoxedge.KubernetesClusterInfoArgs>;
+    kubernetesClusterInfo: pulumi.Input<types.inputs.KubernetesClusterInfoArgs>;
     /**
      * Kubernetes role resources
      */
-    kubernetesRoleResources: pulumi.Input<types.inputs.databoxedge.KubernetesRoleResourcesArgs>;
+    kubernetesRoleResources: pulumi.Input<types.inputs.KubernetesRoleResourcesArgs>;
     /**
      * The role name.
      */

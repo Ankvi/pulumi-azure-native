@@ -43,11 +43,11 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * Gets the properties of the object.
      */
-    public /*out*/ readonly properties!: pulumi.Output<types.outputs.offazure.PrivateEndpointConnectionPropertiesResponse>;
+    public /*out*/ readonly properties!: pulumi.Output<types.outputs.PrivateEndpointConnectionPropertiesResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.offazure.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Gets the resource type.
      */

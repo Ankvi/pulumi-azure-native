@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Response for POST requests that return single SharedAccessAuthorizationRule.
  */
@@ -42,11 +42,11 @@ export class NamespaceAuthorizationRule extends pulumi.CustomResource {
     /**
      * SharedAccessAuthorizationRule properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.notificationhubs.v20230101preview.SharedAccessAuthorizationRulePropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.SharedAccessAuthorizationRulePropertiesResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.notificationhubs.v20230101preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Deprecated - only for compatibility.
      */
@@ -116,7 +116,7 @@ export interface NamespaceAuthorizationRuleArgs {
     /**
      * SharedAccessAuthorizationRule properties.
      */
-    properties?: pulumi.Input<types.inputs.notificationhubs.v20230101preview.SharedAccessAuthorizationRulePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.SharedAccessAuthorizationRulePropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

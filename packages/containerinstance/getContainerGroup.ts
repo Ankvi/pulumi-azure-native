@@ -32,27 +32,27 @@ export interface GetContainerGroupResult {
     /**
      * The properties for confidential container group
      */
-    readonly confidentialComputeProperties?: types.outputs.containerinstance.ConfidentialComputePropertiesResponse;
+    readonly confidentialComputeProperties?: types.outputs.ConfidentialComputePropertiesResponse;
     /**
      * The containers within the container group.
      */
-    readonly containers: types.outputs.containerinstance.ContainerResponse[];
+    readonly containers: types.outputs.ContainerResponse[];
     /**
      * The diagnostic information for a container group.
      */
-    readonly diagnostics?: types.outputs.containerinstance.ContainerGroupDiagnosticsResponse;
+    readonly diagnostics?: types.outputs.ContainerGroupDiagnosticsResponse;
     /**
      * The DNS config information for a container group.
      */
-    readonly dnsConfig?: types.outputs.containerinstance.DnsConfigurationResponse;
+    readonly dnsConfig?: types.outputs.DnsConfigurationResponse;
     /**
      * The encryption properties for a container group.
      */
-    readonly encryptionProperties?: types.outputs.containerinstance.EncryptionPropertiesResponse;
+    readonly encryptionProperties?: types.outputs.EncryptionPropertiesResponse;
     /**
      * extensions used by virtual kubelet
      */
-    readonly extensions?: types.outputs.containerinstance.DeploymentExtensionSpecResponse[];
+    readonly extensions?: types.outputs.DeploymentExtensionSpecResponse[];
     /**
      * The resource id.
      */
@@ -60,23 +60,23 @@ export interface GetContainerGroupResult {
     /**
      * The identity of the container group, if configured.
      */
-    readonly identity?: types.outputs.containerinstance.ContainerGroupIdentityResponse;
+    readonly identity?: types.outputs.ContainerGroupIdentityResponse;
     /**
      * The image registry credentials by which the container group is created from.
      */
-    readonly imageRegistryCredentials?: types.outputs.containerinstance.ImageRegistryCredentialResponse[];
+    readonly imageRegistryCredentials?: types.outputs.ImageRegistryCredentialResponse[];
     /**
      * The init containers for a container group.
      */
-    readonly initContainers?: types.outputs.containerinstance.InitContainerDefinitionResponse[];
+    readonly initContainers?: types.outputs.InitContainerDefinitionResponse[];
     /**
      * The instance view of the container group. Only valid in response.
      */
-    readonly instanceView: types.outputs.containerinstance.ContainerGroupPropertiesResponseInstanceView;
+    readonly instanceView: types.outputs.ContainerGroupPropertiesResponseInstanceView;
     /**
      * The IP address type of the container group.
      */
-    readonly ipAddress?: types.outputs.containerinstance.IpAddressResponse;
+    readonly ipAddress?: types.outputs.IpAddressResponse;
     /**
      * The resource location.
      */
@@ -111,7 +111,7 @@ export interface GetContainerGroupResult {
     /**
      * The subnet resource IDs for a container group.
      */
-    readonly subnetIds?: types.outputs.containerinstance.ContainerGroupSubnetIdResponse[];
+    readonly subnetIds?: types.outputs.ContainerGroupSubnetIdResponse[];
     /**
      * The resource tags.
      */
@@ -123,7 +123,7 @@ export interface GetContainerGroupResult {
     /**
      * The list of volumes that can be mounted by containers in this container group.
      */
-    readonly volumes?: types.outputs.containerinstance.VolumeResponse[];
+    readonly volumes?: types.outputs.VolumeResponse[];
     /**
      * The zones for the container group.
      */

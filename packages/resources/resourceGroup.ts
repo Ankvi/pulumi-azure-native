@@ -47,7 +47,7 @@ export class ResourceGroup extends pulumi.CustomResource {
     /**
      * The resource group properties.
      */
-    public /*out*/ readonly properties!: pulumi.Output<types.outputs.resources.ResourceGroupPropertiesResponse>;
+    public /*out*/ readonly properties!: pulumi.Output<types.outputs.ResourceGroupPropertiesResponse>;
     /**
      * The tags attached to the resource group.
      */

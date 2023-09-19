@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The Network Tap resource definition.
  */
@@ -46,7 +46,7 @@ export class NetworkTap extends pulumi.CustomResource {
     /**
      * List of destinations to send the filter traffic.
      */
-    public readonly destinations!: pulumi.Output<types.outputs.managednetworkfabric.v20230615.NetworkTapPropertiesResponseDestinations[]>;
+    public readonly destinations!: pulumi.Output<types.outputs.NetworkTapPropertiesResponseDestinations[]>;
     /**
      * The geo-location where the resource lives
      */
@@ -74,7 +74,7 @@ export class NetworkTap extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.managednetworkfabric.v20230615.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -152,7 +152,7 @@ export interface NetworkTapArgs {
     /**
      * List of destinations to send the filter traffic.
      */
-    destinations: pulumi.Input<pulumi.Input<types.inputs.managednetworkfabric.v20230615.NetworkTapPropertiesDestinationsArgs>[]>;
+    destinations: pulumi.Input<pulumi.Input<types.inputs.NetworkTapPropertiesDestinationsArgs>[]>;
     /**
      * The geo-location where the resource lives
      */
@@ -168,7 +168,7 @@ export interface NetworkTapArgs {
     /**
      * Polling type.
      */
-    pollingType?: pulumi.Input<string | types.enums.v20230615.PollingType>;
+    pollingType?: pulumi.Input<string | types.enums.PollingType>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

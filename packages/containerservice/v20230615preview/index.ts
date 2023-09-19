@@ -38,7 +38,7 @@ utilities.lazyLoad(exports, ["UpdateRun"], () => require("./updateRun"));
 
 
 // Export enums:
-export * from "../types/enums/v20230615preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

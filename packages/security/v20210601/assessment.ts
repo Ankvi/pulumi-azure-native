@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Security assessment on a resource - response format
  */
@@ -42,11 +42,11 @@ export class Assessment extends pulumi.CustomResource {
     /**
      * Links relevant to the assessment
      */
-    public /*out*/ readonly links!: pulumi.Output<types.outputs.security.v20210601.AssessmentLinksResponse>;
+    public /*out*/ readonly links!: pulumi.Output<types.outputs.AssessmentLinksResponse>;
     /**
      * Describes properties of an assessment metadata.
      */
-    public readonly metadata!: pulumi.Output<types.outputs.security.v20210601.SecurityAssessmentMetadataPropertiesResponse | undefined>;
+    public readonly metadata!: pulumi.Output<types.outputs.SecurityAssessmentMetadataPropertiesResponse | undefined>;
     /**
      * Resource name
      */
@@ -54,15 +54,15 @@ export class Assessment extends pulumi.CustomResource {
     /**
      * Data regarding 3rd party partner integration
      */
-    public readonly partnersData!: pulumi.Output<types.outputs.security.v20210601.SecurityAssessmentPartnerDataResponse | undefined>;
+    public readonly partnersData!: pulumi.Output<types.outputs.SecurityAssessmentPartnerDataResponse | undefined>;
     /**
      * Details of the resource that was assessed
      */
-    public readonly resourceDetails!: pulumi.Output<types.outputs.security.v20210601.AzureResourceDetailsResponse | types.outputs.security.v20210601.OnPremiseResourceDetailsResponse | types.outputs.security.v20210601.OnPremiseSqlResourceDetailsResponse>;
+    public readonly resourceDetails!: pulumi.Output<types.outputs.AzureResourceDetailsResponse | types.outputs.OnPremiseResourceDetailsResponse | types.outputs.OnPremiseSqlResourceDetailsResponse>;
     /**
      * The result of the assessment
      */
-    public readonly status!: pulumi.Output<types.outputs.security.v20210601.AssessmentStatusResponseResponse>;
+    public readonly status!: pulumi.Output<types.outputs.AssessmentStatusResponseResponse>;
     /**
      * Resource type
      */
@@ -132,15 +132,15 @@ export interface AssessmentArgs {
     /**
      * Describes properties of an assessment metadata.
      */
-    metadata?: pulumi.Input<types.inputs.security.v20210601.SecurityAssessmentMetadataPropertiesArgs>;
+    metadata?: pulumi.Input<types.inputs.SecurityAssessmentMetadataPropertiesArgs>;
     /**
      * Data regarding 3rd party partner integration
      */
-    partnersData?: pulumi.Input<types.inputs.security.v20210601.SecurityAssessmentPartnerDataArgs>;
+    partnersData?: pulumi.Input<types.inputs.SecurityAssessmentPartnerDataArgs>;
     /**
      * Details of the resource that was assessed
      */
-    resourceDetails: pulumi.Input<types.inputs.security.v20210601.AzureResourceDetailsArgs | types.inputs.security.v20210601.OnPremiseResourceDetailsArgs | types.inputs.security.v20210601.OnPremiseSqlResourceDetailsArgs>;
+    resourceDetails: pulumi.Input<types.inputs.AzureResourceDetailsArgs | types.inputs.OnPremiseResourceDetailsArgs | types.inputs.OnPremiseSqlResourceDetailsArgs>;
     /**
      * The identifier of the resource.
      */
@@ -148,5 +148,5 @@ export interface AssessmentArgs {
     /**
      * The result of the assessment
      */
-    status: pulumi.Input<types.inputs.security.v20210601.AssessmentStatusArgs>;
+    status: pulumi.Input<types.inputs.AssessmentStatusArgs>;
 }

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The Fleet resource.
  */
@@ -38,11 +38,11 @@ export class Fleet extends pulumi.CustomResource {
     /**
      * The FleetHubProfile configures the Fleet's hub.
      */
-    public readonly hubProfile!: pulumi.Output<types.outputs.containerservice.v20230615preview.FleetHubProfileResponse | undefined>;
+    public readonly hubProfile!: pulumi.Output<types.outputs.FleetHubProfileResponse | undefined>;
     /**
      * Managed identity.
      */
-    public readonly identity!: pulumi.Output<types.outputs.containerservice.v20230615preview.ManagedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -58,7 +58,7 @@ export class Fleet extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.containerservice.v20230615preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -122,11 +122,11 @@ export interface FleetArgs {
     /**
      * The FleetHubProfile configures the Fleet's hub.
      */
-    hubProfile?: pulumi.Input<types.inputs.containerservice.v20230615preview.FleetHubProfileArgs>;
+    hubProfile?: pulumi.Input<types.inputs.FleetHubProfileArgs>;
     /**
      * Managed identity.
      */
-    identity?: pulumi.Input<types.inputs.containerservice.v20230615preview.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
      * The geo-location where the resource lives
      */

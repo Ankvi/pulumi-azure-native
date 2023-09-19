@@ -32,7 +32,7 @@ export interface GetStorageContainerResult {
     /**
      * The extendedLocation of the resource.
      */
-    readonly extendedLocation?: types.outputs.azurestackhci.ExtendedLocationResponse;
+    readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -56,11 +56,11 @@ export interface GetStorageContainerResult {
     /**
      * The observed state of storage containers
      */
-    readonly status: types.outputs.azurestackhci.StorageContainerStatusResponse;
+    readonly status: types.outputs.StorageContainerStatusResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.azurestackhci.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

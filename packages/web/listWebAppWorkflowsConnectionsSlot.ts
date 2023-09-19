@@ -53,7 +53,7 @@ export interface ListWebAppWorkflowsConnectionsSlotResult {
     /**
      * Additional workflow properties.
      */
-    readonly properties: types.outputs.web.WorkflowEnvelopeResponseProperties;
+    readonly properties: types.outputs.WorkflowEnvelopeResponseProperties;
     /**
      * Gets the resource type.
      */

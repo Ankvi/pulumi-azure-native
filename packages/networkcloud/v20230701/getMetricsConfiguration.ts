@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get metrics configuration of the provided cluster.
  */
@@ -53,7 +53,7 @@ export interface GetMetricsConfigurationResult {
     /**
      * The extended location of the cluster associated with the resource.
      */
-    readonly extendedLocation: types.outputs.networkcloud.v20230701.ExtendedLocationResponse;
+    readonly extendedLocation: types.outputs.ExtendedLocationResponse;
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -73,7 +73,7 @@ export interface GetMetricsConfigurationResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.networkcloud.v20230701.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

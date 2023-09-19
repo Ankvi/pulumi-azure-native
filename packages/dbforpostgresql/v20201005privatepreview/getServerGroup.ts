@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets information about a server group.
  */
@@ -47,7 +47,7 @@ export interface GetServerGroupResult {
     /**
      * The delegated subnet arguments for a server group.
      */
-    readonly delegatedSubnetArguments?: types.outputs.dbforpostgresql.v20201005privatepreview.ServerGroupPropertiesResponseDelegatedSubnetArguments;
+    readonly delegatedSubnetArguments?: types.outputs.ServerGroupPropertiesResponseDelegatedSubnetArguments;
     /**
      * The earliest restore point time (ISO8601 format) for server group.
      */
@@ -75,7 +75,7 @@ export interface GetServerGroupResult {
     /**
      * Maintenance window of a server group.
      */
-    readonly maintenanceWindow?: types.outputs.dbforpostgresql.v20201005privatepreview.MaintenanceWindowResponse;
+    readonly maintenanceWindow?: types.outputs.MaintenanceWindowResponse;
     /**
      * The name of the resource
      */
@@ -87,7 +87,7 @@ export interface GetServerGroupResult {
     /**
      * The private dns zone arguments for a server group.
      */
-    readonly privateDnsZoneArguments?: types.outputs.dbforpostgresql.v20201005privatepreview.ServerGroupPropertiesResponsePrivateDnsZoneArguments;
+    readonly privateDnsZoneArguments?: types.outputs.ServerGroupPropertiesResponsePrivateDnsZoneArguments;
     /**
      * The array of read replica server groups.
      */
@@ -99,7 +99,7 @@ export interface GetServerGroupResult {
     /**
      * The list of server role groups.
      */
-    readonly serverRoleGroups?: types.outputs.dbforpostgresql.v20201005privatepreview.ServerRoleGroupResponse[];
+    readonly serverRoleGroups?: types.outputs.ServerRoleGroupResponse[];
     /**
      * The source server group id for read replica server groups.
      */
@@ -115,7 +115,7 @@ export interface GetServerGroupResult {
     /**
      * The system metadata relating to this resource
      */
-    readonly systemData: types.outputs.dbforpostgresql.v20201005privatepreview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

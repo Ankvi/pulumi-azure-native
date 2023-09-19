@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The essential information related to the peer's ASN.
  */
@@ -46,7 +46,7 @@ export class PeerAsn extends pulumi.CustomResource {
     /**
      * The contact details of the peer.
      */
-    public readonly peerContactDetail!: pulumi.Output<types.outputs.peering.v20221001.ContactDetailResponse[] | undefined>;
+    public readonly peerContactDetail!: pulumi.Output<types.outputs.ContactDetailResponse[] | undefined>;
     /**
      * The name of the peer.
      */
@@ -110,7 +110,7 @@ export interface PeerAsnArgs {
     /**
      * The contact details of the peer.
      */
-    peerContactDetail?: pulumi.Input<pulumi.Input<types.inputs.peering.v20221001.ContactDetailArgs>[]>;
+    peerContactDetail?: pulumi.Input<pulumi.Input<types.inputs.ContactDetailArgs>[]>;
     /**
      * The name of the peer.
      */

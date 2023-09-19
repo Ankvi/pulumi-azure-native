@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets an azure databricks accessConnector.
  */
@@ -35,7 +35,7 @@ export interface GetAccessConnectorResult {
     /**
      * Managed service identity (system assigned and/or user assigned identities)
      */
-    readonly identity?: types.outputs.databricks.v20230501.ManagedServiceIdentityResponse;
+    readonly identity?: types.outputs.ManagedServiceIdentityResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -47,11 +47,11 @@ export interface GetAccessConnectorResult {
     /**
      * Azure Databricks accessConnector properties
      */
-    readonly properties: types.outputs.databricks.v20230501.AccessConnectorPropertiesResponse;
+    readonly properties: types.outputs.AccessConnectorPropertiesResponse;
     /**
      * The system metadata relating to this resource
      */
-    readonly systemData: types.outputs.databricks.v20230501.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

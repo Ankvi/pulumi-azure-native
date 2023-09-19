@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Threat intelligence information object.
  */
@@ -46,7 +46,7 @@ export class ThreatIntelligenceIndicator extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.securityinsights.v20210401.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Azure resource type
      */
@@ -168,11 +168,11 @@ export interface ThreatIntelligenceIndicatorArgs {
     /**
      * External References
      */
-    externalReferences?: pulumi.Input<pulumi.Input<types.inputs.securityinsights.v20210401.ThreatIntelligenceExternalReferenceArgs>[]>;
+    externalReferences?: pulumi.Input<pulumi.Input<types.inputs.ThreatIntelligenceExternalReferenceArgs>[]>;
     /**
      * Granular Markings
      */
-    granularMarkings?: pulumi.Input<pulumi.Input<types.inputs.securityinsights.v20210401.ThreatIntelligenceGranularMarkingModelArgs>[]>;
+    granularMarkings?: pulumi.Input<pulumi.Input<types.inputs.ThreatIntelligenceGranularMarkingModelArgs>[]>;
     /**
      * Indicator types of threat intelligence entities
      */
@@ -180,11 +180,11 @@ export interface ThreatIntelligenceIndicatorArgs {
     /**
      * Kill chain phases
      */
-    killChainPhases?: pulumi.Input<pulumi.Input<types.inputs.securityinsights.v20210401.ThreatIntelligenceKillChainPhaseArgs>[]>;
+    killChainPhases?: pulumi.Input<pulumi.Input<types.inputs.ThreatIntelligenceKillChainPhaseArgs>[]>;
     /**
      * The kind of the entity.
      */
-    kind: pulumi.Input<string | types.enums.v20210401.ThreatIntelligenceResourceInnerKind>;
+    kind: pulumi.Input<string | types.enums.ThreatIntelligenceResourceInnerKind>;
     /**
      * Labels  of threat intelligence entity
      */
@@ -216,7 +216,7 @@ export interface ThreatIntelligenceIndicatorArgs {
     /**
      * Parsed patterns
      */
-    parsedPattern?: pulumi.Input<pulumi.Input<types.inputs.securityinsights.v20210401.ThreatIntelligenceParsedPatternArgs>[]>;
+    parsedPattern?: pulumi.Input<pulumi.Input<types.inputs.ThreatIntelligenceParsedPatternArgs>[]>;
     /**
      * Pattern of a threat intelligence entity
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents Fusion alert rule.
  */
@@ -67,7 +67,7 @@ export class FusionAlertRule extends pulumi.CustomResource {
     /**
      * Configuration to exclude scenarios in fusion detection.
      */
-    public readonly scenarioExclusionPatterns!: pulumi.Output<types.outputs.securityinsights.v20230801preview.FusionScenarioExclusionPatternResponse[] | undefined>;
+    public readonly scenarioExclusionPatterns!: pulumi.Output<types.outputs.FusionScenarioExclusionPatternResponse[] | undefined>;
     /**
      * The severity for alerts created by this alert rule.
      */
@@ -75,11 +75,11 @@ export class FusionAlertRule extends pulumi.CustomResource {
     /**
      * Configuration for all supported source signals in fusion detection.
      */
-    public readonly sourceSettings!: pulumi.Output<types.outputs.securityinsights.v20230801preview.FusionSourceSettingsResponse[] | undefined>;
+    public readonly sourceSettings!: pulumi.Output<types.outputs.FusionSourceSettingsResponse[] | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.securityinsights.v20230801preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The tactics of the alert rule
      */
@@ -189,11 +189,11 @@ export interface FusionAlertRuleArgs {
     /**
      * Configuration to exclude scenarios in fusion detection.
      */
-    scenarioExclusionPatterns?: pulumi.Input<pulumi.Input<types.inputs.securityinsights.v20230801preview.FusionScenarioExclusionPatternArgs>[]>;
+    scenarioExclusionPatterns?: pulumi.Input<pulumi.Input<types.inputs.FusionScenarioExclusionPatternArgs>[]>;
     /**
      * Configuration for all supported source signals in fusion detection.
      */
-    sourceSettings?: pulumi.Input<pulumi.Input<types.inputs.securityinsights.v20230801preview.FusionSourceSettingsArgs>[]>;
+    sourceSettings?: pulumi.Input<pulumi.Input<types.inputs.FusionSourceSettingsArgs>[]>;
     /**
      * The name of the workspace.
      */

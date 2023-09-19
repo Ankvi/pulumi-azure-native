@@ -59,7 +59,7 @@ export class ScalingPlanPersonalSchedule extends pulumi.CustomResource {
     /**
      * Starting time for off-peak period.
      */
-    public readonly offPeakStartTime!: pulumi.Output<types.outputs.desktopvirtualization.TimeResponse | undefined>;
+    public readonly offPeakStartTime!: pulumi.Output<types.outputs.TimeResponse | undefined>;
     /**
      * The desired configuration of Start VM On Connect for the hostpool during the off-peak phase.
      */
@@ -83,7 +83,7 @@ export class ScalingPlanPersonalSchedule extends pulumi.CustomResource {
     /**
      * Starting time for peak period.
      */
-    public readonly peakStartTime!: pulumi.Output<types.outputs.desktopvirtualization.TimeResponse | undefined>;
+    public readonly peakStartTime!: pulumi.Output<types.outputs.TimeResponse | undefined>;
     /**
      * The desired configuration of Start VM On Connect for the hostpool during the peak phase.
      */
@@ -107,7 +107,7 @@ export class ScalingPlanPersonalSchedule extends pulumi.CustomResource {
     /**
      * Starting time for ramp down period.
      */
-    public readonly rampDownStartTime!: pulumi.Output<types.outputs.desktopvirtualization.TimeResponse | undefined>;
+    public readonly rampDownStartTime!: pulumi.Output<types.outputs.TimeResponse | undefined>;
     /**
      * The desired configuration of Start VM On Connect for the hostpool during the ramp down phase.
      */
@@ -135,7 +135,7 @@ export class ScalingPlanPersonalSchedule extends pulumi.CustomResource {
     /**
      * Starting time for ramp up period.
      */
-    public readonly rampUpStartTime!: pulumi.Output<types.outputs.desktopvirtualization.TimeResponse | undefined>;
+    public readonly rampUpStartTime!: pulumi.Output<types.outputs.TimeResponse | undefined>;
     /**
      * The desired configuration of Start VM On Connect for the hostpool during the ramp up phase. If this is disabled, session hosts must be turned on using rampUpAutoStartHosts or by turning them on manually.
      */
@@ -143,7 +143,7 @@ export class ScalingPlanPersonalSchedule extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.desktopvirtualization.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -263,7 +263,7 @@ export interface ScalingPlanPersonalScheduleArgs {
     /**
      * Starting time for off-peak period.
      */
-    offPeakStartTime?: pulumi.Input<types.inputs.desktopvirtualization.TimeArgs>;
+    offPeakStartTime?: pulumi.Input<types.inputs.TimeArgs>;
     /**
      * The desired configuration of Start VM On Connect for the hostpool during the off-peak phase.
      */
@@ -287,7 +287,7 @@ export interface ScalingPlanPersonalScheduleArgs {
     /**
      * Starting time for peak period.
      */
-    peakStartTime?: pulumi.Input<types.inputs.desktopvirtualization.TimeArgs>;
+    peakStartTime?: pulumi.Input<types.inputs.TimeArgs>;
     /**
      * The desired configuration of Start VM On Connect for the hostpool during the peak phase.
      */
@@ -311,7 +311,7 @@ export interface ScalingPlanPersonalScheduleArgs {
     /**
      * Starting time for ramp down period.
      */
-    rampDownStartTime?: pulumi.Input<types.inputs.desktopvirtualization.TimeArgs>;
+    rampDownStartTime?: pulumi.Input<types.inputs.TimeArgs>;
     /**
      * The desired configuration of Start VM On Connect for the hostpool during the ramp down phase.
      */
@@ -339,7 +339,7 @@ export interface ScalingPlanPersonalScheduleArgs {
     /**
      * Starting time for ramp up period.
      */
-    rampUpStartTime?: pulumi.Input<types.inputs.desktopvirtualization.TimeArgs>;
+    rampUpStartTime?: pulumi.Input<types.inputs.TimeArgs>;
     /**
      * The desired configuration of Start VM On Connect for the hostpool during the ramp up phase. If this is disabled, session hosts must be turned on using rampUpAutoStartHosts or by turning them on manually.
      */

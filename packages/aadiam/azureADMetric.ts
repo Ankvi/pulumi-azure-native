@@ -40,7 +40,7 @@ export class AzureADMetric extends pulumi.CustomResource {
      * The name of the resource
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
-    public /*out*/ readonly properties!: pulumi.Output<types.outputs.aadiam.AzureADMetricsPropertiesFormatResponse>;
+    public /*out*/ readonly properties!: pulumi.Output<types.outputs.AzureADMetricsPropertiesFormatResponse>;
     /**
      * Resource tags.
      */

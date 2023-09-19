@@ -32,7 +32,7 @@ export interface GetClusterResult {
     /**
      * The list of Log Analytics workspaces associated with the cluster
      */
-    readonly associatedWorkspaces?: types.outputs.operationalinsights.AssociatedWorkspaceResponse[];
+    readonly associatedWorkspaces?: types.outputs.AssociatedWorkspaceResponse[];
     /**
      * The cluster's billing type.
      */
@@ -40,7 +40,7 @@ export interface GetClusterResult {
     /**
      * Additional properties for capacity reservation
      */
-    readonly capacityReservationProperties?: types.outputs.operationalinsights.CapacityReservationPropertiesResponse;
+    readonly capacityReservationProperties?: types.outputs.CapacityReservationPropertiesResponse;
     /**
      * The ID associated with the cluster.
      */
@@ -56,7 +56,7 @@ export interface GetClusterResult {
     /**
      * The identity of the resource.
      */
-    readonly identity?: types.outputs.operationalinsights.IdentityResponse;
+    readonly identity?: types.outputs.IdentityResponse;
     /**
      * Sets whether the cluster will support availability zones. This can be set as true only in regions where Azure Data Explorer support Availability Zones. This Property can not be modified after cluster creation. Default value is 'true' if region supports Availability Zones.
      */
@@ -64,7 +64,7 @@ export interface GetClusterResult {
     /**
      * The associated key properties.
      */
-    readonly keyVaultProperties?: types.outputs.operationalinsights.KeyVaultPropertiesResponse;
+    readonly keyVaultProperties?: types.outputs.KeyVaultPropertiesResponse;
     /**
      * The last time the cluster was updated.
      */
@@ -84,7 +84,7 @@ export interface GetClusterResult {
     /**
      * The sku properties.
      */
-    readonly sku?: types.outputs.operationalinsights.ClusterSkuResponse;
+    readonly sku?: types.outputs.ClusterSkuResponse;
     /**
      * Resource tags.
      */

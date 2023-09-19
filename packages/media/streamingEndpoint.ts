@@ -35,7 +35,7 @@ export class StreamingEndpoint extends pulumi.CustomResource {
     /**
      * The access control definition of the streaming endpoint.
      */
-    public readonly accessControl!: pulumi.Output<types.outputs.media.StreamingEndpointAccessControlResponse | undefined>;
+    public readonly accessControl!: pulumi.Output<types.outputs.StreamingEndpointAccessControlResponse | undefined>;
     /**
      * This feature is deprecated, do not set a value for this property.
      */
@@ -59,7 +59,7 @@ export class StreamingEndpoint extends pulumi.CustomResource {
     /**
      * The streaming endpoint access policies.
      */
-    public readonly crossSiteAccessPolicies!: pulumi.Output<types.outputs.media.CrossSiteAccessPoliciesResponse | undefined>;
+    public readonly crossSiteAccessPolicies!: pulumi.Output<types.outputs.CrossSiteAccessPoliciesResponse | undefined>;
     /**
      * The custom host names of the streaming endpoint
      */
@@ -107,11 +107,11 @@ export class StreamingEndpoint extends pulumi.CustomResource {
     /**
      * The streaming endpoint sku.
      */
-    public readonly sku!: pulumi.Output<types.outputs.media.ArmStreamingEndpointCurrentSkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.ArmStreamingEndpointCurrentSkuResponse | undefined>;
     /**
      * The system metadata relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.media.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -205,7 +205,7 @@ export interface StreamingEndpointArgs {
     /**
      * The access control definition of the streaming endpoint.
      */
-    accessControl?: pulumi.Input<types.inputs.media.StreamingEndpointAccessControlArgs>;
+    accessControl?: pulumi.Input<types.inputs.StreamingEndpointAccessControlArgs>;
     /**
      * The Media Services account name.
      */
@@ -233,7 +233,7 @@ export interface StreamingEndpointArgs {
     /**
      * The streaming endpoint access policies.
      */
-    crossSiteAccessPolicies?: pulumi.Input<types.inputs.media.CrossSiteAccessPoliciesArgs>;
+    crossSiteAccessPolicies?: pulumi.Input<types.inputs.CrossSiteAccessPoliciesArgs>;
     /**
      * The custom host names of the streaming endpoint
      */
@@ -261,7 +261,7 @@ export interface StreamingEndpointArgs {
     /**
      * The streaming endpoint sku.
      */
-    sku?: pulumi.Input<types.inputs.media.ArmStreamingEndpointCurrentSkuArgs>;
+    sku?: pulumi.Input<types.inputs.ArmStreamingEndpointCurrentSkuArgs>;
     /**
      * The name of the streaming endpoint, maximum length is 24.
      */

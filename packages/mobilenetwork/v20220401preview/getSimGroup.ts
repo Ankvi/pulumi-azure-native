@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets information about the specified SIM group.
  */
@@ -43,7 +43,7 @@ export interface GetSimGroupResult {
     /**
      * A key to encrypt the SIM data that belongs to this SIM group.
      */
-    readonly encryptionKey?: types.outputs.mobilenetwork.v20220401preview.KeyVaultKeyResponse;
+    readonly encryptionKey?: types.outputs.KeyVaultKeyResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -51,7 +51,7 @@ export interface GetSimGroupResult {
     /**
      * The identity used to retrieve the encryption key from Azure key vault.
      */
-    readonly identity?: types.outputs.mobilenetwork.v20220401preview.ManagedServiceIdentityResponse;
+    readonly identity?: types.outputs.ManagedServiceIdentityResponse;
     /**
      * The timestamp of resource last modification (UTC)
      */
@@ -71,7 +71,7 @@ export interface GetSimGroupResult {
     /**
      * Mobile network that this SIM belongs to
      */
-    readonly mobileNetwork?: types.outputs.mobilenetwork.v20220401preview.MobileNetworkResourceIdResponse;
+    readonly mobileNetwork?: types.outputs.MobileNetworkResourceIdResponse;
     /**
      * The name of the resource
      */
@@ -83,7 +83,7 @@ export interface GetSimGroupResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.mobilenetwork.v20220401preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

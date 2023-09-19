@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 export class TrunkedNetwork extends pulumi.CustomResource {
     /**
      * Get an existing TrunkedNetwork resource's state with the given name, ID, and optional extra
@@ -47,7 +47,7 @@ export class TrunkedNetwork extends pulumi.CustomResource {
     /**
      * The extended location of the cluster associated with the resource.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.networkcloud.v20230701.ExtendedLocationResponse>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse>;
     /**
      * Field Deprecated. These fields will be empty/omitted. The list of Hybrid AKS cluster resource IDs that are associated with this trunked network.
      */
@@ -79,7 +79,7 @@ export class TrunkedNetwork extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.networkcloud.v20230701.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -172,11 +172,11 @@ export interface TrunkedNetworkArgs {
     /**
      * The extended location of the cluster associated with the resource.
      */
-    extendedLocation: pulumi.Input<types.inputs.networkcloud.v20230701.ExtendedLocationArgs>;
+    extendedLocation: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The network plugin type for Hybrid AKS.
      */
-    hybridAksPluginType?: pulumi.Input<string | types.enums.v20230701.HybridAksPluginType>;
+    hybridAksPluginType?: pulumi.Input<string | types.enums.HybridAksPluginType>;
     /**
      * The default interface name for this trunked network in the virtual machine. This name can be overridden by the name supplied in the network attachment configuration of that virtual machine.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets information about the specified service.
  */
@@ -72,7 +72,7 @@ export interface GetServiceResult {
     /**
      * The set of data flow policy rules that make up this service.
      */
-    readonly pccRules: types.outputs.mobilenetwork.v20220401preview.PccRuleConfigurationResponse[];
+    readonly pccRules: types.outputs.PccRuleConfigurationResponse[];
     /**
      * The provisioning state of the service resource.
      */
@@ -84,11 +84,11 @@ export interface GetServiceResult {
     /**
      * The QoS policy to use for packets matching this service. This can be overridden for particular flows using the ruleQosPolicy field in a PccRuleConfiguration. If this field is null then the UE's SIM policy will define the QoS settings.
      */
-    readonly serviceQosPolicy?: types.outputs.mobilenetwork.v20220401preview.QosPolicyResponse;
+    readonly serviceQosPolicy?: types.outputs.QosPolicyResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.mobilenetwork.v20220401preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

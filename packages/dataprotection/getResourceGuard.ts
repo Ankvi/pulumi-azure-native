@@ -44,11 +44,11 @@ export interface GetResourceGuardResult {
     /**
      * ResourceGuardResource properties
      */
-    readonly properties: types.outputs.dataprotection.ResourceGuardResponse;
+    readonly properties: types.outputs.ResourceGuardResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.dataprotection.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

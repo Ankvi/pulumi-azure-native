@@ -61,7 +61,7 @@ export interface GetBandwidthScheduleResult {
     /**
      * Metadata pertaining to creation and last modification of BandwidthSchedule
      */
-    readonly systemData: types.outputs.databoxedge.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The hierarchical type of the object.
      */

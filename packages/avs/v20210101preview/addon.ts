@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An addon resource
  */
@@ -102,7 +102,7 @@ export interface AddonArgs {
     /**
      * The type of private cloud addon
      */
-    addonType?: pulumi.Input<string | types.enums.v20210101preview.AddonType>;
+    addonType?: pulumi.Input<string | types.enums.AddonType>;
     /**
      * The SRM license
      */

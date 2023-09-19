@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Partner configuration information
  */
@@ -42,7 +42,7 @@ export class PartnerConfiguration extends pulumi.CustomResource {
     /**
      * The details of authorized partners.
      */
-    public readonly partnerAuthorization!: pulumi.Output<types.outputs.eventgrid.v20220615.PartnerAuthorizationResponse | undefined>;
+    public readonly partnerAuthorization!: pulumi.Output<types.outputs.PartnerAuthorizationResponse | undefined>;
     /**
      * Provisioning state of the partner configuration.
      */
@@ -50,7 +50,7 @@ export class PartnerConfiguration extends pulumi.CustomResource {
     /**
      * The system metadata relating to partner configuration resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.eventgrid.v20220615.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Tags of the resource.
      */
@@ -109,11 +109,11 @@ export interface PartnerConfigurationArgs {
     /**
      * The details of authorized partners.
      */
-    partnerAuthorization?: pulumi.Input<types.inputs.eventgrid.v20220615.PartnerAuthorizationArgs>;
+    partnerAuthorization?: pulumi.Input<types.inputs.PartnerAuthorizationArgs>;
     /**
      * Provisioning state of the partner configuration.
      */
-    provisioningState?: pulumi.Input<string | types.enums.v20220615.PartnerConfigurationProvisioningState>;
+    provisioningState?: pulumi.Input<string | types.enums.PartnerConfigurationProvisioningState>;
     /**
      * The name of the resource group within the user's subscription.
      */

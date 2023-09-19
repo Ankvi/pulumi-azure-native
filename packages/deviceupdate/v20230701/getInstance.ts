@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns instance details for the given instance and account name.
  */
@@ -40,7 +40,7 @@ export interface GetInstanceResult {
     /**
      * Customer-initiated diagnostic log collection storage properties
      */
-    readonly diagnosticStorageProperties?: types.outputs.deviceupdate.v20230701.DiagnosticStoragePropertiesResponse;
+    readonly diagnosticStorageProperties?: types.outputs.DiagnosticStoragePropertiesResponse;
     /**
      * Enables or Disables the diagnostic logs collection
      */
@@ -52,7 +52,7 @@ export interface GetInstanceResult {
     /**
      * List of IoT Hubs associated with the account.
      */
-    readonly iotHubs?: types.outputs.deviceupdate.v20230701.IotHubSettingsResponse[];
+    readonly iotHubs?: types.outputs.IotHubSettingsResponse[];
     /**
      * The geo-location where the resource lives
      */
@@ -68,7 +68,7 @@ export interface GetInstanceResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.deviceupdate.v20230701.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

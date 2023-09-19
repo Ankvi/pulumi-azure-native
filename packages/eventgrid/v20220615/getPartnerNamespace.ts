@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get properties of a partner namespace.
  */
@@ -43,7 +43,7 @@ export interface GetPartnerNamespaceResult {
     /**
      * This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled.
      */
-    readonly inboundIpRules?: types.outputs.eventgrid.v20220615.InboundIpRuleResponse[];
+    readonly inboundIpRules?: types.outputs.InboundIpRuleResponse[];
     /**
      * Location of the resource.
      */
@@ -62,7 +62,7 @@ export interface GetPartnerNamespaceResult {
      * or use the channel name in the header when matching to the partner topic. If none is specified, source attribute routing will be used to match the partner topic.
      */
     readonly partnerTopicRoutingMode?: string;
-    readonly privateEndpointConnections: types.outputs.eventgrid.v20220615.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections: types.outputs.PrivateEndpointConnectionResponse[];
     /**
      * Provisioning state of the partner namespace.
      */
@@ -75,7 +75,7 @@ export interface GetPartnerNamespaceResult {
     /**
      * The system metadata relating to Partner Namespace resource.
      */
-    readonly systemData: types.outputs.eventgrid.v20220615.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Tags of the resource.
      */

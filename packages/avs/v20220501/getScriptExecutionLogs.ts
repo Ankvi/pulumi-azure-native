@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Return the logs for a script execution resource
  */
@@ -48,7 +48,7 @@ export interface GetScriptExecutionLogsResult {
     /**
      * Parameters that will be hidden/not visible to ARM, such as passwords and credentials
      */
-    readonly hiddenParameters?: (types.outputs.avs.v20220501.PSCredentialExecutionParameterResponse | types.outputs.avs.v20220501.ScriptSecureStringExecutionParameterResponse | types.outputs.avs.v20220501.ScriptStringExecutionParameterResponse)[];
+    readonly hiddenParameters?: (types.outputs.PSCredentialExecutionParameterResponse | types.outputs.ScriptSecureStringExecutionParameterResponse | types.outputs.ScriptStringExecutionParameterResponse)[];
     /**
      * Resource ID.
      */
@@ -72,7 +72,7 @@ export interface GetScriptExecutionLogsResult {
     /**
      * Parameters the script will accept
      */
-    readonly parameters?: (types.outputs.avs.v20220501.PSCredentialExecutionParameterResponse | types.outputs.avs.v20220501.ScriptSecureStringExecutionParameterResponse | types.outputs.avs.v20220501.ScriptStringExecutionParameterResponse)[];
+    readonly parameters?: (types.outputs.PSCredentialExecutionParameterResponse | types.outputs.ScriptSecureStringExecutionParameterResponse | types.outputs.ScriptStringExecutionParameterResponse)[];
     /**
      * The state of the script execution resource
      */

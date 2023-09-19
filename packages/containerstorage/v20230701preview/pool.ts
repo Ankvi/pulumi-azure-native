@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Pool resource
  */
@@ -34,7 +34,7 @@ export class Pool extends pulumi.CustomResource {
     /**
      * List of resources that should have access to the pool. Typically ARM references to AKS clusters or ACI Container Groups. For local and standard this must be a single reference. For ElasticSAN there can be many.
      */
-    public readonly assignments!: pulumi.Output<types.outputs.containerstorage.v20230701preview.AssignmentResponse[] | undefined>;
+    public readonly assignments!: pulumi.Output<types.outputs.AssignmentResponse[] | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -46,7 +46,7 @@ export class Pool extends pulumi.CustomResource {
     /**
      * Type of the Pool: ephemeralDisk, azureDisk, or elasticsan.
      */
-    public readonly poolType!: pulumi.Output<types.outputs.containerstorage.v20230701preview.PoolTypeResponse>;
+    public readonly poolType!: pulumi.Output<types.outputs.PoolTypeResponse>;
     /**
      * The status of the last operation.
      */
@@ -58,15 +58,15 @@ export class Pool extends pulumi.CustomResource {
     /**
      * Resources represent the resources the pool should have.
      */
-    public readonly resources!: pulumi.Output<types.outputs.containerstorage.v20230701preview.ResourcesResponse | undefined>;
+    public readonly resources!: pulumi.Output<types.outputs.ResourcesResponse | undefined>;
     /**
      * The operational status of the resource
      */
-    public /*out*/ readonly status!: pulumi.Output<types.outputs.containerstorage.v20230701preview.ResourceOperationalStatusResponse>;
+    public /*out*/ readonly status!: pulumi.Output<types.outputs.ResourceOperationalStatusResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.containerstorage.v20230701preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -100,10 +100,10 @@ export class Pool extends pulumi.CustomResource {
             resourceInputs["assignments"] = args ? args.assignments : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["poolName"] = args ? args.poolName : undefined;
-            resourceInputs["poolType"] = args ? (args.poolType ? pulumi.output(args.poolType).apply(types.inputs.containerstorage.v20230701preview.poolTypeArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["poolType"] = args ? (args.poolType ? pulumi.output(args.poolType).apply(types.inputs.poolTypeArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["reclaimPolicy"] = args ? args.reclaimPolicy : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["resources"] = args ? (args.resources ? pulumi.output(args.resources).apply(types.inputs.containerstorage.v20230701preview.resourcesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["resources"] = args ? (args.resources ? pulumi.output(args.resources).apply(types.inputs.resourcesArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["zones"] = args ? args.zones : undefined;
             resourceInputs["name"] = undefined /*out*/;
@@ -139,7 +139,7 @@ export interface PoolArgs {
     /**
      * List of resources that should have access to the pool. Typically ARM references to AKS clusters or ACI Container Groups. For local and standard this must be a single reference. For ElasticSAN there can be many.
      */
-    assignments?: pulumi.Input<pulumi.Input<types.inputs.containerstorage.v20230701preview.AssignmentArgs>[]>;
+    assignments?: pulumi.Input<pulumi.Input<types.inputs.AssignmentArgs>[]>;
     /**
      * The geo-location where the resource lives
      */
@@ -151,11 +151,11 @@ export interface PoolArgs {
     /**
      * Type of the Pool: ephemeralDisk, azureDisk, or elasticsan.
      */
-    poolType: pulumi.Input<types.inputs.containerstorage.v20230701preview.PoolTypeArgs>;
+    poolType: pulumi.Input<types.inputs.PoolTypeArgs>;
     /**
      * ReclaimPolicy defines what happens to the backend storage when StoragePool is deleted
      */
-    reclaimPolicy?: pulumi.Input<string | types.enums.v20230701preview.ReclaimPolicy>;
+    reclaimPolicy?: pulumi.Input<string | types.enums.ReclaimPolicy>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -163,7 +163,7 @@ export interface PoolArgs {
     /**
      * Resources represent the resources the pool should have.
      */
-    resources?: pulumi.Input<types.inputs.containerstorage.v20230701preview.ResourcesArgs>;
+    resources?: pulumi.Input<types.inputs.ResourcesArgs>;
     /**
      * Resource tags.
      */
@@ -171,5 +171,5 @@ export interface PoolArgs {
     /**
      * List of availability zones that resources can be created in.
      */
-    zones?: pulumi.Input<pulumi.Input<string | types.enums.v20230701preview.Zone>[]>;
+    zones?: pulumi.Input<pulumi.Input<string | types.enums.Zone>[]>;
 }

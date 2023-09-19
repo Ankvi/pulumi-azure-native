@@ -57,11 +57,11 @@ export interface GetChannelResult {
     /**
      * The set of properties specific to bot channel resource
      */
-    readonly properties: types.outputs.botservice.AcsChatChannelResponse | types.outputs.botservice.AlexaChannelResponse | types.outputs.botservice.DirectLineChannelResponse | types.outputs.botservice.DirectLineSpeechChannelResponse | types.outputs.botservice.EmailChannelResponse | types.outputs.botservice.FacebookChannelResponse | types.outputs.botservice.KikChannelResponse | types.outputs.botservice.LineChannelResponse | types.outputs.botservice.M365ExtensionsResponse | types.outputs.botservice.MsTeamsChannelResponse | types.outputs.botservice.OmnichannelResponse | types.outputs.botservice.OutlookChannelResponse | types.outputs.botservice.SearchAssistantResponse | types.outputs.botservice.SkypeChannelResponse | types.outputs.botservice.SlackChannelResponse | types.outputs.botservice.SmsChannelResponse | types.outputs.botservice.TelegramChannelResponse | types.outputs.botservice.TelephonyChannelResponse | types.outputs.botservice.WebChatChannelResponse;
+    readonly properties: types.outputs.AcsChatChannelResponse | types.outputs.AlexaChannelResponse | types.outputs.DirectLineChannelResponse | types.outputs.DirectLineSpeechChannelResponse | types.outputs.EmailChannelResponse | types.outputs.FacebookChannelResponse | types.outputs.KikChannelResponse | types.outputs.LineChannelResponse | types.outputs.M365ExtensionsResponse | types.outputs.MsTeamsChannelResponse | types.outputs.OmnichannelResponse | types.outputs.OutlookChannelResponse | types.outputs.SearchAssistantResponse | types.outputs.SkypeChannelResponse | types.outputs.SlackChannelResponse | types.outputs.SmsChannelResponse | types.outputs.TelegramChannelResponse | types.outputs.TelephonyChannelResponse | types.outputs.WebChatChannelResponse;
     /**
      * Gets or sets the SKU of the resource.
      */
-    readonly sku?: types.outputs.botservice.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * Contains resource tags defined as key/value pairs.
      */

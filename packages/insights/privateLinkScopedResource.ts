@@ -47,7 +47,7 @@ export class PrivateLinkScopedResource extends pulumi.CustomResource {
     /**
      * System data
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.insights.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Deployment resource payload
  */
@@ -38,15 +38,15 @@ export class Deployment extends pulumi.CustomResource {
     /**
      * Properties of the Deployment resource
      */
-    public readonly properties!: pulumi.Output<types.outputs.appplatform.v20230901preview.DeploymentResourcePropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.DeploymentResourcePropertiesResponse>;
     /**
      * Sku of the Deployment resource
      */
-    public readonly sku!: pulumi.Output<types.outputs.appplatform.v20230901preview.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.appplatform.v20230901preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource.
      */
@@ -74,10 +74,10 @@ export class Deployment extends pulumi.CustomResource {
             }
             resourceInputs["appName"] = args ? args.appName : undefined;
             resourceInputs["deploymentName"] = args ? args.deploymentName : undefined;
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.appplatform.v20230901preview.deploymentResourcePropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.deploymentResourcePropertiesArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
-            resourceInputs["sku"] = args ? (args.sku ? pulumi.output(args.sku).apply(types.inputs.appplatform.v20230901preview.skuArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["sku"] = args ? (args.sku ? pulumi.output(args.sku).apply(types.inputs.skuArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
@@ -110,7 +110,7 @@ export interface DeploymentArgs {
     /**
      * Properties of the Deployment resource
      */
-    properties?: pulumi.Input<types.inputs.appplatform.v20230901preview.DeploymentResourcePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.DeploymentResourcePropertiesArgs>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */
@@ -122,5 +122,5 @@ export interface DeploymentArgs {
     /**
      * Sku of the Deployment resource
      */
-    sku?: pulumi.Input<types.inputs.appplatform.v20230901preview.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
 }

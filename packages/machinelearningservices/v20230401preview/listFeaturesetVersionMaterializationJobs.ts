@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A paginated list of FeaturesetJob entities.
  */
@@ -65,7 +65,7 @@ export interface ListFeaturesetVersionMaterializationJobsResult {
     /**
      * An array of objects of type FeaturesetJob.
      */
-    readonly value?: types.outputs.machinelearningservices.v20230401preview.FeaturesetJobResponse[];
+    readonly value?: types.outputs.FeaturesetJobResponse[];
 }
 /**
  * A paginated list of FeaturesetJob entities.

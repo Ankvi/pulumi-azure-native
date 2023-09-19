@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves a SQL Server Instance resource
  */
@@ -43,11 +43,11 @@ export interface GetSqlServerInstanceResult {
     /**
      * null
      */
-    readonly properties: types.outputs.azurearcdata.v20230115preview.SqlServerInstancePropertiesResponse;
+    readonly properties: types.outputs.SqlServerInstancePropertiesResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.azurearcdata.v20230115preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

@@ -48,11 +48,11 @@ export interface GetAzureBareMetalStorageInstanceResult {
     /**
      * Specifies the storage properties for the AzureBareMetalStorage instance.
      */
-    readonly storageProperties?: types.outputs.baremetalinfrastructure.StoragePropertiesResponse;
+    readonly storageProperties?: types.outputs.StoragePropertiesResponse;
     /**
      * The system metadata relating to this resource.
      */
-    readonly systemData: types.outputs.baremetalinfrastructure.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

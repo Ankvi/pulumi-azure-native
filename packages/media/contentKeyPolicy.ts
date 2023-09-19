@@ -51,7 +51,7 @@ export class ContentKeyPolicy extends pulumi.CustomResource {
     /**
      * The Key Policy options.
      */
-    public readonly options!: pulumi.Output<types.outputs.media.ContentKeyPolicyOptionResponse[]>;
+    public readonly options!: pulumi.Output<types.outputs.ContentKeyPolicyOptionResponse[]>;
     /**
      * The legacy Policy ID.
      */
@@ -59,7 +59,7 @@ export class ContentKeyPolicy extends pulumi.CustomResource {
     /**
      * The system metadata relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.media.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -132,7 +132,7 @@ export interface ContentKeyPolicyArgs {
     /**
      * The Key Policy options.
      */
-    options: pulumi.Input<pulumi.Input<types.inputs.media.ContentKeyPolicyOptionArgs>[]>;
+    options: pulumi.Input<pulumi.Input<types.inputs.ContentKeyPolicyOptionArgs>[]>;
     /**
      * The name of the resource group within the Azure subscription.
      */

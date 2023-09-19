@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Describes a database on the RedisEnterprise cluster
  */
@@ -46,11 +46,11 @@ export class Database extends pulumi.CustomResource {
     /**
      * Optional set of properties to configure geo replication for this database.
      */
-    public readonly geoReplication!: pulumi.Output<types.outputs.cache.v20230701.DatabasePropertiesResponseGeoReplication | undefined>;
+    public readonly geoReplication!: pulumi.Output<types.outputs.DatabasePropertiesResponseGeoReplication | undefined>;
     /**
      * Optional set of redis modules to enable in this database - modules can only be added at creation time.
      */
-    public readonly modules!: pulumi.Output<types.outputs.cache.v20230701.ModuleResponse[] | undefined>;
+    public readonly modules!: pulumi.Output<types.outputs.ModuleResponse[] | undefined>;
     /**
      * The name of the resource
      */
@@ -58,7 +58,7 @@ export class Database extends pulumi.CustomResource {
     /**
      * Persistence settings
      */
-    public readonly persistence!: pulumi.Output<types.outputs.cache.v20230701.PersistenceResponse | undefined>;
+    public readonly persistence!: pulumi.Output<types.outputs.PersistenceResponse | undefined>;
     /**
      * TCP port of the database endpoint. Specified at create time. Defaults to an available port.
      */
@@ -134,7 +134,7 @@ export interface DatabaseArgs {
     /**
      * Specifies whether redis clients can connect using TLS-encrypted or plaintext redis protocols. Default is TLS-encrypted.
      */
-    clientProtocol?: pulumi.Input<string | types.enums.v20230701.Protocol>;
+    clientProtocol?: pulumi.Input<string | types.enums.Protocol>;
     /**
      * The name of the RedisEnterprise cluster.
      */
@@ -142,7 +142,7 @@ export interface DatabaseArgs {
     /**
      * Clustering policy - default is OSSCluster. Specified at create time.
      */
-    clusteringPolicy?: pulumi.Input<string | types.enums.v20230701.ClusteringPolicy>;
+    clusteringPolicy?: pulumi.Input<string | types.enums.ClusteringPolicy>;
     /**
      * The name of the database.
      */
@@ -150,19 +150,19 @@ export interface DatabaseArgs {
     /**
      * Redis eviction policy - default is VolatileLRU
      */
-    evictionPolicy?: pulumi.Input<string | types.enums.v20230701.EvictionPolicy>;
+    evictionPolicy?: pulumi.Input<string | types.enums.EvictionPolicy>;
     /**
      * Optional set of properties to configure geo replication for this database.
      */
-    geoReplication?: pulumi.Input<types.inputs.cache.v20230701.DatabasePropertiesGeoReplicationArgs>;
+    geoReplication?: pulumi.Input<types.inputs.DatabasePropertiesGeoReplicationArgs>;
     /**
      * Optional set of redis modules to enable in this database - modules can only be added at creation time.
      */
-    modules?: pulumi.Input<pulumi.Input<types.inputs.cache.v20230701.ModuleArgs>[]>;
+    modules?: pulumi.Input<pulumi.Input<types.inputs.ModuleArgs>[]>;
     /**
      * Persistence settings
      */
-    persistence?: pulumi.Input<types.inputs.cache.v20230701.PersistenceArgs>;
+    persistence?: pulumi.Input<types.inputs.PersistenceArgs>;
     /**
      * TCP port of the database endpoint. Specified at create time. Defaults to an available port.
      */

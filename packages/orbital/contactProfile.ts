@@ -43,7 +43,7 @@ export class ContactProfile extends pulumi.CustomResource {
     /**
      * Links of the Contact Profile. Describes RF links, modem processing, and IP endpoints.
      */
-    public readonly links!: pulumi.Output<types.outputs.orbital.ContactProfileLinkResponse[]>;
+    public readonly links!: pulumi.Output<types.outputs.ContactProfileLinkResponse[]>;
     /**
      * The geo-location where the resource lives
      */
@@ -63,11 +63,11 @@ export class ContactProfile extends pulumi.CustomResource {
     /**
      * Network configuration of customer virtual network.
      */
-    public readonly networkConfiguration!: pulumi.Output<types.outputs.orbital.ContactProfilesPropertiesResponseNetworkConfiguration>;
+    public readonly networkConfiguration!: pulumi.Output<types.outputs.ContactProfilesPropertiesResponseNetworkConfiguration>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.orbital.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -75,7 +75,7 @@ export class ContactProfile extends pulumi.CustomResource {
     /**
      * Third-party mission configuration of the Contact Profile. Describes RF links, modem processing, and IP endpoints.
      */
-    public readonly thirdPartyConfigurations!: pulumi.Output<types.outputs.orbital.ContactProfileThirdPartyConfigurationResponse[] | undefined>;
+    public readonly thirdPartyConfigurations!: pulumi.Output<types.outputs.ContactProfileThirdPartyConfigurationResponse[] | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -155,7 +155,7 @@ export interface ContactProfileArgs {
     /**
      * Links of the Contact Profile. Describes RF links, modem processing, and IP endpoints.
      */
-    links: pulumi.Input<pulumi.Input<types.inputs.orbital.ContactProfileLinkArgs>[]>;
+    links: pulumi.Input<pulumi.Input<types.inputs.ContactProfileLinkArgs>[]>;
     /**
      * The geo-location where the resource lives
      */
@@ -171,7 +171,7 @@ export interface ContactProfileArgs {
     /**
      * Network configuration of customer virtual network.
      */
-    networkConfiguration: pulumi.Input<types.inputs.orbital.ContactProfilesPropertiesNetworkConfigurationArgs>;
+    networkConfiguration: pulumi.Input<types.inputs.ContactProfilesPropertiesNetworkConfigurationArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -183,5 +183,5 @@ export interface ContactProfileArgs {
     /**
      * Third-party mission configuration of the Contact Profile. Describes RF links, modem processing, and IP endpoints.
      */
-    thirdPartyConfigurations?: pulumi.Input<pulumi.Input<types.inputs.orbital.ContactProfileThirdPartyConfigurationArgs>[]>;
+    thirdPartyConfigurations?: pulumi.Input<pulumi.Input<types.inputs.ContactProfileThirdPartyConfigurationArgs>[]>;
 }

@@ -13,7 +13,7 @@ utilities.lazyLoad(exports, ["ReadWriteDatabase"], () => require("./readWriteDat
 
 
 // Export enums:
-export * from "../types/enums/v20191109";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

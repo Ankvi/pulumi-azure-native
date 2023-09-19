@@ -55,7 +55,7 @@ export class Sim extends pulumi.CustomResource {
     /**
      * The SIM policy used by this SIM. The SIM policy must be in the same location as the SIM.
      */
-    public readonly simPolicy!: pulumi.Output<types.outputs.mobilenetwork.SimPolicyResourceIdResponse | undefined>;
+    public readonly simPolicy!: pulumi.Output<types.outputs.SimPolicyResourceIdResponse | undefined>;
     /**
      * The state of the SIM resource.
      */
@@ -67,11 +67,11 @@ export class Sim extends pulumi.CustomResource {
     /**
      * A list of static IP addresses assigned to this SIM. Each address is assigned at a defined network scope, made up of {attached data network, slice}.
      */
-    public readonly staticIpConfiguration!: pulumi.Output<types.outputs.mobilenetwork.SimStaticIpPropertiesResponse[] | undefined>;
+    public readonly staticIpConfiguration!: pulumi.Output<types.outputs.SimStaticIpPropertiesResponse[] | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.mobilenetwork.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -184,9 +184,9 @@ export interface SimArgs {
     /**
      * The SIM policy used by this SIM. The SIM policy must be in the same location as the SIM.
      */
-    simPolicy?: pulumi.Input<types.inputs.mobilenetwork.SimPolicyResourceIdArgs>;
+    simPolicy?: pulumi.Input<types.inputs.SimPolicyResourceIdArgs>;
     /**
      * A list of static IP addresses assigned to this SIM. Each address is assigned at a defined network scope, made up of {attached data network, slice}.
      */
-    staticIpConfiguration?: pulumi.Input<pulumi.Input<types.inputs.mobilenetwork.SimStaticIpPropertiesArgs>[]>;
+    staticIpConfiguration?: pulumi.Input<pulumi.Input<types.inputs.SimStaticIpPropertiesArgs>[]>;
 }

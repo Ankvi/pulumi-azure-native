@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets details about the specified output.
  */
@@ -36,11 +36,11 @@ export interface GetOutputResult {
     /**
      * Describes the data source that output will be written to. Required on PUT (CreateOrReplace) requests.
      */
-    readonly datasource?: types.outputs.streamanalytics.v20211001preview.AzureDataExplorerOutputDataSourceResponse | types.outputs.streamanalytics.v20211001preview.AzureDataLakeStoreOutputDataSourceResponse | types.outputs.streamanalytics.v20211001preview.AzureFunctionOutputDataSourceResponse | types.outputs.streamanalytics.v20211001preview.AzureSqlDatabaseOutputDataSourceResponse | types.outputs.streamanalytics.v20211001preview.AzureSynapseOutputDataSourceResponse | types.outputs.streamanalytics.v20211001preview.AzureTableOutputDataSourceResponse | types.outputs.streamanalytics.v20211001preview.BlobOutputDataSourceResponse | types.outputs.streamanalytics.v20211001preview.DocumentDbOutputDataSourceResponse | types.outputs.streamanalytics.v20211001preview.EventHubOutputDataSourceResponse | types.outputs.streamanalytics.v20211001preview.EventHubV2OutputDataSourceResponse | types.outputs.streamanalytics.v20211001preview.GatewayMessageBusOutputDataSourceResponse | types.outputs.streamanalytics.v20211001preview.PostgreSQLOutputDataSourceResponse | types.outputs.streamanalytics.v20211001preview.PowerBIOutputDataSourceResponse | types.outputs.streamanalytics.v20211001preview.RawOutputDatasourceResponse | types.outputs.streamanalytics.v20211001preview.ServiceBusQueueOutputDataSourceResponse | types.outputs.streamanalytics.v20211001preview.ServiceBusTopicOutputDataSourceResponse;
+    readonly datasource?: types.outputs.AzureDataExplorerOutputDataSourceResponse | types.outputs.AzureDataLakeStoreOutputDataSourceResponse | types.outputs.AzureFunctionOutputDataSourceResponse | types.outputs.AzureSqlDatabaseOutputDataSourceResponse | types.outputs.AzureSynapseOutputDataSourceResponse | types.outputs.AzureTableOutputDataSourceResponse | types.outputs.BlobOutputDataSourceResponse | types.outputs.DocumentDbOutputDataSourceResponse | types.outputs.EventHubOutputDataSourceResponse | types.outputs.EventHubV2OutputDataSourceResponse | types.outputs.GatewayMessageBusOutputDataSourceResponse | types.outputs.PostgreSQLOutputDataSourceResponse | types.outputs.PowerBIOutputDataSourceResponse | types.outputs.RawOutputDatasourceResponse | types.outputs.ServiceBusQueueOutputDataSourceResponse | types.outputs.ServiceBusTopicOutputDataSourceResponse;
     /**
      * Describes conditions applicable to the Input, Output, or the job overall, that warrant customer attention.
      */
-    readonly diagnostics: types.outputs.streamanalytics.v20211001preview.DiagnosticsResponse;
+    readonly diagnostics: types.outputs.DiagnosticsResponse;
     /**
      * The current entity tag for the output. This is an opaque string. You can use it to detect whether the resource has changed between requests. You can also use it in the If-Match or If-None-Match headers for write operations for optimistic concurrency.
      */
@@ -52,7 +52,7 @@ export interface GetOutputResult {
     /**
      * A list of the last output event times for each output partition. The index of the array corresponds to the partition number.
      */
-    readonly lastOutputEventTimestamps: types.outputs.streamanalytics.v20211001preview.LastOutputEventTimestampResponse[];
+    readonly lastOutputEventTimestamps: types.outputs.LastOutputEventTimestampResponse[];
     /**
      * Resource name
      */
@@ -60,7 +60,7 @@ export interface GetOutputResult {
     /**
      * Describes how data from an input is serialized or how data is serialized when written to an output. Required on PUT (CreateOrReplace) requests.
      */
-    readonly serialization?: types.outputs.streamanalytics.v20211001preview.AvroSerializationResponse | types.outputs.streamanalytics.v20211001preview.CsvSerializationResponse | types.outputs.streamanalytics.v20211001preview.CustomClrSerializationResponse | types.outputs.streamanalytics.v20211001preview.DeltaSerializationResponse | types.outputs.streamanalytics.v20211001preview.JsonSerializationResponse | types.outputs.streamanalytics.v20211001preview.ParquetSerializationResponse;
+    readonly serialization?: types.outputs.AvroSerializationResponse | types.outputs.CsvSerializationResponse | types.outputs.CustomClrSerializationResponse | types.outputs.DeltaSerializationResponse | types.outputs.JsonSerializationResponse | types.outputs.ParquetSerializationResponse;
     /**
      * The size window to constrain a Stream Analytics output to.
      */
@@ -76,7 +76,7 @@ export interface GetOutputResult {
     /**
      * Settings which determine whether to send watermarks to downstream.
      */
-    readonly watermarkSettings?: types.outputs.streamanalytics.v20211001preview.OutputWatermarkPropertiesResponse;
+    readonly watermarkSettings?: types.outputs.OutputWatermarkPropertiesResponse;
 }
 /**
  * Gets details about the specified output.

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a ServerEndpoint.
  */
@@ -45,7 +45,7 @@ export interface GetServerEndpointResult {
     /**
      * Cloud tiering status. Only populated if cloud tiering is enabled.
      */
-    readonly cloudTieringStatus: types.outputs.storagesync.v20220601.ServerEndpointCloudTieringStatusResponse;
+    readonly cloudTieringStatus: types.outputs.ServerEndpointCloudTieringStatusResponse;
     /**
      * Friendly Name
      */
@@ -101,7 +101,7 @@ export interface GetServerEndpointResult {
     /**
      * Recall status. Only populated if cloud tiering is enabled.
      */
-    readonly recallStatus: types.outputs.storagesync.v20220601.ServerEndpointRecallStatusResponse;
+    readonly recallStatus: types.outputs.ServerEndpointRecallStatusResponse;
     /**
      * Server Local path.
      */
@@ -117,11 +117,11 @@ export interface GetServerEndpointResult {
     /**
      * Server Endpoint sync status
      */
-    readonly syncStatus: types.outputs.storagesync.v20220601.ServerEndpointSyncStatusResponse;
+    readonly syncStatus: types.outputs.ServerEndpointSyncStatusResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.storagesync.v20220601.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Tier files older than days.
      */

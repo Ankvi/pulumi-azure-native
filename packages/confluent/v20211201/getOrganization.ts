@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Organization resource.
  */
@@ -47,7 +47,7 @@ export interface GetOrganizationResult {
     /**
      * Confluent offer detail
      */
-    readonly offerDetail: types.outputs.confluent.v20211201.OfferDetailResponse;
+    readonly offerDetail: types.outputs.OfferDetailResponse;
     /**
      * Id of the Confluent organization.
      */
@@ -63,7 +63,7 @@ export interface GetOrganizationResult {
     /**
      * Metadata pertaining to creation and last modification of the resource
      */
-    readonly systemData: types.outputs.confluent.v20211201.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Organization resource tags
      */
@@ -75,7 +75,7 @@ export interface GetOrganizationResult {
     /**
      * Subscriber detail
      */
-    readonly userDetail: types.outputs.confluent.v20211201.UserDetailResponse;
+    readonly userDetail: types.outputs.UserDetailResponse;
 }
 /**
  * Organization resource.

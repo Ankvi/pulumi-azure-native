@@ -55,7 +55,7 @@ export class Environment extends pulumi.CustomResource {
     /**
      * The details of the latest operation. ex: status, error
      */
-    public /*out*/ readonly latestOperationResult!: pulumi.Output<types.outputs.labservices.LatestOperationResultResponse>;
+    public /*out*/ readonly latestOperationResult!: pulumi.Output<types.outputs.LatestOperationResultResponse>;
     /**
      * The location of the resource.
      */
@@ -67,7 +67,7 @@ export class Environment extends pulumi.CustomResource {
     /**
      * Network details of the environment
      */
-    public /*out*/ readonly networkInterface!: pulumi.Output<types.outputs.labservices.NetworkInterfaceResponse>;
+    public /*out*/ readonly networkInterface!: pulumi.Output<types.outputs.NetworkInterfaceResponse>;
     /**
      * When the password was last reset on the environment.
      */
@@ -79,7 +79,7 @@ export class Environment extends pulumi.CustomResource {
     /**
      * The set of a VM and the setting id it was created for
      */
-    public readonly resourceSets!: pulumi.Output<types.outputs.labservices.ResourceSetResponse | undefined>;
+    public readonly resourceSets!: pulumi.Output<types.outputs.ResourceSetResponse | undefined>;
     /**
      * The tags of the resource.
      */
@@ -201,7 +201,7 @@ export interface EnvironmentArgs {
     /**
      * The set of a VM and the setting id it was created for
      */
-    resourceSets?: pulumi.Input<types.inputs.labservices.ResourceSetArgs>;
+    resourceSets?: pulumi.Input<types.inputs.ResourceSetArgs>;
     /**
      * The tags of the resource.
      */

@@ -76,11 +76,11 @@ export interface GetVirtualWanResult {
     /**
      * List of VirtualHubs in the VirtualWAN.
      */
-    readonly virtualHubs: types.outputs.network.SubResourceResponse[];
+    readonly virtualHubs: types.outputs.SubResourceResponse[];
     /**
      * List of VpnSites in the VirtualWAN.
      */
-    readonly vpnSites: types.outputs.network.SubResourceResponse[];
+    readonly vpnSites: types.outputs.SubResourceResponse[];
 }
 /**
  * Retrieves the details of a VirtualWAN.

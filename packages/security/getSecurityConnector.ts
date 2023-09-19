@@ -32,7 +32,7 @@ export interface GetSecurityConnectorResult {
     /**
      * The security connector environment data.
      */
-    readonly environmentData?: types.outputs.security.AwsEnvironmentDataResponse | types.outputs.security.AzureDevOpsScopeEnvironmentDataResponse | types.outputs.security.GcpProjectEnvironmentDataResponse | types.outputs.security.GithubScopeEnvironmentDataResponse | types.outputs.security.GitlabScopeEnvironmentDataResponse;
+    readonly environmentData?: types.outputs.AwsEnvironmentDataResponse | types.outputs.AzureDevOpsScopeEnvironmentDataResponse | types.outputs.GcpProjectEnvironmentDataResponse | types.outputs.GithubScopeEnvironmentDataResponse | types.outputs.GitlabScopeEnvironmentDataResponse;
     /**
      * The multi cloud resource's cloud name.
      */
@@ -68,11 +68,11 @@ export interface GetSecurityConnectorResult {
     /**
      * A collection of offerings for the security connector.
      */
-    readonly offerings?: (types.outputs.security.CspmMonitorAwsOfferingResponse | types.outputs.security.CspmMonitorAzureDevOpsOfferingResponse | types.outputs.security.CspmMonitorGcpOfferingResponse | types.outputs.security.CspmMonitorGitLabOfferingResponse | types.outputs.security.CspmMonitorGithubOfferingResponse | types.outputs.security.DefenderCspmAwsOfferingResponse | types.outputs.security.DefenderCspmGcpOfferingResponse | types.outputs.security.DefenderFoDatabasesAwsOfferingResponse | types.outputs.security.DefenderForContainersAwsOfferingResponse | types.outputs.security.DefenderForContainersGcpOfferingResponse | types.outputs.security.DefenderForDatabasesGcpOfferingResponse | types.outputs.security.DefenderForDevOpsAzureDevOpsOfferingResponse | types.outputs.security.DefenderForDevOpsGitLabOfferingResponse | types.outputs.security.DefenderForDevOpsGithubOfferingResponse | types.outputs.security.DefenderForServersAwsOfferingResponse | types.outputs.security.DefenderForServersGcpOfferingResponse | types.outputs.security.InformationProtectionAwsOfferingResponse)[];
+    readonly offerings?: (types.outputs.CspmMonitorAwsOfferingResponse | types.outputs.CspmMonitorAzureDevOpsOfferingResponse | types.outputs.CspmMonitorGcpOfferingResponse | types.outputs.CspmMonitorGitLabOfferingResponse | types.outputs.CspmMonitorGithubOfferingResponse | types.outputs.DefenderCspmAwsOfferingResponse | types.outputs.DefenderCspmGcpOfferingResponse | types.outputs.DefenderFoDatabasesAwsOfferingResponse | types.outputs.DefenderForContainersAwsOfferingResponse | types.outputs.DefenderForContainersGcpOfferingResponse | types.outputs.DefenderForDatabasesGcpOfferingResponse | types.outputs.DefenderForDevOpsAzureDevOpsOfferingResponse | types.outputs.DefenderForDevOpsGitLabOfferingResponse | types.outputs.DefenderForDevOpsGithubOfferingResponse | types.outputs.DefenderForServersAwsOfferingResponse | types.outputs.DefenderForServersGcpOfferingResponse | types.outputs.InformationProtectionAwsOfferingResponse)[];
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.security.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * A list of key value pairs that describe the resource.
      */

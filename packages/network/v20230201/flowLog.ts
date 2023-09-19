@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A flow log resource.
  */
@@ -42,11 +42,11 @@ export class FlowLog extends pulumi.CustomResource {
     /**
      * Parameters that define the configuration of traffic analytics.
      */
-    public readonly flowAnalyticsConfiguration!: pulumi.Output<types.outputs.network.v20230201.TrafficAnalyticsPropertiesResponse | undefined>;
+    public readonly flowAnalyticsConfiguration!: pulumi.Output<types.outputs.TrafficAnalyticsPropertiesResponse | undefined>;
     /**
      * Parameters that define the flow log format.
      */
-    public readonly format!: pulumi.Output<types.outputs.network.v20230201.FlowLogFormatParametersResponse | undefined>;
+    public readonly format!: pulumi.Output<types.outputs.FlowLogFormatParametersResponse | undefined>;
     /**
      * Resource location.
      */
@@ -62,7 +62,7 @@ export class FlowLog extends pulumi.CustomResource {
     /**
      * Parameters that define the retention policy for flow log.
      */
-    public readonly retentionPolicy!: pulumi.Output<types.outputs.network.v20230201.RetentionPolicyParametersResponse | undefined>;
+    public readonly retentionPolicy!: pulumi.Output<types.outputs.RetentionPolicyParametersResponse | undefined>;
     /**
      * ID of the storage account which is used to store the flow log.
      */
@@ -110,12 +110,12 @@ export class FlowLog extends pulumi.CustomResource {
             resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["flowAnalyticsConfiguration"] = args ? args.flowAnalyticsConfiguration : undefined;
             resourceInputs["flowLogName"] = args ? args.flowLogName : undefined;
-            resourceInputs["format"] = args ? (args.format ? pulumi.output(args.format).apply(types.inputs.network.v20230201.flowLogFormatParametersArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["format"] = args ? (args.format ? pulumi.output(args.format).apply(types.inputs.flowLogFormatParametersArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["id"] = args ? args.id : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["networkWatcherName"] = args ? args.networkWatcherName : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["retentionPolicy"] = args ? (args.retentionPolicy ? pulumi.output(args.retentionPolicy).apply(types.inputs.network.v20230201.retentionPolicyParametersArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["retentionPolicy"] = args ? (args.retentionPolicy ? pulumi.output(args.retentionPolicy).apply(types.inputs.retentionPolicyParametersArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["storageId"] = args ? args.storageId : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["targetResourceId"] = args ? args.targetResourceId : undefined;
@@ -157,7 +157,7 @@ export interface FlowLogArgs {
     /**
      * Parameters that define the configuration of traffic analytics.
      */
-    flowAnalyticsConfiguration?: pulumi.Input<types.inputs.network.v20230201.TrafficAnalyticsPropertiesArgs>;
+    flowAnalyticsConfiguration?: pulumi.Input<types.inputs.TrafficAnalyticsPropertiesArgs>;
     /**
      * The name of the flow log.
      */
@@ -165,7 +165,7 @@ export interface FlowLogArgs {
     /**
      * Parameters that define the flow log format.
      */
-    format?: pulumi.Input<types.inputs.network.v20230201.FlowLogFormatParametersArgs>;
+    format?: pulumi.Input<types.inputs.FlowLogFormatParametersArgs>;
     /**
      * Resource ID.
      */
@@ -185,7 +185,7 @@ export interface FlowLogArgs {
     /**
      * Parameters that define the retention policy for flow log.
      */
-    retentionPolicy?: pulumi.Input<types.inputs.network.v20230201.RetentionPolicyParametersArgs>;
+    retentionPolicy?: pulumi.Input<types.inputs.RetentionPolicyParametersArgs>;
     /**
      * ID of the storage account which is used to store the flow log.
      */

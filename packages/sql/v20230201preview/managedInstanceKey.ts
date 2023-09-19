@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A managed instance key.
  */
@@ -121,7 +121,7 @@ export interface ManagedInstanceKeyArgs {
     /**
      * The key type like 'ServiceManaged', 'AzureKeyVault'.
      */
-    serverKeyType: pulumi.Input<string | types.enums.v20230201preview.ServerKeyType>;
+    serverKeyType: pulumi.Input<string | types.enums.ServerKeyType>;
     /**
      * The URI of the key. If the ServerKeyType is AzureKeyVault, then the URI is required.
      */

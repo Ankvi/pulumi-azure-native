@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An AML file system instance. Follows Azure Resource Manager standards: https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md
  */
@@ -34,7 +34,7 @@ export class AmlFilesystem extends pulumi.CustomResource {
     /**
      * Specifies encryption settings of the AML file system.
      */
-    public readonly encryptionSettings!: pulumi.Output<types.outputs.storagecache.v20230301preview.AmlFilesystemEncryptionSettingsResponse | undefined>;
+    public readonly encryptionSettings!: pulumi.Output<types.outputs.AmlFilesystemEncryptionSettingsResponse | undefined>;
     /**
      * Subnet used for managing the AML file system and for client-facing operations. This subnet should have at least a /24 subnet mask within the VNET's address space.
      */
@@ -42,15 +42,15 @@ export class AmlFilesystem extends pulumi.CustomResource {
     /**
      * Health of the AML file system.
      */
-    public /*out*/ readonly health!: pulumi.Output<types.outputs.storagecache.v20230301preview.AmlFilesystemHealthResponse>;
+    public /*out*/ readonly health!: pulumi.Output<types.outputs.AmlFilesystemHealthResponse>;
     /**
      * Hydration and archive settings and status
      */
-    public readonly hsm!: pulumi.Output<types.outputs.storagecache.v20230301preview.AmlFilesystemResponseHsm | undefined>;
+    public readonly hsm!: pulumi.Output<types.outputs.AmlFilesystemResponseHsm | undefined>;
     /**
      * The managed identity used by the AML file system, if configured.
      */
-    public readonly identity!: pulumi.Output<types.outputs.storagecache.v20230301preview.AmlFilesystemIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.AmlFilesystemIdentityResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -62,7 +62,7 @@ export class AmlFilesystem extends pulumi.CustomResource {
     /**
      * Start time of a 30-minute weekly maintenance window.
      */
-    public readonly maintenanceWindow!: pulumi.Output<types.outputs.storagecache.v20230301preview.AmlFilesystemResponseMaintenanceWindow>;
+    public readonly maintenanceWindow!: pulumi.Output<types.outputs.AmlFilesystemResponseMaintenanceWindow>;
     /**
      * The IPv4 address used by clients to mount the AML file system's Lustre Management Service (MGS).
      */
@@ -82,7 +82,7 @@ export class AmlFilesystem extends pulumi.CustomResource {
     /**
      * SKU for the resource.
      */
-    public readonly sku!: pulumi.Output<types.outputs.storagecache.v20230301preview.SkuNameResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuNameResponse | undefined>;
     /**
      * The size of the AML file system, in TiB. This might be rounded up.
      */
@@ -90,7 +90,7 @@ export class AmlFilesystem extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.storagecache.v20230301preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -134,7 +134,7 @@ export class AmlFilesystem extends pulumi.CustomResource {
             resourceInputs["amlFilesystemName"] = args ? args.amlFilesystemName : undefined;
             resourceInputs["encryptionSettings"] = args ? args.encryptionSettings : undefined;
             resourceInputs["filesystemSubnet"] = args ? args.filesystemSubnet : undefined;
-            resourceInputs["hsm"] = args ? (args.hsm ? pulumi.output(args.hsm).apply(types.inputs.storagecache.v20230301preview.amlFilesystemHsmArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["hsm"] = args ? (args.hsm ? pulumi.output(args.hsm).apply(types.inputs.amlFilesystemHsmArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["identity"] = args ? args.identity : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["maintenanceWindow"] = args ? args.maintenanceWindow : undefined;
@@ -191,7 +191,7 @@ export interface AmlFilesystemArgs {
     /**
      * Specifies encryption settings of the AML file system.
      */
-    encryptionSettings?: pulumi.Input<types.inputs.storagecache.v20230301preview.AmlFilesystemEncryptionSettingsArgs>;
+    encryptionSettings?: pulumi.Input<types.inputs.AmlFilesystemEncryptionSettingsArgs>;
     /**
      * Subnet used for managing the AML file system and for client-facing operations. This subnet should have at least a /24 subnet mask within the VNET's address space.
      */
@@ -199,11 +199,11 @@ export interface AmlFilesystemArgs {
     /**
      * Hydration and archive settings and status
      */
-    hsm?: pulumi.Input<types.inputs.storagecache.v20230301preview.AmlFilesystemHsmArgs>;
+    hsm?: pulumi.Input<types.inputs.AmlFilesystemHsmArgs>;
     /**
      * The managed identity used by the AML file system, if configured.
      */
-    identity?: pulumi.Input<types.inputs.storagecache.v20230301preview.AmlFilesystemIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.AmlFilesystemIdentityArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -211,7 +211,7 @@ export interface AmlFilesystemArgs {
     /**
      * Start time of a 30-minute weekly maintenance window.
      */
-    maintenanceWindow: pulumi.Input<types.inputs.storagecache.v20230301preview.AmlFilesystemMaintenanceWindowArgs>;
+    maintenanceWindow: pulumi.Input<types.inputs.AmlFilesystemMaintenanceWindowArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -219,7 +219,7 @@ export interface AmlFilesystemArgs {
     /**
      * SKU for the resource.
      */
-    sku?: pulumi.Input<types.inputs.storagecache.v20230301preview.SkuNameArgs>;
+    sku?: pulumi.Input<types.inputs.SkuNameArgs>;
     /**
      * The size of the AML file system, in TiB. This might be rounded up.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Image template is an ARM resource managed by Microsoft.VirtualMachineImages provider
  */
@@ -38,11 +38,11 @@ export class VirtualMachineImageTemplate extends pulumi.CustomResource {
     /**
      * Specifies the properties used to describe the customization steps of the image, like Image source etc
      */
-    public readonly customize!: pulumi.Output<(types.outputs.virtualmachineimages.v20220701.ImageTemplateFileCustomizerResponse | types.outputs.virtualmachineimages.v20220701.ImageTemplatePowerShellCustomizerResponse | types.outputs.virtualmachineimages.v20220701.ImageTemplateRestartCustomizerResponse | types.outputs.virtualmachineimages.v20220701.ImageTemplateShellCustomizerResponse | types.outputs.virtualmachineimages.v20220701.ImageTemplateWindowsUpdateCustomizerResponse)[] | undefined>;
+    public readonly customize!: pulumi.Output<(types.outputs.ImageTemplateFileCustomizerResponse | types.outputs.ImageTemplatePowerShellCustomizerResponse | types.outputs.ImageTemplateRestartCustomizerResponse | types.outputs.ImageTemplateShellCustomizerResponse | types.outputs.ImageTemplateWindowsUpdateCustomizerResponse)[] | undefined>;
     /**
      * The distribution targets where the image output needs to go to.
      */
-    public readonly distribute!: pulumi.Output<(types.outputs.virtualmachineimages.v20220701.ImageTemplateManagedImageDistributorResponse | types.outputs.virtualmachineimages.v20220701.ImageTemplateSharedImageDistributorResponse | types.outputs.virtualmachineimages.v20220701.ImageTemplateVhdDistributorResponse)[]>;
+    public readonly distribute!: pulumi.Output<(types.outputs.ImageTemplateManagedImageDistributorResponse | types.outputs.ImageTemplateSharedImageDistributorResponse | types.outputs.ImageTemplateVhdDistributorResponse)[]>;
     /**
      * The staging resource group id in the same subscription as the image template that will be used to build the image. This read-only field differs from 'stagingResourceGroup' only if the value specified in the 'stagingResourceGroup' field is empty.
      */
@@ -50,11 +50,11 @@ export class VirtualMachineImageTemplate extends pulumi.CustomResource {
     /**
      * The identity of the image template, if configured.
      */
-    public readonly identity!: pulumi.Output<types.outputs.virtualmachineimages.v20220701.ImageTemplateIdentityResponse>;
+    public readonly identity!: pulumi.Output<types.outputs.ImageTemplateIdentityResponse>;
     /**
      * State of 'run' that is currently executing or was last executed.
      */
-    public /*out*/ readonly lastRunStatus!: pulumi.Output<types.outputs.virtualmachineimages.v20220701.ImageTemplateLastRunStatusResponse>;
+    public /*out*/ readonly lastRunStatus!: pulumi.Output<types.outputs.ImageTemplateLastRunStatusResponse>;
     /**
      * The geo-location where the resource lives
      */
@@ -66,11 +66,11 @@ export class VirtualMachineImageTemplate extends pulumi.CustomResource {
     /**
      * Specifies optimization to be performed on image.
      */
-    public readonly optimize!: pulumi.Output<types.outputs.virtualmachineimages.v20220701.ImageTemplatePropertiesResponseOptimize | undefined>;
+    public readonly optimize!: pulumi.Output<types.outputs.ImageTemplatePropertiesResponseOptimize | undefined>;
     /**
      * Provisioning error, if any
      */
-    public /*out*/ readonly provisioningError!: pulumi.Output<types.outputs.virtualmachineimages.v20220701.ProvisioningErrorResponse>;
+    public /*out*/ readonly provisioningError!: pulumi.Output<types.outputs.ProvisioningErrorResponse>;
     /**
      * Provisioning state of the resource
      */
@@ -78,7 +78,7 @@ export class VirtualMachineImageTemplate extends pulumi.CustomResource {
     /**
      * Specifies the properties used to describe the source image.
      */
-    public readonly source!: pulumi.Output<types.outputs.virtualmachineimages.v20220701.ImageTemplateManagedImageSourceResponse | types.outputs.virtualmachineimages.v20220701.ImageTemplatePlatformImageSourceResponse | types.outputs.virtualmachineimages.v20220701.ImageTemplateSharedImageVersionSourceResponse>;
+    public readonly source!: pulumi.Output<types.outputs.ImageTemplateManagedImageSourceResponse | types.outputs.ImageTemplatePlatformImageSourceResponse | types.outputs.ImageTemplateSharedImageVersionSourceResponse>;
     /**
      * The staging resource group id in the same subscription as the image template that will be used to build the image. If this field is empty, a resource group with a random name will be created. If the resource group specified in this field doesn't exist, it will be created with the same name. If the resource group specified exists, it must be empty and in the same region as the image template. The resource group created will be deleted during template deletion if this field is empty or the resource group specified doesn't exist, but if the resource group specified exists the resources created in the resource group will be deleted during template deletion and the resource group itself will remain.
      */
@@ -86,7 +86,7 @@ export class VirtualMachineImageTemplate extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.virtualmachineimages.v20220701.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -98,11 +98,11 @@ export class VirtualMachineImageTemplate extends pulumi.CustomResource {
     /**
      * Configuration options and list of validations to be performed on the resulting image.
      */
-    public readonly validate!: pulumi.Output<types.outputs.virtualmachineimages.v20220701.ImageTemplatePropertiesResponseValidate | undefined>;
+    public readonly validate!: pulumi.Output<types.outputs.ImageTemplatePropertiesResponseValidate | undefined>;
     /**
      * Describes how virtual machine is set up to build images
      */
-    public readonly vmProfile!: pulumi.Output<types.outputs.virtualmachineimages.v20220701.ImageTemplateVmProfileResponse | undefined>;
+    public readonly vmProfile!: pulumi.Output<types.outputs.ImageTemplateVmProfileResponse | undefined>;
 
     /**
      * Create a VirtualMachineImageTemplate resource with the given unique name, arguments, and options.
@@ -138,8 +138,8 @@ export class VirtualMachineImageTemplate extends pulumi.CustomResource {
             resourceInputs["source"] = args ? args.source : undefined;
             resourceInputs["stagingResourceGroup"] = args ? args.stagingResourceGroup : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["validate"] = args ? (args.validate ? pulumi.output(args.validate).apply(types.inputs.virtualmachineimages.v20220701.imageTemplatePropertiesValidateArgsProvideDefaults) : undefined) : undefined;
-            resourceInputs["vmProfile"] = args ? (args.vmProfile ? pulumi.output(args.vmProfile).apply(types.inputs.virtualmachineimages.v20220701.imageTemplateVmProfileArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["validate"] = args ? (args.validate ? pulumi.output(args.validate).apply(types.inputs.imageTemplatePropertiesValidateArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["vmProfile"] = args ? (args.vmProfile ? pulumi.output(args.vmProfile).apply(types.inputs.imageTemplateVmProfileArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["exactStagingResourceGroup"] = undefined /*out*/;
             resourceInputs["lastRunStatus"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -185,15 +185,15 @@ export interface VirtualMachineImageTemplateArgs {
     /**
      * Specifies the properties used to describe the customization steps of the image, like Image source etc
      */
-    customize?: pulumi.Input<pulumi.Input<types.inputs.virtualmachineimages.v20220701.ImageTemplateFileCustomizerArgs | types.inputs.virtualmachineimages.v20220701.ImageTemplatePowerShellCustomizerArgs | types.inputs.virtualmachineimages.v20220701.ImageTemplateRestartCustomizerArgs | types.inputs.virtualmachineimages.v20220701.ImageTemplateShellCustomizerArgs | types.inputs.virtualmachineimages.v20220701.ImageTemplateWindowsUpdateCustomizerArgs>[]>;
+    customize?: pulumi.Input<pulumi.Input<types.inputs.ImageTemplateFileCustomizerArgs | types.inputs.ImageTemplatePowerShellCustomizerArgs | types.inputs.ImageTemplateRestartCustomizerArgs | types.inputs.ImageTemplateShellCustomizerArgs | types.inputs.ImageTemplateWindowsUpdateCustomizerArgs>[]>;
     /**
      * The distribution targets where the image output needs to go to.
      */
-    distribute: pulumi.Input<pulumi.Input<types.inputs.virtualmachineimages.v20220701.ImageTemplateManagedImageDistributorArgs | types.inputs.virtualmachineimages.v20220701.ImageTemplateSharedImageDistributorArgs | types.inputs.virtualmachineimages.v20220701.ImageTemplateVhdDistributorArgs>[]>;
+    distribute: pulumi.Input<pulumi.Input<types.inputs.ImageTemplateManagedImageDistributorArgs | types.inputs.ImageTemplateSharedImageDistributorArgs | types.inputs.ImageTemplateVhdDistributorArgs>[]>;
     /**
      * The identity of the image template, if configured.
      */
-    identity: pulumi.Input<types.inputs.virtualmachineimages.v20220701.ImageTemplateIdentityArgs>;
+    identity: pulumi.Input<types.inputs.ImageTemplateIdentityArgs>;
     /**
      * The name of the image Template
      */
@@ -205,7 +205,7 @@ export interface VirtualMachineImageTemplateArgs {
     /**
      * Specifies optimization to be performed on image.
      */
-    optimize?: pulumi.Input<types.inputs.virtualmachineimages.v20220701.ImageTemplatePropertiesOptimizeArgs>;
+    optimize?: pulumi.Input<types.inputs.ImageTemplatePropertiesOptimizeArgs>;
     /**
      * The name of the resource group.
      */
@@ -213,7 +213,7 @@ export interface VirtualMachineImageTemplateArgs {
     /**
      * Specifies the properties used to describe the source image.
      */
-    source: pulumi.Input<types.inputs.virtualmachineimages.v20220701.ImageTemplateManagedImageSourceArgs | types.inputs.virtualmachineimages.v20220701.ImageTemplatePlatformImageSourceArgs | types.inputs.virtualmachineimages.v20220701.ImageTemplateSharedImageVersionSourceArgs>;
+    source: pulumi.Input<types.inputs.ImageTemplateManagedImageSourceArgs | types.inputs.ImageTemplatePlatformImageSourceArgs | types.inputs.ImageTemplateSharedImageVersionSourceArgs>;
     /**
      * The staging resource group id in the same subscription as the image template that will be used to build the image. If this field is empty, a resource group with a random name will be created. If the resource group specified in this field doesn't exist, it will be created with the same name. If the resource group specified exists, it must be empty and in the same region as the image template. The resource group created will be deleted during template deletion if this field is empty or the resource group specified doesn't exist, but if the resource group specified exists the resources created in the resource group will be deleted during template deletion and the resource group itself will remain.
      */
@@ -225,9 +225,9 @@ export interface VirtualMachineImageTemplateArgs {
     /**
      * Configuration options and list of validations to be performed on the resulting image.
      */
-    validate?: pulumi.Input<types.inputs.virtualmachineimages.v20220701.ImageTemplatePropertiesValidateArgs>;
+    validate?: pulumi.Input<types.inputs.ImageTemplatePropertiesValidateArgs>;
     /**
      * Describes how virtual machine is set up to build images
      */
-    vmProfile?: pulumi.Input<types.inputs.virtualmachineimages.v20220701.ImageTemplateVmProfileArgs>;
+    vmProfile?: pulumi.Input<types.inputs.ImageTemplateVmProfileArgs>;
 }

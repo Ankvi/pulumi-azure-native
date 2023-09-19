@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get private endpoint connection properties for the given private endpoint.
  */
@@ -41,7 +41,7 @@ export interface GetPrivateEndpointConnectionResult {
      * The resource name.
      */
     readonly name: string;
-    readonly properties: types.outputs.digitaltwins.v20201201.PrivateEndpointConnectionResponseProperties;
+    readonly properties: types.outputs.PrivateEndpointConnectionResponseProperties;
     /**
      * The resource type.
      */

@@ -47,7 +47,7 @@ export class Organization extends pulumi.CustomResource {
     /**
      * Confluent offer detail
      */
-    public readonly offerDetail!: pulumi.Output<types.outputs.confluent.OfferDetailResponse>;
+    public readonly offerDetail!: pulumi.Output<types.outputs.OfferDetailResponse>;
     /**
      * Id of the Confluent organization.
      */
@@ -63,7 +63,7 @@ export class Organization extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.confluent.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Organization resource tags
      */
@@ -75,7 +75,7 @@ export class Organization extends pulumi.CustomResource {
     /**
      * Subscriber detail
      */
-    public readonly userDetail!: pulumi.Output<types.outputs.confluent.UserDetailResponse>;
+    public readonly userDetail!: pulumi.Output<types.outputs.UserDetailResponse>;
 
     /**
      * Create a Organization resource with the given unique name, arguments, and options.
@@ -141,7 +141,7 @@ export interface OrganizationArgs {
     /**
      * Confluent offer detail
      */
-    offerDetail: pulumi.Input<types.inputs.confluent.OfferDetailArgs>;
+    offerDetail: pulumi.Input<types.inputs.OfferDetailArgs>;
     /**
      * Organization resource name
      */
@@ -157,5 +157,5 @@ export interface OrganizationArgs {
     /**
      * Subscriber detail
      */
-    userDetail: pulumi.Input<types.inputs.confluent.UserDetailArgs>;
+    userDetail: pulumi.Input<types.inputs.UserDetailArgs>;
 }

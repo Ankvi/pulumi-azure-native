@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Lists DNS forwarding ruleset resource IDs attached to a virtual network.
  */
@@ -40,7 +40,7 @@ export interface ListDnsForwardingRulesetByVirtualNetworkResult {
     /**
      * Enumeration of the Virtual Network DNS Forwarding Ruleset.
      */
-    readonly value?: types.outputs.network.v20200401preview.VirtualNetworkDnsForwardingRulesetResponse[];
+    readonly value?: types.outputs.VirtualNetworkDnsForwardingRulesetResponse[];
 }
 /**
  * Lists DNS forwarding ruleset resource IDs attached to a virtual network.

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Definition of the configuration type.
  */
@@ -70,7 +70,7 @@ export class DscConfiguration extends pulumi.CustomResource {
     /**
      * Gets or sets the configuration parameters.
      */
-    public readonly parameters!: pulumi.Output<{[key: string]: types.outputs.automation.v20220808.DscConfigurationParameterResponse} | undefined>;
+    public readonly parameters!: pulumi.Output<{[key: string]: types.outputs.DscConfigurationParameterResponse} | undefined>;
     /**
      * Gets or sets the provisioning state of the configuration.
      */
@@ -78,7 +78,7 @@ export class DscConfiguration extends pulumi.CustomResource {
     /**
      * Gets or sets the source.
      */
-    public readonly source!: pulumi.Output<types.outputs.automation.v20220808.ContentSourceResponse | undefined>;
+    public readonly source!: pulumi.Output<types.outputs.ContentSourceResponse | undefined>;
     /**
      * Gets or sets the state of the configuration.
      */
@@ -190,7 +190,7 @@ export interface DscConfigurationArgs {
     /**
      * Gets or sets the configuration parameters.
      */
-    parameters?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.automation.v20220808.DscConfigurationParameterArgs>}>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.DscConfigurationParameterArgs>}>;
     /**
      * Name of an Azure Resource group.
      */
@@ -198,7 +198,7 @@ export interface DscConfigurationArgs {
     /**
      * Gets or sets the source.
      */
-    source: pulumi.Input<types.inputs.automation.v20220808.ContentSourceArgs>;
+    source: pulumi.Input<types.inputs.ContentSourceArgs>;
     /**
      * Gets or sets the tags attached to the resource.
      */

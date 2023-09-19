@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An Azure Video Indexer account.
  */
@@ -42,7 +42,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * Managed service identity (system assigned and/or user assigned identities)
      */
-    public readonly identity!: pulumi.Output<types.outputs.videoindexer.v20220801.ManagedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -50,7 +50,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * The media services details
      */
-    public readonly mediaServices!: pulumi.Output<types.outputs.videoindexer.v20220801.MediaServicesForPutRequestResponse | undefined>;
+    public readonly mediaServices!: pulumi.Output<types.outputs.MediaServicesForPutRequestResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -62,7 +62,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * The system meta data relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.videoindexer.v20220801.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -143,7 +143,7 @@ export interface AccountArgs {
     /**
      * Managed service identity (system assigned and/or user assigned identities)
      */
-    identity?: pulumi.Input<types.inputs.videoindexer.v20220801.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -151,7 +151,7 @@ export interface AccountArgs {
     /**
      * The media services details
      */
-    mediaServices?: pulumi.Input<types.inputs.videoindexer.v20220801.MediaServicesForPutRequestArgs>;
+    mediaServices?: pulumi.Input<types.inputs.MediaServicesForPutRequestArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

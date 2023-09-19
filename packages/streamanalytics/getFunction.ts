@@ -45,7 +45,7 @@ export interface GetFunctionResult {
     /**
      * The properties that are associated with a function.
      */
-    readonly properties: types.outputs.streamanalytics.AggregateFunctionPropertiesResponse | types.outputs.streamanalytics.ScalarFunctionPropertiesResponse;
+    readonly properties: types.outputs.AggregateFunctionPropertiesResponse | types.outputs.ScalarFunctionPropertiesResponse;
     /**
      * Resource type
      */

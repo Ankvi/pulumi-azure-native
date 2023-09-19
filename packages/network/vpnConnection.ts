@@ -71,7 +71,7 @@ export class VpnConnection extends pulumi.CustomResource {
     /**
      * The IPSec Policies to be considered by this connection.
      */
-    public readonly ipsecPolicies!: pulumi.Output<types.outputs.network.IpsecPolicyResponse[] | undefined>;
+    public readonly ipsecPolicies!: pulumi.Output<types.outputs.IpsecPolicyResponse[] | undefined>;
     /**
      * The name of the resource that is unique within a resource group. This name can be used to access the resource.
      */
@@ -83,11 +83,11 @@ export class VpnConnection extends pulumi.CustomResource {
     /**
      * Id of the connected vpn site.
      */
-    public readonly remoteVpnSite!: pulumi.Output<types.outputs.network.SubResourceResponse | undefined>;
+    public readonly remoteVpnSite!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * The Routing Configuration indicating the associated and propagated route tables on this connection.
      */
-    public readonly routingConfiguration!: pulumi.Output<types.outputs.network.RoutingConfigurationResponse | undefined>;
+    public readonly routingConfiguration!: pulumi.Output<types.outputs.RoutingConfigurationResponse | undefined>;
     /**
      * Routing weight for vpn connection.
      */
@@ -99,7 +99,7 @@ export class VpnConnection extends pulumi.CustomResource {
     /**
      * The Traffic Selector Policies to be considered by this connection.
      */
-    public readonly trafficSelectorPolicies!: pulumi.Output<types.outputs.network.TrafficSelectorPolicyResponse[] | undefined>;
+    public readonly trafficSelectorPolicies!: pulumi.Output<types.outputs.TrafficSelectorPolicyResponse[] | undefined>;
     /**
      * Use local azure ip to initiate connection.
      */
@@ -115,7 +115,7 @@ export class VpnConnection extends pulumi.CustomResource {
     /**
      * List of all vpn site link connections to the gateway.
      */
-    public readonly vpnLinkConnections!: pulumi.Output<types.outputs.network.VpnSiteLinkConnectionResponse[] | undefined>;
+    public readonly vpnLinkConnections!: pulumi.Output<types.outputs.VpnSiteLinkConnectionResponse[] | undefined>;
 
     /**
      * Create a VpnConnection resource with the given unique name, arguments, and options.
@@ -228,7 +228,7 @@ export interface VpnConnectionArgs {
     /**
      * The IPSec Policies to be considered by this connection.
      */
-    ipsecPolicies?: pulumi.Input<pulumi.Input<types.inputs.network.IpsecPolicyArgs>[]>;
+    ipsecPolicies?: pulumi.Input<pulumi.Input<types.inputs.IpsecPolicyArgs>[]>;
     /**
      * The name of the resource that is unique within a resource group. This name can be used to access the resource.
      */
@@ -236,7 +236,7 @@ export interface VpnConnectionArgs {
     /**
      * Id of the connected vpn site.
      */
-    remoteVpnSite?: pulumi.Input<types.inputs.network.SubResourceArgs>;
+    remoteVpnSite?: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * The resource group name of the VpnGateway.
      */
@@ -244,7 +244,7 @@ export interface VpnConnectionArgs {
     /**
      * The Routing Configuration indicating the associated and propagated route tables on this connection.
      */
-    routingConfiguration?: pulumi.Input<types.inputs.network.RoutingConfigurationArgs>;
+    routingConfiguration?: pulumi.Input<types.inputs.RoutingConfigurationArgs>;
     /**
      * Routing weight for vpn connection.
      */
@@ -256,7 +256,7 @@ export interface VpnConnectionArgs {
     /**
      * The Traffic Selector Policies to be considered by this connection.
      */
-    trafficSelectorPolicies?: pulumi.Input<pulumi.Input<types.inputs.network.TrafficSelectorPolicyArgs>[]>;
+    trafficSelectorPolicies?: pulumi.Input<pulumi.Input<types.inputs.TrafficSelectorPolicyArgs>[]>;
     /**
      * Use local azure ip to initiate connection.
      */
@@ -272,5 +272,5 @@ export interface VpnConnectionArgs {
     /**
      * List of all vpn site link connections to the gateway.
      */
-    vpnLinkConnections?: pulumi.Input<pulumi.Input<types.inputs.network.VpnSiteLinkConnectionArgs>[]>;
+    vpnLinkConnections?: pulumi.Input<pulumi.Input<types.inputs.VpnSiteLinkConnectionArgs>[]>;
 }

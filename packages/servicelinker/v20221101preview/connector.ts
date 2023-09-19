@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Linker of source and target resource
  */
@@ -34,7 +34,7 @@ export class Connector extends pulumi.CustomResource {
     /**
      * The authentication type.
      */
-    public readonly authInfo!: pulumi.Output<types.outputs.servicelinker.v20221101preview.AccessKeyInfoBaseResponse | types.outputs.servicelinker.v20221101preview.SecretAuthInfoResponse | types.outputs.servicelinker.v20221101preview.ServicePrincipalCertificateAuthInfoResponse | types.outputs.servicelinker.v20221101preview.ServicePrincipalSecretAuthInfoResponse | types.outputs.servicelinker.v20221101preview.SystemAssignedIdentityAuthInfoResponse | types.outputs.servicelinker.v20221101preview.UserAccountAuthInfoResponse | types.outputs.servicelinker.v20221101preview.UserAssignedIdentityAuthInfoResponse | undefined>;
+    public readonly authInfo!: pulumi.Output<types.outputs.AccessKeyInfoBaseResponse | types.outputs.SecretAuthInfoResponse | types.outputs.ServicePrincipalCertificateAuthInfoResponse | types.outputs.ServicePrincipalSecretAuthInfoResponse | types.outputs.SystemAssignedIdentityAuthInfoResponse | types.outputs.UserAccountAuthInfoResponse | types.outputs.UserAssignedIdentityAuthInfoResponse | undefined>;
     /**
      * The application client type
      */
@@ -42,7 +42,7 @@ export class Connector extends pulumi.CustomResource {
     /**
      * The connection information consumed by applications, including secrets, connection strings.
      */
-    public readonly configurationInfo!: pulumi.Output<types.outputs.servicelinker.v20221101preview.ConfigurationInfoResponse | undefined>;
+    public readonly configurationInfo!: pulumi.Output<types.outputs.ConfigurationInfoResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -54,7 +54,7 @@ export class Connector extends pulumi.CustomResource {
     /**
      * The network solution.
      */
-    public readonly publicNetworkSolution!: pulumi.Output<types.outputs.servicelinker.v20221101preview.PublicNetworkSolutionResponse | undefined>;
+    public readonly publicNetworkSolution!: pulumi.Output<types.outputs.PublicNetworkSolutionResponse | undefined>;
     /**
      * connection scope in source service.
      */
@@ -62,15 +62,15 @@ export class Connector extends pulumi.CustomResource {
     /**
      * An option to store secret value in secure place
      */
-    public readonly secretStore!: pulumi.Output<types.outputs.servicelinker.v20221101preview.SecretStoreResponse | undefined>;
+    public readonly secretStore!: pulumi.Output<types.outputs.SecretStoreResponse | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.servicelinker.v20221101preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The target service properties
      */
-    public readonly targetService!: pulumi.Output<types.outputs.servicelinker.v20221101preview.AzureResourceResponse | types.outputs.servicelinker.v20221101preview.ConfluentBootstrapServerResponse | types.outputs.servicelinker.v20221101preview.ConfluentSchemaRegistryResponse | types.outputs.servicelinker.v20221101preview.SelfHostedServerResponse | undefined>;
+    public readonly targetService!: pulumi.Output<types.outputs.AzureResourceResponse | types.outputs.ConfluentBootstrapServerResponse | types.outputs.ConfluentSchemaRegistryResponse | types.outputs.SelfHostedServerResponse | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -78,7 +78,7 @@ export class Connector extends pulumi.CustomResource {
     /**
      * The VNet solution.
      */
-    public readonly vNetSolution!: pulumi.Output<types.outputs.servicelinker.v20221101preview.VNetSolutionResponse | undefined>;
+    public readonly vNetSolution!: pulumi.Output<types.outputs.VNetSolutionResponse | undefined>;
 
     /**
      * Create a Connector resource with the given unique name, arguments, and options.
@@ -141,15 +141,15 @@ export interface ConnectorArgs {
     /**
      * The authentication type.
      */
-    authInfo?: pulumi.Input<types.inputs.servicelinker.v20221101preview.AccessKeyInfoBaseArgs | types.inputs.servicelinker.v20221101preview.SecretAuthInfoArgs | types.inputs.servicelinker.v20221101preview.ServicePrincipalCertificateAuthInfoArgs | types.inputs.servicelinker.v20221101preview.ServicePrincipalSecretAuthInfoArgs | types.inputs.servicelinker.v20221101preview.SystemAssignedIdentityAuthInfoArgs | types.inputs.servicelinker.v20221101preview.UserAccountAuthInfoArgs | types.inputs.servicelinker.v20221101preview.UserAssignedIdentityAuthInfoArgs>;
+    authInfo?: pulumi.Input<types.inputs.AccessKeyInfoBaseArgs | types.inputs.SecretAuthInfoArgs | types.inputs.ServicePrincipalCertificateAuthInfoArgs | types.inputs.ServicePrincipalSecretAuthInfoArgs | types.inputs.SystemAssignedIdentityAuthInfoArgs | types.inputs.UserAccountAuthInfoArgs | types.inputs.UserAssignedIdentityAuthInfoArgs>;
     /**
      * The application client type
      */
-    clientType?: pulumi.Input<string | types.enums.v20221101preview.ClientType>;
+    clientType?: pulumi.Input<string | types.enums.ClientType>;
     /**
      * The connection information consumed by applications, including secrets, connection strings.
      */
-    configurationInfo?: pulumi.Input<types.inputs.servicelinker.v20221101preview.ConfigurationInfoArgs>;
+    configurationInfo?: pulumi.Input<types.inputs.ConfigurationInfoArgs>;
     /**
      * The name of resource.
      */
@@ -161,7 +161,7 @@ export interface ConnectorArgs {
     /**
      * The network solution.
      */
-    publicNetworkSolution?: pulumi.Input<types.inputs.servicelinker.v20221101preview.PublicNetworkSolutionArgs>;
+    publicNetworkSolution?: pulumi.Input<types.inputs.PublicNetworkSolutionArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -173,7 +173,7 @@ export interface ConnectorArgs {
     /**
      * An option to store secret value in secure place
      */
-    secretStore?: pulumi.Input<types.inputs.servicelinker.v20221101preview.SecretStoreArgs>;
+    secretStore?: pulumi.Input<types.inputs.SecretStoreArgs>;
     /**
      * The ID of the target subscription.
      */
@@ -181,9 +181,9 @@ export interface ConnectorArgs {
     /**
      * The target service properties
      */
-    targetService?: pulumi.Input<types.inputs.servicelinker.v20221101preview.AzureResourceArgs | types.inputs.servicelinker.v20221101preview.ConfluentBootstrapServerArgs | types.inputs.servicelinker.v20221101preview.ConfluentSchemaRegistryArgs | types.inputs.servicelinker.v20221101preview.SelfHostedServerArgs>;
+    targetService?: pulumi.Input<types.inputs.AzureResourceArgs | types.inputs.ConfluentBootstrapServerArgs | types.inputs.ConfluentSchemaRegistryArgs | types.inputs.SelfHostedServerArgs>;
     /**
      * The VNet solution.
      */
-    vNetSolution?: pulumi.Input<types.inputs.servicelinker.v20221101preview.VNetSolutionArgs>;
+    vNetSolution?: pulumi.Input<types.inputs.VNetSolutionArgs>;
 }

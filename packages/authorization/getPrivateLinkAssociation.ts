@@ -37,7 +37,7 @@ export interface GetPrivateLinkAssociationResult {
     /**
      * The private link association properties.
      */
-    readonly properties: types.outputs.authorization.PrivateLinkAssociationPropertiesExpandedResponse;
+    readonly properties: types.outputs.PrivateLinkAssociationPropertiesExpandedResponse;
     /**
      * The operation type.
      */

@@ -35,7 +35,7 @@ export class App extends pulumi.CustomResource {
     /**
      * The Managed Identity type of the app resource
      */
-    public readonly identity!: pulumi.Output<types.outputs.appplatform.ManagedIdentityPropertiesResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedIdentityPropertiesResponse | undefined>;
     /**
      * The GEO location of the application, always the same with its parent resource
      */
@@ -47,11 +47,11 @@ export class App extends pulumi.CustomResource {
     /**
      * Properties of the App resource
      */
-    public readonly properties!: pulumi.Output<types.outputs.appplatform.AppResourcePropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.AppResourcePropertiesResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.appplatform.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource.
      */
@@ -77,7 +77,7 @@ export class App extends pulumi.CustomResource {
             resourceInputs["appName"] = args ? args.appName : undefined;
             resourceInputs["identity"] = args ? args.identity : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.appplatform.appResourcePropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.appResourcePropertiesArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
             resourceInputs["name"] = undefined /*out*/;
@@ -109,7 +109,7 @@ export interface AppArgs {
     /**
      * The Managed Identity type of the app resource
      */
-    identity?: pulumi.Input<types.inputs.appplatform.ManagedIdentityPropertiesArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedIdentityPropertiesArgs>;
     /**
      * The GEO location of the application, always the same with its parent resource
      */
@@ -117,7 +117,7 @@ export interface AppArgs {
     /**
      * Properties of the App resource
      */
-    properties?: pulumi.Input<types.inputs.appplatform.AppResourcePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.AppResourcePropertiesArgs>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets an existing AzureFrontDoor rule set with the specified rule set name under the specified subscription, resource group and profile.
  */
@@ -53,7 +53,7 @@ export interface GetRuleSetResult {
     /**
      * Read only system data
      */
-    readonly systemData: types.outputs.cdn.v20230501.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource type.
      */

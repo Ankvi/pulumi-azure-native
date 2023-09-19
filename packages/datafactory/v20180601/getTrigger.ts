@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a trigger.
  */
@@ -48,7 +48,7 @@ export interface GetTriggerResult {
     /**
      * Properties of the trigger.
      */
-    readonly properties: types.outputs.datafactory.v20180601.BlobEventsTriggerResponse | types.outputs.datafactory.v20180601.BlobTriggerResponse | types.outputs.datafactory.v20180601.ChainingTriggerResponse | types.outputs.datafactory.v20180601.CustomEventsTriggerResponse | types.outputs.datafactory.v20180601.MultiplePipelineTriggerResponse | types.outputs.datafactory.v20180601.RerunTumblingWindowTriggerResponse | types.outputs.datafactory.v20180601.ScheduleTriggerResponse | types.outputs.datafactory.v20180601.TumblingWindowTriggerResponse;
+    readonly properties: types.outputs.BlobEventsTriggerResponse | types.outputs.BlobTriggerResponse | types.outputs.ChainingTriggerResponse | types.outputs.CustomEventsTriggerResponse | types.outputs.MultiplePipelineTriggerResponse | types.outputs.RerunTumblingWindowTriggerResponse | types.outputs.ScheduleTriggerResponse | types.outputs.TumblingWindowTriggerResponse;
     /**
      * The resource type.
      */

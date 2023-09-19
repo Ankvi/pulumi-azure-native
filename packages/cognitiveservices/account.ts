@@ -39,7 +39,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * Identity for the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.cognitiveservices.IdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityResponse | undefined>;
     /**
      * The Kind of the resource.
      */
@@ -55,15 +55,15 @@ export class Account extends pulumi.CustomResource {
     /**
      * Properties of Cognitive Services account.
      */
-    public readonly properties!: pulumi.Output<types.outputs.cognitiveservices.AccountPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.AccountPropertiesResponse>;
     /**
      * The resource model definition representing SKU
      */
-    public readonly sku!: pulumi.Output<types.outputs.cognitiveservices.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.cognitiveservices.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -91,7 +91,7 @@ export class Account extends pulumi.CustomResource {
             resourceInputs["identity"] = args ? args.identity : undefined;
             resourceInputs["kind"] = args ? args.kind : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.cognitiveservices.accountPropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.accountPropertiesArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["sku"] = args ? args.sku : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
@@ -129,7 +129,7 @@ export interface AccountArgs {
     /**
      * Identity for the resource.
      */
-    identity?: pulumi.Input<types.inputs.cognitiveservices.IdentityArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityArgs>;
     /**
      * The Kind of the resource.
      */
@@ -141,7 +141,7 @@ export interface AccountArgs {
     /**
      * Properties of Cognitive Services account.
      */
-    properties?: pulumi.Input<types.inputs.cognitiveservices.AccountPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.AccountPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -149,7 +149,7 @@ export interface AccountArgs {
     /**
      * The resource model definition representing SKU
      */
-    sku?: pulumi.Input<types.inputs.cognitiveservices.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Resource tags.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the SAP Disk Configuration Layout prod/non-prod SAP System.
  */
@@ -26,7 +26,7 @@ export interface GetSAPDiskConfigurationsArgs {
     /**
      * The database type. Eg: HANA, DB2, etc
      */
-    databaseType: string | types.enums.v20230401.SAPDatabaseType;
+    databaseType: string | types.enums.SAPDatabaseType;
     /**
      * The VM SKU for database instance.
      */
@@ -34,11 +34,11 @@ export interface GetSAPDiskConfigurationsArgs {
     /**
      * The deployment type. Eg: SingleServer/ThreeTier
      */
-    deploymentType: string | types.enums.v20230401.SAPDeploymentType;
+    deploymentType: string | types.enums.SAPDeploymentType;
     /**
      * Defines the environment type - Production/Non Production.
      */
-    environment: string | types.enums.v20230401.SAPEnvironmentType;
+    environment: string | types.enums.SAPEnvironmentType;
     /**
      * The name of Azure region.
      */
@@ -46,7 +46,7 @@ export interface GetSAPDiskConfigurationsArgs {
     /**
      * Defines the SAP Product type.
      */
-    sapProduct: string | types.enums.v20230401.SAPProductType;
+    sapProduct: string | types.enums.SAPProductType;
 }
 
 /**
@@ -56,7 +56,7 @@ export interface GetSAPDiskConfigurationsResult {
     /**
      * The disk configuration for the db volume. For HANA, Required volumes are: ['hana/data', 'hana/log', hana/shared', 'usr/sap', 'os'], Optional volume : ['backup'].
      */
-    readonly volumeConfigurations?: {[key: string]: types.outputs.workloads.v20230401.SAPDiskConfigurationResponse};
+    readonly volumeConfigurations?: {[key: string]: types.outputs.SAPDiskConfigurationResponse};
 }
 /**
  * Get the SAP Disk Configuration Layout prod/non-prod SAP System.
@@ -73,7 +73,7 @@ export interface GetSAPDiskConfigurationsOutputArgs {
     /**
      * The database type. Eg: HANA, DB2, etc
      */
-    databaseType: pulumi.Input<string | types.enums.v20230401.SAPDatabaseType>;
+    databaseType: pulumi.Input<string | types.enums.SAPDatabaseType>;
     /**
      * The VM SKU for database instance.
      */
@@ -81,11 +81,11 @@ export interface GetSAPDiskConfigurationsOutputArgs {
     /**
      * The deployment type. Eg: SingleServer/ThreeTier
      */
-    deploymentType: pulumi.Input<string | types.enums.v20230401.SAPDeploymentType>;
+    deploymentType: pulumi.Input<string | types.enums.SAPDeploymentType>;
     /**
      * Defines the environment type - Production/Non Production.
      */
-    environment: pulumi.Input<string | types.enums.v20230401.SAPEnvironmentType>;
+    environment: pulumi.Input<string | types.enums.SAPEnvironmentType>;
     /**
      * The name of Azure region.
      */
@@ -93,5 +93,5 @@ export interface GetSAPDiskConfigurationsOutputArgs {
     /**
      * Defines the SAP Product type.
      */
-    sapProduct: pulumi.Input<string | types.enums.v20230401.SAPProductType>;
+    sapProduct: pulumi.Input<string | types.enums.SAPProductType>;
 }

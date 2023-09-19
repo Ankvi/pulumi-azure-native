@@ -35,7 +35,7 @@ export class EnvironmentContainer extends pulumi.CustomResource {
     /**
      * [Required] Additional attributes of the entity.
      */
-    public readonly environmentContainerProperties!: pulumi.Output<types.outputs.machinelearningservices.EnvironmentContainerResponse>;
+    public readonly environmentContainerProperties!: pulumi.Output<types.outputs.EnvironmentContainerResponse>;
     /**
      * The name of the resource
      */
@@ -43,7 +43,7 @@ export class EnvironmentContainer extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.machinelearningservices.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -69,7 +69,7 @@ export class EnvironmentContainer extends pulumi.CustomResource {
             if ((!args || args.workspaceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workspaceName'");
             }
-            resourceInputs["environmentContainerProperties"] = args ? (args.environmentContainerProperties ? pulumi.output(args.environmentContainerProperties).apply(types.inputs.machinelearningservices.environmentContainerArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["environmentContainerProperties"] = args ? (args.environmentContainerProperties ? pulumi.output(args.environmentContainerProperties).apply(types.inputs.environmentContainerArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["workspaceName"] = args ? args.workspaceName : undefined;
@@ -95,7 +95,7 @@ export interface EnvironmentContainerArgs {
     /**
      * [Required] Additional attributes of the entity.
      */
-    environmentContainerProperties: pulumi.Input<types.inputs.machinelearningservices.EnvironmentContainerArgs>;
+    environmentContainerProperties: pulumi.Input<types.inputs.EnvironmentContainerArgs>;
     /**
      * Container name. This is case-sensitive.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Peerings in a virtual network resource.
  */
@@ -62,11 +62,11 @@ export class VirtualNetworkPeering extends pulumi.CustomResource {
     /**
      * The reference of the remote virtual network address space.
      */
-    public readonly remoteAddressSpace!: pulumi.Output<types.outputs.network.v20190601.AddressSpaceResponse | undefined>;
+    public readonly remoteAddressSpace!: pulumi.Output<types.outputs.AddressSpaceResponse | undefined>;
     /**
      * The reference of the remote virtual network. The remote virtual network can be in the same or different region (preview). See here to register for the preview and learn more (https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-create-peering).
      */
-    public readonly remoteVirtualNetwork!: pulumi.Output<types.outputs.network.v20190601.SubResourceResponse | undefined>;
+    public readonly remoteVirtualNetwork!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * If remote gateways can be used on this virtual network. If the flag is set to true, and allowGatewayTransit on remote peering is also true, virtual network will use gateways of remote virtual network for transit. Only one peering can have this flag set to true. This flag cannot be set if virtual network already has a gateway.
      */
@@ -149,7 +149,7 @@ export interface VirtualNetworkPeeringArgs {
     /**
      * The status of the virtual network peering.
      */
-    peeringState?: pulumi.Input<string | types.enums.v20190601.VirtualNetworkPeeringState>;
+    peeringState?: pulumi.Input<string | types.enums.VirtualNetworkPeeringState>;
     /**
      * The provisioning state of the resource.
      */
@@ -157,11 +157,11 @@ export interface VirtualNetworkPeeringArgs {
     /**
      * The reference of the remote virtual network address space.
      */
-    remoteAddressSpace?: pulumi.Input<types.inputs.network.v20190601.AddressSpaceArgs>;
+    remoteAddressSpace?: pulumi.Input<types.inputs.AddressSpaceArgs>;
     /**
      * The reference of the remote virtual network. The remote virtual network can be in the same or different region (preview). See here to register for the preview and learn more (https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-create-peering).
      */
-    remoteVirtualNetwork?: pulumi.Input<types.inputs.network.v20190601.SubResourceArgs>;
+    remoteVirtualNetwork?: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * The name of the resource group.
      */

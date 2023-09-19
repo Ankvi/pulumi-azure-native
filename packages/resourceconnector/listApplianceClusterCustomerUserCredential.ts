@@ -32,11 +32,11 @@ export interface ListApplianceClusterCustomerUserCredentialResult {
     /**
      * The list of appliance kubeconfigs.
      */
-    readonly kubeconfigs: types.outputs.resourceconnector.ApplianceCredentialKubeconfigResponse[];
+    readonly kubeconfigs: types.outputs.ApplianceCredentialKubeconfigResponse[];
     /**
      * Map of Customer User Public and Private SSH Keys
      */
-    readonly sshKeys: {[key: string]: types.outputs.resourceconnector.SSHKeyResponse};
+    readonly sshKeys: {[key: string]: types.outputs.SSHKeyResponse};
 }
 /**
  * Returns the cluster customer user credentials for the dedicated appliance.

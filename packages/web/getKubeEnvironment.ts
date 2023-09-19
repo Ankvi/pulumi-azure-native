@@ -35,17 +35,17 @@ export interface GetKubeEnvironmentResult {
      * app logs to a destination. Currently only "log-analytics" is
      * supported
      */
-    readonly appLogsConfiguration?: types.outputs.web.AppLogsConfigurationResponse;
+    readonly appLogsConfiguration?: types.outputs.AppLogsConfigurationResponse;
     /**
      * Cluster configuration which determines the ARC cluster
      * components types. Eg: Choosing between BuildService kind,
      * FrontEnd Service ArtifactsStorageType etc.
      */
-    readonly arcConfiguration?: types.outputs.web.ArcConfigurationResponse;
+    readonly arcConfiguration?: types.outputs.ArcConfigurationResponse;
     /**
      * Cluster configuration for Container Apps Environments to configure Dapr Instrumentation Key and VNET Configuration
      */
-    readonly containerAppsConfiguration?: types.outputs.web.ContainerAppsConfigurationResponse;
+    readonly containerAppsConfiguration?: types.outputs.ContainerAppsConfigurationResponse;
     /**
      * Default Domain Name for the cluster
      */
@@ -61,7 +61,7 @@ export interface GetKubeEnvironmentResult {
     /**
      * Extended Location.
      */
-    readonly extendedLocation?: types.outputs.web.ExtendedLocationResponse;
+    readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
     /**
      * Resource Id.
      */

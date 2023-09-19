@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Describes a Virtual Machine run command.
  */
@@ -38,7 +38,7 @@ export class VirtualMachineScaleSetVMRunCommand extends pulumi.CustomResource {
     /**
      * User-assigned managed identity that has access to errorBlobUri storage blob. Use an empty object in case of system-assigned identity. Make sure managed identity has been given access to blob's container with 'Storage Blob Data Contributor' role assignment. In case of user-assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged 
      */
-    public readonly errorBlobManagedIdentity!: pulumi.Output<types.outputs.compute.v20230701.RunCommandManagedIdentityResponse | undefined>;
+    public readonly errorBlobManagedIdentity!: pulumi.Output<types.outputs.RunCommandManagedIdentityResponse | undefined>;
     /**
      * Specifies the Azure storage blob where script error stream will be uploaded. Use a SAS URI with read, append, create, write access OR use managed identity to provide the VM access to the blob. Refer errorBlobManagedIdentity parameter.
      */
@@ -46,7 +46,7 @@ export class VirtualMachineScaleSetVMRunCommand extends pulumi.CustomResource {
     /**
      * The virtual machine run command instance view.
      */
-    public /*out*/ readonly instanceView!: pulumi.Output<types.outputs.compute.v20230701.VirtualMachineRunCommandInstanceViewResponse>;
+    public /*out*/ readonly instanceView!: pulumi.Output<types.outputs.VirtualMachineRunCommandInstanceViewResponse>;
     /**
      * Resource location
      */
@@ -58,7 +58,7 @@ export class VirtualMachineScaleSetVMRunCommand extends pulumi.CustomResource {
     /**
      * User-assigned managed identity that has access to outputBlobUri storage blob. Use an empty object in case of system-assigned identity. Make sure managed identity has been given access to blob's container with 'Storage Blob Data Contributor' role assignment. In case of user-assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged 
      */
-    public readonly outputBlobManagedIdentity!: pulumi.Output<types.outputs.compute.v20230701.RunCommandManagedIdentityResponse | undefined>;
+    public readonly outputBlobManagedIdentity!: pulumi.Output<types.outputs.RunCommandManagedIdentityResponse | undefined>;
     /**
      * Specifies the Azure storage blob where script output stream will be uploaded. Use a SAS URI with read, append, create, write access OR use managed identity to provide the VM access to the blob. Refer outputBlobManagedIdentity parameter. 
      */
@@ -66,11 +66,11 @@ export class VirtualMachineScaleSetVMRunCommand extends pulumi.CustomResource {
     /**
      * The parameters used by the script.
      */
-    public readonly parameters!: pulumi.Output<types.outputs.compute.v20230701.RunCommandInputParameterResponse[] | undefined>;
+    public readonly parameters!: pulumi.Output<types.outputs.RunCommandInputParameterResponse[] | undefined>;
     /**
      * The parameters used by the script.
      */
-    public readonly protectedParameters!: pulumi.Output<types.outputs.compute.v20230701.RunCommandInputParameterResponse[] | undefined>;
+    public readonly protectedParameters!: pulumi.Output<types.outputs.RunCommandInputParameterResponse[] | undefined>;
     /**
      * The provisioning state, which only appears in the response. If treatFailureAsDeploymentFailure set to true, any failure in the script will fail the deployment and ProvisioningState will be marked as Failed. If treatFailureAsDeploymentFailure set to false, ProvisioningState would only reflect whether the run command was run or not by the extensions platform, it would not indicate whether script failed in case of script failures. See instance view of run command in case of script failures to see executionMessage, output, error: https://aka.ms/runcommandmanaged#get-execution-status-and-results 
      */
@@ -86,7 +86,7 @@ export class VirtualMachineScaleSetVMRunCommand extends pulumi.CustomResource {
     /**
      * The source of the run command script.
      */
-    public readonly source!: pulumi.Output<types.outputs.compute.v20230701.VirtualMachineRunCommandScriptSourceResponse | undefined>;
+    public readonly source!: pulumi.Output<types.outputs.VirtualMachineRunCommandScriptSourceResponse | undefined>;
     /**
      * Resource tags
      */
@@ -184,7 +184,7 @@ export interface VirtualMachineScaleSetVMRunCommandArgs {
     /**
      * User-assigned managed identity that has access to errorBlobUri storage blob. Use an empty object in case of system-assigned identity. Make sure managed identity has been given access to blob's container with 'Storage Blob Data Contributor' role assignment. In case of user-assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged 
      */
-    errorBlobManagedIdentity?: pulumi.Input<types.inputs.compute.v20230701.RunCommandManagedIdentityArgs>;
+    errorBlobManagedIdentity?: pulumi.Input<types.inputs.RunCommandManagedIdentityArgs>;
     /**
      * Specifies the Azure storage blob where script error stream will be uploaded. Use a SAS URI with read, append, create, write access OR use managed identity to provide the VM access to the blob. Refer errorBlobManagedIdentity parameter.
      */
@@ -200,7 +200,7 @@ export interface VirtualMachineScaleSetVMRunCommandArgs {
     /**
      * User-assigned managed identity that has access to outputBlobUri storage blob. Use an empty object in case of system-assigned identity. Make sure managed identity has been given access to blob's container with 'Storage Blob Data Contributor' role assignment. In case of user-assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged 
      */
-    outputBlobManagedIdentity?: pulumi.Input<types.inputs.compute.v20230701.RunCommandManagedIdentityArgs>;
+    outputBlobManagedIdentity?: pulumi.Input<types.inputs.RunCommandManagedIdentityArgs>;
     /**
      * Specifies the Azure storage blob where script output stream will be uploaded. Use a SAS URI with read, append, create, write access OR use managed identity to provide the VM access to the blob. Refer outputBlobManagedIdentity parameter. 
      */
@@ -208,11 +208,11 @@ export interface VirtualMachineScaleSetVMRunCommandArgs {
     /**
      * The parameters used by the script.
      */
-    parameters?: pulumi.Input<pulumi.Input<types.inputs.compute.v20230701.RunCommandInputParameterArgs>[]>;
+    parameters?: pulumi.Input<pulumi.Input<types.inputs.RunCommandInputParameterArgs>[]>;
     /**
      * The parameters used by the script.
      */
-    protectedParameters?: pulumi.Input<pulumi.Input<types.inputs.compute.v20230701.RunCommandInputParameterArgs>[]>;
+    protectedParameters?: pulumi.Input<pulumi.Input<types.inputs.RunCommandInputParameterArgs>[]>;
     /**
      * The name of the resource group.
      */
@@ -232,7 +232,7 @@ export interface VirtualMachineScaleSetVMRunCommandArgs {
     /**
      * The source of the run command script.
      */
-    source?: pulumi.Input<types.inputs.compute.v20230701.VirtualMachineRunCommandScriptSourceArgs>;
+    source?: pulumi.Input<types.inputs.VirtualMachineRunCommandScriptSourceArgs>;
     /**
      * Resource tags
      */

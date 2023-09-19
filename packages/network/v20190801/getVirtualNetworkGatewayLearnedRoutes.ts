@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * This operation retrieves a list of routes the virtual network gateway has learned, including routes learned from BGP peers.
  */
@@ -31,7 +31,7 @@ export interface GetVirtualNetworkGatewayLearnedRoutesResult {
     /**
      * List of gateway routes.
      */
-    readonly value?: types.outputs.network.v20190801.GatewayRouteResponse[];
+    readonly value?: types.outputs.GatewayRouteResponse[];
 }
 /**
  * This operation retrieves a list of routes the virtual network gateway has learned, including routes learned from BGP peers.

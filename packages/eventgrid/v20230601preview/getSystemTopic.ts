@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get properties of a system topic.
  */
@@ -35,7 +35,7 @@ export interface GetSystemTopicResult {
     /**
      * Identity information for the resource.
      */
-    readonly identity?: types.outputs.eventgrid.v20230601preview.IdentityInfoResponse;
+    readonly identity?: types.outputs.IdentityInfoResponse;
     /**
      * Location of the resource.
      */
@@ -59,7 +59,7 @@ export interface GetSystemTopicResult {
     /**
      * The system metadata relating to System Topic resource.
      */
-    readonly systemData: types.outputs.eventgrid.v20230601preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Tags of the resource.
      */

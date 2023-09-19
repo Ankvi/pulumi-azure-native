@@ -43,7 +43,7 @@ export class ScopeAccessReviewScheduleDefinitionById extends pulumi.CustomResour
     /**
      * This is the collection of backup reviewers.
      */
-    public readonly backupReviewers!: pulumi.Output<types.outputs.authorization.AccessReviewReviewerResponse[] | undefined>;
+    public readonly backupReviewers!: pulumi.Output<types.outputs.AccessReviewReviewerResponse[] | undefined>;
     /**
      * This specifies the behavior for the autoReview feature when an access review completes.
      */
@@ -99,7 +99,7 @@ export class ScopeAccessReviewScheduleDefinitionById extends pulumi.CustomResour
     /**
      * This is the collection of instances returned when one does an expand on it.
      */
-    public readonly instances!: pulumi.Output<types.outputs.authorization.AccessReviewInstanceResponse[] | undefined>;
+    public readonly instances!: pulumi.Output<types.outputs.AccessReviewInstanceResponse[] | undefined>;
     /**
      * The interval for recurrence. For a quarterly review, the interval is 3 for type : absoluteMonthly.
      */
@@ -151,7 +151,7 @@ export class ScopeAccessReviewScheduleDefinitionById extends pulumi.CustomResour
     /**
      * This is the collection of reviewers.
      */
-    public readonly reviewers!: pulumi.Output<types.outputs.authorization.AccessReviewReviewerResponse[] | undefined>;
+    public readonly reviewers!: pulumi.Output<types.outputs.AccessReviewReviewerResponse[] | undefined>;
     /**
      * This field specifies the type of reviewers for a review. Usually for a review, reviewers are explicitly assigned. However, in some cases, the reviewers may not be assigned and instead be chosen dynamically. For example managers review or self review.
      */
@@ -285,7 +285,7 @@ export interface ScopeAccessReviewScheduleDefinitionByIdArgs {
     /**
      * This is the collection of backup reviewers.
      */
-    backupReviewers?: pulumi.Input<pulumi.Input<types.inputs.authorization.AccessReviewReviewerArgs>[]>;
+    backupReviewers?: pulumi.Input<pulumi.Input<types.inputs.AccessReviewReviewerArgs>[]>;
     /**
      * This specifies the behavior for the autoReview feature when an access review completes.
      */
@@ -341,7 +341,7 @@ export interface ScopeAccessReviewScheduleDefinitionByIdArgs {
     /**
      * This is the collection of instances returned when one does an expand on it.
      */
-    instances?: pulumi.Input<pulumi.Input<types.inputs.authorization.AccessReviewInstanceArgs>[]>;
+    instances?: pulumi.Input<pulumi.Input<types.inputs.AccessReviewInstanceArgs>[]>;
     /**
      * The interval for recurrence. For a quarterly review, the interval is 3 for type : absoluteMonthly.
      */
@@ -373,7 +373,7 @@ export interface ScopeAccessReviewScheduleDefinitionByIdArgs {
     /**
      * This is the collection of reviewers.
      */
-    reviewers?: pulumi.Input<pulumi.Input<types.inputs.authorization.AccessReviewReviewerArgs>[]>;
+    reviewers?: pulumi.Input<pulumi.Input<types.inputs.AccessReviewReviewerArgs>[]>;
     /**
      * The id of the access review schedule definition.
      */

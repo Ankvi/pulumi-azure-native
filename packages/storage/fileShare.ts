@@ -103,7 +103,7 @@ export class FileShare extends pulumi.CustomResource {
     /**
      * List of stored access policies specified on the share.
      */
-    public readonly signedIdentifiers!: pulumi.Output<types.outputs.storage.SignedIdentifierResponse[] | undefined>;
+    public readonly signedIdentifiers!: pulumi.Output<types.outputs.SignedIdentifierResponse[] | undefined>;
     /**
      * Creation time of share snapshot returned in the response of list shares with expand param "snapshots".
      */
@@ -232,5 +232,5 @@ export interface FileShareArgs {
     /**
      * List of stored access policies specified on the share.
      */
-    signedIdentifiers?: pulumi.Input<pulumi.Input<types.inputs.storage.SignedIdentifierArgs>[]>;
+    signedIdentifiers?: pulumi.Input<pulumi.Input<types.inputs.SignedIdentifierArgs>[]>;
 }

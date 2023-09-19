@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The RoutePolicy resource definition.
  */
@@ -70,11 +70,11 @@ export class RoutePolicy extends pulumi.CustomResource {
     /**
      * Route Policy statements.
      */
-    public readonly statements!: pulumi.Output<types.outputs.managednetworkfabric.v20230615.RoutePolicyStatementPropertiesResponse[]>;
+    public readonly statements!: pulumi.Output<types.outputs.RoutePolicyStatementPropertiesResponse[]>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.managednetworkfabric.v20230615.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -148,7 +148,7 @@ export interface RoutePolicyArgs {
     /**
      * AddressFamilyType. This parameter decides whether the given ipv4 or ipv6 route policy.
      */
-    addressFamilyType?: pulumi.Input<string | types.enums.v20230615.AddressFamilyType>;
+    addressFamilyType?: pulumi.Input<string | types.enums.AddressFamilyType>;
     /**
      * Switch configuration description.
      */
@@ -156,7 +156,7 @@ export interface RoutePolicyArgs {
     /**
      * Default action that needs to be applied when no condition is matched. Example: Permit | Deny.
      */
-    defaultAction?: pulumi.Input<string | types.enums.v20230615.CommunityActionTypes>;
+    defaultAction?: pulumi.Input<string | types.enums.CommunityActionTypes>;
     /**
      * The geo-location where the resource lives
      */
@@ -176,7 +176,7 @@ export interface RoutePolicyArgs {
     /**
      * Route Policy statements.
      */
-    statements: pulumi.Input<pulumi.Input<types.inputs.managednetworkfabric.v20230615.RoutePolicyStatementPropertiesArgs>[]>;
+    statements: pulumi.Input<pulumi.Input<types.inputs.RoutePolicyStatementPropertiesArgs>[]>;
     /**
      * Resource tags.
      */

@@ -35,7 +35,7 @@ export class Workflow extends pulumi.CustomResource {
     /**
      * The access control configuration.
      */
-    public readonly accessControl!: pulumi.Output<types.outputs.logic.FlowAccessControlConfigurationResponse | undefined>;
+    public readonly accessControl!: pulumi.Output<types.outputs.FlowAccessControlConfigurationResponse | undefined>;
     /**
      * Gets the access endpoint.
      */
@@ -55,19 +55,19 @@ export class Workflow extends pulumi.CustomResource {
     /**
      * The endpoints configuration.
      */
-    public readonly endpointsConfiguration!: pulumi.Output<types.outputs.logic.FlowEndpointsConfigurationResponse | undefined>;
+    public readonly endpointsConfiguration!: pulumi.Output<types.outputs.FlowEndpointsConfigurationResponse | undefined>;
     /**
      * Managed service identity properties.
      */
-    public readonly identity!: pulumi.Output<types.outputs.logic.ManagedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * The integration account.
      */
-    public readonly integrationAccount!: pulumi.Output<types.outputs.logic.ResourceReferenceResponse | undefined>;
+    public readonly integrationAccount!: pulumi.Output<types.outputs.ResourceReferenceResponse | undefined>;
     /**
      * The integration service environment.
      */
-    public readonly integrationServiceEnvironment!: pulumi.Output<types.outputs.logic.ResourceReferenceResponse | undefined>;
+    public readonly integrationServiceEnvironment!: pulumi.Output<types.outputs.ResourceReferenceResponse | undefined>;
     /**
      * The resource location.
      */
@@ -79,7 +79,7 @@ export class Workflow extends pulumi.CustomResource {
     /**
      * The parameters.
      */
-    public readonly parameters!: pulumi.Output<{[key: string]: types.outputs.logic.WorkflowParameterResponse} | undefined>;
+    public readonly parameters!: pulumi.Output<{[key: string]: types.outputs.WorkflowParameterResponse} | undefined>;
     /**
      * Gets the provisioning state.
      */
@@ -87,7 +87,7 @@ export class Workflow extends pulumi.CustomResource {
     /**
      * The sku.
      */
-    public /*out*/ readonly sku!: pulumi.Output<types.outputs.logic.SkuResponse>;
+    public /*out*/ readonly sku!: pulumi.Output<types.outputs.SkuResponse>;
     /**
      * The state.
      */
@@ -173,7 +173,7 @@ export interface WorkflowArgs {
     /**
      * The access control configuration.
      */
-    accessControl?: pulumi.Input<types.inputs.logic.FlowAccessControlConfigurationArgs>;
+    accessControl?: pulumi.Input<types.inputs.FlowAccessControlConfigurationArgs>;
     /**
      * The definition.
      */
@@ -181,19 +181,19 @@ export interface WorkflowArgs {
     /**
      * The endpoints configuration.
      */
-    endpointsConfiguration?: pulumi.Input<types.inputs.logic.FlowEndpointsConfigurationArgs>;
+    endpointsConfiguration?: pulumi.Input<types.inputs.FlowEndpointsConfigurationArgs>;
     /**
      * Managed service identity properties.
      */
-    identity?: pulumi.Input<types.inputs.logic.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
      * The integration account.
      */
-    integrationAccount?: pulumi.Input<types.inputs.logic.ResourceReferenceArgs>;
+    integrationAccount?: pulumi.Input<types.inputs.ResourceReferenceArgs>;
     /**
      * The integration service environment.
      */
-    integrationServiceEnvironment?: pulumi.Input<types.inputs.logic.ResourceReferenceArgs>;
+    integrationServiceEnvironment?: pulumi.Input<types.inputs.ResourceReferenceArgs>;
     /**
      * The resource location.
      */
@@ -201,7 +201,7 @@ export interface WorkflowArgs {
     /**
      * The parameters.
      */
-    parameters?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.logic.WorkflowParameterArgs>}>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.WorkflowParameterArgs>}>;
     /**
      * The resource group name.
      */

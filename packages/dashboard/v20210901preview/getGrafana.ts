@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The grafana resource type.
  */
@@ -35,7 +35,7 @@ export interface GetGrafanaResult {
     /**
      * The managed identity of the grafana resource.
      */
-    readonly identity?: types.outputs.dashboard.v20210901preview.ManagedIdentityResponse;
+    readonly identity?: types.outputs.ManagedIdentityResponse;
     /**
      * The geo-location where the grafana resource lives
      */
@@ -47,15 +47,15 @@ export interface GetGrafanaResult {
     /**
      * Properties specific to the grafana resource.
      */
-    readonly properties: types.outputs.dashboard.v20210901preview.ManagedGrafanaPropertiesResponse;
+    readonly properties: types.outputs.ManagedGrafanaPropertiesResponse;
     /**
      * The Sku of the grafana resource.
      */
-    readonly sku?: types.outputs.dashboard.v20210901preview.ResourceSkuResponse;
+    readonly sku?: types.outputs.ResourceSkuResponse;
     /**
      * The system meta data relating to this grafana resource.
      */
-    readonly systemData: types.outputs.dashboard.v20210901preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The tags for grafana resource.
      */

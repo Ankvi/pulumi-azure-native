@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the details of registered recovery services provider.
  */
@@ -53,7 +53,7 @@ export interface GetReplicationRecoveryServicesProviderResult {
     /**
      * Provider properties.
      */
-    readonly properties: types.outputs.recoveryservices.v20230601.RecoveryServicesProviderPropertiesResponse;
+    readonly properties: types.outputs.RecoveryServicesProviderPropertiesResponse;
     /**
      * Resource Type
      */

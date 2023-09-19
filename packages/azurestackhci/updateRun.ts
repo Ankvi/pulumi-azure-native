@@ -83,11 +83,11 @@ export class UpdateRun extends pulumi.CustomResource {
     /**
      * Recursive model for child steps of this step.
      */
-    public readonly steps!: pulumi.Output<types.outputs.azurestackhci.StepResponse[] | undefined>;
+    public readonly steps!: pulumi.Output<types.outputs.StepResponse[] | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.azurestackhci.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Timestamp of the update run was started.
      */
@@ -221,7 +221,7 @@ export interface UpdateRunArgs {
     /**
      * Recursive model for child steps of this step.
      */
-    steps?: pulumi.Input<pulumi.Input<types.inputs.azurestackhci.StepArgs>[]>;
+    steps?: pulumi.Input<pulumi.Input<types.inputs.StepArgs>[]>;
     /**
      * Timestamp of the update run was started.
      */

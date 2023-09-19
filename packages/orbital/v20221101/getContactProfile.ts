@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the specified contact Profile in a specified resource group.
  */
@@ -43,7 +43,7 @@ export interface GetContactProfileResult {
     /**
      * Links of the Contact Profile. Describes RF links, modem processing, and IP endpoints.
      */
-    readonly links: types.outputs.orbital.v20221101.ContactProfileLinkResponse[];
+    readonly links: types.outputs.ContactProfileLinkResponse[];
     /**
      * The geo-location where the resource lives
      */
@@ -63,11 +63,11 @@ export interface GetContactProfileResult {
     /**
      * Network configuration of customer virtual network.
      */
-    readonly networkConfiguration: types.outputs.orbital.v20221101.ContactProfilesPropertiesResponseNetworkConfiguration;
+    readonly networkConfiguration: types.outputs.ContactProfilesPropertiesResponseNetworkConfiguration;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.orbital.v20221101.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -75,7 +75,7 @@ export interface GetContactProfileResult {
     /**
      * Third-party mission configuration of the Contact Profile. Describes RF links, modem processing, and IP endpoints.
      */
-    readonly thirdPartyConfigurations?: types.outputs.orbital.v20221101.ContactProfileThirdPartyConfigurationResponse[];
+    readonly thirdPartyConfigurations?: types.outputs.ContactProfileThirdPartyConfigurationResponse[];
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

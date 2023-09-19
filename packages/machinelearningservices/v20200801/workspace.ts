@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An object that represents a machine learning workspace.
  */
@@ -58,7 +58,7 @@ export class Workspace extends pulumi.CustomResource {
     /**
      * The encryption settings of Azure ML workspace.
      */
-    public readonly encryption!: pulumi.Output<types.outputs.machinelearningservices.v20200801.EncryptionPropertyResponse | undefined>;
+    public readonly encryption!: pulumi.Output<types.outputs.EncryptionPropertyResponse | undefined>;
     /**
      * The friendly name for this workspace. This name in mutable
      */
@@ -70,7 +70,7 @@ export class Workspace extends pulumi.CustomResource {
     /**
      * The identity of the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.machinelearningservices.v20200801.IdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityResponse | undefined>;
     /**
      * The compute name for image build
      */
@@ -90,11 +90,11 @@ export class Workspace extends pulumi.CustomResource {
     /**
      * The notebook info of Azure ML workspace.
      */
-    public /*out*/ readonly notebookInfo!: pulumi.Output<types.outputs.machinelearningservices.v20200801.NotebookResourceInfoResponse>;
+    public /*out*/ readonly notebookInfo!: pulumi.Output<types.outputs.NotebookResourceInfoResponse>;
     /**
      * The list of private endpoint connections in the workspace.
      */
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.machinelearningservices.v20200801.PrivateEndpointConnectionResponse[]>;
+    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[]>;
     /**
      * Count of private connections in the workspace
      */
@@ -110,11 +110,11 @@ export class Workspace extends pulumi.CustomResource {
     /**
      * The list of shared private link resources in this workspace.
      */
-    public readonly sharedPrivateLinkResources!: pulumi.Output<types.outputs.machinelearningservices.v20200801.SharedPrivateLinkResourceResponse[] | undefined>;
+    public readonly sharedPrivateLinkResources!: pulumi.Output<types.outputs.SharedPrivateLinkResourceResponse[] | undefined>;
     /**
      * The sku of the workspace.
      */
-    public readonly sku!: pulumi.Output<types.outputs.machinelearningservices.v20200801.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * ARM id of the storage account associated with this workspace. This cannot be changed once the workspace has been created
      */
@@ -234,7 +234,7 @@ export interface WorkspaceArgs {
     /**
      * The encryption settings of Azure ML workspace.
      */
-    encryption?: pulumi.Input<types.inputs.machinelearningservices.v20200801.EncryptionPropertyArgs>;
+    encryption?: pulumi.Input<types.inputs.EncryptionPropertyArgs>;
     /**
      * The friendly name for this workspace. This name in mutable
      */
@@ -246,7 +246,7 @@ export interface WorkspaceArgs {
     /**
      * The identity of the resource.
      */
-    identity?: pulumi.Input<types.inputs.machinelearningservices.v20200801.IdentityArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityArgs>;
     /**
      * The compute name for image build
      */
@@ -266,11 +266,11 @@ export interface WorkspaceArgs {
     /**
      * The list of shared private link resources in this workspace.
      */
-    sharedPrivateLinkResources?: pulumi.Input<pulumi.Input<types.inputs.machinelearningservices.v20200801.SharedPrivateLinkResourceArgs>[]>;
+    sharedPrivateLinkResources?: pulumi.Input<pulumi.Input<types.inputs.SharedPrivateLinkResourceArgs>[]>;
     /**
      * The sku of the workspace.
      */
-    sku?: pulumi.Input<types.inputs.machinelearningservices.v20200801.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * ARM id of the storage account associated with this workspace. This cannot be changed once the workspace has been created
      */

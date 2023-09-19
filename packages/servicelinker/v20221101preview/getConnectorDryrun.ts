@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * get a dryrun job
  */
@@ -49,15 +49,15 @@ export interface GetConnectorDryrunResult {
     /**
      * the preview of the operations for creation
      */
-    readonly operationPreviews: types.outputs.servicelinker.v20221101preview.DryrunOperationPreviewResponse[];
+    readonly operationPreviews: types.outputs.DryrunOperationPreviewResponse[];
     /**
      * The parameters of the dryrun
      */
-    readonly parameters?: types.outputs.servicelinker.v20221101preview.CreateOrUpdateDryrunParametersResponse;
+    readonly parameters?: types.outputs.CreateOrUpdateDryrunParametersResponse;
     /**
      * the result of the dryrun
      */
-    readonly prerequisiteResults: (types.outputs.servicelinker.v20221101preview.BasicErrorDryrunPrerequisiteResultResponse | types.outputs.servicelinker.v20221101preview.PermissionsMissingDryrunPrerequisiteResultResponse)[];
+    readonly prerequisiteResults: (types.outputs.BasicErrorDryrunPrerequisiteResultResponse | types.outputs.PermissionsMissingDryrunPrerequisiteResultResponse)[];
     /**
      * The provisioning state. 
      */
@@ -65,7 +65,7 @@ export interface GetConnectorDryrunResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.servicelinker.v20221101preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

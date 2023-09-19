@@ -51,7 +51,7 @@ export class SourceControl extends pulumi.CustomResource {
     /**
      * Information regarding the latest deployment for the source control.
      */
-    public readonly lastDeploymentInfo!: pulumi.Output<types.outputs.securityinsights.DeploymentInfoResponse | undefined>;
+    public readonly lastDeploymentInfo!: pulumi.Output<types.outputs.DeploymentInfoResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -63,15 +63,15 @@ export class SourceControl extends pulumi.CustomResource {
     /**
      * Repository metadata.
      */
-    public readonly repository!: pulumi.Output<types.outputs.securityinsights.RepositoryResponse>;
+    public readonly repository!: pulumi.Output<types.outputs.RepositoryResponse>;
     /**
      * Information regarding the resources created in user's repository.
      */
-    public readonly repositoryResourceInfo!: pulumi.Output<types.outputs.securityinsights.RepositoryResourceInfoResponse | undefined>;
+    public readonly repositoryResourceInfo!: pulumi.Output<types.outputs.RepositoryResourceInfoResponse | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.securityinsights.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -170,7 +170,7 @@ export interface SourceControlArgs {
     /**
      * Information regarding the latest deployment for the source control.
      */
-    lastDeploymentInfo?: pulumi.Input<types.inputs.securityinsights.DeploymentInfoArgs>;
+    lastDeploymentInfo?: pulumi.Input<types.inputs.DeploymentInfoArgs>;
     /**
      * The repository type of the source control
      */
@@ -178,11 +178,11 @@ export interface SourceControlArgs {
     /**
      * Repository metadata.
      */
-    repository: pulumi.Input<types.inputs.securityinsights.RepositoryArgs>;
+    repository: pulumi.Input<types.inputs.RepositoryArgs>;
     /**
      * Information regarding the resources created in user's repository.
      */
-    repositoryResourceInfo?: pulumi.Input<types.inputs.securityinsights.RepositoryResourceInfoArgs>;
+    repositoryResourceInfo?: pulumi.Input<types.inputs.RepositoryResourceInfoArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

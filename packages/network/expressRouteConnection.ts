@@ -47,7 +47,7 @@ export class ExpressRouteConnection extends pulumi.CustomResource {
     /**
      * The ExpressRoute circuit peering.
      */
-    public readonly expressRouteCircuitPeering!: pulumi.Output<types.outputs.network.ExpressRouteCircuitPeeringIdResponse>;
+    public readonly expressRouteCircuitPeering!: pulumi.Output<types.outputs.ExpressRouteCircuitPeeringIdResponse>;
     /**
      * Enable FastPath to vWan Firewall hub.
      */
@@ -63,7 +63,7 @@ export class ExpressRouteConnection extends pulumi.CustomResource {
     /**
      * The Routing Configuration indicating the associated and propagated route tables on this connection.
      */
-    public readonly routingConfiguration!: pulumi.Output<types.outputs.network.RoutingConfigurationResponse | undefined>;
+    public readonly routingConfiguration!: pulumi.Output<types.outputs.RoutingConfigurationResponse | undefined>;
     /**
      * The routing weight associated to the connection.
      */
@@ -146,7 +146,7 @@ export interface ExpressRouteConnectionArgs {
     /**
      * The ExpressRoute circuit peering.
      */
-    expressRouteCircuitPeering: pulumi.Input<types.inputs.network.ExpressRouteCircuitPeeringIdArgs>;
+    expressRouteCircuitPeering: pulumi.Input<types.inputs.ExpressRouteCircuitPeeringIdArgs>;
     /**
      * Enable FastPath to vWan Firewall hub.
      */
@@ -170,7 +170,7 @@ export interface ExpressRouteConnectionArgs {
     /**
      * The Routing Configuration indicating the associated and propagated route tables on this connection.
      */
-    routingConfiguration?: pulumi.Input<types.inputs.network.RoutingConfigurationArgs>;
+    routingConfiguration?: pulumi.Input<types.inputs.RoutingConfigurationArgs>;
     /**
      * The routing weight associated to the connection.
      */

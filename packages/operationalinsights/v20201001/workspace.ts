@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The top level Workspace resource container.
  */
@@ -46,7 +46,7 @@ export class Workspace extends pulumi.CustomResource {
     /**
      * Workspace features.
      */
-    public readonly features!: pulumi.Output<types.outputs.operationalinsights.v20201001.WorkspaceFeaturesResponse | undefined>;
+    public readonly features!: pulumi.Output<types.outputs.WorkspaceFeaturesResponse | undefined>;
     /**
      * Indicates whether customer managed storage is mandatory for query management.
      */
@@ -66,7 +66,7 @@ export class Workspace extends pulumi.CustomResource {
     /**
      * List of linked private link scope resources.
      */
-    public /*out*/ readonly privateLinkScopedResources!: pulumi.Output<types.outputs.operationalinsights.v20201001.PrivateLinkScopedResourceResponse[]>;
+    public /*out*/ readonly privateLinkScopedResources!: pulumi.Output<types.outputs.PrivateLinkScopedResourceResponse[]>;
     /**
      * The provisioning state of the workspace.
      */
@@ -86,7 +86,7 @@ export class Workspace extends pulumi.CustomResource {
     /**
      * The SKU of the workspace.
      */
-    public readonly sku!: pulumi.Output<types.outputs.operationalinsights.v20201001.WorkspaceSkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.WorkspaceSkuResponse | undefined>;
     /**
      * Resource tags.
      */
@@ -98,7 +98,7 @@ export class Workspace extends pulumi.CustomResource {
     /**
      * The daily volume cap for ingestion.
      */
-    public readonly workspaceCapping!: pulumi.Output<types.outputs.operationalinsights.v20201001.WorkspaceCappingResponse | undefined>;
+    public readonly workspaceCapping!: pulumi.Output<types.outputs.WorkspaceCappingResponse | undefined>;
 
     /**
      * Create a Workspace resource with the given unique name, arguments, and options.
@@ -170,7 +170,7 @@ export interface WorkspaceArgs {
     /**
      * Workspace features.
      */
-    features?: pulumi.Input<types.inputs.operationalinsights.v20201001.WorkspaceFeaturesArgs>;
+    features?: pulumi.Input<types.inputs.WorkspaceFeaturesArgs>;
     /**
      * Indicates whether customer managed storage is mandatory for query management.
      */
@@ -182,15 +182,15 @@ export interface WorkspaceArgs {
     /**
      * The provisioning state of the workspace.
      */
-    provisioningState?: pulumi.Input<string | types.enums.v20201001.WorkspaceEntityStatus>;
+    provisioningState?: pulumi.Input<string | types.enums.WorkspaceEntityStatus>;
     /**
      * The network access type for accessing Log Analytics ingestion.
      */
-    publicNetworkAccessForIngestion?: pulumi.Input<string | types.enums.v20201001.PublicNetworkAccessType>;
+    publicNetworkAccessForIngestion?: pulumi.Input<string | types.enums.PublicNetworkAccessType>;
     /**
      * The network access type for accessing Log Analytics query.
      */
-    publicNetworkAccessForQuery?: pulumi.Input<string | types.enums.v20201001.PublicNetworkAccessType>;
+    publicNetworkAccessForQuery?: pulumi.Input<string | types.enums.PublicNetworkAccessType>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -202,7 +202,7 @@ export interface WorkspaceArgs {
     /**
      * The SKU of the workspace.
      */
-    sku?: pulumi.Input<types.inputs.operationalinsights.v20201001.WorkspaceSkuArgs>;
+    sku?: pulumi.Input<types.inputs.WorkspaceSkuArgs>;
     /**
      * Resource tags.
      */
@@ -210,7 +210,7 @@ export interface WorkspaceArgs {
     /**
      * The daily volume cap for ingestion.
      */
-    workspaceCapping?: pulumi.Input<types.inputs.operationalinsights.v20201001.WorkspaceCappingArgs>;
+    workspaceCapping?: pulumi.Input<types.inputs.WorkspaceCappingArgs>;
     /**
      * The name of the workspace.
      */

@@ -45,11 +45,11 @@ export interface GetDevToolPortalResult {
     /**
      * Dev Tool Portal properties payload
      */
-    readonly properties: types.outputs.appplatform.DevToolPortalPropertiesResponse;
+    readonly properties: types.outputs.DevToolPortalPropertiesResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.appplatform.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource.
      */

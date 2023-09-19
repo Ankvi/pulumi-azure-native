@@ -47,11 +47,11 @@ export interface GetSubAccountTagRuleResult {
     /**
      * Definition of the properties for a TagRules resource.
      */
-    readonly properties: types.outputs.logz.MonitoringTagRulesPropertiesResponse;
+    readonly properties: types.outputs.MonitoringTagRulesPropertiesResponse;
     /**
      * The system metadata relating to this resource
      */
-    readonly systemData: types.outputs.logz.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the rule set.
      */

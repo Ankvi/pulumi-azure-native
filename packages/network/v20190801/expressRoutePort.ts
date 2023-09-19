@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * ExpressRoutePort resource definition.
  */
@@ -42,7 +42,7 @@ export class ExpressRoutePort extends pulumi.CustomResource {
     /**
      * Reference the ExpressRoute circuit(s) that are provisioned on this ExpressRoutePort resource.
      */
-    public /*out*/ readonly circuits!: pulumi.Output<types.outputs.network.v20190801.SubResourceResponse[]>;
+    public /*out*/ readonly circuits!: pulumi.Output<types.outputs.SubResourceResponse[]>;
     /**
      * Encapsulation method on physical ports.
      */
@@ -58,11 +58,11 @@ export class ExpressRoutePort extends pulumi.CustomResource {
     /**
      * The identity of ExpressRoutePort, if configured.
      */
-    public readonly identity!: pulumi.Output<types.outputs.network.v20190801.ManagedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * The set of physical links of the ExpressRoutePort resource.
      */
-    public readonly links!: pulumi.Output<types.outputs.network.v20190801.ExpressRouteLinkResponse[] | undefined>;
+    public readonly links!: pulumi.Output<types.outputs.ExpressRouteLinkResponse[] | undefined>;
     /**
      * Resource location.
      */
@@ -171,7 +171,7 @@ export interface ExpressRoutePortArgs {
     /**
      * Encapsulation method on physical ports.
      */
-    encapsulation?: pulumi.Input<string | types.enums.v20190801.ExpressRoutePortsEncapsulation>;
+    encapsulation?: pulumi.Input<string | types.enums.ExpressRoutePortsEncapsulation>;
     /**
      * The name of the ExpressRoutePort resource.
      */
@@ -183,11 +183,11 @@ export interface ExpressRoutePortArgs {
     /**
      * The identity of ExpressRoutePort, if configured.
      */
-    identity?: pulumi.Input<types.inputs.network.v20190801.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
      * The set of physical links of the ExpressRoutePort resource.
      */
-    links?: pulumi.Input<pulumi.Input<types.inputs.network.v20190801.ExpressRouteLinkArgs>[]>;
+    links?: pulumi.Input<pulumi.Input<types.inputs.ExpressRouteLinkArgs>[]>;
     /**
      * Resource location.
      */

@@ -1,510 +1,253 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
-export namespace deploymentmanager {
+/**
+ * ApiKey authentication gives a name and a value that can be included in either the request header or query parameters.
+ */
+export interface ApiKeyAuthenticationArgs {
     /**
-     * ApiKey authentication gives a name and a value that can be included in either the request header or query parameters.
+     * The location of the authentication key/value pair in the request.
      */
-    export interface ApiKeyAuthenticationArgs {
-        /**
-         * The location of the authentication key/value pair in the request.
-         */
-        in: pulumi.Input<enums.RestAuthLocation>;
-        /**
-         * The key name of the authentication key/value pair.
-         */
-        name: pulumi.Input<string>;
-        /**
-         * The authentication type.
-         * Expected value is 'ApiKey'.
-         */
-        type: pulumi.Input<"ApiKey">;
-        /**
-         * The value of the authentication key/value pair.
-         */
-        value: pulumi.Input<string>;
-    }
-
+    in: pulumi.Input<enums.RestAuthLocation>;
     /**
-     * Defines the properties of a health check step.
+     * The key name of the authentication key/value pair.
      */
-    export interface HealthCheckStepPropertiesArgs {
-        /**
-         * The health check step attributes
-         */
-        attributes: pulumi.Input<RestHealthCheckStepAttributesArgs>;
-        /**
-         * The type of step.
-         * Expected value is 'HealthCheck'.
-         */
-        stepType: pulumi.Input<"HealthCheck">;
-    }
-
+    name: pulumi.Input<string>;
     /**
-     * Identity for the resource.
+     * The authentication type.
+     * Expected value is 'ApiKey'.
      */
-    export interface IdentityArgs {
-        /**
-         * The list of identities.
-         */
-        identityIds: pulumi.Input<pulumi.Input<string>[]>;
-        /**
-         * The identity type.
-         */
-        type: pulumi.Input<string>;
-    }
-
+    type: pulumi.Input<"ApiKey">;
     /**
-     * The properties that define a step.
+     * The value of the authentication key/value pair.
      */
-    export interface PrePostStepArgs {
-        /**
-         * The resource Id of the step to be run.
-         */
-        stepId: pulumi.Input<string>;
-    }
+    value: pulumi.Input<string>;
+}
 
+/**
+ * Defines the properties of a health check step.
+ */
+export interface HealthCheckStepPropertiesArgs {
     /**
-     * A REST based health check
+     * The health check step attributes
      */
-    export interface RestHealthCheckArgs {
-        /**
-         * A unique name for this check.
-         */
-        name: pulumi.Input<string>;
-        /**
-         * The request to the health provider.
-         */
-        request: pulumi.Input<RestRequestArgs>;
-        /**
-         * The expected response from the health provider. If no expected response is provided, the default is to expect the received response to have an HTTP status code of 200 OK.
-         */
-        response?: pulumi.Input<RestResponseArgs>;
-    }
-
+    attributes: pulumi.Input<RestHealthCheckStepAttributesArgs>;
     /**
-     * Defines the REST health check step properties.
+     * The type of step.
+     * Expected value is 'HealthCheck'.
      */
-    export interface RestHealthCheckStepAttributesArgs {
-        /**
-         * The list of checks that form the health check step.
-         */
-        healthChecks: pulumi.Input<pulumi.Input<RestHealthCheckArgs>[]>;
-        /**
-         * The duration in ISO 8601 format for which the resource is expected to be continuously healthy. If maxElasticDuration is specified, healthy state duration is enforced after the detection of first healthy signal.
-         */
-        healthyStateDuration: pulumi.Input<string>;
-        /**
-         * The duration in ISO 8601 format for which the health check waits for the resource to become healthy. Health check fails if it doesn't. Health check starts to enforce healthyStateDuration once resource becomes healthy.
-         */
-        maxElasticDuration?: pulumi.Input<string>;
-        /**
-         * The type of health check.
-         * Expected value is 'REST'.
-         */
-        type: pulumi.Input<"REST">;
-        /**
-         * The duration in ISO 8601 format for which health check waits idly without any checks.
-         */
-        waitDuration?: pulumi.Input<string>;
-    }
+    stepType: pulumi.Input<"HealthCheck">;
+}
 
+/**
+ * Identity for the resource.
+ */
+export interface IdentityArgs {
     /**
-     * The properties that make up a REST request
+     * The list of identities.
      */
-    export interface RestRequestArgs {
-        /**
-         * The authentication information required in the request to the health provider.
-         */
-        authentication: pulumi.Input<ApiKeyAuthenticationArgs | RolloutIdentityAuthenticationArgs>;
-        /**
-         * The HTTP method to use for the request.
-         */
-        method: pulumi.Input<enums.RestRequestMethod>;
-        /**
-         * The HTTP URI to use for the request.
-         */
-        uri: pulumi.Input<string>;
-    }
-
+    identityIds: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The properties that make up the expected REST response
+     * The identity type.
      */
-    export interface RestResponseArgs {
-        /**
-         * The regular expressions to match the response content with.
-         */
-        regex?: pulumi.Input<RestResponseRegexArgs>;
-        /**
-         * The HTTP status codes expected in a successful health check response. The response is expected to match one of the given status codes. If no expected status codes are provided, default expected status code is 200 OK.
-         */
-        successStatusCodes?: pulumi.Input<pulumi.Input<string>[]>;
-    }
+    type: pulumi.Input<string>;
+}
 
+/**
+ * The properties that define a step.
+ */
+export interface PrePostStepArgs {
+    /**
+     * The resource Id of the step to be run.
+     */
+    stepId: pulumi.Input<string>;
+}
+
+/**
+ * A REST based health check
+ */
+export interface RestHealthCheckArgs {
+    /**
+     * A unique name for this check.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The request to the health provider.
+     */
+    request: pulumi.Input<RestRequestArgs>;
+    /**
+     * The expected response from the health provider. If no expected response is provided, the default is to expect the received response to have an HTTP status code of 200 OK.
+     */
+    response?: pulumi.Input<RestResponseArgs>;
+}
+
+/**
+ * Defines the REST health check step properties.
+ */
+export interface RestHealthCheckStepAttributesArgs {
+    /**
+     * The list of checks that form the health check step.
+     */
+    healthChecks: pulumi.Input<pulumi.Input<RestHealthCheckArgs>[]>;
+    /**
+     * The duration in ISO 8601 format for which the resource is expected to be continuously healthy. If maxElasticDuration is specified, healthy state duration is enforced after the detection of first healthy signal.
+     */
+    healthyStateDuration: pulumi.Input<string>;
+    /**
+     * The duration in ISO 8601 format for which the health check waits for the resource to become healthy. Health check fails if it doesn't. Health check starts to enforce healthyStateDuration once resource becomes healthy.
+     */
+    maxElasticDuration?: pulumi.Input<string>;
+    /**
+     * The type of health check.
+     * Expected value is 'REST'.
+     */
+    type: pulumi.Input<"REST">;
+    /**
+     * The duration in ISO 8601 format for which health check waits idly without any checks.
+     */
+    waitDuration?: pulumi.Input<string>;
+}
+
+/**
+ * The properties that make up a REST request
+ */
+export interface RestRequestArgs {
+    /**
+     * The authentication information required in the request to the health provider.
+     */
+    authentication: pulumi.Input<ApiKeyAuthenticationArgs | RolloutIdentityAuthenticationArgs>;
+    /**
+     * The HTTP method to use for the request.
+     */
+    method: pulumi.Input<enums.RestRequestMethod>;
+    /**
+     * The HTTP URI to use for the request.
+     */
+    uri: pulumi.Input<string>;
+}
+
+/**
+ * The properties that make up the expected REST response
+ */
+export interface RestResponseArgs {
     /**
      * The regular expressions to match the response content with.
      */
-    export interface RestResponseRegexArgs {
-        /**
-         * Indicates whether any or all of the expressions should match with the response content.
-         */
-        matchQuantifier?: pulumi.Input<enums.RestMatchQuantifier>;
-        /**
-         * The list of regular expressions.
-         */
-        matches?: pulumi.Input<pulumi.Input<string>[]>;
-    }
-
+    regex?: pulumi.Input<RestResponseRegexArgs>;
     /**
-     * RolloutIdentity uses the user-assigned managed identity authentication context specified in the Identity property during rollout creation.
+     * The HTTP status codes expected in a successful health check response. The response is expected to match one of the given status codes. If no expected status codes are provided, default expected status code is 200 OK.
      */
-    export interface RolloutIdentityAuthenticationArgs {
-        /**
-         * The authentication type.
-         * Expected value is 'RolloutIdentity'.
-         */
-        type: pulumi.Input<"RolloutIdentity">;
-    }
+    successStatusCodes?: pulumi.Input<pulumi.Input<string>[]>;
+}
 
+/**
+ * The regular expressions to match the response content with.
+ */
+export interface RestResponseRegexArgs {
     /**
-     * Defines the properties to access the artifacts using an Azure Storage SAS URI.
+     * Indicates whether any or all of the expressions should match with the response content.
      */
-    export interface SasAuthenticationArgs {
-        /**
-         * The SAS URI to the Azure Storage blob container. Any offset from the root of the container to where the artifacts are located can be defined in the artifactRoot.
-         */
-        sasUri: pulumi.Input<string>;
-        /**
-         * The authentication type
-         * Expected value is 'Sas'.
-         */
-        type: pulumi.Input<"Sas">;
-    }
-
+    matchQuantifier?: pulumi.Input<enums.RestMatchQuantifier>;
     /**
-     * Defines the artifacts of a service unit.
+     * The list of regular expressions.
      */
-    export interface ServiceUnitArtifactsArgs {
-        /**
-         * The path to the ARM parameters file relative to the artifact source.
-         */
-        parametersArtifactSourceRelativePath?: pulumi.Input<string>;
-        /**
-         * The full URI of the ARM parameters file with the SAS token.
-         */
-        parametersUri?: pulumi.Input<string>;
-        /**
-         * The path to the ARM template file relative to the artifact source.
-         */
-        templateArtifactSourceRelativePath?: pulumi.Input<string>;
-        /**
-         * The full URI of the ARM template file with the SAS token.
-         */
-        templateUri?: pulumi.Input<string>;
-    }
+    matches?: pulumi.Input<pulumi.Input<string>[]>;
+}
 
+/**
+ * RolloutIdentity uses the user-assigned managed identity authentication context specified in the Identity property during rollout creation.
+ */
+export interface RolloutIdentityAuthenticationArgs {
     /**
-     * The properties that define a Step group in a rollout.
+     * The authentication type.
+     * Expected value is 'RolloutIdentity'.
      */
-    export interface StepGroupArgs {
-        /**
-         * The list of step group names on which this step group depends on.
-         */
-        dependsOnStepGroups?: pulumi.Input<pulumi.Input<string>[]>;
-        /**
-         * The resource Id of service unit to be deployed. The service unit should be from the service topology referenced in targetServiceTopologyId
-         */
-        deploymentTargetId: pulumi.Input<string>;
-        /**
-         * The name of the step group.
-         */
-        name: pulumi.Input<string>;
-        /**
-         * The list of steps to be run after deploying the target.
-         */
-        postDeploymentSteps?: pulumi.Input<pulumi.Input<PrePostStepArgs>[]>;
-        /**
-         * The list of steps to be run before deploying the target.
-         */
-        preDeploymentSteps?: pulumi.Input<pulumi.Input<PrePostStepArgs>[]>;
-    }
+    type: pulumi.Input<"RolloutIdentity">;
+}
 
+/**
+ * Defines the properties to access the artifacts using an Azure Storage SAS URI.
+ */
+export interface SasAuthenticationArgs {
     /**
-     * The parameters for the wait step.
+     * The SAS URI to the Azure Storage blob container. Any offset from the root of the container to where the artifacts are located can be defined in the artifactRoot.
      */
-    export interface WaitStepAttributesArgs {
-        /**
-         * The duration in ISO 8601 format of how long the wait should be.
-         */
-        duration: pulumi.Input<string>;
-    }
-
+    sasUri: pulumi.Input<string>;
     /**
-     * Defines the properties of a Wait step.
+     * The authentication type
+     * Expected value is 'Sas'.
      */
-    export interface WaitStepPropertiesArgs {
-        /**
-         * The Wait attributes
-         */
-        attributes: pulumi.Input<WaitStepAttributesArgs>;
-        /**
-         * The type of step.
-         * Expected value is 'Wait'.
-         */
-        stepType: pulumi.Input<"Wait">;
-    }
+    type: pulumi.Input<"Sas">;
+}
 
-    export namespace v20191101preview {
-        /**
-         * ApiKey authentication gives a name and a value that can be included in either the request header or query parameters.
-         */
-        export interface ApiKeyAuthenticationArgs {
-            /**
-             * The location of the authentication key/value pair in the request.
-             */
-            in: pulumi.Input<enums.v20191101preview.RestAuthLocation>;
-            /**
-             * The key name of the authentication key/value pair.
-             */
-            name: pulumi.Input<string>;
-            /**
-             * The authentication type.
-             * Expected value is 'ApiKey'.
-             */
-            type: pulumi.Input<"ApiKey">;
-            /**
-             * The value of the authentication key/value pair.
-             */
-            value: pulumi.Input<string>;
-        }
+/**
+ * Defines the artifacts of a service unit.
+ */
+export interface ServiceUnitArtifactsArgs {
+    /**
+     * The path to the ARM parameters file relative to the artifact source.
+     */
+    parametersArtifactSourceRelativePath?: pulumi.Input<string>;
+    /**
+     * The full URI of the ARM parameters file with the SAS token.
+     */
+    parametersUri?: pulumi.Input<string>;
+    /**
+     * The path to the ARM template file relative to the artifact source.
+     */
+    templateArtifactSourceRelativePath?: pulumi.Input<string>;
+    /**
+     * The full URI of the ARM template file with the SAS token.
+     */
+    templateUri?: pulumi.Input<string>;
+}
 
-        /**
-         * Defines the properties of a health check step.
-         */
-        export interface HealthCheckStepPropertiesArgs {
-            /**
-             * The health check step attributes
-             */
-            attributes: pulumi.Input<v20191101preview.RestHealthCheckStepAttributesArgs>;
-            /**
-             * The type of step.
-             * Expected value is 'HealthCheck'.
-             */
-            stepType: pulumi.Input<"HealthCheck">;
-        }
+/**
+ * The properties that define a Step group in a rollout.
+ */
+export interface StepGroupArgs {
+    /**
+     * The list of step group names on which this step group depends on.
+     */
+    dependsOnStepGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The resource Id of service unit to be deployed. The service unit should be from the service topology referenced in targetServiceTopologyId
+     */
+    deploymentTargetId: pulumi.Input<string>;
+    /**
+     * The name of the step group.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The list of steps to be run after deploying the target.
+     */
+    postDeploymentSteps?: pulumi.Input<pulumi.Input<PrePostStepArgs>[]>;
+    /**
+     * The list of steps to be run before deploying the target.
+     */
+    preDeploymentSteps?: pulumi.Input<pulumi.Input<PrePostStepArgs>[]>;
+}
 
-        /**
-         * Identity for the resource.
-         */
-        export interface IdentityArgs {
-            /**
-             * The list of identities.
-             */
-            identityIds: pulumi.Input<pulumi.Input<string>[]>;
-            /**
-             * The identity type.
-             */
-            type: pulumi.Input<string>;
-        }
+/**
+ * The parameters for the wait step.
+ */
+export interface WaitStepAttributesArgs {
+    /**
+     * The duration in ISO 8601 format of how long the wait should be.
+     */
+    duration: pulumi.Input<string>;
+}
 
-        /**
-         * The properties that define a step.
-         */
-        export interface PrePostStepArgs {
-            /**
-             * The resource Id of the step to be run.
-             */
-            stepId: pulumi.Input<string>;
-        }
-
-        /**
-         * A REST based health check
-         */
-        export interface RestHealthCheckArgs {
-            /**
-             * A unique name for this check.
-             */
-            name: pulumi.Input<string>;
-            /**
-             * The request to the health provider.
-             */
-            request: pulumi.Input<v20191101preview.RestRequestArgs>;
-            /**
-             * The expected response from the health provider. If no expected response is provided, the default is to expect the received response to have an HTTP status code of 200 OK.
-             */
-            response?: pulumi.Input<v20191101preview.RestResponseArgs>;
-        }
-
-        /**
-         * Defines the REST health check step properties.
-         */
-        export interface RestHealthCheckStepAttributesArgs {
-            /**
-             * The list of checks that form the health check step.
-             */
-            healthChecks: pulumi.Input<pulumi.Input<v20191101preview.RestHealthCheckArgs>[]>;
-            /**
-             * The duration in ISO 8601 format for which the resource is expected to be continuously healthy. If maxElasticDuration is specified, healthy state duration is enforced after the detection of first healthy signal.
-             */
-            healthyStateDuration: pulumi.Input<string>;
-            /**
-             * The duration in ISO 8601 format for which the health check waits for the resource to become healthy. Health check fails if it doesn't. Health check starts to enforce healthyStateDuration once resource becomes healthy.
-             */
-            maxElasticDuration?: pulumi.Input<string>;
-            /**
-             * The type of health check.
-             * Expected value is 'REST'.
-             */
-            type: pulumi.Input<"REST">;
-            /**
-             * The duration in ISO 8601 format for which health check waits idly without any checks.
-             */
-            waitDuration?: pulumi.Input<string>;
-        }
-
-        /**
-         * The properties that make up a REST request
-         */
-        export interface RestRequestArgs {
-            /**
-             * The authentication information required in the request to the health provider.
-             */
-            authentication: pulumi.Input<v20191101preview.ApiKeyAuthenticationArgs | v20191101preview.RolloutIdentityAuthenticationArgs>;
-            /**
-             * The HTTP method to use for the request.
-             */
-            method: pulumi.Input<enums.v20191101preview.RestRequestMethod>;
-            /**
-             * The HTTP URI to use for the request.
-             */
-            uri: pulumi.Input<string>;
-        }
-
-        /**
-         * The properties that make up the expected REST response
-         */
-        export interface RestResponseArgs {
-            /**
-             * The regular expressions to match the response content with.
-             */
-            regex?: pulumi.Input<v20191101preview.RestResponseRegexArgs>;
-            /**
-             * The HTTP status codes expected in a successful health check response. The response is expected to match one of the given status codes. If no expected status codes are provided, default expected status code is 200 OK.
-             */
-            successStatusCodes?: pulumi.Input<pulumi.Input<string>[]>;
-        }
-
-        /**
-         * The regular expressions to match the response content with.
-         */
-        export interface RestResponseRegexArgs {
-            /**
-             * Indicates whether any or all of the expressions should match with the response content.
-             */
-            matchQuantifier?: pulumi.Input<enums.v20191101preview.RestMatchQuantifier>;
-            /**
-             * The list of regular expressions.
-             */
-            matches?: pulumi.Input<pulumi.Input<string>[]>;
-        }
-
-        /**
-         * RolloutIdentity uses the user-assigned managed identity authentication context specified in the Identity property during rollout creation.
-         */
-        export interface RolloutIdentityAuthenticationArgs {
-            /**
-             * The authentication type.
-             * Expected value is 'RolloutIdentity'.
-             */
-            type: pulumi.Input<"RolloutIdentity">;
-        }
-
-        /**
-         * Defines the properties to access the artifacts using an Azure Storage SAS URI.
-         */
-        export interface SasAuthenticationArgs {
-            /**
-             * The SAS URI to the Azure Storage blob container. Any offset from the root of the container to where the artifacts are located can be defined in the artifactRoot.
-             */
-            sasUri: pulumi.Input<string>;
-            /**
-             * The authentication type
-             * Expected value is 'Sas'.
-             */
-            type: pulumi.Input<"Sas">;
-        }
-
-        /**
-         * Defines the artifacts of a service unit.
-         */
-        export interface ServiceUnitArtifactsArgs {
-            /**
-             * The path to the ARM parameters file relative to the artifact source.
-             */
-            parametersArtifactSourceRelativePath?: pulumi.Input<string>;
-            /**
-             * The full URI of the ARM parameters file with the SAS token.
-             */
-            parametersUri?: pulumi.Input<string>;
-            /**
-             * The path to the ARM template file relative to the artifact source.
-             */
-            templateArtifactSourceRelativePath?: pulumi.Input<string>;
-            /**
-             * The full URI of the ARM template file with the SAS token.
-             */
-            templateUri?: pulumi.Input<string>;
-        }
-
-        /**
-         * The properties that define a Step group in a rollout.
-         */
-        export interface StepGroupArgs {
-            /**
-             * The list of step group names on which this step group depends on.
-             */
-            dependsOnStepGroups?: pulumi.Input<pulumi.Input<string>[]>;
-            /**
-             * The resource Id of service unit to be deployed. The service unit should be from the service topology referenced in targetServiceTopologyId
-             */
-            deploymentTargetId: pulumi.Input<string>;
-            /**
-             * The name of the step group.
-             */
-            name: pulumi.Input<string>;
-            /**
-             * The list of steps to be run after deploying the target.
-             */
-            postDeploymentSteps?: pulumi.Input<pulumi.Input<v20191101preview.PrePostStepArgs>[]>;
-            /**
-             * The list of steps to be run before deploying the target.
-             */
-            preDeploymentSteps?: pulumi.Input<pulumi.Input<v20191101preview.PrePostStepArgs>[]>;
-        }
-
-        /**
-         * The parameters for the wait step.
-         */
-        export interface WaitStepAttributesArgs {
-            /**
-             * The duration in ISO 8601 format of how long the wait should be.
-             */
-            duration: pulumi.Input<string>;
-        }
-
-        /**
-         * Defines the properties of a Wait step.
-         */
-        export interface WaitStepPropertiesArgs {
-            /**
-             * The Wait attributes
-             */
-            attributes: pulumi.Input<v20191101preview.WaitStepAttributesArgs>;
-            /**
-             * The type of step.
-             * Expected value is 'Wait'.
-             */
-            stepType: pulumi.Input<"Wait">;
-        }
-
-    }
+/**
+ * Defines the properties of a Wait step.
+ */
+export interface WaitStepPropertiesArgs {
+    /**
+     * The Wait attributes
+     */
+    attributes: pulumi.Input<WaitStepAttributesArgs>;
+    /**
+     * The type of step.
+     * Expected value is 'Wait'.
+     */
+    stepType: pulumi.Input<"Wait">;
 }

@@ -35,7 +35,7 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * The identity of the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.machinelearningservices.ManagedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * Specifies the location of the resource.
      */
@@ -47,11 +47,11 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * The resource of private end point.
      */
-    public /*out*/ readonly privateEndpoint!: pulumi.Output<types.outputs.machinelearningservices.PrivateEndpointResponse | undefined>;
+    public /*out*/ readonly privateEndpoint!: pulumi.Output<types.outputs.PrivateEndpointResponse | undefined>;
     /**
      * A collection of information about the state of the connection between service consumer and provider.
      */
-    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.machinelearningservices.PrivateLinkServiceConnectionStateResponse>;
+    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.PrivateLinkServiceConnectionStateResponse>;
     /**
      * The provisioning state of the private endpoint connection resource.
      */
@@ -59,11 +59,11 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * The sku of the workspace.
      */
-    public readonly sku!: pulumi.Output<types.outputs.machinelearningservices.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.machinelearningservices.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Contains resource tags defined as key/value pairs.
      */
@@ -132,7 +132,7 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * The identity of the resource.
      */
-    identity?: pulumi.Input<types.inputs.machinelearningservices.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
      * Specifies the location of the resource.
      */
@@ -144,7 +144,7 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * A collection of information about the state of the connection between service consumer and provider.
      */
-    privateLinkServiceConnectionState: pulumi.Input<types.inputs.machinelearningservices.PrivateLinkServiceConnectionStateArgs>;
+    privateLinkServiceConnectionState: pulumi.Input<types.inputs.PrivateLinkServiceConnectionStateArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -152,7 +152,7 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * The sku of the workspace.
      */
-    sku?: pulumi.Input<types.inputs.machinelearningservices.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Contains resource tags defined as key/value pairs.
      */

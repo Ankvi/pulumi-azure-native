@@ -40,8 +40,8 @@ export class CassandraResourceCassandraTable extends pulumi.CustomResource {
      * The name of the ARM resource.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
-    public readonly options!: pulumi.Output<types.outputs.documentdb.CassandraTableGetPropertiesResponseOptions | undefined>;
-    public readonly resource!: pulumi.Output<types.outputs.documentdb.CassandraTableGetPropertiesResponseResource | undefined>;
+    public readonly options!: pulumi.Output<types.outputs.CassandraTableGetPropertiesResponseOptions | undefined>;
+    public readonly resource!: pulumi.Output<types.outputs.CassandraTableGetPropertiesResponseResource | undefined>;
     /**
      * Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB".
      */
@@ -118,11 +118,11 @@ export interface CassandraResourceCassandraTableArgs {
     /**
      * A key-value pair of options to be applied for the request. This corresponds to the headers sent with the request.
      */
-    options?: pulumi.Input<types.inputs.documentdb.CreateUpdateOptionsArgs>;
+    options?: pulumi.Input<types.inputs.CreateUpdateOptionsArgs>;
     /**
      * The standard JSON format of a Cassandra table
      */
-    resource: pulumi.Input<types.inputs.documentdb.CassandraTableResourceArgs>;
+    resource: pulumi.Input<types.inputs.CassandraTableResourceArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

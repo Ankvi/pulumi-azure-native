@@ -49,7 +49,7 @@ export interface GetBandwidthSettingResult {
     /**
      * The schedules.
      */
-    readonly schedules: types.outputs.storsimple.BandwidthScheduleResponse[];
+    readonly schedules: types.outputs.BandwidthScheduleResponse[];
     /**
      * The hierarchical type of the object.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets information about a server.
  */
@@ -39,11 +39,11 @@ export interface GetServerResult {
     /**
      * Backup related properties of a server.
      */
-    readonly backup?: types.outputs.dbformysql.v20220101.BackupResponse;
+    readonly backup?: types.outputs.BackupResponse;
     /**
      * The Data Encryption for CMK.
      */
-    readonly dataEncryption?: types.outputs.dbformysql.v20220101.DataEncryptionResponse;
+    readonly dataEncryption?: types.outputs.DataEncryptionResponse;
     /**
      * The fully qualified domain name of a server.
      */
@@ -51,7 +51,7 @@ export interface GetServerResult {
     /**
      * High availability related properties of a server.
      */
-    readonly highAvailability?: types.outputs.dbformysql.v20220101.HighAvailabilityResponse;
+    readonly highAvailability?: types.outputs.HighAvailabilityResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -59,7 +59,7 @@ export interface GetServerResult {
     /**
      * The cmk identity for the server.
      */
-    readonly identity?: types.outputs.dbformysql.v20220101.IdentityResponse;
+    readonly identity?: types.outputs.IdentityResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -67,7 +67,7 @@ export interface GetServerResult {
     /**
      * Maintenance window of a server.
      */
-    readonly maintenanceWindow?: types.outputs.dbformysql.v20220101.MaintenanceWindowResponse;
+    readonly maintenanceWindow?: types.outputs.MaintenanceWindowResponse;
     /**
      * The name of the resource
      */
@@ -75,7 +75,7 @@ export interface GetServerResult {
     /**
      * Network related properties of a server.
      */
-    readonly network?: types.outputs.dbformysql.v20220101.NetworkResponse;
+    readonly network?: types.outputs.NetworkResponse;
     /**
      * The maximum number of replicas that a primary server can have.
      */
@@ -87,7 +87,7 @@ export interface GetServerResult {
     /**
      * The SKU (pricing tier) of the server.
      */
-    readonly sku?: types.outputs.dbformysql.v20220101.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * The source MySQL server id.
      */
@@ -99,11 +99,11 @@ export interface GetServerResult {
     /**
      * Storage related properties of a server.
      */
-    readonly storage?: types.outputs.dbformysql.v20220101.StorageResponse;
+    readonly storage?: types.outputs.StorageResponse;
     /**
      * The system metadata relating to this resource.
      */
-    readonly systemData: types.outputs.dbformysql.v20220101.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

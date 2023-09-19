@@ -43,7 +43,7 @@ export class Track extends pulumi.CustomResource {
     /**
      * Detailed information about a track in the asset.
      */
-    public readonly track!: pulumi.Output<types.outputs.media.AudioTrackResponse | types.outputs.media.TextTrackResponse | types.outputs.media.VideoTrackResponse | undefined>;
+    public readonly track!: pulumi.Output<types.outputs.AudioTrackResponse | types.outputs.TextTrackResponse | types.outputs.VideoTrackResponse | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -109,7 +109,7 @@ export interface TrackArgs {
     /**
      * Detailed information about a track in the asset.
      */
-    track?: pulumi.Input<types.inputs.media.AudioTrackArgs | types.inputs.media.TextTrackArgs | types.inputs.media.VideoTrackArgs>;
+    track?: pulumi.Input<types.inputs.AudioTrackArgs | types.inputs.TextTrackArgs | types.inputs.VideoTrackArgs>;
     /**
      * The Asset Track name.
      */

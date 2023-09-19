@@ -43,7 +43,7 @@ utilities.lazyLoad(exports, ["UserSettingsWithLocation"], () => require("./userS
 
 
 // Export enums:
-export * from "../types/enums/v20181001";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

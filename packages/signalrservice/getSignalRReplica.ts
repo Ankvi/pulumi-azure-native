@@ -53,11 +53,11 @@ export interface GetSignalRReplicaResult {
     /**
      * The billing information of the resource.
      */
-    readonly sku?: types.outputs.signalrservice.ResourceSkuResponse;
+    readonly sku?: types.outputs.ResourceSkuResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.signalrservice.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * AO5GC Network Function Resource
  */
@@ -74,7 +74,7 @@ export class NetworkFunction extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.mobilepacketcore.v20230515preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -169,7 +169,7 @@ export interface NetworkFunctionArgs {
     /**
      * Administrative state of the network function
      */
-    networkFunctionAdministrativeState: pulumi.Input<string | types.enums.v20230515preview.NetworkFunctionAdministrativeState>;
+    networkFunctionAdministrativeState: pulumi.Input<string | types.enums.NetworkFunctionAdministrativeState>;
     /**
      * The name of the network function
      */
@@ -177,7 +177,7 @@ export interface NetworkFunctionArgs {
     /**
      * Type of network function
      */
-    networkFunctionType: pulumi.Input<string | types.enums.v20230515preview.NetworkFunctionType>;
+    networkFunctionType: pulumi.Input<string | types.enums.NetworkFunctionType>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -185,7 +185,7 @@ export interface NetworkFunctionArgs {
     /**
      * Provisioned SKU Value.
      */
-    sku: pulumi.Input<string | types.enums.v20230515preview.SkuDefinitions>;
+    sku: pulumi.Input<string | types.enums.SkuDefinitions>;
     /**
      * Resource tags.
      */

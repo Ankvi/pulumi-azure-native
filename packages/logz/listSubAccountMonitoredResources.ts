@@ -41,7 +41,7 @@ export interface ListSubAccountMonitoredResourcesResult {
     /**
      * Results of a list operation.
      */
-    readonly value?: types.outputs.logz.MonitoredResourceResponse[];
+    readonly value?: types.outputs.MonitoredResourceResponse[];
 }
 /**
  * Response of a list operation.

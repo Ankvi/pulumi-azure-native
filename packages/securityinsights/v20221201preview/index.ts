@@ -18,4 +18,4 @@ utilities.lazyLoad(exports, ["listSourceControlRepositories","listSourceControlR
 
 
 // Export enums:
-export * from "../types/enums/v20221201preview";
+export * from "./types/enums";

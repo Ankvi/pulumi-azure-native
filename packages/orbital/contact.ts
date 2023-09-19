@@ -35,11 +35,11 @@ export class Contact extends pulumi.CustomResource {
     /**
      * The configuration associated with the allocated antenna.
      */
-    public /*out*/ readonly antennaConfiguration!: pulumi.Output<types.outputs.orbital.ContactsPropertiesResponseAntennaConfiguration>;
+    public /*out*/ readonly antennaConfiguration!: pulumi.Output<types.outputs.ContactsPropertiesResponseAntennaConfiguration>;
     /**
      * The reference to the contact profile resource.
      */
-    public readonly contactProfile!: pulumi.Output<types.outputs.orbital.ContactsPropertiesResponseContactProfile>;
+    public readonly contactProfile!: pulumi.Output<types.outputs.ContactsPropertiesResponseContactProfile>;
     /**
      * Azimuth of the antenna at the end of the contact in decimal degrees.
      */
@@ -95,7 +95,7 @@ export class Contact extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.orbital.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Transmit end time of a contact (ISO 8601 UTC standard).
      */
@@ -199,7 +199,7 @@ export interface ContactArgs {
     /**
      * The reference to the contact profile resource.
      */
-    contactProfile: pulumi.Input<types.inputs.orbital.ContactsPropertiesContactProfileArgs>;
+    contactProfile: pulumi.Input<types.inputs.ContactsPropertiesContactProfileArgs>;
     /**
      * Azure Ground Station name.
      */

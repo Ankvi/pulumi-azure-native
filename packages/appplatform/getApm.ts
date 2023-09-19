@@ -45,11 +45,11 @@ export interface GetApmResult {
     /**
      * Properties of an APM
      */
-    readonly properties: types.outputs.appplatform.ApmPropertiesResponse;
+    readonly properties: types.outputs.ApmPropertiesResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.appplatform.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource.
      */

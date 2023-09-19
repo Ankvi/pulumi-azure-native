@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Friendly domain name mapping to the endpoint hostname that the customer provides for branding purposes, e.g. www.contoso.com.
  */
@@ -34,7 +34,7 @@ export class AFDCustomDomain extends pulumi.CustomResource {
     /**
      * Resource reference to the Azure DNS zone
      */
-    public readonly azureDnsZone!: pulumi.Output<types.outputs.cdn.v20230501.ResourceReferenceResponse | undefined>;
+    public readonly azureDnsZone!: pulumi.Output<types.outputs.ResourceReferenceResponse | undefined>;
     public /*out*/ readonly deploymentStatus!: pulumi.Output<string>;
     /**
      * Provisioning substate shows the progress of custom HTTPS enabling/disabling process step by step. DCV stands for DomainControlValidation.
@@ -55,7 +55,7 @@ export class AFDCustomDomain extends pulumi.CustomResource {
     /**
      * Resource reference to the Azure resource where custom domain ownership was prevalidated
      */
-    public readonly preValidatedCustomDomainResourceId!: pulumi.Output<types.outputs.cdn.v20230501.ResourceReferenceResponse | undefined>;
+    public readonly preValidatedCustomDomainResourceId!: pulumi.Output<types.outputs.ResourceReferenceResponse | undefined>;
     /**
      * The name of the profile which holds the domain.
      */
@@ -67,11 +67,11 @@ export class AFDCustomDomain extends pulumi.CustomResource {
     /**
      * Read only system data
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.cdn.v20230501.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own certificate. If not specified, enabling ssl uses AzureFrontDoor managed certificate by default.
      */
-    public readonly tlsSettings!: pulumi.Output<types.outputs.cdn.v20230501.AFDDomainHttpsParametersResponse | undefined>;
+    public readonly tlsSettings!: pulumi.Output<types.outputs.AFDDomainHttpsParametersResponse | undefined>;
     /**
      * Resource type.
      */
@@ -79,7 +79,7 @@ export class AFDCustomDomain extends pulumi.CustomResource {
     /**
      * Values the customer needs to validate domain ownership
      */
-    public /*out*/ readonly validationProperties!: pulumi.Output<types.outputs.cdn.v20230501.DomainValidationPropertiesResponse>;
+    public /*out*/ readonly validationProperties!: pulumi.Output<types.outputs.DomainValidationPropertiesResponse>;
 
     /**
      * Create a AFDCustomDomain resource with the given unique name, arguments, and options.
@@ -145,7 +145,7 @@ export interface AFDCustomDomainArgs {
     /**
      * Resource reference to the Azure DNS zone
      */
-    azureDnsZone?: pulumi.Input<types.inputs.cdn.v20230501.ResourceReferenceArgs>;
+    azureDnsZone?: pulumi.Input<types.inputs.ResourceReferenceArgs>;
     /**
      * Name of the domain under the profile which is unique globally
      */
@@ -161,7 +161,7 @@ export interface AFDCustomDomainArgs {
     /**
      * Resource reference to the Azure resource where custom domain ownership was prevalidated
      */
-    preValidatedCustomDomainResourceId?: pulumi.Input<types.inputs.cdn.v20230501.ResourceReferenceArgs>;
+    preValidatedCustomDomainResourceId?: pulumi.Input<types.inputs.ResourceReferenceArgs>;
     /**
      * Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
      */
@@ -173,5 +173,5 @@ export interface AFDCustomDomainArgs {
     /**
      * The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own certificate. If not specified, enabling ssl uses AzureFrontDoor managed certificate by default.
      */
-    tlsSettings?: pulumi.Input<types.inputs.cdn.v20230501.AFDDomainHttpsParametersArgs>;
+    tlsSettings?: pulumi.Input<types.inputs.AFDDomainHttpsParametersArgs>;
 }

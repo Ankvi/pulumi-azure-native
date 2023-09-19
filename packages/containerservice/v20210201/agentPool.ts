@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Agent Pool.
  */
@@ -54,7 +54,7 @@ export class AgentPool extends pulumi.CustomResource {
     /**
      * KubeletConfig specifies the configuration of kubelet on agent nodes.
      */
-    public readonly kubeletConfig!: pulumi.Output<types.outputs.containerservice.v20210201.KubeletConfigResponse | undefined>;
+    public readonly kubeletConfig!: pulumi.Output<types.outputs.KubeletConfigResponse | undefined>;
     /**
      * KubeletDiskType determines the placement of emptyDir volumes, container runtime data root, and Kubelet ephemeral storage. Currently allows one value, OS, resulting in Kubelet using the OS disk for data.
      */
@@ -62,7 +62,7 @@ export class AgentPool extends pulumi.CustomResource {
     /**
      * LinuxOSConfig specifies the OS configuration of linux agent nodes.
      */
-    public readonly linuxOSConfig!: pulumi.Output<types.outputs.containerservice.v20210201.LinuxOSConfigResponse | undefined>;
+    public readonly linuxOSConfig!: pulumi.Output<types.outputs.LinuxOSConfigResponse | undefined>;
     /**
      * Maximum number of nodes for auto-scaling
      */
@@ -122,7 +122,7 @@ export class AgentPool extends pulumi.CustomResource {
     /**
      * Describes whether the Agent Pool is Running or Stopped
      */
-    public /*out*/ readonly powerState!: pulumi.Output<types.outputs.containerservice.v20210201.PowerStateResponse>;
+    public /*out*/ readonly powerState!: pulumi.Output<types.outputs.PowerStateResponse>;
     /**
      * The current deployment or provisioning state, which only appears in the response.
      */
@@ -154,7 +154,7 @@ export class AgentPool extends pulumi.CustomResource {
     /**
      * Settings for upgrading the agentpool
      */
-    public readonly upgradeSettings!: pulumi.Output<types.outputs.containerservice.v20210201.AgentPoolUpgradeSettingsResponse | undefined>;
+    public readonly upgradeSettings!: pulumi.Output<types.outputs.AgentPoolUpgradeSettingsResponse | undefined>;
     /**
      * Size of agent VMs.
      */
@@ -290,15 +290,15 @@ export interface AgentPoolArgs {
     /**
      * KubeletConfig specifies the configuration of kubelet on agent nodes.
      */
-    kubeletConfig?: pulumi.Input<types.inputs.containerservice.v20210201.KubeletConfigArgs>;
+    kubeletConfig?: pulumi.Input<types.inputs.KubeletConfigArgs>;
     /**
      * KubeletDiskType determines the placement of emptyDir volumes, container runtime data root, and Kubelet ephemeral storage. Currently allows one value, OS, resulting in Kubelet using the OS disk for data.
      */
-    kubeletDiskType?: pulumi.Input<string | types.enums.v20210201.KubeletDiskType>;
+    kubeletDiskType?: pulumi.Input<string | types.enums.KubeletDiskType>;
     /**
      * LinuxOSConfig specifies the OS configuration of linux agent nodes.
      */
-    linuxOSConfig?: pulumi.Input<types.inputs.containerservice.v20210201.LinuxOSConfigArgs>;
+    linuxOSConfig?: pulumi.Input<types.inputs.LinuxOSConfigArgs>;
     /**
      * Maximum number of nodes for auto-scaling
      */
@@ -314,7 +314,7 @@ export interface AgentPoolArgs {
     /**
      * AgentPoolMode represents mode of an agent pool
      */
-    mode?: pulumi.Input<string | types.enums.v20210201.AgentPoolMode>;
+    mode?: pulumi.Input<string | types.enums.AgentPoolMode>;
     /**
      * Agent pool node labels to be persisted across all nodes in agent pool.
      */
@@ -338,11 +338,11 @@ export interface AgentPoolArgs {
     /**
      * OS disk type to be used for machines in a given agent pool. Allowed values are 'Ephemeral' and 'Managed'. If unspecified, defaults to 'Ephemeral' when the VM supports ephemeral OS and has a cache disk larger than the requested OSDiskSizeGB. Otherwise, defaults to 'Managed'. May not be changed after creation.
      */
-    osDiskType?: pulumi.Input<string | types.enums.v20210201.OSDiskType>;
+    osDiskType?: pulumi.Input<string | types.enums.OSDiskType>;
     /**
      * OsType to be used to specify os type. Choose from Linux and Windows. Default to Linux.
      */
-    osType?: pulumi.Input<string | types.enums.v20210201.OSType>;
+    osType?: pulumi.Input<string | types.enums.OSType>;
     /**
      * Pod SubnetID specifies the VNet's subnet identifier for pods.
      */
@@ -362,11 +362,11 @@ export interface AgentPoolArgs {
     /**
      * ScaleSetEvictionPolicy to be used to specify eviction policy for Spot virtual machine scale set. Default to Delete.
      */
-    scaleSetEvictionPolicy?: pulumi.Input<string | types.enums.v20210201.ScaleSetEvictionPolicy>;
+    scaleSetEvictionPolicy?: pulumi.Input<string | types.enums.ScaleSetEvictionPolicy>;
     /**
      * ScaleSetPriority to be used to specify virtual machine scale set priority. Default to regular.
      */
-    scaleSetPriority?: pulumi.Input<string | types.enums.v20210201.ScaleSetPriority>;
+    scaleSetPriority?: pulumi.Input<string | types.enums.ScaleSetPriority>;
     /**
      * SpotMaxPrice to be used to specify the maximum price you are willing to pay in US Dollars. Possible values are any decimal value greater than zero or -1 which indicates default price to be up-to on-demand.
      */
@@ -378,15 +378,15 @@ export interface AgentPoolArgs {
     /**
      * AgentPoolType represents types of an agent pool
      */
-    type?: pulumi.Input<string | types.enums.v20210201.AgentPoolType>;
+    type?: pulumi.Input<string | types.enums.AgentPoolType>;
     /**
      * Settings for upgrading the agentpool
      */
-    upgradeSettings?: pulumi.Input<types.inputs.containerservice.v20210201.AgentPoolUpgradeSettingsArgs>;
+    upgradeSettings?: pulumi.Input<types.inputs.AgentPoolUpgradeSettingsArgs>;
     /**
      * Size of agent VMs.
      */
-    vmSize?: pulumi.Input<string | types.enums.v20210201.ContainerServiceVMSizeTypes>;
+    vmSize?: pulumi.Input<string | types.enums.ContainerServiceVMSizeTypes>;
     /**
      * VNet SubnetID specifies the VNet's subnet identifier for nodes and maybe pods
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Specifies information about the gallery Application Version that you want to create or update.
  */
@@ -46,15 +46,15 @@ export class GalleryApplicationVersion extends pulumi.CustomResource {
     /**
      * The publishing profile of a gallery image version.
      */
-    public readonly publishingProfile!: pulumi.Output<types.outputs.compute.v20220303.GalleryApplicationVersionPublishingProfileResponse>;
+    public readonly publishingProfile!: pulumi.Output<types.outputs.GalleryApplicationVersionPublishingProfileResponse>;
     /**
      * This is the replication status of the gallery image version.
      */
-    public /*out*/ readonly replicationStatus!: pulumi.Output<types.outputs.compute.v20220303.ReplicationStatusResponse>;
+    public /*out*/ readonly replicationStatus!: pulumi.Output<types.outputs.ReplicationStatusResponse>;
     /**
      * The safety profile of the Gallery Application Version.
      */
-    public readonly safetyProfile!: pulumi.Output<types.outputs.compute.v20220303.GalleryApplicationVersionSafetyProfileResponse | undefined>;
+    public readonly safetyProfile!: pulumi.Output<types.outputs.GalleryApplicationVersionSafetyProfileResponse | undefined>;
     /**
      * Resource tags
      */
@@ -139,7 +139,7 @@ export interface GalleryApplicationVersionArgs {
     /**
      * The publishing profile of a gallery image version.
      */
-    publishingProfile: pulumi.Input<types.inputs.compute.v20220303.GalleryApplicationVersionPublishingProfileArgs>;
+    publishingProfile: pulumi.Input<types.inputs.GalleryApplicationVersionPublishingProfileArgs>;
     /**
      * The name of the resource group.
      */
@@ -147,7 +147,7 @@ export interface GalleryApplicationVersionArgs {
     /**
      * The safety profile of the Gallery Application Version.
      */
-    safetyProfile?: pulumi.Input<types.inputs.compute.v20220303.GalleryApplicationVersionSafetyProfileArgs>;
+    safetyProfile?: pulumi.Input<types.inputs.GalleryApplicationVersionSafetyProfileArgs>;
     /**
      * Resource tags
      */

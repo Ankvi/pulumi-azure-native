@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the list of users of a static site.
  */
@@ -40,7 +40,7 @@ export interface ListStaticSiteUsersResult {
     /**
      * Collection of resources.
      */
-    readonly value: types.outputs.web.v20201001.StaticSiteUserARMResourceResponse[];
+    readonly value: types.outputs.StaticSiteUserARMResourceResponse[];
 }
 /**
  * Gets the list of users of a static site.

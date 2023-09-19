@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * MAK key details.
  */
@@ -153,7 +153,7 @@ export interface MultipleActivationKeyArgs {
     /**
      * Type of OS for which the key is requested.
      */
-    osType?: pulumi.Input<string | types.enums.v20190916preview.OsType>;
+    osType?: pulumi.Input<string | types.enums.OsType>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -161,7 +161,7 @@ export interface MultipleActivationKeyArgs {
     /**
      * Type of support
      */
-    supportType?: pulumi.Input<string | types.enums.v20190916preview.SupportType>;
+    supportType?: pulumi.Input<string | types.enums.SupportType>;
     /**
      * Resource tags.
      */

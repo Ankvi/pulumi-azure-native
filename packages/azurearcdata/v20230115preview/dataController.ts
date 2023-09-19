@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Data controller resource
  */
@@ -34,7 +34,7 @@ export class DataController extends pulumi.CustomResource {
     /**
      * The extendedLocation of the resource.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.azurearcdata.v20230115preview.ExtendedLocationResponse | undefined>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -46,11 +46,11 @@ export class DataController extends pulumi.CustomResource {
     /**
      * The data controller's properties
      */
-    public readonly properties!: pulumi.Output<types.outputs.azurearcdata.v20230115preview.DataControllerPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.DataControllerPropertiesResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.azurearcdata.v20230115preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -80,7 +80,7 @@ export class DataController extends pulumi.CustomResource {
             resourceInputs["dataControllerName"] = args ? args.dataControllerName : undefined;
             resourceInputs["extendedLocation"] = args ? args.extendedLocation : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.azurearcdata.v20230115preview.dataControllerPropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.dataControllerPropertiesArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["name"] = undefined /*out*/;
@@ -113,7 +113,7 @@ export interface DataControllerArgs {
     /**
      * The extendedLocation of the resource.
      */
-    extendedLocation?: pulumi.Input<types.inputs.azurearcdata.v20230115preview.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -121,7 +121,7 @@ export interface DataControllerArgs {
     /**
      * The data controller's properties
      */
-    properties: pulumi.Input<types.inputs.azurearcdata.v20230115preview.DataControllerPropertiesArgs>;
+    properties: pulumi.Input<types.inputs.DataControllerPropertiesArgs>;
     /**
      * The name of the Azure resource group
      */

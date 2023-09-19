@@ -39,11 +39,11 @@ export class BuildpackBinding extends pulumi.CustomResource {
     /**
      * Properties of a buildpack binding
      */
-    public readonly properties!: pulumi.Output<types.outputs.appplatform.BuildpackBindingPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.BuildpackBindingPropertiesResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.appplatform.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource.
      */
@@ -113,7 +113,7 @@ export interface BuildpackBindingArgs {
     /**
      * Properties of a buildpack binding
      */
-    properties?: pulumi.Input<types.inputs.appplatform.BuildpackBindingPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.BuildpackBindingPropertiesArgs>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets an existing prefix with the specified name under the given subscription, resource group and peering service.
  */
@@ -45,7 +45,7 @@ export interface GetPrefixResult {
     /**
      * The list of events for peering service prefix
      */
-    readonly events: types.outputs.peering.v20221001.PeeringServicePrefixEventResponse[];
+    readonly events: types.outputs.PeeringServicePrefixEventResponse[];
     /**
      * The ID of the resource.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a Kusto pool.
  */
@@ -64,7 +64,7 @@ export interface GetKustoPoolResult {
     /**
      * The SKU of the kusto pool.
      */
-    readonly sku: types.outputs.synapse.v20210401preview.AzureSkuResponse;
+    readonly sku: types.outputs.AzureSkuResponse;
     /**
      * The state of the resource.
      */
@@ -76,7 +76,7 @@ export interface GetKustoPoolResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.synapse.v20210401preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the properties of the specified machine learning team account.
  */
@@ -75,7 +75,7 @@ export interface GetAccountResult {
     /**
      * The properties of the storage account for the machine learning team account.
      */
-    readonly storageAccount: types.outputs.machinelearningexperimentation.v20170501preview.StorageAccountPropertiesResponse;
+    readonly storageAccount: types.outputs.StorageAccountPropertiesResponse;
     /**
      * The tags of the resource.
      */

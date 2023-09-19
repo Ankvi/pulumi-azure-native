@@ -47,11 +47,11 @@ export class Namespace extends pulumi.CustomResource {
     /**
      * Properties of BYOK Encryption description
      */
-    public readonly encryption!: pulumi.Output<types.outputs.servicebus.EncryptionResponse | undefined>;
+    public readonly encryption!: pulumi.Output<types.outputs.EncryptionResponse | undefined>;
     /**
      * Properties of BYOK Identity description
      */
-    public readonly identity!: pulumi.Output<types.outputs.servicebus.IdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityResponse | undefined>;
     /**
      * The Geo-location where the resource lives
      */
@@ -71,7 +71,7 @@ export class Namespace extends pulumi.CustomResource {
     /**
      * List of private endpoint connections.
      */
-    public readonly privateEndpointConnections!: pulumi.Output<types.outputs.servicebus.PrivateEndpointConnectionResponse[] | undefined>;
+    public readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[] | undefined>;
     /**
      * Provisioning state of the namespace.
      */
@@ -87,7 +87,7 @@ export class Namespace extends pulumi.CustomResource {
     /**
      * Properties of SKU
      */
-    public readonly sku!: pulumi.Output<types.outputs.servicebus.SBSkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SBSkuResponse | undefined>;
     /**
      * Status of the namespace.
      */
@@ -95,7 +95,7 @@ export class Namespace extends pulumi.CustomResource {
     /**
      * The system meta data relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.servicebus.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags
      */
@@ -129,7 +129,7 @@ export class Namespace extends pulumi.CustomResource {
             }
             resourceInputs["alternateName"] = args ? args.alternateName : undefined;
             resourceInputs["disableLocalAuth"] = args ? args.disableLocalAuth : undefined;
-            resourceInputs["encryption"] = args ? (args.encryption ? pulumi.output(args.encryption).apply(types.inputs.servicebus.encryptionArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["encryption"] = args ? (args.encryption ? pulumi.output(args.encryption).apply(types.inputs.encryptionArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["identity"] = args ? args.identity : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["minimumTlsVersion"] = args ? args.minimumTlsVersion : undefined;
@@ -193,11 +193,11 @@ export interface NamespaceArgs {
     /**
      * Properties of BYOK Encryption description
      */
-    encryption?: pulumi.Input<types.inputs.servicebus.EncryptionArgs>;
+    encryption?: pulumi.Input<types.inputs.EncryptionArgs>;
     /**
      * Properties of BYOK Identity description
      */
-    identity?: pulumi.Input<types.inputs.servicebus.IdentityArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityArgs>;
     /**
      * The Geo-location where the resource lives
      */
@@ -214,7 +214,7 @@ export interface NamespaceArgs {
      * List of private endpoint connections.
      * These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
      */
-    privateEndpointConnections?: pulumi.Input<pulumi.Input<types.inputs.servicebus.PrivateEndpointConnectionArgs>[]>;
+    privateEndpointConnections?: pulumi.Input<pulumi.Input<types.inputs.PrivateEndpointConnectionArgs>[]>;
     /**
      * This determines if traffic is allowed over public network. By default it is enabled.
      */
@@ -226,7 +226,7 @@ export interface NamespaceArgs {
     /**
      * Properties of SKU
      */
-    sku?: pulumi.Input<types.inputs.servicebus.SBSkuArgs>;
+    sku?: pulumi.Input<types.inputs.SBSkuArgs>;
     /**
      * Resource tags
      */

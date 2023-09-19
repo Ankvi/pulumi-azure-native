@@ -48,11 +48,11 @@ export interface GetCommitmentPlanResult {
     /**
      * The commitment plan properties.
      */
-    readonly properties: types.outputs.machinelearning.CommitmentPlanPropertiesResponse;
+    readonly properties: types.outputs.CommitmentPlanPropertiesResponse;
     /**
      * The commitment plan SKU.
      */
-    readonly sku?: types.outputs.machinelearning.ResourceSkuResponse;
+    readonly sku?: types.outputs.ResourceSkuResponse;
     /**
      * User-defined tags for the resource.
      */

@@ -41,7 +41,7 @@ export interface ListStaticSiteUsersResult {
     /**
      * Collection of resources.
      */
-    readonly value: types.outputs.web.StaticSiteUserARMResourceResponse[];
+    readonly value: types.outputs.StaticSiteUserARMResourceResponse[];
 }
 /**
  * Description for Gets the list of users of a static site.

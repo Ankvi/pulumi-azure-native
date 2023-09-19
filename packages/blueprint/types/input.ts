@@ -1,354 +1,175 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
-export namespace blueprint {
+/**
+ * Defines how resources deployed by a blueprint assignment are locked.
+ */
+export interface AssignmentLockSettingsArgs {
     /**
-     * Defines how resources deployed by a blueprint assignment are locked.
+     * List of management operations that are excluded from blueprint locks. Up to 200 actions are permitted. If the lock mode is set to 'AllResourcesReadOnly', then the following actions are automatically appended to 'excludedActions': '*&#47;read', 'Microsoft.Network/virtualNetworks/subnets/join/action' and 'Microsoft.Authorization/locks/delete'. If the lock mode is set to 'AllResourcesDoNotDelete', then the following actions are automatically appended to 'excludedActions': 'Microsoft.Authorization/locks/delete'. Duplicate actions will get removed.
      */
-    export interface AssignmentLockSettingsArgs {
-        /**
-         * List of management operations that are excluded from blueprint locks. Up to 200 actions are permitted. If the lock mode is set to 'AllResourcesReadOnly', then the following actions are automatically appended to 'excludedActions': '*&#47;read', 'Microsoft.Network/virtualNetworks/subnets/join/action' and 'Microsoft.Authorization/locks/delete'. If the lock mode is set to 'AllResourcesDoNotDelete', then the following actions are automatically appended to 'excludedActions': 'Microsoft.Authorization/locks/delete'. Duplicate actions will get removed.
-         */
-        excludedActions?: pulumi.Input<pulumi.Input<string>[]>;
-        /**
-         * List of AAD principals excluded from blueprint locks. Up to 5 principals are permitted.
-         */
-        excludedPrincipals?: pulumi.Input<pulumi.Input<string>[]>;
-        /**
-         * Lock mode.
-         */
-        mode?: pulumi.Input<string | enums.AssignmentLockMode>;
-    }
-
+    excludedActions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Specifies the link to a Key Vault.
+     * List of AAD principals excluded from blueprint locks. Up to 5 principals are permitted.
      */
-    export interface KeyVaultReferenceArgs {
-        /**
-         * Azure resource ID of the Key Vault.
-         */
-        id: pulumi.Input<string>;
-    }
-
+    excludedPrincipals?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Managed identity generic object.
+     * Lock mode.
      */
-    export interface ManagedServiceIdentityArgs {
-        /**
-         * Azure Active Directory principal ID associated with this Identity.
-         */
-        principalId?: pulumi.Input<string>;
-        /**
-         * ID of the Azure Active Directory.
-         */
-        tenantId?: pulumi.Input<string>;
-        /**
-         * Type of the managed identity.
-         */
-        type: pulumi.Input<string | enums.ManagedServiceIdentityType>;
-        /**
-         * The list of user-assigned managed identities associated with the resource. Key is the Azure resource Id of the managed identity.
-         */
-        userAssignedIdentities?: pulumi.Input<{[key: string]: pulumi.Input<UserAssignedIdentityArgs>}>;
-    }
+    mode?: pulumi.Input<string | enums.AssignmentLockMode>;
+}
 
+/**
+ * Specifies the link to a Key Vault.
+ */
+export interface KeyVaultReferenceArgs {
     /**
-     * Represent a parameter with constrains and metadata.
+     * Azure resource ID of the Key Vault.
      */
-    export interface ParameterDefinitionArgs {
-        /**
-         * Array of allowed values for this parameter.
-         */
-        allowedValues?: pulumi.Input<any[]>;
-        /**
-         * Default Value for this parameter.
-         */
-        defaultValue?: any;
-        /**
-         * Description of this parameter/resourceGroup.
-         */
-        description?: pulumi.Input<string>;
-        /**
-         * DisplayName of this parameter/resourceGroup.
-         */
-        displayName?: pulumi.Input<string>;
-        /**
-         * StrongType for UI to render rich experience during blueprint assignment. Supported strong types are resourceType, principalId and location.
-         */
-        strongType?: pulumi.Input<string>;
-        /**
-         * Allowed data types for Resource Manager template parameters.
-         */
-        type: pulumi.Input<string | enums.TemplateParameterType>;
-    }
+    id: pulumi.Input<string>;
+}
 
+/**
+ * Managed identity generic object.
+ */
+export interface ManagedServiceIdentityArgs {
     /**
-     * Value for the specified parameter. Can be either 'value' or 'reference' but not both.
+     * Azure Active Directory principal ID associated with this Identity.
      */
-    export interface ParameterValueArgs {
-        /**
-         * Parameter value as reference type.
-         */
-        reference?: pulumi.Input<SecretValueReferenceArgs>;
-        /**
-         * Parameter value. Any valid JSON value is allowed including objects, arrays, strings, numbers and booleans.
-         */
-        value?: any;
-    }
-
+    principalId?: pulumi.Input<string>;
     /**
-     * Represents an Azure resource group in a blueprint definition.
+     * ID of the Azure Active Directory.
      */
-    export interface ResourceGroupDefinitionArgs {
-        /**
-         * Artifacts which need to be deployed before this resource group.
-         */
-        dependsOn?: pulumi.Input<pulumi.Input<string>[]>;
-        /**
-         * Description of this parameter/resourceGroup.
-         */
-        description?: pulumi.Input<string>;
-        /**
-         * DisplayName of this parameter/resourceGroup.
-         */
-        displayName?: pulumi.Input<string>;
-        /**
-         * Location of this resourceGroup. Leave empty if the resource group location will be specified during the blueprint assignment.
-         */
-        location?: pulumi.Input<string>;
-        /**
-         * Name of this resourceGroup. Leave empty if the resource group name will be specified during the blueprint assignment.
-         */
-        name?: pulumi.Input<string>;
-        /**
-         * StrongType for UI to render rich experience during blueprint assignment. Supported strong types are resourceType, principalId and location.
-         */
-        strongType?: pulumi.Input<string>;
-        /**
-         * Tags to be assigned to this resource group.
-         */
-        tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    }
-
+    tenantId?: pulumi.Input<string>;
     /**
-     * Represents an Azure resource group.
+     * Type of the managed identity.
      */
-    export interface ResourceGroupValueArgs {
-        /**
-         * Location of the resource group.
-         */
-        location?: pulumi.Input<string>;
-        /**
-         * Name of the resource group.
-         */
-        name?: pulumi.Input<string>;
-    }
-
+    type: pulumi.Input<string | enums.ManagedServiceIdentityType>;
     /**
-     * Reference to a Key Vault secret.
+     * The list of user-assigned managed identities associated with the resource. Key is the Azure resource Id of the managed identity.
      */
-    export interface SecretValueReferenceArgs {
-        /**
-         * Specifies the reference to a given Azure Key Vault.
-         */
-        keyVault: pulumi.Input<KeyVaultReferenceArgs>;
-        /**
-         * Name of the secret.
-         */
-        secretName: pulumi.Input<string>;
-        /**
-         * The version of the secret to use. If left blank, the latest version of the secret is used.
-         */
-        secretVersion?: pulumi.Input<string>;
-    }
+    userAssignedIdentities?: pulumi.Input<{[key: string]: pulumi.Input<UserAssignedIdentityArgs>}>;
+}
 
+/**
+ * Represent a parameter with constrains and metadata.
+ */
+export interface ParameterDefinitionArgs {
     /**
-     * User-assigned managed identity.
+     * Array of allowed values for this parameter.
      */
-    export interface UserAssignedIdentityArgs {
-        /**
-         * Client App Id associated with this identity.
-         */
-        clientId?: pulumi.Input<string>;
-        /**
-         * Azure Active Directory principal ID associated with this Identity.
-         */
-        principalId?: pulumi.Input<string>;
-    }
+    allowedValues?: pulumi.Input<any[]>;
+    /**
+     * Default Value for this parameter.
+     */
+    defaultValue?: any;
+    /**
+     * Description of this parameter/resourceGroup.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * DisplayName of this parameter/resourceGroup.
+     */
+    displayName?: pulumi.Input<string>;
+    /**
+     * StrongType for UI to render rich experience during blueprint assignment. Supported strong types are resourceType, principalId and location.
+     */
+    strongType?: pulumi.Input<string>;
+    /**
+     * Allowed data types for Resource Manager template parameters.
+     */
+    type: pulumi.Input<string | enums.TemplateParameterType>;
+}
 
-    export namespace v20181101preview {
-        /**
-         * Defines how resources deployed by a blueprint assignment are locked.
-         */
-        export interface AssignmentLockSettingsArgs {
-            /**
-             * List of management operations that are excluded from blueprint locks. Up to 200 actions are permitted. If the lock mode is set to 'AllResourcesReadOnly', then the following actions are automatically appended to 'excludedActions': '*&#47;read', 'Microsoft.Network/virtualNetworks/subnets/join/action' and 'Microsoft.Authorization/locks/delete'. If the lock mode is set to 'AllResourcesDoNotDelete', then the following actions are automatically appended to 'excludedActions': 'Microsoft.Authorization/locks/delete'. Duplicate actions will get removed.
-             */
-            excludedActions?: pulumi.Input<pulumi.Input<string>[]>;
-            /**
-             * List of AAD principals excluded from blueprint locks. Up to 5 principals are permitted.
-             */
-            excludedPrincipals?: pulumi.Input<pulumi.Input<string>[]>;
-            /**
-             * Lock mode.
-             */
-            mode?: pulumi.Input<string | enums.v20181101preview.AssignmentLockMode>;
-        }
+/**
+ * Value for the specified parameter. Can be either 'value' or 'reference' but not both.
+ */
+export interface ParameterValueArgs {
+    /**
+     * Parameter value as reference type.
+     */
+    reference?: pulumi.Input<SecretValueReferenceArgs>;
+    /**
+     * Parameter value. Any valid JSON value is allowed including objects, arrays, strings, numbers and booleans.
+     */
+    value?: any;
+}
 
-        /**
-         * Specifies the link to a Key Vault.
-         */
-        export interface KeyVaultReferenceArgs {
-            /**
-             * Azure resource ID of the Key Vault.
-             */
-            id: pulumi.Input<string>;
-        }
+/**
+ * Represents an Azure resource group in a blueprint definition.
+ */
+export interface ResourceGroupDefinitionArgs {
+    /**
+     * Artifacts which need to be deployed before this resource group.
+     */
+    dependsOn?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Description of this parameter/resourceGroup.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * DisplayName of this parameter/resourceGroup.
+     */
+    displayName?: pulumi.Input<string>;
+    /**
+     * Location of this resourceGroup. Leave empty if the resource group location will be specified during the blueprint assignment.
+     */
+    location?: pulumi.Input<string>;
+    /**
+     * Name of this resourceGroup. Leave empty if the resource group name will be specified during the blueprint assignment.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * StrongType for UI to render rich experience during blueprint assignment. Supported strong types are resourceType, principalId and location.
+     */
+    strongType?: pulumi.Input<string>;
+    /**
+     * Tags to be assigned to this resource group.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
 
-        /**
-         * Managed identity generic object.
-         */
-        export interface ManagedServiceIdentityArgs {
-            /**
-             * Azure Active Directory principal ID associated with this Identity.
-             */
-            principalId?: pulumi.Input<string>;
-            /**
-             * ID of the Azure Active Directory.
-             */
-            tenantId?: pulumi.Input<string>;
-            /**
-             * Type of the managed identity.
-             */
-            type: pulumi.Input<string | enums.v20181101preview.ManagedServiceIdentityType>;
-            /**
-             * The list of user-assigned managed identities associated with the resource. Key is the Azure resource Id of the managed identity.
-             */
-            userAssignedIdentities?: pulumi.Input<{[key: string]: pulumi.Input<v20181101preview.UserAssignedIdentityArgs>}>;
-        }
+/**
+ * Represents an Azure resource group.
+ */
+export interface ResourceGroupValueArgs {
+    /**
+     * Location of the resource group.
+     */
+    location?: pulumi.Input<string>;
+    /**
+     * Name of the resource group.
+     */
+    name?: pulumi.Input<string>;
+}
 
-        /**
-         * Represent a parameter with constrains and metadata.
-         */
-        export interface ParameterDefinitionArgs {
-            /**
-             * Array of allowed values for this parameter.
-             */
-            allowedValues?: pulumi.Input<any[]>;
-            /**
-             * Default Value for this parameter.
-             */
-            defaultValue?: any;
-            /**
-             * Description of this parameter/resourceGroup.
-             */
-            description?: pulumi.Input<string>;
-            /**
-             * DisplayName of this parameter/resourceGroup.
-             */
-            displayName?: pulumi.Input<string>;
-            /**
-             * StrongType for UI to render rich experience during blueprint assignment. Supported strong types are resourceType, principalId and location.
-             */
-            strongType?: pulumi.Input<string>;
-            /**
-             * Allowed data types for Resource Manager template parameters.
-             */
-            type: pulumi.Input<string | enums.v20181101preview.TemplateParameterType>;
-        }
+/**
+ * Reference to a Key Vault secret.
+ */
+export interface SecretValueReferenceArgs {
+    /**
+     * Specifies the reference to a given Azure Key Vault.
+     */
+    keyVault: pulumi.Input<KeyVaultReferenceArgs>;
+    /**
+     * Name of the secret.
+     */
+    secretName: pulumi.Input<string>;
+    /**
+     * The version of the secret to use. If left blank, the latest version of the secret is used.
+     */
+    secretVersion?: pulumi.Input<string>;
+}
 
-        /**
-         * Value for the specified parameter. Can be either 'value' or 'reference' but not both.
-         */
-        export interface ParameterValueArgs {
-            /**
-             * Parameter value as reference type.
-             */
-            reference?: pulumi.Input<v20181101preview.SecretValueReferenceArgs>;
-            /**
-             * Parameter value. Any valid JSON value is allowed including objects, arrays, strings, numbers and booleans.
-             */
-            value?: any;
-        }
-
-        /**
-         * Represents an Azure resource group in a blueprint definition.
-         */
-        export interface ResourceGroupDefinitionArgs {
-            /**
-             * Artifacts which need to be deployed before this resource group.
-             */
-            dependsOn?: pulumi.Input<pulumi.Input<string>[]>;
-            /**
-             * Description of this parameter/resourceGroup.
-             */
-            description?: pulumi.Input<string>;
-            /**
-             * DisplayName of this parameter/resourceGroup.
-             */
-            displayName?: pulumi.Input<string>;
-            /**
-             * Location of this resourceGroup. Leave empty if the resource group location will be specified during the blueprint assignment.
-             */
-            location?: pulumi.Input<string>;
-            /**
-             * Name of this resourceGroup. Leave empty if the resource group name will be specified during the blueprint assignment.
-             */
-            name?: pulumi.Input<string>;
-            /**
-             * StrongType for UI to render rich experience during blueprint assignment. Supported strong types are resourceType, principalId and location.
-             */
-            strongType?: pulumi.Input<string>;
-            /**
-             * Tags to be assigned to this resource group.
-             */
-            tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-        }
-
-        /**
-         * Represents an Azure resource group.
-         */
-        export interface ResourceGroupValueArgs {
-            /**
-             * Location of the resource group.
-             */
-            location?: pulumi.Input<string>;
-            /**
-             * Name of the resource group.
-             */
-            name?: pulumi.Input<string>;
-        }
-
-        /**
-         * Reference to a Key Vault secret.
-         */
-        export interface SecretValueReferenceArgs {
-            /**
-             * Specifies the reference to a given Azure Key Vault.
-             */
-            keyVault: pulumi.Input<v20181101preview.KeyVaultReferenceArgs>;
-            /**
-             * Name of the secret.
-             */
-            secretName: pulumi.Input<string>;
-            /**
-             * The version of the secret to use. If left blank, the latest version of the secret is used.
-             */
-            secretVersion?: pulumi.Input<string>;
-        }
-
-        /**
-         * User-assigned managed identity.
-         */
-        export interface UserAssignedIdentityArgs {
-            /**
-             * Client App Id associated with this identity.
-             */
-            clientId?: pulumi.Input<string>;
-            /**
-             * Azure Active Directory principal ID associated with this Identity.
-             */
-            principalId?: pulumi.Input<string>;
-        }
-
-    }
+/**
+ * User-assigned managed identity.
+ */
+export interface UserAssignedIdentityArgs {
+    /**
+     * Client App Id associated with this identity.
+     */
+    clientId?: pulumi.Input<string>;
+    /**
+     * Azure Active Directory principal ID associated with this Identity.
+     */
+    principalId?: pulumi.Input<string>;
 }

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the details of the specified Video Analyzer account
  */
@@ -31,11 +31,11 @@ export interface GetVideoAnalyzerResult {
     /**
      * The account encryption properties.
      */
-    readonly encryption?: types.outputs.videoanalyzer.v20211101preview.AccountEncryptionResponse;
+    readonly encryption?: types.outputs.AccountEncryptionResponse;
     /**
      * The endpoints associated with this resource.
      */
-    readonly endpoints: types.outputs.videoanalyzer.v20211101preview.EndpointResponse[];
+    readonly endpoints: types.outputs.EndpointResponse[];
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -43,11 +43,11 @@ export interface GetVideoAnalyzerResult {
     /**
      * The identities associated to the Video Analyzer resource.
      */
-    readonly identity?: types.outputs.videoanalyzer.v20211101preview.VideoAnalyzerIdentityResponse;
+    readonly identity?: types.outputs.VideoAnalyzerIdentityResponse;
     /**
      * The IoT Hubs for this resource.
      */
-    readonly iotHubs?: types.outputs.videoanalyzer.v20211101preview.IotHubResponse[];
+    readonly iotHubs?: types.outputs.IotHubResponse[];
     /**
      * The geo-location where the resource lives
      */
@@ -59,11 +59,11 @@ export interface GetVideoAnalyzerResult {
     /**
      * Network access control for Video Analyzer.
      */
-    readonly networkAccessControl?: types.outputs.videoanalyzer.v20211101preview.NetworkAccessControlResponse;
+    readonly networkAccessControl?: types.outputs.NetworkAccessControlResponse;
     /**
      * Private Endpoint Connections created under Video Analyzer account.
      */
-    readonly privateEndpointConnections: types.outputs.videoanalyzer.v20211101preview.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections: types.outputs.PrivateEndpointConnectionResponse[];
     /**
      * Provisioning state of the Video Analyzer account.
      */
@@ -75,11 +75,11 @@ export interface GetVideoAnalyzerResult {
     /**
      * The storage accounts for this resource.
      */
-    readonly storageAccounts: types.outputs.videoanalyzer.v20211101preview.StorageAccountResponse[];
+    readonly storageAccounts: types.outputs.StorageAccountResponse[];
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.videoanalyzer.v20211101preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

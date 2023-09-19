@@ -43,7 +43,7 @@ export class DomainTopic extends pulumi.CustomResource {
     /**
      * The system metadata relating to Domain Topic resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.eventgrid.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Type of the resource.
      */

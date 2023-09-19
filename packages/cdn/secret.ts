@@ -40,7 +40,7 @@ export class Secret extends pulumi.CustomResource {
     /**
      * object which contains secret parameters
      */
-    public readonly parameters!: pulumi.Output<types.outputs.cdn.AzureFirstPartyManagedCertificateParametersResponse | types.outputs.cdn.CustomerCertificateParametersResponse | types.outputs.cdn.ManagedCertificateParametersResponse | types.outputs.cdn.UrlSigningKeyParametersResponse | undefined>;
+    public readonly parameters!: pulumi.Output<types.outputs.AzureFirstPartyManagedCertificateParametersResponse | types.outputs.CustomerCertificateParametersResponse | types.outputs.ManagedCertificateParametersResponse | types.outputs.UrlSigningKeyParametersResponse | undefined>;
     /**
      * The name of the profile which holds the secret.
      */
@@ -52,7 +52,7 @@ export class Secret extends pulumi.CustomResource {
     /**
      * Read only system data
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.cdn.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource type.
      */
@@ -107,7 +107,7 @@ export interface SecretArgs {
     /**
      * object which contains secret parameters
      */
-    parameters?: pulumi.Input<types.inputs.cdn.AzureFirstPartyManagedCertificateParametersArgs | types.inputs.cdn.CustomerCertificateParametersArgs | types.inputs.cdn.ManagedCertificateParametersArgs | types.inputs.cdn.UrlSigningKeyParametersArgs>;
+    parameters?: pulumi.Input<types.inputs.AzureFirstPartyManagedCertificateParametersArgs | types.inputs.CustomerCertificateParametersArgs | types.inputs.ManagedCertificateParametersArgs | types.inputs.UrlSigningKeyParametersArgs>;
     /**
      * Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
      */

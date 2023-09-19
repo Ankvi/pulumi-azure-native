@@ -57,11 +57,11 @@ export interface GetRestorePointCollectionResult {
     /**
      * A list containing all restore points created under this restore point collection.
      */
-    readonly restorePoints: types.outputs.compute.RestorePointResponse[];
+    readonly restorePoints: types.outputs.RestorePointResponse[];
     /**
      * The properties of the source resource that this restore point collection is created from.
      */
-    readonly source?: types.outputs.compute.RestorePointCollectionSourcePropertiesResponse;
+    readonly source?: types.outputs.RestorePointCollectionSourcePropertiesResponse;
     /**
      * Resource tags
      */

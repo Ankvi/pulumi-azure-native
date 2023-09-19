@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns list of available contacts. A contact is available if the spacecraft is visible from the ground station for more than the minimum viable contact duration provided in the contact profile.
  */
@@ -21,7 +21,7 @@ export interface ListSpacecraftAvailableContactsArgs {
     /**
      * The reference to the contact profile resource.
      */
-    contactProfile: types.inputs.orbital.v20220301.ContactParametersContactProfile;
+    contactProfile: types.inputs.ContactParametersContactProfile;
     /**
      * End time of a contact (ISO 8601 UTC standard).
      */
@@ -55,7 +55,7 @@ export interface ListSpacecraftAvailableContactsResult {
     /**
      * A list of available contacts.
      */
-    readonly value?: types.outputs.orbital.v20220301.AvailableContactsResponse[];
+    readonly value?: types.outputs.AvailableContactsResponse[];
 }
 /**
  * Returns list of available contacts. A contact is available if the spacecraft is visible from the ground station for more than the minimum viable contact duration provided in the contact profile.
@@ -68,7 +68,7 @@ export interface ListSpacecraftAvailableContactsOutputArgs {
     /**
      * The reference to the contact profile resource.
      */
-    contactProfile: pulumi.Input<types.inputs.orbital.v20220301.ContactParametersContactProfileArgs>;
+    contactProfile: pulumi.Input<types.inputs.ContactParametersContactProfileArgs>;
     /**
      * End time of a contact (ISO 8601 UTC standard).
      */

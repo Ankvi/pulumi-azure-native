@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get DigitalTwinsInstances resource.
  */
@@ -43,7 +43,7 @@ export interface GetDigitalTwinResult {
     /**
      * The managed identity for the DigitalTwinsInstance.
      */
-    readonly identity?: types.outputs.digitaltwins.v20230131.DigitalTwinsIdentityResponse;
+    readonly identity?: types.outputs.DigitalTwinsIdentityResponse;
     /**
      * Time when DigitalTwinsInstance was updated.
      */
@@ -59,7 +59,7 @@ export interface GetDigitalTwinResult {
     /**
      * The private endpoint connections.
      */
-    readonly privateEndpointConnections?: types.outputs.digitaltwins.v20230131.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections?: types.outputs.PrivateEndpointConnectionResponse[];
     /**
      * The provisioning state.
      */
@@ -71,7 +71,7 @@ export interface GetDigitalTwinResult {
     /**
      * Metadata pertaining to creation and last modification of the DigitalTwinsInstance.
      */
-    readonly systemData: types.outputs.digitaltwins.v20230131.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The resource tags.
      */

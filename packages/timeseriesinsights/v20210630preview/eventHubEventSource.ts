@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An event source that receives its data from an Azure EventHub.
  */
@@ -59,7 +59,7 @@ export class EventHubEventSource extends pulumi.CustomResource {
     /**
      * An object that represents the local timestamp property. It contains the format of local timestamp that needs to be used and the corresponding timezone offset information. If a value isn't specified for localTimestamp, or if null, then the local timestamp will not be ingressed with the events.
      */
-    public readonly localTimestamp!: pulumi.Output<types.outputs.timeseriesinsights.v20210630preview.LocalTimestampResponse | undefined>;
+    public readonly localTimestamp!: pulumi.Output<types.outputs.LocalTimestampResponse | undefined>;
     /**
      * Resource location
      */
@@ -210,7 +210,7 @@ export interface EventHubEventSourceArgs {
     /**
      * An object that represents the local timestamp property. It contains the format of local timestamp that needs to be used and the corresponding timezone offset information. If a value isn't specified for localTimestamp, or if null, then the local timestamp will not be ingressed with the events.
      */
-    localTimestamp?: pulumi.Input<types.inputs.timeseriesinsights.v20210630preview.LocalTimestampArgs>;
+    localTimestamp?: pulumi.Input<types.inputs.LocalTimestampArgs>;
     /**
      * The location of the resource.
      */
@@ -242,5 +242,5 @@ export interface EventHubEventSourceArgs {
     /**
      * The type of the ingressStartAt, It can be "EarliestAvailable", "EventSourceCreationTime", "CustomEnqueuedTime".
      */
-    type?: pulumi.Input<string | types.enums.v20210630preview.IngressStartAtType>;
+    type?: pulumi.Input<string | types.enums.IngressStartAtType>;
 }

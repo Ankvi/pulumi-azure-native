@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Software update configuration properties.
  */
@@ -42,7 +42,7 @@ export class SoftwareUpdateConfigurationByName extends pulumi.CustomResource {
     /**
      * Details of provisioning error
      */
-    public readonly error!: pulumi.Output<types.outputs.automation.v20190601.ErrorResponseResponse | undefined>;
+    public readonly error!: pulumi.Output<types.outputs.ErrorResponseResponse | undefined>;
     /**
      * LastModifiedBy property, which only appears in the response.
      */
@@ -62,11 +62,11 @@ export class SoftwareUpdateConfigurationByName extends pulumi.CustomResource {
     /**
      * Schedule information for the Software update configuration
      */
-    public readonly scheduleInfo!: pulumi.Output<types.outputs.automation.v20190601.SUCSchedulePropertiesResponse>;
+    public readonly scheduleInfo!: pulumi.Output<types.outputs.SUCSchedulePropertiesResponse>;
     /**
      * Tasks information for the Software update configuration.
      */
-    public readonly tasks!: pulumi.Output<types.outputs.automation.v20190601.SoftwareUpdateConfigurationTasksResponse | undefined>;
+    public readonly tasks!: pulumi.Output<types.outputs.SoftwareUpdateConfigurationTasksResponse | undefined>;
     /**
      * Resource type
      */
@@ -74,7 +74,7 @@ export class SoftwareUpdateConfigurationByName extends pulumi.CustomResource {
     /**
      * update specific properties for the Software update configuration
      */
-    public readonly updateConfiguration!: pulumi.Output<types.outputs.automation.v20190601.UpdateConfigurationResponse>;
+    public readonly updateConfiguration!: pulumi.Output<types.outputs.UpdateConfigurationResponse>;
 
     /**
      * Create a SoftwareUpdateConfigurationByName resource with the given unique name, arguments, and options.
@@ -102,7 +102,7 @@ export class SoftwareUpdateConfigurationByName extends pulumi.CustomResource {
             resourceInputs["automationAccountName"] = args ? args.automationAccountName : undefined;
             resourceInputs["error"] = args ? args.error : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["scheduleInfo"] = args ? (args.scheduleInfo ? pulumi.output(args.scheduleInfo).apply(types.inputs.automation.v20190601.sucschedulePropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["scheduleInfo"] = args ? (args.scheduleInfo ? pulumi.output(args.scheduleInfo).apply(types.inputs.sucschedulePropertiesArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["softwareUpdateConfigurationName"] = args ? args.softwareUpdateConfigurationName : undefined;
             resourceInputs["tasks"] = args ? args.tasks : undefined;
             resourceInputs["updateConfiguration"] = args ? args.updateConfiguration : undefined;
@@ -144,7 +144,7 @@ export interface SoftwareUpdateConfigurationByNameArgs {
     /**
      * Details of provisioning error
      */
-    error?: pulumi.Input<types.inputs.automation.v20190601.ErrorResponseArgs>;
+    error?: pulumi.Input<types.inputs.ErrorResponseArgs>;
     /**
      * Name of an Azure Resource group.
      */
@@ -152,7 +152,7 @@ export interface SoftwareUpdateConfigurationByNameArgs {
     /**
      * Schedule information for the Software update configuration
      */
-    scheduleInfo: pulumi.Input<types.inputs.automation.v20190601.SUCSchedulePropertiesArgs>;
+    scheduleInfo: pulumi.Input<types.inputs.SUCSchedulePropertiesArgs>;
     /**
      * The name of the software update configuration to be created.
      */
@@ -160,9 +160,9 @@ export interface SoftwareUpdateConfigurationByNameArgs {
     /**
      * Tasks information for the Software update configuration.
      */
-    tasks?: pulumi.Input<types.inputs.automation.v20190601.SoftwareUpdateConfigurationTasksArgs>;
+    tasks?: pulumi.Input<types.inputs.SoftwareUpdateConfigurationTasksArgs>;
     /**
      * update specific properties for the Software update configuration
      */
-    updateConfiguration: pulumi.Input<types.inputs.automation.v20190601.UpdateConfigurationArgs>;
+    updateConfiguration: pulumi.Input<types.inputs.UpdateConfigurationArgs>;
 }

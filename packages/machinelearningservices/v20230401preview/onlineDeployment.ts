@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 export class OnlineDeployment extends pulumi.CustomResource {
     /**
      * Get an existing OnlineDeployment resource's state with the given name, ID, and optional extra
@@ -31,7 +31,7 @@ export class OnlineDeployment extends pulumi.CustomResource {
     /**
      * Managed service identity (system assigned and/or user assigned identities)
      */
-    public readonly identity!: pulumi.Output<types.outputs.machinelearningservices.v20230401preview.ManagedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
      */
@@ -47,15 +47,15 @@ export class OnlineDeployment extends pulumi.CustomResource {
     /**
      * [Required] Additional attributes of the entity.
      */
-    public readonly onlineDeploymentProperties!: pulumi.Output<types.outputs.machinelearningservices.v20230401preview.KubernetesOnlineDeploymentResponse | types.outputs.machinelearningservices.v20230401preview.ManagedOnlineDeploymentResponse>;
+    public readonly onlineDeploymentProperties!: pulumi.Output<types.outputs.KubernetesOnlineDeploymentResponse | types.outputs.ManagedOnlineDeploymentResponse>;
     /**
      * Sku details required for ARM contract for Autoscaling.
      */
-    public readonly sku!: pulumi.Output<types.outputs.machinelearningservices.v20230401preview.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.machinelearningservices.v20230401preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -134,7 +134,7 @@ export interface OnlineDeploymentArgs {
     /**
      * Managed service identity (system assigned and/or user assigned identities)
      */
-    identity?: pulumi.Input<types.inputs.machinelearningservices.v20230401preview.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
      * Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
      */
@@ -146,7 +146,7 @@ export interface OnlineDeploymentArgs {
     /**
      * [Required] Additional attributes of the entity.
      */
-    onlineDeploymentProperties: pulumi.Input<types.inputs.machinelearningservices.v20230401preview.KubernetesOnlineDeploymentArgs | types.inputs.machinelearningservices.v20230401preview.ManagedOnlineDeploymentArgs>;
+    onlineDeploymentProperties: pulumi.Input<types.inputs.KubernetesOnlineDeploymentArgs | types.inputs.ManagedOnlineDeploymentArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -154,7 +154,7 @@ export interface OnlineDeploymentArgs {
     /**
      * Sku details required for ARM contract for Autoscaling.
      */
-    sku?: pulumi.Input<types.inputs.machinelearningservices.v20230401preview.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Resource tags.
      */

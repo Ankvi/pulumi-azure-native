@@ -65,7 +65,7 @@ export interface GetScalingPlanPersonalScheduleResult {
     /**
      * Starting time for off-peak period.
      */
-    readonly offPeakStartTime?: types.outputs.desktopvirtualization.TimeResponse;
+    readonly offPeakStartTime?: types.outputs.TimeResponse;
     /**
      * The desired configuration of Start VM On Connect for the hostpool during the off-peak phase.
      */
@@ -89,7 +89,7 @@ export interface GetScalingPlanPersonalScheduleResult {
     /**
      * Starting time for peak period.
      */
-    readonly peakStartTime?: types.outputs.desktopvirtualization.TimeResponse;
+    readonly peakStartTime?: types.outputs.TimeResponse;
     /**
      * The desired configuration of Start VM On Connect for the hostpool during the peak phase.
      */
@@ -113,7 +113,7 @@ export interface GetScalingPlanPersonalScheduleResult {
     /**
      * Starting time for ramp down period.
      */
-    readonly rampDownStartTime?: types.outputs.desktopvirtualization.TimeResponse;
+    readonly rampDownStartTime?: types.outputs.TimeResponse;
     /**
      * The desired configuration of Start VM On Connect for the hostpool during the ramp down phase.
      */
@@ -141,7 +141,7 @@ export interface GetScalingPlanPersonalScheduleResult {
     /**
      * Starting time for ramp up period.
      */
-    readonly rampUpStartTime?: types.outputs.desktopvirtualization.TimeResponse;
+    readonly rampUpStartTime?: types.outputs.TimeResponse;
     /**
      * The desired configuration of Start VM On Connect for the hostpool during the ramp up phase. If this is disabled, session hosts must be turned on using rampUpAutoStartHosts or by turning them on manually.
      */
@@ -149,7 +149,7 @@ export interface GetScalingPlanPersonalScheduleResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.desktopvirtualization.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

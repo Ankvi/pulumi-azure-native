@@ -48,19 +48,19 @@ export interface GetAutoscaleSettingResult {
     /**
      * the collection of notifications.
      */
-    readonly notifications?: types.outputs.insights.AutoscaleNotificationResponse[];
+    readonly notifications?: types.outputs.AutoscaleNotificationResponse[];
     /**
      * the predictive autoscale policy mode.
      */
-    readonly predictiveAutoscalePolicy?: types.outputs.insights.PredictiveAutoscalePolicyResponse;
+    readonly predictiveAutoscalePolicy?: types.outputs.PredictiveAutoscalePolicyResponse;
     /**
      * the collection of automatic scaling profiles that specify different scaling parameters for different time periods. A maximum of 20 profiles can be specified.
      */
-    readonly profiles: types.outputs.insights.AutoscaleProfileResponse[];
+    readonly profiles: types.outputs.AutoscaleProfileResponse[];
     /**
      * The system metadata related to the response.
      */
-    readonly systemData: types.outputs.insights.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater in length than 128 characters and a value no greater in length than 256 characters.
      */

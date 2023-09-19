@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Details of an Update run
  */
@@ -82,11 +82,11 @@ export class UpdateRun extends pulumi.CustomResource {
     /**
      * Recursive model for child steps of this step.
      */
-    public readonly steps!: pulumi.Output<types.outputs.azurestackhci.v20230601.StepResponse[] | undefined>;
+    public readonly steps!: pulumi.Output<types.outputs.StepResponse[] | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.azurestackhci.v20230601.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Timestamp of the update run was started.
      */
@@ -212,7 +212,7 @@ export interface UpdateRunArgs {
     /**
      * State of the update run.
      */
-    state?: pulumi.Input<string | types.enums.v20230601.UpdateRunPropertiesState>;
+    state?: pulumi.Input<string | types.enums.UpdateRunPropertiesState>;
     /**
      * Status of the step, bubbled up from the ECE action plan for installation attempts. Values are: 'Success', 'Error', 'InProgress', and 'Unknown status'.
      */
@@ -220,7 +220,7 @@ export interface UpdateRunArgs {
     /**
      * Recursive model for child steps of this step.
      */
-    steps?: pulumi.Input<pulumi.Input<types.inputs.azurestackhci.v20230601.StepArgs>[]>;
+    steps?: pulumi.Input<pulumi.Input<types.inputs.StepArgs>[]>;
     /**
      * Timestamp of the update run was started.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the certificate resource.
  */
@@ -44,7 +44,7 @@ export interface GetCertificateResult {
     /**
      * Properties of the certificate resource payload.
      */
-    readonly properties: types.outputs.appplatform.v20210601preview.CertificatePropertiesResponse;
+    readonly properties: types.outputs.CertificatePropertiesResponse;
     /**
      * The type of the resource.
      */

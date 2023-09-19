@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Specifies information about the dedicated host group that the dedicated hosts should be assigned to. Currently, a dedicated host can only be added to a dedicated host group at creation time. An existing dedicated host cannot be added to another dedicated host group.
  */
@@ -34,15 +34,15 @@ export class DedicatedHostGroup extends pulumi.CustomResource {
     /**
      * Enables or disables a capability on the dedicated host group. Minimum api-version: 2022-03-01.
      */
-    public readonly additionalCapabilities!: pulumi.Output<types.outputs.compute.v20230701.DedicatedHostGroupPropertiesResponseAdditionalCapabilities | undefined>;
+    public readonly additionalCapabilities!: pulumi.Output<types.outputs.DedicatedHostGroupPropertiesResponseAdditionalCapabilities | undefined>;
     /**
      * A list of references to all dedicated hosts in the dedicated host group.
      */
-    public /*out*/ readonly hosts!: pulumi.Output<types.outputs.compute.v20230701.SubResourceReadOnlyResponse[]>;
+    public /*out*/ readonly hosts!: pulumi.Output<types.outputs.SubResourceReadOnlyResponse[]>;
     /**
      * The dedicated host group instance view, which has the list of instance view of the dedicated hosts under the dedicated host group.
      */
-    public /*out*/ readonly instanceView!: pulumi.Output<types.outputs.compute.v20230701.DedicatedHostGroupInstanceViewResponse>;
+    public /*out*/ readonly instanceView!: pulumi.Output<types.outputs.DedicatedHostGroupInstanceViewResponse>;
     /**
      * Resource location
      */
@@ -127,7 +127,7 @@ export interface DedicatedHostGroupArgs {
     /**
      * Enables or disables a capability on the dedicated host group. Minimum api-version: 2022-03-01.
      */
-    additionalCapabilities?: pulumi.Input<types.inputs.compute.v20230701.DedicatedHostGroupPropertiesAdditionalCapabilitiesArgs>;
+    additionalCapabilities?: pulumi.Input<types.inputs.DedicatedHostGroupPropertiesAdditionalCapabilitiesArgs>;
     /**
      * The name of the dedicated host group.
      */

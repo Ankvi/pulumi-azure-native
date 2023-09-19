@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * DevOps Configuration resource.
  */
@@ -38,11 +38,11 @@ export class DevOpsConfiguration extends pulumi.CustomResource {
     /**
      * DevOps Configuration properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.security.v20230901preview.DevOpsConfigurationPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.DevOpsConfigurationPropertiesResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.security.v20230901preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -91,7 +91,7 @@ export interface DevOpsConfigurationArgs {
     /**
      * DevOps Configuration properties.
      */
-    properties?: pulumi.Input<types.inputs.security.v20230901preview.DevOpsConfigurationPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.DevOpsConfigurationPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The Fleet resource.
  */
@@ -38,7 +38,7 @@ export class Fleet extends pulumi.CustomResource {
     /**
      * The FleetHubProfile configures the Fleet's hub.
      */
-    public readonly hubProfile!: pulumi.Output<types.outputs.containerservice.v20230315preview.FleetHubProfileResponse | undefined>;
+    public readonly hubProfile!: pulumi.Output<types.outputs.FleetHubProfileResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -54,7 +54,7 @@ export class Fleet extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.containerservice.v20230315preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -116,7 +116,7 @@ export interface FleetArgs {
     /**
      * The FleetHubProfile configures the Fleet's hub.
      */
-    hubProfile?: pulumi.Input<types.inputs.containerservice.v20230315preview.FleetHubProfileArgs>;
+    hubProfile?: pulumi.Input<types.inputs.FleetHubProfileArgs>;
     /**
      * The geo-location where the resource lives
      */

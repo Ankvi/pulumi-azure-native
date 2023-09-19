@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The integration account RosettaNet process configuration.
  */
@@ -34,7 +34,7 @@ export class RosettaNetProcessConfiguration extends pulumi.CustomResource {
     /**
      * The RosettaNet process configuration activity settings.
      */
-    public readonly activitySettings!: pulumi.Output<types.outputs.logic.v20160601.RosettaNetPipActivitySettingsResponse>;
+    public readonly activitySettings!: pulumi.Output<types.outputs.RosettaNetPipActivitySettingsResponse>;
     /**
      * The changed time.
      */
@@ -50,7 +50,7 @@ export class RosettaNetProcessConfiguration extends pulumi.CustomResource {
     /**
      * The RosettaNet initiator role settings.
      */
-    public readonly initiatorRoleSettings!: pulumi.Output<types.outputs.logic.v20160601.RosettaNetPipRoleSettingsResponse>;
+    public readonly initiatorRoleSettings!: pulumi.Output<types.outputs.RosettaNetPipRoleSettingsResponse>;
     /**
      * The resource location.
      */
@@ -78,7 +78,7 @@ export class RosettaNetProcessConfiguration extends pulumi.CustomResource {
     /**
      * The RosettaNet responder role settings.
      */
-    public readonly responderRoleSettings!: pulumi.Output<types.outputs.logic.v20160601.RosettaNetPipRoleSettingsResponse>;
+    public readonly responderRoleSettings!: pulumi.Output<types.outputs.RosettaNetPipRoleSettingsResponse>;
     /**
      * The resource tags.
      */
@@ -170,7 +170,7 @@ export interface RosettaNetProcessConfigurationArgs {
     /**
      * The RosettaNet process configuration activity settings.
      */
-    activitySettings: pulumi.Input<types.inputs.logic.v20160601.RosettaNetPipActivitySettingsArgs>;
+    activitySettings: pulumi.Input<types.inputs.RosettaNetPipActivitySettingsArgs>;
     /**
      * The integration account RosettaNet ProcessConfiguration properties.
      */
@@ -178,7 +178,7 @@ export interface RosettaNetProcessConfigurationArgs {
     /**
      * The RosettaNet initiator role settings.
      */
-    initiatorRoleSettings: pulumi.Input<types.inputs.logic.v20160601.RosettaNetPipRoleSettingsArgs>;
+    initiatorRoleSettings: pulumi.Input<types.inputs.RosettaNetPipRoleSettingsArgs>;
     /**
      * The integration account name.
      */
@@ -210,7 +210,7 @@ export interface RosettaNetProcessConfigurationArgs {
     /**
      * The RosettaNet responder role settings.
      */
-    responderRoleSettings: pulumi.Input<types.inputs.logic.v20160601.RosettaNetPipRoleSettingsArgs>;
+    responderRoleSettings: pulumi.Input<types.inputs.RosettaNetPipRoleSettingsArgs>;
     /**
      * The integration account RosettaNet ProcessConfiguration name.
      */

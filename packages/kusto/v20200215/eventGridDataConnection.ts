@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Class representing an Event Grid data connection.
  */
@@ -163,7 +163,7 @@ export interface EventGridDataConnectionArgs {
     /**
      * The data format of the message. Optionally the data format can be added to each message.
      */
-    dataFormat: pulumi.Input<string | types.enums.v20200215.EventGridDataFormat>;
+    dataFormat: pulumi.Input<string | types.enums.EventGridDataFormat>;
     /**
      * The name of the database in the Kusto cluster.
      */

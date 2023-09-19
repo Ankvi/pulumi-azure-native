@@ -37,7 +37,7 @@ export interface ListTransactionNodeApiKeysResult {
     /**
      * Gets or sets the collection of API key.
      */
-    readonly keys?: types.outputs.blockchain.ApiKeyResponse[];
+    readonly keys?: types.outputs.ApiKeyResponse[];
 }
 /**
  * List the API keys for the transaction node.

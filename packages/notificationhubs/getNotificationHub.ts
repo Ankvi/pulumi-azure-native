@@ -49,15 +49,15 @@ export interface GetNotificationHubResult {
     /**
      * NotificationHub properties.
      */
-    readonly properties: types.outputs.notificationhubs.NotificationHubPropertiesResponse;
+    readonly properties: types.outputs.NotificationHubPropertiesResponse;
     /**
      * The Sku description for a namespace
      */
-    readonly sku?: types.outputs.notificationhubs.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.notificationhubs.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

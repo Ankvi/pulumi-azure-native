@@ -45,11 +45,11 @@ export interface GetDppResourceGuardProxyResult {
     /**
      * ResourceGuardProxyBaseResource properties
      */
-    readonly properties: types.outputs.dataprotection.ResourceGuardProxyBaseResponse;
+    readonly properties: types.outputs.ResourceGuardProxyBaseResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.dataprotection.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
      */

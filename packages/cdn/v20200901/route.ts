@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Friendly Routes name mapping to the any Routes or secret related information.
  */
@@ -34,11 +34,11 @@ export class Route extends pulumi.CustomResource {
     /**
      * compression settings.
      */
-    public readonly compressionSettings!: pulumi.Output<types.outputs.cdn.v20200901.CompressionSettingsResponse | undefined>;
+    public readonly compressionSettings!: pulumi.Output<types.outputs.CompressionSettingsResponse | undefined>;
     /**
      * Domains referenced by this endpoint.
      */
-    public readonly customDomains!: pulumi.Output<types.outputs.cdn.v20200901.ResourceReferenceResponse[] | undefined>;
+    public readonly customDomains!: pulumi.Output<types.outputs.ResourceReferenceResponse[] | undefined>;
     public /*out*/ readonly deploymentStatus!: pulumi.Output<string>;
     /**
      * Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled'
@@ -63,7 +63,7 @@ export class Route extends pulumi.CustomResource {
     /**
      * A reference to the origin group.
      */
-    public readonly originGroup!: pulumi.Output<types.outputs.cdn.v20200901.ResourceReferenceResponse>;
+    public readonly originGroup!: pulumi.Output<types.outputs.ResourceReferenceResponse>;
     /**
      * A directory path on the origin that AzureFrontDoor can use to retrieve content from, e.g. contoso.cloudapp.net/originpath.
      */
@@ -83,7 +83,7 @@ export class Route extends pulumi.CustomResource {
     /**
      * rule sets referenced by this endpoint.
      */
-    public readonly ruleSets!: pulumi.Output<types.outputs.cdn.v20200901.ResourceReferenceResponse[] | undefined>;
+    public readonly ruleSets!: pulumi.Output<types.outputs.ResourceReferenceResponse[] | undefined>;
     /**
      * List of supported protocols for this route.
      */
@@ -91,7 +91,7 @@ export class Route extends pulumi.CustomResource {
     /**
      * Read only system data
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.cdn.v20200901.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource type.
      */
@@ -174,15 +174,15 @@ export interface RouteArgs {
     /**
      * compression settings.
      */
-    compressionSettings?: pulumi.Input<types.inputs.cdn.v20200901.CompressionSettingsArgs>;
+    compressionSettings?: pulumi.Input<types.inputs.CompressionSettingsArgs>;
     /**
      * Domains referenced by this endpoint.
      */
-    customDomains?: pulumi.Input<pulumi.Input<types.inputs.cdn.v20200901.ResourceReferenceArgs>[]>;
+    customDomains?: pulumi.Input<pulumi.Input<types.inputs.ResourceReferenceArgs>[]>;
     /**
      * Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled'
      */
-    enabledState?: pulumi.Input<string | types.enums.v20200901.EnabledState>;
+    enabledState?: pulumi.Input<string | types.enums.EnabledState>;
     /**
      * Name of the endpoint under the profile which is unique globally.
      */
@@ -190,19 +190,19 @@ export interface RouteArgs {
     /**
      * Protocol this rule will use when forwarding traffic to backends.
      */
-    forwardingProtocol?: pulumi.Input<string | types.enums.v20200901.ForwardingProtocol>;
+    forwardingProtocol?: pulumi.Input<string | types.enums.ForwardingProtocol>;
     /**
      * Whether to automatically redirect HTTP traffic to HTTPS traffic. Note that this is a easy way to set up this rule and it will be the first rule that gets executed.
      */
-    httpsRedirect?: pulumi.Input<string | types.enums.v20200901.HttpsRedirect>;
+    httpsRedirect?: pulumi.Input<string | types.enums.HttpsRedirect>;
     /**
      * whether this route will be linked to the default endpoint domain.
      */
-    linkToDefaultDomain?: pulumi.Input<string | types.enums.v20200901.LinkToDefaultDomain>;
+    linkToDefaultDomain?: pulumi.Input<string | types.enums.LinkToDefaultDomain>;
     /**
      * A reference to the origin group.
      */
-    originGroup: pulumi.Input<types.inputs.cdn.v20200901.ResourceReferenceArgs>;
+    originGroup: pulumi.Input<types.inputs.ResourceReferenceArgs>;
     /**
      * A directory path on the origin that AzureFrontDoor can use to retrieve content from, e.g. contoso.cloudapp.net/originpath.
      */
@@ -218,7 +218,7 @@ export interface RouteArgs {
     /**
      * Defines how CDN caches requests that include query strings. You can ignore any query strings when caching, bypass caching to prevent requests that contain query strings from being cached, or cache every request with a unique URL.
      */
-    queryStringCachingBehavior?: pulumi.Input<types.enums.v20200901.AfdQueryStringCachingBehavior>;
+    queryStringCachingBehavior?: pulumi.Input<types.enums.AfdQueryStringCachingBehavior>;
     /**
      * Name of the Resource group within the Azure subscription.
      */
@@ -230,9 +230,9 @@ export interface RouteArgs {
     /**
      * rule sets referenced by this endpoint.
      */
-    ruleSets?: pulumi.Input<pulumi.Input<types.inputs.cdn.v20200901.ResourceReferenceArgs>[]>;
+    ruleSets?: pulumi.Input<pulumi.Input<types.inputs.ResourceReferenceArgs>[]>;
     /**
      * List of supported protocols for this route.
      */
-    supportedProtocols?: pulumi.Input<pulumi.Input<string | types.enums.v20200901.AFDEndpointProtocols>[]>;
+    supportedProtocols?: pulumi.Input<pulumi.Input<string | types.enums.AFDEndpointProtocols>[]>;
 }

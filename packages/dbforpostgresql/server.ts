@@ -39,7 +39,7 @@ export class Server extends pulumi.CustomResource {
     /**
      * AuthConfig properties of a server.
      */
-    public readonly authConfig!: pulumi.Output<types.outputs.dbforpostgresql.AuthConfigResponse | undefined>;
+    public readonly authConfig!: pulumi.Output<types.outputs.AuthConfigResponse | undefined>;
     /**
      * availability zone information of the server.
      */
@@ -47,11 +47,11 @@ export class Server extends pulumi.CustomResource {
     /**
      * Backup properties of a server.
      */
-    public readonly backup!: pulumi.Output<types.outputs.dbforpostgresql.BackupResponse | undefined>;
+    public readonly backup!: pulumi.Output<types.outputs.BackupResponse | undefined>;
     /**
      * Data encryption properties of a server.
      */
-    public readonly dataEncryption!: pulumi.Output<types.outputs.dbforpostgresql.DataEncryptionResponse | undefined>;
+    public readonly dataEncryption!: pulumi.Output<types.outputs.DataEncryptionResponse | undefined>;
     /**
      * The fully qualified domain name of a server.
      */
@@ -59,11 +59,11 @@ export class Server extends pulumi.CustomResource {
     /**
      * High availability properties of a server.
      */
-    public readonly highAvailability!: pulumi.Output<types.outputs.dbforpostgresql.HighAvailabilityResponse | undefined>;
+    public readonly highAvailability!: pulumi.Output<types.outputs.HighAvailabilityResponse | undefined>;
     /**
      * Describes the identity of the application.
      */
-    public readonly identity!: pulumi.Output<types.outputs.dbforpostgresql.UserAssignedIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.UserAssignedIdentityResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -71,7 +71,7 @@ export class Server extends pulumi.CustomResource {
     /**
      * Maintenance window properties of a server.
      */
-    public readonly maintenanceWindow!: pulumi.Output<types.outputs.dbforpostgresql.MaintenanceWindowResponse | undefined>;
+    public readonly maintenanceWindow!: pulumi.Output<types.outputs.MaintenanceWindowResponse | undefined>;
     /**
      * The minor version of the server.
      */
@@ -83,7 +83,7 @@ export class Server extends pulumi.CustomResource {
     /**
      * Network properties of a server. This Network property is required to be passed only in case you want the server to be Private access server.
      */
-    public readonly network!: pulumi.Output<types.outputs.dbforpostgresql.NetworkResponse | undefined>;
+    public readonly network!: pulumi.Output<types.outputs.NetworkResponse | undefined>;
     /**
      * Replicas allowed for a server.
      */
@@ -95,7 +95,7 @@ export class Server extends pulumi.CustomResource {
     /**
      * The SKU (pricing tier) of the server.
      */
-    public readonly sku!: pulumi.Output<types.outputs.dbforpostgresql.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * The source server resource ID to restore from. It's required when 'createMode' is 'PointInTimeRestore' or 'GeoRestore' or 'Replica'. This property is returned only for Replica server
      */
@@ -107,11 +107,11 @@ export class Server extends pulumi.CustomResource {
     /**
      * Storage properties of a server.
      */
-    public readonly storage!: pulumi.Output<types.outputs.dbforpostgresql.StorageResponse | undefined>;
+    public readonly storage!: pulumi.Output<types.outputs.StorageResponse | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.dbforpostgresql.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -141,15 +141,15 @@ export class Server extends pulumi.CustomResource {
             }
             resourceInputs["administratorLogin"] = args ? args.administratorLogin : undefined;
             resourceInputs["administratorLoginPassword"] = args ? args.administratorLoginPassword : undefined;
-            resourceInputs["authConfig"] = args ? (args.authConfig ? pulumi.output(args.authConfig).apply(types.inputs.dbforpostgresql.authConfigArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["authConfig"] = args ? (args.authConfig ? pulumi.output(args.authConfig).apply(types.inputs.authConfigArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["availabilityZone"] = (args ? args.availabilityZone : undefined) ?? "";
-            resourceInputs["backup"] = args ? (args.backup ? pulumi.output(args.backup).apply(types.inputs.dbforpostgresql.backupArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["backup"] = args ? (args.backup ? pulumi.output(args.backup).apply(types.inputs.backupArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["createMode"] = args ? args.createMode : undefined;
             resourceInputs["dataEncryption"] = args ? args.dataEncryption : undefined;
-            resourceInputs["highAvailability"] = args ? (args.highAvailability ? pulumi.output(args.highAvailability).apply(types.inputs.dbforpostgresql.highAvailabilityArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["highAvailability"] = args ? (args.highAvailability ? pulumi.output(args.highAvailability).apply(types.inputs.highAvailabilityArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["identity"] = args ? args.identity : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["maintenanceWindow"] = args ? (args.maintenanceWindow ? pulumi.output(args.maintenanceWindow).apply(types.inputs.dbforpostgresql.maintenanceWindowArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["maintenanceWindow"] = args ? (args.maintenanceWindow ? pulumi.output(args.maintenanceWindow).apply(types.inputs.maintenanceWindowArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["network"] = args ? args.network : undefined;
             resourceInputs["pointInTimeUTC"] = args ? args.pointInTimeUTC : undefined;
             resourceInputs["replicationRole"] = args ? args.replicationRole : undefined;
@@ -214,7 +214,7 @@ export interface ServerArgs {
     /**
      * AuthConfig properties of a server.
      */
-    authConfig?: pulumi.Input<types.inputs.dbforpostgresql.AuthConfigArgs>;
+    authConfig?: pulumi.Input<types.inputs.AuthConfigArgs>;
     /**
      * availability zone information of the server.
      */
@@ -222,7 +222,7 @@ export interface ServerArgs {
     /**
      * Backup properties of a server.
      */
-    backup?: pulumi.Input<types.inputs.dbforpostgresql.BackupArgs>;
+    backup?: pulumi.Input<types.inputs.BackupArgs>;
     /**
      * The mode to create a new PostgreSQL server.
      */
@@ -230,15 +230,15 @@ export interface ServerArgs {
     /**
      * Data encryption properties of a server.
      */
-    dataEncryption?: pulumi.Input<types.inputs.dbforpostgresql.DataEncryptionArgs>;
+    dataEncryption?: pulumi.Input<types.inputs.DataEncryptionArgs>;
     /**
      * High availability properties of a server.
      */
-    highAvailability?: pulumi.Input<types.inputs.dbforpostgresql.HighAvailabilityArgs>;
+    highAvailability?: pulumi.Input<types.inputs.HighAvailabilityArgs>;
     /**
      * Describes the identity of the application.
      */
-    identity?: pulumi.Input<types.inputs.dbforpostgresql.UserAssignedIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.UserAssignedIdentityArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -246,11 +246,11 @@ export interface ServerArgs {
     /**
      * Maintenance window properties of a server.
      */
-    maintenanceWindow?: pulumi.Input<types.inputs.dbforpostgresql.MaintenanceWindowArgs>;
+    maintenanceWindow?: pulumi.Input<types.inputs.MaintenanceWindowArgs>;
     /**
      * Network properties of a server. This Network property is required to be passed only in case you want the server to be Private access server.
      */
-    network?: pulumi.Input<types.inputs.dbforpostgresql.NetworkArgs>;
+    network?: pulumi.Input<types.inputs.NetworkArgs>;
     /**
      * Restore point creation time (ISO8601 format), specifying the time to restore from. It's required when 'createMode' is 'PointInTimeRestore' or 'GeoRestore'.
      */
@@ -270,7 +270,7 @@ export interface ServerArgs {
     /**
      * The SKU (pricing tier) of the server.
      */
-    sku?: pulumi.Input<types.inputs.dbforpostgresql.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * The source server resource ID to restore from. It's required when 'createMode' is 'PointInTimeRestore' or 'GeoRestore' or 'Replica'. This property is returned only for Replica server
      */
@@ -278,7 +278,7 @@ export interface ServerArgs {
     /**
      * Storage properties of a server.
      */
-    storage?: pulumi.Input<types.inputs.dbforpostgresql.StorageArgs>;
+    storage?: pulumi.Input<types.inputs.StorageArgs>;
     /**
      * Resource tags.
      */

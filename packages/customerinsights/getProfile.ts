@@ -62,7 +62,7 @@ export interface GetProfileResult {
     /**
      * The properties of the Profile.
      */
-    readonly fields?: types.outputs.customerinsights.PropertyDefinitionResponse[];
+    readonly fields?: types.outputs.PropertyDefinitionResponse[];
     /**
      * Resource ID.
      */
@@ -106,7 +106,7 @@ export interface GetProfileResult {
     /**
      * The strong IDs.
      */
-    readonly strongIds?: types.outputs.customerinsights.StrongIdResponse[];
+    readonly strongIds?: types.outputs.StrongIdResponse[];
     /**
      * The hub name.
      */

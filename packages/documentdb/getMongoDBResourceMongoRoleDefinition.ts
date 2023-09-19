@@ -49,7 +49,7 @@ export interface GetMongoDBResourceMongoRoleDefinitionResult {
     /**
      * A set of privileges contained by the Role Definition. This will allow application of this Role Definition on the entire database account or any underlying Database / Collection. Scopes higher than Database are not enforceable as privilege.
      */
-    readonly privileges?: types.outputs.documentdb.PrivilegeResponse[];
+    readonly privileges?: types.outputs.PrivilegeResponse[];
     /**
      * A user-friendly name for the Role Definition. Must be unique for the database account.
      */
@@ -57,7 +57,7 @@ export interface GetMongoDBResourceMongoRoleDefinitionResult {
     /**
      * The set of roles inherited by this Role Definition.
      */
-    readonly roles?: types.outputs.documentdb.RoleResponse[];
+    readonly roles?: types.outputs.RoleResponse[];
     /**
      * The type of Azure resource.
      */

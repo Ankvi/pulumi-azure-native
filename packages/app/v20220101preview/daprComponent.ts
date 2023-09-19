@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Dapr Component.
  */
@@ -46,7 +46,7 @@ export class DaprComponent extends pulumi.CustomResource {
     /**
      * Component metadata
      */
-    public readonly metadata!: pulumi.Output<types.outputs.app.v20220101preview.DaprMetadataResponse[] | undefined>;
+    public readonly metadata!: pulumi.Output<types.outputs.DaprMetadataResponse[] | undefined>;
     /**
      * The name of the resource
      */
@@ -58,11 +58,11 @@ export class DaprComponent extends pulumi.CustomResource {
     /**
      * Collection of secrets used by a Dapr component
      */
-    public readonly secrets!: pulumi.Output<types.outputs.app.v20220101preview.SecretResponse[] | undefined>;
+    public readonly secrets!: pulumi.Output<types.outputs.SecretResponse[] | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.app.v20220101preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -143,7 +143,7 @@ export interface DaprComponentArgs {
     /**
      * Component metadata
      */
-    metadata?: pulumi.Input<pulumi.Input<types.inputs.app.v20220101preview.DaprMetadataArgs>[]>;
+    metadata?: pulumi.Input<pulumi.Input<types.inputs.DaprMetadataArgs>[]>;
     /**
      * Name of the Dapr Component.
      */
@@ -159,7 +159,7 @@ export interface DaprComponentArgs {
     /**
      * Collection of secrets used by a Dapr component
      */
-    secrets?: pulumi.Input<pulumi.Input<types.inputs.app.v20220101preview.SecretArgs>[]>;
+    secrets?: pulumi.Input<pulumi.Input<types.inputs.SecretArgs>[]>;
     /**
      * Component version
      */

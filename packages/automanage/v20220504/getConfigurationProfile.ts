@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get information about a configuration profile
  */
@@ -43,11 +43,11 @@ export interface GetConfigurationProfileResult {
     /**
      * Properties of the configuration profile.
      */
-    readonly properties: types.outputs.automanage.v20220504.ConfigurationProfilePropertiesResponse;
+    readonly properties: types.outputs.ConfigurationProfilePropertiesResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.automanage.v20220504.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

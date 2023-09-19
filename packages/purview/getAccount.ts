@@ -32,12 +32,12 @@ export interface GetAccountResult {
     /**
      * Gets or sets the status of the account.
      */
-    readonly accountStatus: types.outputs.purview.AccountPropertiesResponseAccountStatus;
+    readonly accountStatus: types.outputs.AccountPropertiesResponseAccountStatus;
     /**
      * Cloud connectors.
      * External cloud identifier used as part of scanning configuration.
      */
-    readonly cloudConnectors?: types.outputs.purview.CloudConnectorsResponse;
+    readonly cloudConnectors?: types.outputs.CloudConnectorsResponse;
     /**
      * Gets the time at which the entity was created.
      */
@@ -53,7 +53,7 @@ export interface GetAccountResult {
     /**
      * The URIs that are the public endpoints of the account.
      */
-    readonly endpoints: types.outputs.purview.AccountPropertiesResponseEndpoints;
+    readonly endpoints: types.outputs.AccountPropertiesResponseEndpoints;
     /**
      * Gets or sets the friendly name.
      */
@@ -65,7 +65,7 @@ export interface GetAccountResult {
     /**
      * Identity Info on the tracked resource
      */
-    readonly identity?: types.outputs.purview.IdentityResponse;
+    readonly identity?: types.outputs.IdentityResponse;
     /**
      * Gets or sets the location.
      */
@@ -81,7 +81,7 @@ export interface GetAccountResult {
     /**
      * Gets the resource identifiers of the managed resources.
      */
-    readonly managedResources: types.outputs.purview.AccountPropertiesResponseManagedResources;
+    readonly managedResources: types.outputs.AccountPropertiesResponseManagedResources;
     /**
      * Gets or sets the public network access for managed resources.
      */
@@ -93,7 +93,7 @@ export interface GetAccountResult {
     /**
      * Gets the private endpoint connections information.
      */
-    readonly privateEndpointConnections: types.outputs.purview.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections: types.outputs.PrivateEndpointConnectionResponse[];
     /**
      * Gets or sets the state of the provisioning.
      */
@@ -105,11 +105,11 @@ export interface GetAccountResult {
     /**
      * Gets or sets the Sku.
      */
-    readonly sku: types.outputs.purview.AccountResponseSku;
+    readonly sku: types.outputs.AccountResponseSku;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.purview.TrackedResourceResponseSystemData;
+    readonly systemData: types.outputs.TrackedResourceResponseSystemData;
     /**
      * Tags on the azure resource.
      */

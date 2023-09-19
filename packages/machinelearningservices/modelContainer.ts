@@ -35,7 +35,7 @@ export class ModelContainer extends pulumi.CustomResource {
     /**
      * [Required] Additional attributes of the entity.
      */
-    public readonly modelContainerProperties!: pulumi.Output<types.outputs.machinelearningservices.ModelContainerResponse>;
+    public readonly modelContainerProperties!: pulumi.Output<types.outputs.ModelContainerResponse>;
     /**
      * The name of the resource
      */
@@ -43,7 +43,7 @@ export class ModelContainer extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.machinelearningservices.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -69,7 +69,7 @@ export class ModelContainer extends pulumi.CustomResource {
             if ((!args || args.workspaceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workspaceName'");
             }
-            resourceInputs["modelContainerProperties"] = args ? (args.modelContainerProperties ? pulumi.output(args.modelContainerProperties).apply(types.inputs.machinelearningservices.modelContainerArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["modelContainerProperties"] = args ? (args.modelContainerProperties ? pulumi.output(args.modelContainerProperties).apply(types.inputs.modelContainerArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["workspaceName"] = args ? args.workspaceName : undefined;
@@ -95,7 +95,7 @@ export interface ModelContainerArgs {
     /**
      * [Required] Additional attributes of the entity.
      */
-    modelContainerProperties: pulumi.Input<types.inputs.machinelearningservices.ModelContainerArgs>;
+    modelContainerProperties: pulumi.Input<types.inputs.ModelContainerArgs>;
     /**
      * Container name. This is case-sensitive.
      */

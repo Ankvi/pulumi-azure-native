@@ -32,15 +32,15 @@ export interface GetDscpConfigurationResult {
     /**
      * Associated Network Interfaces to the DSCP Configuration.
      */
-    readonly associatedNetworkInterfaces: types.outputs.network.NetworkInterfaceResponse[];
+    readonly associatedNetworkInterfaces: types.outputs.NetworkInterfaceResponse[];
     /**
      * Destination IP ranges.
      */
-    readonly destinationIpRanges?: types.outputs.network.QosIpRangeResponse[];
+    readonly destinationIpRanges?: types.outputs.QosIpRangeResponse[];
     /**
      * Destination port ranges.
      */
-    readonly destinationPortRanges?: types.outputs.network.QosPortRangeResponse[];
+    readonly destinationPortRanges?: types.outputs.QosPortRangeResponse[];
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -76,7 +76,7 @@ export interface GetDscpConfigurationResult {
     /**
      * QoS object definitions
      */
-    readonly qosDefinitionCollection?: types.outputs.network.QosDefinitionResponse[];
+    readonly qosDefinitionCollection?: types.outputs.QosDefinitionResponse[];
     /**
      * The resource GUID property of the DSCP Configuration resource.
      */
@@ -84,11 +84,11 @@ export interface GetDscpConfigurationResult {
     /**
      * Source IP ranges.
      */
-    readonly sourceIpRanges?: types.outputs.network.QosIpRangeResponse[];
+    readonly sourceIpRanges?: types.outputs.QosIpRangeResponse[];
     /**
      * Sources port ranges.
      */
-    readonly sourcePortRanges?: types.outputs.network.QosPortRangeResponse[];
+    readonly sourcePortRanges?: types.outputs.QosPortRangeResponse[];
     /**
      * Resource tags.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get HCI cluster.
  */
@@ -63,7 +63,7 @@ export interface GetClusterResult {
     /**
      * Desired properties of the cluster.
      */
-    readonly desiredProperties?: types.outputs.azurestackhci.v20220101.ClusterDesiredPropertiesResponse;
+    readonly desiredProperties?: types.outputs.ClusterDesiredPropertiesResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -107,7 +107,7 @@ export interface GetClusterResult {
     /**
      * Properties reported by cluster agent.
      */
-    readonly reportedProperties: types.outputs.azurestackhci.v20220101.ClusterReportedPropertiesResponse;
+    readonly reportedProperties: types.outputs.ClusterReportedPropertiesResponse;
     /**
      * Status of the cluster agent.
      */

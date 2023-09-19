@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Diagnostic details.
  */
@@ -38,11 +38,11 @@ export class ApiDiagnostic extends pulumi.CustomResource {
     /**
      * Diagnostic settings for incoming/outgoing HTTP messages to the Backend
      */
-    public readonly backend!: pulumi.Output<types.outputs.apimanagement.v20220901preview.PipelineDiagnosticSettingsResponse | undefined>;
+    public readonly backend!: pulumi.Output<types.outputs.PipelineDiagnosticSettingsResponse | undefined>;
     /**
      * Diagnostic settings for incoming/outgoing HTTP messages to the Gateway.
      */
-    public readonly frontend!: pulumi.Output<types.outputs.apimanagement.v20220901preview.PipelineDiagnosticSettingsResponse | undefined>;
+    public readonly frontend!: pulumi.Output<types.outputs.PipelineDiagnosticSettingsResponse | undefined>;
     /**
      * Sets correlation protocol to use for Application Insights diagnostics.
      */
@@ -70,7 +70,7 @@ export class ApiDiagnostic extends pulumi.CustomResource {
     /**
      * Sampling settings for Diagnostic.
      */
-    public readonly sampling!: pulumi.Output<types.outputs.apimanagement.v20220901preview.SamplingSettingsResponse | undefined>;
+    public readonly sampling!: pulumi.Output<types.outputs.SamplingSettingsResponse | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -147,7 +147,7 @@ export interface ApiDiagnosticArgs {
     /**
      * Specifies for what type of messages sampling settings should not apply.
      */
-    alwaysLog?: pulumi.Input<string | types.enums.v20220901preview.AlwaysLog>;
+    alwaysLog?: pulumi.Input<string | types.enums.AlwaysLog>;
     /**
      * API identifier. Must be unique in the current API Management service instance.
      */
@@ -155,7 +155,7 @@ export interface ApiDiagnosticArgs {
     /**
      * Diagnostic settings for incoming/outgoing HTTP messages to the Backend
      */
-    backend?: pulumi.Input<types.inputs.apimanagement.v20220901preview.PipelineDiagnosticSettingsArgs>;
+    backend?: pulumi.Input<types.inputs.PipelineDiagnosticSettingsArgs>;
     /**
      * Diagnostic identifier. Must be unique in the current API Management service instance.
      */
@@ -163,11 +163,11 @@ export interface ApiDiagnosticArgs {
     /**
      * Diagnostic settings for incoming/outgoing HTTP messages to the Gateway.
      */
-    frontend?: pulumi.Input<types.inputs.apimanagement.v20220901preview.PipelineDiagnosticSettingsArgs>;
+    frontend?: pulumi.Input<types.inputs.PipelineDiagnosticSettingsArgs>;
     /**
      * Sets correlation protocol to use for Application Insights diagnostics.
      */
-    httpCorrelationProtocol?: pulumi.Input<string | types.enums.v20220901preview.HttpCorrelationProtocol>;
+    httpCorrelationProtocol?: pulumi.Input<string | types.enums.HttpCorrelationProtocol>;
     /**
      * Log the ClientIP. Default is false.
      */
@@ -183,7 +183,7 @@ export interface ApiDiagnosticArgs {
     /**
      * The format of the Operation Name for Application Insights telemetries. Default is Name.
      */
-    operationNameFormat?: pulumi.Input<string | types.enums.v20220901preview.OperationNameFormat>;
+    operationNameFormat?: pulumi.Input<string | types.enums.OperationNameFormat>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -191,7 +191,7 @@ export interface ApiDiagnosticArgs {
     /**
      * Sampling settings for Diagnostic.
      */
-    sampling?: pulumi.Input<types.inputs.apimanagement.v20220901preview.SamplingSettingsArgs>;
+    sampling?: pulumi.Input<types.inputs.SamplingSettingsArgs>;
     /**
      * The name of the API Management service.
      */
@@ -199,5 +199,5 @@ export interface ApiDiagnosticArgs {
     /**
      * The verbosity level applied to traces emitted by trace policies.
      */
-    verbosity?: pulumi.Input<string | types.enums.v20220901preview.Verbosity>;
+    verbosity?: pulumi.Input<string | types.enums.Verbosity>;
 }

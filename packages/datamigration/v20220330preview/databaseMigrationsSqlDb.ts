@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Database Migration Resource for SQL Database.
  */
@@ -35,11 +35,11 @@ export class DatabaseMigrationsSqlDb extends pulumi.CustomResource {
     /**
      * Database Migration Resource properties for SQL database.
      */
-    public readonly properties!: pulumi.Output<types.outputs.datamigration.v20220330preview.DatabaseMigrationPropertiesSqlDbResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.DatabaseMigrationPropertiesSqlDbResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.datamigration.v20220330preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     public /*out*/ readonly type!: pulumi.Output<string>;
 
     /**
@@ -86,7 +86,7 @@ export interface DatabaseMigrationsSqlDbArgs {
     /**
      * Database Migration Resource properties for SQL database.
      */
-    properties?: pulumi.Input<types.inputs.datamigration.v20220330preview.DatabaseMigrationPropertiesSqlDbArgs>;
+    properties?: pulumi.Input<types.inputs.DatabaseMigrationPropertiesSqlDbArgs>;
     /**
      * Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */

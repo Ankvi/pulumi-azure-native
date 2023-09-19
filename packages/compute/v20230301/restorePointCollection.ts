@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Create or update Restore Point collection parameters.
  */
@@ -50,11 +50,11 @@ export class RestorePointCollection extends pulumi.CustomResource {
     /**
      * A list containing all restore points created under this restore point collection.
      */
-    public /*out*/ readonly restorePoints!: pulumi.Output<types.outputs.compute.v20230301.RestorePointResponse[]>;
+    public /*out*/ readonly restorePoints!: pulumi.Output<types.outputs.RestorePointResponse[]>;
     /**
      * The properties of the source resource that this restore point collection is created from.
      */
-    public readonly source!: pulumi.Output<types.outputs.compute.v20230301.RestorePointCollectionSourcePropertiesResponse | undefined>;
+    public readonly source!: pulumi.Output<types.outputs.RestorePointCollectionSourcePropertiesResponse | undefined>;
     /**
      * Resource tags
      */
@@ -124,7 +124,7 @@ export interface RestorePointCollectionArgs {
     /**
      * The properties of the source resource that this restore point collection is created from.
      */
-    source?: pulumi.Input<types.inputs.compute.v20230301.RestorePointCollectionSourcePropertiesArgs>;
+    source?: pulumi.Input<types.inputs.RestorePointCollectionSourcePropertiesArgs>;
     /**
      * Resource tags
      */

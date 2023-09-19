@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Device Update account details.
  */
@@ -34,7 +34,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * CMK encryption at rest properties
      */
-    public readonly encryption!: pulumi.Output<types.outputs.deviceupdate.v20230701.EncryptionResponse | undefined>;
+    public readonly encryption!: pulumi.Output<types.outputs.EncryptionResponse | undefined>;
     /**
      * API host name.
      */
@@ -42,7 +42,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * The type of identity used for the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.deviceupdate.v20230701.ManagedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -50,7 +50,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * Device Update account primary and failover location details
      */
-    public /*out*/ readonly locations!: pulumi.Output<types.outputs.deviceupdate.v20230701.LocationResponse[]>;
+    public /*out*/ readonly locations!: pulumi.Output<types.outputs.LocationResponse[]>;
     /**
      * The name of the resource
      */
@@ -58,7 +58,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * List of private endpoint connections associated with the account.
      */
-    public readonly privateEndpointConnections!: pulumi.Output<types.outputs.deviceupdate.v20230701.PrivateEndpointConnectionResponse[] | undefined>;
+    public readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[] | undefined>;
     /**
      * Provisioning state.
      */
@@ -74,7 +74,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.deviceupdate.v20230701.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -146,11 +146,11 @@ export interface AccountArgs {
     /**
      * CMK encryption at rest properties
      */
-    encryption?: pulumi.Input<types.inputs.deviceupdate.v20230701.EncryptionArgs>;
+    encryption?: pulumi.Input<types.inputs.EncryptionArgs>;
     /**
      * The type of identity used for the resource.
      */
-    identity?: pulumi.Input<types.inputs.deviceupdate.v20230701.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -159,11 +159,11 @@ export interface AccountArgs {
      * List of private endpoint connections associated with the account.
      * These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
      */
-    privateEndpointConnections?: pulumi.Input<pulumi.Input<types.inputs.deviceupdate.v20230701.PrivateEndpointConnectionArgs>[]>;
+    privateEndpointConnections?: pulumi.Input<pulumi.Input<types.inputs.PrivateEndpointConnectionArgs>[]>;
     /**
      * Whether or not public network access is allowed for the account.
      */
-    publicNetworkAccess?: pulumi.Input<string | types.enums.v20230701.PublicNetworkAccess>;
+    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess>;
     /**
      * The resource group name.
      */
@@ -171,7 +171,7 @@ export interface AccountArgs {
     /**
      * Device Update Sku
      */
-    sku?: pulumi.Input<string | types.enums.v20230701.SKU>;
+    sku?: pulumi.Input<string | types.enums.SKU>;
     /**
      * Resource tags.
      */

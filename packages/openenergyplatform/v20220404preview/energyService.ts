@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 export class EnergyService extends pulumi.CustomResource {
     /**
      * Get an existing EnergyService resource's state with the given name, ID, and optional extra
@@ -36,11 +36,11 @@ export class EnergyService extends pulumi.CustomResource {
      * The name of the resource
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
-    public readonly properties!: pulumi.Output<types.outputs.openenergyplatform.v20220404preview.EnergyServicePropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.EnergyServicePropertiesResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.openenergyplatform.v20220404preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -95,7 +95,7 @@ export interface EnergyServiceArgs {
      * Geo-location where the resource lives.
      */
     location?: pulumi.Input<string>;
-    properties?: pulumi.Input<types.inputs.openenergyplatform.v20220404preview.EnergyServicePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.EnergyServicePropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

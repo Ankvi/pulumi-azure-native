@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets configuration values for Single Pane Of Glass for SAP monitor for the specified subscription, resource group, and resource name.
  */
@@ -31,7 +31,7 @@ export interface GetSapLandscapeMonitorResult {
     /**
      * Gets or sets the SID groupings by landscape and Environment.
      */
-    readonly grouping?: types.outputs.workloads.v20230401.SapLandscapeMonitorPropertiesResponseGrouping;
+    readonly grouping?: types.outputs.SapLandscapeMonitorPropertiesResponseGrouping;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -47,11 +47,11 @@ export interface GetSapLandscapeMonitorResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.workloads.v20230401.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Gets or sets the list Top Metric Thresholds for SAP Landscape Monitor Dashboard
      */
-    readonly topMetricsThresholds?: types.outputs.workloads.v20230401.SapLandscapeMonitorMetricThresholdsResponse[];
+    readonly topMetricsThresholds?: types.outputs.SapLandscapeMonitorMetricThresholdsResponse[];
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

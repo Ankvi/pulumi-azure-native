@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the details of the specified storage classification mapping.
  */
@@ -58,7 +58,7 @@ export interface GetReplicationStorageClassificationMappingResult {
     /**
      * Properties of the storage mapping object.
      */
-    readonly properties: types.outputs.recoveryservices.v20230401.StorageClassificationMappingPropertiesResponse;
+    readonly properties: types.outputs.StorageClassificationMappingPropertiesResponse;
     /**
      * Resource Type
      */

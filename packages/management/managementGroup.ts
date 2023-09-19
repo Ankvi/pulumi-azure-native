@@ -35,11 +35,11 @@ export class ManagementGroup extends pulumi.CustomResource {
     /**
      * The list of children.
      */
-    public /*out*/ readonly children!: pulumi.Output<types.outputs.management.ManagementGroupChildInfoResponse[] | undefined>;
+    public /*out*/ readonly children!: pulumi.Output<types.outputs.ManagementGroupChildInfoResponse[] | undefined>;
     /**
      * The details of a management group.
      */
-    public readonly details!: pulumi.Output<types.outputs.management.ManagementGroupDetailsResponse | undefined>;
+    public readonly details!: pulumi.Output<types.outputs.ManagementGroupDetailsResponse | undefined>;
     /**
      * The friendly name of the management group.
      */
@@ -97,7 +97,7 @@ export interface ManagementGroupArgs {
     /**
      * The details of a management group used during creation.
      */
-    details?: pulumi.Input<types.inputs.management.CreateManagementGroupDetailsArgs>;
+    details?: pulumi.Input<types.inputs.CreateManagementGroupDetailsArgs>;
     /**
      * The friendly name of the management group. If no value is passed then this  field will be set to the groupId.
      */

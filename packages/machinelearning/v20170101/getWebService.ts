@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the Web Service Definition as specified by a subscription, resource group, and name. Note that the storage credentials and web service keys are not returned by this call. To get the web service access keys, call List Keys.
  */
@@ -48,7 +48,7 @@ export interface GetWebServiceResult {
     /**
      * Contains the property payload that describes the web service.
      */
-    readonly properties: types.outputs.machinelearning.v20170101.WebServicePropertiesForGraphResponse;
+    readonly properties: types.outputs.WebServicePropertiesForGraphResponse;
     /**
      * Contains resource tags defined as key/value pairs.
      */

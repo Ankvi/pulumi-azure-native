@@ -44,7 +44,7 @@ export interface GetPrivateLinkHubResult {
     /**
      * List of private endpoint connections
      */
-    readonly privateEndpointConnections: types.outputs.synapse.PrivateEndpointConnectionForPrivateLinkHubBasicResponse[];
+    readonly privateEndpointConnections: types.outputs.PrivateEndpointConnectionForPrivateLinkHubBasicResponse[];
     /**
      * PrivateLinkHub provisioning state
      */

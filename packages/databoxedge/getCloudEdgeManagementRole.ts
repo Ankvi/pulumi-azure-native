@@ -39,7 +39,7 @@ export interface GetCloudEdgeManagementRoleResult {
     /**
      * Edge Profile of the resource
      */
-    readonly edgeProfile: types.outputs.databoxedge.EdgeProfileResponse;
+    readonly edgeProfile: types.outputs.EdgeProfileResponse;
     /**
      * The path ID that uniquely identifies the object.
      */
@@ -64,7 +64,7 @@ export interface GetCloudEdgeManagementRoleResult {
     /**
      * Metadata pertaining to creation and last modification of Role
      */
-    readonly systemData: types.outputs.databoxedge.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The hierarchical type of the object.
      */

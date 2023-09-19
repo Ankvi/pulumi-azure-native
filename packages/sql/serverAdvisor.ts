@@ -67,7 +67,7 @@ export class ServerAdvisor extends pulumi.CustomResource {
     /**
      * Gets the recommended actions for this advisor.
      */
-    public /*out*/ readonly recommendedActions!: pulumi.Output<types.outputs.sql.RecommendedActionResponse[]>;
+    public /*out*/ readonly recommendedActions!: pulumi.Output<types.outputs.RecommendedActionResponse[]>;
     /**
      * Resource type.
      */

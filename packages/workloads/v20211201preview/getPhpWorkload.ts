@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the PHP workload resource.
  */
@@ -31,7 +31,7 @@ export interface GetPhpWorkloadResult {
     /**
      * Admin user profile used for VM and VMSS
      */
-    readonly adminUserProfile: types.outputs.workloads.v20211201preview.UserProfileResponse;
+    readonly adminUserProfile: types.outputs.UserProfileResponse;
     /**
      * The infra resources for PHP workload will be created in this location
      */
@@ -39,23 +39,23 @@ export interface GetPhpWorkloadResult {
     /**
      * Backup profile
      */
-    readonly backupProfile?: types.outputs.workloads.v20211201preview.BackupProfileResponse;
+    readonly backupProfile?: types.outputs.BackupProfileResponse;
     /**
      * Cache profile
      */
-    readonly cacheProfile?: types.outputs.workloads.v20211201preview.CacheProfileResponse;
+    readonly cacheProfile?: types.outputs.CacheProfileResponse;
     /**
      * Controller VM profile
      */
-    readonly controllerProfile: types.outputs.workloads.v20211201preview.NodeProfileResponse;
+    readonly controllerProfile: types.outputs.NodeProfileResponse;
     /**
      * Database profile
      */
-    readonly databaseProfile: types.outputs.workloads.v20211201preview.DatabaseProfileResponse;
+    readonly databaseProfile: types.outputs.DatabaseProfileResponse;
     /**
      * File share profile
      */
-    readonly fileshareProfile?: types.outputs.workloads.v20211201preview.FileshareProfileResponse;
+    readonly fileshareProfile?: types.outputs.FileshareProfileResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -63,7 +63,7 @@ export interface GetPhpWorkloadResult {
     /**
      * Identity for the resource. Currently not supported
      */
-    readonly identity?: types.outputs.workloads.v20211201preview.PhpWorkloadResourceResponseIdentity;
+    readonly identity?: types.outputs.PhpWorkloadResourceResponseIdentity;
     /**
      * Indicates which kind of php workload this resource represent e.g WordPress
      */
@@ -75,7 +75,7 @@ export interface GetPhpWorkloadResult {
     /**
      * Managed resource group configuration of the workload
      */
-    readonly managedResourceGroupConfiguration?: types.outputs.workloads.v20211201preview.ManagedRGConfigurationResponse;
+    readonly managedResourceGroupConfiguration?: types.outputs.ManagedRGConfigurationResponse;
     /**
      * The name of the resource
      */
@@ -83,11 +83,11 @@ export interface GetPhpWorkloadResult {
     /**
      * Network profile
      */
-    readonly networkProfile?: types.outputs.workloads.v20211201preview.NetworkProfileResponse;
+    readonly networkProfile?: types.outputs.NetworkProfileResponse;
     /**
      * PHP profile
      */
-    readonly phpProfile?: types.outputs.workloads.v20211201preview.PhpProfileResponse;
+    readonly phpProfile?: types.outputs.PhpProfileResponse;
     /**
      * Php workload resource provisioning state
      */
@@ -95,19 +95,19 @@ export interface GetPhpWorkloadResult {
     /**
      * Search profile
      */
-    readonly searchProfile?: types.outputs.workloads.v20211201preview.SearchProfileResponse;
+    readonly searchProfile?: types.outputs.SearchProfileResponse;
     /**
      * Site profile
      */
-    readonly siteProfile?: types.outputs.workloads.v20211201preview.SiteProfileResponse;
+    readonly siteProfile?: types.outputs.SiteProfileResponse;
     /**
      * Php workloads SKU
      */
-    readonly sku?: types.outputs.workloads.v20211201preview.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.workloads.v20211201preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -119,7 +119,7 @@ export interface GetPhpWorkloadResult {
     /**
      * VMSS web nodes profile
      */
-    readonly webNodesProfile: types.outputs.workloads.v20211201preview.VmssNodesProfileResponse;
+    readonly webNodesProfile: types.outputs.VmssNodesProfileResponse;
 }
 /**
  * Gets the PHP workload resource.

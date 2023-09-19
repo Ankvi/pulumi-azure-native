@@ -35,7 +35,7 @@ export class Volume extends pulumi.CustomResource {
     /**
      * State of the operation on the resource.
      */
-    public readonly creationData!: pulumi.Output<types.outputs.elasticsan.SourceCreationDataResponse | undefined>;
+    public readonly creationData!: pulumi.Output<types.outputs.SourceCreationDataResponse | undefined>;
     /**
      * Azure resource name.
      */
@@ -47,11 +47,11 @@ export class Volume extends pulumi.CustomResource {
     /**
      * Storage target information
      */
-    public /*out*/ readonly storageTarget!: pulumi.Output<types.outputs.elasticsan.IscsiTargetInfoResponse>;
+    public /*out*/ readonly storageTarget!: pulumi.Output<types.outputs.IscsiTargetInfoResponse>;
     /**
      * Resource metadata required by ARM RPC
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.elasticsan.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Azure resource tags.
      */
@@ -121,7 +121,7 @@ export interface VolumeArgs {
     /**
      * State of the operation on the resource.
      */
-    creationData?: pulumi.Input<types.inputs.elasticsan.SourceCreationDataArgs>;
+    creationData?: pulumi.Input<types.inputs.SourceCreationDataArgs>;
     /**
      * The name of the ElasticSan.
      */

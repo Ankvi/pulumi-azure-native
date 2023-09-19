@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Azure Resource Manager resource envelope.
  */
@@ -36,7 +36,7 @@ export interface GetDatastoreResult {
     /**
      * [Required] Additional attributes of the entity.
      */
-    readonly datastoreProperties: types.outputs.machinelearningservices.v20230601preview.AzureBlobDatastoreResponse | types.outputs.machinelearningservices.v20230601preview.AzureDataLakeGen1DatastoreResponse | types.outputs.machinelearningservices.v20230601preview.AzureDataLakeGen2DatastoreResponse | types.outputs.machinelearningservices.v20230601preview.AzureFileDatastoreResponse | types.outputs.machinelearningservices.v20230601preview.HdfsDatastoreResponse | types.outputs.machinelearningservices.v20230601preview.OneLakeDatastoreResponse;
+    readonly datastoreProperties: types.outputs.AzureBlobDatastoreResponse | types.outputs.AzureDataLakeGen1DatastoreResponse | types.outputs.AzureDataLakeGen2DatastoreResponse | types.outputs.AzureFileDatastoreResponse | types.outputs.HdfsDatastoreResponse | types.outputs.OneLakeDatastoreResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -48,7 +48,7 @@ export interface GetDatastoreResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.machinelearningservices.v20230601preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

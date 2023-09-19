@@ -23,7 +23,7 @@ utilities.lazyLoad(exports, ["WebService"], () => require("./webService"));
 
 
 // Export enums:
-export * from "../types/enums/v20160501preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

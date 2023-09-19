@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Description of queue Resource.
  */
@@ -42,7 +42,7 @@ export class Queue extends pulumi.CustomResource {
     /**
      * Message Count Details.
      */
-    public /*out*/ readonly countDetails!: pulumi.Output<types.outputs.servicebus.v20221001preview.MessageCountDetailsResponse>;
+    public /*out*/ readonly countDetails!: pulumi.Output<types.outputs.MessageCountDetailsResponse>;
     /**
      * The exact time the message was created.
      */
@@ -126,7 +126,7 @@ export class Queue extends pulumi.CustomResource {
     /**
      * The system meta data relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.servicebus.v20221001preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
      */
@@ -296,5 +296,5 @@ export interface QueueArgs {
     /**
      * Enumerates the possible values for the status of a messaging entity.
      */
-    status?: pulumi.Input<types.enums.v20221001preview.EntityStatus>;
+    status?: pulumi.Input<types.enums.EntityStatus>;
 }

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the details of the Gateway specified by its identifier.
  */
@@ -44,7 +44,7 @@ export interface GetGatewayResult {
     /**
      * Gateway location.
      */
-    readonly locationData?: types.outputs.apimanagement.v20220901preview.ResourceLocationDataContractResponse;
+    readonly locationData?: types.outputs.ResourceLocationDataContractResponse;
     /**
      * The name of the resource
      */

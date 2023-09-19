@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Route table resource.
  */
@@ -58,11 +58,11 @@ export class RouteTable extends pulumi.CustomResource {
     /**
      * Collection of routes contained within a route table.
      */
-    public readonly routes!: pulumi.Output<types.outputs.network.v20230501.RouteResponse[] | undefined>;
+    public readonly routes!: pulumi.Output<types.outputs.RouteResponse[] | undefined>;
     /**
      * A collection of references to subnets.
      */
-    public /*out*/ readonly subnets!: pulumi.Output<types.outputs.network.v20230501.SubnetResponse[]>;
+    public /*out*/ readonly subnets!: pulumi.Output<types.outputs.SubnetResponse[]>;
     /**
      * Resource tags.
      */
@@ -146,7 +146,7 @@ export interface RouteTableArgs {
      * Collection of routes contained within a route table.
      * These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
      */
-    routes?: pulumi.Input<pulumi.Input<types.inputs.network.v20230501.RouteArgs>[]>;
+    routes?: pulumi.Input<pulumi.Input<types.inputs.RouteArgs>[]>;
     /**
      * Resource tags.
      */

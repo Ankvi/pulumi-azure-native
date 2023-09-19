@@ -72,7 +72,7 @@ export interface GetLogAnalyticExportRequestRateByIntervalResult {
     /**
      * LogAnalyticsOutput
      */
-    readonly properties: types.outputs.compute.LogAnalyticsOutputResponse;
+    readonly properties: types.outputs.LogAnalyticsOutputResponse;
 }
 /**
  * Export logs that show Api requests made by this subscription in the given time window to show throttling activities.

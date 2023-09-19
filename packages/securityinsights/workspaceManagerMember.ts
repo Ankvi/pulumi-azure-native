@@ -43,7 +43,7 @@ export class WorkspaceManagerMember extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.securityinsights.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Fully qualified resource ID of the target Sentinel workspace joining the given Sentinel workspace manager
      */

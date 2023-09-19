@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An object that represents a credential set resource for a container registry.
  */
@@ -35,7 +35,7 @@ export class CredentialSet extends pulumi.CustomResource {
      * List of authentication credentials stored for an upstream.
      * Usually consists of a primary and an optional secondary credential.
      */
-    public readonly authCredentials!: pulumi.Output<types.outputs.containerregistry.v20230801preview.AuthCredentialResponse[] | undefined>;
+    public readonly authCredentials!: pulumi.Output<types.outputs.AuthCredentialResponse[] | undefined>;
     /**
      * The creation date of credential store resource.
      */
@@ -43,7 +43,7 @@ export class CredentialSet extends pulumi.CustomResource {
     /**
      * Identities associated with the resource. This is used to access the KeyVault secrets.
      */
-    public readonly identity!: pulumi.Output<types.outputs.containerregistry.v20230801preview.IdentityPropertiesResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityPropertiesResponse | undefined>;
     /**
      * The credentials are stored for this upstream or login server.
      */
@@ -59,7 +59,7 @@ export class CredentialSet extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.containerregistry.v20230801preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource.
      */
@@ -118,7 +118,7 @@ export interface CredentialSetArgs {
      * List of authentication credentials stored for an upstream.
      * Usually consists of a primary and an optional secondary credential.
      */
-    authCredentials?: pulumi.Input<pulumi.Input<types.inputs.containerregistry.v20230801preview.AuthCredentialArgs>[]>;
+    authCredentials?: pulumi.Input<pulumi.Input<types.inputs.AuthCredentialArgs>[]>;
     /**
      * The name of the credential set.
      */
@@ -126,7 +126,7 @@ export interface CredentialSetArgs {
     /**
      * Identities associated with the resource. This is used to access the KeyVault secrets.
      */
-    identity?: pulumi.Input<types.inputs.containerregistry.v20230801preview.IdentityPropertiesArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityPropertiesArgs>;
     /**
      * The credentials are stored for this upstream or login server.
      */

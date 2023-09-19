@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Definition of the Automanage account.
  */
@@ -34,7 +34,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * The identity of the Automanage account.
      */
-    public readonly identity!: pulumi.Output<types.outputs.automanage.v20200630preview.AccountIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.AccountIdentityResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -98,7 +98,7 @@ export interface AccountArgs {
     /**
      * The identity of the Automanage account.
      */
-    identity?: pulumi.Input<types.inputs.automanage.v20200630preview.AccountIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.AccountIdentityArgs>;
     /**
      * The geo-location where the resource lives
      */

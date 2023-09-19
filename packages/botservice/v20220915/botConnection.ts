@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Bot channel resource definition
  */
@@ -50,11 +50,11 @@ export class BotConnection extends pulumi.CustomResource {
     /**
      * The set of properties specific to bot channel resource
      */
-    public readonly properties!: pulumi.Output<types.outputs.botservice.v20220915.ConnectionSettingPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ConnectionSettingPropertiesResponse>;
     /**
      * Gets or sets the SKU of the resource.
      */
-    public readonly sku!: pulumi.Output<types.outputs.botservice.v20220915.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Contains resource tags defined as key/value pairs.
      */
@@ -88,7 +88,7 @@ export class BotConnection extends pulumi.CustomResource {
             resourceInputs["connectionName"] = args ? args.connectionName : undefined;
             resourceInputs["kind"] = args ? args.kind : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.botservice.v20220915.connectionSettingPropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.connectionSettingPropertiesArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["resourceName"] = args ? args.resourceName : undefined;
             resourceInputs["sku"] = args ? args.sku : undefined;
@@ -126,7 +126,7 @@ export interface BotConnectionArgs {
     /**
      * Required. Gets or sets the Kind of the resource.
      */
-    kind?: pulumi.Input<string | types.enums.v20220915.Kind>;
+    kind?: pulumi.Input<string | types.enums.Kind>;
     /**
      * Specifies the location of the resource.
      */
@@ -134,7 +134,7 @@ export interface BotConnectionArgs {
     /**
      * The set of properties specific to bot channel resource
      */
-    properties?: pulumi.Input<types.inputs.botservice.v20220915.ConnectionSettingPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ConnectionSettingPropertiesArgs>;
     /**
      * The name of the Bot resource group in the user subscription.
      */
@@ -146,7 +146,7 @@ export interface BotConnectionArgs {
     /**
      * Gets or sets the SKU of the resource.
      */
-    sku?: pulumi.Input<types.inputs.botservice.v20220915.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Contains resource tags defined as key/value pairs.
      */

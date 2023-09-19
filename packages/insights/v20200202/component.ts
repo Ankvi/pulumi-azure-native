@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An Application Insights component definition.
  */
@@ -110,7 +110,7 @@ export class Component extends pulumi.CustomResource {
     /**
      * List of linked private link scope resources.
      */
-    public /*out*/ readonly privateLinkScopedResources!: pulumi.Output<types.outputs.insights.v20200202.PrivateLinkScopedResourceResponse[]>;
+    public /*out*/ readonly privateLinkScopedResources!: pulumi.Output<types.outputs.PrivateLinkScopedResourceResponse[]>;
     /**
      * Current state of this component: whether or not is has been provisioned within the resource group it is defined. Users cannot change this value but are able to read from it. Values will include Succeeded, Deploying, Canceled, and Failed.
      */
@@ -250,7 +250,7 @@ export interface ComponentArgs {
     /**
      * Type of application being monitored.
      */
-    applicationType: pulumi.Input<string | types.enums.v20200202.ApplicationType>;
+    applicationType: pulumi.Input<string | types.enums.ApplicationType>;
     /**
      * Disable IP masking.
      */
@@ -262,7 +262,7 @@ export interface ComponentArgs {
     /**
      * Used by the Application Insights system to determine what kind of flow this component was created by. This is to be set to 'Bluefield' when creating/updating a component via the REST API.
      */
-    flowType?: pulumi.Input<string | types.enums.v20200202.FlowType>;
+    flowType?: pulumi.Input<string | types.enums.FlowType>;
     /**
      * Force users to create their own storage account for profiler and debugger.
      */
@@ -278,7 +278,7 @@ export interface ComponentArgs {
     /**
      * Indicates the flow of the ingestion.
      */
-    ingestionMode?: pulumi.Input<string | types.enums.v20200202.IngestionMode>;
+    ingestionMode?: pulumi.Input<string | types.enums.IngestionMode>;
     /**
      * The kind of application that this component refers to, used to customize UI. This value is a freeform string, values should typically be one of the following: web, ios, other, store, java, phone.
      */
@@ -290,15 +290,15 @@ export interface ComponentArgs {
     /**
      * The network access type for accessing Application Insights ingestion.
      */
-    publicNetworkAccessForIngestion?: pulumi.Input<string | types.enums.v20200202.PublicNetworkAccessType>;
+    publicNetworkAccessForIngestion?: pulumi.Input<string | types.enums.PublicNetworkAccessType>;
     /**
      * The network access type for accessing Application Insights query.
      */
-    publicNetworkAccessForQuery?: pulumi.Input<string | types.enums.v20200202.PublicNetworkAccessType>;
+    publicNetworkAccessForQuery?: pulumi.Input<string | types.enums.PublicNetworkAccessType>;
     /**
      * Describes what tool created this Application Insights component. Customers using this API should set this to the default 'rest'.
      */
-    requestSource?: pulumi.Input<string | types.enums.v20200202.RequestSource>;
+    requestSource?: pulumi.Input<string | types.enums.RequestSource>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

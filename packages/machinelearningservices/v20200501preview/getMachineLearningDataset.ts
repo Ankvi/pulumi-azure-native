@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a Dataset by name.
  */
@@ -40,7 +40,7 @@ export interface GetMachineLearningDatasetResult {
     /**
      * The identity of the resource.
      */
-    readonly identity?: types.outputs.machinelearningservices.v20200501preview.IdentityResponse;
+    readonly identity?: types.outputs.IdentityResponse;
     /**
      * Specifies the location of the resource.
      */
@@ -52,11 +52,11 @@ export interface GetMachineLearningDatasetResult {
     /**
      * Dataset properties
      */
-    readonly properties: types.outputs.machinelearningservices.v20200501preview.DatasetResponse;
+    readonly properties: types.outputs.DatasetResponse;
     /**
      * The sku of the workspace.
      */
-    readonly sku?: types.outputs.machinelearningservices.v20200501preview.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * Contains resource tags defined as key/value pairs.
      */

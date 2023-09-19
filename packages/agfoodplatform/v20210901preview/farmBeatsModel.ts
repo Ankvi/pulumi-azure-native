@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * FarmBeats ARM Resource.
  */
@@ -34,7 +34,7 @@ export class FarmBeatsModel extends pulumi.CustomResource {
     /**
      * Identity for the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.agfoodplatform.v20210901preview.IdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityResponse | undefined>;
     /**
      * Uri of the FarmBeats instance.
      */
@@ -50,7 +50,7 @@ export class FarmBeatsModel extends pulumi.CustomResource {
     /**
      * The private endpoint connection resource.
      */
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.agfoodplatform.v20210901preview.PrivateEndpointConnectionResponse>;
+    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse>;
     /**
      * FarmBeats instance provisioning state.
      */
@@ -62,11 +62,11 @@ export class FarmBeatsModel extends pulumi.CustomResource {
     /**
      * Sensor integration request model.
      */
-    public readonly sensorIntegration!: pulumi.Output<types.outputs.agfoodplatform.v20210901preview.SensorIntegrationResponse | undefined>;
+    public readonly sensorIntegration!: pulumi.Output<types.outputs.SensorIntegrationResponse | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.agfoodplatform.v20210901preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -134,7 +134,7 @@ export interface FarmBeatsModelArgs {
     /**
      * Identity for the resource.
      */
-    identity?: pulumi.Input<types.inputs.agfoodplatform.v20210901preview.IdentityArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -142,7 +142,7 @@ export interface FarmBeatsModelArgs {
     /**
      * Property to allow or block public traffic for an Azure FarmBeats resource.
      */
-    publicNetworkAccess?: pulumi.Input<string | types.enums.v20210901preview.PublicNetworkAccess>;
+    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -150,7 +150,7 @@ export interface FarmBeatsModelArgs {
     /**
      * Sensor integration request model.
      */
-    sensorIntegration?: pulumi.Input<types.inputs.agfoodplatform.v20210901preview.SensorIntegrationArgs>;
+    sensorIntegration?: pulumi.Input<types.inputs.SensorIntegrationArgs>;
     /**
      * Resource tags.
      */

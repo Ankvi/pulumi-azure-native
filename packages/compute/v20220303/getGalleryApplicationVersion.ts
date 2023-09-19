@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves information about a gallery Application Version.
  */
@@ -62,15 +62,15 @@ export interface GetGalleryApplicationVersionResult {
     /**
      * The publishing profile of a gallery image version.
      */
-    readonly publishingProfile: types.outputs.compute.v20220303.GalleryApplicationVersionPublishingProfileResponse;
+    readonly publishingProfile: types.outputs.GalleryApplicationVersionPublishingProfileResponse;
     /**
      * This is the replication status of the gallery image version.
      */
-    readonly replicationStatus: types.outputs.compute.v20220303.ReplicationStatusResponse;
+    readonly replicationStatus: types.outputs.ReplicationStatusResponse;
     /**
      * The safety profile of the Gallery Application Version.
      */
-    readonly safetyProfile?: types.outputs.compute.v20220303.GalleryApplicationVersionSafetyProfileResponse;
+    readonly safetyProfile?: types.outputs.GalleryApplicationVersionSafetyProfileResponse;
     /**
      * Resource tags
      */

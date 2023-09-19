@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Defines the rule collection.
  */
@@ -34,7 +34,7 @@ export class AdminRuleCollection extends pulumi.CustomResource {
     /**
      * Groups for configuration
      */
-    public readonly appliesToGroups!: pulumi.Output<types.outputs.network.v20210201preview.NetworkManagerSecurityGroupItemResponse[] | undefined>;
+    public readonly appliesToGroups!: pulumi.Output<types.outputs.NetworkManagerSecurityGroupItemResponse[] | undefined>;
     /**
      * A description of the rule collection.
      */
@@ -58,7 +58,7 @@ export class AdminRuleCollection extends pulumi.CustomResource {
     /**
      * The system metadata related to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.network.v20210201preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource type.
      */
@@ -120,7 +120,7 @@ export interface AdminRuleCollectionArgs {
     /**
      * Groups for configuration
      */
-    appliesToGroups?: pulumi.Input<pulumi.Input<types.inputs.network.v20210201preview.NetworkManagerSecurityGroupItemArgs>[]>;
+    appliesToGroups?: pulumi.Input<pulumi.Input<types.inputs.NetworkManagerSecurityGroupItemArgs>[]>;
     /**
      * The name of the network manager security Configuration.
      */

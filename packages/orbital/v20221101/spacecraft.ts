@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Customer creates a spacecraft resource to schedule a contact.
  */
@@ -34,7 +34,7 @@ export class Spacecraft extends pulumi.CustomResource {
     /**
      * Immutable list of Spacecraft links.
      */
-    public readonly links!: pulumi.Output<types.outputs.orbital.v20221101.SpacecraftLinkResponse[]>;
+    public readonly links!: pulumi.Output<types.outputs.SpacecraftLinkResponse[]>;
     /**
      * The geo-location where the resource lives
      */
@@ -50,7 +50,7 @@ export class Spacecraft extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.orbital.v20221101.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -136,7 +136,7 @@ export interface SpacecraftArgs {
     /**
      * Immutable list of Spacecraft links.
      */
-    links: pulumi.Input<pulumi.Input<types.inputs.orbital.v20221101.SpacecraftLinkArgs>[]>;
+    links: pulumi.Input<pulumi.Input<types.inputs.SpacecraftLinkArgs>[]>;
     /**
      * The geo-location where the resource lives
      */

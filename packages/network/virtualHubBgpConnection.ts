@@ -43,7 +43,7 @@ export class VirtualHubBgpConnection extends pulumi.CustomResource {
     /**
      * The reference to the HubVirtualNetworkConnection resource.
      */
-    public readonly hubVirtualNetworkConnection!: pulumi.Output<types.outputs.network.SubResourceResponse | undefined>;
+    public readonly hubVirtualNetworkConnection!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * Name of the connection.
      */
@@ -122,7 +122,7 @@ export interface VirtualHubBgpConnectionArgs {
     /**
      * The reference to the HubVirtualNetworkConnection resource.
      */
-    hubVirtualNetworkConnection?: pulumi.Input<types.inputs.network.SubResourceArgs>;
+    hubVirtualNetworkConnection?: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * Resource ID.
      */

@@ -47,11 +47,11 @@ export class ManagementLockByScope extends pulumi.CustomResource {
     /**
      * The owners of the lock.
      */
-    public readonly owners!: pulumi.Output<types.outputs.authorization.ManagementLockOwnerResponse[] | undefined>;
+    public readonly owners!: pulumi.Output<types.outputs.ManagementLockOwnerResponse[] | undefined>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.authorization.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The resource type of the lock - Microsoft.Authorization/locks.
      */
@@ -116,7 +116,7 @@ export interface ManagementLockByScopeArgs {
     /**
      * The owners of the lock.
      */
-    owners?: pulumi.Input<pulumi.Input<types.inputs.authorization.ManagementLockOwnerArgs>[]>;
+    owners?: pulumi.Input<pulumi.Input<types.inputs.ManagementLockOwnerArgs>[]>;
     /**
      * The scope for the lock. When providing a scope for the assignment, use '/subscriptions/{subscriptionId}' for subscriptions, '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}' for resource groups, and '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePathIfPresent}/{resourceType}/{resourceName}' for resources.
      */

@@ -71,7 +71,7 @@ export class Volume extends pulumi.CustomResource {
     /**
      * DataProtection type volumes include an object containing details of the replication
      */
-    public readonly dataProtection!: pulumi.Output<types.outputs.netapp.VolumePropertiesResponseDataProtection | undefined>;
+    public readonly dataProtection!: pulumi.Output<types.outputs.VolumePropertiesResponseDataProtection | undefined>;
     /**
      * Data store resource unique identifier
      */
@@ -107,7 +107,7 @@ export class Volume extends pulumi.CustomResource {
     /**
      * Set of export policy rules
      */
-    public readonly exportPolicy!: pulumi.Output<types.outputs.netapp.VolumePropertiesResponseExportPolicy | undefined>;
+    public readonly exportPolicy!: pulumi.Output<types.outputs.VolumePropertiesResponseExportPolicy | undefined>;
     /**
      * Flag indicating whether file access logs are enabled for the volume, based on active diagnostic settings present on the volume.
      */
@@ -151,7 +151,7 @@ export class Volume extends pulumi.CustomResource {
     /**
      * List of mount targets
      */
-    public /*out*/ readonly mountTargets!: pulumi.Output<types.outputs.netapp.MountTargetPropertiesResponse[]>;
+    public /*out*/ readonly mountTargets!: pulumi.Output<types.outputs.MountTargetPropertiesResponse[]>;
     /**
      * The name of the resource
      */
@@ -171,7 +171,7 @@ export class Volume extends pulumi.CustomResource {
     /**
      * Application specific placement rules for the particular volume
      */
-    public readonly placementRules!: pulumi.Output<types.outputs.netapp.PlacementKeyValuePairsResponse[] | undefined>;
+    public readonly placementRules!: pulumi.Output<types.outputs.PlacementKeyValuePairsResponse[] | undefined>;
     /**
      * Set of protocol types, default NFSv3, CIFS for SMB protocol
      */
@@ -231,7 +231,7 @@ export class Volume extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.netapp.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * T2 network information
      */
@@ -467,7 +467,7 @@ export interface VolumeArgs {
     /**
      * DataProtection type volumes include an object containing details of the replication
      */
-    dataProtection?: pulumi.Input<types.inputs.netapp.VolumePropertiesDataProtectionArgs>;
+    dataProtection?: pulumi.Input<types.inputs.VolumePropertiesDataProtectionArgs>;
     /**
      * Default group quota for volume in KiBs. If isDefaultQuotaEnabled is set, the minimum value of 4 KiBs applies.
      */
@@ -491,7 +491,7 @@ export interface VolumeArgs {
     /**
      * Set of export policy rules
      */
-    exportPolicy?: pulumi.Input<types.inputs.netapp.VolumePropertiesExportPolicyArgs>;
+    exportPolicy?: pulumi.Input<types.inputs.VolumePropertiesExportPolicyArgs>;
     /**
      * Specifies if default quota is enabled for the volume.
      */
@@ -527,7 +527,7 @@ export interface VolumeArgs {
     /**
      * Application specific placement rules for the particular volume
      */
-    placementRules?: pulumi.Input<pulumi.Input<types.inputs.netapp.PlacementKeyValuePairsArgs>[]>;
+    placementRules?: pulumi.Input<pulumi.Input<types.inputs.PlacementKeyValuePairsArgs>[]>;
     /**
      * The name of the capacity pool
      */

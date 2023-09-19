@@ -41,7 +41,7 @@ export interface GetHybridIdentityMetadatumResult {
     /**
      * The identity of the provisioned cluster.
      */
-    readonly identity?: types.outputs.hybridcontainerservice.ProvisionedClusterIdentityResponse;
+    readonly identity?: types.outputs.ProvisionedClusterIdentityResponse;
     /**
      * The name of the resource
      */
@@ -61,7 +61,7 @@ export interface GetHybridIdentityMetadatumResult {
     /**
      * The system data.
      */
-    readonly systemData: types.outputs.hybridcontainerservice.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

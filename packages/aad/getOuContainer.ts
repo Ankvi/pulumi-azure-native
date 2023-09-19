@@ -37,7 +37,7 @@ export interface GetOuContainerResult {
     /**
      * The list of container accounts
      */
-    readonly accounts?: types.outputs.aad.ContainerAccountResponse[];
+    readonly accounts?: types.outputs.ContainerAccountResponse[];
     /**
      * The OuContainer name
      */
@@ -81,7 +81,7 @@ export interface GetOuContainerResult {
     /**
      * The system meta data relating to this resource.
      */
-    readonly systemData: types.outputs.aad.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags
      */

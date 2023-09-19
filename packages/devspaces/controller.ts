@@ -54,7 +54,7 @@ export class Controller extends pulumi.CustomResource {
     /**
      * Model representing SKU for Azure Dev Spaces Controller.
      */
-    public readonly sku!: pulumi.Output<types.outputs.devspaces.SkuResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse>;
     /**
      * Tags for the Azure resource.
      */
@@ -145,7 +145,7 @@ export interface ControllerArgs {
     /**
      * Model representing SKU for Azure Dev Spaces Controller.
      */
-    sku: pulumi.Input<types.inputs.devspaces.SkuArgs>;
+    sku: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Tags for the Azure resource.
      */

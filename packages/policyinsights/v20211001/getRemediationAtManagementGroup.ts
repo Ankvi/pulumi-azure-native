@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets an existing remediation at management group scope.
  */
@@ -44,15 +44,15 @@ export interface GetRemediationAtManagementGroupResult {
     /**
      * The deployment status summary for all deployments created by the remediation.
      */
-    readonly deploymentStatus: types.outputs.policyinsights.v20211001.RemediationDeploymentSummaryResponse;
+    readonly deploymentStatus: types.outputs.RemediationDeploymentSummaryResponse;
     /**
      * The remediation failure threshold settings
      */
-    readonly failureThreshold?: types.outputs.policyinsights.v20211001.RemediationPropertiesResponseFailureThreshold;
+    readonly failureThreshold?: types.outputs.RemediationPropertiesResponseFailureThreshold;
     /**
      * The filters that will be applied to determine which resources to remediate.
      */
-    readonly filters?: types.outputs.policyinsights.v20211001.RemediationFiltersResponse;
+    readonly filters?: types.outputs.RemediationFiltersResponse;
     /**
      * The ID of the remediation.
      */
@@ -96,7 +96,7 @@ export interface GetRemediationAtManagementGroupResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.policyinsights.v20211001.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the remediation.
      */

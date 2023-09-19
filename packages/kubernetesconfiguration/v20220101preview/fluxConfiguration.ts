@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The Flux Configuration object returned in Get & Put response.
  */
@@ -34,7 +34,7 @@ export class FluxConfiguration extends pulumi.CustomResource {
     /**
      * Parameters to reconcile to the Bucket source kind type.
      */
-    public readonly bucket!: pulumi.Output<types.outputs.kubernetesconfiguration.v20220101preview.BucketDefinitionResponse | undefined>;
+    public readonly bucket!: pulumi.Output<types.outputs.BucketDefinitionResponse | undefined>;
     /**
      * Combined status of the Flux Kubernetes resources created by the fluxConfiguration or created by the managed objects.
      */
@@ -50,11 +50,11 @@ export class FluxConfiguration extends pulumi.CustomResource {
     /**
      * Parameters to reconcile to the GitRepository source kind type.
      */
-    public readonly gitRepository!: pulumi.Output<types.outputs.kubernetesconfiguration.v20220101preview.GitRepositoryDefinitionResponse | undefined>;
+    public readonly gitRepository!: pulumi.Output<types.outputs.GitRepositoryDefinitionResponse | undefined>;
     /**
      * Array of kustomizations used to reconcile the artifact pulled by the source type on the cluster.
      */
-    public readonly kustomizations!: pulumi.Output<{[key: string]: types.outputs.kubernetesconfiguration.v20220101preview.KustomizationDefinitionResponse} | undefined>;
+    public readonly kustomizations!: pulumi.Output<{[key: string]: types.outputs.KustomizationDefinitionResponse} | undefined>;
     /**
      * Datetime the fluxConfiguration last synced its source on the cluster.
      */
@@ -90,7 +90,7 @@ export class FluxConfiguration extends pulumi.CustomResource {
     /**
      * Statuses of the Flux Kubernetes resources created by the fluxConfiguration or created by the managed objects provisioned by the fluxConfiguration.
      */
-    public /*out*/ readonly statuses!: pulumi.Output<types.outputs.kubernetesconfiguration.v20220101preview.ObjectStatusDefinitionResponse[]>;
+    public /*out*/ readonly statuses!: pulumi.Output<types.outputs.ObjectStatusDefinitionResponse[]>;
     /**
      * Whether this configuration should suspend its reconciliation of its kustomizations and sources.
      */
@@ -98,7 +98,7 @@ export class FluxConfiguration extends pulumi.CustomResource {
     /**
      * Top level metadata https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-contracts.md#system-metadata-for-all-azure-resources
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.kubernetesconfiguration.v20220101preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -127,13 +127,13 @@ export class FluxConfiguration extends pulumi.CustomResource {
             if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["bucket"] = args ? (args.bucket ? pulumi.output(args.bucket).apply(types.inputs.kubernetesconfiguration.v20220101preview.bucketDefinitionArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["bucket"] = args ? (args.bucket ? pulumi.output(args.bucket).apply(types.inputs.bucketDefinitionArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["clusterName"] = args ? args.clusterName : undefined;
             resourceInputs["clusterResourceName"] = args ? args.clusterResourceName : undefined;
             resourceInputs["clusterRp"] = args ? args.clusterRp : undefined;
             resourceInputs["configurationProtectedSettings"] = args ? args.configurationProtectedSettings : undefined;
             resourceInputs["fluxConfigurationName"] = args ? args.fluxConfigurationName : undefined;
-            resourceInputs["gitRepository"] = args ? (args.gitRepository ? pulumi.output(args.gitRepository).apply(types.inputs.kubernetesconfiguration.v20220101preview.gitRepositoryDefinitionArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["gitRepository"] = args ? (args.gitRepository ? pulumi.output(args.gitRepository).apply(types.inputs.gitRepositoryDefinitionArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["kustomizations"] = args ? args.kustomizations : undefined;
             resourceInputs["namespace"] = (args ? args.namespace : undefined) ?? "default";
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
@@ -184,7 +184,7 @@ export interface FluxConfigurationArgs {
     /**
      * Parameters to reconcile to the Bucket source kind type.
      */
-    bucket?: pulumi.Input<types.inputs.kubernetesconfiguration.v20220101preview.BucketDefinitionArgs>;
+    bucket?: pulumi.Input<types.inputs.BucketDefinitionArgs>;
     /**
      * The name of the kubernetes cluster.
      */
@@ -208,11 +208,11 @@ export interface FluxConfigurationArgs {
     /**
      * Parameters to reconcile to the GitRepository source kind type.
      */
-    gitRepository?: pulumi.Input<types.inputs.kubernetesconfiguration.v20220101preview.GitRepositoryDefinitionArgs>;
+    gitRepository?: pulumi.Input<types.inputs.GitRepositoryDefinitionArgs>;
     /**
      * Array of kustomizations used to reconcile the artifact pulled by the source type on the cluster.
      */
-    kustomizations?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.kubernetesconfiguration.v20220101preview.KustomizationDefinitionArgs>}>;
+    kustomizations?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.KustomizationDefinitionArgs>}>;
     /**
      * The namespace to which this configuration is installed to. Maximum of 253 lower case alphanumeric characters, hyphen and period only.
      */
@@ -224,11 +224,11 @@ export interface FluxConfigurationArgs {
     /**
      * Scope at which the operator will be installed.
      */
-    scope?: pulumi.Input<string | types.enums.v20220101preview.ScopeType>;
+    scope?: pulumi.Input<string | types.enums.ScopeType>;
     /**
      * Source Kind to pull the configuration data from.
      */
-    sourceKind?: pulumi.Input<string | types.enums.v20220101preview.SourceKindType>;
+    sourceKind?: pulumi.Input<string | types.enums.SourceKindType>;
     /**
      * Whether this configuration should suspend its reconciliation of its kustomizations and sources.
      */

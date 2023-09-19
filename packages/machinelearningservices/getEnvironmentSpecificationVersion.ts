@@ -50,11 +50,11 @@ export interface GetEnvironmentSpecificationVersionResult {
     /**
      * [Required] Additional attributes of the entity.
      */
-    readonly properties: types.outputs.machinelearningservices.EnvironmentSpecificationVersionResponse;
+    readonly properties: types.outputs.EnvironmentSpecificationVersionResponse;
     /**
      * System data associated with resource provider
      */
-    readonly systemData: types.outputs.machinelearningservices.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

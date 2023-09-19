@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The description of the DigitalTwins service.
  */
@@ -42,7 +42,7 @@ export class DigitalTwin extends pulumi.CustomResource {
     /**
      * The managed identity for the DigitalTwinsInstance.
      */
-    public readonly identity!: pulumi.Output<types.outputs.digitaltwins.v20230131.DigitalTwinsIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.DigitalTwinsIdentityResponse | undefined>;
     /**
      * Time when DigitalTwinsInstance was updated.
      */
@@ -58,7 +58,7 @@ export class DigitalTwin extends pulumi.CustomResource {
     /**
      * The private endpoint connections.
      */
-    public readonly privateEndpointConnections!: pulumi.Output<types.outputs.digitaltwins.v20230131.PrivateEndpointConnectionResponse[] | undefined>;
+    public readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[] | undefined>;
     /**
      * The provisioning state.
      */
@@ -70,7 +70,7 @@ export class DigitalTwin extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the DigitalTwinsInstance.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.digitaltwins.v20230131.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The resource tags.
      */
@@ -136,7 +136,7 @@ export interface DigitalTwinArgs {
     /**
      * The managed identity for the DigitalTwinsInstance.
      */
-    identity?: pulumi.Input<types.inputs.digitaltwins.v20230131.DigitalTwinsIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.DigitalTwinsIdentityArgs>;
     /**
      * The resource location.
      */
@@ -145,11 +145,11 @@ export interface DigitalTwinArgs {
      * The private endpoint connections.
      * These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
      */
-    privateEndpointConnections?: pulumi.Input<pulumi.Input<types.inputs.digitaltwins.v20230131.PrivateEndpointConnectionArgs>[]>;
+    privateEndpointConnections?: pulumi.Input<pulumi.Input<types.inputs.PrivateEndpointConnectionArgs>[]>;
     /**
      * Public network access for the DigitalTwinsInstance.
      */
-    publicNetworkAccess?: pulumi.Input<string | types.enums.v20230131.PublicNetworkAccess>;
+    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess>;
     /**
      * The name of the resource group that contains the DigitalTwinsInstance.
      */

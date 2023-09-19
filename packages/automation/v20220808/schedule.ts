@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Definition of the schedule.
  */
@@ -34,7 +34,7 @@ export class Schedule extends pulumi.CustomResource {
     /**
      * Gets or sets the advanced schedule.
      */
-    public readonly advancedSchedule!: pulumi.Output<types.outputs.automation.v20220808.AdvancedScheduleResponse | undefined>;
+    public readonly advancedSchedule!: pulumi.Output<types.outputs.AdvancedScheduleResponse | undefined>;
     /**
      * Gets or sets the creation time.
      */
@@ -173,7 +173,7 @@ export interface ScheduleArgs {
     /**
      * Gets or sets the AdvancedSchedule.
      */
-    advancedSchedule?: pulumi.Input<types.inputs.automation.v20220808.AdvancedScheduleArgs>;
+    advancedSchedule?: pulumi.Input<types.inputs.AdvancedScheduleArgs>;
     /**
      * The name of the automation account.
      */
@@ -189,7 +189,7 @@ export interface ScheduleArgs {
     /**
      * Gets or sets the frequency of the schedule.
      */
-    frequency: pulumi.Input<string | types.enums.v20220808.ScheduleFrequency>;
+    frequency: pulumi.Input<string | types.enums.ScheduleFrequency>;
     /**
      * Gets or sets the interval of the schedule.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents the serial port of the parent resource.
  */
@@ -114,5 +114,5 @@ export interface SerialPortArgs {
     /**
      * Specifies whether the port is enabled for a serial console connection.
      */
-    state?: pulumi.Input<types.enums.v20180501.SerialPortState>;
+    state?: pulumi.Input<types.enums.SerialPortState>;
 }

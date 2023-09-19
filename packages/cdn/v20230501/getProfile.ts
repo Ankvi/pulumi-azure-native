@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets an Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified profile name under the specified subscription and resource group.
  */
@@ -43,7 +43,7 @@ export interface GetProfileResult {
     /**
      * Managed service identity (system assigned and/or user assigned identities).
      */
-    readonly identity?: types.outputs.cdn.v20230501.ManagedServiceIdentityResponse;
+    readonly identity?: types.outputs.ManagedServiceIdentityResponse;
     /**
      * Kind of the profile. Used by portal to differentiate traditional CDN profile and new AFD profile.
      */
@@ -71,11 +71,11 @@ export interface GetProfileResult {
     /**
      * The pricing tier (defines Azure Front Door Standard or Premium or a CDN provider, feature list and rate) of the profile.
      */
-    readonly sku: types.outputs.cdn.v20230501.SkuResponse;
+    readonly sku: types.outputs.SkuResponse;
     /**
      * Read only system data
      */
-    readonly systemData: types.outputs.cdn.v20230501.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

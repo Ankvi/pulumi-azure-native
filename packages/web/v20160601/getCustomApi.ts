@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a custom API by name for a specific subscription and resource group
  */
@@ -52,7 +52,7 @@ export interface GetCustomApiResult {
     /**
      * Custom API properties
      */
-    readonly properties: types.outputs.web.v20160601.CustomApiPropertiesDefinitionResponse;
+    readonly properties: types.outputs.CustomApiPropertiesDefinitionResponse;
     /**
      * Resource tags
      */

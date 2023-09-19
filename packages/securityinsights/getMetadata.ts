@@ -37,11 +37,11 @@ export interface GetMetadataResult {
     /**
      * The creator of the content item.
      */
-    readonly author?: types.outputs.securityinsights.MetadataAuthorResponse;
+    readonly author?: types.outputs.MetadataAuthorResponse;
     /**
      * Categories for the solution content item
      */
-    readonly categories?: types.outputs.securityinsights.MetadataCategoriesResponse;
+    readonly categories?: types.outputs.MetadataCategoriesResponse;
     /**
      * Static ID for the content.  Used to identify dependencies and content from solutions or community.  Hard-coded/static for out of the box content and solutions. Dynamic for user-created.  This is the resource name
      */
@@ -57,7 +57,7 @@ export interface GetMetadataResult {
     /**
      * Dependencies for the content item, what other content items it requires to work.  Can describe more complex dependencies using a recursive/nested structure. For a single dependency an id/kind/version can be supplied or operator/criteria for complex formats.
      */
-    readonly dependencies?: types.outputs.securityinsights.MetadataDependenciesResponse;
+    readonly dependencies?: types.outputs.MetadataDependenciesResponse;
     /**
      * Etag of the azure resource
      */
@@ -105,15 +105,15 @@ export interface GetMetadataResult {
     /**
      * Source of the content.  This is where/how it was created.
      */
-    readonly source?: types.outputs.securityinsights.MetadataSourceResponse;
+    readonly source?: types.outputs.MetadataSourceResponse;
     /**
      * Support information for the metadata - type, name, contact information
      */
-    readonly support?: types.outputs.securityinsights.MetadataSupportResponse;
+    readonly support?: types.outputs.MetadataSupportResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.securityinsights.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * the tactics the resource covers
      */

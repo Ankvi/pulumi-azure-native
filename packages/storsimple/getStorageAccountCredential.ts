@@ -37,7 +37,7 @@ export interface GetStorageAccountCredentialResult {
     /**
      * The details of the storage account password.
      */
-    readonly accessKey?: types.outputs.storsimple.AsymmetricEncryptedSecretResponse;
+    readonly accessKey?: types.outputs.AsymmetricEncryptedSecretResponse;
     /**
      * The storage endpoint
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a partner registration with the specified parameters.
  */
@@ -103,7 +103,7 @@ export interface GetPartnerRegistrationResult {
     /**
      * The system metadata relating to Partner Registration resource.
      */
-    readonly systemData: types.outputs.eventgrid.v20211015preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Tags of the resource.
      */

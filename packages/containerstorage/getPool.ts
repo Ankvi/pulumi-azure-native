@@ -32,7 +32,7 @@ export interface GetPoolResult {
     /**
      * List of resources that should have access to the pool. Typically ARM references to AKS clusters or ACI Container Groups. For local and standard this must be a single reference. For ElasticSAN there can be many.
      */
-    readonly assignments?: types.outputs.containerstorage.AssignmentResponse[];
+    readonly assignments?: types.outputs.AssignmentResponse[];
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -48,7 +48,7 @@ export interface GetPoolResult {
     /**
      * Type of the Pool: ephemeralDisk, azureDisk, or elasticsan.
      */
-    readonly poolType: types.outputs.containerstorage.PoolTypeResponse;
+    readonly poolType: types.outputs.PoolTypeResponse;
     /**
      * The status of the last operation.
      */
@@ -60,15 +60,15 @@ export interface GetPoolResult {
     /**
      * Resources represent the resources the pool should have.
      */
-    readonly resources?: types.outputs.containerstorage.ResourcesResponse;
+    readonly resources?: types.outputs.ResourcesResponse;
     /**
      * The operational status of the resource
      */
-    readonly status: types.outputs.containerstorage.ResourceOperationalStatusResponse;
+    readonly status: types.outputs.ResourceOperationalStatusResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.containerstorage.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

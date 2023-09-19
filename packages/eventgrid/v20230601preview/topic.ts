@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * EventGrid Topic
  */
@@ -47,19 +47,19 @@ export class Topic extends pulumi.CustomResource {
      * Event Type Information for the user topic. This information is provided by the publisher and can be used by the 
      * subscriber to view different types of events that are published.
      */
-    public readonly eventTypeInfo!: pulumi.Output<types.outputs.eventgrid.v20230601preview.EventTypeInfoResponse | undefined>;
+    public readonly eventTypeInfo!: pulumi.Output<types.outputs.EventTypeInfoResponse | undefined>;
     /**
      * Extended location of the resource.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.eventgrid.v20230601preview.ExtendedLocationResponse | undefined>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
     /**
      * Identity information for the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.eventgrid.v20230601preview.IdentityInfoResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityInfoResponse | undefined>;
     /**
      * This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled.
      */
-    public readonly inboundIpRules!: pulumi.Output<types.outputs.eventgrid.v20230601preview.InboundIpRuleResponse[] | undefined>;
+    public readonly inboundIpRules!: pulumi.Output<types.outputs.InboundIpRuleResponse[] | undefined>;
     /**
      * This determines the format that Event Grid should expect for incoming events published to the topic.
      */
@@ -67,7 +67,7 @@ export class Topic extends pulumi.CustomResource {
     /**
      * This enables publishing using custom event schemas. An InputSchemaMapping can be specified to map various properties of a source schema to various required properties of the EventGridEvent schema.
      */
-    public readonly inputSchemaMapping!: pulumi.Output<types.outputs.eventgrid.v20230601preview.JsonInputSchemaMappingResponse | undefined>;
+    public readonly inputSchemaMapping!: pulumi.Output<types.outputs.JsonInputSchemaMappingResponse | undefined>;
     /**
      * Kind of the resource.
      */
@@ -88,7 +88,7 @@ export class Topic extends pulumi.CustomResource {
      * Name of the resource.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.eventgrid.v20230601preview.PrivateEndpointConnectionResponse[]>;
+    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[]>;
     /**
      * Provisioning state of the topic.
      */
@@ -101,11 +101,11 @@ export class Topic extends pulumi.CustomResource {
     /**
      * The Sku pricing tier for the topic.
      */
-    public readonly sku!: pulumi.Output<types.outputs.eventgrid.v20230601preview.ResourceSkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.ResourceSkuResponse | undefined>;
     /**
      * The system metadata relating to Topic resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.eventgrid.v20230601preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Tags of the resource.
      */
@@ -142,7 +142,7 @@ export class Topic extends pulumi.CustomResource {
             resourceInputs["minimumTlsVersionAllowed"] = args ? args.minimumTlsVersionAllowed : undefined;
             resourceInputs["publicNetworkAccess"] = (args ? args.publicNetworkAccess : undefined) ?? "Enabled";
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["sku"] = args ? (args.sku ? pulumi.output(args.sku).apply(types.inputs.eventgrid.v20230601preview.resourceSkuArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["sku"] = args ? (args.sku ? pulumi.output(args.sku).apply(types.inputs.resourceSkuArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["topicName"] = args ? args.topicName : undefined;
             resourceInputs["endpoint"] = undefined /*out*/;
@@ -189,7 +189,7 @@ export interface TopicArgs {
     /**
      * Data Residency Boundary of the resource.
      */
-    dataResidencyBoundary?: pulumi.Input<string | types.enums.v20230601preview.DataResidencyBoundary>;
+    dataResidencyBoundary?: pulumi.Input<string | types.enums.DataResidencyBoundary>;
     /**
      * This boolean is used to enable or disable local auth. Default value is false. When the property is set to true, only AAD token will be used to authenticate if user is allowed to publish to the topic.
      */
@@ -198,31 +198,31 @@ export interface TopicArgs {
      * Event Type Information for the user topic. This information is provided by the publisher and can be used by the 
      * subscriber to view different types of events that are published.
      */
-    eventTypeInfo?: pulumi.Input<types.inputs.eventgrid.v20230601preview.EventTypeInfoArgs>;
+    eventTypeInfo?: pulumi.Input<types.inputs.EventTypeInfoArgs>;
     /**
      * Extended location of the resource.
      */
-    extendedLocation?: pulumi.Input<types.inputs.eventgrid.v20230601preview.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * Identity information for the resource.
      */
-    identity?: pulumi.Input<types.inputs.eventgrid.v20230601preview.IdentityInfoArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityInfoArgs>;
     /**
      * This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled.
      */
-    inboundIpRules?: pulumi.Input<pulumi.Input<types.inputs.eventgrid.v20230601preview.InboundIpRuleArgs>[]>;
+    inboundIpRules?: pulumi.Input<pulumi.Input<types.inputs.InboundIpRuleArgs>[]>;
     /**
      * This determines the format that Event Grid should expect for incoming events published to the topic.
      */
-    inputSchema?: pulumi.Input<string | types.enums.v20230601preview.InputSchema>;
+    inputSchema?: pulumi.Input<string | types.enums.InputSchema>;
     /**
      * This enables publishing using custom event schemas. An InputSchemaMapping can be specified to map various properties of a source schema to various required properties of the EventGridEvent schema.
      */
-    inputSchemaMapping?: pulumi.Input<types.inputs.eventgrid.v20230601preview.JsonInputSchemaMappingArgs>;
+    inputSchemaMapping?: pulumi.Input<types.inputs.JsonInputSchemaMappingArgs>;
     /**
      * Kind of the resource.
      */
-    kind?: pulumi.Input<string | types.enums.v20230601preview.ResourceKind>;
+    kind?: pulumi.Input<string | types.enums.ResourceKind>;
     /**
      * Location of the resource.
      */
@@ -230,12 +230,12 @@ export interface TopicArgs {
     /**
      * Minimum TLS version of the publisher allowed to publish to this topic
      */
-    minimumTlsVersionAllowed?: pulumi.Input<string | types.enums.v20230601preview.TlsVersion>;
+    minimumTlsVersionAllowed?: pulumi.Input<string | types.enums.TlsVersion>;
     /**
      * This determines if traffic is allowed over public network. By default it is enabled. 
      * You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.TopicProperties.InboundIpRules" />
      */
-    publicNetworkAccess?: pulumi.Input<string | types.enums.v20230601preview.PublicNetworkAccess>;
+    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess>;
     /**
      * The name of the resource group within the user's subscription.
      */
@@ -243,7 +243,7 @@ export interface TopicArgs {
     /**
      * The Sku pricing tier for the topic.
      */
-    sku?: pulumi.Input<types.inputs.eventgrid.v20230601preview.ResourceSkuArgs>;
+    sku?: pulumi.Input<types.inputs.ResourceSkuArgs>;
     /**
      * Tags of the resource.
      */

@@ -48,11 +48,11 @@ export interface GetMigrateProjectsControllerMigrateProjectResult {
     /**
      * Properties of a migrate project.
      */
-    readonly properties: types.outputs.migrate.MigrateProjectPropertiesResponse;
+    readonly properties: types.outputs.MigrateProjectPropertiesResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.migrate.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Type of the object = [Microsoft.Migrate/migrateProjects].
      */

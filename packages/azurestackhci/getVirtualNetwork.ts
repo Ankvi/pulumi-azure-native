@@ -32,11 +32,11 @@ export interface GetVirtualNetworkResult {
     /**
      * DhcpOptions contains an array of DNS servers available to VMs deployed in the virtual network. Standard DHCP option for a subnet overrides VNET DHCP options.
      */
-    readonly dhcpOptions?: types.outputs.azurestackhci.VirtualNetworkPropertiesResponseDhcpOptions;
+    readonly dhcpOptions?: types.outputs.VirtualNetworkPropertiesResponseDhcpOptions;
     /**
      * The extendedLocation of the resource.
      */
-    readonly extendedLocation?: types.outputs.azurestackhci.ExtendedLocationResponse;
+    readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -60,15 +60,15 @@ export interface GetVirtualNetworkResult {
     /**
      * The observed state of virtual networks
      */
-    readonly status: types.outputs.azurestackhci.VirtualNetworkStatusResponse;
+    readonly status: types.outputs.VirtualNetworkStatusResponse;
     /**
      * Subnet - list of subnets under the virtual network
      */
-    readonly subnets?: types.outputs.azurestackhci.VirtualNetworkPropertiesResponseSubnets[];
+    readonly subnets?: types.outputs.VirtualNetworkPropertiesResponseSubnets[];
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.azurestackhci.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

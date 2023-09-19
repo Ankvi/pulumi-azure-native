@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  *  List of all active elastic deployments.
  */
@@ -35,7 +35,7 @@ export interface ListConnectedPartnerResourceResult {
     /**
      * Results of a list operation.
      */
-    readonly value?: types.outputs.elastic.v20230701preview.ConnectedPartnerResourcesListFormatResponse[];
+    readonly value?: types.outputs.ConnectedPartnerResourcesListFormatResponse[];
 }
 /**
  *  List of all active elastic deployments.

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets details about the specified dedicated capacity.
  */
@@ -31,7 +31,7 @@ export interface GetCapacityDetailsResult {
     /**
      * A collection of Dedicated capacity administrators
      */
-    readonly administration?: types.outputs.powerbidedicated.v20210101.DedicatedCapacityAdministratorsResponse;
+    readonly administration?: types.outputs.DedicatedCapacityAdministratorsResponse;
     /**
      * Capacity name
      */
@@ -59,7 +59,7 @@ export interface GetCapacityDetailsResult {
     /**
      * The SKU of the PowerBI Dedicated capacity resource.
      */
-    readonly sku: types.outputs.powerbidedicated.v20210101.CapacitySkuResponse;
+    readonly sku: types.outputs.CapacitySkuResponse;
     /**
      * The current state of PowerBI Dedicated resource. The state is to indicate more states outside of resource provisioning.
      */
@@ -67,7 +67,7 @@ export interface GetCapacityDetailsResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData?: types.outputs.powerbidedicated.v20210101.SystemDataResponse;
+    readonly systemData?: types.outputs.SystemDataResponse;
     /**
      * Key-value pairs of additional resource provisioning properties.
      */

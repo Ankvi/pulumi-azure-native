@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get environment setting
  */
@@ -66,7 +66,7 @@ export interface GetEnvironmentSettingResult {
     /**
      * The details of the latest operation. ex: status, error
      */
-    readonly latestOperationResult: types.outputs.labservices.v20181015.LatestOperationResultResponse;
+    readonly latestOperationResult: types.outputs.LatestOperationResultResponse;
     /**
      * The location of the resource.
      */
@@ -86,7 +86,7 @@ export interface GetEnvironmentSettingResult {
     /**
      * The resource specific settings
      */
-    readonly resourceSettings: types.outputs.labservices.v20181015.ResourceSettingsResponse;
+    readonly resourceSettings: types.outputs.ResourceSettingsResponse;
     /**
      * The tags of the resource.
      */

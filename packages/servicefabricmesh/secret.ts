@@ -43,7 +43,7 @@ export class Secret extends pulumi.CustomResource {
     /**
      * Describes the properties of a secret resource.
      */
-    public readonly properties!: pulumi.Output<types.outputs.servicefabricmesh.SecretResourcePropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.SecretResourcePropertiesResponse>;
     /**
      * Resource tags.
      */
@@ -102,7 +102,7 @@ export interface SecretArgs {
     /**
      * Describes the properties of a secret resource.
      */
-    properties: pulumi.Input<types.inputs.servicefabricmesh.SecretResourcePropertiesArgs>;
+    properties: pulumi.Input<types.inputs.SecretResourcePropertiesArgs>;
     /**
      * Azure resource group name
      */

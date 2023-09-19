@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Access Review History Definition.
  */
@@ -50,7 +50,7 @@ export class ScopeAccessReviewHistoryDefinitionById extends pulumi.CustomResourc
     /**
      * Set of access review history instances for this history definition.
      */
-    public readonly instances!: pulumi.Output<types.outputs.authorization.v20211201preview.AccessReviewHistoryInstanceResponse[] | undefined>;
+    public readonly instances!: pulumi.Output<types.outputs.AccessReviewHistoryInstanceResponse[] | undefined>;
     /**
      * The interval for recurrence. For a quarterly review, the interval is 3 for type : absoluteMonthly.
      */
@@ -86,7 +86,7 @@ export class ScopeAccessReviewHistoryDefinitionById extends pulumi.CustomResourc
     /**
      * A collection of scopes used when selecting review history data
      */
-    public readonly scopes!: pulumi.Output<types.outputs.authorization.v20211201preview.AccessReviewScopeResponse[] | undefined>;
+    public readonly scopes!: pulumi.Output<types.outputs.AccessReviewScopeResponse[] | undefined>;
     /**
      * The DateTime when the review is scheduled to be start. This could be a date in the future. Required on create.
      */
@@ -172,7 +172,7 @@ export interface ScopeAccessReviewHistoryDefinitionByIdArgs {
     /**
      * Collection of review decisions which the history data should be filtered on. For example if Approve and Deny are supplied the data will only contain review results in which the decision maker approved or denied a review request.
      */
-    decisions?: pulumi.Input<pulumi.Input<string | types.enums.v20211201preview.AccessReviewResult>[]>;
+    decisions?: pulumi.Input<pulumi.Input<string | types.enums.AccessReviewResult>[]>;
     /**
      * The display name for the history definition.
      */
@@ -188,7 +188,7 @@ export interface ScopeAccessReviewHistoryDefinitionByIdArgs {
     /**
      * Set of access review history instances for this history definition.
      */
-    instances?: pulumi.Input<pulumi.Input<types.inputs.authorization.v20211201preview.AccessReviewHistoryInstanceArgs>[]>;
+    instances?: pulumi.Input<pulumi.Input<types.inputs.AccessReviewHistoryInstanceArgs>[]>;
     /**
      * The interval for recurrence. For a quarterly review, the interval is 3 for type : absoluteMonthly.
      */
@@ -204,7 +204,7 @@ export interface ScopeAccessReviewHistoryDefinitionByIdArgs {
     /**
      * A collection of scopes used when selecting review history data
      */
-    scopes?: pulumi.Input<pulumi.Input<types.inputs.authorization.v20211201preview.AccessReviewScopeArgs>[]>;
+    scopes?: pulumi.Input<pulumi.Input<types.inputs.AccessReviewScopeArgs>[]>;
     /**
      * The DateTime when the review is scheduled to be start. This could be a date in the future. Required on create.
      */
@@ -212,5 +212,5 @@ export interface ScopeAccessReviewHistoryDefinitionByIdArgs {
     /**
      * The recurrence range type. The possible values are: endDate, noEnd, numbered.
      */
-    type?: pulumi.Input<string | types.enums.v20211201preview.AccessReviewRecurrenceRangeType>;
+    type?: pulumi.Input<string | types.enums.AccessReviewRecurrenceRangeType>;
 }

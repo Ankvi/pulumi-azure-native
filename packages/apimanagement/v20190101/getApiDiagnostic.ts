@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the details of the Diagnostic for an API specified by its identifier.
  */
@@ -45,7 +45,7 @@ export interface GetApiDiagnosticResult {
     /**
      * Diagnostic settings for incoming/outgoing HTTP messages to the Backend
      */
-    readonly backend?: types.outputs.apimanagement.v20190101.PipelineDiagnosticSettingsResponse;
+    readonly backend?: types.outputs.PipelineDiagnosticSettingsResponse;
     /**
      * Whether to process Correlation Headers coming to Api Management Service. Only applicable to Application Insights diagnostics. Default is true.
      */
@@ -53,7 +53,7 @@ export interface GetApiDiagnosticResult {
     /**
      * Diagnostic settings for incoming/outgoing HTTP messages to the Gateway.
      */
-    readonly frontend?: types.outputs.apimanagement.v20190101.PipelineDiagnosticSettingsResponse;
+    readonly frontend?: types.outputs.PipelineDiagnosticSettingsResponse;
     /**
      * Sets correlation protocol to use for Application Insights diagnostics.
      */
@@ -73,7 +73,7 @@ export interface GetApiDiagnosticResult {
     /**
      * Sampling settings for Diagnostic.
      */
-    readonly sampling?: types.outputs.apimanagement.v20190101.SamplingSettingsResponse;
+    readonly sampling?: types.outputs.SamplingSettingsResponse;
     /**
      * Resource type for API Management resource.
      */

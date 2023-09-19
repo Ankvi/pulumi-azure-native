@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns a list of products.
  */
@@ -40,7 +40,7 @@ export interface GetProductsResult {
     /**
      * List of products.
      */
-    readonly value?: types.outputs.azurestack.v20220601.ProductResponse[];
+    readonly value?: types.outputs.ProductResponse[];
 }
 /**
  * Returns a list of products.

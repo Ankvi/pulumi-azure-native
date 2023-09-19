@@ -44,7 +44,7 @@ export interface GetAccountResult {
     /**
      * Managed service identity (system assigned and/or user assigned identities)
      */
-    readonly identity?: types.outputs.videoindexer.ManagedServiceIdentityResponse;
+    readonly identity?: types.outputs.ManagedServiceIdentityResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -52,7 +52,7 @@ export interface GetAccountResult {
     /**
      * The media services details
      */
-    readonly mediaServices?: types.outputs.videoindexer.MediaServicesForPutRequestResponse;
+    readonly mediaServices?: types.outputs.MediaServicesForPutRequestResponse;
     /**
      * The name of the resource
      */
@@ -64,7 +64,7 @@ export interface GetAccountResult {
     /**
      * The system meta data relating to this resource.
      */
-    readonly systemData: types.outputs.videoindexer.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

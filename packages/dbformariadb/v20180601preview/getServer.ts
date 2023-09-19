@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets information about a server.
  */
@@ -47,7 +47,7 @@ export interface GetServerResult {
     /**
      * The Azure Active Directory identity of the server.
      */
-    readonly identity?: types.outputs.dbformariadb.v20180601preview.ResourceIdentityResponse;
+    readonly identity?: types.outputs.ResourceIdentityResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -75,7 +75,7 @@ export interface GetServerResult {
     /**
      * The SKU (pricing tier) of the server.
      */
-    readonly sku?: types.outputs.dbformariadb.v20180601preview.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * Enable ssl enforcement or not when connect to server.
      */
@@ -83,7 +83,7 @@ export interface GetServerResult {
     /**
      * Storage profile of a server.
      */
-    readonly storageProfile?: types.outputs.dbformariadb.v20180601preview.StorageProfileResponse;
+    readonly storageProfile?: types.outputs.StorageProfileResponse;
     /**
      * Resource tags.
      */

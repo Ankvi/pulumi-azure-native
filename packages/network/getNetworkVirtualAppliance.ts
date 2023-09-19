@@ -37,7 +37,7 @@ export interface GetNetworkVirtualApplianceResult {
     /**
      * Details required for Additional Network Interface.
      */
-    readonly additionalNics?: types.outputs.network.VirtualApplianceAdditionalNicPropertiesResponse[];
+    readonly additionalNics?: types.outputs.VirtualApplianceAdditionalNicPropertiesResponse[];
     /**
      * Address Prefix.
      */
@@ -57,7 +57,7 @@ export interface GetNetworkVirtualApplianceResult {
     /**
      * The delegation for the Virtual Appliance
      */
-    readonly delegation?: types.outputs.network.DelegationPropertiesResponse;
+    readonly delegation?: types.outputs.DelegationPropertiesResponse;
     /**
      * The deployment type. PartnerManaged for the SaaS NVA
      */
@@ -73,11 +73,11 @@ export interface GetNetworkVirtualApplianceResult {
     /**
      * The service principal that has read access to cloud-init and config blob.
      */
-    readonly identity?: types.outputs.network.ManagedServiceIdentityResponse;
+    readonly identity?: types.outputs.ManagedServiceIdentityResponse;
     /**
      * List of references to InboundSecurityRules.
      */
-    readonly inboundSecurityRules: types.outputs.network.SubResourceResponse[];
+    readonly inboundSecurityRules: types.outputs.SubResourceResponse[];
     /**
      * Resource location.
      */
@@ -89,11 +89,11 @@ export interface GetNetworkVirtualApplianceResult {
     /**
      * Network Virtual Appliance SKU.
      */
-    readonly nvaSku?: types.outputs.network.VirtualApplianceSkuPropertiesResponse;
+    readonly nvaSku?: types.outputs.VirtualApplianceSkuPropertiesResponse;
     /**
      * The delegation for the Virtual Appliance
      */
-    readonly partnerManagedResource?: types.outputs.network.PartnerManagedResourcePropertiesResponse;
+    readonly partnerManagedResource?: types.outputs.PartnerManagedResourcePropertiesResponse;
     /**
      * The provisioning state of the resource.
      */
@@ -117,19 +117,19 @@ export interface GetNetworkVirtualApplianceResult {
     /**
      * List of references to VirtualApplianceConnections.
      */
-    readonly virtualApplianceConnections: types.outputs.network.SubResourceResponse[];
+    readonly virtualApplianceConnections: types.outputs.SubResourceResponse[];
     /**
      * List of Virtual Appliance Network Interfaces.
      */
-    readonly virtualApplianceNics: types.outputs.network.VirtualApplianceNicPropertiesResponse[];
+    readonly virtualApplianceNics: types.outputs.VirtualApplianceNicPropertiesResponse[];
     /**
      * List of references to VirtualApplianceSite.
      */
-    readonly virtualApplianceSites: types.outputs.network.SubResourceResponse[];
+    readonly virtualApplianceSites: types.outputs.SubResourceResponse[];
     /**
      * The Virtual Hub where Network Virtual Appliance is being deployed.
      */
-    readonly virtualHub?: types.outputs.network.SubResourceResponse;
+    readonly virtualHub?: types.outputs.SubResourceResponse;
 }
 /**
  * Gets the specified Network Virtual Appliance.

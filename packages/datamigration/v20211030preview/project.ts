@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A project resource
  */
@@ -42,7 +42,7 @@ export class Project extends pulumi.CustomResource {
     /**
      * List of DatabaseInfo
      */
-    public readonly databasesInfo!: pulumi.Output<types.outputs.datamigration.v20211030preview.DatabaseInfoResponse[] | undefined>;
+    public readonly databasesInfo!: pulumi.Output<types.outputs.DatabaseInfoResponse[] | undefined>;
     /**
      * HTTP strong entity tag value. This is ignored if submitted.
      */
@@ -56,17 +56,17 @@ export class Project extends pulumi.CustomResource {
     /**
      * Information for connecting to source
      */
-    public readonly sourceConnectionInfo!: pulumi.Output<types.outputs.datamigration.v20211030preview.MiSqlConnectionInfoResponse | types.outputs.datamigration.v20211030preview.MongoDbConnectionInfoResponse | types.outputs.datamigration.v20211030preview.MySqlConnectionInfoResponse | types.outputs.datamigration.v20211030preview.OracleConnectionInfoResponse | types.outputs.datamigration.v20211030preview.PostgreSqlConnectionInfoResponse | types.outputs.datamigration.v20211030preview.SqlConnectionInfoResponse | undefined>;
+    public readonly sourceConnectionInfo!: pulumi.Output<types.outputs.MiSqlConnectionInfoResponse | types.outputs.MongoDbConnectionInfoResponse | types.outputs.MySqlConnectionInfoResponse | types.outputs.OracleConnectionInfoResponse | types.outputs.PostgreSqlConnectionInfoResponse | types.outputs.SqlConnectionInfoResponse | undefined>;
     /**
      * Source platform for the project
      */
     public readonly sourcePlatform!: pulumi.Output<string>;
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.datamigration.v20211030preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Information for connecting to target
      */
-    public readonly targetConnectionInfo!: pulumi.Output<types.outputs.datamigration.v20211030preview.MiSqlConnectionInfoResponse | types.outputs.datamigration.v20211030preview.MongoDbConnectionInfoResponse | types.outputs.datamigration.v20211030preview.MySqlConnectionInfoResponse | types.outputs.datamigration.v20211030preview.OracleConnectionInfoResponse | types.outputs.datamigration.v20211030preview.PostgreSqlConnectionInfoResponse | types.outputs.datamigration.v20211030preview.SqlConnectionInfoResponse | undefined>;
+    public readonly targetConnectionInfo!: pulumi.Output<types.outputs.MiSqlConnectionInfoResponse | types.outputs.MongoDbConnectionInfoResponse | types.outputs.MySqlConnectionInfoResponse | types.outputs.OracleConnectionInfoResponse | types.outputs.PostgreSqlConnectionInfoResponse | types.outputs.SqlConnectionInfoResponse | undefined>;
     /**
      * Target platform for the project
      */
@@ -147,7 +147,7 @@ export interface ProjectArgs {
     /**
      * List of DatabaseInfo
      */
-    databasesInfo?: pulumi.Input<pulumi.Input<types.inputs.datamigration.v20211030preview.DatabaseInfoArgs>[]>;
+    databasesInfo?: pulumi.Input<pulumi.Input<types.inputs.DatabaseInfoArgs>[]>;
     /**
      * HTTP strong entity tag value. This is ignored if submitted.
      */
@@ -168,18 +168,18 @@ export interface ProjectArgs {
     /**
      * Information for connecting to source
      */
-    sourceConnectionInfo?: pulumi.Input<types.inputs.datamigration.v20211030preview.MiSqlConnectionInfoArgs | types.inputs.datamigration.v20211030preview.MongoDbConnectionInfoArgs | types.inputs.datamigration.v20211030preview.MySqlConnectionInfoArgs | types.inputs.datamigration.v20211030preview.OracleConnectionInfoArgs | types.inputs.datamigration.v20211030preview.PostgreSqlConnectionInfoArgs | types.inputs.datamigration.v20211030preview.SqlConnectionInfoArgs>;
+    sourceConnectionInfo?: pulumi.Input<types.inputs.MiSqlConnectionInfoArgs | types.inputs.MongoDbConnectionInfoArgs | types.inputs.MySqlConnectionInfoArgs | types.inputs.OracleConnectionInfoArgs | types.inputs.PostgreSqlConnectionInfoArgs | types.inputs.SqlConnectionInfoArgs>;
     /**
      * Source platform for the project
      */
-    sourcePlatform: pulumi.Input<string | types.enums.v20211030preview.ProjectSourcePlatform>;
+    sourcePlatform: pulumi.Input<string | types.enums.ProjectSourcePlatform>;
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Information for connecting to target
      */
-    targetConnectionInfo?: pulumi.Input<types.inputs.datamigration.v20211030preview.MiSqlConnectionInfoArgs | types.inputs.datamigration.v20211030preview.MongoDbConnectionInfoArgs | types.inputs.datamigration.v20211030preview.MySqlConnectionInfoArgs | types.inputs.datamigration.v20211030preview.OracleConnectionInfoArgs | types.inputs.datamigration.v20211030preview.PostgreSqlConnectionInfoArgs | types.inputs.datamigration.v20211030preview.SqlConnectionInfoArgs>;
+    targetConnectionInfo?: pulumi.Input<types.inputs.MiSqlConnectionInfoArgs | types.inputs.MongoDbConnectionInfoArgs | types.inputs.MySqlConnectionInfoArgs | types.inputs.OracleConnectionInfoArgs | types.inputs.PostgreSqlConnectionInfoArgs | types.inputs.SqlConnectionInfoArgs>;
     /**
      * Target platform for the project
      */
-    targetPlatform: pulumi.Input<string | types.enums.v20211030preview.ProjectTargetPlatform>;
+    targetPlatform: pulumi.Input<string | types.enums.ProjectTargetPlatform>;
 }

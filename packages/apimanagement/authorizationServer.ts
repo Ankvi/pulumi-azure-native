@@ -95,7 +95,7 @@ export class AuthorizationServer extends pulumi.CustomResource {
     /**
      * Additional parameters required by the token endpoint of this authorization server represented as an array of JSON objects with name and value string properties, i.e. {"name" : "name value", "value": "a value"}.
      */
-    public readonly tokenBodyParameters!: pulumi.Output<types.outputs.apimanagement.TokenBodyParameterContractResponse[] | undefined>;
+    public readonly tokenBodyParameters!: pulumi.Output<types.outputs.TokenBodyParameterContractResponse[] | undefined>;
     /**
      * OAuth token endpoint. Contains absolute URI to entity being referenced.
      */
@@ -272,7 +272,7 @@ export interface AuthorizationServerArgs {
     /**
      * Additional parameters required by the token endpoint of this authorization server represented as an array of JSON objects with name and value string properties, i.e. {"name" : "name value", "value": "a value"}.
      */
-    tokenBodyParameters?: pulumi.Input<pulumi.Input<types.inputs.apimanagement.TokenBodyParameterContractArgs>[]>;
+    tokenBodyParameters?: pulumi.Input<pulumi.Input<types.inputs.TokenBodyParameterContractArgs>[]>;
     /**
      * OAuth token endpoint. Contains absolute URI to entity being referenced.
      */

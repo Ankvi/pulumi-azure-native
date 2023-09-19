@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents a Storage Account on the  Data Box Edge/Gateway device.
  */
@@ -62,7 +62,7 @@ export class StorageAccount extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of StorageAccount
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.databoxedge.v20230701.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The hierarchical type of the object.
      */
@@ -125,7 +125,7 @@ export interface StorageAccountArgs {
     /**
      * Data policy of the storage Account.
      */
-    dataPolicy: pulumi.Input<string | types.enums.v20230701.DataPolicy>;
+    dataPolicy: pulumi.Input<string | types.enums.DataPolicy>;
     /**
      * Description for the storage Account.
      */
@@ -149,5 +149,5 @@ export interface StorageAccountArgs {
     /**
      * Current status of the storage account
      */
-    storageAccountStatus?: pulumi.Input<string | types.enums.v20230701.StorageAccountStatus>;
+    storageAccountStatus?: pulumi.Input<string | types.enums.StorageAccountStatus>;
 }

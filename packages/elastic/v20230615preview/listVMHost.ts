@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Response of a list operation.
  */
@@ -35,7 +35,7 @@ export interface ListVMHostResult {
     /**
      * Results of a list operation.
      */
-    readonly value?: types.outputs.elastic.v20230615preview.VMResourcesResponse[];
+    readonly value?: types.outputs.VMResourcesResponse[];
 }
 /**
  * Response of a list operation.

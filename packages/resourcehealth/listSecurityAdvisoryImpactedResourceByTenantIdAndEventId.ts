@@ -36,7 +36,7 @@ export interface ListSecurityAdvisoryImpactedResourceByTenantIdAndEventIdResult 
     /**
      * The list of eventImpactedResources.
      */
-    readonly value: types.outputs.resourcehealth.EventImpactedResourceResponse[];
+    readonly value: types.outputs.EventImpactedResourceResponse[];
 }
 /**
  * Lists impacted resources in the tenant by an event (Security Advisory).

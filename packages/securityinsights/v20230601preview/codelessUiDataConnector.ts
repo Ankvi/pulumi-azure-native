@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents Codeless UI data connector.
  */
@@ -34,7 +34,7 @@ export class CodelessUiDataConnector extends pulumi.CustomResource {
     /**
      * Config to describe the instructions blade
      */
-    public readonly connectorUiConfig!: pulumi.Output<types.outputs.securityinsights.v20230601preview.CodelessUiConnectorConfigPropertiesResponse | undefined>;
+    public readonly connectorUiConfig!: pulumi.Output<types.outputs.CodelessUiConnectorConfigPropertiesResponse | undefined>;
     /**
      * Etag of the azure resource
      */
@@ -51,7 +51,7 @@ export class CodelessUiDataConnector extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.securityinsights.v20230601preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -108,7 +108,7 @@ export interface CodelessUiDataConnectorArgs {
     /**
      * Config to describe the instructions blade
      */
-    connectorUiConfig?: pulumi.Input<types.inputs.securityinsights.v20230601preview.CodelessUiConnectorConfigPropertiesArgs>;
+    connectorUiConfig?: pulumi.Input<types.inputs.CodelessUiConnectorConfigPropertiesArgs>;
     /**
      * Connector ID
      */

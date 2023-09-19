@@ -48,7 +48,7 @@ export interface GetOrganizationResult {
     /**
      * Confluent offer detail
      */
-    readonly offerDetail: types.outputs.confluent.OfferDetailResponse;
+    readonly offerDetail: types.outputs.OfferDetailResponse;
     /**
      * Id of the Confluent organization.
      */
@@ -64,7 +64,7 @@ export interface GetOrganizationResult {
     /**
      * Metadata pertaining to creation and last modification of the resource
      */
-    readonly systemData: types.outputs.confluent.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Organization resource tags
      */
@@ -76,7 +76,7 @@ export interface GetOrganizationResult {
     /**
      * Subscriber detail
      */
-    readonly userDetail: types.outputs.confluent.UserDetailResponse;
+    readonly userDetail: types.outputs.UserDetailResponse;
 }
 /**
  * Organization resource.

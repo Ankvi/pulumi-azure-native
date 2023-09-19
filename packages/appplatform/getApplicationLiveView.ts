@@ -45,11 +45,11 @@ export interface GetApplicationLiveViewResult {
     /**
      * Application Live View properties payload
      */
-    readonly properties: types.outputs.appplatform.ApplicationLiveViewPropertiesResponse;
+    readonly properties: types.outputs.ApplicationLiveViewPropertiesResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.appplatform.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource.
      */

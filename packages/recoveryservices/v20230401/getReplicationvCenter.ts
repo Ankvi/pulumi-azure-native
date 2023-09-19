@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the details of a registered vCenter server(Add vCenter server).
  */
@@ -53,7 +53,7 @@ export interface GetReplicationvCenterResult {
     /**
      * VCenter related data.
      */
-    readonly properties: types.outputs.recoveryservices.v20230401.VCenterPropertiesResponse;
+    readonly properties: types.outputs.VCenterPropertiesResponse;
     /**
      * Resource Type
      */

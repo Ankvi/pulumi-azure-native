@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The Managed Network Peering Policy resource
  */
@@ -42,7 +42,7 @@ export class ManagedNetworkPeeringPolicy extends pulumi.CustomResource {
     /**
      * Gets or sets the properties of a Managed Network Policy
      */
-    public readonly properties!: pulumi.Output<types.outputs.managednetwork.v20190601preview.ManagedNetworkPeeringPolicyPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ManagedNetworkPeeringPolicyPropertiesResponse>;
     /**
      * The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
      */
@@ -104,7 +104,7 @@ export interface ManagedNetworkPeeringPolicyArgs {
     /**
      * Gets or sets the properties of a Managed Network Policy
      */
-    properties?: pulumi.Input<types.inputs.managednetwork.v20190601preview.ManagedNetworkPeeringPolicyPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ManagedNetworkPeeringPolicyPropertiesArgs>;
     /**
      * The name of the resource group.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Implements Access Control List GET method.
  */
@@ -39,7 +39,7 @@ export interface GetAccessControlListResult {
     /**
      * Access Control List conditions.
      */
-    readonly conditions: types.outputs.managednetworkfabric.v20230201preview.AccessControlListConditionPropertiesResponse[];
+    readonly conditions: types.outputs.AccessControlListConditionPropertiesResponse[];
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -59,7 +59,7 @@ export interface GetAccessControlListResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.managednetworkfabric.v20230201preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

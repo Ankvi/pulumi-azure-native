@@ -35,7 +35,7 @@ export class OuContainer extends pulumi.CustomResource {
     /**
      * The list of container accounts
      */
-    public /*out*/ readonly accounts!: pulumi.Output<types.outputs.aad.ContainerAccountResponse[] | undefined>;
+    public /*out*/ readonly accounts!: pulumi.Output<types.outputs.ContainerAccountResponse[] | undefined>;
     /**
      * The OuContainer name
      */
@@ -75,7 +75,7 @@ export class OuContainer extends pulumi.CustomResource {
     /**
      * The system meta data relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.aad.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get Network Tap Rule resource details.
  */
@@ -47,7 +47,7 @@ export interface GetNetworkTapRuleResult {
     /**
      * List of dynamic match configurations.
      */
-    readonly dynamicMatchConfigurations?: types.outputs.managednetworkfabric.v20230615.CommonDynamicMatchConfigurationResponse[];
+    readonly dynamicMatchConfigurations?: types.outputs.CommonDynamicMatchConfigurationResponse[];
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -63,7 +63,7 @@ export interface GetNetworkTapRuleResult {
     /**
      * List of match configurations.
      */
-    readonly matchConfigurations?: types.outputs.managednetworkfabric.v20230615.NetworkTapRuleMatchConfigurationResponse[];
+    readonly matchConfigurations?: types.outputs.NetworkTapRuleMatchConfigurationResponse[];
     /**
      * The name of the resource
      */
@@ -83,7 +83,7 @@ export interface GetNetworkTapRuleResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.managednetworkfabric.v20230615.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

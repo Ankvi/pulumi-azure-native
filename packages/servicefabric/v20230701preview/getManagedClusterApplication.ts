@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a Service Fabric managed application resource created or in the process of being created in the Service Fabric cluster resource.
  */
@@ -40,7 +40,7 @@ export interface GetManagedClusterApplicationResult {
     /**
      * Describes the managed identities for an Azure resource.
      */
-    readonly identity?: types.outputs.servicefabric.v20230701preview.ManagedIdentityResponse;
+    readonly identity?: types.outputs.ManagedIdentityResponse;
     /**
      * Resource location depends on the parent resource.
      */
@@ -48,7 +48,7 @@ export interface GetManagedClusterApplicationResult {
     /**
      * List of user assigned identities for the application, each mapped to a friendly name.
      */
-    readonly managedIdentities?: types.outputs.servicefabric.v20230701preview.ApplicationUserAssignedIdentityResponse[];
+    readonly managedIdentities?: types.outputs.ApplicationUserAssignedIdentityResponse[];
     /**
      * Azure resource name.
      */
@@ -64,7 +64,7 @@ export interface GetManagedClusterApplicationResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.servicefabric.v20230701preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Azure resource tags.
      */
@@ -76,7 +76,7 @@ export interface GetManagedClusterApplicationResult {
     /**
      * Describes the policy for a monitored application upgrade.
      */
-    readonly upgradePolicy?: types.outputs.servicefabric.v20230701preview.ApplicationUpgradePolicyResponse;
+    readonly upgradePolicy?: types.outputs.ApplicationUpgradePolicyResponse;
     /**
      * The version of the application type as defined in the application manifest.
      * This name must be the full Arm Resource ID for the referenced application type version.

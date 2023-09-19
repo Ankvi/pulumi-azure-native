@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the specified cloud connection in a specified resource group.
  */
@@ -31,7 +31,7 @@ export interface GetCloudConnectionResult {
     /**
      * The cloud connector which discovered the remote resource.
      */
-    readonly cloudConnector?: types.outputs.hybridcloud.v20230101preview.ResourceReferenceResponse;
+    readonly cloudConnector?: types.outputs.ResourceReferenceResponse;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -63,7 +63,7 @@ export interface GetCloudConnectionResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.hybridcloud.v20230101preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -75,7 +75,7 @@ export interface GetCloudConnectionResult {
     /**
      * The virtualHub to which the cloud connection belongs.
      */
-    readonly virtualHub?: types.outputs.hybridcloud.v20230101preview.ResourceReferenceResponse;
+    readonly virtualHub?: types.outputs.ResourceReferenceResponse;
 }
 /**
  * Gets the specified cloud connection in a specified resource group.

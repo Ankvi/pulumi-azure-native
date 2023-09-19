@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Distributed availability group between box and Sql Managed Instance.
  */
@@ -34,7 +34,7 @@ export class DistributedAvailabilityGroup extends pulumi.CustomResource {
     /**
      * Databases in the distributed availability group
      */
-    public /*out*/ readonly databases!: pulumi.Output<types.outputs.sql.v20230201preview.DistributedAvailabilityGroupDatabaseResponse[]>;
+    public /*out*/ readonly databases!: pulumi.Output<types.outputs.DistributedAvailabilityGroupDatabaseResponse[]>;
     /**
      * ID of the distributed availability group
      */
@@ -149,7 +149,7 @@ export interface DistributedAvailabilityGroupArgs {
     /**
      * The replication mode of a distributed availability group. Parameter will be ignored during link creation.
      */
-    replicationMode?: pulumi.Input<string | types.enums.v20230201preview.ReplicationModeType>;
+    replicationMode?: pulumi.Input<string | types.enums.ReplicationModeType>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */

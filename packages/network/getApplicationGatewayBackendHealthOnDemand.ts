@@ -31,11 +31,11 @@ export interface GetApplicationGatewayBackendHealthOnDemandArgs {
     /**
      * Reference to backend pool of application gateway to which probe request will be sent.
      */
-    backendAddressPool?: types.inputs.network.SubResource;
+    backendAddressPool?: types.inputs.SubResource;
     /**
      * Reference to backend http setting of application gateway to be used for test probe.
      */
-    backendHttpSettings?: types.inputs.network.SubResource;
+    backendHttpSettings?: types.inputs.SubResource;
     /**
      * Expands BackendAddressPool and BackendHttpSettings referenced in backend health.
      */
@@ -47,7 +47,7 @@ export interface GetApplicationGatewayBackendHealthOnDemandArgs {
     /**
      * Criterion for classifying a healthy probe response.
      */
-    match?: types.inputs.network.ApplicationGatewayProbeHealthResponseMatch;
+    match?: types.inputs.ApplicationGatewayProbeHealthResponseMatch;
     /**
      * Relative path of probe. Valid path starts from '/'. Probe is sent to <Protocol>://<host>:<port><path>.
      */
@@ -77,11 +77,11 @@ export interface GetApplicationGatewayBackendHealthOnDemandResult {
     /**
      * Reference to an ApplicationGatewayBackendAddressPool resource.
      */
-    readonly backendAddressPool?: types.outputs.network.ApplicationGatewayBackendAddressPoolResponse;
+    readonly backendAddressPool?: types.outputs.ApplicationGatewayBackendAddressPoolResponse;
     /**
      * Application gateway BackendHealthHttp settings.
      */
-    readonly backendHealthHttpSettings?: types.outputs.network.ApplicationGatewayBackendHealthHttpSettingsResponse;
+    readonly backendHealthHttpSettings?: types.outputs.ApplicationGatewayBackendHealthHttpSettingsResponse;
 }
 /**
  * Gets the backend health for given combination of backend pool and http setting of the specified application gateway in a resource group.
@@ -99,11 +99,11 @@ export interface GetApplicationGatewayBackendHealthOnDemandOutputArgs {
     /**
      * Reference to backend pool of application gateway to which probe request will be sent.
      */
-    backendAddressPool?: pulumi.Input<types.inputs.network.SubResourceArgs>;
+    backendAddressPool?: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * Reference to backend http setting of application gateway to be used for test probe.
      */
-    backendHttpSettings?: pulumi.Input<types.inputs.network.SubResourceArgs>;
+    backendHttpSettings?: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * Expands BackendAddressPool and BackendHttpSettings referenced in backend health.
      */
@@ -115,7 +115,7 @@ export interface GetApplicationGatewayBackendHealthOnDemandOutputArgs {
     /**
      * Criterion for classifying a healthy probe response.
      */
-    match?: pulumi.Input<types.inputs.network.ApplicationGatewayProbeHealthResponseMatchArgs>;
+    match?: pulumi.Input<types.inputs.ApplicationGatewayProbeHealthResponseMatchArgs>;
     /**
      * Relative path of probe. Valid path starts from '/'. Probe is sent to <Protocol>://<host>:<port><path>.
      */

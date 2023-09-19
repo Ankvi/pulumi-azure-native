@@ -45,7 +45,7 @@ export interface GetWorkloadNetworkDhcpResult {
     /**
      * DHCP properties.
      */
-    readonly properties: types.outputs.avs.WorkloadNetworkDhcpRelayResponse | types.outputs.avs.WorkloadNetworkDhcpServerResponse;
+    readonly properties: types.outputs.WorkloadNetworkDhcpRelayResponse | types.outputs.WorkloadNetworkDhcpServerResponse;
     /**
      * Resource type.
      */

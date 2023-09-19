@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An Application Insights component billing features
  */
@@ -38,7 +38,7 @@ export class ComponentCurrentBillingFeature extends pulumi.CustomResource {
     /**
      * An Application Insights component daily data volume cap
      */
-    public readonly dataVolumeCap!: pulumi.Output<types.outputs.insights.v20150501.ApplicationInsightsComponentDataVolumeCapResponse | undefined>;
+    public readonly dataVolumeCap!: pulumi.Output<types.outputs.ApplicationInsightsComponentDataVolumeCapResponse | undefined>;
 
     /**
      * Create a ComponentCurrentBillingFeature resource with the given unique name, arguments, and options.
@@ -83,7 +83,7 @@ export interface ComponentCurrentBillingFeatureArgs {
     /**
      * An Application Insights component daily data volume cap
      */
-    dataVolumeCap?: pulumi.Input<types.inputs.insights.v20150501.ApplicationInsightsComponentDataVolumeCapArgs>;
+    dataVolumeCap?: pulumi.Input<types.inputs.ApplicationInsightsComponentDataVolumeCapArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

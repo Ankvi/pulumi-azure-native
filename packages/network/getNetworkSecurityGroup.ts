@@ -37,7 +37,7 @@ export interface GetNetworkSecurityGroupResult {
     /**
      * The default security rules of network security group.
      */
-    readonly defaultSecurityRules: types.outputs.network.SecurityRuleResponse[];
+    readonly defaultSecurityRules: types.outputs.SecurityRuleResponse[];
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -45,7 +45,7 @@ export interface GetNetworkSecurityGroupResult {
     /**
      * A collection of references to flow log resources.
      */
-    readonly flowLogs: types.outputs.network.FlowLogResponse[];
+    readonly flowLogs: types.outputs.FlowLogResponse[];
     /**
      * When enabled, flows created from Network Security Group connections will be re-evaluated when rules are updates. Initial enablement will trigger re-evaluation.
      */
@@ -65,7 +65,7 @@ export interface GetNetworkSecurityGroupResult {
     /**
      * A collection of references to network interfaces.
      */
-    readonly networkInterfaces: types.outputs.network.NetworkInterfaceResponse[];
+    readonly networkInterfaces: types.outputs.NetworkInterfaceResponse[];
     /**
      * The provisioning state of the network security group resource.
      */
@@ -77,11 +77,11 @@ export interface GetNetworkSecurityGroupResult {
     /**
      * A collection of security rules of the network security group.
      */
-    readonly securityRules?: types.outputs.network.SecurityRuleResponse[];
+    readonly securityRules?: types.outputs.SecurityRuleResponse[];
     /**
      * A collection of references to subnets.
      */
-    readonly subnets: types.outputs.network.SubnetResponse[];
+    readonly subnets: types.outputs.SubnetResponse[];
     /**
      * Resource tags.
      */

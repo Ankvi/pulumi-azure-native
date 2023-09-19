@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents a migration resource.
  */
@@ -38,7 +38,7 @@ export class Migration extends pulumi.CustomResource {
     /**
      * Migration status.
      */
-    public /*out*/ readonly currentStatus!: pulumi.Output<types.outputs.dbforpostgresql.v20220501preview.MigrationStatusResponse>;
+    public /*out*/ readonly currentStatus!: pulumi.Output<types.outputs.MigrationStatusResponse>;
     /**
      * When you want to trigger cancel for specific databases send triggerCutover flag as true and database names in this array
      */
@@ -72,13 +72,13 @@ export class Migration extends pulumi.CustomResource {
     /**
      * Database server metadata.
      */
-    public /*out*/ readonly sourceDBServerMetadata!: pulumi.Output<types.outputs.dbforpostgresql.v20220501preview.DBServerMetadataResponse>;
+    public /*out*/ readonly sourceDBServerMetadata!: pulumi.Output<types.outputs.DBServerMetadataResponse>;
     public readonly sourceDBServerResourceId!: pulumi.Output<string | undefined>;
     public readonly startDataMigration!: pulumi.Output<boolean | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.dbforpostgresql.v20220501preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -87,7 +87,7 @@ export class Migration extends pulumi.CustomResource {
     /**
      * Database server metadata.
      */
-    public /*out*/ readonly targetDBServerMetadata!: pulumi.Output<types.outputs.dbforpostgresql.v20220501preview.DBServerMetadataResponse>;
+    public /*out*/ readonly targetDBServerMetadata!: pulumi.Output<types.outputs.DBServerMetadataResponse>;
     public /*out*/ readonly targetDBServerResourceId!: pulumi.Output<string>;
     /**
      * To trigger cutover for entire migration we need to send this flag as true
@@ -201,7 +201,7 @@ export interface MigrationArgs {
     /**
      * There are two types of migration modes Online and Offline
      */
-    migrationMode?: pulumi.Input<string | types.enums.v20220501preview.MigrationMode>;
+    migrationMode?: pulumi.Input<string | types.enums.MigrationMode>;
     /**
      * The name of the migration.
      */
@@ -215,7 +215,7 @@ export interface MigrationArgs {
     /**
      * Migration secret parameters.
      */
-    secretParameters?: pulumi.Input<types.inputs.dbforpostgresql.v20220501preview.MigrationSecretParametersArgs>;
+    secretParameters?: pulumi.Input<types.inputs.MigrationSecretParametersArgs>;
     setupLogicalReplicationOnSourceDBIfNeeded?: pulumi.Input<boolean>;
     sourceDBServerFullyQualifiedDomainName?: pulumi.Input<string>;
     sourceDBServerResourceId?: pulumi.Input<string>;

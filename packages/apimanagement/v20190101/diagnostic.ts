@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Diagnostic details.
  */
@@ -38,7 +38,7 @@ export class Diagnostic extends pulumi.CustomResource {
     /**
      * Diagnostic settings for incoming/outgoing HTTP messages to the Backend
      */
-    public readonly backend!: pulumi.Output<types.outputs.apimanagement.v20190101.PipelineDiagnosticSettingsResponse | undefined>;
+    public readonly backend!: pulumi.Output<types.outputs.PipelineDiagnosticSettingsResponse | undefined>;
     /**
      * Whether to process Correlation Headers coming to Api Management Service. Only applicable to Application Insights diagnostics. Default is true.
      */
@@ -46,7 +46,7 @@ export class Diagnostic extends pulumi.CustomResource {
     /**
      * Diagnostic settings for incoming/outgoing HTTP messages to the Gateway.
      */
-    public readonly frontend!: pulumi.Output<types.outputs.apimanagement.v20190101.PipelineDiagnosticSettingsResponse | undefined>;
+    public readonly frontend!: pulumi.Output<types.outputs.PipelineDiagnosticSettingsResponse | undefined>;
     /**
      * Sets correlation protocol to use for Application Insights diagnostics.
      */
@@ -62,7 +62,7 @@ export class Diagnostic extends pulumi.CustomResource {
     /**
      * Sampling settings for Diagnostic.
      */
-    public readonly sampling!: pulumi.Output<types.outputs.apimanagement.v20190101.SamplingSettingsResponse | undefined>;
+    public readonly sampling!: pulumi.Output<types.outputs.SamplingSettingsResponse | undefined>;
     /**
      * Resource type for API Management resource.
      */
@@ -131,11 +131,11 @@ export interface DiagnosticArgs {
     /**
      * Specifies for what type of messages sampling settings should not apply.
      */
-    alwaysLog?: pulumi.Input<string | types.enums.v20190101.AlwaysLog>;
+    alwaysLog?: pulumi.Input<string | types.enums.AlwaysLog>;
     /**
      * Diagnostic settings for incoming/outgoing HTTP messages to the Backend
      */
-    backend?: pulumi.Input<types.inputs.apimanagement.v20190101.PipelineDiagnosticSettingsArgs>;
+    backend?: pulumi.Input<types.inputs.PipelineDiagnosticSettingsArgs>;
     /**
      * Diagnostic identifier. Must be unique in the current API Management service instance.
      */
@@ -147,11 +147,11 @@ export interface DiagnosticArgs {
     /**
      * Diagnostic settings for incoming/outgoing HTTP messages to the Gateway.
      */
-    frontend?: pulumi.Input<types.inputs.apimanagement.v20190101.PipelineDiagnosticSettingsArgs>;
+    frontend?: pulumi.Input<types.inputs.PipelineDiagnosticSettingsArgs>;
     /**
      * Sets correlation protocol to use for Application Insights diagnostics.
      */
-    httpCorrelationProtocol?: pulumi.Input<string | types.enums.v20190101.HttpCorrelationProtocol>;
+    httpCorrelationProtocol?: pulumi.Input<string | types.enums.HttpCorrelationProtocol>;
     /**
      * Resource Id of a target logger.
      */
@@ -163,7 +163,7 @@ export interface DiagnosticArgs {
     /**
      * Sampling settings for Diagnostic.
      */
-    sampling?: pulumi.Input<types.inputs.apimanagement.v20190101.SamplingSettingsArgs>;
+    sampling?: pulumi.Input<types.inputs.SamplingSettingsArgs>;
     /**
      * The name of the API Management service.
      */
@@ -171,5 +171,5 @@ export interface DiagnosticArgs {
     /**
      * The verbosity level applied to traces emitted by trace policies.
      */
-    verbosity?: pulumi.Input<string | types.enums.v20190101.Verbosity>;
+    verbosity?: pulumi.Input<string | types.enums.Verbosity>;
 }

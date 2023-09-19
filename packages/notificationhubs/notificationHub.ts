@@ -43,15 +43,15 @@ export class NotificationHub extends pulumi.CustomResource {
     /**
      * NotificationHub properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.notificationhubs.NotificationHubPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.NotificationHubPropertiesResponse>;
     /**
      * The Sku description for a namespace
      */
-    public readonly sku!: pulumi.Output<types.outputs.notificationhubs.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.notificationhubs.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -123,7 +123,7 @@ export interface NotificationHubArgs {
     /**
      * NotificationHub properties.
      */
-    properties?: pulumi.Input<types.inputs.notificationhubs.NotificationHubPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.NotificationHubPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -131,7 +131,7 @@ export interface NotificationHubArgs {
     /**
      * The Sku description for a namespace
      */
-    sku?: pulumi.Input<types.inputs.notificationhubs.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Resource tags.
      */

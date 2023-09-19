@@ -32,7 +32,7 @@ export interface GetConsoleWithLocationResult {
     /**
      * Cloud shell console properties.
      */
-    readonly properties: types.outputs.portal.ConsolePropertiesResponse;
+    readonly properties: types.outputs.ConsolePropertiesResponse;
 }
 /**
  * Gets the console for the user.

@@ -41,7 +41,7 @@ export interface GetModelContainerResult {
     /**
      * [Required] Additional attributes of the entity.
      */
-    readonly modelContainerProperties: types.outputs.machinelearningservices.ModelContainerResponse;
+    readonly modelContainerProperties: types.outputs.ModelContainerResponse;
     /**
      * The name of the resource
      */
@@ -49,7 +49,7 @@ export interface GetModelContainerResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.machinelearningservices.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

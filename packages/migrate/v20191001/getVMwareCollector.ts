@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a VMware collector.
  */
@@ -33,7 +33,7 @@ export interface GetVMwareCollectorResult {
     readonly eTag?: string;
     readonly id: string;
     readonly name: string;
-    readonly properties: types.outputs.migrate.v20191001.CollectorPropertiesResponse;
+    readonly properties: types.outputs.CollectorPropertiesResponse;
     readonly type: string;
 }
 /**

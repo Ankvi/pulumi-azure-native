@@ -28,7 +28,7 @@ utilities.lazyLoad(exports, ["Zone"], () => require("./zone"));
 
 
 // Export enums:
-export * from "../types/enums/v20180501";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

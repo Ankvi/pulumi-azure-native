@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Virtual Appliance Site resource.
  */
@@ -46,7 +46,7 @@ export class VirtualApplianceSite extends pulumi.CustomResource {
     /**
      * Office 365 Policy.
      */
-    public readonly o365Policy!: pulumi.Output<types.outputs.network.v20230501.Office365PolicyPropertiesResponse | undefined>;
+    public readonly o365Policy!: pulumi.Output<types.outputs.Office365PolicyPropertiesResponse | undefined>;
     /**
      * The provisioning state of the resource.
      */
@@ -121,7 +121,7 @@ export interface VirtualApplianceSiteArgs {
     /**
      * Office 365 Policy.
      */
-    o365Policy?: pulumi.Input<types.inputs.network.v20230501.Office365PolicyPropertiesArgs>;
+    o365Policy?: pulumi.Input<types.inputs.Office365PolicyPropertiesArgs>;
     /**
      * The name of the resource group.
      */

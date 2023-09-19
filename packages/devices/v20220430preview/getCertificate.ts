@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns the certificate.
  */
@@ -48,7 +48,7 @@ export interface GetCertificateResult {
     /**
      * The description of an X509 CA Certificate.
      */
-    readonly properties: types.outputs.devices.v20220430preview.CertificatePropertiesResponse;
+    readonly properties: types.outputs.CertificatePropertiesResponse;
     /**
      * The resource type.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Sku sub resource.
  */
@@ -50,7 +50,7 @@ export class VendorSkus extends pulumi.CustomResource {
     /**
      * The template definition of the network function.
      */
-    public readonly networkFunctionTemplate!: pulumi.Output<types.outputs.hybridnetwork.v20220101preview.NetworkFunctionTemplateResponse | undefined>;
+    public readonly networkFunctionTemplate!: pulumi.Output<types.outputs.NetworkFunctionTemplateResponse | undefined>;
     /**
      * The network function type.
      */
@@ -70,7 +70,7 @@ export class VendorSkus extends pulumi.CustomResource {
     /**
      * The system meta data relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.hybridnetwork.v20220101preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -130,7 +130,7 @@ export interface VendorSkusArgs {
     /**
      * The sku deployment mode.
      */
-    deploymentMode?: pulumi.Input<string | types.enums.v20220101preview.SkuDeploymentMode>;
+    deploymentMode?: pulumi.Input<string | types.enums.SkuDeploymentMode>;
     /**
      * The parameters for the managed application to be supplied by the vendor.
      */
@@ -142,11 +142,11 @@ export interface VendorSkusArgs {
     /**
      * The template definition of the network function.
      */
-    networkFunctionTemplate?: pulumi.Input<types.inputs.hybridnetwork.v20220101preview.NetworkFunctionTemplateArgs>;
+    networkFunctionTemplate?: pulumi.Input<types.inputs.NetworkFunctionTemplateArgs>;
     /**
      * The network function type.
      */
-    networkFunctionType?: pulumi.Input<string | types.enums.v20220101preview.NetworkFunctionType>;
+    networkFunctionType?: pulumi.Input<string | types.enums.NetworkFunctionType>;
     /**
      * Indicates if the vendor sku is in preview mode.
      */
@@ -158,7 +158,7 @@ export interface VendorSkusArgs {
     /**
      * The sku type.
      */
-    skuType?: pulumi.Input<string | types.enums.v20220101preview.SkuType>;
+    skuType?: pulumi.Input<string | types.enums.SkuType>;
     /**
      * The name of the vendor.
      */

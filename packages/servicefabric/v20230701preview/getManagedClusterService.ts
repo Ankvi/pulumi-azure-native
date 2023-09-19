@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a Service Fabric service resource created or in the process of being created in the Service Fabric managed application resource.
  */
@@ -53,11 +53,11 @@ export interface GetManagedClusterServiceResult {
     /**
      * The service resource properties.
      */
-    readonly properties: types.outputs.servicefabric.v20230701preview.StatefulServicePropertiesResponse | types.outputs.servicefabric.v20230701preview.StatelessServicePropertiesResponse;
+    readonly properties: types.outputs.StatefulServicePropertiesResponse | types.outputs.StatelessServicePropertiesResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.servicefabric.v20230701preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Azure resource tags.
      */

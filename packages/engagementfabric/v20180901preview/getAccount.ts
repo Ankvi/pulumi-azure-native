@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The EngagementFabric account
  */
@@ -43,7 +43,7 @@ export interface GetAccountResult {
     /**
      * The SKU of the resource
      */
-    readonly sku: types.outputs.engagementfabric.v20180901preview.SKUResponse;
+    readonly sku: types.outputs.SKUResponse;
     /**
      * The tags of the resource
      */

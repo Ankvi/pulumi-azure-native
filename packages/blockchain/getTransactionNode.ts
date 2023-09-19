@@ -41,7 +41,7 @@ export interface GetTransactionNodeResult {
     /**
      * Gets or sets the firewall rules.
      */
-    readonly firewallRules?: types.outputs.blockchain.FirewallRuleResponse[];
+    readonly firewallRules?: types.outputs.FirewallRuleResponse[];
     /**
      * Fully qualified resource Id of the resource.
      */

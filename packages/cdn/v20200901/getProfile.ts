@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a CDN profile with the specified profile name under the specified subscription and resource group.
  */
@@ -55,11 +55,11 @@ export interface GetProfileResult {
     /**
      * The pricing tier (defines a CDN provider, feature list and rate) of the CDN profile.
      */
-    readonly sku: types.outputs.cdn.v20200901.SkuResponse;
+    readonly sku: types.outputs.SkuResponse;
     /**
      * Read only system data
      */
-    readonly systemData: types.outputs.cdn.v20200901.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Response for Volume Group request.
  */
@@ -42,7 +42,7 @@ export class VolumeGroup extends pulumi.CustomResource {
     /**
      * A collection of rules governing the accessibility from specific network locations.
      */
-    public readonly networkAcls!: pulumi.Output<types.outputs.elasticsan.v20211120preview.NetworkRuleSetResponse | undefined>;
+    public readonly networkAcls!: pulumi.Output<types.outputs.NetworkRuleSetResponse | undefined>;
     /**
      * Type of storage target
      */
@@ -54,7 +54,7 @@ export class VolumeGroup extends pulumi.CustomResource {
     /**
      * Resource metadata required by ARM RPC
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.elasticsan.v20211120preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Azure resource tags.
      */
@@ -120,15 +120,15 @@ export interface VolumeGroupArgs {
     /**
      * Type of encryption
      */
-    encryption?: pulumi.Input<string | types.enums.v20211120preview.EncryptionType>;
+    encryption?: pulumi.Input<string | types.enums.EncryptionType>;
     /**
      * A collection of rules governing the accessibility from specific network locations.
      */
-    networkAcls?: pulumi.Input<types.inputs.elasticsan.v20211120preview.NetworkRuleSetArgs>;
+    networkAcls?: pulumi.Input<types.inputs.NetworkRuleSetArgs>;
     /**
      * Type of storage target
      */
-    protocolType?: pulumi.Input<string | types.enums.v20211120preview.StorageTargetType>;
+    protocolType?: pulumi.Input<string | types.enums.StorageTargetType>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

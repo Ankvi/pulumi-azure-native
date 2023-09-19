@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Managed cluster.
  */
@@ -34,15 +34,15 @@ export class ManagedCluster extends pulumi.CustomResource {
     /**
      * Profile of Azure Active Directory configuration.
      */
-    public readonly aadProfile!: pulumi.Output<types.outputs.containerservice.v20190601.ManagedClusterAADProfileResponse | undefined>;
+    public readonly aadProfile!: pulumi.Output<types.outputs.ManagedClusterAADProfileResponse | undefined>;
     /**
      * Profile of managed cluster add-on.
      */
-    public readonly addonProfiles!: pulumi.Output<{[key: string]: types.outputs.containerservice.v20190601.ManagedClusterAddonProfileResponse} | undefined>;
+    public readonly addonProfiles!: pulumi.Output<{[key: string]: types.outputs.ManagedClusterAddonProfileResponse} | undefined>;
     /**
      * Properties of the agent pool.
      */
-    public readonly agentPoolProfiles!: pulumi.Output<types.outputs.containerservice.v20190601.ManagedClusterAgentPoolProfileResponse[] | undefined>;
+    public readonly agentPoolProfiles!: pulumi.Output<types.outputs.ManagedClusterAgentPoolProfileResponse[] | undefined>;
     /**
      * (PREVIEW) Authorized IP Ranges to kubernetes API server.
      */
@@ -66,7 +66,7 @@ export class ManagedCluster extends pulumi.CustomResource {
     /**
      * The identity of the managed cluster, if configured.
      */
-    public readonly identity!: pulumi.Output<types.outputs.containerservice.v20190601.ManagedClusterIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedClusterIdentityResponse | undefined>;
     /**
      * Version of Kubernetes specified when creating the managed cluster.
      */
@@ -74,7 +74,7 @@ export class ManagedCluster extends pulumi.CustomResource {
     /**
      * Profile for Linux VMs in the container service cluster.
      */
-    public readonly linuxProfile!: pulumi.Output<types.outputs.containerservice.v20190601.ContainerServiceLinuxProfileResponse | undefined>;
+    public readonly linuxProfile!: pulumi.Output<types.outputs.ContainerServiceLinuxProfileResponse | undefined>;
     /**
      * Resource location
      */
@@ -90,7 +90,7 @@ export class ManagedCluster extends pulumi.CustomResource {
     /**
      * Profile of network configuration.
      */
-    public readonly networkProfile!: pulumi.Output<types.outputs.containerservice.v20190601.ContainerServiceNetworkProfileResponse | undefined>;
+    public readonly networkProfile!: pulumi.Output<types.outputs.ContainerServiceNetworkProfileResponse | undefined>;
     /**
      * Name of the resource group containing agent pool nodes.
      */
@@ -102,7 +102,7 @@ export class ManagedCluster extends pulumi.CustomResource {
     /**
      * Information about a service principal identity for the cluster to use for manipulating Azure APIs.
      */
-    public readonly servicePrincipalProfile!: pulumi.Output<types.outputs.containerservice.v20190601.ManagedClusterServicePrincipalProfileResponse | undefined>;
+    public readonly servicePrincipalProfile!: pulumi.Output<types.outputs.ManagedClusterServicePrincipalProfileResponse | undefined>;
     /**
      * Resource tags
      */
@@ -114,7 +114,7 @@ export class ManagedCluster extends pulumi.CustomResource {
     /**
      * Profile for Windows VMs in the container service cluster.
      */
-    public readonly windowsProfile!: pulumi.Output<types.outputs.containerservice.v20190601.ManagedClusterWindowsProfileResponse | undefined>;
+    public readonly windowsProfile!: pulumi.Output<types.outputs.ManagedClusterWindowsProfileResponse | undefined>;
 
     /**
      * Create a ManagedCluster resource with the given unique name, arguments, and options.
@@ -141,7 +141,7 @@ export class ManagedCluster extends pulumi.CustomResource {
             resourceInputs["kubernetesVersion"] = args ? args.kubernetesVersion : undefined;
             resourceInputs["linuxProfile"] = args ? args.linuxProfile : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["networkProfile"] = args ? (args.networkProfile ? pulumi.output(args.networkProfile).apply(types.inputs.containerservice.v20190601.containerServiceNetworkProfileArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["networkProfile"] = args ? (args.networkProfile ? pulumi.output(args.networkProfile).apply(types.inputs.containerServiceNetworkProfileArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["nodeResourceGroup"] = args ? args.nodeResourceGroup : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["resourceName"] = args ? args.resourceName : undefined;
@@ -190,15 +190,15 @@ export interface ManagedClusterArgs {
     /**
      * Profile of Azure Active Directory configuration.
      */
-    aadProfile?: pulumi.Input<types.inputs.containerservice.v20190601.ManagedClusterAADProfileArgs>;
+    aadProfile?: pulumi.Input<types.inputs.ManagedClusterAADProfileArgs>;
     /**
      * Profile of managed cluster add-on.
      */
-    addonProfiles?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.containerservice.v20190601.ManagedClusterAddonProfileArgs>}>;
+    addonProfiles?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.ManagedClusterAddonProfileArgs>}>;
     /**
      * Properties of the agent pool.
      */
-    agentPoolProfiles?: pulumi.Input<pulumi.Input<types.inputs.containerservice.v20190601.ManagedClusterAgentPoolProfileArgs>[]>;
+    agentPoolProfiles?: pulumi.Input<pulumi.Input<types.inputs.ManagedClusterAgentPoolProfileArgs>[]>;
     /**
      * (PREVIEW) Authorized IP Ranges to kubernetes API server.
      */
@@ -218,7 +218,7 @@ export interface ManagedClusterArgs {
     /**
      * The identity of the managed cluster, if configured.
      */
-    identity?: pulumi.Input<types.inputs.containerservice.v20190601.ManagedClusterIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedClusterIdentityArgs>;
     /**
      * Version of Kubernetes specified when creating the managed cluster.
      */
@@ -226,7 +226,7 @@ export interface ManagedClusterArgs {
     /**
      * Profile for Linux VMs in the container service cluster.
      */
-    linuxProfile?: pulumi.Input<types.inputs.containerservice.v20190601.ContainerServiceLinuxProfileArgs>;
+    linuxProfile?: pulumi.Input<types.inputs.ContainerServiceLinuxProfileArgs>;
     /**
      * Resource location
      */
@@ -234,7 +234,7 @@ export interface ManagedClusterArgs {
     /**
      * Profile of network configuration.
      */
-    networkProfile?: pulumi.Input<types.inputs.containerservice.v20190601.ContainerServiceNetworkProfileArgs>;
+    networkProfile?: pulumi.Input<types.inputs.ContainerServiceNetworkProfileArgs>;
     /**
      * Name of the resource group containing agent pool nodes.
      */
@@ -250,7 +250,7 @@ export interface ManagedClusterArgs {
     /**
      * Information about a service principal identity for the cluster to use for manipulating Azure APIs.
      */
-    servicePrincipalProfile?: pulumi.Input<types.inputs.containerservice.v20190601.ManagedClusterServicePrincipalProfileArgs>;
+    servicePrincipalProfile?: pulumi.Input<types.inputs.ManagedClusterServicePrincipalProfileArgs>;
     /**
      * Resource tags
      */
@@ -258,5 +258,5 @@ export interface ManagedClusterArgs {
     /**
      * Profile for Windows VMs in the container service cluster.
      */
-    windowsProfile?: pulumi.Input<types.inputs.containerservice.v20190601.ManagedClusterWindowsProfileArgs>;
+    windowsProfile?: pulumi.Input<types.inputs.ManagedClusterWindowsProfileArgs>;
 }

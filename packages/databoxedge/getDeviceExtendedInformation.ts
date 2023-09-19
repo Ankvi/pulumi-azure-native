@@ -64,7 +64,7 @@ export interface GetDeviceExtendedInformationResult {
     /**
      * Device secrets, will be returned only with ODataFilter $expand=deviceSecrets
      */
-    readonly deviceSecrets: {[key: string]: types.outputs.databoxedge.SecretResponse};
+    readonly deviceSecrets: {[key: string]: types.outputs.SecretResponse};
     /**
      * The public part of the encryption certificate. Client uses this to encrypt any secret.
      */
@@ -100,7 +100,7 @@ export interface GetDeviceExtendedInformationResult {
     /**
      * Metadata pertaining to creation and last modification of DataBoxEdgeDevice
      */
-    readonly systemData: types.outputs.databoxedge.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The hierarchical type of the object.
      */

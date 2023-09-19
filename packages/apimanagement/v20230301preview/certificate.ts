@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Certificate details.
  */
@@ -38,7 +38,7 @@ export class Certificate extends pulumi.CustomResource {
     /**
      * KeyVault location details of the certificate.
      */
-    public readonly keyVault!: pulumi.Output<types.outputs.apimanagement.v20230301preview.KeyVaultContractPropertiesResponse | undefined>;
+    public readonly keyVault!: pulumi.Output<types.outputs.KeyVaultContractPropertiesResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -114,7 +114,7 @@ export interface CertificateArgs {
     /**
      * KeyVault location details of the certificate.
      */
-    keyVault?: pulumi.Input<types.inputs.apimanagement.v20230301preview.KeyVaultContractCreatePropertiesArgs>;
+    keyVault?: pulumi.Input<types.inputs.KeyVaultContractCreatePropertiesArgs>;
     /**
      * Password for the Certificate
      */

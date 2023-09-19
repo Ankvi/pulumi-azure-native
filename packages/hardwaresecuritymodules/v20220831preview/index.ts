@@ -23,7 +23,7 @@ utilities.lazyLoad(exports, ["getCloudHsmClusterPrivateEndpointConnection","getC
 
 
 // Export enums:
-export * from "../types/enums/v20220831preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

@@ -13,7 +13,7 @@ utilities.lazyLoad(exports, ["MetricAlert"], () => require("./metricAlert"));
 
 
 // Export enums:
-export * from "../types/enums/v20180301";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

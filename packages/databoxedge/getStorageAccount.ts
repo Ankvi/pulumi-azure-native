@@ -69,7 +69,7 @@ export interface GetStorageAccountResult {
     /**
      * Metadata pertaining to creation and last modification of StorageAccount
      */
-    readonly systemData: types.outputs.databoxedge.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The hierarchical type of the object.
      */

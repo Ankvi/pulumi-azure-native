@@ -37,7 +37,7 @@ export interface GetFeaturestoreEntityContainerEntityResult {
     /**
      * [Required] Additional attributes of the entity.
      */
-    readonly featurestoreEntityContainerProperties: types.outputs.machinelearningservices.FeaturestoreEntityContainerResponse;
+    readonly featurestoreEntityContainerProperties: types.outputs.FeaturestoreEntityContainerResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -49,7 +49,7 @@ export interface GetFeaturestoreEntityContainerEntityResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.machinelearningservices.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the managed application.
  */
@@ -35,23 +35,23 @@ export interface GetApplicationResult {
     /**
      * The collection of managed application artifacts.
      */
-    readonly artifacts: types.outputs.solutions.v20210701.ApplicationArtifactResponse[];
+    readonly artifacts: types.outputs.ApplicationArtifactResponse[];
     /**
      * The  read-only authorizations property that is retrieved from the application package.
      */
-    readonly authorizations: types.outputs.solutions.v20210701.ApplicationAuthorizationResponse[];
+    readonly authorizations: types.outputs.ApplicationAuthorizationResponse[];
     /**
      * The managed application billing details.
      */
-    readonly billingDetails: types.outputs.solutions.v20210701.ApplicationBillingDetailsDefinitionResponse;
+    readonly billingDetails: types.outputs.ApplicationBillingDetailsDefinitionResponse;
     /**
      * The client entity that created the JIT request.
      */
-    readonly createdBy: types.outputs.solutions.v20210701.ApplicationClientDetailsResponse;
+    readonly createdBy: types.outputs.ApplicationClientDetailsResponse;
     /**
      * The read-only customer support property that is retrieved from the application package.
      */
-    readonly customerSupport: types.outputs.solutions.v20210701.ApplicationPackageContactResponse;
+    readonly customerSupport: types.outputs.ApplicationPackageContactResponse;
     /**
      * Resource ID
      */
@@ -59,11 +59,11 @@ export interface GetApplicationResult {
     /**
      * The identity of the resource.
      */
-    readonly identity?: types.outputs.solutions.v20210701.IdentityResponse;
+    readonly identity?: types.outputs.IdentityResponse;
     /**
      * The managed application Jit access policy.
      */
-    readonly jitAccessPolicy?: types.outputs.solutions.v20210701.ApplicationJitAccessPolicyResponse;
+    readonly jitAccessPolicy?: types.outputs.ApplicationJitAccessPolicyResponse;
     /**
      * The kind of the managed application. Allowed values are MarketPlace and ServiceCatalog.
      */
@@ -99,7 +99,7 @@ export interface GetApplicationResult {
     /**
      * The plan information.
      */
-    readonly plan?: types.outputs.solutions.v20210701.PlanResponse;
+    readonly plan?: types.outputs.PlanResponse;
     /**
      * The managed application provisioning state.
      */
@@ -111,15 +111,15 @@ export interface GetApplicationResult {
     /**
      * The SKU of the resource.
      */
-    readonly sku?: types.outputs.solutions.v20210701.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * The read-only support URLs property that is retrieved from the application package.
      */
-    readonly supportUrls: types.outputs.solutions.v20210701.ApplicationPackageSupportUrlsResponse;
+    readonly supportUrls: types.outputs.ApplicationPackageSupportUrlsResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.solutions.v20210701.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags
      */
@@ -131,7 +131,7 @@ export interface GetApplicationResult {
     /**
      * The client entity that last updated the JIT request.
      */
-    readonly updatedBy: types.outputs.solutions.v20210701.ApplicationClientDetailsResponse;
+    readonly updatedBy: types.outputs.ApplicationClientDetailsResponse;
 }
 /**
  * Gets the managed application.

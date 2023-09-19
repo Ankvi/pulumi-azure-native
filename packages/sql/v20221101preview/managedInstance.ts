@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An Azure SQL managed instance.
  */
@@ -38,7 +38,7 @@ export class ManagedInstance extends pulumi.CustomResource {
     /**
      * The Azure Active Directory administrator of the instance. This can only be used at instance create time. If used for instance update, it will be ignored or it will result in an error. For updates individual APIs will need to be used.
      */
-    public readonly administrators!: pulumi.Output<types.outputs.sql.v20221101preview.ManagedInstanceExternalAdministratorResponse | undefined>;
+    public readonly administrators!: pulumi.Output<types.outputs.ManagedInstanceExternalAdministratorResponse | undefined>;
     /**
      * Collation of the managed instance.
      */
@@ -58,7 +58,7 @@ export class ManagedInstance extends pulumi.CustomResource {
     /**
      * The Azure Active Directory identity of the managed instance.
      */
-    public readonly identity!: pulumi.Output<types.outputs.sql.v20221101preview.ResourceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ResourceIdentityResponse | undefined>;
     /**
      * The Id of the instance pool this managed server belongs to.
      */
@@ -94,7 +94,7 @@ export class ManagedInstance extends pulumi.CustomResource {
     /**
      * List of private endpoint connections on a managed instance.
      */
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.sql.v20221101preview.ManagedInstancePecPropertyResponse[]>;
+    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.ManagedInstancePecPropertyResponse[]>;
     /**
      * Provisioning state of managed instance.
      */
@@ -114,11 +114,11 @@ export class ManagedInstance extends pulumi.CustomResource {
     /**
      * The managed instance's service principal.
      */
-    public readonly servicePrincipal!: pulumi.Output<types.outputs.sql.v20221101preview.ServicePrincipalResponse | undefined>;
+    public readonly servicePrincipal!: pulumi.Output<types.outputs.ServicePrincipalResponse | undefined>;
     /**
      * Managed instance SKU. Allowed values for sku.name: GP_Gen5, GP_G8IM, GP_G8IH, BC_Gen5, BC_G8IM, BC_G8IH
      */
-    public readonly sku!: pulumi.Output<types.outputs.sql.v20221101preview.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * The state of the managed instance.
      */
@@ -268,7 +268,7 @@ export interface ManagedInstanceArgs {
     /**
      * The Azure Active Directory administrator of the instance. This can only be used at instance create time. If used for instance update, it will be ignored or it will result in an error. For updates individual APIs will need to be used.
      */
-    administrators?: pulumi.Input<types.inputs.sql.v20221101preview.ManagedInstanceExternalAdministratorArgs>;
+    administrators?: pulumi.Input<types.inputs.ManagedInstanceExternalAdministratorArgs>;
     /**
      * Collation of the managed instance.
      */
@@ -280,7 +280,7 @@ export interface ManagedInstanceArgs {
     /**
      * The Azure Active Directory identity of the managed instance.
      */
-    identity?: pulumi.Input<types.inputs.sql.v20221101preview.ResourceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ResourceIdentityArgs>;
     /**
      * The Id of the instance pool this managed server belongs to.
      */
@@ -292,7 +292,7 @@ export interface ManagedInstanceArgs {
     /**
      * The license type. Possible values are 'LicenseIncluded' (regular price inclusive of a new SQL license) and 'BasePrice' (discounted AHB price for bringing your own SQL licenses).
      */
-    licenseType?: pulumi.Input<string | types.enums.v20221101preview.ManagedInstanceLicenseType>;
+    licenseType?: pulumi.Input<string | types.enums.ManagedInstanceLicenseType>;
     /**
      * Resource location.
      */
@@ -308,7 +308,7 @@ export interface ManagedInstanceArgs {
      * 
      * Restore: Creates an instance by restoring a set of backups to specific point in time. RestorePointInTime and SourceManagedInstanceId must be specified.
      */
-    managedInstanceCreateMode?: pulumi.Input<string | types.enums.v20221101preview.ManagedServerCreateMode>;
+    managedInstanceCreateMode?: pulumi.Input<string | types.enums.ManagedServerCreateMode>;
     /**
      * The name of the managed instance.
      */
@@ -324,7 +324,7 @@ export interface ManagedInstanceArgs {
     /**
      * Connection type used for connecting to the instance.
      */
-    proxyOverride?: pulumi.Input<string | types.enums.v20221101preview.ManagedInstanceProxyOverride>;
+    proxyOverride?: pulumi.Input<string | types.enums.ManagedInstanceProxyOverride>;
     /**
      * Whether or not the public data endpoint is enabled.
      */
@@ -332,7 +332,7 @@ export interface ManagedInstanceArgs {
     /**
      * The storage account type to be used to store backups for this instance. The options are Local (LocallyRedundantStorage), Zone (ZoneRedundantStorage), Geo (GeoRedundantStorage) and GeoZone(GeoZoneRedundantStorage)
      */
-    requestedBackupStorageRedundancy?: pulumi.Input<string | types.enums.v20221101preview.BackupStorageRedundancy>;
+    requestedBackupStorageRedundancy?: pulumi.Input<string | types.enums.BackupStorageRedundancy>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */
@@ -344,11 +344,11 @@ export interface ManagedInstanceArgs {
     /**
      * The managed instance's service principal.
      */
-    servicePrincipal?: pulumi.Input<types.inputs.sql.v20221101preview.ServicePrincipalArgs>;
+    servicePrincipal?: pulumi.Input<types.inputs.ServicePrincipalArgs>;
     /**
      * Managed instance SKU. Allowed values for sku.name: GP_Gen5, GP_G8IM, GP_G8IH, BC_Gen5, BC_G8IM, BC_G8IH
      */
-    sku?: pulumi.Input<types.inputs.sql.v20221101preview.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * The resource identifier of the source managed instance associated with create operation of this instance.
      */

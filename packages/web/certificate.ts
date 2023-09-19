@@ -59,7 +59,7 @@ export class Certificate extends pulumi.CustomResource {
     /**
      * Specification for the App Service Environment to use for the certificate.
      */
-    public /*out*/ readonly hostingEnvironmentProfile!: pulumi.Output<types.outputs.web.HostingEnvironmentProfileResponse>;
+    public /*out*/ readonly hostingEnvironmentProfile!: pulumi.Output<types.outputs.HostingEnvironmentProfileResponse>;
     /**
      * Certificate issue Date.
      */

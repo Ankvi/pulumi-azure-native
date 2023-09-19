@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Network Mapping model. Ideally it should have been possible to inherit this class from prev version in InheritedModels as long as there is no difference in structure or method signature. Since there were no base Models for certain fields and methods viz NetworkMappingProperties and Load with required return type, the class has been introduced in its entirety with references to base models to facilitate extensions in subsequent versions.
  */
@@ -42,7 +42,7 @@ export class ReplicationNetworkMapping extends pulumi.CustomResource {
     /**
      * The Network Mapping Properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.recoveryservices.v20210301.NetworkMappingPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.NetworkMappingPropertiesResponse>;
     /**
      * Resource Type
      */
@@ -112,7 +112,7 @@ export interface ReplicationNetworkMappingArgs {
     /**
      * Input properties for creating network mapping.
      */
-    properties?: pulumi.Input<types.inputs.recoveryservices.v20210301.CreateNetworkMappingInputPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.CreateNetworkMappingInputPropertiesArgs>;
     /**
      * The name of the resource group where the recovery services vault is present.
      */

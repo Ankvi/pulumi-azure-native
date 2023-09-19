@@ -47,7 +47,7 @@ export class Formula extends pulumi.CustomResource {
     /**
      * The content of the formula.
      */
-    public readonly formulaContent!: pulumi.Output<types.outputs.devtestlab.LabVirtualMachineCreationParameterResponse | undefined>;
+    public readonly formulaContent!: pulumi.Output<types.outputs.LabVirtualMachineCreationParameterResponse | undefined>;
     /**
      * The location of the resource.
      */
@@ -79,7 +79,7 @@ export class Formula extends pulumi.CustomResource {
     /**
      * Information about a VM from which a formula is to be created.
      */
-    public readonly vm!: pulumi.Output<types.outputs.devtestlab.FormulaPropertiesFromVmResponse | undefined>;
+    public readonly vm!: pulumi.Output<types.outputs.FormulaPropertiesFromVmResponse | undefined>;
 
     /**
      * Create a Formula resource with the given unique name, arguments, and options.
@@ -99,7 +99,7 @@ export class Formula extends pulumi.CustomResource {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
             resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["formulaContent"] = args ? (args.formulaContent ? pulumi.output(args.formulaContent).apply(types.inputs.devtestlab.labVirtualMachineCreationParameterArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["formulaContent"] = args ? (args.formulaContent ? pulumi.output(args.formulaContent).apply(types.inputs.labVirtualMachineCreationParameterArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["labName"] = args ? args.labName : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -144,7 +144,7 @@ export interface FormulaArgs {
     /**
      * The content of the formula.
      */
-    formulaContent?: pulumi.Input<types.inputs.devtestlab.LabVirtualMachineCreationParameterArgs>;
+    formulaContent?: pulumi.Input<types.inputs.LabVirtualMachineCreationParameterArgs>;
     /**
      * The name of the lab.
      */
@@ -172,5 +172,5 @@ export interface FormulaArgs {
     /**
      * Information about a VM from which a formula is to be created.
      */
-    vm?: pulumi.Input<types.inputs.devtestlab.FormulaPropertiesFromVmArgs>;
+    vm?: pulumi.Input<types.inputs.FormulaPropertiesFromVmArgs>;
 }

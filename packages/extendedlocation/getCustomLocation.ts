@@ -32,7 +32,7 @@ export interface GetCustomLocationResult {
     /**
      * This is optional input that contains the authentication that should be used to generate the namespace.
      */
-    readonly authentication?: types.outputs.extendedlocation.CustomLocationPropertiesResponseAuthentication;
+    readonly authentication?: types.outputs.CustomLocationPropertiesResponseAuthentication;
     /**
      * Contains the reference to the add-on that contains charts to deploy CRDs and operators.
      */
@@ -56,7 +56,7 @@ export interface GetCustomLocationResult {
     /**
      * Identity for the resource.
      */
-    readonly identity?: types.outputs.extendedlocation.IdentityResponse;
+    readonly identity?: types.outputs.IdentityResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -76,7 +76,7 @@ export interface GetCustomLocationResult {
     /**
      * Metadata pertaining to creation and last modification of the resource
      */
-    readonly systemData: types.outputs.extendedlocation.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

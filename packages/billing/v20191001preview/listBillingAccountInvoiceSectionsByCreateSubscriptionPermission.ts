@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Lists the invoice sections for which the user has permission to create Azure subscriptions. The operation is supported only for billing accounts with agreement type Microsoft Customer Agreement.
  */
@@ -30,7 +30,7 @@ export interface ListBillingAccountInvoiceSectionsByCreateSubscriptionPermission
     /**
      * The list of invoice section properties with create subscription permission.
      */
-    readonly value?: types.outputs.billing.v20191001preview.InvoiceSectionWithCreateSubPermissionResponse[];
+    readonly value?: types.outputs.InvoiceSectionWithCreateSubPermissionResponse[];
 }
 /**
  * Lists the invoice sections for which the user has permission to create Azure subscriptions. The operation is supported only for billing accounts with agreement type Microsoft Customer Agreement.

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Network slice resource.
  */
@@ -74,11 +74,11 @@ export class Slice extends pulumi.CustomResource {
     /**
      * Single-network slice selection assistance information (S-NSSAI). Unique at the scope of a mobile network.
      */
-    public readonly snssai!: pulumi.Output<types.outputs.mobilenetwork.v20220401preview.SnssaiResponse>;
+    public readonly snssai!: pulumi.Output<types.outputs.SnssaiResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.mobilenetwork.v20220401preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -163,7 +163,7 @@ export interface SliceArgs {
     /**
      * The type of identity that created the resource.
      */
-    createdByType?: pulumi.Input<string | types.enums.v20220401preview.CreatedByType>;
+    createdByType?: pulumi.Input<string | types.enums.CreatedByType>;
     /**
      * An optional description for this network slice.
      */
@@ -179,7 +179,7 @@ export interface SliceArgs {
     /**
      * The type of identity that last modified the resource.
      */
-    lastModifiedByType?: pulumi.Input<string | types.enums.v20220401preview.CreatedByType>;
+    lastModifiedByType?: pulumi.Input<string | types.enums.CreatedByType>;
     /**
      * The geo-location where the resource lives
      */
@@ -199,7 +199,7 @@ export interface SliceArgs {
     /**
      * Single-network slice selection assistance information (S-NSSAI). Unique at the scope of a mobile network.
      */
-    snssai: pulumi.Input<types.inputs.mobilenetwork.v20220401preview.SnssaiArgs>;
+    snssai: pulumi.Input<types.inputs.SnssaiArgs>;
     /**
      * Resource tags.
      */

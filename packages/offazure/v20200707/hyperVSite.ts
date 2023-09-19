@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Site REST Resource.
  */
@@ -46,11 +46,11 @@ export class HyperVSite extends pulumi.CustomResource {
     /**
      * Nested properties of Hyper-V site.
      */
-    public readonly properties!: pulumi.Output<types.outputs.offazure.v20200707.SitePropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.SitePropertiesResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.offazure.v20200707.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Type of resource. Type = Microsoft.OffAzure/HyperVSites.
@@ -115,7 +115,7 @@ export interface HyperVSiteArgs {
     /**
      * Nested properties of Hyper-V site.
      */
-    properties?: pulumi.Input<types.inputs.offazure.v20200707.SitePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.SitePropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Organization resource.
  */
@@ -46,7 +46,7 @@ export class Organization extends pulumi.CustomResource {
     /**
      * Confluent offer detail
      */
-    public readonly offerDetail!: pulumi.Output<types.outputs.confluent.v20200301preview.OrganizationResourcePropertiesResponseOfferDetail | undefined>;
+    public readonly offerDetail!: pulumi.Output<types.outputs.OrganizationResourcePropertiesResponseOfferDetail | undefined>;
     /**
      * Id of the Confluent organization.
      */
@@ -70,7 +70,7 @@ export class Organization extends pulumi.CustomResource {
     /**
      * Subscriber detail
      */
-    public readonly userDetail!: pulumi.Output<types.outputs.confluent.v20200301preview.OrganizationResourcePropertiesResponseUserDetail | undefined>;
+    public readonly userDetail!: pulumi.Output<types.outputs.OrganizationResourcePropertiesResponseUserDetail | undefined>;
 
     /**
      * Create a Organization resource with the given unique name, arguments, and options.
@@ -128,7 +128,7 @@ export interface OrganizationArgs {
     /**
      * Confluent offer detail
      */
-    offerDetail?: pulumi.Input<types.inputs.confluent.v20200301preview.OrganizationResourcePropertiesOfferDetailArgs>;
+    offerDetail?: pulumi.Input<types.inputs.OrganizationResourcePropertiesOfferDetailArgs>;
     /**
      * Organization resource name
      */
@@ -144,5 +144,5 @@ export interface OrganizationArgs {
     /**
      * Subscriber detail
      */
-    userDetail?: pulumi.Input<types.inputs.confluent.v20200301preview.OrganizationResourcePropertiesUserDetailArgs>;
+    userDetail?: pulumi.Input<types.inputs.OrganizationResourcePropertiesUserDetailArgs>;
 }

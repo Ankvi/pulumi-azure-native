@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An Azure resource which represents access to a suite of Maps REST APIs.
  */
@@ -46,15 +46,15 @@ export class Account extends pulumi.CustomResource {
     /**
      * The map account properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.maps.v20210201.MapsAccountPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.MapsAccountPropertiesResponse>;
     /**
      * The SKU of this account.
      */
-    public readonly sku!: pulumi.Output<types.outputs.maps.v20210201.SkuResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse>;
     /**
      * The system meta data relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.maps.v20210201.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -84,7 +84,7 @@ export class Account extends pulumi.CustomResource {
             resourceInputs["accountName"] = args ? args.accountName : undefined;
             resourceInputs["kind"] = args ? args.kind : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.maps.v20210201.mapsAccountPropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.mapsAccountPropertiesArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["sku"] = args ? args.sku : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
@@ -119,7 +119,7 @@ export interface AccountArgs {
     /**
      * Get or Set Kind property.
      */
-    kind?: pulumi.Input<string | types.enums.v20210201.Kind>;
+    kind?: pulumi.Input<string | types.enums.Kind>;
     /**
      * The geo-location where the resource lives
      */
@@ -127,7 +127,7 @@ export interface AccountArgs {
     /**
      * The map account properties.
      */
-    properties?: pulumi.Input<types.inputs.maps.v20210201.MapsAccountPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.MapsAccountPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -135,7 +135,7 @@ export interface AccountArgs {
     /**
      * The SKU of this account.
      */
-    sku: pulumi.Input<types.inputs.maps.v20210201.SkuArgs>;
+    sku: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Resource tags.
      */

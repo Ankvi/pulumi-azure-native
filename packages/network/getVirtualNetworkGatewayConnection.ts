@@ -60,7 +60,7 @@ export interface GetVirtualNetworkGatewayConnectionResult {
     /**
      * List of egress NatRules.
      */
-    readonly egressNatRules?: types.outputs.network.SubResourceResponse[];
+    readonly egressNatRules?: types.outputs.SubResourceResponse[];
     /**
      * EnableBgp flag.
      */
@@ -80,7 +80,7 @@ export interface GetVirtualNetworkGatewayConnectionResult {
     /**
      * GatewayCustomBgpIpAddresses to be used for virtual network gateway Connection.
      */
-    readonly gatewayCustomBgpIpAddresses?: types.outputs.network.GatewayCustomBgpIpAddressIpConfigurationResponse[];
+    readonly gatewayCustomBgpIpAddresses?: types.outputs.GatewayCustomBgpIpAddressIpConfigurationResponse[];
     /**
      * Resource ID.
      */
@@ -92,15 +92,15 @@ export interface GetVirtualNetworkGatewayConnectionResult {
     /**
      * List of ingress NatRules.
      */
-    readonly ingressNatRules?: types.outputs.network.SubResourceResponse[];
+    readonly ingressNatRules?: types.outputs.SubResourceResponse[];
     /**
      * The IPSec Policies to be considered by this connection.
      */
-    readonly ipsecPolicies?: types.outputs.network.IpsecPolicyResponse[];
+    readonly ipsecPolicies?: types.outputs.IpsecPolicyResponse[];
     /**
      * The reference to local network gateway resource.
      */
-    readonly localNetworkGateway2?: types.outputs.network.LocalNetworkGatewayResponse;
+    readonly localNetworkGateway2?: types.outputs.LocalNetworkGatewayResponse;
     /**
      * Resource location.
      */
@@ -112,7 +112,7 @@ export interface GetVirtualNetworkGatewayConnectionResult {
     /**
      * The reference to peerings resource.
      */
-    readonly peer?: types.outputs.network.SubResourceResponse;
+    readonly peer?: types.outputs.SubResourceResponse;
     /**
      * The provisioning state of the virtual network gateway connection resource.
      */
@@ -136,11 +136,11 @@ export interface GetVirtualNetworkGatewayConnectionResult {
     /**
      * The Traffic Selector Policies to be considered by this connection.
      */
-    readonly trafficSelectorPolicies?: types.outputs.network.TrafficSelectorPolicyResponse[];
+    readonly trafficSelectorPolicies?: types.outputs.TrafficSelectorPolicyResponse[];
     /**
      * Collection of all tunnels' connection health status.
      */
-    readonly tunnelConnectionStatus: types.outputs.network.TunnelConnectionHealthResponse[];
+    readonly tunnelConnectionStatus: types.outputs.TunnelConnectionHealthResponse[];
     /**
      * Resource type.
      */
@@ -156,11 +156,11 @@ export interface GetVirtualNetworkGatewayConnectionResult {
     /**
      * The reference to virtual network gateway resource.
      */
-    readonly virtualNetworkGateway1: types.outputs.network.VirtualNetworkGatewayResponse;
+    readonly virtualNetworkGateway1: types.outputs.VirtualNetworkGatewayResponse;
     /**
      * The reference to virtual network gateway resource.
      */
-    readonly virtualNetworkGateway2?: types.outputs.network.VirtualNetworkGatewayResponse;
+    readonly virtualNetworkGateway2?: types.outputs.VirtualNetworkGatewayResponse;
 }
 /**
  * Gets the specified virtual network gateway connection by resource group.

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get an application group.
  */
@@ -56,7 +56,7 @@ export interface GetApplicationGroupResult {
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
     readonly id: string;
-    readonly identity?: types.outputs.desktopvirtualization.v20221014preview.ResourceModelWithAllowedPropertySetResponseIdentity;
+    readonly identity?: types.outputs.ResourceModelWithAllowedPropertySetResponseIdentity;
     /**
      * Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
      */
@@ -77,12 +77,12 @@ export interface GetApplicationGroupResult {
      * ObjectId of ApplicationGroup. (internal use)
      */
     readonly objectId: string;
-    readonly plan?: types.outputs.desktopvirtualization.v20221014preview.ResourceModelWithAllowedPropertySetResponsePlan;
-    readonly sku?: types.outputs.desktopvirtualization.v20221014preview.ResourceModelWithAllowedPropertySetResponseSku;
+    readonly plan?: types.outputs.ResourceModelWithAllowedPropertySetResponsePlan;
+    readonly sku?: types.outputs.ResourceModelWithAllowedPropertySetResponseSku;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.desktopvirtualization.v20221014preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

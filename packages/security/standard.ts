@@ -39,7 +39,7 @@ export class Standard extends pulumi.CustomResource {
     /**
      * List of component objects containing component unique keys (such as assessment keys) to apply to standard scope.  Currently only supports assessment keys.
      */
-    public readonly components!: pulumi.Output<types.outputs.security.StandardComponentPropertiesResponse[] | undefined>;
+    public readonly components!: pulumi.Output<types.outputs.StandardComponentPropertiesResponse[] | undefined>;
     /**
      * description of the standard
      */
@@ -75,7 +75,7 @@ export class Standard extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.security.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * A list of key value pairs that describe the resource.
      */
@@ -147,7 +147,7 @@ export interface StandardArgs {
     /**
      * List of component objects containing component unique keys (such as assessment keys) to apply to standard scope.  Currently only supports assessment keys.
      */
-    components?: pulumi.Input<pulumi.Input<types.inputs.security.StandardComponentPropertiesArgs>[]>;
+    components?: pulumi.Input<pulumi.Input<types.inputs.StandardComponentPropertiesArgs>[]>;
     /**
      * description of the standard
      */

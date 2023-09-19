@@ -35,7 +35,7 @@ export class NetworkSecurityGroup extends pulumi.CustomResource {
     /**
      * The default security rules of network security group.
      */
-    public /*out*/ readonly defaultSecurityRules!: pulumi.Output<types.outputs.network.SecurityRuleResponse[]>;
+    public /*out*/ readonly defaultSecurityRules!: pulumi.Output<types.outputs.SecurityRuleResponse[]>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -43,7 +43,7 @@ export class NetworkSecurityGroup extends pulumi.CustomResource {
     /**
      * A collection of references to flow log resources.
      */
-    public /*out*/ readonly flowLogs!: pulumi.Output<types.outputs.network.FlowLogResponse[]>;
+    public /*out*/ readonly flowLogs!: pulumi.Output<types.outputs.FlowLogResponse[]>;
     /**
      * When enabled, flows created from Network Security Group connections will be re-evaluated when rules are updates. Initial enablement will trigger re-evaluation.
      */
@@ -59,7 +59,7 @@ export class NetworkSecurityGroup extends pulumi.CustomResource {
     /**
      * A collection of references to network interfaces.
      */
-    public /*out*/ readonly networkInterfaces!: pulumi.Output<types.outputs.network.NetworkInterfaceResponse[]>;
+    public /*out*/ readonly networkInterfaces!: pulumi.Output<types.outputs.NetworkInterfaceResponse[]>;
     /**
      * The provisioning state of the network security group resource.
      */
@@ -71,11 +71,11 @@ export class NetworkSecurityGroup extends pulumi.CustomResource {
     /**
      * A collection of security rules of the network security group.
      */
-    public readonly securityRules!: pulumi.Output<types.outputs.network.SecurityRuleResponse[] | undefined>;
+    public readonly securityRules!: pulumi.Output<types.outputs.SecurityRuleResponse[] | undefined>;
     /**
      * A collection of references to subnets.
      */
-    public /*out*/ readonly subnets!: pulumi.Output<types.outputs.network.SubnetResponse[]>;
+    public /*out*/ readonly subnets!: pulumi.Output<types.outputs.SubnetResponse[]>;
     /**
      * Resource tags.
      */
@@ -165,7 +165,7 @@ export interface NetworkSecurityGroupArgs {
      * A collection of security rules of the network security group.
      * These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
      */
-    securityRules?: pulumi.Input<pulumi.Input<types.inputs.network.SecurityRuleArgs>[]>;
+    securityRules?: pulumi.Input<pulumi.Input<types.inputs.SecurityRuleArgs>[]>;
     /**
      * Resource tags.
      */

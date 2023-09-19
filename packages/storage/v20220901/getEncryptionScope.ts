@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns the properties for the specified encryption scope.
  */
@@ -44,7 +44,7 @@ export interface GetEncryptionScopeResult {
     /**
      * The key vault properties for the encryption scope. This is a required field if encryption scope 'source' attribute is set to 'Microsoft.KeyVault'.
      */
-    readonly keyVaultProperties?: types.outputs.storage.v20220901.EncryptionScopeKeyVaultPropertiesResponse;
+    readonly keyVaultProperties?: types.outputs.EncryptionScopeKeyVaultPropertiesResponse;
     /**
      * Gets the last modification date and time of the encryption scope in UTC.
      */

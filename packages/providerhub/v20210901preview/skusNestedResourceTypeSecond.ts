@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 export class SkusNestedResourceTypeSecond extends pulumi.CustomResource {
     /**
      * Get an existing SkusNestedResourceTypeSecond resource's state with the given name, ID, and optional extra
@@ -32,11 +32,11 @@ export class SkusNestedResourceTypeSecond extends pulumi.CustomResource {
      * The name of the resource
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
-    public readonly properties!: pulumi.Output<types.outputs.providerhub.v20210901preview.SkuResourceResponseProperties>;
+    public readonly properties!: pulumi.Output<types.outputs.SkuResourceResponseProperties>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.providerhub.v20210901preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -99,7 +99,7 @@ export interface SkusNestedResourceTypeSecondArgs {
      * The second child resource type.
      */
     nestedResourceTypeSecond: pulumi.Input<string>;
-    properties?: pulumi.Input<types.inputs.providerhub.v20210901preview.SkuResourcePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.SkuResourcePropertiesArgs>;
     /**
      * The name of the resource provider hosted within ProviderHub.
      */

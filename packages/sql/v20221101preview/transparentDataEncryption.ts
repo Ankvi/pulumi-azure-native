@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A logical database transparent data encryption state.
  */
@@ -105,7 +105,7 @@ export interface TransparentDataEncryptionArgs {
     /**
      * Specifies the state of the transparent data encryption.
      */
-    state: pulumi.Input<types.enums.v20221101preview.TransparentDataEncryptionState>;
+    state: pulumi.Input<types.enums.TransparentDataEncryptionState>;
     /**
      * The name of the transparent data encryption configuration.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the operationalization cluster resource view. Note that the credentials are not returned by this call. Call ListKeys to get them.
  */
@@ -31,7 +31,7 @@ export interface GetOperationalizationClusterResult {
     /**
      * AppInsights configuration.
      */
-    readonly appInsights?: types.outputs.machinelearningcompute.v20170801preview.AppInsightsPropertiesResponse;
+    readonly appInsights?: types.outputs.AppInsightsPropertiesResponse;
     /**
      * The cluster type.
      */
@@ -39,11 +39,11 @@ export interface GetOperationalizationClusterResult {
     /**
      * Container Registry properties.
      */
-    readonly containerRegistry?: types.outputs.machinelearningcompute.v20170801preview.ContainerRegistryPropertiesResponse;
+    readonly containerRegistry?: types.outputs.ContainerRegistryPropertiesResponse;
     /**
      * Parameters for the Azure Container Service cluster.
      */
-    readonly containerService?: types.outputs.machinelearningcompute.v20170801preview.AcsClusterPropertiesResponse;
+    readonly containerService?: types.outputs.AcsClusterPropertiesResponse;
     /**
      * The date and time when the cluster was created.
      */
@@ -55,7 +55,7 @@ export interface GetOperationalizationClusterResult {
     /**
      * Contains global configuration for the web services in the cluster.
      */
-    readonly globalServiceConfiguration?: types.outputs.machinelearningcompute.v20170801preview.GlobalServiceConfigurationResponse;
+    readonly globalServiceConfiguration?: types.outputs.GlobalServiceConfigurationResponse;
     /**
      * Specifies the resource ID.
      */
@@ -75,7 +75,7 @@ export interface GetOperationalizationClusterResult {
     /**
      * List of provisioning errors reported by the resource provider.
      */
-    readonly provisioningErrors: types.outputs.machinelearningcompute.v20170801preview.ErrorResponseWrapperResponse[];
+    readonly provisioningErrors: types.outputs.ErrorResponseWrapperResponse[];
     /**
      * The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
      */
@@ -83,7 +83,7 @@ export interface GetOperationalizationClusterResult {
     /**
      * Storage Account properties.
      */
-    readonly storageAccount?: types.outputs.machinelearningcompute.v20170801preview.StorageAccountPropertiesResponse;
+    readonly storageAccount?: types.outputs.StorageAccountPropertiesResponse;
     /**
      * Contains resource tags defined as key/value pairs.
      */

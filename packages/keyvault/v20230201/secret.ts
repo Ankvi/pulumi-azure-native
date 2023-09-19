@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Resource information with extended details.
  */
@@ -42,7 +42,7 @@ export class Secret extends pulumi.CustomResource {
     /**
      * Properties of the secret
      */
-    public readonly properties!: pulumi.Output<types.outputs.keyvault.v20230201.SecretPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.SecretPropertiesResponse>;
     /**
      * Tags assigned to the key vault resource.
      */
@@ -101,7 +101,7 @@ export interface SecretArgs {
     /**
      * Properties of the secret
      */
-    properties: pulumi.Input<types.inputs.keyvault.v20230201.SecretPropertiesArgs>;
+    properties: pulumi.Input<types.inputs.SecretPropertiesArgs>;
     /**
      * The name of the Resource Group to which the vault belongs.
      */

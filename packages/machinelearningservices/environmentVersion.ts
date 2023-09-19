@@ -35,7 +35,7 @@ export class EnvironmentVersion extends pulumi.CustomResource {
     /**
      * [Required] Additional attributes of the entity.
      */
-    public readonly environmentVersionProperties!: pulumi.Output<types.outputs.machinelearningservices.EnvironmentVersionResponse>;
+    public readonly environmentVersionProperties!: pulumi.Output<types.outputs.EnvironmentVersionResponse>;
     /**
      * The name of the resource
      */
@@ -43,7 +43,7 @@ export class EnvironmentVersion extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.machinelearningservices.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -72,7 +72,7 @@ export class EnvironmentVersion extends pulumi.CustomResource {
             if ((!args || args.workspaceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workspaceName'");
             }
-            resourceInputs["environmentVersionProperties"] = args ? (args.environmentVersionProperties ? pulumi.output(args.environmentVersionProperties).apply(types.inputs.machinelearningservices.environmentVersionArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["environmentVersionProperties"] = args ? (args.environmentVersionProperties ? pulumi.output(args.environmentVersionProperties).apply(types.inputs.environmentVersionArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["version"] = args ? args.version : undefined;
@@ -99,7 +99,7 @@ export interface EnvironmentVersionArgs {
     /**
      * [Required] Additional attributes of the entity.
      */
-    environmentVersionProperties: pulumi.Input<types.inputs.machinelearningservices.EnvironmentVersionArgs>;
+    environmentVersionProperties: pulumi.Input<types.inputs.EnvironmentVersionArgs>;
     /**
      * Name of EnvironmentVersion. This is case-sensitive.
      */

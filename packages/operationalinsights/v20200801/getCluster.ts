@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a Log Analytics cluster instance.
  */
@@ -39,11 +39,11 @@ export interface GetClusterResult {
     /**
      * The identity of the resource.
      */
-    readonly identity?: types.outputs.operationalinsights.v20200801.IdentityResponse;
+    readonly identity?: types.outputs.IdentityResponse;
     /**
      * The associated key properties.
      */
-    readonly keyVaultProperties?: types.outputs.operationalinsights.v20200801.KeyVaultPropertiesResponse;
+    readonly keyVaultProperties?: types.outputs.KeyVaultPropertiesResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -63,7 +63,7 @@ export interface GetClusterResult {
     /**
      * The sku properties.
      */
-    readonly sku?: types.outputs.operationalinsights.v20200801.ClusterSkuResponse;
+    readonly sku?: types.outputs.ClusterSkuResponse;
     /**
      * Resource tags.
      */

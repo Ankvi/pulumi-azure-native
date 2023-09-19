@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets status telemetry of a live event.
  */
@@ -36,7 +36,7 @@ export interface GetLiveEventStatusResult {
     /**
      * The result of the get live event status.
      */
-    readonly value?: types.outputs.media.v20221101.LiveEventStatusResponse[];
+    readonly value?: types.outputs.LiveEventStatusResponse[];
 }
 /**
  * Gets status telemetry of a live event.

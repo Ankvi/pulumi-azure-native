@@ -43,11 +43,11 @@ export class PrivateEndpointConnectionControllerPrivateEndpointConnection extend
     /**
      * Gets the properties of the object.
      */
-    public readonly properties!: pulumi.Output<types.outputs.migrate.PrivateEndpointConnectionPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.PrivateEndpointConnectionPropertiesResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.migrate.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Gets the resource type.
      */
@@ -111,7 +111,7 @@ export interface PrivateEndpointConnectionControllerPrivateEndpointConnectionArg
     /**
      * Properties of Connection state request.
      */
-    properties?: pulumi.Input<types.inputs.migrate.ConnectionStateRequestBodyPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ConnectionStateRequestBodyPropertiesArgs>;
     /**
      * Name of the Azure Resource Group that project is part of.
      */

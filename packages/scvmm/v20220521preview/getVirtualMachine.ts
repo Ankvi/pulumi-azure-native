@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Implements VirtualMachine GET method.
  */
@@ -31,7 +31,7 @@ export interface GetVirtualMachineResult {
     /**
      * Availability Sets in vm.
      */
-    readonly availabilitySets?: types.outputs.scvmm.v20220521preview.VirtualMachinePropertiesResponseAvailabilitySets[];
+    readonly availabilitySets?: types.outputs.VirtualMachinePropertiesResponseAvailabilitySets[];
     /**
      * Type of checkpoint supported for the vm.
      */
@@ -39,7 +39,7 @@ export interface GetVirtualMachineResult {
     /**
      * Checkpoints in the vm.
      */
-    readonly checkpoints?: types.outputs.scvmm.v20220521preview.CheckpointResponse[];
+    readonly checkpoints?: types.outputs.CheckpointResponse[];
     /**
      * ARM Id of the cloud resource to use for deploying the vm.
      */
@@ -47,7 +47,7 @@ export interface GetVirtualMachineResult {
     /**
      * The extended location.
      */
-    readonly extendedLocation: types.outputs.scvmm.v20220521preview.ExtendedLocationResponse;
+    readonly extendedLocation: types.outputs.ExtendedLocationResponse;
     /**
      * Gets or sets the generation for the vm.
      */
@@ -55,11 +55,11 @@ export interface GetVirtualMachineResult {
     /**
      * Guest agent status properties.
      */
-    readonly guestAgentProfile?: types.outputs.scvmm.v20220521preview.GuestAgentProfileResponse;
+    readonly guestAgentProfile?: types.outputs.GuestAgentProfileResponse;
     /**
      * Hardware properties.
      */
-    readonly hardwareProfile?: types.outputs.scvmm.v20220521preview.HardwareProfileResponse;
+    readonly hardwareProfile?: types.outputs.HardwareProfileResponse;
     /**
      * Resource Id
      */
@@ -67,7 +67,7 @@ export interface GetVirtualMachineResult {
     /**
      * The identity of the resource.
      */
-    readonly identity?: types.outputs.scvmm.v20220521preview.IdentityResponse;
+    readonly identity?: types.outputs.IdentityResponse;
     /**
      * Gets or sets the inventory Item ID for the resource.
      */
@@ -75,7 +75,7 @@ export interface GetVirtualMachineResult {
     /**
      * Last restored checkpoint in the vm.
      */
-    readonly lastRestoredVMCheckpoint: types.outputs.scvmm.v20220521preview.CheckpointResponse;
+    readonly lastRestoredVMCheckpoint: types.outputs.CheckpointResponse;
     /**
      * Gets or sets the location.
      */
@@ -87,11 +87,11 @@ export interface GetVirtualMachineResult {
     /**
      * Network properties.
      */
-    readonly networkProfile?: types.outputs.scvmm.v20220521preview.NetworkProfileResponse;
+    readonly networkProfile?: types.outputs.NetworkProfileResponse;
     /**
      * OS properties.
      */
-    readonly osProfile?: types.outputs.scvmm.v20220521preview.OsProfileResponse;
+    readonly osProfile?: types.outputs.OsProfileResponse;
     /**
      * Gets the power state of the virtual machine.
      */
@@ -103,11 +103,11 @@ export interface GetVirtualMachineResult {
     /**
      * Storage properties.
      */
-    readonly storageProfile?: types.outputs.scvmm.v20220521preview.StorageProfileResponse;
+    readonly storageProfile?: types.outputs.StorageProfileResponse;
     /**
      * The system data.
      */
-    readonly systemData: types.outputs.scvmm.v20220521preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags
      */

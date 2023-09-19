@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Lists the associated resources for this identity.
  */
@@ -64,7 +64,7 @@ export interface ListUserAssignedIdentityAssociatedResourcesResult {
     /**
      * The collection of Azure resources returned by the resource action to get a list of assigned resources.
      */
-    readonly value: types.outputs.managedidentity.v20220131preview.AzureResourceResponse[];
+    readonly value: types.outputs.AzureResourceResponse[];
 }
 /**
  * Lists the associated resources for this identity.

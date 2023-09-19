@@ -35,7 +35,7 @@ export class AFDOrigin extends pulumi.CustomResource {
     /**
      * Resource reference to the Azure origin resource.
      */
-    public readonly azureOrigin!: pulumi.Output<types.outputs.cdn.ResourceReferenceResponse | undefined>;
+    public readonly azureOrigin!: pulumi.Output<types.outputs.ResourceReferenceResponse | undefined>;
     public /*out*/ readonly deploymentStatus!: pulumi.Output<string>;
     /**
      * Whether to enable health probes to be made against backends defined under backendPools. Health probes can only be disabled if there is a single enabled backend in single enabled backend pool.
@@ -80,11 +80,11 @@ export class AFDOrigin extends pulumi.CustomResource {
     /**
      * The properties of the private link resource for private origin.
      */
-    public readonly sharedPrivateLinkResource!: pulumi.Output<types.outputs.cdn.SharedPrivateLinkResourcePropertiesResponse | undefined>;
+    public readonly sharedPrivateLinkResource!: pulumi.Output<types.outputs.SharedPrivateLinkResourcePropertiesResponse | undefined>;
     /**
      * Read only system data
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.cdn.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource type.
      */
@@ -168,7 +168,7 @@ export interface AFDOriginArgs {
     /**
      * Resource reference to the Azure origin resource.
      */
-    azureOrigin?: pulumi.Input<types.inputs.cdn.ResourceReferenceArgs>;
+    azureOrigin?: pulumi.Input<types.inputs.ResourceReferenceArgs>;
     /**
      * Whether to enable health probes to be made against backends defined under backendPools. Health probes can only be disabled if there is a single enabled backend in single enabled backend pool.
      */
@@ -216,7 +216,7 @@ export interface AFDOriginArgs {
     /**
      * The properties of the private link resource for private origin.
      */
-    sharedPrivateLinkResource?: pulumi.Input<types.inputs.cdn.SharedPrivateLinkResourcePropertiesArgs>;
+    sharedPrivateLinkResource?: pulumi.Input<types.inputs.SharedPrivateLinkResourcePropertiesArgs>;
     /**
      * Weight of the origin in given origin group for load balancing. Must be between 1 and 1000
      */

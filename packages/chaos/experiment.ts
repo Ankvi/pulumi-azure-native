@@ -35,7 +35,7 @@ export class Experiment extends pulumi.CustomResource {
     /**
      * The identity of the experiment resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.chaos.ResourceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ResourceIdentityResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -47,11 +47,11 @@ export class Experiment extends pulumi.CustomResource {
     /**
      * The properties of the experiment resource.
      */
-    public readonly properties!: pulumi.Output<types.outputs.chaos.ExperimentPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ExperimentPropertiesResponse>;
     /**
      * The system metadata of the experiment resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.chaos.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -114,7 +114,7 @@ export interface ExperimentArgs {
     /**
      * The identity of the experiment resource.
      */
-    identity?: pulumi.Input<types.inputs.chaos.ResourceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ResourceIdentityArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -122,7 +122,7 @@ export interface ExperimentArgs {
     /**
      * The properties of the experiment resource.
      */
-    properties: pulumi.Input<types.inputs.chaos.ExperimentPropertiesArgs>;
+    properties: pulumi.Input<types.inputs.ExperimentPropertiesArgs>;
     /**
      * String that represents an Azure resource group.
      */

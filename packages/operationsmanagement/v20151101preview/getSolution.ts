@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves the user solution.
  */
@@ -43,11 +43,11 @@ export interface GetSolutionResult {
     /**
      * Plan for solution object supported by the OperationsManagement resource provider.
      */
-    readonly plan?: types.outputs.operationsmanagement.v20151101preview.SolutionPlanResponse;
+    readonly plan?: types.outputs.SolutionPlanResponse;
     /**
      * Properties for solution object supported by the OperationsManagement resource provider.
      */
-    readonly properties: types.outputs.operationsmanagement.v20151101preview.SolutionPropertiesResponse;
+    readonly properties: types.outputs.SolutionPropertiesResponse;
     /**
      * Resource tags
      */

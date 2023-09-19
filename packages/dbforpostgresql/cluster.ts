@@ -75,7 +75,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * Maintenance window of a cluster.
      */
-    public readonly maintenanceWindow!: pulumi.Output<types.outputs.dbforpostgresql.MaintenanceWindowResponse | undefined>;
+    public readonly maintenanceWindow!: pulumi.Output<types.outputs.MaintenanceWindowResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -115,7 +115,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * The private endpoint connections for a cluster.
      */
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.dbforpostgresql.SimplePrivateEndpointConnectionResponse[]>;
+    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.SimplePrivateEndpointConnectionResponse[]>;
     /**
      * Provisioning state of the cluster
      */
@@ -127,7 +127,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * The list of server names in the cluster
      */
-    public /*out*/ readonly serverNames!: pulumi.Output<types.outputs.dbforpostgresql.ServerNameItemResponse[]>;
+    public /*out*/ readonly serverNames!: pulumi.Output<types.outputs.ServerNameItemResponse[]>;
     /**
      * The Azure region of source cluster for read replica clusters.
      */
@@ -143,7 +143,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.dbforpostgresql.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -177,7 +177,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["enableHa"] = args ? args.enableHa : undefined;
             resourceInputs["enableShardsOnCoordinator"] = args ? args.enableShardsOnCoordinator : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["maintenanceWindow"] = args ? (args.maintenanceWindow ? pulumi.output(args.maintenanceWindow).apply(types.inputs.dbforpostgresql.maintenanceWindowArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["maintenanceWindow"] = args ? (args.maintenanceWindow ? pulumi.output(args.maintenanceWindow).apply(types.inputs.maintenanceWindowArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["nodeCount"] = args ? args.nodeCount : undefined;
             resourceInputs["nodeEnablePublicIpAccess"] = args ? args.nodeEnablePublicIpAccess : undefined;
             resourceInputs["nodeServerEdition"] = args ? args.nodeServerEdition : undefined;
@@ -286,7 +286,7 @@ export interface ClusterArgs {
     /**
      * Maintenance window of a cluster.
      */
-    maintenanceWindow?: pulumi.Input<types.inputs.dbforpostgresql.MaintenanceWindowArgs>;
+    maintenanceWindow?: pulumi.Input<types.inputs.MaintenanceWindowArgs>;
     /**
      * Worker node count of the cluster. When node count is 0, it represents a single node configuration with the ability to create distributed tables on that node. 2 or more worker nodes represent multi-node configuration. Node count value cannot be 1. Required for creation.
      */

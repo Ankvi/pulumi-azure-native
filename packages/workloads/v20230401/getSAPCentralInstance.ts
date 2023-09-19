@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the SAP Central Services Instance resource.
  */
@@ -36,19 +36,19 @@ export interface GetSAPCentralInstanceResult {
     /**
      * Defines the SAP Enqueue Replication Server (ERS) properties.
      */
-    readonly enqueueReplicationServerProperties?: types.outputs.workloads.v20230401.EnqueueReplicationServerPropertiesResponse;
+    readonly enqueueReplicationServerProperties?: types.outputs.EnqueueReplicationServerPropertiesResponse;
     /**
      * Defines the SAP Enqueue Server properties.
      */
-    readonly enqueueServerProperties?: types.outputs.workloads.v20230401.EnqueueServerPropertiesResponse;
+    readonly enqueueServerProperties?: types.outputs.EnqueueServerPropertiesResponse;
     /**
      * Defines the errors related to SAP Central Services Instance resource.
      */
-    readonly errors: types.outputs.workloads.v20230401.SAPVirtualInstanceErrorResponse;
+    readonly errors: types.outputs.SAPVirtualInstanceErrorResponse;
     /**
      * Defines the SAP Gateway Server properties.
      */
-    readonly gatewayServerProperties?: types.outputs.workloads.v20230401.GatewayServerPropertiesResponse;
+    readonly gatewayServerProperties?: types.outputs.GatewayServerPropertiesResponse;
     /**
      * Defines the health of SAP Instances.
      */
@@ -72,7 +72,7 @@ export interface GetSAPCentralInstanceResult {
     /**
      * The Load Balancer details such as LoadBalancer ID attached to ASCS Virtual Machines
      */
-    readonly loadBalancerDetails: types.outputs.workloads.v20230401.LoadBalancerDetailsResponse;
+    readonly loadBalancerDetails: types.outputs.LoadBalancerDetailsResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -80,7 +80,7 @@ export interface GetSAPCentralInstanceResult {
     /**
      * Defines the SAP Message Server properties.
      */
-    readonly messageServerProperties?: types.outputs.workloads.v20230401.MessageServerPropertiesResponse;
+    readonly messageServerProperties?: types.outputs.MessageServerPropertiesResponse;
     /**
      * The name of the resource
      */
@@ -100,7 +100,7 @@ export interface GetSAPCentralInstanceResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.workloads.v20230401.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -112,7 +112,7 @@ export interface GetSAPCentralInstanceResult {
     /**
      * The list of virtual machines corresponding to the Central Services instance.
      */
-    readonly vmDetails: types.outputs.workloads.v20230401.CentralServerVmDetailsResponse[];
+    readonly vmDetails: types.outputs.CentralServerVmDetailsResponse[];
 }
 /**
  * Gets the SAP Central Services Instance resource.

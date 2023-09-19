@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * See [planned maintenance](https://docs.microsoft.com/azure/aks/planned-maintenance) for more information about planned maintenance.
  */
@@ -34,7 +34,7 @@ export class MaintenanceConfiguration extends pulumi.CustomResource {
     /**
      * Maintenance window for the maintenance configuration.
      */
-    public readonly maintenanceWindow!: pulumi.Output<types.outputs.containerservice.v20230601.MaintenanceWindowResponse | undefined>;
+    public readonly maintenanceWindow!: pulumi.Output<types.outputs.MaintenanceWindowResponse | undefined>;
     /**
      * The name of the resource that is unique within a resource group. This name can be used to access the resource.
      */
@@ -42,15 +42,15 @@ export class MaintenanceConfiguration extends pulumi.CustomResource {
     /**
      * Time slots on which upgrade is not allowed.
      */
-    public readonly notAllowedTime!: pulumi.Output<types.outputs.containerservice.v20230601.TimeSpanResponse[] | undefined>;
+    public readonly notAllowedTime!: pulumi.Output<types.outputs.TimeSpanResponse[] | undefined>;
     /**
      * The system metadata relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.containerservice.v20230601.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * If two array entries specify the same day of the week, the applied configuration is the union of times in both entries.
      */
-    public readonly timeInWeek!: pulumi.Output<types.outputs.containerservice.v20230601.TimeInWeekResponse[] | undefined>;
+    public readonly timeInWeek!: pulumi.Output<types.outputs.TimeInWeekResponse[] | undefined>;
     /**
      * Resource type
      */
@@ -74,7 +74,7 @@ export class MaintenanceConfiguration extends pulumi.CustomResource {
                 throw new Error("Missing required property 'resourceName'");
             }
             resourceInputs["configName"] = args ? args.configName : undefined;
-            resourceInputs["maintenanceWindow"] = args ? (args.maintenanceWindow ? pulumi.output(args.maintenanceWindow).apply(types.inputs.containerservice.v20230601.maintenanceWindowArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["maintenanceWindow"] = args ? (args.maintenanceWindow ? pulumi.output(args.maintenanceWindow).apply(types.inputs.maintenanceWindowArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["notAllowedTime"] = args ? args.notAllowedTime : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["resourceName"] = args ? args.resourceName : undefined;
@@ -108,11 +108,11 @@ export interface MaintenanceConfigurationArgs {
     /**
      * Maintenance window for the maintenance configuration.
      */
-    maintenanceWindow?: pulumi.Input<types.inputs.containerservice.v20230601.MaintenanceWindowArgs>;
+    maintenanceWindow?: pulumi.Input<types.inputs.MaintenanceWindowArgs>;
     /**
      * Time slots on which upgrade is not allowed.
      */
-    notAllowedTime?: pulumi.Input<pulumi.Input<types.inputs.containerservice.v20230601.TimeSpanArgs>[]>;
+    notAllowedTime?: pulumi.Input<pulumi.Input<types.inputs.TimeSpanArgs>[]>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -124,5 +124,5 @@ export interface MaintenanceConfigurationArgs {
     /**
      * If two array entries specify the same day of the week, the applied configuration is the union of times in both entries.
      */
-    timeInWeek?: pulumi.Input<pulumi.Input<types.inputs.containerservice.v20230601.TimeInWeekArgs>[]>;
+    timeInWeek?: pulumi.Input<pulumi.Input<types.inputs.TimeInWeekArgs>[]>;
 }

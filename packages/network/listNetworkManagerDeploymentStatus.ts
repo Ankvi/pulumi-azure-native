@@ -56,7 +56,7 @@ export interface ListNetworkManagerDeploymentStatusResult {
     /**
      * Gets a page of Network Manager Deployment Status
      */
-    readonly value?: types.outputs.network.NetworkManagerDeploymentStatusResponse[];
+    readonly value?: types.outputs.NetworkManagerDeploymentStatusResponse[];
 }
 /**
  * Post to List of Network Manager Deployment Status.

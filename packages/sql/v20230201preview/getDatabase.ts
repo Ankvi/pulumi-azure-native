@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a database.
  */
@@ -74,7 +74,7 @@ export interface GetDatabaseResult {
     /**
      * The name and tier of the SKU.
      */
-    readonly currentSku: types.outputs.sql.v20230201preview.SkuResponse;
+    readonly currentSku: types.outputs.SkuResponse;
     /**
      * The ID of the database.
      */
@@ -126,7 +126,7 @@ export interface GetDatabaseResult {
     /**
      * The Azure Active Directory identity of the database.
      */
-    readonly identity?: types.outputs.sql.v20230201preview.DatabaseIdentityResponse;
+    readonly identity?: types.outputs.DatabaseIdentityResponse;
     /**
      * Infra encryption is enabled for this database.
      */
@@ -138,7 +138,7 @@ export interface GetDatabaseResult {
     /**
      * The resource ids of the user assigned identities to use
      */
-    readonly keys?: {[key: string]: types.outputs.sql.v20230201preview.DatabaseKeyResponse};
+    readonly keys?: {[key: string]: types.outputs.DatabaseKeyResponse};
     /**
      * Kind of database. This is metadata used for the Azure portal experience.
      */
@@ -236,7 +236,7 @@ export interface GetDatabaseResult {
      * Get-AzSqlServerServiceObjective -Location <location>
      * ````
      */
-    readonly sku?: types.outputs.sql.v20230201preview.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * The status of the database.
      */

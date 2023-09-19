@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Static Site ARM resource.
  */
@@ -42,7 +42,7 @@ export class StaticSite extends pulumi.CustomResource {
     /**
      * Build properties to configure on the repository.
      */
-    public readonly buildProperties!: pulumi.Output<types.outputs.web.v20210201.StaticSiteBuildPropertiesResponse | undefined>;
+    public readonly buildProperties!: pulumi.Output<types.outputs.StaticSiteBuildPropertiesResponse | undefined>;
     /**
      * The content distribution endpoint for the static site.
      */
@@ -58,7 +58,7 @@ export class StaticSite extends pulumi.CustomResource {
     /**
      * Managed service identity.
      */
-    public readonly identity!: pulumi.Output<types.outputs.web.v20210201.ManagedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * Identity to use for Key Vault Reference authentication.
      */
@@ -78,7 +78,7 @@ export class StaticSite extends pulumi.CustomResource {
     /**
      * Private endpoint connections
      */
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.web.v20210201.ResponseMessageEnvelopeRemotePrivateEndpointConnectionResponse[]>;
+    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.ResponseMessageEnvelopeRemotePrivateEndpointConnectionResponse[]>;
     /**
      * The provider that submitted the last deployment to the primary environment of the static site.
      */
@@ -94,7 +94,7 @@ export class StaticSite extends pulumi.CustomResource {
     /**
      * Description of a SKU for a scalable resource.
      */
-    public readonly sku!: pulumi.Output<types.outputs.web.v20210201.SkuDescriptionResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuDescriptionResponse | undefined>;
     /**
      * State indicating whether staging environments are allowed or not allowed for a static web app.
      */
@@ -106,7 +106,7 @@ export class StaticSite extends pulumi.CustomResource {
     /**
      * Template options for generating a new repository.
      */
-    public readonly templateProperties!: pulumi.Output<types.outputs.web.v20210201.StaticSiteTemplateOptionsResponse | undefined>;
+    public readonly templateProperties!: pulumi.Output<types.outputs.StaticSiteTemplateOptionsResponse | undefined>;
     /**
      * Resource type.
      */
@@ -114,7 +114,7 @@ export class StaticSite extends pulumi.CustomResource {
     /**
      * User provided function apps registered with the static site
      */
-    public /*out*/ readonly userProvidedFunctionApps!: pulumi.Output<types.outputs.web.v20210201.StaticSiteUserProvidedFunctionAppResponse[]>;
+    public /*out*/ readonly userProvidedFunctionApps!: pulumi.Output<types.outputs.StaticSiteUserProvidedFunctionAppResponse[]>;
 
     /**
      * Create a StaticSite resource with the given unique name, arguments, and options.
@@ -197,11 +197,11 @@ export interface StaticSiteArgs {
     /**
      * Build properties to configure on the repository.
      */
-    buildProperties?: pulumi.Input<types.inputs.web.v20210201.StaticSiteBuildPropertiesArgs>;
+    buildProperties?: pulumi.Input<types.inputs.StaticSiteBuildPropertiesArgs>;
     /**
      * Managed service identity.
      */
-    identity?: pulumi.Input<types.inputs.web.v20210201.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
      * Kind of resource.
      */
@@ -229,11 +229,11 @@ export interface StaticSiteArgs {
     /**
      * Description of a SKU for a scalable resource.
      */
-    sku?: pulumi.Input<types.inputs.web.v20210201.SkuDescriptionArgs>;
+    sku?: pulumi.Input<types.inputs.SkuDescriptionArgs>;
     /**
      * State indicating whether staging environments are allowed or not allowed for a static web app.
      */
-    stagingEnvironmentPolicy?: pulumi.Input<types.enums.v20210201.StagingEnvironmentPolicy>;
+    stagingEnvironmentPolicy?: pulumi.Input<types.enums.StagingEnvironmentPolicy>;
     /**
      * Resource tags.
      */
@@ -241,5 +241,5 @@ export interface StaticSiteArgs {
     /**
      * Template options for generating a new repository.
      */
-    templateProperties?: pulumi.Input<types.inputs.web.v20210201.StaticSiteTemplateOptionsArgs>;
+    templateProperties?: pulumi.Input<types.inputs.StaticSiteTemplateOptionsArgs>;
 }

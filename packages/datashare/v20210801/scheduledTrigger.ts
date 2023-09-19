@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A type of trigger based on schedule
  */
@@ -63,7 +63,7 @@ export class ScheduledTrigger extends pulumi.CustomResource {
     /**
      * System Data of the Azure resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.datashare.v20210801.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Gets the trigger state
      */
@@ -157,7 +157,7 @@ export interface ScheduledTriggerArgs {
     /**
      * Recurrence Interval
      */
-    recurrenceInterval: pulumi.Input<string | types.enums.v20210801.RecurrenceInterval>;
+    recurrenceInterval: pulumi.Input<string | types.enums.RecurrenceInterval>;
     /**
      * The resource group name.
      */
@@ -169,7 +169,7 @@ export interface ScheduledTriggerArgs {
     /**
      * Synchronization mode
      */
-    synchronizationMode?: pulumi.Input<string | types.enums.v20210801.SynchronizationMode>;
+    synchronizationMode?: pulumi.Input<string | types.enums.SynchronizationMode>;
     /**
      * Synchronization time
      */

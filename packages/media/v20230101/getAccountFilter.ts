@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the details of an Account Filter in the Media Services account.
  */
@@ -36,7 +36,7 @@ export interface GetAccountFilterResult {
     /**
      * The first quality.
      */
-    readonly firstQuality?: types.outputs.media.v20230101.FirstQualityResponse;
+    readonly firstQuality?: types.outputs.FirstQualityResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -48,15 +48,15 @@ export interface GetAccountFilterResult {
     /**
      * The presentation time range.
      */
-    readonly presentationTimeRange?: types.outputs.media.v20230101.PresentationTimeRangeResponse;
+    readonly presentationTimeRange?: types.outputs.PresentationTimeRangeResponse;
     /**
      * The system metadata relating to this resource.
      */
-    readonly systemData: types.outputs.media.v20230101.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The tracks selection conditions.
      */
-    readonly tracks?: types.outputs.media.v20230101.FilterTrackSelectionResponse[];
+    readonly tracks?: types.outputs.FilterTrackSelectionResponse[];
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

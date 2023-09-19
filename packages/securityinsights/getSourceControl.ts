@@ -57,7 +57,7 @@ export interface GetSourceControlResult {
     /**
      * Information regarding the latest deployment for the source control.
      */
-    readonly lastDeploymentInfo?: types.outputs.securityinsights.DeploymentInfoResponse;
+    readonly lastDeploymentInfo?: types.outputs.DeploymentInfoResponse;
     /**
      * The name of the resource
      */
@@ -69,15 +69,15 @@ export interface GetSourceControlResult {
     /**
      * Repository metadata.
      */
-    readonly repository: types.outputs.securityinsights.RepositoryResponse;
+    readonly repository: types.outputs.RepositoryResponse;
     /**
      * Information regarding the resources created in user's repository.
      */
-    readonly repositoryResourceInfo?: types.outputs.securityinsights.RepositoryResourceInfoResponse;
+    readonly repositoryResourceInfo?: types.outputs.RepositoryResourceInfoResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.securityinsights.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

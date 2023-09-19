@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a server's security alert policy.
  */
@@ -76,7 +76,7 @@ export interface GetServerSecurityAlertPolicyResult {
     /**
      * SystemData of SecurityAlertPolicyResource.
      */
-    readonly systemData: types.outputs.sql.v20221101preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource type.
      */

@@ -49,11 +49,11 @@ export interface GetWebPubSubPrivateEndpointConnectionResult {
     /**
      * Private endpoint
      */
-    readonly privateEndpoint?: types.outputs.webpubsub.PrivateEndpointResponse;
+    readonly privateEndpoint?: types.outputs.PrivateEndpointResponse;
     /**
      * Connection state of the private endpoint connection
      */
-    readonly privateLinkServiceConnectionState?: types.outputs.webpubsub.PrivateLinkServiceConnectionStateResponse;
+    readonly privateLinkServiceConnectionState?: types.outputs.PrivateLinkServiceConnectionStateResponse;
     /**
      * Provisioning state of the resource.
      */
@@ -61,7 +61,7 @@ export interface GetWebPubSubPrivateEndpointConnectionResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.webpubsub.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource - e.g. "Microsoft.SignalRService/SignalR"
      */

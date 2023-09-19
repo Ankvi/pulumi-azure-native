@@ -52,7 +52,7 @@ export interface GetConnectedClusterResult {
     /**
      * The identity of the connected cluster.
      */
-    readonly identity: types.outputs.kubernetes.ConnectedClusterIdentityResponse;
+    readonly identity: types.outputs.ConnectedClusterIdentityResponse;
     /**
      * The infrastructure on which the Kubernetes cluster represented by this connected cluster is running on.
      */
@@ -96,7 +96,7 @@ export interface GetConnectedClusterResult {
     /**
      * Metadata pertaining to creation and last modification of the resource
      */
-    readonly systemData: types.outputs.kubernetes.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

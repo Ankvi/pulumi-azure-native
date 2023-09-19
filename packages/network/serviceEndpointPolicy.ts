@@ -67,11 +67,11 @@ export class ServiceEndpointPolicy extends pulumi.CustomResource {
     /**
      * A collection of service endpoint policy definitions of the service endpoint policy.
      */
-    public readonly serviceEndpointPolicyDefinitions!: pulumi.Output<types.outputs.network.ServiceEndpointPolicyDefinitionResponse[] | undefined>;
+    public readonly serviceEndpointPolicyDefinitions!: pulumi.Output<types.outputs.ServiceEndpointPolicyDefinitionResponse[] | undefined>;
     /**
      * A collection of references to subnets.
      */
-    public /*out*/ readonly subnets!: pulumi.Output<types.outputs.network.SubnetResponse[]>;
+    public /*out*/ readonly subnets!: pulumi.Output<types.outputs.SubnetResponse[]>;
     /**
      * Resource tags.
      */
@@ -159,7 +159,7 @@ export interface ServiceEndpointPolicyArgs {
      * A collection of service endpoint policy definitions of the service endpoint policy.
      * These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
      */
-    serviceEndpointPolicyDefinitions?: pulumi.Input<pulumi.Input<types.inputs.network.ServiceEndpointPolicyDefinitionArgs>[]>;
+    serviceEndpointPolicyDefinitions?: pulumi.Input<pulumi.Input<types.inputs.ServiceEndpointPolicyDefinitionArgs>[]>;
     /**
      * The name of the service endpoint policy.
      */

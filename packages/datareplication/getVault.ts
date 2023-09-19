@@ -44,8 +44,8 @@ export interface GetVaultResult {
     /**
      * Vault properties.
      */
-    readonly properties: types.outputs.datareplication.VaultModelPropertiesResponse;
-    readonly systemData: types.outputs.datareplication.VaultModelResponseSystemData;
+    readonly properties: types.outputs.VaultModelPropertiesResponse;
+    readonly systemData: types.outputs.VaultModelResponseSystemData;
     /**
      * Gets or sets the resource tags.
      */

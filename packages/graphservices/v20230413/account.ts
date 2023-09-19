@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Account details
  */
@@ -42,11 +42,11 @@ export class Account extends pulumi.CustomResource {
     /**
      * Property bag from billing account
      */
-    public readonly properties!: pulumi.Output<types.outputs.graphservices.v20230413.AccountResourceResponseProperties>;
+    public readonly properties!: pulumi.Output<types.outputs.AccountResourceResponseProperties>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.graphservices.v20230413.AccountResourceResponseSystemData>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.AccountResourceResponseSystemData>;
     /**
      * resource tags.
      */
@@ -107,7 +107,7 @@ export interface AccountArgs {
     /**
      * Property bag from billing account
      */
-    properties: pulumi.Input<types.inputs.graphservices.v20230413.AccountResourcePropertiesArgs>;
+    properties: pulumi.Input<types.inputs.AccountResourcePropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

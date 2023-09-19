@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a DataSet in a share
  */
@@ -62,7 +62,7 @@ export interface GetBlobStorageAccountDataSetResult {
     /**
      * A list of storage account paths.
      */
-    readonly paths: types.outputs.datashare.v20201001preview.BlobStorageAccountPathResponse[];
+    readonly paths: types.outputs.BlobStorageAccountPathResponse[];
     /**
      * Resource id of the storage account.
      */
@@ -70,7 +70,7 @@ export interface GetBlobStorageAccountDataSetResult {
     /**
      * System Data of the Azure resource.
      */
-    readonly systemData: types.outputs.datashare.v20201001preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Type of the azure resource
      */

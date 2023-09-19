@@ -48,15 +48,15 @@ export class PeriodicTimerEventTrigger extends pulumi.CustomResource {
     /**
      * Role Sink information.
      */
-    public readonly sinkInfo!: pulumi.Output<types.outputs.databoxedge.RoleSinkInfoResponse>;
+    public readonly sinkInfo!: pulumi.Output<types.outputs.RoleSinkInfoResponse>;
     /**
      * Periodic timer details.
      */
-    public readonly sourceInfo!: pulumi.Output<types.outputs.databoxedge.PeriodicTimerSourceInfoResponse>;
+    public readonly sourceInfo!: pulumi.Output<types.outputs.PeriodicTimerSourceInfoResponse>;
     /**
      * Metadata pertaining to creation and last modification of Trigger
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.databoxedge.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The hierarchical type of the object.
      */
@@ -141,9 +141,9 @@ export interface PeriodicTimerEventTriggerArgs {
     /**
      * Role Sink information.
      */
-    sinkInfo: pulumi.Input<types.inputs.databoxedge.RoleSinkInfoArgs>;
+    sinkInfo: pulumi.Input<types.inputs.RoleSinkInfoArgs>;
     /**
      * Periodic timer details.
      */
-    sourceInfo: pulumi.Input<types.inputs.databoxedge.PeriodicTimerSourceInfoArgs>;
+    sourceInfo: pulumi.Input<types.inputs.PeriodicTimerSourceInfoArgs>;
 }

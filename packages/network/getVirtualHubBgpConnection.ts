@@ -45,7 +45,7 @@ export interface GetVirtualHubBgpConnectionResult {
     /**
      * The reference to the HubVirtualNetworkConnection resource.
      */
-    readonly hubVirtualNetworkConnection?: types.outputs.network.SubResourceResponse;
+    readonly hubVirtualNetworkConnection?: types.outputs.SubResourceResponse;
     /**
      * Resource ID.
      */

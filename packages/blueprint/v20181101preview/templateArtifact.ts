@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Blueprint artifact that deploys a Resource Manager template.
  */
@@ -55,7 +55,7 @@ export class TemplateArtifact extends pulumi.CustomResource {
     /**
      * Resource Manager template blueprint artifact parameter values.
      */
-    public readonly parameters!: pulumi.Output<{[key: string]: types.outputs.blueprint.v20181101preview.ParameterValueResponse}>;
+    public readonly parameters!: pulumi.Output<{[key: string]: types.outputs.ParameterValueResponse}>;
     /**
      * If applicable, the name of the resource group placeholder to which the Resource Manager template blueprint artifact will be deployed.
      */
@@ -157,7 +157,7 @@ export interface TemplateArtifactArgs {
     /**
      * Resource Manager template blueprint artifact parameter values.
      */
-    parameters: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.blueprint.v20181101preview.ParameterValueArgs>}>;
+    parameters: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.ParameterValueArgs>}>;
     /**
      * If applicable, the name of the resource group placeholder to which the Resource Manager template blueprint artifact will be deployed.
      */

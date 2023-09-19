@@ -178,7 +178,7 @@ utilities.lazyLoad(exports, ["Variable"], () => require("./variable"));
 
 
 // Export enums:
-export * from "../types/enums/v20220808";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

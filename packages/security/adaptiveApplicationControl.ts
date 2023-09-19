@@ -39,7 +39,7 @@ export class AdaptiveApplicationControl extends pulumi.CustomResource {
      * The application control policy enforcement/protection mode of the machine group
      */
     public readonly enforcementMode!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly issues!: pulumi.Output<types.outputs.security.AdaptiveApplicationControlIssueSummaryResponse[]>;
+    public /*out*/ readonly issues!: pulumi.Output<types.outputs.AdaptiveApplicationControlIssueSummaryResponse[]>;
     /**
      * Location where the resource is stored
      */
@@ -48,11 +48,11 @@ export class AdaptiveApplicationControl extends pulumi.CustomResource {
      * Resource name
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
-    public readonly pathRecommendations!: pulumi.Output<types.outputs.security.PathRecommendationResponse[] | undefined>;
+    public readonly pathRecommendations!: pulumi.Output<types.outputs.PathRecommendationResponse[] | undefined>;
     /**
      * The protection mode of the collection/file types. Exe/Msi/Script are used for Windows, Executable is used for Linux.
      */
-    public readonly protectionMode!: pulumi.Output<types.outputs.security.ProtectionModeResponse | undefined>;
+    public readonly protectionMode!: pulumi.Output<types.outputs.ProtectionModeResponse | undefined>;
     /**
      * The initial recommendation status of the machine group or machine
      */
@@ -65,7 +65,7 @@ export class AdaptiveApplicationControl extends pulumi.CustomResource {
      * Resource type
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
-    public readonly vmRecommendations!: pulumi.Output<types.outputs.security.VmRecommendationResponse[] | undefined>;
+    public readonly vmRecommendations!: pulumi.Output<types.outputs.VmRecommendationResponse[] | undefined>;
 
     /**
      * Create a AdaptiveApplicationControl resource with the given unique name, arguments, and options.
@@ -130,10 +130,10 @@ export interface AdaptiveApplicationControlArgs {
      * Name of an application control machine group
      */
     groupName?: pulumi.Input<string>;
-    pathRecommendations?: pulumi.Input<pulumi.Input<types.inputs.security.PathRecommendationArgs>[]>;
+    pathRecommendations?: pulumi.Input<pulumi.Input<types.inputs.PathRecommendationArgs>[]>;
     /**
      * The protection mode of the collection/file types. Exe/Msi/Script are used for Windows, Executable is used for Linux.
      */
-    protectionMode?: pulumi.Input<types.inputs.security.ProtectionModeArgs>;
-    vmRecommendations?: pulumi.Input<pulumi.Input<types.inputs.security.VmRecommendationArgs>[]>;
+    protectionMode?: pulumi.Input<types.inputs.ProtectionModeArgs>;
+    vmRecommendations?: pulumi.Input<pulumi.Input<types.inputs.VmRecommendationArgs>[]>;
 }

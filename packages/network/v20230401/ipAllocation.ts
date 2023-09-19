@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * IpAllocation resource.
  */
@@ -66,7 +66,7 @@ export class IpAllocation extends pulumi.CustomResource {
     /**
      * The Subnet that using the prefix of this IpAllocation resource.
      */
-    public /*out*/ readonly subnet!: pulumi.Output<types.outputs.network.v20230401.SubResourceResponse>;
+    public /*out*/ readonly subnet!: pulumi.Output<types.outputs.SubResourceResponse>;
     /**
      * Resource tags.
      */
@@ -78,7 +78,7 @@ export class IpAllocation extends pulumi.CustomResource {
     /**
      * The VirtualNetwork that using the prefix of this IpAllocation resource.
      */
-    public /*out*/ readonly virtualNetwork!: pulumi.Output<types.outputs.network.v20230401.SubResourceResponse>;
+    public /*out*/ readonly virtualNetwork!: pulumi.Output<types.outputs.SubResourceResponse>;
 
     /**
      * Create a IpAllocation resource with the given unique name, arguments, and options.
@@ -165,7 +165,7 @@ export interface IpAllocationArgs {
     /**
      * The address prefix Type for the IpAllocation.
      */
-    prefixType?: pulumi.Input<string | types.enums.v20230401.IPVersion>;
+    prefixType?: pulumi.Input<string | types.enums.IPVersion>;
     /**
      * The name of the resource group.
      */
@@ -177,5 +177,5 @@ export interface IpAllocationArgs {
     /**
      * The type for the IpAllocation.
      */
-    type?: pulumi.Input<string | types.enums.v20230401.IpAllocationType>;
+    type?: pulumi.Input<string | types.enums.IpAllocationType>;
 }

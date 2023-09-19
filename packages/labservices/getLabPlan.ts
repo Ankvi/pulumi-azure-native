@@ -36,15 +36,15 @@ export interface GetLabPlanResult {
     /**
      * The default lab shutdown profile. This can be changed on a lab resource and only provides a default profile.
      */
-    readonly defaultAutoShutdownProfile?: types.outputs.labservices.AutoShutdownProfileResponse;
+    readonly defaultAutoShutdownProfile?: types.outputs.AutoShutdownProfileResponse;
     /**
      * The default lab connection profile. This can be changed on a lab resource and only provides a default profile.
      */
-    readonly defaultConnectionProfile?: types.outputs.labservices.ConnectionProfileResponse;
+    readonly defaultConnectionProfile?: types.outputs.ConnectionProfileResponse;
     /**
      * The lab plan network profile. To enforce lab network policies they must be defined here and cannot be changed when there are existing labs associated with this lab plan.
      */
-    readonly defaultNetworkProfile?: types.outputs.labservices.LabPlanNetworkProfileResponse;
+    readonly defaultNetworkProfile?: types.outputs.LabPlanNetworkProfileResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -52,7 +52,7 @@ export interface GetLabPlanResult {
     /**
      * Managed Identity Information
      */
-    readonly identity?: types.outputs.labservices.IdentityResponse;
+    readonly identity?: types.outputs.IdentityResponse;
     /**
      * Base Url of the lms instance this lab plan can link lab rosters against.
      */
@@ -76,11 +76,11 @@ export interface GetLabPlanResult {
     /**
      * Support contact information and instructions for users of the lab plan. This information is displayed to lab owners and virtual machine users for all labs in the lab plan.
      */
-    readonly supportInfo?: types.outputs.labservices.SupportInfoResponse;
+    readonly supportInfo?: types.outputs.SupportInfoResponse;
     /**
      * Metadata pertaining to creation and last modification of the lab plan.
      */
-    readonly systemData: types.outputs.labservices.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

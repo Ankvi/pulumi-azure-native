@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the details of the authorization server specified by its identifier.
  */
@@ -100,7 +100,7 @@ export interface GetAuthorizationServerResult {
     /**
      * Additional parameters required by the token endpoint of this authorization server represented as an array of JSON objects with name and value string properties, i.e. {"name" : "name value", "value": "a value"}.
      */
-    readonly tokenBodyParameters?: types.outputs.apimanagement.v20230301preview.TokenBodyParameterContractResponse[];
+    readonly tokenBodyParameters?: types.outputs.TokenBodyParameterContractResponse[];
     /**
      * OAuth token endpoint. Contains absolute URI to entity being referenced.
      */

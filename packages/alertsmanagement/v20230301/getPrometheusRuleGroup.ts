@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieve a Prometheus rule group definition.
  */
@@ -59,7 +59,7 @@ export interface GetPrometheusRuleGroupResult {
     /**
      * Defines the rules in the Prometheus rule group.
      */
-    readonly rules: types.outputs.alertsmanagement.v20230301.PrometheusRuleResponse[];
+    readonly rules: types.outputs.PrometheusRuleResponse[];
     /**
      * Target Azure Monitor workspaces resource ids. This api-version is currently limited to creating with one scope. This may change in future.
      */
@@ -67,7 +67,7 @@ export interface GetPrometheusRuleGroupResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.alertsmanagement.v20230301.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

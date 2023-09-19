@@ -67,7 +67,7 @@ export class Hunt extends pulumi.CustomResource {
     /**
      * Describes a user that the hunt is assigned to
      */
-    public readonly owner!: pulumi.Output<types.outputs.securityinsights.HuntOwnerResponse | undefined>;
+    public readonly owner!: pulumi.Output<types.outputs.HuntOwnerResponse | undefined>;
     /**
      * The status of the hunt.
      */
@@ -75,7 +75,7 @@ export class Hunt extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.securityinsights.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -175,7 +175,7 @@ export interface HuntArgs {
     /**
      * Describes a user that the hunt is assigned to
      */
-    owner?: pulumi.Input<types.inputs.securityinsights.HuntOwnerArgs>;
+    owner?: pulumi.Input<types.inputs.HuntOwnerArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

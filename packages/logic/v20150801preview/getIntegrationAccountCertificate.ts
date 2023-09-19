@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets an integration account certificate.
  */
@@ -45,7 +45,7 @@ export interface GetIntegrationAccountCertificateResult {
     /**
      * The key details in the key vault.
      */
-    readonly key?: types.outputs.logic.v20150801preview.KeyVaultKeyReferenceResponse;
+    readonly key?: types.outputs.KeyVaultKeyReferenceResponse;
     /**
      * The resource location.
      */

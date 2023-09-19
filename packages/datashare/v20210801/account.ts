@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An account data transfer object.
  */
@@ -38,7 +38,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * Identity Info on the Account
      */
-    public readonly identity!: pulumi.Output<types.outputs.datashare.v20210801.IdentityResponse>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityResponse>;
     /**
      * Location of the azure resource.
      */
@@ -54,7 +54,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * System Data of the Azure resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.datashare.v20210801.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Tags on the azure resource.
      */
@@ -131,7 +131,7 @@ export interface AccountArgs {
     /**
      * Identity Info on the Account
      */
-    identity: pulumi.Input<types.inputs.datashare.v20210801.IdentityArgs>;
+    identity: pulumi.Input<types.inputs.IdentityArgs>;
     /**
      * Location of the azure resource.
      */

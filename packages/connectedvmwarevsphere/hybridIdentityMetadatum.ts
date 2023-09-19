@@ -35,7 +35,7 @@ export class HybridIdentityMetadatum extends pulumi.CustomResource {
     /**
      * The identity of the resource.
      */
-    public /*out*/ readonly identity!: pulumi.Output<types.outputs.connectedvmwarevsphere.IdentityResponse>;
+    public /*out*/ readonly identity!: pulumi.Output<types.outputs.IdentityResponse>;
     /**
      * The name of the resource
      */
@@ -51,7 +51,7 @@ export class HybridIdentityMetadatum extends pulumi.CustomResource {
     /**
      * The system data.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.connectedvmwarevsphere.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

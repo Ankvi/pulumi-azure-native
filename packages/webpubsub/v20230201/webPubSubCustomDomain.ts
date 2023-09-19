@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A custom domain
  */
@@ -34,7 +34,7 @@ export class WebPubSubCustomDomain extends pulumi.CustomResource {
     /**
      * Reference to a resource.
      */
-    public readonly customCertificate!: pulumi.Output<types.outputs.webpubsub.v20230201.ResourceReferenceResponse>;
+    public readonly customCertificate!: pulumi.Output<types.outputs.ResourceReferenceResponse>;
     /**
      * The custom domain name.
      */
@@ -50,7 +50,7 @@ export class WebPubSubCustomDomain extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.webpubsub.v20230201.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource - e.g. "Microsoft.SignalRService/SignalR"
      */
@@ -109,7 +109,7 @@ export interface WebPubSubCustomDomainArgs {
     /**
      * Reference to a resource.
      */
-    customCertificate: pulumi.Input<types.inputs.webpubsub.v20230201.ResourceReferenceArgs>;
+    customCertificate: pulumi.Input<types.inputs.ResourceReferenceArgs>;
     /**
      * The custom domain name.
      */

@@ -48,7 +48,7 @@ export interface GetMyWorkbookResult {
     /**
      * Identity used for BYOS
      */
-    readonly identity?: types.outputs.insights.MyWorkbookManagedIdentityResponse;
+    readonly identity?: types.outputs.MyWorkbookManagedIdentityResponse;
     /**
      * The kind of workbook. Choices are user and shared.
      */
@@ -76,7 +76,7 @@ export interface GetMyWorkbookResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.insights.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags
      */

@@ -13,7 +13,7 @@ utilities.lazyLoad(exports, ["ServerKey"], () => require("./serverKey"));
 
 
 // Export enums:
-export * from "../types/enums/v20150501preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

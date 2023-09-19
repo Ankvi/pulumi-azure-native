@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents an ARM resource for /subscriptions/xxx/resourceGroups/xxx/providers/Microsoft.SecurityDevOps/gitHubConnectors.
  */
@@ -42,11 +42,11 @@ export class GitHubConnector extends pulumi.CustomResource {
     /**
      * Properties of the ARM resource for /subscriptions/xxx/resourceGroups/xxx/providers/Microsoft.SecurityDevOps/gitHubConnectors.
      */
-    public readonly properties!: pulumi.Output<types.outputs.securitydevops.v20220901preview.GitHubConnectorPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.GitHubConnectorPropertiesResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.securitydevops.v20220901preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -108,7 +108,7 @@ export interface GitHubConnectorArgs {
     /**
      * Properties of the ARM resource for /subscriptions/xxx/resourceGroups/xxx/providers/Microsoft.SecurityDevOps/gitHubConnectors.
      */
-    properties?: pulumi.Input<types.inputs.securitydevops.v20220901preview.GitHubConnectorPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.GitHubConnectorPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

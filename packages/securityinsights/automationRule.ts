@@ -34,11 +34,11 @@ export class AutomationRule extends pulumi.CustomResource {
     /**
      * The actions to execute when the automation rule is triggered.
      */
-    public readonly actions!: pulumi.Output<(types.outputs.securityinsights.AutomationRuleModifyPropertiesActionResponse | types.outputs.securityinsights.AutomationRuleRunPlaybookActionResponse)[]>;
+    public readonly actions!: pulumi.Output<(types.outputs.AutomationRuleModifyPropertiesActionResponse | types.outputs.AutomationRuleRunPlaybookActionResponse)[]>;
     /**
      * Information on the client (user or application) that made some action
      */
-    public /*out*/ readonly createdBy!: pulumi.Output<types.outputs.securityinsights.ClientInfoResponse>;
+    public /*out*/ readonly createdBy!: pulumi.Output<types.outputs.ClientInfoResponse>;
     /**
      * The time the automation rule was created.
      */
@@ -54,7 +54,7 @@ export class AutomationRule extends pulumi.CustomResource {
     /**
      * Information on the client (user or application) that made some action
      */
-    public /*out*/ readonly lastModifiedBy!: pulumi.Output<types.outputs.securityinsights.ClientInfoResponse>;
+    public /*out*/ readonly lastModifiedBy!: pulumi.Output<types.outputs.ClientInfoResponse>;
     /**
      * The last time the automation rule was updated.
      */
@@ -70,11 +70,11 @@ export class AutomationRule extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.securityinsights.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Describes automation rule triggering logic.
      */
-    public readonly triggeringLogic!: pulumi.Output<types.outputs.securityinsights.AutomationRuleTriggeringLogicResponse>;
+    public readonly triggeringLogic!: pulumi.Output<types.outputs.AutomationRuleTriggeringLogicResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -152,7 +152,7 @@ export interface AutomationRuleArgs {
     /**
      * The actions to execute when the automation rule is triggered.
      */
-    actions: pulumi.Input<pulumi.Input<types.inputs.securityinsights.AutomationRuleModifyPropertiesActionArgs | types.inputs.securityinsights.AutomationRuleRunPlaybookActionArgs>[]>;
+    actions: pulumi.Input<pulumi.Input<types.inputs.AutomationRuleModifyPropertiesActionArgs | types.inputs.AutomationRuleRunPlaybookActionArgs>[]>;
     /**
      * Automation rule ID
      */
@@ -172,7 +172,7 @@ export interface AutomationRuleArgs {
     /**
      * Describes automation rule triggering logic.
      */
-    triggeringLogic: pulumi.Input<types.inputs.securityinsights.AutomationRuleTriggeringLogicArgs>;
+    triggeringLogic: pulumi.Input<types.inputs.AutomationRuleTriggeringLogicArgs>;
     /**
      * The name of the workspace.
      */

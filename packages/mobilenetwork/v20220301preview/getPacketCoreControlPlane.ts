@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets information about the specified packet core control plane.
  */
@@ -31,7 +31,7 @@ export interface GetPacketCoreControlPlaneResult {
     /**
      * The control plane interface on the access network. In 5G networks this is called as N2 interface whereas in 4G networks this is called as S1-MME interface.
      */
-    readonly controlPlaneAccessInterface: types.outputs.mobilenetwork.v20220301preview.InterfacePropertiesResponse;
+    readonly controlPlaneAccessInterface: types.outputs.InterfacePropertiesResponse;
     /**
      * The core network technology generation.
      */
@@ -51,7 +51,7 @@ export interface GetPacketCoreControlPlaneResult {
     /**
      * Azure ARC custom location where the packet core is deployed.
      */
-    readonly customLocation?: types.outputs.mobilenetwork.v20220301preview.CustomLocationResourceIdResponse;
+    readonly customLocation?: types.outputs.CustomLocationResourceIdResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -75,7 +75,7 @@ export interface GetPacketCoreControlPlaneResult {
     /**
      * Mobile network that this packet core control plane belongs to
      */
-    readonly mobileNetwork: types.outputs.mobilenetwork.v20220301preview.MobileNetworkResourceIdResponse;
+    readonly mobileNetwork: types.outputs.MobileNetworkResourceIdResponse;
     /**
      * The name of the resource
      */
@@ -87,7 +87,7 @@ export interface GetPacketCoreControlPlaneResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.mobilenetwork.v20220301preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

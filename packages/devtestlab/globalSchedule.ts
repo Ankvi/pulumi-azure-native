@@ -39,11 +39,11 @@ export class GlobalSchedule extends pulumi.CustomResource {
     /**
      * If the schedule will occur once each day of the week, specify the daily recurrence.
      */
-    public readonly dailyRecurrence!: pulumi.Output<types.outputs.devtestlab.DayDetailsResponse | undefined>;
+    public readonly dailyRecurrence!: pulumi.Output<types.outputs.DayDetailsResponse | undefined>;
     /**
      * If the schedule will occur multiple times a day, specify the hourly recurrence.
      */
-    public readonly hourlyRecurrence!: pulumi.Output<types.outputs.devtestlab.HourDetailsResponse | undefined>;
+    public readonly hourlyRecurrence!: pulumi.Output<types.outputs.HourDetailsResponse | undefined>;
     /**
      * The location of the resource.
      */
@@ -55,7 +55,7 @@ export class GlobalSchedule extends pulumi.CustomResource {
     /**
      * Notification settings.
      */
-    public readonly notificationSettings!: pulumi.Output<types.outputs.devtestlab.NotificationSettingsResponse | undefined>;
+    public readonly notificationSettings!: pulumi.Output<types.outputs.NotificationSettingsResponse | undefined>;
     /**
      * The provisioning status of the resource.
      */
@@ -91,7 +91,7 @@ export class GlobalSchedule extends pulumi.CustomResource {
     /**
      * If the schedule will occur only some days of the week, specify the weekly recurrence.
      */
-    public readonly weeklyRecurrence!: pulumi.Output<types.outputs.devtestlab.WeekDetailsResponse | undefined>;
+    public readonly weeklyRecurrence!: pulumi.Output<types.outputs.WeekDetailsResponse | undefined>;
 
     /**
      * Create a GlobalSchedule resource with the given unique name, arguments, and options.
@@ -111,7 +111,7 @@ export class GlobalSchedule extends pulumi.CustomResource {
             resourceInputs["hourlyRecurrence"] = args ? args.hourlyRecurrence : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["notificationSettings"] = args ? (args.notificationSettings ? pulumi.output(args.notificationSettings).apply(types.inputs.devtestlab.notificationSettingsArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["notificationSettings"] = args ? (args.notificationSettings ? pulumi.output(args.notificationSettings).apply(types.inputs.notificationSettingsArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["status"] = (args ? args.status : undefined) ?? "Disabled";
             resourceInputs["tags"] = args ? args.tags : undefined;
@@ -154,11 +154,11 @@ export interface GlobalScheduleArgs {
     /**
      * If the schedule will occur once each day of the week, specify the daily recurrence.
      */
-    dailyRecurrence?: pulumi.Input<types.inputs.devtestlab.DayDetailsArgs>;
+    dailyRecurrence?: pulumi.Input<types.inputs.DayDetailsArgs>;
     /**
      * If the schedule will occur multiple times a day, specify the hourly recurrence.
      */
-    hourlyRecurrence?: pulumi.Input<types.inputs.devtestlab.HourDetailsArgs>;
+    hourlyRecurrence?: pulumi.Input<types.inputs.HourDetailsArgs>;
     /**
      * The location of the resource.
      */
@@ -170,7 +170,7 @@ export interface GlobalScheduleArgs {
     /**
      * Notification settings.
      */
-    notificationSettings?: pulumi.Input<types.inputs.devtestlab.NotificationSettingsArgs>;
+    notificationSettings?: pulumi.Input<types.inputs.NotificationSettingsArgs>;
     /**
      * The name of the resource group.
      */
@@ -198,5 +198,5 @@ export interface GlobalScheduleArgs {
     /**
      * If the schedule will occur only some days of the week, specify the weekly recurrence.
      */
-    weeklyRecurrence?: pulumi.Input<types.inputs.devtestlab.WeekDetailsArgs>;
+    weeklyRecurrence?: pulumi.Input<types.inputs.WeekDetailsArgs>;
 }

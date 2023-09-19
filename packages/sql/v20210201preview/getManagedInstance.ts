@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a managed instance.
  */
@@ -40,7 +40,7 @@ export interface GetManagedInstanceResult {
     /**
      * The Azure Active Directory administrator of the server.
      */
-    readonly administrators?: types.outputs.sql.v20210201preview.ManagedInstanceExternalAdministratorResponse;
+    readonly administrators?: types.outputs.ManagedInstanceExternalAdministratorResponse;
     /**
      * Collation of the managed instance.
      */
@@ -60,7 +60,7 @@ export interface GetManagedInstanceResult {
     /**
      * The Azure Active Directory identity of the managed instance.
      */
-    readonly identity?: types.outputs.sql.v20210201preview.ResourceIdentityResponse;
+    readonly identity?: types.outputs.ResourceIdentityResponse;
     /**
      * The Id of the instance pool this managed server belongs to.
      */
@@ -96,7 +96,7 @@ export interface GetManagedInstanceResult {
     /**
      * List of private endpoint connections on a managed instance.
      */
-    readonly privateEndpointConnections: types.outputs.sql.v20210201preview.ManagedInstancePecPropertyResponse[];
+    readonly privateEndpointConnections: types.outputs.ManagedInstancePecPropertyResponse[];
     readonly provisioningState: string;
     /**
      * Connection type used for connecting to the instance.
@@ -109,7 +109,7 @@ export interface GetManagedInstanceResult {
     /**
      * Managed instance SKU. Allowed values for sku.name: GP_Gen4, GP_Gen5, BC_Gen4, BC_Gen5
      */
-    readonly sku?: types.outputs.sql.v20210201preview.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * The state of the managed instance.
      */

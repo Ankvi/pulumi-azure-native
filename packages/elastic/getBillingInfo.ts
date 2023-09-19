@@ -32,11 +32,11 @@ export interface GetBillingInfoResult {
     /**
      * Marketplace Subscription details
      */
-    readonly marketplaceSaasInfo?: types.outputs.elastic.MarketplaceSaaSInfoResponse;
+    readonly marketplaceSaasInfo?: types.outputs.MarketplaceSaaSInfoResponse;
     /**
      * Partner Billing Entity details: Organization Info
      */
-    readonly partnerBillingEntity?: types.outputs.elastic.PartnerBillingEntityResponse;
+    readonly partnerBillingEntity?: types.outputs.PartnerBillingEntityResponse;
 }
 /**
  * Marketplace Subscription and Organization details to which resource gets billed into.

@@ -50,8 +50,8 @@ export interface GetMigrateAgentResult {
     /**
      * MigrateAgent model properties.
      */
-    readonly properties: types.outputs.migrate.MigrateAgentModelPropertiesResponse;
-    readonly systemData: types.outputs.migrate.MigrateAgentModelResponseSystemData;
+    readonly properties: types.outputs.MigrateAgentModelPropertiesResponse;
+    readonly systemData: types.outputs.MigrateAgentModelResponseSystemData;
     /**
      * Gets or sets the resource tags.
      */

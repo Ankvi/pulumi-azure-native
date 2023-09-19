@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a blueprint assignment.
  */
@@ -47,7 +47,7 @@ export interface GetAssignmentResult {
     /**
      * Managed identity for this blueprint assignment.
      */
-    readonly identity: types.outputs.blueprint.v20181101preview.ManagedServiceIdentityResponse;
+    readonly identity: types.outputs.ManagedServiceIdentityResponse;
     /**
      * The location of this blueprint assignment.
      */
@@ -55,7 +55,7 @@ export interface GetAssignmentResult {
     /**
      * Defines how resources deployed by a blueprint assignment are locked.
      */
-    readonly locks?: types.outputs.blueprint.v20181101preview.AssignmentLockSettingsResponse;
+    readonly locks?: types.outputs.AssignmentLockSettingsResponse;
     /**
      * Name of this resource.
      */
@@ -63,7 +63,7 @@ export interface GetAssignmentResult {
     /**
      * Blueprint assignment parameter values.
      */
-    readonly parameters: {[key: string]: types.outputs.blueprint.v20181101preview.ParameterValueResponse};
+    readonly parameters: {[key: string]: types.outputs.ParameterValueResponse};
     /**
      * State of the blueprint assignment.
      */
@@ -71,7 +71,7 @@ export interface GetAssignmentResult {
     /**
      * Names and locations of resource group placeholders.
      */
-    readonly resourceGroups: {[key: string]: types.outputs.blueprint.v20181101preview.ResourceGroupValueResponse};
+    readonly resourceGroups: {[key: string]: types.outputs.ResourceGroupValueResponse};
     /**
      * The target subscription scope of the blueprint assignment (format: '/subscriptions/{subscriptionId}'). For management group level assignments, the property is required.
      */
@@ -79,7 +79,7 @@ export interface GetAssignmentResult {
     /**
      * Status of blueprint assignment. This field is readonly.
      */
-    readonly status: types.outputs.blueprint.v20181101preview.AssignmentStatusResponse;
+    readonly status: types.outputs.AssignmentStatusResponse;
     /**
      * Type of this resource.
      */

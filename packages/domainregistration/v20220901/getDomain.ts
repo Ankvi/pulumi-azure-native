@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Description for Get a domain.
  */
@@ -72,7 +72,7 @@ export interface GetDomainResult {
     /**
      * All hostnames derived from the domain and assigned to Azure resources.
      */
-    readonly managedHostNames: types.outputs.domainregistration.v20220901.HostNameResponse[];
+    readonly managedHostNames: types.outputs.HostNameResponse[];
     /**
      * Resource Name.
      */

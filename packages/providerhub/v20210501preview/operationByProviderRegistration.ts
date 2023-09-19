@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 export class OperationByProviderRegistration extends pulumi.CustomResource {
     /**
      * Get an existing OperationByProviderRegistration resource's state with the given name, ID, and optional extra
@@ -32,7 +32,7 @@ export class OperationByProviderRegistration extends pulumi.CustomResource {
     /**
      * Display information of the operation.
      */
-    public /*out*/ readonly display!: pulumi.Output<types.outputs.providerhub.v20210501preview.OperationsDefinitionResponseDisplay>;
+    public /*out*/ readonly display!: pulumi.Output<types.outputs.OperationsDefinitionResponseDisplay>;
     /**
      * Indicates whether the operation applies to data-plane.
      */
@@ -94,7 +94,7 @@ export class OperationByProviderRegistration extends pulumi.CustomResource {
  * The set of arguments for constructing a OperationByProviderRegistration resource.
  */
 export interface OperationByProviderRegistrationArgs {
-    contents: pulumi.Input<pulumi.Input<types.inputs.providerhub.v20210501preview.OperationsDefinitionArgs>[]>;
+    contents: pulumi.Input<pulumi.Input<types.inputs.OperationsDefinitionArgs>[]>;
     /**
      * The name of the resource provider hosted within ProviderHub.
      */

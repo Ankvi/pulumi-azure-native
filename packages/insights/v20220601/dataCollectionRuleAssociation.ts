@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Definition of generic ARM proxy resource.
  */
@@ -50,7 +50,7 @@ export class DataCollectionRuleAssociation extends pulumi.CustomResource {
     /**
      * Metadata about the resource
      */
-    public /*out*/ readonly metadata!: pulumi.Output<types.outputs.insights.v20220601.DataCollectionRuleAssociationResponseMetadata>;
+    public /*out*/ readonly metadata!: pulumi.Output<types.outputs.DataCollectionRuleAssociationResponseMetadata>;
     /**
      * The name of the resource.
      */
@@ -62,7 +62,7 @@ export class DataCollectionRuleAssociation extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.insights.v20220601.DataCollectionRuleAssociationProxyOnlyResourceResponseSystemData>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.DataCollectionRuleAssociationProxyOnlyResourceResponseSystemData>;
     /**
      * The type of the resource.
      */

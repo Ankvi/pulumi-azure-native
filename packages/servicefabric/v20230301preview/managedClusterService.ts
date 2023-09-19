@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The service resource.
  */
@@ -42,11 +42,11 @@ export class ManagedClusterService extends pulumi.CustomResource {
     /**
      * The service resource properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.servicefabric.v20230301preview.StatefulServicePropertiesResponse | types.outputs.servicefabric.v20230301preview.StatelessServicePropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.StatefulServicePropertiesResponse | types.outputs.StatelessServicePropertiesResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.servicefabric.v20230301preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Azure resource tags.
      */
@@ -120,7 +120,7 @@ export interface ManagedClusterServiceArgs {
     /**
      * The service resource properties.
      */
-    properties?: pulumi.Input<types.inputs.servicefabric.v20230301preview.StatefulServicePropertiesArgs | types.inputs.servicefabric.v20230301preview.StatelessServicePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.StatefulServicePropertiesArgs | types.inputs.StatelessServicePropertiesArgs>;
     /**
      * The name of the resource group.
      */

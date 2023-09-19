@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The integration account schema.
  */
@@ -42,7 +42,7 @@ export class Schema extends pulumi.CustomResource {
     /**
      * The content link.
      */
-    public /*out*/ readonly contentLink!: pulumi.Output<types.outputs.logic.v20160601.ContentLinkResponse>;
+    public /*out*/ readonly contentLink!: pulumi.Output<types.outputs.ContentLinkResponse>;
     /**
      * The content type.
      */
@@ -191,7 +191,7 @@ export interface SchemaArgs {
     /**
      * The schema type.
      */
-    schemaType: pulumi.Input<types.enums.v20160601.SchemaType>;
+    schemaType: pulumi.Input<types.enums.SchemaType>;
     /**
      * The resource tags.
      */

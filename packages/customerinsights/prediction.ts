@@ -47,7 +47,7 @@ export class Prediction extends pulumi.CustomResource {
     /**
      * The prediction grades.
      */
-    public readonly grades!: pulumi.Output<types.outputs.customerinsights.PredictionResponseGrades[] | undefined>;
+    public readonly grades!: pulumi.Output<types.outputs.PredictionResponseGrades[] | undefined>;
     /**
      * Interaction types involved in the prediction.
      */
@@ -63,7 +63,7 @@ export class Prediction extends pulumi.CustomResource {
     /**
      * Definition of the link mapping of prediction.
      */
-    public readonly mappings!: pulumi.Output<types.outputs.customerinsights.PredictionResponseMappings>;
+    public readonly mappings!: pulumi.Output<types.outputs.PredictionResponseMappings>;
     /**
      * Resource name.
      */
@@ -99,7 +99,7 @@ export class Prediction extends pulumi.CustomResource {
     /**
      * System generated entities.
      */
-    public /*out*/ readonly systemGeneratedEntities!: pulumi.Output<types.outputs.customerinsights.PredictionResponseSystemGeneratedEntities>;
+    public /*out*/ readonly systemGeneratedEntities!: pulumi.Output<types.outputs.PredictionResponseSystemGeneratedEntities>;
     /**
      * The hub name.
      */
@@ -215,7 +215,7 @@ export interface PredictionArgs {
     /**
      * The prediction grades.
      */
-    grades?: pulumi.Input<pulumi.Input<types.inputs.customerinsights.PredictionGradesArgs>[]>;
+    grades?: pulumi.Input<pulumi.Input<types.inputs.PredictionGradesArgs>[]>;
     /**
      * The name of the hub.
      */
@@ -235,7 +235,7 @@ export interface PredictionArgs {
     /**
      * Definition of the link mapping of prediction.
      */
-    mappings: pulumi.Input<types.inputs.customerinsights.PredictionMappingsArgs>;
+    mappings: pulumi.Input<types.inputs.PredictionMappingsArgs>;
     /**
      * Negative outcome expression.
      */

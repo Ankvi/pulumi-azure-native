@@ -52,7 +52,7 @@ export interface GetDataCollectionRuleAssociationResult {
     /**
      * Metadata about the resource
      */
-    readonly metadata: types.outputs.insights.DataCollectionRuleAssociationResponseMetadata;
+    readonly metadata: types.outputs.DataCollectionRuleAssociationResponseMetadata;
     /**
      * The name of the resource.
      */
@@ -64,7 +64,7 @@ export interface GetDataCollectionRuleAssociationResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.insights.DataCollectionRuleAssociationProxyOnlyResourceResponseSystemData;
+    readonly systemData: types.outputs.DataCollectionRuleAssociationProxyOnlyResourceResponseSystemData;
     /**
      * The type of the resource.
      */

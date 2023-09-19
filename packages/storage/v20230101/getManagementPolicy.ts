@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the managementpolicy associated with the specified storage account.
  */
@@ -48,7 +48,7 @@ export interface GetManagementPolicyResult {
     /**
      * The Storage Account ManagementPolicy, in JSON format. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
      */
-    readonly policy: types.outputs.storage.v20230101.ManagementPolicySchemaResponse;
+    readonly policy: types.outputs.ManagementPolicySchemaResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

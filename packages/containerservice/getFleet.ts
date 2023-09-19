@@ -36,7 +36,7 @@ export interface GetFleetResult {
     /**
      * The FleetHubProfile configures the Fleet's hub.
      */
-    readonly hubProfile?: types.outputs.containerservice.FleetHubProfileResponse;
+    readonly hubProfile?: types.outputs.FleetHubProfileResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -56,7 +56,7 @@ export interface GetFleetResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.containerservice.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

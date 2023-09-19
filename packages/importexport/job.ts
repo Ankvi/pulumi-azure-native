@@ -35,7 +35,7 @@ export class Job extends pulumi.CustomResource {
     /**
      * Specifies the job identity details
      */
-    public /*out*/ readonly identity!: pulumi.Output<types.outputs.importexport.IdentityDetailsResponse | undefined>;
+    public /*out*/ readonly identity!: pulumi.Output<types.outputs.IdentityDetailsResponse | undefined>;
     /**
      * Specifies the Azure location where the job is created.
      */
@@ -47,11 +47,11 @@ export class Job extends pulumi.CustomResource {
     /**
      * Specifies the job properties
      */
-    public readonly properties!: pulumi.Output<types.outputs.importexport.JobDetailsResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.JobDetailsResponse>;
     /**
      * SystemData of ImportExport Jobs.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.importexport.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Specifies the tags that are assigned to the job.
      */
@@ -77,7 +77,7 @@ export class Job extends pulumi.CustomResource {
             }
             resourceInputs["jobName"] = args ? args.jobName : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.importexport.jobDetailsArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.jobDetailsArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["identity"] = undefined /*out*/;
@@ -115,7 +115,7 @@ export interface JobArgs {
     /**
      * Specifies the job properties
      */
-    properties?: pulumi.Input<types.inputs.importexport.JobDetailsArgs>;
+    properties?: pulumi.Input<types.inputs.JobDetailsArgs>;
     /**
      * The resource group name uniquely identifies the resource group within the user subscription.
      */

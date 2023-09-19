@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a gallery image
  */
@@ -39,7 +39,7 @@ export interface GetGalleryImageResult {
     /**
      * The extendedLocation of the resource.
      */
-    readonly extendedLocation?: types.outputs.azurestackhci.v20230701preview.ExtendedLocationResponse;
+    readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
     /**
      * The hypervisor generation of the Virtual Machine [V1, V2]
      */
@@ -51,7 +51,7 @@ export interface GetGalleryImageResult {
     /**
      * This is the gallery image definition identifier.
      */
-    readonly identifier?: types.outputs.azurestackhci.v20230701preview.GalleryImageIdentifierResponse;
+    readonly identifier?: types.outputs.GalleryImageIdentifierResponse;
     /**
      * location of the image the gallery image should be created from
      */
@@ -75,11 +75,11 @@ export interface GetGalleryImageResult {
     /**
      * The observed state of gallery images
      */
-    readonly status: types.outputs.azurestackhci.v20230701preview.GalleryImageStatusResponse;
+    readonly status: types.outputs.GalleryImageStatusResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.azurestackhci.v20230701preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -91,7 +91,7 @@ export interface GetGalleryImageResult {
     /**
      * Specifies information about the gallery image version that you want to create or update.
      */
-    readonly version?: types.outputs.azurestackhci.v20230701preview.GalleryImageVersionResponse;
+    readonly version?: types.outputs.GalleryImageVersionResponse;
 }
 /**
  * Gets a gallery image

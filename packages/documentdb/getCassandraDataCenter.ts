@@ -45,7 +45,7 @@ export interface GetCassandraDataCenterResult {
     /**
      * Properties of a managed Cassandra data center.
      */
-    readonly properties: types.outputs.documentdb.DataCenterResourceResponseProperties;
+    readonly properties: types.outputs.DataCenterResourceResponseProperties;
     /**
      * The type of Azure resource.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a classic metric alert rule
  */
@@ -31,15 +31,15 @@ export interface GetAlertRuleResult {
     /**
      * action that is performed when the alert rule becomes active, and when an alert condition is resolved.
      */
-    readonly action?: types.outputs.insights.v20160301.RuleEmailActionResponse | types.outputs.insights.v20160301.RuleWebhookActionResponse;
+    readonly action?: types.outputs.RuleEmailActionResponse | types.outputs.RuleWebhookActionResponse;
     /**
      * the array of actions that are performed when the alert rule becomes active, and when an alert condition is resolved.
      */
-    readonly actions?: (types.outputs.insights.v20160301.RuleEmailActionResponse | types.outputs.insights.v20160301.RuleWebhookActionResponse)[];
+    readonly actions?: (types.outputs.RuleEmailActionResponse | types.outputs.RuleWebhookActionResponse)[];
     /**
      * the condition that results in the alert rule being activated.
      */
-    readonly condition: types.outputs.insights.v20160301.LocationThresholdRuleConditionResponse | types.outputs.insights.v20160301.ManagementEventRuleConditionResponse | types.outputs.insights.v20160301.ThresholdRuleConditionResponse;
+    readonly condition: types.outputs.LocationThresholdRuleConditionResponse | types.outputs.ManagementEventRuleConditionResponse | types.outputs.ThresholdRuleConditionResponse;
     /**
      * the description of the alert rule that will be included in the alert email.
      */

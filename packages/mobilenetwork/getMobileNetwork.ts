@@ -48,7 +48,7 @@ export interface GetMobileNetworkResult {
     /**
      * The unique public land mobile network identifier for the network. This is made up of the mobile country code and mobile network code, as defined in https://www.itu.int/rec/T-REC-E.212. The values 001-01 and 001-001 can be used for testing and the values 999-99 and 999-999 can be used on internal private networks.
      */
-    readonly publicLandMobileNetworkIdentifier: types.outputs.mobilenetwork.PlmnIdResponse;
+    readonly publicLandMobileNetworkIdentifier: types.outputs.PlmnIdResponse;
     /**
      * The mobile network resource identifier
      */
@@ -56,7 +56,7 @@ export interface GetMobileNetworkResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.mobilenetwork.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

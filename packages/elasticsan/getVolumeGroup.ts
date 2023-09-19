@@ -49,7 +49,7 @@ export interface GetVolumeGroupResult {
     /**
      * A collection of rules governing the accessibility from specific network locations.
      */
-    readonly networkAcls?: types.outputs.elasticsan.NetworkRuleSetResponse;
+    readonly networkAcls?: types.outputs.NetworkRuleSetResponse;
     /**
      * Type of storage target
      */
@@ -61,7 +61,7 @@ export interface GetVolumeGroupResult {
     /**
      * Resource metadata required by ARM RPC
      */
-    readonly systemData: types.outputs.elasticsan.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Azure resource tags.
      */

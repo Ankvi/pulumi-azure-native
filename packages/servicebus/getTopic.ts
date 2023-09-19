@@ -45,7 +45,7 @@ export interface GetTopicResult {
     /**
      * Message count details
      */
-    readonly countDetails: types.outputs.servicebus.MessageCountDetailsResponse;
+    readonly countDetails: types.outputs.MessageCountDetailsResponse;
     /**
      * Exact time the message was created.
      */
@@ -113,7 +113,7 @@ export interface GetTopicResult {
     /**
      * The system meta data relating to this resource.
      */
-    readonly systemData: types.outputs.servicebus.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
      */

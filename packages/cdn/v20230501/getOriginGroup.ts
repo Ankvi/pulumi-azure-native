@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets an existing origin group within an endpoint.
  */
@@ -41,7 +41,7 @@ export interface GetOriginGroupResult {
     /**
      * Health probe settings to the origin that is used to determine the health of the origin.
      */
-    readonly healthProbeSettings?: types.outputs.cdn.v20230501.HealthProbeParametersResponse;
+    readonly healthProbeSettings?: types.outputs.HealthProbeParametersResponse;
     /**
      * Resource ID.
      */
@@ -53,7 +53,7 @@ export interface GetOriginGroupResult {
     /**
      * The source of the content being delivered via CDN within given origin group.
      */
-    readonly origins: types.outputs.cdn.v20230501.ResourceReferenceResponse[];
+    readonly origins: types.outputs.ResourceReferenceResponse[];
     /**
      * Provisioning status of the origin group.
      */
@@ -65,11 +65,11 @@ export interface GetOriginGroupResult {
     /**
      * The JSON object that contains the properties to determine origin health using real requests/responses. This property is currently not supported.
      */
-    readonly responseBasedOriginErrorDetectionSettings?: types.outputs.cdn.v20230501.ResponseBasedOriginErrorDetectionParametersResponse;
+    readonly responseBasedOriginErrorDetectionSettings?: types.outputs.ResponseBasedOriginErrorDetectionParametersResponse;
     /**
      * Read only system data
      */
-    readonly systemData: types.outputs.cdn.v20230501.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Time in minutes to shift the traffic to the endpoint gradually when an unhealthy endpoint comes healthy or a new endpoint is added. Default is 10 mins. This property is currently not supported.
      */

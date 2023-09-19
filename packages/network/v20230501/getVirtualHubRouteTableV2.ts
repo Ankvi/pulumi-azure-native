@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves the details of a VirtualHubRouteTableV2.
  */
@@ -56,7 +56,7 @@ export interface GetVirtualHubRouteTableV2Result {
     /**
      * List of all routes.
      */
-    readonly routes?: types.outputs.network.v20230501.VirtualHubRouteV2Response[];
+    readonly routes?: types.outputs.VirtualHubRouteV2Response[];
 }
 /**
  * Retrieves the details of a VirtualHubRouteTableV2.

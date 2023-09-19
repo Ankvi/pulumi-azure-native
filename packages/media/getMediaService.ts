@@ -32,7 +32,7 @@ export interface GetMediaServiceResult {
     /**
      * The account encryption properties.
      */
-    readonly encryption?: types.outputs.media.AccountEncryptionResponse;
+    readonly encryption?: types.outputs.AccountEncryptionResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -40,11 +40,11 @@ export interface GetMediaServiceResult {
     /**
      * The Managed Identity for the Media Services account.
      */
-    readonly identity?: types.outputs.media.MediaServiceIdentityResponse;
+    readonly identity?: types.outputs.MediaServiceIdentityResponse;
     /**
      * The Key Delivery properties for Media Services account.
      */
-    readonly keyDelivery?: types.outputs.media.KeyDeliveryResponse;
+    readonly keyDelivery?: types.outputs.KeyDeliveryResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -64,7 +64,7 @@ export interface GetMediaServiceResult {
     /**
      * The Private Endpoint Connections created for the Media Service account.
      */
-    readonly privateEndpointConnections: types.outputs.media.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections: types.outputs.PrivateEndpointConnectionResponse[];
     /**
      * Provisioning state of the Media Services account.
      */
@@ -76,12 +76,12 @@ export interface GetMediaServiceResult {
     /**
      * The storage accounts for this resource.
      */
-    readonly storageAccounts?: types.outputs.media.StorageAccountResponse[];
+    readonly storageAccounts?: types.outputs.StorageAccountResponse[];
     readonly storageAuthentication?: string;
     /**
      * The system metadata relating to this resource.
      */
-    readonly systemData: types.outputs.media.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

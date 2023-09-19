@@ -46,7 +46,7 @@ export interface GetModelVersionResult {
     /**
      * [Required] Additional attributes of the entity.
      */
-    readonly modelVersionProperties: types.outputs.machinelearningservices.ModelVersionResponse;
+    readonly modelVersionProperties: types.outputs.ModelVersionResponse;
     /**
      * The name of the resource
      */
@@ -54,7 +54,7 @@ export interface GetModelVersionResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.machinelearningservices.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

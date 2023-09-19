@@ -57,7 +57,7 @@ export interface GetRelationshipLinkResult {
     /**
      * The mappings between Interaction and Relationship fields.
      */
-    readonly mappings?: types.outputs.customerinsights.RelationshipLinkFieldMappingResponse[];
+    readonly mappings?: types.outputs.RelationshipLinkFieldMappingResponse[];
     /**
      * Resource name.
      */
@@ -65,7 +65,7 @@ export interface GetRelationshipLinkResult {
     /**
      * The property references for the Profile of the Relationship.
      */
-    readonly profilePropertyReferences: types.outputs.customerinsights.ParticipantProfilePropertyReferenceResponse[];
+    readonly profilePropertyReferences: types.outputs.ParticipantProfilePropertyReferenceResponse[];
     /**
      * Provisioning state.
      */
@@ -73,7 +73,7 @@ export interface GetRelationshipLinkResult {
     /**
      * The property references for the Related Profile of the Relationship.
      */
-    readonly relatedProfilePropertyReferences: types.outputs.customerinsights.ParticipantProfilePropertyReferenceResponse[];
+    readonly relatedProfilePropertyReferences: types.outputs.ParticipantProfilePropertyReferenceResponse[];
     /**
      * The relationship guid id.
      */

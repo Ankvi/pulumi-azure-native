@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Configuration of App Service site logs.
  */
@@ -34,19 +34,19 @@ export class WebAppDiagnosticLogsConfiguration extends pulumi.CustomResource {
     /**
      * Application logs configuration.
      */
-    public readonly applicationLogs!: pulumi.Output<types.outputs.web.v20201001.ApplicationLogsConfigResponse | undefined>;
+    public readonly applicationLogs!: pulumi.Output<types.outputs.ApplicationLogsConfigResponse | undefined>;
     /**
      * Detailed error messages configuration.
      */
-    public readonly detailedErrorMessages!: pulumi.Output<types.outputs.web.v20201001.EnabledConfigResponse | undefined>;
+    public readonly detailedErrorMessages!: pulumi.Output<types.outputs.EnabledConfigResponse | undefined>;
     /**
      * Failed requests tracing configuration.
      */
-    public readonly failedRequestsTracing!: pulumi.Output<types.outputs.web.v20201001.EnabledConfigResponse | undefined>;
+    public readonly failedRequestsTracing!: pulumi.Output<types.outputs.EnabledConfigResponse | undefined>;
     /**
      * HTTP logs configuration.
      */
-    public readonly httpLogs!: pulumi.Output<types.outputs.web.v20201001.HttpLogsConfigResponse | undefined>;
+    public readonly httpLogs!: pulumi.Output<types.outputs.HttpLogsConfigResponse | undefined>;
     /**
      * Kind of resource.
      */
@@ -58,7 +58,7 @@ export class WebAppDiagnosticLogsConfiguration extends pulumi.CustomResource {
     /**
      * The system metadata relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.web.v20201001.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource type.
      */
@@ -81,7 +81,7 @@ export class WebAppDiagnosticLogsConfiguration extends pulumi.CustomResource {
             if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["applicationLogs"] = args ? (args.applicationLogs ? pulumi.output(args.applicationLogs).apply(types.inputs.web.v20201001.applicationLogsConfigArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["applicationLogs"] = args ? (args.applicationLogs ? pulumi.output(args.applicationLogs).apply(types.inputs.applicationLogsConfigArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["detailedErrorMessages"] = args ? args.detailedErrorMessages : undefined;
             resourceInputs["failedRequestsTracing"] = args ? args.failedRequestsTracing : undefined;
             resourceInputs["httpLogs"] = args ? args.httpLogs : undefined;
@@ -114,19 +114,19 @@ export interface WebAppDiagnosticLogsConfigurationArgs {
     /**
      * Application logs configuration.
      */
-    applicationLogs?: pulumi.Input<types.inputs.web.v20201001.ApplicationLogsConfigArgs>;
+    applicationLogs?: pulumi.Input<types.inputs.ApplicationLogsConfigArgs>;
     /**
      * Detailed error messages configuration.
      */
-    detailedErrorMessages?: pulumi.Input<types.inputs.web.v20201001.EnabledConfigArgs>;
+    detailedErrorMessages?: pulumi.Input<types.inputs.EnabledConfigArgs>;
     /**
      * Failed requests tracing configuration.
      */
-    failedRequestsTracing?: pulumi.Input<types.inputs.web.v20201001.EnabledConfigArgs>;
+    failedRequestsTracing?: pulumi.Input<types.inputs.EnabledConfigArgs>;
     /**
      * HTTP logs configuration.
      */
-    httpLogs?: pulumi.Input<types.inputs.web.v20201001.HttpLogsConfigArgs>;
+    httpLogs?: pulumi.Input<types.inputs.HttpLogsConfigArgs>;
     /**
      * Kind of resource.
      */

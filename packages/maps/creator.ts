@@ -43,7 +43,7 @@ export class Creator extends pulumi.CustomResource {
     /**
      * The Creator resource properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.maps.CreatorPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.CreatorPropertiesResponse>;
     /**
      * Resource tags.
      */
@@ -114,7 +114,7 @@ export interface CreatorArgs {
     /**
      * The Creator resource properties.
      */
-    properties: pulumi.Input<types.inputs.maps.CreatorPropertiesArgs>;
+    properties: pulumi.Input<types.inputs.CreatorPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 export function getBillingHubServiceFreeHourBalance(args: GetBillingHubServiceFreeHourBalanceArgs, opts?: pulumi.InvokeOptions): Promise<GetBillingHubServiceFreeHourBalanceResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -22,7 +22,7 @@ export interface GetBillingHubServiceFreeHourBalanceArgs {
 }
 
 export interface GetBillingHubServiceFreeHourBalanceResult {
-    readonly incrementEntries?: types.outputs.testbase.v20220401preview.BillingHubFreeHourIncrementEntryResponse[];
+    readonly incrementEntries?: types.outputs.BillingHubFreeHourIncrementEntryResponse[];
     readonly totalRemainingFreeHours?: number;
 }
 export function getBillingHubServiceFreeHourBalanceOutput(args: GetBillingHubServiceFreeHourBalanceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBillingHubServiceFreeHourBalanceResult> {

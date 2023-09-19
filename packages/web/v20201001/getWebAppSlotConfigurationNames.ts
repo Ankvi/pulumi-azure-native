@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the names of app settings and connection strings that stick to the slot (not swapped).
  */
@@ -55,7 +55,7 @@ export interface GetWebAppSlotConfigurationNamesResult {
     /**
      * The system metadata relating to this resource.
      */
-    readonly systemData: types.outputs.web.v20201001.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource type.
      */

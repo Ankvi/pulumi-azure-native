@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves the details of a virtual wan vpn gateway.
  */
@@ -31,11 +31,11 @@ export interface GetVpnGatewayResult {
     /**
      * Local network gateway's BGP speaker settings.
      */
-    readonly bgpSettings?: types.outputs.network.v20180701.BgpSettingsResponse;
+    readonly bgpSettings?: types.outputs.BgpSettingsResponse;
     /**
      * list of all vpn connections to the gateway.
      */
-    readonly connections?: types.outputs.network.v20180701.VpnConnectionResponse[];
+    readonly connections?: types.outputs.VpnConnectionResponse[];
     /**
      * Gets a unique read-only string that changes whenever the resource is updated.
      */
@@ -55,7 +55,7 @@ export interface GetVpnGatewayResult {
     /**
      * The policies applied to this vpn gateway.
      */
-    readonly policies?: types.outputs.network.v20180701.PoliciesResponse;
+    readonly policies?: types.outputs.PoliciesResponse;
     /**
      * The provisioning state of the resource.
      */
@@ -71,7 +71,7 @@ export interface GetVpnGatewayResult {
     /**
      * The VirtualHub to which the gateway belongs
      */
-    readonly virtualHub?: types.outputs.network.v20180701.SubResourceResponse;
+    readonly virtualHub?: types.outputs.SubResourceResponse;
 }
 /**
  * Retrieves the details of a virtual wan vpn gateway.

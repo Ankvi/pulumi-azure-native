@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The workflow type.
  */
@@ -34,7 +34,7 @@ export class Workflow extends pulumi.CustomResource {
     /**
      * The access control configuration.
      */
-    public readonly accessControl!: pulumi.Output<types.outputs.logic.v20190501.FlowAccessControlConfigurationResponse | undefined>;
+    public readonly accessControl!: pulumi.Output<types.outputs.FlowAccessControlConfigurationResponse | undefined>;
     /**
      * Gets the access endpoint.
      */
@@ -54,19 +54,19 @@ export class Workflow extends pulumi.CustomResource {
     /**
      * The endpoints configuration.
      */
-    public readonly endpointsConfiguration!: pulumi.Output<types.outputs.logic.v20190501.FlowEndpointsConfigurationResponse | undefined>;
+    public readonly endpointsConfiguration!: pulumi.Output<types.outputs.FlowEndpointsConfigurationResponse | undefined>;
     /**
      * Managed service identity properties.
      */
-    public readonly identity!: pulumi.Output<types.outputs.logic.v20190501.ManagedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * The integration account.
      */
-    public readonly integrationAccount!: pulumi.Output<types.outputs.logic.v20190501.ResourceReferenceResponse | undefined>;
+    public readonly integrationAccount!: pulumi.Output<types.outputs.ResourceReferenceResponse | undefined>;
     /**
      * The integration service environment.
      */
-    public readonly integrationServiceEnvironment!: pulumi.Output<types.outputs.logic.v20190501.ResourceReferenceResponse | undefined>;
+    public readonly integrationServiceEnvironment!: pulumi.Output<types.outputs.ResourceReferenceResponse | undefined>;
     /**
      * The resource location.
      */
@@ -78,7 +78,7 @@ export class Workflow extends pulumi.CustomResource {
     /**
      * The parameters.
      */
-    public readonly parameters!: pulumi.Output<{[key: string]: types.outputs.logic.v20190501.WorkflowParameterResponse} | undefined>;
+    public readonly parameters!: pulumi.Output<{[key: string]: types.outputs.WorkflowParameterResponse} | undefined>;
     /**
      * Gets the provisioning state.
      */
@@ -86,7 +86,7 @@ export class Workflow extends pulumi.CustomResource {
     /**
      * The sku.
      */
-    public /*out*/ readonly sku!: pulumi.Output<types.outputs.logic.v20190501.SkuResponse>;
+    public /*out*/ readonly sku!: pulumi.Output<types.outputs.SkuResponse>;
     /**
      * The state.
      */
@@ -172,7 +172,7 @@ export interface WorkflowArgs {
     /**
      * The access control configuration.
      */
-    accessControl?: pulumi.Input<types.inputs.logic.v20190501.FlowAccessControlConfigurationArgs>;
+    accessControl?: pulumi.Input<types.inputs.FlowAccessControlConfigurationArgs>;
     /**
      * The definition.
      */
@@ -180,19 +180,19 @@ export interface WorkflowArgs {
     /**
      * The endpoints configuration.
      */
-    endpointsConfiguration?: pulumi.Input<types.inputs.logic.v20190501.FlowEndpointsConfigurationArgs>;
+    endpointsConfiguration?: pulumi.Input<types.inputs.FlowEndpointsConfigurationArgs>;
     /**
      * Managed service identity properties.
      */
-    identity?: pulumi.Input<types.inputs.logic.v20190501.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
      * The integration account.
      */
-    integrationAccount?: pulumi.Input<types.inputs.logic.v20190501.ResourceReferenceArgs>;
+    integrationAccount?: pulumi.Input<types.inputs.ResourceReferenceArgs>;
     /**
      * The integration service environment.
      */
-    integrationServiceEnvironment?: pulumi.Input<types.inputs.logic.v20190501.ResourceReferenceArgs>;
+    integrationServiceEnvironment?: pulumi.Input<types.inputs.ResourceReferenceArgs>;
     /**
      * The resource location.
      */
@@ -200,7 +200,7 @@ export interface WorkflowArgs {
     /**
      * The parameters.
      */
-    parameters?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.logic.v20190501.WorkflowParameterArgs>}>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.WorkflowParameterArgs>}>;
     /**
      * The resource group name.
      */
@@ -208,7 +208,7 @@ export interface WorkflowArgs {
     /**
      * The state.
      */
-    state?: pulumi.Input<string | types.enums.v20190501.WorkflowState>;
+    state?: pulumi.Input<string | types.enums.WorkflowState>;
     /**
      * The resource tags.
      */

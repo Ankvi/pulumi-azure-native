@@ -43,7 +43,7 @@ export class ReplicationMigrationItem extends pulumi.CustomResource {
     /**
      * The migration item properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.recoveryservices.MigrationItemPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.MigrationItemPropertiesResponse>;
     /**
      * Resource Type
      */
@@ -112,7 +112,7 @@ export interface ReplicationMigrationItemArgs {
     /**
      * Enable migration input properties.
      */
-    properties: pulumi.Input<types.inputs.recoveryservices.EnableMigrationInputPropertiesArgs>;
+    properties: pulumi.Input<types.inputs.EnableMigrationInputPropertiesArgs>;
     /**
      * Protection container name.
      */

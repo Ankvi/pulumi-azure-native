@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Role definition.
  */
@@ -54,7 +54,7 @@ export class RoleDefinition extends pulumi.CustomResource {
     /**
      * Role definition permissions.
      */
-    public readonly permissions!: pulumi.Output<types.outputs.authorization.v20220501preview.PermissionResponse[] | undefined>;
+    public readonly permissions!: pulumi.Output<types.outputs.PermissionResponse[] | undefined>;
     /**
      * The role name.
      */
@@ -138,7 +138,7 @@ export interface RoleDefinitionArgs {
     /**
      * Role definition permissions.
      */
-    permissions?: pulumi.Input<pulumi.Input<types.inputs.authorization.v20220501preview.PermissionArgs>[]>;
+    permissions?: pulumi.Input<pulumi.Input<types.inputs.PermissionArgs>[]>;
     /**
      * The ID of the role definition.
      */

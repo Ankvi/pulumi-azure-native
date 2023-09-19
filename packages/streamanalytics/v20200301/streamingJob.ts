@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A streaming job object, containing all information associated with the named streaming job.
  */
@@ -34,7 +34,7 @@ export class StreamingJob extends pulumi.CustomResource {
     /**
      * The cluster which streaming jobs will run on.
      */
-    public readonly cluster!: pulumi.Output<types.outputs.streamanalytics.v20200301.ClusterInfoResponse | undefined>;
+    public readonly cluster!: pulumi.Output<types.outputs.ClusterInfoResponse | undefined>;
     /**
      * Controls certain runtime behaviors of the streaming job.
      */
@@ -70,15 +70,15 @@ export class StreamingJob extends pulumi.CustomResource {
     /**
      * A list of one or more functions for the streaming job. The name property for each function is required when specifying this property in a PUT request. This property cannot be modify via a PATCH operation. You must use the PATCH API available for the individual transformation.
      */
-    public readonly functions!: pulumi.Output<types.outputs.streamanalytics.v20200301.FunctionResponse[] | undefined>;
+    public readonly functions!: pulumi.Output<types.outputs.FunctionResponse[] | undefined>;
     /**
      * Describes the system-assigned managed identity assigned to this job that can be used to authenticate with inputs and outputs.
      */
-    public readonly identity!: pulumi.Output<types.outputs.streamanalytics.v20200301.IdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityResponse | undefined>;
     /**
      * A list of one or more inputs to the streaming job. The name property for each input is required when specifying this property in a PUT request. This property cannot be modify via a PATCH operation. You must use the PATCH API available for the individual input.
      */
-    public readonly inputs!: pulumi.Output<types.outputs.streamanalytics.v20200301.InputResponse[] | undefined>;
+    public readonly inputs!: pulumi.Output<types.outputs.InputResponse[] | undefined>;
     /**
      * A GUID uniquely identifying the streaming job. This GUID is generated upon creation of the streaming job.
      */
@@ -90,7 +90,7 @@ export class StreamingJob extends pulumi.CustomResource {
     /**
      * The properties that are associated with an Azure Storage account with MSI
      */
-    public readonly jobStorageAccount!: pulumi.Output<types.outputs.streamanalytics.v20200301.JobStorageAccountResponse | undefined>;
+    public readonly jobStorageAccount!: pulumi.Output<types.outputs.JobStorageAccountResponse | undefined>;
     /**
      * Describes the type of the job. Valid modes are `Cloud` and 'Edge'.
      */
@@ -122,7 +122,7 @@ export class StreamingJob extends pulumi.CustomResource {
     /**
      * A list of one or more outputs for the streaming job. The name property for each output is required when specifying this property in a PUT request. This property cannot be modify via a PATCH operation. You must use the PATCH API available for the individual output.
      */
-    public readonly outputs!: pulumi.Output<types.outputs.streamanalytics.v20200301.OutputResponse[] | undefined>;
+    public readonly outputs!: pulumi.Output<types.outputs.OutputResponse[] | undefined>;
     /**
      * Describes the provisioning status of the streaming job.
      */
@@ -130,7 +130,7 @@ export class StreamingJob extends pulumi.CustomResource {
     /**
      * Describes the SKU of the streaming job. Required on PUT (CreateOrReplace) requests.
      */
-    public readonly sku!: pulumi.Output<types.outputs.streamanalytics.v20200301.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Resource tags.
      */
@@ -138,7 +138,7 @@ export class StreamingJob extends pulumi.CustomResource {
     /**
      * Indicates the query and the number of streaming units to use for the streaming job. The name property of the transformation is required when specifying this property in a PUT request. This property cannot be modify via a PATCH operation. You must use the PATCH API available for the individual transformation.
      */
-    public readonly transformation!: pulumi.Output<types.outputs.streamanalytics.v20200301.TransformationResponse | undefined>;
+    public readonly transformation!: pulumi.Output<types.outputs.TransformationResponse | undefined>;
     /**
      * The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
      */
@@ -179,7 +179,7 @@ export class StreamingJob extends pulumi.CustomResource {
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["sku"] = args ? args.sku : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["transformation"] = args ? (args.transformation ? pulumi.output(args.transformation).apply(types.inputs.streamanalytics.v20200301.transformationArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["transformation"] = args ? (args.transformation ? pulumi.output(args.transformation).apply(types.inputs.transformationArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["createdDate"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["jobId"] = undefined /*out*/;
@@ -232,15 +232,15 @@ export interface StreamingJobArgs {
     /**
      * The cluster which streaming jobs will run on.
      */
-    cluster?: pulumi.Input<types.inputs.streamanalytics.v20200301.ClusterInfoArgs>;
+    cluster?: pulumi.Input<types.inputs.ClusterInfoArgs>;
     /**
      * Controls certain runtime behaviors of the streaming job.
      */
-    compatibilityLevel?: pulumi.Input<string | types.enums.v20200301.CompatibilityLevel>;
+    compatibilityLevel?: pulumi.Input<string | types.enums.CompatibilityLevel>;
     /**
      * Valid values are JobStorageAccount and SystemAccount. If set to JobStorageAccount, this requires the user to also specify jobStorageAccount property. .
      */
-    contentStoragePolicy?: pulumi.Input<string | types.enums.v20200301.ContentStoragePolicy>;
+    contentStoragePolicy?: pulumi.Input<string | types.enums.ContentStoragePolicy>;
     /**
      * The data locale of the stream analytics job. Value should be the name of a supported .NET Culture from the set https://msdn.microsoft.com/en-us/library/system.globalization.culturetypes(v=vs.110).aspx. Defaults to 'en-US' if none specified.
      */
@@ -256,19 +256,19 @@ export interface StreamingJobArgs {
     /**
      * Indicates the policy to apply to events that arrive out of order in the input event stream.
      */
-    eventsOutOfOrderPolicy?: pulumi.Input<string | types.enums.v20200301.EventsOutOfOrderPolicy>;
+    eventsOutOfOrderPolicy?: pulumi.Input<string | types.enums.EventsOutOfOrderPolicy>;
     /**
      * A list of one or more functions for the streaming job. The name property for each function is required when specifying this property in a PUT request. This property cannot be modify via a PATCH operation. You must use the PATCH API available for the individual transformation.
      */
-    functions?: pulumi.Input<pulumi.Input<types.inputs.streamanalytics.v20200301.FunctionArgs>[]>;
+    functions?: pulumi.Input<pulumi.Input<types.inputs.FunctionArgs>[]>;
     /**
      * Describes the system-assigned managed identity assigned to this job that can be used to authenticate with inputs and outputs.
      */
-    identity?: pulumi.Input<types.inputs.streamanalytics.v20200301.IdentityArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityArgs>;
     /**
      * A list of one or more inputs to the streaming job. The name property for each input is required when specifying this property in a PUT request. This property cannot be modify via a PATCH operation. You must use the PATCH API available for the individual input.
      */
-    inputs?: pulumi.Input<pulumi.Input<types.inputs.streamanalytics.v20200301.InputArgs>[]>;
+    inputs?: pulumi.Input<pulumi.Input<types.inputs.InputArgs>[]>;
     /**
      * The name of the streaming job.
      */
@@ -276,11 +276,11 @@ export interface StreamingJobArgs {
     /**
      * The properties that are associated with an Azure Storage account with MSI
      */
-    jobStorageAccount?: pulumi.Input<types.inputs.streamanalytics.v20200301.JobStorageAccountArgs>;
+    jobStorageAccount?: pulumi.Input<types.inputs.JobStorageAccountArgs>;
     /**
      * Describes the type of the job. Valid modes are `Cloud` and 'Edge'.
      */
-    jobType?: pulumi.Input<string | types.enums.v20200301.JobType>;
+    jobType?: pulumi.Input<string | types.enums.JobType>;
     /**
      * The geo-location where the resource lives
      */
@@ -288,11 +288,11 @@ export interface StreamingJobArgs {
     /**
      * Indicates the policy to apply to events that arrive at the output and cannot be written to the external storage due to being malformed (missing column values, column values of wrong type or size).
      */
-    outputErrorPolicy?: pulumi.Input<string | types.enums.v20200301.OutputErrorPolicy>;
+    outputErrorPolicy?: pulumi.Input<string | types.enums.OutputErrorPolicy>;
     /**
      * This property should only be utilized when it is desired that the job be started immediately upon creation. Value may be JobStartTime, CustomTime, or LastOutputEventTime to indicate whether the starting point of the output event stream should start whenever the job is started, start at a custom user time stamp specified via the outputStartTime property, or start from the last event output time.
      */
-    outputStartMode?: pulumi.Input<string | types.enums.v20200301.OutputStartMode>;
+    outputStartMode?: pulumi.Input<string | types.enums.OutputStartMode>;
     /**
      * Value is either an ISO-8601 formatted time stamp that indicates the starting point of the output event stream, or null to indicate that the output event stream will start whenever the streaming job is started. This property must have a value if outputStartMode is set to CustomTime.
      */
@@ -300,7 +300,7 @@ export interface StreamingJobArgs {
     /**
      * A list of one or more outputs for the streaming job. The name property for each output is required when specifying this property in a PUT request. This property cannot be modify via a PATCH operation. You must use the PATCH API available for the individual output.
      */
-    outputs?: pulumi.Input<pulumi.Input<types.inputs.streamanalytics.v20200301.OutputArgs>[]>;
+    outputs?: pulumi.Input<pulumi.Input<types.inputs.OutputArgs>[]>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -308,7 +308,7 @@ export interface StreamingJobArgs {
     /**
      * Describes the SKU of the streaming job. Required on PUT (CreateOrReplace) requests.
      */
-    sku?: pulumi.Input<types.inputs.streamanalytics.v20200301.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Resource tags.
      */
@@ -316,5 +316,5 @@ export interface StreamingJobArgs {
     /**
      * Indicates the query and the number of streaming units to use for the streaming job. The name property of the transformation is required when specifying this property in a PUT request. This property cannot be modify via a PATCH operation. You must use the PATCH API available for the individual transformation.
      */
-    transformation?: pulumi.Input<types.inputs.streamanalytics.v20200301.TransformationArgs>;
+    transformation?: pulumi.Input<types.inputs.TransformationArgs>;
 }

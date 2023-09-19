@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The IoT Central application.
  */
@@ -42,7 +42,7 @@ export class App extends pulumi.CustomResource {
     /**
      * The managed identities for the IoT Central application.
      */
-    public readonly identity!: pulumi.Output<types.outputs.iotcentral.v20210601.SystemAssignedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.SystemAssignedServiceIdentityResponse | undefined>;
     /**
      * The resource location.
      */
@@ -54,7 +54,7 @@ export class App extends pulumi.CustomResource {
     /**
      * A valid instance SKU.
      */
-    public readonly sku!: pulumi.Output<types.outputs.iotcentral.v20210601.AppSkuInfoResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.AppSkuInfoResponse>;
     /**
      * The current state of the application.
      */
@@ -137,7 +137,7 @@ export interface AppArgs {
     /**
      * The managed identities for the IoT Central application.
      */
-    identity?: pulumi.Input<types.inputs.iotcentral.v20210601.SystemAssignedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.SystemAssignedServiceIdentityArgs>;
     /**
      * The resource location.
      */
@@ -153,7 +153,7 @@ export interface AppArgs {
     /**
      * A valid instance SKU.
      */
-    sku: pulumi.Input<types.inputs.iotcentral.v20210601.AppSkuInfoArgs>;
+    sku: pulumi.Input<types.inputs.AppSkuInfoArgs>;
     /**
      * The subdomain of the application.
      */

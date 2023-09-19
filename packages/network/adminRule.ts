@@ -47,7 +47,7 @@ export class AdminRule extends pulumi.CustomResource {
     /**
      * The destination address prefixes. CIDR or destination IP ranges.
      */
-    public readonly destinations!: pulumi.Output<types.outputs.network.AddressPrefixItemResponse[] | undefined>;
+    public readonly destinations!: pulumi.Output<types.outputs.AddressPrefixItemResponse[] | undefined>;
     /**
      * Indicates if the traffic matched against the rule in inbound or outbound.
      */
@@ -88,11 +88,11 @@ export class AdminRule extends pulumi.CustomResource {
     /**
      * The CIDR or source IP ranges.
      */
-    public readonly sources!: pulumi.Output<types.outputs.network.AddressPrefixItemResponse[] | undefined>;
+    public readonly sources!: pulumi.Output<types.outputs.AddressPrefixItemResponse[] | undefined>;
     /**
      * The system metadata related to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.network.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource type.
      */
@@ -205,7 +205,7 @@ export interface AdminRuleArgs {
     /**
      * The destination address prefixes. CIDR or destination IP ranges.
      */
-    destinations?: pulumi.Input<pulumi.Input<types.inputs.network.AddressPrefixItemArgs>[]>;
+    destinations?: pulumi.Input<pulumi.Input<types.inputs.AddressPrefixItemArgs>[]>;
     /**
      * Indicates if the traffic matched against the rule in inbound or outbound.
      */
@@ -246,5 +246,5 @@ export interface AdminRuleArgs {
     /**
      * The CIDR or source IP ranges.
      */
-    sources?: pulumi.Input<pulumi.Input<types.inputs.network.AddressPrefixItemArgs>[]>;
+    sources?: pulumi.Input<pulumi.Input<types.inputs.AddressPrefixItemArgs>[]>;
 }

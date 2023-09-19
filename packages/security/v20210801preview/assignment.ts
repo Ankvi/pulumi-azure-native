@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Security Assignment on a resource group over a given scope
  */
@@ -34,15 +34,15 @@ export class Assignment extends pulumi.CustomResource {
     /**
      * Additional data about the assignment
      */
-    public readonly additionalData!: pulumi.Output<types.outputs.security.v20210801preview.AssignmentPropertiesResponseAdditionalData | undefined>;
+    public readonly additionalData!: pulumi.Output<types.outputs.AssignmentPropertiesResponseAdditionalData | undefined>;
     /**
      * Component item with key as applied to this standard assignment over the given scope
      */
-    public readonly assignedComponent!: pulumi.Output<types.outputs.security.v20210801preview.AssignedComponentItemResponse | undefined>;
+    public readonly assignedComponent!: pulumi.Output<types.outputs.AssignedComponentItemResponse | undefined>;
     /**
      * Standard item with key as applied to this standard assignment over the given scope
      */
-    public readonly assignedStandard!: pulumi.Output<types.outputs.security.v20210801preview.AssignedStandardItemResponse | undefined>;
+    public readonly assignedStandard!: pulumi.Output<types.outputs.AssignedStandardItemResponse | undefined>;
     /**
      * description of the standardAssignment
      */
@@ -86,7 +86,7 @@ export class Assignment extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.security.v20210801preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * A list of key value pairs that describe the resource.
      */
@@ -160,15 +160,15 @@ export interface AssignmentArgs {
     /**
      * Additional data about the assignment
      */
-    additionalData?: pulumi.Input<types.inputs.security.v20210801preview.AssignmentPropertiesAdditionalDataArgs>;
+    additionalData?: pulumi.Input<types.inputs.AssignmentPropertiesAdditionalDataArgs>;
     /**
      * Component item with key as applied to this standard assignment over the given scope
      */
-    assignedComponent?: pulumi.Input<types.inputs.security.v20210801preview.AssignedComponentItemArgs>;
+    assignedComponent?: pulumi.Input<types.inputs.AssignedComponentItemArgs>;
     /**
      * Standard item with key as applied to this standard assignment over the given scope
      */
-    assignedStandard?: pulumi.Input<types.inputs.security.v20210801preview.AssignedStandardItemArgs>;
+    assignedStandard?: pulumi.Input<types.inputs.AssignedStandardItemArgs>;
     /**
      * The security assignment key - unique key for the standard assignment
      */

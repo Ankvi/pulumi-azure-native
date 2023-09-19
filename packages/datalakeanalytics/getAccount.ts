@@ -36,7 +36,7 @@ export interface GetAccountResult {
     /**
      * The list of compute policies associated with this account.
      */
-    readonly computePolicies: types.outputs.datalakeanalytics.ComputePolicyResponse[];
+    readonly computePolicies: types.outputs.ComputePolicyResponse[];
     /**
      * The account creation time.
      */
@@ -48,7 +48,7 @@ export interface GetAccountResult {
     /**
      * The list of Data Lake Store accounts associated with this account.
      */
-    readonly dataLakeStoreAccounts: types.outputs.datalakeanalytics.DataLakeStoreAccountInformationResponse[];
+    readonly dataLakeStoreAccounts: types.outputs.DataLakeStoreAccountInformationResponse[];
     /**
      * The current state of the DebugDataAccessLevel for this account.
      */
@@ -72,7 +72,7 @@ export interface GetAccountResult {
     /**
      * The list of firewall rules associated with this account.
      */
-    readonly firewallRules: types.outputs.datalakeanalytics.FirewallRuleResponse[];
+    readonly firewallRules: types.outputs.FirewallRuleResponse[];
     /**
      * The current state of the IP address firewall for this account.
      */
@@ -80,7 +80,7 @@ export interface GetAccountResult {
     /**
      * The list of hiveMetastores associated with this account.
      */
-    readonly hiveMetastores: types.outputs.datalakeanalytics.HiveMetastoreResponse[];
+    readonly hiveMetastores: types.outputs.HiveMetastoreResponse[];
     /**
      * The resource identifier.
      */
@@ -136,7 +136,7 @@ export interface GetAccountResult {
     /**
      * The list of Data Lake Store accounts associated with this account.
      */
-    readonly publicDataLakeStoreAccounts?: types.outputs.datalakeanalytics.DataLakeStoreAccountInformationResponse[];
+    readonly publicDataLakeStoreAccounts?: types.outputs.DataLakeStoreAccountInformationResponse[];
     /**
      * The number of days that job metadata is retained.
      */
@@ -148,7 +148,7 @@ export interface GetAccountResult {
     /**
      * The list of Azure Blob Storage accounts associated with this account.
      */
-    readonly storageAccounts: types.outputs.datalakeanalytics.StorageAccountInformationResponse[];
+    readonly storageAccounts: types.outputs.StorageAccountInformationResponse[];
     /**
      * The system defined maximum supported degree of parallelism for this account, which restricts the maximum value of parallelism the user can set for the account.
      */
@@ -168,7 +168,7 @@ export interface GetAccountResult {
     /**
      * The list of virtualNetwork rules associated with this account.
      */
-    readonly virtualNetworkRules: types.outputs.datalakeanalytics.VirtualNetworkRuleResponse[];
+    readonly virtualNetworkRules: types.outputs.VirtualNetworkRuleResponse[];
 }
 /**
  * Gets details of the specified Data Lake Analytics account.

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets an availability group listener.
  */
@@ -41,7 +41,7 @@ export interface GetAvailabilityGroupListenerResult {
     /**
      * Availability Group configuration.
      */
-    readonly availabilityGroupConfiguration?: types.outputs.sqlvirtualmachine.v20220201.AgConfigurationResponse;
+    readonly availabilityGroupConfiguration?: types.outputs.AgConfigurationResponse;
     /**
      * Name of the availability group.
      */
@@ -57,11 +57,11 @@ export interface GetAvailabilityGroupListenerResult {
     /**
      * List of load balancer configurations for an availability group listener.
      */
-    readonly loadBalancerConfigurations?: types.outputs.sqlvirtualmachine.v20220201.LoadBalancerConfigurationResponse[];
+    readonly loadBalancerConfigurations?: types.outputs.LoadBalancerConfigurationResponse[];
     /**
      * List of multi subnet IP configurations for an AG listener.
      */
-    readonly multiSubnetIpConfigurations?: types.outputs.sqlvirtualmachine.v20220201.MultiSubnetIpConfigurationResponse[];
+    readonly multiSubnetIpConfigurations?: types.outputs.MultiSubnetIpConfigurationResponse[];
     /**
      * Resource name.
      */
@@ -77,7 +77,7 @@ export interface GetAvailabilityGroupListenerResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.sqlvirtualmachine.v20220201.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource type.
      */

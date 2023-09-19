@@ -39,11 +39,11 @@ export class DigitalTwinsEndpoint extends pulumi.CustomResource {
     /**
      * DigitalTwinsInstance endpoint resource properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.digitaltwins.EventGridResponse | types.outputs.digitaltwins.EventHubResponse | types.outputs.digitaltwins.ServiceBusResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.EventGridResponse | types.outputs.EventHubResponse | types.outputs.ServiceBusResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.digitaltwins.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The resource type.
      */
@@ -100,7 +100,7 @@ export interface DigitalTwinsEndpointArgs {
     /**
      * DigitalTwinsInstance endpoint resource properties.
      */
-    properties: pulumi.Input<types.inputs.digitaltwins.EventGridArgs | types.inputs.digitaltwins.EventHubArgs | types.inputs.digitaltwins.ServiceBusArgs>;
+    properties: pulumi.Input<types.inputs.EventGridArgs | types.inputs.EventHubArgs | types.inputs.ServiceBusArgs>;
     /**
      * The name of the resource group that contains the DigitalTwinsInstance.
      */

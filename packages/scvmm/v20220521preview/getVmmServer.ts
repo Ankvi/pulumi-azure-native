@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Implements VMMServer GET method.
  */
@@ -35,7 +35,7 @@ export interface GetVmmServerResult {
     /**
      * Credentials to connect to VMMServer.
      */
-    readonly credentials?: types.outputs.scvmm.v20220521preview.VMMServerPropertiesResponseCredentials;
+    readonly credentials?: types.outputs.VMMServerPropertiesResponseCredentials;
     /**
      * Gets or sets any error message if connection to vmmServer is having any issue.
      */
@@ -43,7 +43,7 @@ export interface GetVmmServerResult {
     /**
      * The extended location.
      */
-    readonly extendedLocation: types.outputs.scvmm.v20220521preview.ExtendedLocationResponse;
+    readonly extendedLocation: types.outputs.ExtendedLocationResponse;
     /**
      * Fqdn is the hostname/ip of the vmmServer.
      */
@@ -71,7 +71,7 @@ export interface GetVmmServerResult {
     /**
      * The system data.
      */
-    readonly systemData: types.outputs.scvmm.v20220521preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags
      */

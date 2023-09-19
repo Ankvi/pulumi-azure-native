@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the view by view name.
  */
@@ -38,7 +38,7 @@ export interface GetViewResult {
     /**
      * Has definition for data in this report config.
      */
-    readonly dataset?: types.outputs.costmanagement.v20200601.ReportConfigDatasetResponse;
+    readonly dataset?: types.outputs.ReportConfigDatasetResponse;
     /**
      * User input name of the view. Required.
      */
@@ -54,7 +54,7 @@ export interface GetViewResult {
     /**
      * List of KPIs to show in Cost Analysis UI.
      */
-    readonly kpis?: types.outputs.costmanagement.v20200601.KpiPropertiesResponse[];
+    readonly kpis?: types.outputs.KpiPropertiesResponse[];
     /**
      * Metric to use when displaying costs.
      */
@@ -70,7 +70,7 @@ export interface GetViewResult {
     /**
      * Configuration of 3 sub-views in the Cost Analysis UI.
      */
-    readonly pivots?: types.outputs.costmanagement.v20200601.PivotPropertiesResponse[];
+    readonly pivots?: types.outputs.PivotPropertiesResponse[];
     /**
      * Cost Management scope to save the view on. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for BillingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for InvoiceSection scope, 'providers/Microsoft.Management/managementGroups/{managementGroupId}' for Management Group scope, '/providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}' for ExternalBillingAccount scope, and '/providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}' for ExternalSubscription scope.
      */
@@ -78,7 +78,7 @@ export interface GetViewResult {
     /**
      * Has time period for pulling data for the report.
      */
-    readonly timePeriod?: types.outputs.costmanagement.v20200601.ReportConfigTimePeriodResponse;
+    readonly timePeriod?: types.outputs.ReportConfigTimePeriodResponse;
     /**
      * The time frame for pulling data for the report. If custom, then a specific time period must be provided.
      */

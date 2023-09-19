@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a scaling plan.
  */
@@ -47,7 +47,7 @@ export interface GetScalingPlanResult {
     /**
      * List of ScalingHostPoolReference definitions.
      */
-    readonly hostPoolReferences?: types.outputs.desktopvirtualization.v20210201preview.ScalingHostPoolReferenceResponse[];
+    readonly hostPoolReferences?: types.outputs.ScalingHostPoolReferenceResponse[];
     /**
      * HostPool type for desktop.
      */
@@ -56,7 +56,7 @@ export interface GetScalingPlanResult {
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
     readonly id: string;
-    readonly identity?: types.outputs.desktopvirtualization.v20210201preview.ResourceModelWithAllowedPropertySetResponseIdentity;
+    readonly identity?: types.outputs.ResourceModelWithAllowedPropertySetResponseIdentity;
     /**
      * Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
      */
@@ -77,7 +77,7 @@ export interface GetScalingPlanResult {
      * ObjectId of scaling plan. (internal use)
      */
     readonly objectId: string;
-    readonly plan?: types.outputs.desktopvirtualization.v20210201preview.ResourceModelWithAllowedPropertySetResponsePlan;
+    readonly plan?: types.outputs.ResourceModelWithAllowedPropertySetResponsePlan;
     /**
      * The ring number of scaling plan.
      */
@@ -85,8 +85,8 @@ export interface GetScalingPlanResult {
     /**
      * List of ScalingSchedule definitions.
      */
-    readonly schedules?: types.outputs.desktopvirtualization.v20210201preview.ScalingScheduleResponse[];
-    readonly sku?: types.outputs.desktopvirtualization.v20210201preview.ResourceModelWithAllowedPropertySetResponseSku;
+    readonly schedules?: types.outputs.ScalingScheduleResponse[];
+    readonly sku?: types.outputs.ResourceModelWithAllowedPropertySetResponseSku;
     /**
      * Resource tags.
      */

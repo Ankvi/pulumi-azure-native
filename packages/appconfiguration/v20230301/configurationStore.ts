@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The configuration store along with all resource properties. The Configuration Store will have all information to begin utilizing it.
  */
@@ -46,7 +46,7 @@ export class ConfigurationStore extends pulumi.CustomResource {
     /**
      * The encryption settings of the configuration store.
      */
-    public readonly encryption!: pulumi.Output<types.outputs.appconfiguration.v20230301.EncryptionPropertiesResponse | undefined>;
+    public readonly encryption!: pulumi.Output<types.outputs.EncryptionPropertiesResponse | undefined>;
     /**
      * The DNS endpoint where the configuration store API will be available.
      */
@@ -54,7 +54,7 @@ export class ConfigurationStore extends pulumi.CustomResource {
     /**
      * The managed identity information, if configured.
      */
-    public readonly identity!: pulumi.Output<types.outputs.appconfiguration.v20230301.ResourceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ResourceIdentityResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -66,7 +66,7 @@ export class ConfigurationStore extends pulumi.CustomResource {
     /**
      * The list of private endpoint connections that are set up for this resource.
      */
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.appconfiguration.v20230301.PrivateEndpointConnectionReferenceResponse[]>;
+    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionReferenceResponse[]>;
     /**
      * The provisioning state of the configuration store.
      */
@@ -78,7 +78,7 @@ export class ConfigurationStore extends pulumi.CustomResource {
     /**
      * The sku of the configuration store.
      */
-    public readonly sku!: pulumi.Output<types.outputs.appconfiguration.v20230301.SkuResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse>;
     /**
      * The amount of time in days that the configuration store will be retained when it is soft deleted.
      */
@@ -86,7 +86,7 @@ export class ConfigurationStore extends pulumi.CustomResource {
     /**
      * Resource system metadata.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.appconfiguration.v20230301.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -168,7 +168,7 @@ export interface ConfigurationStoreArgs {
     /**
      * Indicates whether the configuration store need to be recovered.
      */
-    createMode?: pulumi.Input<types.enums.v20230301.CreateMode>;
+    createMode?: pulumi.Input<types.enums.CreateMode>;
     /**
      * Disables all authentication methods other than AAD authentication.
      */
@@ -180,11 +180,11 @@ export interface ConfigurationStoreArgs {
     /**
      * The encryption settings of the configuration store.
      */
-    encryption?: pulumi.Input<types.inputs.appconfiguration.v20230301.EncryptionPropertiesArgs>;
+    encryption?: pulumi.Input<types.inputs.EncryptionPropertiesArgs>;
     /**
      * The managed identity information, if configured.
      */
-    identity?: pulumi.Input<types.inputs.appconfiguration.v20230301.ResourceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ResourceIdentityArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -192,7 +192,7 @@ export interface ConfigurationStoreArgs {
     /**
      * Control permission for data plane traffic coming from public networks while private endpoint is enabled.
      */
-    publicNetworkAccess?: pulumi.Input<string | types.enums.v20230301.PublicNetworkAccess>;
+    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess>;
     /**
      * The name of the resource group to which the container registry belongs.
      */
@@ -200,7 +200,7 @@ export interface ConfigurationStoreArgs {
     /**
      * The sku of the configuration store.
      */
-    sku: pulumi.Input<types.inputs.appconfiguration.v20230301.SkuArgs>;
+    sku: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * The amount of time in days that the configuration store will be retained when it is soft deleted.
      */

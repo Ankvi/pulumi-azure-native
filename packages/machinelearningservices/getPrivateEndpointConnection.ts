@@ -41,7 +41,7 @@ export interface GetPrivateEndpointConnectionResult {
     /**
      * The identity of the resource.
      */
-    readonly identity?: types.outputs.machinelearningservices.ManagedServiceIdentityResponse;
+    readonly identity?: types.outputs.ManagedServiceIdentityResponse;
     /**
      * Specifies the location of the resource.
      */
@@ -53,11 +53,11 @@ export interface GetPrivateEndpointConnectionResult {
     /**
      * The resource of private end point.
      */
-    readonly privateEndpoint?: types.outputs.machinelearningservices.PrivateEndpointResponse;
+    readonly privateEndpoint?: types.outputs.PrivateEndpointResponse;
     /**
      * A collection of information about the state of the connection between service consumer and provider.
      */
-    readonly privateLinkServiceConnectionState: types.outputs.machinelearningservices.PrivateLinkServiceConnectionStateResponse;
+    readonly privateLinkServiceConnectionState: types.outputs.PrivateLinkServiceConnectionStateResponse;
     /**
      * The provisioning state of the private endpoint connection resource.
      */
@@ -65,11 +65,11 @@ export interface GetPrivateEndpointConnectionResult {
     /**
      * The sku of the workspace.
      */
-    readonly sku?: types.outputs.machinelearningservices.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.machinelearningservices.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Contains resource tags defined as key/value pairs.
      */

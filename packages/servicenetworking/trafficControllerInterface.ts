@@ -35,7 +35,7 @@ export class TrafficControllerInterface extends pulumi.CustomResource {
     /**
      * Associations References List
      */
-    public /*out*/ readonly associations!: pulumi.Output<types.outputs.servicenetworking.ResourceIdResponse[]>;
+    public /*out*/ readonly associations!: pulumi.Output<types.outputs.ResourceIdResponse[]>;
     /**
      * Configuration Endpoints.
      */
@@ -43,7 +43,7 @@ export class TrafficControllerInterface extends pulumi.CustomResource {
     /**
      * Frontends References List
      */
-    public /*out*/ readonly frontends!: pulumi.Output<types.outputs.servicenetworking.ResourceIdResponse[]>;
+    public /*out*/ readonly frontends!: pulumi.Output<types.outputs.ResourceIdResponse[]>;
     /**
      * The geo-location where the resource lives
      */
@@ -59,7 +59,7 @@ export class TrafficControllerInterface extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.servicenetworking.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */

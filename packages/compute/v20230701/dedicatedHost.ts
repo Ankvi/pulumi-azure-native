@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Specifies information about the Dedicated host.
  */
@@ -42,7 +42,7 @@ export class DedicatedHost extends pulumi.CustomResource {
     /**
      * The dedicated host instance view.
      */
-    public /*out*/ readonly instanceView!: pulumi.Output<types.outputs.compute.v20230701.DedicatedHostInstanceViewResponse>;
+    public /*out*/ readonly instanceView!: pulumi.Output<types.outputs.DedicatedHostInstanceViewResponse>;
     /**
      * Specifies the software license type that will be applied to the VMs deployed on the dedicated host. Possible values are: **None,** **Windows_Server_Hybrid,** **Windows_Server_Perpetual.** The default value is: **None.**
      */
@@ -70,7 +70,7 @@ export class DedicatedHost extends pulumi.CustomResource {
     /**
      * SKU of the dedicated host for Hardware Generation and VM family. Only name is required to be set. List Microsoft.Compute SKUs for a list of possible values.
      */
-    public readonly sku!: pulumi.Output<types.outputs.compute.v20230701.SkuResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse>;
     /**
      * Resource tags
      */
@@ -86,7 +86,7 @@ export class DedicatedHost extends pulumi.CustomResource {
     /**
      * A list of references to all virtual machines in the Dedicated Host.
      */
-    public /*out*/ readonly virtualMachines!: pulumi.Output<types.outputs.compute.v20230701.SubResourceReadOnlyResponse[]>;
+    public /*out*/ readonly virtualMachines!: pulumi.Output<types.outputs.SubResourceReadOnlyResponse[]>;
 
     /**
      * Create a DedicatedHost resource with the given unique name, arguments, and options.
@@ -167,7 +167,7 @@ export interface DedicatedHostArgs {
     /**
      * Specifies the software license type that will be applied to the VMs deployed on the dedicated host. Possible values are: **None,** **Windows_Server_Hybrid,** **Windows_Server_Perpetual.** The default value is: **None.**
      */
-    licenseType?: pulumi.Input<types.enums.v20230701.DedicatedHostLicenseTypes>;
+    licenseType?: pulumi.Input<types.enums.DedicatedHostLicenseTypes>;
     /**
      * Resource location
      */
@@ -183,7 +183,7 @@ export interface DedicatedHostArgs {
     /**
      * SKU of the dedicated host for Hardware Generation and VM family. Only name is required to be set. List Microsoft.Compute SKUs for a list of possible values.
      */
-    sku: pulumi.Input<types.inputs.compute.v20230701.SkuArgs>;
+    sku: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Resource tags
      */

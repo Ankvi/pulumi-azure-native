@@ -27,7 +27,7 @@ export interface ListIngestionSettingConnectionStringsResult {
     /**
      * Connection strings
      */
-    readonly value: types.outputs.security.IngestionConnectionStringResponse[];
+    readonly value: types.outputs.IngestionConnectionStringResponse[];
 }
 /**
  * Connection strings for ingesting security scan logs and data.

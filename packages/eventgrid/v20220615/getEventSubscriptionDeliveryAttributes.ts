@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get all delivery attributes for an event subscription.
  */
@@ -31,7 +31,7 @@ export interface GetEventSubscriptionDeliveryAttributesResult {
     /**
      * A collection of DeliveryAttributeMapping
      */
-    readonly value?: (types.outputs.eventgrid.v20220615.DynamicDeliveryAttributeMappingResponse | types.outputs.eventgrid.v20220615.StaticDeliveryAttributeMappingResponse)[];
+    readonly value?: (types.outputs.DynamicDeliveryAttributeMappingResponse | types.outputs.StaticDeliveryAttributeMappingResponse)[];
 }
 /**
  * Get all delivery attributes for an event subscription.

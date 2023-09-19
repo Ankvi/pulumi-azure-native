@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The properties of a Media Service resource.
  */
@@ -34,7 +34,7 @@ export class MediaService extends pulumi.CustomResource {
     /**
      * Read-only property that lists the Media Services REST API endpoints for this resource. If supplied on a PUT or PATCH, the value will be ignored.
      */
-    public /*out*/ readonly apiEndpoints!: pulumi.Output<types.outputs.media.v20151001.ApiEndpointResponse[]>;
+    public /*out*/ readonly apiEndpoints!: pulumi.Output<types.outputs.ApiEndpointResponse[]>;
     /**
      * The geographic location of the resource. This must be one of the supported and registered Azure Geo Regions (for example, West US, East US, Southeast Asia, and so forth).
      */
@@ -46,7 +46,7 @@ export class MediaService extends pulumi.CustomResource {
     /**
      * The storage accounts for this resource.
      */
-    public readonly storageAccounts!: pulumi.Output<types.outputs.media.v20151001.StorageAccountResponse[] | undefined>;
+    public readonly storageAccounts!: pulumi.Output<types.outputs.StorageAccountResponse[] | undefined>;
     /**
      * Tags to help categorize the resource in the Azure portal.
      */
@@ -112,7 +112,7 @@ export interface MediaServiceArgs {
     /**
      * The storage accounts for this resource.
      */
-    storageAccounts?: pulumi.Input<pulumi.Input<types.inputs.media.v20151001.StorageAccountArgs>[]>;
+    storageAccounts?: pulumi.Input<pulumi.Input<types.inputs.StorageAccountArgs>[]>;
     /**
      * Tags to help categorize the resource in the Azure portal.
      */

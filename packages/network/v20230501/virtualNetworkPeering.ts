@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Peerings in a virtual network resource.
  */
@@ -70,23 +70,23 @@ export class VirtualNetworkPeering extends pulumi.CustomResource {
     /**
      * The reference to the address space peered with the remote virtual network.
      */
-    public readonly remoteAddressSpace!: pulumi.Output<types.outputs.network.v20230501.AddressSpaceResponse | undefined>;
+    public readonly remoteAddressSpace!: pulumi.Output<types.outputs.AddressSpaceResponse | undefined>;
     /**
      * The reference to the remote virtual network's Bgp Communities.
      */
-    public readonly remoteBgpCommunities!: pulumi.Output<types.outputs.network.v20230501.VirtualNetworkBgpCommunitiesResponse | undefined>;
+    public readonly remoteBgpCommunities!: pulumi.Output<types.outputs.VirtualNetworkBgpCommunitiesResponse | undefined>;
     /**
      * The reference to the remote virtual network. The remote virtual network can be in the same or different region (preview). See here to register for the preview and learn more (https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-create-peering).
      */
-    public readonly remoteVirtualNetwork!: pulumi.Output<types.outputs.network.v20230501.SubResourceResponse | undefined>;
+    public readonly remoteVirtualNetwork!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * The reference to the current address space of the remote virtual network.
      */
-    public readonly remoteVirtualNetworkAddressSpace!: pulumi.Output<types.outputs.network.v20230501.AddressSpaceResponse | undefined>;
+    public readonly remoteVirtualNetworkAddressSpace!: pulumi.Output<types.outputs.AddressSpaceResponse | undefined>;
     /**
      * The reference to the remote virtual network's encryption
      */
-    public /*out*/ readonly remoteVirtualNetworkEncryption!: pulumi.Output<types.outputs.network.v20230501.VirtualNetworkEncryptionResponse>;
+    public /*out*/ readonly remoteVirtualNetworkEncryption!: pulumi.Output<types.outputs.VirtualNetworkEncryptionResponse>;
     /**
      * The resourceGuid property of the Virtual Network peering resource.
      */
@@ -196,27 +196,27 @@ export interface VirtualNetworkPeeringArgs {
     /**
      * The status of the virtual network peering.
      */
-    peeringState?: pulumi.Input<string | types.enums.v20230501.VirtualNetworkPeeringState>;
+    peeringState?: pulumi.Input<string | types.enums.VirtualNetworkPeeringState>;
     /**
      * The peering sync status of the virtual network peering.
      */
-    peeringSyncLevel?: pulumi.Input<string | types.enums.v20230501.VirtualNetworkPeeringLevel>;
+    peeringSyncLevel?: pulumi.Input<string | types.enums.VirtualNetworkPeeringLevel>;
     /**
      * The reference to the address space peered with the remote virtual network.
      */
-    remoteAddressSpace?: pulumi.Input<types.inputs.network.v20230501.AddressSpaceArgs>;
+    remoteAddressSpace?: pulumi.Input<types.inputs.AddressSpaceArgs>;
     /**
      * The reference to the remote virtual network's Bgp Communities.
      */
-    remoteBgpCommunities?: pulumi.Input<types.inputs.network.v20230501.VirtualNetworkBgpCommunitiesArgs>;
+    remoteBgpCommunities?: pulumi.Input<types.inputs.VirtualNetworkBgpCommunitiesArgs>;
     /**
      * The reference to the remote virtual network. The remote virtual network can be in the same or different region (preview). See here to register for the preview and learn more (https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-create-peering).
      */
-    remoteVirtualNetwork?: pulumi.Input<types.inputs.network.v20230501.SubResourceArgs>;
+    remoteVirtualNetwork?: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * The reference to the current address space of the remote virtual network.
      */
-    remoteVirtualNetworkAddressSpace?: pulumi.Input<types.inputs.network.v20230501.AddressSpaceArgs>;
+    remoteVirtualNetworkAddressSpace?: pulumi.Input<types.inputs.AddressSpaceArgs>;
     /**
      * The name of the resource group.
      */

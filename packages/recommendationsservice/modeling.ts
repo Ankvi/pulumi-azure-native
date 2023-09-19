@@ -43,11 +43,11 @@ export class Modeling extends pulumi.CustomResource {
     /**
      * Modeling resource properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.recommendationsservice.ModelingResourceResponseProperties>;
+    public readonly properties!: pulumi.Output<types.outputs.ModelingResourceResponseProperties>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.recommendationsservice.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -117,7 +117,7 @@ export interface ModelingArgs {
     /**
      * Modeling resource properties.
      */
-    properties?: pulumi.Input<types.inputs.recommendationsservice.ModelingResourcePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ModelingResourcePropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

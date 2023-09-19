@@ -33,7 +33,7 @@ utilities.lazyLoad(exports, ["OrderItemByName"], () => require("./orderItemByNam
 
 
 // Export enums:
-export * from "../types/enums/v20211201";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

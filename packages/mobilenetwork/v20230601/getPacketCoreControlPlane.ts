@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets information about the specified packet core control plane.
  */
@@ -31,7 +31,7 @@ export interface GetPacketCoreControlPlaneResult {
     /**
      * The control plane interface on the access network. For 5G networks, this is the N2 interface. For 4G networks, this is the S1-MME interface.
      */
-    readonly controlPlaneAccessInterface: types.outputs.mobilenetwork.v20230601.InterfacePropertiesResponse;
+    readonly controlPlaneAccessInterface: types.outputs.InterfacePropertiesResponse;
     /**
      * The core network technology generation (5G core or EPC / 4G core).
      */
@@ -39,7 +39,7 @@ export interface GetPacketCoreControlPlaneResult {
     /**
      * Configuration for uploading packet core diagnostics
      */
-    readonly diagnosticsUpload?: types.outputs.mobilenetwork.v20230601.DiagnosticsUploadConfigurationResponse;
+    readonly diagnosticsUpload?: types.outputs.DiagnosticsUploadConfigurationResponse;
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -47,11 +47,11 @@ export interface GetPacketCoreControlPlaneResult {
     /**
      * The identity used to retrieve the ingress certificate from Azure key vault.
      */
-    readonly identity?: types.outputs.mobilenetwork.v20230601.ManagedServiceIdentityResponse;
+    readonly identity?: types.outputs.ManagedServiceIdentityResponse;
     /**
      * The installation state of the packet core control plane resource.
      */
-    readonly installation?: types.outputs.mobilenetwork.v20230601.InstallationResponse;
+    readonly installation?: types.outputs.InstallationResponse;
     /**
      * The currently installed version of the packet core software.
      */
@@ -63,7 +63,7 @@ export interface GetPacketCoreControlPlaneResult {
     /**
      * The kubernetes ingress configuration to control access to packet core diagnostics over local APIs.
      */
-    readonly localDiagnosticsAccess: types.outputs.mobilenetwork.v20230601.LocalDiagnosticsAccessConfigurationResponse;
+    readonly localDiagnosticsAccess: types.outputs.LocalDiagnosticsAccessConfigurationResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -75,7 +75,7 @@ export interface GetPacketCoreControlPlaneResult {
     /**
      * The platform where the packet core is deployed.
      */
-    readonly platform: types.outputs.mobilenetwork.v20230601.PlatformConfigurationResponse;
+    readonly platform: types.outputs.PlatformConfigurationResponse;
     /**
      * The provisioning state of the packet core control plane resource.
      */
@@ -87,7 +87,7 @@ export interface GetPacketCoreControlPlaneResult {
     /**
      * Site(s) under which this packet core control plane should be deployed. The sites must be in the same location as the packet core control plane.
      */
-    readonly sites: types.outputs.mobilenetwork.v20230601.SiteResourceIdResponse[];
+    readonly sites: types.outputs.SiteResourceIdResponse[];
     /**
      * The SKU defining the throughput and SIM allowances for this packet core control plane deployment.
      */
@@ -95,7 +95,7 @@ export interface GetPacketCoreControlPlaneResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.mobilenetwork.v20230601.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

@@ -46,7 +46,7 @@ export interface GetIntegrationRuntimeObjectMetadatumResult {
     /**
      * List of SSIS object metadata.
      */
-    readonly value?: (types.outputs.datafactory.SsisEnvironmentResponse | types.outputs.datafactory.SsisFolderResponse | types.outputs.datafactory.SsisPackageResponse | types.outputs.datafactory.SsisProjectResponse)[];
+    readonly value?: (types.outputs.SsisEnvironmentResponse | types.outputs.SsisFolderResponse | types.outputs.SsisPackageResponse | types.outputs.SsisProjectResponse)[];
 }
 /**
  * Get a SSIS integration runtime object metadata by specified path. The return is pageable metadata list.

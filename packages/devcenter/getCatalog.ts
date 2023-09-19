@@ -37,11 +37,11 @@ export interface GetCatalogResult {
     /**
      * Properties for an Azure DevOps catalog type.
      */
-    readonly adoGit?: types.outputs.devcenter.GitCatalogResponse;
+    readonly adoGit?: types.outputs.GitCatalogResponse;
     /**
      * Properties for a GitHub catalog type.
      */
-    readonly gitHub?: types.outputs.devcenter.GitCatalogResponse;
+    readonly gitHub?: types.outputs.GitCatalogResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -65,7 +65,7 @@ export interface GetCatalogResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.devcenter.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

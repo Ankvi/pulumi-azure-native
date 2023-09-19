@@ -32,27 +32,27 @@ export interface ListOperationalizationClusterKeysResult {
     /**
      * Credentials for Azure AppInsights.
      */
-    readonly appInsights?: types.outputs.machinelearningcompute.AppInsightsCredentialsResponse;
+    readonly appInsights?: types.outputs.AppInsightsCredentialsResponse;
     /**
      * Credentials for Azure Container Registry.
      */
-    readonly containerRegistry?: types.outputs.machinelearningcompute.ContainerRegistryCredentialsResponse;
+    readonly containerRegistry?: types.outputs.ContainerRegistryCredentialsResponse;
     /**
      * Credentials for Azure Container Service.
      */
-    readonly containerService?: types.outputs.machinelearningcompute.ContainerServiceCredentialsResponse;
+    readonly containerService?: types.outputs.ContainerServiceCredentialsResponse;
     /**
      * Global authorization keys for all user services deployed in cluster. These are used if the service does not have auth keys.
      */
-    readonly serviceAuthConfiguration?: types.outputs.machinelearningcompute.ServiceAuthConfigurationResponse;
+    readonly serviceAuthConfiguration?: types.outputs.ServiceAuthConfigurationResponse;
     /**
      * The SSL configuration for the services.
      */
-    readonly sslConfiguration?: types.outputs.machinelearningcompute.SslConfigurationResponse;
+    readonly sslConfiguration?: types.outputs.SslConfigurationResponse;
     /**
      * Credentials for the Storage Account.
      */
-    readonly storageAccount?: types.outputs.machinelearningcompute.StorageAccountCredentialsResponse;
+    readonly storageAccount?: types.outputs.StorageAccountCredentialsResponse;
 }
 /**
  * Gets the credentials for the specified cluster such as Storage, ACR and ACS credentials. This is a long running operation because it fetches keys from dependencies.

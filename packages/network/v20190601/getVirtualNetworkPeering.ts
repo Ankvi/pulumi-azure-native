@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the specified virtual network peering.
  */
@@ -68,11 +68,11 @@ export interface GetVirtualNetworkPeeringResult {
     /**
      * The reference of the remote virtual network address space.
      */
-    readonly remoteAddressSpace?: types.outputs.network.v20190601.AddressSpaceResponse;
+    readonly remoteAddressSpace?: types.outputs.AddressSpaceResponse;
     /**
      * The reference of the remote virtual network. The remote virtual network can be in the same or different region (preview). See here to register for the preview and learn more (https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-create-peering).
      */
-    readonly remoteVirtualNetwork?: types.outputs.network.v20190601.SubResourceResponse;
+    readonly remoteVirtualNetwork?: types.outputs.SubResourceResponse;
     /**
      * If remote gateways can be used on this virtual network. If the flag is set to true, and allowGatewayTransit on remote peering is also true, virtual network will use gateways of remote virtual network for transit. Only one peering can have this flag set to true. This flag cannot be set if virtual network already has a gateway.
      */

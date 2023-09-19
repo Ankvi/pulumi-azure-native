@@ -45,7 +45,7 @@ export interface GetProfessionalServiceSubscriptionLevelResult {
     /**
      * professionalService properties
      */
-    readonly properties: types.outputs.professionalservice.ProfessionalServiceResourceResponseProperties;
+    readonly properties: types.outputs.ProfessionalServiceResourceResponseProperties;
     /**
      * the resource tags.
      */

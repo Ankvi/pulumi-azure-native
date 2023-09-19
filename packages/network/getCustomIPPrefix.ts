@@ -45,7 +45,7 @@ export interface GetCustomIPPrefixResult {
     /**
      * The list of all Children for IPv6 /48 CustomIpPrefix.
      */
-    readonly childCustomIpPrefixes: types.outputs.network.SubResourceResponse[];
+    readonly childCustomIpPrefixes: types.outputs.SubResourceResponse[];
     /**
      * The prefix range in CIDR notation. Should include the start address and the prefix length.
      */
@@ -57,7 +57,7 @@ export interface GetCustomIPPrefixResult {
     /**
      * The Parent CustomIpPrefix for IPv6 /64 CustomIpPrefix.
      */
-    readonly customIpPrefixParent?: types.outputs.network.SubResourceResponse;
+    readonly customIpPrefixParent?: types.outputs.SubResourceResponse;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -69,7 +69,7 @@ export interface GetCustomIPPrefixResult {
     /**
      * The extended location of the custom IP prefix.
      */
-    readonly extendedLocation?: types.outputs.network.ExtendedLocationResponse;
+    readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
     /**
      * The reason why resource is in failed state.
      */
@@ -105,7 +105,7 @@ export interface GetCustomIPPrefixResult {
     /**
      * The list of all referenced PublicIpPrefixes.
      */
-    readonly publicIpPrefixes: types.outputs.network.SubResourceResponse[];
+    readonly publicIpPrefixes: types.outputs.SubResourceResponse[];
     /**
      * The resource GUID property of the custom IP prefix resource.
      */

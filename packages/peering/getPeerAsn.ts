@@ -43,7 +43,7 @@ export interface GetPeerAsnResult {
     /**
      * The contact details of the peer.
      */
-    readonly peerContactDetail?: types.outputs.peering.ContactDetailResponse[];
+    readonly peerContactDetail?: types.outputs.ContactDetailResponse[];
     /**
      * The name of the peer.
      */

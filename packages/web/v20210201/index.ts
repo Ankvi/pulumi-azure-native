@@ -83,7 +83,7 @@ utilities.lazyLoad(exports, ["WebAppScmAllowed"], () => require("./webAppScmAllo
 
 
 // Export enums:
-export * from "../types/enums/v20210201";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

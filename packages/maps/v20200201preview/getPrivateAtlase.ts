@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * [Deprecated] Get a Private Atlas resource.
  */
@@ -48,7 +48,7 @@ export interface GetPrivateAtlaseResult {
     /**
      * The Private Atlas resource properties.
      */
-    readonly properties: types.outputs.maps.v20200201preview.PrivateAtlasPropertiesResponse;
+    readonly properties: types.outputs.PrivateAtlasPropertiesResponse;
     /**
      * Resource tags.
      */

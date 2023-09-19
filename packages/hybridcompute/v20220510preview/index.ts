@@ -23,7 +23,7 @@ utilities.lazyLoad(exports, ["MachineExtension"], () => require("./machineExtens
 
 
 // Export enums:
-export * from "../types/enums/v20220510preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

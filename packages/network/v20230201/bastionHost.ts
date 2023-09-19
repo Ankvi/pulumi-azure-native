@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Bastion Host resource.
  */
@@ -66,7 +66,7 @@ export class BastionHost extends pulumi.CustomResource {
     /**
      * IP configuration of the Bastion Host resource.
      */
-    public readonly ipConfigurations!: pulumi.Output<types.outputs.network.v20230201.BastionHostIPConfigurationResponse[] | undefined>;
+    public readonly ipConfigurations!: pulumi.Output<types.outputs.BastionHostIPConfigurationResponse[] | undefined>;
     /**
      * Resource location.
      */
@@ -86,7 +86,7 @@ export class BastionHost extends pulumi.CustomResource {
     /**
      * The sku of this Bastion Host.
      */
-    public readonly sku!: pulumi.Output<types.outputs.network.v20230201.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Resource tags.
      */
@@ -123,7 +123,7 @@ export class BastionHost extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["scaleUnits"] = args ? args.scaleUnits : undefined;
-            resourceInputs["sku"] = args ? (args.sku ? pulumi.output(args.sku).apply(types.inputs.network.v20230201.skuArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["sku"] = args ? (args.sku ? pulumi.output(args.sku).apply(types.inputs.skuArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -197,7 +197,7 @@ export interface BastionHostArgs {
     /**
      * IP configuration of the Bastion Host resource.
      */
-    ipConfigurations?: pulumi.Input<pulumi.Input<types.inputs.network.v20230201.BastionHostIPConfigurationArgs>[]>;
+    ipConfigurations?: pulumi.Input<pulumi.Input<types.inputs.BastionHostIPConfigurationArgs>[]>;
     /**
      * Resource location.
      */
@@ -213,7 +213,7 @@ export interface BastionHostArgs {
     /**
      * The sku of this Bastion Host.
      */
-    sku?: pulumi.Input<types.inputs.network.v20230201.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Resource tags.
      */

@@ -51,11 +51,11 @@ export class NspAssociation extends pulumi.CustomResource {
     /**
      * The PaaS resource to be associated.
      */
-    public readonly privateLinkResource!: pulumi.Output<types.outputs.network.SubResourceResponse | undefined>;
+    public readonly privateLinkResource!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * Profile id to which the PaaS resource is associated.
      */
-    public readonly profile!: pulumi.Output<types.outputs.network.SubResourceResponse | undefined>;
+    public readonly profile!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * The provisioning state of the resource  association resource.
      */
@@ -148,11 +148,11 @@ export interface NspAssociationArgs {
     /**
      * The PaaS resource to be associated.
      */
-    privateLinkResource?: pulumi.Input<types.inputs.network.SubResourceArgs>;
+    privateLinkResource?: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * Profile id to which the PaaS resource is associated.
      */
-    profile?: pulumi.Input<types.inputs.network.SubResourceArgs>;
+    profile?: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * The name of the resource group.
      */

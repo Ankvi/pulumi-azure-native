@@ -32,11 +32,11 @@ export interface GetVideoAnalyzerResult {
     /**
      * The account encryption properties.
      */
-    readonly encryption?: types.outputs.videoanalyzer.AccountEncryptionResponse;
+    readonly encryption?: types.outputs.AccountEncryptionResponse;
     /**
      * The endpoints associated with this resource.
      */
-    readonly endpoints: types.outputs.videoanalyzer.EndpointResponse[];
+    readonly endpoints: types.outputs.EndpointResponse[];
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -44,11 +44,11 @@ export interface GetVideoAnalyzerResult {
     /**
      * The identities associated to the Video Analyzer resource.
      */
-    readonly identity?: types.outputs.videoanalyzer.VideoAnalyzerIdentityResponse;
+    readonly identity?: types.outputs.VideoAnalyzerIdentityResponse;
     /**
      * The IoT Hubs for this resource.
      */
-    readonly iotHubs?: types.outputs.videoanalyzer.IotHubResponse[];
+    readonly iotHubs?: types.outputs.IotHubResponse[];
     /**
      * The geo-location where the resource lives
      */
@@ -60,11 +60,11 @@ export interface GetVideoAnalyzerResult {
     /**
      * Network access control for Video Analyzer.
      */
-    readonly networkAccessControl?: types.outputs.videoanalyzer.NetworkAccessControlResponse;
+    readonly networkAccessControl?: types.outputs.NetworkAccessControlResponse;
     /**
      * Private Endpoint Connections created under Video Analyzer account.
      */
-    readonly privateEndpointConnections: types.outputs.videoanalyzer.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections: types.outputs.PrivateEndpointConnectionResponse[];
     /**
      * Provisioning state of the Video Analyzer account.
      */
@@ -76,11 +76,11 @@ export interface GetVideoAnalyzerResult {
     /**
      * The storage accounts for this resource.
      */
-    readonly storageAccounts: types.outputs.videoanalyzer.StorageAccountResponse[];
+    readonly storageAccounts: types.outputs.StorageAccountResponse[];
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.videoanalyzer.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

@@ -45,11 +45,11 @@ export interface GetManagedNetworkSettingsRuleResult {
     /**
      * Outbound Rule for the managed network of a machine learning workspace.
      */
-    readonly properties: types.outputs.machinelearningservices.FqdnOutboundRuleResponse | types.outputs.machinelearningservices.PrivateEndpointOutboundRuleResponse | types.outputs.machinelearningservices.ServiceTagOutboundRuleResponse;
+    readonly properties: types.outputs.FqdnOutboundRuleResponse | types.outputs.PrivateEndpointOutboundRuleResponse | types.outputs.ServiceTagOutboundRuleResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.machinelearningservices.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

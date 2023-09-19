@@ -35,7 +35,7 @@ export class Service extends pulumi.CustomResource {
     /**
      * The identity of the service.
      */
-    public readonly identity!: pulumi.Output<types.outputs.apicenter.ManagedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -51,7 +51,7 @@ export class Service extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.apicenter.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -107,7 +107,7 @@ export interface ServiceArgs {
     /**
      * The identity of the service.
      */
-    identity?: pulumi.Input<types.inputs.apicenter.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
      * The geo-location where the resource lives
      */

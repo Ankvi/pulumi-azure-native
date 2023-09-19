@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the connection strings of an app.
  */
@@ -48,11 +48,11 @@ export interface ListWebAppConnectionStringsSlotResult {
     /**
      * Connection strings.
      */
-    readonly properties: {[key: string]: types.outputs.web.v20201001.ConnStringValueTypePairResponse};
+    readonly properties: {[key: string]: types.outputs.ConnStringValueTypePairResponse};
     /**
      * The system metadata relating to this resource.
      */
-    readonly systemData: types.outputs.web.v20201001.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource type.
      */

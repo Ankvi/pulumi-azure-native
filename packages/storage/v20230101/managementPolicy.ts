@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The Get Storage Account ManagementPolicies operation response.
  */
@@ -42,7 +42,7 @@ export class ManagementPolicy extends pulumi.CustomResource {
     /**
      * The Storage Account ManagementPolicy, in JSON format. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
      */
-    public readonly policy!: pulumi.Output<types.outputs.storage.v20230101.ManagementPolicySchemaResponse>;
+    public readonly policy!: pulumi.Output<types.outputs.ManagementPolicySchemaResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -103,7 +103,7 @@ export interface ManagementPolicyArgs {
     /**
      * The Storage Account ManagementPolicy, in JSON format. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
      */
-    policy: pulumi.Input<types.inputs.storage.v20230101.ManagementPolicySchemaArgs>;
+    policy: pulumi.Input<types.inputs.ManagementPolicySchemaArgs>;
     /**
      * The name of the resource group within the user's subscription. The name is case insensitive.
      */

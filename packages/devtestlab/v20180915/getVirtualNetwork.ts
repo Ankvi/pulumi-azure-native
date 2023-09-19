@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get virtual network.
  */
@@ -41,7 +41,7 @@ export interface GetVirtualNetworkResult {
     /**
      * The allowed subnets of the virtual network.
      */
-    readonly allowedSubnets?: types.outputs.devtestlab.v20180915.SubnetResponse[];
+    readonly allowedSubnets?: types.outputs.SubnetResponse[];
     /**
      * The creation date of the virtual network.
      */
@@ -57,7 +57,7 @@ export interface GetVirtualNetworkResult {
     /**
      * The external subnet properties.
      */
-    readonly externalSubnets: types.outputs.devtestlab.v20180915.ExternalSubnetResponse[];
+    readonly externalSubnets: types.outputs.ExternalSubnetResponse[];
     /**
      * The identifier of the resource.
      */
@@ -77,7 +77,7 @@ export interface GetVirtualNetworkResult {
     /**
      * The subnet overrides of the virtual network.
      */
-    readonly subnetOverrides?: types.outputs.devtestlab.v20180915.SubnetOverrideResponse[];
+    readonly subnetOverrides?: types.outputs.SubnetOverrideResponse[];
     /**
      * The tags of the resource.
      */

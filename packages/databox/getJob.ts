@@ -41,7 +41,7 @@ export interface GetJobResult {
     /**
      * Delivery Info of Job.
      */
-    readonly deliveryInfo?: types.outputs.databox.JobDeliveryInfoResponse;
+    readonly deliveryInfo?: types.outputs.JobDeliveryInfoResponse;
     /**
      * Delivery type of Job.
      */
@@ -49,11 +49,11 @@ export interface GetJobResult {
     /**
      * Details of a job run. This field will only be sent for expand details filter.
      */
-    readonly details?: types.outputs.databox.DataBoxCustomerDiskJobDetailsResponse | types.outputs.databox.DataBoxDiskJobDetailsResponse | types.outputs.databox.DataBoxHeavyJobDetailsResponse | types.outputs.databox.DataBoxJobDetailsResponse;
+    readonly details?: types.outputs.DataBoxCustomerDiskJobDetailsResponse | types.outputs.DataBoxDiskJobDetailsResponse | types.outputs.DataBoxHeavyJobDetailsResponse | types.outputs.DataBoxJobDetailsResponse;
     /**
      * Top level error for the job.
      */
-    readonly error: types.outputs.databox.CloudErrorResponse;
+    readonly error: types.outputs.CloudErrorResponse;
     /**
      * Id of the object.
      */
@@ -61,7 +61,7 @@ export interface GetJobResult {
     /**
      * Msi identity of the resource
      */
-    readonly identity?: types.outputs.databox.ResourceIdentityResponse;
+    readonly identity?: types.outputs.ResourceIdentityResponse;
     /**
      * Describes whether the job is cancellable or not.
      */
@@ -101,7 +101,7 @@ export interface GetJobResult {
     /**
      * The sku type.
      */
-    readonly sku: types.outputs.databox.SkuResponse;
+    readonly sku: types.outputs.SkuResponse;
     /**
      * Time at which the job was started in UTC ISO 8601 format.
      */
@@ -113,7 +113,7 @@ export interface GetJobResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.databox.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups).
      */

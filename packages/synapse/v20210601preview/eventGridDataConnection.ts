@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Class representing an Event Grid data connection.
  */
@@ -79,7 +79,7 @@ export class EventGridDataConnection extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.synapse.v20210601preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The table where the data should be ingested. Optionally the table information can be added to each message.
      */
@@ -173,7 +173,7 @@ export interface EventGridDataConnectionArgs {
     /**
      * The name of blob storage event type to process.
      */
-    blobStorageEventType?: pulumi.Input<string | types.enums.v20210601preview.BlobStorageEventType>;
+    blobStorageEventType?: pulumi.Input<string | types.enums.BlobStorageEventType>;
     /**
      * The event hub consumer group.
      */
@@ -185,7 +185,7 @@ export interface EventGridDataConnectionArgs {
     /**
      * The data format of the message. Optionally the data format can be added to each message.
      */
-    dataFormat?: pulumi.Input<string | types.enums.v20210601preview.EventGridDataFormat>;
+    dataFormat?: pulumi.Input<string | types.enums.EventGridDataFormat>;
     /**
      * The name of the database in the Kusto pool.
      */

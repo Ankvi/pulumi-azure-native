@@ -42,7 +42,7 @@ export interface GetUserRuleCollectionResult {
     /**
      * Groups for configuration
      */
-    readonly appliesToGroups: types.outputs.network.NetworkManagerSecurityGroupItemResponse[];
+    readonly appliesToGroups: types.outputs.NetworkManagerSecurityGroupItemResponse[];
     /**
      * A description of the user rule collection.
      */
@@ -66,7 +66,7 @@ export interface GetUserRuleCollectionResult {
     /**
      * The system metadata related to this resource.
      */
-    readonly systemData: types.outputs.network.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource type.
      */

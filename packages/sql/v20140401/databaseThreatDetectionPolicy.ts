@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Contains information about a database Threat Detection policy.
  */
@@ -150,7 +150,7 @@ export interface DatabaseThreatDetectionPolicyArgs {
     /**
      * Specifies that the alert is sent to the account administrators.
      */
-    emailAccountAdmins?: pulumi.Input<string | types.enums.v20140401.SecurityAlertPolicyEmailAccountAdmins>;
+    emailAccountAdmins?: pulumi.Input<string | types.enums.SecurityAlertPolicyEmailAccountAdmins>;
     /**
      * Specifies the semicolon-separated list of e-mail addresses to which the alert is sent.
      */
@@ -178,7 +178,7 @@ export interface DatabaseThreatDetectionPolicyArgs {
     /**
      * Specifies the state of the policy. If state is Enabled, storageEndpoint and storageAccountAccessKey are required.
      */
-    state: pulumi.Input<string | types.enums.v20140401.SecurityAlertPolicyState>;
+    state: pulumi.Input<string | types.enums.SecurityAlertPolicyState>;
     /**
      * Specifies the identifier key of the Threat Detection audit storage account. If state is Enabled, storageAccountAccessKey is required.
      */
@@ -190,5 +190,5 @@ export interface DatabaseThreatDetectionPolicyArgs {
     /**
      * Specifies whether to use the default server policy.
      */
-    useServerDefault?: pulumi.Input<string | types.enums.v20140401.SecurityAlertPolicyUseServerDefault>;
+    useServerDefault?: pulumi.Input<string | types.enums.SecurityAlertPolicyUseServerDefault>;
 }

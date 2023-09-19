@@ -44,7 +44,7 @@ export interface GetAttestationAtResourceGroupResult {
     /**
      * The evidence supporting the compliance state set in this attestation.
      */
-    readonly evidence?: types.outputs.policyinsights.AttestationEvidenceResponse[];
+    readonly evidence?: types.outputs.AttestationEvidenceResponse[];
     /**
      * The time the compliance state should expire.
      */
@@ -84,7 +84,7 @@ export interface GetAttestationAtResourceGroupResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.policyinsights.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

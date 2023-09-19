@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The build task that has the resource properties and all build items. The build task will have all information to schedule a build against it.
  */
@@ -50,7 +50,7 @@ export class BuildTask extends pulumi.CustomResource {
     /**
      * The platform properties against which the build has to happen.
      */
-    public readonly platform!: pulumi.Output<types.outputs.containerregistry.v20180201preview.PlatformPropertiesResponse>;
+    public readonly platform!: pulumi.Output<types.outputs.PlatformPropertiesResponse>;
     /**
      * The provisioning state of the build task.
      */
@@ -58,7 +58,7 @@ export class BuildTask extends pulumi.CustomResource {
     /**
      * The properties that describes the source(code) for the build task.
      */
-    public readonly sourceRepository!: pulumi.Output<types.outputs.containerregistry.v20180201preview.SourceRepositoryPropertiesResponse>;
+    public readonly sourceRepository!: pulumi.Output<types.outputs.SourceRepositoryPropertiesResponse>;
     /**
      * The current status of build task.
      */
@@ -108,7 +108,7 @@ export class BuildTask extends pulumi.CustomResource {
             resourceInputs["platform"] = args ? args.platform : undefined;
             resourceInputs["registryName"] = args ? args.registryName : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["sourceRepository"] = args ? (args.sourceRepository ? pulumi.output(args.sourceRepository).apply(types.inputs.containerregistry.v20180201preview.sourceRepositoryPropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["sourceRepository"] = args ? (args.sourceRepository ? pulumi.output(args.sourceRepository).apply(types.inputs.sourceRepositoryPropertiesArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["status"] = args ? args.status : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["timeout"] = (args ? args.timeout : undefined) ?? 3600;
@@ -155,7 +155,7 @@ export interface BuildTaskArgs {
     /**
      * The platform properties against which the build has to happen.
      */
-    platform: pulumi.Input<types.inputs.containerregistry.v20180201preview.PlatformPropertiesArgs>;
+    platform: pulumi.Input<types.inputs.PlatformPropertiesArgs>;
     /**
      * The name of the container registry.
      */
@@ -167,11 +167,11 @@ export interface BuildTaskArgs {
     /**
      * The properties that describes the source(code) for the build task.
      */
-    sourceRepository: pulumi.Input<types.inputs.containerregistry.v20180201preview.SourceRepositoryPropertiesArgs>;
+    sourceRepository: pulumi.Input<types.inputs.SourceRepositoryPropertiesArgs>;
     /**
      * The current status of build task.
      */
-    status?: pulumi.Input<string | types.enums.v20180201preview.BuildTaskStatus>;
+    status?: pulumi.Input<string | types.enums.BuildTaskStatus>;
     /**
      * The tags of the resource.
      */

@@ -51,7 +51,7 @@ export class Budget extends pulumi.CustomResource {
      *
      *  Supported for CategoryType(s): Cost.
      */
-    public /*out*/ readonly currentSpend!: pulumi.Output<types.outputs.costmanagement.CurrentSpendResponse>;
+    public /*out*/ readonly currentSpend!: pulumi.Output<types.outputs.CurrentSpendResponse>;
     /**
      * eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
      */
@@ -61,13 +61,13 @@ export class Budget extends pulumi.CustomResource {
      *
      *  Supported for CategoryType(s): Cost, ReservationUtilization.
      */
-    public readonly filter!: pulumi.Output<types.outputs.costmanagement.BudgetFilterResponse | undefined>;
+    public readonly filter!: pulumi.Output<types.outputs.BudgetFilterResponse | undefined>;
     /**
      * The forecasted cost which is being tracked for a budget.
      *
      *  Supported for CategoryType(s): Cost.
      */
-    public /*out*/ readonly forecastSpend!: pulumi.Output<types.outputs.costmanagement.ForecastSpendResponse>;
+    public /*out*/ readonly forecastSpend!: pulumi.Output<types.outputs.ForecastSpendResponse>;
     /**
      * The name of the resource
      */
@@ -80,7 +80,7 @@ export class Budget extends pulumi.CustomResource {
      * - Constraints for **CategoryType: Cost** - Budget can have up to 5 notifications with thresholdType: Actual and 5 notifications with thresholdType: Forecasted.
      * - Constraints for **CategoryType: ReservationUtilization** - Only one notification allowed. thresholdType is not applicable.
      */
-    public readonly notifications!: pulumi.Output<{[key: string]: types.outputs.costmanagement.NotificationResponse} | undefined>;
+    public readonly notifications!: pulumi.Output<{[key: string]: types.outputs.NotificationResponse} | undefined>;
     /**
      * The time covered by a budget. Tracking of the amount will be reset based on the time grain.
      *
@@ -111,7 +111,7 @@ export class Budget extends pulumi.CustomResource {
      *
      *  Required for CategoryType(s): Cost, ReservationUtilization.
      */
-    public readonly timePeriod!: pulumi.Output<types.outputs.costmanagement.BudgetTimePeriodResponse>;
+    public readonly timePeriod!: pulumi.Output<types.outputs.BudgetTimePeriodResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -204,7 +204,7 @@ export interface BudgetArgs {
      *
      *  Supported for CategoryType(s): Cost, ReservationUtilization.
      */
-    filter?: pulumi.Input<types.inputs.costmanagement.BudgetFilterArgs>;
+    filter?: pulumi.Input<types.inputs.BudgetFilterArgs>;
     /**
      * Dictionary of notifications associated with the budget.
      *
@@ -213,7 +213,7 @@ export interface BudgetArgs {
      * - Constraints for **CategoryType: Cost** - Budget can have up to 5 notifications with thresholdType: Actual and 5 notifications with thresholdType: Forecasted.
      * - Constraints for **CategoryType: ReservationUtilization** - Only one notification allowed. thresholdType is not applicable.
      */
-    notifications?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.costmanagement.NotificationArgs>}>;
+    notifications?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.NotificationArgs>}>;
     /**
      * The scope associated with budget operations.
      *
@@ -276,5 +276,5 @@ export interface BudgetArgs {
      *
      *  Required for CategoryType(s): Cost, ReservationUtilization.
      */
-    timePeriod: pulumi.Input<types.inputs.costmanagement.BudgetTimePeriodArgs>;
+    timePeriod: pulumi.Input<types.inputs.BudgetTimePeriodArgs>;
 }

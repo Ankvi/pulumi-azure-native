@@ -39,11 +39,11 @@ export class Profile extends pulumi.CustomResource {
     /**
      * The DNS settings of the Traffic Manager profile.
      */
-    public readonly dnsConfig!: pulumi.Output<types.outputs.network.DnsConfigResponse | undefined>;
+    public readonly dnsConfig!: pulumi.Output<types.outputs.DnsConfigResponse | undefined>;
     /**
      * The list of endpoints in the Traffic Manager profile.
      */
-    public readonly endpoints!: pulumi.Output<types.outputs.network.EndpointResponse[] | undefined>;
+    public readonly endpoints!: pulumi.Output<types.outputs.EndpointResponse[] | undefined>;
     /**
      * The Azure Region where the resource lives
      */
@@ -55,7 +55,7 @@ export class Profile extends pulumi.CustomResource {
     /**
      * The endpoint monitoring settings of the Traffic Manager profile.
      */
-    public readonly monitorConfig!: pulumi.Output<types.outputs.network.MonitorConfigResponse | undefined>;
+    public readonly monitorConfig!: pulumi.Output<types.outputs.MonitorConfigResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -142,12 +142,12 @@ export interface ProfileArgs {
     /**
      * The DNS settings of the Traffic Manager profile.
      */
-    dnsConfig?: pulumi.Input<types.inputs.network.DnsConfigArgs>;
+    dnsConfig?: pulumi.Input<types.inputs.DnsConfigArgs>;
     /**
      * The list of endpoints in the Traffic Manager profile.
      * These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
      */
-    endpoints?: pulumi.Input<pulumi.Input<types.inputs.network.EndpointArgs>[]>;
+    endpoints?: pulumi.Input<pulumi.Input<types.inputs.EndpointArgs>[]>;
     /**
      * Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName}
      */
@@ -163,7 +163,7 @@ export interface ProfileArgs {
     /**
      * The endpoint monitoring settings of the Traffic Manager profile.
      */
-    monitorConfig?: pulumi.Input<types.inputs.network.MonitorConfigArgs>;
+    monitorConfig?: pulumi.Input<types.inputs.MonitorConfigArgs>;
     /**
      * The name of the resource
      */

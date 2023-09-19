@@ -27,7 +27,7 @@ export interface GetVariableResult {
     /**
      * Variable column definitions.
      */
-    readonly columns: types.outputs.authorization.PolicyVariableColumnResponse[];
+    readonly columns: types.outputs.PolicyVariableColumnResponse[];
     /**
      * The ID of the variable.
      */
@@ -39,7 +39,7 @@ export interface GetVariableResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.authorization.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource (Microsoft.Authorization/variables).
      */

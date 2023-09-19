@@ -35,11 +35,11 @@ export class VirtualNetwork extends pulumi.CustomResource {
     /**
      * DhcpOptions contains an array of DNS servers available to VMs deployed in the virtual network. Standard DHCP option for a subnet overrides VNET DHCP options.
      */
-    public readonly dhcpOptions!: pulumi.Output<types.outputs.azurestackhci.VirtualNetworkPropertiesResponseDhcpOptions | undefined>;
+    public readonly dhcpOptions!: pulumi.Output<types.outputs.VirtualNetworkPropertiesResponseDhcpOptions | undefined>;
     /**
      * The extendedLocation of the resource.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.azurestackhci.ExtendedLocationResponse | undefined>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -59,15 +59,15 @@ export class VirtualNetwork extends pulumi.CustomResource {
     /**
      * The observed state of virtual networks
      */
-    public /*out*/ readonly status!: pulumi.Output<types.outputs.azurestackhci.VirtualNetworkStatusResponse>;
+    public /*out*/ readonly status!: pulumi.Output<types.outputs.VirtualNetworkStatusResponse>;
     /**
      * Subnet - list of subnets under the virtual network
      */
-    public readonly subnets!: pulumi.Output<types.outputs.azurestackhci.VirtualNetworkPropertiesResponseSubnets[] | undefined>;
+    public readonly subnets!: pulumi.Output<types.outputs.VirtualNetworkPropertiesResponseSubnets[] | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.azurestackhci.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -137,11 +137,11 @@ export interface VirtualNetworkArgs {
     /**
      * DhcpOptions contains an array of DNS servers available to VMs deployed in the virtual network. Standard DHCP option for a subnet overrides VNET DHCP options.
      */
-    dhcpOptions?: pulumi.Input<types.inputs.azurestackhci.VirtualNetworkPropertiesDhcpOptionsArgs>;
+    dhcpOptions?: pulumi.Input<types.inputs.VirtualNetworkPropertiesDhcpOptionsArgs>;
     /**
      * The extendedLocation of the resource.
      */
-    extendedLocation?: pulumi.Input<types.inputs.azurestackhci.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -157,7 +157,7 @@ export interface VirtualNetworkArgs {
     /**
      * Subnet - list of subnets under the virtual network
      */
-    subnets?: pulumi.Input<pulumi.Input<types.inputs.azurestackhci.VirtualNetworkPropertiesSubnetsArgs>[]>;
+    subnets?: pulumi.Input<pulumi.Input<types.inputs.VirtualNetworkPropertiesSubnetsArgs>[]>;
     /**
      * Resource tags.
      */

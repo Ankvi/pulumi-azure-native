@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The StorSimple Manager.
  */
@@ -34,7 +34,7 @@ export class Manager extends pulumi.CustomResource {
     /**
      * Represents the type of StorSimple Manager.
      */
-    public readonly cisIntrinsicSettings!: pulumi.Output<types.outputs.storsimple.v20170601.ManagerIntrinsicSettingsResponse | undefined>;
+    public readonly cisIntrinsicSettings!: pulumi.Output<types.outputs.ManagerIntrinsicSettingsResponse | undefined>;
     /**
      * The etag of the manager.
      */
@@ -54,7 +54,7 @@ export class Manager extends pulumi.CustomResource {
     /**
      * Specifies the Sku.
      */
-    public readonly sku!: pulumi.Output<types.outputs.storsimple.v20170601.ManagerSkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.ManagerSkuResponse | undefined>;
     /**
      * The tags attached to the resource.
      */
@@ -112,7 +112,7 @@ export interface ManagerArgs {
     /**
      * Represents the type of StorSimple Manager.
      */
-    cisIntrinsicSettings?: pulumi.Input<types.inputs.storsimple.v20170601.ManagerIntrinsicSettingsArgs>;
+    cisIntrinsicSettings?: pulumi.Input<types.inputs.ManagerIntrinsicSettingsArgs>;
     /**
      * The geo location of the resource.
      */
@@ -132,7 +132,7 @@ export interface ManagerArgs {
     /**
      * Specifies the Sku.
      */
-    sku?: pulumi.Input<types.inputs.storsimple.v20170601.ManagerSkuArgs>;
+    sku?: pulumi.Input<types.inputs.ManagerSkuArgs>;
     /**
      * The tags attached to the resource.
      */

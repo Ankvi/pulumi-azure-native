@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Schema Contract details.
  */
@@ -113,7 +113,7 @@ export interface SchemaArgs {
     /**
      * Schema Type. Immutable.
      */
-    schemaType: pulumi.Input<string | types.enums.v20210401preview.SchemaType>;
+    schemaType: pulumi.Input<string | types.enums.SchemaType>;
     /**
      * The name of the API Management service.
      */

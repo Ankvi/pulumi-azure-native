@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The NetworkFabric resource definition.
  */
@@ -62,7 +62,7 @@ export class NetworkFabric extends pulumi.CustomResource {
     /**
      * Configuration to be used to setup the management network.
      */
-    public readonly managementNetworkConfiguration!: pulumi.Output<types.outputs.managednetworkfabric.v20230201preview.ManagementNetworkConfigurationResponse>;
+    public readonly managementNetworkConfiguration!: pulumi.Output<types.outputs.ManagementNetworkConfigurationResponse>;
     /**
      * The name of the resource
      */
@@ -102,7 +102,7 @@ export class NetworkFabric extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.managednetworkfabric.v20230201preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -110,7 +110,7 @@ export class NetworkFabric extends pulumi.CustomResource {
     /**
      * Network and credentials configuration currently applied to terminal server.
      */
-    public readonly terminalServerConfiguration!: pulumi.Output<types.outputs.managednetworkfabric.v20230201preview.TerminalServerConfigurationResponse>;
+    public readonly terminalServerConfiguration!: pulumi.Output<types.outputs.TerminalServerConfigurationResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -156,7 +156,7 @@ export class NetworkFabric extends pulumi.CustomResource {
             resourceInputs["ipv4Prefix"] = args ? args.ipv4Prefix : undefined;
             resourceInputs["ipv6Prefix"] = args ? args.ipv6Prefix : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["managementNetworkConfiguration"] = args ? (args.managementNetworkConfiguration ? pulumi.output(args.managementNetworkConfiguration).apply(types.inputs.managednetworkfabric.v20230201preview.managementNetworkConfigurationArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["managementNetworkConfiguration"] = args ? (args.managementNetworkConfiguration ? pulumi.output(args.managementNetworkConfiguration).apply(types.inputs.managementNetworkConfigurationArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["networkFabricControllerId"] = args ? args.networkFabricControllerId : undefined;
             resourceInputs["networkFabricName"] = args ? args.networkFabricName : undefined;
             resourceInputs["networkFabricSku"] = args ? args.networkFabricSku : undefined;
@@ -231,7 +231,7 @@ export interface NetworkFabricArgs {
     /**
      * Configuration to be used to setup the management network.
      */
-    managementNetworkConfiguration: pulumi.Input<types.inputs.managednetworkfabric.v20230201preview.ManagementNetworkConfigurationArgs>;
+    managementNetworkConfiguration: pulumi.Input<types.inputs.ManagementNetworkConfigurationArgs>;
     /**
      * Azure resource ID for the NetworkFabricController the NetworkFabric belongs.
      */
@@ -263,5 +263,5 @@ export interface NetworkFabricArgs {
     /**
      * Network and credentials configuration currently applied to terminal server.
      */
-    terminalServerConfiguration: pulumi.Input<types.inputs.managednetworkfabric.v20230201preview.TerminalServerConfigurationArgs>;
+    terminalServerConfiguration: pulumi.Input<types.inputs.TerminalServerConfigurationArgs>;
 }

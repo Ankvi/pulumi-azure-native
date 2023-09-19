@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a change data capture.
  */
@@ -48,7 +48,7 @@ export interface GetChangeDataCaptureResult {
     /**
      * The folder that this CDC is in. If not specified, CDC will appear at the root level.
      */
-    readonly folder?: types.outputs.datafactory.v20180601.ChangeDataCaptureResponseFolder;
+    readonly folder?: types.outputs.ChangeDataCaptureResponseFolder;
     /**
      * The resource identifier.
      */
@@ -60,11 +60,11 @@ export interface GetChangeDataCaptureResult {
     /**
      * CDC policy
      */
-    readonly policy: types.outputs.datafactory.v20180601.MapperPolicyResponse;
+    readonly policy: types.outputs.MapperPolicyResponse;
     /**
      * List of sources connections that can be used as sources in the CDC.
      */
-    readonly sourceConnectionsInfo: types.outputs.datafactory.v20180601.MapperSourceConnectionsInfoResponse[];
+    readonly sourceConnectionsInfo: types.outputs.MapperSourceConnectionsInfoResponse[];
     /**
      * Status of the CDC as to if it is running or stopped.
      */
@@ -72,7 +72,7 @@ export interface GetChangeDataCaptureResult {
     /**
      * List of target connections that can be used as sources in the CDC.
      */
-    readonly targetConnectionsInfo: types.outputs.datafactory.v20180601.MapperTargetConnectionsInfoResponse[];
+    readonly targetConnectionsInfo: types.outputs.MapperTargetConnectionsInfoResponse[];
     /**
      * The resource type.
      */

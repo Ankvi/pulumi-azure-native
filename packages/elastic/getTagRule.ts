@@ -45,11 +45,11 @@ export interface GetTagRuleResult {
     /**
      * Properties of the monitoring tag rules.
      */
-    readonly properties: types.outputs.elastic.MonitoringTagRulesPropertiesResponse;
+    readonly properties: types.outputs.MonitoringTagRulesPropertiesResponse;
     /**
      * The system metadata relating to this resource
      */
-    readonly systemData: types.outputs.elastic.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the rule set.
      */

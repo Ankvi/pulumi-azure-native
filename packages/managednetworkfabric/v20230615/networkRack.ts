@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The Network Rack resource definition.
  */
@@ -62,7 +62,7 @@ export class NetworkRack extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.managednetworkfabric.v20230615.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -143,7 +143,7 @@ export interface NetworkRackArgs {
     /**
      * Network Rack SKU name.
      */
-    networkRackType?: pulumi.Input<string | types.enums.v20230615.NetworkRackType>;
+    networkRackType?: pulumi.Input<string | types.enums.NetworkRackType>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

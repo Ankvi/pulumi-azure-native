@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Azure Migrate Project.
  */
@@ -46,7 +46,7 @@ export class Project extends pulumi.CustomResource {
     /**
      * Properties of the project.
      */
-    public readonly properties!: pulumi.Output<types.outputs.migrate.v20191001.ProjectPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ProjectPropertiesResponse>;
     /**
      * Tags provided by Azure Tagging service.
      */
@@ -112,7 +112,7 @@ export interface ProjectArgs {
     /**
      * Properties of the project.
      */
-    properties?: pulumi.Input<types.inputs.migrate.v20191001.ProjectPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ProjectPropertiesArgs>;
     /**
      * Name of the Azure Resource Group that project is part of.
      */

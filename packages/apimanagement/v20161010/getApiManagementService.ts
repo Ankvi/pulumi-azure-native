@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets an API Management service resource description.
  */
@@ -31,7 +31,7 @@ export interface GetApiManagementServiceResult {
     /**
      * Additional datacenter locations of the API Management service.
      */
-    readonly additionalLocations?: types.outputs.apimanagement.v20161010.AdditionalRegionResponse[];
+    readonly additionalLocations?: types.outputs.AdditionalRegionResponse[];
     /**
      * Addresser email.
      */
@@ -51,7 +51,7 @@ export interface GetApiManagementServiceResult {
     /**
      * Custom hostname configuration of the API Management service.
      */
-    readonly hostnameConfigurations?: types.outputs.apimanagement.v20161010.HostnameConfigurationResponse[];
+    readonly hostnameConfigurations?: types.outputs.HostnameConfigurationResponse[];
     /**
      * Resource ID.
      */
@@ -95,7 +95,7 @@ export interface GetApiManagementServiceResult {
     /**
      * SKU properties of the API Management service.
      */
-    readonly sku: types.outputs.apimanagement.v20161010.ApiManagementServiceSkuPropertiesResponse;
+    readonly sku: types.outputs.ApiManagementServiceSkuPropertiesResponse;
     /**
      * Static IP addresses of the API Management service virtual machines. Available only for Standard and Premium SKU.
      */
@@ -119,7 +119,7 @@ export interface GetApiManagementServiceResult {
     /**
      * Virtual network configuration of the API Management service.
      */
-    readonly vpnconfiguration?: types.outputs.apimanagement.v20161010.VirtualNetworkConfigurationResponse;
+    readonly vpnconfiguration?: types.outputs.VirtualNetworkConfigurationResponse;
 }
 /**
  * Gets an API Management service resource description.

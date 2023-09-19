@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the specified public IP prefix in a specified resource group.
  */
@@ -36,7 +36,7 @@ export interface GetPublicIPPrefixResult {
     /**
      * The customIpPrefix that this prefix is associated with.
      */
-    readonly customIPPrefix?: types.outputs.network.v20230501.SubResourceResponse;
+    readonly customIPPrefix?: types.outputs.SubResourceResponse;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -44,7 +44,7 @@ export interface GetPublicIPPrefixResult {
     /**
      * The extended location of the public ip address.
      */
-    readonly extendedLocation?: types.outputs.network.v20230501.ExtendedLocationResponse;
+    readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
     /**
      * Resource ID.
      */
@@ -56,11 +56,11 @@ export interface GetPublicIPPrefixResult {
     /**
      * The list of tags associated with the public IP prefix.
      */
-    readonly ipTags?: types.outputs.network.v20230501.IpTagResponse[];
+    readonly ipTags?: types.outputs.IpTagResponse[];
     /**
      * The reference to load balancer frontend IP configuration associated with the public IP prefix.
      */
-    readonly loadBalancerFrontendIpConfiguration: types.outputs.network.v20230501.SubResourceResponse;
+    readonly loadBalancerFrontendIpConfiguration: types.outputs.SubResourceResponse;
     /**
      * Resource location.
      */
@@ -72,7 +72,7 @@ export interface GetPublicIPPrefixResult {
     /**
      * NatGateway of Public IP Prefix.
      */
-    readonly natGateway?: types.outputs.network.v20230501.NatGatewayResponse;
+    readonly natGateway?: types.outputs.NatGatewayResponse;
     /**
      * The Length of the Public IP Prefix.
      */
@@ -88,7 +88,7 @@ export interface GetPublicIPPrefixResult {
     /**
      * The list of all referenced PublicIPAddresses.
      */
-    readonly publicIPAddresses: types.outputs.network.v20230501.ReferencedPublicIpAddressResponse[];
+    readonly publicIPAddresses: types.outputs.ReferencedPublicIpAddressResponse[];
     /**
      * The resource GUID property of the public IP prefix resource.
      */
@@ -96,7 +96,7 @@ export interface GetPublicIPPrefixResult {
     /**
      * The public IP prefix SKU.
      */
-    readonly sku?: types.outputs.network.v20230501.PublicIPPrefixSkuResponse;
+    readonly sku?: types.outputs.PublicIPPrefixSkuResponse;
     /**
      * Resource tags.
      */

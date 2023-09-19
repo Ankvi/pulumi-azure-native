@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns the description for the specified namespace.
  */
@@ -51,7 +51,7 @@ export interface GetNamespaceResult {
     /**
      * List of private endpoint connections.
      */
-    readonly privateEndpointConnections?: types.outputs.relay.v20211101.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections?: types.outputs.PrivateEndpointConnectionResponse[];
     /**
      * Provisioning state of the Namespace.
      */
@@ -67,7 +67,7 @@ export interface GetNamespaceResult {
     /**
      * SKU of the namespace.
      */
-    readonly sku?: types.outputs.relay.v20211101.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * Status of the Namespace.
      */
@@ -75,7 +75,7 @@ export interface GetNamespaceResult {
     /**
      * The system meta data relating to this resource.
      */
-    readonly systemData: types.outputs.relay.v20211101.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

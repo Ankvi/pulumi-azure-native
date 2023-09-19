@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves the details of a RouteMap.
  */
@@ -60,7 +60,7 @@ export interface GetRouteMapResult {
     /**
      * List of RouteMap rules to be applied.
      */
-    readonly rules?: types.outputs.network.v20230501.RouteMapRuleResponse[];
+    readonly rules?: types.outputs.RouteMapRuleResponse[];
     /**
      * Resource type.
      */

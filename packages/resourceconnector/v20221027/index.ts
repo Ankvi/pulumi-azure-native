@@ -23,7 +23,7 @@ utilities.lazyLoad(exports, ["listApplianceKeys","listApplianceKeysOutput"], () 
 
 
 // Export enums:
-export * from "../types/enums/v20221027";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

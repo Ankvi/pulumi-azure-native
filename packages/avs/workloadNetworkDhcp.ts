@@ -39,7 +39,7 @@ export class WorkloadNetworkDhcp extends pulumi.CustomResource {
     /**
      * DHCP properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.avs.WorkloadNetworkDhcpRelayResponse | types.outputs.avs.WorkloadNetworkDhcpServerResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.WorkloadNetworkDhcpRelayResponse | types.outputs.WorkloadNetworkDhcpServerResponse>;
     /**
      * Resource type.
      */
@@ -95,7 +95,7 @@ export interface WorkloadNetworkDhcpArgs {
     /**
      * DHCP properties.
      */
-    properties?: pulumi.Input<types.inputs.avs.WorkloadNetworkDhcpRelayArgs | types.inputs.avs.WorkloadNetworkDhcpServerArgs>;
+    properties?: pulumi.Input<types.inputs.WorkloadNetworkDhcpRelayArgs | types.inputs.WorkloadNetworkDhcpServerArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

@@ -48,7 +48,7 @@ export interface GetAttestationProviderResult {
     /**
      * List of private endpoint connections associated with the attestation provider.
      */
-    readonly privateEndpointConnections: types.outputs.attestation.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections: types.outputs.PrivateEndpointConnectionResponse[];
     /**
      * Controls whether traffic from the public network is allowed to access the Attestation Provider APIs.
      */
@@ -60,7 +60,7 @@ export interface GetAttestationProviderResult {
     /**
      * The system metadata relating to this resource
      */
-    readonly systemData: types.outputs.attestation.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

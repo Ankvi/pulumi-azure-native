@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a private endpoint connection properties for a workspace
  */
@@ -44,7 +44,7 @@ export interface GetPrivateEndpointConnectionResult {
     /**
      * The private endpoint connection properties.
      */
-    readonly properties: types.outputs.databricks.v20230201.PrivateEndpointConnectionPropertiesResponse;
+    readonly properties: types.outputs.PrivateEndpointConnectionPropertiesResponse;
     /**
      * The resource type.
      */

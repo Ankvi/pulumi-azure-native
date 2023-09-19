@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the properties of an ADP account
  */
@@ -51,7 +51,7 @@ export interface GetAccountResult {
     /**
      * The system meta data relating to this resource
      */
-    readonly systemData: types.outputs.autonomousdevelopmentplatform.v20211101preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get batch operation status
  */
@@ -31,7 +31,7 @@ export interface GetGlobalUserOperationBatchStatusResult {
     /**
      * Gets a collection of items that contain the operation url and status.
      */
-    readonly items: types.outputs.labservices.v20181015.OperationBatchStatusResponseItemResponse[];
+    readonly items: types.outputs.OperationBatchStatusResponseItemResponse[];
 }
 /**
  * Get batch operation status

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Display information about a virtual machine scale set.
  */
@@ -36,11 +36,11 @@ export interface GetVirtualMachineScaleSetResult {
     /**
      * Specifies additional capabilities enabled or disabled on the Virtual Machines in the Virtual Machine Scale Set. For instance: whether the Virtual Machines have the capability to support attaching managed data disks with UltraSSD_LRS storage account type.
      */
-    readonly additionalCapabilities?: types.outputs.compute.v20230701.AdditionalCapabilitiesResponse;
+    readonly additionalCapabilities?: types.outputs.AdditionalCapabilitiesResponse;
     /**
      * Policy for automatic repairs.
      */
-    readonly automaticRepairsPolicy?: types.outputs.compute.v20230701.AutomaticRepairsPolicyResponse;
+    readonly automaticRepairsPolicy?: types.outputs.AutomaticRepairsPolicyResponse;
     /**
      * Optional property which must either be set to True or omitted.
      */
@@ -52,11 +52,11 @@ export interface GetVirtualMachineScaleSetResult {
     /**
      * The extended location of the Virtual Machine Scale Set.
      */
-    readonly extendedLocation?: types.outputs.compute.v20230701.ExtendedLocationResponse;
+    readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
     /**
      * Specifies information about the dedicated host group that the virtual machine scale set resides in. Minimum api-version: 2020-06-01.
      */
-    readonly hostGroup?: types.outputs.compute.v20230701.SubResourceResponse;
+    readonly hostGroup?: types.outputs.SubResourceResponse;
     /**
      * Resource Id
      */
@@ -64,7 +64,7 @@ export interface GetVirtualMachineScaleSetResult {
     /**
      * The identity of the virtual machine scale set, if configured.
      */
-    readonly identity?: types.outputs.compute.v20230701.VirtualMachineScaleSetIdentityResponse;
+    readonly identity?: types.outputs.VirtualMachineScaleSetIdentityResponse;
     /**
      * Resource location
      */
@@ -84,7 +84,7 @@ export interface GetVirtualMachineScaleSetResult {
     /**
      * Specifies information about the marketplace image used to create the virtual machine. This element is only used for marketplace images. Before you can use a marketplace image from an API, you must enable the image for programmatic use.  In the Azure portal, find the marketplace image that you want to use and then click **Want to deploy programmatically, Get Started ->**. Enter any required information and then click **Save**.
      */
-    readonly plan?: types.outputs.compute.v20230701.PlanResponse;
+    readonly plan?: types.outputs.PlanResponse;
     /**
      * Fault Domain count for each placement group.
      */
@@ -92,7 +92,7 @@ export interface GetVirtualMachineScaleSetResult {
     /**
      * Specifies the desired targets for mixing Spot and Regular priority VMs within the same VMSS Flex instance.
      */
-    readonly priorityMixPolicy?: types.outputs.compute.v20230701.PriorityMixPolicyResponse;
+    readonly priorityMixPolicy?: types.outputs.PriorityMixPolicyResponse;
     /**
      * The provisioning state, which only appears in the response.
      */
@@ -100,11 +100,11 @@ export interface GetVirtualMachineScaleSetResult {
     /**
      * Specifies information about the proximity placement group that the virtual machine scale set should be assigned to. Minimum api-version: 2018-04-01.
      */
-    readonly proximityPlacementGroup?: types.outputs.compute.v20230701.SubResourceResponse;
+    readonly proximityPlacementGroup?: types.outputs.SubResourceResponse;
     /**
      * Specifies the policies applied when scaling in Virtual Machines in the Virtual Machine Scale Set.
      */
-    readonly scaleInPolicy?: types.outputs.compute.v20230701.ScaleInPolicyResponse;
+    readonly scaleInPolicy?: types.outputs.ScaleInPolicyResponse;
     /**
      * When true this limits the scale set to a single placement group, of max size 100 virtual machines. NOTE: If singlePlacementGroup is true, it may be modified to false. However, if singlePlacementGroup is false, it may not be modified to true.
      */
@@ -112,11 +112,11 @@ export interface GetVirtualMachineScaleSetResult {
     /**
      * The virtual machine scale set sku.
      */
-    readonly sku?: types.outputs.compute.v20230701.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * Specifies the Spot Restore properties for the virtual machine scale set.
      */
-    readonly spotRestorePolicy?: types.outputs.compute.v20230701.SpotRestorePolicyResponse;
+    readonly spotRestorePolicy?: types.outputs.SpotRestorePolicyResponse;
     /**
      * Resource tags
      */
@@ -136,11 +136,11 @@ export interface GetVirtualMachineScaleSetResult {
     /**
      * The upgrade policy.
      */
-    readonly upgradePolicy?: types.outputs.compute.v20230701.UpgradePolicyResponse;
+    readonly upgradePolicy?: types.outputs.UpgradePolicyResponse;
     /**
      * The virtual machine profile.
      */
-    readonly virtualMachineProfile?: types.outputs.compute.v20230701.VirtualMachineScaleSetVMProfileResponse;
+    readonly virtualMachineProfile?: types.outputs.VirtualMachineScaleSetVMProfileResponse;
     /**
      * Whether to force strictly even Virtual Machine distribution cross x-zones in case there is zone outage. zoneBalance property can only be set if the zones property of the scale set contains more than one zone. If there are no zones or only one zone specified, then zoneBalance property should not be set.
      */

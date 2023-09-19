@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a deployment.
  */
@@ -43,7 +43,7 @@ export interface GetDeploymentAtManagementGroupScopeResult {
     /**
      * Deployment properties.
      */
-    readonly properties: types.outputs.resources.v20220901.DeploymentPropertiesExtendedResponse;
+    readonly properties: types.outputs.DeploymentPropertiesExtendedResponse;
     /**
      * Deployment tags
      */

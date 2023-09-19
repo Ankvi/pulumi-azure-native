@@ -51,11 +51,11 @@ export class Relationship extends pulumi.CustomResource {
     /**
      * The properties of the Relationship.
      */
-    public readonly fields!: pulumi.Output<types.outputs.customerinsights.PropertyDefinitionResponse[] | undefined>;
+    public readonly fields!: pulumi.Output<types.outputs.PropertyDefinitionResponse[] | undefined>;
     /**
      * Optional property to be used to map fields in profile to their strong ids in related profile.
      */
-    public readonly lookupMappings!: pulumi.Output<types.outputs.customerinsights.RelationshipTypeMappingResponse[] | undefined>;
+    public readonly lookupMappings!: pulumi.Output<types.outputs.RelationshipTypeMappingResponse[] | undefined>;
     /**
      * Resource name.
      */
@@ -174,7 +174,7 @@ export interface RelationshipArgs {
     /**
      * The properties of the Relationship.
      */
-    fields?: pulumi.Input<pulumi.Input<types.inputs.customerinsights.PropertyDefinitionArgs>[]>;
+    fields?: pulumi.Input<pulumi.Input<types.inputs.PropertyDefinitionArgs>[]>;
     /**
      * The name of the hub.
      */
@@ -182,7 +182,7 @@ export interface RelationshipArgs {
     /**
      * Optional property to be used to map fields in profile to their strong ids in related profile.
      */
-    lookupMappings?: pulumi.Input<pulumi.Input<types.inputs.customerinsights.RelationshipTypeMappingArgs>[]>;
+    lookupMappings?: pulumi.Input<pulumi.Input<types.inputs.RelationshipTypeMappingArgs>[]>;
     /**
      * Profile type.
      */

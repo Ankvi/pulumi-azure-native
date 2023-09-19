@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 export function listWorkspaceKeys(args: ListWorkspaceKeysArgs, opts?: pulumi.InvokeOptions): Promise<ListWorkspaceKeysResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -26,8 +26,8 @@ export interface ListWorkspaceKeysResult {
      * The access key of the workspace app insights
      */
     readonly appInsightsInstrumentationKey: string;
-    readonly containerRegistryCredentials?: types.outputs.machinelearningservices.v20230601preview.RegistryListCredentialsResultResponse;
-    readonly notebookAccessKeys?: types.outputs.machinelearningservices.v20230601preview.ListNotebookKeysResultResponse;
+    readonly containerRegistryCredentials?: types.outputs.RegistryListCredentialsResultResponse;
+    readonly notebookAccessKeys?: types.outputs.ListNotebookKeysResultResponse;
     /**
      * The arm Id key of the workspace storage
      */

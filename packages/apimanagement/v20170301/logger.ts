@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Logger details.
  */
@@ -55,7 +55,7 @@ export class Logger extends pulumi.CustomResource {
     /**
      * Sampling settings for an ApplicationInsights logger.
      */
-    public readonly sampling!: pulumi.Output<types.outputs.apimanagement.v20170301.LoggerSamplingContractResponse | undefined>;
+    public readonly sampling!: pulumi.Output<types.outputs.LoggerSamplingContractResponse | undefined>;
     /**
      * Resource type for API Management resource.
      */
@@ -130,7 +130,7 @@ export interface LoggerArgs {
     /**
      * Logger type.
      */
-    loggerType: pulumi.Input<string | types.enums.v20170301.LoggerType>;
+    loggerType: pulumi.Input<string | types.enums.LoggerType>;
     /**
      * Logger identifier. Must be unique in the API Management service instance.
      */
@@ -142,7 +142,7 @@ export interface LoggerArgs {
     /**
      * Sampling settings for an ApplicationInsights logger.
      */
-    sampling?: pulumi.Input<types.inputs.apimanagement.v20170301.LoggerSamplingContractArgs>;
+    sampling?: pulumi.Input<types.inputs.LoggerSamplingContractArgs>;
     /**
      * The name of the API Management service.
      */

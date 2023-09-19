@@ -55,7 +55,7 @@ export class NetworkVirtualApplianceConnection extends pulumi.CustomResource {
     /**
      * The Routing Configuration indicating the associated and propagated route tables on this connection.
      */
-    public readonly routingConfiguration!: pulumi.Output<types.outputs.network.RoutingConfigurationNfvResponse | undefined>;
+    public readonly routingConfiguration!: pulumi.Output<types.outputs.RoutingConfigurationNfvResponse | undefined>;
     /**
      * Unique identifier for the connection.
      */
@@ -144,7 +144,7 @@ export interface NetworkVirtualApplianceConnectionArgs {
     /**
      * The Routing Configuration indicating the associated and propagated route tables on this connection.
      */
-    routingConfiguration?: pulumi.Input<types.inputs.network.RoutingConfigurationNfvArgs>;
+    routingConfiguration?: pulumi.Input<types.inputs.RoutingConfigurationNfvArgs>;
     /**
      * Unique identifier for the connection.
      */

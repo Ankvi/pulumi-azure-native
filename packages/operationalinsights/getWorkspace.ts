@@ -48,7 +48,7 @@ export interface GetWorkspaceResult {
     /**
      * Workspace features.
      */
-    readonly features?: types.outputs.operationalinsights.WorkspaceFeaturesResponse;
+    readonly features?: types.outputs.WorkspaceFeaturesResponse;
     /**
      * Indicates whether customer managed storage is mandatory for query management.
      */
@@ -60,7 +60,7 @@ export interface GetWorkspaceResult {
     /**
      * The identity of the resource.
      */
-    readonly identity?: types.outputs.operationalinsights.IdentityResponse;
+    readonly identity?: types.outputs.IdentityResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -76,7 +76,7 @@ export interface GetWorkspaceResult {
     /**
      * List of linked private link scope resources.
      */
-    readonly privateLinkScopedResources: types.outputs.operationalinsights.PrivateLinkScopedResourceResponse[];
+    readonly privateLinkScopedResources: types.outputs.PrivateLinkScopedResourceResponse[];
     /**
      * The provisioning state of the workspace.
      */
@@ -96,11 +96,11 @@ export interface GetWorkspaceResult {
     /**
      * The SKU of the workspace.
      */
-    readonly sku?: types.outputs.operationalinsights.WorkspaceSkuResponse;
+    readonly sku?: types.outputs.WorkspaceSkuResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.operationalinsights.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -112,7 +112,7 @@ export interface GetWorkspaceResult {
     /**
      * The daily volume cap for ingestion.
      */
-    readonly workspaceCapping?: types.outputs.operationalinsights.WorkspaceCappingResponse;
+    readonly workspaceCapping?: types.outputs.WorkspaceCappingResponse;
 }
 /**
  * Gets a workspace instance.

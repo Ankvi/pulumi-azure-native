@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * List disk images available for custom image creation.
  */
@@ -35,7 +35,7 @@ export interface ListLabVhdsResult {
     /**
      * Results of the list operation.
      */
-    readonly value?: types.outputs.devtestlab.v20180915.LabVhdResponse[];
+    readonly value?: types.outputs.LabVhdResponse[];
 }
 /**
  * List disk images available for custom image creation.

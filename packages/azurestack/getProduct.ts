@@ -41,7 +41,7 @@ export interface GetProductResult {
     /**
      * Product compatibility with current device.
      */
-    readonly compatibility?: types.outputs.azurestack.CompatibilityResponse;
+    readonly compatibility?: types.outputs.CompatibilityResponse;
     /**
      * The description of the product.
      */
@@ -61,7 +61,7 @@ export interface GetProductResult {
     /**
      * Additional links available for this product.
      */
-    readonly iconUris?: types.outputs.azurestack.IconUrisResponse;
+    readonly iconUris?: types.outputs.IconUrisResponse;
     /**
      * ID of the resource.
      */
@@ -73,7 +73,7 @@ export interface GetProductResult {
     /**
      * Additional links available for this product.
      */
-    readonly links?: types.outputs.azurestack.ProductLinkResponse[];
+    readonly links?: types.outputs.ProductLinkResponse[];
     /**
      * Name of the resource.
      */
@@ -101,7 +101,7 @@ export interface GetProductResult {
     /**
      * Additional properties for the product.
      */
-    readonly productProperties?: types.outputs.azurestack.ProductPropertiesResponse;
+    readonly productProperties?: types.outputs.ProductPropertiesResponse;
     /**
      * The user-friendly name of the product publisher.
      */

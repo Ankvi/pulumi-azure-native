@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The agentpool that has the ARM resource and properties.
  * The agentpool will have all information to create an agent pool.
@@ -55,7 +55,7 @@ export class AgentPool extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.containerregistry.v20190601preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The tags of the resource.
      */
@@ -141,7 +141,7 @@ export interface AgentPoolArgs {
     /**
      * The OS of agent machine
      */
-    os?: pulumi.Input<string | types.enums.v20190601preview.OS>;
+    os?: pulumi.Input<string | types.enums.OS>;
     /**
      * The name of the container registry.
      */

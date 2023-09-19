@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The Role Assignment resource format.
  */
@@ -38,11 +38,11 @@ export class RoleAssignment extends pulumi.CustomResource {
     /**
      * Widget types set for the assignment.
      */
-    public readonly conflationPolicies!: pulumi.Output<types.outputs.customerinsights.v20170426.ResourceSetDescriptionResponse | undefined>;
+    public readonly conflationPolicies!: pulumi.Output<types.outputs.ResourceSetDescriptionResponse | undefined>;
     /**
      * Connectors set for the assignment.
      */
-    public readonly connectors!: pulumi.Output<types.outputs.customerinsights.v20170426.ResourceSetDescriptionResponse | undefined>;
+    public readonly connectors!: pulumi.Output<types.outputs.ResourceSetDescriptionResponse | undefined>;
     /**
      * Localized description for the metadata.
      */
@@ -54,15 +54,15 @@ export class RoleAssignment extends pulumi.CustomResource {
     /**
      * Interactions set for the assignment.
      */
-    public readonly interactions!: pulumi.Output<types.outputs.customerinsights.v20170426.ResourceSetDescriptionResponse | undefined>;
+    public readonly interactions!: pulumi.Output<types.outputs.ResourceSetDescriptionResponse | undefined>;
     /**
      * Kpis set for the assignment.
      */
-    public readonly kpis!: pulumi.Output<types.outputs.customerinsights.v20170426.ResourceSetDescriptionResponse | undefined>;
+    public readonly kpis!: pulumi.Output<types.outputs.ResourceSetDescriptionResponse | undefined>;
     /**
      * Links set for the assignment.
      */
-    public readonly links!: pulumi.Output<types.outputs.customerinsights.v20170426.ResourceSetDescriptionResponse | undefined>;
+    public readonly links!: pulumi.Output<types.outputs.ResourceSetDescriptionResponse | undefined>;
     /**
      * Resource name.
      */
@@ -70,11 +70,11 @@ export class RoleAssignment extends pulumi.CustomResource {
     /**
      * The principals being assigned to.
      */
-    public readonly principals!: pulumi.Output<types.outputs.customerinsights.v20170426.AssignmentPrincipalResponse[]>;
+    public readonly principals!: pulumi.Output<types.outputs.AssignmentPrincipalResponse[]>;
     /**
      * Profiles set for the assignment.
      */
-    public readonly profiles!: pulumi.Output<types.outputs.customerinsights.v20170426.ResourceSetDescriptionResponse | undefined>;
+    public readonly profiles!: pulumi.Output<types.outputs.ResourceSetDescriptionResponse | undefined>;
     /**
      * Provisioning state.
      */
@@ -82,11 +82,11 @@ export class RoleAssignment extends pulumi.CustomResource {
     /**
      * The Role assignments set for the relationship links.
      */
-    public readonly relationshipLinks!: pulumi.Output<types.outputs.customerinsights.v20170426.ResourceSetDescriptionResponse | undefined>;
+    public readonly relationshipLinks!: pulumi.Output<types.outputs.ResourceSetDescriptionResponse | undefined>;
     /**
      * The Role assignments set for the relationships.
      */
-    public readonly relationships!: pulumi.Output<types.outputs.customerinsights.v20170426.ResourceSetDescriptionResponse | undefined>;
+    public readonly relationships!: pulumi.Output<types.outputs.ResourceSetDescriptionResponse | undefined>;
     /**
      * Type of roles.
      */
@@ -94,15 +94,15 @@ export class RoleAssignment extends pulumi.CustomResource {
     /**
      * The Role assignments set for the assignment.
      */
-    public readonly roleAssignments!: pulumi.Output<types.outputs.customerinsights.v20170426.ResourceSetDescriptionResponse | undefined>;
+    public readonly roleAssignments!: pulumi.Output<types.outputs.ResourceSetDescriptionResponse | undefined>;
     /**
      * Sas Policies set for the assignment.
      */
-    public readonly sasPolicies!: pulumi.Output<types.outputs.customerinsights.v20170426.ResourceSetDescriptionResponse | undefined>;
+    public readonly sasPolicies!: pulumi.Output<types.outputs.ResourceSetDescriptionResponse | undefined>;
     /**
      * The Role assignments set for the assignment.
      */
-    public readonly segments!: pulumi.Output<types.outputs.customerinsights.v20170426.ResourceSetDescriptionResponse | undefined>;
+    public readonly segments!: pulumi.Output<types.outputs.ResourceSetDescriptionResponse | undefined>;
     /**
      * The hub name.
      */
@@ -114,11 +114,11 @@ export class RoleAssignment extends pulumi.CustomResource {
     /**
      * Views set for the assignment.
      */
-    public readonly views!: pulumi.Output<types.outputs.customerinsights.v20170426.ResourceSetDescriptionResponse | undefined>;
+    public readonly views!: pulumi.Output<types.outputs.ResourceSetDescriptionResponse | undefined>;
     /**
      * Widget types set for the assignment.
      */
-    public readonly widgetTypes!: pulumi.Output<types.outputs.customerinsights.v20170426.ResourceSetDescriptionResponse | undefined>;
+    public readonly widgetTypes!: pulumi.Output<types.outputs.ResourceSetDescriptionResponse | undefined>;
 
     /**
      * Create a RoleAssignment resource with the given unique name, arguments, and options.
@@ -209,11 +209,11 @@ export interface RoleAssignmentArgs {
     /**
      * Widget types set for the assignment.
      */
-    conflationPolicies?: pulumi.Input<types.inputs.customerinsights.v20170426.ResourceSetDescriptionArgs>;
+    conflationPolicies?: pulumi.Input<types.inputs.ResourceSetDescriptionArgs>;
     /**
      * Connectors set for the assignment.
      */
-    connectors?: pulumi.Input<types.inputs.customerinsights.v20170426.ResourceSetDescriptionArgs>;
+    connectors?: pulumi.Input<types.inputs.ResourceSetDescriptionArgs>;
     /**
      * Localized description for the metadata.
      */
@@ -229,31 +229,31 @@ export interface RoleAssignmentArgs {
     /**
      * Interactions set for the assignment.
      */
-    interactions?: pulumi.Input<types.inputs.customerinsights.v20170426.ResourceSetDescriptionArgs>;
+    interactions?: pulumi.Input<types.inputs.ResourceSetDescriptionArgs>;
     /**
      * Kpis set for the assignment.
      */
-    kpis?: pulumi.Input<types.inputs.customerinsights.v20170426.ResourceSetDescriptionArgs>;
+    kpis?: pulumi.Input<types.inputs.ResourceSetDescriptionArgs>;
     /**
      * Links set for the assignment.
      */
-    links?: pulumi.Input<types.inputs.customerinsights.v20170426.ResourceSetDescriptionArgs>;
+    links?: pulumi.Input<types.inputs.ResourceSetDescriptionArgs>;
     /**
      * The principals being assigned to.
      */
-    principals: pulumi.Input<pulumi.Input<types.inputs.customerinsights.v20170426.AssignmentPrincipalArgs>[]>;
+    principals: pulumi.Input<pulumi.Input<types.inputs.AssignmentPrincipalArgs>[]>;
     /**
      * Profiles set for the assignment.
      */
-    profiles?: pulumi.Input<types.inputs.customerinsights.v20170426.ResourceSetDescriptionArgs>;
+    profiles?: pulumi.Input<types.inputs.ResourceSetDescriptionArgs>;
     /**
      * The Role assignments set for the relationship links.
      */
-    relationshipLinks?: pulumi.Input<types.inputs.customerinsights.v20170426.ResourceSetDescriptionArgs>;
+    relationshipLinks?: pulumi.Input<types.inputs.ResourceSetDescriptionArgs>;
     /**
      * The Role assignments set for the relationships.
      */
-    relationships?: pulumi.Input<types.inputs.customerinsights.v20170426.ResourceSetDescriptionArgs>;
+    relationships?: pulumi.Input<types.inputs.ResourceSetDescriptionArgs>;
     /**
      * The name of the resource group.
      */
@@ -261,25 +261,25 @@ export interface RoleAssignmentArgs {
     /**
      * Type of roles.
      */
-    role: pulumi.Input<types.enums.v20170426.RoleTypes>;
+    role: pulumi.Input<types.enums.RoleTypes>;
     /**
      * The Role assignments set for the assignment.
      */
-    roleAssignments?: pulumi.Input<types.inputs.customerinsights.v20170426.ResourceSetDescriptionArgs>;
+    roleAssignments?: pulumi.Input<types.inputs.ResourceSetDescriptionArgs>;
     /**
      * Sas Policies set for the assignment.
      */
-    sasPolicies?: pulumi.Input<types.inputs.customerinsights.v20170426.ResourceSetDescriptionArgs>;
+    sasPolicies?: pulumi.Input<types.inputs.ResourceSetDescriptionArgs>;
     /**
      * The Role assignments set for the assignment.
      */
-    segments?: pulumi.Input<types.inputs.customerinsights.v20170426.ResourceSetDescriptionArgs>;
+    segments?: pulumi.Input<types.inputs.ResourceSetDescriptionArgs>;
     /**
      * Views set for the assignment.
      */
-    views?: pulumi.Input<types.inputs.customerinsights.v20170426.ResourceSetDescriptionArgs>;
+    views?: pulumi.Input<types.inputs.ResourceSetDescriptionArgs>;
     /**
      * Widget types set for the assignment.
      */
-    widgetTypes?: pulumi.Input<types.inputs.customerinsights.v20170426.ResourceSetDescriptionArgs>;
+    widgetTypes?: pulumi.Input<types.inputs.ResourceSetDescriptionArgs>;
 }

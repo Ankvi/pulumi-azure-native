@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get properties of a client.
  */
@@ -42,7 +42,7 @@ export interface GetClientResult {
     /**
      * Authentication information for the client.
      */
-    readonly authentication?: types.outputs.eventgrid.v20230601preview.ClientAuthenticationResponse;
+    readonly authentication?: types.outputs.ClientAuthenticationResponse;
     /**
      * The name presented by the client for authentication. The default value is the name of the resource.
      */
@@ -50,7 +50,7 @@ export interface GetClientResult {
     /**
      * The client certificate authentication information.
      */
-    readonly clientCertificateAuthentication?: types.outputs.eventgrid.v20230601preview.ClientCertificateAuthenticationResponse;
+    readonly clientCertificateAuthentication?: types.outputs.ClientCertificateAuthenticationResponse;
     /**
      * Description for the Client resource.
      */
@@ -74,7 +74,7 @@ export interface GetClientResult {
     /**
      * The system metadata relating to the Client resource.
      */
-    readonly systemData: types.outputs.eventgrid.v20230601preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Type of the resource.
      */

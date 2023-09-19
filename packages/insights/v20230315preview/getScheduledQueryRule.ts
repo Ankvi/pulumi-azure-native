@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieve an scheduled query rule definition.
  */
@@ -31,7 +31,7 @@ export interface GetScheduledQueryRuleResult {
     /**
      * Actions to invoke when the alert fires.
      */
-    readonly actions?: types.outputs.insights.v20230315preview.ActionsResponse;
+    readonly actions?: types.outputs.ActionsResponse;
     /**
      * The flag that indicates whether the alert should be automatically resolved or not. The default is true. Relevant only for rules of the kind LogAlert.
      */
@@ -47,7 +47,7 @@ export interface GetScheduledQueryRuleResult {
     /**
      * The rule criteria that defines the conditions of the scheduled query rule.
      */
-    readonly criteria: types.outputs.insights.v20230315preview.ScheduledQueryRuleCriteriaResponse;
+    readonly criteria: types.outputs.ScheduledQueryRuleCriteriaResponse;
     /**
      * The description of the scheduled query rule.
      */
@@ -75,7 +75,7 @@ export interface GetScheduledQueryRuleResult {
     /**
      * The identity of the resource.
      */
-    readonly identity?: types.outputs.insights.v20230315preview.IdentityResponse;
+    readonly identity?: types.outputs.IdentityResponse;
     /**
      * True if alert rule is legacy Log Analytic rule
      */
@@ -107,7 +107,7 @@ export interface GetScheduledQueryRuleResult {
     /**
      * Defines the configuration for resolving fired alerts. Relevant only for rules of the kind LogAlert.
      */
-    readonly ruleResolveConfiguration?: types.outputs.insights.v20230315preview.RuleResolveConfigurationResponse;
+    readonly ruleResolveConfiguration?: types.outputs.RuleResolveConfigurationResponse;
     /**
      * The list of resource id's that this scheduled query rule is scoped to.
      */
@@ -123,7 +123,7 @@ export interface GetScheduledQueryRuleResult {
     /**
      * SystemData of ScheduledQueryRule.
      */
-    readonly systemData: types.outputs.insights.v20230315preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

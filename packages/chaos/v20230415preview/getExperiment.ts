@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a Experiment resource.
  */
@@ -35,7 +35,7 @@ export interface GetExperimentResult {
     /**
      * The identity of the experiment resource.
      */
-    readonly identity?: types.outputs.chaos.v20230415preview.ResourceIdentityResponse;
+    readonly identity?: types.outputs.ResourceIdentityResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -47,11 +47,11 @@ export interface GetExperimentResult {
     /**
      * The properties of the experiment resource.
      */
-    readonly properties: types.outputs.chaos.v20230415preview.ExperimentPropertiesResponse;
+    readonly properties: types.outputs.ExperimentPropertiesResponse;
     /**
      * The system metadata of the experiment resource.
      */
-    readonly systemData: types.outputs.chaos.v20230415preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

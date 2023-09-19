@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a workspace
  */
@@ -43,15 +43,15 @@ export interface GetWorkspaceResult {
     /**
      * Initial workspace AAD admin properties for a CSP subscription
      */
-    readonly cspWorkspaceAdminProperties?: types.outputs.synapse.v20210601preview.CspWorkspaceAdminPropertiesResponse;
+    readonly cspWorkspaceAdminProperties?: types.outputs.CspWorkspaceAdminPropertiesResponse;
     /**
      * Workspace default data lake storage account details
      */
-    readonly defaultDataLakeStorage?: types.outputs.synapse.v20210601preview.DataLakeStorageAccountDetailsResponse;
+    readonly defaultDataLakeStorage?: types.outputs.DataLakeStorageAccountDetailsResponse;
     /**
      * The encryption details of the workspace
      */
-    readonly encryption?: types.outputs.synapse.v20210601preview.EncryptionDetailsResponse;
+    readonly encryption?: types.outputs.EncryptionDetailsResponse;
     /**
      * Workspace level configs and feature flags
      */
@@ -63,7 +63,7 @@ export interface GetWorkspaceResult {
     /**
      * Identity of the workspace
      */
-    readonly identity?: types.outputs.synapse.v20210601preview.ManagedIdentityResponse;
+    readonly identity?: types.outputs.ManagedIdentityResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -79,7 +79,7 @@ export interface GetWorkspaceResult {
     /**
      * Managed Virtual Network Settings
      */
-    readonly managedVirtualNetworkSettings?: types.outputs.synapse.v20210601preview.ManagedVirtualNetworkSettingsResponse;
+    readonly managedVirtualNetworkSettings?: types.outputs.ManagedVirtualNetworkSettingsResponse;
     /**
      * The name of the resource
      */
@@ -87,7 +87,7 @@ export interface GetWorkspaceResult {
     /**
      * Private endpoint connections to the workspace
      */
-    readonly privateEndpointConnections?: types.outputs.synapse.v20210601preview.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections?: types.outputs.PrivateEndpointConnectionResponse[];
     /**
      * Resource provisioning state
      */
@@ -99,7 +99,7 @@ export interface GetWorkspaceResult {
     /**
      * Purview Configuration
      */
-    readonly purviewConfiguration?: types.outputs.synapse.v20210601preview.PurviewConfigurationResponse;
+    readonly purviewConfiguration?: types.outputs.PurviewConfigurationResponse;
     /**
      * Workspace settings
      */
@@ -127,11 +127,11 @@ export interface GetWorkspaceResult {
     /**
      * Virtual Network profile
      */
-    readonly virtualNetworkProfile?: types.outputs.synapse.v20210601preview.VirtualNetworkProfileResponse;
+    readonly virtualNetworkProfile?: types.outputs.VirtualNetworkProfileResponse;
     /**
      * Git integration settings
      */
-    readonly workspaceRepositoryConfiguration?: types.outputs.synapse.v20210601preview.WorkspaceRepositoryConfigurationResponse;
+    readonly workspaceRepositoryConfiguration?: types.outputs.WorkspaceRepositoryConfigurationResponse;
     /**
      * The workspace unique identifier
      */

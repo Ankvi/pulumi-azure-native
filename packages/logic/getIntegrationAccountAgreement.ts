@@ -45,7 +45,7 @@ export interface GetIntegrationAccountAgreementResult {
     /**
      * The agreement content.
      */
-    readonly content: types.outputs.logic.AgreementContentResponse;
+    readonly content: types.outputs.AgreementContentResponse;
     /**
      * The created time.
      */
@@ -53,7 +53,7 @@ export interface GetIntegrationAccountAgreementResult {
     /**
      * The business identity of the guest partner.
      */
-    readonly guestIdentity: types.outputs.logic.BusinessIdentityResponse;
+    readonly guestIdentity: types.outputs.BusinessIdentityResponse;
     /**
      * The integration account partner that is set as guest partner for this agreement.
      */
@@ -61,7 +61,7 @@ export interface GetIntegrationAccountAgreementResult {
     /**
      * The business identity of the host partner.
      */
-    readonly hostIdentity: types.outputs.logic.BusinessIdentityResponse;
+    readonly hostIdentity: types.outputs.BusinessIdentityResponse;
     /**
      * The integration account partner that is set as host partner for this agreement.
      */

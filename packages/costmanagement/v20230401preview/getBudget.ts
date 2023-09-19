@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the budget for the scope by budget name.
  */
@@ -75,7 +75,7 @@ export interface GetBudgetResult {
      *
      *  Supported for CategoryType(s): Cost.
      */
-    readonly currentSpend: types.outputs.costmanagement.v20230401preview.CurrentSpendResponse;
+    readonly currentSpend: types.outputs.CurrentSpendResponse;
     /**
      * eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
      */
@@ -85,13 +85,13 @@ export interface GetBudgetResult {
      *
      *  Supported for CategoryType(s): Cost, ReservationUtilization.
      */
-    readonly filter?: types.outputs.costmanagement.v20230401preview.BudgetFilterResponse;
+    readonly filter?: types.outputs.BudgetFilterResponse;
     /**
      * The forecasted cost which is being tracked for a budget.
      *
      *  Supported for CategoryType(s): Cost.
      */
-    readonly forecastSpend: types.outputs.costmanagement.v20230401preview.ForecastSpendResponse;
+    readonly forecastSpend: types.outputs.ForecastSpendResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -108,7 +108,7 @@ export interface GetBudgetResult {
      * - Constraints for **CategoryType: Cost** - Budget can have up to 5 notifications with thresholdType: Actual and 5 notifications with thresholdType: Forecasted.
      * - Constraints for **CategoryType: ReservationUtilization** - Only one notification allowed. thresholdType is not applicable.
      */
-    readonly notifications?: {[key: string]: types.outputs.costmanagement.v20230401preview.NotificationResponse};
+    readonly notifications?: {[key: string]: types.outputs.NotificationResponse};
     /**
      * The time covered by a budget. Tracking of the amount will be reset based on the time grain.
      *
@@ -139,7 +139,7 @@ export interface GetBudgetResult {
      *
      *  Required for CategoryType(s): Cost, ReservationUtilization.
      */
-    readonly timePeriod: types.outputs.costmanagement.v20230401preview.BudgetTimePeriodResponse;
+    readonly timePeriod: types.outputs.BudgetTimePeriodResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

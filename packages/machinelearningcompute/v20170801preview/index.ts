@@ -18,7 +18,7 @@ utilities.lazyLoad(exports, ["OperationalizationCluster"], () => require("./oper
 
 
 // Export enums:
-export * from "../types/enums/v20170801preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

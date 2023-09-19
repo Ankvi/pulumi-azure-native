@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A vSphere Distributed Resource Scheduler (DRS) placement policy
  */
@@ -49,7 +49,7 @@ export interface GetPlacementPolicyResult {
     /**
      * placement policy properties
      */
-    readonly properties: types.outputs.avs.v20220501.VmHostPlacementPolicyPropertiesResponse | types.outputs.avs.v20220501.VmVmPlacementPolicyPropertiesResponse;
+    readonly properties: types.outputs.VmHostPlacementPolicyPropertiesResponse | types.outputs.VmVmPlacementPolicyPropertiesResponse;
     /**
      * Resource type.
      */

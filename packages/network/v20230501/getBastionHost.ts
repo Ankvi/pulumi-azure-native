@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the specified Bastion Host.
  */
@@ -67,7 +67,7 @@ export interface GetBastionHostResult {
     /**
      * IP configuration of the Bastion Host resource.
      */
-    readonly ipConfigurations?: types.outputs.network.v20230501.BastionHostIPConfigurationResponse[];
+    readonly ipConfigurations?: types.outputs.BastionHostIPConfigurationResponse[];
     /**
      * Resource location.
      */
@@ -76,7 +76,7 @@ export interface GetBastionHostResult {
      * Resource name.
      */
     readonly name: string;
-    readonly networkAcls?: types.outputs.network.v20230501.BastionHostPropertiesFormatResponseNetworkAcls;
+    readonly networkAcls?: types.outputs.BastionHostPropertiesFormatResponseNetworkAcls;
     /**
      * The provisioning state of the bastion host resource.
      */
@@ -88,7 +88,7 @@ export interface GetBastionHostResult {
     /**
      * The sku of this Bastion Host.
      */
-    readonly sku?: types.outputs.network.v20230501.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * Resource tags.
      */
@@ -100,7 +100,7 @@ export interface GetBastionHostResult {
     /**
      * Reference to an existing virtual network required for Developer Bastion Host only.
      */
-    readonly virtualNetwork?: types.outputs.network.v20230501.SubResourceResponse;
+    readonly virtualNetwork?: types.outputs.SubResourceResponse;
 }
 /**
  * Gets the specified Bastion Host.

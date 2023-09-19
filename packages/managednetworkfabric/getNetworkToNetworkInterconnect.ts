@@ -49,11 +49,11 @@ export interface GetNetworkToNetworkInterconnectResult {
     /**
      * Common properties for Layer2Configuration.
      */
-    readonly layer2Configuration?: types.outputs.managednetworkfabric.Layer2ConfigurationResponse;
+    readonly layer2Configuration?: types.outputs.Layer2ConfigurationResponse;
     /**
      * Common properties for Layer3Configuration.
      */
-    readonly layer3Configuration?: types.outputs.managednetworkfabric.Layer3ConfigurationResponse;
+    readonly layer3Configuration?: types.outputs.Layer3ConfigurationResponse;
     /**
      * The name of the resource
      */
@@ -69,7 +69,7 @@ export interface GetNetworkToNetworkInterconnectResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.managednetworkfabric.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

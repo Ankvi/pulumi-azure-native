@@ -41,7 +41,7 @@ export interface GetLiveEventResult {
     /**
      * Live event cross site access policies.
      */
-    readonly crossSiteAccessPolicies?: types.outputs.media.CrossSiteAccessPoliciesResponse;
+    readonly crossSiteAccessPolicies?: types.outputs.CrossSiteAccessPoliciesResponse;
     /**
      * A description for the live event.
      */
@@ -49,7 +49,7 @@ export interface GetLiveEventResult {
     /**
      * Encoding settings for the live event. It configures whether a live encoder is used for the live event and settings for the live encoder if it is used.
      */
-    readonly encoding?: types.outputs.media.LiveEventEncodingResponse;
+    readonly encoding?: types.outputs.LiveEventEncodingResponse;
     /**
      * When useStaticHostname is set to true, the hostnamePrefix specifies the first part of the hostname assigned to the live event preview and ingest endpoints. The final hostname would be a combination of this prefix, the media service account name and a short code for the Azure Media Services data center.
      */
@@ -61,7 +61,7 @@ export interface GetLiveEventResult {
     /**
      * Live event input settings. It defines how the live event receives input from a contribution encoder.
      */
-    readonly input: types.outputs.media.LiveEventInputResponse;
+    readonly input: types.outputs.LiveEventInputResponse;
     /**
      * The last modified time of the live event.
      */
@@ -77,7 +77,7 @@ export interface GetLiveEventResult {
     /**
      * Live event preview settings. Preview allows live event producers to preview the live streaming content without creating any live output.
      */
-    readonly preview?: types.outputs.media.LiveEventPreviewResponse;
+    readonly preview?: types.outputs.LiveEventPreviewResponse;
     /**
      * The provisioning state of the live event.
      */
@@ -93,7 +93,7 @@ export interface GetLiveEventResult {
     /**
      * The system metadata relating to this resource.
      */
-    readonly systemData: types.outputs.media.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -101,7 +101,7 @@ export interface GetLiveEventResult {
     /**
      * Live transcription settings for the live event. See https://go.microsoft.com/fwlink/?linkid=2133742 for more information about the live transcription feature.
      */
-    readonly transcriptions?: types.outputs.media.LiveEventTranscriptionResponse[];
+    readonly transcriptions?: types.outputs.LiveEventTranscriptionResponse[];
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

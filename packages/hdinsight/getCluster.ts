@@ -40,7 +40,7 @@ export interface GetClusterResult {
     /**
      * The identity of the cluster, if configured.
      */
-    readonly identity?: types.outputs.hdinsight.ClusterIdentityResponse;
+    readonly identity?: types.outputs.ClusterIdentityResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -52,11 +52,11 @@ export interface GetClusterResult {
     /**
      * The properties of the cluster.
      */
-    readonly properties: types.outputs.hdinsight.ClusterGetPropertiesResponse;
+    readonly properties: types.outputs.ClusterGetPropertiesResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.hdinsight.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

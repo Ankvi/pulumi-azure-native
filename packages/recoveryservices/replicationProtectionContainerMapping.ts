@@ -43,7 +43,7 @@ export class ReplicationProtectionContainerMapping extends pulumi.CustomResource
     /**
      * The custom data.
      */
-    public readonly properties!: pulumi.Output<types.outputs.recoveryservices.ProtectionContainerMappingPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ProtectionContainerMappingPropertiesResponse>;
     /**
      * Resource Type
      */
@@ -109,7 +109,7 @@ export interface ReplicationProtectionContainerMappingArgs {
     /**
      * Configure protection input properties.
      */
-    properties?: pulumi.Input<types.inputs.recoveryservices.CreateProtectionContainerMappingInputPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.CreateProtectionContainerMappingInputPropertiesArgs>;
     /**
      * Protection container name.
      */

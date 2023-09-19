@@ -51,7 +51,7 @@ export interface GetLabelingJobResult {
     /**
      * [Required] Additional attributes of the entity.
      */
-    readonly labelingJobProperties: types.outputs.machinelearningservices.LabelingJobResponse;
+    readonly labelingJobProperties: types.outputs.LabelingJobResponse;
     /**
      * The name of the resource
      */
@@ -59,7 +59,7 @@ export interface GetLabelingJobResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.machinelearningservices.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

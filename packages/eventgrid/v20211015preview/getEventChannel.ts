@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get properties of an event channel.
  */
@@ -36,7 +36,7 @@ export interface GetEventChannelResult {
     /**
      * Represents the destination of an event channel.
      */
-    readonly destination?: types.outputs.eventgrid.v20211015preview.EventChannelDestinationResponse;
+    readonly destination?: types.outputs.EventChannelDestinationResponse;
     /**
      * Expiration time of the event channel. If this timer expires while the corresponding partner topic is never activated,
      * the event channel and corresponding partner topic are deleted.
@@ -45,7 +45,7 @@ export interface GetEventChannelResult {
     /**
      * Information about the filter for the event channel.
      */
-    readonly filter?: types.outputs.eventgrid.v20211015preview.EventChannelFilterResponse;
+    readonly filter?: types.outputs.EventChannelFilterResponse;
     /**
      * Fully qualified identifier of the resource.
      */
@@ -70,11 +70,11 @@ export interface GetEventChannelResult {
     /**
      * Source of the event channel. This represents a unique resource in the partner's resource model.
      */
-    readonly source?: types.outputs.eventgrid.v20211015preview.EventChannelSourceResponse;
+    readonly source?: types.outputs.EventChannelSourceResponse;
     /**
      * The system metadata relating to Event Channel resource.
      */
-    readonly systemData: types.outputs.eventgrid.v20211015preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Type of the resource.
      */

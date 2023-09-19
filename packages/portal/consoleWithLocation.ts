@@ -35,7 +35,7 @@ export class ConsoleWithLocation extends pulumi.CustomResource {
     /**
      * Cloud shell console properties.
      */
-    public /*out*/ readonly properties!: pulumi.Output<types.outputs.portal.ConsolePropertiesResponse>;
+    public /*out*/ readonly properties!: pulumi.Output<types.outputs.ConsolePropertiesResponse>;
 
     /**
      * Create a ConsoleWithLocation resource with the given unique name, arguments, and options.

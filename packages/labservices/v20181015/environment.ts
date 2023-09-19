@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents an environment instance
  */
@@ -54,7 +54,7 @@ export class Environment extends pulumi.CustomResource {
     /**
      * The details of the latest operation. ex: status, error
      */
-    public /*out*/ readonly latestOperationResult!: pulumi.Output<types.outputs.labservices.v20181015.LatestOperationResultResponse>;
+    public /*out*/ readonly latestOperationResult!: pulumi.Output<types.outputs.LatestOperationResultResponse>;
     /**
      * The location of the resource.
      */
@@ -66,7 +66,7 @@ export class Environment extends pulumi.CustomResource {
     /**
      * Network details of the environment
      */
-    public /*out*/ readonly networkInterface!: pulumi.Output<types.outputs.labservices.v20181015.NetworkInterfaceResponse>;
+    public /*out*/ readonly networkInterface!: pulumi.Output<types.outputs.NetworkInterfaceResponse>;
     /**
      * When the password was last reset on the environment.
      */
@@ -78,7 +78,7 @@ export class Environment extends pulumi.CustomResource {
     /**
      * The set of a VM and the setting id it was created for
      */
-    public readonly resourceSets!: pulumi.Output<types.outputs.labservices.v20181015.ResourceSetResponse | undefined>;
+    public readonly resourceSets!: pulumi.Output<types.outputs.ResourceSetResponse | undefined>;
     /**
      * The tags of the resource.
      */
@@ -200,7 +200,7 @@ export interface EnvironmentArgs {
     /**
      * The set of a VM and the setting id it was created for
      */
-    resourceSets?: pulumi.Input<types.inputs.labservices.v20181015.ResourceSetArgs>;
+    resourceSets?: pulumi.Input<types.inputs.ResourceSetArgs>;
     /**
      * The tags of the resource.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents a bookmark in Azure Security Insights.
  */
@@ -38,7 +38,7 @@ export class Bookmark extends pulumi.CustomResource {
     /**
      * Describes a user that created the bookmark
      */
-    public readonly createdBy!: pulumi.Output<types.outputs.securityinsights.v20230701preview.UserInfoResponse | undefined>;
+    public readonly createdBy!: pulumi.Output<types.outputs.UserInfoResponse | undefined>;
     /**
      * The display name of the bookmark
      */
@@ -46,7 +46,7 @@ export class Bookmark extends pulumi.CustomResource {
     /**
      * Describes the entity mappings of the bookmark
      */
-    public readonly entityMappings!: pulumi.Output<types.outputs.securityinsights.v20230701preview.BookmarkEntityMappingsResponse[] | undefined>;
+    public readonly entityMappings!: pulumi.Output<types.outputs.BookmarkEntityMappingsResponse[] | undefined>;
     /**
      * Etag of the azure resource
      */
@@ -58,7 +58,7 @@ export class Bookmark extends pulumi.CustomResource {
     /**
      * Describes an incident that relates to bookmark
      */
-    public readonly incidentInfo!: pulumi.Output<types.outputs.securityinsights.v20230701preview.IncidentInfoResponse | undefined>;
+    public readonly incidentInfo!: pulumi.Output<types.outputs.IncidentInfoResponse | undefined>;
     /**
      * List of labels relevant to this bookmark
      */
@@ -90,7 +90,7 @@ export class Bookmark extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.securityinsights.v20230701preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * A list of relevant mitre attacks
      */
@@ -110,7 +110,7 @@ export class Bookmark extends pulumi.CustomResource {
     /**
      * Describes a user that updated the bookmark
      */
-    public readonly updatedBy!: pulumi.Output<types.outputs.securityinsights.v20230701preview.UserInfoResponse | undefined>;
+    public readonly updatedBy!: pulumi.Output<types.outputs.UserInfoResponse | undefined>;
 
     /**
      * Create a Bookmark resource with the given unique name, arguments, and options.
@@ -202,7 +202,7 @@ export interface BookmarkArgs {
     /**
      * Describes a user that created the bookmark
      */
-    createdBy?: pulumi.Input<types.inputs.securityinsights.v20230701preview.UserInfoArgs>;
+    createdBy?: pulumi.Input<types.inputs.UserInfoArgs>;
     /**
      * The display name of the bookmark
      */
@@ -210,7 +210,7 @@ export interface BookmarkArgs {
     /**
      * Describes the entity mappings of the bookmark
      */
-    entityMappings?: pulumi.Input<pulumi.Input<types.inputs.securityinsights.v20230701preview.BookmarkEntityMappingsArgs>[]>;
+    entityMappings?: pulumi.Input<pulumi.Input<types.inputs.BookmarkEntityMappingsArgs>[]>;
     /**
      * The bookmark event time
      */
@@ -218,7 +218,7 @@ export interface BookmarkArgs {
     /**
      * Describes an incident that relates to bookmark
      */
-    incidentInfo?: pulumi.Input<types.inputs.securityinsights.v20230701preview.IncidentInfoArgs>;
+    incidentInfo?: pulumi.Input<types.inputs.IncidentInfoArgs>;
     /**
      * List of labels relevant to this bookmark
      */
@@ -250,7 +250,7 @@ export interface BookmarkArgs {
     /**
      * A list of relevant mitre attacks
      */
-    tactics?: pulumi.Input<pulumi.Input<string | types.enums.v20230701preview.AttackTactic>[]>;
+    tactics?: pulumi.Input<pulumi.Input<string | types.enums.AttackTactic>[]>;
     /**
      * A list of relevant mitre techniques
      */
@@ -262,7 +262,7 @@ export interface BookmarkArgs {
     /**
      * Describes a user that updated the bookmark
      */
-    updatedBy?: pulumi.Input<types.inputs.securityinsights.v20230701preview.UserInfoArgs>;
+    updatedBy?: pulumi.Input<types.inputs.UserInfoArgs>;
     /**
      * The name of the workspace.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets information about the specified hub.
  */
@@ -35,7 +35,7 @@ export interface GetHubResult {
     /**
      * Billing settings of the hub.
      */
-    readonly hubBillingInfo?: types.outputs.customerinsights.v20170426.HubBillingInfoFormatResponse;
+    readonly hubBillingInfo?: types.outputs.HubBillingInfoFormatResponse;
     /**
      * Resource ID.
      */

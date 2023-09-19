@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Deployment information.
  */
@@ -42,7 +42,7 @@ export class Deployment extends pulumi.CustomResource {
     /**
      * Deployment properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.resources.v20220901.DeploymentPropertiesExtendedResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.DeploymentPropertiesExtendedResponse>;
     /**
      * Deployment tags
      */
@@ -105,7 +105,7 @@ export interface DeploymentArgs {
     /**
      * The deployment properties.
      */
-    properties: pulumi.Input<types.inputs.resources.v20220901.DeploymentPropertiesArgs>;
+    properties: pulumi.Input<types.inputs.DeploymentPropertiesArgs>;
     /**
      * The name of the resource group to deploy the resources to. The name is case insensitive. The resource group must already exist.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Workspace data table definition.
  */
@@ -54,11 +54,11 @@ export class Table extends pulumi.CustomResource {
     /**
      * Parameters of the restore operation that initiated this table.
      */
-    public readonly restoredLogs!: pulumi.Output<types.outputs.operationalinsights.v20221001.RestoredLogsResponse | undefined>;
+    public readonly restoredLogs!: pulumi.Output<types.outputs.RestoredLogsResponse | undefined>;
     /**
      * Search job execution statistics.
      */
-    public /*out*/ readonly resultStatistics!: pulumi.Output<types.outputs.operationalinsights.v20221001.ResultStatisticsResponse>;
+    public /*out*/ readonly resultStatistics!: pulumi.Output<types.outputs.ResultStatisticsResponse>;
     /**
      * The table retention in days, between 4 and 730. Setting this property to -1 will default to the workspace retention.
      */
@@ -70,15 +70,15 @@ export class Table extends pulumi.CustomResource {
     /**
      * Table schema.
      */
-    public readonly schema!: pulumi.Output<types.outputs.operationalinsights.v20221001.SchemaResponse | undefined>;
+    public readonly schema!: pulumi.Output<types.outputs.SchemaResponse | undefined>;
     /**
      * Parameters of the search job that initiated this table.
      */
-    public readonly searchResults!: pulumi.Output<types.outputs.operationalinsights.v20221001.SearchResultsResponse | undefined>;
+    public readonly searchResults!: pulumi.Output<types.outputs.SearchResultsResponse | undefined>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.operationalinsights.v20221001.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The table total retention in days, between 4 and 2556. Setting this property to -1 will default to table retention.
      */
@@ -158,7 +158,7 @@ export interface TableArgs {
     /**
      * Instruct the system how to handle and charge the logs ingested to this table.
      */
-    plan?: pulumi.Input<string | types.enums.v20221001.TablePlanEnum>;
+    plan?: pulumi.Input<string | types.enums.TablePlanEnum>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -166,7 +166,7 @@ export interface TableArgs {
     /**
      * Parameters of the restore operation that initiated this table.
      */
-    restoredLogs?: pulumi.Input<types.inputs.operationalinsights.v20221001.RestoredLogsArgs>;
+    restoredLogs?: pulumi.Input<types.inputs.RestoredLogsArgs>;
     /**
      * The table retention in days, between 4 and 730. Setting this property to -1 will default to the workspace retention.
      */
@@ -174,11 +174,11 @@ export interface TableArgs {
     /**
      * Table schema.
      */
-    schema?: pulumi.Input<types.inputs.operationalinsights.v20221001.SchemaArgs>;
+    schema?: pulumi.Input<types.inputs.SchemaArgs>;
     /**
      * Parameters of the search job that initiated this table.
      */
-    searchResults?: pulumi.Input<types.inputs.operationalinsights.v20221001.SearchResultsArgs>;
+    searchResults?: pulumi.Input<types.inputs.SearchResultsArgs>;
     /**
      * The name of the table.
      */

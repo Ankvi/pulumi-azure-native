@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a workspace manager assignment
  */
@@ -44,7 +44,7 @@ export interface GetWorkspaceManagerAssignmentResult {
     /**
      * List of resources included in this workspace manager assignment
      */
-    readonly items: types.outputs.securityinsights.v20230801preview.AssignmentItemResponse[];
+    readonly items: types.outputs.AssignmentItemResponse[];
     /**
      * The time the last job associated to this assignment ended at
      */
@@ -60,7 +60,7 @@ export interface GetWorkspaceManagerAssignmentResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.securityinsights.v20230801preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The resource name of the workspace manager group targeted by the workspace manager assignment
      */

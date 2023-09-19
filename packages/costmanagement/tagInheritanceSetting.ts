@@ -48,7 +48,7 @@ export class TagInheritanceSetting extends pulumi.CustomResource {
     /**
      * The properties of the tag inheritance setting.
      */
-    public readonly properties!: pulumi.Output<types.outputs.costmanagement.TagInheritancePropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.TagInheritancePropertiesResponse>;
     /**
      * Resource type.
      */
@@ -107,7 +107,7 @@ export interface TagInheritanceSettingArgs {
     /**
      * The properties of the tag inheritance setting.
      */
-    properties?: pulumi.Input<types.inputs.costmanagement.TagInheritancePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.TagInheritancePropertiesArgs>;
     /**
      * The scope associated with this setting. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billing profile scope.
      */

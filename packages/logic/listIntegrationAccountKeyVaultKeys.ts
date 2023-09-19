@@ -24,7 +24,7 @@ export interface ListIntegrationAccountKeyVaultKeysArgs {
     /**
      * The key vault reference.
      */
-    keyVault: types.inputs.logic.KeyVaultReference;
+    keyVault: types.inputs.KeyVaultReference;
     /**
      * The resource group name.
      */
@@ -46,7 +46,7 @@ export interface ListIntegrationAccountKeyVaultKeysResult {
     /**
      * The key vault keys.
      */
-    readonly value?: types.outputs.logic.KeyVaultKeyResponse[];
+    readonly value?: types.outputs.KeyVaultKeyResponse[];
 }
 /**
  * Gets the integration account's Key Vault keys.
@@ -64,7 +64,7 @@ export interface ListIntegrationAccountKeyVaultKeysOutputArgs {
     /**
      * The key vault reference.
      */
-    keyVault: pulumi.Input<types.inputs.logic.KeyVaultReferenceArgs>;
+    keyVault: pulumi.Input<types.inputs.KeyVaultReferenceArgs>;
     /**
      * The resource group name.
      */

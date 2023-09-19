@@ -67,7 +67,7 @@ export interface GetLogAnalyticExportThrottledRequestsResult {
     /**
      * LogAnalyticsOutput
      */
-    readonly properties: types.outputs.compute.LogAnalyticsOutputResponse;
+    readonly properties: types.outputs.LogAnalyticsOutputResponse;
 }
 /**
  * Export logs that show total throttled Api requests for this subscription in the given time window.

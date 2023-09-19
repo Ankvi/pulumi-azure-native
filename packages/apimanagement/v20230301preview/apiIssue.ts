@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Issue Contract details.
  */
@@ -152,7 +152,7 @@ export interface ApiIssueArgs {
     /**
      * Status of the issue.
      */
-    state?: pulumi.Input<string | types.enums.v20230301preview.State>;
+    state?: pulumi.Input<string | types.enums.State>;
     /**
      * The issue title.
      */

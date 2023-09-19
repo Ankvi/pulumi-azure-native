@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Describes a license profile in a hybrid machine.
  */
@@ -50,7 +50,7 @@ export class LicenseProfile extends pulumi.CustomResource {
     /**
      * The list of ESU keys.
      */
-    public /*out*/ readonly esuKeys!: pulumi.Output<types.outputs.hybridcompute.v20230620preview.EsuKeyResponse[]>;
+    public /*out*/ readonly esuKeys!: pulumi.Output<types.outputs.EsuKeyResponse[]>;
     /**
      * The geo-location where the resource lives
      */
@@ -70,7 +70,7 @@ export class LicenseProfile extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.hybridcompute.v20230620preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the details of a web, mobile, or API app.
  */
@@ -69,7 +69,7 @@ export interface GetWebAppSlotResult {
     /**
      * Hostname SSL states are used to manage the SSL bindings for app's hostnames.
      */
-    readonly hostNameSslStates?: types.outputs.web.v20160801.HostNameSslStateResponse[];
+    readonly hostNameSslStates?: types.outputs.HostNameSslStateResponse[];
     /**
      * Hostnames associated with the app.
      */
@@ -82,7 +82,7 @@ export interface GetWebAppSlotResult {
     /**
      * App Service Environment to use for the app.
      */
-    readonly hostingEnvironmentProfile?: types.outputs.web.v20160801.HostingEnvironmentProfileResponse;
+    readonly hostingEnvironmentProfile?: types.outputs.HostingEnvironmentProfileResponse;
     /**
      * HttpsOnly: configures a web site to accept only https requests. Issues redirect for
      * http requests
@@ -95,7 +95,7 @@ export interface GetWebAppSlotResult {
     /**
      * Managed service identity.
      */
-    readonly identity?: types.outputs.web.v20160801.ManagedServiceIdentityResponse;
+    readonly identity?: types.outputs.ManagedServiceIdentityResponse;
     /**
      * <code>true</code> if the app is a default container; otherwise, <code>false</code>.
      */
@@ -152,11 +152,11 @@ export interface GetWebAppSlotResult {
     /**
      * Configuration of the app.
      */
-    readonly siteConfig?: types.outputs.web.v20160801.SiteConfigResponse;
+    readonly siteConfig?: types.outputs.SiteConfigResponse;
     /**
      * Status of the last deployment slot swap operation.
      */
-    readonly slotSwapStatus: types.outputs.web.v20160801.SlotSwapStatusResponse;
+    readonly slotSwapStatus: types.outputs.SlotSwapStatusResponse;
     /**
      * Current state of the app.
      */

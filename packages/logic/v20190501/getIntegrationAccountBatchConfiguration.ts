@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a batch configuration for an integration account.
  */
@@ -48,7 +48,7 @@ export interface GetIntegrationAccountBatchConfigurationResult {
     /**
      * The batch configuration properties.
      */
-    readonly properties: types.outputs.logic.v20190501.BatchConfigurationPropertiesResponse;
+    readonly properties: types.outputs.BatchConfigurationPropertiesResponse;
     /**
      * The resource tags.
      */

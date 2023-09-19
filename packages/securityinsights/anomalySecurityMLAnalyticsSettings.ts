@@ -84,7 +84,7 @@ export class AnomalySecurityMLAnalyticsSettings extends pulumi.CustomResource {
     /**
      * The required data sources for this SecurityMLAnalyticsSettings
      */
-    public readonly requiredDataConnectors!: pulumi.Output<types.outputs.securityinsights.SecurityMLAnalyticsSettingsDataSourceResponse[] | undefined>;
+    public readonly requiredDataConnectors!: pulumi.Output<types.outputs.SecurityMLAnalyticsSettingsDataSourceResponse[] | undefined>;
     /**
      * The anomaly settings definition Id
      */
@@ -96,7 +96,7 @@ export class AnomalySecurityMLAnalyticsSettings extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.securityinsights.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The tactics of the SecurityMLAnalyticsSettings
      */
@@ -242,7 +242,7 @@ export interface AnomalySecurityMLAnalyticsSettingsArgs {
     /**
      * The required data sources for this SecurityMLAnalyticsSettings
      */
-    requiredDataConnectors?: pulumi.Input<pulumi.Input<types.inputs.securityinsights.SecurityMLAnalyticsSettingsDataSourceArgs>[]>;
+    requiredDataConnectors?: pulumi.Input<pulumi.Input<types.inputs.SecurityMLAnalyticsSettingsDataSourceArgs>[]>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

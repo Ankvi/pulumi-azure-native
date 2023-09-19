@@ -51,7 +51,7 @@ export class VendorSkus extends pulumi.CustomResource {
     /**
      * The template definition of the network function.
      */
-    public readonly networkFunctionTemplate!: pulumi.Output<types.outputs.hybridnetwork.NetworkFunctionTemplateResponse | undefined>;
+    public readonly networkFunctionTemplate!: pulumi.Output<types.outputs.NetworkFunctionTemplateResponse | undefined>;
     /**
      * The network function type.
      */
@@ -71,7 +71,7 @@ export class VendorSkus extends pulumi.CustomResource {
     /**
      * The system meta data relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.hybridnetwork.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -143,7 +143,7 @@ export interface VendorSkusArgs {
     /**
      * The template definition of the network function.
      */
-    networkFunctionTemplate?: pulumi.Input<types.inputs.hybridnetwork.NetworkFunctionTemplateArgs>;
+    networkFunctionTemplate?: pulumi.Input<types.inputs.NetworkFunctionTemplateArgs>;
     /**
      * The network function type.
      */

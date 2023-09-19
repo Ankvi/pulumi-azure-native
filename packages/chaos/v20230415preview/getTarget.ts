@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a Target resource that extends a tracked regional resource.
  */
@@ -62,7 +62,7 @@ export interface GetTargetResult {
     /**
      * The system metadata of the target resource.
      */
-    readonly systemData: types.outputs.chaos.v20230415preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

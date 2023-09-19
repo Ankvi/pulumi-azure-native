@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Solution resource.
  */
@@ -42,11 +42,11 @@ export class Solution extends pulumi.CustomResource {
     /**
      * Solution resource properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.agfoodplatform.v20210901preview.SolutionPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.SolutionPropertiesResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.agfoodplatform.v20210901preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -102,7 +102,7 @@ export interface SolutionArgs {
     /**
      * Solution resource properties.
      */
-    properties?: pulumi.Input<types.inputs.agfoodplatform.v20210901preview.SolutionPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.SolutionPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

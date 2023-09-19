@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns a BotService specified by the parameters.
  */
@@ -51,11 +51,11 @@ export interface GetBotResult {
     /**
      * The set of properties specific to bot resource
      */
-    readonly properties: types.outputs.botservice.v20220915.BotPropertiesResponse;
+    readonly properties: types.outputs.BotPropertiesResponse;
     /**
      * Gets or sets the SKU of the resource.
      */
-    readonly sku?: types.outputs.botservice.v20220915.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * Contains resource tags defined as key/value pairs.
      */

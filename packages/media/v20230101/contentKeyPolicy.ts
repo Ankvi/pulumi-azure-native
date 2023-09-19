@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A Content Key Policy resource.
  */
@@ -50,7 +50,7 @@ export class ContentKeyPolicy extends pulumi.CustomResource {
     /**
      * The Key Policy options.
      */
-    public readonly options!: pulumi.Output<types.outputs.media.v20230101.ContentKeyPolicyOptionResponse[]>;
+    public readonly options!: pulumi.Output<types.outputs.ContentKeyPolicyOptionResponse[]>;
     /**
      * The legacy Policy ID.
      */
@@ -58,7 +58,7 @@ export class ContentKeyPolicy extends pulumi.CustomResource {
     /**
      * The system metadata relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.media.v20230101.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -131,7 +131,7 @@ export interface ContentKeyPolicyArgs {
     /**
      * The Key Policy options.
      */
-    options: pulumi.Input<pulumi.Input<types.inputs.media.v20230101.ContentKeyPolicyOptionArgs>[]>;
+    options: pulumi.Input<pulumi.Input<types.inputs.ContentKeyPolicyOptionArgs>[]>;
     /**
      * The name of the resource group within the Azure subscription.
      */

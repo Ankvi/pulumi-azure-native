@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get properties of a topic space.
  */
@@ -52,7 +52,7 @@ export interface GetTopicSpaceResult {
     /**
      * The system metadata relating to the TopicSpace resource.
      */
-    readonly systemData: types.outputs.eventgrid.v20230601preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The topic filters in the topic space.
      * Example: "topicTemplates": [ 

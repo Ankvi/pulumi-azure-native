@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
  */
@@ -41,11 +41,11 @@ export interface GetRouteResult {
     /**
      * The caching configuration for this route. To disable caching, do not provide a cacheConfiguration object.
      */
-    readonly cacheConfiguration?: types.outputs.cdn.v20230501.AfdRouteCacheConfigurationResponse;
+    readonly cacheConfiguration?: types.outputs.AfdRouteCacheConfigurationResponse;
     /**
      * Domains referenced by this endpoint.
      */
-    readonly customDomains?: types.outputs.cdn.v20230501.ActivatedResourceReferenceResponse[];
+    readonly customDomains?: types.outputs.ActivatedResourceReferenceResponse[];
     readonly deploymentStatus: string;
     /**
      * Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled'
@@ -78,7 +78,7 @@ export interface GetRouteResult {
     /**
      * A reference to the origin group.
      */
-    readonly originGroup: types.outputs.cdn.v20230501.ResourceReferenceResponse;
+    readonly originGroup: types.outputs.ResourceReferenceResponse;
     /**
      * A directory path on the origin that AzureFrontDoor can use to retrieve content from, e.g. contoso.cloudapp.net/originpath.
      */
@@ -94,7 +94,7 @@ export interface GetRouteResult {
     /**
      * rule sets referenced by this endpoint.
      */
-    readonly ruleSets?: types.outputs.cdn.v20230501.ResourceReferenceResponse[];
+    readonly ruleSets?: types.outputs.ResourceReferenceResponse[];
     /**
      * List of supported protocols for this route.
      */
@@ -102,7 +102,7 @@ export interface GetRouteResult {
     /**
      * Read only system data
      */
-    readonly systemData: types.outputs.cdn.v20230501.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource type.
      */

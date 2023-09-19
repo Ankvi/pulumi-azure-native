@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The Permission binding resource.
  */
@@ -55,7 +55,7 @@ export class PermissionBinding extends pulumi.CustomResource {
     /**
      * The system metadata relating to the PermissionBinding resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.eventgrid.v20230601preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The name of the Topic Space resource that the permission is bound to.
      * The Topic space needs to be a resource under the same namespace the permission binding is a part of.
@@ -131,7 +131,7 @@ export interface PermissionBindingArgs {
     /**
      * The allowed permission.
      */
-    permission?: pulumi.Input<string | types.enums.v20230601preview.PermissionType>;
+    permission?: pulumi.Input<string | types.enums.PermissionType>;
     /**
      * The permission binding name.
      */

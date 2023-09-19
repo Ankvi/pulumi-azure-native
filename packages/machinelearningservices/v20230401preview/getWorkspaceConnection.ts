@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 export function getWorkspaceConnection(args: GetWorkspaceConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkspaceConnectionResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -35,11 +35,11 @@ export interface GetWorkspaceConnectionResult {
      * The name of the resource
      */
     readonly name: string;
-    readonly properties: types.outputs.machinelearningservices.v20230401preview.AccessKeyAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.machinelearningservices.v20230401preview.ManagedIdentityAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.machinelearningservices.v20230401preview.NoneAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.machinelearningservices.v20230401preview.PATAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.machinelearningservices.v20230401preview.SASAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.machinelearningservices.v20230401preview.ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.machinelearningservices.v20230401preview.UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse;
+    readonly properties: types.outputs.AccessKeyAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.ManagedIdentityAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.NoneAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.PATAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.SASAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.machinelearningservices.v20230401preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

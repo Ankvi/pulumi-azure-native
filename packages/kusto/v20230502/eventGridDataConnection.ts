@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Class representing an Event Grid data connection.
  */
@@ -187,7 +187,7 @@ export interface EventGridDataConnectionArgs {
     /**
      * The name of blob storage event type to process.
      */
-    blobStorageEventType?: pulumi.Input<string | types.enums.v20230502.BlobStorageEventType>;
+    blobStorageEventType?: pulumi.Input<string | types.enums.BlobStorageEventType>;
     /**
      * The name of the Kusto cluster.
      */
@@ -203,7 +203,7 @@ export interface EventGridDataConnectionArgs {
     /**
      * The data format of the message. Optionally the data format can be added to each message.
      */
-    dataFormat?: pulumi.Input<string | types.enums.v20230502.EventGridDataFormat>;
+    dataFormat?: pulumi.Input<string | types.enums.EventGridDataFormat>;
     /**
      * The name of the database in the Kusto cluster.
      */
@@ -211,7 +211,7 @@ export interface EventGridDataConnectionArgs {
     /**
      * Indication for database routing information from the data connection, by default only database routing information is allowed
      */
-    databaseRouting?: pulumi.Input<string | types.enums.v20230502.DatabaseRouting>;
+    databaseRouting?: pulumi.Input<string | types.enums.DatabaseRouting>;
     /**
      * The resource ID of the event grid that is subscribed to the storage account events.
      */

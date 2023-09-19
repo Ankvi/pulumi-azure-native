@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the workspace vNet Peering.
  */
@@ -48,11 +48,11 @@ export interface GetVNetPeeringResult {
     /**
      * The reference to the databricks virtual network address space.
      */
-    readonly databricksAddressSpace?: types.outputs.databricks.v20230201.AddressSpaceResponse;
+    readonly databricksAddressSpace?: types.outputs.AddressSpaceResponse;
     /**
      *  The remote virtual network should be in the same region. See here to learn more (https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
      */
-    readonly databricksVirtualNetwork?: types.outputs.databricks.v20230201.VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetwork;
+    readonly databricksVirtualNetwork?: types.outputs.VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetwork;
     /**
      * Resource ID.
      */
@@ -72,11 +72,11 @@ export interface GetVNetPeeringResult {
     /**
      * The reference to the remote virtual network address space.
      */
-    readonly remoteAddressSpace?: types.outputs.databricks.v20230201.AddressSpaceResponse;
+    readonly remoteAddressSpace?: types.outputs.AddressSpaceResponse;
     /**
      *  The remote virtual network should be in the same region. See here to learn more (https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
      */
-    readonly remoteVirtualNetwork: types.outputs.databricks.v20230201.VirtualNetworkPeeringPropertiesFormatResponseRemoteVirtualNetwork;
+    readonly remoteVirtualNetwork: types.outputs.VirtualNetworkPeeringPropertiesFormatResponseRemoteVirtualNetwork;
     /**
      * type of the virtual network peering resource
      */

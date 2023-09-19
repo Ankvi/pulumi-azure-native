@@ -37,7 +37,7 @@ export interface GetMECRoleResult {
     /**
      * Activation key of the MEC.
      */
-    readonly connectionString?: types.outputs.databoxedge.AsymmetricEncryptedSecretResponse;
+    readonly connectionString?: types.outputs.AsymmetricEncryptedSecretResponse;
     /**
      * Controller Endpoint.
      */
@@ -66,7 +66,7 @@ export interface GetMECRoleResult {
     /**
      * Metadata pertaining to creation and last modification of Role
      */
-    readonly systemData: types.outputs.databoxedge.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The hierarchical type of the object.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Lists all the keys associated with this workspace. This includes keys for the storage account, app insights and password for container registry
  */
@@ -26,8 +26,8 @@ export interface ListWorkspaceKeysArgs {
 
 export interface ListWorkspaceKeysResult {
     readonly appInsightsInstrumentationKey: string;
-    readonly containerRegistryCredentials: types.outputs.machinelearningservices.v20230401preview.RegistryListCredentialsResultResponse;
-    readonly notebookAccessKeys: types.outputs.machinelearningservices.v20230401preview.ListNotebookKeysResultResponse;
+    readonly containerRegistryCredentials: types.outputs.RegistryListCredentialsResultResponse;
+    readonly notebookAccessKeys: types.outputs.ListNotebookKeysResultResponse;
     readonly userStorageKey: string;
     readonly userStorageResourceId: string;
 }

@@ -67,7 +67,7 @@ export class IpAllocation extends pulumi.CustomResource {
     /**
      * The Subnet that using the prefix of this IpAllocation resource.
      */
-    public /*out*/ readonly subnet!: pulumi.Output<types.outputs.network.SubResourceResponse>;
+    public /*out*/ readonly subnet!: pulumi.Output<types.outputs.SubResourceResponse>;
     /**
      * Resource tags.
      */
@@ -79,7 +79,7 @@ export class IpAllocation extends pulumi.CustomResource {
     /**
      * The VirtualNetwork that using the prefix of this IpAllocation resource.
      */
-    public /*out*/ readonly virtualNetwork!: pulumi.Output<types.outputs.network.SubResourceResponse>;
+    public /*out*/ readonly virtualNetwork!: pulumi.Output<types.outputs.SubResourceResponse>;
 
     /**
      * Create a IpAllocation resource with the given unique name, arguments, and options.

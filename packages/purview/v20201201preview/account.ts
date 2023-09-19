@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Account resource
  */
@@ -35,7 +35,7 @@ export class Account extends pulumi.CustomResource {
      * Cloud connectors.
      * External cloud identifier used as part of scanning configuration.
      */
-    public /*out*/ readonly cloudConnectors!: pulumi.Output<types.outputs.purview.v20201201preview.CloudConnectorsResponse | undefined>;
+    public /*out*/ readonly cloudConnectors!: pulumi.Output<types.outputs.CloudConnectorsResponse | undefined>;
     /**
      * Gets the time at which the entity was created.
      */
@@ -51,7 +51,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * The URIs that are the public endpoints of the account.
      */
-    public /*out*/ readonly endpoints!: pulumi.Output<types.outputs.purview.v20201201preview.AccountPropertiesResponseEndpoints>;
+    public /*out*/ readonly endpoints!: pulumi.Output<types.outputs.AccountPropertiesResponseEndpoints>;
     /**
      * Gets or sets the friendly name.
      */
@@ -59,7 +59,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * Identity Info on the tracked resource
      */
-    public readonly identity!: pulumi.Output<types.outputs.purview.v20201201preview.IdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityResponse | undefined>;
     /**
      * Gets or sets the location.
      */
@@ -71,7 +71,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * Gets the resource identifiers of the managed resources.
      */
-    public /*out*/ readonly managedResources!: pulumi.Output<types.outputs.purview.v20201201preview.AccountPropertiesResponseManagedResources>;
+    public /*out*/ readonly managedResources!: pulumi.Output<types.outputs.AccountPropertiesResponseManagedResources>;
     /**
      * Gets or sets the name.
      */
@@ -79,7 +79,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * Gets the private endpoint connections information.
      */
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.purview.v20201201preview.PrivateEndpointConnectionResponse[]>;
+    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[]>;
     /**
      * Gets or sets the state of the provisioning.
      */
@@ -91,11 +91,11 @@ export class Account extends pulumi.CustomResource {
     /**
      * Gets or sets the Sku.
      */
-    public /*out*/ readonly sku!: pulumi.Output<types.outputs.purview.v20201201preview.AccountResponseSku>;
+    public /*out*/ readonly sku!: pulumi.Output<types.outputs.AccountResponseSku>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.purview.v20201201preview.AccountPropertiesResponseSystemData>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.AccountPropertiesResponseSystemData>;
     /**
      * Tags on the azure resource.
      */
@@ -177,7 +177,7 @@ export interface AccountArgs {
     /**
      * Identity Info on the tracked resource
      */
-    identity?: pulumi.Input<types.inputs.purview.v20201201preview.IdentityArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityArgs>;
     /**
      * Gets or sets the location.
      */
@@ -189,7 +189,7 @@ export interface AccountArgs {
     /**
      * Gets or sets the public network access.
      */
-    publicNetworkAccess?: pulumi.Input<string | types.enums.v20201201preview.PublicNetworkAccess>;
+    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess>;
     /**
      * The resource group name.
      */

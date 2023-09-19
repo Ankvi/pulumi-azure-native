@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets an Event Hubs description for the specified Event Hub.
  */
@@ -36,7 +36,7 @@ export interface GetEventHubResult {
     /**
      * Properties of capture description
      */
-    readonly captureDescription?: types.outputs.eventhub.v20221001preview.CaptureDescriptionResponse;
+    readonly captureDescription?: types.outputs.CaptureDescriptionResponse;
     /**
      * Exact time the Event Hub was created.
      */
@@ -68,7 +68,7 @@ export interface GetEventHubResult {
     /**
      * Event Hub retention settings
      */
-    readonly retentionDescription?: types.outputs.eventhub.v20221001preview.RetentionDescriptionResponse;
+    readonly retentionDescription?: types.outputs.RetentionDescriptionResponse;
     /**
      * Enumerates the possible values for the status of the Event Hub.
      */
@@ -76,7 +76,7 @@ export interface GetEventHubResult {
     /**
      * The system meta data relating to this resource.
      */
-    readonly systemData: types.outputs.eventhub.v20221001preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
      */

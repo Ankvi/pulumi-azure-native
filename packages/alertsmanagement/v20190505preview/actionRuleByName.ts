@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Action rule object containing target scope, conditions and suppression logic
  */
@@ -42,7 +42,7 @@ export class ActionRuleByName extends pulumi.CustomResource {
     /**
      * action rule properties
      */
-    public readonly properties!: pulumi.Output<types.outputs.alertsmanagement.v20190505preview.ActionGroupResponse | types.outputs.alertsmanagement.v20190505preview.DiagnosticsResponse | types.outputs.alertsmanagement.v20190505preview.SuppressionResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ActionGroupResponse | types.outputs.DiagnosticsResponse | types.outputs.SuppressionResponse>;
     /**
      * Resource tags
      */
@@ -102,7 +102,7 @@ export interface ActionRuleByNameArgs {
     /**
      * action rule properties
      */
-    properties?: pulumi.Input<types.inputs.alertsmanagement.v20190505preview.ActionGroupArgs | types.inputs.alertsmanagement.v20190505preview.DiagnosticsArgs | types.inputs.alertsmanagement.v20190505preview.SuppressionArgs>;
+    properties?: pulumi.Input<types.inputs.ActionGroupArgs | types.inputs.DiagnosticsArgs | types.inputs.SuppressionArgs>;
     /**
      * Resource group name where the resource is created.
      */

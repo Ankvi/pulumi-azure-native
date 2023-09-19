@@ -42,11 +42,11 @@ export interface GetBackupPolicyResult {
     /**
      * BaseBackupPolicyResource properties
      */
-    readonly properties: types.outputs.dataprotection.BackupPolicyResponse;
+    readonly properties: types.outputs.BackupPolicyResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.dataprotection.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
      */

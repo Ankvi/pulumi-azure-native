@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Container App.
  */
@@ -34,7 +34,7 @@ export class ContainerApp extends pulumi.CustomResource {
     /**
      * Non versioned Container App configuration properties.
      */
-    public readonly configuration!: pulumi.Output<types.outputs.app.v20221001.ConfigurationResponse | undefined>;
+    public readonly configuration!: pulumi.Output<types.outputs.ConfigurationResponse | undefined>;
     /**
      * Id used to verify domain name ownership
      */
@@ -50,11 +50,11 @@ export class ContainerApp extends pulumi.CustomResource {
     /**
      * The complex type of the extended location.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.app.v20221001.ExtendedLocationResponse | undefined>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
     /**
      * managed identities for the Container App to interact with other Azure services without maintaining any secrets or credentials in code.
      */
-    public readonly identity!: pulumi.Output<types.outputs.app.v20221001.ManagedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * Name of the latest ready revision of the Container App.
      */
@@ -90,7 +90,7 @@ export class ContainerApp extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.app.v20221001.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -98,7 +98,7 @@ export class ContainerApp extends pulumi.CustomResource {
     /**
      * Container App versioned application definition.
      */
-    public readonly template!: pulumi.Output<types.outputs.app.v20221001.TemplateResponse | undefined>;
+    public readonly template!: pulumi.Output<types.outputs.TemplateResponse | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -122,7 +122,7 @@ export class ContainerApp extends pulumi.CustomResource {
             if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["configuration"] = args ? (args.configuration ? pulumi.output(args.configuration).apply(types.inputs.app.v20221001.configurationArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["configuration"] = args ? (args.configuration ? pulumi.output(args.configuration).apply(types.inputs.configurationArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["containerAppName"] = args ? args.containerAppName : undefined;
             resourceInputs["environmentId"] = args ? args.environmentId : undefined;
             resourceInputs["extendedLocation"] = args ? args.extendedLocation : undefined;
@@ -131,7 +131,7 @@ export class ContainerApp extends pulumi.CustomResource {
             resourceInputs["managedEnvironmentId"] = args ? args.managedEnvironmentId : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["template"] = args ? (args.template ? pulumi.output(args.template).apply(types.inputs.app.v20221001.templateArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["template"] = args ? (args.template ? pulumi.output(args.template).apply(types.inputs.templateArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["workloadProfileType"] = args ? args.workloadProfileType : undefined;
             resourceInputs["customDomainVerificationId"] = undefined /*out*/;
             resourceInputs["eventStreamEndpoint"] = undefined /*out*/;
@@ -178,7 +178,7 @@ export interface ContainerAppArgs {
     /**
      * Non versioned Container App configuration properties.
      */
-    configuration?: pulumi.Input<types.inputs.app.v20221001.ConfigurationArgs>;
+    configuration?: pulumi.Input<types.inputs.ConfigurationArgs>;
     /**
      * Name of the Container App.
      */
@@ -190,11 +190,11 @@ export interface ContainerAppArgs {
     /**
      * The complex type of the extended location.
      */
-    extendedLocation?: pulumi.Input<types.inputs.app.v20221001.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * managed identities for the Container App to interact with other Azure services without maintaining any secrets or credentials in code.
      */
-    identity?: pulumi.Input<types.inputs.app.v20221001.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -214,7 +214,7 @@ export interface ContainerAppArgs {
     /**
      * Container App versioned application definition.
      */
-    template?: pulumi.Input<types.inputs.app.v20221001.TemplateArgs>;
+    template?: pulumi.Input<types.inputs.TemplateArgs>;
     /**
      * Workload profile type to pin for container app execution.
      */

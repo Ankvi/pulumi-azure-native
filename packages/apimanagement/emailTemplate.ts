@@ -51,7 +51,7 @@ export class EmailTemplate extends pulumi.CustomResource {
     /**
      * Email Template Parameter values.
      */
-    public readonly parameters!: pulumi.Output<types.outputs.apimanagement.EmailTemplateParametersContractPropertiesResponse[] | undefined>;
+    public readonly parameters!: pulumi.Output<types.outputs.EmailTemplateParametersContractPropertiesResponse[] | undefined>;
     /**
      * Subject of the Template.
      */
@@ -125,7 +125,7 @@ export interface EmailTemplateArgs {
     /**
      * Email Template Parameter values.
      */
-    parameters?: pulumi.Input<pulumi.Input<types.inputs.apimanagement.EmailTemplateParametersContractPropertiesArgs>[]>;
+    parameters?: pulumi.Input<pulumi.Input<types.inputs.EmailTemplateParametersContractPropertiesArgs>[]>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

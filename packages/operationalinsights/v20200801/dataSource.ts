@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Datasources under OMS Workspace.
  */
@@ -114,7 +114,7 @@ export interface DataSourceArgs {
     /**
      * The kind of the DataSource.
      */
-    kind: pulumi.Input<string | types.enums.v20200801.DataSourceKind>;
+    kind: pulumi.Input<string | types.enums.DataSourceKind>;
     /**
      * The data source properties in raw json format, each kind of data source have it's own schema.
      */

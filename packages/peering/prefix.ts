@@ -39,7 +39,7 @@ export class Prefix extends pulumi.CustomResource {
     /**
      * The list of events for peering service prefix
      */
-    public /*out*/ readonly events!: pulumi.Output<types.outputs.peering.PeeringServicePrefixEventResponse[]>;
+    public /*out*/ readonly events!: pulumi.Output<types.outputs.PeeringServicePrefixEventResponse[]>;
     /**
      * The prefix learned type
      */

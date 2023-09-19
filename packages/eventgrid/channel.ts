@@ -52,7 +52,7 @@ export class Channel extends pulumi.CustomResource {
     /**
      * This property should be populated when channelType is PartnerTopic and represents information about the partner topic resource corresponding to the channel.
      */
-    public readonly partnerTopicInfo!: pulumi.Output<types.outputs.eventgrid.PartnerTopicInfoResponse | undefined>;
+    public readonly partnerTopicInfo!: pulumi.Output<types.outputs.PartnerTopicInfoResponse | undefined>;
     /**
      * Provisioning state of the channel.
      */
@@ -64,7 +64,7 @@ export class Channel extends pulumi.CustomResource {
     /**
      * The system metadata relating to Channel resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.eventgrid.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Type of the resource.
      */
@@ -145,7 +145,7 @@ export interface ChannelArgs {
     /**
      * This property should be populated when channelType is PartnerTopic and represents information about the partner topic resource corresponding to the channel.
      */
-    partnerTopicInfo?: pulumi.Input<types.inputs.eventgrid.PartnerTopicInfoArgs>;
+    partnerTopicInfo?: pulumi.Input<types.inputs.PartnerTopicInfoArgs>;
     /**
      * Provisioning state of the channel.
      */

@@ -39,8 +39,8 @@ export class WorkloadDeployment extends pulumi.CustomResource {
     /**
      * Workload deployment model properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.migrate.WorkloadDeploymentModelPropertiesResponse>;
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.migrate.WorkloadDeploymentModelResponseSystemData>;
+    public readonly properties!: pulumi.Output<types.outputs.WorkloadDeploymentModelPropertiesResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.WorkloadDeploymentModelResponseSystemData>;
     /**
      * Gets or sets the resource tags.
      */
@@ -101,7 +101,7 @@ export interface WorkloadDeploymentArgs {
     /**
      * Workload deployment model properties.
      */
-    properties?: pulumi.Input<types.inputs.migrate.WorkloadDeploymentModelPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.WorkloadDeploymentModelPropertiesArgs>;
     /**
      * Name of the Azure Resource Group that project is part of.
      */

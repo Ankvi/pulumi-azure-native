@@ -44,11 +44,11 @@ export interface GetAlertProcessingRuleByNameResult {
     /**
      * Alert processing rule properties.
      */
-    readonly properties: types.outputs.alertsmanagement.AlertProcessingRulePropertiesResponse;
+    readonly properties: types.outputs.AlertProcessingRulePropertiesResponse;
     /**
      * Alert processing rule system data.
      */
-    readonly systemData: types.outputs.alertsmanagement.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags
      */

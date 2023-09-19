@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The policy set definition.
  */
@@ -54,7 +54,7 @@ export class PolicySetDefinitionAtManagementGroup extends pulumi.CustomResource 
     /**
      * An array of policy definition references.
      */
-    public readonly policyDefinitions!: pulumi.Output<types.outputs.authorization.v20190601.PolicyDefinitionReferenceResponse[]>;
+    public readonly policyDefinitions!: pulumi.Output<types.outputs.PolicyDefinitionReferenceResponse[]>;
     /**
      * The type of policy definition. Possible values are NotSpecified, BuiltIn, and Custom.
      */
@@ -135,7 +135,7 @@ export interface PolicySetDefinitionAtManagementGroupArgs {
     /**
      * An array of policy definition references.
      */
-    policyDefinitions: pulumi.Input<pulumi.Input<types.inputs.authorization.v20190601.PolicyDefinitionReferenceArgs>[]>;
+    policyDefinitions: pulumi.Input<pulumi.Input<types.inputs.PolicyDefinitionReferenceArgs>[]>;
     /**
      * The name of the policy set definition to create.
      */
@@ -143,5 +143,5 @@ export interface PolicySetDefinitionAtManagementGroupArgs {
     /**
      * The type of policy definition. Possible values are NotSpecified, BuiltIn, and Custom.
      */
-    policyType?: pulumi.Input<string | types.enums.v20190601.PolicyType>;
+    policyType?: pulumi.Input<string | types.enums.PolicyType>;
 }

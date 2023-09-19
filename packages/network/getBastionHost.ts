@@ -68,7 +68,7 @@ export interface GetBastionHostResult {
     /**
      * IP configuration of the Bastion Host resource.
      */
-    readonly ipConfigurations?: types.outputs.network.BastionHostIPConfigurationResponse[];
+    readonly ipConfigurations?: types.outputs.BastionHostIPConfigurationResponse[];
     /**
      * Resource location.
      */
@@ -88,7 +88,7 @@ export interface GetBastionHostResult {
     /**
      * The sku of this Bastion Host.
      */
-    readonly sku?: types.outputs.network.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * Resource tags.
      */

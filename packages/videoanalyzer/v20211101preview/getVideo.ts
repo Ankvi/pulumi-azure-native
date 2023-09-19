@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves an existing video resource with the given name.
  */
@@ -36,11 +36,11 @@ export interface GetVideoResult {
     /**
      * Video archival properties.
      */
-    readonly archival?: types.outputs.videoanalyzer.v20211101preview.VideoArchivalResponse;
+    readonly archival?: types.outputs.VideoArchivalResponse;
     /**
      * Set of URLs to the video content.
      */
-    readonly contentUrls: types.outputs.videoanalyzer.v20211101preview.VideoContentUrlsResponse;
+    readonly contentUrls: types.outputs.VideoContentUrlsResponse;
     /**
      * Optional video description provided by the user. Value can be up to 2048 characters long.
      */
@@ -48,7 +48,7 @@ export interface GetVideoResult {
     /**
      * Video flags contain information about the available video actions and its dynamic properties based on the current video state.
      */
-    readonly flags: types.outputs.videoanalyzer.v20211101preview.VideoFlagsResponse;
+    readonly flags: types.outputs.VideoFlagsResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -56,7 +56,7 @@ export interface GetVideoResult {
     /**
      * Contains information about the video and audio content.
      */
-    readonly mediaInfo?: types.outputs.videoanalyzer.v20211101preview.VideoMediaInfoResponse;
+    readonly mediaInfo?: types.outputs.VideoMediaInfoResponse;
     /**
      * The name of the resource
      */
@@ -64,7 +64,7 @@ export interface GetVideoResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.videoanalyzer.v20211101preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Optional video title provided by the user. Value can be up to 256 characters long.
      */

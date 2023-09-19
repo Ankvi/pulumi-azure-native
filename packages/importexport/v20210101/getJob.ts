@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets information about an existing job.
  */
@@ -35,7 +35,7 @@ export interface GetJobResult {
     /**
      * Specifies the job identity details
      */
-    readonly identity?: types.outputs.importexport.v20210101.IdentityDetailsResponse;
+    readonly identity?: types.outputs.IdentityDetailsResponse;
     /**
      * Specifies the Azure location where the job is created.
      */
@@ -47,11 +47,11 @@ export interface GetJobResult {
     /**
      * Specifies the job properties
      */
-    readonly properties: types.outputs.importexport.v20210101.JobDetailsResponse;
+    readonly properties: types.outputs.JobDetailsResponse;
     /**
      * SystemData of ImportExport Jobs.
      */
-    readonly systemData: types.outputs.importexport.v20210101.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Specifies the tags that are assigned to the job.
      */

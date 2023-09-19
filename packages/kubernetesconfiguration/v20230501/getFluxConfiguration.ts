@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets details of the Flux Configuration.
  */
@@ -46,11 +46,11 @@ export interface GetFluxConfigurationResult {
     /**
      * Parameters to reconcile to the AzureBlob source kind type.
      */
-    readonly azureBlob?: types.outputs.kubernetesconfiguration.v20230501.AzureBlobDefinitionResponse;
+    readonly azureBlob?: types.outputs.AzureBlobDefinitionResponse;
     /**
      * Parameters to reconcile to the Bucket source kind type.
      */
-    readonly bucket?: types.outputs.kubernetesconfiguration.v20230501.BucketDefinitionResponse;
+    readonly bucket?: types.outputs.BucketDefinitionResponse;
     /**
      * Combined status of the Flux Kubernetes resources created by the fluxConfiguration or created by the managed objects.
      */
@@ -66,7 +66,7 @@ export interface GetFluxConfigurationResult {
     /**
      * Parameters to reconcile to the GitRepository source kind type.
      */
-    readonly gitRepository?: types.outputs.kubernetesconfiguration.v20230501.GitRepositoryDefinitionResponse;
+    readonly gitRepository?: types.outputs.GitRepositoryDefinitionResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -74,7 +74,7 @@ export interface GetFluxConfigurationResult {
     /**
      * Array of kustomizations used to reconcile the artifact pulled by the source type on the cluster.
      */
-    readonly kustomizations?: {[key: string]: types.outputs.kubernetesconfiguration.v20230501.KustomizationDefinitionResponse};
+    readonly kustomizations?: {[key: string]: types.outputs.KustomizationDefinitionResponse};
     /**
      * The name of the resource
      */
@@ -118,7 +118,7 @@ export interface GetFluxConfigurationResult {
     /**
      * Statuses of the Flux Kubernetes resources created by the fluxConfiguration or created by the managed objects provisioned by the fluxConfiguration.
      */
-    readonly statuses: types.outputs.kubernetesconfiguration.v20230501.ObjectStatusDefinitionResponse[];
+    readonly statuses: types.outputs.ObjectStatusDefinitionResponse[];
     /**
      * Whether this configuration should suspend its reconciliation of its kustomizations and sources.
      */
@@ -126,7 +126,7 @@ export interface GetFluxConfigurationResult {
     /**
      * Top level metadata https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-contracts.md#system-metadata-for-all-azure-resources
      */
-    readonly systemData: types.outputs.kubernetesconfiguration.v20230501.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

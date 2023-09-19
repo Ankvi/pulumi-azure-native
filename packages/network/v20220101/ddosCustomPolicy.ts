@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A DDoS custom policy in a resource group.
  */
@@ -46,7 +46,7 @@ export class DdosCustomPolicy extends pulumi.CustomResource {
     /**
      * The protocol-specific DDoS policy customization parameters.
      */
-    public readonly protocolCustomSettings!: pulumi.Output<types.outputs.network.v20220101.ProtocolCustomSettingsFormatResponse[] | undefined>;
+    public readonly protocolCustomSettings!: pulumi.Output<types.outputs.ProtocolCustomSettingsFormatResponse[] | undefined>;
     /**
      * The provisioning state of the DDoS custom policy resource.
      */
@@ -54,7 +54,7 @@ export class DdosCustomPolicy extends pulumi.CustomResource {
     /**
      * The list of public IPs associated with the DDoS custom policy resource. This list is read-only.
      */
-    public /*out*/ readonly publicIPAddresses!: pulumi.Output<types.outputs.network.v20220101.SubResourceResponse[]>;
+    public /*out*/ readonly publicIPAddresses!: pulumi.Output<types.outputs.SubResourceResponse[]>;
     /**
      * The resource GUID property of the DDoS custom policy resource. It uniquely identifies the resource, even if the user changes its name or migrate the resource across subscriptions or resource groups.
      */
@@ -131,7 +131,7 @@ export interface DdosCustomPolicyArgs {
     /**
      * The protocol-specific DDoS policy customization parameters.
      */
-    protocolCustomSettings?: pulumi.Input<pulumi.Input<types.inputs.network.v20220101.ProtocolCustomSettingsFormatArgs>[]>;
+    protocolCustomSettings?: pulumi.Input<pulumi.Input<types.inputs.ProtocolCustomSettingsFormatArgs>[]>;
     /**
      * The name of the resource group.
      */

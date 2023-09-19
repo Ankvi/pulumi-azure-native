@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get Network Fabric resource details.
  */
@@ -75,7 +75,7 @@ export interface GetNetworkFabricResult {
     /**
      * Configuration to be used to setup the management network.
      */
-    readonly managementNetworkConfiguration: types.outputs.managednetworkfabric.v20230615.ManagementNetworkConfigurationPropertiesResponse;
+    readonly managementNetworkConfiguration: types.outputs.ManagementNetworkConfigurationPropertiesResponse;
     /**
      * The name of the resource
      */
@@ -111,7 +111,7 @@ export interface GetNetworkFabricResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.managednetworkfabric.v20230615.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -119,7 +119,7 @@ export interface GetNetworkFabricResult {
     /**
      * Network and credentials configuration currently applied to terminal server.
      */
-    readonly terminalServerConfiguration: types.outputs.managednetworkfabric.v20230615.TerminalServerConfigurationResponse;
+    readonly terminalServerConfiguration: types.outputs.TerminalServerConfigurationResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

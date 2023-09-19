@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * CDN endpoint is the entity within a CDN profile containing configuration information such as origin, protocol, content caching and delivery behavior. The AzureFrontDoor endpoint uses the URL format <endpointname>.azureedge.net.
  */
@@ -59,7 +59,7 @@ export class AFDEndpoint extends pulumi.CustomResource {
     /**
      * Read only system data
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.cdn.v20200901.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -125,7 +125,7 @@ export interface AFDEndpointArgs {
     /**
      * Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled'
      */
-    enabledState?: pulumi.Input<string | types.enums.v20200901.EnabledState>;
+    enabledState?: pulumi.Input<string | types.enums.EnabledState>;
     /**
      * Name of the endpoint under the profile which is unique globally.
      */

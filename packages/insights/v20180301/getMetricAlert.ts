@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieve an alert rule definition.
  */
@@ -31,7 +31,7 @@ export interface GetMetricAlertResult {
     /**
      * the array of actions that are performed when the alert rule becomes active, and when an alert condition is resolved.
      */
-    readonly actions?: types.outputs.insights.v20180301.MetricAlertActionResponse[];
+    readonly actions?: types.outputs.MetricAlertActionResponse[];
     /**
      * the flag that indicates whether the alert should be auto resolved or not. The default is true.
      */
@@ -39,7 +39,7 @@ export interface GetMetricAlertResult {
     /**
      * defines the specific alert criteria information.
      */
-    readonly criteria: types.outputs.insights.v20180301.MetricAlertMultipleResourceMultipleMetricCriteriaResponse | types.outputs.insights.v20180301.MetricAlertSingleResourceMultipleMetricCriteriaResponse | types.outputs.insights.v20180301.WebtestLocationAvailabilityCriteriaResponse;
+    readonly criteria: types.outputs.MetricAlertMultipleResourceMultipleMetricCriteriaResponse | types.outputs.MetricAlertSingleResourceMultipleMetricCriteriaResponse | types.outputs.WebtestLocationAvailabilityCriteriaResponse;
     /**
      * the description of the metric alert that will be included in the alert email.
      */

@@ -55,7 +55,7 @@ export class CacheRule extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.containerregistry.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Target repository specified in docker pull command.
      * Eg: docker pull myregistry.azurecr.io/{targetRepository}:{tag}

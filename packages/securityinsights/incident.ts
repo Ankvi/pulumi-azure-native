@@ -35,7 +35,7 @@ export class Incident extends pulumi.CustomResource {
     /**
      * Additional data on the incident
      */
-    public /*out*/ readonly additionalData!: pulumi.Output<types.outputs.securityinsights.IncidentAdditionalDataResponse>;
+    public /*out*/ readonly additionalData!: pulumi.Output<types.outputs.IncidentAdditionalDataResponse>;
     /**
      * The reason the incident was closed
      */
@@ -75,7 +75,7 @@ export class Incident extends pulumi.CustomResource {
     /**
      * List of labels relevant to this incident
      */
-    public readonly labels!: pulumi.Output<types.outputs.securityinsights.IncidentLabelResponse[] | undefined>;
+    public readonly labels!: pulumi.Output<types.outputs.IncidentLabelResponse[] | undefined>;
     /**
      * The time of the last activity in the incident
      */
@@ -91,7 +91,7 @@ export class Incident extends pulumi.CustomResource {
     /**
      * Describes a user that the incident is assigned to
      */
-    public readonly owner!: pulumi.Output<types.outputs.securityinsights.IncidentOwnerInfoResponse | undefined>;
+    public readonly owner!: pulumi.Output<types.outputs.IncidentOwnerInfoResponse | undefined>;
     /**
      * The incident ID assigned by the incident provider
      */
@@ -115,7 +115,7 @@ export class Incident extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.securityinsights.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The title of the incident
      */
@@ -240,7 +240,7 @@ export interface IncidentArgs {
     /**
      * List of labels relevant to this incident
      */
-    labels?: pulumi.Input<pulumi.Input<types.inputs.securityinsights.IncidentLabelArgs>[]>;
+    labels?: pulumi.Input<pulumi.Input<types.inputs.IncidentLabelArgs>[]>;
     /**
      * The time of the last activity in the incident
      */
@@ -248,7 +248,7 @@ export interface IncidentArgs {
     /**
      * Describes a user that the incident is assigned to
      */
-    owner?: pulumi.Input<types.inputs.securityinsights.IncidentOwnerInfoArgs>;
+    owner?: pulumi.Input<types.inputs.IncidentOwnerInfoArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

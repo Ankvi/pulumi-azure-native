@@ -61,7 +61,7 @@ export interface GetClusterResult {
     /**
      * The cluster SKU
      */
-    readonly sku: types.outputs.avs.SkuResponse;
+    readonly sku: types.outputs.SkuResponse;
     /**
      * Resource type.
      */

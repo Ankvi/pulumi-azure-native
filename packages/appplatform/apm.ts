@@ -39,11 +39,11 @@ export class Apm extends pulumi.CustomResource {
     /**
      * Properties of an APM
      */
-    public readonly properties!: pulumi.Output<types.outputs.appplatform.ApmPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ApmPropertiesResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.appplatform.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource.
      */
@@ -97,7 +97,7 @@ export interface ApmArgs {
     /**
      * Properties of an APM
      */
-    properties?: pulumi.Input<types.inputs.appplatform.ApmPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ApmPropertiesArgs>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */

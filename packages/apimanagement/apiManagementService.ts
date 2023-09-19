@@ -35,15 +35,15 @@ export class ApiManagementService extends pulumi.CustomResource {
     /**
      * Additional datacenter locations of the API Management service.
      */
-    public readonly additionalLocations!: pulumi.Output<types.outputs.apimanagement.AdditionalLocationResponse[] | undefined>;
+    public readonly additionalLocations!: pulumi.Output<types.outputs.AdditionalLocationResponse[] | undefined>;
     /**
      * Control Plane Apis version constraint for the API Management service.
      */
-    public readonly apiVersionConstraint!: pulumi.Output<types.outputs.apimanagement.ApiVersionConstraintResponse | undefined>;
+    public readonly apiVersionConstraint!: pulumi.Output<types.outputs.ApiVersionConstraintResponse | undefined>;
     /**
      * List of Certificates that need to be installed in the API Management service. Max supported certificates that can be installed is 10.
      */
-    public readonly certificates!: pulumi.Output<types.outputs.apimanagement.CertificateConfigurationResponse[] | undefined>;
+    public readonly certificates!: pulumi.Output<types.outputs.CertificateConfigurationResponse[] | undefined>;
     /**
      * Creation UTC date of the API Management service.The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
      */
@@ -79,11 +79,11 @@ export class ApiManagementService extends pulumi.CustomResource {
     /**
      * Custom hostname configuration of the API Management service.
      */
-    public readonly hostnameConfigurations!: pulumi.Output<types.outputs.apimanagement.HostnameConfigurationResponse[] | undefined>;
+    public readonly hostnameConfigurations!: pulumi.Output<types.outputs.HostnameConfigurationResponse[] | undefined>;
     /**
      * Managed service identity of the Api Management service.
      */
-    public readonly identity!: pulumi.Output<types.outputs.apimanagement.ApiManagementServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ApiManagementServiceIdentityResponse | undefined>;
     /**
      * Resource location.
      */
@@ -119,7 +119,7 @@ export class ApiManagementService extends pulumi.CustomResource {
     /**
      * List of Private Endpoint Connections of this service.
      */
-    public readonly privateEndpointConnections!: pulumi.Output<types.outputs.apimanagement.RemotePrivateEndpointConnectionWrapperResponse[] | undefined>;
+    public readonly privateEndpointConnections!: pulumi.Output<types.outputs.RemotePrivateEndpointConnectionWrapperResponse[] | undefined>;
     /**
      * Private Static Load Balanced IP addresses of the API Management service in Primary region which is deployed in an Internal Virtual Network. Available only for Basic, Standard, Premium and Isolated SKU.
      */
@@ -159,11 +159,11 @@ export class ApiManagementService extends pulumi.CustomResource {
     /**
      * SKU properties of the API Management service.
      */
-    public readonly sku!: pulumi.Output<types.outputs.apimanagement.ApiManagementServiceSkuPropertiesResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.ApiManagementServiceSkuPropertiesResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.apimanagement.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -179,7 +179,7 @@ export class ApiManagementService extends pulumi.CustomResource {
     /**
      * Virtual network configuration of the API Management service.
      */
-    public readonly virtualNetworkConfiguration!: pulumi.Output<types.outputs.apimanagement.VirtualNetworkConfigurationResponse | undefined>;
+    public readonly virtualNetworkConfiguration!: pulumi.Output<types.outputs.VirtualNetworkConfigurationResponse | undefined>;
     /**
      * The type of VPN in which API Management service needs to be configured in. None (Default Value) means the API Management service is not part of any Virtual Network, External means the API Management deployment is set up inside a Virtual Network having an Internet Facing Endpoint, and Internal means that API Management deployment is setup inside a Virtual Network having an Intranet Facing Endpoint only.
      */
@@ -308,15 +308,15 @@ export interface ApiManagementServiceArgs {
     /**
      * Additional datacenter locations of the API Management service.
      */
-    additionalLocations?: pulumi.Input<pulumi.Input<types.inputs.apimanagement.AdditionalLocationArgs>[]>;
+    additionalLocations?: pulumi.Input<pulumi.Input<types.inputs.AdditionalLocationArgs>[]>;
     /**
      * Control Plane Apis version constraint for the API Management service.
      */
-    apiVersionConstraint?: pulumi.Input<types.inputs.apimanagement.ApiVersionConstraintArgs>;
+    apiVersionConstraint?: pulumi.Input<types.inputs.ApiVersionConstraintArgs>;
     /**
      * List of Certificates that need to be installed in the API Management service. Max supported certificates that can be installed is 10.
      */
-    certificates?: pulumi.Input<pulumi.Input<types.inputs.apimanagement.CertificateConfigurationArgs>[]>;
+    certificates?: pulumi.Input<pulumi.Input<types.inputs.CertificateConfigurationArgs>[]>;
     /**
      * Custom properties of the API Management service.</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168` will disable the cipher TLS_RSA_WITH_3DES_EDE_CBC_SHA for all TLS(1.0, 1.1 and 1.2).</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls11` can be used to disable just TLS 1.1.</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10` can be used to disable TLS 1.0 on an API Management service.</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls11` can be used to disable just TLS 1.1 for communications with backends.</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls10` can be used to disable TLS 1.0 for communications with backends.</br>Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2` can be used to enable HTTP2 protocol on an API Management service.</br>Not specifying any of these properties on PATCH operation will reset omitted properties' values to their defaults. For all the settings except Http2 the default value is `True` if the service was created on or before April 1, 2018 and `False` otherwise. Http2 setting's default value is `False`.</br></br>You can disable any of the following ciphers by using settings `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.[cipher_name]`: TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, TLS_RSA_WITH_AES_128_GCM_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA256, TLS_RSA_WITH_AES_128_CBC_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA, TLS_RSA_WITH_AES_128_CBC_SHA. For example, `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA256`:`false`. The default value is `true` for them.</br> Note: The following ciphers can't be disabled since they are required by internal platform components: TLS_AES_256_GCM_SHA384,TLS_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
      */
@@ -332,11 +332,11 @@ export interface ApiManagementServiceArgs {
     /**
      * Custom hostname configuration of the API Management service.
      */
-    hostnameConfigurations?: pulumi.Input<pulumi.Input<types.inputs.apimanagement.HostnameConfigurationArgs>[]>;
+    hostnameConfigurations?: pulumi.Input<pulumi.Input<types.inputs.HostnameConfigurationArgs>[]>;
     /**
      * Managed service identity of the Api Management service.
      */
-    identity?: pulumi.Input<types.inputs.apimanagement.ApiManagementServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ApiManagementServiceIdentityArgs>;
     /**
      * Resource location.
      */
@@ -352,7 +352,7 @@ export interface ApiManagementServiceArgs {
     /**
      * List of Private Endpoint Connections of this service.
      */
-    privateEndpointConnections?: pulumi.Input<pulumi.Input<types.inputs.apimanagement.RemotePrivateEndpointConnectionWrapperArgs>[]>;
+    privateEndpointConnections?: pulumi.Input<pulumi.Input<types.inputs.RemotePrivateEndpointConnectionWrapperArgs>[]>;
     /**
      * Public Standard SKU IP V4 based IP address to be associated with Virtual Network deployed service in the region. Supported only for Developer and Premium SKU being deployed in Virtual Network.
      */
@@ -384,7 +384,7 @@ export interface ApiManagementServiceArgs {
     /**
      * SKU properties of the API Management service.
      */
-    sku: pulumi.Input<types.inputs.apimanagement.ApiManagementServiceSkuPropertiesArgs>;
+    sku: pulumi.Input<types.inputs.ApiManagementServiceSkuPropertiesArgs>;
     /**
      * Resource tags.
      */
@@ -392,7 +392,7 @@ export interface ApiManagementServiceArgs {
     /**
      * Virtual network configuration of the API Management service.
      */
-    virtualNetworkConfiguration?: pulumi.Input<types.inputs.apimanagement.VirtualNetworkConfigurationArgs>;
+    virtualNetworkConfiguration?: pulumi.Input<types.inputs.VirtualNetworkConfigurationArgs>;
     /**
      * The type of VPN in which API Management service needs to be configured in. None (Default Value) means the API Management service is not part of any Virtual Network, External means the API Management deployment is set up inside a Virtual Network having an Internet Facing Endpoint, and Internal means that API Management deployment is setup inside a Virtual Network having an Intranet Facing Endpoint only.
      */

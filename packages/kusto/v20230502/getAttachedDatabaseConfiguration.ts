@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns an attached database configuration.
  */
@@ -76,7 +76,7 @@ export interface GetAttachedDatabaseConfigurationResult {
     /**
      * Table level sharing specifications
      */
-    readonly tableLevelSharingProperties?: types.outputs.kusto.v20230502.TableLevelSharingPropertiesResponse;
+    readonly tableLevelSharingProperties?: types.outputs.TableLevelSharingPropertiesResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

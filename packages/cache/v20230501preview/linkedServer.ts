@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Response to put/get linked server (with properties) for Redis cache.
  */
@@ -144,5 +144,5 @@ export interface LinkedServerArgs {
     /**
      * Role of the linked server.
      */
-    serverRole: pulumi.Input<types.enums.v20230501preview.ReplicationRole>;
+    serverRole: pulumi.Input<types.enums.ReplicationRole>;
 }

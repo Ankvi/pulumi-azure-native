@@ -35,7 +35,7 @@ export class SapLandscapeMonitor extends pulumi.CustomResource {
     /**
      * Gets or sets the SID groupings by landscape and Environment.
      */
-    public readonly grouping!: pulumi.Output<types.outputs.workloads.SapLandscapeMonitorPropertiesResponseGrouping | undefined>;
+    public readonly grouping!: pulumi.Output<types.outputs.SapLandscapeMonitorPropertiesResponseGrouping | undefined>;
     /**
      * The name of the resource
      */
@@ -47,11 +47,11 @@ export class SapLandscapeMonitor extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.workloads.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Gets or sets the list Top Metric Thresholds for SAP Landscape Monitor Dashboard
      */
-    public readonly topMetricsThresholds!: pulumi.Output<types.outputs.workloads.SapLandscapeMonitorMetricThresholdsResponse[] | undefined>;
+    public readonly topMetricsThresholds!: pulumi.Output<types.outputs.SapLandscapeMonitorMetricThresholdsResponse[] | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -104,7 +104,7 @@ export interface SapLandscapeMonitorArgs {
     /**
      * Gets or sets the SID groupings by landscape and Environment.
      */
-    grouping?: pulumi.Input<types.inputs.workloads.SapLandscapeMonitorPropertiesGroupingArgs>;
+    grouping?: pulumi.Input<types.inputs.SapLandscapeMonitorPropertiesGroupingArgs>;
     /**
      * Name of the SAP monitor resource.
      */
@@ -116,5 +116,5 @@ export interface SapLandscapeMonitorArgs {
     /**
      * Gets or sets the list Top Metric Thresholds for SAP Landscape Monitor Dashboard
      */
-    topMetricsThresholds?: pulumi.Input<pulumi.Input<types.inputs.workloads.SapLandscapeMonitorMetricThresholdsArgs>[]>;
+    topMetricsThresholds?: pulumi.Input<pulumi.Input<types.inputs.SapLandscapeMonitorMetricThresholdsArgs>[]>;
 }

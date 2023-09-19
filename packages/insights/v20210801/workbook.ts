@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An Application Insights workbook definition.
  */
@@ -50,7 +50,7 @@ export class Workbook extends pulumi.CustomResource {
     /**
      * Identity used for BYOS
      */
-    public readonly identity!: pulumi.Output<types.outputs.insights.v20210801.WorkbookResourceResponseIdentity | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.WorkbookResourceResponseIdentity | undefined>;
     /**
      * The kind of workbook. Only valid value is shared.
      */
@@ -82,7 +82,7 @@ export class Workbook extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.insights.v20210801.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -193,11 +193,11 @@ export interface WorkbookArgs {
     /**
      * Identity used for BYOS
      */
-    identity?: pulumi.Input<types.inputs.insights.v20210801.WorkbookResourceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.WorkbookResourceIdentityArgs>;
     /**
      * The kind of workbook. Only valid value is shared.
      */
-    kind?: pulumi.Input<string | types.enums.v20210801.Kind>;
+    kind?: pulumi.Input<string | types.enums.Kind>;
     /**
      * The geo-location where the resource lives
      */

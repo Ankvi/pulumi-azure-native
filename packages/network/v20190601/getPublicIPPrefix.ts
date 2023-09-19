@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the specified public IP prefix in a specified resource group.
  */
@@ -48,11 +48,11 @@ export interface GetPublicIPPrefixResult {
     /**
      * The list of tags associated with the public IP prefix.
      */
-    readonly ipTags?: types.outputs.network.v20190601.IpTagResponse[];
+    readonly ipTags?: types.outputs.IpTagResponse[];
     /**
      * The reference to load balancer frontend IP configuration associated with the public IP prefix.
      */
-    readonly loadBalancerFrontendIpConfiguration: types.outputs.network.v20190601.SubResourceResponse;
+    readonly loadBalancerFrontendIpConfiguration: types.outputs.SubResourceResponse;
     /**
      * Resource location.
      */
@@ -76,7 +76,7 @@ export interface GetPublicIPPrefixResult {
     /**
      * The list of all referenced PublicIPAddresses.
      */
-    readonly publicIPAddresses?: types.outputs.network.v20190601.ReferencedPublicIpAddressResponse[];
+    readonly publicIPAddresses?: types.outputs.ReferencedPublicIpAddressResponse[];
     /**
      * The resource GUID property of the public IP prefix resource.
      */
@@ -84,7 +84,7 @@ export interface GetPublicIPPrefixResult {
     /**
      * The public IP prefix SKU.
      */
-    readonly sku?: types.outputs.network.v20190601.PublicIPPrefixSkuResponse;
+    readonly sku?: types.outputs.PublicIPPrefixSkuResponse;
     /**
      * Resource tags.
      */

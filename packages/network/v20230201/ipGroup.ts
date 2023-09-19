@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The IpGroups resource information.
  */
@@ -38,11 +38,11 @@ export class IpGroup extends pulumi.CustomResource {
     /**
      * List of references to Firewall Policies resources that this IpGroups is associated with.
      */
-    public /*out*/ readonly firewallPolicies!: pulumi.Output<types.outputs.network.v20230201.SubResourceResponse[]>;
+    public /*out*/ readonly firewallPolicies!: pulumi.Output<types.outputs.SubResourceResponse[]>;
     /**
      * List of references to Firewall resources that this IpGroups is associated with.
      */
-    public /*out*/ readonly firewalls!: pulumi.Output<types.outputs.network.v20230201.SubResourceResponse[]>;
+    public /*out*/ readonly firewalls!: pulumi.Output<types.outputs.SubResourceResponse[]>;
     /**
      * IpAddresses/IpAddressPrefixes in the IpGroups resource.
      */

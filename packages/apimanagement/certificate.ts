@@ -39,7 +39,7 @@ export class Certificate extends pulumi.CustomResource {
     /**
      * KeyVault location details of the certificate.
      */
-    public readonly keyVault!: pulumi.Output<types.outputs.apimanagement.KeyVaultContractPropertiesResponse | undefined>;
+    public readonly keyVault!: pulumi.Output<types.outputs.KeyVaultContractPropertiesResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -115,7 +115,7 @@ export interface CertificateArgs {
     /**
      * KeyVault location details of the certificate.
      */
-    keyVault?: pulumi.Input<types.inputs.apimanagement.KeyVaultContractCreatePropertiesArgs>;
+    keyVault?: pulumi.Input<types.inputs.KeyVaultContractCreatePropertiesArgs>;
     /**
      * Password for the Certificate
      */

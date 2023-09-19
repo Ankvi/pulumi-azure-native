@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a storage insight instance.
  */
@@ -52,11 +52,11 @@ export interface GetStorageInsightConfigResult {
     /**
      * The status of the storage insight
      */
-    readonly status: types.outputs.operationalinsights.v20200801.StorageInsightStatusResponse;
+    readonly status: types.outputs.StorageInsightStatusResponse;
     /**
      * The storage account connection details
      */
-    readonly storageAccount: types.outputs.operationalinsights.v20200801.StorageAccountResponse;
+    readonly storageAccount: types.outputs.StorageAccountResponse;
     /**
      * The names of the Azure tables that the workspace should read
      */

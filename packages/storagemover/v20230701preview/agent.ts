@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The Agent resource.
  */
@@ -51,7 +51,7 @@ export class Agent extends pulumi.CustomResource {
      * A description for the Agent.
      */
     public readonly description!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly errorDetails!: pulumi.Output<types.outputs.storagemover.v20230701preview.AgentPropertiesResponseErrorDetails>;
+    public /*out*/ readonly errorDetails!: pulumi.Output<types.outputs.AgentPropertiesResponseErrorDetails>;
     /**
      * The last updated time of the Agent status.
      */
@@ -79,7 +79,7 @@ export class Agent extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.storagemover.v20230701preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

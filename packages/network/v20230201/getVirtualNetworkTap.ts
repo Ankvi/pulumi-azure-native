@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets information about the specified virtual network tap.
  */
@@ -31,11 +31,11 @@ export interface GetVirtualNetworkTapResult {
     /**
      * The reference to the private IP address on the internal Load Balancer that will receive the tap.
      */
-    readonly destinationLoadBalancerFrontEndIPConfiguration?: types.outputs.network.v20230201.FrontendIPConfigurationResponse;
+    readonly destinationLoadBalancerFrontEndIPConfiguration?: types.outputs.FrontendIPConfigurationResponse;
     /**
      * The reference to the private IP Address of the collector nic that will receive the tap.
      */
-    readonly destinationNetworkInterfaceIPConfiguration?: types.outputs.network.v20230201.NetworkInterfaceIPConfigurationResponse;
+    readonly destinationNetworkInterfaceIPConfiguration?: types.outputs.NetworkInterfaceIPConfigurationResponse;
     /**
      * The VXLAN destination port that will receive the tapped traffic.
      */
@@ -59,7 +59,7 @@ export interface GetVirtualNetworkTapResult {
     /**
      * Specifies the list of resource IDs for the network interface IP configuration that needs to be tapped.
      */
-    readonly networkInterfaceTapConfigurations: types.outputs.network.v20230201.NetworkInterfaceTapConfigurationResponse[];
+    readonly networkInterfaceTapConfigurations: types.outputs.NetworkInterfaceTapConfigurationResponse[];
     /**
      * The provisioning state of the virtual network tap resource.
      */

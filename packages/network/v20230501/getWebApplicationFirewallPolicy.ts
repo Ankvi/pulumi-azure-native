@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieve protection policy with specified name within a resource group.
  */
@@ -31,11 +31,11 @@ export interface GetWebApplicationFirewallPolicyResult {
     /**
      * A collection of references to application gateways.
      */
-    readonly applicationGateways: types.outputs.network.v20230501.ApplicationGatewayResponse[];
+    readonly applicationGateways: types.outputs.ApplicationGatewayResponse[];
     /**
      * The custom rules inside the policy.
      */
-    readonly customRules?: types.outputs.network.v20230501.WebApplicationFirewallCustomRuleResponse[];
+    readonly customRules?: types.outputs.WebApplicationFirewallCustomRuleResponse[];
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -43,7 +43,7 @@ export interface GetWebApplicationFirewallPolicyResult {
     /**
      * A collection of references to application gateway http listeners.
      */
-    readonly httpListeners: types.outputs.network.v20230501.SubResourceResponse[];
+    readonly httpListeners: types.outputs.SubResourceResponse[];
     /**
      * Resource ID.
      */
@@ -55,7 +55,7 @@ export interface GetWebApplicationFirewallPolicyResult {
     /**
      * Describes the managedRules structure.
      */
-    readonly managedRules: types.outputs.network.v20230501.ManagedRulesDefinitionResponse;
+    readonly managedRules: types.outputs.ManagedRulesDefinitionResponse;
     /**
      * Resource name.
      */
@@ -63,11 +63,11 @@ export interface GetWebApplicationFirewallPolicyResult {
     /**
      * A collection of references to application gateway path rules.
      */
-    readonly pathBasedRules: types.outputs.network.v20230501.SubResourceResponse[];
+    readonly pathBasedRules: types.outputs.SubResourceResponse[];
     /**
      * The PolicySettings for policy.
      */
-    readonly policySettings?: types.outputs.network.v20230501.PolicySettingsResponse;
+    readonly policySettings?: types.outputs.PolicySettingsResponse;
     /**
      * The provisioning state of the web application firewall policy resource.
      */

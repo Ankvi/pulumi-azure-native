@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a Service Fabric cluster resource created or in the process of being created in the specified resource group.
  */
@@ -35,31 +35,31 @@ export interface GetClusterResult {
     /**
      * The policy used to clean up unused versions.
      */
-    readonly applicationTypeVersionsCleanupPolicy?: types.outputs.servicefabric.v20201201preview.ApplicationTypeVersionsCleanupPolicyResponse;
+    readonly applicationTypeVersionsCleanupPolicy?: types.outputs.ApplicationTypeVersionsCleanupPolicyResponse;
     /**
      * The Service Fabric runtime versions available for this cluster.
      */
-    readonly availableClusterVersions: types.outputs.servicefabric.v20201201preview.ClusterVersionDetailsResponse[];
+    readonly availableClusterVersions: types.outputs.ClusterVersionDetailsResponse[];
     /**
      * The AAD authentication settings of the cluster.
      */
-    readonly azureActiveDirectory?: types.outputs.servicefabric.v20201201preview.AzureActiveDirectoryResponse;
+    readonly azureActiveDirectory?: types.outputs.AzureActiveDirectoryResponse;
     /**
      * The certificate to use for securing the cluster. The certificate provided will be used for node to node security within the cluster, SSL certificate for cluster management endpoint and default admin client.
      */
-    readonly certificate?: types.outputs.servicefabric.v20201201preview.CertificateDescriptionResponse;
+    readonly certificate?: types.outputs.CertificateDescriptionResponse;
     /**
      * Describes a list of server certificates referenced by common name that are used to secure the cluster.
      */
-    readonly certificateCommonNames?: types.outputs.servicefabric.v20201201preview.ServerCertificateCommonNamesResponse;
+    readonly certificateCommonNames?: types.outputs.ServerCertificateCommonNamesResponse;
     /**
      * The list of client certificates referenced by common name that are allowed to manage the cluster.
      */
-    readonly clientCertificateCommonNames?: types.outputs.servicefabric.v20201201preview.ClientCertificateCommonNameResponse[];
+    readonly clientCertificateCommonNames?: types.outputs.ClientCertificateCommonNameResponse[];
     /**
      * The list of client certificates referenced by thumbprint that are allowed to manage the cluster.
      */
-    readonly clientCertificateThumbprints?: types.outputs.servicefabric.v20201201preview.ClientCertificateThumbprintResponse[];
+    readonly clientCertificateThumbprints?: types.outputs.ClientCertificateThumbprintResponse[];
     /**
      * The Service Fabric runtime version of the cluster. This property can only by set the user when **upgradeMode** is set to 'Manual'. To get list of available Service Fabric versions for new clusters use [ClusterVersion API](./ClusterVersion.md). To get the list of available version for existing clusters use **availableClusterVersions**.
      */
@@ -90,7 +90,7 @@ export interface GetClusterResult {
     /**
      * The storage account information for storing Service Fabric diagnostic logs.
      */
-    readonly diagnosticsStorageAccountConfig?: types.outputs.servicefabric.v20201201preview.DiagnosticsStorageAccountConfigResponse;
+    readonly diagnosticsStorageAccountConfig?: types.outputs.DiagnosticsStorageAccountConfigResponse;
     /**
      * Azure resource etag.
      */
@@ -102,7 +102,7 @@ export interface GetClusterResult {
     /**
      * The list of custom fabric settings to configure the cluster.
      */
-    readonly fabricSettings?: types.outputs.servicefabric.v20201201preview.SettingsSectionDescriptionResponse[];
+    readonly fabricSettings?: types.outputs.SettingsSectionDescriptionResponse[];
     /**
      * Azure resource identifier.
      */
@@ -122,7 +122,7 @@ export interface GetClusterResult {
     /**
      * The list of node types in the cluster.
      */
-    readonly nodeTypes: types.outputs.servicefabric.v20201201preview.NodeTypeDescriptionResponse[];
+    readonly nodeTypes: types.outputs.NodeTypeDescriptionResponse[];
     /**
      * The provisioning state of the cluster resource.
      */
@@ -140,15 +140,15 @@ export interface GetClusterResult {
     /**
      * The server certificate used by reverse proxy.
      */
-    readonly reverseProxyCertificate?: types.outputs.servicefabric.v20201201preview.CertificateDescriptionResponse;
+    readonly reverseProxyCertificate?: types.outputs.CertificateDescriptionResponse;
     /**
      * Describes a list of server certificates referenced by common name that are used to secure the cluster.
      */
-    readonly reverseProxyCertificateCommonNames?: types.outputs.servicefabric.v20201201preview.ServerCertificateCommonNamesResponse;
+    readonly reverseProxyCertificateCommonNames?: types.outputs.ServerCertificateCommonNamesResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.servicefabric.v20201201preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Azure resource tags.
      */
@@ -160,7 +160,7 @@ export interface GetClusterResult {
     /**
      * The policy to use when upgrading the cluster.
      */
-    readonly upgradeDescription?: types.outputs.servicefabric.v20201201preview.ClusterUpgradePolicyResponse;
+    readonly upgradeDescription?: types.outputs.ClusterUpgradePolicyResponse;
     /**
      * The upgrade mode of the cluster when new Service Fabric runtime version is available.
      *

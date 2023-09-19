@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The Endpoint resource, which contains information about file sources and targets.
  */
@@ -38,11 +38,11 @@ export class Endpoint extends pulumi.CustomResource {
     /**
      * The resource specific properties for the Storage Mover resource.
      */
-    public readonly properties!: pulumi.Output<types.outputs.storagemover.v20230701preview.AzureStorageBlobContainerEndpointPropertiesResponse | types.outputs.storagemover.v20230701preview.AzureStorageSmbFileShareEndpointPropertiesResponse | types.outputs.storagemover.v20230701preview.NfsMountEndpointPropertiesResponse | types.outputs.storagemover.v20230701preview.SmbMountEndpointPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.AzureStorageBlobContainerEndpointPropertiesResponse | types.outputs.AzureStorageSmbFileShareEndpointPropertiesResponse | types.outputs.NfsMountEndpointPropertiesResponse | types.outputs.SmbMountEndpointPropertiesResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.storagemover.v20230701preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -99,7 +99,7 @@ export interface EndpointArgs {
     /**
      * The resource specific properties for the Storage Mover resource.
      */
-    properties: pulumi.Input<types.inputs.storagemover.v20230701preview.AzureStorageBlobContainerEndpointPropertiesArgs | types.inputs.storagemover.v20230701preview.AzureStorageSmbFileShareEndpointPropertiesArgs | types.inputs.storagemover.v20230701preview.NfsMountEndpointPropertiesArgs | types.inputs.storagemover.v20230701preview.SmbMountEndpointPropertiesArgs>;
+    properties: pulumi.Input<types.inputs.AzureStorageBlobContainerEndpointPropertiesArgs | types.inputs.AzureStorageSmbFileShareEndpointPropertiesArgs | types.inputs.NfsMountEndpointPropertiesArgs | types.inputs.SmbMountEndpointPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

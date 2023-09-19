@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets an API Management service resource description.
  */
@@ -31,19 +31,19 @@ export interface GetApiManagementServiceResult {
     /**
      * Additional datacenter locations of the API Management service.
      */
-    readonly additionalLocations?: types.outputs.apimanagement.v20230301preview.AdditionalLocationResponse[];
+    readonly additionalLocations?: types.outputs.AdditionalLocationResponse[];
     /**
      * Control Plane Apis version constraint for the API Management service.
      */
-    readonly apiVersionConstraint?: types.outputs.apimanagement.v20230301preview.ApiVersionConstraintResponse;
+    readonly apiVersionConstraint?: types.outputs.ApiVersionConstraintResponse;
     /**
      * List of Certificates that need to be installed in the API Management service. Max supported certificates that can be installed is 10.
      */
-    readonly certificates?: types.outputs.apimanagement.v20230301preview.CertificateConfigurationResponse[];
+    readonly certificates?: types.outputs.CertificateConfigurationResponse[];
     /**
      * Configuration API configuration of the API Management service.
      */
-    readonly configurationApi?: types.outputs.apimanagement.v20230301preview.ConfigurationApiResponse;
+    readonly configurationApi?: types.outputs.ConfigurationApiResponse;
     /**
      * Creation UTC date of the API Management service.The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
      */
@@ -83,7 +83,7 @@ export interface GetApiManagementServiceResult {
     /**
      * Custom hostname configuration of the API Management service.
      */
-    readonly hostnameConfigurations?: types.outputs.apimanagement.v20230301preview.HostnameConfigurationResponse[];
+    readonly hostnameConfigurations?: types.outputs.HostnameConfigurationResponse[];
     /**
      * Resource ID.
      */
@@ -91,7 +91,7 @@ export interface GetApiManagementServiceResult {
     /**
      * Managed service identity of the Api Management service.
      */
-    readonly identity?: types.outputs.apimanagement.v20230301preview.ApiManagementServiceIdentityResponse;
+    readonly identity?: types.outputs.ApiManagementServiceIdentityResponse;
     /**
      * Status of legacy portal in the API Management service.
      */
@@ -131,7 +131,7 @@ export interface GetApiManagementServiceResult {
     /**
      * List of Private Endpoint Connections of this service.
      */
-    readonly privateEndpointConnections?: types.outputs.apimanagement.v20230301preview.RemotePrivateEndpointConnectionWrapperResponse[];
+    readonly privateEndpointConnections?: types.outputs.RemotePrivateEndpointConnectionWrapperResponse[];
     /**
      * Private Static Load Balanced IP addresses of the API Management service in Primary region which is deployed in an Internal Virtual Network. Available only for Basic, Standard, Premium and Isolated SKU.
      */
@@ -171,11 +171,11 @@ export interface GetApiManagementServiceResult {
     /**
      * SKU properties of the API Management service.
      */
-    readonly sku: types.outputs.apimanagement.v20230301preview.ApiManagementServiceSkuPropertiesResponse;
+    readonly sku: types.outputs.ApiManagementServiceSkuPropertiesResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.apimanagement.v20230301preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -191,7 +191,7 @@ export interface GetApiManagementServiceResult {
     /**
      * Virtual network configuration of the API Management service.
      */
-    readonly virtualNetworkConfiguration?: types.outputs.apimanagement.v20230301preview.VirtualNetworkConfigurationResponse;
+    readonly virtualNetworkConfiguration?: types.outputs.VirtualNetworkConfigurationResponse;
     /**
      * The type of VPN in which API Management service needs to be configured in. None (Default Value) means the API Management service is not part of any Virtual Network, External means the API Management deployment is set up inside a Virtual Network having an Internet Facing Endpoint, and Internal means that API Management deployment is setup inside a Virtual Network having an Intranet Facing Endpoint only.
      */

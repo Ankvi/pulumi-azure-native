@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A job.
  */
@@ -42,7 +42,7 @@ export class Job extends pulumi.CustomResource {
     /**
      * Schedule properties of the job.
      */
-    public readonly schedule!: pulumi.Output<types.outputs.sql.v20230201preview.JobScheduleResponse | undefined>;
+    public readonly schedule!: pulumi.Output<types.outputs.JobScheduleResponse | undefined>;
     /**
      * Resource type.
      */
@@ -76,7 +76,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["jobAgentName"] = args ? args.jobAgentName : undefined;
             resourceInputs["jobName"] = args ? args.jobName : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["schedule"] = args ? (args.schedule ? pulumi.output(args.schedule).apply(types.inputs.sql.v20230201preview.jobScheduleArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["schedule"] = args ? (args.schedule ? pulumi.output(args.schedule).apply(types.inputs.jobScheduleArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["serverName"] = args ? args.serverName : undefined;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
@@ -118,7 +118,7 @@ export interface JobArgs {
     /**
      * Schedule properties of the job.
      */
-    schedule?: pulumi.Input<types.inputs.sql.v20230201preview.JobScheduleArgs>;
+    schedule?: pulumi.Input<types.inputs.JobScheduleArgs>;
     /**
      * The name of the server.
      */

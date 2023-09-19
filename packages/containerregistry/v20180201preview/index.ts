@@ -43,7 +43,7 @@ utilities.lazyLoad(exports, ["listBuildTaskSourceRepositoryProperties","listBuil
 
 
 // Export enums:
-export * from "../types/enums/v20180201preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

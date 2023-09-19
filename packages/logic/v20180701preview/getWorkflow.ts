@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a workflow.
  */
@@ -51,7 +51,7 @@ export interface GetWorkflowResult {
     /**
      * The integration account.
      */
-    readonly integrationAccount?: types.outputs.logic.v20180701preview.ResourceReferenceResponse;
+    readonly integrationAccount?: types.outputs.ResourceReferenceResponse;
     /**
      * The resource location.
      */
@@ -63,7 +63,7 @@ export interface GetWorkflowResult {
     /**
      * The parameters.
      */
-    readonly parameters?: {[key: string]: types.outputs.logic.v20180701preview.WorkflowParameterResponse};
+    readonly parameters?: {[key: string]: types.outputs.WorkflowParameterResponse};
     /**
      * Gets the provisioning state.
      */
@@ -71,7 +71,7 @@ export interface GetWorkflowResult {
     /**
      * The sku.
      */
-    readonly sku?: types.outputs.logic.v20180701preview.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * The state.
      */

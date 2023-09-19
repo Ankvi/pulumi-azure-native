@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Friendly domain name mapping to the endpoint hostname that the customer provides for branding purposes, e.g. www.contoso.com.
  */
@@ -34,7 +34,7 @@ export class CustomDomain extends pulumi.CustomResource {
     /**
      * Certificate parameters for securing custom HTTPS
      */
-    public /*out*/ readonly customHttpsParameters!: pulumi.Output<types.outputs.cdn.v20230501.CdnManagedHttpsParametersResponse | types.outputs.cdn.v20230501.UserManagedHttpsParametersResponse | undefined>;
+    public /*out*/ readonly customHttpsParameters!: pulumi.Output<types.outputs.CdnManagedHttpsParametersResponse | types.outputs.UserManagedHttpsParametersResponse | undefined>;
     /**
      * Provisioning status of the custom domain.
      */
@@ -62,7 +62,7 @@ export class CustomDomain extends pulumi.CustomResource {
     /**
      * Read only system data
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.cdn.v20230501.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource type.
      */

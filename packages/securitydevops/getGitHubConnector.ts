@@ -44,11 +44,11 @@ export interface GetGitHubConnectorResult {
     /**
      * Properties of the ARM resource for /subscriptions/xxx/resourceGroups/xxx/providers/Microsoft.SecurityDevOps/gitHubConnectors.
      */
-    readonly properties: types.outputs.securitydevops.GitHubConnectorPropertiesResponse;
+    readonly properties: types.outputs.GitHubConnectorPropertiesResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.securitydevops.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

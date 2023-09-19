@@ -46,7 +46,7 @@ export interface GetTaskRunResult {
     /**
      * Identity for the resource.
      */
-    readonly identity?: types.outputs.containerregistry.IdentityPropertiesResponse;
+    readonly identity?: types.outputs.IdentityPropertiesResponse;
     /**
      * The location of the resource
      */
@@ -62,15 +62,15 @@ export interface GetTaskRunResult {
     /**
      * The request (parameters) for the run
      */
-    readonly runRequest?: types.outputs.containerregistry.DockerBuildRequestResponse | types.outputs.containerregistry.EncodedTaskRunRequestResponse | types.outputs.containerregistry.FileTaskRunRequestResponse | types.outputs.containerregistry.TaskRunRequestResponse;
+    readonly runRequest?: types.outputs.DockerBuildRequestResponse | types.outputs.EncodedTaskRunRequestResponse | types.outputs.FileTaskRunRequestResponse | types.outputs.TaskRunRequestResponse;
     /**
      * The result of this task run
      */
-    readonly runResult: types.outputs.containerregistry.RunResponse;
+    readonly runResult: types.outputs.RunResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.containerregistry.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Configuration profile assignment is an association between a VM and automanage profile configuration.
  */
@@ -42,11 +42,11 @@ export class ConfigurationProfileHCIAssignment extends pulumi.CustomResource {
     /**
      * Properties of the configuration profile assignment.
      */
-    public readonly properties!: pulumi.Output<types.outputs.automanage.v20220504.ConfigurationProfileAssignmentPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ConfigurationProfileAssignmentPropertiesResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.automanage.v20220504.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -106,7 +106,7 @@ export interface ConfigurationProfileHCIAssignmentArgs {
     /**
      * Properties of the configuration profile assignment.
      */
-    properties?: pulumi.Input<types.inputs.automanage.v20220504.ConfigurationProfileAssignmentPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ConfigurationProfileAssignmentPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

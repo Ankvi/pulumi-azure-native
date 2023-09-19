@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * This type describes a volume resource.
  */
@@ -34,7 +34,7 @@ export class Volume extends pulumi.CustomResource {
     /**
      * This type describes a volume provided by an Azure Files file share.
      */
-    public readonly azureFileParameters!: pulumi.Output<types.outputs.servicefabricmesh.v20180901preview.VolumeProviderParametersAzureFileResponse | undefined>;
+    public readonly azureFileParameters!: pulumi.Output<types.outputs.VolumeProviderParametersAzureFileResponse | undefined>;
     /**
      * User readable description of the volume.
      */
@@ -127,7 +127,7 @@ export interface VolumeArgs {
     /**
      * This type describes a volume provided by an Azure Files file share.
      */
-    azureFileParameters?: pulumi.Input<types.inputs.servicefabricmesh.v20180901preview.VolumeProviderParametersAzureFileArgs>;
+    azureFileParameters?: pulumi.Input<types.inputs.VolumeProviderParametersAzureFileArgs>;
     /**
      * User readable description of the volume.
      */
@@ -139,7 +139,7 @@ export interface VolumeArgs {
     /**
      * Provider of the volume.
      */
-    provider: pulumi.Input<string | types.enums.v20180901preview.VolumeProvider>;
+    provider: pulumi.Input<string | types.enums.VolumeProvider>;
     /**
      * Azure resource group name
      */

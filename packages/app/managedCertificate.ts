@@ -43,11 +43,11 @@ export class ManagedCertificate extends pulumi.CustomResource {
     /**
      * Certificate resource specific properties
      */
-    public readonly properties!: pulumi.Output<types.outputs.app.ManagedCertificateResponseProperties>;
+    public readonly properties!: pulumi.Output<types.outputs.ManagedCertificateResponseProperties>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.app.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -117,7 +117,7 @@ export interface ManagedCertificateArgs {
     /**
      * Certificate resource specific properties
      */
-    properties?: pulumi.Input<types.inputs.app.ManagedCertificatePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ManagedCertificatePropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

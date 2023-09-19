@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the specified contact in a specified resource group.
  */
@@ -36,11 +36,11 @@ export interface GetContactResult {
     /**
      * The configuration associated with the allocated antenna.
      */
-    readonly antennaConfiguration: types.outputs.orbital.v20220301.ContactsPropertiesResponseAntennaConfiguration;
+    readonly antennaConfiguration: types.outputs.ContactsPropertiesResponseAntennaConfiguration;
     /**
      * The reference to the contact profile resource.
      */
-    readonly contactProfile: types.outputs.orbital.v20220301.ContactsPropertiesResponseContactProfile;
+    readonly contactProfile: types.outputs.ContactsPropertiesResponseContactProfile;
     /**
      * Azimuth of the antenna at the end of the contact in decimal degrees.
      */
@@ -104,7 +104,7 @@ export interface GetContactResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.orbital.v20220301.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Transmit end time of a contact (ISO 8601 UTC standard).
      */

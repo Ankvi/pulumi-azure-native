@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Route Filter Resource.
  */
@@ -38,7 +38,7 @@ export class RouteFilter extends pulumi.CustomResource {
     /**
      * A collection of references to express route circuit ipv6 peerings.
      */
-    public /*out*/ readonly ipv6Peerings!: pulumi.Output<types.outputs.network.v20230501.ExpressRouteCircuitPeeringResponse[]>;
+    public /*out*/ readonly ipv6Peerings!: pulumi.Output<types.outputs.ExpressRouteCircuitPeeringResponse[]>;
     /**
      * Resource location.
      */
@@ -50,7 +50,7 @@ export class RouteFilter extends pulumi.CustomResource {
     /**
      * A collection of references to express route circuit peerings.
      */
-    public /*out*/ readonly peerings!: pulumi.Output<types.outputs.network.v20230501.ExpressRouteCircuitPeeringResponse[]>;
+    public /*out*/ readonly peerings!: pulumi.Output<types.outputs.ExpressRouteCircuitPeeringResponse[]>;
     /**
      * The provisioning state of the route filter resource.
      */
@@ -58,7 +58,7 @@ export class RouteFilter extends pulumi.CustomResource {
     /**
      * Collection of RouteFilterRules contained within a route filter.
      */
-    public readonly rules!: pulumi.Output<types.outputs.network.v20230501.RouteFilterRuleResponse[] | undefined>;
+    public readonly rules!: pulumi.Output<types.outputs.RouteFilterRuleResponse[] | undefined>;
     /**
      * Resource tags.
      */
@@ -136,7 +136,7 @@ export interface RouteFilterArgs {
      * Collection of RouteFilterRules contained within a route filter.
      * These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
      */
-    rules?: pulumi.Input<pulumi.Input<types.inputs.network.v20230501.RouteFilterRuleArgs>[]>;
+    rules?: pulumi.Input<pulumi.Input<types.inputs.RouteFilterRuleArgs>[]>;
     /**
      * Resource tags.
      */

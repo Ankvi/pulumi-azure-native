@@ -36,11 +36,11 @@ export interface GetNamespaceResult {
     /**
      * Identity information for the Namespace resource.
      */
-    readonly identity?: types.outputs.eventgrid.IdentityInfoResponse;
+    readonly identity?: types.outputs.IdentityInfoResponse;
     /**
      * This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled.
      */
-    readonly inboundIpRules?: types.outputs.eventgrid.InboundIpRuleResponse[];
+    readonly inboundIpRules?: types.outputs.InboundIpRuleResponse[];
     /**
      * Allows the user to specify if the service is zone-redundant. This is a required property and user needs to specify this value explicitly.
      * Once specified, this property cannot be updated.
@@ -58,7 +58,7 @@ export interface GetNamespaceResult {
      * Name of the resource.
      */
     readonly name: string;
-    readonly privateEndpointConnections?: types.outputs.eventgrid.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections?: types.outputs.PrivateEndpointConnectionResponse[];
     /**
      * Provisioning state of the namespace resource.
      */
@@ -71,11 +71,11 @@ export interface GetNamespaceResult {
     /**
      * Represents available Sku pricing tiers.
      */
-    readonly sku?: types.outputs.eventgrid.NamespaceSkuResponse;
+    readonly sku?: types.outputs.NamespaceSkuResponse;
     /**
      * The system metadata relating to the namespace resource.
      */
-    readonly systemData: types.outputs.eventgrid.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Tags of the resource.
      */
@@ -83,11 +83,11 @@ export interface GetNamespaceResult {
     /**
      * Topic spaces configuration information for the namespace resource
      */
-    readonly topicSpacesConfiguration?: types.outputs.eventgrid.TopicSpacesConfigurationResponse;
+    readonly topicSpacesConfiguration?: types.outputs.TopicSpacesConfigurationResponse;
     /**
      * Topics configuration information for the namespace resource
      */
-    readonly topicsConfiguration?: types.outputs.eventgrid.TopicsConfigurationResponse;
+    readonly topicsConfiguration?: types.outputs.TopicsConfigurationResponse;
     /**
      * Type of the resource.
      */

@@ -73,7 +73,7 @@ utilities.lazyLoad(exports, ["User"], () => require("./user"));
 
 
 // Export enums:
-export * from "../types/enums/v20170301";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

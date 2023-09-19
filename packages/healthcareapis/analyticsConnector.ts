@@ -35,15 +35,15 @@ export class AnalyticsConnector extends pulumi.CustomResource {
     /**
      * Data destination configuration for Analytics Connector.
      */
-    public readonly dataDestinationConfiguration!: pulumi.Output<types.outputs.healthcareapis.AnalyticsConnectorDataLakeDataDestinationResponse>;
+    public readonly dataDestinationConfiguration!: pulumi.Output<types.outputs.AnalyticsConnectorDataLakeDataDestinationResponse>;
     /**
      * Data mapping configuration for Analytics Connector.
      */
-    public readonly dataMappingConfiguration!: pulumi.Output<types.outputs.healthcareapis.AnalyticsConnectorFhirToParquetMappingResponse>;
+    public readonly dataMappingConfiguration!: pulumi.Output<types.outputs.AnalyticsConnectorFhirToParquetMappingResponse>;
     /**
      * Data source for Analytics Connector.
      */
-    public readonly dataSourceConfiguration!: pulumi.Output<types.outputs.healthcareapis.AnalyticsConnectorFhirServiceDataSourceResponse>;
+    public readonly dataSourceConfiguration!: pulumi.Output<types.outputs.AnalyticsConnectorFhirServiceDataSourceResponse>;
     /**
      * An etag associated with the resource, used for optimistic concurrency when editing it.
      */
@@ -51,7 +51,7 @@ export class AnalyticsConnector extends pulumi.CustomResource {
     /**
      * Setting indicating whether the service has a managed identity associated with it.
      */
-    public readonly identity!: pulumi.Output<types.outputs.healthcareapis.ServiceManagedIdentityResponseIdentity | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ServiceManagedIdentityResponseIdentity | undefined>;
     /**
      * The resource location.
      */
@@ -67,7 +67,7 @@ export class AnalyticsConnector extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.healthcareapis.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -148,19 +148,19 @@ export interface AnalyticsConnectorArgs {
     /**
      * Data destination configuration for Analytics Connector.
      */
-    dataDestinationConfiguration: pulumi.Input<types.inputs.healthcareapis.AnalyticsConnectorDataLakeDataDestinationArgs>;
+    dataDestinationConfiguration: pulumi.Input<types.inputs.AnalyticsConnectorDataLakeDataDestinationArgs>;
     /**
      * Data mapping configuration for Analytics Connector.
      */
-    dataMappingConfiguration: pulumi.Input<types.inputs.healthcareapis.AnalyticsConnectorFhirToParquetMappingArgs>;
+    dataMappingConfiguration: pulumi.Input<types.inputs.AnalyticsConnectorFhirToParquetMappingArgs>;
     /**
      * Data source for Analytics Connector.
      */
-    dataSourceConfiguration: pulumi.Input<types.inputs.healthcareapis.AnalyticsConnectorFhirServiceDataSourceArgs>;
+    dataSourceConfiguration: pulumi.Input<types.inputs.AnalyticsConnectorFhirServiceDataSourceArgs>;
     /**
      * Setting indicating whether the service has a managed identity associated with it.
      */
-    identity?: pulumi.Input<types.inputs.healthcareapis.ServiceManagedIdentityIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ServiceManagedIdentityIdentityArgs>;
     /**
      * The resource location.
      */

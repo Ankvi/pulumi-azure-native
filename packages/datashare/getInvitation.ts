@@ -70,7 +70,7 @@ export interface GetInvitationResult {
     /**
      * System Data of the Azure resource.
      */
-    readonly systemData: types.outputs.datashare.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The target Azure AD Id. Can't be combined with email.
      */

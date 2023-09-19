@@ -47,11 +47,11 @@ export class SignalRReplica extends pulumi.CustomResource {
     /**
      * The billing information of the resource.
      */
-    public readonly sku!: pulumi.Output<types.outputs.signalrservice.ResourceSkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.ResourceSkuResponse | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.signalrservice.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -127,7 +127,7 @@ export interface SignalRReplicaArgs {
     /**
      * The billing information of the resource.
      */
-    sku?: pulumi.Input<types.inputs.signalrservice.ResourceSkuArgs>;
+    sku?: pulumi.Input<types.inputs.ResourceSkuArgs>;
     /**
      * Resource tags.
      */

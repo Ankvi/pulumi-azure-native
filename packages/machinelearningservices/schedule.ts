@@ -39,11 +39,11 @@ export class Schedule extends pulumi.CustomResource {
     /**
      * [Required] Additional attributes of the entity.
      */
-    public readonly scheduleProperties!: pulumi.Output<types.outputs.machinelearningservices.ScheduleResponse>;
+    public readonly scheduleProperties!: pulumi.Output<types.outputs.ScheduleResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.machinelearningservices.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -71,7 +71,7 @@ export class Schedule extends pulumi.CustomResource {
             }
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["scheduleProperties"] = args ? (args.scheduleProperties ? pulumi.output(args.scheduleProperties).apply(types.inputs.machinelearningservices.scheduleArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["scheduleProperties"] = args ? (args.scheduleProperties ? pulumi.output(args.scheduleProperties).apply(types.inputs.scheduleArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["workspaceName"] = args ? args.workspaceName : undefined;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
@@ -103,7 +103,7 @@ export interface ScheduleArgs {
     /**
      * [Required] Additional attributes of the entity.
      */
-    scheduleProperties: pulumi.Input<types.inputs.machinelearningservices.ScheduleArgs>;
+    scheduleProperties: pulumi.Input<types.inputs.ScheduleArgs>;
     /**
      * Name of Azure Machine Learning workspace.
      */

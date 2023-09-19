@@ -39,11 +39,11 @@ export class IotDpsResourcePrivateEndpointConnection extends pulumi.CustomResour
     /**
      * The properties of a private endpoint connection
      */
-    public readonly properties!: pulumi.Output<types.outputs.devices.PrivateEndpointConnectionPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.PrivateEndpointConnectionPropertiesResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.devices.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The resource type.
      */
@@ -100,7 +100,7 @@ export interface IotDpsResourcePrivateEndpointConnectionArgs {
     /**
      * The properties of a private endpoint connection
      */
-    properties: pulumi.Input<types.inputs.devices.PrivateEndpointConnectionPropertiesArgs>;
+    properties: pulumi.Input<types.inputs.PrivateEndpointConnectionPropertiesArgs>;
     /**
      * The name of the resource group that contains the provisioning service.
      */

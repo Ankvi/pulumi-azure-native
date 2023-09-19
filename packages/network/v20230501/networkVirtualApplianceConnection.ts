@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * NetworkVirtualApplianceConnection resource.
  */
@@ -54,7 +54,7 @@ export class NetworkVirtualApplianceConnection extends pulumi.CustomResource {
     /**
      * The Routing Configuration indicating the associated and propagated route tables on this connection.
      */
-    public readonly routingConfiguration!: pulumi.Output<types.outputs.network.v20230501.RoutingConfigurationNfvResponse | undefined>;
+    public readonly routingConfiguration!: pulumi.Output<types.outputs.RoutingConfigurationNfvResponse | undefined>;
     /**
      * Unique identifier for the connection.
      */
@@ -143,7 +143,7 @@ export interface NetworkVirtualApplianceConnectionArgs {
     /**
      * The Routing Configuration indicating the associated and propagated route tables on this connection.
      */
-    routingConfiguration?: pulumi.Input<types.inputs.network.v20230501.RoutingConfigurationNfvArgs>;
+    routingConfiguration?: pulumi.Input<types.inputs.RoutingConfigurationNfvArgs>;
     /**
      * Unique identifier for the connection.
      */

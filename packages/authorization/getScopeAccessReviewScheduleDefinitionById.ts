@@ -40,7 +40,7 @@ export interface GetScopeAccessReviewScheduleDefinitionByIdResult {
     /**
      * This is the collection of backup reviewers.
      */
-    readonly backupReviewers?: types.outputs.authorization.AccessReviewReviewerResponse[];
+    readonly backupReviewers?: types.outputs.AccessReviewReviewerResponse[];
     /**
      * This specifies the behavior for the autoReview feature when an access review completes.
      */
@@ -100,7 +100,7 @@ export interface GetScopeAccessReviewScheduleDefinitionByIdResult {
     /**
      * This is the collection of instances returned when one does an expand on it.
      */
-    readonly instances?: types.outputs.authorization.AccessReviewInstanceResponse[];
+    readonly instances?: types.outputs.AccessReviewInstanceResponse[];
     /**
      * The interval for recurrence. For a quarterly review, the interval is 3 for type : absoluteMonthly.
      */
@@ -152,7 +152,7 @@ export interface GetScopeAccessReviewScheduleDefinitionByIdResult {
     /**
      * This is the collection of reviewers.
      */
-    readonly reviewers?: types.outputs.authorization.AccessReviewReviewerResponse[];
+    readonly reviewers?: types.outputs.AccessReviewReviewerResponse[];
     /**
      * This field specifies the type of reviewers for a review. Usually for a review, reviewers are explicitly assigned. However, in some cases, the reviewers may not be assigned and instead be chosen dynamically. For example managers review or self review.
      */

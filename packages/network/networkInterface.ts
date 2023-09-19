@@ -47,11 +47,11 @@ export class NetworkInterface extends pulumi.CustomResource {
     /**
      * The DNS settings in network interface.
      */
-    public readonly dnsSettings!: pulumi.Output<types.outputs.network.NetworkInterfaceDnsSettingsResponse | undefined>;
+    public readonly dnsSettings!: pulumi.Output<types.outputs.NetworkInterfaceDnsSettingsResponse | undefined>;
     /**
      * A reference to the dscp configuration to which the network interface is linked.
      */
-    public /*out*/ readonly dscpConfiguration!: pulumi.Output<types.outputs.network.SubResourceResponse>;
+    public /*out*/ readonly dscpConfiguration!: pulumi.Output<types.outputs.SubResourceResponse>;
     /**
      * If the network interface is configured for accelerated networking. Not applicable to VM sizes which require accelerated networking.
      */
@@ -67,7 +67,7 @@ export class NetworkInterface extends pulumi.CustomResource {
     /**
      * The extended location of the network interface.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.network.ExtendedLocationResponse | undefined>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
     /**
      * A list of references to linked BareMetal resources.
      */
@@ -75,7 +75,7 @@ export class NetworkInterface extends pulumi.CustomResource {
     /**
      * A list of IPConfigurations of the network interface.
      */
-    public readonly ipConfigurations!: pulumi.Output<types.outputs.network.NetworkInterfaceIPConfigurationResponse[] | undefined>;
+    public readonly ipConfigurations!: pulumi.Output<types.outputs.NetworkInterfaceIPConfigurationResponse[] | undefined>;
     /**
      * Resource location.
      */
@@ -95,7 +95,7 @@ export class NetworkInterface extends pulumi.CustomResource {
     /**
      * The reference to the NetworkSecurityGroup resource.
      */
-    public readonly networkSecurityGroup!: pulumi.Output<types.outputs.network.NetworkSecurityGroupResponse | undefined>;
+    public readonly networkSecurityGroup!: pulumi.Output<types.outputs.NetworkSecurityGroupResponse | undefined>;
     /**
      * Type of Network Interface resource.
      */
@@ -107,11 +107,11 @@ export class NetworkInterface extends pulumi.CustomResource {
     /**
      * A reference to the private endpoint to which the network interface is linked.
      */
-    public /*out*/ readonly privateEndpoint!: pulumi.Output<types.outputs.network.PrivateEndpointResponse>;
+    public /*out*/ readonly privateEndpoint!: pulumi.Output<types.outputs.PrivateEndpointResponse>;
     /**
      * Privatelinkservice of the network interface resource.
      */
-    public readonly privateLinkService!: pulumi.Output<types.outputs.network.PrivateLinkServiceResponse | undefined>;
+    public readonly privateLinkService!: pulumi.Output<types.outputs.PrivateLinkServiceResponse | undefined>;
     /**
      * The provisioning state of the network interface resource.
      */
@@ -127,7 +127,7 @@ export class NetworkInterface extends pulumi.CustomResource {
     /**
      * A list of TapConfigurations of the network interface.
      */
-    public /*out*/ readonly tapConfigurations!: pulumi.Output<types.outputs.network.NetworkInterfaceTapConfigurationResponse[]>;
+    public /*out*/ readonly tapConfigurations!: pulumi.Output<types.outputs.NetworkInterfaceTapConfigurationResponse[]>;
     /**
      * Resource type.
      */
@@ -135,7 +135,7 @@ export class NetworkInterface extends pulumi.CustomResource {
     /**
      * The reference to a virtual machine.
      */
-    public /*out*/ readonly virtualMachine!: pulumi.Output<types.outputs.network.SubResourceResponse>;
+    public /*out*/ readonly virtualMachine!: pulumi.Output<types.outputs.SubResourceResponse>;
     /**
      * Whether the virtual machine this nic is attached to supports encryption.
      */
@@ -246,7 +246,7 @@ export interface NetworkInterfaceArgs {
     /**
      * The DNS settings in network interface.
      */
-    dnsSettings?: pulumi.Input<types.inputs.network.NetworkInterfaceDnsSettingsArgs>;
+    dnsSettings?: pulumi.Input<types.inputs.NetworkInterfaceDnsSettingsArgs>;
     /**
      * If the network interface is configured for accelerated networking. Not applicable to VM sizes which require accelerated networking.
      */
@@ -258,7 +258,7 @@ export interface NetworkInterfaceArgs {
     /**
      * The extended location of the network interface.
      */
-    extendedLocation?: pulumi.Input<types.inputs.network.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * Resource ID.
      */
@@ -266,7 +266,7 @@ export interface NetworkInterfaceArgs {
     /**
      * A list of IPConfigurations of the network interface.
      */
-    ipConfigurations?: pulumi.Input<pulumi.Input<types.inputs.network.NetworkInterfaceIPConfigurationArgs>[]>;
+    ipConfigurations?: pulumi.Input<pulumi.Input<types.inputs.NetworkInterfaceIPConfigurationArgs>[]>;
     /**
      * Resource location.
      */
@@ -282,7 +282,7 @@ export interface NetworkInterfaceArgs {
     /**
      * The reference to the NetworkSecurityGroup resource.
      */
-    networkSecurityGroup?: pulumi.Input<types.inputs.network.NetworkSecurityGroupArgs>;
+    networkSecurityGroup?: pulumi.Input<types.inputs.NetworkSecurityGroupArgs>;
     /**
      * Type of Network Interface resource.
      */
@@ -290,7 +290,7 @@ export interface NetworkInterfaceArgs {
     /**
      * Privatelinkservice of the network interface resource.
      */
-    privateLinkService?: pulumi.Input<types.inputs.network.PrivateLinkServiceArgs>;
+    privateLinkService?: pulumi.Input<types.inputs.PrivateLinkServiceArgs>;
     /**
      * The name of the resource group.
      */

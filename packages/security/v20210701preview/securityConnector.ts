@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The security connector resource.
  */
@@ -58,15 +58,15 @@ export class SecurityConnector extends pulumi.CustomResource {
     /**
      * A collection of offerings for the security connector.
      */
-    public readonly offerings!: pulumi.Output<(types.outputs.security.v20210701preview.CspmMonitorAwsOfferingResponse | types.outputs.security.v20210701preview.DefenderForContainersAwsOfferingResponse | types.outputs.security.v20210701preview.DefenderForServersAwsOfferingResponse | types.outputs.security.v20210701preview.InformationProtectionAwsOfferingResponse)[] | undefined>;
+    public readonly offerings!: pulumi.Output<(types.outputs.CspmMonitorAwsOfferingResponse | types.outputs.DefenderForContainersAwsOfferingResponse | types.outputs.DefenderForServersAwsOfferingResponse | types.outputs.InformationProtectionAwsOfferingResponse)[] | undefined>;
     /**
      * The multi cloud account's organizational data
      */
-    public readonly organizationalData!: pulumi.Output<types.outputs.security.v20210701preview.SecurityConnectorPropertiesResponseOrganizationalData | undefined>;
+    public readonly organizationalData!: pulumi.Output<types.outputs.SecurityConnectorPropertiesResponseOrganizationalData | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.security.v20210701preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * A list of key value pairs that describe the resource.
      */
@@ -130,7 +130,7 @@ export interface SecurityConnectorArgs {
     /**
      * The multi cloud resource's cloud name.
      */
-    cloudName?: pulumi.Input<string | types.enums.v20210701preview.CloudName>;
+    cloudName?: pulumi.Input<string | types.enums.CloudName>;
     /**
      * The multi cloud resource identifier (account id in case of AWS connector).
      */
@@ -146,11 +146,11 @@ export interface SecurityConnectorArgs {
     /**
      * A collection of offerings for the security connector.
      */
-    offerings?: pulumi.Input<pulumi.Input<types.inputs.security.v20210701preview.CspmMonitorAwsOfferingArgs | types.inputs.security.v20210701preview.DefenderForContainersAwsOfferingArgs | types.inputs.security.v20210701preview.DefenderForServersAwsOfferingArgs | types.inputs.security.v20210701preview.InformationProtectionAwsOfferingArgs>[]>;
+    offerings?: pulumi.Input<pulumi.Input<types.inputs.CspmMonitorAwsOfferingArgs | types.inputs.DefenderForContainersAwsOfferingArgs | types.inputs.DefenderForServersAwsOfferingArgs | types.inputs.InformationProtectionAwsOfferingArgs>[]>;
     /**
      * The multi cloud account's organizational data
      */
-    organizationalData?: pulumi.Input<types.inputs.security.v20210701preview.SecurityConnectorPropertiesOrganizationalDataArgs>;
+    organizationalData?: pulumi.Input<types.inputs.SecurityConnectorPropertiesOrganizationalDataArgs>;
     /**
      * The name of the resource group within the user's subscription. The name is case insensitive.
      */

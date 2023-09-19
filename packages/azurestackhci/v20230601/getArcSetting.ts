@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get ArcSetting resource details of HCI Cluster.
  */
@@ -60,11 +60,11 @@ export interface GetArcSettingResult {
     /**
      * contains connectivity related configuration for ARC resources
      */
-    readonly connectivityProperties?: types.outputs.azurestackhci.v20230601.ArcConnectivityPropertiesResponse[];
+    readonly connectivityProperties?: types.outputs.ArcConnectivityPropertiesResponse[];
     /**
      * Properties for each of the default extensions category
      */
-    readonly defaultExtensions: types.outputs.azurestackhci.v20230601.DefaultExtensionDetailsResponse[];
+    readonly defaultExtensions: types.outputs.DefaultExtensionDetailsResponse[];
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -76,7 +76,7 @@ export interface GetArcSettingResult {
     /**
      * State of Arc agent in each of the nodes.
      */
-    readonly perNodeDetails: types.outputs.azurestackhci.v20230601.PerNodeStateResponse[];
+    readonly perNodeDetails: types.outputs.PerNodeStateResponse[];
     /**
      * Provisioning state of the ArcSetting proxy resource.
      */
@@ -84,7 +84,7 @@ export interface GetArcSettingResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.azurestackhci.v20230601.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

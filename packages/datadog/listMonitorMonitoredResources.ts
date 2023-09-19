@@ -36,7 +36,7 @@ export interface ListMonitorMonitoredResourcesResult {
     /**
      * Results of a list operation.
      */
-    readonly value?: types.outputs.datadog.MonitoredResourceResponse[];
+    readonly value?: types.outputs.MonitoredResourceResponse[];
 }
 /**
  * Response of a list operation.

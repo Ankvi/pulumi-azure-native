@@ -39,11 +39,11 @@ export class MoveResource extends pulumi.CustomResource {
     /**
      * Defines the move resource properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.migrate.MoveResourcePropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.MoveResourcePropertiesResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.migrate.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource.
      */
@@ -101,7 +101,7 @@ export interface MoveResourceArgs {
     /**
      * Defines the move resource properties.
      */
-    properties?: pulumi.Input<types.inputs.migrate.MoveResourcePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.MoveResourcePropertiesArgs>;
     /**
      * The Resource Group Name.
      */

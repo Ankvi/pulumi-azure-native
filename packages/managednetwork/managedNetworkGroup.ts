@@ -47,7 +47,7 @@ export class ManagedNetworkGroup extends pulumi.CustomResource {
     /**
      * The collection of management groups covered by the Managed Network
      */
-    public readonly managementGroups!: pulumi.Output<types.outputs.managednetwork.ResourceIdResponse[] | undefined>;
+    public readonly managementGroups!: pulumi.Output<types.outputs.ResourceIdResponse[] | undefined>;
     /**
      * The name of the resource
      */
@@ -59,11 +59,11 @@ export class ManagedNetworkGroup extends pulumi.CustomResource {
     /**
      * The collection of  subnets covered by the Managed Network
      */
-    public readonly subnets!: pulumi.Output<types.outputs.managednetwork.ResourceIdResponse[] | undefined>;
+    public readonly subnets!: pulumi.Output<types.outputs.ResourceIdResponse[] | undefined>;
     /**
      * The collection of subscriptions covered by the Managed Network
      */
-    public readonly subscriptions!: pulumi.Output<types.outputs.managednetwork.ResourceIdResponse[] | undefined>;
+    public readonly subscriptions!: pulumi.Output<types.outputs.ResourceIdResponse[] | undefined>;
     /**
      * The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
      */
@@ -71,7 +71,7 @@ export class ManagedNetworkGroup extends pulumi.CustomResource {
     /**
      * The collection of virtual nets covered by the Managed Network
      */
-    public readonly virtualNetworks!: pulumi.Output<types.outputs.managednetwork.ResourceIdResponse[] | undefined>;
+    public readonly virtualNetworks!: pulumi.Output<types.outputs.ResourceIdResponse[] | undefined>;
 
     /**
      * Create a ManagedNetworkGroup resource with the given unique name, arguments, and options.
@@ -145,7 +145,7 @@ export interface ManagedNetworkGroupArgs {
     /**
      * The collection of management groups covered by the Managed Network
      */
-    managementGroups?: pulumi.Input<pulumi.Input<types.inputs.managednetwork.ResourceIdArgs>[]>;
+    managementGroups?: pulumi.Input<pulumi.Input<types.inputs.ResourceIdArgs>[]>;
     /**
      * The name of the resource group.
      */
@@ -153,13 +153,13 @@ export interface ManagedNetworkGroupArgs {
     /**
      * The collection of  subnets covered by the Managed Network
      */
-    subnets?: pulumi.Input<pulumi.Input<types.inputs.managednetwork.ResourceIdArgs>[]>;
+    subnets?: pulumi.Input<pulumi.Input<types.inputs.ResourceIdArgs>[]>;
     /**
      * The collection of subscriptions covered by the Managed Network
      */
-    subscriptions?: pulumi.Input<pulumi.Input<types.inputs.managednetwork.ResourceIdArgs>[]>;
+    subscriptions?: pulumi.Input<pulumi.Input<types.inputs.ResourceIdArgs>[]>;
     /**
      * The collection of virtual nets covered by the Managed Network
      */
-    virtualNetworks?: pulumi.Input<pulumi.Input<types.inputs.managednetwork.ResourceIdArgs>[]>;
+    virtualNetworks?: pulumi.Input<pulumi.Input<types.inputs.ResourceIdArgs>[]>;
 }

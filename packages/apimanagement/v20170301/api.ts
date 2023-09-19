@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * API details.
  */
@@ -46,7 +46,7 @@ export class Api extends pulumi.CustomResource {
     /**
      * Api Version Set Contract details.
      */
-    public readonly apiVersionSet!: pulumi.Output<types.outputs.apimanagement.v20170301.ApiVersionSetContractResponse | undefined>;
+    public readonly apiVersionSet!: pulumi.Output<types.outputs.ApiVersionSetContractResponse | undefined>;
     /**
      * A resource identifier for the related ApiVersionSet.
      */
@@ -54,7 +54,7 @@ export class Api extends pulumi.CustomResource {
     /**
      * Collection of authentication settings included into this API.
      */
-    public readonly authenticationSettings!: pulumi.Output<types.outputs.apimanagement.v20170301.AuthenticationSettingsContractResponse | undefined>;
+    public readonly authenticationSettings!: pulumi.Output<types.outputs.AuthenticationSettingsContractResponse | undefined>;
     /**
      * Description of the API. May include HTML formatting tags.
      */
@@ -90,7 +90,7 @@ export class Api extends pulumi.CustomResource {
     /**
      * Protocols over which API is made available.
      */
-    public readonly subscriptionKeyParameterNames!: pulumi.Output<types.outputs.apimanagement.v20170301.SubscriptionKeyParameterNamesContractResponse | undefined>;
+    public readonly subscriptionKeyParameterNames!: pulumi.Output<types.outputs.SubscriptionKeyParameterNamesContractResponse | undefined>;
     /**
      * Resource type for API Management resource.
      */
@@ -178,7 +178,7 @@ export interface ApiArgs {
     /**
      * Type of API.
      */
-    apiType?: pulumi.Input<string | types.enums.v20170301.ApiType>;
+    apiType?: pulumi.Input<string | types.enums.ApiType>;
     /**
      * Indicates the Version identifier of the API if the API is versioned
      */
@@ -186,7 +186,7 @@ export interface ApiArgs {
     /**
      * Api Version Set Contract details.
      */
-    apiVersionSet?: pulumi.Input<types.inputs.apimanagement.v20170301.ApiVersionSetContractArgs>;
+    apiVersionSet?: pulumi.Input<types.inputs.ApiVersionSetContractArgs>;
     /**
      * A resource identifier for the related ApiVersionSet.
      */
@@ -194,11 +194,11 @@ export interface ApiArgs {
     /**
      * Collection of authentication settings included into this API.
      */
-    authenticationSettings?: pulumi.Input<types.inputs.apimanagement.v20170301.AuthenticationSettingsContractArgs>;
+    authenticationSettings?: pulumi.Input<types.inputs.AuthenticationSettingsContractArgs>;
     /**
      * Format of the Content in which the API is getting imported.
      */
-    contentFormat?: pulumi.Input<string | types.enums.v20170301.ContentFormat>;
+    contentFormat?: pulumi.Input<string | types.enums.ContentFormat>;
     /**
      * Content value when Importing an API.
      */
@@ -218,7 +218,7 @@ export interface ApiArgs {
     /**
      * Describes on which protocols the operations in this API can be invoked.
      */
-    protocols?: pulumi.Input<pulumi.Input<types.enums.v20170301.Protocol>[]>;
+    protocols?: pulumi.Input<pulumi.Input<types.enums.Protocol>[]>;
     /**
      * The name of the resource group.
      */
@@ -234,9 +234,9 @@ export interface ApiArgs {
     /**
      * Protocols over which API is made available.
      */
-    subscriptionKeyParameterNames?: pulumi.Input<types.inputs.apimanagement.v20170301.SubscriptionKeyParameterNamesContractArgs>;
+    subscriptionKeyParameterNames?: pulumi.Input<types.inputs.SubscriptionKeyParameterNamesContractArgs>;
     /**
      * Criteria to limit import of WSDL to a subset of the document.
      */
-    wsdlSelector?: pulumi.Input<types.inputs.apimanagement.v20170301.ApiCreateOrUpdatePropertiesWsdlSelectorArgs>;
+    wsdlSelector?: pulumi.Input<types.inputs.ApiCreateOrUpdatePropertiesWsdlSelectorArgs>;
 }

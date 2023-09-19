@@ -35,15 +35,15 @@ export class DedicatedHostGroup extends pulumi.CustomResource {
     /**
      * Enables or disables a capability on the dedicated host group. Minimum api-version: 2022-03-01.
      */
-    public readonly additionalCapabilities!: pulumi.Output<types.outputs.compute.DedicatedHostGroupPropertiesResponseAdditionalCapabilities | undefined>;
+    public readonly additionalCapabilities!: pulumi.Output<types.outputs.DedicatedHostGroupPropertiesResponseAdditionalCapabilities | undefined>;
     /**
      * A list of references to all dedicated hosts in the dedicated host group.
      */
-    public /*out*/ readonly hosts!: pulumi.Output<types.outputs.compute.SubResourceReadOnlyResponse[]>;
+    public /*out*/ readonly hosts!: pulumi.Output<types.outputs.SubResourceReadOnlyResponse[]>;
     /**
      * The dedicated host group instance view, which has the list of instance view of the dedicated hosts under the dedicated host group.
      */
-    public /*out*/ readonly instanceView!: pulumi.Output<types.outputs.compute.DedicatedHostGroupInstanceViewResponse>;
+    public /*out*/ readonly instanceView!: pulumi.Output<types.outputs.DedicatedHostGroupInstanceViewResponse>;
     /**
      * Resource location
      */
@@ -128,7 +128,7 @@ export interface DedicatedHostGroupArgs {
     /**
      * Enables or disables a capability on the dedicated host group. Minimum api-version: 2022-03-01.
      */
-    additionalCapabilities?: pulumi.Input<types.inputs.compute.DedicatedHostGroupPropertiesAdditionalCapabilitiesArgs>;
+    additionalCapabilities?: pulumi.Input<types.inputs.DedicatedHostGroupPropertiesAdditionalCapabilitiesArgs>;
     /**
      * The name of the dedicated host group.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the metadata of an IoT Central application.
  */
@@ -43,7 +43,7 @@ export interface GetAppResult {
     /**
      * The managed identities for the IoT Central application.
      */
-    readonly identity?: types.outputs.iotcentral.v20210601.SystemAssignedServiceIdentityResponse;
+    readonly identity?: types.outputs.SystemAssignedServiceIdentityResponse;
     /**
      * The resource location.
      */
@@ -55,7 +55,7 @@ export interface GetAppResult {
     /**
      * A valid instance SKU.
      */
-    readonly sku: types.outputs.iotcentral.v20210601.AppSkuInfoResponse;
+    readonly sku: types.outputs.AppSkuInfoResponse;
     /**
      * The current state of the application.
      */

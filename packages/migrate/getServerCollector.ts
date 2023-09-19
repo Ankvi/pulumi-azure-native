@@ -34,7 +34,7 @@ export interface GetServerCollectorResult {
     readonly eTag?: string;
     readonly id: string;
     readonly name: string;
-    readonly properties: types.outputs.migrate.CollectorPropertiesResponse;
+    readonly properties: types.outputs.CollectorPropertiesResponse;
     readonly type: string;
 }
 /**

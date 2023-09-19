@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Describes a forwarding rule within a DNS forwarding ruleset.
  */
@@ -58,11 +58,11 @@ export class ForwardingRule extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.network.v20220701.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * DNS servers to forward the DNS query to.
      */
-    public readonly targetDnsServers!: pulumi.Output<types.outputs.network.v20220701.TargetDnsServerResponse[]>;
+    public readonly targetDnsServers!: pulumi.Output<types.outputs.TargetDnsServerResponse[]>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -140,7 +140,7 @@ export interface ForwardingRuleArgs {
     /**
      * The state of forwarding rule.
      */
-    forwardingRuleState?: pulumi.Input<string | types.enums.v20220701.ForwardingRuleState>;
+    forwardingRuleState?: pulumi.Input<string | types.enums.ForwardingRuleState>;
     /**
      * Metadata attached to the forwarding rule.
      */
@@ -152,5 +152,5 @@ export interface ForwardingRuleArgs {
     /**
      * DNS servers to forward the DNS query to.
      */
-    targetDnsServers: pulumi.Input<pulumi.Input<types.inputs.network.v20220701.TargetDnsServerArgs>[]>;
+    targetDnsServers: pulumi.Input<pulumi.Input<types.inputs.TargetDnsServerArgs>[]>;
 }

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the Asset storage encryption keys used to decrypt content created by version 2 of the Media Services API
  */
@@ -36,7 +36,7 @@ export interface GetAssetEncryptionKeyResult {
     /**
      * Asset File encryption metadata.
      */
-    readonly assetFileEncryptionMetadata?: types.outputs.media.v20230101.AssetFileEncryptionMetadataResponse[];
+    readonly assetFileEncryptionMetadata?: types.outputs.AssetFileEncryptionMetadataResponse[];
     /**
      * The Asset File storage encryption key.
      */

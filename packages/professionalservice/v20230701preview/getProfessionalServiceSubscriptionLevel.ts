@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets information about the specified Subscription Level ProfessionalService.
  */
@@ -44,7 +44,7 @@ export interface GetProfessionalServiceSubscriptionLevelResult {
     /**
      * professionalService properties
      */
-    readonly properties: types.outputs.professionalservice.v20230701preview.ProfessionalServiceResourceResponseProperties;
+    readonly properties: types.outputs.ProfessionalServiceResourceResponseProperties;
     /**
      * the resource tags.
      */

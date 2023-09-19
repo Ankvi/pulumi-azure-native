@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Tap configuration in a Network Interface.
  */
@@ -50,7 +50,7 @@ export class NetworkInterfaceTapConfiguration extends pulumi.CustomResource {
     /**
      * The reference to the Virtual Network Tap resource.
      */
-    public readonly virtualNetworkTap!: pulumi.Output<types.outputs.network.v20230501.VirtualNetworkTapResponse | undefined>;
+    public readonly virtualNetworkTap!: pulumi.Output<types.outputs.VirtualNetworkTapResponse | undefined>;
 
     /**
      * Create a NetworkInterfaceTapConfiguration resource with the given unique name, arguments, and options.
@@ -74,7 +74,7 @@ export class NetworkInterfaceTapConfiguration extends pulumi.CustomResource {
             resourceInputs["networkInterfaceName"] = args ? args.networkInterfaceName : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["tapConfigurationName"] = args ? args.tapConfigurationName : undefined;
-            resourceInputs["virtualNetworkTap"] = args ? (args.virtualNetworkTap ? pulumi.output(args.virtualNetworkTap).apply(types.inputs.network.v20230501.virtualNetworkTapArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["virtualNetworkTap"] = args ? (args.virtualNetworkTap ? pulumi.output(args.virtualNetworkTap).apply(types.inputs.virtualNetworkTapArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
@@ -119,5 +119,5 @@ export interface NetworkInterfaceTapConfigurationArgs {
     /**
      * The reference to the Virtual Network Tap resource.
      */
-    virtualNetworkTap?: pulumi.Input<types.inputs.network.v20230501.VirtualNetworkTapArgs>;
+    virtualNetworkTap?: pulumi.Input<types.inputs.VirtualNetworkTapArgs>;
 }

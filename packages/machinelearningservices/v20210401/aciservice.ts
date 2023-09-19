@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Machine Learning service object wrapped into ARM resource envelope.
  */
@@ -34,7 +34,7 @@ export class ACIService extends pulumi.CustomResource {
     /**
      * The identity of the resource.
      */
-    public /*out*/ readonly identity!: pulumi.Output<types.outputs.machinelearningservices.v20210401.IdentityResponse | undefined>;
+    public /*out*/ readonly identity!: pulumi.Output<types.outputs.IdentityResponse | undefined>;
     /**
      * Specifies the location of the resource.
      */
@@ -46,15 +46,15 @@ export class ACIService extends pulumi.CustomResource {
     /**
      * Service properties
      */
-    public readonly properties!: pulumi.Output<types.outputs.machinelearningservices.v20210401.ACIServiceResponseResponse | types.outputs.machinelearningservices.v20210401.AKSServiceResponseResponse | types.outputs.machinelearningservices.v20210401.AKSVariantResponseResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ACIServiceResponseResponse | types.outputs.AKSServiceResponseResponse | types.outputs.AKSVariantResponseResponse>;
     /**
      * The sku of the workspace.
      */
-    public /*out*/ readonly sku!: pulumi.Output<types.outputs.machinelearningservices.v20210401.SkuResponse | undefined>;
+    public /*out*/ readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Read only system data
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.machinelearningservices.v20210401.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Contains resource tags defined as key/value pairs.
      */
@@ -152,11 +152,11 @@ export interface ACIServiceArgs {
     /**
      * The container resource requirements.
      */
-    containerResourceRequirements?: pulumi.Input<types.inputs.machinelearningservices.v20210401.ContainerResourceRequirementsArgs>;
+    containerResourceRequirements?: pulumi.Input<types.inputs.ContainerResourceRequirementsArgs>;
     /**
      * Details of the data collection options specified.
      */
-    dataCollection?: pulumi.Input<types.inputs.machinelearningservices.v20210401.ACIServiceCreateRequestDataCollectionArgs>;
+    dataCollection?: pulumi.Input<types.inputs.ACIServiceCreateRequestDataCollectionArgs>;
     /**
      * The description of the service.
      */
@@ -168,15 +168,15 @@ export interface ACIServiceArgs {
     /**
      * The encryption properties.
      */
-    encryptionProperties?: pulumi.Input<types.inputs.machinelearningservices.v20210401.ACIServiceCreateRequestEncryptionPropertiesArgs>;
+    encryptionProperties?: pulumi.Input<types.inputs.ACIServiceCreateRequestEncryptionPropertiesArgs>;
     /**
      * The Environment, models and assets needed for inferencing.
      */
-    environmentImageRequest?: pulumi.Input<types.inputs.machinelearningservices.v20210401.CreateServiceRequestEnvironmentImageRequestArgs>;
+    environmentImageRequest?: pulumi.Input<types.inputs.CreateServiceRequestEnvironmentImageRequestArgs>;
     /**
      * The authentication keys.
      */
-    keys?: pulumi.Input<types.inputs.machinelearningservices.v20210401.CreateServiceRequestKeysArgs>;
+    keys?: pulumi.Input<types.inputs.CreateServiceRequestKeysArgs>;
     /**
      * The service tag dictionary. Tags are mutable.
      */
@@ -212,7 +212,7 @@ export interface ACIServiceArgs {
     /**
      * The virtual network configuration.
      */
-    vnetConfiguration?: pulumi.Input<types.inputs.machinelearningservices.v20210401.ACIServiceCreateRequestVnetConfigurationArgs>;
+    vnetConfiguration?: pulumi.Input<types.inputs.ACIServiceCreateRequestVnetConfigurationArgs>;
     /**
      * Name of Azure Machine Learning workspace.
      */

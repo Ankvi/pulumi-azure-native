@@ -45,7 +45,7 @@ export interface GetAddonResult {
     /**
      * The properties of an addon resource
      */
-    readonly properties: types.outputs.avs.AddonArcPropertiesResponse | types.outputs.avs.AddonHcxPropertiesResponse | types.outputs.avs.AddonSrmPropertiesResponse | types.outputs.avs.AddonVrPropertiesResponse;
+    readonly properties: types.outputs.AddonArcPropertiesResponse | types.outputs.AddonHcxPropertiesResponse | types.outputs.AddonSrmPropertiesResponse | types.outputs.AddonVrPropertiesResponse;
     /**
      * Resource type.
      */

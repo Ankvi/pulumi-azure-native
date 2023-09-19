@@ -39,11 +39,11 @@ export class Machine extends pulumi.CustomResource {
     /**
      * Configurable properties that the user can set locally via the azcmagent config command, or remotely via ARM.
      */
-    public /*out*/ readonly agentConfiguration!: pulumi.Output<types.outputs.hybridcompute.AgentConfigurationResponse>;
+    public /*out*/ readonly agentConfiguration!: pulumi.Output<types.outputs.AgentConfigurationResponse>;
     /**
      * The info of the machine w.r.t Agent Upgrade
      */
-    public readonly agentUpgrade!: pulumi.Output<types.outputs.hybridcompute.AgentUpgradeResponse | undefined>;
+    public readonly agentUpgrade!: pulumi.Output<types.outputs.AgentUpgradeResponse | undefined>;
     /**
      * The hybrid machine agent full version.
      */
@@ -55,7 +55,7 @@ export class Machine extends pulumi.CustomResource {
     /**
      * The metadata of the cloud environment (Azure/GCP/AWS/OCI...).
      */
-    public /*out*/ readonly cloudMetadata!: pulumi.Output<types.outputs.hybridcompute.CloudMetadataResponse | undefined>;
+    public /*out*/ readonly cloudMetadata!: pulumi.Output<types.outputs.CloudMetadataResponse | undefined>;
     /**
      * Detected properties from the machine.
      */
@@ -75,15 +75,15 @@ export class Machine extends pulumi.CustomResource {
     /**
      * Details about the error state.
      */
-    public /*out*/ readonly errorDetails!: pulumi.Output<types.outputs.hybridcompute.ErrorDetailResponse[]>;
+    public /*out*/ readonly errorDetails!: pulumi.Output<types.outputs.ErrorDetailResponse[]>;
     /**
      * Machine Extensions information (deprecated field)
      */
-    public readonly extensions!: pulumi.Output<types.outputs.hybridcompute.MachineExtensionInstanceViewResponse[] | undefined>;
+    public readonly extensions!: pulumi.Output<types.outputs.MachineExtensionInstanceViewResponse[] | undefined>;
     /**
      * Identity for the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.hybridcompute.IdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityResponse | undefined>;
     /**
      * The time of the last status change.
      */
@@ -95,7 +95,7 @@ export class Machine extends pulumi.CustomResource {
     /**
      * Metadata pertaining to the geographic location of the resource.
      */
-    public readonly locationData!: pulumi.Output<types.outputs.hybridcompute.LocationDataResponse | undefined>;
+    public readonly locationData!: pulumi.Output<types.outputs.LocationDataResponse | undefined>;
     /**
      * Specifies the hybrid machine FQDN.
      */
@@ -115,7 +115,7 @@ export class Machine extends pulumi.CustomResource {
     /**
      * Specifies the operating system settings for the hybrid machine.
      */
-    public readonly osProfile!: pulumi.Output<types.outputs.hybridcompute.OSProfileResponse | undefined>;
+    public readonly osProfile!: pulumi.Output<types.outputs.OSProfileResponse | undefined>;
     /**
      * Specifies the Operating System product SKU.
      */
@@ -143,11 +143,11 @@ export class Machine extends pulumi.CustomResource {
     /**
      * The list of extensions affiliated to the machine
      */
-    public /*out*/ readonly resources!: pulumi.Output<types.outputs.hybridcompute.MachineExtensionResponse[]>;
+    public /*out*/ readonly resources!: pulumi.Output<types.outputs.MachineExtensionResponse[]>;
     /**
      * Statuses of dependent services that are reported back to ARM.
      */
-    public readonly serviceStatuses!: pulumi.Output<types.outputs.hybridcompute.ServiceStatusesResponse | undefined>;
+    public readonly serviceStatuses!: pulumi.Output<types.outputs.ServiceStatusesResponse | undefined>;
     /**
      * The status of the hybrid machine agent.
      */
@@ -155,7 +155,7 @@ export class Machine extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.hybridcompute.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -275,7 +275,7 @@ export interface MachineArgs {
     /**
      * The info of the machine w.r.t Agent Upgrade
      */
-    agentUpgrade?: pulumi.Input<types.inputs.hybridcompute.AgentUpgradeArgs>;
+    agentUpgrade?: pulumi.Input<types.inputs.AgentUpgradeArgs>;
     /**
      * Public Key that the client provides to be used during initial resource onboarding
      */
@@ -283,11 +283,11 @@ export interface MachineArgs {
     /**
      * Machine Extensions information (deprecated field)
      */
-    extensions?: pulumi.Input<pulumi.Input<types.inputs.hybridcompute.MachineExtensionInstanceViewArgs>[]>;
+    extensions?: pulumi.Input<pulumi.Input<types.inputs.MachineExtensionInstanceViewArgs>[]>;
     /**
      * Identity for the resource.
      */
-    identity?: pulumi.Input<types.inputs.hybridcompute.IdentityArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -295,7 +295,7 @@ export interface MachineArgs {
     /**
      * Metadata pertaining to the geographic location of the resource.
      */
-    locationData?: pulumi.Input<types.inputs.hybridcompute.LocationDataArgs>;
+    locationData?: pulumi.Input<types.inputs.LocationDataArgs>;
     /**
      * The name of the hybrid machine.
      */
@@ -307,7 +307,7 @@ export interface MachineArgs {
     /**
      * Specifies the operating system settings for the hybrid machine.
      */
-    osProfile?: pulumi.Input<types.inputs.hybridcompute.OSProfileArgs>;
+    osProfile?: pulumi.Input<types.inputs.OSProfileArgs>;
     /**
      * The type of Operating System (windows/linux).
      */
@@ -327,7 +327,7 @@ export interface MachineArgs {
     /**
      * Statuses of dependent services that are reported back to ARM.
      */
-    serviceStatuses?: pulumi.Input<types.inputs.hybridcompute.ServiceStatusesArgs>;
+    serviceStatuses?: pulumi.Input<types.inputs.ServiceStatusesArgs>;
     /**
      * Resource tags.
      */

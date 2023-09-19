@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The properties of File services in storage account.
  */
@@ -34,7 +34,7 @@ export class FileServiceProperties extends pulumi.CustomResource {
     /**
      * Specifies CORS rules for the File service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the File service.
      */
-    public readonly cors!: pulumi.Output<types.outputs.storage.v20230101.CorsRulesResponse | undefined>;
+    public readonly cors!: pulumi.Output<types.outputs.CorsRulesResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -42,15 +42,15 @@ export class FileServiceProperties extends pulumi.CustomResource {
     /**
      * Protocol settings for file service
      */
-    public readonly protocolSettings!: pulumi.Output<types.outputs.storage.v20230101.ProtocolSettingsResponse | undefined>;
+    public readonly protocolSettings!: pulumi.Output<types.outputs.ProtocolSettingsResponse | undefined>;
     /**
      * The file service properties for share soft delete.
      */
-    public readonly shareDeleteRetentionPolicy!: pulumi.Output<types.outputs.storage.v20230101.DeleteRetentionPolicyResponse | undefined>;
+    public readonly shareDeleteRetentionPolicy!: pulumi.Output<types.outputs.DeleteRetentionPolicyResponse | undefined>;
     /**
      * Sku name and tier.
      */
-    public /*out*/ readonly sku!: pulumi.Output<types.outputs.storage.v20230101.SkuResponse>;
+    public /*out*/ readonly sku!: pulumi.Output<types.outputs.SkuResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -108,7 +108,7 @@ export interface FileServicePropertiesArgs {
     /**
      * Specifies CORS rules for the File service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the File service.
      */
-    cors?: pulumi.Input<types.inputs.storage.v20230101.CorsRulesArgs>;
+    cors?: pulumi.Input<types.inputs.CorsRulesArgs>;
     /**
      * The name of the file Service within the specified storage account. File Service Name must be "default"
      */
@@ -116,7 +116,7 @@ export interface FileServicePropertiesArgs {
     /**
      * Protocol settings for file service
      */
-    protocolSettings?: pulumi.Input<types.inputs.storage.v20230101.ProtocolSettingsArgs>;
+    protocolSettings?: pulumi.Input<types.inputs.ProtocolSettingsArgs>;
     /**
      * The name of the resource group within the user's subscription. The name is case insensitive.
      */
@@ -124,5 +124,5 @@ export interface FileServicePropertiesArgs {
     /**
      * The file service properties for share soft delete.
      */
-    shareDeleteRetentionPolicy?: pulumi.Input<types.inputs.storage.v20230101.DeleteRetentionPolicyArgs>;
+    shareDeleteRetentionPolicy?: pulumi.Input<types.inputs.DeleteRetentionPolicyArgs>;
 }

@@ -51,15 +51,15 @@ export class SharedCommitmentPlan extends pulumi.CustomResource {
     /**
      * Properties of Cognitive Services account commitment plan.
      */
-    public readonly properties!: pulumi.Output<types.outputs.cognitiveservices.CommitmentPlanPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.CommitmentPlanPropertiesResponse>;
     /**
      * The resource model definition representing SKU
      */
-    public readonly sku!: pulumi.Output<types.outputs.cognitiveservices.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.cognitiveservices.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -131,7 +131,7 @@ export interface SharedCommitmentPlanArgs {
     /**
      * Properties of Cognitive Services account commitment plan.
      */
-    properties?: pulumi.Input<types.inputs.cognitiveservices.CommitmentPlanPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.CommitmentPlanPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -139,7 +139,7 @@ export interface SharedCommitmentPlanArgs {
     /**
      * The resource model definition representing SKU
      */
-    sku?: pulumi.Input<types.inputs.cognitiveservices.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Resource tags.
      */

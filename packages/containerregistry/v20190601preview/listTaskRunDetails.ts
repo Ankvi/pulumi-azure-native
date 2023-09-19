@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the detailed information for a given task run that includes all secrets.
  */
@@ -45,7 +45,7 @@ export interface ListTaskRunDetailsResult {
     /**
      * Identity for the resource.
      */
-    readonly identity?: types.outputs.containerregistry.v20190601preview.IdentityPropertiesResponse;
+    readonly identity?: types.outputs.IdentityPropertiesResponse;
     /**
      * The location of the resource
      */
@@ -61,15 +61,15 @@ export interface ListTaskRunDetailsResult {
     /**
      * The request (parameters) for the run
      */
-    readonly runRequest?: types.outputs.containerregistry.v20190601preview.DockerBuildRequestResponse | types.outputs.containerregistry.v20190601preview.EncodedTaskRunRequestResponse | types.outputs.containerregistry.v20190601preview.FileTaskRunRequestResponse | types.outputs.containerregistry.v20190601preview.TaskRunRequestResponse;
+    readonly runRequest?: types.outputs.DockerBuildRequestResponse | types.outputs.EncodedTaskRunRequestResponse | types.outputs.FileTaskRunRequestResponse | types.outputs.TaskRunRequestResponse;
     /**
      * The result of this task run
      */
-    readonly runResult: types.outputs.containerregistry.v20190601preview.RunResponse;
+    readonly runResult: types.outputs.RunResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.containerregistry.v20190601preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource.
      */

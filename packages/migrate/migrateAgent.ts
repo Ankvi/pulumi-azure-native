@@ -39,8 +39,8 @@ export class MigrateAgent extends pulumi.CustomResource {
     /**
      * MigrateAgent model properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.migrate.MigrateAgentModelPropertiesResponse>;
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.migrate.MigrateAgentModelResponseSystemData>;
+    public readonly properties!: pulumi.Output<types.outputs.MigrateAgentModelPropertiesResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.MigrateAgentModelResponseSystemData>;
     /**
      * Gets or sets the resource tags.
      */
@@ -105,7 +105,7 @@ export interface MigrateAgentArgs {
     /**
      * MigrateAgent model properties.
      */
-    properties?: pulumi.Input<types.inputs.migrate.MigrateAgentModelPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.MigrateAgentModelPropertiesArgs>;
     /**
      * Name of the Azure Resource Group that project is part of.
      */

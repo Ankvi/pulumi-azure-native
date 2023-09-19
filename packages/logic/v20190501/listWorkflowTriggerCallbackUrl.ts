@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the callback URL for a workflow trigger.
  */
@@ -44,7 +44,7 @@ export interface ListWorkflowTriggerCallbackUrlResult {
     /**
      * Gets the workflow trigger callback URL query parameters.
      */
-    readonly queries?: types.outputs.logic.v20190501.WorkflowTriggerListCallbackUrlQueriesResponse;
+    readonly queries?: types.outputs.WorkflowTriggerListCallbackUrlQueriesResponse;
     /**
      * Gets the workflow trigger callback URL relative path.
      */

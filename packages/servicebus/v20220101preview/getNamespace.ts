@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a description for the specified namespace.
  */
@@ -43,7 +43,7 @@ export interface GetNamespaceResult {
     /**
      * Properties of BYOK Encryption description
      */
-    readonly encryption?: types.outputs.servicebus.v20220101preview.EncryptionResponse;
+    readonly encryption?: types.outputs.EncryptionResponse;
     /**
      * Resource Id
      */
@@ -51,7 +51,7 @@ export interface GetNamespaceResult {
     /**
      * Properties of BYOK Identity description
      */
-    readonly identity?: types.outputs.servicebus.v20220101preview.IdentityResponse;
+    readonly identity?: types.outputs.IdentityResponse;
     /**
      * The Geo-location where the resource lives
      */
@@ -71,7 +71,7 @@ export interface GetNamespaceResult {
     /**
      * List of private endpoint connections.
      */
-    readonly privateEndpointConnections?: types.outputs.servicebus.v20220101preview.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections?: types.outputs.PrivateEndpointConnectionResponse[];
     /**
      * Provisioning state of the namespace.
      */
@@ -87,7 +87,7 @@ export interface GetNamespaceResult {
     /**
      * Properties of SKU
      */
-    readonly sku?: types.outputs.servicebus.v20220101preview.SBSkuResponse;
+    readonly sku?: types.outputs.SBSkuResponse;
     /**
      * Status of the namespace.
      */
@@ -95,7 +95,7 @@ export interface GetNamespaceResult {
     /**
      * The system meta data relating to this resource.
      */
-    readonly systemData: types.outputs.servicebus.v20220101preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags
      */

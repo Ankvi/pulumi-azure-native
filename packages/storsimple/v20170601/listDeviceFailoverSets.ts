@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns all failover sets for a given device and their eligibility for participating in a failover. A failover set refers to a set of volume containers that need to be failed-over as a single unit to maintain data integrity.
  */
@@ -36,7 +36,7 @@ export interface ListDeviceFailoverSetsResult {
     /**
      * The list of failover sets.
      */
-    readonly value?: types.outputs.storsimple.v20170601.FailoverSetResponse[];
+    readonly value?: types.outputs.FailoverSetResponse[];
 }
 /**
  * Returns all failover sets for a given device and their eligibility for participating in a failover. A failover set refers to a set of volume containers that need to be failed-over as a single unit to maintain data integrity.

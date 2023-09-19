@@ -46,11 +46,11 @@ export interface ListServiceFabricApplicableSchedulesResult {
     /**
      * The auto-shutdown schedule, if one has been set at the lab or lab resource level.
      */
-    readonly labVmsShutdown?: types.outputs.devtestlab.ScheduleResponse;
+    readonly labVmsShutdown?: types.outputs.ScheduleResponse;
     /**
      * The auto-startup schedule, if one has been set at the lab or lab resource level.
      */
-    readonly labVmsStartup?: types.outputs.devtestlab.ScheduleResponse;
+    readonly labVmsStartup?: types.outputs.ScheduleResponse;
     /**
      * The location of the resource.
      */

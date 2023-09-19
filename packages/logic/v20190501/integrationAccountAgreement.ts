@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The integration account agreement.
  */
@@ -42,7 +42,7 @@ export class IntegrationAccountAgreement extends pulumi.CustomResource {
     /**
      * The agreement content.
      */
-    public readonly content!: pulumi.Output<types.outputs.logic.v20190501.AgreementContentResponse>;
+    public readonly content!: pulumi.Output<types.outputs.AgreementContentResponse>;
     /**
      * The created time.
      */
@@ -50,7 +50,7 @@ export class IntegrationAccountAgreement extends pulumi.CustomResource {
     /**
      * The business identity of the guest partner.
      */
-    public readonly guestIdentity!: pulumi.Output<types.outputs.logic.v20190501.BusinessIdentityResponse>;
+    public readonly guestIdentity!: pulumi.Output<types.outputs.BusinessIdentityResponse>;
     /**
      * The integration account partner that is set as guest partner for this agreement.
      */
@@ -58,7 +58,7 @@ export class IntegrationAccountAgreement extends pulumi.CustomResource {
     /**
      * The business identity of the host partner.
      */
-    public readonly hostIdentity!: pulumi.Output<types.outputs.logic.v20190501.BusinessIdentityResponse>;
+    public readonly hostIdentity!: pulumi.Output<types.outputs.BusinessIdentityResponse>;
     /**
      * The integration account partner that is set as host partner for this agreement.
      */
@@ -168,15 +168,15 @@ export interface IntegrationAccountAgreementArgs {
     /**
      * The agreement type.
      */
-    agreementType: pulumi.Input<types.enums.v20190501.AgreementType>;
+    agreementType: pulumi.Input<types.enums.AgreementType>;
     /**
      * The agreement content.
      */
-    content: pulumi.Input<types.inputs.logic.v20190501.AgreementContentArgs>;
+    content: pulumi.Input<types.inputs.AgreementContentArgs>;
     /**
      * The business identity of the guest partner.
      */
-    guestIdentity: pulumi.Input<types.inputs.logic.v20190501.BusinessIdentityArgs>;
+    guestIdentity: pulumi.Input<types.inputs.BusinessIdentityArgs>;
     /**
      * The integration account partner that is set as guest partner for this agreement.
      */
@@ -184,7 +184,7 @@ export interface IntegrationAccountAgreementArgs {
     /**
      * The business identity of the host partner.
      */
-    hostIdentity: pulumi.Input<types.inputs.logic.v20190501.BusinessIdentityArgs>;
+    hostIdentity: pulumi.Input<types.inputs.BusinessIdentityArgs>;
     /**
      * The integration account partner that is set as host partner for this agreement.
      */

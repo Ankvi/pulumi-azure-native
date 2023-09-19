@@ -34,11 +34,11 @@ export interface GetManagedEnvironmentResult {
      * app logs to a destination. Currently only "log-analytics" is
      * supported
      */
-    readonly appLogsConfiguration?: types.outputs.app.AppLogsConfigurationResponse;
+    readonly appLogsConfiguration?: types.outputs.AppLogsConfigurationResponse;
     /**
      * Custom domain configuration for the environment
      */
-    readonly customDomainConfiguration?: types.outputs.app.CustomDomainConfigurationResponse;
+    readonly customDomainConfiguration?: types.outputs.CustomDomainConfigurationResponse;
     /**
      * Application Insights connection string used by Dapr to export Service to Service communication telemetry
      */
@@ -82,7 +82,7 @@ export interface GetManagedEnvironmentResult {
     /**
      * SKU properties of the Environment.
      */
-    readonly sku?: types.outputs.app.EnvironmentSkuPropertiesResponse;
+    readonly sku?: types.outputs.EnvironmentSkuPropertiesResponse;
     /**
      * Static IP of the Environment
      */
@@ -90,7 +90,7 @@ export interface GetManagedEnvironmentResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.app.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -102,11 +102,11 @@ export interface GetManagedEnvironmentResult {
     /**
      * Vnet configuration for the environment
      */
-    readonly vnetConfiguration?: types.outputs.app.VnetConfigurationResponse;
+    readonly vnetConfiguration?: types.outputs.VnetConfigurationResponse;
     /**
      * Workload profiles configured for the Managed Environment.
      */
-    readonly workloadProfiles?: types.outputs.app.WorkloadProfileResponse[];
+    readonly workloadProfiles?: types.outputs.WorkloadProfileResponse[];
     /**
      * Whether or not this Managed Environment is zone-redundant.
      */

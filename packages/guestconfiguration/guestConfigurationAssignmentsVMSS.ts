@@ -43,11 +43,11 @@ export class GuestConfigurationAssignmentsVMSS extends pulumi.CustomResource {
     /**
      * Properties of the Guest configuration assignment.
      */
-    public readonly properties!: pulumi.Output<types.outputs.guestconfiguration.GuestConfigurationAssignmentPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.GuestConfigurationAssignmentPropertiesResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.guestconfiguration.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource.
      */
@@ -106,7 +106,7 @@ export interface GuestConfigurationAssignmentsVMSSArgs {
     /**
      * Properties of the Guest configuration assignment.
      */
-    properties?: pulumi.Input<types.inputs.guestconfiguration.GuestConfigurationAssignmentPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.GuestConfigurationAssignmentPropertiesArgs>;
     /**
      * The resource group name.
      */

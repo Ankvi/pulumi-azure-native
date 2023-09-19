@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An Azure Monitor PrivateLinkScope definition.
  */
@@ -42,7 +42,7 @@ export class PrivateLinkScope extends pulumi.CustomResource {
     /**
      * List of private endpoint connections.
      */
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.insights.v20191017preview.PrivateEndpointConnectionResponse[]>;
+    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[]>;
     /**
      * Current state of this PrivateLinkScope: whether or not is has been provisioned within the resource group it is defined. Users cannot change this value but are able to read from it. Values will include Provisioning ,Succeeded, Canceled and Failed.
      */

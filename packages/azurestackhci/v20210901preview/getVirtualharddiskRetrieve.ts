@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets virtualharddisks by resource name
  */
@@ -45,7 +45,7 @@ export interface GetVirtualharddiskRetrieveResult {
     /**
      * The extendedLocation of the resource.
      */
-    readonly extendedLocation?: types.outputs.azurestackhci.v20210901preview.ExtendedLocationResponse;
+    readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
     /**
      * The hypervisor generation of the Virtual Machine [V1, V2]
      */
@@ -72,11 +72,11 @@ export interface GetVirtualharddiskRetrieveResult {
     /**
      * VirtualHardDiskStatus defines the observed state of virtualharddisks
      */
-    readonly status: types.outputs.azurestackhci.v20210901preview.VirtualHardDiskStatusResponse;
+    readonly status: types.outputs.VirtualHardDiskStatusResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.azurestackhci.v20210901preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

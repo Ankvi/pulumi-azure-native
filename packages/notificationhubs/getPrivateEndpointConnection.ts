@@ -45,11 +45,11 @@ export interface GetPrivateEndpointConnectionResult {
     /**
      * Private Endpoint Connection properties.
      */
-    readonly properties: types.outputs.notificationhubs.PrivateEndpointConnectionPropertiesResponse;
+    readonly properties: types.outputs.PrivateEndpointConnectionPropertiesResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.notificationhubs.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The operation to get the extension.
  */
@@ -57,7 +57,7 @@ export interface GetVirtualMachineExtensionResult {
     /**
      * The virtual machine extension instance view.
      */
-    readonly instanceView?: types.outputs.compute.v20211101.VirtualMachineExtensionInstanceViewResponse;
+    readonly instanceView?: types.outputs.VirtualMachineExtensionInstanceViewResponse;
     /**
      * Resource location
      */

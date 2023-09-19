@@ -39,7 +39,7 @@ export interface GetIncidentTaskResult {
     /**
      * Information on the client (user or application) that made some action
      */
-    readonly createdBy?: types.outputs.securityinsights.ClientInfoResponse;
+    readonly createdBy?: types.outputs.ClientInfoResponse;
     /**
      * The time the task was created
      */
@@ -59,7 +59,7 @@ export interface GetIncidentTaskResult {
     /**
      * Information on the client (user or application) that made some action
      */
-    readonly lastModifiedBy?: types.outputs.securityinsights.ClientInfoResponse;
+    readonly lastModifiedBy?: types.outputs.ClientInfoResponse;
     /**
      * The last time the task was updated
      */
@@ -72,7 +72,7 @@ export interface GetIncidentTaskResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.securityinsights.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The title of the task
      */

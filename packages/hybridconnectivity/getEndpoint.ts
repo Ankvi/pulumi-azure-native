@@ -64,11 +64,11 @@ export interface GetEndpointResult {
     /**
      * The endpoint properties.
      */
-    readonly properties: types.outputs.hybridconnectivity.EndpointPropertiesResponse;
+    readonly properties: types.outputs.EndpointPropertiesResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.hybridconnectivity.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

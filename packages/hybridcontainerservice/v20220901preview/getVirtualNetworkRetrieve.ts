@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the Hybrid AKS virtual network
  */
@@ -28,7 +28,7 @@ export interface GetVirtualNetworkRetrieveArgs {
  * The virtualNetworks resource definition.
  */
 export interface GetVirtualNetworkRetrieveResult {
-    readonly extendedLocation?: types.outputs.hybridcontainerservice.v20220901preview.VirtualNetworksResponseExtendedLocation;
+    readonly extendedLocation?: types.outputs.VirtualNetworksResponseExtendedLocation;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -44,11 +44,11 @@ export interface GetVirtualNetworkRetrieveResult {
     /**
      * HybridAKSNetworkSpec defines the desired state of HybridAKSNetwork
      */
-    readonly properties: types.outputs.hybridcontainerservice.v20220901preview.VirtualNetworksPropertiesResponse;
+    readonly properties: types.outputs.VirtualNetworksPropertiesResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.hybridcontainerservice.v20220901preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

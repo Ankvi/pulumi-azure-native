@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An input object, containing all information associated with the named input. All inputs are contained under a streaming job.
  */
@@ -38,7 +38,7 @@ export class Input extends pulumi.CustomResource {
     /**
      * The properties that are associated with an input. Required on PUT (CreateOrReplace) requests.
      */
-    public readonly properties!: pulumi.Output<types.outputs.streamanalytics.v20200301.ReferenceInputPropertiesResponse | types.outputs.streamanalytics.v20200301.StreamInputPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ReferenceInputPropertiesResponse | types.outputs.StreamInputPropertiesResponse>;
     /**
      * Resource type
      */
@@ -98,7 +98,7 @@ export interface InputArgs {
     /**
      * The properties that are associated with an input. Required on PUT (CreateOrReplace) requests.
      */
-    properties?: pulumi.Input<types.inputs.streamanalytics.v20200301.ReferenceInputPropertiesArgs | types.inputs.streamanalytics.v20200301.StreamInputPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ReferenceInputPropertiesArgs | types.inputs.StreamInputPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

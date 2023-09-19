@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Contains the job information.
  */
@@ -34,7 +34,7 @@ export class Job extends pulumi.CustomResource {
     /**
      * Specifies the job identity details
      */
-    public /*out*/ readonly identity!: pulumi.Output<types.outputs.importexport.v20210101.IdentityDetailsResponse | undefined>;
+    public /*out*/ readonly identity!: pulumi.Output<types.outputs.IdentityDetailsResponse | undefined>;
     /**
      * Specifies the Azure location where the job is created.
      */
@@ -46,11 +46,11 @@ export class Job extends pulumi.CustomResource {
     /**
      * Specifies the job properties
      */
-    public readonly properties!: pulumi.Output<types.outputs.importexport.v20210101.JobDetailsResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.JobDetailsResponse>;
     /**
      * SystemData of ImportExport Jobs.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.importexport.v20210101.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Specifies the tags that are assigned to the job.
      */
@@ -76,7 +76,7 @@ export class Job extends pulumi.CustomResource {
             }
             resourceInputs["jobName"] = args ? args.jobName : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.importexport.v20210101.jobDetailsArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.jobDetailsArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["identity"] = undefined /*out*/;
@@ -114,7 +114,7 @@ export interface JobArgs {
     /**
      * Specifies the job properties
      */
-    properties?: pulumi.Input<types.inputs.importexport.v20210101.JobDetailsArgs>;
+    properties?: pulumi.Input<types.inputs.JobDetailsArgs>;
     /**
      * The resource group name uniquely identifies the resource group within the user subscription.
      */

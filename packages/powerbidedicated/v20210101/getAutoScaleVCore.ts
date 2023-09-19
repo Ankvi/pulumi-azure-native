@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets details about the specified auto scale v-core.
  */
@@ -55,11 +55,11 @@ export interface GetAutoScaleVCoreResult {
     /**
      * The SKU of the auto scale v-core resource.
      */
-    readonly sku: types.outputs.powerbidedicated.v20210101.AutoScaleVCoreSkuResponse;
+    readonly sku: types.outputs.AutoScaleVCoreSkuResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData?: types.outputs.powerbidedicated.v20210101.SystemDataResponse;
+    readonly systemData?: types.outputs.SystemDataResponse;
     /**
      * Key-value pairs of additional resource provisioning properties.
      */

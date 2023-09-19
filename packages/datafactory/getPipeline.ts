@@ -37,7 +37,7 @@ export interface GetPipelineResult {
     /**
      * List of activities in pipeline.
      */
-    readonly activities?: (types.outputs.datafactory.AppendVariableActivityResponse | types.outputs.datafactory.AzureDataExplorerCommandActivityResponse | types.outputs.datafactory.AzureFunctionActivityResponse | types.outputs.datafactory.AzureMLBatchExecutionActivityResponse | types.outputs.datafactory.AzureMLExecutePipelineActivityResponse | types.outputs.datafactory.AzureMLUpdateResourceActivityResponse | types.outputs.datafactory.ControlActivityResponse | types.outputs.datafactory.CopyActivityResponse | types.outputs.datafactory.CustomActivityResponse | types.outputs.datafactory.DataLakeAnalyticsUSQLActivityResponse | types.outputs.datafactory.DatabricksNotebookActivityResponse | types.outputs.datafactory.DatabricksSparkJarActivityResponse | types.outputs.datafactory.DatabricksSparkPythonActivityResponse | types.outputs.datafactory.DeleteActivityResponse | types.outputs.datafactory.ExecuteDataFlowActivityResponse | types.outputs.datafactory.ExecutePipelineActivityResponse | types.outputs.datafactory.ExecuteSSISPackageActivityResponse | types.outputs.datafactory.ExecuteWranglingDataflowActivityResponse | types.outputs.datafactory.ExecutionActivityResponse | types.outputs.datafactory.FailActivityResponse | types.outputs.datafactory.FilterActivityResponse | types.outputs.datafactory.ForEachActivityResponse | types.outputs.datafactory.GetMetadataActivityResponse | types.outputs.datafactory.HDInsightHiveActivityResponse | types.outputs.datafactory.HDInsightMapReduceActivityResponse | types.outputs.datafactory.HDInsightPigActivityResponse | types.outputs.datafactory.HDInsightSparkActivityResponse | types.outputs.datafactory.HDInsightStreamingActivityResponse | types.outputs.datafactory.IfConditionActivityResponse | types.outputs.datafactory.LookupActivityResponse | types.outputs.datafactory.ScriptActivityResponse | types.outputs.datafactory.SetVariableActivityResponse | types.outputs.datafactory.SqlServerStoredProcedureActivityResponse | types.outputs.datafactory.SwitchActivityResponse | types.outputs.datafactory.SynapseNotebookActivityResponse | types.outputs.datafactory.SynapseSparkJobDefinitionActivityResponse | types.outputs.datafactory.UntilActivityResponse | types.outputs.datafactory.ValidationActivityResponse | types.outputs.datafactory.WaitActivityResponse | types.outputs.datafactory.WebActivityResponse | types.outputs.datafactory.WebHookActivityResponse)[];
+    readonly activities?: (types.outputs.AppendVariableActivityResponse | types.outputs.AzureDataExplorerCommandActivityResponse | types.outputs.AzureFunctionActivityResponse | types.outputs.AzureMLBatchExecutionActivityResponse | types.outputs.AzureMLExecutePipelineActivityResponse | types.outputs.AzureMLUpdateResourceActivityResponse | types.outputs.ControlActivityResponse | types.outputs.CopyActivityResponse | types.outputs.CustomActivityResponse | types.outputs.DataLakeAnalyticsUSQLActivityResponse | types.outputs.DatabricksNotebookActivityResponse | types.outputs.DatabricksSparkJarActivityResponse | types.outputs.DatabricksSparkPythonActivityResponse | types.outputs.DeleteActivityResponse | types.outputs.ExecuteDataFlowActivityResponse | types.outputs.ExecutePipelineActivityResponse | types.outputs.ExecuteSSISPackageActivityResponse | types.outputs.ExecuteWranglingDataflowActivityResponse | types.outputs.ExecutionActivityResponse | types.outputs.FailActivityResponse | types.outputs.FilterActivityResponse | types.outputs.ForEachActivityResponse | types.outputs.GetMetadataActivityResponse | types.outputs.HDInsightHiveActivityResponse | types.outputs.HDInsightMapReduceActivityResponse | types.outputs.HDInsightPigActivityResponse | types.outputs.HDInsightSparkActivityResponse | types.outputs.HDInsightStreamingActivityResponse | types.outputs.IfConditionActivityResponse | types.outputs.LookupActivityResponse | types.outputs.ScriptActivityResponse | types.outputs.SetVariableActivityResponse | types.outputs.SqlServerStoredProcedureActivityResponse | types.outputs.SwitchActivityResponse | types.outputs.SynapseNotebookActivityResponse | types.outputs.SynapseSparkJobDefinitionActivityResponse | types.outputs.UntilActivityResponse | types.outputs.ValidationActivityResponse | types.outputs.WaitActivityResponse | types.outputs.WebActivityResponse | types.outputs.WebHookActivityResponse)[];
     /**
      * List of tags that can be used for describing the Pipeline.
      */
@@ -57,7 +57,7 @@ export interface GetPipelineResult {
     /**
      * The folder that this Pipeline is in. If not specified, Pipeline will appear at the root level.
      */
-    readonly folder?: types.outputs.datafactory.PipelineResponseFolder;
+    readonly folder?: types.outputs.PipelineResponseFolder;
     /**
      * The resource identifier.
      */
@@ -69,11 +69,11 @@ export interface GetPipelineResult {
     /**
      * List of parameters for pipeline.
      */
-    readonly parameters?: {[key: string]: types.outputs.datafactory.ParameterSpecificationResponse};
+    readonly parameters?: {[key: string]: types.outputs.ParameterSpecificationResponse};
     /**
      * Pipeline Policy.
      */
-    readonly policy?: types.outputs.datafactory.PipelinePolicyResponse;
+    readonly policy?: types.outputs.PipelinePolicyResponse;
     /**
      * Dimensions emitted by Pipeline.
      */
@@ -85,7 +85,7 @@ export interface GetPipelineResult {
     /**
      * List of variables for pipeline.
      */
-    readonly variables?: {[key: string]: types.outputs.datafactory.VariableSpecificationResponse};
+    readonly variables?: {[key: string]: types.outputs.VariableSpecificationResponse};
 }
 /**
  * Gets a pipeline.

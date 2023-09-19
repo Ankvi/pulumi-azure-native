@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Defines the HybridIdentityMetadata.
  */
@@ -34,7 +34,7 @@ export class HybridIdentityMetadatum extends pulumi.CustomResource {
     /**
      * Identity for the resource.
      */
-    public /*out*/ readonly identity!: pulumi.Output<types.outputs.azurestackhci.v20221215preview.IdentityResponse>;
+    public /*out*/ readonly identity!: pulumi.Output<types.outputs.IdentityResponse>;
     /**
      * The name of the resource
      */
@@ -54,7 +54,7 @@ export class HybridIdentityMetadatum extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.azurestackhci.v20221215preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

@@ -35,7 +35,7 @@ export class Dashboard extends pulumi.CustomResource {
     /**
      * The dashboard lenses.
      */
-    public readonly lenses!: pulumi.Output<types.outputs.portal.DashboardLensResponse[] | undefined>;
+    public readonly lenses!: pulumi.Output<types.outputs.DashboardLensResponse[] | undefined>;
     /**
      * Resource location
      */
@@ -105,7 +105,7 @@ export interface DashboardArgs {
     /**
      * The dashboard lenses.
      */
-    lenses?: pulumi.Input<pulumi.Input<types.inputs.portal.DashboardLensArgs>[]>;
+    lenses?: pulumi.Input<pulumi.Input<types.inputs.DashboardLensArgs>[]>;
     /**
      * Resource location
      */

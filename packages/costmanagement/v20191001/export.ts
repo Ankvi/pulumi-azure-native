@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A export resource.
  */
@@ -34,11 +34,11 @@ export class Export extends pulumi.CustomResource {
     /**
      * Has definition for the export.
      */
-    public readonly definition!: pulumi.Output<types.outputs.costmanagement.v20191001.QueryDefinitionResponse>;
+    public readonly definition!: pulumi.Output<types.outputs.QueryDefinitionResponse>;
     /**
      * Has delivery information for the export.
      */
-    public readonly deliveryInfo!: pulumi.Output<types.outputs.costmanagement.v20191001.ExportDeliveryInfoResponse>;
+    public readonly deliveryInfo!: pulumi.Output<types.outputs.ExportDeliveryInfoResponse>;
     /**
      * The format of the export being delivered.
      */
@@ -50,7 +50,7 @@ export class Export extends pulumi.CustomResource {
     /**
      * Has schedule information for the export.
      */
-    public readonly schedule!: pulumi.Output<types.outputs.costmanagement.v20191001.ExportScheduleResponse | undefined>;
+    public readonly schedule!: pulumi.Output<types.outputs.ExportScheduleResponse | undefined>;
     /**
      * Resource tags.
      */
@@ -112,11 +112,11 @@ export interface ExportArgs {
     /**
      * Has definition for the export.
      */
-    definition: pulumi.Input<types.inputs.costmanagement.v20191001.QueryDefinitionArgs>;
+    definition: pulumi.Input<types.inputs.QueryDefinitionArgs>;
     /**
      * Has delivery information for the export.
      */
-    deliveryInfo: pulumi.Input<types.inputs.costmanagement.v20191001.ExportDeliveryInfoArgs>;
+    deliveryInfo: pulumi.Input<types.inputs.ExportDeliveryInfoArgs>;
     /**
      * Export Name.
      */
@@ -124,11 +124,11 @@ export interface ExportArgs {
     /**
      * The format of the export being delivered.
      */
-    format?: pulumi.Input<string | types.enums.v20191001.FormatType>;
+    format?: pulumi.Input<string | types.enums.FormatType>;
     /**
      * Has schedule information for the export.
      */
-    schedule?: pulumi.Input<types.inputs.costmanagement.v20191001.ExportScheduleArgs>;
+    schedule?: pulumi.Input<types.inputs.ExportScheduleArgs>;
     /**
      * The scope associated with query and export operations. This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, '/providers/Microsoft.Management/managementGroups/{managementGroupId} for Management Group scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/invoiceSections/{invoiceSectionId}' for invoiceSection scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}' specific for partners, 'providers/Microsoft.CostManagement/ExternalSubscriptions/{externalSubscriptionId}' for linked account and 'providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountId}' for consolidated account
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 export function getBillingHubServiceUsage(args: GetBillingHubServiceUsageArgs, opts?: pulumi.InvokeOptions): Promise<GetBillingHubServiceUsageResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -30,8 +30,8 @@ export interface GetBillingHubServiceUsageArgs {
 }
 
 export interface GetBillingHubServiceUsageResult {
-    readonly nextRequest?: types.outputs.testbase.v20220401preview.BillingHubGetUsageRequestResponse;
-    readonly packageUsageEntries?: types.outputs.testbase.v20220401preview.BillingHubPackageUsageResponse[];
+    readonly nextRequest?: types.outputs.BillingHubGetUsageRequestResponse;
+    readonly packageUsageEntries?: types.outputs.BillingHubPackageUsageResponse[];
     readonly totalCharges?: number;
     readonly totalUsedBillableHours?: number;
     readonly totalUsedFreeHours?: number;

@@ -35,7 +35,7 @@ export class Lab extends pulumi.CustomResource {
     /**
      * The properties of any lab announcement associated with this lab
      */
-    public readonly announcement!: pulumi.Output<types.outputs.devtestlab.LabAnnouncementPropertiesResponse | undefined>;
+    public readonly announcement!: pulumi.Output<types.outputs.LabAnnouncementPropertiesResponse | undefined>;
     /**
      * The lab's artifact storage account.
      */
@@ -109,7 +109,7 @@ export class Lab extends pulumi.CustomResource {
     /**
      * The properties of any lab support message associated with this lab
      */
-    public readonly support!: pulumi.Output<types.outputs.devtestlab.LabSupportPropertiesResponse | undefined>;
+    public readonly support!: pulumi.Output<types.outputs.LabSupportPropertiesResponse | undefined>;
     /**
      * The tags of the resource.
      */
@@ -210,7 +210,7 @@ export interface LabArgs {
     /**
      * The properties of any lab announcement associated with this lab
      */
-    announcement?: pulumi.Input<types.inputs.devtestlab.LabAnnouncementPropertiesArgs>;
+    announcement?: pulumi.Input<types.inputs.LabAnnouncementPropertiesArgs>;
     /**
      * The access rights to be granted to the user when provisioning an environment
      */
@@ -252,7 +252,7 @@ export interface LabArgs {
     /**
      * The properties of any lab support message associated with this lab
      */
-    support?: pulumi.Input<types.inputs.devtestlab.LabSupportPropertiesArgs>;
+    support?: pulumi.Input<types.inputs.LabSupportPropertiesArgs>;
     /**
      * The tags of the resource.
      */

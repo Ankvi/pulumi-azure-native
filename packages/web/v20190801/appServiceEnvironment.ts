@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * App Service Environment ARM resource.
  */
@@ -46,7 +46,7 @@ export class AppServiceEnvironment extends pulumi.CustomResource {
     /**
      * Custom settings for changing the behavior of the App Service Environment.
      */
-    public readonly clusterSettings!: pulumi.Output<types.outputs.web.v20190801.NameValuePairResponse[] | undefined>;
+    public readonly clusterSettings!: pulumi.Output<types.outputs.NameValuePairResponse[] | undefined>;
     /**
      * Edition of the metadata database for the App Service Environment, e.g. "Standard".
      */
@@ -71,7 +71,7 @@ export class AppServiceEnvironment extends pulumi.CustomResource {
     /**
      * Current total, used, and available worker capacities.
      */
-    public /*out*/ readonly environmentCapacities!: pulumi.Output<types.outputs.web.v20190801.StampCapacityResponse[]>;
+    public /*out*/ readonly environmentCapacities!: pulumi.Output<types.outputs.StampCapacityResponse[]>;
     /**
      * True/false indicating whether the App Service Environment is healthy.
      */
@@ -131,7 +131,7 @@ export class AppServiceEnvironment extends pulumi.CustomResource {
     /**
      * Access control list for controlling traffic to the App Service Environment.
      */
-    public readonly networkAccessControlList!: pulumi.Output<types.outputs.web.v20190801.NetworkAccessControlEntryResponse[] | undefined>;
+    public readonly networkAccessControlList!: pulumi.Output<types.outputs.NetworkAccessControlEntryResponse[] | undefined>;
     /**
      * Provisioning state of the App Service Environment.
      */
@@ -180,11 +180,11 @@ export class AppServiceEnvironment extends pulumi.CustomResource {
     /**
      * Description of IP SSL mapping for the App Service Environment.
      */
-    public /*out*/ readonly vipMappings!: pulumi.Output<types.outputs.web.v20190801.VirtualIPMappingResponse[]>;
+    public /*out*/ readonly vipMappings!: pulumi.Output<types.outputs.VirtualIPMappingResponse[]>;
     /**
      * Description of the Virtual Network.
      */
-    public readonly virtualNetwork!: pulumi.Output<types.outputs.web.v20190801.VirtualNetworkProfileResponse>;
+    public readonly virtualNetwork!: pulumi.Output<types.outputs.VirtualNetworkProfileResponse>;
     /**
      * Name of the Virtual Network for the App Service Environment.
      */
@@ -200,7 +200,7 @@ export class AppServiceEnvironment extends pulumi.CustomResource {
     /**
      * Description of worker pools with worker size IDs, VM sizes, and number of workers in each pool.
      */
-    public readonly workerPools!: pulumi.Output<types.outputs.web.v20190801.WorkerPoolResponse[]>;
+    public readonly workerPools!: pulumi.Output<types.outputs.WorkerPoolResponse[]>;
 
     /**
      * Create a AppServiceEnvironment resource with the given unique name, arguments, and options.
@@ -327,7 +327,7 @@ export interface AppServiceEnvironmentArgs {
     /**
      * Custom settings for changing the behavior of the App Service Environment.
      */
-    clusterSettings?: pulumi.Input<pulumi.Input<types.inputs.web.v20190801.NameValuePairArgs>[]>;
+    clusterSettings?: pulumi.Input<pulumi.Input<types.inputs.NameValuePairArgs>[]>;
     /**
      * DNS suffix of the App Service Environment.
      */
@@ -348,7 +348,7 @@ export interface AppServiceEnvironmentArgs {
     /**
      * Specifies which endpoints to serve internally in the Virtual Network for the App Service Environment.
      */
-    internalLoadBalancingMode?: pulumi.Input<types.enums.v20190801.InternalLoadBalancingMode>;
+    internalLoadBalancingMode?: pulumi.Input<types.enums.InternalLoadBalancingMode>;
     /**
      * Number of IP SSL addresses reserved for the App Service Environment.
      */
@@ -376,7 +376,7 @@ export interface AppServiceEnvironmentArgs {
     /**
      * Access control list for controlling traffic to the App Service Environment.
      */
-    networkAccessControlList?: pulumi.Input<pulumi.Input<types.inputs.web.v20190801.NetworkAccessControlEntryArgs>[]>;
+    networkAccessControlList?: pulumi.Input<pulumi.Input<types.inputs.NetworkAccessControlEntryArgs>[]>;
     /**
      * Name of the resource group to which the resource belongs.
      */
@@ -405,7 +405,7 @@ export interface AppServiceEnvironmentArgs {
     /**
      * Description of the Virtual Network.
      */
-    virtualNetwork: pulumi.Input<types.inputs.web.v20190801.VirtualNetworkProfileArgs>;
+    virtualNetwork: pulumi.Input<types.inputs.VirtualNetworkProfileArgs>;
     /**
      * Name of the Virtual Network for the App Service Environment.
      */
@@ -421,5 +421,5 @@ export interface AppServiceEnvironmentArgs {
     /**
      * Description of worker pools with worker size IDs, VM sizes, and number of workers in each pool.
      */
-    workerPools: pulumi.Input<pulumi.Input<types.inputs.web.v20190801.WorkerPoolArgs>[]>;
+    workerPools: pulumi.Input<pulumi.Input<types.inputs.WorkerPoolArgs>[]>;
 }

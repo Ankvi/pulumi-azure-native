@@ -36,7 +36,7 @@ export interface GetCloudConnectorResult {
     /**
      * Collection information
      */
-    readonly collectionInfo: types.outputs.costmanagement.ConnectorCollectionInfoResponse;
+    readonly collectionInfo: types.outputs.ConnectorCollectionInfoResponse;
     /**
      * Connector definition creation datetime
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a specific addon by name.
  */
@@ -86,7 +86,7 @@ export interface GetArcAddonResult {
     /**
      * Metadata pertaining to creation and last modification of Addon
      */
-    readonly systemData: types.outputs.databoxedge.v20230101preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The hierarchical type of the object.
      */

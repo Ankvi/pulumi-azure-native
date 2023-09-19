@@ -243,7 +243,7 @@ utilities.lazyLoad(exports, ["TopicEventSubscription"], () => require("./topicEv
 
 
 // Export enums:
-export * from "../types/enums/v20220615";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

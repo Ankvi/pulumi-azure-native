@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the Move Resource.
  */
@@ -44,11 +44,11 @@ export interface GetMoveResourceResult {
     /**
      * Defines the move resource properties.
      */
-    readonly properties: types.outputs.migrate.v20220801.MoveResourcePropertiesResponse;
+    readonly properties: types.outputs.MoveResourcePropertiesResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.migrate.v20220801.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource.
      */

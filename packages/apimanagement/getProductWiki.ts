@@ -37,7 +37,7 @@ export interface GetProductWikiResult {
     /**
      * Collection wiki documents included into this wiki.
      */
-    readonly documents?: types.outputs.apimanagement.WikiDocumentationContractResponse[];
+    readonly documents?: types.outputs.WikiDocumentationContractResponse[];
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */

@@ -40,7 +40,7 @@ export interface GetIpPrefixResult {
     /**
      * IpPrefix contains the list of IP PrefixRules objects.
      */
-    readonly ipPrefixRules: types.outputs.managednetworkfabric.IpPrefixPropertiesResponseIpPrefixRules[];
+    readonly ipPrefixRules: types.outputs.IpPrefixPropertiesResponseIpPrefixRules[];
     /**
      * The geo-location where the resource lives
      */
@@ -56,7 +56,7 @@ export interface GetIpPrefixResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.managednetworkfabric.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

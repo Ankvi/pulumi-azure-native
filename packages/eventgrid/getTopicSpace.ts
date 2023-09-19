@@ -53,7 +53,7 @@ export interface GetTopicSpaceResult {
     /**
      * The system metadata relating to the TopicSpace resource.
      */
-    readonly systemData: types.outputs.eventgrid.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The topic filters in the topic space.
      * Example: "topicTemplates": [ 

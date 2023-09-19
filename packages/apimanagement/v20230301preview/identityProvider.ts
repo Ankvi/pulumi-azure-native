@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Identity Provider details.
  */
@@ -198,5 +198,5 @@ export interface IdentityProviderArgs {
     /**
      * Identity Provider Type identifier.
      */
-    type?: pulumi.Input<string | types.enums.v20230301preview.IdentityProviderType>;
+    type?: pulumi.Input<string | types.enums.IdentityProviderType>;
 }

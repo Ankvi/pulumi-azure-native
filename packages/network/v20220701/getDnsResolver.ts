@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets properties of a DNS resolver.
  */
@@ -59,7 +59,7 @@ export interface GetDnsResolverResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.network.v20220701.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -71,7 +71,7 @@ export interface GetDnsResolverResult {
     /**
      * The reference to the virtual network. This cannot be changed after creation.
      */
-    readonly virtualNetwork: types.outputs.network.v20220701.SubResourceResponse;
+    readonly virtualNetwork: types.outputs.SubResourceResponse;
 }
 /**
  * Gets properties of a DNS resolver.

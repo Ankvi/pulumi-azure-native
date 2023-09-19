@@ -29,7 +29,7 @@ export interface GetClusterResult {
     /**
      * The rack definition that is intended to reflect only a single rack in a single rack cluster, or an aggregator rack in a multi-rack cluster.
      */
-    readonly aggregatorOrSingleRackDefinition: types.outputs.networkcloud.RackDefinitionResponse;
+    readonly aggregatorOrSingleRackDefinition: types.outputs.RackDefinitionResponse;
     /**
      * The resource ID of the Log Analytics Workspace that will be used for storing relevant logs.
      */
@@ -37,11 +37,11 @@ export interface GetClusterResult {
     /**
      * The list of cluster runtime version upgrades available for this cluster.
      */
-    readonly availableUpgradeVersions: types.outputs.networkcloud.ClusterAvailableUpgradeVersionResponse[];
+    readonly availableUpgradeVersions: types.outputs.ClusterAvailableUpgradeVersionResponse[];
     /**
      * The capacity supported by this cluster.
      */
-    readonly clusterCapacity: types.outputs.networkcloud.ClusterCapacityResponse;
+    readonly clusterCapacity: types.outputs.ClusterCapacityResponse;
     /**
      * The latest heartbeat status between the cluster manager and the cluster.
      */
@@ -49,7 +49,7 @@ export interface GetClusterResult {
     /**
      * The extended location (custom location) that represents the cluster's control plane location. This extended location is used to route the requests of child objects of the cluster that are handled by the platform operator.
      */
-    readonly clusterExtendedLocation: types.outputs.networkcloud.ExtendedLocationResponse;
+    readonly clusterExtendedLocation: types.outputs.ExtendedLocationResponse;
     /**
      * The customer-provided location information to identify where the cluster resides.
      */
@@ -65,7 +65,7 @@ export interface GetClusterResult {
     /**
      * The service principal to be used by the cluster during Arc Appliance installation.
      */
-    readonly clusterServicePrincipal?: types.outputs.networkcloud.ServicePrincipalInformationResponse;
+    readonly clusterServicePrincipal?: types.outputs.ServicePrincipalInformationResponse;
     /**
      * The type of rack configuration for the cluster.
      */
@@ -77,12 +77,12 @@ export interface GetClusterResult {
     /**
      * The validation threshold indicating the allowable failures of compute machines during environment validation and deployment.
      */
-    readonly computeDeploymentThreshold?: types.outputs.networkcloud.ValidationThresholdResponse;
+    readonly computeDeploymentThreshold?: types.outputs.ValidationThresholdResponse;
     /**
      * The list of rack definitions for the compute racks in a multi-rack
      * cluster, or an empty list in a single-rack cluster.
      */
-    readonly computeRackDefinitions?: types.outputs.networkcloud.RackDefinitionResponse[];
+    readonly computeRackDefinitions?: types.outputs.RackDefinitionResponse[];
     /**
      * The current detailed status of the cluster.
      */
@@ -94,11 +94,11 @@ export interface GetClusterResult {
     /**
      * The extended location of the cluster manager associated with the cluster.
      */
-    readonly extendedLocation: types.outputs.networkcloud.ExtendedLocationResponse;
+    readonly extendedLocation: types.outputs.ExtendedLocationResponse;
     /**
      * Field Deprecated. This field will not be populated in an upcoming version. The extended location (custom location) that represents the Hybrid AKS control plane location. This extended location is used when creating provisioned clusters (Hybrid AKS clusters).
      */
-    readonly hybridAksExtendedLocation: types.outputs.networkcloud.ExtendedLocationResponse;
+    readonly hybridAksExtendedLocation: types.outputs.ExtendedLocationResponse;
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -110,7 +110,7 @@ export interface GetClusterResult {
     /**
      * The configuration of the managed resource group associated with the resource.
      */
-    readonly managedResourceGroupConfiguration?: types.outputs.networkcloud.ManagedResourceGroupConfigurationResponse;
+    readonly managedResourceGroupConfiguration?: types.outputs.ManagedResourceGroupConfigurationResponse;
     /**
      * The count of Manual Action Taken (MAT) events that have not been validated.
      */
@@ -134,7 +134,7 @@ export interface GetClusterResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.networkcloud.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

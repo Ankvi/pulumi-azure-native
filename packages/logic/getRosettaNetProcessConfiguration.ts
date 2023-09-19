@@ -37,7 +37,7 @@ export interface GetRosettaNetProcessConfigurationResult {
     /**
      * The RosettaNet process configuration activity settings.
      */
-    readonly activitySettings: types.outputs.logic.RosettaNetPipActivitySettingsResponse;
+    readonly activitySettings: types.outputs.RosettaNetPipActivitySettingsResponse;
     /**
      * The changed time.
      */
@@ -57,7 +57,7 @@ export interface GetRosettaNetProcessConfigurationResult {
     /**
      * The RosettaNet initiator role settings.
      */
-    readonly initiatorRoleSettings: types.outputs.logic.RosettaNetPipRoleSettingsResponse;
+    readonly initiatorRoleSettings: types.outputs.RosettaNetPipRoleSettingsResponse;
     /**
      * The resource location.
      */
@@ -85,7 +85,7 @@ export interface GetRosettaNetProcessConfigurationResult {
     /**
      * The RosettaNet responder role settings.
      */
-    readonly responderRoleSettings: types.outputs.logic.RosettaNetPipRoleSettingsResponse;
+    readonly responderRoleSettings: types.outputs.RosettaNetPipRoleSettingsResponse;
     /**
      * The resource tags.
      */

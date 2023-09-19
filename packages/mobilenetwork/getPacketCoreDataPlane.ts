@@ -53,7 +53,7 @@ export interface GetPacketCoreDataPlaneResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.mobilenetwork.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -65,7 +65,7 @@ export interface GetPacketCoreDataPlaneResult {
     /**
      * The user plane interface on the access network. For 5G networks, this is the N3 interface. For 4G networks, this is the S1-U interface.
      */
-    readonly userPlaneAccessInterface: types.outputs.mobilenetwork.InterfacePropertiesResponse;
+    readonly userPlaneAccessInterface: types.outputs.InterfacePropertiesResponse;
 }
 /**
  * Gets information about the specified packet core data plane.

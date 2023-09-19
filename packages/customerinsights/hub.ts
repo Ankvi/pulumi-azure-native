@@ -39,7 +39,7 @@ export class Hub extends pulumi.CustomResource {
     /**
      * Billing settings of the hub.
      */
-    public readonly hubBillingInfo!: pulumi.Output<types.outputs.customerinsights.HubBillingInfoFormatResponse | undefined>;
+    public readonly hubBillingInfo!: pulumi.Output<types.outputs.HubBillingInfoFormatResponse | undefined>;
     /**
      * Resource location.
      */
@@ -119,7 +119,7 @@ export interface HubArgs {
     /**
      * Billing settings of the hub.
      */
-    hubBillingInfo?: pulumi.Input<types.inputs.customerinsights.HubBillingInfoFormatArgs>;
+    hubBillingInfo?: pulumi.Input<types.inputs.HubBillingInfoFormatArgs>;
     /**
      * The name of the Hub.
      */

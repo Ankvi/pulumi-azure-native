@@ -45,11 +45,11 @@ export interface GetStorageResult {
     /**
      * Properties of the storage resource payload.
      */
-    readonly properties: types.outputs.appplatform.StorageAccountResponse;
+    readonly properties: types.outputs.StorageAccountResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.appplatform.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource.
      */

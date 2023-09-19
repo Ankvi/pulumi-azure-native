@@ -41,7 +41,7 @@ export interface GetIntegrationRuntimeStatusResult {
     /**
      * Integration runtime properties.
      */
-    readonly properties: types.outputs.datafactory.ManagedIntegrationRuntimeStatusResponse | types.outputs.datafactory.SelfHostedIntegrationRuntimeStatusResponse;
+    readonly properties: types.outputs.ManagedIntegrationRuntimeStatusResponse | types.outputs.SelfHostedIntegrationRuntimeStatusResponse;
 }
 /**
  * Gets detailed status information for an integration runtime.

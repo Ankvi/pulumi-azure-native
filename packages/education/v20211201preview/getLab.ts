@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the details for a specific lab associated with the provided billing account name, billing profile name, and invoice section name.
  */
@@ -41,7 +41,7 @@ export interface GetLabResult {
     /**
      * Default monetary cap for each student in this lab
      */
-    readonly budgetPerStudent: types.outputs.education.v20211201preview.AmountResponse;
+    readonly budgetPerStudent: types.outputs.AmountResponse;
     /**
      * The type of currency being used for the value.
      */
@@ -85,7 +85,7 @@ export interface GetLabResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.education.v20211201preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

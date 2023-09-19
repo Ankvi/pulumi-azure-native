@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Policy Contract details.
  */
@@ -111,7 +111,7 @@ export interface WorkspaceApiOperationPolicyArgs {
     /**
      * Format of the policyContent.
      */
-    format?: pulumi.Input<string | types.enums.v20230301preview.PolicyContentFormat>;
+    format?: pulumi.Input<string | types.enums.PolicyContentFormat>;
     /**
      * Operation identifier within an API. Must be unique in the current API Management service instance.
      */

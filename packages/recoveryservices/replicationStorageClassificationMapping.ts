@@ -43,7 +43,7 @@ export class ReplicationStorageClassificationMapping extends pulumi.CustomResour
     /**
      * Properties of the storage mapping object.
      */
-    public readonly properties!: pulumi.Output<types.outputs.recoveryservices.StorageClassificationMappingPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.StorageClassificationMappingPropertiesResponse>;
     /**
      * Resource Type
      */
@@ -105,7 +105,7 @@ export interface ReplicationStorageClassificationMappingArgs {
     /**
      * Storage mapping input properties.
      */
-    properties?: pulumi.Input<types.inputs.recoveryservices.StorageMappingInputPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.StorageMappingInputPropertiesArgs>;
     /**
      * The name of the resource group where the recovery services vault is present.
      */

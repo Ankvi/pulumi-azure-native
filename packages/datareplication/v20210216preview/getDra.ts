@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the details of the fabric agent.
  */
@@ -44,8 +44,8 @@ export interface GetDraResult {
     /**
      * Dra model properties.
      */
-    readonly properties: types.outputs.datareplication.v20210216preview.DraModelPropertiesResponse;
-    readonly systemData: types.outputs.datareplication.v20210216preview.DraModelResponseSystemData;
+    readonly properties: types.outputs.DraModelPropertiesResponse;
+    readonly systemData: types.outputs.DraModelResponseSystemData;
     /**
      * Gets or sets the type of the resource.
      */

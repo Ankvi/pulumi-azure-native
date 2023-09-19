@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * EventGrid Partner Namespace.
  */
@@ -42,7 +42,7 @@ export class PartnerNamespace extends pulumi.CustomResource {
     /**
      * This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled.
      */
-    public readonly inboundIpRules!: pulumi.Output<types.outputs.eventgrid.v20220615.InboundIpRuleResponse[] | undefined>;
+    public readonly inboundIpRules!: pulumi.Output<types.outputs.InboundIpRuleResponse[] | undefined>;
     /**
      * Location of the resource.
      */
@@ -61,7 +61,7 @@ export class PartnerNamespace extends pulumi.CustomResource {
      * or use the channel name in the header when matching to the partner topic. If none is specified, source attribute routing will be used to match the partner topic.
      */
     public readonly partnerTopicRoutingMode!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.eventgrid.v20220615.PrivateEndpointConnectionResponse[]>;
+    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[]>;
     /**
      * Provisioning state of the partner namespace.
      */
@@ -74,7 +74,7 @@ export class PartnerNamespace extends pulumi.CustomResource {
     /**
      * The system metadata relating to Partner Namespace resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.eventgrid.v20220615.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Tags of the resource.
      */
@@ -146,7 +146,7 @@ export interface PartnerNamespaceArgs {
     /**
      * This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled.
      */
-    inboundIpRules?: pulumi.Input<pulumi.Input<types.inputs.eventgrid.v20220615.InboundIpRuleArgs>[]>;
+    inboundIpRules?: pulumi.Input<pulumi.Input<types.inputs.InboundIpRuleArgs>[]>;
     /**
      * Location of the resource.
      */
@@ -164,12 +164,12 @@ export interface PartnerNamespaceArgs {
      * This determines if events published to this partner namespace should use the source attribute in the event payload
      * or use the channel name in the header when matching to the partner topic. If none is specified, source attribute routing will be used to match the partner topic.
      */
-    partnerTopicRoutingMode?: pulumi.Input<string | types.enums.v20220615.PartnerTopicRoutingMode>;
+    partnerTopicRoutingMode?: pulumi.Input<string | types.enums.PartnerTopicRoutingMode>;
     /**
      * This determines if traffic is allowed over public network. By default it is enabled.
      * You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.PartnerNamespaceProperties.InboundIpRules" />
      */
-    publicNetworkAccess?: pulumi.Input<string | types.enums.v20220615.PublicNetworkAccess>;
+    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess>;
     /**
      * The name of the resource group within the user's subscription.
      */

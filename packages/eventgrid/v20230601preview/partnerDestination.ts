@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Event Grid Partner Destination.
  */
@@ -71,7 +71,7 @@ export class PartnerDestination extends pulumi.CustomResource {
     /**
      * The system metadata relating to Partner Destination resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.eventgrid.v20230601preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Tags of the resource.
      */
@@ -137,7 +137,7 @@ export interface PartnerDestinationArgs {
     /**
      * Activation state of the partner destination.
      */
-    activationState?: pulumi.Input<string | types.enums.v20230601preview.PartnerDestinationActivationState>;
+    activationState?: pulumi.Input<string | types.enums.PartnerDestinationActivationState>;
     /**
      * Endpoint Base URL of the partner destination
      */

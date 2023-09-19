@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Azure Resource Manager resource envelope.
  */
@@ -34,7 +34,7 @@ export class RegistryDataVersion extends pulumi.CustomResource {
     /**
      * [Required] Additional attributes of the entity.
      */
-    public readonly dataVersionBaseProperties!: pulumi.Output<types.outputs.machinelearningservices.v20230401preview.DataImportResponse | types.outputs.machinelearningservices.v20230401preview.MLTableDataResponse | types.outputs.machinelearningservices.v20230401preview.UriFileDataVersionResponse | types.outputs.machinelearningservices.v20230401preview.UriFolderDataVersionResponse>;
+    public readonly dataVersionBaseProperties!: pulumi.Output<types.outputs.DataImportResponse | types.outputs.MLTableDataResponse | types.outputs.UriFileDataVersionResponse | types.outputs.UriFolderDataVersionResponse>;
     /**
      * The name of the resource
      */
@@ -42,7 +42,7 @@ export class RegistryDataVersion extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.machinelearningservices.v20230401preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -98,7 +98,7 @@ export interface RegistryDataVersionArgs {
     /**
      * [Required] Additional attributes of the entity.
      */
-    dataVersionBaseProperties: pulumi.Input<types.inputs.machinelearningservices.v20230401preview.DataImportArgs | types.inputs.machinelearningservices.v20230401preview.MLTableDataArgs | types.inputs.machinelearningservices.v20230401preview.UriFileDataVersionArgs | types.inputs.machinelearningservices.v20230401preview.UriFolderDataVersionArgs>;
+    dataVersionBaseProperties: pulumi.Input<types.inputs.DataImportArgs | types.inputs.MLTableDataArgs | types.inputs.UriFileDataVersionArgs | types.inputs.UriFolderDataVersionArgs>;
     /**
      * Container name.
      */

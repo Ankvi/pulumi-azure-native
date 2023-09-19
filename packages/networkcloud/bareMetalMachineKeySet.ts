@@ -50,7 +50,7 @@ export class BareMetalMachineKeySet extends pulumi.CustomResource {
     /**
      * The extended location of the cluster associated with the resource.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.networkcloud.ExtendedLocationResponse>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse>;
     /**
      * The list of IP addresses of jump hosts with management network access from which a login will be allowed for the users.
      */
@@ -82,7 +82,7 @@ export class BareMetalMachineKeySet extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.networkcloud.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -94,11 +94,11 @@ export class BareMetalMachineKeySet extends pulumi.CustomResource {
     /**
      * The unique list of permitted users.
      */
-    public readonly userList!: pulumi.Output<types.outputs.networkcloud.KeySetUserResponse[]>;
+    public readonly userList!: pulumi.Output<types.outputs.KeySetUserResponse[]>;
     /**
      * The status evaluation of each user.
      */
-    public /*out*/ readonly userListStatus!: pulumi.Output<types.outputs.networkcloud.KeySetUserStatusResponse[]>;
+    public /*out*/ readonly userListStatus!: pulumi.Output<types.outputs.KeySetUserStatusResponse[]>;
 
     /**
      * Create a BareMetalMachineKeySet resource with the given unique name, arguments, and options.
@@ -204,7 +204,7 @@ export interface BareMetalMachineKeySetArgs {
     /**
      * The extended location of the cluster associated with the resource.
      */
-    extendedLocation: pulumi.Input<types.inputs.networkcloud.ExtendedLocationArgs>;
+    extendedLocation: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * The list of IP addresses of jump hosts with management network access from which a login will be allowed for the users.
      */
@@ -232,5 +232,5 @@ export interface BareMetalMachineKeySetArgs {
     /**
      * The unique list of permitted users.
      */
-    userList: pulumi.Input<pulumi.Input<types.inputs.networkcloud.KeySetUserArgs>[]>;
+    userList: pulumi.Input<pulumi.Input<types.inputs.KeySetUserArgs>[]>;
 }

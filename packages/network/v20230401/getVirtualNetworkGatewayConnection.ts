@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the specified virtual network gateway connection by resource group.
  */
@@ -59,7 +59,7 @@ export interface GetVirtualNetworkGatewayConnectionResult {
     /**
      * List of egress NatRules.
      */
-    readonly egressNatRules?: types.outputs.network.v20230401.SubResourceResponse[];
+    readonly egressNatRules?: types.outputs.SubResourceResponse[];
     /**
      * EnableBgp flag.
      */
@@ -79,7 +79,7 @@ export interface GetVirtualNetworkGatewayConnectionResult {
     /**
      * GatewayCustomBgpIpAddresses to be used for virtual network gateway Connection.
      */
-    readonly gatewayCustomBgpIpAddresses?: types.outputs.network.v20230401.GatewayCustomBgpIpAddressIpConfigurationResponse[];
+    readonly gatewayCustomBgpIpAddresses?: types.outputs.GatewayCustomBgpIpAddressIpConfigurationResponse[];
     /**
      * Resource ID.
      */
@@ -91,15 +91,15 @@ export interface GetVirtualNetworkGatewayConnectionResult {
     /**
      * List of ingress NatRules.
      */
-    readonly ingressNatRules?: types.outputs.network.v20230401.SubResourceResponse[];
+    readonly ingressNatRules?: types.outputs.SubResourceResponse[];
     /**
      * The IPSec Policies to be considered by this connection.
      */
-    readonly ipsecPolicies?: types.outputs.network.v20230401.IpsecPolicyResponse[];
+    readonly ipsecPolicies?: types.outputs.IpsecPolicyResponse[];
     /**
      * The reference to local network gateway resource.
      */
-    readonly localNetworkGateway2?: types.outputs.network.v20230401.LocalNetworkGatewayResponse;
+    readonly localNetworkGateway2?: types.outputs.LocalNetworkGatewayResponse;
     /**
      * Resource location.
      */
@@ -111,7 +111,7 @@ export interface GetVirtualNetworkGatewayConnectionResult {
     /**
      * The reference to peerings resource.
      */
-    readonly peer?: types.outputs.network.v20230401.SubResourceResponse;
+    readonly peer?: types.outputs.SubResourceResponse;
     /**
      * The provisioning state of the virtual network gateway connection resource.
      */
@@ -135,11 +135,11 @@ export interface GetVirtualNetworkGatewayConnectionResult {
     /**
      * The Traffic Selector Policies to be considered by this connection.
      */
-    readonly trafficSelectorPolicies?: types.outputs.network.v20230401.TrafficSelectorPolicyResponse[];
+    readonly trafficSelectorPolicies?: types.outputs.TrafficSelectorPolicyResponse[];
     /**
      * Collection of all tunnels' connection health status.
      */
-    readonly tunnelConnectionStatus: types.outputs.network.v20230401.TunnelConnectionHealthResponse[];
+    readonly tunnelConnectionStatus: types.outputs.TunnelConnectionHealthResponse[];
     /**
      * Resource type.
      */
@@ -155,11 +155,11 @@ export interface GetVirtualNetworkGatewayConnectionResult {
     /**
      * The reference to virtual network gateway resource.
      */
-    readonly virtualNetworkGateway1: types.outputs.network.v20230401.VirtualNetworkGatewayResponse;
+    readonly virtualNetworkGateway1: types.outputs.VirtualNetworkGatewayResponse;
     /**
      * The reference to virtual network gateway resource.
      */
-    readonly virtualNetworkGateway2?: types.outputs.network.v20230401.VirtualNetworkGatewayResponse;
+    readonly virtualNetworkGateway2?: types.outputs.VirtualNetworkGatewayResponse;
 }
 /**
  * Gets the specified virtual network gateway connection by resource group.

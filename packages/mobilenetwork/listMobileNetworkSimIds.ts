@@ -36,7 +36,7 @@ export interface ListMobileNetworkSimIdsResult {
     /**
      * A list of SIM IDs.
      */
-    readonly value?: types.outputs.mobilenetwork.SubResourceResponse[];
+    readonly value?: types.outputs.SubResourceResponse[];
 }
 /**
  * Lists the IDs of all provisioned SIMs in a mobile network

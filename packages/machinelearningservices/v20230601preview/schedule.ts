@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Azure Resource Manager resource envelope.
  */
@@ -38,11 +38,11 @@ export class Schedule extends pulumi.CustomResource {
     /**
      * [Required] Additional attributes of the entity.
      */
-    public readonly scheduleProperties!: pulumi.Output<types.outputs.machinelearningservices.v20230601preview.ScheduleResponse>;
+    public readonly scheduleProperties!: pulumi.Output<types.outputs.ScheduleResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.machinelearningservices.v20230601preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -70,7 +70,7 @@ export class Schedule extends pulumi.CustomResource {
             }
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["scheduleProperties"] = args ? (args.scheduleProperties ? pulumi.output(args.scheduleProperties).apply(types.inputs.machinelearningservices.v20230601preview.scheduleArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["scheduleProperties"] = args ? (args.scheduleProperties ? pulumi.output(args.scheduleProperties).apply(types.inputs.scheduleArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["workspaceName"] = args ? args.workspaceName : undefined;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
@@ -102,7 +102,7 @@ export interface ScheduleArgs {
     /**
      * [Required] Additional attributes of the entity.
      */
-    scheduleProperties: pulumi.Input<types.inputs.machinelearningservices.v20230601preview.ScheduleArgs>;
+    scheduleProperties: pulumi.Input<types.inputs.ScheduleArgs>;
     /**
      * Name of Azure Machine Learning workspace.
      */

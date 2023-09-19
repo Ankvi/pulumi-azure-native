@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Dapr component Secrets Collection for ListSecrets Action.
  */
@@ -36,7 +36,7 @@ export interface ListConnectedEnvironmentsDaprComponentSecretsResult {
     /**
      * Collection of secrets used by a Dapr component
      */
-    readonly value: types.outputs.app.v20230401preview.DaprSecretResponse[];
+    readonly value: types.outputs.DaprSecretResponse[];
 }
 /**
  * Dapr component Secrets Collection for ListSecrets Action.

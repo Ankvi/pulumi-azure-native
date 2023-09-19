@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 export function getMetricsSource(args: GetMetricsSourceArgs, opts?: pulumi.InvokeOptions): Promise<GetMetricsSourceResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -31,7 +31,7 @@ export interface GetMetricsSourceResult {
      * ARM id of the monitor resource.
      */
     readonly id: string;
-    readonly identity?: types.outputs.logz.v20220101preview.IdentityPropertiesResponse;
+    readonly identity?: types.outputs.IdentityPropertiesResponse;
     readonly location: string;
     /**
      * Name of the monitor resource.
@@ -40,11 +40,11 @@ export interface GetMetricsSourceResult {
     /**
      * Properties specific to the monitor resource.
      */
-    readonly properties: types.outputs.logz.v20220101preview.MonitorPropertiesResponse;
+    readonly properties: types.outputs.MonitorPropertiesResponse;
     /**
      * The system metadata relating to this resource
      */
-    readonly systemData: types.outputs.logz.v20220101preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     readonly tags?: {[key: string]: string};
     /**
      * The type of the monitor resource.

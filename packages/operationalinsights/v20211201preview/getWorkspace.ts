@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a workspace instance.
  */
@@ -47,7 +47,7 @@ export interface GetWorkspaceResult {
     /**
      * Workspace features.
      */
-    readonly features?: types.outputs.operationalinsights.v20211201preview.WorkspaceFeaturesResponse;
+    readonly features?: types.outputs.WorkspaceFeaturesResponse;
     /**
      * Indicates whether customer managed storage is mandatory for query management.
      */
@@ -71,7 +71,7 @@ export interface GetWorkspaceResult {
     /**
      * List of linked private link scope resources.
      */
-    readonly privateLinkScopedResources: types.outputs.operationalinsights.v20211201preview.PrivateLinkScopedResourceResponse[];
+    readonly privateLinkScopedResources: types.outputs.PrivateLinkScopedResourceResponse[];
     /**
      * The provisioning state of the workspace.
      */
@@ -91,11 +91,11 @@ export interface GetWorkspaceResult {
     /**
      * The SKU of the workspace.
      */
-    readonly sku?: types.outputs.operationalinsights.v20211201preview.WorkspaceSkuResponse;
+    readonly sku?: types.outputs.WorkspaceSkuResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.operationalinsights.v20211201preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -107,7 +107,7 @@ export interface GetWorkspaceResult {
     /**
      * The daily volume cap for ingestion.
      */
-    readonly workspaceCapping?: types.outputs.operationalinsights.v20211201preview.WorkspaceCappingResponse;
+    readonly workspaceCapping?: types.outputs.WorkspaceCappingResponse;
 }
 /**
  * Gets a workspace instance.

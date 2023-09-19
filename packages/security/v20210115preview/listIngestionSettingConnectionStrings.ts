@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Connection strings for ingesting security scan logs and data.
  */
@@ -26,7 +26,7 @@ export interface ListIngestionSettingConnectionStringsResult {
     /**
      * Connection strings
      */
-    readonly value: types.outputs.security.v20210115preview.IngestionConnectionStringResponse[];
+    readonly value: types.outputs.IngestionConnectionStringResponse[];
 }
 /**
  * Connection strings for ingesting security scan logs and data.

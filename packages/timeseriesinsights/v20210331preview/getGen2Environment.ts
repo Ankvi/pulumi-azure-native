@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the environment with the specified name in the specified subscription and resource group.
  */
@@ -65,7 +65,7 @@ export interface GetGen2EnvironmentResult {
     /**
      * The list of private endpoint connections to the environment.
      */
-    readonly privateEndpointConnections: types.outputs.timeseriesinsights.v20210331preview.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections: types.outputs.PrivateEndpointConnectionResponse[];
     /**
      * Provisioning state of the resource.
      */
@@ -77,15 +77,15 @@ export interface GetGen2EnvironmentResult {
     /**
      * The sku determines the type of environment, either Gen1 (S1 or S2) or Gen2 (L1). For Gen1 environments the sku determines the capacity of the environment, the ingress rate, and the billing rate.
      */
-    readonly sku: types.outputs.timeseriesinsights.v20210331preview.SkuResponse;
+    readonly sku: types.outputs.SkuResponse;
     /**
      * An object that represents the status of the environment, and its internal state in the Time Series Insights service.
      */
-    readonly status: types.outputs.timeseriesinsights.v20210331preview.EnvironmentStatusResponse;
+    readonly status: types.outputs.EnvironmentStatusResponse;
     /**
      * The storage configuration provides the connection details that allows the Time Series Insights service to connect to the customer storage account that is used to store the environment's data.
      */
-    readonly storageConfiguration: types.outputs.timeseriesinsights.v20210331preview.Gen2StorageConfigurationOutputResponse;
+    readonly storageConfiguration: types.outputs.Gen2StorageConfigurationOutputResponse;
     /**
      * Resource tags
      */
@@ -93,7 +93,7 @@ export interface GetGen2EnvironmentResult {
     /**
      * The list of event properties which will be used to define the environment's time series id.
      */
-    readonly timeSeriesIdProperties: types.outputs.timeseriesinsights.v20210331preview.TimeSeriesIdPropertyResponse[];
+    readonly timeSeriesIdProperties: types.outputs.TimeSeriesIdPropertyResponse[];
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -101,7 +101,7 @@ export interface GetGen2EnvironmentResult {
     /**
      * The warm store configuration provides the details to create a warm store cache that will retain a copy of the environment's data available for faster query.
      */
-    readonly warmStoreConfiguration?: types.outputs.timeseriesinsights.v20210331preview.WarmStoreConfigurationPropertiesResponse;
+    readonly warmStoreConfiguration?: types.outputs.WarmStoreConfigurationPropertiesResponse;
 }
 /**
  * Gets the environment with the specified name in the specified subscription and resource group.

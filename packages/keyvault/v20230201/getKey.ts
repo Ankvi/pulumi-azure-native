@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the current version of the specified key from the specified key vault.
  */
@@ -36,7 +36,7 @@ export interface GetKeyResult {
     /**
      * The attributes of the key.
      */
-    readonly attributes?: types.outputs.keyvault.v20230201.KeyAttributesResponse;
+    readonly attributes?: types.outputs.KeyAttributesResponse;
     /**
      * The elliptic curve name. For valid values, see JsonWebKeyCurveName.
      */
@@ -73,11 +73,11 @@ export interface GetKeyResult {
     /**
      * Key release policy in response. It will be used for both output and input. Omitted if empty
      */
-    readonly releasePolicy?: types.outputs.keyvault.v20230201.KeyReleasePolicyResponse;
+    readonly releasePolicy?: types.outputs.KeyReleasePolicyResponse;
     /**
      * Key rotation policy in response. It will be used for both output and input. Omitted if empty
      */
-    readonly rotationPolicy?: types.outputs.keyvault.v20230201.RotationPolicyResponse;
+    readonly rotationPolicy?: types.outputs.RotationPolicyResponse;
     /**
      * Tags assigned to the key vault resource.
      */

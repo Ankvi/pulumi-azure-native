@@ -35,7 +35,7 @@ export class DataManagerForAgricultureResource extends pulumi.CustomResource {
     /**
      * Identity for the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.agfoodplatform.IdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityResponse | undefined>;
     /**
      * Uri of the Data Manager For Agriculture instance.
      */
@@ -51,7 +51,7 @@ export class DataManagerForAgricultureResource extends pulumi.CustomResource {
     /**
      * Private endpoints.
      */
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.agfoodplatform.PrivateEndpointConnectionResponse[]>;
+    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[]>;
     /**
      * Data Manager For Agriculture instance provisioning state.
      */
@@ -63,11 +63,11 @@ export class DataManagerForAgricultureResource extends pulumi.CustomResource {
     /**
      * Sensor integration request model.
      */
-    public readonly sensorIntegration!: pulumi.Output<types.outputs.agfoodplatform.SensorIntegrationResponse | undefined>;
+    public readonly sensorIntegration!: pulumi.Output<types.outputs.SensorIntegrationResponse | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.agfoodplatform.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -135,7 +135,7 @@ export interface DataManagerForAgricultureResourceArgs {
     /**
      * Identity for the resource.
      */
-    identity?: pulumi.Input<types.inputs.agfoodplatform.IdentityArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -151,7 +151,7 @@ export interface DataManagerForAgricultureResourceArgs {
     /**
      * Sensor integration request model.
      */
-    sensorIntegration?: pulumi.Input<types.inputs.agfoodplatform.SensorIntegrationArgs>;
+    sensorIntegration?: pulumi.Input<types.inputs.SensorIntegrationArgs>;
     /**
      * Resource tags.
      */

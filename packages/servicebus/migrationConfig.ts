@@ -59,7 +59,7 @@ export class MigrationConfig extends pulumi.CustomResource {
     /**
      * The system meta data relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.servicebus.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Existing premium Namespace ARM Id name which has no entities, will be used for migration
      */

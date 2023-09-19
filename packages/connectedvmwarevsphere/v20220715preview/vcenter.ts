@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Defines the vCenter.
  */
@@ -38,7 +38,7 @@ export class VCenter extends pulumi.CustomResource {
     /**
      * Username / Password Credentials to connect to vcenter.
      */
-    public readonly credentials!: pulumi.Output<types.outputs.connectedvmwarevsphere.v20220715preview.VICredentialResponse | undefined>;
+    public readonly credentials!: pulumi.Output<types.outputs.VICredentialResponse | undefined>;
     /**
      * Gets the name of the corresponding resource in Kubernetes.
      */
@@ -46,7 +46,7 @@ export class VCenter extends pulumi.CustomResource {
     /**
      * Gets or sets the extended location.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.connectedvmwarevsphere.v20220715preview.ExtendedLocationResponse | undefined>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
     /**
      * Gets or sets the FQDN/IPAddress of the vCenter.
      */
@@ -78,11 +78,11 @@ export class VCenter extends pulumi.CustomResource {
     /**
      * The resource status information.
      */
-    public /*out*/ readonly statuses!: pulumi.Output<types.outputs.connectedvmwarevsphere.v20220715preview.ResourceStatusResponse[]>;
+    public /*out*/ readonly statuses!: pulumi.Output<types.outputs.ResourceStatusResponse[]>;
     /**
      * The system data.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.connectedvmwarevsphere.v20220715preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Gets or sets the Resource tags.
      */
@@ -169,11 +169,11 @@ export interface VCenterArgs {
     /**
      * Username / Password Credentials to connect to vcenter.
      */
-    credentials?: pulumi.Input<types.inputs.connectedvmwarevsphere.v20220715preview.VICredentialArgs>;
+    credentials?: pulumi.Input<types.inputs.VICredentialArgs>;
     /**
      * Gets or sets the extended location.
      */
-    extendedLocation?: pulumi.Input<types.inputs.connectedvmwarevsphere.v20220715preview.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * Gets or sets the FQDN/IPAddress of the vCenter.
      */

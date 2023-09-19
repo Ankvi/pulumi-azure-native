@@ -49,7 +49,7 @@ export interface GetScriptExecutionLogsResult {
     /**
      * Parameters that will be hidden/not visible to ARM, such as passwords and credentials
      */
-    readonly hiddenParameters?: (types.outputs.avs.PSCredentialExecutionParameterResponse | types.outputs.avs.ScriptSecureStringExecutionParameterResponse | types.outputs.avs.ScriptStringExecutionParameterResponse)[];
+    readonly hiddenParameters?: (types.outputs.PSCredentialExecutionParameterResponse | types.outputs.ScriptSecureStringExecutionParameterResponse | types.outputs.ScriptStringExecutionParameterResponse)[];
     /**
      * Resource ID.
      */
@@ -73,7 +73,7 @@ export interface GetScriptExecutionLogsResult {
     /**
      * Parameters the script will accept
      */
-    readonly parameters?: (types.outputs.avs.PSCredentialExecutionParameterResponse | types.outputs.avs.ScriptSecureStringExecutionParameterResponse | types.outputs.avs.ScriptStringExecutionParameterResponse)[];
+    readonly parameters?: (types.outputs.PSCredentialExecutionParameterResponse | types.outputs.ScriptSecureStringExecutionParameterResponse | types.outputs.ScriptStringExecutionParameterResponse)[];
     /**
      * The state of the script execution resource
      */

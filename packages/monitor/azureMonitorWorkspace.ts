@@ -39,7 +39,7 @@ export class AzureMonitorWorkspace extends pulumi.CustomResource {
     /**
      * The Data Collection Rule and Endpoint used for ingestion by default.
      */
-    public /*out*/ readonly defaultIngestionSettings!: pulumi.Output<types.outputs.monitor.AzureMonitorWorkspaceResponseDefaultIngestionSettings>;
+    public /*out*/ readonly defaultIngestionSettings!: pulumi.Output<types.outputs.AzureMonitorWorkspaceResponseDefaultIngestionSettings>;
     /**
      * Resource entity tag (ETag)
      */
@@ -51,7 +51,7 @@ export class AzureMonitorWorkspace extends pulumi.CustomResource {
     /**
      * Properties related to the metrics container in the Azure Monitor Workspace
      */
-    public /*out*/ readonly metrics!: pulumi.Output<types.outputs.monitor.AzureMonitorWorkspaceResponseMetrics>;
+    public /*out*/ readonly metrics!: pulumi.Output<types.outputs.AzureMonitorWorkspaceResponseMetrics>;
     /**
      * The name of the resource
      */
@@ -59,7 +59,7 @@ export class AzureMonitorWorkspace extends pulumi.CustomResource {
     /**
      * List of private endpoint connections
      */
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.monitor.PrivateEndpointConnectionResponse[]>;
+    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[]>;
     /**
      * The provisioning state of the Azure Monitor Workspace. Set to Succeeded if everything is healthy.
      */
@@ -71,7 +71,7 @@ export class AzureMonitorWorkspace extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.monitor.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */

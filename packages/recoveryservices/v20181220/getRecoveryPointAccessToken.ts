@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 export function getRecoveryPointAccessToken(args: GetRecoveryPointAccessTokenArgs, opts?: pulumi.InvokeOptions): Promise<GetRecoveryPointAccessTokenResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -38,7 +38,7 @@ export interface GetRecoveryPointAccessTokenArgs {
     /**
      * AADPropertiesResource properties
      */
-    properties?: types.inputs.recoveryservices.v20181220.AADProperties;
+    properties?: types.inputs.AADProperties;
     /**
      * Name of the Protected Item.
      */
@@ -81,7 +81,7 @@ export interface GetRecoveryPointAccessTokenResult {
     /**
      * CrrAccessTokenResource properties
      */
-    readonly properties: types.outputs.recoveryservices.v20181220.WorkloadCrrAccessTokenResponse;
+    readonly properties: types.outputs.WorkloadCrrAccessTokenResponse;
     /**
      * Resource tags.
      */
@@ -115,7 +115,7 @@ export interface GetRecoveryPointAccessTokenOutputArgs {
     /**
      * AADPropertiesResource properties
      */
-    properties?: pulumi.Input<types.inputs.recoveryservices.v20181220.AADPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.AADPropertiesArgs>;
     /**
      * Name of the Protected Item.
      */

@@ -35,11 +35,11 @@ export class InboundNatRule extends pulumi.CustomResource {
     /**
      * A reference to backendAddressPool resource.
      */
-    public readonly backendAddressPool!: pulumi.Output<types.outputs.network.SubResourceResponse | undefined>;
+    public readonly backendAddressPool!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * A reference to a private IP address defined on a network interface of a VM. Traffic sent to the frontend port of each of the frontend IP configurations is forwarded to the backend IP.
      */
-    public /*out*/ readonly backendIPConfiguration!: pulumi.Output<types.outputs.network.NetworkInterfaceIPConfigurationResponse>;
+    public /*out*/ readonly backendIPConfiguration!: pulumi.Output<types.outputs.NetworkInterfaceIPConfigurationResponse>;
     /**
      * The port used for the internal endpoint. Acceptable values range from 1 to 65535.
      */
@@ -59,7 +59,7 @@ export class InboundNatRule extends pulumi.CustomResource {
     /**
      * A reference to frontend IP addresses.
      */
-    public readonly frontendIPConfiguration!: pulumi.Output<types.outputs.network.SubResourceResponse | undefined>;
+    public readonly frontendIPConfiguration!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * The port for the external endpoint. Port numbers for each rule must be unique within the Load Balancer. Acceptable values range from 1 to 65534.
      */
@@ -160,7 +160,7 @@ export interface InboundNatRuleArgs {
     /**
      * A reference to backendAddressPool resource.
      */
-    backendAddressPool?: pulumi.Input<types.inputs.network.SubResourceArgs>;
+    backendAddressPool?: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * The port used for the internal endpoint. Acceptable values range from 1 to 65535.
      */
@@ -176,7 +176,7 @@ export interface InboundNatRuleArgs {
     /**
      * A reference to frontend IP addresses.
      */
-    frontendIPConfiguration?: pulumi.Input<types.inputs.network.SubResourceArgs>;
+    frontendIPConfiguration?: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * The port for the external endpoint. Port numbers for each rule must be unique within the Load Balancer. Acceptable values range from 1 to 65534.
      */

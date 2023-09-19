@@ -44,7 +44,7 @@ export class Connection extends pulumi.CustomResource {
      * Resource name
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
-    public readonly properties!: pulumi.Output<types.outputs.web.ApiConnectionDefinitionResponseProperties>;
+    public readonly properties!: pulumi.Output<types.outputs.ApiConnectionDefinitionResponseProperties>;
     /**
      * Resource tags
      */
@@ -104,7 +104,7 @@ export interface ConnectionArgs {
      * Resource location
      */
     location?: pulumi.Input<string>;
-    properties?: pulumi.Input<types.inputs.web.ApiConnectionDefinitionPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ApiConnectionDefinitionPropertiesArgs>;
     /**
      * The resource group
      */

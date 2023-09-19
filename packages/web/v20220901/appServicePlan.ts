@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * App Service plan.
  */
@@ -38,7 +38,7 @@ export class AppServicePlan extends pulumi.CustomResource {
     /**
      * Extended Location.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.web.v20220901.ExtendedLocationResponse | undefined>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
     /**
      * The time when the server farm free offer expires.
      */
@@ -50,7 +50,7 @@ export class AppServicePlan extends pulumi.CustomResource {
     /**
      * Specification for the App Service Environment to use for the App Service plan.
      */
-    public readonly hostingEnvironmentProfile!: pulumi.Output<types.outputs.web.v20220901.HostingEnvironmentProfileResponse | undefined>;
+    public readonly hostingEnvironmentProfile!: pulumi.Output<types.outputs.HostingEnvironmentProfileResponse | undefined>;
     /**
      * If Hyper-V container app service plan <code>true</code>, <code>false</code> otherwise.
      */
@@ -70,7 +70,7 @@ export class AppServicePlan extends pulumi.CustomResource {
     /**
      * Specification for the Kubernetes Environment to use for the App Service plan.
      */
-    public readonly kubeEnvironmentProfile!: pulumi.Output<types.outputs.web.v20220901.KubeEnvironmentProfileResponse | undefined>;
+    public readonly kubeEnvironmentProfile!: pulumi.Output<types.outputs.KubeEnvironmentProfileResponse | undefined>;
     /**
      * Resource Location.
      */
@@ -115,7 +115,7 @@ export class AppServicePlan extends pulumi.CustomResource {
     /**
      * Description of a SKU for a scalable resource.
      */
-    public readonly sku!: pulumi.Output<types.outputs.web.v20220901.SkuDescriptionResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuDescriptionResponse | undefined>;
     /**
      * The time when the server farm expires. Valid only if it is a spot server farm.
      */
@@ -249,7 +249,7 @@ export interface AppServicePlanArgs {
     /**
      * Extended Location.
      */
-    extendedLocation?: pulumi.Input<types.inputs.web.v20220901.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * The time when the server farm free offer expires.
      */
@@ -257,7 +257,7 @@ export interface AppServicePlanArgs {
     /**
      * Specification for the App Service Environment to use for the App Service plan.
      */
-    hostingEnvironmentProfile?: pulumi.Input<types.inputs.web.v20220901.HostingEnvironmentProfileArgs>;
+    hostingEnvironmentProfile?: pulumi.Input<types.inputs.HostingEnvironmentProfileArgs>;
     /**
      * If Hyper-V container app service plan <code>true</code>, <code>false</code> otherwise.
      */
@@ -277,7 +277,7 @@ export interface AppServicePlanArgs {
     /**
      * Specification for the Kubernetes Environment to use for the App Service plan.
      */
-    kubeEnvironmentProfile?: pulumi.Input<types.inputs.web.v20220901.KubeEnvironmentProfileArgs>;
+    kubeEnvironmentProfile?: pulumi.Input<types.inputs.KubeEnvironmentProfileArgs>;
     /**
      * Resource Location.
      */
@@ -306,7 +306,7 @@ export interface AppServicePlanArgs {
     /**
      * Description of a SKU for a scalable resource.
      */
-    sku?: pulumi.Input<types.inputs.web.v20220901.SkuDescriptionArgs>;
+    sku?: pulumi.Input<types.inputs.SkuDescriptionArgs>;
     /**
      * The time when the server farm expires. Valid only if it is a spot server farm.
      */

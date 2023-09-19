@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets cluster admin credential of the managed cluster with a specified resource group and name.
  */
@@ -31,7 +31,7 @@ export interface ListManagedClusterAdminCredentialsResult {
     /**
      * Base64-encoded Kubernetes configuration file.
      */
-    readonly kubeconfigs: types.outputs.containerservice.v20190601.CredentialResultResponse[];
+    readonly kubeconfigs: types.outputs.CredentialResultResponse[];
 }
 /**
  * Gets cluster admin credential of the managed cluster with a specified resource group and name.

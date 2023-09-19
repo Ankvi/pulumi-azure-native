@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An Azure Cosmos DB Mongo Role Definition.
  */
@@ -42,7 +42,7 @@ export class MongoDBResourceMongoRoleDefinition extends pulumi.CustomResource {
     /**
      * A set of privileges contained by the Role Definition. This will allow application of this Role Definition on the entire database account or any underlying Database / Collection. Scopes higher than Database are not enforceable as privilege.
      */
-    public readonly privileges!: pulumi.Output<types.outputs.documentdb.v20230415.PrivilegeResponse[] | undefined>;
+    public readonly privileges!: pulumi.Output<types.outputs.PrivilegeResponse[] | undefined>;
     /**
      * A user-friendly name for the Role Definition. Must be unique for the database account.
      */
@@ -50,7 +50,7 @@ export class MongoDBResourceMongoRoleDefinition extends pulumi.CustomResource {
     /**
      * The set of roles inherited by this Role Definition.
      */
-    public readonly roles!: pulumi.Output<types.outputs.documentdb.v20230415.RoleResponse[] | undefined>;
+    public readonly roles!: pulumi.Output<types.outputs.RoleResponse[] | undefined>;
     /**
      * The type of Azure resource.
      */
@@ -116,7 +116,7 @@ export interface MongoDBResourceMongoRoleDefinitionArgs {
     /**
      * A set of privileges contained by the Role Definition. This will allow application of this Role Definition on the entire database account or any underlying Database / Collection. Scopes higher than Database are not enforceable as privilege.
      */
-    privileges?: pulumi.Input<pulumi.Input<types.inputs.documentdb.v20230415.PrivilegeArgs>[]>;
+    privileges?: pulumi.Input<pulumi.Input<types.inputs.PrivilegeArgs>[]>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -128,9 +128,9 @@ export interface MongoDBResourceMongoRoleDefinitionArgs {
     /**
      * The set of roles inherited by this Role Definition.
      */
-    roles?: pulumi.Input<pulumi.Input<types.inputs.documentdb.v20230415.RoleArgs>[]>;
+    roles?: pulumi.Input<pulumi.Input<types.inputs.RoleArgs>[]>;
     /**
      * Indicates whether the Role Definition was built-in or user created.
      */
-    type?: pulumi.Input<types.enums.v20230415.MongoRoleDefinitionType>;
+    type?: pulumi.Input<types.enums.MongoRoleDefinitionType>;
 }

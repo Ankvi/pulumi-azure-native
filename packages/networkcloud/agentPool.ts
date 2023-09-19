@@ -34,15 +34,15 @@ export class AgentPool extends pulumi.CustomResource {
     /**
      * The administrator credentials to be used for the nodes in this agent pool.
      */
-    public readonly administratorConfiguration!: pulumi.Output<types.outputs.networkcloud.AdministratorConfigurationResponse | undefined>;
+    public readonly administratorConfiguration!: pulumi.Output<types.outputs.AdministratorConfigurationResponse | undefined>;
     /**
      * The configurations that will be applied to each agent in this agent pool.
      */
-    public readonly agentOptions!: pulumi.Output<types.outputs.networkcloud.AgentOptionsResponse | undefined>;
+    public readonly agentOptions!: pulumi.Output<types.outputs.AgentOptionsResponse | undefined>;
     /**
      * The configuration of networks being attached to the agent pool for use by the workloads that run on this Kubernetes cluster.
      */
-    public readonly attachedNetworkConfiguration!: pulumi.Output<types.outputs.networkcloud.AttachedNetworkConfigurationResponse | undefined>;
+    public readonly attachedNetworkConfiguration!: pulumi.Output<types.outputs.AttachedNetworkConfigurationResponse | undefined>;
     /**
      * The list of availability zones of the Network Cloud cluster used for the provisioning of nodes in this agent pool. If not specified, all availability zones will be used.
      */
@@ -62,7 +62,7 @@ export class AgentPool extends pulumi.CustomResource {
     /**
      * The extended location of the cluster associated with the resource.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.networkcloud.ExtendedLocationResponse | undefined>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
     /**
      * The Kubernetes version running in this agent pool.
      */
@@ -70,7 +70,7 @@ export class AgentPool extends pulumi.CustomResource {
     /**
      * The labels applied to the nodes in this agent pool.
      */
-    public readonly labels!: pulumi.Output<types.outputs.networkcloud.KubernetesLabelResponse[] | undefined>;
+    public readonly labels!: pulumi.Output<types.outputs.KubernetesLabelResponse[] | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -90,7 +90,7 @@ export class AgentPool extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.networkcloud.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -98,7 +98,7 @@ export class AgentPool extends pulumi.CustomResource {
     /**
      * The taints applied to the nodes in this agent pool.
      */
-    public readonly taints!: pulumi.Output<types.outputs.networkcloud.KubernetesLabelResponse[] | undefined>;
+    public readonly taints!: pulumi.Output<types.outputs.KubernetesLabelResponse[] | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -106,7 +106,7 @@ export class AgentPool extends pulumi.CustomResource {
     /**
      * The configuration of the agent pool.
      */
-    public readonly upgradeSettings!: pulumi.Output<types.outputs.networkcloud.AgentPoolUpgradeSettingsResponse | undefined>;
+    public readonly upgradeSettings!: pulumi.Output<types.outputs.AgentPoolUpgradeSettingsResponse | undefined>;
     /**
      * The name of the VM SKU that determines the size of resources allocated for node VMs.
      */
@@ -139,7 +139,7 @@ export class AgentPool extends pulumi.CustomResource {
                 throw new Error("Missing required property 'vmSkuName'");
             }
             resourceInputs["administratorConfiguration"] = args ? args.administratorConfiguration : undefined;
-            resourceInputs["agentOptions"] = args ? (args.agentOptions ? pulumi.output(args.agentOptions).apply(types.inputs.networkcloud.agentOptionsArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["agentOptions"] = args ? (args.agentOptions ? pulumi.output(args.agentOptions).apply(types.inputs.agentOptionsArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["agentPoolName"] = args ? args.agentPoolName : undefined;
             resourceInputs["attachedNetworkConfiguration"] = args ? args.attachedNetworkConfiguration : undefined;
             resourceInputs["availabilityZones"] = args ? args.availabilityZones : undefined;
@@ -152,7 +152,7 @@ export class AgentPool extends pulumi.CustomResource {
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["taints"] = args ? args.taints : undefined;
-            resourceInputs["upgradeSettings"] = args ? (args.upgradeSettings ? pulumi.output(args.upgradeSettings).apply(types.inputs.networkcloud.agentPoolUpgradeSettingsArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["upgradeSettings"] = args ? (args.upgradeSettings ? pulumi.output(args.upgradeSettings).apply(types.inputs.agentPoolUpgradeSettingsArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["vmSkuName"] = args ? args.vmSkuName : undefined;
             resourceInputs["detailedStatus"] = undefined /*out*/;
             resourceInputs["detailedStatusMessage"] = undefined /*out*/;
@@ -197,11 +197,11 @@ export interface AgentPoolArgs {
     /**
      * The administrator credentials to be used for the nodes in this agent pool.
      */
-    administratorConfiguration?: pulumi.Input<types.inputs.networkcloud.AdministratorConfigurationArgs>;
+    administratorConfiguration?: pulumi.Input<types.inputs.AdministratorConfigurationArgs>;
     /**
      * The configurations that will be applied to each agent in this agent pool.
      */
-    agentOptions?: pulumi.Input<types.inputs.networkcloud.AgentOptionsArgs>;
+    agentOptions?: pulumi.Input<types.inputs.AgentOptionsArgs>;
     /**
      * The name of the Kubernetes cluster agent pool.
      */
@@ -209,7 +209,7 @@ export interface AgentPoolArgs {
     /**
      * The configuration of networks being attached to the agent pool for use by the workloads that run on this Kubernetes cluster.
      */
-    attachedNetworkConfiguration?: pulumi.Input<types.inputs.networkcloud.AttachedNetworkConfigurationArgs>;
+    attachedNetworkConfiguration?: pulumi.Input<types.inputs.AttachedNetworkConfigurationArgs>;
     /**
      * The list of availability zones of the Network Cloud cluster used for the provisioning of nodes in this agent pool. If not specified, all availability zones will be used.
      */
@@ -221,7 +221,7 @@ export interface AgentPoolArgs {
     /**
      * The extended location of the cluster associated with the resource.
      */
-    extendedLocation?: pulumi.Input<types.inputs.networkcloud.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * The name of the Kubernetes cluster.
      */
@@ -229,7 +229,7 @@ export interface AgentPoolArgs {
     /**
      * The labels applied to the nodes in this agent pool.
      */
-    labels?: pulumi.Input<pulumi.Input<types.inputs.networkcloud.KubernetesLabelArgs>[]>;
+    labels?: pulumi.Input<pulumi.Input<types.inputs.KubernetesLabelArgs>[]>;
     /**
      * The geo-location where the resource lives
      */
@@ -249,11 +249,11 @@ export interface AgentPoolArgs {
     /**
      * The taints applied to the nodes in this agent pool.
      */
-    taints?: pulumi.Input<pulumi.Input<types.inputs.networkcloud.KubernetesLabelArgs>[]>;
+    taints?: pulumi.Input<pulumi.Input<types.inputs.KubernetesLabelArgs>[]>;
     /**
      * The configuration of the agent pool.
      */
-    upgradeSettings?: pulumi.Input<types.inputs.networkcloud.AgentPoolUpgradeSettingsArgs>;
+    upgradeSettings?: pulumi.Input<types.inputs.AgentPoolUpgradeSettingsArgs>;
     /**
      * The name of the VM SKU that determines the size of resources allocated for node VMs.
      */

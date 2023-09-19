@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Describes a DNS record set (a collection of DNS records with the same name and type) in a Private DNS zone.
  */
@@ -34,15 +34,15 @@ export class PrivateRecordSet extends pulumi.CustomResource {
     /**
      * The list of A records in the record set.
      */
-    public readonly aRecords!: pulumi.Output<types.outputs.network.v20200601.ARecordResponse[] | undefined>;
+    public readonly aRecords!: pulumi.Output<types.outputs.ARecordResponse[] | undefined>;
     /**
      * The list of AAAA records in the record set.
      */
-    public readonly aaaaRecords!: pulumi.Output<types.outputs.network.v20200601.AaaaRecordResponse[] | undefined>;
+    public readonly aaaaRecords!: pulumi.Output<types.outputs.AaaaRecordResponse[] | undefined>;
     /**
      * The CNAME record in the record set.
      */
-    public readonly cnameRecord!: pulumi.Output<types.outputs.network.v20200601.CnameRecordResponse | undefined>;
+    public readonly cnameRecord!: pulumi.Output<types.outputs.CnameRecordResponse | undefined>;
     /**
      * The ETag of the record set.
      */
@@ -62,7 +62,7 @@ export class PrivateRecordSet extends pulumi.CustomResource {
     /**
      * The list of MX records in the record set.
      */
-    public readonly mxRecords!: pulumi.Output<types.outputs.network.v20200601.MxRecordResponse[] | undefined>;
+    public readonly mxRecords!: pulumi.Output<types.outputs.MxRecordResponse[] | undefined>;
     /**
      * The name of the resource
      */
@@ -70,15 +70,15 @@ export class PrivateRecordSet extends pulumi.CustomResource {
     /**
      * The list of PTR records in the record set.
      */
-    public readonly ptrRecords!: pulumi.Output<types.outputs.network.v20200601.PtrRecordResponse[] | undefined>;
+    public readonly ptrRecords!: pulumi.Output<types.outputs.PtrRecordResponse[] | undefined>;
     /**
      * The SOA record in the record set.
      */
-    public readonly soaRecord!: pulumi.Output<types.outputs.network.v20200601.SoaRecordResponse | undefined>;
+    public readonly soaRecord!: pulumi.Output<types.outputs.SoaRecordResponse | undefined>;
     /**
      * The list of SRV records in the record set.
      */
-    public readonly srvRecords!: pulumi.Output<types.outputs.network.v20200601.SrvRecordResponse[] | undefined>;
+    public readonly srvRecords!: pulumi.Output<types.outputs.SrvRecordResponse[] | undefined>;
     /**
      * The TTL (time-to-live) of the records in the record set.
      */
@@ -86,7 +86,7 @@ export class PrivateRecordSet extends pulumi.CustomResource {
     /**
      * The list of TXT records in the record set.
      */
-    public readonly txtRecords!: pulumi.Output<types.outputs.network.v20200601.TxtRecordResponse[] | undefined>;
+    public readonly txtRecords!: pulumi.Output<types.outputs.TxtRecordResponse[] | undefined>;
     /**
      * The type of the resource. Example - 'Microsoft.Network/privateDnsZones'.
      */
@@ -162,15 +162,15 @@ export interface PrivateRecordSetArgs {
     /**
      * The list of A records in the record set.
      */
-    aRecords?: pulumi.Input<pulumi.Input<types.inputs.network.v20200601.ARecordArgs>[]>;
+    aRecords?: pulumi.Input<pulumi.Input<types.inputs.ARecordArgs>[]>;
     /**
      * The list of AAAA records in the record set.
      */
-    aaaaRecords?: pulumi.Input<pulumi.Input<types.inputs.network.v20200601.AaaaRecordArgs>[]>;
+    aaaaRecords?: pulumi.Input<pulumi.Input<types.inputs.AaaaRecordArgs>[]>;
     /**
      * The CNAME record in the record set.
      */
-    cnameRecord?: pulumi.Input<types.inputs.network.v20200601.CnameRecordArgs>;
+    cnameRecord?: pulumi.Input<types.inputs.CnameRecordArgs>;
     /**
      * The metadata attached to the record set.
      */
@@ -178,7 +178,7 @@ export interface PrivateRecordSetArgs {
     /**
      * The list of MX records in the record set.
      */
-    mxRecords?: pulumi.Input<pulumi.Input<types.inputs.network.v20200601.MxRecordArgs>[]>;
+    mxRecords?: pulumi.Input<pulumi.Input<types.inputs.MxRecordArgs>[]>;
     /**
      * The name of the Private DNS zone (without a terminating dot).
      */
@@ -186,7 +186,7 @@ export interface PrivateRecordSetArgs {
     /**
      * The list of PTR records in the record set.
      */
-    ptrRecords?: pulumi.Input<pulumi.Input<types.inputs.network.v20200601.PtrRecordArgs>[]>;
+    ptrRecords?: pulumi.Input<pulumi.Input<types.inputs.PtrRecordArgs>[]>;
     /**
      * The type of DNS record in this record set. Record sets of type SOA can be updated but not created (they are created when the Private DNS zone is created).
      */
@@ -202,11 +202,11 @@ export interface PrivateRecordSetArgs {
     /**
      * The SOA record in the record set.
      */
-    soaRecord?: pulumi.Input<types.inputs.network.v20200601.SoaRecordArgs>;
+    soaRecord?: pulumi.Input<types.inputs.SoaRecordArgs>;
     /**
      * The list of SRV records in the record set.
      */
-    srvRecords?: pulumi.Input<pulumi.Input<types.inputs.network.v20200601.SrvRecordArgs>[]>;
+    srvRecords?: pulumi.Input<pulumi.Input<types.inputs.SrvRecordArgs>[]>;
     /**
      * The TTL (time-to-live) of the records in the record set.
      */
@@ -214,5 +214,5 @@ export interface PrivateRecordSetArgs {
     /**
      * The list of TXT records in the record set.
      */
-    txtRecords?: pulumi.Input<pulumi.Input<types.inputs.network.v20200601.TxtRecordArgs>[]>;
+    txtRecords?: pulumi.Input<pulumi.Input<types.inputs.TxtRecordArgs>[]>;
 }

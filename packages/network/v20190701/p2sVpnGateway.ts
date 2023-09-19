@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * P2SVpnGateway Resource.
  */
@@ -34,7 +34,7 @@ export class P2sVpnGateway extends pulumi.CustomResource {
     /**
      * The reference of the address space resource which represents the custom routes specified by the customer for P2SVpnGateway and P2S VpnClient.
      */
-    public readonly customRoutes!: pulumi.Output<types.outputs.network.v20190701.AddressSpaceResponse | undefined>;
+    public readonly customRoutes!: pulumi.Output<types.outputs.AddressSpaceResponse | undefined>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -50,7 +50,7 @@ export class P2sVpnGateway extends pulumi.CustomResource {
     /**
      * The P2SVpnServerConfiguration to which the p2sVpnGateway is attached to.
      */
-    public readonly p2SVpnServerConfiguration!: pulumi.Output<types.outputs.network.v20190701.SubResourceResponse | undefined>;
+    public readonly p2SVpnServerConfiguration!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * The provisioning state of the P2S VPN gateway resource.
      */
@@ -66,15 +66,15 @@ export class P2sVpnGateway extends pulumi.CustomResource {
     /**
      * The VirtualHub to which the gateway belongs.
      */
-    public readonly virtualHub!: pulumi.Output<types.outputs.network.v20190701.SubResourceResponse | undefined>;
+    public readonly virtualHub!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * The reference of the address space resource which represents Address space for P2S VpnClient.
      */
-    public readonly vpnClientAddressPool!: pulumi.Output<types.outputs.network.v20190701.AddressSpaceResponse | undefined>;
+    public readonly vpnClientAddressPool!: pulumi.Output<types.outputs.AddressSpaceResponse | undefined>;
     /**
      * All P2S VPN clients' connection health status.
      */
-    public /*out*/ readonly vpnClientConnectionHealth!: pulumi.Output<types.outputs.network.v20190701.VpnClientConnectionHealthResponse>;
+    public /*out*/ readonly vpnClientConnectionHealth!: pulumi.Output<types.outputs.VpnClientConnectionHealthResponse>;
     /**
      * The scale unit for this p2s vpn gateway.
      */
@@ -137,7 +137,7 @@ export interface P2sVpnGatewayArgs {
     /**
      * The reference of the address space resource which represents the custom routes specified by the customer for P2SVpnGateway and P2S VpnClient.
      */
-    customRoutes?: pulumi.Input<types.inputs.network.v20190701.AddressSpaceArgs>;
+    customRoutes?: pulumi.Input<types.inputs.AddressSpaceArgs>;
     /**
      * The name of the gateway.
      */
@@ -153,7 +153,7 @@ export interface P2sVpnGatewayArgs {
     /**
      * The P2SVpnServerConfiguration to which the p2sVpnGateway is attached to.
      */
-    p2SVpnServerConfiguration?: pulumi.Input<types.inputs.network.v20190701.SubResourceArgs>;
+    p2SVpnServerConfiguration?: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * The resource group name of the P2SVpnGateway.
      */
@@ -165,11 +165,11 @@ export interface P2sVpnGatewayArgs {
     /**
      * The VirtualHub to which the gateway belongs.
      */
-    virtualHub?: pulumi.Input<types.inputs.network.v20190701.SubResourceArgs>;
+    virtualHub?: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * The reference of the address space resource which represents Address space for P2S VpnClient.
      */
-    vpnClientAddressPool?: pulumi.Input<types.inputs.network.v20190701.AddressSpaceArgs>;
+    vpnClientAddressPool?: pulumi.Input<types.inputs.AddressSpaceArgs>;
     /**
      * The scale unit for this p2s vpn gateway.
      */

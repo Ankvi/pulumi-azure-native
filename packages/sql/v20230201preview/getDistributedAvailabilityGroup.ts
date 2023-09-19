@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a distributed availability group info.
  */
@@ -36,7 +36,7 @@ export interface GetDistributedAvailabilityGroupResult {
     /**
      * Databases in the distributed availability group
      */
-    readonly databases: types.outputs.sql.v20230201preview.DistributedAvailabilityGroupDatabaseResponse[];
+    readonly databases: types.outputs.DistributedAvailabilityGroupDatabaseResponse[];
     /**
      * ID of the distributed availability group
      */

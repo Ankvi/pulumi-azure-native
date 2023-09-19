@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get properties of a permission binding.
  */
@@ -61,7 +61,7 @@ export interface GetPermissionBindingResult {
     /**
      * The system metadata relating to the PermissionBinding resource.
      */
-    readonly systemData: types.outputs.eventgrid.v20230601preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The name of the Topic Space resource that the permission is bound to.
      * The Topic space needs to be a resource under the same namespace the permission binding is a part of.

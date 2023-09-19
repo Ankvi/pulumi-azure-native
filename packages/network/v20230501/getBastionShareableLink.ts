@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Return the Bastion Shareable Links for all the VMs specified in the request.
  */
@@ -26,7 +26,7 @@ export interface GetBastionShareableLinkArgs {
     /**
      * List of VM references.
      */
-    vms?: types.inputs.network.v20230501.BastionShareableLink[];
+    vms?: types.inputs.BastionShareableLink[];
 }
 
 /**
@@ -40,7 +40,7 @@ export interface GetBastionShareableLinkResult {
     /**
      * List of Bastion Shareable Links for the request.
      */
-    readonly value?: types.outputs.network.v20230501.BastionShareableLinkResponse[];
+    readonly value?: types.outputs.BastionShareableLinkResponse[];
 }
 /**
  * Return the Bastion Shareable Links for all the VMs specified in the request.
@@ -61,5 +61,5 @@ export interface GetBastionShareableLinkOutputArgs {
     /**
      * List of VM references.
      */
-    vms?: pulumi.Input<pulumi.Input<types.inputs.network.v20230501.BastionShareableLinkArgs>[]>;
+    vms?: pulumi.Input<pulumi.Input<types.inputs.BastionShareableLinkArgs>[]>;
 }

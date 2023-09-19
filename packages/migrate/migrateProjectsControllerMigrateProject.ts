@@ -47,11 +47,11 @@ export class MigrateProjectsControllerMigrateProject extends pulumi.CustomResour
     /**
      * Properties of a migrate project.
      */
-    public readonly properties!: pulumi.Output<types.outputs.migrate.MigrateProjectPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.MigrateProjectPropertiesResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.migrate.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Type of the object = [Microsoft.Migrate/migrateProjects].
      */
@@ -113,7 +113,7 @@ export interface MigrateProjectsControllerMigrateProjectArgs {
     /**
      * Properties of a migrate project.
      */
-    properties?: pulumi.Input<types.inputs.migrate.MigrateProjectPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.MigrateProjectPropertiesArgs>;
     /**
      * Name of the Azure Resource Group that project is part of.
      */

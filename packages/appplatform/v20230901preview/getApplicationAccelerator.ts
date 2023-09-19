@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the application accelerator.
  */
@@ -44,15 +44,15 @@ export interface GetApplicationAcceleratorResult {
     /**
      * Application accelerator properties payload
      */
-    readonly properties: types.outputs.appplatform.v20230901preview.ApplicationAcceleratorPropertiesResponse;
+    readonly properties: types.outputs.ApplicationAcceleratorPropertiesResponse;
     /**
      * Sku of the application accelerator resource
      */
-    readonly sku?: types.outputs.appplatform.v20230901preview.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.appplatform.v20230901preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource.
      */

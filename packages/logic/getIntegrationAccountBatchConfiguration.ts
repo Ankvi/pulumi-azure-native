@@ -49,7 +49,7 @@ export interface GetIntegrationAccountBatchConfigurationResult {
     /**
      * The batch configuration properties.
      */
-    readonly properties: types.outputs.logic.BatchConfigurationPropertiesResponse;
+    readonly properties: types.outputs.BatchConfigurationPropertiesResponse;
     /**
      * The resource tags.
      */

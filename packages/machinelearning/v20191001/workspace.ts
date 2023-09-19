@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An object that represents a machine learning workspace.
  */
@@ -54,7 +54,7 @@ export class Workspace extends pulumi.CustomResource {
     /**
      * The sku of the workspace.
      */
-    public readonly sku!: pulumi.Output<types.outputs.machinelearning.v20191001.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * The regional endpoint for the machine learning studio service which hosts this workspace.
      */
@@ -164,7 +164,7 @@ export interface WorkspaceArgs {
     /**
      * The sku of the workspace.
      */
-    sku?: pulumi.Input<types.inputs.machinelearning.v20191001.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * The tags of the resource.
      */

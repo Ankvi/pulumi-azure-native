@@ -50,7 +50,7 @@ export interface GetUserResult {
     /**
      * The identity of the user.
      */
-    readonly identity?: types.outputs.devtestlab.UserIdentityResponse;
+    readonly identity?: types.outputs.UserIdentityResponse;
     /**
      * The location of the resource.
      */
@@ -66,7 +66,7 @@ export interface GetUserResult {
     /**
      * The secret store of the user.
      */
-    readonly secretStore?: types.outputs.devtestlab.UserSecretStoreResponse;
+    readonly secretStore?: types.outputs.UserSecretStoreResponse;
     /**
      * The tags of the resource.
      */

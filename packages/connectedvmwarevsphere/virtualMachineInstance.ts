@@ -35,15 +35,15 @@ export class VirtualMachineInstance extends pulumi.CustomResource {
     /**
      * Gets or sets the extended location.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.connectedvmwarevsphere.ExtendedLocationResponse | undefined>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
     /**
      * Hardware properties.
      */
-    public readonly hardwareProfile!: pulumi.Output<types.outputs.connectedvmwarevsphere.HardwareProfileResponse | undefined>;
+    public readonly hardwareProfile!: pulumi.Output<types.outputs.HardwareProfileResponse | undefined>;
     /**
      * Gets the infrastructure profile.
      */
-    public readonly infrastructureProfile!: pulumi.Output<types.outputs.connectedvmwarevsphere.InfrastructureProfileResponse | undefined>;
+    public readonly infrastructureProfile!: pulumi.Output<types.outputs.InfrastructureProfileResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -51,15 +51,15 @@ export class VirtualMachineInstance extends pulumi.CustomResource {
     /**
      * Network properties.
      */
-    public readonly networkProfile!: pulumi.Output<types.outputs.connectedvmwarevsphere.NetworkProfileResponse | undefined>;
+    public readonly networkProfile!: pulumi.Output<types.outputs.NetworkProfileResponse | undefined>;
     /**
      * OS properties.
      */
-    public readonly osProfile!: pulumi.Output<types.outputs.connectedvmwarevsphere.OsProfileForVMInstanceResponse | undefined>;
+    public readonly osProfile!: pulumi.Output<types.outputs.OsProfileForVMInstanceResponse | undefined>;
     /**
      * Placement properties.
      */
-    public readonly placementProfile!: pulumi.Output<types.outputs.connectedvmwarevsphere.PlacementProfileResponse | undefined>;
+    public readonly placementProfile!: pulumi.Output<types.outputs.PlacementProfileResponse | undefined>;
     /**
      * Gets the power state of the virtual machine.
      */
@@ -75,19 +75,19 @@ export class VirtualMachineInstance extends pulumi.CustomResource {
     /**
      * Gets the security profile.
      */
-    public readonly securityProfile!: pulumi.Output<types.outputs.connectedvmwarevsphere.SecurityProfileResponse | undefined>;
+    public readonly securityProfile!: pulumi.Output<types.outputs.SecurityProfileResponse | undefined>;
     /**
      * The resource status information.
      */
-    public /*out*/ readonly statuses!: pulumi.Output<types.outputs.connectedvmwarevsphere.ResourceStatusResponse[]>;
+    public /*out*/ readonly statuses!: pulumi.Output<types.outputs.ResourceStatusResponse[]>;
     /**
      * Storage properties.
      */
-    public readonly storageProfile!: pulumi.Output<types.outputs.connectedvmwarevsphere.StorageProfileResponse | undefined>;
+    public readonly storageProfile!: pulumi.Output<types.outputs.StorageProfileResponse | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.connectedvmwarevsphere.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -154,27 +154,27 @@ export interface VirtualMachineInstanceArgs {
     /**
      * Gets or sets the extended location.
      */
-    extendedLocation?: pulumi.Input<types.inputs.connectedvmwarevsphere.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * Hardware properties.
      */
-    hardwareProfile?: pulumi.Input<types.inputs.connectedvmwarevsphere.HardwareProfileArgs>;
+    hardwareProfile?: pulumi.Input<types.inputs.HardwareProfileArgs>;
     /**
      * Gets the infrastructure profile.
      */
-    infrastructureProfile?: pulumi.Input<types.inputs.connectedvmwarevsphere.InfrastructureProfileArgs>;
+    infrastructureProfile?: pulumi.Input<types.inputs.InfrastructureProfileArgs>;
     /**
      * Network properties.
      */
-    networkProfile?: pulumi.Input<types.inputs.connectedvmwarevsphere.NetworkProfileArgs>;
+    networkProfile?: pulumi.Input<types.inputs.NetworkProfileArgs>;
     /**
      * OS properties.
      */
-    osProfile?: pulumi.Input<types.inputs.connectedvmwarevsphere.OsProfileForVMInstanceArgs>;
+    osProfile?: pulumi.Input<types.inputs.OsProfileForVMInstanceArgs>;
     /**
      * Placement properties.
      */
-    placementProfile?: pulumi.Input<types.inputs.connectedvmwarevsphere.PlacementProfileArgs>;
+    placementProfile?: pulumi.Input<types.inputs.PlacementProfileArgs>;
     /**
      * The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
      */
@@ -182,9 +182,9 @@ export interface VirtualMachineInstanceArgs {
     /**
      * Gets the security profile.
      */
-    securityProfile?: pulumi.Input<types.inputs.connectedvmwarevsphere.SecurityProfileArgs>;
+    securityProfile?: pulumi.Input<types.inputs.SecurityProfileArgs>;
     /**
      * Storage properties.
      */
-    storageProfile?: pulumi.Input<types.inputs.connectedvmwarevsphere.StorageProfileArgs>;
+    storageProfile?: pulumi.Input<types.inputs.StorageProfileArgs>;
 }

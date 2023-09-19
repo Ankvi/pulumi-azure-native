@@ -37,7 +37,7 @@ export interface GetLiveEventStreamEventsResult {
     /**
      * The result of the get live event stream events.
      */
-    readonly value?: types.outputs.media.LiveEventStreamEventResponse[];
+    readonly value?: types.outputs.LiveEventStreamEventResponse[];
 }
 /**
  * Get stream events telemetry of a live event.

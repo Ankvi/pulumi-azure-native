@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents Amazon Web Services S3 data connector.
  */
@@ -34,7 +34,7 @@ export class AwsS3DataConnector extends pulumi.CustomResource {
     /**
      * The available data types for the connector.
      */
-    public readonly dataTypes!: pulumi.Output<types.outputs.securityinsights.v20230801preview.AwsS3DataConnectorDataTypesResponse>;
+    public readonly dataTypes!: pulumi.Output<types.outputs.AwsS3DataConnectorDataTypesResponse>;
     /**
      * The logs destination table name in LogAnalytics.
      */
@@ -63,7 +63,7 @@ export class AwsS3DataConnector extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.securityinsights.v20230801preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -142,7 +142,7 @@ export interface AwsS3DataConnectorArgs {
     /**
      * The available data types for the connector.
      */
-    dataTypes: pulumi.Input<types.inputs.securityinsights.v20230801preview.AwsS3DataConnectorDataTypesArgs>;
+    dataTypes: pulumi.Input<types.inputs.AwsS3DataConnectorDataTypesArgs>;
     /**
      * The logs destination table name in LogAnalytics.
      */

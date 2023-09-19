@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An object that represents a container registry.
  */
@@ -54,11 +54,11 @@ export class Registry extends pulumi.CustomResource {
     /**
      * The network rule set for a container registry.
      */
-    public readonly networkRuleSet!: pulumi.Output<types.outputs.containerregistry.v20190501.NetworkRuleSetResponse | undefined>;
+    public readonly networkRuleSet!: pulumi.Output<types.outputs.NetworkRuleSetResponse | undefined>;
     /**
      * The policies for a container registry.
      */
-    public readonly policies!: pulumi.Output<types.outputs.containerregistry.v20190501.PoliciesResponse | undefined>;
+    public readonly policies!: pulumi.Output<types.outputs.PoliciesResponse | undefined>;
     /**
      * The provisioning state of the container registry at the time the operation was called.
      */
@@ -66,15 +66,15 @@ export class Registry extends pulumi.CustomResource {
     /**
      * The SKU of the container registry.
      */
-    public readonly sku!: pulumi.Output<types.outputs.containerregistry.v20190501.SkuResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse>;
     /**
      * The status of the container registry at the time the operation was called.
      */
-    public /*out*/ readonly status!: pulumi.Output<types.outputs.containerregistry.v20190501.StatusResponse>;
+    public /*out*/ readonly status!: pulumi.Output<types.outputs.StatusResponse>;
     /**
      * The properties of the storage account for the container registry. Only applicable to Classic SKU.
      */
-    public readonly storageAccount!: pulumi.Output<types.outputs.containerregistry.v20190501.StorageAccountPropertiesResponse | undefined>;
+    public readonly storageAccount!: pulumi.Output<types.outputs.StorageAccountPropertiesResponse | undefined>;
     /**
      * The tags of the resource.
      */
@@ -103,8 +103,8 @@ export class Registry extends pulumi.CustomResource {
             }
             resourceInputs["adminUserEnabled"] = (args ? args.adminUserEnabled : undefined) ?? false;
             resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["networkRuleSet"] = args ? (args.networkRuleSet ? pulumi.output(args.networkRuleSet).apply(types.inputs.containerregistry.v20190501.networkRuleSetArgsProvideDefaults) : undefined) : undefined;
-            resourceInputs["policies"] = args ? (args.policies ? pulumi.output(args.policies).apply(types.inputs.containerregistry.v20190501.policiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["networkRuleSet"] = args ? (args.networkRuleSet ? pulumi.output(args.networkRuleSet).apply(types.inputs.networkRuleSetArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["policies"] = args ? (args.policies ? pulumi.output(args.policies).apply(types.inputs.policiesArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["registryName"] = args ? args.registryName : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["sku"] = args ? args.sku : undefined;
@@ -153,11 +153,11 @@ export interface RegistryArgs {
     /**
      * The network rule set for a container registry.
      */
-    networkRuleSet?: pulumi.Input<types.inputs.containerregistry.v20190501.NetworkRuleSetArgs>;
+    networkRuleSet?: pulumi.Input<types.inputs.NetworkRuleSetArgs>;
     /**
      * The policies for a container registry.
      */
-    policies?: pulumi.Input<types.inputs.containerregistry.v20190501.PoliciesArgs>;
+    policies?: pulumi.Input<types.inputs.PoliciesArgs>;
     /**
      * The name of the container registry.
      */
@@ -169,11 +169,11 @@ export interface RegistryArgs {
     /**
      * The SKU of the container registry.
      */
-    sku: pulumi.Input<types.inputs.containerregistry.v20190501.SkuArgs>;
+    sku: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * The properties of the storage account for the container registry. Only applicable to Classic SKU.
      */
-    storageAccount?: pulumi.Input<types.inputs.containerregistry.v20190501.StorageAccountPropertiesArgs>;
+    storageAccount?: pulumi.Input<types.inputs.StorageAccountPropertiesArgs>;
     /**
      * The tags of the resource.
      */

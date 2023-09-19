@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An Azure resource which represents Maps Creator product and provides ability to manage private location data.
  */
@@ -42,7 +42,7 @@ export class Creator extends pulumi.CustomResource {
     /**
      * The Creator resource properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.maps.v20210201.CreatorPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.CreatorPropertiesResponse>;
     /**
      * Resource tags.
      */
@@ -113,7 +113,7 @@ export interface CreatorArgs {
     /**
      * The Creator resource properties.
      */
-    properties: pulumi.Input<types.inputs.maps.v20210201.CreatorPropertiesArgs>;
+    properties: pulumi.Input<types.inputs.CreatorPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

@@ -13,7 +13,7 @@ utilities.lazyLoad(exports, ["getB2CTenant","getB2CTenantOutput"], () => require
 
 
 // Export enums:
-export * from "../types/enums/v20190101preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

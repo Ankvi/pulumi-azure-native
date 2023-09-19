@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The scheduled query rule resource.
  */
@@ -34,7 +34,7 @@ export class ScheduledQueryRule extends pulumi.CustomResource {
     /**
      * Actions to invoke when the alert fires.
      */
-    public readonly actions!: pulumi.Output<types.outputs.insights.v20230315preview.ActionsResponse | undefined>;
+    public readonly actions!: pulumi.Output<types.outputs.ActionsResponse | undefined>;
     /**
      * The flag that indicates whether the alert should be automatically resolved or not. The default is true. Relevant only for rules of the kind LogAlert.
      */
@@ -50,7 +50,7 @@ export class ScheduledQueryRule extends pulumi.CustomResource {
     /**
      * The rule criteria that defines the conditions of the scheduled query rule.
      */
-    public readonly criteria!: pulumi.Output<types.outputs.insights.v20230315preview.ScheduledQueryRuleCriteriaResponse>;
+    public readonly criteria!: pulumi.Output<types.outputs.ScheduledQueryRuleCriteriaResponse>;
     /**
      * The description of the scheduled query rule.
      */
@@ -74,7 +74,7 @@ export class ScheduledQueryRule extends pulumi.CustomResource {
     /**
      * The identity of the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.insights.v20230315preview.IdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityResponse | undefined>;
     /**
      * True if alert rule is legacy Log Analytic rule
      */
@@ -106,7 +106,7 @@ export class ScheduledQueryRule extends pulumi.CustomResource {
     /**
      * Defines the configuration for resolving fired alerts. Relevant only for rules of the kind LogAlert.
      */
-    public readonly ruleResolveConfiguration!: pulumi.Output<types.outputs.insights.v20230315preview.RuleResolveConfigurationResponse | undefined>;
+    public readonly ruleResolveConfiguration!: pulumi.Output<types.outputs.RuleResolveConfigurationResponse | undefined>;
     /**
      * The list of resource id's that this scheduled query rule is scoped to.
      */
@@ -122,7 +122,7 @@ export class ScheduledQueryRule extends pulumi.CustomResource {
     /**
      * SystemData of ScheduledQueryRule.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.insights.v20230315preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -235,7 +235,7 @@ export interface ScheduledQueryRuleArgs {
     /**
      * Actions to invoke when the alert fires.
      */
-    actions?: pulumi.Input<types.inputs.insights.v20230315preview.ActionsArgs>;
+    actions?: pulumi.Input<types.inputs.ActionsArgs>;
     /**
      * The flag that indicates whether the alert should be automatically resolved or not. The default is true. Relevant only for rules of the kind LogAlert.
      */
@@ -247,7 +247,7 @@ export interface ScheduledQueryRuleArgs {
     /**
      * The rule criteria that defines the conditions of the scheduled query rule.
      */
-    criteria: pulumi.Input<types.inputs.insights.v20230315preview.ScheduledQueryRuleCriteriaArgs>;
+    criteria: pulumi.Input<types.inputs.ScheduledQueryRuleCriteriaArgs>;
     /**
      * The description of the scheduled query rule.
      */
@@ -267,11 +267,11 @@ export interface ScheduledQueryRuleArgs {
     /**
      * The identity of the resource.
      */
-    identity?: pulumi.Input<types.inputs.insights.v20230315preview.IdentityArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityArgs>;
     /**
      * Indicates the type of scheduled query rule. The default is LogAlert.
      */
-    kind?: pulumi.Input<string | types.enums.v20230315preview.Kind>;
+    kind?: pulumi.Input<string | types.enums.Kind>;
     /**
      * The geo-location where the resource lives
      */
@@ -295,7 +295,7 @@ export interface ScheduledQueryRuleArgs {
     /**
      * Defines the configuration for resolving fired alerts. Relevant only for rules of the kind LogAlert.
      */
-    ruleResolveConfiguration?: pulumi.Input<types.inputs.insights.v20230315preview.RuleResolveConfigurationArgs>;
+    ruleResolveConfiguration?: pulumi.Input<types.inputs.RuleResolveConfigurationArgs>;
     /**
      * The list of resource id's that this scheduled query rule is scoped to.
      */

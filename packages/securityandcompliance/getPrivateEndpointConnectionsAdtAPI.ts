@@ -45,11 +45,11 @@ export interface GetPrivateEndpointConnectionsAdtAPIResult {
     /**
      * The resource of private end point.
      */
-    readonly privateEndpoint?: types.outputs.securityandcompliance.PrivateEndpointResponse;
+    readonly privateEndpoint?: types.outputs.PrivateEndpointResponse;
     /**
      * A collection of information about the state of the connection between service consumer and provider.
      */
-    readonly privateLinkServiceConnectionState: types.outputs.securityandcompliance.PrivateLinkServiceConnectionStateResponse;
+    readonly privateLinkServiceConnectionState: types.outputs.PrivateLinkServiceConnectionStateResponse;
     /**
      * The provisioning state of the private endpoint connection resource.
      */
@@ -57,7 +57,7 @@ export interface GetPrivateEndpointConnectionsAdtAPIResult {
     /**
      * Required property for system data
      */
-    readonly systemData: types.outputs.securityandcompliance.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

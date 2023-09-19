@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Settings with single toggle.
  */
@@ -51,7 +51,7 @@ export class Ueba extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.securityinsights.v20230601preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -108,7 +108,7 @@ export interface UebaArgs {
     /**
      * The relevant data sources that enriched by ueba
      */
-    dataSources?: pulumi.Input<pulumi.Input<string | types.enums.v20230601preview.UebaDataSources>[]>;
+    dataSources?: pulumi.Input<pulumi.Input<string | types.enums.UebaDataSources>[]>;
     /**
      * The kind of the setting
      * Expected value is 'Ueba'.

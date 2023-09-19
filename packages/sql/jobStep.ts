@@ -35,7 +35,7 @@ export class JobStep extends pulumi.CustomResource {
     /**
      * The action payload of the job step.
      */
-    public readonly action!: pulumi.Output<types.outputs.sql.JobStepActionResponse>;
+    public readonly action!: pulumi.Output<types.outputs.JobStepActionResponse>;
     /**
      * The resource ID of the job credential that will be used to connect to the targets.
      */
@@ -43,7 +43,7 @@ export class JobStep extends pulumi.CustomResource {
     /**
      * Execution options for the job step.
      */
-    public readonly executionOptions!: pulumi.Output<types.outputs.sql.JobStepExecutionOptionsResponse | undefined>;
+    public readonly executionOptions!: pulumi.Output<types.outputs.JobStepExecutionOptionsResponse | undefined>;
     /**
      * Resource name.
      */
@@ -51,7 +51,7 @@ export class JobStep extends pulumi.CustomResource {
     /**
      * Output destination properties of the job step.
      */
-    public readonly output!: pulumi.Output<types.outputs.sql.JobStepOutputResponse | undefined>;
+    public readonly output!: pulumi.Output<types.outputs.JobStepOutputResponse | undefined>;
     /**
      * The job step's index within the job. If not specified when creating the job step, it will be created as the last step. If not specified when updating the job step, the step id is not modified.
      */
@@ -97,12 +97,12 @@ export class JobStep extends pulumi.CustomResource {
             if ((!args || args.targetGroup === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'targetGroup'");
             }
-            resourceInputs["action"] = args ? (args.action ? pulumi.output(args.action).apply(types.inputs.sql.jobStepActionArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["action"] = args ? (args.action ? pulumi.output(args.action).apply(types.inputs.jobStepActionArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["credential"] = args ? args.credential : undefined;
-            resourceInputs["executionOptions"] = args ? (args.executionOptions ? pulumi.output(args.executionOptions).apply(types.inputs.sql.jobStepExecutionOptionsArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["executionOptions"] = args ? (args.executionOptions ? pulumi.output(args.executionOptions).apply(types.inputs.jobStepExecutionOptionsArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["jobAgentName"] = args ? args.jobAgentName : undefined;
             resourceInputs["jobName"] = args ? args.jobName : undefined;
-            resourceInputs["output"] = args ? (args.output ? pulumi.output(args.output).apply(types.inputs.sql.jobStepOutputArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["output"] = args ? (args.output ? pulumi.output(args.output).apply(types.inputs.jobStepOutputArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["serverName"] = args ? args.serverName : undefined;
             resourceInputs["stepId"] = args ? args.stepId : undefined;
@@ -134,7 +134,7 @@ export interface JobStepArgs {
     /**
      * The action payload of the job step.
      */
-    action: pulumi.Input<types.inputs.sql.JobStepActionArgs>;
+    action: pulumi.Input<types.inputs.JobStepActionArgs>;
     /**
      * The resource ID of the job credential that will be used to connect to the targets.
      */
@@ -142,7 +142,7 @@ export interface JobStepArgs {
     /**
      * Execution options for the job step.
      */
-    executionOptions?: pulumi.Input<types.inputs.sql.JobStepExecutionOptionsArgs>;
+    executionOptions?: pulumi.Input<types.inputs.JobStepExecutionOptionsArgs>;
     /**
      * The name of the job agent.
      */
@@ -154,7 +154,7 @@ export interface JobStepArgs {
     /**
      * Output destination properties of the job step.
      */
-    output?: pulumi.Input<types.inputs.sql.JobStepOutputArgs>;
+    output?: pulumi.Input<types.inputs.JobStepOutputArgs>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */

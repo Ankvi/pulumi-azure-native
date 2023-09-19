@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The Internet Gateway Rule resource definition.
  */
@@ -54,11 +54,11 @@ export class InternetGatewayRule extends pulumi.CustomResource {
     /**
      * Rules for the InternetGateways
      */
-    public readonly ruleProperties!: pulumi.Output<types.outputs.managednetworkfabric.v20230615.RulePropertiesResponse>;
+    public readonly ruleProperties!: pulumi.Output<types.outputs.RulePropertiesResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.managednetworkfabric.v20230615.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -137,7 +137,7 @@ export interface InternetGatewayRuleArgs {
     /**
      * Rules for the InternetGateways
      */
-    ruleProperties: pulumi.Input<types.inputs.managednetworkfabric.v20230615.RulePropertiesArgs>;
+    ruleProperties: pulumi.Input<types.inputs.RulePropertiesArgs>;
     /**
      * Resource tags.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * List the API keys for the transaction node.
  */
@@ -36,7 +36,7 @@ export interface ListTransactionNodeApiKeysResult {
     /**
      * Gets or sets the collection of API key.
      */
-    readonly keys?: types.outputs.blockchain.v20180601preview.ApiKeyResponse[];
+    readonly keys?: types.outputs.ApiKeyResponse[];
 }
 /**
  * List the API keys for the transaction node.

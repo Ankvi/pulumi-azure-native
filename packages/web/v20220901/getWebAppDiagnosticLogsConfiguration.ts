@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Description for Gets the logging configuration of an app.
  */
@@ -31,19 +31,19 @@ export interface GetWebAppDiagnosticLogsConfigurationResult {
     /**
      * Application logs configuration.
      */
-    readonly applicationLogs?: types.outputs.web.v20220901.ApplicationLogsConfigResponse;
+    readonly applicationLogs?: types.outputs.ApplicationLogsConfigResponse;
     /**
      * Detailed error messages configuration.
      */
-    readonly detailedErrorMessages?: types.outputs.web.v20220901.EnabledConfigResponse;
+    readonly detailedErrorMessages?: types.outputs.EnabledConfigResponse;
     /**
      * Failed requests tracing configuration.
      */
-    readonly failedRequestsTracing?: types.outputs.web.v20220901.EnabledConfigResponse;
+    readonly failedRequestsTracing?: types.outputs.EnabledConfigResponse;
     /**
      * HTTP logs configuration.
      */
-    readonly httpLogs?: types.outputs.web.v20220901.HttpLogsConfigResponse;
+    readonly httpLogs?: types.outputs.HttpLogsConfigResponse;
     /**
      * Resource Id.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves information about a dedicated host.
  */
@@ -53,7 +53,7 @@ export interface GetDedicatedHostResult {
     /**
      * The dedicated host instance view.
      */
-    readonly instanceView: types.outputs.compute.v20230701.DedicatedHostInstanceViewResponse;
+    readonly instanceView: types.outputs.DedicatedHostInstanceViewResponse;
     /**
      * Specifies the software license type that will be applied to the VMs deployed on the dedicated host. Possible values are: **None,** **Windows_Server_Hybrid,** **Windows_Server_Perpetual.** The default value is: **None.**
      */
@@ -81,7 +81,7 @@ export interface GetDedicatedHostResult {
     /**
      * SKU of the dedicated host for Hardware Generation and VM family. Only name is required to be set. List Microsoft.Compute SKUs for a list of possible values.
      */
-    readonly sku: types.outputs.compute.v20230701.SkuResponse;
+    readonly sku: types.outputs.SkuResponse;
     /**
      * Resource tags
      */
@@ -97,7 +97,7 @@ export interface GetDedicatedHostResult {
     /**
      * A list of references to all virtual machines in the Dedicated Host.
      */
-    readonly virtualMachines: types.outputs.compute.v20230701.SubResourceReadOnlyResponse[];
+    readonly virtualMachines: types.outputs.SubResourceReadOnlyResponse[];
 }
 /**
  * Retrieves information about a dedicated host.

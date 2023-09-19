@@ -59,7 +59,7 @@ export class BlockchainMember extends pulumi.CustomResource {
     /**
      * Gets or sets firewall rules
      */
-    public readonly firewallRules!: pulumi.Output<types.outputs.blockchain.FirewallRuleResponse[] | undefined>;
+    public readonly firewallRules!: pulumi.Output<types.outputs.FirewallRuleResponse[] | undefined>;
     /**
      * The GEO location of the blockchain service.
      */
@@ -91,7 +91,7 @@ export class BlockchainMember extends pulumi.CustomResource {
     /**
      * Gets or sets the blockchain member Sku.
      */
-    public readonly sku!: pulumi.Output<types.outputs.blockchain.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Tags of the service which is a list of key value pairs that describes the resource.
      */
@@ -107,7 +107,7 @@ export class BlockchainMember extends pulumi.CustomResource {
     /**
      * Gets or sets the blockchain validator nodes Sku.
      */
-    public readonly validatorNodesSku!: pulumi.Output<types.outputs.blockchain.BlockchainMemberNodesSkuResponse | undefined>;
+    public readonly validatorNodesSku!: pulumi.Output<types.outputs.BlockchainMemberNodesSkuResponse | undefined>;
 
     /**
      * Create a BlockchainMember resource with the given unique name, arguments, and options.
@@ -199,7 +199,7 @@ export interface BlockchainMemberArgs {
     /**
      * Gets or sets firewall rules
      */
-    firewallRules?: pulumi.Input<pulumi.Input<types.inputs.blockchain.FirewallRuleArgs>[]>;
+    firewallRules?: pulumi.Input<pulumi.Input<types.inputs.FirewallRuleArgs>[]>;
     /**
      * The GEO location of the blockchain service.
      */
@@ -219,7 +219,7 @@ export interface BlockchainMemberArgs {
     /**
      * Gets or sets the blockchain member Sku.
      */
-    sku?: pulumi.Input<types.inputs.blockchain.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Tags of the service which is a list of key value pairs that describes the resource.
      */
@@ -227,5 +227,5 @@ export interface BlockchainMemberArgs {
     /**
      * Gets or sets the blockchain validator nodes Sku.
      */
-    validatorNodesSku?: pulumi.Input<types.inputs.blockchain.BlockchainMemberNodesSkuArgs>;
+    validatorNodesSku?: pulumi.Input<types.inputs.BlockchainMemberNodesSkuArgs>;
 }

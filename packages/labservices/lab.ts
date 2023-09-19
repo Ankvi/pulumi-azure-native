@@ -35,11 +35,11 @@ export class Lab extends pulumi.CustomResource {
     /**
      * The resource auto shutdown configuration for the lab. This controls whether actions are taken on resources that are sitting idle.
      */
-    public readonly autoShutdownProfile!: pulumi.Output<types.outputs.labservices.AutoShutdownProfileResponse>;
+    public readonly autoShutdownProfile!: pulumi.Output<types.outputs.AutoShutdownProfileResponse>;
     /**
      * The connection profile for the lab. This controls settings such as web access to lab resources or whether RDP or SSH ports are open.
      */
-    public readonly connectionProfile!: pulumi.Output<types.outputs.labservices.ConnectionProfileResponse>;
+    public readonly connectionProfile!: pulumi.Output<types.outputs.ConnectionProfileResponse>;
     /**
      * The description of the lab.
      */
@@ -59,7 +59,7 @@ export class Lab extends pulumi.CustomResource {
     /**
      * The network profile for the lab, typically applied via a lab plan. This profile cannot be modified once a lab has been created.
      */
-    public readonly networkProfile!: pulumi.Output<types.outputs.labservices.LabNetworkProfileResponse | undefined>;
+    public readonly networkProfile!: pulumi.Output<types.outputs.LabNetworkProfileResponse | undefined>;
     /**
      * Current provisioning state of the lab.
      */
@@ -67,11 +67,11 @@ export class Lab extends pulumi.CustomResource {
     /**
      * The lab user list management profile.
      */
-    public readonly rosterProfile!: pulumi.Output<types.outputs.labservices.RosterProfileResponse | undefined>;
+    public readonly rosterProfile!: pulumi.Output<types.outputs.RosterProfileResponse | undefined>;
     /**
      * The lab security profile.
      */
-    public readonly securityProfile!: pulumi.Output<types.outputs.labservices.SecurityProfileResponse>;
+    public readonly securityProfile!: pulumi.Output<types.outputs.SecurityProfileResponse>;
     /**
      * The lab state.
      */
@@ -79,7 +79,7 @@ export class Lab extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the lab.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.labservices.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -95,7 +95,7 @@ export class Lab extends pulumi.CustomResource {
     /**
      * The profile used for creating lab virtual machines.
      */
-    public readonly virtualMachineProfile!: pulumi.Output<types.outputs.labservices.VirtualMachineProfileResponse>;
+    public readonly virtualMachineProfile!: pulumi.Output<types.outputs.VirtualMachineProfileResponse>;
 
     /**
      * Create a Lab resource with the given unique name, arguments, and options.
@@ -123,8 +123,8 @@ export class Lab extends pulumi.CustomResource {
             if ((!args || args.virtualMachineProfile === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'virtualMachineProfile'");
             }
-            resourceInputs["autoShutdownProfile"] = args ? (args.autoShutdownProfile ? pulumi.output(args.autoShutdownProfile).apply(types.inputs.labservices.autoShutdownProfileArgsProvideDefaults) : undefined) : undefined;
-            resourceInputs["connectionProfile"] = args ? (args.connectionProfile ? pulumi.output(args.connectionProfile).apply(types.inputs.labservices.connectionProfileArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["autoShutdownProfile"] = args ? (args.autoShutdownProfile ? pulumi.output(args.autoShutdownProfile).apply(types.inputs.autoShutdownProfileArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["connectionProfile"] = args ? (args.connectionProfile ? pulumi.output(args.connectionProfile).apply(types.inputs.connectionProfileArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["labName"] = args ? args.labName : undefined;
             resourceInputs["labPlanId"] = args ? args.labPlanId : undefined;
@@ -135,7 +135,7 @@ export class Lab extends pulumi.CustomResource {
             resourceInputs["securityProfile"] = args ? args.securityProfile : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["title"] = args ? args.title : undefined;
-            resourceInputs["virtualMachineProfile"] = args ? (args.virtualMachineProfile ? pulumi.output(args.virtualMachineProfile).apply(types.inputs.labservices.virtualMachineProfileArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["virtualMachineProfile"] = args ? (args.virtualMachineProfile ? pulumi.output(args.virtualMachineProfile).apply(types.inputs.virtualMachineProfileArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
@@ -173,11 +173,11 @@ export interface LabArgs {
     /**
      * The resource auto shutdown configuration for the lab. This controls whether actions are taken on resources that are sitting idle.
      */
-    autoShutdownProfile: pulumi.Input<types.inputs.labservices.AutoShutdownProfileArgs>;
+    autoShutdownProfile: pulumi.Input<types.inputs.AutoShutdownProfileArgs>;
     /**
      * The connection profile for the lab. This controls settings such as web access to lab resources or whether RDP or SSH ports are open.
      */
-    connectionProfile: pulumi.Input<types.inputs.labservices.ConnectionProfileArgs>;
+    connectionProfile: pulumi.Input<types.inputs.ConnectionProfileArgs>;
     /**
      * The description of the lab.
      */
@@ -197,7 +197,7 @@ export interface LabArgs {
     /**
      * The network profile for the lab, typically applied via a lab plan. This profile cannot be modified once a lab has been created.
      */
-    networkProfile?: pulumi.Input<types.inputs.labservices.LabNetworkProfileArgs>;
+    networkProfile?: pulumi.Input<types.inputs.LabNetworkProfileArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -205,11 +205,11 @@ export interface LabArgs {
     /**
      * The lab user list management profile.
      */
-    rosterProfile?: pulumi.Input<types.inputs.labservices.RosterProfileArgs>;
+    rosterProfile?: pulumi.Input<types.inputs.RosterProfileArgs>;
     /**
      * The lab security profile.
      */
-    securityProfile: pulumi.Input<types.inputs.labservices.SecurityProfileArgs>;
+    securityProfile: pulumi.Input<types.inputs.SecurityProfileArgs>;
     /**
      * Resource tags.
      */
@@ -221,5 +221,5 @@ export interface LabArgs {
     /**
      * The profile used for creating lab virtual machines.
      */
-    virtualMachineProfile: pulumi.Input<types.inputs.labservices.VirtualMachineProfileArgs>;
+    virtualMachineProfile: pulumi.Input<types.inputs.VirtualMachineProfileArgs>;
 }

@@ -59,11 +59,11 @@ export class Query extends pulumi.CustomResource {
     /**
      * The related metadata items for the function.
      */
-    public readonly related!: pulumi.Output<types.outputs.operationalinsights.LogAnalyticsQueryPackQueryPropertiesResponseRelated | undefined>;
+    public readonly related!: pulumi.Output<types.outputs.LogAnalyticsQueryPackQueryPropertiesResponseRelated | undefined>;
     /**
      * Read only system data
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.operationalinsights.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Tags associated with the query.
      */
@@ -171,7 +171,7 @@ export interface QueryArgs {
     /**
      * The related metadata items for the function.
      */
-    related?: pulumi.Input<types.inputs.operationalinsights.LogAnalyticsQueryPackQueryPropertiesRelatedArgs>;
+    related?: pulumi.Input<types.inputs.LogAnalyticsQueryPackQueryPropertiesRelatedArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

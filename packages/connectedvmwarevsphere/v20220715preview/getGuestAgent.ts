@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Implements GuestAgent GET method.
  */
@@ -36,7 +36,7 @@ export interface GetGuestAgentResult {
     /**
      * Username / Password Credentials to provision guest agent.
      */
-    readonly credentials?: types.outputs.connectedvmwarevsphere.v20220715preview.GuestCredentialResponse;
+    readonly credentials?: types.outputs.GuestCredentialResponse;
     /**
      * Gets the name of the corresponding resource in Kubernetes.
      */
@@ -44,7 +44,7 @@ export interface GetGuestAgentResult {
     /**
      * HTTP Proxy configuration for the VM.
      */
-    readonly httpProxyConfig?: types.outputs.connectedvmwarevsphere.v20220715preview.HttpProxyConfigurationResponse;
+    readonly httpProxyConfig?: types.outputs.HttpProxyConfigurationResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -68,11 +68,11 @@ export interface GetGuestAgentResult {
     /**
      * The resource status information.
      */
-    readonly statuses: types.outputs.connectedvmwarevsphere.v20220715preview.ResourceStatusResponse[];
+    readonly statuses: types.outputs.ResourceStatusResponse[];
     /**
      * The system data.
      */
-    readonly systemData: types.outputs.connectedvmwarevsphere.v20220715preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

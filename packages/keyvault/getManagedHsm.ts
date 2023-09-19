@@ -44,15 +44,15 @@ export interface GetManagedHsmResult {
     /**
      * Properties of the managed HSM
      */
-    readonly properties: types.outputs.keyvault.ManagedHsmPropertiesResponse;
+    readonly properties: types.outputs.ManagedHsmPropertiesResponse;
     /**
      * SKU details
      */
-    readonly sku?: types.outputs.keyvault.ManagedHsmSkuResponse;
+    readonly sku?: types.outputs.ManagedHsmSkuResponse;
     /**
      * Metadata pertaining to creation and last modification of the key vault resource.
      */
-    readonly systemData: types.outputs.keyvault.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags
      */

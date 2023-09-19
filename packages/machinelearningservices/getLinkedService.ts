@@ -41,7 +41,7 @@ export interface GetLinkedServiceResult {
     /**
      * Identity for the resource.
      */
-    readonly identity?: types.outputs.machinelearningservices.IdentityResponse;
+    readonly identity?: types.outputs.IdentityResponse;
     /**
      * location of the linked service.
      */
@@ -53,7 +53,7 @@ export interface GetLinkedServiceResult {
     /**
      * LinkedService specific properties.
      */
-    readonly properties: types.outputs.machinelearningservices.LinkedServicePropsResponse;
+    readonly properties: types.outputs.LinkedServicePropsResponse;
     /**
      * Resource type of linked service.
      */

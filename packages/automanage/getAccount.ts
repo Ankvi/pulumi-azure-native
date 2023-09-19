@@ -36,7 +36,7 @@ export interface GetAccountResult {
     /**
      * The identity of the Automanage account.
      */
-    readonly identity?: types.outputs.automanage.AccountIdentityResponse;
+    readonly identity?: types.outputs.AccountIdentityResponse;
     /**
      * The geo-location where the resource lives
      */

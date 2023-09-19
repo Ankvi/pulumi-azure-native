@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * SIM group resource.
  */
@@ -34,11 +34,11 @@ export class SimGroup extends pulumi.CustomResource {
     /**
      * A key to encrypt the SIM data that belongs to this SIM group.
      */
-    public readonly encryptionKey!: pulumi.Output<types.outputs.mobilenetwork.v20230601.KeyVaultKeyResponse | undefined>;
+    public readonly encryptionKey!: pulumi.Output<types.outputs.KeyVaultKeyResponse | undefined>;
     /**
      * The identity used to retrieve the encryption key from Azure key vault.
      */
-    public readonly identity!: pulumi.Output<types.outputs.mobilenetwork.v20230601.ManagedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -46,7 +46,7 @@ export class SimGroup extends pulumi.CustomResource {
     /**
      * Mobile network that this SIM group belongs to. The mobile network must be in the same location as the SIM group.
      */
-    public readonly mobileNetwork!: pulumi.Output<types.outputs.mobilenetwork.v20230601.MobileNetworkResourceIdResponse | undefined>;
+    public readonly mobileNetwork!: pulumi.Output<types.outputs.MobileNetworkResourceIdResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -58,7 +58,7 @@ export class SimGroup extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.mobilenetwork.v20230601.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -118,11 +118,11 @@ export interface SimGroupArgs {
     /**
      * A key to encrypt the SIM data that belongs to this SIM group.
      */
-    encryptionKey?: pulumi.Input<types.inputs.mobilenetwork.v20230601.KeyVaultKeyArgs>;
+    encryptionKey?: pulumi.Input<types.inputs.KeyVaultKeyArgs>;
     /**
      * The identity used to retrieve the encryption key from Azure key vault.
      */
-    identity?: pulumi.Input<types.inputs.mobilenetwork.v20230601.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -130,7 +130,7 @@ export interface SimGroupArgs {
     /**
      * Mobile network that this SIM group belongs to. The mobile network must be in the same location as the SIM group.
      */
-    mobileNetwork?: pulumi.Input<types.inputs.mobilenetwork.v20230601.MobileNetworkResourceIdArgs>;
+    mobileNetwork?: pulumi.Input<types.inputs.MobileNetworkResourceIdArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

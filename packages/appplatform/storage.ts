@@ -39,11 +39,11 @@ export class Storage extends pulumi.CustomResource {
     /**
      * Properties of the storage resource payload.
      */
-    public readonly properties!: pulumi.Output<types.outputs.appplatform.StorageAccountResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.StorageAccountResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.appplatform.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource.
      */
@@ -93,7 +93,7 @@ export interface StorageArgs {
     /**
      * Properties of the storage resource payload.
      */
-    properties?: pulumi.Input<types.inputs.appplatform.StorageAccountArgs>;
+    properties?: pulumi.Input<types.inputs.StorageAccountArgs>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */

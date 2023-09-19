@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * This type describes a gateway resource.
  */
@@ -38,11 +38,11 @@ export class Gateway extends pulumi.CustomResource {
     /**
      * Network that the Application is using.
      */
-    public readonly destinationNetwork!: pulumi.Output<types.outputs.servicefabricmesh.v20180901preview.NetworkRefResponse>;
+    public readonly destinationNetwork!: pulumi.Output<types.outputs.NetworkRefResponse>;
     /**
      * Configuration for http connectivity for this gateway.
      */
-    public readonly http!: pulumi.Output<types.outputs.servicefabricmesh.v20180901preview.HttpConfigResponse[] | undefined>;
+    public readonly http!: pulumi.Output<types.outputs.HttpConfigResponse[] | undefined>;
     /**
      * IP address of the gateway. This is populated in the response and is ignored for incoming requests.
      */
@@ -62,7 +62,7 @@ export class Gateway extends pulumi.CustomResource {
     /**
      * Network the gateway should listen on for requests.
      */
-    public readonly sourceNetwork!: pulumi.Output<types.outputs.servicefabricmesh.v20180901preview.NetworkRefResponse>;
+    public readonly sourceNetwork!: pulumi.Output<types.outputs.NetworkRefResponse>;
     /**
      * Status of the resource.
      */
@@ -78,7 +78,7 @@ export class Gateway extends pulumi.CustomResource {
     /**
      * Configuration for tcp connectivity for this gateway.
      */
-    public readonly tcp!: pulumi.Output<types.outputs.servicefabricmesh.v20180901preview.TcpConfigResponse[] | undefined>;
+    public readonly tcp!: pulumi.Output<types.outputs.TcpConfigResponse[] | undefined>;
     /**
      * The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
      */
@@ -152,7 +152,7 @@ export interface GatewayArgs {
     /**
      * Network that the Application is using.
      */
-    destinationNetwork: pulumi.Input<types.inputs.servicefabricmesh.v20180901preview.NetworkRefArgs>;
+    destinationNetwork: pulumi.Input<types.inputs.NetworkRefArgs>;
     /**
      * The identity of the gateway.
      */
@@ -160,7 +160,7 @@ export interface GatewayArgs {
     /**
      * Configuration for http connectivity for this gateway.
      */
-    http?: pulumi.Input<pulumi.Input<types.inputs.servicefabricmesh.v20180901preview.HttpConfigArgs>[]>;
+    http?: pulumi.Input<pulumi.Input<types.inputs.HttpConfigArgs>[]>;
     /**
      * The geo-location where the resource lives
      */
@@ -172,7 +172,7 @@ export interface GatewayArgs {
     /**
      * Network the gateway should listen on for requests.
      */
-    sourceNetwork: pulumi.Input<types.inputs.servicefabricmesh.v20180901preview.NetworkRefArgs>;
+    sourceNetwork: pulumi.Input<types.inputs.NetworkRefArgs>;
     /**
      * Resource tags.
      */
@@ -180,5 +180,5 @@ export interface GatewayArgs {
     /**
      * Configuration for tcp connectivity for this gateway.
      */
-    tcp?: pulumi.Input<pulumi.Input<types.inputs.servicefabricmesh.v20180901preview.TcpConfigArgs>[]>;
+    tcp?: pulumi.Input<pulumi.Input<types.inputs.TcpConfigArgs>[]>;
 }

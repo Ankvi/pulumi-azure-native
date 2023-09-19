@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieve an Object Anchors Account.
  */
@@ -40,11 +40,11 @@ export interface GetObjectAnchorsAccountResult {
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
     readonly id: string;
-    readonly identity?: types.outputs.mixedreality.v20210301preview.ObjectAnchorsAccountResponseIdentity;
+    readonly identity?: types.outputs.ObjectAnchorsAccountResponseIdentity;
     /**
      * The kind of account, if supported
      */
-    readonly kind?: types.outputs.mixedreality.v20210301preview.SkuResponse;
+    readonly kind?: types.outputs.SkuResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -56,11 +56,11 @@ export interface GetObjectAnchorsAccountResult {
     /**
      * The plan associated with this account
      */
-    readonly plan?: types.outputs.mixedreality.v20210301preview.IdentityResponse;
+    readonly plan?: types.outputs.IdentityResponse;
     /**
      * The sku associated with this account
      */
-    readonly sku?: types.outputs.mixedreality.v20210301preview.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * The name of the storage account associated with this accountId
      */
@@ -68,7 +68,7 @@ export interface GetObjectAnchorsAccountResult {
     /**
      * The system metadata related to an object anchors account.
      */
-    readonly systemData: types.outputs.mixedreality.v20210301preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

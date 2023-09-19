@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a virtual machine
  */
@@ -31,15 +31,15 @@ export interface GetVirtualMachineResult {
     /**
      * The extendedLocation of the resource.
      */
-    readonly extendedLocation?: types.outputs.azurestackhci.v20221215preview.ExtendedLocationResponse;
+    readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
     /**
      * Guest agent status properties.
      */
-    readonly guestAgentProfile?: types.outputs.azurestackhci.v20221215preview.GuestAgentProfileResponse;
+    readonly guestAgentProfile?: types.outputs.GuestAgentProfileResponse;
     /**
      * HardwareProfile - Specifies the hardware settings for the virtual machine.
      */
-    readonly hardwareProfile?: types.outputs.azurestackhci.v20221215preview.VirtualMachinePropertiesResponseHardwareProfile;
+    readonly hardwareProfile?: types.outputs.VirtualMachinePropertiesResponseHardwareProfile;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -47,7 +47,7 @@ export interface GetVirtualMachineResult {
     /**
      * Identity for the resource.
      */
-    readonly identity?: types.outputs.azurestackhci.v20221215preview.IdentityResponse;
+    readonly identity?: types.outputs.IdentityResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -59,11 +59,11 @@ export interface GetVirtualMachineResult {
     /**
      * NetworkProfile - describes the network configuration the virtual machine
      */
-    readonly networkProfile?: types.outputs.azurestackhci.v20221215preview.VirtualMachinePropertiesResponseNetworkProfile;
+    readonly networkProfile?: types.outputs.VirtualMachinePropertiesResponseNetworkProfile;
     /**
      * OsProfile - describes the configuration of the operating system and sets login data
      */
-    readonly osProfile?: types.outputs.azurestackhci.v20221215preview.VirtualMachinePropertiesResponseOsProfile;
+    readonly osProfile?: types.outputs.VirtualMachinePropertiesResponseOsProfile;
     /**
      * Provisioning state of the virtual machine.
      */
@@ -71,19 +71,19 @@ export interface GetVirtualMachineResult {
     /**
      * SecurityProfile - Specifies the security settings for the virtual machine.
      */
-    readonly securityProfile?: types.outputs.azurestackhci.v20221215preview.VirtualMachinePropertiesResponseSecurityProfile;
+    readonly securityProfile?: types.outputs.VirtualMachinePropertiesResponseSecurityProfile;
     /**
      * The observed state of virtual machines
      */
-    readonly status: types.outputs.azurestackhci.v20221215preview.VirtualMachineStatusResponse;
+    readonly status: types.outputs.VirtualMachineStatusResponse;
     /**
      * StorageProfile - contains information about the disks and storage information for the virtual machine
      */
-    readonly storageProfile?: types.outputs.azurestackhci.v20221215preview.VirtualMachinePropertiesResponseStorageProfile;
+    readonly storageProfile?: types.outputs.VirtualMachinePropertiesResponseStorageProfile;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.azurestackhci.v20221215preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

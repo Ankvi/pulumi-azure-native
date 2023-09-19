@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * LoadTest details
  */
@@ -42,7 +42,7 @@ export class LoadTest extends pulumi.CustomResource {
     /**
      * The type of identity used for the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.loadtestservice.v20211201preview.SystemAssignedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.SystemAssignedServiceIdentityResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -58,7 +58,7 @@ export class LoadTest extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.loadtestservice.v20211201preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -122,7 +122,7 @@ export interface LoadTestArgs {
     /**
      * The type of identity used for the resource.
      */
-    identity?: pulumi.Input<types.inputs.loadtestservice.v20211201preview.SystemAssignedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.SystemAssignedServiceIdentityArgs>;
     /**
      * Load Test resource name.
      */

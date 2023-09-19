@@ -32,7 +32,7 @@ export interface ListMongoClusterConnectionStringsResult {
     /**
      * An array that contains the connection strings for a mongo cluster.
      */
-    readonly connectionStrings: types.outputs.documentdb.ConnectionStringResponse[];
+    readonly connectionStrings: types.outputs.ConnectionStringResponse[];
 }
 /**
  * List mongo cluster connection strings. This includes the default connection string using SCRAM-SHA-256, as well as other connection strings supported by the cluster.

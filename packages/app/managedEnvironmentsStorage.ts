@@ -39,11 +39,11 @@ export class ManagedEnvironmentsStorage extends pulumi.CustomResource {
     /**
      * Storage properties
      */
-    public readonly properties!: pulumi.Output<types.outputs.app.ManagedEnvironmentStorageResponseProperties>;
+    public readonly properties!: pulumi.Output<types.outputs.ManagedEnvironmentStorageResponseProperties>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.app.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -97,7 +97,7 @@ export interface ManagedEnvironmentsStorageArgs {
     /**
      * Storage properties
      */
-    properties?: pulumi.Input<types.inputs.app.ManagedEnvironmentStoragePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ManagedEnvironmentStoragePropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

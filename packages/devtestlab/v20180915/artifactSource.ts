@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Properties of an artifact source.
  */
@@ -193,11 +193,11 @@ export interface ArtifactSourceArgs {
     /**
      * The artifact source's type.
      */
-    sourceType?: pulumi.Input<string | types.enums.v20180915.SourceControlType>;
+    sourceType?: pulumi.Input<string | types.enums.SourceControlType>;
     /**
      * Indicates if the artifact source is enabled (values: Enabled, Disabled).
      */
-    status?: pulumi.Input<string | types.enums.v20180915.EnableStatus>;
+    status?: pulumi.Input<string | types.enums.EnableStatus>;
     /**
      * The tags of the resource.
      */

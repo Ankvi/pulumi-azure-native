@@ -13,7 +13,7 @@ utilities.lazyLoad(exports, ["getDedicatedHsm","getDedicatedHsmOutput"], () => r
 
 
 // Export enums:
-export * from "../types/enums/v20211130";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

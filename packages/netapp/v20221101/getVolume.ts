@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the details of the specified volume
  */
@@ -77,7 +77,7 @@ export interface GetVolumeResult {
     /**
      * DataProtection type volumes include an object containing details of the replication
      */
-    readonly dataProtection?: types.outputs.netapp.v20221101.VolumePropertiesResponseDataProtection;
+    readonly dataProtection?: types.outputs.VolumePropertiesResponseDataProtection;
     /**
      * Data store resource unique identifier
      */
@@ -113,7 +113,7 @@ export interface GetVolumeResult {
     /**
      * Set of export policy rules
      */
-    readonly exportPolicy?: types.outputs.netapp.v20221101.VolumePropertiesResponseExportPolicy;
+    readonly exportPolicy?: types.outputs.VolumePropertiesResponseExportPolicy;
     /**
      * Flag indicating whether file access logs are enabled for the volume, based on active diagnostic settings present on the volume.
      */
@@ -161,7 +161,7 @@ export interface GetVolumeResult {
     /**
      * List of mount targets
      */
-    readonly mountTargets: types.outputs.netapp.v20221101.MountTargetPropertiesResponse[];
+    readonly mountTargets: types.outputs.MountTargetPropertiesResponse[];
     /**
      * The name of the resource
      */
@@ -181,7 +181,7 @@ export interface GetVolumeResult {
     /**
      * Application specific placement rules for the particular volume
      */
-    readonly placementRules?: types.outputs.netapp.v20221101.PlacementKeyValuePairsResponse[];
+    readonly placementRules?: types.outputs.PlacementKeyValuePairsResponse[];
     /**
      * Set of protocol types, default NFSv3, CIFS for SMB protocol
      */
@@ -241,7 +241,7 @@ export interface GetVolumeResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.netapp.v20221101.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * T2 network information
      */

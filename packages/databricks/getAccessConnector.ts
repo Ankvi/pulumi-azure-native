@@ -36,7 +36,7 @@ export interface GetAccessConnectorResult {
     /**
      * Managed service identity (system assigned and/or user assigned identities)
      */
-    readonly identity?: types.outputs.databricks.ManagedServiceIdentityResponse;
+    readonly identity?: types.outputs.ManagedServiceIdentityResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -48,11 +48,11 @@ export interface GetAccessConnectorResult {
     /**
      * Azure Databricks accessConnector properties
      */
-    readonly properties: types.outputs.databricks.AccessConnectorPropertiesResponse;
+    readonly properties: types.outputs.AccessConnectorPropertiesResponse;
     /**
      * The system metadata relating to this resource
      */
-    readonly systemData: types.outputs.databricks.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

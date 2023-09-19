@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * KPack Builder resource
  */
@@ -38,11 +38,11 @@ export class BuildServiceBuilder extends pulumi.CustomResource {
     /**
      * Property of the Builder resource.
      */
-    public readonly properties!: pulumi.Output<types.outputs.appplatform.v20230901preview.BuilderPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.BuilderPropertiesResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.appplatform.v20230901preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource.
      */
@@ -104,7 +104,7 @@ export interface BuildServiceBuilderArgs {
     /**
      * Property of the Builder resource.
      */
-    properties?: pulumi.Input<types.inputs.appplatform.v20230901preview.BuilderPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.BuilderPropertiesArgs>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */

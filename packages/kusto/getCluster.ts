@@ -32,7 +32,7 @@ export interface GetClusterResult {
     /**
      * The cluster's accepted audiences.
      */
-    readonly acceptedAudiences?: types.outputs.kusto.AcceptedAudiencesResponse[];
+    readonly acceptedAudiences?: types.outputs.AcceptedAudiencesResponse[];
     /**
      * List of allowed FQDNs(Fully Qualified Domain Name) for egress from Cluster.
      */
@@ -80,15 +80,15 @@ export interface GetClusterResult {
     /**
      * The identity of the cluster, if configured.
      */
-    readonly identity?: types.outputs.kusto.IdentityResponse;
+    readonly identity?: types.outputs.IdentityResponse;
     /**
      * KeyVault properties for the cluster encryption.
      */
-    readonly keyVaultProperties?: types.outputs.kusto.KeyVaultPropertiesResponse;
+    readonly keyVaultProperties?: types.outputs.KeyVaultPropertiesResponse;
     /**
      * List of the cluster's language extensions.
      */
-    readonly languageExtensions?: types.outputs.kusto.LanguageExtensionsListResponse;
+    readonly languageExtensions?: types.outputs.LanguageExtensionsListResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -100,11 +100,11 @@ export interface GetClusterResult {
     /**
      * Optimized auto scale definition.
      */
-    readonly optimizedAutoscale?: types.outputs.kusto.OptimizedAutoscaleResponse;
+    readonly optimizedAutoscale?: types.outputs.OptimizedAutoscaleResponse;
     /**
      * A list of private endpoint connections.
      */
-    readonly privateEndpointConnections: types.outputs.kusto.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections: types.outputs.PrivateEndpointConnectionResponse[];
     /**
      * The provisioned state of the resource.
      */
@@ -124,7 +124,7 @@ export interface GetClusterResult {
     /**
      * The SKU of the cluster.
      */
-    readonly sku: types.outputs.kusto.AzureSkuResponse;
+    readonly sku: types.outputs.AzureSkuResponse;
     /**
      * The state of the resource.
      */
@@ -136,7 +136,7 @@ export interface GetClusterResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.kusto.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -144,7 +144,7 @@ export interface GetClusterResult {
     /**
      * The cluster's external tenants.
      */
-    readonly trustedExternalTenants?: types.outputs.kusto.TrustedExternalTenantResponse[];
+    readonly trustedExternalTenants?: types.outputs.TrustedExternalTenantResponse[];
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -156,7 +156,7 @@ export interface GetClusterResult {
     /**
      * Virtual network definition.
      */
-    readonly virtualNetworkConfiguration?: types.outputs.kusto.VirtualNetworkConfigurationResponse;
+    readonly virtualNetworkConfiguration?: types.outputs.VirtualNetworkConfigurationResponse;
     /**
      * The availability zones of the cluster.
      */

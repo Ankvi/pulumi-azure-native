@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the Neighbor Group.
  */
@@ -35,7 +35,7 @@ export interface GetNeighborGroupResult {
     /**
      * An array of destination IPv4 Addresses or IPv6 Addresses.
      */
-    readonly destination: types.outputs.managednetworkfabric.v20230615.NeighborGroupDestinationResponse;
+    readonly destination: types.outputs.NeighborGroupDestinationResponse;
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -63,7 +63,7 @@ export interface GetNeighborGroupResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.managednetworkfabric.v20230615.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

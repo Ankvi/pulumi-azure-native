@@ -35,19 +35,19 @@ export class VirtualMachine extends pulumi.CustomResource {
     /**
      * The extendedLocation of the resource.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.azurestackhci.ExtendedLocationResponse | undefined>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
     /**
      * Guest agent status properties.
      */
-    public /*out*/ readonly guestAgentProfile!: pulumi.Output<types.outputs.azurestackhci.GuestAgentProfileResponse | undefined>;
+    public /*out*/ readonly guestAgentProfile!: pulumi.Output<types.outputs.GuestAgentProfileResponse | undefined>;
     /**
      * HardwareProfile - Specifies the hardware settings for the virtual machine.
      */
-    public readonly hardwareProfile!: pulumi.Output<types.outputs.azurestackhci.VirtualMachinePropertiesResponseHardwareProfile | undefined>;
+    public readonly hardwareProfile!: pulumi.Output<types.outputs.VirtualMachinePropertiesResponseHardwareProfile | undefined>;
     /**
      * Identity for the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.azurestackhci.IdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -59,11 +59,11 @@ export class VirtualMachine extends pulumi.CustomResource {
     /**
      * NetworkProfile - describes the network configuration the virtual machine
      */
-    public readonly networkProfile!: pulumi.Output<types.outputs.azurestackhci.VirtualMachinePropertiesResponseNetworkProfile | undefined>;
+    public readonly networkProfile!: pulumi.Output<types.outputs.VirtualMachinePropertiesResponseNetworkProfile | undefined>;
     /**
      * OsProfile - describes the configuration of the operating system and sets login data
      */
-    public readonly osProfile!: pulumi.Output<types.outputs.azurestackhci.VirtualMachinePropertiesResponseOsProfile | undefined>;
+    public readonly osProfile!: pulumi.Output<types.outputs.VirtualMachinePropertiesResponseOsProfile | undefined>;
     /**
      * Provisioning state of the virtual machine.
      */
@@ -71,19 +71,19 @@ export class VirtualMachine extends pulumi.CustomResource {
     /**
      * SecurityProfile - Specifies the security settings for the virtual machine.
      */
-    public readonly securityProfile!: pulumi.Output<types.outputs.azurestackhci.VirtualMachinePropertiesResponseSecurityProfile | undefined>;
+    public readonly securityProfile!: pulumi.Output<types.outputs.VirtualMachinePropertiesResponseSecurityProfile | undefined>;
     /**
      * The observed state of virtual machines
      */
-    public /*out*/ readonly status!: pulumi.Output<types.outputs.azurestackhci.VirtualMachineStatusResponse>;
+    public /*out*/ readonly status!: pulumi.Output<types.outputs.VirtualMachineStatusResponse>;
     /**
      * StorageProfile - contains information about the disks and storage information for the virtual machine
      */
-    public readonly storageProfile!: pulumi.Output<types.outputs.azurestackhci.VirtualMachinePropertiesResponseStorageProfile | undefined>;
+    public readonly storageProfile!: pulumi.Output<types.outputs.VirtualMachinePropertiesResponseStorageProfile | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.azurestackhci.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -112,13 +112,13 @@ export class VirtualMachine extends pulumi.CustomResource {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
             resourceInputs["extendedLocation"] = args ? args.extendedLocation : undefined;
-            resourceInputs["hardwareProfile"] = args ? (args.hardwareProfile ? pulumi.output(args.hardwareProfile).apply(types.inputs.azurestackhci.virtualMachinePropertiesHardwareProfileArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["hardwareProfile"] = args ? (args.hardwareProfile ? pulumi.output(args.hardwareProfile).apply(types.inputs.virtualMachinePropertiesHardwareProfileArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["identity"] = args ? args.identity : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["networkProfile"] = args ? args.networkProfile : undefined;
             resourceInputs["osProfile"] = args ? args.osProfile : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["securityProfile"] = args ? (args.securityProfile ? pulumi.output(args.securityProfile).apply(types.inputs.azurestackhci.virtualMachinePropertiesSecurityProfileArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["securityProfile"] = args ? (args.securityProfile ? pulumi.output(args.securityProfile).apply(types.inputs.virtualMachinePropertiesSecurityProfileArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["storageProfile"] = args ? args.storageProfile : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["virtualMachineName"] = args ? args.virtualMachineName : undefined;
@@ -161,15 +161,15 @@ export interface VirtualMachineArgs {
     /**
      * The extendedLocation of the resource.
      */
-    extendedLocation?: pulumi.Input<types.inputs.azurestackhci.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * HardwareProfile - Specifies the hardware settings for the virtual machine.
      */
-    hardwareProfile?: pulumi.Input<types.inputs.azurestackhci.VirtualMachinePropertiesHardwareProfileArgs>;
+    hardwareProfile?: pulumi.Input<types.inputs.VirtualMachinePropertiesHardwareProfileArgs>;
     /**
      * Identity for the resource.
      */
-    identity?: pulumi.Input<types.inputs.azurestackhci.IdentityArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -177,11 +177,11 @@ export interface VirtualMachineArgs {
     /**
      * NetworkProfile - describes the network configuration the virtual machine
      */
-    networkProfile?: pulumi.Input<types.inputs.azurestackhci.VirtualMachinePropertiesNetworkProfileArgs>;
+    networkProfile?: pulumi.Input<types.inputs.VirtualMachinePropertiesNetworkProfileArgs>;
     /**
      * OsProfile - describes the configuration of the operating system and sets login data
      */
-    osProfile?: pulumi.Input<types.inputs.azurestackhci.VirtualMachinePropertiesOsProfileArgs>;
+    osProfile?: pulumi.Input<types.inputs.VirtualMachinePropertiesOsProfileArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -189,11 +189,11 @@ export interface VirtualMachineArgs {
     /**
      * SecurityProfile - Specifies the security settings for the virtual machine.
      */
-    securityProfile?: pulumi.Input<types.inputs.azurestackhci.VirtualMachinePropertiesSecurityProfileArgs>;
+    securityProfile?: pulumi.Input<types.inputs.VirtualMachinePropertiesSecurityProfileArgs>;
     /**
      * StorageProfile - contains information about the disks and storage information for the virtual machine
      */
-    storageProfile?: pulumi.Input<types.inputs.azurestackhci.VirtualMachinePropertiesStorageProfileArgs>;
+    storageProfile?: pulumi.Input<types.inputs.VirtualMachinePropertiesStorageProfileArgs>;
     /**
      * Resource tags.
      */

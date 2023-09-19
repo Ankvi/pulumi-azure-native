@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets information about a disk access resource.
  */
@@ -31,7 +31,7 @@ export interface GetDiskAccessResult {
     /**
      * The extended location where the disk access will be created. Extended location cannot be changed.
      */
-    readonly extendedLocation?: types.outputs.compute.v20230102.ExtendedLocationResponse;
+    readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
     /**
      * Resource Id
      */
@@ -47,7 +47,7 @@ export interface GetDiskAccessResult {
     /**
      * A readonly collection of private endpoint connections created on the disk. Currently only one endpoint connection is supported.
      */
-    readonly privateEndpointConnections: types.outputs.compute.v20230102.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections: types.outputs.PrivateEndpointConnectionResponse[];
     /**
      * The disk access resource provisioning state.
      */

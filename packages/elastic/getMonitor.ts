@@ -36,7 +36,7 @@ export interface GetMonitorResult {
     /**
      * Identity properties of the monitor resource.
      */
-    readonly identity?: types.outputs.elastic.IdentityPropertiesResponse;
+    readonly identity?: types.outputs.IdentityPropertiesResponse;
     /**
      * The location of the monitor resource
      */
@@ -48,15 +48,15 @@ export interface GetMonitorResult {
     /**
      * Properties of the monitor resource.
      */
-    readonly properties: types.outputs.elastic.MonitorPropertiesResponse;
+    readonly properties: types.outputs.MonitorPropertiesResponse;
     /**
      * SKU of the monitor resource.
      */
-    readonly sku?: types.outputs.elastic.ResourceSkuResponse;
+    readonly sku?: types.outputs.ResourceSkuResponse;
     /**
      * The system metadata relating to this resource
      */
-    readonly systemData: types.outputs.elastic.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The tags of the monitor resource.
      */

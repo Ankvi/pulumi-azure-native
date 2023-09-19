@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Describes a DNS zone.
  */
@@ -62,19 +62,19 @@ export class Zone extends pulumi.CustomResource {
     /**
      * A list of references to virtual networks that register hostnames in this DNS zone. This is a only when ZoneType is Private.
      */
-    public readonly registrationVirtualNetworks!: pulumi.Output<types.outputs.network.v20230701preview.SubResourceResponse[] | undefined>;
+    public readonly registrationVirtualNetworks!: pulumi.Output<types.outputs.SubResourceResponse[] | undefined>;
     /**
      * A list of references to virtual networks that resolve records in this DNS zone. This is a only when ZoneType is Private.
      */
-    public readonly resolutionVirtualNetworks!: pulumi.Output<types.outputs.network.v20230701preview.SubResourceResponse[] | undefined>;
+    public readonly resolutionVirtualNetworks!: pulumi.Output<types.outputs.SubResourceResponse[] | undefined>;
     /**
      * The list of signing keys.
      */
-    public /*out*/ readonly signingKeys!: pulumi.Output<types.outputs.network.v20230701preview.SigningKeyResponse[]>;
+    public /*out*/ readonly signingKeys!: pulumi.Output<types.outputs.SigningKeyResponse[]>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.network.v20230701preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -152,11 +152,11 @@ export interface ZoneArgs {
     /**
      * A list of references to virtual networks that register hostnames in this DNS zone. This is a only when ZoneType is Private.
      */
-    registrationVirtualNetworks?: pulumi.Input<pulumi.Input<types.inputs.network.v20230701preview.SubResourceArgs>[]>;
+    registrationVirtualNetworks?: pulumi.Input<pulumi.Input<types.inputs.SubResourceArgs>[]>;
     /**
      * A list of references to virtual networks that resolve records in this DNS zone. This is a only when ZoneType is Private.
      */
-    resolutionVirtualNetworks?: pulumi.Input<pulumi.Input<types.inputs.network.v20230701preview.SubResourceArgs>[]>;
+    resolutionVirtualNetworks?: pulumi.Input<pulumi.Input<types.inputs.SubResourceArgs>[]>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -172,5 +172,5 @@ export interface ZoneArgs {
     /**
      * The type of this DNS zone (Public or Private).
      */
-    zoneType?: pulumi.Input<types.enums.v20230701preview.ZoneType>;
+    zoneType?: pulumi.Input<types.enums.ZoneType>;
 }

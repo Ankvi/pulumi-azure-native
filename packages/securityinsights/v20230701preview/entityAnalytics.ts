@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Settings with single toggle.
  */
@@ -51,7 +51,7 @@ export class EntityAnalytics extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.securityinsights.v20230701preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -108,7 +108,7 @@ export interface EntityAnalyticsArgs {
     /**
      * The relevant entity providers that are synced
      */
-    entityProviders?: pulumi.Input<pulumi.Input<string | types.enums.v20230701preview.EntityProviders>[]>;
+    entityProviders?: pulumi.Input<pulumi.Input<string | types.enums.EntityProviders>[]>;
     /**
      * The kind of the setting
      * Expected value is 'EntityAnalytics'.

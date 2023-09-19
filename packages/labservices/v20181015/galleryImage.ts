@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents an image from the Azure Marketplace
  */
@@ -50,7 +50,7 @@ export class GalleryImage extends pulumi.CustomResource {
     /**
      * The image reference of the gallery image.
      */
-    public /*out*/ readonly imageReference!: pulumi.Output<types.outputs.labservices.v20181015.GalleryImageReferenceResponse>;
+    public /*out*/ readonly imageReference!: pulumi.Output<types.outputs.GalleryImageReferenceResponse>;
     /**
      * Indicates whether this gallery image is enabled.
      */
@@ -66,7 +66,7 @@ export class GalleryImage extends pulumi.CustomResource {
     /**
      * The details of the latest operation. ex: status, error
      */
-    public /*out*/ readonly latestOperationResult!: pulumi.Output<types.outputs.labservices.v20181015.LatestOperationResultResponse>;
+    public /*out*/ readonly latestOperationResult!: pulumi.Output<types.outputs.LatestOperationResultResponse>;
     /**
      * The location of the resource.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Contact details and configurations for notifications coming from Microsoft Defender for Cloud.
  */
@@ -34,7 +34,7 @@ export class SecurityContact extends pulumi.CustomResource {
     /**
      * Defines whether to send email notifications about new security alerts
      */
-    public readonly alertNotifications!: pulumi.Output<types.outputs.security.v20200101preview.SecurityContactPropertiesResponseAlertNotifications | undefined>;
+    public readonly alertNotifications!: pulumi.Output<types.outputs.SecurityContactPropertiesResponseAlertNotifications | undefined>;
     /**
      * List of email addresses which will get notifications from Microsoft Defender for Cloud by the configurations defined in this security contact.
      */
@@ -46,7 +46,7 @@ export class SecurityContact extends pulumi.CustomResource {
     /**
      * Defines whether to send email notifications from Microsoft Defender for Cloud to persons with specific RBAC roles on the subscription.
      */
-    public readonly notificationsByRole!: pulumi.Output<types.outputs.security.v20200101preview.SecurityContactPropertiesResponseNotificationsByRole | undefined>;
+    public readonly notificationsByRole!: pulumi.Output<types.outputs.SecurityContactPropertiesResponseNotificationsByRole | undefined>;
     /**
      * The security contact's phone number
      */
@@ -96,7 +96,7 @@ export interface SecurityContactArgs {
     /**
      * Defines whether to send email notifications about new security alerts
      */
-    alertNotifications?: pulumi.Input<types.inputs.security.v20200101preview.SecurityContactPropertiesAlertNotificationsArgs>;
+    alertNotifications?: pulumi.Input<types.inputs.SecurityContactPropertiesAlertNotificationsArgs>;
     /**
      * List of email addresses which will get notifications from Microsoft Defender for Cloud by the configurations defined in this security contact.
      */
@@ -104,7 +104,7 @@ export interface SecurityContactArgs {
     /**
      * Defines whether to send email notifications from Microsoft Defender for Cloud to persons with specific RBAC roles on the subscription.
      */
-    notificationsByRole?: pulumi.Input<types.inputs.security.v20200101preview.SecurityContactPropertiesNotificationsByRoleArgs>;
+    notificationsByRole?: pulumi.Input<types.inputs.SecurityContactPropertiesNotificationsByRoleArgs>;
     /**
      * The security contact's phone number
      */

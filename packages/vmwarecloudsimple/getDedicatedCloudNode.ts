@@ -88,7 +88,7 @@ export interface GetDedicatedCloudNodeResult {
     /**
      * Dedicated Cloud Nodes SKU
      */
-    readonly sku?: types.outputs.vmwarecloudsimple.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * Node status, indicates is private cloud set up on this node or not
      */

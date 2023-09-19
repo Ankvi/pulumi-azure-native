@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * API details.
  */
@@ -54,7 +54,7 @@ export class Api extends pulumi.CustomResource {
     /**
      * An API Version Set contains the common configuration for a set of API Versions relating 
      */
-    public readonly apiVersionSet!: pulumi.Output<types.outputs.apimanagement.v20180601preview.ApiVersionSetContractDetailsResponse | undefined>;
+    public readonly apiVersionSet!: pulumi.Output<types.outputs.ApiVersionSetContractDetailsResponse | undefined>;
     /**
      * A resource identifier for the related ApiVersionSet.
      */
@@ -62,7 +62,7 @@ export class Api extends pulumi.CustomResource {
     /**
      * Collection of authentication settings included into this API.
      */
-    public readonly authenticationSettings!: pulumi.Output<types.outputs.apimanagement.v20180601preview.AuthenticationSettingsContractResponse | undefined>;
+    public readonly authenticationSettings!: pulumi.Output<types.outputs.AuthenticationSettingsContractResponse | undefined>;
     /**
      * Description of the API. May include HTML formatting tags.
      */
@@ -98,7 +98,7 @@ export class Api extends pulumi.CustomResource {
     /**
      * Protocols over which API is made available.
      */
-    public readonly subscriptionKeyParameterNames!: pulumi.Output<types.outputs.apimanagement.v20180601preview.SubscriptionKeyParameterNamesContractResponse | undefined>;
+    public readonly subscriptionKeyParameterNames!: pulumi.Output<types.outputs.SubscriptionKeyParameterNamesContractResponse | undefined>;
     /**
      * Specifies whether an API or Product subscription is required for accessing the API.
      */
@@ -201,7 +201,7 @@ export interface ApiArgs {
     /**
      * Type of API.
      */
-    apiType?: pulumi.Input<string | types.enums.v20180601preview.ApiType>;
+    apiType?: pulumi.Input<string | types.enums.ApiType>;
     /**
      * Indicates the Version identifier of the API if the API is versioned
      */
@@ -213,7 +213,7 @@ export interface ApiArgs {
     /**
      * An API Version Set contains the common configuration for a set of API Versions relating 
      */
-    apiVersionSet?: pulumi.Input<types.inputs.apimanagement.v20180601preview.ApiVersionSetContractDetailsArgs>;
+    apiVersionSet?: pulumi.Input<types.inputs.ApiVersionSetContractDetailsArgs>;
     /**
      * A resource identifier for the related ApiVersionSet.
      */
@@ -221,11 +221,11 @@ export interface ApiArgs {
     /**
      * Collection of authentication settings included into this API.
      */
-    authenticationSettings?: pulumi.Input<types.inputs.apimanagement.v20180601preview.AuthenticationSettingsContractArgs>;
+    authenticationSettings?: pulumi.Input<types.inputs.AuthenticationSettingsContractArgs>;
     /**
      * Format of the Content in which the API is getting imported.
      */
-    contentFormat?: pulumi.Input<string | types.enums.v20180601preview.ContentFormat>;
+    contentFormat?: pulumi.Input<string | types.enums.ContentFormat>;
     /**
      * Content value when Importing an API.
      */
@@ -245,7 +245,7 @@ export interface ApiArgs {
     /**
      * Describes on which protocols the operations in this API can be invoked.
      */
-    protocols?: pulumi.Input<pulumi.Input<types.enums.v20180601preview.Protocol>[]>;
+    protocols?: pulumi.Input<pulumi.Input<types.enums.Protocol>[]>;
     /**
      * The name of the resource group.
      */
@@ -263,11 +263,11 @@ export interface ApiArgs {
      *  * `http` creates a SOAP to REST API 
      *  * `soap` creates a SOAP pass-through API .
      */
-    soapApiType?: pulumi.Input<string | types.enums.v20180601preview.SoapApiType>;
+    soapApiType?: pulumi.Input<string | types.enums.SoapApiType>;
     /**
      * Protocols over which API is made available.
      */
-    subscriptionKeyParameterNames?: pulumi.Input<types.inputs.apimanagement.v20180601preview.SubscriptionKeyParameterNamesContractArgs>;
+    subscriptionKeyParameterNames?: pulumi.Input<types.inputs.SubscriptionKeyParameterNamesContractArgs>;
     /**
      * Specifies whether an API or Product subscription is required for accessing the API.
      */
@@ -275,5 +275,5 @@ export interface ApiArgs {
     /**
      * Criteria to limit import of WSDL to a subset of the document.
      */
-    wsdlSelector?: pulumi.Input<types.inputs.apimanagement.v20180601preview.ApiCreateOrUpdatePropertiesWsdlSelectorArgs>;
+    wsdlSelector?: pulumi.Input<types.inputs.ApiCreateOrUpdatePropertiesWsdlSelectorArgs>;
 }

@@ -39,11 +39,11 @@ export class JitRequest extends pulumi.CustomResource {
     /**
      * The client entity that created the JIT request.
      */
-    public /*out*/ readonly createdBy!: pulumi.Output<types.outputs.solutions.ApplicationClientDetailsResponse>;
+    public /*out*/ readonly createdBy!: pulumi.Output<types.outputs.ApplicationClientDetailsResponse>;
     /**
      * The JIT authorization policies.
      */
-    public readonly jitAuthorizationPolicies!: pulumi.Output<types.outputs.solutions.JitAuthorizationPoliciesResponse[]>;
+    public readonly jitAuthorizationPolicies!: pulumi.Output<types.outputs.JitAuthorizationPoliciesResponse[]>;
     /**
      * The JIT request state.
      */
@@ -51,7 +51,7 @@ export class JitRequest extends pulumi.CustomResource {
     /**
      * The JIT request properties.
      */
-    public readonly jitSchedulingPolicy!: pulumi.Output<types.outputs.solutions.JitSchedulingPolicyResponse>;
+    public readonly jitSchedulingPolicy!: pulumi.Output<types.outputs.JitSchedulingPolicyResponse>;
     /**
      * Resource location
      */
@@ -71,7 +71,7 @@ export class JitRequest extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.solutions.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags
      */
@@ -83,7 +83,7 @@ export class JitRequest extends pulumi.CustomResource {
     /**
      * The client entity that last updated the JIT request.
      */
-    public /*out*/ readonly updatedBy!: pulumi.Output<types.outputs.solutions.ApplicationClientDetailsResponse>;
+    public /*out*/ readonly updatedBy!: pulumi.Output<types.outputs.ApplicationClientDetailsResponse>;
 
     /**
      * Create a JitRequest resource with the given unique name, arguments, and options.
@@ -156,7 +156,7 @@ export interface JitRequestArgs {
     /**
      * The JIT authorization policies.
      */
-    jitAuthorizationPolicies: pulumi.Input<pulumi.Input<types.inputs.solutions.JitAuthorizationPoliciesArgs>[]>;
+    jitAuthorizationPolicies: pulumi.Input<pulumi.Input<types.inputs.JitAuthorizationPoliciesArgs>[]>;
     /**
      * The name of the JIT request.
      */
@@ -164,7 +164,7 @@ export interface JitRequestArgs {
     /**
      * The JIT request properties.
      */
-    jitSchedulingPolicy: pulumi.Input<types.inputs.solutions.JitSchedulingPolicyArgs>;
+    jitSchedulingPolicy: pulumi.Input<types.inputs.JitSchedulingPolicyArgs>;
     /**
      * Resource location
      */

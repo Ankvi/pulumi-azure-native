@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a markup rule by its rule name.
  */
@@ -36,7 +36,7 @@ export interface GetMarkupRuleResult {
     /**
      * Customer information for the markup rule.
      */
-    readonly customerDetails: types.outputs.costmanagement.v20221005preview.CustomerMetadataResponse;
+    readonly customerDetails: types.outputs.CustomerMetadataResponse;
     /**
      * The description of the markup rule.
      */

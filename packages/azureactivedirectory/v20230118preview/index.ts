@@ -23,7 +23,7 @@ utilities.lazyLoad(exports, ["GuestUsage"], () => require("./guestUsage"));
 
 
 // Export enums:
-export * from "../types/enums/v20230118preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

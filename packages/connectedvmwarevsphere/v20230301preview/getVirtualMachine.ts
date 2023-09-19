@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Implements virtual machine GET method.
  */
@@ -35,7 +35,7 @@ export interface GetVirtualMachineResult {
     /**
      * Gets or sets the extended location.
      */
-    readonly extendedLocation?: types.outputs.connectedvmwarevsphere.v20230301preview.ExtendedLocationResponse;
+    readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
     /**
      * Firmware type
      */
@@ -47,11 +47,11 @@ export interface GetVirtualMachineResult {
     /**
      * Guest agent status properties.
      */
-    readonly guestAgentProfile?: types.outputs.connectedvmwarevsphere.v20230301preview.GuestAgentProfileResponse;
+    readonly guestAgentProfile?: types.outputs.GuestAgentProfileResponse;
     /**
      * Hardware properties.
      */
-    readonly hardwareProfile?: types.outputs.connectedvmwarevsphere.v20230301preview.HardwareProfileResponse;
+    readonly hardwareProfile?: types.outputs.HardwareProfileResponse;
     /**
      * Gets or sets the Id.
      */
@@ -59,7 +59,7 @@ export interface GetVirtualMachineResult {
     /**
      * The identity of the resource.
      */
-    readonly identity?: types.outputs.connectedvmwarevsphere.v20230301preview.IdentityResponse;
+    readonly identity?: types.outputs.IdentityResponse;
     /**
      * Gets or sets the instance uuid of the vm.
      */
@@ -91,15 +91,15 @@ export interface GetVirtualMachineResult {
     /**
      * Network properties.
      */
-    readonly networkProfile?: types.outputs.connectedvmwarevsphere.v20230301preview.NetworkProfileResponse;
+    readonly networkProfile?: types.outputs.NetworkProfileResponse;
     /**
      * OS properties.
      */
-    readonly osProfile?: types.outputs.connectedvmwarevsphere.v20230301preview.OsProfileResponse;
+    readonly osProfile?: types.outputs.OsProfileResponse;
     /**
      * Placement properties.
      */
-    readonly placementProfile?: types.outputs.connectedvmwarevsphere.v20230301preview.PlacementProfileResponse;
+    readonly placementProfile?: types.outputs.PlacementProfileResponse;
     /**
      * Gets the power state of the virtual machine.
      */
@@ -116,7 +116,7 @@ export interface GetVirtualMachineResult {
     /**
      * Gets the security profile.
      */
-    readonly securityProfile?: types.outputs.connectedvmwarevsphere.v20230301preview.SecurityProfileResponse;
+    readonly securityProfile?: types.outputs.SecurityProfileResponse;
     /**
      * Gets or sets the SMBIOS UUID of the vm.
      */
@@ -124,15 +124,15 @@ export interface GetVirtualMachineResult {
     /**
      * The resource status information.
      */
-    readonly statuses: types.outputs.connectedvmwarevsphere.v20230301preview.ResourceStatusResponse[];
+    readonly statuses: types.outputs.ResourceStatusResponse[];
     /**
      * Storage properties.
      */
-    readonly storageProfile?: types.outputs.connectedvmwarevsphere.v20230301preview.StorageProfileResponse;
+    readonly storageProfile?: types.outputs.StorageProfileResponse;
     /**
      * The system data.
      */
-    readonly systemData: types.outputs.connectedvmwarevsphere.v20230301preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Gets or sets the Resource tags.
      */

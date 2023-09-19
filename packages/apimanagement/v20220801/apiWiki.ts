@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Wiki properties
  */
@@ -34,7 +34,7 @@ export class ApiWiki extends pulumi.CustomResource {
     /**
      * Collection wiki documents included into this wiki.
      */
-    public readonly documents!: pulumi.Output<types.outputs.apimanagement.v20220801.WikiDocumentationContractResponse[] | undefined>;
+    public readonly documents!: pulumi.Output<types.outputs.WikiDocumentationContractResponse[] | undefined>;
     /**
      * The name of the resource
      */
@@ -93,7 +93,7 @@ export interface ApiWikiArgs {
     /**
      * Collection wiki documents included into this wiki.
      */
-    documents?: pulumi.Input<pulumi.Input<types.inputs.apimanagement.v20220801.WikiDocumentationContractArgs>[]>;
+    documents?: pulumi.Input<pulumi.Input<types.inputs.WikiDocumentationContractArgs>[]>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

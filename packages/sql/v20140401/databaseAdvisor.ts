@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Database Advisor.
  */
@@ -127,7 +127,7 @@ export interface DatabaseAdvisorArgs {
     /**
      * Gets the auto-execute status (whether to let the system execute the recommendations) of this advisor. Possible values are 'Enabled' and 'Disabled'
      */
-    autoExecuteValue: pulumi.Input<types.enums.v20140401.AutoExecuteStatus>;
+    autoExecuteValue: pulumi.Input<types.enums.AutoExecuteStatus>;
     /**
      * The name of the database.
      */

@@ -56,7 +56,7 @@ export interface ListCatalogDeploymentsResult {
     /**
      * The Deployment items on this page
      */
-    readonly value: types.outputs.azuresphere.DeploymentResponse[];
+    readonly value: types.outputs.DeploymentResponse[];
 }
 /**
  * Lists deployments for catalog.

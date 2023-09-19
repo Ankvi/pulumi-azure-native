@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A SQL virtual machine group.
  */
@@ -66,7 +66,7 @@ export class SqlVirtualMachineGroup extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.sqlvirtualmachine.v20230101preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -78,7 +78,7 @@ export class SqlVirtualMachineGroup extends pulumi.CustomResource {
     /**
      * Cluster Active Directory domain profile.
      */
-    public readonly wsfcDomainProfile!: pulumi.Output<types.outputs.sqlvirtualmachine.v20230101preview.WsfcDomainProfileResponse | undefined>;
+    public readonly wsfcDomainProfile!: pulumi.Output<types.outputs.WsfcDomainProfileResponse | undefined>;
 
     /**
      * Create a SqlVirtualMachineGroup resource with the given unique name, arguments, and options.
@@ -148,7 +148,7 @@ export interface SqlVirtualMachineGroupArgs {
     /**
      * SQL image sku.
      */
-    sqlImageSku?: pulumi.Input<string | types.enums.v20230101preview.SqlVmGroupImageSku>;
+    sqlImageSku?: pulumi.Input<string | types.enums.SqlVmGroupImageSku>;
     /**
      * Name of the SQL virtual machine group.
      */
@@ -160,5 +160,5 @@ export interface SqlVirtualMachineGroupArgs {
     /**
      * Cluster Active Directory domain profile.
      */
-    wsfcDomainProfile?: pulumi.Input<types.inputs.sqlvirtualmachine.v20230101preview.WsfcDomainProfileArgs>;
+    wsfcDomainProfile?: pulumi.Input<types.inputs.WsfcDomainProfileArgs>;
 }

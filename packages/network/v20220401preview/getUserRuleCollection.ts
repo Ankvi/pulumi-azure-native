@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a network manager security user configuration rule collection.
  */
@@ -41,7 +41,7 @@ export interface GetUserRuleCollectionResult {
     /**
      * Groups for configuration
      */
-    readonly appliesToGroups: types.outputs.network.v20220401preview.NetworkManagerSecurityGroupItemResponse[];
+    readonly appliesToGroups: types.outputs.NetworkManagerSecurityGroupItemResponse[];
     /**
      * A description of the user rule collection.
      */
@@ -65,7 +65,7 @@ export interface GetUserRuleCollectionResult {
     /**
      * The system metadata related to this resource.
      */
-    readonly systemData: types.outputs.network.v20220401preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource type.
      */

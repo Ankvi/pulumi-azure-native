@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Implements AvailabilitySet GET method.
  */
@@ -35,7 +35,7 @@ export interface GetAvailabilitySetResult {
     /**
      * The extended location.
      */
-    readonly extendedLocation?: types.outputs.scvmm.v20230401preview.ExtendedLocationResponse;
+    readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
     /**
      * Resource Id
      */
@@ -55,7 +55,7 @@ export interface GetAvailabilitySetResult {
     /**
      * The system data.
      */
-    readonly systemData: types.outputs.scvmm.v20230401preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags
      */

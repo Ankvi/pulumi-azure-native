@@ -35,7 +35,7 @@ export class ComponentVersion extends pulumi.CustomResource {
     /**
      * [Required] Additional attributes of the entity.
      */
-    public readonly componentVersionProperties!: pulumi.Output<types.outputs.machinelearningservices.ComponentVersionResponse>;
+    public readonly componentVersionProperties!: pulumi.Output<types.outputs.ComponentVersionResponse>;
     /**
      * The name of the resource
      */
@@ -43,7 +43,7 @@ export class ComponentVersion extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.machinelearningservices.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -72,7 +72,7 @@ export class ComponentVersion extends pulumi.CustomResource {
             if ((!args || args.workspaceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workspaceName'");
             }
-            resourceInputs["componentVersionProperties"] = args ? (args.componentVersionProperties ? pulumi.output(args.componentVersionProperties).apply(types.inputs.machinelearningservices.componentVersionArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["componentVersionProperties"] = args ? (args.componentVersionProperties ? pulumi.output(args.componentVersionProperties).apply(types.inputs.componentVersionArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["version"] = args ? args.version : undefined;
@@ -99,7 +99,7 @@ export interface ComponentVersionArgs {
     /**
      * [Required] Additional attributes of the entity.
      */
-    componentVersionProperties: pulumi.Input<types.inputs.machinelearningservices.ComponentVersionArgs>;
+    componentVersionProperties: pulumi.Input<types.inputs.ComponentVersionArgs>;
     /**
      * Container name.
      */

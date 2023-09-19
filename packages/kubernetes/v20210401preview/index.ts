@@ -8,4 +8,4 @@ utilities.lazyLoad(exports, ["listConnectedClusterUserCredentials","listConnecte
 
 
 // Export enums:
-export * from "../types/enums/v20210401preview";
+export * from "./types/enums";

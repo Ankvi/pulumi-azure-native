@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The NSP resource association resource
  */
@@ -50,11 +50,11 @@ export class NspAssociation extends pulumi.CustomResource {
     /**
      * The PaaS resource to be associated.
      */
-    public readonly privateLinkResource!: pulumi.Output<types.outputs.network.v20210201preview.SubResourceResponse | undefined>;
+    public readonly privateLinkResource!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * Profile id to which the PaaS resource is associated.
      */
-    public readonly profile!: pulumi.Output<types.outputs.network.v20210201preview.SubResourceResponse | undefined>;
+    public readonly profile!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * The provisioning state of the resource  association resource.
      */
@@ -123,7 +123,7 @@ export interface NspAssociationArgs {
     /**
      * Access mode on the association.
      */
-    accessMode?: pulumi.Input<string | types.enums.v20210201preview.AssociationAccessMode>;
+    accessMode?: pulumi.Input<string | types.enums.AssociationAccessMode>;
     /**
      * The name of the NSP association.
      */
@@ -147,11 +147,11 @@ export interface NspAssociationArgs {
     /**
      * The PaaS resource to be associated.
      */
-    privateLinkResource?: pulumi.Input<types.inputs.network.v20210201preview.SubResourceArgs>;
+    privateLinkResource?: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * Profile id to which the PaaS resource is associated.
      */
-    profile?: pulumi.Input<types.inputs.network.v20210201preview.SubResourceArgs>;
+    profile?: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * The name of the resource group.
      */

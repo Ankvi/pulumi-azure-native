@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a single private link association
  */
@@ -36,7 +36,7 @@ export interface GetPrivateLinkAssociationResult {
     /**
      * The private link association properties.
      */
-    readonly properties: types.outputs.authorization.v20200501.PrivateLinkAssociationPropertiesExpandedResponse;
+    readonly properties: types.outputs.PrivateLinkAssociationPropertiesExpandedResponse;
     /**
      * The operation type.
      */

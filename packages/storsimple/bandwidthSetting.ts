@@ -43,7 +43,7 @@ export class BandwidthSetting extends pulumi.CustomResource {
     /**
      * The schedules.
      */
-    public readonly schedules!: pulumi.Output<types.outputs.storsimple.BandwidthScheduleResponse[]>;
+    public readonly schedules!: pulumi.Output<types.outputs.BandwidthScheduleResponse[]>;
     /**
      * The hierarchical type of the object.
      */
@@ -118,5 +118,5 @@ export interface BandwidthSettingArgs {
     /**
      * The schedules.
      */
-    schedules: pulumi.Input<pulumi.Input<types.inputs.storsimple.BandwidthScheduleArgs>[]>;
+    schedules: pulumi.Input<pulumi.Input<types.inputs.BandwidthScheduleArgs>[]>;
 }

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the project with the specified name.
  */
@@ -47,7 +47,7 @@ export interface GetProjectResult {
     /**
      * Properties of the project.
      */
-    readonly properties: types.outputs.migrate.v20191001.ProjectPropertiesResponse;
+    readonly properties: types.outputs.ProjectPropertiesResponse;
     /**
      * Tags provided by Azure Tagging service.
      */

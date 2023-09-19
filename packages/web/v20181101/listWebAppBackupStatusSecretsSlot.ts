@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets status of a web app backup that may be in progress, including secrets associated with the backup, such as the Azure Storage SAS URL. Also can be used to update the SAS URL for the backup if a new URL is passed in the request body.
  */
@@ -10,7 +10,7 @@ export function listWebAppBackupStatusSecretsSlot(args: ListWebAppBackupStatusSe
     return pulumi.runtime.invoke("azure-native:web/v20181101:listWebAppBackupStatusSecretsSlot", {
         "backupId": args.backupId,
         "backupName": args.backupName,
-        "backupSchedule": args.backupSchedule ? types.inputs.web.v20181101.backupScheduleProvideDefaults(args.backupSchedule) : undefined,
+        "backupSchedule": args.backupSchedule ? types.inputs.backupScheduleProvideDefaults(args.backupSchedule) : undefined,
         "databases": args.databases,
         "enabled": args.enabled,
         "kind": args.kind,
@@ -33,11 +33,11 @@ export interface ListWebAppBackupStatusSecretsSlotArgs {
     /**
      * Schedule for the backup if it is executed periodically.
      */
-    backupSchedule?: types.inputs.web.v20181101.BackupSchedule;
+    backupSchedule?: types.inputs.BackupSchedule;
     /**
      * Databases included in the backup.
      */
-    databases?: types.inputs.web.v20181101.DatabaseBackupSetting[];
+    databases?: types.inputs.DatabaseBackupSetting[];
     /**
      * True if the backup schedule is enabled (must be included in that case), false if the backup schedule should be disabled.
      */
@@ -87,7 +87,7 @@ export interface ListWebAppBackupStatusSecretsSlotResult {
     /**
      * List of databases included in the backup.
      */
-    readonly databases: types.outputs.web.v20181101.DatabaseBackupSettingResponse[];
+    readonly databases: types.outputs.DatabaseBackupSettingResponse[];
     /**
      * Timestamp when this backup finished.
      */
@@ -156,11 +156,11 @@ export interface ListWebAppBackupStatusSecretsSlotOutputArgs {
     /**
      * Schedule for the backup if it is executed periodically.
      */
-    backupSchedule?: pulumi.Input<types.inputs.web.v20181101.BackupScheduleArgs>;
+    backupSchedule?: pulumi.Input<types.inputs.BackupScheduleArgs>;
     /**
      * Databases included in the backup.
      */
-    databases?: pulumi.Input<pulumi.Input<types.inputs.web.v20181101.DatabaseBackupSettingArgs>[]>;
+    databases?: pulumi.Input<pulumi.Input<types.inputs.DatabaseBackupSettingArgs>[]>;
     /**
      * True if the backup schedule is enabled (must be included in that case), false if the backup schedule should be disabled.
      */

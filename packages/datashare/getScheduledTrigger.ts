@@ -75,7 +75,7 @@ export interface GetScheduledTriggerResult {
     /**
      * System Data of the Azure resource.
      */
-    readonly systemData: types.outputs.datashare.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Gets the trigger state
      */

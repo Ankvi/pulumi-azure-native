@@ -23,7 +23,7 @@ utilities.lazyLoad(exports, ["getEventHubConnection","getEventHubConnectionOutpu
 
 
 // Export enums:
-export * from "../types/enums/v20180907preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

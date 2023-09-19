@@ -39,7 +39,7 @@ export class Service extends pulumi.CustomResource {
     /**
      * Setting indicating whether the service has a managed identity associated with it.
      */
-    public readonly identity!: pulumi.Output<types.outputs.healthcareapis.ServicesResourceResponseIdentity | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ServicesResourceResponseIdentity | undefined>;
     /**
      * The kind of the service.
      */
@@ -55,11 +55,11 @@ export class Service extends pulumi.CustomResource {
     /**
      * The common properties of a service.
      */
-    public readonly properties!: pulumi.Output<types.outputs.healthcareapis.ServicesPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ServicesPropertiesResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.healthcareapis.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The resource tags.
      */
@@ -122,7 +122,7 @@ export interface ServiceArgs {
     /**
      * Setting indicating whether the service has a managed identity associated with it.
      */
-    identity?: pulumi.Input<types.inputs.healthcareapis.ServicesResourceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ServicesResourceIdentityArgs>;
     /**
      * The kind of the service.
      */
@@ -134,7 +134,7 @@ export interface ServiceArgs {
     /**
      * The common properties of a service.
      */
-    properties?: pulumi.Input<types.inputs.healthcareapis.ServicesPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ServicesPropertiesArgs>;
     /**
      * The name of the resource group that contains the service instance.
      */

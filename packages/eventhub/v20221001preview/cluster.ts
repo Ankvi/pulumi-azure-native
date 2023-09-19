@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Single Event Hubs Cluster resource in List or Get operations.
  */
@@ -50,7 +50,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * Properties of the cluster SKU.
      */
-    public readonly sku!: pulumi.Output<types.outputs.eventhub.v20221001preview.ClusterSkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.ClusterSkuResponse | undefined>;
     /**
      * Status of the Cluster resource
      */
@@ -62,7 +62,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * The system meta data relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.eventhub.v20221001preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -142,7 +142,7 @@ export interface ClusterArgs {
     /**
      * Properties of the cluster SKU.
      */
-    sku?: pulumi.Input<types.inputs.eventhub.v20221001preview.ClusterSkuArgs>;
+    sku?: pulumi.Input<types.inputs.ClusterSkuArgs>;
     /**
      * A value that indicates whether Scaling is Supported.
      */

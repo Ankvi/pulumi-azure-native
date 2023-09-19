@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The RouteMap child resource of a Virtual hub.
  */
@@ -54,7 +54,7 @@ export class RouteMap extends pulumi.CustomResource {
     /**
      * List of RouteMap rules to be applied.
      */
-    public readonly rules!: pulumi.Output<types.outputs.network.v20230501.RouteMapRuleResponse[] | undefined>;
+    public readonly rules!: pulumi.Output<types.outputs.RouteMapRuleResponse[] | undefined>;
     /**
      * Resource type.
      */
@@ -131,7 +131,7 @@ export interface RouteMapArgs {
     /**
      * List of RouteMap rules to be applied.
      */
-    rules?: pulumi.Input<pulumi.Input<types.inputs.network.v20230501.RouteMapRuleArgs>[]>;
+    rules?: pulumi.Input<pulumi.Input<types.inputs.RouteMapRuleArgs>[]>;
     /**
      * The name of the VirtualHub containing the RouteMap.
      */

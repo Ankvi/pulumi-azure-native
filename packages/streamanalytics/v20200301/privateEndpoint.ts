@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Complete information about the private endpoint.
  */
@@ -42,7 +42,7 @@ export class PrivateEndpoint extends pulumi.CustomResource {
     /**
      * A list of connections to the remote resource. Immutable after it is set.
      */
-    public readonly manualPrivateLinkServiceConnections!: pulumi.Output<types.outputs.streamanalytics.v20200301.PrivateLinkServiceConnectionResponse[] | undefined>;
+    public readonly manualPrivateLinkServiceConnections!: pulumi.Output<types.outputs.PrivateLinkServiceConnectionResponse[] | undefined>;
     /**
      * The name of the resource
      */
@@ -102,7 +102,7 @@ export interface PrivateEndpointArgs {
     /**
      * A list of connections to the remote resource. Immutable after it is set.
      */
-    manualPrivateLinkServiceConnections?: pulumi.Input<pulumi.Input<types.inputs.streamanalytics.v20200301.PrivateLinkServiceConnectionArgs>[]>;
+    manualPrivateLinkServiceConnections?: pulumi.Input<pulumi.Input<types.inputs.PrivateLinkServiceConnectionArgs>[]>;
     /**
      * The name of the private endpoint.
      */

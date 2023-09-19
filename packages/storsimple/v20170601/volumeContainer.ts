@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The volume container.
  */
@@ -42,7 +42,7 @@ export class VolumeContainer extends pulumi.CustomResource {
     /**
      * The key used to encrypt data in the volume container. It is required when property 'EncryptionStatus' is "Enabled".
      */
-    public readonly encryptionKey!: pulumi.Output<types.outputs.storsimple.v20170601.AsymmetricEncryptedSecretResponse | undefined>;
+    public readonly encryptionKey!: pulumi.Output<types.outputs.AsymmetricEncryptedSecretResponse | undefined>;
     /**
      * The flag to denote whether encryption is enabled or not.
      */
@@ -153,11 +153,11 @@ export interface VolumeContainerArgs {
     /**
      * The key used to encrypt data in the volume container. It is required when property 'EncryptionStatus' is "Enabled".
      */
-    encryptionKey?: pulumi.Input<types.inputs.storsimple.v20170601.AsymmetricEncryptedSecretArgs>;
+    encryptionKey?: pulumi.Input<types.inputs.AsymmetricEncryptedSecretArgs>;
     /**
      * The Kind of the object. Currently only Series8000 is supported
      */
-    kind?: pulumi.Input<types.enums.v20170601.Kind>;
+    kind?: pulumi.Input<types.enums.Kind>;
     /**
      * The manager name
      */

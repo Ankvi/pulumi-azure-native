@@ -57,11 +57,11 @@ export interface GetApplicationGroupResult {
     /**
      * List of group policies that define the behavior of application group. The policies can support resource governance scenarios such as limiting ingress or egress traffic.
      */
-    readonly policies?: types.outputs.eventhub.ThrottlingPolicyResponse[];
+    readonly policies?: types.outputs.ThrottlingPolicyResponse[];
     /**
      * The system meta data relating to this resource.
      */
-    readonly systemData: types.outputs.eventhub.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
      */

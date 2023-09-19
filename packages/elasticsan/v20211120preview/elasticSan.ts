@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Response for ElasticSan request.
  */
@@ -58,11 +58,11 @@ export class ElasticSan extends pulumi.CustomResource {
     /**
      * resource sku
      */
-    public readonly sku!: pulumi.Output<types.outputs.elasticsan.v20211120preview.SkuResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse>;
     /**
      * Resource metadata required by ARM RPC
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.elasticsan.v20211120preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Azure resource tags.
      */
@@ -187,7 +187,7 @@ export interface ElasticSanArgs {
     /**
      * resource sku
      */
-    sku: pulumi.Input<types.inputs.elasticsan.v20211120preview.SkuArgs>;
+    sku: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Azure resource tags.
      */

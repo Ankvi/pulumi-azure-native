@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The key resource.
  */
@@ -34,7 +34,7 @@ export class Key extends pulumi.CustomResource {
     /**
      * The attributes of the key.
      */
-    public /*out*/ readonly attributes!: pulumi.Output<types.outputs.keyvault.v20230201.KeyAttributesResponse | undefined>;
+    public /*out*/ readonly attributes!: pulumi.Output<types.outputs.KeyAttributesResponse | undefined>;
     /**
      * The elliptic curve name. For valid values, see JsonWebKeyCurveName.
      */
@@ -67,11 +67,11 @@ export class Key extends pulumi.CustomResource {
     /**
      * Key release policy in response. It will be used for both output and input. Omitted if empty
      */
-    public /*out*/ readonly releasePolicy!: pulumi.Output<types.outputs.keyvault.v20230201.KeyReleasePolicyResponse | undefined>;
+    public /*out*/ readonly releasePolicy!: pulumi.Output<types.outputs.KeyReleasePolicyResponse | undefined>;
     /**
      * Key rotation policy in response. It will be used for both output and input. Omitted if empty
      */
-    public /*out*/ readonly rotationPolicy!: pulumi.Output<types.outputs.keyvault.v20230201.RotationPolicyResponse | undefined>;
+    public /*out*/ readonly rotationPolicy!: pulumi.Output<types.outputs.RotationPolicyResponse | undefined>;
     /**
      * Tags assigned to the key vault resource.
      */
@@ -102,7 +102,7 @@ export class Key extends pulumi.CustomResource {
                 throw new Error("Missing required property 'vaultName'");
             }
             resourceInputs["keyName"] = args ? args.keyName : undefined;
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.keyvault.v20230201.keyPropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.keyPropertiesArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["vaultName"] = args ? args.vaultName : undefined;
@@ -151,7 +151,7 @@ export interface KeyArgs {
     /**
      * The properties of the key to be created.
      */
-    properties: pulumi.Input<types.inputs.keyvault.v20230201.KeyPropertiesArgs>;
+    properties: pulumi.Input<types.inputs.KeyPropertiesArgs>;
     /**
      * The name of the resource group which contains the specified key vault.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The task run that has the ARM resource and properties.
  * The task run will have the information of request and result of a run.
@@ -39,7 +39,7 @@ export class TaskRun extends pulumi.CustomResource {
     /**
      * Identity for the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.containerregistry.v20190601preview.IdentityPropertiesResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityPropertiesResponse | undefined>;
     /**
      * The location of the resource
      */
@@ -55,15 +55,15 @@ export class TaskRun extends pulumi.CustomResource {
     /**
      * The request (parameters) for the run
      */
-    public readonly runRequest!: pulumi.Output<types.outputs.containerregistry.v20190601preview.DockerBuildRequestResponse | types.outputs.containerregistry.v20190601preview.EncodedTaskRunRequestResponse | types.outputs.containerregistry.v20190601preview.FileTaskRunRequestResponse | types.outputs.containerregistry.v20190601preview.TaskRunRequestResponse | undefined>;
+    public readonly runRequest!: pulumi.Output<types.outputs.DockerBuildRequestResponse | types.outputs.EncodedTaskRunRequestResponse | types.outputs.FileTaskRunRequestResponse | types.outputs.TaskRunRequestResponse | undefined>;
     /**
      * The result of this task run
      */
-    public /*out*/ readonly runResult!: pulumi.Output<types.outputs.containerregistry.v20190601preview.RunResponse>;
+    public /*out*/ readonly runResult!: pulumi.Output<types.outputs.RunResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.containerregistry.v20190601preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource.
      */
@@ -127,7 +127,7 @@ export interface TaskRunArgs {
     /**
      * Identity for the resource.
      */
-    identity?: pulumi.Input<types.inputs.containerregistry.v20190601preview.IdentityPropertiesArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityPropertiesArgs>;
     /**
      * The location of the resource
      */
@@ -143,7 +143,7 @@ export interface TaskRunArgs {
     /**
      * The request (parameters) for the run
      */
-    runRequest?: pulumi.Input<types.inputs.containerregistry.v20190601preview.DockerBuildRequestArgs | types.inputs.containerregistry.v20190601preview.EncodedTaskRunRequestArgs | types.inputs.containerregistry.v20190601preview.FileTaskRunRequestArgs | types.inputs.containerregistry.v20190601preview.TaskRunRequestArgs>;
+    runRequest?: pulumi.Input<types.inputs.DockerBuildRequestArgs | types.inputs.EncodedTaskRunRequestArgs | types.inputs.FileTaskRunRequestArgs | types.inputs.TaskRunRequestArgs>;
     /**
      * The name of the task run.
      */

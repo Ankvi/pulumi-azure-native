@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a database.
  */
@@ -56,7 +56,7 @@ export interface GetDatabaseResult {
     /**
      * The name and tier of the SKU.
      */
-    readonly currentSku: types.outputs.sql.v20190601preview.SkuResponse;
+    readonly currentSku: types.outputs.SkuResponse;
     /**
      * The ID of the database.
      */
@@ -146,7 +146,7 @@ export interface GetDatabaseResult {
      * Get-AzSqlServerServiceObjective -Location <location>
      * ````
      */
-    readonly sku?: types.outputs.sql.v20190601preview.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * The status of the database.
      */

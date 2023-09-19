@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents MicrosoftSecurityIncidentCreation rule.
  */
@@ -83,7 +83,7 @@ export class MicrosoftSecurityIncidentCreationAlertRule extends pulumi.CustomRes
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.securityinsights.v20230801preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -194,7 +194,7 @@ export interface MicrosoftSecurityIncidentCreationAlertRuleArgs {
     /**
      * The alerts' productName on which the cases will be generated
      */
-    productFilter: pulumi.Input<string | types.enums.v20230801preview.MicrosoftSecurityProductName>;
+    productFilter: pulumi.Input<string | types.enums.MicrosoftSecurityProductName>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -206,7 +206,7 @@ export interface MicrosoftSecurityIncidentCreationAlertRuleArgs {
     /**
      * the alerts' severities on which the cases will be generated
      */
-    severitiesFilter?: pulumi.Input<pulumi.Input<string | types.enums.v20230801preview.AlertSeverity>[]>;
+    severitiesFilter?: pulumi.Input<pulumi.Input<string | types.enums.AlertSeverity>[]>;
     /**
      * The name of the workspace.
      */

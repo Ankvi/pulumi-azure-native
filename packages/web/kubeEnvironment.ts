@@ -38,17 +38,17 @@ export class KubeEnvironment extends pulumi.CustomResource {
      * app logs to a destination. Currently only "log-analytics" is
      * supported
      */
-    public readonly appLogsConfiguration!: pulumi.Output<types.outputs.web.AppLogsConfigurationResponse | undefined>;
+    public readonly appLogsConfiguration!: pulumi.Output<types.outputs.AppLogsConfigurationResponse | undefined>;
     /**
      * Cluster configuration which determines the ARC cluster
      * components types. Eg: Choosing between BuildService kind,
      * FrontEnd Service ArtifactsStorageType etc.
      */
-    public readonly arcConfiguration!: pulumi.Output<types.outputs.web.ArcConfigurationResponse | undefined>;
+    public readonly arcConfiguration!: pulumi.Output<types.outputs.ArcConfigurationResponse | undefined>;
     /**
      * Cluster configuration for Container Apps Environments to configure Dapr Instrumentation Key and VNET Configuration
      */
-    public readonly containerAppsConfiguration!: pulumi.Output<types.outputs.web.ContainerAppsConfigurationResponse | undefined>;
+    public readonly containerAppsConfiguration!: pulumi.Output<types.outputs.ContainerAppsConfigurationResponse | undefined>;
     /**
      * Default Domain Name for the cluster
      */
@@ -64,7 +64,7 @@ export class KubeEnvironment extends pulumi.CustomResource {
     /**
      * Extended Location.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.web.ExtendedLocationResponse | undefined>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
     /**
      * Only visible within Vnet/Subnet
      */
@@ -164,17 +164,17 @@ export interface KubeEnvironmentArgs {
      * app logs to a destination. Currently only "log-analytics" is
      * supported
      */
-    appLogsConfiguration?: pulumi.Input<types.inputs.web.AppLogsConfigurationArgs>;
+    appLogsConfiguration?: pulumi.Input<types.inputs.AppLogsConfigurationArgs>;
     /**
      * Cluster configuration which determines the ARC cluster
      * components types. Eg: Choosing between BuildService kind,
      * FrontEnd Service ArtifactsStorageType etc.
      */
-    arcConfiguration?: pulumi.Input<types.inputs.web.ArcConfigurationArgs>;
+    arcConfiguration?: pulumi.Input<types.inputs.ArcConfigurationArgs>;
     /**
      * Cluster configuration for Container Apps Environments to configure Dapr Instrumentation Key and VNET Configuration
      */
-    containerAppsConfiguration?: pulumi.Input<types.inputs.web.ContainerAppsConfigurationArgs>;
+    containerAppsConfiguration?: pulumi.Input<types.inputs.ContainerAppsConfigurationArgs>;
     /**
      * Type of Kubernetes Environment. Only supported for Container App Environments with value as Managed
      */
@@ -182,7 +182,7 @@ export interface KubeEnvironmentArgs {
     /**
      * Extended Location.
      */
-    extendedLocation?: pulumi.Input<types.inputs.web.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * Only visible within Vnet/Subnet
      */

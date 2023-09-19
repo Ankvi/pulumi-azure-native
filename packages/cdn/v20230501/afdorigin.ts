@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Azure Front Door origin is the source of the content being delivered via Azure Front Door. When the edge nodes represented by an endpoint do not have the requested content cached, they attempt to fetch it from one or more of the configured origins.
  */
@@ -34,7 +34,7 @@ export class AFDOrigin extends pulumi.CustomResource {
     /**
      * Resource reference to the Azure origin resource.
      */
-    public readonly azureOrigin!: pulumi.Output<types.outputs.cdn.v20230501.ResourceReferenceResponse | undefined>;
+    public readonly azureOrigin!: pulumi.Output<types.outputs.ResourceReferenceResponse | undefined>;
     public /*out*/ readonly deploymentStatus!: pulumi.Output<string>;
     /**
      * Whether to enable health probes to be made against backends defined under backendPools. Health probes can only be disabled if there is a single enabled backend in single enabled backend pool.
@@ -79,11 +79,11 @@ export class AFDOrigin extends pulumi.CustomResource {
     /**
      * The properties of the private link resource for private origin.
      */
-    public readonly sharedPrivateLinkResource!: pulumi.Output<types.outputs.cdn.v20230501.SharedPrivateLinkResourcePropertiesResponse | undefined>;
+    public readonly sharedPrivateLinkResource!: pulumi.Output<types.outputs.SharedPrivateLinkResourcePropertiesResponse | undefined>;
     /**
      * Read only system data
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.cdn.v20230501.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource type.
      */
@@ -167,11 +167,11 @@ export interface AFDOriginArgs {
     /**
      * Resource reference to the Azure origin resource.
      */
-    azureOrigin?: pulumi.Input<types.inputs.cdn.v20230501.ResourceReferenceArgs>;
+    azureOrigin?: pulumi.Input<types.inputs.ResourceReferenceArgs>;
     /**
      * Whether to enable health probes to be made against backends defined under backendPools. Health probes can only be disabled if there is a single enabled backend in single enabled backend pool.
      */
-    enabledState?: pulumi.Input<string | types.enums.v20230501.EnabledState>;
+    enabledState?: pulumi.Input<string | types.enums.EnabledState>;
     /**
      * Whether to enable certificate name check at origin level
      */
@@ -215,7 +215,7 @@ export interface AFDOriginArgs {
     /**
      * The properties of the private link resource for private origin.
      */
-    sharedPrivateLinkResource?: pulumi.Input<types.inputs.cdn.v20230501.SharedPrivateLinkResourcePropertiesArgs>;
+    sharedPrivateLinkResource?: pulumi.Input<types.inputs.SharedPrivateLinkResourcePropertiesArgs>;
     /**
      * Weight of the origin in given origin group for load balancing. Must be between 1 and 1000
      */

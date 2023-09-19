@@ -42,7 +42,7 @@ export interface GetCustomDomainResult {
     /**
      * Certificate parameters for securing custom HTTPS
      */
-    readonly customHttpsParameters?: types.outputs.cdn.CdnManagedHttpsParametersResponse | types.outputs.cdn.UserManagedHttpsParametersResponse;
+    readonly customHttpsParameters?: types.outputs.CdnManagedHttpsParametersResponse | types.outputs.UserManagedHttpsParametersResponse;
     /**
      * Provisioning status of the custom domain.
      */
@@ -74,7 +74,7 @@ export interface GetCustomDomainResult {
     /**
      * Read only system data
      */
-    readonly systemData: types.outputs.cdn.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource type.
      */

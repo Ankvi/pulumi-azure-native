@@ -59,7 +59,7 @@ export class MongoCluster extends pulumi.CustomResource {
     /**
      * The list of node group specs in the cluster.
      */
-    public readonly nodeGroupSpecs!: pulumi.Output<types.outputs.documentdb.NodeGroupSpecResponse[] | undefined>;
+    public readonly nodeGroupSpecs!: pulumi.Output<types.outputs.NodeGroupSpecResponse[] | undefined>;
     /**
      * A provisioning state of the mongo cluster.
      */
@@ -71,7 +71,7 @@ export class MongoCluster extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.documentdb.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -160,7 +160,7 @@ export interface MongoClusterArgs {
     /**
      * The list of node group specs in the cluster.
      */
-    nodeGroupSpecs?: pulumi.Input<pulumi.Input<types.inputs.documentdb.NodeGroupSpecArgs>[]>;
+    nodeGroupSpecs?: pulumi.Input<pulumi.Input<types.inputs.NodeGroupSpecArgs>[]>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -168,7 +168,7 @@ export interface MongoClusterArgs {
     /**
      * Parameters used for restore operations
      */
-    restoreParameters?: pulumi.Input<types.inputs.documentdb.MongoClusterRestoreParametersArgs>;
+    restoreParameters?: pulumi.Input<types.inputs.MongoClusterRestoreParametersArgs>;
     /**
      * The Mongo DB server version. Defaults to the latest available version if not specified.
      */

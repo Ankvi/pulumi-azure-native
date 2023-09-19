@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Cloud Endpoint object.
  */
@@ -42,7 +42,7 @@ export class CloudEndpoint extends pulumi.CustomResource {
     /**
      * Cloud endpoint change enumeration status
      */
-    public /*out*/ readonly changeEnumerationStatus!: pulumi.Output<types.outputs.storagesync.v20220601.CloudEndpointChangeEnumerationStatusResponse>;
+    public /*out*/ readonly changeEnumerationStatus!: pulumi.Output<types.outputs.CloudEndpointChangeEnumerationStatusResponse>;
     /**
      * Friendly Name
      */
@@ -78,7 +78,7 @@ export class CloudEndpoint extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.storagesync.v20220601.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

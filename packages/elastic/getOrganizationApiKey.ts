@@ -25,7 +25,7 @@ export interface GetOrganizationApiKeyArgs {
  * The User Api Key created for the Organization associated with the User Email Id that was passed in the request
  */
 export interface GetOrganizationApiKeyResult {
-    readonly properties: types.outputs.elastic.UserApiKeyResponsePropertiesResponse;
+    readonly properties: types.outputs.UserApiKeyResponsePropertiesResponse;
 }
 /**
  * Fetch User API Key from internal database, if it was generated and stored while creating the Elasticsearch Organization.

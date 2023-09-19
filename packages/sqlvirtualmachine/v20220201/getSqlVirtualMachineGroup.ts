@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a SQL virtual machine group.
  */
@@ -67,7 +67,7 @@ export interface GetSqlVirtualMachineGroupResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.sqlvirtualmachine.v20220201.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -79,7 +79,7 @@ export interface GetSqlVirtualMachineGroupResult {
     /**
      * Cluster Active Directory domain profile.
      */
-    readonly wsfcDomainProfile?: types.outputs.sqlvirtualmachine.v20220201.WsfcDomainProfileResponse;
+    readonly wsfcDomainProfile?: types.outputs.WsfcDomainProfileResponse;
 }
 /**
  * Gets a SQL virtual machine group.

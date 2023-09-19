@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the details of a static site.
  */
@@ -35,7 +35,7 @@ export interface GetStaticSiteResult {
     /**
      * Build properties to configure on the repository.
      */
-    readonly buildProperties?: types.outputs.web.v20201001.StaticSiteBuildPropertiesResponse;
+    readonly buildProperties?: types.outputs.StaticSiteBuildPropertiesResponse;
     /**
      * The custom domains associated with this static site.
      */
@@ -71,11 +71,11 @@ export interface GetStaticSiteResult {
     /**
      * Description of a SKU for a scalable resource.
      */
-    readonly sku?: types.outputs.web.v20201001.SkuDescriptionResponse;
+    readonly sku?: types.outputs.SkuDescriptionResponse;
     /**
      * The system metadata relating to this resource.
      */
-    readonly systemData: types.outputs.web.v20201001.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

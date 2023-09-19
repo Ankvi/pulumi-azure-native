@@ -13,7 +13,7 @@ utilities.lazyLoad(exports, ["getCassandraCluster","getCassandraClusterOutput"],
 
 
 // Export enums:
-export * from "../types/enums/v20210701preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

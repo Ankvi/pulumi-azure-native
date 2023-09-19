@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * IoT sensor model
  */
@@ -62,7 +62,7 @@ export class Sensor extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.iotsecurity.v20210201preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * TI Automatic mode status of the IoT sensor
      */
@@ -150,7 +150,7 @@ export interface SensorArgs {
     /**
      * Type of sensor
      */
-    sensorType?: pulumi.Input<string | types.enums.v20210201preview.SensorType>;
+    sensorType?: pulumi.Input<string | types.enums.SensorType>;
     /**
      * TI Automatic mode status of the IoT sensor
      */

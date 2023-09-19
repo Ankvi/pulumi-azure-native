@@ -35,11 +35,11 @@ export class GuestAgent extends pulumi.CustomResource {
     /**
      * Username / Password Credentials to provision guest agent.
      */
-    public readonly credentials!: pulumi.Output<types.outputs.azurestackhci.GuestCredentialResponse | undefined>;
+    public readonly credentials!: pulumi.Output<types.outputs.GuestCredentialResponse | undefined>;
     /**
      * HTTP Proxy configuration for the VM.
      */
-    public readonly httpProxyConfig!: pulumi.Output<types.outputs.azurestackhci.HttpProxyConfigurationResponse | undefined>;
+    public readonly httpProxyConfig!: pulumi.Output<types.outputs.HttpProxyConfigurationResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -59,7 +59,7 @@ export class GuestAgent extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.azurestackhci.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -116,11 +116,11 @@ export interface GuestAgentArgs {
     /**
      * Username / Password Credentials to provision guest agent.
      */
-    credentials?: pulumi.Input<types.inputs.azurestackhci.GuestCredentialArgs>;
+    credentials?: pulumi.Input<types.inputs.GuestCredentialArgs>;
     /**
      * HTTP Proxy configuration for the VM.
      */
-    httpProxyConfig?: pulumi.Input<types.inputs.azurestackhci.HttpProxyConfigurationArgs>;
+    httpProxyConfig?: pulumi.Input<types.inputs.HttpProxyConfigurationArgs>;
     /**
      * Name of the guestAgents.
      */

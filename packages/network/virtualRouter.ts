@@ -39,11 +39,11 @@ export class VirtualRouter extends pulumi.CustomResource {
     /**
      * The Gateway on which VirtualRouter is hosted.
      */
-    public readonly hostedGateway!: pulumi.Output<types.outputs.network.SubResourceResponse | undefined>;
+    public readonly hostedGateway!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * The Subnet on which VirtualRouter is hosted.
      */
-    public readonly hostedSubnet!: pulumi.Output<types.outputs.network.SubResourceResponse | undefined>;
+    public readonly hostedSubnet!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * Resource location.
      */
@@ -55,7 +55,7 @@ export class VirtualRouter extends pulumi.CustomResource {
     /**
      * List of references to VirtualRouterPeerings.
      */
-    public /*out*/ readonly peerings!: pulumi.Output<types.outputs.network.SubResourceResponse[]>;
+    public /*out*/ readonly peerings!: pulumi.Output<types.outputs.SubResourceResponse[]>;
     /**
      * The provisioning state of the resource.
      */
@@ -132,11 +132,11 @@ export interface VirtualRouterArgs {
     /**
      * The Gateway on which VirtualRouter is hosted.
      */
-    hostedGateway?: pulumi.Input<types.inputs.network.SubResourceArgs>;
+    hostedGateway?: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * The Subnet on which VirtualRouter is hosted.
      */
-    hostedSubnet?: pulumi.Input<types.inputs.network.SubResourceArgs>;
+    hostedSubnet?: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * Resource ID.
      */

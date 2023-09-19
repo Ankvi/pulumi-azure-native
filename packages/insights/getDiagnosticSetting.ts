@@ -48,7 +48,7 @@ export interface GetDiagnosticSettingResult {
     /**
      * The list of logs settings.
      */
-    readonly logs?: types.outputs.insights.LogSettingsResponse[];
+    readonly logs?: types.outputs.LogSettingsResponse[];
     /**
      * The full ARM resource ID of the Marketplace resource to which you would like to send Diagnostic Logs.
      */
@@ -56,7 +56,7 @@ export interface GetDiagnosticSettingResult {
     /**
      * The list of metric settings.
      */
-    readonly metrics?: types.outputs.insights.MetricSettingsResponse[];
+    readonly metrics?: types.outputs.MetricSettingsResponse[];
     /**
      * The name of the resource
      */
@@ -72,7 +72,7 @@ export interface GetDiagnosticSettingResult {
     /**
      * The system metadata related to this resource.
      */
-    readonly systemData: types.outputs.insights.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

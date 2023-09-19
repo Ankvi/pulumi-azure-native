@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves an Arc Sql Server database.
  */
@@ -48,11 +48,11 @@ export interface GetSqlServerDatabaseResult {
     /**
      * Properties of Arc Sql Server database
      */
-    readonly properties: types.outputs.azurearcdata.v20230115preview.SqlServerDatabaseResourcePropertiesResponse;
+    readonly properties: types.outputs.SqlServerDatabaseResourcePropertiesResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.azurearcdata.v20230115preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

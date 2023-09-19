@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieve the python 3 package identified by package name.
  */
@@ -40,7 +40,7 @@ export interface GetPython3PackageResult {
     /**
      * Gets or sets the contentLink of the module.
      */
-    readonly contentLink?: types.outputs.automation.v20220808.ContentLinkResponse;
+    readonly contentLink?: types.outputs.ContentLinkResponse;
     /**
      * Gets or sets the creation time.
      */
@@ -52,7 +52,7 @@ export interface GetPython3PackageResult {
     /**
      * Gets or sets the error info of the module.
      */
-    readonly error?: types.outputs.automation.v20220808.ModuleErrorInfoResponse;
+    readonly error?: types.outputs.ModuleErrorInfoResponse;
     /**
      * Gets or sets the etag of the resource.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the specified Firewall Policy.
  */
@@ -36,11 +36,11 @@ export interface GetFirewallPolicyResult {
     /**
      * The parent firewall policy from which rules are inherited.
      */
-    readonly basePolicy?: types.outputs.network.v20200401.SubResourceResponse;
+    readonly basePolicy?: types.outputs.SubResourceResponse;
     /**
      * List of references to Child Firewall Policies.
      */
-    readonly childPolicies: types.outputs.network.v20200401.SubResourceResponse[];
+    readonly childPolicies: types.outputs.SubResourceResponse[];
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -48,7 +48,7 @@ export interface GetFirewallPolicyResult {
     /**
      * List of references to Azure Firewalls that this Firewall Policy is associated with.
      */
-    readonly firewalls: types.outputs.network.v20200401.SubResourceResponse[];
+    readonly firewalls: types.outputs.SubResourceResponse[];
     /**
      * Resource ID.
      */
@@ -68,7 +68,7 @@ export interface GetFirewallPolicyResult {
     /**
      * List of references to FirewallPolicyRuleGroups.
      */
-    readonly ruleGroups: types.outputs.network.v20200401.SubResourceResponse[];
+    readonly ruleGroups: types.outputs.SubResourceResponse[];
     /**
      * Resource tags.
      */
@@ -80,7 +80,7 @@ export interface GetFirewallPolicyResult {
     /**
      * ThreatIntel Whitelist for Firewall Policy.
      */
-    readonly threatIntelWhitelist?: types.outputs.network.v20200401.FirewallPolicyThreatIntelWhitelistResponse;
+    readonly threatIntelWhitelist?: types.outputs.FirewallPolicyThreatIntelWhitelistResponse;
     /**
      * Resource type.
      */

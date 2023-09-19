@@ -36,11 +36,11 @@ export interface GetProfileResult {
     /**
      * The DNS settings of the Traffic Manager profile.
      */
-    readonly dnsConfig?: types.outputs.network.DnsConfigResponse;
+    readonly dnsConfig?: types.outputs.DnsConfigResponse;
     /**
      * The list of endpoints in the Traffic Manager profile.
      */
-    readonly endpoints?: types.outputs.network.EndpointResponse[];
+    readonly endpoints?: types.outputs.EndpointResponse[];
     /**
      * Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName}
      */
@@ -56,7 +56,7 @@ export interface GetProfileResult {
     /**
      * The endpoint monitoring settings of the Traffic Manager profile.
      */
-    readonly monitorConfig?: types.outputs.network.MonitorConfigResponse;
+    readonly monitorConfig?: types.outputs.MonitorConfigResponse;
     /**
      * The name of the resource
      */

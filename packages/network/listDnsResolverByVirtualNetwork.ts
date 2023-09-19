@@ -41,7 +41,7 @@ export interface ListDnsResolverByVirtualNetworkResult {
     /**
      * Enumeration of the sub-resources.
      */
-    readonly value?: types.outputs.network.SubResourceResponse[];
+    readonly value?: types.outputs.SubResourceResponse[];
 }
 /**
  * Lists DNS resolver resource IDs linked to a virtual network.

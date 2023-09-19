@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents a Sql pool transparent data encryption configuration.
  */
@@ -104,7 +104,7 @@ export interface SqlPoolTransparentDataEncryptionArgs {
     /**
      * The status of the database transparent data encryption.
      */
-    status?: pulumi.Input<string | types.enums.v20210601.TransparentDataEncryptionStatus>;
+    status?: pulumi.Input<string | types.enums.TransparentDataEncryptionStatus>;
     /**
      * The name of the transparent data encryption configuration.
      */

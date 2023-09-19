@@ -33,7 +33,7 @@ utilities.lazyLoad(exports, ["PrivateLinkService"], () => require("./privateLink
 
 
 // Export enums:
-export * from "../types/enums/v20210201";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

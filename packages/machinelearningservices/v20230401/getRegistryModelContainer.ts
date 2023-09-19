@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Azure Resource Manager resource envelope.
  */
@@ -40,7 +40,7 @@ export interface GetRegistryModelContainerResult {
     /**
      * [Required] Additional attributes of the entity.
      */
-    readonly modelContainerProperties: types.outputs.machinelearningservices.v20230401.ModelContainerResponse;
+    readonly modelContainerProperties: types.outputs.ModelContainerResponse;
     /**
      * The name of the resource
      */
@@ -48,7 +48,7 @@ export interface GetRegistryModelContainerResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.machinelearningservices.v20230401.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

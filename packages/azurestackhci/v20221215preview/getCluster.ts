@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get HCI cluster.
  */
@@ -71,7 +71,7 @@ export interface GetClusterResult {
     /**
      * Desired properties of the cluster.
      */
-    readonly desiredProperties?: types.outputs.azurestackhci.v20221215preview.ClusterDesiredPropertiesResponse;
+    readonly desiredProperties?: types.outputs.ClusterDesiredPropertiesResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -119,7 +119,7 @@ export interface GetClusterResult {
     /**
      * Properties reported by cluster agent.
      */
-    readonly reportedProperties: types.outputs.azurestackhci.v20221215preview.ClusterReportedPropertiesResponse;
+    readonly reportedProperties: types.outputs.ClusterReportedPropertiesResponse;
     /**
      * Object id of RP Service Principal
      */
@@ -131,7 +131,7 @@ export interface GetClusterResult {
     /**
      * Software Assurance properties of the cluster.
      */
-    readonly softwareAssuranceProperties?: types.outputs.azurestackhci.v20221215preview.SoftwareAssurancePropertiesResponse;
+    readonly softwareAssuranceProperties?: types.outputs.SoftwareAssurancePropertiesResponse;
     /**
      * Status of the cluster agent.
      */
@@ -139,7 +139,7 @@ export interface GetClusterResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.azurestackhci.v20221215preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -159,7 +159,7 @@ export interface GetClusterResult {
     /**
      * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
      */
-    readonly userAssignedIdentities?: {[key: string]: types.outputs.azurestackhci.v20221215preview.UserAssignedIdentityResponse};
+    readonly userAssignedIdentities?: {[key: string]: types.outputs.UserAssignedIdentityResponse};
 }
 /**
  * Get HCI cluster.

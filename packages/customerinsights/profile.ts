@@ -55,7 +55,7 @@ export class Profile extends pulumi.CustomResource {
     /**
      * The properties of the Profile.
      */
-    public readonly fields!: pulumi.Output<types.outputs.customerinsights.PropertyDefinitionResponse[] | undefined>;
+    public readonly fields!: pulumi.Output<types.outputs.PropertyDefinitionResponse[] | undefined>;
     /**
      * The instance count.
      */
@@ -95,7 +95,7 @@ export class Profile extends pulumi.CustomResource {
     /**
      * The strong IDs.
      */
-    public readonly strongIds!: pulumi.Output<types.outputs.customerinsights.StrongIdResponse[] | undefined>;
+    public readonly strongIds!: pulumi.Output<types.outputs.StrongIdResponse[] | undefined>;
     /**
      * The hub name.
      */
@@ -209,7 +209,7 @@ export interface ProfileArgs {
     /**
      * The properties of the Profile.
      */
-    fields?: pulumi.Input<pulumi.Input<types.inputs.customerinsights.PropertyDefinitionArgs>[]>;
+    fields?: pulumi.Input<pulumi.Input<types.inputs.PropertyDefinitionArgs>[]>;
     /**
      * The name of the hub.
      */
@@ -249,7 +249,7 @@ export interface ProfileArgs {
     /**
      * The strong IDs.
      */
-    strongIds?: pulumi.Input<pulumi.Input<types.inputs.customerinsights.StrongIdArgs>[]>;
+    strongIds?: pulumi.Input<pulumi.Input<types.inputs.StrongIdArgs>[]>;
     /**
      * The timestamp property name. Represents the time when the interaction or profile update happened.
      */

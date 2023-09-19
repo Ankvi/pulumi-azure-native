@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the information about the network resource with the given name. The information include the description and other properties of the network.
  */
@@ -43,7 +43,7 @@ export interface GetNetworkResult {
     /**
      * Describes properties of a network resource.
      */
-    readonly properties: types.outputs.servicefabricmesh.v20180901preview.NetworkResourcePropertiesResponse;
+    readonly properties: types.outputs.NetworkResourcePropertiesResponse;
     /**
      * Resource tags.
      */

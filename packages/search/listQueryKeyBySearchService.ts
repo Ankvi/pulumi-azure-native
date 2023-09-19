@@ -36,7 +36,7 @@ export interface ListQueryKeyBySearchServiceResult {
     /**
      * The query keys for the Azure Cognitive Search service.
      */
-    readonly value: types.outputs.search.QueryKeyResponse[];
+    readonly value: types.outputs.QueryKeyResponse[];
 }
 /**
  * Returns the list of query API keys for the given Azure Cognitive Search service.

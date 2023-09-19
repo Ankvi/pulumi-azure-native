@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the private link resource.
  */
@@ -48,11 +48,11 @@ export interface GetPrivateEndpointConnectionControllerResult {
     /**
      * private endpoints
      */
-    readonly privateEndpoint: types.outputs.offazure.v20230606.ResourceIdResponse;
+    readonly privateEndpoint: types.outputs.ResourceIdResponse;
     /**
      * private endpoints connection state
      */
-    readonly privateLinkServiceConnectionState?: types.outputs.offazure.v20230606.PrivateLinkServiceConnectionStateResponse;
+    readonly privateLinkServiceConnectionState?: types.outputs.PrivateLinkServiceConnectionStateResponse;
     /**
      * provisioning state enum
      */
@@ -60,7 +60,7 @@ export interface GetPrivateEndpointConnectionControllerResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.offazure.v20230606.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

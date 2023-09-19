@@ -52,7 +52,7 @@ export interface GetDdosProtectionPlanResult {
     /**
      * The list of public IPs associated with the DDoS protection plan resource. This list is read-only.
      */
-    readonly publicIPAddresses: types.outputs.network.SubResourceResponse[];
+    readonly publicIPAddresses: types.outputs.SubResourceResponse[];
     /**
      * The resource GUID property of the DDoS protection plan resource. It uniquely identifies the resource, even if the user changes its name or migrate the resource across subscriptions or resource groups.
      */
@@ -68,7 +68,7 @@ export interface GetDdosProtectionPlanResult {
     /**
      * The list of virtual networks associated with the DDoS protection plan resource. This list is read-only.
      */
-    readonly virtualNetworks: types.outputs.network.SubResourceResponse[];
+    readonly virtualNetworks: types.outputs.SubResourceResponse[];
 }
 /**
  * Gets information about the specified DDoS protection plan.

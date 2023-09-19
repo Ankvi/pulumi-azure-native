@@ -42,7 +42,7 @@ export interface GetDatastoreResult {
     /**
      * An iSCSI volume
      */
-    readonly diskPoolVolume?: types.outputs.avs.DiskPoolVolumeResponse;
+    readonly diskPoolVolume?: types.outputs.DiskPoolVolumeResponse;
     /**
      * Resource ID.
      */
@@ -54,7 +54,7 @@ export interface GetDatastoreResult {
     /**
      * An Azure NetApp Files volume
      */
-    readonly netAppVolume?: types.outputs.avs.NetAppVolumeResponse;
+    readonly netAppVolume?: types.outputs.NetAppVolumeResponse;
     /**
      * The state of the datastore provisioning
      */

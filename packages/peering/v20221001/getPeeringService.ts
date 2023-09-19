@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets an existing peering service with the specified name under the given subscription and resource group.
  */
@@ -39,7 +39,7 @@ export interface GetPeeringServiceResult {
     /**
      * The Log Analytics Workspace Properties
      */
-    readonly logAnalyticsWorkspaceProperties?: types.outputs.peering.v20221001.LogAnalyticsWorkspacePropertiesResponse;
+    readonly logAnalyticsWorkspaceProperties?: types.outputs.LogAnalyticsWorkspacePropertiesResponse;
     /**
      * The name of the resource.
      */
@@ -67,7 +67,7 @@ export interface GetPeeringServiceResult {
     /**
      * The SKU that defines the type of the peering service.
      */
-    readonly sku?: types.outputs.peering.v20221001.PeeringServiceSkuResponse;
+    readonly sku?: types.outputs.PeeringServiceSkuResponse;
     /**
      * The resource tags.
      */

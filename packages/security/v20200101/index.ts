@@ -43,7 +43,7 @@ utilities.lazyLoad(exports, ["ServerVulnerabilityAssessment"], () => require("./
 
 
 // Export enums:
-export * from "../types/enums/v20200101";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

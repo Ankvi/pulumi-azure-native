@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets information about a server group firewall rule.
  */
@@ -52,7 +52,7 @@ export interface GetFirewallRuleResult {
     /**
      * The system metadata relating to this resource
      */
-    readonly systemData: types.outputs.dbforpostgresql.v20201005privatepreview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

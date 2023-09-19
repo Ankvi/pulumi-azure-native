@@ -59,7 +59,7 @@ export class PrometheusRuleGroup extends pulumi.CustomResource {
     /**
      * Defines the rules in the Prometheus rule group.
      */
-    public readonly rules!: pulumi.Output<types.outputs.alertsmanagement.PrometheusRuleResponse[]>;
+    public readonly rules!: pulumi.Output<types.outputs.PrometheusRuleResponse[]>;
     /**
      * Target Azure Monitor workspaces resource ids. This api-version is currently limited to creating with one scope. This may change in future.
      */
@@ -67,7 +67,7 @@ export class PrometheusRuleGroup extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.alertsmanagement.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -165,7 +165,7 @@ export interface PrometheusRuleGroupArgs {
     /**
      * Defines the rules in the Prometheus rule group.
      */
-    rules: pulumi.Input<pulumi.Input<types.inputs.alertsmanagement.PrometheusRuleArgs>[]>;
+    rules: pulumi.Input<pulumi.Input<types.inputs.PrometheusRuleArgs>[]>;
     /**
      * Target Azure Monitor workspaces resource ids. This api-version is currently limited to creating with one scope. This may change in future.
      */

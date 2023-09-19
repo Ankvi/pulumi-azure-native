@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Container App Job
  */
@@ -31,7 +31,7 @@ export interface GetJobResult {
     /**
      * Container Apps Job configuration properties.
      */
-    readonly configuration?: types.outputs.app.v20230501.JobConfigurationResponse;
+    readonly configuration?: types.outputs.JobConfigurationResponse;
     /**
      * Resource ID of environment.
      */
@@ -47,7 +47,7 @@ export interface GetJobResult {
     /**
      * Managed identities needed by a container app job to interact with other Azure services to not maintain any secrets or credentials in code.
      */
-    readonly identity?: types.outputs.app.v20230501.ManagedServiceIdentityResponse;
+    readonly identity?: types.outputs.ManagedServiceIdentityResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -67,7 +67,7 @@ export interface GetJobResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.app.v20230501.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -75,7 +75,7 @@ export interface GetJobResult {
     /**
      * Container Apps job definition.
      */
-    readonly template?: types.outputs.app.v20230501.JobTemplateResponse;
+    readonly template?: types.outputs.JobTemplateResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

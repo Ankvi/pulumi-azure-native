@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An ADLSGen2 storage account data set.
  */
@@ -51,7 +51,7 @@ export class ADLSGen2StorageAccountDataSet extends pulumi.CustomResource {
     /**
      * A list of ADLSGen2 storage account paths.
      */
-    public readonly paths!: pulumi.Output<types.outputs.datashare.v20201001preview.ADLSGen2StorageAccountPathResponse[]>;
+    public readonly paths!: pulumi.Output<types.outputs.ADLSGen2StorageAccountPathResponse[]>;
     /**
      * Resource id of the ADLSGen2 storage account.
      */
@@ -59,7 +59,7 @@ export class ADLSGen2StorageAccountDataSet extends pulumi.CustomResource {
     /**
      * System Data of the Azure resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.datashare.v20201001preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Type of the azure resource
      */
@@ -143,7 +143,7 @@ export interface ADLSGen2StorageAccountDataSetArgs {
     /**
      * A list of ADLSGen2 storage account paths.
      */
-    paths: pulumi.Input<pulumi.Input<types.inputs.datashare.v20201001preview.ADLSGen2StorageAccountPathArgs>[]>;
+    paths: pulumi.Input<pulumi.Input<types.inputs.ADLSGen2StorageAccountPathArgs>[]>;
     /**
      * The resource group name.
      */

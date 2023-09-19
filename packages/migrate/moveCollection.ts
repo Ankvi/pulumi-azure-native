@@ -39,7 +39,7 @@ export class MoveCollection extends pulumi.CustomResource {
     /**
      * Defines the MSI properties of the Move Collection.
      */
-    public readonly identity!: pulumi.Output<types.outputs.migrate.IdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityResponse | undefined>;
     /**
      * The geo-location where the resource lives.
      */
@@ -51,11 +51,11 @@ export class MoveCollection extends pulumi.CustomResource {
     /**
      * Defines the move collection properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.migrate.MoveCollectionPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.MoveCollectionPropertiesResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.migrate.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -113,7 +113,7 @@ export interface MoveCollectionArgs {
     /**
      * Defines the MSI properties of the Move Collection.
      */
-    identity?: pulumi.Input<types.inputs.migrate.IdentityArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityArgs>;
     /**
      * The geo-location where the resource lives.
      */
@@ -125,7 +125,7 @@ export interface MoveCollectionArgs {
     /**
      * Defines the move collection properties.
      */
-    properties?: pulumi.Input<types.inputs.migrate.MoveCollectionPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.MoveCollectionPropertiesArgs>;
     /**
      * The Resource Group Name.
      */

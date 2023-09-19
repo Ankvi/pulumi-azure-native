@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Defines the Neighbor Group.
  */
@@ -38,7 +38,7 @@ export class NeighborGroup extends pulumi.CustomResource {
     /**
      * An array of destination IPv4 Addresses or IPv6 Addresses.
      */
-    public readonly destination!: pulumi.Output<types.outputs.managednetworkfabric.v20230615.NeighborGroupDestinationResponse>;
+    public readonly destination!: pulumi.Output<types.outputs.NeighborGroupDestinationResponse>;
     /**
      * The geo-location where the resource lives
      */
@@ -62,7 +62,7 @@ export class NeighborGroup extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.managednetworkfabric.v20230615.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -131,7 +131,7 @@ export interface NeighborGroupArgs {
     /**
      * An array of destination IPv4 Addresses or IPv6 Addresses.
      */
-    destination: pulumi.Input<types.inputs.managednetworkfabric.v20230615.NeighborGroupDestinationArgs>;
+    destination: pulumi.Input<types.inputs.NeighborGroupDestinationArgs>;
     /**
      * The geo-location where the resource lives
      */

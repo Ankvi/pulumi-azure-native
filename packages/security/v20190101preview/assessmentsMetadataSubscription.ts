@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Security assessment metadata
  */
@@ -145,8 +145,8 @@ export interface AssessmentsMetadataSubscriptionArgs {
     /**
      * BuiltIn if the assessment based on built-in Azure Policy definition, Custom if the assessment based on custom Azure Policy definition
      */
-    assessmentType: pulumi.Input<string | types.enums.v20190101preview.AssessmentType>;
-    categories?: pulumi.Input<pulumi.Input<string | types.enums.v20190101preview.Categories>[]>;
+    assessmentType: pulumi.Input<string | types.enums.AssessmentType>;
+    categories?: pulumi.Input<pulumi.Input<string | types.enums.Categories>[]>;
     /**
      * Human readable description of the assessment
      */
@@ -158,7 +158,7 @@ export interface AssessmentsMetadataSubscriptionArgs {
     /**
      * The implementation effort required to remediate this assessment
      */
-    implementationEffort?: pulumi.Input<string | types.enums.v20190101preview.ImplementationEffort>;
+    implementationEffort?: pulumi.Input<string | types.enums.ImplementationEffort>;
     /**
      * True if this assessment is in preview release status
      */
@@ -170,10 +170,10 @@ export interface AssessmentsMetadataSubscriptionArgs {
     /**
      * The severity level of the assessment
      */
-    severity: pulumi.Input<string | types.enums.v20190101preview.Severity>;
-    threats?: pulumi.Input<pulumi.Input<string | types.enums.v20190101preview.Threats>[]>;
+    severity: pulumi.Input<string | types.enums.Severity>;
+    threats?: pulumi.Input<pulumi.Input<string | types.enums.Threats>[]>;
     /**
      * The user impact of the assessment
      */
-    userImpact?: pulumi.Input<string | types.enums.v20190101preview.UserImpact>;
+    userImpact?: pulumi.Input<string | types.enums.UserImpact>;
 }

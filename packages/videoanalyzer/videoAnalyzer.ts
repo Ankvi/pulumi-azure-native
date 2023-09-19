@@ -35,19 +35,19 @@ export class VideoAnalyzer extends pulumi.CustomResource {
     /**
      * The account encryption properties.
      */
-    public readonly encryption!: pulumi.Output<types.outputs.videoanalyzer.AccountEncryptionResponse | undefined>;
+    public readonly encryption!: pulumi.Output<types.outputs.AccountEncryptionResponse | undefined>;
     /**
      * The endpoints associated with this resource.
      */
-    public /*out*/ readonly endpoints!: pulumi.Output<types.outputs.videoanalyzer.EndpointResponse[]>;
+    public /*out*/ readonly endpoints!: pulumi.Output<types.outputs.EndpointResponse[]>;
     /**
      * The identities associated to the Video Analyzer resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.videoanalyzer.VideoAnalyzerIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.VideoAnalyzerIdentityResponse | undefined>;
     /**
      * The IoT Hubs for this resource.
      */
-    public readonly iotHubs!: pulumi.Output<types.outputs.videoanalyzer.IotHubResponse[] | undefined>;
+    public readonly iotHubs!: pulumi.Output<types.outputs.IotHubResponse[] | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -59,11 +59,11 @@ export class VideoAnalyzer extends pulumi.CustomResource {
     /**
      * Network access control for Video Analyzer.
      */
-    public readonly networkAccessControl!: pulumi.Output<types.outputs.videoanalyzer.NetworkAccessControlResponse | undefined>;
+    public readonly networkAccessControl!: pulumi.Output<types.outputs.NetworkAccessControlResponse | undefined>;
     /**
      * Private Endpoint Connections created under Video Analyzer account.
      */
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.videoanalyzer.PrivateEndpointConnectionResponse[]>;
+    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[]>;
     /**
      * Provisioning state of the Video Analyzer account.
      */
@@ -75,11 +75,11 @@ export class VideoAnalyzer extends pulumi.CustomResource {
     /**
      * The storage accounts for this resource.
      */
-    public readonly storageAccounts!: pulumi.Output<types.outputs.videoanalyzer.StorageAccountResponse[]>;
+    public readonly storageAccounts!: pulumi.Output<types.outputs.StorageAccountResponse[]>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.videoanalyzer.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -156,15 +156,15 @@ export interface VideoAnalyzerArgs {
     /**
      * The account encryption properties.
      */
-    encryption?: pulumi.Input<types.inputs.videoanalyzer.AccountEncryptionArgs>;
+    encryption?: pulumi.Input<types.inputs.AccountEncryptionArgs>;
     /**
      * The identities associated to the Video Analyzer resource.
      */
-    identity?: pulumi.Input<types.inputs.videoanalyzer.VideoAnalyzerIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.VideoAnalyzerIdentityArgs>;
     /**
      * The IoT Hubs for this resource.
      */
-    iotHubs?: pulumi.Input<pulumi.Input<types.inputs.videoanalyzer.IotHubArgs>[]>;
+    iotHubs?: pulumi.Input<pulumi.Input<types.inputs.IotHubArgs>[]>;
     /**
      * The geo-location where the resource lives
      */
@@ -172,7 +172,7 @@ export interface VideoAnalyzerArgs {
     /**
      * Network access control for Video Analyzer.
      */
-    networkAccessControl?: pulumi.Input<types.inputs.videoanalyzer.NetworkAccessControlArgs>;
+    networkAccessControl?: pulumi.Input<types.inputs.NetworkAccessControlArgs>;
     /**
      * Whether or not public network access is allowed for resources under the Video Analyzer account.
      */
@@ -184,7 +184,7 @@ export interface VideoAnalyzerArgs {
     /**
      * The storage accounts for this resource.
      */
-    storageAccounts: pulumi.Input<pulumi.Input<types.inputs.videoanalyzer.StorageAccountArgs>[]>;
+    storageAccounts: pulumi.Input<pulumi.Input<types.inputs.StorageAccountArgs>[]>;
     /**
      * Resource tags.
      */

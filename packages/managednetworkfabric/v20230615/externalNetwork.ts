@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Defines the External Network resource.
  */
@@ -46,7 +46,7 @@ export class ExternalNetwork extends pulumi.CustomResource {
     /**
      * Export Route Policy either IPv4 or IPv6.
      */
-    public readonly exportRoutePolicy!: pulumi.Output<types.outputs.managednetworkfabric.v20230615.ExportRoutePolicyResponse | undefined>;
+    public readonly exportRoutePolicy!: pulumi.Output<types.outputs.ExportRoutePolicyResponse | undefined>;
     /**
      * ARM Resource ID of the RoutePolicy. This is used for the backward compatibility.
      */
@@ -54,7 +54,7 @@ export class ExternalNetwork extends pulumi.CustomResource {
     /**
      * Import Route Policy either IPv4 or IPv6.
      */
-    public readonly importRoutePolicy!: pulumi.Output<types.outputs.managednetworkfabric.v20230615.ImportRoutePolicyResponse | undefined>;
+    public readonly importRoutePolicy!: pulumi.Output<types.outputs.ImportRoutePolicyResponse | undefined>;
     /**
      * ARM Resource ID of the RoutePolicy. This is used for the backward compatibility.
      */
@@ -70,11 +70,11 @@ export class ExternalNetwork extends pulumi.CustomResource {
     /**
      * option A properties object
      */
-    public readonly optionAProperties!: pulumi.Output<types.outputs.managednetworkfabric.v20230615.ExternalNetworkPropertiesResponseOptionAProperties | undefined>;
+    public readonly optionAProperties!: pulumi.Output<types.outputs.ExternalNetworkPropertiesResponseOptionAProperties | undefined>;
     /**
      * option B properties object
      */
-    public readonly optionBProperties!: pulumi.Output<types.outputs.managednetworkfabric.v20230615.L3OptionBPropertiesResponse | undefined>;
+    public readonly optionBProperties!: pulumi.Output<types.outputs.L3OptionBPropertiesResponse | undefined>;
     /**
      * Peering option list.
      */
@@ -86,7 +86,7 @@ export class ExternalNetwork extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.managednetworkfabric.v20230615.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -119,7 +119,7 @@ export class ExternalNetwork extends pulumi.CustomResource {
             resourceInputs["importRoutePolicy"] = args ? args.importRoutePolicy : undefined;
             resourceInputs["importRoutePolicyId"] = args ? args.importRoutePolicyId : undefined;
             resourceInputs["l3IsolationDomainName"] = args ? args.l3IsolationDomainName : undefined;
-            resourceInputs["optionAProperties"] = args ? (args.optionAProperties ? pulumi.output(args.optionAProperties).apply(types.inputs.managednetworkfabric.v20230615.externalNetworkPropertiesOptionAPropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["optionAProperties"] = args ? (args.optionAProperties ? pulumi.output(args.optionAProperties).apply(types.inputs.externalNetworkPropertiesOptionAPropertiesArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["optionBProperties"] = args ? args.optionBProperties : undefined;
             resourceInputs["peeringOption"] = args ? args.peeringOption : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
@@ -165,7 +165,7 @@ export interface ExternalNetworkArgs {
     /**
      * Export Route Policy either IPv4 or IPv6.
      */
-    exportRoutePolicy?: pulumi.Input<types.inputs.managednetworkfabric.v20230615.ExportRoutePolicyArgs>;
+    exportRoutePolicy?: pulumi.Input<types.inputs.ExportRoutePolicyArgs>;
     /**
      * ARM Resource ID of the RoutePolicy. This is used for the backward compatibility.
      */
@@ -177,7 +177,7 @@ export interface ExternalNetworkArgs {
     /**
      * Import Route Policy either IPv4 or IPv6.
      */
-    importRoutePolicy?: pulumi.Input<types.inputs.managednetworkfabric.v20230615.ImportRoutePolicyArgs>;
+    importRoutePolicy?: pulumi.Input<types.inputs.ImportRoutePolicyArgs>;
     /**
      * ARM Resource ID of the RoutePolicy. This is used for the backward compatibility.
      */
@@ -189,15 +189,15 @@ export interface ExternalNetworkArgs {
     /**
      * option A properties object
      */
-    optionAProperties?: pulumi.Input<types.inputs.managednetworkfabric.v20230615.ExternalNetworkPropertiesOptionAPropertiesArgs>;
+    optionAProperties?: pulumi.Input<types.inputs.ExternalNetworkPropertiesOptionAPropertiesArgs>;
     /**
      * option B properties object
      */
-    optionBProperties?: pulumi.Input<types.inputs.managednetworkfabric.v20230615.L3OptionBPropertiesArgs>;
+    optionBProperties?: pulumi.Input<types.inputs.L3OptionBPropertiesArgs>;
     /**
      * Peering option list.
      */
-    peeringOption: pulumi.Input<string | types.enums.v20230615.PeeringOption>;
+    peeringOption: pulumi.Input<string | types.enums.PeeringOption>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

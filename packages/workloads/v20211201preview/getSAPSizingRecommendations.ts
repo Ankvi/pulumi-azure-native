@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get SAP sizing recommendations by providing input SAPS for application tier and memory required for database tier
  */
@@ -29,7 +29,7 @@ export interface GetSAPSizingRecommendationsArgs {
     /**
      * The database type.
      */
-    databaseType: string | types.enums.v20211201preview.SAPDatabaseType;
+    databaseType: string | types.enums.SAPDatabaseType;
     /**
      * The database memory configuration.
      */
@@ -37,19 +37,19 @@ export interface GetSAPSizingRecommendationsArgs {
     /**
      * The DB scale method.
      */
-    dbScaleMethod?: string | types.enums.v20211201preview.SAPDatabaseScaleMethod;
+    dbScaleMethod?: string | types.enums.SAPDatabaseScaleMethod;
     /**
      * The deployment type. Eg: SingleServer/ThreeTier
      */
-    deploymentType: string | types.enums.v20211201preview.SAPDeploymentType;
+    deploymentType: string | types.enums.SAPDeploymentType;
     /**
      * Defines the environment type - Production/Non Production.
      */
-    environment: string | types.enums.v20211201preview.SAPEnvironmentType;
+    environment: string | types.enums.SAPEnvironmentType;
     /**
      * The high availability type.
      */
-    highAvailabilityType?: string | types.enums.v20211201preview.SAPHighAvailabilityType;
+    highAvailabilityType?: string | types.enums.SAPHighAvailabilityType;
     /**
      * The name of Azure region.
      */
@@ -57,7 +57,7 @@ export interface GetSAPSizingRecommendationsArgs {
     /**
      * Defines the SAP Product type.
      */
-    sapProduct: string | types.enums.v20211201preview.SAPProductType;
+    sapProduct: string | types.enums.SAPProductType;
     /**
      * The SAP Application Performance Standard measurement.
      */
@@ -88,7 +88,7 @@ export interface GetSAPSizingRecommendationsOutputArgs {
     /**
      * The database type.
      */
-    databaseType: pulumi.Input<string | types.enums.v20211201preview.SAPDatabaseType>;
+    databaseType: pulumi.Input<string | types.enums.SAPDatabaseType>;
     /**
      * The database memory configuration.
      */
@@ -96,19 +96,19 @@ export interface GetSAPSizingRecommendationsOutputArgs {
     /**
      * The DB scale method.
      */
-    dbScaleMethod?: pulumi.Input<string | types.enums.v20211201preview.SAPDatabaseScaleMethod>;
+    dbScaleMethod?: pulumi.Input<string | types.enums.SAPDatabaseScaleMethod>;
     /**
      * The deployment type. Eg: SingleServer/ThreeTier
      */
-    deploymentType: pulumi.Input<string | types.enums.v20211201preview.SAPDeploymentType>;
+    deploymentType: pulumi.Input<string | types.enums.SAPDeploymentType>;
     /**
      * Defines the environment type - Production/Non Production.
      */
-    environment: pulumi.Input<string | types.enums.v20211201preview.SAPEnvironmentType>;
+    environment: pulumi.Input<string | types.enums.SAPEnvironmentType>;
     /**
      * The high availability type.
      */
-    highAvailabilityType?: pulumi.Input<string | types.enums.v20211201preview.SAPHighAvailabilityType>;
+    highAvailabilityType?: pulumi.Input<string | types.enums.SAPHighAvailabilityType>;
     /**
      * The name of Azure region.
      */
@@ -116,7 +116,7 @@ export interface GetSAPSizingRecommendationsOutputArgs {
     /**
      * Defines the SAP Product type.
      */
-    sapProduct: pulumi.Input<string | types.enums.v20211201preview.SAPProductType>;
+    sapProduct: pulumi.Input<string | types.enums.SAPProductType>;
     /**
      * The SAP Application Performance Standard measurement.
      */

@@ -41,7 +41,7 @@ export interface GetPipelineJobResult {
     /**
      * Details about the error, in case the pipeline job fails.
      */
-    readonly error: types.outputs.videoanalyzer.PipelineJobErrorResponse;
+    readonly error: types.outputs.PipelineJobErrorResponse;
     /**
      * The date-time by when this pipeline job will be automatically deleted from your account.
      */
@@ -57,7 +57,7 @@ export interface GetPipelineJobResult {
     /**
      * List of the instance level parameter values for the user-defined topology parameters. A pipeline can only define or override parameters values for parameters which have been declared in the referenced topology. Topology parameters without a default value must be defined. Topology parameters with a default value can be optionally be overridden.
      */
-    readonly parameters?: types.outputs.videoanalyzer.ParameterDefinitionResponse[];
+    readonly parameters?: types.outputs.ParameterDefinitionResponse[];
     /**
      * Current state of the pipeline (read-only).
      */
@@ -65,7 +65,7 @@ export interface GetPipelineJobResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.videoanalyzer.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Reference to an existing pipeline topology. When activated, this pipeline job will process content according to the pipeline topology definition.
      */

@@ -42,7 +42,7 @@ export interface GetSAPAvailabilityZoneDetailsResult {
     /**
      * Gets the list of availability zone pairs.
      */
-    readonly availabilityZonePairs?: types.outputs.workloads.SAPAvailabilityZonePairResponse[];
+    readonly availabilityZonePairs?: types.outputs.SAPAvailabilityZonePairResponse[];
 }
 /**
  * Get the recommended SAP Availability Zone Pair Details for your region.

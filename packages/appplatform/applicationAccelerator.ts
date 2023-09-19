@@ -39,15 +39,15 @@ export class ApplicationAccelerator extends pulumi.CustomResource {
     /**
      * Application accelerator properties payload
      */
-    public /*out*/ readonly properties!: pulumi.Output<types.outputs.appplatform.ApplicationAcceleratorPropertiesResponse>;
+    public /*out*/ readonly properties!: pulumi.Output<types.outputs.ApplicationAcceleratorPropertiesResponse>;
     /**
      * Sku of the application accelerator resource
      */
-    public readonly sku!: pulumi.Output<types.outputs.appplatform.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.appplatform.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource.
      */
@@ -73,7 +73,7 @@ export class ApplicationAccelerator extends pulumi.CustomResource {
             resourceInputs["applicationAcceleratorName"] = args ? args.applicationAcceleratorName : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
-            resourceInputs["sku"] = args ? (args.sku ? pulumi.output(args.sku).apply(types.inputs.appplatform.skuArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["sku"] = args ? (args.sku ? pulumi.output(args.sku).apply(types.inputs.skuArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["properties"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
@@ -111,5 +111,5 @@ export interface ApplicationAcceleratorArgs {
     /**
      * Sku of the application accelerator resource
      */
-    sku?: pulumi.Input<types.inputs.appplatform.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
 }

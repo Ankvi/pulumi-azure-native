@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a Service by name.
  */
@@ -45,7 +45,7 @@ export interface GetACIServiceResult {
     /**
      * The identity of the resource.
      */
-    readonly identity?: types.outputs.machinelearningservices.v20210401.IdentityResponse;
+    readonly identity?: types.outputs.IdentityResponse;
     /**
      * Specifies the location of the resource.
      */
@@ -57,15 +57,15 @@ export interface GetACIServiceResult {
     /**
      * Service properties
      */
-    readonly properties: types.outputs.machinelearningservices.v20210401.ACIServiceResponseResponse | types.outputs.machinelearningservices.v20210401.AKSServiceResponseResponse | types.outputs.machinelearningservices.v20210401.AKSVariantResponseResponse;
+    readonly properties: types.outputs.ACIServiceResponseResponse | types.outputs.AKSServiceResponseResponse | types.outputs.AKSVariantResponseResponse;
     /**
      * The sku of the workspace.
      */
-    readonly sku?: types.outputs.machinelearningservices.v20210401.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * Read only system data
      */
-    readonly systemData: types.outputs.machinelearningservices.v20210401.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Contains resource tags defined as key/value pairs.
      */

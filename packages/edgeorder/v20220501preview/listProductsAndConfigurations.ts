@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * List configurations for the given product family, product line and product for the given subscription.
  */
@@ -19,11 +19,11 @@ export interface ListProductsAndConfigurationsArgs {
     /**
      * Holds details about product hierarchy information and filterable property.
      */
-    configurationFilter?: types.inputs.edgeorder.v20220501preview.ConfigurationFilter;
+    configurationFilter?: types.inputs.ConfigurationFilter;
     /**
      * Customer subscription properties. Clients can display available products to unregistered customers by explicitly passing subscription details.
      */
-    customerSubscriptionDetails?: types.inputs.edgeorder.v20220501preview.CustomerSubscriptionDetails;
+    customerSubscriptionDetails?: types.inputs.CustomerSubscriptionDetails;
     /**
      * $skipToken is supported on list of configurations, which provides the next page in the list of configurations.
      */
@@ -41,7 +41,7 @@ export interface ListProductsAndConfigurationsResult {
     /**
      * List of configurations.
      */
-    readonly value: types.outputs.edgeorder.v20220501preview.ConfigurationResponse[];
+    readonly value: types.outputs.ConfigurationResponse[];
 }
 /**
  * List configurations for the given product family, product line and product for the given subscription.
@@ -54,11 +54,11 @@ export interface ListProductsAndConfigurationsOutputArgs {
     /**
      * Holds details about product hierarchy information and filterable property.
      */
-    configurationFilter?: pulumi.Input<types.inputs.edgeorder.v20220501preview.ConfigurationFilterArgs>;
+    configurationFilter?: pulumi.Input<types.inputs.ConfigurationFilterArgs>;
     /**
      * Customer subscription properties. Clients can display available products to unregistered customers by explicitly passing subscription details.
      */
-    customerSubscriptionDetails?: pulumi.Input<types.inputs.edgeorder.v20220501preview.CustomerSubscriptionDetailsArgs>;
+    customerSubscriptionDetails?: pulumi.Input<types.inputs.CustomerSubscriptionDetailsArgs>;
     /**
      * $skipToken is supported on list of configurations, which provides the next page in the list of configurations.
      */

@@ -43,7 +43,7 @@ export class MachineExtension extends pulumi.CustomResource {
     /**
      * The machine extension instance view.
      */
-    public /*out*/ readonly instanceView!: pulumi.Output<types.outputs.azurestackhci.MachineExtensionPropertiesResponseInstanceView | undefined>;
+    public /*out*/ readonly instanceView!: pulumi.Output<types.outputs.MachineExtensionPropertiesResponseInstanceView | undefined>;
     /**
      * The location.
      */
@@ -71,7 +71,7 @@ export class MachineExtension extends pulumi.CustomResource {
     /**
      * The system data.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.azurestackhci.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The Resource tags.
      */

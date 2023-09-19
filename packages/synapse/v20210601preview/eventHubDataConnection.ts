@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Class representing an event hub data connection.
  */
@@ -79,7 +79,7 @@ export class EventHubDataConnection extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.synapse.v20210601preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The table where the data should be ingested. Optionally the table information can be added to each message.
      */
@@ -170,7 +170,7 @@ export interface EventHubDataConnectionArgs {
     /**
      * The event hub messages compression type
      */
-    compression?: pulumi.Input<string | types.enums.v20210601preview.Compression>;
+    compression?: pulumi.Input<string | types.enums.Compression>;
     /**
      * The event hub consumer group.
      */
@@ -182,7 +182,7 @@ export interface EventHubDataConnectionArgs {
     /**
      * The data format of the message. Optionally the data format can be added to each message.
      */
-    dataFormat?: pulumi.Input<string | types.enums.v20210601preview.EventHubDataFormat>;
+    dataFormat?: pulumi.Input<string | types.enums.EventHubDataFormat>;
     /**
      * The name of the database in the Kusto pool.
      */

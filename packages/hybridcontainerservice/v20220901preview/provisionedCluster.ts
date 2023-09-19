@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The provisionedClusters resource definition.
  */
@@ -31,11 +31,11 @@ export class ProvisionedCluster extends pulumi.CustomResource {
         return obj['__pulumiType'] === ProvisionedCluster.__pulumiType;
     }
 
-    public readonly extendedLocation!: pulumi.Output<types.outputs.hybridcontainerservice.v20220901preview.ProvisionedClustersResponseResponseExtendedLocation | undefined>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ProvisionedClustersResponseResponseExtendedLocation | undefined>;
     /**
      * Identity for the Provisioned cluster.
      */
-    public readonly identity!: pulumi.Output<types.outputs.hybridcontainerservice.v20220901preview.ProvisionedClusterIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ProvisionedClusterIdentityResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -44,11 +44,11 @@ export class ProvisionedCluster extends pulumi.CustomResource {
      * The name of the resource
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
-    public readonly properties!: pulumi.Output<types.outputs.hybridcontainerservice.v20220901preview.ProvisionedClustersResponsePropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ProvisionedClustersResponsePropertiesResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.hybridcontainerservice.v20220901preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -75,7 +75,7 @@ export class ProvisionedCluster extends pulumi.CustomResource {
             resourceInputs["extendedLocation"] = args ? args.extendedLocation : undefined;
             resourceInputs["identity"] = args ? args.identity : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.hybridcontainerservice.v20220901preview.provisionedClustersAllPropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.provisionedClustersAllPropertiesArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["resourceName"] = args ? args.resourceName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
@@ -103,11 +103,11 @@ export class ProvisionedCluster extends pulumi.CustomResource {
  * The set of arguments for constructing a ProvisionedCluster resource.
  */
 export interface ProvisionedClusterArgs {
-    extendedLocation?: pulumi.Input<types.inputs.hybridcontainerservice.v20220901preview.ProvisionedClustersExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ProvisionedClustersExtendedLocationArgs>;
     /**
      * Identity for the Provisioned cluster.
      */
-    identity?: pulumi.Input<types.inputs.hybridcontainerservice.v20220901preview.ProvisionedClusterIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ProvisionedClusterIdentityArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -115,7 +115,7 @@ export interface ProvisionedClusterArgs {
     /**
      * All properties of the provisioned cluster
      */
-    properties?: pulumi.Input<types.inputs.hybridcontainerservice.v20220901preview.ProvisionedClustersAllPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ProvisionedClustersAllPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

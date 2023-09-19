@@ -42,7 +42,7 @@ export interface ListVolumeReplicationsResult {
     /**
      * A list of replications
      */
-    readonly value?: types.outputs.netapp.ReplicationResponse[];
+    readonly value?: types.outputs.ReplicationResponse[];
 }
 /**
  * List all replications for a specified volume

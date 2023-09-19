@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * VpnGateway Resource.
  */
@@ -34,11 +34,11 @@ export class VpnGateway extends pulumi.CustomResource {
     /**
      * Local network gateway's BGP speaker settings.
      */
-    public readonly bgpSettings!: pulumi.Output<types.outputs.network.v20180701.BgpSettingsResponse | undefined>;
+    public readonly bgpSettings!: pulumi.Output<types.outputs.BgpSettingsResponse | undefined>;
     /**
      * list of all vpn connections to the gateway.
      */
-    public readonly connections!: pulumi.Output<types.outputs.network.v20180701.VpnConnectionResponse[] | undefined>;
+    public readonly connections!: pulumi.Output<types.outputs.VpnConnectionResponse[] | undefined>;
     /**
      * Gets a unique read-only string that changes whenever the resource is updated.
      */
@@ -54,7 +54,7 @@ export class VpnGateway extends pulumi.CustomResource {
     /**
      * The policies applied to this vpn gateway.
      */
-    public readonly policies!: pulumi.Output<types.outputs.network.v20180701.PoliciesResponse | undefined>;
+    public readonly policies!: pulumi.Output<types.outputs.PoliciesResponse | undefined>;
     /**
      * The provisioning state of the resource.
      */
@@ -70,7 +70,7 @@ export class VpnGateway extends pulumi.CustomResource {
     /**
      * The VirtualHub to which the gateway belongs
      */
-    public readonly virtualHub!: pulumi.Output<types.outputs.network.v20180701.SubResourceResponse | undefined>;
+    public readonly virtualHub!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
 
     /**
      * Create a VpnGateway resource with the given unique name, arguments, and options.
@@ -125,12 +125,12 @@ export interface VpnGatewayArgs {
     /**
      * Local network gateway's BGP speaker settings.
      */
-    bgpSettings?: pulumi.Input<types.inputs.network.v20180701.BgpSettingsArgs>;
+    bgpSettings?: pulumi.Input<types.inputs.BgpSettingsArgs>;
     /**
      * list of all vpn connections to the gateway.
      * These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
      */
-    connections?: pulumi.Input<pulumi.Input<types.inputs.network.v20180701.VpnConnectionArgs>[]>;
+    connections?: pulumi.Input<pulumi.Input<types.inputs.VpnConnectionArgs>[]>;
     /**
      * The name of the gateway.
      */
@@ -146,7 +146,7 @@ export interface VpnGatewayArgs {
     /**
      * The policies applied to this vpn gateway.
      */
-    policies?: pulumi.Input<types.inputs.network.v20180701.PoliciesArgs>;
+    policies?: pulumi.Input<types.inputs.PoliciesArgs>;
     /**
      * The resource group name of the VpnGateway.
      */
@@ -158,5 +158,5 @@ export interface VpnGatewayArgs {
     /**
      * The VirtualHub to which the gateway belongs
      */
-    virtualHub?: pulumi.Input<types.inputs.network.v20180701.SubResourceArgs>;
+    virtualHub?: pulumi.Input<types.inputs.SubResourceArgs>;
 }

@@ -54,7 +54,7 @@ export interface GetRuleSetResult {
     /**
      * Read only system data
      */
-    readonly systemData: types.outputs.cdn.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource type.
      */

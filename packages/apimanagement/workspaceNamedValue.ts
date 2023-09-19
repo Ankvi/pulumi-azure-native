@@ -39,7 +39,7 @@ export class WorkspaceNamedValue extends pulumi.CustomResource {
     /**
      * KeyVault location details of the namedValue.
      */
-    public readonly keyVault!: pulumi.Output<types.outputs.apimanagement.KeyVaultContractPropertiesResponse | undefined>;
+    public readonly keyVault!: pulumi.Output<types.outputs.KeyVaultContractPropertiesResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -122,7 +122,7 @@ export interface WorkspaceNamedValueArgs {
     /**
      * KeyVault location details of the namedValue.
      */
-    keyVault?: pulumi.Input<types.inputs.apimanagement.KeyVaultContractCreatePropertiesArgs>;
+    keyVault?: pulumi.Input<types.inputs.KeyVaultContractCreatePropertiesArgs>;
     /**
      * Identifier of the NamedValue.
      */

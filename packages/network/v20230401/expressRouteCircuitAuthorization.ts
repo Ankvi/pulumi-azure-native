@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Authorization in an ExpressRouteCircuit resource.
  */
@@ -113,7 +113,7 @@ export interface ExpressRouteCircuitAuthorizationArgs {
     /**
      * The authorization use status.
      */
-    authorizationUseStatus?: pulumi.Input<string | types.enums.v20230401.AuthorizationUseStatus>;
+    authorizationUseStatus?: pulumi.Input<string | types.enums.AuthorizationUseStatus>;
     /**
      * The name of the express route circuit.
      */

@@ -55,7 +55,7 @@ export class NetworkManager extends pulumi.CustomResource {
     /**
      * Scope of Network Manager.
      */
-    public readonly networkManagerScopes!: pulumi.Output<types.outputs.network.NetworkManagerPropertiesResponseNetworkManagerScopes>;
+    public readonly networkManagerScopes!: pulumi.Output<types.outputs.NetworkManagerPropertiesResponseNetworkManagerScopes>;
     /**
      * The provisioning state of the network manager resource.
      */
@@ -67,7 +67,7 @@ export class NetworkManager extends pulumi.CustomResource {
     /**
      * The system metadata related to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.network.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -158,7 +158,7 @@ export interface NetworkManagerArgs {
     /**
      * Scope of Network Manager.
      */
-    networkManagerScopes: pulumi.Input<types.inputs.network.NetworkManagerPropertiesNetworkManagerScopesArgs>;
+    networkManagerScopes: pulumi.Input<types.inputs.NetworkManagerPropertiesNetworkManagerScopesArgs>;
     /**
      * The name of the resource group.
      */

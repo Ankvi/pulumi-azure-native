@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The Log Search Rule resource.
  */
@@ -34,7 +34,7 @@ export class ScheduledQueryRule extends pulumi.CustomResource {
     /**
      * Action needs to be taken on rule execution.
      */
-    public readonly action!: pulumi.Output<types.outputs.insights.v20180416.AlertingActionResponse | types.outputs.insights.v20180416.LogToMetricActionResponse>;
+    public readonly action!: pulumi.Output<types.outputs.AlertingActionResponse | types.outputs.LogToMetricActionResponse>;
     /**
      * The flag that indicates whether the alert should be automatically resolved or not. The default is false.
      */
@@ -86,11 +86,11 @@ export class ScheduledQueryRule extends pulumi.CustomResource {
     /**
      * Schedule (Frequency, Time Window) for rule. Required for action type - AlertingAction
      */
-    public readonly schedule!: pulumi.Output<types.outputs.insights.v20180416.ScheduleResponse | undefined>;
+    public readonly schedule!: pulumi.Output<types.outputs.ScheduleResponse | undefined>;
     /**
      * Data Source against which rule will Query Data
      */
-    public readonly source!: pulumi.Output<types.outputs.insights.v20180416.SourceResponse>;
+    public readonly source!: pulumi.Output<types.outputs.SourceResponse>;
     /**
      * Resource tags
      */
@@ -172,7 +172,7 @@ export interface ScheduledQueryRuleArgs {
     /**
      * Action needs to be taken on rule execution.
      */
-    action: pulumi.Input<types.inputs.insights.v20180416.AlertingActionArgs | types.inputs.insights.v20180416.LogToMetricActionArgs>;
+    action: pulumi.Input<types.inputs.AlertingActionArgs | types.inputs.LogToMetricActionArgs>;
     /**
      * The flag that indicates whether the alert should be automatically resolved or not. The default is false.
      */
@@ -188,7 +188,7 @@ export interface ScheduledQueryRuleArgs {
     /**
      * The flag which indicates whether the Log Search rule is enabled. Value should be true or false
      */
-    enabled?: pulumi.Input<string | types.enums.v20180416.Enabled>;
+    enabled?: pulumi.Input<string | types.enums.Enabled>;
     /**
      * Resource location
      */
@@ -204,11 +204,11 @@ export interface ScheduledQueryRuleArgs {
     /**
      * Schedule (Frequency, Time Window) for rule. Required for action type - AlertingAction
      */
-    schedule?: pulumi.Input<types.inputs.insights.v20180416.ScheduleArgs>;
+    schedule?: pulumi.Input<types.inputs.ScheduleArgs>;
     /**
      * Data Source against which rule will Query Data
      */
-    source: pulumi.Input<types.inputs.insights.v20180416.SourceArgs>;
+    source: pulumi.Input<types.inputs.SourceArgs>;
     /**
      * Resource tags
      */

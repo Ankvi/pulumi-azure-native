@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get DigitalTwinsInstances Endpoint.
  */
@@ -44,11 +44,11 @@ export interface GetDigitalTwinsEndpointResult {
     /**
      * DigitalTwinsInstance endpoint resource properties.
      */
-    readonly properties: types.outputs.digitaltwins.v20230131.EventGridResponse | types.outputs.digitaltwins.v20230131.EventHubResponse | types.outputs.digitaltwins.v20230131.ServiceBusResponse;
+    readonly properties: types.outputs.EventGridResponse | types.outputs.EventHubResponse | types.outputs.ServiceBusResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.digitaltwins.v20230131.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The resource type.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The properties of deployment in Elastic cloud corresponding to the Elastic monitor resource.
  */
@@ -39,7 +39,7 @@ export interface ListDeploymentInfoResult {
     /**
      * Marketplace SaaS Info of the resource.
      */
-    readonly marketplaceSaasInfo: types.outputs.elastic.v20230615preview.MarketplaceSaaSInfoResponse;
+    readonly marketplaceSaasInfo: types.outputs.MarketplaceSaaSInfoResponse;
     /**
      * RAM capacity of the elasticsearch in Elastic cloud deployment.
      */

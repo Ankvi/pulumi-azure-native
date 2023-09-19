@@ -37,7 +37,7 @@ export interface GetGlobalUserEnvironmentResult {
     /**
      * Details of the environment
      */
-    readonly environment: types.outputs.labservices.EnvironmentDetailsResponse;
+    readonly environment: types.outputs.EnvironmentDetailsResponse;
 }
 /**
  * Gets the virtual machine details

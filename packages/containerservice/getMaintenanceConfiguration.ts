@@ -45,15 +45,15 @@ export interface GetMaintenanceConfigurationResult {
     /**
      * Time slots on which upgrade is not allowed.
      */
-    readonly notAllowedTime?: types.outputs.containerservice.TimeSpanResponse[];
+    readonly notAllowedTime?: types.outputs.TimeSpanResponse[];
     /**
      * The system metadata relating to this resource.
      */
-    readonly systemData: types.outputs.containerservice.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * If two array entries specify the same day of the week, the applied configuration is the union of times in both entries.
      */
-    readonly timeInWeek?: types.outputs.containerservice.TimeInWeekResponse[];
+    readonly timeInWeek?: types.outputs.TimeInWeekResponse[];
     /**
      * Resource type
      */

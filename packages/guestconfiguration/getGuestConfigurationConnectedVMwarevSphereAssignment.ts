@@ -49,11 +49,11 @@ export interface GetGuestConfigurationConnectedVMwarevSphereAssignmentResult {
     /**
      * Properties of the Guest configuration assignment.
      */
-    readonly properties: types.outputs.guestconfiguration.GuestConfigurationAssignmentPropertiesResponse;
+    readonly properties: types.outputs.GuestConfigurationAssignmentPropertiesResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.guestconfiguration.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource.
      */

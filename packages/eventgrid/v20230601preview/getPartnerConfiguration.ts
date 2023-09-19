@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get properties of a partner configuration.
  */
@@ -38,7 +38,7 @@ export interface GetPartnerConfigurationResult {
     /**
      * The details of authorized partners.
      */
-    readonly partnerAuthorization?: types.outputs.eventgrid.v20230601preview.PartnerAuthorizationResponse;
+    readonly partnerAuthorization?: types.outputs.PartnerAuthorizationResponse;
     /**
      * Provisioning state of the partner configuration.
      */
@@ -46,7 +46,7 @@ export interface GetPartnerConfigurationResult {
     /**
      * The system metadata relating to partner configuration resource.
      */
-    readonly systemData: types.outputs.eventgrid.v20230601preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Tags of the resource.
      */

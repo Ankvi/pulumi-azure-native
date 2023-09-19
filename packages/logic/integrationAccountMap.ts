@@ -43,7 +43,7 @@ export class IntegrationAccountMap extends pulumi.CustomResource {
     /**
      * The content link.
      */
-    public /*out*/ readonly contentLink!: pulumi.Output<types.outputs.logic.ContentLinkResponse>;
+    public /*out*/ readonly contentLink!: pulumi.Output<types.outputs.ContentLinkResponse>;
     /**
      * The content type.
      */
@@ -71,7 +71,7 @@ export class IntegrationAccountMap extends pulumi.CustomResource {
     /**
      * The parameters schema of integration account map.
      */
-    public readonly parametersSchema!: pulumi.Output<types.outputs.logic.IntegrationAccountMapPropertiesResponseParametersSchema | undefined>;
+    public readonly parametersSchema!: pulumi.Output<types.outputs.IntegrationAccountMapPropertiesResponseParametersSchema | undefined>;
     /**
      * The resource tags.
      */
@@ -172,7 +172,7 @@ export interface IntegrationAccountMapArgs {
     /**
      * The parameters schema of integration account map.
      */
-    parametersSchema?: pulumi.Input<types.inputs.logic.IntegrationAccountMapPropertiesParametersSchemaArgs>;
+    parametersSchema?: pulumi.Input<types.inputs.IntegrationAccountMapPropertiesParametersSchemaArgs>;
     /**
      * The resource group name.
      */

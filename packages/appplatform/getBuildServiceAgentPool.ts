@@ -50,11 +50,11 @@ export interface GetBuildServiceAgentPoolResult {
     /**
      * build service agent pool properties
      */
-    readonly properties: types.outputs.appplatform.BuildServiceAgentPoolPropertiesResponse;
+    readonly properties: types.outputs.BuildServiceAgentPoolPropertiesResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.appplatform.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource.
      */

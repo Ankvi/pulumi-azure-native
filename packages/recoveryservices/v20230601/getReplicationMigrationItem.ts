@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Migration item.
  */
@@ -58,7 +58,7 @@ export interface GetReplicationMigrationItemResult {
     /**
      * The migration item properties.
      */
-    readonly properties: types.outputs.recoveryservices.v20230601.MigrationItemPropertiesResponse;
+    readonly properties: types.outputs.MigrationItemPropertiesResponse;
     /**
      * Resource Type
      */

@@ -35,7 +35,7 @@ export class OperationalizationCluster extends pulumi.CustomResource {
     /**
      * AppInsights configuration.
      */
-    public readonly appInsights!: pulumi.Output<types.outputs.machinelearningcompute.AppInsightsPropertiesResponse | undefined>;
+    public readonly appInsights!: pulumi.Output<types.outputs.AppInsightsPropertiesResponse | undefined>;
     /**
      * The cluster type.
      */
@@ -43,11 +43,11 @@ export class OperationalizationCluster extends pulumi.CustomResource {
     /**
      * Container Registry properties.
      */
-    public readonly containerRegistry!: pulumi.Output<types.outputs.machinelearningcompute.ContainerRegistryPropertiesResponse | undefined>;
+    public readonly containerRegistry!: pulumi.Output<types.outputs.ContainerRegistryPropertiesResponse | undefined>;
     /**
      * Parameters for the Azure Container Service cluster.
      */
-    public readonly containerService!: pulumi.Output<types.outputs.machinelearningcompute.AcsClusterPropertiesResponse | undefined>;
+    public readonly containerService!: pulumi.Output<types.outputs.AcsClusterPropertiesResponse | undefined>;
     /**
      * The date and time when the cluster was created.
      */
@@ -59,7 +59,7 @@ export class OperationalizationCluster extends pulumi.CustomResource {
     /**
      * Contains global configuration for the web services in the cluster.
      */
-    public readonly globalServiceConfiguration!: pulumi.Output<types.outputs.machinelearningcompute.GlobalServiceConfigurationResponse | undefined>;
+    public readonly globalServiceConfiguration!: pulumi.Output<types.outputs.GlobalServiceConfigurationResponse | undefined>;
     /**
      * Specifies the location of the resource.
      */
@@ -75,7 +75,7 @@ export class OperationalizationCluster extends pulumi.CustomResource {
     /**
      * List of provisioning errors reported by the resource provider.
      */
-    public /*out*/ readonly provisioningErrors!: pulumi.Output<types.outputs.machinelearningcompute.ErrorResponseWrapperResponse[]>;
+    public /*out*/ readonly provisioningErrors!: pulumi.Output<types.outputs.ErrorResponseWrapperResponse[]>;
     /**
      * The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
      */
@@ -83,7 +83,7 @@ export class OperationalizationCluster extends pulumi.CustomResource {
     /**
      * Storage Account properties.
      */
-    public readonly storageAccount!: pulumi.Output<types.outputs.machinelearningcompute.StorageAccountPropertiesResponse | undefined>;
+    public readonly storageAccount!: pulumi.Output<types.outputs.StorageAccountPropertiesResponse | undefined>;
     /**
      * Contains resource tags defined as key/value pairs.
      */
@@ -114,9 +114,9 @@ export class OperationalizationCluster extends pulumi.CustomResource {
             resourceInputs["clusterName"] = args ? args.clusterName : undefined;
             resourceInputs["clusterType"] = args ? args.clusterType : undefined;
             resourceInputs["containerRegistry"] = args ? args.containerRegistry : undefined;
-            resourceInputs["containerService"] = args ? (args.containerService ? pulumi.output(args.containerService).apply(types.inputs.machinelearningcompute.acsClusterPropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["containerService"] = args ? (args.containerService ? pulumi.output(args.containerService).apply(types.inputs.acsClusterPropertiesArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["globalServiceConfiguration"] = args ? (args.globalServiceConfiguration ? pulumi.output(args.globalServiceConfiguration).apply(types.inputs.machinelearningcompute.globalServiceConfigurationArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["globalServiceConfiguration"] = args ? (args.globalServiceConfiguration ? pulumi.output(args.globalServiceConfiguration).apply(types.inputs.globalServiceConfigurationArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["storageAccount"] = args ? args.storageAccount : undefined;
@@ -158,7 +158,7 @@ export interface OperationalizationClusterArgs {
     /**
      * AppInsights configuration.
      */
-    appInsights?: pulumi.Input<types.inputs.machinelearningcompute.AppInsightsPropertiesArgs>;
+    appInsights?: pulumi.Input<types.inputs.AppInsightsPropertiesArgs>;
     /**
      * The name of the cluster.
      */
@@ -170,11 +170,11 @@ export interface OperationalizationClusterArgs {
     /**
      * Container Registry properties.
      */
-    containerRegistry?: pulumi.Input<types.inputs.machinelearningcompute.ContainerRegistryPropertiesArgs>;
+    containerRegistry?: pulumi.Input<types.inputs.ContainerRegistryPropertiesArgs>;
     /**
      * Parameters for the Azure Container Service cluster.
      */
-    containerService?: pulumi.Input<types.inputs.machinelearningcompute.AcsClusterPropertiesArgs>;
+    containerService?: pulumi.Input<types.inputs.AcsClusterPropertiesArgs>;
     /**
      * The description of the cluster.
      */
@@ -182,7 +182,7 @@ export interface OperationalizationClusterArgs {
     /**
      * Contains global configuration for the web services in the cluster.
      */
-    globalServiceConfiguration?: pulumi.Input<types.inputs.machinelearningcompute.GlobalServiceConfigurationArgs>;
+    globalServiceConfiguration?: pulumi.Input<types.inputs.GlobalServiceConfigurationArgs>;
     /**
      * Specifies the location of the resource.
      */
@@ -194,7 +194,7 @@ export interface OperationalizationClusterArgs {
     /**
      * Storage Account properties.
      */
-    storageAccount?: pulumi.Input<types.inputs.machinelearningcompute.StorageAccountPropertiesArgs>;
+    storageAccount?: pulumi.Input<types.inputs.StorageAccountPropertiesArgs>;
     /**
      * Contains resource tags defined as key/value pairs.
      */

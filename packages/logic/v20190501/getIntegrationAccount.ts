@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets an integration account.
  */
@@ -35,7 +35,7 @@ export interface GetIntegrationAccountResult {
     /**
      * The integration service environment.
      */
-    readonly integrationServiceEnvironment?: types.outputs.logic.v20190501.ResourceReferenceResponse;
+    readonly integrationServiceEnvironment?: types.outputs.ResourceReferenceResponse;
     /**
      * The resource location.
      */
@@ -47,7 +47,7 @@ export interface GetIntegrationAccountResult {
     /**
      * The sku.
      */
-    readonly sku?: types.outputs.logic.v20190501.IntegrationAccountSkuResponse;
+    readonly sku?: types.outputs.IntegrationAccountSkuResponse;
     /**
      * The workflow state.
      */

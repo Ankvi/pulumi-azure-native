@@ -32,7 +32,7 @@ export interface GetVirtualNetworkGatewayVpnclientConnectionHealthResult {
     /**
      * List of vpn client connection health.
      */
-    readonly value?: types.outputs.network.VpnClientConnectionHealthDetailResponse[];
+    readonly value?: types.outputs.VpnClientConnectionHealthDetailResponse[];
 }
 /**
  * Get VPN client connection health detail per P2S client connection of the virtual network gateway in the specified resource group.

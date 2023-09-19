@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the managed application definition.
  */
@@ -31,11 +31,11 @@ export interface GetApplicationDefinitionResult {
     /**
      * The collection of managed application artifacts. The portal will use the files specified as artifacts to construct the user experience of creating a managed application from a managed application definition.
      */
-    readonly artifacts?: types.outputs.solutions.v20210701.ApplicationDefinitionArtifactResponse[];
+    readonly artifacts?: types.outputs.ApplicationDefinitionArtifactResponse[];
     /**
      * The managed application provider authorizations.
      */
-    readonly authorizations?: types.outputs.solutions.v20210701.ApplicationAuthorizationResponse[];
+    readonly authorizations?: types.outputs.ApplicationAuthorizationResponse[];
     /**
      * The createUiDefinition json for the backing template with Microsoft.Solutions/applications resource. It can be a JObject or well-formed JSON string.
      */
@@ -43,7 +43,7 @@ export interface GetApplicationDefinitionResult {
     /**
      * The managed application deployment policy.
      */
-    readonly deploymentPolicy?: types.outputs.solutions.v20210701.ApplicationDeploymentPolicyResponse;
+    readonly deploymentPolicy?: types.outputs.ApplicationDeploymentPolicyResponse;
     /**
      * The managed application definition description.
      */
@@ -71,7 +71,7 @@ export interface GetApplicationDefinitionResult {
     /**
      * The managed application locking policy.
      */
-    readonly lockingPolicy?: types.outputs.solutions.v20210701.ApplicationPackageLockingPolicyDefinitionResponse;
+    readonly lockingPolicy?: types.outputs.ApplicationPackageLockingPolicyDefinitionResponse;
     /**
      * The inline main template json which has resources to be provisioned. It can be a JObject or well-formed JSON string.
      */
@@ -83,7 +83,7 @@ export interface GetApplicationDefinitionResult {
     /**
      * The managed application management policy that determines publisher's access to the managed resource group.
      */
-    readonly managementPolicy?: types.outputs.solutions.v20210701.ApplicationManagementPolicyResponse;
+    readonly managementPolicy?: types.outputs.ApplicationManagementPolicyResponse;
     /**
      * Resource name
      */
@@ -91,7 +91,7 @@ export interface GetApplicationDefinitionResult {
     /**
      * The managed application notification policy.
      */
-    readonly notificationPolicy?: types.outputs.solutions.v20210701.ApplicationNotificationPolicyResponse;
+    readonly notificationPolicy?: types.outputs.ApplicationNotificationPolicyResponse;
     /**
      * The managed application definition package file Uri. Use this element
      */
@@ -99,11 +99,11 @@ export interface GetApplicationDefinitionResult {
     /**
      * The managed application provider policies.
      */
-    readonly policies?: types.outputs.solutions.v20210701.ApplicationPolicyResponse[];
+    readonly policies?: types.outputs.ApplicationPolicyResponse[];
     /**
      * The SKU of the resource.
      */
-    readonly sku?: types.outputs.solutions.v20210701.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * The storage account id for bring your own storage scenario.
      */
@@ -111,7 +111,7 @@ export interface GetApplicationDefinitionResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.solutions.v20210701.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags
      */

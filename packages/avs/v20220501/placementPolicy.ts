@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A vSphere Distributed Resource Scheduler (DRS) placement policy
  */
@@ -38,7 +38,7 @@ export class PlacementPolicy extends pulumi.CustomResource {
     /**
      * placement policy properties
      */
-    public readonly properties!: pulumi.Output<types.outputs.avs.v20220501.VmHostPlacementPolicyPropertiesResponse | types.outputs.avs.v20220501.VmVmPlacementPolicyPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.VmHostPlacementPolicyPropertiesResponse | types.outputs.VmVmPlacementPolicyPropertiesResponse>;
     /**
      * Resource type.
      */
@@ -102,7 +102,7 @@ export interface PlacementPolicyArgs {
     /**
      * placement policy properties
      */
-    properties?: pulumi.Input<types.inputs.avs.v20220501.VmHostPlacementPolicyPropertiesArgs | types.inputs.avs.v20220501.VmVmPlacementPolicyPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.VmHostPlacementPolicyPropertiesArgs | types.inputs.VmVmPlacementPolicyPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

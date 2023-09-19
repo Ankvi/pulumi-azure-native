@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Volume resource
  */
@@ -77,7 +77,7 @@ export class Volume extends pulumi.CustomResource {
     /**
      * DataProtection type volumes include an object containing details of the replication
      */
-    public readonly dataProtection!: pulumi.Output<types.outputs.netapp.v20230501.VolumePropertiesResponseDataProtection | undefined>;
+    public readonly dataProtection!: pulumi.Output<types.outputs.VolumePropertiesResponseDataProtection | undefined>;
     /**
      * Data store resource unique identifier
      */
@@ -113,7 +113,7 @@ export class Volume extends pulumi.CustomResource {
     /**
      * Set of export policy rules
      */
-    public readonly exportPolicy!: pulumi.Output<types.outputs.netapp.v20230501.VolumePropertiesResponseExportPolicy | undefined>;
+    public readonly exportPolicy!: pulumi.Output<types.outputs.VolumePropertiesResponseExportPolicy | undefined>;
     /**
      * Flag indicating whether file access logs are enabled for the volume, based on active diagnostic settings present on the volume.
      */
@@ -157,7 +157,7 @@ export class Volume extends pulumi.CustomResource {
     /**
      * List of mount targets
      */
-    public /*out*/ readonly mountTargets!: pulumi.Output<types.outputs.netapp.v20230501.MountTargetPropertiesResponse[]>;
+    public /*out*/ readonly mountTargets!: pulumi.Output<types.outputs.MountTargetPropertiesResponse[]>;
     /**
      * The name of the resource
      */
@@ -177,7 +177,7 @@ export class Volume extends pulumi.CustomResource {
     /**
      * Application specific placement rules for the particular volume
      */
-    public readonly placementRules!: pulumi.Output<types.outputs.netapp.v20230501.PlacementKeyValuePairsResponse[] | undefined>;
+    public readonly placementRules!: pulumi.Output<types.outputs.PlacementKeyValuePairsResponse[] | undefined>;
     /**
      * Set of protocol types, default NFSv3, CIFS for SMB protocol
      */
@@ -237,7 +237,7 @@ export class Volume extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.netapp.v20230501.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * T2 network information
      */
@@ -451,7 +451,7 @@ export interface VolumeArgs {
     /**
      * Specifies whether the volume is enabled for Azure VMware Solution (AVS) datastore purpose
      */
-    avsDataStore?: pulumi.Input<string | types.enums.v20230501.AvsDataStore>;
+    avsDataStore?: pulumi.Input<string | types.enums.AvsDataStore>;
     /**
      * UUID v4 or resource identifier used to identify the Backup.
      */
@@ -470,7 +470,7 @@ export interface VolumeArgs {
      *  OnRead - All client-driven data read is pulled from cool tier to standard storage on both sequential and random reads.
      *  Never - No client-driven data is pulled from cool tier to standard storage.
      */
-    coolAccessRetrievalPolicy?: pulumi.Input<string | types.enums.v20230501.CoolAccessRetrievalPolicy>;
+    coolAccessRetrievalPolicy?: pulumi.Input<string | types.enums.CoolAccessRetrievalPolicy>;
     /**
      * Specifies the number of days after which data that is not accessed by clients will be tiered.
      */
@@ -482,7 +482,7 @@ export interface VolumeArgs {
     /**
      * DataProtection type volumes include an object containing details of the replication
      */
-    dataProtection?: pulumi.Input<types.inputs.netapp.v20230501.VolumePropertiesDataProtectionArgs>;
+    dataProtection?: pulumi.Input<types.inputs.VolumePropertiesDataProtectionArgs>;
     /**
      * Default group quota for volume in KiBs. If isDefaultQuotaEnabled is set, the minimum value of 4 KiBs applies.
      */
@@ -498,15 +498,15 @@ export interface VolumeArgs {
     /**
      * Flag indicating whether subvolume operations are enabled on the volume
      */
-    enableSubvolumes?: pulumi.Input<string | types.enums.v20230501.EnableSubvolumes>;
+    enableSubvolumes?: pulumi.Input<string | types.enums.EnableSubvolumes>;
     /**
      * Source of key used to encrypt data in volume. Applicable if NetApp account has encryption.keySource = 'Microsoft.KeyVault'. Possible values (case-insensitive) are: 'Microsoft.NetApp, Microsoft.KeyVault'
      */
-    encryptionKeySource?: pulumi.Input<string | types.enums.v20230501.EncryptionKeySource>;
+    encryptionKeySource?: pulumi.Input<string | types.enums.EncryptionKeySource>;
     /**
      * Set of export policy rules
      */
-    exportPolicy?: pulumi.Input<types.inputs.netapp.v20230501.VolumePropertiesExportPolicyArgs>;
+    exportPolicy?: pulumi.Input<types.inputs.VolumePropertiesExportPolicyArgs>;
     /**
      * Specifies if default quota is enabled for the volume.
      */
@@ -538,11 +538,11 @@ export interface VolumeArgs {
     /**
      * Network features available to the volume, or current state of update.
      */
-    networkFeatures?: pulumi.Input<string | types.enums.v20230501.NetworkFeatures>;
+    networkFeatures?: pulumi.Input<string | types.enums.NetworkFeatures>;
     /**
      * Application specific placement rules for the particular volume
      */
-    placementRules?: pulumi.Input<pulumi.Input<types.inputs.netapp.v20230501.PlacementKeyValuePairsArgs>[]>;
+    placementRules?: pulumi.Input<pulumi.Input<types.inputs.PlacementKeyValuePairsArgs>[]>;
     /**
      * The name of the capacity pool
      */
@@ -562,15 +562,15 @@ export interface VolumeArgs {
     /**
      * The security style of volume, default unix, defaults to ntfs for dual protocol or CIFS protocol
      */
-    securityStyle?: pulumi.Input<string | types.enums.v20230501.SecurityStyle>;
+    securityStyle?: pulumi.Input<string | types.enums.SecurityStyle>;
     /**
      * The service level of the file system
      */
-    serviceLevel?: pulumi.Input<string | types.enums.v20230501.ServiceLevel>;
+    serviceLevel?: pulumi.Input<string | types.enums.ServiceLevel>;
     /**
      * Enables access-based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume
      */
-    smbAccessBasedEnumeration?: pulumi.Input<string | types.enums.v20230501.SmbAccessBasedEnumeration>;
+    smbAccessBasedEnumeration?: pulumi.Input<string | types.enums.SmbAccessBasedEnumeration>;
     /**
      * Enables continuously available share property for smb volume. Only applicable for SMB volume
      */
@@ -582,7 +582,7 @@ export interface VolumeArgs {
     /**
      * Enables non-browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume
      */
-    smbNonBrowsable?: pulumi.Input<string | types.enums.v20230501.SmbNonBrowsable>;
+    smbNonBrowsable?: pulumi.Input<string | types.enums.SmbNonBrowsable>;
     /**
      * If enabled (true) the volume will contain a read-only snapshot directory which provides access to each of the volume's snapshots (defaults to true).
      */

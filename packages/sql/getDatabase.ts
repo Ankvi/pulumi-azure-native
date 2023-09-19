@@ -61,7 +61,7 @@ export interface GetDatabaseResult {
     /**
      * The name and tier of the SKU.
      */
-    readonly currentSku: types.outputs.sql.SkuResponse;
+    readonly currentSku: types.outputs.SkuResponse;
     /**
      * The ID of the database.
      */
@@ -97,7 +97,7 @@ export interface GetDatabaseResult {
     /**
      * The Azure Active Directory identity of the database.
      */
-    readonly identity?: types.outputs.sql.DatabaseIdentityResponse;
+    readonly identity?: types.outputs.DatabaseIdentityResponse;
     /**
      * Infra encryption is enabled for this database.
      */
@@ -179,7 +179,7 @@ export interface GetDatabaseResult {
      * Get-AzSqlServerServiceObjective -Location <location>
      * ````
      */
-    readonly sku?: types.outputs.sql.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * The status of the database.
      */

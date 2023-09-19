@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves the properties of an existing Azure Cosmos DB SQL Role Definition with the given Id.
  */
@@ -48,7 +48,7 @@ export interface GetSqlResourceSqlRoleDefinitionResult {
     /**
      * The set of operations allowed through this Role Definition.
      */
-    readonly permissions?: types.outputs.documentdb.v20230415.PermissionResponse[];
+    readonly permissions?: types.outputs.PermissionResponse[];
     /**
      * A user-friendly name for the Role Definition. Must be unique for the database account.
      */

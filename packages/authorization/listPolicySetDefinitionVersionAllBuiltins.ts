@@ -27,7 +27,7 @@ export interface ListPolicySetDefinitionVersionAllBuiltinsResult {
     /**
      * An array of policy set definition versions.
      */
-    readonly value?: types.outputs.authorization.PolicySetDefinitionVersionResponse[];
+    readonly value?: types.outputs.PolicySetDefinitionVersionResponse[];
 }
 /**
  * This operation lists all the built-in policy set definition versions for all built-in policy set definitions.

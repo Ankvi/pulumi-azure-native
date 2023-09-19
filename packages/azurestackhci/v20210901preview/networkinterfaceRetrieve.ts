@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The network interface resource definition.
  */
@@ -34,15 +34,15 @@ export class NetworkinterfaceRetrieve extends pulumi.CustomResource {
     /**
      * DNS Settings for the interface
      */
-    public readonly dnsSettings!: pulumi.Output<types.outputs.azurestackhci.v20210901preview.InterfaceDNSSettingsResponse | undefined>;
+    public readonly dnsSettings!: pulumi.Output<types.outputs.InterfaceDNSSettingsResponse | undefined>;
     /**
      * The extendedLocation of the resource.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.azurestackhci.v20210901preview.ExtendedLocationResponse | undefined>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
     /**
      * IPConfigurations - A list of IPConfigurations of the network interface.
      */
-    public readonly ipConfigurations!: pulumi.Output<types.outputs.azurestackhci.v20210901preview.IpConfigurationResponse[] | undefined>;
+    public readonly ipConfigurations!: pulumi.Output<types.outputs.IpConfigurationResponse[] | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -63,11 +63,11 @@ export class NetworkinterfaceRetrieve extends pulumi.CustomResource {
     /**
      * NetworkInterfaceStatus defines the observed state of network interfaces
      */
-    public /*out*/ readonly status!: pulumi.Output<types.outputs.azurestackhci.v20210901preview.NetworkInterfaceStatusResponse>;
+    public /*out*/ readonly status!: pulumi.Output<types.outputs.NetworkInterfaceStatusResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.azurestackhci.v20210901preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -133,15 +133,15 @@ export interface NetworkinterfaceRetrieveArgs {
     /**
      * DNS Settings for the interface
      */
-    dnsSettings?: pulumi.Input<types.inputs.azurestackhci.v20210901preview.InterfaceDNSSettingsArgs>;
+    dnsSettings?: pulumi.Input<types.inputs.InterfaceDNSSettingsArgs>;
     /**
      * The extendedLocation of the resource.
      */
-    extendedLocation?: pulumi.Input<types.inputs.azurestackhci.v20210901preview.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * IPConfigurations - A list of IPConfigurations of the network interface.
      */
-    ipConfigurations?: pulumi.Input<pulumi.Input<types.inputs.azurestackhci.v20210901preview.IpConfigurationArgs>[]>;
+    ipConfigurations?: pulumi.Input<pulumi.Input<types.inputs.IpConfigurationArgs>[]>;
     /**
      * The geo-location where the resource lives
      */

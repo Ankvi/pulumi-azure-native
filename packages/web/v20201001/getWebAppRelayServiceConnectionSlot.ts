@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a hybrid connection configuration by its name.
  */
@@ -60,7 +60,7 @@ export interface GetWebAppRelayServiceConnectionSlotResult {
     /**
      * The system metadata relating to this resource.
      */
-    readonly systemData: types.outputs.web.v20201001.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource type.
      */

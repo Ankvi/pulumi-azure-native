@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Migration item.
  */
@@ -42,7 +42,7 @@ export class ReplicationMigrationItem extends pulumi.CustomResource {
     /**
      * The migration item properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.recoveryservices.v20230401.MigrationItemPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.MigrationItemPropertiesResponse>;
     /**
      * Resource Type
      */
@@ -111,7 +111,7 @@ export interface ReplicationMigrationItemArgs {
     /**
      * Enable migration input properties.
      */
-    properties: pulumi.Input<types.inputs.recoveryservices.v20230401.EnableMigrationInputPropertiesArgs>;
+    properties: pulumi.Input<types.inputs.EnableMigrationInputPropertiesArgs>;
     /**
      * Protection container name.
      */

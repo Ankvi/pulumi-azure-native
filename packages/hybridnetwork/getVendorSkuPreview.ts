@@ -49,7 +49,7 @@ export interface GetVendorSkuPreviewResult {
     /**
      * The system meta data relating to this resource.
      */
-    readonly systemData: types.outputs.hybridnetwork.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource.
      */

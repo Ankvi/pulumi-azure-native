@@ -123,7 +123,7 @@ utilities.lazyLoad(exports, ["PolicySetDefinitionVersionAtManagementGroup"], () 
 
 
 // Export enums:
-export * from "../types/enums/v20230401";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

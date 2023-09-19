@@ -32,7 +32,7 @@ export interface ListFleetCredentialsResult {
     /**
      * Array of base64-encoded Kubernetes configuration files.
      */
-    readonly kubeconfigs: types.outputs.containerservice.FleetCredentialResultResponse[];
+    readonly kubeconfigs: types.outputs.FleetCredentialResultResponse[];
 }
 /**
  * Lists the user credentials of a Fleet.

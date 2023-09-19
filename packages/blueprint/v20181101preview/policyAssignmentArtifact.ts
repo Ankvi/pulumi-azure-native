@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Blueprint artifact that applies a Policy assignment.
  */
@@ -55,7 +55,7 @@ export class PolicyAssignmentArtifact extends pulumi.CustomResource {
     /**
      * Parameter values for the policy definition.
      */
-    public readonly parameters!: pulumi.Output<{[key: string]: types.outputs.blueprint.v20181101preview.ParameterValueResponse}>;
+    public readonly parameters!: pulumi.Output<{[key: string]: types.outputs.ParameterValueResponse}>;
     /**
      * Azure resource ID of the policy definition.
      */
@@ -157,7 +157,7 @@ export interface PolicyAssignmentArtifactArgs {
     /**
      * Parameter values for the policy definition.
      */
-    parameters: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.blueprint.v20181101preview.ParameterValueArgs>}>;
+    parameters: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.ParameterValueArgs>}>;
     /**
      * Azure resource ID of the policy definition.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The resource that defines the source location where the artifacts are located.
  */
@@ -35,7 +35,7 @@ export interface GetArtifactSourceResult {
     /**
      * The authentication method to use to access the artifact source.
      */
-    readonly authentication: types.outputs.deploymentmanager.v20191101preview.SasAuthenticationResponse;
+    readonly authentication: types.outputs.SasAuthenticationResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */

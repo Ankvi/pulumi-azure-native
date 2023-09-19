@@ -47,7 +47,7 @@ export class CustomApi extends pulumi.CustomResource {
     /**
      * Custom API properties
      */
-    public readonly properties!: pulumi.Output<types.outputs.web.CustomApiPropertiesDefinitionResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.CustomApiPropertiesDefinitionResponse>;
     /**
      * Resource tags
      */
@@ -110,7 +110,7 @@ export interface CustomApiArgs {
     /**
      * Custom API properties
      */
-    properties?: pulumi.Input<types.inputs.web.CustomApiPropertiesDefinitionArgs>;
+    properties?: pulumi.Input<types.inputs.CustomApiPropertiesDefinitionArgs>;
     /**
      * The resource group
      */

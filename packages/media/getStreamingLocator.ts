@@ -45,7 +45,7 @@ export interface GetStreamingLocatorResult {
     /**
      * The ContentKeys used by this Streaming Locator.
      */
-    readonly contentKeys?: types.outputs.media.StreamingLocatorContentKeyResponse[];
+    readonly contentKeys?: types.outputs.StreamingLocatorContentKeyResponse[];
     /**
      * The creation time of the Streaming Locator.
      */
@@ -85,7 +85,7 @@ export interface GetStreamingLocatorResult {
     /**
      * The system metadata relating to this resource.
      */
-    readonly systemData: types.outputs.media.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

@@ -47,7 +47,7 @@ export class ExpressRoutePort extends pulumi.CustomResource {
     /**
      * Reference the ExpressRoute circuit(s) that are provisioned on this ExpressRoutePort resource.
      */
-    public /*out*/ readonly circuits!: pulumi.Output<types.outputs.network.SubResourceResponse[]>;
+    public /*out*/ readonly circuits!: pulumi.Output<types.outputs.SubResourceResponse[]>;
     /**
      * Encapsulation method on physical ports.
      */
@@ -63,11 +63,11 @@ export class ExpressRoutePort extends pulumi.CustomResource {
     /**
      * The identity of ExpressRoutePort, if configured.
      */
-    public readonly identity!: pulumi.Output<types.outputs.network.ManagedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * The set of physical links of the ExpressRoutePort resource.
      */
-    public readonly links!: pulumi.Output<types.outputs.network.ExpressRouteLinkResponse[] | undefined>;
+    public readonly links!: pulumi.Output<types.outputs.ExpressRouteLinkResponse[] | undefined>;
     /**
      * Resource location.
      */
@@ -194,11 +194,11 @@ export interface ExpressRoutePortArgs {
     /**
      * The identity of ExpressRoutePort, if configured.
      */
-    identity?: pulumi.Input<types.inputs.network.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
      * The set of physical links of the ExpressRoutePort resource.
      */
-    links?: pulumi.Input<pulumi.Input<types.inputs.network.ExpressRouteLinkArgs>[]>;
+    links?: pulumi.Input<pulumi.Input<types.inputs.ExpressRouteLinkArgs>[]>;
     /**
      * Resource location.
      */

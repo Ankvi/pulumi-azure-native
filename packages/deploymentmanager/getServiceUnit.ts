@@ -42,7 +42,7 @@ export interface GetServiceUnitResult {
     /**
      * The artifacts for the service unit.
      */
-    readonly artifacts?: types.outputs.deploymentmanager.ServiceUnitArtifactsResponse;
+    readonly artifacts?: types.outputs.ServiceUnitArtifactsResponse;
     /**
      * Describes the type of ARM deployment to be performed on the resource.
      */

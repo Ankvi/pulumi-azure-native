@@ -48,7 +48,7 @@ export interface GetAccountResult {
     /**
      * The Key Vault encryption configuration.
      */
-    readonly encryptionConfig: types.outputs.datalakestore.EncryptionConfigResponse;
+    readonly encryptionConfig: types.outputs.EncryptionConfigResponse;
     /**
      * The current state of encryption provisioning for this Data Lake Store account.
      */
@@ -68,7 +68,7 @@ export interface GetAccountResult {
     /**
      * The list of firewall rules associated with this Data Lake Store account.
      */
-    readonly firewallRules: types.outputs.datalakestore.FirewallRuleResponse[];
+    readonly firewallRules: types.outputs.FirewallRuleResponse[];
     /**
      * The current state of the IP address firewall for this Data Lake Store account.
      */
@@ -80,7 +80,7 @@ export interface GetAccountResult {
     /**
      * The Key Vault encryption identity, if any.
      */
-    readonly identity: types.outputs.datalakestore.EncryptionIdentityResponse;
+    readonly identity: types.outputs.EncryptionIdentityResponse;
     /**
      * The account last modified time.
      */
@@ -116,7 +116,7 @@ export interface GetAccountResult {
     /**
      * The list of trusted identity providers associated with this Data Lake Store account.
      */
-    readonly trustedIdProviders: types.outputs.datalakestore.TrustedIdProviderResponse[];
+    readonly trustedIdProviders: types.outputs.TrustedIdProviderResponse[];
     /**
      * The resource type.
      */
@@ -124,7 +124,7 @@ export interface GetAccountResult {
     /**
      * The list of virtual network rules associated with this Data Lake Store account.
      */
-    readonly virtualNetworkRules: types.outputs.datalakestore.VirtualNetworkRuleResponse[];
+    readonly virtualNetworkRules: types.outputs.VirtualNetworkRuleResponse[];
 }
 /**
  * Gets the specified Data Lake Store account.

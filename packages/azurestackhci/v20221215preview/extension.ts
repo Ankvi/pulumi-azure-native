@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Details of a particular extension in HCI Cluster.
  */
@@ -82,7 +82,7 @@ export class Extension extends pulumi.CustomResource {
     /**
      * State of Arc Extension in each of the nodes.
      */
-    public /*out*/ readonly perNodeExtensionDetails!: pulumi.Output<types.outputs.azurestackhci.v20221215preview.PerNodeExtensionStateResponse[]>;
+    public /*out*/ readonly perNodeExtensionDetails!: pulumi.Output<types.outputs.PerNodeExtensionStateResponse[]>;
     /**
      * Protected settings (may contain secrets).
      */
@@ -102,7 +102,7 @@ export class Extension extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.azurestackhci.v20221215preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -212,7 +212,7 @@ export interface ExtensionArgs {
     /**
      * The type of identity that created the resource.
      */
-    createdByType?: pulumi.Input<string | types.enums.v20221215preview.CreatedByType>;
+    createdByType?: pulumi.Input<string | types.enums.CreatedByType>;
     /**
      * Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available.
      */
@@ -236,7 +236,7 @@ export interface ExtensionArgs {
     /**
      * The type of identity that last modified the resource.
      */
-    lastModifiedByType?: pulumi.Input<string | types.enums.v20221215preview.CreatedByType>;
+    lastModifiedByType?: pulumi.Input<string | types.enums.CreatedByType>;
     /**
      * Protected settings (may contain secrets).
      */

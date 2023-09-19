@@ -40,7 +40,7 @@ export interface GetAccountResult {
     /**
      * Identity Info on the Account
      */
-    readonly identity: types.outputs.datashare.IdentityResponse;
+    readonly identity: types.outputs.IdentityResponse;
     /**
      * Location of the azure resource.
      */
@@ -56,7 +56,7 @@ export interface GetAccountResult {
     /**
      * System Data of the Azure resource.
      */
-    readonly systemData: types.outputs.datashare.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Tags on the azure resource.
      */

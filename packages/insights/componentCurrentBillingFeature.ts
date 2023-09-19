@@ -39,7 +39,7 @@ export class ComponentCurrentBillingFeature extends pulumi.CustomResource {
     /**
      * An Application Insights component daily data volume cap
      */
-    public readonly dataVolumeCap!: pulumi.Output<types.outputs.insights.ApplicationInsightsComponentDataVolumeCapResponse | undefined>;
+    public readonly dataVolumeCap!: pulumi.Output<types.outputs.ApplicationInsightsComponentDataVolumeCapResponse | undefined>;
 
     /**
      * Create a ComponentCurrentBillingFeature resource with the given unique name, arguments, and options.
@@ -84,7 +84,7 @@ export interface ComponentCurrentBillingFeatureArgs {
     /**
      * An Application Insights component daily data volume cap
      */
-    dataVolumeCap?: pulumi.Input<types.inputs.insights.ApplicationInsightsComponentDataVolumeCapArgs>;
+    dataVolumeCap?: pulumi.Input<types.inputs.ApplicationInsightsComponentDataVolumeCapArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

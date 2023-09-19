@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets information about the specified sku.
  */
@@ -51,7 +51,7 @@ export interface GetVendorSkusResult {
     /**
      * The template definition of the network function.
      */
-    readonly networkFunctionTemplate?: types.outputs.hybridnetwork.v20220101preview.NetworkFunctionTemplateResponse;
+    readonly networkFunctionTemplate?: types.outputs.NetworkFunctionTemplateResponse;
     /**
      * The network function type.
      */
@@ -71,7 +71,7 @@ export interface GetVendorSkusResult {
     /**
      * The system meta data relating to this resource.
      */
-    readonly systemData: types.outputs.hybridnetwork.v20220101preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

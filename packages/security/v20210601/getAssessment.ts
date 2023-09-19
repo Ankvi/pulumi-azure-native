@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a security assessment on your scanned resource
  */
@@ -48,11 +48,11 @@ export interface GetAssessmentResult {
     /**
      * Links relevant to the assessment
      */
-    readonly links: types.outputs.security.v20210601.AssessmentLinksResponse;
+    readonly links: types.outputs.AssessmentLinksResponse;
     /**
      * Describes properties of an assessment metadata.
      */
-    readonly metadata?: types.outputs.security.v20210601.SecurityAssessmentMetadataPropertiesResponse;
+    readonly metadata?: types.outputs.SecurityAssessmentMetadataPropertiesResponse;
     /**
      * Resource name
      */
@@ -60,15 +60,15 @@ export interface GetAssessmentResult {
     /**
      * Data regarding 3rd party partner integration
      */
-    readonly partnersData?: types.outputs.security.v20210601.SecurityAssessmentPartnerDataResponse;
+    readonly partnersData?: types.outputs.SecurityAssessmentPartnerDataResponse;
     /**
      * Details of the resource that was assessed
      */
-    readonly resourceDetails: types.outputs.security.v20210601.AzureResourceDetailsResponse | types.outputs.security.v20210601.OnPremiseResourceDetailsResponse | types.outputs.security.v20210601.OnPremiseSqlResourceDetailsResponse;
+    readonly resourceDetails: types.outputs.AzureResourceDetailsResponse | types.outputs.OnPremiseResourceDetailsResponse | types.outputs.OnPremiseSqlResourceDetailsResponse;
     /**
      * The result of the assessment
      */
-    readonly status: types.outputs.security.v20210601.AssessmentStatusResponseResponse;
+    readonly status: types.outputs.AssessmentStatusResponseResponse;
     /**
      * Resource type
      */

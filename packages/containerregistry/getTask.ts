@@ -38,7 +38,7 @@ export interface GetTaskResult {
     /**
      * The machine configuration of the run agent.
      */
-    readonly agentConfiguration?: types.outputs.containerregistry.AgentPropertiesResponse;
+    readonly agentConfiguration?: types.outputs.AgentPropertiesResponse;
     /**
      * The dedicated agent pool for the task.
      */
@@ -50,7 +50,7 @@ export interface GetTaskResult {
     /**
      * The properties that describes a set of credentials that will be used when this run is invoked.
      */
-    readonly credentials?: types.outputs.containerregistry.CredentialsResponse;
+    readonly credentials?: types.outputs.CredentialsResponse;
     /**
      * The resource ID.
      */
@@ -58,7 +58,7 @@ export interface GetTaskResult {
     /**
      * Identity for the resource.
      */
-    readonly identity?: types.outputs.containerregistry.IdentityPropertiesResponse;
+    readonly identity?: types.outputs.IdentityPropertiesResponse;
     /**
      * The value of this property indicates whether the task resource is system task or not.
      */
@@ -78,7 +78,7 @@ export interface GetTaskResult {
     /**
      * The platform properties against which the run has to happen.
      */
-    readonly platform?: types.outputs.containerregistry.PlatformPropertiesResponse;
+    readonly platform?: types.outputs.PlatformPropertiesResponse;
     /**
      * The provisioning state of the task.
      */
@@ -90,11 +90,11 @@ export interface GetTaskResult {
     /**
      * The properties of a task step.
      */
-    readonly step?: types.outputs.containerregistry.DockerBuildStepResponse | types.outputs.containerregistry.EncodedTaskStepResponse | types.outputs.containerregistry.FileTaskStepResponse;
+    readonly step?: types.outputs.DockerBuildStepResponse | types.outputs.EncodedTaskStepResponse | types.outputs.FileTaskStepResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.containerregistry.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The tags of the resource.
      */
@@ -106,7 +106,7 @@ export interface GetTaskResult {
     /**
      * The properties that describe all triggers for the task.
      */
-    readonly trigger?: types.outputs.containerregistry.TriggerPropertiesResponse;
+    readonly trigger?: types.outputs.TriggerPropertiesResponse;
     /**
      * The type of the resource.
      */

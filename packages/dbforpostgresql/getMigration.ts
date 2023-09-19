@@ -46,7 +46,7 @@ export interface GetMigrationResult {
     /**
      * Current status of migration
      */
-    readonly currentStatus: types.outputs.dbforpostgresql.MigrationStatusResponse;
+    readonly currentStatus: types.outputs.MigrationStatusResponse;
     /**
      * When you want to trigger cancel for specific databases send cancel flag as True and database names in this array
      */
@@ -102,7 +102,7 @@ export interface GetMigrationResult {
     /**
      * Metadata of the source database server
      */
-    readonly sourceDbServerMetadata: types.outputs.dbforpostgresql.DbServerMetadataResponse;
+    readonly sourceDbServerMetadata: types.outputs.DbServerMetadataResponse;
     /**
      * ResourceId of the source database server
      */
@@ -114,7 +114,7 @@ export interface GetMigrationResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.dbforpostgresql.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -126,7 +126,7 @@ export interface GetMigrationResult {
     /**
      * Metadata of the target database server
      */
-    readonly targetDbServerMetadata: types.outputs.dbforpostgresql.DbServerMetadataResponse;
+    readonly targetDbServerMetadata: types.outputs.DbServerMetadataResponse;
     /**
      * ResourceId of the source database server
      */

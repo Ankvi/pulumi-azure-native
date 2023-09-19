@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a packet capture session by name.
  */
@@ -44,7 +44,7 @@ export interface GetPacketCaptureResult {
     /**
      * A list of packet capture filters.
      */
-    readonly filters?: types.outputs.network.v20230201.PacketCaptureFilterResponse[];
+    readonly filters?: types.outputs.PacketCaptureFilterResponse[];
     /**
      * ID of the packet capture operation.
      */
@@ -60,11 +60,11 @@ export interface GetPacketCaptureResult {
     /**
      * A list of AzureVMSS instances which can be included or excluded to run packet capture. If both included and excluded are empty, then the packet capture will run on all instances of AzureVMSS.
      */
-    readonly scope?: types.outputs.network.v20230201.PacketCaptureMachineScopeResponse;
+    readonly scope?: types.outputs.PacketCaptureMachineScopeResponse;
     /**
      * The storage location for a packet capture session.
      */
-    readonly storageLocation: types.outputs.network.v20230201.PacketCaptureStorageLocationResponse;
+    readonly storageLocation: types.outputs.PacketCaptureStorageLocationResponse;
     /**
      * The ID of the targeted resource, only AzureVM and AzureVMSS as target type are currently supported.
      */

@@ -47,11 +47,11 @@ export class MHSMPrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * Properties of the private endpoint object.
      */
-    public /*out*/ readonly privateEndpoint!: pulumi.Output<types.outputs.keyvault.MHSMPrivateEndpointResponse | undefined>;
+    public /*out*/ readonly privateEndpoint!: pulumi.Output<types.outputs.MHSMPrivateEndpointResponse | undefined>;
     /**
      * Approval state of the private link connection.
      */
-    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.keyvault.MHSMPrivateLinkServiceConnectionStateResponse | undefined>;
+    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.MHSMPrivateLinkServiceConnectionStateResponse | undefined>;
     /**
      * Provisioning state of the private endpoint connection.
      */
@@ -59,11 +59,11 @@ export class MHSMPrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * SKU details
      */
-    public readonly sku!: pulumi.Output<types.outputs.keyvault.ManagedHsmSkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.ManagedHsmSkuResponse | undefined>;
     /**
      * Metadata pertaining to creation and last modification of the key vault resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.keyvault.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags
      */
@@ -140,7 +140,7 @@ export interface MHSMPrivateEndpointConnectionArgs {
     /**
      * Approval state of the private link connection.
      */
-    privateLinkServiceConnectionState?: pulumi.Input<types.inputs.keyvault.MHSMPrivateLinkServiceConnectionStateArgs>;
+    privateLinkServiceConnectionState?: pulumi.Input<types.inputs.MHSMPrivateLinkServiceConnectionStateArgs>;
     /**
      * Name of the resource group that contains the managed HSM pool.
      */
@@ -148,7 +148,7 @@ export interface MHSMPrivateEndpointConnectionArgs {
     /**
      * SKU details
      */
-    sku?: pulumi.Input<types.inputs.keyvault.ManagedHsmSkuArgs>;
+    sku?: pulumi.Input<types.inputs.ManagedHsmSkuArgs>;
     /**
      * Resource tags
      */

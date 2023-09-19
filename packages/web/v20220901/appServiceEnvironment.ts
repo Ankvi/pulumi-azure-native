@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * App Service Environment ARM resource.
  */
@@ -34,11 +34,11 @@ export class AppServiceEnvironment extends pulumi.CustomResource {
     /**
      * Custom settings for changing the behavior of the App Service Environment.
      */
-    public readonly clusterSettings!: pulumi.Output<types.outputs.web.v20220901.NameValuePairResponse[] | undefined>;
+    public readonly clusterSettings!: pulumi.Output<types.outputs.NameValuePairResponse[] | undefined>;
     /**
      * Full view of the custom domain suffix configuration for ASEv3.
      */
-    public readonly customDnsSuffixConfiguration!: pulumi.Output<types.outputs.web.v20220901.CustomDnsSuffixConfigurationResponse | undefined>;
+    public readonly customDnsSuffixConfiguration!: pulumi.Output<types.outputs.CustomDnsSuffixConfigurationResponse | undefined>;
     /**
      * Dedicated Host Count
      */
@@ -90,7 +90,7 @@ export class AppServiceEnvironment extends pulumi.CustomResource {
     /**
      * Full view of networking configuration for an ASE.
      */
-    public readonly networkingConfiguration!: pulumi.Output<types.outputs.web.v20220901.AseV3NetworkingConfigurationResponse | undefined>;
+    public readonly networkingConfiguration!: pulumi.Output<types.outputs.AseV3NetworkingConfigurationResponse | undefined>;
     /**
      * Provisioning state of the App Service Environment.
      */
@@ -127,7 +127,7 @@ export class AppServiceEnvironment extends pulumi.CustomResource {
     /**
      * Description of the Virtual Network.
      */
-    public readonly virtualNetwork!: pulumi.Output<types.outputs.web.v20220901.VirtualNetworkProfileResponse>;
+    public readonly virtualNetwork!: pulumi.Output<types.outputs.VirtualNetworkProfileResponse>;
     /**
      * Whether or not this App Service Environment is zone-redundant.
      */
@@ -217,11 +217,11 @@ export interface AppServiceEnvironmentArgs {
     /**
      * Custom settings for changing the behavior of the App Service Environment.
      */
-    clusterSettings?: pulumi.Input<pulumi.Input<types.inputs.web.v20220901.NameValuePairArgs>[]>;
+    clusterSettings?: pulumi.Input<pulumi.Input<types.inputs.NameValuePairArgs>[]>;
     /**
      * Full view of the custom domain suffix configuration for ASEv3.
      */
-    customDnsSuffixConfiguration?: pulumi.Input<types.inputs.web.v20220901.CustomDnsSuffixConfigurationArgs>;
+    customDnsSuffixConfiguration?: pulumi.Input<types.inputs.CustomDnsSuffixConfigurationArgs>;
     /**
      * Dedicated Host Count
      */
@@ -237,7 +237,7 @@ export interface AppServiceEnvironmentArgs {
     /**
      * Specifies which endpoints to serve internally in the Virtual Network for the App Service Environment.
      */
-    internalLoadBalancingMode?: pulumi.Input<string | types.enums.v20220901.LoadBalancingMode>;
+    internalLoadBalancingMode?: pulumi.Input<string | types.enums.LoadBalancingMode>;
     /**
      * Number of IP SSL addresses reserved for the App Service Environment.
      */
@@ -261,7 +261,7 @@ export interface AppServiceEnvironmentArgs {
     /**
      * Full view of networking configuration for an ASE.
      */
-    networkingConfiguration?: pulumi.Input<types.inputs.web.v20220901.AseV3NetworkingConfigurationArgs>;
+    networkingConfiguration?: pulumi.Input<types.inputs.AseV3NetworkingConfigurationArgs>;
     /**
      * Name of the resource group to which the resource belongs.
      */
@@ -273,7 +273,7 @@ export interface AppServiceEnvironmentArgs {
     /**
      * Upgrade Preference
      */
-    upgradePreference?: pulumi.Input<string | types.enums.v20220901.UpgradePreference>;
+    upgradePreference?: pulumi.Input<string | types.enums.UpgradePreference>;
     /**
      * User added ip ranges to whitelist on ASE db
      */
@@ -281,7 +281,7 @@ export interface AppServiceEnvironmentArgs {
     /**
      * Description of the Virtual Network.
      */
-    virtualNetwork: pulumi.Input<types.inputs.web.v20220901.VirtualNetworkProfileArgs>;
+    virtualNetwork: pulumi.Input<types.inputs.VirtualNetworkProfileArgs>;
     /**
      * Whether or not this App Service Environment is zone-redundant.
      */

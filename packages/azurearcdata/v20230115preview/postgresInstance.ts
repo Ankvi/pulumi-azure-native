@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A Postgres Instance.
  */
@@ -34,7 +34,7 @@ export class PostgresInstance extends pulumi.CustomResource {
     /**
      * The extendedLocation of the resource.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.azurearcdata.v20230115preview.ExtendedLocationResponse | undefined>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -46,15 +46,15 @@ export class PostgresInstance extends pulumi.CustomResource {
     /**
      * null
      */
-    public readonly properties!: pulumi.Output<types.outputs.azurearcdata.v20230115preview.PostgresInstancePropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.PostgresInstancePropertiesResponse>;
     /**
      * Resource sku.
      */
-    public readonly sku!: pulumi.Output<types.outputs.azurearcdata.v20230115preview.PostgresInstanceSkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.PostgresInstanceSkuResponse | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.azurearcdata.v20230115preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -86,7 +86,7 @@ export class PostgresInstance extends pulumi.CustomResource {
             resourceInputs["postgresInstanceName"] = args ? args.postgresInstanceName : undefined;
             resourceInputs["properties"] = args ? args.properties : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["sku"] = args ? (args.sku ? pulumi.output(args.sku).apply(types.inputs.azurearcdata.v20230115preview.postgresInstanceSkuArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["sku"] = args ? (args.sku ? pulumi.output(args.sku).apply(types.inputs.postgresInstanceSkuArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
@@ -115,7 +115,7 @@ export interface PostgresInstanceArgs {
     /**
      * The extendedLocation of the resource.
      */
-    extendedLocation?: pulumi.Input<types.inputs.azurearcdata.v20230115preview.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -127,7 +127,7 @@ export interface PostgresInstanceArgs {
     /**
      * null
      */
-    properties: pulumi.Input<types.inputs.azurearcdata.v20230115preview.PostgresInstancePropertiesArgs>;
+    properties: pulumi.Input<types.inputs.PostgresInstancePropertiesArgs>;
     /**
      * The name of the Azure resource group
      */
@@ -135,7 +135,7 @@ export interface PostgresInstanceArgs {
     /**
      * Resource sku.
      */
-    sku?: pulumi.Input<types.inputs.azurearcdata.v20230115preview.PostgresInstanceSkuArgs>;
+    sku?: pulumi.Input<types.inputs.PostgresInstanceSkuArgs>;
     /**
      * Resource tags.
      */

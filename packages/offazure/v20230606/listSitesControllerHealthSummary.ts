@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Method to get site health summary.
  */
@@ -35,7 +35,7 @@ export interface ListSitesControllerHealthSummaryResult {
     /**
      * Gets the list of SiteHealthSummary.
      */
-    readonly value: types.outputs.offazure.v20230606.SiteHealthSummaryResponse[];
+    readonly value: types.outputs.SiteHealthSummaryResponse[];
 }
 /**
  * Method to get site health summary.

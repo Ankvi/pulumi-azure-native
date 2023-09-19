@@ -39,11 +39,11 @@ export class AzureDevOpsConnector extends pulumi.CustomResource {
      * The name of the resource
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
-    public readonly properties!: pulumi.Output<types.outputs.securitydevops.AzureDevOpsConnectorPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.AzureDevOpsConnectorPropertiesResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.securitydevops.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -102,7 +102,7 @@ export interface AzureDevOpsConnectorArgs {
      * The geo-location where the resource lives
      */
     location?: pulumi.Input<string>;
-    properties?: pulumi.Input<types.inputs.securitydevops.AzureDevOpsConnectorPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.AzureDevOpsConnectorPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

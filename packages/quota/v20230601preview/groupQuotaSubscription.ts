@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * This represents a Azure subscriptionId that is associated with a GroupQuotaSEntity.
  */
@@ -35,11 +35,11 @@ export class GroupQuotaSubscription extends pulumi.CustomResource {
      * The name of the resource
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
-    public /*out*/ readonly properties!: pulumi.Output<types.outputs.quota.v20230601preview.GroupQuotaSubscriptionIdResponseProperties>;
+    public /*out*/ readonly properties!: pulumi.Output<types.outputs.GroupQuotaSubscriptionIdResponseProperties>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.quota.v20230601preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

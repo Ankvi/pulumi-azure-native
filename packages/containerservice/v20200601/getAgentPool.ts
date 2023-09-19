@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the details of the agent pool by managed cluster and resource group.
  */
@@ -128,7 +128,7 @@ export interface GetAgentPoolResult {
     /**
      * Settings for upgrading the agentpool
      */
-    readonly upgradeSettings?: types.outputs.containerservice.v20200601.AgentPoolUpgradeSettingsResponse;
+    readonly upgradeSettings?: types.outputs.AgentPoolUpgradeSettingsResponse;
     /**
      * Size of agent VMs.
      */

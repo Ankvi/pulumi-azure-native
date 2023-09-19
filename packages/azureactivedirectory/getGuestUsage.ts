@@ -44,7 +44,7 @@ export interface GetGuestUsageResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.azureactivedirectory.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Key-value pairs of additional resource provisioning properties.
      */

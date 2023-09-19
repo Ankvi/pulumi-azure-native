@@ -66,7 +66,7 @@ export interface GetVirtualMachineScaleSetExtensionResult {
     /**
      * The extensions protected settings that are passed by reference, and consumed from key vault
      */
-    readonly protectedSettingsFromKeyVault?: types.outputs.compute.KeyVaultSecretReferenceResponse;
+    readonly protectedSettingsFromKeyVault?: types.outputs.KeyVaultSecretReferenceResponse;
     /**
      * Collection of extension names after which this extension needs to be provisioned.
      */

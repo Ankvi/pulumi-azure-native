@@ -35,7 +35,7 @@ export class Student extends pulumi.CustomResource {
     /**
      * Student Budget
      */
-    public readonly budget!: pulumi.Output<types.outputs.education.AmountResponse>;
+    public readonly budget!: pulumi.Output<types.outputs.AmountResponse>;
     /**
      * Date student was added to the lab
      */
@@ -83,7 +83,7 @@ export class Student extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.education.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -183,7 +183,7 @@ export interface StudentArgs {
     /**
      * Student Budget
      */
-    budget: pulumi.Input<types.inputs.education.AmountArgs>;
+    budget: pulumi.Input<types.inputs.AmountArgs>;
     /**
      * Student Email
      */

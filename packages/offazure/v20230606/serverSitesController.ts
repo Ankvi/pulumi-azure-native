@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A ServerSiteResource
  */
@@ -34,7 +34,7 @@ export class ServerSitesController extends pulumi.CustomResource {
     /**
      * Gets or sets the on-premises agent details.
      */
-    public readonly agentDetails!: pulumi.Output<types.outputs.offazure.v20230606.SiteAgentPropertiesResponse | undefined>;
+    public readonly agentDetails!: pulumi.Output<types.outputs.SiteAgentPropertiesResponse | undefined>;
     /**
      * Gets or sets the Appliance Name.
      */
@@ -68,11 +68,11 @@ export class ServerSitesController extends pulumi.CustomResource {
      * communication
      *             to the service.
      */
-    public readonly servicePrincipalIdentityDetails!: pulumi.Output<types.outputs.offazure.v20230606.SiteSpnPropertiesResponse | undefined>;
+    public readonly servicePrincipalIdentityDetails!: pulumi.Output<types.outputs.SiteSpnPropertiesResponse | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.offazure.v20230606.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -138,7 +138,7 @@ export interface ServerSitesControllerArgs {
     /**
      * Gets or sets the on-premises agent details.
      */
-    agentDetails?: pulumi.Input<types.inputs.offazure.v20230606.SiteAgentPropertiesArgs>;
+    agentDetails?: pulumi.Input<types.inputs.SiteAgentPropertiesArgs>;
     /**
      * Gets or sets the Appliance Name.
      */
@@ -160,7 +160,7 @@ export interface ServerSitesControllerArgs {
      * communication
      *             to the service.
      */
-    servicePrincipalIdentityDetails?: pulumi.Input<types.inputs.offazure.v20230606.SiteSpnPropertiesArgs>;
+    servicePrincipalIdentityDetails?: pulumi.Input<types.inputs.SiteSpnPropertiesArgs>;
     /**
      * Site name
      */

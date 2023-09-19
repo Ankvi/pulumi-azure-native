@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets details of the Kubernetes Cluster Extension Instance.
  */
@@ -62,7 +62,7 @@ export interface GetExtensionResult {
     /**
      * Error information from the Agent - e.g. errors during installation.
      */
-    readonly errorInfo: types.outputs.kubernetesconfiguration.v20200701preview.ErrorDefinitionResponse;
+    readonly errorInfo: types.outputs.ErrorDefinitionResponse;
     /**
      * Type of the Extension, of which this resource is an instance of.  It must be one of the Extension Types registered with Microsoft.KubernetesConfiguration by the Extension publisher.
      */
@@ -74,7 +74,7 @@ export interface GetExtensionResult {
     /**
      * The identity of the configuration.
      */
-    readonly identity?: types.outputs.kubernetesconfiguration.v20200701preview.ConfigurationIdentityResponse;
+    readonly identity?: types.outputs.ConfigurationIdentityResponse;
     /**
      * Status of installation of this instance of the extension.
      */
@@ -98,15 +98,15 @@ export interface GetExtensionResult {
     /**
      * Scope at which the extension instance is installed.
      */
-    readonly scope?: types.outputs.kubernetesconfiguration.v20200701preview.ScopeResponse;
+    readonly scope?: types.outputs.ScopeResponse;
     /**
      * Status from this instance of the extension.
      */
-    readonly statuses?: types.outputs.kubernetesconfiguration.v20200701preview.ExtensionStatusResponse[];
+    readonly statuses?: types.outputs.ExtensionStatusResponse[];
     /**
      * Top level metadata https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-contracts.md#system-metadata-for-all-azure-resources
      */
-    readonly systemData?: types.outputs.kubernetesconfiguration.v20200701preview.SystemDataResponse;
+    readonly systemData?: types.outputs.SystemDataResponse;
     /**
      * Resource type
      */

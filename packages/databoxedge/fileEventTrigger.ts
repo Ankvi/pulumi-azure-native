@@ -48,15 +48,15 @@ export class FileEventTrigger extends pulumi.CustomResource {
     /**
      * Role sink info.
      */
-    public readonly sinkInfo!: pulumi.Output<types.outputs.databoxedge.RoleSinkInfoResponse>;
+    public readonly sinkInfo!: pulumi.Output<types.outputs.RoleSinkInfoResponse>;
     /**
      * File event source details.
      */
-    public readonly sourceInfo!: pulumi.Output<types.outputs.databoxedge.FileSourceInfoResponse>;
+    public readonly sourceInfo!: pulumi.Output<types.outputs.FileSourceInfoResponse>;
     /**
      * Metadata pertaining to creation and last modification of Trigger
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.databoxedge.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The hierarchical type of the object.
      */
@@ -141,9 +141,9 @@ export interface FileEventTriggerArgs {
     /**
      * Role sink info.
      */
-    sinkInfo: pulumi.Input<types.inputs.databoxedge.RoleSinkInfoArgs>;
+    sinkInfo: pulumi.Input<types.inputs.RoleSinkInfoArgs>;
     /**
      * File event source details.
      */
-    sourceInfo: pulumi.Input<types.inputs.databoxedge.FileSourceInfoArgs>;
+    sourceInfo: pulumi.Input<types.inputs.FileSourceInfoArgs>;
 }

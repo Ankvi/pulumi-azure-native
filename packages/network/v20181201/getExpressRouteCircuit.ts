@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets information about the specified express route circuit.
  */
@@ -39,7 +39,7 @@ export interface GetExpressRouteCircuitResult {
     /**
      * The list of authorizations.
      */
-    readonly authorizations?: types.outputs.network.v20181201.ExpressRouteCircuitAuthorizationResponse[];
+    readonly authorizations?: types.outputs.ExpressRouteCircuitAuthorizationResponse[];
     /**
      * The bandwidth of the circuit when the circuit is provisioned on an ExpressRoutePort resource.
      */
@@ -55,7 +55,7 @@ export interface GetExpressRouteCircuitResult {
     /**
      * The reference to the ExpressRoutePort resource when the circuit is provisioned on an ExpressRoutePort resource.
      */
-    readonly expressRoutePort?: types.outputs.network.v20181201.SubResourceResponse;
+    readonly expressRoutePort?: types.outputs.SubResourceResponse;
     /**
      * The GatewayManager Etag.
      */
@@ -79,7 +79,7 @@ export interface GetExpressRouteCircuitResult {
     /**
      * The list of peerings.
      */
-    readonly peerings?: types.outputs.network.v20181201.ExpressRouteCircuitPeeringResponse[];
+    readonly peerings?: types.outputs.ExpressRouteCircuitPeeringResponse[];
     /**
      * Gets the provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
      */
@@ -95,7 +95,7 @@ export interface GetExpressRouteCircuitResult {
     /**
      * The ServiceProviderProperties.
      */
-    readonly serviceProviderProperties?: types.outputs.network.v20181201.ExpressRouteCircuitServiceProviderPropertiesResponse;
+    readonly serviceProviderProperties?: types.outputs.ExpressRouteCircuitServiceProviderPropertiesResponse;
     /**
      * The ServiceProviderProvisioningState state of the resource. Possible values are 'NotProvisioned', 'Provisioning', 'Provisioned', and 'Deprovisioning'.
      */
@@ -103,7 +103,7 @@ export interface GetExpressRouteCircuitResult {
     /**
      * The SKU.
      */
-    readonly sku?: types.outputs.network.v20181201.ExpressRouteCircuitSkuResponse;
+    readonly sku?: types.outputs.ExpressRouteCircuitSkuResponse;
     /**
      * The identifier of the circuit traffic. Outer tag for QinQ encapsulation.
      */

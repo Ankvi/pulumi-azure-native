@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The Customer Notification Event resource.
  */
@@ -42,11 +42,11 @@ export class CustomerEvent extends pulumi.CustomResource {
     /**
      * The notification event receivers.
      */
-    public readonly receivers!: pulumi.Output<types.outputs.testbase.v20220401preview.NotificationEventReceiverResponse[]>;
+    public readonly receivers!: pulumi.Output<types.outputs.NotificationEventReceiverResponse[]>;
     /**
      * The system metadata relating to this resource
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.testbase.v20220401preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource type.
      */
@@ -112,7 +112,7 @@ export interface CustomerEventArgs {
     /**
      * The notification event receivers.
      */
-    receivers: pulumi.Input<pulumi.Input<types.inputs.testbase.v20220401preview.NotificationEventReceiverArgs>[]>;
+    receivers: pulumi.Input<pulumi.Input<types.inputs.NotificationEventReceiverArgs>[]>;
     /**
      * The name of the resource group that contains the resource.
      */

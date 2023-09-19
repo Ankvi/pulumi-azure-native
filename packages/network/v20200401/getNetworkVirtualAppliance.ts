@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the specified Network Virtual Appliance.
  */
@@ -52,7 +52,7 @@ export interface GetNetworkVirtualApplianceResult {
     /**
      * The service principal that has read access to cloud-init and config blob.
      */
-    readonly identity?: types.outputs.network.v20200401.ManagedServiceIdentityResponse;
+    readonly identity?: types.outputs.ManagedServiceIdentityResponse;
     /**
      * Resource location.
      */
@@ -68,7 +68,7 @@ export interface GetNetworkVirtualApplianceResult {
     /**
      * Network Virtual Appliance SKU.
      */
-    readonly sku?: types.outputs.network.v20200401.VirtualApplianceSkuPropertiesResponse;
+    readonly sku?: types.outputs.VirtualApplianceSkuPropertiesResponse;
     /**
      * Resource tags.
      */
@@ -84,11 +84,11 @@ export interface GetNetworkVirtualApplianceResult {
     /**
      * List of Virtual Appliance Network Interfaces.
      */
-    readonly virtualApplianceNics: types.outputs.network.v20200401.VirtualApplianceNicPropertiesResponse[];
+    readonly virtualApplianceNics: types.outputs.VirtualApplianceNicPropertiesResponse[];
     /**
      * The Virtual Hub where Network Virtual Appliance is being deployed.
      */
-    readonly virtualHub?: types.outputs.network.v20200401.SubResourceResponse;
+    readonly virtualHub?: types.outputs.SubResourceResponse;
 }
 /**
  * Gets the specified Network Virtual Appliance.

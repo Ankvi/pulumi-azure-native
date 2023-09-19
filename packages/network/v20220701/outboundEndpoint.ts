@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Describes an outbound endpoint for a DNS resolver.
  */
@@ -54,11 +54,11 @@ export class OutboundEndpoint extends pulumi.CustomResource {
     /**
      * The reference to the subnet used for the outbound endpoint.
      */
-    public readonly subnet!: pulumi.Output<types.outputs.network.v20220701.SubResourceResponse>;
+    public readonly subnet!: pulumi.Output<types.outputs.SubResourceResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.network.v20220701.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -141,7 +141,7 @@ export interface OutboundEndpointArgs {
     /**
      * The reference to the subnet used for the outbound endpoint.
      */
-    subnet: pulumi.Input<types.inputs.network.v20220701.SubResourceArgs>;
+    subnet: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * Resource tags.
      */

@@ -35,7 +35,7 @@ export class PublicIPPrefix extends pulumi.CustomResource {
     /**
      * The customIpPrefix that this prefix is associated with.
      */
-    public readonly customIPPrefix!: pulumi.Output<types.outputs.network.SubResourceResponse | undefined>;
+    public readonly customIPPrefix!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -43,7 +43,7 @@ export class PublicIPPrefix extends pulumi.CustomResource {
     /**
      * The extended location of the public ip address.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.network.ExtendedLocationResponse | undefined>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
     /**
      * The allocated Prefix.
      */
@@ -51,11 +51,11 @@ export class PublicIPPrefix extends pulumi.CustomResource {
     /**
      * The list of tags associated with the public IP prefix.
      */
-    public readonly ipTags!: pulumi.Output<types.outputs.network.IpTagResponse[] | undefined>;
+    public readonly ipTags!: pulumi.Output<types.outputs.IpTagResponse[] | undefined>;
     /**
      * The reference to load balancer frontend IP configuration associated with the public IP prefix.
      */
-    public /*out*/ readonly loadBalancerFrontendIpConfiguration!: pulumi.Output<types.outputs.network.SubResourceResponse>;
+    public /*out*/ readonly loadBalancerFrontendIpConfiguration!: pulumi.Output<types.outputs.SubResourceResponse>;
     /**
      * Resource location.
      */
@@ -67,7 +67,7 @@ export class PublicIPPrefix extends pulumi.CustomResource {
     /**
      * NatGateway of Public IP Prefix.
      */
-    public readonly natGateway!: pulumi.Output<types.outputs.network.NatGatewayResponse | undefined>;
+    public readonly natGateway!: pulumi.Output<types.outputs.NatGatewayResponse | undefined>;
     /**
      * The Length of the Public IP Prefix.
      */
@@ -83,7 +83,7 @@ export class PublicIPPrefix extends pulumi.CustomResource {
     /**
      * The list of all referenced PublicIPAddresses.
      */
-    public /*out*/ readonly publicIPAddresses!: pulumi.Output<types.outputs.network.ReferencedPublicIpAddressResponse[]>;
+    public /*out*/ readonly publicIPAddresses!: pulumi.Output<types.outputs.ReferencedPublicIpAddressResponse[]>;
     /**
      * The resource GUID property of the public IP prefix resource.
      */
@@ -91,7 +91,7 @@ export class PublicIPPrefix extends pulumi.CustomResource {
     /**
      * The public IP prefix SKU.
      */
-    public readonly sku!: pulumi.Output<types.outputs.network.PublicIPPrefixSkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.PublicIPPrefixSkuResponse | undefined>;
     /**
      * Resource tags.
      */
@@ -174,11 +174,11 @@ export interface PublicIPPrefixArgs {
     /**
      * The customIpPrefix that this prefix is associated with.
      */
-    customIPPrefix?: pulumi.Input<types.inputs.network.SubResourceArgs>;
+    customIPPrefix?: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * The extended location of the public ip address.
      */
-    extendedLocation?: pulumi.Input<types.inputs.network.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * Resource ID.
      */
@@ -186,7 +186,7 @@ export interface PublicIPPrefixArgs {
     /**
      * The list of tags associated with the public IP prefix.
      */
-    ipTags?: pulumi.Input<pulumi.Input<types.inputs.network.IpTagArgs>[]>;
+    ipTags?: pulumi.Input<pulumi.Input<types.inputs.IpTagArgs>[]>;
     /**
      * Resource location.
      */
@@ -194,7 +194,7 @@ export interface PublicIPPrefixArgs {
     /**
      * NatGateway of Public IP Prefix.
      */
-    natGateway?: pulumi.Input<types.inputs.network.NatGatewayArgs>;
+    natGateway?: pulumi.Input<types.inputs.NatGatewayArgs>;
     /**
      * The Length of the Public IP Prefix.
      */
@@ -214,7 +214,7 @@ export interface PublicIPPrefixArgs {
     /**
      * The public IP prefix SKU.
      */
-    sku?: pulumi.Input<types.inputs.network.PublicIPPrefixSkuArgs>;
+    sku?: pulumi.Input<types.inputs.PublicIPPrefixSkuArgs>;
     /**
      * Resource tags.
      */

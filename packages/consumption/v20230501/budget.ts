@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A budget resource.
  */
@@ -42,7 +42,7 @@ export class Budget extends pulumi.CustomResource {
     /**
      * The current amount of cost which is being tracked for a budget.
      */
-    public /*out*/ readonly currentSpend!: pulumi.Output<types.outputs.consumption.v20230501.CurrentSpendResponse>;
+    public /*out*/ readonly currentSpend!: pulumi.Output<types.outputs.CurrentSpendResponse>;
     /**
      * eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
      */
@@ -50,11 +50,11 @@ export class Budget extends pulumi.CustomResource {
     /**
      * May be used to filter budgets by user-specified dimensions and/or tags.
      */
-    public readonly filter!: pulumi.Output<types.outputs.consumption.v20230501.BudgetFilterResponse | undefined>;
+    public readonly filter!: pulumi.Output<types.outputs.BudgetFilterResponse | undefined>;
     /**
      * The forecasted cost which is being tracked for a budget.
      */
-    public /*out*/ readonly forecastSpend!: pulumi.Output<types.outputs.consumption.v20230501.ForecastSpendResponse>;
+    public /*out*/ readonly forecastSpend!: pulumi.Output<types.outputs.ForecastSpendResponse>;
     /**
      * Resource name.
      */
@@ -62,7 +62,7 @@ export class Budget extends pulumi.CustomResource {
     /**
      * Dictionary of notifications associated with the budget. Budget can have up to five notifications.
      */
-    public readonly notifications!: pulumi.Output<{[key: string]: types.outputs.consumption.v20230501.NotificationResponse} | undefined>;
+    public readonly notifications!: pulumi.Output<{[key: string]: types.outputs.NotificationResponse} | undefined>;
     /**
      * The time covered by a budget. Tracking of the amount will be reset based on the time grain. BillingMonth, BillingQuarter, and BillingAnnual are only supported by WD customers
      */
@@ -70,7 +70,7 @@ export class Budget extends pulumi.CustomResource {
     /**
      * Has start and end date of the budget. The start date must be first of the month and should be less than the end date. Budget start date must be on or after June 1, 2017. Future start date should not be more than twelve months. Past start date should  be selected within the timegrain period. There are no restrictions on the end date.
      */
-    public readonly timePeriod!: pulumi.Output<types.outputs.consumption.v20230501.BudgetTimePeriodResponse>;
+    public readonly timePeriod!: pulumi.Output<types.outputs.BudgetTimePeriodResponse>;
     /**
      * Resource type.
      */
@@ -150,7 +150,7 @@ export interface BudgetArgs {
     /**
      * The category of the budget, whether the budget tracks cost or usage.
      */
-    category: pulumi.Input<string | types.enums.v20230501.CategoryType>;
+    category: pulumi.Input<string | types.enums.CategoryType>;
     /**
      * eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
      */
@@ -158,11 +158,11 @@ export interface BudgetArgs {
     /**
      * May be used to filter budgets by user-specified dimensions and/or tags.
      */
-    filter?: pulumi.Input<types.inputs.consumption.v20230501.BudgetFilterArgs>;
+    filter?: pulumi.Input<types.inputs.BudgetFilterArgs>;
     /**
      * Dictionary of notifications associated with the budget. Budget can have up to five notifications.
      */
-    notifications?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.consumption.v20230501.NotificationArgs>}>;
+    notifications?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.NotificationArgs>}>;
     /**
      * The scope associated with budget operations. This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, '/providers/Microsoft.Management/managementGroups/{managementGroupId}' for Management Group scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billingProfile scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for invoiceSection scope.
      */
@@ -170,9 +170,9 @@ export interface BudgetArgs {
     /**
      * The time covered by a budget. Tracking of the amount will be reset based on the time grain. BillingMonth, BillingQuarter, and BillingAnnual are only supported by WD customers
      */
-    timeGrain: pulumi.Input<string | types.enums.v20230501.TimeGrainType>;
+    timeGrain: pulumi.Input<string | types.enums.TimeGrainType>;
     /**
      * Has start and end date of the budget. The start date must be first of the month and should be less than the end date. Budget start date must be on or after June 1, 2017. Future start date should not be more than twelve months. Past start date should  be selected within the timegrain period. There are no restrictions on the end date.
      */
-    timePeriod: pulumi.Input<types.inputs.consumption.v20230501.BudgetTimePeriodArgs>;
+    timePeriod: pulumi.Input<types.inputs.BudgetTimePeriodArgs>;
 }

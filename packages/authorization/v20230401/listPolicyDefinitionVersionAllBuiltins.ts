@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * This operation lists all the built-in policy definition versions for all built-in policy definitions.
  */
@@ -26,7 +26,7 @@ export interface ListPolicyDefinitionVersionAllBuiltinsResult {
     /**
      * An array of policy definitions versions.
      */
-    readonly value?: types.outputs.authorization.v20230401.PolicyDefinitionVersionResponse[];
+    readonly value?: types.outputs.PolicyDefinitionVersionResponse[];
 }
 /**
  * This operation lists all the built-in policy definition versions for all built-in policy definitions.

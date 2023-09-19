@@ -39,7 +39,7 @@ export interface ListWorkflowRunActionExpressionTracesArgs {
  * The expression traces.
  */
 export interface ListWorkflowRunActionExpressionTracesResult {
-    readonly inputs?: types.outputs.logic.ExpressionRootResponse[];
+    readonly inputs?: types.outputs.ExpressionRootResponse[];
 }
 /**
  * Lists a workflow run expression trace.

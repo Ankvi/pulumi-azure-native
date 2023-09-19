@@ -37,11 +37,11 @@ export interface GetCustomizableConnectorDefinitionResult {
     /**
      * The UiConfig for 'Customizable' connector definition kind.
      */
-    readonly connectionsConfig?: types.outputs.securityinsights.CustomizableConnectionsConfigResponse;
+    readonly connectionsConfig?: types.outputs.CustomizableConnectionsConfigResponse;
     /**
      * The UiConfig for 'Customizable' connector definition kind.
      */
-    readonly connectorUiConfig: types.outputs.securityinsights.CustomizableConnectorUiConfigResponse;
+    readonly connectorUiConfig: types.outputs.CustomizableConnectorUiConfigResponse;
     /**
      * Gets or sets the connector definition created date in UTC format.
      */
@@ -70,7 +70,7 @@ export interface GetCustomizableConnectorDefinitionResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.securityinsights.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

@@ -35,7 +35,7 @@ export class IntegrationAccount extends pulumi.CustomResource {
     /**
      * The integration service environment.
      */
-    public readonly integrationServiceEnvironment!: pulumi.Output<types.outputs.logic.ResourceReferenceResponse | undefined>;
+    public readonly integrationServiceEnvironment!: pulumi.Output<types.outputs.ResourceReferenceResponse | undefined>;
     /**
      * The resource location.
      */
@@ -47,7 +47,7 @@ export class IntegrationAccount extends pulumi.CustomResource {
     /**
      * The sku.
      */
-    public readonly sku!: pulumi.Output<types.outputs.logic.IntegrationAccountSkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.IntegrationAccountSkuResponse | undefined>;
     /**
      * The workflow state.
      */
@@ -111,7 +111,7 @@ export interface IntegrationAccountArgs {
     /**
      * The integration service environment.
      */
-    integrationServiceEnvironment?: pulumi.Input<types.inputs.logic.ResourceReferenceArgs>;
+    integrationServiceEnvironment?: pulumi.Input<types.inputs.ResourceReferenceArgs>;
     /**
      * The resource location.
      */
@@ -123,7 +123,7 @@ export interface IntegrationAccountArgs {
     /**
      * The sku.
      */
-    sku?: pulumi.Input<types.inputs.logic.IntegrationAccountSkuArgs>;
+    sku?: pulumi.Input<types.inputs.IntegrationAccountSkuArgs>;
     /**
      * The workflow state.
      */

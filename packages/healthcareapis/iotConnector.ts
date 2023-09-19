@@ -35,7 +35,7 @@ export class IotConnector extends pulumi.CustomResource {
     /**
      * Device Mappings.
      */
-    public readonly deviceMapping!: pulumi.Output<types.outputs.healthcareapis.IotMappingPropertiesResponse | undefined>;
+    public readonly deviceMapping!: pulumi.Output<types.outputs.IotMappingPropertiesResponse | undefined>;
     /**
      * An etag associated with the resource, used for optimistic concurrency when editing it.
      */
@@ -43,11 +43,11 @@ export class IotConnector extends pulumi.CustomResource {
     /**
      * Setting indicating whether the service has a managed identity associated with it.
      */
-    public readonly identity!: pulumi.Output<types.outputs.healthcareapis.ServiceManagedIdentityResponseIdentity | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ServiceManagedIdentityResponseIdentity | undefined>;
     /**
      * Source configuration.
      */
-    public readonly ingestionEndpointConfiguration!: pulumi.Output<types.outputs.healthcareapis.IotEventHubIngestionEndpointConfigurationResponse | undefined>;
+    public readonly ingestionEndpointConfiguration!: pulumi.Output<types.outputs.IotEventHubIngestionEndpointConfigurationResponse | undefined>;
     /**
      * The resource location.
      */
@@ -63,7 +63,7 @@ export class IotConnector extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.healthcareapis.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -129,15 +129,15 @@ export interface IotConnectorArgs {
     /**
      * Device Mappings.
      */
-    deviceMapping?: pulumi.Input<types.inputs.healthcareapis.IotMappingPropertiesArgs>;
+    deviceMapping?: pulumi.Input<types.inputs.IotMappingPropertiesArgs>;
     /**
      * Setting indicating whether the service has a managed identity associated with it.
      */
-    identity?: pulumi.Input<types.inputs.healthcareapis.ServiceManagedIdentityIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ServiceManagedIdentityIdentityArgs>;
     /**
      * Source configuration.
      */
-    ingestionEndpointConfiguration?: pulumi.Input<types.inputs.healthcareapis.IotEventHubIngestionEndpointConfigurationArgs>;
+    ingestionEndpointConfiguration?: pulumi.Input<types.inputs.IotEventHubIngestionEndpointConfigurationArgs>;
     /**
      * The name of IoT Connector resource.
      */

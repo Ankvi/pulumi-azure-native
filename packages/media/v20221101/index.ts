@@ -48,7 +48,7 @@ utilities.lazyLoad(exports, ["StreamingEndpoint"], () => require("./streamingEnd
 
 
 // Export enums:
-export * from "../types/enums/v20221101";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

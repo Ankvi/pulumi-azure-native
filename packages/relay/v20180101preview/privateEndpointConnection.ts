@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Private endpoint connection resource.
  */
@@ -42,11 +42,11 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * Properties of the private endpoint object.
      */
-    public readonly privateEndpoint!: pulumi.Output<types.outputs.relay.v20180101preview.PrivateEndpointResponse | undefined>;
+    public readonly privateEndpoint!: pulumi.Output<types.outputs.PrivateEndpointResponse | undefined>;
     /**
      * Approval state of the private link connection.
      */
-    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.relay.v20180101preview.PrivateLinkServiceConnectionStateResponse | undefined>;
+    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.PrivateLinkServiceConnectionStateResponse | undefined>;
     /**
      * Provisioning state of the private endpoint connection.
      */
@@ -118,7 +118,7 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * Properties of the private endpoint object.
      */
-    privateEndpoint?: pulumi.Input<types.inputs.relay.v20180101preview.PrivateEndpointArgs>;
+    privateEndpoint?: pulumi.Input<types.inputs.PrivateEndpointArgs>;
     /**
      * The PrivateEndpointConnection name.
      */
@@ -126,7 +126,7 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * Approval state of the private link connection.
      */
-    privateLinkServiceConnectionState?: pulumi.Input<types.inputs.relay.v20180101preview.PrivateLinkServiceConnectionStateArgs>;
+    privateLinkServiceConnectionState?: pulumi.Input<types.inputs.PrivateLinkServiceConnectionStateArgs>;
     /**
      * Name of the Resource group within the Azure subscription.
      */

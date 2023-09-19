@@ -35,11 +35,11 @@ export class NodeType extends pulumi.CustomResource {
     /**
      * Additional managed data disks.
      */
-    public readonly additionalDataDisks!: pulumi.Output<types.outputs.servicefabric.VmssDataDiskResponse[] | undefined>;
+    public readonly additionalDataDisks!: pulumi.Output<types.outputs.VmssDataDiskResponse[] | undefined>;
     /**
      * The range of ports from which cluster assigned port to Service Fabric applications.
      */
-    public readonly applicationPorts!: pulumi.Output<types.outputs.servicefabric.EndpointRangeDescriptionResponse | undefined>;
+    public readonly applicationPorts!: pulumi.Output<types.outputs.EndpointRangeDescriptionResponse | undefined>;
     /**
      * The capacity tags applied to the nodes in the node type, the cluster resource manager uses these tags to understand how much resource a node has.
      */
@@ -75,7 +75,7 @@ export class NodeType extends pulumi.CustomResource {
     /**
      * The range of ephemeral ports that nodes in this node type should be configured with.
      */
-    public readonly ephemeralPorts!: pulumi.Output<types.outputs.servicefabric.EndpointRangeDescriptionResponse | undefined>;
+    public readonly ephemeralPorts!: pulumi.Output<types.outputs.EndpointRangeDescriptionResponse | undefined>;
     /**
      * Specifies the eviction policy for virtual machines in a SPOT node type. Default is Delete.
      */
@@ -83,7 +83,7 @@ export class NodeType extends pulumi.CustomResource {
     /**
      * Indicates the node type uses its own frontend configurations instead of the default one for the cluster. This setting can only be specified for non-primary node types and can not be added or removed after the node type is created.
      */
-    public readonly frontendConfigurations!: pulumi.Output<types.outputs.servicefabric.FrontendConfigurationResponse[] | undefined>;
+    public readonly frontendConfigurations!: pulumi.Output<types.outputs.FrontendConfigurationResponse[] | undefined>;
     /**
      * Specifies the full host group resource Id. This property is used for deploying on azure dedicated hosts.
      */
@@ -115,7 +115,7 @@ export class NodeType extends pulumi.CustomResource {
     /**
      * The Network Security Rules for this node type. This setting can only be specified for node types that are configured with frontend configurations.
      */
-    public readonly networkSecurityRules!: pulumi.Output<types.outputs.servicefabric.NetworkSecurityRuleResponse[] | undefined>;
+    public readonly networkSecurityRules!: pulumi.Output<types.outputs.NetworkSecurityRuleResponse[] | undefined>;
     /**
      * The placement tags applied to nodes in the node type, which can be used to indicate where certain services (workload) should run.
      */
@@ -135,7 +135,7 @@ export class NodeType extends pulumi.CustomResource {
     /**
      * The node type sku.
      */
-    public readonly sku!: pulumi.Output<types.outputs.servicefabric.NodeTypeSkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.NodeTypeSkuResponse | undefined>;
     /**
      * Indicates the time duration after which the platform will not try to restore the VMSS SPOT instances specified as ISO 8601.
      */
@@ -147,7 +147,7 @@ export class NodeType extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.servicefabric.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Azure resource tags.
      */
@@ -171,7 +171,7 @@ export class NodeType extends pulumi.CustomResource {
     /**
      * Set of extensions that should be installed onto the virtual machines.
      */
-    public readonly vmExtensions!: pulumi.Output<types.outputs.servicefabric.VMSSExtensionResponse[] | undefined>;
+    public readonly vmExtensions!: pulumi.Output<types.outputs.VMSSExtensionResponse[] | undefined>;
     /**
      * The offer type of the Azure Virtual Machines Marketplace image. For example, UbuntuServer or WindowsServer.
      */
@@ -179,7 +179,7 @@ export class NodeType extends pulumi.CustomResource {
     /**
      * Specifies information about the marketplace image used to create the virtual machine. This element is only used for marketplace images. Before you can use a marketplace image from an API, you must enable the image for programmatic use. In the Azure portal, find the marketplace image that you want to use and then click Want to deploy programmatically, Get Started ->. Enter any required information and then click Save.
      */
-    public readonly vmImagePlan!: pulumi.Output<types.outputs.servicefabric.VmImagePlanResponse | undefined>;
+    public readonly vmImagePlan!: pulumi.Output<types.outputs.VmImagePlanResponse | undefined>;
     /**
      * The publisher of the Azure Virtual Machines Marketplace image. For example, Canonical or MicrosoftWindowsServer.
      */
@@ -203,11 +203,11 @@ export class NodeType extends pulumi.CustomResource {
     /**
      * Identities to assign to the virtual machine scale set under the node type.
      */
-    public readonly vmManagedIdentity!: pulumi.Output<types.outputs.servicefabric.VmManagedIdentityResponse | undefined>;
+    public readonly vmManagedIdentity!: pulumi.Output<types.outputs.VmManagedIdentityResponse | undefined>;
     /**
      * The secrets to install in the virtual machines.
      */
-    public readonly vmSecrets!: pulumi.Output<types.outputs.servicefabric.VaultSecretGroupResponse[] | undefined>;
+    public readonly vmSecrets!: pulumi.Output<types.outputs.VaultSecretGroupResponse[] | undefined>;
     /**
      * Specifies the actions to be performed on the vms before bootstrapping the service fabric runtime.
      */
@@ -363,11 +363,11 @@ export interface NodeTypeArgs {
     /**
      * Additional managed data disks.
      */
-    additionalDataDisks?: pulumi.Input<pulumi.Input<types.inputs.servicefabric.VmssDataDiskArgs>[]>;
+    additionalDataDisks?: pulumi.Input<pulumi.Input<types.inputs.VmssDataDiskArgs>[]>;
     /**
      * The range of ports from which cluster assigned port to Service Fabric applications.
      */
-    applicationPorts?: pulumi.Input<types.inputs.servicefabric.EndpointRangeDescriptionArgs>;
+    applicationPorts?: pulumi.Input<types.inputs.EndpointRangeDescriptionArgs>;
     /**
      * The capacity tags applied to the nodes in the node type, the cluster resource manager uses these tags to understand how much resource a node has.
      */
@@ -407,7 +407,7 @@ export interface NodeTypeArgs {
     /**
      * The range of ephemeral ports that nodes in this node type should be configured with.
      */
-    ephemeralPorts?: pulumi.Input<types.inputs.servicefabric.EndpointRangeDescriptionArgs>;
+    ephemeralPorts?: pulumi.Input<types.inputs.EndpointRangeDescriptionArgs>;
     /**
      * Specifies the eviction policy for virtual machines in a SPOT node type. Default is Delete.
      */
@@ -415,7 +415,7 @@ export interface NodeTypeArgs {
     /**
      * Indicates the node type uses its own frontend configurations instead of the default one for the cluster. This setting can only be specified for non-primary node types and can not be added or removed after the node type is created.
      */
-    frontendConfigurations?: pulumi.Input<pulumi.Input<types.inputs.servicefabric.FrontendConfigurationArgs>[]>;
+    frontendConfigurations?: pulumi.Input<pulumi.Input<types.inputs.FrontendConfigurationArgs>[]>;
     /**
      * Specifies the full host group resource Id. This property is used for deploying on azure dedicated hosts.
      */
@@ -443,7 +443,7 @@ export interface NodeTypeArgs {
     /**
      * The Network Security Rules for this node type. This setting can only be specified for node types that are configured with frontend configurations.
      */
-    networkSecurityRules?: pulumi.Input<pulumi.Input<types.inputs.servicefabric.NetworkSecurityRuleArgs>[]>;
+    networkSecurityRules?: pulumi.Input<pulumi.Input<types.inputs.NetworkSecurityRuleArgs>[]>;
     /**
      * The name of the node type.
      */
@@ -467,7 +467,7 @@ export interface NodeTypeArgs {
     /**
      * The node type sku.
      */
-    sku?: pulumi.Input<types.inputs.servicefabric.NodeTypeSkuArgs>;
+    sku?: pulumi.Input<types.inputs.NodeTypeSkuArgs>;
     /**
      * Indicates the time duration after which the platform will not try to restore the VMSS SPOT instances specified as ISO 8601.
      */
@@ -495,7 +495,7 @@ export interface NodeTypeArgs {
     /**
      * Set of extensions that should be installed onto the virtual machines.
      */
-    vmExtensions?: pulumi.Input<pulumi.Input<types.inputs.servicefabric.VMSSExtensionArgs>[]>;
+    vmExtensions?: pulumi.Input<pulumi.Input<types.inputs.VMSSExtensionArgs>[]>;
     /**
      * The offer type of the Azure Virtual Machines Marketplace image. For example, UbuntuServer or WindowsServer.
      */
@@ -503,7 +503,7 @@ export interface NodeTypeArgs {
     /**
      * Specifies information about the marketplace image used to create the virtual machine. This element is only used for marketplace images. Before you can use a marketplace image from an API, you must enable the image for programmatic use. In the Azure portal, find the marketplace image that you want to use and then click Want to deploy programmatically, Get Started ->. Enter any required information and then click Save.
      */
-    vmImagePlan?: pulumi.Input<types.inputs.servicefabric.VmImagePlanArgs>;
+    vmImagePlan?: pulumi.Input<types.inputs.VmImagePlanArgs>;
     /**
      * The publisher of the Azure Virtual Machines Marketplace image. For example, Canonical or MicrosoftWindowsServer.
      */
@@ -527,11 +527,11 @@ export interface NodeTypeArgs {
     /**
      * Identities to assign to the virtual machine scale set under the node type.
      */
-    vmManagedIdentity?: pulumi.Input<types.inputs.servicefabric.VmManagedIdentityArgs>;
+    vmManagedIdentity?: pulumi.Input<types.inputs.VmManagedIdentityArgs>;
     /**
      * The secrets to install in the virtual machines.
      */
-    vmSecrets?: pulumi.Input<pulumi.Input<types.inputs.servicefabric.VaultSecretGroupArgs>[]>;
+    vmSecrets?: pulumi.Input<pulumi.Input<types.inputs.VaultSecretGroupArgs>[]>;
     /**
      * Specifies the actions to be performed on the vms before bootstrapping the service fabric runtime.
      */

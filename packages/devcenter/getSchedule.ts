@@ -67,7 +67,7 @@ export interface GetScheduleResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.devcenter.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The target time to trigger the action. The format is HH:MM.
      */

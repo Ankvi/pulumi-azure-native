@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A network interface in a resource group.
  */
@@ -34,7 +34,7 @@ export class NetworkInterface extends pulumi.CustomResource {
     /**
      * The DNS settings in network interface.
      */
-    public readonly dnsSettings!: pulumi.Output<types.outputs.network.v20180701.NetworkInterfaceDnsSettingsResponse | undefined>;
+    public readonly dnsSettings!: pulumi.Output<types.outputs.NetworkInterfaceDnsSettingsResponse | undefined>;
     /**
      * If the network interface is accelerated networking enabled.
      */
@@ -50,7 +50,7 @@ export class NetworkInterface extends pulumi.CustomResource {
     /**
      * A list of IPConfigurations of the network interface.
      */
-    public readonly ipConfigurations!: pulumi.Output<types.outputs.network.v20180701.NetworkInterfaceIPConfigurationResponse[] | undefined>;
+    public readonly ipConfigurations!: pulumi.Output<types.outputs.NetworkInterfaceIPConfigurationResponse[] | undefined>;
     /**
      * Resource location.
      */
@@ -66,7 +66,7 @@ export class NetworkInterface extends pulumi.CustomResource {
     /**
      * The reference of the NetworkSecurityGroup resource.
      */
-    public readonly networkSecurityGroup!: pulumi.Output<types.outputs.network.v20180701.NetworkSecurityGroupResponse | undefined>;
+    public readonly networkSecurityGroup!: pulumi.Output<types.outputs.NetworkSecurityGroupResponse | undefined>;
     /**
      * Gets whether this is a primary network interface on a virtual machine.
      */
@@ -90,7 +90,7 @@ export class NetworkInterface extends pulumi.CustomResource {
     /**
      * The reference of a virtual machine.
      */
-    public readonly virtualMachine!: pulumi.Output<types.outputs.network.v20180701.SubResourceResponse | undefined>;
+    public readonly virtualMachine!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
 
     /**
      * Create a NetworkInterface resource with the given unique name, arguments, and options.
@@ -155,7 +155,7 @@ export interface NetworkInterfaceArgs {
     /**
      * The DNS settings in network interface.
      */
-    dnsSettings?: pulumi.Input<types.inputs.network.v20180701.NetworkInterfaceDnsSettingsArgs>;
+    dnsSettings?: pulumi.Input<types.inputs.NetworkInterfaceDnsSettingsArgs>;
     /**
      * If the network interface is accelerated networking enabled.
      */
@@ -171,7 +171,7 @@ export interface NetworkInterfaceArgs {
     /**
      * A list of IPConfigurations of the network interface.
      */
-    ipConfigurations?: pulumi.Input<pulumi.Input<types.inputs.network.v20180701.NetworkInterfaceIPConfigurationArgs>[]>;
+    ipConfigurations?: pulumi.Input<pulumi.Input<types.inputs.NetworkInterfaceIPConfigurationArgs>[]>;
     /**
      * Resource location.
      */
@@ -187,7 +187,7 @@ export interface NetworkInterfaceArgs {
     /**
      * The reference of the NetworkSecurityGroup resource.
      */
-    networkSecurityGroup?: pulumi.Input<types.inputs.network.v20180701.NetworkSecurityGroupArgs>;
+    networkSecurityGroup?: pulumi.Input<types.inputs.NetworkSecurityGroupArgs>;
     /**
      * Gets whether this is a primary network interface on a virtual machine.
      */
@@ -211,5 +211,5 @@ export interface NetworkInterfaceArgs {
     /**
      * The reference of a virtual machine.
      */
-    virtualMachine?: pulumi.Input<types.inputs.network.v20180701.SubResourceArgs>;
+    virtualMachine?: pulumi.Input<types.inputs.SubResourceArgs>;
 }

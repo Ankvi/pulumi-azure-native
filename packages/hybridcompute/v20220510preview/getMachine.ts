@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves information about the model view or the instance view of a hybrid machine.
  */
@@ -40,7 +40,7 @@ export interface GetMachineResult {
     /**
      * Identity for the resource.
      */
-    readonly identity?: types.outputs.hybridcompute.v20220510preview.IdentityResponse;
+    readonly identity?: types.outputs.IdentityResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -52,15 +52,15 @@ export interface GetMachineResult {
     /**
      * Hybrid Compute Machine properties
      */
-    readonly properties: types.outputs.hybridcompute.v20220510preview.MachinePropertiesResponse;
+    readonly properties: types.outputs.MachinePropertiesResponse;
     /**
      * The list of extensions affiliated to the machine
      */
-    readonly resources: types.outputs.hybridcompute.v20220510preview.MachineExtensionResponse[];
+    readonly resources: types.outputs.MachineExtensionResponse[];
     /**
      * The system meta data relating to this resource.
      */
-    readonly systemData: types.outputs.hybridcompute.v20220510preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents an instance of a DNC controller.
  */
@@ -128,7 +128,7 @@ export interface ControllerDetailsArgs {
     /**
      * The purpose of the dnc controller resource.
      */
-    purpose?: pulumi.Input<string | types.enums.v20230518preview.ControllerPurpose>;
+    purpose?: pulumi.Input<string | types.enums.ControllerPurpose>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

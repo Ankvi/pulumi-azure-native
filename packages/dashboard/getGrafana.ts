@@ -36,7 +36,7 @@ export interface GetGrafanaResult {
     /**
      * The managed identity of the grafana resource.
      */
-    readonly identity?: types.outputs.dashboard.ManagedServiceIdentityResponse;
+    readonly identity?: types.outputs.ManagedServiceIdentityResponse;
     /**
      * The geo-location where the grafana resource lives
      */
@@ -48,15 +48,15 @@ export interface GetGrafanaResult {
     /**
      * Properties specific to the grafana resource.
      */
-    readonly properties: types.outputs.dashboard.ManagedGrafanaPropertiesResponse;
+    readonly properties: types.outputs.ManagedGrafanaPropertiesResponse;
     /**
      * The Sku of the grafana resource.
      */
-    readonly sku?: types.outputs.dashboard.ResourceSkuResponse;
+    readonly sku?: types.outputs.ResourceSkuResponse;
     /**
      * The system meta data relating to this grafana resource.
      */
-    readonly systemData: types.outputs.dashboard.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The tags for grafana resource.
      */

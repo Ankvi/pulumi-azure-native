@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a source control byt its identifier.
  */
@@ -56,7 +56,7 @@ export interface GetSourceControlResult {
     /**
      * Information regarding the latest deployment for the source control.
      */
-    readonly lastDeploymentInfo?: types.outputs.securityinsights.v20230501preview.DeploymentInfoResponse;
+    readonly lastDeploymentInfo?: types.outputs.DeploymentInfoResponse;
     /**
      * The name of the resource
      */
@@ -68,15 +68,15 @@ export interface GetSourceControlResult {
     /**
      * Repository metadata.
      */
-    readonly repository: types.outputs.securityinsights.v20230501preview.RepositoryResponse;
+    readonly repository: types.outputs.RepositoryResponse;
     /**
      * Information regarding the resources created in user's repository.
      */
-    readonly repositoryResourceInfo?: types.outputs.securityinsights.v20230501preview.RepositoryResourceInfoResponse;
+    readonly repositoryResourceInfo?: types.outputs.RepositoryResourceInfoResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.securityinsights.v20230501preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

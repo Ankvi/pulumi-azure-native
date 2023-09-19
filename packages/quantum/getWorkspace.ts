@@ -40,7 +40,7 @@ export interface GetWorkspaceResult {
     /**
      * Managed Identity information.
      */
-    readonly identity?: types.outputs.quantum.QuantumWorkspaceResponseIdentity;
+    readonly identity?: types.outputs.QuantumWorkspaceResponseIdentity;
     /**
      * The geo-location where the resource lives
      */
@@ -52,7 +52,7 @@ export interface GetWorkspaceResult {
     /**
      * List of Providers selected for this Workspace
      */
-    readonly providers?: types.outputs.quantum.ProviderResponse[];
+    readonly providers?: types.outputs.ProviderResponse[];
     /**
      * Provisioning status field
      */
@@ -64,7 +64,7 @@ export interface GetWorkspaceResult {
     /**
      * System metadata
      */
-    readonly systemData: types.outputs.quantum.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

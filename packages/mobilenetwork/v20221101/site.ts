@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Site resource. Must be created in the same location as its parent mobile network.
  */
@@ -42,7 +42,7 @@ export class Site extends pulumi.CustomResource {
     /**
      * An array of IDs of the network functions deployed in the site. Deleting the site will delete any network functions that are deployed in the site.
      */
-    public /*out*/ readonly networkFunctions!: pulumi.Output<types.outputs.mobilenetwork.v20221101.SubResourceResponse[]>;
+    public /*out*/ readonly networkFunctions!: pulumi.Output<types.outputs.SubResourceResponse[]>;
     /**
      * The provisioning state of the site resource.
      */
@@ -50,7 +50,7 @@ export class Site extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.mobilenetwork.v20221101.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */

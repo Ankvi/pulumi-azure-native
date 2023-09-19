@@ -39,7 +39,7 @@ export class PrivateStoreCollection extends pulumi.CustomResource {
     /**
      * Gets list of collection rules
      */
-    public /*out*/ readonly appliedRules!: pulumi.Output<types.outputs.marketplace.RuleResponse[]>;
+    public /*out*/ readonly appliedRules!: pulumi.Output<types.outputs.RuleResponse[]>;
     /**
      * Indicating whether all items are approved for this collection (=true) or not (=false).
      */
@@ -79,7 +79,7 @@ export class PrivateStoreCollection extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.marketplace.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource.
      */

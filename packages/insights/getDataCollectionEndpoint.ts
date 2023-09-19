@@ -32,7 +32,7 @@ export interface GetDataCollectionEndpointResult {
     /**
      * The endpoint used by clients to access their configuration.
      */
-    readonly configurationAccess?: types.outputs.insights.DataCollectionEndpointResponseConfigurationAccess;
+    readonly configurationAccess?: types.outputs.DataCollectionEndpointResponseConfigurationAccess;
     /**
      * Description of the data collection endpoint.
      */
@@ -44,7 +44,7 @@ export interface GetDataCollectionEndpointResult {
     /**
      * Failover configuration on this endpoint. This property is READ-ONLY.
      */
-    readonly failoverConfiguration: types.outputs.insights.DataCollectionEndpointResponseFailoverConfiguration;
+    readonly failoverConfiguration: types.outputs.DataCollectionEndpointResponseFailoverConfiguration;
     /**
      * Fully qualified ID of the resource.
      */
@@ -52,7 +52,7 @@ export interface GetDataCollectionEndpointResult {
     /**
      * Managed service identity of the resource.
      */
-    readonly identity?: types.outputs.insights.DataCollectionEndpointResourceResponseIdentity;
+    readonly identity?: types.outputs.DataCollectionEndpointResourceResponseIdentity;
     /**
      * The immutable ID of this data collection endpoint resource. This property is READ-ONLY.
      */
@@ -68,15 +68,15 @@ export interface GetDataCollectionEndpointResult {
     /**
      * The endpoint used by clients to ingest logs.
      */
-    readonly logsIngestion?: types.outputs.insights.DataCollectionEndpointResponseLogsIngestion;
+    readonly logsIngestion?: types.outputs.DataCollectionEndpointResponseLogsIngestion;
     /**
      * Metadata for the resource. This property is READ-ONLY.
      */
-    readonly metadata: types.outputs.insights.DataCollectionEndpointResponseMetadata;
+    readonly metadata: types.outputs.DataCollectionEndpointResponseMetadata;
     /**
      * The endpoint used by clients to ingest metrics.
      */
-    readonly metricsIngestion?: types.outputs.insights.DataCollectionEndpointResponseMetricsIngestion;
+    readonly metricsIngestion?: types.outputs.DataCollectionEndpointResponseMetricsIngestion;
     /**
      * The name of the resource.
      */
@@ -84,11 +84,11 @@ export interface GetDataCollectionEndpointResult {
     /**
      * Network access control rules for the endpoints.
      */
-    readonly networkAcls?: types.outputs.insights.DataCollectionEndpointResponseNetworkAcls;
+    readonly networkAcls?: types.outputs.DataCollectionEndpointResponseNetworkAcls;
     /**
      * List of Azure Monitor Private Link Scope Resources to which this data collection endpoint resource is associated. This property is READ-ONLY.
      */
-    readonly privateLinkScopedResources: types.outputs.insights.PrivateLinkScopedResourceResponse[];
+    readonly privateLinkScopedResources: types.outputs.PrivateLinkScopedResourceResponse[];
     /**
      * The resource provisioning state. This property is READ-ONLY.
      */
@@ -96,7 +96,7 @@ export interface GetDataCollectionEndpointResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.insights.DataCollectionEndpointResourceResponseSystemData;
+    readonly systemData: types.outputs.DataCollectionEndpointResourceResponseSystemData;
     /**
      * Resource tags.
      */

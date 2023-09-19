@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Trigger details.
  */
@@ -47,15 +47,15 @@ export class FileEventTrigger extends pulumi.CustomResource {
     /**
      * Role sink info.
      */
-    public readonly sinkInfo!: pulumi.Output<types.outputs.databoxedge.v20230101preview.RoleSinkInfoResponse>;
+    public readonly sinkInfo!: pulumi.Output<types.outputs.RoleSinkInfoResponse>;
     /**
      * File event source details.
      */
-    public readonly sourceInfo!: pulumi.Output<types.outputs.databoxedge.v20230101preview.FileSourceInfoResponse>;
+    public readonly sourceInfo!: pulumi.Output<types.outputs.FileSourceInfoResponse>;
     /**
      * Metadata pertaining to creation and last modification of Trigger
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.databoxedge.v20230101preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The hierarchical type of the object.
      */
@@ -140,9 +140,9 @@ export interface FileEventTriggerArgs {
     /**
      * Role sink info.
      */
-    sinkInfo: pulumi.Input<types.inputs.databoxedge.v20230101preview.RoleSinkInfoArgs>;
+    sinkInfo: pulumi.Input<types.inputs.RoleSinkInfoArgs>;
     /**
      * File event source details.
      */
-    sourceInfo: pulumi.Input<types.inputs.databoxedge.v20230101preview.FileSourceInfoArgs>;
+    sourceInfo: pulumi.Input<types.inputs.FileSourceInfoArgs>;
 }

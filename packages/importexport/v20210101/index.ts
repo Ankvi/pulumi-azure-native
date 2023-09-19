@@ -18,7 +18,7 @@ utilities.lazyLoad(exports, ["listBitLockerKey","listBitLockerKeyOutput"], () =>
 
 
 // Export enums:
-export * from "../types/enums/v20210101";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

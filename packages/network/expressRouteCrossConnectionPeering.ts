@@ -47,7 +47,7 @@ export class ExpressRouteCrossConnectionPeering extends pulumi.CustomResource {
     /**
      * The IPv6 peering configuration.
      */
-    public readonly ipv6PeeringConfig!: pulumi.Output<types.outputs.network.Ipv6ExpressRouteCircuitPeeringConfigResponse | undefined>;
+    public readonly ipv6PeeringConfig!: pulumi.Output<types.outputs.Ipv6ExpressRouteCircuitPeeringConfigResponse | undefined>;
     /**
      * Who was the last to modify the peering.
      */
@@ -55,7 +55,7 @@ export class ExpressRouteCrossConnectionPeering extends pulumi.CustomResource {
     /**
      * The Microsoft peering configuration.
      */
-    public readonly microsoftPeeringConfig!: pulumi.Output<types.outputs.network.ExpressRouteCircuitPeeringConfigResponse | undefined>;
+    public readonly microsoftPeeringConfig!: pulumi.Output<types.outputs.ExpressRouteCircuitPeeringConfigResponse | undefined>;
     /**
      * The name of the resource that is unique within a resource group. This name can be used to access the resource.
      */
@@ -184,11 +184,11 @@ export interface ExpressRouteCrossConnectionPeeringArgs {
     /**
      * The IPv6 peering configuration.
      */
-    ipv6PeeringConfig?: pulumi.Input<types.inputs.network.Ipv6ExpressRouteCircuitPeeringConfigArgs>;
+    ipv6PeeringConfig?: pulumi.Input<types.inputs.Ipv6ExpressRouteCircuitPeeringConfigArgs>;
     /**
      * The Microsoft peering configuration.
      */
-    microsoftPeeringConfig?: pulumi.Input<types.inputs.network.ExpressRouteCircuitPeeringConfigArgs>;
+    microsoftPeeringConfig?: pulumi.Input<types.inputs.ExpressRouteCircuitPeeringConfigArgs>;
     /**
      * The name of the resource that is unique within a resource group. This name can be used to access the resource.
      */

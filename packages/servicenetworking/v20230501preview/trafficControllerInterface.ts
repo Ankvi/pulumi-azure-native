@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Concrete tracked resource types can be created by aliasing this type using a specific property type.
  */
@@ -34,7 +34,7 @@ export class TrafficControllerInterface extends pulumi.CustomResource {
     /**
      * Associations References List
      */
-    public /*out*/ readonly associations!: pulumi.Output<types.outputs.servicenetworking.v20230501preview.ResourceIdResponse[]>;
+    public /*out*/ readonly associations!: pulumi.Output<types.outputs.ResourceIdResponse[]>;
     /**
      * Configuration Endpoints.
      */
@@ -42,7 +42,7 @@ export class TrafficControllerInterface extends pulumi.CustomResource {
     /**
      * Frontends References List
      */
-    public /*out*/ readonly frontends!: pulumi.Output<types.outputs.servicenetworking.v20230501preview.ResourceIdResponse[]>;
+    public /*out*/ readonly frontends!: pulumi.Output<types.outputs.ResourceIdResponse[]>;
     /**
      * The geo-location where the resource lives
      */
@@ -58,7 +58,7 @@ export class TrafficControllerInterface extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.servicenetworking.v20230501preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */

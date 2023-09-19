@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Capture logs and metrics of Azure resources based on ARM tags.
  */
@@ -38,11 +38,11 @@ export class TagRule extends pulumi.CustomResource {
     /**
      * Properties of the monitoring tag rules.
      */
-    public readonly properties!: pulumi.Output<types.outputs.elastic.v20230601.MonitoringTagRulesPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.MonitoringTagRulesPropertiesResponse>;
     /**
      * The system metadata relating to this resource
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.elastic.v20230601.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the rule set.
      */
@@ -96,7 +96,7 @@ export interface TagRuleArgs {
     /**
      * Properties of the monitoring tag rules.
      */
-    properties?: pulumi.Input<types.inputs.elastic.v20230601.MonitoringTagRulesPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.MonitoringTagRulesPropertiesArgs>;
     /**
      * The name of the resource group to which the Elastic resource belongs.
      */

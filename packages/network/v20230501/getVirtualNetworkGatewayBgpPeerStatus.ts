@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The GetBgpPeerStatus operation retrieves the status of all BGP peers.
  */
@@ -36,7 +36,7 @@ export interface GetVirtualNetworkGatewayBgpPeerStatusResult {
     /**
      * List of BGP peers.
      */
-    readonly value?: types.outputs.network.v20230501.BgpPeerStatusResponse[];
+    readonly value?: types.outputs.BgpPeerStatusResponse[];
 }
 /**
  * The GetBgpPeerStatus operation retrieves the status of all BGP peers.

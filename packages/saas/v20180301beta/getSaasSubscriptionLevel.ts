@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets information about the specified Subscription Level SaaS.
  */
@@ -39,7 +39,7 @@ export interface GetSaasSubscriptionLevelResult {
     /**
      * saas properties
      */
-    readonly properties: types.outputs.saas.v20180301beta.SaasResourceResponseProperties;
+    readonly properties: types.outputs.SaasResourceResponseProperties;
     /**
      * the resource tags.
      */

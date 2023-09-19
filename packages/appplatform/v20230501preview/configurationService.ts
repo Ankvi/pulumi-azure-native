@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Application Configuration Service resource
  */
@@ -38,11 +38,11 @@ export class ConfigurationService extends pulumi.CustomResource {
     /**
      * Application Configuration Service properties payload
      */
-    public readonly properties!: pulumi.Output<types.outputs.appplatform.v20230501preview.ConfigurationServicePropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ConfigurationServicePropertiesResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.appplatform.v20230501preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource.
      */
@@ -66,7 +66,7 @@ export class ConfigurationService extends pulumi.CustomResource {
                 throw new Error("Missing required property 'serviceName'");
             }
             resourceInputs["configurationServiceName"] = args ? args.configurationServiceName : undefined;
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.appplatform.v20230501preview.configurationServicePropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.configurationServicePropertiesArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
             resourceInputs["name"] = undefined /*out*/;
@@ -96,7 +96,7 @@ export interface ConfigurationServiceArgs {
     /**
      * Application Configuration Service properties payload
      */
-    properties?: pulumi.Input<types.inputs.appplatform.v20230501preview.ConfigurationServicePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ConfigurationServicePropertiesArgs>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */

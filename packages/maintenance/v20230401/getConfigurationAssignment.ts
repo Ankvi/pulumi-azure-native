@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get configuration assignment for resource..
  */
@@ -46,7 +46,7 @@ export interface GetConfigurationAssignmentResult {
     /**
      * Properties of the configuration assignment
      */
-    readonly filter?: types.outputs.maintenance.v20230401.ConfigurationAssignmentFilterPropertiesResponse;
+    readonly filter?: types.outputs.ConfigurationAssignmentFilterPropertiesResponse;
     /**
      * Fully qualified identifier of the resource
      */
@@ -70,7 +70,7 @@ export interface GetConfigurationAssignmentResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.maintenance.v20230401.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Type of the resource
      */

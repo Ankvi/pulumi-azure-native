@@ -23,7 +23,7 @@ utilities.lazyLoad(exports, ["ServerSecurityAlertPolicy"], () => require("./serv
 
 
 // Export enums:
-export * from "../types/enums/v20170301preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

@@ -37,11 +37,11 @@ export interface GetOutputResult {
     /**
      * Describes the data source that output will be written to. Required on PUT (CreateOrReplace) requests.
      */
-    readonly datasource?: types.outputs.streamanalytics.AzureDataLakeStoreOutputDataSourceResponse | types.outputs.streamanalytics.AzureFunctionOutputDataSourceResponse | types.outputs.streamanalytics.AzureSqlDatabaseOutputDataSourceResponse | types.outputs.streamanalytics.AzureSynapseOutputDataSourceResponse | types.outputs.streamanalytics.AzureTableOutputDataSourceResponse | types.outputs.streamanalytics.BlobOutputDataSourceResponse | types.outputs.streamanalytics.DocumentDbOutputDataSourceResponse | types.outputs.streamanalytics.EventHubOutputDataSourceResponse | types.outputs.streamanalytics.EventHubV2OutputDataSourceResponse | types.outputs.streamanalytics.GatewayMessageBusOutputDataSourceResponse | types.outputs.streamanalytics.PowerBIOutputDataSourceResponse | types.outputs.streamanalytics.ServiceBusQueueOutputDataSourceResponse | types.outputs.streamanalytics.ServiceBusTopicOutputDataSourceResponse;
+    readonly datasource?: types.outputs.AzureDataLakeStoreOutputDataSourceResponse | types.outputs.AzureFunctionOutputDataSourceResponse | types.outputs.AzureSqlDatabaseOutputDataSourceResponse | types.outputs.AzureSynapseOutputDataSourceResponse | types.outputs.AzureTableOutputDataSourceResponse | types.outputs.BlobOutputDataSourceResponse | types.outputs.DocumentDbOutputDataSourceResponse | types.outputs.EventHubOutputDataSourceResponse | types.outputs.EventHubV2OutputDataSourceResponse | types.outputs.GatewayMessageBusOutputDataSourceResponse | types.outputs.PowerBIOutputDataSourceResponse | types.outputs.ServiceBusQueueOutputDataSourceResponse | types.outputs.ServiceBusTopicOutputDataSourceResponse;
     /**
      * Describes conditions applicable to the Input, Output, or the job overall, that warrant customer attention.
      */
-    readonly diagnostics: types.outputs.streamanalytics.DiagnosticsResponse;
+    readonly diagnostics: types.outputs.DiagnosticsResponse;
     /**
      * The current entity tag for the output. This is an opaque string. You can use it to detect whether the resource has changed between requests. You can also use it in the If-Match or If-None-Match headers for write operations for optimistic concurrency.
      */
@@ -57,7 +57,7 @@ export interface GetOutputResult {
     /**
      * Describes how data from an input is serialized or how data is serialized when written to an output. Required on PUT (CreateOrReplace) requests.
      */
-    readonly serialization?: types.outputs.streamanalytics.AvroSerializationResponse | types.outputs.streamanalytics.CsvSerializationResponse | types.outputs.streamanalytics.JsonSerializationResponse | types.outputs.streamanalytics.ParquetSerializationResponse;
+    readonly serialization?: types.outputs.AvroSerializationResponse | types.outputs.CsvSerializationResponse | types.outputs.JsonSerializationResponse | types.outputs.ParquetSerializationResponse;
     /**
      * The size window to constrain a Stream Analytics output to.
      */

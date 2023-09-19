@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A Log Analytics QueryPack-Query definition.
  */
@@ -58,11 +58,11 @@ export class Query extends pulumi.CustomResource {
     /**
      * The related metadata items for the function.
      */
-    public readonly related!: pulumi.Output<types.outputs.operationalinsights.v20190901preview.LogAnalyticsQueryPackQueryPropertiesResponseRelated | undefined>;
+    public readonly related!: pulumi.Output<types.outputs.LogAnalyticsQueryPackQueryPropertiesResponseRelated | undefined>;
     /**
      * Read only system data
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.operationalinsights.v20190901preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Tags associated with the query.
      */
@@ -170,7 +170,7 @@ export interface QueryArgs {
     /**
      * The related metadata items for the function.
      */
-    related?: pulumi.Input<types.inputs.operationalinsights.v20190901preview.LogAnalyticsQueryPackQueryPropertiesRelatedArgs>;
+    related?: pulumi.Input<types.inputs.LogAnalyticsQueryPackQueryPropertiesRelatedArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

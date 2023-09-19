@@ -49,7 +49,7 @@ export interface GetPatchScheduleResult {
     /**
      * List of patch schedules for a Redis cache.
      */
-    readonly scheduleEntries: types.outputs.cache.ScheduleEntryResponse[];
+    readonly scheduleEntries: types.outputs.ScheduleEntryResponse[];
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

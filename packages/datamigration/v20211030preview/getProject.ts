@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The project resource is a nested resource representing a stored migration project. The GET method retrieves information about a project.
  */
@@ -44,7 +44,7 @@ export interface GetProjectResult {
     /**
      * List of DatabaseInfo
      */
-    readonly databasesInfo?: types.outputs.datamigration.v20211030preview.DatabaseInfoResponse[];
+    readonly databasesInfo?: types.outputs.DatabaseInfoResponse[];
     /**
      * HTTP strong entity tag value. This is ignored if submitted.
      */
@@ -59,17 +59,17 @@ export interface GetProjectResult {
     /**
      * Information for connecting to source
      */
-    readonly sourceConnectionInfo?: types.outputs.datamigration.v20211030preview.MiSqlConnectionInfoResponse | types.outputs.datamigration.v20211030preview.MongoDbConnectionInfoResponse | types.outputs.datamigration.v20211030preview.MySqlConnectionInfoResponse | types.outputs.datamigration.v20211030preview.OracleConnectionInfoResponse | types.outputs.datamigration.v20211030preview.PostgreSqlConnectionInfoResponse | types.outputs.datamigration.v20211030preview.SqlConnectionInfoResponse;
+    readonly sourceConnectionInfo?: types.outputs.MiSqlConnectionInfoResponse | types.outputs.MongoDbConnectionInfoResponse | types.outputs.MySqlConnectionInfoResponse | types.outputs.OracleConnectionInfoResponse | types.outputs.PostgreSqlConnectionInfoResponse | types.outputs.SqlConnectionInfoResponse;
     /**
      * Source platform for the project
      */
     readonly sourcePlatform: string;
-    readonly systemData: types.outputs.datamigration.v20211030preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     readonly tags?: {[key: string]: string};
     /**
      * Information for connecting to target
      */
-    readonly targetConnectionInfo?: types.outputs.datamigration.v20211030preview.MiSqlConnectionInfoResponse | types.outputs.datamigration.v20211030preview.MongoDbConnectionInfoResponse | types.outputs.datamigration.v20211030preview.MySqlConnectionInfoResponse | types.outputs.datamigration.v20211030preview.OracleConnectionInfoResponse | types.outputs.datamigration.v20211030preview.PostgreSqlConnectionInfoResponse | types.outputs.datamigration.v20211030preview.SqlConnectionInfoResponse;
+    readonly targetConnectionInfo?: types.outputs.MiSqlConnectionInfoResponse | types.outputs.MongoDbConnectionInfoResponse | types.outputs.MySqlConnectionInfoResponse | types.outputs.OracleConnectionInfoResponse | types.outputs.PostgreSqlConnectionInfoResponse | types.outputs.SqlConnectionInfoResponse;
     /**
      * Target platform for the project
      */

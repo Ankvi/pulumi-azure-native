@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Storage resource for managedEnvironment.
  */
@@ -38,11 +38,11 @@ export class ManagedEnvironmentsStorage extends pulumi.CustomResource {
     /**
      * Storage properties
      */
-    public readonly properties!: pulumi.Output<types.outputs.app.v20230401preview.ManagedEnvironmentStorageResponseProperties>;
+    public readonly properties!: pulumi.Output<types.outputs.ManagedEnvironmentStorageResponseProperties>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.app.v20230401preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -96,7 +96,7 @@ export interface ManagedEnvironmentsStorageArgs {
     /**
      * Storage properties
      */
-    properties?: pulumi.Input<types.inputs.app.v20230401preview.ManagedEnvironmentStoragePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ManagedEnvironmentStoragePropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

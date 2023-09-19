@@ -61,7 +61,7 @@ export interface GetProactiveDetectionConfigurationResult {
     /**
      * Static definitions of the ProactiveDetection configuration rule (same values for all components).
      */
-    readonly ruleDefinitions?: types.outputs.insights.ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponseRuleDefinitions;
+    readonly ruleDefinitions?: types.outputs.ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponseRuleDefinitions;
     /**
      * A flag that indicated whether notifications on this rule should be sent to subscription owners
      */

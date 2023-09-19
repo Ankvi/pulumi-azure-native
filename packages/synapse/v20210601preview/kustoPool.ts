@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Class representing a Kusto kusto pool.
  */
@@ -50,7 +50,7 @@ export class KustoPool extends pulumi.CustomResource {
     /**
      * List of the Kusto Pool's language extensions.
      */
-    public /*out*/ readonly languageExtensions!: pulumi.Output<types.outputs.synapse.v20210601preview.LanguageExtensionsListResponse>;
+    public /*out*/ readonly languageExtensions!: pulumi.Output<types.outputs.LanguageExtensionsListResponse>;
     /**
      * The geo-location where the resource lives
      */
@@ -62,7 +62,7 @@ export class KustoPool extends pulumi.CustomResource {
     /**
      * Optimized auto scale definition.
      */
-    public readonly optimizedAutoscale!: pulumi.Output<types.outputs.synapse.v20210601preview.OptimizedAutoscaleResponse | undefined>;
+    public readonly optimizedAutoscale!: pulumi.Output<types.outputs.OptimizedAutoscaleResponse | undefined>;
     /**
      * The provisioned state of the resource.
      */
@@ -70,7 +70,7 @@ export class KustoPool extends pulumi.CustomResource {
     /**
      * The SKU of the kusto pool.
      */
-    public readonly sku!: pulumi.Output<types.outputs.synapse.v20210601preview.AzureSkuResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.AzureSkuResponse>;
     /**
      * The state of the resource.
      */
@@ -82,7 +82,7 @@ export class KustoPool extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.synapse.v20210601preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -189,7 +189,7 @@ export interface KustoPoolArgs {
     /**
      * Optimized auto scale definition.
      */
-    optimizedAutoscale?: pulumi.Input<types.inputs.synapse.v20210601preview.OptimizedAutoscaleArgs>;
+    optimizedAutoscale?: pulumi.Input<types.inputs.OptimizedAutoscaleArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -197,7 +197,7 @@ export interface KustoPoolArgs {
     /**
      * The SKU of the kusto pool.
      */
-    sku: pulumi.Input<types.inputs.synapse.v20210601preview.AzureSkuArgs>;
+    sku: pulumi.Input<types.inputs.AzureSkuArgs>;
     /**
      * Resource tags.
      */

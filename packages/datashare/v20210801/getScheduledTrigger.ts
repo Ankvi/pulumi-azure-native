@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a Trigger in a shareSubscription
  */
@@ -74,7 +74,7 @@ export interface GetScheduledTriggerResult {
     /**
      * System Data of the Azure resource.
      */
-    readonly systemData: types.outputs.datashare.v20210801.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Gets the trigger state
      */

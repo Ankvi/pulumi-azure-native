@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the automation rule.
  */
@@ -41,11 +41,11 @@ export interface GetAutomationRuleResult {
     /**
      * The actions to execute when the automation rule is triggered
      */
-    readonly actions: (types.outputs.securityinsights.v20190101preview.AutomationRuleModifyPropertiesActionResponse | types.outputs.securityinsights.v20190101preview.AutomationRuleRunPlaybookActionResponse)[];
+    readonly actions: (types.outputs.AutomationRuleModifyPropertiesActionResponse | types.outputs.AutomationRuleRunPlaybookActionResponse)[];
     /**
      * Describes the client that created the automation rule
      */
-    readonly createdBy: types.outputs.securityinsights.v20190101preview.ClientInfoResponse;
+    readonly createdBy: types.outputs.ClientInfoResponse;
     /**
      * The time the automation rule was created
      */
@@ -65,7 +65,7 @@ export interface GetAutomationRuleResult {
     /**
      * Describes the client that last updated the automation rule
      */
-    readonly lastModifiedBy: types.outputs.securityinsights.v20190101preview.ClientInfoResponse;
+    readonly lastModifiedBy: types.outputs.ClientInfoResponse;
     /**
      * The last time the automation rule was updated
      */
@@ -81,7 +81,7 @@ export interface GetAutomationRuleResult {
     /**
      * The triggering logic of the automation rule
      */
-    readonly triggeringLogic: types.outputs.securityinsights.v20190101preview.AutomationRuleTriggeringLogicResponse;
+    readonly triggeringLogic: types.outputs.AutomationRuleTriggeringLogicResponse;
     /**
      * Azure resource type
      */

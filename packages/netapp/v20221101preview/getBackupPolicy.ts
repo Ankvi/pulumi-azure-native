@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a particular backup Policy
  */
@@ -72,7 +72,7 @@ export interface GetBackupPolicyResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.netapp.v20221101preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -84,7 +84,7 @@ export interface GetBackupPolicyResult {
     /**
      * A list of volumes assigned to this policy
      */
-    readonly volumeBackups: types.outputs.netapp.v20221101preview.VolumeBackupsResponse[];
+    readonly volumeBackups: types.outputs.VolumeBackupsResponse[];
     /**
      * Volumes using current backup policy
      */

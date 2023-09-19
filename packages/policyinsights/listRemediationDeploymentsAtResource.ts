@@ -41,7 +41,7 @@ export interface ListRemediationDeploymentsAtResourceResult {
     /**
      * Array of deployments for the remediation.
      */
-    readonly value: types.outputs.policyinsights.RemediationDeploymentResponse[];
+    readonly value: types.outputs.RemediationDeploymentResponse[];
 }
 /**
  * Gets all deployments for a remediation at resource scope.

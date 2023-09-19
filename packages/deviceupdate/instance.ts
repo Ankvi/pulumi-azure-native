@@ -39,7 +39,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Customer-initiated diagnostic log collection storage properties
      */
-    public readonly diagnosticStorageProperties!: pulumi.Output<types.outputs.deviceupdate.DiagnosticStoragePropertiesResponse | undefined>;
+    public readonly diagnosticStorageProperties!: pulumi.Output<types.outputs.DiagnosticStoragePropertiesResponse | undefined>;
     /**
      * Enables or Disables the diagnostic logs collection
      */
@@ -47,7 +47,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * List of IoT Hubs associated with the account.
      */
-    public readonly iotHubs!: pulumi.Output<types.outputs.deviceupdate.IotHubSettingsResponse[] | undefined>;
+    public readonly iotHubs!: pulumi.Output<types.outputs.IotHubSettingsResponse[] | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -63,7 +63,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.deviceupdate.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -132,7 +132,7 @@ export interface InstanceArgs {
     /**
      * Customer-initiated diagnostic log collection storage properties
      */
-    diagnosticStorageProperties?: pulumi.Input<types.inputs.deviceupdate.DiagnosticStoragePropertiesArgs>;
+    diagnosticStorageProperties?: pulumi.Input<types.inputs.DiagnosticStoragePropertiesArgs>;
     /**
      * Enables or Disables the diagnostic logs collection
      */
@@ -144,7 +144,7 @@ export interface InstanceArgs {
     /**
      * List of IoT Hubs associated with the account.
      */
-    iotHubs?: pulumi.Input<pulumi.Input<types.inputs.deviceupdate.IotHubSettingsArgs>[]>;
+    iotHubs?: pulumi.Input<pulumi.Input<types.inputs.IotHubSettingsArgs>[]>;
     /**
      * The geo-location where the resource lives
      */

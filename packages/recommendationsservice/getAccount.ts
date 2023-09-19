@@ -44,11 +44,11 @@ export interface GetAccountResult {
     /**
      * Account resource properties.
      */
-    readonly properties: types.outputs.recommendationsservice.AccountResourceResponseProperties;
+    readonly properties: types.outputs.AccountResourceResponseProperties;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.recommendationsservice.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

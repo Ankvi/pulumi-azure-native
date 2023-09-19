@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * RemoteRenderingAccount Response.
  */
@@ -42,11 +42,11 @@ export class RemoteRenderingAccount extends pulumi.CustomResource {
     /**
      * The identity associated with this account
      */
-    public readonly identity!: pulumi.Output<types.outputs.mixedreality.v20210301preview.IdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityResponse | undefined>;
     /**
      * The kind of account, if supported
      */
-    public readonly kind!: pulumi.Output<types.outputs.mixedreality.v20210301preview.SkuResponse | undefined>;
+    public readonly kind!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -58,11 +58,11 @@ export class RemoteRenderingAccount extends pulumi.CustomResource {
     /**
      * The plan associated with this account
      */
-    public readonly plan!: pulumi.Output<types.outputs.mixedreality.v20210301preview.IdentityResponse | undefined>;
+    public readonly plan!: pulumi.Output<types.outputs.IdentityResponse | undefined>;
     /**
      * The sku associated with this account
      */
-    public readonly sku!: pulumi.Output<types.outputs.mixedreality.v20210301preview.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * The name of the storage account associated with this accountId
      */
@@ -70,7 +70,7 @@ export class RemoteRenderingAccount extends pulumi.CustomResource {
     /**
      * System metadata for this account
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.mixedreality.v20210301preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -140,11 +140,11 @@ export interface RemoteRenderingAccountArgs {
     /**
      * The identity associated with this account
      */
-    identity?: pulumi.Input<types.inputs.mixedreality.v20210301preview.IdentityArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityArgs>;
     /**
      * The kind of account, if supported
      */
-    kind?: pulumi.Input<types.inputs.mixedreality.v20210301preview.SkuArgs>;
+    kind?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -152,7 +152,7 @@ export interface RemoteRenderingAccountArgs {
     /**
      * The plan associated with this account
      */
-    plan?: pulumi.Input<types.inputs.mixedreality.v20210301preview.IdentityArgs>;
+    plan?: pulumi.Input<types.inputs.IdentityArgs>;
     /**
      * Name of an Azure resource group.
      */
@@ -160,7 +160,7 @@ export interface RemoteRenderingAccountArgs {
     /**
      * The sku associated with this account
      */
-    sku?: pulumi.Input<types.inputs.mixedreality.v20210301preview.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * The name of the storage account associated with this accountId
      */

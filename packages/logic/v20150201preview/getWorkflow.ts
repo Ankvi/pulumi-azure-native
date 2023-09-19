@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a workflow.
  */
@@ -44,7 +44,7 @@ export interface GetWorkflowResult {
     /**
      * Gets or sets the link to definition.
      */
-    readonly definitionLink?: types.outputs.logic.v20150201preview.ContentLinkResponse;
+    readonly definitionLink?: types.outputs.ContentLinkResponse;
     /**
      * Gets or sets the resource id.
      */
@@ -60,11 +60,11 @@ export interface GetWorkflowResult {
     /**
      * Gets or sets the parameters.
      */
-    readonly parameters?: {[key: string]: types.outputs.logic.v20150201preview.WorkflowParameterResponse};
+    readonly parameters?: {[key: string]: types.outputs.WorkflowParameterResponse};
     /**
      * Gets or sets the link to parameters.
      */
-    readonly parametersLink?: types.outputs.logic.v20150201preview.ContentLinkResponse;
+    readonly parametersLink?: types.outputs.ContentLinkResponse;
     /**
      * Gets the provisioning state.
      */
@@ -72,7 +72,7 @@ export interface GetWorkflowResult {
     /**
      * Gets or sets the sku.
      */
-    readonly sku?: types.outputs.logic.v20150201preview.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * Gets or sets the state.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 export class BareMetalMachine extends pulumi.CustomResource {
     /**
      * Get an existing BareMetalMachine resource's state with the given name, ID, and optional extra
@@ -39,7 +39,7 @@ export class BareMetalMachine extends pulumi.CustomResource {
     /**
      * The credentials of the baseboard management controller on this bare metal machine.
      */
-    public readonly bmcCredentials!: pulumi.Output<types.outputs.networkcloud.v20230701.AdministrativeCredentialsResponse>;
+    public readonly bmcCredentials!: pulumi.Output<types.outputs.AdministrativeCredentialsResponse>;
     /**
      * The MAC address of the BMC device.
      */
@@ -67,15 +67,15 @@ export class BareMetalMachine extends pulumi.CustomResource {
     /**
      * The extended location of the cluster associated with the resource.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.networkcloud.v20230701.ExtendedLocationResponse>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse>;
     /**
      * The hardware inventory, including information acquired from the model/sku information and from the ironic inspector.
      */
-    public /*out*/ readonly hardwareInventory!: pulumi.Output<types.outputs.networkcloud.v20230701.HardwareInventoryResponse>;
+    public /*out*/ readonly hardwareInventory!: pulumi.Output<types.outputs.HardwareInventoryResponse>;
     /**
      * The details of the latest hardware validation performed for this bare metal machine.
      */
-    public /*out*/ readonly hardwareValidationStatus!: pulumi.Output<types.outputs.networkcloud.v20230701.HardwareValidationStatusResponse>;
+    public /*out*/ readonly hardwareValidationStatus!: pulumi.Output<types.outputs.HardwareValidationStatusResponse>;
     /**
      * Field Deprecated. These fields will be empty/omitted. The list of the resource IDs for the HybridAksClusters that have nodes hosted on this bare metal machine.
      */
@@ -151,7 +151,7 @@ export class BareMetalMachine extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.networkcloud.v20230701.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -306,7 +306,7 @@ export interface BareMetalMachineArgs {
     /**
      * The credentials of the baseboard management controller on this bare metal machine.
      */
-    bmcCredentials: pulumi.Input<types.inputs.networkcloud.v20230701.AdministrativeCredentialsArgs>;
+    bmcCredentials: pulumi.Input<types.inputs.AdministrativeCredentialsArgs>;
     /**
      * The MAC address of the BMC device.
      */
@@ -318,7 +318,7 @@ export interface BareMetalMachineArgs {
     /**
      * The extended location of the cluster associated with the resource.
      */
-    extendedLocation: pulumi.Input<types.inputs.networkcloud.v20230701.ExtendedLocationArgs>;
+    extendedLocation: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * The geo-location where the resource lives
      */

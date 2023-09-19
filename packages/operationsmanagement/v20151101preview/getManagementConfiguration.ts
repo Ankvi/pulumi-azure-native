@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves the user ManagementConfiguration.
  */
@@ -43,7 +43,7 @@ export interface GetManagementConfigurationResult {
     /**
      * Properties for ManagementConfiguration object supported by the OperationsManagement resource provider.
      */
-    readonly properties: types.outputs.operationsmanagement.v20151101preview.ManagementConfigurationPropertiesResponse;
+    readonly properties: types.outputs.ManagementConfigurationPropertiesResponse;
     /**
      * Resource type.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets information about a RedisEnterprise cluster
  */
@@ -31,7 +31,7 @@ export interface GetRedisEnterpriseResult {
     /**
      * Encryption-at-rest configuration for the cluster.
      */
-    readonly encryption?: types.outputs.cache.v20230801preview.ClusterPropertiesResponseEncryption;
+    readonly encryption?: types.outputs.ClusterPropertiesResponseEncryption;
     /**
      * DNS name of the cluster endpoint
      */
@@ -43,7 +43,7 @@ export interface GetRedisEnterpriseResult {
     /**
      * The identity of the resource.
      */
-    readonly identity?: types.outputs.cache.v20230801preview.ManagedServiceIdentityResponse;
+    readonly identity?: types.outputs.ManagedServiceIdentityResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -59,7 +59,7 @@ export interface GetRedisEnterpriseResult {
     /**
      * List of private endpoint connections associated with the specified RedisEnterprise cluster
      */
-    readonly privateEndpointConnections: types.outputs.cache.v20230801preview.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections: types.outputs.PrivateEndpointConnectionResponse[];
     /**
      * Current provisioning status of the cluster
      */
@@ -75,11 +75,11 @@ export interface GetRedisEnterpriseResult {
     /**
      * The SKU to create, which affects price, performance, and features.
      */
-    readonly sku: types.outputs.cache.v20230801preview.EnterpriseSkuResponse;
+    readonly sku: types.outputs.EnterpriseSkuResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.cache.v20230801preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

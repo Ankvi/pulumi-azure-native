@@ -41,7 +41,7 @@ export interface ListWebAppSiteBackupsSlotResult {
     /**
      * Collection of resources.
      */
-    readonly value: types.outputs.web.BackupItemResponse[];
+    readonly value: types.outputs.BackupItemResponse[];
 }
 /**
  * Description for Gets existing backups of an app.

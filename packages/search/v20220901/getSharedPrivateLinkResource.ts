@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the details of the shared private link resource managed by the search service in the given resource group.
  */
@@ -44,7 +44,7 @@ export interface GetSharedPrivateLinkResourceResult {
     /**
      * Describes the properties of a Shared Private Link Resource managed by the Azure Cognitive Search service.
      */
-    readonly properties: types.outputs.search.v20220901.SharedPrivateLinkResourcePropertiesResponse;
+    readonly properties: types.outputs.SharedPrivateLinkResourcePropertiesResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

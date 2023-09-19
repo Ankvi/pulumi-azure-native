@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents MTP (Microsoft Threat Protection) data connector.
  */
@@ -34,7 +34,7 @@ export class MTPDataConnector extends pulumi.CustomResource {
     /**
      * The available data types for the connector.
      */
-    public readonly dataTypes!: pulumi.Output<types.outputs.securityinsights.v20230701preview.MTPDataConnectorDataTypesResponse>;
+    public readonly dataTypes!: pulumi.Output<types.outputs.MTPDataConnectorDataTypesResponse>;
     /**
      * Etag of the azure resource
      */
@@ -42,7 +42,7 @@ export class MTPDataConnector extends pulumi.CustomResource {
     /**
      * The available filtered providers for the connector.
      */
-    public readonly filteredProviders!: pulumi.Output<types.outputs.securityinsights.v20230701preview.MtpFilteredProvidersResponse | undefined>;
+    public readonly filteredProviders!: pulumi.Output<types.outputs.MtpFilteredProvidersResponse | undefined>;
     /**
      * The kind of the data connector
      * Expected value is 'MicrosoftThreatProtection'.
@@ -55,7 +55,7 @@ export class MTPDataConnector extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.securityinsights.v20230701preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The tenant id to connect to, and get the data from.
      */
@@ -130,11 +130,11 @@ export interface MTPDataConnectorArgs {
     /**
      * The available data types for the connector.
      */
-    dataTypes: pulumi.Input<types.inputs.securityinsights.v20230701preview.MTPDataConnectorDataTypesArgs>;
+    dataTypes: pulumi.Input<types.inputs.MTPDataConnectorDataTypesArgs>;
     /**
      * The available filtered providers for the connector.
      */
-    filteredProviders?: pulumi.Input<types.inputs.securityinsights.v20230701preview.MtpFilteredProvidersArgs>;
+    filteredProviders?: pulumi.Input<types.inputs.MtpFilteredProvidersArgs>;
     /**
      * The kind of the data connector
      * Expected value is 'MicrosoftThreatProtection'.

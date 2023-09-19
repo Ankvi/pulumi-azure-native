@@ -45,15 +45,15 @@ export interface GetGatewayResult {
     /**
      * Spring Cloud Gateway properties payload
      */
-    readonly properties: types.outputs.appplatform.GatewayPropertiesResponse;
+    readonly properties: types.outputs.GatewayPropertiesResponse;
     /**
      * Sku of the Spring Cloud Gateway resource
      */
-    readonly sku?: types.outputs.appplatform.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.appplatform.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource.
      */

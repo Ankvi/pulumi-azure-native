@@ -35,7 +35,7 @@ export class DiskAccess extends pulumi.CustomResource {
     /**
      * The extended location where the disk access will be created. Extended location cannot be changed.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.compute.ExtendedLocationResponse | undefined>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
     /**
      * Resource location
      */
@@ -47,7 +47,7 @@ export class DiskAccess extends pulumi.CustomResource {
     /**
      * A readonly collection of private endpoint connections created on the disk. Currently only one endpoint connection is supported.
      */
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.compute.PrivateEndpointConnectionResponse[]>;
+    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[]>;
     /**
      * The disk access resource provisioning state.
      */
@@ -117,7 +117,7 @@ export interface DiskAccessArgs {
     /**
      * The extended location where the disk access will be created. Extended location cannot be changed.
      */
-    extendedLocation?: pulumi.Input<types.inputs.compute.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * Resource location
      */

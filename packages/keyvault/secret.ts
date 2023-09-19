@@ -43,7 +43,7 @@ export class Secret extends pulumi.CustomResource {
     /**
      * Properties of the secret
      */
-    public readonly properties!: pulumi.Output<types.outputs.keyvault.SecretPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.SecretPropertiesResponse>;
     /**
      * Tags assigned to the key vault resource.
      */
@@ -102,7 +102,7 @@ export interface SecretArgs {
     /**
      * Properties of the secret
      */
-    properties: pulumi.Input<types.inputs.keyvault.SecretPropertiesArgs>;
+    properties: pulumi.Input<types.inputs.SecretPropertiesArgs>;
     /**
      * The name of the Resource Group to which the vault belongs.
      */

@@ -37,19 +37,19 @@ export interface GetFhirServiceResult {
     /**
      * Fhir Service access policies.
      */
-    readonly accessPolicies?: types.outputs.healthcareapis.FhirServiceAccessPolicyEntryResponse[];
+    readonly accessPolicies?: types.outputs.FhirServiceAccessPolicyEntryResponse[];
     /**
      * Fhir Service Azure container registry configuration.
      */
-    readonly acrConfiguration?: types.outputs.healthcareapis.FhirServiceAcrConfigurationResponse;
+    readonly acrConfiguration?: types.outputs.FhirServiceAcrConfigurationResponse;
     /**
      * Fhir Service authentication configuration.
      */
-    readonly authenticationConfiguration?: types.outputs.healthcareapis.FhirServiceAuthenticationConfigurationResponse;
+    readonly authenticationConfiguration?: types.outputs.FhirServiceAuthenticationConfigurationResponse;
     /**
      * Fhir Service Cors configuration.
      */
-    readonly corsConfiguration?: types.outputs.healthcareapis.FhirServiceCorsConfigurationResponse;
+    readonly corsConfiguration?: types.outputs.FhirServiceCorsConfigurationResponse;
     /**
      * An etag associated with the resource, used for optimistic concurrency when editing it.
      */
@@ -61,7 +61,7 @@ export interface GetFhirServiceResult {
     /**
      * Fhir Service export configuration.
      */
-    readonly exportConfiguration?: types.outputs.healthcareapis.FhirServiceExportConfigurationResponse;
+    readonly exportConfiguration?: types.outputs.FhirServiceExportConfigurationResponse;
     /**
      * The resource identifier.
      */
@@ -69,15 +69,15 @@ export interface GetFhirServiceResult {
     /**
      * Setting indicating whether the service has a managed identity associated with it.
      */
-    readonly identity?: types.outputs.healthcareapis.ServiceManagedIdentityResponseIdentity;
+    readonly identity?: types.outputs.ServiceManagedIdentityResponseIdentity;
     /**
      * Implementation Guides configuration.
      */
-    readonly implementationGuidesConfiguration?: types.outputs.healthcareapis.ImplementationGuidesConfigurationResponse;
+    readonly implementationGuidesConfiguration?: types.outputs.ImplementationGuidesConfigurationResponse;
     /**
      * Fhir Service import configuration.
      */
-    readonly importConfiguration?: types.outputs.healthcareapis.FhirServiceImportConfigurationResponse;
+    readonly importConfiguration?: types.outputs.FhirServiceImportConfigurationResponse;
     /**
      * The kind of the service.
      */
@@ -93,7 +93,7 @@ export interface GetFhirServiceResult {
     /**
      * The list of private endpoint connections that are set up for this resource.
      */
-    readonly privateEndpointConnections: types.outputs.healthcareapis.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections: types.outputs.PrivateEndpointConnectionResponse[];
     /**
      * The provisioning state.
      */
@@ -105,11 +105,11 @@ export interface GetFhirServiceResult {
     /**
      * Determines tracking of history for resources.
      */
-    readonly resourceVersionPolicyConfiguration?: types.outputs.healthcareapis.ResourceVersionPolicyConfigurationResponse;
+    readonly resourceVersionPolicyConfiguration?: types.outputs.ResourceVersionPolicyConfigurationResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.healthcareapis.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A paginated list of Feature entities.
  */
@@ -55,7 +55,7 @@ export interface ListFeaturesetVersionFeaturesResult {
     /**
      * An array of objects of type Feature.
      */
-    readonly value?: types.outputs.machinelearningservices.v20230201preview.FeatureResponse[];
+    readonly value?: types.outputs.FeatureResponse[];
 }
 /**
  * A paginated list of Feature entities.

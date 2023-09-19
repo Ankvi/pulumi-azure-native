@@ -23,7 +23,7 @@ utilities.lazyLoad(exports, ["getCollectorPolicy","getCollectorPolicyOutput"], (
 
 
 // Export enums:
-export * from "../types/enums/v20221101";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

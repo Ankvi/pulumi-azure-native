@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets Topology of the underlying resources in the given Network Fabric instance.
  */
@@ -35,7 +35,7 @@ export interface GetNetworkFabricTopologyResult {
     /**
      * The error object.
      */
-    readonly error?: types.outputs.managednetworkfabric.v20230615.ErrorDetailResponse;
+    readonly error?: types.outputs.ErrorDetailResponse;
     /**
      * URL for the details of the response.
      */

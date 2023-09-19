@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A datastore resource
  */
@@ -41,7 +41,7 @@ export interface GetDatastoreResult {
     /**
      * An iSCSI volume
      */
-    readonly diskPoolVolume?: types.outputs.avs.v20220501.DiskPoolVolumeResponse;
+    readonly diskPoolVolume?: types.outputs.DiskPoolVolumeResponse;
     /**
      * Resource ID.
      */
@@ -53,7 +53,7 @@ export interface GetDatastoreResult {
     /**
      * An Azure NetApp Files volume
      */
-    readonly netAppVolume?: types.outputs.avs.v20220501.NetAppVolumeResponse;
+    readonly netAppVolume?: types.outputs.NetAppVolumeResponse;
     /**
      * The state of the datastore provisioning
      */

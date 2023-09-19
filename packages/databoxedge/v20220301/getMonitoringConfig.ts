@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The metric setting details for the role
  */
@@ -40,7 +40,7 @@ export interface GetMonitoringConfigResult {
     /**
      * The metrics configuration details
      */
-    readonly metricConfigurations: types.outputs.databoxedge.v20220301.MetricConfigurationResponse[];
+    readonly metricConfigurations: types.outputs.MetricConfigurationResponse[];
     /**
      * The object name.
      */
@@ -48,7 +48,7 @@ export interface GetMonitoringConfigResult {
     /**
      * Metadata pertaining to creation and last modification of MonitoringConfiguration
      */
-    readonly systemData: types.outputs.databoxedge.v20220301.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The hierarchical type of the object.
      */

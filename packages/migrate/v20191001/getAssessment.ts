@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get an existing assessment with the specified name. Returns a json object of type 'assessment' as specified in Models section.
  */
@@ -53,7 +53,7 @@ export interface GetAssessmentResult {
     /**
      * Properties of the assessment.
      */
-    readonly properties: types.outputs.migrate.v20191001.AssessmentPropertiesResponse;
+    readonly properties: types.outputs.AssessmentPropertiesResponse;
     /**
      * Type of the object = [Microsoft.Migrate/assessmentProjects/groups/assessments].
      */

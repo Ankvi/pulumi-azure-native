@@ -32,11 +32,11 @@ export interface ListApplianceClusterUserCredentialResult {
     /**
      * Contains the REP (rendezvous endpoint) and “Listener” access token from notification service (NS).
      */
-    readonly hybridConnectionConfig: types.outputs.resourceconnector.HybridConnectionConfigResponse;
+    readonly hybridConnectionConfig: types.outputs.HybridConnectionConfigResponse;
     /**
      * The list of appliance kubeconfigs.
      */
-    readonly kubeconfigs: types.outputs.resourceconnector.ApplianceCredentialKubeconfigResponse[];
+    readonly kubeconfigs: types.outputs.ApplianceCredentialKubeconfigResponse[];
 }
 /**
  * Returns the cluster user credentials for the dedicated appliance.

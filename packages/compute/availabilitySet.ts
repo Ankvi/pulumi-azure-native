@@ -51,15 +51,15 @@ export class AvailabilitySet extends pulumi.CustomResource {
     /**
      * Specifies information about the proximity placement group that the availability set should be assigned to. Minimum api-version: 2018-04-01.
      */
-    public readonly proximityPlacementGroup!: pulumi.Output<types.outputs.compute.SubResourceResponse | undefined>;
+    public readonly proximityPlacementGroup!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * Sku of the availability set, only name is required to be set. See AvailabilitySetSkuTypes for possible set of values. Use 'Aligned' for virtual machines with managed disks and 'Classic' for virtual machines with unmanaged disks. Default value is 'Classic'.
      */
-    public readonly sku!: pulumi.Output<types.outputs.compute.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * The resource status information.
      */
-    public /*out*/ readonly statuses!: pulumi.Output<types.outputs.compute.InstanceViewStatusResponse[]>;
+    public /*out*/ readonly statuses!: pulumi.Output<types.outputs.InstanceViewStatusResponse[]>;
     /**
      * Resource tags
      */
@@ -71,7 +71,7 @@ export class AvailabilitySet extends pulumi.CustomResource {
     /**
      * A list of references to all virtual machines in the availability set.
      */
-    public readonly virtualMachines!: pulumi.Output<types.outputs.compute.SubResourceResponse[] | undefined>;
+    public readonly virtualMachines!: pulumi.Output<types.outputs.SubResourceResponse[] | undefined>;
 
     /**
      * Create a AvailabilitySet resource with the given unique name, arguments, and options.
@@ -141,7 +141,7 @@ export interface AvailabilitySetArgs {
     /**
      * Specifies information about the proximity placement group that the availability set should be assigned to. Minimum api-version: 2018-04-01.
      */
-    proximityPlacementGroup?: pulumi.Input<types.inputs.compute.SubResourceArgs>;
+    proximityPlacementGroup?: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * The name of the resource group.
      */
@@ -149,7 +149,7 @@ export interface AvailabilitySetArgs {
     /**
      * Sku of the availability set, only name is required to be set. See AvailabilitySetSkuTypes for possible set of values. Use 'Aligned' for virtual machines with managed disks and 'Classic' for virtual machines with unmanaged disks. Default value is 'Classic'.
      */
-    sku?: pulumi.Input<types.inputs.compute.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Resource tags
      */
@@ -157,5 +157,5 @@ export interface AvailabilitySetArgs {
     /**
      * A list of references to all virtual machines in the availability set.
      */
-    virtualMachines?: pulumi.Input<pulumi.Input<types.inputs.compute.SubResourceArgs>[]>;
+    virtualMachines?: pulumi.Input<pulumi.Input<types.inputs.SubResourceArgs>[]>;
 }

@@ -36,7 +36,7 @@ export interface GetExperimentResult {
     /**
      * The identity of the experiment resource.
      */
-    readonly identity?: types.outputs.chaos.ResourceIdentityResponse;
+    readonly identity?: types.outputs.ResourceIdentityResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -48,11 +48,11 @@ export interface GetExperimentResult {
     /**
      * The properties of the experiment resource.
      */
-    readonly properties: types.outputs.chaos.ExperimentPropertiesResponse;
+    readonly properties: types.outputs.ExperimentPropertiesResponse;
     /**
      * The system metadata of the experiment resource.
      */
-    readonly systemData: types.outputs.chaos.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

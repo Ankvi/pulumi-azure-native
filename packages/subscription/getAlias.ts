@@ -35,11 +35,11 @@ export interface GetAliasResult {
     /**
      * Subscription Alias response properties.
      */
-    readonly properties: types.outputs.subscription.SubscriptionAliasResponsePropertiesResponse;
+    readonly properties: types.outputs.SubscriptionAliasResponsePropertiesResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.subscription.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource type, Microsoft.Subscription/aliases.
      */

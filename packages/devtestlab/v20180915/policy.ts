@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A Policy.
  */
@@ -153,7 +153,7 @@ export interface PolicyArgs {
     /**
      * The evaluator type of the policy (i.e. AllowedValuesPolicy, MaxValuePolicy).
      */
-    evaluatorType?: pulumi.Input<string | types.enums.v20180915.PolicyEvaluatorType>;
+    evaluatorType?: pulumi.Input<string | types.enums.PolicyEvaluatorType>;
     /**
      * The fact data of the policy.
      */
@@ -161,7 +161,7 @@ export interface PolicyArgs {
     /**
      * The fact name of the policy (e.g. LabVmCount, LabVmSize, MaxVmsAllowedPerLab, etc.
      */
-    factName?: pulumi.Input<string | types.enums.v20180915.PolicyFactName>;
+    factName?: pulumi.Input<string | types.enums.PolicyFactName>;
     /**
      * The name of the lab.
      */
@@ -185,7 +185,7 @@ export interface PolicyArgs {
     /**
      * The status of the policy.
      */
-    status?: pulumi.Input<string | types.enums.v20180915.PolicyStatus>;
+    status?: pulumi.Input<string | types.enums.PolicyStatus>;
     /**
      * The tags of the resource.
      */

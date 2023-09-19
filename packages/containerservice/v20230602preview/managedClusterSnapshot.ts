@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A managed cluster snapshot resource.
  */
@@ -34,7 +34,7 @@ export class ManagedClusterSnapshot extends pulumi.CustomResource {
     /**
      * CreationData to be used to specify the source resource ID to create this snapshot.
      */
-    public readonly creationData!: pulumi.Output<types.outputs.containerservice.v20230602preview.CreationDataResponse | undefined>;
+    public readonly creationData!: pulumi.Output<types.outputs.CreationDataResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -42,7 +42,7 @@ export class ManagedClusterSnapshot extends pulumi.CustomResource {
     /**
      * What the properties will be showed when getting managed cluster snapshot. Those properties are read-only.
      */
-    public /*out*/ readonly managedClusterPropertiesReadOnly!: pulumi.Output<types.outputs.containerservice.v20230602preview.ManagedClusterPropertiesForSnapshotResponse>;
+    public /*out*/ readonly managedClusterPropertiesReadOnly!: pulumi.Output<types.outputs.ManagedClusterPropertiesForSnapshotResponse>;
     /**
      * The name of the resource
      */
@@ -54,7 +54,7 @@ export class ManagedClusterSnapshot extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.containerservice.v20230602preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -112,7 +112,7 @@ export interface ManagedClusterSnapshotArgs {
     /**
      * CreationData to be used to specify the source resource ID to create this snapshot.
      */
-    creationData?: pulumi.Input<types.inputs.containerservice.v20230602preview.CreationDataArgs>;
+    creationData?: pulumi.Input<types.inputs.CreationDataArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -128,7 +128,7 @@ export interface ManagedClusterSnapshotArgs {
     /**
      * The type of a snapshot. The default is NodePool.
      */
-    snapshotType?: pulumi.Input<string | types.enums.v20230602preview.SnapshotType>;
+    snapshotType?: pulumi.Input<string | types.enums.SnapshotType>;
     /**
      * Resource tags.
      */

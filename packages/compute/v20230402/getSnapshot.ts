@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets information about a snapshot.
  */
@@ -35,11 +35,11 @@ export interface GetSnapshotResult {
     /**
      * Indicates the error details if the background copy of a resource created via the CopyStart operation fails.
      */
-    readonly copyCompletionError?: types.outputs.compute.v20230402.CopyCompletionErrorResponse;
+    readonly copyCompletionError?: types.outputs.CopyCompletionErrorResponse;
     /**
      * Disk source information. CreationData information cannot be changed after the disk has been created.
      */
-    readonly creationData: types.outputs.compute.v20230402.CreationDataResponse;
+    readonly creationData: types.outputs.CreationDataResponse;
     /**
      * Additional authentication requirements when exporting or uploading to a disk or snapshot.
      */
@@ -63,15 +63,15 @@ export interface GetSnapshotResult {
     /**
      * Encryption property can be used to encrypt data at rest with customer managed keys or platform managed keys.
      */
-    readonly encryption?: types.outputs.compute.v20230402.EncryptionResponse;
+    readonly encryption?: types.outputs.EncryptionResponse;
     /**
      * Encryption settings collection used be Azure Disk Encryption, can contain multiple encryption settings per disk or snapshot.
      */
-    readonly encryptionSettingsCollection?: types.outputs.compute.v20230402.EncryptionSettingsCollectionResponse;
+    readonly encryptionSettingsCollection?: types.outputs.EncryptionSettingsCollectionResponse;
     /**
      * The extended location where the snapshot will be created. Extended location cannot be changed.
      */
-    readonly extendedLocation?: types.outputs.compute.v20230402.ExtendedLocationResponse;
+    readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
     /**
      * The hypervisor generation of the Virtual Machine. Applicable to OS disks only.
      */
@@ -119,19 +119,19 @@ export interface GetSnapshotResult {
     /**
      * Purchase plan information for the image from which the source disk for the snapshot was originally created.
      */
-    readonly purchasePlan?: types.outputs.compute.v20230402.PurchasePlanResponse;
+    readonly purchasePlan?: types.outputs.PurchasePlanResponse;
     /**
      * Contains the security related information for the resource.
      */
-    readonly securityProfile?: types.outputs.compute.v20230402.DiskSecurityProfileResponse;
+    readonly securityProfile?: types.outputs.DiskSecurityProfileResponse;
     /**
      * The snapshots sku name. Can be Standard_LRS, Premium_LRS, or Standard_ZRS. This is an optional parameter for incremental snapshot and the default behavior is the SKU will be set to the same sku as the previous snapshot
      */
-    readonly sku?: types.outputs.compute.v20230402.SnapshotSkuResponse;
+    readonly sku?: types.outputs.SnapshotSkuResponse;
     /**
      * List of supported capabilities for the image from which the source disk from the snapshot was originally created.
      */
-    readonly supportedCapabilities?: types.outputs.compute.v20230402.SupportedCapabilitiesResponse;
+    readonly supportedCapabilities?: types.outputs.SupportedCapabilitiesResponse;
     /**
      * Indicates the OS on a snapshot supports hibernation.
      */

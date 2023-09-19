@@ -75,7 +75,7 @@ export class ConnectorMapping extends pulumi.CustomResource {
     /**
      * The properties of the mapping.
      */
-    public readonly mappingProperties!: pulumi.Output<types.outputs.customerinsights.ConnectorMappingPropertiesResponse>;
+    public readonly mappingProperties!: pulumi.Output<types.outputs.ConnectorMappingPropertiesResponse>;
     /**
      * Resource name.
      */
@@ -215,7 +215,7 @@ export interface ConnectorMappingArgs {
     /**
      * The properties of the mapping.
      */
-    mappingProperties: pulumi.Input<types.inputs.customerinsights.ConnectorMappingPropertiesArgs>;
+    mappingProperties: pulumi.Input<types.inputs.ConnectorMappingPropertiesArgs>;
     /**
      * The name of the resource group.
      */

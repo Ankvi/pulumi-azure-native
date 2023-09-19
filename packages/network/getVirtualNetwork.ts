@@ -37,19 +37,19 @@ export interface GetVirtualNetworkResult {
     /**
      * The AddressSpace that contains an array of IP address ranges that can be used by subnets.
      */
-    readonly addressSpace?: types.outputs.network.AddressSpaceResponse;
+    readonly addressSpace?: types.outputs.AddressSpaceResponse;
     /**
      * Bgp Communities sent over ExpressRoute with each route corresponding to a prefix in this VNET.
      */
-    readonly bgpCommunities?: types.outputs.network.VirtualNetworkBgpCommunitiesResponse;
+    readonly bgpCommunities?: types.outputs.VirtualNetworkBgpCommunitiesResponse;
     /**
      * The DDoS protection plan associated with the virtual network.
      */
-    readonly ddosProtectionPlan?: types.outputs.network.SubResourceResponse;
+    readonly ddosProtectionPlan?: types.outputs.SubResourceResponse;
     /**
      * The dhcpOptions that contains an array of DNS servers available to VMs deployed in the virtual network.
      */
-    readonly dhcpOptions?: types.outputs.network.DhcpOptionsResponse;
+    readonly dhcpOptions?: types.outputs.DhcpOptionsResponse;
     /**
      * Indicates if DDoS protection is enabled for all the protected resources in the virtual network. It requires a DDoS protection plan associated with the resource.
      */
@@ -61,7 +61,7 @@ export interface GetVirtualNetworkResult {
     /**
      * Indicates if encryption is enabled on virtual network and if VM without encryption is allowed in encrypted VNet.
      */
-    readonly encryption?: types.outputs.network.VirtualNetworkEncryptionResponse;
+    readonly encryption?: types.outputs.VirtualNetworkEncryptionResponse;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -69,11 +69,11 @@ export interface GetVirtualNetworkResult {
     /**
      * The extended location of the virtual network.
      */
-    readonly extendedLocation?: types.outputs.network.ExtendedLocationResponse;
+    readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
     /**
      * A collection of references to flow log resources.
      */
-    readonly flowLogs: types.outputs.network.FlowLogResponse[];
+    readonly flowLogs: types.outputs.FlowLogResponse[];
     /**
      * The FlowTimeout value (in minutes) for the Virtual Network
      */
@@ -85,7 +85,7 @@ export interface GetVirtualNetworkResult {
     /**
      * Array of IpAllocation which reference this VNET.
      */
-    readonly ipAllocations?: types.outputs.network.SubResourceResponse[];
+    readonly ipAllocations?: types.outputs.SubResourceResponse[];
     /**
      * Resource location.
      */
@@ -105,7 +105,7 @@ export interface GetVirtualNetworkResult {
     /**
      * A list of subnets in a Virtual Network.
      */
-    readonly subnets?: types.outputs.network.SubnetResponse[];
+    readonly subnets?: types.outputs.SubnetResponse[];
     /**
      * Resource tags.
      */
@@ -117,7 +117,7 @@ export interface GetVirtualNetworkResult {
     /**
      * A list of peerings in a Virtual Network.
      */
-    readonly virtualNetworkPeerings?: types.outputs.network.VirtualNetworkPeeringResponse[];
+    readonly virtualNetworkPeerings?: types.outputs.VirtualNetworkPeeringResponse[];
 }
 /**
  * Gets the specified virtual network by resource group.

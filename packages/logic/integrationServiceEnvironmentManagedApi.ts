@@ -39,11 +39,11 @@ export class IntegrationServiceEnvironmentManagedApi extends pulumi.CustomResour
     /**
      * The api definitions.
      */
-    public /*out*/ readonly apiDefinitions!: pulumi.Output<types.outputs.logic.ApiResourceDefinitionsResponse>;
+    public /*out*/ readonly apiDefinitions!: pulumi.Output<types.outputs.ApiResourceDefinitionsResponse>;
     /**
      * The backend service.
      */
-    public /*out*/ readonly backendService!: pulumi.Output<types.outputs.logic.ApiResourceBackendServiceResponse>;
+    public /*out*/ readonly backendService!: pulumi.Output<types.outputs.ApiResourceBackendServiceResponse>;
     /**
      * The capabilities.
      */
@@ -59,15 +59,15 @@ export class IntegrationServiceEnvironmentManagedApi extends pulumi.CustomResour
     /**
      * The integration service environment managed api deployment parameters.
      */
-    public readonly deploymentParameters!: pulumi.Output<types.outputs.logic.IntegrationServiceEnvironmentManagedApiDeploymentParametersResponse | undefined>;
+    public readonly deploymentParameters!: pulumi.Output<types.outputs.IntegrationServiceEnvironmentManagedApiDeploymentParametersResponse | undefined>;
     /**
      * The api general information.
      */
-    public /*out*/ readonly generalInformation!: pulumi.Output<types.outputs.logic.ApiResourceGeneralInformationResponse>;
+    public /*out*/ readonly generalInformation!: pulumi.Output<types.outputs.ApiResourceGeneralInformationResponse>;
     /**
      * The integration service environment reference.
      */
-    public readonly integrationServiceEnvironment!: pulumi.Output<types.outputs.logic.ResourceReferenceResponse | undefined>;
+    public readonly integrationServiceEnvironment!: pulumi.Output<types.outputs.ResourceReferenceResponse | undefined>;
     /**
      * The resource location.
      */
@@ -75,7 +75,7 @@ export class IntegrationServiceEnvironmentManagedApi extends pulumi.CustomResour
     /**
      * The metadata.
      */
-    public /*out*/ readonly metadata!: pulumi.Output<types.outputs.logic.ApiResourceMetadataResponse>;
+    public /*out*/ readonly metadata!: pulumi.Output<types.outputs.ApiResourceMetadataResponse>;
     /**
      * Gets the resource name.
      */
@@ -83,7 +83,7 @@ export class IntegrationServiceEnvironmentManagedApi extends pulumi.CustomResour
     /**
      * The policies for the API.
      */
-    public /*out*/ readonly policies!: pulumi.Output<types.outputs.logic.ApiResourcePoliciesResponse>;
+    public /*out*/ readonly policies!: pulumi.Output<types.outputs.ApiResourcePoliciesResponse>;
     /**
      * The provisioning state.
      */
@@ -175,11 +175,11 @@ export interface IntegrationServiceEnvironmentManagedApiArgs {
     /**
      * The integration service environment managed api deployment parameters.
      */
-    deploymentParameters?: pulumi.Input<types.inputs.logic.IntegrationServiceEnvironmentManagedApiDeploymentParametersArgs>;
+    deploymentParameters?: pulumi.Input<types.inputs.IntegrationServiceEnvironmentManagedApiDeploymentParametersArgs>;
     /**
      * The integration service environment reference.
      */
-    integrationServiceEnvironment?: pulumi.Input<types.inputs.logic.ResourceReferenceArgs>;
+    integrationServiceEnvironment?: pulumi.Input<types.inputs.ResourceReferenceArgs>;
     /**
      * The integration service environment name.
      */

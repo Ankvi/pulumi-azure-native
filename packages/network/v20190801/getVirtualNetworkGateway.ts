@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the specified virtual network gateway by resource group.
  */
@@ -35,11 +35,11 @@ export interface GetVirtualNetworkGatewayResult {
     /**
      * Virtual network gateway's BGP speaker settings.
      */
-    readonly bgpSettings?: types.outputs.network.v20190801.BgpSettingsResponse;
+    readonly bgpSettings?: types.outputs.BgpSettingsResponse;
     /**
      * The reference of the address space resource which represents the custom routes address space specified by the customer for virtual network gateway and VpnClient.
      */
-    readonly customRoutes?: types.outputs.network.v20190801.AddressSpaceResponse;
+    readonly customRoutes?: types.outputs.AddressSpaceResponse;
     /**
      * Whether BGP is enabled for this virtual network gateway or not.
      */
@@ -55,7 +55,7 @@ export interface GetVirtualNetworkGatewayResult {
     /**
      * The reference of the LocalNetworkGateway resource which represents local network site having default routes. Assign Null value in case of removing existing default site setting.
      */
-    readonly gatewayDefaultSite?: types.outputs.network.v20190801.SubResourceResponse;
+    readonly gatewayDefaultSite?: types.outputs.SubResourceResponse;
     /**
      * The type of this virtual network gateway.
      */
@@ -71,7 +71,7 @@ export interface GetVirtualNetworkGatewayResult {
     /**
      * IP configurations for virtual network gateway.
      */
-    readonly ipConfigurations?: types.outputs.network.v20190801.VirtualNetworkGatewayIPConfigurationResponse[];
+    readonly ipConfigurations?: types.outputs.VirtualNetworkGatewayIPConfigurationResponse[];
     /**
      * Resource location.
      */
@@ -91,7 +91,7 @@ export interface GetVirtualNetworkGatewayResult {
     /**
      * The reference of the VirtualNetworkGatewaySku resource which represents the SKU selected for Virtual network gateway.
      */
-    readonly sku?: types.outputs.network.v20190801.VirtualNetworkGatewaySkuResponse;
+    readonly sku?: types.outputs.VirtualNetworkGatewaySkuResponse;
     /**
      * Resource tags.
      */
@@ -103,7 +103,7 @@ export interface GetVirtualNetworkGatewayResult {
     /**
      * The reference of the VpnClientConfiguration resource which represents the P2S VpnClient configurations.
      */
-    readonly vpnClientConfiguration?: types.outputs.network.v20190801.VpnClientConfigurationResponse;
+    readonly vpnClientConfiguration?: types.outputs.VpnClientConfigurationResponse;
     /**
      * The generation for this VirtualNetworkGateway. Must be None if gatewayType is not VPN.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets information about the specified SIM.
  */
@@ -60,7 +60,7 @@ export interface GetSimResult {
     /**
      * The SIM policy used by this SIM. The SIM policy must be in the same location as the SIM.
      */
-    readonly simPolicy?: types.outputs.mobilenetwork.v20221101.SimPolicyResourceIdResponse;
+    readonly simPolicy?: types.outputs.SimPolicyResourceIdResponse;
     /**
      * The state of the SIM resource.
      */
@@ -72,11 +72,11 @@ export interface GetSimResult {
     /**
      * A list of static IP addresses assigned to this SIM. Each address is assigned at a defined network scope, made up of {attached data network, slice}.
      */
-    readonly staticIpConfiguration?: types.outputs.mobilenetwork.v20221101.SimStaticIpPropertiesResponse[];
+    readonly staticIpConfiguration?: types.outputs.SimStaticIpPropertiesResponse[];
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.mobilenetwork.v20221101.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

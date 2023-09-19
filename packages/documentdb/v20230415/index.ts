@@ -238,7 +238,7 @@ utilities.lazyLoad(exports, ["TableResourceTable"], () => require("./tableResour
 
 
 // Export enums:
-export * from "../types/enums/v20230415";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

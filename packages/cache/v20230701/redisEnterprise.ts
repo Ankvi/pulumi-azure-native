@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Describes the RedisEnterprise cluster
  */
@@ -50,7 +50,7 @@ export class RedisEnterprise extends pulumi.CustomResource {
     /**
      * List of private endpoint connections associated with the specified RedisEnterprise cluster
      */
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.cache.v20230701.PrivateEndpointConnectionResponse[]>;
+    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[]>;
     /**
      * Current provisioning status of the cluster
      */
@@ -66,7 +66,7 @@ export class RedisEnterprise extends pulumi.CustomResource {
     /**
      * The SKU to create, which affects price, performance, and features.
      */
-    public readonly sku!: pulumi.Output<types.outputs.cache.v20230701.EnterpriseSkuResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.EnterpriseSkuResponse>;
     /**
      * Resource tags.
      */
@@ -147,7 +147,7 @@ export interface RedisEnterpriseArgs {
     /**
      * The minimum TLS version for the cluster to support, e.g. '1.2'
      */
-    minimumTlsVersion?: pulumi.Input<string | types.enums.v20230701.TlsVersion>;
+    minimumTlsVersion?: pulumi.Input<string | types.enums.TlsVersion>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -155,7 +155,7 @@ export interface RedisEnterpriseArgs {
     /**
      * The SKU to create, which affects price, performance, and features.
      */
-    sku: pulumi.Input<types.inputs.cache.v20230701.EnterpriseSkuArgs>;
+    sku: pulumi.Input<types.inputs.EnterpriseSkuArgs>;
     /**
      * Resource tags.
      */

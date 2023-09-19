@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns the description for the specified namespace.
  */
@@ -83,7 +83,7 @@ export interface GetNamespaceResult {
     /**
      * The sku of the created namespace
      */
-    readonly sku?: types.outputs.notificationhubs.v20170401.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * Status of the namespace. It can be any of these values:1 = Created/Active2 = Creating3 = Suspended4 = Deleting
      */

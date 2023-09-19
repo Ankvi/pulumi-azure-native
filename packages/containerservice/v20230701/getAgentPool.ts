@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Agent Pool.
  */
@@ -44,7 +44,7 @@ export interface GetAgentPoolResult {
     /**
      * CreationData to be used to specify the source Snapshot ID if the node pool will be created/upgraded using a snapshot.
      */
-    readonly creationData?: types.outputs.containerservice.v20230701.CreationDataResponse;
+    readonly creationData?: types.outputs.CreationDataResponse;
     /**
      * If orchestratorVersion is a fully specified version <major.minor.patch>, this field will be exactly equal to it. If orchestratorVersion is <major.minor>, this field will contain the full <major.minor.patch> version being used.
      */
@@ -84,7 +84,7 @@ export interface GetAgentPoolResult {
     /**
      * The Kubelet configuration on the agent pool nodes.
      */
-    readonly kubeletConfig?: types.outputs.containerservice.v20230701.KubeletConfigResponse;
+    readonly kubeletConfig?: types.outputs.KubeletConfigResponse;
     /**
      * Determines the placement of emptyDir volumes, container runtime data root, and Kubelet ephemeral storage.
      */
@@ -92,7 +92,7 @@ export interface GetAgentPoolResult {
     /**
      * The OS configuration of Linux agent nodes.
      */
-    readonly linuxOSConfig?: types.outputs.containerservice.v20230701.LinuxOSConfigResponse;
+    readonly linuxOSConfig?: types.outputs.LinuxOSConfigResponse;
     /**
      * The maximum number of nodes for auto-scaling
      */
@@ -156,7 +156,7 @@ export interface GetAgentPoolResult {
     /**
      * When an Agent Pool is first created it is initially Running. The Agent Pool can be stopped by setting this field to Stopped. A stopped Agent Pool stops all of its VMs and does not accrue billing charges. An Agent Pool can only be stopped if it is Running and provisioning state is Succeeded
      */
-    readonly powerState?: types.outputs.containerservice.v20230701.PowerStateResponse;
+    readonly powerState?: types.outputs.PowerStateResponse;
     /**
      * The current deployment or provisioning state.
      */
@@ -192,7 +192,7 @@ export interface GetAgentPoolResult {
     /**
      * Settings for upgrading the agentpool
      */
-    readonly upgradeSettings?: types.outputs.containerservice.v20230701.AgentPoolUpgradeSettingsResponse;
+    readonly upgradeSettings?: types.outputs.AgentPoolUpgradeSettingsResponse;
     /**
      * VM size availability varies by region. If a node contains insufficient compute resources (memory, cpu, etc) pods might fail to run correctly. For more details on restricted VM sizes, see: https://docs.microsoft.com/azure/aks/quotas-skus-regions
      */

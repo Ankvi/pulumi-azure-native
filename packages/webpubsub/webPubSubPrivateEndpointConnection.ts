@@ -43,11 +43,11 @@ export class WebPubSubPrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * Private endpoint
      */
-    public readonly privateEndpoint!: pulumi.Output<types.outputs.webpubsub.PrivateEndpointResponse | undefined>;
+    public readonly privateEndpoint!: pulumi.Output<types.outputs.PrivateEndpointResponse | undefined>;
     /**
      * Connection state of the private endpoint connection
      */
-    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.webpubsub.PrivateLinkServiceConnectionStateResponse | undefined>;
+    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.PrivateLinkServiceConnectionStateResponse | undefined>;
     /**
      * Provisioning state of the resource.
      */
@@ -55,7 +55,7 @@ export class WebPubSubPrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.webpubsub.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource - e.g. "Microsoft.SignalRService/SignalR"
      */
@@ -111,7 +111,7 @@ export interface WebPubSubPrivateEndpointConnectionArgs {
     /**
      * Private endpoint
      */
-    privateEndpoint?: pulumi.Input<types.inputs.webpubsub.PrivateEndpointArgs>;
+    privateEndpoint?: pulumi.Input<types.inputs.PrivateEndpointArgs>;
     /**
      * The name of the private endpoint connection
      */
@@ -119,7 +119,7 @@ export interface WebPubSubPrivateEndpointConnectionArgs {
     /**
      * Connection state of the private endpoint connection
      */
-    privateLinkServiceConnectionState?: pulumi.Input<types.inputs.webpubsub.PrivateLinkServiceConnectionStateArgs>;
+    privateLinkServiceConnectionState?: pulumi.Input<types.inputs.PrivateLinkServiceConnectionStateArgs>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the specified NSP access rule by name.
  */
@@ -69,7 +69,7 @@ export interface GetNspAccessRuleResult {
     /**
      * Rule specified by the perimeter id.
      */
-    readonly networkSecurityPerimeters: types.outputs.network.v20210201preview.PerimeterBasedAccessRuleResponse[];
+    readonly networkSecurityPerimeters: types.outputs.PerimeterBasedAccessRuleResponse[];
     /**
      * Outbound rules phone number format.
      */
@@ -81,7 +81,7 @@ export interface GetNspAccessRuleResult {
     /**
      * List of subscription ids
      */
-    readonly subscriptions?: types.outputs.network.v20210201preview.SubscriptionIdResponse[];
+    readonly subscriptions?: types.outputs.SubscriptionIdResponse[];
     /**
      * Resource tags.
      */

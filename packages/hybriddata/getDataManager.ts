@@ -50,7 +50,7 @@ export interface GetDataManagerResult {
     /**
      * The sku type.
      */
-    readonly sku?: types.outputs.hybriddata.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * The list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource
      * (across resource groups).

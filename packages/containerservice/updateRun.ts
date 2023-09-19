@@ -39,7 +39,7 @@ export class UpdateRun extends pulumi.CustomResource {
     /**
      * The update to be applied to all clusters in the UpdateRun. The managedClusterUpdate can be modified until the run is started.
      */
-    public readonly managedClusterUpdate!: pulumi.Output<types.outputs.containerservice.ManagedClusterUpdateResponse>;
+    public readonly managedClusterUpdate!: pulumi.Output<types.outputs.ManagedClusterUpdateResponse>;
     /**
      * The name of the resource
      */
@@ -51,17 +51,17 @@ export class UpdateRun extends pulumi.CustomResource {
     /**
      * The status of the UpdateRun.
      */
-    public /*out*/ readonly status!: pulumi.Output<types.outputs.containerservice.UpdateRunStatusResponse>;
+    public /*out*/ readonly status!: pulumi.Output<types.outputs.UpdateRunStatusResponse>;
     /**
      * The strategy defines the order in which the clusters will be updated. 
      * If not set, all members will be updated sequentially. The UpdateRun status will show a single UpdateStage and a single UpdateGroup targeting all members.
      * The strategy of the UpdateRun can be modified until the run is started.
      */
-    public readonly strategy!: pulumi.Output<types.outputs.containerservice.UpdateRunStrategyResponse | undefined>;
+    public readonly strategy!: pulumi.Output<types.outputs.UpdateRunStrategyResponse | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.containerservice.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -126,7 +126,7 @@ export interface UpdateRunArgs {
     /**
      * The update to be applied to all clusters in the UpdateRun. The managedClusterUpdate can be modified until the run is started.
      */
-    managedClusterUpdate: pulumi.Input<types.inputs.containerservice.ManagedClusterUpdateArgs>;
+    managedClusterUpdate: pulumi.Input<types.inputs.ManagedClusterUpdateArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -136,7 +136,7 @@ export interface UpdateRunArgs {
      * If not set, all members will be updated sequentially. The UpdateRun status will show a single UpdateStage and a single UpdateGroup targeting all members.
      * The strategy of the UpdateRun can be modified until the run is started.
      */
-    strategy?: pulumi.Input<types.inputs.containerservice.UpdateRunStrategyArgs>;
+    strategy?: pulumi.Input<types.inputs.UpdateRunStrategyArgs>;
     /**
      * The name of the UpdateRun resource.
      */

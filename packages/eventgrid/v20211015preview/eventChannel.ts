@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Event Channel.
  */
@@ -34,7 +34,7 @@ export class EventChannel extends pulumi.CustomResource {
     /**
      * Represents the destination of an event channel.
      */
-    public readonly destination!: pulumi.Output<types.outputs.eventgrid.v20211015preview.EventChannelDestinationResponse | undefined>;
+    public readonly destination!: pulumi.Output<types.outputs.EventChannelDestinationResponse | undefined>;
     /**
      * Expiration time of the event channel. If this timer expires while the corresponding partner topic is never activated,
      * the event channel and corresponding partner topic are deleted.
@@ -43,7 +43,7 @@ export class EventChannel extends pulumi.CustomResource {
     /**
      * Information about the filter for the event channel.
      */
-    public readonly filter!: pulumi.Output<types.outputs.eventgrid.v20211015preview.EventChannelFilterResponse | undefined>;
+    public readonly filter!: pulumi.Output<types.outputs.EventChannelFilterResponse | undefined>;
     /**
      * Name of the resource.
      */
@@ -64,11 +64,11 @@ export class EventChannel extends pulumi.CustomResource {
     /**
      * Source of the event channel. This represents a unique resource in the partner's resource model.
      */
-    public readonly source!: pulumi.Output<types.outputs.eventgrid.v20211015preview.EventChannelSourceResponse | undefined>;
+    public readonly source!: pulumi.Output<types.outputs.EventChannelSourceResponse | undefined>;
     /**
      * The system metadata relating to Event Channel resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.eventgrid.v20211015preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Type of the resource.
      */
@@ -94,7 +94,7 @@ export class EventChannel extends pulumi.CustomResource {
             resourceInputs["destination"] = args ? args.destination : undefined;
             resourceInputs["eventChannelName"] = args ? args.eventChannelName : undefined;
             resourceInputs["expirationTimeIfNotActivatedUtc"] = args ? args.expirationTimeIfNotActivatedUtc : undefined;
-            resourceInputs["filter"] = args ? (args.filter ? pulumi.output(args.filter).apply(types.inputs.eventgrid.v20211015preview.eventChannelFilterArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["filter"] = args ? (args.filter ? pulumi.output(args.filter).apply(types.inputs.eventChannelFilterArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["partnerNamespaceName"] = args ? args.partnerNamespaceName : undefined;
             resourceInputs["partnerTopicFriendlyDescription"] = args ? args.partnerTopicFriendlyDescription : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
@@ -130,7 +130,7 @@ export interface EventChannelArgs {
     /**
      * Represents the destination of an event channel.
      */
-    destination?: pulumi.Input<types.inputs.eventgrid.v20211015preview.EventChannelDestinationArgs>;
+    destination?: pulumi.Input<types.inputs.EventChannelDestinationArgs>;
     /**
      * Name of the event channel.
      */
@@ -143,7 +143,7 @@ export interface EventChannelArgs {
     /**
      * Information about the filter for the event channel.
      */
-    filter?: pulumi.Input<types.inputs.eventgrid.v20211015preview.EventChannelFilterArgs>;
+    filter?: pulumi.Input<types.inputs.EventChannelFilterArgs>;
     /**
      * Name of the partner namespace.
      */
@@ -160,5 +160,5 @@ export interface EventChannelArgs {
     /**
      * Source of the event channel. This represents a unique resource in the partner's resource model.
      */
-    source?: pulumi.Input<types.inputs.eventgrid.v20211015preview.EventChannelSourceArgs>;
+    source?: pulumi.Input<types.inputs.EventChannelSourceArgs>;
 }

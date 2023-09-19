@@ -39,11 +39,11 @@ export class ManagedNetworkSettingsRule extends pulumi.CustomResource {
     /**
      * Outbound Rule for the managed network of a machine learning workspace.
      */
-    public readonly properties!: pulumi.Output<types.outputs.machinelearningservices.FqdnOutboundRuleResponse | types.outputs.machinelearningservices.PrivateEndpointOutboundRuleResponse | types.outputs.machinelearningservices.ServiceTagOutboundRuleResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.FqdnOutboundRuleResponse | types.outputs.PrivateEndpointOutboundRuleResponse | types.outputs.ServiceTagOutboundRuleResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.machinelearningservices.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -96,7 +96,7 @@ export interface ManagedNetworkSettingsRuleArgs {
     /**
      * Outbound Rule for the managed network of a machine learning workspace.
      */
-    properties: pulumi.Input<types.inputs.machinelearningservices.FqdnOutboundRuleArgs | types.inputs.machinelearningservices.PrivateEndpointOutboundRuleArgs | types.inputs.machinelearningservices.ServiceTagOutboundRuleArgs>;
+    properties: pulumi.Input<types.inputs.FqdnOutboundRuleArgs | types.inputs.PrivateEndpointOutboundRuleArgs | types.inputs.ServiceTagOutboundRuleArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

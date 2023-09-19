@@ -18,7 +18,7 @@ utilities.lazyLoad(exports, ["Schema"], () => require("./schema"));
 
 
 // Export enums:
-export * from "../types/enums/v20210401preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

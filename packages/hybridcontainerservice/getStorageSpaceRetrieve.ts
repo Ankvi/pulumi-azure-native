@@ -29,7 +29,7 @@ export interface GetStorageSpaceRetrieveArgs {
  * The storageSpaces resource definition.
  */
 export interface GetStorageSpaceRetrieveResult {
-    readonly extendedLocation?: types.outputs.hybridcontainerservice.StorageSpacesResponseExtendedLocation;
+    readonly extendedLocation?: types.outputs.StorageSpacesResponseExtendedLocation;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -45,11 +45,11 @@ export interface GetStorageSpaceRetrieveResult {
     /**
      * HybridAKSStorageSpec defines the desired state of HybridAKSStorage
      */
-    readonly properties: types.outputs.hybridcontainerservice.StorageSpacesPropertiesResponse;
+    readonly properties: types.outputs.StorageSpacesPropertiesResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.hybridcontainerservice.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the specified Firewall Policy.
  */
@@ -36,15 +36,15 @@ export interface GetFirewallPolicyResult {
     /**
      * The parent firewall policy from which rules are inherited.
      */
-    readonly basePolicy?: types.outputs.network.v20230201.SubResourceResponse;
+    readonly basePolicy?: types.outputs.SubResourceResponse;
     /**
      * List of references to Child Firewall Policies.
      */
-    readonly childPolicies: types.outputs.network.v20230201.SubResourceResponse[];
+    readonly childPolicies: types.outputs.SubResourceResponse[];
     /**
      * DNS Proxy Settings definition.
      */
-    readonly dnsSettings?: types.outputs.network.v20230201.DnsSettingsResponse;
+    readonly dnsSettings?: types.outputs.DnsSettingsResponse;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -52,11 +52,11 @@ export interface GetFirewallPolicyResult {
     /**
      * Explicit Proxy Settings definition.
      */
-    readonly explicitProxy?: types.outputs.network.v20230201.ExplicitProxyResponse;
+    readonly explicitProxy?: types.outputs.ExplicitProxyResponse;
     /**
      * List of references to Azure Firewalls that this Firewall Policy is associated with.
      */
-    readonly firewalls: types.outputs.network.v20230201.SubResourceResponse[];
+    readonly firewalls: types.outputs.SubResourceResponse[];
     /**
      * Resource ID.
      */
@@ -64,15 +64,15 @@ export interface GetFirewallPolicyResult {
     /**
      * The identity of the firewall policy.
      */
-    readonly identity?: types.outputs.network.v20230201.ManagedServiceIdentityResponse;
+    readonly identity?: types.outputs.ManagedServiceIdentityResponse;
     /**
      * Insights on Firewall Policy.
      */
-    readonly insights?: types.outputs.network.v20230201.FirewallPolicyInsightsResponse;
+    readonly insights?: types.outputs.FirewallPolicyInsightsResponse;
     /**
      * The configuration for Intrusion detection.
      */
-    readonly intrusionDetection?: types.outputs.network.v20230201.FirewallPolicyIntrusionDetectionResponse;
+    readonly intrusionDetection?: types.outputs.FirewallPolicyIntrusionDetectionResponse;
     /**
      * Resource location.
      */
@@ -88,19 +88,19 @@ export interface GetFirewallPolicyResult {
     /**
      * List of references to FirewallPolicyRuleCollectionGroups.
      */
-    readonly ruleCollectionGroups: types.outputs.network.v20230201.SubResourceResponse[];
+    readonly ruleCollectionGroups: types.outputs.SubResourceResponse[];
     /**
      * The Firewall Policy SKU.
      */
-    readonly sku?: types.outputs.network.v20230201.FirewallPolicySkuResponse;
+    readonly sku?: types.outputs.FirewallPolicySkuResponse;
     /**
      * The private IP addresses/IP ranges to which traffic will not be SNAT.
      */
-    readonly snat?: types.outputs.network.v20230201.FirewallPolicySNATResponse;
+    readonly snat?: types.outputs.FirewallPolicySNATResponse;
     /**
      * SQL Settings definition.
      */
-    readonly sql?: types.outputs.network.v20230201.FirewallPolicySQLResponse;
+    readonly sql?: types.outputs.FirewallPolicySQLResponse;
     /**
      * Resource tags.
      */
@@ -112,11 +112,11 @@ export interface GetFirewallPolicyResult {
     /**
      * ThreatIntel Whitelist for Firewall Policy.
      */
-    readonly threatIntelWhitelist?: types.outputs.network.v20230201.FirewallPolicyThreatIntelWhitelistResponse;
+    readonly threatIntelWhitelist?: types.outputs.FirewallPolicyThreatIntelWhitelistResponse;
     /**
      * TLS Configuration definition.
      */
-    readonly transportSecurity?: types.outputs.network.v20230201.FirewallPolicyTransportSecurityResponse;
+    readonly transportSecurity?: types.outputs.FirewallPolicyTransportSecurityResponse;
     /**
      * Resource type.
      */

@@ -49,11 +49,11 @@ export interface GetConfigurationProfileHCIAssignmentResult {
     /**
      * Properties of the configuration profile assignment.
      */
-    readonly properties: types.outputs.automanage.ConfigurationProfileAssignmentPropertiesResponse;
+    readonly properties: types.outputs.ConfigurationProfileAssignmentPropertiesResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.automanage.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

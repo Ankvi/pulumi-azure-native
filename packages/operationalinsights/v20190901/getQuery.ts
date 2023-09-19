@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a specific Log Analytics Query defined within a Log Analytics QueryPack.
  */
@@ -64,11 +64,11 @@ export interface GetQueryResult {
     /**
      * The related metadata items for the function.
      */
-    readonly related?: types.outputs.operationalinsights.v20190901.LogAnalyticsQueryPackQueryPropertiesResponseRelated;
+    readonly related?: types.outputs.LogAnalyticsQueryPackQueryPropertiesResponseRelated;
     /**
      * Read only system data
      */
-    readonly systemData: types.outputs.operationalinsights.v20190901.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Tags associated with the query.
      */

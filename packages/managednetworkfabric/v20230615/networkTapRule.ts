@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The NetworkTapRule resource definition.
  */
@@ -50,7 +50,7 @@ export class NetworkTapRule extends pulumi.CustomResource {
     /**
      * List of dynamic match configurations.
      */
-    public readonly dynamicMatchConfigurations!: pulumi.Output<types.outputs.managednetworkfabric.v20230615.CommonDynamicMatchConfigurationResponse[] | undefined>;
+    public readonly dynamicMatchConfigurations!: pulumi.Output<types.outputs.CommonDynamicMatchConfigurationResponse[] | undefined>;
     /**
      * The last sync timestamp.
      */
@@ -62,7 +62,7 @@ export class NetworkTapRule extends pulumi.CustomResource {
     /**
      * List of match configurations.
      */
-    public readonly matchConfigurations!: pulumi.Output<types.outputs.managednetworkfabric.v20230615.NetworkTapRuleMatchConfigurationResponse[] | undefined>;
+    public readonly matchConfigurations!: pulumi.Output<types.outputs.NetworkTapRuleMatchConfigurationResponse[] | undefined>;
     /**
      * The name of the resource
      */
@@ -82,7 +82,7 @@ export class NetworkTapRule extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.managednetworkfabric.v20230615.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -167,11 +167,11 @@ export interface NetworkTapRuleArgs {
     /**
      * Input method to configure Network Tap Rule.
      */
-    configurationType: pulumi.Input<string | types.enums.v20230615.ConfigurationType>;
+    configurationType: pulumi.Input<string | types.enums.ConfigurationType>;
     /**
      * List of dynamic match configurations.
      */
-    dynamicMatchConfigurations?: pulumi.Input<pulumi.Input<types.inputs.managednetworkfabric.v20230615.CommonDynamicMatchConfigurationArgs>[]>;
+    dynamicMatchConfigurations?: pulumi.Input<pulumi.Input<types.inputs.CommonDynamicMatchConfigurationArgs>[]>;
     /**
      * The geo-location where the resource lives
      */
@@ -179,7 +179,7 @@ export interface NetworkTapRuleArgs {
     /**
      * List of match configurations.
      */
-    matchConfigurations?: pulumi.Input<pulumi.Input<types.inputs.managednetworkfabric.v20230615.NetworkTapRuleMatchConfigurationArgs>[]>;
+    matchConfigurations?: pulumi.Input<pulumi.Input<types.inputs.NetworkTapRuleMatchConfigurationArgs>[]>;
     /**
      * Name of the Network Tap Rule.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the details of the API Operation specified by its identifier.
  */
@@ -65,15 +65,15 @@ export interface GetApiOperationResult {
     /**
      * An entity containing request details.
      */
-    readonly request?: types.outputs.apimanagement.v20230301preview.RequestContractResponse;
+    readonly request?: types.outputs.RequestContractResponse;
     /**
      * Array of Operation responses.
      */
-    readonly responses?: types.outputs.apimanagement.v20230301preview.ResponseContractResponse[];
+    readonly responses?: types.outputs.ResponseContractResponse[];
     /**
      * Collection of URL template parameters.
      */
-    readonly templateParameters?: types.outputs.apimanagement.v20230301preview.ParameterContractResponse[];
+    readonly templateParameters?: types.outputs.ParameterContractResponse[];
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

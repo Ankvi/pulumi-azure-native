@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the environment with the specified name in the specified subscription and resource group.
  */
@@ -69,7 +69,7 @@ export interface GetGen1EnvironmentResult {
     /**
      * The list of event properties which will be used to partition data in the environment. Currently, only a single partition key property is supported.
      */
-    readonly partitionKeyProperties?: types.outputs.timeseriesinsights.v20210630preview.TimeSeriesIdPropertyResponse[];
+    readonly partitionKeyProperties?: types.outputs.TimeSeriesIdPropertyResponse[];
     /**
      * Provisioning state of the resource.
      */
@@ -77,11 +77,11 @@ export interface GetGen1EnvironmentResult {
     /**
      * The sku determines the type of environment, either Gen1 (S1 or S2) or Gen2 (L1). For Gen1 environments the sku determines the capacity of the environment, the ingress rate, and the billing rate.
      */
-    readonly sku: types.outputs.timeseriesinsights.v20210630preview.SkuResponse;
+    readonly sku: types.outputs.SkuResponse;
     /**
      * An object that represents the status of the environment, and its internal state in the Time Series Insights service.
      */
-    readonly status: types.outputs.timeseriesinsights.v20210630preview.EnvironmentStatusResponse;
+    readonly status: types.outputs.EnvironmentStatusResponse;
     /**
      * The behavior the Time Series Insights service should take when the environment's capacity has been exceeded. If "PauseIngress" is specified, new events will not be read from the event source. If "PurgeOldData" is specified, new events will continue to be read and old events will be deleted from the environment. The default behavior is PurgeOldData.
      */

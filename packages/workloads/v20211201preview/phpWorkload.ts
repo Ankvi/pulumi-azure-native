@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Php workload resource
  */
@@ -34,7 +34,7 @@ export class PhpWorkload extends pulumi.CustomResource {
     /**
      * Admin user profile used for VM and VMSS
      */
-    public readonly adminUserProfile!: pulumi.Output<types.outputs.workloads.v20211201preview.UserProfileResponse>;
+    public readonly adminUserProfile!: pulumi.Output<types.outputs.UserProfileResponse>;
     /**
      * The infra resources for PHP workload will be created in this location
      */
@@ -42,27 +42,27 @@ export class PhpWorkload extends pulumi.CustomResource {
     /**
      * Backup profile
      */
-    public readonly backupProfile!: pulumi.Output<types.outputs.workloads.v20211201preview.BackupProfileResponse | undefined>;
+    public readonly backupProfile!: pulumi.Output<types.outputs.BackupProfileResponse | undefined>;
     /**
      * Cache profile
      */
-    public readonly cacheProfile!: pulumi.Output<types.outputs.workloads.v20211201preview.CacheProfileResponse | undefined>;
+    public readonly cacheProfile!: pulumi.Output<types.outputs.CacheProfileResponse | undefined>;
     /**
      * Controller VM profile
      */
-    public readonly controllerProfile!: pulumi.Output<types.outputs.workloads.v20211201preview.NodeProfileResponse>;
+    public readonly controllerProfile!: pulumi.Output<types.outputs.NodeProfileResponse>;
     /**
      * Database profile
      */
-    public readonly databaseProfile!: pulumi.Output<types.outputs.workloads.v20211201preview.DatabaseProfileResponse>;
+    public readonly databaseProfile!: pulumi.Output<types.outputs.DatabaseProfileResponse>;
     /**
      * File share profile
      */
-    public readonly fileshareProfile!: pulumi.Output<types.outputs.workloads.v20211201preview.FileshareProfileResponse | undefined>;
+    public readonly fileshareProfile!: pulumi.Output<types.outputs.FileshareProfileResponse | undefined>;
     /**
      * Identity for the resource. Currently not supported
      */
-    public readonly identity!: pulumi.Output<types.outputs.workloads.v20211201preview.PhpWorkloadResourceResponseIdentity | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.PhpWorkloadResourceResponseIdentity | undefined>;
     /**
      * Indicates which kind of php workload this resource represent e.g WordPress
      */
@@ -74,7 +74,7 @@ export class PhpWorkload extends pulumi.CustomResource {
     /**
      * Managed resource group configuration of the workload
      */
-    public readonly managedResourceGroupConfiguration!: pulumi.Output<types.outputs.workloads.v20211201preview.ManagedRGConfigurationResponse | undefined>;
+    public readonly managedResourceGroupConfiguration!: pulumi.Output<types.outputs.ManagedRGConfigurationResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -82,11 +82,11 @@ export class PhpWorkload extends pulumi.CustomResource {
     /**
      * Network profile
      */
-    public readonly networkProfile!: pulumi.Output<types.outputs.workloads.v20211201preview.NetworkProfileResponse | undefined>;
+    public readonly networkProfile!: pulumi.Output<types.outputs.NetworkProfileResponse | undefined>;
     /**
      * PHP profile
      */
-    public readonly phpProfile!: pulumi.Output<types.outputs.workloads.v20211201preview.PhpProfileResponse | undefined>;
+    public readonly phpProfile!: pulumi.Output<types.outputs.PhpProfileResponse | undefined>;
     /**
      * Php workload resource provisioning state
      */
@@ -94,19 +94,19 @@ export class PhpWorkload extends pulumi.CustomResource {
     /**
      * Search profile
      */
-    public readonly searchProfile!: pulumi.Output<types.outputs.workloads.v20211201preview.SearchProfileResponse | undefined>;
+    public readonly searchProfile!: pulumi.Output<types.outputs.SearchProfileResponse | undefined>;
     /**
      * Site profile
      */
-    public readonly siteProfile!: pulumi.Output<types.outputs.workloads.v20211201preview.SiteProfileResponse | undefined>;
+    public readonly siteProfile!: pulumi.Output<types.outputs.SiteProfileResponse | undefined>;
     /**
      * Php workloads SKU
      */
-    public readonly sku!: pulumi.Output<types.outputs.workloads.v20211201preview.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.workloads.v20211201preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -118,7 +118,7 @@ export class PhpWorkload extends pulumi.CustomResource {
     /**
      * VMSS web nodes profile
      */
-    public readonly webNodesProfile!: pulumi.Output<types.outputs.workloads.v20211201preview.VmssNodesProfileResponse>;
+    public readonly webNodesProfile!: pulumi.Output<types.outputs.VmssNodesProfileResponse>;
 
     /**
      * Create a PhpWorkload resource with the given unique name, arguments, and options.
@@ -212,7 +212,7 @@ export interface PhpWorkloadArgs {
     /**
      * Admin user profile used for VM and VMSS
      */
-    adminUserProfile: pulumi.Input<types.inputs.workloads.v20211201preview.UserProfileArgs>;
+    adminUserProfile: pulumi.Input<types.inputs.UserProfileArgs>;
     /**
      * The infra resources for PHP workload will be created in this location
      */
@@ -220,31 +220,31 @@ export interface PhpWorkloadArgs {
     /**
      * Backup profile
      */
-    backupProfile?: pulumi.Input<types.inputs.workloads.v20211201preview.BackupProfileArgs>;
+    backupProfile?: pulumi.Input<types.inputs.BackupProfileArgs>;
     /**
      * Cache profile
      */
-    cacheProfile?: pulumi.Input<types.inputs.workloads.v20211201preview.CacheProfileArgs>;
+    cacheProfile?: pulumi.Input<types.inputs.CacheProfileArgs>;
     /**
      * Controller VM profile
      */
-    controllerProfile: pulumi.Input<types.inputs.workloads.v20211201preview.NodeProfileArgs>;
+    controllerProfile: pulumi.Input<types.inputs.NodeProfileArgs>;
     /**
      * Database profile
      */
-    databaseProfile: pulumi.Input<types.inputs.workloads.v20211201preview.DatabaseProfileArgs>;
+    databaseProfile: pulumi.Input<types.inputs.DatabaseProfileArgs>;
     /**
      * File share profile
      */
-    fileshareProfile?: pulumi.Input<types.inputs.workloads.v20211201preview.FileshareProfileArgs>;
+    fileshareProfile?: pulumi.Input<types.inputs.FileshareProfileArgs>;
     /**
      * Identity for the resource. Currently not supported
      */
-    identity?: pulumi.Input<types.inputs.workloads.v20211201preview.PhpWorkloadResourceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.PhpWorkloadResourceIdentityArgs>;
     /**
      * Indicates which kind of php workload this resource represent e.g WordPress
      */
-    kind: pulumi.Input<string | types.enums.v20211201preview.WorkloadKind>;
+    kind: pulumi.Input<string | types.enums.WorkloadKind>;
     /**
      * The geo-location where the resource lives
      */
@@ -252,15 +252,15 @@ export interface PhpWorkloadArgs {
     /**
      * Managed resource group configuration of the workload
      */
-    managedResourceGroupConfiguration?: pulumi.Input<types.inputs.workloads.v20211201preview.ManagedRGConfigurationArgs>;
+    managedResourceGroupConfiguration?: pulumi.Input<types.inputs.ManagedRGConfigurationArgs>;
     /**
      * Network profile
      */
-    networkProfile?: pulumi.Input<types.inputs.workloads.v20211201preview.NetworkProfileArgs>;
+    networkProfile?: pulumi.Input<types.inputs.NetworkProfileArgs>;
     /**
      * PHP profile
      */
-    phpProfile?: pulumi.Input<types.inputs.workloads.v20211201preview.PhpProfileArgs>;
+    phpProfile?: pulumi.Input<types.inputs.PhpProfileArgs>;
     /**
      * Php workload name
      */
@@ -272,15 +272,15 @@ export interface PhpWorkloadArgs {
     /**
      * Search profile
      */
-    searchProfile?: pulumi.Input<types.inputs.workloads.v20211201preview.SearchProfileArgs>;
+    searchProfile?: pulumi.Input<types.inputs.SearchProfileArgs>;
     /**
      * Site profile
      */
-    siteProfile?: pulumi.Input<types.inputs.workloads.v20211201preview.SiteProfileArgs>;
+    siteProfile?: pulumi.Input<types.inputs.SiteProfileArgs>;
     /**
      * Php workloads SKU
      */
-    sku?: pulumi.Input<types.inputs.workloads.v20211201preview.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Resource tags.
      */
@@ -288,5 +288,5 @@ export interface PhpWorkloadArgs {
     /**
      * VMSS web nodes profile
      */
-    webNodesProfile: pulumi.Input<types.inputs.workloads.v20211201preview.VmssNodesProfileArgs>;
+    webNodesProfile: pulumi.Input<types.inputs.VmssNodesProfileArgs>;
 }

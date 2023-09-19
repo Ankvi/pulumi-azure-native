@@ -51,7 +51,7 @@ export class Workspace extends pulumi.CustomResource {
     /**
      * Workspace features.
      */
-    public readonly features!: pulumi.Output<types.outputs.operationalinsights.WorkspaceFeaturesResponse | undefined>;
+    public readonly features!: pulumi.Output<types.outputs.WorkspaceFeaturesResponse | undefined>;
     /**
      * Indicates whether customer managed storage is mandatory for query management.
      */
@@ -59,7 +59,7 @@ export class Workspace extends pulumi.CustomResource {
     /**
      * The identity of the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.operationalinsights.IdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -75,7 +75,7 @@ export class Workspace extends pulumi.CustomResource {
     /**
      * List of linked private link scope resources.
      */
-    public /*out*/ readonly privateLinkScopedResources!: pulumi.Output<types.outputs.operationalinsights.PrivateLinkScopedResourceResponse[]>;
+    public /*out*/ readonly privateLinkScopedResources!: pulumi.Output<types.outputs.PrivateLinkScopedResourceResponse[]>;
     /**
      * The provisioning state of the workspace.
      */
@@ -95,11 +95,11 @@ export class Workspace extends pulumi.CustomResource {
     /**
      * The SKU of the workspace.
      */
-    public readonly sku!: pulumi.Output<types.outputs.operationalinsights.WorkspaceSkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.WorkspaceSkuResponse | undefined>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.operationalinsights.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -111,7 +111,7 @@ export class Workspace extends pulumi.CustomResource {
     /**
      * The daily volume cap for ingestion.
      */
-    public readonly workspaceCapping!: pulumi.Output<types.outputs.operationalinsights.WorkspaceCappingResponse | undefined>;
+    public readonly workspaceCapping!: pulumi.Output<types.outputs.WorkspaceCappingResponse | undefined>;
 
     /**
      * Create a Workspace resource with the given unique name, arguments, and options.
@@ -189,7 +189,7 @@ export interface WorkspaceArgs {
     /**
      * Workspace features.
      */
-    features?: pulumi.Input<types.inputs.operationalinsights.WorkspaceFeaturesArgs>;
+    features?: pulumi.Input<types.inputs.WorkspaceFeaturesArgs>;
     /**
      * Indicates whether customer managed storage is mandatory for query management.
      */
@@ -197,7 +197,7 @@ export interface WorkspaceArgs {
     /**
      * The identity of the resource.
      */
-    identity?: pulumi.Input<types.inputs.operationalinsights.IdentityArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -221,7 +221,7 @@ export interface WorkspaceArgs {
     /**
      * The SKU of the workspace.
      */
-    sku?: pulumi.Input<types.inputs.operationalinsights.WorkspaceSkuArgs>;
+    sku?: pulumi.Input<types.inputs.WorkspaceSkuArgs>;
     /**
      * Resource tags.
      */
@@ -229,7 +229,7 @@ export interface WorkspaceArgs {
     /**
      * The daily volume cap for ingestion.
      */
-    workspaceCapping?: pulumi.Input<types.inputs.operationalinsights.WorkspaceCappingArgs>;
+    workspaceCapping?: pulumi.Input<types.inputs.WorkspaceCappingArgs>;
     /**
      * The name of the workspace.
      */

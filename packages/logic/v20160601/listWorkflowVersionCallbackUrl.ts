@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the callback url for a trigger of a workflow version.
  */
@@ -21,7 +21,7 @@ export interface ListWorkflowVersionCallbackUrlArgs {
     /**
      * The key type.
      */
-    keyType?: types.enums.v20160601.KeyType;
+    keyType?: types.enums.KeyType;
     /**
      * The expiry time.
      */
@@ -59,7 +59,7 @@ export interface ListWorkflowVersionCallbackUrlResult {
     /**
      * Gets the workflow trigger callback URL query parameters.
      */
-    readonly queries?: types.outputs.logic.v20160601.WorkflowTriggerListCallbackUrlQueriesResponse;
+    readonly queries?: types.outputs.WorkflowTriggerListCallbackUrlQueriesResponse;
     /**
      * Gets the workflow trigger callback URL relative path.
      */
@@ -84,7 +84,7 @@ export interface ListWorkflowVersionCallbackUrlOutputArgs {
     /**
      * The key type.
      */
-    keyType?: pulumi.Input<types.enums.v20160601.KeyType>;
+    keyType?: pulumi.Input<types.enums.KeyType>;
     /**
      * The expiry time.
      */

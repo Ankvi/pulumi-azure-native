@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get ArcSetting resource details of HCI Cluster.
  */
@@ -76,7 +76,7 @@ export interface GetArcSettingResult {
     /**
      * State of Arc agent in each of the nodes.
      */
-    readonly perNodeDetails: types.outputs.azurestackhci.v20210901preview.PerNodeStateResponse[];
+    readonly perNodeDetails: types.outputs.PerNodeStateResponse[];
     /**
      * Provisioning state of the ArcSetting proxy resource.
      */

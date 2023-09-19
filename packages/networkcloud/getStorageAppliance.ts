@@ -29,7 +29,7 @@ export interface GetStorageApplianceResult {
     /**
      * The credentials of the administrative interface on this storage appliance.
      */
-    readonly administratorCredentials: types.outputs.networkcloud.AdministrativeCredentialsResponse;
+    readonly administratorCredentials: types.outputs.AdministrativeCredentialsResponse;
     /**
      * The total capacity of the storage appliance.
      */
@@ -53,7 +53,7 @@ export interface GetStorageApplianceResult {
     /**
      * The extended location of the cluster associated with the resource.
      */
-    readonly extendedLocation: types.outputs.networkcloud.ExtendedLocationResponse;
+    readonly extendedLocation: types.outputs.ExtendedLocationResponse;
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -101,7 +101,7 @@ export interface GetStorageApplianceResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.networkcloud.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

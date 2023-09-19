@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents an instance of an Analysis Services resource.
  */
@@ -34,7 +34,7 @@ export class ServerDetails extends pulumi.CustomResource {
     /**
      * A collection of AS server administrators
      */
-    public readonly asAdministrators!: pulumi.Output<types.outputs.analysisservices.v20170801beta.ServerAdministratorsResponse | undefined>;
+    public readonly asAdministrators!: pulumi.Output<types.outputs.ServerAdministratorsResponse | undefined>;
     /**
      * The SAS container URI to the backup container.
      */
@@ -42,11 +42,11 @@ export class ServerDetails extends pulumi.CustomResource {
     /**
      * The gateway details configured for the AS server.
      */
-    public readonly gatewayDetails!: pulumi.Output<types.outputs.analysisservices.v20170801beta.GatewayDetailsResponse | undefined>;
+    public readonly gatewayDetails!: pulumi.Output<types.outputs.GatewayDetailsResponse | undefined>;
     /**
      * The firewall settings for the AS server.
      */
-    public readonly ipV4FirewallSettings!: pulumi.Output<types.outputs.analysisservices.v20170801beta.IPv4FirewallSettingsResponse | undefined>;
+    public readonly ipV4FirewallSettings!: pulumi.Output<types.outputs.IPv4FirewallSettingsResponse | undefined>;
     /**
      * Location of the Analysis Services resource.
      */
@@ -78,7 +78,7 @@ export class ServerDetails extends pulumi.CustomResource {
     /**
      * The SKU of the Analysis Services resource.
      */
-    public readonly sku!: pulumi.Output<types.outputs.analysisservices.v20170801beta.ResourceSkuResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.ResourceSkuResponse>;
     /**
      * The current state of Analysis Services resource. The state is to indicate more states outside of resource provisioning.
      */
@@ -119,7 +119,7 @@ export class ServerDetails extends pulumi.CustomResource {
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["serverMonitorMode"] = (args ? args.serverMonitorMode : undefined) ?? 1;
             resourceInputs["serverName"] = args ? args.serverName : undefined;
-            resourceInputs["sku"] = args ? (args.sku ? pulumi.output(args.sku).apply(types.inputs.analysisservices.v20170801beta.resourceSkuArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["sku"] = args ? (args.sku ? pulumi.output(args.sku).apply(types.inputs.resourceSkuArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
@@ -157,7 +157,7 @@ export interface ServerDetailsArgs {
     /**
      * A collection of AS server administrators
      */
-    asAdministrators?: pulumi.Input<types.inputs.analysisservices.v20170801beta.ServerAdministratorsArgs>;
+    asAdministrators?: pulumi.Input<types.inputs.ServerAdministratorsArgs>;
     /**
      * The SAS container URI to the backup container.
      */
@@ -165,11 +165,11 @@ export interface ServerDetailsArgs {
     /**
      * The gateway details configured for the AS server.
      */
-    gatewayDetails?: pulumi.Input<types.inputs.analysisservices.v20170801beta.GatewayDetailsArgs>;
+    gatewayDetails?: pulumi.Input<types.inputs.GatewayDetailsArgs>;
     /**
      * The firewall settings for the AS server.
      */
-    ipV4FirewallSettings?: pulumi.Input<types.inputs.analysisservices.v20170801beta.IPv4FirewallSettingsArgs>;
+    ipV4FirewallSettings?: pulumi.Input<types.inputs.IPv4FirewallSettingsArgs>;
     /**
      * Location of the Analysis Services resource.
      */
@@ -181,7 +181,7 @@ export interface ServerDetailsArgs {
     /**
      * How the read-write server's participation in the query pool is controlled.<br/>It can have the following values: <ul><li>readOnly - indicates that the read-write server is intended not to participate in query operations</li><li>all - indicates that the read-write server can participate in query operations</li></ul>Specifying readOnly when capacity is 1 results in error.
      */
-    querypoolConnectionMode?: pulumi.Input<types.enums.v20170801beta.ConnectionMode>;
+    querypoolConnectionMode?: pulumi.Input<types.enums.ConnectionMode>;
     /**
      * The name of the Azure Resource group of which a given Analysis Services server is part. This name must be at least 1 character in length, and no more than 90.
      */
@@ -197,7 +197,7 @@ export interface ServerDetailsArgs {
     /**
      * The SKU of the Analysis Services resource.
      */
-    sku: pulumi.Input<types.inputs.analysisservices.v20170801beta.ResourceSkuArgs>;
+    sku: pulumi.Input<types.inputs.ResourceSkuArgs>;
     /**
      * Key-value pairs of additional resource provisioning properties.
      */

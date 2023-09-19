@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Definition of the runbook type.
  */
@@ -42,7 +42,7 @@ export class Runbook extends pulumi.CustomResource {
     /**
      * Gets or sets the draft runbook properties.
      */
-    public readonly draft!: pulumi.Output<types.outputs.automation.v20220808.RunbookDraftResponse | undefined>;
+    public readonly draft!: pulumi.Output<types.outputs.RunbookDraftResponse | undefined>;
     /**
      * Gets or sets the etag of the resource.
      */
@@ -86,7 +86,7 @@ export class Runbook extends pulumi.CustomResource {
     /**
      * Gets or sets the runbook parameters.
      */
-    public /*out*/ readonly parameters!: pulumi.Output<{[key: string]: types.outputs.automation.v20220808.RunbookParameterResponse} | undefined>;
+    public /*out*/ readonly parameters!: pulumi.Output<{[key: string]: types.outputs.RunbookParameterResponse} | undefined>;
     /**
      * Gets or sets the provisioning state of the runbook.
      */
@@ -94,7 +94,7 @@ export class Runbook extends pulumi.CustomResource {
     /**
      * Gets or sets the published runbook content link.
      */
-    public readonly publishContentLink!: pulumi.Output<types.outputs.automation.v20220808.ContentLinkResponse | undefined>;
+    public readonly publishContentLink!: pulumi.Output<types.outputs.ContentLinkResponse | undefined>;
     /**
      * Gets or sets the type of the runbook.
      */
@@ -199,7 +199,7 @@ export interface RunbookArgs {
     /**
      * Gets or sets the draft runbook properties.
      */
-    draft?: pulumi.Input<types.inputs.automation.v20220808.RunbookDraftArgs>;
+    draft?: pulumi.Input<types.inputs.RunbookDraftArgs>;
     /**
      * Gets or sets the location of the resource.
      */
@@ -223,7 +223,7 @@ export interface RunbookArgs {
     /**
      * Gets or sets the published runbook content link.
      */
-    publishContentLink?: pulumi.Input<types.inputs.automation.v20220808.ContentLinkArgs>;
+    publishContentLink?: pulumi.Input<types.inputs.ContentLinkArgs>;
     /**
      * Name of an Azure Resource group.
      */
@@ -235,7 +235,7 @@ export interface RunbookArgs {
     /**
      * Gets or sets the type of the runbook.
      */
-    runbookType: pulumi.Input<string | types.enums.v20220808.RunbookTypeEnum>;
+    runbookType: pulumi.Input<string | types.enums.RunbookTypeEnum>;
     /**
      * Gets or sets the tags attached to the resource.
      */

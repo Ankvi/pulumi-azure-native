@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A managed Cassandra data center.
  */
@@ -38,7 +38,7 @@ export class CassandraDataCenter extends pulumi.CustomResource {
     /**
      * Properties of a managed Cassandra data center.
      */
-    public readonly properties!: pulumi.Output<types.outputs.documentdb.v20230415.DataCenterResourceResponseProperties>;
+    public readonly properties!: pulumi.Output<types.outputs.DataCenterResourceResponseProperties>;
     /**
      * The type of Azure resource.
      */
@@ -94,7 +94,7 @@ export interface CassandraDataCenterArgs {
     /**
      * Properties of a managed Cassandra data center.
      */
-    properties?: pulumi.Input<types.inputs.documentdb.v20230415.DataCenterResourcePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.DataCenterResourcePropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

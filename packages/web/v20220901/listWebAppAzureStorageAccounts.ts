@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Description for Gets the Azure storage account configurations of an app.
  */
@@ -43,7 +43,7 @@ export interface ListWebAppAzureStorageAccountsResult {
     /**
      * Azure storage accounts.
      */
-    readonly properties: {[key: string]: types.outputs.web.v20220901.AzureStorageInfoValueResponse};
+    readonly properties: {[key: string]: types.outputs.AzureStorageInfoValueResponse};
     /**
      * Resource type.
      */

@@ -41,7 +41,7 @@ export interface ListComputeNodesResult {
     /**
      * The collection of returned AmlCompute nodes details.
      */
-    readonly nodes: types.outputs.machinelearningservices.AmlComputeNodeInformationResponse[];
+    readonly nodes: types.outputs.AmlComputeNodeInformationResponse[];
 }
 /**
  * Get the details (e.g IP address, port etc) of all the compute nodes in the compute.

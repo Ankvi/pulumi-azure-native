@@ -42,7 +42,7 @@ export interface GetStaticSiteBuildDatabaseConnectionResult {
     /**
      * A list of configuration files associated with this database connection.
      */
-    readonly configurationFiles: types.outputs.web.StaticSiteDatabaseConnectionConfigurationFileOverviewResponse[];
+    readonly configurationFiles: types.outputs.StaticSiteDatabaseConnectionConfigurationFileOverviewResponse[];
     /**
      * If present, the identity is used in conjunction with connection string to connect to the database. Use of the system-assigned managed identity is indicated with the string 'SystemAssigned', while use of a user-assigned managed identity is indicated with the resource id of the managed identity resource.
      */

@@ -39,7 +39,7 @@ export class Gateway extends pulumi.CustomResource {
     /**
      * Gateway location.
      */
-    public readonly locationData!: pulumi.Output<types.outputs.apimanagement.ResourceLocationDataContractResponse | undefined>;
+    public readonly locationData!: pulumi.Output<types.outputs.ResourceLocationDataContractResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -101,7 +101,7 @@ export interface GatewayArgs {
     /**
      * Gateway location.
      */
-    locationData?: pulumi.Input<types.inputs.apimanagement.ResourceLocationDataContractArgs>;
+    locationData?: pulumi.Input<types.inputs.ResourceLocationDataContractArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

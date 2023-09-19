@@ -36,11 +36,11 @@ export class GroupQuotaSubscription extends pulumi.CustomResource {
      * The name of the resource
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
-    public /*out*/ readonly properties!: pulumi.Output<types.outputs.quota.GroupQuotaSubscriptionIdResponseProperties>;
+    public /*out*/ readonly properties!: pulumi.Output<types.outputs.GroupQuotaSubscriptionIdResponseProperties>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.quota.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Details of a specific iot security solution
  */
@@ -63,7 +63,7 @@ export interface GetIotSecuritySolutionResult {
     /**
      * List of recommendation configuration
      */
-    readonly recommendationsConfiguration?: types.outputs.security.v20170801preview.RecommendationConfigurationPropertiesResponse[];
+    readonly recommendationsConfiguration?: types.outputs.RecommendationConfigurationPropertiesResponse[];
     /**
      * Security solution status
      */
@@ -79,7 +79,7 @@ export interface GetIotSecuritySolutionResult {
     /**
      * Properties of the solution's user defined resources.
      */
-    readonly userDefinedResources?: types.outputs.security.v20170801preview.UserDefinedResourcesPropertiesResponse;
+    readonly userDefinedResources?: types.outputs.UserDefinedResourcesPropertiesResponse;
     /**
      * Workspace resource ID
      */

@@ -31,7 +31,7 @@ export interface ListPolicySetDefinitionVersionAllAtManagementGroupResult {
     /**
      * An array of policy set definition versions.
      */
-    readonly value?: types.outputs.authorization.PolicySetDefinitionVersionResponse[];
+    readonly value?: types.outputs.PolicySetDefinitionVersionResponse[];
 }
 /**
  * This operation lists all the policy set definition versions for all policy set definitions at the management group scope.

@@ -53,7 +53,7 @@ export interface GetLicenseProfileResult {
     /**
      * The list of ESU keys.
      */
-    readonly esuKeys: types.outputs.hybridcompute.EsuKeyResponse[];
+    readonly esuKeys: types.outputs.EsuKeyResponse[];
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -77,7 +77,7 @@ export interface GetLicenseProfileResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.hybridcompute.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

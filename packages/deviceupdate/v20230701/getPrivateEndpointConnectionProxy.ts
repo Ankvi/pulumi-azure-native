@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * (INTERNAL - DO NOT USE) Get the specified private endpoint connection proxy associated with the device update account.
  */
@@ -52,7 +52,7 @@ export interface GetPrivateEndpointConnectionProxyResult {
     /**
      * Remote private endpoint details.
      */
-    readonly remotePrivateEndpoint?: types.outputs.deviceupdate.v20230701.RemotePrivateEndpointResponse;
+    readonly remotePrivateEndpoint?: types.outputs.RemotePrivateEndpointResponse;
     /**
      * Operation status.
      */
@@ -60,7 +60,7 @@ export interface GetPrivateEndpointConnectionProxyResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.deviceupdate.v20230701.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

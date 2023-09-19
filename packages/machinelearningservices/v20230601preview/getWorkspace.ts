@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An object that represents a machine learning workspace.
  */
@@ -51,12 +51,12 @@ export interface GetWorkspaceResult {
      */
     readonly discoveryUrl?: string;
     readonly enableDataIsolation?: boolean;
-    readonly encryption?: types.outputs.machinelearningservices.v20230601preview.EncryptionPropertyResponse;
+    readonly encryption?: types.outputs.EncryptionPropertyResponse;
     readonly existingWorkspaces?: string[];
     /**
      * Settings for feature store type workspace.
      */
-    readonly featureStoreSettings?: types.outputs.machinelearningservices.v20230601preview.FeatureStoreSettingsResponse;
+    readonly featureStoreSettings?: types.outputs.FeatureStoreSettingsResponse;
     /**
      * The friendly name for this workspace. This name in mutable
      */
@@ -73,7 +73,7 @@ export interface GetWorkspaceResult {
     /**
      * Managed service identity (system assigned and/or user assigned identities)
      */
-    readonly identity?: types.outputs.machinelearningservices.v20230601preview.ManagedServiceIdentityResponse;
+    readonly identity?: types.outputs.ManagedServiceIdentityResponse;
     /**
      * The compute name for image build
      */
@@ -88,7 +88,7 @@ export interface GetWorkspaceResult {
     /**
      * Managed Network settings for a machine learning workspace.
      */
-    readonly managedNetwork?: types.outputs.machinelearningservices.v20230601preview.ManagedNetworkSettingsResponse;
+    readonly managedNetwork?: types.outputs.ManagedNetworkSettingsResponse;
     /**
      * The URI associated with this workspace that machine learning flow must point at to set up tracking.
      */
@@ -100,7 +100,7 @@ export interface GetWorkspaceResult {
     /**
      * The notebook info of Azure ML workspace.
      */
-    readonly notebookInfo: types.outputs.machinelearningservices.v20230601preview.NotebookResourceInfoResponse;
+    readonly notebookInfo: types.outputs.NotebookResourceInfoResponse;
     /**
      * The user assigned identity resource id that represents the workspace identity.
      */
@@ -108,7 +108,7 @@ export interface GetWorkspaceResult {
     /**
      * The list of private endpoint connections in the workspace.
      */
-    readonly privateEndpointConnections: types.outputs.machinelearningservices.v20230601preview.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections: types.outputs.PrivateEndpointConnectionResponse[];
     /**
      * Count of private connections in the workspace
      */
@@ -124,7 +124,7 @@ export interface GetWorkspaceResult {
     /**
      * The service managed resource settings.
      */
-    readonly serviceManagedResourcesSettings?: types.outputs.machinelearningservices.v20230601preview.ServiceManagedResourcesSettingsResponse;
+    readonly serviceManagedResourcesSettings?: types.outputs.ServiceManagedResourcesSettingsResponse;
     /**
      * The name of the managed resource group created by workspace RP in customer subscription if the workspace is CMK workspace
      */
@@ -132,11 +132,11 @@ export interface GetWorkspaceResult {
     /**
      * The list of shared private link resources in this workspace.
      */
-    readonly sharedPrivateLinkResources?: types.outputs.machinelearningservices.v20230601preview.SharedPrivateLinkResourceResponse[];
+    readonly sharedPrivateLinkResources?: types.outputs.SharedPrivateLinkResourceResponse[];
     /**
      * Optional. This field is required to be implemented by the RP because AML is supporting more than one tier
      */
-    readonly sku?: types.outputs.machinelearningservices.v20230601preview.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * Retention time in days after workspace get soft deleted.
      */
@@ -153,7 +153,7 @@ export interface GetWorkspaceResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.machinelearningservices.v20230601preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The auth mode used for accessing the system datastores of the workspace.
      */
@@ -174,7 +174,7 @@ export interface GetWorkspaceResult {
     /**
      * WorkspaceHub's configuration object.
      */
-    readonly workspaceHubConfig?: types.outputs.machinelearningservices.v20230601preview.WorkspaceHubConfigResponse;
+    readonly workspaceHubConfig?: types.outputs.WorkspaceHubConfigResponse;
     /**
      * The immutable id associated with this workspace.
      */

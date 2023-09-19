@@ -18,7 +18,7 @@ utilities.lazyLoad(exports, ["Redis"], () => require("./redis"));
 
 
 // Export enums:
-export * from "../types/enums/v20200601";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

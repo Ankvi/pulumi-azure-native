@@ -43,7 +43,7 @@ export class ReplicationvCenter extends pulumi.CustomResource {
     /**
      * VCenter related data.
      */
-    public readonly properties!: pulumi.Output<types.outputs.recoveryservices.VCenterPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.VCenterPropertiesResponse>;
     /**
      * Resource Type
      */
@@ -101,7 +101,7 @@ export interface ReplicationvCenterArgs {
     /**
      * The properties of an add vCenter request.
      */
-    properties?: pulumi.Input<types.inputs.recoveryservices.AddVCenterRequestPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.AddVCenterRequestPropertiesArgs>;
     /**
      * The name of the resource group where the recovery services vault is present.
      */

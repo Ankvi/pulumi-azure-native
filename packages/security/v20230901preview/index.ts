@@ -33,7 +33,7 @@ utilities.lazyLoad(exports, ["listGitLabSubgroup","listGitLabSubgroupOutput"], (
 
 
 // Export enums:
-export * from "../types/enums/v20230901preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Machine Learning compute object wrapped into ARM resource envelope.
  */
@@ -34,7 +34,7 @@ export class Compute extends pulumi.CustomResource {
     /**
      * The identity of the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.machinelearningservices.v20230401.ManagedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * Specifies the location of the resource.
      */
@@ -46,15 +46,15 @@ export class Compute extends pulumi.CustomResource {
     /**
      * Compute properties
      */
-    public readonly properties!: pulumi.Output<types.outputs.machinelearningservices.v20230401.AKSResponse | types.outputs.machinelearningservices.v20230401.AmlComputeResponse | types.outputs.machinelearningservices.v20230401.ComputeInstanceResponse | types.outputs.machinelearningservices.v20230401.DataFactoryResponse | types.outputs.machinelearningservices.v20230401.DataLakeAnalyticsResponse | types.outputs.machinelearningservices.v20230401.DatabricksResponse | types.outputs.machinelearningservices.v20230401.HDInsightResponse | types.outputs.machinelearningservices.v20230401.KubernetesResponse | types.outputs.machinelearningservices.v20230401.SynapseSparkResponse | types.outputs.machinelearningservices.v20230401.VirtualMachineResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.AKSResponse | types.outputs.AmlComputeResponse | types.outputs.ComputeInstanceResponse | types.outputs.DataFactoryResponse | types.outputs.DataLakeAnalyticsResponse | types.outputs.DatabricksResponse | types.outputs.HDInsightResponse | types.outputs.KubernetesResponse | types.outputs.SynapseSparkResponse | types.outputs.VirtualMachineResponse>;
     /**
      * The sku of the workspace.
      */
-    public readonly sku!: pulumi.Output<types.outputs.machinelearningservices.v20230401.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.machinelearningservices.v20230401.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Contains resource tags defined as key/value pairs.
      */
@@ -120,7 +120,7 @@ export interface ComputeArgs {
     /**
      * The identity of the resource.
      */
-    identity?: pulumi.Input<types.inputs.machinelearningservices.v20230401.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
      * Specifies the location of the resource.
      */
@@ -128,7 +128,7 @@ export interface ComputeArgs {
     /**
      * Compute properties
      */
-    properties?: pulumi.Input<types.inputs.machinelearningservices.v20230401.AKSArgs | types.inputs.machinelearningservices.v20230401.AmlComputeArgs | types.inputs.machinelearningservices.v20230401.ComputeInstanceArgs | types.inputs.machinelearningservices.v20230401.DataFactoryArgs | types.inputs.machinelearningservices.v20230401.DataLakeAnalyticsArgs | types.inputs.machinelearningservices.v20230401.DatabricksArgs | types.inputs.machinelearningservices.v20230401.HDInsightArgs | types.inputs.machinelearningservices.v20230401.KubernetesArgs | types.inputs.machinelearningservices.v20230401.SynapseSparkArgs | types.inputs.machinelearningservices.v20230401.VirtualMachineArgs>;
+    properties?: pulumi.Input<types.inputs.AKSArgs | types.inputs.AmlComputeArgs | types.inputs.ComputeInstanceArgs | types.inputs.DataFactoryArgs | types.inputs.DataLakeAnalyticsArgs | types.inputs.DatabricksArgs | types.inputs.HDInsightArgs | types.inputs.KubernetesArgs | types.inputs.SynapseSparkArgs | types.inputs.VirtualMachineArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -136,7 +136,7 @@ export interface ComputeArgs {
     /**
      * The sku of the workspace.
      */
-    sku?: pulumi.Input<types.inputs.machinelearningservices.v20230401.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Contains resource tags defined as key/value pairs.
      */

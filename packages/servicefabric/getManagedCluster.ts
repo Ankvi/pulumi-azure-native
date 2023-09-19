@@ -48,15 +48,15 @@ export interface GetManagedClusterResult {
     /**
      * The policy used to clean up unused versions.
      */
-    readonly applicationTypeVersionsCleanupPolicy?: types.outputs.servicefabric.ApplicationTypeVersionsCleanupPolicyResponse;
+    readonly applicationTypeVersionsCleanupPolicy?: types.outputs.ApplicationTypeVersionsCleanupPolicyResponse;
     /**
      * Auxiliary subnets for the cluster.
      */
-    readonly auxiliarySubnets?: types.outputs.servicefabric.SubnetResponse[];
+    readonly auxiliarySubnets?: types.outputs.SubnetResponse[];
     /**
      * The AAD authentication settings of the cluster.
      */
-    readonly azureActiveDirectory?: types.outputs.servicefabric.AzureActiveDirectoryResponse;
+    readonly azureActiveDirectory?: types.outputs.AzureActiveDirectoryResponse;
     /**
      * The port used for client connections to the cluster.
      */
@@ -64,7 +64,7 @@ export interface GetManagedClusterResult {
     /**
      * Client certificates that are allowed to manage the cluster.
      */
-    readonly clients?: types.outputs.servicefabric.ClientCertificateResponse[];
+    readonly clients?: types.outputs.ClientCertificateResponse[];
     /**
      * List of thumbprints of the cluster certificates.
      */
@@ -112,7 +112,7 @@ export interface GetManagedClusterResult {
     /**
      * The list of custom fabric settings to configure the cluster.
      */
-    readonly fabricSettings?: types.outputs.servicefabric.SettingsSectionDescriptionResponse[];
+    readonly fabricSettings?: types.outputs.SettingsSectionDescriptionResponse[];
     /**
      * The fully qualified domain name associated with the public load balancer of the cluster.
      */
@@ -128,7 +128,7 @@ export interface GetManagedClusterResult {
     /**
      * The list of IP tags associated with the default public IP address of the cluster.
      */
-    readonly ipTags?: types.outputs.servicefabric.IPTagResponse[];
+    readonly ipTags?: types.outputs.IPTagResponse[];
     /**
      * The IPv4 address associated with the public load balancer of the cluster.
      */
@@ -140,7 +140,7 @@ export interface GetManagedClusterResult {
     /**
      * Load balancing rules that are applied to the public load balancer of the cluster.
      */
-    readonly loadBalancingRules?: types.outputs.servicefabric.LoadBalancingRuleResponse[];
+    readonly loadBalancingRules?: types.outputs.LoadBalancingRuleResponse[];
     /**
      * Azure resource location.
      */
@@ -152,7 +152,7 @@ export interface GetManagedClusterResult {
     /**
      * Custom Network Security Rules that are applied to the Virtual Network of the cluster.
      */
-    readonly networkSecurityRules?: types.outputs.servicefabric.NetworkSecurityRuleResponse[];
+    readonly networkSecurityRules?: types.outputs.NetworkSecurityRuleResponse[];
     /**
      * The provisioning state of the managed cluster resource.
      */
@@ -164,11 +164,11 @@ export interface GetManagedClusterResult {
     /**
      * Service endpoints for subnets in the cluster.
      */
-    readonly serviceEndpoints?: types.outputs.servicefabric.ServiceEndpointResponse[];
+    readonly serviceEndpoints?: types.outputs.ServiceEndpointResponse[];
     /**
      * The sku of the managed cluster
      */
-    readonly sku: types.outputs.servicefabric.SkuResponse;
+    readonly sku: types.outputs.SkuResponse;
     /**
      * If specified, the node types for the cluster are created in this subnet instead of the default VNet. The **networkSecurityRules** specified for the cluster are also applied to this subnet. This setting cannot be changed once the cluster is created.
      */
@@ -176,7 +176,7 @@ export interface GetManagedClusterResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.servicefabric.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Azure resource tags.
      */

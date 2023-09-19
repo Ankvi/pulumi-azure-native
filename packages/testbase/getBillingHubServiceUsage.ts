@@ -33,8 +33,8 @@ export interface GetBillingHubServiceUsageArgs {
 }
 
 export interface GetBillingHubServiceUsageResult {
-    readonly nextRequest?: types.outputs.testbase.BillingHubGetUsageRequestResponse;
-    readonly packageUsageEntries?: types.outputs.testbase.BillingHubPackageUsageResponse[];
+    readonly nextRequest?: types.outputs.BillingHubGetUsageRequestResponse;
+    readonly packageUsageEntries?: types.outputs.BillingHubPackageUsageResponse[];
     readonly totalCharges?: number;
     readonly totalUsedBillableHours?: number;
     readonly totalUsedFreeHours?: number;

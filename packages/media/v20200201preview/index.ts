@@ -13,7 +13,7 @@ utilities.lazyLoad(exports, ["MediaGraph"], () => require("./mediaGraph"));
 
 
 // Export enums:
-export * from "../types/enums/v20200201preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

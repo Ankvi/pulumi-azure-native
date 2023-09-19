@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents Anomaly Security ML Analytics Settings
  */
@@ -83,7 +83,7 @@ export class AnomalySecurityMLAnalyticsSettings extends pulumi.CustomResource {
     /**
      * The required data sources for this SecurityMLAnalyticsSettings
      */
-    public readonly requiredDataConnectors!: pulumi.Output<types.outputs.securityinsights.v20230701preview.SecurityMLAnalyticsSettingsDataSourceResponse[] | undefined>;
+    public readonly requiredDataConnectors!: pulumi.Output<types.outputs.SecurityMLAnalyticsSettingsDataSourceResponse[] | undefined>;
     /**
      * The anomaly settings definition Id
      */
@@ -95,7 +95,7 @@ export class AnomalySecurityMLAnalyticsSettings extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.securityinsights.v20230701preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The tactics of the SecurityMLAnalyticsSettings
      */
@@ -241,7 +241,7 @@ export interface AnomalySecurityMLAnalyticsSettingsArgs {
     /**
      * The required data sources for this SecurityMLAnalyticsSettings
      */
-    requiredDataConnectors?: pulumi.Input<pulumi.Input<types.inputs.securityinsights.v20230701preview.SecurityMLAnalyticsSettingsDataSourceArgs>[]>;
+    requiredDataConnectors?: pulumi.Input<pulumi.Input<types.inputs.SecurityMLAnalyticsSettingsDataSourceArgs>[]>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -257,11 +257,11 @@ export interface AnomalySecurityMLAnalyticsSettingsArgs {
     /**
      * The anomaly SecurityMLAnalyticsSettings status
      */
-    settingsStatus: pulumi.Input<string | types.enums.v20230701preview.SettingsStatus>;
+    settingsStatus: pulumi.Input<string | types.enums.SettingsStatus>;
     /**
      * The tactics of the SecurityMLAnalyticsSettings
      */
-    tactics?: pulumi.Input<pulumi.Input<string | types.enums.v20230701preview.AttackTactic>[]>;
+    tactics?: pulumi.Input<pulumi.Input<string | types.enums.AttackTactic>[]>;
     /**
      * The techniques of the SecurityMLAnalyticsSettings
      */

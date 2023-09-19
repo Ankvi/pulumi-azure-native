@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the additional details related to the provided Hybrid AKS provisioned cluster.
  */
@@ -47,7 +47,7 @@ export interface GetHybridAksClusterResult {
     /**
      * The list of node configurations detailing associated VMs that are part of the control plane nodes of this Hybrid AKS cluster.
      */
-    readonly controlPlaneNodes: types.outputs.networkcloud.v20221212preview.NodeConfigurationResponse[];
+    readonly controlPlaneNodes: types.outputs.NodeConfigurationResponse[];
     /**
      * The resource ID of the associated default CNI network.
      */
@@ -63,7 +63,7 @@ export interface GetHybridAksClusterResult {
     /**
      * The extended location of the cluster associated with the resource.
      */
-    readonly extendedLocation: types.outputs.networkcloud.v20221212preview.ExtendedLocationResponse;
+    readonly extendedLocation: types.outputs.ExtendedLocationResponse;
     /**
      * The resource ID of the Hybrid AKS cluster that this additional information is for.
      */
@@ -87,7 +87,7 @@ export interface GetHybridAksClusterResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.networkcloud.v20221212preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -107,7 +107,7 @@ export interface GetHybridAksClusterResult {
     /**
      * The list of node configurations detailing associated VMs that are part of the worker nodes of this Hybrid AKS cluster.
      */
-    readonly workerNodes: types.outputs.networkcloud.v20221212preview.NodeConfigurationResponse[];
+    readonly workerNodes: types.outputs.NodeConfigurationResponse[];
 }
 /**
  * Get the additional details related to the provided Hybrid AKS provisioned cluster.

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets information about a server.
  */
@@ -56,7 +56,7 @@ export interface GetAdministratorResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.dbforpostgresql.v20221201.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The tenantId of the Active Directory administrator.
      */

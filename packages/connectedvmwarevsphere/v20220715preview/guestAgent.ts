@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Defines the GuestAgent.
  */
@@ -34,7 +34,7 @@ export class GuestAgent extends pulumi.CustomResource {
     /**
      * Username / Password Credentials to provision guest agent.
      */
-    public readonly credentials!: pulumi.Output<types.outputs.connectedvmwarevsphere.v20220715preview.GuestCredentialResponse | undefined>;
+    public readonly credentials!: pulumi.Output<types.outputs.GuestCredentialResponse | undefined>;
     /**
      * Gets the name of the corresponding resource in Kubernetes.
      */
@@ -42,7 +42,7 @@ export class GuestAgent extends pulumi.CustomResource {
     /**
      * HTTP Proxy configuration for the VM.
      */
-    public readonly httpProxyConfig!: pulumi.Output<types.outputs.connectedvmwarevsphere.v20220715preview.HttpProxyConfigurationResponse | undefined>;
+    public readonly httpProxyConfig!: pulumi.Output<types.outputs.HttpProxyConfigurationResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -62,11 +62,11 @@ export class GuestAgent extends pulumi.CustomResource {
     /**
      * The resource status information.
      */
-    public /*out*/ readonly statuses!: pulumi.Output<types.outputs.connectedvmwarevsphere.v20220715preview.ResourceStatusResponse[]>;
+    public /*out*/ readonly statuses!: pulumi.Output<types.outputs.ResourceStatusResponse[]>;
     /**
      * The system data.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.connectedvmwarevsphere.v20220715preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -133,11 +133,11 @@ export interface GuestAgentArgs {
     /**
      * Username / Password Credentials to provision guest agent.
      */
-    credentials?: pulumi.Input<types.inputs.connectedvmwarevsphere.v20220715preview.GuestCredentialArgs>;
+    credentials?: pulumi.Input<types.inputs.GuestCredentialArgs>;
     /**
      * HTTP Proxy configuration for the VM.
      */
-    httpProxyConfig?: pulumi.Input<types.inputs.connectedvmwarevsphere.v20220715preview.HttpProxyConfigurationArgs>;
+    httpProxyConfig?: pulumi.Input<types.inputs.HttpProxyConfigurationArgs>;
     /**
      * Name of the guestAgents.
      */
@@ -145,7 +145,7 @@ export interface GuestAgentArgs {
     /**
      * Gets or sets the guest agent provisioning action.
      */
-    provisioningAction?: pulumi.Input<string | types.enums.v20220715preview.ProvisioningAction>;
+    provisioningAction?: pulumi.Input<string | types.enums.ProvisioningAction>;
     /**
      * The Resource Group Name.
      */

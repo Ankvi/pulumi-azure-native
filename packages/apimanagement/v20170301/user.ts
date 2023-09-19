@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * User details.
  */
@@ -42,11 +42,11 @@ export class User extends pulumi.CustomResource {
     /**
      * Collection of groups user is part of.
      */
-    public /*out*/ readonly groups!: pulumi.Output<types.outputs.apimanagement.v20170301.GroupContractResponse[]>;
+    public /*out*/ readonly groups!: pulumi.Output<types.outputs.GroupContractResponse[]>;
     /**
      * Collection of user identities.
      */
-    public /*out*/ readonly identities!: pulumi.Output<types.outputs.apimanagement.v20170301.UserIdentityContractResponse[]>;
+    public /*out*/ readonly identities!: pulumi.Output<types.outputs.UserIdentityContractResponse[]>;
     /**
      * Last name.
      */
@@ -139,7 +139,7 @@ export interface UserArgs {
     /**
      * Determines the type of confirmation e-mail that will be sent to the newly created user.
      */
-    confirmation?: pulumi.Input<string | types.enums.v20170301.Confirmation>;
+    confirmation?: pulumi.Input<string | types.enums.Confirmation>;
     /**
      * Email address. Must not be empty and must be unique within the service instance.
      */
@@ -171,7 +171,7 @@ export interface UserArgs {
     /**
      * Account state. Specifies whether the user is active or not. Blocked users are unable to sign into the developer portal or call any APIs of subscribed products. Default state is Active.
      */
-    state?: pulumi.Input<string | types.enums.v20170301.UserState>;
+    state?: pulumi.Input<string | types.enums.UserState>;
     /**
      * User identifier. Must be unique in the current API Management service instance.
      */

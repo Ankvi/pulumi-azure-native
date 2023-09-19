@@ -38,7 +38,7 @@ utilities.lazyLoad(exports, ["ServiceConfiguration"], () => require("./serviceCo
 
 
 // Export enums:
-export * from "../types/enums/v20230315";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

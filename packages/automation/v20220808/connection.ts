@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Definition of the connection.
  */
@@ -34,7 +34,7 @@ export class Connection extends pulumi.CustomResource {
     /**
      * Gets or sets the connectionType of the connection.
      */
-    public readonly connectionType!: pulumi.Output<types.outputs.automation.v20220808.ConnectionTypeAssociationPropertyResponse | undefined>;
+    public readonly connectionType!: pulumi.Output<types.outputs.ConnectionTypeAssociationPropertyResponse | undefined>;
     /**
      * Gets the creation time.
      */
@@ -124,7 +124,7 @@ export interface ConnectionArgs {
     /**
      * Gets or sets the connectionType of the connection.
      */
-    connectionType: pulumi.Input<types.inputs.automation.v20220808.ConnectionTypeAssociationPropertyArgs>;
+    connectionType: pulumi.Input<types.inputs.ConnectionTypeAssociationPropertyArgs>;
     /**
      * Gets or sets the description of the connection.
      */

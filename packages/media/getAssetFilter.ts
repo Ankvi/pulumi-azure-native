@@ -42,7 +42,7 @@ export interface GetAssetFilterResult {
     /**
      * The first quality.
      */
-    readonly firstQuality?: types.outputs.media.FirstQualityResponse;
+    readonly firstQuality?: types.outputs.FirstQualityResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -54,15 +54,15 @@ export interface GetAssetFilterResult {
     /**
      * The presentation time range.
      */
-    readonly presentationTimeRange?: types.outputs.media.PresentationTimeRangeResponse;
+    readonly presentationTimeRange?: types.outputs.PresentationTimeRangeResponse;
     /**
      * The system metadata relating to this resource.
      */
-    readonly systemData: types.outputs.media.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The tracks selection conditions.
      */
-    readonly tracks?: types.outputs.media.FilterTrackSelectionResponse[];
+    readonly tracks?: types.outputs.FilterTrackSelectionResponse[];
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

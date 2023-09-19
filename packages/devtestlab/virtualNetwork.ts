@@ -35,7 +35,7 @@ export class VirtualNetwork extends pulumi.CustomResource {
     /**
      * The allowed subnets of the virtual network.
      */
-    public readonly allowedSubnets!: pulumi.Output<types.outputs.devtestlab.SubnetResponse[] | undefined>;
+    public readonly allowedSubnets!: pulumi.Output<types.outputs.SubnetResponse[] | undefined>;
     /**
      * The creation date of the virtual network.
      */
@@ -51,7 +51,7 @@ export class VirtualNetwork extends pulumi.CustomResource {
     /**
      * The external subnet properties.
      */
-    public /*out*/ readonly externalSubnets!: pulumi.Output<types.outputs.devtestlab.ExternalSubnetResponse[]>;
+    public /*out*/ readonly externalSubnets!: pulumi.Output<types.outputs.ExternalSubnetResponse[]>;
     /**
      * The location of the resource.
      */
@@ -67,7 +67,7 @@ export class VirtualNetwork extends pulumi.CustomResource {
     /**
      * The subnet overrides of the virtual network.
      */
-    public readonly subnetOverrides!: pulumi.Output<types.outputs.devtestlab.SubnetOverrideResponse[] | undefined>;
+    public readonly subnetOverrides!: pulumi.Output<types.outputs.SubnetOverrideResponse[] | undefined>;
     /**
      * The tags of the resource.
      */
@@ -140,7 +140,7 @@ export interface VirtualNetworkArgs {
     /**
      * The allowed subnets of the virtual network.
      */
-    allowedSubnets?: pulumi.Input<pulumi.Input<types.inputs.devtestlab.SubnetArgs>[]>;
+    allowedSubnets?: pulumi.Input<pulumi.Input<types.inputs.SubnetArgs>[]>;
     /**
      * The description of the virtual network.
      */
@@ -168,7 +168,7 @@ export interface VirtualNetworkArgs {
     /**
      * The subnet overrides of the virtual network.
      */
-    subnetOverrides?: pulumi.Input<pulumi.Input<types.inputs.devtestlab.SubnetOverrideArgs>[]>;
+    subnetOverrides?: pulumi.Input<pulumi.Input<types.inputs.SubnetOverrideArgs>[]>;
     /**
      * The tags of the resource.
      */

@@ -39,7 +39,7 @@ export class Token extends pulumi.CustomResource {
     /**
      * The credentials that can be used for authenticating the token.
      */
-    public readonly credentials!: pulumi.Output<types.outputs.containerregistry.TokenCredentialsPropertiesResponse | undefined>;
+    public readonly credentials!: pulumi.Output<types.outputs.TokenCredentialsPropertiesResponse | undefined>;
     /**
      * The name of the resource.
      */
@@ -59,7 +59,7 @@ export class Token extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.containerregistry.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource.
      */
@@ -117,7 +117,7 @@ export interface TokenArgs {
     /**
      * The credentials that can be used for authenticating the token.
      */
-    credentials?: pulumi.Input<types.inputs.containerregistry.TokenCredentialsPropertiesArgs>;
+    credentials?: pulumi.Input<types.inputs.TokenCredentialsPropertiesArgs>;
     /**
      * The name of the container registry.
      */

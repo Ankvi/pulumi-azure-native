@@ -47,7 +47,7 @@ export class PeerAsn extends pulumi.CustomResource {
     /**
      * The contact details of the peer.
      */
-    public readonly peerContactDetail!: pulumi.Output<types.outputs.peering.ContactDetailResponse[] | undefined>;
+    public readonly peerContactDetail!: pulumi.Output<types.outputs.ContactDetailResponse[] | undefined>;
     /**
      * The name of the peer.
      */
@@ -111,7 +111,7 @@ export interface PeerAsnArgs {
     /**
      * The contact details of the peer.
      */
-    peerContactDetail?: pulumi.Input<pulumi.Input<types.inputs.peering.ContactDetailArgs>[]>;
+    peerContactDetail?: pulumi.Input<pulumi.Input<types.inputs.ContactDetailArgs>[]>;
     /**
      * The name of the peer.
      */

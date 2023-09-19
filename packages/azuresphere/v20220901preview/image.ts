@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An image resource belonging to a catalog resource.
  */
@@ -70,7 +70,7 @@ export class Image extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.azuresphere.v20220901preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -155,7 +155,7 @@ export interface ImageArgs {
     /**
      * Regional data boundary for an image
      */
-    regionalDataBoundary?: pulumi.Input<string | types.enums.v20220901preview.RegionalDataBoundary>;
+    regionalDataBoundary?: pulumi.Input<string | types.enums.RegionalDataBoundary>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

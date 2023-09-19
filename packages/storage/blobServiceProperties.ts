@@ -39,15 +39,15 @@ export class BlobServiceProperties extends pulumi.CustomResource {
     /**
      * The blob service properties for change feed events.
      */
-    public readonly changeFeed!: pulumi.Output<types.outputs.storage.ChangeFeedResponse | undefined>;
+    public readonly changeFeed!: pulumi.Output<types.outputs.ChangeFeedResponse | undefined>;
     /**
      * The blob service properties for container soft delete.
      */
-    public readonly containerDeleteRetentionPolicy!: pulumi.Output<types.outputs.storage.DeleteRetentionPolicyResponse | undefined>;
+    public readonly containerDeleteRetentionPolicy!: pulumi.Output<types.outputs.DeleteRetentionPolicyResponse | undefined>;
     /**
      * Specifies CORS rules for the Blob service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the Blob service.
      */
-    public readonly cors!: pulumi.Output<types.outputs.storage.CorsRulesResponse | undefined>;
+    public readonly cors!: pulumi.Output<types.outputs.CorsRulesResponse | undefined>;
     /**
      * DefaultServiceVersion indicates the default version to use for requests to the Blob service if an incoming request’s version is not specified. Possible values include version 2008-10-27 and all more recent versions.
      */
@@ -55,7 +55,7 @@ export class BlobServiceProperties extends pulumi.CustomResource {
     /**
      * The blob service properties for blob soft delete.
      */
-    public readonly deleteRetentionPolicy!: pulumi.Output<types.outputs.storage.DeleteRetentionPolicyResponse | undefined>;
+    public readonly deleteRetentionPolicy!: pulumi.Output<types.outputs.DeleteRetentionPolicyResponse | undefined>;
     /**
      * Versioning is enabled if set to true.
      */
@@ -63,7 +63,7 @@ export class BlobServiceProperties extends pulumi.CustomResource {
     /**
      * The blob service property to configure last access time based tracking policy.
      */
-    public readonly lastAccessTimeTrackingPolicy!: pulumi.Output<types.outputs.storage.LastAccessTimeTrackingPolicyResponse | undefined>;
+    public readonly lastAccessTimeTrackingPolicy!: pulumi.Output<types.outputs.LastAccessTimeTrackingPolicyResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -71,11 +71,11 @@ export class BlobServiceProperties extends pulumi.CustomResource {
     /**
      * The blob service properties for blob restore policy.
      */
-    public readonly restorePolicy!: pulumi.Output<types.outputs.storage.RestorePolicyPropertiesResponse | undefined>;
+    public readonly restorePolicy!: pulumi.Output<types.outputs.RestorePolicyPropertiesResponse | undefined>;
     /**
      * Sku name and tier.
      */
-    public /*out*/ readonly sku!: pulumi.Output<types.outputs.storage.SkuResponse>;
+    public /*out*/ readonly sku!: pulumi.Output<types.outputs.SkuResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -153,15 +153,15 @@ export interface BlobServicePropertiesArgs {
     /**
      * The blob service properties for change feed events.
      */
-    changeFeed?: pulumi.Input<types.inputs.storage.ChangeFeedArgs>;
+    changeFeed?: pulumi.Input<types.inputs.ChangeFeedArgs>;
     /**
      * The blob service properties for container soft delete.
      */
-    containerDeleteRetentionPolicy?: pulumi.Input<types.inputs.storage.DeleteRetentionPolicyArgs>;
+    containerDeleteRetentionPolicy?: pulumi.Input<types.inputs.DeleteRetentionPolicyArgs>;
     /**
      * Specifies CORS rules for the Blob service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the Blob service.
      */
-    cors?: pulumi.Input<types.inputs.storage.CorsRulesArgs>;
+    cors?: pulumi.Input<types.inputs.CorsRulesArgs>;
     /**
      * DefaultServiceVersion indicates the default version to use for requests to the Blob service if an incoming request’s version is not specified. Possible values include version 2008-10-27 and all more recent versions.
      */
@@ -169,7 +169,7 @@ export interface BlobServicePropertiesArgs {
     /**
      * The blob service properties for blob soft delete.
      */
-    deleteRetentionPolicy?: pulumi.Input<types.inputs.storage.DeleteRetentionPolicyArgs>;
+    deleteRetentionPolicy?: pulumi.Input<types.inputs.DeleteRetentionPolicyArgs>;
     /**
      * Versioning is enabled if set to true.
      */
@@ -177,7 +177,7 @@ export interface BlobServicePropertiesArgs {
     /**
      * The blob service property to configure last access time based tracking policy.
      */
-    lastAccessTimeTrackingPolicy?: pulumi.Input<types.inputs.storage.LastAccessTimeTrackingPolicyArgs>;
+    lastAccessTimeTrackingPolicy?: pulumi.Input<types.inputs.LastAccessTimeTrackingPolicyArgs>;
     /**
      * The name of the resource group within the user's subscription. The name is case insensitive.
      */
@@ -185,5 +185,5 @@ export interface BlobServicePropertiesArgs {
     /**
      * The blob service properties for blob restore policy.
      */
-    restorePolicy?: pulumi.Input<types.inputs.storage.RestorePolicyPropertiesArgs>;
+    restorePolicy?: pulumi.Input<types.inputs.RestorePolicyPropertiesArgs>;
 }

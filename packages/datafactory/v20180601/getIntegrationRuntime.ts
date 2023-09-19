@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets an integration runtime.
  */
@@ -48,7 +48,7 @@ export interface GetIntegrationRuntimeResult {
     /**
      * Integration runtime properties.
      */
-    readonly properties: types.outputs.datafactory.v20180601.ManagedIntegrationRuntimeResponse | types.outputs.datafactory.v20180601.SelfHostedIntegrationRuntimeResponse;
+    readonly properties: types.outputs.ManagedIntegrationRuntimeResponse | types.outputs.SelfHostedIntegrationRuntimeResponse;
     /**
      * The resource type.
      */

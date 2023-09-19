@@ -40,7 +40,7 @@ export interface GetScheduledActionByScopeResult {
     /**
      * Destination format of the view data. This is optional.
      */
-    readonly fileDestination?: types.outputs.costmanagement.FileDestinationResponse;
+    readonly fileDestination?: types.outputs.FileDestinationResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -56,7 +56,7 @@ export interface GetScheduledActionByScopeResult {
     /**
      * Notification properties based on scheduled action kind.
      */
-    readonly notification: types.outputs.costmanagement.NotificationPropertiesResponse;
+    readonly notification: types.outputs.NotificationPropertiesResponse;
     /**
      * Email address of the point of contact that should get the unsubscribe requests and notification emails.
      */
@@ -64,7 +64,7 @@ export interface GetScheduledActionByScopeResult {
     /**
      * Schedule of the scheduled action.
      */
-    readonly schedule: types.outputs.costmanagement.SchedulePropertiesResponse;
+    readonly schedule: types.outputs.SchedulePropertiesResponse;
     /**
      * For private scheduled action(Create or Update), scope will be empty.<br /> For shared scheduled action(Create or Update By Scope), Cost Management scope can be 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for BillingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for InvoiceSection scope, '/providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}' for ExternalBillingAccount scope, and '/providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}' for ExternalSubscription scope.
      */
@@ -76,7 +76,7 @@ export interface GetScheduledActionByScopeResult {
     /**
      * Kind of the scheduled action.
      */
-    readonly systemData: types.outputs.costmanagement.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

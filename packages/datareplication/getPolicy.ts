@@ -45,8 +45,8 @@ export interface GetPolicyResult {
     /**
      * Policy model properties.
      */
-    readonly properties: types.outputs.datareplication.PolicyModelPropertiesResponse;
-    readonly systemData: types.outputs.datareplication.PolicyModelResponseSystemData;
+    readonly properties: types.outputs.PolicyModelPropertiesResponse;
+    readonly systemData: types.outputs.PolicyModelResponseSystemData;
     /**
      * Gets or sets the type of the resource.
      */

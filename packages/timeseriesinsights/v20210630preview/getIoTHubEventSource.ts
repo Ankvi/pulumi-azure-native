@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the event source with the specified name in the specified environment.
  */
@@ -65,7 +65,7 @@ export interface GetIoTHubEventSourceResult {
     /**
      * An object that represents the local timestamp property. It contains the format of local timestamp that needs to be used and the corresponding timezone offset information. If a value isn't specified for localTimestamp, or if null, then the local timestamp will not be ingressed with the events.
      */
-    readonly localTimestamp?: types.outputs.timeseriesinsights.v20210630preview.LocalTimestampResponse;
+    readonly localTimestamp?: types.outputs.LocalTimestampResponse;
     /**
      * Resource location
      */

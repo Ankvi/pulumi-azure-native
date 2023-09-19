@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets all deployments for a remediation at subscription scope.
  */
@@ -35,7 +35,7 @@ export interface ListRemediationDeploymentsAtSubscriptionResult {
     /**
      * Array of deployments for the remediation.
      */
-    readonly value: types.outputs.policyinsights.v20211001.RemediationDeploymentResponse[];
+    readonly value: types.outputs.RemediationDeploymentResponse[];
 }
 /**
  * Gets all deployments for a remediation at subscription scope.

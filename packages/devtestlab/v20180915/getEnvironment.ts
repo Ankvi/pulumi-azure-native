@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get environment.
  */
@@ -54,7 +54,7 @@ export interface GetEnvironmentResult {
     /**
      * The deployment properties of the environment.
      */
-    readonly deploymentProperties?: types.outputs.devtestlab.v20180915.EnvironmentDeploymentPropertiesResponse;
+    readonly deploymentProperties?: types.outputs.EnvironmentDeploymentPropertiesResponse;
     /**
      * The identifier of the resource.
      */

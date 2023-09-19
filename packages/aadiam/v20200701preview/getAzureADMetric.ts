@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a azureADMetrics instance with a given name.
  */
@@ -40,7 +40,7 @@ export interface GetAzureADMetricResult {
      * The name of the resource
      */
     readonly name: string;
-    readonly properties: types.outputs.aadiam.v20200701preview.AzureADMetricsPropertiesFormatResponse;
+    readonly properties: types.outputs.AzureADMetricsPropertiesFormatResponse;
     /**
      * Resource tags.
      */

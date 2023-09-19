@@ -23,7 +23,7 @@ utilities.lazyLoad(exports, ["PrivateEndpointConnectionControllerPrivateEndpoint
 
 
 // Export enums:
-export * from "../types/enums/v20200501";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the resource and its properties.
  */
@@ -31,7 +31,7 @@ export interface GetWebPubSubResult {
     /**
      * The settings for event handler in webpubsub service.
      */
-    readonly eventHandler?: types.outputs.webpubsub.v20210401preview.EventHandlerSettingsResponse;
+    readonly eventHandler?: types.outputs.EventHandlerSettingsResponse;
     /**
      * The publicly accessible IP of the resource.
      */
@@ -44,7 +44,7 @@ export interface GetWebPubSubResult {
      * When a featureFlag is not explicitly set, its globally default value will be used
      * But keep in mind, the default value doesn't mean "false". It varies in terms of different FeatureFlags.
      */
-    readonly features?: types.outputs.webpubsub.v20210401preview.WebPubSubFeatureResponse[];
+    readonly features?: types.outputs.WebPubSubFeatureResponse[];
     /**
      * FQDN of the service instance.
      */
@@ -56,7 +56,7 @@ export interface GetWebPubSubResult {
     /**
      * The managed identity response
      */
-    readonly identity?: types.outputs.webpubsub.v20210401preview.ManagedIdentityResponse;
+    readonly identity?: types.outputs.ManagedIdentityResponse;
     /**
      * The GEO location of the resource. e.g. West US | East US | North Central US | South Central US.
      */
@@ -68,11 +68,11 @@ export interface GetWebPubSubResult {
     /**
      * Network ACLs
      */
-    readonly networkACLs?: types.outputs.webpubsub.v20210401preview.WebPubSubNetworkACLsResponse;
+    readonly networkACLs?: types.outputs.WebPubSubNetworkACLsResponse;
     /**
      * Private endpoint connections to the resource.
      */
-    readonly privateEndpointConnections: types.outputs.webpubsub.v20210401preview.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections: types.outputs.PrivateEndpointConnectionResponse[];
     /**
      * Provisioning state of the resource.
      */
@@ -94,15 +94,15 @@ export interface GetWebPubSubResult {
     /**
      * The list of shared private link resources.
      */
-    readonly sharedPrivateLinkResources: types.outputs.webpubsub.v20210401preview.SharedPrivateLinkResourceResponse[];
+    readonly sharedPrivateLinkResources: types.outputs.SharedPrivateLinkResourceResponse[];
     /**
      * The billing information of the resource.(e.g. Free, Standard)
      */
-    readonly sku?: types.outputs.webpubsub.v20210401preview.ResourceSkuResponse;
+    readonly sku?: types.outputs.ResourceSkuResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.webpubsub.v20210401preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Tags of the service which is a list of key value pairs that describe the resource.
      */
@@ -110,7 +110,7 @@ export interface GetWebPubSubResult {
     /**
      * TLS settings.
      */
-    readonly tls?: types.outputs.webpubsub.v20210401preview.WebPubSubTlsSettingsResponse;
+    readonly tls?: types.outputs.WebPubSubTlsSettingsResponse;
     /**
      * The type of the resource - e.g. "Microsoft.SignalRService/SignalR"
      */

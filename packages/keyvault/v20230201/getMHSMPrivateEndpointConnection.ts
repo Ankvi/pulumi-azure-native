@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the specified private endpoint connection associated with the managed HSM Pool.
  */
@@ -52,11 +52,11 @@ export interface GetMHSMPrivateEndpointConnectionResult {
     /**
      * Properties of the private endpoint object.
      */
-    readonly privateEndpoint?: types.outputs.keyvault.v20230201.MHSMPrivateEndpointResponse;
+    readonly privateEndpoint?: types.outputs.MHSMPrivateEndpointResponse;
     /**
      * Approval state of the private link connection.
      */
-    readonly privateLinkServiceConnectionState?: types.outputs.keyvault.v20230201.MHSMPrivateLinkServiceConnectionStateResponse;
+    readonly privateLinkServiceConnectionState?: types.outputs.MHSMPrivateLinkServiceConnectionStateResponse;
     /**
      * Provisioning state of the private endpoint connection.
      */
@@ -64,11 +64,11 @@ export interface GetMHSMPrivateEndpointConnectionResult {
     /**
      * SKU details
      */
-    readonly sku?: types.outputs.keyvault.v20230201.ManagedHsmSkuResponse;
+    readonly sku?: types.outputs.ManagedHsmSkuResponse;
     /**
      * Metadata pertaining to creation and last modification of the key vault resource.
      */
-    readonly systemData: types.outputs.keyvault.v20230201.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags
      */

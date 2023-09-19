@@ -37,11 +37,11 @@ export interface GetAzureDevOpsConnectorResult {
      * The name of the resource
      */
     readonly name: string;
-    readonly properties: types.outputs.securitydevops.AzureDevOpsConnectorPropertiesResponse;
+    readonly properties: types.outputs.AzureDevOpsConnectorPropertiesResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.securitydevops.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

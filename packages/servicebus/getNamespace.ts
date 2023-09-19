@@ -44,7 +44,7 @@ export interface GetNamespaceResult {
     /**
      * Properties of BYOK Encryption description
      */
-    readonly encryption?: types.outputs.servicebus.EncryptionResponse;
+    readonly encryption?: types.outputs.EncryptionResponse;
     /**
      * Resource Id
      */
@@ -52,7 +52,7 @@ export interface GetNamespaceResult {
     /**
      * Properties of BYOK Identity description
      */
-    readonly identity?: types.outputs.servicebus.IdentityResponse;
+    readonly identity?: types.outputs.IdentityResponse;
     /**
      * The Geo-location where the resource lives
      */
@@ -72,7 +72,7 @@ export interface GetNamespaceResult {
     /**
      * List of private endpoint connections.
      */
-    readonly privateEndpointConnections?: types.outputs.servicebus.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections?: types.outputs.PrivateEndpointConnectionResponse[];
     /**
      * Provisioning state of the namespace.
      */
@@ -88,7 +88,7 @@ export interface GetNamespaceResult {
     /**
      * Properties of SKU
      */
-    readonly sku?: types.outputs.servicebus.SBSkuResponse;
+    readonly sku?: types.outputs.SBSkuResponse;
     /**
      * Status of the namespace.
      */
@@ -96,7 +96,7 @@ export interface GetNamespaceResult {
     /**
      * The system meta data relating to this resource.
      */
-    readonly systemData: types.outputs.servicebus.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags
      */

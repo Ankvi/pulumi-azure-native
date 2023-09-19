@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The policy definition.
  */
@@ -54,7 +54,7 @@ export class PolicyDefinition extends pulumi.CustomResource {
     /**
      * The parameter definitions for parameters used in the policy rule. The keys are the parameter names.
      */
-    public readonly parameters!: pulumi.Output<{[key: string]: types.outputs.authorization.v20210601.ParameterDefinitionsValueResponse} | undefined>;
+    public readonly parameters!: pulumi.Output<{[key: string]: types.outputs.ParameterDefinitionsValueResponse} | undefined>;
     /**
      * The policy rule.
      */
@@ -66,7 +66,7 @@ export class PolicyDefinition extends pulumi.CustomResource {
     /**
      * The system metadata relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.authorization.v20210601.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource (Microsoft.Authorization/policyDefinitions).
      */
@@ -136,7 +136,7 @@ export interface PolicyDefinitionArgs {
     /**
      * The parameter definitions for parameters used in the policy rule. The keys are the parameter names.
      */
-    parameters?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.authorization.v20210601.ParameterDefinitionsValueArgs>}>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.ParameterDefinitionsValueArgs>}>;
     /**
      * The name of the policy definition to create.
      */
@@ -148,5 +148,5 @@ export interface PolicyDefinitionArgs {
     /**
      * The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
      */
-    policyType?: pulumi.Input<string | types.enums.v20210601.PolicyType>;
+    policyType?: pulumi.Input<string | types.enums.PolicyType>;
 }

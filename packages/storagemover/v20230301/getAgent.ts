@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets an Agent resource.
  */
@@ -53,7 +53,7 @@ export interface GetAgentResult {
      * A description for the Agent.
      */
     readonly description?: string;
-    readonly errorDetails: types.outputs.storagemover.v20230301.AgentPropertiesResponseErrorDetails;
+    readonly errorDetails: types.outputs.AgentPropertiesResponseErrorDetails;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -85,7 +85,7 @@ export interface GetAgentResult {
     /**
      * Resource system metadata.
      */
-    readonly systemData: types.outputs.storagemover.v20230301.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

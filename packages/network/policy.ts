@@ -35,7 +35,7 @@ export class Policy extends pulumi.CustomResource {
     /**
      * Describes custom rules inside the policy.
      */
-    public readonly customRules!: pulumi.Output<types.outputs.network.CustomRuleListResponse | undefined>;
+    public readonly customRules!: pulumi.Output<types.outputs.CustomRuleListResponse | undefined>;
     /**
      * Gets a unique read-only string that changes whenever the resource is updated.
      */
@@ -43,7 +43,7 @@ export class Policy extends pulumi.CustomResource {
     /**
      * Describes Frontend Endpoints associated with this Web Application Firewall policy.
      */
-    public /*out*/ readonly frontendEndpointLinks!: pulumi.Output<types.outputs.network.FrontendEndpointLinkResponse[]>;
+    public /*out*/ readonly frontendEndpointLinks!: pulumi.Output<types.outputs.FrontendEndpointLinkResponse[]>;
     /**
      * Resource location.
      */
@@ -51,7 +51,7 @@ export class Policy extends pulumi.CustomResource {
     /**
      * Describes managed rules inside the policy.
      */
-    public readonly managedRules!: pulumi.Output<types.outputs.network.ManagedRuleSetListResponse | undefined>;
+    public readonly managedRules!: pulumi.Output<types.outputs.ManagedRuleSetListResponse | undefined>;
     /**
      * Resource name.
      */
@@ -59,7 +59,7 @@ export class Policy extends pulumi.CustomResource {
     /**
      * Describes settings for the policy.
      */
-    public readonly policySettings!: pulumi.Output<types.outputs.network.FrontDoorPolicySettingsResponse | undefined>;
+    public readonly policySettings!: pulumi.Output<types.outputs.FrontDoorPolicySettingsResponse | undefined>;
     /**
      * Provisioning state of the policy.
      */
@@ -68,15 +68,15 @@ export class Policy extends pulumi.CustomResource {
     /**
      * Describes Routing Rules associated with this Web Application Firewall policy.
      */
-    public /*out*/ readonly routingRuleLinks!: pulumi.Output<types.outputs.network.RoutingRuleLinkResponse[]>;
+    public /*out*/ readonly routingRuleLinks!: pulumi.Output<types.outputs.RoutingRuleLinkResponse[]>;
     /**
      * Describes Security Policy associated with this Web Application Firewall policy.
      */
-    public /*out*/ readonly securityPolicyLinks!: pulumi.Output<types.outputs.network.SecurityPolicyLinkResponse[]>;
+    public /*out*/ readonly securityPolicyLinks!: pulumi.Output<types.outputs.SecurityPolicyLinkResponse[]>;
     /**
      * The pricing tier of web application firewall policy. Defaults to Classic_AzureFrontDoor if not specified.
      */
-    public readonly sku!: pulumi.Output<types.outputs.network.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Resource tags.
      */
@@ -146,7 +146,7 @@ export interface PolicyArgs {
     /**
      * Describes custom rules inside the policy.
      */
-    customRules?: pulumi.Input<types.inputs.network.CustomRuleListArgs>;
+    customRules?: pulumi.Input<types.inputs.CustomRuleListArgs>;
     /**
      * Resource location.
      */
@@ -154,7 +154,7 @@ export interface PolicyArgs {
     /**
      * Describes managed rules inside the policy.
      */
-    managedRules?: pulumi.Input<types.inputs.network.ManagedRuleSetListArgs>;
+    managedRules?: pulumi.Input<types.inputs.ManagedRuleSetListArgs>;
     /**
      * The name of the Web Application Firewall Policy.
      */
@@ -162,7 +162,7 @@ export interface PolicyArgs {
     /**
      * Describes settings for the policy.
      */
-    policySettings?: pulumi.Input<types.inputs.network.FrontDoorPolicySettingsArgs>;
+    policySettings?: pulumi.Input<types.inputs.FrontDoorPolicySettingsArgs>;
     /**
      * Name of the Resource group within the Azure subscription.
      */
@@ -170,7 +170,7 @@ export interface PolicyArgs {
     /**
      * The pricing tier of web application firewall policy. Defaults to Classic_AzureFrontDoor if not specified.
      */
-    sku?: pulumi.Input<types.inputs.network.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Resource tags.
      */

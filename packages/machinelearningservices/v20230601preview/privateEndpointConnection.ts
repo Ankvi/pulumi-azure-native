@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The Private Endpoint Connection resource.
  */
@@ -34,7 +34,7 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * Managed service identity (system assigned and/or user assigned identities)
      */
-    public readonly identity!: pulumi.Output<types.outputs.machinelearningservices.v20230601preview.ManagedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * Same as workspace location.
      */
@@ -46,11 +46,11 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * The Private Endpoint resource.
      */
-    public /*out*/ readonly privateEndpoint!: pulumi.Output<types.outputs.machinelearningservices.v20230601preview.WorkspacePrivateEndpointResourceResponse | undefined>;
+    public /*out*/ readonly privateEndpoint!: pulumi.Output<types.outputs.WorkspacePrivateEndpointResourceResponse | undefined>;
     /**
      * The connection state.
      */
-    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.machinelearningservices.v20230601preview.PrivateLinkServiceConnectionStateResponse | undefined>;
+    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.PrivateLinkServiceConnectionStateResponse | undefined>;
     /**
      * The current provisioning state.
      */
@@ -58,11 +58,11 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * Optional. This field is required to be implemented by the RP because AML is supporting more than one tier
      */
-    public readonly sku!: pulumi.Output<types.outputs.machinelearningservices.v20230601preview.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.machinelearningservices.v20230601preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -125,7 +125,7 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * Managed service identity (system assigned and/or user assigned identities)
      */
-    identity?: pulumi.Input<types.inputs.machinelearningservices.v20230601preview.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
      * Same as workspace location.
      */
@@ -137,7 +137,7 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * The connection state.
      */
-    privateLinkServiceConnectionState?: pulumi.Input<types.inputs.machinelearningservices.v20230601preview.PrivateLinkServiceConnectionStateArgs>;
+    privateLinkServiceConnectionState?: pulumi.Input<types.inputs.PrivateLinkServiceConnectionStateArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -145,7 +145,7 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * Optional. This field is required to be implemented by the RP because AML is supporting more than one tier
      */
-    sku?: pulumi.Input<types.inputs.machinelearningservices.v20230601preview.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name of Azure Machine Learning workspace.

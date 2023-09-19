@@ -19,7 +19,7 @@ export interface GetRequiredAmlFSSubnetsSizeArgs {
     /**
      * SKU for the resource.
      */
-    sku?: types.inputs.storagecache.SkuName;
+    sku?: types.inputs.SkuName;
     /**
      * The size of the AML file system, in TiB.
      */
@@ -47,7 +47,7 @@ export interface GetRequiredAmlFSSubnetsSizeOutputArgs {
     /**
      * SKU for the resource.
      */
-    sku?: pulumi.Input<types.inputs.storagecache.SkuNameArgs>;
+    sku?: pulumi.Input<types.inputs.SkuNameArgs>;
     /**
      * The size of the AML file system, in TiB.
      */

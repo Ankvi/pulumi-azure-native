@@ -118,7 +118,7 @@ utilities.lazyLoad(exports, ["Slice"], () => require("./slice"));
 
 
 // Export enums:
-export * from "../types/enums/v20220401preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

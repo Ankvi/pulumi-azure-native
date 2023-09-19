@@ -43,11 +43,11 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * Private Endpoint resource
      */
-    public /*out*/ readonly privateEndpoint!: pulumi.Output<types.outputs.elasticsan.PrivateEndpointResponse | undefined>;
+    public /*out*/ readonly privateEndpoint!: pulumi.Output<types.outputs.PrivateEndpointResponse | undefined>;
     /**
      * Private Link Service Connection State.
      */
-    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.elasticsan.PrivateLinkServiceConnectionStateResponse>;
+    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.PrivateLinkServiceConnectionStateResponse>;
     /**
      * Provisioning State of Private Endpoint connection resource
      */
@@ -55,7 +55,7 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.elasticsan.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -126,7 +126,7 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * Private Link Service Connection State.
      */
-    privateLinkServiceConnectionState: pulumi.Input<types.inputs.elasticsan.PrivateLinkServiceConnectionStateArgs>;
+    privateLinkServiceConnectionState: pulumi.Input<types.inputs.PrivateLinkServiceConnectionStateArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

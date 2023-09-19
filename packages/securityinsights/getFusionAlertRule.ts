@@ -78,7 +78,7 @@ export interface GetFusionAlertRuleResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.securityinsights.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The tactics of the alert rule
      */

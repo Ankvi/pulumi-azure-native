@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The storage account blob inventory policy.
  */
@@ -42,11 +42,11 @@ export class BlobInventoryPolicy extends pulumi.CustomResource {
     /**
      * The storage account blob inventory policy object. It is composed of policy rules.
      */
-    public readonly policy!: pulumi.Output<types.outputs.storage.v20230101.BlobInventoryPolicySchemaResponse>;
+    public readonly policy!: pulumi.Output<types.outputs.BlobInventoryPolicySchemaResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.storage.v20230101.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -109,7 +109,7 @@ export interface BlobInventoryPolicyArgs {
     /**
      * The storage account blob inventory policy object. It is composed of policy rules.
      */
-    policy: pulumi.Input<types.inputs.storage.v20230101.BlobInventoryPolicySchemaArgs>;
+    policy: pulumi.Input<types.inputs.BlobInventoryPolicySchemaArgs>;
     /**
      * The name of the resource group within the user's subscription. The name is case insensitive.
      */

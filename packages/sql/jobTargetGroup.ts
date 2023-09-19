@@ -35,7 +35,7 @@ export class JobTargetGroup extends pulumi.CustomResource {
     /**
      * Members of the target group.
      */
-    public readonly members!: pulumi.Output<types.outputs.sql.JobTargetResponse[]>;
+    public readonly members!: pulumi.Output<types.outputs.JobTargetResponse[]>;
     /**
      * Resource name.
      */
@@ -98,7 +98,7 @@ export interface JobTargetGroupArgs {
     /**
      * Members of the target group.
      */
-    members: pulumi.Input<pulumi.Input<types.inputs.sql.JobTargetArgs>[]>;
+    members: pulumi.Input<pulumi.Input<types.inputs.JobTargetArgs>[]>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */

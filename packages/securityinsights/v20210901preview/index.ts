@@ -28,7 +28,7 @@ utilities.lazyLoad(exports, ["ThreatIntelligenceIndicator"], () => require("./th
 
 
 // Export enums:
-export * from "../types/enums/v20210901preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the specified network profile in a specified resource group.
  */
@@ -36,11 +36,11 @@ export interface GetNetworkProfileResult {
     /**
      * List of chid container network interface configurations.
      */
-    readonly containerNetworkInterfaceConfigurations?: types.outputs.network.v20190801.ContainerNetworkInterfaceConfigurationResponse[];
+    readonly containerNetworkInterfaceConfigurations?: types.outputs.ContainerNetworkInterfaceConfigurationResponse[];
     /**
      * List of child container network interfaces.
      */
-    readonly containerNetworkInterfaces?: types.outputs.network.v20190801.ContainerNetworkInterfaceResponse[];
+    readonly containerNetworkInterfaces?: types.outputs.ContainerNetworkInterfaceResponse[];
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */

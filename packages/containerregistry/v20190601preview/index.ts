@@ -58,7 +58,7 @@ utilities.lazyLoad(exports, ["TaskRun"], () => require("./taskRun"));
 
 
 // Export enums:
-export * from "../types/enums/v20190601preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

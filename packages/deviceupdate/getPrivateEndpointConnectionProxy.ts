@@ -53,7 +53,7 @@ export interface GetPrivateEndpointConnectionProxyResult {
     /**
      * Remote private endpoint details.
      */
-    readonly remotePrivateEndpoint?: types.outputs.deviceupdate.RemotePrivateEndpointResponse;
+    readonly remotePrivateEndpoint?: types.outputs.RemotePrivateEndpointResponse;
     /**
      * Operation status.
      */
@@ -61,7 +61,7 @@ export interface GetPrivateEndpointConnectionProxyResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.deviceupdate.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A Streaming Locator resource
  */
@@ -42,7 +42,7 @@ export class StreamingLocator extends pulumi.CustomResource {
     /**
      * The ContentKeys used by this Streaming Locator.
      */
-    public readonly contentKeys!: pulumi.Output<types.outputs.media.v20230101.StreamingLocatorContentKeyResponse[] | undefined>;
+    public readonly contentKeys!: pulumi.Output<types.outputs.StreamingLocatorContentKeyResponse[] | undefined>;
     /**
      * The creation time of the Streaming Locator.
      */
@@ -78,7 +78,7 @@ export class StreamingLocator extends pulumi.CustomResource {
     /**
      * The system metadata relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.media.v20230101.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -164,7 +164,7 @@ export interface StreamingLocatorArgs {
     /**
      * The ContentKeys used by this Streaming Locator.
      */
-    contentKeys?: pulumi.Input<pulumi.Input<types.inputs.media.v20230101.StreamingLocatorContentKeyArgs>[]>;
+    contentKeys?: pulumi.Input<pulumi.Input<types.inputs.StreamingLocatorContentKeyArgs>[]>;
     /**
      * Name of the default ContentKeyPolicy used by this Streaming Locator.
      */

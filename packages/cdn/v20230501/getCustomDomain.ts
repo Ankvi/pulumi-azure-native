@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets an existing custom domain within an endpoint.
  */
@@ -41,7 +41,7 @@ export interface GetCustomDomainResult {
     /**
      * Certificate parameters for securing custom HTTPS
      */
-    readonly customHttpsParameters?: types.outputs.cdn.v20230501.CdnManagedHttpsParametersResponse | types.outputs.cdn.v20230501.UserManagedHttpsParametersResponse;
+    readonly customHttpsParameters?: types.outputs.CdnManagedHttpsParametersResponse | types.outputs.UserManagedHttpsParametersResponse;
     /**
      * Provisioning status of the custom domain.
      */
@@ -73,7 +73,7 @@ export interface GetCustomDomainResult {
     /**
      * Read only system data
      */
-    readonly systemData: types.outputs.cdn.v20230501.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource type.
      */

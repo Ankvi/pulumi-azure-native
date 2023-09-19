@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the details of the fabric.
  */
@@ -43,8 +43,8 @@ export interface GetFabricResult {
     /**
      * Fabric model properties.
      */
-    readonly properties: types.outputs.datareplication.v20210216preview.FabricModelPropertiesResponse;
-    readonly systemData: types.outputs.datareplication.v20210216preview.FabricModelResponseSystemData;
+    readonly properties: types.outputs.FabricModelPropertiesResponse;
+    readonly systemData: types.outputs.FabricModelResponseSystemData;
     /**
      * Gets or sets the resource tags.
      */

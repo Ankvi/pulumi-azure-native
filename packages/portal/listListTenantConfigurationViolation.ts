@@ -27,7 +27,7 @@ export interface ListListTenantConfigurationViolationResult {
     /**
      * The array of violations.
      */
-    readonly value?: types.outputs.portal.ViolationResponse[];
+    readonly value?: types.outputs.ViolationResponse[];
 }
 /**
  * Gets list of items that violate tenant's configuration.

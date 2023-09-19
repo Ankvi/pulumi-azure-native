@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Server Endpoint object.
  */
@@ -38,7 +38,7 @@ export class ServerEndpoint extends pulumi.CustomResource {
     /**
      * Cloud tiering status. Only populated if cloud tiering is enabled.
      */
-    public /*out*/ readonly cloudTieringStatus!: pulumi.Output<types.outputs.storagesync.v20220601.ServerEndpointCloudTieringStatusResponse>;
+    public /*out*/ readonly cloudTieringStatus!: pulumi.Output<types.outputs.ServerEndpointCloudTieringStatusResponse>;
     /**
      * Friendly Name
      */
@@ -90,7 +90,7 @@ export class ServerEndpoint extends pulumi.CustomResource {
     /**
      * Recall status. Only populated if cloud tiering is enabled.
      */
-    public /*out*/ readonly recallStatus!: pulumi.Output<types.outputs.storagesync.v20220601.ServerEndpointRecallStatusResponse>;
+    public /*out*/ readonly recallStatus!: pulumi.Output<types.outputs.ServerEndpointRecallStatusResponse>;
     /**
      * Server Local path.
      */
@@ -106,11 +106,11 @@ export class ServerEndpoint extends pulumi.CustomResource {
     /**
      * Server Endpoint sync status
      */
-    public /*out*/ readonly syncStatus!: pulumi.Output<types.outputs.storagesync.v20220601.ServerEndpointSyncStatusResponse>;
+    public /*out*/ readonly syncStatus!: pulumi.Output<types.outputs.ServerEndpointSyncStatusResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.storagesync.v20220601.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Tier files older than days.
      */
@@ -210,7 +210,7 @@ export interface ServerEndpointArgs {
     /**
      * Cloud Tiering.
      */
-    cloudTiering?: pulumi.Input<string | types.enums.v20220601.FeatureStatus>;
+    cloudTiering?: pulumi.Input<string | types.enums.FeatureStatus>;
     /**
      * Friendly Name
      */
@@ -218,19 +218,19 @@ export interface ServerEndpointArgs {
     /**
      * Policy for how namespace and files are recalled during FastDr.
      */
-    initialDownloadPolicy?: pulumi.Input<string | types.enums.v20220601.InitialDownloadPolicy>;
+    initialDownloadPolicy?: pulumi.Input<string | types.enums.InitialDownloadPolicy>;
     /**
      * Policy for how the initial upload sync session is performed.
      */
-    initialUploadPolicy?: pulumi.Input<string | types.enums.v20220601.InitialUploadPolicy>;
+    initialUploadPolicy?: pulumi.Input<string | types.enums.InitialUploadPolicy>;
     /**
      * Policy for enabling follow-the-sun business models: link local cache to cloud behavior to pre-populate before local access.
      */
-    localCacheMode?: pulumi.Input<string | types.enums.v20220601.LocalCacheMode>;
+    localCacheMode?: pulumi.Input<string | types.enums.LocalCacheMode>;
     /**
      * Offline data transfer
      */
-    offlineDataTransfer?: pulumi.Input<string | types.enums.v20220601.FeatureStatus>;
+    offlineDataTransfer?: pulumi.Input<string | types.enums.FeatureStatus>;
     /**
      * Offline data transfer share name
      */

@@ -83,7 +83,7 @@ utilities.lazyLoad(exports, ["Task"], () => require("./task"));
 
 
 // Export enums:
-export * from "../types/enums/v20220330preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

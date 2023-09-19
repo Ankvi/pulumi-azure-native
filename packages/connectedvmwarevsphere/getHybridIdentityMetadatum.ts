@@ -41,7 +41,7 @@ export interface GetHybridIdentityMetadatumResult {
     /**
      * The identity of the resource.
      */
-    readonly identity: types.outputs.connectedvmwarevsphere.IdentityResponse;
+    readonly identity: types.outputs.IdentityResponse;
     /**
      * The name of the resource
      */
@@ -57,7 +57,7 @@ export interface GetHybridIdentityMetadatumResult {
     /**
      * The system data.
      */
-    readonly systemData: types.outputs.connectedvmwarevsphere.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

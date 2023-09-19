@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves the details of a Virtual Hub Ip configuration.
  */
@@ -60,11 +60,11 @@ export interface GetVirtualHubIpConfigurationResult {
     /**
      * The reference to the public IP resource.
      */
-    readonly publicIPAddress?: types.outputs.network.v20230401.PublicIPAddressResponse;
+    readonly publicIPAddress?: types.outputs.PublicIPAddressResponse;
     /**
      * The reference to the subnet resource.
      */
-    readonly subnet?: types.outputs.network.v20230401.SubnetResponse;
+    readonly subnet?: types.outputs.SubnetResponse;
     /**
      * Ipconfiguration type.
      */

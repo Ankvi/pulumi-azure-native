@@ -35,12 +35,12 @@ export class Account extends pulumi.CustomResource {
     /**
      * Gets or sets the status of the account.
      */
-    public /*out*/ readonly accountStatus!: pulumi.Output<types.outputs.purview.AccountPropertiesResponseAccountStatus>;
+    public /*out*/ readonly accountStatus!: pulumi.Output<types.outputs.AccountPropertiesResponseAccountStatus>;
     /**
      * Cloud connectors.
      * External cloud identifier used as part of scanning configuration.
      */
-    public /*out*/ readonly cloudConnectors!: pulumi.Output<types.outputs.purview.CloudConnectorsResponse | undefined>;
+    public /*out*/ readonly cloudConnectors!: pulumi.Output<types.outputs.CloudConnectorsResponse | undefined>;
     /**
      * Gets the time at which the entity was created.
      */
@@ -56,7 +56,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * The URIs that are the public endpoints of the account.
      */
-    public /*out*/ readonly endpoints!: pulumi.Output<types.outputs.purview.AccountPropertiesResponseEndpoints>;
+    public /*out*/ readonly endpoints!: pulumi.Output<types.outputs.AccountPropertiesResponseEndpoints>;
     /**
      * Gets or sets the friendly name.
      */
@@ -64,7 +64,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * Identity Info on the tracked resource
      */
-    public readonly identity!: pulumi.Output<types.outputs.purview.IdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityResponse | undefined>;
     /**
      * Gets or sets the location.
      */
@@ -80,7 +80,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * Gets the resource identifiers of the managed resources.
      */
-    public /*out*/ readonly managedResources!: pulumi.Output<types.outputs.purview.AccountPropertiesResponseManagedResources>;
+    public /*out*/ readonly managedResources!: pulumi.Output<types.outputs.AccountPropertiesResponseManagedResources>;
     /**
      * Gets or sets the public network access for managed resources.
      */
@@ -92,7 +92,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * Gets the private endpoint connections information.
      */
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.purview.PrivateEndpointConnectionResponse[]>;
+    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[]>;
     /**
      * Gets or sets the state of the provisioning.
      */
@@ -104,11 +104,11 @@ export class Account extends pulumi.CustomResource {
     /**
      * Gets or sets the Sku.
      */
-    public /*out*/ readonly sku!: pulumi.Output<types.outputs.purview.AccountResponseSku>;
+    public /*out*/ readonly sku!: pulumi.Output<types.outputs.AccountResponseSku>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.purview.TrackedResourceResponseSystemData>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.TrackedResourceResponseSystemData>;
     /**
      * Tags on the azure resource.
      */
@@ -196,7 +196,7 @@ export interface AccountArgs {
     /**
      * Identity Info on the tracked resource
      */
-    identity?: pulumi.Input<types.inputs.purview.IdentityArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityArgs>;
     /**
      * Gets or sets the location.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a DNS forwarding ruleset properties.
  */
@@ -31,7 +31,7 @@ export interface GetDnsForwardingRulesetResult {
     /**
      * The reference to the DNS resolver outbound endpoints that are used to route DNS queries matching the forwarding rules in the ruleset to the target DNS servers.
      */
-    readonly dnsResolverOutboundEndpoints: types.outputs.network.v20220701.SubResourceResponse[];
+    readonly dnsResolverOutboundEndpoints: types.outputs.SubResourceResponse[];
     /**
      * ETag of the DNS forwarding ruleset.
      */
@@ -59,7 +59,7 @@ export interface GetDnsForwardingRulesetResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.network.v20220701.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

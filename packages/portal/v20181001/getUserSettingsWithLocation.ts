@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get current user settings for current signed in user. This operation returns settings for the user's cloud shell preferences including preferred location, storage profile, shell type, font and size settings.
  */
@@ -31,7 +31,7 @@ export interface GetUserSettingsWithLocationResult {
     /**
      * The cloud shell user settings properties.
      */
-    readonly properties: types.outputs.portal.v20181001.UserPropertiesResponse;
+    readonly properties: types.outputs.UserPropertiesResponse;
 }
 /**
  * Get current user settings for current signed in user. This operation returns settings for the user's cloud shell preferences including preferred location, storage profile, shell type, font and size settings.

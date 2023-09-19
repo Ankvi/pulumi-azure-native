@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a LoadTest resource.
  */
@@ -39,7 +39,7 @@ export interface GetLoadTestResult {
     /**
      * CMK Encryption property.
      */
-    readonly encryption?: types.outputs.loadtestservice.v20221201.EncryptionPropertiesResponse;
+    readonly encryption?: types.outputs.EncryptionPropertiesResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -47,7 +47,7 @@ export interface GetLoadTestResult {
     /**
      * The type of identity used for the resource.
      */
-    readonly identity?: types.outputs.loadtestservice.v20221201.ManagedServiceIdentityResponse;
+    readonly identity?: types.outputs.ManagedServiceIdentityResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -63,7 +63,7 @@ export interface GetLoadTestResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.loadtestservice.v20221201.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The cluster resource
  */
@@ -38,31 +38,31 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * The policy used to clean up unused versions.
      */
-    public readonly applicationTypeVersionsCleanupPolicy!: pulumi.Output<types.outputs.servicefabric.v20201201preview.ApplicationTypeVersionsCleanupPolicyResponse | undefined>;
+    public readonly applicationTypeVersionsCleanupPolicy!: pulumi.Output<types.outputs.ApplicationTypeVersionsCleanupPolicyResponse | undefined>;
     /**
      * The Service Fabric runtime versions available for this cluster.
      */
-    public /*out*/ readonly availableClusterVersions!: pulumi.Output<types.outputs.servicefabric.v20201201preview.ClusterVersionDetailsResponse[]>;
+    public /*out*/ readonly availableClusterVersions!: pulumi.Output<types.outputs.ClusterVersionDetailsResponse[]>;
     /**
      * The AAD authentication settings of the cluster.
      */
-    public readonly azureActiveDirectory!: pulumi.Output<types.outputs.servicefabric.v20201201preview.AzureActiveDirectoryResponse | undefined>;
+    public readonly azureActiveDirectory!: pulumi.Output<types.outputs.AzureActiveDirectoryResponse | undefined>;
     /**
      * The certificate to use for securing the cluster. The certificate provided will be used for node to node security within the cluster, SSL certificate for cluster management endpoint and default admin client.
      */
-    public readonly certificate!: pulumi.Output<types.outputs.servicefabric.v20201201preview.CertificateDescriptionResponse | undefined>;
+    public readonly certificate!: pulumi.Output<types.outputs.CertificateDescriptionResponse | undefined>;
     /**
      * Describes a list of server certificates referenced by common name that are used to secure the cluster.
      */
-    public readonly certificateCommonNames!: pulumi.Output<types.outputs.servicefabric.v20201201preview.ServerCertificateCommonNamesResponse | undefined>;
+    public readonly certificateCommonNames!: pulumi.Output<types.outputs.ServerCertificateCommonNamesResponse | undefined>;
     /**
      * The list of client certificates referenced by common name that are allowed to manage the cluster.
      */
-    public readonly clientCertificateCommonNames!: pulumi.Output<types.outputs.servicefabric.v20201201preview.ClientCertificateCommonNameResponse[] | undefined>;
+    public readonly clientCertificateCommonNames!: pulumi.Output<types.outputs.ClientCertificateCommonNameResponse[] | undefined>;
     /**
      * The list of client certificates referenced by thumbprint that are allowed to manage the cluster.
      */
-    public readonly clientCertificateThumbprints!: pulumi.Output<types.outputs.servicefabric.v20201201preview.ClientCertificateThumbprintResponse[] | undefined>;
+    public readonly clientCertificateThumbprints!: pulumi.Output<types.outputs.ClientCertificateThumbprintResponse[] | undefined>;
     /**
      * The Service Fabric runtime version of the cluster. This property can only by set the user when **upgradeMode** is set to 'Manual'. To get list of available Service Fabric versions for new clusters use [ClusterVersion API](./ClusterVersion.md). To get the list of available version for existing clusters use **availableClusterVersions**.
      */
@@ -93,7 +93,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * The storage account information for storing Service Fabric diagnostic logs.
      */
-    public readonly diagnosticsStorageAccountConfig!: pulumi.Output<types.outputs.servicefabric.v20201201preview.DiagnosticsStorageAccountConfigResponse | undefined>;
+    public readonly diagnosticsStorageAccountConfig!: pulumi.Output<types.outputs.DiagnosticsStorageAccountConfigResponse | undefined>;
     /**
      * Azure resource etag.
      */
@@ -105,7 +105,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * The list of custom fabric settings to configure the cluster.
      */
-    public readonly fabricSettings!: pulumi.Output<types.outputs.servicefabric.v20201201preview.SettingsSectionDescriptionResponse[] | undefined>;
+    public readonly fabricSettings!: pulumi.Output<types.outputs.SettingsSectionDescriptionResponse[] | undefined>;
     /**
      * Azure resource location.
      */
@@ -121,7 +121,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * The list of node types in the cluster.
      */
-    public readonly nodeTypes!: pulumi.Output<types.outputs.servicefabric.v20201201preview.NodeTypeDescriptionResponse[]>;
+    public readonly nodeTypes!: pulumi.Output<types.outputs.NodeTypeDescriptionResponse[]>;
     /**
      * The provisioning state of the cluster resource.
      */
@@ -139,15 +139,15 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * The server certificate used by reverse proxy.
      */
-    public readonly reverseProxyCertificate!: pulumi.Output<types.outputs.servicefabric.v20201201preview.CertificateDescriptionResponse | undefined>;
+    public readonly reverseProxyCertificate!: pulumi.Output<types.outputs.CertificateDescriptionResponse | undefined>;
     /**
      * Describes a list of server certificates referenced by common name that are used to secure the cluster.
      */
-    public readonly reverseProxyCertificateCommonNames!: pulumi.Output<types.outputs.servicefabric.v20201201preview.ServerCertificateCommonNamesResponse | undefined>;
+    public readonly reverseProxyCertificateCommonNames!: pulumi.Output<types.outputs.ServerCertificateCommonNamesResponse | undefined>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.servicefabric.v20201201preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Azure resource tags.
      */
@@ -159,7 +159,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * The policy to use when upgrading the cluster.
      */
-    public readonly upgradeDescription!: pulumi.Output<types.outputs.servicefabric.v20201201preview.ClusterUpgradePolicyResponse | undefined>;
+    public readonly upgradeDescription!: pulumi.Output<types.outputs.ClusterUpgradePolicyResponse | undefined>;
     /**
      * The upgrade mode of the cluster when new Service Fabric runtime version is available.
      *
@@ -212,7 +212,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["reverseProxyCertificate"] = args ? args.reverseProxyCertificate : undefined;
             resourceInputs["reverseProxyCertificateCommonNames"] = args ? args.reverseProxyCertificateCommonNames : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["upgradeDescription"] = args ? (args.upgradeDescription ? pulumi.output(args.upgradeDescription).apply(types.inputs.servicefabric.v20201201preview.clusterUpgradePolicyArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["upgradeDescription"] = args ? (args.upgradeDescription ? pulumi.output(args.upgradeDescription).apply(types.inputs.clusterUpgradePolicyArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["upgradeMode"] = args ? args.upgradeMode : undefined;
             resourceInputs["vmImage"] = args ? args.vmImage : undefined;
             resourceInputs["availableClusterVersions"] = undefined /*out*/;
@@ -274,27 +274,27 @@ export interface ClusterArgs {
     /**
      * The policy used to clean up unused versions.
      */
-    applicationTypeVersionsCleanupPolicy?: pulumi.Input<types.inputs.servicefabric.v20201201preview.ApplicationTypeVersionsCleanupPolicyArgs>;
+    applicationTypeVersionsCleanupPolicy?: pulumi.Input<types.inputs.ApplicationTypeVersionsCleanupPolicyArgs>;
     /**
      * The AAD authentication settings of the cluster.
      */
-    azureActiveDirectory?: pulumi.Input<types.inputs.servicefabric.v20201201preview.AzureActiveDirectoryArgs>;
+    azureActiveDirectory?: pulumi.Input<types.inputs.AzureActiveDirectoryArgs>;
     /**
      * The certificate to use for securing the cluster. The certificate provided will be used for node to node security within the cluster, SSL certificate for cluster management endpoint and default admin client.
      */
-    certificate?: pulumi.Input<types.inputs.servicefabric.v20201201preview.CertificateDescriptionArgs>;
+    certificate?: pulumi.Input<types.inputs.CertificateDescriptionArgs>;
     /**
      * Describes a list of server certificates referenced by common name that are used to secure the cluster.
      */
-    certificateCommonNames?: pulumi.Input<types.inputs.servicefabric.v20201201preview.ServerCertificateCommonNamesArgs>;
+    certificateCommonNames?: pulumi.Input<types.inputs.ServerCertificateCommonNamesArgs>;
     /**
      * The list of client certificates referenced by common name that are allowed to manage the cluster.
      */
-    clientCertificateCommonNames?: pulumi.Input<pulumi.Input<types.inputs.servicefabric.v20201201preview.ClientCertificateCommonNameArgs>[]>;
+    clientCertificateCommonNames?: pulumi.Input<pulumi.Input<types.inputs.ClientCertificateCommonNameArgs>[]>;
     /**
      * The list of client certificates referenced by thumbprint that are allowed to manage the cluster.
      */
-    clientCertificateThumbprints?: pulumi.Input<pulumi.Input<types.inputs.servicefabric.v20201201preview.ClientCertificateThumbprintArgs>[]>;
+    clientCertificateThumbprints?: pulumi.Input<pulumi.Input<types.inputs.ClientCertificateThumbprintArgs>[]>;
     /**
      * The Service Fabric runtime version of the cluster. This property can only by set the user when **upgradeMode** is set to 'Manual'. To get list of available Service Fabric versions for new clusters use [ClusterVersion API](./ClusterVersion.md). To get the list of available version for existing clusters use **availableClusterVersions**.
      */
@@ -306,7 +306,7 @@ export interface ClusterArgs {
     /**
      * The storage account information for storing Service Fabric diagnostic logs.
      */
-    diagnosticsStorageAccountConfig?: pulumi.Input<types.inputs.servicefabric.v20201201preview.DiagnosticsStorageAccountConfigArgs>;
+    diagnosticsStorageAccountConfig?: pulumi.Input<types.inputs.DiagnosticsStorageAccountConfigArgs>;
     /**
      * Indicates if the event store service is enabled.
      */
@@ -314,7 +314,7 @@ export interface ClusterArgs {
     /**
      * The list of custom fabric settings to configure the cluster.
      */
-    fabricSettings?: pulumi.Input<pulumi.Input<types.inputs.servicefabric.v20201201preview.SettingsSectionDescriptionArgs>[]>;
+    fabricSettings?: pulumi.Input<pulumi.Input<types.inputs.SettingsSectionDescriptionArgs>[]>;
     /**
      * Azure resource location.
      */
@@ -326,7 +326,7 @@ export interface ClusterArgs {
     /**
      * The list of node types in the cluster.
      */
-    nodeTypes: pulumi.Input<pulumi.Input<types.inputs.servicefabric.v20201201preview.NodeTypeDescriptionArgs>[]>;
+    nodeTypes: pulumi.Input<pulumi.Input<types.inputs.NodeTypeDescriptionArgs>[]>;
     /**
      * The reliability level sets the replica set size of system services. Learn about [ReliabilityLevel](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity).
      *
@@ -344,11 +344,11 @@ export interface ClusterArgs {
     /**
      * The server certificate used by reverse proxy.
      */
-    reverseProxyCertificate?: pulumi.Input<types.inputs.servicefabric.v20201201preview.CertificateDescriptionArgs>;
+    reverseProxyCertificate?: pulumi.Input<types.inputs.CertificateDescriptionArgs>;
     /**
      * Describes a list of server certificates referenced by common name that are used to secure the cluster.
      */
-    reverseProxyCertificateCommonNames?: pulumi.Input<types.inputs.servicefabric.v20201201preview.ServerCertificateCommonNamesArgs>;
+    reverseProxyCertificateCommonNames?: pulumi.Input<types.inputs.ServerCertificateCommonNamesArgs>;
     /**
      * Azure resource tags.
      */
@@ -356,7 +356,7 @@ export interface ClusterArgs {
     /**
      * The policy to use when upgrading the cluster.
      */
-    upgradeDescription?: pulumi.Input<types.inputs.servicefabric.v20201201preview.ClusterUpgradePolicyArgs>;
+    upgradeDescription?: pulumi.Input<types.inputs.ClusterUpgradePolicyArgs>;
     /**
      * The upgrade mode of the cluster when new Service Fabric runtime version is available.
      *

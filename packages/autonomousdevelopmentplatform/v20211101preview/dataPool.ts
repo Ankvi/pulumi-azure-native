@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * ADP Data Pool
  */
@@ -38,7 +38,7 @@ export class DataPool extends pulumi.CustomResource {
     /**
      * Gets or sets the collection of locations where Data Pool resources should be created
      */
-    public readonly locations!: pulumi.Output<types.outputs.autonomousdevelopmentplatform.v20211101preview.DataPoolLocationResponse[]>;
+    public readonly locations!: pulumi.Output<types.outputs.DataPoolLocationResponse[]>;
     /**
      * The name of the resource
      */
@@ -50,7 +50,7 @@ export class DataPool extends pulumi.CustomResource {
     /**
      * The system meta data relating to this resource
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.autonomousdevelopmentplatform.v20211101preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags
      */
@@ -121,7 +121,7 @@ export interface DataPoolArgs {
     /**
      * Gets or sets the collection of locations where Data Pool resources should be created
      */
-    locations: pulumi.Input<pulumi.Input<types.inputs.autonomousdevelopmentplatform.v20211101preview.DataPoolLocationArgs>[]>;
+    locations: pulumi.Input<pulumi.Input<types.inputs.DataPoolLocationArgs>[]>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

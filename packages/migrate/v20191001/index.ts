@@ -83,7 +83,7 @@ utilities.lazyLoad(exports, ["VMwareCollector"], () => require("./vmwareCollecto
 
 
 // Export enums:
-export * from "../types/enums/v20191001";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

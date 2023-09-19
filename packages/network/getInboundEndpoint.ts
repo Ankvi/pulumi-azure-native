@@ -45,7 +45,7 @@ export interface GetInboundEndpointResult {
     /**
      * IP configurations for the inbound endpoint.
      */
-    readonly ipConfigurations: types.outputs.network.InboundEndpointIPConfigurationResponse[];
+    readonly ipConfigurations: types.outputs.InboundEndpointIPConfigurationResponse[];
     /**
      * The geo-location where the resource lives
      */
@@ -65,7 +65,7 @@ export interface GetInboundEndpointResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.network.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

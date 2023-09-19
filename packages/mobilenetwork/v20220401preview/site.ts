@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Site resource.
  */
@@ -66,7 +66,7 @@ export class Site extends pulumi.CustomResource {
     /**
      * An array of IDs of the network functions deployed on the site, maintained by the user.
      */
-    public readonly networkFunctions!: pulumi.Output<types.outputs.mobilenetwork.v20220401preview.SubResourceResponse[] | undefined>;
+    public readonly networkFunctions!: pulumi.Output<types.outputs.SubResourceResponse[] | undefined>;
     /**
      * The provisioning state of the site resource.
      */
@@ -74,7 +74,7 @@ export class Site extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.mobilenetwork.v20220401preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -154,7 +154,7 @@ export interface SiteArgs {
     /**
      * The type of identity that created the resource.
      */
-    createdByType?: pulumi.Input<string | types.enums.v20220401preview.CreatedByType>;
+    createdByType?: pulumi.Input<string | types.enums.CreatedByType>;
     /**
      * The timestamp of resource last modification (UTC)
      */
@@ -166,7 +166,7 @@ export interface SiteArgs {
     /**
      * The type of identity that last modified the resource.
      */
-    lastModifiedByType?: pulumi.Input<string | types.enums.v20220401preview.CreatedByType>;
+    lastModifiedByType?: pulumi.Input<string | types.enums.CreatedByType>;
     /**
      * The geo-location where the resource lives
      */
@@ -178,7 +178,7 @@ export interface SiteArgs {
     /**
      * An array of IDs of the network functions deployed on the site, maintained by the user.
      */
-    networkFunctions?: pulumi.Input<pulumi.Input<types.inputs.mobilenetwork.v20220401preview.SubResourceArgs>[]>;
+    networkFunctions?: pulumi.Input<pulumi.Input<types.inputs.SubResourceArgs>[]>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

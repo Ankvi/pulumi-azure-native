@@ -47,11 +47,11 @@ export class ManagementLockAtResourceGroupLevel extends pulumi.CustomResource {
     /**
      * The owners of the lock.
      */
-    public readonly owners!: pulumi.Output<types.outputs.authorization.ManagementLockOwnerResponse[] | undefined>;
+    public readonly owners!: pulumi.Output<types.outputs.ManagementLockOwnerResponse[] | undefined>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.authorization.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The resource type of the lock - Microsoft.Authorization/locks.
      */
@@ -116,7 +116,7 @@ export interface ManagementLockAtResourceGroupLevelArgs {
     /**
      * The owners of the lock.
      */
-    owners?: pulumi.Input<pulumi.Input<types.inputs.authorization.ManagementLockOwnerArgs>[]>;
+    owners?: pulumi.Input<pulumi.Input<types.inputs.ManagementLockOwnerArgs>[]>;
     /**
      * The name of the resource group to lock.
      */

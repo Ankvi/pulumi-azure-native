@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns the properties of the specified connected cluster, including name, identity, properties, and additional cluster details.
  */
@@ -51,7 +51,7 @@ export interface GetConnectedClusterResult {
     /**
      * The identity of the connected cluster.
      */
-    readonly identity: types.outputs.kubernetes.v20220501preview.ConnectedClusterIdentityResponse;
+    readonly identity: types.outputs.ConnectedClusterIdentityResponse;
     /**
      * The infrastructure on which the Kubernetes cluster represented by this connected cluster is running on.
      */
@@ -95,7 +95,7 @@ export interface GetConnectedClusterResult {
     /**
      * Metadata pertaining to creation and last modification of the resource
      */
-    readonly systemData: types.outputs.kubernetes.v20220501preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

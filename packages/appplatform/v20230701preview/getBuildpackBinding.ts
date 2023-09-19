@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a buildpack binding by name.
  */
@@ -54,11 +54,11 @@ export interface GetBuildpackBindingResult {
     /**
      * Properties of a buildpack binding
      */
-    readonly properties: types.outputs.appplatform.v20230701preview.BuildpackBindingPropertiesResponse;
+    readonly properties: types.outputs.BuildpackBindingPropertiesResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.appplatform.v20230701preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource.
      */

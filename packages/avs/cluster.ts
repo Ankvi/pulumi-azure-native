@@ -55,7 +55,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * The cluster SKU
      */
-    public readonly sku!: pulumi.Output<types.outputs.avs.SkuResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse>;
     /**
      * Resource type.
      */
@@ -134,5 +134,5 @@ export interface ClusterArgs {
     /**
      * The cluster SKU
      */
-    sku: pulumi.Input<types.inputs.avs.SkuArgs>;
+    sku: pulumi.Input<types.inputs.SkuArgs>;
 }

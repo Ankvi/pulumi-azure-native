@@ -44,11 +44,11 @@ export interface GetVaultResult {
     /**
      * Properties of the vault
      */
-    readonly properties: types.outputs.keyvault.VaultPropertiesResponse;
+    readonly properties: types.outputs.VaultPropertiesResponse;
     /**
      * System metadata for the key vault.
      */
-    readonly systemData: types.outputs.keyvault.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Tags assigned to the key vault resource.
      */

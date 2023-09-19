@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 export function getOnlineDeploymentLogs(args: GetOnlineDeploymentLogsArgs, opts?: pulumi.InvokeOptions): Promise<GetOnlineDeploymentLogsResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -18,7 +18,7 @@ export interface GetOnlineDeploymentLogsArgs {
     /**
      * The type of container to retrieve logs from.
      */
-    containerType?: string | types.enums.v20230601preview.ContainerType;
+    containerType?: string | types.enums.ContainerType;
     /**
      * The name and identifier for the endpoint.
      */
@@ -55,7 +55,7 @@ export interface GetOnlineDeploymentLogsOutputArgs {
     /**
      * The type of container to retrieve logs from.
      */
-    containerType?: pulumi.Input<string | types.enums.v20230601preview.ContainerType>;
+    containerType?: pulumi.Input<string | types.enums.ContainerType>;
     /**
      * The name and identifier for the endpoint.
      */

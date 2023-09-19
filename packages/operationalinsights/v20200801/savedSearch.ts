@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Value object for saved search results.
  */
@@ -62,7 +62,7 @@ export class SavedSearch extends pulumi.CustomResource {
     /**
      * The tags attached to the saved search.
      */
-    public readonly tags!: pulumi.Output<types.outputs.operationalinsights.v20200801.TagResponse[] | undefined>;
+    public readonly tags!: pulumi.Output<types.outputs.TagResponse[] | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -165,7 +165,7 @@ export interface SavedSearchArgs {
     /**
      * The tags attached to the saved search.
      */
-    tags?: pulumi.Input<pulumi.Input<types.inputs.operationalinsights.v20200801.TagArgs>[]>;
+    tags?: pulumi.Input<pulumi.Input<types.inputs.TagArgs>[]>;
     /**
      * The version number of the query language. The current version is 2 and is the default.
      */

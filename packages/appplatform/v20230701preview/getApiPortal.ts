@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the API portal and its properties.
  */
@@ -44,15 +44,15 @@ export interface GetApiPortalResult {
     /**
      * API portal properties payload
      */
-    readonly properties: types.outputs.appplatform.v20230701preview.ApiPortalPropertiesResponse;
+    readonly properties: types.outputs.ApiPortalPropertiesResponse;
     /**
      * Sku of the API portal resource
      */
-    readonly sku?: types.outputs.appplatform.v20230701preview.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.appplatform.v20230701preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource.
      */

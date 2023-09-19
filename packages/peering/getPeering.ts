@@ -32,11 +32,11 @@ export interface GetPeeringResult {
     /**
      * The properties that define a direct peering.
      */
-    readonly direct?: types.outputs.peering.PeeringPropertiesDirectResponse;
+    readonly direct?: types.outputs.PeeringPropertiesDirectResponse;
     /**
      * The properties that define an exchange peering.
      */
-    readonly exchange?: types.outputs.peering.PeeringPropertiesExchangeResponse;
+    readonly exchange?: types.outputs.PeeringPropertiesExchangeResponse;
     /**
      * The ID of the resource.
      */
@@ -64,7 +64,7 @@ export interface GetPeeringResult {
     /**
      * The SKU that defines the tier and kind of the peering.
      */
-    readonly sku: types.outputs.peering.PeeringSkuResponse;
+    readonly sku: types.outputs.PeeringSkuResponse;
     /**
      * The resource tags.
      */

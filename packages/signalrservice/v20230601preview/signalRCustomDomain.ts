@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A custom domain
  */
@@ -34,7 +34,7 @@ export class SignalRCustomDomain extends pulumi.CustomResource {
     /**
      * Reference to a resource.
      */
-    public readonly customCertificate!: pulumi.Output<types.outputs.signalrservice.v20230601preview.ResourceReferenceResponse>;
+    public readonly customCertificate!: pulumi.Output<types.outputs.ResourceReferenceResponse>;
     /**
      * The custom domain name.
      */
@@ -50,7 +50,7 @@ export class SignalRCustomDomain extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.signalrservice.v20230601preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -109,7 +109,7 @@ export interface SignalRCustomDomainArgs {
     /**
      * Reference to a resource.
      */
-    customCertificate: pulumi.Input<types.inputs.signalrservice.v20230601preview.ResourceReferenceArgs>;
+    customCertificate: pulumi.Input<types.inputs.ResourceReferenceArgs>;
     /**
      * The custom domain name.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The operation to get the export for the defined scope by export name.
  */
@@ -31,11 +31,11 @@ export interface GetExportResult {
     /**
      * Has definition for the export.
      */
-    readonly definition: types.outputs.costmanagement.v20191001.QueryDefinitionResponse;
+    readonly definition: types.outputs.QueryDefinitionResponse;
     /**
      * Has delivery information for the export.
      */
-    readonly deliveryInfo: types.outputs.costmanagement.v20191001.ExportDeliveryInfoResponse;
+    readonly deliveryInfo: types.outputs.ExportDeliveryInfoResponse;
     /**
      * The format of the export being delivered.
      */
@@ -51,7 +51,7 @@ export interface GetExportResult {
     /**
      * Has schedule information for the export.
      */
-    readonly schedule?: types.outputs.costmanagement.v20191001.ExportScheduleResponse;
+    readonly schedule?: types.outputs.ExportScheduleResponse;
     /**
      * Resource tags.
      */

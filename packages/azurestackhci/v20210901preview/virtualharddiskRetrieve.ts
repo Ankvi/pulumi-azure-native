@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The virtual hard disk resource definition.
  */
@@ -51,7 +51,7 @@ export class VirtualharddiskRetrieve extends pulumi.CustomResource {
     /**
      * The extendedLocation of the resource.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.azurestackhci.v20210901preview.ExtendedLocationResponse | undefined>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
     /**
      * The hypervisor generation of the Virtual Machine [V1, V2]
      */
@@ -74,11 +74,11 @@ export class VirtualharddiskRetrieve extends pulumi.CustomResource {
     /**
      * VirtualHardDiskStatus defines the observed state of virtualharddisks
      */
-    public /*out*/ readonly status!: pulumi.Output<types.outputs.azurestackhci.v20210901preview.VirtualHardDiskStatusResponse>;
+    public /*out*/ readonly status!: pulumi.Output<types.outputs.VirtualHardDiskStatusResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.azurestackhci.v20210901preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -159,7 +159,7 @@ export interface VirtualharddiskRetrieveArgs {
     /**
      * The format of the actual VHD file [vhd, vhdx]
      */
-    diskFileFormat?: pulumi.Input<string | types.enums.v20210901preview.DiskFileFormat>;
+    diskFileFormat?: pulumi.Input<string | types.enums.DiskFileFormat>;
     /**
      * diskSizeBytes - size of the disk in GB
      */
@@ -171,11 +171,11 @@ export interface VirtualharddiskRetrieveArgs {
     /**
      * The extendedLocation of the resource.
      */
-    extendedLocation?: pulumi.Input<types.inputs.azurestackhci.v20210901preview.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * The hypervisor generation of the Virtual Machine [V1, V2]
      */
-    hyperVGeneration?: pulumi.Input<string | types.enums.v20210901preview.HyperVGeneration>;
+    hyperVGeneration?: pulumi.Input<string | types.enums.HyperVGeneration>;
     /**
      * The geo-location where the resource lives
      */

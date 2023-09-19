@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Vendor resource.
  */
@@ -42,11 +42,11 @@ export class Vendor extends pulumi.CustomResource {
     /**
      * A list of IDs of the vendor skus offered by the vendor.
      */
-    public /*out*/ readonly skus!: pulumi.Output<types.outputs.hybridnetwork.v20220101preview.SubResourceResponse[]>;
+    public /*out*/ readonly skus!: pulumi.Output<types.outputs.SubResourceResponse[]>;
     /**
      * The system meta data relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.hybridnetwork.v20220101preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

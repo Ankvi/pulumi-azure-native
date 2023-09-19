@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves information about a proximity placement group .
  */
@@ -36,11 +36,11 @@ export interface GetProximityPlacementGroupResult {
     /**
      * A list of references to all availability sets in the proximity placement group.
      */
-    readonly availabilitySets: types.outputs.compute.v20230301.SubResourceWithColocationStatusResponse[];
+    readonly availabilitySets: types.outputs.SubResourceWithColocationStatusResponse[];
     /**
      * Describes colocation status of the Proximity Placement Group.
      */
-    readonly colocationStatus?: types.outputs.compute.v20230301.InstanceViewStatusResponse;
+    readonly colocationStatus?: types.outputs.InstanceViewStatusResponse;
     /**
      * Resource Id
      */
@@ -48,7 +48,7 @@ export interface GetProximityPlacementGroupResult {
     /**
      * Specifies the user intent of the proximity placement group.
      */
-    readonly intent?: types.outputs.compute.v20230301.ProximityPlacementGroupPropertiesResponseIntent;
+    readonly intent?: types.outputs.ProximityPlacementGroupPropertiesResponseIntent;
     /**
      * Resource location
      */
@@ -72,11 +72,11 @@ export interface GetProximityPlacementGroupResult {
     /**
      * A list of references to all virtual machine scale sets in the proximity placement group.
      */
-    readonly virtualMachineScaleSets: types.outputs.compute.v20230301.SubResourceWithColocationStatusResponse[];
+    readonly virtualMachineScaleSets: types.outputs.SubResourceWithColocationStatusResponse[];
     /**
      * A list of references to all virtual machines in the proximity placement group.
      */
-    readonly virtualMachines: types.outputs.compute.v20230301.SubResourceWithColocationStatusResponse[];
+    readonly virtualMachines: types.outputs.SubResourceWithColocationStatusResponse[];
     /**
      * Specifies the Availability Zone where virtual machine, virtual machine scale set or availability set associated with the  proximity placement group can be created.
      */

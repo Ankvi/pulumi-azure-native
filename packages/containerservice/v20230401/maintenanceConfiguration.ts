@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * See [planned maintenance](https://docs.microsoft.com/azure/aks/planned-maintenance) for more information about planned maintenance.
  */
@@ -38,15 +38,15 @@ export class MaintenanceConfiguration extends pulumi.CustomResource {
     /**
      * Time slots on which upgrade is not allowed.
      */
-    public readonly notAllowedTime!: pulumi.Output<types.outputs.containerservice.v20230401.TimeSpanResponse[] | undefined>;
+    public readonly notAllowedTime!: pulumi.Output<types.outputs.TimeSpanResponse[] | undefined>;
     /**
      * The system metadata relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.containerservice.v20230401.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * If two array entries specify the same day of the week, the applied configuration is the union of times in both entries.
      */
-    public readonly timeInWeek!: pulumi.Output<types.outputs.containerservice.v20230401.TimeInWeekResponse[] | undefined>;
+    public readonly timeInWeek!: pulumi.Output<types.outputs.TimeInWeekResponse[] | undefined>;
     /**
      * Resource type
      */
@@ -102,7 +102,7 @@ export interface MaintenanceConfigurationArgs {
     /**
      * Time slots on which upgrade is not allowed.
      */
-    notAllowedTime?: pulumi.Input<pulumi.Input<types.inputs.containerservice.v20230401.TimeSpanArgs>[]>;
+    notAllowedTime?: pulumi.Input<pulumi.Input<types.inputs.TimeSpanArgs>[]>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -114,5 +114,5 @@ export interface MaintenanceConfigurationArgs {
     /**
      * If two array entries specify the same day of the week, the applied configuration is the union of times in both entries.
      */
-    timeInWeek?: pulumi.Input<pulumi.Input<types.inputs.containerservice.v20230401.TimeInWeekArgs>[]>;
+    timeInWeek?: pulumi.Input<pulumi.Input<types.inputs.TimeInWeekArgs>[]>;
 }

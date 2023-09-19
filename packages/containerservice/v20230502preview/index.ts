@@ -88,7 +88,7 @@ utilities.lazyLoad(exports, ["TrustedAccessRoleBinding"], () => require("./trust
 
 
 // Export enums:
-export * from "../types/enums/v20230502preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

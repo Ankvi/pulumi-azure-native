@@ -43,7 +43,7 @@ export class DefenderSetting extends pulumi.CustomResource {
     /**
      * MDE integration configuration
      */
-    public readonly mdeIntegration!: pulumi.Output<types.outputs.iotsecurity.DefenderSettingsPropertiesResponseMdeIntegration>;
+    public readonly mdeIntegration!: pulumi.Output<types.outputs.DefenderSettingsPropertiesResponseMdeIntegration>;
     /**
      * The name of the resource
      */
@@ -118,7 +118,7 @@ export interface DefenderSettingArgs {
     /**
      * MDE integration configuration
      */
-    mdeIntegration: pulumi.Input<types.inputs.iotsecurity.DefenderSettingsPropertiesMdeIntegrationArgs>;
+    mdeIntegration: pulumi.Input<types.inputs.DefenderSettingsPropertiesMdeIntegrationArgs>;
     /**
      * The kind of onboarding for the subscription
      */

@@ -37,7 +37,7 @@ export interface GetServerTrustGroupResult {
     /**
      * Group members information for the server trust group.
      */
-    readonly groupMembers: types.outputs.sql.ServerInfoResponse[];
+    readonly groupMembers: types.outputs.ServerInfoResponse[];
     /**
      * Resource ID.
      */

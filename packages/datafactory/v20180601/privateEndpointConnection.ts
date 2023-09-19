@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Private Endpoint Connection ARM resource.
  */
@@ -42,7 +42,7 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * Core resource properties
      */
-    public readonly properties!: pulumi.Output<types.outputs.datafactory.v20180601.RemotePrivateEndpointConnectionResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.RemotePrivateEndpointConnectionResponse>;
     /**
      * The resource type.
      */
@@ -100,7 +100,7 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * Core resource properties
      */
-    properties?: pulumi.Input<types.inputs.datafactory.v20180601.PrivateLinkConnectionApprovalRequestArgs>;
+    properties?: pulumi.Input<types.inputs.PrivateLinkConnectionApprovalRequestArgs>;
     /**
      * The resource group name.
      */

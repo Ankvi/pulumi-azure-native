@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get stream events telemetry of a live event.
  */
@@ -36,7 +36,7 @@ export interface GetLiveEventStreamEventsResult {
     /**
      * The result of the get live event stream events.
      */
-    readonly value?: types.outputs.media.v20221101.LiveEventStreamEventResponse[];
+    readonly value?: types.outputs.LiveEventStreamEventResponse[];
 }
 /**
  * Get stream events telemetry of a live event.

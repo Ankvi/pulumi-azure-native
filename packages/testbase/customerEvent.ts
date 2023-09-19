@@ -43,11 +43,11 @@ export class CustomerEvent extends pulumi.CustomResource {
     /**
      * The notification event receivers.
      */
-    public readonly receivers!: pulumi.Output<types.outputs.testbase.NotificationEventReceiverResponse[]>;
+    public readonly receivers!: pulumi.Output<types.outputs.NotificationEventReceiverResponse[]>;
     /**
      * The system metadata relating to this resource
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.testbase.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource type.
      */
@@ -113,7 +113,7 @@ export interface CustomerEventArgs {
     /**
      * The notification event receivers.
      */
-    receivers: pulumi.Input<pulumi.Input<types.inputs.testbase.NotificationEventReceiverArgs>[]>;
+    receivers: pulumi.Input<pulumi.Input<types.inputs.NotificationEventReceiverArgs>[]>;
     /**
      * The name of the resource group that contains the resource.
      */

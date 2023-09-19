@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a data connector definition.
  */
@@ -36,11 +36,11 @@ export interface GetCustomizableConnectorDefinitionResult {
     /**
      * The UiConfig for 'Customizable' connector definition kind.
      */
-    readonly connectionsConfig?: types.outputs.securityinsights.v20230801preview.CustomizableConnectionsConfigResponse;
+    readonly connectionsConfig?: types.outputs.CustomizableConnectionsConfigResponse;
     /**
      * The UiConfig for 'Customizable' connector definition kind.
      */
-    readonly connectorUiConfig: types.outputs.securityinsights.v20230801preview.CustomizableConnectorUiConfigResponse;
+    readonly connectorUiConfig: types.outputs.CustomizableConnectorUiConfigResponse;
     /**
      * Gets or sets the connector definition created date in UTC format.
      */
@@ -69,7 +69,7 @@ export interface GetCustomizableConnectorDefinitionResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.securityinsights.v20230801preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

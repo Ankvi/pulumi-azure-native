@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Describes the RedisEnterprise cluster
  */
@@ -34,7 +34,7 @@ export class RedisEnterprise extends pulumi.CustomResource {
     /**
      * Encryption-at-rest configuration for the cluster.
      */
-    public readonly encryption!: pulumi.Output<types.outputs.cache.v20230301preview.ClusterPropertiesResponseEncryption | undefined>;
+    public readonly encryption!: pulumi.Output<types.outputs.ClusterPropertiesResponseEncryption | undefined>;
     /**
      * DNS name of the cluster endpoint
      */
@@ -42,7 +42,7 @@ export class RedisEnterprise extends pulumi.CustomResource {
     /**
      * The identity of the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.cache.v20230301preview.ManagedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -58,7 +58,7 @@ export class RedisEnterprise extends pulumi.CustomResource {
     /**
      * List of private endpoint connections associated with the specified RedisEnterprise cluster
      */
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.cache.v20230301preview.PrivateEndpointConnectionResponse[]>;
+    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[]>;
     /**
      * Current provisioning status of the cluster
      */
@@ -74,11 +74,11 @@ export class RedisEnterprise extends pulumi.CustomResource {
     /**
      * The SKU to create, which affects price, performance, and features.
      */
-    public readonly sku!: pulumi.Output<types.outputs.cache.v20230301preview.EnterpriseSkuResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.EnterpriseSkuResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.cache.v20230301preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -161,11 +161,11 @@ export interface RedisEnterpriseArgs {
     /**
      * Encryption-at-rest configuration for the cluster.
      */
-    encryption?: pulumi.Input<types.inputs.cache.v20230301preview.ClusterPropertiesEncryptionArgs>;
+    encryption?: pulumi.Input<types.inputs.ClusterPropertiesEncryptionArgs>;
     /**
      * The identity of the resource.
      */
-    identity?: pulumi.Input<types.inputs.cache.v20230301preview.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -173,7 +173,7 @@ export interface RedisEnterpriseArgs {
     /**
      * The minimum TLS version for the cluster to support, e.g. '1.2'
      */
-    minimumTlsVersion?: pulumi.Input<string | types.enums.v20230301preview.TlsVersion>;
+    minimumTlsVersion?: pulumi.Input<string | types.enums.TlsVersion>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -181,7 +181,7 @@ export interface RedisEnterpriseArgs {
     /**
      * The SKU to create, which affects price, performance, and features.
      */
-    sku: pulumi.Input<types.inputs.cache.v20230301preview.EnterpriseSkuArgs>;
+    sku: pulumi.Input<types.inputs.EnterpriseSkuArgs>;
     /**
      * Resource tags.
      */

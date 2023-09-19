@@ -35,7 +35,7 @@ export class FeaturesetVersion extends pulumi.CustomResource {
     /**
      * [Required] Additional attributes of the entity.
      */
-    public readonly featuresetVersionProperties!: pulumi.Output<types.outputs.machinelearningservices.FeaturesetVersionResponse>;
+    public readonly featuresetVersionProperties!: pulumi.Output<types.outputs.FeaturesetVersionResponse>;
     /**
      * The name of the resource
      */
@@ -43,7 +43,7 @@ export class FeaturesetVersion extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.machinelearningservices.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -72,7 +72,7 @@ export class FeaturesetVersion extends pulumi.CustomResource {
             if ((!args || args.workspaceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workspaceName'");
             }
-            resourceInputs["featuresetVersionProperties"] = args ? (args.featuresetVersionProperties ? pulumi.output(args.featuresetVersionProperties).apply(types.inputs.machinelearningservices.featuresetVersionArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["featuresetVersionProperties"] = args ? (args.featuresetVersionProperties ? pulumi.output(args.featuresetVersionProperties).apply(types.inputs.featuresetVersionArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["version"] = args ? args.version : undefined;
@@ -99,7 +99,7 @@ export interface FeaturesetVersionArgs {
     /**
      * [Required] Additional attributes of the entity.
      */
-    featuresetVersionProperties: pulumi.Input<types.inputs.machinelearningservices.FeaturesetVersionArgs>;
+    featuresetVersionProperties: pulumi.Input<types.inputs.FeaturesetVersionArgs>;
     /**
      * Container name. This is case-sensitive.
      */

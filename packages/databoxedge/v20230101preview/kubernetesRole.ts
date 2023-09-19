@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The limited preview of Kubernetes Cluster Management from the Azure supports:
  * 1. Using a simple turn-key option in Azure Portal, deploy a Kubernetes cluster on your Azure Stack Edge device.
@@ -54,11 +54,11 @@ export class KubernetesRole extends pulumi.CustomResource {
     /**
      * Kubernetes cluster configuration
      */
-    public readonly kubernetesClusterInfo!: pulumi.Output<types.outputs.databoxedge.v20230101preview.KubernetesClusterInfoResponse>;
+    public readonly kubernetesClusterInfo!: pulumi.Output<types.outputs.KubernetesClusterInfoResponse>;
     /**
      * Kubernetes role resources
      */
-    public readonly kubernetesRoleResources!: pulumi.Output<types.outputs.databoxedge.v20230101preview.KubernetesRoleResourcesResponse>;
+    public readonly kubernetesRoleResources!: pulumi.Output<types.outputs.KubernetesRoleResourcesResponse>;
     /**
      * The object name.
      */
@@ -74,7 +74,7 @@ export class KubernetesRole extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of Role
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.databoxedge.v20230101preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The hierarchical type of the object.
      */
@@ -154,7 +154,7 @@ export interface KubernetesRoleArgs {
     /**
      * Host OS supported by the Kubernetes role.
      */
-    hostPlatform: pulumi.Input<string | types.enums.v20230101preview.PlatformType>;
+    hostPlatform: pulumi.Input<string | types.enums.PlatformType>;
     /**
      * Role type.
      * Expected value is 'Kubernetes'.
@@ -163,11 +163,11 @@ export interface KubernetesRoleArgs {
     /**
      * Kubernetes cluster configuration
      */
-    kubernetesClusterInfo: pulumi.Input<types.inputs.databoxedge.v20230101preview.KubernetesClusterInfoArgs>;
+    kubernetesClusterInfo: pulumi.Input<types.inputs.KubernetesClusterInfoArgs>;
     /**
      * Kubernetes role resources
      */
-    kubernetesRoleResources: pulumi.Input<types.inputs.databoxedge.v20230101preview.KubernetesRoleResourcesArgs>;
+    kubernetesRoleResources: pulumi.Input<types.inputs.KubernetesRoleResourcesArgs>;
     /**
      * The role name.
      */
@@ -179,5 +179,5 @@ export interface KubernetesRoleArgs {
     /**
      * Role status.
      */
-    roleStatus: pulumi.Input<string | types.enums.v20230101preview.RoleStatus>;
+    roleStatus: pulumi.Input<string | types.enums.RoleStatus>;
 }

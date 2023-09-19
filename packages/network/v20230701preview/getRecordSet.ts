@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a record set.
  */
@@ -41,23 +41,23 @@ export interface GetRecordSetResult {
     /**
      * The list of A records in the record set.
      */
-    readonly aRecords?: types.outputs.network.v20230701preview.ARecordResponse[];
+    readonly aRecords?: types.outputs.ARecordResponse[];
     /**
      * The list of AAAA records in the record set.
      */
-    readonly aaaaRecords?: types.outputs.network.v20230701preview.AaaaRecordResponse[];
+    readonly aaaaRecords?: types.outputs.AaaaRecordResponse[];
     /**
      * The list of CAA records in the record set.
      */
-    readonly caaRecords?: types.outputs.network.v20230701preview.CaaRecordResponse[];
+    readonly caaRecords?: types.outputs.CaaRecordResponse[];
     /**
      * The CNAME record in the  record set.
      */
-    readonly cnameRecord?: types.outputs.network.v20230701preview.CnameRecordResponse;
+    readonly cnameRecord?: types.outputs.CnameRecordResponse;
     /**
      * The list of DS records in the record set.
      */
-    readonly dsRecords?: types.outputs.network.v20230701preview.DsRecordResponse[];
+    readonly dsRecords?: types.outputs.DsRecordResponse[];
     /**
      * The etag of the record set.
      */
@@ -77,7 +77,7 @@ export interface GetRecordSetResult {
     /**
      * The list of MX records in the record set.
      */
-    readonly mxRecords?: types.outputs.network.v20230701preview.MxRecordResponse[];
+    readonly mxRecords?: types.outputs.MxRecordResponse[];
     /**
      * The name of the record set.
      */
@@ -85,11 +85,11 @@ export interface GetRecordSetResult {
     /**
      * The list of NAPTR records in the record set.
      */
-    readonly naptrRecords?: types.outputs.network.v20230701preview.NaptrRecordResponse[];
+    readonly naptrRecords?: types.outputs.NaptrRecordResponse[];
     /**
      * The list of NS records in the record set.
      */
-    readonly nsRecords?: types.outputs.network.v20230701preview.NsRecordResponse[];
+    readonly nsRecords?: types.outputs.NsRecordResponse[];
     /**
      * provisioning State of the record set.
      */
@@ -97,23 +97,23 @@ export interface GetRecordSetResult {
     /**
      * The list of PTR records in the record set.
      */
-    readonly ptrRecords?: types.outputs.network.v20230701preview.PtrRecordResponse[];
+    readonly ptrRecords?: types.outputs.PtrRecordResponse[];
     /**
      * The SOA record in the record set.
      */
-    readonly soaRecord?: types.outputs.network.v20230701preview.SoaRecordResponse;
+    readonly soaRecord?: types.outputs.SoaRecordResponse;
     /**
      * The list of SRV records in the record set.
      */
-    readonly srvRecords?: types.outputs.network.v20230701preview.SrvRecordResponse[];
+    readonly srvRecords?: types.outputs.SrvRecordResponse[];
     /**
      * A reference to an azure resource from where the dns resource value is taken.
      */
-    readonly targetResource?: types.outputs.network.v20230701preview.SubResourceResponse;
+    readonly targetResource?: types.outputs.SubResourceResponse;
     /**
      * The list of TLSA records in the record set.
      */
-    readonly tlsaRecords?: types.outputs.network.v20230701preview.TlsaRecordResponse[];
+    readonly tlsaRecords?: types.outputs.TlsaRecordResponse[];
     /**
      * The TTL (time-to-live) of the records in the record set.
      */
@@ -121,7 +121,7 @@ export interface GetRecordSetResult {
     /**
      * The list of TXT records in the record set.
      */
-    readonly txtRecords?: types.outputs.network.v20230701preview.TxtRecordResponse[];
+    readonly txtRecords?: types.outputs.TxtRecordResponse[];
     /**
      * The type of the record set.
      */

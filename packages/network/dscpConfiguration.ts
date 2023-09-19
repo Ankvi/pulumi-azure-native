@@ -35,15 +35,15 @@ export class DscpConfiguration extends pulumi.CustomResource {
     /**
      * Associated Network Interfaces to the DSCP Configuration.
      */
-    public /*out*/ readonly associatedNetworkInterfaces!: pulumi.Output<types.outputs.network.NetworkInterfaceResponse[]>;
+    public /*out*/ readonly associatedNetworkInterfaces!: pulumi.Output<types.outputs.NetworkInterfaceResponse[]>;
     /**
      * Destination IP ranges.
      */
-    public readonly destinationIpRanges!: pulumi.Output<types.outputs.network.QosIpRangeResponse[] | undefined>;
+    public readonly destinationIpRanges!: pulumi.Output<types.outputs.QosIpRangeResponse[] | undefined>;
     /**
      * Destination port ranges.
      */
-    public readonly destinationPortRanges!: pulumi.Output<types.outputs.network.QosPortRangeResponse[] | undefined>;
+    public readonly destinationPortRanges!: pulumi.Output<types.outputs.QosPortRangeResponse[] | undefined>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -75,7 +75,7 @@ export class DscpConfiguration extends pulumi.CustomResource {
     /**
      * QoS object definitions
      */
-    public readonly qosDefinitionCollection!: pulumi.Output<types.outputs.network.QosDefinitionResponse[] | undefined>;
+    public readonly qosDefinitionCollection!: pulumi.Output<types.outputs.QosDefinitionResponse[] | undefined>;
     /**
      * The resource GUID property of the DSCP Configuration resource.
      */
@@ -83,11 +83,11 @@ export class DscpConfiguration extends pulumi.CustomResource {
     /**
      * Source IP ranges.
      */
-    public readonly sourceIpRanges!: pulumi.Output<types.outputs.network.QosIpRangeResponse[] | undefined>;
+    public readonly sourceIpRanges!: pulumi.Output<types.outputs.QosIpRangeResponse[] | undefined>;
     /**
      * Sources port ranges.
      */
-    public readonly sourcePortRanges!: pulumi.Output<types.outputs.network.QosPortRangeResponse[] | undefined>;
+    public readonly sourcePortRanges!: pulumi.Output<types.outputs.QosPortRangeResponse[] | undefined>;
     /**
      * Resource tags.
      */
@@ -162,11 +162,11 @@ export interface DscpConfigurationArgs {
     /**
      * Destination IP ranges.
      */
-    destinationIpRanges?: pulumi.Input<pulumi.Input<types.inputs.network.QosIpRangeArgs>[]>;
+    destinationIpRanges?: pulumi.Input<pulumi.Input<types.inputs.QosIpRangeArgs>[]>;
     /**
      * Destination port ranges.
      */
-    destinationPortRanges?: pulumi.Input<pulumi.Input<types.inputs.network.QosPortRangeArgs>[]>;
+    destinationPortRanges?: pulumi.Input<pulumi.Input<types.inputs.QosPortRangeArgs>[]>;
     /**
      * The name of the resource.
      */
@@ -190,7 +190,7 @@ export interface DscpConfigurationArgs {
     /**
      * QoS object definitions
      */
-    qosDefinitionCollection?: pulumi.Input<pulumi.Input<types.inputs.network.QosDefinitionArgs>[]>;
+    qosDefinitionCollection?: pulumi.Input<pulumi.Input<types.inputs.QosDefinitionArgs>[]>;
     /**
      * The name of the resource group.
      */
@@ -198,11 +198,11 @@ export interface DscpConfigurationArgs {
     /**
      * Source IP ranges.
      */
-    sourceIpRanges?: pulumi.Input<pulumi.Input<types.inputs.network.QosIpRangeArgs>[]>;
+    sourceIpRanges?: pulumi.Input<pulumi.Input<types.inputs.QosIpRangeArgs>[]>;
     /**
      * Sources port ranges.
      */
-    sourcePortRanges?: pulumi.Input<pulumi.Input<types.inputs.network.QosPortRangeArgs>[]>;
+    sourcePortRanges?: pulumi.Input<pulumi.Input<types.inputs.QosPortRangeArgs>[]>;
     /**
      * Resource tags.
      */

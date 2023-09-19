@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The remediation definition.
  */
@@ -42,15 +42,15 @@ export class RemediationAtResource extends pulumi.CustomResource {
     /**
      * The deployment status summary for all deployments created by the remediation.
      */
-    public /*out*/ readonly deploymentStatus!: pulumi.Output<types.outputs.policyinsights.v20211001.RemediationDeploymentSummaryResponse>;
+    public /*out*/ readonly deploymentStatus!: pulumi.Output<types.outputs.RemediationDeploymentSummaryResponse>;
     /**
      * The remediation failure threshold settings
      */
-    public readonly failureThreshold!: pulumi.Output<types.outputs.policyinsights.v20211001.RemediationPropertiesResponseFailureThreshold | undefined>;
+    public readonly failureThreshold!: pulumi.Output<types.outputs.RemediationPropertiesResponseFailureThreshold | undefined>;
     /**
      * The filters that will be applied to determine which resources to remediate.
      */
-    public readonly filters!: pulumi.Output<types.outputs.policyinsights.v20211001.RemediationFiltersResponse | undefined>;
+    public readonly filters!: pulumi.Output<types.outputs.RemediationFiltersResponse | undefined>;
     /**
      * The time at which the remediation was last updated.
      */
@@ -90,7 +90,7 @@ export class RemediationAtResource extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.policyinsights.v20211001.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the remediation.
      */
@@ -160,11 +160,11 @@ export interface RemediationAtResourceArgs {
     /**
      * The remediation failure threshold settings
      */
-    failureThreshold?: pulumi.Input<types.inputs.policyinsights.v20211001.RemediationPropertiesFailureThresholdArgs>;
+    failureThreshold?: pulumi.Input<types.inputs.RemediationPropertiesFailureThresholdArgs>;
     /**
      * The filters that will be applied to determine which resources to remediate.
      */
-    filters?: pulumi.Input<types.inputs.policyinsights.v20211001.RemediationFiltersArgs>;
+    filters?: pulumi.Input<types.inputs.RemediationFiltersArgs>;
     /**
      * Determines how many resources to remediate at any given time. Can be used to increase or reduce the pace of the remediation. If not provided, the default parallel deployments value is used.
      */
@@ -188,7 +188,7 @@ export interface RemediationAtResourceArgs {
     /**
      * The way resources to remediate are discovered. Defaults to ExistingNonCompliant if not specified.
      */
-    resourceDiscoveryMode?: pulumi.Input<string | types.enums.v20211001.ResourceDiscoveryMode>;
+    resourceDiscoveryMode?: pulumi.Input<string | types.enums.ResourceDiscoveryMode>;
     /**
      * Resource ID.
      */

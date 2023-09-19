@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the endpoint to the resource.
  */
@@ -63,11 +63,11 @@ export interface GetEndpointResult {
     /**
      * The endpoint properties.
      */
-    readonly properties: types.outputs.hybridconnectivity.v20230315.EndpointPropertiesResponse;
+    readonly properties: types.outputs.EndpointPropertiesResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.hybridconnectivity.v20230315.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

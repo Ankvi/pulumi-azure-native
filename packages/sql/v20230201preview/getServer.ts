@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a server.
  */
@@ -40,7 +40,7 @@ export interface GetServerResult {
     /**
      * The Azure Active Directory administrator of the server. This can only be used at server create time. If used for server update, it will be ignored or it will result in an error. For updates individual APIs will need to be used.
      */
-    readonly administrators?: types.outputs.sql.v20230201preview.ServerExternalAdministratorResponse;
+    readonly administrators?: types.outputs.ServerExternalAdministratorResponse;
     /**
      * Status of external governance.
      */
@@ -60,7 +60,7 @@ export interface GetServerResult {
     /**
      * The Azure Active Directory identity of the server.
      */
-    readonly identity?: types.outputs.sql.v20230201preview.ResourceIdentityResponse;
+    readonly identity?: types.outputs.ResourceIdentityResponse;
     /**
      * Whether or not to enable IPv6 support for this server.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'
      */
@@ -92,7 +92,7 @@ export interface GetServerResult {
     /**
      * List of private endpoint connections on a server
      */
-    readonly privateEndpointConnections: types.outputs.sql.v20230201preview.ServerPrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections: types.outputs.ServerPrivateEndpointConnectionResponse[];
     /**
      * Whether or not public endpoint access is allowed for this server.  Value is optional but if passed in, must be 'Enabled' or 'Disabled' or 'SecuredByPerimeter'
      */

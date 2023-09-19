@@ -50,7 +50,7 @@ export interface GetGalleryResult {
     /**
      * Describes the gallery unique name.
      */
-    readonly identifier?: types.outputs.compute.GalleryIdentifierResponse;
+    readonly identifier?: types.outputs.GalleryIdentifierResponse;
     /**
      * Resource location
      */
@@ -66,15 +66,15 @@ export interface GetGalleryResult {
     /**
      * Profile for gallery sharing to subscription or tenant
      */
-    readonly sharingProfile?: types.outputs.compute.SharingProfileResponse;
+    readonly sharingProfile?: types.outputs.SharingProfileResponse;
     /**
      * Sharing status of current gallery.
      */
-    readonly sharingStatus: types.outputs.compute.SharingStatusResponse;
+    readonly sharingStatus: types.outputs.SharingStatusResponse;
     /**
      * Contains information about the soft deletion policy of the gallery.
      */
-    readonly softDeletePolicy?: types.outputs.compute.SoftDeletePolicyResponse;
+    readonly softDeletePolicy?: types.outputs.SoftDeletePolicyResponse;
     /**
      * Resource tags
      */

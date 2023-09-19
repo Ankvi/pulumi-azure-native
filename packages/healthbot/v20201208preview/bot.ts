@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * HealthBot resource definition
  */
@@ -42,15 +42,15 @@ export class Bot extends pulumi.CustomResource {
     /**
      * The set of properties specific to healthcare bot resource.
      */
-    public /*out*/ readonly properties!: pulumi.Output<types.outputs.healthbot.v20201208preview.HealthBotPropertiesResponse>;
+    public /*out*/ readonly properties!: pulumi.Output<types.outputs.HealthBotPropertiesResponse>;
     /**
      * SKU of the HealthBot.
      */
-    public readonly sku!: pulumi.Output<types.outputs.healthbot.v20201208preview.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Metadata pertaining to creation and last modification of the resource
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.healthbot.v20201208preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -118,7 +118,7 @@ export interface BotArgs {
     /**
      * SKU of the HealthBot.
      */
-    sku?: pulumi.Input<types.inputs.healthbot.v20201208preview.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Resource tags.
      */

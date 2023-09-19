@@ -47,11 +47,11 @@ export class WebAppPrivateEndpointConnectionSlot extends pulumi.CustomResource {
     /**
      * PrivateEndpoint of a remote private endpoint connection
      */
-    public /*out*/ readonly privateEndpoint!: pulumi.Output<types.outputs.web.ArmIdWrapperResponse | undefined>;
+    public /*out*/ readonly privateEndpoint!: pulumi.Output<types.outputs.ArmIdWrapperResponse | undefined>;
     /**
      * The state of a private link connection
      */
-    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.web.PrivateLinkConnectionStateResponse | undefined>;
+    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.PrivateLinkConnectionStateResponse | undefined>;
     public /*out*/ readonly provisioningState!: pulumi.Output<string>;
     /**
      * Resource type.
@@ -120,7 +120,7 @@ export interface WebAppPrivateEndpointConnectionSlotArgs {
     /**
      * The state of a private link connection
      */
-    privateLinkServiceConnectionState?: pulumi.Input<types.inputs.web.PrivateLinkConnectionStateArgs>;
+    privateLinkServiceConnectionState?: pulumi.Input<types.inputs.PrivateLinkConnectionStateArgs>;
     /**
      * Name of the resource group to which the resource belongs.
      */

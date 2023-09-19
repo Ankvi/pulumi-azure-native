@@ -45,11 +45,11 @@ export interface GetContainerRegistryResult {
     /**
      * Properties of the container registry resource payload.
      */
-    readonly properties: types.outputs.appplatform.ContainerRegistryPropertiesResponse;
+    readonly properties: types.outputs.ContainerRegistryPropertiesResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.appplatform.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource.
      */

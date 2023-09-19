@@ -32,11 +32,11 @@ export interface GetAppServiceEnvironmentResult {
     /**
      * Custom settings for changing the behavior of the App Service Environment.
      */
-    readonly clusterSettings?: types.outputs.web.NameValuePairResponse[];
+    readonly clusterSettings?: types.outputs.NameValuePairResponse[];
     /**
      * Full view of the custom domain suffix configuration for ASEv3.
      */
-    readonly customDnsSuffixConfiguration?: types.outputs.web.CustomDnsSuffixConfigurationResponse;
+    readonly customDnsSuffixConfiguration?: types.outputs.CustomDnsSuffixConfigurationResponse;
     /**
      * Dedicated Host Count
      */
@@ -92,7 +92,7 @@ export interface GetAppServiceEnvironmentResult {
     /**
      * Full view of networking configuration for an ASE.
      */
-    readonly networkingConfiguration?: types.outputs.web.AseV3NetworkingConfigurationResponse;
+    readonly networkingConfiguration?: types.outputs.AseV3NetworkingConfigurationResponse;
     /**
      * Provisioning state of the App Service Environment.
      */
@@ -129,7 +129,7 @@ export interface GetAppServiceEnvironmentResult {
     /**
      * Description of the Virtual Network.
      */
-    readonly virtualNetwork: types.outputs.web.VirtualNetworkProfileResponse;
+    readonly virtualNetwork: types.outputs.VirtualNetworkProfileResponse;
     /**
      * Whether or not this App Service Environment is zone-redundant.
      */

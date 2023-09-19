@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a Maps Creator resource.
  */
@@ -48,7 +48,7 @@ export interface GetCreatorResult {
     /**
      * The Creator resource properties.
      */
-    readonly properties: types.outputs.maps.v20210201.CreatorPropertiesResponse;
+    readonly properties: types.outputs.CreatorPropertiesResponse;
     /**
      * Resource tags.
      */

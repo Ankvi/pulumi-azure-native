@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A profile object that contains change analysis configuration, such as notification settings, for this subscription
  */
@@ -34,7 +34,7 @@ export class ConfigurationProfile extends pulumi.CustomResource {
     /**
      * The identity block returned by ARM resource that supports managed identity.
      */
-    public readonly identity!: pulumi.Output<types.outputs.changeanalysis.v20200401preview.ResourceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ResourceIdentityResponse | undefined>;
     /**
      * The location where the resource is to be deployed.
      */
@@ -46,11 +46,11 @@ export class ConfigurationProfile extends pulumi.CustomResource {
     /**
      * The properties of a configuration profile.
      */
-    public readonly properties!: pulumi.Output<types.outputs.changeanalysis.v20200401preview.ConfigurationProfileResourcePropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ConfigurationProfileResourcePropertiesResponse>;
     /**
      * Top level metadata https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-contracts.md#system-metadata-for-all-azure-resources
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.changeanalysis.v20200401preview.SystemDataResponse | undefined>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -96,7 +96,7 @@ export interface ConfigurationProfileArgs {
     /**
      * The identity block returned by ARM resource that supports managed identity.
      */
-    identity?: pulumi.Input<types.inputs.changeanalysis.v20200401preview.ResourceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ResourceIdentityArgs>;
     /**
      * The location where the resource is to be deployed.
      */
@@ -108,5 +108,5 @@ export interface ConfigurationProfileArgs {
     /**
      * The properties of a configuration profile.
      */
-    properties?: pulumi.Input<types.inputs.changeanalysis.v20200401preview.ConfigurationProfileResourcePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ConfigurationProfileResourcePropertiesArgs>;
 }

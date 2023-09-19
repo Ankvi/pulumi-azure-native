@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The details of subscription under management group.
  */
@@ -42,7 +42,7 @@ export class ManagementGroupSubscription extends pulumi.CustomResource {
     /**
      * The ID of the parent management group.
      */
-    public /*out*/ readonly parent!: pulumi.Output<types.outputs.management.v20230401.DescendantParentGroupInfoResponse | undefined>;
+    public /*out*/ readonly parent!: pulumi.Output<types.outputs.DescendantParentGroupInfoResponse | undefined>;
     /**
      * The state of the subscription.
      */

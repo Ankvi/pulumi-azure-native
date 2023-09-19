@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Implements Cloud GET method.
  */
@@ -31,7 +31,7 @@ export interface GetCloudResult {
     /**
      * Capacity of the cloud.
      */
-    readonly cloudCapacity: types.outputs.scvmm.v20230401preview.CloudCapacityResponse;
+    readonly cloudCapacity: types.outputs.CloudCapacityResponse;
     /**
      * Name of the cloud in VMMServer.
      */
@@ -39,7 +39,7 @@ export interface GetCloudResult {
     /**
      * The extended location.
      */
-    readonly extendedLocation: types.outputs.scvmm.v20230401preview.ExtendedLocationResponse;
+    readonly extendedLocation: types.outputs.ExtendedLocationResponse;
     /**
      * Resource Id
      */
@@ -63,11 +63,11 @@ export interface GetCloudResult {
     /**
      * List of QoS policies available for the cloud.
      */
-    readonly storageQoSPolicies: types.outputs.scvmm.v20230401preview.StorageQoSPolicyResponse[];
+    readonly storageQoSPolicies: types.outputs.StorageQoSPolicyResponse[];
     /**
      * The system data.
      */
-    readonly systemData: types.outputs.scvmm.v20230401preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags
      */

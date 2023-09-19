@@ -40,7 +40,7 @@ export interface GetMarketplaceGalleryImageResult {
     /**
      * The extendedLocation of the resource.
      */
-    readonly extendedLocation?: types.outputs.azurestackhci.ExtendedLocationResponse;
+    readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
     /**
      * The hypervisor generation of the Virtual Machine [V1, V2]
      */
@@ -52,7 +52,7 @@ export interface GetMarketplaceGalleryImageResult {
     /**
      * This is the gallery image definition identifier.
      */
-    readonly identifier?: types.outputs.azurestackhci.GalleryImageIdentifierResponse;
+    readonly identifier?: types.outputs.GalleryImageIdentifierResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -72,11 +72,11 @@ export interface GetMarketplaceGalleryImageResult {
     /**
      * The observed state of marketplace gallery images
      */
-    readonly status: types.outputs.azurestackhci.MarketplaceGalleryImageStatusResponse;
+    readonly status: types.outputs.MarketplaceGalleryImageStatusResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.azurestackhci.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -88,7 +88,7 @@ export interface GetMarketplaceGalleryImageResult {
     /**
      * Specifies information about the gallery image version that you want to create or update.
      */
-    readonly version?: types.outputs.azurestackhci.GalleryImageVersionResponse;
+    readonly version?: types.outputs.GalleryImageVersionResponse;
 }
 /**
  * Gets a marketplace gallery image

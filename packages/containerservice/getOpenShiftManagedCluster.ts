@@ -32,11 +32,11 @@ export interface GetOpenShiftManagedClusterResult {
     /**
      * Configuration of OpenShift cluster VMs.
      */
-    readonly agentPoolProfiles?: types.outputs.containerservice.OpenShiftManagedClusterAgentPoolProfileResponse[];
+    readonly agentPoolProfiles?: types.outputs.OpenShiftManagedClusterAgentPoolProfileResponse[];
     /**
      * Configures OpenShift authentication.
      */
-    readonly authProfile?: types.outputs.containerservice.OpenShiftManagedClusterAuthProfileResponse;
+    readonly authProfile?: types.outputs.OpenShiftManagedClusterAuthProfileResponse;
     /**
      * Version of OpenShift specified when creating the cluster.
      */
@@ -56,11 +56,11 @@ export interface GetOpenShiftManagedClusterResult {
     /**
      * Configuration for OpenShift master VMs.
      */
-    readonly masterPoolProfile?: types.outputs.containerservice.OpenShiftManagedClusterMasterPoolProfileResponse;
+    readonly masterPoolProfile?: types.outputs.OpenShiftManagedClusterMasterPoolProfileResponse;
     /**
      * Configures Log Analytics integration.
      */
-    readonly monitorProfile?: types.outputs.containerservice.OpenShiftManagedClusterMonitorProfileResponse;
+    readonly monitorProfile?: types.outputs.OpenShiftManagedClusterMonitorProfileResponse;
     /**
      * Resource name
      */
@@ -68,7 +68,7 @@ export interface GetOpenShiftManagedClusterResult {
     /**
      * Configuration for OpenShift networking.
      */
-    readonly networkProfile?: types.outputs.containerservice.NetworkProfileResponse;
+    readonly networkProfile?: types.outputs.NetworkProfileResponse;
     /**
      * Version of OpenShift specified when creating the cluster.
      */
@@ -76,7 +76,7 @@ export interface GetOpenShiftManagedClusterResult {
     /**
      * Define the resource plan as required by ARM for billing purposes
      */
-    readonly plan?: types.outputs.containerservice.PurchasePlanResponse;
+    readonly plan?: types.outputs.PurchasePlanResponse;
     /**
      * The current deployment or provisioning state, which only appears in the response.
      */
@@ -92,7 +92,7 @@ export interface GetOpenShiftManagedClusterResult {
     /**
      * Configuration for OpenShift router(s).
      */
-    readonly routerProfiles?: types.outputs.containerservice.OpenShiftRouterProfileResponse[];
+    readonly routerProfiles?: types.outputs.OpenShiftRouterProfileResponse[];
     /**
      * Resource tags
      */

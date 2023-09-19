@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get an Volume.
  */
@@ -41,7 +41,7 @@ export interface GetVolumeResult {
     /**
      * State of the operation on the resource.
      */
-    readonly creationData?: types.outputs.elasticsan.v20211120preview.SourceCreationDataResponse;
+    readonly creationData?: types.outputs.SourceCreationDataResponse;
     /**
      * Azure resource identifier.
      */
@@ -57,11 +57,11 @@ export interface GetVolumeResult {
     /**
      * Storage target information
      */
-    readonly storageTarget: types.outputs.elasticsan.v20211120preview.IscsiTargetInfoResponse;
+    readonly storageTarget: types.outputs.IscsiTargetInfoResponse;
     /**
      * Resource metadata required by ARM RPC
      */
-    readonly systemData: types.outputs.elasticsan.v20211120preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Azure resource tags.
      */

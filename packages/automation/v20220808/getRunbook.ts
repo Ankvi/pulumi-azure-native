@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieve the runbook identified by runbook name.
  */
@@ -44,7 +44,7 @@ export interface GetRunbookResult {
     /**
      * Gets or sets the draft runbook properties.
      */
-    readonly draft?: types.outputs.automation.v20220808.RunbookDraftResponse;
+    readonly draft?: types.outputs.RunbookDraftResponse;
     /**
      * Gets or sets the etag of the resource.
      */
@@ -92,7 +92,7 @@ export interface GetRunbookResult {
     /**
      * Gets or sets the runbook parameters.
      */
-    readonly parameters?: {[key: string]: types.outputs.automation.v20220808.RunbookParameterResponse};
+    readonly parameters?: {[key: string]: types.outputs.RunbookParameterResponse};
     /**
      * Gets or sets the provisioning state of the runbook.
      */
@@ -100,7 +100,7 @@ export interface GetRunbookResult {
     /**
      * Gets or sets the published runbook content link.
      */
-    readonly publishContentLink?: types.outputs.automation.v20220808.ContentLinkResponse;
+    readonly publishContentLink?: types.outputs.ContentLinkResponse;
     /**
      * Gets or sets the type of the runbook.
      */

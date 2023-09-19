@@ -50,11 +50,11 @@ export interface GetBuildServiceBuilderResult {
     /**
      * Property of the Builder resource.
      */
-    readonly properties: types.outputs.appplatform.BuilderPropertiesResponse;
+    readonly properties: types.outputs.BuilderPropertiesResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.appplatform.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource.
      */

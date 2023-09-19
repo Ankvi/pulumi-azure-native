@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a resource.
  */
@@ -46,7 +46,7 @@ export interface GetResourceResult {
     /**
      * Resource extended location.
      */
-    readonly extendedLocation?: types.outputs.resources.v20220901.ExtendedLocationResponse;
+    readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
     /**
      * Resource ID
      */
@@ -54,7 +54,7 @@ export interface GetResourceResult {
     /**
      * The identity of the resource.
      */
-    readonly identity?: types.outputs.resources.v20220901.IdentityResponse;
+    readonly identity?: types.outputs.IdentityResponse;
     /**
      * The kind of the resource.
      */
@@ -74,7 +74,7 @@ export interface GetResourceResult {
     /**
      * The plan of the resource.
      */
-    readonly plan?: types.outputs.resources.v20220901.PlanResponse;
+    readonly plan?: types.outputs.PlanResponse;
     /**
      * The resource properties.
      */
@@ -82,7 +82,7 @@ export interface GetResourceResult {
     /**
      * The SKU of the resource.
      */
-    readonly sku?: types.outputs.resources.v20220901.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * Resource tags
      */

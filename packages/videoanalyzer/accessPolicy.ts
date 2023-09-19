@@ -35,7 +35,7 @@ export class AccessPolicy extends pulumi.CustomResource {
     /**
      * Authentication method to be used when validating client API access.
      */
-    public readonly authentication!: pulumi.Output<types.outputs.videoanalyzer.JwtAuthenticationResponse | undefined>;
+    public readonly authentication!: pulumi.Output<types.outputs.JwtAuthenticationResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -47,7 +47,7 @@ export class AccessPolicy extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.videoanalyzer.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -107,7 +107,7 @@ export interface AccessPolicyArgs {
     /**
      * Authentication method to be used when validating client API access.
      */
-    authentication?: pulumi.Input<types.inputs.videoanalyzer.JwtAuthenticationArgs>;
+    authentication?: pulumi.Input<types.inputs.JwtAuthenticationArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Defines the properties of an Experiment
  */
@@ -42,11 +42,11 @@ export class Experiment extends pulumi.CustomResource {
     /**
      * The endpoint A of an experiment
      */
-    public readonly endpointA!: pulumi.Output<types.outputs.network.v20191101.ExperimentEndpointResponse | undefined>;
+    public readonly endpointA!: pulumi.Output<types.outputs.ExperimentEndpointResponse | undefined>;
     /**
      * The endpoint B of an experiment
      */
-    public readonly endpointB!: pulumi.Output<types.outputs.network.v20191101.ExperimentEndpointResponse | undefined>;
+    public readonly endpointB!: pulumi.Output<types.outputs.ExperimentEndpointResponse | undefined>;
     /**
      * Resource location.
      */
@@ -138,15 +138,15 @@ export interface ExperimentArgs {
     /**
      * The state of the Experiment
      */
-    enabledState?: pulumi.Input<string | types.enums.v20191101.State>;
+    enabledState?: pulumi.Input<string | types.enums.State>;
     /**
      * The endpoint A of an experiment
      */
-    endpointA?: pulumi.Input<types.inputs.network.v20191101.ExperimentEndpointArgs>;
+    endpointA?: pulumi.Input<types.inputs.ExperimentEndpointArgs>;
     /**
      * The endpoint B of an experiment
      */
-    endpointB?: pulumi.Input<types.inputs.network.v20191101.ExperimentEndpointArgs>;
+    endpointB?: pulumi.Input<types.inputs.ExperimentEndpointArgs>;
     /**
      * The Experiment identifier associated with the Experiment
      */

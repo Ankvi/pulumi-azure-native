@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the details of the user specified by its identifier.
  */
@@ -44,7 +44,7 @@ export interface GetUserResult {
     /**
      * Collection of groups user is part of.
      */
-    readonly groups: types.outputs.apimanagement.v20220801.GroupContractPropertiesResponse[];
+    readonly groups: types.outputs.GroupContractPropertiesResponse[];
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -52,7 +52,7 @@ export interface GetUserResult {
     /**
      * Collection of user identities.
      */
-    readonly identities?: types.outputs.apimanagement.v20220801.UserIdentityContractResponse[];
+    readonly identities?: types.outputs.UserIdentityContractResponse[];
     /**
      * Last name.
      */

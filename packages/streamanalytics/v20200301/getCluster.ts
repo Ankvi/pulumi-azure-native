@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets information about the specified cluster.
  */
@@ -67,7 +67,7 @@ export interface GetClusterResult {
     /**
      * The SKU of the cluster. This determines the size/capacity of the cluster. Required on PUT (CreateOrUpdate) requests.
      */
-    readonly sku?: types.outputs.streamanalytics.v20200301.ClusterSkuResponse;
+    readonly sku?: types.outputs.ClusterSkuResponse;
     /**
      * Resource tags.
      */

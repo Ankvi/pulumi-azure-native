@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * VirtualHub Resource.
  */
@@ -38,11 +38,11 @@ export class VirtualHub extends pulumi.CustomResource {
     /**
      * The azureFirewall associated with this VirtualHub.
      */
-    public readonly azureFirewall!: pulumi.Output<types.outputs.network.v20200601.SubResourceResponse | undefined>;
+    public readonly azureFirewall!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * List of references to Bgp Connections.
      */
-    public /*out*/ readonly bgpConnections!: pulumi.Output<types.outputs.network.v20200601.SubResourceResponse[]>;
+    public /*out*/ readonly bgpConnections!: pulumi.Output<types.outputs.SubResourceResponse[]>;
     /**
      * Flag to control route propogation for VirtualRouter hub.
      */
@@ -54,11 +54,11 @@ export class VirtualHub extends pulumi.CustomResource {
     /**
      * The expressRouteGateway associated with this VirtualHub.
      */
-    public readonly expressRouteGateway!: pulumi.Output<types.outputs.network.v20200601.SubResourceResponse | undefined>;
+    public readonly expressRouteGateway!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * List of references to IpConfigurations.
      */
-    public /*out*/ readonly ipConfigurations!: pulumi.Output<types.outputs.network.v20200601.SubResourceResponse[]>;
+    public /*out*/ readonly ipConfigurations!: pulumi.Output<types.outputs.SubResourceResponse[]>;
     /**
      * Resource location.
      */
@@ -70,7 +70,7 @@ export class VirtualHub extends pulumi.CustomResource {
     /**
      * The P2SVpnGateway associated with this VirtualHub.
      */
-    public readonly p2SVpnGateway!: pulumi.Output<types.outputs.network.v20200601.SubResourceResponse | undefined>;
+    public readonly p2SVpnGateway!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * The provisioning state of the virtual hub resource.
      */
@@ -78,7 +78,7 @@ export class VirtualHub extends pulumi.CustomResource {
     /**
      * The routeTable associated with this virtual hub.
      */
-    public readonly routeTable!: pulumi.Output<types.outputs.network.v20200601.VirtualHubRouteTableResponse | undefined>;
+    public readonly routeTable!: pulumi.Output<types.outputs.VirtualHubRouteTableResponse | undefined>;
     /**
      * The routing state.
      */
@@ -86,7 +86,7 @@ export class VirtualHub extends pulumi.CustomResource {
     /**
      * The securityPartnerProvider associated with this VirtualHub.
      */
-    public readonly securityPartnerProvider!: pulumi.Output<types.outputs.network.v20200601.SubResourceResponse | undefined>;
+    public readonly securityPartnerProvider!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * The Security Provider name.
      */
@@ -106,7 +106,7 @@ export class VirtualHub extends pulumi.CustomResource {
     /**
      * List of all virtual hub route table v2s associated with this VirtualHub.
      */
-    public readonly virtualHubRouteTableV2s!: pulumi.Output<types.outputs.network.v20200601.VirtualHubRouteTableV2Response[] | undefined>;
+    public readonly virtualHubRouteTableV2s!: pulumi.Output<types.outputs.VirtualHubRouteTableV2Response[] | undefined>;
     /**
      * VirtualRouter ASN.
      */
@@ -118,11 +118,11 @@ export class VirtualHub extends pulumi.CustomResource {
     /**
      * The VirtualWAN to which the VirtualHub belongs.
      */
-    public readonly virtualWan!: pulumi.Output<types.outputs.network.v20200601.SubResourceResponse | undefined>;
+    public readonly virtualWan!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * The VpnGateway associated with this VirtualHub.
      */
-    public readonly vpnGateway!: pulumi.Output<types.outputs.network.v20200601.SubResourceResponse | undefined>;
+    public readonly vpnGateway!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
 
     /**
      * Create a VirtualHub resource with the given unique name, arguments, and options.
@@ -207,7 +207,7 @@ export interface VirtualHubArgs {
     /**
      * The azureFirewall associated with this VirtualHub.
      */
-    azureFirewall?: pulumi.Input<types.inputs.network.v20200601.SubResourceArgs>;
+    azureFirewall?: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * Flag to control route propogation for VirtualRouter hub.
      */
@@ -215,7 +215,7 @@ export interface VirtualHubArgs {
     /**
      * The expressRouteGateway associated with this VirtualHub.
      */
-    expressRouteGateway?: pulumi.Input<types.inputs.network.v20200601.SubResourceArgs>;
+    expressRouteGateway?: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * Resource ID.
      */
@@ -227,7 +227,7 @@ export interface VirtualHubArgs {
     /**
      * The P2SVpnGateway associated with this VirtualHub.
      */
-    p2SVpnGateway?: pulumi.Input<types.inputs.network.v20200601.SubResourceArgs>;
+    p2SVpnGateway?: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * The resource group name of the VirtualHub.
      */
@@ -235,11 +235,11 @@ export interface VirtualHubArgs {
     /**
      * The routeTable associated with this virtual hub.
      */
-    routeTable?: pulumi.Input<types.inputs.network.v20200601.VirtualHubRouteTableArgs>;
+    routeTable?: pulumi.Input<types.inputs.VirtualHubRouteTableArgs>;
     /**
      * The securityPartnerProvider associated with this VirtualHub.
      */
-    securityPartnerProvider?: pulumi.Input<types.inputs.network.v20200601.SubResourceArgs>;
+    securityPartnerProvider?: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * The Security Provider name.
      */
@@ -260,7 +260,7 @@ export interface VirtualHubArgs {
      * List of all virtual hub route table v2s associated with this VirtualHub.
      * These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
      */
-    virtualHubRouteTableV2s?: pulumi.Input<pulumi.Input<types.inputs.network.v20200601.VirtualHubRouteTableV2Args>[]>;
+    virtualHubRouteTableV2s?: pulumi.Input<pulumi.Input<types.inputs.VirtualHubRouteTableV2Args>[]>;
     /**
      * VirtualRouter ASN.
      */
@@ -272,9 +272,9 @@ export interface VirtualHubArgs {
     /**
      * The VirtualWAN to which the VirtualHub belongs.
      */
-    virtualWan?: pulumi.Input<types.inputs.network.v20200601.SubResourceArgs>;
+    virtualWan?: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * The VpnGateway associated with this VirtualHub.
      */
-    vpnGateway?: pulumi.Input<types.inputs.network.v20200601.SubResourceArgs>;
+    vpnGateway?: pulumi.Input<types.inputs.SubResourceArgs>;
 }

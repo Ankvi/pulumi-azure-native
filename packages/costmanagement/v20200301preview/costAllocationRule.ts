@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The cost allocation rule model definition
  */
@@ -38,7 +38,7 @@ export class CostAllocationRule extends pulumi.CustomResource {
     /**
      * Cost allocation rule properties
      */
-    public readonly properties!: pulumi.Output<types.outputs.costmanagement.v20200301preview.CostAllocationRulePropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.CostAllocationRulePropertiesResponse>;
     /**
      * Resource type of the rule. This is a read only value of Microsoft.CostManagement/CostAllocationRule.
      */
@@ -86,7 +86,7 @@ export interface CostAllocationRuleArgs {
     /**
      * Cost allocation rule properties
      */
-    properties?: pulumi.Input<types.inputs.costmanagement.v20200301preview.CostAllocationRulePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.CostAllocationRulePropertiesArgs>;
     /**
      * Cost allocation rule name. The name cannot include spaces or any non alphanumeric characters other than '_' and '-'. The max length is 260 characters.
      */

@@ -44,11 +44,11 @@ export interface GetLedgerResult {
     /**
      * Properties of Confidential Ledger Resource.
      */
-    readonly properties: types.outputs.confidentialledger.LedgerPropertiesResponse;
+    readonly properties: types.outputs.LedgerPropertiesResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource
      */
-    readonly systemData: types.outputs.confidentialledger.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Additional tags for Confidential Ledger
      */

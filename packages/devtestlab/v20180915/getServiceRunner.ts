@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get service runner.
  */
@@ -40,7 +40,7 @@ export interface GetServiceRunnerResult {
     /**
      * The identity of the resource.
      */
-    readonly identity?: types.outputs.devtestlab.v20180915.IdentityPropertiesResponse;
+    readonly identity?: types.outputs.IdentityPropertiesResponse;
     /**
      * The location of the resource.
      */

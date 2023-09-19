@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns a Cache.
  */
@@ -35,15 +35,15 @@ export interface GetCacheResult {
     /**
      * Specifies Directory Services settings of the cache.
      */
-    readonly directoryServicesSettings?: types.outputs.storagecache.v20210301.CacheDirectorySettingsResponse;
+    readonly directoryServicesSettings?: types.outputs.CacheDirectorySettingsResponse;
     /**
      * Specifies encryption settings of the cache.
      */
-    readonly encryptionSettings?: types.outputs.storagecache.v20210301.CacheEncryptionSettingsResponse;
+    readonly encryptionSettings?: types.outputs.CacheEncryptionSettingsResponse;
     /**
      * Health of the Cache.
      */
-    readonly health: types.outputs.storagecache.v20210301.CacheHealthResponse;
+    readonly health: types.outputs.CacheHealthResponse;
     /**
      * Resource ID of the Cache.
      */
@@ -51,7 +51,7 @@ export interface GetCacheResult {
     /**
      * The identity of the cache, if configured.
      */
-    readonly identity?: types.outputs.storagecache.v20210301.CacheIdentityResponse;
+    readonly identity?: types.outputs.CacheIdentityResponse;
     /**
      * Region name string.
      */
@@ -67,7 +67,7 @@ export interface GetCacheResult {
     /**
      * Specifies network settings of the cache.
      */
-    readonly networkSettings?: types.outputs.storagecache.v20210301.CacheNetworkSettingsResponse;
+    readonly networkSettings?: types.outputs.CacheNetworkSettingsResponse;
     /**
      * ARM provisioning state, see https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/Addendum.md#provisioningstate-property
      */
@@ -75,11 +75,11 @@ export interface GetCacheResult {
     /**
      * Specifies security settings of the cache.
      */
-    readonly securitySettings?: types.outputs.storagecache.v20210301.CacheSecuritySettingsResponse;
+    readonly securitySettings?: types.outputs.CacheSecuritySettingsResponse;
     /**
      * SKU for the Cache.
      */
-    readonly sku?: types.outputs.storagecache.v20210301.CacheResponseSku;
+    readonly sku?: types.outputs.CacheResponseSku;
     /**
      * Subnet used for the Cache.
      */
@@ -87,7 +87,7 @@ export interface GetCacheResult {
     /**
      * The system meta data relating to this resource.
      */
-    readonly systemData: types.outputs.storagecache.v20210301.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -99,7 +99,7 @@ export interface GetCacheResult {
     /**
      * Upgrade status of the Cache.
      */
-    readonly upgradeStatus?: types.outputs.storagecache.v20210301.CacheUpgradeStatusResponse;
+    readonly upgradeStatus?: types.outputs.CacheUpgradeStatusResponse;
 }
 /**
  * Returns a Cache.

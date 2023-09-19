@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieve the configuration identified by configuration name.
  */
@@ -76,7 +76,7 @@ export interface GetDscConfigurationResult {
     /**
      * Gets or sets the configuration parameters.
      */
-    readonly parameters?: {[key: string]: types.outputs.automation.v20220808.DscConfigurationParameterResponse};
+    readonly parameters?: {[key: string]: types.outputs.DscConfigurationParameterResponse};
     /**
      * Gets or sets the provisioning state of the configuration.
      */
@@ -84,7 +84,7 @@ export interface GetDscConfigurationResult {
     /**
      * Gets or sets the source.
      */
-    readonly source?: types.outputs.automation.v20220808.ContentSourceResponse;
+    readonly source?: types.outputs.ContentSourceResponse;
     /**
      * Gets or sets the state of the configuration.
      */

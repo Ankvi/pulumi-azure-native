@@ -48,7 +48,7 @@ utilities.lazyLoad(exports, ["Route"], () => require("./route"));
 
 
 // Export enums:
-export * from "../types/enums/v20200901";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

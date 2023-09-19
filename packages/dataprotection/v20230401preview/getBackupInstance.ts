@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a backup instance with name in a backup vault
  */
@@ -44,11 +44,11 @@ export interface GetBackupInstanceResult {
     /**
      * BackupInstanceResource properties
      */
-    readonly properties: types.outputs.dataprotection.v20230401preview.BackupInstanceResponse;
+    readonly properties: types.outputs.BackupInstanceResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.dataprotection.v20230401preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Proxy Resource tags.
      */

@@ -38,7 +38,7 @@ utilities.lazyLoad(exports, ["listStorageAccountSasTokens","listStorageAccountSa
 
 
 // Export enums:
-export * from "../types/enums/v20191101preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

@@ -37,7 +37,7 @@ export interface GetVirtualNetworkGatewayBgpPeerStatusResult {
     /**
      * List of BGP peers.
      */
-    readonly value?: types.outputs.network.BgpPeerStatusResponse[];
+    readonly value?: types.outputs.BgpPeerStatusResponse[];
 }
 /**
  * The GetBgpPeerStatus operation retrieves the status of all BGP peers.

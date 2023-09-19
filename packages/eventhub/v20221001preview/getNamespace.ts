@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the description of the specified namespace.
  */
@@ -47,7 +47,7 @@ export interface GetNamespaceResult {
     /**
      * Properties of BYOK Encryption description
      */
-    readonly encryption?: types.outputs.eventhub.v20221001preview.EncryptionResponse;
+    readonly encryption?: types.outputs.EncryptionResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -55,7 +55,7 @@ export interface GetNamespaceResult {
     /**
      * Properties of BYOK Identity description
      */
-    readonly identity?: types.outputs.eventhub.v20221001preview.IdentityResponse;
+    readonly identity?: types.outputs.IdentityResponse;
     /**
      * Value that indicates whether AutoInflate is enabled for eventhub namespace.
      */
@@ -87,7 +87,7 @@ export interface GetNamespaceResult {
     /**
      * List of private endpoint connections.
      */
-    readonly privateEndpointConnections?: types.outputs.eventhub.v20221001preview.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections?: types.outputs.PrivateEndpointConnectionResponse[];
     /**
      * Provisioning state of the Namespace.
      */
@@ -103,7 +103,7 @@ export interface GetNamespaceResult {
     /**
      * Properties of sku resource
      */
-    readonly sku?: types.outputs.eventhub.v20221001preview.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * Status of the Namespace.
      */
@@ -111,7 +111,7 @@ export interface GetNamespaceResult {
     /**
      * The system meta data relating to this resource.
      */
-    readonly systemData: types.outputs.eventhub.v20221001preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

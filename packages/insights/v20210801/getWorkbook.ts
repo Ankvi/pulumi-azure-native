@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a single workbook by its resourceName.
  */
@@ -56,7 +56,7 @@ export interface GetWorkbookResult {
     /**
      * Identity used for BYOS
      */
-    readonly identity?: types.outputs.insights.v20210801.WorkbookResourceResponseIdentity;
+    readonly identity?: types.outputs.WorkbookResourceResponseIdentity;
     /**
      * The kind of workbook. Only valid value is shared.
      */
@@ -88,7 +88,7 @@ export interface GetWorkbookResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.insights.v20210801.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

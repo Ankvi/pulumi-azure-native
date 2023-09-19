@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the specified Virtual Router.
  */
@@ -40,11 +40,11 @@ export interface GetVirtualRouterResult {
     /**
      * The Gateway on which VirtualRouter is hosted.
      */
-    readonly hostedGateway?: types.outputs.network.v20230501.SubResourceResponse;
+    readonly hostedGateway?: types.outputs.SubResourceResponse;
     /**
      * The Subnet on which VirtualRouter is hosted.
      */
-    readonly hostedSubnet?: types.outputs.network.v20230501.SubResourceResponse;
+    readonly hostedSubnet?: types.outputs.SubResourceResponse;
     /**
      * Resource ID.
      */
@@ -60,7 +60,7 @@ export interface GetVirtualRouterResult {
     /**
      * List of references to VirtualRouterPeerings.
      */
-    readonly peerings: types.outputs.network.v20230501.SubResourceResponse[];
+    readonly peerings: types.outputs.SubResourceResponse[];
     /**
      * The provisioning state of the resource.
      */

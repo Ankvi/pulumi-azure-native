@@ -37,7 +37,7 @@ export interface GetConnectionResult {
     /**
      * Gets or sets the connectionType of the connection.
      */
-    readonly connectionType?: types.outputs.automation.ConnectionTypeAssociationPropertyResponse;
+    readonly connectionType?: types.outputs.ConnectionTypeAssociationPropertyResponse;
     /**
      * Gets the creation time.
      */

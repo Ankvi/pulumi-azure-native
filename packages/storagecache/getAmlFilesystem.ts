@@ -32,11 +32,11 @@ export interface GetAmlFilesystemResult {
     /**
      * Client information for the AML file system.
      */
-    readonly clientInfo: types.outputs.storagecache.AmlFilesystemClientInfoResponse;
+    readonly clientInfo: types.outputs.AmlFilesystemClientInfoResponse;
     /**
      * Specifies encryption settings of the AML file system.
      */
-    readonly encryptionSettings?: types.outputs.storagecache.AmlFilesystemEncryptionSettingsResponse;
+    readonly encryptionSettings?: types.outputs.AmlFilesystemEncryptionSettingsResponse;
     /**
      * Subnet used for managing the AML file system and for client-facing operations. This subnet should have at least a /24 subnet mask within the VNET's address space.
      */
@@ -44,11 +44,11 @@ export interface GetAmlFilesystemResult {
     /**
      * Health of the AML file system.
      */
-    readonly health: types.outputs.storagecache.AmlFilesystemHealthResponse;
+    readonly health: types.outputs.AmlFilesystemHealthResponse;
     /**
      * Hydration and archive settings and status
      */
-    readonly hsm?: types.outputs.storagecache.AmlFilesystemResponseHsm;
+    readonly hsm?: types.outputs.AmlFilesystemResponseHsm;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -56,7 +56,7 @@ export interface GetAmlFilesystemResult {
     /**
      * The managed identity used by the AML file system, if configured.
      */
-    readonly identity?: types.outputs.storagecache.AmlFilesystemIdentityResponse;
+    readonly identity?: types.outputs.AmlFilesystemIdentityResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -64,7 +64,7 @@ export interface GetAmlFilesystemResult {
     /**
      * Start time of a 30-minute weekly maintenance window.
      */
-    readonly maintenanceWindow: types.outputs.storagecache.AmlFilesystemResponseMaintenanceWindow;
+    readonly maintenanceWindow: types.outputs.AmlFilesystemResponseMaintenanceWindow;
     /**
      * The name of the resource
      */
@@ -76,7 +76,7 @@ export interface GetAmlFilesystemResult {
     /**
      * SKU for the resource.
      */
-    readonly sku?: types.outputs.storagecache.SkuNameResponse;
+    readonly sku?: types.outputs.SkuNameResponse;
     /**
      * The size of the AML file system, in TiB. This might be rounded up.
      */
@@ -84,7 +84,7 @@ export interface GetAmlFilesystemResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.storagecache.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

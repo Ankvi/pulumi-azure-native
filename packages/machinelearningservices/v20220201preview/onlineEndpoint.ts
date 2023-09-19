@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 export class OnlineEndpoint extends pulumi.CustomResource {
     /**
      * Get an existing OnlineEndpoint resource's state with the given name, ID, and optional extra
@@ -31,7 +31,7 @@ export class OnlineEndpoint extends pulumi.CustomResource {
     /**
      * Managed service identity (system assigned and/or user assigned identities)
      */
-    public readonly identity!: pulumi.Output<types.outputs.machinelearningservices.v20220201preview.ManagedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
      */
@@ -47,15 +47,15 @@ export class OnlineEndpoint extends pulumi.CustomResource {
     /**
      * [Required] Additional attributes of the entity.
      */
-    public readonly onlineEndpointDetails!: pulumi.Output<types.outputs.machinelearningservices.v20220201preview.OnlineEndpointResponse>;
+    public readonly onlineEndpointDetails!: pulumi.Output<types.outputs.OnlineEndpointResponse>;
     /**
      * Sku details required for ARM contract for Autoscaling.
      */
-    public readonly sku!: pulumi.Output<types.outputs.machinelearningservices.v20220201preview.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.machinelearningservices.v20220201preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -89,7 +89,7 @@ export class OnlineEndpoint extends pulumi.CustomResource {
             resourceInputs["identity"] = args ? args.identity : undefined;
             resourceInputs["kind"] = args ? args.kind : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["onlineEndpointDetails"] = args ? (args.onlineEndpointDetails ? pulumi.output(args.onlineEndpointDetails).apply(types.inputs.machinelearningservices.v20220201preview.onlineEndpointArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["onlineEndpointDetails"] = args ? (args.onlineEndpointDetails ? pulumi.output(args.onlineEndpointDetails).apply(types.inputs.onlineEndpointArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["sku"] = args ? args.sku : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
@@ -126,7 +126,7 @@ export interface OnlineEndpointArgs {
     /**
      * Managed service identity (system assigned and/or user assigned identities)
      */
-    identity?: pulumi.Input<types.inputs.machinelearningservices.v20220201preview.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
      * Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
      */
@@ -138,7 +138,7 @@ export interface OnlineEndpointArgs {
     /**
      * [Required] Additional attributes of the entity.
      */
-    onlineEndpointDetails: pulumi.Input<types.inputs.machinelearningservices.v20220201preview.OnlineEndpointArgs>;
+    onlineEndpointDetails: pulumi.Input<types.inputs.OnlineEndpointArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -146,7 +146,7 @@ export interface OnlineEndpointArgs {
     /**
      * Sku details required for ARM contract for Autoscaling.
      */
-    sku?: pulumi.Input<types.inputs.machinelearningservices.v20220201preview.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Resource tags.
      */

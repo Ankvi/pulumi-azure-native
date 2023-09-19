@@ -23,7 +23,7 @@ utilities.lazyLoad(exports, ["getExpressRouteGateway","getExpressRouteGatewayOut
 
 
 // Export enums:
-export * from "../types/enums/v20210301";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

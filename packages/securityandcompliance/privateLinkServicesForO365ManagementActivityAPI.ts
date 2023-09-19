@@ -39,7 +39,7 @@ export class PrivateLinkServicesForO365ManagementActivityAPI extends pulumi.Cust
     /**
      * Setting indicating whether the service has a managed identity associated with it.
      */
-    public readonly identity!: pulumi.Output<types.outputs.securityandcompliance.ServicesResourceResponseIdentity | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ServicesResourceResponseIdentity | undefined>;
     /**
      * The kind of the service.
      */
@@ -55,11 +55,11 @@ export class PrivateLinkServicesForO365ManagementActivityAPI extends pulumi.Cust
     /**
      * The common properties of a service.
      */
-    public readonly properties!: pulumi.Output<types.outputs.securityandcompliance.ServicesPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ServicesPropertiesResponse>;
     /**
      * Required property for system data
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.securityandcompliance.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The resource tags.
      */
@@ -122,7 +122,7 @@ export interface PrivateLinkServicesForO365ManagementActivityAPIArgs {
     /**
      * Setting indicating whether the service has a managed identity associated with it.
      */
-    identity?: pulumi.Input<types.inputs.securityandcompliance.ServicesResourceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ServicesResourceIdentityArgs>;
     /**
      * The kind of the service.
      */
@@ -134,7 +134,7 @@ export interface PrivateLinkServicesForO365ManagementActivityAPIArgs {
     /**
      * The common properties of a service.
      */
-    properties?: pulumi.Input<types.inputs.securityandcompliance.ServicesPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ServicesPropertiesArgs>;
     /**
      * The name of the resource group that contains the service instance.
      */

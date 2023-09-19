@@ -54,7 +54,7 @@ export interface GetAssessmentResult {
     /**
      * Properties of the assessment.
      */
-    readonly properties: types.outputs.migrate.AssessmentPropertiesResponse;
+    readonly properties: types.outputs.AssessmentPropertiesResponse;
     /**
      * Type of the object = [Microsoft.Migrate/assessmentProjects/groups/assessments].
      */

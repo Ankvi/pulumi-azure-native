@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The notification registration definition.
  */
@@ -35,11 +35,11 @@ export class NotificationRegistration extends pulumi.CustomResource {
      * The name of the resource
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
-    public readonly properties!: pulumi.Output<types.outputs.providerhub.v20210901preview.NotificationRegistrationResponseProperties>;
+    public readonly properties!: pulumi.Output<types.outputs.NotificationRegistrationResponseProperties>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.providerhub.v20210901preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -86,7 +86,7 @@ export interface NotificationRegistrationArgs {
      * The notification registration.
      */
     notificationRegistrationName?: pulumi.Input<string>;
-    properties?: pulumi.Input<types.inputs.providerhub.v20210901preview.NotificationRegistrationPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.NotificationRegistrationPropertiesArgs>;
     /**
      * The name of the resource provider hosted within ProviderHub.
      */

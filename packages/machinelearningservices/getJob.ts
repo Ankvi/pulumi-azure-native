@@ -41,7 +41,7 @@ export interface GetJobResult {
     /**
      * [Required] Additional attributes of the entity.
      */
-    readonly jobBaseProperties: types.outputs.machinelearningservices.AutoMLJobResponse | types.outputs.machinelearningservices.CommandJobResponse | types.outputs.machinelearningservices.PipelineJobResponse | types.outputs.machinelearningservices.SweepJobResponse;
+    readonly jobBaseProperties: types.outputs.AutoMLJobResponse | types.outputs.CommandJobResponse | types.outputs.PipelineJobResponse | types.outputs.SweepJobResponse;
     /**
      * The name of the resource
      */
@@ -49,7 +49,7 @@ export interface GetJobResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.machinelearningservices.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

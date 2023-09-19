@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * User of a lab that can register for and use virtual machines within the lab.
  */
@@ -66,11 +66,11 @@ export class User extends pulumi.CustomResource {
     /**
      * Error details of last operation done on lab plan.
      */
-    public /*out*/ readonly resourceOperationError!: pulumi.Output<types.outputs.labservices.v20230607.ResourceOperationErrorResponse>;
+    public /*out*/ readonly resourceOperationError!: pulumi.Output<types.outputs.ResourceOperationErrorResponse>;
     /**
      * Metadata pertaining to creation and last modification of the user resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.labservices.v20230607.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * How long the user has used their virtual machines in this lab.
      */

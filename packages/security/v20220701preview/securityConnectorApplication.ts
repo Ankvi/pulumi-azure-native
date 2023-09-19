@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Security Application over a given scope
  */
@@ -121,5 +121,5 @@ export interface SecurityConnectorApplicationArgs {
     /**
      * The application source, what it affects, e.g. Assessments
      */
-    sourceResourceType: pulumi.Input<string | types.enums.v20220701preview.ApplicationSourceResourceType>;
+    sourceResourceType: pulumi.Input<string | types.enums.ApplicationSourceResourceType>;
 }

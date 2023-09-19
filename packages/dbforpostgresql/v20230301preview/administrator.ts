@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents an Active Directory administrator.
  */
@@ -50,7 +50,7 @@ export class Administrator extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.dbforpostgresql.v20230301preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The tenantId of the Active Directory administrator.
      */
@@ -117,7 +117,7 @@ export interface AdministratorArgs {
     /**
      * The principal type used to represent the type of Active Directory Administrator.
      */
-    principalType?: pulumi.Input<string | types.enums.v20230301preview.PrincipalType>;
+    principalType?: pulumi.Input<string | types.enums.PrincipalType>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

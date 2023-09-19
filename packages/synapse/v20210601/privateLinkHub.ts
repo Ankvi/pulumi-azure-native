@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A privateLinkHub
  */
@@ -42,7 +42,7 @@ export class PrivateLinkHub extends pulumi.CustomResource {
     /**
      * List of private endpoint connections
      */
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.synapse.v20210601.PrivateEndpointConnectionForPrivateLinkHubBasicResponse[]>;
+    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionForPrivateLinkHubBasicResponse[]>;
     /**
      * PrivateLinkHub provisioning state
      */

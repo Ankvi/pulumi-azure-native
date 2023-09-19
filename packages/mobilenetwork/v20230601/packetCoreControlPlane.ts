@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Packet core control plane resource.
  */
@@ -34,7 +34,7 @@ export class PacketCoreControlPlane extends pulumi.CustomResource {
     /**
      * The control plane interface on the access network. For 5G networks, this is the N2 interface. For 4G networks, this is the S1-MME interface.
      */
-    public readonly controlPlaneAccessInterface!: pulumi.Output<types.outputs.mobilenetwork.v20230601.InterfacePropertiesResponse>;
+    public readonly controlPlaneAccessInterface!: pulumi.Output<types.outputs.InterfacePropertiesResponse>;
     /**
      * The core network technology generation (5G core or EPC / 4G core).
      */
@@ -42,15 +42,15 @@ export class PacketCoreControlPlane extends pulumi.CustomResource {
     /**
      * Configuration for uploading packet core diagnostics
      */
-    public readonly diagnosticsUpload!: pulumi.Output<types.outputs.mobilenetwork.v20230601.DiagnosticsUploadConfigurationResponse | undefined>;
+    public readonly diagnosticsUpload!: pulumi.Output<types.outputs.DiagnosticsUploadConfigurationResponse | undefined>;
     /**
      * The identity used to retrieve the ingress certificate from Azure key vault.
      */
-    public readonly identity!: pulumi.Output<types.outputs.mobilenetwork.v20230601.ManagedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * The installation state of the packet core control plane resource.
      */
-    public readonly installation!: pulumi.Output<types.outputs.mobilenetwork.v20230601.InstallationResponse | undefined>;
+    public readonly installation!: pulumi.Output<types.outputs.InstallationResponse | undefined>;
     /**
      * The currently installed version of the packet core software.
      */
@@ -62,7 +62,7 @@ export class PacketCoreControlPlane extends pulumi.CustomResource {
     /**
      * The kubernetes ingress configuration to control access to packet core diagnostics over local APIs.
      */
-    public readonly localDiagnosticsAccess!: pulumi.Output<types.outputs.mobilenetwork.v20230601.LocalDiagnosticsAccessConfigurationResponse>;
+    public readonly localDiagnosticsAccess!: pulumi.Output<types.outputs.LocalDiagnosticsAccessConfigurationResponse>;
     /**
      * The geo-location where the resource lives
      */
@@ -74,7 +74,7 @@ export class PacketCoreControlPlane extends pulumi.CustomResource {
     /**
      * The platform where the packet core is deployed.
      */
-    public readonly platform!: pulumi.Output<types.outputs.mobilenetwork.v20230601.PlatformConfigurationResponse>;
+    public readonly platform!: pulumi.Output<types.outputs.PlatformConfigurationResponse>;
     /**
      * The provisioning state of the packet core control plane resource.
      */
@@ -86,7 +86,7 @@ export class PacketCoreControlPlane extends pulumi.CustomResource {
     /**
      * Site(s) under which this packet core control plane should be deployed. The sites must be in the same location as the packet core control plane.
      */
-    public readonly sites!: pulumi.Output<types.outputs.mobilenetwork.v20230601.SiteResourceIdResponse[]>;
+    public readonly sites!: pulumi.Output<types.outputs.SiteResourceIdResponse[]>;
     /**
      * The SKU defining the throughput and SIM allowances for this packet core control plane deployment.
      */
@@ -94,7 +94,7 @@ export class PacketCoreControlPlane extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.mobilenetwork.v20230601.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -145,7 +145,7 @@ export class PacketCoreControlPlane extends pulumi.CustomResource {
             resourceInputs["coreNetworkTechnology"] = args ? args.coreNetworkTechnology : undefined;
             resourceInputs["diagnosticsUpload"] = args ? args.diagnosticsUpload : undefined;
             resourceInputs["identity"] = args ? args.identity : undefined;
-            resourceInputs["installation"] = args ? (args.installation ? pulumi.output(args.installation).apply(types.inputs.mobilenetwork.v20230601.installationArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["installation"] = args ? (args.installation ? pulumi.output(args.installation).apply(types.inputs.installationArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["interopSettings"] = args ? args.interopSettings : undefined;
             resourceInputs["localDiagnosticsAccess"] = args ? args.localDiagnosticsAccess : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
@@ -199,23 +199,23 @@ export interface PacketCoreControlPlaneArgs {
     /**
      * The control plane interface on the access network. For 5G networks, this is the N2 interface. For 4G networks, this is the S1-MME interface.
      */
-    controlPlaneAccessInterface: pulumi.Input<types.inputs.mobilenetwork.v20230601.InterfacePropertiesArgs>;
+    controlPlaneAccessInterface: pulumi.Input<types.inputs.InterfacePropertiesArgs>;
     /**
      * The core network technology generation (5G core or EPC / 4G core).
      */
-    coreNetworkTechnology?: pulumi.Input<string | types.enums.v20230601.CoreNetworkType>;
+    coreNetworkTechnology?: pulumi.Input<string | types.enums.CoreNetworkType>;
     /**
      * Configuration for uploading packet core diagnostics
      */
-    diagnosticsUpload?: pulumi.Input<types.inputs.mobilenetwork.v20230601.DiagnosticsUploadConfigurationArgs>;
+    diagnosticsUpload?: pulumi.Input<types.inputs.DiagnosticsUploadConfigurationArgs>;
     /**
      * The identity used to retrieve the ingress certificate from Azure key vault.
      */
-    identity?: pulumi.Input<types.inputs.mobilenetwork.v20230601.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
      * The installation state of the packet core control plane resource.
      */
-    installation?: pulumi.Input<types.inputs.mobilenetwork.v20230601.InstallationArgs>;
+    installation?: pulumi.Input<types.inputs.InstallationArgs>;
     /**
      * Settings to allow interoperability with third party components e.g. RANs and UEs.
      */
@@ -223,7 +223,7 @@ export interface PacketCoreControlPlaneArgs {
     /**
      * The kubernetes ingress configuration to control access to packet core diagnostics over local APIs.
      */
-    localDiagnosticsAccess: pulumi.Input<types.inputs.mobilenetwork.v20230601.LocalDiagnosticsAccessConfigurationArgs>;
+    localDiagnosticsAccess: pulumi.Input<types.inputs.LocalDiagnosticsAccessConfigurationArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -235,7 +235,7 @@ export interface PacketCoreControlPlaneArgs {
     /**
      * The platform where the packet core is deployed.
      */
-    platform: pulumi.Input<types.inputs.mobilenetwork.v20230601.PlatformConfigurationArgs>;
+    platform: pulumi.Input<types.inputs.PlatformConfigurationArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -243,11 +243,11 @@ export interface PacketCoreControlPlaneArgs {
     /**
      * Site(s) under which this packet core control plane should be deployed. The sites must be in the same location as the packet core control plane.
      */
-    sites: pulumi.Input<pulumi.Input<types.inputs.mobilenetwork.v20230601.SiteResourceIdArgs>[]>;
+    sites: pulumi.Input<pulumi.Input<types.inputs.SiteResourceIdArgs>[]>;
     /**
      * The SKU defining the throughput and SIM allowances for this packet core control plane deployment.
      */
-    sku: pulumi.Input<string | types.enums.v20230601.BillingSku>;
+    sku: pulumi.Input<string | types.enums.BillingSku>;
     /**
      * Resource tags.
      */

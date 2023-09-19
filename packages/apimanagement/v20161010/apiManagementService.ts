@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A single API Management service resource in List or Get response.
  */
@@ -34,7 +34,7 @@ export class ApiManagementService extends pulumi.CustomResource {
     /**
      * Additional datacenter locations of the API Management service.
      */
-    public readonly additionalLocations!: pulumi.Output<types.outputs.apimanagement.v20161010.AdditionalRegionResponse[] | undefined>;
+    public readonly additionalLocations!: pulumi.Output<types.outputs.AdditionalRegionResponse[] | undefined>;
     /**
      * Addresser email.
      */
@@ -54,7 +54,7 @@ export class ApiManagementService extends pulumi.CustomResource {
     /**
      * Custom hostname configuration of the API Management service.
      */
-    public readonly hostnameConfigurations!: pulumi.Output<types.outputs.apimanagement.v20161010.HostnameConfigurationResponse[] | undefined>;
+    public readonly hostnameConfigurations!: pulumi.Output<types.outputs.HostnameConfigurationResponse[] | undefined>;
     /**
      * Resource location.
      */
@@ -94,7 +94,7 @@ export class ApiManagementService extends pulumi.CustomResource {
     /**
      * SKU properties of the API Management service.
      */
-    public readonly sku!: pulumi.Output<types.outputs.apimanagement.v20161010.ApiManagementServiceSkuPropertiesResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.ApiManagementServiceSkuPropertiesResponse>;
     /**
      * Static IP addresses of the API Management service virtual machines. Available only for Standard and Premium SKU.
      */
@@ -118,7 +118,7 @@ export class ApiManagementService extends pulumi.CustomResource {
     /**
      * Virtual network configuration of the API Management service.
      */
-    public readonly vpnconfiguration!: pulumi.Output<types.outputs.apimanagement.v20161010.VirtualNetworkConfigurationResponse | undefined>;
+    public readonly vpnconfiguration!: pulumi.Output<types.outputs.VirtualNetworkConfigurationResponse | undefined>;
 
     /**
      * Create a ApiManagementService resource with the given unique name, arguments, and options.
@@ -153,7 +153,7 @@ export class ApiManagementService extends pulumi.CustomResource {
             resourceInputs["publisherName"] = args ? args.publisherName : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
-            resourceInputs["sku"] = args ? (args.sku ? pulumi.output(args.sku).apply(types.inputs.apimanagement.v20161010.apiManagementServiceSkuPropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["sku"] = args ? (args.sku ? pulumi.output(args.sku).apply(types.inputs.apiManagementServiceSkuPropertiesArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["vpnType"] = (args ? args.vpnType : undefined) ?? "None";
             resourceInputs["vpnconfiguration"] = args ? args.vpnconfiguration : undefined;
@@ -205,7 +205,7 @@ export interface ApiManagementServiceArgs {
     /**
      * Additional datacenter locations of the API Management service.
      */
-    additionalLocations?: pulumi.Input<pulumi.Input<types.inputs.apimanagement.v20161010.AdditionalRegionArgs>[]>;
+    additionalLocations?: pulumi.Input<pulumi.Input<types.inputs.AdditionalRegionArgs>[]>;
     /**
      * Addresser email.
      */
@@ -217,7 +217,7 @@ export interface ApiManagementServiceArgs {
     /**
      * Custom hostname configuration of the API Management service.
      */
-    hostnameConfigurations?: pulumi.Input<pulumi.Input<types.inputs.apimanagement.v20161010.HostnameConfigurationArgs>[]>;
+    hostnameConfigurations?: pulumi.Input<pulumi.Input<types.inputs.HostnameConfigurationArgs>[]>;
     /**
      * Resource location.
      */
@@ -245,7 +245,7 @@ export interface ApiManagementServiceArgs {
     /**
      * SKU properties of the API Management service.
      */
-    sku: pulumi.Input<types.inputs.apimanagement.v20161010.ApiManagementServiceSkuPropertiesArgs>;
+    sku: pulumi.Input<types.inputs.ApiManagementServiceSkuPropertiesArgs>;
     /**
      * Resource tags.
      */
@@ -253,9 +253,9 @@ export interface ApiManagementServiceArgs {
     /**
      * The type of VPN in which API Management service needs to be configured in. None (Default Value) means the API Management service is not part of any Virtual Network, External means the API Management deployment is set up inside a Virtual Network having an Internet Facing Endpoint, and Internal means that API Management deployment is setup inside a Virtual Network having an Intranet Facing Endpoint only.
      */
-    vpnType?: pulumi.Input<types.enums.v20161010.VirtualNetworkType>;
+    vpnType?: pulumi.Input<types.enums.VirtualNetworkType>;
     /**
      * Virtual network configuration of the API Management service.
      */
-    vpnconfiguration?: pulumi.Input<types.inputs.apimanagement.v20161010.VirtualNetworkConfigurationArgs>;
+    vpnconfiguration?: pulumi.Input<types.inputs.VirtualNetworkConfigurationArgs>;
 }

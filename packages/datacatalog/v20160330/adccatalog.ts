@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Azure Data Catalog.
  */
@@ -34,7 +34,7 @@ export class ADCCatalog extends pulumi.CustomResource {
     /**
      * Azure data catalog admin list.
      */
-    public readonly admins!: pulumi.Output<types.outputs.datacatalog.v20160330.PrincipalsResponse[] | undefined>;
+    public readonly admins!: pulumi.Output<types.outputs.PrincipalsResponse[] | undefined>;
     /**
      * Automatic unit adjustment enabled or not.
      */
@@ -74,7 +74,7 @@ export class ADCCatalog extends pulumi.CustomResource {
     /**
      * Azure data catalog user list.
      */
-    public readonly users!: pulumi.Output<types.outputs.datacatalog.v20160330.PrincipalsResponse[] | undefined>;
+    public readonly users!: pulumi.Output<types.outputs.PrincipalsResponse[] | undefined>;
 
     /**
      * Create a ADCCatalog resource with the given unique name, arguments, and options.
@@ -130,7 +130,7 @@ export interface ADCCatalogArgs {
     /**
      * Azure data catalog admin list.
      */
-    admins?: pulumi.Input<pulumi.Input<types.inputs.datacatalog.v20160330.PrincipalsArgs>[]>;
+    admins?: pulumi.Input<pulumi.Input<types.inputs.PrincipalsArgs>[]>;
     /**
      * The name of the data catalog in the specified subscription and resource group.
      */
@@ -150,7 +150,7 @@ export interface ADCCatalogArgs {
     /**
      * Azure data catalog SKU.
      */
-    sku?: pulumi.Input<string | types.enums.v20160330.SkuType>;
+    sku?: pulumi.Input<string | types.enums.SkuType>;
     /**
      * Azure data catalog provision status.
      */
@@ -166,5 +166,5 @@ export interface ADCCatalogArgs {
     /**
      * Azure data catalog user list.
      */
-    users?: pulumi.Input<pulumi.Input<types.inputs.datacatalog.v20160330.PrincipalsArgs>[]>;
+    users?: pulumi.Input<pulumi.Input<types.inputs.PrincipalsArgs>[]>;
 }

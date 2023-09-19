@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets an instance pool.
  */
@@ -47,7 +47,7 @@ export interface GetInstancePoolResult {
     /**
      * The name and tier of the SKU.
      */
-    readonly sku?: types.outputs.sql.v20221101preview.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * Resource ID of the subnet to place this instance pool in.
      */

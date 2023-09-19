@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a connection monitor by name.
  */
@@ -44,11 +44,11 @@ export interface GetConnectionMonitorResult {
     /**
      * Describes the destination of connection monitor.
      */
-    readonly destination?: types.outputs.network.v20230501.ConnectionMonitorDestinationResponse;
+    readonly destination?: types.outputs.ConnectionMonitorDestinationResponse;
     /**
      * List of connection monitor endpoints.
      */
-    readonly endpoints?: types.outputs.network.v20230501.ConnectionMonitorEndpointResponse[];
+    readonly endpoints?: types.outputs.ConnectionMonitorEndpointResponse[];
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -80,7 +80,7 @@ export interface GetConnectionMonitorResult {
     /**
      * List of connection monitor outputs.
      */
-    readonly outputs?: types.outputs.network.v20230501.ConnectionMonitorOutputResponse[];
+    readonly outputs?: types.outputs.ConnectionMonitorOutputResponse[];
     /**
      * The provisioning state of the connection monitor.
      */
@@ -88,7 +88,7 @@ export interface GetConnectionMonitorResult {
     /**
      * Describes the source of connection monitor.
      */
-    readonly source?: types.outputs.network.v20230501.ConnectionMonitorSourceResponse;
+    readonly source?: types.outputs.ConnectionMonitorSourceResponse;
     /**
      * The date and time when the connection monitor was started.
      */
@@ -100,11 +100,11 @@ export interface GetConnectionMonitorResult {
     /**
      * List of connection monitor test configurations.
      */
-    readonly testConfigurations?: types.outputs.network.v20230501.ConnectionMonitorTestConfigurationResponse[];
+    readonly testConfigurations?: types.outputs.ConnectionMonitorTestConfigurationResponse[];
     /**
      * List of connection monitor test groups.
      */
-    readonly testGroups?: types.outputs.network.v20230501.ConnectionMonitorTestGroupResponse[];
+    readonly testGroups?: types.outputs.ConnectionMonitorTestGroupResponse[];
     /**
      * Connection monitor type.
      */

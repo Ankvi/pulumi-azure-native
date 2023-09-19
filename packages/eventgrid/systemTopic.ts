@@ -35,7 +35,7 @@ export class SystemTopic extends pulumi.CustomResource {
     /**
      * Identity information for the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.eventgrid.IdentityInfoResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityInfoResponse | undefined>;
     /**
      * Location of the resource.
      */
@@ -59,7 +59,7 @@ export class SystemTopic extends pulumi.CustomResource {
     /**
      * The system metadata relating to System Topic resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.eventgrid.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Tags of the resource.
      */
@@ -125,7 +125,7 @@ export interface SystemTopicArgs {
     /**
      * Identity information for the resource.
      */
-    identity?: pulumi.Input<types.inputs.eventgrid.IdentityInfoArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityInfoArgs>;
     /**
      * Location of the resource.
      */

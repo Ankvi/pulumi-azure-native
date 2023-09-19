@@ -37,7 +37,7 @@ export interface ListStreamingLocatorContentKeysResult {
     /**
      * ContentKeys used by current Streaming Locator
      */
-    readonly contentKeys?: types.outputs.media.StreamingLocatorContentKeyResponse[];
+    readonly contentKeys?: types.outputs.StreamingLocatorContentKeyResponse[];
 }
 /**
  * List Content Keys used by this Streaming Locator

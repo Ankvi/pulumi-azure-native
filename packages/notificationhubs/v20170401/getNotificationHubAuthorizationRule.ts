@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets an authorization rule for a NotificationHub by name.
  */
@@ -89,7 +89,7 @@ export interface GetNotificationHubAuthorizationRuleResult {
     /**
      * The sku of the created namespace
      */
-    readonly sku?: types.outputs.notificationhubs.v20170401.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * Resource tags
      */

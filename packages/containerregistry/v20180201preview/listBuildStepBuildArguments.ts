@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * List the build arguments for a step including the secret arguments.
  */
@@ -45,7 +45,7 @@ export interface ListBuildStepBuildArgumentsResult {
     /**
      * The collection value.
      */
-    readonly value?: types.outputs.containerregistry.v20180201preview.BuildArgumentResponse[];
+    readonly value?: types.outputs.BuildArgumentResponse[];
 }
 /**
  * List the build arguments for a step including the secret arguments.

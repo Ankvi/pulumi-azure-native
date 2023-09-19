@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the details of the modernize project.
  */
@@ -37,7 +37,7 @@ export interface GetModernizeProjectResult {
      * Gets or sets the Id of the resource.
      */
     readonly id: string;
-    readonly identity?: types.outputs.migrate.v20220501preview.ResourceIdentityResponse;
+    readonly identity?: types.outputs.ResourceIdentityResponse;
     /**
      * Gets or sets the location of the modernizeProject.
      */
@@ -49,8 +49,8 @@ export interface GetModernizeProjectResult {
     /**
      * ModernizeProject properties.
      */
-    readonly properties: types.outputs.migrate.v20220501preview.ModernizeProjectModelPropertiesResponse;
-    readonly systemData: types.outputs.migrate.v20220501preview.ModernizeProjectModelResponseSystemData;
+    readonly properties: types.outputs.ModernizeProjectModelPropertiesResponse;
+    readonly systemData: types.outputs.ModernizeProjectModelResponseSystemData;
     /**
      * Gets or sets the resource tags.
      */

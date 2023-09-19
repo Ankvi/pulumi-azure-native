@@ -34,11 +34,11 @@ export class KubernetesCluster extends pulumi.CustomResource {
     /**
      * The Azure Active Directory Integration properties.
      */
-    public readonly aadConfiguration!: pulumi.Output<types.outputs.networkcloud.AadConfigurationResponse | undefined>;
+    public readonly aadConfiguration!: pulumi.Output<types.outputs.AadConfigurationResponse | undefined>;
     /**
      * The administrative credentials that will be applied to the control plane and agent pool nodes that do not specify their own values.
      */
-    public readonly administratorConfiguration!: pulumi.Output<types.outputs.networkcloud.AdministratorConfigurationResponse | undefined>;
+    public readonly administratorConfiguration!: pulumi.Output<types.outputs.AdministratorConfigurationResponse | undefined>;
     /**
      * The full list of network resource IDs that are attached to this cluster, including those attached only to specific agent pools.
      */
@@ -46,7 +46,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
     /**
      * The list of versions that this Kubernetes cluster can be upgraded to.
      */
-    public /*out*/ readonly availableUpgrades!: pulumi.Output<types.outputs.networkcloud.AvailableUpgradeResponse[]>;
+    public /*out*/ readonly availableUpgrades!: pulumi.Output<types.outputs.AvailableUpgradeResponse[]>;
     /**
      * The resource ID of the Network Cloud cluster.
      */
@@ -62,7 +62,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
     /**
      * The defining characteristics of the control plane for this Kubernetes Cluster.
      */
-    public readonly controlPlaneNodeConfiguration!: pulumi.Output<types.outputs.networkcloud.ControlPlaneNodeConfigurationResponse>;
+    public readonly controlPlaneNodeConfiguration!: pulumi.Output<types.outputs.ControlPlaneNodeConfigurationResponse>;
     /**
      * The current status of the Kubernetes cluster.
      */
@@ -74,15 +74,15 @@ export class KubernetesCluster extends pulumi.CustomResource {
     /**
      * The extended location of the cluster associated with the resource.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.networkcloud.ExtendedLocationResponse>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse>;
     /**
      * The current feature settings.
      */
-    public /*out*/ readonly featureStatuses!: pulumi.Output<types.outputs.networkcloud.FeatureStatusResponse[]>;
+    public /*out*/ readonly featureStatuses!: pulumi.Output<types.outputs.FeatureStatusResponse[]>;
     /**
      * The agent pools that are created with this Kubernetes cluster for running critical system services and workloads. This data in this field is only used during creation, and the field will be empty following the creation of the Kubernetes Cluster. After creation, the management of agent pools is done using the agentPools sub-resource.
      */
-    public readonly initialAgentPoolConfigurations!: pulumi.Output<types.outputs.networkcloud.InitialAgentPoolConfigurationResponse[]>;
+    public readonly initialAgentPoolConfigurations!: pulumi.Output<types.outputs.InitialAgentPoolConfigurationResponse[]>;
     /**
      * The Kubernetes version for this cluster. Accepts n.n, n.n.n, and n.n.n-n format. The interpreted version used will be resolved into this field after creation or update.
      */
@@ -94,7 +94,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
     /**
      * The configuration of the managed resource group associated with the resource.
      */
-    public readonly managedResourceGroupConfiguration!: pulumi.Output<types.outputs.networkcloud.ManagedResourceGroupConfigurationResponse | undefined>;
+    public readonly managedResourceGroupConfiguration!: pulumi.Output<types.outputs.ManagedResourceGroupConfigurationResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -102,11 +102,11 @@ export class KubernetesCluster extends pulumi.CustomResource {
     /**
      * The configuration of the Kubernetes cluster networking, including the attachment of networks that span the cluster.
      */
-    public readonly networkConfiguration!: pulumi.Output<types.outputs.networkcloud.NetworkConfigurationResponse>;
+    public readonly networkConfiguration!: pulumi.Output<types.outputs.NetworkConfigurationResponse>;
     /**
      * The details of the nodes in this cluster.
      */
-    public /*out*/ readonly nodes!: pulumi.Output<types.outputs.networkcloud.KubernetesClusterNodeResponse[]>;
+    public /*out*/ readonly nodes!: pulumi.Output<types.outputs.KubernetesClusterNodeResponse[]>;
     /**
      * The provisioning state of the Kubernetes cluster resource.
      */
@@ -114,7 +114,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.networkcloud.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -162,7 +162,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
             resourceInputs["kubernetesVersion"] = args ? args.kubernetesVersion : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["managedResourceGroupConfiguration"] = args ? args.managedResourceGroupConfiguration : undefined;
-            resourceInputs["networkConfiguration"] = args ? (args.networkConfiguration ? pulumi.output(args.networkConfiguration).apply(types.inputs.networkcloud.networkConfigurationArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["networkConfiguration"] = args ? (args.networkConfiguration ? pulumi.output(args.networkConfiguration).apply(types.inputs.networkConfigurationArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["attachedNetworkIds"] = undefined /*out*/;
@@ -217,23 +217,23 @@ export interface KubernetesClusterArgs {
     /**
      * The Azure Active Directory Integration properties.
      */
-    aadConfiguration?: pulumi.Input<types.inputs.networkcloud.AadConfigurationArgs>;
+    aadConfiguration?: pulumi.Input<types.inputs.AadConfigurationArgs>;
     /**
      * The administrative credentials that will be applied to the control plane and agent pool nodes that do not specify their own values.
      */
-    administratorConfiguration?: pulumi.Input<types.inputs.networkcloud.AdministratorConfigurationArgs>;
+    administratorConfiguration?: pulumi.Input<types.inputs.AdministratorConfigurationArgs>;
     /**
      * The defining characteristics of the control plane for this Kubernetes Cluster.
      */
-    controlPlaneNodeConfiguration: pulumi.Input<types.inputs.networkcloud.ControlPlaneNodeConfigurationArgs>;
+    controlPlaneNodeConfiguration: pulumi.Input<types.inputs.ControlPlaneNodeConfigurationArgs>;
     /**
      * The extended location of the cluster associated with the resource.
      */
-    extendedLocation: pulumi.Input<types.inputs.networkcloud.ExtendedLocationArgs>;
+    extendedLocation: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * The agent pools that are created with this Kubernetes cluster for running critical system services and workloads. This data in this field is only used during creation, and the field will be empty following the creation of the Kubernetes Cluster. After creation, the management of agent pools is done using the agentPools sub-resource.
      */
-    initialAgentPoolConfigurations: pulumi.Input<pulumi.Input<types.inputs.networkcloud.InitialAgentPoolConfigurationArgs>[]>;
+    initialAgentPoolConfigurations: pulumi.Input<pulumi.Input<types.inputs.InitialAgentPoolConfigurationArgs>[]>;
     /**
      * The name of the Kubernetes cluster.
      */
@@ -249,11 +249,11 @@ export interface KubernetesClusterArgs {
     /**
      * The configuration of the managed resource group associated with the resource.
      */
-    managedResourceGroupConfiguration?: pulumi.Input<types.inputs.networkcloud.ManagedResourceGroupConfigurationArgs>;
+    managedResourceGroupConfiguration?: pulumi.Input<types.inputs.ManagedResourceGroupConfigurationArgs>;
     /**
      * The configuration of the Kubernetes cluster networking, including the attachment of networks that span the cluster.
      */
-    networkConfiguration: pulumi.Input<types.inputs.networkcloud.NetworkConfigurationArgs>;
+    networkConfiguration: pulumi.Input<types.inputs.NetworkConfigurationArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

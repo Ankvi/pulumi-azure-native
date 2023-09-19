@@ -49,11 +49,11 @@ export interface GetPrivateEndpointConnectionControllerResult {
     /**
      * private endpoints
      */
-    readonly privateEndpoint: types.outputs.offazure.ResourceIdResponse;
+    readonly privateEndpoint: types.outputs.ResourceIdResponse;
     /**
      * private endpoints connection state
      */
-    readonly privateLinkServiceConnectionState?: types.outputs.offazure.PrivateLinkServiceConnectionStateResponse;
+    readonly privateLinkServiceConnectionState?: types.outputs.PrivateLinkServiceConnectionStateResponse;
     /**
      * provisioning state enum
      */
@@ -61,7 +61,7 @@ export interface GetPrivateEndpointConnectionControllerResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.offazure.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

@@ -83,11 +83,11 @@ export interface GetReadOnlyFollowingDatabaseResult {
     /**
      * The statistics of the database.
      */
-    readonly statistics: types.outputs.synapse.DatabaseStatisticsResponse;
+    readonly statistics: types.outputs.DatabaseStatisticsResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.synapse.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

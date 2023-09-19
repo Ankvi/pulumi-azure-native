@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the specified local network gateway in a resource group.
  */
@@ -31,7 +31,7 @@ export interface GetLocalNetworkGatewayResult {
     /**
      * Local network gateway's BGP speaker settings.
      */
-    readonly bgpSettings?: types.outputs.network.v20230201.BgpSettingsResponse;
+    readonly bgpSettings?: types.outputs.BgpSettingsResponse;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -51,7 +51,7 @@ export interface GetLocalNetworkGatewayResult {
     /**
      * Local network site address space.
      */
-    readonly localNetworkAddressSpace?: types.outputs.network.v20230201.AddressSpaceResponse;
+    readonly localNetworkAddressSpace?: types.outputs.AddressSpaceResponse;
     /**
      * Resource location.
      */

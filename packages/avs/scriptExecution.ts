@@ -47,7 +47,7 @@ export class ScriptExecution extends pulumi.CustomResource {
     /**
      * Parameters that will be hidden/not visible to ARM, such as passwords and credentials
      */
-    public readonly hiddenParameters!: pulumi.Output<(types.outputs.avs.PSCredentialExecutionParameterResponse | types.outputs.avs.ScriptSecureStringExecutionParameterResponse | types.outputs.avs.ScriptStringExecutionParameterResponse)[] | undefined>;
+    public readonly hiddenParameters!: pulumi.Output<(types.outputs.PSCredentialExecutionParameterResponse | types.outputs.ScriptSecureStringExecutionParameterResponse | types.outputs.ScriptStringExecutionParameterResponse)[] | undefined>;
     /**
      * Standard information out stream from the powershell execution
      */
@@ -67,7 +67,7 @@ export class ScriptExecution extends pulumi.CustomResource {
     /**
      * Parameters the script will accept
      */
-    public readonly parameters!: pulumi.Output<(types.outputs.avs.PSCredentialExecutionParameterResponse | types.outputs.avs.ScriptSecureStringExecutionParameterResponse | types.outputs.avs.ScriptStringExecutionParameterResponse)[] | undefined>;
+    public readonly parameters!: pulumi.Output<(types.outputs.PSCredentialExecutionParameterResponse | types.outputs.ScriptSecureStringExecutionParameterResponse | types.outputs.ScriptStringExecutionParameterResponse)[] | undefined>;
     /**
      * The state of the script execution resource
      */
@@ -178,7 +178,7 @@ export interface ScriptExecutionArgs {
     /**
      * Parameters that will be hidden/not visible to ARM, such as passwords and credentials
      */
-    hiddenParameters?: pulumi.Input<pulumi.Input<types.inputs.avs.PSCredentialExecutionParameterArgs | types.inputs.avs.ScriptSecureStringExecutionParameterArgs | types.inputs.avs.ScriptStringExecutionParameterArgs>[]>;
+    hiddenParameters?: pulumi.Input<pulumi.Input<types.inputs.PSCredentialExecutionParameterArgs | types.inputs.ScriptSecureStringExecutionParameterArgs | types.inputs.ScriptStringExecutionParameterArgs>[]>;
     /**
      * User-defined dictionary.
      */
@@ -190,7 +190,7 @@ export interface ScriptExecutionArgs {
     /**
      * Parameters the script will accept
      */
-    parameters?: pulumi.Input<pulumi.Input<types.inputs.avs.PSCredentialExecutionParameterArgs | types.inputs.avs.ScriptSecureStringExecutionParameterArgs | types.inputs.avs.ScriptStringExecutionParameterArgs>[]>;
+    parameters?: pulumi.Input<pulumi.Input<types.inputs.PSCredentialExecutionParameterArgs | types.inputs.ScriptSecureStringExecutionParameterArgs | types.inputs.ScriptStringExecutionParameterArgs>[]>;
     /**
      * The name of the private cloud.
      */

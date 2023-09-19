@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Base class for container with backup items. Containers with specific workloads are derived from this class.
  */
@@ -46,7 +46,7 @@ export class ProtectionContainer extends pulumi.CustomResource {
     /**
      * ProtectionContainerResource properties
      */
-    public readonly properties!: pulumi.Output<types.outputs.recoveryservices.v20230401.AzureBackupServerContainerResponse | types.outputs.recoveryservices.v20230401.AzureIaaSClassicComputeVMContainerResponse | types.outputs.recoveryservices.v20230401.AzureIaaSComputeVMContainerResponse | types.outputs.recoveryservices.v20230401.AzureSQLAGWorkloadContainerProtectionContainerResponse | types.outputs.recoveryservices.v20230401.AzureSqlContainerResponse | types.outputs.recoveryservices.v20230401.AzureStorageContainerResponse | types.outputs.recoveryservices.v20230401.AzureVMAppContainerProtectionContainerResponse | types.outputs.recoveryservices.v20230401.AzureWorkloadContainerResponse | types.outputs.recoveryservices.v20230401.DpmContainerResponse | types.outputs.recoveryservices.v20230401.GenericContainerResponse | types.outputs.recoveryservices.v20230401.IaaSVMContainerResponse | types.outputs.recoveryservices.v20230401.MabContainerResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.AzureBackupServerContainerResponse | types.outputs.AzureIaaSClassicComputeVMContainerResponse | types.outputs.AzureIaaSComputeVMContainerResponse | types.outputs.AzureSQLAGWorkloadContainerProtectionContainerResponse | types.outputs.AzureSqlContainerResponse | types.outputs.AzureStorageContainerResponse | types.outputs.AzureVMAppContainerProtectionContainerResponse | types.outputs.AzureWorkloadContainerResponse | types.outputs.DpmContainerResponse | types.outputs.GenericContainerResponse | types.outputs.IaaSVMContainerResponse | types.outputs.MabContainerResponse>;
     /**
      * Resource tags.
      */
@@ -124,7 +124,7 @@ export interface ProtectionContainerArgs {
     /**
      * ProtectionContainerResource properties
      */
-    properties?: pulumi.Input<types.inputs.recoveryservices.v20230401.AzureBackupServerContainerArgs | types.inputs.recoveryservices.v20230401.AzureIaaSClassicComputeVMContainerArgs | types.inputs.recoveryservices.v20230401.AzureIaaSComputeVMContainerArgs | types.inputs.recoveryservices.v20230401.AzureSQLAGWorkloadContainerProtectionContainerArgs | types.inputs.recoveryservices.v20230401.AzureSqlContainerArgs | types.inputs.recoveryservices.v20230401.AzureStorageContainerArgs | types.inputs.recoveryservices.v20230401.AzureVMAppContainerProtectionContainerArgs | types.inputs.recoveryservices.v20230401.AzureWorkloadContainerArgs | types.inputs.recoveryservices.v20230401.DpmContainerArgs | types.inputs.recoveryservices.v20230401.GenericContainerArgs | types.inputs.recoveryservices.v20230401.IaaSVMContainerArgs | types.inputs.recoveryservices.v20230401.MabContainerArgs>;
+    properties?: pulumi.Input<types.inputs.AzureBackupServerContainerArgs | types.inputs.AzureIaaSClassicComputeVMContainerArgs | types.inputs.AzureIaaSComputeVMContainerArgs | types.inputs.AzureSQLAGWorkloadContainerProtectionContainerArgs | types.inputs.AzureSqlContainerArgs | types.inputs.AzureStorageContainerArgs | types.inputs.AzureVMAppContainerProtectionContainerArgs | types.inputs.AzureWorkloadContainerArgs | types.inputs.DpmContainerArgs | types.inputs.GenericContainerArgs | types.inputs.IaaSVMContainerArgs | types.inputs.MabContainerArgs>;
     /**
      * The name of the resource group where the recovery services vault is present.
      */

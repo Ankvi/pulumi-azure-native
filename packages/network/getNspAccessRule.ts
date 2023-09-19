@@ -70,7 +70,7 @@ export interface GetNspAccessRuleResult {
     /**
      * Rule specified by the perimeter id.
      */
-    readonly networkSecurityPerimeters: types.outputs.network.PerimeterBasedAccessRuleResponse[];
+    readonly networkSecurityPerimeters: types.outputs.PerimeterBasedAccessRuleResponse[];
     /**
      * Outbound rules phone number format.
      */
@@ -82,7 +82,7 @@ export interface GetNspAccessRuleResult {
     /**
      * List of subscription ids
      */
-    readonly subscriptions?: types.outputs.network.SubscriptionIdResponse[];
+    readonly subscriptions?: types.outputs.SubscriptionIdResponse[];
     /**
      * Resource tags.
      */

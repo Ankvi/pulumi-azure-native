@@ -35,7 +35,7 @@ export class RegistryDataVersion extends pulumi.CustomResource {
     /**
      * [Required] Additional attributes of the entity.
      */
-    public readonly dataVersionBaseProperties!: pulumi.Output<types.outputs.machinelearningservices.MLTableDataResponse | types.outputs.machinelearningservices.UriFileDataVersionResponse | types.outputs.machinelearningservices.UriFolderDataVersionResponse>;
+    public readonly dataVersionBaseProperties!: pulumi.Output<types.outputs.MLTableDataResponse | types.outputs.UriFileDataVersionResponse | types.outputs.UriFolderDataVersionResponse>;
     /**
      * The name of the resource
      */
@@ -43,7 +43,7 @@ export class RegistryDataVersion extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.machinelearningservices.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -99,7 +99,7 @@ export interface RegistryDataVersionArgs {
     /**
      * [Required] Additional attributes of the entity.
      */
-    dataVersionBaseProperties: pulumi.Input<types.inputs.machinelearningservices.MLTableDataArgs | types.inputs.machinelearningservices.UriFileDataVersionArgs | types.inputs.machinelearningservices.UriFolderDataVersionArgs>;
+    dataVersionBaseProperties: pulumi.Input<types.inputs.MLTableDataArgs | types.inputs.UriFileDataVersionArgs | types.inputs.UriFolderDataVersionArgs>;
     /**
      * Container name.
      */

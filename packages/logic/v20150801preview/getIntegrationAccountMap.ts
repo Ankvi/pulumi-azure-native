@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets an integration account map.
  */
@@ -41,7 +41,7 @@ export interface GetIntegrationAccountMapResult {
     /**
      * The content link.
      */
-    readonly contentLink: types.outputs.logic.v20150801preview.IntegrationAccountContentLinkResponse;
+    readonly contentLink: types.outputs.IntegrationAccountContentLinkResponse;
     /**
      * The content type.
      */

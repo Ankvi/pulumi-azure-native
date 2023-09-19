@@ -39,11 +39,11 @@ export class TimeSeriesDatabaseConnection extends pulumi.CustomResource {
     /**
      * Properties of a specific time series database connection.
      */
-    public readonly properties!: pulumi.Output<types.outputs.digitaltwins.AzureDataExplorerConnectionPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.AzureDataExplorerConnectionPropertiesResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.digitaltwins.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The resource type.
      */
@@ -66,7 +66,7 @@ export class TimeSeriesDatabaseConnection extends pulumi.CustomResource {
             if ((!args || args.resourceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resourceName'");
             }
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.digitaltwins.azureDataExplorerConnectionPropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.azureDataExplorerConnectionPropertiesArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["resourceName"] = args ? args.resourceName : undefined;
             resourceInputs["timeSeriesDatabaseConnectionName"] = args ? args.timeSeriesDatabaseConnectionName : undefined;
@@ -93,7 +93,7 @@ export interface TimeSeriesDatabaseConnectionArgs {
     /**
      * Properties of a specific time series database connection.
      */
-    properties?: pulumi.Input<types.inputs.digitaltwins.AzureDataExplorerConnectionPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.AzureDataExplorerConnectionPropertiesArgs>;
     /**
      * The name of the resource group that contains the DigitalTwinsInstance.
      */

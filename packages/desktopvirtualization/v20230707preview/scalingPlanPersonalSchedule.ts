@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents a ScalingPlanPersonalSchedule definition.
  */
@@ -58,7 +58,7 @@ export class ScalingPlanPersonalSchedule extends pulumi.CustomResource {
     /**
      * Starting time for off-peak period.
      */
-    public readonly offPeakStartTime!: pulumi.Output<types.outputs.desktopvirtualization.v20230707preview.TimeResponse | undefined>;
+    public readonly offPeakStartTime!: pulumi.Output<types.outputs.TimeResponse | undefined>;
     /**
      * The desired configuration of Start VM On Connect for the hostpool during the off-peak phase.
      */
@@ -82,7 +82,7 @@ export class ScalingPlanPersonalSchedule extends pulumi.CustomResource {
     /**
      * Starting time for peak period.
      */
-    public readonly peakStartTime!: pulumi.Output<types.outputs.desktopvirtualization.v20230707preview.TimeResponse | undefined>;
+    public readonly peakStartTime!: pulumi.Output<types.outputs.TimeResponse | undefined>;
     /**
      * The desired configuration of Start VM On Connect for the hostpool during the peak phase.
      */
@@ -106,7 +106,7 @@ export class ScalingPlanPersonalSchedule extends pulumi.CustomResource {
     /**
      * Starting time for ramp down period.
      */
-    public readonly rampDownStartTime!: pulumi.Output<types.outputs.desktopvirtualization.v20230707preview.TimeResponse | undefined>;
+    public readonly rampDownStartTime!: pulumi.Output<types.outputs.TimeResponse | undefined>;
     /**
      * The desired configuration of Start VM On Connect for the hostpool during the ramp down phase.
      */
@@ -134,7 +134,7 @@ export class ScalingPlanPersonalSchedule extends pulumi.CustomResource {
     /**
      * Starting time for ramp up period.
      */
-    public readonly rampUpStartTime!: pulumi.Output<types.outputs.desktopvirtualization.v20230707preview.TimeResponse | undefined>;
+    public readonly rampUpStartTime!: pulumi.Output<types.outputs.TimeResponse | undefined>;
     /**
      * The desired configuration of Start VM On Connect for the hostpool during the ramp up phase. If this is disabled, session hosts must be turned on using rampUpAutoStartHosts or by turning them on manually.
      */
@@ -142,7 +142,7 @@ export class ScalingPlanPersonalSchedule extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.desktopvirtualization.v20230707preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -242,15 +242,15 @@ export interface ScalingPlanPersonalScheduleArgs {
     /**
      * Set of days of the week on which this schedule is active.
      */
-    daysOfWeek?: pulumi.Input<pulumi.Input<string | types.enums.v20230707preview.DayOfWeek>[]>;
+    daysOfWeek?: pulumi.Input<pulumi.Input<string | types.enums.DayOfWeek>[]>;
     /**
      * Action to be taken after a user disconnect during the off-peak period.
      */
-    offPeakActionOnDisconnect?: pulumi.Input<string | types.enums.v20230707preview.SessionHandlingOperation>;
+    offPeakActionOnDisconnect?: pulumi.Input<string | types.enums.SessionHandlingOperation>;
     /**
      * Action to be taken after a logoff during the off-peak period.
      */
-    offPeakActionOnLogoff?: pulumi.Input<string | types.enums.v20230707preview.SessionHandlingOperation>;
+    offPeakActionOnLogoff?: pulumi.Input<string | types.enums.SessionHandlingOperation>;
     /**
      * The time in minutes to wait before performing the desired session handling action when a user disconnects during the off-peak period.
      */
@@ -262,19 +262,19 @@ export interface ScalingPlanPersonalScheduleArgs {
     /**
      * Starting time for off-peak period.
      */
-    offPeakStartTime?: pulumi.Input<types.inputs.desktopvirtualization.v20230707preview.TimeArgs>;
+    offPeakStartTime?: pulumi.Input<types.inputs.TimeArgs>;
     /**
      * The desired configuration of Start VM On Connect for the hostpool during the off-peak phase.
      */
-    offPeakStartVMOnConnect?: pulumi.Input<string | types.enums.v20230707preview.SetStartVMOnConnect>;
+    offPeakStartVMOnConnect?: pulumi.Input<string | types.enums.SetStartVMOnConnect>;
     /**
      * Action to be taken after a user disconnect during the peak period.
      */
-    peakActionOnDisconnect?: pulumi.Input<string | types.enums.v20230707preview.SessionHandlingOperation>;
+    peakActionOnDisconnect?: pulumi.Input<string | types.enums.SessionHandlingOperation>;
     /**
      * Action to be taken after a logoff during the peak period.
      */
-    peakActionOnLogoff?: pulumi.Input<string | types.enums.v20230707preview.SessionHandlingOperation>;
+    peakActionOnLogoff?: pulumi.Input<string | types.enums.SessionHandlingOperation>;
     /**
      * The time in minutes to wait before performing the desired session handling action when a user disconnects during the peak period.
      */
@@ -286,19 +286,19 @@ export interface ScalingPlanPersonalScheduleArgs {
     /**
      * Starting time for peak period.
      */
-    peakStartTime?: pulumi.Input<types.inputs.desktopvirtualization.v20230707preview.TimeArgs>;
+    peakStartTime?: pulumi.Input<types.inputs.TimeArgs>;
     /**
      * The desired configuration of Start VM On Connect for the hostpool during the peak phase.
      */
-    peakStartVMOnConnect?: pulumi.Input<string | types.enums.v20230707preview.SetStartVMOnConnect>;
+    peakStartVMOnConnect?: pulumi.Input<string | types.enums.SetStartVMOnConnect>;
     /**
      * Action to be taken after a user disconnect during the ramp down period.
      */
-    rampDownActionOnDisconnect?: pulumi.Input<string | types.enums.v20230707preview.SessionHandlingOperation>;
+    rampDownActionOnDisconnect?: pulumi.Input<string | types.enums.SessionHandlingOperation>;
     /**
      * Action to be taken after a logoff during the ramp down period.
      */
-    rampDownActionOnLogoff?: pulumi.Input<string | types.enums.v20230707preview.SessionHandlingOperation>;
+    rampDownActionOnLogoff?: pulumi.Input<string | types.enums.SessionHandlingOperation>;
     /**
      * The time in minutes to wait before performing the desired session handling action when a user disconnects during the ramp down period.
      */
@@ -310,23 +310,23 @@ export interface ScalingPlanPersonalScheduleArgs {
     /**
      * Starting time for ramp down period.
      */
-    rampDownStartTime?: pulumi.Input<types.inputs.desktopvirtualization.v20230707preview.TimeArgs>;
+    rampDownStartTime?: pulumi.Input<types.inputs.TimeArgs>;
     /**
      * The desired configuration of Start VM On Connect for the hostpool during the ramp down phase.
      */
-    rampDownStartVMOnConnect?: pulumi.Input<string | types.enums.v20230707preview.SetStartVMOnConnect>;
+    rampDownStartVMOnConnect?: pulumi.Input<string | types.enums.SetStartVMOnConnect>;
     /**
      * Action to be taken after a user disconnect during the ramp up period.
      */
-    rampUpActionOnDisconnect?: pulumi.Input<string | types.enums.v20230707preview.SessionHandlingOperation>;
+    rampUpActionOnDisconnect?: pulumi.Input<string | types.enums.SessionHandlingOperation>;
     /**
      * Action to be taken after a logoff during the ramp up period.
      */
-    rampUpActionOnLogoff?: pulumi.Input<string | types.enums.v20230707preview.SessionHandlingOperation>;
+    rampUpActionOnLogoff?: pulumi.Input<string | types.enums.SessionHandlingOperation>;
     /**
      * The desired startup behavior during the ramp up period for personal vms in the hostpool.
      */
-    rampUpAutoStartHosts?: pulumi.Input<string | types.enums.v20230707preview.StartupBehavior>;
+    rampUpAutoStartHosts?: pulumi.Input<string | types.enums.StartupBehavior>;
     /**
      * The time in minutes to wait before performing the desired session handling action when a user disconnects during the ramp up period.
      */
@@ -338,11 +338,11 @@ export interface ScalingPlanPersonalScheduleArgs {
     /**
      * Starting time for ramp up period.
      */
-    rampUpStartTime?: pulumi.Input<types.inputs.desktopvirtualization.v20230707preview.TimeArgs>;
+    rampUpStartTime?: pulumi.Input<types.inputs.TimeArgs>;
     /**
      * The desired configuration of Start VM On Connect for the hostpool during the ramp up phase. If this is disabled, session hosts must be turned on using rampUpAutoStartHosts or by turning them on manually.
      */
-    rampUpStartVMOnConnect?: pulumi.Input<string | types.enums.v20230707preview.SetStartVMOnConnect>;
+    rampUpStartVMOnConnect?: pulumi.Input<string | types.enums.SetStartVMOnConnect>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

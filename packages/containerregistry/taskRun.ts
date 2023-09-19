@@ -40,7 +40,7 @@ export class TaskRun extends pulumi.CustomResource {
     /**
      * Identity for the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.containerregistry.IdentityPropertiesResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityPropertiesResponse | undefined>;
     /**
      * The location of the resource
      */
@@ -56,15 +56,15 @@ export class TaskRun extends pulumi.CustomResource {
     /**
      * The request (parameters) for the run
      */
-    public readonly runRequest!: pulumi.Output<types.outputs.containerregistry.DockerBuildRequestResponse | types.outputs.containerregistry.EncodedTaskRunRequestResponse | types.outputs.containerregistry.FileTaskRunRequestResponse | types.outputs.containerregistry.TaskRunRequestResponse | undefined>;
+    public readonly runRequest!: pulumi.Output<types.outputs.DockerBuildRequestResponse | types.outputs.EncodedTaskRunRequestResponse | types.outputs.FileTaskRunRequestResponse | types.outputs.TaskRunRequestResponse | undefined>;
     /**
      * The result of this task run
      */
-    public /*out*/ readonly runResult!: pulumi.Output<types.outputs.containerregistry.RunResponse>;
+    public /*out*/ readonly runResult!: pulumi.Output<types.outputs.RunResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.containerregistry.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource.
      */
@@ -128,7 +128,7 @@ export interface TaskRunArgs {
     /**
      * Identity for the resource.
      */
-    identity?: pulumi.Input<types.inputs.containerregistry.IdentityPropertiesArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityPropertiesArgs>;
     /**
      * The location of the resource
      */
@@ -144,7 +144,7 @@ export interface TaskRunArgs {
     /**
      * The request (parameters) for the run
      */
-    runRequest?: pulumi.Input<types.inputs.containerregistry.DockerBuildRequestArgs | types.inputs.containerregistry.EncodedTaskRunRequestArgs | types.inputs.containerregistry.FileTaskRunRequestArgs | types.inputs.containerregistry.TaskRunRequestArgs>;
+    runRequest?: pulumi.Input<types.inputs.DockerBuildRequestArgs | types.inputs.EncodedTaskRunRequestArgs | types.inputs.FileTaskRunRequestArgs | types.inputs.TaskRunRequestArgs>;
     /**
      * The name of the task run.
      */

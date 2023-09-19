@@ -32,7 +32,7 @@ export interface GetWorkflowResult {
     /**
      * The access control configuration.
      */
-    readonly accessControl?: types.outputs.logic.FlowAccessControlConfigurationResponse;
+    readonly accessControl?: types.outputs.FlowAccessControlConfigurationResponse;
     /**
      * Gets the access endpoint.
      */
@@ -52,7 +52,7 @@ export interface GetWorkflowResult {
     /**
      * The endpoints configuration.
      */
-    readonly endpointsConfiguration?: types.outputs.logic.FlowEndpointsConfigurationResponse;
+    readonly endpointsConfiguration?: types.outputs.FlowEndpointsConfigurationResponse;
     /**
      * The resource id.
      */
@@ -60,15 +60,15 @@ export interface GetWorkflowResult {
     /**
      * Managed service identity properties.
      */
-    readonly identity?: types.outputs.logic.ManagedServiceIdentityResponse;
+    readonly identity?: types.outputs.ManagedServiceIdentityResponse;
     /**
      * The integration account.
      */
-    readonly integrationAccount?: types.outputs.logic.ResourceReferenceResponse;
+    readonly integrationAccount?: types.outputs.ResourceReferenceResponse;
     /**
      * The integration service environment.
      */
-    readonly integrationServiceEnvironment?: types.outputs.logic.ResourceReferenceResponse;
+    readonly integrationServiceEnvironment?: types.outputs.ResourceReferenceResponse;
     /**
      * The resource location.
      */
@@ -80,7 +80,7 @@ export interface GetWorkflowResult {
     /**
      * The parameters.
      */
-    readonly parameters?: {[key: string]: types.outputs.logic.WorkflowParameterResponse};
+    readonly parameters?: {[key: string]: types.outputs.WorkflowParameterResponse};
     /**
      * Gets the provisioning state.
      */
@@ -88,7 +88,7 @@ export interface GetWorkflowResult {
     /**
      * The sku.
      */
-    readonly sku: types.outputs.logic.SkuResponse;
+    readonly sku: types.outputs.SkuResponse;
     /**
      * The state.
      */

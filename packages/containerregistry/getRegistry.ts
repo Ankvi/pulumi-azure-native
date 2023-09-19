@@ -48,7 +48,7 @@ export interface GetRegistryResult {
     /**
      * The encryption settings of container registry.
      */
-    readonly encryption?: types.outputs.containerregistry.EncryptionPropertyResponse;
+    readonly encryption?: types.outputs.EncryptionPropertyResponse;
     /**
      * The resource ID.
      */
@@ -56,7 +56,7 @@ export interface GetRegistryResult {
     /**
      * The identity of the container registry.
      */
-    readonly identity?: types.outputs.containerregistry.IdentityPropertiesResponse;
+    readonly identity?: types.outputs.IdentityPropertiesResponse;
     /**
      * The location of the resource. This cannot be changed after the resource is created.
      */
@@ -76,15 +76,15 @@ export interface GetRegistryResult {
     /**
      * The network rule set for a container registry.
      */
-    readonly networkRuleSet?: types.outputs.containerregistry.NetworkRuleSetResponse;
+    readonly networkRuleSet?: types.outputs.NetworkRuleSetResponse;
     /**
      * The policies for a container registry.
      */
-    readonly policies?: types.outputs.containerregistry.PoliciesResponse;
+    readonly policies?: types.outputs.PoliciesResponse;
     /**
      * List of private endpoint connections for a container registry.
      */
-    readonly privateEndpointConnections: types.outputs.containerregistry.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections: types.outputs.PrivateEndpointConnectionResponse[];
     /**
      * The provisioning state of the container registry at the time the operation was called.
      */
@@ -96,15 +96,15 @@ export interface GetRegistryResult {
     /**
      * The SKU of the container registry.
      */
-    readonly sku: types.outputs.containerregistry.SkuResponse;
+    readonly sku: types.outputs.SkuResponse;
     /**
      * The status of the container registry at the time the operation was called.
      */
-    readonly status: types.outputs.containerregistry.StatusResponse;
+    readonly status: types.outputs.StatusResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.containerregistry.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The tags of the resource.
      */

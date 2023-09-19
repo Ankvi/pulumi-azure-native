@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Resource representation of a workflow
  */
@@ -34,7 +34,7 @@ export class Workflow extends pulumi.CustomResource {
     /**
      * Information on the azure container registry
      */
-    public readonly acr!: pulumi.Output<types.outputs.devhub.v20221011preview.ACRResponse | undefined>;
+    public readonly acr!: pulumi.Output<types.outputs.ACRResponse | undefined>;
     /**
      * The Azure Kubernetes Cluster Resource the application will be deployed to.
      */
@@ -55,7 +55,7 @@ export class Workflow extends pulumi.CustomResource {
      * The version of the language image used for building the code in the generated dockerfile.
      */
     public readonly builderVersion!: pulumi.Output<string | undefined>;
-    public readonly deploymentProperties!: pulumi.Output<types.outputs.devhub.v20221011preview.DeploymentPropertiesResponse | undefined>;
+    public readonly deploymentProperties!: pulumi.Output<types.outputs.DeploymentPropertiesResponse | undefined>;
     /**
      * Path to Dockerfile Build Context within the repository.
      */
@@ -88,7 +88,7 @@ export class Workflow extends pulumi.CustomResource {
      * The version of the language image used for execution in the generated dockerfile.
      */
     public readonly languageVersion!: pulumi.Output<string | undefined>;
-    public readonly lastWorkflowRun!: pulumi.Output<types.outputs.devhub.v20221011preview.WorkflowRunResponse | undefined>;
+    public readonly lastWorkflowRun!: pulumi.Output<types.outputs.WorkflowRunResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -116,7 +116,7 @@ export class Workflow extends pulumi.CustomResource {
     /**
      * The fields needed for OIDC with GitHub.
      */
-    public readonly oidcCredentials!: pulumi.Output<types.outputs.devhub.v20221011preview.GitHubWorkflowProfileResponseOidcCredentials | undefined>;
+    public readonly oidcCredentials!: pulumi.Output<types.outputs.GitHubWorkflowProfileResponseOidcCredentials | undefined>;
     /**
      * The port the application is exposed on.
      */
@@ -144,7 +144,7 @@ export class Workflow extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.devhub.v20221011preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -250,7 +250,7 @@ export interface WorkflowArgs {
     /**
      * Information on the azure container registry
      */
-    acr?: pulumi.Input<types.inputs.devhub.v20221011preview.ACRArgs>;
+    acr?: pulumi.Input<types.inputs.ACRArgs>;
     /**
      * The Azure Kubernetes Cluster Resource the application will be deployed to.
      */
@@ -267,7 +267,7 @@ export interface WorkflowArgs {
      * The version of the language image used for building the code in the generated dockerfile.
      */
     builderVersion?: pulumi.Input<string>;
-    deploymentProperties?: pulumi.Input<types.inputs.devhub.v20221011preview.DeploymentPropertiesArgs>;
+    deploymentProperties?: pulumi.Input<types.inputs.DeploymentPropertiesArgs>;
     /**
      * Path to Dockerfile Build Context within the repository.
      */
@@ -279,7 +279,7 @@ export interface WorkflowArgs {
     /**
      * The mode of generation to be used for generating Dockerfiles.
      */
-    dockerfileGenerationMode?: pulumi.Input<string | types.enums.v20221011preview.DockerfileGenerationMode>;
+    dockerfileGenerationMode?: pulumi.Input<string | types.enums.DockerfileGenerationMode>;
     /**
      * The directory to output the generated Dockerfile to.
      */
@@ -287,7 +287,7 @@ export interface WorkflowArgs {
     /**
      * The programming language used.
      */
-    generationLanguage?: pulumi.Input<string | types.enums.v20221011preview.GenerationLanguage>;
+    generationLanguage?: pulumi.Input<string | types.enums.GenerationLanguage>;
     /**
      * The name of the image to be generated.
      */
@@ -300,7 +300,7 @@ export interface WorkflowArgs {
      * The version of the language image used for execution in the generated dockerfile.
      */
     languageVersion?: pulumi.Input<string>;
-    lastWorkflowRun?: pulumi.Input<types.inputs.devhub.v20221011preview.WorkflowRunArgs>;
+    lastWorkflowRun?: pulumi.Input<types.inputs.WorkflowRunArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -308,7 +308,7 @@ export interface WorkflowArgs {
     /**
      * The mode of generation to be used for generating Manifest.
      */
-    manifestGenerationMode?: pulumi.Input<string | types.enums.v20221011preview.ManifestGenerationMode>;
+    manifestGenerationMode?: pulumi.Input<string | types.enums.ManifestGenerationMode>;
     /**
      * The directory to output the generated manifests to.
      */
@@ -316,7 +316,7 @@ export interface WorkflowArgs {
     /**
      * Determines the type of manifests to be generated.
      */
-    manifestType?: pulumi.Input<string | types.enums.v20221011preview.GenerationManifestType>;
+    manifestType?: pulumi.Input<string | types.enums.GenerationManifestType>;
     /**
      * Kubernetes namespace the application is deployed to.
      */
@@ -324,7 +324,7 @@ export interface WorkflowArgs {
     /**
      * The fields needed for OIDC with GitHub.
      */
-    oidcCredentials?: pulumi.Input<types.inputs.devhub.v20221011preview.GitHubWorkflowProfileOidcCredentialsArgs>;
+    oidcCredentials?: pulumi.Input<types.inputs.GitHubWorkflowProfileOidcCredentialsArgs>;
     /**
      * The port the application is exposed on.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a server trust group.
  */
@@ -36,7 +36,7 @@ export interface GetServerTrustGroupResult {
     /**
      * Group members information for the server trust group.
      */
-    readonly groupMembers: types.outputs.sql.v20221101preview.ServerInfoResponse[];
+    readonly groupMembers: types.outputs.ServerInfoResponse[];
     /**
      * Resource ID.
      */

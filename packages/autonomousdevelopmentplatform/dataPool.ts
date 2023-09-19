@@ -39,7 +39,7 @@ export class DataPool extends pulumi.CustomResource {
     /**
      * Gets or sets the collection of locations where Data Pool resources should be created
      */
-    public readonly locations!: pulumi.Output<types.outputs.autonomousdevelopmentplatform.DataPoolLocationResponse[]>;
+    public readonly locations!: pulumi.Output<types.outputs.DataPoolLocationResponse[]>;
     /**
      * The name of the resource
      */
@@ -51,7 +51,7 @@ export class DataPool extends pulumi.CustomResource {
     /**
      * The system meta data relating to this resource
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.autonomousdevelopmentplatform.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags
      */
@@ -122,7 +122,7 @@ export interface DataPoolArgs {
     /**
      * Gets or sets the collection of locations where Data Pool resources should be created
      */
-    locations: pulumi.Input<pulumi.Input<types.inputs.autonomousdevelopmentplatform.DataPoolLocationArgs>[]>;
+    locations: pulumi.Input<pulumi.Input<types.inputs.DataPoolLocationArgs>[]>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

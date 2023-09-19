@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the blob inventory policy associated with the specified storage account.
  */
@@ -48,11 +48,11 @@ export interface GetBlobInventoryPolicyResult {
     /**
      * The storage account blob inventory policy object. It is composed of policy rules.
      */
-    readonly policy: types.outputs.storage.v20220901.BlobInventoryPolicySchemaResponse;
+    readonly policy: types.outputs.BlobInventoryPolicySchemaResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.storage.v20220901.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

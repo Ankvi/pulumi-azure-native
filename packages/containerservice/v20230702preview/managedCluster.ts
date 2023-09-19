@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Managed cluster.
  */
@@ -34,31 +34,31 @@ export class ManagedCluster extends pulumi.CustomResource {
     /**
      * The Azure Active Directory configuration.
      */
-    public readonly aadProfile!: pulumi.Output<types.outputs.containerservice.v20230702preview.ManagedClusterAADProfileResponse | undefined>;
+    public readonly aadProfile!: pulumi.Output<types.outputs.ManagedClusterAADProfileResponse | undefined>;
     /**
      * The profile of managed cluster add-on.
      */
-    public readonly addonProfiles!: pulumi.Output<{[key: string]: types.outputs.containerservice.v20230702preview.ManagedClusterAddonProfileResponse} | undefined>;
+    public readonly addonProfiles!: pulumi.Output<{[key: string]: types.outputs.ManagedClusterAddonProfileResponse} | undefined>;
     /**
      * The agent pool properties.
      */
-    public readonly agentPoolProfiles!: pulumi.Output<types.outputs.containerservice.v20230702preview.ManagedClusterAgentPoolProfileResponse[] | undefined>;
+    public readonly agentPoolProfiles!: pulumi.Output<types.outputs.ManagedClusterAgentPoolProfileResponse[] | undefined>;
     /**
      * The access profile for managed cluster API server.
      */
-    public readonly apiServerAccessProfile!: pulumi.Output<types.outputs.containerservice.v20230702preview.ManagedClusterAPIServerAccessProfileResponse | undefined>;
+    public readonly apiServerAccessProfile!: pulumi.Output<types.outputs.ManagedClusterAPIServerAccessProfileResponse | undefined>;
     /**
      * Parameters to be applied to the cluster-autoscaler when enabled
      */
-    public readonly autoScalerProfile!: pulumi.Output<types.outputs.containerservice.v20230702preview.ManagedClusterPropertiesResponseAutoScalerProfile | undefined>;
+    public readonly autoScalerProfile!: pulumi.Output<types.outputs.ManagedClusterPropertiesResponseAutoScalerProfile | undefined>;
     /**
      * The auto upgrade configuration.
      */
-    public readonly autoUpgradeProfile!: pulumi.Output<types.outputs.containerservice.v20230702preview.ManagedClusterAutoUpgradeProfileResponse | undefined>;
+    public readonly autoUpgradeProfile!: pulumi.Output<types.outputs.ManagedClusterAutoUpgradeProfileResponse | undefined>;
     /**
      * Prometheus addon profile for the container service cluster
      */
-    public readonly azureMonitorProfile!: pulumi.Output<types.outputs.containerservice.v20230702preview.ManagedClusterAzureMonitorProfileResponse | undefined>;
+    public readonly azureMonitorProfile!: pulumi.Output<types.outputs.ManagedClusterAzureMonitorProfileResponse | undefined>;
     /**
      * The Azure Portal requires certain Cross-Origin Resource Sharing (CORS) headers to be sent in some responses, which Kubernetes APIServer doesn't handle by default. This special FQDN supports CORS, allowing the Azure Portal to function properly.
      */
@@ -66,7 +66,7 @@ export class ManagedCluster extends pulumi.CustomResource {
     /**
      * CreationData to be used to specify the source Snapshot ID if the cluster will be created/upgraded using a snapshot.
      */
-    public readonly creationData!: pulumi.Output<types.outputs.containerservice.v20230702preview.CreationDataResponse | undefined>;
+    public readonly creationData!: pulumi.Output<types.outputs.CreationDataResponse | undefined>;
     /**
      * The version of Kubernetes the Managed Cluster is running.
      */
@@ -98,7 +98,7 @@ export class ManagedCluster extends pulumi.CustomResource {
     /**
      * The extended location of the Virtual Machine.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.containerservice.v20230702preview.ExtendedLocationResponse | undefined>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
     /**
      * The FQDN of the master pool.
      */
@@ -110,23 +110,23 @@ export class ManagedCluster extends pulumi.CustomResource {
     /**
      * The guardrails profile holds all the guardrails information for a given cluster
      */
-    public readonly guardrailsProfile!: pulumi.Output<types.outputs.containerservice.v20230702preview.GuardrailsProfileResponse | undefined>;
+    public readonly guardrailsProfile!: pulumi.Output<types.outputs.GuardrailsProfileResponse | undefined>;
     /**
      * Configurations for provisioning the cluster with HTTP proxy servers.
      */
-    public readonly httpProxyConfig!: pulumi.Output<types.outputs.containerservice.v20230702preview.ManagedClusterHTTPProxyConfigResponse | undefined>;
+    public readonly httpProxyConfig!: pulumi.Output<types.outputs.ManagedClusterHTTPProxyConfigResponse | undefined>;
     /**
      * The identity of the managed cluster, if configured.
      */
-    public readonly identity!: pulumi.Output<types.outputs.containerservice.v20230702preview.ManagedClusterIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedClusterIdentityResponse | undefined>;
     /**
      * Identities associated with the cluster.
      */
-    public readonly identityProfile!: pulumi.Output<{[key: string]: types.outputs.containerservice.v20230702preview.UserAssignedIdentityResponse} | undefined>;
+    public readonly identityProfile!: pulumi.Output<{[key: string]: types.outputs.UserAssignedIdentityResponse} | undefined>;
     /**
      * Ingress profile for the managed cluster.
      */
-    public readonly ingressProfile!: pulumi.Output<types.outputs.containerservice.v20230702preview.ManagedClusterIngressProfileResponse | undefined>;
+    public readonly ingressProfile!: pulumi.Output<types.outputs.ManagedClusterIngressProfileResponse | undefined>;
     /**
      * When you upgrade a supported AKS cluster, Kubernetes minor versions cannot be skipped. All upgrades must be performed sequentially by major version number. For example, upgrades between 1.14.x -> 1.15.x or 1.15.x -> 1.16.x are allowed, however 1.14.x -> 1.16.x is not allowed. See [upgrading an AKS cluster](https://docs.microsoft.com/azure/aks/upgrade-cluster) for more details.
      */
@@ -134,7 +134,7 @@ export class ManagedCluster extends pulumi.CustomResource {
     /**
      * The profile for Linux VMs in the Managed Cluster.
      */
-    public readonly linuxProfile!: pulumi.Output<types.outputs.containerservice.v20230702preview.ContainerServiceLinuxProfileResponse | undefined>;
+    public readonly linuxProfile!: pulumi.Output<types.outputs.ContainerServiceLinuxProfileResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -146,7 +146,7 @@ export class ManagedCluster extends pulumi.CustomResource {
     /**
      * Optional cluster metrics configuration.
      */
-    public readonly metricsProfile!: pulumi.Output<types.outputs.containerservice.v20230702preview.ManagedClusterMetricsProfileResponse | undefined>;
+    public readonly metricsProfile!: pulumi.Output<types.outputs.ManagedClusterMetricsProfileResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -154,7 +154,7 @@ export class ManagedCluster extends pulumi.CustomResource {
     /**
      * The network configuration profile.
      */
-    public readonly networkProfile!: pulumi.Output<types.outputs.containerservice.v20230702preview.ContainerServiceNetworkProfileResponse | undefined>;
+    public readonly networkProfile!: pulumi.Output<types.outputs.ContainerServiceNetworkProfileResponse | undefined>;
     /**
      * The name of the resource group containing agent pool nodes.
      */
@@ -162,19 +162,19 @@ export class ManagedCluster extends pulumi.CustomResource {
     /**
      * The node resource group configuration profile.
      */
-    public readonly nodeResourceGroupProfile!: pulumi.Output<types.outputs.containerservice.v20230702preview.ManagedClusterNodeResourceGroupProfileResponse | undefined>;
+    public readonly nodeResourceGroupProfile!: pulumi.Output<types.outputs.ManagedClusterNodeResourceGroupProfileResponse | undefined>;
     /**
      * The OIDC issuer profile of the Managed Cluster.
      */
-    public readonly oidcIssuerProfile!: pulumi.Output<types.outputs.containerservice.v20230702preview.ManagedClusterOIDCIssuerProfileResponse | undefined>;
+    public readonly oidcIssuerProfile!: pulumi.Output<types.outputs.ManagedClusterOIDCIssuerProfileResponse | undefined>;
     /**
      * See [use AAD pod identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity) for more details on AAD pod identity integration.
      */
-    public readonly podIdentityProfile!: pulumi.Output<types.outputs.containerservice.v20230702preview.ManagedClusterPodIdentityProfileResponse | undefined>;
+    public readonly podIdentityProfile!: pulumi.Output<types.outputs.ManagedClusterPodIdentityProfileResponse | undefined>;
     /**
      * The Power State of the cluster.
      */
-    public /*out*/ readonly powerState!: pulumi.Output<types.outputs.containerservice.v20230702preview.PowerStateResponse>;
+    public /*out*/ readonly powerState!: pulumi.Output<types.outputs.PowerStateResponse>;
     /**
      * The FQDN of private cluster.
      */
@@ -182,7 +182,7 @@ export class ManagedCluster extends pulumi.CustomResource {
     /**
      * Private link resources associated with the cluster.
      */
-    public readonly privateLinkResources!: pulumi.Output<types.outputs.containerservice.v20230702preview.PrivateLinkResourceResponse[] | undefined>;
+    public readonly privateLinkResources!: pulumi.Output<types.outputs.PrivateLinkResourceResponse[] | undefined>;
     /**
      * The current provisioning state.
      */
@@ -198,23 +198,23 @@ export class ManagedCluster extends pulumi.CustomResource {
     /**
      * Security profile for the managed cluster.
      */
-    public readonly securityProfile!: pulumi.Output<types.outputs.containerservice.v20230702preview.ManagedClusterSecurityProfileResponse | undefined>;
+    public readonly securityProfile!: pulumi.Output<types.outputs.ManagedClusterSecurityProfileResponse | undefined>;
     /**
      * Service mesh profile for a managed cluster.
      */
-    public readonly serviceMeshProfile!: pulumi.Output<types.outputs.containerservice.v20230702preview.ServiceMeshProfileResponse | undefined>;
+    public readonly serviceMeshProfile!: pulumi.Output<types.outputs.ServiceMeshProfileResponse | undefined>;
     /**
      * Information about a service principal identity for the cluster to use for manipulating Azure APIs.
      */
-    public readonly servicePrincipalProfile!: pulumi.Output<types.outputs.containerservice.v20230702preview.ManagedClusterServicePrincipalProfileResponse | undefined>;
+    public readonly servicePrincipalProfile!: pulumi.Output<types.outputs.ManagedClusterServicePrincipalProfileResponse | undefined>;
     /**
      * The managed cluster SKU.
      */
-    public readonly sku!: pulumi.Output<types.outputs.containerservice.v20230702preview.ManagedClusterSKUResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.ManagedClusterSKUResponse | undefined>;
     /**
      * Storage profile for the managed cluster.
      */
-    public readonly storageProfile!: pulumi.Output<types.outputs.containerservice.v20230702preview.ManagedClusterStorageProfileResponse | undefined>;
+    public readonly storageProfile!: pulumi.Output<types.outputs.ManagedClusterStorageProfileResponse | undefined>;
     /**
      * The support plan for the Managed Cluster. If unspecified, the default is 'KubernetesOfficial'.
      */
@@ -222,7 +222,7 @@ export class ManagedCluster extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.containerservice.v20230702preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -234,15 +234,15 @@ export class ManagedCluster extends pulumi.CustomResource {
     /**
      * Settings for upgrading a cluster.
      */
-    public readonly upgradeSettings!: pulumi.Output<types.outputs.containerservice.v20230702preview.ClusterUpgradeSettingsResponse | undefined>;
+    public readonly upgradeSettings!: pulumi.Output<types.outputs.ClusterUpgradeSettingsResponse | undefined>;
     /**
      * The profile for Windows VMs in the Managed Cluster.
      */
-    public readonly windowsProfile!: pulumi.Output<types.outputs.containerservice.v20230702preview.ManagedClusterWindowsProfileResponse | undefined>;
+    public readonly windowsProfile!: pulumi.Output<types.outputs.ManagedClusterWindowsProfileResponse | undefined>;
     /**
      * Workload Auto-scaler profile for the managed cluster.
      */
-    public readonly workloadAutoScalerProfile!: pulumi.Output<types.outputs.containerservice.v20230702preview.ManagedClusterWorkloadAutoScalerProfileResponse | undefined>;
+    public readonly workloadAutoScalerProfile!: pulumi.Output<types.outputs.ManagedClusterWorkloadAutoScalerProfileResponse | undefined>;
 
     /**
      * Create a ManagedCluster resource with the given unique name, arguments, and options.
@@ -283,7 +283,7 @@ export class ManagedCluster extends pulumi.CustomResource {
             resourceInputs["linuxProfile"] = args ? args.linuxProfile : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["metricsProfile"] = args ? args.metricsProfile : undefined;
-            resourceInputs["networkProfile"] = args ? (args.networkProfile ? pulumi.output(args.networkProfile).apply(types.inputs.containerservice.v20230702preview.containerServiceNetworkProfileArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["networkProfile"] = args ? (args.networkProfile ? pulumi.output(args.networkProfile).apply(types.inputs.containerServiceNetworkProfileArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["nodeResourceGroup"] = args ? args.nodeResourceGroup : undefined;
             resourceInputs["nodeResourceGroupProfile"] = args ? args.nodeResourceGroupProfile : undefined;
             resourceInputs["oidcIssuerProfile"] = args ? args.oidcIssuerProfile : undefined;
@@ -292,7 +292,7 @@ export class ManagedCluster extends pulumi.CustomResource {
             resourceInputs["publicNetworkAccess"] = args ? args.publicNetworkAccess : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["resourceName"] = args ? args.resourceName : undefined;
-            resourceInputs["securityProfile"] = args ? (args.securityProfile ? pulumi.output(args.securityProfile).apply(types.inputs.containerservice.v20230702preview.managedClusterSecurityProfileArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["securityProfile"] = args ? (args.securityProfile ? pulumi.output(args.securityProfile).apply(types.inputs.managedClusterSecurityProfileArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["serviceMeshProfile"] = args ? args.serviceMeshProfile : undefined;
             resourceInputs["servicePrincipalProfile"] = args ? args.servicePrincipalProfile : undefined;
             resourceInputs["sku"] = args ? args.sku : undefined;
@@ -301,7 +301,7 @@ export class ManagedCluster extends pulumi.CustomResource {
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["upgradeSettings"] = args ? args.upgradeSettings : undefined;
             resourceInputs["windowsProfile"] = args ? args.windowsProfile : undefined;
-            resourceInputs["workloadAutoScalerProfile"] = args ? (args.workloadAutoScalerProfile ? pulumi.output(args.workloadAutoScalerProfile).apply(types.inputs.containerservice.v20230702preview.managedClusterWorkloadAutoScalerProfileArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["workloadAutoScalerProfile"] = args ? (args.workloadAutoScalerProfile ? pulumi.output(args.workloadAutoScalerProfile).apply(types.inputs.managedClusterWorkloadAutoScalerProfileArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["azurePortalFQDN"] = undefined /*out*/;
             resourceInputs["currentKubernetesVersion"] = undefined /*out*/;
             resourceInputs["fqdn"] = undefined /*out*/;
@@ -382,35 +382,35 @@ export interface ManagedClusterArgs {
     /**
      * The Azure Active Directory configuration.
      */
-    aadProfile?: pulumi.Input<types.inputs.containerservice.v20230702preview.ManagedClusterAADProfileArgs>;
+    aadProfile?: pulumi.Input<types.inputs.ManagedClusterAADProfileArgs>;
     /**
      * The profile of managed cluster add-on.
      */
-    addonProfiles?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.containerservice.v20230702preview.ManagedClusterAddonProfileArgs>}>;
+    addonProfiles?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.ManagedClusterAddonProfileArgs>}>;
     /**
      * The agent pool properties.
      */
-    agentPoolProfiles?: pulumi.Input<pulumi.Input<types.inputs.containerservice.v20230702preview.ManagedClusterAgentPoolProfileArgs>[]>;
+    agentPoolProfiles?: pulumi.Input<pulumi.Input<types.inputs.ManagedClusterAgentPoolProfileArgs>[]>;
     /**
      * The access profile for managed cluster API server.
      */
-    apiServerAccessProfile?: pulumi.Input<types.inputs.containerservice.v20230702preview.ManagedClusterAPIServerAccessProfileArgs>;
+    apiServerAccessProfile?: pulumi.Input<types.inputs.ManagedClusterAPIServerAccessProfileArgs>;
     /**
      * Parameters to be applied to the cluster-autoscaler when enabled
      */
-    autoScalerProfile?: pulumi.Input<types.inputs.containerservice.v20230702preview.ManagedClusterPropertiesAutoScalerProfileArgs>;
+    autoScalerProfile?: pulumi.Input<types.inputs.ManagedClusterPropertiesAutoScalerProfileArgs>;
     /**
      * The auto upgrade configuration.
      */
-    autoUpgradeProfile?: pulumi.Input<types.inputs.containerservice.v20230702preview.ManagedClusterAutoUpgradeProfileArgs>;
+    autoUpgradeProfile?: pulumi.Input<types.inputs.ManagedClusterAutoUpgradeProfileArgs>;
     /**
      * Prometheus addon profile for the container service cluster
      */
-    azureMonitorProfile?: pulumi.Input<types.inputs.containerservice.v20230702preview.ManagedClusterAzureMonitorProfileArgs>;
+    azureMonitorProfile?: pulumi.Input<types.inputs.ManagedClusterAzureMonitorProfileArgs>;
     /**
      * CreationData to be used to specify the source Snapshot ID if the cluster will be created/upgraded using a snapshot.
      */
-    creationData?: pulumi.Input<types.inputs.containerservice.v20230702preview.CreationDataArgs>;
+    creationData?: pulumi.Input<types.inputs.CreationDataArgs>;
     /**
      * If set to true, getting static credentials will be disabled for this cluster. This must only be used on Managed Clusters that are AAD enabled. For more details see [disable local accounts](https://docs.microsoft.com/azure/aks/managed-aad#disable-local-accounts-preview).
      */
@@ -438,7 +438,7 @@ export interface ManagedClusterArgs {
     /**
      * The extended location of the Virtual Machine.
      */
-    extendedLocation?: pulumi.Input<types.inputs.containerservice.v20230702preview.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * This cannot be updated once the Managed Cluster has been created.
      */
@@ -446,23 +446,23 @@ export interface ManagedClusterArgs {
     /**
      * The guardrails profile holds all the guardrails information for a given cluster
      */
-    guardrailsProfile?: pulumi.Input<types.inputs.containerservice.v20230702preview.GuardrailsProfileArgs>;
+    guardrailsProfile?: pulumi.Input<types.inputs.GuardrailsProfileArgs>;
     /**
      * Configurations for provisioning the cluster with HTTP proxy servers.
      */
-    httpProxyConfig?: pulumi.Input<types.inputs.containerservice.v20230702preview.ManagedClusterHTTPProxyConfigArgs>;
+    httpProxyConfig?: pulumi.Input<types.inputs.ManagedClusterHTTPProxyConfigArgs>;
     /**
      * The identity of the managed cluster, if configured.
      */
-    identity?: pulumi.Input<types.inputs.containerservice.v20230702preview.ManagedClusterIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedClusterIdentityArgs>;
     /**
      * Identities associated with the cluster.
      */
-    identityProfile?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.containerservice.v20230702preview.UserAssignedIdentityArgs>}>;
+    identityProfile?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.UserAssignedIdentityArgs>}>;
     /**
      * Ingress profile for the managed cluster.
      */
-    ingressProfile?: pulumi.Input<types.inputs.containerservice.v20230702preview.ManagedClusterIngressProfileArgs>;
+    ingressProfile?: pulumi.Input<types.inputs.ManagedClusterIngressProfileArgs>;
     /**
      * When you upgrade a supported AKS cluster, Kubernetes minor versions cannot be skipped. All upgrades must be performed sequentially by major version number. For example, upgrades between 1.14.x -> 1.15.x or 1.15.x -> 1.16.x are allowed, however 1.14.x -> 1.16.x is not allowed. See [upgrading an AKS cluster](https://docs.microsoft.com/azure/aks/upgrade-cluster) for more details.
      */
@@ -470,7 +470,7 @@ export interface ManagedClusterArgs {
     /**
      * The profile for Linux VMs in the Managed Cluster.
      */
-    linuxProfile?: pulumi.Input<types.inputs.containerservice.v20230702preview.ContainerServiceLinuxProfileArgs>;
+    linuxProfile?: pulumi.Input<types.inputs.ContainerServiceLinuxProfileArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -478,11 +478,11 @@ export interface ManagedClusterArgs {
     /**
      * Optional cluster metrics configuration.
      */
-    metricsProfile?: pulumi.Input<types.inputs.containerservice.v20230702preview.ManagedClusterMetricsProfileArgs>;
+    metricsProfile?: pulumi.Input<types.inputs.ManagedClusterMetricsProfileArgs>;
     /**
      * The network configuration profile.
      */
-    networkProfile?: pulumi.Input<types.inputs.containerservice.v20230702preview.ContainerServiceNetworkProfileArgs>;
+    networkProfile?: pulumi.Input<types.inputs.ContainerServiceNetworkProfileArgs>;
     /**
      * The name of the resource group containing agent pool nodes.
      */
@@ -490,23 +490,23 @@ export interface ManagedClusterArgs {
     /**
      * The node resource group configuration profile.
      */
-    nodeResourceGroupProfile?: pulumi.Input<types.inputs.containerservice.v20230702preview.ManagedClusterNodeResourceGroupProfileArgs>;
+    nodeResourceGroupProfile?: pulumi.Input<types.inputs.ManagedClusterNodeResourceGroupProfileArgs>;
     /**
      * The OIDC issuer profile of the Managed Cluster.
      */
-    oidcIssuerProfile?: pulumi.Input<types.inputs.containerservice.v20230702preview.ManagedClusterOIDCIssuerProfileArgs>;
+    oidcIssuerProfile?: pulumi.Input<types.inputs.ManagedClusterOIDCIssuerProfileArgs>;
     /**
      * See [use AAD pod identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity) for more details on AAD pod identity integration.
      */
-    podIdentityProfile?: pulumi.Input<types.inputs.containerservice.v20230702preview.ManagedClusterPodIdentityProfileArgs>;
+    podIdentityProfile?: pulumi.Input<types.inputs.ManagedClusterPodIdentityProfileArgs>;
     /**
      * Private link resources associated with the cluster.
      */
-    privateLinkResources?: pulumi.Input<pulumi.Input<types.inputs.containerservice.v20230702preview.PrivateLinkResourceArgs>[]>;
+    privateLinkResources?: pulumi.Input<pulumi.Input<types.inputs.PrivateLinkResourceArgs>[]>;
     /**
      * Allow or deny public network access for AKS
      */
-    publicNetworkAccess?: pulumi.Input<string | types.enums.v20230702preview.PublicNetworkAccess>;
+    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -518,27 +518,27 @@ export interface ManagedClusterArgs {
     /**
      * Security profile for the managed cluster.
      */
-    securityProfile?: pulumi.Input<types.inputs.containerservice.v20230702preview.ManagedClusterSecurityProfileArgs>;
+    securityProfile?: pulumi.Input<types.inputs.ManagedClusterSecurityProfileArgs>;
     /**
      * Service mesh profile for a managed cluster.
      */
-    serviceMeshProfile?: pulumi.Input<types.inputs.containerservice.v20230702preview.ServiceMeshProfileArgs>;
+    serviceMeshProfile?: pulumi.Input<types.inputs.ServiceMeshProfileArgs>;
     /**
      * Information about a service principal identity for the cluster to use for manipulating Azure APIs.
      */
-    servicePrincipalProfile?: pulumi.Input<types.inputs.containerservice.v20230702preview.ManagedClusterServicePrincipalProfileArgs>;
+    servicePrincipalProfile?: pulumi.Input<types.inputs.ManagedClusterServicePrincipalProfileArgs>;
     /**
      * The managed cluster SKU.
      */
-    sku?: pulumi.Input<types.inputs.containerservice.v20230702preview.ManagedClusterSKUArgs>;
+    sku?: pulumi.Input<types.inputs.ManagedClusterSKUArgs>;
     /**
      * Storage profile for the managed cluster.
      */
-    storageProfile?: pulumi.Input<types.inputs.containerservice.v20230702preview.ManagedClusterStorageProfileArgs>;
+    storageProfile?: pulumi.Input<types.inputs.ManagedClusterStorageProfileArgs>;
     /**
      * The support plan for the Managed Cluster. If unspecified, the default is 'KubernetesOfficial'.
      */
-    supportPlan?: pulumi.Input<string | types.enums.v20230702preview.KubernetesSupportPlan>;
+    supportPlan?: pulumi.Input<string | types.enums.KubernetesSupportPlan>;
     /**
      * Resource tags.
      */
@@ -546,13 +546,13 @@ export interface ManagedClusterArgs {
     /**
      * Settings for upgrading a cluster.
      */
-    upgradeSettings?: pulumi.Input<types.inputs.containerservice.v20230702preview.ClusterUpgradeSettingsArgs>;
+    upgradeSettings?: pulumi.Input<types.inputs.ClusterUpgradeSettingsArgs>;
     /**
      * The profile for Windows VMs in the Managed Cluster.
      */
-    windowsProfile?: pulumi.Input<types.inputs.containerservice.v20230702preview.ManagedClusterWindowsProfileArgs>;
+    windowsProfile?: pulumi.Input<types.inputs.ManagedClusterWindowsProfileArgs>;
     /**
      * Workload Auto-scaler profile for the managed cluster.
      */
-    workloadAutoScalerProfile?: pulumi.Input<types.inputs.containerservice.v20230702preview.ManagedClusterWorkloadAutoScalerProfileArgs>;
+    workloadAutoScalerProfile?: pulumi.Input<types.inputs.ManagedClusterWorkloadAutoScalerProfileArgs>;
 }

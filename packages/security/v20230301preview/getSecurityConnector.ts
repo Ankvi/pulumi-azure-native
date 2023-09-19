@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves details of a specific security connector
  */
@@ -31,7 +31,7 @@ export interface GetSecurityConnectorResult {
     /**
      * The security connector environment data.
      */
-    readonly environmentData?: types.outputs.security.v20230301preview.AwsEnvironmentDataResponse | types.outputs.security.v20230301preview.AzureDevOpsScopeEnvironmentDataResponse | types.outputs.security.v20230301preview.GcpProjectEnvironmentDataResponse | types.outputs.security.v20230301preview.GithubScopeEnvironmentDataResponse | types.outputs.security.v20230301preview.GitlabScopeEnvironmentDataResponse;
+    readonly environmentData?: types.outputs.AwsEnvironmentDataResponse | types.outputs.AzureDevOpsScopeEnvironmentDataResponse | types.outputs.GcpProjectEnvironmentDataResponse | types.outputs.GithubScopeEnvironmentDataResponse | types.outputs.GitlabScopeEnvironmentDataResponse;
     /**
      * The multi cloud resource's cloud name.
      */
@@ -67,11 +67,11 @@ export interface GetSecurityConnectorResult {
     /**
      * A collection of offerings for the security connector.
      */
-    readonly offerings?: (types.outputs.security.v20230301preview.CspmMonitorAwsOfferingResponse | types.outputs.security.v20230301preview.CspmMonitorAzureDevOpsOfferingResponse | types.outputs.security.v20230301preview.CspmMonitorGcpOfferingResponse | types.outputs.security.v20230301preview.CspmMonitorGitLabOfferingResponse | types.outputs.security.v20230301preview.CspmMonitorGithubOfferingResponse | types.outputs.security.v20230301preview.DefenderCspmAwsOfferingResponse | types.outputs.security.v20230301preview.DefenderCspmGcpOfferingResponse | types.outputs.security.v20230301preview.DefenderFoDatabasesAwsOfferingResponse | types.outputs.security.v20230301preview.DefenderForContainersAwsOfferingResponse | types.outputs.security.v20230301preview.DefenderForContainersGcpOfferingResponse | types.outputs.security.v20230301preview.DefenderForDatabasesGcpOfferingResponse | types.outputs.security.v20230301preview.DefenderForDevOpsAzureDevOpsOfferingResponse | types.outputs.security.v20230301preview.DefenderForDevOpsGitLabOfferingResponse | types.outputs.security.v20230301preview.DefenderForDevOpsGithubOfferingResponse | types.outputs.security.v20230301preview.DefenderForServersAwsOfferingResponse | types.outputs.security.v20230301preview.DefenderForServersGcpOfferingResponse | types.outputs.security.v20230301preview.InformationProtectionAwsOfferingResponse)[];
+    readonly offerings?: (types.outputs.CspmMonitorAwsOfferingResponse | types.outputs.CspmMonitorAzureDevOpsOfferingResponse | types.outputs.CspmMonitorGcpOfferingResponse | types.outputs.CspmMonitorGitLabOfferingResponse | types.outputs.CspmMonitorGithubOfferingResponse | types.outputs.DefenderCspmAwsOfferingResponse | types.outputs.DefenderCspmGcpOfferingResponse | types.outputs.DefenderFoDatabasesAwsOfferingResponse | types.outputs.DefenderForContainersAwsOfferingResponse | types.outputs.DefenderForContainersGcpOfferingResponse | types.outputs.DefenderForDatabasesGcpOfferingResponse | types.outputs.DefenderForDevOpsAzureDevOpsOfferingResponse | types.outputs.DefenderForDevOpsGitLabOfferingResponse | types.outputs.DefenderForDevOpsGithubOfferingResponse | types.outputs.DefenderForServersAwsOfferingResponse | types.outputs.DefenderForServersGcpOfferingResponse | types.outputs.InformationProtectionAwsOfferingResponse)[];
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.security.v20230301preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * A list of key value pairs that describe the resource.
      */

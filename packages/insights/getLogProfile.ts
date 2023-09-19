@@ -47,7 +47,7 @@ export interface GetLogProfileResult {
     /**
      * the retention policy for the events in the log.
      */
-    readonly retentionPolicy: types.outputs.insights.RetentionPolicyResponse;
+    readonly retentionPolicy: types.outputs.RetentionPolicyResponse;
     /**
      * The service bus rule ID of the service bus namespace in which you would like to have Event Hubs created for streaming the Activity Log. The rule ID is of the format: '{service bus resource ID}/authorizationrules/{key name}'.
      */

@@ -77,7 +77,7 @@ export interface GetServerSecurityAlertPolicyResult {
     /**
      * SystemData of SecurityAlertPolicyResource.
      */
-    readonly systemData: types.outputs.sql.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource type.
      */

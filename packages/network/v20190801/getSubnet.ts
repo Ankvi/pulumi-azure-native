@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the specified subnet by virtual network and resource group.
  */
@@ -49,7 +49,7 @@ export interface GetSubnetResult {
     /**
      * An array of references to the delegations on the subnet.
      */
-    readonly delegations?: types.outputs.network.v20190801.DelegationResponse[];
+    readonly delegations?: types.outputs.DelegationResponse[];
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -61,11 +61,11 @@ export interface GetSubnetResult {
     /**
      * Array of IP configuration profiles which reference this subnet.
      */
-    readonly ipConfigurationProfiles: types.outputs.network.v20190801.IPConfigurationProfileResponse[];
+    readonly ipConfigurationProfiles: types.outputs.IPConfigurationProfileResponse[];
     /**
      * An array of references to the network interface IP configurations using subnet.
      */
-    readonly ipConfigurations: types.outputs.network.v20190801.IPConfigurationResponse[];
+    readonly ipConfigurations: types.outputs.IPConfigurationResponse[];
     /**
      * The name of the resource that is unique within a resource group. This name can be used to access the resource.
      */
@@ -73,11 +73,11 @@ export interface GetSubnetResult {
     /**
      * Nat gateway associated with this subnet.
      */
-    readonly natGateway?: types.outputs.network.v20190801.SubResourceResponse;
+    readonly natGateway?: types.outputs.SubResourceResponse;
     /**
      * The reference of the NetworkSecurityGroup resource.
      */
-    readonly networkSecurityGroup?: types.outputs.network.v20190801.NetworkSecurityGroupResponse;
+    readonly networkSecurityGroup?: types.outputs.NetworkSecurityGroupResponse;
     /**
      * Enable or Disable apply network policies on private end point in the subnet.
      */
@@ -85,7 +85,7 @@ export interface GetSubnetResult {
     /**
      * An array of references to private endpoints.
      */
-    readonly privateEndpoints: types.outputs.network.v20190801.PrivateEndpointResponse[];
+    readonly privateEndpoints: types.outputs.PrivateEndpointResponse[];
     /**
      * Enable or Disable apply network policies on private link service in the subnet.
      */
@@ -101,23 +101,23 @@ export interface GetSubnetResult {
     /**
      * An array of references to the external resources using subnet.
      */
-    readonly resourceNavigationLinks?: types.outputs.network.v20190801.ResourceNavigationLinkResponse[];
+    readonly resourceNavigationLinks?: types.outputs.ResourceNavigationLinkResponse[];
     /**
      * The reference of the RouteTable resource.
      */
-    readonly routeTable?: types.outputs.network.v20190801.RouteTableResponse;
+    readonly routeTable?: types.outputs.RouteTableResponse;
     /**
      * An array of references to services injecting into this subnet.
      */
-    readonly serviceAssociationLinks?: types.outputs.network.v20190801.ServiceAssociationLinkResponse[];
+    readonly serviceAssociationLinks?: types.outputs.ServiceAssociationLinkResponse[];
     /**
      * An array of service endpoint policies.
      */
-    readonly serviceEndpointPolicies?: types.outputs.network.v20190801.ServiceEndpointPolicyResponse[];
+    readonly serviceEndpointPolicies?: types.outputs.ServiceEndpointPolicyResponse[];
     /**
      * An array of service endpoints.
      */
-    readonly serviceEndpoints?: types.outputs.network.v20190801.ServiceEndpointPropertiesFormatResponse[];
+    readonly serviceEndpoints?: types.outputs.ServiceEndpointPropertiesFormatResponse[];
 }
 /**
  * Gets the specified subnet by virtual network and resource group.

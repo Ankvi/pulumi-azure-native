@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The live event.
  */
@@ -38,7 +38,7 @@ export class LiveEvent extends pulumi.CustomResource {
     /**
      * Live event cross site access policies.
      */
-    public readonly crossSiteAccessPolicies!: pulumi.Output<types.outputs.media.v20221101.CrossSiteAccessPoliciesResponse | undefined>;
+    public readonly crossSiteAccessPolicies!: pulumi.Output<types.outputs.CrossSiteAccessPoliciesResponse | undefined>;
     /**
      * A description for the live event.
      */
@@ -46,7 +46,7 @@ export class LiveEvent extends pulumi.CustomResource {
     /**
      * Encoding settings for the live event. It configures whether a live encoder is used for the live event and settings for the live encoder if it is used.
      */
-    public readonly encoding!: pulumi.Output<types.outputs.media.v20221101.LiveEventEncodingResponse | undefined>;
+    public readonly encoding!: pulumi.Output<types.outputs.LiveEventEncodingResponse | undefined>;
     /**
      * When useStaticHostname is set to true, the hostnamePrefix specifies the first part of the hostname assigned to the live event preview and ingest endpoints. The final hostname would be a combination of this prefix, the media service account name and a short code for the Azure Media Services data center.
      */
@@ -54,7 +54,7 @@ export class LiveEvent extends pulumi.CustomResource {
     /**
      * Live event input settings. It defines how the live event receives input from a contribution encoder.
      */
-    public readonly input!: pulumi.Output<types.outputs.media.v20221101.LiveEventInputResponse>;
+    public readonly input!: pulumi.Output<types.outputs.LiveEventInputResponse>;
     /**
      * The last modified time of the live event.
      */
@@ -70,7 +70,7 @@ export class LiveEvent extends pulumi.CustomResource {
     /**
      * Live event preview settings. Preview allows live event producers to preview the live streaming content without creating any live output.
      */
-    public readonly preview!: pulumi.Output<types.outputs.media.v20221101.LiveEventPreviewResponse | undefined>;
+    public readonly preview!: pulumi.Output<types.outputs.LiveEventPreviewResponse | undefined>;
     /**
      * The provisioning state of the live event.
      */
@@ -86,7 +86,7 @@ export class LiveEvent extends pulumi.CustomResource {
     /**
      * The system metadata relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.media.v20221101.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -94,7 +94,7 @@ export class LiveEvent extends pulumi.CustomResource {
     /**
      * Live transcription settings for the live event. See https://go.microsoft.com/fwlink/?linkid=2133742 for more information about the live transcription feature.
      */
-    public readonly transcriptions!: pulumi.Output<types.outputs.media.v20221101.LiveEventTranscriptionResponse[] | undefined>;
+    public readonly transcriptions!: pulumi.Output<types.outputs.LiveEventTranscriptionResponse[] | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -188,7 +188,7 @@ export interface LiveEventArgs {
     /**
      * Live event cross site access policies.
      */
-    crossSiteAccessPolicies?: pulumi.Input<types.inputs.media.v20221101.CrossSiteAccessPoliciesArgs>;
+    crossSiteAccessPolicies?: pulumi.Input<types.inputs.CrossSiteAccessPoliciesArgs>;
     /**
      * A description for the live event.
      */
@@ -196,7 +196,7 @@ export interface LiveEventArgs {
     /**
      * Encoding settings for the live event. It configures whether a live encoder is used for the live event and settings for the live encoder if it is used.
      */
-    encoding?: pulumi.Input<types.inputs.media.v20221101.LiveEventEncodingArgs>;
+    encoding?: pulumi.Input<types.inputs.LiveEventEncodingArgs>;
     /**
      * When useStaticHostname is set to true, the hostnamePrefix specifies the first part of the hostname assigned to the live event preview and ingest endpoints. The final hostname would be a combination of this prefix, the media service account name and a short code for the Azure Media Services data center.
      */
@@ -204,7 +204,7 @@ export interface LiveEventArgs {
     /**
      * Live event input settings. It defines how the live event receives input from a contribution encoder.
      */
-    input: pulumi.Input<types.inputs.media.v20221101.LiveEventInputArgs>;
+    input: pulumi.Input<types.inputs.LiveEventInputArgs>;
     /**
      * The name of the live event, maximum length is 32.
      */
@@ -216,7 +216,7 @@ export interface LiveEventArgs {
     /**
      * Live event preview settings. Preview allows live event producers to preview the live streaming content without creating any live output.
      */
-    preview?: pulumi.Input<types.inputs.media.v20221101.LiveEventPreviewArgs>;
+    preview?: pulumi.Input<types.inputs.LiveEventPreviewArgs>;
     /**
      * The name of the resource group within the Azure subscription.
      */
@@ -224,7 +224,7 @@ export interface LiveEventArgs {
     /**
      * The options to use for the LiveEvent. This value is specified at creation time and cannot be updated. The valid values for the array entry values are 'Default' and 'LowLatency'.
      */
-    streamOptions?: pulumi.Input<pulumi.Input<string | types.enums.v20221101.StreamOptionsFlag>[]>;
+    streamOptions?: pulumi.Input<pulumi.Input<string | types.enums.StreamOptionsFlag>[]>;
     /**
      * Resource tags.
      */
@@ -232,7 +232,7 @@ export interface LiveEventArgs {
     /**
      * Live transcription settings for the live event. See https://go.microsoft.com/fwlink/?linkid=2133742 for more information about the live transcription feature.
      */
-    transcriptions?: pulumi.Input<pulumi.Input<types.inputs.media.v20221101.LiveEventTranscriptionArgs>[]>;
+    transcriptions?: pulumi.Input<pulumi.Input<types.inputs.LiveEventTranscriptionArgs>[]>;
     /**
      * Specifies whether a static hostname would be assigned to the live event preview and ingest endpoints. This value can only be updated if the live event is in Standby state
      */

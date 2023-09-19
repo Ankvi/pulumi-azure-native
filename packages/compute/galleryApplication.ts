@@ -35,7 +35,7 @@ export class GalleryApplication extends pulumi.CustomResource {
     /**
      * A list of custom actions that can be performed with all of the Gallery Application Versions within this Gallery Application.
      */
-    public readonly customActions!: pulumi.Output<types.outputs.compute.GalleryApplicationCustomActionResponse[] | undefined>;
+    public readonly customActions!: pulumi.Output<types.outputs.GalleryApplicationCustomActionResponse[] | undefined>;
     /**
      * The description of this gallery Application Definition resource. This property is updatable.
      */
@@ -138,7 +138,7 @@ export interface GalleryApplicationArgs {
     /**
      * A list of custom actions that can be performed with all of the Gallery Application Versions within this Gallery Application.
      */
-    customActions?: pulumi.Input<pulumi.Input<types.inputs.compute.GalleryApplicationCustomActionArgs>[]>;
+    customActions?: pulumi.Input<pulumi.Input<types.inputs.GalleryApplicationCustomActionArgs>[]>;
     /**
      * The description of this gallery Application Definition resource. This property is updatable.
      */

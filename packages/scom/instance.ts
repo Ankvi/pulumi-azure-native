@@ -35,7 +35,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * The Azure Active Directory identity of the SCOM instance
      */
-    public readonly identity!: pulumi.Output<types.outputs.scom.ManagedIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedIdentityResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -47,11 +47,11 @@ export class Instance extends pulumi.CustomResource {
     /**
      * The properties of a SCOM instance resource
      */
-    public readonly properties!: pulumi.Output<types.outputs.scom.MonitoringInstancePropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.MonitoringInstancePropertiesResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.scom.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -78,7 +78,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["identity"] = args ? args.identity : undefined;
             resourceInputs["instanceName"] = args ? args.instanceName : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.scom.monitoringInstancePropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.monitoringInstancePropertiesArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["validationMode"] = args ? args.validationMode : undefined;
@@ -108,7 +108,7 @@ export interface InstanceArgs {
     /**
      * The Azure Active Directory identity of the SCOM instance
      */
-    identity?: pulumi.Input<types.inputs.scom.ManagedIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedIdentityArgs>;
     /**
      * Name of the Azure Monitor Operations Manager Managed Instance (SCOM MI)
      */
@@ -120,7 +120,7 @@ export interface InstanceArgs {
     /**
      * The properties of a SCOM instance resource
      */
-    properties?: pulumi.Input<types.inputs.scom.MonitoringInstancePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.MonitoringInstancePropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

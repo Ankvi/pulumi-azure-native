@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A SQL Analytics pool
  */
@@ -78,7 +78,7 @@ export class SqlPool extends pulumi.CustomResource {
     /**
      * SQL pool SKU
      */
-    public readonly sku!: pulumi.Output<types.outputs.synapse.v20210501.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Source database to create from
      */
@@ -178,7 +178,7 @@ export interface SqlPoolArgs {
      *
      * Restore: Creates a sql pool by restoring a backup of a deleted sql  pool. SourceDatabaseId should be the sql pool's original resource ID. SourceDatabaseId and sourceDatabaseDeletionDate must be specified.
      */
-    createMode?: pulumi.Input<string | types.enums.v20210501.CreateMode>;
+    createMode?: pulumi.Input<string | types.enums.CreateMode>;
     /**
      * Date the SQL pool was created
      */
@@ -210,7 +210,7 @@ export interface SqlPoolArgs {
     /**
      * SQL pool SKU
      */
-    sku?: pulumi.Input<types.inputs.synapse.v20210501.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Source database to create from
      */
@@ -226,7 +226,7 @@ export interface SqlPoolArgs {
     /**
      * The storage account type used to store backups for this sql pool.
      */
-    storageAccountType?: pulumi.Input<string | types.enums.v20210501.StorageAccountType>;
+    storageAccountType?: pulumi.Input<string | types.enums.StorageAccountType>;
     /**
      * Resource tags.
      */

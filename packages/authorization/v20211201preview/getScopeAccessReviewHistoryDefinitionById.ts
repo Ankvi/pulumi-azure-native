@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get access review history definition by definition Id
  */
@@ -51,7 +51,7 @@ export interface GetScopeAccessReviewHistoryDefinitionByIdResult {
     /**
      * Set of access review history instances for this history definition.
      */
-    readonly instances?: types.outputs.authorization.v20211201preview.AccessReviewHistoryInstanceResponse[];
+    readonly instances?: types.outputs.AccessReviewHistoryInstanceResponse[];
     /**
      * The interval for recurrence. For a quarterly review, the interval is 3 for type : absoluteMonthly.
      */
@@ -87,7 +87,7 @@ export interface GetScopeAccessReviewHistoryDefinitionByIdResult {
     /**
      * A collection of scopes used when selecting review history data
      */
-    readonly scopes?: types.outputs.authorization.v20211201preview.AccessReviewScopeResponse[];
+    readonly scopes?: types.outputs.AccessReviewScopeResponse[];
     /**
      * The DateTime when the review is scheduled to be start. This could be a date in the future. Required on create.
      */

@@ -38,7 +38,7 @@ export class PrivateLinkAssociation extends pulumi.CustomResource {
     /**
      * The private link association properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.authorization.PrivateLinkAssociationPropertiesExpandedResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.PrivateLinkAssociationPropertiesExpandedResponse>;
     /**
      * The operation type.
      */
@@ -90,5 +90,5 @@ export interface PrivateLinkAssociationArgs {
     /**
      * The properties of the PrivateLinkAssociation.
      */
-    properties?: pulumi.Input<types.inputs.authorization.PrivateLinkAssociationPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.PrivateLinkAssociationPropertiesArgs>;
 }

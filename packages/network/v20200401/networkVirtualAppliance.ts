@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * NetworkVirtualAppliance Resource.
  */
@@ -46,7 +46,7 @@ export class NetworkVirtualAppliance extends pulumi.CustomResource {
     /**
      * The service principal that has read access to cloud-init and config blob.
      */
-    public readonly identity!: pulumi.Output<types.outputs.network.v20200401.ManagedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * Resource location.
      */
@@ -62,7 +62,7 @@ export class NetworkVirtualAppliance extends pulumi.CustomResource {
     /**
      * Network Virtual Appliance SKU.
      */
-    public readonly sku!: pulumi.Output<types.outputs.network.v20200401.VirtualApplianceSkuPropertiesResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.VirtualApplianceSkuPropertiesResponse | undefined>;
     /**
      * Resource tags.
      */
@@ -78,11 +78,11 @@ export class NetworkVirtualAppliance extends pulumi.CustomResource {
     /**
      * List of Virtual Appliance Network Interfaces.
      */
-    public /*out*/ readonly virtualApplianceNics!: pulumi.Output<types.outputs.network.v20200401.VirtualApplianceNicPropertiesResponse[]>;
+    public /*out*/ readonly virtualApplianceNics!: pulumi.Output<types.outputs.VirtualApplianceNicPropertiesResponse[]>;
     /**
      * The Virtual Hub where Network Virtual Appliance is being deployed.
      */
-    public readonly virtualHub!: pulumi.Output<types.outputs.network.v20200401.SubResourceResponse | undefined>;
+    public readonly virtualHub!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
 
     /**
      * Create a NetworkVirtualAppliance resource with the given unique name, arguments, and options.
@@ -155,7 +155,7 @@ export interface NetworkVirtualApplianceArgs {
     /**
      * The service principal that has read access to cloud-init and config blob.
      */
-    identity?: pulumi.Input<types.inputs.network.v20200401.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
      * Resource location.
      */
@@ -171,7 +171,7 @@ export interface NetworkVirtualApplianceArgs {
     /**
      * Network Virtual Appliance SKU.
      */
-    sku?: pulumi.Input<types.inputs.network.v20200401.VirtualApplianceSkuPropertiesArgs>;
+    sku?: pulumi.Input<types.inputs.VirtualApplianceSkuPropertiesArgs>;
     /**
      * Resource tags.
      */
@@ -183,5 +183,5 @@ export interface NetworkVirtualApplianceArgs {
     /**
      * The Virtual Hub where Network Virtual Appliance is being deployed.
      */
-    virtualHub?: pulumi.Input<types.inputs.network.v20200401.SubResourceArgs>;
+    virtualHub?: pulumi.Input<types.inputs.SubResourceArgs>;
 }

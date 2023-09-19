@@ -51,7 +51,7 @@ export class Replica extends pulumi.CustomResource {
     /**
      * Resource system metadata.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.appconfiguration.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource.
      */

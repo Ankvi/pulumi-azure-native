@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the information about the application resource with the given name. The information include the description and other properties of the application.
  */
@@ -39,7 +39,7 @@ export interface GetApplicationResult {
     /**
      * Describes the diagnostics definition and usage for an application resource.
      */
-    readonly diagnostics?: types.outputs.servicefabricmesh.v20180901preview.DiagnosticsDescriptionResponse;
+    readonly diagnostics?: types.outputs.DiagnosticsDescriptionResponse;
     /**
      * Describes the health state of an application resource.
      */
@@ -67,7 +67,7 @@ export interface GetApplicationResult {
     /**
      * Describes the services in the application. This property is used to create or modify services of the application. On get only the name of the service is returned. The service description can be obtained by querying for the service resource.
      */
-    readonly services?: types.outputs.servicefabricmesh.v20180901preview.ServiceResourceDescriptionResponse[];
+    readonly services?: types.outputs.ServiceResourceDescriptionResponse[];
     /**
      * Status of the application.
      */

@@ -43,7 +43,7 @@ export class AnalyticsItem extends pulumi.CustomResource {
     /**
      * A set of properties that can be defined in the context of a specific item type. Each type may have its own properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.insights.ApplicationInsightsComponentAnalyticsItemPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ApplicationInsightsComponentAnalyticsItemPropertiesResponse>;
     /**
      * Enum indicating if this item definition is owned by a specific user or is shared between all users with access to the Application Insights component.
      */
@@ -138,7 +138,7 @@ export interface AnalyticsItemArgs {
     /**
      * A set of properties that can be defined in the context of a specific item type. Each type may have its own properties.
      */
-    properties?: pulumi.Input<types.inputs.insights.ApplicationInsightsComponentAnalyticsItemPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ApplicationInsightsComponentAnalyticsItemPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

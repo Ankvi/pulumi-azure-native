@@ -39,7 +39,7 @@ export class SaasSubscriptionLevel extends pulumi.CustomResource {
     /**
      * saas properties
      */
-    public readonly properties!: pulumi.Output<types.outputs.saas.SaasResourceResponseProperties>;
+    public readonly properties!: pulumi.Output<types.outputs.SaasResourceResponseProperties>;
     /**
      * the resource tags.
      */
@@ -98,7 +98,7 @@ export interface SaasSubscriptionLevelArgs {
     /**
      * Properties of the SaaS resource that are relevant for creation.
      */
-    properties?: pulumi.Input<types.inputs.saas.SaasCreationPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.SaasCreationPropertiesArgs>;
     /**
      * The name of the resource group.
      */

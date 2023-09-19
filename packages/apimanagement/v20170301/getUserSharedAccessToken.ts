@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the Shared Access Authorization Token for the User.
  */
@@ -24,7 +24,7 @@ export interface GetUserSharedAccessTokenArgs {
     /**
      * The Key to be used to generate token for user.
      */
-    keyType: types.enums.v20170301.KeyType;
+    keyType: types.enums.KeyType;
     /**
      * The name of the resource group.
      */
@@ -63,7 +63,7 @@ export interface GetUserSharedAccessTokenOutputArgs {
     /**
      * The Key to be used to generate token for user.
      */
-    keyType: pulumi.Input<types.enums.v20170301.KeyType>;
+    keyType: pulumi.Input<types.enums.KeyType>;
     /**
      * The name of the resource group.
      */

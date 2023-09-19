@@ -32,7 +32,7 @@ export interface GetHostPoolResult {
     /**
      * The session host configuration for updating agent, monitoring agent, and stack component.
      */
-    readonly agentUpdate?: types.outputs.desktopvirtualization.AgentUpdatePropertiesResponse;
+    readonly agentUpdate?: types.outputs.AgentUpdatePropertiesResponse;
     /**
      * List of applicationGroup links.
      */
@@ -65,7 +65,7 @@ export interface GetHostPoolResult {
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
     readonly id: string;
-    readonly identity?: types.outputs.desktopvirtualization.ResourceModelWithAllowedPropertySetResponseIdentity;
+    readonly identity?: types.outputs.ResourceModelWithAllowedPropertySetResponseIdentity;
     /**
      * Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
      */
@@ -98,7 +98,7 @@ export interface GetHostPoolResult {
      * PersonalDesktopAssignment type for HostPool.
      */
     readonly personalDesktopAssignmentType?: string;
-    readonly plan?: types.outputs.desktopvirtualization.ResourceModelWithAllowedPropertySetResponsePlan;
+    readonly plan?: types.outputs.ResourceModelWithAllowedPropertySetResponsePlan;
     /**
      * The type of preferred application group type, default to Desktop Application Group
      */
@@ -106,12 +106,12 @@ export interface GetHostPoolResult {
     /**
      * The registration info of HostPool.
      */
-    readonly registrationInfo?: types.outputs.desktopvirtualization.RegistrationInfoResponse;
+    readonly registrationInfo?: types.outputs.RegistrationInfoResponse;
     /**
      * The ring number of HostPool.
      */
     readonly ring?: number;
-    readonly sku?: types.outputs.desktopvirtualization.ResourceModelWithAllowedPropertySetResponseSku;
+    readonly sku?: types.outputs.ResourceModelWithAllowedPropertySetResponseSku;
     /**
      * ClientId for the registered Relying Party used to issue WVD SSO certificates.
      */
@@ -135,7 +135,7 @@ export interface GetHostPoolResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.desktopvirtualization.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

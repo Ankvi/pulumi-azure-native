@@ -65,11 +65,11 @@ export interface GetMSIXPackageResult {
     /**
      * List of package applications. 
      */
-    readonly packageApplications?: types.outputs.desktopvirtualization.MsixPackageApplicationsResponse[];
+    readonly packageApplications?: types.outputs.MsixPackageApplicationsResponse[];
     /**
      * List of package dependencies. 
      */
-    readonly packageDependencies?: types.outputs.desktopvirtualization.MsixPackageDependenciesResponse[];
+    readonly packageDependencies?: types.outputs.MsixPackageDependenciesResponse[];
     /**
      * Package Family Name from appxmanifest.xml. Contains Package Name and Publisher name. 
      */
@@ -85,7 +85,7 @@ export interface GetMSIXPackageResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.desktopvirtualization.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

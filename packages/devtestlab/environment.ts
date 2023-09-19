@@ -43,7 +43,7 @@ export class Environment extends pulumi.CustomResource {
     /**
      * The deployment properties of the environment.
      */
-    public readonly deploymentProperties!: pulumi.Output<types.outputs.devtestlab.EnvironmentDeploymentPropertiesResponse | undefined>;
+    public readonly deploymentProperties!: pulumi.Output<types.outputs.EnvironmentDeploymentPropertiesResponse | undefined>;
     /**
      * The location of the resource.
      */
@@ -136,7 +136,7 @@ export interface EnvironmentArgs {
     /**
      * The deployment properties of the environment.
      */
-    deploymentProperties?: pulumi.Input<types.inputs.devtestlab.EnvironmentDeploymentPropertiesArgs>;
+    deploymentProperties?: pulumi.Input<types.inputs.EnvironmentDeploymentPropertiesArgs>;
     /**
      * The name of the lab.
      */

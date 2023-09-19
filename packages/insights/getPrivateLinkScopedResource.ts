@@ -53,7 +53,7 @@ export interface GetPrivateLinkScopedResourceResult {
     /**
      * System data
      */
-    readonly systemData: types.outputs.insights.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

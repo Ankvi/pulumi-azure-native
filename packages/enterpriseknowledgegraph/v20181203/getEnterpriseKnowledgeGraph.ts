@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns a EnterpriseKnowledgeGraph service specified by the parameters.
  */
@@ -43,11 +43,11 @@ export interface GetEnterpriseKnowledgeGraphResult {
     /**
      * The set of properties specific to EnterpriseKnowledgeGraph resource
      */
-    readonly properties: types.outputs.enterpriseknowledgegraph.v20181203.EnterpriseKnowledgeGraphPropertiesResponse;
+    readonly properties: types.outputs.EnterpriseKnowledgeGraphPropertiesResponse;
     /**
      * Gets or sets the SKU of the resource.
      */
-    readonly sku?: types.outputs.enterpriseknowledgegraph.v20181203.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * Contains resource tags defined as key/value pairs.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Peering Service
  */
@@ -38,7 +38,7 @@ export class PeeringService extends pulumi.CustomResource {
     /**
      * The Log Analytics Workspace Properties
      */
-    public /*out*/ readonly logAnalyticsWorkspaceProperties!: pulumi.Output<types.outputs.peering.v20221001.LogAnalyticsWorkspacePropertiesResponse | undefined>;
+    public /*out*/ readonly logAnalyticsWorkspaceProperties!: pulumi.Output<types.outputs.LogAnalyticsWorkspacePropertiesResponse | undefined>;
     /**
      * The name of the resource.
      */
@@ -66,7 +66,7 @@ export class PeeringService extends pulumi.CustomResource {
     /**
      * The SKU that defines the type of the peering service.
      */
-    public readonly sku!: pulumi.Output<types.outputs.peering.v20221001.PeeringServiceSkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.PeeringServiceSkuResponse | undefined>;
     /**
      * The resource tags.
      */
@@ -158,7 +158,7 @@ export interface PeeringServiceArgs {
     /**
      * The SKU that defines the type of the peering service.
      */
-    sku?: pulumi.Input<types.inputs.peering.v20221001.PeeringServiceSkuArgs>;
+    sku?: pulumi.Input<types.inputs.PeeringServiceSkuArgs>;
     /**
      * The resource tags.
      */

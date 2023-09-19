@@ -64,15 +64,15 @@ export class Gen2Environment extends pulumi.CustomResource {
     /**
      * The sku determines the type of environment, either Gen1 (S1 or S2) or Gen2 (L1). For Gen1 environments the sku determines the capacity of the environment, the ingress rate, and the billing rate.
      */
-    public readonly sku!: pulumi.Output<types.outputs.timeseriesinsights.SkuResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse>;
     /**
      * An object that represents the status of the environment, and its internal state in the Time Series Insights service.
      */
-    public /*out*/ readonly status!: pulumi.Output<types.outputs.timeseriesinsights.EnvironmentStatusResponse>;
+    public /*out*/ readonly status!: pulumi.Output<types.outputs.EnvironmentStatusResponse>;
     /**
      * The storage configuration provides the connection details that allows the Time Series Insights service to connect to the customer storage account that is used to store the environment's data.
      */
-    public readonly storageConfiguration!: pulumi.Output<types.outputs.timeseriesinsights.Gen2StorageConfigurationOutputResponse>;
+    public readonly storageConfiguration!: pulumi.Output<types.outputs.Gen2StorageConfigurationOutputResponse>;
     /**
      * Resource tags
      */
@@ -80,7 +80,7 @@ export class Gen2Environment extends pulumi.CustomResource {
     /**
      * The list of event properties which will be used to define the environment's time series id.
      */
-    public readonly timeSeriesIdProperties!: pulumi.Output<types.outputs.timeseriesinsights.TimeSeriesIdPropertyResponse[]>;
+    public readonly timeSeriesIdProperties!: pulumi.Output<types.outputs.TimeSeriesIdPropertyResponse[]>;
     /**
      * Resource type
      */
@@ -88,7 +88,7 @@ export class Gen2Environment extends pulumi.CustomResource {
     /**
      * The warm store configuration provides the details to create a warm store cache that will retain a copy of the environment's data available for faster query.
      */
-    public readonly warmStoreConfiguration!: pulumi.Output<types.outputs.timeseriesinsights.WarmStoreConfigurationPropertiesResponse | undefined>;
+    public readonly warmStoreConfiguration!: pulumi.Output<types.outputs.WarmStoreConfigurationPropertiesResponse | undefined>;
 
     /**
      * Create a Gen2Environment resource with the given unique name, arguments, and options.
@@ -179,11 +179,11 @@ export interface Gen2EnvironmentArgs {
     /**
      * The sku determines the type of environment, either Gen1 (S1 or S2) or Gen2 (L1). For Gen1 environments the sku determines the capacity of the environment, the ingress rate, and the billing rate.
      */
-    sku: pulumi.Input<types.inputs.timeseriesinsights.SkuArgs>;
+    sku: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * The storage configuration provides the connection details that allows the Time Series Insights service to connect to the customer storage account that is used to store the environment's data.
      */
-    storageConfiguration: pulumi.Input<types.inputs.timeseriesinsights.Gen2StorageConfigurationInputArgs>;
+    storageConfiguration: pulumi.Input<types.inputs.Gen2StorageConfigurationInputArgs>;
     /**
      * Key-value pairs of additional properties for the resource.
      */
@@ -191,9 +191,9 @@ export interface Gen2EnvironmentArgs {
     /**
      * The list of event properties which will be used to define the environment's time series id.
      */
-    timeSeriesIdProperties: pulumi.Input<pulumi.Input<types.inputs.timeseriesinsights.TimeSeriesIdPropertyArgs>[]>;
+    timeSeriesIdProperties: pulumi.Input<pulumi.Input<types.inputs.TimeSeriesIdPropertyArgs>[]>;
     /**
      * The warm store configuration provides the details to create a warm store cache that will retain a copy of the environment's data available for faster query.
      */
-    warmStoreConfiguration?: pulumi.Input<types.inputs.timeseriesinsights.WarmStoreConfigurationPropertiesArgs>;
+    warmStoreConfiguration?: pulumi.Input<types.inputs.WarmStoreConfigurationPropertiesArgs>;
 }

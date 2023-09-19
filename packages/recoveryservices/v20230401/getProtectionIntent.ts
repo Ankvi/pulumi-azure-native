@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Provides the details of the protection intent up item. This is an asynchronous operation. To know the status of the operation,
  * call the GetItemOperationResult API.
@@ -58,7 +58,7 @@ export interface GetProtectionIntentResult {
     /**
      * ProtectionIntentResource properties
      */
-    readonly properties: types.outputs.recoveryservices.v20230401.AzureRecoveryServiceVaultProtectionIntentResponse | types.outputs.recoveryservices.v20230401.AzureResourceProtectionIntentResponse | types.outputs.recoveryservices.v20230401.AzureWorkloadAutoProtectionIntentResponse | types.outputs.recoveryservices.v20230401.AzureWorkloadContainerAutoProtectionIntentResponse | types.outputs.recoveryservices.v20230401.AzureWorkloadSQLAutoProtectionIntentResponse;
+    readonly properties: types.outputs.AzureRecoveryServiceVaultProtectionIntentResponse | types.outputs.AzureResourceProtectionIntentResponse | types.outputs.AzureWorkloadAutoProtectionIntentResponse | types.outputs.AzureWorkloadContainerAutoProtectionIntentResponse | types.outputs.AzureWorkloadSQLAutoProtectionIntentResponse;
     /**
      * Resource tags.
      */

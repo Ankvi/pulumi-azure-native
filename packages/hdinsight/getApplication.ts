@@ -49,11 +49,11 @@ export interface GetApplicationResult {
     /**
      * The properties of the application.
      */
-    readonly properties: types.outputs.hdinsight.ApplicationPropertiesResponse;
+    readonly properties: types.outputs.ApplicationPropertiesResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.hdinsight.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The tags for the application.
      */

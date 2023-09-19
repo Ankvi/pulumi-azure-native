@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Arc Sql Server database
  */
@@ -42,11 +42,11 @@ export class SqlServerDatabase extends pulumi.CustomResource {
     /**
      * Properties of Arc Sql Server database
      */
-    public readonly properties!: pulumi.Output<types.outputs.azurearcdata.v20230115preview.SqlServerDatabaseResourcePropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.SqlServerDatabaseResourcePropertiesResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.azurearcdata.v20230115preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -115,7 +115,7 @@ export interface SqlServerDatabaseArgs {
     /**
      * Properties of Arc Sql Server database
      */
-    properties: pulumi.Input<types.inputs.azurearcdata.v20230115preview.SqlServerDatabaseResourcePropertiesArgs>;
+    properties: pulumi.Input<types.inputs.SqlServerDatabaseResourcePropertiesArgs>;
     /**
      * The name of the Azure resource group
      */

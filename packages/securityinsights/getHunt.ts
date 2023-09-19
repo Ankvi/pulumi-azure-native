@@ -73,7 +73,7 @@ export interface GetHuntResult {
     /**
      * Describes a user that the hunt is assigned to
      */
-    readonly owner?: types.outputs.securityinsights.HuntOwnerResponse;
+    readonly owner?: types.outputs.HuntOwnerResponse;
     /**
      * The status of the hunt.
      */
@@ -81,7 +81,7 @@ export interface GetHuntResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.securityinsights.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

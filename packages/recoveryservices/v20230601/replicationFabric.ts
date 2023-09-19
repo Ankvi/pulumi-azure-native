@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Fabric definition.
  */
@@ -42,7 +42,7 @@ export class ReplicationFabric extends pulumi.CustomResource {
     /**
      * Fabric related data.
      */
-    public readonly properties!: pulumi.Output<types.outputs.recoveryservices.v20230601.FabricPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.FabricPropertiesResponse>;
     /**
      * Resource Type
      */
@@ -96,7 +96,7 @@ export interface ReplicationFabricArgs {
     /**
      * Fabric creation input.
      */
-    properties?: pulumi.Input<types.inputs.recoveryservices.v20230601.FabricCreationInputPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.FabricCreationInputPropertiesArgs>;
     /**
      * The name of the resource group where the recovery services vault is present.
      */

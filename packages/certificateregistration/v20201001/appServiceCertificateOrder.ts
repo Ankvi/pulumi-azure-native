@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * SSL certificate purchase order.
  */
@@ -42,7 +42,7 @@ export class AppServiceCertificateOrder extends pulumi.CustomResource {
     /**
      * State of the Key Vault secret.
      */
-    public readonly certificates!: pulumi.Output<{[key: string]: types.outputs.certificateregistration.v20201001.AppServiceCertificateResponse} | undefined>;
+    public readonly certificates!: pulumi.Output<{[key: string]: types.outputs.AppServiceCertificateResponse} | undefined>;
     /**
      * Last CSR that was created for this order.
      */
@@ -62,7 +62,7 @@ export class AppServiceCertificateOrder extends pulumi.CustomResource {
     /**
      * Intermediate certificate.
      */
-    public /*out*/ readonly intermediate!: pulumi.Output<types.outputs.certificateregistration.v20201001.CertificateDetailsResponse>;
+    public /*out*/ readonly intermediate!: pulumi.Output<types.outputs.CertificateDetailsResponse>;
     /**
      * <code>true</code> if private key is external; otherwise, <code>false</code>.
      */
@@ -102,7 +102,7 @@ export class AppServiceCertificateOrder extends pulumi.CustomResource {
     /**
      * Root certificate.
      */
-    public /*out*/ readonly root!: pulumi.Output<types.outputs.certificateregistration.v20201001.CertificateDetailsResponse>;
+    public /*out*/ readonly root!: pulumi.Output<types.outputs.CertificateDetailsResponse>;
     /**
      * Current serial number of the certificate.
      */
@@ -110,7 +110,7 @@ export class AppServiceCertificateOrder extends pulumi.CustomResource {
     /**
      * Signed certificate.
      */
-    public /*out*/ readonly signedCertificate!: pulumi.Output<types.outputs.certificateregistration.v20201001.CertificateDetailsResponse>;
+    public /*out*/ readonly signedCertificate!: pulumi.Output<types.outputs.CertificateDetailsResponse>;
     /**
      * Current order status.
      */
@@ -118,7 +118,7 @@ export class AppServiceCertificateOrder extends pulumi.CustomResource {
     /**
      * The system metadata relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.certificateregistration.v20201001.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -225,7 +225,7 @@ export interface AppServiceCertificateOrderArgs {
     /**
      * State of the Key Vault secret.
      */
-    certificates?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.certificateregistration.v20201001.AppServiceCertificateArgs>}>;
+    certificates?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.AppServiceCertificateArgs>}>;
     /**
      * Last CSR that was created for this order.
      */
@@ -249,7 +249,7 @@ export interface AppServiceCertificateOrderArgs {
     /**
      * Certificate product type.
      */
-    productType: pulumi.Input<types.enums.v20201001.CertificateProductType>;
+    productType: pulumi.Input<types.enums.CertificateProductType>;
     /**
      * Name of the resource group to which the resource belongs.
      */

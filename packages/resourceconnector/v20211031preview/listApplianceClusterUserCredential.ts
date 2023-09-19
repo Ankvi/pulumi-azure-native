@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns the cluster user credentials for the dedicated appliance.
  */
@@ -31,11 +31,11 @@ export interface ListApplianceClusterUserCredentialResult {
     /**
      * Contains the REP (rendezvous endpoint) and “Listener” access token from notification service (NS).
      */
-    readonly hybridConnectionConfig: types.outputs.resourceconnector.v20211031preview.HybridConnectionConfigResponse;
+    readonly hybridConnectionConfig: types.outputs.HybridConnectionConfigResponse;
     /**
      * The list of appliance kubeconfigs.
      */
-    readonly kubeconfigs: types.outputs.resourceconnector.v20211031preview.ApplianceCredentialKubeconfigResponse[];
+    readonly kubeconfigs: types.outputs.ApplianceCredentialKubeconfigResponse[];
 }
 /**
  * Returns the cluster user credentials for the dedicated appliance.

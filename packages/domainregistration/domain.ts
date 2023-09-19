@@ -72,7 +72,7 @@ export class Domain extends pulumi.CustomResource {
     /**
      * All hostnames derived from the domain and assigned to Azure resources.
      */
-    public /*out*/ readonly managedHostNames!: pulumi.Output<types.outputs.domainregistration.HostNameResponse[]>;
+    public /*out*/ readonly managedHostNames!: pulumi.Output<types.outputs.HostNameResponse[]>;
     /**
      * Resource Name.
      */
@@ -208,23 +208,23 @@ export interface DomainArgs {
     /**
      * Legal agreement consent.
      */
-    consent: pulumi.Input<types.inputs.domainregistration.DomainPurchaseConsentArgs>;
+    consent: pulumi.Input<types.inputs.DomainPurchaseConsentArgs>;
     /**
      * Administrative contact.
      */
-    contactAdmin: pulumi.Input<types.inputs.domainregistration.ContactArgs>;
+    contactAdmin: pulumi.Input<types.inputs.ContactArgs>;
     /**
      * Billing contact.
      */
-    contactBilling: pulumi.Input<types.inputs.domainregistration.ContactArgs>;
+    contactBilling: pulumi.Input<types.inputs.ContactArgs>;
     /**
      * Registrant contact.
      */
-    contactRegistrant: pulumi.Input<types.inputs.domainregistration.ContactArgs>;
+    contactRegistrant: pulumi.Input<types.inputs.ContactArgs>;
     /**
      * Technical contact.
      */
-    contactTech: pulumi.Input<types.inputs.domainregistration.ContactArgs>;
+    contactTech: pulumi.Input<types.inputs.ContactArgs>;
     /**
      * Current DNS type
      */

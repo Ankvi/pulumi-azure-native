@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Response for Disk Pool request.
  */
@@ -42,7 +42,7 @@ export class DiskPool extends pulumi.CustomResource {
     /**
      * List of Azure Managed Disks to attach to a Disk Pool.
      */
-    public readonly disks!: pulumi.Output<types.outputs.storagepool.v20210801.DiskResponse[] | undefined>;
+    public readonly disks!: pulumi.Output<types.outputs.DiskResponse[] | undefined>;
     /**
      * The geo-location where the resource lives.
      */
@@ -74,7 +74,7 @@ export class DiskPool extends pulumi.CustomResource {
     /**
      * Resource metadata required by ARM RPC
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.storagepool.v20210801.SystemMetadataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemMetadataResponse>;
     /**
      * Resource tags.
      */
@@ -167,7 +167,7 @@ export interface DiskPoolArgs {
     /**
      * List of Azure Managed Disks to attach to a Disk Pool.
      */
-    disks?: pulumi.Input<pulumi.Input<types.inputs.storagepool.v20210801.DiskArgs>[]>;
+    disks?: pulumi.Input<pulumi.Input<types.inputs.DiskArgs>[]>;
     /**
      * The geo-location where the resource lives.
      */
@@ -187,7 +187,7 @@ export interface DiskPoolArgs {
     /**
      * Determines the SKU of the Disk Pool
      */
-    sku: pulumi.Input<types.inputs.storagepool.v20210801.SkuArgs>;
+    sku: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Azure Resource ID of a Subnet for the Disk Pool.
      */

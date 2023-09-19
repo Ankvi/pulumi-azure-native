@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An Azure resource which represents which will provision the ability to create private location data.
  */
@@ -42,7 +42,7 @@ export class PrivateAtlase extends pulumi.CustomResource {
     /**
      * The Private Atlas resource properties.
      */
-    public /*out*/ readonly properties!: pulumi.Output<types.outputs.maps.v20200201preview.PrivateAtlasPropertiesResponse>;
+    public /*out*/ readonly properties!: pulumi.Output<types.outputs.PrivateAtlasPropertiesResponse>;
     /**
      * Resource tags.
      */

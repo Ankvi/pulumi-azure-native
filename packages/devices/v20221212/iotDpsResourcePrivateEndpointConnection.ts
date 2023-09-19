@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The private endpoint connection of a provisioning service
  */
@@ -38,11 +38,11 @@ export class IotDpsResourcePrivateEndpointConnection extends pulumi.CustomResour
     /**
      * The properties of a private endpoint connection
      */
-    public readonly properties!: pulumi.Output<types.outputs.devices.v20221212.PrivateEndpointConnectionPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.PrivateEndpointConnectionPropertiesResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.devices.v20221212.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The resource type.
      */
@@ -99,7 +99,7 @@ export interface IotDpsResourcePrivateEndpointConnectionArgs {
     /**
      * The properties of a private endpoint connection
      */
-    properties: pulumi.Input<types.inputs.devices.v20221212.PrivateEndpointConnectionPropertiesArgs>;
+    properties: pulumi.Input<types.inputs.PrivateEndpointConnectionPropertiesArgs>;
     /**
      * The name of the resource group that contains the provisioning service.
      */

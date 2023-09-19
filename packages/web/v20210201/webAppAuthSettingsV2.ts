@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Configuration settings for the Azure App Service Authentication / Authorization V2 feature.
  */
@@ -34,15 +34,15 @@ export class WebAppAuthSettingsV2 extends pulumi.CustomResource {
     /**
      * The configuration settings that determines the validation flow of users using App Service Authentication/Authorization.
      */
-    public readonly globalValidation!: pulumi.Output<types.outputs.web.v20210201.GlobalValidationResponse | undefined>;
+    public readonly globalValidation!: pulumi.Output<types.outputs.GlobalValidationResponse | undefined>;
     /**
      * The configuration settings of the HTTP requests for authentication and authorization requests made against App Service Authentication/Authorization.
      */
-    public readonly httpSettings!: pulumi.Output<types.outputs.web.v20210201.HttpSettingsResponse | undefined>;
+    public readonly httpSettings!: pulumi.Output<types.outputs.HttpSettingsResponse | undefined>;
     /**
      * The configuration settings of each of the identity providers used to configure App Service Authentication/Authorization.
      */
-    public readonly identityProviders!: pulumi.Output<types.outputs.web.v20210201.IdentityProvidersResponse | undefined>;
+    public readonly identityProviders!: pulumi.Output<types.outputs.IdentityProvidersResponse | undefined>;
     /**
      * Kind of resource.
      */
@@ -50,7 +50,7 @@ export class WebAppAuthSettingsV2 extends pulumi.CustomResource {
     /**
      * The configuration settings of the login flow of users using App Service Authentication/Authorization.
      */
-    public readonly login!: pulumi.Output<types.outputs.web.v20210201.LoginResponse | undefined>;
+    public readonly login!: pulumi.Output<types.outputs.LoginResponse | undefined>;
     /**
      * Resource Name.
      */
@@ -58,7 +58,7 @@ export class WebAppAuthSettingsV2 extends pulumi.CustomResource {
     /**
      * The configuration settings of the platform of App Service Authentication/Authorization.
      */
-    public readonly platform!: pulumi.Output<types.outputs.web.v20210201.AuthPlatformResponse | undefined>;
+    public readonly platform!: pulumi.Output<types.outputs.AuthPlatformResponse | undefined>;
     /**
      * Resource type.
      */
@@ -114,15 +114,15 @@ export interface WebAppAuthSettingsV2Args {
     /**
      * The configuration settings that determines the validation flow of users using App Service Authentication/Authorization.
      */
-    globalValidation?: pulumi.Input<types.inputs.web.v20210201.GlobalValidationArgs>;
+    globalValidation?: pulumi.Input<types.inputs.GlobalValidationArgs>;
     /**
      * The configuration settings of the HTTP requests for authentication and authorization requests made against App Service Authentication/Authorization.
      */
-    httpSettings?: pulumi.Input<types.inputs.web.v20210201.HttpSettingsArgs>;
+    httpSettings?: pulumi.Input<types.inputs.HttpSettingsArgs>;
     /**
      * The configuration settings of each of the identity providers used to configure App Service Authentication/Authorization.
      */
-    identityProviders?: pulumi.Input<types.inputs.web.v20210201.IdentityProvidersArgs>;
+    identityProviders?: pulumi.Input<types.inputs.IdentityProvidersArgs>;
     /**
      * Kind of resource.
      */
@@ -130,7 +130,7 @@ export interface WebAppAuthSettingsV2Args {
     /**
      * The configuration settings of the login flow of users using App Service Authentication/Authorization.
      */
-    login?: pulumi.Input<types.inputs.web.v20210201.LoginArgs>;
+    login?: pulumi.Input<types.inputs.LoginArgs>;
     /**
      * Name of web app.
      */
@@ -138,7 +138,7 @@ export interface WebAppAuthSettingsV2Args {
     /**
      * The configuration settings of the platform of App Service Authentication/Authorization.
      */
-    platform?: pulumi.Input<types.inputs.web.v20210201.AuthPlatformArgs>;
+    platform?: pulumi.Input<types.inputs.AuthPlatformArgs>;
     /**
      * Name of the resource group to which the resource belongs.
      */

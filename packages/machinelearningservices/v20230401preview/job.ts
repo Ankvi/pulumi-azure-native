@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Azure Resource Manager resource envelope.
  */
@@ -34,7 +34,7 @@ export class Job extends pulumi.CustomResource {
     /**
      * [Required] Additional attributes of the entity.
      */
-    public readonly jobBaseProperties!: pulumi.Output<types.outputs.machinelearningservices.v20230401preview.AutoMLJobResponse | types.outputs.machinelearningservices.v20230401preview.CommandJobResponse | types.outputs.machinelearningservices.v20230401preview.LabelingJobResponse | types.outputs.machinelearningservices.v20230401preview.PipelineJobResponse | types.outputs.machinelearningservices.v20230401preview.SparkJobResponse | types.outputs.machinelearningservices.v20230401preview.SweepJobResponse>;
+    public readonly jobBaseProperties!: pulumi.Output<types.outputs.AutoMLJobResponse | types.outputs.CommandJobResponse | types.outputs.LabelingJobResponse | types.outputs.PipelineJobResponse | types.outputs.SparkJobResponse | types.outputs.SweepJobResponse>;
     /**
      * The name of the resource
      */
@@ -42,7 +42,7 @@ export class Job extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.machinelearningservices.v20230401preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -99,7 +99,7 @@ export interface JobArgs {
     /**
      * [Required] Additional attributes of the entity.
      */
-    jobBaseProperties: pulumi.Input<types.inputs.machinelearningservices.v20230401preview.AutoMLJobArgs | types.inputs.machinelearningservices.v20230401preview.CommandJobArgs | types.inputs.machinelearningservices.v20230401preview.LabelingJobArgs | types.inputs.machinelearningservices.v20230401preview.PipelineJobArgs | types.inputs.machinelearningservices.v20230401preview.SparkJobArgs | types.inputs.machinelearningservices.v20230401preview.SweepJobArgs>;
+    jobBaseProperties: pulumi.Input<types.inputs.AutoMLJobArgs | types.inputs.CommandJobArgs | types.inputs.LabelingJobArgs | types.inputs.PipelineJobArgs | types.inputs.SparkJobArgs | types.inputs.SweepJobArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

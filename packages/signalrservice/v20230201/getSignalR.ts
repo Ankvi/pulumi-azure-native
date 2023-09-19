@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the resource and its properties.
  */
@@ -31,7 +31,7 @@ export interface GetSignalRResult {
     /**
      * Cross-Origin Resource Sharing (CORS) settings.
      */
-    readonly cors?: types.outputs.signalrservice.v20230201.SignalRCorsSettingsResponse;
+    readonly cors?: types.outputs.SignalRCorsSettingsResponse;
     /**
      * DisableLocalAuth
      * Enable or disable aad auth
@@ -56,7 +56,7 @@ export interface GetSignalRResult {
      * When a featureFlag is not explicitly set, its globally default value will be used
      * But keep in mind, the default value doesn't mean "false". It varies in terms of different FeatureFlags.
      */
-    readonly features?: types.outputs.signalrservice.v20230201.SignalRFeatureResponse[];
+    readonly features?: types.outputs.SignalRFeatureResponse[];
     /**
      * FQDN of the service instance.
      */
@@ -72,7 +72,7 @@ export interface GetSignalRResult {
     /**
      * A class represent managed identities used for request and response
      */
-    readonly identity?: types.outputs.signalrservice.v20230201.ManagedIdentityResponse;
+    readonly identity?: types.outputs.ManagedIdentityResponse;
     /**
      * The kind of the service, it can be SignalR or RawWebSockets
      */
@@ -80,7 +80,7 @@ export interface GetSignalRResult {
     /**
      * Live trace configuration of a Microsoft.SignalRService resource.
      */
-    readonly liveTraceConfiguration?: types.outputs.signalrservice.v20230201.LiveTraceConfigurationResponse;
+    readonly liveTraceConfiguration?: types.outputs.LiveTraceConfigurationResponse;
     /**
      * The GEO location of the resource. e.g. West US | East US | North Central US | South Central US.
      */
@@ -92,11 +92,11 @@ export interface GetSignalRResult {
     /**
      * Network ACLs for the resource
      */
-    readonly networkACLs?: types.outputs.signalrservice.v20230201.SignalRNetworkACLsResponse;
+    readonly networkACLs?: types.outputs.SignalRNetworkACLsResponse;
     /**
      * Private endpoint connections to the resource.
      */
-    readonly privateEndpointConnections: types.outputs.signalrservice.v20230201.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections: types.outputs.PrivateEndpointConnectionResponse[];
     /**
      * Provisioning state of the resource.
      */
@@ -114,7 +114,7 @@ export interface GetSignalRResult {
     /**
      * Resource log configuration of a Microsoft.SignalRService resource.
      */
-    readonly resourceLogConfiguration?: types.outputs.signalrservice.v20230201.ResourceLogConfigurationResponse;
+    readonly resourceLogConfiguration?: types.outputs.ResourceLogConfigurationResponse;
     /**
      * The publicly accessible port of the resource which is designed for customer server side usage.
      */
@@ -122,19 +122,19 @@ export interface GetSignalRResult {
     /**
      * Serverless settings.
      */
-    readonly serverless?: types.outputs.signalrservice.v20230201.ServerlessSettingsResponse;
+    readonly serverless?: types.outputs.ServerlessSettingsResponse;
     /**
      * The list of shared private link resources.
      */
-    readonly sharedPrivateLinkResources: types.outputs.signalrservice.v20230201.SharedPrivateLinkResourceResponse[];
+    readonly sharedPrivateLinkResources: types.outputs.SharedPrivateLinkResourceResponse[];
     /**
      * The billing information of the resource.
      */
-    readonly sku?: types.outputs.signalrservice.v20230201.ResourceSkuResponse;
+    readonly sku?: types.outputs.ResourceSkuResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.signalrservice.v20230201.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Tags of the service which is a list of key value pairs that describe the resource.
      */
@@ -142,7 +142,7 @@ export interface GetSignalRResult {
     /**
      * TLS settings for the resource
      */
-    readonly tls?: types.outputs.signalrservice.v20230201.SignalRTlsSettingsResponse;
+    readonly tls?: types.outputs.SignalRTlsSettingsResponse;
     /**
      * The type of the resource - e.g. "Microsoft.SignalRService/SignalR"
      */
@@ -150,7 +150,7 @@ export interface GetSignalRResult {
     /**
      * The settings for the Upstream when the service is in server-less mode.
      */
-    readonly upstream?: types.outputs.signalrservice.v20230201.ServerlessUpstreamSettingsResponse;
+    readonly upstream?: types.outputs.ServerlessUpstreamSettingsResponse;
     /**
      * Version of the resource. Probably you need the same or higher version of client SDKs.
      */

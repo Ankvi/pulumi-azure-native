@@ -46,7 +46,7 @@ export interface GetIotConnectorFhirDestinationResult {
     /**
      * FHIR Mappings
      */
-    readonly fhirMapping: types.outputs.healthcareapis.IotMappingPropertiesResponse;
+    readonly fhirMapping: types.outputs.IotMappingPropertiesResponse;
     /**
      * Fully qualified resource id of the FHIR service to connect to.
      */
@@ -70,7 +70,7 @@ export interface GetIotConnectorFhirDestinationResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.healthcareapis.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The resource type.
      */

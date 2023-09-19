@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A lab.
  */
@@ -34,7 +34,7 @@ export class Lab extends pulumi.CustomResource {
     /**
      * The properties of any lab announcement associated with this lab
      */
-    public readonly announcement!: pulumi.Output<types.outputs.devtestlab.v20180915.LabAnnouncementPropertiesResponse | undefined>;
+    public readonly announcement!: pulumi.Output<types.outputs.LabAnnouncementPropertiesResponse | undefined>;
     /**
      * The lab's artifact storage account.
      */
@@ -108,7 +108,7 @@ export class Lab extends pulumi.CustomResource {
     /**
      * The properties of any lab support message associated with this lab
      */
-    public readonly support!: pulumi.Output<types.outputs.devtestlab.v20180915.LabSupportPropertiesResponse | undefined>;
+    public readonly support!: pulumi.Output<types.outputs.LabSupportPropertiesResponse | undefined>;
     /**
      * The tags of the resource.
      */
@@ -209,11 +209,11 @@ export interface LabArgs {
     /**
      * The properties of any lab announcement associated with this lab
      */
-    announcement?: pulumi.Input<types.inputs.devtestlab.v20180915.LabAnnouncementPropertiesArgs>;
+    announcement?: pulumi.Input<types.inputs.LabAnnouncementPropertiesArgs>;
     /**
      * The access rights to be granted to the user when provisioning an environment
      */
-    environmentPermission?: pulumi.Input<string | types.enums.v20180915.EnvironmentPermission>;
+    environmentPermission?: pulumi.Input<string | types.enums.EnvironmentPermission>;
     /**
      * Extended properties of the lab used for experimental features
      */
@@ -221,7 +221,7 @@ export interface LabArgs {
     /**
      * Type of storage used by the lab. It can be either Premium or Standard. Default is Premium.
      */
-    labStorageType?: pulumi.Input<string | types.enums.v20180915.StorageType>;
+    labStorageType?: pulumi.Input<string | types.enums.StorageType>;
     /**
      * The location of the resource.
      */
@@ -243,7 +243,7 @@ export interface LabArgs {
      * When its value is 'Enabled', creation of standard or premium data disks is allowed.
      * When its value is 'Disabled', only creation of standard data disks is allowed.
      */
-    premiumDataDisks?: pulumi.Input<string | types.enums.v20180915.PremiumDataDisk>;
+    premiumDataDisks?: pulumi.Input<string | types.enums.PremiumDataDisk>;
     /**
      * The name of the resource group.
      */
@@ -251,7 +251,7 @@ export interface LabArgs {
     /**
      * The properties of any lab support message associated with this lab
      */
-    support?: pulumi.Input<types.inputs.devtestlab.v20180915.LabSupportPropertiesArgs>;
+    support?: pulumi.Input<types.inputs.LabSupportPropertiesArgs>;
     /**
      * The tags of the resource.
      */

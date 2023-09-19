@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a single workbook template by its resourceName.
  */
@@ -35,7 +35,7 @@ export interface GetWorkbookTemplateResult {
     /**
      * Workbook galleries supported by the template.
      */
-    readonly galleries: types.outputs.insights.v20201120.WorkbookTemplateGalleryResponse[];
+    readonly galleries: types.outputs.WorkbookTemplateGalleryResponse[];
     /**
      * Azure resource Id
      */
@@ -43,7 +43,7 @@ export interface GetWorkbookTemplateResult {
     /**
      * Key value pair of localized gallery. Each key is the locale code of languages supported by the Azure portal.
      */
-    readonly localized?: {[key: string]: types.outputs.insights.v20201120.WorkbookTemplateLocalizedGalleryResponse[]};
+    readonly localized?: {[key: string]: types.outputs.WorkbookTemplateLocalizedGalleryResponse[]};
     /**
      * Resource location
      */

@@ -64,7 +64,7 @@ export class WebAppVnetConnection extends pulumi.CustomResource {
     /**
      * The routes that this Virtual Network connection uses.
      */
-    public /*out*/ readonly routes!: pulumi.Output<types.outputs.web.VnetRouteResponse[]>;
+    public /*out*/ readonly routes!: pulumi.Output<types.outputs.VnetRouteResponse[]>;
     /**
      * Resource type.
      */

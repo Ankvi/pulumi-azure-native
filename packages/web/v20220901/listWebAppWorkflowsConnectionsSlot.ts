@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Workflow properties definition.
  */
@@ -52,7 +52,7 @@ export interface ListWebAppWorkflowsConnectionsSlotResult {
     /**
      * Additional workflow properties.
      */
-    readonly properties: types.outputs.web.v20220901.WorkflowEnvelopeResponseProperties;
+    readonly properties: types.outputs.WorkflowEnvelopeResponseProperties;
     /**
      * Gets the resource type.
      */

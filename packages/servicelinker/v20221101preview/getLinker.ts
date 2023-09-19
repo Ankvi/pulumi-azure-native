@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns Linker resource for a given name.
  */
@@ -31,7 +31,7 @@ export interface GetLinkerResult {
     /**
      * The authentication type.
      */
-    readonly authInfo?: types.outputs.servicelinker.v20221101preview.AccessKeyInfoBaseResponse | types.outputs.servicelinker.v20221101preview.SecretAuthInfoResponse | types.outputs.servicelinker.v20221101preview.ServicePrincipalCertificateAuthInfoResponse | types.outputs.servicelinker.v20221101preview.ServicePrincipalSecretAuthInfoResponse | types.outputs.servicelinker.v20221101preview.SystemAssignedIdentityAuthInfoResponse | types.outputs.servicelinker.v20221101preview.UserAccountAuthInfoResponse | types.outputs.servicelinker.v20221101preview.UserAssignedIdentityAuthInfoResponse;
+    readonly authInfo?: types.outputs.AccessKeyInfoBaseResponse | types.outputs.SecretAuthInfoResponse | types.outputs.ServicePrincipalCertificateAuthInfoResponse | types.outputs.ServicePrincipalSecretAuthInfoResponse | types.outputs.SystemAssignedIdentityAuthInfoResponse | types.outputs.UserAccountAuthInfoResponse | types.outputs.UserAssignedIdentityAuthInfoResponse;
     /**
      * The application client type
      */
@@ -39,7 +39,7 @@ export interface GetLinkerResult {
     /**
      * The connection information consumed by applications, including secrets, connection strings.
      */
-    readonly configurationInfo?: types.outputs.servicelinker.v20221101preview.ConfigurationInfoResponse;
+    readonly configurationInfo?: types.outputs.ConfigurationInfoResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -55,7 +55,7 @@ export interface GetLinkerResult {
     /**
      * The network solution.
      */
-    readonly publicNetworkSolution?: types.outputs.servicelinker.v20221101preview.PublicNetworkSolutionResponse;
+    readonly publicNetworkSolution?: types.outputs.PublicNetworkSolutionResponse;
     /**
      * connection scope in source service.
      */
@@ -63,15 +63,15 @@ export interface GetLinkerResult {
     /**
      * An option to store secret value in secure place
      */
-    readonly secretStore?: types.outputs.servicelinker.v20221101preview.SecretStoreResponse;
+    readonly secretStore?: types.outputs.SecretStoreResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.servicelinker.v20221101preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The target service properties
      */
-    readonly targetService?: types.outputs.servicelinker.v20221101preview.AzureResourceResponse | types.outputs.servicelinker.v20221101preview.ConfluentBootstrapServerResponse | types.outputs.servicelinker.v20221101preview.ConfluentSchemaRegistryResponse | types.outputs.servicelinker.v20221101preview.SelfHostedServerResponse;
+    readonly targetService?: types.outputs.AzureResourceResponse | types.outputs.ConfluentBootstrapServerResponse | types.outputs.ConfluentSchemaRegistryResponse | types.outputs.SelfHostedServerResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -79,7 +79,7 @@ export interface GetLinkerResult {
     /**
      * The VNet solution.
      */
-    readonly vNetSolution?: types.outputs.servicelinker.v20221101preview.VNetSolutionResponse;
+    readonly vNetSolution?: types.outputs.VNetSolutionResponse;
 }
 /**
  * Returns Linker resource for a given name.

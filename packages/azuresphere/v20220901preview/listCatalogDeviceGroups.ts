@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * List the device groups for the catalog.
  */
@@ -60,7 +60,7 @@ export interface ListCatalogDeviceGroupsResult {
     /**
      * The DeviceGroup items on this page
      */
-    readonly value: types.outputs.azuresphere.v20220901preview.DeviceGroupResponse[];
+    readonly value: types.outputs.DeviceGroupResponse[];
 }
 /**
  * List the device groups for the catalog.

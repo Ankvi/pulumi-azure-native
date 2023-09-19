@@ -37,11 +37,11 @@ export interface GetBigDataPoolResult {
     /**
      * Auto-pausing properties
      */
-    readonly autoPause?: types.outputs.synapse.AutoPausePropertiesResponse;
+    readonly autoPause?: types.outputs.AutoPausePropertiesResponse;
     /**
      * Auto-scaling properties
      */
-    readonly autoScale?: types.outputs.synapse.AutoScalePropertiesResponse;
+    readonly autoScale?: types.outputs.AutoScalePropertiesResponse;
     /**
      * The cache size
      */
@@ -53,7 +53,7 @@ export interface GetBigDataPoolResult {
     /**
      * List of custom libraries/packages associated with the spark pool.
      */
-    readonly customLibraries?: types.outputs.synapse.LibraryInfoResponse[];
+    readonly customLibraries?: types.outputs.LibraryInfoResponse[];
     /**
      * The default folder where Spark logs will be written.
      */
@@ -61,7 +61,7 @@ export interface GetBigDataPoolResult {
     /**
      * Dynamic Executor Allocation
      */
-    readonly dynamicExecutorAllocation?: types.outputs.synapse.DynamicExecutorAllocationResponse;
+    readonly dynamicExecutorAllocation?: types.outputs.DynamicExecutorAllocationResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -81,7 +81,7 @@ export interface GetBigDataPoolResult {
     /**
      * Library version requirements
      */
-    readonly libraryRequirements?: types.outputs.synapse.LibraryRequirementsResponse;
+    readonly libraryRequirements?: types.outputs.LibraryRequirementsResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -113,7 +113,7 @@ export interface GetBigDataPoolResult {
     /**
      * Spark configuration file to specify additional properties
      */
-    readonly sparkConfigProperties?: types.outputs.synapse.SparkConfigPropertiesResponse;
+    readonly sparkConfigProperties?: types.outputs.SparkConfigPropertiesResponse;
     /**
      * The Spark events folder
      */

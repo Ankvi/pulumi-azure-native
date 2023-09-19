@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the ingress gateway endpoint credentials
  */
@@ -31,7 +31,7 @@ export interface ListEndpointIngressGatewayCredentialsArgs {
     /**
      * The name of the service.
      */
-    serviceName?: string | types.enums.v20230315.ServiceName;
+    serviceName?: string | types.enums.ServiceName;
 }
 
 /**
@@ -98,5 +98,5 @@ export interface ListEndpointIngressGatewayCredentialsOutputArgs {
     /**
      * The name of the service.
      */
-    serviceName?: pulumi.Input<string | types.enums.v20230315.ServiceName>;
+    serviceName?: pulumi.Input<string | types.enums.ServiceName>;
 }

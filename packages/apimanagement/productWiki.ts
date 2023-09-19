@@ -35,7 +35,7 @@ export class ProductWiki extends pulumi.CustomResource {
     /**
      * Collection wiki documents included into this wiki.
      */
-    public readonly documents!: pulumi.Output<types.outputs.apimanagement.WikiDocumentationContractResponse[] | undefined>;
+    public readonly documents!: pulumi.Output<types.outputs.WikiDocumentationContractResponse[] | undefined>;
     /**
      * The name of the resource
      */
@@ -90,7 +90,7 @@ export interface ProductWikiArgs {
     /**
      * Collection wiki documents included into this wiki.
      */
-    documents?: pulumi.Input<pulumi.Input<types.inputs.apimanagement.WikiDocumentationContractArgs>[]>;
+    documents?: pulumi.Input<pulumi.Input<types.inputs.WikiDocumentationContractArgs>[]>;
     /**
      * Product identifier. Must be unique in the current API Management service instance.
      */

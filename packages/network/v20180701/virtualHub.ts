@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * VirtualHub Resource.
  */
@@ -42,7 +42,7 @@ export class VirtualHub extends pulumi.CustomResource {
     /**
      * list of all vnet connections with this VirtualHub.
      */
-    public readonly hubVirtualNetworkConnections!: pulumi.Output<types.outputs.network.v20180701.HubVirtualNetworkConnectionResponse[] | undefined>;
+    public readonly hubVirtualNetworkConnections!: pulumi.Output<types.outputs.HubVirtualNetworkConnectionResponse[] | undefined>;
     /**
      * Resource location.
      */
@@ -66,7 +66,7 @@ export class VirtualHub extends pulumi.CustomResource {
     /**
      * The VirtualWAN to which the VirtualHub belongs
      */
-    public readonly virtualWan!: pulumi.Output<types.outputs.network.v20180701.SubResourceResponse | undefined>;
+    public readonly virtualWan!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
 
     /**
      * Create a VirtualHub resource with the given unique name, arguments, and options.
@@ -123,7 +123,7 @@ export interface VirtualHubArgs {
     /**
      * list of all vnet connections with this VirtualHub.
      */
-    hubVirtualNetworkConnections?: pulumi.Input<pulumi.Input<types.inputs.network.v20180701.HubVirtualNetworkConnectionArgs>[]>;
+    hubVirtualNetworkConnections?: pulumi.Input<pulumi.Input<types.inputs.HubVirtualNetworkConnectionArgs>[]>;
     /**
      * Resource ID.
      */
@@ -147,5 +147,5 @@ export interface VirtualHubArgs {
     /**
      * The VirtualWAN to which the VirtualHub belongs
      */
-    virtualWan?: pulumi.Input<types.inputs.network.v20180701.SubResourceArgs>;
+    virtualWan?: pulumi.Input<types.inputs.SubResourceArgs>;
 }

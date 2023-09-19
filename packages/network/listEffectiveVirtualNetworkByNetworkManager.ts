@@ -51,7 +51,7 @@ export interface ListEffectiveVirtualNetworkByNetworkManagerResult {
     /**
      * Gets a page of EffectiveVirtualNetwork
      */
-    readonly value?: types.outputs.network.EffectiveVirtualNetworkResponse[];
+    readonly value?: types.outputs.EffectiveVirtualNetworkResponse[];
 }
 /**
  * List effective virtual networks in a network manager.

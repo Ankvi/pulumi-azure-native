@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * This operation retrieves the policy definition version in the given management group with the given name.
  */
@@ -60,7 +60,7 @@ export interface GetPolicyDefinitionVersionAtManagementGroupResult {
     /**
      * The parameter definitions for parameters used in the policy rule. The keys are the parameter names.
      */
-    readonly parameters?: {[key: string]: types.outputs.authorization.v20230401.ParameterDefinitionsValueResponse};
+    readonly parameters?: {[key: string]: types.outputs.ParameterDefinitionsValueResponse};
     /**
      * The policy rule.
      */
@@ -72,7 +72,7 @@ export interface GetPolicyDefinitionVersionAtManagementGroupResult {
     /**
      * The system metadata relating to this resource.
      */
-    readonly systemData: types.outputs.authorization.v20230401.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource (Microsoft.Authorization/policyDefinitions/versions).
      */

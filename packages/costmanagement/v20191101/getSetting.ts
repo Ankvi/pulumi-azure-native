@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves the current value for a specific setting.
  */
@@ -26,7 +26,7 @@ export interface GetSettingResult {
     /**
      * Array of scopes with additional details used by Cost Management in the Azure portal.
      */
-    readonly cache?: types.outputs.costmanagement.v20191101.SettingsPropertiesResponseCache[];
+    readonly cache?: types.outputs.SettingsPropertiesResponseCache[];
     /**
      * Resource Id.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a ElasticSan.
  */
@@ -59,11 +59,11 @@ export interface GetElasticSanResult {
     /**
      * resource sku
      */
-    readonly sku: types.outputs.elasticsan.v20211120preview.SkuResponse;
+    readonly sku: types.outputs.SkuResponse;
     /**
      * Resource metadata required by ARM RPC
      */
-    readonly systemData: types.outputs.elasticsan.v20211120preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Azure resource tags.
      */

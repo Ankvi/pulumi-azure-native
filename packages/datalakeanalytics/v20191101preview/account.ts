@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A Data Lake Analytics account object, containing all information associated with the named Data Lake Analytics account.
  */
@@ -38,7 +38,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * The list of compute policies associated with this account.
      */
-    public readonly computePolicies!: pulumi.Output<types.outputs.datalakeanalytics.v20191101preview.ComputePolicyResponse[]>;
+    public readonly computePolicies!: pulumi.Output<types.outputs.ComputePolicyResponse[]>;
     /**
      * The account creation time.
      */
@@ -50,7 +50,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * The list of Data Lake Store accounts associated with this account.
      */
-    public readonly dataLakeStoreAccounts!: pulumi.Output<types.outputs.datalakeanalytics.v20191101preview.DataLakeStoreAccountInformationResponse[]>;
+    public readonly dataLakeStoreAccounts!: pulumi.Output<types.outputs.DataLakeStoreAccountInformationResponse[]>;
     /**
      * The current state of the DebugDataAccessLevel for this account.
      */
@@ -74,7 +74,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * The list of firewall rules associated with this account.
      */
-    public readonly firewallRules!: pulumi.Output<types.outputs.datalakeanalytics.v20191101preview.FirewallRuleResponse[]>;
+    public readonly firewallRules!: pulumi.Output<types.outputs.FirewallRuleResponse[]>;
     /**
      * The current state of the IP address firewall for this account.
      */
@@ -82,7 +82,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * The list of hiveMetastores associated with this account.
      */
-    public /*out*/ readonly hiveMetastores!: pulumi.Output<types.outputs.datalakeanalytics.v20191101preview.HiveMetastoreResponse[]>;
+    public /*out*/ readonly hiveMetastores!: pulumi.Output<types.outputs.HiveMetastoreResponse[]>;
     /**
      * The account last modified time.
      */
@@ -134,7 +134,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * The list of Data Lake Store accounts associated with this account.
      */
-    public /*out*/ readonly publicDataLakeStoreAccounts!: pulumi.Output<types.outputs.datalakeanalytics.v20191101preview.DataLakeStoreAccountInformationResponse[] | undefined>;
+    public /*out*/ readonly publicDataLakeStoreAccounts!: pulumi.Output<types.outputs.DataLakeStoreAccountInformationResponse[] | undefined>;
     /**
      * The number of days that job metadata is retained.
      */
@@ -146,7 +146,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * The list of Azure Blob Storage accounts associated with this account.
      */
-    public readonly storageAccounts!: pulumi.Output<types.outputs.datalakeanalytics.v20191101preview.StorageAccountInformationResponse[]>;
+    public readonly storageAccounts!: pulumi.Output<types.outputs.StorageAccountInformationResponse[]>;
     /**
      * The system defined maximum supported degree of parallelism for this account, which restricts the maximum value of parallelism the user can set for the account.
      */
@@ -166,7 +166,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * The list of virtualNetwork rules associated with this account.
      */
-    public /*out*/ readonly virtualNetworkRules!: pulumi.Output<types.outputs.datalakeanalytics.v20191101preview.VirtualNetworkRuleResponse[]>;
+    public /*out*/ readonly virtualNetworkRules!: pulumi.Output<types.outputs.VirtualNetworkRuleResponse[]>;
 
     /**
      * Create a Account resource with the given unique name, arguments, and options.
@@ -278,11 +278,11 @@ export interface AccountArgs {
     /**
      * The list of compute policies associated with this account.
      */
-    computePolicies?: pulumi.Input<pulumi.Input<types.inputs.datalakeanalytics.v20191101preview.CreateComputePolicyWithAccountParametersArgs>[]>;
+    computePolicies?: pulumi.Input<pulumi.Input<types.inputs.CreateComputePolicyWithAccountParametersArgs>[]>;
     /**
      * The list of Data Lake Store accounts associated with this account.
      */
-    dataLakeStoreAccounts: pulumi.Input<pulumi.Input<types.inputs.datalakeanalytics.v20191101preview.AddDataLakeStoreWithAccountParametersArgs>[]>;
+    dataLakeStoreAccounts: pulumi.Input<pulumi.Input<types.inputs.AddDataLakeStoreWithAccountParametersArgs>[]>;
     /**
      * The default Data Lake Store account associated with this account.
      */
@@ -290,15 +290,15 @@ export interface AccountArgs {
     /**
      * The current state of allowing or disallowing IPs originating within Azure through the firewall. If the firewall is disabled, this is not enforced.
      */
-    firewallAllowAzureIps?: pulumi.Input<types.enums.v20191101preview.FirewallAllowAzureIpsState>;
+    firewallAllowAzureIps?: pulumi.Input<types.enums.FirewallAllowAzureIpsState>;
     /**
      * The list of firewall rules associated with this account.
      */
-    firewallRules?: pulumi.Input<pulumi.Input<types.inputs.datalakeanalytics.v20191101preview.CreateFirewallRuleWithAccountParametersArgs>[]>;
+    firewallRules?: pulumi.Input<pulumi.Input<types.inputs.CreateFirewallRuleWithAccountParametersArgs>[]>;
     /**
      * The current state of the IP address firewall for this account.
      */
-    firewallState?: pulumi.Input<types.enums.v20191101preview.FirewallState>;
+    firewallState?: pulumi.Input<types.enums.FirewallState>;
     /**
      * The resource location.
      */
@@ -322,7 +322,7 @@ export interface AccountArgs {
     /**
      * The commitment tier for the next month.
      */
-    newTier?: pulumi.Input<types.enums.v20191101preview.TierType>;
+    newTier?: pulumi.Input<types.enums.TierType>;
     /**
      * The number of days that job metadata is retained.
      */
@@ -334,7 +334,7 @@ export interface AccountArgs {
     /**
      * The list of Azure Blob Storage accounts associated with this account.
      */
-    storageAccounts?: pulumi.Input<pulumi.Input<types.inputs.datalakeanalytics.v20191101preview.AddStorageAccountWithAccountParametersArgs>[]>;
+    storageAccounts?: pulumi.Input<pulumi.Input<types.inputs.AddStorageAccountWithAccountParametersArgs>[]>;
     /**
      * The resource tags.
      */

@@ -37,7 +37,7 @@ export interface GetSimPolicyResult {
     /**
      * The default slice to use if the UE does not explicitly specify it. This slice must exist in the `sliceConfigurations` map. The slice must be in the same location as the SIM policy.
      */
-    readonly defaultSlice: types.outputs.mobilenetwork.SliceResourceIdResponse;
+    readonly defaultSlice: types.outputs.SliceResourceIdResponse;
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -69,11 +69,11 @@ export interface GetSimPolicyResult {
     /**
      * The allowed slices and the settings to use for them. The list must not contain duplicate items and must contain at least one item.
      */
-    readonly sliceConfigurations: types.outputs.mobilenetwork.SliceConfigurationResponse[];
+    readonly sliceConfigurations: types.outputs.SliceConfigurationResponse[];
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.mobilenetwork.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -85,7 +85,7 @@ export interface GetSimPolicyResult {
     /**
      * Aggregate maximum bit rate across all non-GBR QoS flows of all PDU sessions of a given UE. See 3GPP TS23.501 section 5.7.2.6 for a full description of the UE-AMBR.
      */
-    readonly ueAmbr: types.outputs.mobilenetwork.AmbrResponse;
+    readonly ueAmbr: types.outputs.AmbrResponse;
 }
 /**
  * Gets information about the specified SIM policy.

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the secrets of the workload deployment.
  */
@@ -49,8 +49,8 @@ export interface GetWorkloadDeploymentSecretConfigurationsResult {
     /**
      * Workload deployment model properties.
      */
-    readonly properties: types.outputs.migrate.v20220501preview.WorkloadDeploymentModelPropertiesResponse;
-    readonly systemData: types.outputs.migrate.v20220501preview.WorkloadDeploymentModelResponseSystemData;
+    readonly properties: types.outputs.WorkloadDeploymentModelPropertiesResponse;
+    readonly systemData: types.outputs.WorkloadDeploymentModelResponseSystemData;
     /**
      * Gets or sets the resource tags.
      */

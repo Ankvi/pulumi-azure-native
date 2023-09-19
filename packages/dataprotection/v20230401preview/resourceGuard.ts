@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 export class ResourceGuard extends pulumi.CustomResource {
     /**
      * Get an existing ResourceGuard resource's state with the given name, ID, and optional extra
@@ -43,11 +43,11 @@ export class ResourceGuard extends pulumi.CustomResource {
     /**
      * ResourceGuardResource properties
      */
-    public readonly properties!: pulumi.Output<types.outputs.dataprotection.v20230401preview.ResourceGuardResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ResourceGuardResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.dataprotection.v20230401preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -111,7 +111,7 @@ export interface ResourceGuardArgs {
     /**
      * ResourceGuardResource properties
      */
-    properties?: pulumi.Input<types.inputs.dataprotection.v20230401preview.ResourceGuardArgs>;
+    properties?: pulumi.Input<types.inputs.ResourceGuardArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

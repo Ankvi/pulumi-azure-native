@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 export class PrivateLinkAssociation extends pulumi.CustomResource {
     /**
      * Get an existing PrivateLinkAssociation resource's state with the given name, ID, and optional extra
@@ -35,7 +35,7 @@ export class PrivateLinkAssociation extends pulumi.CustomResource {
     /**
      * The private link association properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.authorization.v20200501.PrivateLinkAssociationPropertiesExpandedResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.PrivateLinkAssociationPropertiesExpandedResponse>;
     /**
      * The operation type.
      */
@@ -87,5 +87,5 @@ export interface PrivateLinkAssociationArgs {
     /**
      * The properties of the PrivateLinkAssociation.
      */
-    properties?: pulumi.Input<types.inputs.authorization.v20200501.PrivateLinkAssociationPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.PrivateLinkAssociationPropertiesArgs>;
 }

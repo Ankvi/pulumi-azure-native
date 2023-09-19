@@ -32,7 +32,7 @@ export interface GetSapLandscapeMonitorResult {
     /**
      * Gets or sets the SID groupings by landscape and Environment.
      */
-    readonly grouping?: types.outputs.workloads.SapLandscapeMonitorPropertiesResponseGrouping;
+    readonly grouping?: types.outputs.SapLandscapeMonitorPropertiesResponseGrouping;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -48,11 +48,11 @@ export interface GetSapLandscapeMonitorResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.workloads.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Gets or sets the list Top Metric Thresholds for SAP Landscape Monitor Dashboard
      */
-    readonly topMetricsThresholds?: types.outputs.workloads.SapLandscapeMonitorMetricThresholdsResponse[];
+    readonly topMetricsThresholds?: types.outputs.SapLandscapeMonitorMetricThresholdsResponse[];
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a DSCP Configuration.
  */
@@ -31,15 +31,15 @@ export interface GetDscpConfigurationResult {
     /**
      * Associated Network Interfaces to the DSCP Configuration.
      */
-    readonly associatedNetworkInterfaces: types.outputs.network.v20230401.NetworkInterfaceResponse[];
+    readonly associatedNetworkInterfaces: types.outputs.NetworkInterfaceResponse[];
     /**
      * Destination IP ranges.
      */
-    readonly destinationIpRanges?: types.outputs.network.v20230401.QosIpRangeResponse[];
+    readonly destinationIpRanges?: types.outputs.QosIpRangeResponse[];
     /**
      * Destination port ranges.
      */
-    readonly destinationPortRanges?: types.outputs.network.v20230401.QosPortRangeResponse[];
+    readonly destinationPortRanges?: types.outputs.QosPortRangeResponse[];
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -75,7 +75,7 @@ export interface GetDscpConfigurationResult {
     /**
      * QoS object definitions
      */
-    readonly qosDefinitionCollection?: types.outputs.network.v20230401.QosDefinitionResponse[];
+    readonly qosDefinitionCollection?: types.outputs.QosDefinitionResponse[];
     /**
      * The resource GUID property of the DSCP Configuration resource.
      */
@@ -83,11 +83,11 @@ export interface GetDscpConfigurationResult {
     /**
      * Source IP ranges.
      */
-    readonly sourceIpRanges?: types.outputs.network.v20230401.QosIpRangeResponse[];
+    readonly sourceIpRanges?: types.outputs.QosIpRangeResponse[];
     /**
      * Sources port ranges.
      */
-    readonly sourcePortRanges?: types.outputs.network.v20230401.QosPortRangeResponse[];
+    readonly sourcePortRanges?: types.outputs.QosPortRangeResponse[];
     /**
      * Resource tags.
      */

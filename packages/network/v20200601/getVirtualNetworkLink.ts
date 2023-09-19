@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a virtual network link to the specified Private DNS zone.
  */
@@ -68,7 +68,7 @@ export interface GetVirtualNetworkLinkResult {
     /**
      * The reference of the virtual network.
      */
-    readonly virtualNetwork?: types.outputs.network.v20200601.SubResourceResponse;
+    readonly virtualNetwork?: types.outputs.SubResourceResponse;
     /**
      * The status of the virtual network link to the Private DNS zone. Possible values are 'InProgress' and 'Done'. This is a read-only property and any attempt to set this value will be ignored.
      */

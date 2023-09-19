@@ -39,7 +39,7 @@ export class AvailabilitySet extends pulumi.CustomResource {
     /**
      * The extended location.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.scvmm.ExtendedLocationResponse | undefined>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
     /**
      * Gets or sets the location.
      */
@@ -55,7 +55,7 @@ export class AvailabilitySet extends pulumi.CustomResource {
     /**
      * The system data.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.scvmm.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags
      */
@@ -122,7 +122,7 @@ export interface AvailabilitySetArgs {
     /**
      * The extended location.
      */
-    extendedLocation?: pulumi.Input<types.inputs.scvmm.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * Gets or sets the location.
      */

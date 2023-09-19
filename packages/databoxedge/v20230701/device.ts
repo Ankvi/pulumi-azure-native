@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The Data Box Edge/Gateway device.
  */
@@ -46,7 +46,7 @@ export class Device extends pulumi.CustomResource {
     /**
      * The details of data-residency related properties for this resource
      */
-    public readonly dataResidency!: pulumi.Output<types.outputs.databoxedge.v20230701.DataResidencyResponse | undefined>;
+    public readonly dataResidency!: pulumi.Output<types.outputs.DataResidencyResponse | undefined>;
     /**
      * The Description of the Data Box Edge/Gateway device.
      */
@@ -74,7 +74,7 @@ export class Device extends pulumi.CustomResource {
     /**
      * The details of Edge Profile for this resource
      */
-    public /*out*/ readonly edgeProfile!: pulumi.Output<types.outputs.databoxedge.v20230701.EdgeProfileResponse>;
+    public /*out*/ readonly edgeProfile!: pulumi.Output<types.outputs.EdgeProfileResponse>;
     /**
      * The etag for the devices.
      */
@@ -86,7 +86,7 @@ export class Device extends pulumi.CustomResource {
     /**
      * Msi identity of the resource
      */
-    public readonly identity!: pulumi.Output<types.outputs.databoxedge.v20230701.ResourceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ResourceIdentityResponse | undefined>;
     /**
      * The kind of the device.
      */
@@ -114,7 +114,7 @@ export class Device extends pulumi.CustomResource {
     /**
      * The details of the move operation on this resource.
      */
-    public /*out*/ readonly resourceMoveDetails!: pulumi.Output<types.outputs.databoxedge.v20230701.ResourceMoveDetailsResponse>;
+    public /*out*/ readonly resourceMoveDetails!: pulumi.Output<types.outputs.ResourceMoveDetailsResponse>;
     /**
      * The Serial Number of Data Box Edge/Gateway device.
      */
@@ -122,11 +122,11 @@ export class Device extends pulumi.CustomResource {
     /**
      * The SKU type.
      */
-    public readonly sku!: pulumi.Output<types.outputs.databoxedge.v20230701.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * DataBoxEdge Resource
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.databoxedge.v20230701.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The list of tags that describe the device. These tags can be used to view and group this device (across resource groups).
      */
@@ -226,7 +226,7 @@ export interface DeviceArgs {
     /**
      * The details of data-residency related properties for this resource
      */
-    dataResidency?: pulumi.Input<types.inputs.databoxedge.v20230701.DataResidencyArgs>;
+    dataResidency?: pulumi.Input<types.inputs.DataResidencyArgs>;
     /**
      * The device name.
      */
@@ -234,7 +234,7 @@ export interface DeviceArgs {
     /**
      * Msi identity of the resource
      */
-    identity?: pulumi.Input<types.inputs.databoxedge.v20230701.ResourceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ResourceIdentityArgs>;
     /**
      * The location of the device. This is a supported and registered Azure geographical region (for example, West US, East US, or Southeast Asia). The geographical region of a device cannot be changed once it is created, but if an identical geographical region is specified on update, the request will succeed.
      */
@@ -246,7 +246,7 @@ export interface DeviceArgs {
     /**
      * The SKU type.
      */
-    sku?: pulumi.Input<types.inputs.databoxedge.v20230701.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * The list of tags that describe the device. These tags can be used to view and group this device (across resource groups).
      */

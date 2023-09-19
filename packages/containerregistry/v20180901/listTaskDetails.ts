@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns a task with extended information that includes all secrets.
  */
@@ -37,7 +37,7 @@ export interface ListTaskDetailsResult {
     /**
      * The machine configuration of the run agent.
      */
-    readonly agentConfiguration?: types.outputs.containerregistry.v20180901.AgentPropertiesResponse;
+    readonly agentConfiguration?: types.outputs.AgentPropertiesResponse;
     /**
      * The creation date of task.
      */
@@ -45,7 +45,7 @@ export interface ListTaskDetailsResult {
     /**
      * The properties that describes a set of credentials that will be used when this run is invoked.
      */
-    readonly credentials?: types.outputs.containerregistry.v20180901.CredentialsResponse;
+    readonly credentials?: types.outputs.CredentialsResponse;
     /**
      * The resource ID.
      */
@@ -61,7 +61,7 @@ export interface ListTaskDetailsResult {
     /**
      * The platform properties against which the run has to happen.
      */
-    readonly platform: types.outputs.containerregistry.v20180901.PlatformPropertiesResponse;
+    readonly platform: types.outputs.PlatformPropertiesResponse;
     /**
      * The provisioning state of the task.
      */
@@ -73,7 +73,7 @@ export interface ListTaskDetailsResult {
     /**
      * The properties of a task step.
      */
-    readonly step: types.outputs.containerregistry.v20180901.DockerBuildStepResponse | types.outputs.containerregistry.v20180901.EncodedTaskStepResponse | types.outputs.containerregistry.v20180901.FileTaskStepResponse;
+    readonly step: types.outputs.DockerBuildStepResponse | types.outputs.EncodedTaskStepResponse | types.outputs.FileTaskStepResponse;
     /**
      * The tags of the resource.
      */
@@ -85,7 +85,7 @@ export interface ListTaskDetailsResult {
     /**
      * The properties that describe all triggers for the task.
      */
-    readonly trigger?: types.outputs.containerregistry.v20180901.TriggerPropertiesResponse;
+    readonly trigger?: types.outputs.TriggerPropertiesResponse;
     /**
      * The type of the resource.
      */

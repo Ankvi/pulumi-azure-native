@@ -66,7 +66,7 @@ export interface ListFeaturesetVersionMaterializationJobsResult {
     /**
      * An array of objects of type FeaturesetJob.
      */
-    readonly value?: types.outputs.machinelearningservices.FeaturesetJobResponse[];
+    readonly value?: types.outputs.FeaturesetJobResponse[];
 }
 /**
  * A paginated list of FeaturesetJob entities.

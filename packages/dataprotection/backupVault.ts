@@ -39,7 +39,7 @@ export class BackupVault extends pulumi.CustomResource {
     /**
      * Input Managed Identity Details
      */
-    public readonly identity!: pulumi.Output<types.outputs.dataprotection.DppIdentityDetailsResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.DppIdentityDetailsResponse | undefined>;
     /**
      * Resource location.
      */
@@ -51,11 +51,11 @@ export class BackupVault extends pulumi.CustomResource {
     /**
      * BackupVaultResource properties
      */
-    public readonly properties!: pulumi.Output<types.outputs.dataprotection.BackupVaultResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.BackupVaultResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.dataprotection.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -120,7 +120,7 @@ export interface BackupVaultArgs {
     /**
      * Input Managed Identity Details
      */
-    identity?: pulumi.Input<types.inputs.dataprotection.DppIdentityDetailsArgs>;
+    identity?: pulumi.Input<types.inputs.DppIdentityDetailsArgs>;
     /**
      * Resource location.
      */
@@ -128,7 +128,7 @@ export interface BackupVaultArgs {
     /**
      * BackupVaultResource properties
      */
-    properties: pulumi.Input<types.inputs.dataprotection.BackupVaultArgs>;
+    properties: pulumi.Input<types.inputs.BackupVaultArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

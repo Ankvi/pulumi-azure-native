@@ -46,7 +46,7 @@ export interface GetAppResult {
     /**
      * The Managed Identity type of the app resource
      */
-    readonly identity?: types.outputs.appplatform.ManagedIdentityPropertiesResponse;
+    readonly identity?: types.outputs.ManagedIdentityPropertiesResponse;
     /**
      * The GEO location of the application, always the same with its parent resource
      */
@@ -58,11 +58,11 @@ export interface GetAppResult {
     /**
      * Properties of the App resource
      */
-    readonly properties: types.outputs.appplatform.AppResourcePropertiesResponse;
+    readonly properties: types.outputs.AppResourcePropertiesResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.appplatform.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource.
      */

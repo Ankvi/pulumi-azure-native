@@ -71,7 +71,7 @@ export class DscConfiguration extends pulumi.CustomResource {
     /**
      * Gets or sets the configuration parameters.
      */
-    public readonly parameters!: pulumi.Output<{[key: string]: types.outputs.automation.DscConfigurationParameterResponse} | undefined>;
+    public readonly parameters!: pulumi.Output<{[key: string]: types.outputs.DscConfigurationParameterResponse} | undefined>;
     /**
      * Gets or sets the provisioning state of the configuration.
      */
@@ -79,7 +79,7 @@ export class DscConfiguration extends pulumi.CustomResource {
     /**
      * Gets or sets the source.
      */
-    public readonly source!: pulumi.Output<types.outputs.automation.ContentSourceResponse | undefined>;
+    public readonly source!: pulumi.Output<types.outputs.ContentSourceResponse | undefined>;
     /**
      * Gets or sets the state of the configuration.
      */
@@ -191,7 +191,7 @@ export interface DscConfigurationArgs {
     /**
      * Gets or sets the configuration parameters.
      */
-    parameters?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.automation.DscConfigurationParameterArgs>}>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.DscConfigurationParameterArgs>}>;
     /**
      * Name of an Azure Resource group.
      */
@@ -199,7 +199,7 @@ export interface DscConfigurationArgs {
     /**
      * Gets or sets the source.
      */
-    source: pulumi.Input<types.inputs.automation.ContentSourceArgs>;
+    source: pulumi.Input<types.inputs.ContentSourceArgs>;
     /**
      * Gets or sets the tags attached to the resource.
      */

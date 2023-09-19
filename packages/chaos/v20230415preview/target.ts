@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Model that represents a Target resource.
  */
@@ -46,7 +46,7 @@ export class Target extends pulumi.CustomResource {
     /**
      * The system metadata of the target resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.chaos.v20230415preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

@@ -38,11 +38,11 @@ export interface ListWorkspaceConnectionSecretsResult {
      * The name of the resource
      */
     readonly name: string;
-    readonly properties: types.outputs.machinelearningservices.AccessKeyAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.machinelearningservices.ApiKeyAuthWorkspaceConnectionPropertiesResponse | types.outputs.machinelearningservices.CustomKeysWorkspaceConnectionPropertiesResponse | types.outputs.machinelearningservices.ManagedIdentityAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.machinelearningservices.NoneAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.machinelearningservices.PATAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.machinelearningservices.SASAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.machinelearningservices.ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.machinelearningservices.UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse;
+    readonly properties: types.outputs.AccessKeyAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.ApiKeyAuthWorkspaceConnectionPropertiesResponse | types.outputs.CustomKeysWorkspaceConnectionPropertiesResponse | types.outputs.ManagedIdentityAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.NoneAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.PATAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.SASAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.machinelearningservices.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

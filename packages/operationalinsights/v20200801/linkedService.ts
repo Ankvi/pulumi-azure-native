@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The top level Linked service resource container.
  */
@@ -108,7 +108,7 @@ export interface LinkedServiceArgs {
     /**
      * The provisioning state of the linked service.
      */
-    provisioningState?: pulumi.Input<string | types.enums.v20200801.LinkedServiceEntityStatus>;
+    provisioningState?: pulumi.Input<string | types.enums.LinkedServiceEntityStatus>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

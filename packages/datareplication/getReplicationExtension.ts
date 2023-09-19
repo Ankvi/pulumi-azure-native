@@ -45,8 +45,8 @@ export interface GetReplicationExtensionResult {
     /**
      * Replication extension model properties.
      */
-    readonly properties: types.outputs.datareplication.ReplicationExtensionModelPropertiesResponse;
-    readonly systemData: types.outputs.datareplication.ReplicationExtensionModelResponseSystemData;
+    readonly properties: types.outputs.ReplicationExtensionModelPropertiesResponse;
+    readonly systemData: types.outputs.ReplicationExtensionModelResponseSystemData;
     /**
      * Gets or sets the type of the resource.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a private endpoint connection
  */
@@ -48,7 +48,7 @@ export interface GetPrivateEndpointConnectionResult {
     /**
      * Core resource properties
      */
-    readonly properties: types.outputs.datafactory.v20180601.RemotePrivateEndpointConnectionResponse;
+    readonly properties: types.outputs.RemotePrivateEndpointConnectionResponse;
     /**
      * The resource type.
      */

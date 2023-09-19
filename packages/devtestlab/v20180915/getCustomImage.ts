@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get custom image.
  */
@@ -49,11 +49,11 @@ export interface GetCustomImageResult {
     /**
      * Storage information about the plan related to this custom image
      */
-    readonly customImagePlan?: types.outputs.devtestlab.v20180915.CustomImagePropertiesFromPlanResponse;
+    readonly customImagePlan?: types.outputs.CustomImagePropertiesFromPlanResponse;
     /**
      * Storage information about the data disks present in the custom image
      */
-    readonly dataDiskStorageInfo?: types.outputs.devtestlab.v20180915.DataDiskStorageTypeInfoResponse[];
+    readonly dataDiskStorageInfo?: types.outputs.DataDiskStorageTypeInfoResponse[];
     /**
      * The description of the custom image.
      */
@@ -101,11 +101,11 @@ export interface GetCustomImageResult {
     /**
      * The VHD from which the image is to be created.
      */
-    readonly vhd?: types.outputs.devtestlab.v20180915.CustomImagePropertiesCustomResponse;
+    readonly vhd?: types.outputs.CustomImagePropertiesCustomResponse;
     /**
      * The virtual machine from which the image is to be created.
      */
-    readonly vm?: types.outputs.devtestlab.v20180915.CustomImagePropertiesFromVmResponse;
+    readonly vm?: types.outputs.CustomImagePropertiesFromVmResponse;
 }
 /**
  * Get custom image.

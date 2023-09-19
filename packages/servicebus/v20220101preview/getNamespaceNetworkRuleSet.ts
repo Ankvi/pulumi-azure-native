@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets NetworkRuleSet for a Namespace.
  */
@@ -39,7 +39,7 @@ export interface GetNamespaceNetworkRuleSetResult {
     /**
      * List of IpRules
      */
-    readonly ipRules?: types.outputs.servicebus.v20220101preview.NWRuleSetIpRulesResponse[];
+    readonly ipRules?: types.outputs.NWRuleSetIpRulesResponse[];
     /**
      * The geo-location where the resource lives
      */
@@ -55,7 +55,7 @@ export interface GetNamespaceNetworkRuleSetResult {
     /**
      * The system meta data relating to this resource.
      */
-    readonly systemData: types.outputs.servicebus.v20220101preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Value that indicates whether Trusted Service Access is Enabled or not.
      */
@@ -67,7 +67,7 @@ export interface GetNamespaceNetworkRuleSetResult {
     /**
      * List VirtualNetwork Rules
      */
-    readonly virtualNetworkRules?: types.outputs.servicebus.v20220101preview.NWRuleSetVirtualNetworkRulesResponse[];
+    readonly virtualNetworkRules?: types.outputs.NWRuleSetVirtualNetworkRulesResponse[];
 }
 /**
  * Gets NetworkRuleSet for a Namespace.

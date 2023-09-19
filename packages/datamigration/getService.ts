@@ -60,11 +60,11 @@ export interface GetServiceResult {
     /**
      * Service SKU
      */
-    readonly sku?: types.outputs.datamigration.ServiceSkuResponse;
+    readonly sku?: types.outputs.ServiceSkuResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.datamigration.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

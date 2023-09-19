@@ -32,7 +32,7 @@ export interface GetDataControllerResult {
     /**
      * The extendedLocation of the resource.
      */
-    readonly extendedLocation?: types.outputs.azurearcdata.ExtendedLocationResponse;
+    readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -48,11 +48,11 @@ export interface GetDataControllerResult {
     /**
      * The data controller's properties
      */
-    readonly properties: types.outputs.azurearcdata.DataControllerPropertiesResponse;
+    readonly properties: types.outputs.DataControllerPropertiesResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.azurearcdata.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

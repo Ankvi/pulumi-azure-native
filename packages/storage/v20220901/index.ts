@@ -183,7 +183,7 @@ utilities.lazyLoad(exports, ["TableServiceProperties"], () => require("./tableSe
 
 
 // Export enums:
-export * from "../types/enums/v20220901";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

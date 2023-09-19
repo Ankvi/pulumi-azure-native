@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get an alert processing rule by name.
  */
@@ -43,11 +43,11 @@ export interface GetAlertProcessingRuleByNameResult {
     /**
      * Alert processing rule properties.
      */
-    readonly properties: types.outputs.alertsmanagement.v20230501preview.AlertProcessingRulePropertiesResponse;
+    readonly properties: types.outputs.AlertProcessingRulePropertiesResponse;
     /**
      * Alert processing rule system data.
      */
-    readonly systemData: types.outputs.alertsmanagement.v20230501preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags
      */

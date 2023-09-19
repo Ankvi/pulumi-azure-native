@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Static Site Database Connection resource.
  */
@@ -34,7 +34,7 @@ export class StaticSiteBuildDatabaseConnection extends pulumi.CustomResource {
     /**
      * A list of configuration files associated with this database connection.
      */
-    public /*out*/ readonly configurationFiles!: pulumi.Output<types.outputs.web.v20220901.StaticSiteDatabaseConnectionConfigurationFileOverviewResponse[]>;
+    public /*out*/ readonly configurationFiles!: pulumi.Output<types.outputs.StaticSiteDatabaseConnectionConfigurationFileOverviewResponse[]>;
     /**
      * If present, the identity is used in conjunction with connection string to connect to the database. Use of the system-assigned managed identity is indicated with the string 'SystemAssigned', while use of a user-assigned managed identity is indicated with the resource id of the managed identity resource.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An Azure Cosmos DB User Definition
  */
@@ -54,7 +54,7 @@ export class MongoDBResourceMongoUserDefinition extends pulumi.CustomResource {
     /**
      * The set of roles inherited by the User Definition.
      */
-    public readonly roles!: pulumi.Output<types.outputs.documentdb.v20230415.RoleResponse[] | undefined>;
+    public readonly roles!: pulumi.Output<types.outputs.RoleResponse[] | undefined>;
     /**
      * The type of Azure resource.
      */
@@ -144,7 +144,7 @@ export interface MongoDBResourceMongoUserDefinitionArgs {
     /**
      * The set of roles inherited by the User Definition.
      */
-    roles?: pulumi.Input<pulumi.Input<types.inputs.documentdb.v20230415.RoleArgs>[]>;
+    roles?: pulumi.Input<pulumi.Input<types.inputs.RoleArgs>[]>;
     /**
      * The user name for User Definition.
      */

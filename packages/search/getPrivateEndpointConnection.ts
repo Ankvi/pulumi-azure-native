@@ -45,7 +45,7 @@ export interface GetPrivateEndpointConnectionResult {
     /**
      * Describes the properties of an existing Private Endpoint connection to the Azure Cognitive Search service.
      */
-    readonly properties: types.outputs.search.PrivateEndpointConnectionPropertiesResponse;
+    readonly properties: types.outputs.PrivateEndpointConnectionPropertiesResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

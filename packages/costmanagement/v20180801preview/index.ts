@@ -53,7 +53,7 @@ utilities.lazyLoad(exports, ["ReportByResourceGroupName"], () => require("./repo
 
 
 // Export enums:
-export * from "../types/enums/v20180801preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves the details of a VirtualWAN.
  */
@@ -63,8 +63,8 @@ export interface GetVirtualWANResult {
     /**
      * List of VirtualHubs in the VirtualWAN.
      */
-    readonly virtualHubs: types.outputs.network.v20180701.SubResourceResponse[];
-    readonly vpnSites: types.outputs.network.v20180701.SubResourceResponse[];
+    readonly virtualHubs: types.outputs.SubResourceResponse[];
+    readonly vpnSites: types.outputs.SubResourceResponse[];
 }
 /**
  * Retrieves the details of a VirtualWAN.

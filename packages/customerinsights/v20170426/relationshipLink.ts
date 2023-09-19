@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The relationship link resource format.
  */
@@ -50,7 +50,7 @@ export class RelationshipLink extends pulumi.CustomResource {
     /**
      * The mappings between Interaction and Relationship fields.
      */
-    public readonly mappings!: pulumi.Output<types.outputs.customerinsights.v20170426.RelationshipLinkFieldMappingResponse[] | undefined>;
+    public readonly mappings!: pulumi.Output<types.outputs.RelationshipLinkFieldMappingResponse[] | undefined>;
     /**
      * Resource name.
      */
@@ -58,7 +58,7 @@ export class RelationshipLink extends pulumi.CustomResource {
     /**
      * The property references for the Profile of the Relationship.
      */
-    public readonly profilePropertyReferences!: pulumi.Output<types.outputs.customerinsights.v20170426.ParticipantProfilePropertyReferenceResponse[]>;
+    public readonly profilePropertyReferences!: pulumi.Output<types.outputs.ParticipantProfilePropertyReferenceResponse[]>;
     /**
      * Provisioning state.
      */
@@ -66,7 +66,7 @@ export class RelationshipLink extends pulumi.CustomResource {
     /**
      * The property references for the Related Profile of the Relationship.
      */
-    public readonly relatedProfilePropertyReferences!: pulumi.Output<types.outputs.customerinsights.v20170426.ParticipantProfilePropertyReferenceResponse[]>;
+    public readonly relatedProfilePropertyReferences!: pulumi.Output<types.outputs.ParticipantProfilePropertyReferenceResponse[]>;
     /**
      * The relationship guid id.
      */
@@ -174,15 +174,15 @@ export interface RelationshipLinkArgs {
     /**
      * The mappings between Interaction and Relationship fields.
      */
-    mappings?: pulumi.Input<pulumi.Input<types.inputs.customerinsights.v20170426.RelationshipLinkFieldMappingArgs>[]>;
+    mappings?: pulumi.Input<pulumi.Input<types.inputs.RelationshipLinkFieldMappingArgs>[]>;
     /**
      * The property references for the Profile of the Relationship.
      */
-    profilePropertyReferences: pulumi.Input<pulumi.Input<types.inputs.customerinsights.v20170426.ParticipantProfilePropertyReferenceArgs>[]>;
+    profilePropertyReferences: pulumi.Input<pulumi.Input<types.inputs.ParticipantProfilePropertyReferenceArgs>[]>;
     /**
      * The property references for the Related Profile of the Relationship.
      */
-    relatedProfilePropertyReferences: pulumi.Input<pulumi.Input<types.inputs.customerinsights.v20170426.ParticipantProfilePropertyReferenceArgs>[]>;
+    relatedProfilePropertyReferences: pulumi.Input<pulumi.Input<types.inputs.ParticipantProfilePropertyReferenceArgs>[]>;
     /**
      * The name of the relationship link.
      */

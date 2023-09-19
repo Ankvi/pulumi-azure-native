@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the object replication policy of the storage account by policy ID.
  */
@@ -56,7 +56,7 @@ export interface GetObjectReplicationPolicyResult {
     /**
      * The storage account object replication rules.
      */
-    readonly rules?: types.outputs.storage.v20220901.ObjectReplicationPolicyRuleResponse[];
+    readonly rules?: types.outputs.ObjectReplicationPolicyRuleResponse[];
     /**
      * Required. Source account name. It should be full resource id if allowCrossTenantReplication set to false.
      */

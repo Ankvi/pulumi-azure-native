@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 export function listWorkspaceConnectionSecrets(args: ListWorkspaceConnectionSecretsArgs, opts?: pulumi.InvokeOptions): Promise<ListWorkspaceConnectionSecretsResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -35,11 +35,11 @@ export interface ListWorkspaceConnectionSecretsResult {
      * The name of the resource
      */
     readonly name: string;
-    readonly properties: types.outputs.machinelearningservices.v20230601preview.AccessKeyAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.machinelearningservices.v20230601preview.ApiKeyAuthWorkspaceConnectionPropertiesResponse | types.outputs.machinelearningservices.v20230601preview.CustomKeysWorkspaceConnectionPropertiesResponse | types.outputs.machinelearningservices.v20230601preview.ManagedIdentityAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.machinelearningservices.v20230601preview.NoneAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.machinelearningservices.v20230601preview.PATAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.machinelearningservices.v20230601preview.SASAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.machinelearningservices.v20230601preview.ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.machinelearningservices.v20230601preview.UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse;
+    readonly properties: types.outputs.AccessKeyAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.ApiKeyAuthWorkspaceConnectionPropertiesResponse | types.outputs.CustomKeysWorkspaceConnectionPropertiesResponse | types.outputs.ManagedIdentityAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.NoneAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.PATAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.SASAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.machinelearningservices.v20230601preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

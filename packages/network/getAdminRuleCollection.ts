@@ -42,7 +42,7 @@ export interface GetAdminRuleCollectionResult {
     /**
      * Groups for configuration
      */
-    readonly appliesToGroups: types.outputs.network.NetworkManagerSecurityGroupItemResponse[];
+    readonly appliesToGroups: types.outputs.NetworkManagerSecurityGroupItemResponse[];
     /**
      * A description of the admin rule collection.
      */
@@ -70,7 +70,7 @@ export interface GetAdminRuleCollectionResult {
     /**
      * The system metadata related to this resource.
      */
-    readonly systemData: types.outputs.network.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource type.
      */

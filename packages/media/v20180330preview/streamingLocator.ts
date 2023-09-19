@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A Streaming Locator resource
  */
@@ -38,7 +38,7 @@ export class StreamingLocator extends pulumi.CustomResource {
     /**
      * ContentKeys used by this Streaming Locator
      */
-    public readonly contentKeys!: pulumi.Output<types.outputs.media.v20180330preview.StreamingLocatorUserDefinedContentKeyResponse[] | undefined>;
+    public readonly contentKeys!: pulumi.Output<types.outputs.StreamingLocatorUserDefinedContentKeyResponse[] | undefined>;
     /**
      * Creation time of Streaming Locator
      */
@@ -142,7 +142,7 @@ export interface StreamingLocatorArgs {
     /**
      * ContentKeys used by this Streaming Locator
      */
-    contentKeys?: pulumi.Input<pulumi.Input<types.inputs.media.v20180330preview.StreamingLocatorUserDefinedContentKeyArgs>[]>;
+    contentKeys?: pulumi.Input<pulumi.Input<types.inputs.StreamingLocatorUserDefinedContentKeyArgs>[]>;
     /**
      * Default ContentKeyPolicy used by this Streaming Locator
      */

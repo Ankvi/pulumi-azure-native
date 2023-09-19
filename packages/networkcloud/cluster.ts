@@ -34,7 +34,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * The rack definition that is intended to reflect only a single rack in a single rack cluster, or an aggregator rack in a multi-rack cluster.
      */
-    public readonly aggregatorOrSingleRackDefinition!: pulumi.Output<types.outputs.networkcloud.RackDefinitionResponse>;
+    public readonly aggregatorOrSingleRackDefinition!: pulumi.Output<types.outputs.RackDefinitionResponse>;
     /**
      * The resource ID of the Log Analytics Workspace that will be used for storing relevant logs.
      */
@@ -42,11 +42,11 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * The list of cluster runtime version upgrades available for this cluster.
      */
-    public /*out*/ readonly availableUpgradeVersions!: pulumi.Output<types.outputs.networkcloud.ClusterAvailableUpgradeVersionResponse[]>;
+    public /*out*/ readonly availableUpgradeVersions!: pulumi.Output<types.outputs.ClusterAvailableUpgradeVersionResponse[]>;
     /**
      * The capacity supported by this cluster.
      */
-    public /*out*/ readonly clusterCapacity!: pulumi.Output<types.outputs.networkcloud.ClusterCapacityResponse>;
+    public /*out*/ readonly clusterCapacity!: pulumi.Output<types.outputs.ClusterCapacityResponse>;
     /**
      * The latest heartbeat status between the cluster manager and the cluster.
      */
@@ -54,7 +54,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * The extended location (custom location) that represents the cluster's control plane location. This extended location is used to route the requests of child objects of the cluster that are handled by the platform operator.
      */
-    public /*out*/ readonly clusterExtendedLocation!: pulumi.Output<types.outputs.networkcloud.ExtendedLocationResponse>;
+    public /*out*/ readonly clusterExtendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse>;
     /**
      * The customer-provided location information to identify where the cluster resides.
      */
@@ -70,7 +70,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * The service principal to be used by the cluster during Arc Appliance installation.
      */
-    public readonly clusterServicePrincipal!: pulumi.Output<types.outputs.networkcloud.ServicePrincipalInformationResponse | undefined>;
+    public readonly clusterServicePrincipal!: pulumi.Output<types.outputs.ServicePrincipalInformationResponse | undefined>;
     /**
      * The type of rack configuration for the cluster.
      */
@@ -82,12 +82,12 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * The validation threshold indicating the allowable failures of compute machines during environment validation and deployment.
      */
-    public readonly computeDeploymentThreshold!: pulumi.Output<types.outputs.networkcloud.ValidationThresholdResponse | undefined>;
+    public readonly computeDeploymentThreshold!: pulumi.Output<types.outputs.ValidationThresholdResponse | undefined>;
     /**
      * The list of rack definitions for the compute racks in a multi-rack
      * cluster, or an empty list in a single-rack cluster.
      */
-    public readonly computeRackDefinitions!: pulumi.Output<types.outputs.networkcloud.RackDefinitionResponse[] | undefined>;
+    public readonly computeRackDefinitions!: pulumi.Output<types.outputs.RackDefinitionResponse[] | undefined>;
     /**
      * The current detailed status of the cluster.
      */
@@ -99,11 +99,11 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * The extended location of the cluster manager associated with the cluster.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.networkcloud.ExtendedLocationResponse>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse>;
     /**
      * Field Deprecated. This field will not be populated in an upcoming version. The extended location (custom location) that represents the Hybrid AKS control plane location. This extended location is used when creating provisioned clusters (Hybrid AKS clusters).
      */
-    public /*out*/ readonly hybridAksExtendedLocation!: pulumi.Output<types.outputs.networkcloud.ExtendedLocationResponse>;
+    public /*out*/ readonly hybridAksExtendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse>;
     /**
      * The geo-location where the resource lives
      */
@@ -111,7 +111,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * The configuration of the managed resource group associated with the resource.
      */
-    public readonly managedResourceGroupConfiguration!: pulumi.Output<types.outputs.networkcloud.ManagedResourceGroupConfigurationResponse | undefined>;
+    public readonly managedResourceGroupConfiguration!: pulumi.Output<types.outputs.ManagedResourceGroupConfigurationResponse | undefined>;
     /**
      * The count of Manual Action Taken (MAT) events that have not been validated.
      */
@@ -135,7 +135,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.networkcloud.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -254,7 +254,7 @@ export interface ClusterArgs {
     /**
      * The rack definition that is intended to reflect only a single rack in a single rack cluster, or an aggregator rack in a multi-rack cluster.
      */
-    aggregatorOrSingleRackDefinition: pulumi.Input<types.inputs.networkcloud.RackDefinitionArgs>;
+    aggregatorOrSingleRackDefinition: pulumi.Input<types.inputs.RackDefinitionArgs>;
     /**
      * The resource ID of the Log Analytics Workspace that will be used for storing relevant logs.
      */
@@ -270,7 +270,7 @@ export interface ClusterArgs {
     /**
      * The service principal to be used by the cluster during Arc Appliance installation.
      */
-    clusterServicePrincipal?: pulumi.Input<types.inputs.networkcloud.ServicePrincipalInformationArgs>;
+    clusterServicePrincipal?: pulumi.Input<types.inputs.ServicePrincipalInformationArgs>;
     /**
      * The type of rack configuration for the cluster.
      */
@@ -282,16 +282,16 @@ export interface ClusterArgs {
     /**
      * The validation threshold indicating the allowable failures of compute machines during environment validation and deployment.
      */
-    computeDeploymentThreshold?: pulumi.Input<types.inputs.networkcloud.ValidationThresholdArgs>;
+    computeDeploymentThreshold?: pulumi.Input<types.inputs.ValidationThresholdArgs>;
     /**
      * The list of rack definitions for the compute racks in a multi-rack
      * cluster, or an empty list in a single-rack cluster.
      */
-    computeRackDefinitions?: pulumi.Input<pulumi.Input<types.inputs.networkcloud.RackDefinitionArgs>[]>;
+    computeRackDefinitions?: pulumi.Input<pulumi.Input<types.inputs.RackDefinitionArgs>[]>;
     /**
      * The extended location of the cluster manager associated with the cluster.
      */
-    extendedLocation: pulumi.Input<types.inputs.networkcloud.ExtendedLocationArgs>;
+    extendedLocation: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -299,7 +299,7 @@ export interface ClusterArgs {
     /**
      * The configuration of the managed resource group associated with the resource.
      */
-    managedResourceGroupConfiguration?: pulumi.Input<types.inputs.networkcloud.ManagedResourceGroupConfigurationArgs>;
+    managedResourceGroupConfiguration?: pulumi.Input<types.inputs.ManagedResourceGroupConfigurationArgs>;
     /**
      * The resource ID of the Network Fabric associated with the cluster.
      */

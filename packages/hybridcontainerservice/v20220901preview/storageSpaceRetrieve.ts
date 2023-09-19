@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The storageSpaces resource definition.
  */
@@ -31,7 +31,7 @@ export class StorageSpaceRetrieve extends pulumi.CustomResource {
         return obj['__pulumiType'] === StorageSpaceRetrieve.__pulumiType;
     }
 
-    public readonly extendedLocation!: pulumi.Output<types.outputs.hybridcontainerservice.v20220901preview.StorageSpacesResponseExtendedLocation | undefined>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.StorageSpacesResponseExtendedLocation | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -43,11 +43,11 @@ export class StorageSpaceRetrieve extends pulumi.CustomResource {
     /**
      * HybridAKSStorageSpec defines the desired state of HybridAKSStorage
      */
-    public readonly properties!: pulumi.Output<types.outputs.hybridcontainerservice.v20220901preview.StorageSpacesPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.StorageSpacesPropertiesResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.hybridcontainerservice.v20220901preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -100,7 +100,7 @@ export class StorageSpaceRetrieve extends pulumi.CustomResource {
  * The set of arguments for constructing a StorageSpaceRetrieve resource.
  */
 export interface StorageSpaceRetrieveArgs {
-    extendedLocation?: pulumi.Input<types.inputs.hybridcontainerservice.v20220901preview.StorageSpacesExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.StorageSpacesExtendedLocationArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -108,7 +108,7 @@ export interface StorageSpaceRetrieveArgs {
     /**
      * HybridAKSStorageSpec defines the desired state of HybridAKSStorage
      */
-    properties?: pulumi.Input<types.inputs.hybridcontainerservice.v20220901preview.StorageSpacesPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.StorageSpacesPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

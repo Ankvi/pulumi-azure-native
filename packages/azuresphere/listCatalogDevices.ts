@@ -56,7 +56,7 @@ export interface ListCatalogDevicesResult {
     /**
      * The Device items on this page
      */
-    readonly value: types.outputs.azuresphere.DeviceResponse[];
+    readonly value: types.outputs.DeviceResponse[];
 }
 /**
  * Lists devices for catalog.

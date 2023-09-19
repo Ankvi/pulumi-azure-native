@@ -93,7 +93,7 @@ utilities.lazyLoad(exports, ["Workspace"], () => require("./workspace"));
 
 
 // Export enums:
-export * from "../types/enums/v20221014preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

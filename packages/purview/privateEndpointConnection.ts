@@ -39,11 +39,11 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * The private endpoint information.
      */
-    public readonly privateEndpoint!: pulumi.Output<types.outputs.purview.PrivateEndpointResponse | undefined>;
+    public readonly privateEndpoint!: pulumi.Output<types.outputs.PrivateEndpointResponse | undefined>;
     /**
      * The private link service connection state.
      */
-    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.purview.PrivateLinkServiceConnectionStateResponse | undefined>;
+    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.PrivateLinkServiceConnectionStateResponse | undefined>;
     /**
      * The provisioning state.
      */
@@ -51,7 +51,7 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.purview.ProxyResourceResponseSystemData>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.ProxyResourceResponseSystemData>;
     /**
      * Gets or sets the type.
      */
@@ -109,7 +109,7 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * The private endpoint information.
      */
-    privateEndpoint?: pulumi.Input<types.inputs.purview.PrivateEndpointArgs>;
+    privateEndpoint?: pulumi.Input<types.inputs.PrivateEndpointArgs>;
     /**
      * Name of the private endpoint connection.
      */
@@ -117,7 +117,7 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * The private link service connection state.
      */
-    privateLinkServiceConnectionState?: pulumi.Input<types.inputs.purview.PrivateLinkServiceConnectionStateArgs>;
+    privateLinkServiceConnectionState?: pulumi.Input<types.inputs.PrivateLinkServiceConnectionStateArgs>;
     /**
      * The resource group name.
      */

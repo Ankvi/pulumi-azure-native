@@ -47,11 +47,11 @@ export interface GetRuleResult {
     /**
      * Represents the filter actions which are allowed for the transformation of a message that have been matched by a filter expression.
      */
-    readonly action?: types.outputs.servicebus.ActionResponse;
+    readonly action?: types.outputs.ActionResponse;
     /**
      * Properties of correlationFilter
      */
-    readonly correlationFilter?: types.outputs.servicebus.CorrelationFilterResponse;
+    readonly correlationFilter?: types.outputs.CorrelationFilterResponse;
     /**
      * Filter type that is evaluated against a BrokeredMessage.
      */
@@ -71,11 +71,11 @@ export interface GetRuleResult {
     /**
      * Properties of sqlFilter
      */
-    readonly sqlFilter?: types.outputs.servicebus.SqlFilterResponse;
+    readonly sqlFilter?: types.outputs.SqlFilterResponse;
     /**
      * The system meta data relating to this resource.
      */
-    readonly systemData: types.outputs.servicebus.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
      */

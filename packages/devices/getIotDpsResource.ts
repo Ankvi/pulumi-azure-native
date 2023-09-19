@@ -48,7 +48,7 @@ export interface GetIotDpsResourceResult {
     /**
      * Service specific properties for a provisioning service
      */
-    readonly properties: types.outputs.devices.IotDpsPropertiesDescriptionResponse;
+    readonly properties: types.outputs.IotDpsPropertiesDescriptionResponse;
     /**
      * The resource group of the resource.
      */
@@ -56,7 +56,7 @@ export interface GetIotDpsResourceResult {
     /**
      * Sku info for a provisioning Service.
      */
-    readonly sku: types.outputs.devices.IotDpsSkuInfoResponse;
+    readonly sku: types.outputs.IotDpsSkuInfoResponse;
     /**
      * The subscription id of the resource.
      */
@@ -64,7 +64,7 @@ export interface GetIotDpsResourceResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.devices.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The resource tags.
      */

@@ -57,11 +57,11 @@ export interface GetStartStopManagedInstanceScheduleResult {
     /**
      * Schedule list.
      */
-    readonly scheduleList: types.outputs.sql.ScheduleItemResponse[];
+    readonly scheduleList: types.outputs.ScheduleItemResponse[];
     /**
      * System data of the scheduled resource.
      */
-    readonly systemData: types.outputs.sql.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The time zone of the schedule.
      */

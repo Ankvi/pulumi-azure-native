@@ -76,7 +76,7 @@ export interface GetEnvironmentResult {
     /**
      * The details of the latest operation. ex: status, error
      */
-    readonly latestOperationResult: types.outputs.labservices.LatestOperationResultResponse;
+    readonly latestOperationResult: types.outputs.LatestOperationResultResponse;
     /**
      * The location of the resource.
      */
@@ -88,7 +88,7 @@ export interface GetEnvironmentResult {
     /**
      * Network details of the environment
      */
-    readonly networkInterface: types.outputs.labservices.NetworkInterfaceResponse;
+    readonly networkInterface: types.outputs.NetworkInterfaceResponse;
     /**
      * When the password was last reset on the environment.
      */
@@ -100,7 +100,7 @@ export interface GetEnvironmentResult {
     /**
      * The set of a VM and the setting id it was created for
      */
-    readonly resourceSets?: types.outputs.labservices.ResourceSetResponse;
+    readonly resourceSets?: types.outputs.ResourceSetResponse;
     /**
      * The tags of the resource.
      */

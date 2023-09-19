@@ -36,7 +36,7 @@ export interface ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdR
     /**
      * The list of eventImpactedResources.
      */
-    readonly value: types.outputs.resourcehealth.EventImpactedResourceResponse[];
+    readonly value: types.outputs.EventImpactedResourceResponse[];
 }
 /**
  * Lists impacted resources in the subscription by an event (Security Advisory).

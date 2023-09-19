@@ -75,11 +75,11 @@ export class VirtualWan extends pulumi.CustomResource {
     /**
      * List of VirtualHubs in the VirtualWAN.
      */
-    public /*out*/ readonly virtualHubs!: pulumi.Output<types.outputs.network.SubResourceResponse[]>;
+    public /*out*/ readonly virtualHubs!: pulumi.Output<types.outputs.SubResourceResponse[]>;
     /**
      * List of VpnSites in the VirtualWAN.
      */
-    public /*out*/ readonly vpnSites!: pulumi.Output<types.outputs.network.SubResourceResponse[]>;
+    public /*out*/ readonly vpnSites!: pulumi.Output<types.outputs.SubResourceResponse[]>;
 
     /**
      * Create a VirtualWan resource with the given unique name, arguments, and options.

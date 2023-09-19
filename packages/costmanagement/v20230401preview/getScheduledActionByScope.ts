@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the shared scheduled action from the given scope by name.
  */
@@ -39,7 +39,7 @@ export interface GetScheduledActionByScopeResult {
     /**
      * Destination format of the view data. This is optional.
      */
-    readonly fileDestination?: types.outputs.costmanagement.v20230401preview.FileDestinationResponse;
+    readonly fileDestination?: types.outputs.FileDestinationResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -55,7 +55,7 @@ export interface GetScheduledActionByScopeResult {
     /**
      * Notification properties based on scheduled action kind.
      */
-    readonly notification: types.outputs.costmanagement.v20230401preview.NotificationPropertiesResponse;
+    readonly notification: types.outputs.NotificationPropertiesResponse;
     /**
      * Email address of the point of contact that should get the unsubscribe requests and notification emails.
      */
@@ -63,7 +63,7 @@ export interface GetScheduledActionByScopeResult {
     /**
      * Schedule of the scheduled action.
      */
-    readonly schedule: types.outputs.costmanagement.v20230401preview.SchedulePropertiesResponse;
+    readonly schedule: types.outputs.SchedulePropertiesResponse;
     /**
      * Cost Management scope like 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for BillingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for InvoiceSection scope, '/providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}' for ExternalBillingAccount scope, and '/providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}' for ExternalSubscription scope.
      */
@@ -75,7 +75,7 @@ export interface GetScheduledActionByScopeResult {
     /**
      * Kind of the scheduled action.
      */
-    readonly systemData: types.outputs.costmanagement.v20230401preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

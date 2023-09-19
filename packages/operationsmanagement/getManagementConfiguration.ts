@@ -44,7 +44,7 @@ export interface GetManagementConfigurationResult {
     /**
      * Properties for ManagementConfiguration object supported by the OperationsManagement resource provider.
      */
-    readonly properties: types.outputs.operationsmanagement.ManagementConfigurationPropertiesResponse;
+    readonly properties: types.outputs.ManagementConfigurationPropertiesResponse;
     /**
      * Resource type.
      */

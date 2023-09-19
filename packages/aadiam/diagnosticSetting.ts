@@ -43,7 +43,7 @@ export class DiagnosticSetting extends pulumi.CustomResource {
     /**
      * The list of logs settings.
      */
-    public readonly logs!: pulumi.Output<types.outputs.aadiam.LogSettingsResponse[] | undefined>;
+    public readonly logs!: pulumi.Output<types.outputs.LogSettingsResponse[] | undefined>;
     /**
      * Azure resource name
      */
@@ -116,7 +116,7 @@ export interface DiagnosticSettingArgs {
     /**
      * The list of logs settings.
      */
-    logs?: pulumi.Input<pulumi.Input<types.inputs.aadiam.LogSettingsArgs>[]>;
+    logs?: pulumi.Input<pulumi.Input<types.inputs.LogSettingsArgs>[]>;
     /**
      * The name of the diagnostic setting.
      */

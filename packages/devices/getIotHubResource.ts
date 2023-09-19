@@ -40,7 +40,7 @@ export interface GetIotHubResourceResult {
     /**
      * The managed identities for the IotHub.
      */
-    readonly identity?: types.outputs.devices.ArmIdentityResponse;
+    readonly identity?: types.outputs.ArmIdentityResponse;
     /**
      * The resource location.
      */
@@ -52,15 +52,15 @@ export interface GetIotHubResourceResult {
     /**
      * IotHub properties
      */
-    readonly properties: types.outputs.devices.IotHubPropertiesResponse;
+    readonly properties: types.outputs.IotHubPropertiesResponse;
     /**
      * IotHub SKU info
      */
-    readonly sku: types.outputs.devices.IotHubSkuInfoResponse;
+    readonly sku: types.outputs.IotHubSkuInfoResponse;
     /**
      * The system meta data relating to this resource.
      */
-    readonly systemData: types.outputs.devices.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The resource tags.
      */

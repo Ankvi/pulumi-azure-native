@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An object that represents a machine learning team account.
  */
@@ -74,7 +74,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * The properties of the storage account for the machine learning team account.
      */
-    public readonly storageAccount!: pulumi.Output<types.outputs.machinelearningexperimentation.v20170501preview.StorageAccountPropertiesResponse>;
+    public readonly storageAccount!: pulumi.Output<types.outputs.StorageAccountPropertiesResponse>;
     /**
      * The tags of the resource.
      */
@@ -185,7 +185,7 @@ export interface AccountArgs {
     /**
      * The properties of the storage account for the machine learning team account.
      */
-    storageAccount: pulumi.Input<types.inputs.machinelearningexperimentation.v20170501preview.StorageAccountPropertiesArgs>;
+    storageAccount: pulumi.Input<types.inputs.StorageAccountPropertiesArgs>;
     /**
      * The tags of the resource.
      */

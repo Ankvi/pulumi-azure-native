@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get IoT Defender Settings
  */
@@ -34,7 +34,7 @@ export interface GetDefenderSettingResult {
     /**
      * MDE integration configuration
      */
-    readonly mdeIntegration: types.outputs.iotsecurity.v20210201preview.DefenderSettingsPropertiesResponseMdeIntegration;
+    readonly mdeIntegration: types.outputs.DefenderSettingsPropertiesResponseMdeIntegration;
     /**
      * The name of the resource
      */

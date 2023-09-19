@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Device resource.
  */
@@ -46,7 +46,7 @@ export class Device extends pulumi.CustomResource {
     /**
      * The list of network functions deployed on the device.
      */
-    public /*out*/ readonly networkFunctions!: pulumi.Output<types.outputs.hybridnetwork.v20220101preview.SubResourceResponse[]>;
+    public /*out*/ readonly networkFunctions!: pulumi.Output<types.outputs.SubResourceResponse[]>;
     /**
      * The provisioning state of the device resource.
      */
@@ -58,7 +58,7 @@ export class Device extends pulumi.CustomResource {
     /**
      * The system meta data relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.hybridnetwork.v20220101preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -125,7 +125,7 @@ export interface DeviceArgs {
     /**
      * The type of the device.
      */
-    deviceType: pulumi.Input<string | types.enums.v20220101preview.DeviceType>;
+    deviceType: pulumi.Input<string | types.enums.DeviceType>;
     /**
      * The geo-location where the resource lives
      */

@@ -32,7 +32,7 @@ export interface GetTrafficControllerInterfaceResult {
     /**
      * Associations References List
      */
-    readonly associations: types.outputs.servicenetworking.ResourceIdResponse[];
+    readonly associations: types.outputs.ResourceIdResponse[];
     /**
      * Configuration Endpoints.
      */
@@ -40,7 +40,7 @@ export interface GetTrafficControllerInterfaceResult {
     /**
      * Frontends References List
      */
-    readonly frontends: types.outputs.servicenetworking.ResourceIdResponse[];
+    readonly frontends: types.outputs.ResourceIdResponse[];
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -60,7 +60,7 @@ export interface GetTrafficControllerInterfaceResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.servicenetworking.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

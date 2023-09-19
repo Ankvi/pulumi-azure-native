@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves the properties of an existing Azure Cosmos DB database account.
  */
@@ -31,15 +31,15 @@ export interface GetDatabaseAccountResult {
     /**
      * API specific properties.
      */
-    readonly apiProperties?: types.outputs.documentdb.v20210401preview.ApiPropertiesResponse;
+    readonly apiProperties?: types.outputs.ApiPropertiesResponse;
     /**
      * The object representing the policy for taking backups on an account.
      */
-    readonly backupPolicy?: types.outputs.documentdb.v20210401preview.ContinuousModeBackupPolicyResponse | types.outputs.documentdb.v20210401preview.PeriodicModeBackupPolicyResponse;
+    readonly backupPolicy?: types.outputs.ContinuousModeBackupPolicyResponse | types.outputs.PeriodicModeBackupPolicyResponse;
     /**
      * List of Cosmos DB capabilities for the account
      */
-    readonly capabilities?: types.outputs.documentdb.v20210401preview.CapabilityResponse[];
+    readonly capabilities?: types.outputs.CapabilityResponse[];
     /**
      * The cassandra connector offer type for the Cosmos DB database C* account.
      */
@@ -47,11 +47,11 @@ export interface GetDatabaseAccountResult {
     /**
      * The consistency policy for the Cosmos DB database account.
      */
-    readonly consistencyPolicy?: types.outputs.documentdb.v20210401preview.ConsistencyPolicyResponse;
+    readonly consistencyPolicy?: types.outputs.ConsistencyPolicyResponse;
     /**
      * The CORS policy for the Cosmos DB database account.
      */
-    readonly cors?: types.outputs.documentdb.v20210401preview.CorsPolicyResponse[];
+    readonly cors?: types.outputs.CorsPolicyResponse[];
     /**
      * Enum to indicate the mode of account creation.
      */
@@ -95,7 +95,7 @@ export interface GetDatabaseAccountResult {
     /**
      * An array that contains the regions ordered by their failover priorities.
      */
-    readonly failoverPolicies: types.outputs.documentdb.v20210401preview.FailoverPolicyResponse[];
+    readonly failoverPolicies: types.outputs.FailoverPolicyResponse[];
     /**
      * The unique resource identifier of the ARM resource.
      */
@@ -103,7 +103,7 @@ export interface GetDatabaseAccountResult {
     /**
      * Identity for the resource.
      */
-    readonly identity?: types.outputs.documentdb.v20210401preview.ManagedServiceIdentityResponse;
+    readonly identity?: types.outputs.ManagedServiceIdentityResponse;
     /**
      * A unique identifier assigned to the database account
      */
@@ -111,7 +111,7 @@ export interface GetDatabaseAccountResult {
     /**
      * List of IpRules.
      */
-    readonly ipRules?: types.outputs.documentdb.v20210401preview.IpAddressOrRangeResponse[];
+    readonly ipRules?: types.outputs.IpAddressOrRangeResponse[];
     /**
      * Flag to indicate whether to enable/disable Virtual Network ACL rules.
      */
@@ -131,7 +131,7 @@ export interface GetDatabaseAccountResult {
     /**
      * An array that contains all of the locations enabled for the Cosmos DB account.
      */
-    readonly locations: types.outputs.documentdb.v20210401preview.LocationResponse[];
+    readonly locations: types.outputs.LocationResponse[];
     /**
      * The name of the ARM resource.
      */
@@ -147,7 +147,7 @@ export interface GetDatabaseAccountResult {
     /**
      * List of Private Endpoint Connections configured for the Cosmos DB account.
      */
-    readonly privateEndpointConnections: types.outputs.documentdb.v20210401preview.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections: types.outputs.PrivateEndpointConnectionResponse[];
     /**
      * The status of the Cosmos DB account at the time the operation was called. The status can be one of following. 'Creating' – the Cosmos DB account is being created. When an account is in Creating state, only properties that are specified as input for the Create Cosmos DB account operation are returned. 'Succeeded' – the Cosmos DB account is active for use. 'Updating' – the Cosmos DB account is being updated. 'Deleting' – the Cosmos DB account is being deleted. 'Failed' – the Cosmos DB account failed creation. 'DeletionFailed' – the Cosmos DB account deletion failed.
      */
@@ -159,15 +159,15 @@ export interface GetDatabaseAccountResult {
     /**
      * An array that contains of the read locations enabled for the Cosmos DB account.
      */
-    readonly readLocations: types.outputs.documentdb.v20210401preview.LocationResponse[];
+    readonly readLocations: types.outputs.LocationResponse[];
     /**
      * Parameters to indicate the information about the restore.
      */
-    readonly restoreParameters?: types.outputs.documentdb.v20210401preview.RestoreParametersResponse;
+    readonly restoreParameters?: types.outputs.RestoreParametersResponse;
     /**
      * The system meta data relating to this resource.
      */
-    readonly systemData: types.outputs.documentdb.v20210401preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB".
      */
@@ -179,11 +179,11 @@ export interface GetDatabaseAccountResult {
     /**
      * List of Virtual Network ACL rules configured for the Cosmos DB account.
      */
-    readonly virtualNetworkRules?: types.outputs.documentdb.v20210401preview.VirtualNetworkRuleResponse[];
+    readonly virtualNetworkRules?: types.outputs.VirtualNetworkRuleResponse[];
     /**
      * An array that contains the write location for the Cosmos DB account.
      */
-    readonly writeLocations: types.outputs.documentdb.v20210401preview.LocationResponse[];
+    readonly writeLocations: types.outputs.LocationResponse[];
 }
 /**
  * Retrieves the properties of an existing Azure Cosmos DB database account.

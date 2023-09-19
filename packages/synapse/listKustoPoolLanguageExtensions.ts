@@ -37,7 +37,7 @@ export interface ListKustoPoolLanguageExtensionsResult {
     /**
      * The list of language extensions.
      */
-    readonly value?: types.outputs.synapse.LanguageExtensionResponse[];
+    readonly value?: types.outputs.LanguageExtensionResponse[];
 }
 /**
  * Returns a list of language extensions that can run within KQL queries.

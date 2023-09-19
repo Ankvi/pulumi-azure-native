@@ -47,7 +47,7 @@ export class Device extends pulumi.CustomResource {
     /**
      * The list of network functions deployed on the device.
      */
-    public /*out*/ readonly networkFunctions!: pulumi.Output<types.outputs.hybridnetwork.SubResourceResponse[]>;
+    public /*out*/ readonly networkFunctions!: pulumi.Output<types.outputs.SubResourceResponse[]>;
     /**
      * The provisioning state of the device resource.
      */
@@ -59,7 +59,7 @@ export class Device extends pulumi.CustomResource {
     /**
      * The system meta data relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.hybridnetwork.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */

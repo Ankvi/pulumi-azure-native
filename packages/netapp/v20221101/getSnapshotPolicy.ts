@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a snapshot Policy
  */
@@ -36,7 +36,7 @@ export interface GetSnapshotPolicyResult {
     /**
      * Schedule for daily snapshots
      */
-    readonly dailySchedule?: types.outputs.netapp.v20221101.DailyScheduleResponse;
+    readonly dailySchedule?: types.outputs.DailyScheduleResponse;
     /**
      * The property to decide policy is enabled or not
      */
@@ -48,7 +48,7 @@ export interface GetSnapshotPolicyResult {
     /**
      * Schedule for hourly snapshots
      */
-    readonly hourlySchedule?: types.outputs.netapp.v20221101.HourlyScheduleResponse;
+    readonly hourlySchedule?: types.outputs.HourlyScheduleResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -60,7 +60,7 @@ export interface GetSnapshotPolicyResult {
     /**
      * Schedule for monthly snapshots
      */
-    readonly monthlySchedule?: types.outputs.netapp.v20221101.MonthlyScheduleResponse;
+    readonly monthlySchedule?: types.outputs.MonthlyScheduleResponse;
     /**
      * The name of the resource
      */
@@ -72,7 +72,7 @@ export interface GetSnapshotPolicyResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.netapp.v20221101.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -84,7 +84,7 @@ export interface GetSnapshotPolicyResult {
     /**
      * Schedule for weekly snapshots
      */
-    readonly weeklySchedule?: types.outputs.netapp.v20221101.WeeklyScheduleResponse;
+    readonly weeklySchedule?: types.outputs.WeeklyScheduleResponse;
 }
 /**
  * Get a snapshot Policy

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The security connector resource.
  */
@@ -34,7 +34,7 @@ export class SecurityConnector extends pulumi.CustomResource {
     /**
      * The security connector environment data.
      */
-    public readonly environmentData!: pulumi.Output<types.outputs.security.v20230301preview.AwsEnvironmentDataResponse | types.outputs.security.v20230301preview.AzureDevOpsScopeEnvironmentDataResponse | types.outputs.security.v20230301preview.GcpProjectEnvironmentDataResponse | types.outputs.security.v20230301preview.GithubScopeEnvironmentDataResponse | types.outputs.security.v20230301preview.GitlabScopeEnvironmentDataResponse | undefined>;
+    public readonly environmentData!: pulumi.Output<types.outputs.AwsEnvironmentDataResponse | types.outputs.AzureDevOpsScopeEnvironmentDataResponse | types.outputs.GcpProjectEnvironmentDataResponse | types.outputs.GithubScopeEnvironmentDataResponse | types.outputs.GitlabScopeEnvironmentDataResponse | undefined>;
     /**
      * The multi cloud resource's cloud name.
      */
@@ -66,11 +66,11 @@ export class SecurityConnector extends pulumi.CustomResource {
     /**
      * A collection of offerings for the security connector.
      */
-    public readonly offerings!: pulumi.Output<(types.outputs.security.v20230301preview.CspmMonitorAwsOfferingResponse | types.outputs.security.v20230301preview.CspmMonitorAzureDevOpsOfferingResponse | types.outputs.security.v20230301preview.CspmMonitorGcpOfferingResponse | types.outputs.security.v20230301preview.CspmMonitorGitLabOfferingResponse | types.outputs.security.v20230301preview.CspmMonitorGithubOfferingResponse | types.outputs.security.v20230301preview.DefenderCspmAwsOfferingResponse | types.outputs.security.v20230301preview.DefenderCspmGcpOfferingResponse | types.outputs.security.v20230301preview.DefenderFoDatabasesAwsOfferingResponse | types.outputs.security.v20230301preview.DefenderForContainersAwsOfferingResponse | types.outputs.security.v20230301preview.DefenderForContainersGcpOfferingResponse | types.outputs.security.v20230301preview.DefenderForDatabasesGcpOfferingResponse | types.outputs.security.v20230301preview.DefenderForDevOpsAzureDevOpsOfferingResponse | types.outputs.security.v20230301preview.DefenderForDevOpsGitLabOfferingResponse | types.outputs.security.v20230301preview.DefenderForDevOpsGithubOfferingResponse | types.outputs.security.v20230301preview.DefenderForServersAwsOfferingResponse | types.outputs.security.v20230301preview.DefenderForServersGcpOfferingResponse | types.outputs.security.v20230301preview.InformationProtectionAwsOfferingResponse)[] | undefined>;
+    public readonly offerings!: pulumi.Output<(types.outputs.CspmMonitorAwsOfferingResponse | types.outputs.CspmMonitorAzureDevOpsOfferingResponse | types.outputs.CspmMonitorGcpOfferingResponse | types.outputs.CspmMonitorGitLabOfferingResponse | types.outputs.CspmMonitorGithubOfferingResponse | types.outputs.DefenderCspmAwsOfferingResponse | types.outputs.DefenderCspmGcpOfferingResponse | types.outputs.DefenderFoDatabasesAwsOfferingResponse | types.outputs.DefenderForContainersAwsOfferingResponse | types.outputs.DefenderForContainersGcpOfferingResponse | types.outputs.DefenderForDatabasesGcpOfferingResponse | types.outputs.DefenderForDevOpsAzureDevOpsOfferingResponse | types.outputs.DefenderForDevOpsGitLabOfferingResponse | types.outputs.DefenderForDevOpsGithubOfferingResponse | types.outputs.DefenderForServersAwsOfferingResponse | types.outputs.DefenderForServersGcpOfferingResponse | types.outputs.InformationProtectionAwsOfferingResponse)[] | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.security.v20230301preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * A list of key value pairs that describe the resource.
      */
@@ -136,11 +136,11 @@ export interface SecurityConnectorArgs {
     /**
      * The security connector environment data.
      */
-    environmentData?: pulumi.Input<types.inputs.security.v20230301preview.AwsEnvironmentDataArgs | types.inputs.security.v20230301preview.AzureDevOpsScopeEnvironmentDataArgs | types.inputs.security.v20230301preview.GcpProjectEnvironmentDataArgs | types.inputs.security.v20230301preview.GithubScopeEnvironmentDataArgs | types.inputs.security.v20230301preview.GitlabScopeEnvironmentDataArgs>;
+    environmentData?: pulumi.Input<types.inputs.AwsEnvironmentDataArgs | types.inputs.AzureDevOpsScopeEnvironmentDataArgs | types.inputs.GcpProjectEnvironmentDataArgs | types.inputs.GithubScopeEnvironmentDataArgs | types.inputs.GitlabScopeEnvironmentDataArgs>;
     /**
      * The multi cloud resource's cloud name.
      */
-    environmentName?: pulumi.Input<string | types.enums.v20230301preview.CloudName>;
+    environmentName?: pulumi.Input<string | types.enums.CloudName>;
     /**
      * The multi cloud resource identifier (account id in case of AWS connector, project number in case of GCP connector).
      */
@@ -156,7 +156,7 @@ export interface SecurityConnectorArgs {
     /**
      * A collection of offerings for the security connector.
      */
-    offerings?: pulumi.Input<pulumi.Input<types.inputs.security.v20230301preview.CspmMonitorAwsOfferingArgs | types.inputs.security.v20230301preview.CspmMonitorAzureDevOpsOfferingArgs | types.inputs.security.v20230301preview.CspmMonitorGcpOfferingArgs | types.inputs.security.v20230301preview.CspmMonitorGitLabOfferingArgs | types.inputs.security.v20230301preview.CspmMonitorGithubOfferingArgs | types.inputs.security.v20230301preview.DefenderCspmAwsOfferingArgs | types.inputs.security.v20230301preview.DefenderCspmGcpOfferingArgs | types.inputs.security.v20230301preview.DefenderFoDatabasesAwsOfferingArgs | types.inputs.security.v20230301preview.DefenderForContainersAwsOfferingArgs | types.inputs.security.v20230301preview.DefenderForContainersGcpOfferingArgs | types.inputs.security.v20230301preview.DefenderForDatabasesGcpOfferingArgs | types.inputs.security.v20230301preview.DefenderForDevOpsAzureDevOpsOfferingArgs | types.inputs.security.v20230301preview.DefenderForDevOpsGitLabOfferingArgs | types.inputs.security.v20230301preview.DefenderForDevOpsGithubOfferingArgs | types.inputs.security.v20230301preview.DefenderForServersAwsOfferingArgs | types.inputs.security.v20230301preview.DefenderForServersGcpOfferingArgs | types.inputs.security.v20230301preview.InformationProtectionAwsOfferingArgs>[]>;
+    offerings?: pulumi.Input<pulumi.Input<types.inputs.CspmMonitorAwsOfferingArgs | types.inputs.CspmMonitorAzureDevOpsOfferingArgs | types.inputs.CspmMonitorGcpOfferingArgs | types.inputs.CspmMonitorGitLabOfferingArgs | types.inputs.CspmMonitorGithubOfferingArgs | types.inputs.DefenderCspmAwsOfferingArgs | types.inputs.DefenderCspmGcpOfferingArgs | types.inputs.DefenderFoDatabasesAwsOfferingArgs | types.inputs.DefenderForContainersAwsOfferingArgs | types.inputs.DefenderForContainersGcpOfferingArgs | types.inputs.DefenderForDatabasesGcpOfferingArgs | types.inputs.DefenderForDevOpsAzureDevOpsOfferingArgs | types.inputs.DefenderForDevOpsGitLabOfferingArgs | types.inputs.DefenderForDevOpsGithubOfferingArgs | types.inputs.DefenderForServersAwsOfferingArgs | types.inputs.DefenderForServersGcpOfferingArgs | types.inputs.InformationProtectionAwsOfferingArgs>[]>;
     /**
      * The name of the resource group within the user's subscription. The name is case insensitive.
      */

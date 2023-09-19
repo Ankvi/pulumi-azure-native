@@ -35,7 +35,7 @@ export class ServiceUnit extends pulumi.CustomResource {
     /**
      * The artifacts for the service unit.
      */
-    public readonly artifacts!: pulumi.Output<types.outputs.deploymentmanager.ServiceUnitArtifactsResponse | undefined>;
+    public readonly artifacts!: pulumi.Output<types.outputs.ServiceUnitArtifactsResponse | undefined>;
     /**
      * Describes the type of ARM deployment to be performed on the resource.
      */
@@ -121,7 +121,7 @@ export interface ServiceUnitArgs {
     /**
      * The artifacts for the service unit.
      */
-    artifacts?: pulumi.Input<types.inputs.deploymentmanager.ServiceUnitArtifactsArgs>;
+    artifacts?: pulumi.Input<types.inputs.ServiceUnitArtifactsArgs>;
     /**
      * Describes the type of ARM deployment to be performed on the resource.
      */

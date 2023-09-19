@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the backup configuration of an app.
  */
@@ -40,11 +40,11 @@ export interface ListWebAppBackupConfigurationSlotResult {
     /**
      * Schedule for the backup if it is executed periodically.
      */
-    readonly backupSchedule?: types.outputs.web.v20201001.BackupScheduleResponse;
+    readonly backupSchedule?: types.outputs.BackupScheduleResponse;
     /**
      * Databases included in the backup.
      */
-    readonly databases?: types.outputs.web.v20201001.DatabaseBackupSettingResponse[];
+    readonly databases?: types.outputs.DatabaseBackupSettingResponse[];
     /**
      * True if the backup schedule is enabled (must be included in that case), false if the backup schedule should be disabled.
      */
@@ -68,7 +68,7 @@ export interface ListWebAppBackupConfigurationSlotResult {
     /**
      * The system metadata relating to this resource.
      */
-    readonly systemData: types.outputs.web.v20201001.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource type.
      */

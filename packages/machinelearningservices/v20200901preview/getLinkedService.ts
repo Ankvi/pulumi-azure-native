@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the detail of a linked service.
  */
@@ -40,7 +40,7 @@ export interface GetLinkedServiceResult {
     /**
      * Identity for the resource.
      */
-    readonly identity?: types.outputs.machinelearningservices.v20200901preview.IdentityResponse;
+    readonly identity?: types.outputs.IdentityResponse;
     /**
      * location of the linked service.
      */
@@ -52,7 +52,7 @@ export interface GetLinkedServiceResult {
     /**
      * LinkedService specific properties.
      */
-    readonly properties: types.outputs.machinelearningservices.v20200901preview.LinkedServicePropsResponse;
+    readonly properties: types.outputs.LinkedServicePropsResponse;
     /**
      * Resource type of linked service.
      */

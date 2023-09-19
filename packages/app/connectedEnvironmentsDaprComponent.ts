@@ -47,7 +47,7 @@ export class ConnectedEnvironmentsDaprComponent extends pulumi.CustomResource {
     /**
      * Component metadata
      */
-    public readonly metadata!: pulumi.Output<types.outputs.app.DaprMetadataResponse[] | undefined>;
+    public readonly metadata!: pulumi.Output<types.outputs.DaprMetadataResponse[] | undefined>;
     /**
      * The name of the resource
      */
@@ -63,11 +63,11 @@ export class ConnectedEnvironmentsDaprComponent extends pulumi.CustomResource {
     /**
      * Collection of secrets used by a Dapr component
      */
-    public readonly secrets!: pulumi.Output<types.outputs.app.SecretResponse[] | undefined>;
+    public readonly secrets!: pulumi.Output<types.outputs.SecretResponse[] | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.app.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -155,7 +155,7 @@ export interface ConnectedEnvironmentsDaprComponentArgs {
     /**
      * Component metadata
      */
-    metadata?: pulumi.Input<pulumi.Input<types.inputs.app.DaprMetadataArgs>[]>;
+    metadata?: pulumi.Input<pulumi.Input<types.inputs.DaprMetadataArgs>[]>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -171,7 +171,7 @@ export interface ConnectedEnvironmentsDaprComponentArgs {
     /**
      * Collection of secrets used by a Dapr component
      */
-    secrets?: pulumi.Input<pulumi.Input<types.inputs.app.SecretArgs>[]>;
+    secrets?: pulumi.Input<pulumi.Input<types.inputs.SecretArgs>[]>;
     /**
      * Component version
      */

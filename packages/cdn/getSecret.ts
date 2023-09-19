@@ -46,7 +46,7 @@ export interface GetSecretResult {
     /**
      * object which contains secret parameters
      */
-    readonly parameters?: types.outputs.cdn.AzureFirstPartyManagedCertificateParametersResponse | types.outputs.cdn.CustomerCertificateParametersResponse | types.outputs.cdn.ManagedCertificateParametersResponse | types.outputs.cdn.UrlSigningKeyParametersResponse;
+    readonly parameters?: types.outputs.AzureFirstPartyManagedCertificateParametersResponse | types.outputs.CustomerCertificateParametersResponse | types.outputs.ManagedCertificateParametersResponse | types.outputs.UrlSigningKeyParametersResponse;
     /**
      * The name of the profile which holds the secret.
      */
@@ -58,7 +58,7 @@ export interface GetSecretResult {
     /**
      * Read only system data
      */
-    readonly systemData: types.outputs.cdn.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource type.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get an Volume.
  */
@@ -41,7 +41,7 @@ export interface GetVolumeResult {
     /**
      * State of the operation on the resource.
      */
-    readonly creationData?: types.outputs.elasticsan.v20221201preview.SourceCreationDataResponse;
+    readonly creationData?: types.outputs.SourceCreationDataResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -57,11 +57,11 @@ export interface GetVolumeResult {
     /**
      * Storage target information
      */
-    readonly storageTarget: types.outputs.elasticsan.v20221201preview.IscsiTargetInfoResponse;
+    readonly storageTarget: types.outputs.IscsiTargetInfoResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.elasticsan.v20221201preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

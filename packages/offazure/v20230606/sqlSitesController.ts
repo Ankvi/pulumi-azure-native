@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * SQL site web model.
  */
@@ -52,11 +52,11 @@ export class SqlSitesController extends pulumi.CustomResource {
      *            
      * to the appliance.
      */
-    public readonly siteAppliancePropertiesCollection!: pulumi.Output<types.outputs.offazure.v20230606.SiteAppliancePropertiesResponse[] | undefined>;
+    public readonly siteAppliancePropertiesCollection!: pulumi.Output<types.outputs.SiteAppliancePropertiesResponse[] | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.offazure.v20230606.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -112,7 +112,7 @@ export interface SqlSitesControllerArgs {
     /**
      * Gets or sets the discovery scenario.
      */
-    discoveryScenario?: pulumi.Input<string | types.enums.v20230606.SqlSitePropertiesDiscoveryScenario>;
+    discoveryScenario?: pulumi.Input<string | types.enums.SqlSitePropertiesDiscoveryScenario>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -122,7 +122,7 @@ export interface SqlSitesControllerArgs {
      *            
      * to the appliance.
      */
-    siteAppliancePropertiesCollection?: pulumi.Input<pulumi.Input<types.inputs.offazure.v20230606.SiteAppliancePropertiesArgs>[]>;
+    siteAppliancePropertiesCollection?: pulumi.Input<pulumi.Input<types.inputs.SiteAppliancePropertiesArgs>[]>;
     /**
      * Site name
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Response of a list operation.
  */
@@ -35,7 +35,7 @@ export interface ListMonitorLinkedResourcesResult {
     /**
      * Results of a list operation.
      */
-    readonly value?: types.outputs.datadog.v20220601.LinkedResourceResponse[];
+    readonly value?: types.outputs.LinkedResourceResponse[];
 }
 /**
  * Response of a list operation.

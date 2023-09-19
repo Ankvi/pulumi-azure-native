@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Modeling resource details.
  */
@@ -42,11 +42,11 @@ export class Modeling extends pulumi.CustomResource {
     /**
      * Modeling resource properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.recommendationsservice.v20220201.ModelingResourceResponseProperties>;
+    public readonly properties!: pulumi.Output<types.outputs.ModelingResourceResponseProperties>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.recommendationsservice.v20220201.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -116,7 +116,7 @@ export interface ModelingArgs {
     /**
      * Modeling resource properties.
      */
-    properties?: pulumi.Input<types.inputs.recommendationsservice.v20220201.ModelingResourcePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ModelingResourcePropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

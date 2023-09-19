@@ -44,7 +44,7 @@ export class ConnectionGateway extends pulumi.CustomResource {
      * Resource name
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
-    public readonly properties!: pulumi.Output<types.outputs.web.ConnectionGatewayDefinitionResponseProperties>;
+    public readonly properties!: pulumi.Output<types.outputs.ConnectionGatewayDefinitionResponseProperties>;
     /**
      * Resource tags
      */
@@ -104,7 +104,7 @@ export interface ConnectionGatewayArgs {
      * Resource location
      */
     location?: pulumi.Input<string>;
-    properties?: pulumi.Input<types.inputs.web.ConnectionGatewayDefinitionPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ConnectionGatewayDefinitionPropertiesArgs>;
     /**
      * The resource group
      */

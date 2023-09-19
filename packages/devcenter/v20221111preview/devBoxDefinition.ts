@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents a definition for a Developer Machine.
  */
@@ -34,7 +34,7 @@ export class DevBoxDefinition extends pulumi.CustomResource {
     /**
      * Image reference information for the currently active image (only populated during updates).
      */
-    public /*out*/ readonly activeImageReference!: pulumi.Output<types.outputs.devcenter.v20221111preview.ImageReferenceResponse>;
+    public /*out*/ readonly activeImageReference!: pulumi.Output<types.outputs.ImageReferenceResponse>;
     /**
      * Indicates whether Dev Boxes created with this definition are capable of hibernation. Not all images are capable of supporting hibernation. To find out more see https://aka.ms/devbox/hibernate
      */
@@ -42,11 +42,11 @@ export class DevBoxDefinition extends pulumi.CustomResource {
     /**
      * Image reference information.
      */
-    public readonly imageReference!: pulumi.Output<types.outputs.devcenter.v20221111preview.ImageReferenceResponse>;
+    public readonly imageReference!: pulumi.Output<types.outputs.ImageReferenceResponse>;
     /**
      * Details for image validator error. Populated when the image validation is not successful.
      */
-    public /*out*/ readonly imageValidationErrorDetails!: pulumi.Output<types.outputs.devcenter.v20221111preview.ImageValidationErrorDetailsResponse>;
+    public /*out*/ readonly imageValidationErrorDetails!: pulumi.Output<types.outputs.ImageValidationErrorDetailsResponse>;
     /**
      * Validation status of the configured image.
      */
@@ -70,11 +70,11 @@ export class DevBoxDefinition extends pulumi.CustomResource {
     /**
      * The SKU for Dev Boxes created using this definition.
      */
-    public readonly sku!: pulumi.Output<types.outputs.devcenter.v20221111preview.SkuResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.devcenter.v20221111preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -163,11 +163,11 @@ export interface DevBoxDefinitionArgs {
     /**
      * Indicates whether Dev Boxes created with this definition are capable of hibernation. Not all images are capable of supporting hibernation. To find out more see https://aka.ms/devbox/hibernate
      */
-    hibernateSupport?: pulumi.Input<string | types.enums.v20221111preview.HibernateSupport>;
+    hibernateSupport?: pulumi.Input<string | types.enums.HibernateSupport>;
     /**
      * Image reference information.
      */
-    imageReference: pulumi.Input<types.inputs.devcenter.v20221111preview.ImageReferenceArgs>;
+    imageReference: pulumi.Input<types.inputs.ImageReferenceArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -183,7 +183,7 @@ export interface DevBoxDefinitionArgs {
     /**
      * The SKU for Dev Boxes created using this definition.
      */
-    sku: pulumi.Input<types.inputs.devcenter.v20221111preview.SkuArgs>;
+    sku: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Resource tags.
      */

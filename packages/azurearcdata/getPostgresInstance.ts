@@ -32,7 +32,7 @@ export interface GetPostgresInstanceResult {
     /**
      * The extendedLocation of the resource.
      */
-    readonly extendedLocation?: types.outputs.azurearcdata.ExtendedLocationResponse;
+    readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -48,15 +48,15 @@ export interface GetPostgresInstanceResult {
     /**
      * null
      */
-    readonly properties: types.outputs.azurearcdata.PostgresInstancePropertiesResponse;
+    readonly properties: types.outputs.PostgresInstancePropertiesResponse;
     /**
      * Resource sku.
      */
-    readonly sku?: types.outputs.azurearcdata.PostgresInstanceSkuResponse;
+    readonly sku?: types.outputs.PostgresInstanceSkuResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.azurearcdata.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

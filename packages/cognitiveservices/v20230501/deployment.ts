@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Cognitive Services account deployment.
  */
@@ -42,15 +42,15 @@ export class Deployment extends pulumi.CustomResource {
     /**
      * Properties of Cognitive Services account deployment.
      */
-    public readonly properties!: pulumi.Output<types.outputs.cognitiveservices.v20230501.DeploymentPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.DeploymentPropertiesResponse>;
     /**
      * The resource model definition representing SKU
      */
-    public readonly sku!: pulumi.Output<types.outputs.cognitiveservices.v20230501.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.cognitiveservices.v20230501.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -112,7 +112,7 @@ export interface DeploymentArgs {
     /**
      * Properties of Cognitive Services account deployment.
      */
-    properties?: pulumi.Input<types.inputs.cognitiveservices.v20230501.DeploymentPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.DeploymentPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -120,5 +120,5 @@ export interface DeploymentArgs {
     /**
      * The resource model definition representing SKU
      */
-    sku?: pulumi.Input<types.inputs.cognitiveservices.v20230501.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
 }

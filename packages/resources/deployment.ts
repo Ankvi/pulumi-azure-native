@@ -43,7 +43,7 @@ export class Deployment extends pulumi.CustomResource {
     /**
      * Deployment properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.resources.DeploymentPropertiesExtendedResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.DeploymentPropertiesExtendedResponse>;
     /**
      * Deployment tags
      */
@@ -106,7 +106,7 @@ export interface DeploymentArgs {
     /**
      * The deployment properties.
      */
-    properties: pulumi.Input<types.inputs.resources.DeploymentPropertiesArgs>;
+    properties: pulumi.Input<types.inputs.DeploymentPropertiesArgs>;
     /**
      * The name of the resource group to deploy the resources to. The name is case insensitive. The resource group must already exist.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets an Azure BareMetal Storage instance for the specified subscription, resource group, and instance name.
  */
@@ -47,11 +47,11 @@ export interface GetAzureBareMetalStorageInstanceResult {
     /**
      * Specifies the storage properties for the AzureBareMetalStorage instance.
      */
-    readonly storageProperties?: types.outputs.baremetalinfrastructure.v20230406.StoragePropertiesResponse;
+    readonly storageProperties?: types.outputs.StoragePropertiesResponse;
     /**
      * The system metadata relating to this resource.
      */
-    readonly systemData: types.outputs.baremetalinfrastructure.v20230406.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

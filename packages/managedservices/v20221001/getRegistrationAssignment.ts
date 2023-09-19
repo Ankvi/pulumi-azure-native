@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the details of the specified registration assignment.
  */
@@ -44,11 +44,11 @@ export interface GetRegistrationAssignmentResult {
     /**
      * The properties of a registration assignment.
      */
-    readonly properties: types.outputs.managedservices.v20221001.RegistrationAssignmentPropertiesResponse;
+    readonly properties: types.outputs.RegistrationAssignmentPropertiesResponse;
     /**
      * The metadata for the registration assignment resource.
      */
-    readonly systemData: types.outputs.managedservices.v20221001.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the Azure resource (Microsoft.ManagedServices/registrationAssignments).
      */

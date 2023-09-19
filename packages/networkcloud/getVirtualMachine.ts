@@ -45,7 +45,7 @@ export interface GetVirtualMachineResult {
     /**
      * The cloud service network that provides platform-level services for the virtual machine.
      */
-    readonly cloudServicesNetworkAttachment: types.outputs.networkcloud.NetworkAttachmentResponse;
+    readonly cloudServicesNetworkAttachment: types.outputs.NetworkAttachmentResponse;
     /**
      * The resource ID of the cluster the virtual machine is created for.
      */
@@ -65,7 +65,7 @@ export interface GetVirtualMachineResult {
     /**
      * The extended location of the cluster associated with the resource.
      */
-    readonly extendedLocation: types.outputs.networkcloud.ExtendedLocationResponse;
+    readonly extendedLocation: types.outputs.ExtendedLocationResponse;
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -89,7 +89,7 @@ export interface GetVirtualMachineResult {
     /**
      * The list of network attachments to the virtual machine.
      */
-    readonly networkAttachments?: types.outputs.networkcloud.NetworkAttachmentResponse[];
+    readonly networkAttachments?: types.outputs.NetworkAttachmentResponse[];
     /**
      * The Base64 encoded cloud-init network data.
      */
@@ -97,7 +97,7 @@ export interface GetVirtualMachineResult {
     /**
      * The scheduling hints for the virtual machine.
      */
-    readonly placementHints?: types.outputs.networkcloud.VirtualMachinePlacementHintResponse[];
+    readonly placementHints?: types.outputs.VirtualMachinePlacementHintResponse[];
     /**
      * The power state of the virtual machine.
      */
@@ -109,15 +109,15 @@ export interface GetVirtualMachineResult {
     /**
      * The list of ssh public keys. Each key will be added to the virtual machine using the cloud-init ssh_authorized_keys mechanism for the adminUsername.
      */
-    readonly sshPublicKeys?: types.outputs.networkcloud.SshPublicKeyResponse[];
+    readonly sshPublicKeys?: types.outputs.SshPublicKeyResponse[];
     /**
      * The storage profile that specifies size and other parameters about the disks related to the virtual machine.
      */
-    readonly storageProfile: types.outputs.networkcloud.StorageProfileResponse;
+    readonly storageProfile: types.outputs.StorageProfileResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.networkcloud.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -145,7 +145,7 @@ export interface GetVirtualMachineResult {
     /**
      * The credentials used to login to the image repository that has access to the specified image.
      */
-    readonly vmImageRepositoryCredentials?: types.outputs.networkcloud.ImageRepositoryCredentialsResponse;
+    readonly vmImageRepositoryCredentials?: types.outputs.ImageRepositoryCredentialsResponse;
     /**
      * The resource IDs of volumes that are attached to the virtual machine.
      */

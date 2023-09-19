@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Network security default user rule.
  */
@@ -42,7 +42,7 @@ export class DefaultUserRule extends pulumi.CustomResource {
     /**
      * The destination address prefixes. CIDR or destination IP ranges.
      */
-    public /*out*/ readonly destinations!: pulumi.Output<types.outputs.network.v20210501preview.AddressPrefixItemResponse[]>;
+    public /*out*/ readonly destinations!: pulumi.Output<types.outputs.AddressPrefixItemResponse[]>;
     /**
      * Indicates if the traffic matched against the rule in inbound or outbound.
      */
@@ -83,11 +83,11 @@ export class DefaultUserRule extends pulumi.CustomResource {
     /**
      * The CIDR or source IP ranges.
      */
-    public /*out*/ readonly sources!: pulumi.Output<types.outputs.network.v20210501preview.AddressPrefixItemResponse[]>;
+    public /*out*/ readonly sources!: pulumi.Output<types.outputs.AddressPrefixItemResponse[]>;
     /**
      * The system metadata related to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.network.v20210501preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource type.
      */

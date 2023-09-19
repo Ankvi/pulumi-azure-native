@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns RecommendationsService Account resource for a given name.
  */
@@ -43,11 +43,11 @@ export interface GetAccountResult {
     /**
      * Account resource properties.
      */
-    readonly properties: types.outputs.recommendationsservice.v20220201.AccountResourceResponseProperties;
+    readonly properties: types.outputs.AccountResourceResponseProperties;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.recommendationsservice.v20220201.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

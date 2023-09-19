@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Peering in an ExpressRoute Cross Connection resource.
  */
@@ -46,7 +46,7 @@ export class ExpressRouteCrossConnectionPeering extends pulumi.CustomResource {
     /**
      * The IPv6 peering configuration.
      */
-    public readonly ipv6PeeringConfig!: pulumi.Output<types.outputs.network.v20190801.Ipv6ExpressRouteCircuitPeeringConfigResponse | undefined>;
+    public readonly ipv6PeeringConfig!: pulumi.Output<types.outputs.Ipv6ExpressRouteCircuitPeeringConfigResponse | undefined>;
     /**
      * Who was the last to modify the peering.
      */
@@ -54,7 +54,7 @@ export class ExpressRouteCrossConnectionPeering extends pulumi.CustomResource {
     /**
      * The Microsoft peering configuration.
      */
-    public readonly microsoftPeeringConfig!: pulumi.Output<types.outputs.network.v20190801.ExpressRouteCircuitPeeringConfigResponse | undefined>;
+    public readonly microsoftPeeringConfig!: pulumi.Output<types.outputs.ExpressRouteCircuitPeeringConfigResponse | undefined>;
     /**
      * The name of the resource that is unique within a resource group. This name can be used to access the resource.
      */
@@ -183,7 +183,7 @@ export interface ExpressRouteCrossConnectionPeeringArgs {
     /**
      * The IPv6 peering configuration.
      */
-    ipv6PeeringConfig?: pulumi.Input<types.inputs.network.v20190801.Ipv6ExpressRouteCircuitPeeringConfigArgs>;
+    ipv6PeeringConfig?: pulumi.Input<types.inputs.Ipv6ExpressRouteCircuitPeeringConfigArgs>;
     /**
      * Who was the last to modify the peering.
      */
@@ -191,7 +191,7 @@ export interface ExpressRouteCrossConnectionPeeringArgs {
     /**
      * The Microsoft peering configuration.
      */
-    microsoftPeeringConfig?: pulumi.Input<types.inputs.network.v20190801.ExpressRouteCircuitPeeringConfigArgs>;
+    microsoftPeeringConfig?: pulumi.Input<types.inputs.ExpressRouteCircuitPeeringConfigArgs>;
     /**
      * The name of the resource that is unique within a resource group. This name can be used to access the resource.
      */
@@ -207,7 +207,7 @@ export interface ExpressRouteCrossConnectionPeeringArgs {
     /**
      * The peering type.
      */
-    peeringType?: pulumi.Input<string | types.enums.v20190801.ExpressRoutePeeringType>;
+    peeringType?: pulumi.Input<string | types.enums.ExpressRoutePeeringType>;
     /**
      * The primary address prefix.
      */
@@ -227,7 +227,7 @@ export interface ExpressRouteCrossConnectionPeeringArgs {
     /**
      * The peering state.
      */
-    state?: pulumi.Input<string | types.enums.v20190801.ExpressRoutePeeringState>;
+    state?: pulumi.Input<string | types.enums.ExpressRoutePeeringState>;
     /**
      * The VLAN ID.
      */

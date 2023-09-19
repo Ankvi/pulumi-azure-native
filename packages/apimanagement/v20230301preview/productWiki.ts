@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Wiki properties
  */
@@ -34,7 +34,7 @@ export class ProductWiki extends pulumi.CustomResource {
     /**
      * Collection wiki documents included into this wiki.
      */
-    public readonly documents!: pulumi.Output<types.outputs.apimanagement.v20230301preview.WikiDocumentationContractResponse[] | undefined>;
+    public readonly documents!: pulumi.Output<types.outputs.WikiDocumentationContractResponse[] | undefined>;
     /**
      * The name of the resource
      */
@@ -89,7 +89,7 @@ export interface ProductWikiArgs {
     /**
      * Collection wiki documents included into this wiki.
      */
-    documents?: pulumi.Input<pulumi.Input<types.inputs.apimanagement.v20230301preview.WikiDocumentationContractArgs>[]>;
+    documents?: pulumi.Input<pulumi.Input<types.inputs.WikiDocumentationContractArgs>[]>;
     /**
      * Product identifier. Must be unique in the current API Management service instance.
      */

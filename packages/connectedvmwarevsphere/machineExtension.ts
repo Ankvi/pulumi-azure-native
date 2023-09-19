@@ -47,7 +47,7 @@ export class MachineExtension extends pulumi.CustomResource {
     /**
      * The machine extension instance view.
      */
-    public /*out*/ readonly instanceView!: pulumi.Output<types.outputs.connectedvmwarevsphere.MachineExtensionPropertiesResponseInstanceView | undefined>;
+    public /*out*/ readonly instanceView!: pulumi.Output<types.outputs.MachineExtensionPropertiesResponseInstanceView | undefined>;
     /**
      * Gets or sets the location.
      */
@@ -75,7 +75,7 @@ export class MachineExtension extends pulumi.CustomResource {
     /**
      * The system data.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.connectedvmwarevsphere.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Gets or sets the Resource tags.
      */

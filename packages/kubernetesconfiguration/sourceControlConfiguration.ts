@@ -35,7 +35,7 @@ export class SourceControlConfiguration extends pulumi.CustomResource {
     /**
      * Compliance Status of the Configuration
      */
-    public /*out*/ readonly complianceStatus!: pulumi.Output<types.outputs.kubernetesconfiguration.ComplianceStatusResponse>;
+    public /*out*/ readonly complianceStatus!: pulumi.Output<types.outputs.ComplianceStatusResponse>;
     /**
      * Name-value pairs of protected configuration settings for the configuration
      */
@@ -47,7 +47,7 @@ export class SourceControlConfiguration extends pulumi.CustomResource {
     /**
      * Properties for Helm operator.
      */
-    public readonly helmOperatorProperties!: pulumi.Output<types.outputs.kubernetesconfiguration.HelmOperatorPropertiesResponse | undefined>;
+    public readonly helmOperatorProperties!: pulumi.Output<types.outputs.HelmOperatorPropertiesResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -91,7 +91,7 @@ export class SourceControlConfiguration extends pulumi.CustomResource {
     /**
      * Top level metadata https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-contracts.md#system-metadata-for-all-azure-resources
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.kubernetesconfiguration.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -193,7 +193,7 @@ export interface SourceControlConfigurationArgs {
     /**
      * Properties for Helm operator.
      */
-    helmOperatorProperties?: pulumi.Input<types.inputs.kubernetesconfiguration.HelmOperatorPropertiesArgs>;
+    helmOperatorProperties?: pulumi.Input<types.inputs.HelmOperatorPropertiesArgs>;
     /**
      * Instance name of the operator - identifying the specific configuration.
      */

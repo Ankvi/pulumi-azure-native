@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Network security user rule.
  */
@@ -42,7 +42,7 @@ export class UserRule extends pulumi.CustomResource {
     /**
      * The destination address prefixes. CIDR or destination IP ranges.
      */
-    public readonly destinations!: pulumi.Output<types.outputs.network.v20220401preview.AddressPrefixItemResponse[] | undefined>;
+    public readonly destinations!: pulumi.Output<types.outputs.AddressPrefixItemResponse[] | undefined>;
     /**
      * Indicates if the traffic matched against the rule in inbound or outbound.
      */
@@ -75,11 +75,11 @@ export class UserRule extends pulumi.CustomResource {
     /**
      * The CIDR or source IP ranges.
      */
-    public readonly sources!: pulumi.Output<types.outputs.network.v20220401preview.AddressPrefixItemResponse[] | undefined>;
+    public readonly sources!: pulumi.Output<types.outputs.AddressPrefixItemResponse[] | undefined>;
     /**
      * The system metadata related to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.network.v20220401preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource type.
      */
@@ -176,11 +176,11 @@ export interface UserRuleArgs {
     /**
      * The destination address prefixes. CIDR or destination IP ranges.
      */
-    destinations?: pulumi.Input<pulumi.Input<types.inputs.network.v20220401preview.AddressPrefixItemArgs>[]>;
+    destinations?: pulumi.Input<pulumi.Input<types.inputs.AddressPrefixItemArgs>[]>;
     /**
      * Indicates if the traffic matched against the rule in inbound or outbound.
      */
-    direction: pulumi.Input<string | types.enums.v20220401preview.SecurityConfigurationRuleDirection>;
+    direction: pulumi.Input<string | types.enums.SecurityConfigurationRuleDirection>;
     /**
      * Whether the rule is custom or default.
      * Expected value is 'Custom'.
@@ -193,7 +193,7 @@ export interface UserRuleArgs {
     /**
      * Network protocol this rule applies to.
      */
-    protocol: pulumi.Input<string | types.enums.v20220401preview.SecurityConfigurationRuleProtocol>;
+    protocol: pulumi.Input<string | types.enums.SecurityConfigurationRuleProtocol>;
     /**
      * The name of the resource group.
      */
@@ -213,5 +213,5 @@ export interface UserRuleArgs {
     /**
      * The CIDR or source IP ranges.
      */
-    sources?: pulumi.Input<pulumi.Input<types.inputs.network.v20220401preview.AddressPrefixItemArgs>[]>;
+    sources?: pulumi.Input<pulumi.Input<types.inputs.AddressPrefixItemArgs>[]>;
 }

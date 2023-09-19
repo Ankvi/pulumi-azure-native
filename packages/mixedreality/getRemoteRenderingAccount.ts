@@ -44,11 +44,11 @@ export interface GetRemoteRenderingAccountResult {
     /**
      * The identity associated with this account
      */
-    readonly identity?: types.outputs.mixedreality.IdentityResponse;
+    readonly identity?: types.outputs.IdentityResponse;
     /**
      * The kind of account, if supported
      */
-    readonly kind?: types.outputs.mixedreality.SkuResponse;
+    readonly kind?: types.outputs.SkuResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -60,11 +60,11 @@ export interface GetRemoteRenderingAccountResult {
     /**
      * The plan associated with this account
      */
-    readonly plan?: types.outputs.mixedreality.IdentityResponse;
+    readonly plan?: types.outputs.IdentityResponse;
     /**
      * The sku associated with this account
      */
-    readonly sku?: types.outputs.mixedreality.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * The name of the storage account associated with this accountId
      */
@@ -72,7 +72,7 @@ export interface GetRemoteRenderingAccountResult {
     /**
      * System metadata for this account
      */
-    readonly systemData: types.outputs.mixedreality.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

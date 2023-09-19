@@ -51,7 +51,7 @@ export class ConnectedCluster extends pulumi.CustomResource {
     /**
      * The identity of the connected cluster.
      */
-    public readonly identity!: pulumi.Output<types.outputs.kubernetes.ConnectedClusterIdentityResponse>;
+    public readonly identity!: pulumi.Output<types.outputs.ConnectedClusterIdentityResponse>;
     /**
      * The infrastructure on which the Kubernetes cluster represented by this connected cluster is running on.
      */
@@ -95,7 +95,7 @@ export class ConnectedCluster extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.kubernetes.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -136,7 +136,7 @@ export class ConnectedCluster extends pulumi.CustomResource {
             resourceInputs["agentPublicKeyCertificate"] = args ? args.agentPublicKeyCertificate : undefined;
             resourceInputs["clusterName"] = args ? args.clusterName : undefined;
             resourceInputs["distribution"] = args ? args.distribution : undefined;
-            resourceInputs["identity"] = args ? (args.identity ? pulumi.output(args.identity).apply(types.inputs.kubernetes.connectedClusterIdentityArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["identity"] = args ? (args.identity ? pulumi.output(args.identity).apply(types.inputs.connectedClusterIdentityArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["infrastructure"] = args ? args.infrastructure : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["privateLinkScopeResourceId"] = args ? args.privateLinkScopeResourceId : undefined;
@@ -203,7 +203,7 @@ export interface ConnectedClusterArgs {
     /**
      * The identity of the connected cluster.
      */
-    identity: pulumi.Input<types.inputs.kubernetes.ConnectedClusterIdentityArgs>;
+    identity: pulumi.Input<types.inputs.ConnectedClusterIdentityArgs>;
     /**
      * The infrastructure on which the Kubernetes cluster represented by this connected cluster is running on.
      */

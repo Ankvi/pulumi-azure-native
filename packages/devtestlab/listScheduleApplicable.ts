@@ -41,7 +41,7 @@ export interface ListScheduleApplicableResult {
     /**
      * Results of the list operation.
      */
-    readonly value?: types.outputs.devtestlab.ScheduleResponse[];
+    readonly value?: types.outputs.ScheduleResponse[];
 }
 /**
  * Lists all applicable schedules

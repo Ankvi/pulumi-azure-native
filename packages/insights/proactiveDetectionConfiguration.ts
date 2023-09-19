@@ -55,7 +55,7 @@ export class ProactiveDetectionConfiguration extends pulumi.CustomResource {
     /**
      * Static definitions of the ProactiveDetection configuration rule (same values for all components).
      */
-    public readonly ruleDefinitions!: pulumi.Output<types.outputs.insights.ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponseRuleDefinitions | undefined>;
+    public readonly ruleDefinitions!: pulumi.Output<types.outputs.ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponseRuleDefinitions | undefined>;
     /**
      * A flag that indicated whether notifications on this rule should be sent to subscription owners
      */
@@ -145,7 +145,7 @@ export interface ProactiveDetectionConfigurationArgs {
     /**
      * Static definitions of the ProactiveDetection configuration rule (same values for all components).
      */
-    ruleDefinitions?: pulumi.Input<types.inputs.insights.ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRuleDefinitionsArgs>;
+    ruleDefinitions?: pulumi.Input<types.inputs.ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRuleDefinitionsArgs>;
     /**
      * A flag that indicated whether notifications on this rule should be sent to subscription owners
      */

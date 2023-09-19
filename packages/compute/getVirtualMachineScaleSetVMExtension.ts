@@ -63,7 +63,7 @@ export interface GetVirtualMachineScaleSetVMExtensionResult {
     /**
      * The virtual machine extension instance view.
      */
-    readonly instanceView?: types.outputs.compute.VirtualMachineExtensionInstanceViewResponse;
+    readonly instanceView?: types.outputs.VirtualMachineExtensionInstanceViewResponse;
     /**
      * The location of the extension.
      */
@@ -79,7 +79,7 @@ export interface GetVirtualMachineScaleSetVMExtensionResult {
     /**
      * The extensions protected settings that are passed by reference, and consumed from key vault
      */
-    readonly protectedSettingsFromKeyVault?: types.outputs.compute.KeyVaultSecretReferenceResponse;
+    readonly protectedSettingsFromKeyVault?: types.outputs.KeyVaultSecretReferenceResponse;
     /**
      * Collection of extension names after which this extension needs to be provisioned.
      */

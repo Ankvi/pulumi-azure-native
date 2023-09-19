@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents a connected cluster.
  */
@@ -50,7 +50,7 @@ export class ConnectedCluster extends pulumi.CustomResource {
     /**
      * The identity of the connected cluster.
      */
-    public readonly identity!: pulumi.Output<types.outputs.kubernetes.v20220501preview.ConnectedClusterIdentityResponse>;
+    public readonly identity!: pulumi.Output<types.outputs.ConnectedClusterIdentityResponse>;
     /**
      * The infrastructure on which the Kubernetes cluster represented by this connected cluster is running on.
      */
@@ -94,7 +94,7 @@ export class ConnectedCluster extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.kubernetes.v20220501preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -135,7 +135,7 @@ export class ConnectedCluster extends pulumi.CustomResource {
             resourceInputs["agentPublicKeyCertificate"] = args ? args.agentPublicKeyCertificate : undefined;
             resourceInputs["clusterName"] = args ? args.clusterName : undefined;
             resourceInputs["distribution"] = args ? args.distribution : undefined;
-            resourceInputs["identity"] = args ? (args.identity ? pulumi.output(args.identity).apply(types.inputs.kubernetes.v20220501preview.connectedClusterIdentityArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["identity"] = args ? (args.identity ? pulumi.output(args.identity).apply(types.inputs.connectedClusterIdentityArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["infrastructure"] = args ? args.infrastructure : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["privateLinkScopeResourceId"] = args ? args.privateLinkScopeResourceId : undefined;
@@ -202,7 +202,7 @@ export interface ConnectedClusterArgs {
     /**
      * The identity of the connected cluster.
      */
-    identity: pulumi.Input<types.inputs.kubernetes.v20220501preview.ConnectedClusterIdentityArgs>;
+    identity: pulumi.Input<types.inputs.ConnectedClusterIdentityArgs>;
     /**
      * The infrastructure on which the Kubernetes cluster represented by this connected cluster is running on.
      */
@@ -218,11 +218,11 @@ export interface ConnectedClusterArgs {
     /**
      * Property which describes the state of private link on a connected cluster resource.
      */
-    privateLinkState?: pulumi.Input<string | types.enums.v20220501preview.PrivateLinkState>;
+    privateLinkState?: pulumi.Input<string | types.enums.PrivateLinkState>;
     /**
      * Provisioning state of the connected cluster resource.
      */
-    provisioningState?: pulumi.Input<string | types.enums.v20220501preview.ProvisioningState>;
+    provisioningState?: pulumi.Input<string | types.enums.ProvisioningState>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

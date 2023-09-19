@@ -37,7 +37,7 @@ export interface ListDatabasePrincipalsResult {
     /**
      * The list of Kusto database principals.
      */
-    readonly value?: types.outputs.kusto.DatabasePrincipalResponse[];
+    readonly value?: types.outputs.DatabasePrincipalResponse[];
 }
 /**
  * Returns a list of database principals of the given Kusto cluster and database.

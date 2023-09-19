@@ -13,7 +13,7 @@ utilities.lazyLoad(exports, ["getBot","getBotOutput"], () => require("./getBot")
 
 
 // Export enums:
-export * from "../types/enums/v20201208preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

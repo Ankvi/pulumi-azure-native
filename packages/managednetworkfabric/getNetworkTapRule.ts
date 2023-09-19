@@ -48,7 +48,7 @@ export interface GetNetworkTapRuleResult {
     /**
      * List of dynamic match configurations.
      */
-    readonly dynamicMatchConfigurations?: types.outputs.managednetworkfabric.CommonDynamicMatchConfigurationResponse[];
+    readonly dynamicMatchConfigurations?: types.outputs.CommonDynamicMatchConfigurationResponse[];
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -64,7 +64,7 @@ export interface GetNetworkTapRuleResult {
     /**
      * List of match configurations.
      */
-    readonly matchConfigurations?: types.outputs.managednetworkfabric.NetworkTapRuleMatchConfigurationResponse[];
+    readonly matchConfigurations?: types.outputs.NetworkTapRuleMatchConfigurationResponse[];
     /**
      * The name of the resource
      */
@@ -84,7 +84,7 @@ export interface GetNetworkTapRuleResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.managednetworkfabric.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

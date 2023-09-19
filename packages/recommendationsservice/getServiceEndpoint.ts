@@ -49,11 +49,11 @@ export interface GetServiceEndpointResult {
     /**
      * ServiceEndpoint resource properties.
      */
-    readonly properties: types.outputs.recommendationsservice.ServiceEndpointResourceResponseProperties;
+    readonly properties: types.outputs.ServiceEndpointResourceResponseProperties;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.recommendationsservice.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

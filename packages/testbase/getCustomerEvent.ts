@@ -49,11 +49,11 @@ export interface GetCustomerEventResult {
     /**
      * The notification event receivers.
      */
-    readonly receivers: types.outputs.testbase.NotificationEventReceiverResponse[];
+    readonly receivers: types.outputs.NotificationEventReceiverResponse[];
     /**
      * The system metadata relating to this resource
      */
-    readonly systemData: types.outputs.testbase.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource type.
      */

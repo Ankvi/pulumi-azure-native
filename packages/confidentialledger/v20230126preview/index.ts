@@ -23,7 +23,7 @@ utilities.lazyLoad(exports, ["ManagedCCF"], () => require("./managedCCF"));
 
 
 // Export enums:
-export * from "../types/enums/v20230126preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

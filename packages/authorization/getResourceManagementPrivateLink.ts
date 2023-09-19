@@ -38,7 +38,7 @@ export interface GetResourceManagementPrivateLinkResult {
      * The rmpl Name.
      */
     readonly name: string;
-    readonly properties: types.outputs.authorization.ResourceManagementPrivateLinkEndpointConnectionsResponse;
+    readonly properties: types.outputs.ResourceManagementPrivateLinkEndpointConnectionsResponse;
     /**
      * The operation type.
      */

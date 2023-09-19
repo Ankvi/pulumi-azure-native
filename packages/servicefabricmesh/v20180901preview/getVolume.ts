@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the information about the volume resource with the given name. The information include the description and other properties of the volume.
  */
@@ -31,7 +31,7 @@ export interface GetVolumeResult {
     /**
      * This type describes a volume provided by an Azure Files file share.
      */
-    readonly azureFileParameters?: types.outputs.servicefabricmesh.v20180901preview.VolumeProviderParametersAzureFileResponse;
+    readonly azureFileParameters?: types.outputs.VolumeProviderParametersAzureFileResponse;
     /**
      * User readable description of the volume.
      */

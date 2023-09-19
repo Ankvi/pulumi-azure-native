@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Frontend Subresource of Traffic Controller.
  */
@@ -54,11 +54,11 @@ export class FrontendsInterface extends pulumi.CustomResource {
     /**
      * Frontend Public IP Address (Optional).
      */
-    public readonly publicIPAddress!: pulumi.Output<types.outputs.servicenetworking.v20221001preview.FrontendPropertiesIPAddressResponse | undefined>;
+    public readonly publicIPAddress!: pulumi.Output<types.outputs.FrontendPropertiesIPAddressResponse | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.servicenetworking.v20221001preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -126,7 +126,7 @@ export interface FrontendsInterfaceArgs {
     /**
      * Frontend IP Address Version (Optional).
      */
-    ipAddressVersion?: pulumi.Input<types.enums.v20221001preview.FrontendIPAddressVersion>;
+    ipAddressVersion?: pulumi.Input<types.enums.FrontendIPAddressVersion>;
     /**
      * The geo-location where the resource lives
      */
@@ -134,11 +134,11 @@ export interface FrontendsInterfaceArgs {
     /**
      * Frontend Mode (Optional).
      */
-    mode?: pulumi.Input<types.enums.v20221001preview.FrontendMode>;
+    mode?: pulumi.Input<types.enums.FrontendMode>;
     /**
      * Frontend Public IP Address (Optional).
      */
-    publicIPAddress?: pulumi.Input<types.inputs.servicenetworking.v20221001preview.FrontendPropertiesIPAddressArgs>;
+    publicIPAddress?: pulumi.Input<types.inputs.FrontendPropertiesIPAddressArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

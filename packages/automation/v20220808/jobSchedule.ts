@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Definition of the job schedule.
  */
@@ -50,11 +50,11 @@ export class JobSchedule extends pulumi.CustomResource {
     /**
      * Gets or sets the runbook.
      */
-    public readonly runbook!: pulumi.Output<types.outputs.automation.v20220808.RunbookAssociationPropertyResponse | undefined>;
+    public readonly runbook!: pulumi.Output<types.outputs.RunbookAssociationPropertyResponse | undefined>;
     /**
      * Gets or sets the schedule.
      */
-    public readonly schedule!: pulumi.Output<types.outputs.automation.v20220808.ScheduleAssociationPropertyResponse | undefined>;
+    public readonly schedule!: pulumi.Output<types.outputs.ScheduleAssociationPropertyResponse | undefined>;
     /**
      * Resource type
      */
@@ -135,9 +135,9 @@ export interface JobScheduleArgs {
     /**
      * Gets or sets the runbook.
      */
-    runbook: pulumi.Input<types.inputs.automation.v20220808.RunbookAssociationPropertyArgs>;
+    runbook: pulumi.Input<types.inputs.RunbookAssociationPropertyArgs>;
     /**
      * Gets or sets the schedule.
      */
-    schedule: pulumi.Input<types.inputs.automation.v20220808.ScheduleAssociationPropertyArgs>;
+    schedule: pulumi.Input<types.inputs.ScheduleAssociationPropertyArgs>;
 }

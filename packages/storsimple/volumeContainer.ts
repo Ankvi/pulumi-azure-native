@@ -43,7 +43,7 @@ export class VolumeContainer extends pulumi.CustomResource {
     /**
      * The key used to encrypt data in the volume container. It is required when property 'EncryptionStatus' is "Enabled".
      */
-    public readonly encryptionKey!: pulumi.Output<types.outputs.storsimple.AsymmetricEncryptedSecretResponse | undefined>;
+    public readonly encryptionKey!: pulumi.Output<types.outputs.AsymmetricEncryptedSecretResponse | undefined>;
     /**
      * The flag to denote whether encryption is enabled or not.
      */
@@ -154,7 +154,7 @@ export interface VolumeContainerArgs {
     /**
      * The key used to encrypt data in the volume container. It is required when property 'EncryptionStatus' is "Enabled".
      */
-    encryptionKey?: pulumi.Input<types.inputs.storsimple.AsymmetricEncryptedSecretArgs>;
+    encryptionKey?: pulumi.Input<types.inputs.AsymmetricEncryptedSecretArgs>;
     /**
      * The Kind of the object. Currently only Series8000 is supported
      */

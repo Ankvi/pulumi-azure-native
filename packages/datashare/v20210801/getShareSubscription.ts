@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a shareSubscription in an account
  */
@@ -96,7 +96,7 @@ export interface GetShareSubscriptionResult {
     /**
      * System Data of the Azure resource.
      */
-    readonly systemData: types.outputs.datashare.v20210801.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Type of the azure resource
      */

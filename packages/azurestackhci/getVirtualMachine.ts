@@ -32,15 +32,15 @@ export interface GetVirtualMachineResult {
     /**
      * The extendedLocation of the resource.
      */
-    readonly extendedLocation?: types.outputs.azurestackhci.ExtendedLocationResponse;
+    readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
     /**
      * Guest agent status properties.
      */
-    readonly guestAgentProfile?: types.outputs.azurestackhci.GuestAgentProfileResponse;
+    readonly guestAgentProfile?: types.outputs.GuestAgentProfileResponse;
     /**
      * HardwareProfile - Specifies the hardware settings for the virtual machine.
      */
-    readonly hardwareProfile?: types.outputs.azurestackhci.VirtualMachinePropertiesResponseHardwareProfile;
+    readonly hardwareProfile?: types.outputs.VirtualMachinePropertiesResponseHardwareProfile;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -48,7 +48,7 @@ export interface GetVirtualMachineResult {
     /**
      * Identity for the resource.
      */
-    readonly identity?: types.outputs.azurestackhci.IdentityResponse;
+    readonly identity?: types.outputs.IdentityResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -60,11 +60,11 @@ export interface GetVirtualMachineResult {
     /**
      * NetworkProfile - describes the network configuration the virtual machine
      */
-    readonly networkProfile?: types.outputs.azurestackhci.VirtualMachinePropertiesResponseNetworkProfile;
+    readonly networkProfile?: types.outputs.VirtualMachinePropertiesResponseNetworkProfile;
     /**
      * OsProfile - describes the configuration of the operating system and sets login data
      */
-    readonly osProfile?: types.outputs.azurestackhci.VirtualMachinePropertiesResponseOsProfile;
+    readonly osProfile?: types.outputs.VirtualMachinePropertiesResponseOsProfile;
     /**
      * Provisioning state of the virtual machine.
      */
@@ -72,19 +72,19 @@ export interface GetVirtualMachineResult {
     /**
      * SecurityProfile - Specifies the security settings for the virtual machine.
      */
-    readonly securityProfile?: types.outputs.azurestackhci.VirtualMachinePropertiesResponseSecurityProfile;
+    readonly securityProfile?: types.outputs.VirtualMachinePropertiesResponseSecurityProfile;
     /**
      * The observed state of virtual machines
      */
-    readonly status: types.outputs.azurestackhci.VirtualMachineStatusResponse;
+    readonly status: types.outputs.VirtualMachineStatusResponse;
     /**
      * StorageProfile - contains information about the disks and storage information for the virtual machine
      */
-    readonly storageProfile?: types.outputs.azurestackhci.VirtualMachinePropertiesResponseStorageProfile;
+    readonly storageProfile?: types.outputs.VirtualMachinePropertiesResponseStorageProfile;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.azurestackhci.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

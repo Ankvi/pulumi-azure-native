@@ -45,7 +45,7 @@ export interface GetEncryptionScopeResult {
     /**
      * The key vault properties for the encryption scope. This is a required field if encryption scope 'source' attribute is set to 'Microsoft.KeyVault'.
      */
-    readonly keyVaultProperties?: types.outputs.storage.EncryptionScopeKeyVaultPropertiesResponse;
+    readonly keyVaultProperties?: types.outputs.EncryptionScopeKeyVaultPropertiesResponse;
     /**
      * Gets the last modification date and time of the encryption scope in UTC.
      */

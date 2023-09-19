@@ -59,11 +59,11 @@ export class Service extends pulumi.CustomResource {
     /**
      * Service SKU
      */
-    public readonly sku!: pulumi.Output<types.outputs.datamigration.ServiceSkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.ServiceSkuResponse | undefined>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.datamigration.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -160,7 +160,7 @@ export interface ServiceArgs {
     /**
      * Service SKU
      */
-    sku?: pulumi.Input<types.inputs.datamigration.ServiceSkuArgs>;
+    sku?: pulumi.Input<types.inputs.ServiceSkuArgs>;
     /**
      * Resource tags.
      */

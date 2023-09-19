@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Lists the access key for the specified configuration store.
  */
@@ -40,7 +40,7 @@ export interface ListConfigurationStoreKeysResult {
     /**
      * The collection value.
      */
-    readonly value?: types.outputs.appconfiguration.v20230301.ApiKeyResponse[];
+    readonly value?: types.outputs.ApiKeyResponse[];
 }
 /**
  * Lists the access key for the specified configuration store.

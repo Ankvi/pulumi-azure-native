@@ -39,7 +39,7 @@ export class VirtualNetwork extends pulumi.CustomResource {
     /**
      * Gets or sets the extended location.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.connectedvmwarevsphere.ExtendedLocationResponse | undefined>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
     /**
      * Gets or sets the inventory Item ID for the virtual network.
      */
@@ -71,11 +71,11 @@ export class VirtualNetwork extends pulumi.CustomResource {
     /**
      * The resource status information.
      */
-    public /*out*/ readonly statuses!: pulumi.Output<types.outputs.connectedvmwarevsphere.ResourceStatusResponse[]>;
+    public /*out*/ readonly statuses!: pulumi.Output<types.outputs.ResourceStatusResponse[]>;
     /**
      * The system data.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.connectedvmwarevsphere.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Gets or sets the Resource tags.
      */
@@ -155,7 +155,7 @@ export interface VirtualNetworkArgs {
     /**
      * Gets or sets the extended location.
      */
-    extendedLocation?: pulumi.Input<types.inputs.connectedvmwarevsphere.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * Gets or sets the inventory Item ID for the virtual network.
      */

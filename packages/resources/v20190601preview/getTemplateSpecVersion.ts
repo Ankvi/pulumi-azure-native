@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a Template Spec version from a specific Template Spec.
  */
@@ -36,7 +36,7 @@ export interface GetTemplateSpecVersionResult {
     /**
      * An array of Template Spec artifacts.
      */
-    readonly artifacts?: types.outputs.resources.v20190601preview.TemplateSpecTemplateArtifactResponse[];
+    readonly artifacts?: types.outputs.TemplateSpecTemplateArtifactResponse[];
     /**
      * Template Spec version description.
      */
@@ -56,7 +56,7 @@ export interface GetTemplateSpecVersionResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.resources.v20190601preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

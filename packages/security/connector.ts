@@ -35,11 +35,11 @@ export class Connector extends pulumi.CustomResource {
     /**
      * Settings for authentication management, these settings are relevant only for the cloud connector.
      */
-    public readonly authenticationDetails!: pulumi.Output<types.outputs.security.AwAssumeRoleAuthenticationDetailsPropertiesResponse | types.outputs.security.AwsCredsAuthenticationDetailsPropertiesResponse | types.outputs.security.GcpCredentialsDetailsPropertiesResponse | undefined>;
+    public readonly authenticationDetails!: pulumi.Output<types.outputs.AwAssumeRoleAuthenticationDetailsPropertiesResponse | types.outputs.AwsCredsAuthenticationDetailsPropertiesResponse | types.outputs.GcpCredentialsDetailsPropertiesResponse | undefined>;
     /**
      * Settings for hybrid compute management. These settings are relevant only for Arc autoProvision (Hybrid Compute).
      */
-    public readonly hybridComputeSettings!: pulumi.Output<types.outputs.security.HybridComputeSettingsPropertiesResponse | undefined>;
+    public readonly hybridComputeSettings!: pulumi.Output<types.outputs.HybridComputeSettingsPropertiesResponse | undefined>;
     /**
      * Resource name
      */
@@ -85,7 +85,7 @@ export interface ConnectorArgs {
     /**
      * Settings for authentication management, these settings are relevant only for the cloud connector.
      */
-    authenticationDetails?: pulumi.Input<types.inputs.security.AwAssumeRoleAuthenticationDetailsPropertiesArgs | types.inputs.security.AwsCredsAuthenticationDetailsPropertiesArgs | types.inputs.security.GcpCredentialsDetailsPropertiesArgs>;
+    authenticationDetails?: pulumi.Input<types.inputs.AwAssumeRoleAuthenticationDetailsPropertiesArgs | types.inputs.AwsCredsAuthenticationDetailsPropertiesArgs | types.inputs.GcpCredentialsDetailsPropertiesArgs>;
     /**
      * Name of the cloud account connector
      */
@@ -93,5 +93,5 @@ export interface ConnectorArgs {
     /**
      * Settings for hybrid compute management. These settings are relevant only for Arc autoProvision (Hybrid Compute).
      */
-    hybridComputeSettings?: pulumi.Input<types.inputs.security.HybridComputeSettingsPropertiesArgs>;
+    hybridComputeSettings?: pulumi.Input<types.inputs.HybridComputeSettingsPropertiesArgs>;
 }

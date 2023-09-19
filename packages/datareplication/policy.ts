@@ -39,8 +39,8 @@ export class Policy extends pulumi.CustomResource {
     /**
      * Policy model properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.datareplication.PolicyModelPropertiesResponse>;
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.datareplication.PolicyModelResponseSystemData>;
+    public readonly properties!: pulumi.Output<types.outputs.PolicyModelPropertiesResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.PolicyModelResponseSystemData>;
     /**
      * Gets or sets the type of the resource.
      */
@@ -97,7 +97,7 @@ export interface PolicyArgs {
     /**
      * Policy model properties.
      */
-    properties: pulumi.Input<types.inputs.datareplication.PolicyModelPropertiesArgs>;
+    properties: pulumi.Input<types.inputs.PolicyModelPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Document processor details
  */
@@ -42,11 +42,11 @@ export class DocumentProcessor extends pulumi.CustomResource {
     /**
      * Document processor properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.syntex.v20220915preview.DocumentProcessorPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.DocumentProcessorPropertiesResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.syntex.v20220915preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -108,7 +108,7 @@ export interface DocumentProcessorArgs {
     /**
      * Document processor properties.
      */
-    properties?: pulumi.Input<types.inputs.syntex.v20220915preview.DocumentProcessorPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.DocumentProcessorPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

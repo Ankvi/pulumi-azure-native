@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * List all effective connectivity configurations applied on a virtual network.
  */
@@ -40,7 +40,7 @@ export interface ListEffectiveConnectivityConfigurationResult {
     /**
      * Gets a page of NetworkManagerEffectiveConnectivityConfiguration
      */
-    readonly value?: types.outputs.network.v20210201preview.EffectiveConnectivityConfigurationResponse[];
+    readonly value?: types.outputs.EffectiveConnectivityConfigurationResponse[];
 }
 /**
  * List all effective connectivity configurations applied on a virtual network.

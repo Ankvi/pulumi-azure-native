@@ -36,7 +36,7 @@ export interface ListServerSitesControllerHealthSummaryResult {
     /**
      * Gets the list of SiteHealthSummary.
      */
-    readonly value: types.outputs.offazure.SiteHealthSummaryResponse[];
+    readonly value: types.outputs.SiteHealthSummaryResponse[];
 }
 /**
  * Method to get site health summary.

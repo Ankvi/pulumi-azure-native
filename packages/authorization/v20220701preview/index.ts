@@ -13,7 +13,7 @@ utilities.lazyLoad(exports, ["PolicyExemption"], () => require("./policyExemptio
 
 
 // Export enums:
-export * from "../types/enums/v20220701preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

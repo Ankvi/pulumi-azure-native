@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a virtual hard disk
  */
@@ -48,7 +48,7 @@ export interface GetVirtualHardDiskResult {
     /**
      * The extendedLocation of the resource.
      */
-    readonly extendedLocation?: types.outputs.azurestackhci.v20221215preview.ExtendedLocationResponse;
+    readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
     /**
      * The hypervisor generation of the Virtual Machine [V1, V2]
      */
@@ -74,11 +74,11 @@ export interface GetVirtualHardDiskResult {
     /**
      * The observed state of virtual hard disks
      */
-    readonly status: types.outputs.azurestackhci.v20221215preview.VirtualHardDiskStatusResponse;
+    readonly status: types.outputs.VirtualHardDiskStatusResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.azurestackhci.v20221215preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

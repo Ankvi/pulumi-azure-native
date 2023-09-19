@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Specifies information about the capacity reservation group that the capacity reservations should be assigned to. Currently, a capacity reservation can only be added to a capacity reservation group at creation time. An existing capacity reservation cannot be added or moved to another capacity reservation group.
  */
@@ -34,11 +34,11 @@ export class CapacityReservationGroup extends pulumi.CustomResource {
     /**
      * A list of all capacity reservation resource ids that belong to capacity reservation group.
      */
-    public /*out*/ readonly capacityReservations!: pulumi.Output<types.outputs.compute.v20230301.SubResourceReadOnlyResponse[]>;
+    public /*out*/ readonly capacityReservations!: pulumi.Output<types.outputs.SubResourceReadOnlyResponse[]>;
     /**
      * The capacity reservation group instance view which has the list of instance views for all the capacity reservations that belong to the capacity reservation group.
      */
-    public /*out*/ readonly instanceView!: pulumi.Output<types.outputs.compute.v20230301.CapacityReservationGroupInstanceViewResponse>;
+    public /*out*/ readonly instanceView!: pulumi.Output<types.outputs.CapacityReservationGroupInstanceViewResponse>;
     /**
      * Resource location
      */
@@ -58,7 +58,7 @@ export class CapacityReservationGroup extends pulumi.CustomResource {
     /**
      * A list of references to all virtual machines associated to the capacity reservation group.
      */
-    public /*out*/ readonly virtualMachinesAssociated!: pulumi.Output<types.outputs.compute.v20230301.SubResourceReadOnlyResponse[]>;
+    public /*out*/ readonly virtualMachinesAssociated!: pulumi.Output<types.outputs.SubResourceReadOnlyResponse[]>;
     /**
      * Availability Zones to use for this capacity reservation group. The zones can be assigned only during creation. If not provided, the group supports only regional resources in the region. If provided, enforces each capacity reservation in the group to be in one of the zones.
      */

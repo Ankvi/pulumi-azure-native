@@ -40,7 +40,7 @@ export interface GetDedicatedHsmResult {
     /**
      * Specifies the management network interfaces of the dedicated hsm.
      */
-    readonly managementNetworkProfile?: types.outputs.hardwaresecuritymodules.NetworkProfileResponse;
+    readonly managementNetworkProfile?: types.outputs.NetworkProfileResponse;
     /**
      * The name of the dedicated HSM.
      */
@@ -48,7 +48,7 @@ export interface GetDedicatedHsmResult {
     /**
      * Specifies the network interfaces of the dedicated hsm.
      */
-    readonly networkProfile?: types.outputs.hardwaresecuritymodules.NetworkProfileResponse;
+    readonly networkProfile?: types.outputs.NetworkProfileResponse;
     /**
      * Provisioning state.
      */
@@ -56,7 +56,7 @@ export interface GetDedicatedHsmResult {
     /**
      * SKU details
      */
-    readonly sku: types.outputs.hardwaresecuritymodules.SkuResponse;
+    readonly sku: types.outputs.SkuResponse;
     /**
      * This field will be used when RP does not support Availability zones.
      */
@@ -68,7 +68,7 @@ export interface GetDedicatedHsmResult {
     /**
      * Metadata pertaining to creation and last modification of the resource
      */
-    readonly systemData: types.outputs.hardwaresecuritymodules.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags
      */

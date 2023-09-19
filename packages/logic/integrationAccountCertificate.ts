@@ -43,7 +43,7 @@ export class IntegrationAccountCertificate extends pulumi.CustomResource {
     /**
      * The key details in the key vault.
      */
-    public readonly key!: pulumi.Output<types.outputs.logic.KeyVaultKeyReferenceResponse | undefined>;
+    public readonly key!: pulumi.Output<types.outputs.KeyVaultKeyReferenceResponse | undefined>;
     /**
      * The resource location.
      */
@@ -131,7 +131,7 @@ export interface IntegrationAccountCertificateArgs {
     /**
      * The key details in the key vault.
      */
-    key?: pulumi.Input<types.inputs.logic.KeyVaultKeyReferenceArgs>;
+    key?: pulumi.Input<types.inputs.KeyVaultKeyReferenceArgs>;
     /**
      * The resource location.
      */

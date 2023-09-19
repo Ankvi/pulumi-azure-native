@@ -49,7 +49,7 @@ export interface GetWorkspaceManagerMemberResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.securityinsights.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Fully qualified resource ID of the target Sentinel workspace joining the given Sentinel workspace manager
      */

@@ -39,7 +39,7 @@ export class WorkspaceManagerAssignment extends pulumi.CustomResource {
     /**
      * List of resources included in this workspace manager assignment
      */
-    public readonly items!: pulumi.Output<types.outputs.securityinsights.AssignmentItemResponse[]>;
+    public readonly items!: pulumi.Output<types.outputs.AssignmentItemResponse[]>;
     /**
      * The time the last job associated to this assignment ended at
      */
@@ -55,7 +55,7 @@ export class WorkspaceManagerAssignment extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.securityinsights.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The resource name of the workspace manager group targeted by the workspace manager assignment
      */
@@ -123,7 +123,7 @@ export interface WorkspaceManagerAssignmentArgs {
     /**
      * List of resources included in this workspace manager assignment
      */
-    items: pulumi.Input<pulumi.Input<types.inputs.securityinsights.AssignmentItemArgs>[]>;
+    items: pulumi.Input<pulumi.Input<types.inputs.AssignmentItemArgs>[]>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

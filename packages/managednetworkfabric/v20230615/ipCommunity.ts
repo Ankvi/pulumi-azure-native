@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The IP Community resource definition.
  */
@@ -46,7 +46,7 @@ export class IpCommunity extends pulumi.CustomResource {
     /**
      * List of IP Community Rules.
      */
-    public readonly ipCommunityRules!: pulumi.Output<types.outputs.managednetworkfabric.v20230615.IpCommunityRuleResponse[]>;
+    public readonly ipCommunityRules!: pulumi.Output<types.outputs.IpCommunityRuleResponse[]>;
     /**
      * The geo-location where the resource lives
      */
@@ -62,7 +62,7 @@ export class IpCommunity extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.managednetworkfabric.v20230615.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -135,7 +135,7 @@ export interface IpCommunityArgs {
     /**
      * List of IP Community Rules.
      */
-    ipCommunityRules: pulumi.Input<pulumi.Input<types.inputs.managednetworkfabric.v20230615.IpCommunityRuleArgs>[]>;
+    ipCommunityRules: pulumi.Input<pulumi.Input<types.inputs.IpCommunityRuleArgs>[]>;
     /**
      * The geo-location where the resource lives
      */

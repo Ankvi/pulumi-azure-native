@@ -32,7 +32,7 @@ export interface ListDatabaseAccountConnectionStringsResult {
     /**
      * An array that contains the connection strings for the Cosmos DB account.
      */
-    readonly connectionStrings?: types.outputs.documentdb.DatabaseAccountConnectionStringResponse[];
+    readonly connectionStrings?: types.outputs.DatabaseAccountConnectionStringResponse[];
 }
 /**
  * Lists the connection strings for the specified Azure Cosmos DB database account.

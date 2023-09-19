@@ -35,7 +35,7 @@ export class DnsForwardingRuleset extends pulumi.CustomResource {
     /**
      * The reference to the DNS resolver outbound endpoints that are used to route DNS queries matching the forwarding rules in the ruleset to the target DNS servers.
      */
-    public readonly dnsResolverOutboundEndpoints!: pulumi.Output<types.outputs.network.SubResourceResponse[]>;
+    public readonly dnsResolverOutboundEndpoints!: pulumi.Output<types.outputs.SubResourceResponse[]>;
     /**
      * ETag of the DNS forwarding ruleset.
      */
@@ -59,7 +59,7 @@ export class DnsForwardingRuleset extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.network.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -126,7 +126,7 @@ export interface DnsForwardingRulesetArgs {
     /**
      * The reference to the DNS resolver outbound endpoints that are used to route DNS queries matching the forwarding rules in the ruleset to the target DNS servers.
      */
-    dnsResolverOutboundEndpoints: pulumi.Input<pulumi.Input<types.inputs.network.SubResourceArgs>[]>;
+    dnsResolverOutboundEndpoints: pulumi.Input<pulumi.Input<types.inputs.SubResourceArgs>[]>;
     /**
      * The geo-location where the resource lives
      */

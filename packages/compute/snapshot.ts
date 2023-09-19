@@ -39,11 +39,11 @@ export class Snapshot extends pulumi.CustomResource {
     /**
      * Indicates the error details if the background copy of a resource created via the CopyStart operation fails.
      */
-    public readonly copyCompletionError!: pulumi.Output<types.outputs.compute.CopyCompletionErrorResponse | undefined>;
+    public readonly copyCompletionError!: pulumi.Output<types.outputs.CopyCompletionErrorResponse | undefined>;
     /**
      * Disk source information. CreationData information cannot be changed after the disk has been created.
      */
-    public readonly creationData!: pulumi.Output<types.outputs.compute.CreationDataResponse>;
+    public readonly creationData!: pulumi.Output<types.outputs.CreationDataResponse>;
     /**
      * Additional authentication requirements when exporting or uploading to a disk or snapshot.
      */
@@ -67,15 +67,15 @@ export class Snapshot extends pulumi.CustomResource {
     /**
      * Encryption property can be used to encrypt data at rest with customer managed keys or platform managed keys.
      */
-    public readonly encryption!: pulumi.Output<types.outputs.compute.EncryptionResponse | undefined>;
+    public readonly encryption!: pulumi.Output<types.outputs.EncryptionResponse | undefined>;
     /**
      * Encryption settings collection used be Azure Disk Encryption, can contain multiple encryption settings per disk or snapshot.
      */
-    public readonly encryptionSettingsCollection!: pulumi.Output<types.outputs.compute.EncryptionSettingsCollectionResponse | undefined>;
+    public readonly encryptionSettingsCollection!: pulumi.Output<types.outputs.EncryptionSettingsCollectionResponse | undefined>;
     /**
      * The extended location where the snapshot will be created. Extended location cannot be changed.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.compute.ExtendedLocationResponse | undefined>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
     /**
      * The hypervisor generation of the Virtual Machine. Applicable to OS disks only.
      */
@@ -119,19 +119,19 @@ export class Snapshot extends pulumi.CustomResource {
     /**
      * Purchase plan information for the image from which the source disk for the snapshot was originally created.
      */
-    public readonly purchasePlan!: pulumi.Output<types.outputs.compute.PurchasePlanResponse | undefined>;
+    public readonly purchasePlan!: pulumi.Output<types.outputs.PurchasePlanResponse | undefined>;
     /**
      * Contains the security related information for the resource.
      */
-    public readonly securityProfile!: pulumi.Output<types.outputs.compute.DiskSecurityProfileResponse | undefined>;
+    public readonly securityProfile!: pulumi.Output<types.outputs.DiskSecurityProfileResponse | undefined>;
     /**
      * The snapshots sku name. Can be Standard_LRS, Premium_LRS, or Standard_ZRS. This is an optional parameter for incremental snapshot and the default behavior is the SKU will be set to the same sku as the previous snapshot
      */
-    public readonly sku!: pulumi.Output<types.outputs.compute.SnapshotSkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SnapshotSkuResponse | undefined>;
     /**
      * List of supported capabilities for the image from which the source disk from the snapshot was originally created.
      */
-    public readonly supportedCapabilities!: pulumi.Output<types.outputs.compute.SupportedCapabilitiesResponse | undefined>;
+    public readonly supportedCapabilities!: pulumi.Output<types.outputs.SupportedCapabilitiesResponse | undefined>;
     /**
      * Indicates the OS on a snapshot supports hibernation.
      */
@@ -252,11 +252,11 @@ export interface SnapshotArgs {
     /**
      * Indicates the error details if the background copy of a resource created via the CopyStart operation fails.
      */
-    copyCompletionError?: pulumi.Input<types.inputs.compute.CopyCompletionErrorArgs>;
+    copyCompletionError?: pulumi.Input<types.inputs.CopyCompletionErrorArgs>;
     /**
      * Disk source information. CreationData information cannot be changed after the disk has been created.
      */
-    creationData: pulumi.Input<types.inputs.compute.CreationDataArgs>;
+    creationData: pulumi.Input<types.inputs.CreationDataArgs>;
     /**
      * Additional authentication requirements when exporting or uploading to a disk or snapshot.
      */
@@ -272,15 +272,15 @@ export interface SnapshotArgs {
     /**
      * Encryption property can be used to encrypt data at rest with customer managed keys or platform managed keys.
      */
-    encryption?: pulumi.Input<types.inputs.compute.EncryptionArgs>;
+    encryption?: pulumi.Input<types.inputs.EncryptionArgs>;
     /**
      * Encryption settings collection used be Azure Disk Encryption, can contain multiple encryption settings per disk or snapshot.
      */
-    encryptionSettingsCollection?: pulumi.Input<types.inputs.compute.EncryptionSettingsCollectionArgs>;
+    encryptionSettingsCollection?: pulumi.Input<types.inputs.EncryptionSettingsCollectionArgs>;
     /**
      * The extended location where the snapshot will be created. Extended location cannot be changed.
      */
-    extendedLocation?: pulumi.Input<types.inputs.compute.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * The hypervisor generation of the Virtual Machine. Applicable to OS disks only.
      */
@@ -308,7 +308,7 @@ export interface SnapshotArgs {
     /**
      * Purchase plan information for the image from which the source disk for the snapshot was originally created.
      */
-    purchasePlan?: pulumi.Input<types.inputs.compute.PurchasePlanArgs>;
+    purchasePlan?: pulumi.Input<types.inputs.PurchasePlanArgs>;
     /**
      * The name of the resource group.
      */
@@ -316,11 +316,11 @@ export interface SnapshotArgs {
     /**
      * Contains the security related information for the resource.
      */
-    securityProfile?: pulumi.Input<types.inputs.compute.DiskSecurityProfileArgs>;
+    securityProfile?: pulumi.Input<types.inputs.DiskSecurityProfileArgs>;
     /**
      * The snapshots sku name. Can be Standard_LRS, Premium_LRS, or Standard_ZRS. This is an optional parameter for incremental snapshot and the default behavior is the SKU will be set to the same sku as the previous snapshot
      */
-    sku?: pulumi.Input<types.inputs.compute.SnapshotSkuArgs>;
+    sku?: pulumi.Input<types.inputs.SnapshotSkuArgs>;
     /**
      * The name of the snapshot that is being created. The name can't be changed after the snapshot is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The max name length is 80 characters.
      */
@@ -328,7 +328,7 @@ export interface SnapshotArgs {
     /**
      * List of supported capabilities for the image from which the source disk from the snapshot was originally created.
      */
-    supportedCapabilities?: pulumi.Input<types.inputs.compute.SupportedCapabilitiesArgs>;
+    supportedCapabilities?: pulumi.Input<types.inputs.SupportedCapabilitiesArgs>;
     /**
      * Indicates the OS on a snapshot supports hibernation.
      */

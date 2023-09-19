@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves information about the model of a security automation.
  */
@@ -31,7 +31,7 @@ export interface GetAutomationResult {
     /**
      * A collection of the actions which are triggered if all the configured rules evaluations, within at least one rule set, are true.
      */
-    readonly actions?: (types.outputs.security.v20190101preview.AutomationActionEventHubResponse | types.outputs.security.v20190101preview.AutomationActionLogicAppResponse | types.outputs.security.v20190101preview.AutomationActionWorkspaceResponse)[];
+    readonly actions?: (types.outputs.AutomationActionEventHubResponse | types.outputs.AutomationActionLogicAppResponse | types.outputs.AutomationActionWorkspaceResponse)[];
     /**
      * The security automation description.
      */
@@ -63,11 +63,11 @@ export interface GetAutomationResult {
     /**
      * A collection of scopes on which the security automations logic is applied. Supported scopes are the subscription itself or a resource group under that subscription. The automation will only apply on defined scopes.
      */
-    readonly scopes?: types.outputs.security.v20190101preview.AutomationScopeResponse[];
+    readonly scopes?: types.outputs.AutomationScopeResponse[];
     /**
      * A collection of the source event types which evaluate the security automation set of rules.
      */
-    readonly sources?: types.outputs.security.v20190101preview.AutomationSourceResponse[];
+    readonly sources?: types.outputs.AutomationSourceResponse[];
     /**
      * A list of key value pairs that describe the resource.
      */

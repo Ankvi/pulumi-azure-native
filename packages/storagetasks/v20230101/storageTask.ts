@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents Storage Task.
  */
@@ -34,7 +34,7 @@ export class StorageTask extends pulumi.CustomResource {
     /**
      * The storage task action that is executed
      */
-    public readonly action!: pulumi.Output<types.outputs.storagetasks.v20230101.StorageTaskActionResponse>;
+    public readonly action!: pulumi.Output<types.outputs.StorageTaskActionResponse>;
     /**
      * The creation date and time of the storage task in UTC.
      */
@@ -50,7 +50,7 @@ export class StorageTask extends pulumi.CustomResource {
     /**
      * The managed service identity of the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.storagetasks.v20230101.ManagedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -66,7 +66,7 @@ export class StorageTask extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.storagetasks.v20230101.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -145,7 +145,7 @@ export interface StorageTaskArgs {
     /**
      * The storage task action that is executed
      */
-    action: pulumi.Input<types.inputs.storagetasks.v20230101.StorageTaskActionArgs>;
+    action: pulumi.Input<types.inputs.StorageTaskActionArgs>;
     /**
      * Text that describes the purpose of the storage task
      */
@@ -157,7 +157,7 @@ export interface StorageTaskArgs {
     /**
      * The managed service identity of the resource.
      */
-    identity?: pulumi.Input<types.inputs.storagetasks.v20230101.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
      * The geo-location where the resource lives
      */

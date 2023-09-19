@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns the properties of the specified manager name.
  */
@@ -31,7 +31,7 @@ export interface GetManagerResult {
     /**
      * Represents the type of StorSimple Manager.
      */
-    readonly cisIntrinsicSettings?: types.outputs.storsimple.v20170601.ManagerIntrinsicSettingsResponse;
+    readonly cisIntrinsicSettings?: types.outputs.ManagerIntrinsicSettingsResponse;
     /**
      * The etag of the manager.
      */
@@ -55,7 +55,7 @@ export interface GetManagerResult {
     /**
      * Specifies the Sku.
      */
-    readonly sku?: types.outputs.storsimple.v20170601.ManagerSkuResponse;
+    readonly sku?: types.outputs.ManagerSkuResponse;
     /**
      * The tags attached to the resource.
      */

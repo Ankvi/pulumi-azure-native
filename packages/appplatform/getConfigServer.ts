@@ -40,11 +40,11 @@ export interface GetConfigServerResult {
     /**
      * Properties of the Config Server resource
      */
-    readonly properties: types.outputs.appplatform.ConfigServerPropertiesResponse;
+    readonly properties: types.outputs.ConfigServerPropertiesResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.appplatform.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource.
      */

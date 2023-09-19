@@ -37,7 +37,7 @@ export interface ListDomainRecommendationsResult {
     /**
      * Collection of resources.
      */
-    readonly value: types.outputs.domainregistration.NameIdentifierResponse[];
+    readonly value: types.outputs.NameIdentifierResponse[];
 }
 /**
  * Description for Get domain name recommendations based on keywords.

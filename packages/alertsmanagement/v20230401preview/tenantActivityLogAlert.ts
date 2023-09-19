@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A Tenant Activity Log Alert rule resource.
  */
@@ -34,11 +34,11 @@ export class TenantActivityLogAlert extends pulumi.CustomResource {
     /**
      * The actions that will activate when the condition is met.
      */
-    public readonly actions!: pulumi.Output<types.outputs.alertsmanagement.v20230401preview.ActionListResponse>;
+    public readonly actions!: pulumi.Output<types.outputs.ActionListResponse>;
     /**
      * The condition that will cause this alert to activate.
      */
-    public readonly condition!: pulumi.Output<types.outputs.alertsmanagement.v20230401preview.AlertRuleAllOfConditionResponse>;
+    public readonly condition!: pulumi.Output<types.outputs.AlertRuleAllOfConditionResponse>;
     /**
      * A description of this Activity Log Alert rule.
      */
@@ -128,7 +128,7 @@ export interface TenantActivityLogAlertArgs {
     /**
      * The actions that will activate when the condition is met.
      */
-    actions: pulumi.Input<types.inputs.alertsmanagement.v20230401preview.ActionListArgs>;
+    actions: pulumi.Input<types.inputs.ActionListArgs>;
     /**
      * The name of the Tenant Activity Log Alert rule.
      */
@@ -136,7 +136,7 @@ export interface TenantActivityLogAlertArgs {
     /**
      * The condition that will cause this alert to activate.
      */
-    condition: pulumi.Input<types.inputs.alertsmanagement.v20230401preview.AlertRuleAllOfConditionArgs>;
+    condition: pulumi.Input<types.inputs.AlertRuleAllOfConditionArgs>;
     /**
      * A description of this Activity Log Alert rule.
      */

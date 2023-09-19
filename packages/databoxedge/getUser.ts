@@ -37,7 +37,7 @@ export interface GetUserResult {
     /**
      * The password details.
      */
-    readonly encryptedPassword?: types.outputs.databoxedge.AsymmetricEncryptedSecretResponse;
+    readonly encryptedPassword?: types.outputs.AsymmetricEncryptedSecretResponse;
     /**
      * The path ID that uniquely identifies the object.
      */
@@ -49,11 +49,11 @@ export interface GetUserResult {
     /**
      * List of shares that the user has rights on. This field should not be specified during user creation.
      */
-    readonly shareAccessRights: types.outputs.databoxedge.ShareAccessRightResponse[];
+    readonly shareAccessRights: types.outputs.ShareAccessRightResponse[];
     /**
      * Metadata pertaining to creation and last modification of User
      */
-    readonly systemData: types.outputs.databoxedge.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The hierarchical type of the object.
      */

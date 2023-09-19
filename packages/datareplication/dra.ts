@@ -39,8 +39,8 @@ export class Dra extends pulumi.CustomResource {
     /**
      * Dra model properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.datareplication.DraModelPropertiesResponse>;
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.datareplication.DraModelResponseSystemData>;
+    public readonly properties!: pulumi.Output<types.outputs.DraModelPropertiesResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.DraModelResponseSystemData>;
     /**
      * Gets or sets the type of the resource.
      */
@@ -101,7 +101,7 @@ export interface DraArgs {
     /**
      * Dra model properties.
      */
-    properties: pulumi.Input<types.inputs.datareplication.DraModelPropertiesArgs>;
+    properties: pulumi.Input<types.inputs.DraModelPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

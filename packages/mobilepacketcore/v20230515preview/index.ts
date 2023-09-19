@@ -13,7 +13,7 @@ utilities.lazyLoad(exports, ["NetworkFunction"], () => require("./networkFunctio
 
 
 // Export enums:
-export * from "../types/enums/v20230515preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

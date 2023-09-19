@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Properties that define a favorite that is associated to an Application Insights component.
  */
@@ -145,7 +145,7 @@ export interface FavoriteArgs {
     /**
      * Enum indicating if this favorite definition is owned by a specific user or is shared between all users with access to the Application Insights component.
      */
-    favoriteType?: pulumi.Input<types.enums.v20150501.FavoriteType>;
+    favoriteType?: pulumi.Input<types.enums.FavoriteType>;
     /**
      * Flag denoting wether or not this favorite was generated from a template.
      */

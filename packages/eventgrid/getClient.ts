@@ -43,7 +43,7 @@ export interface GetClientResult {
     /**
      * Authentication information for the client.
      */
-    readonly authentication?: types.outputs.eventgrid.ClientAuthenticationResponse;
+    readonly authentication?: types.outputs.ClientAuthenticationResponse;
     /**
      * The name presented by the client for authentication. The default value is the name of the resource.
      */
@@ -51,7 +51,7 @@ export interface GetClientResult {
     /**
      * The client certificate authentication information.
      */
-    readonly clientCertificateAuthentication?: types.outputs.eventgrid.ClientCertificateAuthenticationResponse;
+    readonly clientCertificateAuthentication?: types.outputs.ClientCertificateAuthenticationResponse;
     /**
      * Description for the Client resource.
      */
@@ -75,7 +75,7 @@ export interface GetClientResult {
     /**
      * The system metadata relating to the Client resource.
      */
-    readonly systemData: types.outputs.eventgrid.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Type of the resource.
      */

@@ -32,7 +32,7 @@ export interface ListlistAssociatedTrafficFilterResult {
     /**
      * List of elastic traffic filters in the account
      */
-    readonly rulesets?: types.outputs.elastic.ElasticTrafficFilterResponse[];
+    readonly rulesets?: types.outputs.ElasticTrafficFilterResponse[];
 }
 /**
  * List of elastic traffic filters in the account

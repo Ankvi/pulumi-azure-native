@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents Google Cloud Platform data connector.
  */
@@ -34,7 +34,7 @@ export class GCPDataConnector extends pulumi.CustomResource {
     /**
      * The auth section of the connector.
      */
-    public readonly auth!: pulumi.Output<types.outputs.securityinsights.v20230601preview.GCPAuthPropertiesResponse>;
+    public readonly auth!: pulumi.Output<types.outputs.GCPAuthPropertiesResponse>;
     /**
      * The name of the connector definition that represents the UI config.
      */
@@ -42,7 +42,7 @@ export class GCPDataConnector extends pulumi.CustomResource {
     /**
      * The configuration of the destination of the data.
      */
-    public readonly dcrConfig!: pulumi.Output<types.outputs.securityinsights.v20230601preview.DCRConfigurationResponse | undefined>;
+    public readonly dcrConfig!: pulumi.Output<types.outputs.DCRConfigurationResponse | undefined>;
     /**
      * Etag of the azure resource
      */
@@ -59,11 +59,11 @@ export class GCPDataConnector extends pulumi.CustomResource {
     /**
      * The request section of the connector.
      */
-    public readonly request!: pulumi.Output<types.outputs.securityinsights.v20230601preview.GCPRequestPropertiesResponse>;
+    public readonly request!: pulumi.Output<types.outputs.GCPRequestPropertiesResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.securityinsights.v20230601preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -135,7 +135,7 @@ export interface GCPDataConnectorArgs {
     /**
      * The auth section of the connector.
      */
-    auth: pulumi.Input<types.inputs.securityinsights.v20230601preview.GCPAuthPropertiesArgs>;
+    auth: pulumi.Input<types.inputs.GCPAuthPropertiesArgs>;
     /**
      * The name of the connector definition that represents the UI config.
      */
@@ -147,7 +147,7 @@ export interface GCPDataConnectorArgs {
     /**
      * The configuration of the destination of the data.
      */
-    dcrConfig?: pulumi.Input<types.inputs.securityinsights.v20230601preview.DCRConfigurationArgs>;
+    dcrConfig?: pulumi.Input<types.inputs.DCRConfigurationArgs>;
     /**
      * The kind of the data connector
      * Expected value is 'GCP'.
@@ -156,7 +156,7 @@ export interface GCPDataConnectorArgs {
     /**
      * The request section of the connector.
      */
-    request: pulumi.Input<types.inputs.securityinsights.v20230601preview.GCPRequestPropertiesArgs>;
+    request: pulumi.Input<types.inputs.GCPRequestPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

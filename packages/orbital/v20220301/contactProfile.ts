@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Customer creates a Contact Profile Resource, which will contain all of the configurations required for scheduling a contact.
  */
@@ -46,7 +46,7 @@ export class ContactProfile extends pulumi.CustomResource {
     /**
      * Links of the Contact Profile. Describes RF links, modem processing, and IP endpoints.
      */
-    public readonly links!: pulumi.Output<types.outputs.orbital.v20220301.ContactProfileLinkResponse[]>;
+    public readonly links!: pulumi.Output<types.outputs.ContactProfileLinkResponse[]>;
     /**
      * The geo-location where the resource lives
      */
@@ -66,11 +66,11 @@ export class ContactProfile extends pulumi.CustomResource {
     /**
      * Network configuration of customer virtual network.
      */
-    public readonly networkConfiguration!: pulumi.Output<types.outputs.orbital.v20220301.ContactProfilesPropertiesResponseNetworkConfiguration>;
+    public readonly networkConfiguration!: pulumi.Output<types.outputs.ContactProfilesPropertiesResponseNetworkConfiguration>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.orbital.v20220301.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -142,7 +142,7 @@ export interface ContactProfileArgs {
     /**
      * Auto-tracking configuration.
      */
-    autoTrackingConfiguration?: pulumi.Input<types.enums.v20220301.AutoTrackingConfiguration>;
+    autoTrackingConfiguration?: pulumi.Input<types.enums.AutoTrackingConfiguration>;
     /**
      * Contact Profile name.
      */
@@ -154,7 +154,7 @@ export interface ContactProfileArgs {
     /**
      * Links of the Contact Profile. Describes RF links, modem processing, and IP endpoints.
      */
-    links: pulumi.Input<pulumi.Input<types.inputs.orbital.v20220301.ContactProfileLinkArgs>[]>;
+    links: pulumi.Input<pulumi.Input<types.inputs.ContactProfileLinkArgs>[]>;
     /**
      * The geo-location where the resource lives
      */
@@ -170,7 +170,7 @@ export interface ContactProfileArgs {
     /**
      * Network configuration of customer virtual network.
      */
-    networkConfiguration: pulumi.Input<types.inputs.orbital.v20220301.ContactProfilesPropertiesNetworkConfigurationArgs>;
+    networkConfiguration: pulumi.Input<types.inputs.ContactProfilesPropertiesNetworkConfigurationArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

@@ -35,7 +35,7 @@ export class StorageAccountCredential extends pulumi.CustomResource {
     /**
      * Encrypted storage key.
      */
-    public readonly accountKey!: pulumi.Output<types.outputs.databoxedge.AsymmetricEncryptedSecretResponse | undefined>;
+    public readonly accountKey!: pulumi.Output<types.outputs.AsymmetricEncryptedSecretResponse | undefined>;
     /**
      * Type of storage accessed on the storage account.
      */
@@ -67,7 +67,7 @@ export class StorageAccountCredential extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of StorageAccountCredential
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.databoxedge.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The hierarchical type of the object.
      */
@@ -143,7 +143,7 @@ export interface StorageAccountCredentialArgs {
     /**
      * Encrypted storage key.
      */
-    accountKey?: pulumi.Input<types.inputs.databoxedge.AsymmetricEncryptedSecretArgs>;
+    accountKey?: pulumi.Input<types.inputs.AsymmetricEncryptedSecretArgs>;
     /**
      * Type of storage accessed on the storage account.
      */

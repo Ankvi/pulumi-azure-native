@@ -37,7 +37,7 @@ export interface GetVolumeGroupResult {
     /**
      * Volume group details
      */
-    readonly groupMetaData?: types.outputs.netapp.VolumeGroupMetaDataResponse;
+    readonly groupMetaData?: types.outputs.VolumeGroupMetaDataResponse;
     /**
      * Resource Id
      */
@@ -61,7 +61,7 @@ export interface GetVolumeGroupResult {
     /**
      * List of volumes from group
      */
-    readonly volumes?: types.outputs.netapp.VolumeGroupVolumePropertiesResponse[];
+    readonly volumes?: types.outputs.VolumeGroupVolumePropertiesResponse[];
 }
 /**
  * Get details of the specified volume group

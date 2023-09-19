@@ -23,7 +23,7 @@ utilities.lazyLoad(exports, ["ResourceSyncRule"], () => require("./resourceSyncR
 
 
 // Export enums:
-export * from "../types/enums/v20210831preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

@@ -38,7 +38,7 @@ export class Job extends pulumi.CustomResource {
     /**
      * Gets or sets the job properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.scheduler.JobPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.JobPropertiesResponse>;
     /**
      * Gets the job resource type.
      */
@@ -94,7 +94,7 @@ export interface JobArgs {
     /**
      * Gets or sets the job properties.
      */
-    properties?: pulumi.Input<types.inputs.scheduler.JobPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.JobPropertiesArgs>;
     /**
      * The resource group name.
      */

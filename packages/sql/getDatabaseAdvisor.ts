@@ -78,7 +78,7 @@ export interface GetDatabaseAdvisorResult {
     /**
      * Gets the recommended actions for this advisor.
      */
-    readonly recommendedActions: types.outputs.sql.RecommendedActionResponse[];
+    readonly recommendedActions: types.outputs.RecommendedActionResponse[];
     /**
      * Resource type.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * List new plans notifications
  */
@@ -23,7 +23,7 @@ export interface ListPrivateStoreNewPlansNotificationsArgs {
  * List of all new plans notifications for public offers
  */
 export interface ListPrivateStoreNewPlansNotificationsResult {
-    readonly newPlansNotifications?: types.outputs.marketplace.v20230101.NewNotificationsResponse[];
+    readonly newPlansNotifications?: types.outputs.NewNotificationsResponse[];
 }
 /**
  * List new plans notifications

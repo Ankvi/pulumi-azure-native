@@ -39,7 +39,7 @@ export class Input extends pulumi.CustomResource {
     /**
      * The properties that are associated with an input. Required on PUT (CreateOrReplace) requests.
      */
-    public readonly properties!: pulumi.Output<types.outputs.streamanalytics.ReferenceInputPropertiesResponse | types.outputs.streamanalytics.StreamInputPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ReferenceInputPropertiesResponse | types.outputs.StreamInputPropertiesResponse>;
     /**
      * Resource type
      */
@@ -99,7 +99,7 @@ export interface InputArgs {
     /**
      * The properties that are associated with an input. Required on PUT (CreateOrReplace) requests.
      */
-    properties?: pulumi.Input<types.inputs.streamanalytics.ReferenceInputPropertiesArgs | types.inputs.streamanalytics.StreamInputPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ReferenceInputPropertiesArgs | types.inputs.StreamInputPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

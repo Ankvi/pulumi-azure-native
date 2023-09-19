@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * BackupInstance Resource
  */
@@ -38,11 +38,11 @@ export class BackupInstance extends pulumi.CustomResource {
     /**
      * BackupInstanceResource properties
      */
-    public readonly properties!: pulumi.Output<types.outputs.dataprotection.v20230401preview.BackupInstanceResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.BackupInstanceResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.dataprotection.v20230401preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Proxy Resource tags.
      */
@@ -102,7 +102,7 @@ export interface BackupInstanceArgs {
     /**
      * BackupInstanceResource properties
      */
-    properties?: pulumi.Input<types.inputs.dataprotection.v20230401preview.BackupInstanceArgs>;
+    properties?: pulumi.Input<types.inputs.BackupInstanceArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

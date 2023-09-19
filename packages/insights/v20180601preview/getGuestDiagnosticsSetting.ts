@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets guest diagnostics settings.
  */
@@ -31,7 +31,7 @@ export interface GetGuestDiagnosticsSettingResult {
     /**
      * the array of data source object which are configured to collect and send data
      */
-    readonly dataSources?: types.outputs.insights.v20180601preview.DataSourceResponse[];
+    readonly dataSources?: types.outputs.DataSourceResponse[];
     /**
      * Azure resource Id
      */

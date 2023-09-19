@@ -44,7 +44,7 @@ export class BatchAccount extends pulumi.CustomResource {
     /**
      * Contains information about the auto-storage account associated with a Batch account.
      */
-    public readonly autoStorage!: pulumi.Output<types.outputs.batch.AutoStoragePropertiesResponse>;
+    public readonly autoStorage!: pulumi.Output<types.outputs.AutoStoragePropertiesResponse>;
     /**
      * For accounts with PoolAllocationMode set to UserSubscription, quota is managed on the subscription so this value is not returned.
      */
@@ -52,7 +52,7 @@ export class BatchAccount extends pulumi.CustomResource {
     /**
      * A list of the dedicated core quota per Virtual Machine family for the Batch account. For accounts with PoolAllocationMode set to UserSubscription, quota is managed on the subscription so this value is not returned.
      */
-    public /*out*/ readonly dedicatedCoreQuotaPerVMFamily!: pulumi.Output<types.outputs.batch.VirtualMachineFamilyCoreQuotaResponse[]>;
+    public /*out*/ readonly dedicatedCoreQuotaPerVMFamily!: pulumi.Output<types.outputs.VirtualMachineFamilyCoreQuotaResponse[]>;
     /**
      * If this flag is true, dedicated core quota is enforced via both the dedicatedCoreQuotaPerVMFamily and dedicatedCoreQuota properties on the account. If this flag is false, dedicated core quota is enforced only via the dedicatedCoreQuota property on the account and does not consider Virtual Machine family.
      */
@@ -60,15 +60,15 @@ export class BatchAccount extends pulumi.CustomResource {
     /**
      * Configures how customer data is encrypted inside the Batch account. By default, accounts are encrypted using a Microsoft managed key. For additional control, a customer-managed key can be used instead.
      */
-    public readonly encryption!: pulumi.Output<types.outputs.batch.EncryptionPropertiesResponse>;
+    public readonly encryption!: pulumi.Output<types.outputs.EncryptionPropertiesResponse>;
     /**
      * The identity of the Batch account.
      */
-    public readonly identity!: pulumi.Output<types.outputs.batch.BatchAccountIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.BatchAccountIdentityResponse | undefined>;
     /**
      * Identifies the Azure key vault associated with a Batch account.
      */
-    public readonly keyVaultReference!: pulumi.Output<types.outputs.batch.KeyVaultReferenceResponse>;
+    public readonly keyVaultReference!: pulumi.Output<types.outputs.KeyVaultReferenceResponse>;
     /**
      * The location of the resource.
      */
@@ -84,7 +84,7 @@ export class BatchAccount extends pulumi.CustomResource {
     /**
      * The network profile only takes effect when publicNetworkAccess is enabled.
      */
-    public readonly networkProfile!: pulumi.Output<types.outputs.batch.NetworkProfileResponse | undefined>;
+    public readonly networkProfile!: pulumi.Output<types.outputs.NetworkProfileResponse | undefined>;
     /**
      * The endpoint used by compute node to connect to the Batch node management service.
      */
@@ -97,7 +97,7 @@ export class BatchAccount extends pulumi.CustomResource {
     /**
      * List of private endpoint connections associated with the Batch account
      */
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.batch.PrivateEndpointConnectionResponse[]>;
+    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[]>;
     /**
      * The provisioned state of the resource
      */
@@ -131,7 +131,7 @@ export class BatchAccount extends pulumi.CustomResource {
             }
             resourceInputs["accountName"] = args ? args.accountName : undefined;
             resourceInputs["allowedAuthenticationModes"] = args ? args.allowedAuthenticationModes : undefined;
-            resourceInputs["autoStorage"] = args ? (args.autoStorage ? pulumi.output(args.autoStorage).apply(types.inputs.batch.autoStorageBasePropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["autoStorage"] = args ? (args.autoStorage ? pulumi.output(args.autoStorage).apply(types.inputs.autoStorageBasePropertiesArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["encryption"] = args ? args.encryption : undefined;
             resourceInputs["identity"] = args ? args.identity : undefined;
             resourceInputs["keyVaultReference"] = args ? args.keyVaultReference : undefined;
@@ -199,19 +199,19 @@ export interface BatchAccountArgs {
     /**
      * The properties related to the auto-storage account.
      */
-    autoStorage?: pulumi.Input<types.inputs.batch.AutoStorageBasePropertiesArgs>;
+    autoStorage?: pulumi.Input<types.inputs.AutoStorageBasePropertiesArgs>;
     /**
      * Configures how customer data is encrypted inside the Batch account. By default, accounts are encrypted using a Microsoft managed key. For additional control, a customer-managed key can be used instead.
      */
-    encryption?: pulumi.Input<types.inputs.batch.EncryptionPropertiesArgs>;
+    encryption?: pulumi.Input<types.inputs.EncryptionPropertiesArgs>;
     /**
      * The identity of the Batch account.
      */
-    identity?: pulumi.Input<types.inputs.batch.BatchAccountIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.BatchAccountIdentityArgs>;
     /**
      * A reference to the Azure key vault associated with the Batch account.
      */
-    keyVaultReference?: pulumi.Input<types.inputs.batch.KeyVaultReferenceArgs>;
+    keyVaultReference?: pulumi.Input<types.inputs.KeyVaultReferenceArgs>;
     /**
      * The region in which to create the account.
      */
@@ -219,7 +219,7 @@ export interface BatchAccountArgs {
     /**
      * The network profile only takes effect when publicNetworkAccess is enabled.
      */
-    networkProfile?: pulumi.Input<types.inputs.batch.NetworkProfileArgs>;
+    networkProfile?: pulumi.Input<types.inputs.NetworkProfileArgs>;
     /**
      * The pool allocation mode also affects how clients may authenticate to the Batch Service API. If the mode is BatchService, clients may authenticate using access keys or Azure Active Directory. If the mode is UserSubscription, clients must use Azure Active Directory. The default is BatchService.
      */

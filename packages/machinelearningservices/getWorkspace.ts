@@ -52,7 +52,7 @@ export interface GetWorkspaceResult {
     /**
      * The encryption settings of Azure ML workspace.
      */
-    readonly encryption?: types.outputs.machinelearningservices.EncryptionPropertyResponse;
+    readonly encryption?: types.outputs.EncryptionPropertyResponse;
     /**
      * The friendly name for this workspace. This name in mutable
      */
@@ -68,7 +68,7 @@ export interface GetWorkspaceResult {
     /**
      * The identity of the resource.
      */
-    readonly identity?: types.outputs.machinelearningservices.ManagedServiceIdentityResponse;
+    readonly identity?: types.outputs.ManagedServiceIdentityResponse;
     /**
      * The compute name for image build
      */
@@ -92,7 +92,7 @@ export interface GetWorkspaceResult {
     /**
      * The notebook info of Azure ML workspace.
      */
-    readonly notebookInfo: types.outputs.machinelearningservices.NotebookResourceInfoResponse;
+    readonly notebookInfo: types.outputs.NotebookResourceInfoResponse;
     /**
      * The user assigned identity resource id that represents the workspace identity.
      */
@@ -100,7 +100,7 @@ export interface GetWorkspaceResult {
     /**
      * The list of private endpoint connections in the workspace.
      */
-    readonly privateEndpointConnections: types.outputs.machinelearningservices.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections: types.outputs.PrivateEndpointConnectionResponse[];
     /**
      * Count of private connections in the workspace
      */
@@ -116,7 +116,7 @@ export interface GetWorkspaceResult {
     /**
      * The service managed resource settings.
      */
-    readonly serviceManagedResourcesSettings?: types.outputs.machinelearningservices.ServiceManagedResourcesSettingsResponse;
+    readonly serviceManagedResourcesSettings?: types.outputs.ServiceManagedResourcesSettingsResponse;
     /**
      * The name of the managed resource group created by workspace RP in customer subscription if the workspace is CMK workspace
      */
@@ -124,11 +124,11 @@ export interface GetWorkspaceResult {
     /**
      * The list of shared private link resources in this workspace.
      */
-    readonly sharedPrivateLinkResources?: types.outputs.machinelearningservices.SharedPrivateLinkResourceResponse[];
+    readonly sharedPrivateLinkResources?: types.outputs.SharedPrivateLinkResourceResponse[];
     /**
      * The sku of the workspace.
      */
-    readonly sku?: types.outputs.machinelearningservices.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * ARM id of the storage account associated with this workspace. This cannot be changed once the workspace has been created
      */
@@ -140,7 +140,7 @@ export interface GetWorkspaceResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.machinelearningservices.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Contains resource tags defined as key/value pairs.
      */

@@ -33,7 +33,7 @@ utilities.lazyLoad(exports, ["OrchestratorInstanceServiceDetails"], () => requir
 
 
 // Export enums:
-export * from "../types/enums/v20210315";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

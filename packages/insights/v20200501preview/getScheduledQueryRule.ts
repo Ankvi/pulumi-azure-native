@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieve an scheduled query rule definition.
  */
@@ -28,7 +28,7 @@ export interface GetScheduledQueryRuleArgs {
  * The scheduled query rule resource.
  */
 export interface GetScheduledQueryRuleResult {
-    readonly actions?: types.outputs.insights.v20200501preview.ActionResponse[];
+    readonly actions?: types.outputs.ActionResponse[];
     /**
      * The api-version used when creating this alert rule
      */
@@ -36,7 +36,7 @@ export interface GetScheduledQueryRuleResult {
     /**
      * The rule criteria that defines the conditions of the scheduled query rule.
      */
-    readonly criteria: types.outputs.insights.v20200501preview.ScheduledQueryRuleCriteriaResponse;
+    readonly criteria: types.outputs.ScheduledQueryRuleCriteriaResponse;
     /**
      * The description of the scheduled query rule.
      */

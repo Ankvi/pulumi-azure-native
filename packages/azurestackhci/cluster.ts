@@ -63,7 +63,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * Desired properties of the cluster.
      */
-    public readonly desiredProperties!: pulumi.Output<types.outputs.azurestackhci.ClusterDesiredPropertiesResponse | undefined>;
+    public readonly desiredProperties!: pulumi.Output<types.outputs.ClusterDesiredPropertiesResponse | undefined>;
     /**
      * Most recent billing meter timestamp.
      */
@@ -95,7 +95,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * Properties reported by cluster agent.
      */
-    public /*out*/ readonly reportedProperties!: pulumi.Output<types.outputs.azurestackhci.ClusterReportedPropertiesResponse>;
+    public /*out*/ readonly reportedProperties!: pulumi.Output<types.outputs.ClusterReportedPropertiesResponse>;
     /**
      * Object id of RP Service Principal
      */
@@ -107,7 +107,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * Software Assurance properties of the cluster.
      */
-    public readonly softwareAssuranceProperties!: pulumi.Output<types.outputs.azurestackhci.SoftwareAssurancePropertiesResponse | undefined>;
+    public readonly softwareAssuranceProperties!: pulumi.Output<types.outputs.SoftwareAssurancePropertiesResponse | undefined>;
     /**
      * Status of the cluster agent.
      */
@@ -115,7 +115,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.azurestackhci.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -135,7 +135,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
      */
-    public readonly userAssignedIdentities!: pulumi.Output<{[key: string]: types.outputs.azurestackhci.UserAssignedIdentityResponse} | undefined>;
+    public readonly userAssignedIdentities!: pulumi.Output<{[key: string]: types.outputs.UserAssignedIdentityResponse} | undefined>;
 
     /**
      * Create a Cluster resource with the given unique name, arguments, and options.
@@ -248,7 +248,7 @@ export interface ClusterArgs {
     /**
      * Desired properties of the cluster.
      */
-    desiredProperties?: pulumi.Input<types.inputs.azurestackhci.ClusterDesiredPropertiesArgs>;
+    desiredProperties?: pulumi.Input<types.inputs.ClusterDesiredPropertiesArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -260,7 +260,7 @@ export interface ClusterArgs {
     /**
      * Software Assurance properties of the cluster.
      */
-    softwareAssuranceProperties?: pulumi.Input<types.inputs.azurestackhci.SoftwareAssurancePropertiesArgs>;
+    softwareAssuranceProperties?: pulumi.Input<types.inputs.SoftwareAssurancePropertiesArgs>;
     /**
      * Resource tags.
      */

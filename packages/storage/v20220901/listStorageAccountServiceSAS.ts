@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * List service SAS credentials of a specific resource.
  */
@@ -83,15 +83,15 @@ export interface ListStorageAccountServiceSASArgs {
     /**
      * The signed permissions for the service SAS. Possible values include: Read (r), Write (w), Delete (d), List (l), Add (a), Create (c), Update (u) and Process (p).
      */
-    permissions?: string | types.enums.v20220901.Permissions;
+    permissions?: string | types.enums.Permissions;
     /**
      * The protocol permitted for a request made with the account SAS.
      */
-    protocols?: types.enums.v20220901.HttpProtocol;
+    protocols?: types.enums.HttpProtocol;
     /**
      * The signed services accessible with the service SAS. Possible values include: Blob (b), Container (c), File (f), Share (s).
      */
-    resource?: string | types.enums.v20220901.SignedResource;
+    resource?: string | types.enums.SignedResource;
     /**
      * The name of the resource group within the user's subscription. The name is case insensitive.
      */
@@ -182,15 +182,15 @@ export interface ListStorageAccountServiceSASOutputArgs {
     /**
      * The signed permissions for the service SAS. Possible values include: Read (r), Write (w), Delete (d), List (l), Add (a), Create (c), Update (u) and Process (p).
      */
-    permissions?: pulumi.Input<string | types.enums.v20220901.Permissions>;
+    permissions?: pulumi.Input<string | types.enums.Permissions>;
     /**
      * The protocol permitted for a request made with the account SAS.
      */
-    protocols?: pulumi.Input<types.enums.v20220901.HttpProtocol>;
+    protocols?: pulumi.Input<types.enums.HttpProtocol>;
     /**
      * The signed services accessible with the service SAS. Possible values include: Blob (b), Container (c), File (f), Share (s).
      */
-    resource?: pulumi.Input<string | types.enums.v20220901.SignedResource>;
+    resource?: pulumi.Input<string | types.enums.SignedResource>;
     /**
      * The name of the resource group within the user's subscription. The name is case insensitive.
      */

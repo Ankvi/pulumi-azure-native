@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents a cluster.
  */
@@ -74,7 +74,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * Maintenance window of a cluster.
      */
-    public readonly maintenanceWindow!: pulumi.Output<types.outputs.dbforpostgresql.v20221108.MaintenanceWindowResponse | undefined>;
+    public readonly maintenanceWindow!: pulumi.Output<types.outputs.MaintenanceWindowResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -114,7 +114,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * The private endpoint connections for a cluster.
      */
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.dbforpostgresql.v20221108.SimplePrivateEndpointConnectionResponse[]>;
+    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.SimplePrivateEndpointConnectionResponse[]>;
     /**
      * Provisioning state of the cluster
      */
@@ -126,7 +126,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * The list of server names in the cluster
      */
-    public /*out*/ readonly serverNames!: pulumi.Output<types.outputs.dbforpostgresql.v20221108.ServerNameItemResponse[]>;
+    public /*out*/ readonly serverNames!: pulumi.Output<types.outputs.ServerNameItemResponse[]>;
     /**
      * The Azure region of source cluster for read replica clusters.
      */
@@ -142,7 +142,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.dbforpostgresql.v20221108.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -285,7 +285,7 @@ export interface ClusterArgs {
     /**
      * Maintenance window of a cluster.
      */
-    maintenanceWindow?: pulumi.Input<types.inputs.dbforpostgresql.v20221108.MaintenanceWindowArgs>;
+    maintenanceWindow?: pulumi.Input<types.inputs.MaintenanceWindowArgs>;
     /**
      * Worker node count of the cluster. When node count is 0, it represents a single node configuration with the ability to create distributed tables on that node. 2 or more worker nodes represent multi-node configuration. Node count value cannot be 1. Required for creation.
      */

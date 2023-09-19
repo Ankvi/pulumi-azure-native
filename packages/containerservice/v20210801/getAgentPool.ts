@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Agent Pool.
  */
@@ -44,7 +44,7 @@ export interface GetAgentPoolResult {
     /**
      * CreationData to be used to specify the source Snapshot ID if the node pool will be created/upgraded using a snapshot.
      */
-    readonly creationData?: types.outputs.containerservice.v20210801.CreationDataResponse;
+    readonly creationData?: types.outputs.CreationDataResponse;
     /**
      * Whether to enable auto-scaler
      */
@@ -76,7 +76,7 @@ export interface GetAgentPoolResult {
     /**
      * The Kubelet configuration on the agent pool nodes.
      */
-    readonly kubeletConfig?: types.outputs.containerservice.v20210801.KubeletConfigResponse;
+    readonly kubeletConfig?: types.outputs.KubeletConfigResponse;
     /**
      * Determines the placement of emptyDir volumes, container runtime data root, and Kubelet ephemeral storage.
      */
@@ -84,7 +84,7 @@ export interface GetAgentPoolResult {
     /**
      * The OS configuration of Linux agent nodes.
      */
-    readonly linuxOSConfig?: types.outputs.containerservice.v20210801.LinuxOSConfigResponse;
+    readonly linuxOSConfig?: types.outputs.LinuxOSConfigResponse;
     /**
      * The maximum number of nodes for auto-scaling
      */
@@ -148,7 +148,7 @@ export interface GetAgentPoolResult {
     /**
      * Describes whether the Agent Pool is Running or Stopped
      */
-    readonly powerState: types.outputs.containerservice.v20210801.PowerStateResponse;
+    readonly powerState: types.outputs.PowerStateResponse;
     /**
      * The current deployment or provisioning state.
      */
@@ -184,7 +184,7 @@ export interface GetAgentPoolResult {
     /**
      * Settings for upgrading the agentpool
      */
-    readonly upgradeSettings?: types.outputs.containerservice.v20210801.AgentPoolUpgradeSettingsResponse;
+    readonly upgradeSettings?: types.outputs.AgentPoolUpgradeSettingsResponse;
     /**
      * VM size availability varies by region. If a node contains insufficient compute resources (memory, cpu, etc) pods might fail to run correctly. For more details on restricted VM sizes, see: https://docs.microsoft.com/azure/aks/quotas-skus-regions
      */

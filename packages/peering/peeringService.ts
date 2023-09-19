@@ -39,7 +39,7 @@ export class PeeringService extends pulumi.CustomResource {
     /**
      * The Log Analytics Workspace Properties
      */
-    public /*out*/ readonly logAnalyticsWorkspaceProperties!: pulumi.Output<types.outputs.peering.LogAnalyticsWorkspacePropertiesResponse | undefined>;
+    public /*out*/ readonly logAnalyticsWorkspaceProperties!: pulumi.Output<types.outputs.LogAnalyticsWorkspacePropertiesResponse | undefined>;
     /**
      * The name of the resource.
      */
@@ -67,7 +67,7 @@ export class PeeringService extends pulumi.CustomResource {
     /**
      * The SKU that defines the type of the peering service.
      */
-    public readonly sku!: pulumi.Output<types.outputs.peering.PeeringServiceSkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.PeeringServiceSkuResponse | undefined>;
     /**
      * The resource tags.
      */
@@ -159,7 +159,7 @@ export interface PeeringServiceArgs {
     /**
      * The SKU that defines the type of the peering service.
      */
-    sku?: pulumi.Input<types.inputs.peering.PeeringServiceSkuArgs>;
+    sku?: pulumi.Input<types.inputs.PeeringServiceSkuArgs>;
     /**
      * The resource tags.
      */

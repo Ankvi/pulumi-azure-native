@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Volume group resource for create
  */
@@ -34,7 +34,7 @@ export class VolumeGroup extends pulumi.CustomResource {
     /**
      * Volume group details
      */
-    public readonly groupMetaData!: pulumi.Output<types.outputs.netapp.v20211001.VolumeGroupMetaDataResponse | undefined>;
+    public readonly groupMetaData!: pulumi.Output<types.outputs.VolumeGroupMetaDataResponse | undefined>;
     /**
      * Resource location
      */
@@ -58,7 +58,7 @@ export class VolumeGroup extends pulumi.CustomResource {
     /**
      * List of volumes from group
      */
-    public readonly volumes!: pulumi.Output<types.outputs.netapp.v20211001.VolumeGroupVolumePropertiesResponse[] | undefined>;
+    public readonly volumes!: pulumi.Output<types.outputs.VolumeGroupVolumePropertiesResponse[] | undefined>;
 
     /**
      * Create a VolumeGroup resource with the given unique name, arguments, and options.
@@ -114,7 +114,7 @@ export interface VolumeGroupArgs {
     /**
      * Volume group details
      */
-    groupMetaData?: pulumi.Input<types.inputs.netapp.v20211001.VolumeGroupMetaDataArgs>;
+    groupMetaData?: pulumi.Input<types.inputs.VolumeGroupMetaDataArgs>;
     /**
      * Resource location
      */
@@ -134,5 +134,5 @@ export interface VolumeGroupArgs {
     /**
      * List of volumes from group
      */
-    volumes?: pulumi.Input<pulumi.Input<types.inputs.netapp.v20211001.VolumeGroupVolumePropertiesArgs>[]>;
+    volumes?: pulumi.Input<pulumi.Input<types.inputs.VolumeGroupVolumePropertiesArgs>[]>;
 }

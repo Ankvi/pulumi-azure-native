@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The IP Prefix resource definition.
  */
@@ -46,7 +46,7 @@ export class IpPrefix extends pulumi.CustomResource {
     /**
      * The list of IP Prefix Rules.
      */
-    public readonly ipPrefixRules!: pulumi.Output<types.outputs.managednetworkfabric.v20230615.IpPrefixRuleResponse[]>;
+    public readonly ipPrefixRules!: pulumi.Output<types.outputs.IpPrefixRuleResponse[]>;
     /**
      * The geo-location where the resource lives
      */
@@ -62,7 +62,7 @@ export class IpPrefix extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.managednetworkfabric.v20230615.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -135,7 +135,7 @@ export interface IpPrefixArgs {
     /**
      * The list of IP Prefix Rules.
      */
-    ipPrefixRules: pulumi.Input<pulumi.Input<types.inputs.managednetworkfabric.v20230615.IpPrefixRuleArgs>[]>;
+    ipPrefixRules: pulumi.Input<pulumi.Input<types.inputs.IpPrefixRuleArgs>[]>;
     /**
      * The geo-location where the resource lives
      */

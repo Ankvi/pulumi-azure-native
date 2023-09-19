@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Rule Collection Group resource.
  */
@@ -50,7 +50,7 @@ export class FirewallPolicyRuleCollectionGroup extends pulumi.CustomResource {
     /**
      * Group of Firewall Policy rule collections.
      */
-    public readonly ruleCollections!: pulumi.Output<(types.outputs.network.v20230501.FirewallPolicyFilterRuleCollectionResponse | types.outputs.network.v20230501.FirewallPolicyNatRuleCollectionResponse)[] | undefined>;
+    public readonly ruleCollections!: pulumi.Output<(types.outputs.FirewallPolicyFilterRuleCollectionResponse | types.outputs.FirewallPolicyNatRuleCollectionResponse)[] | undefined>;
     /**
      * A read-only string that represents the size of the FirewallPolicyRuleCollectionGroupProperties in MB. (ex 1.2MB)
      */
@@ -135,5 +135,5 @@ export interface FirewallPolicyRuleCollectionGroupArgs {
     /**
      * Group of Firewall Policy rule collections.
      */
-    ruleCollections?: pulumi.Input<pulumi.Input<types.inputs.network.v20230501.FirewallPolicyFilterRuleCollectionArgs | types.inputs.network.v20230501.FirewallPolicyNatRuleCollectionArgs>[]>;
+    ruleCollections?: pulumi.Input<pulumi.Input<types.inputs.FirewallPolicyFilterRuleCollectionArgs | types.inputs.FirewallPolicyNatRuleCollectionArgs>[]>;
 }

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Describes the suppression rule
  */
@@ -62,7 +62,7 @@ export class AlertsSuppressionRule extends pulumi.CustomResource {
     /**
      * The suppression conditions
      */
-    public readonly suppressionAlertsScope!: pulumi.Output<types.outputs.security.v20190101preview.SuppressionAlertsScopeResponse | undefined>;
+    public readonly suppressionAlertsScope!: pulumi.Output<types.outputs.SuppressionAlertsScopeResponse | undefined>;
     /**
      * Resource type
      */
@@ -143,9 +143,9 @@ export interface AlertsSuppressionRuleArgs {
     /**
      * Possible states of the rule
      */
-    state: pulumi.Input<string | types.enums.v20190101preview.RuleState>;
+    state: pulumi.Input<string | types.enums.RuleState>;
     /**
      * The suppression conditions
      */
-    suppressionAlertsScope?: pulumi.Input<types.inputs.security.v20190101preview.SuppressionAlertsScopeArgs>;
+    suppressionAlertsScope?: pulumi.Input<types.inputs.SuppressionAlertsScopeArgs>;
 }

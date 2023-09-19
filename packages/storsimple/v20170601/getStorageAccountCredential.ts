@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the properties of the specified storage account credential name.
  */
@@ -36,7 +36,7 @@ export interface GetStorageAccountCredentialResult {
     /**
      * The details of the storage account password.
      */
-    readonly accessKey?: types.outputs.storsimple.v20170601.AsymmetricEncryptedSecretResponse;
+    readonly accessKey?: types.outputs.AsymmetricEncryptedSecretResponse;
     /**
      * The storage endpoint
      */

@@ -56,7 +56,7 @@ export class NamespaceTopic extends pulumi.CustomResource {
     /**
      * The system metadata relating to namespace topic resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.eventgrid.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Type of the resource.
      */

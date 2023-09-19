@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Definition of the automation account type.
  */
@@ -50,7 +50,7 @@ export class AutomationAccount extends pulumi.CustomResource {
     /**
      * Encryption properties for the automation account
      */
-    public readonly encryption!: pulumi.Output<types.outputs.automation.v20220808.EncryptionPropertiesResponse | undefined>;
+    public readonly encryption!: pulumi.Output<types.outputs.EncryptionPropertiesResponse | undefined>;
     /**
      * Gets or sets the etag of the resource.
      */
@@ -58,7 +58,7 @@ export class AutomationAccount extends pulumi.CustomResource {
     /**
      * Identity for the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.automation.v20220808.IdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityResponse | undefined>;
     /**
      * Gets or sets the last modified by.
      */
@@ -78,7 +78,7 @@ export class AutomationAccount extends pulumi.CustomResource {
     /**
      * List of Automation operations supported by the Automation resource provider.
      */
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.automation.v20220808.PrivateEndpointConnectionResponse[] | undefined>;
+    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[] | undefined>;
     /**
      * Indicates whether traffic on the non-ARM endpoint (Webhook/Agent) is allowed from the public internet
      */
@@ -86,7 +86,7 @@ export class AutomationAccount extends pulumi.CustomResource {
     /**
      * Gets or sets the SKU of account.
      */
-    public readonly sku!: pulumi.Output<types.outputs.automation.v20220808.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Gets status of account.
      */
@@ -94,7 +94,7 @@ export class AutomationAccount extends pulumi.CustomResource {
     /**
      * Resource system metadata.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.automation.v20220808.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -180,11 +180,11 @@ export interface AutomationAccountArgs {
     /**
      * Set the encryption properties for the automation account
      */
-    encryption?: pulumi.Input<types.inputs.automation.v20220808.EncryptionPropertiesArgs>;
+    encryption?: pulumi.Input<types.inputs.EncryptionPropertiesArgs>;
     /**
      * Sets the identity property for automation account
      */
-    identity?: pulumi.Input<types.inputs.automation.v20220808.IdentityArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityArgs>;
     /**
      * Gets or sets the location of the resource.
      */
@@ -204,7 +204,7 @@ export interface AutomationAccountArgs {
     /**
      * Gets or sets account SKU.
      */
-    sku?: pulumi.Input<types.inputs.automation.v20220808.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Gets or sets the tags attached to the resource.
      */

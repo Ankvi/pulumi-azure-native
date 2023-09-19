@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets storagecontainers by resource name
  */
@@ -33,7 +33,7 @@ export interface GetStoragecontainerRetrieveResult {
      * Total size of the disk in MB
      */
     readonly containerSizeMB: number;
-    readonly extendedLocation?: types.outputs.azurestackhci.v20210901preview.StoragecontainersResponseExtendedLocation;
+    readonly extendedLocation?: types.outputs.StoragecontainersResponseExtendedLocation;
     /**
      * Resource Id
      */
@@ -58,11 +58,11 @@ export interface GetStoragecontainerRetrieveResult {
     /**
      * storageContainerStatus defines the observed state of storagecontainers
      */
-    readonly status: types.outputs.azurestackhci.v20210901preview.StorageContainerStatusResponse;
+    readonly status: types.outputs.StorageContainerStatusResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.azurestackhci.v20210901preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags
      */

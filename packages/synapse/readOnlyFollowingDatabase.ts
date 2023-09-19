@@ -72,11 +72,11 @@ export class ReadOnlyFollowingDatabase extends pulumi.CustomResource {
     /**
      * The statistics of the database.
      */
-    public /*out*/ readonly statistics!: pulumi.Output<types.outputs.synapse.DatabaseStatisticsResponse>;
+    public /*out*/ readonly statistics!: pulumi.Output<types.outputs.DatabaseStatisticsResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.synapse.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

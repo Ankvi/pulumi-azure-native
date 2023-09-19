@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * List Content Keys used by this Streaming Locator
  */
@@ -36,7 +36,7 @@ export interface ListStreamingLocatorContentKeysResult {
     /**
      * ContentKeys used by current Streaming Locator
      */
-    readonly contentKeys?: types.outputs.media.v20230101.StreamingLocatorContentKeyResponse[];
+    readonly contentKeys?: types.outputs.StreamingLocatorContentKeyResponse[];
 }
 /**
  * List Content Keys used by this Streaming Locator

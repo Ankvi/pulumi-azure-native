@@ -37,7 +37,7 @@ export interface GetDatastoreResult {
     /**
      * [Required] Additional attributes of the entity.
      */
-    readonly datastoreProperties: types.outputs.machinelearningservices.AzureBlobDatastoreResponse | types.outputs.machinelearningservices.AzureDataLakeGen1DatastoreResponse | types.outputs.machinelearningservices.AzureDataLakeGen2DatastoreResponse | types.outputs.machinelearningservices.AzureFileDatastoreResponse;
+    readonly datastoreProperties: types.outputs.AzureBlobDatastoreResponse | types.outputs.AzureDataLakeGen1DatastoreResponse | types.outputs.AzureDataLakeGen2DatastoreResponse | types.outputs.AzureFileDatastoreResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -49,7 +49,7 @@ export interface GetDatastoreResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.machinelearningservices.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

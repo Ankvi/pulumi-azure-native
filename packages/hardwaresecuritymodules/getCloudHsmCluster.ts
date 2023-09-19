@@ -36,7 +36,7 @@ export interface GetCloudHsmClusterResult {
     /**
      * An array of Cloud HSM Cluster's HSMs
      */
-    readonly hsms?: types.outputs.hardwaresecuritymodules.CloudHsmPropertiesResponse[];
+    readonly hsms?: types.outputs.CloudHsmPropertiesResponse[];
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -52,7 +52,7 @@ export interface GetCloudHsmClusterResult {
     /**
      * List of private endpoint connection resources
      */
-    readonly privateEndpointConnections?: types.outputs.hardwaresecuritymodules.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections?: types.outputs.PrivateEndpointConnectionResponse[];
     /**
      * The Cloud HSM Cluster's provisioningState
      */
@@ -64,15 +64,15 @@ export interface GetCloudHsmClusterResult {
     /**
      * Security domain properties information for Cloud HSM cluster
      */
-    readonly securityDomain?: types.outputs.hardwaresecuritymodules.CloudHsmClusterSecurityDomainPropertiesResponse;
+    readonly securityDomain?: types.outputs.CloudHsmClusterSecurityDomainPropertiesResponse;
     /**
      * SKU details
      */
-    readonly sku?: types.outputs.hardwaresecuritymodules.CloudHsmClusterSkuResponse;
+    readonly sku?: types.outputs.CloudHsmClusterSkuResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.hardwaresecuritymodules.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

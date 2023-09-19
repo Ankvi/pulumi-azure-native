@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Packet core data plane resource.
  */
@@ -70,7 +70,7 @@ export class PacketCoreDataPlane extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.mobilenetwork.v20220401preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -82,7 +82,7 @@ export class PacketCoreDataPlane extends pulumi.CustomResource {
     /**
      * The user plane interface on the access network. For 5G networks, this is the N3 interface. For 4G networks, this is the S1-U interface.
      */
-    public readonly userPlaneAccessInterface!: pulumi.Output<types.outputs.mobilenetwork.v20220401preview.InterfacePropertiesResponse>;
+    public readonly userPlaneAccessInterface!: pulumi.Output<types.outputs.InterfacePropertiesResponse>;
 
     /**
      * Create a PacketCoreDataPlane resource with the given unique name, arguments, and options.
@@ -157,7 +157,7 @@ export interface PacketCoreDataPlaneArgs {
     /**
      * The type of identity that created the resource.
      */
-    createdByType?: pulumi.Input<string | types.enums.v20220401preview.CreatedByType>;
+    createdByType?: pulumi.Input<string | types.enums.CreatedByType>;
     /**
      * The timestamp of resource last modification (UTC)
      */
@@ -169,7 +169,7 @@ export interface PacketCoreDataPlaneArgs {
     /**
      * The type of identity that last modified the resource.
      */
-    lastModifiedByType?: pulumi.Input<string | types.enums.v20220401preview.CreatedByType>;
+    lastModifiedByType?: pulumi.Input<string | types.enums.CreatedByType>;
     /**
      * The geo-location where the resource lives
      */
@@ -193,5 +193,5 @@ export interface PacketCoreDataPlaneArgs {
     /**
      * The user plane interface on the access network. For 5G networks, this is the N3 interface. For 4G networks, this is the S1-U interface.
      */
-    userPlaneAccessInterface: pulumi.Input<types.inputs.mobilenetwork.v20220401preview.InterfacePropertiesArgs>;
+    userPlaneAccessInterface: pulumi.Input<types.inputs.InterfacePropertiesArgs>;
 }

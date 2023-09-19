@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * External OAuth authorization server settings.
  */
@@ -94,7 +94,7 @@ export class AuthorizationServer extends pulumi.CustomResource {
     /**
      * Additional parameters required by the token endpoint of this authorization server represented as an array of JSON objects with name and value string properties, i.e. {"name" : "name value", "value": "a value"}.
      */
-    public readonly tokenBodyParameters!: pulumi.Output<types.outputs.apimanagement.v20230301preview.TokenBodyParameterContractResponse[] | undefined>;
+    public readonly tokenBodyParameters!: pulumi.Output<types.outputs.TokenBodyParameterContractResponse[] | undefined>;
     /**
      * OAuth token endpoint. Contains absolute URI to entity being referenced.
      */
@@ -207,7 +207,7 @@ export interface AuthorizationServerArgs {
     /**
      * HTTP verbs supported by the authorization endpoint. GET must be always present. POST is optional.
      */
-    authorizationMethods?: pulumi.Input<pulumi.Input<types.enums.v20230301preview.AuthorizationMethod>[]>;
+    authorizationMethods?: pulumi.Input<pulumi.Input<types.enums.AuthorizationMethod>[]>;
     /**
      * Identifier of the authorization server.
      */
@@ -215,11 +215,11 @@ export interface AuthorizationServerArgs {
     /**
      * Specifies the mechanism by which access token is passed to the API. 
      */
-    bearerTokenSendingMethods?: pulumi.Input<pulumi.Input<string | types.enums.v20230301preview.BearerTokenSendingMethod>[]>;
+    bearerTokenSendingMethods?: pulumi.Input<pulumi.Input<string | types.enums.BearerTokenSendingMethod>[]>;
     /**
      * Method of authentication supported by the token endpoint of this authorization server. Possible values are Basic and/or Body. When Body is specified, client credentials and other parameters are passed within the request body in the application/x-www-form-urlencoded format.
      */
-    clientAuthenticationMethod?: pulumi.Input<pulumi.Input<string | types.enums.v20230301preview.ClientAuthenticationMethod>[]>;
+    clientAuthenticationMethod?: pulumi.Input<pulumi.Input<string | types.enums.ClientAuthenticationMethod>[]>;
     /**
      * Client or app id registered with this authorization server.
      */
@@ -247,7 +247,7 @@ export interface AuthorizationServerArgs {
     /**
      * Form of an authorization grant, which the client uses to request the access token.
      */
-    grantTypes: pulumi.Input<pulumi.Input<string | types.enums.v20230301preview.GrantType>[]>;
+    grantTypes: pulumi.Input<pulumi.Input<string | types.enums.GrantType>[]>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -271,7 +271,7 @@ export interface AuthorizationServerArgs {
     /**
      * Additional parameters required by the token endpoint of this authorization server represented as an array of JSON objects with name and value string properties, i.e. {"name" : "name value", "value": "a value"}.
      */
-    tokenBodyParameters?: pulumi.Input<pulumi.Input<types.inputs.apimanagement.v20230301preview.TokenBodyParameterContractArgs>[]>;
+    tokenBodyParameters?: pulumi.Input<pulumi.Input<types.inputs.TokenBodyParameterContractArgs>[]>;
     /**
      * OAuth token endpoint. Contains absolute URI to entity being referenced.
      */

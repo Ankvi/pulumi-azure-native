@@ -43,11 +43,11 @@ export class ManagedCCF extends pulumi.CustomResource {
     /**
      * Properties of Managed CCF Resource.
      */
-    public readonly properties!: pulumi.Output<types.outputs.confidentialledger.ManagedCCFPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ManagedCCFPropertiesResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.confidentialledger.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -109,7 +109,7 @@ export interface ManagedCCFArgs {
     /**
      * Properties of Managed CCF Resource.
      */
-    properties?: pulumi.Input<types.inputs.confidentialledger.ManagedCCFPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ManagedCCFPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

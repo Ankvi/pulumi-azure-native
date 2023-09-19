@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Lists Streaming Locators which are associated with this asset.
  */
@@ -36,7 +36,7 @@ export interface ListAssetStreamingLocatorsResult {
     /**
      * The list of Streaming Locators.
      */
-    readonly streamingLocators: types.outputs.media.v20230101.AssetStreamingLocatorResponse[];
+    readonly streamingLocators: types.outputs.AssetStreamingLocatorResponse[];
 }
 /**
  * Lists Streaming Locators which are associated with this asset.

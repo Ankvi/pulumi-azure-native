@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * IoT Connector FHIR destination definition.
  */
@@ -38,7 +38,7 @@ export class IotConnectorFhirDestination extends pulumi.CustomResource {
     /**
      * FHIR Mappings
      */
-    public readonly fhirMapping!: pulumi.Output<types.outputs.healthcareapis.v20230228.IotMappingPropertiesResponse>;
+    public readonly fhirMapping!: pulumi.Output<types.outputs.IotMappingPropertiesResponse>;
     /**
      * Fully qualified resource id of the FHIR service to connect to.
      */
@@ -58,7 +58,7 @@ export class IotConnectorFhirDestination extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.healthcareapis.v20230228.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The resource type.
      */
@@ -133,7 +133,7 @@ export interface IotConnectorFhirDestinationArgs {
     /**
      * FHIR Mappings
      */
-    fhirMapping: pulumi.Input<types.inputs.healthcareapis.v20230228.IotMappingPropertiesArgs>;
+    fhirMapping: pulumi.Input<types.inputs.IotMappingPropertiesArgs>;
     /**
      * Fully qualified resource id of the FHIR service to connect to.
      */
@@ -153,7 +153,7 @@ export interface IotConnectorFhirDestinationArgs {
     /**
      * Determines how resource identity is resolved on the destination.
      */
-    resourceIdentityResolutionType: pulumi.Input<string | types.enums.v20230228.IotIdentityResolutionType>;
+    resourceIdentityResolutionType: pulumi.Input<string | types.enums.IotIdentityResolutionType>;
     /**
      * The name of workspace resource.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets an existing origin group within a profile.
  */
@@ -37,7 +37,7 @@ export interface GetAFDOriginGroupResult {
     /**
      * Health probe settings to the origin that is used to determine the health of the origin.
      */
-    readonly healthProbeSettings?: types.outputs.cdn.v20230501.HealthProbeParametersResponse;
+    readonly healthProbeSettings?: types.outputs.HealthProbeParametersResponse;
     /**
      * Resource ID.
      */
@@ -45,7 +45,7 @@ export interface GetAFDOriginGroupResult {
     /**
      * Load balancing settings for a backend pool
      */
-    readonly loadBalancingSettings?: types.outputs.cdn.v20230501.LoadBalancingSettingsParametersResponse;
+    readonly loadBalancingSettings?: types.outputs.LoadBalancingSettingsParametersResponse;
     /**
      * Resource name.
      */
@@ -65,7 +65,7 @@ export interface GetAFDOriginGroupResult {
     /**
      * Read only system data
      */
-    readonly systemData: types.outputs.cdn.v20230501.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Time in minutes to shift the traffic to the endpoint gradually when an unhealthy endpoint comes healthy or a new endpoint is added. Default is 10 mins. This property is currently not supported.
      */

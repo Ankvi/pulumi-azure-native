@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the reference data set with the specified name in the specified environment.
  */
@@ -48,7 +48,7 @@ export interface GetReferenceDataSetResult {
     /**
      * The list of key properties for the reference data set.
      */
-    readonly keyProperties: types.outputs.timeseriesinsights.v20200515.ReferenceDataSetKeyPropertyResponse[];
+    readonly keyProperties: types.outputs.ReferenceDataSetKeyPropertyResponse[];
     /**
      * Resource location
      */

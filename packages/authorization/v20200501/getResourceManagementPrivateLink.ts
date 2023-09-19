@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a resource management private link(resource-level).
  */
@@ -37,7 +37,7 @@ export interface GetResourceManagementPrivateLinkResult {
      * The rmpl Name.
      */
     readonly name: string;
-    readonly properties: types.outputs.authorization.v20200501.ResourceManagementPrivateLinkEndpointConnectionsResponse;
+    readonly properties: types.outputs.ResourceManagementPrivateLinkEndpointConnectionsResponse;
     /**
      * The operation type.
      */

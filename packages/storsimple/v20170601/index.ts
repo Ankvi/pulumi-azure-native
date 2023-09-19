@@ -118,7 +118,7 @@ utilities.lazyLoad(exports, ["VolumeContainer"], () => require("./volumeContaine
 
 
 // Export enums:
-export * from "../types/enums/v20170601";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

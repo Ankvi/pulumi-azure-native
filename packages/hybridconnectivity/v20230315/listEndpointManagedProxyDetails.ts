@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Fetches the managed proxy details
  */
@@ -36,7 +36,7 @@ export interface ListEndpointManagedProxyDetailsArgs {
     /**
      * The name of the service. It is an optional property, if not provided, service configuration tokens issue code would be by passed.
      */
-    serviceName?: string | types.enums.v20230315.ServiceName;
+    serviceName?: string | types.enums.ServiceName;
 }
 
 /**
@@ -79,5 +79,5 @@ export interface ListEndpointManagedProxyDetailsOutputArgs {
     /**
      * The name of the service. It is an optional property, if not provided, service configuration tokens issue code would be by passed.
      */
-    serviceName?: pulumi.Input<string | types.enums.v20230315.ServiceName>;
+    serviceName?: pulumi.Input<string | types.enums.ServiceName>;
 }

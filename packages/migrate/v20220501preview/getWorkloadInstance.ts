@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the details of the workload instance.
  */
@@ -49,8 +49,8 @@ export interface GetWorkloadInstanceResult {
     /**
      * Workload instance model properties.
      */
-    readonly properties: types.outputs.migrate.v20220501preview.WorkloadInstanceModelPropertiesResponse;
-    readonly systemData: types.outputs.migrate.v20220501preview.WorkloadInstanceModelResponseSystemData;
+    readonly properties: types.outputs.WorkloadInstanceModelPropertiesResponse;
+    readonly systemData: types.outputs.WorkloadInstanceModelResponseSystemData;
     /**
      * Gets or sets the resource tags.
      */

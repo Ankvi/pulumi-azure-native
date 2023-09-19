@@ -53,7 +53,7 @@ export interface GetProjectResult {
     /**
      * Resource system metadata.
      */
-    readonly systemData: types.outputs.storagemover.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

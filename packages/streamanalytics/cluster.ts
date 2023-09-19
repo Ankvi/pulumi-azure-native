@@ -67,7 +67,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * The SKU of the cluster. This determines the size/capacity of the cluster. Required on PUT (CreateOrUpdate) requests.
      */
-    public readonly sku!: pulumi.Output<types.outputs.streamanalytics.ClusterSkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.ClusterSkuResponse | undefined>;
     /**
      * Resource tags.
      */
@@ -143,7 +143,7 @@ export interface ClusterArgs {
     /**
      * The SKU of the cluster. This determines the size/capacity of the cluster. Required on PUT (CreateOrUpdate) requests.
      */
-    sku?: pulumi.Input<types.inputs.streamanalytics.ClusterSkuArgs>;
+    sku?: pulumi.Input<types.inputs.ClusterSkuArgs>;
     /**
      * Resource tags.
      */

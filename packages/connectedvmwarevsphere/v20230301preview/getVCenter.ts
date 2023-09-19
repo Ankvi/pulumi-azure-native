@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Implements vCenter GET method.
  */
@@ -35,7 +35,7 @@ export interface GetVCenterResult {
     /**
      * Username / Password Credentials to connect to vcenter.
      */
-    readonly credentials?: types.outputs.connectedvmwarevsphere.v20230301preview.VICredentialResponse;
+    readonly credentials?: types.outputs.VICredentialResponse;
     /**
      * Gets the name of the corresponding resource in Kubernetes.
      */
@@ -43,7 +43,7 @@ export interface GetVCenterResult {
     /**
      * Gets or sets the extended location.
      */
-    readonly extendedLocation?: types.outputs.connectedvmwarevsphere.v20230301preview.ExtendedLocationResponse;
+    readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
     /**
      * Gets or sets the FQDN/IPAddress of the vCenter.
      */
@@ -79,11 +79,11 @@ export interface GetVCenterResult {
     /**
      * The resource status information.
      */
-    readonly statuses: types.outputs.connectedvmwarevsphere.v20230301preview.ResourceStatusResponse[];
+    readonly statuses: types.outputs.ResourceStatusResponse[];
     /**
      * The system data.
      */
-    readonly systemData: types.outputs.connectedvmwarevsphere.v20230301preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Gets or sets the Resource tags.
      */

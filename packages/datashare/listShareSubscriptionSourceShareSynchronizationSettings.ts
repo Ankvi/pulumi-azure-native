@@ -46,7 +46,7 @@ export interface ListShareSubscriptionSourceShareSynchronizationSettingsResult {
     /**
      * Collection of items of type DataTransferObjects.
      */
-    readonly value: types.outputs.datashare.ScheduledSourceSynchronizationSettingResponse[];
+    readonly value: types.outputs.ScheduledSourceSynchronizationSettingResponse[];
 }
 /**
  * Get synchronization settings set on a share

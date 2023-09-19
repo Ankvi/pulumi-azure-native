@@ -32,7 +32,7 @@ export interface GetWebTestResult {
     /**
      * An XML configuration specification for a WebTest.
      */
-    readonly configuration?: types.outputs.insights.WebTestPropertiesResponseConfiguration;
+    readonly configuration?: types.outputs.WebTestPropertiesResponseConfiguration;
     /**
      * User defined description for this WebTest.
      */
@@ -60,7 +60,7 @@ export interface GetWebTestResult {
     /**
      * A list of where to physically run the tests from to give global coverage for accessibility of your application.
      */
-    readonly locations: types.outputs.insights.WebTestGeolocationResponse[];
+    readonly locations: types.outputs.WebTestGeolocationResponse[];
     /**
      * Azure resource name
      */
@@ -72,7 +72,7 @@ export interface GetWebTestResult {
     /**
      * The collection of request properties
      */
-    readonly request?: types.outputs.insights.WebTestPropertiesResponseRequest;
+    readonly request?: types.outputs.WebTestPropertiesResponseRequest;
     /**
      * Allow for retries should this WebTest fail.
      */
@@ -96,7 +96,7 @@ export interface GetWebTestResult {
     /**
      * The collection of validation rule properties
      */
-    readonly validationRules?: types.outputs.insights.WebTestPropertiesResponseValidationRules;
+    readonly validationRules?: types.outputs.WebTestPropertiesResponseValidationRules;
     /**
      * The kind of web test this is, valid choices are ping, multistep and standard.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * REST model used to encapsulate Private Link properties for tracked resources.
  */
@@ -42,11 +42,11 @@ export class PrivateEndpointConnectionController extends pulumi.CustomResource {
     /**
      * private endpoints
      */
-    public /*out*/ readonly privateEndpoint!: pulumi.Output<types.outputs.offazure.v20230606.ResourceIdResponse>;
+    public /*out*/ readonly privateEndpoint!: pulumi.Output<types.outputs.ResourceIdResponse>;
     /**
      * private endpoints connection state
      */
-    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.offazure.v20230606.PrivateLinkServiceConnectionStateResponse | undefined>;
+    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.PrivateLinkServiceConnectionStateResponse | undefined>;
     /**
      * provisioning state enum
      */
@@ -54,7 +54,7 @@ export class PrivateEndpointConnectionController extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.offazure.v20230606.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -114,7 +114,7 @@ export interface PrivateEndpointConnectionControllerArgs {
     /**
      * private endpoints connection state
      */
-    privateLinkServiceConnectionState?: pulumi.Input<types.inputs.offazure.v20230606.PrivateLinkServiceConnectionStateArgs>;
+    privateLinkServiceConnectionState?: pulumi.Input<types.inputs.PrivateLinkServiceConnectionStateArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

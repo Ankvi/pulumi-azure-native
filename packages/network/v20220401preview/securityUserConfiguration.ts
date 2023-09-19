@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Defines the security user configuration
  */
@@ -54,7 +54,7 @@ export class SecurityUserConfiguration extends pulumi.CustomResource {
     /**
      * The system metadata related to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.network.v20220401preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource type.
      */
@@ -114,7 +114,7 @@ export interface SecurityUserConfigurationArgs {
     /**
      * Flag if need to delete existing network security groups.
      */
-    deleteExistingNSGs?: pulumi.Input<string | types.enums.v20220401preview.DeleteExistingNSGs>;
+    deleteExistingNSGs?: pulumi.Input<string | types.enums.DeleteExistingNSGs>;
     /**
      * A description of the security user configuration.
      */

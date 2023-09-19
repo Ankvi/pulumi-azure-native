@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a connection.
  */
@@ -31,7 +31,7 @@ export interface GetConnectionResult {
     /**
      * expanded connection provider name
      */
-    readonly api?: types.outputs.web.v20150801preview.ExpandedParentApiEntityResponse;
+    readonly api?: types.outputs.ExpandedParentApiEntityResponse;
     /**
      * Timestamp of last connection change.
      */
@@ -43,7 +43,7 @@ export interface GetConnectionResult {
     /**
      * Custom login setting values.
      */
-    readonly customParameterValues?: {[key: string]: types.outputs.web.v20150801preview.ParameterCustomLoginSettingValuesResponse};
+    readonly customParameterValues?: {[key: string]: types.outputs.ParameterCustomLoginSettingValuesResponse};
     /**
      * display name
      */
@@ -84,7 +84,7 @@ export interface GetConnectionResult {
     /**
      * Status of the connection
      */
-    readonly statuses?: types.outputs.web.v20150801preview.ConnectionStatusResponse[];
+    readonly statuses?: types.outputs.ConnectionStatusResponse[];
     /**
      * Resource tags
      */

@@ -32,7 +32,7 @@ export interface GetConfigurationAssignmentsForResourceGroupResult {
     /**
      * Properties of the configuration assignment
      */
-    readonly filter?: types.outputs.maintenance.ConfigurationAssignmentFilterPropertiesResponse;
+    readonly filter?: types.outputs.ConfigurationAssignmentFilterPropertiesResponse;
     /**
      * Fully qualified identifier of the resource
      */
@@ -56,7 +56,7 @@ export interface GetConfigurationAssignmentsForResourceGroupResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.maintenance.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Type of the resource
      */

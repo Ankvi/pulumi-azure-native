@@ -56,11 +56,11 @@ export interface GetAutoScaleVCoreResult {
     /**
      * The SKU of the auto scale v-core resource.
      */
-    readonly sku: types.outputs.powerbidedicated.AutoScaleVCoreSkuResponse;
+    readonly sku: types.outputs.AutoScaleVCoreSkuResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData?: types.outputs.powerbidedicated.SystemDataResponse;
+    readonly systemData?: types.outputs.SystemDataResponse;
     /**
      * Key-value pairs of additional resource provisioning properties.
      */

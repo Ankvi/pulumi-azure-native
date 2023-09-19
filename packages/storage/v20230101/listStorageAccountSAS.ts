@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * List SAS credentials of a storage account.
  */
@@ -37,11 +37,11 @@ export interface ListStorageAccountSASArgs {
     /**
      * The signed permissions for the account SAS. Possible values include: Read (r), Write (w), Delete (d), List (l), Add (a), Create (c), Update (u) and Process (p).
      */
-    permissions: string | types.enums.v20230101.Permissions;
+    permissions: string | types.enums.Permissions;
     /**
      * The protocol permitted for a request made with the account SAS.
      */
-    protocols?: types.enums.v20230101.HttpProtocol;
+    protocols?: types.enums.HttpProtocol;
     /**
      * The name of the resource group within the user's subscription. The name is case insensitive.
      */
@@ -49,11 +49,11 @@ export interface ListStorageAccountSASArgs {
     /**
      * The signed resource types that are accessible with the account SAS. Service (s): Access to service-level APIs; Container (c): Access to container-level APIs; Object (o): Access to object-level APIs for blobs, queue messages, table entities, and files.
      */
-    resourceTypes: string | types.enums.v20230101.SignedResourceTypes;
+    resourceTypes: string | types.enums.SignedResourceTypes;
     /**
      * The signed services accessible with the account SAS. Possible values include: Blob (b), Queue (q), Table (t), File (f).
      */
-    services: string | types.enums.v20230101.Services;
+    services: string | types.enums.Services;
     /**
      * The time at which the shared access signature becomes invalid.
      */
@@ -96,11 +96,11 @@ export interface ListStorageAccountSASOutputArgs {
     /**
      * The signed permissions for the account SAS. Possible values include: Read (r), Write (w), Delete (d), List (l), Add (a), Create (c), Update (u) and Process (p).
      */
-    permissions: pulumi.Input<string | types.enums.v20230101.Permissions>;
+    permissions: pulumi.Input<string | types.enums.Permissions>;
     /**
      * The protocol permitted for a request made with the account SAS.
      */
-    protocols?: pulumi.Input<types.enums.v20230101.HttpProtocol>;
+    protocols?: pulumi.Input<types.enums.HttpProtocol>;
     /**
      * The name of the resource group within the user's subscription. The name is case insensitive.
      */
@@ -108,11 +108,11 @@ export interface ListStorageAccountSASOutputArgs {
     /**
      * The signed resource types that are accessible with the account SAS. Service (s): Access to service-level APIs; Container (c): Access to container-level APIs; Object (o): Access to object-level APIs for blobs, queue messages, table entities, and files.
      */
-    resourceTypes: pulumi.Input<string | types.enums.v20230101.SignedResourceTypes>;
+    resourceTypes: pulumi.Input<string | types.enums.SignedResourceTypes>;
     /**
      * The signed services accessible with the account SAS. Possible values include: Blob (b), Queue (q), Table (t), File (f).
      */
-    services: pulumi.Input<string | types.enums.v20230101.Services>;
+    services: pulumi.Input<string | types.enums.Services>;
     /**
      * The time at which the shared access signature becomes invalid.
      */

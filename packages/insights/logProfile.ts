@@ -51,7 +51,7 @@ export class LogProfile extends pulumi.CustomResource {
     /**
      * the retention policy for the events in the log.
      */
-    public readonly retentionPolicy!: pulumi.Output<types.outputs.insights.RetentionPolicyResponse>;
+    public readonly retentionPolicy!: pulumi.Output<types.outputs.RetentionPolicyResponse>;
     /**
      * The service bus rule ID of the service bus namespace in which you would like to have Event Hubs created for streaming the Activity Log. The rule ID is of the format: '{service bus resource ID}/authorizationrules/{key name}'.
      */
@@ -140,7 +140,7 @@ export interface LogProfileArgs {
     /**
      * the retention policy for the events in the log.
      */
-    retentionPolicy: pulumi.Input<types.inputs.insights.RetentionPolicyArgs>;
+    retentionPolicy: pulumi.Input<types.inputs.RetentionPolicyArgs>;
     /**
      * The service bus rule ID of the service bus namespace in which you would like to have Event Hubs created for streaming the Activity Log. The rule ID is of the format: '{service bus resource ID}/authorizationrules/{key name}'.
      */

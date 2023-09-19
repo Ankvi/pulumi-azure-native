@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The properties of a storage account’s Table service.
  */
@@ -34,7 +34,7 @@ export class TableServiceProperties extends pulumi.CustomResource {
     /**
      * Specifies CORS rules for the Table service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the Table service.
      */
-    public readonly cors!: pulumi.Output<types.outputs.storage.v20230101.CorsRulesResponse | undefined>;
+    public readonly cors!: pulumi.Output<types.outputs.CorsRulesResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -90,7 +90,7 @@ export interface TableServicePropertiesArgs {
     /**
      * Specifies CORS rules for the Table service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the Table service.
      */
-    cors?: pulumi.Input<types.inputs.storage.v20230101.CorsRulesArgs>;
+    cors?: pulumi.Input<types.inputs.CorsRulesArgs>;
     /**
      * The name of the resource group within the user's subscription. The name is case insensitive.
      */

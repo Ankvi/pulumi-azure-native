@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The top level Workspace resource container.
  */
@@ -62,7 +62,7 @@ export class Workspace extends pulumi.CustomResource {
     /**
      * The SKU of the workspace.
      */
-    public readonly sku!: pulumi.Output<types.outputs.operationalinsights.v20151101preview.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * This is a read-only legacy property. It is always set to 'Azure' by the service. Kept here for backward compatibility.
      */
@@ -138,7 +138,7 @@ export interface WorkspaceArgs {
     /**
      * The provisioning state of the workspace.
      */
-    provisioningState?: pulumi.Input<string | types.enums.v20151101preview.EntityStatus>;
+    provisioningState?: pulumi.Input<string | types.enums.EntityStatus>;
     /**
      * The resource group name of the workspace.
      */
@@ -150,7 +150,7 @@ export interface WorkspaceArgs {
     /**
      * The SKU of the workspace.
      */
-    sku?: pulumi.Input<types.inputs.operationalinsights.v20151101preview.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Resource tags
      */

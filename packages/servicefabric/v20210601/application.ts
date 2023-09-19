@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The application resource.
  */
@@ -38,7 +38,7 @@ export class Application extends pulumi.CustomResource {
     /**
      * Describes the managed identities for an Azure resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.servicefabric.v20210601.ManagedIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedIdentityResponse | undefined>;
     /**
      * It will be deprecated in New API, resource location depends on the parent resource.
      */
@@ -46,7 +46,7 @@ export class Application extends pulumi.CustomResource {
     /**
      * List of user assigned identities for the application, each mapped to a friendly name.
      */
-    public readonly managedIdentities!: pulumi.Output<types.outputs.servicefabric.v20210601.ApplicationUserAssignedIdentityResponse[] | undefined>;
+    public readonly managedIdentities!: pulumi.Output<types.outputs.ApplicationUserAssignedIdentityResponse[] | undefined>;
     /**
      * The maximum number of nodes where Service Fabric will reserve capacity for this application. Note that this does not mean that the services of this application will be placed on all of those nodes. By default, the value of this property is zero and it means that the services can be placed on any node.
      */
@@ -54,7 +54,7 @@ export class Application extends pulumi.CustomResource {
     /**
      * List of application capacity metric description.
      */
-    public readonly metrics!: pulumi.Output<types.outputs.servicefabric.v20210601.ApplicationMetricDescriptionResponse[] | undefined>;
+    public readonly metrics!: pulumi.Output<types.outputs.ApplicationMetricDescriptionResponse[] | undefined>;
     /**
      * The minimum number of nodes where Service Fabric will reserve capacity for this application. Note that this does not mean that the services of this application will be placed on all of those nodes. If this property is set to zero, no capacity will be reserved. The value of this property cannot be more than the value of the MaximumNodes property.
      */
@@ -78,7 +78,7 @@ export class Application extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.servicefabric.v20210601.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Azure resource tags.
      */
@@ -98,7 +98,7 @@ export class Application extends pulumi.CustomResource {
     /**
      * Describes the policy for a monitored application upgrade.
      */
-    public readonly upgradePolicy!: pulumi.Output<types.outputs.servicefabric.v20210601.ApplicationUpgradePolicyResponse | undefined>;
+    public readonly upgradePolicy!: pulumi.Output<types.outputs.ApplicationUpgradePolicyResponse | undefined>;
 
     /**
      * Create a Application resource with the given unique name, arguments, and options.
@@ -131,7 +131,7 @@ export class Application extends pulumi.CustomResource {
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["typeName"] = args ? args.typeName : undefined;
             resourceInputs["typeVersion"] = args ? args.typeVersion : undefined;
-            resourceInputs["upgradePolicy"] = args ? (args.upgradePolicy ? pulumi.output(args.upgradePolicy).apply(types.inputs.servicefabric.v20210601.applicationUpgradePolicyArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["upgradePolicy"] = args ? (args.upgradePolicy ? pulumi.output(args.upgradePolicy).apply(types.inputs.applicationUpgradePolicyArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
@@ -178,7 +178,7 @@ export interface ApplicationArgs {
     /**
      * Describes the managed identities for an Azure resource.
      */
-    identity?: pulumi.Input<types.inputs.servicefabric.v20210601.ManagedIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedIdentityArgs>;
     /**
      * It will be deprecated in New API, resource location depends on the parent resource.
      */
@@ -186,7 +186,7 @@ export interface ApplicationArgs {
     /**
      * List of user assigned identities for the application, each mapped to a friendly name.
      */
-    managedIdentities?: pulumi.Input<pulumi.Input<types.inputs.servicefabric.v20210601.ApplicationUserAssignedIdentityArgs>[]>;
+    managedIdentities?: pulumi.Input<pulumi.Input<types.inputs.ApplicationUserAssignedIdentityArgs>[]>;
     /**
      * The maximum number of nodes where Service Fabric will reserve capacity for this application. Note that this does not mean that the services of this application will be placed on all of those nodes. By default, the value of this property is zero and it means that the services can be placed on any node.
      */
@@ -194,7 +194,7 @@ export interface ApplicationArgs {
     /**
      * List of application capacity metric description.
      */
-    metrics?: pulumi.Input<pulumi.Input<types.inputs.servicefabric.v20210601.ApplicationMetricDescriptionArgs>[]>;
+    metrics?: pulumi.Input<pulumi.Input<types.inputs.ApplicationMetricDescriptionArgs>[]>;
     /**
      * The minimum number of nodes where Service Fabric will reserve capacity for this application. Note that this does not mean that the services of this application will be placed on all of those nodes. If this property is set to zero, no capacity will be reserved. The value of this property cannot be more than the value of the MaximumNodes property.
      */
@@ -226,5 +226,5 @@ export interface ApplicationArgs {
     /**
      * Describes the policy for a monitored application upgrade.
      */
-    upgradePolicy?: pulumi.Input<types.inputs.servicefabric.v20210601.ApplicationUpgradePolicyArgs>;
+    upgradePolicy?: pulumi.Input<types.inputs.ApplicationUpgradePolicyArgs>;
 }

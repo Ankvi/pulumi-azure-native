@@ -46,7 +46,7 @@ export interface GetSecurityPolicyResult {
     /**
      * object which contains security policy parameters
      */
-    readonly parameters?: types.outputs.cdn.SecurityPolicyWebApplicationFirewallParametersResponse;
+    readonly parameters?: types.outputs.SecurityPolicyWebApplicationFirewallParametersResponse;
     /**
      * The name of the profile which holds the security policy.
      */
@@ -58,7 +58,7 @@ export interface GetSecurityPolicyResult {
     /**
      * Read only system data
      */
-    readonly systemData: types.outputs.cdn.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource type.
      */

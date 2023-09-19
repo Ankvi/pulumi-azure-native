@@ -35,7 +35,7 @@ export class ComponentContainer extends pulumi.CustomResource {
     /**
      * [Required] Additional attributes of the entity.
      */
-    public readonly componentContainerProperties!: pulumi.Output<types.outputs.machinelearningservices.ComponentContainerResponse>;
+    public readonly componentContainerProperties!: pulumi.Output<types.outputs.ComponentContainerResponse>;
     /**
      * The name of the resource
      */
@@ -43,7 +43,7 @@ export class ComponentContainer extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.machinelearningservices.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -69,7 +69,7 @@ export class ComponentContainer extends pulumi.CustomResource {
             if ((!args || args.workspaceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workspaceName'");
             }
-            resourceInputs["componentContainerProperties"] = args ? (args.componentContainerProperties ? pulumi.output(args.componentContainerProperties).apply(types.inputs.machinelearningservices.componentContainerArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["componentContainerProperties"] = args ? (args.componentContainerProperties ? pulumi.output(args.componentContainerProperties).apply(types.inputs.componentContainerArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["workspaceName"] = args ? args.workspaceName : undefined;
@@ -95,7 +95,7 @@ export interface ComponentContainerArgs {
     /**
      * [Required] Additional attributes of the entity.
      */
-    componentContainerProperties: pulumi.Input<types.inputs.machinelearningservices.ComponentContainerArgs>;
+    componentContainerProperties: pulumi.Input<types.inputs.ComponentContainerArgs>;
     /**
      * Container name.
      */

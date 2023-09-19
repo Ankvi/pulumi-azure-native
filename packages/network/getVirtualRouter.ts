@@ -41,11 +41,11 @@ export interface GetVirtualRouterResult {
     /**
      * The Gateway on which VirtualRouter is hosted.
      */
-    readonly hostedGateway?: types.outputs.network.SubResourceResponse;
+    readonly hostedGateway?: types.outputs.SubResourceResponse;
     /**
      * The Subnet on which VirtualRouter is hosted.
      */
-    readonly hostedSubnet?: types.outputs.network.SubResourceResponse;
+    readonly hostedSubnet?: types.outputs.SubResourceResponse;
     /**
      * Resource ID.
      */
@@ -61,7 +61,7 @@ export interface GetVirtualRouterResult {
     /**
      * List of references to VirtualRouterPeerings.
      */
-    readonly peerings: types.outputs.network.SubResourceResponse[];
+    readonly peerings: types.outputs.SubResourceResponse[];
     /**
      * The provisioning state of the resource.
      */

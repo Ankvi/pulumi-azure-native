@@ -43,11 +43,11 @@ export class CloudService extends pulumi.CustomResource {
     /**
      * Cloud service properties
      */
-    public readonly properties!: pulumi.Output<types.outputs.compute.CloudServicePropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.CloudServicePropertiesResponse>;
     /**
      * The system meta data relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.compute.SystemDataResponse | undefined>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse | undefined>;
     /**
      * Resource tags.
      */
@@ -115,7 +115,7 @@ export interface CloudServiceArgs {
     /**
      * Cloud service properties
      */
-    properties?: pulumi.Input<types.inputs.compute.CloudServicePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.CloudServicePropertiesArgs>;
     /**
      * Name of the resource group.
      */

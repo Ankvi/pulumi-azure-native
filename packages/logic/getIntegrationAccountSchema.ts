@@ -45,7 +45,7 @@ export interface GetIntegrationAccountSchemaResult {
     /**
      * The content link.
      */
-    readonly contentLink: types.outputs.logic.ContentLinkResponse;
+    readonly contentLink: types.outputs.ContentLinkResponse;
     /**
      * The content type.
      */

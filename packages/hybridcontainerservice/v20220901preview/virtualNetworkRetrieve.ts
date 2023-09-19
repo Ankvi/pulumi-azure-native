@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The virtualNetworks resource definition.
  */
@@ -31,7 +31,7 @@ export class VirtualNetworkRetrieve extends pulumi.CustomResource {
         return obj['__pulumiType'] === VirtualNetworkRetrieve.__pulumiType;
     }
 
-    public readonly extendedLocation!: pulumi.Output<types.outputs.hybridcontainerservice.v20220901preview.VirtualNetworksResponseExtendedLocation | undefined>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.VirtualNetworksResponseExtendedLocation | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -43,11 +43,11 @@ export class VirtualNetworkRetrieve extends pulumi.CustomResource {
     /**
      * HybridAKSNetworkSpec defines the desired state of HybridAKSNetwork
      */
-    public readonly properties!: pulumi.Output<types.outputs.hybridcontainerservice.v20220901preview.VirtualNetworksPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.VirtualNetworksPropertiesResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.hybridcontainerservice.v20220901preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -100,7 +100,7 @@ export class VirtualNetworkRetrieve extends pulumi.CustomResource {
  * The set of arguments for constructing a VirtualNetworkRetrieve resource.
  */
 export interface VirtualNetworkRetrieveArgs {
-    extendedLocation?: pulumi.Input<types.inputs.hybridcontainerservice.v20220901preview.VirtualNetworksExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.VirtualNetworksExtendedLocationArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -108,7 +108,7 @@ export interface VirtualNetworkRetrieveArgs {
     /**
      * HybridAKSNetworkSpec defines the desired state of HybridAKSNetwork
      */
-    properties?: pulumi.Input<types.inputs.hybridcontainerservice.v20220901preview.VirtualNetworksPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.VirtualNetworksPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

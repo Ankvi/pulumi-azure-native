@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets Kubernetes Cluster Extension.
  */
@@ -46,7 +46,7 @@ export interface GetExtensionResult {
     /**
      * Identity of the Extension resource in an AKS cluster
      */
-    readonly aksAssignedIdentity?: types.outputs.kubernetesconfiguration.v20230501.ExtensionResponseAksAssignedIdentity;
+    readonly aksAssignedIdentity?: types.outputs.ExtensionResponseAksAssignedIdentity;
     /**
      * Flag to note if this extension participates in auto upgrade of minor version, or not.
      */
@@ -70,7 +70,7 @@ export interface GetExtensionResult {
     /**
      * Error information from the Agent - e.g. errors during installation.
      */
-    readonly errorInfo: types.outputs.kubernetesconfiguration.v20230501.ErrorDetailResponse;
+    readonly errorInfo: types.outputs.ErrorDetailResponse;
     /**
      * Type of the Extension, of which this resource is an instance of.  It must be one of the Extension Types registered with Microsoft.KubernetesConfiguration by the Extension publisher.
      */
@@ -82,7 +82,7 @@ export interface GetExtensionResult {
     /**
      * Identity of the Extension resource
      */
-    readonly identity?: types.outputs.kubernetesconfiguration.v20230501.IdentityResponse;
+    readonly identity?: types.outputs.IdentityResponse;
     /**
      * Flag to note if this extension is a system extension
      */
@@ -98,7 +98,7 @@ export interface GetExtensionResult {
     /**
      * The plan information.
      */
-    readonly plan?: types.outputs.kubernetesconfiguration.v20230501.PlanResponse;
+    readonly plan?: types.outputs.PlanResponse;
     /**
      * Status of installation of this extension.
      */
@@ -110,15 +110,15 @@ export interface GetExtensionResult {
     /**
      * Scope at which the extension is installed.
      */
-    readonly scope?: types.outputs.kubernetesconfiguration.v20230501.ScopeResponse;
+    readonly scope?: types.outputs.ScopeResponse;
     /**
      * Status from this extension.
      */
-    readonly statuses?: types.outputs.kubernetesconfiguration.v20230501.ExtensionStatusResponse[];
+    readonly statuses?: types.outputs.ExtensionStatusResponse[];
     /**
      * Top level metadata https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-contracts.md#system-metadata-for-all-azure-resources
      */
-    readonly systemData: types.outputs.kubernetesconfiguration.v20230501.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A managed database resource.
  */
@@ -148,7 +148,7 @@ export interface ManagedDatabaseArgs {
     /**
      * Collation of the metadata catalog.
      */
-    catalogCollation?: pulumi.Input<string | types.enums.v20211101.CatalogCollationType>;
+    catalogCollation?: pulumi.Input<string | types.enums.CatalogCollationType>;
     /**
      * Collation of the managed database.
      */
@@ -156,7 +156,7 @@ export interface ManagedDatabaseArgs {
     /**
      * Managed database create mode. PointInTimeRestore: Create a database by restoring a point in time backup of an existing database. SourceDatabaseName, SourceManagedInstanceName and PointInTime must be specified. RestoreExternalBackup: Create a database by restoring from external backup files. Collation, StorageContainerUri and StorageContainerSasToken must be specified. Recovery: Creates a database by restoring a geo-replicated backup. RecoverableDatabaseId must be specified as the recoverable database resource ID to restore. RestoreLongTermRetentionBackup: Create a database by restoring from a long term retention backup (longTermRetentionBackupResourceId required).
      */
-    createMode?: pulumi.Input<string | types.enums.v20211101.ManagedDatabaseCreateMode>;
+    createMode?: pulumi.Input<string | types.enums.ManagedDatabaseCreateMode>;
     /**
      * The name of the database.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * NamedValue details.
  */
@@ -38,7 +38,7 @@ export class NamedValue extends pulumi.CustomResource {
     /**
      * KeyVault location details of the namedValue.
      */
-    public readonly keyVault!: pulumi.Output<types.outputs.apimanagement.v20220801.KeyVaultContractPropertiesResponse | undefined>;
+    public readonly keyVault!: pulumi.Output<types.outputs.KeyVaultContractPropertiesResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -117,7 +117,7 @@ export interface NamedValueArgs {
     /**
      * KeyVault location details of the namedValue.
      */
-    keyVault?: pulumi.Input<types.inputs.apimanagement.v20220801.KeyVaultContractCreatePropertiesArgs>;
+    keyVault?: pulumi.Input<types.inputs.KeyVaultContractCreatePropertiesArgs>;
     /**
      * Identifier of the NamedValue.
      */

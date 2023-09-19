@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents a server.
  */
@@ -62,7 +62,7 @@ export class Server extends pulumi.CustomResource {
     /**
      * List of private endpoint connections on a server
      */
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.dbformariadb.v20180601.ServerPrivateEndpointConnectionResponse[]>;
+    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.ServerPrivateEndpointConnectionResponse[]>;
     /**
      * Whether or not public network access is allowed for this server. Value is optional but if passed in, must be 'Enabled' or 'Disabled'
      */
@@ -78,7 +78,7 @@ export class Server extends pulumi.CustomResource {
     /**
      * The SKU (pricing tier) of the server.
      */
-    public readonly sku!: pulumi.Output<types.outputs.dbformariadb.v20180601.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Enable ssl enforcement or not when connect to server.
      */
@@ -86,7 +86,7 @@ export class Server extends pulumi.CustomResource {
     /**
      * Storage profile of a server.
      */
-    public /*out*/ readonly storageProfile!: pulumi.Output<types.outputs.dbformariadb.v20180601.StorageProfileResponse | undefined>;
+    public /*out*/ readonly storageProfile!: pulumi.Output<types.outputs.StorageProfileResponse | undefined>;
     /**
      * Resource tags.
      */
@@ -180,7 +180,7 @@ export interface ServerArgs {
     /**
      * Properties of the server.
      */
-    properties: pulumi.Input<types.inputs.dbformariadb.v20180601.ServerPropertiesForDefaultCreateArgs | types.inputs.dbformariadb.v20180601.ServerPropertiesForGeoRestoreArgs | types.inputs.dbformariadb.v20180601.ServerPropertiesForReplicaArgs | types.inputs.dbformariadb.v20180601.ServerPropertiesForRestoreArgs>;
+    properties: pulumi.Input<types.inputs.ServerPropertiesForDefaultCreateArgs | types.inputs.ServerPropertiesForGeoRestoreArgs | types.inputs.ServerPropertiesForReplicaArgs | types.inputs.ServerPropertiesForRestoreArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -192,7 +192,7 @@ export interface ServerArgs {
     /**
      * The SKU (pricing tier) of the server.
      */
-    sku?: pulumi.Input<types.inputs.dbformariadb.v20180601.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Application-specific metadata in the form of key-value pairs.
      */

@@ -39,7 +39,7 @@ export class Gallery extends pulumi.CustomResource {
     /**
      * Describes the gallery unique name.
      */
-    public /*out*/ readonly identifier!: pulumi.Output<types.outputs.compute.GalleryIdentifierResponse | undefined>;
+    public /*out*/ readonly identifier!: pulumi.Output<types.outputs.GalleryIdentifierResponse | undefined>;
     /**
      * Resource location
      */
@@ -55,15 +55,15 @@ export class Gallery extends pulumi.CustomResource {
     /**
      * Profile for gallery sharing to subscription or tenant
      */
-    public readonly sharingProfile!: pulumi.Output<types.outputs.compute.SharingProfileResponse | undefined>;
+    public readonly sharingProfile!: pulumi.Output<types.outputs.SharingProfileResponse | undefined>;
     /**
      * Sharing status of current gallery.
      */
-    public /*out*/ readonly sharingStatus!: pulumi.Output<types.outputs.compute.SharingStatusResponse>;
+    public /*out*/ readonly sharingStatus!: pulumi.Output<types.outputs.SharingStatusResponse>;
     /**
      * Contains information about the soft deletion policy of the gallery.
      */
-    public readonly softDeletePolicy!: pulumi.Output<types.outputs.compute.SoftDeletePolicyResponse | undefined>;
+    public readonly softDeletePolicy!: pulumi.Output<types.outputs.SoftDeletePolicyResponse | undefined>;
     /**
      * Resource tags
      */
@@ -141,11 +141,11 @@ export interface GalleryArgs {
     /**
      * Profile for gallery sharing to subscription or tenant
      */
-    sharingProfile?: pulumi.Input<types.inputs.compute.SharingProfileArgs>;
+    sharingProfile?: pulumi.Input<types.inputs.SharingProfileArgs>;
     /**
      * Contains information about the soft deletion policy of the gallery.
      */
-    softDeletePolicy?: pulumi.Input<types.inputs.compute.SoftDeletePolicyArgs>;
+    softDeletePolicy?: pulumi.Input<types.inputs.SoftDeletePolicyArgs>;
     /**
      * Resource tags
      */

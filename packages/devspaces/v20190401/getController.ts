@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the properties for an Azure Dev Spaces Controller.
  */
@@ -52,7 +52,7 @@ export interface GetControllerResult {
     /**
      * Model representing SKU for Azure Dev Spaces Controller.
      */
-    readonly sku: types.outputs.devspaces.v20190401.SkuResponse;
+    readonly sku: types.outputs.SkuResponse;
     /**
      * Tags for the Azure resource.
      */

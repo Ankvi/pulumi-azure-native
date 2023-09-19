@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves a network manager security user configuration.
  */
@@ -72,7 +72,7 @@ export interface GetSecurityUserConfigurationResult {
     /**
      * The system metadata related to this resource.
      */
-    readonly systemData: types.outputs.network.v20210501preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource type.
      */

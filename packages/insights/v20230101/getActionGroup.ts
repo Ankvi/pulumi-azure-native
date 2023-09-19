@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get an action group.
  */
@@ -31,23 +31,23 @@ export interface GetActionGroupResult {
     /**
      * The list of ARM role receivers that are part of this action group. Roles are Azure RBAC roles and only built-in roles are supported.
      */
-    readonly armRoleReceivers?: types.outputs.insights.v20230101.ArmRoleReceiverResponse[];
+    readonly armRoleReceivers?: types.outputs.ArmRoleReceiverResponse[];
     /**
      * The list of AutomationRunbook receivers that are part of this action group.
      */
-    readonly automationRunbookReceivers?: types.outputs.insights.v20230101.AutomationRunbookReceiverResponse[];
+    readonly automationRunbookReceivers?: types.outputs.AutomationRunbookReceiverResponse[];
     /**
      * The list of AzureAppPush receivers that are part of this action group.
      */
-    readonly azureAppPushReceivers?: types.outputs.insights.v20230101.AzureAppPushReceiverResponse[];
+    readonly azureAppPushReceivers?: types.outputs.AzureAppPushReceiverResponse[];
     /**
      * The list of azure function receivers that are part of this action group.
      */
-    readonly azureFunctionReceivers?: types.outputs.insights.v20230101.AzureFunctionReceiverResponse[];
+    readonly azureFunctionReceivers?: types.outputs.AzureFunctionReceiverResponse[];
     /**
      * The list of email receivers that are part of this action group.
      */
-    readonly emailReceivers?: types.outputs.insights.v20230101.EmailReceiverResponse[];
+    readonly emailReceivers?: types.outputs.EmailReceiverResponse[];
     /**
      * Indicates whether this action group is enabled. If an action group is not enabled, then none of its receivers will receive communications.
      */
@@ -55,7 +55,7 @@ export interface GetActionGroupResult {
     /**
      * The list of event hub receivers that are part of this action group.
      */
-    readonly eventHubReceivers?: types.outputs.insights.v20230101.EventHubReceiverResponse[];
+    readonly eventHubReceivers?: types.outputs.EventHubReceiverResponse[];
     /**
      * The short name of the action group. This will be used in SMS messages.
      */
@@ -67,7 +67,7 @@ export interface GetActionGroupResult {
     /**
      * The list of ITSM receivers that are part of this action group.
      */
-    readonly itsmReceivers?: types.outputs.insights.v20230101.ItsmReceiverResponse[];
+    readonly itsmReceivers?: types.outputs.ItsmReceiverResponse[];
     /**
      * Resource location
      */
@@ -75,7 +75,7 @@ export interface GetActionGroupResult {
     /**
      * The list of logic app receivers that are part of this action group.
      */
-    readonly logicAppReceivers?: types.outputs.insights.v20230101.LogicAppReceiverResponse[];
+    readonly logicAppReceivers?: types.outputs.LogicAppReceiverResponse[];
     /**
      * Azure resource name
      */
@@ -83,7 +83,7 @@ export interface GetActionGroupResult {
     /**
      * The list of SMS receivers that are part of this action group.
      */
-    readonly smsReceivers?: types.outputs.insights.v20230101.SmsReceiverResponse[];
+    readonly smsReceivers?: types.outputs.SmsReceiverResponse[];
     /**
      * Resource tags
      */
@@ -95,11 +95,11 @@ export interface GetActionGroupResult {
     /**
      * The list of voice receivers that are part of this action group.
      */
-    readonly voiceReceivers?: types.outputs.insights.v20230101.VoiceReceiverResponse[];
+    readonly voiceReceivers?: types.outputs.VoiceReceiverResponse[];
     /**
      * The list of webhook receivers that are part of this action group.
      */
-    readonly webhookReceivers?: types.outputs.insights.v20230101.WebhookReceiverResponse[];
+    readonly webhookReceivers?: types.outputs.WebhookReceiverResponse[];
 }
 /**
  * Get an action group.

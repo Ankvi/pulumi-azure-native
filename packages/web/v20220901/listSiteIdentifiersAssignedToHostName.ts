@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Description for List all apps that are assigned to a hostname.
  */
@@ -31,7 +31,7 @@ export interface ListSiteIdentifiersAssignedToHostNameResult {
     /**
      * Collection of resources.
      */
-    readonly value: types.outputs.web.v20220901.IdentifierResponse[];
+    readonly value: types.outputs.IdentifierResponse[];
 }
 /**
  * Description for List all apps that are assigned to a hostname.

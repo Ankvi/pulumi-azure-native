@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The Media Graph.
  */
@@ -50,11 +50,11 @@ export class MediaGraph extends pulumi.CustomResource {
     /**
      * Media Graph sinks.
      */
-    public readonly sinks!: pulumi.Output<types.outputs.media.v20200201preview.MediaGraphAssetSinkResponse[]>;
+    public readonly sinks!: pulumi.Output<types.outputs.MediaGraphAssetSinkResponse[]>;
     /**
      * Media Graph sources.
      */
-    public readonly sources!: pulumi.Output<types.outputs.media.v20200201preview.MediaGraphRtspSourceResponse[]>;
+    public readonly sources!: pulumi.Output<types.outputs.MediaGraphRtspSourceResponse[]>;
     /**
      * Media Graph state which indicates the resource allocation status for running the media graph pipeline.
      */
@@ -138,9 +138,9 @@ export interface MediaGraphArgs {
     /**
      * Media Graph sinks.
      */
-    sinks: pulumi.Input<pulumi.Input<types.inputs.media.v20200201preview.MediaGraphAssetSinkArgs>[]>;
+    sinks: pulumi.Input<pulumi.Input<types.inputs.MediaGraphAssetSinkArgs>[]>;
     /**
      * Media Graph sources.
      */
-    sources: pulumi.Input<pulumi.Input<types.inputs.media.v20200201preview.MediaGraphRtspSourceArgs>[]>;
+    sources: pulumi.Input<pulumi.Input<types.inputs.MediaGraphRtspSourceArgs>[]>;
 }

@@ -57,11 +57,11 @@ export interface GetEntitiesGetTimelineResult {
     /**
      * The metadata from the timeline operation results.
      */
-    readonly metaData?: types.outputs.securityinsights.TimelineResultsMetadataResponse;
+    readonly metaData?: types.outputs.TimelineResultsMetadataResponse;
     /**
      * The timeline result values.
      */
-    readonly value?: (types.outputs.securityinsights.ActivityTimelineItemResponse | types.outputs.securityinsights.AnomalyTimelineItemResponse | types.outputs.securityinsights.BookmarkTimelineItemResponse | types.outputs.securityinsights.SecurityAlertTimelineItemResponse)[];
+    readonly value?: (types.outputs.ActivityTimelineItemResponse | types.outputs.AnomalyTimelineItemResponse | types.outputs.BookmarkTimelineItemResponse | types.outputs.SecurityAlertTimelineItemResponse)[];
 }
 /**
  * Timeline for an entity.

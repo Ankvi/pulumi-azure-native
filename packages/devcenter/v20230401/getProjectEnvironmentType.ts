@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a project environment type.
  */
@@ -36,7 +36,7 @@ export interface GetProjectEnvironmentTypeResult {
     /**
      * The role definition assigned to the environment creator on backing resources.
      */
-    readonly creatorRoleAssignment?: types.outputs.devcenter.v20230401.ProjectEnvironmentTypeUpdatePropertiesResponseCreatorRoleAssignment;
+    readonly creatorRoleAssignment?: types.outputs.ProjectEnvironmentTypeUpdatePropertiesResponseCreatorRoleAssignment;
     /**
      * Id of a subscription that the environment type will be mapped to. The environment's resources will be deployed into this subscription.
      */
@@ -48,7 +48,7 @@ export interface GetProjectEnvironmentTypeResult {
     /**
      * Managed identity properties
      */
-    readonly identity?: types.outputs.devcenter.v20230401.ManagedServiceIdentityResponse;
+    readonly identity?: types.outputs.ManagedServiceIdentityResponse;
     /**
      * The geo-location for the environment type
      */
@@ -68,7 +68,7 @@ export interface GetProjectEnvironmentTypeResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.devcenter.v20230401.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -80,7 +80,7 @@ export interface GetProjectEnvironmentTypeResult {
     /**
      * Role Assignments created on environment backing resources. This is a mapping from a user object ID to an object of role definition IDs.
      */
-    readonly userRoleAssignments?: {[key: string]: types.outputs.devcenter.v20230401.UserRoleAssignmentResponse};
+    readonly userRoleAssignments?: {[key: string]: types.outputs.UserRoleAssignmentResponse};
 }
 /**
  * Gets a project environment type.

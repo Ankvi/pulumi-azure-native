@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a DataSet in a share
  */
@@ -70,11 +70,11 @@ export interface GetKustoTableDataSetResult {
     /**
      * System Data of the Azure resource.
      */
-    readonly systemData: types.outputs.datashare.v20210801.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Table level sharing properties for kusto database
      */
-    readonly tableLevelSharingProperties: types.outputs.datashare.v20210801.TableLevelSharingPropertiesResponse;
+    readonly tableLevelSharingProperties: types.outputs.TableLevelSharingPropertiesResponse;
     /**
      * Type of the azure resource
      */

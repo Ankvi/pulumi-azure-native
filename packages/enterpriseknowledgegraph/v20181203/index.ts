@@ -13,7 +13,7 @@ utilities.lazyLoad(exports, ["getEnterpriseKnowledgeGraph","getEnterpriseKnowled
 
 
 // Export enums:
-export * from "../types/enums/v20181203";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Access policies help define the authentication rules, and control access to specific video resources.
  */
@@ -34,7 +34,7 @@ export class AccessPolicy extends pulumi.CustomResource {
     /**
      * Authentication method to be used when validating client API access.
      */
-    public readonly authentication!: pulumi.Output<types.outputs.videoanalyzer.v20211101preview.JwtAuthenticationResponse | undefined>;
+    public readonly authentication!: pulumi.Output<types.outputs.JwtAuthenticationResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -46,7 +46,7 @@ export class AccessPolicy extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.videoanalyzer.v20211101preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -106,7 +106,7 @@ export interface AccessPolicyArgs {
     /**
      * Authentication method to be used when validating client API access.
      */
-    authentication?: pulumi.Input<types.inputs.videoanalyzer.v20211101preview.JwtAuthenticationArgs>;
+    authentication?: pulumi.Input<types.inputs.JwtAuthenticationArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -114,5 +114,5 @@ export interface AccessPolicyArgs {
     /**
      * Defines the access level granted by this policy.
      */
-    role?: pulumi.Input<string | types.enums.v20211101preview.AccessPolicyRole>;
+    role?: pulumi.Input<string | types.enums.AccessPolicyRole>;
 }

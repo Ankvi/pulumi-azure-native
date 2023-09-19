@@ -23,7 +23,7 @@ utilities.lazyLoad(exports, ["ServerGroup"], () => require("./serverGroup"));
 
 
 // Export enums:
-export * from "../types/enums/v20201005privatepreview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

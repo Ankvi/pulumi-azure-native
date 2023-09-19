@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Lists the IDs of all provisioned SIMs in a mobile network
  */
@@ -35,7 +35,7 @@ export interface ListMobileNetworkSimIdsResult {
     /**
      * A list of SIM IDs.
      */
-    readonly value?: types.outputs.mobilenetwork.v20220401preview.SubResourceResponse[];
+    readonly value?: types.outputs.SubResourceResponse[];
 }
 /**
  * Lists the IDs of all provisioned SIMs in a mobile network

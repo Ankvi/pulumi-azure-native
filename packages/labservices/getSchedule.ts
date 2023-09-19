@@ -53,7 +53,7 @@ export interface GetScheduleResult {
     /**
      * The recurrence pattern of the scheduled actions.
      */
-    readonly recurrencePattern?: types.outputs.labservices.RecurrencePatternResponse;
+    readonly recurrencePattern?: types.outputs.RecurrencePatternResponse;
     /**
      * When lab user virtual machines will be started. Timestamp offsets will be ignored and timeZoneId is used instead.
      */
@@ -65,7 +65,7 @@ export interface GetScheduleResult {
     /**
      * Metadata pertaining to creation and last modification of the schedule.
      */
-    readonly systemData: types.outputs.labservices.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The IANA timezone id for the schedule.
      */

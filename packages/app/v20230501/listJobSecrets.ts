@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Container Apps Job Secrets Collection ARM resource.
  */
@@ -31,7 +31,7 @@ export interface ListJobSecretsResult {
     /**
      * Collection of resources.
      */
-    readonly value: types.outputs.app.v20230501.SecretResponse[];
+    readonly value: types.outputs.SecretResponse[];
 }
 /**
  * Container Apps Job Secrets Collection ARM resource.

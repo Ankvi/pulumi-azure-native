@@ -67,7 +67,7 @@ export class BastionHost extends pulumi.CustomResource {
     /**
      * IP configuration of the Bastion Host resource.
      */
-    public readonly ipConfigurations!: pulumi.Output<types.outputs.network.BastionHostIPConfigurationResponse[] | undefined>;
+    public readonly ipConfigurations!: pulumi.Output<types.outputs.BastionHostIPConfigurationResponse[] | undefined>;
     /**
      * Resource location.
      */
@@ -87,7 +87,7 @@ export class BastionHost extends pulumi.CustomResource {
     /**
      * The sku of this Bastion Host.
      */
-    public readonly sku!: pulumi.Output<types.outputs.network.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Resource tags.
      */
@@ -198,7 +198,7 @@ export interface BastionHostArgs {
     /**
      * IP configuration of the Bastion Host resource.
      */
-    ipConfigurations?: pulumi.Input<pulumi.Input<types.inputs.network.BastionHostIPConfigurationArgs>[]>;
+    ipConfigurations?: pulumi.Input<pulumi.Input<types.inputs.BastionHostIPConfigurationArgs>[]>;
     /**
      * Resource location.
      */
@@ -214,7 +214,7 @@ export interface BastionHostArgs {
     /**
      * The sku of this Bastion Host.
      */
-    sku?: pulumi.Input<types.inputs.network.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Resource tags.
      */

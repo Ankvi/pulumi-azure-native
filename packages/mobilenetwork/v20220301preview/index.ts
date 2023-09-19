@@ -23,7 +23,7 @@ utilities.lazyLoad(exports, ["Sim"], () => require("./sim"));
 
 
 // Export enums:
-export * from "../types/enums/v20220301preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

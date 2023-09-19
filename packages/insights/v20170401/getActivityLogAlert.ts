@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get an activity log alert.
  */
@@ -31,11 +31,11 @@ export interface GetActivityLogAlertResult {
     /**
      * The actions that will activate when the condition is met.
      */
-    readonly actions: types.outputs.insights.v20170401.ActivityLogAlertActionListResponse;
+    readonly actions: types.outputs.ActivityLogAlertActionListResponse;
     /**
      * The condition that will cause this alert to activate.
      */
-    readonly condition: types.outputs.insights.v20170401.ActivityLogAlertAllOfConditionResponse;
+    readonly condition: types.outputs.ActivityLogAlertAllOfConditionResponse;
     /**
      * A description of this activity log alert.
      */

@@ -43,11 +43,11 @@ export class PrivateLinkScope extends pulumi.CustomResource {
     /**
      * Properties that define a Azure Arc PrivateLinkScope resource.
      */
-    public readonly properties!: pulumi.Output<types.outputs.kubernetesconfiguration.KubernetesConfigurationPrivateLinkScopePropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.KubernetesConfigurationPrivateLinkScopePropertiesResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.kubernetesconfiguration.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -105,7 +105,7 @@ export interface PrivateLinkScopeArgs {
     /**
      * Properties that define a Azure Arc PrivateLinkScope resource.
      */
-    properties?: pulumi.Input<types.inputs.kubernetesconfiguration.KubernetesConfigurationPrivateLinkScopePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.KubernetesConfigurationPrivateLinkScopePropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

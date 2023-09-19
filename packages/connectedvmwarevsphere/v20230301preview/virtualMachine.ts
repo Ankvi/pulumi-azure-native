@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Define the virtualMachine.
  */
@@ -38,7 +38,7 @@ export class VirtualMachine extends pulumi.CustomResource {
     /**
      * Gets or sets the extended location.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.connectedvmwarevsphere.v20230301preview.ExtendedLocationResponse | undefined>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
     /**
      * Firmware type
      */
@@ -50,15 +50,15 @@ export class VirtualMachine extends pulumi.CustomResource {
     /**
      * Guest agent status properties.
      */
-    public readonly guestAgentProfile!: pulumi.Output<types.outputs.connectedvmwarevsphere.v20230301preview.GuestAgentProfileResponse | undefined>;
+    public readonly guestAgentProfile!: pulumi.Output<types.outputs.GuestAgentProfileResponse | undefined>;
     /**
      * Hardware properties.
      */
-    public readonly hardwareProfile!: pulumi.Output<types.outputs.connectedvmwarevsphere.v20230301preview.HardwareProfileResponse | undefined>;
+    public readonly hardwareProfile!: pulumi.Output<types.outputs.HardwareProfileResponse | undefined>;
     /**
      * The identity of the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.connectedvmwarevsphere.v20230301preview.IdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityResponse | undefined>;
     /**
      * Gets or sets the instance uuid of the vm.
      */
@@ -90,15 +90,15 @@ export class VirtualMachine extends pulumi.CustomResource {
     /**
      * Network properties.
      */
-    public readonly networkProfile!: pulumi.Output<types.outputs.connectedvmwarevsphere.v20230301preview.NetworkProfileResponse | undefined>;
+    public readonly networkProfile!: pulumi.Output<types.outputs.NetworkProfileResponse | undefined>;
     /**
      * OS properties.
      */
-    public readonly osProfile!: pulumi.Output<types.outputs.connectedvmwarevsphere.v20230301preview.OsProfileResponse | undefined>;
+    public readonly osProfile!: pulumi.Output<types.outputs.OsProfileResponse | undefined>;
     /**
      * Placement properties.
      */
-    public readonly placementProfile!: pulumi.Output<types.outputs.connectedvmwarevsphere.v20230301preview.PlacementProfileResponse | undefined>;
+    public readonly placementProfile!: pulumi.Output<types.outputs.PlacementProfileResponse | undefined>;
     /**
      * Gets the power state of the virtual machine.
      */
@@ -115,7 +115,7 @@ export class VirtualMachine extends pulumi.CustomResource {
     /**
      * Gets the security profile.
      */
-    public readonly securityProfile!: pulumi.Output<types.outputs.connectedvmwarevsphere.v20230301preview.SecurityProfileResponse | undefined>;
+    public readonly securityProfile!: pulumi.Output<types.outputs.SecurityProfileResponse | undefined>;
     /**
      * Gets or sets the SMBIOS UUID of the vm.
      */
@@ -123,15 +123,15 @@ export class VirtualMachine extends pulumi.CustomResource {
     /**
      * The resource status information.
      */
-    public /*out*/ readonly statuses!: pulumi.Output<types.outputs.connectedvmwarevsphere.v20230301preview.ResourceStatusResponse[]>;
+    public /*out*/ readonly statuses!: pulumi.Output<types.outputs.ResourceStatusResponse[]>;
     /**
      * Storage properties.
      */
-    public readonly storageProfile!: pulumi.Output<types.outputs.connectedvmwarevsphere.v20230301preview.StorageProfileResponse | undefined>;
+    public readonly storageProfile!: pulumi.Output<types.outputs.StorageProfileResponse | undefined>;
     /**
      * The system data.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.connectedvmwarevsphere.v20230301preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Gets or sets the Resource tags.
      */
@@ -251,23 +251,23 @@ export interface VirtualMachineArgs {
     /**
      * Gets or sets the extended location.
      */
-    extendedLocation?: pulumi.Input<types.inputs.connectedvmwarevsphere.v20230301preview.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * Firmware type
      */
-    firmwareType?: pulumi.Input<string | types.enums.v20230301preview.FirmwareType>;
+    firmwareType?: pulumi.Input<string | types.enums.FirmwareType>;
     /**
      * Guest agent status properties.
      */
-    guestAgentProfile?: pulumi.Input<types.inputs.connectedvmwarevsphere.v20230301preview.GuestAgentProfileArgs>;
+    guestAgentProfile?: pulumi.Input<types.inputs.GuestAgentProfileArgs>;
     /**
      * Hardware properties.
      */
-    hardwareProfile?: pulumi.Input<types.inputs.connectedvmwarevsphere.v20230301preview.HardwareProfileArgs>;
+    hardwareProfile?: pulumi.Input<types.inputs.HardwareProfileArgs>;
     /**
      * The identity of the resource.
      */
-    identity?: pulumi.Input<types.inputs.connectedvmwarevsphere.v20230301preview.IdentityArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityArgs>;
     /**
      * Gets or sets the inventory Item ID for the virtual machine.
      */
@@ -287,15 +287,15 @@ export interface VirtualMachineArgs {
     /**
      * Network properties.
      */
-    networkProfile?: pulumi.Input<types.inputs.connectedvmwarevsphere.v20230301preview.NetworkProfileArgs>;
+    networkProfile?: pulumi.Input<types.inputs.NetworkProfileArgs>;
     /**
      * OS properties.
      */
-    osProfile?: pulumi.Input<types.inputs.connectedvmwarevsphere.v20230301preview.OsProfileArgs>;
+    osProfile?: pulumi.Input<types.inputs.OsProfileArgs>;
     /**
      * Placement properties.
      */
-    placementProfile?: pulumi.Input<types.inputs.connectedvmwarevsphere.v20230301preview.PlacementProfileArgs>;
+    placementProfile?: pulumi.Input<types.inputs.PlacementProfileArgs>;
     /**
      * The Resource Group Name.
      */
@@ -308,7 +308,7 @@ export interface VirtualMachineArgs {
     /**
      * Gets the security profile.
      */
-    securityProfile?: pulumi.Input<types.inputs.connectedvmwarevsphere.v20230301preview.SecurityProfileArgs>;
+    securityProfile?: pulumi.Input<types.inputs.SecurityProfileArgs>;
     /**
      * Gets or sets the SMBIOS UUID of the vm.
      */
@@ -316,7 +316,7 @@ export interface VirtualMachineArgs {
     /**
      * Storage properties.
      */
-    storageProfile?: pulumi.Input<types.inputs.connectedvmwarevsphere.v20230301preview.StorageProfileArgs>;
+    storageProfile?: pulumi.Input<types.inputs.StorageProfileArgs>;
     /**
      * Gets or sets the Resource tags.
      */

@@ -61,7 +61,7 @@ export interface GetNetworkVirtualApplianceConnectionResult {
     /**
      * The Routing Configuration indicating the associated and propagated route tables on this connection.
      */
-    readonly routingConfiguration?: types.outputs.network.RoutingConfigurationNfvResponse;
+    readonly routingConfiguration?: types.outputs.RoutingConfigurationNfvResponse;
     /**
      * Unique identifier for the connection.
      */

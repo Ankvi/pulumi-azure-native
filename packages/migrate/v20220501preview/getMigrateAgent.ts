@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the details of the modernizeProject agent.
  */
@@ -49,8 +49,8 @@ export interface GetMigrateAgentResult {
     /**
      * MigrateAgent model properties.
      */
-    readonly properties: types.outputs.migrate.v20220501preview.MigrateAgentModelPropertiesResponse;
-    readonly systemData: types.outputs.migrate.v20220501preview.MigrateAgentModelResponseSystemData;
+    readonly properties: types.outputs.MigrateAgentModelPropertiesResponse;
+    readonly systemData: types.outputs.MigrateAgentModelResponseSystemData;
     /**
      * Gets or sets the resource tags.
      */

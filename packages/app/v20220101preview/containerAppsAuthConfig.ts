@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Configuration settings for the Azure ContainerApp Service Authentication / Authorization feature.
  */
@@ -34,19 +34,19 @@ export class ContainerAppsAuthConfig extends pulumi.CustomResource {
     /**
      * The configuration settings that determines the validation flow of users using  Service Authentication/Authorization.
      */
-    public readonly globalValidation!: pulumi.Output<types.outputs.app.v20220101preview.GlobalValidationResponse | undefined>;
+    public readonly globalValidation!: pulumi.Output<types.outputs.GlobalValidationResponse | undefined>;
     /**
      * The configuration settings of the HTTP requests for authentication and authorization requests made against ContainerApp Service Authentication/Authorization.
      */
-    public readonly httpSettings!: pulumi.Output<types.outputs.app.v20220101preview.HttpSettingsResponse | undefined>;
+    public readonly httpSettings!: pulumi.Output<types.outputs.HttpSettingsResponse | undefined>;
     /**
      * The configuration settings of each of the identity providers used to configure ContainerApp Service Authentication/Authorization.
      */
-    public readonly identityProviders!: pulumi.Output<types.outputs.app.v20220101preview.IdentityProvidersResponse | undefined>;
+    public readonly identityProviders!: pulumi.Output<types.outputs.IdentityProvidersResponse | undefined>;
     /**
      * The configuration settings of the login flow of users using ContainerApp Service Authentication/Authorization.
      */
-    public readonly login!: pulumi.Output<types.outputs.app.v20220101preview.LoginResponse | undefined>;
+    public readonly login!: pulumi.Output<types.outputs.LoginResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -54,11 +54,11 @@ export class ContainerAppsAuthConfig extends pulumi.CustomResource {
     /**
      * The configuration settings of the platform of ContainerApp Service Authentication/Authorization.
      */
-    public readonly platform!: pulumi.Output<types.outputs.app.v20220101preview.AuthPlatformResponse | undefined>;
+    public readonly platform!: pulumi.Output<types.outputs.AuthPlatformResponse | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.app.v20220101preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -119,19 +119,19 @@ export interface ContainerAppsAuthConfigArgs {
     /**
      * The configuration settings that determines the validation flow of users using  Service Authentication/Authorization.
      */
-    globalValidation?: pulumi.Input<types.inputs.app.v20220101preview.GlobalValidationArgs>;
+    globalValidation?: pulumi.Input<types.inputs.GlobalValidationArgs>;
     /**
      * The configuration settings of the HTTP requests for authentication and authorization requests made against ContainerApp Service Authentication/Authorization.
      */
-    httpSettings?: pulumi.Input<types.inputs.app.v20220101preview.HttpSettingsArgs>;
+    httpSettings?: pulumi.Input<types.inputs.HttpSettingsArgs>;
     /**
      * The configuration settings of each of the identity providers used to configure ContainerApp Service Authentication/Authorization.
      */
-    identityProviders?: pulumi.Input<types.inputs.app.v20220101preview.IdentityProvidersArgs>;
+    identityProviders?: pulumi.Input<types.inputs.IdentityProvidersArgs>;
     /**
      * The configuration settings of the login flow of users using ContainerApp Service Authentication/Authorization.
      */
-    login?: pulumi.Input<types.inputs.app.v20220101preview.LoginArgs>;
+    login?: pulumi.Input<types.inputs.LoginArgs>;
     /**
      * Name of the Container App AuthConfig.
      */
@@ -139,7 +139,7 @@ export interface ContainerAppsAuthConfigArgs {
     /**
      * The configuration settings of the platform of ContainerApp Service Authentication/Authorization.
      */
-    platform?: pulumi.Input<types.inputs.app.v20220101preview.AuthPlatformArgs>;
+    platform?: pulumi.Input<types.inputs.AuthPlatformArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

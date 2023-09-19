@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The assembly definition.
  */
@@ -42,7 +42,7 @@ export class IntegrationAccountAssembly extends pulumi.CustomResource {
     /**
      * The assembly properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.logic.v20190501.AssemblyPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.AssemblyPropertiesResponse>;
     /**
      * The resource tags.
      */
@@ -113,7 +113,7 @@ export interface IntegrationAccountAssemblyArgs {
     /**
      * The assembly properties.
      */
-    properties: pulumi.Input<types.inputs.logic.v20190501.AssemblyPropertiesArgs>;
+    properties: pulumi.Input<types.inputs.AssemblyPropertiesArgs>;
     /**
      * The resource group name.
      */

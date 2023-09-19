@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get information about a Automanage account
  */
@@ -35,7 +35,7 @@ export interface GetAccountResult {
     /**
      * The identity of the Automanage account.
      */
-    readonly identity?: types.outputs.automanage.v20200630preview.AccountIdentityResponse;
+    readonly identity?: types.outputs.AccountIdentityResponse;
     /**
      * The geo-location where the resource lives
      */

@@ -1,0 +1,37 @@
+export const ResourceIdentityType = {
+    SystemAssigned: "SystemAssigned",
+} as const;
+
+export type ResourceIdentityType = (typeof ResourceIdentityType)[keyof typeof ResourceIdentityType];
+
+export const ScalingHostPoolType = {
+    /**
+     * Users get a new (random) SessionHost every time it connects to the HostPool.
+     */
+    Pooled: "Pooled",
+} as const;
+
+export type ScalingHostPoolType = (typeof ScalingHostPoolType)[keyof typeof ScalingHostPoolType];
+
+export const SessionHostLoadBalancingAlgorithm = {
+    BreadthFirst: "BreadthFirst",
+    DepthFirst: "DepthFirst",
+} as const;
+
+export type SessionHostLoadBalancingAlgorithm = (typeof SessionHostLoadBalancingAlgorithm)[keyof typeof SessionHostLoadBalancingAlgorithm];
+
+export const SkuTier = {
+    Free: "Free",
+    Basic: "Basic",
+    Standard: "Standard",
+    Premium: "Premium",
+} as const;
+
+export type SkuTier = (typeof SkuTier)[keyof typeof SkuTier];
+
+export const StopHostsWhen = {
+    ZeroSessions: "ZeroSessions",
+    ZeroActiveSessions: "ZeroActiveSessions",
+} as const;
+
+export type StopHostsWhen = (typeof StopHostsWhen)[keyof typeof StopHostsWhen];

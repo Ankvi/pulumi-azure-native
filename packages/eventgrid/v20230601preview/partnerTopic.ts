@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Event Grid Partner Topic.
  */
@@ -38,7 +38,7 @@ export class PartnerTopic extends pulumi.CustomResource {
     /**
      * Event Type information from the corresponding event channel.
      */
-    public readonly eventTypeInfo!: pulumi.Output<types.outputs.eventgrid.v20230601preview.EventTypeInfoResponse | undefined>;
+    public readonly eventTypeInfo!: pulumi.Output<types.outputs.EventTypeInfoResponse | undefined>;
     /**
      * Expiration time of the partner topic. If this timer expires while the partner topic is still never activated,
      * the partner topic and corresponding event channel are deleted.
@@ -47,7 +47,7 @@ export class PartnerTopic extends pulumi.CustomResource {
     /**
      * Identity information for the Partner Topic resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.eventgrid.v20230601preview.IdentityInfoResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityInfoResponse | undefined>;
     /**
      * Location of the resource.
      */
@@ -80,7 +80,7 @@ export class PartnerTopic extends pulumi.CustomResource {
     /**
      * The system metadata relating to Partner Topic resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.eventgrid.v20230601preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Tags of the resource.
      */
@@ -150,11 +150,11 @@ export interface PartnerTopicArgs {
     /**
      * Activation state of the partner topic.
      */
-    activationState?: pulumi.Input<string | types.enums.v20230601preview.PartnerTopicActivationState>;
+    activationState?: pulumi.Input<string | types.enums.PartnerTopicActivationState>;
     /**
      * Event Type information from the corresponding event channel.
      */
-    eventTypeInfo?: pulumi.Input<types.inputs.eventgrid.v20230601preview.EventTypeInfoArgs>;
+    eventTypeInfo?: pulumi.Input<types.inputs.EventTypeInfoArgs>;
     /**
      * Expiration time of the partner topic. If this timer expires while the partner topic is still never activated,
      * the partner topic and corresponding event channel are deleted.
@@ -163,7 +163,7 @@ export interface PartnerTopicArgs {
     /**
      * Identity information for the Partner Topic resource.
      */
-    identity?: pulumi.Input<types.inputs.eventgrid.v20230601preview.IdentityInfoArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityInfoArgs>;
     /**
      * Location of the resource.
      */

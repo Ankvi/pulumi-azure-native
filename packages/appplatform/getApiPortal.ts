@@ -45,15 +45,15 @@ export interface GetApiPortalResult {
     /**
      * API portal properties payload
      */
-    readonly properties: types.outputs.appplatform.ApiPortalPropertiesResponse;
+    readonly properties: types.outputs.ApiPortalPropertiesResponse;
     /**
      * Sku of the API portal resource
      */
-    readonly sku?: types.outputs.appplatform.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.appplatform.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource.
      */

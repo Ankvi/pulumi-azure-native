@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents an instance of an auto scale v-core resource.
  */
@@ -54,11 +54,11 @@ export class AutoScaleVCore extends pulumi.CustomResource {
     /**
      * The SKU of the auto scale v-core resource.
      */
-    public readonly sku!: pulumi.Output<types.outputs.powerbidedicated.v20210101.AutoScaleVCoreSkuResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.AutoScaleVCoreSkuResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public readonly systemData!: pulumi.Output<types.outputs.powerbidedicated.v20210101.SystemDataResponse | undefined>;
+    public readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse | undefined>;
     /**
      * Key-value pairs of additional resource provisioning properties.
      */
@@ -137,11 +137,11 @@ export interface AutoScaleVCoreArgs {
     /**
      * The SKU of the auto scale v-core resource.
      */
-    sku: pulumi.Input<types.inputs.powerbidedicated.v20210101.AutoScaleVCoreSkuArgs>;
+    sku: pulumi.Input<types.inputs.AutoScaleVCoreSkuArgs>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    systemData?: pulumi.Input<types.inputs.powerbidedicated.v20210101.SystemDataArgs>;
+    systemData?: pulumi.Input<types.inputs.SystemDataArgs>;
     /**
      * Key-value pairs of additional resource provisioning properties.
      */

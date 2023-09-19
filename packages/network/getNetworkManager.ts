@@ -56,7 +56,7 @@ export interface GetNetworkManagerResult {
     /**
      * Scope of Network Manager.
      */
-    readonly networkManagerScopes: types.outputs.network.NetworkManagerPropertiesResponseNetworkManagerScopes;
+    readonly networkManagerScopes: types.outputs.NetworkManagerPropertiesResponseNetworkManagerScopes;
     /**
      * The provisioning state of the network manager resource.
      */
@@ -68,7 +68,7 @@ export interface GetNetworkManagerResult {
     /**
      * The system metadata related to this resource.
      */
-    readonly systemData: types.outputs.network.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

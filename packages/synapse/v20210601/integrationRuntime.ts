@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Integration runtime resource type.
  */
@@ -42,7 +42,7 @@ export class IntegrationRuntime extends pulumi.CustomResource {
     /**
      * Integration runtime properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.synapse.v20210601.ManagedIntegrationRuntimeResponse | types.outputs.synapse.v20210601.SelfHostedIntegrationRuntimeResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ManagedIntegrationRuntimeResponse | types.outputs.SelfHostedIntegrationRuntimeResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -99,7 +99,7 @@ export interface IntegrationRuntimeArgs {
     /**
      * Integration runtime properties.
      */
-    properties: pulumi.Input<types.inputs.synapse.v20210601.ManagedIntegrationRuntimeArgs | types.inputs.synapse.v20210601.SelfHostedIntegrationRuntimeArgs>;
+    properties: pulumi.Input<types.inputs.ManagedIntegrationRuntimeArgs | types.inputs.SelfHostedIntegrationRuntimeArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

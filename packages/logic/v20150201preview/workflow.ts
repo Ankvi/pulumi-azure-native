@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 export class Workflow extends pulumi.CustomResource {
     /**
      * Get an existing Workflow resource's state with the given name, ID, and optional extra
@@ -47,7 +47,7 @@ export class Workflow extends pulumi.CustomResource {
     /**
      * Gets or sets the link to definition.
      */
-    public readonly definitionLink!: pulumi.Output<types.outputs.logic.v20150201preview.ContentLinkResponse | undefined>;
+    public readonly definitionLink!: pulumi.Output<types.outputs.ContentLinkResponse | undefined>;
     /**
      * Gets or sets the resource location.
      */
@@ -59,11 +59,11 @@ export class Workflow extends pulumi.CustomResource {
     /**
      * Gets or sets the parameters.
      */
-    public readonly parameters!: pulumi.Output<{[key: string]: types.outputs.logic.v20150201preview.WorkflowParameterResponse} | undefined>;
+    public readonly parameters!: pulumi.Output<{[key: string]: types.outputs.WorkflowParameterResponse} | undefined>;
     /**
      * Gets or sets the link to parameters.
      */
-    public readonly parametersLink!: pulumi.Output<types.outputs.logic.v20150201preview.ContentLinkResponse | undefined>;
+    public readonly parametersLink!: pulumi.Output<types.outputs.ContentLinkResponse | undefined>;
     /**
      * Gets the provisioning state.
      */
@@ -71,7 +71,7 @@ export class Workflow extends pulumi.CustomResource {
     /**
      * Gets or sets the sku.
      */
-    public readonly sku!: pulumi.Output<types.outputs.logic.v20150201preview.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Gets or sets the state.
      */
@@ -156,7 +156,7 @@ export interface WorkflowArgs {
     /**
      * Gets or sets the link to definition.
      */
-    definitionLink?: pulumi.Input<types.inputs.logic.v20150201preview.ContentLinkArgs>;
+    definitionLink?: pulumi.Input<types.inputs.ContentLinkArgs>;
     /**
      * Gets or sets the resource id.
      */
@@ -172,11 +172,11 @@ export interface WorkflowArgs {
     /**
      * Gets or sets the parameters.
      */
-    parameters?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.logic.v20150201preview.WorkflowParameterArgs>}>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.WorkflowParameterArgs>}>;
     /**
      * Gets or sets the link to parameters.
      */
-    parametersLink?: pulumi.Input<types.inputs.logic.v20150201preview.ContentLinkArgs>;
+    parametersLink?: pulumi.Input<types.inputs.ContentLinkArgs>;
     /**
      * The resource group name.
      */
@@ -184,11 +184,11 @@ export interface WorkflowArgs {
     /**
      * Gets or sets the sku.
      */
-    sku?: pulumi.Input<types.inputs.logic.v20150201preview.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Gets or sets the state.
      */
-    state?: pulumi.Input<types.enums.v20150201preview.WorkflowState>;
+    state?: pulumi.Input<types.enums.WorkflowState>;
     /**
      * Gets or sets the resource tags.
      */

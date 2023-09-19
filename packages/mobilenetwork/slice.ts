@@ -51,11 +51,11 @@ export class Slice extends pulumi.CustomResource {
     /**
      * Single-network slice selection assistance information (S-NSSAI). Unique at the scope of a mobile network.
      */
-    public readonly snssai!: pulumi.Output<types.outputs.mobilenetwork.SnssaiResponse>;
+    public readonly snssai!: pulumi.Output<types.outputs.SnssaiResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.mobilenetwork.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -140,7 +140,7 @@ export interface SliceArgs {
     /**
      * Single-network slice selection assistance information (S-NSSAI). Unique at the scope of a mobile network.
      */
-    snssai: pulumi.Input<types.inputs.mobilenetwork.SnssaiArgs>;
+    snssai: pulumi.Input<types.inputs.SnssaiArgs>;
     /**
      * Resource tags.
      */

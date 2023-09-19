@@ -37,7 +37,7 @@ export interface GetConnectedRegistryResult {
     /**
      * The activation properties of the connected registry.
      */
-    readonly activation: types.outputs.containerregistry.ActivationPropertiesResponse;
+    readonly activation: types.outputs.ActivationPropertiesResponse;
     /**
      * The list of the ACR token resource IDs used to authenticate clients to the connected registry.
      */
@@ -57,11 +57,11 @@ export interface GetConnectedRegistryResult {
     /**
      * The logging properties of the connected registry.
      */
-    readonly logging?: types.outputs.containerregistry.LoggingPropertiesResponse;
+    readonly logging?: types.outputs.LoggingPropertiesResponse;
     /**
      * The login server properties of the connected registry.
      */
-    readonly loginServer?: types.outputs.containerregistry.LoginServerPropertiesResponse;
+    readonly loginServer?: types.outputs.LoginServerPropertiesResponse;
     /**
      * The mode of the connected registry resource that indicates the permissions of the registry.
      */
@@ -77,7 +77,7 @@ export interface GetConnectedRegistryResult {
     /**
      * The parent of the connected registry.
      */
-    readonly parent: types.outputs.containerregistry.ParentPropertiesResponse;
+    readonly parent: types.outputs.ParentPropertiesResponse;
     /**
      * Provisioning state of the resource.
      */
@@ -85,11 +85,11 @@ export interface GetConnectedRegistryResult {
     /**
      * The list of current statuses of the connected registry.
      */
-    readonly statusDetails: types.outputs.containerregistry.StatusDetailPropertiesResponse[];
+    readonly statusDetails: types.outputs.StatusDetailPropertiesResponse[];
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.containerregistry.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource.
      */

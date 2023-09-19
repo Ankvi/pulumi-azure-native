@@ -69,7 +69,7 @@ export interface GetDomainResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.communication.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -85,11 +85,11 @@ export interface GetDomainResult {
     /**
      * List of DnsRecord
      */
-    readonly verificationRecords: types.outputs.communication.DomainPropertiesResponseVerificationRecords;
+    readonly verificationRecords: types.outputs.DomainPropertiesResponseVerificationRecords;
     /**
      * List of VerificationStatusRecord
      */
-    readonly verificationStates: types.outputs.communication.DomainPropertiesResponseVerificationStates;
+    readonly verificationStates: types.outputs.DomainPropertiesResponseVerificationStates;
 }
 /**
  * Get the Domains resource and its properties.

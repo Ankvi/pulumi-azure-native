@@ -44,11 +44,11 @@ export interface GetCloudServiceResult {
     /**
      * Cloud service properties
      */
-    readonly properties: types.outputs.compute.CloudServicePropertiesResponse;
+    readonly properties: types.outputs.CloudServicePropertiesResponse;
     /**
      * The system meta data relating to this resource.
      */
-    readonly systemData?: types.outputs.compute.SystemDataResponse;
+    readonly systemData?: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

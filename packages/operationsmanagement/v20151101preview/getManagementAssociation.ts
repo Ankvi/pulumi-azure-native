@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves the user ManagementAssociation.
  */
@@ -58,7 +58,7 @@ export interface GetManagementAssociationResult {
     /**
      * Properties for ManagementAssociation object supported by the OperationsManagement resource provider.
      */
-    readonly properties: types.outputs.operationsmanagement.v20151101preview.ManagementAssociationPropertiesResponse;
+    readonly properties: types.outputs.ManagementAssociationPropertiesResponse;
     /**
      * Resource type.
      */

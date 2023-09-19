@@ -43,7 +43,7 @@ export class Topic extends pulumi.CustomResource {
     /**
      * Message count details
      */
-    public /*out*/ readonly countDetails!: pulumi.Output<types.outputs.servicebus.MessageCountDetailsResponse>;
+    public /*out*/ readonly countDetails!: pulumi.Output<types.outputs.MessageCountDetailsResponse>;
     /**
      * Exact time the message was created.
      */
@@ -107,7 +107,7 @@ export class Topic extends pulumi.CustomResource {
     /**
      * The system meta data relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.servicebus.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a credential.
  */
@@ -48,7 +48,7 @@ export interface GetCredentialOperationResult {
     /**
      * Managed Identity Credential properties.
      */
-    readonly properties: types.outputs.datafactory.v20180601.ManagedIdentityCredentialResponse;
+    readonly properties: types.outputs.ManagedIdentityCredentialResponse;
     /**
      * The resource type.
      */

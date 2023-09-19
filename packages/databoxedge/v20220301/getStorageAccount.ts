@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents a Storage Account on the  Data Box Edge/Gateway device.
  */
@@ -68,7 +68,7 @@ export interface GetStorageAccountResult {
     /**
      * Metadata pertaining to creation and last modification of StorageAccount
      */
-    readonly systemData: types.outputs.databoxedge.v20220301.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The hierarchical type of the object.
      */

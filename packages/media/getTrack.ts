@@ -54,7 +54,7 @@ export interface GetTrackResult {
     /**
      * Detailed information about a track in the asset.
      */
-    readonly track?: types.outputs.media.AudioTrackResponse | types.outputs.media.TextTrackResponse | types.outputs.media.VideoTrackResponse;
+    readonly track?: types.outputs.AudioTrackResponse | types.outputs.TextTrackResponse | types.outputs.VideoTrackResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

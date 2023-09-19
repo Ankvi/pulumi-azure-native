@@ -47,11 +47,11 @@ export class Topic extends pulumi.CustomResource {
     /**
      * Identity information for the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.eventgrid.IdentityInfoResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityInfoResponse | undefined>;
     /**
      * This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled.
      */
-    public readonly inboundIpRules!: pulumi.Output<types.outputs.eventgrid.InboundIpRuleResponse[] | undefined>;
+    public readonly inboundIpRules!: pulumi.Output<types.outputs.InboundIpRuleResponse[] | undefined>;
     /**
      * This determines the format that Event Grid should expect for incoming events published to the topic.
      */
@@ -59,7 +59,7 @@ export class Topic extends pulumi.CustomResource {
     /**
      * This enables publishing using custom event schemas. An InputSchemaMapping can be specified to map various properties of a source schema to various required properties of the EventGridEvent schema.
      */
-    public readonly inputSchemaMapping!: pulumi.Output<types.outputs.eventgrid.JsonInputSchemaMappingResponse | undefined>;
+    public readonly inputSchemaMapping!: pulumi.Output<types.outputs.JsonInputSchemaMappingResponse | undefined>;
     /**
      * Location of the resource.
      */
@@ -72,7 +72,7 @@ export class Topic extends pulumi.CustomResource {
      * Name of the resource.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.eventgrid.PrivateEndpointConnectionResponse[]>;
+    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[]>;
     /**
      * Provisioning state of the topic.
      */
@@ -85,7 +85,7 @@ export class Topic extends pulumi.CustomResource {
     /**
      * The system metadata relating to Topic resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.eventgrid.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Tags of the resource.
      */
@@ -167,11 +167,11 @@ export interface TopicArgs {
     /**
      * Identity information for the resource.
      */
-    identity?: pulumi.Input<types.inputs.eventgrid.IdentityInfoArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityInfoArgs>;
     /**
      * This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled.
      */
-    inboundIpRules?: pulumi.Input<pulumi.Input<types.inputs.eventgrid.InboundIpRuleArgs>[]>;
+    inboundIpRules?: pulumi.Input<pulumi.Input<types.inputs.InboundIpRuleArgs>[]>;
     /**
      * This determines the format that Event Grid should expect for incoming events published to the topic.
      */
@@ -179,7 +179,7 @@ export interface TopicArgs {
     /**
      * This enables publishing using custom event schemas. An InputSchemaMapping can be specified to map various properties of a source schema to various required properties of the EventGridEvent schema.
      */
-    inputSchemaMapping?: pulumi.Input<types.inputs.eventgrid.JsonInputSchemaMappingArgs>;
+    inputSchemaMapping?: pulumi.Input<types.inputs.JsonInputSchemaMappingArgs>;
     /**
      * Location of the resource.
      */

@@ -59,7 +59,7 @@ export interface GetAlertsSuppressionRuleResult {
     /**
      * The suppression conditions
      */
-    readonly suppressionAlertsScope?: types.outputs.security.SuppressionAlertsScopeResponse;
+    readonly suppressionAlertsScope?: types.outputs.SuppressionAlertsScopeResponse;
     /**
      * Resource type
      */

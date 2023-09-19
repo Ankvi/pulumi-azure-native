@@ -46,7 +46,7 @@ export interface ListActiveSecurityAdminRuleResult {
     /**
      * Gets a page of active security admin rules.
      */
-    readonly value?: (types.outputs.network.ActiveDefaultSecurityAdminRuleResponse | types.outputs.network.ActiveSecurityAdminRuleResponse)[];
+    readonly value?: (types.outputs.ActiveDefaultSecurityAdminRuleResponse | types.outputs.ActiveSecurityAdminRuleResponse)[];
 }
 /**
  * Lists active security admin rules in a network manager.

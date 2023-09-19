@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Protection profile details.
  */
@@ -42,7 +42,7 @@ export class ReplicationPolicy extends pulumi.CustomResource {
     /**
      * The custom data.
      */
-    public readonly properties!: pulumi.Output<types.outputs.recoveryservices.v20230601.PolicyPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.PolicyPropertiesResponse>;
     /**
      * Resource Type
      */
@@ -96,7 +96,7 @@ export interface ReplicationPolicyArgs {
     /**
      * Policy creation properties.
      */
-    properties?: pulumi.Input<types.inputs.recoveryservices.v20230601.CreatePolicyInputPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.CreatePolicyInputPropertiesArgs>;
     /**
      * The name of the resource group where the recovery services vault is present.
      */

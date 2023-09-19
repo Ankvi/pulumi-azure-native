@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Hub resource.
  */
@@ -38,7 +38,7 @@ export class Hub extends pulumi.CustomResource {
     /**
      * Billing settings of the hub.
      */
-    public readonly hubBillingInfo!: pulumi.Output<types.outputs.customerinsights.v20170426.HubBillingInfoFormatResponse | undefined>;
+    public readonly hubBillingInfo!: pulumi.Output<types.outputs.HubBillingInfoFormatResponse | undefined>;
     /**
      * Resource location.
      */
@@ -118,7 +118,7 @@ export interface HubArgs {
     /**
      * Billing settings of the hub.
      */
-    hubBillingInfo?: pulumi.Input<types.inputs.customerinsights.v20170426.HubBillingInfoFormatArgs>;
+    hubBillingInfo?: pulumi.Input<types.inputs.HubBillingInfoFormatArgs>;
     /**
      * The name of the Hub.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets an existing security policy within a profile.
  */
@@ -45,7 +45,7 @@ export interface GetSecurityPolicyResult {
     /**
      * object which contains security policy parameters
      */
-    readonly parameters?: types.outputs.cdn.v20230501.SecurityPolicyWebApplicationFirewallParametersResponse;
+    readonly parameters?: types.outputs.SecurityPolicyWebApplicationFirewallParametersResponse;
     /**
      * The name of the profile which holds the security policy.
      */
@@ -57,7 +57,7 @@ export interface GetSecurityPolicyResult {
     /**
      * Read only system data
      */
-    readonly systemData: types.outputs.cdn.v20230501.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource type.
      */

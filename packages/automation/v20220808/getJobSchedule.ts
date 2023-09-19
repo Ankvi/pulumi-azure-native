@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieve the job schedule identified by job schedule name.
  */
@@ -56,11 +56,11 @@ export interface GetJobScheduleResult {
     /**
      * Gets or sets the runbook.
      */
-    readonly runbook?: types.outputs.automation.v20220808.RunbookAssociationPropertyResponse;
+    readonly runbook?: types.outputs.RunbookAssociationPropertyResponse;
     /**
      * Gets or sets the schedule.
      */
-    readonly schedule?: types.outputs.automation.v20220808.ScheduleAssociationPropertyResponse;
+    readonly schedule?: types.outputs.ScheduleAssociationPropertyResponse;
     /**
      * Resource type
      */

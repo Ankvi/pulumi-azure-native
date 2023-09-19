@@ -51,15 +51,15 @@ export class PolicySetDefinition extends pulumi.CustomResource {
     /**
      * The policy set definition parameters that can be used in policy definition references.
      */
-    public readonly parameters!: pulumi.Output<{[key: string]: types.outputs.authorization.ParameterDefinitionsValueResponse} | undefined>;
+    public readonly parameters!: pulumi.Output<{[key: string]: types.outputs.ParameterDefinitionsValueResponse} | undefined>;
     /**
      * The metadata describing groups of policy definition references within the policy set definition.
      */
-    public readonly policyDefinitionGroups!: pulumi.Output<types.outputs.authorization.PolicyDefinitionGroupResponse[] | undefined>;
+    public readonly policyDefinitionGroups!: pulumi.Output<types.outputs.PolicyDefinitionGroupResponse[] | undefined>;
     /**
      * An array of policy definition references.
      */
-    public readonly policyDefinitions!: pulumi.Output<types.outputs.authorization.PolicyDefinitionReferenceResponse[]>;
+    public readonly policyDefinitions!: pulumi.Output<types.outputs.PolicyDefinitionReferenceResponse[]>;
     /**
      * The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
      */
@@ -67,7 +67,7 @@ export class PolicySetDefinition extends pulumi.CustomResource {
     /**
      * The system metadata relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.authorization.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource (Microsoft.Authorization/policySetDefinitions).
      */
@@ -136,15 +136,15 @@ export interface PolicySetDefinitionArgs {
     /**
      * The policy set definition parameters that can be used in policy definition references.
      */
-    parameters?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.authorization.ParameterDefinitionsValueArgs>}>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.ParameterDefinitionsValueArgs>}>;
     /**
      * The metadata describing groups of policy definition references within the policy set definition.
      */
-    policyDefinitionGroups?: pulumi.Input<pulumi.Input<types.inputs.authorization.PolicyDefinitionGroupArgs>[]>;
+    policyDefinitionGroups?: pulumi.Input<pulumi.Input<types.inputs.PolicyDefinitionGroupArgs>[]>;
     /**
      * An array of policy definition references.
      */
-    policyDefinitions: pulumi.Input<pulumi.Input<types.inputs.authorization.PolicyDefinitionReferenceArgs>[]>;
+    policyDefinitions: pulumi.Input<pulumi.Input<types.inputs.PolicyDefinitionReferenceArgs>[]>;
     /**
      * The name of the policy set definition to create.
      */

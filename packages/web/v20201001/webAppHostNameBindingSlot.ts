@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A hostname binding object.
  */
@@ -70,7 +70,7 @@ export class WebAppHostNameBindingSlot extends pulumi.CustomResource {
     /**
      * The system metadata relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.web.v20201001.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * SSL certificate thumbprint
      */
@@ -153,11 +153,11 @@ export interface WebAppHostNameBindingSlotArgs {
     /**
      * Azure resource type.
      */
-    azureResourceType?: pulumi.Input<types.enums.v20201001.AzureResourceType>;
+    azureResourceType?: pulumi.Input<types.enums.AzureResourceType>;
     /**
      * Custom DNS record type.
      */
-    customHostNameDnsRecordType?: pulumi.Input<types.enums.v20201001.CustomHostNameDnsRecordType>;
+    customHostNameDnsRecordType?: pulumi.Input<types.enums.CustomHostNameDnsRecordType>;
     /**
      * Fully qualified ARM domain resource URI.
      */
@@ -169,7 +169,7 @@ export interface WebAppHostNameBindingSlotArgs {
     /**
      * Hostname type.
      */
-    hostNameType?: pulumi.Input<types.enums.v20201001.HostNameType>;
+    hostNameType?: pulumi.Input<types.enums.HostNameType>;
     /**
      * Kind of resource.
      */
@@ -193,7 +193,7 @@ export interface WebAppHostNameBindingSlotArgs {
     /**
      * SSL type
      */
-    sslState?: pulumi.Input<types.enums.v20201001.SslState>;
+    sslState?: pulumi.Input<types.enums.SslState>;
     /**
      * SSL certificate thumbprint
      */

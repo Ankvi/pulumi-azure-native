@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Resource information with extended details.
  */
@@ -38,7 +38,7 @@ export class CloudHsmCluster extends pulumi.CustomResource {
     /**
      * An array of Cloud HSM Cluster's HSMs
      */
-    public readonly hsms!: pulumi.Output<types.outputs.hardwaresecuritymodules.v20220831preview.CloudHsmPropertiesResponse[] | undefined>;
+    public readonly hsms!: pulumi.Output<types.outputs.CloudHsmPropertiesResponse[] | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -50,7 +50,7 @@ export class CloudHsmCluster extends pulumi.CustomResource {
     /**
      * List of private endpoint connection resources
      */
-    public readonly privateEndpointConnections!: pulumi.Output<types.outputs.hardwaresecuritymodules.v20220831preview.PrivateEndpointConnectionResponse[] | undefined>;
+    public readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[] | undefined>;
     /**
      * The Cloud HSM Cluster's provisioningState
      */
@@ -62,15 +62,15 @@ export class CloudHsmCluster extends pulumi.CustomResource {
     /**
      * Security domain properties information for Cloud HSM cluster
      */
-    public readonly securityDomain!: pulumi.Output<types.outputs.hardwaresecuritymodules.v20220831preview.CloudHsmClusterSecurityDomainPropertiesResponse | undefined>;
+    public readonly securityDomain!: pulumi.Output<types.outputs.CloudHsmClusterSecurityDomainPropertiesResponse | undefined>;
     /**
      * SKU details
      */
-    public readonly sku!: pulumi.Output<types.outputs.hardwaresecuritymodules.v20220831preview.CloudHsmClusterSkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.CloudHsmClusterSkuResponse | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.hardwaresecuritymodules.v20220831preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -144,7 +144,7 @@ export interface CloudHsmClusterArgs {
     /**
      * An array of Cloud HSM Cluster's HSMs
      */
-    hsms?: pulumi.Input<pulumi.Input<types.inputs.hardwaresecuritymodules.v20220831preview.CloudHsmPropertiesArgs>[]>;
+    hsms?: pulumi.Input<pulumi.Input<types.inputs.CloudHsmPropertiesArgs>[]>;
     /**
      * The geo-location where the resource lives
      */
@@ -153,11 +153,11 @@ export interface CloudHsmClusterArgs {
      * List of private endpoint connection resources
      * These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
      */
-    privateEndpointConnections?: pulumi.Input<pulumi.Input<types.inputs.hardwaresecuritymodules.v20220831preview.PrivateEndpointConnectionArgs>[]>;
+    privateEndpointConnections?: pulumi.Input<pulumi.Input<types.inputs.PrivateEndpointConnectionArgs>[]>;
     /**
      * The Cloud HSM Cluster's provisioningState
      */
-    provisioningState?: pulumi.Input<string | types.enums.v20220831preview.ProvisioningState>;
+    provisioningState?: pulumi.Input<string | types.enums.ProvisioningState>;
     /**
      * The Cloud HSM Cluster public network access
      */
@@ -169,11 +169,11 @@ export interface CloudHsmClusterArgs {
     /**
      * Security domain properties information for Cloud HSM cluster
      */
-    securityDomain?: pulumi.Input<types.inputs.hardwaresecuritymodules.v20220831preview.CloudHsmClusterSecurityDomainPropertiesArgs>;
+    securityDomain?: pulumi.Input<types.inputs.CloudHsmClusterSecurityDomainPropertiesArgs>;
     /**
      * SKU details
      */
-    sku?: pulumi.Input<types.inputs.hardwaresecuritymodules.v20220831preview.CloudHsmClusterSkuArgs>;
+    sku?: pulumi.Input<types.inputs.CloudHsmClusterSkuArgs>;
     /**
      * Resource tags.
      */

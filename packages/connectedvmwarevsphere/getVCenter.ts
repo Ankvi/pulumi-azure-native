@@ -36,7 +36,7 @@ export interface GetVCenterResult {
     /**
      * Username / Password Credentials to connect to vcenter.
      */
-    readonly credentials?: types.outputs.connectedvmwarevsphere.VICredentialResponse;
+    readonly credentials?: types.outputs.VICredentialResponse;
     /**
      * Gets the name of the corresponding resource in Kubernetes.
      */
@@ -44,7 +44,7 @@ export interface GetVCenterResult {
     /**
      * Gets or sets the extended location.
      */
-    readonly extendedLocation?: types.outputs.connectedvmwarevsphere.ExtendedLocationResponse;
+    readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
     /**
      * Gets or sets the FQDN/IPAddress of the vCenter.
      */
@@ -80,11 +80,11 @@ export interface GetVCenterResult {
     /**
      * The resource status information.
      */
-    readonly statuses: types.outputs.connectedvmwarevsphere.ResourceStatusResponse[];
+    readonly statuses: types.outputs.ResourceStatusResponse[];
     /**
      * The system data.
      */
-    readonly systemData: types.outputs.connectedvmwarevsphere.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Gets or sets the Resource tags.
      */

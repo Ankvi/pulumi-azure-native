@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * EventGrid Topic
  */
@@ -38,11 +38,11 @@ export class Topic extends pulumi.CustomResource {
     /**
      * Identity information for the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.eventgrid.v20200401preview.IdentityInfoResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityInfoResponse | undefined>;
     /**
      * This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled.
      */
-    public readonly inboundIpRules!: pulumi.Output<types.outputs.eventgrid.v20200401preview.InboundIpRuleResponse[] | undefined>;
+    public readonly inboundIpRules!: pulumi.Output<types.outputs.InboundIpRuleResponse[] | undefined>;
     /**
      * This determines the format that Event Grid should expect for incoming events published to the topic.
      */
@@ -50,7 +50,7 @@ export class Topic extends pulumi.CustomResource {
     /**
      * This enables publishing using custom event schemas. An InputSchemaMapping can be specified to map various properties of a source schema to various required properties of the EventGridEvent schema.
      */
-    public readonly inputSchemaMapping!: pulumi.Output<types.outputs.eventgrid.v20200401preview.JsonInputSchemaMappingResponse | undefined>;
+    public readonly inputSchemaMapping!: pulumi.Output<types.outputs.JsonInputSchemaMappingResponse | undefined>;
     /**
      * Location of the resource.
      */
@@ -63,7 +63,7 @@ export class Topic extends pulumi.CustomResource {
      * Name of the resource.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
-    public readonly privateEndpointConnections!: pulumi.Output<types.outputs.eventgrid.v20200401preview.PrivateEndpointConnectionResponse[] | undefined>;
+    public readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[] | undefined>;
     /**
      * Provisioning state of the topic.
      */
@@ -76,7 +76,7 @@ export class Topic extends pulumi.CustomResource {
     /**
      * The Sku pricing tier for the topic.
      */
-    public readonly sku!: pulumi.Output<types.outputs.eventgrid.v20200401preview.ResourceSkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.ResourceSkuResponse | undefined>;
     /**
      * Tags of the resource.
      */
@@ -146,29 +146,29 @@ export interface TopicArgs {
     /**
      * Identity information for the resource.
      */
-    identity?: pulumi.Input<types.inputs.eventgrid.v20200401preview.IdentityInfoArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityInfoArgs>;
     /**
      * This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled.
      */
-    inboundIpRules?: pulumi.Input<pulumi.Input<types.inputs.eventgrid.v20200401preview.InboundIpRuleArgs>[]>;
+    inboundIpRules?: pulumi.Input<pulumi.Input<types.inputs.InboundIpRuleArgs>[]>;
     /**
      * This determines the format that Event Grid should expect for incoming events published to the topic.
      */
-    inputSchema?: pulumi.Input<string | types.enums.v20200401preview.InputSchema>;
+    inputSchema?: pulumi.Input<string | types.enums.InputSchema>;
     /**
      * This enables publishing using custom event schemas. An InputSchemaMapping can be specified to map various properties of a source schema to various required properties of the EventGridEvent schema.
      */
-    inputSchemaMapping?: pulumi.Input<types.inputs.eventgrid.v20200401preview.JsonInputSchemaMappingArgs>;
+    inputSchemaMapping?: pulumi.Input<types.inputs.JsonInputSchemaMappingArgs>;
     /**
      * Location of the resource.
      */
     location?: pulumi.Input<string>;
-    privateEndpointConnections?: pulumi.Input<pulumi.Input<types.inputs.eventgrid.v20200401preview.PrivateEndpointConnectionArgs>[]>;
+    privateEndpointConnections?: pulumi.Input<pulumi.Input<types.inputs.PrivateEndpointConnectionArgs>[]>;
     /**
      * This determines if traffic is allowed over public network. By default it is enabled. 
      * You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.TopicProperties.InboundIpRules" />
      */
-    publicNetworkAccess?: pulumi.Input<string | types.enums.v20200401preview.PublicNetworkAccess>;
+    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess>;
     /**
      * The name of the resource group within the user's subscription.
      */
@@ -176,7 +176,7 @@ export interface TopicArgs {
     /**
      * The Sku pricing tier for the topic.
      */
-    sku?: pulumi.Input<types.inputs.eventgrid.v20200401preview.ResourceSkuArgs>;
+    sku?: pulumi.Input<types.inputs.ResourceSkuArgs>;
     /**
      * Tags of the resource.
      */

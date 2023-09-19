@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Managed cluster.
  */
@@ -31,31 +31,31 @@ export interface GetManagedClusterResult {
     /**
      * The Azure Active Directory configuration.
      */
-    readonly aadProfile?: types.outputs.containerservice.v20230502preview.ManagedClusterAADProfileResponse;
+    readonly aadProfile?: types.outputs.ManagedClusterAADProfileResponse;
     /**
      * The profile of managed cluster add-on.
      */
-    readonly addonProfiles?: {[key: string]: types.outputs.containerservice.v20230502preview.ManagedClusterAddonProfileResponse};
+    readonly addonProfiles?: {[key: string]: types.outputs.ManagedClusterAddonProfileResponse};
     /**
      * The agent pool properties.
      */
-    readonly agentPoolProfiles?: types.outputs.containerservice.v20230502preview.ManagedClusterAgentPoolProfileResponse[];
+    readonly agentPoolProfiles?: types.outputs.ManagedClusterAgentPoolProfileResponse[];
     /**
      * The access profile for managed cluster API server.
      */
-    readonly apiServerAccessProfile?: types.outputs.containerservice.v20230502preview.ManagedClusterAPIServerAccessProfileResponse;
+    readonly apiServerAccessProfile?: types.outputs.ManagedClusterAPIServerAccessProfileResponse;
     /**
      * Parameters to be applied to the cluster-autoscaler when enabled
      */
-    readonly autoScalerProfile?: types.outputs.containerservice.v20230502preview.ManagedClusterPropertiesResponseAutoScalerProfile;
+    readonly autoScalerProfile?: types.outputs.ManagedClusterPropertiesResponseAutoScalerProfile;
     /**
      * The auto upgrade configuration.
      */
-    readonly autoUpgradeProfile?: types.outputs.containerservice.v20230502preview.ManagedClusterAutoUpgradeProfileResponse;
+    readonly autoUpgradeProfile?: types.outputs.ManagedClusterAutoUpgradeProfileResponse;
     /**
      * Prometheus addon profile for the container service cluster
      */
-    readonly azureMonitorProfile?: types.outputs.containerservice.v20230502preview.ManagedClusterAzureMonitorProfileResponse;
+    readonly azureMonitorProfile?: types.outputs.ManagedClusterAzureMonitorProfileResponse;
     /**
      * The Azure Portal requires certain Cross-Origin Resource Sharing (CORS) headers to be sent in some responses, which Kubernetes APIServer doesn't handle by default. This special FQDN supports CORS, allowing the Azure Portal to function properly.
      */
@@ -63,7 +63,7 @@ export interface GetManagedClusterResult {
     /**
      * CreationData to be used to specify the source Snapshot ID if the cluster will be created/upgraded using a snapshot.
      */
-    readonly creationData?: types.outputs.containerservice.v20230502preview.CreationDataResponse;
+    readonly creationData?: types.outputs.CreationDataResponse;
     /**
      * The version of Kubernetes the Managed Cluster is running.
      */
@@ -95,7 +95,7 @@ export interface GetManagedClusterResult {
     /**
      * The extended location of the Virtual Machine.
      */
-    readonly extendedLocation?: types.outputs.containerservice.v20230502preview.ExtendedLocationResponse;
+    readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
     /**
      * The FQDN of the master pool.
      */
@@ -107,11 +107,11 @@ export interface GetManagedClusterResult {
     /**
      * The guardrails profile holds all the guardrails information for a given cluster
      */
-    readonly guardrailsProfile?: types.outputs.containerservice.v20230502preview.GuardrailsProfileResponse;
+    readonly guardrailsProfile?: types.outputs.GuardrailsProfileResponse;
     /**
      * Configurations for provisioning the cluster with HTTP proxy servers.
      */
-    readonly httpProxyConfig?: types.outputs.containerservice.v20230502preview.ManagedClusterHTTPProxyConfigResponse;
+    readonly httpProxyConfig?: types.outputs.ManagedClusterHTTPProxyConfigResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -119,15 +119,15 @@ export interface GetManagedClusterResult {
     /**
      * The identity of the managed cluster, if configured.
      */
-    readonly identity?: types.outputs.containerservice.v20230502preview.ManagedClusterIdentityResponse;
+    readonly identity?: types.outputs.ManagedClusterIdentityResponse;
     /**
      * Identities associated with the cluster.
      */
-    readonly identityProfile?: {[key: string]: types.outputs.containerservice.v20230502preview.UserAssignedIdentityResponse};
+    readonly identityProfile?: {[key: string]: types.outputs.UserAssignedIdentityResponse};
     /**
      * Ingress profile for the managed cluster.
      */
-    readonly ingressProfile?: types.outputs.containerservice.v20230502preview.ManagedClusterIngressProfileResponse;
+    readonly ingressProfile?: types.outputs.ManagedClusterIngressProfileResponse;
     /**
      * When you upgrade a supported AKS cluster, Kubernetes minor versions cannot be skipped. All upgrades must be performed sequentially by major version number. For example, upgrades between 1.14.x -> 1.15.x or 1.15.x -> 1.16.x are allowed, however 1.14.x -> 1.16.x is not allowed. See [upgrading an AKS cluster](https://docs.microsoft.com/azure/aks/upgrade-cluster) for more details.
      */
@@ -135,7 +135,7 @@ export interface GetManagedClusterResult {
     /**
      * The profile for Linux VMs in the Managed Cluster.
      */
-    readonly linuxProfile?: types.outputs.containerservice.v20230502preview.ContainerServiceLinuxProfileResponse;
+    readonly linuxProfile?: types.outputs.ContainerServiceLinuxProfileResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -151,7 +151,7 @@ export interface GetManagedClusterResult {
     /**
      * The network configuration profile.
      */
-    readonly networkProfile?: types.outputs.containerservice.v20230502preview.ContainerServiceNetworkProfileResponse;
+    readonly networkProfile?: types.outputs.ContainerServiceNetworkProfileResponse;
     /**
      * The name of the resource group containing agent pool nodes.
      */
@@ -159,19 +159,19 @@ export interface GetManagedClusterResult {
     /**
      * The node resource group configuration profile.
      */
-    readonly nodeResourceGroupProfile?: types.outputs.containerservice.v20230502preview.ManagedClusterNodeResourceGroupProfileResponse;
+    readonly nodeResourceGroupProfile?: types.outputs.ManagedClusterNodeResourceGroupProfileResponse;
     /**
      * The OIDC issuer profile of the Managed Cluster.
      */
-    readonly oidcIssuerProfile?: types.outputs.containerservice.v20230502preview.ManagedClusterOIDCIssuerProfileResponse;
+    readonly oidcIssuerProfile?: types.outputs.ManagedClusterOIDCIssuerProfileResponse;
     /**
      * See [use AAD pod identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity) for more details on AAD pod identity integration.
      */
-    readonly podIdentityProfile?: types.outputs.containerservice.v20230502preview.ManagedClusterPodIdentityProfileResponse;
+    readonly podIdentityProfile?: types.outputs.ManagedClusterPodIdentityProfileResponse;
     /**
      * The Power State of the cluster.
      */
-    readonly powerState: types.outputs.containerservice.v20230502preview.PowerStateResponse;
+    readonly powerState: types.outputs.PowerStateResponse;
     /**
      * The FQDN of private cluster.
      */
@@ -179,7 +179,7 @@ export interface GetManagedClusterResult {
     /**
      * Private link resources associated with the cluster.
      */
-    readonly privateLinkResources?: types.outputs.containerservice.v20230502preview.PrivateLinkResourceResponse[];
+    readonly privateLinkResources?: types.outputs.PrivateLinkResourceResponse[];
     /**
      * The current provisioning state.
      */
@@ -191,23 +191,23 @@ export interface GetManagedClusterResult {
     /**
      * Security profile for the managed cluster.
      */
-    readonly securityProfile?: types.outputs.containerservice.v20230502preview.ManagedClusterSecurityProfileResponse;
+    readonly securityProfile?: types.outputs.ManagedClusterSecurityProfileResponse;
     /**
      * Service mesh profile for a managed cluster.
      */
-    readonly serviceMeshProfile?: types.outputs.containerservice.v20230502preview.ServiceMeshProfileResponse;
+    readonly serviceMeshProfile?: types.outputs.ServiceMeshProfileResponse;
     /**
      * Information about a service principal identity for the cluster to use for manipulating Azure APIs.
      */
-    readonly servicePrincipalProfile?: types.outputs.containerservice.v20230502preview.ManagedClusterServicePrincipalProfileResponse;
+    readonly servicePrincipalProfile?: types.outputs.ManagedClusterServicePrincipalProfileResponse;
     /**
      * The managed cluster SKU.
      */
-    readonly sku?: types.outputs.containerservice.v20230502preview.ManagedClusterSKUResponse;
+    readonly sku?: types.outputs.ManagedClusterSKUResponse;
     /**
      * Storage profile for the managed cluster.
      */
-    readonly storageProfile?: types.outputs.containerservice.v20230502preview.ManagedClusterStorageProfileResponse;
+    readonly storageProfile?: types.outputs.ManagedClusterStorageProfileResponse;
     /**
      * The support plan for the Managed Cluster. If unspecified, the default is 'KubernetesOfficial'.
      */
@@ -215,7 +215,7 @@ export interface GetManagedClusterResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.containerservice.v20230502preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -227,15 +227,15 @@ export interface GetManagedClusterResult {
     /**
      * Settings for upgrading a cluster.
      */
-    readonly upgradeSettings?: types.outputs.containerservice.v20230502preview.ClusterUpgradeSettingsResponse;
+    readonly upgradeSettings?: types.outputs.ClusterUpgradeSettingsResponse;
     /**
      * The profile for Windows VMs in the Managed Cluster.
      */
-    readonly windowsProfile?: types.outputs.containerservice.v20230502preview.ManagedClusterWindowsProfileResponse;
+    readonly windowsProfile?: types.outputs.ManagedClusterWindowsProfileResponse;
     /**
      * Workload Auto-scaler profile for the managed cluster.
      */
-    readonly workloadAutoScalerProfile?: types.outputs.containerservice.v20230502preview.ManagedClusterWorkloadAutoScalerProfileResponse;
+    readonly workloadAutoScalerProfile?: types.outputs.ManagedClusterWorkloadAutoScalerProfileResponse;
 }
 /**
  * Managed cluster.

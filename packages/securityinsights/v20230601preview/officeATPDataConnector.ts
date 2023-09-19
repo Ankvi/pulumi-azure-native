@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents OfficeATP (Office 365 Advanced Threat Protection) data connector.
  */
@@ -34,7 +34,7 @@ export class OfficeATPDataConnector extends pulumi.CustomResource {
     /**
      * The available data types for the connector.
      */
-    public readonly dataTypes!: pulumi.Output<types.outputs.securityinsights.v20230601preview.AlertsDataTypeOfDataConnectorResponse | undefined>;
+    public readonly dataTypes!: pulumi.Output<types.outputs.AlertsDataTypeOfDataConnectorResponse | undefined>;
     /**
      * Etag of the azure resource
      */
@@ -51,7 +51,7 @@ export class OfficeATPDataConnector extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.securityinsights.v20230601preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The tenant id to connect to, and get the data from.
      */
@@ -121,7 +121,7 @@ export interface OfficeATPDataConnectorArgs {
     /**
      * The available data types for the connector.
      */
-    dataTypes?: pulumi.Input<types.inputs.securityinsights.v20230601preview.AlertsDataTypeOfDataConnectorArgs>;
+    dataTypes?: pulumi.Input<types.inputs.AlertsDataTypeOfDataConnectorArgs>;
     /**
      * The kind of the data connector
      * Expected value is 'OfficeATP'.

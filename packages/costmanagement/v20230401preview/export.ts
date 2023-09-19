@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An export resource.
  */
@@ -34,11 +34,11 @@ export class Export extends pulumi.CustomResource {
     /**
      * Has the definition for the export.
      */
-    public readonly definition!: pulumi.Output<types.outputs.costmanagement.v20230401preview.ExportDefinitionResponse>;
+    public readonly definition!: pulumi.Output<types.outputs.ExportDefinitionResponse>;
     /**
      * Has delivery information for the export.
      */
-    public readonly deliveryInfo!: pulumi.Output<types.outputs.costmanagement.v20230401preview.ExportDeliveryInfoResponse>;
+    public readonly deliveryInfo!: pulumi.Output<types.outputs.ExportDeliveryInfoResponse>;
     /**
      * eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
      */
@@ -50,7 +50,7 @@ export class Export extends pulumi.CustomResource {
     /**
      * The managed identity associated with Export
      */
-    public readonly identity!: pulumi.Output<types.outputs.costmanagement.v20230401preview.SystemAssignedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.SystemAssignedServiceIdentityResponse | undefined>;
     /**
      * The location of the Export's managed identity. Only required when utilizing managed identity.
      */
@@ -70,11 +70,11 @@ export class Export extends pulumi.CustomResource {
     /**
      * If requested, has the most recent run history for the export.
      */
-    public /*out*/ readonly runHistory!: pulumi.Output<types.outputs.costmanagement.v20230401preview.ExportExecutionListResultResponse | undefined>;
+    public /*out*/ readonly runHistory!: pulumi.Output<types.outputs.ExportExecutionListResultResponse | undefined>;
     /**
      * Has schedule information for the export.
      */
-    public readonly schedule!: pulumi.Output<types.outputs.costmanagement.v20230401preview.ExportScheduleResponse | undefined>;
+    public readonly schedule!: pulumi.Output<types.outputs.ExportScheduleResponse | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -142,11 +142,11 @@ export interface ExportArgs {
     /**
      * Has the definition for the export.
      */
-    definition: pulumi.Input<types.inputs.costmanagement.v20230401preview.ExportDefinitionArgs>;
+    definition: pulumi.Input<types.inputs.ExportDefinitionArgs>;
     /**
      * Has delivery information for the export.
      */
-    deliveryInfo: pulumi.Input<types.inputs.costmanagement.v20230401preview.ExportDeliveryInfoArgs>;
+    deliveryInfo: pulumi.Input<types.inputs.ExportDeliveryInfoArgs>;
     /**
      * eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
      */
@@ -158,11 +158,11 @@ export interface ExportArgs {
     /**
      * The format of the export being delivered. Currently only 'Csv' is supported.
      */
-    format?: pulumi.Input<string | types.enums.v20230401preview.FormatType>;
+    format?: pulumi.Input<string | types.enums.FormatType>;
     /**
      * The managed identity associated with Export
      */
-    identity?: pulumi.Input<types.inputs.costmanagement.v20230401preview.SystemAssignedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.SystemAssignedServiceIdentityArgs>;
     /**
      * The location of the Export's managed identity. Only required when utilizing managed identity.
      */
@@ -174,7 +174,7 @@ export interface ExportArgs {
     /**
      * Has schedule information for the export.
      */
-    schedule?: pulumi.Input<types.inputs.costmanagement.v20230401preview.ExportScheduleArgs>;
+    schedule?: pulumi.Input<types.inputs.ExportScheduleArgs>;
     /**
      * The scope associated with export operations. This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, '/providers/Microsoft.Management/managementGroups/{managementGroupId} for Management Group scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billingProfile scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/invoiceSections/{invoiceSectionId}' for invoiceSection scope, and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}' specific for partners.
      */

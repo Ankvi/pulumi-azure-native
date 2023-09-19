@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Update details
  */
@@ -106,7 +106,7 @@ export class Update extends pulumi.CustomResource {
     /**
      * If update State is HasPrerequisite, this property contains an array of objects describing prerequisite updates before installing this update. Otherwise, it is empty.
      */
-    public readonly prerequisites!: pulumi.Output<types.outputs.azurestackhci.v20221215preview.UpdatePrerequisiteResponse[] | undefined>;
+    public readonly prerequisites!: pulumi.Output<types.outputs.UpdatePrerequisiteResponse[] | undefined>;
     /**
      * Progress percentage of ongoing operation. Currently this property is only valid when the update is in the Downloading state, where it maps to how much of the update content has been downloaded.
      */
@@ -130,7 +130,7 @@ export class Update extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.azurestackhci.v20221215preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -234,7 +234,7 @@ export interface UpdateArgs {
     /**
      * Indicates the way the update content can be downloaded.
      */
-    availabilityType?: pulumi.Input<string | types.enums.v20221215preview.AvailabilityType>;
+    availabilityType?: pulumi.Input<string | types.enums.AvailabilityType>;
     /**
      * The name of the cluster.
      */
@@ -250,7 +250,7 @@ export interface UpdateArgs {
     /**
      * The type of identity that created the resource.
      */
-    createdByType?: pulumi.Input<string | types.enums.v20221215preview.CreatedByType>;
+    createdByType?: pulumi.Input<string | types.enums.CreatedByType>;
     /**
      * Description of the update.
      */
@@ -278,7 +278,7 @@ export interface UpdateArgs {
     /**
      * The type of identity that last modified the resource.
      */
-    lastModifiedByType?: pulumi.Input<string | types.enums.v20221215preview.CreatedByType>;
+    lastModifiedByType?: pulumi.Input<string | types.enums.CreatedByType>;
     /**
      * The geo-location where the resource lives
      */
@@ -302,7 +302,7 @@ export interface UpdateArgs {
     /**
      * If update State is HasPrerequisite, this property contains an array of objects describing prerequisite updates before installing this update. Otherwise, it is empty.
      */
-    prerequisites?: pulumi.Input<pulumi.Input<types.inputs.azurestackhci.v20221215preview.UpdatePrerequisiteArgs>[]>;
+    prerequisites?: pulumi.Input<pulumi.Input<types.inputs.UpdatePrerequisiteArgs>[]>;
     /**
      * Progress percentage of ongoing operation. Currently this property is only valid when the update is in the Downloading state, where it maps to how much of the update content has been downloaded.
      */
@@ -322,7 +322,7 @@ export interface UpdateArgs {
     /**
      * State of the update as it relates to this stamp.
      */
-    state?: pulumi.Input<string | types.enums.v20221215preview.State>;
+    state?: pulumi.Input<string | types.enums.State>;
     /**
      * The name of the Update
      */

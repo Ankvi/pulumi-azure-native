@@ -49,7 +49,7 @@ export interface GetDatabaseResult {
     /**
      * Optional set of properties to configure geo replication for this database.
      */
-    readonly geoReplication?: types.outputs.cache.DatabasePropertiesResponseGeoReplication;
+    readonly geoReplication?: types.outputs.DatabasePropertiesResponseGeoReplication;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -57,7 +57,7 @@ export interface GetDatabaseResult {
     /**
      * Optional set of redis modules to enable in this database - modules can only be added at creation time.
      */
-    readonly modules?: types.outputs.cache.ModuleResponse[];
+    readonly modules?: types.outputs.ModuleResponse[];
     /**
      * The name of the resource
      */
@@ -65,7 +65,7 @@ export interface GetDatabaseResult {
     /**
      * Persistence settings
      */
-    readonly persistence?: types.outputs.cache.PersistenceResponse;
+    readonly persistence?: types.outputs.PersistenceResponse;
     /**
      * TCP port of the database endpoint. Specified at create time. Defaults to an available port.
      */
@@ -81,7 +81,7 @@ export interface GetDatabaseResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.cache.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

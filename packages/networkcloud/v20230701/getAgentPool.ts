@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get properties of the provided Kubernetes cluster agent pool.
  */
@@ -33,15 +33,15 @@ export interface GetAgentPoolResult {
     /**
      * The administrator credentials to be used for the nodes in this agent pool.
      */
-    readonly administratorConfiguration?: types.outputs.networkcloud.v20230701.AdministratorConfigurationResponse;
+    readonly administratorConfiguration?: types.outputs.AdministratorConfigurationResponse;
     /**
      * The configurations that will be applied to each agent in this agent pool.
      */
-    readonly agentOptions?: types.outputs.networkcloud.v20230701.AgentOptionsResponse;
+    readonly agentOptions?: types.outputs.AgentOptionsResponse;
     /**
      * The configuration of networks being attached to the agent pool for use by the workloads that run on this Kubernetes cluster.
      */
-    readonly attachedNetworkConfiguration?: types.outputs.networkcloud.v20230701.AttachedNetworkConfigurationResponse;
+    readonly attachedNetworkConfiguration?: types.outputs.AttachedNetworkConfigurationResponse;
     /**
      * The list of availability zones of the Network Cloud cluster used for the provisioning of nodes in this agent pool. If not specified, all availability zones will be used.
      */
@@ -61,7 +61,7 @@ export interface GetAgentPoolResult {
     /**
      * The extended location of the cluster associated with the resource.
      */
-    readonly extendedLocation?: types.outputs.networkcloud.v20230701.ExtendedLocationResponse;
+    readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -73,7 +73,7 @@ export interface GetAgentPoolResult {
     /**
      * The labels applied to the nodes in this agent pool.
      */
-    readonly labels?: types.outputs.networkcloud.v20230701.KubernetesLabelResponse[];
+    readonly labels?: types.outputs.KubernetesLabelResponse[];
     /**
      * The geo-location where the resource lives
      */
@@ -93,7 +93,7 @@ export interface GetAgentPoolResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.networkcloud.v20230701.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -101,7 +101,7 @@ export interface GetAgentPoolResult {
     /**
      * The taints applied to the nodes in this agent pool.
      */
-    readonly taints?: types.outputs.networkcloud.v20230701.KubernetesLabelResponse[];
+    readonly taints?: types.outputs.KubernetesLabelResponse[];
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -109,7 +109,7 @@ export interface GetAgentPoolResult {
     /**
      * The configuration of the agent pool.
      */
-    readonly upgradeSettings?: types.outputs.networkcloud.v20230701.AgentPoolUpgradeSettingsResponse;
+    readonly upgradeSettings?: types.outputs.AgentPoolUpgradeSettingsResponse;
     /**
      * The name of the VM SKU that determines the size of resources allocated for node VMs.
      */

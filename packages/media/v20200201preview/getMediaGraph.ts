@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the details of a Media Graph in the Media Services account.
  */
@@ -56,11 +56,11 @@ export interface GetMediaGraphResult {
     /**
      * Media Graph sinks.
      */
-    readonly sinks: types.outputs.media.v20200201preview.MediaGraphAssetSinkResponse[];
+    readonly sinks: types.outputs.MediaGraphAssetSinkResponse[];
     /**
      * Media Graph sources.
      */
-    readonly sources: types.outputs.media.v20200201preview.MediaGraphRtspSourceResponse[];
+    readonly sources: types.outputs.MediaGraphRtspSourceResponse[];
     /**
      * Media Graph state which indicates the resource allocation status for running the media graph pipeline.
      */

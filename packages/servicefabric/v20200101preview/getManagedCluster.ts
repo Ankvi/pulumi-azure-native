@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a Service Fabric managed cluster resource created or in the process of being created in the specified resource group.
  */
@@ -43,7 +43,7 @@ export interface GetManagedClusterResult {
     /**
      * Azure active directory.
      */
-    readonly azureActiveDirectory?: types.outputs.servicefabric.v20200101preview.AzureActiveDirectoryResponse;
+    readonly azureActiveDirectory?: types.outputs.AzureActiveDirectoryResponse;
     /**
      * The port used for client connections to the cluster.
      */
@@ -51,7 +51,7 @@ export interface GetManagedClusterResult {
     /**
      * client certificates for the cluster.
      */
-    readonly clients?: types.outputs.servicefabric.v20200101preview.ClientCertificateResponse[];
+    readonly clients?: types.outputs.ClientCertificateResponse[];
     /**
      * The cluster certificate thumbprint used node to node communication.
      */
@@ -79,7 +79,7 @@ export interface GetManagedClusterResult {
     /**
      * The list of custom fabric settings to configure the cluster.
      */
-    readonly fabricSettings?: types.outputs.servicefabric.v20200101preview.SettingsSectionDescriptionResponse[];
+    readonly fabricSettings?: types.outputs.SettingsSectionDescriptionResponse[];
     /**
      * the cluster Fully qualified domain name.
      */
@@ -95,7 +95,7 @@ export interface GetManagedClusterResult {
     /**
      * Describes load balancing rules.
      */
-    readonly loadBalancingRules?: types.outputs.servicefabric.v20200101preview.LoadBalancingRuleResponse[];
+    readonly loadBalancingRules?: types.outputs.LoadBalancingRuleResponse[];
     /**
      * Azure resource location.
      */
@@ -111,7 +111,7 @@ export interface GetManagedClusterResult {
     /**
      * The sku of the managed cluster
      */
-    readonly sku?: types.outputs.servicefabric.v20200101preview.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * Azure resource tags.
      */

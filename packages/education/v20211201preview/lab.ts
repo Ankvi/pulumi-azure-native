@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Lab details.
  */
@@ -34,7 +34,7 @@ export class Lab extends pulumi.CustomResource {
     /**
      * Default monetary cap for each student in this lab
      */
-    public readonly budgetPerStudent!: pulumi.Output<types.outputs.education.v20211201preview.AmountResponse>;
+    public readonly budgetPerStudent!: pulumi.Output<types.outputs.AmountResponse>;
     /**
      * The type of currency being used for the value.
      */
@@ -74,7 +74,7 @@ export class Lab extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.education.v20211201preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -169,7 +169,7 @@ export interface LabArgs {
     /**
      * Default monetary cap for each student in this lab
      */
-    budgetPerStudent: pulumi.Input<types.inputs.education.v20211201preview.AmountArgs>;
+    budgetPerStudent: pulumi.Input<types.inputs.AmountArgs>;
     /**
      * The type of currency being used for the value.
      */

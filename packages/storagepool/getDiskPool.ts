@@ -40,7 +40,7 @@ export interface GetDiskPoolResult {
     /**
      * List of Azure Managed Disks to attach to a Disk Pool.
      */
-    readonly disks?: types.outputs.storagepool.DiskResponse[];
+    readonly disks?: types.outputs.DiskResponse[];
     /**
      * Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -76,7 +76,7 @@ export interface GetDiskPoolResult {
     /**
      * Resource metadata required by ARM RPC
      */
-    readonly systemData: types.outputs.storagepool.SystemMetadataResponse;
+    readonly systemData: types.outputs.SystemMetadataResponse;
     /**
      * Resource tags.
      */

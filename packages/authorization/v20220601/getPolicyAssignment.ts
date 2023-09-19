@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * This operation retrieves a single policy assignment, given its name and the scope it was created at.
  */
@@ -47,7 +47,7 @@ export interface GetPolicyAssignmentResult {
     /**
      * The managed identity associated with the policy assignment.
      */
-    readonly identity?: types.outputs.authorization.v20220601.IdentityResponse;
+    readonly identity?: types.outputs.IdentityResponse;
     /**
      * The location of the policy assignment. Only required when utilizing managed identity.
      */
@@ -63,7 +63,7 @@ export interface GetPolicyAssignmentResult {
     /**
      * The messages that describe why a resource is non-compliant with the policy.
      */
-    readonly nonComplianceMessages?: types.outputs.authorization.v20220601.NonComplianceMessageResponse[];
+    readonly nonComplianceMessages?: types.outputs.NonComplianceMessageResponse[];
     /**
      * The policy's excluded scopes.
      */
@@ -71,11 +71,11 @@ export interface GetPolicyAssignmentResult {
     /**
      * The policy property value override.
      */
-    readonly overrides?: types.outputs.authorization.v20220601.OverrideResponse[];
+    readonly overrides?: types.outputs.OverrideResponse[];
     /**
      * The parameter values for the assigned policy rule. The keys are the parameter names.
      */
-    readonly parameters?: {[key: string]: types.outputs.authorization.v20220601.ParameterValuesValueResponse};
+    readonly parameters?: {[key: string]: types.outputs.ParameterValuesValueResponse};
     /**
      * The ID of the policy definition or policy set definition being assigned.
      */
@@ -83,7 +83,7 @@ export interface GetPolicyAssignmentResult {
     /**
      * The resource selector list to filter policies by resource properties.
      */
-    readonly resourceSelectors?: types.outputs.authorization.v20220601.ResourceSelectorResponse[];
+    readonly resourceSelectors?: types.outputs.ResourceSelectorResponse[];
     /**
      * The scope for the policy assignment.
      */
@@ -91,7 +91,7 @@ export interface GetPolicyAssignmentResult {
     /**
      * The system metadata relating to this resource.
      */
-    readonly systemData: types.outputs.authorization.v20220601.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the policy assignment.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the properties of the specified Iot Connector FHIR destination.
  */
@@ -45,7 +45,7 @@ export interface GetIotConnectorFhirDestinationResult {
     /**
      * FHIR Mappings
      */
-    readonly fhirMapping: types.outputs.healthcareapis.v20230228.IotMappingPropertiesResponse;
+    readonly fhirMapping: types.outputs.IotMappingPropertiesResponse;
     /**
      * Fully qualified resource id of the FHIR service to connect to.
      */
@@ -69,7 +69,7 @@ export interface GetIotConnectorFhirDestinationResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.healthcareapis.v20230228.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The resource type.
      */

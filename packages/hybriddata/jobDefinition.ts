@@ -35,7 +35,7 @@ export class JobDefinition extends pulumi.CustomResource {
     /**
      * List of customer secrets containing a key identifier and key value. The key identifier is a way for the specific data source to understand the key. Value contains customer secret encrypted by the encryptionKeys.
      */
-    public readonly customerSecrets!: pulumi.Output<types.outputs.hybriddata.CustomerSecretResponse[] | undefined>;
+    public readonly customerSecrets!: pulumi.Output<types.outputs.CustomerSecretResponse[] | undefined>;
     /**
      * A generic json used differently by each data service type.
      */
@@ -63,7 +63,7 @@ export class JobDefinition extends pulumi.CustomResource {
     /**
      * Schedule for running the job definition
      */
-    public readonly schedules!: pulumi.Output<types.outputs.hybriddata.ScheduleResponse[] | undefined>;
+    public readonly schedules!: pulumi.Output<types.outputs.ScheduleResponse[] | undefined>;
     /**
      * State of the job definition.
      */
@@ -148,7 +148,7 @@ export interface JobDefinitionArgs {
     /**
      * List of customer secrets containing a key identifier and key value. The key identifier is a way for the specific data source to understand the key. Value contains customer secret encrypted by the encryptionKeys.
      */
-    customerSecrets?: pulumi.Input<pulumi.Input<types.inputs.hybriddata.CustomerSecretArgs>[]>;
+    customerSecrets?: pulumi.Input<pulumi.Input<types.inputs.CustomerSecretArgs>[]>;
     /**
      * The name of the DataManager Resource within the specified resource group. DataManager names must be between 3 and 24 characters in length and use any alphanumeric and underscore only
      */
@@ -188,7 +188,7 @@ export interface JobDefinitionArgs {
     /**
      * Schedule for running the job definition
      */
-    schedules?: pulumi.Input<pulumi.Input<types.inputs.hybriddata.ScheduleArgs>[]>;
+    schedules?: pulumi.Input<pulumi.Input<types.inputs.ScheduleArgs>[]>;
     /**
      * State of the job definition.
      */

@@ -35,7 +35,7 @@ export class Kpi extends pulumi.CustomResource {
     /**
      * The aliases.
      */
-    public readonly aliases!: pulumi.Output<types.outputs.customerinsights.KpiAliasResponse[] | undefined>;
+    public readonly aliases!: pulumi.Output<types.outputs.KpiAliasResponse[] | undefined>;
     /**
      * The calculation window.
      */
@@ -67,7 +67,7 @@ export class Kpi extends pulumi.CustomResource {
     /**
      * The KPI extracts.
      */
-    public readonly extracts!: pulumi.Output<types.outputs.customerinsights.KpiExtractResponse[] | undefined>;
+    public readonly extracts!: pulumi.Output<types.outputs.KpiExtractResponse[] | undefined>;
     /**
      * The filter expression for the KPI.
      */
@@ -83,7 +83,7 @@ export class Kpi extends pulumi.CustomResource {
     /**
      * The KPI GroupByMetadata.
      */
-    public /*out*/ readonly groupByMetadata!: pulumi.Output<types.outputs.customerinsights.KpiGroupByMetadataResponse[]>;
+    public /*out*/ readonly groupByMetadata!: pulumi.Output<types.outputs.KpiGroupByMetadataResponse[]>;
     /**
      * The KPI name.
      */
@@ -95,7 +95,7 @@ export class Kpi extends pulumi.CustomResource {
     /**
      * The participant profiles.
      */
-    public /*out*/ readonly participantProfilesMetadata!: pulumi.Output<types.outputs.customerinsights.KpiParticipantProfilesMetadataResponse[]>;
+    public /*out*/ readonly participantProfilesMetadata!: pulumi.Output<types.outputs.KpiParticipantProfilesMetadataResponse[]>;
     /**
      * Provisioning state.
      */
@@ -107,7 +107,7 @@ export class Kpi extends pulumi.CustomResource {
     /**
      * The KPI thresholds.
      */
-    public readonly thresHolds!: pulumi.Output<types.outputs.customerinsights.KpiThresholdsResponse | undefined>;
+    public readonly thresHolds!: pulumi.Output<types.outputs.KpiThresholdsResponse | undefined>;
     /**
      * Resource type.
      */
@@ -209,7 +209,7 @@ export interface KpiArgs {
     /**
      * The aliases.
      */
-    aliases?: pulumi.Input<pulumi.Input<types.inputs.customerinsights.KpiAliasArgs>[]>;
+    aliases?: pulumi.Input<pulumi.Input<types.inputs.KpiAliasArgs>[]>;
     /**
      * The calculation window.
      */
@@ -241,7 +241,7 @@ export interface KpiArgs {
     /**
      * The KPI extracts.
      */
-    extracts?: pulumi.Input<pulumi.Input<types.inputs.customerinsights.KpiExtractArgs>[]>;
+    extracts?: pulumi.Input<pulumi.Input<types.inputs.KpiExtractArgs>[]>;
     /**
      * The filter expression for the KPI.
      */
@@ -269,7 +269,7 @@ export interface KpiArgs {
     /**
      * The KPI thresholds.
      */
-    thresHolds?: pulumi.Input<types.inputs.customerinsights.KpiThresholdsArgs>;
+    thresHolds?: pulumi.Input<types.inputs.KpiThresholdsArgs>;
     /**
      * The unit of measurement for the KPI.
      */

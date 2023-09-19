@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the metadata of the provisioning service without SAS keys.
  */
@@ -39,7 +39,7 @@ export interface GetIotDpsResourceResult {
     /**
      * The managed identities for the IotDps instance.
      */
-    readonly identity?: types.outputs.devices.v20200901preview.ArmIdentityResponse;
+    readonly identity?: types.outputs.ArmIdentityResponse;
     /**
      * The resource location.
      */
@@ -51,11 +51,11 @@ export interface GetIotDpsResourceResult {
     /**
      * Service specific properties for a provisioning service
      */
-    readonly properties: types.outputs.devices.v20200901preview.IotDpsPropertiesDescriptionResponse;
+    readonly properties: types.outputs.IotDpsPropertiesDescriptionResponse;
     /**
      * Sku info for a provisioning Service.
      */
-    readonly sku: types.outputs.devices.v20200901preview.IotDpsSkuInfoResponse;
+    readonly sku: types.outputs.IotDpsSkuInfoResponse;
     /**
      * The resource tags.
      */

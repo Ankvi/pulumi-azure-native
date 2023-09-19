@@ -49,11 +49,11 @@ export interface GetSqlServerDatabaseResult {
     /**
      * Properties of Arc Sql Server database
      */
-    readonly properties: types.outputs.azurearcdata.SqlServerDatabaseResourcePropertiesResponse;
+    readonly properties: types.outputs.SqlServerDatabaseResourcePropertiesResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.azurearcdata.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets an installed packages by its id.
  */
@@ -36,11 +36,11 @@ export interface GetContentPackageResult {
     /**
      * The author of the package
      */
-    readonly author?: types.outputs.securityinsights.v20230601preview.MetadataAuthorResponse;
+    readonly author?: types.outputs.MetadataAuthorResponse;
     /**
      * The categories of the package
      */
-    readonly categories?: types.outputs.securityinsights.v20230601preview.MetadataCategoriesResponse;
+    readonly categories?: types.outputs.MetadataCategoriesResponse;
     /**
      * The package id
      */
@@ -56,7 +56,7 @@ export interface GetContentPackageResult {
     /**
      * The support tier of the package
      */
-    readonly dependencies?: types.outputs.securityinsights.v20230601preview.MetadataDependenciesResponse;
+    readonly dependencies?: types.outputs.MetadataDependenciesResponse;
     /**
      * The description of the package
      */
@@ -112,15 +112,15 @@ export interface GetContentPackageResult {
     /**
      * The source of the package
      */
-    readonly source?: types.outputs.securityinsights.v20230601preview.MetadataSourceResponse;
+    readonly source?: types.outputs.MetadataSourceResponse;
     /**
      * The support tier of the package
      */
-    readonly support?: types.outputs.securityinsights.v20230601preview.MetadataSupportResponse;
+    readonly support?: types.outputs.MetadataSupportResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.securityinsights.v20230601preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * the tactics the resource covers
      */

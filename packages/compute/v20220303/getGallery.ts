@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves information about a Shared Image Gallery.
  */
@@ -49,7 +49,7 @@ export interface GetGalleryResult {
     /**
      * Describes the gallery unique name.
      */
-    readonly identifier?: types.outputs.compute.v20220303.GalleryIdentifierResponse;
+    readonly identifier?: types.outputs.GalleryIdentifierResponse;
     /**
      * Resource location
      */
@@ -65,15 +65,15 @@ export interface GetGalleryResult {
     /**
      * Profile for gallery sharing to subscription or tenant
      */
-    readonly sharingProfile?: types.outputs.compute.v20220303.SharingProfileResponse;
+    readonly sharingProfile?: types.outputs.SharingProfileResponse;
     /**
      * Sharing status of current gallery.
      */
-    readonly sharingStatus: types.outputs.compute.v20220303.SharingStatusResponse;
+    readonly sharingStatus: types.outputs.SharingStatusResponse;
     /**
      * Contains information about the soft deletion policy of the gallery.
      */
-    readonly softDeletePolicy?: types.outputs.compute.v20220303.SoftDeletePolicyResponse;
+    readonly softDeletePolicy?: types.outputs.SoftDeletePolicyResponse;
     /**
      * Resource tags
      */

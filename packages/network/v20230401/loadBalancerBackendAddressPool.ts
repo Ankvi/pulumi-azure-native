@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Pool of backend IP addresses.
  */
@@ -34,7 +34,7 @@ export class LoadBalancerBackendAddressPool extends pulumi.CustomResource {
     /**
      * An array of references to IP addresses defined in network interfaces.
      */
-    public /*out*/ readonly backendIPConfigurations!: pulumi.Output<types.outputs.network.v20230401.NetworkInterfaceIPConfigurationResponse[]>;
+    public /*out*/ readonly backendIPConfigurations!: pulumi.Output<types.outputs.NetworkInterfaceIPConfigurationResponse[]>;
     /**
      * Amount of seconds Load Balancer waits for before sending RESET to client and backend address.
      */
@@ -46,15 +46,15 @@ export class LoadBalancerBackendAddressPool extends pulumi.CustomResource {
     /**
      * An array of references to inbound NAT rules that use this backend address pool.
      */
-    public /*out*/ readonly inboundNatRules!: pulumi.Output<types.outputs.network.v20230401.SubResourceResponse[]>;
+    public /*out*/ readonly inboundNatRules!: pulumi.Output<types.outputs.SubResourceResponse[]>;
     /**
      * An array of backend addresses.
      */
-    public readonly loadBalancerBackendAddresses!: pulumi.Output<types.outputs.network.v20230401.LoadBalancerBackendAddressResponse[] | undefined>;
+    public readonly loadBalancerBackendAddresses!: pulumi.Output<types.outputs.LoadBalancerBackendAddressResponse[] | undefined>;
     /**
      * An array of references to load balancing rules that use this backend address pool.
      */
-    public /*out*/ readonly loadBalancingRules!: pulumi.Output<types.outputs.network.v20230401.SubResourceResponse[]>;
+    public /*out*/ readonly loadBalancingRules!: pulumi.Output<types.outputs.SubResourceResponse[]>;
     /**
      * The location of the backend address pool.
      */
@@ -66,11 +66,11 @@ export class LoadBalancerBackendAddressPool extends pulumi.CustomResource {
     /**
      * A reference to an outbound rule that uses this backend address pool.
      */
-    public /*out*/ readonly outboundRule!: pulumi.Output<types.outputs.network.v20230401.SubResourceResponse>;
+    public /*out*/ readonly outboundRule!: pulumi.Output<types.outputs.SubResourceResponse>;
     /**
      * An array of references to outbound rules that use this backend address pool.
      */
-    public /*out*/ readonly outboundRules!: pulumi.Output<types.outputs.network.v20230401.SubResourceResponse[]>;
+    public /*out*/ readonly outboundRules!: pulumi.Output<types.outputs.SubResourceResponse[]>;
     /**
      * The provisioning state of the backend address pool resource.
      */
@@ -82,7 +82,7 @@ export class LoadBalancerBackendAddressPool extends pulumi.CustomResource {
     /**
      * An array of gateway load balancer tunnel interfaces.
      */
-    public readonly tunnelInterfaces!: pulumi.Output<types.outputs.network.v20230401.GatewayLoadBalancerTunnelInterfaceResponse[] | undefined>;
+    public readonly tunnelInterfaces!: pulumi.Output<types.outputs.GatewayLoadBalancerTunnelInterfaceResponse[] | undefined>;
     /**
      * Type of the resource.
      */
@@ -90,7 +90,7 @@ export class LoadBalancerBackendAddressPool extends pulumi.CustomResource {
     /**
      * A reference to a virtual network.
      */
-    public readonly virtualNetwork!: pulumi.Output<types.outputs.network.v20230401.SubResourceResponse | undefined>;
+    public readonly virtualNetwork!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
 
     /**
      * Create a LoadBalancerBackendAddressPool resource with the given unique name, arguments, and options.
@@ -171,7 +171,7 @@ export interface LoadBalancerBackendAddressPoolArgs {
     /**
      * An array of backend addresses.
      */
-    loadBalancerBackendAddresses?: pulumi.Input<pulumi.Input<types.inputs.network.v20230401.LoadBalancerBackendAddressArgs>[]>;
+    loadBalancerBackendAddresses?: pulumi.Input<pulumi.Input<types.inputs.LoadBalancerBackendAddressArgs>[]>;
     /**
      * The name of the load balancer.
      */
@@ -191,13 +191,13 @@ export interface LoadBalancerBackendAddressPoolArgs {
     /**
      * Backend address synchronous mode for the backend pool
      */
-    syncMode?: pulumi.Input<string | types.enums.v20230401.SyncMode>;
+    syncMode?: pulumi.Input<string | types.enums.SyncMode>;
     /**
      * An array of gateway load balancer tunnel interfaces.
      */
-    tunnelInterfaces?: pulumi.Input<pulumi.Input<types.inputs.network.v20230401.GatewayLoadBalancerTunnelInterfaceArgs>[]>;
+    tunnelInterfaces?: pulumi.Input<pulumi.Input<types.inputs.GatewayLoadBalancerTunnelInterfaceArgs>[]>;
     /**
      * A reference to a virtual network.
      */
-    virtualNetwork?: pulumi.Input<types.inputs.network.v20230401.SubResourceArgs>;
+    virtualNetwork?: pulumi.Input<types.inputs.SubResourceArgs>;
 }

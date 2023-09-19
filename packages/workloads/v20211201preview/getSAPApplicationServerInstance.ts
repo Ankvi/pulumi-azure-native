@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the SAP Application Server Instance corresponding to the Virtual Instance for SAP solutions resource.
  */
@@ -36,7 +36,7 @@ export interface GetSAPApplicationServerInstanceResult {
     /**
      * Defines the Application Instance errors.
      */
-    readonly errors: types.outputs.workloads.v20211201preview.SAPVirtualInstanceErrorResponse;
+    readonly errors: types.outputs.SAPVirtualInstanceErrorResponse;
     /**
      * Application server instance gateway Port.
      */
@@ -96,7 +96,7 @@ export interface GetSAPApplicationServerInstanceResult {
     /**
      * Storage details of all the Storage Accounts attached to the App Virtual Machine. For e.g. NFS on AFS Shared Storage.
      */
-    readonly storageDetails: types.outputs.workloads.v20211201preview.StorageInformationResponse[];
+    readonly storageDetails: types.outputs.StorageInformationResponse[];
     /**
      * Application server Subnet.
      */
@@ -104,7 +104,7 @@ export interface GetSAPApplicationServerInstanceResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.workloads.v20211201preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

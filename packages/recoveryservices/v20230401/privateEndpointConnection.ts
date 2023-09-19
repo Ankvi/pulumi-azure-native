@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Private Endpoint Connection Response Properties
  */
@@ -46,7 +46,7 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * PrivateEndpointConnectionResource properties
      */
-    public readonly properties!: pulumi.Output<types.outputs.recoveryservices.v20230401.PrivateEndpointConnectionResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse>;
     /**
      * Resource tags.
      */
@@ -116,7 +116,7 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * PrivateEndpointConnectionResource properties
      */
-    properties?: pulumi.Input<types.inputs.recoveryservices.v20230401.PrivateEndpointConnectionArgs>;
+    properties?: pulumi.Input<types.inputs.PrivateEndpointConnectionArgs>;
     /**
      * The name of the resource group where the recovery services vault is present.
      */

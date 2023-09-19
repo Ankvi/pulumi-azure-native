@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the specified ipGroups.
  */
@@ -40,11 +40,11 @@ export interface GetIpGroupResult {
     /**
      * List of references to Firewall Policies resources that this IpGroups is associated with.
      */
-    readonly firewallPolicies: types.outputs.network.v20230501.SubResourceResponse[];
+    readonly firewallPolicies: types.outputs.SubResourceResponse[];
     /**
      * List of references to Firewall resources that this IpGroups is associated with.
      */
-    readonly firewalls: types.outputs.network.v20230501.SubResourceResponse[];
+    readonly firewalls: types.outputs.SubResourceResponse[];
     /**
      * Resource ID.
      */

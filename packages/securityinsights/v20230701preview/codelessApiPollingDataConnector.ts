@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents Codeless API Polling data connector.
  */
@@ -34,7 +34,7 @@ export class CodelessApiPollingDataConnector extends pulumi.CustomResource {
     /**
      * Config to describe the instructions blade
      */
-    public readonly connectorUiConfig!: pulumi.Output<types.outputs.securityinsights.v20230701preview.CodelessUiConnectorConfigPropertiesResponse | undefined>;
+    public readonly connectorUiConfig!: pulumi.Output<types.outputs.CodelessUiConnectorConfigPropertiesResponse | undefined>;
     /**
      * Etag of the azure resource
      */
@@ -51,11 +51,11 @@ export class CodelessApiPollingDataConnector extends pulumi.CustomResource {
     /**
      * Config to describe the polling instructions
      */
-    public readonly pollingConfig!: pulumi.Output<types.outputs.securityinsights.v20230701preview.CodelessConnectorPollingConfigPropertiesResponse | undefined>;
+    public readonly pollingConfig!: pulumi.Output<types.outputs.CodelessConnectorPollingConfigPropertiesResponse | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.securityinsights.v20230701preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -114,7 +114,7 @@ export interface CodelessApiPollingDataConnectorArgs {
     /**
      * Config to describe the instructions blade
      */
-    connectorUiConfig?: pulumi.Input<types.inputs.securityinsights.v20230701preview.CodelessUiConnectorConfigPropertiesArgs>;
+    connectorUiConfig?: pulumi.Input<types.inputs.CodelessUiConnectorConfigPropertiesArgs>;
     /**
      * Connector ID
      */
@@ -127,7 +127,7 @@ export interface CodelessApiPollingDataConnectorArgs {
     /**
      * Config to describe the polling instructions
      */
-    pollingConfig?: pulumi.Input<types.inputs.securityinsights.v20230701preview.CodelessConnectorPollingConfigPropertiesArgs>;
+    pollingConfig?: pulumi.Input<types.inputs.CodelessConnectorPollingConfigPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

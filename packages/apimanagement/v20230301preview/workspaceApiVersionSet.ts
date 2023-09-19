@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * API Version Set Contract details.
  */
@@ -148,7 +148,7 @@ export interface WorkspaceApiVersionSetArgs {
     /**
      * An value that determines where the API Version identifier will be located in a HTTP request.
      */
-    versioningScheme: pulumi.Input<string | types.enums.v20230301preview.VersioningScheme>;
+    versioningScheme: pulumi.Input<string | types.enums.VersioningScheme>;
     /**
      * Workspace identifier. Must be unique in the current API Management service instance.
      */

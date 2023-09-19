@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents a video resource within Azure Video Analyzer. Videos can be ingested from RTSP cameras through live pipelines or can be created by exporting sequences from existing captured video through a pipeline job. Videos ingested through live pipelines can be streamed through Azure Video Analyzer Player Widget or compatible players. Exported videos can be downloaded as MP4 files.
  */
@@ -34,11 +34,11 @@ export class Video extends pulumi.CustomResource {
     /**
      * Video archival properties.
      */
-    public readonly archival!: pulumi.Output<types.outputs.videoanalyzer.v20211101preview.VideoArchivalResponse | undefined>;
+    public readonly archival!: pulumi.Output<types.outputs.VideoArchivalResponse | undefined>;
     /**
      * Set of URLs to the video content.
      */
-    public /*out*/ readonly contentUrls!: pulumi.Output<types.outputs.videoanalyzer.v20211101preview.VideoContentUrlsResponse>;
+    public /*out*/ readonly contentUrls!: pulumi.Output<types.outputs.VideoContentUrlsResponse>;
     /**
      * Optional video description provided by the user. Value can be up to 2048 characters long.
      */
@@ -46,11 +46,11 @@ export class Video extends pulumi.CustomResource {
     /**
      * Video flags contain information about the available video actions and its dynamic properties based on the current video state.
      */
-    public /*out*/ readonly flags!: pulumi.Output<types.outputs.videoanalyzer.v20211101preview.VideoFlagsResponse>;
+    public /*out*/ readonly flags!: pulumi.Output<types.outputs.VideoFlagsResponse>;
     /**
      * Contains information about the video and audio content.
      */
-    public readonly mediaInfo!: pulumi.Output<types.outputs.videoanalyzer.v20211101preview.VideoMediaInfoResponse | undefined>;
+    public readonly mediaInfo!: pulumi.Output<types.outputs.VideoMediaInfoResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -58,7 +58,7 @@ export class Video extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.videoanalyzer.v20211101preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Optional video title provided by the user. Value can be up to 256 characters long.
      */
@@ -126,7 +126,7 @@ export interface VideoArgs {
     /**
      * Video archival properties.
      */
-    archival?: pulumi.Input<types.inputs.videoanalyzer.v20211101preview.VideoArchivalArgs>;
+    archival?: pulumi.Input<types.inputs.VideoArchivalArgs>;
     /**
      * Optional video description provided by the user. Value can be up to 2048 characters long.
      */
@@ -134,7 +134,7 @@ export interface VideoArgs {
     /**
      * Contains information about the video and audio content.
      */
-    mediaInfo?: pulumi.Input<types.inputs.videoanalyzer.v20211101preview.VideoMediaInfoArgs>;
+    mediaInfo?: pulumi.Input<types.inputs.VideoMediaInfoArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

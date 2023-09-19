@@ -32,7 +32,7 @@ export interface GetSAPVirtualInstanceResult {
     /**
      * Defines if the SAP system is being created using Azure Center for SAP solutions (ACSS) or if an existing SAP system is being registered with ACSS
      */
-    readonly configuration: types.outputs.workloads.DeploymentConfigurationResponse | types.outputs.workloads.DeploymentWithOSConfigurationResponse | types.outputs.workloads.DiscoveryConfigurationResponse;
+    readonly configuration: types.outputs.DeploymentConfigurationResponse | types.outputs.DeploymentWithOSConfigurationResponse | types.outputs.DiscoveryConfigurationResponse;
     /**
      * Defines the environment type - Production/Non Production.
      */
@@ -40,7 +40,7 @@ export interface GetSAPVirtualInstanceResult {
     /**
      * Indicates any errors on the Virtual Instance for SAP solutions resource.
      */
-    readonly errors: types.outputs.workloads.SAPVirtualInstanceErrorResponse;
+    readonly errors: types.outputs.SAPVirtualInstanceErrorResponse;
     /**
      * Defines the health of SAP Instances.
      */
@@ -52,7 +52,7 @@ export interface GetSAPVirtualInstanceResult {
     /**
      * A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide.
      */
-    readonly identity?: types.outputs.workloads.UserAssignedServiceIdentityResponse;
+    readonly identity?: types.outputs.UserAssignedServiceIdentityResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -60,7 +60,7 @@ export interface GetSAPVirtualInstanceResult {
     /**
      * Managed resource group configuration
      */
-    readonly managedResourceGroupConfiguration?: types.outputs.workloads.ManagedRGConfigurationResponse;
+    readonly managedResourceGroupConfiguration?: types.outputs.ManagedRGConfigurationResponse;
     /**
      * The name of the resource
      */
@@ -84,7 +84,7 @@ export interface GetSAPVirtualInstanceResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.workloads.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

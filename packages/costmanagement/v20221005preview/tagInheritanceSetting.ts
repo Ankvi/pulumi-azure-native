@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Tag Inheritance Setting definition.
  */
@@ -47,7 +47,7 @@ export class TagInheritanceSetting extends pulumi.CustomResource {
     /**
      * The properties of the tag inheritance setting.
      */
-    public readonly properties!: pulumi.Output<types.outputs.costmanagement.v20221005preview.TagInheritancePropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.TagInheritancePropertiesResponse>;
     /**
      * Resource type.
      */
@@ -106,7 +106,7 @@ export interface TagInheritanceSettingArgs {
     /**
      * The properties of the tag inheritance setting.
      */
-    properties?: pulumi.Input<types.inputs.costmanagement.v20221005preview.TagInheritancePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.TagInheritancePropertiesArgs>;
     /**
      * The scope associated with this setting. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billing profile scope.
      */

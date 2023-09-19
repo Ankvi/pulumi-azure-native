@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Lists the access keys or Kerberos keys (if active directory enabled) for the specified storage account.
  */
@@ -36,7 +36,7 @@ export interface ListStorageAccountKeysResult {
     /**
      * Gets the list of storage account keys and their properties for the specified storage account.
      */
-    readonly keys: types.outputs.storage.v20220901.StorageAccountKeyResponse[];
+    readonly keys: types.outputs.StorageAccountKeyResponse[];
 }
 /**
  * Lists the access keys or Kerberos keys (if active directory enabled) for the specified storage account.

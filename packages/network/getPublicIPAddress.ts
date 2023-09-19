@@ -37,7 +37,7 @@ export interface GetPublicIPAddressResult {
     /**
      * The DDoS protection custom policy associated with the public IP address.
      */
-    readonly ddosSettings?: types.outputs.network.DdosSettingsResponse;
+    readonly ddosSettings?: types.outputs.DdosSettingsResponse;
     /**
      * Specify what happens to the public IP address when the VM using it is deleted
      */
@@ -45,7 +45,7 @@ export interface GetPublicIPAddressResult {
     /**
      * The FQDN of the DNS record associated with the public IP address.
      */
-    readonly dnsSettings?: types.outputs.network.PublicIPAddressDnsSettingsResponse;
+    readonly dnsSettings?: types.outputs.PublicIPAddressDnsSettingsResponse;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -53,7 +53,7 @@ export interface GetPublicIPAddressResult {
     /**
      * The extended location of the public ip address.
      */
-    readonly extendedLocation?: types.outputs.network.ExtendedLocationResponse;
+    readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
     /**
      * Resource ID.
      */
@@ -69,15 +69,15 @@ export interface GetPublicIPAddressResult {
     /**
      * The IP configuration associated with the public IP address.
      */
-    readonly ipConfiguration: types.outputs.network.IPConfigurationResponse;
+    readonly ipConfiguration: types.outputs.IPConfigurationResponse;
     /**
      * The list of tags associated with the public IP address.
      */
-    readonly ipTags?: types.outputs.network.IpTagResponse[];
+    readonly ipTags?: types.outputs.IpTagResponse[];
     /**
      * The linked public IP address of the public IP address resource.
      */
-    readonly linkedPublicIPAddress?: types.outputs.network.PublicIPAddressResponse;
+    readonly linkedPublicIPAddress?: types.outputs.PublicIPAddressResponse;
     /**
      * Resource location.
      */
@@ -93,7 +93,7 @@ export interface GetPublicIPAddressResult {
     /**
      * The NatGateway for the Public IP address.
      */
-    readonly natGateway?: types.outputs.network.NatGatewayResponse;
+    readonly natGateway?: types.outputs.NatGatewayResponse;
     /**
      * The provisioning state of the public IP address resource.
      */
@@ -109,7 +109,7 @@ export interface GetPublicIPAddressResult {
     /**
      * The Public IP Prefix this Public IP Address should be allocated from.
      */
-    readonly publicIPPrefix?: types.outputs.network.SubResourceResponse;
+    readonly publicIPPrefix?: types.outputs.SubResourceResponse;
     /**
      * The resource GUID property of the public IP address resource.
      */
@@ -117,11 +117,11 @@ export interface GetPublicIPAddressResult {
     /**
      * The service public IP address of the public IP address resource.
      */
-    readonly servicePublicIPAddress?: types.outputs.network.PublicIPAddressResponse;
+    readonly servicePublicIPAddress?: types.outputs.PublicIPAddressResponse;
     /**
      * The public IP address SKU.
      */
-    readonly sku?: types.outputs.network.PublicIPAddressSkuResponse;
+    readonly sku?: types.outputs.PublicIPAddressSkuResponse;
     /**
      * Resource tags.
      */

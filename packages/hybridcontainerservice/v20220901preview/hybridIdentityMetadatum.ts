@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Defines the hybridIdentityMetadata.
  */
@@ -34,7 +34,7 @@ export class HybridIdentityMetadatum extends pulumi.CustomResource {
     /**
      * The identity of the provisioned cluster.
      */
-    public readonly identity!: pulumi.Output<types.outputs.hybridcontainerservice.v20220901preview.ProvisionedClusterIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ProvisionedClusterIdentityResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -54,7 +54,7 @@ export class HybridIdentityMetadatum extends pulumi.CustomResource {
     /**
      * The system data.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.hybridcontainerservice.v20220901preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -114,7 +114,7 @@ export interface HybridIdentityMetadatumArgs {
     /**
      * The identity of the provisioned cluster.
      */
-    identity?: pulumi.Input<types.inputs.hybridcontainerservice.v20220901preview.ProvisionedClusterIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ProvisionedClusterIdentityArgs>;
     /**
      * Onboarding public key for provisioning the Managed identity for the HybridAKS cluster.
      */

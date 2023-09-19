@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the properties of the archive.
  */
@@ -49,7 +49,7 @@ export interface GetArchifeResult {
     /**
      * The package source of the archive.
      */
-    readonly packageSource?: types.outputs.containerregistry.v20230801preview.ArchivePackageSourcePropertiesResponse;
+    readonly packageSource?: types.outputs.ArchivePackageSourcePropertiesResponse;
     /**
      * The provisioning state of the archive at the time the operation was called.
      */
@@ -63,7 +63,7 @@ export interface GetArchifeResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.containerregistry.v20230801preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource.
      */

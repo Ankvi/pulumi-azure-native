@@ -36,15 +36,15 @@ export interface GetCacheResult {
     /**
      * Specifies Directory Services settings of the cache.
      */
-    readonly directoryServicesSettings?: types.outputs.storagecache.CacheDirectorySettingsResponse;
+    readonly directoryServicesSettings?: types.outputs.CacheDirectorySettingsResponse;
     /**
      * Specifies encryption settings of the cache.
      */
-    readonly encryptionSettings?: types.outputs.storagecache.CacheEncryptionSettingsResponse;
+    readonly encryptionSettings?: types.outputs.CacheEncryptionSettingsResponse;
     /**
      * Health of the cache.
      */
-    readonly health: types.outputs.storagecache.CacheHealthResponse;
+    readonly health: types.outputs.CacheHealthResponse;
     /**
      * Resource ID of the cache.
      */
@@ -52,7 +52,7 @@ export interface GetCacheResult {
     /**
      * The identity of the cache, if configured.
      */
-    readonly identity?: types.outputs.storagecache.CacheIdentityResponse;
+    readonly identity?: types.outputs.CacheIdentityResponse;
     /**
      * Region name string.
      */
@@ -68,11 +68,11 @@ export interface GetCacheResult {
     /**
      * Specifies network settings of the cache.
      */
-    readonly networkSettings?: types.outputs.storagecache.CacheNetworkSettingsResponse;
+    readonly networkSettings?: types.outputs.CacheNetworkSettingsResponse;
     /**
      * Specifies the priming jobs defined in the cache.
      */
-    readonly primingJobs: types.outputs.storagecache.PrimingJobResponse[];
+    readonly primingJobs: types.outputs.PrimingJobResponse[];
     /**
      * ARM provisioning state, see https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/Addendum.md#provisioningstate-property
      */
@@ -80,15 +80,15 @@ export interface GetCacheResult {
     /**
      * Specifies security settings of the cache.
      */
-    readonly securitySettings?: types.outputs.storagecache.CacheSecuritySettingsResponse;
+    readonly securitySettings?: types.outputs.CacheSecuritySettingsResponse;
     /**
      * SKU for the cache.
      */
-    readonly sku?: types.outputs.storagecache.CacheResponseSku;
+    readonly sku?: types.outputs.CacheResponseSku;
     /**
      * Specifies the space allocation percentage for each storage target in the cache.
      */
-    readonly spaceAllocation: types.outputs.storagecache.StorageTargetSpaceAllocationResponse[];
+    readonly spaceAllocation: types.outputs.StorageTargetSpaceAllocationResponse[];
     /**
      * Subnet used for the cache.
      */
@@ -96,7 +96,7 @@ export interface GetCacheResult {
     /**
      * The system meta data relating to this resource.
      */
-    readonly systemData: types.outputs.storagecache.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -108,11 +108,11 @@ export interface GetCacheResult {
     /**
      * Upgrade settings of the cache.
      */
-    readonly upgradeSettings?: types.outputs.storagecache.CacheUpgradeSettingsResponse;
+    readonly upgradeSettings?: types.outputs.CacheUpgradeSettingsResponse;
     /**
      * Upgrade status of the cache.
      */
-    readonly upgradeStatus: types.outputs.storagecache.CacheUpgradeStatusResponse;
+    readonly upgradeStatus: types.outputs.CacheUpgradeStatusResponse;
     /**
      * Availability zones for resources. This field should only contain a single element in the array.
      */

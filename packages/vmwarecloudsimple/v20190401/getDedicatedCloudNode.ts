@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns dedicated cloud node
  */
@@ -87,7 +87,7 @@ export interface GetDedicatedCloudNodeResult {
     /**
      * Dedicated Cloud Nodes SKU
      */
-    readonly sku?: types.outputs.vmwarecloudsimple.v20190401.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * Node status, indicates is private cloud set up on this node or not
      */

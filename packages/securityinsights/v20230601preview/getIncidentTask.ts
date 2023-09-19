@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets an incident task.
  */
@@ -38,7 +38,7 @@ export interface GetIncidentTaskResult {
     /**
      * Information on the client (user or application) that made some action
      */
-    readonly createdBy?: types.outputs.securityinsights.v20230601preview.ClientInfoResponse;
+    readonly createdBy?: types.outputs.ClientInfoResponse;
     /**
      * The time the task was created
      */
@@ -58,7 +58,7 @@ export interface GetIncidentTaskResult {
     /**
      * Information on the client (user or application) that made some action
      */
-    readonly lastModifiedBy?: types.outputs.securityinsights.v20230601preview.ClientInfoResponse;
+    readonly lastModifiedBy?: types.outputs.ClientInfoResponse;
     /**
      * The last time the task was updated
      */
@@ -71,7 +71,7 @@ export interface GetIncidentTaskResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.securityinsights.v20230601preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The title of the task
      */

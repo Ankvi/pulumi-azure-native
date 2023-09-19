@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents Amazon Web Services CloudTrail data connector.
  */
@@ -38,7 +38,7 @@ export class AwsCloudTrailDataConnector extends pulumi.CustomResource {
     /**
      * The available data types for the connector.
      */
-    public readonly dataTypes!: pulumi.Output<types.outputs.securityinsights.v20210301preview.AwsCloudTrailDataConnectorDataTypesResponse>;
+    public readonly dataTypes!: pulumi.Output<types.outputs.AwsCloudTrailDataConnectorDataTypesResponse>;
     /**
      * Etag of the azure resource
      */
@@ -55,7 +55,7 @@ export class AwsCloudTrailDataConnector extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.securityinsights.v20210301preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Azure resource type
      */
@@ -129,7 +129,7 @@ export interface AwsCloudTrailDataConnectorArgs {
     /**
      * The available data types for the connector.
      */
-    dataTypes: pulumi.Input<types.inputs.securityinsights.v20210301preview.AwsCloudTrailDataConnectorDataTypesArgs>;
+    dataTypes: pulumi.Input<types.inputs.AwsCloudTrailDataConnectorDataTypesArgs>;
     /**
      * The kind of the data connector
      * Expected value is 'AmazonWebServicesCloudTrail'.

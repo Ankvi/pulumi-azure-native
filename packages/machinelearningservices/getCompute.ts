@@ -41,7 +41,7 @@ export interface GetComputeResult {
     /**
      * The identity of the resource.
      */
-    readonly identity?: types.outputs.machinelearningservices.ManagedServiceIdentityResponse;
+    readonly identity?: types.outputs.ManagedServiceIdentityResponse;
     /**
      * Specifies the location of the resource.
      */
@@ -53,15 +53,15 @@ export interface GetComputeResult {
     /**
      * Compute properties
      */
-    readonly properties: types.outputs.machinelearningservices.AKSResponse | types.outputs.machinelearningservices.AmlComputeResponse | types.outputs.machinelearningservices.ComputeInstanceResponse | types.outputs.machinelearningservices.DataFactoryResponse | types.outputs.machinelearningservices.DataLakeAnalyticsResponse | types.outputs.machinelearningservices.DatabricksResponse | types.outputs.machinelearningservices.HDInsightResponse | types.outputs.machinelearningservices.KubernetesResponse | types.outputs.machinelearningservices.SynapseSparkResponse | types.outputs.machinelearningservices.VirtualMachineResponse;
+    readonly properties: types.outputs.AKSResponse | types.outputs.AmlComputeResponse | types.outputs.ComputeInstanceResponse | types.outputs.DataFactoryResponse | types.outputs.DataLakeAnalyticsResponse | types.outputs.DatabricksResponse | types.outputs.HDInsightResponse | types.outputs.KubernetesResponse | types.outputs.SynapseSparkResponse | types.outputs.VirtualMachineResponse;
     /**
      * The sku of the workspace.
      */
-    readonly sku?: types.outputs.machinelearningservices.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.machinelearningservices.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Contains resource tags defined as key/value pairs.
      */

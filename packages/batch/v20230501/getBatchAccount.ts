@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets information about the specified Batch account.
  */
@@ -40,7 +40,7 @@ export interface GetBatchAccountResult {
     /**
      * Contains information about the auto-storage account associated with a Batch account.
      */
-    readonly autoStorage: types.outputs.batch.v20230501.AutoStoragePropertiesResponse;
+    readonly autoStorage: types.outputs.AutoStoragePropertiesResponse;
     /**
      * For accounts with PoolAllocationMode set to UserSubscription, quota is managed on the subscription so this value is not returned.
      */
@@ -48,7 +48,7 @@ export interface GetBatchAccountResult {
     /**
      * A list of the dedicated core quota per Virtual Machine family for the Batch account. For accounts with PoolAllocationMode set to UserSubscription, quota is managed on the subscription so this value is not returned.
      */
-    readonly dedicatedCoreQuotaPerVMFamily: types.outputs.batch.v20230501.VirtualMachineFamilyCoreQuotaResponse[];
+    readonly dedicatedCoreQuotaPerVMFamily: types.outputs.VirtualMachineFamilyCoreQuotaResponse[];
     /**
      * If this flag is true, dedicated core quota is enforced via both the dedicatedCoreQuotaPerVMFamily and dedicatedCoreQuota properties on the account. If this flag is false, dedicated core quota is enforced only via the dedicatedCoreQuota property on the account and does not consider Virtual Machine family.
      */
@@ -56,7 +56,7 @@ export interface GetBatchAccountResult {
     /**
      * Configures how customer data is encrypted inside the Batch account. By default, accounts are encrypted using a Microsoft managed key. For additional control, a customer-managed key can be used instead.
      */
-    readonly encryption: types.outputs.batch.v20230501.EncryptionPropertiesResponse;
+    readonly encryption: types.outputs.EncryptionPropertiesResponse;
     /**
      * The ID of the resource.
      */
@@ -64,11 +64,11 @@ export interface GetBatchAccountResult {
     /**
      * The identity of the Batch account.
      */
-    readonly identity?: types.outputs.batch.v20230501.BatchAccountIdentityResponse;
+    readonly identity?: types.outputs.BatchAccountIdentityResponse;
     /**
      * Identifies the Azure key vault associated with a Batch account.
      */
-    readonly keyVaultReference: types.outputs.batch.v20230501.KeyVaultReferenceResponse;
+    readonly keyVaultReference: types.outputs.KeyVaultReferenceResponse;
     /**
      * The location of the resource.
      */
@@ -84,7 +84,7 @@ export interface GetBatchAccountResult {
     /**
      * The network profile only takes effect when publicNetworkAccess is enabled.
      */
-    readonly networkProfile?: types.outputs.batch.v20230501.NetworkProfileResponse;
+    readonly networkProfile?: types.outputs.NetworkProfileResponse;
     /**
      * The endpoint used by compute node to connect to the Batch node management service.
      */
@@ -97,7 +97,7 @@ export interface GetBatchAccountResult {
     /**
      * List of private endpoint connections associated with the Batch account
      */
-    readonly privateEndpointConnections: types.outputs.batch.v20230501.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections: types.outputs.PrivateEndpointConnectionResponse[];
     /**
      * The provisioned state of the resource
      */

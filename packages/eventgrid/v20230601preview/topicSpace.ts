@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The Topic space resource.
  */
@@ -46,7 +46,7 @@ export class TopicSpace extends pulumi.CustomResource {
     /**
      * The system metadata relating to the TopicSpace resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.eventgrid.v20230601preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The topic filters in the topic space.
      * Example: "topicTemplates": [ 

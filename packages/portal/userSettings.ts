@@ -35,7 +35,7 @@ export class UserSettings extends pulumi.CustomResource {
     /**
      * The cloud shell user settings properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.portal.UserPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.UserPropertiesResponse>;
 
     /**
      * Create a UserSettings resource with the given unique name, arguments, and options.
@@ -70,7 +70,7 @@ export interface UserSettingsArgs {
     /**
      * The cloud shell user settings properties.
      */
-    properties: pulumi.Input<types.inputs.portal.UserPropertiesArgs>;
+    properties: pulumi.Input<types.inputs.UserPropertiesArgs>;
     /**
      * The name of the user settings
      */

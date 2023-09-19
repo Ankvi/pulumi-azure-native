@@ -43,7 +43,7 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * Core resource properties
      */
-    public readonly properties!: pulumi.Output<types.outputs.datafactory.RemotePrivateEndpointConnectionResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.RemotePrivateEndpointConnectionResponse>;
     /**
      * The resource type.
      */
@@ -101,7 +101,7 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * Core resource properties
      */
-    properties?: pulumi.Input<types.inputs.datafactory.PrivateLinkConnectionApprovalRequestArgs>;
+    properties?: pulumi.Input<types.inputs.PrivateLinkConnectionApprovalRequestArgs>;
     /**
      * The resource group name.
      */

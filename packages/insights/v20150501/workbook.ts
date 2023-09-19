@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An Application Insights workbook definition.
  */
@@ -164,7 +164,7 @@ export interface WorkbookArgs {
     /**
      * The kind of workbook. Choices are user and shared.
      */
-    kind?: pulumi.Input<string | types.enums.v20150501.SharedTypeKind>;
+    kind?: pulumi.Input<string | types.enums.SharedTypeKind>;
     /**
      * Resource location
      */
@@ -188,7 +188,7 @@ export interface WorkbookArgs {
     /**
      * Enum indicating if this workbook definition is owned by a specific user or is shared between all users with access to the Application Insights component.
      */
-    sharedTypeKind: pulumi.Input<string | types.enums.v20150501.SharedTypeKind>;
+    sharedTypeKind: pulumi.Input<string | types.enums.SharedTypeKind>;
     /**
      * Optional resourceId for a source resource.
      */

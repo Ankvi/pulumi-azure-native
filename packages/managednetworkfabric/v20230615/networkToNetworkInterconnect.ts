@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The Network To Network Interconnect resource definition.
  */
@@ -46,11 +46,11 @@ export class NetworkToNetworkInterconnect extends pulumi.CustomResource {
     /**
      * Export Route Policy configuration.
      */
-    public readonly exportRoutePolicy!: pulumi.Output<types.outputs.managednetworkfabric.v20230615.ExportRoutePolicyInformationResponse | undefined>;
+    public readonly exportRoutePolicy!: pulumi.Output<types.outputs.ExportRoutePolicyInformationResponse | undefined>;
     /**
      * Import Route Policy configuration.
      */
-    public readonly importRoutePolicy!: pulumi.Output<types.outputs.managednetworkfabric.v20230615.ImportRoutePolicyInformationResponse | undefined>;
+    public readonly importRoutePolicy!: pulumi.Output<types.outputs.ImportRoutePolicyInformationResponse | undefined>;
     /**
      * Ingress Acl. ARM resource ID of Access Control Lists.
      */
@@ -62,7 +62,7 @@ export class NetworkToNetworkInterconnect extends pulumi.CustomResource {
     /**
      * Common properties for Layer2 Configuration.
      */
-    public readonly layer2Configuration!: pulumi.Output<types.outputs.managednetworkfabric.v20230615.Layer2ConfigurationResponse | undefined>;
+    public readonly layer2Configuration!: pulumi.Output<types.outputs.Layer2ConfigurationResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -74,11 +74,11 @@ export class NetworkToNetworkInterconnect extends pulumi.CustomResource {
     /**
      * NPB Static Route Configuration properties.
      */
-    public readonly npbStaticRouteConfiguration!: pulumi.Output<types.outputs.managednetworkfabric.v20230615.NpbStaticRouteConfigurationResponse | undefined>;
+    public readonly npbStaticRouteConfiguration!: pulumi.Output<types.outputs.NpbStaticRouteConfigurationResponse | undefined>;
     /**
      * Common properties for Layer3Configuration.
      */
-    public readonly optionBLayer3Configuration!: pulumi.Output<types.outputs.managednetworkfabric.v20230615.NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3Configuration | undefined>;
+    public readonly optionBLayer3Configuration!: pulumi.Output<types.outputs.NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3Configuration | undefined>;
     /**
      * Provisioning state of the resource.
      */
@@ -86,7 +86,7 @@ export class NetworkToNetworkInterconnect extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.managednetworkfabric.v20230615.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -121,11 +121,11 @@ export class NetworkToNetworkInterconnect extends pulumi.CustomResource {
             resourceInputs["importRoutePolicy"] = args ? args.importRoutePolicy : undefined;
             resourceInputs["ingressAclId"] = args ? args.ingressAclId : undefined;
             resourceInputs["isManagementType"] = (args ? args.isManagementType : undefined) ?? "True";
-            resourceInputs["layer2Configuration"] = args ? (args.layer2Configuration ? pulumi.output(args.layer2Configuration).apply(types.inputs.managednetworkfabric.v20230615.layer2ConfigurationArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["layer2Configuration"] = args ? (args.layer2Configuration ? pulumi.output(args.layer2Configuration).apply(types.inputs.layer2ConfigurationArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["networkFabricName"] = args ? args.networkFabricName : undefined;
             resourceInputs["networkToNetworkInterconnectName"] = args ? args.networkToNetworkInterconnectName : undefined;
             resourceInputs["nniType"] = (args ? args.nniType : undefined) ?? "CE";
-            resourceInputs["npbStaticRouteConfiguration"] = args ? (args.npbStaticRouteConfiguration ? pulumi.output(args.npbStaticRouteConfiguration).apply(types.inputs.managednetworkfabric.v20230615.npbStaticRouteConfigurationArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["npbStaticRouteConfiguration"] = args ? (args.npbStaticRouteConfiguration ? pulumi.output(args.npbStaticRouteConfiguration).apply(types.inputs.npbStaticRouteConfigurationArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["optionBLayer3Configuration"] = args ? args.optionBLayer3Configuration : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["useOptionB"] = args ? args.useOptionB : undefined;
@@ -171,11 +171,11 @@ export interface NetworkToNetworkInterconnectArgs {
     /**
      * Export Route Policy configuration.
      */
-    exportRoutePolicy?: pulumi.Input<types.inputs.managednetworkfabric.v20230615.ExportRoutePolicyInformationArgs>;
+    exportRoutePolicy?: pulumi.Input<types.inputs.ExportRoutePolicyInformationArgs>;
     /**
      * Import Route Policy configuration.
      */
-    importRoutePolicy?: pulumi.Input<types.inputs.managednetworkfabric.v20230615.ImportRoutePolicyInformationArgs>;
+    importRoutePolicy?: pulumi.Input<types.inputs.ImportRoutePolicyInformationArgs>;
     /**
      * Ingress Acl. ARM resource ID of Access Control Lists.
      */
@@ -183,11 +183,11 @@ export interface NetworkToNetworkInterconnectArgs {
     /**
      * Configuration to use NNI for Infrastructure Management. Example: True/False.
      */
-    isManagementType?: pulumi.Input<string | types.enums.v20230615.IsManagementType>;
+    isManagementType?: pulumi.Input<string | types.enums.IsManagementType>;
     /**
      * Common properties for Layer2 Configuration.
      */
-    layer2Configuration?: pulumi.Input<types.inputs.managednetworkfabric.v20230615.Layer2ConfigurationArgs>;
+    layer2Configuration?: pulumi.Input<types.inputs.Layer2ConfigurationArgs>;
     /**
      * Name of the Network Fabric.
      */
@@ -199,15 +199,15 @@ export interface NetworkToNetworkInterconnectArgs {
     /**
      * Type of NNI used. Example: CE | NPB
      */
-    nniType?: pulumi.Input<string | types.enums.v20230615.NniType>;
+    nniType?: pulumi.Input<string | types.enums.NniType>;
     /**
      * NPB Static Route Configuration properties.
      */
-    npbStaticRouteConfiguration?: pulumi.Input<types.inputs.managednetworkfabric.v20230615.NpbStaticRouteConfigurationArgs>;
+    npbStaticRouteConfiguration?: pulumi.Input<types.inputs.NpbStaticRouteConfigurationArgs>;
     /**
      * Common properties for Layer3Configuration.
      */
-    optionBLayer3Configuration?: pulumi.Input<types.inputs.managednetworkfabric.v20230615.NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationArgs>;
+    optionBLayer3Configuration?: pulumi.Input<types.inputs.NetworkToNetworkInterconnectPropertiesOptionBLayer3ConfigurationArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -215,5 +215,5 @@ export interface NetworkToNetworkInterconnectArgs {
     /**
      * Based on this option layer3 parameters are mandatory. Example: True/False
      */
-    useOptionB: pulumi.Input<string | types.enums.v20230615.BooleanEnumProperty>;
+    useOptionB: pulumi.Input<string | types.enums.BooleanEnumProperty>;
 }

@@ -73,7 +73,7 @@ export interface GetPartnerDestinationResult {
     /**
      * The system metadata relating to Partner Destination resource.
      */
-    readonly systemData: types.outputs.eventgrid.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Tags of the resource.
      */

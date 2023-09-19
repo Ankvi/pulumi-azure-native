@@ -37,7 +37,7 @@ export interface GetProviderInstanceResult {
     /**
      * Defines the provider instance errors.
      */
-    readonly errors: types.outputs.workloads.ProviderInstancePropertiesResponseErrors;
+    readonly errors: types.outputs.ProviderInstancePropertiesResponseErrors;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -45,7 +45,7 @@ export interface GetProviderInstanceResult {
     /**
      * [currently not in use] Managed service identity(user assigned identities)
      */
-    readonly identity?: types.outputs.workloads.UserAssignedServiceIdentityResponse;
+    readonly identity?: types.outputs.UserAssignedServiceIdentityResponse;
     /**
      * The name of the resource
      */
@@ -53,7 +53,7 @@ export interface GetProviderInstanceResult {
     /**
      * Defines the provider specific properties.
      */
-    readonly providerSettings?: types.outputs.workloads.DB2ProviderInstancePropertiesResponse | types.outputs.workloads.HanaDbProviderInstancePropertiesResponse | types.outputs.workloads.MsSqlServerProviderInstancePropertiesResponse | types.outputs.workloads.PrometheusHaClusterProviderInstancePropertiesResponse | types.outputs.workloads.PrometheusOSProviderInstancePropertiesResponse | types.outputs.workloads.SapNetWeaverProviderInstancePropertiesResponse;
+    readonly providerSettings?: types.outputs.DB2ProviderInstancePropertiesResponse | types.outputs.HanaDbProviderInstancePropertiesResponse | types.outputs.MsSqlServerProviderInstancePropertiesResponse | types.outputs.PrometheusHaClusterProviderInstancePropertiesResponse | types.outputs.PrometheusOSProviderInstancePropertiesResponse | types.outputs.SapNetWeaverProviderInstancePropertiesResponse;
     /**
      * State of provisioning of the provider instance
      */
@@ -61,7 +61,7 @@ export interface GetProviderInstanceResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.workloads.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

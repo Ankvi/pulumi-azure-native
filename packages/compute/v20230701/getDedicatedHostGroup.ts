@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves information about a dedicated host group.
  */
@@ -36,11 +36,11 @@ export interface GetDedicatedHostGroupResult {
     /**
      * Enables or disables a capability on the dedicated host group. Minimum api-version: 2022-03-01.
      */
-    readonly additionalCapabilities?: types.outputs.compute.v20230701.DedicatedHostGroupPropertiesResponseAdditionalCapabilities;
+    readonly additionalCapabilities?: types.outputs.DedicatedHostGroupPropertiesResponseAdditionalCapabilities;
     /**
      * A list of references to all dedicated hosts in the dedicated host group.
      */
-    readonly hosts: types.outputs.compute.v20230701.SubResourceReadOnlyResponse[];
+    readonly hosts: types.outputs.SubResourceReadOnlyResponse[];
     /**
      * Resource Id
      */
@@ -48,7 +48,7 @@ export interface GetDedicatedHostGroupResult {
     /**
      * The dedicated host group instance view, which has the list of instance view of the dedicated hosts under the dedicated host group.
      */
-    readonly instanceView: types.outputs.compute.v20230701.DedicatedHostGroupInstanceViewResponse;
+    readonly instanceView: types.outputs.DedicatedHostGroupInstanceViewResponse;
     /**
      * Resource location
      */

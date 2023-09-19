@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Agent Pool.
  */
@@ -46,7 +46,7 @@ export class AgentPool extends pulumi.CustomResource {
     /**
      * CreationData to be used to specify the source Snapshot ID if the node pool will be created/upgraded using a snapshot.
      */
-    public readonly creationData!: pulumi.Output<types.outputs.containerservice.v20220402preview.CreationDataResponse | undefined>;
+    public readonly creationData!: pulumi.Output<types.outputs.CreationDataResponse | undefined>;
     /**
      * If orchestratorVersion was a fully specified version <major.minor.patch>, this field will be exactly equal to it. If orchestratorVersion was <major.minor>, this field will contain the full <major.minor.patch> version being used.
      */
@@ -86,7 +86,7 @@ export class AgentPool extends pulumi.CustomResource {
     /**
      * The Kubelet configuration on the agent pool nodes.
      */
-    public readonly kubeletConfig!: pulumi.Output<types.outputs.containerservice.v20220402preview.KubeletConfigResponse | undefined>;
+    public readonly kubeletConfig!: pulumi.Output<types.outputs.KubeletConfigResponse | undefined>;
     /**
      * Determines the placement of emptyDir volumes, container runtime data root, and Kubelet ephemeral storage.
      */
@@ -94,7 +94,7 @@ export class AgentPool extends pulumi.CustomResource {
     /**
      * The OS configuration of Linux agent nodes.
      */
-    public readonly linuxOSConfig!: pulumi.Output<types.outputs.containerservice.v20220402preview.LinuxOSConfigResponse | undefined>;
+    public readonly linuxOSConfig!: pulumi.Output<types.outputs.LinuxOSConfigResponse | undefined>;
     /**
      * The maximum number of nodes for auto-scaling
      */
@@ -162,7 +162,7 @@ export class AgentPool extends pulumi.CustomResource {
     /**
      * When an Agent Pool is first created it is initially Running. The Agent Pool can be stopped by setting this field to Stopped. A stopped Agent Pool stops all of its VMs and does not accrue billing charges. An Agent Pool can only be stopped if it is Running and provisioning state is Succeeded
      */
-    public readonly powerState!: pulumi.Output<types.outputs.containerservice.v20220402preview.PowerStateResponse | undefined>;
+    public readonly powerState!: pulumi.Output<types.outputs.PowerStateResponse | undefined>;
     /**
      * The current deployment or provisioning state.
      */
@@ -198,7 +198,7 @@ export class AgentPool extends pulumi.CustomResource {
     /**
      * Settings for upgrading the agentpool
      */
-    public readonly upgradeSettings!: pulumi.Output<types.outputs.containerservice.v20220402preview.AgentPoolUpgradeSettingsResponse | undefined>;
+    public readonly upgradeSettings!: pulumi.Output<types.outputs.AgentPoolUpgradeSettingsResponse | undefined>;
     /**
      * VM size availability varies by region. If a node contains insufficient compute resources (memory, cpu, etc) pods might fail to run correctly. For more details on restricted VM sizes, see: https://docs.microsoft.com/azure/aks/quotas-skus-regions
      */
@@ -354,7 +354,7 @@ export interface AgentPoolArgs {
     /**
      * CreationData to be used to specify the source Snapshot ID if the node pool will be created/upgraded using a snapshot.
      */
-    creationData?: pulumi.Input<types.inputs.containerservice.v20220402preview.CreationDataArgs>;
+    creationData?: pulumi.Input<types.inputs.CreationDataArgs>;
     /**
      * If orchestratorVersion was a fully specified version <major.minor.patch>, this field will be exactly equal to it. If orchestratorVersion was <major.minor>, this field will contain the full <major.minor.patch> version being used.
      */
@@ -386,7 +386,7 @@ export interface AgentPoolArgs {
     /**
      * GPUInstanceProfile to be used to specify GPU MIG instance profile for supported GPU VM SKU.
      */
-    gpuInstanceProfile?: pulumi.Input<string | types.enums.v20220402preview.GPUInstanceProfile>;
+    gpuInstanceProfile?: pulumi.Input<string | types.enums.GPUInstanceProfile>;
     /**
      * This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}. For more information see [Azure dedicated hosts](https://docs.microsoft.com/azure/virtual-machines/dedicated-hosts).
      */
@@ -394,15 +394,15 @@ export interface AgentPoolArgs {
     /**
      * The Kubelet configuration on the agent pool nodes.
      */
-    kubeletConfig?: pulumi.Input<types.inputs.containerservice.v20220402preview.KubeletConfigArgs>;
+    kubeletConfig?: pulumi.Input<types.inputs.KubeletConfigArgs>;
     /**
      * Determines the placement of emptyDir volumes, container runtime data root, and Kubelet ephemeral storage.
      */
-    kubeletDiskType?: pulumi.Input<string | types.enums.v20220402preview.KubeletDiskType>;
+    kubeletDiskType?: pulumi.Input<string | types.enums.KubeletDiskType>;
     /**
      * The OS configuration of Linux agent nodes.
      */
-    linuxOSConfig?: pulumi.Input<types.inputs.containerservice.v20220402preview.LinuxOSConfigArgs>;
+    linuxOSConfig?: pulumi.Input<types.inputs.LinuxOSConfigArgs>;
     /**
      * The maximum number of nodes for auto-scaling
      */
@@ -422,7 +422,7 @@ export interface AgentPoolArgs {
     /**
      * A cluster must have at least one 'System' Agent Pool at all times. For additional information on agent pool restrictions and best practices, see: https://docs.microsoft.com/azure/aks/use-system-pools
      */
-    mode?: pulumi.Input<string | types.enums.v20220402preview.AgentPoolMode>;
+    mode?: pulumi.Input<string | types.enums.AgentPoolMode>;
     /**
      * The node labels to be persisted across all nodes in agent pool.
      */
@@ -446,15 +446,15 @@ export interface AgentPoolArgs {
     /**
      * The default is 'Ephemeral' if the VM supports it and has a cache disk larger than the requested OSDiskSizeGB. Otherwise, defaults to 'Managed'. May not be changed after creation. For more information see [Ephemeral OS](https://docs.microsoft.com/azure/aks/cluster-configuration#ephemeral-os).
      */
-    osDiskType?: pulumi.Input<string | types.enums.v20220402preview.OSDiskType>;
+    osDiskType?: pulumi.Input<string | types.enums.OSDiskType>;
     /**
      * Specifies the OS SKU used by the agent pool. If not specified, the default is Ubuntu if OSType=Linux or Windows2019 if OSType=Windows. And the default Windows OSSKU will be changed to Windows2022 after Windows2019 is deprecated.
      */
-    osSKU?: pulumi.Input<string | types.enums.v20220402preview.OSSKU>;
+    osSKU?: pulumi.Input<string | types.enums.OSSKU>;
     /**
      * The operating system type. The default is Linux.
      */
-    osType?: pulumi.Input<string | types.enums.v20220402preview.OSType>;
+    osType?: pulumi.Input<string | types.enums.OSType>;
     /**
      * If omitted, pod IPs are statically assigned on the node subnet (see vnetSubnetID for more details). This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}
      */
@@ -462,7 +462,7 @@ export interface AgentPoolArgs {
     /**
      * When an Agent Pool is first created it is initially Running. The Agent Pool can be stopped by setting this field to Stopped. A stopped Agent Pool stops all of its VMs and does not accrue billing charges. An Agent Pool can only be stopped if it is Running and provisioning state is Succeeded
      */
-    powerState?: pulumi.Input<types.inputs.containerservice.v20220402preview.PowerStateArgs>;
+    powerState?: pulumi.Input<types.inputs.PowerStateArgs>;
     /**
      * The ID for Proximity Placement Group.
      */
@@ -478,15 +478,15 @@ export interface AgentPoolArgs {
     /**
      * This also effects the cluster autoscaler behavior. If not specified, it defaults to Delete.
      */
-    scaleDownMode?: pulumi.Input<string | types.enums.v20220402preview.ScaleDownMode>;
+    scaleDownMode?: pulumi.Input<string | types.enums.ScaleDownMode>;
     /**
      * This cannot be specified unless the scaleSetPriority is 'Spot'. If not specified, the default is 'Delete'.
      */
-    scaleSetEvictionPolicy?: pulumi.Input<string | types.enums.v20220402preview.ScaleSetEvictionPolicy>;
+    scaleSetEvictionPolicy?: pulumi.Input<string | types.enums.ScaleSetEvictionPolicy>;
     /**
      * The Virtual Machine Scale Set priority. If not specified, the default is 'Regular'.
      */
-    scaleSetPriority?: pulumi.Input<string | types.enums.v20220402preview.ScaleSetPriority>;
+    scaleSetPriority?: pulumi.Input<string | types.enums.ScaleSetPriority>;
     /**
      * Possible values are any decimal value greater than zero or -1 which indicates the willingness to pay any on-demand price. For more details on spot pricing, see [spot VMs pricing](https://docs.microsoft.com/azure/virtual-machines/spot-vms#pricing)
      */
@@ -498,11 +498,11 @@ export interface AgentPoolArgs {
     /**
      * The type of Agent Pool.
      */
-    type?: pulumi.Input<string | types.enums.v20220402preview.AgentPoolType>;
+    type?: pulumi.Input<string | types.enums.AgentPoolType>;
     /**
      * Settings for upgrading the agentpool
      */
-    upgradeSettings?: pulumi.Input<types.inputs.containerservice.v20220402preview.AgentPoolUpgradeSettingsArgs>;
+    upgradeSettings?: pulumi.Input<types.inputs.AgentPoolUpgradeSettingsArgs>;
     /**
      * VM size availability varies by region. If a node contains insufficient compute resources (memory, cpu, etc) pods might fail to run correctly. For more details on restricted VM sizes, see: https://docs.microsoft.com/azure/aks/quotas-skus-regions
      */
@@ -514,5 +514,5 @@ export interface AgentPoolArgs {
     /**
      * Determines the type of workload a node can run.
      */
-    workloadRuntime?: pulumi.Input<string | types.enums.v20220402preview.WorkloadRuntime>;
+    workloadRuntime?: pulumi.Input<string | types.enums.WorkloadRuntime>;
 }

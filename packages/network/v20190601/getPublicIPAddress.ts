@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the specified public IP address in a specified resource group.
  */
@@ -36,11 +36,11 @@ export interface GetPublicIPAddressResult {
     /**
      * The DDoS protection custom policy associated with the public IP address.
      */
-    readonly ddosSettings?: types.outputs.network.v20190601.DdosSettingsResponse;
+    readonly ddosSettings?: types.outputs.DdosSettingsResponse;
     /**
      * The FQDN of the DNS record associated with the public IP address.
      */
-    readonly dnsSettings?: types.outputs.network.v20190601.PublicIPAddressDnsSettingsResponse;
+    readonly dnsSettings?: types.outputs.PublicIPAddressDnsSettingsResponse;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -60,11 +60,11 @@ export interface GetPublicIPAddressResult {
     /**
      * The IP configuration associated with the public IP address.
      */
-    readonly ipConfiguration: types.outputs.network.v20190601.IPConfigurationResponse;
+    readonly ipConfiguration: types.outputs.IPConfigurationResponse;
     /**
      * The list of tags associated with the public IP address.
      */
-    readonly ipTags?: types.outputs.network.v20190601.IpTagResponse[];
+    readonly ipTags?: types.outputs.IpTagResponse[];
     /**
      * Resource location.
      */
@@ -88,7 +88,7 @@ export interface GetPublicIPAddressResult {
     /**
      * The Public IP Prefix this Public IP Address should be allocated from.
      */
-    readonly publicIPPrefix?: types.outputs.network.v20190601.SubResourceResponse;
+    readonly publicIPPrefix?: types.outputs.SubResourceResponse;
     /**
      * The resource GUID property of the public IP resource.
      */
@@ -96,7 +96,7 @@ export interface GetPublicIPAddressResult {
     /**
      * The public IP address SKU.
      */
-    readonly sku?: types.outputs.network.v20190601.PublicIPAddressSkuResponse;
+    readonly sku?: types.outputs.PublicIPAddressSkuResponse;
     /**
      * Resource tags.
      */

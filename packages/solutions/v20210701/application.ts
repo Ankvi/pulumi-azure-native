@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Information about managed application.
  */
@@ -38,31 +38,31 @@ export class Application extends pulumi.CustomResource {
     /**
      * The collection of managed application artifacts.
      */
-    public /*out*/ readonly artifacts!: pulumi.Output<types.outputs.solutions.v20210701.ApplicationArtifactResponse[]>;
+    public /*out*/ readonly artifacts!: pulumi.Output<types.outputs.ApplicationArtifactResponse[]>;
     /**
      * The  read-only authorizations property that is retrieved from the application package.
      */
-    public /*out*/ readonly authorizations!: pulumi.Output<types.outputs.solutions.v20210701.ApplicationAuthorizationResponse[]>;
+    public /*out*/ readonly authorizations!: pulumi.Output<types.outputs.ApplicationAuthorizationResponse[]>;
     /**
      * The managed application billing details.
      */
-    public /*out*/ readonly billingDetails!: pulumi.Output<types.outputs.solutions.v20210701.ApplicationBillingDetailsDefinitionResponse>;
+    public /*out*/ readonly billingDetails!: pulumi.Output<types.outputs.ApplicationBillingDetailsDefinitionResponse>;
     /**
      * The client entity that created the JIT request.
      */
-    public /*out*/ readonly createdBy!: pulumi.Output<types.outputs.solutions.v20210701.ApplicationClientDetailsResponse>;
+    public /*out*/ readonly createdBy!: pulumi.Output<types.outputs.ApplicationClientDetailsResponse>;
     /**
      * The read-only customer support property that is retrieved from the application package.
      */
-    public /*out*/ readonly customerSupport!: pulumi.Output<types.outputs.solutions.v20210701.ApplicationPackageContactResponse>;
+    public /*out*/ readonly customerSupport!: pulumi.Output<types.outputs.ApplicationPackageContactResponse>;
     /**
      * The identity of the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.solutions.v20210701.IdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityResponse | undefined>;
     /**
      * The managed application Jit access policy.
      */
-    public readonly jitAccessPolicy!: pulumi.Output<types.outputs.solutions.v20210701.ApplicationJitAccessPolicyResponse | undefined>;
+    public readonly jitAccessPolicy!: pulumi.Output<types.outputs.ApplicationJitAccessPolicyResponse | undefined>;
     /**
      * The kind of the managed application. Allowed values are MarketPlace and ServiceCatalog.
      */
@@ -98,7 +98,7 @@ export class Application extends pulumi.CustomResource {
     /**
      * The plan information.
      */
-    public readonly plan!: pulumi.Output<types.outputs.solutions.v20210701.PlanResponse | undefined>;
+    public readonly plan!: pulumi.Output<types.outputs.PlanResponse | undefined>;
     /**
      * The managed application provisioning state.
      */
@@ -110,15 +110,15 @@ export class Application extends pulumi.CustomResource {
     /**
      * The SKU of the resource.
      */
-    public readonly sku!: pulumi.Output<types.outputs.solutions.v20210701.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * The read-only support URLs property that is retrieved from the application package.
      */
-    public /*out*/ readonly supportUrls!: pulumi.Output<types.outputs.solutions.v20210701.ApplicationPackageSupportUrlsResponse>;
+    public /*out*/ readonly supportUrls!: pulumi.Output<types.outputs.ApplicationPackageSupportUrlsResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.solutions.v20210701.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags
      */
@@ -130,7 +130,7 @@ export class Application extends pulumi.CustomResource {
     /**
      * The client entity that last updated the JIT request.
      */
-    public /*out*/ readonly updatedBy!: pulumi.Output<types.outputs.solutions.v20210701.ApplicationClientDetailsResponse>;
+    public /*out*/ readonly updatedBy!: pulumi.Output<types.outputs.ApplicationClientDetailsResponse>;
 
     /**
      * Create a Application resource with the given unique name, arguments, and options.
@@ -225,11 +225,11 @@ export interface ApplicationArgs {
     /**
      * The identity of the resource.
      */
-    identity?: pulumi.Input<types.inputs.solutions.v20210701.IdentityArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityArgs>;
     /**
      * The managed application Jit access policy.
      */
-    jitAccessPolicy?: pulumi.Input<types.inputs.solutions.v20210701.ApplicationJitAccessPolicyArgs>;
+    jitAccessPolicy?: pulumi.Input<types.inputs.ApplicationJitAccessPolicyArgs>;
     /**
      * The kind of the managed application. Allowed values are MarketPlace and ServiceCatalog.
      */
@@ -253,7 +253,7 @@ export interface ApplicationArgs {
     /**
      * The plan information.
      */
-    plan?: pulumi.Input<types.inputs.solutions.v20210701.PlanArgs>;
+    plan?: pulumi.Input<types.inputs.PlanArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -261,7 +261,7 @@ export interface ApplicationArgs {
     /**
      * The SKU of the resource.
      */
-    sku?: pulumi.Input<types.inputs.solutions.v20210701.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Resource tags
      */

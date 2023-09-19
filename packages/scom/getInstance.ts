@@ -36,7 +36,7 @@ export interface GetInstanceResult {
     /**
      * The Azure Active Directory identity of the SCOM instance
      */
-    readonly identity?: types.outputs.scom.ManagedIdentityResponse;
+    readonly identity?: types.outputs.ManagedIdentityResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -48,11 +48,11 @@ export interface GetInstanceResult {
     /**
      * The properties of a SCOM instance resource
      */
-    readonly properties: types.outputs.scom.MonitoringInstancePropertiesResponse;
+    readonly properties: types.outputs.MonitoringInstancePropertiesResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.scom.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

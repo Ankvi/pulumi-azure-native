@@ -45,11 +45,11 @@ export interface GetActiveDirectoryConnectorResult {
     /**
      * null
      */
-    readonly properties: types.outputs.azurearcdata.ActiveDirectoryConnectorPropertiesResponse;
+    readonly properties: types.outputs.ActiveDirectoryConnectorPropertiesResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.azurearcdata.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

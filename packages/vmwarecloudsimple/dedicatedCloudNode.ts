@@ -87,7 +87,7 @@ export class DedicatedCloudNode extends pulumi.CustomResource {
     /**
      * Dedicated Cloud Nodes SKU
      */
-    public readonly sku!: pulumi.Output<types.outputs.vmwarecloudsimple.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Node status, indicates is private cloud set up on this node or not
      */
@@ -228,7 +228,7 @@ export interface DedicatedCloudNodeArgs {
     /**
      * Dedicated Cloud Nodes SKU
      */
-    sku?: pulumi.Input<types.inputs.vmwarecloudsimple.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Dedicated Cloud Nodes tags
      */

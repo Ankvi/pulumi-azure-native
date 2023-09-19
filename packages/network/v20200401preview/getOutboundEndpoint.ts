@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets properties of an outbound endpoint for a DNS resolver.
  */
@@ -60,11 +60,11 @@ export interface GetOutboundEndpointResult {
     /**
      * The reference to the subnet used for the outbound endpoint.
      */
-    readonly subnet?: types.outputs.network.v20200401preview.SubResourceResponse;
+    readonly subnet?: types.outputs.SubResourceResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.network.v20200401preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

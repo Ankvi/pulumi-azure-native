@@ -41,12 +41,12 @@ export interface GetAgentPoolResult {
     /**
      * The underlying cloud infra provider properties.
      */
-    readonly cloudProviderProfile?: types.outputs.hybridcontainerservice.CloudProviderProfileResponse;
+    readonly cloudProviderProfile?: types.outputs.CloudProviderProfileResponse;
     /**
      * Count - Number of agents to host docker containers. Allowed values must be in the range of 1 to 100 (inclusive). The default value is 1.
      */
     readonly count?: number;
-    readonly extendedLocation?: types.outputs.hybridcontainerservice.AgentPoolResponseExtendedLocation;
+    readonly extendedLocation?: types.outputs.AgentPoolResponseExtendedLocation;
     /**
      * Resource Id
      */
@@ -95,11 +95,11 @@ export interface GetAgentPoolResult {
     /**
      * HybridAKSNodePoolStatus defines the observed state of HybridAKSNodePool
      */
-    readonly status?: types.outputs.hybridcontainerservice.AgentPoolProvisioningStatusResponseStatus;
+    readonly status?: types.outputs.AgentPoolProvisioningStatusResponseStatus;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.hybridcontainerservice.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags
      */

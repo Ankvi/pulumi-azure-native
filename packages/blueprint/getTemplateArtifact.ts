@@ -62,7 +62,7 @@ export interface GetTemplateArtifactResult {
     /**
      * Resource Manager template blueprint artifact parameter values.
      */
-    readonly parameters: {[key: string]: types.outputs.blueprint.ParameterValueResponse};
+    readonly parameters: {[key: string]: types.outputs.ParameterValueResponse};
     /**
      * If applicable, the name of the resource group placeholder to which the Resource Manager template blueprint artifact will be deployed.
      */

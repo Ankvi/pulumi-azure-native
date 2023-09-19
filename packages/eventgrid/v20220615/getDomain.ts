@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get properties of a domain.
  */
@@ -67,11 +67,11 @@ export interface GetDomainResult {
     /**
      * Identity information for the Event Grid Domain resource.
      */
-    readonly identity?: types.outputs.eventgrid.v20220615.IdentityInfoResponse;
+    readonly identity?: types.outputs.IdentityInfoResponse;
     /**
      * This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled.
      */
-    readonly inboundIpRules?: types.outputs.eventgrid.v20220615.InboundIpRuleResponse[];
+    readonly inboundIpRules?: types.outputs.InboundIpRuleResponse[];
     /**
      * This determines the format that Event Grid should expect for incoming events published to the Event Grid Domain Resource.
      */
@@ -79,7 +79,7 @@ export interface GetDomainResult {
     /**
      * Information about the InputSchemaMapping which specified the info about mapping event payload.
      */
-    readonly inputSchemaMapping?: types.outputs.eventgrid.v20220615.JsonInputSchemaMappingResponse;
+    readonly inputSchemaMapping?: types.outputs.JsonInputSchemaMappingResponse;
     /**
      * Location of the resource.
      */
@@ -95,7 +95,7 @@ export interface GetDomainResult {
     /**
      * List of private endpoint connections.
      */
-    readonly privateEndpointConnections: types.outputs.eventgrid.v20220615.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections: types.outputs.PrivateEndpointConnectionResponse[];
     /**
      * Provisioning state of the Event Grid Domain Resource.
      */
@@ -108,7 +108,7 @@ export interface GetDomainResult {
     /**
      * The system metadata relating to the Event Grid Domain resource.
      */
-    readonly systemData: types.outputs.eventgrid.v20220615.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Tags of the resource.
      */

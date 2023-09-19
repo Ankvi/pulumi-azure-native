@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Authorization rule for a namespace by name.
  */
@@ -52,7 +52,7 @@ export interface GetNamespaceAuthorizationRuleResult {
     /**
      * The system meta data relating to this resource.
      */
-    readonly systemData: types.outputs.relay.v20211101.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
      */

@@ -47,19 +47,19 @@ export class AutoscaleSetting extends pulumi.CustomResource {
     /**
      * the collection of notifications.
      */
-    public readonly notifications!: pulumi.Output<types.outputs.insights.AutoscaleNotificationResponse[] | undefined>;
+    public readonly notifications!: pulumi.Output<types.outputs.AutoscaleNotificationResponse[] | undefined>;
     /**
      * the predictive autoscale policy mode.
      */
-    public readonly predictiveAutoscalePolicy!: pulumi.Output<types.outputs.insights.PredictiveAutoscalePolicyResponse | undefined>;
+    public readonly predictiveAutoscalePolicy!: pulumi.Output<types.outputs.PredictiveAutoscalePolicyResponse | undefined>;
     /**
      * the collection of automatic scaling profiles that specify different scaling parameters for different time periods. A maximum of 20 profiles can be specified.
      */
-    public readonly profiles!: pulumi.Output<types.outputs.insights.AutoscaleProfileResponse[]>;
+    public readonly profiles!: pulumi.Output<types.outputs.AutoscaleProfileResponse[]>;
     /**
      * The system metadata related to the response.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.insights.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater in length than 128 characters and a value no greater in length than 256 characters.
      */
@@ -150,15 +150,15 @@ export interface AutoscaleSettingArgs {
     /**
      * the collection of notifications.
      */
-    notifications?: pulumi.Input<pulumi.Input<types.inputs.insights.AutoscaleNotificationArgs>[]>;
+    notifications?: pulumi.Input<pulumi.Input<types.inputs.AutoscaleNotificationArgs>[]>;
     /**
      * the predictive autoscale policy mode.
      */
-    predictiveAutoscalePolicy?: pulumi.Input<types.inputs.insights.PredictiveAutoscalePolicyArgs>;
+    predictiveAutoscalePolicy?: pulumi.Input<types.inputs.PredictiveAutoscalePolicyArgs>;
     /**
      * the collection of automatic scaling profiles that specify different scaling parameters for different time periods. A maximum of 20 profiles can be specified.
      */
-    profiles: pulumi.Input<pulumi.Input<types.inputs.insights.AutoscaleProfileArgs>[]>;
+    profiles: pulumi.Input<pulumi.Input<types.inputs.AutoscaleProfileArgs>[]>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

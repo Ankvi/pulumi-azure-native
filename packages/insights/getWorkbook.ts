@@ -57,7 +57,7 @@ export interface GetWorkbookResult {
     /**
      * Identity used for BYOS
      */
-    readonly identity?: types.outputs.insights.WorkbookResourceResponseIdentity;
+    readonly identity?: types.outputs.WorkbookResourceResponseIdentity;
     /**
      * The kind of workbook. Only valid value is shared.
      */
@@ -89,7 +89,7 @@ export interface GetWorkbookResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.insights.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The service resource.
  */
@@ -34,7 +34,7 @@ export class Service extends pulumi.CustomResource {
     /**
      * A list that describes the correlation of the service with other services.
      */
-    public readonly correlationScheme!: pulumi.Output<types.outputs.servicefabric.v20210601.ServiceCorrelationDescriptionResponse[] | undefined>;
+    public readonly correlationScheme!: pulumi.Output<types.outputs.ServiceCorrelationDescriptionResponse[] | undefined>;
     /**
      * Specifies the move cost for the service.
      */
@@ -54,7 +54,7 @@ export class Service extends pulumi.CustomResource {
     /**
      * Describes how the service is partitioned.
      */
-    public readonly partitionDescription!: pulumi.Output<types.outputs.servicefabric.v20210601.NamedPartitionSchemeDescriptionResponse | types.outputs.servicefabric.v20210601.SingletonPartitionSchemeDescriptionResponse | types.outputs.servicefabric.v20210601.UniformInt64RangePartitionSchemeDescriptionResponse | undefined>;
+    public readonly partitionDescription!: pulumi.Output<types.outputs.NamedPartitionSchemeDescriptionResponse | types.outputs.SingletonPartitionSchemeDescriptionResponse | types.outputs.UniformInt64RangePartitionSchemeDescriptionResponse | undefined>;
     /**
      * The placement constraints as a string. Placement constraints are boolean expressions on node properties and allow for restricting a service to particular nodes based on the service requirements. For example, to place a service on nodes where NodeType is blue specify the following: "NodeColor == blue)".
      */
@@ -74,7 +74,7 @@ export class Service extends pulumi.CustomResource {
     /**
      * The service load metrics is given as an array of ServiceLoadMetricDescription objects.
      */
-    public readonly serviceLoadMetrics!: pulumi.Output<types.outputs.servicefabric.v20210601.ServiceLoadMetricDescriptionResponse[] | undefined>;
+    public readonly serviceLoadMetrics!: pulumi.Output<types.outputs.ServiceLoadMetricDescriptionResponse[] | undefined>;
     /**
      * The activation Mode of the service package
      */
@@ -82,7 +82,7 @@ export class Service extends pulumi.CustomResource {
     /**
      * A list that describes the correlation of the service with other services.
      */
-    public readonly servicePlacementPolicies!: pulumi.Output<types.outputs.servicefabric.v20210601.ServicePlacementPolicyDescriptionResponse[] | undefined>;
+    public readonly servicePlacementPolicies!: pulumi.Output<types.outputs.ServicePlacementPolicyDescriptionResponse[] | undefined>;
     /**
      * The name of the service type
      */
@@ -90,7 +90,7 @@ export class Service extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.servicefabric.v20210601.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Azure resource tags.
      */
@@ -185,11 +185,11 @@ export interface ServiceArgs {
     /**
      * A list that describes the correlation of the service with other services.
      */
-    correlationScheme?: pulumi.Input<pulumi.Input<types.inputs.servicefabric.v20210601.ServiceCorrelationDescriptionArgs>[]>;
+    correlationScheme?: pulumi.Input<pulumi.Input<types.inputs.ServiceCorrelationDescriptionArgs>[]>;
     /**
      * Specifies the move cost for the service.
      */
-    defaultMoveCost?: pulumi.Input<string | types.enums.v20210601.MoveCost>;
+    defaultMoveCost?: pulumi.Input<string | types.enums.MoveCost>;
     /**
      * It will be deprecated in New API, resource location depends on the parent resource.
      */
@@ -197,7 +197,7 @@ export interface ServiceArgs {
     /**
      * Describes how the service is partitioned.
      */
-    partitionDescription?: pulumi.Input<types.inputs.servicefabric.v20210601.NamedPartitionSchemeDescriptionArgs | types.inputs.servicefabric.v20210601.SingletonPartitionSchemeDescriptionArgs | types.inputs.servicefabric.v20210601.UniformInt64RangePartitionSchemeDescriptionArgs>;
+    partitionDescription?: pulumi.Input<types.inputs.NamedPartitionSchemeDescriptionArgs | types.inputs.SingletonPartitionSchemeDescriptionArgs | types.inputs.UniformInt64RangePartitionSchemeDescriptionArgs>;
     /**
      * The placement constraints as a string. Placement constraints are boolean expressions on node properties and allow for restricting a service to particular nodes based on the service requirements. For example, to place a service on nodes where NodeType is blue specify the following: "NodeColor == blue)".
      */
@@ -213,11 +213,11 @@ export interface ServiceArgs {
     /**
      * The kind of service (Stateless or Stateful).
      */
-    serviceKind: pulumi.Input<string | types.enums.v20210601.ServiceKind>;
+    serviceKind: pulumi.Input<string | types.enums.ServiceKind>;
     /**
      * The service load metrics is given as an array of ServiceLoadMetricDescription objects.
      */
-    serviceLoadMetrics?: pulumi.Input<pulumi.Input<types.inputs.servicefabric.v20210601.ServiceLoadMetricDescriptionArgs>[]>;
+    serviceLoadMetrics?: pulumi.Input<pulumi.Input<types.inputs.ServiceLoadMetricDescriptionArgs>[]>;
     /**
      * The name of the service resource in the format of {applicationName}~{serviceName}.
      */
@@ -225,11 +225,11 @@ export interface ServiceArgs {
     /**
      * The activation Mode of the service package
      */
-    servicePackageActivationMode?: pulumi.Input<string | types.enums.v20210601.ArmServicePackageActivationMode>;
+    servicePackageActivationMode?: pulumi.Input<string | types.enums.ArmServicePackageActivationMode>;
     /**
      * A list that describes the correlation of the service with other services.
      */
-    servicePlacementPolicies?: pulumi.Input<pulumi.Input<types.inputs.servicefabric.v20210601.ServicePlacementPolicyDescriptionArgs>[]>;
+    servicePlacementPolicies?: pulumi.Input<pulumi.Input<types.inputs.ServicePlacementPolicyDescriptionArgs>[]>;
     /**
      * The name of the service type
      */

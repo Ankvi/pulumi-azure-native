@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A Transform encapsulates the rules or instructions for generating desired outputs from input media, such as by transcoding or by extracting insights. After the Transform is created, it can be applied to input media by creating Jobs.
  */
@@ -50,11 +50,11 @@ export class Transform extends pulumi.CustomResource {
     /**
      * An array of one or more TransformOutputs that the Transform should generate.
      */
-    public readonly outputs!: pulumi.Output<types.outputs.media.v20220701.TransformOutputResponse[]>;
+    public readonly outputs!: pulumi.Output<types.outputs.TransformOutputResponse[]>;
     /**
      * The system metadata relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.media.v20220701.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -121,7 +121,7 @@ export interface TransformArgs {
     /**
      * An array of one or more TransformOutputs that the Transform should generate.
      */
-    outputs: pulumi.Input<pulumi.Input<types.inputs.media.v20220701.TransformOutputArgs>[]>;
+    outputs: pulumi.Input<pulumi.Input<types.inputs.TransformOutputArgs>[]>;
     /**
      * The name of the resource group within the Azure subscription.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents a server.
  */
@@ -46,7 +46,7 @@ export class Server extends pulumi.CustomResource {
     /**
      * Delegated subnet arguments.
      */
-    public readonly delegatedSubnetArguments!: pulumi.Output<types.outputs.dbformysql.v20200701privatepreview.DelegatedSubnetArgumentsResponse | undefined>;
+    public readonly delegatedSubnetArguments!: pulumi.Output<types.outputs.DelegatedSubnetArgumentsResponse | undefined>;
     /**
      * Earliest restore point creation time (ISO8601 format)
      */
@@ -66,7 +66,7 @@ export class Server extends pulumi.CustomResource {
     /**
      * The Azure Active Directory identity of the server.
      */
-    public readonly identity!: pulumi.Output<types.outputs.dbformysql.v20200701privatepreview.IdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -74,7 +74,7 @@ export class Server extends pulumi.CustomResource {
     /**
      * Maintenance window of a server.
      */
-    public readonly maintenanceWindow!: pulumi.Output<types.outputs.dbformysql.v20200701privatepreview.MaintenanceWindowResponse | undefined>;
+    public readonly maintenanceWindow!: pulumi.Output<types.outputs.MaintenanceWindowResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -94,7 +94,7 @@ export class Server extends pulumi.CustomResource {
     /**
      * The SKU (pricing tier) of the server.
      */
-    public readonly sku!: pulumi.Output<types.outputs.dbformysql.v20200701privatepreview.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * The source MySQL server id.
      */
@@ -114,7 +114,7 @@ export class Server extends pulumi.CustomResource {
     /**
      * Storage profile of a server.
      */
-    public readonly storageProfile!: pulumi.Output<types.outputs.dbformysql.v20200701privatepreview.StorageProfileResponse | undefined>;
+    public readonly storageProfile!: pulumi.Output<types.outputs.StorageProfileResponse | undefined>;
     /**
      * Resource tags.
      */
@@ -224,23 +224,23 @@ export interface ServerArgs {
     /**
      * The mode to create a new MySQL server.
      */
-    createMode?: pulumi.Input<string | types.enums.v20200701privatepreview.CreateMode>;
+    createMode?: pulumi.Input<string | types.enums.CreateMode>;
     /**
      * Delegated subnet arguments.
      */
-    delegatedSubnetArguments?: pulumi.Input<types.inputs.dbformysql.v20200701privatepreview.DelegatedSubnetArgumentsArgs>;
+    delegatedSubnetArguments?: pulumi.Input<types.inputs.DelegatedSubnetArgumentsArgs>;
     /**
      * Enable HA or not for a server.
      */
-    haEnabled?: pulumi.Input<string | types.enums.v20200701privatepreview.HaEnabledEnum>;
+    haEnabled?: pulumi.Input<string | types.enums.HaEnabledEnum>;
     /**
      * The Azure Active Directory identity of the server.
      */
-    identity?: pulumi.Input<types.inputs.dbformysql.v20200701privatepreview.IdentityArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityArgs>;
     /**
      * Status showing whether the server enabled infrastructure encryption.
      */
-    infrastructureEncryption?: pulumi.Input<string | types.enums.v20200701privatepreview.InfrastructureEncryptionEnum>;
+    infrastructureEncryption?: pulumi.Input<string | types.enums.InfrastructureEncryptionEnum>;
     /**
      * The geo-location where the resource lives
      */
@@ -248,7 +248,7 @@ export interface ServerArgs {
     /**
      * Maintenance window of a server.
      */
-    maintenanceWindow?: pulumi.Input<types.inputs.dbformysql.v20200701privatepreview.MaintenanceWindowArgs>;
+    maintenanceWindow?: pulumi.Input<types.inputs.MaintenanceWindowArgs>;
     /**
      * The replication role.
      */
@@ -268,7 +268,7 @@ export interface ServerArgs {
     /**
      * The SKU (pricing tier) of the server.
      */
-    sku?: pulumi.Input<types.inputs.dbformysql.v20200701privatepreview.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * The source MySQL server id.
      */
@@ -276,11 +276,11 @@ export interface ServerArgs {
     /**
      * Enable ssl enforcement or not when connect to server.
      */
-    sslEnforcement?: pulumi.Input<string | types.enums.v20200701privatepreview.SslEnforcementEnum>;
+    sslEnforcement?: pulumi.Input<string | types.enums.SslEnforcementEnum>;
     /**
      * Storage profile of a server.
      */
-    storageProfile?: pulumi.Input<types.inputs.dbformysql.v20200701privatepreview.StorageProfileArgs>;
+    storageProfile?: pulumi.Input<types.inputs.StorageProfileArgs>;
     /**
      * Resource tags.
      */
@@ -288,5 +288,5 @@ export interface ServerArgs {
     /**
      * Server version.
      */
-    version?: pulumi.Input<string | types.enums.v20200701privatepreview.ServerVersion>;
+    version?: pulumi.Input<string | types.enums.ServerVersion>;
 }

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Channel info.
  */
@@ -51,7 +51,7 @@ export class Channel extends pulumi.CustomResource {
     /**
      * This property should be populated when channelType is PartnerTopic and represents information about the partner topic resource corresponding to the channel.
      */
-    public readonly partnerTopicInfo!: pulumi.Output<types.outputs.eventgrid.v20220615.PartnerTopicInfoResponse | undefined>;
+    public readonly partnerTopicInfo!: pulumi.Output<types.outputs.PartnerTopicInfoResponse | undefined>;
     /**
      * Provisioning state of the channel.
      */
@@ -63,7 +63,7 @@ export class Channel extends pulumi.CustomResource {
     /**
      * The system metadata relating to Channel resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.eventgrid.v20220615.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Type of the resource.
      */
@@ -127,7 +127,7 @@ export interface ChannelArgs {
     /**
      * The type of the event channel which represents the direction flow of events.
      */
-    channelType?: pulumi.Input<string | types.enums.v20220615.ChannelType>;
+    channelType?: pulumi.Input<string | types.enums.ChannelType>;
     /**
      * Expiration time of the channel. If this timer expires while the corresponding partner topic is never activated,
      * the channel and corresponding partner topic are deleted.
@@ -144,15 +144,15 @@ export interface ChannelArgs {
     /**
      * This property should be populated when channelType is PartnerTopic and represents information about the partner topic resource corresponding to the channel.
      */
-    partnerTopicInfo?: pulumi.Input<types.inputs.eventgrid.v20220615.PartnerTopicInfoArgs>;
+    partnerTopicInfo?: pulumi.Input<types.inputs.PartnerTopicInfoArgs>;
     /**
      * Provisioning state of the channel.
      */
-    provisioningState?: pulumi.Input<string | types.enums.v20220615.ChannelProvisioningState>;
+    provisioningState?: pulumi.Input<string | types.enums.ChannelProvisioningState>;
     /**
      * The readiness state of the corresponding partner topic.
      */
-    readinessState?: pulumi.Input<string | types.enums.v20220615.ReadinessState>;
+    readinessState?: pulumi.Input<string | types.enums.ReadinessState>;
     /**
      * The name of the resource group within the partners subscription.
      */

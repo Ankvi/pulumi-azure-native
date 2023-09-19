@@ -33,7 +33,7 @@ utilities.lazyLoad(exports, ["ProvisionedCluster"], () => require("./provisioned
 
 
 // Export enums:
-export * from "../types/enums/v20220501preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

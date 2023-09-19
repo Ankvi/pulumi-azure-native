@@ -40,7 +40,7 @@ export interface GetSqlMigrationServiceResult {
      * Provisioning state to track the async operation status.
      */
     readonly provisioningState: string;
-    readonly systemData: types.outputs.datamigration.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     readonly tags?: {[key: string]: string};
     readonly type: string;
 }

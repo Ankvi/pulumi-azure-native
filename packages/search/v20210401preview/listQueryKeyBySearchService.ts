@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns the list of query API keys for the given Azure Cognitive Search service.
  */
@@ -35,7 +35,7 @@ export interface ListQueryKeyBySearchServiceResult {
     /**
      * The query keys for the Azure Cognitive Search service.
      */
-    readonly value: types.outputs.search.v20210401preview.QueryKeyResponse[];
+    readonly value: types.outputs.QueryKeyResponse[];
 }
 /**
  * Returns the list of query API keys for the given Azure Cognitive Search service.

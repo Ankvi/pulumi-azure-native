@@ -35,11 +35,11 @@ export class CapacityReservationGroup extends pulumi.CustomResource {
     /**
      * A list of all capacity reservation resource ids that belong to capacity reservation group.
      */
-    public /*out*/ readonly capacityReservations!: pulumi.Output<types.outputs.compute.SubResourceReadOnlyResponse[]>;
+    public /*out*/ readonly capacityReservations!: pulumi.Output<types.outputs.SubResourceReadOnlyResponse[]>;
     /**
      * The capacity reservation group instance view which has the list of instance views for all the capacity reservations that belong to the capacity reservation group.
      */
-    public /*out*/ readonly instanceView!: pulumi.Output<types.outputs.compute.CapacityReservationGroupInstanceViewResponse>;
+    public /*out*/ readonly instanceView!: pulumi.Output<types.outputs.CapacityReservationGroupInstanceViewResponse>;
     /**
      * Resource location
      */
@@ -59,7 +59,7 @@ export class CapacityReservationGroup extends pulumi.CustomResource {
     /**
      * A list of references to all virtual machines associated to the capacity reservation group.
      */
-    public /*out*/ readonly virtualMachinesAssociated!: pulumi.Output<types.outputs.compute.SubResourceReadOnlyResponse[]>;
+    public /*out*/ readonly virtualMachinesAssociated!: pulumi.Output<types.outputs.SubResourceReadOnlyResponse[]>;
     /**
      * Availability Zones to use for this capacity reservation group. The zones can be assigned only during creation. If not provided, the group supports only regional resources in the region. If provided, enforces each capacity reservation in the group to be in one of the zones.
      */

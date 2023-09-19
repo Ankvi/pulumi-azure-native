@@ -35,11 +35,11 @@ export class Route extends pulumi.CustomResource {
     /**
      * The caching configuration for this route. To disable caching, do not provide a cacheConfiguration object.
      */
-    public readonly cacheConfiguration!: pulumi.Output<types.outputs.cdn.AfdRouteCacheConfigurationResponse | undefined>;
+    public readonly cacheConfiguration!: pulumi.Output<types.outputs.AfdRouteCacheConfigurationResponse | undefined>;
     /**
      * Domains referenced by this endpoint.
      */
-    public readonly customDomains!: pulumi.Output<types.outputs.cdn.ActivatedResourceReferenceResponse[] | undefined>;
+    public readonly customDomains!: pulumi.Output<types.outputs.ActivatedResourceReferenceResponse[] | undefined>;
     public /*out*/ readonly deploymentStatus!: pulumi.Output<string>;
     /**
      * Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled'
@@ -68,7 +68,7 @@ export class Route extends pulumi.CustomResource {
     /**
      * A reference to the origin group.
      */
-    public readonly originGroup!: pulumi.Output<types.outputs.cdn.ResourceReferenceResponse>;
+    public readonly originGroup!: pulumi.Output<types.outputs.ResourceReferenceResponse>;
     /**
      * A directory path on the origin that AzureFrontDoor can use to retrieve content from, e.g. contoso.cloudapp.net/originpath.
      */
@@ -84,7 +84,7 @@ export class Route extends pulumi.CustomResource {
     /**
      * rule sets referenced by this endpoint.
      */
-    public readonly ruleSets!: pulumi.Output<types.outputs.cdn.ResourceReferenceResponse[] | undefined>;
+    public readonly ruleSets!: pulumi.Output<types.outputs.ResourceReferenceResponse[] | undefined>;
     /**
      * List of supported protocols for this route.
      */
@@ -92,7 +92,7 @@ export class Route extends pulumi.CustomResource {
     /**
      * Read only system data
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.cdn.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource type.
      */
@@ -174,11 +174,11 @@ export interface RouteArgs {
     /**
      * The caching configuration for this route. To disable caching, do not provide a cacheConfiguration object.
      */
-    cacheConfiguration?: pulumi.Input<types.inputs.cdn.AfdRouteCacheConfigurationArgs>;
+    cacheConfiguration?: pulumi.Input<types.inputs.AfdRouteCacheConfigurationArgs>;
     /**
      * Domains referenced by this endpoint.
      */
-    customDomains?: pulumi.Input<pulumi.Input<types.inputs.cdn.ActivatedResourceReferenceArgs>[]>;
+    customDomains?: pulumi.Input<pulumi.Input<types.inputs.ActivatedResourceReferenceArgs>[]>;
     /**
      * Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled'
      */
@@ -202,7 +202,7 @@ export interface RouteArgs {
     /**
      * A reference to the origin group.
      */
-    originGroup: pulumi.Input<types.inputs.cdn.ResourceReferenceArgs>;
+    originGroup: pulumi.Input<types.inputs.ResourceReferenceArgs>;
     /**
      * A directory path on the origin that AzureFrontDoor can use to retrieve content from, e.g. contoso.cloudapp.net/originpath.
      */
@@ -226,7 +226,7 @@ export interface RouteArgs {
     /**
      * rule sets referenced by this endpoint.
      */
-    ruleSets?: pulumi.Input<pulumi.Input<types.inputs.cdn.ResourceReferenceArgs>[]>;
+    ruleSets?: pulumi.Input<pulumi.Input<types.inputs.ResourceReferenceArgs>[]>;
     /**
      * List of supported protocols for this route.
      */

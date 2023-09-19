@@ -70,7 +70,7 @@ export interface GetReadWriteDatabaseResult {
     /**
      * The statistics of the database.
      */
-    readonly statistics: types.outputs.kusto.DatabaseStatisticsResponse;
+    readonly statistics: types.outputs.DatabaseStatisticsResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

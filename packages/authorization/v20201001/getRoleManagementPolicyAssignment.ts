@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the specified role management policy assignment for a resource scope
  */
@@ -31,7 +31,7 @@ export interface GetRoleManagementPolicyAssignmentResult {
     /**
      * The readonly computed rule applied to the policy.
      */
-    readonly effectiveRules: (types.outputs.authorization.v20201001.RoleManagementPolicyApprovalRuleResponse | types.outputs.authorization.v20201001.RoleManagementPolicyAuthenticationContextRuleResponse | types.outputs.authorization.v20201001.RoleManagementPolicyEnablementRuleResponse | types.outputs.authorization.v20201001.RoleManagementPolicyExpirationRuleResponse | types.outputs.authorization.v20201001.RoleManagementPolicyNotificationRuleResponse)[];
+    readonly effectiveRules: (types.outputs.RoleManagementPolicyApprovalRuleResponse | types.outputs.RoleManagementPolicyAuthenticationContextRuleResponse | types.outputs.RoleManagementPolicyEnablementRuleResponse | types.outputs.RoleManagementPolicyExpirationRuleResponse | types.outputs.RoleManagementPolicyNotificationRuleResponse)[];
     /**
      * The role management policy Id.
      */
@@ -43,7 +43,7 @@ export interface GetRoleManagementPolicyAssignmentResult {
     /**
      * Additional properties of scope, role definition and policy
      */
-    readonly policyAssignmentProperties: types.outputs.authorization.v20201001.PolicyAssignmentPropertiesResponse;
+    readonly policyAssignmentProperties: types.outputs.PolicyAssignmentPropertiesResponse;
     /**
      * The policy id role management policy assignment.
      */

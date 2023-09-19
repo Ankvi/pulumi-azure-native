@@ -37,11 +37,11 @@ export interface GetPrivateEndpointResult {
     /**
      * Application security groups in which the private endpoint IP configuration is included.
      */
-    readonly applicationSecurityGroups?: types.outputs.network.ApplicationSecurityGroupResponse[];
+    readonly applicationSecurityGroups?: types.outputs.ApplicationSecurityGroupResponse[];
     /**
      * An array of custom dns configurations.
      */
-    readonly customDnsConfigs?: types.outputs.network.CustomDnsConfigPropertiesFormatResponse[];
+    readonly customDnsConfigs?: types.outputs.CustomDnsConfigPropertiesFormatResponse[];
     /**
      * The custom name of the network interface attached to the private endpoint.
      */
@@ -53,7 +53,7 @@ export interface GetPrivateEndpointResult {
     /**
      * The extended location of the load balancer.
      */
-    readonly extendedLocation?: types.outputs.network.ExtendedLocationResponse;
+    readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
     /**
      * Resource ID.
      */
@@ -61,7 +61,7 @@ export interface GetPrivateEndpointResult {
     /**
      * A list of IP configurations of the private endpoint. This will be used to map to the First Party Service's endpoints.
      */
-    readonly ipConfigurations?: types.outputs.network.PrivateEndpointIPConfigurationResponse[];
+    readonly ipConfigurations?: types.outputs.PrivateEndpointIPConfigurationResponse[];
     /**
      * Resource location.
      */
@@ -69,7 +69,7 @@ export interface GetPrivateEndpointResult {
     /**
      * A grouping of information about the connection to the remote resource. Used when the network admin does not have access to approve connections to the remote resource.
      */
-    readonly manualPrivateLinkServiceConnections?: types.outputs.network.PrivateLinkServiceConnectionResponse[];
+    readonly manualPrivateLinkServiceConnections?: types.outputs.PrivateLinkServiceConnectionResponse[];
     /**
      * Resource name.
      */
@@ -77,11 +77,11 @@ export interface GetPrivateEndpointResult {
     /**
      * An array of references to the network interfaces created for this private endpoint.
      */
-    readonly networkInterfaces: types.outputs.network.NetworkInterfaceResponse[];
+    readonly networkInterfaces: types.outputs.NetworkInterfaceResponse[];
     /**
      * A grouping of information about the connection to the remote resource.
      */
-    readonly privateLinkServiceConnections?: types.outputs.network.PrivateLinkServiceConnectionResponse[];
+    readonly privateLinkServiceConnections?: types.outputs.PrivateLinkServiceConnectionResponse[];
     /**
      * The provisioning state of the private endpoint resource.
      */
@@ -89,7 +89,7 @@ export interface GetPrivateEndpointResult {
     /**
      * The ID of the subnet from which the private IP will be allocated.
      */
-    readonly subnet?: types.outputs.network.SubnetResponse;
+    readonly subnet?: types.outputs.SubnetResponse;
     /**
      * Resource tags.
      */

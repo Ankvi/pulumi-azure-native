@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The storage container resource definition.
  */
@@ -39,7 +39,7 @@ export class StoragecontainerRetrieve extends pulumi.CustomResource {
      * Total size of the disk in MB
      */
     public /*out*/ readonly containerSizeMB!: pulumi.Output<number>;
-    public readonly extendedLocation!: pulumi.Output<types.outputs.azurestackhci.v20210901preview.StoragecontainersResponseExtendedLocation | undefined>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.StoragecontainersResponseExtendedLocation | undefined>;
     /**
      * The resource location
      */
@@ -60,11 +60,11 @@ export class StoragecontainerRetrieve extends pulumi.CustomResource {
     /**
      * storageContainerStatus defines the observed state of storagecontainers
      */
-    public /*out*/ readonly status!: pulumi.Output<types.outputs.azurestackhci.v20210901preview.StorageContainerStatusResponse>;
+    public /*out*/ readonly status!: pulumi.Output<types.outputs.StorageContainerStatusResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.azurestackhci.v20210901preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags
      */
@@ -127,7 +127,7 @@ export class StoragecontainerRetrieve extends pulumi.CustomResource {
  * The set of arguments for constructing a StoragecontainerRetrieve resource.
  */
 export interface StoragecontainerRetrieveArgs {
-    extendedLocation?: pulumi.Input<types.inputs.azurestackhci.v20210901preview.StoragecontainersExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.StoragecontainersExtendedLocationArgs>;
     /**
      * The resource location
      */

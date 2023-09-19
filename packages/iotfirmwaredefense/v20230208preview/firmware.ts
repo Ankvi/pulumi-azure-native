@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Firmware definition
  */
@@ -66,7 +66,7 @@ export class Firmware extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.iotfirmwaredefense.v20230208preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -164,7 +164,7 @@ export interface FirmwareArgs {
     /**
      * The status of firmware scan.
      */
-    status?: pulumi.Input<string | types.enums.v20230208preview.Status>;
+    status?: pulumi.Input<string | types.enums.Status>;
     /**
      * A list of errors or other messages generated during firmware analysis
      */

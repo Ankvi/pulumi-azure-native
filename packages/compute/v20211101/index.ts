@@ -53,7 +53,7 @@ utilities.lazyLoad(exports, ["VirtualMachineScaleSetVMExtension"], () => require
 
 
 // Export enums:
-export * from "../types/enums/v20211101";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

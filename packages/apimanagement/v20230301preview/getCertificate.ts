@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the details of the certificate specified by its identifier.
  */
@@ -44,7 +44,7 @@ export interface GetCertificateResult {
     /**
      * KeyVault location details of the certificate.
      */
-    readonly keyVault?: types.outputs.apimanagement.v20230301preview.KeyVaultContractPropertiesResponse;
+    readonly keyVault?: types.outputs.KeyVaultContractPropertiesResponse;
     /**
      * The name of the resource
      */

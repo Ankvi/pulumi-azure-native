@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A single API Management service resource in List or Get response.
  */
@@ -34,11 +34,11 @@ export class ApiManagementService extends pulumi.CustomResource {
     /**
      * Additional datacenter locations of the API Management service.
      */
-    public readonly additionalLocations!: pulumi.Output<types.outputs.apimanagement.v20170301.AdditionalLocationResponse[] | undefined>;
+    public readonly additionalLocations!: pulumi.Output<types.outputs.AdditionalLocationResponse[] | undefined>;
     /**
      * List of Certificates that need to be installed in the API Management service. Max supported certificates that can be installed is 10.
      */
-    public readonly certificates!: pulumi.Output<types.outputs.apimanagement.v20170301.CertificateConfigurationResponse[] | undefined>;
+    public readonly certificates!: pulumi.Output<types.outputs.CertificateConfigurationResponse[] | undefined>;
     /**
      * Creation UTC date of the API Management service.The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
      */
@@ -62,11 +62,11 @@ export class ApiManagementService extends pulumi.CustomResource {
     /**
      * Custom hostname configuration of the API Management service.
      */
-    public readonly hostnameConfigurations!: pulumi.Output<types.outputs.apimanagement.v20170301.HostnameConfigurationResponse[] | undefined>;
+    public readonly hostnameConfigurations!: pulumi.Output<types.outputs.HostnameConfigurationResponse[] | undefined>;
     /**
      * Managed service identity of the Api Management service.
      */
-    public readonly identity!: pulumi.Output<types.outputs.apimanagement.v20170301.ApiManagementServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ApiManagementServiceIdentityResponse | undefined>;
     /**
      * Resource location.
      */
@@ -106,7 +106,7 @@ export class ApiManagementService extends pulumi.CustomResource {
     /**
      * SKU properties of the API Management service.
      */
-    public readonly sku!: pulumi.Output<types.outputs.apimanagement.v20170301.ApiManagementServiceSkuPropertiesResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.ApiManagementServiceSkuPropertiesResponse>;
     /**
      * Static IP addresses of the API Management service virtual machines. Available only for Standard and Premium SKU.
      */
@@ -126,7 +126,7 @@ export class ApiManagementService extends pulumi.CustomResource {
     /**
      * Virtual network configuration of the API Management service.
      */
-    public readonly virtualNetworkConfiguration!: pulumi.Output<types.outputs.apimanagement.v20170301.VirtualNetworkConfigurationResponse | undefined>;
+    public readonly virtualNetworkConfiguration!: pulumi.Output<types.outputs.VirtualNetworkConfigurationResponse | undefined>;
     /**
      * The type of VPN in which API Management service needs to be configured in. None (Default Value) means the API Management service is not part of any Virtual Network, External means the API Management deployment is set up inside a Virtual Network having an Internet Facing Endpoint, and Internal means that API Management deployment is setup inside a Virtual Network having an Intranet Facing Endpoint only.
      */
@@ -166,7 +166,7 @@ export class ApiManagementService extends pulumi.CustomResource {
             resourceInputs["publisherName"] = args ? args.publisherName : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
-            resourceInputs["sku"] = args ? (args.sku ? pulumi.output(args.sku).apply(types.inputs.apimanagement.v20170301.apiManagementServiceSkuPropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["sku"] = args ? (args.sku ? pulumi.output(args.sku).apply(types.inputs.apiManagementServiceSkuPropertiesArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["virtualNetworkConfiguration"] = args ? args.virtualNetworkConfiguration : undefined;
             resourceInputs["virtualNetworkType"] = (args ? args.virtualNetworkType : undefined) ?? "None";
@@ -223,11 +223,11 @@ export interface ApiManagementServiceArgs {
     /**
      * Additional datacenter locations of the API Management service.
      */
-    additionalLocations?: pulumi.Input<pulumi.Input<types.inputs.apimanagement.v20170301.AdditionalLocationArgs>[]>;
+    additionalLocations?: pulumi.Input<pulumi.Input<types.inputs.AdditionalLocationArgs>[]>;
     /**
      * List of Certificates that need to be installed in the API Management service. Max supported certificates that can be installed is 10.
      */
-    certificates?: pulumi.Input<pulumi.Input<types.inputs.apimanagement.v20170301.CertificateConfigurationArgs>[]>;
+    certificates?: pulumi.Input<pulumi.Input<types.inputs.CertificateConfigurationArgs>[]>;
     /**
      * Custom properties of the API Management service. Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168` will disable the cipher TLS_RSA_WITH_3DES_EDE_CBC_SHA for all TLS(1.0, 1.1 and 1.2). Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls11` can be used to disable just TLS 1.1 and setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10` can be used to disable TLS 1.0 on an API Management service.
      */
@@ -235,11 +235,11 @@ export interface ApiManagementServiceArgs {
     /**
      * Custom hostname configuration of the API Management service.
      */
-    hostnameConfigurations?: pulumi.Input<pulumi.Input<types.inputs.apimanagement.v20170301.HostnameConfigurationArgs>[]>;
+    hostnameConfigurations?: pulumi.Input<pulumi.Input<types.inputs.HostnameConfigurationArgs>[]>;
     /**
      * Managed service identity of the Api Management service.
      */
-    identity?: pulumi.Input<types.inputs.apimanagement.v20170301.ApiManagementServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ApiManagementServiceIdentityArgs>;
     /**
      * Resource location.
      */
@@ -267,7 +267,7 @@ export interface ApiManagementServiceArgs {
     /**
      * SKU properties of the API Management service.
      */
-    sku: pulumi.Input<types.inputs.apimanagement.v20170301.ApiManagementServiceSkuPropertiesArgs>;
+    sku: pulumi.Input<types.inputs.ApiManagementServiceSkuPropertiesArgs>;
     /**
      * Resource tags.
      */
@@ -275,9 +275,9 @@ export interface ApiManagementServiceArgs {
     /**
      * Virtual network configuration of the API Management service.
      */
-    virtualNetworkConfiguration?: pulumi.Input<types.inputs.apimanagement.v20170301.VirtualNetworkConfigurationArgs>;
+    virtualNetworkConfiguration?: pulumi.Input<types.inputs.VirtualNetworkConfigurationArgs>;
     /**
      * The type of VPN in which API Management service needs to be configured in. None (Default Value) means the API Management service is not part of any Virtual Network, External means the API Management deployment is set up inside a Virtual Network having an Internet Facing Endpoint, and Internal means that API Management deployment is setup inside a Virtual Network having an Intranet Facing Endpoint only.
      */
-    virtualNetworkType?: pulumi.Input<string | types.enums.v20170301.VirtualNetworkType>;
+    virtualNetworkType?: pulumi.Input<string | types.enums.VirtualNetworkType>;
 }

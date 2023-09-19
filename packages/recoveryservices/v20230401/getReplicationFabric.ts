@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the details of an Azure Site Recovery fabric.
  */
@@ -53,7 +53,7 @@ export interface GetReplicationFabricResult {
     /**
      * Fabric related data.
      */
-    readonly properties: types.outputs.recoveryservices.v20230401.FabricPropertiesResponse;
+    readonly properties: types.outputs.FabricPropertiesResponse;
     /**
      * Resource Type
      */

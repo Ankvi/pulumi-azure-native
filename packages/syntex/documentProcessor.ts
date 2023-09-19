@@ -43,11 +43,11 @@ export class DocumentProcessor extends pulumi.CustomResource {
     /**
      * Document processor properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.syntex.DocumentProcessorPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.DocumentProcessorPropertiesResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.syntex.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -109,7 +109,7 @@ export interface DocumentProcessorArgs {
     /**
      * Document processor properties.
      */
-    properties?: pulumi.Input<types.inputs.syntex.DocumentProcessorPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.DocumentProcessorPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

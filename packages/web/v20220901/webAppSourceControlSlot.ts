@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Source control configuration for an app.
  */
@@ -42,7 +42,7 @@ export class WebAppSourceControlSlot extends pulumi.CustomResource {
     /**
      * If GitHub Action is selected, than the associated configuration.
      */
-    public readonly gitHubActionConfiguration!: pulumi.Output<types.outputs.web.v20220901.GitHubActionConfigurationResponse | undefined>;
+    public readonly gitHubActionConfiguration!: pulumi.Output<types.outputs.GitHubActionConfigurationResponse | undefined>;
     /**
      * <code>true</code> if this is deployed via GitHub action.
      */
@@ -138,7 +138,7 @@ export interface WebAppSourceControlSlotArgs {
     /**
      * If GitHub Action is selected, than the associated configuration.
      */
-    gitHubActionConfiguration?: pulumi.Input<types.inputs.web.v20220901.GitHubActionConfigurationArgs>;
+    gitHubActionConfiguration?: pulumi.Input<types.inputs.GitHubActionConfigurationArgs>;
     /**
      * <code>true</code> if this is deployed via GitHub action.
      */

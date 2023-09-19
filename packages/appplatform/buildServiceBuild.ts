@@ -39,11 +39,11 @@ export class BuildServiceBuild extends pulumi.CustomResource {
     /**
      * Properties of the build resource
      */
-    public readonly properties!: pulumi.Output<types.outputs.appplatform.BuildPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.BuildPropertiesResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.appplatform.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource.
      */
@@ -71,7 +71,7 @@ export class BuildServiceBuild extends pulumi.CustomResource {
             }
             resourceInputs["buildName"] = args ? args.buildName : undefined;
             resourceInputs["buildServiceName"] = args ? args.buildServiceName : undefined;
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.appplatform.buildPropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.buildPropertiesArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
             resourceInputs["name"] = undefined /*out*/;
@@ -105,7 +105,7 @@ export interface BuildServiceBuildArgs {
     /**
      * Properties of the build resource
      */
-    properties?: pulumi.Input<types.inputs.appplatform.BuildPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.BuildPropertiesArgs>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */

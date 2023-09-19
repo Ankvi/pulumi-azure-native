@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the Push settings associated with web app.
  */
@@ -51,7 +51,7 @@ export interface ListWebAppSitePushSettingsResult {
     /**
      * The system metadata relating to this resource.
      */
-    readonly systemData: types.outputs.web.v20201001.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Gets or sets a JSON string containing a list of tags that are in the allowed list for use by the push registration endpoint.
      */

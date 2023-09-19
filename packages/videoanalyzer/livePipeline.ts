@@ -47,7 +47,7 @@ export class LivePipeline extends pulumi.CustomResource {
     /**
      * List of the instance level parameter values for the user-defined topology parameters. A pipeline can only define or override parameters values for parameters which have been declared in the referenced topology. Topology parameters without a default value must be defined. Topology parameters with a default value can be optionally be overridden.
      */
-    public readonly parameters!: pulumi.Output<types.outputs.videoanalyzer.ParameterDefinitionResponse[] | undefined>;
+    public readonly parameters!: pulumi.Output<types.outputs.ParameterDefinitionResponse[] | undefined>;
     /**
      * Current state of the pipeline (read-only).
      */
@@ -55,7 +55,7 @@ export class LivePipeline extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.videoanalyzer.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The reference to an existing pipeline topology defined for real-time content processing. When activated, this live pipeline will process content according to the pipeline topology definition.
      */
@@ -139,7 +139,7 @@ export interface LivePipelineArgs {
     /**
      * List of the instance level parameter values for the user-defined topology parameters. A pipeline can only define or override parameters values for parameters which have been declared in the referenced topology. Topology parameters without a default value must be defined. Topology parameters with a default value can be optionally be overridden.
      */
-    parameters?: pulumi.Input<pulumi.Input<types.inputs.videoanalyzer.ParameterDefinitionArgs>[]>;
+    parameters?: pulumi.Input<pulumi.Input<types.inputs.ParameterDefinitionArgs>[]>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

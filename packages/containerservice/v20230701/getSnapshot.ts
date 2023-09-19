@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A node pool snapshot resource.
  */
@@ -31,7 +31,7 @@ export interface GetSnapshotResult {
     /**
      * CreationData to be used to specify the source agent pool resource ID to create this snapshot.
      */
-    readonly creationData?: types.outputs.containerservice.v20230701.CreationDataResponse;
+    readonly creationData?: types.outputs.CreationDataResponse;
     /**
      * Whether to use a FIPS-enabled OS.
      */
@@ -71,7 +71,7 @@ export interface GetSnapshotResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.containerservice.v20230701.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

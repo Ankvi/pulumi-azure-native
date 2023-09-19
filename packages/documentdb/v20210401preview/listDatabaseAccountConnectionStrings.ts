@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Lists the connection strings for the specified Azure Cosmos DB database account.
  */
@@ -31,7 +31,7 @@ export interface ListDatabaseAccountConnectionStringsResult {
     /**
      * An array that contains the connection strings for the Cosmos DB account.
      */
-    readonly connectionStrings?: types.outputs.documentdb.v20210401preview.DatabaseAccountConnectionStringResponse[];
+    readonly connectionStrings?: types.outputs.DatabaseAccountConnectionStringResponse[];
 }
 /**
  * Lists the connection strings for the specified Azure Cosmos DB database account.

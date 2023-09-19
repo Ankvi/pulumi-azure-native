@@ -41,11 +41,11 @@ export interface GetIpGroupResult {
     /**
      * List of references to Firewall Policies resources that this IpGroups is associated with.
      */
-    readonly firewallPolicies: types.outputs.network.SubResourceResponse[];
+    readonly firewallPolicies: types.outputs.SubResourceResponse[];
     /**
      * List of references to Firewall resources that this IpGroups is associated with.
      */
-    readonly firewalls: types.outputs.network.SubResourceResponse[];
+    readonly firewalls: types.outputs.SubResourceResponse[];
     /**
      * Resource ID.
      */

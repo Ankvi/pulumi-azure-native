@@ -71,7 +71,7 @@ export class DatabaseSecurityAlertPolicy extends pulumi.CustomResource {
     /**
      * SystemData of SecurityAlertPolicyResource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.sql.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource type.
      */

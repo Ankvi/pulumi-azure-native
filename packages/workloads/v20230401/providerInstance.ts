@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A provider instance associated with SAP monitor.
  */
@@ -34,11 +34,11 @@ export class ProviderInstance extends pulumi.CustomResource {
     /**
      * Defines the provider instance errors.
      */
-    public /*out*/ readonly errors!: pulumi.Output<types.outputs.workloads.v20230401.ProviderInstancePropertiesResponseErrors>;
+    public /*out*/ readonly errors!: pulumi.Output<types.outputs.ProviderInstancePropertiesResponseErrors>;
     /**
      * [currently not in use] Managed service identity(user assigned identities)
      */
-    public readonly identity!: pulumi.Output<types.outputs.workloads.v20230401.UserAssignedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.UserAssignedServiceIdentityResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -46,7 +46,7 @@ export class ProviderInstance extends pulumi.CustomResource {
     /**
      * Defines the provider specific properties.
      */
-    public readonly providerSettings!: pulumi.Output<types.outputs.workloads.v20230401.DB2ProviderInstancePropertiesResponse | types.outputs.workloads.v20230401.HanaDbProviderInstancePropertiesResponse | types.outputs.workloads.v20230401.MsSqlServerProviderInstancePropertiesResponse | types.outputs.workloads.v20230401.PrometheusHaClusterProviderInstancePropertiesResponse | types.outputs.workloads.v20230401.PrometheusOSProviderInstancePropertiesResponse | types.outputs.workloads.v20230401.SapNetWeaverProviderInstancePropertiesResponse | undefined>;
+    public readonly providerSettings!: pulumi.Output<types.outputs.DB2ProviderInstancePropertiesResponse | types.outputs.HanaDbProviderInstancePropertiesResponse | types.outputs.MsSqlServerProviderInstancePropertiesResponse | types.outputs.PrometheusHaClusterProviderInstancePropertiesResponse | types.outputs.PrometheusOSProviderInstancePropertiesResponse | types.outputs.SapNetWeaverProviderInstancePropertiesResponse | undefined>;
     /**
      * State of provisioning of the provider instance
      */
@@ -54,7 +54,7 @@ export class ProviderInstance extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.workloads.v20230401.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -110,7 +110,7 @@ export interface ProviderInstanceArgs {
     /**
      * [currently not in use] Managed service identity(user assigned identities)
      */
-    identity?: pulumi.Input<types.inputs.workloads.v20230401.UserAssignedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.UserAssignedServiceIdentityArgs>;
     /**
      * Name of the SAP monitor resource.
      */
@@ -122,7 +122,7 @@ export interface ProviderInstanceArgs {
     /**
      * Defines the provider specific properties.
      */
-    providerSettings?: pulumi.Input<types.inputs.workloads.v20230401.DB2ProviderInstancePropertiesArgs | types.inputs.workloads.v20230401.HanaDbProviderInstancePropertiesArgs | types.inputs.workloads.v20230401.MsSqlServerProviderInstancePropertiesArgs | types.inputs.workloads.v20230401.PrometheusHaClusterProviderInstancePropertiesArgs | types.inputs.workloads.v20230401.PrometheusOSProviderInstancePropertiesArgs | types.inputs.workloads.v20230401.SapNetWeaverProviderInstancePropertiesArgs>;
+    providerSettings?: pulumi.Input<types.inputs.DB2ProviderInstancePropertiesArgs | types.inputs.HanaDbProviderInstancePropertiesArgs | types.inputs.MsSqlServerProviderInstancePropertiesArgs | types.inputs.PrometheusHaClusterProviderInstancePropertiesArgs | types.inputs.PrometheusOSProviderInstancePropertiesArgs | types.inputs.SapNetWeaverProviderInstancePropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

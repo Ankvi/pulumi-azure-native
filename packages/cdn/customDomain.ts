@@ -35,7 +35,7 @@ export class CustomDomain extends pulumi.CustomResource {
     /**
      * Certificate parameters for securing custom HTTPS
      */
-    public /*out*/ readonly customHttpsParameters!: pulumi.Output<types.outputs.cdn.CdnManagedHttpsParametersResponse | types.outputs.cdn.UserManagedHttpsParametersResponse | undefined>;
+    public /*out*/ readonly customHttpsParameters!: pulumi.Output<types.outputs.CdnManagedHttpsParametersResponse | types.outputs.UserManagedHttpsParametersResponse | undefined>;
     /**
      * Provisioning status of the custom domain.
      */
@@ -63,7 +63,7 @@ export class CustomDomain extends pulumi.CustomResource {
     /**
      * Read only system data
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.cdn.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource type.
      */

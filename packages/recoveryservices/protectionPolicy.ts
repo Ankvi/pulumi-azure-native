@@ -47,7 +47,7 @@ export class ProtectionPolicy extends pulumi.CustomResource {
     /**
      * ProtectionPolicyResource properties
      */
-    public readonly properties!: pulumi.Output<types.outputs.recoveryservices.AzureFileShareProtectionPolicyResponse | types.outputs.recoveryservices.AzureIaaSVMProtectionPolicyResponse | types.outputs.recoveryservices.AzureSqlProtectionPolicyResponse | types.outputs.recoveryservices.AzureVmWorkloadProtectionPolicyResponse | types.outputs.recoveryservices.GenericProtectionPolicyResponse | types.outputs.recoveryservices.MabProtectionPolicyResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.AzureFileShareProtectionPolicyResponse | types.outputs.AzureIaaSVMProtectionPolicyResponse | types.outputs.AzureSqlProtectionPolicyResponse | types.outputs.AzureVmWorkloadProtectionPolicyResponse | types.outputs.GenericProtectionPolicyResponse | types.outputs.MabProtectionPolicyResponse>;
     /**
      * Resource tags.
      */
@@ -117,7 +117,7 @@ export interface ProtectionPolicyArgs {
     /**
      * ProtectionPolicyResource properties
      */
-    properties?: pulumi.Input<types.inputs.recoveryservices.AzureFileShareProtectionPolicyArgs | types.inputs.recoveryservices.AzureIaaSVMProtectionPolicyArgs | types.inputs.recoveryservices.AzureSqlProtectionPolicyArgs | types.inputs.recoveryservices.AzureVmWorkloadProtectionPolicyArgs | types.inputs.recoveryservices.GenericProtectionPolicyArgs | types.inputs.recoveryservices.MabProtectionPolicyArgs>;
+    properties?: pulumi.Input<types.inputs.AzureFileShareProtectionPolicyArgs | types.inputs.AzureIaaSVMProtectionPolicyArgs | types.inputs.AzureSqlProtectionPolicyArgs | types.inputs.AzureVmWorkloadProtectionPolicyArgs | types.inputs.GenericProtectionPolicyArgs | types.inputs.MabProtectionPolicyArgs>;
     /**
      * The name of the resource group where the recovery services vault is present.
      */

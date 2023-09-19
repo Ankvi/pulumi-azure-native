@@ -44,7 +44,7 @@ export interface GetDiskResult {
     /**
      * Disk source information. CreationData information cannot be changed after the disk has been created.
      */
-    readonly creationData: types.outputs.compute.CreationDataResponse;
+    readonly creationData: types.outputs.CreationDataResponse;
     /**
      * Additional authentication requirements when exporting or uploading to a disk or snapshot.
      */
@@ -84,15 +84,15 @@ export interface GetDiskResult {
     /**
      * Encryption property can be used to encrypt data at rest with customer managed keys or platform managed keys.
      */
-    readonly encryption?: types.outputs.compute.EncryptionResponse;
+    readonly encryption?: types.outputs.EncryptionResponse;
     /**
      * Encryption settings collection used for Azure Disk Encryption, can contain multiple encryption settings per disk or snapshot.
      */
-    readonly encryptionSettingsCollection?: types.outputs.compute.EncryptionSettingsCollectionResponse;
+    readonly encryptionSettingsCollection?: types.outputs.EncryptionSettingsCollectionResponse;
     /**
      * The extended location where the disk will be created. Extended location cannot be changed.
      */
-    readonly extendedLocation?: types.outputs.compute.ExtendedLocationResponse;
+    readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
     /**
      * The hypervisor generation of the Virtual Machine. Applicable to OS disks only.
      */
@@ -136,7 +136,7 @@ export interface GetDiskResult {
     /**
      * Properties of the disk for which update is pending.
      */
-    readonly propertyUpdatesInProgress: types.outputs.compute.PropertyUpdatesInProgressResponse;
+    readonly propertyUpdatesInProgress: types.outputs.PropertyUpdatesInProgressResponse;
     /**
      * The disk provisioning state.
      */
@@ -148,23 +148,23 @@ export interface GetDiskResult {
     /**
      * Purchase plan information for the the image from which the OS disk was created. E.g. - {name: 2019-Datacenter, publisher: MicrosoftWindowsServer, product: WindowsServer}
      */
-    readonly purchasePlan?: types.outputs.compute.PurchasePlanResponse;
+    readonly purchasePlan?: types.outputs.PurchasePlanResponse;
     /**
      * Contains the security related information for the resource.
      */
-    readonly securityProfile?: types.outputs.compute.DiskSecurityProfileResponse;
+    readonly securityProfile?: types.outputs.DiskSecurityProfileResponse;
     /**
      * Details of the list of all VMs that have the disk attached. maxShares should be set to a value greater than one for disks to allow attaching them to multiple VMs.
      */
-    readonly shareInfo: types.outputs.compute.ShareInfoElementResponse[];
+    readonly shareInfo: types.outputs.ShareInfoElementResponse[];
     /**
      * The disks sku name. Can be Standard_LRS, Premium_LRS, StandardSSD_LRS, UltraSSD_LRS, Premium_ZRS, StandardSSD_ZRS, or PremiumV2_LRS.
      */
-    readonly sku?: types.outputs.compute.DiskSkuResponse;
+    readonly sku?: types.outputs.DiskSkuResponse;
     /**
      * List of supported capabilities for the image from which the OS disk was created.
      */
-    readonly supportedCapabilities?: types.outputs.compute.SupportedCapabilitiesResponse;
+    readonly supportedCapabilities?: types.outputs.SupportedCapabilitiesResponse;
     /**
      * Indicates the OS on a disk supports hibernation.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the properties of the provided cluster manager.
  */
@@ -36,7 +36,7 @@ export interface GetClusterManagerResult {
     /**
      * The list of the cluster versions the manager supports. It is used as input in clusterVersion property of a cluster resource.
      */
-    readonly clusterVersions: types.outputs.networkcloud.v20230501preview.ClusterAvailableVersionResponse[];
+    readonly clusterVersions: types.outputs.ClusterAvailableVersionResponse[];
     /**
      * The detailed status that provides additional information about the cluster manager.
      */
@@ -60,11 +60,11 @@ export interface GetClusterManagerResult {
     /**
      * The configuration of the managed resource group associated with the resource.
      */
-    readonly managedResourceGroupConfiguration?: types.outputs.networkcloud.v20230501preview.ManagedResourceGroupConfigurationResponse;
+    readonly managedResourceGroupConfiguration?: types.outputs.ManagedResourceGroupConfigurationResponse;
     /**
      * The extended location (custom location) that represents the cluster manager's control plane location. This extended location is used when creating cluster and rack manifest resources.
      */
-    readonly managerExtendedLocation: types.outputs.networkcloud.v20230501preview.ExtendedLocationResponse;
+    readonly managerExtendedLocation: types.outputs.ExtendedLocationResponse;
     /**
      * The name of the resource
      */
@@ -76,7 +76,7 @@ export interface GetClusterManagerResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.networkcloud.v20230501preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

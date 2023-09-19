@@ -60,11 +60,11 @@ export interface GetCapabilityResult {
     /**
      * The properties of a capability resource.
      */
-    readonly properties: types.outputs.chaos.CapabilityPropertiesResponse;
+    readonly properties: types.outputs.CapabilityPropertiesResponse;
     /**
      * The standard system metadata of a resource type.
      */
-    readonly systemData: types.outputs.chaos.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

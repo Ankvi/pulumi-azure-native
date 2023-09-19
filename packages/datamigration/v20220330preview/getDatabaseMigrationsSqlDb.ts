@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieve the Database Migration resource.
  */
@@ -45,11 +45,11 @@ export interface GetDatabaseMigrationsSqlDbResult {
     /**
      * Database Migration Resource properties for SQL database.
      */
-    readonly properties: types.outputs.datamigration.v20220330preview.DatabaseMigrationPropertiesSqlDbResponse;
+    readonly properties: types.outputs.DatabaseMigrationPropertiesSqlDbResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.datamigration.v20220330preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     readonly type: string;
 }
 /**

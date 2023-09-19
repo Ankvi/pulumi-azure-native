@@ -33,7 +33,7 @@ utilities.lazyLoad(exports, ["getDeploymentStackAtSubscription","getDeploymentSt
 
 
 // Export enums:
-export * from "../types/enums/v20220801preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The shared dashboard resource definition.
  */
@@ -34,7 +34,7 @@ export class Dashboard extends pulumi.CustomResource {
     /**
      * The dashboard lenses.
      */
-    public readonly lenses!: pulumi.Output<types.outputs.portal.v20200901preview.DashboardLensResponse[] | undefined>;
+    public readonly lenses!: pulumi.Output<types.outputs.DashboardLensResponse[] | undefined>;
     /**
      * Resource location
      */
@@ -104,7 +104,7 @@ export interface DashboardArgs {
     /**
      * The dashboard lenses.
      */
-    lenses?: pulumi.Input<pulumi.Input<types.inputs.portal.v20200901preview.DashboardLensArgs>[]>;
+    lenses?: pulumi.Input<pulumi.Input<types.inputs.DashboardLensArgs>[]>;
     /**
      * Resource location
      */

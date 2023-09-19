@@ -37,7 +37,7 @@ export interface GetBackendResult {
     /**
      * Backend Credentials Contract Properties
      */
-    readonly credentials?: types.outputs.apimanagement.BackendCredentialsContractResponse;
+    readonly credentials?: types.outputs.BackendCredentialsContractResponse;
     /**
      * Backend Description.
      */
@@ -53,7 +53,7 @@ export interface GetBackendResult {
     /**
      * Backend Properties contract
      */
-    readonly properties: types.outputs.apimanagement.BackendPropertiesResponse;
+    readonly properties: types.outputs.BackendPropertiesResponse;
     /**
      * Backend communication protocol.
      */
@@ -61,7 +61,7 @@ export interface GetBackendResult {
     /**
      * Backend gateway Contract Properties
      */
-    readonly proxy?: types.outputs.apimanagement.BackendProxyContractResponse;
+    readonly proxy?: types.outputs.BackendProxyContractResponse;
     /**
      * Management Uri of the Resource in External System. This URL can be the Arm Resource Id of Logic Apps, Function Apps or API Apps.
      */
@@ -73,7 +73,7 @@ export interface GetBackendResult {
     /**
      * Backend TLS Properties
      */
-    readonly tls?: types.outputs.apimanagement.BackendTlsPropertiesResponse;
+    readonly tls?: types.outputs.BackendTlsPropertiesResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

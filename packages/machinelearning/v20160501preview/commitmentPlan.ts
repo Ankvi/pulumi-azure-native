@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An Azure ML commitment plan resource.
  */
@@ -46,11 +46,11 @@ export class CommitmentPlan extends pulumi.CustomResource {
     /**
      * The commitment plan properties.
      */
-    public /*out*/ readonly properties!: pulumi.Output<types.outputs.machinelearning.v20160501preview.CommitmentPlanPropertiesResponse>;
+    public /*out*/ readonly properties!: pulumi.Output<types.outputs.CommitmentPlanPropertiesResponse>;
     /**
      * The commitment plan SKU.
      */
-    public readonly sku!: pulumi.Output<types.outputs.machinelearning.v20160501preview.ResourceSkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.ResourceSkuResponse | undefined>;
     /**
      * User-defined tags for the resource.
      */
@@ -118,7 +118,7 @@ export interface CommitmentPlanArgs {
     /**
      * The commitment plan SKU.
      */
-    sku?: pulumi.Input<types.inputs.machinelearning.v20160501preview.ResourceSkuArgs>;
+    sku?: pulumi.Input<types.inputs.ResourceSkuArgs>;
     /**
      * User-defined tags for the resource.
      */

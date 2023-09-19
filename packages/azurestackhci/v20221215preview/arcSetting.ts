@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * ArcSetting details.
  */
@@ -58,7 +58,7 @@ export class ArcSetting extends pulumi.CustomResource {
     /**
      * contains connectivity related configuration for ARC resources
      */
-    public readonly connectivityProperties!: pulumi.Output<types.outputs.azurestackhci.v20221215preview.ArcConnectivityPropertiesResponse[] | undefined>;
+    public readonly connectivityProperties!: pulumi.Output<types.outputs.ArcConnectivityPropertiesResponse[] | undefined>;
     /**
      * The timestamp of resource creation (UTC).
      */
@@ -74,7 +74,7 @@ export class ArcSetting extends pulumi.CustomResource {
     /**
      * Consent time for each of the default extensions category
      */
-    public /*out*/ readonly defaultExtensions!: pulumi.Output<types.outputs.azurestackhci.v20221215preview.DefaultExtensionDetailsResponse[]>;
+    public /*out*/ readonly defaultExtensions!: pulumi.Output<types.outputs.DefaultExtensionDetailsResponse[]>;
     /**
      * The timestamp of resource last modification (UTC)
      */
@@ -94,7 +94,7 @@ export class ArcSetting extends pulumi.CustomResource {
     /**
      * State of Arc agent in each of the nodes.
      */
-    public /*out*/ readonly perNodeDetails!: pulumi.Output<types.outputs.azurestackhci.v20221215preview.PerNodeStateResponse[]>;
+    public /*out*/ readonly perNodeDetails!: pulumi.Output<types.outputs.PerNodeStateResponse[]>;
     /**
      * Provisioning state of the ArcSetting proxy resource.
      */
@@ -102,7 +102,7 @@ export class ArcSetting extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.azurestackhci.v20221215preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -210,7 +210,7 @@ export interface ArcSettingArgs {
     /**
      * contains connectivity related configuration for ARC resources
      */
-    connectivityProperties?: pulumi.Input<pulumi.Input<types.inputs.azurestackhci.v20221215preview.ArcConnectivityPropertiesArgs>[]>;
+    connectivityProperties?: pulumi.Input<pulumi.Input<types.inputs.ArcConnectivityPropertiesArgs>[]>;
     /**
      * The timestamp of resource creation (UTC).
      */
@@ -222,7 +222,7 @@ export interface ArcSettingArgs {
     /**
      * The type of identity that created the resource.
      */
-    createdByType?: pulumi.Input<string | types.enums.v20221215preview.CreatedByType>;
+    createdByType?: pulumi.Input<string | types.enums.CreatedByType>;
     /**
      * The timestamp of resource last modification (UTC)
      */
@@ -234,7 +234,7 @@ export interface ArcSettingArgs {
     /**
      * The type of identity that last modified the resource.
      */
-    lastModifiedByType?: pulumi.Input<string | types.enums.v20221215preview.CreatedByType>;
+    lastModifiedByType?: pulumi.Input<string | types.enums.CreatedByType>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

@@ -32,7 +32,7 @@ export interface ListEnergyServicePartitionsResult {
     /**
      * List of data partitions along with their properties in a given OEP resource.
      */
-    readonly dataPartitionInfo?: types.outputs.openenergyplatform.DataPartitionPropertiesResponse[];
+    readonly dataPartitionInfo?: types.outputs.DataPartitionPropertiesResponse[];
 }
 /**
  * Method that gets called when list of partitions is requested.

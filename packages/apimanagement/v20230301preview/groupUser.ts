@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * User details.
  */
@@ -42,11 +42,11 @@ export class GroupUser extends pulumi.CustomResource {
     /**
      * Collection of groups user is part of.
      */
-    public /*out*/ readonly groups!: pulumi.Output<types.outputs.apimanagement.v20230301preview.GroupContractPropertiesResponse[]>;
+    public /*out*/ readonly groups!: pulumi.Output<types.outputs.GroupContractPropertiesResponse[]>;
     /**
      * Collection of user identities.
      */
-    public /*out*/ readonly identities!: pulumi.Output<types.outputs.apimanagement.v20230301preview.UserIdentityContractResponse[] | undefined>;
+    public /*out*/ readonly identities!: pulumi.Output<types.outputs.UserIdentityContractResponse[] | undefined>;
     /**
      * Last name.
      */

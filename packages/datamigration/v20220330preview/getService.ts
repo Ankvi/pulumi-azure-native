@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The services resource is the top-level resource that represents the Azure Database Migration Service (classic). The GET method retrieves information about a service instance.
  */
@@ -58,8 +58,8 @@ export interface GetServiceResult {
     /**
      * Service SKU
      */
-    readonly sku?: types.outputs.datamigration.v20220330preview.ServiceSkuResponse;
-    readonly systemData: types.outputs.datamigration.v20220330preview.SystemDataResponse;
+    readonly sku?: types.outputs.ServiceSkuResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     readonly tags?: {[key: string]: string};
     readonly type: string;
     /**

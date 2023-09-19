@@ -49,7 +49,7 @@ export interface ListWebAppConnectionStringsSlotResult {
     /**
      * Connection strings.
      */
-    readonly properties: {[key: string]: types.outputs.web.ConnStringValueTypePairResponse};
+    readonly properties: {[key: string]: types.outputs.ConnStringValueTypePairResponse};
     /**
      * Resource type.
      */

@@ -44,8 +44,8 @@ export interface GetFabricResult {
     /**
      * Fabric model properties.
      */
-    readonly properties: types.outputs.datareplication.FabricModelPropertiesResponse;
-    readonly systemData: types.outputs.datareplication.FabricModelResponseSystemData;
+    readonly properties: types.outputs.FabricModelPropertiesResponse;
+    readonly systemData: types.outputs.FabricModelResponseSystemData;
     /**
      * Gets or sets the resource tags.
      */

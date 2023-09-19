@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the specified tap configuration on a network interface.
  */
@@ -56,7 +56,7 @@ export interface GetNetworkInterfaceTapConfigurationResult {
     /**
      * The reference to the Virtual Network Tap resource.
      */
-    readonly virtualNetworkTap?: types.outputs.network.v20230501.VirtualNetworkTapResponse;
+    readonly virtualNetworkTap?: types.outputs.VirtualNetworkTapResponse;
 }
 /**
  * Get the specified tap configuration on a network interface.

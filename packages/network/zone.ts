@@ -63,11 +63,11 @@ export class Zone extends pulumi.CustomResource {
     /**
      * A list of references to virtual networks that register hostnames in this DNS zone. This is a only when ZoneType is Private.
      */
-    public readonly registrationVirtualNetworks!: pulumi.Output<types.outputs.network.SubResourceResponse[] | undefined>;
+    public readonly registrationVirtualNetworks!: pulumi.Output<types.outputs.SubResourceResponse[] | undefined>;
     /**
      * A list of references to virtual networks that resolve records in this DNS zone. This is a only when ZoneType is Private.
      */
-    public readonly resolutionVirtualNetworks!: pulumi.Output<types.outputs.network.SubResourceResponse[] | undefined>;
+    public readonly resolutionVirtualNetworks!: pulumi.Output<types.outputs.SubResourceResponse[] | undefined>;
     /**
      * Resource tags.
      */
@@ -141,11 +141,11 @@ export interface ZoneArgs {
     /**
      * A list of references to virtual networks that register hostnames in this DNS zone. This is a only when ZoneType is Private.
      */
-    registrationVirtualNetworks?: pulumi.Input<pulumi.Input<types.inputs.network.SubResourceArgs>[]>;
+    registrationVirtualNetworks?: pulumi.Input<pulumi.Input<types.inputs.SubResourceArgs>[]>;
     /**
      * A list of references to virtual networks that resolve records in this DNS zone. This is a only when ZoneType is Private.
      */
-    resolutionVirtualNetworks?: pulumi.Input<pulumi.Input<types.inputs.network.SubResourceArgs>[]>;
+    resolutionVirtualNetworks?: pulumi.Input<pulumi.Input<types.inputs.SubResourceArgs>[]>;
     /**
      * The name of the resource group.
      */

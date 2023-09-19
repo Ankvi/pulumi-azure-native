@@ -46,15 +46,15 @@ export interface GetVirtualMachineResult {
     /**
      * The applicable schedule for the virtual machine.
      */
-    readonly applicableSchedule: types.outputs.devtestlab.ApplicableScheduleResponse;
+    readonly applicableSchedule: types.outputs.ApplicableScheduleResponse;
     /**
      * The artifact deployment status for the virtual machine.
      */
-    readonly artifactDeploymentStatus: types.outputs.devtestlab.ArtifactDeploymentStatusPropertiesResponse;
+    readonly artifactDeploymentStatus: types.outputs.ArtifactDeploymentStatusPropertiesResponse;
     /**
      * The artifacts to be installed on the virtual machine.
      */
-    readonly artifacts?: types.outputs.devtestlab.ArtifactInstallPropertiesResponse[];
+    readonly artifacts?: types.outputs.ArtifactInstallPropertiesResponse[];
     /**
      * The resource identifier (Microsoft.Compute) of the virtual machine.
      */
@@ -62,7 +62,7 @@ export interface GetVirtualMachineResult {
     /**
      * The compute virtual machine properties.
      */
-    readonly computeVm: types.outputs.devtestlab.ComputeVmPropertiesResponse;
+    readonly computeVm: types.outputs.ComputeVmPropertiesResponse;
     /**
      * The email address of creator of the virtual machine.
      */
@@ -82,7 +82,7 @@ export interface GetVirtualMachineResult {
     /**
      * New or existing data disks to attach to the virtual machine after creation
      */
-    readonly dataDiskParameters?: types.outputs.devtestlab.DataDiskPropertiesResponse[];
+    readonly dataDiskParameters?: types.outputs.DataDiskPropertiesResponse[];
     /**
      * Indicates whether the virtual machine is to be created without a public IP address.
      */
@@ -102,7 +102,7 @@ export interface GetVirtualMachineResult {
     /**
      * The Microsoft Azure Marketplace image reference of the virtual machine.
      */
-    readonly galleryImageReference?: types.outputs.devtestlab.GalleryImageReferenceResponse;
+    readonly galleryImageReference?: types.outputs.GalleryImageReferenceResponse;
     /**
      * The identifier of the resource.
      */
@@ -134,7 +134,7 @@ export interface GetVirtualMachineResult {
     /**
      * The network interface properties.
      */
-    readonly networkInterface?: types.outputs.devtestlab.NetworkInterfacePropertiesResponse;
+    readonly networkInterface?: types.outputs.NetworkInterfacePropertiesResponse;
     /**
      * The notes of the virtual machine.
      */
@@ -166,7 +166,7 @@ export interface GetVirtualMachineResult {
     /**
      * Virtual Machine schedules to be created
      */
-    readonly scheduleParameters?: types.outputs.devtestlab.ScheduleCreationParameterResponse[];
+    readonly scheduleParameters?: types.outputs.ScheduleCreationParameterResponse[];
     /**
      * The size of the virtual machine.
      */

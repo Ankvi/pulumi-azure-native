@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the details of the managed OpenShift cluster with a specified resource group and name.
  */
@@ -31,11 +31,11 @@ export interface GetOpenShiftManagedClusterResult {
     /**
      * Configuration of OpenShift cluster VMs.
      */
-    readonly agentPoolProfiles?: types.outputs.containerservice.v20191027preview.OpenShiftManagedClusterAgentPoolProfileResponse[];
+    readonly agentPoolProfiles?: types.outputs.OpenShiftManagedClusterAgentPoolProfileResponse[];
     /**
      * Configures OpenShift authentication.
      */
-    readonly authProfile?: types.outputs.containerservice.v20191027preview.OpenShiftManagedClusterAuthProfileResponse;
+    readonly authProfile?: types.outputs.OpenShiftManagedClusterAuthProfileResponse;
     /**
      * Version of OpenShift specified when creating the cluster.
      */
@@ -55,11 +55,11 @@ export interface GetOpenShiftManagedClusterResult {
     /**
      * Configuration for OpenShift master VMs.
      */
-    readonly masterPoolProfile?: types.outputs.containerservice.v20191027preview.OpenShiftManagedClusterMasterPoolProfileResponse;
+    readonly masterPoolProfile?: types.outputs.OpenShiftManagedClusterMasterPoolProfileResponse;
     /**
      * Configures Log Analytics integration.
      */
-    readonly monitorProfile?: types.outputs.containerservice.v20191027preview.OpenShiftManagedClusterMonitorProfileResponse;
+    readonly monitorProfile?: types.outputs.OpenShiftManagedClusterMonitorProfileResponse;
     /**
      * Resource name
      */
@@ -67,7 +67,7 @@ export interface GetOpenShiftManagedClusterResult {
     /**
      * Configuration for OpenShift networking.
      */
-    readonly networkProfile?: types.outputs.containerservice.v20191027preview.NetworkProfileResponse;
+    readonly networkProfile?: types.outputs.NetworkProfileResponse;
     /**
      * Version of OpenShift specified when creating the cluster.
      */
@@ -75,7 +75,7 @@ export interface GetOpenShiftManagedClusterResult {
     /**
      * Define the resource plan as required by ARM for billing purposes
      */
-    readonly plan?: types.outputs.containerservice.v20191027preview.PurchasePlanResponse;
+    readonly plan?: types.outputs.PurchasePlanResponse;
     /**
      * The current deployment or provisioning state, which only appears in the response.
      */
@@ -91,7 +91,7 @@ export interface GetOpenShiftManagedClusterResult {
     /**
      * Configuration for OpenShift router(s).
      */
-    readonly routerProfiles?: types.outputs.containerservice.v20191027preview.OpenShiftRouterProfileResponse[];
+    readonly routerProfiles?: types.outputs.OpenShiftRouterProfileResponse[];
     /**
      * Resource tags
      */

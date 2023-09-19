@@ -39,8 +39,8 @@ export class WorkloadInstance extends pulumi.CustomResource {
     /**
      * Workload instance model properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.migrate.WorkloadInstanceModelPropertiesResponse>;
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.migrate.WorkloadInstanceModelResponseSystemData>;
+    public readonly properties!: pulumi.Output<types.outputs.WorkloadInstanceModelPropertiesResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.WorkloadInstanceModelResponseSystemData>;
     /**
      * Gets or sets the resource tags.
      */
@@ -101,7 +101,7 @@ export interface WorkloadInstanceArgs {
     /**
      * Workload instance model properties.
      */
-    properties?: pulumi.Input<types.inputs.migrate.WorkloadInstanceModelPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.WorkloadInstanceModelPropertiesArgs>;
     /**
      * Name of the Azure Resource Group that project is part of.
      */

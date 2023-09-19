@@ -45,11 +45,11 @@ export interface GetCertificateResult {
     /**
      * Properties of the certificate resource payload.
      */
-    readonly properties: types.outputs.appplatform.ContentCertificatePropertiesResponse | types.outputs.appplatform.KeyVaultCertificatePropertiesResponse;
+    readonly properties: types.outputs.ContentCertificatePropertiesResponse | types.outputs.KeyVaultCertificatePropertiesResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.appplatform.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource.
      */

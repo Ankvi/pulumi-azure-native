@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents a trigger that can invoke an image template build.
  */
@@ -46,11 +46,11 @@ export class Trigger extends pulumi.CustomResource {
     /**
      * Trigger status
      */
-    public /*out*/ readonly status!: pulumi.Output<types.outputs.virtualmachineimages.v20220701.TriggerStatusResponse>;
+    public /*out*/ readonly status!: pulumi.Output<types.outputs.TriggerStatusResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.virtualmachineimages.v20220701.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

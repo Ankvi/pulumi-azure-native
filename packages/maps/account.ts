@@ -47,15 +47,15 @@ export class Account extends pulumi.CustomResource {
     /**
      * The map account properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.maps.MapsAccountPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.MapsAccountPropertiesResponse>;
     /**
      * The SKU of this account.
      */
-    public readonly sku!: pulumi.Output<types.outputs.maps.SkuResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse>;
     /**
      * The system meta data relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.maps.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -85,7 +85,7 @@ export class Account extends pulumi.CustomResource {
             resourceInputs["accountName"] = args ? args.accountName : undefined;
             resourceInputs["kind"] = args ? args.kind : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.maps.mapsAccountPropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.mapsAccountPropertiesArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["sku"] = args ? args.sku : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
@@ -128,7 +128,7 @@ export interface AccountArgs {
     /**
      * The map account properties.
      */
-    properties?: pulumi.Input<types.inputs.maps.MapsAccountPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.MapsAccountPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -136,7 +136,7 @@ export interface AccountArgs {
     /**
      * The SKU of this account.
      */
-    sku: pulumi.Input<types.inputs.maps.SkuArgs>;
+    sku: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Resource tags.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * IoT Defender settings
  */
@@ -42,7 +42,7 @@ export class DefenderSetting extends pulumi.CustomResource {
     /**
      * MDE integration configuration
      */
-    public readonly mdeIntegration!: pulumi.Output<types.outputs.iotsecurity.v20210201preview.DefenderSettingsPropertiesResponseMdeIntegration>;
+    public readonly mdeIntegration!: pulumi.Output<types.outputs.DefenderSettingsPropertiesResponseMdeIntegration>;
     /**
      * The name of the resource
      */
@@ -117,11 +117,11 @@ export interface DefenderSettingArgs {
     /**
      * MDE integration configuration
      */
-    mdeIntegration: pulumi.Input<types.inputs.iotsecurity.v20210201preview.DefenderSettingsPropertiesMdeIntegrationArgs>;
+    mdeIntegration: pulumi.Input<types.inputs.DefenderSettingsPropertiesMdeIntegrationArgs>;
     /**
      * The kind of onboarding for the subscription
      */
-    onboardingKind: pulumi.Input<string | types.enums.v20210201preview.OnboardingKind>;
+    onboardingKind: pulumi.Input<string | types.enums.OnboardingKind>;
     /**
      * Sentinel Workspace Resource Ids
      */

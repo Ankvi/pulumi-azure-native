@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents a share on the  Data Box Edge/Gateway device.
  */
@@ -40,11 +40,11 @@ export interface GetShareResult {
     /**
      * Azure container mapping for the share.
      */
-    readonly azureContainerInfo?: types.outputs.databoxedge.v20230701.AzureContainerInfoResponse;
+    readonly azureContainerInfo?: types.outputs.AzureContainerInfoResponse;
     /**
      * List of IP addresses and corresponding access rights on the share(required for NFS protocol).
      */
-    readonly clientAccessRights?: types.outputs.databoxedge.v20230701.ClientAccessRightResponse[];
+    readonly clientAccessRights?: types.outputs.ClientAccessRightResponse[];
     /**
      * Data policy of the share.
      */
@@ -68,11 +68,11 @@ export interface GetShareResult {
     /**
      * Details of the refresh job on this share.
      */
-    readonly refreshDetails?: types.outputs.databoxedge.v20230701.RefreshDetailsResponse;
+    readonly refreshDetails?: types.outputs.RefreshDetailsResponse;
     /**
      * Share mount point to the role.
      */
-    readonly shareMappings: types.outputs.databoxedge.v20230701.MountPointMapResponse[];
+    readonly shareMappings: types.outputs.MountPointMapResponse[];
     /**
      * Current status of the share.
      */
@@ -80,7 +80,7 @@ export interface GetShareResult {
     /**
      * Metadata pertaining to creation and last modification of Share
      */
-    readonly systemData: types.outputs.databoxedge.v20230701.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The hierarchical type of the object.
      */
@@ -88,7 +88,7 @@ export interface GetShareResult {
     /**
      * Mapping of users and corresponding access rights on the share (required for SMB protocol).
      */
-    readonly userAccessRights?: types.outputs.databoxedge.v20230701.UserAccessRightResponse[];
+    readonly userAccessRights?: types.outputs.UserAccessRightResponse[];
 }
 /**
  * Represents a share on the  Data Box Edge/Gateway device.

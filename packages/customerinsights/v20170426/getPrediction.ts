@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a Prediction in the hub.
  */
@@ -48,7 +48,7 @@ export interface GetPredictionResult {
     /**
      * The prediction grades.
      */
-    readonly grades?: types.outputs.customerinsights.v20170426.PredictionResponseGrades[];
+    readonly grades?: types.outputs.PredictionResponseGrades[];
     /**
      * Resource ID.
      */
@@ -68,7 +68,7 @@ export interface GetPredictionResult {
     /**
      * Definition of the link mapping of prediction.
      */
-    readonly mappings: types.outputs.customerinsights.v20170426.PredictionResponseMappings;
+    readonly mappings: types.outputs.PredictionResponseMappings;
     /**
      * Resource name.
      */
@@ -104,7 +104,7 @@ export interface GetPredictionResult {
     /**
      * System generated entities.
      */
-    readonly systemGeneratedEntities: types.outputs.customerinsights.v20170426.PredictionResponseSystemGeneratedEntities;
+    readonly systemGeneratedEntities: types.outputs.PredictionResponseSystemGeneratedEntities;
     /**
      * The hub name.
      */

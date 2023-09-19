@@ -13,7 +13,7 @@ utilities.lazyLoad(exports, ["getCloudService","getCloudServiceOutput"], () => r
 
 
 // Export enums:
-export * from "../types/enums/v20220904";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

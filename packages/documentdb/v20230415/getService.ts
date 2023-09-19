@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the status of service.
  */
@@ -44,7 +44,7 @@ export interface GetServiceResult {
     /**
      * Services response resource.
      */
-    readonly properties: types.outputs.documentdb.v20230415.DataTransferServiceResourcePropertiesResponse | types.outputs.documentdb.v20230415.GraphAPIComputeServiceResourcePropertiesResponse | types.outputs.documentdb.v20230415.MaterializedViewsBuilderServiceResourcePropertiesResponse | types.outputs.documentdb.v20230415.SqlDedicatedGatewayServiceResourcePropertiesResponse;
+    readonly properties: types.outputs.DataTransferServiceResourcePropertiesResponse | types.outputs.GraphAPIComputeServiceResourcePropertiesResponse | types.outputs.MaterializedViewsBuilderServiceResourcePropertiesResponse | types.outputs.SqlDedicatedGatewayServiceResourcePropertiesResponse;
     /**
      * The type of Azure resource.
      */

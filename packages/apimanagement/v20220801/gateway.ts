@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gateway details.
  */
@@ -38,7 +38,7 @@ export class Gateway extends pulumi.CustomResource {
     /**
      * Gateway location.
      */
-    public readonly locationData!: pulumi.Output<types.outputs.apimanagement.v20220801.ResourceLocationDataContractResponse | undefined>;
+    public readonly locationData!: pulumi.Output<types.outputs.ResourceLocationDataContractResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -100,7 +100,7 @@ export interface GatewayArgs {
     /**
      * Gateway location.
      */
-    locationData?: pulumi.Input<types.inputs.apimanagement.v20220801.ResourceLocationDataContractArgs>;
+    locationData?: pulumi.Input<types.inputs.ResourceLocationDataContractArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

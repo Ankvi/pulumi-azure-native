@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * This method gets the unencrypted secrets related to the job.
  */
@@ -35,7 +35,7 @@ export interface ListJobCredentialsResult {
     /**
      * List of unencrypted credentials.
      */
-    readonly value?: types.outputs.databox.v20230301.UnencryptedCredentialsResponse[];
+    readonly value?: types.outputs.UnencryptedCredentialsResponse[];
 }
 /**
  * This method gets the unencrypted secrets related to the job.

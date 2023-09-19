@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * This type describes a secret resource.
  */
@@ -42,7 +42,7 @@ export class Secret extends pulumi.CustomResource {
     /**
      * Describes the properties of a secret resource.
      */
-    public readonly properties!: pulumi.Output<types.outputs.servicefabricmesh.v20180901preview.SecretResourcePropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.SecretResourcePropertiesResponse>;
     /**
      * Resource tags.
      */
@@ -101,7 +101,7 @@ export interface SecretArgs {
     /**
      * Describes the properties of a secret resource.
      */
-    properties: pulumi.Input<types.inputs.servicefabricmesh.v20180901preview.SecretResourcePropertiesArgs>;
+    properties: pulumi.Input<types.inputs.SecretResourcePropertiesArgs>;
     /**
      * Azure resource group name
      */

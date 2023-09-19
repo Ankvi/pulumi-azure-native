@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents a Schedule to execute a task.
  */
@@ -50,7 +50,7 @@ export class Schedule extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.devcenter.v20230401.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The target time to trigger the action. The format is HH:MM.
      */
@@ -133,7 +133,7 @@ export interface ScheduleArgs {
     /**
      * The frequency of this scheduled task.
      */
-    frequency: pulumi.Input<string | types.enums.v20230401.ScheduledFrequency>;
+    frequency: pulumi.Input<string | types.enums.ScheduledFrequency>;
     /**
      * Name of the pool.
      */
@@ -153,7 +153,7 @@ export interface ScheduleArgs {
     /**
      * Indicates whether or not this scheduled task is enabled.
      */
-    state?: pulumi.Input<string | types.enums.v20230401.ScheduleEnableStatus>;
+    state?: pulumi.Input<string | types.enums.ScheduleEnableStatus>;
     /**
      * The target time to trigger the action. The format is HH:MM.
      */
@@ -169,5 +169,5 @@ export interface ScheduleArgs {
     /**
      * Supported type this scheduled task represents.
      */
-    type: pulumi.Input<string | types.enums.v20230401.ScheduledType>;
+    type: pulumi.Input<string | types.enums.ScheduledType>;
 }

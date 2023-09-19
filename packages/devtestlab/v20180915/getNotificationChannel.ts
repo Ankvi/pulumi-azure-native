@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get notification channel.
  */
@@ -53,7 +53,7 @@ export interface GetNotificationChannelResult {
     /**
      * The list of event for which this notification is enabled.
      */
-    readonly events?: types.outputs.devtestlab.v20180915.EventResponse[];
+    readonly events?: types.outputs.EventResponse[];
     /**
      * The identifier of the resource.
      */

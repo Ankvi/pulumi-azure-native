@@ -53,11 +53,11 @@ export interface GetTriggerResult {
     /**
      * Trigger status
      */
-    readonly status: types.outputs.virtualmachineimages.TriggerStatusResponse;
+    readonly status: types.outputs.TriggerStatusResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.virtualmachineimages.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

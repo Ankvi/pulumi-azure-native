@@ -64,7 +64,7 @@ export interface GetCommunicationsGatewayResult {
     /**
      * The managed service identities assigned to this resource.
      */
-    readonly identity?: types.outputs.voiceservices.ManagedServiceIdentityResponse;
+    readonly identity?: types.outputs.ManagedServiceIdentityResponse;
     /**
      * Whether an integrated Mobile Control Point is in use.
      */
@@ -92,7 +92,7 @@ export interface GetCommunicationsGatewayResult {
     /**
      * The regions in which to deploy the resources needed for Teams Calling
      */
-    readonly serviceLocations: types.outputs.voiceservices.ServiceRegionPropertiesResponse[];
+    readonly serviceLocations: types.outputs.ServiceRegionPropertiesResponse[];
     /**
      * The current status of the deployment.
      */
@@ -100,7 +100,7 @@ export interface GetCommunicationsGatewayResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.voiceservices.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

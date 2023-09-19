@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a UpdateRun
  */
@@ -44,7 +44,7 @@ export interface GetUpdateRunResult {
     /**
      * The update to be applied to all clusters in the UpdateRun. The managedClusterUpdate can be modified until the run is started.
      */
-    readonly managedClusterUpdate: types.outputs.containerservice.v20230315preview.ManagedClusterUpdateResponse;
+    readonly managedClusterUpdate: types.outputs.ManagedClusterUpdateResponse;
     /**
      * The name of the resource
      */
@@ -56,17 +56,17 @@ export interface GetUpdateRunResult {
     /**
      * The status of the UpdateRun.
      */
-    readonly status: types.outputs.containerservice.v20230315preview.UpdateRunStatusResponse;
+    readonly status: types.outputs.UpdateRunStatusResponse;
     /**
      * The strategy defines the order in which the clusters will be updated. 
      * If not set, all members will be updated sequentially. The UpdateRun status will show a single UpdateStage and a single UpdateGroup targeting all members.
      * The strategy of the UpdateRun can be modified until the run is started.
      */
-    readonly strategy?: types.outputs.containerservice.v20230315preview.UpdateRunStrategyResponse;
+    readonly strategy?: types.outputs.UpdateRunStrategyResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.containerservice.v20230315preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

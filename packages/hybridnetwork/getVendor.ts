@@ -39,11 +39,11 @@ export interface GetVendorResult {
     /**
      * A list of IDs of the vendor skus offered by the vendor.
      */
-    readonly skus: types.outputs.hybridnetwork.SubResourceResponse[];
+    readonly skus: types.outputs.SubResourceResponse[];
     /**
      * The system meta data relating to this resource.
      */
-    readonly systemData: types.outputs.hybridnetwork.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

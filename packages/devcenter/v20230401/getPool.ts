@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a machine pool
  */
@@ -44,7 +44,7 @@ export interface GetPoolResult {
     /**
      * Details on the Pool health status to help diagnose issues. This is only populated when the pool status indicates the pool is in a non-healthy state
      */
-    readonly healthStatusDetails: types.outputs.devcenter.v20230401.HealthStatusDetailResponse[];
+    readonly healthStatusDetails: types.outputs.HealthStatusDetailResponse[];
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -76,11 +76,11 @@ export interface GetPoolResult {
     /**
      * Stop on disconnect configuration settings for Dev Boxes created in this pool.
      */
-    readonly stopOnDisconnect?: types.outputs.devcenter.v20230401.StopOnDisconnectConfigurationResponse;
+    readonly stopOnDisconnect?: types.outputs.StopOnDisconnectConfigurationResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.devcenter.v20230401.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

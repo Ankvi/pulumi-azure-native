@@ -49,11 +49,11 @@ export interface GetAssessmentResult {
     /**
      * Links relevant to the assessment
      */
-    readonly links: types.outputs.security.AssessmentLinksResponse;
+    readonly links: types.outputs.AssessmentLinksResponse;
     /**
      * Describes properties of an assessment metadata.
      */
-    readonly metadata?: types.outputs.security.SecurityAssessmentMetadataPropertiesResponse;
+    readonly metadata?: types.outputs.SecurityAssessmentMetadataPropertiesResponse;
     /**
      * Resource name
      */
@@ -61,15 +61,15 @@ export interface GetAssessmentResult {
     /**
      * Data regarding 3rd party partner integration
      */
-    readonly partnersData?: types.outputs.security.SecurityAssessmentPartnerDataResponse;
+    readonly partnersData?: types.outputs.SecurityAssessmentPartnerDataResponse;
     /**
      * Details of the resource that was assessed
      */
-    readonly resourceDetails: types.outputs.security.AzureResourceDetailsResponse | types.outputs.security.OnPremiseResourceDetailsResponse | types.outputs.security.OnPremiseSqlResourceDetailsResponse;
+    readonly resourceDetails: types.outputs.AzureResourceDetailsResponse | types.outputs.OnPremiseResourceDetailsResponse | types.outputs.OnPremiseSqlResourceDetailsResponse;
     /**
      * The result of the assessment
      */
-    readonly status: types.outputs.security.AssessmentStatusResponseResponse;
+    readonly status: types.outputs.AssessmentStatusResponseResponse;
     /**
      * Resource type
      */

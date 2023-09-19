@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 export class JobCollection extends pulumi.CustomResource {
     /**
      * Get an existing JobCollection resource's state with the given name, ID, and optional extra
@@ -39,7 +39,7 @@ export class JobCollection extends pulumi.CustomResource {
     /**
      * Gets or sets the job collection properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.scheduler.v20160301.JobCollectionPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.JobCollectionPropertiesResponse>;
     /**
      * Gets or sets the tags.
      */
@@ -103,7 +103,7 @@ export interface JobCollectionArgs {
     /**
      * Gets or sets the job collection properties.
      */
-    properties?: pulumi.Input<types.inputs.scheduler.v20160301.JobCollectionPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.JobCollectionPropertiesArgs>;
     /**
      * The resource group name.
      */

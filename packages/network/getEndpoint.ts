@@ -46,7 +46,7 @@ export interface GetEndpointResult {
     /**
      * List of custom headers.
      */
-    readonly customHeaders?: types.outputs.network.EndpointPropertiesResponseCustomHeaders[];
+    readonly customHeaders?: types.outputs.EndpointPropertiesResponseCustomHeaders[];
     /**
      * Specifies the location of the external or nested endpoints when using the 'Performance' traffic routing method.
      */
@@ -90,7 +90,7 @@ export interface GetEndpointResult {
     /**
      * The list of subnets, IP addresses, and/or address ranges mapped to this endpoint when using the 'Subnet' traffic routing method. An empty list will match all ranges not covered by other endpoints.
      */
-    readonly subnets?: types.outputs.network.EndpointPropertiesResponseSubnets[];
+    readonly subnets?: types.outputs.EndpointPropertiesResponseSubnets[];
     /**
      * The fully-qualified DNS name or IP address of the endpoint. Traffic Manager returns this value in DNS responses to direct traffic to this endpoint.
      */

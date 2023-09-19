@@ -54,15 +54,15 @@ export interface GetPeriodicTimerEventTriggerResult {
     /**
      * Role Sink information.
      */
-    readonly sinkInfo: types.outputs.databoxedge.RoleSinkInfoResponse;
+    readonly sinkInfo: types.outputs.RoleSinkInfoResponse;
     /**
      * Periodic timer details.
      */
-    readonly sourceInfo: types.outputs.databoxedge.PeriodicTimerSourceInfoResponse;
+    readonly sourceInfo: types.outputs.PeriodicTimerSourceInfoResponse;
     /**
      * Metadata pertaining to creation and last modification of Trigger
      */
-    readonly systemData: types.outputs.databoxedge.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The hierarchical type of the object.
      */

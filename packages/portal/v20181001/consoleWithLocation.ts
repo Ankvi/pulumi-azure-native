@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Cloud shell console
  */
@@ -34,7 +34,7 @@ export class ConsoleWithLocation extends pulumi.CustomResource {
     /**
      * Cloud shell console properties.
      */
-    public /*out*/ readonly properties!: pulumi.Output<types.outputs.portal.v20181001.ConsolePropertiesResponse>;
+    public /*out*/ readonly properties!: pulumi.Output<types.outputs.ConsolePropertiesResponse>;
 
     /**
      * Create a ConsoleWithLocation resource with the given unique name, arguments, and options.

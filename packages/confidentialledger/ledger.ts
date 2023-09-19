@@ -43,11 +43,11 @@ export class Ledger extends pulumi.CustomResource {
     /**
      * Properties of Confidential Ledger Resource.
      */
-    public readonly properties!: pulumi.Output<types.outputs.confidentialledger.LedgerPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.LedgerPropertiesResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.confidentialledger.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Additional tags for Confidential Ledger
      */
@@ -109,7 +109,7 @@ export interface LedgerArgs {
     /**
      * Properties of Confidential Ledger Resource.
      */
-    properties?: pulumi.Input<types.inputs.confidentialledger.LedgerPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.LedgerPropertiesArgs>;
     /**
      * The name of the resource group.
      */

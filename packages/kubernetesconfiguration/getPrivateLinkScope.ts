@@ -44,11 +44,11 @@ export interface GetPrivateLinkScopeResult {
     /**
      * Properties that define a Azure Arc PrivateLinkScope resource.
      */
-    readonly properties: types.outputs.kubernetesconfiguration.KubernetesConfigurationPrivateLinkScopePropertiesResponse;
+    readonly properties: types.outputs.KubernetesConfigurationPrivateLinkScopePropertiesResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.kubernetesconfiguration.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

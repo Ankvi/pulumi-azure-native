@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The IP Extended Community resource definition.
  */
@@ -46,7 +46,7 @@ export class IpExtendedCommunity extends pulumi.CustomResource {
     /**
      * List of IP Extended Community Rules.
      */
-    public readonly ipExtendedCommunityRules!: pulumi.Output<types.outputs.managednetworkfabric.v20230615.IpExtendedCommunityRuleResponse[]>;
+    public readonly ipExtendedCommunityRules!: pulumi.Output<types.outputs.IpExtendedCommunityRuleResponse[]>;
     /**
      * The geo-location where the resource lives
      */
@@ -62,7 +62,7 @@ export class IpExtendedCommunity extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.managednetworkfabric.v20230615.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -135,7 +135,7 @@ export interface IpExtendedCommunityArgs {
     /**
      * List of IP Extended Community Rules.
      */
-    ipExtendedCommunityRules: pulumi.Input<pulumi.Input<types.inputs.managednetworkfabric.v20230615.IpExtendedCommunityRuleArgs>[]>;
+    ipExtendedCommunityRules: pulumi.Input<pulumi.Input<types.inputs.IpExtendedCommunityRuleArgs>[]>;
     /**
      * The geo-location where the resource lives
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An environment is a set of time-series data available for query, and is the top level Azure Time Series Insights resource. Gen2 environments do not have set data retention limits.
  */
@@ -59,7 +59,7 @@ export class Gen2Environment extends pulumi.CustomResource {
     /**
      * The list of private endpoint connections to the environment.
      */
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.timeseriesinsights.v20210331preview.PrivateEndpointConnectionResponse[]>;
+    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[]>;
     /**
      * Provisioning state of the resource.
      */
@@ -71,15 +71,15 @@ export class Gen2Environment extends pulumi.CustomResource {
     /**
      * The sku determines the type of environment, either Gen1 (S1 or S2) or Gen2 (L1). For Gen1 environments the sku determines the capacity of the environment, the ingress rate, and the billing rate.
      */
-    public readonly sku!: pulumi.Output<types.outputs.timeseriesinsights.v20210331preview.SkuResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse>;
     /**
      * An object that represents the status of the environment, and its internal state in the Time Series Insights service.
      */
-    public /*out*/ readonly status!: pulumi.Output<types.outputs.timeseriesinsights.v20210331preview.EnvironmentStatusResponse>;
+    public /*out*/ readonly status!: pulumi.Output<types.outputs.EnvironmentStatusResponse>;
     /**
      * The storage configuration provides the connection details that allows the Time Series Insights service to connect to the customer storage account that is used to store the environment's data.
      */
-    public readonly storageConfiguration!: pulumi.Output<types.outputs.timeseriesinsights.v20210331preview.Gen2StorageConfigurationOutputResponse>;
+    public readonly storageConfiguration!: pulumi.Output<types.outputs.Gen2StorageConfigurationOutputResponse>;
     /**
      * Resource tags
      */
@@ -87,7 +87,7 @@ export class Gen2Environment extends pulumi.CustomResource {
     /**
      * The list of event properties which will be used to define the environment's time series id.
      */
-    public readonly timeSeriesIdProperties!: pulumi.Output<types.outputs.timeseriesinsights.v20210331preview.TimeSeriesIdPropertyResponse[]>;
+    public readonly timeSeriesIdProperties!: pulumi.Output<types.outputs.TimeSeriesIdPropertyResponse[]>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -95,7 +95,7 @@ export class Gen2Environment extends pulumi.CustomResource {
     /**
      * The warm store configuration provides the details to create a warm store cache that will retain a copy of the environment's data available for faster query.
      */
-    public readonly warmStoreConfiguration!: pulumi.Output<types.outputs.timeseriesinsights.v20210331preview.WarmStoreConfigurationPropertiesResponse | undefined>;
+    public readonly warmStoreConfiguration!: pulumi.Output<types.outputs.WarmStoreConfigurationPropertiesResponse | undefined>;
 
     /**
      * Create a Gen2Environment resource with the given unique name, arguments, and options.
@@ -186,7 +186,7 @@ export interface Gen2EnvironmentArgs {
     /**
      * This value can be set to 'enabled' to avoid breaking changes on existing customer resources and templates. If set to 'disabled', traffic over public interface is not allowed, and private endpoint connections would be the exclusive access method.
      */
-    publicNetworkAccess?: pulumi.Input<string | types.enums.v20210331preview.PublicNetworkAccess>;
+    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess>;
     /**
      * Name of an Azure Resource group.
      */
@@ -194,11 +194,11 @@ export interface Gen2EnvironmentArgs {
     /**
      * The sku determines the type of environment, either Gen1 (S1 or S2) or Gen2 (L1). For Gen1 environments the sku determines the capacity of the environment, the ingress rate, and the billing rate.
      */
-    sku: pulumi.Input<types.inputs.timeseriesinsights.v20210331preview.SkuArgs>;
+    sku: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * The storage configuration provides the connection details that allows the Time Series Insights service to connect to the customer storage account that is used to store the environment's data.
      */
-    storageConfiguration: pulumi.Input<types.inputs.timeseriesinsights.v20210331preview.Gen2StorageConfigurationInputArgs>;
+    storageConfiguration: pulumi.Input<types.inputs.Gen2StorageConfigurationInputArgs>;
     /**
      * Key-value pairs of additional properties for the resource.
      */
@@ -206,9 +206,9 @@ export interface Gen2EnvironmentArgs {
     /**
      * The list of event properties which will be used to define the environment's time series id.
      */
-    timeSeriesIdProperties: pulumi.Input<pulumi.Input<types.inputs.timeseriesinsights.v20210331preview.TimeSeriesIdPropertyArgs>[]>;
+    timeSeriesIdProperties: pulumi.Input<pulumi.Input<types.inputs.TimeSeriesIdPropertyArgs>[]>;
     /**
      * The warm store configuration provides the details to create a warm store cache that will retain a copy of the environment's data available for faster query.
      */
-    warmStoreConfiguration?: pulumi.Input<types.inputs.timeseriesinsights.v20210331preview.WarmStoreConfigurationPropertiesArgs>;
+    warmStoreConfiguration?: pulumi.Input<types.inputs.WarmStoreConfigurationPropertiesArgs>;
 }

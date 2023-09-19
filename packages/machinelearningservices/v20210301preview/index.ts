@@ -153,7 +153,7 @@ utilities.lazyLoad(exports, ["OnlineEndpoint"], () => require("./onlineEndpoint"
 
 
 // Export enums:
-export * from "../types/enums/v20210301preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

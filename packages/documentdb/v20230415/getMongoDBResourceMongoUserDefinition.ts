@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves the properties of an existing Azure Cosmos DB Mongo User Definition with the given Id.
  */
@@ -60,7 +60,7 @@ export interface GetMongoDBResourceMongoUserDefinitionResult {
     /**
      * The set of roles inherited by the User Definition.
      */
-    readonly roles?: types.outputs.documentdb.v20230415.RoleResponse[];
+    readonly roles?: types.outputs.RoleResponse[];
     /**
      * The type of Azure resource.
      */

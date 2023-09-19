@@ -33,7 +33,7 @@ export class VMwareCollector extends pulumi.CustomResource {
 
     public readonly eTag!: pulumi.Output<string | undefined>;
     public /*out*/ readonly name!: pulumi.Output<string>;
-    public readonly properties!: pulumi.Output<types.outputs.migrate.CollectorPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.CollectorPropertiesResponse>;
     public /*out*/ readonly type!: pulumi.Output<string>;
 
     /**
@@ -82,7 +82,7 @@ export interface VMwareCollectorArgs {
      * Name of the Azure Migrate project.
      */
     projectName: pulumi.Input<string>;
-    properties?: pulumi.Input<types.inputs.migrate.CollectorPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.CollectorPropertiesArgs>;
     /**
      * Name of the Azure Resource Group that project is part of.
      */

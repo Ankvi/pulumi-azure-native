@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a given plan ID
  */
@@ -55,7 +55,7 @@ export interface GetHybridUseBenefitResult {
     /**
      * Hybrid use benefit SKU
      */
-    readonly sku: types.outputs.softwareplan.v20191201.SkuResponse;
+    readonly sku: types.outputs.SkuResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

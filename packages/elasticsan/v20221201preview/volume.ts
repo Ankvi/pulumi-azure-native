@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Response for Volume request.
  */
@@ -34,7 +34,7 @@ export class Volume extends pulumi.CustomResource {
     /**
      * State of the operation on the resource.
      */
-    public readonly creationData!: pulumi.Output<types.outputs.elasticsan.v20221201preview.SourceCreationDataResponse | undefined>;
+    public readonly creationData!: pulumi.Output<types.outputs.SourceCreationDataResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -46,11 +46,11 @@ export class Volume extends pulumi.CustomResource {
     /**
      * Storage target information
      */
-    public /*out*/ readonly storageTarget!: pulumi.Output<types.outputs.elasticsan.v20221201preview.IscsiTargetInfoResponse>;
+    public /*out*/ readonly storageTarget!: pulumi.Output<types.outputs.IscsiTargetInfoResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.elasticsan.v20221201preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -117,7 +117,7 @@ export interface VolumeArgs {
     /**
      * State of the operation on the resource.
      */
-    creationData?: pulumi.Input<types.inputs.elasticsan.v20221201preview.SourceCreationDataArgs>;
+    creationData?: pulumi.Input<types.inputs.SourceCreationDataArgs>;
     /**
      * The name of the ElasticSan.
      */

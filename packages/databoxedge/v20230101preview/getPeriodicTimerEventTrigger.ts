@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a specific trigger by name.
  */
@@ -53,15 +53,15 @@ export interface GetPeriodicTimerEventTriggerResult {
     /**
      * Role Sink information.
      */
-    readonly sinkInfo: types.outputs.databoxedge.v20230101preview.RoleSinkInfoResponse;
+    readonly sinkInfo: types.outputs.RoleSinkInfoResponse;
     /**
      * Periodic timer details.
      */
-    readonly sourceInfo: types.outputs.databoxedge.v20230101preview.PeriodicTimerSourceInfoResponse;
+    readonly sourceInfo: types.outputs.PeriodicTimerSourceInfoResponse;
     /**
      * Metadata pertaining to creation and last modification of Trigger
      */
-    readonly systemData: types.outputs.databoxedge.v20230101preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The hierarchical type of the object.
      */

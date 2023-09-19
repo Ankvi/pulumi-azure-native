@@ -40,11 +40,11 @@ export interface GetApplianceResult {
     /**
      * Identity for the resource.
      */
-    readonly identity?: types.outputs.resourceconnector.IdentityResponse;
+    readonly identity?: types.outputs.IdentityResponse;
     /**
      * Contains infrastructure information about the Appliance
      */
-    readonly infrastructureConfig?: types.outputs.resourceconnector.AppliancePropertiesResponseInfrastructureConfig;
+    readonly infrastructureConfig?: types.outputs.AppliancePropertiesResponseInfrastructureConfig;
     /**
      * The geo-location where the resource lives
      */
@@ -68,7 +68,7 @@ export interface GetApplianceResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.resourceconnector.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

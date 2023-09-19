@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 export class OnlineEndpoint extends pulumi.CustomResource {
     /**
      * Get an existing OnlineEndpoint resource's state with the given name, ID, and optional extra
@@ -31,7 +31,7 @@ export class OnlineEndpoint extends pulumi.CustomResource {
     /**
      * Service identity associated with a resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.machinelearningservices.v20210301preview.ResourceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ResourceIdentityResponse | undefined>;
     /**
      * Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
      */
@@ -47,11 +47,11 @@ export class OnlineEndpoint extends pulumi.CustomResource {
     /**
      * [Required] Additional attributes of the entity.
      */
-    public readonly properties!: pulumi.Output<types.outputs.machinelearningservices.v20210301preview.OnlineEndpointResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.OnlineEndpointResponse>;
     /**
      * System data associated with resource provider
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.machinelearningservices.v20210301preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -120,7 +120,7 @@ export interface OnlineEndpointArgs {
     /**
      * Service identity associated with a resource.
      */
-    identity?: pulumi.Input<types.inputs.machinelearningservices.v20210301preview.ResourceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ResourceIdentityArgs>;
     /**
      * Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
      */
@@ -132,7 +132,7 @@ export interface OnlineEndpointArgs {
     /**
      * [Required] Additional attributes of the entity.
      */
-    properties: pulumi.Input<types.inputs.machinelearningservices.v20210301preview.OnlineEndpointArgs>;
+    properties: pulumi.Input<types.inputs.OnlineEndpointArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

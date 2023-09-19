@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the JIT request.
  */
@@ -35,7 +35,7 @@ export interface GetJitRequestResult {
     /**
      * The client entity that created the JIT request.
      */
-    readonly createdBy: types.outputs.solutions.v20210701.ApplicationClientDetailsResponse;
+    readonly createdBy: types.outputs.ApplicationClientDetailsResponse;
     /**
      * Resource ID
      */
@@ -43,7 +43,7 @@ export interface GetJitRequestResult {
     /**
      * The JIT authorization policies.
      */
-    readonly jitAuthorizationPolicies: types.outputs.solutions.v20210701.JitAuthorizationPoliciesResponse[];
+    readonly jitAuthorizationPolicies: types.outputs.JitAuthorizationPoliciesResponse[];
     /**
      * The JIT request state.
      */
@@ -51,7 +51,7 @@ export interface GetJitRequestResult {
     /**
      * The JIT request properties.
      */
-    readonly jitSchedulingPolicy: types.outputs.solutions.v20210701.JitSchedulingPolicyResponse;
+    readonly jitSchedulingPolicy: types.outputs.JitSchedulingPolicyResponse;
     /**
      * Resource location
      */
@@ -71,7 +71,7 @@ export interface GetJitRequestResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.solutions.v20210701.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags
      */
@@ -83,7 +83,7 @@ export interface GetJitRequestResult {
     /**
      * The client entity that last updated the JIT request.
      */
-    readonly updatedBy: types.outputs.solutions.v20210701.ApplicationClientDetailsResponse;
+    readonly updatedBy: types.outputs.ApplicationClientDetailsResponse;
 }
 /**
  * Gets the JIT request.

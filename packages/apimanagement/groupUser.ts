@@ -43,11 +43,11 @@ export class GroupUser extends pulumi.CustomResource {
     /**
      * Collection of groups user is part of.
      */
-    public /*out*/ readonly groups!: pulumi.Output<types.outputs.apimanagement.GroupContractPropertiesResponse[]>;
+    public /*out*/ readonly groups!: pulumi.Output<types.outputs.GroupContractPropertiesResponse[]>;
     /**
      * Collection of user identities.
      */
-    public /*out*/ readonly identities!: pulumi.Output<types.outputs.apimanagement.UserIdentityContractResponse[] | undefined>;
+    public /*out*/ readonly identities!: pulumi.Output<types.outputs.UserIdentityContractResponse[] | undefined>;
     /**
      * Last name.
      */

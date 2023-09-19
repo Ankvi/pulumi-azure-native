@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents order item resource.
  */
@@ -34,7 +34,7 @@ export class OrderItem extends pulumi.CustomResource {
     /**
      * Represents shipping and return address for order item.
      */
-    public readonly addressDetails!: pulumi.Output<types.outputs.edgeorder.v20220501preview.AddressDetailsResponse>;
+    public readonly addressDetails!: pulumi.Output<types.outputs.AddressDetailsResponse>;
     /**
      * The geo-location where the resource lives
      */
@@ -50,7 +50,7 @@ export class OrderItem extends pulumi.CustomResource {
     /**
      * Represents order item details.
      */
-    public readonly orderItemDetails!: pulumi.Output<types.outputs.edgeorder.v20220501preview.OrderItemDetailsResponse>;
+    public readonly orderItemDetails!: pulumi.Output<types.outputs.OrderItemDetailsResponse>;
     /**
      * Start time of order item.
      */
@@ -58,7 +58,7 @@ export class OrderItem extends pulumi.CustomResource {
     /**
      * Represents resource creation and update time.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.edgeorder.v20220501preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -127,7 +127,7 @@ export interface OrderItemArgs {
     /**
      * Represents shipping and return address for order item.
      */
-    addressDetails: pulumi.Input<types.inputs.edgeorder.v20220501preview.AddressDetailsArgs>;
+    addressDetails: pulumi.Input<types.inputs.AddressDetailsArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -139,7 +139,7 @@ export interface OrderItemArgs {
     /**
      * Represents order item details.
      */
-    orderItemDetails: pulumi.Input<types.inputs.edgeorder.v20220501preview.OrderItemDetailsArgs>;
+    orderItemDetails: pulumi.Input<types.inputs.OrderItemDetailsArgs>;
     /**
      * The name of the order item.
      */

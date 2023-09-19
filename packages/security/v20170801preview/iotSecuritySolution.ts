@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Security Solution
  */
@@ -62,7 +62,7 @@ export class IotSecuritySolution extends pulumi.CustomResource {
     /**
      * List of recommendation configuration
      */
-    public readonly recommendationsConfiguration!: pulumi.Output<types.outputs.security.v20170801preview.RecommendationConfigurationPropertiesResponse[] | undefined>;
+    public readonly recommendationsConfiguration!: pulumi.Output<types.outputs.RecommendationConfigurationPropertiesResponse[] | undefined>;
     /**
      * Security solution status
      */
@@ -78,7 +78,7 @@ export class IotSecuritySolution extends pulumi.CustomResource {
     /**
      * Properties of the solution's user defined resources.
      */
-    public readonly userDefinedResources!: pulumi.Output<types.outputs.security.v20170801preview.UserDefinedResourcesPropertiesResponse | undefined>;
+    public readonly userDefinedResources!: pulumi.Output<types.outputs.UserDefinedResourcesPropertiesResponse | undefined>;
     /**
      * Workspace resource ID
      */
@@ -151,7 +151,7 @@ export interface IotSecuritySolutionArgs {
     /**
      * Disabled data sources. Disabling these data sources compromises the system.
      */
-    disabledDataSources?: pulumi.Input<pulumi.Input<string | types.enums.v20170801preview.DataSource>[]>;
+    disabledDataSources?: pulumi.Input<pulumi.Input<string | types.enums.DataSource>[]>;
     /**
      * Resource display name.
      */
@@ -159,7 +159,7 @@ export interface IotSecuritySolutionArgs {
     /**
      * List of additional export to workspace data options
      */
-    export?: pulumi.Input<pulumi.Input<string | types.enums.v20170801preview.ExportData>[]>;
+    export?: pulumi.Input<pulumi.Input<string | types.enums.ExportData>[]>;
     /**
      * IoT Hub resource IDs
      */
@@ -171,7 +171,7 @@ export interface IotSecuritySolutionArgs {
     /**
      * List of recommendation configuration
      */
-    recommendationsConfiguration?: pulumi.Input<pulumi.Input<types.inputs.security.v20170801preview.RecommendationConfigurationPropertiesArgs>[]>;
+    recommendationsConfiguration?: pulumi.Input<pulumi.Input<types.inputs.RecommendationConfigurationPropertiesArgs>[]>;
     /**
      * The name of the resource group within the user's subscription. The name is case insensitive.
      */
@@ -183,7 +183,7 @@ export interface IotSecuritySolutionArgs {
     /**
      * Security solution status
      */
-    status?: pulumi.Input<string | types.enums.v20170801preview.SecuritySolutionStatus>;
+    status?: pulumi.Input<string | types.enums.SecuritySolutionStatus>;
     /**
      * Resource tags
      */
@@ -191,7 +191,7 @@ export interface IotSecuritySolutionArgs {
     /**
      * Properties of the solution's user defined resources.
      */
-    userDefinedResources?: pulumi.Input<types.inputs.security.v20170801preview.UserDefinedResourcesPropertiesArgs>;
+    userDefinedResources?: pulumi.Input<types.inputs.UserDefinedResourcesPropertiesArgs>;
     /**
      * Workspace resource ID
      */

@@ -57,11 +57,11 @@ export interface GetVolumeResult {
     /**
      * The status of the resource.
      */
-    readonly status: types.outputs.containerstorage.ResourceOperationalStatusResponse;
+    readonly status: types.outputs.ResourceOperationalStatusResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.containerstorage.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -69,7 +69,7 @@ export interface GetVolumeResult {
     /**
      * Properties of the volume
      */
-    readonly volumeType: types.outputs.containerstorage.VolumeTypeResponse;
+    readonly volumeType: types.outputs.VolumeTypeResponse;
 }
 /**
  * Get a Volume

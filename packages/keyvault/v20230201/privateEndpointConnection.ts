@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Private endpoint connection resource.
  */
@@ -46,11 +46,11 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * Properties of the private endpoint object.
      */
-    public /*out*/ readonly privateEndpoint!: pulumi.Output<types.outputs.keyvault.v20230201.PrivateEndpointResponse | undefined>;
+    public /*out*/ readonly privateEndpoint!: pulumi.Output<types.outputs.PrivateEndpointResponse | undefined>;
     /**
      * Approval state of the private link connection.
      */
-    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.keyvault.v20230201.PrivateLinkServiceConnectionStateResponse | undefined>;
+    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.PrivateLinkServiceConnectionStateResponse | undefined>;
     /**
      * Provisioning state of the private endpoint connection.
      */
@@ -120,7 +120,7 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * Approval state of the private link connection.
      */
-    privateLinkServiceConnectionState?: pulumi.Input<types.inputs.keyvault.v20230201.PrivateLinkServiceConnectionStateArgs>;
+    privateLinkServiceConnectionState?: pulumi.Input<types.inputs.PrivateLinkServiceConnectionStateArgs>;
     /**
      * Name of the resource group that contains the key vault.
      */

@@ -55,7 +55,7 @@ export class Workspace extends pulumi.CustomResource {
     /**
      * The sku of the workspace.
      */
-    public readonly sku!: pulumi.Output<types.outputs.machinelearning.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * The regional endpoint for the machine learning studio service which hosts this workspace.
      */
@@ -165,7 +165,7 @@ export interface WorkspaceArgs {
     /**
      * The sku of the workspace.
      */
-    sku?: pulumi.Input<types.inputs.machinelearning.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * The tags of the resource.
      */

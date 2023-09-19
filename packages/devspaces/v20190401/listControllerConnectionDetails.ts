@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Lists connection details for the underlying container resources of an Azure Dev Spaces Controller.
  */
@@ -33,7 +33,7 @@ export interface ListControllerConnectionDetailsResult {
     /**
      * List of Azure Dev Spaces Controller connection details.
      */
-    readonly connectionDetailsList?: types.outputs.devspaces.v20190401.ControllerConnectionDetailsResponse[];
+    readonly connectionDetailsList?: types.outputs.ControllerConnectionDetailsResponse[];
 }
 /**
  * Lists connection details for the underlying container resources of an Azure Dev Spaces Controller.

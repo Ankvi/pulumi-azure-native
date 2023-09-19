@@ -32,7 +32,7 @@ export interface GetLabAccountRegionalAvailabilityResult {
     /**
      * Availability information for different size categories per region
      */
-    readonly regionalAvailability?: types.outputs.labservices.RegionalAvailabilityResponse[];
+    readonly regionalAvailability?: types.outputs.RegionalAvailabilityResponse[];
 }
 /**
  * Get regional availability information for each size category configured under a lab account

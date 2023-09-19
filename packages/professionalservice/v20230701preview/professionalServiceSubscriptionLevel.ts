@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * ProfessionalService REST API resource definition.
  */
@@ -38,7 +38,7 @@ export class ProfessionalServiceSubscriptionLevel extends pulumi.CustomResource 
     /**
      * professionalService properties
      */
-    public readonly properties!: pulumi.Output<types.outputs.professionalservice.v20230701preview.ProfessionalServiceResourceResponseProperties>;
+    public readonly properties!: pulumi.Output<types.outputs.ProfessionalServiceResourceResponseProperties>;
     /**
      * the resource tags.
      */
@@ -98,7 +98,7 @@ export interface ProfessionalServiceSubscriptionLevelArgs {
     /**
      * Properties of the ProfessionalService resource that are relevant for creation.
      */
-    properties?: pulumi.Input<types.inputs.professionalservice.v20230701preview.ProfessionalServiceCreationPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ProfessionalServiceCreationPropertiesArgs>;
     /**
      * The name of the resource group.
      */

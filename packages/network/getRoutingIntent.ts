@@ -53,7 +53,7 @@ export interface GetRoutingIntentResult {
     /**
      * List of routing policies.
      */
-    readonly routingPolicies?: types.outputs.network.RoutingPolicyResponse[];
+    readonly routingPolicies?: types.outputs.RoutingPolicyResponse[];
     /**
      * Resource type.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 export class ResourceManagementPrivateLink extends pulumi.CustomResource {
     /**
      * Get an existing ResourceManagementPrivateLink resource's state with the given name, ID, and optional extra
@@ -36,7 +36,7 @@ export class ResourceManagementPrivateLink extends pulumi.CustomResource {
      * The rmpl Name.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
-    public /*out*/ readonly properties!: pulumi.Output<types.outputs.authorization.v20200501.ResourceManagementPrivateLinkEndpointConnectionsResponse>;
+    public /*out*/ readonly properties!: pulumi.Output<types.outputs.ResourceManagementPrivateLinkEndpointConnectionsResponse>;
     /**
      * The operation type.
      */

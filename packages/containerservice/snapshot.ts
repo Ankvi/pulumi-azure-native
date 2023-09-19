@@ -35,7 +35,7 @@ export class Snapshot extends pulumi.CustomResource {
     /**
      * CreationData to be used to specify the source agent pool resource ID to create this snapshot.
      */
-    public readonly creationData!: pulumi.Output<types.outputs.containerservice.CreationDataResponse | undefined>;
+    public readonly creationData!: pulumi.Output<types.outputs.CreationDataResponse | undefined>;
     /**
      * Whether to use a FIPS-enabled OS.
      */
@@ -71,7 +71,7 @@ export class Snapshot extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.containerservice.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -143,7 +143,7 @@ export interface SnapshotArgs {
     /**
      * CreationData to be used to specify the source agent pool resource ID to create this snapshot.
      */
-    creationData?: pulumi.Input<types.inputs.containerservice.CreationDataArgs>;
+    creationData?: pulumi.Input<types.inputs.CreationDataArgs>;
     /**
      * The geo-location where the resource lives
      */

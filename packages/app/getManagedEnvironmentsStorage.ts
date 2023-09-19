@@ -45,11 +45,11 @@ export interface GetManagedEnvironmentsStorageResult {
     /**
      * Storage properties
      */
-    readonly properties: types.outputs.app.ManagedEnvironmentStorageResponseProperties;
+    readonly properties: types.outputs.ManagedEnvironmentStorageResponseProperties;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.app.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

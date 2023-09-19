@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Integration runtime resource type.
  */
@@ -42,7 +42,7 @@ export class IntegrationRuntime extends pulumi.CustomResource {
     /**
      * Integration runtime properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.datafactory.v20180601.ManagedIntegrationRuntimeResponse | types.outputs.datafactory.v20180601.SelfHostedIntegrationRuntimeResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ManagedIntegrationRuntimeResponse | types.outputs.SelfHostedIntegrationRuntimeResponse>;
     /**
      * The resource type.
      */
@@ -103,7 +103,7 @@ export interface IntegrationRuntimeArgs {
     /**
      * Integration runtime properties.
      */
-    properties: pulumi.Input<types.inputs.datafactory.v20180601.ManagedIntegrationRuntimeArgs | types.inputs.datafactory.v20180601.SelfHostedIntegrationRuntimeArgs>;
+    properties: pulumi.Input<types.inputs.ManagedIntegrationRuntimeArgs | types.inputs.SelfHostedIntegrationRuntimeArgs>;
     /**
      * The resource group name.
      */

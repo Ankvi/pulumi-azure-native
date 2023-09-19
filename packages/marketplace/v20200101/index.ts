@@ -13,7 +13,7 @@ utilities.lazyLoad(exports, ["PrivateStoreOffer"], () => require("./privateStore
 
 
 // Export enums:
-export * from "../types/enums/v20200101";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

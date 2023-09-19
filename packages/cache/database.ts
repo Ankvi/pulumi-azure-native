@@ -47,11 +47,11 @@ export class Database extends pulumi.CustomResource {
     /**
      * Optional set of properties to configure geo replication for this database.
      */
-    public readonly geoReplication!: pulumi.Output<types.outputs.cache.DatabasePropertiesResponseGeoReplication | undefined>;
+    public readonly geoReplication!: pulumi.Output<types.outputs.DatabasePropertiesResponseGeoReplication | undefined>;
     /**
      * Optional set of redis modules to enable in this database - modules can only be added at creation time.
      */
-    public readonly modules!: pulumi.Output<types.outputs.cache.ModuleResponse[] | undefined>;
+    public readonly modules!: pulumi.Output<types.outputs.ModuleResponse[] | undefined>;
     /**
      * The name of the resource
      */
@@ -59,7 +59,7 @@ export class Database extends pulumi.CustomResource {
     /**
      * Persistence settings
      */
-    public readonly persistence!: pulumi.Output<types.outputs.cache.PersistenceResponse | undefined>;
+    public readonly persistence!: pulumi.Output<types.outputs.PersistenceResponse | undefined>;
     /**
      * TCP port of the database endpoint. Specified at create time. Defaults to an available port.
      */
@@ -75,7 +75,7 @@ export class Database extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.cache.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -161,15 +161,15 @@ export interface DatabaseArgs {
     /**
      * Optional set of properties to configure geo replication for this database.
      */
-    geoReplication?: pulumi.Input<types.inputs.cache.DatabasePropertiesGeoReplicationArgs>;
+    geoReplication?: pulumi.Input<types.inputs.DatabasePropertiesGeoReplicationArgs>;
     /**
      * Optional set of redis modules to enable in this database - modules can only be added at creation time.
      */
-    modules?: pulumi.Input<pulumi.Input<types.inputs.cache.ModuleArgs>[]>;
+    modules?: pulumi.Input<pulumi.Input<types.inputs.ModuleArgs>[]>;
     /**
      * Persistence settings
      */
-    persistence?: pulumi.Input<types.inputs.cache.PersistenceArgs>;
+    persistence?: pulumi.Input<types.inputs.PersistenceArgs>;
     /**
      * TCP port of the database endpoint. Specified at create time. Defaults to an available port.
      */

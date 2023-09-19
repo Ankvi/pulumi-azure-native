@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the backend health for given combination of backend pool and http setting of the specified application gateway in a resource group.
  */
@@ -30,11 +30,11 @@ export interface GetApplicationGatewayBackendHealthOnDemandArgs {
     /**
      * Reference of backend pool of application gateway to which probe request will be sent.
      */
-    backendAddressPool?: types.inputs.network.v20190601.SubResource;
+    backendAddressPool?: types.inputs.SubResource;
     /**
      * Reference of backend http setting of application gateway to be used for test probe.
      */
-    backendHttpSettings?: types.inputs.network.v20190601.SubResource;
+    backendHttpSettings?: types.inputs.SubResource;
     /**
      * Expands BackendAddressPool and BackendHttpSettings referenced in backend health.
      */
@@ -46,7 +46,7 @@ export interface GetApplicationGatewayBackendHealthOnDemandArgs {
     /**
      * Criterion for classifying a healthy probe response.
      */
-    match?: types.inputs.network.v20190601.ApplicationGatewayProbeHealthResponseMatch;
+    match?: types.inputs.ApplicationGatewayProbeHealthResponseMatch;
     /**
      * Relative path of probe. Valid path starts from '/'. Probe is sent to <Protocol>://<host>:<port><path>.
      */
@@ -58,7 +58,7 @@ export interface GetApplicationGatewayBackendHealthOnDemandArgs {
     /**
      * The protocol used for the probe.
      */
-    protocol?: string | types.enums.v20190601.ApplicationGatewayProtocol;
+    protocol?: string | types.enums.ApplicationGatewayProtocol;
     /**
      * The name of the resource group.
      */
@@ -76,11 +76,11 @@ export interface GetApplicationGatewayBackendHealthOnDemandResult {
     /**
      * Reference of an ApplicationGatewayBackendAddressPool resource.
      */
-    readonly backendAddressPool?: types.outputs.network.v20190601.ApplicationGatewayBackendAddressPoolResponse;
+    readonly backendAddressPool?: types.outputs.ApplicationGatewayBackendAddressPoolResponse;
     /**
      * Application gateway BackendHealthHttp settings.
      */
-    readonly backendHealthHttpSettings?: types.outputs.network.v20190601.ApplicationGatewayBackendHealthHttpSettingsResponse;
+    readonly backendHealthHttpSettings?: types.outputs.ApplicationGatewayBackendHealthHttpSettingsResponse;
 }
 /**
  * Gets the backend health for given combination of backend pool and http setting of the specified application gateway in a resource group.
@@ -97,11 +97,11 @@ export interface GetApplicationGatewayBackendHealthOnDemandOutputArgs {
     /**
      * Reference of backend pool of application gateway to which probe request will be sent.
      */
-    backendAddressPool?: pulumi.Input<types.inputs.network.v20190601.SubResourceArgs>;
+    backendAddressPool?: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * Reference of backend http setting of application gateway to be used for test probe.
      */
-    backendHttpSettings?: pulumi.Input<types.inputs.network.v20190601.SubResourceArgs>;
+    backendHttpSettings?: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * Expands BackendAddressPool and BackendHttpSettings referenced in backend health.
      */
@@ -113,7 +113,7 @@ export interface GetApplicationGatewayBackendHealthOnDemandOutputArgs {
     /**
      * Criterion for classifying a healthy probe response.
      */
-    match?: pulumi.Input<types.inputs.network.v20190601.ApplicationGatewayProbeHealthResponseMatchArgs>;
+    match?: pulumi.Input<types.inputs.ApplicationGatewayProbeHealthResponseMatchArgs>;
     /**
      * Relative path of probe. Valid path starts from '/'. Probe is sent to <Protocol>://<host>:<port><path>.
      */
@@ -125,7 +125,7 @@ export interface GetApplicationGatewayBackendHealthOnDemandOutputArgs {
     /**
      * The protocol used for the probe.
      */
-    protocol?: pulumi.Input<string | types.enums.v20190601.ApplicationGatewayProtocol>;
+    protocol?: pulumi.Input<string | types.enums.ApplicationGatewayProtocol>;
     /**
      * The name of the resource group.
      */

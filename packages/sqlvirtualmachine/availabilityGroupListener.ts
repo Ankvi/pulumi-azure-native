@@ -35,7 +35,7 @@ export class AvailabilityGroupListener extends pulumi.CustomResource {
     /**
      * Availability Group configuration.
      */
-    public readonly availabilityGroupConfiguration!: pulumi.Output<types.outputs.sqlvirtualmachine.AgConfigurationResponse | undefined>;
+    public readonly availabilityGroupConfiguration!: pulumi.Output<types.outputs.AgConfigurationResponse | undefined>;
     /**
      * Name of the availability group.
      */
@@ -47,11 +47,11 @@ export class AvailabilityGroupListener extends pulumi.CustomResource {
     /**
      * List of load balancer configurations for an availability group listener.
      */
-    public readonly loadBalancerConfigurations!: pulumi.Output<types.outputs.sqlvirtualmachine.LoadBalancerConfigurationResponse[] | undefined>;
+    public readonly loadBalancerConfigurations!: pulumi.Output<types.outputs.LoadBalancerConfigurationResponse[] | undefined>;
     /**
      * List of multi subnet IP configurations for an AG listener.
      */
-    public readonly multiSubnetIpConfigurations!: pulumi.Output<types.outputs.sqlvirtualmachine.MultiSubnetIpConfigurationResponse[] | undefined>;
+    public readonly multiSubnetIpConfigurations!: pulumi.Output<types.outputs.MultiSubnetIpConfigurationResponse[] | undefined>;
     /**
      * Resource name.
      */
@@ -67,7 +67,7 @@ export class AvailabilityGroupListener extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.sqlvirtualmachine.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource type.
      */
@@ -129,7 +129,7 @@ export interface AvailabilityGroupListenerArgs {
     /**
      * Availability Group configuration.
      */
-    availabilityGroupConfiguration?: pulumi.Input<types.inputs.sqlvirtualmachine.AgConfigurationArgs>;
+    availabilityGroupConfiguration?: pulumi.Input<types.inputs.AgConfigurationArgs>;
     /**
      * Name of the availability group listener.
      */
@@ -145,11 +145,11 @@ export interface AvailabilityGroupListenerArgs {
     /**
      * List of load balancer configurations for an availability group listener.
      */
-    loadBalancerConfigurations?: pulumi.Input<pulumi.Input<types.inputs.sqlvirtualmachine.LoadBalancerConfigurationArgs>[]>;
+    loadBalancerConfigurations?: pulumi.Input<pulumi.Input<types.inputs.LoadBalancerConfigurationArgs>[]>;
     /**
      * List of multi subnet IP configurations for an AG listener.
      */
-    multiSubnetIpConfigurations?: pulumi.Input<pulumi.Input<types.inputs.sqlvirtualmachine.MultiSubnetIpConfigurationArgs>[]>;
+    multiSubnetIpConfigurations?: pulumi.Input<pulumi.Input<types.inputs.MultiSubnetIpConfigurationArgs>[]>;
     /**
      * Listener port.
      */

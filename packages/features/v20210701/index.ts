@@ -13,7 +13,7 @@ utilities.lazyLoad(exports, ["SubscriptionFeatureRegistration"], () => require("
 
 
 // Export enums:
-export * from "../types/enums/v20210701";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

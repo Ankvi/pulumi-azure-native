@@ -32,7 +32,7 @@ export interface ListJobSecretsResult {
     /**
      * Collection of resources.
      */
-    readonly value: types.outputs.app.SecretResponse[];
+    readonly value: types.outputs.SecretResponse[];
 }
 /**
  * Container Apps Job Secrets Collection ARM resource.

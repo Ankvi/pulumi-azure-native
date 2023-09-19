@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The volume.
  */
@@ -171,7 +171,7 @@ export interface VolumeArgs {
     /**
      * The Kind of the object. Currently only Series8000 is supported
      */
-    kind?: pulumi.Input<types.enums.v20170601.Kind>;
+    kind?: pulumi.Input<types.enums.Kind>;
     /**
      * The manager name
      */
@@ -179,7 +179,7 @@ export interface VolumeArgs {
     /**
      * The monitoring status of the volume.
      */
-    monitoringStatus: pulumi.Input<types.enums.v20170601.MonitoringStatus>;
+    monitoringStatus: pulumi.Input<types.enums.MonitoringStatus>;
     /**
      * The resource group name
      */
@@ -199,9 +199,9 @@ export interface VolumeArgs {
     /**
      * The volume status.
      */
-    volumeStatus: pulumi.Input<types.enums.v20170601.VolumeStatus>;
+    volumeStatus: pulumi.Input<types.enums.VolumeStatus>;
     /**
      * The type of the volume.
      */
-    volumeType: pulumi.Input<types.enums.v20170601.VolumeType>;
+    volumeType: pulumi.Input<types.enums.VolumeType>;
 }

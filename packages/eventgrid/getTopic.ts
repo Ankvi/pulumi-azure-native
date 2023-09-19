@@ -48,11 +48,11 @@ export interface GetTopicResult {
     /**
      * Identity information for the resource.
      */
-    readonly identity?: types.outputs.eventgrid.IdentityInfoResponse;
+    readonly identity?: types.outputs.IdentityInfoResponse;
     /**
      * This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled.
      */
-    readonly inboundIpRules?: types.outputs.eventgrid.InboundIpRuleResponse[];
+    readonly inboundIpRules?: types.outputs.InboundIpRuleResponse[];
     /**
      * This determines the format that Event Grid should expect for incoming events published to the topic.
      */
@@ -60,7 +60,7 @@ export interface GetTopicResult {
     /**
      * This enables publishing using custom event schemas. An InputSchemaMapping can be specified to map various properties of a source schema to various required properties of the EventGridEvent schema.
      */
-    readonly inputSchemaMapping?: types.outputs.eventgrid.JsonInputSchemaMappingResponse;
+    readonly inputSchemaMapping?: types.outputs.JsonInputSchemaMappingResponse;
     /**
      * Location of the resource.
      */
@@ -73,7 +73,7 @@ export interface GetTopicResult {
      * Name of the resource.
      */
     readonly name: string;
-    readonly privateEndpointConnections: types.outputs.eventgrid.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections: types.outputs.PrivateEndpointConnectionResponse[];
     /**
      * Provisioning state of the topic.
      */
@@ -86,7 +86,7 @@ export interface GetTopicResult {
     /**
      * The system metadata relating to Topic resource.
      */
-    readonly systemData: types.outputs.eventgrid.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Tags of the resource.
      */

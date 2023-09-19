@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Logger details.
  */
@@ -55,7 +55,7 @@ export class DiagnosticLogger extends pulumi.CustomResource {
     /**
      * Sampling settings for an ApplicationInsights logger.
      */
-    public /*out*/ readonly sampling!: pulumi.Output<types.outputs.apimanagement.v20170301.LoggerSamplingContractResponse | undefined>;
+    public /*out*/ readonly sampling!: pulumi.Output<types.outputs.LoggerSamplingContractResponse | undefined>;
     /**
      * Resource type for API Management resource.
      */

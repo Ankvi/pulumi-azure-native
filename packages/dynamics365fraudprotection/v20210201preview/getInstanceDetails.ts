@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets details about the specified instances.
  */
@@ -31,7 +31,7 @@ export interface GetInstanceDetailsResult {
     /**
      * A collection of DFP instance administrators
      */
-    readonly administration?: types.outputs.dynamics365fraudprotection.v20210201preview.DFPInstanceAdministratorsResponse;
+    readonly administration?: types.outputs.DFPInstanceAdministratorsResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -51,7 +51,7 @@ export interface GetInstanceDetailsResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.dynamics365fraudprotection.v20210201preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Key-value pairs of additional resource provisioning properties.
      */

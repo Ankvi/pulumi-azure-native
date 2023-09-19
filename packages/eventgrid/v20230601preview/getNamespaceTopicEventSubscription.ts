@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get properties of an event subscription of a namespace topic.
  */
@@ -41,7 +41,7 @@ export interface GetNamespaceTopicEventSubscriptionResult {
     /**
      * Information about the delivery configuration of the event subscription.
      */
-    readonly deliveryConfiguration?: types.outputs.eventgrid.v20230601preview.DeliveryConfigurationResponse;
+    readonly deliveryConfiguration?: types.outputs.DeliveryConfigurationResponse;
     /**
      * The event delivery schema for the event subscription.
      */
@@ -49,7 +49,7 @@ export interface GetNamespaceTopicEventSubscriptionResult {
     /**
      * Information about the filter for the event subscription.
      */
-    readonly filtersConfiguration?: types.outputs.eventgrid.v20230601preview.FiltersConfigurationResponse;
+    readonly filtersConfiguration?: types.outputs.FiltersConfigurationResponse;
     /**
      * Fully qualified identifier of the resource.
      */
@@ -65,7 +65,7 @@ export interface GetNamespaceTopicEventSubscriptionResult {
     /**
      * The system metadata relating to Event Subscription resource.
      */
-    readonly systemData: types.outputs.eventgrid.v20230601preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Type of the resource.
      */

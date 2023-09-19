@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The SourceControl Configuration object returned in Get & Put response.
  */
@@ -34,7 +34,7 @@ export class SourceControlConfiguration extends pulumi.CustomResource {
     /**
      * Compliance Status of the Configuration
      */
-    public /*out*/ readonly complianceStatus!: pulumi.Output<types.outputs.kubernetesconfiguration.v20230501.ComplianceStatusResponse>;
+    public /*out*/ readonly complianceStatus!: pulumi.Output<types.outputs.ComplianceStatusResponse>;
     /**
      * Name-value pairs of protected configuration settings for the configuration
      */
@@ -46,7 +46,7 @@ export class SourceControlConfiguration extends pulumi.CustomResource {
     /**
      * Properties for Helm operator.
      */
-    public readonly helmOperatorProperties!: pulumi.Output<types.outputs.kubernetesconfiguration.v20230501.HelmOperatorPropertiesResponse | undefined>;
+    public readonly helmOperatorProperties!: pulumi.Output<types.outputs.HelmOperatorPropertiesResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -90,7 +90,7 @@ export class SourceControlConfiguration extends pulumi.CustomResource {
     /**
      * Top level metadata https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-contracts.md#system-metadata-for-all-azure-resources
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.kubernetesconfiguration.v20230501.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -192,7 +192,7 @@ export interface SourceControlConfigurationArgs {
     /**
      * Properties for Helm operator.
      */
-    helmOperatorProperties?: pulumi.Input<types.inputs.kubernetesconfiguration.v20230501.HelmOperatorPropertiesArgs>;
+    helmOperatorProperties?: pulumi.Input<types.inputs.HelmOperatorPropertiesArgs>;
     /**
      * Instance name of the operator - identifying the specific configuration.
      */
@@ -208,11 +208,11 @@ export interface SourceControlConfigurationArgs {
     /**
      * Scope at which the operator will be installed.
      */
-    operatorScope?: pulumi.Input<string | types.enums.v20230501.OperatorScopeType>;
+    operatorScope?: pulumi.Input<string | types.enums.OperatorScopeType>;
     /**
      * Type of the operator
      */
-    operatorType?: pulumi.Input<string | types.enums.v20230501.OperatorType>;
+    operatorType?: pulumi.Input<string | types.enums.OperatorType>;
     /**
      * Url of the SourceControl Repository.
      */

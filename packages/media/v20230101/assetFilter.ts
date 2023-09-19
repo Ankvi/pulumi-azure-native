@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An Asset Filter.
  */
@@ -34,7 +34,7 @@ export class AssetFilter extends pulumi.CustomResource {
     /**
      * The first quality.
      */
-    public readonly firstQuality!: pulumi.Output<types.outputs.media.v20230101.FirstQualityResponse | undefined>;
+    public readonly firstQuality!: pulumi.Output<types.outputs.FirstQualityResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -42,15 +42,15 @@ export class AssetFilter extends pulumi.CustomResource {
     /**
      * The presentation time range.
      */
-    public readonly presentationTimeRange!: pulumi.Output<types.outputs.media.v20230101.PresentationTimeRangeResponse | undefined>;
+    public readonly presentationTimeRange!: pulumi.Output<types.outputs.PresentationTimeRangeResponse | undefined>;
     /**
      * The system metadata relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.media.v20230101.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The tracks selection conditions.
      */
-    public readonly tracks!: pulumi.Output<types.outputs.media.v20230101.FilterTrackSelectionResponse[] | undefined>;
+    public readonly tracks!: pulumi.Output<types.outputs.FilterTrackSelectionResponse[] | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -120,11 +120,11 @@ export interface AssetFilterArgs {
     /**
      * The first quality.
      */
-    firstQuality?: pulumi.Input<types.inputs.media.v20230101.FirstQualityArgs>;
+    firstQuality?: pulumi.Input<types.inputs.FirstQualityArgs>;
     /**
      * The presentation time range.
      */
-    presentationTimeRange?: pulumi.Input<types.inputs.media.v20230101.PresentationTimeRangeArgs>;
+    presentationTimeRange?: pulumi.Input<types.inputs.PresentationTimeRangeArgs>;
     /**
      * The name of the resource group within the Azure subscription.
      */
@@ -132,5 +132,5 @@ export interface AssetFilterArgs {
     /**
      * The tracks selection conditions.
      */
-    tracks?: pulumi.Input<pulumi.Input<types.inputs.media.v20230101.FilterTrackSelectionArgs>[]>;
+    tracks?: pulumi.Input<pulumi.Input<types.inputs.FilterTrackSelectionArgs>[]>;
 }

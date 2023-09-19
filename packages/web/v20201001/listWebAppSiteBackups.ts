@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets existing backups of an app.
  */
@@ -35,7 +35,7 @@ export interface ListWebAppSiteBackupsResult {
     /**
      * Collection of resources.
      */
-    readonly value: types.outputs.web.v20201001.BackupItemResponse[];
+    readonly value: types.outputs.BackupItemResponse[];
 }
 /**
  * Gets existing backups of an app.

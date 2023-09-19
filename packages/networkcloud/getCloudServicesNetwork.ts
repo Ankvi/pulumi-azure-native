@@ -35,7 +35,7 @@ export interface GetCloudServicesNetworkResult {
     /**
      * The list of egress endpoints. This allows for connection from a Hybrid AKS cluster to the specified endpoint.
      */
-    readonly additionalEgressEndpoints?: types.outputs.networkcloud.EgressEndpointResponse[];
+    readonly additionalEgressEndpoints?: types.outputs.EgressEndpointResponse[];
     /**
      * The list of resource IDs for the other Microsoft.NetworkCloud resources that have attached this network.
      */
@@ -59,11 +59,11 @@ export interface GetCloudServicesNetworkResult {
     /**
      * The full list of additional and default egress endpoints that are currently enabled.
      */
-    readonly enabledEgressEndpoints: types.outputs.networkcloud.EgressEndpointResponse[];
+    readonly enabledEgressEndpoints: types.outputs.EgressEndpointResponse[];
     /**
      * The extended location of the cluster associated with the resource.
      */
-    readonly extendedLocation: types.outputs.networkcloud.ExtendedLocationResponse;
+    readonly extendedLocation: types.outputs.ExtendedLocationResponse;
     /**
      * Field Deprecated. These fields will be empty/omitted. The list of Hybrid AKS cluster resource IDs that are associated with this cloud services network.
      */
@@ -91,7 +91,7 @@ export interface GetCloudServicesNetworkResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.networkcloud.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

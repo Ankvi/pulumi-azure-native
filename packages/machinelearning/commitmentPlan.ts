@@ -47,11 +47,11 @@ export class CommitmentPlan extends pulumi.CustomResource {
     /**
      * The commitment plan properties.
      */
-    public /*out*/ readonly properties!: pulumi.Output<types.outputs.machinelearning.CommitmentPlanPropertiesResponse>;
+    public /*out*/ readonly properties!: pulumi.Output<types.outputs.CommitmentPlanPropertiesResponse>;
     /**
      * The commitment plan SKU.
      */
-    public readonly sku!: pulumi.Output<types.outputs.machinelearning.ResourceSkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.ResourceSkuResponse | undefined>;
     /**
      * User-defined tags for the resource.
      */
@@ -119,7 +119,7 @@ export interface CommitmentPlanArgs {
     /**
      * The commitment plan SKU.
      */
-    sku?: pulumi.Input<types.inputs.machinelearning.ResourceSkuArgs>;
+    sku?: pulumi.Input<types.inputs.ResourceSkuArgs>;
     /**
      * User-defined tags for the resource.
      */

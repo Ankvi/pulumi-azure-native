@@ -49,7 +49,7 @@ export interface ListWorkflowRunActionRepetitionExpressionTracesArgs {
  * The expression traces.
  */
 export interface ListWorkflowRunActionRepetitionExpressionTracesResult {
-    readonly inputs?: types.outputs.web.ExpressionRootResponse[];
+    readonly inputs?: types.outputs.ExpressionRootResponse[];
     /**
      * The link used to get the next page of recommendations.
      */

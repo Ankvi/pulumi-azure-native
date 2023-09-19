@@ -35,15 +35,15 @@ export class Assignment extends pulumi.CustomResource {
     /**
      * Additional data about the assignment
      */
-    public readonly additionalData!: pulumi.Output<types.outputs.security.AssignmentPropertiesResponseAdditionalData | undefined>;
+    public readonly additionalData!: pulumi.Output<types.outputs.AssignmentPropertiesResponseAdditionalData | undefined>;
     /**
      * Component item with key as applied to this standard assignment over the given scope
      */
-    public readonly assignedComponent!: pulumi.Output<types.outputs.security.AssignedComponentItemResponse | undefined>;
+    public readonly assignedComponent!: pulumi.Output<types.outputs.AssignedComponentItemResponse | undefined>;
     /**
      * Standard item with key as applied to this standard assignment over the given scope
      */
-    public readonly assignedStandard!: pulumi.Output<types.outputs.security.AssignedStandardItemResponse | undefined>;
+    public readonly assignedStandard!: pulumi.Output<types.outputs.AssignedStandardItemResponse | undefined>;
     /**
      * description of the standardAssignment
      */
@@ -87,7 +87,7 @@ export class Assignment extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.security.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * A list of key value pairs that describe the resource.
      */
@@ -161,15 +161,15 @@ export interface AssignmentArgs {
     /**
      * Additional data about the assignment
      */
-    additionalData?: pulumi.Input<types.inputs.security.AssignmentPropertiesAdditionalDataArgs>;
+    additionalData?: pulumi.Input<types.inputs.AssignmentPropertiesAdditionalDataArgs>;
     /**
      * Component item with key as applied to this standard assignment over the given scope
      */
-    assignedComponent?: pulumi.Input<types.inputs.security.AssignedComponentItemArgs>;
+    assignedComponent?: pulumi.Input<types.inputs.AssignedComponentItemArgs>;
     /**
      * Standard item with key as applied to this standard assignment over the given scope
      */
-    assignedStandard?: pulumi.Input<types.inputs.security.AssignedStandardItemArgs>;
+    assignedStandard?: pulumi.Input<types.inputs.AssignedStandardItemArgs>;
     /**
      * The security assignment key - unique key for the standard assignment
      */

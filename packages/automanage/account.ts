@@ -35,7 +35,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * The identity of the Automanage account.
      */
-    public readonly identity!: pulumi.Output<types.outputs.automanage.AccountIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.AccountIdentityResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -99,7 +99,7 @@ export interface AccountArgs {
     /**
      * The identity of the Automanage account.
      */
-    identity?: pulumi.Input<types.inputs.automanage.AccountIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.AccountIdentityArgs>;
     /**
      * The geo-location where the resource lives
      */

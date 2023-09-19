@@ -42,7 +42,7 @@ export interface GetLabResult {
     /**
      * Default monetary cap for each student in this lab
      */
-    readonly budgetPerStudent: types.outputs.education.AmountResponse;
+    readonly budgetPerStudent: types.outputs.AmountResponse;
     /**
      * The type of currency being used for the value.
      */
@@ -86,7 +86,7 @@ export interface GetLabResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.education.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

@@ -53,7 +53,7 @@ export interface GetRelationshipResult {
     /**
      * The properties of the Relationship.
      */
-    readonly fields?: types.outputs.customerinsights.PropertyDefinitionResponse[];
+    readonly fields?: types.outputs.PropertyDefinitionResponse[];
     /**
      * Resource ID.
      */
@@ -61,7 +61,7 @@ export interface GetRelationshipResult {
     /**
      * Optional property to be used to map fields in profile to their strong ids in related profile.
      */
-    readonly lookupMappings?: types.outputs.customerinsights.RelationshipTypeMappingResponse[];
+    readonly lookupMappings?: types.outputs.RelationshipTypeMappingResponse[];
     /**
      * Resource name.
      */

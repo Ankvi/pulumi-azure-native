@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a Maps Account.
  */
@@ -35,7 +35,7 @@ export interface GetAccountResult {
     /**
      * Managed service identity (system assigned and/or user assigned identities)
      */
-    readonly identity?: types.outputs.maps.v20230601.ManagedServiceIdentityResponse;
+    readonly identity?: types.outputs.ManagedServiceIdentityResponse;
     /**
      * Get or Set Kind property.
      */
@@ -51,15 +51,15 @@ export interface GetAccountResult {
     /**
      * The map account properties.
      */
-    readonly properties: types.outputs.maps.v20230601.MapsAccountPropertiesResponse;
+    readonly properties: types.outputs.MapsAccountPropertiesResponse;
     /**
      * The SKU of this account.
      */
-    readonly sku: types.outputs.maps.v20230601.SkuResponse;
+    readonly sku: types.outputs.SkuResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.maps.v20230601.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get Default Security contact configurations for the subscription
  */
@@ -26,7 +26,7 @@ export interface GetSecurityContactResult {
     /**
      * Defines whether to send email notifications about new security alerts
      */
-    readonly alertNotifications?: types.outputs.security.v20200101preview.SecurityContactPropertiesResponseAlertNotifications;
+    readonly alertNotifications?: types.outputs.SecurityContactPropertiesResponseAlertNotifications;
     /**
      * List of email addresses which will get notifications from Microsoft Defender for Cloud by the configurations defined in this security contact.
      */
@@ -42,7 +42,7 @@ export interface GetSecurityContactResult {
     /**
      * Defines whether to send email notifications from Microsoft Defender for Cloud to persons with specific RBAC roles on the subscription.
      */
-    readonly notificationsByRole?: types.outputs.security.v20200101preview.SecurityContactPropertiesResponseNotificationsByRole;
+    readonly notificationsByRole?: types.outputs.SecurityContactPropertiesResponseNotificationsByRole;
     /**
      * The security contact's phone number
      */

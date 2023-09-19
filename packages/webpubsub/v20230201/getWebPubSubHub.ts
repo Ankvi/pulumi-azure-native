@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a hub setting.
  */
@@ -44,11 +44,11 @@ export interface GetWebPubSubHubResult {
     /**
      * Properties of a hub.
      */
-    readonly properties: types.outputs.webpubsub.v20230201.WebPubSubHubPropertiesResponse;
+    readonly properties: types.outputs.WebPubSubHubPropertiesResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.webpubsub.v20230201.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource - e.g. "Microsoft.SignalRService/SignalR"
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Describes a VMSS VM Extension.
  */
@@ -46,7 +46,7 @@ export class VirtualMachineScaleSetVMExtension extends pulumi.CustomResource {
     /**
      * The virtual machine extension instance view.
      */
-    public readonly instanceView!: pulumi.Output<types.outputs.compute.v20211101.VirtualMachineExtensionInstanceViewResponse | undefined>;
+    public readonly instanceView!: pulumi.Output<types.outputs.VirtualMachineExtensionInstanceViewResponse | undefined>;
     /**
      * The name of the extension.
      */
@@ -166,7 +166,7 @@ export interface VirtualMachineScaleSetVMExtensionArgs {
     /**
      * The virtual machine extension instance view.
      */
-    instanceView?: pulumi.Input<types.inputs.compute.v20211101.VirtualMachineExtensionInstanceViewArgs>;
+    instanceView?: pulumi.Input<types.inputs.VirtualMachineExtensionInstanceViewArgs>;
     /**
      * The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
      */

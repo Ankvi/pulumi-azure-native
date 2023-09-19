@@ -53,7 +53,7 @@ export interface GetLivePipelineResult {
     /**
      * List of the instance level parameter values for the user-defined topology parameters. A pipeline can only define or override parameters values for parameters which have been declared in the referenced topology. Topology parameters without a default value must be defined. Topology parameters with a default value can be optionally be overridden.
      */
-    readonly parameters?: types.outputs.videoanalyzer.ParameterDefinitionResponse[];
+    readonly parameters?: types.outputs.ParameterDefinitionResponse[];
     /**
      * Current state of the pipeline (read-only).
      */
@@ -61,7 +61,7 @@ export interface GetLivePipelineResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.videoanalyzer.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The reference to an existing pipeline topology defined for real-time content processing. When activated, this live pipeline will process content according to the pipeline topology definition.
      */

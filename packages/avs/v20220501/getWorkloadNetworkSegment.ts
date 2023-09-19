@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * NSX Segment
  */
@@ -52,7 +52,7 @@ export interface GetWorkloadNetworkSegmentResult {
     /**
      * Port Vif which segment is associated with.
      */
-    readonly portVif: types.outputs.avs.v20220501.WorkloadNetworkSegmentPortVifResponse[];
+    readonly portVif: types.outputs.WorkloadNetworkSegmentPortVifResponse[];
     /**
      * The provisioning state
      */
@@ -68,7 +68,7 @@ export interface GetWorkloadNetworkSegmentResult {
     /**
      * Subnet which to connect segment to.
      */
-    readonly subnet?: types.outputs.avs.v20220501.WorkloadNetworkSegmentSubnetResponse;
+    readonly subnet?: types.outputs.WorkloadNetworkSegmentSubnetResponse;
     /**
      * Resource type.
      */

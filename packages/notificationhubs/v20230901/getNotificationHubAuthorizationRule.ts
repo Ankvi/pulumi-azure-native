@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Response for POST requests that return single SharedAccessAuthorizationRule.
  */
@@ -53,11 +53,11 @@ export interface GetNotificationHubAuthorizationRuleResult {
     /**
      * SharedAccessAuthorizationRule properties.
      */
-    readonly properties: types.outputs.notificationhubs.v20230901.SharedAccessAuthorizationRulePropertiesResponse;
+    readonly properties: types.outputs.SharedAccessAuthorizationRulePropertiesResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.notificationhubs.v20230901.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Deprecated - only for compatibility.
      */

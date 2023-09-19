@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the move collection.
  */
@@ -39,7 +39,7 @@ export interface GetMoveCollectionResult {
     /**
      * Defines the MSI properties of the Move Collection.
      */
-    readonly identity?: types.outputs.migrate.v20230801.IdentityResponse;
+    readonly identity?: types.outputs.IdentityResponse;
     /**
      * The geo-location where the resource lives.
      */
@@ -51,11 +51,11 @@ export interface GetMoveCollectionResult {
     /**
      * Defines the move collection properties.
      */
-    readonly properties: types.outputs.migrate.v20230801.MoveCollectionPropertiesResponse;
+    readonly properties: types.outputs.MoveCollectionPropertiesResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.migrate.v20230801.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

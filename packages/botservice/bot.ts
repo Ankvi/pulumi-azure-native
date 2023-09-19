@@ -51,11 +51,11 @@ export class Bot extends pulumi.CustomResource {
     /**
      * The set of properties specific to bot resource
      */
-    public readonly properties!: pulumi.Output<types.outputs.botservice.BotPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.BotPropertiesResponse>;
     /**
      * Gets or sets the SKU of the resource.
      */
-    public readonly sku!: pulumi.Output<types.outputs.botservice.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Contains resource tags defined as key/value pairs.
      */
@@ -85,7 +85,7 @@ export class Bot extends pulumi.CustomResource {
             }
             resourceInputs["kind"] = args ? args.kind : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.botservice.botPropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.botPropertiesArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["resourceName"] = args ? args.resourceName : undefined;
             resourceInputs["sku"] = args ? args.sku : undefined;
@@ -127,7 +127,7 @@ export interface BotArgs {
     /**
      * The set of properties specific to bot resource
      */
-    properties?: pulumi.Input<types.inputs.botservice.BotPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.BotPropertiesArgs>;
     /**
      * The name of the Bot resource group in the user subscription.
      */
@@ -139,7 +139,7 @@ export interface BotArgs {
     /**
      * Gets or sets the SKU of the resource.
      */
-    sku?: pulumi.Input<types.inputs.botservice.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Contains resource tags defined as key/value pairs.
      */

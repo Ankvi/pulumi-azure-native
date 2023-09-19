@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets an existing AzureFrontDoor domain with the specified domain name under the specified subscription, resource group and profile.
  */
@@ -36,7 +36,7 @@ export interface GetAFDCustomDomainResult {
     /**
      * Resource reference to the Azure DNS zone
      */
-    readonly azureDnsZone?: types.outputs.cdn.v20230501.ResourceReferenceResponse;
+    readonly azureDnsZone?: types.outputs.ResourceReferenceResponse;
     readonly deploymentStatus: string;
     /**
      * Provisioning substate shows the progress of custom HTTPS enabling/disabling process step by step. DCV stands for DomainControlValidation.
@@ -61,7 +61,7 @@ export interface GetAFDCustomDomainResult {
     /**
      * Resource reference to the Azure resource where custom domain ownership was prevalidated
      */
-    readonly preValidatedCustomDomainResourceId?: types.outputs.cdn.v20230501.ResourceReferenceResponse;
+    readonly preValidatedCustomDomainResourceId?: types.outputs.ResourceReferenceResponse;
     /**
      * The name of the profile which holds the domain.
      */
@@ -73,11 +73,11 @@ export interface GetAFDCustomDomainResult {
     /**
      * Read only system data
      */
-    readonly systemData: types.outputs.cdn.v20230501.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own certificate. If not specified, enabling ssl uses AzureFrontDoor managed certificate by default.
      */
-    readonly tlsSettings?: types.outputs.cdn.v20230501.AFDDomainHttpsParametersResponse;
+    readonly tlsSettings?: types.outputs.AFDDomainHttpsParametersResponse;
     /**
      * Resource type.
      */
@@ -85,7 +85,7 @@ export interface GetAFDCustomDomainResult {
     /**
      * Values the customer needs to validate domain ownership
      */
-    readonly validationProperties: types.outputs.cdn.v20230501.DomainValidationPropertiesResponse;
+    readonly validationProperties: types.outputs.DomainValidationPropertiesResponse;
 }
 /**
  * Gets an existing AzureFrontDoor domain with the specified domain name under the specified subscription, resource group and profile.

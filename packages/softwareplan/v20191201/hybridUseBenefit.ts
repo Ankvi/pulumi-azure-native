@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Response on GET of a hybrid use benefit
  */
@@ -54,7 +54,7 @@ export class HybridUseBenefit extends pulumi.CustomResource {
     /**
      * Hybrid use benefit SKU
      */
-    public readonly sku!: pulumi.Output<types.outputs.softwareplan.v20191201.SkuResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -117,5 +117,5 @@ export interface HybridUseBenefitArgs {
     /**
      * Hybrid use benefit SKU
      */
-    sku: pulumi.Input<types.inputs.softwareplan.v20191201.SkuArgs>;
+    sku: pulumi.Input<types.inputs.SkuArgs>;
 }

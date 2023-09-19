@@ -54,11 +54,11 @@ export interface GetNotificationHubAuthorizationRuleResult {
     /**
      * SharedAccessAuthorizationRule properties.
      */
-    readonly properties: types.outputs.notificationhubs.SharedAccessAuthorizationRulePropertiesResponse;
+    readonly properties: types.outputs.SharedAccessAuthorizationRulePropertiesResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.notificationhubs.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Deprecated - only for compatibility.
      */

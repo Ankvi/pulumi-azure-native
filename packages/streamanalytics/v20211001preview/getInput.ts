@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets details about the specified input.
  */
@@ -44,7 +44,7 @@ export interface GetInputResult {
     /**
      * The properties that are associated with an input. Required on PUT (CreateOrReplace) requests.
      */
-    readonly properties: types.outputs.streamanalytics.v20211001preview.ReferenceInputPropertiesResponse | types.outputs.streamanalytics.v20211001preview.StreamInputPropertiesResponse;
+    readonly properties: types.outputs.ReferenceInputPropertiesResponse | types.outputs.StreamInputPropertiesResponse;
     /**
      * Resource type
      */

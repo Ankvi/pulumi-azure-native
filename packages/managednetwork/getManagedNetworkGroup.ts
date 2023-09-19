@@ -53,7 +53,7 @@ export interface GetManagedNetworkGroupResult {
     /**
      * The collection of management groups covered by the Managed Network
      */
-    readonly managementGroups?: types.outputs.managednetwork.ResourceIdResponse[];
+    readonly managementGroups?: types.outputs.ResourceIdResponse[];
     /**
      * The name of the resource
      */
@@ -65,11 +65,11 @@ export interface GetManagedNetworkGroupResult {
     /**
      * The collection of  subnets covered by the Managed Network
      */
-    readonly subnets?: types.outputs.managednetwork.ResourceIdResponse[];
+    readonly subnets?: types.outputs.ResourceIdResponse[];
     /**
      * The collection of subscriptions covered by the Managed Network
      */
-    readonly subscriptions?: types.outputs.managednetwork.ResourceIdResponse[];
+    readonly subscriptions?: types.outputs.ResourceIdResponse[];
     /**
      * The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
      */
@@ -77,7 +77,7 @@ export interface GetManagedNetworkGroupResult {
     /**
      * The collection of virtual nets covered by the Managed Network
      */
-    readonly virtualNetworks?: types.outputs.managednetwork.ResourceIdResponse[];
+    readonly virtualNetworks?: types.outputs.ResourceIdResponse[];
 }
 /**
  * The Get ManagedNetworkGroups operation gets a Managed Network Group specified by the resource group, Managed Network name, and group name

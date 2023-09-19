@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An assessment created for a group in the Migration project.
  */
@@ -256,27 +256,27 @@ export interface AssessmentArgs {
     /**
      * AHUB discount on windows virtual machines.
      */
-    azureHybridUseBenefit: pulumi.Input<string | types.enums.v20180202.AzureHybridUseBenefit>;
+    azureHybridUseBenefit: pulumi.Input<string | types.enums.AzureHybridUseBenefit>;
     /**
      * Target Azure location for which the machines should be assessed. These enums are the same as used by Compute API.
      */
-    azureLocation: pulumi.Input<string | types.enums.v20180202.AzureLocation>;
+    azureLocation: pulumi.Input<string | types.enums.AzureLocation>;
     /**
      * Offer code according to which cost estimation is done.
      */
-    azureOfferCode: pulumi.Input<string | types.enums.v20180202.AzureOfferCode>;
+    azureOfferCode: pulumi.Input<string | types.enums.AzureOfferCode>;
     /**
      * Pricing tier for Size evaluation.
      */
-    azurePricingTier: pulumi.Input<string | types.enums.v20180202.AzurePricingTier>;
+    azurePricingTier: pulumi.Input<string | types.enums.AzurePricingTier>;
     /**
      * Storage Redundancy type offered by Azure.
      */
-    azureStorageRedundancy: pulumi.Input<string | types.enums.v20180202.AzureStorageRedundancy>;
+    azureStorageRedundancy: pulumi.Input<string | types.enums.AzureStorageRedundancy>;
     /**
      * Currency to report prices in.
      */
-    currency: pulumi.Input<string | types.enums.v20180202.Currency>;
+    currency: pulumi.Input<string | types.enums.Currency>;
     /**
      * Custom discount percentage to be applied on final costs. Can be in the range [0, 100].
      */
@@ -292,7 +292,7 @@ export interface AssessmentArgs {
     /**
      * Percentile of performance data used to recommend Azure size.
      */
-    percentile: pulumi.Input<string | types.enums.v20180202.Percentile>;
+    percentile: pulumi.Input<string | types.enums.Percentile>;
     /**
      * Name of the Azure Migrate project.
      */
@@ -308,13 +308,13 @@ export interface AssessmentArgs {
     /**
      * Assessment sizing criterion.
      */
-    sizingCriterion: pulumi.Input<string | types.enums.v20180202.AssessmentSizingCriterion>;
+    sizingCriterion: pulumi.Input<string | types.enums.AssessmentSizingCriterion>;
     /**
      * User configurable setting that describes the status of the assessment.
      */
-    stage: pulumi.Input<string | types.enums.v20180202.AssessmentStage>;
+    stage: pulumi.Input<string | types.enums.AssessmentStage>;
     /**
      * Time range of performance data used to recommend a size.
      */
-    timeRange: pulumi.Input<string | types.enums.v20180202.TimeRange>;
+    timeRange: pulumi.Input<string | types.enums.TimeRange>;
 }

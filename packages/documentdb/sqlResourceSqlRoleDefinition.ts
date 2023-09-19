@@ -43,7 +43,7 @@ export class SqlResourceSqlRoleDefinition extends pulumi.CustomResource {
     /**
      * The set of operations allowed through this Role Definition.
      */
-    public readonly permissions!: pulumi.Output<types.outputs.documentdb.PermissionResponse[] | undefined>;
+    public readonly permissions!: pulumi.Output<types.outputs.PermissionResponse[] | undefined>;
     /**
      * A user-friendly name for the Role Definition. Must be unique for the database account.
      */
@@ -107,7 +107,7 @@ export interface SqlResourceSqlRoleDefinitionArgs {
     /**
      * The set of operations allowed through this Role Definition.
      */
-    permissions?: pulumi.Input<pulumi.Input<types.inputs.documentdb.PermissionArgs>[]>;
+    permissions?: pulumi.Input<pulumi.Input<types.inputs.PermissionArgs>[]>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

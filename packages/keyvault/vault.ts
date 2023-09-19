@@ -43,11 +43,11 @@ export class Vault extends pulumi.CustomResource {
     /**
      * Properties of the vault
      */
-    public readonly properties!: pulumi.Output<types.outputs.keyvault.VaultPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.VaultPropertiesResponse>;
     /**
      * System metadata for the key vault.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.keyvault.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Tags assigned to the key vault resource.
      */
@@ -75,7 +75,7 @@ export class Vault extends pulumi.CustomResource {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
             resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.keyvault.vaultPropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.vaultPropertiesArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["vaultName"] = args ? args.vaultName : undefined;
@@ -108,7 +108,7 @@ export interface VaultArgs {
     /**
      * Properties of the vault
      */
-    properties: pulumi.Input<types.inputs.keyvault.VaultPropertiesArgs>;
+    properties: pulumi.Input<types.inputs.VaultPropertiesArgs>;
     /**
      * The name of the Resource Group to which the server belongs.
      */

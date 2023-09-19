@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Create new debug credentials for gateway.
  */
@@ -33,7 +33,7 @@ export interface ListGatewayDebugCredentialsArgs {
     /**
      * Purposes of debug credential.
      */
-    purposes: (string | types.enums.v20230301preview.GatewayListDebugCredentialsContractPurpose)[];
+    purposes: (string | types.enums.GatewayListDebugCredentialsContractPurpose)[];
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -76,7 +76,7 @@ export interface ListGatewayDebugCredentialsOutputArgs {
     /**
      * Purposes of debug credential.
      */
-    purposes: pulumi.Input<pulumi.Input<string | types.enums.v20230301preview.GatewayListDebugCredentialsContractPurpose>[]>;
+    purposes: pulumi.Input<pulumi.Input<string | types.enums.GatewayListDebugCredentialsContractPurpose>[]>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

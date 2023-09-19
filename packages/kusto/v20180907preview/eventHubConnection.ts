@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Class representing an event hub connection.
  */
@@ -134,7 +134,7 @@ export interface EventHubConnectionArgs {
     /**
      * The data format of the message. Optionally the data format can be added to each message.
      */
-    dataFormat?: pulumi.Input<string | types.enums.v20180907preview.DataFormat>;
+    dataFormat?: pulumi.Input<string | types.enums.DataFormat>;
     /**
      * The name of the database in the Kusto cluster.
      */

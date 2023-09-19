@@ -111,7 +111,7 @@ export class Component extends pulumi.CustomResource {
     /**
      * List of linked private link scope resources.
      */
-    public /*out*/ readonly privateLinkScopedResources!: pulumi.Output<types.outputs.insights.PrivateLinkScopedResourceResponse[]>;
+    public /*out*/ readonly privateLinkScopedResources!: pulumi.Output<types.outputs.PrivateLinkScopedResourceResponse[]>;
     /**
      * Current state of this component: whether or not is has been provisioned within the resource group it is defined. Users cannot change this value but are able to read from it. Values will include Succeeded, Deploying, Canceled, and Failed.
      */

@@ -43,7 +43,7 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * Properties of the private endpoint endpoint connection.
      */
-    public readonly properties!: pulumi.Output<types.outputs.migrate.PrivateEndpointConnectionPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.PrivateEndpointConnectionPropertiesResponse>;
     /**
      * Type of the object = [Microsoft.Migrate/assessmentProjects/privateEndpointConnections].
      */
@@ -108,7 +108,7 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * Properties of the private endpoint endpoint connection.
      */
-    properties: pulumi.Input<types.inputs.migrate.PrivateEndpointConnectionPropertiesArgs>;
+    properties: pulumi.Input<types.inputs.PrivateEndpointConnectionPropertiesArgs>;
     /**
      * Name of the Azure Resource Group that project is part of.
      */

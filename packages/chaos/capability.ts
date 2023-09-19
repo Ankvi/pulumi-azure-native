@@ -39,11 +39,11 @@ export class Capability extends pulumi.CustomResource {
     /**
      * The properties of a capability resource.
      */
-    public /*out*/ readonly properties!: pulumi.Output<types.outputs.chaos.CapabilityPropertiesResponse>;
+    public /*out*/ readonly properties!: pulumi.Output<types.outputs.CapabilityPropertiesResponse>;
     /**
      * The standard system metadata of a resource type.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.chaos.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

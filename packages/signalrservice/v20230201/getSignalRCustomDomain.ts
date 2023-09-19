@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a custom domain.
  */
@@ -36,7 +36,7 @@ export interface GetSignalRCustomDomainResult {
     /**
      * Reference to a resource.
      */
-    readonly customCertificate: types.outputs.signalrservice.v20230201.ResourceReferenceResponse;
+    readonly customCertificate: types.outputs.ResourceReferenceResponse;
     /**
      * The custom domain name.
      */
@@ -56,7 +56,7 @@ export interface GetSignalRCustomDomainResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.signalrservice.v20230201.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource - e.g. "Microsoft.SignalRService/SignalR"
      */

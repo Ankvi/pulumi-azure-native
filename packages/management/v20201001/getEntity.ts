@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * List all entities (Management Groups, Subscriptions, etc.) for the authenticated user.
  */
@@ -76,7 +76,7 @@ export interface GetEntityResult {
     /**
      * The list of entities.
      */
-    readonly value?: types.outputs.management.v20201001.EntityInfoResponse[];
+    readonly value?: types.outputs.EntityInfoResponse[];
 }
 /**
  * List all entities (Management Groups, Subscriptions, etc.) for the authenticated user.

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Security Partner Provider resource.
  */
@@ -66,7 +66,7 @@ export class SecurityPartnerProvider extends pulumi.CustomResource {
     /**
      * The virtualHub to which the Security Partner Provider belongs.
      */
-    public readonly virtualHub!: pulumi.Output<types.outputs.network.v20230401.SubResourceResponse | undefined>;
+    public readonly virtualHub!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
 
     /**
      * Create a SecurityPartnerProvider resource with the given unique name, arguments, and options.
@@ -135,7 +135,7 @@ export interface SecurityPartnerProviderArgs {
     /**
      * The security provider name.
      */
-    securityProviderName?: pulumi.Input<string | types.enums.v20230401.SecurityProviderName>;
+    securityProviderName?: pulumi.Input<string | types.enums.SecurityProviderName>;
     /**
      * Resource tags.
      */
@@ -143,5 +143,5 @@ export interface SecurityPartnerProviderArgs {
     /**
      * The virtualHub to which the Security Partner Provider belongs.
      */
-    virtualHub?: pulumi.Input<types.inputs.network.v20230401.SubResourceArgs>;
+    virtualHub?: pulumi.Input<types.inputs.SubResourceArgs>;
 }

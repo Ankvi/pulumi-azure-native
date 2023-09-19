@@ -32,7 +32,7 @@ export interface GetConnectedEnvironmentResult {
     /**
      * Custom domain configuration for the environment
      */
-    readonly customDomainConfiguration?: types.outputs.app.CustomDomainConfigurationResponse;
+    readonly customDomainConfiguration?: types.outputs.CustomDomainConfigurationResponse;
     /**
      * Application Insights connection string used by Dapr to export Service to Service communication telemetry
      */
@@ -48,7 +48,7 @@ export interface GetConnectedEnvironmentResult {
     /**
      * The complex type of the extended location.
      */
-    readonly extendedLocation?: types.outputs.app.ExtendedLocationResponse;
+    readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -72,7 +72,7 @@ export interface GetConnectedEnvironmentResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.app.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

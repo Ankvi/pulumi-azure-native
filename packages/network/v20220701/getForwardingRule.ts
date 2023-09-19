@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets properties of a forwarding rule in a DNS forwarding ruleset.
  */
@@ -64,11 +64,11 @@ export interface GetForwardingRuleResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.network.v20220701.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * DNS servers to forward the DNS query to.
      */
-    readonly targetDnsServers: types.outputs.network.v20220701.TargetDnsServerResponse[];
+    readonly targetDnsServers: types.outputs.TargetDnsServerResponse[];
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

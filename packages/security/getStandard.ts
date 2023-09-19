@@ -36,7 +36,7 @@ export interface GetStandardResult {
     /**
      * List of component objects containing component unique keys (such as assessment keys) to apply to standard scope.  Currently only supports assessment keys.
      */
-    readonly components?: types.outputs.security.StandardComponentPropertiesResponse[];
+    readonly components?: types.outputs.StandardComponentPropertiesResponse[];
     /**
      * description of the standard
      */
@@ -76,7 +76,7 @@ export interface GetStandardResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.security.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * A list of key value pairs that describe the resource.
      */

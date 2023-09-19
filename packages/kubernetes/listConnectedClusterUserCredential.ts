@@ -42,11 +42,11 @@ export interface ListConnectedClusterUserCredentialResult {
     /**
      * Contains the REP (rendezvous endpoint) and “Sender” access token.
      */
-    readonly hybridConnectionConfig: types.outputs.kubernetes.HybridConnectionConfigResponse;
+    readonly hybridConnectionConfig: types.outputs.HybridConnectionConfigResponse;
     /**
      * Base64-encoded Kubernetes configuration file.
      */
-    readonly kubeconfigs: types.outputs.kubernetes.CredentialResultResponse[];
+    readonly kubeconfigs: types.outputs.CredentialResultResponse[];
 }
 /**
  * Gets cluster user credentials of the connected cluster with a specified resource group and name.

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets information about a mongo cluster.
  */
@@ -59,7 +59,7 @@ export interface GetMongoClusterResult {
     /**
      * The list of node group specs in the cluster.
      */
-    readonly nodeGroupSpecs?: types.outputs.documentdb.v20230315preview.NodeGroupSpecResponse[];
+    readonly nodeGroupSpecs?: types.outputs.NodeGroupSpecResponse[];
     /**
      * A provisioning state of the mongo cluster.
      */
@@ -71,7 +71,7 @@ export interface GetMongoClusterResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.documentdb.v20230315preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

@@ -45,11 +45,11 @@ export interface GetTimeSeriesDatabaseConnectionResult {
     /**
      * Properties of a specific time series database connection.
      */
-    readonly properties: types.outputs.digitaltwins.AzureDataExplorerConnectionPropertiesResponse;
+    readonly properties: types.outputs.AzureDataExplorerConnectionPropertiesResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.digitaltwins.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The resource type.
      */

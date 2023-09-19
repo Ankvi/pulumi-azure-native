@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets information about the specified DDoS custom policy.
  */
@@ -47,7 +47,7 @@ export interface GetDdosCustomPolicyResult {
     /**
      * The protocol-specific DDoS policy customization parameters.
      */
-    readonly protocolCustomSettings?: types.outputs.network.v20220101.ProtocolCustomSettingsFormatResponse[];
+    readonly protocolCustomSettings?: types.outputs.ProtocolCustomSettingsFormatResponse[];
     /**
      * The provisioning state of the DDoS custom policy resource.
      */
@@ -55,7 +55,7 @@ export interface GetDdosCustomPolicyResult {
     /**
      * The list of public IPs associated with the DDoS custom policy resource. This list is read-only.
      */
-    readonly publicIPAddresses: types.outputs.network.v20220101.SubResourceResponse[];
+    readonly publicIPAddresses: types.outputs.SubResourceResponse[];
     /**
      * The resource GUID property of the DDoS custom policy resource. It uniquely identifies the resource, even if the user changes its name or migrate the resource across subscriptions or resource groups.
      */

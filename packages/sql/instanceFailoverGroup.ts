@@ -35,7 +35,7 @@ export class InstanceFailoverGroup extends pulumi.CustomResource {
     /**
      * List of managed instance pairs in the failover group.
      */
-    public readonly managedInstancePairs!: pulumi.Output<types.outputs.sql.ManagedInstancePairInfoResponse[]>;
+    public readonly managedInstancePairs!: pulumi.Output<types.outputs.ManagedInstancePairInfoResponse[]>;
     /**
      * Resource name.
      */
@@ -43,15 +43,15 @@ export class InstanceFailoverGroup extends pulumi.CustomResource {
     /**
      * Partner region information for the failover group.
      */
-    public readonly partnerRegions!: pulumi.Output<types.outputs.sql.PartnerRegionInfoResponse[]>;
+    public readonly partnerRegions!: pulumi.Output<types.outputs.PartnerRegionInfoResponse[]>;
     /**
      * Read-only endpoint of the failover group instance.
      */
-    public readonly readOnlyEndpoint!: pulumi.Output<types.outputs.sql.InstanceFailoverGroupReadOnlyEndpointResponse | undefined>;
+    public readonly readOnlyEndpoint!: pulumi.Output<types.outputs.InstanceFailoverGroupReadOnlyEndpointResponse | undefined>;
     /**
      * Read-write endpoint of the failover group instance.
      */
-    public readonly readWriteEndpoint!: pulumi.Output<types.outputs.sql.InstanceFailoverGroupReadWriteEndpointResponse>;
+    public readonly readWriteEndpoint!: pulumi.Output<types.outputs.InstanceFailoverGroupReadWriteEndpointResponse>;
     /**
      * Local replication role of the failover group instance.
      */
@@ -134,19 +134,19 @@ export interface InstanceFailoverGroupArgs {
     /**
      * List of managed instance pairs in the failover group.
      */
-    managedInstancePairs: pulumi.Input<pulumi.Input<types.inputs.sql.ManagedInstancePairInfoArgs>[]>;
+    managedInstancePairs: pulumi.Input<pulumi.Input<types.inputs.ManagedInstancePairInfoArgs>[]>;
     /**
      * Partner region information for the failover group.
      */
-    partnerRegions: pulumi.Input<pulumi.Input<types.inputs.sql.PartnerRegionInfoArgs>[]>;
+    partnerRegions: pulumi.Input<pulumi.Input<types.inputs.PartnerRegionInfoArgs>[]>;
     /**
      * Read-only endpoint of the failover group instance.
      */
-    readOnlyEndpoint?: pulumi.Input<types.inputs.sql.InstanceFailoverGroupReadOnlyEndpointArgs>;
+    readOnlyEndpoint?: pulumi.Input<types.inputs.InstanceFailoverGroupReadOnlyEndpointArgs>;
     /**
      * Read-write endpoint of the failover group instance.
      */
-    readWriteEndpoint: pulumi.Input<types.inputs.sql.InstanceFailoverGroupReadWriteEndpointArgs>;
+    readWriteEndpoint: pulumi.Input<types.inputs.InstanceFailoverGroupReadWriteEndpointArgs>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */

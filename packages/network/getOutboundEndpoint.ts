@@ -61,11 +61,11 @@ export interface GetOutboundEndpointResult {
     /**
      * The reference to the subnet used for the outbound endpoint.
      */
-    readonly subnet: types.outputs.network.SubResourceResponse;
+    readonly subnet: types.outputs.SubResourceResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.network.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

@@ -35,7 +35,7 @@ export class ConnectedEnvironment extends pulumi.CustomResource {
     /**
      * Custom domain configuration for the environment
      */
-    public readonly customDomainConfiguration!: pulumi.Output<types.outputs.app.CustomDomainConfigurationResponse | undefined>;
+    public readonly customDomainConfiguration!: pulumi.Output<types.outputs.CustomDomainConfigurationResponse | undefined>;
     /**
      * Application Insights connection string used by Dapr to export Service to Service communication telemetry
      */
@@ -51,7 +51,7 @@ export class ConnectedEnvironment extends pulumi.CustomResource {
     /**
      * The complex type of the extended location.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.app.ExtendedLocationResponse | undefined>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -71,7 +71,7 @@ export class ConnectedEnvironment extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.app.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -141,7 +141,7 @@ export interface ConnectedEnvironmentArgs {
     /**
      * Custom domain configuration for the environment
      */
-    customDomainConfiguration?: pulumi.Input<types.inputs.app.CustomDomainConfigurationArgs>;
+    customDomainConfiguration?: pulumi.Input<types.inputs.CustomDomainConfigurationArgs>;
     /**
      * Application Insights connection string used by Dapr to export Service to Service communication telemetry
      */
@@ -149,7 +149,7 @@ export interface ConnectedEnvironmentArgs {
     /**
      * The complex type of the extended location.
      */
-    extendedLocation?: pulumi.Input<types.inputs.app.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * The geo-location where the resource lives
      */

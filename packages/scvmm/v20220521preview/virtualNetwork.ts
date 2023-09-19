@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The VirtualNetworks resource definition.
  */
@@ -34,7 +34,7 @@ export class VirtualNetwork extends pulumi.CustomResource {
     /**
      * The extended location.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.scvmm.v20220521preview.ExtendedLocationResponse>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse>;
     /**
      * Gets or sets the inventory Item ID for the resource.
      */
@@ -58,7 +58,7 @@ export class VirtualNetwork extends pulumi.CustomResource {
     /**
      * The system data.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.scvmm.v20220521preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags
      */
@@ -133,7 +133,7 @@ export interface VirtualNetworkArgs {
     /**
      * The extended location.
      */
-    extendedLocation: pulumi.Input<types.inputs.scvmm.v20220521preview.ExtendedLocationArgs>;
+    extendedLocation: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * Gets or sets the inventory Item ID for the resource.
      */

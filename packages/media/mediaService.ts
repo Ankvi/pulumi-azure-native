@@ -35,15 +35,15 @@ export class MediaService extends pulumi.CustomResource {
     /**
      * The account encryption properties.
      */
-    public readonly encryption!: pulumi.Output<types.outputs.media.AccountEncryptionResponse | undefined>;
+    public readonly encryption!: pulumi.Output<types.outputs.AccountEncryptionResponse | undefined>;
     /**
      * The Managed Identity for the Media Services account.
      */
-    public readonly identity!: pulumi.Output<types.outputs.media.MediaServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.MediaServiceIdentityResponse | undefined>;
     /**
      * The Key Delivery properties for Media Services account.
      */
-    public readonly keyDelivery!: pulumi.Output<types.outputs.media.KeyDeliveryResponse | undefined>;
+    public readonly keyDelivery!: pulumi.Output<types.outputs.KeyDeliveryResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -63,7 +63,7 @@ export class MediaService extends pulumi.CustomResource {
     /**
      * The Private Endpoint Connections created for the Media Service account.
      */
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.media.PrivateEndpointConnectionResponse[]>;
+    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[]>;
     /**
      * Provisioning state of the Media Services account.
      */
@@ -75,12 +75,12 @@ export class MediaService extends pulumi.CustomResource {
     /**
      * The storage accounts for this resource.
      */
-    public readonly storageAccounts!: pulumi.Output<types.outputs.media.StorageAccountResponse[] | undefined>;
+    public readonly storageAccounts!: pulumi.Output<types.outputs.StorageAccountResponse[] | undefined>;
     public readonly storageAuthentication!: pulumi.Output<string | undefined>;
     /**
      * The system metadata relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.media.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -156,15 +156,15 @@ export interface MediaServiceArgs {
     /**
      * The account encryption properties.
      */
-    encryption?: pulumi.Input<types.inputs.media.AccountEncryptionArgs>;
+    encryption?: pulumi.Input<types.inputs.AccountEncryptionArgs>;
     /**
      * The Managed Identity for the Media Services account.
      */
-    identity?: pulumi.Input<types.inputs.media.MediaServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.MediaServiceIdentityArgs>;
     /**
      * The Key Delivery properties for Media Services account.
      */
-    keyDelivery?: pulumi.Input<types.inputs.media.KeyDeliveryArgs>;
+    keyDelivery?: pulumi.Input<types.inputs.KeyDeliveryArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -184,7 +184,7 @@ export interface MediaServiceArgs {
     /**
      * The storage accounts for this resource.
      */
-    storageAccounts?: pulumi.Input<pulumi.Input<types.inputs.media.StorageAccountArgs>[]>;
+    storageAccounts?: pulumi.Input<pulumi.Input<types.inputs.StorageAccountArgs>[]>;
     storageAuthentication?: pulumi.Input<string | types.enums.StorageAuthentication>;
     /**
      * Resource tags.

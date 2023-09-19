@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves information about a virtual machine instance.
  */
@@ -26,11 +26,11 @@ export interface GetVirtualMachineInstanceResult {
     /**
      * Gets or sets the extended location.
      */
-    readonly extendedLocation?: types.outputs.connectedvmwarevsphere.v20230301preview.ExtendedLocationResponse;
+    readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
     /**
      * Hardware properties.
      */
-    readonly hardwareProfile?: types.outputs.connectedvmwarevsphere.v20230301preview.HardwareProfileResponse;
+    readonly hardwareProfile?: types.outputs.HardwareProfileResponse;
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -38,7 +38,7 @@ export interface GetVirtualMachineInstanceResult {
     /**
      * Gets the infrastructure profile.
      */
-    readonly infrastructureProfile?: types.outputs.connectedvmwarevsphere.v20230301preview.InfrastructureProfileResponse;
+    readonly infrastructureProfile?: types.outputs.InfrastructureProfileResponse;
     /**
      * The name of the resource
      */
@@ -46,15 +46,15 @@ export interface GetVirtualMachineInstanceResult {
     /**
      * Network properties.
      */
-    readonly networkProfile?: types.outputs.connectedvmwarevsphere.v20230301preview.NetworkProfileResponse;
+    readonly networkProfile?: types.outputs.NetworkProfileResponse;
     /**
      * OS properties.
      */
-    readonly osProfile?: types.outputs.connectedvmwarevsphere.v20230301preview.OsProfileForVMInstanceResponse;
+    readonly osProfile?: types.outputs.OsProfileForVMInstanceResponse;
     /**
      * Placement properties.
      */
-    readonly placementProfile?: types.outputs.connectedvmwarevsphere.v20230301preview.PlacementProfileResponse;
+    readonly placementProfile?: types.outputs.PlacementProfileResponse;
     /**
      * Gets the power state of the virtual machine.
      */
@@ -70,19 +70,19 @@ export interface GetVirtualMachineInstanceResult {
     /**
      * Gets the security profile.
      */
-    readonly securityProfile?: types.outputs.connectedvmwarevsphere.v20230301preview.SecurityProfileResponse;
+    readonly securityProfile?: types.outputs.SecurityProfileResponse;
     /**
      * The resource status information.
      */
-    readonly statuses: types.outputs.connectedvmwarevsphere.v20230301preview.ResourceStatusResponse[];
+    readonly statuses: types.outputs.ResourceStatusResponse[];
     /**
      * Storage properties.
      */
-    readonly storageProfile?: types.outputs.connectedvmwarevsphere.v20230301preview.StorageProfileResponse;
+    readonly storageProfile?: types.outputs.StorageProfileResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.connectedvmwarevsphere.v20230301preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

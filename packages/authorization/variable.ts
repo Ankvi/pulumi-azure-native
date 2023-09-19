@@ -35,7 +35,7 @@ export class Variable extends pulumi.CustomResource {
     /**
      * Variable column definitions.
      */
-    public readonly columns!: pulumi.Output<types.outputs.authorization.PolicyVariableColumnResponse[]>;
+    public readonly columns!: pulumi.Output<types.outputs.PolicyVariableColumnResponse[]>;
     /**
      * The name of the variable.
      */
@@ -43,7 +43,7 @@ export class Variable extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.authorization.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource (Microsoft.Authorization/variables).
      */
@@ -88,7 +88,7 @@ export interface VariableArgs {
     /**
      * Variable column definitions.
      */
-    columns: pulumi.Input<pulumi.Input<types.inputs.authorization.PolicyVariableColumnArgs>[]>;
+    columns: pulumi.Input<pulumi.Input<types.inputs.PolicyVariableColumnArgs>[]>;
     /**
      * The name of the variable to operate on.
      */

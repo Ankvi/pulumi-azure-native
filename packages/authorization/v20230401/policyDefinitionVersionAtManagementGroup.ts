@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The ID of the policy definition version.
  */
@@ -54,7 +54,7 @@ export class PolicyDefinitionVersionAtManagementGroup extends pulumi.CustomResou
     /**
      * The parameter definitions for parameters used in the policy rule. The keys are the parameter names.
      */
-    public readonly parameters!: pulumi.Output<{[key: string]: types.outputs.authorization.v20230401.ParameterDefinitionsValueResponse} | undefined>;
+    public readonly parameters!: pulumi.Output<{[key: string]: types.outputs.ParameterDefinitionsValueResponse} | undefined>;
     /**
      * The policy rule.
      */
@@ -66,7 +66,7 @@ export class PolicyDefinitionVersionAtManagementGroup extends pulumi.CustomResou
     /**
      * The system metadata relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.authorization.v20230401.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource (Microsoft.Authorization/policyDefinitions/versions).
      */
@@ -154,7 +154,7 @@ export interface PolicyDefinitionVersionAtManagementGroupArgs {
     /**
      * The parameter definitions for parameters used in the policy rule. The keys are the parameter names.
      */
-    parameters?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.authorization.v20230401.ParameterDefinitionsValueArgs>}>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.ParameterDefinitionsValueArgs>}>;
     /**
      * The name of the policy definition.
      */
@@ -170,7 +170,7 @@ export interface PolicyDefinitionVersionAtManagementGroupArgs {
     /**
      * The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
      */
-    policyType?: pulumi.Input<string | types.enums.v20230401.PolicyType>;
+    policyType?: pulumi.Input<string | types.enums.PolicyType>;
     /**
      * The policy definition version in #.#.# format.
      */

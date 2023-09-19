@@ -34,7 +34,7 @@ export class B2CTenant extends pulumi.CustomResource {
     /**
      * The billing configuration for the tenant.
      */
-    public /*out*/ readonly billingConfig!: pulumi.Output<types.outputs.azureactivedirectory.B2CTenantResourcePropertiesResponseBillingConfig | undefined>;
+    public /*out*/ readonly billingConfig!: pulumi.Output<types.outputs.B2CTenantResourcePropertiesResponseBillingConfig | undefined>;
     /**
      * The location in which the resource is hosted and data resides. Can be one of 'United States', 'Europe', 'Asia Pacific', or 'Australia'. Refer to [this documentation](https://aka.ms/B2CDataResidency) for more information.
      */
@@ -46,11 +46,11 @@ export class B2CTenant extends pulumi.CustomResource {
     /**
      * SKU properties of the Azure AD B2C tenant. Learn more about Azure AD B2C billing at [aka.ms/b2cBilling](https://aka.ms/b2cBilling).
      */
-    public readonly sku!: pulumi.Output<types.outputs.azureactivedirectory.B2CResourceSKUResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.B2CResourceSKUResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.azureactivedirectory.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource Tags
      */
@@ -137,7 +137,7 @@ export interface B2CTenantArgs {
     /**
      * SKU properties of the Azure AD B2C tenant. Learn more about Azure AD B2C billing at [aka.ms/b2cBilling](https://aka.ms/b2cBilling).
      */
-    sku: pulumi.Input<types.inputs.azureactivedirectory.B2CResourceSKUArgs>;
+    sku: pulumi.Input<types.inputs.B2CResourceSKUArgs>;
     /**
      * Resource Tags
      */

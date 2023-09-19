@@ -36,7 +36,7 @@ export interface GetSecurityOperatorResult {
     /**
      * Identity for the resource.
      */
-    readonly identity?: types.outputs.security.IdentityResponse;
+    readonly identity?: types.outputs.IdentityResponse;
     /**
      * Resource name
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Implements NetworkToNetworkInterconnects GET method.
  */
@@ -48,7 +48,7 @@ export interface GetNetworkToNetworkInterconnectResult {
     /**
      * Export Route Policy configuration.
      */
-    readonly exportRoutePolicy?: types.outputs.managednetworkfabric.v20230615.ExportRoutePolicyInformationResponse;
+    readonly exportRoutePolicy?: types.outputs.ExportRoutePolicyInformationResponse;
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -56,7 +56,7 @@ export interface GetNetworkToNetworkInterconnectResult {
     /**
      * Import Route Policy configuration.
      */
-    readonly importRoutePolicy?: types.outputs.managednetworkfabric.v20230615.ImportRoutePolicyInformationResponse;
+    readonly importRoutePolicy?: types.outputs.ImportRoutePolicyInformationResponse;
     /**
      * Ingress Acl. ARM resource ID of Access Control Lists.
      */
@@ -68,7 +68,7 @@ export interface GetNetworkToNetworkInterconnectResult {
     /**
      * Common properties for Layer2 Configuration.
      */
-    readonly layer2Configuration?: types.outputs.managednetworkfabric.v20230615.Layer2ConfigurationResponse;
+    readonly layer2Configuration?: types.outputs.Layer2ConfigurationResponse;
     /**
      * The name of the resource
      */
@@ -80,11 +80,11 @@ export interface GetNetworkToNetworkInterconnectResult {
     /**
      * NPB Static Route Configuration properties.
      */
-    readonly npbStaticRouteConfiguration?: types.outputs.managednetworkfabric.v20230615.NpbStaticRouteConfigurationResponse;
+    readonly npbStaticRouteConfiguration?: types.outputs.NpbStaticRouteConfigurationResponse;
     /**
      * Common properties for Layer3Configuration.
      */
-    readonly optionBLayer3Configuration?: types.outputs.managednetworkfabric.v20230615.NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3Configuration;
+    readonly optionBLayer3Configuration?: types.outputs.NetworkToNetworkInterconnectPropertiesResponseOptionBLayer3Configuration;
     /**
      * Provisioning state of the resource.
      */
@@ -92,7 +92,7 @@ export interface GetNetworkToNetworkInterconnectResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.managednetworkfabric.v20230615.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

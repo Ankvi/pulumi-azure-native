@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Defines the PUT rollout request body.
  */
@@ -42,7 +42,7 @@ export class Rollout extends pulumi.CustomResource {
     /**
      * Identity for the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.deploymentmanager.v20191101preview.IdentityResponse>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityResponse>;
     /**
      * The geo-location where the resource lives
      */
@@ -54,7 +54,7 @@ export class Rollout extends pulumi.CustomResource {
     /**
      * The list of step groups that define the orchestration.
      */
-    public readonly stepGroups!: pulumi.Output<types.outputs.deploymentmanager.v20191101preview.StepGroupResponse[]>;
+    public readonly stepGroups!: pulumi.Output<types.outputs.StepGroupResponse[]>;
     /**
      * Resource tags.
      */
@@ -138,7 +138,7 @@ export interface RolloutArgs {
     /**
      * Identity for the resource.
      */
-    identity: pulumi.Input<types.inputs.deploymentmanager.v20191101preview.IdentityArgs>;
+    identity: pulumi.Input<types.inputs.IdentityArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -154,7 +154,7 @@ export interface RolloutArgs {
     /**
      * The list of step groups that define the orchestration.
      */
-    stepGroups: pulumi.Input<pulumi.Input<types.inputs.deploymentmanager.v20191101preview.StepGroupArgs>[]>;
+    stepGroups: pulumi.Input<pulumi.Input<types.inputs.StepGroupArgs>[]>;
     /**
      * Resource tags.
      */

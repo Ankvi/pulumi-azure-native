@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Authorization Provider contract.
  */
@@ -46,7 +46,7 @@ export class AuthorizationProvider extends pulumi.CustomResource {
     /**
      * OAuth2 settings
      */
-    public readonly oauth2!: pulumi.Output<types.outputs.apimanagement.v20220901preview.AuthorizationProviderOAuth2SettingsResponse | undefined>;
+    public readonly oauth2!: pulumi.Output<types.outputs.AuthorizationProviderOAuth2SettingsResponse | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -110,7 +110,7 @@ export interface AuthorizationProviderArgs {
     /**
      * OAuth2 settings
      */
-    oauth2?: pulumi.Input<types.inputs.apimanagement.v20220901preview.AuthorizationProviderOAuth2SettingsArgs>;
+    oauth2?: pulumi.Input<types.inputs.AuthorizationProviderOAuth2SettingsArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

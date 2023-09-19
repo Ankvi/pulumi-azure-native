@@ -47,7 +47,7 @@ export class RoutingIntent extends pulumi.CustomResource {
     /**
      * List of routing policies.
      */
-    public readonly routingPolicies!: pulumi.Output<types.outputs.network.RoutingPolicyResponse[] | undefined>;
+    public readonly routingPolicies!: pulumi.Output<types.outputs.RoutingPolicyResponse[] | undefined>;
     /**
      * Resource type.
      */
@@ -116,7 +116,7 @@ export interface RoutingIntentArgs {
     /**
      * List of routing policies.
      */
-    routingPolicies?: pulumi.Input<pulumi.Input<types.inputs.network.RoutingPolicyArgs>[]>;
+    routingPolicies?: pulumi.Input<pulumi.Input<types.inputs.RoutingPolicyArgs>[]>;
     /**
      * The name of the VirtualHub.
      */

@@ -46,7 +46,7 @@ export interface ListStorageAccountSasTokensResult {
     /**
      * The results of the list operation.
      */
-    readonly value: types.outputs.datalakeanalytics.SasTokenInformationResponse[];
+    readonly value: types.outputs.SasTokenInformationResponse[];
 }
 /**
  * Gets the SAS token associated with the specified Data Lake Analytics and Azure Storage account and container combination.

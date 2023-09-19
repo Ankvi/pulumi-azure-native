@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a Virtual Instance for SAP solutions resource
  */
@@ -31,7 +31,7 @@ export interface GetSAPVirtualInstanceResult {
     /**
      * Defines if the SAP system is being created using Azure Center for SAP solutions (ACSS) or if an existing SAP system is being registered with ACSS
      */
-    readonly configuration: types.outputs.workloads.v20230401.DeploymentConfigurationResponse | types.outputs.workloads.v20230401.DeploymentWithOSConfigurationResponse | types.outputs.workloads.v20230401.DiscoveryConfigurationResponse;
+    readonly configuration: types.outputs.DeploymentConfigurationResponse | types.outputs.DeploymentWithOSConfigurationResponse | types.outputs.DiscoveryConfigurationResponse;
     /**
      * Defines the environment type - Production/Non Production.
      */
@@ -39,7 +39,7 @@ export interface GetSAPVirtualInstanceResult {
     /**
      * Indicates any errors on the Virtual Instance for SAP solutions resource.
      */
-    readonly errors: types.outputs.workloads.v20230401.SAPVirtualInstanceErrorResponse;
+    readonly errors: types.outputs.SAPVirtualInstanceErrorResponse;
     /**
      * Defines the health of SAP Instances.
      */
@@ -51,7 +51,7 @@ export interface GetSAPVirtualInstanceResult {
     /**
      * A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide.
      */
-    readonly identity?: types.outputs.workloads.v20230401.UserAssignedServiceIdentityResponse;
+    readonly identity?: types.outputs.UserAssignedServiceIdentityResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -59,7 +59,7 @@ export interface GetSAPVirtualInstanceResult {
     /**
      * Managed resource group configuration
      */
-    readonly managedResourceGroupConfiguration?: types.outputs.workloads.v20230401.ManagedRGConfigurationResponse;
+    readonly managedResourceGroupConfiguration?: types.outputs.ManagedRGConfigurationResponse;
     /**
      * The name of the resource
      */
@@ -83,7 +83,7 @@ export interface GetSAPVirtualInstanceResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.workloads.v20230401.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

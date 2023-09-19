@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The privateStore offer data structure.
  */
@@ -58,7 +58,7 @@ export class PrivateStoreOffer extends pulumi.CustomResource {
     /**
      * Offer plans
      */
-    public readonly plans!: pulumi.Output<types.outputs.marketplace.v20200101.PlanResponse[] | undefined>;
+    public readonly plans!: pulumi.Output<types.outputs.PlanResponse[] | undefined>;
     /**
      * Private store unique id
      */
@@ -151,7 +151,7 @@ export interface PrivateStoreOfferArgs {
     /**
      * Offer plans
      */
-    plans?: pulumi.Input<pulumi.Input<types.inputs.marketplace.v20200101.PlanArgs>[]>;
+    plans?: pulumi.Input<pulumi.Input<types.inputs.PlanArgs>[]>;
     /**
      * The store ID - must use the tenant ID
      */

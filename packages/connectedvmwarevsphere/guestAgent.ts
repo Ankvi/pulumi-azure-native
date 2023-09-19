@@ -35,7 +35,7 @@ export class GuestAgent extends pulumi.CustomResource {
     /**
      * Username / Password Credentials to provision guest agent.
      */
-    public readonly credentials!: pulumi.Output<types.outputs.connectedvmwarevsphere.GuestCredentialResponse | undefined>;
+    public readonly credentials!: pulumi.Output<types.outputs.GuestCredentialResponse | undefined>;
     /**
      * Gets the name of the corresponding resource in Kubernetes.
      */
@@ -43,7 +43,7 @@ export class GuestAgent extends pulumi.CustomResource {
     /**
      * HTTP Proxy configuration for the VM.
      */
-    public readonly httpProxyConfig!: pulumi.Output<types.outputs.connectedvmwarevsphere.HttpProxyConfigurationResponse | undefined>;
+    public readonly httpProxyConfig!: pulumi.Output<types.outputs.HttpProxyConfigurationResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -63,11 +63,11 @@ export class GuestAgent extends pulumi.CustomResource {
     /**
      * The resource status information.
      */
-    public /*out*/ readonly statuses!: pulumi.Output<types.outputs.connectedvmwarevsphere.ResourceStatusResponse[]>;
+    public /*out*/ readonly statuses!: pulumi.Output<types.outputs.ResourceStatusResponse[]>;
     /**
      * The system data.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.connectedvmwarevsphere.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -134,11 +134,11 @@ export interface GuestAgentArgs {
     /**
      * Username / Password Credentials to provision guest agent.
      */
-    credentials?: pulumi.Input<types.inputs.connectedvmwarevsphere.GuestCredentialArgs>;
+    credentials?: pulumi.Input<types.inputs.GuestCredentialArgs>;
     /**
      * HTTP Proxy configuration for the VM.
      */
-    httpProxyConfig?: pulumi.Input<types.inputs.connectedvmwarevsphere.HttpProxyConfigurationArgs>;
+    httpProxyConfig?: pulumi.Input<types.inputs.HttpProxyConfigurationArgs>;
     /**
      * Name of the guestAgents.
      */

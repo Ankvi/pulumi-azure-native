@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Lists consent links of a connection.
  */
@@ -44,7 +44,7 @@ export interface ListConnectionConsentLinksArgs {
     /**
      * Array of links
      */
-    parameters?: types.inputs.web.v20150801preview.ConsentLinkInputParameter[];
+    parameters?: types.inputs.ConsentLinkInputParameter[];
     /**
      * The resource group name.
      */
@@ -66,7 +66,7 @@ export interface ListConnectionConsentLinksResult {
     /**
      * Collection of resources
      */
-    readonly value?: types.outputs.web.v20150801preview.ConsentLinkResponse[];
+    readonly value?: types.outputs.ConsentLinkResponse[];
 }
 /**
  * Lists consent links of a connection.
@@ -99,7 +99,7 @@ export interface ListConnectionConsentLinksOutputArgs {
     /**
      * Array of links
      */
-    parameters?: pulumi.Input<pulumi.Input<types.inputs.web.v20150801preview.ConsentLinkInputParameterArgs>[]>;
+    parameters?: pulumi.Input<pulumi.Input<types.inputs.ConsentLinkInputParameterArgs>[]>;
     /**
      * The resource group name.
      */

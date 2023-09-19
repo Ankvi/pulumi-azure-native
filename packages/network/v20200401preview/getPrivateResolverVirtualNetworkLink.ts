@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets properties of a virtual network link to a DNS forwarding ruleset.
  */
@@ -56,7 +56,7 @@ export interface GetPrivateResolverVirtualNetworkLinkResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.network.v20200401preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -64,7 +64,7 @@ export interface GetPrivateResolverVirtualNetworkLinkResult {
     /**
      * The reference to the virtual network. This cannot be changed after creation.
      */
-    readonly virtualNetwork?: types.outputs.network.v20200401preview.SubResourceResponse;
+    readonly virtualNetwork?: types.outputs.SubResourceResponse;
 }
 /**
  * Gets properties of a virtual network link to a DNS forwarding ruleset.

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The policy assignment.
  */
@@ -46,7 +46,7 @@ export class PolicyAssignment extends pulumi.CustomResource {
     /**
      * The managed identity associated with the policy assignment.
      */
-    public readonly identity!: pulumi.Output<types.outputs.authorization.v20200301.IdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityResponse | undefined>;
     /**
      * The location of the policy assignment. Only required when utilizing managed identity.
      */
@@ -66,7 +66,7 @@ export class PolicyAssignment extends pulumi.CustomResource {
     /**
      * The parameter values for the assigned policy rule. The keys are the parameter names.
      */
-    public readonly parameters!: pulumi.Output<{[key: string]: types.outputs.authorization.v20200301.ParameterValuesValueResponse} | undefined>;
+    public readonly parameters!: pulumi.Output<{[key: string]: types.outputs.ParameterValuesValueResponse} | undefined>;
     /**
      * The ID of the policy definition or policy set definition being assigned.
      */
@@ -78,7 +78,7 @@ export class PolicyAssignment extends pulumi.CustomResource {
     /**
      * The policy sku. This property is optional, obsolete, and will be ignored.
      */
-    public readonly sku!: pulumi.Output<types.outputs.authorization.v20200301.PolicySkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.PolicySkuResponse | undefined>;
     /**
      * The type of the policy assignment.
      */
@@ -149,11 +149,11 @@ export interface PolicyAssignmentArgs {
     /**
      * The policy assignment enforcement mode. Possible values are Default and DoNotEnforce.
      */
-    enforcementMode?: pulumi.Input<string | types.enums.v20200301.EnforcementMode>;
+    enforcementMode?: pulumi.Input<string | types.enums.EnforcementMode>;
     /**
      * The managed identity associated with the policy assignment.
      */
-    identity?: pulumi.Input<types.inputs.authorization.v20200301.IdentityArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityArgs>;
     /**
      * The location of the policy assignment. Only required when utilizing managed identity.
      */
@@ -169,7 +169,7 @@ export interface PolicyAssignmentArgs {
     /**
      * The parameter values for the assigned policy rule. The keys are the parameter names.
      */
-    parameters?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.authorization.v20200301.ParameterValuesValueArgs>}>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.ParameterValuesValueArgs>}>;
     /**
      * The name of the policy assignment.
      */
@@ -185,5 +185,5 @@ export interface PolicyAssignmentArgs {
     /**
      * The policy sku. This property is optional, obsolete, and will be ignored.
      */
-    sku?: pulumi.Input<types.inputs.authorization.v20200301.PolicySkuArgs>;
+    sku?: pulumi.Input<types.inputs.PolicySkuArgs>;
 }

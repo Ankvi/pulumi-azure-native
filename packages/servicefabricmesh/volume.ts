@@ -35,7 +35,7 @@ export class Volume extends pulumi.CustomResource {
     /**
      * This type describes a volume provided by an Azure Files file share.
      */
-    public readonly azureFileParameters!: pulumi.Output<types.outputs.servicefabricmesh.VolumeProviderParametersAzureFileResponse | undefined>;
+    public readonly azureFileParameters!: pulumi.Output<types.outputs.VolumeProviderParametersAzureFileResponse | undefined>;
     /**
      * User readable description of the volume.
      */
@@ -128,7 +128,7 @@ export interface VolumeArgs {
     /**
      * This type describes a volume provided by an Azure Files file share.
      */
-    azureFileParameters?: pulumi.Input<types.inputs.servicefabricmesh.VolumeProviderParametersAzureFileArgs>;
+    azureFileParameters?: pulumi.Input<types.inputs.VolumeProviderParametersAzureFileArgs>;
     /**
      * User readable description of the volume.
      */

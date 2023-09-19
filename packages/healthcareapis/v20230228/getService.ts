@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the metadata of a service instance.
  */
@@ -39,7 +39,7 @@ export interface GetServiceResult {
     /**
      * Setting indicating whether the service has a managed identity associated with it.
      */
-    readonly identity?: types.outputs.healthcareapis.v20230228.ServicesResourceResponseIdentity;
+    readonly identity?: types.outputs.ServicesResourceResponseIdentity;
     /**
      * The kind of the service.
      */
@@ -55,11 +55,11 @@ export interface GetServiceResult {
     /**
      * The common properties of a service.
      */
-    readonly properties: types.outputs.healthcareapis.v20230228.ServicesPropertiesResponse;
+    readonly properties: types.outputs.ServicesPropertiesResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.healthcareapis.v20230228.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The resource tags.
      */

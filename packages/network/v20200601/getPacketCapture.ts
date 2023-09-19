@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a packet capture session by name.
  */
@@ -44,7 +44,7 @@ export interface GetPacketCaptureResult {
     /**
      * A list of packet capture filters.
      */
-    readonly filters?: types.outputs.network.v20200601.PacketCaptureFilterResponse[];
+    readonly filters?: types.outputs.PacketCaptureFilterResponse[];
     /**
      * ID of the packet capture operation.
      */
@@ -60,7 +60,7 @@ export interface GetPacketCaptureResult {
     /**
      * The storage location for a packet capture session.
      */
-    readonly storageLocation: types.outputs.network.v20200601.PacketCaptureStorageLocationResponse;
+    readonly storageLocation: types.outputs.PacketCaptureStorageLocationResponse;
     /**
      * The ID of the targeted resource, only VM is currently supported.
      */

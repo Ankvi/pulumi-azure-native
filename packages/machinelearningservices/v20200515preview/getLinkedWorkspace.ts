@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the detail of a linked workspace.
  */
@@ -44,7 +44,7 @@ export interface GetLinkedWorkspaceResult {
     /**
      * LinkedWorkspace specific properties.
      */
-    readonly properties: types.outputs.machinelearningservices.v20200515preview.LinkedWorkspacePropsResponse;
+    readonly properties: types.outputs.LinkedWorkspacePropsResponse;
     /**
      * Resource type of linked workspace.
      */

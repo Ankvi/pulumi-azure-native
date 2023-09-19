@@ -1,626 +1,311 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
-export namespace chaos {
+/**
+ * Model that represents a branch in the step.
+ */
+export interface BranchResponse {
     /**
-     * Model that represents a branch in the step.
+     * List of actions.
      */
-    export interface BranchResponse {
-        /**
-         * List of actions.
-         */
-        actions: (ContinuousActionResponse | DelayActionResponse | DiscreteActionResponse)[];
-        /**
-         * String of the branch name.
-         */
-        name: string;
-    }
-
+    actions: (ContinuousActionResponse | DelayActionResponse | DiscreteActionResponse)[];
     /**
-     * Model that represents the Capability properties model.
+     * String of the branch name.
      */
-    export interface CapabilityPropertiesResponse {
-        /**
-         * Localized string of the description.
-         */
-        description: string;
-        /**
-         * URL to retrieve JSON schema of the Capability parameters.
-         */
-        parametersSchema: string;
-        /**
-         * String of the Publisher that this Capability extends.
-         */
-        publisher: string;
-        /**
-         * String of the Target Type that this Capability extends.
-         */
-        targetType: string;
-        /**
-         * String of the URN for this Capability Type.
-         */
-        urn: string;
-    }
+    name: string;
+}
 
+/**
+ * Model that represents the Capability properties model.
+ */
+export interface CapabilityPropertiesResponse {
     /**
-     * Model that represents a continuous action.
+     * Localized string of the description.
      */
-    export interface ContinuousActionResponse {
-        /**
-         * ISO8601 formatted string that represents a duration.
-         */
-        duration: string;
-        /**
-         * String that represents a Capability URN.
-         */
-        name: string;
-        /**
-         * List of key value pairs.
-         */
-        parameters: KeyValuePairResponse[];
-        /**
-         * String that represents a selector.
-         */
-        selectorId: string;
-        /**
-         * Enum that discriminates between action models.
-         * Expected value is 'continuous'.
-         */
-        type: "continuous";
-    }
-
+    description: string;
     /**
-     * Model that represents a delay action.
+     * URL to retrieve JSON schema of the Capability parameters.
      */
-    export interface DelayActionResponse {
-        /**
-         * ISO8601 formatted string that represents a duration.
-         */
-        duration: string;
-        /**
-         * String that represents a Capability URN.
-         */
-        name: string;
-        /**
-         * Enum that discriminates between action models.
-         * Expected value is 'delay'.
-         */
-        type: "delay";
-    }
-
+    parametersSchema: string;
     /**
-     * Model that represents a discrete action.
+     * String of the Publisher that this Capability extends.
      */
-    export interface DiscreteActionResponse {
-        /**
-         * String that represents a Capability URN.
-         */
-        name: string;
-        /**
-         * List of key value pairs.
-         */
-        parameters: KeyValuePairResponse[];
-        /**
-         * String that represents a selector.
-         */
-        selectorId: string;
-        /**
-         * Enum that discriminates between action models.
-         * Expected value is 'discrete'.
-         */
-        type: "discrete";
-    }
-
+    publisher: string;
     /**
-     * Model that represents the Experiment properties model.
+     * String of the Target Type that this Capability extends.
      */
-    export interface ExperimentPropertiesResponse {
-        /**
-         * List of selectors.
-         */
-        selectors: (ListSelectorResponse | QuerySelectorResponse)[];
-        /**
-         * A boolean value that indicates if experiment should be started on creation or not.
-         */
-        startOnCreation?: boolean;
-        /**
-         * List of steps.
-         */
-        steps: StepResponse[];
-    }
-
+    targetType: string;
     /**
-     * A map to describe the settings of an action.
+     * String of the URN for this Capability Type.
      */
-    export interface KeyValuePairResponse {
-        /**
-         * The name of the setting for the action.
-         */
-        key: string;
-        /**
-         * The value of the setting for the action.
-         */
-        value: string;
-    }
+    urn: string;
+}
 
+/**
+ * Model that represents a continuous action.
+ */
+export interface ContinuousActionResponse {
     /**
-     * Model that represents a list selector.
+     * ISO8601 formatted string that represents a duration.
      */
-    export interface ListSelectorResponse {
-        /**
-         * Model that represents available filter types that can be applied to a targets list.
-         */
-        filter?: SimpleFilterResponse;
-        /**
-         * String of the selector ID.
-         */
-        id: string;
-        /**
-         * List of Target references.
-         */
-        targets: TargetReferenceResponse[];
-        /**
-         * Enum of the selector type.
-         * Expected value is 'List'.
-         */
-        type: "List";
-    }
-
+    duration: string;
     /**
-     * Model that represents a query selector.
+     * String that represents a Capability URN.
      */
-    export interface QuerySelectorResponse {
-        /**
-         * Model that represents available filter types that can be applied to a targets list.
-         */
-        filter?: SimpleFilterResponse;
-        /**
-         * String of the selector ID.
-         */
-        id: string;
-        /**
-         * Azure Resource Graph (ARG) Query Language query for target resources.
-         */
-        queryString: string;
-        /**
-         * Subscription id list to scope resource query.
-         */
-        subscriptionIds: string[];
-        /**
-         * Enum of the selector type.
-         * Expected value is 'Query'.
-         */
-        type: "Query";
-    }
-
+    name: string;
     /**
-     * The identity of a resource.
+     * List of key value pairs.
      */
-    export interface ResourceIdentityResponse {
-        /**
-         * GUID that represents the principal ID of this resource identity.
-         */
-        principalId: string;
-        /**
-         * GUID that represents the tenant ID of this resource identity.
-         */
-        tenantId: string;
-        /**
-         * String of the resource identity type.
-         */
-        type: string;
-        /**
-         * The list of user identities associated with the Experiment. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-         */
-        userAssignedIdentities?: {[key: string]: UserAssignedIdentityResponse};
-    }
+    parameters: KeyValuePairResponse[];
+    /**
+     * String that represents a selector.
+     */
+    selectorId: string;
+    /**
+     * Enum that discriminates between action models.
+     * Expected value is 'continuous'.
+     */
+    type: "continuous";
+}
 
+/**
+ * Model that represents a delay action.
+ */
+export interface DelayActionResponse {
+    /**
+     * ISO8601 formatted string that represents a duration.
+     */
+    duration: string;
+    /**
+     * String that represents a Capability URN.
+     */
+    name: string;
+    /**
+     * Enum that discriminates between action models.
+     * Expected value is 'delay'.
+     */
+    type: "delay";
+}
+
+/**
+ * Model that represents a discrete action.
+ */
+export interface DiscreteActionResponse {
+    /**
+     * String that represents a Capability URN.
+     */
+    name: string;
+    /**
+     * List of key value pairs.
+     */
+    parameters: KeyValuePairResponse[];
+    /**
+     * String that represents a selector.
+     */
+    selectorId: string;
+    /**
+     * Enum that discriminates between action models.
+     * Expected value is 'discrete'.
+     */
+    type: "discrete";
+}
+
+/**
+ * Model that represents the Experiment properties model.
+ */
+export interface ExperimentPropertiesResponse {
+    /**
+     * List of selectors.
+     */
+    selectors: (ListSelectorResponse | QuerySelectorResponse)[];
+    /**
+     * A boolean value that indicates if experiment should be started on creation or not.
+     */
+    startOnCreation?: boolean;
+    /**
+     * List of steps.
+     */
+    steps: StepResponse[];
+}
+
+/**
+ * A map to describe the settings of an action.
+ */
+export interface KeyValuePairResponse {
+    /**
+     * The name of the setting for the action.
+     */
+    key: string;
+    /**
+     * The value of the setting for the action.
+     */
+    value: string;
+}
+
+/**
+ * Model that represents a list selector.
+ */
+export interface ListSelectorResponse {
+    /**
+     * Model that represents available filter types that can be applied to a targets list.
+     */
+    filter?: SimpleFilterResponse;
+    /**
+     * String of the selector ID.
+     */
+    id: string;
+    /**
+     * List of Target references.
+     */
+    targets: TargetReferenceResponse[];
+    /**
+     * Enum of the selector type.
+     * Expected value is 'List'.
+     */
+    type: "List";
+}
+
+/**
+ * Model that represents a query selector.
+ */
+export interface QuerySelectorResponse {
+    /**
+     * Model that represents available filter types that can be applied to a targets list.
+     */
+    filter?: SimpleFilterResponse;
+    /**
+     * String of the selector ID.
+     */
+    id: string;
+    /**
+     * Azure Resource Graph (ARG) Query Language query for target resources.
+     */
+    queryString: string;
+    /**
+     * Subscription id list to scope resource query.
+     */
+    subscriptionIds: string[];
+    /**
+     * Enum of the selector type.
+     * Expected value is 'Query'.
+     */
+    type: "Query";
+}
+
+/**
+ * The identity of a resource.
+ */
+export interface ResourceIdentityResponse {
+    /**
+     * GUID that represents the principal ID of this resource identity.
+     */
+    principalId: string;
+    /**
+     * GUID that represents the tenant ID of this resource identity.
+     */
+    tenantId: string;
+    /**
+     * String of the resource identity type.
+     */
+    type: string;
+    /**
+     * The list of user identities associated with the Experiment. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+     */
+    userAssignedIdentities?: {[key: string]: UserAssignedIdentityResponse};
+}
+
+/**
+ * Model that represents the Simple filter parameters.
+ */
+export interface SimpleFilterParametersResponse {
+    /**
+     * List of Azure availability zones to filter targets by.
+     */
+    zones?: string[];
+}
+
+/**
+ * Model that represents a simple target filter.
+ */
+export interface SimpleFilterResponse {
     /**
      * Model that represents the Simple filter parameters.
      */
-    export interface SimpleFilterParametersResponse {
-        /**
-         * List of Azure availability zones to filter targets by.
-         */
-        zones?: string[];
-    }
-
+    parameters?: SimpleFilterParametersResponse;
     /**
-     * Model that represents a simple target filter.
+     * Enum that discriminates between filter types. Currently only `Simple` type is supported.
+     * Expected value is 'Simple'.
      */
-    export interface SimpleFilterResponse {
-        /**
-         * Model that represents the Simple filter parameters.
-         */
-        parameters?: SimpleFilterParametersResponse;
-        /**
-         * Enum that discriminates between filter types. Currently only `Simple` type is supported.
-         * Expected value is 'Simple'.
-         */
-        type: "Simple";
-    }
+    type: "Simple";
+}
 
+/**
+ * Model that represents a step in the Experiment resource.
+ */
+export interface StepResponse {
     /**
-     * Model that represents a step in the Experiment resource.
+     * List of branches.
      */
-    export interface StepResponse {
-        /**
-         * List of branches.
-         */
-        branches: BranchResponse[];
-        /**
-         * String of the step name.
-         */
-        name: string;
-    }
-
+    branches: BranchResponse[];
     /**
-     * Metadata pertaining to creation and last modification of the resource.
+     * String of the step name.
      */
-    export interface SystemDataResponse {
-        /**
-         * The timestamp of resource creation (UTC).
-         */
-        createdAt?: string;
-        /**
-         * The identity that created the resource.
-         */
-        createdBy?: string;
-        /**
-         * The type of identity that created the resource.
-         */
-        createdByType?: string;
-        /**
-         * The timestamp of resource last modification (UTC)
-         */
-        lastModifiedAt?: string;
-        /**
-         * The identity that last modified the resource.
-         */
-        lastModifiedBy?: string;
-        /**
-         * The type of identity that last modified the resource.
-         */
-        lastModifiedByType?: string;
-    }
+    name: string;
+}
 
+/**
+ * Metadata pertaining to creation and last modification of the resource.
+ */
+export interface SystemDataResponse {
     /**
-     * Model that represents a reference to a Target in the selector.
+     * The timestamp of resource creation (UTC).
      */
-    export interface TargetReferenceResponse {
-        /**
-         * String of the resource ID of a Target resource.
-         */
-        id: string;
-        /**
-         * Enum of the Target reference type.
-         */
-        type: string;
-    }
-
+    createdAt?: string;
     /**
-     * User assigned identity properties
+     * The identity that created the resource.
      */
-    export interface UserAssignedIdentityResponse {
-        /**
-         * The client ID of the assigned identity.
-         */
-        clientId: string;
-        /**
-         * The principal ID of the assigned identity.
-         */
-        principalId: string;
-    }
+    createdBy?: string;
+    /**
+     * The type of identity that created the resource.
+     */
+    createdByType?: string;
+    /**
+     * The timestamp of resource last modification (UTC)
+     */
+    lastModifiedAt?: string;
+    /**
+     * The identity that last modified the resource.
+     */
+    lastModifiedBy?: string;
+    /**
+     * The type of identity that last modified the resource.
+     */
+    lastModifiedByType?: string;
+}
 
-    export namespace v20230415preview {
-        /**
-         * Model that represents a branch in the step.
-         */
-        export interface BranchResponse {
-            /**
-             * List of actions.
-             */
-            actions: (v20230415preview.ContinuousActionResponse | v20230415preview.DelayActionResponse | v20230415preview.DiscreteActionResponse)[];
-            /**
-             * String of the branch name.
-             */
-            name: string;
-        }
+/**
+ * Model that represents a reference to a Target in the selector.
+ */
+export interface TargetReferenceResponse {
+    /**
+     * String of the resource ID of a Target resource.
+     */
+    id: string;
+    /**
+     * Enum of the Target reference type.
+     */
+    type: string;
+}
 
-        /**
-         * Model that represents the Capability properties model.
-         */
-        export interface CapabilityPropertiesResponse {
-            /**
-             * Localized string of the description.
-             */
-            description: string;
-            /**
-             * URL to retrieve JSON schema of the Capability parameters.
-             */
-            parametersSchema: string;
-            /**
-             * String of the Publisher that this Capability extends.
-             */
-            publisher: string;
-            /**
-             * String of the Target Type that this Capability extends.
-             */
-            targetType: string;
-            /**
-             * String of the URN for this Capability Type.
-             */
-            urn: string;
-        }
-
-        /**
-         * Model that represents a continuous action.
-         */
-        export interface ContinuousActionResponse {
-            /**
-             * ISO8601 formatted string that represents a duration.
-             */
-            duration: string;
-            /**
-             * String that represents a Capability URN.
-             */
-            name: string;
-            /**
-             * List of key value pairs.
-             */
-            parameters: v20230415preview.KeyValuePairResponse[];
-            /**
-             * String that represents a selector.
-             */
-            selectorId: string;
-            /**
-             * Enum that discriminates between action models.
-             * Expected value is 'continuous'.
-             */
-            type: "continuous";
-        }
-
-        /**
-         * Model that represents a delay action.
-         */
-        export interface DelayActionResponse {
-            /**
-             * ISO8601 formatted string that represents a duration.
-             */
-            duration: string;
-            /**
-             * String that represents a Capability URN.
-             */
-            name: string;
-            /**
-             * Enum that discriminates between action models.
-             * Expected value is 'delay'.
-             */
-            type: "delay";
-        }
-
-        /**
-         * Model that represents a discrete action.
-         */
-        export interface DiscreteActionResponse {
-            /**
-             * String that represents a Capability URN.
-             */
-            name: string;
-            /**
-             * List of key value pairs.
-             */
-            parameters: v20230415preview.KeyValuePairResponse[];
-            /**
-             * String that represents a selector.
-             */
-            selectorId: string;
-            /**
-             * Enum that discriminates between action models.
-             * Expected value is 'discrete'.
-             */
-            type: "discrete";
-        }
-
-        /**
-         * Model that represents the Experiment properties model.
-         */
-        export interface ExperimentPropertiesResponse {
-            /**
-             * List of selectors.
-             */
-            selectors: (v20230415preview.ListSelectorResponse | v20230415preview.QuerySelectorResponse)[];
-            /**
-             * A boolean value that indicates if experiment should be started on creation or not.
-             */
-            startOnCreation?: boolean;
-            /**
-             * List of steps.
-             */
-            steps: v20230415preview.StepResponse[];
-        }
-
-        /**
-         * A map to describe the settings of an action.
-         */
-        export interface KeyValuePairResponse {
-            /**
-             * The name of the setting for the action.
-             */
-            key: string;
-            /**
-             * The value of the setting for the action.
-             */
-            value: string;
-        }
-
-        /**
-         * Model that represents a list selector.
-         */
-        export interface ListSelectorResponse {
-            /**
-             * Model that represents available filter types that can be applied to a targets list.
-             */
-            filter?: v20230415preview.SimpleFilterResponse;
-            /**
-             * String of the selector ID.
-             */
-            id: string;
-            /**
-             * List of Target references.
-             */
-            targets: v20230415preview.TargetReferenceResponse[];
-            /**
-             * Enum of the selector type.
-             * Expected value is 'List'.
-             */
-            type: "List";
-        }
-
-        /**
-         * Model that represents a query selector.
-         */
-        export interface QuerySelectorResponse {
-            /**
-             * Model that represents available filter types that can be applied to a targets list.
-             */
-            filter?: v20230415preview.SimpleFilterResponse;
-            /**
-             * String of the selector ID.
-             */
-            id: string;
-            /**
-             * Azure Resource Graph (ARG) Query Language query for target resources.
-             */
-            queryString: string;
-            /**
-             * Subscription id list to scope resource query.
-             */
-            subscriptionIds: string[];
-            /**
-             * Enum of the selector type.
-             * Expected value is 'Query'.
-             */
-            type: "Query";
-        }
-
-        /**
-         * The identity of a resource.
-         */
-        export interface ResourceIdentityResponse {
-            /**
-             * GUID that represents the principal ID of this resource identity.
-             */
-            principalId: string;
-            /**
-             * GUID that represents the tenant ID of this resource identity.
-             */
-            tenantId: string;
-            /**
-             * String of the resource identity type.
-             */
-            type: string;
-            /**
-             * The list of user identities associated with the Experiment. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-             */
-            userAssignedIdentities?: {[key: string]: v20230415preview.UserAssignedIdentityResponse};
-        }
-
-        /**
-         * Model that represents the Simple filter parameters.
-         */
-        export interface SimpleFilterParametersResponse {
-            /**
-             * List of Azure availability zones to filter targets by.
-             */
-            zones?: string[];
-        }
-
-        /**
-         * Model that represents a simple target filter.
-         */
-        export interface SimpleFilterResponse {
-            /**
-             * Model that represents the Simple filter parameters.
-             */
-            parameters?: v20230415preview.SimpleFilterParametersResponse;
-            /**
-             * Enum that discriminates between filter types. Currently only `Simple` type is supported.
-             * Expected value is 'Simple'.
-             */
-            type: "Simple";
-        }
-
-        /**
-         * Model that represents a step in the Experiment resource.
-         */
-        export interface StepResponse {
-            /**
-             * List of branches.
-             */
-            branches: v20230415preview.BranchResponse[];
-            /**
-             * String of the step name.
-             */
-            name: string;
-        }
-
-        /**
-         * Metadata pertaining to creation and last modification of the resource.
-         */
-        export interface SystemDataResponse {
-            /**
-             * The timestamp of resource creation (UTC).
-             */
-            createdAt?: string;
-            /**
-             * The identity that created the resource.
-             */
-            createdBy?: string;
-            /**
-             * The type of identity that created the resource.
-             */
-            createdByType?: string;
-            /**
-             * The timestamp of resource last modification (UTC)
-             */
-            lastModifiedAt?: string;
-            /**
-             * The identity that last modified the resource.
-             */
-            lastModifiedBy?: string;
-            /**
-             * The type of identity that last modified the resource.
-             */
-            lastModifiedByType?: string;
-        }
-
-        /**
-         * Model that represents a reference to a Target in the selector.
-         */
-        export interface TargetReferenceResponse {
-            /**
-             * String of the resource ID of a Target resource.
-             */
-            id: string;
-            /**
-             * Enum of the Target reference type.
-             */
-            type: string;
-        }
-
-        /**
-         * User assigned identity properties
-         */
-        export interface UserAssignedIdentityResponse {
-            /**
-             * The client ID of the assigned identity.
-             */
-            clientId: string;
-            /**
-             * The principal ID of the assigned identity.
-             */
-            principalId: string;
-        }
-
-    }
+/**
+ * User assigned identity properties
+ */
+export interface UserAssignedIdentityResponse {
+    /**
+     * The client ID of the assigned identity.
+     */
+    clientId: string;
+    /**
+     * The principal ID of the assigned identity.
+     */
+    principalId: string;
 }

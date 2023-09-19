@@ -42,7 +42,7 @@ export interface GetRegistryDataVersionResult {
     /**
      * [Required] Additional attributes of the entity.
      */
-    readonly dataVersionBaseProperties: types.outputs.machinelearningservices.MLTableDataResponse | types.outputs.machinelearningservices.UriFileDataVersionResponse | types.outputs.machinelearningservices.UriFolderDataVersionResponse;
+    readonly dataVersionBaseProperties: types.outputs.MLTableDataResponse | types.outputs.UriFileDataVersionResponse | types.outputs.UriFolderDataVersionResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -54,7 +54,7 @@ export interface GetRegistryDataVersionResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.machinelearningservices.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

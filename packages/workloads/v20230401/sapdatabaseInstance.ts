@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Define the Database resource.
  */
@@ -42,7 +42,7 @@ export class SAPDatabaseInstance extends pulumi.CustomResource {
     /**
      * Defines the errors related to Database resource.
      */
-    public /*out*/ readonly errors!: pulumi.Output<types.outputs.workloads.v20230401.SAPVirtualInstanceErrorResponse>;
+    public /*out*/ readonly errors!: pulumi.Output<types.outputs.SAPVirtualInstanceErrorResponse>;
     /**
      * Database IP Address.
      */
@@ -50,7 +50,7 @@ export class SAPDatabaseInstance extends pulumi.CustomResource {
     /**
      * The Load Balancer details such as LoadBalancer ID attached to Database Virtual Machines
      */
-    public /*out*/ readonly loadBalancerDetails!: pulumi.Output<types.outputs.workloads.v20230401.LoadBalancerDetailsResponse>;
+    public /*out*/ readonly loadBalancerDetails!: pulumi.Output<types.outputs.LoadBalancerDetailsResponse>;
     /**
      * The geo-location where the resource lives
      */
@@ -74,7 +74,7 @@ export class SAPDatabaseInstance extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.workloads.v20230401.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -86,7 +86,7 @@ export class SAPDatabaseInstance extends pulumi.CustomResource {
     /**
      * The list of virtual machines corresponding to the Database resource.
      */
-    public /*out*/ readonly vmDetails!: pulumi.Output<types.outputs.workloads.v20230401.DatabaseVmDetailsResponse[]>;
+    public /*out*/ readonly vmDetails!: pulumi.Output<types.outputs.DatabaseVmDetailsResponse[]>;
 
     /**
      * Create a SAPDatabaseInstance resource with the given unique name, arguments, and options.

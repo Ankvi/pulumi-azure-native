@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Template Spec Version object.
  */
@@ -34,7 +34,7 @@ export class TemplateSpecVersion extends pulumi.CustomResource {
     /**
      * An array of Template Spec artifacts.
      */
-    public readonly artifacts!: pulumi.Output<types.outputs.resources.v20190601preview.TemplateSpecTemplateArtifactResponse[] | undefined>;
+    public readonly artifacts!: pulumi.Output<types.outputs.TemplateSpecTemplateArtifactResponse[] | undefined>;
     /**
      * Template Spec version description.
      */
@@ -50,7 +50,7 @@ export class TemplateSpecVersion extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.resources.v20190601preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -116,7 +116,7 @@ export interface TemplateSpecVersionArgs {
     /**
      * An array of Template Spec artifacts.
      */
-    artifacts?: pulumi.Input<pulumi.Input<types.inputs.resources.v20190601preview.TemplateSpecTemplateArtifactArgs>[]>;
+    artifacts?: pulumi.Input<pulumi.Input<types.inputs.TemplateSpecTemplateArtifactArgs>[]>;
     /**
      * Template Spec version description.
      */

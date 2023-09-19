@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * NSX DHCP
  */
@@ -117,7 +117,7 @@ export interface WorkloadNetworkDhcpArgs {
     /**
      * Type of DHCP: SERVER or RELAY.
      */
-    dhcpType: pulumi.Input<string | types.enums.v20210101preview.DhcpTypeEnum>;
+    dhcpType: pulumi.Input<string | types.enums.DhcpTypeEnum>;
     /**
      * Display name of the DHCP entity.
      */

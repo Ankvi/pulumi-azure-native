@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns the Workspace resource associated with the given name.
  */
@@ -39,7 +39,7 @@ export interface GetWorkspaceResult {
     /**
      * Managed Identity information.
      */
-    readonly identity?: types.outputs.quantum.v20220110preview.QuantumWorkspaceResponseIdentity;
+    readonly identity?: types.outputs.QuantumWorkspaceResponseIdentity;
     /**
      * The geo-location where the resource lives
      */
@@ -51,7 +51,7 @@ export interface GetWorkspaceResult {
     /**
      * List of Providers selected for this Workspace
      */
-    readonly providers?: types.outputs.quantum.v20220110preview.ProviderResponse[];
+    readonly providers?: types.outputs.ProviderResponse[];
     /**
      * Provisioning status field
      */
@@ -63,7 +63,7 @@ export interface GetWorkspaceResult {
     /**
      * System metadata
      */
-    readonly systemData: types.outputs.quantum.v20220110preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

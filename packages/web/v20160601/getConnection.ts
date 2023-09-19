@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a specific connection
  */
@@ -49,7 +49,7 @@ export interface GetConnectionResult {
      * Resource name
      */
     readonly name: string;
-    readonly properties: types.outputs.web.v20160601.ApiConnectionDefinitionResponseProperties;
+    readonly properties: types.outputs.ApiConnectionDefinitionResponseProperties;
     /**
      * Resource tags
      */

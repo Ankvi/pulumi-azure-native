@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get an event subscription.
  */
@@ -37,22 +37,22 @@ export interface GetSystemTopicEventSubscriptionResult {
      * The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.
      * Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering.
      */
-    readonly deadLetterDestination?: types.outputs.eventgrid.v20220615.StorageBlobDeadLetterDestinationResponse;
+    readonly deadLetterDestination?: types.outputs.StorageBlobDeadLetterDestinationResponse;
     /**
      * The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.
      * Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery / dead-lettering.
      */
-    readonly deadLetterWithResourceIdentity?: types.outputs.eventgrid.v20220615.DeadLetterWithResourceIdentityResponse;
+    readonly deadLetterWithResourceIdentity?: types.outputs.DeadLetterWithResourceIdentityResponse;
     /**
      * Information about the destination where events have to be delivered for the event subscription.
      * Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery / dead-lettering.
      */
-    readonly deliveryWithResourceIdentity?: types.outputs.eventgrid.v20220615.DeliveryWithResourceIdentityResponse;
+    readonly deliveryWithResourceIdentity?: types.outputs.DeliveryWithResourceIdentityResponse;
     /**
      * Information about the destination where events have to be delivered for the event subscription.
      * Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering.
      */
-    readonly destination?: types.outputs.eventgrid.v20220615.AzureFunctionEventSubscriptionDestinationResponse | types.outputs.eventgrid.v20220615.EventHubEventSubscriptionDestinationResponse | types.outputs.eventgrid.v20220615.HybridConnectionEventSubscriptionDestinationResponse | types.outputs.eventgrid.v20220615.ServiceBusQueueEventSubscriptionDestinationResponse | types.outputs.eventgrid.v20220615.ServiceBusTopicEventSubscriptionDestinationResponse | types.outputs.eventgrid.v20220615.StorageQueueEventSubscriptionDestinationResponse | types.outputs.eventgrid.v20220615.WebHookEventSubscriptionDestinationResponse;
+    readonly destination?: types.outputs.AzureFunctionEventSubscriptionDestinationResponse | types.outputs.EventHubEventSubscriptionDestinationResponse | types.outputs.HybridConnectionEventSubscriptionDestinationResponse | types.outputs.ServiceBusQueueEventSubscriptionDestinationResponse | types.outputs.ServiceBusTopicEventSubscriptionDestinationResponse | types.outputs.StorageQueueEventSubscriptionDestinationResponse | types.outputs.WebHookEventSubscriptionDestinationResponse;
     /**
      * The event delivery schema for the event subscription.
      */
@@ -64,7 +64,7 @@ export interface GetSystemTopicEventSubscriptionResult {
     /**
      * Information about the filter for the event subscription.
      */
-    readonly filter?: types.outputs.eventgrid.v20220615.EventSubscriptionFilterResponse;
+    readonly filter?: types.outputs.EventSubscriptionFilterResponse;
     /**
      * Fully qualified identifier of the resource.
      */
@@ -84,11 +84,11 @@ export interface GetSystemTopicEventSubscriptionResult {
     /**
      * The retry policy for events. This can be used to configure maximum number of delivery attempts and time to live for events.
      */
-    readonly retryPolicy?: types.outputs.eventgrid.v20220615.RetryPolicyResponse;
+    readonly retryPolicy?: types.outputs.RetryPolicyResponse;
     /**
      * The system metadata relating to Event Subscription resource.
      */
-    readonly systemData: types.outputs.eventgrid.v20220615.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Name of the topic of the event subscription.
      */

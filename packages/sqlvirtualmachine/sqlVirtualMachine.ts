@@ -35,23 +35,23 @@ export class SqlVirtualMachine extends pulumi.CustomResource {
     /**
      * Assessment Settings.
      */
-    public readonly assessmentSettings!: pulumi.Output<types.outputs.sqlvirtualmachine.AssessmentSettingsResponse | undefined>;
+    public readonly assessmentSettings!: pulumi.Output<types.outputs.AssessmentSettingsResponse | undefined>;
     /**
      * Auto backup settings for SQL Server.
      */
-    public readonly autoBackupSettings!: pulumi.Output<types.outputs.sqlvirtualmachine.AutoBackupSettingsResponse | undefined>;
+    public readonly autoBackupSettings!: pulumi.Output<types.outputs.AutoBackupSettingsResponse | undefined>;
     /**
      * Auto patching settings for applying critical security updates to SQL virtual machine.
      */
-    public readonly autoPatchingSettings!: pulumi.Output<types.outputs.sqlvirtualmachine.AutoPatchingSettingsResponse | undefined>;
+    public readonly autoPatchingSettings!: pulumi.Output<types.outputs.AutoPatchingSettingsResponse | undefined>;
     /**
      * Azure Active Directory identity of the server.
      */
-    public readonly identity!: pulumi.Output<types.outputs.sqlvirtualmachine.ResourceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ResourceIdentityResponse | undefined>;
     /**
      * Key vault credential settings.
      */
-    public readonly keyVaultCredentialSettings!: pulumi.Output<types.outputs.sqlvirtualmachine.KeyVaultCredentialSettingsResponse | undefined>;
+    public readonly keyVaultCredentialSettings!: pulumi.Output<types.outputs.KeyVaultCredentialSettingsResponse | undefined>;
     /**
      * Resource location.
      */
@@ -67,7 +67,7 @@ export class SqlVirtualMachine extends pulumi.CustomResource {
     /**
      * SQL Server configuration management settings.
      */
-    public readonly serverConfigurationsManagementSettings!: pulumi.Output<types.outputs.sqlvirtualmachine.ServerConfigurationsManagementSettingsResponse | undefined>;
+    public readonly serverConfigurationsManagementSettings!: pulumi.Output<types.outputs.ServerConfigurationsManagementSettingsResponse | undefined>;
     /**
      * SQL image offer. Examples include SQL2016-WS2016, SQL2017-WS2016.
      */
@@ -91,11 +91,11 @@ export class SqlVirtualMachine extends pulumi.CustomResource {
     /**
      * Storage Configuration Settings.
      */
-    public readonly storageConfigurationSettings!: pulumi.Output<types.outputs.sqlvirtualmachine.StorageConfigurationSettingsResponse | undefined>;
+    public readonly storageConfigurationSettings!: pulumi.Output<types.outputs.StorageConfigurationSettingsResponse | undefined>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.sqlvirtualmachine.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -111,7 +111,7 @@ export class SqlVirtualMachine extends pulumi.CustomResource {
     /**
      * Domain credentials for setting up Windows Server Failover Cluster for SQL availability group.
      */
-    public readonly wsfcDomainCredentials!: pulumi.Output<types.outputs.sqlvirtualmachine.WsfcDomainCredentialsResponse | undefined>;
+    public readonly wsfcDomainCredentials!: pulumi.Output<types.outputs.WsfcDomainCredentialsResponse | undefined>;
     /**
      * Domain credentials for setting up Windows Server Failover Cluster for SQL availability group.
      */
@@ -191,23 +191,23 @@ export interface SqlVirtualMachineArgs {
     /**
      * Assessment Settings.
      */
-    assessmentSettings?: pulumi.Input<types.inputs.sqlvirtualmachine.AssessmentSettingsArgs>;
+    assessmentSettings?: pulumi.Input<types.inputs.AssessmentSettingsArgs>;
     /**
      * Auto backup settings for SQL Server.
      */
-    autoBackupSettings?: pulumi.Input<types.inputs.sqlvirtualmachine.AutoBackupSettingsArgs>;
+    autoBackupSettings?: pulumi.Input<types.inputs.AutoBackupSettingsArgs>;
     /**
      * Auto patching settings for applying critical security updates to SQL virtual machine.
      */
-    autoPatchingSettings?: pulumi.Input<types.inputs.sqlvirtualmachine.AutoPatchingSettingsArgs>;
+    autoPatchingSettings?: pulumi.Input<types.inputs.AutoPatchingSettingsArgs>;
     /**
      * Azure Active Directory identity of the server.
      */
-    identity?: pulumi.Input<types.inputs.sqlvirtualmachine.ResourceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ResourceIdentityArgs>;
     /**
      * Key vault credential settings.
      */
-    keyVaultCredentialSettings?: pulumi.Input<types.inputs.sqlvirtualmachine.KeyVaultCredentialSettingsArgs>;
+    keyVaultCredentialSettings?: pulumi.Input<types.inputs.KeyVaultCredentialSettingsArgs>;
     /**
      * Resource location.
      */
@@ -219,7 +219,7 @@ export interface SqlVirtualMachineArgs {
     /**
      * SQL Server configuration management settings.
      */
-    serverConfigurationsManagementSettings?: pulumi.Input<types.inputs.sqlvirtualmachine.ServerConfigurationsManagementSettingsArgs>;
+    serverConfigurationsManagementSettings?: pulumi.Input<types.inputs.ServerConfigurationsManagementSettingsArgs>;
     /**
      * SQL image offer. Examples include SQL2016-WS2016, SQL2017-WS2016.
      */
@@ -247,7 +247,7 @@ export interface SqlVirtualMachineArgs {
     /**
      * Storage Configuration Settings.
      */
-    storageConfigurationSettings?: pulumi.Input<types.inputs.sqlvirtualmachine.StorageConfigurationSettingsArgs>;
+    storageConfigurationSettings?: pulumi.Input<types.inputs.StorageConfigurationSettingsArgs>;
     /**
      * Resource tags.
      */
@@ -259,7 +259,7 @@ export interface SqlVirtualMachineArgs {
     /**
      * Domain credentials for setting up Windows Server Failover Cluster for SQL availability group.
      */
-    wsfcDomainCredentials?: pulumi.Input<types.inputs.sqlvirtualmachine.WsfcDomainCredentialsArgs>;
+    wsfcDomainCredentials?: pulumi.Input<types.inputs.WsfcDomainCredentialsArgs>;
     /**
      * Domain credentials for setting up Windows Server Failover Cluster for SQL availability group.
      */

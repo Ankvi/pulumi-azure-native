@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the connection health of P2S clients of the virtual wan P2SVpnGateway in the specified resource group.
  */
@@ -31,7 +31,7 @@ export interface GetP2sVpnGatewayP2sVpnConnectionHealthResult {
     /**
      * The reference of the address space resource which represents the custom routes specified by the customer for P2SVpnGateway and P2S VpnClient.
      */
-    readonly customRoutes?: types.outputs.network.v20190701.AddressSpaceResponse;
+    readonly customRoutes?: types.outputs.AddressSpaceResponse;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -51,7 +51,7 @@ export interface GetP2sVpnGatewayP2sVpnConnectionHealthResult {
     /**
      * The P2SVpnServerConfiguration to which the p2sVpnGateway is attached to.
      */
-    readonly p2SVpnServerConfiguration?: types.outputs.network.v20190701.SubResourceResponse;
+    readonly p2SVpnServerConfiguration?: types.outputs.SubResourceResponse;
     /**
      * The provisioning state of the P2S VPN gateway resource.
      */
@@ -67,15 +67,15 @@ export interface GetP2sVpnGatewayP2sVpnConnectionHealthResult {
     /**
      * The VirtualHub to which the gateway belongs.
      */
-    readonly virtualHub?: types.outputs.network.v20190701.SubResourceResponse;
+    readonly virtualHub?: types.outputs.SubResourceResponse;
     /**
      * The reference of the address space resource which represents Address space for P2S VpnClient.
      */
-    readonly vpnClientAddressPool?: types.outputs.network.v20190701.AddressSpaceResponse;
+    readonly vpnClientAddressPool?: types.outputs.AddressSpaceResponse;
     /**
      * All P2S VPN clients' connection health status.
      */
-    readonly vpnClientConnectionHealth: types.outputs.network.v20190701.VpnClientConnectionHealthResponse;
+    readonly vpnClientConnectionHealth: types.outputs.VpnClientConnectionHealthResponse;
     /**
      * The scale unit for this p2s vpn gateway.
      */

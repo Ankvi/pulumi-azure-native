@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the details of a Streaming Policy in the Media Services account
  */
@@ -36,11 +36,11 @@ export interface GetStreamingPolicyResult {
     /**
      * Configuration of CommonEncryptionCbcs
      */
-    readonly commonEncryptionCbcs?: types.outputs.media.v20230101.CommonEncryptionCbcsResponse;
+    readonly commonEncryptionCbcs?: types.outputs.CommonEncryptionCbcsResponse;
     /**
      * Configuration of CommonEncryptionCenc
      */
-    readonly commonEncryptionCenc?: types.outputs.media.v20230101.CommonEncryptionCencResponse;
+    readonly commonEncryptionCenc?: types.outputs.CommonEncryptionCencResponse;
     /**
      * Creation time of Streaming Policy
      */
@@ -52,7 +52,7 @@ export interface GetStreamingPolicyResult {
     /**
      * Configuration of EnvelopeEncryption
      */
-    readonly envelopeEncryption?: types.outputs.media.v20230101.EnvelopeEncryptionResponse;
+    readonly envelopeEncryption?: types.outputs.EnvelopeEncryptionResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -64,11 +64,11 @@ export interface GetStreamingPolicyResult {
     /**
      * Configurations of NoEncryption
      */
-    readonly noEncryption?: types.outputs.media.v20230101.NoEncryptionResponse;
+    readonly noEncryption?: types.outputs.NoEncryptionResponse;
     /**
      * The system metadata relating to this resource.
      */
-    readonly systemData: types.outputs.media.v20230101.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

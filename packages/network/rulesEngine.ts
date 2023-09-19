@@ -43,7 +43,7 @@ export class RulesEngine extends pulumi.CustomResource {
     /**
      * A list of rules that define a particular Rules Engine Configuration.
      */
-    public readonly rules!: pulumi.Output<types.outputs.network.RulesEngineRuleResponse[] | undefined>;
+    public readonly rules!: pulumi.Output<types.outputs.RulesEngineRuleResponse[] | undefined>;
     /**
      * Resource type.
      */
@@ -101,7 +101,7 @@ export interface RulesEngineArgs {
     /**
      * A list of rules that define a particular Rules Engine Configuration.
      */
-    rules?: pulumi.Input<pulumi.Input<types.inputs.network.RulesEngineRuleArgs>[]>;
+    rules?: pulumi.Input<pulumi.Input<types.inputs.RulesEngineRuleArgs>[]>;
     /**
      * Name of the Rules Engine which is unique within the Front Door.
      */

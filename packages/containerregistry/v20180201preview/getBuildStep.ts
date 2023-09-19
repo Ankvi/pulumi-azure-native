@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the build step for a build task.
  */
@@ -49,7 +49,7 @@ export interface GetBuildStepResult {
     /**
      * The properties of a build step.
      */
-    readonly properties: types.outputs.containerregistry.v20180201preview.DockerBuildStepResponse;
+    readonly properties: types.outputs.DockerBuildStepResponse;
     /**
      * The type of the resource.
      */

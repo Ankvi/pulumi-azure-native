@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns account resource for a given name.
  */
@@ -43,11 +43,11 @@ export interface GetAccountResult {
     /**
      * Property bag from billing account
      */
-    readonly properties: types.outputs.graphservices.v20230413.AccountResourceResponseProperties;
+    readonly properties: types.outputs.AccountResourceResponseProperties;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.graphservices.v20230413.AccountResourceResponseSystemData;
+    readonly systemData: types.outputs.AccountResourceResponseSystemData;
     /**
      * resource tags.
      */

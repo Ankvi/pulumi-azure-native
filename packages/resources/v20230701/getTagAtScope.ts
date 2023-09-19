@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Wrapper resource for tags API requests and responses.
  */
@@ -34,7 +34,7 @@ export interface GetTagAtScopeResult {
     /**
      * The set of tags.
      */
-    readonly properties: types.outputs.resources.v20230701.TagsResponse;
+    readonly properties: types.outputs.TagsResponse;
     /**
      * The type of the tags wrapper resource.
      */

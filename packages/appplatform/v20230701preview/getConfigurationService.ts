@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the Application Configuration Service and its properties.
  */
@@ -44,11 +44,11 @@ export interface GetConfigurationServiceResult {
     /**
      * Application Configuration Service properties payload
      */
-    readonly properties: types.outputs.appplatform.v20230701preview.ConfigurationServicePropertiesResponse;
+    readonly properties: types.outputs.ConfigurationServicePropertiesResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.appplatform.v20230701preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource.
      */

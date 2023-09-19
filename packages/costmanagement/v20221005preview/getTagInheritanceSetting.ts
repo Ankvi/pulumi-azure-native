@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the setting from the given scope by name.
  */
@@ -48,7 +48,7 @@ export interface GetTagInheritanceSettingResult {
     /**
      * The properties of the tag inheritance setting.
      */
-    readonly properties: types.outputs.costmanagement.v20221005preview.TagInheritancePropertiesResponse;
+    readonly properties: types.outputs.TagInheritancePropertiesResponse;
     /**
      * Resource type.
      */

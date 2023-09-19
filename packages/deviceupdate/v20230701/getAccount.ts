@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns account details for the given account name.
  */
@@ -31,7 +31,7 @@ export interface GetAccountResult {
     /**
      * CMK encryption at rest properties
      */
-    readonly encryption?: types.outputs.deviceupdate.v20230701.EncryptionResponse;
+    readonly encryption?: types.outputs.EncryptionResponse;
     /**
      * API host name.
      */
@@ -43,7 +43,7 @@ export interface GetAccountResult {
     /**
      * The type of identity used for the resource.
      */
-    readonly identity?: types.outputs.deviceupdate.v20230701.ManagedServiceIdentityResponse;
+    readonly identity?: types.outputs.ManagedServiceIdentityResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -51,7 +51,7 @@ export interface GetAccountResult {
     /**
      * Device Update account primary and failover location details
      */
-    readonly locations: types.outputs.deviceupdate.v20230701.LocationResponse[];
+    readonly locations: types.outputs.LocationResponse[];
     /**
      * The name of the resource
      */
@@ -59,7 +59,7 @@ export interface GetAccountResult {
     /**
      * List of private endpoint connections associated with the account.
      */
-    readonly privateEndpointConnections?: types.outputs.deviceupdate.v20230701.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections?: types.outputs.PrivateEndpointConnectionResponse[];
     /**
      * Provisioning state.
      */
@@ -75,7 +75,7 @@ export interface GetAccountResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.deviceupdate.v20230701.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

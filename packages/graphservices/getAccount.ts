@@ -44,11 +44,11 @@ export interface GetAccountResult {
     /**
      * Property bag from billing account
      */
-    readonly properties: types.outputs.graphservices.AccountResourceResponseProperties;
+    readonly properties: types.outputs.AccountResourceResponseProperties;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.graphservices.AccountResourceResponseSystemData;
+    readonly systemData: types.outputs.AccountResourceResponseSystemData;
     /**
      * resource tags.
      */

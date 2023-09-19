@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Machine Learning labeling job object wrapped into ARM resource envelope.
  */
@@ -38,11 +38,11 @@ export class LabelingJob extends pulumi.CustomResource {
     /**
      * Definition of a labeling job.
      */
-    public readonly properties!: pulumi.Output<types.outputs.machinelearningservices.v20200901preview.LabelingJobPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.LabelingJobPropertiesResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.machinelearningservices.v20200901preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The resource provider and type.
      */
@@ -96,7 +96,7 @@ export interface LabelingJobArgs {
     /**
      * Definition of a labeling job.
      */
-    properties?: pulumi.Input<types.inputs.machinelearningservices.v20200901preview.LabelingJobPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.LabelingJobPropertiesArgs>;
     /**
      * Name of the resource group in which workspace is located.
      */

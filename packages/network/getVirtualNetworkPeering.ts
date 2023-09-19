@@ -77,23 +77,23 @@ export interface GetVirtualNetworkPeeringResult {
     /**
      * The reference to the address space peered with the remote virtual network.
      */
-    readonly remoteAddressSpace?: types.outputs.network.AddressSpaceResponse;
+    readonly remoteAddressSpace?: types.outputs.AddressSpaceResponse;
     /**
      * The reference to the remote virtual network's Bgp Communities.
      */
-    readonly remoteBgpCommunities?: types.outputs.network.VirtualNetworkBgpCommunitiesResponse;
+    readonly remoteBgpCommunities?: types.outputs.VirtualNetworkBgpCommunitiesResponse;
     /**
      * The reference to the remote virtual network. The remote virtual network can be in the same or different region (preview). See here to register for the preview and learn more (https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-create-peering).
      */
-    readonly remoteVirtualNetwork?: types.outputs.network.SubResourceResponse;
+    readonly remoteVirtualNetwork?: types.outputs.SubResourceResponse;
     /**
      * The reference to the current address space of the remote virtual network.
      */
-    readonly remoteVirtualNetworkAddressSpace?: types.outputs.network.AddressSpaceResponse;
+    readonly remoteVirtualNetworkAddressSpace?: types.outputs.AddressSpaceResponse;
     /**
      * The reference to the remote virtual network's encryption
      */
-    readonly remoteVirtualNetworkEncryption: types.outputs.network.VirtualNetworkEncryptionResponse;
+    readonly remoteVirtualNetworkEncryption: types.outputs.VirtualNetworkEncryptionResponse;
     /**
      * The resourceGuid property of the Virtual Network peering resource.
      */

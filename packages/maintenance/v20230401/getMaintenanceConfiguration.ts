@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Maintenance configuration record type
  */
@@ -47,7 +47,7 @@ export interface GetMaintenanceConfigurationResult {
     /**
      * The input parameters to be passed to the patch run operation.
      */
-    readonly installPatches?: types.outputs.maintenance.v20230401.InputPatchConfigurationResponse;
+    readonly installPatches?: types.outputs.InputPatchConfigurationResponse;
     /**
      * Gets or sets location of the resource
      */
@@ -75,7 +75,7 @@ export interface GetMaintenanceConfigurationResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.maintenance.v20230401.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Gets or sets tags of the resource
      */

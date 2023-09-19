@@ -32,19 +32,19 @@ export interface GetPrivateCloudResult {
     /**
      * Properties describing how the cloud is distributed across availability zones
      */
-    readonly availability?: types.outputs.avs.AvailabilityPropertiesResponse;
+    readonly availability?: types.outputs.AvailabilityPropertiesResponse;
     /**
      * An ExpressRoute Circuit
      */
-    readonly circuit?: types.outputs.avs.CircuitResponse;
+    readonly circuit?: types.outputs.CircuitResponse;
     /**
      * Customer managed key encryption, can be enabled or disabled
      */
-    readonly encryption?: types.outputs.avs.EncryptionResponse;
+    readonly encryption?: types.outputs.EncryptionResponse;
     /**
      * The endpoints
      */
-    readonly endpoints: types.outputs.avs.EndpointsResponse;
+    readonly endpoints: types.outputs.EndpointsResponse;
     /**
      * Array of cloud link IDs from other clouds that connect to this one
      */
@@ -56,11 +56,11 @@ export interface GetPrivateCloudResult {
     /**
      * The identity of the private cloud, if configured.
      */
-    readonly identity?: types.outputs.avs.PrivateCloudIdentityResponse;
+    readonly identity?: types.outputs.PrivateCloudIdentityResponse;
     /**
      * vCenter Single Sign On Identity Sources
      */
-    readonly identitySources?: types.outputs.avs.IdentitySourceResponse[];
+    readonly identitySources?: types.outputs.IdentitySourceResponse[];
     /**
      * Connectivity to internet is enabled or disabled
      */
@@ -72,7 +72,7 @@ export interface GetPrivateCloudResult {
     /**
      * The default cluster used for management
      */
-    readonly managementCluster: types.outputs.avs.ManagementClusterResponse;
+    readonly managementCluster: types.outputs.ManagementClusterResponse;
     /**
      * Network used to access vCenter Server and NSX-T Manager
      */
@@ -108,11 +108,11 @@ export interface GetPrivateCloudResult {
     /**
      * A secondary expressRoute circuit from a separate AZ. Only present in a stretched private cloud
      */
-    readonly secondaryCircuit?: types.outputs.avs.CircuitResponse;
+    readonly secondaryCircuit?: types.outputs.CircuitResponse;
     /**
      * The private cloud SKU
      */
-    readonly sku: types.outputs.avs.SkuResponse;
+    readonly sku: types.outputs.SkuResponse;
     /**
      * Resource tags
      */

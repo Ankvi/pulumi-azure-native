@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a ElasticSan.
  */
@@ -55,7 +55,7 @@ export interface GetElasticSanResult {
     /**
      * The list of Private Endpoint Connections.
      */
-    readonly privateEndpointConnections: types.outputs.elasticsan.v20221201preview.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections: types.outputs.PrivateEndpointConnectionResponse[];
     /**
      * State of the operation on the resource.
      */
@@ -63,11 +63,11 @@ export interface GetElasticSanResult {
     /**
      * resource sku
      */
-    readonly sku: types.outputs.elasticsan.v20221201preview.SkuResponse;
+    readonly sku: types.outputs.SkuResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.elasticsan.v20221201preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A server security alert policy.
  */
@@ -153,7 +153,7 @@ export interface ServerSecurityAlertPolicyArgs {
     /**
      * Specifies the state of the policy, whether it is enabled or disabled.
      */
-    state: pulumi.Input<types.enums.v20171201preview.ServerSecurityAlertPolicyState>;
+    state: pulumi.Input<types.enums.ServerSecurityAlertPolicyState>;
     /**
      * Specifies the identifier key of the Threat Detection audit storage account.
      */

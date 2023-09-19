@@ -35,7 +35,7 @@ export class AzureTrafficCollector extends pulumi.CustomResource {
     /**
      * Collector Policies for Azure Traffic Collector.
      */
-    public /*out*/ readonly collectorPolicies!: pulumi.Output<types.outputs.networkfunction.ResourceReferenceResponse[]>;
+    public /*out*/ readonly collectorPolicies!: pulumi.Output<types.outputs.ResourceReferenceResponse[]>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -55,7 +55,7 @@ export class AzureTrafficCollector extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.networkfunction.TrackedResourceResponseSystemData>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.TrackedResourceResponseSystemData>;
     /**
      * Resource tags.
      */
@@ -67,7 +67,7 @@ export class AzureTrafficCollector extends pulumi.CustomResource {
     /**
      * The virtualHub to which the Azure Traffic Collector belongs.
      */
-    public /*out*/ readonly virtualHub!: pulumi.Output<types.outputs.networkfunction.ResourceReferenceResponse | undefined>;
+    public /*out*/ readonly virtualHub!: pulumi.Output<types.outputs.ResourceReferenceResponse | undefined>;
 
     /**
      * Create a AzureTrafficCollector resource with the given unique name, arguments, and options.

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * User this method to get details of a specific IoT Security solution based on solution name
  */
@@ -31,7 +31,7 @@ export interface GetIotSecuritySolutionResult {
     /**
      * List of additional workspaces
      */
-    readonly additionalWorkspaces?: types.outputs.security.v20190801.AdditionalWorkspacesPropertiesResponse[];
+    readonly additionalWorkspaces?: types.outputs.AdditionalWorkspacesPropertiesResponse[];
     /**
      * List of resources that were automatically discovered as relevant to the security solution.
      */
@@ -67,7 +67,7 @@ export interface GetIotSecuritySolutionResult {
     /**
      * List of the configuration status for each recommendation type.
      */
-    readonly recommendationsConfiguration?: types.outputs.security.v20190801.RecommendationConfigurationPropertiesResponse[];
+    readonly recommendationsConfiguration?: types.outputs.RecommendationConfigurationPropertiesResponse[];
     /**
      * Status of the IoT Security solution.
      */
@@ -75,7 +75,7 @@ export interface GetIotSecuritySolutionResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.security.v20190801.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags
      */
@@ -91,7 +91,7 @@ export interface GetIotSecuritySolutionResult {
     /**
      * Properties of the IoT Security solution's user defined resources.
      */
-    readonly userDefinedResources?: types.outputs.security.v20190801.UserDefinedResourcesPropertiesResponse;
+    readonly userDefinedResources?: types.outputs.UserDefinedResourcesPropertiesResponse;
     /**
      * Workspace resource ID
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Definition of the connection type.
  */
@@ -42,7 +42,7 @@ export class ConnectionType extends pulumi.CustomResource {
     /**
      * Gets the field definitions of the connection type.
      */
-    public readonly fieldDefinitions!: pulumi.Output<{[key: string]: types.outputs.automation.v20220808.FieldDefinitionResponse}>;
+    public readonly fieldDefinitions!: pulumi.Output<{[key: string]: types.outputs.FieldDefinitionResponse}>;
     /**
      * Gets or sets a Boolean value to indicate if the connection type is global.
      */
@@ -124,7 +124,7 @@ export interface ConnectionTypeArgs {
     /**
      * Gets or sets the field definitions of the connection type.
      */
-    fieldDefinitions: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.automation.v20220808.FieldDefinitionArgs>}>;
+    fieldDefinitions: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.FieldDefinitionArgs>}>;
     /**
      * Gets or sets a Boolean value to indicate if the connection type is global.
      */

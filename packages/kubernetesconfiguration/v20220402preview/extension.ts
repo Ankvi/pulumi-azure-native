@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The Extension object.
  */
@@ -34,7 +34,7 @@ export class Extension extends pulumi.CustomResource {
     /**
      * Identity of the Extension resource in an AKS cluster
      */
-    public readonly aksAssignedIdentity!: pulumi.Output<types.outputs.kubernetesconfiguration.v20220402preview.ExtensionResponseAksAssignedIdentity | undefined>;
+    public readonly aksAssignedIdentity!: pulumi.Output<types.outputs.ExtensionResponseAksAssignedIdentity | undefined>;
     /**
      * Flag to note if this extension participates in auto upgrade of minor version, or not.
      */
@@ -54,7 +54,7 @@ export class Extension extends pulumi.CustomResource {
     /**
      * Error information from the Agent - e.g. errors during installation.
      */
-    public /*out*/ readonly errorInfo!: pulumi.Output<types.outputs.kubernetesconfiguration.v20220402preview.ErrorDetailResponse>;
+    public /*out*/ readonly errorInfo!: pulumi.Output<types.outputs.ErrorDetailResponse>;
     /**
      * Type of the Extension, of which this resource is an instance of.  It must be one of the Extension Types registered with Microsoft.KubernetesConfiguration by the Extension publisher.
      */
@@ -62,7 +62,7 @@ export class Extension extends pulumi.CustomResource {
     /**
      * Identity of the Extension resource
      */
-    public readonly identity!: pulumi.Output<types.outputs.kubernetesconfiguration.v20220402preview.IdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityResponse | undefined>;
     /**
      * Installed version of the extension.
      */
@@ -78,7 +78,7 @@ export class Extension extends pulumi.CustomResource {
     /**
      * The plan information.
      */
-    public readonly plan!: pulumi.Output<types.outputs.kubernetesconfiguration.v20220402preview.PlanResponse | undefined>;
+    public readonly plan!: pulumi.Output<types.outputs.PlanResponse | undefined>;
     /**
      * Status of installation of this extension.
      */
@@ -90,15 +90,15 @@ export class Extension extends pulumi.CustomResource {
     /**
      * Scope at which the extension is installed.
      */
-    public readonly scope!: pulumi.Output<types.outputs.kubernetesconfiguration.v20220402preview.ScopeResponse | undefined>;
+    public readonly scope!: pulumi.Output<types.outputs.ScopeResponse | undefined>;
     /**
      * Status from this extension.
      */
-    public readonly statuses!: pulumi.Output<types.outputs.kubernetesconfiguration.v20220402preview.ExtensionStatusResponse[] | undefined>;
+    public readonly statuses!: pulumi.Output<types.outputs.ExtensionStatusResponse[] | undefined>;
     /**
      * Top level metadata https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-contracts.md#system-metadata-for-all-azure-resources
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.kubernetesconfiguration.v20220402preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -190,7 +190,7 @@ export interface ExtensionArgs {
     /**
      * Identity of the Extension resource in an AKS cluster
      */
-    aksAssignedIdentity?: pulumi.Input<types.inputs.kubernetesconfiguration.v20220402preview.ExtensionAksAssignedIdentityArgs>;
+    aksAssignedIdentity?: pulumi.Input<types.inputs.ExtensionAksAssignedIdentityArgs>;
     /**
      * Flag to note if this extension participates in auto upgrade of minor version, or not.
      */
@@ -226,11 +226,11 @@ export interface ExtensionArgs {
     /**
      * Identity of the Extension resource
      */
-    identity?: pulumi.Input<types.inputs.kubernetesconfiguration.v20220402preview.IdentityArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityArgs>;
     /**
      * The plan information.
      */
-    plan?: pulumi.Input<types.inputs.kubernetesconfiguration.v20220402preview.PlanArgs>;
+    plan?: pulumi.Input<types.inputs.PlanArgs>;
     /**
      * ReleaseTrain this extension participates in for auto-upgrade (e.g. Stable, Preview, etc.) - only if autoUpgradeMinorVersion is 'true'.
      */
@@ -242,11 +242,11 @@ export interface ExtensionArgs {
     /**
      * Scope at which the extension is installed.
      */
-    scope?: pulumi.Input<types.inputs.kubernetesconfiguration.v20220402preview.ScopeArgs>;
+    scope?: pulumi.Input<types.inputs.ScopeArgs>;
     /**
      * Status from this extension.
      */
-    statuses?: pulumi.Input<pulumi.Input<types.inputs.kubernetesconfiguration.v20220402preview.ExtensionStatusArgs>[]>;
+    statuses?: pulumi.Input<pulumi.Input<types.inputs.ExtensionStatusArgs>[]>;
     /**
      * User-specified version of the extension for this extension to 'pin'. To use 'version', autoUpgradeMinorVersion must be 'false'.
      */

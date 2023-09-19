@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A rules engine configuration containing a list of rules that will run to modify the runtime behavior of the request and response.
  */
@@ -42,7 +42,7 @@ export class RulesEngine extends pulumi.CustomResource {
     /**
      * A list of rules that define a particular Rules Engine Configuration.
      */
-    public readonly rules!: pulumi.Output<types.outputs.network.v20210601.RulesEngineRuleResponse[] | undefined>;
+    public readonly rules!: pulumi.Output<types.outputs.RulesEngineRuleResponse[] | undefined>;
     /**
      * Resource type.
      */
@@ -100,7 +100,7 @@ export interface RulesEngineArgs {
     /**
      * A list of rules that define a particular Rules Engine Configuration.
      */
-    rules?: pulumi.Input<pulumi.Input<types.inputs.network.v20210601.RulesEngineRuleArgs>[]>;
+    rules?: pulumi.Input<pulumi.Input<types.inputs.RulesEngineRuleArgs>[]>;
     /**
      * Name of the Rules Engine which is unique within the Front Door.
      */

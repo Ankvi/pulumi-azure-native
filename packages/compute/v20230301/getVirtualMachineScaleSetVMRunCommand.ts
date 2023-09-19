@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The operation to get the VMSS VM run command.
  */
@@ -50,7 +50,7 @@ export interface GetVirtualMachineScaleSetVMRunCommandResult {
     /**
      * User-assigned managed identity that has access to errorBlobUri storage blob. Use an empty object in case of system-assigned identity. Make sure managed identity has been given access to blob's container with 'Storage Blob Data Contributor' role assignment. In case of user-assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged 
      */
-    readonly errorBlobManagedIdentity?: types.outputs.compute.v20230301.RunCommandManagedIdentityResponse;
+    readonly errorBlobManagedIdentity?: types.outputs.RunCommandManagedIdentityResponse;
     /**
      * Specifies the Azure storage blob where script error stream will be uploaded. Use a SAS URI with read, append, create, write access OR use managed identity to provide the VM access to the blob. Refer errorBlobManagedIdentity parameter.
      */
@@ -62,7 +62,7 @@ export interface GetVirtualMachineScaleSetVMRunCommandResult {
     /**
      * The virtual machine run command instance view.
      */
-    readonly instanceView: types.outputs.compute.v20230301.VirtualMachineRunCommandInstanceViewResponse;
+    readonly instanceView: types.outputs.VirtualMachineRunCommandInstanceViewResponse;
     /**
      * Resource location
      */
@@ -74,7 +74,7 @@ export interface GetVirtualMachineScaleSetVMRunCommandResult {
     /**
      * User-assigned managed identity that has access to outputBlobUri storage blob. Use an empty object in case of system-assigned identity. Make sure managed identity has been given access to blob's container with 'Storage Blob Data Contributor' role assignment. In case of user-assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged 
      */
-    readonly outputBlobManagedIdentity?: types.outputs.compute.v20230301.RunCommandManagedIdentityResponse;
+    readonly outputBlobManagedIdentity?: types.outputs.RunCommandManagedIdentityResponse;
     /**
      * Specifies the Azure storage blob where script output stream will be uploaded. Use a SAS URI with read, append, create, write access OR use managed identity to provide the VM access to the blob. Refer outputBlobManagedIdentity parameter. 
      */
@@ -82,11 +82,11 @@ export interface GetVirtualMachineScaleSetVMRunCommandResult {
     /**
      * The parameters used by the script.
      */
-    readonly parameters?: types.outputs.compute.v20230301.RunCommandInputParameterResponse[];
+    readonly parameters?: types.outputs.RunCommandInputParameterResponse[];
     /**
      * The parameters used by the script.
      */
-    readonly protectedParameters?: types.outputs.compute.v20230301.RunCommandInputParameterResponse[];
+    readonly protectedParameters?: types.outputs.RunCommandInputParameterResponse[];
     /**
      * The provisioning state, which only appears in the response. If treatFailureAsDeploymentFailure set to true, any failure in the script will fail the deployment and ProvisioningState will be marked as Failed. If treatFailureAsDeploymentFailure set to false, ProvisioningState would only reflect whether the run command was run or not by the extensions platform, it would not indicate whether script failed in case of script failures. See instance view of run command in case of script failures to see executionMessage, output, error: https://aka.ms/runcommandmanaged#get-execution-status-and-results 
      */
@@ -102,7 +102,7 @@ export interface GetVirtualMachineScaleSetVMRunCommandResult {
     /**
      * The source of the run command script.
      */
-    readonly source?: types.outputs.compute.v20230301.VirtualMachineRunCommandScriptSourceResponse;
+    readonly source?: types.outputs.VirtualMachineRunCommandScriptSourceResponse;
     /**
      * Resource tags
      */

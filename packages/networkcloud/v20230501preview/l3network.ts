@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 export class L3Network extends pulumi.CustomResource {
     /**
      * Get an existing L3Network resource's state with the given name, ID, and optional extra
@@ -47,7 +47,7 @@ export class L3Network extends pulumi.CustomResource {
     /**
      * The extended location of the cluster associated with the resource.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.networkcloud.v20230501preview.ExtendedLocationResponse>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse>;
     /**
      * Field Deprecated. These fields will be empty/omitted. The list of Hybrid AKS cluster resource IDs that are associated with this L3 network.
      */
@@ -97,7 +97,7 @@ export class L3Network extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.networkcloud.v20230501preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -198,15 +198,15 @@ export interface L3NetworkArgs {
     /**
      * The extended location of the cluster associated with the resource.
      */
-    extendedLocation: pulumi.Input<types.inputs.networkcloud.v20230501preview.ExtendedLocationArgs>;
+    extendedLocation: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The indicator of whether or not to disable IPAM allocation on the network attachment definition injected into the Hybrid AKS Cluster.
      */
-    hybridAksIpamEnabled?: pulumi.Input<string | types.enums.v20230501preview.HybridAksIpamEnabled>;
+    hybridAksIpamEnabled?: pulumi.Input<string | types.enums.HybridAksIpamEnabled>;
     /**
      * Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The network plugin type for Hybrid AKS.
      */
-    hybridAksPluginType?: pulumi.Input<string | types.enums.v20230501preview.HybridAksPluginType>;
+    hybridAksPluginType?: pulumi.Input<string | types.enums.HybridAksPluginType>;
     /**
      * The default interface name for this L3 network in the virtual machine. This name can be overridden by the name supplied in the network attachment configuration of that virtual machine.
      */
@@ -214,7 +214,7 @@ export interface L3NetworkArgs {
     /**
      * The type of the IP address allocation, defaulted to "DualStack".
      */
-    ipAllocationType?: pulumi.Input<string | types.enums.v20230501preview.IpAllocationType>;
+    ipAllocationType?: pulumi.Input<string | types.enums.IpAllocationType>;
     /**
      * The IPV4 prefix (CIDR) assigned to this L3 network. Required when the IP allocation type
      * is IPV4 or DualStack.

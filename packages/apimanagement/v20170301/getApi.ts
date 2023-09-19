@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the details of the API specified by its identifier.
  */
@@ -48,7 +48,7 @@ export interface GetApiResult {
     /**
      * Api Version Set Contract details.
      */
-    readonly apiVersionSet?: types.outputs.apimanagement.v20170301.ApiVersionSetContractResponse;
+    readonly apiVersionSet?: types.outputs.ApiVersionSetContractResponse;
     /**
      * A resource identifier for the related ApiVersionSet.
      */
@@ -56,7 +56,7 @@ export interface GetApiResult {
     /**
      * Collection of authentication settings included into this API.
      */
-    readonly authenticationSettings?: types.outputs.apimanagement.v20170301.AuthenticationSettingsContractResponse;
+    readonly authenticationSettings?: types.outputs.AuthenticationSettingsContractResponse;
     /**
      * Description of the API. May include HTML formatting tags.
      */
@@ -96,7 +96,7 @@ export interface GetApiResult {
     /**
      * Protocols over which API is made available.
      */
-    readonly subscriptionKeyParameterNames?: types.outputs.apimanagement.v20170301.SubscriptionKeyParameterNamesContractResponse;
+    readonly subscriptionKeyParameterNames?: types.outputs.SubscriptionKeyParameterNamesContractResponse;
     /**
      * Resource type for API Management resource.
      */

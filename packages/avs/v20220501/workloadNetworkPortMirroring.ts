@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * NSX Port Mirroring
  */
@@ -126,7 +126,7 @@ export interface WorkloadNetworkPortMirroringArgs {
     /**
      * Direction of port mirroring profile.
      */
-    direction?: pulumi.Input<string | types.enums.v20220501.PortMirroringDirectionEnum>;
+    direction?: pulumi.Input<string | types.enums.PortMirroringDirectionEnum>;
     /**
      * Display name of the port mirroring profile.
      */

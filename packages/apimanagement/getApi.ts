@@ -57,7 +57,7 @@ export interface GetApiResult {
     /**
      * Version set details
      */
-    readonly apiVersionSet?: types.outputs.apimanagement.ApiVersionSetContractDetailsResponse;
+    readonly apiVersionSet?: types.outputs.ApiVersionSetContractDetailsResponse;
     /**
      * A resource identifier for the related ApiVersionSet.
      */
@@ -65,11 +65,11 @@ export interface GetApiResult {
     /**
      * Collection of authentication settings included into this API.
      */
-    readonly authenticationSettings?: types.outputs.apimanagement.AuthenticationSettingsContractResponse;
+    readonly authenticationSettings?: types.outputs.AuthenticationSettingsContractResponse;
     /**
      * Contact information for the API.
      */
-    readonly contact?: types.outputs.apimanagement.ApiContactInformationResponse;
+    readonly contact?: types.outputs.ApiContactInformationResponse;
     /**
      * Description of the API. May include HTML formatting tags.
      */
@@ -93,7 +93,7 @@ export interface GetApiResult {
     /**
      * License information for the API.
      */
-    readonly license?: types.outputs.apimanagement.ApiLicenseInformationResponse;
+    readonly license?: types.outputs.ApiLicenseInformationResponse;
     /**
      * The name of the resource
      */
@@ -117,7 +117,7 @@ export interface GetApiResult {
     /**
      * Protocols over which API is made available.
      */
-    readonly subscriptionKeyParameterNames?: types.outputs.apimanagement.SubscriptionKeyParameterNamesContractResponse;
+    readonly subscriptionKeyParameterNames?: types.outputs.SubscriptionKeyParameterNamesContractResponse;
     /**
      * Specifies whether an API or Product subscription is required for accessing the API.
      */

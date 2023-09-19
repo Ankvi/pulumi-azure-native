@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the details of the management group.
  */
@@ -41,11 +41,11 @@ export interface GetManagementGroupResult {
     /**
      * The list of children.
      */
-    readonly children?: types.outputs.management.v20230401.ManagementGroupChildInfoResponse[];
+    readonly children?: types.outputs.ManagementGroupChildInfoResponse[];
     /**
      * The details of a management group.
      */
-    readonly details?: types.outputs.management.v20230401.ManagementGroupDetailsResponse;
+    readonly details?: types.outputs.ManagementGroupDetailsResponse;
     /**
      * The friendly name of the management group.
      */

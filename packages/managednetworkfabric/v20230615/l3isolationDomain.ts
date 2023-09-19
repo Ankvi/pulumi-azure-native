@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The L3 Isolation Domain resource definition.
  */
@@ -38,7 +38,7 @@ export class L3IsolationDomain extends pulumi.CustomResource {
     /**
      * Aggregate route configurations.
      */
-    public readonly aggregateRouteConfiguration!: pulumi.Output<types.outputs.managednetworkfabric.v20230615.AggregateRouteConfigurationResponse | undefined>;
+    public readonly aggregateRouteConfiguration!: pulumi.Output<types.outputs.AggregateRouteConfigurationResponse | undefined>;
     /**
      * Switch configuration description.
      */
@@ -50,7 +50,7 @@ export class L3IsolationDomain extends pulumi.CustomResource {
     /**
      * Connected Subnet RoutePolicy
      */
-    public readonly connectedSubnetRoutePolicy!: pulumi.Output<types.outputs.managednetworkfabric.v20230615.ConnectedSubnetRoutePolicyResponse | undefined>;
+    public readonly connectedSubnetRoutePolicy!: pulumi.Output<types.outputs.ConnectedSubnetRoutePolicyResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -78,7 +78,7 @@ export class L3IsolationDomain extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.managednetworkfabric.v20230615.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -151,7 +151,7 @@ export interface L3IsolationDomainArgs {
     /**
      * Aggregate route configurations.
      */
-    aggregateRouteConfiguration?: pulumi.Input<types.inputs.managednetworkfabric.v20230615.AggregateRouteConfigurationArgs>;
+    aggregateRouteConfiguration?: pulumi.Input<types.inputs.AggregateRouteConfigurationArgs>;
     /**
      * Switch configuration description.
      */
@@ -159,7 +159,7 @@ export interface L3IsolationDomainArgs {
     /**
      * Connected Subnet RoutePolicy
      */
-    connectedSubnetRoutePolicy?: pulumi.Input<types.inputs.managednetworkfabric.v20230615.ConnectedSubnetRoutePolicyArgs>;
+    connectedSubnetRoutePolicy?: pulumi.Input<types.inputs.ConnectedSubnetRoutePolicyArgs>;
     /**
      * Name of the L3 Isolation Domain.
      */
@@ -175,11 +175,11 @@ export interface L3IsolationDomainArgs {
     /**
      * Advertise Connected Subnets. Ex: "True" | "False".
      */
-    redistributeConnectedSubnets?: pulumi.Input<string | types.enums.v20230615.RedistributeConnectedSubnets>;
+    redistributeConnectedSubnets?: pulumi.Input<string | types.enums.RedistributeConnectedSubnets>;
     /**
      * Advertise Static Routes. Ex: "True" | "False".
      */
-    redistributeStaticRoutes?: pulumi.Input<string | types.enums.v20230615.RedistributeStaticRoutes>;
+    redistributeStaticRoutes?: pulumi.Input<string | types.enums.RedistributeStaticRoutes>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

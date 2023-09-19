@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Implements HybridIdentityMetadata GET method.
  */
@@ -40,7 +40,7 @@ export interface GetHybridIdentityMetadatumResult {
     /**
      * The identity of the resource.
      */
-    readonly identity: types.outputs.connectedvmwarevsphere.v20220715preview.IdentityResponse;
+    readonly identity: types.outputs.IdentityResponse;
     /**
      * The name of the resource
      */
@@ -56,7 +56,7 @@ export interface GetHybridIdentityMetadatumResult {
     /**
      * The system data.
      */
-    readonly systemData: types.outputs.connectedvmwarevsphere.v20220715preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

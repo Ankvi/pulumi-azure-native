@@ -52,7 +52,7 @@ export interface GetAssessmentMetadataInSubscriptionResult {
     /**
      * Describes the partner that created the assessment
      */
-    readonly partnerData?: types.outputs.security.SecurityAssessmentMetadataPartnerDataResponse;
+    readonly partnerData?: types.outputs.SecurityAssessmentMetadataPartnerDataResponse;
     readonly plannedDeprecationDate?: string;
     /**
      * Azure resource ID of the policy definition that turns this assessment calculation on
@@ -62,7 +62,7 @@ export interface GetAssessmentMetadataInSubscriptionResult {
      * True if this assessment is in preview release status
      */
     readonly preview?: boolean;
-    readonly publishDates?: types.outputs.security.SecurityAssessmentMetadataPropertiesResponseResponsePublishDates;
+    readonly publishDates?: types.outputs.SecurityAssessmentMetadataPropertiesResponseResponsePublishDates;
     /**
      * Human readable description of what you should do to mitigate this security issue
      */

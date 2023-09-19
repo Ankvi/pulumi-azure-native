@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * ResourceGuardProxyBaseResource object, used for response and request bodies for ResourceGuardProxy APIs
  */
@@ -38,11 +38,11 @@ export class DppResourceGuardProxy extends pulumi.CustomResource {
     /**
      * ResourceGuardProxyBaseResource properties
      */
-    public readonly properties!: pulumi.Output<types.outputs.dataprotection.v20230401preview.ResourceGuardProxyBaseResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ResourceGuardProxyBaseResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.dataprotection.v20230401preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
      */
@@ -92,7 +92,7 @@ export interface DppResourceGuardProxyArgs {
     /**
      * ResourceGuardProxyBaseResource properties
      */
-    properties?: pulumi.Input<types.inputs.dataprotection.v20230401preview.ResourceGuardProxyBaseArgs>;
+    properties?: pulumi.Input<types.inputs.ResourceGuardProxyBaseArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

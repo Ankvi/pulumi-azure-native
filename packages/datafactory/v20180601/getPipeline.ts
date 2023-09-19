@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a pipeline.
  */
@@ -36,7 +36,7 @@ export interface GetPipelineResult {
     /**
      * List of activities in pipeline.
      */
-    readonly activities?: (types.outputs.datafactory.v20180601.AppendVariableActivityResponse | types.outputs.datafactory.v20180601.AzureDataExplorerCommandActivityResponse | types.outputs.datafactory.v20180601.AzureFunctionActivityResponse | types.outputs.datafactory.v20180601.AzureMLBatchExecutionActivityResponse | types.outputs.datafactory.v20180601.AzureMLExecutePipelineActivityResponse | types.outputs.datafactory.v20180601.AzureMLUpdateResourceActivityResponse | types.outputs.datafactory.v20180601.ControlActivityResponse | types.outputs.datafactory.v20180601.CopyActivityResponse | types.outputs.datafactory.v20180601.CustomActivityResponse | types.outputs.datafactory.v20180601.DataLakeAnalyticsUSQLActivityResponse | types.outputs.datafactory.v20180601.DatabricksNotebookActivityResponse | types.outputs.datafactory.v20180601.DatabricksSparkJarActivityResponse | types.outputs.datafactory.v20180601.DatabricksSparkPythonActivityResponse | types.outputs.datafactory.v20180601.DeleteActivityResponse | types.outputs.datafactory.v20180601.ExecuteDataFlowActivityResponse | types.outputs.datafactory.v20180601.ExecutePipelineActivityResponse | types.outputs.datafactory.v20180601.ExecuteSSISPackageActivityResponse | types.outputs.datafactory.v20180601.ExecuteWranglingDataflowActivityResponse | types.outputs.datafactory.v20180601.ExecutionActivityResponse | types.outputs.datafactory.v20180601.FailActivityResponse | types.outputs.datafactory.v20180601.FilterActivityResponse | types.outputs.datafactory.v20180601.ForEachActivityResponse | types.outputs.datafactory.v20180601.GetMetadataActivityResponse | types.outputs.datafactory.v20180601.HDInsightHiveActivityResponse | types.outputs.datafactory.v20180601.HDInsightMapReduceActivityResponse | types.outputs.datafactory.v20180601.HDInsightPigActivityResponse | types.outputs.datafactory.v20180601.HDInsightSparkActivityResponse | types.outputs.datafactory.v20180601.HDInsightStreamingActivityResponse | types.outputs.datafactory.v20180601.IfConditionActivityResponse | types.outputs.datafactory.v20180601.LookupActivityResponse | types.outputs.datafactory.v20180601.ScriptActivityResponse | types.outputs.datafactory.v20180601.SetVariableActivityResponse | types.outputs.datafactory.v20180601.SqlServerStoredProcedureActivityResponse | types.outputs.datafactory.v20180601.SwitchActivityResponse | types.outputs.datafactory.v20180601.SynapseNotebookActivityResponse | types.outputs.datafactory.v20180601.SynapseSparkJobDefinitionActivityResponse | types.outputs.datafactory.v20180601.UntilActivityResponse | types.outputs.datafactory.v20180601.ValidationActivityResponse | types.outputs.datafactory.v20180601.WaitActivityResponse | types.outputs.datafactory.v20180601.WebActivityResponse | types.outputs.datafactory.v20180601.WebHookActivityResponse)[];
+    readonly activities?: (types.outputs.AppendVariableActivityResponse | types.outputs.AzureDataExplorerCommandActivityResponse | types.outputs.AzureFunctionActivityResponse | types.outputs.AzureMLBatchExecutionActivityResponse | types.outputs.AzureMLExecutePipelineActivityResponse | types.outputs.AzureMLUpdateResourceActivityResponse | types.outputs.ControlActivityResponse | types.outputs.CopyActivityResponse | types.outputs.CustomActivityResponse | types.outputs.DataLakeAnalyticsUSQLActivityResponse | types.outputs.DatabricksNotebookActivityResponse | types.outputs.DatabricksSparkJarActivityResponse | types.outputs.DatabricksSparkPythonActivityResponse | types.outputs.DeleteActivityResponse | types.outputs.ExecuteDataFlowActivityResponse | types.outputs.ExecutePipelineActivityResponse | types.outputs.ExecuteSSISPackageActivityResponse | types.outputs.ExecuteWranglingDataflowActivityResponse | types.outputs.ExecutionActivityResponse | types.outputs.FailActivityResponse | types.outputs.FilterActivityResponse | types.outputs.ForEachActivityResponse | types.outputs.GetMetadataActivityResponse | types.outputs.HDInsightHiveActivityResponse | types.outputs.HDInsightMapReduceActivityResponse | types.outputs.HDInsightPigActivityResponse | types.outputs.HDInsightSparkActivityResponse | types.outputs.HDInsightStreamingActivityResponse | types.outputs.IfConditionActivityResponse | types.outputs.LookupActivityResponse | types.outputs.ScriptActivityResponse | types.outputs.SetVariableActivityResponse | types.outputs.SqlServerStoredProcedureActivityResponse | types.outputs.SwitchActivityResponse | types.outputs.SynapseNotebookActivityResponse | types.outputs.SynapseSparkJobDefinitionActivityResponse | types.outputs.UntilActivityResponse | types.outputs.ValidationActivityResponse | types.outputs.WaitActivityResponse | types.outputs.WebActivityResponse | types.outputs.WebHookActivityResponse)[];
     /**
      * List of tags that can be used for describing the Pipeline.
      */
@@ -56,7 +56,7 @@ export interface GetPipelineResult {
     /**
      * The folder that this Pipeline is in. If not specified, Pipeline will appear at the root level.
      */
-    readonly folder?: types.outputs.datafactory.v20180601.PipelineResponseFolder;
+    readonly folder?: types.outputs.PipelineResponseFolder;
     /**
      * The resource identifier.
      */
@@ -68,11 +68,11 @@ export interface GetPipelineResult {
     /**
      * List of parameters for pipeline.
      */
-    readonly parameters?: {[key: string]: types.outputs.datafactory.v20180601.ParameterSpecificationResponse};
+    readonly parameters?: {[key: string]: types.outputs.ParameterSpecificationResponse};
     /**
      * Pipeline Policy.
      */
-    readonly policy?: types.outputs.datafactory.v20180601.PipelinePolicyResponse;
+    readonly policy?: types.outputs.PipelinePolicyResponse;
     /**
      * Dimensions emitted by Pipeline.
      */
@@ -84,7 +84,7 @@ export interface GetPipelineResult {
     /**
      * List of variables for pipeline.
      */
-    readonly variables?: {[key: string]: types.outputs.datafactory.v20180601.VariableSpecificationResponse};
+    readonly variables?: {[key: string]: types.outputs.VariableSpecificationResponse};
 }
 /**
  * Gets a pipeline.

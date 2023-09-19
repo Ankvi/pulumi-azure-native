@@ -44,7 +44,7 @@ export interface GetDeploymentResult {
     /**
      * Deployment properties.
      */
-    readonly properties: types.outputs.resources.DeploymentPropertiesExtendedResponse;
+    readonly properties: types.outputs.DeploymentPropertiesExtendedResponse;
     /**
      * Deployment tags
      */

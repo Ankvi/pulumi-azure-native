@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * This operation retrieves a single policy exemption, given its name and the scope it was created at.
  */
@@ -71,11 +71,11 @@ export interface GetPolicyExemptionResult {
     /**
      * The resource selector list to filter policies by resource properties.
      */
-    readonly resourceSelectors?: types.outputs.authorization.v20220701preview.ResourceSelectorResponse[];
+    readonly resourceSelectors?: types.outputs.ResourceSelectorResponse[];
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.authorization.v20220701preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource (Microsoft.Authorization/policyExemptions).
      */

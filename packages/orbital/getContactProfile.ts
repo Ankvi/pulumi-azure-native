@@ -44,7 +44,7 @@ export interface GetContactProfileResult {
     /**
      * Links of the Contact Profile. Describes RF links, modem processing, and IP endpoints.
      */
-    readonly links: types.outputs.orbital.ContactProfileLinkResponse[];
+    readonly links: types.outputs.ContactProfileLinkResponse[];
     /**
      * The geo-location where the resource lives
      */
@@ -64,11 +64,11 @@ export interface GetContactProfileResult {
     /**
      * Network configuration of customer virtual network.
      */
-    readonly networkConfiguration: types.outputs.orbital.ContactProfilesPropertiesResponseNetworkConfiguration;
+    readonly networkConfiguration: types.outputs.ContactProfilesPropertiesResponseNetworkConfiguration;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.orbital.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -76,7 +76,7 @@ export interface GetContactProfileResult {
     /**
      * Third-party mission configuration of the Contact Profile. Describes RF links, modem processing, and IP endpoints.
      */
-    readonly thirdPartyConfigurations?: types.outputs.orbital.ContactProfileThirdPartyConfigurationResponse[];
+    readonly thirdPartyConfigurations?: types.outputs.ContactProfileThirdPartyConfigurationResponse[];
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

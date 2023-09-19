@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets an image.
  */
@@ -36,7 +36,7 @@ export interface GetImageResult {
     /**
      * The extended location of the Image.
      */
-    readonly extendedLocation?: types.outputs.compute.v20230701.ExtendedLocationResponse;
+    readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
     /**
      * Specifies the HyperVGenerationType of the VirtualMachine created from the image. From API Version 2019-03-01 if the image source is a blob, then we need the user to specify the value, if the source is managed resource like disk or snapshot, we may require the user to specify the property if we cannot deduce it from the source managed resource.
      */
@@ -60,11 +60,11 @@ export interface GetImageResult {
     /**
      * The source virtual machine from which Image is created.
      */
-    readonly sourceVirtualMachine?: types.outputs.compute.v20230701.SubResourceResponse;
+    readonly sourceVirtualMachine?: types.outputs.SubResourceResponse;
     /**
      * Specifies the storage settings for the virtual machine disks.
      */
-    readonly storageProfile?: types.outputs.compute.v20230701.ImageStorageProfileResponse;
+    readonly storageProfile?: types.outputs.ImageStorageProfileResponse;
     /**
      * Resource tags
      */

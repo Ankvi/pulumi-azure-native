@@ -41,11 +41,11 @@ export interface ListWebAppBackupConfigurationSlotResult {
     /**
      * Schedule for the backup if it is executed periodically.
      */
-    readonly backupSchedule?: types.outputs.web.BackupScheduleResponse;
+    readonly backupSchedule?: types.outputs.BackupScheduleResponse;
     /**
      * Databases included in the backup.
      */
-    readonly databases?: types.outputs.web.DatabaseBackupSettingResponse[];
+    readonly databases?: types.outputs.DatabaseBackupSettingResponse[];
     /**
      * True if the backup schedule is enabled (must be included in that case), false if the backup schedule should be disabled.
      */

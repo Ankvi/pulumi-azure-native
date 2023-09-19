@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Class representing a cluster principal assignment.
  */
@@ -62,7 +62,7 @@ export class KustoPoolPrincipalAssignment extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.synapse.v20210601preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The tenant id of the principal
      */
@@ -159,7 +159,7 @@ export interface KustoPoolPrincipalAssignmentArgs {
     /**
      * Principal type.
      */
-    principalType: pulumi.Input<string | types.enums.v20210601preview.PrincipalType>;
+    principalType: pulumi.Input<string | types.enums.PrincipalType>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -167,7 +167,7 @@ export interface KustoPoolPrincipalAssignmentArgs {
     /**
      * Cluster principal role.
      */
-    role: pulumi.Input<string | types.enums.v20210601preview.ClusterPrincipalRole>;
+    role: pulumi.Input<string | types.enums.ClusterPrincipalRole>;
     /**
      * The tenant id of the principal
      */

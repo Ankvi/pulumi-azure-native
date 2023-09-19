@@ -48,15 +48,15 @@ export interface GetAccountResult {
     /**
      * The map account properties.
      */
-    readonly properties: types.outputs.maps.MapsAccountPropertiesResponse;
+    readonly properties: types.outputs.MapsAccountPropertiesResponse;
     /**
      * The SKU of this account.
      */
-    readonly sku: types.outputs.maps.SkuResponse;
+    readonly sku: types.outputs.SkuResponse;
     /**
      * The system meta data relating to this resource.
      */
-    readonly systemData: types.outputs.maps.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

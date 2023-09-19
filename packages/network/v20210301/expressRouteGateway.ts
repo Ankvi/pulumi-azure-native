@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * ExpressRoute gateway resource.
  */
@@ -34,7 +34,7 @@ export class ExpressRouteGateway extends pulumi.CustomResource {
     /**
      * Configuration for auto scaling.
      */
-    public readonly autoScaleConfiguration!: pulumi.Output<types.outputs.network.v20210301.ExpressRouteGatewayPropertiesResponseAutoScaleConfiguration | undefined>;
+    public readonly autoScaleConfiguration!: pulumi.Output<types.outputs.ExpressRouteGatewayPropertiesResponseAutoScaleConfiguration | undefined>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -42,7 +42,7 @@ export class ExpressRouteGateway extends pulumi.CustomResource {
     /**
      * List of ExpressRoute connections to the ExpressRoute gateway.
      */
-    public /*out*/ readonly expressRouteConnections!: pulumi.Output<types.outputs.network.v20210301.ExpressRouteConnectionResponse[]>;
+    public /*out*/ readonly expressRouteConnections!: pulumi.Output<types.outputs.ExpressRouteConnectionResponse[]>;
     /**
      * Resource location.
      */
@@ -66,7 +66,7 @@ export class ExpressRouteGateway extends pulumi.CustomResource {
     /**
      * The Virtual Hub where the ExpressRoute gateway is or will be deployed.
      */
-    public readonly virtualHub!: pulumi.Output<types.outputs.network.v20210301.VirtualHubIdResponse>;
+    public readonly virtualHub!: pulumi.Output<types.outputs.VirtualHubIdResponse>;
 
     /**
      * Create a ExpressRouteGateway resource with the given unique name, arguments, and options.
@@ -122,7 +122,7 @@ export interface ExpressRouteGatewayArgs {
     /**
      * Configuration for auto scaling.
      */
-    autoScaleConfiguration?: pulumi.Input<types.inputs.network.v20210301.ExpressRouteGatewayPropertiesAutoScaleConfigurationArgs>;
+    autoScaleConfiguration?: pulumi.Input<types.inputs.ExpressRouteGatewayPropertiesAutoScaleConfigurationArgs>;
     /**
      * The name of the ExpressRoute gateway.
      */
@@ -146,5 +146,5 @@ export interface ExpressRouteGatewayArgs {
     /**
      * The Virtual Hub where the ExpressRoute gateway is or will be deployed.
      */
-    virtualHub: pulumi.Input<types.inputs.network.v20210301.VirtualHubIdArgs>;
+    virtualHub: pulumi.Input<types.inputs.VirtualHubIdArgs>;
 }

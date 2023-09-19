@@ -49,11 +49,11 @@ export interface GetDataConnectorResult {
     /**
      * DataConnector Properties.
      */
-    readonly properties: types.outputs.agfoodplatform.DataConnectorPropertiesResponse;
+    readonly properties: types.outputs.DataConnectorPropertiesResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.agfoodplatform.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

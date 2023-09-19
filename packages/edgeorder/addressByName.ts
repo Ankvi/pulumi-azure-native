@@ -39,7 +39,7 @@ export class AddressByName extends pulumi.CustomResource {
     /**
      * Contact details for the address
      */
-    public readonly contactDetails!: pulumi.Output<types.outputs.edgeorder.ContactDetailsResponse>;
+    public readonly contactDetails!: pulumi.Output<types.outputs.ContactDetailsResponse>;
     /**
      * The geo-location where the resource lives
      */
@@ -51,11 +51,11 @@ export class AddressByName extends pulumi.CustomResource {
     /**
      * Shipping details for the address
      */
-    public readonly shippingAddress!: pulumi.Output<types.outputs.edgeorder.ShippingAddressResponse | undefined>;
+    public readonly shippingAddress!: pulumi.Output<types.outputs.ShippingAddressResponse | undefined>;
     /**
      * Represents resource creation and update time
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.edgeorder.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -120,7 +120,7 @@ export interface AddressByNameArgs {
     /**
      * Contact details for the address
      */
-    contactDetails: pulumi.Input<types.inputs.edgeorder.ContactDetailsArgs>;
+    contactDetails: pulumi.Input<types.inputs.ContactDetailsArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -132,7 +132,7 @@ export interface AddressByNameArgs {
     /**
      * Shipping details for the address
      */
-    shippingAddress?: pulumi.Input<types.inputs.edgeorder.ShippingAddressArgs>;
+    shippingAddress?: pulumi.Input<types.inputs.ShippingAddressArgs>;
     /**
      * Resource tags.
      */

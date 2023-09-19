@@ -66,7 +66,7 @@ export interface GetStaticMemberResult {
     /**
      * The system metadata related to this resource.
      */
-    readonly systemData: types.outputs.network.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource type.
      */

@@ -37,7 +37,7 @@ export interface GetLoadBalancerBackendAddressPoolResult {
     /**
      * An array of references to IP addresses defined in network interfaces.
      */
-    readonly backendIPConfigurations: types.outputs.network.NetworkInterfaceIPConfigurationResponse[];
+    readonly backendIPConfigurations: types.outputs.NetworkInterfaceIPConfigurationResponse[];
     /**
      * Amount of seconds Load Balancer waits for before sending RESET to client and backend address.
      */
@@ -53,15 +53,15 @@ export interface GetLoadBalancerBackendAddressPoolResult {
     /**
      * An array of references to inbound NAT rules that use this backend address pool.
      */
-    readonly inboundNatRules: types.outputs.network.SubResourceResponse[];
+    readonly inboundNatRules: types.outputs.SubResourceResponse[];
     /**
      * An array of backend addresses.
      */
-    readonly loadBalancerBackendAddresses?: types.outputs.network.LoadBalancerBackendAddressResponse[];
+    readonly loadBalancerBackendAddresses?: types.outputs.LoadBalancerBackendAddressResponse[];
     /**
      * An array of references to load balancing rules that use this backend address pool.
      */
-    readonly loadBalancingRules: types.outputs.network.SubResourceResponse[];
+    readonly loadBalancingRules: types.outputs.SubResourceResponse[];
     /**
      * The location of the backend address pool.
      */
@@ -73,11 +73,11 @@ export interface GetLoadBalancerBackendAddressPoolResult {
     /**
      * A reference to an outbound rule that uses this backend address pool.
      */
-    readonly outboundRule: types.outputs.network.SubResourceResponse;
+    readonly outboundRule: types.outputs.SubResourceResponse;
     /**
      * An array of references to outbound rules that use this backend address pool.
      */
-    readonly outboundRules: types.outputs.network.SubResourceResponse[];
+    readonly outboundRules: types.outputs.SubResourceResponse[];
     /**
      * The provisioning state of the backend address pool resource.
      */
@@ -85,7 +85,7 @@ export interface GetLoadBalancerBackendAddressPoolResult {
     /**
      * An array of gateway load balancer tunnel interfaces.
      */
-    readonly tunnelInterfaces?: types.outputs.network.GatewayLoadBalancerTunnelInterfaceResponse[];
+    readonly tunnelInterfaces?: types.outputs.GatewayLoadBalancerTunnelInterfaceResponse[];
     /**
      * Type of the resource.
      */
@@ -93,7 +93,7 @@ export interface GetLoadBalancerBackendAddressPoolResult {
     /**
      * A reference to a virtual network.
      */
-    readonly virtualNetwork?: types.outputs.network.SubResourceResponse;
+    readonly virtualNetwork?: types.outputs.SubResourceResponse;
 }
 /**
  * Gets load balancer backend address pool.

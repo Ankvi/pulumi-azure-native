@@ -35,7 +35,7 @@ export class MDATPDataConnector extends pulumi.CustomResource {
     /**
      * The available data types for the connector.
      */
-    public readonly dataTypes!: pulumi.Output<types.outputs.securityinsights.AlertsDataTypeOfDataConnectorResponse | undefined>;
+    public readonly dataTypes!: pulumi.Output<types.outputs.AlertsDataTypeOfDataConnectorResponse | undefined>;
     /**
      * Etag of the azure resource
      */
@@ -52,7 +52,7 @@ export class MDATPDataConnector extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.securityinsights.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The tenant id to connect to, and get the data from.
      */
@@ -119,7 +119,7 @@ export interface MDATPDataConnectorArgs {
     /**
      * The available data types for the connector.
      */
-    dataTypes?: pulumi.Input<types.inputs.securityinsights.AlertsDataTypeOfDataConnectorArgs>;
+    dataTypes?: pulumi.Input<types.inputs.AlertsDataTypeOfDataConnectorArgs>;
     /**
      * The kind of the data connector
      * Expected value is 'MicrosoftDefenderAdvancedThreatProtection'.

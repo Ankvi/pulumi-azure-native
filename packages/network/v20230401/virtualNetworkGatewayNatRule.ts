@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * VirtualNetworkGatewayNatRule Resource.
  */
@@ -38,11 +38,11 @@ export class VirtualNetworkGatewayNatRule extends pulumi.CustomResource {
     /**
      * The private IP address external mapping for NAT.
      */
-    public readonly externalMappings!: pulumi.Output<types.outputs.network.v20230401.VpnNatRuleMappingResponse[] | undefined>;
+    public readonly externalMappings!: pulumi.Output<types.outputs.VpnNatRuleMappingResponse[] | undefined>;
     /**
      * The private IP address internal mapping for NAT.
      */
-    public readonly internalMappings!: pulumi.Output<types.outputs.network.v20230401.VpnNatRuleMappingResponse[] | undefined>;
+    public readonly internalMappings!: pulumi.Output<types.outputs.VpnNatRuleMappingResponse[] | undefined>;
     /**
      * The IP Configuration ID this NAT rule applies to.
      */
@@ -117,7 +117,7 @@ export interface VirtualNetworkGatewayNatRuleArgs {
     /**
      * The private IP address external mapping for NAT.
      */
-    externalMappings?: pulumi.Input<pulumi.Input<types.inputs.network.v20230401.VpnNatRuleMappingArgs>[]>;
+    externalMappings?: pulumi.Input<pulumi.Input<types.inputs.VpnNatRuleMappingArgs>[]>;
     /**
      * Resource ID.
      */
@@ -125,7 +125,7 @@ export interface VirtualNetworkGatewayNatRuleArgs {
     /**
      * The private IP address internal mapping for NAT.
      */
-    internalMappings?: pulumi.Input<pulumi.Input<types.inputs.network.v20230401.VpnNatRuleMappingArgs>[]>;
+    internalMappings?: pulumi.Input<pulumi.Input<types.inputs.VpnNatRuleMappingArgs>[]>;
     /**
      * The IP Configuration ID this NAT rule applies to.
      */
@@ -133,7 +133,7 @@ export interface VirtualNetworkGatewayNatRuleArgs {
     /**
      * The Source NAT direction of a VPN NAT.
      */
-    mode?: pulumi.Input<string | types.enums.v20230401.VpnNatRuleMode>;
+    mode?: pulumi.Input<string | types.enums.VpnNatRuleMode>;
     /**
      * The name of the resource that is unique within a resource group. This name can be used to access the resource.
      */
@@ -149,7 +149,7 @@ export interface VirtualNetworkGatewayNatRuleArgs {
     /**
      * The type of NAT rule for VPN NAT.
      */
-    type?: pulumi.Input<string | types.enums.v20230401.VpnNatRuleType>;
+    type?: pulumi.Input<string | types.enums.VpnNatRuleType>;
     /**
      * The name of the gateway.
      */

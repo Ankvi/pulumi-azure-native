@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A server security alert policy.
  */
@@ -70,7 +70,7 @@ export class ServerSecurityAlertPolicy extends pulumi.CustomResource {
     /**
      * SystemData of SecurityAlertPolicyResource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.sql.v20230201preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource type.
      */
@@ -165,7 +165,7 @@ export interface ServerSecurityAlertPolicyArgs {
     /**
      * Specifies the state of the policy, whether it is enabled or disabled or a policy has not been applied yet on the specific database.
      */
-    state: pulumi.Input<types.enums.v20230201preview.SecurityAlertsPolicyState>;
+    state: pulumi.Input<types.enums.SecurityAlertsPolicyState>;
     /**
      * Specifies the identifier key of the Threat Detection audit storage account.
      */

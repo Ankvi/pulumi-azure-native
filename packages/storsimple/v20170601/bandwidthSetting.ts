@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The bandwidth setting.
  */
@@ -42,7 +42,7 @@ export class BandwidthSetting extends pulumi.CustomResource {
     /**
      * The schedules.
      */
-    public readonly schedules!: pulumi.Output<types.outputs.storsimple.v20170601.BandwidthScheduleResponse[]>;
+    public readonly schedules!: pulumi.Output<types.outputs.BandwidthScheduleResponse[]>;
     /**
      * The hierarchical type of the object.
      */
@@ -105,7 +105,7 @@ export interface BandwidthSettingArgs {
     /**
      * The Kind of the object. Currently only Series8000 is supported
      */
-    kind?: pulumi.Input<types.enums.v20170601.Kind>;
+    kind?: pulumi.Input<types.enums.Kind>;
     /**
      * The manager name
      */
@@ -117,5 +117,5 @@ export interface BandwidthSettingArgs {
     /**
      * The schedules.
      */
-    schedules: pulumi.Input<pulumi.Input<types.inputs.storsimple.v20170601.BandwidthScheduleArgs>[]>;
+    schedules: pulumi.Input<pulumi.Input<types.inputs.BandwidthScheduleArgs>[]>;
 }

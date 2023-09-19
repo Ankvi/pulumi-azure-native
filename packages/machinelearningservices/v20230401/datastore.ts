@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Azure Resource Manager resource envelope.
  */
@@ -34,7 +34,7 @@ export class Datastore extends pulumi.CustomResource {
     /**
      * [Required] Additional attributes of the entity.
      */
-    public readonly datastoreProperties!: pulumi.Output<types.outputs.machinelearningservices.v20230401.AzureBlobDatastoreResponse | types.outputs.machinelearningservices.v20230401.AzureDataLakeGen1DatastoreResponse | types.outputs.machinelearningservices.v20230401.AzureDataLakeGen2DatastoreResponse | types.outputs.machinelearningservices.v20230401.AzureFileDatastoreResponse>;
+    public readonly datastoreProperties!: pulumi.Output<types.outputs.AzureBlobDatastoreResponse | types.outputs.AzureDataLakeGen1DatastoreResponse | types.outputs.AzureDataLakeGen2DatastoreResponse | types.outputs.AzureFileDatastoreResponse>;
     /**
      * The name of the resource
      */
@@ -42,7 +42,7 @@ export class Datastore extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.machinelearningservices.v20230401.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -95,7 +95,7 @@ export interface DatastoreArgs {
     /**
      * [Required] Additional attributes of the entity.
      */
-    datastoreProperties: pulumi.Input<types.inputs.machinelearningservices.v20230401.AzureBlobDatastoreArgs | types.inputs.machinelearningservices.v20230401.AzureDataLakeGen1DatastoreArgs | types.inputs.machinelearningservices.v20230401.AzureDataLakeGen2DatastoreArgs | types.inputs.machinelearningservices.v20230401.AzureFileDatastoreArgs>;
+    datastoreProperties: pulumi.Input<types.inputs.AzureBlobDatastoreArgs | types.inputs.AzureDataLakeGen1DatastoreArgs | types.inputs.AzureDataLakeGen2DatastoreArgs | types.inputs.AzureFileDatastoreArgs>;
     /**
      * Datastore name.
      */

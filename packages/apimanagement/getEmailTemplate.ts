@@ -57,7 +57,7 @@ export interface GetEmailTemplateResult {
     /**
      * Email Template Parameter values.
      */
-    readonly parameters?: types.outputs.apimanagement.EmailTemplateParametersContractPropertiesResponse[];
+    readonly parameters?: types.outputs.EmailTemplateParametersContractPropertiesResponse[];
     /**
      * Subject of the Template.
      */

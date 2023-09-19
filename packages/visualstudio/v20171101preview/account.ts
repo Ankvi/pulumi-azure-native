@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The response to an account resource GET request.
  */
@@ -104,7 +104,7 @@ export interface AccountArgs {
     /**
      * The type of the operation.
      */
-    operationType?: pulumi.Input<string | types.enums.v20171101preview.AccountResourceRequestOperationType>;
+    operationType?: pulumi.Input<string | types.enums.AccountResourceRequestOperationType>;
     /**
      * The custom properties of the resource.
      */

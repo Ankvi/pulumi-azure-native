@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * List of elastic traffic filters in the account
  */
@@ -31,7 +31,7 @@ export interface ListlistAssociatedTrafficFilterResult {
     /**
      * List of elastic traffic filters in the account
      */
-    readonly rulesets?: types.outputs.elastic.v20230601.ElasticTrafficFilterResponse[];
+    readonly rulesets?: types.outputs.ElasticTrafficFilterResponse[];
 }
 /**
  * List of elastic traffic filters in the account

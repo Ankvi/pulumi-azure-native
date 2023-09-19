@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * AzureStorageInfo dictionary resource.
  */
@@ -42,7 +42,7 @@ export class WebAppAzureStorageAccountsSlot extends pulumi.CustomResource {
     /**
      * Azure storage accounts.
      */
-    public readonly properties!: pulumi.Output<{[key: string]: types.outputs.web.v20220901.AzureStorageInfoValueResponse}>;
+    public readonly properties!: pulumi.Output<{[key: string]: types.outputs.AzureStorageInfoValueResponse}>;
     /**
      * Resource type.
      */
@@ -102,7 +102,7 @@ export interface WebAppAzureStorageAccountsSlotArgs {
     /**
      * Azure storage accounts.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.web.v20220901.AzureStorageInfoValueArgs>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.AzureStorageInfoValueArgs>}>;
     /**
      * Name of the resource group to which the resource belongs.
      */

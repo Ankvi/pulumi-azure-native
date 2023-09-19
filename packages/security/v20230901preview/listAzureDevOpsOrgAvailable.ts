@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * List of RP resources which supports pagination.
  */
@@ -35,7 +35,7 @@ export interface ListAzureDevOpsOrgAvailableResult {
     /**
      * Gets or sets list of resources.
      */
-    readonly value?: types.outputs.security.v20230901preview.AzureDevOpsOrgResponse[];
+    readonly value?: types.outputs.AzureDevOpsOrgResponse[];
 }
 /**
  * List of RP resources which supports pagination.

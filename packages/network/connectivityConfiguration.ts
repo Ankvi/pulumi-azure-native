@@ -35,7 +35,7 @@ export class ConnectivityConfiguration extends pulumi.CustomResource {
     /**
      * Groups for configuration
      */
-    public readonly appliesToGroups!: pulumi.Output<types.outputs.network.ConnectivityGroupItemResponse[]>;
+    public readonly appliesToGroups!: pulumi.Output<types.outputs.ConnectivityGroupItemResponse[]>;
     /**
      * Connectivity topology type.
      */
@@ -55,7 +55,7 @@ export class ConnectivityConfiguration extends pulumi.CustomResource {
     /**
      * List of hubItems
      */
-    public readonly hubs!: pulumi.Output<types.outputs.network.HubResponse[] | undefined>;
+    public readonly hubs!: pulumi.Output<types.outputs.HubResponse[] | undefined>;
     /**
      * Flag if global mesh is supported.
      */
@@ -75,7 +75,7 @@ export class ConnectivityConfiguration extends pulumi.CustomResource {
     /**
      * The system metadata related to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.network.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource type.
      */
@@ -147,7 +147,7 @@ export interface ConnectivityConfigurationArgs {
     /**
      * Groups for configuration
      */
-    appliesToGroups: pulumi.Input<pulumi.Input<types.inputs.network.ConnectivityGroupItemArgs>[]>;
+    appliesToGroups: pulumi.Input<pulumi.Input<types.inputs.ConnectivityGroupItemArgs>[]>;
     /**
      * The name of the network manager connectivity configuration.
      */
@@ -167,7 +167,7 @@ export interface ConnectivityConfigurationArgs {
     /**
      * List of hubItems
      */
-    hubs?: pulumi.Input<pulumi.Input<types.inputs.network.HubArgs>[]>;
+    hubs?: pulumi.Input<pulumi.Input<types.inputs.HubArgs>[]>;
     /**
      * Flag if global mesh is supported.
      */

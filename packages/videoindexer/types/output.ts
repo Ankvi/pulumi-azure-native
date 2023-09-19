@@ -1,166 +1,81 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
-export namespace videoindexer {
+/**
+ * Managed service identity (system assigned and/or user assigned identities)
+ */
+export interface ManagedServiceIdentityResponse {
     /**
-     * Managed service identity (system assigned and/or user assigned identities)
+     * The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
      */
-    export interface ManagedServiceIdentityResponse {
-        /**
-         * The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
-         */
-        principalId: string;
-        /**
-         * The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
-         */
-        tenantId: string;
-        /**
-         * Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-         */
-        type: string;
-        /**
-         * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-         */
-        userAssignedIdentities?: {[key: string]: UserAssignedIdentityResponse};
-    }
-
+    principalId: string;
     /**
-     * The media services details
+     * The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
      */
-    export interface MediaServicesForPutRequestResponse {
-        /**
-         * The media services resource id
-         */
-        resourceId?: string;
-        /**
-         * The user assigned identity to be used to grant permissions
-         */
-        userAssignedIdentity?: string;
-    }
-
+    tenantId: string;
     /**
-     * Metadata pertaining to creation and last modification of the resource.
+     * Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
      */
-    export interface SystemDataResponse {
-        /**
-         * The timestamp of resource creation (UTC).
-         */
-        createdAt?: string;
-        /**
-         * The identity that created the resource.
-         */
-        createdBy?: string;
-        /**
-         * The type of identity that created the resource.
-         */
-        createdByType?: string;
-        /**
-         * The timestamp of resource last modification (UTC)
-         */
-        lastModifiedAt?: string;
-        /**
-         * The identity that last modified the resource.
-         */
-        lastModifiedBy?: string;
-        /**
-         * The type of identity that last modified the resource.
-         */
-        lastModifiedByType?: string;
-    }
-
+    type: string;
     /**
-     * User assigned identity properties
+     * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
      */
-    export interface UserAssignedIdentityResponse {
-        /**
-         * The client ID of the assigned identity.
-         */
-        clientId: string;
-        /**
-         * The principal ID of the assigned identity.
-         */
-        principalId: string;
-    }
+    userAssignedIdentities?: {[key: string]: UserAssignedIdentityResponse};
+}
 
-    export namespace v20220801 {
-        /**
-         * Managed service identity (system assigned and/or user assigned identities)
-         */
-        export interface ManagedServiceIdentityResponse {
-            /**
-             * The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
-             */
-            principalId: string;
-            /**
-             * The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
-             */
-            tenantId: string;
-            /**
-             * Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-             */
-            type: string;
-            /**
-             * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-             */
-            userAssignedIdentities?: {[key: string]: v20220801.UserAssignedIdentityResponse};
-        }
+/**
+ * The media services details
+ */
+export interface MediaServicesForPutRequestResponse {
+    /**
+     * The media services resource id
+     */
+    resourceId?: string;
+    /**
+     * The user assigned identity to be used to grant permissions
+     */
+    userAssignedIdentity?: string;
+}
 
-        /**
-         * The media services details
-         */
-        export interface MediaServicesForPutRequestResponse {
-            /**
-             * The media services resource id
-             */
-            resourceId?: string;
-            /**
-             * The user assigned identity to be used to grant permissions
-             */
-            userAssignedIdentity?: string;
-        }
+/**
+ * Metadata pertaining to creation and last modification of the resource.
+ */
+export interface SystemDataResponse {
+    /**
+     * The timestamp of resource creation (UTC).
+     */
+    createdAt?: string;
+    /**
+     * The identity that created the resource.
+     */
+    createdBy?: string;
+    /**
+     * The type of identity that created the resource.
+     */
+    createdByType?: string;
+    /**
+     * The timestamp of resource last modification (UTC)
+     */
+    lastModifiedAt?: string;
+    /**
+     * The identity that last modified the resource.
+     */
+    lastModifiedBy?: string;
+    /**
+     * The type of identity that last modified the resource.
+     */
+    lastModifiedByType?: string;
+}
 
-        /**
-         * Metadata pertaining to creation and last modification of the resource.
-         */
-        export interface SystemDataResponse {
-            /**
-             * The timestamp of resource creation (UTC).
-             */
-            createdAt?: string;
-            /**
-             * The identity that created the resource.
-             */
-            createdBy?: string;
-            /**
-             * The type of identity that created the resource.
-             */
-            createdByType?: string;
-            /**
-             * The timestamp of resource last modification (UTC)
-             */
-            lastModifiedAt?: string;
-            /**
-             * The identity that last modified the resource.
-             */
-            lastModifiedBy?: string;
-            /**
-             * The type of identity that last modified the resource.
-             */
-            lastModifiedByType?: string;
-        }
-
-        /**
-         * User assigned identity properties
-         */
-        export interface UserAssignedIdentityResponse {
-            /**
-             * The client ID of the assigned identity.
-             */
-            clientId: string;
-            /**
-             * The principal ID of the assigned identity.
-             */
-            principalId: string;
-        }
-
-    }
+/**
+ * User assigned identity properties
+ */
+export interface UserAssignedIdentityResponse {
+    /**
+     * The client ID of the assigned identity.
+     */
+    clientId: string;
+    /**
+     * The principal ID of the assigned identity.
+     */
+    principalId: string;
 }

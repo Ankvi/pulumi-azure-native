@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get information about a virtual machine image template
  */
@@ -35,11 +35,11 @@ export interface GetVirtualMachineImageTemplateResult {
     /**
      * Specifies the properties used to describe the customization steps of the image, like Image source etc
      */
-    readonly customize?: (types.outputs.virtualmachineimages.v20220701.ImageTemplateFileCustomizerResponse | types.outputs.virtualmachineimages.v20220701.ImageTemplatePowerShellCustomizerResponse | types.outputs.virtualmachineimages.v20220701.ImageTemplateRestartCustomizerResponse | types.outputs.virtualmachineimages.v20220701.ImageTemplateShellCustomizerResponse | types.outputs.virtualmachineimages.v20220701.ImageTemplateWindowsUpdateCustomizerResponse)[];
+    readonly customize?: (types.outputs.ImageTemplateFileCustomizerResponse | types.outputs.ImageTemplatePowerShellCustomizerResponse | types.outputs.ImageTemplateRestartCustomizerResponse | types.outputs.ImageTemplateShellCustomizerResponse | types.outputs.ImageTemplateWindowsUpdateCustomizerResponse)[];
     /**
      * The distribution targets where the image output needs to go to.
      */
-    readonly distribute: (types.outputs.virtualmachineimages.v20220701.ImageTemplateManagedImageDistributorResponse | types.outputs.virtualmachineimages.v20220701.ImageTemplateSharedImageDistributorResponse | types.outputs.virtualmachineimages.v20220701.ImageTemplateVhdDistributorResponse)[];
+    readonly distribute: (types.outputs.ImageTemplateManagedImageDistributorResponse | types.outputs.ImageTemplateSharedImageDistributorResponse | types.outputs.ImageTemplateVhdDistributorResponse)[];
     /**
      * The staging resource group id in the same subscription as the image template that will be used to build the image. This read-only field differs from 'stagingResourceGroup' only if the value specified in the 'stagingResourceGroup' field is empty.
      */
@@ -51,11 +51,11 @@ export interface GetVirtualMachineImageTemplateResult {
     /**
      * The identity of the image template, if configured.
      */
-    readonly identity: types.outputs.virtualmachineimages.v20220701.ImageTemplateIdentityResponse;
+    readonly identity: types.outputs.ImageTemplateIdentityResponse;
     /**
      * State of 'run' that is currently executing or was last executed.
      */
-    readonly lastRunStatus: types.outputs.virtualmachineimages.v20220701.ImageTemplateLastRunStatusResponse;
+    readonly lastRunStatus: types.outputs.ImageTemplateLastRunStatusResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -67,11 +67,11 @@ export interface GetVirtualMachineImageTemplateResult {
     /**
      * Specifies optimization to be performed on image.
      */
-    readonly optimize?: types.outputs.virtualmachineimages.v20220701.ImageTemplatePropertiesResponseOptimize;
+    readonly optimize?: types.outputs.ImageTemplatePropertiesResponseOptimize;
     /**
      * Provisioning error, if any
      */
-    readonly provisioningError: types.outputs.virtualmachineimages.v20220701.ProvisioningErrorResponse;
+    readonly provisioningError: types.outputs.ProvisioningErrorResponse;
     /**
      * Provisioning state of the resource
      */
@@ -79,7 +79,7 @@ export interface GetVirtualMachineImageTemplateResult {
     /**
      * Specifies the properties used to describe the source image.
      */
-    readonly source: types.outputs.virtualmachineimages.v20220701.ImageTemplateManagedImageSourceResponse | types.outputs.virtualmachineimages.v20220701.ImageTemplatePlatformImageSourceResponse | types.outputs.virtualmachineimages.v20220701.ImageTemplateSharedImageVersionSourceResponse;
+    readonly source: types.outputs.ImageTemplateManagedImageSourceResponse | types.outputs.ImageTemplatePlatformImageSourceResponse | types.outputs.ImageTemplateSharedImageVersionSourceResponse;
     /**
      * The staging resource group id in the same subscription as the image template that will be used to build the image. If this field is empty, a resource group with a random name will be created. If the resource group specified in this field doesn't exist, it will be created with the same name. If the resource group specified exists, it must be empty and in the same region as the image template. The resource group created will be deleted during template deletion if this field is empty or the resource group specified doesn't exist, but if the resource group specified exists the resources created in the resource group will be deleted during template deletion and the resource group itself will remain.
      */
@@ -87,7 +87,7 @@ export interface GetVirtualMachineImageTemplateResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.virtualmachineimages.v20220701.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -99,11 +99,11 @@ export interface GetVirtualMachineImageTemplateResult {
     /**
      * Configuration options and list of validations to be performed on the resulting image.
      */
-    readonly validate?: types.outputs.virtualmachineimages.v20220701.ImageTemplatePropertiesResponseValidate;
+    readonly validate?: types.outputs.ImageTemplatePropertiesResponseValidate;
     /**
      * Describes how virtual machine is set up to build images
      */
-    readonly vmProfile?: types.outputs.virtualmachineimages.v20220701.ImageTemplateVmProfileResponse;
+    readonly vmProfile?: types.outputs.ImageTemplateVmProfileResponse;
 }
 /**
  * Get information about a virtual machine image template

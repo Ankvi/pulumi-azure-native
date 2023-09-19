@@ -39,7 +39,7 @@ export class InboundEndpoint extends pulumi.CustomResource {
     /**
      * IP configurations for the inbound endpoint.
      */
-    public readonly ipConfigurations!: pulumi.Output<types.outputs.network.InboundEndpointIPConfigurationResponse[]>;
+    public readonly ipConfigurations!: pulumi.Output<types.outputs.InboundEndpointIPConfigurationResponse[]>;
     /**
      * The geo-location where the resource lives
      */
@@ -59,7 +59,7 @@ export class InboundEndpoint extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.network.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -134,7 +134,7 @@ export interface InboundEndpointArgs {
     /**
      * IP configurations for the inbound endpoint.
      */
-    ipConfigurations: pulumi.Input<pulumi.Input<types.inputs.network.InboundEndpointIPConfigurationArgs>[]>;
+    ipConfigurations: pulumi.Input<pulumi.Input<types.inputs.InboundEndpointIPConfigurationArgs>[]>;
     /**
      * The geo-location where the resource lives
      */

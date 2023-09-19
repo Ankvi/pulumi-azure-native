@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns the properties of a lab user.
  */
@@ -72,11 +72,11 @@ export interface GetUserResult {
     /**
      * Error details of last operation done on lab plan.
      */
-    readonly resourceOperationError: types.outputs.labservices.v20230607.ResourceOperationErrorResponse;
+    readonly resourceOperationError: types.outputs.ResourceOperationErrorResponse;
     /**
      * Metadata pertaining to creation and last modification of the user resource.
      */
-    readonly systemData: types.outputs.labservices.v20230607.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * How long the user has used their virtual machines in this lab.
      */

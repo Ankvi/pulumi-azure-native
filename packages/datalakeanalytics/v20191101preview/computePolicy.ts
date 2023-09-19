@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Data Lake Analytics compute policy information.
  */
@@ -130,7 +130,7 @@ export interface ComputePolicyArgs {
     /**
      * The type of AAD object the object identifier refers to.
      */
-    objectType: pulumi.Input<string | types.enums.v20191101preview.AADObjectType>;
+    objectType: pulumi.Input<string | types.enums.AADObjectType>;
     /**
      * The name of the Azure resource group.
      */

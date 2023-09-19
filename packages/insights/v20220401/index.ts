@@ -13,7 +13,7 @@ utilities.lazyLoad(exports, ["Workbook"], () => require("./workbook"));
 
 
 // Export enums:
-export * from "../types/enums/v20220401";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

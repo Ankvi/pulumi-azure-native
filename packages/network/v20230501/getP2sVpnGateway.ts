@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves the details of a virtual wan p2s vpn gateway.
  */
@@ -55,7 +55,7 @@ export interface GetP2sVpnGatewayResult {
     /**
      * List of all p2s connection configurations of the gateway.
      */
-    readonly p2SConnectionConfigurations?: types.outputs.network.v20230501.P2SConnectionConfigurationResponse[];
+    readonly p2SConnectionConfigurations?: types.outputs.P2SConnectionConfigurationResponse[];
     /**
      * The provisioning state of the P2S VPN gateway resource.
      */
@@ -71,11 +71,11 @@ export interface GetP2sVpnGatewayResult {
     /**
      * The VirtualHub to which the gateway belongs.
      */
-    readonly virtualHub?: types.outputs.network.v20230501.SubResourceResponse;
+    readonly virtualHub?: types.outputs.SubResourceResponse;
     /**
      * All P2S VPN clients' connection health status.
      */
-    readonly vpnClientConnectionHealth: types.outputs.network.v20230501.VpnClientConnectionHealthResponse;
+    readonly vpnClientConnectionHealth: types.outputs.VpnClientConnectionHealthResponse;
     /**
      * The scale unit for this p2s vpn gateway.
      */
@@ -83,7 +83,7 @@ export interface GetP2sVpnGatewayResult {
     /**
      * The VpnServerConfiguration to which the p2sVpnGateway is attached to.
      */
-    readonly vpnServerConfiguration?: types.outputs.network.v20230501.SubResourceResponse;
+    readonly vpnServerConfiguration?: types.outputs.SubResourceResponse;
 }
 /**
  * Retrieves the details of a virtual wan p2s vpn gateway.

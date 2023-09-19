@@ -68,11 +68,11 @@ export interface GetDomainResult {
     /**
      * Identity information for the Event Grid Domain resource.
      */
-    readonly identity?: types.outputs.eventgrid.IdentityInfoResponse;
+    readonly identity?: types.outputs.IdentityInfoResponse;
     /**
      * This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled.
      */
-    readonly inboundIpRules?: types.outputs.eventgrid.InboundIpRuleResponse[];
+    readonly inboundIpRules?: types.outputs.InboundIpRuleResponse[];
     /**
      * This determines the format that Event Grid should expect for incoming events published to the Event Grid Domain Resource.
      */
@@ -80,7 +80,7 @@ export interface GetDomainResult {
     /**
      * Information about the InputSchemaMapping which specified the info about mapping event payload.
      */
-    readonly inputSchemaMapping?: types.outputs.eventgrid.JsonInputSchemaMappingResponse;
+    readonly inputSchemaMapping?: types.outputs.JsonInputSchemaMappingResponse;
     /**
      * Location of the resource.
      */
@@ -96,7 +96,7 @@ export interface GetDomainResult {
     /**
      * List of private endpoint connections.
      */
-    readonly privateEndpointConnections: types.outputs.eventgrid.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections: types.outputs.PrivateEndpointConnectionResponse[];
     /**
      * Provisioning state of the Event Grid Domain Resource.
      */
@@ -109,7 +109,7 @@ export interface GetDomainResult {
     /**
      * The system metadata relating to the Event Grid Domain resource.
      */
-    readonly systemData: types.outputs.eventgrid.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Tags of the resource.
      */

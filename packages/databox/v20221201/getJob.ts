@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets information about the specified job.
  */
@@ -40,7 +40,7 @@ export interface GetJobResult {
     /**
      * Delivery Info of Job.
      */
-    readonly deliveryInfo?: types.outputs.databox.v20221201.JobDeliveryInfoResponse;
+    readonly deliveryInfo?: types.outputs.JobDeliveryInfoResponse;
     /**
      * Delivery type of Job.
      */
@@ -48,11 +48,11 @@ export interface GetJobResult {
     /**
      * Details of a job run. This field will only be sent for expand details filter.
      */
-    readonly details?: types.outputs.databox.v20221201.DataBoxCustomerDiskJobDetailsResponse | types.outputs.databox.v20221201.DataBoxDiskJobDetailsResponse | types.outputs.databox.v20221201.DataBoxHeavyJobDetailsResponse | types.outputs.databox.v20221201.DataBoxJobDetailsResponse;
+    readonly details?: types.outputs.DataBoxCustomerDiskJobDetailsResponse | types.outputs.DataBoxDiskJobDetailsResponse | types.outputs.DataBoxHeavyJobDetailsResponse | types.outputs.DataBoxJobDetailsResponse;
     /**
      * Top level error for the job.
      */
-    readonly error: types.outputs.databox.v20221201.CloudErrorResponse;
+    readonly error: types.outputs.CloudErrorResponse;
     /**
      * Id of the object.
      */
@@ -60,7 +60,7 @@ export interface GetJobResult {
     /**
      * Msi identity of the resource
      */
-    readonly identity?: types.outputs.databox.v20221201.ResourceIdentityResponse;
+    readonly identity?: types.outputs.ResourceIdentityResponse;
     /**
      * Describes whether the job is cancellable or not.
      */
@@ -100,7 +100,7 @@ export interface GetJobResult {
     /**
      * The sku type.
      */
-    readonly sku: types.outputs.databox.v20221201.SkuResponse;
+    readonly sku: types.outputs.SkuResponse;
     /**
      * Time at which the job was started in UTC ISO 8601 format.
      */
@@ -112,7 +112,7 @@ export interface GetJobResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.databox.v20221201.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups).
      */

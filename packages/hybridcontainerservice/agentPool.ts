@@ -39,12 +39,12 @@ export class AgentPool extends pulumi.CustomResource {
     /**
      * The underlying cloud infra provider properties.
      */
-    public readonly cloudProviderProfile!: pulumi.Output<types.outputs.hybridcontainerservice.CloudProviderProfileResponse | undefined>;
+    public readonly cloudProviderProfile!: pulumi.Output<types.outputs.CloudProviderProfileResponse | undefined>;
     /**
      * Count - Number of agents to host docker containers. Allowed values must be in the range of 1 to 100 (inclusive). The default value is 1.
      */
     public readonly count!: pulumi.Output<number | undefined>;
-    public readonly extendedLocation!: pulumi.Output<types.outputs.hybridcontainerservice.AgentPoolResponseExtendedLocation | undefined>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.AgentPoolResponseExtendedLocation | undefined>;
     /**
      * The resource location
      */
@@ -89,11 +89,11 @@ export class AgentPool extends pulumi.CustomResource {
     /**
      * HybridAKSNodePoolStatus defines the observed state of HybridAKSNodePool
      */
-    public readonly status!: pulumi.Output<types.outputs.hybridcontainerservice.AgentPoolProvisioningStatusResponseStatus | undefined>;
+    public readonly status!: pulumi.Output<types.outputs.AgentPoolProvisioningStatusResponseStatus | undefined>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.hybridcontainerservice.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags
      */
@@ -191,12 +191,12 @@ export interface AgentPoolArgs {
     /**
      * The underlying cloud infra provider properties.
      */
-    cloudProviderProfile?: pulumi.Input<types.inputs.hybridcontainerservice.CloudProviderProfileArgs>;
+    cloudProviderProfile?: pulumi.Input<types.inputs.CloudProviderProfileArgs>;
     /**
      * Count - Number of agents to host docker containers. Allowed values must be in the range of 1 to 100 (inclusive). The default value is 1.
      */
     count?: pulumi.Input<number>;
-    extendedLocation?: pulumi.Input<types.inputs.hybridcontainerservice.AgentPoolExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.AgentPoolExtendedLocationArgs>;
     /**
      * The resource location
      */
@@ -244,7 +244,7 @@ export interface AgentPoolArgs {
     /**
      * HybridAKSNodePoolStatus defines the observed state of HybridAKSNodePool
      */
-    status?: pulumi.Input<types.inputs.hybridcontainerservice.AgentPoolProvisioningStatusStatusArgs>;
+    status?: pulumi.Input<types.inputs.AgentPoolProvisioningStatusStatusArgs>;
     /**
      * Resource tags
      */

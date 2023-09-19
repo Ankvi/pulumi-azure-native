@@ -35,7 +35,7 @@ export class User extends pulumi.CustomResource {
     /**
      * The password details.
      */
-    public readonly encryptedPassword!: pulumi.Output<types.outputs.databoxedge.AsymmetricEncryptedSecretResponse | undefined>;
+    public readonly encryptedPassword!: pulumi.Output<types.outputs.AsymmetricEncryptedSecretResponse | undefined>;
     /**
      * The object name.
      */
@@ -43,11 +43,11 @@ export class User extends pulumi.CustomResource {
     /**
      * List of shares that the user has rights on. This field should not be specified during user creation.
      */
-    public /*out*/ readonly shareAccessRights!: pulumi.Output<types.outputs.databoxedge.ShareAccessRightResponse[]>;
+    public /*out*/ readonly shareAccessRights!: pulumi.Output<types.outputs.ShareAccessRightResponse[]>;
     /**
      * Metadata pertaining to creation and last modification of User
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.databoxedge.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The hierarchical type of the object.
      */
@@ -111,7 +111,7 @@ export interface UserArgs {
     /**
      * The password details.
      */
-    encryptedPassword?: pulumi.Input<types.inputs.databoxedge.AsymmetricEncryptedSecretArgs>;
+    encryptedPassword?: pulumi.Input<types.inputs.AsymmetricEncryptedSecretArgs>;
     /**
      * The user name.
      */

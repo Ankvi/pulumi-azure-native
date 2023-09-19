@@ -49,7 +49,7 @@ export interface GetIscsiTargetResult {
     /**
      * List of LUNs to be exposed through iSCSI Target.
      */
-    readonly luns?: types.outputs.storagepool.IscsiLunResponse[];
+    readonly luns?: types.outputs.IscsiLunResponse[];
     /**
      * Azure resource id. Indicates if this resource is managed by another Azure resource.
      */
@@ -77,7 +77,7 @@ export interface GetIscsiTargetResult {
     /**
      * Access Control List (ACL) for an iSCSI Target; defines LUN masking policy
      */
-    readonly staticAcls?: types.outputs.storagepool.AclResponse[];
+    readonly staticAcls?: types.outputs.AclResponse[];
     /**
      * Operational status of the iSCSI Target.
      */
@@ -85,7 +85,7 @@ export interface GetIscsiTargetResult {
     /**
      * Resource metadata required by ARM RPC
      */
-    readonly systemData: types.outputs.storagepool.SystemMetadataResponse;
+    readonly systemData: types.outputs.SystemMetadataResponse;
     /**
      * iSCSI Target IQN (iSCSI Qualified Name); example: "iqn.2005-03.org.iscsi:server".
      */

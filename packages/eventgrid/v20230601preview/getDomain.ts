@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get properties of a domain.
  */
@@ -64,7 +64,7 @@ export interface GetDomainResult {
      * Event Type Information for the domain. This information is provided by the publisher and can be used by the 
      * subscriber to view different types of events that are published.
      */
-    readonly eventTypeInfo?: types.outputs.eventgrid.v20230601preview.EventTypeInfoResponse;
+    readonly eventTypeInfo?: types.outputs.EventTypeInfoResponse;
     /**
      * Fully qualified identifier of the resource.
      */
@@ -72,11 +72,11 @@ export interface GetDomainResult {
     /**
      * Identity information for the Event Grid Domain resource.
      */
-    readonly identity?: types.outputs.eventgrid.v20230601preview.IdentityInfoResponse;
+    readonly identity?: types.outputs.IdentityInfoResponse;
     /**
      * This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled.
      */
-    readonly inboundIpRules?: types.outputs.eventgrid.v20230601preview.InboundIpRuleResponse[];
+    readonly inboundIpRules?: types.outputs.InboundIpRuleResponse[];
     /**
      * This determines the format that Event Grid should expect for incoming events published to the Event Grid Domain Resource.
      */
@@ -84,7 +84,7 @@ export interface GetDomainResult {
     /**
      * Information about the InputSchemaMapping which specified the info about mapping event payload.
      */
-    readonly inputSchemaMapping?: types.outputs.eventgrid.v20230601preview.JsonInputSchemaMappingResponse;
+    readonly inputSchemaMapping?: types.outputs.JsonInputSchemaMappingResponse;
     /**
      * Location of the resource.
      */
@@ -101,7 +101,7 @@ export interface GetDomainResult {
      * Name of the resource.
      */
     readonly name: string;
-    readonly privateEndpointConnections: types.outputs.eventgrid.v20230601preview.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections: types.outputs.PrivateEndpointConnectionResponse[];
     /**
      * Provisioning state of the Event Grid Domain Resource.
      */
@@ -114,11 +114,11 @@ export interface GetDomainResult {
     /**
      * The Sku pricing tier for the Event Grid Domain resource.
      */
-    readonly sku?: types.outputs.eventgrid.v20230601preview.ResourceSkuResponse;
+    readonly sku?: types.outputs.ResourceSkuResponse;
     /**
      * The system metadata relating to the Event Grid Domain resource.
      */
-    readonly systemData: types.outputs.eventgrid.v20230601preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Tags of the resource.
      */

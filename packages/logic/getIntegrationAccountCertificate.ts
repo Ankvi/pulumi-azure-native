@@ -49,7 +49,7 @@ export interface GetIntegrationAccountCertificateResult {
     /**
      * The key details in the key vault.
      */
-    readonly key?: types.outputs.logic.KeyVaultKeyReferenceResponse;
+    readonly key?: types.outputs.KeyVaultKeyReferenceResponse;
     /**
      * The resource location.
      */

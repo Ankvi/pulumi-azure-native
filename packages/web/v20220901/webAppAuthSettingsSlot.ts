@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Configuration settings for the Azure App Service Authentication / Authorization feature.
  */
@@ -424,7 +424,7 @@ export interface WebAppAuthSettingsSlotArgs {
      * This setting is only needed if multiple providers are configured and the unauthenticated client
      * action is set to "RedirectToLoginPage".
      */
-    defaultProvider?: pulumi.Input<types.enums.v20220901.BuiltInAuthenticationProvider>;
+    defaultProvider?: pulumi.Input<types.enums.BuiltInAuthenticationProvider>;
     /**
      * <code>true</code> if the Authentication / Authorization feature is enabled for the current app; otherwise, <code>false</code>.
      */
@@ -580,7 +580,7 @@ export interface WebAppAuthSettingsSlotArgs {
     /**
      * The action to take when an unauthenticated client attempts to access the app.
      */
-    unauthenticatedClientAction?: pulumi.Input<types.enums.v20220901.UnauthenticatedClientAction>;
+    unauthenticatedClientAction?: pulumi.Input<types.enums.UnauthenticatedClientAction>;
     /**
      * Gets a value indicating whether the issuer should be a valid HTTPS url and be validated as such.
      */

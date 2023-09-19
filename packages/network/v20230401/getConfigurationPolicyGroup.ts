@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves the details of a ConfigurationPolicyGroup.
  */
@@ -52,11 +52,11 @@ export interface GetConfigurationPolicyGroupResult {
     /**
      * List of references to P2SConnectionConfigurations.
      */
-    readonly p2SConnectionConfigurations: types.outputs.network.v20230401.SubResourceResponse[];
+    readonly p2SConnectionConfigurations: types.outputs.SubResourceResponse[];
     /**
      * Multiple PolicyMembers for VpnServerConfigurationPolicyGroup.
      */
-    readonly policyMembers?: types.outputs.network.v20230401.VpnServerConfigurationPolicyGroupMemberResponse[];
+    readonly policyMembers?: types.outputs.VpnServerConfigurationPolicyGroupMemberResponse[];
     /**
      * Priority for VpnServerConfigurationPolicyGroup.
      */

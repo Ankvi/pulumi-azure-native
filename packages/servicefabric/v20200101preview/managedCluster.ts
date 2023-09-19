@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The manged cluster resource
  */
@@ -46,7 +46,7 @@ export class ManagedCluster extends pulumi.CustomResource {
     /**
      * Azure active directory.
      */
-    public readonly azureActiveDirectory!: pulumi.Output<types.outputs.servicefabric.v20200101preview.AzureActiveDirectoryResponse | undefined>;
+    public readonly azureActiveDirectory!: pulumi.Output<types.outputs.AzureActiveDirectoryResponse | undefined>;
     /**
      * The port used for client connections to the cluster.
      */
@@ -54,7 +54,7 @@ export class ManagedCluster extends pulumi.CustomResource {
     /**
      * client certificates for the cluster.
      */
-    public readonly clients!: pulumi.Output<types.outputs.servicefabric.v20200101preview.ClientCertificateResponse[] | undefined>;
+    public readonly clients!: pulumi.Output<types.outputs.ClientCertificateResponse[] | undefined>;
     /**
      * The cluster certificate thumbprint used node to node communication.
      */
@@ -82,7 +82,7 @@ export class ManagedCluster extends pulumi.CustomResource {
     /**
      * The list of custom fabric settings to configure the cluster.
      */
-    public readonly fabricSettings!: pulumi.Output<types.outputs.servicefabric.v20200101preview.SettingsSectionDescriptionResponse[] | undefined>;
+    public readonly fabricSettings!: pulumi.Output<types.outputs.SettingsSectionDescriptionResponse[] | undefined>;
     /**
      * the cluster Fully qualified domain name.
      */
@@ -94,7 +94,7 @@ export class ManagedCluster extends pulumi.CustomResource {
     /**
      * Describes load balancing rules.
      */
-    public readonly loadBalancingRules!: pulumi.Output<types.outputs.servicefabric.v20200101preview.LoadBalancingRuleResponse[] | undefined>;
+    public readonly loadBalancingRules!: pulumi.Output<types.outputs.LoadBalancingRuleResponse[] | undefined>;
     /**
      * Azure resource location.
      */
@@ -110,7 +110,7 @@ export class ManagedCluster extends pulumi.CustomResource {
     /**
      * The sku of the managed cluster
      */
-    public readonly sku!: pulumi.Output<types.outputs.servicefabric.v20200101preview.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Azure resource tags.
      */
@@ -214,7 +214,7 @@ export interface ManagedClusterArgs {
     /**
      * Azure active directory.
      */
-    azureActiveDirectory?: pulumi.Input<types.inputs.servicefabric.v20200101preview.AzureActiveDirectoryArgs>;
+    azureActiveDirectory?: pulumi.Input<types.inputs.AzureActiveDirectoryArgs>;
     /**
      * The port used for client connections to the cluster.
      */
@@ -222,7 +222,7 @@ export interface ManagedClusterArgs {
     /**
      * client certificates for the cluster.
      */
-    clients?: pulumi.Input<pulumi.Input<types.inputs.servicefabric.v20200101preview.ClientCertificateArgs>[]>;
+    clients?: pulumi.Input<pulumi.Input<types.inputs.ClientCertificateArgs>[]>;
     /**
      * The Service Fabric runtime version of the cluster. This property can only by set the user when **upgradeMode** is set to 'Manual'. To get list of available Service Fabric versions for new clusters use [ClusterVersion API](./ClusterVersion.md). To get the list of available version for existing clusters use **availableClusterVersions**.
      */
@@ -238,7 +238,7 @@ export interface ManagedClusterArgs {
     /**
      * The list of custom fabric settings to configure the cluster.
      */
-    fabricSettings?: pulumi.Input<pulumi.Input<types.inputs.servicefabric.v20200101preview.SettingsSectionDescriptionArgs>[]>;
+    fabricSettings?: pulumi.Input<pulumi.Input<types.inputs.SettingsSectionDescriptionArgs>[]>;
     /**
      * The port used for http connections to the cluster.
      */
@@ -246,7 +246,7 @@ export interface ManagedClusterArgs {
     /**
      * Describes load balancing rules.
      */
-    loadBalancingRules?: pulumi.Input<pulumi.Input<types.inputs.servicefabric.v20200101preview.LoadBalancingRuleArgs>[]>;
+    loadBalancingRules?: pulumi.Input<pulumi.Input<types.inputs.LoadBalancingRuleArgs>[]>;
     /**
      * Azure resource location.
      */
@@ -258,7 +258,7 @@ export interface ManagedClusterArgs {
     /**
      * The sku of the managed cluster
      */
-    sku?: pulumi.Input<types.inputs.servicefabric.v20200101preview.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Azure resource tags.
      */

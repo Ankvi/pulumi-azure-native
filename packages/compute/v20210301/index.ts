@@ -13,4 +13,4 @@ utilities.lazyLoad(exports, ["getLogAnalyticExportThrottledRequests","getLogAnal
 
 
 // Export enums:
-export * from "../types/enums/v20210301";
+export * from "./types/enums";

@@ -128,7 +128,7 @@ utilities.lazyLoad(exports, ["VolumeQuotaRule"], () => require("./volumeQuotaRul
 
 
 // Export enums:
-export * from "../types/enums/v20221101preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

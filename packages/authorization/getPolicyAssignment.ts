@@ -48,7 +48,7 @@ export interface GetPolicyAssignmentResult {
     /**
      * The managed identity associated with the policy assignment.
      */
-    readonly identity?: types.outputs.authorization.IdentityResponse;
+    readonly identity?: types.outputs.IdentityResponse;
     /**
      * The location of the policy assignment. Only required when utilizing managed identity.
      */
@@ -64,7 +64,7 @@ export interface GetPolicyAssignmentResult {
     /**
      * The messages that describe why a resource is non-compliant with the policy.
      */
-    readonly nonComplianceMessages?: types.outputs.authorization.NonComplianceMessageResponse[];
+    readonly nonComplianceMessages?: types.outputs.NonComplianceMessageResponse[];
     /**
      * The policy's excluded scopes.
      */
@@ -72,11 +72,11 @@ export interface GetPolicyAssignmentResult {
     /**
      * The policy property value override.
      */
-    readonly overrides?: types.outputs.authorization.OverrideResponse[];
+    readonly overrides?: types.outputs.OverrideResponse[];
     /**
      * The parameter values for the assigned policy rule. The keys are the parameter names.
      */
-    readonly parameters?: {[key: string]: types.outputs.authorization.ParameterValuesValueResponse};
+    readonly parameters?: {[key: string]: types.outputs.ParameterValuesValueResponse};
     /**
      * The ID of the policy definition or policy set definition being assigned.
      */
@@ -84,7 +84,7 @@ export interface GetPolicyAssignmentResult {
     /**
      * The resource selector list to filter policies by resource properties.
      */
-    readonly resourceSelectors?: types.outputs.authorization.ResourceSelectorResponse[];
+    readonly resourceSelectors?: types.outputs.ResourceSelectorResponse[];
     /**
      * The scope for the policy assignment.
      */
@@ -92,7 +92,7 @@ export interface GetPolicyAssignmentResult {
     /**
      * The system metadata relating to this resource.
      */
-    readonly systemData: types.outputs.authorization.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the policy assignment.
      */

@@ -33,7 +33,7 @@ export class ImportCollector extends pulumi.CustomResource {
 
     public readonly eTag!: pulumi.Output<string | undefined>;
     public /*out*/ readonly name!: pulumi.Output<string>;
-    public readonly properties!: pulumi.Output<types.outputs.migrate.ImportCollectorPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ImportCollectorPropertiesResponse>;
     public /*out*/ readonly type!: pulumi.Output<string>;
 
     /**
@@ -86,7 +86,7 @@ export interface ImportCollectorArgs {
      * Name of the Azure Migrate project.
      */
     projectName: pulumi.Input<string>;
-    properties?: pulumi.Input<types.inputs.migrate.ImportCollectorPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ImportCollectorPropertiesArgs>;
     /**
      * Name of the Azure Resource Group that project is part of.
      */

@@ -37,7 +37,7 @@ export interface GetSubscriptionFeatureRegistrationResult {
      * Azure resource name.
      */
     readonly name: string;
-    readonly properties: types.outputs.features.SubscriptionFeatureRegistrationResponseProperties;
+    readonly properties: types.outputs.SubscriptionFeatureRegistrationResponseProperties;
     /**
      * Azure resource type.
      */

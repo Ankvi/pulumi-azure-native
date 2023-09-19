@@ -37,7 +37,7 @@ export interface GetIoTRoleResult {
     /**
      * Resource allocation
      */
-    readonly computeResource?: types.outputs.databoxedge.ComputeResourceResponse;
+    readonly computeResource?: types.outputs.ComputeResourceResponse;
     /**
      * Host OS supported by the IoT role.
      */
@@ -53,15 +53,15 @@ export interface GetIoTRoleResult {
     /**
      * IoT device metadata to which data box edge device needs to be connected.
      */
-    readonly ioTDeviceDetails: types.outputs.databoxedge.IoTDeviceInfoResponse;
+    readonly ioTDeviceDetails: types.outputs.IoTDeviceInfoResponse;
     /**
      * Iot edge agent details to download the agent and bootstrap iot runtime.
      */
-    readonly ioTEdgeAgentInfo?: types.outputs.databoxedge.IoTEdgeAgentInfoResponse;
+    readonly ioTEdgeAgentInfo?: types.outputs.IoTEdgeAgentInfoResponse;
     /**
      * IoT edge device to which the IoT role needs to be configured.
      */
-    readonly ioTEdgeDeviceDetails: types.outputs.databoxedge.IoTDeviceInfoResponse;
+    readonly ioTEdgeDeviceDetails: types.outputs.IoTDeviceInfoResponse;
     /**
      * Role type.
      * Expected value is 'IOT'.
@@ -78,11 +78,11 @@ export interface GetIoTRoleResult {
     /**
      * Mount points of shares in role(s).
      */
-    readonly shareMappings?: types.outputs.databoxedge.MountPointMapResponse[];
+    readonly shareMappings?: types.outputs.MountPointMapResponse[];
     /**
      * Metadata pertaining to creation and last modification of Role
      */
-    readonly systemData: types.outputs.databoxedge.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The hierarchical type of the object.
      */

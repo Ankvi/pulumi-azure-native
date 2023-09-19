@@ -56,7 +56,7 @@ export interface ListFeaturesetVersionFeaturesResult {
     /**
      * An array of objects of type Feature.
      */
-    readonly value?: types.outputs.machinelearningservices.FeatureResponse[];
+    readonly value?: types.outputs.FeatureResponse[];
 }
 /**
  * A paginated list of Feature entities.

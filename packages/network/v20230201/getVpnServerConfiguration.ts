@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves the details of a VpnServerConfiguration.
  */
@@ -31,11 +31,11 @@ export interface GetVpnServerConfigurationResult {
     /**
      * The set of aad vpn authentication parameters.
      */
-    readonly aadAuthenticationParameters?: types.outputs.network.v20230201.AadAuthenticationParametersResponse;
+    readonly aadAuthenticationParameters?: types.outputs.AadAuthenticationParametersResponse;
     /**
      * List of all VpnServerConfigurationPolicyGroups.
      */
-    readonly configurationPolicyGroups?: types.outputs.network.v20230201.VpnServerConfigurationPolicyGroupResponse[];
+    readonly configurationPolicyGroups?: types.outputs.VpnServerConfigurationPolicyGroupResponse[];
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -55,7 +55,7 @@ export interface GetVpnServerConfigurationResult {
     /**
      * List of references to P2SVpnGateways.
      */
-    readonly p2SVpnGateways: types.outputs.network.v20230201.P2SVpnGatewayResponse[];
+    readonly p2SVpnGateways: types.outputs.P2SVpnGatewayResponse[];
     /**
      * The provisioning state of the VpnServerConfiguration resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
      */
@@ -63,7 +63,7 @@ export interface GetVpnServerConfigurationResult {
     /**
      * Radius client root certificate of VpnServerConfiguration.
      */
-    readonly radiusClientRootCertificates?: types.outputs.network.v20230201.VpnServerConfigRadiusClientRootCertificateResponse[];
+    readonly radiusClientRootCertificates?: types.outputs.VpnServerConfigRadiusClientRootCertificateResponse[];
     /**
      * The radius server address property of the VpnServerConfiguration resource for point to site client connection.
      */
@@ -71,7 +71,7 @@ export interface GetVpnServerConfigurationResult {
     /**
      * Radius Server root certificate of VpnServerConfiguration.
      */
-    readonly radiusServerRootCertificates?: types.outputs.network.v20230201.VpnServerConfigRadiusServerRootCertificateResponse[];
+    readonly radiusServerRootCertificates?: types.outputs.VpnServerConfigRadiusServerRootCertificateResponse[];
     /**
      * The radius secret property of the VpnServerConfiguration resource for point to site client connection.
      */
@@ -79,7 +79,7 @@ export interface GetVpnServerConfigurationResult {
     /**
      * Multiple Radius Server configuration for VpnServerConfiguration.
      */
-    readonly radiusServers?: types.outputs.network.v20230201.RadiusServerResponse[];
+    readonly radiusServers?: types.outputs.RadiusServerResponse[];
     /**
      * Resource tags.
      */
@@ -95,15 +95,15 @@ export interface GetVpnServerConfigurationResult {
     /**
      * VpnClientIpsecPolicies for VpnServerConfiguration.
      */
-    readonly vpnClientIpsecPolicies?: types.outputs.network.v20230201.IpsecPolicyResponse[];
+    readonly vpnClientIpsecPolicies?: types.outputs.IpsecPolicyResponse[];
     /**
      * VPN client revoked certificate of VpnServerConfiguration.
      */
-    readonly vpnClientRevokedCertificates?: types.outputs.network.v20230201.VpnServerConfigVpnClientRevokedCertificateResponse[];
+    readonly vpnClientRevokedCertificates?: types.outputs.VpnServerConfigVpnClientRevokedCertificateResponse[];
     /**
      * VPN client root certificate of VpnServerConfiguration.
      */
-    readonly vpnClientRootCertificates?: types.outputs.network.v20230201.VpnServerConfigVpnClientRootCertificateResponse[];
+    readonly vpnClientRootCertificates?: types.outputs.VpnServerConfigVpnClientRootCertificateResponse[];
     /**
      * VPN protocols for the VpnServerConfiguration.
      */

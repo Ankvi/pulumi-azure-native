@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * List the primary and secondary keys for a provisioning service.
  */
@@ -35,7 +35,7 @@ export interface ListIotDpsResourceKeysResult {
     /**
      * The list of shared access policies.
      */
-    readonly value?: types.outputs.devices.v20221212.SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionResponse[];
+    readonly value?: types.outputs.SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionResponse[];
 }
 /**
  * List the primary and secondary keys for a provisioning service.

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Data flow resource type.
  */
@@ -42,7 +42,7 @@ export class DataFlow extends pulumi.CustomResource {
     /**
      * Data flow properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.datafactory.v20180601.FlowletResponse | types.outputs.datafactory.v20180601.MappingDataFlowResponse | types.outputs.datafactory.v20180601.WranglingDataFlowResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.FlowletResponse | types.outputs.MappingDataFlowResponse | types.outputs.WranglingDataFlowResponse>;
     /**
      * The resource type.
      */
@@ -103,7 +103,7 @@ export interface DataFlowArgs {
     /**
      * Data flow properties.
      */
-    properties: pulumi.Input<types.inputs.datafactory.v20180601.FlowletArgs | types.inputs.datafactory.v20180601.MappingDataFlowArgs | types.inputs.datafactory.v20180601.WranglingDataFlowArgs>;
+    properties: pulumi.Input<types.inputs.FlowletArgs | types.inputs.MappingDataFlowArgs | types.inputs.WranglingDataFlowArgs>;
     /**
      * The resource group name.
      */

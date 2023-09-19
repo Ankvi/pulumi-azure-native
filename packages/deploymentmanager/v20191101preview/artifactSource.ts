@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The resource that defines the source location where the artifacts are located.
  */
@@ -38,7 +38,7 @@ export class ArtifactSource extends pulumi.CustomResource {
     /**
      * The authentication method to use to access the artifact source.
      */
-    public readonly authentication!: pulumi.Output<types.outputs.deploymentmanager.v20191101preview.SasAuthenticationResponse>;
+    public readonly authentication!: pulumi.Output<types.outputs.SasAuthenticationResponse>;
     /**
      * The geo-location where the resource lives
      */
@@ -120,7 +120,7 @@ export interface ArtifactSourceArgs {
     /**
      * The authentication method to use to access the artifact source.
      */
-    authentication: pulumi.Input<types.inputs.deploymentmanager.v20191101preview.SasAuthenticationArgs>;
+    authentication: pulumi.Input<types.inputs.SasAuthenticationArgs>;
     /**
      * The geo-location where the resource lives
      */

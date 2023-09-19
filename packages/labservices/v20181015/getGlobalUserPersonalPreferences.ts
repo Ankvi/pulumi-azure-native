@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get personal preferences for a user
  */
@@ -19,7 +19,7 @@ export interface GetGlobalUserPersonalPreferencesArgs {
     /**
      * Enum indicating if user is adding or removing a favorite lab
      */
-    addRemove?: string | types.enums.v20181015.AddRemove;
+    addRemove?: string | types.enums.AddRemove;
     /**
      * Resource Id of the lab account
      */
@@ -58,7 +58,7 @@ export interface GetGlobalUserPersonalPreferencesOutputArgs {
     /**
      * Enum indicating if user is adding or removing a favorite lab
      */
-    addRemove?: pulumi.Input<string | types.enums.v20181015.AddRemove>;
+    addRemove?: pulumi.Input<string | types.enums.AddRemove>;
     /**
      * Resource Id of the lab account
      */

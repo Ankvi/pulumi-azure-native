@@ -55,11 +55,11 @@ export class InternetGatewayRule extends pulumi.CustomResource {
     /**
      * Rules for the InternetGateways
      */
-    public readonly ruleProperties!: pulumi.Output<types.outputs.managednetworkfabric.RulePropertiesResponse>;
+    public readonly ruleProperties!: pulumi.Output<types.outputs.RulePropertiesResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.managednetworkfabric.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -138,7 +138,7 @@ export interface InternetGatewayRuleArgs {
     /**
      * Rules for the InternetGateways
      */
-    ruleProperties: pulumi.Input<types.inputs.managednetworkfabric.RulePropertiesArgs>;
+    ruleProperties: pulumi.Input<types.inputs.RulePropertiesArgs>;
     /**
      * Resource tags.
      */

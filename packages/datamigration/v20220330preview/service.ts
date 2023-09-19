@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An Azure Database Migration Service (classic) resource
  */
@@ -60,8 +60,8 @@ export class Service extends pulumi.CustomResource {
     /**
      * Service SKU
      */
-    public readonly sku!: pulumi.Output<types.outputs.datamigration.v20220330preview.ServiceSkuResponse | undefined>;
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.datamigration.v20220330preview.SystemDataResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.ServiceSkuResponse | undefined>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     public /*out*/ readonly type!: pulumi.Output<string>;
     /**
@@ -158,7 +158,7 @@ export interface ServiceArgs {
     /**
      * Service SKU
      */
-    sku?: pulumi.Input<types.inputs.datamigration.v20220330preview.ServiceSkuArgs>;
+    sku?: pulumi.Input<types.inputs.ServiceSkuArgs>;
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The ID of the Microsoft.Network/networkInterfaces resource which the service have

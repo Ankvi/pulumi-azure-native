@@ -43,7 +43,7 @@ export class AccessControlList extends pulumi.CustomResource {
     /**
      * Access Control List conditions.
      */
-    public readonly conditions!: pulumi.Output<types.outputs.managednetworkfabric.AccessControlListConditionPropertiesResponse[]>;
+    public readonly conditions!: pulumi.Output<types.outputs.AccessControlListConditionPropertiesResponse[]>;
     /**
      * The geo-location where the resource lives
      */
@@ -59,7 +59,7 @@ export class AccessControlList extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.managednetworkfabric.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -137,7 +137,7 @@ export interface AccessControlListArgs {
     /**
      * Access Control List conditions.
      */
-    conditions: pulumi.Input<pulumi.Input<types.inputs.managednetworkfabric.AccessControlListConditionPropertiesArgs>[]>;
+    conditions: pulumi.Input<pulumi.Input<types.inputs.AccessControlListConditionPropertiesArgs>[]>;
     /**
      * The geo-location where the resource lives
      */

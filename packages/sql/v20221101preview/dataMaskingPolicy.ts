@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A database data masking policy.
  */
@@ -127,7 +127,7 @@ export interface DataMaskingPolicyArgs {
     /**
      * The state of the data masking policy.
      */
-    dataMaskingState: pulumi.Input<types.enums.v20221101preview.DataMaskingState>;
+    dataMaskingState: pulumi.Input<types.enums.DataMaskingState>;
     /**
      * The name of the database.
      */

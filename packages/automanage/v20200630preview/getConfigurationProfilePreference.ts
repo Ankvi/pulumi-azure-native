@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get information about a configuration profile preference
  */
@@ -43,7 +43,7 @@ export interface GetConfigurationProfilePreferenceResult {
     /**
      * Properties of the configuration profile preference.
      */
-    readonly properties: types.outputs.automanage.v20200630preview.ConfigurationProfilePreferencePropertiesResponse;
+    readonly properties: types.outputs.ConfigurationProfilePreferencePropertiesResponse;
     /**
      * Resource tags.
      */

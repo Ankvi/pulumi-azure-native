@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The endpoint for the target resource.
  */
@@ -62,11 +62,11 @@ export class Endpoint extends pulumi.CustomResource {
     /**
      * The endpoint properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.hybridconnectivity.v20230315.EndpointPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.EndpointPropertiesResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.hybridconnectivity.v20230315.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -132,7 +132,7 @@ export interface EndpointArgs {
     /**
      * The type of identity that created the resource.
      */
-    createdByType?: pulumi.Input<string | types.enums.v20230315.CreatedByType>;
+    createdByType?: pulumi.Input<string | types.enums.CreatedByType>;
     /**
      * The endpoint name.
      */
@@ -148,11 +148,11 @@ export interface EndpointArgs {
     /**
      * The type of identity that last modified the resource.
      */
-    lastModifiedByType?: pulumi.Input<string | types.enums.v20230315.CreatedByType>;
+    lastModifiedByType?: pulumi.Input<string | types.enums.CreatedByType>;
     /**
      * The endpoint properties.
      */
-    properties?: pulumi.Input<types.inputs.hybridconnectivity.v20230315.EndpointPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.EndpointPropertiesArgs>;
     /**
      * The fully qualified Azure Resource manager identifier of the resource to be connected.
      */

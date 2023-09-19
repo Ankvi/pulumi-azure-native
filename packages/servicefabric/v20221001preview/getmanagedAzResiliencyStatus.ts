@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Action to get Az Resiliency Status of all the Base resources constituting Service Fabric Managed Clusters.
  */
@@ -31,7 +31,7 @@ export interface GetmanagedAzResiliencyStatusResult {
     /**
      * List of Managed VM Sizes for Service Fabric Managed Clusters.
      */
-    readonly baseResourceStatus?: types.outputs.servicefabric.v20221001preview.ResourceAzStatusResponse[];
+    readonly baseResourceStatus?: types.outputs.ResourceAzStatusResponse[];
     /**
      * URL to get the next set of Managed VM Sizes if there are any.
      */

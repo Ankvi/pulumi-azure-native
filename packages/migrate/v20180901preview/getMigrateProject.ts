@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Migrate Project REST Resource.
  */
@@ -47,11 +47,11 @@ export interface GetMigrateProjectResult {
     /**
      * Gets or sets the nested properties.
      */
-    readonly properties: types.outputs.migrate.v20180901preview.MigrateProjectPropertiesResponse;
+    readonly properties: types.outputs.MigrateProjectPropertiesResponse;
     /**
      * Gets or sets the tags.
      */
-    readonly tags?: types.outputs.migrate.v20180901preview.MigrateProjectResponseTags;
+    readonly tags?: types.outputs.MigrateProjectResponseTags;
     /**
      * Handled by resource provider. Type = Microsoft.Migrate/MigrateProject.
      */

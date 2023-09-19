@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The lock information.
  */
@@ -46,11 +46,11 @@ export class ManagementLockAtResourceLevel extends pulumi.CustomResource {
     /**
      * The owners of the lock.
      */
-    public readonly owners!: pulumi.Output<types.outputs.authorization.v20200501.ManagementLockOwnerResponse[] | undefined>;
+    public readonly owners!: pulumi.Output<types.outputs.ManagementLockOwnerResponse[] | undefined>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.authorization.v20200501.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The resource type of the lock - Microsoft.Authorization/locks.
      */
@@ -119,7 +119,7 @@ export interface ManagementLockAtResourceLevelArgs {
     /**
      * The level of the lock. Possible values are: NotSpecified, CanNotDelete, ReadOnly. CanNotDelete means authorized users are able to read and modify the resources, but not delete. ReadOnly means authorized users can only read from a resource, but they can't modify or delete it.
      */
-    level: pulumi.Input<string | types.enums.v20200501.LockLevel>;
+    level: pulumi.Input<string | types.enums.LockLevel>;
     /**
      * The name of lock. The lock name can be a maximum of 260 characters. It cannot contain <, > %, &, :, \, ?, /, or any control characters.
      */
@@ -131,7 +131,7 @@ export interface ManagementLockAtResourceLevelArgs {
     /**
      * The owners of the lock.
      */
-    owners?: pulumi.Input<pulumi.Input<types.inputs.authorization.v20200501.ManagementLockOwnerArgs>[]>;
+    owners?: pulumi.Input<pulumi.Input<types.inputs.ManagementLockOwnerArgs>[]>;
     /**
      * The parent resource identity.
      */

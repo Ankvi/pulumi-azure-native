@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Virtual machine guest diagnostics settings resource.
  */
@@ -34,7 +34,7 @@ export class GuestDiagnosticsSetting extends pulumi.CustomResource {
     /**
      * the array of data source object which are configured to collect and send data
      */
-    public readonly dataSources!: pulumi.Output<types.outputs.insights.v20180601preview.DataSourceResponse[] | undefined>;
+    public readonly dataSources!: pulumi.Output<types.outputs.DataSourceResponse[] | undefined>;
     /**
      * Resource location
      */
@@ -103,7 +103,7 @@ export interface GuestDiagnosticsSettingArgs {
     /**
      * the array of data source object which are configured to collect and send data
      */
-    dataSources?: pulumi.Input<pulumi.Input<types.inputs.insights.v20180601preview.DataSourceArgs>[]>;
+    dataSources?: pulumi.Input<pulumi.Input<types.inputs.DataSourceArgs>[]>;
     /**
      * The name of the diagnostic setting.
      */

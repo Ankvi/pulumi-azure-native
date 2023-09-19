@@ -43,7 +43,7 @@ export class Runbook extends pulumi.CustomResource {
     /**
      * Gets or sets the draft runbook properties.
      */
-    public readonly draft!: pulumi.Output<types.outputs.automation.RunbookDraftResponse | undefined>;
+    public readonly draft!: pulumi.Output<types.outputs.RunbookDraftResponse | undefined>;
     /**
      * Gets or sets the etag of the resource.
      */
@@ -87,7 +87,7 @@ export class Runbook extends pulumi.CustomResource {
     /**
      * Gets or sets the runbook parameters.
      */
-    public /*out*/ readonly parameters!: pulumi.Output<{[key: string]: types.outputs.automation.RunbookParameterResponse} | undefined>;
+    public /*out*/ readonly parameters!: pulumi.Output<{[key: string]: types.outputs.RunbookParameterResponse} | undefined>;
     /**
      * Gets or sets the provisioning state of the runbook.
      */
@@ -95,7 +95,7 @@ export class Runbook extends pulumi.CustomResource {
     /**
      * Gets or sets the published runbook content link.
      */
-    public readonly publishContentLink!: pulumi.Output<types.outputs.automation.ContentLinkResponse | undefined>;
+    public readonly publishContentLink!: pulumi.Output<types.outputs.ContentLinkResponse | undefined>;
     /**
      * Gets or sets the type of the runbook.
      */
@@ -200,7 +200,7 @@ export interface RunbookArgs {
     /**
      * Gets or sets the draft runbook properties.
      */
-    draft?: pulumi.Input<types.inputs.automation.RunbookDraftArgs>;
+    draft?: pulumi.Input<types.inputs.RunbookDraftArgs>;
     /**
      * Gets or sets the location of the resource.
      */
@@ -224,7 +224,7 @@ export interface RunbookArgs {
     /**
      * Gets or sets the published runbook content link.
      */
-    publishContentLink?: pulumi.Input<types.inputs.automation.ContentLinkArgs>;
+    publishContentLink?: pulumi.Input<types.inputs.ContentLinkArgs>;
     /**
      * Name of an Azure Resource group.
      */

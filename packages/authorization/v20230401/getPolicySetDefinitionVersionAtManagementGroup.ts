@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * This operation retrieves the policy set definition version in the given management group with the given name and version.
  */
@@ -56,15 +56,15 @@ export interface GetPolicySetDefinitionVersionAtManagementGroupResult {
     /**
      * The policy set definition parameters that can be used in policy definition references.
      */
-    readonly parameters?: {[key: string]: types.outputs.authorization.v20230401.ParameterDefinitionsValueResponse};
+    readonly parameters?: {[key: string]: types.outputs.ParameterDefinitionsValueResponse};
     /**
      * The metadata describing groups of policy definition references within the policy set definition.
      */
-    readonly policyDefinitionGroups?: types.outputs.authorization.v20230401.PolicyDefinitionGroupResponse[];
+    readonly policyDefinitionGroups?: types.outputs.PolicyDefinitionGroupResponse[];
     /**
      * An array of policy definition references.
      */
-    readonly policyDefinitions: types.outputs.authorization.v20230401.PolicyDefinitionReferenceResponse[];
+    readonly policyDefinitions: types.outputs.PolicyDefinitionReferenceResponse[];
     /**
      * The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
      */
@@ -72,7 +72,7 @@ export interface GetPolicySetDefinitionVersionAtManagementGroupResult {
     /**
      * The system metadata relating to this resource.
      */
-    readonly systemData: types.outputs.authorization.v20230401.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource (Microsoft.Authorization/policySetDefinitions/versions).
      */

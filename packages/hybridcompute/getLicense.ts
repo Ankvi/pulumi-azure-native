@@ -36,7 +36,7 @@ export interface GetLicenseResult {
     /**
      * Describes the properties of a License.
      */
-    readonly licenseDetails?: types.outputs.hybridcompute.LicenseDetailsResponse;
+    readonly licenseDetails?: types.outputs.LicenseDetailsResponse;
     /**
      * The type of the license resource.
      */
@@ -56,7 +56,7 @@ export interface GetLicenseResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.hybridcompute.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

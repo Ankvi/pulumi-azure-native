@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get an iSCSI target.
  */
@@ -56,7 +56,7 @@ export interface GetIscsiTargetResult {
     /**
      * List of iSCSI target portal groups. Can have 1 portal group at most.
      */
-    readonly tpgs: types.outputs.storagepool.v20200315preview.TargetPortalGroupResponse[];
+    readonly tpgs: types.outputs.TargetPortalGroupResponse[];
     /**
      * The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
      */

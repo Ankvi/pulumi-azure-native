@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Timeline for an entity.
  */
@@ -30,7 +30,7 @@ export interface GetEntitiesGetTimelineArgs {
     /**
      * Array of timeline Item kinds.
      */
-    kinds?: (string | types.enums.v20230601preview.EntityTimelineKind)[];
+    kinds?: (string | types.enums.EntityTimelineKind)[];
     /**
      * The number of bucket for timeline queries aggregation.
      */
@@ -56,11 +56,11 @@ export interface GetEntitiesGetTimelineResult {
     /**
      * The metadata from the timeline operation results.
      */
-    readonly metaData?: types.outputs.securityinsights.v20230601preview.TimelineResultsMetadataResponse;
+    readonly metaData?: types.outputs.TimelineResultsMetadataResponse;
     /**
      * The timeline result values.
      */
-    readonly value?: (types.outputs.securityinsights.v20230601preview.ActivityTimelineItemResponse | types.outputs.securityinsights.v20230601preview.AnomalyTimelineItemResponse | types.outputs.securityinsights.v20230601preview.BookmarkTimelineItemResponse | types.outputs.securityinsights.v20230601preview.SecurityAlertTimelineItemResponse)[];
+    readonly value?: (types.outputs.ActivityTimelineItemResponse | types.outputs.AnomalyTimelineItemResponse | types.outputs.BookmarkTimelineItemResponse | types.outputs.SecurityAlertTimelineItemResponse)[];
 }
 /**
  * Timeline for an entity.
@@ -81,7 +81,7 @@ export interface GetEntitiesGetTimelineOutputArgs {
     /**
      * Array of timeline Item kinds.
      */
-    kinds?: pulumi.Input<pulumi.Input<string | types.enums.v20230601preview.EntityTimelineKind>[]>;
+    kinds?: pulumi.Input<pulumi.Input<string | types.enums.EntityTimelineKind>[]>;
     /**
      * The number of bucket for timeline queries aggregation.
      */

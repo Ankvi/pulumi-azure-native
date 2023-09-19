@@ -45,11 +45,11 @@ export interface GetMoveResourceResult {
     /**
      * Defines the move resource properties.
      */
-    readonly properties: types.outputs.migrate.MoveResourcePropertiesResponse;
+    readonly properties: types.outputs.MoveResourcePropertiesResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.migrate.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource.
      */

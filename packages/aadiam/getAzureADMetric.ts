@@ -41,7 +41,7 @@ export interface GetAzureADMetricResult {
      * The name of the resource
      */
     readonly name: string;
-    readonly properties: types.outputs.aadiam.AzureADMetricsPropertiesFormatResponse;
+    readonly properties: types.outputs.AzureADMetricsPropertiesFormatResponse;
     /**
      * Resource tags.
      */

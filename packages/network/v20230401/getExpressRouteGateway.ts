@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Fetches the details of a ExpressRoute gateway in a resource group.
  */
@@ -35,7 +35,7 @@ export interface GetExpressRouteGatewayResult {
     /**
      * Configuration for auto scaling.
      */
-    readonly autoScaleConfiguration?: types.outputs.network.v20230401.ExpressRouteGatewayPropertiesResponseAutoScaleConfiguration;
+    readonly autoScaleConfiguration?: types.outputs.ExpressRouteGatewayPropertiesResponseAutoScaleConfiguration;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -43,7 +43,7 @@ export interface GetExpressRouteGatewayResult {
     /**
      * List of ExpressRoute connections to the ExpressRoute gateway.
      */
-    readonly expressRouteConnections?: types.outputs.network.v20230401.ExpressRouteConnectionResponse[];
+    readonly expressRouteConnections?: types.outputs.ExpressRouteConnectionResponse[];
     /**
      * Resource ID.
      */
@@ -71,7 +71,7 @@ export interface GetExpressRouteGatewayResult {
     /**
      * The Virtual Hub where the ExpressRoute gateway is or will be deployed.
      */
-    readonly virtualHub: types.outputs.network.v20230401.VirtualHubIdResponse;
+    readonly virtualHub: types.outputs.VirtualHubIdResponse;
 }
 /**
  * Fetches the details of a ExpressRoute gateway in a resource group.

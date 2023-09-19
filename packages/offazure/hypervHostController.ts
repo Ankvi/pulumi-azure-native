@@ -39,7 +39,7 @@ export class HypervHostController extends pulumi.CustomResource {
     /**
      * Gets the errors.
      */
-    public /*out*/ readonly errors!: pulumi.Output<types.outputs.offazure.HealthErrorDetailsResponse[]>;
+    public /*out*/ readonly errors!: pulumi.Output<types.outputs.HealthErrorDetailsResponse[]>;
     /**
      * Gets or sets the FQDN/IPAddress of the Hyper-V host.
      */
@@ -59,7 +59,7 @@ export class HypervHostController extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.offazure.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

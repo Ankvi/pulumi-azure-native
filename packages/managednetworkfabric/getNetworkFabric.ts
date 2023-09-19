@@ -64,7 +64,7 @@ export interface GetNetworkFabricResult {
     /**
      * Configuration to be used to setup the management network.
      */
-    readonly managementNetworkConfiguration: types.outputs.managednetworkfabric.ManagementNetworkConfigurationResponse;
+    readonly managementNetworkConfiguration: types.outputs.ManagementNetworkConfigurationResponse;
     /**
      * The name of the resource
      */
@@ -104,7 +104,7 @@ export interface GetNetworkFabricResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.managednetworkfabric.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -112,7 +112,7 @@ export interface GetNetworkFabricResult {
     /**
      * Network and credentials configuration currently applied to terminal server.
      */
-    readonly terminalServerConfiguration: types.outputs.managednetworkfabric.TerminalServerConfigurationResponse;
+    readonly terminalServerConfiguration: types.outputs.TerminalServerConfigurationResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

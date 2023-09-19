@@ -27,7 +27,7 @@ export interface ListPolicyDefinitionVersionAllResult {
     /**
      * An array of policy definitions versions.
      */
-    readonly value?: types.outputs.authorization.PolicyDefinitionVersionResponse[];
+    readonly value?: types.outputs.PolicyDefinitionVersionResponse[];
 }
 /**
  * This operation lists all the policy definition versions for all policy definitions within a subscription.

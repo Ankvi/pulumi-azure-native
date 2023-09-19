@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get information related to a specific group in the project. Returns a json object of type 'group' as specified in the models section.
  */
@@ -48,7 +48,7 @@ export interface GetGroupResult {
     /**
      * Properties of the group.
      */
-    readonly properties: types.outputs.migrate.v20191001.GroupPropertiesResponse;
+    readonly properties: types.outputs.GroupPropertiesResponse;
     /**
      * Type of the object = [Microsoft.Migrate/assessmentProjects/groups].
      */

@@ -37,7 +37,7 @@ export interface GetLabResult {
     /**
      * The properties of any lab announcement associated with this lab
      */
-    readonly announcement?: types.outputs.devtestlab.LabAnnouncementPropertiesResponse;
+    readonly announcement?: types.outputs.LabAnnouncementPropertiesResponse;
     /**
      * The lab's artifact storage account.
      */
@@ -115,7 +115,7 @@ export interface GetLabResult {
     /**
      * The properties of any lab support message associated with this lab
      */
-    readonly support?: types.outputs.devtestlab.LabSupportPropertiesResponse;
+    readonly support?: types.outputs.LabSupportPropertiesResponse;
     /**
      * The tags of the resource.
      */

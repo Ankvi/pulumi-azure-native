@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The X509 Certificate.
  */
@@ -42,11 +42,11 @@ export class DpsCertificate extends pulumi.CustomResource {
     /**
      * properties of a certificate
      */
-    public /*out*/ readonly properties!: pulumi.Output<types.outputs.devices.v20211015.CertificatePropertiesResponse>;
+    public /*out*/ readonly properties!: pulumi.Output<types.outputs.CertificatePropertiesResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.devices.v20211015.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The resource type.
      */

@@ -23,7 +23,7 @@ utilities.lazyLoad(exports, ["VirtualMachineImageTemplate"], () => require("./vi
 
 
 // Export enums:
-export * from "../types/enums/v20220701";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

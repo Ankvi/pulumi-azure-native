@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An object that represents a replication for a container registry.
  */
@@ -50,11 +50,11 @@ export class Replication extends pulumi.CustomResource {
     /**
      * The status of the replication at the time the operation was called.
      */
-    public /*out*/ readonly status!: pulumi.Output<types.outputs.containerregistry.v20230701.StatusResponse>;
+    public /*out*/ readonly status!: pulumi.Output<types.outputs.StatusResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.containerregistry.v20230701.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The tags of the resource.
      */
@@ -146,5 +146,5 @@ export interface ReplicationArgs {
     /**
      * Whether or not zone redundancy is enabled for this container registry replication
      */
-    zoneRedundancy?: pulumi.Input<string | types.enums.v20230701.ZoneRedundancy>;
+    zoneRedundancy?: pulumi.Input<string | types.enums.ZoneRedundancy>;
 }

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a workspace instance.
  */
@@ -67,7 +67,7 @@ export interface GetWorkspaceResult {
     /**
      * List of linked private link scope resources.
      */
-    readonly privateLinkScopedResources: types.outputs.operationalinsights.v20200801.PrivateLinkScopedResourceResponse[];
+    readonly privateLinkScopedResources: types.outputs.PrivateLinkScopedResourceResponse[];
     /**
      * The provisioning state of the workspace.
      */
@@ -87,7 +87,7 @@ export interface GetWorkspaceResult {
     /**
      * The SKU of the workspace.
      */
-    readonly sku?: types.outputs.operationalinsights.v20200801.WorkspaceSkuResponse;
+    readonly sku?: types.outputs.WorkspaceSkuResponse;
     /**
      * Resource tags.
      */
@@ -99,7 +99,7 @@ export interface GetWorkspaceResult {
     /**
      * The daily volume cap for ingestion.
      */
-    readonly workspaceCapping?: types.outputs.operationalinsights.v20200801.WorkspaceCappingResponse;
+    readonly workspaceCapping?: types.outputs.WorkspaceCappingResponse;
 }
 /**
  * Gets a workspace instance.

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a Test Base Package.
  */
@@ -80,7 +80,7 @@ export interface GetPackageResult {
     /**
      * The system metadata relating to this resource
      */
-    readonly systemData: types.outputs.testbase.v20220401preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The tags of the resource.
      */
@@ -88,7 +88,7 @@ export interface GetPackageResult {
     /**
      * Specifies the target OSs of specific OS Update types.
      */
-    readonly targetOSList: types.outputs.testbase.v20220401preview.TargetOSInfoResponse[];
+    readonly targetOSList: types.outputs.TargetOSInfoResponse[];
     /**
      * OOB, functional or both. Mapped to the data in 'tests' property.
      */
@@ -96,7 +96,7 @@ export interface GetPackageResult {
     /**
      * The detailed test information.
      */
-    readonly tests: types.outputs.testbase.v20220401preview.TestResponse[];
+    readonly tests: types.outputs.TestResponse[];
     /**
      * Resource type.
      */
@@ -104,7 +104,7 @@ export interface GetPackageResult {
     /**
      * The validation results. There's validation on package when it's created or updated.
      */
-    readonly validationResults: types.outputs.testbase.v20220401preview.PackageValidationResultResponse[];
+    readonly validationResults: types.outputs.PackageValidationResultResponse[];
     /**
      * Application version
      */

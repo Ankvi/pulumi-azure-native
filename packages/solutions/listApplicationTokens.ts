@@ -42,7 +42,7 @@ export interface ListApplicationTokensResult {
     /**
      * The array of managed identity tokens.
      */
-    readonly value?: types.outputs.solutions.ManagedIdentityTokenResponse[];
+    readonly value?: types.outputs.ManagedIdentityTokenResponse[];
 }
 /**
  * List tokens for application.

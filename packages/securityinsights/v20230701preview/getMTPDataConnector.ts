@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a data connector.
  */
@@ -36,7 +36,7 @@ export interface GetMTPDataConnectorResult {
     /**
      * The available data types for the connector.
      */
-    readonly dataTypes: types.outputs.securityinsights.v20230701preview.MTPDataConnectorDataTypesResponse;
+    readonly dataTypes: types.outputs.MTPDataConnectorDataTypesResponse;
     /**
      * Etag of the azure resource
      */
@@ -44,7 +44,7 @@ export interface GetMTPDataConnectorResult {
     /**
      * The available filtered providers for the connector.
      */
-    readonly filteredProviders?: types.outputs.securityinsights.v20230701preview.MtpFilteredProvidersResponse;
+    readonly filteredProviders?: types.outputs.MtpFilteredProvidersResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -61,7 +61,7 @@ export interface GetMTPDataConnectorResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.securityinsights.v20230701preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The tenant id to connect to, and get the data from.
      */

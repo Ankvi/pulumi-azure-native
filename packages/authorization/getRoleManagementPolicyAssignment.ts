@@ -32,7 +32,7 @@ export interface GetRoleManagementPolicyAssignmentResult {
     /**
      * The readonly computed rule applied to the policy.
      */
-    readonly effectiveRules: (types.outputs.authorization.RoleManagementPolicyApprovalRuleResponse | types.outputs.authorization.RoleManagementPolicyAuthenticationContextRuleResponse | types.outputs.authorization.RoleManagementPolicyEnablementRuleResponse | types.outputs.authorization.RoleManagementPolicyExpirationRuleResponse | types.outputs.authorization.RoleManagementPolicyNotificationRuleResponse)[];
+    readonly effectiveRules: (types.outputs.RoleManagementPolicyApprovalRuleResponse | types.outputs.RoleManagementPolicyAuthenticationContextRuleResponse | types.outputs.RoleManagementPolicyEnablementRuleResponse | types.outputs.RoleManagementPolicyExpirationRuleResponse | types.outputs.RoleManagementPolicyNotificationRuleResponse)[];
     /**
      * The role management policy Id.
      */
@@ -44,7 +44,7 @@ export interface GetRoleManagementPolicyAssignmentResult {
     /**
      * Additional properties of scope, role definition and policy
      */
-    readonly policyAssignmentProperties: types.outputs.authorization.PolicyAssignmentPropertiesResponse;
+    readonly policyAssignmentProperties: types.outputs.PolicyAssignmentPropertiesResponse;
     /**
      * The policy id role management policy assignment.
      */

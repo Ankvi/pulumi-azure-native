@@ -45,7 +45,7 @@ export interface GetVariableValueAtManagementGroupResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.authorization.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource (Microsoft.Authorization/variables/values).
      */
@@ -53,7 +53,7 @@ export interface GetVariableValueAtManagementGroupResult {
     /**
      * Variable value column value array.
      */
-    readonly values: types.outputs.authorization.PolicyVariableValueColumnValueResponse[];
+    readonly values: types.outputs.PolicyVariableValueColumnValueResponse[];
 }
 /**
  * This operation retrieves a single variable value; given its name,  management group it was created at and the variable it's created for.

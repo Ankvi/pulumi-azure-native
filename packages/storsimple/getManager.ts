@@ -32,7 +32,7 @@ export interface GetManagerResult {
     /**
      * Represents the type of StorSimple Manager.
      */
-    readonly cisIntrinsicSettings?: types.outputs.storsimple.ManagerIntrinsicSettingsResponse;
+    readonly cisIntrinsicSettings?: types.outputs.ManagerIntrinsicSettingsResponse;
     /**
      * The etag of the manager.
      */
@@ -56,7 +56,7 @@ export interface GetManagerResult {
     /**
      * Specifies the Sku.
      */
-    readonly sku?: types.outputs.storsimple.ManagerSkuResponse;
+    readonly sku?: types.outputs.ManagerSkuResponse;
     /**
      * The tags attached to the resource.
      */

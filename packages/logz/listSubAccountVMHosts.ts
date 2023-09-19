@@ -41,7 +41,7 @@ export interface ListSubAccountVMHostsResult {
     /**
      * Response of a list vm host update operation.
      */
-    readonly value?: types.outputs.logz.VMResourcesResponse[];
+    readonly value?: types.outputs.VMResourcesResponse[];
 }
 /**
  * Response of a list VM Host Update Operation.

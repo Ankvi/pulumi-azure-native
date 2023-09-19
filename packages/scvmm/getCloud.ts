@@ -32,7 +32,7 @@ export interface GetCloudResult {
     /**
      * Capacity of the cloud.
      */
-    readonly cloudCapacity: types.outputs.scvmm.CloudCapacityResponse;
+    readonly cloudCapacity: types.outputs.CloudCapacityResponse;
     /**
      * Name of the cloud in VMMServer.
      */
@@ -40,7 +40,7 @@ export interface GetCloudResult {
     /**
      * The extended location.
      */
-    readonly extendedLocation: types.outputs.scvmm.ExtendedLocationResponse;
+    readonly extendedLocation: types.outputs.ExtendedLocationResponse;
     /**
      * Resource Id
      */
@@ -64,11 +64,11 @@ export interface GetCloudResult {
     /**
      * List of QoS policies available for the cloud.
      */
-    readonly storageQoSPolicies: types.outputs.scvmm.StorageQoSPolicyResponse[];
+    readonly storageQoSPolicies: types.outputs.StorageQoSPolicyResponse[];
     /**
      * The system data.
      */
-    readonly systemData: types.outputs.scvmm.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags
      */

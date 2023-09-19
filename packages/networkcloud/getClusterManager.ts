@@ -37,7 +37,7 @@ export interface GetClusterManagerResult {
     /**
      * The list of the cluster versions the manager supports. It is used as input in clusterVersion property of a cluster resource.
      */
-    readonly clusterVersions: types.outputs.networkcloud.ClusterAvailableVersionResponse[];
+    readonly clusterVersions: types.outputs.ClusterAvailableVersionResponse[];
     /**
      * The detailed status that provides additional information about the cluster manager.
      */
@@ -61,11 +61,11 @@ export interface GetClusterManagerResult {
     /**
      * The configuration of the managed resource group associated with the resource.
      */
-    readonly managedResourceGroupConfiguration?: types.outputs.networkcloud.ManagedResourceGroupConfigurationResponse;
+    readonly managedResourceGroupConfiguration?: types.outputs.ManagedResourceGroupConfigurationResponse;
     /**
      * The extended location (custom location) that represents the cluster manager's control plane location. This extended location is used when creating cluster and rack manifest resources.
      */
-    readonly managerExtendedLocation: types.outputs.networkcloud.ExtendedLocationResponse;
+    readonly managerExtendedLocation: types.outputs.ExtendedLocationResponse;
     /**
      * The name of the resource
      */
@@ -77,7 +77,7 @@ export interface GetClusterManagerResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.networkcloud.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

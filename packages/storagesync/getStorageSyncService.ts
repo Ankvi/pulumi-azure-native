@@ -56,7 +56,7 @@ export interface GetStorageSyncServiceResult {
     /**
      * List of private endpoint connection associated with the specified storage sync service
      */
-    readonly privateEndpointConnections: types.outputs.storagesync.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections: types.outputs.PrivateEndpointConnectionResponse[];
     /**
      * StorageSyncService Provisioning State
      */
@@ -72,7 +72,7 @@ export interface GetStorageSyncServiceResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.storagesync.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

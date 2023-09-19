@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the details of the backend specified by its identifier.
  */
@@ -36,7 +36,7 @@ export interface GetBackendResult {
     /**
      * Backend Credentials Contract Properties
      */
-    readonly credentials?: types.outputs.apimanagement.v20220801.BackendCredentialsContractResponse;
+    readonly credentials?: types.outputs.BackendCredentialsContractResponse;
     /**
      * Backend Description.
      */
@@ -52,7 +52,7 @@ export interface GetBackendResult {
     /**
      * Backend Properties contract
      */
-    readonly properties: types.outputs.apimanagement.v20220801.BackendPropertiesResponse;
+    readonly properties: types.outputs.BackendPropertiesResponse;
     /**
      * Backend communication protocol.
      */
@@ -60,7 +60,7 @@ export interface GetBackendResult {
     /**
      * Backend gateway Contract Properties
      */
-    readonly proxy?: types.outputs.apimanagement.v20220801.BackendProxyContractResponse;
+    readonly proxy?: types.outputs.BackendProxyContractResponse;
     /**
      * Management Uri of the Resource in External System. This URL can be the Arm Resource Id of Logic Apps, Function Apps or API Apps.
      */
@@ -72,7 +72,7 @@ export interface GetBackendResult {
     /**
      * Backend TLS Properties
      */
-    readonly tls?: types.outputs.apimanagement.v20220801.BackendTlsPropertiesResponse;
+    readonly tls?: types.outputs.BackendTlsPropertiesResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

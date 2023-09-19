@@ -52,7 +52,7 @@ export class VirtualHardDisk extends pulumi.CustomResource {
     /**
      * The extendedLocation of the resource.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.azurestackhci.ExtendedLocationResponse | undefined>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
     /**
      * The hypervisor generation of the Virtual Machine [V1, V2]
      */
@@ -74,11 +74,11 @@ export class VirtualHardDisk extends pulumi.CustomResource {
     /**
      * The observed state of virtual hard disks
      */
-    public /*out*/ readonly status!: pulumi.Output<types.outputs.azurestackhci.VirtualHardDiskStatusResponse>;
+    public /*out*/ readonly status!: pulumi.Output<types.outputs.VirtualHardDiskStatusResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.azurestackhci.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -169,7 +169,7 @@ export interface VirtualHardDiskArgs {
     /**
      * The extendedLocation of the resource.
      */
-    extendedLocation?: pulumi.Input<types.inputs.azurestackhci.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * The hypervisor generation of the Virtual Machine [V1, V2]
      */

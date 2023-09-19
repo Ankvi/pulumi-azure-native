@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the private dns zone group resource by specified private dns zone group name.
  */
@@ -48,7 +48,7 @@ export interface GetPrivateDnsZoneGroupResult {
     /**
      * A collection of private dns zone configurations of the private dns zone group.
      */
-    readonly privateDnsZoneConfigs?: types.outputs.network.v20230201.PrivateDnsZoneConfigResponse[];
+    readonly privateDnsZoneConfigs?: types.outputs.PrivateDnsZoneConfigResponse[];
     /**
      * The provisioning state of the private dns zone group resource.
      */

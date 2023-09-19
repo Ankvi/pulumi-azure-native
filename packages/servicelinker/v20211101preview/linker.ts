@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Linker of source and target resource
  */
@@ -34,7 +34,7 @@ export class Linker extends pulumi.CustomResource {
     /**
      * The authentication type.
      */
-    public readonly authInfo!: pulumi.Output<types.outputs.servicelinker.v20211101preview.SecretAuthInfoResponse | types.outputs.servicelinker.v20211101preview.ServicePrincipalCertificateAuthInfoResponse | types.outputs.servicelinker.v20211101preview.ServicePrincipalSecretAuthInfoResponse | types.outputs.servicelinker.v20211101preview.SystemAssignedIdentityAuthInfoResponse | types.outputs.servicelinker.v20211101preview.UserAssignedIdentityAuthInfoResponse | undefined>;
+    public readonly authInfo!: pulumi.Output<types.outputs.SecretAuthInfoResponse | types.outputs.ServicePrincipalCertificateAuthInfoResponse | types.outputs.ServicePrincipalSecretAuthInfoResponse | types.outputs.SystemAssignedIdentityAuthInfoResponse | types.outputs.UserAssignedIdentityAuthInfoResponse | undefined>;
     /**
      * The application client type
      */
@@ -50,11 +50,11 @@ export class Linker extends pulumi.CustomResource {
     /**
      * An option to store secret value in secure place
      */
-    public readonly secretStore!: pulumi.Output<types.outputs.servicelinker.v20211101preview.SecretStoreResponse | undefined>;
+    public readonly secretStore!: pulumi.Output<types.outputs.SecretStoreResponse | undefined>;
     /**
      * The system data.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.servicelinker.v20211101preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The resource Id of target service.
      */
@@ -66,7 +66,7 @@ export class Linker extends pulumi.CustomResource {
     /**
      * The VNet solution.
      */
-    public readonly vNetSolution!: pulumi.Output<types.outputs.servicelinker.v20211101preview.VNetSolutionResponse | undefined>;
+    public readonly vNetSolution!: pulumi.Output<types.outputs.VNetSolutionResponse | undefined>;
 
     /**
      * Create a Linker resource with the given unique name, arguments, and options.
@@ -118,11 +118,11 @@ export interface LinkerArgs {
     /**
      * The authentication type.
      */
-    authInfo?: pulumi.Input<types.inputs.servicelinker.v20211101preview.SecretAuthInfoArgs | types.inputs.servicelinker.v20211101preview.ServicePrincipalCertificateAuthInfoArgs | types.inputs.servicelinker.v20211101preview.ServicePrincipalSecretAuthInfoArgs | types.inputs.servicelinker.v20211101preview.SystemAssignedIdentityAuthInfoArgs | types.inputs.servicelinker.v20211101preview.UserAssignedIdentityAuthInfoArgs>;
+    authInfo?: pulumi.Input<types.inputs.SecretAuthInfoArgs | types.inputs.ServicePrincipalCertificateAuthInfoArgs | types.inputs.ServicePrincipalSecretAuthInfoArgs | types.inputs.SystemAssignedIdentityAuthInfoArgs | types.inputs.UserAssignedIdentityAuthInfoArgs>;
     /**
      * The application client type
      */
-    clientType?: pulumi.Input<string | types.enums.v20211101preview.ClientType>;
+    clientType?: pulumi.Input<string | types.enums.ClientType>;
     /**
      * The name Linker resource.
      */
@@ -134,7 +134,7 @@ export interface LinkerArgs {
     /**
      * An option to store secret value in secure place
      */
-    secretStore?: pulumi.Input<types.inputs.servicelinker.v20211101preview.SecretStoreArgs>;
+    secretStore?: pulumi.Input<types.inputs.SecretStoreArgs>;
     /**
      * The resource Id of target service.
      */
@@ -142,5 +142,5 @@ export interface LinkerArgs {
     /**
      * The VNet solution.
      */
-    vNetSolution?: pulumi.Input<types.inputs.servicelinker.v20211101preview.VNetSolutionArgs>;
+    vNetSolution?: pulumi.Input<types.inputs.VNetSolutionArgs>;
 }

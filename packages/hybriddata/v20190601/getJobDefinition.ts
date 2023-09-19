@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * This method gets job definition object by name.
  */
@@ -41,7 +41,7 @@ export interface GetJobDefinitionResult {
     /**
      * List of customer secrets containing a key identifier and key value. The key identifier is a way for the specific data source to understand the key. Value contains customer secret encrypted by the encryptionKeys.
      */
-    readonly customerSecrets?: types.outputs.hybriddata.v20190601.CustomerSecretResponse[];
+    readonly customerSecrets?: types.outputs.CustomerSecretResponse[];
     /**
      * A generic json used differently by each data service type.
      */
@@ -73,7 +73,7 @@ export interface GetJobDefinitionResult {
     /**
      * Schedule for running the job definition
      */
-    readonly schedules?: types.outputs.hybriddata.v20190601.ScheduleResponse[];
+    readonly schedules?: types.outputs.ScheduleResponse[];
     /**
      * State of the job definition.
      */

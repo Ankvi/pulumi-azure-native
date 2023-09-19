@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets information about the specified Private Endpoint.
  */
@@ -48,7 +48,7 @@ export interface GetPrivateEndpointResult {
     /**
      * The properties associated with a private endpoint.
      */
-    readonly properties: types.outputs.streamanalytics.v20200301preview.PrivateEndpointPropertiesResponse;
+    readonly properties: types.outputs.PrivateEndpointPropertiesResponse;
     /**
      * The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the specified NSP association by name.
  */
@@ -56,11 +56,11 @@ export interface GetNspAssociationResult {
     /**
      * The PaaS resource to be associated.
      */
-    readonly privateLinkResource?: types.outputs.network.v20210201preview.SubResourceResponse;
+    readonly privateLinkResource?: types.outputs.SubResourceResponse;
     /**
      * Profile id to which the PaaS resource is associated.
      */
-    readonly profile?: types.outputs.network.v20210201preview.SubResourceResponse;
+    readonly profile?: types.outputs.SubResourceResponse;
     /**
      * The provisioning state of the resource  association resource.
      */

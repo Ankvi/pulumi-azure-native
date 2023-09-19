@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Capture metrics of Azure resources based on ARM tags.
  */
@@ -38,11 +38,11 @@ export class MetricsSourceTagRule extends pulumi.CustomResource {
     /**
      * Definition of the properties for a TagRules resource.
      */
-    public readonly properties!: pulumi.Output<types.outputs.logz.v20220101preview.MetricsTagRulesPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.MetricsTagRulesPropertiesResponse>;
     /**
      * The system metadata relating to this resource
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.logz.v20220101preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the rule set.
      */
@@ -104,7 +104,7 @@ export interface MetricsSourceTagRuleArgs {
     /**
      * Definition of the properties for a TagRules resource.
      */
-    properties?: pulumi.Input<types.inputs.logz.v20220101preview.MetricsTagRulesPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.MetricsTagRulesPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

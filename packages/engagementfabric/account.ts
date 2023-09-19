@@ -43,7 +43,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * The SKU of the resource
      */
-    public readonly sku!: pulumi.Output<types.outputs.engagementfabric.SKUResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.SKUResponse>;
     /**
      * The tags of the resource
      */
@@ -110,7 +110,7 @@ export interface AccountArgs {
     /**
      * The SKU of the resource
      */
-    sku: pulumi.Input<types.inputs.engagementfabric.SKUArgs>;
+    sku: pulumi.Input<types.inputs.SKUArgs>;
     /**
      * The tags of the resource
      */

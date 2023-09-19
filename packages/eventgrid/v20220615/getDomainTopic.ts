@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get properties of a domain topic.
  */
@@ -48,7 +48,7 @@ export interface GetDomainTopicResult {
     /**
      * The system metadata relating to Domain Topic resource.
      */
-    readonly systemData: types.outputs.eventgrid.v20220615.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Type of the resource.
      */

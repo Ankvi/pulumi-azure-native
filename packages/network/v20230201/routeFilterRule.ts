@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Route Filter Rule Resource.
  */
@@ -120,7 +120,7 @@ export interface RouteFilterRuleArgs {
     /**
      * The access type of the rule.
      */
-    access: pulumi.Input<string | types.enums.v20230201.Access>;
+    access: pulumi.Input<string | types.enums.Access>;
     /**
      * The collection for bgp community values to filter on. e.g. ['12076:5010','12076:5020'].
      */
@@ -148,7 +148,7 @@ export interface RouteFilterRuleArgs {
     /**
      * The rule type of the rule.
      */
-    routeFilterRuleType: pulumi.Input<string | types.enums.v20230201.RouteFilterRuleType>;
+    routeFilterRuleType: pulumi.Input<string | types.enums.RouteFilterRuleType>;
     /**
      * The name of the route filter rule.
      */

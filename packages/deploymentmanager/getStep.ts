@@ -44,7 +44,7 @@ export interface GetStepResult {
     /**
      * The properties that define the step.
      */
-    readonly properties: types.outputs.deploymentmanager.HealthCheckStepPropertiesResponse | types.outputs.deploymentmanager.WaitStepPropertiesResponse;
+    readonly properties: types.outputs.HealthCheckStepPropertiesResponse | types.outputs.WaitStepPropertiesResponse;
     /**
      * Resource tags.
      */

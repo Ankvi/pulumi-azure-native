@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the details of the recovery plan.
  */
@@ -48,7 +48,7 @@ export interface GetReplicationRecoveryPlanResult {
     /**
      * The custom details.
      */
-    readonly properties: types.outputs.recoveryservices.v20230401.RecoveryPlanPropertiesResponse;
+    readonly properties: types.outputs.RecoveryPlanPropertiesResponse;
     /**
      * Resource Type
      */

@@ -23,7 +23,7 @@ utilities.lazyLoad(exports, ["ReferenceDataSet"], () => require("./referenceData
 
 
 // Export enums:
-export * from "../types/enums/v20200515";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

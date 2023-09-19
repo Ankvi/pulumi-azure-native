@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * AFDOrigin group comprising of origins is used for load balancing to origins when the content cannot be served from CDN.
  */
@@ -35,11 +35,11 @@ export class AFDOriginGroup extends pulumi.CustomResource {
     /**
      * Health probe settings to the origin that is used to determine the health of the origin.
      */
-    public readonly healthProbeSettings!: pulumi.Output<types.outputs.cdn.v20200901.HealthProbeParametersResponse | undefined>;
+    public readonly healthProbeSettings!: pulumi.Output<types.outputs.HealthProbeParametersResponse | undefined>;
     /**
      * Load balancing settings for a backend pool
      */
-    public readonly loadBalancingSettings!: pulumi.Output<types.outputs.cdn.v20200901.LoadBalancingSettingsParametersResponse | undefined>;
+    public readonly loadBalancingSettings!: pulumi.Output<types.outputs.LoadBalancingSettingsParametersResponse | undefined>;
     /**
      * Resource name.
      */
@@ -51,7 +51,7 @@ export class AFDOriginGroup extends pulumi.CustomResource {
     /**
      * The JSON object that contains the properties to determine origin health using real requests/responses. This property is currently not supported.
      */
-    public readonly responseBasedAfdOriginErrorDetectionSettings!: pulumi.Output<types.outputs.cdn.v20200901.ResponseBasedOriginErrorDetectionParametersResponse | undefined>;
+    public readonly responseBasedAfdOriginErrorDetectionSettings!: pulumi.Output<types.outputs.ResponseBasedOriginErrorDetectionParametersResponse | undefined>;
     /**
      * Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled'
      */
@@ -59,7 +59,7 @@ export class AFDOriginGroup extends pulumi.CustomResource {
     /**
      * Read only system data
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.cdn.v20200901.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Time in minutes to shift the traffic to the endpoint gradually when an unhealthy endpoint comes healthy or a new endpoint is added. Default is 10 mins. This property is currently not supported.
      */
@@ -125,11 +125,11 @@ export interface AFDOriginGroupArgs {
     /**
      * Health probe settings to the origin that is used to determine the health of the origin.
      */
-    healthProbeSettings?: pulumi.Input<types.inputs.cdn.v20200901.HealthProbeParametersArgs>;
+    healthProbeSettings?: pulumi.Input<types.inputs.HealthProbeParametersArgs>;
     /**
      * Load balancing settings for a backend pool
      */
-    loadBalancingSettings?: pulumi.Input<types.inputs.cdn.v20200901.LoadBalancingSettingsParametersArgs>;
+    loadBalancingSettings?: pulumi.Input<types.inputs.LoadBalancingSettingsParametersArgs>;
     /**
      * Name of the origin group which is unique within the endpoint.
      */
@@ -145,11 +145,11 @@ export interface AFDOriginGroupArgs {
     /**
      * The JSON object that contains the properties to determine origin health using real requests/responses. This property is currently not supported.
      */
-    responseBasedAfdOriginErrorDetectionSettings?: pulumi.Input<types.inputs.cdn.v20200901.ResponseBasedOriginErrorDetectionParametersArgs>;
+    responseBasedAfdOriginErrorDetectionSettings?: pulumi.Input<types.inputs.ResponseBasedOriginErrorDetectionParametersArgs>;
     /**
      * Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled'
      */
-    sessionAffinityState?: pulumi.Input<string | types.enums.v20200901.EnabledState>;
+    sessionAffinityState?: pulumi.Input<string | types.enums.EnabledState>;
     /**
      * Time in minutes to shift the traffic to the endpoint gradually when an unhealthy endpoint comes healthy or a new endpoint is added. Default is 10 mins. This property is currently not supported.
      */

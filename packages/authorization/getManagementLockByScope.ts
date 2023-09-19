@@ -48,11 +48,11 @@ export interface GetManagementLockByScopeResult {
     /**
      * The owners of the lock.
      */
-    readonly owners?: types.outputs.authorization.ManagementLockOwnerResponse[];
+    readonly owners?: types.outputs.ManagementLockOwnerResponse[];
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.authorization.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The resource type of the lock - Microsoft.Authorization/locks.
      */

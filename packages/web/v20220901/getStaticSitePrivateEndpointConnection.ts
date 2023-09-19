@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Description for Gets a private endpoint connection
  */
@@ -52,11 +52,11 @@ export interface GetStaticSitePrivateEndpointConnectionResult {
     /**
      * PrivateEndpoint of a remote private endpoint connection
      */
-    readonly privateEndpoint?: types.outputs.web.v20220901.ArmIdWrapperResponse;
+    readonly privateEndpoint?: types.outputs.ArmIdWrapperResponse;
     /**
      * The state of a private link connection
      */
-    readonly privateLinkServiceConnectionState?: types.outputs.web.v20220901.PrivateLinkConnectionStateResponse;
+    readonly privateLinkServiceConnectionState?: types.outputs.PrivateLinkConnectionStateResponse;
     readonly provisioningState: string;
     /**
      * Resource type.

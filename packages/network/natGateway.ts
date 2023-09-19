@@ -55,11 +55,11 @@ export class NatGateway extends pulumi.CustomResource {
     /**
      * An array of public ip addresses associated with the nat gateway resource.
      */
-    public readonly publicIpAddresses!: pulumi.Output<types.outputs.network.SubResourceResponse[] | undefined>;
+    public readonly publicIpAddresses!: pulumi.Output<types.outputs.SubResourceResponse[] | undefined>;
     /**
      * An array of public ip prefixes associated with the nat gateway resource.
      */
-    public readonly publicIpPrefixes!: pulumi.Output<types.outputs.network.SubResourceResponse[] | undefined>;
+    public readonly publicIpPrefixes!: pulumi.Output<types.outputs.SubResourceResponse[] | undefined>;
     /**
      * The resource GUID property of the NAT gateway resource.
      */
@@ -67,11 +67,11 @@ export class NatGateway extends pulumi.CustomResource {
     /**
      * The nat gateway SKU.
      */
-    public readonly sku!: pulumi.Output<types.outputs.network.NatGatewaySkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.NatGatewaySkuResponse | undefined>;
     /**
      * An array of references to the subnets using this nat gateway resource.
      */
-    public /*out*/ readonly subnets!: pulumi.Output<types.outputs.network.SubResourceResponse[]>;
+    public /*out*/ readonly subnets!: pulumi.Output<types.outputs.SubResourceResponse[]>;
     /**
      * Resource tags.
      */
@@ -160,11 +160,11 @@ export interface NatGatewayArgs {
     /**
      * An array of public ip addresses associated with the nat gateway resource.
      */
-    publicIpAddresses?: pulumi.Input<pulumi.Input<types.inputs.network.SubResourceArgs>[]>;
+    publicIpAddresses?: pulumi.Input<pulumi.Input<types.inputs.SubResourceArgs>[]>;
     /**
      * An array of public ip prefixes associated with the nat gateway resource.
      */
-    publicIpPrefixes?: pulumi.Input<pulumi.Input<types.inputs.network.SubResourceArgs>[]>;
+    publicIpPrefixes?: pulumi.Input<pulumi.Input<types.inputs.SubResourceArgs>[]>;
     /**
      * The name of the resource group.
      */
@@ -172,7 +172,7 @@ export interface NatGatewayArgs {
     /**
      * The nat gateway SKU.
      */
-    sku?: pulumi.Input<types.inputs.network.NatGatewaySkuArgs>;
+    sku?: pulumi.Input<types.inputs.NatGatewaySkuArgs>;
     /**
      * Resource tags.
      */

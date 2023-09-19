@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A cluster resource
  */
@@ -54,7 +54,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * The cluster SKU
      */
-    public readonly sku!: pulumi.Output<types.outputs.avs.v20230301.SkuResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse>;
     /**
      * Resource type.
      */
@@ -133,5 +133,5 @@ export interface ClusterArgs {
     /**
      * The cluster SKU
      */
-    sku: pulumi.Input<types.inputs.avs.v20230301.SkuArgs>;
+    sku: pulumi.Input<types.inputs.SkuArgs>;
 }

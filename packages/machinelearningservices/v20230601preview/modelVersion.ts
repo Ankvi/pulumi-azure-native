@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Azure Resource Manager resource envelope.
  */
@@ -34,7 +34,7 @@ export class ModelVersion extends pulumi.CustomResource {
     /**
      * [Required] Additional attributes of the entity.
      */
-    public readonly modelVersionProperties!: pulumi.Output<types.outputs.machinelearningservices.v20230601preview.ModelVersionResponse>;
+    public readonly modelVersionProperties!: pulumi.Output<types.outputs.ModelVersionResponse>;
     /**
      * The name of the resource
      */
@@ -42,7 +42,7 @@ export class ModelVersion extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.machinelearningservices.v20230601preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -71,7 +71,7 @@ export class ModelVersion extends pulumi.CustomResource {
             if ((!args || args.workspaceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workspaceName'");
             }
-            resourceInputs["modelVersionProperties"] = args ? (args.modelVersionProperties ? pulumi.output(args.modelVersionProperties).apply(types.inputs.machinelearningservices.v20230601preview.modelVersionArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["modelVersionProperties"] = args ? (args.modelVersionProperties ? pulumi.output(args.modelVersionProperties).apply(types.inputs.modelVersionArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["version"] = args ? args.version : undefined;
@@ -98,7 +98,7 @@ export interface ModelVersionArgs {
     /**
      * [Required] Additional attributes of the entity.
      */
-    modelVersionProperties: pulumi.Input<types.inputs.machinelearningservices.v20230601preview.ModelVersionArgs>;
+    modelVersionProperties: pulumi.Input<types.inputs.ModelVersionArgs>;
     /**
      * Container name. This is case-sensitive.
      */

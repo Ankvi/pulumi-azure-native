@@ -36,7 +36,7 @@ export interface GetWorkbookTemplateResult {
     /**
      * Workbook galleries supported by the template.
      */
-    readonly galleries: types.outputs.insights.WorkbookTemplateGalleryResponse[];
+    readonly galleries: types.outputs.WorkbookTemplateGalleryResponse[];
     /**
      * Azure resource Id
      */
@@ -44,7 +44,7 @@ export interface GetWorkbookTemplateResult {
     /**
      * Key value pair of localized gallery. Each key is the locale code of languages supported by the Azure portal.
      */
-    readonly localized?: {[key: string]: types.outputs.insights.WorkbookTemplateLocalizedGalleryResponse[]};
+    readonly localized?: {[key: string]: types.outputs.WorkbookTemplateLocalizedGalleryResponse[]};
     /**
      * Resource location
      */

@@ -35,7 +35,7 @@ export class GuestDiagnosticsSetting extends pulumi.CustomResource {
     /**
      * the array of data source object which are configured to collect and send data
      */
-    public readonly dataSources!: pulumi.Output<types.outputs.insights.DataSourceResponse[] | undefined>;
+    public readonly dataSources!: pulumi.Output<types.outputs.DataSourceResponse[] | undefined>;
     /**
      * Resource location
      */
@@ -104,7 +104,7 @@ export interface GuestDiagnosticsSettingArgs {
     /**
      * the array of data source object which are configured to collect and send data
      */
-    dataSources?: pulumi.Input<pulumi.Input<types.inputs.insights.DataSourceArgs>[]>;
+    dataSources?: pulumi.Input<pulumi.Input<types.inputs.DataSourceArgs>[]>;
     /**
      * The name of the diagnostic setting.
      */

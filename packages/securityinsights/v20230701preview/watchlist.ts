@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents a Watchlist in Azure Security Insights.
  */
@@ -42,7 +42,7 @@ export class Watchlist extends pulumi.CustomResource {
     /**
      * Describes a user that created the watchlist
      */
-    public readonly createdBy!: pulumi.Output<types.outputs.securityinsights.v20230701preview.WatchlistUserInfoResponse | undefined>;
+    public readonly createdBy!: pulumi.Output<types.outputs.WatchlistUserInfoResponse | undefined>;
     /**
      * The default duration of a watchlist (in ISO 8601 duration format)
      */
@@ -98,7 +98,7 @@ export class Watchlist extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.securityinsights.v20230701preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The tenantId where the watchlist belongs to
      */
@@ -114,7 +114,7 @@ export class Watchlist extends pulumi.CustomResource {
     /**
      * Describes a user that updated the watchlist
      */
-    public readonly updatedBy!: pulumi.Output<types.outputs.securityinsights.v20230701preview.WatchlistUserInfoResponse | undefined>;
+    public readonly updatedBy!: pulumi.Output<types.outputs.WatchlistUserInfoResponse | undefined>;
     /**
      * The status of the Watchlist upload : New, InProgress or Complete. Pls note : When a Watchlist upload status is equal to InProgress, the Watchlist cannot be deleted
      */
@@ -234,7 +234,7 @@ export interface WatchlistArgs {
     /**
      * Describes a user that created the watchlist
      */
-    createdBy?: pulumi.Input<types.inputs.securityinsights.v20230701preview.WatchlistUserInfoArgs>;
+    createdBy?: pulumi.Input<types.inputs.WatchlistUserInfoArgs>;
     /**
      * The default duration of a watchlist (in ISO 8601 duration format)
      */
@@ -282,7 +282,7 @@ export interface WatchlistArgs {
     /**
      * The sourceType of the watchlist
      */
-    sourceType?: pulumi.Input<string | types.enums.v20230701preview.SourceType>;
+    sourceType?: pulumi.Input<string | types.enums.SourceType>;
     /**
      * The tenantId where the watchlist belongs to
      */
@@ -294,7 +294,7 @@ export interface WatchlistArgs {
     /**
      * Describes a user that updated the watchlist
      */
-    updatedBy?: pulumi.Input<types.inputs.securityinsights.v20230701preview.WatchlistUserInfoArgs>;
+    updatedBy?: pulumi.Input<types.inputs.WatchlistUserInfoArgs>;
     /**
      * The status of the Watchlist upload : New, InProgress or Complete. Pls note : When a Watchlist upload status is equal to InProgress, the Watchlist cannot be deleted
      */

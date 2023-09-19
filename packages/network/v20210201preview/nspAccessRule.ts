@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The NSP access rule resource
  */
@@ -58,7 +58,7 @@ export class NspAccessRule extends pulumi.CustomResource {
     /**
      * Rule specified by the perimeter id.
      */
-    public /*out*/ readonly networkSecurityPerimeters!: pulumi.Output<types.outputs.network.v20210201preview.PerimeterBasedAccessRuleResponse[]>;
+    public /*out*/ readonly networkSecurityPerimeters!: pulumi.Output<types.outputs.PerimeterBasedAccessRuleResponse[]>;
     /**
      * Outbound rules phone number format.
      */
@@ -70,7 +70,7 @@ export class NspAccessRule extends pulumi.CustomResource {
     /**
      * List of subscription ids
      */
-    public readonly subscriptions!: pulumi.Output<types.outputs.network.v20210201preview.SubscriptionIdResponse[] | undefined>;
+    public readonly subscriptions!: pulumi.Output<types.outputs.SubscriptionIdResponse[] | undefined>;
     /**
      * Resource tags.
      */
@@ -153,7 +153,7 @@ export interface NspAccessRuleArgs {
     /**
      * Direction that specifies whether the access rules is inbound/outbound.
      */
-    direction?: pulumi.Input<string | types.enums.v20210201preview.AccessRuleDirection>;
+    direction?: pulumi.Input<string | types.enums.AccessRuleDirection>;
     /**
      * Outbound rules email address format.
      */
@@ -193,7 +193,7 @@ export interface NspAccessRuleArgs {
     /**
      * List of subscription ids
      */
-    subscriptions?: pulumi.Input<pulumi.Input<types.inputs.network.v20210201preview.SubscriptionIdArgs>[]>;
+    subscriptions?: pulumi.Input<pulumi.Input<types.inputs.SubscriptionIdArgs>[]>;
     /**
      * Resource tags.
      */

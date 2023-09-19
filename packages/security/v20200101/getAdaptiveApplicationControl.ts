@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets an application control VM/server group.
  */
@@ -37,7 +37,7 @@ export interface GetAdaptiveApplicationControlResult {
      * Resource Id
      */
     readonly id: string;
-    readonly issues: types.outputs.security.v20200101.AdaptiveApplicationControlIssueSummaryResponse[];
+    readonly issues: types.outputs.AdaptiveApplicationControlIssueSummaryResponse[];
     /**
      * Location where the resource is stored
      */
@@ -46,11 +46,11 @@ export interface GetAdaptiveApplicationControlResult {
      * Resource name
      */
     readonly name: string;
-    readonly pathRecommendations?: types.outputs.security.v20200101.PathRecommendationResponse[];
+    readonly pathRecommendations?: types.outputs.PathRecommendationResponse[];
     /**
      * The protection mode of the collection/file types. Exe/Msi/Script are used for Windows, Executable is used for Linux.
      */
-    readonly protectionMode?: types.outputs.security.v20200101.ProtectionModeResponse;
+    readonly protectionMode?: types.outputs.ProtectionModeResponse;
     /**
      * The initial recommendation status of the machine group or machine
      */
@@ -63,7 +63,7 @@ export interface GetAdaptiveApplicationControlResult {
      * Resource type
      */
     readonly type: string;
-    readonly vmRecommendations?: types.outputs.security.v20200101.VmRecommendationResponse[];
+    readonly vmRecommendations?: types.outputs.VmRecommendationResponse[];
 }
 /**
  * Gets an application control VM/server group.

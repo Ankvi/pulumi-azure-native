@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets an existing delivery rule within a rule set.
  */
@@ -41,11 +41,11 @@ export interface GetRuleResult {
     /**
      * A list of actions that are executed when all the conditions of a rule are satisfied.
      */
-    readonly actions: (types.outputs.cdn.v20230501.DeliveryRuleCacheExpirationActionResponse | types.outputs.cdn.v20230501.DeliveryRuleCacheKeyQueryStringActionResponse | types.outputs.cdn.v20230501.DeliveryRuleRequestHeaderActionResponse | types.outputs.cdn.v20230501.DeliveryRuleResponseHeaderActionResponse | types.outputs.cdn.v20230501.DeliveryRuleRouteConfigurationOverrideActionResponse | types.outputs.cdn.v20230501.OriginGroupOverrideActionResponse | types.outputs.cdn.v20230501.UrlRedirectActionResponse | types.outputs.cdn.v20230501.UrlRewriteActionResponse | types.outputs.cdn.v20230501.UrlSigningActionResponse)[];
+    readonly actions: (types.outputs.DeliveryRuleCacheExpirationActionResponse | types.outputs.DeliveryRuleCacheKeyQueryStringActionResponse | types.outputs.DeliveryRuleRequestHeaderActionResponse | types.outputs.DeliveryRuleResponseHeaderActionResponse | types.outputs.DeliveryRuleRouteConfigurationOverrideActionResponse | types.outputs.OriginGroupOverrideActionResponse | types.outputs.UrlRedirectActionResponse | types.outputs.UrlRewriteActionResponse | types.outputs.UrlSigningActionResponse)[];
     /**
      * A list of conditions that must be matched for the actions to be executed
      */
-    readonly conditions?: (types.outputs.cdn.v20230501.DeliveryRuleClientPortConditionResponse | types.outputs.cdn.v20230501.DeliveryRuleCookiesConditionResponse | types.outputs.cdn.v20230501.DeliveryRuleHostNameConditionResponse | types.outputs.cdn.v20230501.DeliveryRuleHttpVersionConditionResponse | types.outputs.cdn.v20230501.DeliveryRuleIsDeviceConditionResponse | types.outputs.cdn.v20230501.DeliveryRulePostArgsConditionResponse | types.outputs.cdn.v20230501.DeliveryRuleQueryStringConditionResponse | types.outputs.cdn.v20230501.DeliveryRuleRemoteAddressConditionResponse | types.outputs.cdn.v20230501.DeliveryRuleRequestBodyConditionResponse | types.outputs.cdn.v20230501.DeliveryRuleRequestHeaderConditionResponse | types.outputs.cdn.v20230501.DeliveryRuleRequestMethodConditionResponse | types.outputs.cdn.v20230501.DeliveryRuleRequestSchemeConditionResponse | types.outputs.cdn.v20230501.DeliveryRuleRequestUriConditionResponse | types.outputs.cdn.v20230501.DeliveryRuleServerPortConditionResponse | types.outputs.cdn.v20230501.DeliveryRuleSocketAddrConditionResponse | types.outputs.cdn.v20230501.DeliveryRuleSslProtocolConditionResponse | types.outputs.cdn.v20230501.DeliveryRuleUrlFileExtensionConditionResponse | types.outputs.cdn.v20230501.DeliveryRuleUrlFileNameConditionResponse | types.outputs.cdn.v20230501.DeliveryRuleUrlPathConditionResponse)[];
+    readonly conditions?: (types.outputs.DeliveryRuleClientPortConditionResponse | types.outputs.DeliveryRuleCookiesConditionResponse | types.outputs.DeliveryRuleHostNameConditionResponse | types.outputs.DeliveryRuleHttpVersionConditionResponse | types.outputs.DeliveryRuleIsDeviceConditionResponse | types.outputs.DeliveryRulePostArgsConditionResponse | types.outputs.DeliveryRuleQueryStringConditionResponse | types.outputs.DeliveryRuleRemoteAddressConditionResponse | types.outputs.DeliveryRuleRequestBodyConditionResponse | types.outputs.DeliveryRuleRequestHeaderConditionResponse | types.outputs.DeliveryRuleRequestMethodConditionResponse | types.outputs.DeliveryRuleRequestSchemeConditionResponse | types.outputs.DeliveryRuleRequestUriConditionResponse | types.outputs.DeliveryRuleServerPortConditionResponse | types.outputs.DeliveryRuleSocketAddrConditionResponse | types.outputs.DeliveryRuleSslProtocolConditionResponse | types.outputs.DeliveryRuleUrlFileExtensionConditionResponse | types.outputs.DeliveryRuleUrlFileNameConditionResponse | types.outputs.DeliveryRuleUrlPathConditionResponse)[];
     readonly deploymentStatus: string;
     /**
      * Resource ID.
@@ -74,7 +74,7 @@ export interface GetRuleResult {
     /**
      * Read only system data
      */
-    readonly systemData: types.outputs.cdn.v20230501.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource type.
      */

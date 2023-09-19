@@ -27,7 +27,7 @@ export interface ListGlobalUserLabsResult {
     /**
      * List of all the labs
      */
-    readonly labs?: types.outputs.labservices.LabDetailsResponse[];
+    readonly labs?: types.outputs.LabDetailsResponse[];
 }
 /**
  * List labs for the user.

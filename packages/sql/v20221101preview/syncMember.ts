@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An Azure SQL Database sync member.
  */
@@ -157,7 +157,7 @@ export interface SyncMemberArgs {
     /**
      * Database type of the sync member.
      */
-    databaseType?: pulumi.Input<string | types.enums.v20221101preview.SyncMemberDbType>;
+    databaseType?: pulumi.Input<string | types.enums.SyncMemberDbType>;
     /**
      * Password of the member database in the sync member.
      */
@@ -181,7 +181,7 @@ export interface SyncMemberArgs {
     /**
      * Sync direction of the sync member.
      */
-    syncDirection?: pulumi.Input<string | types.enums.v20221101preview.SyncDirection>;
+    syncDirection?: pulumi.Input<string | types.enums.SyncDirection>;
     /**
      * The name of the sync group on which the sync member is hosted.
      */

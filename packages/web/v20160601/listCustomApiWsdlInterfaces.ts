@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * This returns the list of interfaces in the WSDL
  */
@@ -25,7 +25,7 @@ export interface ListCustomApiWsdlInterfacesArgs {
     /**
      * The WSDL import method
      */
-    importMethod?: string | types.enums.v20160601.WsdlImportMethod;
+    importMethod?: string | types.enums.WsdlImportMethod;
     /**
      * The location
      */
@@ -33,7 +33,7 @@ export interface ListCustomApiWsdlInterfacesArgs {
     /**
      * The service with name and endpoint names
      */
-    service?: types.inputs.web.v20160601.WsdlService;
+    service?: types.inputs.WsdlService;
     /**
      * Subscription Id
      */
@@ -51,7 +51,7 @@ export interface ListCustomApiWsdlInterfacesResult {
     /**
      * Collection of WSDL interfaces
      */
-    readonly value?: types.outputs.web.v20160601.WsdlServiceResponse[];
+    readonly value?: types.outputs.WsdlServiceResponse[];
 }
 /**
  * This returns the list of interfaces in the WSDL
@@ -68,7 +68,7 @@ export interface ListCustomApiWsdlInterfacesOutputArgs {
     /**
      * The WSDL import method
      */
-    importMethod?: pulumi.Input<string | types.enums.v20160601.WsdlImportMethod>;
+    importMethod?: pulumi.Input<string | types.enums.WsdlImportMethod>;
     /**
      * The location
      */
@@ -76,7 +76,7 @@ export interface ListCustomApiWsdlInterfacesOutputArgs {
     /**
      * The service with name and endpoint names
      */
-    service?: pulumi.Input<types.inputs.web.v20160601.WsdlServiceArgs>;
+    service?: pulumi.Input<types.inputs.WsdlServiceArgs>;
     /**
      * Subscription Id
      */

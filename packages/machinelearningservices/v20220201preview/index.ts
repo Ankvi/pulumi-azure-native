@@ -173,7 +173,7 @@ utilities.lazyLoad(exports, ["WorkspaceConnection"], () => require("./workspaceC
 
 
 // Export enums:
-export * from "../types/enums/v20220201preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

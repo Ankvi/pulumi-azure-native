@@ -45,7 +45,7 @@ export interface GetTemplateSpecVersionResult {
     /**
      * An array of linked template artifacts.
      */
-    readonly linkedTemplates?: types.outputs.resources.LinkedTemplateArtifactResponse[];
+    readonly linkedTemplates?: types.outputs.LinkedTemplateArtifactResponse[];
     /**
      * The location of the Template Spec Version. It must match the location of the parent Template Spec.
      */
@@ -65,7 +65,7 @@ export interface GetTemplateSpecVersionResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.resources.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

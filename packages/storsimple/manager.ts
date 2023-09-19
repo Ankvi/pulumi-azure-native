@@ -35,7 +35,7 @@ export class Manager extends pulumi.CustomResource {
     /**
      * Represents the type of StorSimple Manager.
      */
-    public readonly cisIntrinsicSettings!: pulumi.Output<types.outputs.storsimple.ManagerIntrinsicSettingsResponse | undefined>;
+    public readonly cisIntrinsicSettings!: pulumi.Output<types.outputs.ManagerIntrinsicSettingsResponse | undefined>;
     /**
      * The etag of the manager.
      */
@@ -55,7 +55,7 @@ export class Manager extends pulumi.CustomResource {
     /**
      * Specifies the Sku.
      */
-    public readonly sku!: pulumi.Output<types.outputs.storsimple.ManagerSkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.ManagerSkuResponse | undefined>;
     /**
      * The tags attached to the resource.
      */
@@ -113,7 +113,7 @@ export interface ManagerArgs {
     /**
      * Represents the type of StorSimple Manager.
      */
-    cisIntrinsicSettings?: pulumi.Input<types.inputs.storsimple.ManagerIntrinsicSettingsArgs>;
+    cisIntrinsicSettings?: pulumi.Input<types.inputs.ManagerIntrinsicSettingsArgs>;
     /**
      * The geo location of the resource.
      */
@@ -133,7 +133,7 @@ export interface ManagerArgs {
     /**
      * Specifies the Sku.
      */
-    sku?: pulumi.Input<types.inputs.storsimple.ManagerSkuArgs>;
+    sku?: pulumi.Input<types.inputs.ManagerSkuArgs>;
     /**
      * The tags attached to the resource.
      */

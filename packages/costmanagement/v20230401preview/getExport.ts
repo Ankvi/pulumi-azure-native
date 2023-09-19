@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The operation to get the export for the defined scope by export name.
  */
@@ -36,11 +36,11 @@ export interface GetExportResult {
     /**
      * Has the definition for the export.
      */
-    readonly definition: types.outputs.costmanagement.v20230401preview.ExportDefinitionResponse;
+    readonly definition: types.outputs.ExportDefinitionResponse;
     /**
      * Has delivery information for the export.
      */
-    readonly deliveryInfo: types.outputs.costmanagement.v20230401preview.ExportDeliveryInfoResponse;
+    readonly deliveryInfo: types.outputs.ExportDeliveryInfoResponse;
     /**
      * eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
      */
@@ -56,7 +56,7 @@ export interface GetExportResult {
     /**
      * The managed identity associated with Export
      */
-    readonly identity?: types.outputs.costmanagement.v20230401preview.SystemAssignedServiceIdentityResponse;
+    readonly identity?: types.outputs.SystemAssignedServiceIdentityResponse;
     /**
      * The location of the Export's managed identity. Only required when utilizing managed identity.
      */
@@ -76,11 +76,11 @@ export interface GetExportResult {
     /**
      * If requested, has the most recent run history for the export.
      */
-    readonly runHistory?: types.outputs.costmanagement.v20230401preview.ExportExecutionListResultResponse;
+    readonly runHistory?: types.outputs.ExportExecutionListResultResponse;
     /**
      * Has schedule information for the export.
      */
-    readonly schedule?: types.outputs.costmanagement.v20230401preview.ExportScheduleResponse;
+    readonly schedule?: types.outputs.ExportScheduleResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Description of a backup which will be performed.
  */
@@ -38,11 +38,11 @@ export class WebAppBackupConfiguration extends pulumi.CustomResource {
     /**
      * Schedule for the backup if it is executed periodically.
      */
-    public readonly backupSchedule!: pulumi.Output<types.outputs.web.v20160801.BackupScheduleResponse | undefined>;
+    public readonly backupSchedule!: pulumi.Output<types.outputs.BackupScheduleResponse | undefined>;
     /**
      * Databases included in the backup.
      */
-    public readonly databases!: pulumi.Output<types.outputs.web.v20160801.DatabaseBackupSettingResponse[] | undefined>;
+    public readonly databases!: pulumi.Output<types.outputs.DatabaseBackupSettingResponse[] | undefined>;
     /**
      * True if the backup schedule is enabled (must be included in that case), false if the backup schedule should be disabled.
      */
@@ -88,7 +88,7 @@ export class WebAppBackupConfiguration extends pulumi.CustomResource {
                 throw new Error("Missing required property 'storageAccountUrl'");
             }
             resourceInputs["backupRequestName"] = args ? args.backupRequestName : undefined;
-            resourceInputs["backupSchedule"] = args ? (args.backupSchedule ? pulumi.output(args.backupSchedule).apply(types.inputs.web.v20160801.backupScheduleArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["backupSchedule"] = args ? (args.backupSchedule ? pulumi.output(args.backupSchedule).apply(types.inputs.backupScheduleArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["databases"] = args ? args.databases : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["kind"] = args ? args.kind : undefined;
@@ -124,11 +124,11 @@ export interface WebAppBackupConfigurationArgs {
     /**
      * Schedule for the backup if it is executed periodically.
      */
-    backupSchedule?: pulumi.Input<types.inputs.web.v20160801.BackupScheduleArgs>;
+    backupSchedule?: pulumi.Input<types.inputs.BackupScheduleArgs>;
     /**
      * Databases included in the backup.
      */
-    databases?: pulumi.Input<pulumi.Input<types.inputs.web.v20160801.DatabaseBackupSettingArgs>[]>;
+    databases?: pulumi.Input<pulumi.Input<types.inputs.DatabaseBackupSettingArgs>[]>;
     /**
      * True if the backup schedule is enabled (must be included in that case), false if the backup schedule should be disabled.
      */
@@ -152,5 +152,5 @@ export interface WebAppBackupConfigurationArgs {
     /**
      * Type of the backup.
      */
-    type?: pulumi.Input<types.enums.v20160801.BackupRestoreOperationType>;
+    type?: pulumi.Input<types.enums.BackupRestoreOperationType>;
 }

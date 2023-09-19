@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The container for solution.
  */
@@ -42,7 +42,7 @@ export class ManagementConfiguration extends pulumi.CustomResource {
     /**
      * Properties for ManagementConfiguration object supported by the OperationsManagement resource provider.
      */
-    public readonly properties!: pulumi.Output<types.outputs.operationsmanagement.v20151101preview.ManagementConfigurationPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ManagementConfigurationPropertiesResponse>;
     /**
      * Resource type.
      */
@@ -96,7 +96,7 @@ export interface ManagementConfigurationArgs {
     /**
      * Properties for ManagementConfiguration object supported by the OperationsManagement resource provider.
      */
-    properties?: pulumi.Input<types.inputs.operationsmanagement.v20151101preview.ManagementConfigurationPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ManagementConfigurationPropertiesArgs>;
     /**
      * The name of the resource group to get. The name is case insensitive.
      */

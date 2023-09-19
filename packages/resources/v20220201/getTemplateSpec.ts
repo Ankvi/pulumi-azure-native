@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a Template Spec with a given name.
  */
@@ -60,7 +60,7 @@ export interface GetTemplateSpecResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.resources.v20220201.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -72,7 +72,7 @@ export interface GetTemplateSpecResult {
     /**
      * High-level information about the versions within this Template Spec. The keys are the version names. Only populated if the $expand query parameter is set to 'versions'.
      */
-    readonly versions: {[key: string]: types.outputs.resources.v20220201.TemplateSpecVersionInfoResponse};
+    readonly versions: {[key: string]: types.outputs.TemplateSpecVersionInfoResponse};
 }
 /**
  * Gets a Template Spec with a given name.

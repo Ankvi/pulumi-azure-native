@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Single item in List or Get Schema Group operation
  */
@@ -56,7 +56,7 @@ export class SchemaRegistry extends pulumi.CustomResource {
     /**
      * The system meta data relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.eventhub.v20221001preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
      */
@@ -131,10 +131,10 @@ export interface SchemaRegistryArgs {
      * Name of the resource group within the azure subscription.
      */
     resourceGroupName: pulumi.Input<string>;
-    schemaCompatibility?: pulumi.Input<string | types.enums.v20221001preview.SchemaCompatibility>;
+    schemaCompatibility?: pulumi.Input<string | types.enums.SchemaCompatibility>;
     /**
      * The Schema Group name 
      */
     schemaGroupName?: pulumi.Input<string>;
-    schemaType?: pulumi.Input<string | types.enums.v20221001preview.SchemaType>;
+    schemaType?: pulumi.Input<string | types.enums.SchemaType>;
 }

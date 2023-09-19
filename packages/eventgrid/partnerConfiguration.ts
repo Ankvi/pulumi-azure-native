@@ -43,7 +43,7 @@ export class PartnerConfiguration extends pulumi.CustomResource {
     /**
      * The details of authorized partners.
      */
-    public readonly partnerAuthorization!: pulumi.Output<types.outputs.eventgrid.PartnerAuthorizationResponse | undefined>;
+    public readonly partnerAuthorization!: pulumi.Output<types.outputs.PartnerAuthorizationResponse | undefined>;
     /**
      * Provisioning state of the partner configuration.
      */
@@ -51,7 +51,7 @@ export class PartnerConfiguration extends pulumi.CustomResource {
     /**
      * The system metadata relating to partner configuration resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.eventgrid.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Tags of the resource.
      */
@@ -110,7 +110,7 @@ export interface PartnerConfigurationArgs {
     /**
      * The details of authorized partners.
      */
-    partnerAuthorization?: pulumi.Input<types.inputs.eventgrid.PartnerAuthorizationArgs>;
+    partnerAuthorization?: pulumi.Input<types.inputs.PartnerAuthorizationArgs>;
     /**
      * Provisioning state of the partner configuration.
      */

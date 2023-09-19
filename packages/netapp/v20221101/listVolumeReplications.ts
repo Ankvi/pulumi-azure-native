@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * List all replications for a specified volume
  */
@@ -41,7 +41,7 @@ export interface ListVolumeReplicationsResult {
     /**
      * A list of replications
      */
-    readonly value?: types.outputs.netapp.v20221101.ReplicationResponse[];
+    readonly value?: types.outputs.ReplicationResponse[];
 }
 /**
  * List all replications for a specified volume

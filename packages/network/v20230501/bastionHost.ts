@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Bastion Host resource.
  */
@@ -66,7 +66,7 @@ export class BastionHost extends pulumi.CustomResource {
     /**
      * IP configuration of the Bastion Host resource.
      */
-    public readonly ipConfigurations!: pulumi.Output<types.outputs.network.v20230501.BastionHostIPConfigurationResponse[] | undefined>;
+    public readonly ipConfigurations!: pulumi.Output<types.outputs.BastionHostIPConfigurationResponse[] | undefined>;
     /**
      * Resource location.
      */
@@ -75,7 +75,7 @@ export class BastionHost extends pulumi.CustomResource {
      * Resource name.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
-    public readonly networkAcls!: pulumi.Output<types.outputs.network.v20230501.BastionHostPropertiesFormatResponseNetworkAcls | undefined>;
+    public readonly networkAcls!: pulumi.Output<types.outputs.BastionHostPropertiesFormatResponseNetworkAcls | undefined>;
     /**
      * The provisioning state of the bastion host resource.
      */
@@ -87,7 +87,7 @@ export class BastionHost extends pulumi.CustomResource {
     /**
      * The sku of this Bastion Host.
      */
-    public readonly sku!: pulumi.Output<types.outputs.network.v20230501.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Resource tags.
      */
@@ -99,7 +99,7 @@ export class BastionHost extends pulumi.CustomResource {
     /**
      * Reference to an existing virtual network required for Developer Bastion Host only.
      */
-    public readonly virtualNetwork!: pulumi.Output<types.outputs.network.v20230501.SubResourceResponse | undefined>;
+    public readonly virtualNetwork!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
 
     /**
      * Create a BastionHost resource with the given unique name, arguments, and options.
@@ -129,7 +129,7 @@ export class BastionHost extends pulumi.CustomResource {
             resourceInputs["networkAcls"] = args ? args.networkAcls : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["scaleUnits"] = args ? args.scaleUnits : undefined;
-            resourceInputs["sku"] = args ? (args.sku ? pulumi.output(args.sku).apply(types.inputs.network.v20230501.skuArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["sku"] = args ? (args.sku ? pulumi.output(args.sku).apply(types.inputs.skuArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["virtualNetwork"] = args ? args.virtualNetwork : undefined;
             resourceInputs["etag"] = undefined /*out*/;
@@ -206,12 +206,12 @@ export interface BastionHostArgs {
     /**
      * IP configuration of the Bastion Host resource.
      */
-    ipConfigurations?: pulumi.Input<pulumi.Input<types.inputs.network.v20230501.BastionHostIPConfigurationArgs>[]>;
+    ipConfigurations?: pulumi.Input<pulumi.Input<types.inputs.BastionHostIPConfigurationArgs>[]>;
     /**
      * Resource location.
      */
     location?: pulumi.Input<string>;
-    networkAcls?: pulumi.Input<types.inputs.network.v20230501.BastionHostPropertiesFormatNetworkAclsArgs>;
+    networkAcls?: pulumi.Input<types.inputs.BastionHostPropertiesFormatNetworkAclsArgs>;
     /**
      * The name of the resource group.
      */
@@ -223,7 +223,7 @@ export interface BastionHostArgs {
     /**
      * The sku of this Bastion Host.
      */
-    sku?: pulumi.Input<types.inputs.network.v20230501.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Resource tags.
      */
@@ -231,5 +231,5 @@ export interface BastionHostArgs {
     /**
      * Reference to an existing virtual network required for Developer Bastion Host only.
      */
-    virtualNetwork?: pulumi.Input<types.inputs.network.v20230501.SubResourceArgs>;
+    virtualNetwork?: pulumi.Input<types.inputs.SubResourceArgs>;
 }

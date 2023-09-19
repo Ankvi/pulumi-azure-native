@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * BaseBackupPolicy resource
  */
@@ -38,11 +38,11 @@ export class BackupPolicy extends pulumi.CustomResource {
     /**
      * BaseBackupPolicyResource properties
      */
-    public readonly properties!: pulumi.Output<types.outputs.dataprotection.v20230401preview.BackupPolicyResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.BackupPolicyResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.dataprotection.v20230401preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
      */
@@ -96,7 +96,7 @@ export interface BackupPolicyArgs {
     /**
      * BaseBackupPolicyResource properties
      */
-    properties?: pulumi.Input<types.inputs.dataprotection.v20230401preview.BackupPolicyArgs>;
+    properties?: pulumi.Input<types.inputs.BackupPolicyArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

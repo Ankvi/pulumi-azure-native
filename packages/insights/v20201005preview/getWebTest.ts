@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a specific Application Insights web test definition.
  */
@@ -31,7 +31,7 @@ export interface GetWebTestResult {
     /**
      * An XML configuration specification for a WebTest.
      */
-    readonly configuration?: types.outputs.insights.v20201005preview.WebTestPropertiesResponseConfiguration;
+    readonly configuration?: types.outputs.WebTestPropertiesResponseConfiguration;
     /**
      * User defined description for this WebTest.
      */
@@ -59,7 +59,7 @@ export interface GetWebTestResult {
     /**
      * A list of where to physically run the tests from to give global coverage for accessibility of your application.
      */
-    readonly locations: types.outputs.insights.v20201005preview.WebTestGeolocationResponse[];
+    readonly locations: types.outputs.WebTestGeolocationResponse[];
     /**
      * Azure resource name
      */
@@ -71,7 +71,7 @@ export interface GetWebTestResult {
     /**
      * The collection of request properties
      */
-    readonly request?: types.outputs.insights.v20201005preview.WebTestPropertiesResponseRequest;
+    readonly request?: types.outputs.WebTestPropertiesResponseRequest;
     /**
      * Allow for retries should this WebTest fail.
      */
@@ -95,7 +95,7 @@ export interface GetWebTestResult {
     /**
      * The collection of validation rule properties
      */
-    readonly validationRules?: types.outputs.insights.v20201005preview.WebTestPropertiesResponseValidationRules;
+    readonly validationRules?: types.outputs.WebTestPropertiesResponseValidationRules;
     /**
      * The kind of web test this is, valid choices are ping, multistep, basic, and standard.
      */

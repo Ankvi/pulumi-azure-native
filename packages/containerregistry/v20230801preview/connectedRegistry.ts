@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An object that represents a connected registry for a container registry.
  */
@@ -34,7 +34,7 @@ export class ConnectedRegistry extends pulumi.CustomResource {
     /**
      * The activation properties of the connected registry.
      */
-    public /*out*/ readonly activation!: pulumi.Output<types.outputs.containerregistry.v20230801preview.ActivationPropertiesResponse>;
+    public /*out*/ readonly activation!: pulumi.Output<types.outputs.ActivationPropertiesResponse>;
     /**
      * The list of the ACR token resource IDs used to authenticate clients to the connected registry.
      */
@@ -50,11 +50,11 @@ export class ConnectedRegistry extends pulumi.CustomResource {
     /**
      * The logging properties of the connected registry.
      */
-    public readonly logging!: pulumi.Output<types.outputs.containerregistry.v20230801preview.LoggingPropertiesResponse | undefined>;
+    public readonly logging!: pulumi.Output<types.outputs.LoggingPropertiesResponse | undefined>;
     /**
      * The login server properties of the connected registry.
      */
-    public /*out*/ readonly loginServer!: pulumi.Output<types.outputs.containerregistry.v20230801preview.LoginServerPropertiesResponse | undefined>;
+    public /*out*/ readonly loginServer!: pulumi.Output<types.outputs.LoginServerPropertiesResponse | undefined>;
     /**
      * The mode of the connected registry resource that indicates the permissions of the registry.
      */
@@ -70,7 +70,7 @@ export class ConnectedRegistry extends pulumi.CustomResource {
     /**
      * The parent of the connected registry.
      */
-    public readonly parent!: pulumi.Output<types.outputs.containerregistry.v20230801preview.ParentPropertiesResponse>;
+    public readonly parent!: pulumi.Output<types.outputs.ParentPropertiesResponse>;
     /**
      * Provisioning state of the resource.
      */
@@ -78,11 +78,11 @@ export class ConnectedRegistry extends pulumi.CustomResource {
     /**
      * The list of current statuses of the connected registry.
      */
-    public /*out*/ readonly statusDetails!: pulumi.Output<types.outputs.containerregistry.v20230801preview.StatusDetailPropertiesResponse[]>;
+    public /*out*/ readonly statusDetails!: pulumi.Output<types.outputs.StatusDetailPropertiesResponse[]>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.containerregistry.v20230801preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource.
      */
@@ -117,7 +117,7 @@ export class ConnectedRegistry extends pulumi.CustomResource {
             }
             resourceInputs["clientTokenIds"] = args ? args.clientTokenIds : undefined;
             resourceInputs["connectedRegistryName"] = args ? args.connectedRegistryName : undefined;
-            resourceInputs["logging"] = args ? (args.logging ? pulumi.output(args.logging).apply(types.inputs.containerregistry.v20230801preview.loggingPropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["logging"] = args ? (args.logging ? pulumi.output(args.logging).apply(types.inputs.loggingPropertiesArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["mode"] = args ? args.mode : undefined;
             resourceInputs["notificationsList"] = args ? args.notificationsList : undefined;
             resourceInputs["parent"] = args ? args.parent : undefined;
@@ -172,11 +172,11 @@ export interface ConnectedRegistryArgs {
     /**
      * The logging properties of the connected registry.
      */
-    logging?: pulumi.Input<types.inputs.containerregistry.v20230801preview.LoggingPropertiesArgs>;
+    logging?: pulumi.Input<types.inputs.LoggingPropertiesArgs>;
     /**
      * The mode of the connected registry resource that indicates the permissions of the registry.
      */
-    mode: pulumi.Input<string | types.enums.v20230801preview.ConnectedRegistryMode>;
+    mode: pulumi.Input<string | types.enums.ConnectedRegistryMode>;
     /**
      * The list of notifications subscription information for the connected registry.
      */
@@ -184,7 +184,7 @@ export interface ConnectedRegistryArgs {
     /**
      * The parent of the connected registry.
      */
-    parent: pulumi.Input<types.inputs.containerregistry.v20230801preview.ParentPropertiesArgs>;
+    parent: pulumi.Input<types.inputs.ParentPropertiesArgs>;
     /**
      * The name of the container registry.
      */

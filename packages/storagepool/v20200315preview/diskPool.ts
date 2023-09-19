@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Response for Disk pool request.
  */
@@ -42,7 +42,7 @@ export class DiskPool extends pulumi.CustomResource {
     /**
      * List of Azure Managed Disks to attach to a Disk pool. Can attach 8 disks at most.
      */
-    public readonly disks!: pulumi.Output<types.outputs.storagepool.v20200315preview.DiskResponse[] | undefined>;
+    public readonly disks!: pulumi.Output<types.outputs.DiskResponse[] | undefined>;
     /**
      * The geo-location where the resource lives.
      */
@@ -66,7 +66,7 @@ export class DiskPool extends pulumi.CustomResource {
     /**
      * Resource metadata required by ARM RPC
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.storagepool.v20200315preview.SystemMetadataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemMetadataResponse>;
     /**
      * Resource tags.
      */
@@ -157,7 +157,7 @@ export interface DiskPoolArgs {
     /**
      * List of Azure Managed Disks to attach to a Disk pool. Can attach 8 disks at most.
      */
-    disks?: pulumi.Input<pulumi.Input<types.inputs.storagepool.v20200315preview.DiskArgs>[]>;
+    disks?: pulumi.Input<pulumi.Input<types.inputs.DiskArgs>[]>;
     /**
      * The geo-location where the resource lives.
      */
@@ -177,5 +177,5 @@ export interface DiskPoolArgs {
     /**
      * Determines the SKU of VM deployed for Disk pool
      */
-    tier: pulumi.Input<string | types.enums.v20200315preview.DiskPoolTier>;
+    tier: pulumi.Input<string | types.enums.DiskPoolTier>;
 }

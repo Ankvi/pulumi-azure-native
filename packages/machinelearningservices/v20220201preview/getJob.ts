@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Azure Resource Manager resource envelope.
  */
@@ -40,7 +40,7 @@ export interface GetJobResult {
     /**
      * [Required] Additional attributes of the entity.
      */
-    readonly jobBaseDetails: types.outputs.machinelearningservices.v20220201preview.AutoMLJobResponse | types.outputs.machinelearningservices.v20220201preview.CommandJobResponse | types.outputs.machinelearningservices.v20220201preview.PipelineJobResponse | types.outputs.machinelearningservices.v20220201preview.SweepJobResponse;
+    readonly jobBaseDetails: types.outputs.AutoMLJobResponse | types.outputs.CommandJobResponse | types.outputs.PipelineJobResponse | types.outputs.SweepJobResponse;
     /**
      * The name of the resource
      */
@@ -48,7 +48,7 @@ export interface GetJobResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.machinelearningservices.v20220201preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

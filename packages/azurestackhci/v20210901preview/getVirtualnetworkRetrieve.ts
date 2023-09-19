@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The virtual network resource definition.
  */
@@ -28,7 +28,7 @@ export interface GetVirtualnetworkRetrieveResult {
     /**
      * The extendedLocation of the resource.
      */
-    readonly extendedLocation?: types.outputs.azurestackhci.v20210901preview.ExtendedLocationResponse;
+    readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -53,15 +53,15 @@ export interface GetVirtualnetworkRetrieveResult {
     /**
      * VirtualNetworkStatus defines the observed state of virtual networks
      */
-    readonly status: types.outputs.azurestackhci.v20210901preview.VirtualNetworkStatusResponse;
+    readonly status: types.outputs.VirtualNetworkStatusResponse;
     /**
      * Subnet - list of subnets under the virtual network
      */
-    readonly subnets?: types.outputs.azurestackhci.v20210901preview.VirtualnetworksPropertiesResponseSubnets[];
+    readonly subnets?: types.outputs.VirtualnetworksPropertiesResponseSubnets[];
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.azurestackhci.v20210901preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

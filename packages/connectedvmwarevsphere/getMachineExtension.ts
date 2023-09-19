@@ -53,7 +53,7 @@ export interface GetMachineExtensionResult {
     /**
      * The machine extension instance view.
      */
-    readonly instanceView?: types.outputs.connectedvmwarevsphere.MachineExtensionPropertiesResponseInstanceView;
+    readonly instanceView?: types.outputs.MachineExtensionPropertiesResponseInstanceView;
     /**
      * Gets or sets the location.
      */
@@ -81,7 +81,7 @@ export interface GetMachineExtensionResult {
     /**
      * The system data.
      */
-    readonly systemData: types.outputs.connectedvmwarevsphere.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Gets or sets the Resource tags.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Notification Hubs Namespace Resource.
  */
@@ -43,15 +43,15 @@ export interface GetNamespaceResult {
     /**
      * Represents namespace properties.
      */
-    readonly properties: types.outputs.notificationhubs.v20230901.NamespacePropertiesResponse;
+    readonly properties: types.outputs.NamespacePropertiesResponse;
     /**
      * The Sku description for a namespace
      */
-    readonly sku: types.outputs.notificationhubs.v20230901.SkuResponse;
+    readonly sku: types.outputs.SkuResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.notificationhubs.v20230901.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

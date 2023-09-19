@@ -35,11 +35,11 @@ export class GovernanceAssignment extends pulumi.CustomResource {
     /**
      * The additional data for the governance assignment - e.g. links to ticket (optional), see example
      */
-    public readonly additionalData!: pulumi.Output<types.outputs.security.GovernanceAssignmentAdditionalDataResponse | undefined>;
+    public readonly additionalData!: pulumi.Output<types.outputs.GovernanceAssignmentAdditionalDataResponse | undefined>;
     /**
      * The email notifications settings for the governance rule, states whether to disable notifications for mangers and owners
      */
-    public readonly governanceEmailNotification!: pulumi.Output<types.outputs.security.GovernanceEmailNotificationResponse | undefined>;
+    public readonly governanceEmailNotification!: pulumi.Output<types.outputs.GovernanceEmailNotificationResponse | undefined>;
     /**
      * Defines whether there is a grace period on the governance assignment
      */
@@ -59,7 +59,7 @@ export class GovernanceAssignment extends pulumi.CustomResource {
     /**
      * The ETA (estimated time of arrival) for remediation (optional), see example
      */
-    public readonly remediationEta!: pulumi.Output<types.outputs.security.RemediationEtaResponse | undefined>;
+    public readonly remediationEta!: pulumi.Output<types.outputs.RemediationEtaResponse | undefined>;
     /**
      * Resource type
      */
@@ -120,7 +120,7 @@ export interface GovernanceAssignmentArgs {
     /**
      * The additional data for the governance assignment - e.g. links to ticket (optional), see example
      */
-    additionalData?: pulumi.Input<types.inputs.security.GovernanceAssignmentAdditionalDataArgs>;
+    additionalData?: pulumi.Input<types.inputs.GovernanceAssignmentAdditionalDataArgs>;
     /**
      * The Assessment Key - A unique key for the assessment type
      */
@@ -132,7 +132,7 @@ export interface GovernanceAssignmentArgs {
     /**
      * The email notifications settings for the governance rule, states whether to disable notifications for mangers and owners
      */
-    governanceEmailNotification?: pulumi.Input<types.inputs.security.GovernanceEmailNotificationArgs>;
+    governanceEmailNotification?: pulumi.Input<types.inputs.GovernanceEmailNotificationArgs>;
     /**
      * Defines whether there is a grace period on the governance assignment
      */
@@ -148,7 +148,7 @@ export interface GovernanceAssignmentArgs {
     /**
      * The ETA (estimated time of arrival) for remediation (optional), see example
      */
-    remediationEta?: pulumi.Input<types.inputs.security.RemediationEtaArgs>;
+    remediationEta?: pulumi.Input<types.inputs.RemediationEtaArgs>;
     /**
      * The scope of the Governance assignments. Valid scopes are: subscription (format: 'subscriptions/{subscriptionId}'), or security connector (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})'
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Defines the PUT rollout request body.
  */
@@ -48,7 +48,7 @@ export interface GetRolloutResult {
     /**
      * Identity for the resource.
      */
-    readonly identity?: types.outputs.deploymentmanager.v20191101preview.IdentityResponse;
+    readonly identity?: types.outputs.IdentityResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -60,11 +60,11 @@ export interface GetRolloutResult {
     /**
      * Operational information of the rollout.
      */
-    readonly operationInfo: types.outputs.deploymentmanager.v20191101preview.RolloutOperationInfoResponse;
+    readonly operationInfo: types.outputs.RolloutOperationInfoResponse;
     /**
      * The detailed information on the services being deployed.
      */
-    readonly services: types.outputs.deploymentmanager.v20191101preview.ServiceResponse[];
+    readonly services: types.outputs.ServiceResponse[];
     /**
      * The current status of the rollout.
      */
@@ -72,7 +72,7 @@ export interface GetRolloutResult {
     /**
      * The list of step groups that define the orchestration.
      */
-    readonly stepGroups: types.outputs.deploymentmanager.v20191101preview.StepGroupResponse[];
+    readonly stepGroups: types.outputs.StepGroupResponse[];
     /**
      * Resource tags.
      */

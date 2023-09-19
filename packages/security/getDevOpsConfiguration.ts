@@ -40,11 +40,11 @@ export interface GetDevOpsConfigurationResult {
     /**
      * DevOps Configuration properties.
      */
-    readonly properties: types.outputs.security.DevOpsConfigurationPropertiesResponse;
+    readonly properties: types.outputs.DevOpsConfigurationPropertiesResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.security.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

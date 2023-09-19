@@ -43,11 +43,11 @@ export class File extends pulumi.CustomResource {
     /**
      * Custom file properties
      */
-    public readonly properties!: pulumi.Output<types.outputs.datamigration.ProjectFilePropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ProjectFilePropertiesResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.datamigration.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource type.
      */
@@ -115,7 +115,7 @@ export interface FileArgs {
     /**
      * Custom file properties
      */
-    properties?: pulumi.Input<types.inputs.datamigration.ProjectFilePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ProjectFilePropertiesArgs>;
     /**
      * Name of the service
      */

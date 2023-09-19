@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The extended info of the manager.
  */
@@ -149,7 +149,7 @@ export interface ManagerExtendedInfoArgs {
     /**
      * The Kind of the object. Currently only Series8000 is supported
      */
-    kind?: pulumi.Input<types.enums.v20170601.Kind>;
+    kind?: pulumi.Input<types.enums.Kind>;
     /**
      * The manager name
      */

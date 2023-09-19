@@ -50,7 +50,7 @@ export class VirtualMachine extends pulumi.CustomResource {
     /**
      * The cloud service network that provides platform-level services for the virtual machine.
      */
-    public readonly cloudServicesNetworkAttachment!: pulumi.Output<types.outputs.networkcloud.NetworkAttachmentResponse>;
+    public readonly cloudServicesNetworkAttachment!: pulumi.Output<types.outputs.NetworkAttachmentResponse>;
     /**
      * The resource ID of the cluster the virtual machine is created for.
      */
@@ -70,7 +70,7 @@ export class VirtualMachine extends pulumi.CustomResource {
     /**
      * The extended location of the cluster associated with the resource.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.networkcloud.ExtendedLocationResponse>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse>;
     /**
      * Field Deprecated, the value will be ignored if provided. The indicator of whether one of the specified CPU cores is isolated to run the emulator thread for this virtual machine.
      */
@@ -90,7 +90,7 @@ export class VirtualMachine extends pulumi.CustomResource {
     /**
      * The list of network attachments to the virtual machine.
      */
-    public readonly networkAttachments!: pulumi.Output<types.outputs.networkcloud.NetworkAttachmentResponse[] | undefined>;
+    public readonly networkAttachments!: pulumi.Output<types.outputs.NetworkAttachmentResponse[] | undefined>;
     /**
      * The Base64 encoded cloud-init network data.
      */
@@ -98,7 +98,7 @@ export class VirtualMachine extends pulumi.CustomResource {
     /**
      * The scheduling hints for the virtual machine.
      */
-    public readonly placementHints!: pulumi.Output<types.outputs.networkcloud.VirtualMachinePlacementHintResponse[] | undefined>;
+    public readonly placementHints!: pulumi.Output<types.outputs.VirtualMachinePlacementHintResponse[] | undefined>;
     /**
      * The power state of the virtual machine.
      */
@@ -110,15 +110,15 @@ export class VirtualMachine extends pulumi.CustomResource {
     /**
      * The list of ssh public keys. Each key will be added to the virtual machine using the cloud-init ssh_authorized_keys mechanism for the adminUsername.
      */
-    public readonly sshPublicKeys!: pulumi.Output<types.outputs.networkcloud.SshPublicKeyResponse[] | undefined>;
+    public readonly sshPublicKeys!: pulumi.Output<types.outputs.SshPublicKeyResponse[] | undefined>;
     /**
      * The storage profile that specifies size and other parameters about the disks related to the virtual machine.
      */
-    public readonly storageProfile!: pulumi.Output<types.outputs.networkcloud.StorageProfileResponse>;
+    public readonly storageProfile!: pulumi.Output<types.outputs.StorageProfileResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.networkcloud.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -146,7 +146,7 @@ export class VirtualMachine extends pulumi.CustomResource {
     /**
      * The credentials used to login to the image repository that has access to the specified image.
      */
-    public readonly vmImageRepositoryCredentials!: pulumi.Output<types.outputs.networkcloud.ImageRepositoryCredentialsResponse | undefined>;
+    public readonly vmImageRepositoryCredentials!: pulumi.Output<types.outputs.ImageRepositoryCredentialsResponse | undefined>;
     /**
      * The resource IDs of volumes that are attached to the virtual machine.
      */
@@ -200,7 +200,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["placementHints"] = args ? args.placementHints : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["sshPublicKeys"] = args ? args.sshPublicKeys : undefined;
-            resourceInputs["storageProfile"] = args ? (args.storageProfile ? pulumi.output(args.storageProfile).apply(types.inputs.networkcloud.storageProfileArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["storageProfile"] = args ? (args.storageProfile ? pulumi.output(args.storageProfile).apply(types.inputs.storageProfileArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["userData"] = args ? args.userData : undefined;
             resourceInputs["virtioInterface"] = (args ? args.virtioInterface : undefined) ?? "Modern";
@@ -273,7 +273,7 @@ export interface VirtualMachineArgs {
     /**
      * The cloud service network that provides platform-level services for the virtual machine.
      */
-    cloudServicesNetworkAttachment: pulumi.Input<types.inputs.networkcloud.NetworkAttachmentArgs>;
+    cloudServicesNetworkAttachment: pulumi.Input<types.inputs.NetworkAttachmentArgs>;
     /**
      * The number of CPU cores in the virtual machine.
      */
@@ -281,7 +281,7 @@ export interface VirtualMachineArgs {
     /**
      * The extended location of the cluster associated with the resource.
      */
-    extendedLocation: pulumi.Input<types.inputs.networkcloud.ExtendedLocationArgs>;
+    extendedLocation: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * Field Deprecated, the value will be ignored if provided. The indicator of whether one of the specified CPU cores is isolated to run the emulator thread for this virtual machine.
      */
@@ -297,7 +297,7 @@ export interface VirtualMachineArgs {
     /**
      * The list of network attachments to the virtual machine.
      */
-    networkAttachments?: pulumi.Input<pulumi.Input<types.inputs.networkcloud.NetworkAttachmentArgs>[]>;
+    networkAttachments?: pulumi.Input<pulumi.Input<types.inputs.NetworkAttachmentArgs>[]>;
     /**
      * The Base64 encoded cloud-init network data.
      */
@@ -305,7 +305,7 @@ export interface VirtualMachineArgs {
     /**
      * The scheduling hints for the virtual machine.
      */
-    placementHints?: pulumi.Input<pulumi.Input<types.inputs.networkcloud.VirtualMachinePlacementHintArgs>[]>;
+    placementHints?: pulumi.Input<pulumi.Input<types.inputs.VirtualMachinePlacementHintArgs>[]>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -313,11 +313,11 @@ export interface VirtualMachineArgs {
     /**
      * The list of ssh public keys. Each key will be added to the virtual machine using the cloud-init ssh_authorized_keys mechanism for the adminUsername.
      */
-    sshPublicKeys?: pulumi.Input<pulumi.Input<types.inputs.networkcloud.SshPublicKeyArgs>[]>;
+    sshPublicKeys?: pulumi.Input<pulumi.Input<types.inputs.SshPublicKeyArgs>[]>;
     /**
      * The storage profile that specifies size and other parameters about the disks related to the virtual machine.
      */
-    storageProfile: pulumi.Input<types.inputs.networkcloud.StorageProfileArgs>;
+    storageProfile: pulumi.Input<types.inputs.StorageProfileArgs>;
     /**
      * Resource tags.
      */
@@ -345,5 +345,5 @@ export interface VirtualMachineArgs {
     /**
      * The credentials used to login to the image repository that has access to the specified image.
      */
-    vmImageRepositoryCredentials?: pulumi.Input<types.inputs.networkcloud.ImageRepositoryCredentialsArgs>;
+    vmImageRepositoryCredentials?: pulumi.Input<types.inputs.ImageRepositoryCredentialsArgs>;
 }

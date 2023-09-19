@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a user rule.
  */
@@ -54,7 +54,7 @@ export interface GetUserRuleResult {
     /**
      * The destination address prefixes. CIDR or destination IP ranges.
      */
-    readonly destinations?: types.outputs.network.v20220401preview.AddressPrefixItemResponse[];
+    readonly destinations?: types.outputs.AddressPrefixItemResponse[];
     /**
      * Indicates if the traffic matched against the rule in inbound or outbound.
      */
@@ -91,11 +91,11 @@ export interface GetUserRuleResult {
     /**
      * The CIDR or source IP ranges.
      */
-    readonly sources?: types.outputs.network.v20220401preview.AddressPrefixItemResponse[];
+    readonly sources?: types.outputs.AddressPrefixItemResponse[];
     /**
      * The system metadata related to this resource.
      */
-    readonly systemData: types.outputs.network.v20220401preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource type.
      */

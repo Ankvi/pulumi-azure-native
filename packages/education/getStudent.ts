@@ -42,7 +42,7 @@ export interface GetStudentResult {
     /**
      * Student Budget
      */
-    readonly budget: types.outputs.education.AmountResponse;
+    readonly budget: types.outputs.AmountResponse;
     /**
      * Date student was added to the lab
      */
@@ -94,7 +94,7 @@ export interface GetStudentResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.education.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

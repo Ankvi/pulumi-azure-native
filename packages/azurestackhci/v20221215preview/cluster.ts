@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Cluster details.
  */
@@ -74,7 +74,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * Desired properties of the cluster.
      */
-    public readonly desiredProperties!: pulumi.Output<types.outputs.azurestackhci.v20221215preview.ClusterDesiredPropertiesResponse | undefined>;
+    public readonly desiredProperties!: pulumi.Output<types.outputs.ClusterDesiredPropertiesResponse | undefined>;
     /**
      * Most recent billing meter timestamp.
      */
@@ -118,7 +118,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * Properties reported by cluster agent.
      */
-    public /*out*/ readonly reportedProperties!: pulumi.Output<types.outputs.azurestackhci.v20221215preview.ClusterReportedPropertiesResponse>;
+    public /*out*/ readonly reportedProperties!: pulumi.Output<types.outputs.ClusterReportedPropertiesResponse>;
     /**
      * Object id of RP Service Principal
      */
@@ -130,7 +130,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * Software Assurance properties of the cluster.
      */
-    public readonly softwareAssuranceProperties!: pulumi.Output<types.outputs.azurestackhci.v20221215preview.SoftwareAssurancePropertiesResponse | undefined>;
+    public readonly softwareAssuranceProperties!: pulumi.Output<types.outputs.SoftwareAssurancePropertiesResponse | undefined>;
     /**
      * Status of the cluster agent.
      */
@@ -138,7 +138,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.azurestackhci.v20221215preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -158,7 +158,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
      */
-    public readonly userAssignedIdentities!: pulumi.Output<{[key: string]: types.outputs.azurestackhci.v20221215preview.UserAssignedIdentityResponse} | undefined>;
+    public readonly userAssignedIdentities!: pulumi.Output<{[key: string]: types.outputs.UserAssignedIdentityResponse} | undefined>;
 
     /**
      * Create a Cluster resource with the given unique name, arguments, and options.
@@ -291,11 +291,11 @@ export interface ClusterArgs {
     /**
      * The type of identity that created the resource.
      */
-    createdByType?: pulumi.Input<string | types.enums.v20221215preview.CreatedByType>;
+    createdByType?: pulumi.Input<string | types.enums.CreatedByType>;
     /**
      * Desired properties of the cluster.
      */
-    desiredProperties?: pulumi.Input<types.inputs.azurestackhci.v20221215preview.ClusterDesiredPropertiesArgs>;
+    desiredProperties?: pulumi.Input<types.inputs.ClusterDesiredPropertiesArgs>;
     /**
      * The timestamp of resource last modification (UTC)
      */
@@ -307,7 +307,7 @@ export interface ClusterArgs {
     /**
      * The type of identity that last modified the resource.
      */
-    lastModifiedByType?: pulumi.Input<string | types.enums.v20221215preview.CreatedByType>;
+    lastModifiedByType?: pulumi.Input<string | types.enums.CreatedByType>;
     /**
      * The geo-location where the resource lives
      */
@@ -319,7 +319,7 @@ export interface ClusterArgs {
     /**
      * Software Assurance properties of the cluster.
      */
-    softwareAssuranceProperties?: pulumi.Input<types.inputs.azurestackhci.v20221215preview.SoftwareAssurancePropertiesArgs>;
+    softwareAssuranceProperties?: pulumi.Input<types.inputs.SoftwareAssurancePropertiesArgs>;
     /**
      * Resource tags.
      */
@@ -327,7 +327,7 @@ export interface ClusterArgs {
     /**
      * Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
      */
-    type: pulumi.Input<string | types.enums.v20221215preview.ManagedServiceIdentityType>;
+    type: pulumi.Input<string | types.enums.ManagedServiceIdentityType>;
     /**
      * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
      */

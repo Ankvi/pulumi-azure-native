@@ -46,7 +46,7 @@ export interface GetServerEndpointResult {
     /**
      * Cloud tiering status. Only populated if cloud tiering is enabled.
      */
-    readonly cloudTieringStatus: types.outputs.storagesync.ServerEndpointCloudTieringStatusResponse;
+    readonly cloudTieringStatus: types.outputs.ServerEndpointCloudTieringStatusResponse;
     /**
      * Friendly Name
      */
@@ -102,7 +102,7 @@ export interface GetServerEndpointResult {
     /**
      * Recall status. Only populated if cloud tiering is enabled.
      */
-    readonly recallStatus: types.outputs.storagesync.ServerEndpointRecallStatusResponse;
+    readonly recallStatus: types.outputs.ServerEndpointRecallStatusResponse;
     /**
      * Server Local path.
      */
@@ -118,11 +118,11 @@ export interface GetServerEndpointResult {
     /**
      * Server Endpoint sync status
      */
-    readonly syncStatus: types.outputs.storagesync.ServerEndpointSyncStatusResponse;
+    readonly syncStatus: types.outputs.ServerEndpointSyncStatusResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.storagesync.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Tier files older than days.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Use this method to get the device security group for the specified IoT Hub resource.
  */
@@ -31,11 +31,11 @@ export interface GetDeviceSecurityGroupResult {
     /**
      * The allow-list custom alert rules.
      */
-    readonly allowlistRules?: types.outputs.security.v20190801.AllowlistCustomAlertRuleResponse[];
+    readonly allowlistRules?: types.outputs.AllowlistCustomAlertRuleResponse[];
     /**
      * The deny-list custom alert rules.
      */
-    readonly denylistRules?: types.outputs.security.v20190801.DenylistCustomAlertRuleResponse[];
+    readonly denylistRules?: types.outputs.DenylistCustomAlertRuleResponse[];
     /**
      * Resource Id
      */
@@ -47,11 +47,11 @@ export interface GetDeviceSecurityGroupResult {
     /**
      * The list of custom alert threshold rules.
      */
-    readonly thresholdRules?: types.outputs.security.v20190801.ThresholdCustomAlertRuleResponse[];
+    readonly thresholdRules?: types.outputs.ThresholdCustomAlertRuleResponse[];
     /**
      * The list of custom alert time-window rules.
      */
-    readonly timeWindowRules?: types.outputs.security.v20190801.TimeWindowCustomAlertRuleResponse[];
+    readonly timeWindowRules?: types.outputs.TimeWindowCustomAlertRuleResponse[];
     /**
      * Resource type
      */

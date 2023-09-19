@@ -35,7 +35,7 @@ export class InstanceDetails extends pulumi.CustomResource {
     /**
      * A collection of DFP instance administrators
      */
-    public readonly administration!: pulumi.Output<types.outputs.dynamics365fraudprotection.DFPInstanceAdministratorsResponse | undefined>;
+    public readonly administration!: pulumi.Output<types.outputs.DFPInstanceAdministratorsResponse | undefined>;
     /**
      * Location of the DFP resource.
      */
@@ -51,7 +51,7 @@ export class InstanceDetails extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.dynamics365fraudprotection.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Key-value pairs of additional resource provisioning properties.
      */
@@ -107,7 +107,7 @@ export interface InstanceDetailsArgs {
     /**
      * A collection of DFP instance administrators
      */
-    administration?: pulumi.Input<types.inputs.dynamics365fraudprotection.DFPInstanceAdministratorsArgs>;
+    administration?: pulumi.Input<types.inputs.DFPInstanceAdministratorsArgs>;
     /**
      * The name of the DFP instances. It must be a minimum of 3 characters, and a maximum of 63.
      */

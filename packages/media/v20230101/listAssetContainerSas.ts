@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Lists storage container URLs with shared access signatures (SAS) for uploading and downloading Asset content. The signatures are derived from the storage account keys.
  */
@@ -32,7 +32,7 @@ export interface ListAssetContainerSasArgs {
     /**
      * The permissions to set on the SAS URL.
      */
-    permissions?: string | types.enums.v20230101.AssetContainerPermission;
+    permissions?: string | types.enums.AssetContainerPermission;
     /**
      * The name of the resource group within the Azure subscription.
      */
@@ -71,7 +71,7 @@ export interface ListAssetContainerSasOutputArgs {
     /**
      * The permissions to set on the SAS URL.
      */
-    permissions?: pulumi.Input<string | types.enums.v20230101.AssetContainerPermission>;
+    permissions?: pulumi.Input<string | types.enums.AssetContainerPermission>;
     /**
      * The name of the resource group within the Azure subscription.
      */

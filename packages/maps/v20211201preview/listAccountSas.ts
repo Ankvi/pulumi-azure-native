@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Create and list an account shared access signature token. Use this SAS token for authentication to Azure Maps REST APIs through various Azure Maps SDKs. As prerequisite to create a SAS Token.
  *
@@ -51,7 +51,7 @@ export interface ListAccountSasArgs {
     /**
      * The Map account key to use for signing.
      */
-    signingKey: string | types.enums.v20211201preview.SigningKey;
+    signingKey: string | types.enums.SigningKey;
     /**
      * The date time offset of when the token validity begins. For example "2017-05-24T10:42:03.1567373Z".
      */
@@ -106,7 +106,7 @@ export interface ListAccountSasOutputArgs {
     /**
      * The Map account key to use for signing.
      */
-    signingKey: pulumi.Input<string | types.enums.v20211201preview.SigningKey>;
+    signingKey: pulumi.Input<string | types.enums.SigningKey>;
     /**
      * The date time offset of when the token validity begins. For example "2017-05-24T10:42:03.1567373Z".
      */

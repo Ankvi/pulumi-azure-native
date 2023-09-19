@@ -32,11 +32,11 @@ export interface GetActivityLogAlertResult {
     /**
      * The actions that will activate when the condition is met.
      */
-    readonly actions: types.outputs.insights.ActionListResponse;
+    readonly actions: types.outputs.ActionListResponse;
     /**
      * The condition that will cause this alert to activate.
      */
-    readonly condition: types.outputs.insights.AlertRuleAllOfConditionResponse;
+    readonly condition: types.outputs.AlertRuleAllOfConditionResponse;
     /**
      * A description of this Activity Log Alert rule.
      */

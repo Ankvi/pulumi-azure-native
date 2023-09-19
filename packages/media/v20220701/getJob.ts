@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a Job.
  */
@@ -61,7 +61,7 @@ export interface GetJobResult {
     /**
      * The inputs for the Job.
      */
-    readonly input: types.outputs.media.v20220701.JobInputAssetResponse | types.outputs.media.v20220701.JobInputClipResponse | types.outputs.media.v20220701.JobInputHttpResponse | types.outputs.media.v20220701.JobInputSequenceResponse | types.outputs.media.v20220701.JobInputsResponse;
+    readonly input: types.outputs.JobInputAssetResponse | types.outputs.JobInputClipResponse | types.outputs.JobInputHttpResponse | types.outputs.JobInputSequenceResponse | types.outputs.JobInputsResponse;
     /**
      * The UTC date and time when the customer has last updated the Job, in 'YYYY-MM-DDThh:mm:ssZ' format.
      */
@@ -73,7 +73,7 @@ export interface GetJobResult {
     /**
      * The outputs for the Job.
      */
-    readonly outputs: types.outputs.media.v20220701.JobOutputAssetResponse[];
+    readonly outputs: types.outputs.JobOutputAssetResponse[];
     /**
      * Priority with which the job should be processed. Higher priority jobs are processed before lower priority jobs. If not set, the default is normal.
      */
@@ -89,7 +89,7 @@ export interface GetJobResult {
     /**
      * The system metadata relating to this resource.
      */
-    readonly systemData: types.outputs.media.v20220701.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a Rules Engine Configuration with the specified name within the specified Front Door.
  */
@@ -48,7 +48,7 @@ export interface GetRulesEngineResult {
     /**
      * A list of rules that define a particular Rules Engine Configuration.
      */
-    readonly rules?: types.outputs.network.v20210601.RulesEngineRuleResponse[];
+    readonly rules?: types.outputs.RulesEngineRuleResponse[];
     /**
      * Resource type.
      */

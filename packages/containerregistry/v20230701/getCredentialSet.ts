@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the properties of the specified credential set resource.
  */
@@ -37,7 +37,7 @@ export interface GetCredentialSetResult {
      * List of authentication credentials stored for an upstream.
      * Usually consists of a primary and an optional secondary credential.
      */
-    readonly authCredentials?: types.outputs.containerregistry.v20230701.AuthCredentialResponse[];
+    readonly authCredentials?: types.outputs.AuthCredentialResponse[];
     /**
      * The creation date of credential store resource.
      */
@@ -49,7 +49,7 @@ export interface GetCredentialSetResult {
     /**
      * Identities associated with the resource. This is used to access the KeyVault secrets.
      */
-    readonly identity?: types.outputs.containerregistry.v20230701.IdentityPropertiesResponse;
+    readonly identity?: types.outputs.IdentityPropertiesResponse;
     /**
      * The credentials are stored for this upstream or login server.
      */
@@ -65,7 +65,7 @@ export interface GetCredentialSetResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.containerregistry.v20230701.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource.
      */

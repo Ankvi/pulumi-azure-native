@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The order details.
  */
@@ -31,15 +31,15 @@ export interface GetOrderResult {
     /**
      * The contact details.
      */
-    readonly contactInformation?: types.outputs.databoxedge.v20220401preview.ContactDetailsResponse;
+    readonly contactInformation?: types.outputs.ContactDetailsResponse;
     /**
      * Current status of the order.
      */
-    readonly currentStatus: types.outputs.databoxedge.v20220401preview.OrderStatusResponse;
+    readonly currentStatus: types.outputs.OrderStatusResponse;
     /**
      * Tracking information for the package delivered to the customer whether it has an original or a replacement device.
      */
-    readonly deliveryTrackingInfo: types.outputs.databoxedge.v20220401preview.TrackingInfoResponse[];
+    readonly deliveryTrackingInfo: types.outputs.TrackingInfoResponse[];
     /**
      * The path ID that uniquely identifies the object.
      */
@@ -55,7 +55,7 @@ export interface GetOrderResult {
     /**
      * List of status changes in the order.
      */
-    readonly orderHistory: types.outputs.databoxedge.v20220401preview.OrderStatusResponse[];
+    readonly orderHistory: types.outputs.OrderStatusResponse[];
     /**
      * It specify the order resource id.
      */
@@ -63,7 +63,7 @@ export interface GetOrderResult {
     /**
      * Tracking information for the package returned from the customer whether it has an original or a replacement device.
      */
-    readonly returnTrackingInfo: types.outputs.databoxedge.v20220401preview.TrackingInfoResponse[];
+    readonly returnTrackingInfo: types.outputs.TrackingInfoResponse[];
     /**
      * Serial number of the device.
      */
@@ -75,11 +75,11 @@ export interface GetOrderResult {
     /**
      * The shipping address.
      */
-    readonly shippingAddress?: types.outputs.databoxedge.v20220401preview.AddressResponse;
+    readonly shippingAddress?: types.outputs.AddressResponse;
     /**
      * Metadata pertaining to creation and last modification of Order
      */
-    readonly systemData: types.outputs.databoxedge.v20220401preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The hierarchical type of the object.
      */

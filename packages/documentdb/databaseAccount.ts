@@ -35,23 +35,23 @@ export class DatabaseAccount extends pulumi.CustomResource {
     /**
      * Analytical storage specific properties.
      */
-    public readonly analyticalStorageConfiguration!: pulumi.Output<types.outputs.documentdb.AnalyticalStorageConfigurationResponse | undefined>;
+    public readonly analyticalStorageConfiguration!: pulumi.Output<types.outputs.AnalyticalStorageConfigurationResponse | undefined>;
     /**
      * API specific properties.
      */
-    public readonly apiProperties!: pulumi.Output<types.outputs.documentdb.ApiPropertiesResponse | undefined>;
+    public readonly apiProperties!: pulumi.Output<types.outputs.ApiPropertiesResponse | undefined>;
     /**
      * The object representing the policy for taking backups on an account.
      */
-    public readonly backupPolicy!: pulumi.Output<types.outputs.documentdb.ContinuousModeBackupPolicyResponse | types.outputs.documentdb.PeriodicModeBackupPolicyResponse | undefined>;
+    public readonly backupPolicy!: pulumi.Output<types.outputs.ContinuousModeBackupPolicyResponse | types.outputs.PeriodicModeBackupPolicyResponse | undefined>;
     /**
      * List of Cosmos DB capabilities for the account
      */
-    public readonly capabilities!: pulumi.Output<types.outputs.documentdb.CapabilityResponse[] | undefined>;
+    public readonly capabilities!: pulumi.Output<types.outputs.CapabilityResponse[] | undefined>;
     /**
      * The object that represents all properties related to capacity enforcement on an account.
      */
-    public readonly capacity!: pulumi.Output<types.outputs.documentdb.CapacityResponse | undefined>;
+    public readonly capacity!: pulumi.Output<types.outputs.CapacityResponse | undefined>;
     /**
      * The cassandra connector offer type for the Cosmos DB database C* account.
      */
@@ -59,11 +59,11 @@ export class DatabaseAccount extends pulumi.CustomResource {
     /**
      * The consistency policy for the Cosmos DB database account.
      */
-    public readonly consistencyPolicy!: pulumi.Output<types.outputs.documentdb.ConsistencyPolicyResponse | undefined>;
+    public readonly consistencyPolicy!: pulumi.Output<types.outputs.ConsistencyPolicyResponse | undefined>;
     /**
      * The CORS policy for the Cosmos DB database account.
      */
-    public readonly cors!: pulumi.Output<types.outputs.documentdb.CorsPolicyResponse[] | undefined>;
+    public readonly cors!: pulumi.Output<types.outputs.CorsPolicyResponse[] | undefined>;
     /**
      * Enum to indicate the mode of account creation.
      */
@@ -115,11 +115,11 @@ export class DatabaseAccount extends pulumi.CustomResource {
     /**
      * An array that contains the regions ordered by their failover priorities.
      */
-    public /*out*/ readonly failoverPolicies!: pulumi.Output<types.outputs.documentdb.FailoverPolicyResponse[]>;
+    public /*out*/ readonly failoverPolicies!: pulumi.Output<types.outputs.FailoverPolicyResponse[]>;
     /**
      * Identity for the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.documentdb.ManagedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * A unique identifier assigned to the database account
      */
@@ -127,7 +127,7 @@ export class DatabaseAccount extends pulumi.CustomResource {
     /**
      * List of IpRules.
      */
-    public readonly ipRules!: pulumi.Output<types.outputs.documentdb.IpAddressOrRangeResponse[] | undefined>;
+    public readonly ipRules!: pulumi.Output<types.outputs.IpAddressOrRangeResponse[] | undefined>;
     /**
      * Flag to indicate whether to enable/disable Virtual Network ACL rules.
      */
@@ -139,7 +139,7 @@ export class DatabaseAccount extends pulumi.CustomResource {
     /**
      * The object that represents the metadata for the Account Keys of the Cosmos DB account.
      */
-    public /*out*/ readonly keysMetadata!: pulumi.Output<types.outputs.documentdb.DatabaseAccountKeysMetadataResponse>;
+    public /*out*/ readonly keysMetadata!: pulumi.Output<types.outputs.DatabaseAccountKeysMetadataResponse>;
     /**
      * Indicates the type of database account. This can only be set at database account creation.
      */
@@ -151,7 +151,7 @@ export class DatabaseAccount extends pulumi.CustomResource {
     /**
      * An array that contains all of the locations enabled for the Cosmos DB account.
      */
-    public readonly locations!: pulumi.Output<types.outputs.documentdb.LocationResponse[]>;
+    public readonly locations!: pulumi.Output<types.outputs.LocationResponse[]>;
     /**
      * Indicates the minimum allowed Tls version. The default value is Tls 1.2. Cassandra and Mongo APIs only work with Tls 1.2.
      */
@@ -171,7 +171,7 @@ export class DatabaseAccount extends pulumi.CustomResource {
     /**
      * List of Private Endpoint Connections configured for the Cosmos DB account.
      */
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.documentdb.PrivateEndpointConnectionResponse[]>;
+    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[]>;
     /**
      * The status of the Cosmos DB account at the time the operation was called. The status can be one of following. 'Creating' – the Cosmos DB account is being created. When an account is in Creating state, only properties that are specified as input for the Create Cosmos DB account operation are returned. 'Succeeded' – the Cosmos DB account is active for use. 'Updating' – the Cosmos DB account is being updated. 'Deleting' – the Cosmos DB account is being deleted. 'Failed' – the Cosmos DB account failed creation. 'DeletionFailed' – the Cosmos DB account deletion failed.
      */
@@ -183,15 +183,15 @@ export class DatabaseAccount extends pulumi.CustomResource {
     /**
      * An array that contains of the read locations enabled for the Cosmos DB account.
      */
-    public /*out*/ readonly readLocations!: pulumi.Output<types.outputs.documentdb.LocationResponse[]>;
+    public /*out*/ readonly readLocations!: pulumi.Output<types.outputs.LocationResponse[]>;
     /**
      * Parameters to indicate the information about the restore.
      */
-    public readonly restoreParameters!: pulumi.Output<types.outputs.documentdb.RestoreParametersResponse | undefined>;
+    public readonly restoreParameters!: pulumi.Output<types.outputs.RestoreParametersResponse | undefined>;
     /**
      * The system meta data relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.documentdb.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB".
      */
@@ -203,11 +203,11 @@ export class DatabaseAccount extends pulumi.CustomResource {
     /**
      * List of Virtual Network ACL rules configured for the Cosmos DB account.
      */
-    public readonly virtualNetworkRules!: pulumi.Output<types.outputs.documentdb.VirtualNetworkRuleResponse[] | undefined>;
+    public readonly virtualNetworkRules!: pulumi.Output<types.outputs.VirtualNetworkRuleResponse[] | undefined>;
     /**
      * An array that contains the write location for the Cosmos DB account.
      */
-    public /*out*/ readonly writeLocations!: pulumi.Output<types.outputs.documentdb.LocationResponse[]>;
+    public /*out*/ readonly writeLocations!: pulumi.Output<types.outputs.LocationResponse[]>;
 
     /**
      * Create a DatabaseAccount resource with the given unique name, arguments, and options.
@@ -339,23 +339,23 @@ export interface DatabaseAccountArgs {
     /**
      * Analytical storage specific properties.
      */
-    analyticalStorageConfiguration?: pulumi.Input<types.inputs.documentdb.AnalyticalStorageConfigurationArgs>;
+    analyticalStorageConfiguration?: pulumi.Input<types.inputs.AnalyticalStorageConfigurationArgs>;
     /**
      * API specific properties. Currently, supported only for MongoDB API.
      */
-    apiProperties?: pulumi.Input<types.inputs.documentdb.ApiPropertiesArgs>;
+    apiProperties?: pulumi.Input<types.inputs.ApiPropertiesArgs>;
     /**
      * The object representing the policy for taking backups on an account.
      */
-    backupPolicy?: pulumi.Input<types.inputs.documentdb.ContinuousModeBackupPolicyArgs | types.inputs.documentdb.PeriodicModeBackupPolicyArgs>;
+    backupPolicy?: pulumi.Input<types.inputs.ContinuousModeBackupPolicyArgs | types.inputs.PeriodicModeBackupPolicyArgs>;
     /**
      * List of Cosmos DB capabilities for the account
      */
-    capabilities?: pulumi.Input<pulumi.Input<types.inputs.documentdb.CapabilityArgs>[]>;
+    capabilities?: pulumi.Input<pulumi.Input<types.inputs.CapabilityArgs>[]>;
     /**
      * The object that represents all properties related to capacity enforcement on an account.
      */
-    capacity?: pulumi.Input<types.inputs.documentdb.CapacityArgs>;
+    capacity?: pulumi.Input<types.inputs.CapacityArgs>;
     /**
      * The cassandra connector offer type for the Cosmos DB database C* account.
      */
@@ -363,11 +363,11 @@ export interface DatabaseAccountArgs {
     /**
      * The consistency policy for the Cosmos DB account.
      */
-    consistencyPolicy?: pulumi.Input<types.inputs.documentdb.ConsistencyPolicyArgs>;
+    consistencyPolicy?: pulumi.Input<types.inputs.ConsistencyPolicyArgs>;
     /**
      * The CORS policy for the Cosmos DB database account.
      */
-    cors?: pulumi.Input<pulumi.Input<types.inputs.documentdb.CorsPolicyArgs>[]>;
+    cors?: pulumi.Input<pulumi.Input<types.inputs.CorsPolicyArgs>[]>;
     /**
      * Enum to indicate the mode of account creation.
      */
@@ -415,11 +415,11 @@ export interface DatabaseAccountArgs {
     /**
      * Identity for the resource.
      */
-    identity?: pulumi.Input<types.inputs.documentdb.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
      * List of IpRules.
      */
-    ipRules?: pulumi.Input<pulumi.Input<types.inputs.documentdb.IpAddressOrRangeArgs>[]>;
+    ipRules?: pulumi.Input<pulumi.Input<types.inputs.IpAddressOrRangeArgs>[]>;
     /**
      * Flag to indicate whether to enable/disable Virtual Network ACL rules.
      */
@@ -439,7 +439,7 @@ export interface DatabaseAccountArgs {
     /**
      * An array that contains the georeplication locations enabled for the Cosmos DB account.
      */
-    locations: pulumi.Input<pulumi.Input<types.inputs.documentdb.LocationArgs>[]>;
+    locations: pulumi.Input<pulumi.Input<types.inputs.LocationArgs>[]>;
     /**
      * Indicates the minimum allowed Tls version. The default value is Tls 1.2. Cassandra and Mongo APIs only work with Tls 1.2.
      */
@@ -463,7 +463,7 @@ export interface DatabaseAccountArgs {
     /**
      * Parameters to indicate the information about the restore.
      */
-    restoreParameters?: pulumi.Input<types.inputs.documentdb.RestoreParametersArgs>;
+    restoreParameters?: pulumi.Input<types.inputs.RestoreParametersArgs>;
     /**
      * Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB".
      */
@@ -471,5 +471,5 @@ export interface DatabaseAccountArgs {
     /**
      * List of Virtual Network ACL rules configured for the Cosmos DB account.
      */
-    virtualNetworkRules?: pulumi.Input<pulumi.Input<types.inputs.documentdb.VirtualNetworkRuleArgs>[]>;
+    virtualNetworkRules?: pulumi.Input<pulumi.Input<types.inputs.VirtualNetworkRuleArgs>[]>;
 }

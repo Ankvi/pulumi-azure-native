@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The operation to get the extension.
  */
@@ -48,7 +48,7 @@ export interface GetMachineExtensionResult {
     /**
      * The machine extension instance view.
      */
-    readonly instanceView?: types.outputs.hybridcompute.v20200815preview.MachineExtensionPropertiesResponseInstanceView;
+    readonly instanceView?: types.outputs.MachineExtensionPropertiesResponseInstanceView;
     /**
      * The geo-location where the resource lives
      */

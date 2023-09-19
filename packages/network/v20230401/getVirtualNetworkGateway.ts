@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the specified virtual network gateway by resource group.
  */
@@ -47,11 +47,11 @@ export interface GetVirtualNetworkGatewayResult {
     /**
      * Virtual network gateway's BGP speaker settings.
      */
-    readonly bgpSettings?: types.outputs.network.v20230401.BgpSettingsResponse;
+    readonly bgpSettings?: types.outputs.BgpSettingsResponse;
     /**
      * The reference to the address space resource which represents the custom routes address space specified by the customer for virtual network gateway and VpnClient.
      */
-    readonly customRoutes?: types.outputs.network.v20230401.AddressSpaceResponse;
+    readonly customRoutes?: types.outputs.AddressSpaceResponse;
     /**
      * disableIPSecReplayProtection flag.
      */
@@ -79,11 +79,11 @@ export interface GetVirtualNetworkGatewayResult {
     /**
      * The extended location of type local virtual network gateway.
      */
-    readonly extendedLocation?: types.outputs.network.v20230401.ExtendedLocationResponse;
+    readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
     /**
      * The reference to the LocalNetworkGateway resource which represents local network site having default routes. Assign Null value in case of removing existing default site setting.
      */
-    readonly gatewayDefaultSite?: types.outputs.network.v20230401.SubResourceResponse;
+    readonly gatewayDefaultSite?: types.outputs.SubResourceResponse;
     /**
      * The type of this virtual network gateway.
      */
@@ -99,7 +99,7 @@ export interface GetVirtualNetworkGatewayResult {
     /**
      * IP configurations for virtual network gateway.
      */
-    readonly ipConfigurations?: types.outputs.network.v20230401.VirtualNetworkGatewayIPConfigurationResponse[];
+    readonly ipConfigurations?: types.outputs.VirtualNetworkGatewayIPConfigurationResponse[];
     /**
      * Resource location.
      */
@@ -111,7 +111,7 @@ export interface GetVirtualNetworkGatewayResult {
     /**
      * NatRules for virtual network gateway.
      */
-    readonly natRules?: types.outputs.network.v20230401.VirtualNetworkGatewayNatRuleResponse[];
+    readonly natRules?: types.outputs.VirtualNetworkGatewayNatRuleResponse[];
     /**
      * The provisioning state of the virtual network gateway resource.
      */
@@ -123,7 +123,7 @@ export interface GetVirtualNetworkGatewayResult {
     /**
      * The reference to the VirtualNetworkGatewaySku resource which represents the SKU selected for Virtual network gateway.
      */
-    readonly sku?: types.outputs.network.v20230401.VirtualNetworkGatewaySkuResponse;
+    readonly sku?: types.outputs.VirtualNetworkGatewaySkuResponse;
     /**
      * Resource tags.
      */
@@ -139,11 +139,11 @@ export interface GetVirtualNetworkGatewayResult {
     /**
      * The reference to the VirtualNetworkGatewayPolicyGroup resource which represents the available VirtualNetworkGatewayPolicyGroup for the gateway.
      */
-    readonly virtualNetworkGatewayPolicyGroups?: types.outputs.network.v20230401.VirtualNetworkGatewayPolicyGroupResponse[];
+    readonly virtualNetworkGatewayPolicyGroups?: types.outputs.VirtualNetworkGatewayPolicyGroupResponse[];
     /**
      * The reference to the VpnClientConfiguration resource which represents the P2S VpnClient configurations.
      */
-    readonly vpnClientConfiguration?: types.outputs.network.v20230401.VpnClientConfigurationResponse;
+    readonly vpnClientConfiguration?: types.outputs.VpnClientConfigurationResponse;
     /**
      * The generation for this VirtualNetworkGateway. Must be None if gatewayType is not VPN.
      */

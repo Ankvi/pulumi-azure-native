@@ -39,15 +39,15 @@ export class MaintenanceConfiguration extends pulumi.CustomResource {
     /**
      * Time slots on which upgrade is not allowed.
      */
-    public readonly notAllowedTime!: pulumi.Output<types.outputs.containerservice.TimeSpanResponse[] | undefined>;
+    public readonly notAllowedTime!: pulumi.Output<types.outputs.TimeSpanResponse[] | undefined>;
     /**
      * The system metadata relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.containerservice.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * If two array entries specify the same day of the week, the applied configuration is the union of times in both entries.
      */
-    public readonly timeInWeek!: pulumi.Output<types.outputs.containerservice.TimeInWeekResponse[] | undefined>;
+    public readonly timeInWeek!: pulumi.Output<types.outputs.TimeInWeekResponse[] | undefined>;
     /**
      * Resource type
      */
@@ -103,7 +103,7 @@ export interface MaintenanceConfigurationArgs {
     /**
      * Time slots on which upgrade is not allowed.
      */
-    notAllowedTime?: pulumi.Input<pulumi.Input<types.inputs.containerservice.TimeSpanArgs>[]>;
+    notAllowedTime?: pulumi.Input<pulumi.Input<types.inputs.TimeSpanArgs>[]>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -115,5 +115,5 @@ export interface MaintenanceConfigurationArgs {
     /**
      * If two array entries specify the same day of the week, the applied configuration is the union of times in both entries.
      */
-    timeInWeek?: pulumi.Input<pulumi.Input<types.inputs.containerservice.TimeInWeekArgs>[]>;
+    timeInWeek?: pulumi.Input<pulumi.Input<types.inputs.TimeInWeekArgs>[]>;
 }

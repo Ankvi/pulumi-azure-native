@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Sim resource.
  */
@@ -74,7 +74,7 @@ export class Sim extends pulumi.CustomResource {
     /**
      * Mobile network that this sim belongs to
      */
-    public readonly mobileNetwork!: pulumi.Output<types.outputs.mobilenetwork.v20220301preview.MobileNetworkResourceIdResponse | undefined>;
+    public readonly mobileNetwork!: pulumi.Output<types.outputs.MobileNetworkResourceIdResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -86,7 +86,7 @@ export class Sim extends pulumi.CustomResource {
     /**
      * The simPolicy used by this sim.
      */
-    public readonly simPolicy!: pulumi.Output<types.outputs.mobilenetwork.v20220301preview.SimPolicyResourceIdResponse | undefined>;
+    public readonly simPolicy!: pulumi.Output<types.outputs.SimPolicyResourceIdResponse | undefined>;
     /**
      * The state of the sim resource.
      */
@@ -94,11 +94,11 @@ export class Sim extends pulumi.CustomResource {
     /**
      * A list of static IP addresses assigned to this sim. Each address is assigned at a defined network scope, made up of {attached data network, slice}.
      */
-    public readonly staticIpConfiguration!: pulumi.Output<types.outputs.mobilenetwork.v20220301preview.SimStaticIpPropertiesResponse[] | undefined>;
+    public readonly staticIpConfiguration!: pulumi.Output<types.outputs.SimStaticIpPropertiesResponse[] | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.mobilenetwork.v20220301preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -193,7 +193,7 @@ export interface SimArgs {
     /**
      * The type of identity that created the resource.
      */
-    createdByType?: pulumi.Input<string | types.enums.v20220301preview.CreatedByType>;
+    createdByType?: pulumi.Input<string | types.enums.CreatedByType>;
     /**
      * An optional free-form text field that can be used to record the device type this sim is associated with, for example 'Video camera'. The Azure portal allows Sims to be grouped and filtered based on this value.
      */
@@ -217,7 +217,7 @@ export interface SimArgs {
     /**
      * The type of identity that last modified the resource.
      */
-    lastModifiedByType?: pulumi.Input<string | types.enums.v20220301preview.CreatedByType>;
+    lastModifiedByType?: pulumi.Input<string | types.enums.CreatedByType>;
     /**
      * The geo-location where the resource lives
      */
@@ -225,7 +225,7 @@ export interface SimArgs {
     /**
      * Mobile network that this sim belongs to
      */
-    mobileNetwork?: pulumi.Input<types.inputs.mobilenetwork.v20220301preview.MobileNetworkResourceIdArgs>;
+    mobileNetwork?: pulumi.Input<types.inputs.MobileNetworkResourceIdArgs>;
     /**
      * The Opc value for the sim.
      */
@@ -241,11 +241,11 @@ export interface SimArgs {
     /**
      * The simPolicy used by this sim.
      */
-    simPolicy?: pulumi.Input<types.inputs.mobilenetwork.v20220301preview.SimPolicyResourceIdArgs>;
+    simPolicy?: pulumi.Input<types.inputs.SimPolicyResourceIdArgs>;
     /**
      * A list of static IP addresses assigned to this sim. Each address is assigned at a defined network scope, made up of {attached data network, slice}.
      */
-    staticIpConfiguration?: pulumi.Input<pulumi.Input<types.inputs.mobilenetwork.v20220301preview.SimStaticIpPropertiesArgs>[]>;
+    staticIpConfiguration?: pulumi.Input<pulumi.Input<types.inputs.SimStaticIpPropertiesArgs>[]>;
     /**
      * Resource tags.
      */

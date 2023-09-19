@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents a Configuration.
  */
@@ -78,7 +78,7 @@ export class Configuration extends pulumi.CustomResource {
     /**
      * The system metadata relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.dbformysql.v20220101.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -168,7 +168,7 @@ export interface ConfigurationArgs {
     /**
      * Source of the configuration.
      */
-    source?: pulumi.Input<string | types.enums.v20220101.ConfigurationSource>;
+    source?: pulumi.Input<string | types.enums.ConfigurationSource>;
     /**
      * Value of the configuration.
      */

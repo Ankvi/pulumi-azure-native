@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * P2SVpnServerConfiguration Resource.
  */
@@ -42,23 +42,23 @@ export class P2sVpnServerConfiguration extends pulumi.CustomResource {
     /**
      * List of references to P2SVpnGateways.
      */
-    public /*out*/ readonly p2SVpnGateways!: pulumi.Output<types.outputs.network.v20190701.SubResourceResponse[]>;
+    public /*out*/ readonly p2SVpnGateways!: pulumi.Output<types.outputs.SubResourceResponse[]>;
     /**
      * Radius client root certificate of P2SVpnServerConfiguration.
      */
-    public readonly p2SVpnServerConfigRadiusClientRootCertificates!: pulumi.Output<types.outputs.network.v20190701.P2SVpnServerConfigRadiusClientRootCertificateResponse[] | undefined>;
+    public readonly p2SVpnServerConfigRadiusClientRootCertificates!: pulumi.Output<types.outputs.P2SVpnServerConfigRadiusClientRootCertificateResponse[] | undefined>;
     /**
      * Radius Server root certificate of P2SVpnServerConfiguration.
      */
-    public readonly p2SVpnServerConfigRadiusServerRootCertificates!: pulumi.Output<types.outputs.network.v20190701.P2SVpnServerConfigRadiusServerRootCertificateResponse[] | undefined>;
+    public readonly p2SVpnServerConfigRadiusServerRootCertificates!: pulumi.Output<types.outputs.P2SVpnServerConfigRadiusServerRootCertificateResponse[] | undefined>;
     /**
      * VPN client revoked certificate of P2SVpnServerConfiguration.
      */
-    public readonly p2SVpnServerConfigVpnClientRevokedCertificates!: pulumi.Output<types.outputs.network.v20190701.P2SVpnServerConfigVpnClientRevokedCertificateResponse[] | undefined>;
+    public readonly p2SVpnServerConfigVpnClientRevokedCertificates!: pulumi.Output<types.outputs.P2SVpnServerConfigVpnClientRevokedCertificateResponse[] | undefined>;
     /**
      * VPN client root certificate of P2SVpnServerConfiguration.
      */
-    public readonly p2SVpnServerConfigVpnClientRootCertificates!: pulumi.Output<types.outputs.network.v20190701.P2SVpnServerConfigVpnClientRootCertificateResponse[] | undefined>;
+    public readonly p2SVpnServerConfigVpnClientRootCertificates!: pulumi.Output<types.outputs.P2SVpnServerConfigVpnClientRootCertificateResponse[] | undefined>;
     /**
      * The provisioning state of the P2S VPN server configuration resource.
      */
@@ -74,7 +74,7 @@ export class P2sVpnServerConfiguration extends pulumi.CustomResource {
     /**
      * VpnClientIpsecPolicies for P2SVpnServerConfiguration.
      */
-    public readonly vpnClientIpsecPolicies!: pulumi.Output<types.outputs.network.v20190701.IpsecPolicyResponse[] | undefined>;
+    public readonly vpnClientIpsecPolicies!: pulumi.Output<types.outputs.IpsecPolicyResponse[] | undefined>;
     /**
      * VPN protocols for the P2SVpnServerConfiguration.
      */
@@ -149,19 +149,19 @@ export interface P2sVpnServerConfigurationArgs {
     /**
      * Radius client root certificate of P2SVpnServerConfiguration.
      */
-    p2SVpnServerConfigRadiusClientRootCertificates?: pulumi.Input<pulumi.Input<types.inputs.network.v20190701.P2SVpnServerConfigRadiusClientRootCertificateArgs>[]>;
+    p2SVpnServerConfigRadiusClientRootCertificates?: pulumi.Input<pulumi.Input<types.inputs.P2SVpnServerConfigRadiusClientRootCertificateArgs>[]>;
     /**
      * Radius Server root certificate of P2SVpnServerConfiguration.
      */
-    p2SVpnServerConfigRadiusServerRootCertificates?: pulumi.Input<pulumi.Input<types.inputs.network.v20190701.P2SVpnServerConfigRadiusServerRootCertificateArgs>[]>;
+    p2SVpnServerConfigRadiusServerRootCertificates?: pulumi.Input<pulumi.Input<types.inputs.P2SVpnServerConfigRadiusServerRootCertificateArgs>[]>;
     /**
      * VPN client revoked certificate of P2SVpnServerConfiguration.
      */
-    p2SVpnServerConfigVpnClientRevokedCertificates?: pulumi.Input<pulumi.Input<types.inputs.network.v20190701.P2SVpnServerConfigVpnClientRevokedCertificateArgs>[]>;
+    p2SVpnServerConfigVpnClientRevokedCertificates?: pulumi.Input<pulumi.Input<types.inputs.P2SVpnServerConfigVpnClientRevokedCertificateArgs>[]>;
     /**
      * VPN client root certificate of P2SVpnServerConfiguration.
      */
-    p2SVpnServerConfigVpnClientRootCertificates?: pulumi.Input<pulumi.Input<types.inputs.network.v20190701.P2SVpnServerConfigVpnClientRootCertificateArgs>[]>;
+    p2SVpnServerConfigVpnClientRootCertificates?: pulumi.Input<pulumi.Input<types.inputs.P2SVpnServerConfigVpnClientRootCertificateArgs>[]>;
     /**
      * The name of the P2SVpnServerConfiguration.
      */
@@ -185,9 +185,9 @@ export interface P2sVpnServerConfigurationArgs {
     /**
      * VpnClientIpsecPolicies for P2SVpnServerConfiguration.
      */
-    vpnClientIpsecPolicies?: pulumi.Input<pulumi.Input<types.inputs.network.v20190701.IpsecPolicyArgs>[]>;
+    vpnClientIpsecPolicies?: pulumi.Input<pulumi.Input<types.inputs.IpsecPolicyArgs>[]>;
     /**
      * VPN protocols for the P2SVpnServerConfiguration.
      */
-    vpnProtocols?: pulumi.Input<pulumi.Input<string | types.enums.v20190701.VpnGatewayTunnelingProtocol>[]>;
+    vpnProtocols?: pulumi.Input<pulumi.Input<string | types.enums.VpnGatewayTunnelingProtocol>[]>;
 }

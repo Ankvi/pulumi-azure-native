@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An Azure SQL Database server.
  */
@@ -38,7 +38,7 @@ export class Server extends pulumi.CustomResource {
     /**
      * The Azure Active Directory administrator of the server. This can only be used at server create time. If used for server update, it will be ignored or it will result in an error. For updates individual APIs will need to be used.
      */
-    public readonly administrators!: pulumi.Output<types.outputs.sql.v20221101preview.ServerExternalAdministratorResponse | undefined>;
+    public readonly administrators!: pulumi.Output<types.outputs.ServerExternalAdministratorResponse | undefined>;
     /**
      * Status of external governance.
      */
@@ -54,7 +54,7 @@ export class Server extends pulumi.CustomResource {
     /**
      * The Azure Active Directory identity of the server.
      */
-    public readonly identity!: pulumi.Output<types.outputs.sql.v20221101preview.ResourceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ResourceIdentityResponse | undefined>;
     /**
      * A CMK URI of the key to use for encryption.
      */
@@ -82,7 +82,7 @@ export class Server extends pulumi.CustomResource {
     /**
      * List of private endpoint connections on a server
      */
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.sql.v20221101preview.ServerPrivateEndpointConnectionResponse[]>;
+    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.ServerPrivateEndpointConnectionResponse[]>;
     /**
      * Whether or not public endpoint access is allowed for this server.  Value is optional but if passed in, must be 'Enabled' or 'Disabled' or 'SecuredByPerimeter'
      */
@@ -193,7 +193,7 @@ export interface ServerArgs {
     /**
      * The Azure Active Directory administrator of the server. This can only be used at server create time. If used for server update, it will be ignored or it will result in an error. For updates individual APIs will need to be used.
      */
-    administrators?: pulumi.Input<types.inputs.sql.v20221101preview.ServerExternalAdministratorArgs>;
+    administrators?: pulumi.Input<types.inputs.ServerExternalAdministratorArgs>;
     /**
      * The Client id used for cross tenant CMK scenario
      */
@@ -201,7 +201,7 @@ export interface ServerArgs {
     /**
      * The Azure Active Directory identity of the server.
      */
-    identity?: pulumi.Input<types.inputs.sql.v20221101preview.ResourceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ResourceIdentityArgs>;
     /**
      * A CMK URI of the key to use for encryption.
      */
@@ -221,7 +221,7 @@ export interface ServerArgs {
     /**
      * Whether or not public endpoint access is allowed for this server.  Value is optional but if passed in, must be 'Enabled' or 'Disabled' or 'SecuredByPerimeter'
      */
-    publicNetworkAccess?: pulumi.Input<string | types.enums.v20221101preview.ServerPublicNetworkAccessFlag>;
+    publicNetworkAccess?: pulumi.Input<string | types.enums.ServerPublicNetworkAccessFlag>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */
@@ -229,7 +229,7 @@ export interface ServerArgs {
     /**
      * Whether or not to restrict outbound network access for this server.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'
      */
-    restrictOutboundNetworkAccess?: pulumi.Input<string | types.enums.v20221101preview.ServerNetworkAccessFlag>;
+    restrictOutboundNetworkAccess?: pulumi.Input<string | types.enums.ServerNetworkAccessFlag>;
     /**
      * The name of the server.
      */

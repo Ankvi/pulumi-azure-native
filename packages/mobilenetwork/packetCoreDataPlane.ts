@@ -47,7 +47,7 @@ export class PacketCoreDataPlane extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.mobilenetwork.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -59,7 +59,7 @@ export class PacketCoreDataPlane extends pulumi.CustomResource {
     /**
      * The user plane interface on the access network. For 5G networks, this is the N3 interface. For 4G networks, this is the S1-U interface.
      */
-    public readonly userPlaneAccessInterface!: pulumi.Output<types.outputs.mobilenetwork.InterfacePropertiesResponse>;
+    public readonly userPlaneAccessInterface!: pulumi.Output<types.outputs.InterfacePropertiesResponse>;
 
     /**
      * Create a PacketCoreDataPlane resource with the given unique name, arguments, and options.
@@ -134,5 +134,5 @@ export interface PacketCoreDataPlaneArgs {
     /**
      * The user plane interface on the access network. For 5G networks, this is the N3 interface. For 4G networks, this is the S1-U interface.
      */
-    userPlaneAccessInterface: pulumi.Input<types.inputs.mobilenetwork.InterfacePropertiesArgs>;
+    userPlaneAccessInterface: pulumi.Input<types.inputs.InterfacePropertiesArgs>;
 }

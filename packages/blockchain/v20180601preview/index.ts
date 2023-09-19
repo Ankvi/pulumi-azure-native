@@ -38,7 +38,7 @@ utilities.lazyLoad(exports, ["TransactionNode"], () => require("./transactionNod
 
 
 // Export enums:
-export * from "../types/enums/v20180601preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

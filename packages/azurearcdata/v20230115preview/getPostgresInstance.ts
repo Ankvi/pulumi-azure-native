@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves a postgres Instance resource
  */
@@ -31,7 +31,7 @@ export interface GetPostgresInstanceResult {
     /**
      * The extendedLocation of the resource.
      */
-    readonly extendedLocation?: types.outputs.azurearcdata.v20230115preview.ExtendedLocationResponse;
+    readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -47,15 +47,15 @@ export interface GetPostgresInstanceResult {
     /**
      * null
      */
-    readonly properties: types.outputs.azurearcdata.v20230115preview.PostgresInstancePropertiesResponse;
+    readonly properties: types.outputs.PostgresInstancePropertiesResponse;
     /**
      * Resource sku.
      */
-    readonly sku?: types.outputs.azurearcdata.v20230115preview.PostgresInstanceSkuResponse;
+    readonly sku?: types.outputs.PostgresInstanceSkuResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.azurearcdata.v20230115preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

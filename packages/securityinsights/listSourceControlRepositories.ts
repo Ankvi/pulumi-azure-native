@@ -36,7 +36,7 @@ export interface ListSourceControlRepositoriesResult {
     /**
      * Array of repositories.
      */
-    readonly value: types.outputs.securityinsights.RepoResponse[];
+    readonly value: types.outputs.RepoResponse[];
 }
 /**
  * Gets a list of repositories metadata.

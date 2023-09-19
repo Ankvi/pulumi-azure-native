@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * NSX DHCP
  */
@@ -44,7 +44,7 @@ export interface GetWorkloadNetworkDhcpResult {
     /**
      * DHCP properties.
      */
-    readonly properties: types.outputs.avs.v20230301.WorkloadNetworkDhcpRelayResponse | types.outputs.avs.v20230301.WorkloadNetworkDhcpServerResponse;
+    readonly properties: types.outputs.WorkloadNetworkDhcpRelayResponse | types.outputs.WorkloadNetworkDhcpServerResponse;
     /**
      * Resource type.
      */

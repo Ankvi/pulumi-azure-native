@@ -41,7 +41,7 @@ export interface GetServerResult {
     /**
      * The Azure Active Directory administrator of the server.
      */
-    readonly administrators?: types.outputs.sql.ServerExternalAdministratorResponse;
+    readonly administrators?: types.outputs.ServerExternalAdministratorResponse;
     /**
      * The Client id used for cross tenant CMK scenario
      */
@@ -57,7 +57,7 @@ export interface GetServerResult {
     /**
      * The Azure Active Directory identity of the server.
      */
-    readonly identity?: types.outputs.sql.ResourceIdentityResponse;
+    readonly identity?: types.outputs.ResourceIdentityResponse;
     /**
      * A CMK URI of the key to use for encryption.
      */
@@ -85,7 +85,7 @@ export interface GetServerResult {
     /**
      * List of private endpoint connections on a server
      */
-    readonly privateEndpointConnections: types.outputs.sql.ServerPrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections: types.outputs.ServerPrivateEndpointConnectionResponse[];
     /**
      * Whether or not public endpoint access is allowed for this server.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'
      */

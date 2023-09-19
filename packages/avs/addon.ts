@@ -39,7 +39,7 @@ export class Addon extends pulumi.CustomResource {
     /**
      * The properties of an addon resource
      */
-    public readonly properties!: pulumi.Output<types.outputs.avs.AddonArcPropertiesResponse | types.outputs.avs.AddonHcxPropertiesResponse | types.outputs.avs.AddonSrmPropertiesResponse | types.outputs.avs.AddonVrPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.AddonArcPropertiesResponse | types.outputs.AddonHcxPropertiesResponse | types.outputs.AddonSrmPropertiesResponse | types.outputs.AddonVrPropertiesResponse>;
     /**
      * Resource type.
      */
@@ -95,7 +95,7 @@ export interface AddonArgs {
     /**
      * The properties of an addon resource
      */
-    properties?: pulumi.Input<types.inputs.avs.AddonArcPropertiesArgs | types.inputs.avs.AddonHcxPropertiesArgs | types.inputs.avs.AddonSrmPropertiesArgs | types.inputs.avs.AddonVrPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.AddonArcPropertiesArgs | types.inputs.AddonHcxPropertiesArgs | types.inputs.AddonSrmPropertiesArgs | types.inputs.AddonVrPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

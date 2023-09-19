@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * API details.
  */
@@ -54,7 +54,7 @@ export class WorkspaceApi extends pulumi.CustomResource {
     /**
      * Version set details
      */
-    public readonly apiVersionSet!: pulumi.Output<types.outputs.apimanagement.v20230301preview.ApiVersionSetContractDetailsResponse | undefined>;
+    public readonly apiVersionSet!: pulumi.Output<types.outputs.ApiVersionSetContractDetailsResponse | undefined>;
     /**
      * A resource identifier for the related ApiVersionSet.
      */
@@ -62,11 +62,11 @@ export class WorkspaceApi extends pulumi.CustomResource {
     /**
      * Collection of authentication settings included into this API.
      */
-    public readonly authenticationSettings!: pulumi.Output<types.outputs.apimanagement.v20230301preview.AuthenticationSettingsContractResponse | undefined>;
+    public readonly authenticationSettings!: pulumi.Output<types.outputs.AuthenticationSettingsContractResponse | undefined>;
     /**
      * Contact information for the API.
      */
-    public readonly contact!: pulumi.Output<types.outputs.apimanagement.v20230301preview.ApiContactInformationResponse | undefined>;
+    public readonly contact!: pulumi.Output<types.outputs.ApiContactInformationResponse | undefined>;
     /**
      * Description of the API. May include HTML formatting tags.
      */
@@ -86,7 +86,7 @@ export class WorkspaceApi extends pulumi.CustomResource {
     /**
      * License information for the API.
      */
-    public readonly license!: pulumi.Output<types.outputs.apimanagement.v20230301preview.ApiLicenseInformationResponse | undefined>;
+    public readonly license!: pulumi.Output<types.outputs.ApiLicenseInformationResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -110,7 +110,7 @@ export class WorkspaceApi extends pulumi.CustomResource {
     /**
      * Protocols over which API is made available.
      */
-    public readonly subscriptionKeyParameterNames!: pulumi.Output<types.outputs.apimanagement.v20230301preview.SubscriptionKeyParameterNamesContractResponse | undefined>;
+    public readonly subscriptionKeyParameterNames!: pulumi.Output<types.outputs.SubscriptionKeyParameterNamesContractResponse | undefined>;
     /**
      * Specifies whether an API or Product subscription is required for accessing the API.
      */
@@ -230,7 +230,7 @@ export interface WorkspaceApiArgs {
     /**
      * Type of API.
      */
-    apiType?: pulumi.Input<string | types.enums.v20230301preview.ApiType>;
+    apiType?: pulumi.Input<string | types.enums.ApiType>;
     /**
      * Indicates the version identifier of the API if the API is versioned
      */
@@ -242,7 +242,7 @@ export interface WorkspaceApiArgs {
     /**
      * Version set details
      */
-    apiVersionSet?: pulumi.Input<types.inputs.apimanagement.v20230301preview.ApiVersionSetContractDetailsArgs>;
+    apiVersionSet?: pulumi.Input<types.inputs.ApiVersionSetContractDetailsArgs>;
     /**
      * A resource identifier for the related ApiVersionSet.
      */
@@ -250,11 +250,11 @@ export interface WorkspaceApiArgs {
     /**
      * Collection of authentication settings included into this API.
      */
-    authenticationSettings?: pulumi.Input<types.inputs.apimanagement.v20230301preview.AuthenticationSettingsContractArgs>;
+    authenticationSettings?: pulumi.Input<types.inputs.AuthenticationSettingsContractArgs>;
     /**
      * Contact information for the API.
      */
-    contact?: pulumi.Input<types.inputs.apimanagement.v20230301preview.ApiContactInformationArgs>;
+    contact?: pulumi.Input<types.inputs.ApiContactInformationArgs>;
     /**
      * Description of the API. May include HTML formatting tags.
      */
@@ -266,7 +266,7 @@ export interface WorkspaceApiArgs {
     /**
      * Format of the Content in which the API is getting imported. New formats can be added in the future
      */
-    format?: pulumi.Input<string | types.enums.v20230301preview.ContentFormat>;
+    format?: pulumi.Input<string | types.enums.ContentFormat>;
     /**
      * Indicates if API revision is current api revision.
      */
@@ -274,7 +274,7 @@ export interface WorkspaceApiArgs {
     /**
      * License information for the API.
      */
-    license?: pulumi.Input<types.inputs.apimanagement.v20230301preview.ApiLicenseInformationArgs>;
+    license?: pulumi.Input<types.inputs.ApiLicenseInformationArgs>;
     /**
      * Relative URL uniquely identifying this API and all of its resource paths within the API Management service instance. It is appended to the API endpoint base URL specified during the service instance creation to form a public URL for this API.
      */
@@ -282,7 +282,7 @@ export interface WorkspaceApiArgs {
     /**
      * Describes on which protocols the operations in this API can be invoked.
      */
-    protocols?: pulumi.Input<pulumi.Input<string | types.enums.v20230301preview.Protocol>[]>;
+    protocols?: pulumi.Input<pulumi.Input<string | types.enums.Protocol>[]>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -303,7 +303,7 @@ export interface WorkspaceApiArgs {
      *  * `graphql` creates GraphQL API. 
      *  New types can be added in the future.
      */
-    soapApiType?: pulumi.Input<string | types.enums.v20230301preview.SoapApiType>;
+    soapApiType?: pulumi.Input<string | types.enums.SoapApiType>;
     /**
      * API identifier of the source API.
      */
@@ -311,7 +311,7 @@ export interface WorkspaceApiArgs {
     /**
      * Protocols over which API is made available.
      */
-    subscriptionKeyParameterNames?: pulumi.Input<types.inputs.apimanagement.v20230301preview.SubscriptionKeyParameterNamesContractArgs>;
+    subscriptionKeyParameterNames?: pulumi.Input<types.inputs.SubscriptionKeyParameterNamesContractArgs>;
     /**
      * Specifies whether an API or Product subscription is required for accessing the API.
      */
@@ -323,7 +323,7 @@ export interface WorkspaceApiArgs {
     /**
      * Strategy of translating required query parameters to template ones. By default has value 'template'. Possible values: 'template', 'query'
      */
-    translateRequiredQueryParametersConduct?: pulumi.Input<string | types.enums.v20230301preview.TranslateRequiredQueryParametersConduct>;
+    translateRequiredQueryParametersConduct?: pulumi.Input<string | types.enums.TranslateRequiredQueryParametersConduct>;
     /**
      * Content value when Importing an API.
      */
@@ -335,5 +335,5 @@ export interface WorkspaceApiArgs {
     /**
      * Criteria to limit import of WSDL to a subset of the document.
      */
-    wsdlSelector?: pulumi.Input<types.inputs.apimanagement.v20230301preview.ApiCreateOrUpdatePropertiesWsdlSelectorArgs>;
+    wsdlSelector?: pulumi.Input<types.inputs.ApiCreateOrUpdatePropertiesWsdlSelectorArgs>;
 }

@@ -40,7 +40,7 @@ export interface GetSaasSubscriptionLevelResult {
     /**
      * saas properties
      */
-    readonly properties: types.outputs.saas.SaasResourceResponseProperties;
+    readonly properties: types.outputs.SaasResourceResponseProperties;
     /**
      * the resource tags.
      */

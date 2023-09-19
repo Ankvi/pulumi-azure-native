@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get information related to a specific private endpoint connection in the project. Returns a json object of type 'privateEndpointConnections' as specified in the models section.
  */
@@ -48,7 +48,7 @@ export interface GetPrivateEndpointConnectionResult {
     /**
      * Properties of the private endpoint endpoint connection.
      */
-    readonly properties: types.outputs.migrate.v20191001.PrivateEndpointConnectionPropertiesResponse;
+    readonly properties: types.outputs.PrivateEndpointConnectionPropertiesResponse;
     /**
      * Type of the object = [Microsoft.Migrate/assessmentProjects/privateEndpointConnections].
      */

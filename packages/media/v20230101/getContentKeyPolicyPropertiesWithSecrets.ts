@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a Content Key Policy including secret values
  */
@@ -48,7 +48,7 @@ export interface GetContentKeyPolicyPropertiesWithSecretsResult {
     /**
      * The Key Policy options.
      */
-    readonly options: types.outputs.media.v20230101.ContentKeyPolicyOptionResponse[];
+    readonly options: types.outputs.ContentKeyPolicyOptionResponse[];
     /**
      * The legacy Policy ID.
      */

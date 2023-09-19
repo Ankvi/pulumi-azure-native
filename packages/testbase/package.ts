@@ -75,7 +75,7 @@ export class Package extends pulumi.CustomResource {
     /**
      * The system metadata relating to this resource
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.testbase.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The tags of the resource.
      */
@@ -83,7 +83,7 @@ export class Package extends pulumi.CustomResource {
     /**
      * Specifies the target OSs of specific OS Update types.
      */
-    public readonly targetOSList!: pulumi.Output<types.outputs.testbase.TargetOSInfoResponse[]>;
+    public readonly targetOSList!: pulumi.Output<types.outputs.TargetOSInfoResponse[]>;
     /**
      * OOB, functional or both. Mapped to the data in 'tests' property.
      */
@@ -91,7 +91,7 @@ export class Package extends pulumi.CustomResource {
     /**
      * The detailed test information.
      */
-    public readonly tests!: pulumi.Output<types.outputs.testbase.TestResponse[]>;
+    public readonly tests!: pulumi.Output<types.outputs.TestResponse[]>;
     /**
      * Resource type.
      */
@@ -99,7 +99,7 @@ export class Package extends pulumi.CustomResource {
     /**
      * The validation results. There's validation on package when it's created or updated.
      */
-    public /*out*/ readonly validationResults!: pulumi.Output<types.outputs.testbase.PackageValidationResultResponse[]>;
+    public /*out*/ readonly validationResults!: pulumi.Output<types.outputs.PackageValidationResultResponse[]>;
     /**
      * Application version
      */
@@ -223,7 +223,7 @@ export interface PackageArgs {
     /**
      * Specifies the target OSs of specific OS Update types.
      */
-    targetOSList: pulumi.Input<pulumi.Input<types.inputs.testbase.TargetOSInfoArgs>[]>;
+    targetOSList: pulumi.Input<pulumi.Input<types.inputs.TargetOSInfoArgs>[]>;
     /**
      * The resource name of the Test Base Account.
      */
@@ -231,7 +231,7 @@ export interface PackageArgs {
     /**
      * The detailed test information.
      */
-    tests: pulumi.Input<pulumi.Input<types.inputs.testbase.TestArgs>[]>;
+    tests: pulumi.Input<pulumi.Input<types.inputs.TestArgs>[]>;
     /**
      * Application version
      */

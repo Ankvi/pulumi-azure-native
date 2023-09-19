@@ -63,7 +63,7 @@ utilities.lazyLoad(exports, ["TemplateArtifact"], () => require("./templateArtif
 
 
 // Export enums:
-export * from "../types/enums/v20181101preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

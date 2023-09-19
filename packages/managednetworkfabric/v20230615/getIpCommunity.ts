@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Implements an IP Community GET method.
  */
@@ -47,7 +47,7 @@ export interface GetIpCommunityResult {
     /**
      * List of IP Community Rules.
      */
-    readonly ipCommunityRules: types.outputs.managednetworkfabric.v20230615.IpCommunityRuleResponse[];
+    readonly ipCommunityRules: types.outputs.IpCommunityRuleResponse[];
     /**
      * The geo-location where the resource lives
      */
@@ -63,7 +63,7 @@ export interface GetIpCommunityResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.managednetworkfabric.v20230615.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

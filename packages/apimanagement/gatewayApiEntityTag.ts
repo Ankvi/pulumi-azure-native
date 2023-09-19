@@ -55,7 +55,7 @@ export class GatewayApiEntityTag extends pulumi.CustomResource {
     /**
      * Version set details
      */
-    public /*out*/ readonly apiVersionSet!: pulumi.Output<types.outputs.apimanagement.ApiVersionSetContractDetailsResponse | undefined>;
+    public /*out*/ readonly apiVersionSet!: pulumi.Output<types.outputs.ApiVersionSetContractDetailsResponse | undefined>;
     /**
      * A resource identifier for the related ApiVersionSet.
      */
@@ -63,11 +63,11 @@ export class GatewayApiEntityTag extends pulumi.CustomResource {
     /**
      * Collection of authentication settings included into this API.
      */
-    public /*out*/ readonly authenticationSettings!: pulumi.Output<types.outputs.apimanagement.AuthenticationSettingsContractResponse | undefined>;
+    public /*out*/ readonly authenticationSettings!: pulumi.Output<types.outputs.AuthenticationSettingsContractResponse | undefined>;
     /**
      * Contact information for the API.
      */
-    public /*out*/ readonly contact!: pulumi.Output<types.outputs.apimanagement.ApiContactInformationResponse | undefined>;
+    public /*out*/ readonly contact!: pulumi.Output<types.outputs.ApiContactInformationResponse | undefined>;
     /**
      * Description of the API. May include HTML formatting tags.
      */
@@ -87,7 +87,7 @@ export class GatewayApiEntityTag extends pulumi.CustomResource {
     /**
      * License information for the API.
      */
-    public /*out*/ readonly license!: pulumi.Output<types.outputs.apimanagement.ApiLicenseInformationResponse | undefined>;
+    public /*out*/ readonly license!: pulumi.Output<types.outputs.ApiLicenseInformationResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -111,7 +111,7 @@ export class GatewayApiEntityTag extends pulumi.CustomResource {
     /**
      * Protocols over which API is made available.
      */
-    public /*out*/ readonly subscriptionKeyParameterNames!: pulumi.Output<types.outputs.apimanagement.SubscriptionKeyParameterNamesContractResponse | undefined>;
+    public /*out*/ readonly subscriptionKeyParameterNames!: pulumi.Output<types.outputs.SubscriptionKeyParameterNamesContractResponse | undefined>;
     /**
      * Specifies whether an API or Product subscription is required for accessing the API.
      */

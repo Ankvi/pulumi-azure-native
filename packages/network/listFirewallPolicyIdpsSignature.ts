@@ -23,7 +23,7 @@ export interface ListFirewallPolicyIdpsSignatureArgs {
     /**
      * Contain all filters names and values
      */
-    filters?: types.inputs.network.FilterItems[];
+    filters?: types.inputs.FilterItems[];
     /**
      * The name of the Firewall Policy.
      */
@@ -31,7 +31,7 @@ export interface ListFirewallPolicyIdpsSignatureArgs {
     /**
      * Column to sort response by
      */
-    orderBy?: types.inputs.network.OrderBy;
+    orderBy?: types.inputs.OrderBy;
     /**
      * The name of the resource group.
      */
@@ -61,7 +61,7 @@ export interface ListFirewallPolicyIdpsSignatureResult {
     /**
      * Array containing the results of the query
      */
-    readonly signatures?: types.outputs.network.SingleQueryResultResponse[];
+    readonly signatures?: types.outputs.SingleQueryResultResponse[];
 }
 /**
  * Retrieves the current status of IDPS signatures for the relevant policy
@@ -75,7 +75,7 @@ export interface ListFirewallPolicyIdpsSignatureOutputArgs {
     /**
      * Contain all filters names and values
      */
-    filters?: pulumi.Input<pulumi.Input<types.inputs.network.FilterItemsArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<types.inputs.FilterItemsArgs>[]>;
     /**
      * The name of the Firewall Policy.
      */
@@ -83,7 +83,7 @@ export interface ListFirewallPolicyIdpsSignatureOutputArgs {
     /**
      * Column to sort response by
      */
-    orderBy?: pulumi.Input<types.inputs.network.OrderByArgs>;
+    orderBy?: pulumi.Input<types.inputs.OrderByArgs>;
     /**
      * The name of the resource group.
      */

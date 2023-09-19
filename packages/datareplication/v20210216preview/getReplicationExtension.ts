@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the details of the replication extension.
  */
@@ -44,8 +44,8 @@ export interface GetReplicationExtensionResult {
     /**
      * Replication extension model properties.
      */
-    readonly properties: types.outputs.datareplication.v20210216preview.ReplicationExtensionModelPropertiesResponse;
-    readonly systemData: types.outputs.datareplication.v20210216preview.ReplicationExtensionModelResponseSystemData;
+    readonly properties: types.outputs.ReplicationExtensionModelPropertiesResponse;
+    readonly systemData: types.outputs.ReplicationExtensionModelResponseSystemData;
     /**
      * Gets or sets the type of the resource.
      */

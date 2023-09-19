@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the resource and its properties.
  */
@@ -59,11 +59,11 @@ export interface GetWebPubSubResult {
     /**
      * A class represent managed identities used for request and response
      */
-    readonly identity?: types.outputs.webpubsub.v20230301preview.ManagedIdentityResponse;
+    readonly identity?: types.outputs.ManagedIdentityResponse;
     /**
      * Live trace configuration of a Microsoft.SignalRService resource.
      */
-    readonly liveTraceConfiguration?: types.outputs.webpubsub.v20230301preview.LiveTraceConfigurationResponse;
+    readonly liveTraceConfiguration?: types.outputs.LiveTraceConfigurationResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -75,11 +75,11 @@ export interface GetWebPubSubResult {
     /**
      * Network ACLs for the resource
      */
-    readonly networkACLs?: types.outputs.webpubsub.v20230301preview.WebPubSubNetworkACLsResponse;
+    readonly networkACLs?: types.outputs.WebPubSubNetworkACLsResponse;
     /**
      * Private endpoint connections to the resource.
      */
-    readonly privateEndpointConnections: types.outputs.webpubsub.v20230301preview.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections: types.outputs.PrivateEndpointConnectionResponse[];
     /**
      * Provisioning state of the resource.
      */
@@ -97,7 +97,7 @@ export interface GetWebPubSubResult {
     /**
      * Resource log configuration of a Microsoft.SignalRService resource.
      */
-    readonly resourceLogConfiguration?: types.outputs.webpubsub.v20230301preview.ResourceLogConfigurationResponse;
+    readonly resourceLogConfiguration?: types.outputs.ResourceLogConfigurationResponse;
     /**
      * The publicly accessible port of the resource which is designed for customer server side usage.
      */
@@ -105,15 +105,15 @@ export interface GetWebPubSubResult {
     /**
      * The list of shared private link resources.
      */
-    readonly sharedPrivateLinkResources: types.outputs.webpubsub.v20230301preview.SharedPrivateLinkResourceResponse[];
+    readonly sharedPrivateLinkResources: types.outputs.SharedPrivateLinkResourceResponse[];
     /**
      * The billing information of the resource.
      */
-    readonly sku?: types.outputs.webpubsub.v20230301preview.ResourceSkuResponse;
+    readonly sku?: types.outputs.ResourceSkuResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.webpubsub.v20230301preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -121,7 +121,7 @@ export interface GetWebPubSubResult {
     /**
      * TLS settings for the resource
      */
-    readonly tls?: types.outputs.webpubsub.v20230301preview.WebPubSubTlsSettingsResponse;
+    readonly tls?: types.outputs.WebPubSubTlsSettingsResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

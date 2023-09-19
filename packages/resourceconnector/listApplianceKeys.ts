@@ -37,15 +37,15 @@ export interface ListApplianceKeysResult {
     /**
      * Map of artifacts that contains a list of ArtifactProfile used to upload artifacts such as logs.
      */
-    readonly artifactProfiles: {[key: string]: types.outputs.resourceconnector.ArtifactProfileResponse};
+    readonly artifactProfiles: {[key: string]: types.outputs.ArtifactProfileResponse};
     /**
      * The list of appliance kubeconfigs.
      */
-    readonly kubeconfigs: types.outputs.resourceconnector.ApplianceCredentialKubeconfigResponse[];
+    readonly kubeconfigs: types.outputs.ApplianceCredentialKubeconfigResponse[];
     /**
      * Map of Customer User Public, Private SSH Keys and Certificate when available.
      */
-    readonly sshKeys: {[key: string]: types.outputs.resourceconnector.SSHKeyResponse};
+    readonly sshKeys: {[key: string]: types.outputs.SSHKeyResponse};
 }
 /**
  * Returns the cluster customer credentials for the dedicated appliance.

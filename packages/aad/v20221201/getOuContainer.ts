@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get OuContainer in DomainService instance.
  */
@@ -36,7 +36,7 @@ export interface GetOuContainerResult {
     /**
      * The list of container accounts
      */
-    readonly accounts?: types.outputs.aad.v20221201.ContainerAccountResponse[];
+    readonly accounts?: types.outputs.ContainerAccountResponse[];
     /**
      * The OuContainer name
      */
@@ -80,7 +80,7 @@ export interface GetOuContainerResult {
     /**
      * The system meta data relating to this resource.
      */
-    readonly systemData: types.outputs.aad.v20221201.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags
      */

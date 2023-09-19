@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Workload deployment model.
  */
@@ -38,8 +38,8 @@ export class WorkloadDeployment extends pulumi.CustomResource {
     /**
      * Workload deployment model properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.migrate.v20220501preview.WorkloadDeploymentModelPropertiesResponse>;
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.migrate.v20220501preview.WorkloadDeploymentModelResponseSystemData>;
+    public readonly properties!: pulumi.Output<types.outputs.WorkloadDeploymentModelPropertiesResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.WorkloadDeploymentModelResponseSystemData>;
     /**
      * Gets or sets the resource tags.
      */
@@ -100,7 +100,7 @@ export interface WorkloadDeploymentArgs {
     /**
      * Workload deployment model properties.
      */
-    properties?: pulumi.Input<types.inputs.migrate.v20220501preview.WorkloadDeploymentModelPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.WorkloadDeploymentModelPropertiesArgs>;
     /**
      * Name of the Azure Resource Group that project is part of.
      */

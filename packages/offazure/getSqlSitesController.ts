@@ -59,11 +59,11 @@ export interface GetSqlSitesControllerResult {
      *            
      * to the appliance.
      */
-    readonly siteAppliancePropertiesCollection?: types.outputs.offazure.SiteAppliancePropertiesResponse[];
+    readonly siteAppliancePropertiesCollection?: types.outputs.SiteAppliancePropertiesResponse[];
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.offazure.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

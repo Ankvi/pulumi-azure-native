@@ -32,7 +32,7 @@ export interface GetEnterprisePolicyResult {
     /**
      * The encryption settings for a configuration store.
      */
-    readonly encryption?: types.outputs.powerplatform.PropertiesResponseEncryption;
+    readonly encryption?: types.outputs.PropertiesResponseEncryption;
     /**
      * The health status of the resource.
      */
@@ -44,7 +44,7 @@ export interface GetEnterprisePolicyResult {
     /**
      * The identity of the EnterprisePolicy.
      */
-    readonly identity?: types.outputs.powerplatform.EnterprisePolicyIdentityResponse;
+    readonly identity?: types.outputs.EnterprisePolicyIdentityResponse;
     /**
      * The kind (type) of Enterprise Policy.
      */
@@ -56,7 +56,7 @@ export interface GetEnterprisePolicyResult {
     /**
      * Settings concerning lockbox.
      */
-    readonly lockbox?: types.outputs.powerplatform.PropertiesResponseLockbox;
+    readonly lockbox?: types.outputs.PropertiesResponseLockbox;
     /**
      * The name of the resource
      */
@@ -64,11 +64,11 @@ export interface GetEnterprisePolicyResult {
     /**
      * Settings concerning network injection.
      */
-    readonly networkInjection?: types.outputs.powerplatform.PropertiesResponseNetworkInjection;
+    readonly networkInjection?: types.outputs.PropertiesResponseNetworkInjection;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.powerplatform.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The internally assigned unique identifier of the resource.
      */

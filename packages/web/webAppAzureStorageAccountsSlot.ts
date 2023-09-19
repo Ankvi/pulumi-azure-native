@@ -43,7 +43,7 @@ export class WebAppAzureStorageAccountsSlot extends pulumi.CustomResource {
     /**
      * Azure storage accounts.
      */
-    public readonly properties!: pulumi.Output<{[key: string]: types.outputs.web.AzureStorageInfoValueResponse}>;
+    public readonly properties!: pulumi.Output<{[key: string]: types.outputs.AzureStorageInfoValueResponse}>;
     /**
      * Resource type.
      */
@@ -103,7 +103,7 @@ export interface WebAppAzureStorageAccountsSlotArgs {
     /**
      * Azure storage accounts.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.web.AzureStorageInfoValueArgs>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.AzureStorageInfoValueArgs>}>;
     /**
      * Name of the resource group to which the resource belongs.
      */

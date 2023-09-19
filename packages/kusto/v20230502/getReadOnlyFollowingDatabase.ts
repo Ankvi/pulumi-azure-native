@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns a database.
  */
@@ -85,15 +85,15 @@ export interface GetReadOnlyFollowingDatabaseResult {
     /**
      * The statistics of the database.
      */
-    readonly statistics: types.outputs.kusto.v20230502.DatabaseStatisticsResponse;
+    readonly statistics: types.outputs.DatabaseStatisticsResponse;
     /**
      * The database suspension details. If the database is suspended, this object contains information related to the database's suspension state.
      */
-    readonly suspensionDetails: types.outputs.kusto.v20230502.SuspensionDetailsResponse;
+    readonly suspensionDetails: types.outputs.SuspensionDetailsResponse;
     /**
      * Table level sharing specifications
      */
-    readonly tableLevelSharingProperties: types.outputs.kusto.v20230502.TableLevelSharingPropertiesResponse;
+    readonly tableLevelSharingProperties: types.outputs.TableLevelSharingPropertiesResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

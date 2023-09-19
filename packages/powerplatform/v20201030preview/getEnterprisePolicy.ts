@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get information about an EnterprisePolicy
  */
@@ -31,7 +31,7 @@ export interface GetEnterprisePolicyResult {
     /**
      * The encryption settings for a configuration store.
      */
-    readonly encryption?: types.outputs.powerplatform.v20201030preview.PropertiesResponseEncryption;
+    readonly encryption?: types.outputs.PropertiesResponseEncryption;
     /**
      * The health status of the resource.
      */
@@ -43,7 +43,7 @@ export interface GetEnterprisePolicyResult {
     /**
      * The identity of the EnterprisePolicy.
      */
-    readonly identity?: types.outputs.powerplatform.v20201030preview.EnterprisePolicyIdentityResponse;
+    readonly identity?: types.outputs.EnterprisePolicyIdentityResponse;
     /**
      * The kind (type) of Enterprise Policy.
      */
@@ -55,7 +55,7 @@ export interface GetEnterprisePolicyResult {
     /**
      * Settings concerning lockbox.
      */
-    readonly lockbox?: types.outputs.powerplatform.v20201030preview.PropertiesResponseLockbox;
+    readonly lockbox?: types.outputs.PropertiesResponseLockbox;
     /**
      * The name of the resource
      */
@@ -63,11 +63,11 @@ export interface GetEnterprisePolicyResult {
     /**
      * Settings concerning network injection.
      */
-    readonly networkInjection?: types.outputs.powerplatform.v20201030preview.PropertiesResponseNetworkInjection;
+    readonly networkInjection?: types.outputs.PropertiesResponseNetworkInjection;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.powerplatform.v20201030preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The internally assigned unique identifier of the resource.
      */

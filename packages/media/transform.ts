@@ -51,11 +51,11 @@ export class Transform extends pulumi.CustomResource {
     /**
      * An array of one or more TransformOutputs that the Transform should generate.
      */
-    public readonly outputs!: pulumi.Output<types.outputs.media.TransformOutputResponse[]>;
+    public readonly outputs!: pulumi.Output<types.outputs.TransformOutputResponse[]>;
     /**
      * The system metadata relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.media.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -122,7 +122,7 @@ export interface TransformArgs {
     /**
      * An array of one or more TransformOutputs that the Transform should generate.
      */
-    outputs: pulumi.Input<pulumi.Input<types.inputs.media.TransformOutputArgs>[]>;
+    outputs: pulumi.Input<pulumi.Input<types.inputs.TransformOutputArgs>[]>;
     /**
      * The name of the resource group within the Azure subscription.
      */

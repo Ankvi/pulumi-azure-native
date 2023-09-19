@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the properties of the specified machine learning workspace.
  */
@@ -55,7 +55,7 @@ export interface GetWorkspaceResult {
     /**
      * The sku of the workspace.
      */
-    readonly sku?: types.outputs.machinelearning.v20191001.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * The regional endpoint for the machine learning studio service which hosts this workspace.
      */

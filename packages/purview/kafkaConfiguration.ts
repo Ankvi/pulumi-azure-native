@@ -39,7 +39,7 @@ export class KafkaConfiguration extends pulumi.CustomResource {
     /**
      * Credentials to access event hub.
      */
-    public readonly credentials!: pulumi.Output<types.outputs.purview.CredentialsResponse | undefined>;
+    public readonly credentials!: pulumi.Output<types.outputs.CredentialsResponse | undefined>;
     /**
      * Optional partition Id for notification event hub. If not set, all partitions will be leveraged.
      */
@@ -64,7 +64,7 @@ export class KafkaConfiguration extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.purview.ProxyResourceResponseSystemData>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.ProxyResourceResponseSystemData>;
     /**
      * Gets or sets the type.
      */
@@ -134,7 +134,7 @@ export interface KafkaConfigurationArgs {
     /**
      * Credentials to access event hub.
      */
-    credentials?: pulumi.Input<types.inputs.purview.CredentialsArgs>;
+    credentials?: pulumi.Input<types.inputs.CredentialsArgs>;
     /**
      * Optional partition Id for notification event hub. If not set, all partitions will be leveraged.
      */

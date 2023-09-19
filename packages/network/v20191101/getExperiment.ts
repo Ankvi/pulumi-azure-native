@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Defines the properties of an Experiment
  */
@@ -44,11 +44,11 @@ export interface GetExperimentResult {
     /**
      * The endpoint A of an experiment
      */
-    readonly endpointA?: types.outputs.network.v20191101.ExperimentEndpointResponse;
+    readonly endpointA?: types.outputs.ExperimentEndpointResponse;
     /**
      * The endpoint B of an experiment
      */
-    readonly endpointB?: types.outputs.network.v20191101.ExperimentEndpointResponse;
+    readonly endpointB?: types.outputs.ExperimentEndpointResponse;
     /**
      * Resource ID.
      */

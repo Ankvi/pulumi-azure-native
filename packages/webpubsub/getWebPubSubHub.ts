@@ -45,11 +45,11 @@ export interface GetWebPubSubHubResult {
     /**
      * Properties of a hub.
      */
-    readonly properties: types.outputs.webpubsub.WebPubSubHubPropertiesResponse;
+    readonly properties: types.outputs.WebPubSubHubPropertiesResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.webpubsub.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource - e.g. "Microsoft.SignalRService/SignalR"
      */

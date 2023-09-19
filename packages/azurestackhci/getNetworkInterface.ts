@@ -32,11 +32,11 @@ export interface GetNetworkInterfaceResult {
     /**
      * DNS Settings for the interface
      */
-    readonly dnsSettings?: types.outputs.azurestackhci.InterfaceDNSSettingsResponse;
+    readonly dnsSettings?: types.outputs.InterfaceDNSSettingsResponse;
     /**
      * The extendedLocation of the resource.
      */
-    readonly extendedLocation?: types.outputs.azurestackhci.ExtendedLocationResponse;
+    readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -44,7 +44,7 @@ export interface GetNetworkInterfaceResult {
     /**
      * IPConfigurations - A list of IPConfigurations of the network interface.
      */
-    readonly ipConfigurations?: types.outputs.azurestackhci.IPConfigurationResponse[];
+    readonly ipConfigurations?: types.outputs.IPConfigurationResponse[];
     /**
      * The geo-location where the resource lives
      */
@@ -64,11 +64,11 @@ export interface GetNetworkInterfaceResult {
     /**
      * The observed state of network interfaces
      */
-    readonly status: types.outputs.azurestackhci.NetworkInterfaceStatusResponse;
+    readonly status: types.outputs.NetworkInterfaceStatusResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.azurestackhci.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

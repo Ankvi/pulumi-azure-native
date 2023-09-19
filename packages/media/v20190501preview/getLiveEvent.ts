@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a Live Event.
  */
@@ -40,7 +40,7 @@ export interface GetLiveEventResult {
     /**
      * The Live Event access policies.
      */
-    readonly crossSiteAccessPolicies?: types.outputs.media.v20190501preview.CrossSiteAccessPoliciesResponse;
+    readonly crossSiteAccessPolicies?: types.outputs.CrossSiteAccessPoliciesResponse;
     /**
      * The Live Event description.
      */
@@ -48,7 +48,7 @@ export interface GetLiveEventResult {
     /**
      * The Live Event encoding.
      */
-    readonly encoding?: types.outputs.media.v20190501preview.LiveEventEncodingResponse;
+    readonly encoding?: types.outputs.LiveEventEncodingResponse;
     /**
      * Fully qualified resource ID for the resource.
      */
@@ -56,7 +56,7 @@ export interface GetLiveEventResult {
     /**
      * The Live Event input.
      */
-    readonly input: types.outputs.media.v20190501preview.LiveEventInputResponse;
+    readonly input: types.outputs.LiveEventInputResponse;
     /**
      * The exact time the Live Event was last modified.
      */
@@ -72,7 +72,7 @@ export interface GetLiveEventResult {
     /**
      * The Live Event preview.
      */
-    readonly preview?: types.outputs.media.v20190501preview.LiveEventPreviewResponse;
+    readonly preview?: types.outputs.LiveEventPreviewResponse;
     /**
      * The provisioning state of the Live Event.
      */
@@ -92,7 +92,7 @@ export interface GetLiveEventResult {
     /**
      * The Live Event transcription.
      */
-    readonly transcriptions?: types.outputs.media.v20190501preview.LiveEventTranscriptionResponse[];
+    readonly transcriptions?: types.outputs.LiveEventTranscriptionResponse[];
     /**
      * The type of the resource.
      */

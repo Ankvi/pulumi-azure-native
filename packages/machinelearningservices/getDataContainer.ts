@@ -37,7 +37,7 @@ export interface GetDataContainerResult {
     /**
      * [Required] Additional attributes of the entity.
      */
-    readonly dataContainerProperties: types.outputs.machinelearningservices.DataContainerResponse;
+    readonly dataContainerProperties: types.outputs.DataContainerResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -49,7 +49,7 @@ export interface GetDataContainerResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.machinelearningservices.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

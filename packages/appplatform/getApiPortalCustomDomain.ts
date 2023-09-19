@@ -50,11 +50,11 @@ export interface GetApiPortalCustomDomainResult {
     /**
      * The properties of custom domain for API portal
      */
-    readonly properties: types.outputs.appplatform.ApiPortalCustomDomainPropertiesResponse;
+    readonly properties: types.outputs.ApiPortalCustomDomainPropertiesResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.appplatform.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource.
      */

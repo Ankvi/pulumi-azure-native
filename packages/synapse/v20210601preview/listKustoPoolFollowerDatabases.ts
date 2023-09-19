@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns a list of databases that are owned by this Kusto Pool and were followed by another Kusto Pool.
  */
@@ -36,7 +36,7 @@ export interface ListKustoPoolFollowerDatabasesResult {
     /**
      * The list of follower database result.
      */
-    readonly value?: types.outputs.synapse.v20210601preview.FollowerDatabaseDefinitionResponse[];
+    readonly value?: types.outputs.FollowerDatabaseDefinitionResponse[];
 }
 /**
  * Returns a list of databases that are owned by this Kusto Pool and were followed by another Kusto Pool.

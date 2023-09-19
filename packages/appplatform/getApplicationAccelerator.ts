@@ -45,15 +45,15 @@ export interface GetApplicationAcceleratorResult {
     /**
      * Application accelerator properties payload
      */
-    readonly properties: types.outputs.appplatform.ApplicationAcceleratorPropertiesResponse;
+    readonly properties: types.outputs.ApplicationAcceleratorPropertiesResponse;
     /**
      * Sku of the application accelerator resource
      */
-    readonly sku?: types.outputs.appplatform.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.appplatform.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource.
      */

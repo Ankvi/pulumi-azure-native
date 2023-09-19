@@ -41,7 +41,7 @@ export interface ListProductDetailsResult {
     /**
      * List of attached data disks.
      */
-    readonly dataDiskImages: types.outputs.azurestack.DataDiskImageResponse[];
+    readonly dataDiskImages: types.outputs.DataDiskImageResponse[];
     /**
      * The URI to the .azpkg file that provides information required for showing product in the gallery.
      */
@@ -53,7 +53,7 @@ export interface ListProductDetailsResult {
     /**
      * OS disk image used by product.
      */
-    readonly osDiskImage: types.outputs.azurestack.OsDiskImageResponse;
+    readonly osDiskImage: types.outputs.OsDiskImageResponse;
     /**
      * Specifies the kind of the product (virtualMachine or virtualMachineExtension).
      */

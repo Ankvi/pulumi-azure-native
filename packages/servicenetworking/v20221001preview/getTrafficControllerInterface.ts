@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a TrafficController
  */
@@ -31,7 +31,7 @@ export interface GetTrafficControllerInterfaceResult {
     /**
      * Associations References List
      */
-    readonly associations: types.outputs.servicenetworking.v20221001preview.ResourceIDResponse[];
+    readonly associations: types.outputs.ResourceIDResponse[];
     /**
      * Configuration Endpoints.
      */
@@ -39,7 +39,7 @@ export interface GetTrafficControllerInterfaceResult {
     /**
      * Frontends References List
      */
-    readonly frontends: types.outputs.servicenetworking.v20221001preview.ResourceIDResponse[];
+    readonly frontends: types.outputs.ResourceIDResponse[];
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -59,7 +59,7 @@ export interface GetTrafficControllerInterfaceResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.servicenetworking.v20221001preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

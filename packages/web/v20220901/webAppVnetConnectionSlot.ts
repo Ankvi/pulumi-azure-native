@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Virtual Network information ARM resource.
  */
@@ -63,7 +63,7 @@ export class WebAppVnetConnectionSlot extends pulumi.CustomResource {
     /**
      * The routes that this Virtual Network connection uses.
      */
-    public /*out*/ readonly routes!: pulumi.Output<types.outputs.web.v20220901.VnetRouteResponse[]>;
+    public /*out*/ readonly routes!: pulumi.Output<types.outputs.VnetRouteResponse[]>;
     /**
      * Resource type.
      */

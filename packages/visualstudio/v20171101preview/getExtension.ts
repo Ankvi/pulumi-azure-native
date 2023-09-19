@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the details of an extension associated with a Visual Studio Team Services account resource.
  */
@@ -48,7 +48,7 @@ export interface GetExtensionResult {
     /**
      * The extension plan that was purchased.
      */
-    readonly plan?: types.outputs.visualstudio.v20171101preview.ExtensionResourcePlanResponse;
+    readonly plan?: types.outputs.ExtensionResourcePlanResponse;
     /**
      * Resource properties.
      */

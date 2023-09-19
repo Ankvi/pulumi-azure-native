@@ -32,7 +32,7 @@ export interface GetDomainServiceResult {
     /**
      * Configuration diagnostics data containing latest execution from client.
      */
-    readonly configDiagnostics?: types.outputs.aad.ConfigDiagnosticsResponse;
+    readonly configDiagnostics?: types.outputs.ConfigDiagnosticsResponse;
     /**
      * Deployment Id
      */
@@ -48,7 +48,7 @@ export interface GetDomainServiceResult {
     /**
      * DomainSecurity Settings
      */
-    readonly domainSecuritySettings?: types.outputs.aad.DomainSecuritySettingsResponse;
+    readonly domainSecuritySettings?: types.outputs.DomainSecuritySettingsResponse;
     /**
      * Resource etag
      */
@@ -64,7 +64,7 @@ export interface GetDomainServiceResult {
     /**
      * Secure LDAP Settings
      */
-    readonly ldapsSettings?: types.outputs.aad.LdapsSettingsResponse;
+    readonly ldapsSettings?: types.outputs.LdapsSettingsResponse;
     /**
      * Resource location
      */
@@ -72,7 +72,7 @@ export interface GetDomainServiceResult {
     /**
      * Migration Properties
      */
-    readonly migrationProperties: types.outputs.aad.MigrationPropertiesResponse;
+    readonly migrationProperties: types.outputs.MigrationPropertiesResponse;
     /**
      * Resource name
      */
@@ -80,7 +80,7 @@ export interface GetDomainServiceResult {
     /**
      * Notification Settings
      */
-    readonly notificationSettings?: types.outputs.aad.NotificationSettingsResponse;
+    readonly notificationSettings?: types.outputs.NotificationSettingsResponse;
     /**
      * the current deployment or provisioning state, which only appears in the response.
      */
@@ -88,11 +88,11 @@ export interface GetDomainServiceResult {
     /**
      * List of ReplicaSets
      */
-    readonly replicaSets?: types.outputs.aad.ReplicaSetResponse[];
+    readonly replicaSets?: types.outputs.ReplicaSetResponse[];
     /**
      * Resource Forest Settings
      */
-    readonly resourceForestSettings?: types.outputs.aad.ResourceForestSettingsResponse;
+    readonly resourceForestSettings?: types.outputs.ResourceForestSettingsResponse;
     /**
      * Sku Type
      */
@@ -112,7 +112,7 @@ export interface GetDomainServiceResult {
     /**
      * The system meta data relating to this resource.
      */
-    readonly systemData: types.outputs.aad.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Lists the PNS Credentials associated with a notification hub .
  */
@@ -36,19 +36,19 @@ export interface GetNotificationHubPnsCredentialsResult {
     /**
      * The AdmCredential of the created NotificationHub
      */
-    readonly admCredential?: types.outputs.notificationhubs.v20170401.AdmCredentialResponse;
+    readonly admCredential?: types.outputs.AdmCredentialResponse;
     /**
      * The ApnsCredential of the created NotificationHub
      */
-    readonly apnsCredential?: types.outputs.notificationhubs.v20170401.ApnsCredentialResponse;
+    readonly apnsCredential?: types.outputs.ApnsCredentialResponse;
     /**
      * The BaiduCredential of the created NotificationHub
      */
-    readonly baiduCredential?: types.outputs.notificationhubs.v20170401.BaiduCredentialResponse;
+    readonly baiduCredential?: types.outputs.BaiduCredentialResponse;
     /**
      * The GcmCredential of the created NotificationHub
      */
-    readonly gcmCredential?: types.outputs.notificationhubs.v20170401.GcmCredentialResponse;
+    readonly gcmCredential?: types.outputs.GcmCredentialResponse;
     /**
      * Resource Id
      */
@@ -60,7 +60,7 @@ export interface GetNotificationHubPnsCredentialsResult {
     /**
      * The MpnsCredential of the created NotificationHub
      */
-    readonly mpnsCredential?: types.outputs.notificationhubs.v20170401.MpnsCredentialResponse;
+    readonly mpnsCredential?: types.outputs.MpnsCredentialResponse;
     /**
      * Resource name
      */
@@ -68,7 +68,7 @@ export interface GetNotificationHubPnsCredentialsResult {
     /**
      * The sku of the created namespace
      */
-    readonly sku?: types.outputs.notificationhubs.v20170401.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * Resource tags
      */
@@ -80,7 +80,7 @@ export interface GetNotificationHubPnsCredentialsResult {
     /**
      * The WnsCredential of the created NotificationHub
      */
-    readonly wnsCredential?: types.outputs.notificationhubs.v20170401.WnsCredentialResponse;
+    readonly wnsCredential?: types.outputs.WnsCredentialResponse;
 }
 /**
  * Lists the PNS Credentials associated with a notification hub .

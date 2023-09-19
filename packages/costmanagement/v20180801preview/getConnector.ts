@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a connector definition
  */
@@ -31,7 +31,7 @@ export interface GetConnectorResult {
     /**
      * Collection information
      */
-    readonly collection: types.outputs.costmanagement.v20180801preview.ConnectorCollectionInfoResponse;
+    readonly collection: types.outputs.ConnectorCollectionInfoResponse;
     /**
      * Connector definition creation datetime
      */

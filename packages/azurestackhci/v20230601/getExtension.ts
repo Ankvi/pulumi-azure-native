@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get particular Arc Extension of HCI Cluster.
  */
@@ -69,7 +69,7 @@ export interface GetExtensionResult {
     /**
      * State of Arc Extension in each of the nodes.
      */
-    readonly perNodeExtensionDetails: types.outputs.azurestackhci.v20230601.PerNodeExtensionStateResponse[];
+    readonly perNodeExtensionDetails: types.outputs.PerNodeExtensionStateResponse[];
     /**
      * Protected settings (may contain secrets).
      */
@@ -89,7 +89,7 @@ export interface GetExtensionResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.azurestackhci.v20230601.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

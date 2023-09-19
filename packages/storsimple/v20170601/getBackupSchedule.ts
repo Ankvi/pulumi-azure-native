@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the properties of the specified backup schedule name.
  */
@@ -70,7 +70,7 @@ export interface GetBackupScheduleResult {
     /**
      * The schedule recurrence.
      */
-    readonly scheduleRecurrence: types.outputs.storsimple.v20170601.ScheduleRecurrenceResponse;
+    readonly scheduleRecurrence: types.outputs.ScheduleRecurrenceResponse;
     /**
      * The schedule status.
      */

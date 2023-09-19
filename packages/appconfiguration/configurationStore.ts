@@ -47,7 +47,7 @@ export class ConfigurationStore extends pulumi.CustomResource {
     /**
      * The encryption settings of the configuration store.
      */
-    public readonly encryption!: pulumi.Output<types.outputs.appconfiguration.EncryptionPropertiesResponse | undefined>;
+    public readonly encryption!: pulumi.Output<types.outputs.EncryptionPropertiesResponse | undefined>;
     /**
      * The DNS endpoint where the configuration store API will be available.
      */
@@ -55,7 +55,7 @@ export class ConfigurationStore extends pulumi.CustomResource {
     /**
      * The managed identity information, if configured.
      */
-    public readonly identity!: pulumi.Output<types.outputs.appconfiguration.ResourceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ResourceIdentityResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -67,7 +67,7 @@ export class ConfigurationStore extends pulumi.CustomResource {
     /**
      * The list of private endpoint connections that are set up for this resource.
      */
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.appconfiguration.PrivateEndpointConnectionReferenceResponse[]>;
+    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionReferenceResponse[]>;
     /**
      * The provisioning state of the configuration store.
      */
@@ -79,7 +79,7 @@ export class ConfigurationStore extends pulumi.CustomResource {
     /**
      * The sku of the configuration store.
      */
-    public readonly sku!: pulumi.Output<types.outputs.appconfiguration.SkuResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse>;
     /**
      * The amount of time in days that the configuration store will be retained when it is soft deleted.
      */
@@ -87,7 +87,7 @@ export class ConfigurationStore extends pulumi.CustomResource {
     /**
      * Resource system metadata.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.appconfiguration.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -181,11 +181,11 @@ export interface ConfigurationStoreArgs {
     /**
      * The encryption settings of the configuration store.
      */
-    encryption?: pulumi.Input<types.inputs.appconfiguration.EncryptionPropertiesArgs>;
+    encryption?: pulumi.Input<types.inputs.EncryptionPropertiesArgs>;
     /**
      * The managed identity information, if configured.
      */
-    identity?: pulumi.Input<types.inputs.appconfiguration.ResourceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ResourceIdentityArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -201,7 +201,7 @@ export interface ConfigurationStoreArgs {
     /**
      * The sku of the configuration store.
      */
-    sku: pulumi.Input<types.inputs.appconfiguration.SkuArgs>;
+    sku: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * The amount of time in days that the configuration store will be retained when it is soft deleted.
      */

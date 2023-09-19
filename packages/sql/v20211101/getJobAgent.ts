@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a job agent.
  */
@@ -52,7 +52,7 @@ export interface GetJobAgentResult {
     /**
      * The name and tier of the SKU.
      */
-    readonly sku?: types.outputs.sql.v20211101.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * The state of the job agent.
      */

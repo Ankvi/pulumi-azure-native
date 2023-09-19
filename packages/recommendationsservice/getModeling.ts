@@ -49,11 +49,11 @@ export interface GetModelingResult {
     /**
      * Modeling resource properties.
      */
-    readonly properties: types.outputs.recommendationsservice.ModelingResourceResponseProperties;
+    readonly properties: types.outputs.ModelingResourceResponseProperties;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.recommendationsservice.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

@@ -113,7 +113,7 @@ utilities.lazyLoad(exports, ["TransparentDataEncryption"], () => require("./tran
 
 
 // Export enums:
-export * from "../types/enums/v20140401";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

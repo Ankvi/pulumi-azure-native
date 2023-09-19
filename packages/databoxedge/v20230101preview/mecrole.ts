@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * MEC role.
  */
@@ -34,7 +34,7 @@ export class MECRole extends pulumi.CustomResource {
     /**
      * Activation key of the MEC.
      */
-    public readonly connectionString!: pulumi.Output<types.outputs.databoxedge.v20230101preview.AsymmetricEncryptedSecretResponse | undefined>;
+    public readonly connectionString!: pulumi.Output<types.outputs.AsymmetricEncryptedSecretResponse | undefined>;
     /**
      * Controller Endpoint.
      */
@@ -59,7 +59,7 @@ export class MECRole extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of Role
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.databoxedge.v20230101preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The hierarchical type of the object.
      */
@@ -122,7 +122,7 @@ export interface MECRoleArgs {
     /**
      * Activation key of the MEC.
      */
-    connectionString?: pulumi.Input<types.inputs.databoxedge.v20230101preview.AsymmetricEncryptedSecretArgs>;
+    connectionString?: pulumi.Input<types.inputs.AsymmetricEncryptedSecretArgs>;
     /**
      * Controller Endpoint.
      */
@@ -151,5 +151,5 @@ export interface MECRoleArgs {
     /**
      * Role status.
      */
-    roleStatus: pulumi.Input<string | types.enums.v20230101preview.RoleStatus>;
+    roleStatus: pulumi.Input<string | types.enums.RoleStatus>;
 }

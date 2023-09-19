@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Lab Plans act as a permission container for creating labs via labs.azure.com. Additionally, they can provide a set of default configurations that will apply at the time of creating a lab, but these defaults can still be overwritten.
  */
@@ -38,19 +38,19 @@ export class LabPlan extends pulumi.CustomResource {
     /**
      * The default lab shutdown profile. This can be changed on a lab resource and only provides a default profile.
      */
-    public readonly defaultAutoShutdownProfile!: pulumi.Output<types.outputs.labservices.v20220801.AutoShutdownProfileResponse | undefined>;
+    public readonly defaultAutoShutdownProfile!: pulumi.Output<types.outputs.AutoShutdownProfileResponse | undefined>;
     /**
      * The default lab connection profile. This can be changed on a lab resource and only provides a default profile.
      */
-    public readonly defaultConnectionProfile!: pulumi.Output<types.outputs.labservices.v20220801.ConnectionProfileResponse | undefined>;
+    public readonly defaultConnectionProfile!: pulumi.Output<types.outputs.ConnectionProfileResponse | undefined>;
     /**
      * The lab plan network profile. To enforce lab network policies they must be defined here and cannot be changed when there are existing labs associated with this lab plan.
      */
-    public readonly defaultNetworkProfile!: pulumi.Output<types.outputs.labservices.v20220801.LabPlanNetworkProfileResponse | undefined>;
+    public readonly defaultNetworkProfile!: pulumi.Output<types.outputs.LabPlanNetworkProfileResponse | undefined>;
     /**
      * Managed Identity Information
      */
-    public readonly identity!: pulumi.Output<types.outputs.labservices.v20220801.IdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityResponse | undefined>;
     /**
      * Base Url of the lms instance this lab plan can link lab rosters against.
      */
@@ -74,11 +74,11 @@ export class LabPlan extends pulumi.CustomResource {
     /**
      * Support contact information and instructions for users of the lab plan. This information is displayed to lab owners and virtual machine users for all labs in the lab plan.
      */
-    public readonly supportInfo!: pulumi.Output<types.outputs.labservices.v20220801.SupportInfoResponse | undefined>;
+    public readonly supportInfo!: pulumi.Output<types.outputs.SupportInfoResponse | undefined>;
     /**
      * Metadata pertaining to creation and last modification of the lab plan.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.labservices.v20220801.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -103,8 +103,8 @@ export class LabPlan extends pulumi.CustomResource {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
             resourceInputs["allowedRegions"] = args ? args.allowedRegions : undefined;
-            resourceInputs["defaultAutoShutdownProfile"] = args ? (args.defaultAutoShutdownProfile ? pulumi.output(args.defaultAutoShutdownProfile).apply(types.inputs.labservices.v20220801.autoShutdownProfileArgsProvideDefaults) : undefined) : undefined;
-            resourceInputs["defaultConnectionProfile"] = args ? (args.defaultConnectionProfile ? pulumi.output(args.defaultConnectionProfile).apply(types.inputs.labservices.v20220801.connectionProfileArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["defaultAutoShutdownProfile"] = args ? (args.defaultAutoShutdownProfile ? pulumi.output(args.defaultAutoShutdownProfile).apply(types.inputs.autoShutdownProfileArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["defaultConnectionProfile"] = args ? (args.defaultConnectionProfile ? pulumi.output(args.defaultConnectionProfile).apply(types.inputs.connectionProfileArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["defaultNetworkProfile"] = args ? args.defaultNetworkProfile : undefined;
             resourceInputs["identity"] = args ? args.identity : undefined;
             resourceInputs["labPlanName"] = args ? args.labPlanName : undefined;
@@ -152,19 +152,19 @@ export interface LabPlanArgs {
     /**
      * The default lab shutdown profile. This can be changed on a lab resource and only provides a default profile.
      */
-    defaultAutoShutdownProfile?: pulumi.Input<types.inputs.labservices.v20220801.AutoShutdownProfileArgs>;
+    defaultAutoShutdownProfile?: pulumi.Input<types.inputs.AutoShutdownProfileArgs>;
     /**
      * The default lab connection profile. This can be changed on a lab resource and only provides a default profile.
      */
-    defaultConnectionProfile?: pulumi.Input<types.inputs.labservices.v20220801.ConnectionProfileArgs>;
+    defaultConnectionProfile?: pulumi.Input<types.inputs.ConnectionProfileArgs>;
     /**
      * The lab plan network profile. To enforce lab network policies they must be defined here and cannot be changed when there are existing labs associated with this lab plan.
      */
-    defaultNetworkProfile?: pulumi.Input<types.inputs.labservices.v20220801.LabPlanNetworkProfileArgs>;
+    defaultNetworkProfile?: pulumi.Input<types.inputs.LabPlanNetworkProfileArgs>;
     /**
      * Managed Identity Information
      */
-    identity?: pulumi.Input<types.inputs.labservices.v20220801.IdentityArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityArgs>;
     /**
      * The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
      */
@@ -188,7 +188,7 @@ export interface LabPlanArgs {
     /**
      * Support contact information and instructions for users of the lab plan. This information is displayed to lab owners and virtual machine users for all labs in the lab plan.
      */
-    supportInfo?: pulumi.Input<types.inputs.labservices.v20220801.SupportInfoArgs>;
+    supportInfo?: pulumi.Input<types.inputs.SupportInfoArgs>;
     /**
      * Resource tags.
      */

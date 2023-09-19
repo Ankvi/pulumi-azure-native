@@ -32,15 +32,15 @@ export interface GetAssignmentResult {
     /**
      * Additional data about the assignment
      */
-    readonly additionalData?: types.outputs.security.AssignmentPropertiesResponseAdditionalData;
+    readonly additionalData?: types.outputs.AssignmentPropertiesResponseAdditionalData;
     /**
      * Component item with key as applied to this standard assignment over the given scope
      */
-    readonly assignedComponent?: types.outputs.security.AssignedComponentItemResponse;
+    readonly assignedComponent?: types.outputs.AssignedComponentItemResponse;
     /**
      * Standard item with key as applied to this standard assignment over the given scope
      */
-    readonly assignedStandard?: types.outputs.security.AssignedStandardItemResponse;
+    readonly assignedStandard?: types.outputs.AssignedStandardItemResponse;
     /**
      * description of the standardAssignment
      */
@@ -88,7 +88,7 @@ export interface GetAssignmentResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.security.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * A list of key value pairs that describe the resource.
      */

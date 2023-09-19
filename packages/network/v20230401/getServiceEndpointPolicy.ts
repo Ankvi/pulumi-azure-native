@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the specified service Endpoint Policies in a specified resource group.
  */
@@ -72,11 +72,11 @@ export interface GetServiceEndpointPolicyResult {
     /**
      * A collection of service endpoint policy definitions of the service endpoint policy.
      */
-    readonly serviceEndpointPolicyDefinitions?: types.outputs.network.v20230401.ServiceEndpointPolicyDefinitionResponse[];
+    readonly serviceEndpointPolicyDefinitions?: types.outputs.ServiceEndpointPolicyDefinitionResponse[];
     /**
      * A collection of references to subnets.
      */
-    readonly subnets: types.outputs.network.v20230401.SubnetResponse[];
+    readonly subnets: types.outputs.SubnetResponse[];
     /**
      * Resource tags.
      */

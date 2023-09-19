@@ -81,7 +81,7 @@ export interface GetPackageResult {
     /**
      * The system metadata relating to this resource
      */
-    readonly systemData: types.outputs.testbase.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The tags of the resource.
      */
@@ -89,7 +89,7 @@ export interface GetPackageResult {
     /**
      * Specifies the target OSs of specific OS Update types.
      */
-    readonly targetOSList: types.outputs.testbase.TargetOSInfoResponse[];
+    readonly targetOSList: types.outputs.TargetOSInfoResponse[];
     /**
      * OOB, functional or both. Mapped to the data in 'tests' property.
      */
@@ -97,7 +97,7 @@ export interface GetPackageResult {
     /**
      * The detailed test information.
      */
-    readonly tests: types.outputs.testbase.TestResponse[];
+    readonly tests: types.outputs.TestResponse[];
     /**
      * Resource type.
      */
@@ -105,7 +105,7 @@ export interface GetPackageResult {
     /**
      * The validation results. There's validation on package when it's created or updated.
      */
-    readonly validationResults: types.outputs.testbase.PackageValidationResultResponse[];
+    readonly validationResults: types.outputs.PackageValidationResultResponse[];
     /**
      * Application version
      */

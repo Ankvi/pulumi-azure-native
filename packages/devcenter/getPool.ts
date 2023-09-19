@@ -45,7 +45,7 @@ export interface GetPoolResult {
     /**
      * Details on the Pool health status to help diagnose issues. This is only populated when the pool status indicates the pool is in a non-healthy state
      */
-    readonly healthStatusDetails: types.outputs.devcenter.HealthStatusDetailResponse[];
+    readonly healthStatusDetails: types.outputs.HealthStatusDetailResponse[];
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -77,11 +77,11 @@ export interface GetPoolResult {
     /**
      * Stop on disconnect configuration settings for Dev Boxes created in this pool.
      */
-    readonly stopOnDisconnect?: types.outputs.devcenter.StopOnDisconnectConfigurationResponse;
+    readonly stopOnDisconnect?: types.outputs.StopOnDisconnectConfigurationResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.devcenter.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

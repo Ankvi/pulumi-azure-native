@@ -42,11 +42,11 @@ export interface GetPrivateEndpointConnectionResult {
     /**
      * Specifies the private endpoint.
      */
-    readonly privateEndpoint?: types.outputs.powerbi.PrivateEndpointResponse;
+    readonly privateEndpoint?: types.outputs.PrivateEndpointResponse;
     /**
      * Specifies the connection state.
      */
-    readonly privateLinkServiceConnectionState?: types.outputs.powerbi.ConnectionStateResponse;
+    readonly privateLinkServiceConnectionState?: types.outputs.ConnectionStateResponse;
     /**
      * Provisioning state of the Private Endpoint Connection.
      */
@@ -54,7 +54,7 @@ export interface GetPrivateEndpointConnectionResult {
     /**
      * The system meta data relating to this resource.
      */
-    readonly systemData: types.outputs.powerbi.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Specifies the type of the resource.
      */

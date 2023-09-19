@@ -49,7 +49,7 @@ export interface GetGlobalParameterResult {
     /**
      * Properties of the global parameter.
      */
-    readonly properties: {[key: string]: types.outputs.datafactory.GlobalParameterSpecificationResponse};
+    readonly properties: {[key: string]: types.outputs.GlobalParameterSpecificationResponse};
     /**
      * The resource type.
      */

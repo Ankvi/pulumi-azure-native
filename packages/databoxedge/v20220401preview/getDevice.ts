@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the properties of the Data Box Edge/Data Box Gateway device.
  */
@@ -31,7 +31,7 @@ export interface GetDeviceResult {
     /**
      * The details of compute version information
      */
-    readonly computeVersionInformation: types.outputs.databoxedge.v20220401preview.ComputeVersionInformationResponse;
+    readonly computeVersionInformation: types.outputs.ComputeVersionInformationResponse;
     /**
      * Type of compute roles configured.
      */
@@ -47,7 +47,7 @@ export interface GetDeviceResult {
     /**
      * The details of data-residency related properties for this resource
      */
-    readonly dataResidency?: types.outputs.databoxedge.v20220401preview.DataResidencyResponse;
+    readonly dataResidency?: types.outputs.DataResidencyResponse;
     /**
      * The Description of the Data Box Edge/Gateway device.
      */
@@ -75,7 +75,7 @@ export interface GetDeviceResult {
     /**
      * The details of Edge Profile for this resource
      */
-    readonly edgeProfile: types.outputs.databoxedge.v20220401preview.EdgeProfileResponse;
+    readonly edgeProfile: types.outputs.EdgeProfileResponse;
     /**
      * The etag for the devices.
      */
@@ -91,7 +91,7 @@ export interface GetDeviceResult {
     /**
      * Msi identity of the resource
      */
-    readonly identity: types.outputs.databoxedge.v20220401preview.ResourceIdentityResponse;
+    readonly identity: types.outputs.ResourceIdentityResponse;
     /**
      * The kind of the device.
      */
@@ -119,7 +119,7 @@ export interface GetDeviceResult {
     /**
      * The details of the move operation on this resource.
      */
-    readonly resourceMoveDetails: types.outputs.databoxedge.v20220401preview.ResourceMoveDetailsResponse;
+    readonly resourceMoveDetails: types.outputs.ResourceMoveDetailsResponse;
     /**
      * The Serial Number of Data Box Edge/Gateway device.
      */
@@ -127,11 +127,11 @@ export interface GetDeviceResult {
     /**
      * The SKU type.
      */
-    readonly sku?: types.outputs.databoxedge.v20220401preview.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * DataBoxEdge Resource
      */
-    readonly systemData: types.outputs.databoxedge.v20220401preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The list of tags that describe the device. These tags can be used to view and group this device (across resource groups).
      */

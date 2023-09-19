@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 export class SubAccount extends pulumi.CustomResource {
     /**
      * Get an existing SubAccount resource's state with the given name, ID, and optional extra
@@ -28,7 +28,7 @@ export class SubAccount extends pulumi.CustomResource {
         return obj['__pulumiType'] === SubAccount.__pulumiType;
     }
 
-    public readonly identity!: pulumi.Output<types.outputs.logz.v20220101preview.IdentityPropertiesResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityPropertiesResponse | undefined>;
     public readonly location!: pulumi.Output<string>;
     /**
      * Name of the monitor resource.
@@ -37,11 +37,11 @@ export class SubAccount extends pulumi.CustomResource {
     /**
      * Properties specific to the monitor resource.
      */
-    public readonly properties!: pulumi.Output<types.outputs.logz.v20220101preview.MonitorPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.MonitorPropertiesResponse>;
     /**
      * The system metadata relating to this resource
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.logz.v20220101preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The type of the monitor resource.
@@ -95,7 +95,7 @@ export class SubAccount extends pulumi.CustomResource {
  * The set of arguments for constructing a SubAccount resource.
  */
 export interface SubAccountArgs {
-    identity?: pulumi.Input<types.inputs.logz.v20220101preview.IdentityPropertiesArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityPropertiesArgs>;
     location?: pulumi.Input<string>;
     /**
      * Monitor resource name
@@ -104,7 +104,7 @@ export interface SubAccountArgs {
     /**
      * Properties specific to the monitor resource.
      */
-    properties?: pulumi.Input<types.inputs.logz.v20220101preview.MonitorPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.MonitorPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

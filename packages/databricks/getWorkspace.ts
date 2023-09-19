@@ -32,11 +32,11 @@ export interface GetWorkspaceResult {
     /**
      * The workspace provider authorizations.
      */
-    readonly authorizations?: types.outputs.databricks.WorkspaceProviderAuthorizationResponse[];
+    readonly authorizations?: types.outputs.WorkspaceProviderAuthorizationResponse[];
     /**
      * Indicates the Object ID, PUID and Application ID of entity that created the workspace.
      */
-    readonly createdBy?: types.outputs.databricks.CreatedByResponse;
+    readonly createdBy?: types.outputs.CreatedByResponse;
     /**
      * Specifies the date and time when the workspace is created.
      */
@@ -48,7 +48,7 @@ export interface GetWorkspaceResult {
     /**
      * Encryption properties for databricks workspace
      */
-    readonly encryption?: types.outputs.databricks.WorkspacePropertiesResponseEncryption;
+    readonly encryption?: types.outputs.WorkspacePropertiesResponseEncryption;
     /**
      * Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -60,7 +60,7 @@ export interface GetWorkspaceResult {
     /**
      * The details of Managed Identity of Disk Encryption Set used for Managed Disk Encryption
      */
-    readonly managedDiskIdentity?: types.outputs.databricks.ManagedIdentityConfigurationResponse;
+    readonly managedDiskIdentity?: types.outputs.ManagedIdentityConfigurationResponse;
     /**
      * The managed resource group Id.
      */
@@ -72,11 +72,11 @@ export interface GetWorkspaceResult {
     /**
      * The workspace's custom parameters.
      */
-    readonly parameters?: types.outputs.databricks.WorkspaceCustomParametersResponse;
+    readonly parameters?: types.outputs.WorkspaceCustomParametersResponse;
     /**
      * Private endpoint connections created on the workspace
      */
-    readonly privateEndpointConnections: types.outputs.databricks.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections: types.outputs.PrivateEndpointConnectionResponse[];
     /**
      * The workspace provisioning state.
      */
@@ -92,15 +92,15 @@ export interface GetWorkspaceResult {
     /**
      * The SKU of the resource.
      */
-    readonly sku?: types.outputs.databricks.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * The details of Managed Identity of Storage Account
      */
-    readonly storageAccountIdentity?: types.outputs.databricks.ManagedIdentityConfigurationResponse;
+    readonly storageAccountIdentity?: types.outputs.ManagedIdentityConfigurationResponse;
     /**
      * The system metadata relating to this resource
      */
-    readonly systemData: types.outputs.databricks.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -116,7 +116,7 @@ export interface GetWorkspaceResult {
     /**
      * Indicates the Object ID, PUID and Application ID of entity that last updated the workspace.
      */
-    readonly updatedBy?: types.outputs.databricks.CreatedByResponse;
+    readonly updatedBy?: types.outputs.CreatedByResponse;
     /**
      * The unique identifier of the databricks workspace in databricks control plane.
      */

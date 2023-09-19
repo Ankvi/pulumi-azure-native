@@ -39,11 +39,11 @@ export class Share extends pulumi.CustomResource {
     /**
      * Azure container mapping for the share.
      */
-    public readonly azureContainerInfo!: pulumi.Output<types.outputs.databoxedge.AzureContainerInfoResponse | undefined>;
+    public readonly azureContainerInfo!: pulumi.Output<types.outputs.AzureContainerInfoResponse | undefined>;
     /**
      * List of IP addresses and corresponding access rights on the share(required for NFS protocol).
      */
-    public readonly clientAccessRights!: pulumi.Output<types.outputs.databoxedge.ClientAccessRightResponse[] | undefined>;
+    public readonly clientAccessRights!: pulumi.Output<types.outputs.ClientAccessRightResponse[] | undefined>;
     /**
      * Data policy of the share.
      */
@@ -63,11 +63,11 @@ export class Share extends pulumi.CustomResource {
     /**
      * Details of the refresh job on this share.
      */
-    public readonly refreshDetails!: pulumi.Output<types.outputs.databoxedge.RefreshDetailsResponse | undefined>;
+    public readonly refreshDetails!: pulumi.Output<types.outputs.RefreshDetailsResponse | undefined>;
     /**
      * Share mount point to the role.
      */
-    public /*out*/ readonly shareMappings!: pulumi.Output<types.outputs.databoxedge.MountPointMapResponse[]>;
+    public /*out*/ readonly shareMappings!: pulumi.Output<types.outputs.MountPointMapResponse[]>;
     /**
      * Current status of the share.
      */
@@ -75,7 +75,7 @@ export class Share extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of Share
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.databoxedge.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The hierarchical type of the object.
      */
@@ -83,7 +83,7 @@ export class Share extends pulumi.CustomResource {
     /**
      * Mapping of users and corresponding access rights on the share (required for SMB protocol).
      */
-    public readonly userAccessRights!: pulumi.Output<types.outputs.databoxedge.UserAccessRightResponse[] | undefined>;
+    public readonly userAccessRights!: pulumi.Output<types.outputs.UserAccessRightResponse[] | undefined>;
 
     /**
      * Create a Share resource with the given unique name, arguments, and options.
@@ -159,11 +159,11 @@ export interface ShareArgs {
     /**
      * Azure container mapping for the share.
      */
-    azureContainerInfo?: pulumi.Input<types.inputs.databoxedge.AzureContainerInfoArgs>;
+    azureContainerInfo?: pulumi.Input<types.inputs.AzureContainerInfoArgs>;
     /**
      * List of IP addresses and corresponding access rights on the share(required for NFS protocol).
      */
-    clientAccessRights?: pulumi.Input<pulumi.Input<types.inputs.databoxedge.ClientAccessRightArgs>[]>;
+    clientAccessRights?: pulumi.Input<pulumi.Input<types.inputs.ClientAccessRightArgs>[]>;
     /**
      * Data policy of the share.
      */
@@ -187,7 +187,7 @@ export interface ShareArgs {
     /**
      * Details of the refresh job on this share.
      */
-    refreshDetails?: pulumi.Input<types.inputs.databoxedge.RefreshDetailsArgs>;
+    refreshDetails?: pulumi.Input<types.inputs.RefreshDetailsArgs>;
     /**
      * The resource group name.
      */
@@ -199,5 +199,5 @@ export interface ShareArgs {
     /**
      * Mapping of users and corresponding access rights on the share (required for SMB protocol).
      */
-    userAccessRights?: pulumi.Input<pulumi.Input<types.inputs.databoxedge.UserAccessRightArgs>[]>;
+    userAccessRights?: pulumi.Input<pulumi.Input<types.inputs.UserAccessRightArgs>[]>;
 }

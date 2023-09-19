@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get information about a configuration profile assignment
  */
@@ -48,11 +48,11 @@ export interface GetConfigurationProfileHCIAssignmentResult {
     /**
      * Properties of the configuration profile assignment.
      */
-    readonly properties: types.outputs.automanage.v20220504.ConfigurationProfileAssignmentPropertiesResponse;
+    readonly properties: types.outputs.ConfigurationProfileAssignmentPropertiesResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.automanage.v20220504.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

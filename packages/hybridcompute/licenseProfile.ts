@@ -51,7 +51,7 @@ export class LicenseProfile extends pulumi.CustomResource {
     /**
      * The list of ESU keys.
      */
-    public /*out*/ readonly esuKeys!: pulumi.Output<types.outputs.hybridcompute.EsuKeyResponse[]>;
+    public /*out*/ readonly esuKeys!: pulumi.Output<types.outputs.EsuKeyResponse[]>;
     /**
      * The geo-location where the resource lives
      */
@@ -71,7 +71,7 @@ export class LicenseProfile extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.hybridcompute.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */

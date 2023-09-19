@@ -47,11 +47,11 @@ export class AzureBareMetalStorageInstance extends pulumi.CustomResource {
     /**
      * Specifies the storage properties for the AzureBareMetalStorage instance.
      */
-    public readonly storageProperties!: pulumi.Output<types.outputs.baremetalinfrastructure.StoragePropertiesResponse | undefined>;
+    public readonly storageProperties!: pulumi.Output<types.outputs.StoragePropertiesResponse | undefined>;
     /**
      * The system metadata relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.baremetalinfrastructure.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -123,7 +123,7 @@ export interface AzureBareMetalStorageInstanceArgs {
     /**
      * Specifies the storage properties for the AzureBareMetalStorage instance.
      */
-    storageProperties?: pulumi.Input<types.inputs.baremetalinfrastructure.StoragePropertiesArgs>;
+    storageProperties?: pulumi.Input<types.inputs.StoragePropertiesArgs>;
     /**
      * Resource tags.
      */

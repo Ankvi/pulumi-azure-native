@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Capture logs and metrics of Azure resources based on ARM tags.
  */
@@ -44,11 +44,11 @@ export interface GetTagRuleResult {
     /**
      * Properties of the monitoring tag rules.
      */
-    readonly properties: types.outputs.elastic.v20230615preview.MonitoringTagRulesPropertiesResponse;
+    readonly properties: types.outputs.MonitoringTagRulesPropertiesResponse;
     /**
      * The system metadata relating to this resource
      */
-    readonly systemData: types.outputs.elastic.v20230615preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the rule set.
      */

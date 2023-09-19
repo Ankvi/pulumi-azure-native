@@ -32,7 +32,7 @@ export interface ListBotSecretsResult {
     /**
      * Array of Azure Health Bot Secrets.
      */
-    readonly secrets?: types.outputs.healthbot.HealthBotKeyResponse[];
+    readonly secrets?: types.outputs.HealthBotKeyResponse[];
 }
 /**
  * List all secrets of a HealthBot.

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a private endpoint connection
  */
@@ -44,11 +44,11 @@ export interface GetPrivateEndpointConnectionResult {
     /**
      * The private endpoint information.
      */
-    readonly privateEndpoint?: types.outputs.purview.v20210701.PrivateEndpointResponse;
+    readonly privateEndpoint?: types.outputs.PrivateEndpointResponse;
     /**
      * The private link service connection state.
      */
-    readonly privateLinkServiceConnectionState?: types.outputs.purview.v20210701.PrivateLinkServiceConnectionStateResponse;
+    readonly privateLinkServiceConnectionState?: types.outputs.PrivateLinkServiceConnectionStateResponse;
     /**
      * The provisioning state.
      */

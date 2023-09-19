@@ -39,11 +39,11 @@ export class Appliance extends pulumi.CustomResource {
     /**
      * Identity for the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.resourceconnector.IdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityResponse | undefined>;
     /**
      * Contains infrastructure information about the Appliance
      */
-    public readonly infrastructureConfig!: pulumi.Output<types.outputs.resourceconnector.AppliancePropertiesResponseInfrastructureConfig | undefined>;
+    public readonly infrastructureConfig!: pulumi.Output<types.outputs.AppliancePropertiesResponseInfrastructureConfig | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -67,7 +67,7 @@ export class Appliance extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.resourceconnector.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -141,11 +141,11 @@ export interface ApplianceArgs {
     /**
      * Identity for the resource.
      */
-    identity?: pulumi.Input<types.inputs.resourceconnector.IdentityArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityArgs>;
     /**
      * Contains infrastructure information about the Appliance
      */
-    infrastructureConfig?: pulumi.Input<types.inputs.resourceconnector.AppliancePropertiesInfrastructureConfigArgs>;
+    infrastructureConfig?: pulumi.Input<types.inputs.AppliancePropertiesInfrastructureConfigArgs>;
     /**
      * The geo-location where the resource lives
      */

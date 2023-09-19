@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the details of a replication policy.
  */
@@ -48,7 +48,7 @@ export interface GetReplicationPolicyResult {
     /**
      * The custom data.
      */
-    readonly properties: types.outputs.recoveryservices.v20230601.PolicyPropertiesResponse;
+    readonly properties: types.outputs.PolicyPropertiesResponse;
     /**
      * Resource Type
      */

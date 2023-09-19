@@ -58,7 +58,7 @@ export interface GetQueueAuthorizationRuleResult {
     /**
      * The system meta data relating to this resource.
      */
-    readonly systemData: types.outputs.servicebus.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
      */

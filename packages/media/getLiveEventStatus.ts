@@ -37,7 +37,7 @@ export interface GetLiveEventStatusResult {
     /**
      * The result of the get live event status.
      */
-    readonly value?: types.outputs.media.LiveEventStatusResponse[];
+    readonly value?: types.outputs.LiveEventStatusResponse[];
 }
 /**
  * Gets status telemetry of a live event.

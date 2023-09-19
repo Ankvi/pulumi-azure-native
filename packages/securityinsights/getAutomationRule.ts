@@ -34,11 +34,11 @@ export interface GetAutomationRuleResult {
     /**
      * The actions to execute when the automation rule is triggered.
      */
-    readonly actions: (types.outputs.securityinsights.AutomationRuleModifyPropertiesActionResponse | types.outputs.securityinsights.AutomationRuleRunPlaybookActionResponse)[];
+    readonly actions: (types.outputs.AutomationRuleModifyPropertiesActionResponse | types.outputs.AutomationRuleRunPlaybookActionResponse)[];
     /**
      * Information on the client (user or application) that made some action
      */
-    readonly createdBy: types.outputs.securityinsights.ClientInfoResponse;
+    readonly createdBy: types.outputs.ClientInfoResponse;
     /**
      * The time the automation rule was created.
      */
@@ -58,7 +58,7 @@ export interface GetAutomationRuleResult {
     /**
      * Information on the client (user or application) that made some action
      */
-    readonly lastModifiedBy: types.outputs.securityinsights.ClientInfoResponse;
+    readonly lastModifiedBy: types.outputs.ClientInfoResponse;
     /**
      * The last time the automation rule was updated.
      */
@@ -74,11 +74,11 @@ export interface GetAutomationRuleResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.securityinsights.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Describes automation rule triggering logic.
      */
-    readonly triggeringLogic: types.outputs.securityinsights.AutomationRuleTriggeringLogicResponse;
+    readonly triggeringLogic: types.outputs.AutomationRuleTriggeringLogicResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

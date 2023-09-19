@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a managed private endpoint.
  */
@@ -53,7 +53,7 @@ export interface GetManagedPrivateEndpointResult {
     /**
      * Managed private endpoint properties.
      */
-    readonly properties: types.outputs.datafactory.v20180601.ManagedPrivateEndpointResponse;
+    readonly properties: types.outputs.ManagedPrivateEndpointResponse;
     /**
      * The resource type.
      */

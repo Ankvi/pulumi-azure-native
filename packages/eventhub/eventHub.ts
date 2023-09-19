@@ -35,7 +35,7 @@ export class EventHub extends pulumi.CustomResource {
     /**
      * Properties of capture description
      */
-    public readonly captureDescription!: pulumi.Output<types.outputs.eventhub.CaptureDescriptionResponse | undefined>;
+    public readonly captureDescription!: pulumi.Output<types.outputs.CaptureDescriptionResponse | undefined>;
     /**
      * Exact time the Event Hub was created.
      */
@@ -63,7 +63,7 @@ export class EventHub extends pulumi.CustomResource {
     /**
      * Event Hub retention settings
      */
-    public readonly retentionDescription!: pulumi.Output<types.outputs.eventhub.RetentionDescriptionResponse | undefined>;
+    public readonly retentionDescription!: pulumi.Output<types.outputs.RetentionDescriptionResponse | undefined>;
     /**
      * Enumerates the possible values for the status of the Event Hub.
      */
@@ -71,7 +71,7 @@ export class EventHub extends pulumi.CustomResource {
     /**
      * The system meta data relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.eventhub.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
      */
@@ -141,7 +141,7 @@ export interface EventHubArgs {
     /**
      * Properties of capture description
      */
-    captureDescription?: pulumi.Input<types.inputs.eventhub.CaptureDescriptionArgs>;
+    captureDescription?: pulumi.Input<types.inputs.CaptureDescriptionArgs>;
     /**
      * The Event Hub name
      */
@@ -165,7 +165,7 @@ export interface EventHubArgs {
     /**
      * Event Hub retention settings
      */
-    retentionDescription?: pulumi.Input<types.inputs.eventhub.RetentionDescriptionArgs>;
+    retentionDescription?: pulumi.Input<types.inputs.RetentionDescriptionArgs>;
     /**
      * Enumerates the possible values for the status of the Event Hub.
      */

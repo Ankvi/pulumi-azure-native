@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Security Standard on a resource
  */
@@ -38,7 +38,7 @@ export class Standard extends pulumi.CustomResource {
     /**
      * List of component objects containing component unique keys (such as assessment keys) to apply to standard scope.  Currently only supports assessment keys.
      */
-    public readonly components!: pulumi.Output<types.outputs.security.v20210801preview.StandardComponentPropertiesResponse[] | undefined>;
+    public readonly components!: pulumi.Output<types.outputs.StandardComponentPropertiesResponse[] | undefined>;
     /**
      * description of the standard
      */
@@ -74,7 +74,7 @@ export class Standard extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.security.v20210801preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * A list of key value pairs that describe the resource.
      */
@@ -146,7 +146,7 @@ export interface StandardArgs {
     /**
      * List of component objects containing component unique keys (such as assessment keys) to apply to standard scope.  Currently only supports assessment keys.
      */
-    components?: pulumi.Input<pulumi.Input<types.inputs.security.v20210801preview.StandardComponentPropertiesArgs>[]>;
+    components?: pulumi.Input<pulumi.Input<types.inputs.StandardComponentPropertiesArgs>[]>;
     /**
      * description of the standard
      */
@@ -174,7 +174,7 @@ export interface StandardArgs {
     /**
      * List of all standard supported clouds.
      */
-    supportedClouds?: pulumi.Input<pulumi.Input<types.enums.v20210801preview.StandardSupportedClouds>[]>;
+    supportedClouds?: pulumi.Input<pulumi.Input<types.enums.StandardSupportedClouds>[]>;
     /**
      * A list of key value pairs that describe the resource.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Network security rule.
  */
@@ -50,7 +50,7 @@ export class SecurityRule extends pulumi.CustomResource {
     /**
      * The application security group specified as destination.
      */
-    public readonly destinationApplicationSecurityGroups!: pulumi.Output<types.outputs.network.v20230401.ApplicationSecurityGroupResponse[] | undefined>;
+    public readonly destinationApplicationSecurityGroups!: pulumi.Output<types.outputs.ApplicationSecurityGroupResponse[] | undefined>;
     /**
      * The destination port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
      */
@@ -94,7 +94,7 @@ export class SecurityRule extends pulumi.CustomResource {
     /**
      * The application security group specified as source.
      */
-    public readonly sourceApplicationSecurityGroups!: pulumi.Output<types.outputs.network.v20230401.ApplicationSecurityGroupResponse[] | undefined>;
+    public readonly sourceApplicationSecurityGroups!: pulumi.Output<types.outputs.ApplicationSecurityGroupResponse[] | undefined>;
     /**
      * The source port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
      */
@@ -195,7 +195,7 @@ export interface SecurityRuleArgs {
     /**
      * The network traffic is allowed or denied.
      */
-    access: pulumi.Input<string | types.enums.v20230401.SecurityRuleAccess>;
+    access: pulumi.Input<string | types.enums.SecurityRuleAccess>;
     /**
      * A description for this rule. Restricted to 140 chars.
      */
@@ -211,7 +211,7 @@ export interface SecurityRuleArgs {
     /**
      * The application security group specified as destination.
      */
-    destinationApplicationSecurityGroups?: pulumi.Input<pulumi.Input<types.inputs.network.v20230401.ApplicationSecurityGroupArgs>[]>;
+    destinationApplicationSecurityGroups?: pulumi.Input<pulumi.Input<types.inputs.ApplicationSecurityGroupArgs>[]>;
     /**
      * The destination port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
      */
@@ -223,7 +223,7 @@ export interface SecurityRuleArgs {
     /**
      * The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic.
      */
-    direction: pulumi.Input<string | types.enums.v20230401.SecurityRuleDirection>;
+    direction: pulumi.Input<string | types.enums.SecurityRuleDirection>;
     /**
      * Resource ID.
      */
@@ -243,7 +243,7 @@ export interface SecurityRuleArgs {
     /**
      * Network protocol this rule applies to.
      */
-    protocol: pulumi.Input<string | types.enums.v20230401.SecurityRuleProtocol>;
+    protocol: pulumi.Input<string | types.enums.SecurityRuleProtocol>;
     /**
      * The name of the resource group.
      */
@@ -263,7 +263,7 @@ export interface SecurityRuleArgs {
     /**
      * The application security group specified as source.
      */
-    sourceApplicationSecurityGroups?: pulumi.Input<pulumi.Input<types.inputs.network.v20230401.ApplicationSecurityGroupArgs>[]>;
+    sourceApplicationSecurityGroups?: pulumi.Input<pulumi.Input<types.inputs.ApplicationSecurityGroupArgs>[]>;
     /**
      * The source port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
      */

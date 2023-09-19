@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An device group resource belonging to a product resource.
  */
@@ -62,7 +62,7 @@ export class DeviceGroup extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.azuresphere.v20220901preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -132,7 +132,7 @@ export interface DeviceGroupArgs {
     /**
      * Flag to define if the user allows for crash dump collection.
      */
-    allowCrashDumpsCollection?: pulumi.Input<string | types.enums.v20220901preview.AllowCrashDumpCollection>;
+    allowCrashDumpsCollection?: pulumi.Input<string | types.enums.AllowCrashDumpCollection>;
     /**
      * Name of catalog
      */
@@ -148,7 +148,7 @@ export interface DeviceGroupArgs {
     /**
      * Operating system feed type of the device group.
      */
-    osFeedType?: pulumi.Input<string | types.enums.v20220901preview.OSFeedType>;
+    osFeedType?: pulumi.Input<string | types.enums.OSFeedType>;
     /**
      * Name of product.
      */
@@ -156,7 +156,7 @@ export interface DeviceGroupArgs {
     /**
      * Regional data boundary for the device group.
      */
-    regionalDataBoundary?: pulumi.Input<string | types.enums.v20220901preview.RegionalDataBoundary>;
+    regionalDataBoundary?: pulumi.Input<string | types.enums.RegionalDataBoundary>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -164,5 +164,5 @@ export interface DeviceGroupArgs {
     /**
      * Update policy of the device group.
      */
-    updatePolicy?: pulumi.Input<string | types.enums.v20220901preview.UpdatePolicy>;
+    updatePolicy?: pulumi.Input<string | types.enums.UpdatePolicy>;
 }

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A FluidRelay Server.
  */
@@ -34,11 +34,11 @@ export class FluidRelayServer extends pulumi.CustomResource {
     /**
      * All encryption configuration for a resource.
      */
-    public readonly encryption!: pulumi.Output<types.outputs.fluidrelay.v20220601.EncryptionPropertiesResponse | undefined>;
+    public readonly encryption!: pulumi.Output<types.outputs.EncryptionPropertiesResponse | undefined>;
     /**
      * The Fluid Relay Service endpoints for this server.
      */
-    public /*out*/ readonly fluidRelayEndpoints!: pulumi.Output<types.outputs.fluidrelay.v20220601.FluidRelayEndpointsResponse>;
+    public /*out*/ readonly fluidRelayEndpoints!: pulumi.Output<types.outputs.FluidRelayEndpointsResponse>;
     /**
      * The Fluid tenantId for this server
      */
@@ -46,7 +46,7 @@ export class FluidRelayServer extends pulumi.CustomResource {
     /**
      * The type of identity used for the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.fluidrelay.v20220601.IdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -66,7 +66,7 @@ export class FluidRelayServer extends pulumi.CustomResource {
     /**
      * System meta data for this resource, including creation and modification information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.fluidrelay.v20220601.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -130,7 +130,7 @@ export interface FluidRelayServerArgs {
     /**
      * All encryption configuration for a resource.
      */
-    encryption?: pulumi.Input<types.inputs.fluidrelay.v20220601.EncryptionPropertiesArgs>;
+    encryption?: pulumi.Input<types.inputs.EncryptionPropertiesArgs>;
     /**
      * The Fluid Relay server resource name.
      */
@@ -138,7 +138,7 @@ export interface FluidRelayServerArgs {
     /**
      * The type of identity used for the resource.
      */
-    identity?: pulumi.Input<types.inputs.fluidrelay.v20220601.IdentityArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -146,7 +146,7 @@ export interface FluidRelayServerArgs {
     /**
      * Provision states for FluidRelay RP
      */
-    provisioningState?: pulumi.Input<string | types.enums.v20220601.ProvisioningState>;
+    provisioningState?: pulumi.Input<string | types.enums.ProvisioningState>;
     /**
      * The resource group containing the resource.
      */
@@ -154,7 +154,7 @@ export interface FluidRelayServerArgs {
     /**
      * Sku of the storage associated with the resource
      */
-    storagesku?: pulumi.Input<string | types.enums.v20220601.StorageSKU>;
+    storagesku?: pulumi.Input<string | types.enums.StorageSKU>;
     /**
      * Resource tags.
      */

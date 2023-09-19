@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets additional information for the specified Azure Stack Edge/Data Box Gateway device.
  */
@@ -63,7 +63,7 @@ export interface GetDeviceExtendedInformationResult {
     /**
      * Device secrets, will be returned only with ODataFilter $expand=deviceSecrets
      */
-    readonly deviceSecrets: {[key: string]: types.outputs.databoxedge.v20230101preview.SecretResponse};
+    readonly deviceSecrets: {[key: string]: types.outputs.SecretResponse};
     /**
      * The public part of the encryption certificate. Client uses this to encrypt any secret.
      */
@@ -99,7 +99,7 @@ export interface GetDeviceExtendedInformationResult {
     /**
      * Metadata pertaining to creation and last modification of DataBoxEdgeDevice
      */
-    readonly systemData: types.outputs.databoxedge.v20230101preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The hierarchical type of the object.
      */

@@ -45,11 +45,11 @@ export interface GetPrivateEndpointConnectionResult {
     /**
      * The private endpoint which the connection belongs to.
      */
-    readonly privateEndpoint?: types.outputs.synapse.PrivateEndpointResponse;
+    readonly privateEndpoint?: types.outputs.PrivateEndpointResponse;
     /**
      * Connection state of the private endpoint connection.
      */
-    readonly privateLinkServiceConnectionState?: types.outputs.synapse.PrivateLinkServiceConnectionStateResponse;
+    readonly privateLinkServiceConnectionState?: types.outputs.PrivateLinkServiceConnectionStateResponse;
     /**
      * Provisioning state of the private endpoint connection.
      */

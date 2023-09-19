@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The operation to get the extension.
  */
@@ -48,7 +48,7 @@ export interface GetMachineExtensionResult {
     /**
      * The machine extension instance view.
      */
-    readonly instanceView?: types.outputs.azurestackhci.v20221215preview.MachineExtensionPropertiesResponseInstanceView;
+    readonly instanceView?: types.outputs.MachineExtensionPropertiesResponseInstanceView;
     /**
      * The location.
      */
@@ -76,7 +76,7 @@ export interface GetMachineExtensionResult {
     /**
      * The system data.
      */
-    readonly systemData: types.outputs.azurestackhci.v20221215preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The Resource tags.
      */

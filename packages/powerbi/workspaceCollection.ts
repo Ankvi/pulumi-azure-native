@@ -43,7 +43,7 @@ export class WorkspaceCollection extends pulumi.CustomResource {
      * Properties
      */
     public /*out*/ readonly properties!: pulumi.Output<any>;
-    public readonly sku!: pulumi.Output<types.outputs.powerbi.AzureSkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.AzureSkuResponse | undefined>;
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Resource type
@@ -99,7 +99,7 @@ export interface WorkspaceCollectionArgs {
      * Azure resource group
      */
     resourceGroupName: pulumi.Input<string>;
-    sku?: pulumi.Input<types.inputs.powerbi.AzureSkuArgs>;
+    sku?: pulumi.Input<types.inputs.AzureSkuArgs>;
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Power BI Embedded Workspace Collection name

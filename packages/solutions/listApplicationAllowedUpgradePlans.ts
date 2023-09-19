@@ -32,7 +32,7 @@ export interface ListApplicationAllowedUpgradePlansResult {
     /**
      * The array of plans.
      */
-    readonly value?: types.outputs.solutions.PlanResponse[];
+    readonly value?: types.outputs.PlanResponse[];
 }
 /**
  * List allowed upgrade plans for application.

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Describes a hybrid machine.
  */
@@ -58,12 +58,12 @@ export class Machine extends pulumi.CustomResource {
     /**
      * Details about the error state.
      */
-    public /*out*/ readonly errorDetails!: pulumi.Output<types.outputs.hybridcompute.v20200815preview.ErrorDetailResponse[]>;
+    public /*out*/ readonly errorDetails!: pulumi.Output<types.outputs.ErrorDetailResponse[]>;
     /**
      * Machine Extensions information
      */
-    public readonly extensions!: pulumi.Output<types.outputs.hybridcompute.v20200815preview.MachineExtensionInstanceViewResponse[] | undefined>;
-    public readonly identity!: pulumi.Output<types.outputs.hybridcompute.v20200815preview.MachineResponseIdentity | undefined>;
+    public readonly extensions!: pulumi.Output<types.outputs.MachineExtensionInstanceViewResponse[] | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.MachineResponseIdentity | undefined>;
     /**
      * The time of the last status change.
      */
@@ -75,7 +75,7 @@ export class Machine extends pulumi.CustomResource {
     /**
      * Metadata pertaining to the geographic location of the resource.
      */
-    public readonly locationData!: pulumi.Output<types.outputs.hybridcompute.v20200815preview.LocationDataResponse | undefined>;
+    public readonly locationData!: pulumi.Output<types.outputs.LocationDataResponse | undefined>;
     /**
      * Specifies the hybrid machine FQDN.
      */
@@ -91,7 +91,7 @@ export class Machine extends pulumi.CustomResource {
     /**
      * Specifies the operating system settings for the hybrid machine.
      */
-    public /*out*/ readonly osProfile!: pulumi.Output<types.outputs.hybridcompute.v20200815preview.MachinePropertiesResponseOsProfile | undefined>;
+    public /*out*/ readonly osProfile!: pulumi.Output<types.outputs.MachinePropertiesResponseOsProfile | undefined>;
     /**
      * Specifies the Operating System product SKU.
      */
@@ -214,8 +214,8 @@ export interface MachineArgs {
     /**
      * Machine Extensions information
      */
-    extensions?: pulumi.Input<pulumi.Input<types.inputs.hybridcompute.v20200815preview.MachineExtensionInstanceViewArgs>[]>;
-    identity?: pulumi.Input<types.inputs.hybridcompute.v20200815preview.MachineIdentityArgs>;
+    extensions?: pulumi.Input<pulumi.Input<types.inputs.MachineExtensionInstanceViewArgs>[]>;
+    identity?: pulumi.Input<types.inputs.MachineIdentityArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -223,7 +223,7 @@ export interface MachineArgs {
     /**
      * Metadata pertaining to the geographic location of the resource.
      */
-    locationData?: pulumi.Input<types.inputs.hybridcompute.v20200815preview.LocationDataArgs>;
+    locationData?: pulumi.Input<types.inputs.LocationDataArgs>;
     /**
      * The name of the hybrid machine.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Private endpoint connection resource.
  */
@@ -38,11 +38,11 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * Properties of the private endpoint object.
      */
-    public readonly privateEndpoint!: pulumi.Output<types.outputs.aadiam.v20200301.PrivateEndpointResponse | undefined>;
+    public readonly privateEndpoint!: pulumi.Output<types.outputs.PrivateEndpointResponse | undefined>;
     /**
      * Approval state of the private link connection.
      */
-    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.aadiam.v20200301.PrivateLinkServiceConnectionStateResponse | undefined>;
+    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.PrivateLinkServiceConnectionStateResponse | undefined>;
     /**
      * Provisioning state of the private endpoint connection.
      */
@@ -103,7 +103,7 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * Properties of the private endpoint object.
      */
-    privateEndpoint?: pulumi.Input<types.inputs.aadiam.v20200301.PrivateEndpointArgs>;
+    privateEndpoint?: pulumi.Input<types.inputs.PrivateEndpointArgs>;
     /**
      * The PrivateEndpointConnection name.
      */
@@ -111,11 +111,11 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * Updated tag information to set into the PrivateLinkConnection instance.
      */
-    privateLinkConnectionTags?: pulumi.Input<types.inputs.aadiam.v20200301.TagsResourceArgs>;
+    privateLinkConnectionTags?: pulumi.Input<types.inputs.TagsResourceArgs>;
     /**
      * Approval state of the private link connection.
      */
-    privateLinkServiceConnectionState?: pulumi.Input<types.inputs.aadiam.v20200301.PrivateLinkServiceConnectionStateArgs>;
+    privateLinkServiceConnectionState?: pulumi.Input<types.inputs.PrivateLinkServiceConnectionStateArgs>;
     /**
      * Name of an Azure resource group.
      */

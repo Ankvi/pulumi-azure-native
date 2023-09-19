@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Maintenance configuration record type
  */
@@ -46,7 +46,7 @@ export class MaintenanceConfiguration extends pulumi.CustomResource {
     /**
      * The input parameters to be passed to the patch run operation.
      */
-    public readonly installPatches!: pulumi.Output<types.outputs.maintenance.v20221101preview.InputPatchConfigurationResponse | undefined>;
+    public readonly installPatches!: pulumi.Output<types.outputs.InputPatchConfigurationResponse | undefined>;
     /**
      * Gets or sets location of the resource
      */
@@ -66,7 +66,7 @@ export class MaintenanceConfiguration extends pulumi.CustomResource {
     /**
      * Override Properties for the maintenance Configuration.
      */
-    public readonly overrides!: pulumi.Output<types.outputs.maintenance.v20221101preview.MaintenanceOverridePropertiesResponse[] | undefined>;
+    public readonly overrides!: pulumi.Output<types.outputs.MaintenanceOverridePropertiesResponse[] | undefined>;
     /**
      * Rate at which a Maintenance window is expected to recur. The rate can be expressed as daily, weekly, or monthly schedules. Daily schedule are formatted as recurEvery: [Frequency as integer]['Day(s)']. If no frequency is provided, the default frequency is 1. Daily schedule examples are recurEvery: Day, recurEvery: 3Days.  Weekly schedule are formatted as recurEvery: [Frequency as integer]['Week(s)'] [Optional comma separated list of weekdays Monday-Sunday]. Weekly schedule examples are recurEvery: 3Weeks, recurEvery: Week Saturday,Sunday. Monthly schedules are formatted as [Frequency as integer]['Month(s)'] [Comma separated list of month days] or [Frequency as integer]['Month(s)'] [Week of Month (First, Second, Third, Fourth, Last)] [Weekday Monday-Sunday] [Optional Offset(No. of days)]. Offset value must be between -6 to 6 inclusive. Monthly schedule examples are recurEvery: Month, recurEvery: 2Months, recurEvery: Month day23,day24, recurEvery: Month Last Sunday, recurEvery: Month Fourth Monday, recurEvery: Month Last Sunday Offset-3, recurEvery: Month Third Sunday Offset6.
      */
@@ -78,7 +78,7 @@ export class MaintenanceConfiguration extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.maintenance.v20221101preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Gets or sets tags of the resource
      */
@@ -113,7 +113,7 @@ export class MaintenanceConfiguration extends pulumi.CustomResource {
             resourceInputs["duration"] = args ? args.duration : undefined;
             resourceInputs["expirationDateTime"] = args ? args.expirationDateTime : undefined;
             resourceInputs["extensionProperties"] = args ? args.extensionProperties : undefined;
-            resourceInputs["installPatches"] = args ? (args.installPatches ? pulumi.output(args.installPatches).apply(types.inputs.maintenance.v20221101preview.inputPatchConfigurationArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["installPatches"] = args ? (args.installPatches ? pulumi.output(args.installPatches).apply(types.inputs.inputPatchConfigurationArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["maintenanceScope"] = args ? args.maintenanceScope : undefined;
             resourceInputs["namespace"] = args ? args.namespace : undefined;
@@ -172,7 +172,7 @@ export interface MaintenanceConfigurationArgs {
     /**
      * The input parameters to be passed to the patch run operation.
      */
-    installPatches?: pulumi.Input<types.inputs.maintenance.v20221101preview.InputPatchConfigurationArgs>;
+    installPatches?: pulumi.Input<types.inputs.InputPatchConfigurationArgs>;
     /**
      * Gets or sets location of the resource
      */
@@ -180,7 +180,7 @@ export interface MaintenanceConfigurationArgs {
     /**
      * Gets or sets maintenanceScope of the configuration
      */
-    maintenanceScope?: pulumi.Input<string | types.enums.v20221101preview.MaintenanceScope>;
+    maintenanceScope?: pulumi.Input<string | types.enums.MaintenanceScope>;
     /**
      * Gets or sets namespace of the resource
      */
@@ -188,7 +188,7 @@ export interface MaintenanceConfigurationArgs {
     /**
      * Override Properties for the maintenance Configuration.
      */
-    overrides?: pulumi.Input<pulumi.Input<types.inputs.maintenance.v20221101preview.MaintenanceOverridePropertiesArgs>[]>;
+    overrides?: pulumi.Input<pulumi.Input<types.inputs.MaintenanceOverridePropertiesArgs>[]>;
     /**
      * Rate at which a Maintenance window is expected to recur. The rate can be expressed as daily, weekly, or monthly schedules. Daily schedule are formatted as recurEvery: [Frequency as integer]['Day(s)']. If no frequency is provided, the default frequency is 1. Daily schedule examples are recurEvery: Day, recurEvery: 3Days.  Weekly schedule are formatted as recurEvery: [Frequency as integer]['Week(s)'] [Optional comma separated list of weekdays Monday-Sunday]. Weekly schedule examples are recurEvery: 3Weeks, recurEvery: Week Saturday,Sunday. Monthly schedules are formatted as [Frequency as integer]['Month(s)'] [Comma separated list of month days] or [Frequency as integer]['Month(s)'] [Week of Month (First, Second, Third, Fourth, Last)] [Weekday Monday-Sunday] [Optional Offset(No. of days)]. Offset value must be between -6 to 6 inclusive. Monthly schedule examples are recurEvery: Month, recurEvery: 2Months, recurEvery: Month day23,day24, recurEvery: Month Last Sunday, recurEvery: Month Fourth Monday, recurEvery: Month Last Sunday Offset-3, recurEvery: Month Third Sunday Offset6.
      */
@@ -216,5 +216,5 @@ export interface MaintenanceConfigurationArgs {
     /**
      * Gets or sets the visibility of the configuration. The default value is 'Custom'
      */
-    visibility?: pulumi.Input<string | types.enums.v20221101preview.Visibility>;
+    visibility?: pulumi.Input<string | types.enums.Visibility>;
 }

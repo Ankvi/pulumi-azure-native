@@ -37,7 +37,7 @@ export interface ListClusterZonesResult {
     /**
      * Zone and associated hosts info
      */
-    readonly zones?: types.outputs.avs.ClusterZoneResponse[];
+    readonly zones?: types.outputs.ClusterZoneResponse[];
 }
 /**
  * List of all zones and associated hosts for a cluster

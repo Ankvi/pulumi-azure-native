@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get properties of a domain.
  */
@@ -39,11 +39,11 @@ export interface GetDomainResult {
     /**
      * Identity information for the resource.
      */
-    readonly identity?: types.outputs.eventgrid.v20200401preview.IdentityInfoResponse;
+    readonly identity?: types.outputs.IdentityInfoResponse;
     /**
      * This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled.
      */
-    readonly inboundIpRules?: types.outputs.eventgrid.v20200401preview.InboundIpRuleResponse[];
+    readonly inboundIpRules?: types.outputs.InboundIpRuleResponse[];
     /**
      * This determines the format that Event Grid should expect for incoming events published to the domain.
      */
@@ -51,7 +51,7 @@ export interface GetDomainResult {
     /**
      * Information about the InputSchemaMapping which specified the info about mapping event payload.
      */
-    readonly inputSchemaMapping?: types.outputs.eventgrid.v20200401preview.JsonInputSchemaMappingResponse;
+    readonly inputSchemaMapping?: types.outputs.JsonInputSchemaMappingResponse;
     /**
      * Location of the resource.
      */
@@ -67,7 +67,7 @@ export interface GetDomainResult {
     /**
      * List of private endpoint connections.
      */
-    readonly privateEndpointConnections?: types.outputs.eventgrid.v20200401preview.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections?: types.outputs.PrivateEndpointConnectionResponse[];
     /**
      * Provisioning state of the domain.
      */
@@ -80,7 +80,7 @@ export interface GetDomainResult {
     /**
      * The Sku pricing tier for the domain.
      */
-    readonly sku?: types.outputs.eventgrid.v20200401preview.ResourceSkuResponse;
+    readonly sku?: types.outputs.ResourceSkuResponse;
     /**
      * Tags of the resource.
      */

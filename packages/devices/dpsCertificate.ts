@@ -43,11 +43,11 @@ export class DpsCertificate extends pulumi.CustomResource {
     /**
      * properties of a certificate
      */
-    public readonly properties!: pulumi.Output<types.outputs.devices.CertificatePropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.CertificatePropertiesResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.devices.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The resource type.
      */
@@ -103,7 +103,7 @@ export interface DpsCertificateArgs {
     /**
      * properties of a certificate
      */
-    properties?: pulumi.Input<types.inputs.devices.CertificatePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.CertificatePropertiesArgs>;
     /**
      * The name of the provisioning service.
      */

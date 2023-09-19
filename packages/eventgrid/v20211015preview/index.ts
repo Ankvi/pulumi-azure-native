@@ -33,7 +33,7 @@ utilities.lazyLoad(exports, ["PartnerRegistration"], () => require("./partnerReg
 
 
 // Export enums:
-export * from "../types/enums/v20211015preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

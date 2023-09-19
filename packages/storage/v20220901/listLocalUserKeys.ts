@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * List SSH authorized keys and shared key of the local user.
  */
@@ -40,7 +40,7 @@ export interface ListLocalUserKeysResult {
     /**
      * Optional, local user ssh authorized keys for SFTP.
      */
-    readonly sshAuthorizedKeys?: types.outputs.storage.v20220901.SshPublicKeyResponse[];
+    readonly sshAuthorizedKeys?: types.outputs.SshPublicKeyResponse[];
 }
 /**
  * List SSH authorized keys and shared key of the local user.

@@ -32,7 +32,7 @@ export interface ListSiteIdentifiersAssignedToHostNameResult {
     /**
      * Collection of resources.
      */
-    readonly value: types.outputs.web.IdentifierResponse[];
+    readonly value: types.outputs.IdentifierResponse[];
 }
 /**
  * Description for List all apps that are assigned to a hostname.

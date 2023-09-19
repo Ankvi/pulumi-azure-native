@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get information about a guest configuration assignment
  */
@@ -48,11 +48,11 @@ export interface GetGuestConfigurationConnectedVMwarevSphereAssignmentResult {
     /**
      * Properties of the Guest configuration assignment.
      */
-    readonly properties: types.outputs.guestconfiguration.v20220125.GuestConfigurationAssignmentPropertiesResponse;
+    readonly properties: types.outputs.GuestConfigurationAssignmentPropertiesResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.guestconfiguration.v20220125.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves information about a gallery image definition.
  */
@@ -44,7 +44,7 @@ export interface GetGalleryImageResult {
     /**
      * Describes the disallowed disk types.
      */
-    readonly disallowed?: types.outputs.compute.v20220303.DisallowedResponse;
+    readonly disallowed?: types.outputs.DisallowedResponse;
     /**
      * The end of life date of the gallery image definition. This property can be used for decommissioning purposes. This property is updatable.
      */
@@ -56,7 +56,7 @@ export interface GetGalleryImageResult {
     /**
      * A list of gallery image features.
      */
-    readonly features?: types.outputs.compute.v20220303.GalleryImageFeatureResponse[];
+    readonly features?: types.outputs.GalleryImageFeatureResponse[];
     /**
      * The hypervisor generation of the Virtual Machine. Applicable to OS disks only.
      */
@@ -68,7 +68,7 @@ export interface GetGalleryImageResult {
     /**
      * This is the gallery image definition identifier.
      */
-    readonly identifier: types.outputs.compute.v20220303.GalleryImageIdentifierResponse;
+    readonly identifier: types.outputs.GalleryImageIdentifierResponse;
     /**
      * Resource location
      */
@@ -96,11 +96,11 @@ export interface GetGalleryImageResult {
     /**
      * Describes the gallery image definition purchase plan. This is used by marketplace images.
      */
-    readonly purchasePlan?: types.outputs.compute.v20220303.ImagePurchasePlanResponse;
+    readonly purchasePlan?: types.outputs.ImagePurchasePlanResponse;
     /**
      * The properties describe the recommended machine configuration for this Image Definition. These properties are updatable.
      */
-    readonly recommended?: types.outputs.compute.v20220303.RecommendedMachineConfigurationResponse;
+    readonly recommended?: types.outputs.RecommendedMachineConfigurationResponse;
     /**
      * The release note uri.
      */

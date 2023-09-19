@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents an instance of a orchestrator.
  */
@@ -42,11 +42,11 @@ export class OrchestratorInstanceServiceDetails extends pulumi.CustomResource {
     /**
      * Properties of the controller.
      */
-    public readonly controllerDetails!: pulumi.Output<types.outputs.delegatednetwork.v20230518preview.ControllerDetailsResponse>;
+    public readonly controllerDetails!: pulumi.Output<types.outputs.ControllerDetailsResponse>;
     /**
      * The identity of the orchestrator
      */
-    public readonly identity!: pulumi.Output<types.outputs.delegatednetwork.v20230518preview.OrchestratorIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.OrchestratorIdentityResponse | undefined>;
     /**
      * The kind of workbook. Choices are user and shared.
      */
@@ -162,15 +162,15 @@ export interface OrchestratorInstanceServiceDetailsArgs {
     /**
      * Properties of the controller.
      */
-    controllerDetails: pulumi.Input<types.inputs.delegatednetwork.v20230518preview.ControllerDetailsArgs>;
+    controllerDetails: pulumi.Input<types.inputs.ControllerDetailsArgs>;
     /**
      * The identity of the orchestrator
      */
-    identity?: pulumi.Input<types.inputs.delegatednetwork.v20230518preview.OrchestratorIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.OrchestratorIdentityArgs>;
     /**
      * The kind of workbook. Choices are user and shared.
      */
-    kind: pulumi.Input<string | types.enums.v20230518preview.OrchestratorKind>;
+    kind: pulumi.Input<string | types.enums.OrchestratorKind>;
     /**
      * Location of the resource.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a Fleet.
  */
@@ -35,7 +35,7 @@ export interface GetFleetResult {
     /**
      * The FleetHubProfile configures the Fleet's hub.
      */
-    readonly hubProfile?: types.outputs.containerservice.v20230615preview.FleetHubProfileResponse;
+    readonly hubProfile?: types.outputs.FleetHubProfileResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -43,7 +43,7 @@ export interface GetFleetResult {
     /**
      * Managed identity.
      */
-    readonly identity?: types.outputs.containerservice.v20230615preview.ManagedServiceIdentityResponse;
+    readonly identity?: types.outputs.ManagedServiceIdentityResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -59,7 +59,7 @@ export interface GetFleetResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.containerservice.v20230615preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

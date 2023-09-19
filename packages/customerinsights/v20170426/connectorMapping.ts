@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The connector mapping resource format.
  */
@@ -74,7 +74,7 @@ export class ConnectorMapping extends pulumi.CustomResource {
     /**
      * The properties of the mapping.
      */
-    public readonly mappingProperties!: pulumi.Output<types.outputs.customerinsights.v20170426.ConnectorMappingPropertiesResponse>;
+    public readonly mappingProperties!: pulumi.Output<types.outputs.ConnectorMappingPropertiesResponse>;
     /**
      * Resource name.
      */
@@ -186,7 +186,7 @@ export interface ConnectorMappingArgs {
     /**
      * Type of connector.
      */
-    connectorType?: pulumi.Input<string | types.enums.v20170426.ConnectorTypes>;
+    connectorType?: pulumi.Input<string | types.enums.ConnectorTypes>;
     /**
      * The description of the connector mapping.
      */
@@ -198,7 +198,7 @@ export interface ConnectorMappingArgs {
     /**
      * Defines which entity type the file should map to.
      */
-    entityType: pulumi.Input<types.enums.v20170426.EntityTypes>;
+    entityType: pulumi.Input<types.enums.EntityTypes>;
     /**
      * The mapping entity name.
      */
@@ -214,7 +214,7 @@ export interface ConnectorMappingArgs {
     /**
      * The properties of the mapping.
      */
-    mappingProperties: pulumi.Input<types.inputs.customerinsights.v20170426.ConnectorMappingPropertiesArgs>;
+    mappingProperties: pulumi.Input<types.inputs.ConnectorMappingPropertiesArgs>;
     /**
      * The name of the resource group.
      */

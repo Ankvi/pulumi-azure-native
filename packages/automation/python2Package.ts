@@ -39,7 +39,7 @@ export class Python2Package extends pulumi.CustomResource {
     /**
      * Gets or sets the contentLink of the module.
      */
-    public readonly contentLink!: pulumi.Output<types.outputs.automation.ContentLinkResponse | undefined>;
+    public readonly contentLink!: pulumi.Output<types.outputs.ContentLinkResponse | undefined>;
     /**
      * Gets or sets the creation time.
      */
@@ -51,7 +51,7 @@ export class Python2Package extends pulumi.CustomResource {
     /**
      * Gets or sets the error info of the module.
      */
-    public /*out*/ readonly error!: pulumi.Output<types.outputs.automation.ModuleErrorInfoResponse | undefined>;
+    public /*out*/ readonly error!: pulumi.Output<types.outputs.ModuleErrorInfoResponse | undefined>;
     /**
      * Gets or sets the etag of the resource.
      */
@@ -172,7 +172,7 @@ export interface Python2PackageArgs {
     /**
      * Gets or sets the module content link.
      */
-    contentLink: pulumi.Input<types.inputs.automation.ContentLinkArgs>;
+    contentLink: pulumi.Input<types.inputs.ContentLinkArgs>;
     /**
      * The name of python package.
      */

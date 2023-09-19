@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets details about the orchestrator instance.
  */
@@ -39,7 +39,7 @@ export interface GetOrchestratorInstanceServiceDetailsResult {
     /**
      * Properties of the controller.
      */
-    readonly controllerDetails: types.outputs.delegatednetwork.v20210315.ControllerDetailsResponse;
+    readonly controllerDetails: types.outputs.ControllerDetailsResponse;
     /**
      * An identifier that represents the resource.
      */
@@ -47,7 +47,7 @@ export interface GetOrchestratorInstanceServiceDetailsResult {
     /**
      * The identity of the orchestrator
      */
-    readonly identity?: types.outputs.delegatednetwork.v20210315.OrchestratorIdentityResponse;
+    readonly identity?: types.outputs.OrchestratorIdentityResponse;
     /**
      * The kind of workbook. Choices are user and shared.
      */

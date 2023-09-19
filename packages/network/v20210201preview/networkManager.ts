@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The Managed Network resource
  */
@@ -58,7 +58,7 @@ export class NetworkManager extends pulumi.CustomResource {
     /**
      * Scope of Network Manager.
      */
-    public readonly networkManagerScopes!: pulumi.Output<types.outputs.network.v20210201preview.NetworkManagerPropertiesResponseNetworkManagerScopes | undefined>;
+    public readonly networkManagerScopes!: pulumi.Output<types.outputs.NetworkManagerPropertiesResponseNetworkManagerScopes | undefined>;
     /**
      * The provisioning state of the scope assignment resource.
      */
@@ -66,7 +66,7 @@ export class NetworkManager extends pulumi.CustomResource {
     /**
      * The system metadata related to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.network.v20210201preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -151,11 +151,11 @@ export interface NetworkManagerArgs {
     /**
      * Scope Access.
      */
-    networkManagerScopeAccesses?: pulumi.Input<pulumi.Input<string | types.enums.v20210201preview.ConfigurationType>[]>;
+    networkManagerScopeAccesses?: pulumi.Input<pulumi.Input<string | types.enums.ConfigurationType>[]>;
     /**
      * Scope of Network Manager.
      */
-    networkManagerScopes?: pulumi.Input<types.inputs.network.v20210201preview.NetworkManagerPropertiesNetworkManagerScopesArgs>;
+    networkManagerScopes?: pulumi.Input<types.inputs.NetworkManagerPropertiesNetworkManagerScopesArgs>;
     /**
      * The name of the resource group.
      */

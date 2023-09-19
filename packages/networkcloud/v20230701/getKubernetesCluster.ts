@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get properties of the provided the Kubernetes cluster.
  */
@@ -28,11 +28,11 @@ export interface GetKubernetesClusterResult {
     /**
      * The Azure Active Directory Integration properties.
      */
-    readonly aadConfiguration?: types.outputs.networkcloud.v20230701.AadConfigurationResponse;
+    readonly aadConfiguration?: types.outputs.AadConfigurationResponse;
     /**
      * The administrative credentials that will be applied to the control plane and agent pool nodes that do not specify their own values.
      */
-    readonly administratorConfiguration?: types.outputs.networkcloud.v20230701.AdministratorConfigurationResponse;
+    readonly administratorConfiguration?: types.outputs.AdministratorConfigurationResponse;
     /**
      * The full list of network resource IDs that are attached to this cluster, including those attached only to specific agent pools.
      */
@@ -40,7 +40,7 @@ export interface GetKubernetesClusterResult {
     /**
      * The list of versions that this Kubernetes cluster can be upgraded to.
      */
-    readonly availableUpgrades: types.outputs.networkcloud.v20230701.AvailableUpgradeResponse[];
+    readonly availableUpgrades: types.outputs.AvailableUpgradeResponse[];
     /**
      * The resource ID of the Network Cloud cluster.
      */
@@ -56,7 +56,7 @@ export interface GetKubernetesClusterResult {
     /**
      * The defining characteristics of the control plane for this Kubernetes Cluster.
      */
-    readonly controlPlaneNodeConfiguration: types.outputs.networkcloud.v20230701.ControlPlaneNodeConfigurationResponse;
+    readonly controlPlaneNodeConfiguration: types.outputs.ControlPlaneNodeConfigurationResponse;
     /**
      * The current status of the Kubernetes cluster.
      */
@@ -68,11 +68,11 @@ export interface GetKubernetesClusterResult {
     /**
      * The extended location of the cluster associated with the resource.
      */
-    readonly extendedLocation: types.outputs.networkcloud.v20230701.ExtendedLocationResponse;
+    readonly extendedLocation: types.outputs.ExtendedLocationResponse;
     /**
      * The current feature settings.
      */
-    readonly featureStatuses: types.outputs.networkcloud.v20230701.FeatureStatusResponse[];
+    readonly featureStatuses: types.outputs.FeatureStatusResponse[];
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -80,7 +80,7 @@ export interface GetKubernetesClusterResult {
     /**
      * The agent pools that are created with this Kubernetes cluster for running critical system services and workloads. This data in this field is only used during creation, and the field will be empty following the creation of the Kubernetes Cluster. After creation, the management of agent pools is done using the agentPools sub-resource.
      */
-    readonly initialAgentPoolConfigurations: types.outputs.networkcloud.v20230701.InitialAgentPoolConfigurationResponse[];
+    readonly initialAgentPoolConfigurations: types.outputs.InitialAgentPoolConfigurationResponse[];
     /**
      * The Kubernetes version for this cluster. Accepts n.n, n.n.n, and n.n.n-n format. The interpreted version used will be resolved into this field after creation or update.
      */
@@ -92,7 +92,7 @@ export interface GetKubernetesClusterResult {
     /**
      * The configuration of the managed resource group associated with the resource.
      */
-    readonly managedResourceGroupConfiguration?: types.outputs.networkcloud.v20230701.ManagedResourceGroupConfigurationResponse;
+    readonly managedResourceGroupConfiguration?: types.outputs.ManagedResourceGroupConfigurationResponse;
     /**
      * The name of the resource
      */
@@ -100,11 +100,11 @@ export interface GetKubernetesClusterResult {
     /**
      * The configuration of the Kubernetes cluster networking, including the attachment of networks that span the cluster.
      */
-    readonly networkConfiguration: types.outputs.networkcloud.v20230701.NetworkConfigurationResponse;
+    readonly networkConfiguration: types.outputs.NetworkConfigurationResponse;
     /**
      * The details of the nodes in this cluster.
      */
-    readonly nodes: types.outputs.networkcloud.v20230701.KubernetesClusterNodeResponse[];
+    readonly nodes: types.outputs.KubernetesClusterNodeResponse[];
     /**
      * The provisioning state of the Kubernetes cluster resource.
      */
@@ -112,7 +112,7 @@ export interface GetKubernetesClusterResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.networkcloud.v20230701.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a list of SAP supported SKUs for ASCS, Application and Database tier.
  */
@@ -26,19 +26,19 @@ export interface GetSAPSupportedSkuArgs {
     /**
      * The database type. Eg: HANA, DB2, etc
      */
-    databaseType: string | types.enums.v20230401.SAPDatabaseType;
+    databaseType: string | types.enums.SAPDatabaseType;
     /**
      * The deployment type. Eg: SingleServer/ThreeTier
      */
-    deploymentType: string | types.enums.v20230401.SAPDeploymentType;
+    deploymentType: string | types.enums.SAPDeploymentType;
     /**
      * Defines the environment type - Production/Non Production.
      */
-    environment: string | types.enums.v20230401.SAPEnvironmentType;
+    environment: string | types.enums.SAPEnvironmentType;
     /**
      * The high availability type.
      */
-    highAvailabilityType?: string | types.enums.v20230401.SAPHighAvailabilityType;
+    highAvailabilityType?: string | types.enums.SAPHighAvailabilityType;
     /**
      * The name of Azure region.
      */
@@ -46,7 +46,7 @@ export interface GetSAPSupportedSkuArgs {
     /**
      * Defines the SAP Product type.
      */
-    sapProduct: string | types.enums.v20230401.SAPProductType;
+    sapProduct: string | types.enums.SAPProductType;
 }
 
 /**
@@ -56,7 +56,7 @@ export interface GetSAPSupportedSkuResult {
     /**
      * Gets the list of SAP supported SKUs.
      */
-    readonly supportedSkus?: types.outputs.workloads.v20230401.SAPSupportedSkuResponse[];
+    readonly supportedSkus?: types.outputs.SAPSupportedSkuResponse[];
 }
 /**
  * Get a list of SAP supported SKUs for ASCS, Application and Database tier.
@@ -73,19 +73,19 @@ export interface GetSAPSupportedSkuOutputArgs {
     /**
      * The database type. Eg: HANA, DB2, etc
      */
-    databaseType: pulumi.Input<string | types.enums.v20230401.SAPDatabaseType>;
+    databaseType: pulumi.Input<string | types.enums.SAPDatabaseType>;
     /**
      * The deployment type. Eg: SingleServer/ThreeTier
      */
-    deploymentType: pulumi.Input<string | types.enums.v20230401.SAPDeploymentType>;
+    deploymentType: pulumi.Input<string | types.enums.SAPDeploymentType>;
     /**
      * Defines the environment type - Production/Non Production.
      */
-    environment: pulumi.Input<string | types.enums.v20230401.SAPEnvironmentType>;
+    environment: pulumi.Input<string | types.enums.SAPEnvironmentType>;
     /**
      * The high availability type.
      */
-    highAvailabilityType?: pulumi.Input<string | types.enums.v20230401.SAPHighAvailabilityType>;
+    highAvailabilityType?: pulumi.Input<string | types.enums.SAPHighAvailabilityType>;
     /**
      * The name of Azure region.
      */
@@ -93,5 +93,5 @@ export interface GetSAPSupportedSkuOutputArgs {
     /**
      * Defines the SAP Product type.
      */
-    sapProduct: pulumi.Input<string | types.enums.v20230401.SAPProductType>;
+    sapProduct: pulumi.Input<string | types.enums.SAPProductType>;
 }

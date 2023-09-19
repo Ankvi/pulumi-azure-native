@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The registration definition.
  */
@@ -38,15 +38,15 @@ export class RegistrationDefinition extends pulumi.CustomResource {
     /**
      * The details for the Managed Services offer’s plan in Azure Marketplace.
      */
-    public readonly plan!: pulumi.Output<types.outputs.managedservices.v20221001.PlanResponse | undefined>;
+    public readonly plan!: pulumi.Output<types.outputs.PlanResponse | undefined>;
     /**
      * The properties of a registration definition.
      */
-    public readonly properties!: pulumi.Output<types.outputs.managedservices.v20221001.RegistrationDefinitionPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.RegistrationDefinitionPropertiesResponse>;
     /**
      * The metadata for the registration assignment resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.managedservices.v20221001.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the Azure resource (Microsoft.ManagedServices/registrationDefinitions).
      */
@@ -94,11 +94,11 @@ export interface RegistrationDefinitionArgs {
     /**
      * The details for the Managed Services offer’s plan in Azure Marketplace.
      */
-    plan?: pulumi.Input<types.inputs.managedservices.v20221001.PlanArgs>;
+    plan?: pulumi.Input<types.inputs.PlanArgs>;
     /**
      * The properties of a registration definition.
      */
-    properties?: pulumi.Input<types.inputs.managedservices.v20221001.RegistrationDefinitionPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.RegistrationDefinitionPropertiesArgs>;
     /**
      * The GUID of the registration definition.
      */

@@ -49,11 +49,11 @@ export interface GetPrivateEndpointConnectionResult {
     /**
      * Gets the properties of the object.
      */
-    readonly properties: types.outputs.offazure.PrivateEndpointConnectionPropertiesResponse;
+    readonly properties: types.outputs.PrivateEndpointConnectionPropertiesResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.offazure.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Gets the resource type.
      */

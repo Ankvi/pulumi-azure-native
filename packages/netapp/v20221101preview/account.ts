@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * NetApp account resource
  */
@@ -34,7 +34,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * Active Directories
      */
-    public readonly activeDirectories!: pulumi.Output<types.outputs.netapp.v20221101preview.ActiveDirectoryResponse[] | undefined>;
+    public readonly activeDirectories!: pulumi.Output<types.outputs.ActiveDirectoryResponse[] | undefined>;
     /**
      * Shows the status of disableShowmount for all volumes under the subscription, null equals false
      */
@@ -42,7 +42,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * Encryption settings
      */
-    public readonly encryption!: pulumi.Output<types.outputs.netapp.v20221101preview.AccountEncryptionResponse | undefined>;
+    public readonly encryption!: pulumi.Output<types.outputs.AccountEncryptionResponse | undefined>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -50,7 +50,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * The identity used for the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.netapp.v20221101preview.ManagedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -66,7 +66,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.netapp.v20221101preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -92,7 +92,7 @@ export class Account extends pulumi.CustomResource {
             }
             resourceInputs["accountName"] = args ? args.accountName : undefined;
             resourceInputs["activeDirectories"] = args ? args.activeDirectories : undefined;
-            resourceInputs["encryption"] = args ? (args.encryption ? pulumi.output(args.encryption).apply(types.inputs.netapp.v20221101preview.accountEncryptionArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["encryption"] = args ? (args.encryption ? pulumi.output(args.encryption).apply(types.inputs.accountEncryptionArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["identity"] = args ? args.identity : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
@@ -134,15 +134,15 @@ export interface AccountArgs {
     /**
      * Active Directories
      */
-    activeDirectories?: pulumi.Input<pulumi.Input<types.inputs.netapp.v20221101preview.ActiveDirectoryArgs>[]>;
+    activeDirectories?: pulumi.Input<pulumi.Input<types.inputs.ActiveDirectoryArgs>[]>;
     /**
      * Encryption settings
      */
-    encryption?: pulumi.Input<types.inputs.netapp.v20221101preview.AccountEncryptionArgs>;
+    encryption?: pulumi.Input<types.inputs.AccountEncryptionArgs>;
     /**
      * The identity used for the resource.
      */
-    identity?: pulumi.Input<types.inputs.netapp.v20221101preview.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
      * The geo-location where the resource lives
      */

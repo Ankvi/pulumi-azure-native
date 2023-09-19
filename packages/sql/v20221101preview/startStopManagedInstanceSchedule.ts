@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Managed instance's Start/Stop schedule.
  */
@@ -50,11 +50,11 @@ export class StartStopManagedInstanceSchedule extends pulumi.CustomResource {
     /**
      * Schedule list.
      */
-    public readonly scheduleList!: pulumi.Output<types.outputs.sql.v20221101preview.ScheduleItemResponse[]>;
+    public readonly scheduleList!: pulumi.Output<types.outputs.ScheduleItemResponse[]>;
     /**
      * System data of the scheduled resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.sql.v20221101preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The time zone of the schedule.
      */
@@ -131,7 +131,7 @@ export interface StartStopManagedInstanceScheduleArgs {
     /**
      * Schedule list.
      */
-    scheduleList: pulumi.Input<pulumi.Input<types.inputs.sql.v20221101preview.ScheduleItemArgs>[]>;
+    scheduleList: pulumi.Input<pulumi.Input<types.inputs.ScheduleItemArgs>[]>;
     /**
      * Name of the managed instance Start/Stop schedule.
      */

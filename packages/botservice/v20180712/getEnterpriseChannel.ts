@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns an Enterprise Channel specified by the parameters.
  */
@@ -51,11 +51,11 @@ export interface GetEnterpriseChannelResult {
     /**
      * The set of properties specific to an Enterprise Channel resource.
      */
-    readonly properties: types.outputs.botservice.v20180712.EnterpriseChannelPropertiesResponse;
+    readonly properties: types.outputs.EnterpriseChannelPropertiesResponse;
     /**
      * Gets or sets the SKU of the resource.
      */
-    readonly sku?: types.outputs.botservice.v20180712.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * Contains resource tags defined as key/value pairs.
      */

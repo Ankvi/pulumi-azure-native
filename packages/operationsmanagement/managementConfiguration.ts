@@ -43,7 +43,7 @@ export class ManagementConfiguration extends pulumi.CustomResource {
     /**
      * Properties for ManagementConfiguration object supported by the OperationsManagement resource provider.
      */
-    public readonly properties!: pulumi.Output<types.outputs.operationsmanagement.ManagementConfigurationPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ManagementConfigurationPropertiesResponse>;
     /**
      * Resource type.
      */
@@ -97,7 +97,7 @@ export interface ManagementConfigurationArgs {
     /**
      * Properties for ManagementConfiguration object supported by the OperationsManagement resource provider.
      */
-    properties?: pulumi.Input<types.inputs.operationsmanagement.ManagementConfigurationPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ManagementConfigurationPropertiesArgs>;
     /**
      * The name of the resource group to get. The name is case insensitive.
      */

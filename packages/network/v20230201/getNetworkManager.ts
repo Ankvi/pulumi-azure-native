@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the specified Network Manager.
  */
@@ -55,7 +55,7 @@ export interface GetNetworkManagerResult {
     /**
      * Scope of Network Manager.
      */
-    readonly networkManagerScopes: types.outputs.network.v20230201.NetworkManagerPropertiesResponseNetworkManagerScopes;
+    readonly networkManagerScopes: types.outputs.NetworkManagerPropertiesResponseNetworkManagerScopes;
     /**
      * The provisioning state of the network manager resource.
      */
@@ -67,7 +67,7 @@ export interface GetNetworkManagerResult {
     /**
      * The system metadata related to this resource.
      */
-    readonly systemData: types.outputs.network.v20230201.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

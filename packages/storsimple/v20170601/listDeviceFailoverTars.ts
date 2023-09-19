@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Given a list of volume containers to be failed over from a source device, this method returns the eligibility result, as a failover target, for all devices under that resource.
  */
@@ -41,7 +41,7 @@ export interface ListDeviceFailoverTarsResult {
     /**
      * The list of all the failover targets.
      */
-    readonly value?: types.outputs.storsimple.v20170601.FailoverTargetResponse[];
+    readonly value?: types.outputs.FailoverTargetResponse[];
 }
 /**
  * Given a list of volume containers to be failed over from a source device, this method returns the eligibility result, as a failover target, for all devices under that resource.

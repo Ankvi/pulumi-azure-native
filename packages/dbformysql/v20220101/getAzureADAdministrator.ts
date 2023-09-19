@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets information about an azure ad administrator.
  */
@@ -60,7 +60,7 @@ export interface GetAzureADAdministratorResult {
     /**
      * The system metadata relating to this resource.
      */
-    readonly systemData: types.outputs.dbformysql.v20220101.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Tenant ID of the administrator.
      */

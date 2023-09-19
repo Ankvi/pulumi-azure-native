@@ -32,7 +32,7 @@ export interface ListContainerAppSecretsResult {
     /**
      * Collection of resources.
      */
-    readonly value: types.outputs.app.ContainerAppSecretResponse[];
+    readonly value: types.outputs.ContainerAppSecretResponse[];
 }
 /**
  * Container App Secrets Collection ARM resource.

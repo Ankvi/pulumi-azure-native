@@ -37,11 +37,11 @@ export interface GetNotificationRegistrationResult {
      * The name of the resource
      */
     readonly name: string;
-    readonly properties: types.outputs.providerhub.NotificationRegistrationResponseProperties;
+    readonly properties: types.outputs.NotificationRegistrationResponseProperties;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.providerhub.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

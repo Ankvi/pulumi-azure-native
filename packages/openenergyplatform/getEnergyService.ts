@@ -38,11 +38,11 @@ export interface GetEnergyServiceResult {
      * The name of the resource
      */
     readonly name: string;
-    readonly properties: types.outputs.openenergyplatform.EnergyServicePropertiesResponse;
+    readonly properties: types.outputs.EnergyServicePropertiesResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.openenergyplatform.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

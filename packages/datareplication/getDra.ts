@@ -45,8 +45,8 @@ export interface GetDraResult {
     /**
      * Dra model properties.
      */
-    readonly properties: types.outputs.datareplication.DraModelPropertiesResponse;
-    readonly systemData: types.outputs.datareplication.DraModelResponseSystemData;
+    readonly properties: types.outputs.DraModelPropertiesResponse;
+    readonly systemData: types.outputs.DraModelResponseSystemData;
     /**
      * Gets or sets the type of the resource.
      */

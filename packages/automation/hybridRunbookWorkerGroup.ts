@@ -35,7 +35,7 @@ export class HybridRunbookWorkerGroup extends pulumi.CustomResource {
     /**
      * Sets the credential of a worker group.
      */
-    public readonly credential!: pulumi.Output<types.outputs.automation.RunAsCredentialAssociationPropertyResponse | undefined>;
+    public readonly credential!: pulumi.Output<types.outputs.RunAsCredentialAssociationPropertyResponse | undefined>;
     /**
      * Type of the HybridWorkerGroup.
      */
@@ -47,7 +47,7 @@ export class HybridRunbookWorkerGroup extends pulumi.CustomResource {
     /**
      * Resource system metadata.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.automation.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource.
      */
@@ -103,7 +103,7 @@ export interface HybridRunbookWorkerGroupArgs {
     /**
      * Sets the credential of a worker group.
      */
-    credential?: pulumi.Input<types.inputs.automation.RunAsCredentialAssociationPropertyArgs>;
+    credential?: pulumi.Input<types.inputs.RunAsCredentialAssociationPropertyArgs>;
     /**
      * The hybrid runbook worker group name
      */

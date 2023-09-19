@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Subscription Information with the alias.
  */
@@ -38,7 +38,7 @@ export class Alias extends pulumi.CustomResource {
     /**
      * Put Alias response properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.subscription.v20200901.PutAliasResponsePropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.PutAliasResponsePropertiesResponse>;
     /**
      * Resource type, Microsoft.Subscription/aliases.
      */
@@ -85,5 +85,5 @@ export interface AliasArgs {
     /**
      * Put alias request properties.
      */
-    properties: pulumi.Input<types.inputs.subscription.v20200901.PutAliasRequestPropertiesArgs>;
+    properties: pulumi.Input<types.inputs.PutAliasRequestPropertiesArgs>;
 }

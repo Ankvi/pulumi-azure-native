@@ -32,7 +32,7 @@ export interface GetPolicyResult {
     /**
      * Describes custom rules inside the policy.
      */
-    readonly customRules?: types.outputs.network.CustomRuleListResponse;
+    readonly customRules?: types.outputs.CustomRuleListResponse;
     /**
      * Gets a unique read-only string that changes whenever the resource is updated.
      */
@@ -40,7 +40,7 @@ export interface GetPolicyResult {
     /**
      * Describes Frontend Endpoints associated with this Web Application Firewall policy.
      */
-    readonly frontendEndpointLinks: types.outputs.network.FrontendEndpointLinkResponse[];
+    readonly frontendEndpointLinks: types.outputs.FrontendEndpointLinkResponse[];
     /**
      * Resource ID.
      */
@@ -52,7 +52,7 @@ export interface GetPolicyResult {
     /**
      * Describes managed rules inside the policy.
      */
-    readonly managedRules?: types.outputs.network.ManagedRuleSetListResponse;
+    readonly managedRules?: types.outputs.ManagedRuleSetListResponse;
     /**
      * Resource name.
      */
@@ -60,7 +60,7 @@ export interface GetPolicyResult {
     /**
      * Describes settings for the policy.
      */
-    readonly policySettings?: types.outputs.network.FrontDoorPolicySettingsResponse;
+    readonly policySettings?: types.outputs.FrontDoorPolicySettingsResponse;
     /**
      * Provisioning state of the policy.
      */
@@ -69,15 +69,15 @@ export interface GetPolicyResult {
     /**
      * Describes Routing Rules associated with this Web Application Firewall policy.
      */
-    readonly routingRuleLinks: types.outputs.network.RoutingRuleLinkResponse[];
+    readonly routingRuleLinks: types.outputs.RoutingRuleLinkResponse[];
     /**
      * Describes Security Policy associated with this Web Application Firewall policy.
      */
-    readonly securityPolicyLinks: types.outputs.network.SecurityPolicyLinkResponse[];
+    readonly securityPolicyLinks: types.outputs.SecurityPolicyLinkResponse[];
     /**
      * The pricing tier of web application firewall policy. Defaults to Classic_AzureFrontDoor if not specified.
      */
-    readonly sku?: types.outputs.network.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * Resource tags.
      */

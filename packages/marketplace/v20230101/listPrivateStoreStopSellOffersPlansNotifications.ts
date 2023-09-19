@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * List stop sell notifications for both stop sell offers and stop sell plans
  */
@@ -25,7 +25,7 @@ export interface ListPrivateStoreStopSellOffersPlansNotificationsArgs {
  * List of stop sell offers and plans notifications.
  */
 export interface ListPrivateStoreStopSellOffersPlansNotificationsResult {
-    readonly stopSellNotifications?: types.outputs.marketplace.v20230101.StopSellOffersPlansNotificationsListPropertiesResponse[];
+    readonly stopSellNotifications?: types.outputs.StopSellOffersPlansNotificationsListPropertiesResponse[];
 }
 /**
  * List stop sell notifications for both stop sell offers and stop sell plans

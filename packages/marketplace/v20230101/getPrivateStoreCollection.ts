@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets private store collection
  */
@@ -35,7 +35,7 @@ export interface GetPrivateStoreCollectionResult {
     /**
      * Gets list of collection rules
      */
-    readonly appliedRules: types.outputs.marketplace.v20230101.RuleResponse[];
+    readonly appliedRules: types.outputs.RuleResponse[];
     /**
      * Indicating whether all items are approved for this collection (=true) or not (=false).
      */
@@ -79,7 +79,7 @@ export interface GetPrivateStoreCollectionResult {
     /**
      * Metadata pertaining to creation and last modification of the resource
      */
-    readonly systemData: types.outputs.marketplace.v20230101.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource.
      */

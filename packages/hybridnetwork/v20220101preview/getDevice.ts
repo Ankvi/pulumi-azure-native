@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets information about the specified device.
  */
@@ -47,7 +47,7 @@ export interface GetDeviceResult {
     /**
      * The list of network functions deployed on the device.
      */
-    readonly networkFunctions: types.outputs.hybridnetwork.v20220101preview.SubResourceResponse[];
+    readonly networkFunctions: types.outputs.SubResourceResponse[];
     /**
      * The provisioning state of the device resource.
      */
@@ -59,7 +59,7 @@ export interface GetDeviceResult {
     /**
      * The system meta data relating to this resource.
      */
-    readonly systemData: types.outputs.hybridnetwork.v20220101preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

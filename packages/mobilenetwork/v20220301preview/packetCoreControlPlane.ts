@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Packet core control plane resource.
  */
@@ -34,7 +34,7 @@ export class PacketCoreControlPlane extends pulumi.CustomResource {
     /**
      * The control plane interface on the access network. In 5G networks this is called as N2 interface whereas in 4G networks this is called as S1-MME interface.
      */
-    public readonly controlPlaneAccessInterface!: pulumi.Output<types.outputs.mobilenetwork.v20220301preview.InterfacePropertiesResponse>;
+    public readonly controlPlaneAccessInterface!: pulumi.Output<types.outputs.InterfacePropertiesResponse>;
     /**
      * The core network technology generation.
      */
@@ -54,7 +54,7 @@ export class PacketCoreControlPlane extends pulumi.CustomResource {
     /**
      * Azure ARC custom location where the packet core is deployed.
      */
-    public readonly customLocation!: pulumi.Output<types.outputs.mobilenetwork.v20220301preview.CustomLocationResourceIdResponse | undefined>;
+    public readonly customLocation!: pulumi.Output<types.outputs.CustomLocationResourceIdResponse | undefined>;
     /**
      * The timestamp of resource last modification (UTC)
      */
@@ -74,7 +74,7 @@ export class PacketCoreControlPlane extends pulumi.CustomResource {
     /**
      * Mobile network that this packet core control plane belongs to
      */
-    public readonly mobileNetwork!: pulumi.Output<types.outputs.mobilenetwork.v20220301preview.MobileNetworkResourceIdResponse>;
+    public readonly mobileNetwork!: pulumi.Output<types.outputs.MobileNetworkResourceIdResponse>;
     /**
      * The name of the resource
      */
@@ -86,7 +86,7 @@ export class PacketCoreControlPlane extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.mobilenetwork.v20220301preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -172,11 +172,11 @@ export interface PacketCoreControlPlaneArgs {
     /**
      * The control plane interface on the access network. In 5G networks this is called as N2 interface whereas in 4G networks this is called as S1-MME interface.
      */
-    controlPlaneAccessInterface: pulumi.Input<types.inputs.mobilenetwork.v20220301preview.InterfacePropertiesArgs>;
+    controlPlaneAccessInterface: pulumi.Input<types.inputs.InterfacePropertiesArgs>;
     /**
      * The core network technology generation.
      */
-    coreNetworkTechnology?: pulumi.Input<string | types.enums.v20220301preview.CoreNetworkType>;
+    coreNetworkTechnology?: pulumi.Input<string | types.enums.CoreNetworkType>;
     /**
      * The timestamp of resource creation (UTC).
      */
@@ -188,11 +188,11 @@ export interface PacketCoreControlPlaneArgs {
     /**
      * The type of identity that created the resource.
      */
-    createdByType?: pulumi.Input<string | types.enums.v20220301preview.CreatedByType>;
+    createdByType?: pulumi.Input<string | types.enums.CreatedByType>;
     /**
      * Azure ARC custom location where the packet core is deployed.
      */
-    customLocation?: pulumi.Input<types.inputs.mobilenetwork.v20220301preview.CustomLocationResourceIdArgs>;
+    customLocation?: pulumi.Input<types.inputs.CustomLocationResourceIdArgs>;
     /**
      * The timestamp of resource last modification (UTC)
      */
@@ -204,7 +204,7 @@ export interface PacketCoreControlPlaneArgs {
     /**
      * The type of identity that last modified the resource.
      */
-    lastModifiedByType?: pulumi.Input<string | types.enums.v20220301preview.CreatedByType>;
+    lastModifiedByType?: pulumi.Input<string | types.enums.CreatedByType>;
     /**
      * The geo-location where the resource lives
      */
@@ -212,7 +212,7 @@ export interface PacketCoreControlPlaneArgs {
     /**
      * Mobile network that this packet core control plane belongs to
      */
-    mobileNetwork: pulumi.Input<types.inputs.mobilenetwork.v20220301preview.MobileNetworkResourceIdArgs>;
+    mobileNetwork: pulumi.Input<types.inputs.MobileNetworkResourceIdArgs>;
     /**
      * The name of the packet core control plane.
      */

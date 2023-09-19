@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * API Operation details.
  */
@@ -54,15 +54,15 @@ export class ApiOperation extends pulumi.CustomResource {
     /**
      * An entity containing request details.
      */
-    public readonly request!: pulumi.Output<types.outputs.apimanagement.v20220901preview.RequestContractResponse | undefined>;
+    public readonly request!: pulumi.Output<types.outputs.RequestContractResponse | undefined>;
     /**
      * Array of Operation responses.
      */
-    public readonly responses!: pulumi.Output<types.outputs.apimanagement.v20220901preview.ResponseContractResponse[] | undefined>;
+    public readonly responses!: pulumi.Output<types.outputs.ResponseContractResponse[] | undefined>;
     /**
      * Collection of URL template parameters.
      */
-    public readonly templateParameters!: pulumi.Output<types.outputs.apimanagement.v20220901preview.ParameterContractResponse[] | undefined>;
+    public readonly templateParameters!: pulumi.Output<types.outputs.ParameterContractResponse[] | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -165,7 +165,7 @@ export interface ApiOperationArgs {
     /**
      * An entity containing request details.
      */
-    request?: pulumi.Input<types.inputs.apimanagement.v20220901preview.RequestContractArgs>;
+    request?: pulumi.Input<types.inputs.RequestContractArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -173,7 +173,7 @@ export interface ApiOperationArgs {
     /**
      * Array of Operation responses.
      */
-    responses?: pulumi.Input<pulumi.Input<types.inputs.apimanagement.v20220901preview.ResponseContractArgs>[]>;
+    responses?: pulumi.Input<pulumi.Input<types.inputs.ResponseContractArgs>[]>;
     /**
      * The name of the API Management service.
      */
@@ -181,7 +181,7 @@ export interface ApiOperationArgs {
     /**
      * Collection of URL template parameters.
      */
-    templateParameters?: pulumi.Input<pulumi.Input<types.inputs.apimanagement.v20220901preview.ParameterContractArgs>[]>;
+    templateParameters?: pulumi.Input<pulumi.Input<types.inputs.ParameterContractArgs>[]>;
     /**
      * Relative URL template identifying the target resource for this operation. May include parameters. Example: /customers/{cid}/orders/{oid}/?date={date}
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A PostgreSQL Server key.
  */
@@ -113,7 +113,7 @@ export interface ServerKeyArgs {
     /**
      * The key type like 'AzureKeyVault'.
      */
-    serverKeyType: pulumi.Input<string | types.enums.v20200214privatepreview.ServerKeyType>;
+    serverKeyType: pulumi.Input<string | types.enums.ServerKeyType>;
     /**
      * The name of the server.
      */

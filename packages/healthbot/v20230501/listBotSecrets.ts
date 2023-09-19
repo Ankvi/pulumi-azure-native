@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * List all secrets of a HealthBot.
  */
@@ -31,7 +31,7 @@ export interface ListBotSecretsResult {
     /**
      * Array of Azure Health Bot Secrets.
      */
-    readonly secrets?: types.outputs.healthbot.v20230501.HealthBotKeyResponse[];
+    readonly secrets?: types.outputs.HealthBotKeyResponse[];
 }
 /**
  * List all secrets of a HealthBot.

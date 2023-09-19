@@ -49,7 +49,7 @@ export interface GetCreatorResult {
     /**
      * The Creator resource properties.
      */
-    readonly properties: types.outputs.maps.CreatorPropertiesResponse;
+    readonly properties: types.outputs.CreatorPropertiesResponse;
     /**
      * Resource tags.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Guest configuration assignment is an association between a machine and guest configuration.
  */
@@ -42,11 +42,11 @@ export class GuestConfigurationAssignmentsVMSS extends pulumi.CustomResource {
     /**
      * Properties of the Guest configuration assignment.
      */
-    public readonly properties!: pulumi.Output<types.outputs.guestconfiguration.v20220125.GuestConfigurationAssignmentPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.GuestConfigurationAssignmentPropertiesResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.guestconfiguration.v20220125.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource.
      */
@@ -105,7 +105,7 @@ export interface GuestConfigurationAssignmentsVMSSArgs {
     /**
      * Properties of the Guest configuration assignment.
      */
-    properties?: pulumi.Input<types.inputs.guestconfiguration.v20220125.GuestConfigurationAssignmentPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.GuestConfigurationAssignmentPropertiesArgs>;
     /**
      * The resource group name.
      */

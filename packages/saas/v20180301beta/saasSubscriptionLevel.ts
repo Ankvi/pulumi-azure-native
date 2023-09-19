@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * SaaS REST API resource definition.
  */
@@ -38,7 +38,7 @@ export class SaasSubscriptionLevel extends pulumi.CustomResource {
     /**
      * saas properties
      */
-    public readonly properties!: pulumi.Output<types.outputs.saas.v20180301beta.SaasResourceResponseProperties>;
+    public readonly properties!: pulumi.Output<types.outputs.SaasResourceResponseProperties>;
     /**
      * the resource tags.
      */
@@ -97,7 +97,7 @@ export interface SaasSubscriptionLevelArgs {
     /**
      * Properties of the SaaS resource that are relevant for creation.
      */
-    properties?: pulumi.Input<types.inputs.saas.v20180301beta.SaasCreationPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.SaasCreationPropertiesArgs>;
     /**
      * The name of the resource group.
      */

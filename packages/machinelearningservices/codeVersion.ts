@@ -35,7 +35,7 @@ export class CodeVersion extends pulumi.CustomResource {
     /**
      * [Required] Additional attributes of the entity.
      */
-    public readonly codeVersionProperties!: pulumi.Output<types.outputs.machinelearningservices.CodeVersionResponse>;
+    public readonly codeVersionProperties!: pulumi.Output<types.outputs.CodeVersionResponse>;
     /**
      * The name of the resource
      */
@@ -43,7 +43,7 @@ export class CodeVersion extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.machinelearningservices.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -72,7 +72,7 @@ export class CodeVersion extends pulumi.CustomResource {
             if ((!args || args.workspaceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workspaceName'");
             }
-            resourceInputs["codeVersionProperties"] = args ? (args.codeVersionProperties ? pulumi.output(args.codeVersionProperties).apply(types.inputs.machinelearningservices.codeVersionArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["codeVersionProperties"] = args ? (args.codeVersionProperties ? pulumi.output(args.codeVersionProperties).apply(types.inputs.codeVersionArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["version"] = args ? args.version : undefined;
@@ -99,7 +99,7 @@ export interface CodeVersionArgs {
     /**
      * [Required] Additional attributes of the entity.
      */
-    codeVersionProperties: pulumi.Input<types.inputs.machinelearningservices.CodeVersionArgs>;
+    codeVersionProperties: pulumi.Input<types.inputs.CodeVersionArgs>;
     /**
      * Container name. This is case-sensitive.
      */

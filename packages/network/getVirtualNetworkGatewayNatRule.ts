@@ -41,7 +41,7 @@ export interface GetVirtualNetworkGatewayNatRuleResult {
     /**
      * The private IP address external mapping for NAT.
      */
-    readonly externalMappings?: types.outputs.network.VpnNatRuleMappingResponse[];
+    readonly externalMappings?: types.outputs.VpnNatRuleMappingResponse[];
     /**
      * Resource ID.
      */
@@ -49,7 +49,7 @@ export interface GetVirtualNetworkGatewayNatRuleResult {
     /**
      * The private IP address internal mapping for NAT.
      */
-    readonly internalMappings?: types.outputs.network.VpnNatRuleMappingResponse[];
+    readonly internalMappings?: types.outputs.VpnNatRuleMappingResponse[];
     /**
      * The IP Configuration ID this NAT rule applies to.
      */

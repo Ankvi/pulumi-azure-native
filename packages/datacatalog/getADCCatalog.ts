@@ -32,7 +32,7 @@ export interface GetADCCatalogResult {
     /**
      * Azure data catalog admin list.
      */
-    readonly admins?: types.outputs.datacatalog.PrincipalsResponse[];
+    readonly admins?: types.outputs.PrincipalsResponse[];
     /**
      * Automatic unit adjustment enabled or not.
      */
@@ -76,7 +76,7 @@ export interface GetADCCatalogResult {
     /**
      * Azure data catalog user list.
      */
-    readonly users?: types.outputs.datacatalog.PrincipalsResponse[];
+    readonly users?: types.outputs.PrincipalsResponse[];
 }
 /**
  * The Get Azure Data Catalog Service operation retrieves a json representation of the data catalog.

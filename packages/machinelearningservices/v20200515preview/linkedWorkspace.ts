@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Linked workspace.
  */
@@ -38,7 +38,7 @@ export class LinkedWorkspace extends pulumi.CustomResource {
     /**
      * LinkedWorkspace specific properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.machinelearningservices.v20200515preview.LinkedWorkspacePropsResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.LinkedWorkspacePropsResponse>;
     /**
      * Resource type of linked workspace.
      */
@@ -94,7 +94,7 @@ export interface LinkedWorkspaceArgs {
     /**
      * LinkedWorkspace specific properties.
      */
-    properties?: pulumi.Input<types.inputs.machinelearningservices.v20200515preview.LinkedWorkspacePropsArgs>;
+    properties?: pulumi.Input<types.inputs.LinkedWorkspacePropsArgs>;
     /**
      * Name of the resource group in which workspace is located.
      */

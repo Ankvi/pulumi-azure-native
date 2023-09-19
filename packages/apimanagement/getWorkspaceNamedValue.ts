@@ -50,7 +50,7 @@ export interface GetWorkspaceNamedValueResult {
     /**
      * KeyVault location details of the namedValue.
      */
-    readonly keyVault?: types.outputs.apimanagement.KeyVaultContractPropertiesResponse;
+    readonly keyVault?: types.outputs.KeyVaultContractPropertiesResponse;
     /**
      * The name of the resource
      */

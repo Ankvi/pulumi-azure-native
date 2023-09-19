@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The metric setting details for the role
  */
@@ -34,7 +34,7 @@ export class MonitoringConfig extends pulumi.CustomResource {
     /**
      * The metrics configuration details
      */
-    public readonly metricConfigurations!: pulumi.Output<types.outputs.databoxedge.v20230101preview.MetricConfigurationResponse[]>;
+    public readonly metricConfigurations!: pulumi.Output<types.outputs.MetricConfigurationResponse[]>;
     /**
      * The object name.
      */
@@ -42,7 +42,7 @@ export class MonitoringConfig extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of MonitoringConfiguration
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.databoxedge.v20230101preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The hierarchical type of the object.
      */
@@ -102,7 +102,7 @@ export interface MonitoringConfigArgs {
     /**
      * The metrics configuration details
      */
-    metricConfigurations: pulumi.Input<pulumi.Input<types.inputs.databoxedge.v20230101preview.MetricConfigurationArgs>[]>;
+    metricConfigurations: pulumi.Input<pulumi.Input<types.inputs.MetricConfigurationArgs>[]>;
     /**
      * The resource group name.
      */

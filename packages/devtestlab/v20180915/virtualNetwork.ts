@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A virtual network.
  */
@@ -34,7 +34,7 @@ export class VirtualNetwork extends pulumi.CustomResource {
     /**
      * The allowed subnets of the virtual network.
      */
-    public readonly allowedSubnets!: pulumi.Output<types.outputs.devtestlab.v20180915.SubnetResponse[] | undefined>;
+    public readonly allowedSubnets!: pulumi.Output<types.outputs.SubnetResponse[] | undefined>;
     /**
      * The creation date of the virtual network.
      */
@@ -50,7 +50,7 @@ export class VirtualNetwork extends pulumi.CustomResource {
     /**
      * The external subnet properties.
      */
-    public /*out*/ readonly externalSubnets!: pulumi.Output<types.outputs.devtestlab.v20180915.ExternalSubnetResponse[]>;
+    public /*out*/ readonly externalSubnets!: pulumi.Output<types.outputs.ExternalSubnetResponse[]>;
     /**
      * The location of the resource.
      */
@@ -66,7 +66,7 @@ export class VirtualNetwork extends pulumi.CustomResource {
     /**
      * The subnet overrides of the virtual network.
      */
-    public readonly subnetOverrides!: pulumi.Output<types.outputs.devtestlab.v20180915.SubnetOverrideResponse[] | undefined>;
+    public readonly subnetOverrides!: pulumi.Output<types.outputs.SubnetOverrideResponse[] | undefined>;
     /**
      * The tags of the resource.
      */
@@ -139,7 +139,7 @@ export interface VirtualNetworkArgs {
     /**
      * The allowed subnets of the virtual network.
      */
-    allowedSubnets?: pulumi.Input<pulumi.Input<types.inputs.devtestlab.v20180915.SubnetArgs>[]>;
+    allowedSubnets?: pulumi.Input<pulumi.Input<types.inputs.SubnetArgs>[]>;
     /**
      * The description of the virtual network.
      */
@@ -167,7 +167,7 @@ export interface VirtualNetworkArgs {
     /**
      * The subnet overrides of the virtual network.
      */
-    subnetOverrides?: pulumi.Input<pulumi.Input<types.inputs.devtestlab.v20180915.SubnetOverrideArgs>[]>;
+    subnetOverrides?: pulumi.Input<pulumi.Input<types.inputs.SubnetOverrideArgs>[]>;
     /**
      * The tags of the resource.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Private endpoint connection resource.
  */
@@ -46,11 +46,11 @@ export class MHSMPrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * Properties of the private endpoint object.
      */
-    public /*out*/ readonly privateEndpoint!: pulumi.Output<types.outputs.keyvault.v20230201.MHSMPrivateEndpointResponse | undefined>;
+    public /*out*/ readonly privateEndpoint!: pulumi.Output<types.outputs.MHSMPrivateEndpointResponse | undefined>;
     /**
      * Approval state of the private link connection.
      */
-    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.keyvault.v20230201.MHSMPrivateLinkServiceConnectionStateResponse | undefined>;
+    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.MHSMPrivateLinkServiceConnectionStateResponse | undefined>;
     /**
      * Provisioning state of the private endpoint connection.
      */
@@ -58,11 +58,11 @@ export class MHSMPrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * SKU details
      */
-    public readonly sku!: pulumi.Output<types.outputs.keyvault.v20230201.ManagedHsmSkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.ManagedHsmSkuResponse | undefined>;
     /**
      * Metadata pertaining to creation and last modification of the key vault resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.keyvault.v20230201.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags
      */
@@ -139,7 +139,7 @@ export interface MHSMPrivateEndpointConnectionArgs {
     /**
      * Approval state of the private link connection.
      */
-    privateLinkServiceConnectionState?: pulumi.Input<types.inputs.keyvault.v20230201.MHSMPrivateLinkServiceConnectionStateArgs>;
+    privateLinkServiceConnectionState?: pulumi.Input<types.inputs.MHSMPrivateLinkServiceConnectionStateArgs>;
     /**
      * Name of the resource group that contains the managed HSM pool.
      */
@@ -147,7 +147,7 @@ export interface MHSMPrivateEndpointConnectionArgs {
     /**
      * SKU details
      */
-    sku?: pulumi.Input<types.inputs.keyvault.v20230201.ManagedHsmSkuArgs>;
+    sku?: pulumi.Input<types.inputs.ManagedHsmSkuArgs>;
     /**
      * Resource tags
      */

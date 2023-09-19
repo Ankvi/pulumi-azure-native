@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The operation to get the extension.
  */
@@ -48,11 +48,11 @@ export interface GetMachineExtensionResult {
     /**
      * Describes Machine Extension Properties.
      */
-    readonly properties: types.outputs.hybridcompute.v20220510preview.MachineExtensionPropertiesResponse;
+    readonly properties: types.outputs.MachineExtensionPropertiesResponse;
     /**
      * The system meta data relating to this resource.
      */
-    readonly systemData: types.outputs.hybridcompute.v20220510preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

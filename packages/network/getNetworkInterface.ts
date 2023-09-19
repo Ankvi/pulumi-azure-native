@@ -49,11 +49,11 @@ export interface GetNetworkInterfaceResult {
     /**
      * The DNS settings in network interface.
      */
-    readonly dnsSettings?: types.outputs.network.NetworkInterfaceDnsSettingsResponse;
+    readonly dnsSettings?: types.outputs.NetworkInterfaceDnsSettingsResponse;
     /**
      * A reference to the dscp configuration to which the network interface is linked.
      */
-    readonly dscpConfiguration: types.outputs.network.SubResourceResponse;
+    readonly dscpConfiguration: types.outputs.SubResourceResponse;
     /**
      * If the network interface is configured for accelerated networking. Not applicable to VM sizes which require accelerated networking.
      */
@@ -69,7 +69,7 @@ export interface GetNetworkInterfaceResult {
     /**
      * The extended location of the network interface.
      */
-    readonly extendedLocation?: types.outputs.network.ExtendedLocationResponse;
+    readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
     /**
      * A list of references to linked BareMetal resources.
      */
@@ -81,7 +81,7 @@ export interface GetNetworkInterfaceResult {
     /**
      * A list of IPConfigurations of the network interface.
      */
-    readonly ipConfigurations?: types.outputs.network.NetworkInterfaceIPConfigurationResponse[];
+    readonly ipConfigurations?: types.outputs.NetworkInterfaceIPConfigurationResponse[];
     /**
      * Resource location.
      */
@@ -101,7 +101,7 @@ export interface GetNetworkInterfaceResult {
     /**
      * The reference to the NetworkSecurityGroup resource.
      */
-    readonly networkSecurityGroup?: types.outputs.network.NetworkSecurityGroupResponse;
+    readonly networkSecurityGroup?: types.outputs.NetworkSecurityGroupResponse;
     /**
      * Type of Network Interface resource.
      */
@@ -113,11 +113,11 @@ export interface GetNetworkInterfaceResult {
     /**
      * A reference to the private endpoint to which the network interface is linked.
      */
-    readonly privateEndpoint: types.outputs.network.PrivateEndpointResponse;
+    readonly privateEndpoint: types.outputs.PrivateEndpointResponse;
     /**
      * Privatelinkservice of the network interface resource.
      */
-    readonly privateLinkService?: types.outputs.network.PrivateLinkServiceResponse;
+    readonly privateLinkService?: types.outputs.PrivateLinkServiceResponse;
     /**
      * The provisioning state of the network interface resource.
      */
@@ -133,7 +133,7 @@ export interface GetNetworkInterfaceResult {
     /**
      * A list of TapConfigurations of the network interface.
      */
-    readonly tapConfigurations: types.outputs.network.NetworkInterfaceTapConfigurationResponse[];
+    readonly tapConfigurations: types.outputs.NetworkInterfaceTapConfigurationResponse[];
     /**
      * Resource type.
      */
@@ -141,7 +141,7 @@ export interface GetNetworkInterfaceResult {
     /**
      * The reference to a virtual machine.
      */
-    readonly virtualMachine: types.outputs.network.SubResourceResponse;
+    readonly virtualMachine: types.outputs.SubResourceResponse;
     /**
      * Whether the virtual machine this nic is attached to supports encryption.
      */

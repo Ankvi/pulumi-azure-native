@@ -63,7 +63,7 @@ utilities.lazyLoad(exports, ["SyncSet"], () => require("./syncSet"));
 
 
 // Export enums:
-export * from "../types/enums/v20220904";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

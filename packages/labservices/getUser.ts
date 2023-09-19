@@ -73,7 +73,7 @@ export interface GetUserResult {
     /**
      * Metadata pertaining to creation and last modification of the user resource.
      */
-    readonly systemData: types.outputs.labservices.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * How long the user has used their virtual machines in this lab.
      */

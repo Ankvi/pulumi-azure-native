@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A kusto table data set.
  */
@@ -59,11 +59,11 @@ export class KustoTableDataSet extends pulumi.CustomResource {
     /**
      * System Data of the Azure resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.datashare.v20210801.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Table level sharing properties for kusto database
      */
-    public readonly tableLevelSharingProperties!: pulumi.Output<types.outputs.datashare.v20210801.TableLevelSharingPropertiesResponse>;
+    public readonly tableLevelSharingProperties!: pulumi.Output<types.outputs.TableLevelSharingPropertiesResponse>;
     /**
      * Type of the azure resource
      */
@@ -161,5 +161,5 @@ export interface KustoTableDataSetArgs {
     /**
      * Table level sharing properties for kusto database
      */
-    tableLevelSharingProperties: pulumi.Input<types.inputs.datashare.v20210801.TableLevelSharingPropertiesArgs>;
+    tableLevelSharingProperties: pulumi.Input<types.inputs.TableLevelSharingPropertiesArgs>;
 }

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a SSIS integration runtime object metadata by specified path. The return is pageable metadata list.
  */
@@ -45,7 +45,7 @@ export interface GetIntegrationRuntimeObjectMetadatumResult {
     /**
      * List of SSIS object metadata.
      */
-    readonly value?: (types.outputs.datafactory.v20180601.SsisEnvironmentResponse | types.outputs.datafactory.v20180601.SsisFolderResponse | types.outputs.datafactory.v20180601.SsisPackageResponse | types.outputs.datafactory.v20180601.SsisProjectResponse)[];
+    readonly value?: (types.outputs.SsisEnvironmentResponse | types.outputs.SsisFolderResponse | types.outputs.SsisPackageResponse | types.outputs.SsisProjectResponse)[];
 }
 /**
  * Get a SSIS integration runtime object metadata by specified path. The return is pageable metadata list.

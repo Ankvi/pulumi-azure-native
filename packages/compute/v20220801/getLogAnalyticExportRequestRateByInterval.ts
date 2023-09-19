@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Export logs that show Api requests made by this subscription in the given time window to show throttling activities.
  */
@@ -53,7 +53,7 @@ export interface GetLogAnalyticExportRequestRateByIntervalArgs {
     /**
      * Interval value in minutes used to create LogAnalytics call rate logs.
      */
-    intervalLength: types.enums.v20220801.IntervalInMins;
+    intervalLength: types.enums.IntervalInMins;
     /**
      * The location upon which virtual-machine-sizes is queried.
      */
@@ -71,7 +71,7 @@ export interface GetLogAnalyticExportRequestRateByIntervalResult {
     /**
      * LogAnalyticsOutput
      */
-    readonly properties: types.outputs.compute.v20220801.LogAnalyticsOutputResponse;
+    readonly properties: types.outputs.LogAnalyticsOutputResponse;
 }
 /**
  * Export logs that show Api requests made by this subscription in the given time window to show throttling activities.
@@ -112,7 +112,7 @@ export interface GetLogAnalyticExportRequestRateByIntervalOutputArgs {
     /**
      * Interval value in minutes used to create LogAnalytics call rate logs.
      */
-    intervalLength: pulumi.Input<types.enums.v20220801.IntervalInMins>;
+    intervalLength: pulumi.Input<types.enums.IntervalInMins>;
     /**
      * The location upon which virtual-machine-sizes is queried.
      */

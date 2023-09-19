@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Defines the move resource.
  */
@@ -38,11 +38,11 @@ export class MoveResource extends pulumi.CustomResource {
     /**
      * Defines the move resource properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.migrate.v20230801.MoveResourcePropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.MoveResourcePropertiesResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.migrate.v20230801.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource.
      */
@@ -100,7 +100,7 @@ export interface MoveResourceArgs {
     /**
      * Defines the move resource properties.
      */
-    properties?: pulumi.Input<types.inputs.migrate.v20230801.MoveResourcePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.MoveResourcePropertiesArgs>;
     /**
      * The Resource Group Name.
      */

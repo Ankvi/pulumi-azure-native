@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The Private Endpoint Connection resource.
  */
@@ -38,11 +38,11 @@ export class DiskAccessAPrivateEndpointConnection extends pulumi.CustomResource 
     /**
      * The resource of private end point.
      */
-    public /*out*/ readonly privateEndpoint!: pulumi.Output<types.outputs.compute.v20230102.PrivateEndpointResponse>;
+    public /*out*/ readonly privateEndpoint!: pulumi.Output<types.outputs.PrivateEndpointResponse>;
     /**
      * A collection of information about the state of the connection between DiskAccess and Virtual Network.
      */
-    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.compute.v20230102.PrivateLinkServiceConnectionStateResponse>;
+    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.PrivateLinkServiceConnectionStateResponse>;
     /**
      * The provisioning state of the private endpoint connection resource.
      */
@@ -109,7 +109,7 @@ export interface DiskAccessAPrivateEndpointConnectionArgs {
     /**
      * A collection of information about the state of the connection between DiskAccess and Virtual Network.
      */
-    privateLinkServiceConnectionState: pulumi.Input<types.inputs.compute.v20230102.PrivateLinkServiceConnectionStateArgs>;
+    privateLinkServiceConnectionState: pulumi.Input<types.inputs.PrivateLinkServiceConnectionStateArgs>;
     /**
      * The name of the resource group.
      */

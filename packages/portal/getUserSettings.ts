@@ -27,7 +27,7 @@ export interface GetUserSettingsResult {
     /**
      * The cloud shell user settings properties.
      */
-    readonly properties: types.outputs.portal.UserPropertiesResponse;
+    readonly properties: types.outputs.UserPropertiesResponse;
 }
 /**
  * Get current user settings for current signed in user. This operation returns settings for the user's cloud shell preferences including preferred location, storage profile, shell type, font and size settings.

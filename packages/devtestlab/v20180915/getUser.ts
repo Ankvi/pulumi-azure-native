@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get user profile.
  */
@@ -49,7 +49,7 @@ export interface GetUserResult {
     /**
      * The identity of the user.
      */
-    readonly identity?: types.outputs.devtestlab.v20180915.UserIdentityResponse;
+    readonly identity?: types.outputs.UserIdentityResponse;
     /**
      * The location of the resource.
      */
@@ -65,7 +65,7 @@ export interface GetUserResult {
     /**
      * The secret store of the user.
      */
-    readonly secretStore?: types.outputs.devtestlab.v20180915.UserSecretStoreResponse;
+    readonly secretStore?: types.outputs.UserSecretStoreResponse;
     /**
      * The tags of the resource.
      */

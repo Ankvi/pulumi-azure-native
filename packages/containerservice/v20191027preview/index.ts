@@ -13,7 +13,7 @@ utilities.lazyLoad(exports, ["OpenShiftManagedCluster"], () => require("./openSh
 
 
 // Export enums:
-export * from "../types/enums/v20191027preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get regional availability information for each size category configured under a lab account
  */
@@ -31,7 +31,7 @@ export interface GetLabAccountRegionalAvailabilityResult {
     /**
      * Availability information for different size categories per region
      */
-    readonly regionalAvailability?: types.outputs.labservices.v20181015.RegionalAvailabilityResponse[];
+    readonly regionalAvailability?: types.outputs.RegionalAvailabilityResponse[];
 }
 /**
  * Get regional availability information for each size category configured under a lab account

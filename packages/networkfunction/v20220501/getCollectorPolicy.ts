@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the collector policy in a specified Traffic Collector
  */
@@ -36,7 +36,7 @@ export interface GetCollectorPolicyResult {
     /**
      * Emission policies.
      */
-    readonly emissionPolicies?: types.outputs.networkfunction.v20220501.EmissionPoliciesPropertiesFormatResponse[];
+    readonly emissionPolicies?: types.outputs.EmissionPoliciesPropertiesFormatResponse[];
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -48,7 +48,7 @@ export interface GetCollectorPolicyResult {
     /**
      * Ingestion policies.
      */
-    readonly ingestionPolicy?: types.outputs.networkfunction.v20220501.IngestionPolicyPropertiesFormatResponse;
+    readonly ingestionPolicy?: types.outputs.IngestionPolicyPropertiesFormatResponse;
     /**
      * Azure resource name
      */
@@ -60,7 +60,7 @@ export interface GetCollectorPolicyResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.networkfunction.v20220501.CollectorPolicyResponseSystemData;
+    readonly systemData: types.outputs.CollectorPolicyResponseSystemData;
     /**
      * Azure resource type
      */

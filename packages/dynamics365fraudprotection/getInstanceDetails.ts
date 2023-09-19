@@ -32,7 +32,7 @@ export interface GetInstanceDetailsResult {
     /**
      * A collection of DFP instance administrators
      */
-    readonly administration?: types.outputs.dynamics365fraudprotection.DFPInstanceAdministratorsResponse;
+    readonly administration?: types.outputs.DFPInstanceAdministratorsResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -52,7 +52,7 @@ export interface GetInstanceDetailsResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.dynamics365fraudprotection.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Key-value pairs of additional resource provisioning properties.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Information about the connection monitor.
  */
@@ -38,7 +38,7 @@ export class ConnectionMonitor extends pulumi.CustomResource {
     /**
      * Describes the destination of connection monitor.
      */
-    public readonly destination!: pulumi.Output<types.outputs.network.v20190901.ConnectionMonitorDestinationResponse>;
+    public readonly destination!: pulumi.Output<types.outputs.ConnectionMonitorDestinationResponse>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -66,7 +66,7 @@ export class ConnectionMonitor extends pulumi.CustomResource {
     /**
      * Describes the source of connection monitor.
      */
-    public readonly source!: pulumi.Output<types.outputs.network.v20190901.ConnectionMonitorSourceResponse>;
+    public readonly source!: pulumi.Output<types.outputs.ConnectionMonitorSourceResponse>;
     /**
      * The date and time when the connection monitor was started.
      */
@@ -154,7 +154,7 @@ export interface ConnectionMonitorArgs {
     /**
      * Describes the destination of connection monitor.
      */
-    destination: pulumi.Input<types.inputs.network.v20190901.ConnectionMonitorDestinationArgs>;
+    destination: pulumi.Input<types.inputs.ConnectionMonitorDestinationArgs>;
     /**
      * Connection monitor location.
      */
@@ -174,7 +174,7 @@ export interface ConnectionMonitorArgs {
     /**
      * Describes the source of connection monitor.
      */
-    source: pulumi.Input<types.inputs.network.v20190901.ConnectionMonitorSourceArgs>;
+    source: pulumi.Input<types.inputs.ConnectionMonitorSourceArgs>;
     /**
      * Connection monitor tags.
      */

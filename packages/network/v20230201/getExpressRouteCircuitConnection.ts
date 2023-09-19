@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the specified Express Route Circuit Connection from the specified express route circuit.
  */
@@ -57,7 +57,7 @@ export interface GetExpressRouteCircuitConnectionResult {
     /**
      * Reference to Express Route Circuit Private Peering Resource of the circuit initiating connection.
      */
-    readonly expressRouteCircuitPeering?: types.outputs.network.v20230201.SubResourceResponse;
+    readonly expressRouteCircuitPeering?: types.outputs.SubResourceResponse;
     /**
      * Resource ID.
      */
@@ -65,7 +65,7 @@ export interface GetExpressRouteCircuitConnectionResult {
     /**
      * IPv6 Address PrefixProperties of the express route circuit connection.
      */
-    readonly ipv6CircuitConnectionConfig?: types.outputs.network.v20230201.Ipv6CircuitConnectionConfigResponse;
+    readonly ipv6CircuitConnectionConfig?: types.outputs.Ipv6CircuitConnectionConfigResponse;
     /**
      * The name of the resource that is unique within a resource group. This name can be used to access the resource.
      */
@@ -73,7 +73,7 @@ export interface GetExpressRouteCircuitConnectionResult {
     /**
      * Reference to Express Route Circuit Private Peering Resource of the peered circuit.
      */
-    readonly peerExpressRouteCircuitPeering?: types.outputs.network.v20230201.SubResourceResponse;
+    readonly peerExpressRouteCircuitPeering?: types.outputs.SubResourceResponse;
     /**
      * The provisioning state of the express route circuit connection resource.
      */

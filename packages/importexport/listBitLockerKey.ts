@@ -32,7 +32,7 @@ export interface ListBitLockerKeyResult {
     /**
      * drive status
      */
-    readonly value?: types.outputs.importexport.DriveBitLockerKeyResponse[];
+    readonly value?: types.outputs.DriveBitLockerKeyResponse[];
 }
 /**
  * Returns the BitLocker Keys for all drives in the specified job.

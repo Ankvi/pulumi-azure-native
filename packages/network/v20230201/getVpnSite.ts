@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves the details of a VPN site.
  */
@@ -31,15 +31,15 @@ export interface GetVpnSiteResult {
     /**
      * The AddressSpace that contains an array of IP address ranges.
      */
-    readonly addressSpace?: types.outputs.network.v20230201.AddressSpaceResponse;
+    readonly addressSpace?: types.outputs.AddressSpaceResponse;
     /**
      * The set of bgp properties.
      */
-    readonly bgpProperties?: types.outputs.network.v20230201.BgpSettingsResponse;
+    readonly bgpProperties?: types.outputs.BgpSettingsResponse;
     /**
      * The device properties.
      */
-    readonly deviceProperties?: types.outputs.network.v20230201.DevicePropertiesResponse;
+    readonly deviceProperties?: types.outputs.DevicePropertiesResponse;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -67,7 +67,7 @@ export interface GetVpnSiteResult {
     /**
      * Office365 Policy.
      */
-    readonly o365Policy?: types.outputs.network.v20230201.O365PolicyPropertiesResponse;
+    readonly o365Policy?: types.outputs.O365PolicyPropertiesResponse;
     /**
      * The provisioning state of the VPN site resource.
      */
@@ -87,11 +87,11 @@ export interface GetVpnSiteResult {
     /**
      * The VirtualWAN to which the vpnSite belongs.
      */
-    readonly virtualWan?: types.outputs.network.v20230201.SubResourceResponse;
+    readonly virtualWan?: types.outputs.SubResourceResponse;
     /**
      * List of all vpn site links.
      */
-    readonly vpnSiteLinks?: types.outputs.network.v20230201.VpnSiteLinkResponse[];
+    readonly vpnSiteLinks?: types.outputs.VpnSiteLinkResponse[];
 }
 /**
  * Retrieves the details of a VPN site.

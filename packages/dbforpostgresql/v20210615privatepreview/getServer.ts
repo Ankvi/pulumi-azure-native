@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets information about a server.
  */
@@ -39,7 +39,7 @@ export interface GetServerResult {
     /**
      * Backup properties of a server.
      */
-    readonly backup?: types.outputs.dbforpostgresql.v20210615privatepreview.BackupResponse;
+    readonly backup?: types.outputs.BackupResponse;
     /**
      * The fully qualified domain name of a server.
      */
@@ -47,7 +47,7 @@ export interface GetServerResult {
     /**
      * High availability properties of a server.
      */
-    readonly highAvailability?: types.outputs.dbforpostgresql.v20210615privatepreview.HighAvailabilityResponse;
+    readonly highAvailability?: types.outputs.HighAvailabilityResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -55,7 +55,7 @@ export interface GetServerResult {
     /**
      * The Azure Active Directory identity of the server.
      */
-    readonly identity?: types.outputs.dbforpostgresql.v20210615privatepreview.IdentityResponse;
+    readonly identity?: types.outputs.IdentityResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -63,7 +63,7 @@ export interface GetServerResult {
     /**
      * Maintenance window properties of a server.
      */
-    readonly maintenanceWindow?: types.outputs.dbforpostgresql.v20210615privatepreview.MaintenanceWindowResponse;
+    readonly maintenanceWindow?: types.outputs.MaintenanceWindowResponse;
     /**
      * The minor version of the server.
      */
@@ -75,11 +75,11 @@ export interface GetServerResult {
     /**
      * Network properties of a server.
      */
-    readonly network?: types.outputs.dbforpostgresql.v20210615privatepreview.NetworkResponse;
+    readonly network?: types.outputs.NetworkResponse;
     /**
      * The SKU (pricing tier) of the server.
      */
-    readonly sku?: types.outputs.dbforpostgresql.v20210615privatepreview.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * A state of a server that is visible to user.
      */
@@ -87,11 +87,11 @@ export interface GetServerResult {
     /**
      * Storage properties of a server.
      */
-    readonly storage?: types.outputs.dbforpostgresql.v20210615privatepreview.StorageResponse;
+    readonly storage?: types.outputs.StorageResponse;
     /**
      * The system metadata relating to this resource.
      */
-    readonly systemData: types.outputs.dbforpostgresql.v20210615privatepreview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

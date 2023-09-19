@@ -53,7 +53,7 @@ export interface GetWorkspaceResult {
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
     readonly id: string;
-    readonly identity?: types.outputs.desktopvirtualization.ResourceModelWithAllowedPropertySetResponseIdentity;
+    readonly identity?: types.outputs.ResourceModelWithAllowedPropertySetResponseIdentity;
     /**
      * Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
      */
@@ -74,12 +74,12 @@ export interface GetWorkspaceResult {
      * ObjectId of Workspace. (internal use)
      */
     readonly objectId: string;
-    readonly plan?: types.outputs.desktopvirtualization.ResourceModelWithAllowedPropertySetResponsePlan;
-    readonly sku?: types.outputs.desktopvirtualization.ResourceModelWithAllowedPropertySetResponseSku;
+    readonly plan?: types.outputs.ResourceModelWithAllowedPropertySetResponsePlan;
+    readonly sku?: types.outputs.ResourceModelWithAllowedPropertySetResponseSku;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.desktopvirtualization.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

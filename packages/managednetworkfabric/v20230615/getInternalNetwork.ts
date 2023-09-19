@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a InternalNetworks.
  */
@@ -44,7 +44,7 @@ export interface GetInternalNetworkResult {
     /**
      * BGP configuration properties.
      */
-    readonly bgpConfiguration?: types.outputs.managednetworkfabric.v20230615.InternalNetworkPropertiesResponseBgpConfiguration;
+    readonly bgpConfiguration?: types.outputs.InternalNetworkPropertiesResponseBgpConfiguration;
     /**
      * Configuration state of the resource.
      */
@@ -52,11 +52,11 @@ export interface GetInternalNetworkResult {
     /**
      * List of Connected IPv4 Subnets.
      */
-    readonly connectedIPv4Subnets?: types.outputs.managednetworkfabric.v20230615.ConnectedSubnetResponse[];
+    readonly connectedIPv4Subnets?: types.outputs.ConnectedSubnetResponse[];
     /**
      * List of connected IPv6 Subnets.
      */
-    readonly connectedIPv6Subnets?: types.outputs.managednetworkfabric.v20230615.ConnectedSubnetResponse[];
+    readonly connectedIPv6Subnets?: types.outputs.ConnectedSubnetResponse[];
     /**
      * Egress Acl. ARM resource ID of Access Control Lists.
      */
@@ -64,7 +64,7 @@ export interface GetInternalNetworkResult {
     /**
      * Export Route Policy either IPv4 or IPv6.
      */
-    readonly exportRoutePolicy?: types.outputs.managednetworkfabric.v20230615.ExportRoutePolicyResponse;
+    readonly exportRoutePolicy?: types.outputs.ExportRoutePolicyResponse;
     /**
      * ARM Resource ID of the RoutePolicy. This is used for the backward compatibility.
      */
@@ -80,7 +80,7 @@ export interface GetInternalNetworkResult {
     /**
      * Import Route Policy either IPv4 or IPv6.
      */
-    readonly importRoutePolicy?: types.outputs.managednetworkfabric.v20230615.ImportRoutePolicyResponse;
+    readonly importRoutePolicy?: types.outputs.ImportRoutePolicyResponse;
     /**
      * ARM Resource ID of the RoutePolicy. This is used for the backward compatibility.
      */
@@ -108,11 +108,11 @@ export interface GetInternalNetworkResult {
     /**
      * Static Route Configuration properties.
      */
-    readonly staticRouteConfiguration?: types.outputs.managednetworkfabric.v20230615.InternalNetworkPropertiesResponseStaticRouteConfiguration;
+    readonly staticRouteConfiguration?: types.outputs.InternalNetworkPropertiesResponseStaticRouteConfiguration;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.managednetworkfabric.v20230615.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

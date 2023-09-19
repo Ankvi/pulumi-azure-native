@@ -35,7 +35,7 @@ export class SignalRCustomDomain extends pulumi.CustomResource {
     /**
      * Reference to a resource.
      */
-    public readonly customCertificate!: pulumi.Output<types.outputs.signalrservice.ResourceReferenceResponse>;
+    public readonly customCertificate!: pulumi.Output<types.outputs.ResourceReferenceResponse>;
     /**
      * The custom domain name.
      */
@@ -51,7 +51,7 @@ export class SignalRCustomDomain extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.signalrservice.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource - e.g. "Microsoft.SignalRService/SignalR"
      */
@@ -110,7 +110,7 @@ export interface SignalRCustomDomainArgs {
     /**
      * Reference to a resource.
      */
-    customCertificate: pulumi.Input<types.inputs.signalrservice.ResourceReferenceArgs>;
+    customCertificate: pulumi.Input<types.inputs.ResourceReferenceArgs>;
     /**
      * The custom domain name.
      */

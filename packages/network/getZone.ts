@@ -64,11 +64,11 @@ export interface GetZoneResult {
     /**
      * A list of references to virtual networks that register hostnames in this DNS zone. This is a only when ZoneType is Private.
      */
-    readonly registrationVirtualNetworks?: types.outputs.network.SubResourceResponse[];
+    readonly registrationVirtualNetworks?: types.outputs.SubResourceResponse[];
     /**
      * A list of references to virtual networks that resolve records in this DNS zone. This is a only when ZoneType is Private.
      */
-    readonly resolutionVirtualNetworks?: types.outputs.network.SubResourceResponse[];
+    readonly resolutionVirtualNetworks?: types.outputs.SubResourceResponse[];
     /**
      * Resource tags.
      */

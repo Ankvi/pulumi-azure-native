@@ -53,11 +53,11 @@ export class WebAppSitesController extends pulumi.CustomResource {
      *            
      * to the appliance.
      */
-    public readonly siteAppliancePropertiesCollection!: pulumi.Output<types.outputs.offazure.SiteAppliancePropertiesResponse[] | undefined>;
+    public readonly siteAppliancePropertiesCollection!: pulumi.Output<types.outputs.SiteAppliancePropertiesResponse[] | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.offazure.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -123,7 +123,7 @@ export interface WebAppSitesControllerArgs {
      *            
      * to the appliance.
      */
-    siteAppliancePropertiesCollection?: pulumi.Input<pulumi.Input<types.inputs.offazure.SiteAppliancePropertiesArgs>[]>;
+    siteAppliancePropertiesCollection?: pulumi.Input<pulumi.Input<types.inputs.SiteAppliancePropertiesArgs>[]>;
     /**
      * Site name
      */

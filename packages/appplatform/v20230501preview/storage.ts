@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Storage resource payload.
  */
@@ -38,11 +38,11 @@ export class Storage extends pulumi.CustomResource {
     /**
      * Properties of the storage resource payload.
      */
-    public readonly properties!: pulumi.Output<types.outputs.appplatform.v20230501preview.StorageAccountResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.StorageAccountResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.appplatform.v20230501preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource.
      */
@@ -92,7 +92,7 @@ export interface StorageArgs {
     /**
      * Properties of the storage resource payload.
      */
-    properties?: pulumi.Input<types.inputs.appplatform.v20230501preview.StorageAccountArgs>;
+    properties?: pulumi.Input<types.inputs.StorageAccountArgs>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */

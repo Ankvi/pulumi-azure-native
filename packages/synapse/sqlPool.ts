@@ -67,7 +67,7 @@ export class SqlPool extends pulumi.CustomResource {
     /**
      * SQL pool SKU
      */
-    public readonly sku!: pulumi.Output<types.outputs.synapse.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Specifies the time that the sql pool was deleted
      */
@@ -195,7 +195,7 @@ export interface SqlPoolArgs {
     /**
      * SQL pool SKU
      */
-    sku?: pulumi.Input<types.inputs.synapse.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Specifies the time that the sql pool was deleted
      */

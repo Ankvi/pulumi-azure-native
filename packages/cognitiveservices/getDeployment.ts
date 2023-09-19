@@ -49,15 +49,15 @@ export interface GetDeploymentResult {
     /**
      * Properties of Cognitive Services account deployment.
      */
-    readonly properties: types.outputs.cognitiveservices.DeploymentPropertiesResponse;
+    readonly properties: types.outputs.DeploymentPropertiesResponse;
     /**
      * The resource model definition representing SKU
      */
-    readonly sku?: types.outputs.cognitiveservices.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.cognitiveservices.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

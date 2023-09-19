@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Job Definition.
  */
@@ -34,7 +34,7 @@ export class JobDefinition extends pulumi.CustomResource {
     /**
      * List of customer secrets containing a key identifier and key value. The key identifier is a way for the specific data source to understand the key. Value contains customer secret encrypted by the encryptionKeys.
      */
-    public readonly customerSecrets!: pulumi.Output<types.outputs.hybriddata.v20190601.CustomerSecretResponse[] | undefined>;
+    public readonly customerSecrets!: pulumi.Output<types.outputs.CustomerSecretResponse[] | undefined>;
     /**
      * A generic json used differently by each data service type.
      */
@@ -62,7 +62,7 @@ export class JobDefinition extends pulumi.CustomResource {
     /**
      * Schedule for running the job definition
      */
-    public readonly schedules!: pulumi.Output<types.outputs.hybriddata.v20190601.ScheduleResponse[] | undefined>;
+    public readonly schedules!: pulumi.Output<types.outputs.ScheduleResponse[] | undefined>;
     /**
      * State of the job definition.
      */
@@ -147,7 +147,7 @@ export interface JobDefinitionArgs {
     /**
      * List of customer secrets containing a key identifier and key value. The key identifier is a way for the specific data source to understand the key. Value contains customer secret encrypted by the encryptionKeys.
      */
-    customerSecrets?: pulumi.Input<pulumi.Input<types.inputs.hybriddata.v20190601.CustomerSecretArgs>[]>;
+    customerSecrets?: pulumi.Input<pulumi.Input<types.inputs.CustomerSecretArgs>[]>;
     /**
      * The name of the DataManager Resource within the specified resource group. DataManager names must be between 3 and 24 characters in length and use any alphanumeric and underscore only
      */
@@ -183,17 +183,17 @@ export interface JobDefinitionArgs {
     /**
      * This is the preferred geo location for the job to run.
      */
-    runLocation?: pulumi.Input<types.enums.v20190601.RunLocation>;
+    runLocation?: pulumi.Input<types.enums.RunLocation>;
     /**
      * Schedule for running the job definition
      */
-    schedules?: pulumi.Input<pulumi.Input<types.inputs.hybriddata.v20190601.ScheduleArgs>[]>;
+    schedules?: pulumi.Input<pulumi.Input<types.inputs.ScheduleArgs>[]>;
     /**
      * State of the job definition.
      */
-    state: pulumi.Input<types.enums.v20190601.State>;
+    state: pulumi.Input<types.enums.State>;
     /**
      * Enum to detect if user confirmation is required. If not passed will default to NotRequired.
      */
-    userConfirmation?: pulumi.Input<types.enums.v20190601.UserConfirmation>;
+    userConfirmation?: pulumi.Input<types.enums.UserConfirmation>;
 }

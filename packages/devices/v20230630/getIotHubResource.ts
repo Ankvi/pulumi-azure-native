@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the non-security related metadata of an IoT hub.
  */
@@ -39,7 +39,7 @@ export interface GetIotHubResourceResult {
     /**
      * The managed identities for the IotHub.
      */
-    readonly identity?: types.outputs.devices.v20230630.ArmIdentityResponse;
+    readonly identity?: types.outputs.ArmIdentityResponse;
     /**
      * The resource location.
      */
@@ -51,15 +51,15 @@ export interface GetIotHubResourceResult {
     /**
      * IotHub properties
      */
-    readonly properties: types.outputs.devices.v20230630.IotHubPropertiesResponse;
+    readonly properties: types.outputs.IotHubPropertiesResponse;
     /**
      * IotHub SKU info
      */
-    readonly sku: types.outputs.devices.v20230630.IotHubSkuInfoResponse;
+    readonly sku: types.outputs.IotHubSkuInfoResponse;
     /**
      * The system meta data relating to this resource.
      */
-    readonly systemData: types.outputs.devices.v20230630.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The resource tags.
      */

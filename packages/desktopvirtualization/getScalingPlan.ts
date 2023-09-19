@@ -48,7 +48,7 @@ export interface GetScalingPlanResult {
     /**
      * List of ScalingHostPoolReference definitions.
      */
-    readonly hostPoolReferences?: types.outputs.desktopvirtualization.ScalingHostPoolReferenceResponse[];
+    readonly hostPoolReferences?: types.outputs.ScalingHostPoolReferenceResponse[];
     /**
      * HostPool type for desktop.
      */
@@ -57,7 +57,7 @@ export interface GetScalingPlanResult {
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
     readonly id: string;
-    readonly identity?: types.outputs.desktopvirtualization.ResourceModelWithAllowedPropertySetResponseIdentity;
+    readonly identity?: types.outputs.ResourceModelWithAllowedPropertySetResponseIdentity;
     /**
      * Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
      */
@@ -78,16 +78,16 @@ export interface GetScalingPlanResult {
      * ObjectId of scaling plan. (internal use)
      */
     readonly objectId: string;
-    readonly plan?: types.outputs.desktopvirtualization.ResourceModelWithAllowedPropertySetResponsePlan;
+    readonly plan?: types.outputs.ResourceModelWithAllowedPropertySetResponsePlan;
     /**
      * List of ScalingPlanPooledSchedule definitions.
      */
-    readonly schedules?: types.outputs.desktopvirtualization.ScalingScheduleResponse[];
-    readonly sku?: types.outputs.desktopvirtualization.ResourceModelWithAllowedPropertySetResponseSku;
+    readonly schedules?: types.outputs.ScalingScheduleResponse[];
+    readonly sku?: types.outputs.ResourceModelWithAllowedPropertySetResponseSku;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.desktopvirtualization.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

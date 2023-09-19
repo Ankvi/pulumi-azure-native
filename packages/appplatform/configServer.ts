@@ -39,11 +39,11 @@ export class ConfigServer extends pulumi.CustomResource {
     /**
      * Properties of the Config Server resource
      */
-    public readonly properties!: pulumi.Output<types.outputs.appplatform.ConfigServerPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ConfigServerPropertiesResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.appplatform.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource.
      */
@@ -92,7 +92,7 @@ export interface ConfigServerArgs {
     /**
      * Properties of the Config Server resource
      */
-    properties?: pulumi.Input<types.inputs.appplatform.ConfigServerPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ConfigServerPropertiesArgs>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */

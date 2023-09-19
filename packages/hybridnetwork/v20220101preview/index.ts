@@ -63,7 +63,7 @@ utilities.lazyLoad(exports, ["VendorSkus"], () => require("./vendorSkus"));
 
 
 // Export enums:
-export * from "../types/enums/v20220101preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Certificate resource payload.
  */
@@ -38,11 +38,11 @@ export class Certificate extends pulumi.CustomResource {
     /**
      * Properties of the certificate resource payload.
      */
-    public readonly properties!: pulumi.Output<types.outputs.appplatform.v20230901preview.ContentCertificatePropertiesResponse | types.outputs.appplatform.v20230901preview.KeyVaultCertificatePropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ContentCertificatePropertiesResponse | types.outputs.KeyVaultCertificatePropertiesResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.appplatform.v20230901preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource.
      */
@@ -96,7 +96,7 @@ export interface CertificateArgs {
     /**
      * Properties of the certificate resource payload.
      */
-    properties?: pulumi.Input<types.inputs.appplatform.v20230901preview.ContentCertificatePropertiesArgs | types.inputs.appplatform.v20230901preview.KeyVaultCertificatePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ContentCertificatePropertiesArgs | types.inputs.KeyVaultCertificatePropertiesArgs>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */

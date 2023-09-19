@@ -47,11 +47,11 @@ export class Site extends pulumi.CustomResource {
     /**
      * Nested properties of VMWare site.
      */
-    public readonly properties!: pulumi.Output<types.outputs.offazure.SitePropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.SitePropertiesResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.offazure.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Type of resource. Type = Microsoft.OffAzure/VMWareSites.
@@ -116,7 +116,7 @@ export interface SiteArgs {
     /**
      * Nested properties of VMWare site.
      */
-    properties?: pulumi.Input<types.inputs.offazure.SitePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.SitePropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

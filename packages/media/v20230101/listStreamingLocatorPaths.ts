@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * List Paths supported by this Streaming Locator
  */
@@ -40,7 +40,7 @@ export interface ListStreamingLocatorPathsResult {
     /**
      * Streaming Paths supported by current Streaming Locator
      */
-    readonly streamingPaths?: types.outputs.media.v20230101.StreamingPathResponse[];
+    readonly streamingPaths?: types.outputs.StreamingPathResponse[];
 }
 /**
  * List Paths supported by this Streaming Locator

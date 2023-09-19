@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 export class BatchDeployment extends pulumi.CustomResource {
     /**
      * Get an existing BatchDeployment resource's state with the given name, ID, and optional extra
@@ -31,11 +31,11 @@ export class BatchDeployment extends pulumi.CustomResource {
     /**
      * [Required] Additional attributes of the entity.
      */
-    public readonly batchDeploymentDetails!: pulumi.Output<types.outputs.machinelearningservices.v20220201preview.BatchDeploymentResponse>;
+    public readonly batchDeploymentDetails!: pulumi.Output<types.outputs.BatchDeploymentResponse>;
     /**
      * Managed service identity (system assigned and/or user assigned identities)
      */
-    public readonly identity!: pulumi.Output<types.outputs.machinelearningservices.v20220201preview.ManagedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
      */
@@ -51,11 +51,11 @@ export class BatchDeployment extends pulumi.CustomResource {
     /**
      * Sku details required for ARM contract for Autoscaling.
      */
-    public readonly sku!: pulumi.Output<types.outputs.machinelearningservices.v20220201preview.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.machinelearningservices.v20220201preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -88,7 +88,7 @@ export class BatchDeployment extends pulumi.CustomResource {
             if ((!args || args.workspaceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workspaceName'");
             }
-            resourceInputs["batchDeploymentDetails"] = args ? (args.batchDeploymentDetails ? pulumi.output(args.batchDeploymentDetails).apply(types.inputs.machinelearningservices.v20220201preview.batchDeploymentArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["batchDeploymentDetails"] = args ? (args.batchDeploymentDetails ? pulumi.output(args.batchDeploymentDetails).apply(types.inputs.batchDeploymentArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["deploymentName"] = args ? args.deploymentName : undefined;
             resourceInputs["endpointName"] = args ? args.endpointName : undefined;
             resourceInputs["identity"] = args ? args.identity : undefined;
@@ -126,7 +126,7 @@ export interface BatchDeploymentArgs {
     /**
      * [Required] Additional attributes of the entity.
      */
-    batchDeploymentDetails: pulumi.Input<types.inputs.machinelearningservices.v20220201preview.BatchDeploymentArgs>;
+    batchDeploymentDetails: pulumi.Input<types.inputs.BatchDeploymentArgs>;
     /**
      * The identifier for the Batch inference deployment.
      */
@@ -138,7 +138,7 @@ export interface BatchDeploymentArgs {
     /**
      * Managed service identity (system assigned and/or user assigned identities)
      */
-    identity?: pulumi.Input<types.inputs.machinelearningservices.v20220201preview.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
      * Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
      */
@@ -154,7 +154,7 @@ export interface BatchDeploymentArgs {
     /**
      * Sku details required for ARM contract for Autoscaling.
      */
-    sku?: pulumi.Input<types.inputs.machinelearningservices.v20220201preview.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Resource tags.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A share data transfer object.
  */
@@ -54,7 +54,7 @@ export class Share extends pulumi.CustomResource {
     /**
      * System Data of the Azure resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.datashare.v20210801.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Share terms.
      */
@@ -140,7 +140,7 @@ export interface ShareArgs {
     /**
      * Share kind.
      */
-    shareKind?: pulumi.Input<string | types.enums.v20210801.ShareKind>;
+    shareKind?: pulumi.Input<string | types.enums.ShareKind>;
     /**
      * The name of the share.
      */

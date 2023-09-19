@@ -39,11 +39,11 @@ export class Alias extends pulumi.CustomResource {
     /**
      * Subscription Alias response properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.subscription.SubscriptionAliasResponsePropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.SubscriptionAliasResponsePropertiesResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.subscription.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource type, Microsoft.Subscription/aliases.
      */
@@ -89,5 +89,5 @@ export interface AliasArgs {
     /**
      * Put alias request properties.
      */
-    properties?: pulumi.Input<types.inputs.subscription.PutAliasRequestPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.PutAliasRequestPropertiesArgs>;
 }

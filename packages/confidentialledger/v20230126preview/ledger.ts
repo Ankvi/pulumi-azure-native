@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Confidential Ledger. Contains the properties of Confidential Ledger Resource.
  */
@@ -42,11 +42,11 @@ export class Ledger extends pulumi.CustomResource {
     /**
      * Properties of Confidential Ledger Resource.
      */
-    public readonly properties!: pulumi.Output<types.outputs.confidentialledger.v20230126preview.LedgerPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.LedgerPropertiesResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.confidentialledger.v20230126preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -108,7 +108,7 @@ export interface LedgerArgs {
     /**
      * Properties of Confidential Ledger Resource.
      */
-    properties?: pulumi.Input<types.inputs.confidentialledger.v20230126preview.LedgerPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.LedgerPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

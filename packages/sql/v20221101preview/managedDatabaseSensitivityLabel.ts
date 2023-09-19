@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A sensitivity label.
  */
@@ -175,7 +175,7 @@ export interface ManagedDatabaseSensitivityLabelArgs {
      * The name of the managed instance.
      */
     managedInstanceName: pulumi.Input<string>;
-    rank?: pulumi.Input<types.enums.v20221101preview.SensitivityLabelRank>;
+    rank?: pulumi.Input<types.enums.SensitivityLabelRank>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */

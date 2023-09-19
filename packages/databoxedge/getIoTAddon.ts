@@ -54,11 +54,11 @@ export interface GetIoTAddonResult {
     /**
      * IoT device metadata to which appliance needs to be connected.
      */
-    readonly ioTDeviceDetails: types.outputs.databoxedge.IoTDeviceInfoResponse;
+    readonly ioTDeviceDetails: types.outputs.IoTDeviceInfoResponse;
     /**
      * IoT edge device to which the IoT Addon needs to be configured.
      */
-    readonly ioTEdgeDeviceDetails: types.outputs.databoxedge.IoTDeviceInfoResponse;
+    readonly ioTEdgeDeviceDetails: types.outputs.IoTDeviceInfoResponse;
     /**
      * Addon type.
      * Expected value is 'IotEdge'.
@@ -75,7 +75,7 @@ export interface GetIoTAddonResult {
     /**
      * Metadata pertaining to creation and last modification of Addon
      */
-    readonly systemData: types.outputs.databoxedge.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The hierarchical type of the object.
      */

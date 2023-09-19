@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the preview information of a vendor sku.
  */
@@ -48,7 +48,7 @@ export interface GetVendorSkuPreviewResult {
     /**
      * The system meta data relating to this resource.
      */
-    readonly systemData: types.outputs.hybridnetwork.v20220101preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource.
      */

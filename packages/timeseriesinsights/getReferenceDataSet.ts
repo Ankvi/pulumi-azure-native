@@ -49,7 +49,7 @@ export interface GetReferenceDataSetResult {
     /**
      * The list of key properties for the reference data set.
      */
-    readonly keyProperties: types.outputs.timeseriesinsights.ReferenceDataSetKeyPropertyResponse[];
+    readonly keyProperties: types.outputs.ReferenceDataSetKeyPropertyResponse[];
     /**
      * Resource location
      */

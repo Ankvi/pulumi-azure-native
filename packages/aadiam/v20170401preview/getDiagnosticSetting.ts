@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the active diagnostic setting for AadIam.
  */
@@ -38,7 +38,7 @@ export interface GetDiagnosticSettingResult {
     /**
      * The list of logs settings.
      */
-    readonly logs?: types.outputs.aadiam.v20170401preview.LogSettingsResponse[];
+    readonly logs?: types.outputs.LogSettingsResponse[];
     /**
      * Azure resource name
      */

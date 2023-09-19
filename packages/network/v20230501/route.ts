@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Route resource.
  */
@@ -140,7 +140,7 @@ export interface RouteArgs {
     /**
      * The type of Azure hop the packet should be sent to.
      */
-    nextHopType: pulumi.Input<string | types.enums.v20230501.RouteNextHopType>;
+    nextHopType: pulumi.Input<string | types.enums.RouteNextHopType>;
     /**
      * The name of the resource group.
      */

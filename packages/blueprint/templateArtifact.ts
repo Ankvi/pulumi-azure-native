@@ -56,7 +56,7 @@ export class TemplateArtifact extends pulumi.CustomResource {
     /**
      * Resource Manager template blueprint artifact parameter values.
      */
-    public readonly parameters!: pulumi.Output<{[key: string]: types.outputs.blueprint.ParameterValueResponse}>;
+    public readonly parameters!: pulumi.Output<{[key: string]: types.outputs.ParameterValueResponse}>;
     /**
      * If applicable, the name of the resource group placeholder to which the Resource Manager template blueprint artifact will be deployed.
      */
@@ -158,7 +158,7 @@ export interface TemplateArtifactArgs {
     /**
      * Resource Manager template blueprint artifact parameter values.
      */
-    parameters: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.blueprint.ParameterValueArgs>}>;
+    parameters: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.ParameterValueArgs>}>;
     /**
      * If applicable, the name of the resource group placeholder to which the Resource Manager template blueprint artifact will be deployed.
      */

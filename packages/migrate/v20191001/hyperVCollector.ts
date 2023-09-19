@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 export class HyperVCollector extends pulumi.CustomResource {
     /**
      * Get an existing HyperVCollector resource's state with the given name, ID, and optional extra
@@ -30,7 +30,7 @@ export class HyperVCollector extends pulumi.CustomResource {
 
     public readonly eTag!: pulumi.Output<string | undefined>;
     public /*out*/ readonly name!: pulumi.Output<string>;
-    public readonly properties!: pulumi.Output<types.outputs.migrate.v20191001.CollectorPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.CollectorPropertiesResponse>;
     public /*out*/ readonly type!: pulumi.Output<string>;
 
     /**
@@ -83,7 +83,7 @@ export interface HyperVCollectorArgs {
      * Name of the Azure Migrate project.
      */
     projectName: pulumi.Input<string>;
-    properties?: pulumi.Input<types.inputs.migrate.v20191001.CollectorPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.CollectorPropertiesArgs>;
     /**
      * Name of the Azure Resource Group that project is part of.
      */

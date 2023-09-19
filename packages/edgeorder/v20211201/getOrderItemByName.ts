@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets an order item.
  */
@@ -36,7 +36,7 @@ export interface GetOrderItemByNameResult {
     /**
      * Represents shipping and return address for order item
      */
-    readonly addressDetails: types.outputs.edgeorder.v20211201.AddressDetailsResponse;
+    readonly addressDetails: types.outputs.AddressDetailsResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -56,7 +56,7 @@ export interface GetOrderItemByNameResult {
     /**
      * Represents order item details.
      */
-    readonly orderItemDetails: types.outputs.edgeorder.v20211201.OrderItemDetailsResponse;
+    readonly orderItemDetails: types.outputs.OrderItemDetailsResponse;
     /**
      * Start time of order item
      */
@@ -64,7 +64,7 @@ export interface GetOrderItemByNameResult {
     /**
      * Represents resource creation and update time
      */
-    readonly systemData: types.outputs.edgeorder.v20211201.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

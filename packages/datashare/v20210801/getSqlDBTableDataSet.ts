@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a DataSet in a share
  */
@@ -70,7 +70,7 @@ export interface GetSqlDBTableDataSetResult {
     /**
      * System Data of the Azure resource.
      */
-    readonly systemData: types.outputs.datashare.v20210801.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * SQL DB table name.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves the requested ExpressRoutePort resource.
  */
@@ -43,7 +43,7 @@ export interface GetExpressRoutePortResult {
     /**
      * Reference the ExpressRoute circuit(s) that are provisioned on this ExpressRoutePort resource.
      */
-    readonly circuits: types.outputs.network.v20230201.SubResourceResponse[];
+    readonly circuits: types.outputs.SubResourceResponse[];
     /**
      * Encapsulation method on physical ports.
      */
@@ -63,11 +63,11 @@ export interface GetExpressRoutePortResult {
     /**
      * The identity of ExpressRoutePort, if configured.
      */
-    readonly identity?: types.outputs.network.v20230201.ManagedServiceIdentityResponse;
+    readonly identity?: types.outputs.ManagedServiceIdentityResponse;
     /**
      * The set of physical links of the ExpressRoutePort resource.
      */
-    readonly links?: types.outputs.network.v20230201.ExpressRouteLinkResponse[];
+    readonly links?: types.outputs.ExpressRouteLinkResponse[];
     /**
      * Resource location.
      */

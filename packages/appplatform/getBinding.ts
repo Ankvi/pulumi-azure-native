@@ -50,11 +50,11 @@ export interface GetBindingResult {
     /**
      * Properties of the Binding resource
      */
-    readonly properties: types.outputs.appplatform.BindingResourcePropertiesResponse;
+    readonly properties: types.outputs.BindingResourcePropertiesResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.appplatform.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource.
      */

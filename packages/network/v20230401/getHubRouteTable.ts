@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves the details of a RouteTable.
  */
@@ -64,7 +64,7 @@ export interface GetHubRouteTableResult {
     /**
      * List of all routes.
      */
-    readonly routes?: types.outputs.network.v20230401.HubRouteResponse[];
+    readonly routes?: types.outputs.HubRouteResponse[];
     /**
      * Resource type.
      */

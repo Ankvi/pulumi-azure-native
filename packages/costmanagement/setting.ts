@@ -35,7 +35,7 @@ export class Setting extends pulumi.CustomResource {
     /**
      * Array of scopes with additional details used by Cost Management in the Azure portal.
      */
-    public readonly cache!: pulumi.Output<types.outputs.costmanagement.SettingsPropertiesResponseCache[] | undefined>;
+    public readonly cache!: pulumi.Output<types.outputs.SettingsPropertiesResponseCache[] | undefined>;
     /**
      * Resource kind.
      */
@@ -100,7 +100,7 @@ export interface SettingArgs {
     /**
      * Array of scopes with additional details used by Cost Management in the Azure portal.
      */
-    cache?: pulumi.Input<pulumi.Input<types.inputs.costmanagement.SettingsPropertiesCacheArgs>[]>;
+    cache?: pulumi.Input<pulumi.Input<types.inputs.SettingsPropertiesCacheArgs>[]>;
     /**
      * Sets the default scope the current user will see when they sign into Azure Cost Management in the Azure portal.
      */

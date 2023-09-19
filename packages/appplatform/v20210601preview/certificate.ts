@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Certificate resource payload.
  */
@@ -38,7 +38,7 @@ export class Certificate extends pulumi.CustomResource {
     /**
      * Properties of the certificate resource payload.
      */
-    public readonly properties!: pulumi.Output<types.outputs.appplatform.v20210601preview.CertificatePropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.CertificatePropertiesResponse>;
     /**
      * The type of the resource.
      */
@@ -90,7 +90,7 @@ export interface CertificateArgs {
     /**
      * Properties of the certificate resource payload.
      */
-    properties?: pulumi.Input<types.inputs.appplatform.v20210601preview.CertificatePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.CertificatePropertiesArgs>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */

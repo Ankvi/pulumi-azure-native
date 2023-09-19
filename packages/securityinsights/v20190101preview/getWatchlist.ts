@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a watchlist, without its watchlist items.
  */
@@ -49,7 +49,7 @@ export interface GetWatchlistResult {
     /**
      * Describes a user that created the watchlist
      */
-    readonly createdBy?: types.outputs.securityinsights.v20190101preview.WatchlistUserInfoResponse;
+    readonly createdBy?: types.outputs.WatchlistUserInfoResponse;
     /**
      * The default duration of a watchlist (in ISO 8601 duration format)
      */
@@ -113,7 +113,7 @@ export interface GetWatchlistResult {
     /**
      * Describes a user that updated the watchlist
      */
-    readonly updatedBy?: types.outputs.securityinsights.v20190101preview.WatchlistUserInfoResponse;
+    readonly updatedBy?: types.outputs.WatchlistUserInfoResponse;
     /**
      * The status of the Watchlist upload : New, InProgress or Complete. Pls note : When a Watchlist upload status is equal to InProgress, the Watchlist cannot be deleted
      */

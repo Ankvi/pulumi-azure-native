@@ -63,7 +63,7 @@ export interface GetTargetResult {
     /**
      * The system metadata of the target resource.
      */
-    readonly systemData: types.outputs.chaos.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

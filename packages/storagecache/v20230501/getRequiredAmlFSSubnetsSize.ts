@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the number of available IP addresses needed for the AML file system information provided.
  */
@@ -18,7 +18,7 @@ export interface GetRequiredAmlFSSubnetsSizeArgs {
     /**
      * SKU for the resource.
      */
-    sku?: types.inputs.storagecache.v20230501.SkuName;
+    sku?: types.inputs.SkuName;
     /**
      * The size of the AML file system, in TiB.
      */
@@ -45,7 +45,7 @@ export interface GetRequiredAmlFSSubnetsSizeOutputArgs {
     /**
      * SKU for the resource.
      */
-    sku?: pulumi.Input<types.inputs.storagecache.v20230501.SkuNameArgs>;
+    sku?: pulumi.Input<types.inputs.SkuNameArgs>;
     /**
      * The size of the AML file system, in TiB.
      */

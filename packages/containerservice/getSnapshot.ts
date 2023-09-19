@@ -32,7 +32,7 @@ export interface GetSnapshotResult {
     /**
      * CreationData to be used to specify the source agent pool resource ID to create this snapshot.
      */
-    readonly creationData?: types.outputs.containerservice.CreationDataResponse;
+    readonly creationData?: types.outputs.CreationDataResponse;
     /**
      * Whether to use a FIPS-enabled OS.
      */
@@ -72,7 +72,7 @@ export interface GetSnapshotResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.containerservice.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

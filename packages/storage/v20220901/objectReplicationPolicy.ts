@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The replication policy between two storage accounts. Multiple rules can be defined in one policy.
  */
@@ -50,7 +50,7 @@ export class ObjectReplicationPolicy extends pulumi.CustomResource {
     /**
      * The storage account object replication rules.
      */
-    public readonly rules!: pulumi.Output<types.outputs.storage.v20220901.ObjectReplicationPolicyRuleResponse[] | undefined>;
+    public readonly rules!: pulumi.Output<types.outputs.ObjectReplicationPolicyRuleResponse[] | undefined>;
     /**
      * Required. Source account name. It should be full resource id if allowCrossTenantReplication set to false.
      */
@@ -132,7 +132,7 @@ export interface ObjectReplicationPolicyArgs {
     /**
      * The storage account object replication rules.
      */
-    rules?: pulumi.Input<pulumi.Input<types.inputs.storage.v20220901.ObjectReplicationPolicyRuleArgs>[]>;
+    rules?: pulumi.Input<pulumi.Input<types.inputs.ObjectReplicationPolicyRuleArgs>[]>;
     /**
      * Required. Source account name. It should be full resource id if allowCrossTenantReplication set to false.
      */

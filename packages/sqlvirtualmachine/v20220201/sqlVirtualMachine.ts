@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A SQL virtual machine.
  */
@@ -34,23 +34,23 @@ export class SqlVirtualMachine extends pulumi.CustomResource {
     /**
      * Assessment Settings.
      */
-    public readonly assessmentSettings!: pulumi.Output<types.outputs.sqlvirtualmachine.v20220201.AssessmentSettingsResponse | undefined>;
+    public readonly assessmentSettings!: pulumi.Output<types.outputs.AssessmentSettingsResponse | undefined>;
     /**
      * Auto backup settings for SQL Server.
      */
-    public readonly autoBackupSettings!: pulumi.Output<types.outputs.sqlvirtualmachine.v20220201.AutoBackupSettingsResponse | undefined>;
+    public readonly autoBackupSettings!: pulumi.Output<types.outputs.AutoBackupSettingsResponse | undefined>;
     /**
      * Auto patching settings for applying critical security updates to SQL virtual machine.
      */
-    public readonly autoPatchingSettings!: pulumi.Output<types.outputs.sqlvirtualmachine.v20220201.AutoPatchingSettingsResponse | undefined>;
+    public readonly autoPatchingSettings!: pulumi.Output<types.outputs.AutoPatchingSettingsResponse | undefined>;
     /**
      * Azure Active Directory identity of the server.
      */
-    public readonly identity!: pulumi.Output<types.outputs.sqlvirtualmachine.v20220201.ResourceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ResourceIdentityResponse | undefined>;
     /**
      * Key vault credential settings.
      */
-    public readonly keyVaultCredentialSettings!: pulumi.Output<types.outputs.sqlvirtualmachine.v20220201.KeyVaultCredentialSettingsResponse | undefined>;
+    public readonly keyVaultCredentialSettings!: pulumi.Output<types.outputs.KeyVaultCredentialSettingsResponse | undefined>;
     /**
      * Resource location.
      */
@@ -66,7 +66,7 @@ export class SqlVirtualMachine extends pulumi.CustomResource {
     /**
      * SQL Server configuration management settings.
      */
-    public readonly serverConfigurationsManagementSettings!: pulumi.Output<types.outputs.sqlvirtualmachine.v20220201.ServerConfigurationsManagementSettingsResponse | undefined>;
+    public readonly serverConfigurationsManagementSettings!: pulumi.Output<types.outputs.ServerConfigurationsManagementSettingsResponse | undefined>;
     /**
      * SQL image offer. Examples include SQL2016-WS2016, SQL2017-WS2016.
      */
@@ -90,11 +90,11 @@ export class SqlVirtualMachine extends pulumi.CustomResource {
     /**
      * Storage Configuration Settings.
      */
-    public readonly storageConfigurationSettings!: pulumi.Output<types.outputs.sqlvirtualmachine.v20220201.StorageConfigurationSettingsResponse | undefined>;
+    public readonly storageConfigurationSettings!: pulumi.Output<types.outputs.StorageConfigurationSettingsResponse | undefined>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.sqlvirtualmachine.v20220201.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -110,7 +110,7 @@ export class SqlVirtualMachine extends pulumi.CustomResource {
     /**
      * Domain credentials for setting up Windows Server Failover Cluster for SQL availability group.
      */
-    public readonly wsfcDomainCredentials!: pulumi.Output<types.outputs.sqlvirtualmachine.v20220201.WsfcDomainCredentialsResponse | undefined>;
+    public readonly wsfcDomainCredentials!: pulumi.Output<types.outputs.WsfcDomainCredentialsResponse | undefined>;
     /**
      * Domain credentials for setting up Windows Server Failover Cluster for SQL availability group.
      */
@@ -190,23 +190,23 @@ export interface SqlVirtualMachineArgs {
     /**
      * Assessment Settings.
      */
-    assessmentSettings?: pulumi.Input<types.inputs.sqlvirtualmachine.v20220201.AssessmentSettingsArgs>;
+    assessmentSettings?: pulumi.Input<types.inputs.AssessmentSettingsArgs>;
     /**
      * Auto backup settings for SQL Server.
      */
-    autoBackupSettings?: pulumi.Input<types.inputs.sqlvirtualmachine.v20220201.AutoBackupSettingsArgs>;
+    autoBackupSettings?: pulumi.Input<types.inputs.AutoBackupSettingsArgs>;
     /**
      * Auto patching settings for applying critical security updates to SQL virtual machine.
      */
-    autoPatchingSettings?: pulumi.Input<types.inputs.sqlvirtualmachine.v20220201.AutoPatchingSettingsArgs>;
+    autoPatchingSettings?: pulumi.Input<types.inputs.AutoPatchingSettingsArgs>;
     /**
      * Azure Active Directory identity of the server.
      */
-    identity?: pulumi.Input<types.inputs.sqlvirtualmachine.v20220201.ResourceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ResourceIdentityArgs>;
     /**
      * Key vault credential settings.
      */
-    keyVaultCredentialSettings?: pulumi.Input<types.inputs.sqlvirtualmachine.v20220201.KeyVaultCredentialSettingsArgs>;
+    keyVaultCredentialSettings?: pulumi.Input<types.inputs.KeyVaultCredentialSettingsArgs>;
     /**
      * Resource location.
      */
@@ -218,7 +218,7 @@ export interface SqlVirtualMachineArgs {
     /**
      * SQL Server configuration management settings.
      */
-    serverConfigurationsManagementSettings?: pulumi.Input<types.inputs.sqlvirtualmachine.v20220201.ServerConfigurationsManagementSettingsArgs>;
+    serverConfigurationsManagementSettings?: pulumi.Input<types.inputs.ServerConfigurationsManagementSettingsArgs>;
     /**
      * SQL image offer. Examples include SQL2016-WS2016, SQL2017-WS2016.
      */
@@ -226,15 +226,15 @@ export interface SqlVirtualMachineArgs {
     /**
      * SQL Server edition type.
      */
-    sqlImageSku?: pulumi.Input<string | types.enums.v20220201.SqlImageSku>;
+    sqlImageSku?: pulumi.Input<string | types.enums.SqlImageSku>;
     /**
      * SQL Server Management type.
      */
-    sqlManagement?: pulumi.Input<string | types.enums.v20220201.SqlManagementMode>;
+    sqlManagement?: pulumi.Input<string | types.enums.SqlManagementMode>;
     /**
      * SQL Server license type.
      */
-    sqlServerLicenseType?: pulumi.Input<string | types.enums.v20220201.SqlServerLicenseType>;
+    sqlServerLicenseType?: pulumi.Input<string | types.enums.SqlServerLicenseType>;
     /**
      * ARM resource id of the SQL virtual machine group this SQL virtual machine is or will be part of.
      */
@@ -246,7 +246,7 @@ export interface SqlVirtualMachineArgs {
     /**
      * Storage Configuration Settings.
      */
-    storageConfigurationSettings?: pulumi.Input<types.inputs.sqlvirtualmachine.v20220201.StorageConfigurationSettingsArgs>;
+    storageConfigurationSettings?: pulumi.Input<types.inputs.StorageConfigurationSettingsArgs>;
     /**
      * Resource tags.
      */
@@ -258,7 +258,7 @@ export interface SqlVirtualMachineArgs {
     /**
      * Domain credentials for setting up Windows Server Failover Cluster for SQL availability group.
      */
-    wsfcDomainCredentials?: pulumi.Input<types.inputs.sqlvirtualmachine.v20220201.WsfcDomainCredentialsArgs>;
+    wsfcDomainCredentials?: pulumi.Input<types.inputs.WsfcDomainCredentialsArgs>;
     /**
      * Domain credentials for setting up Windows Server Failover Cluster for SQL availability group.
      */

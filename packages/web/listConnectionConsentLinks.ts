@@ -24,7 +24,7 @@ export interface ListConnectionConsentLinksArgs {
     /**
      * Collection of resources
      */
-    parameters?: types.inputs.web.ConsentLinkParameterDefinition[];
+    parameters?: types.inputs.ConsentLinkParameterDefinition[];
     /**
      * The resource group
      */
@@ -42,7 +42,7 @@ export interface ListConnectionConsentLinksResult {
     /**
      * Collection of resources
      */
-    readonly value?: types.outputs.web.ConsentLinkDefinitionResponse[];
+    readonly value?: types.outputs.ConsentLinkDefinitionResponse[];
 }
 /**
  * Lists the consent links of a connection
@@ -60,7 +60,7 @@ export interface ListConnectionConsentLinksOutputArgs {
     /**
      * Collection of resources
      */
-    parameters?: pulumi.Input<pulumi.Input<types.inputs.web.ConsentLinkParameterDefinitionArgs>[]>;
+    parameters?: pulumi.Input<pulumi.Input<types.inputs.ConsentLinkParameterDefinitionArgs>[]>;
     /**
      * The resource group
      */

@@ -36,7 +36,7 @@ export interface ListMonitorLinkedResourcesResult {
     /**
      * Results of a list operation.
      */
-    readonly value?: types.outputs.datadog.LinkedResourceResponse[];
+    readonly value?: types.outputs.LinkedResourceResponse[];
 }
 /**
  * Response of a list operation.

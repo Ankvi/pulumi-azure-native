@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get FarmBeats resource.
  */
@@ -35,7 +35,7 @@ export interface GetFarmBeatsModelResult {
     /**
      * Identity for the resource.
      */
-    readonly identity?: types.outputs.agfoodplatform.v20210901preview.IdentityResponse;
+    readonly identity?: types.outputs.IdentityResponse;
     /**
      * Uri of the FarmBeats instance.
      */
@@ -51,7 +51,7 @@ export interface GetFarmBeatsModelResult {
     /**
      * The private endpoint connection resource.
      */
-    readonly privateEndpointConnections: types.outputs.agfoodplatform.v20210901preview.PrivateEndpointConnectionResponse;
+    readonly privateEndpointConnections: types.outputs.PrivateEndpointConnectionResponse;
     /**
      * FarmBeats instance provisioning state.
      */
@@ -63,11 +63,11 @@ export interface GetFarmBeatsModelResult {
     /**
      * Sensor integration request model.
      */
-    readonly sensorIntegration?: types.outputs.agfoodplatform.v20210901preview.SensorIntegrationResponse;
+    readonly sensorIntegration?: types.outputs.SensorIntegrationResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.agfoodplatform.v20210901preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

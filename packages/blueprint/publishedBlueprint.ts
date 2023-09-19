@@ -55,15 +55,15 @@ export class PublishedBlueprint extends pulumi.CustomResource {
     /**
      * Parameters required by this blueprint definition.
      */
-    public readonly parameters!: pulumi.Output<{[key: string]: types.outputs.blueprint.ParameterDefinitionResponse} | undefined>;
+    public readonly parameters!: pulumi.Output<{[key: string]: types.outputs.ParameterDefinitionResponse} | undefined>;
     /**
      * Resource group placeholders defined by this blueprint definition.
      */
-    public readonly resourceGroups!: pulumi.Output<{[key: string]: types.outputs.blueprint.ResourceGroupDefinitionResponse} | undefined>;
+    public readonly resourceGroups!: pulumi.Output<{[key: string]: types.outputs.ResourceGroupDefinitionResponse} | undefined>;
     /**
      * Status of the blueprint. This field is readonly.
      */
-    public /*out*/ readonly status!: pulumi.Output<types.outputs.blueprint.BlueprintStatusResponse>;
+    public /*out*/ readonly status!: pulumi.Output<types.outputs.BlueprintStatusResponse>;
     /**
      * The scope where this blueprint definition can be assigned.
      */
@@ -144,11 +144,11 @@ export interface PublishedBlueprintArgs {
     /**
      * Parameters required by this blueprint definition.
      */
-    parameters?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.blueprint.ParameterDefinitionArgs>}>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.ParameterDefinitionArgs>}>;
     /**
      * Resource group placeholders defined by this blueprint definition.
      */
-    resourceGroups?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.blueprint.ResourceGroupDefinitionArgs>}>;
+    resourceGroups?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.ResourceGroupDefinitionArgs>}>;
     /**
      * The scope of the resource. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}').
      */

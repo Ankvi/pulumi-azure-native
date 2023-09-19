@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Information about packet capture session.
  */
@@ -42,7 +42,7 @@ export class PacketCapture extends pulumi.CustomResource {
     /**
      * A list of packet capture filters.
      */
-    public readonly filters!: pulumi.Output<types.outputs.network.v20200601.PacketCaptureFilterResponse[] | undefined>;
+    public readonly filters!: pulumi.Output<types.outputs.PacketCaptureFilterResponse[] | undefined>;
     /**
      * Name of the packet capture session.
      */
@@ -54,7 +54,7 @@ export class PacketCapture extends pulumi.CustomResource {
     /**
      * The storage location for a packet capture session.
      */
-    public readonly storageLocation!: pulumi.Output<types.outputs.network.v20200601.PacketCaptureStorageLocationResponse>;
+    public readonly storageLocation!: pulumi.Output<types.outputs.PacketCaptureStorageLocationResponse>;
     /**
      * The ID of the targeted resource, only VM is currently supported.
      */
@@ -132,7 +132,7 @@ export interface PacketCaptureArgs {
     /**
      * A list of packet capture filters.
      */
-    filters?: pulumi.Input<pulumi.Input<types.inputs.network.v20200601.PacketCaptureFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<types.inputs.PacketCaptureFilterArgs>[]>;
     /**
      * The name of the network watcher.
      */
@@ -148,7 +148,7 @@ export interface PacketCaptureArgs {
     /**
      * The storage location for a packet capture session.
      */
-    storageLocation: pulumi.Input<types.inputs.network.v20200601.PacketCaptureStorageLocationArgs>;
+    storageLocation: pulumi.Input<types.inputs.PacketCaptureStorageLocationArgs>;
     /**
      * The ID of the targeted resource, only VM is currently supported.
      */

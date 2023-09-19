@@ -43,11 +43,11 @@ export class GitHubConnector extends pulumi.CustomResource {
     /**
      * Properties of the ARM resource for /subscriptions/xxx/resourceGroups/xxx/providers/Microsoft.SecurityDevOps/gitHubConnectors.
      */
-    public readonly properties!: pulumi.Output<types.outputs.securitydevops.GitHubConnectorPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.GitHubConnectorPropertiesResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.securitydevops.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -109,7 +109,7 @@ export interface GitHubConnectorArgs {
     /**
      * Properties of the ARM resource for /subscriptions/xxx/resourceGroups/xxx/providers/Microsoft.SecurityDevOps/gitHubConnectors.
      */
-    properties?: pulumi.Input<types.inputs.securitydevops.GitHubConnectorPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.GitHubConnectorPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

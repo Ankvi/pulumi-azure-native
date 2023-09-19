@@ -44,7 +44,7 @@ export interface GetExpressRouteCircuitResult {
     /**
      * The list of authorizations.
      */
-    readonly authorizations?: types.outputs.network.ExpressRouteCircuitAuthorizationResponse[];
+    readonly authorizations?: types.outputs.ExpressRouteCircuitAuthorizationResponse[];
     /**
      * The bandwidth of the circuit when the circuit is provisioned on an ExpressRoutePort resource.
      */
@@ -60,7 +60,7 @@ export interface GetExpressRouteCircuitResult {
     /**
      * The reference to the ExpressRoutePort resource when the circuit is provisioned on an ExpressRoutePort resource.
      */
-    readonly expressRoutePort?: types.outputs.network.SubResourceResponse;
+    readonly expressRoutePort?: types.outputs.SubResourceResponse;
     /**
      * The GatewayManager Etag.
      */
@@ -84,7 +84,7 @@ export interface GetExpressRouteCircuitResult {
     /**
      * The list of peerings.
      */
-    readonly peerings?: types.outputs.network.ExpressRouteCircuitPeeringResponse[];
+    readonly peerings?: types.outputs.ExpressRouteCircuitPeeringResponse[];
     /**
      * The provisioning state of the express route circuit resource.
      */
@@ -100,7 +100,7 @@ export interface GetExpressRouteCircuitResult {
     /**
      * The ServiceProviderProperties.
      */
-    readonly serviceProviderProperties?: types.outputs.network.ExpressRouteCircuitServiceProviderPropertiesResponse;
+    readonly serviceProviderProperties?: types.outputs.ExpressRouteCircuitServiceProviderPropertiesResponse;
     /**
      * The ServiceProviderProvisioningState state of the resource.
      */
@@ -108,7 +108,7 @@ export interface GetExpressRouteCircuitResult {
     /**
      * The SKU.
      */
-    readonly sku?: types.outputs.network.ExpressRouteCircuitSkuResponse;
+    readonly sku?: types.outputs.ExpressRouteCircuitSkuResponse;
     /**
      * The identifier of the circuit traffic. Outer tag for QinQ encapsulation.
      */

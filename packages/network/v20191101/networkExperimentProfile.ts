@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Defines an Network Experiment Profile and lists of Experiments
  */
@@ -106,7 +106,7 @@ export interface NetworkExperimentProfileArgs {
     /**
      * The state of the Experiment
      */
-    enabledState?: pulumi.Input<string | types.enums.v20191101.State>;
+    enabledState?: pulumi.Input<string | types.enums.State>;
     /**
      * Resource location.
      */

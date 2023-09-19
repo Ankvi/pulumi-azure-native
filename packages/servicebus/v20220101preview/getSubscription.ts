@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns a subscription description for the specified topic.
  */
@@ -49,11 +49,11 @@ export interface GetSubscriptionResult {
     /**
      * Properties specific to client affine subscriptions.
      */
-    readonly clientAffineProperties?: types.outputs.servicebus.v20220101preview.SBClientAffinePropertiesResponse;
+    readonly clientAffineProperties?: types.outputs.SBClientAffinePropertiesResponse;
     /**
      * Message count details
      */
-    readonly countDetails: types.outputs.servicebus.v20220101preview.MessageCountDetailsResponse;
+    readonly countDetails: types.outputs.MessageCountDetailsResponse;
     /**
      * Exact time the message was created.
      */
@@ -125,7 +125,7 @@ export interface GetSubscriptionResult {
     /**
      * The system meta data relating to this resource.
      */
-    readonly systemData: types.outputs.servicebus.v20220101preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the certificate associated with a certificate order.
  */
@@ -64,7 +64,7 @@ export interface GetAppServiceCertificateOrderCertificateResult {
     /**
      * The system metadata relating to this resource.
      */
-    readonly systemData: types.outputs.certificateregistration.v20201001.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

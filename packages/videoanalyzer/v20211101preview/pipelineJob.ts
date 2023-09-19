@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Pipeline job represents a unique instance of a batch topology, used for offline processing of selected portions of archived content.
  */
@@ -38,7 +38,7 @@ export class PipelineJob extends pulumi.CustomResource {
     /**
      * Details about the error, in case the pipeline job fails.
      */
-    public /*out*/ readonly error!: pulumi.Output<types.outputs.videoanalyzer.v20211101preview.PipelineJobErrorResponse>;
+    public /*out*/ readonly error!: pulumi.Output<types.outputs.PipelineJobErrorResponse>;
     /**
      * The date-time by when this pipeline job will be automatically deleted from your account.
      */
@@ -50,7 +50,7 @@ export class PipelineJob extends pulumi.CustomResource {
     /**
      * List of the instance level parameter values for the user-defined topology parameters. A pipeline can only define or override parameters values for parameters which have been declared in the referenced topology. Topology parameters without a default value must be defined. Topology parameters with a default value can be optionally be overridden.
      */
-    public readonly parameters!: pulumi.Output<types.outputs.videoanalyzer.v20211101preview.ParameterDefinitionResponse[] | undefined>;
+    public readonly parameters!: pulumi.Output<types.outputs.ParameterDefinitionResponse[] | undefined>;
     /**
      * Current state of the pipeline (read-only).
      */
@@ -58,7 +58,7 @@ export class PipelineJob extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.videoanalyzer.v20211101preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Reference to an existing pipeline topology. When activated, this pipeline job will process content according to the pipeline topology definition.
      */
@@ -133,7 +133,7 @@ export interface PipelineJobArgs {
     /**
      * List of the instance level parameter values for the user-defined topology parameters. A pipeline can only define or override parameters values for parameters which have been declared in the referenced topology. Topology parameters without a default value must be defined. Topology parameters with a default value can be optionally be overridden.
      */
-    parameters?: pulumi.Input<pulumi.Input<types.inputs.videoanalyzer.v20211101preview.ParameterDefinitionArgs>[]>;
+    parameters?: pulumi.Input<pulumi.Input<types.inputs.ParameterDefinitionArgs>[]>;
     /**
      * The pipeline job name.
      */

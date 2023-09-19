@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets information about a configuration of server.
  */
@@ -84,7 +84,7 @@ export interface GetConfigurationResult {
     /**
      * The system metadata relating to this resource.
      */
-    readonly systemData: types.outputs.dbformysql.v20220101.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

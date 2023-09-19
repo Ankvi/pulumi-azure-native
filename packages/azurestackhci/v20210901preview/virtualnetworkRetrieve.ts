@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The virtual network resource definition.
  */
@@ -34,7 +34,7 @@ export class VirtualnetworkRetrieve extends pulumi.CustomResource {
     /**
      * The extendedLocation of the resource.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.azurestackhci.v20210901preview.ExtendedLocationResponse | undefined>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -55,15 +55,15 @@ export class VirtualnetworkRetrieve extends pulumi.CustomResource {
     /**
      * VirtualNetworkStatus defines the observed state of virtual networks
      */
-    public /*out*/ readonly status!: pulumi.Output<types.outputs.azurestackhci.v20210901preview.VirtualNetworkStatusResponse>;
+    public /*out*/ readonly status!: pulumi.Output<types.outputs.VirtualNetworkStatusResponse>;
     /**
      * Subnet - list of subnets under the virtual network
      */
-    public readonly subnets!: pulumi.Output<types.outputs.azurestackhci.v20210901preview.VirtualnetworksPropertiesResponseSubnets[] | undefined>;
+    public readonly subnets!: pulumi.Output<types.outputs.VirtualnetworksPropertiesResponseSubnets[] | undefined>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.azurestackhci.v20210901preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -127,7 +127,7 @@ export interface VirtualnetworkRetrieveArgs {
     /**
      * The extendedLocation of the resource.
      */
-    extendedLocation?: pulumi.Input<types.inputs.azurestackhci.v20210901preview.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -135,7 +135,7 @@ export interface VirtualnetworkRetrieveArgs {
     /**
      * Type of the network
      */
-    networkType?: pulumi.Input<string | types.enums.v20210901preview.NetworkTypeEnum>;
+    networkType?: pulumi.Input<string | types.enums.NetworkTypeEnum>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -147,7 +147,7 @@ export interface VirtualnetworkRetrieveArgs {
     /**
      * Subnet - list of subnets under the virtual network
      */
-    subnets?: pulumi.Input<pulumi.Input<types.inputs.azurestackhci.v20210901preview.VirtualnetworksPropertiesSubnetsArgs>[]>;
+    subnets?: pulumi.Input<pulumi.Input<types.inputs.VirtualnetworksPropertiesSubnetsArgs>[]>;
     /**
      * Resource tags.
      */

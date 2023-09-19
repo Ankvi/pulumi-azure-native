@@ -44,7 +44,7 @@ export interface GetAccountResult {
     /**
      * The SKU of the resource
      */
-    readonly sku: types.outputs.engagementfabric.SKUResponse;
+    readonly sku: types.outputs.SKUResponse;
     /**
      * The tags of the resource
      */

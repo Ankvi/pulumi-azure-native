@@ -32,7 +32,7 @@ export interface ListGlobalUserEnvironmentsResult {
     /**
      * List of all the environments
      */
-    readonly environments?: types.outputs.labservices.EnvironmentDetailsResponse[];
+    readonly environments?: types.outputs.EnvironmentDetailsResponse[];
 }
 /**
  * List Environments for the user

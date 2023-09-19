@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets information about a RedisEnterprise cluster
  */
@@ -51,7 +51,7 @@ export interface GetRedisEnterpriseResult {
     /**
      * List of private endpoint connections associated with the specified RedisEnterprise cluster
      */
-    readonly privateEndpointConnections: types.outputs.cache.v20230701.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections: types.outputs.PrivateEndpointConnectionResponse[];
     /**
      * Current provisioning status of the cluster
      */
@@ -67,7 +67,7 @@ export interface GetRedisEnterpriseResult {
     /**
      * The SKU to create, which affects price, performance, and features.
      */
-    readonly sku: types.outputs.cache.v20230701.EnterpriseSkuResponse;
+    readonly sku: types.outputs.EnterpriseSkuResponse;
     /**
      * Resource tags.
      */

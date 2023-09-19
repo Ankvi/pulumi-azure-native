@@ -37,15 +37,15 @@ export interface GetAnalyticsConnectorResult {
     /**
      * Data destination configuration for Analytics Connector.
      */
-    readonly dataDestinationConfiguration: types.outputs.healthcareapis.AnalyticsConnectorDataLakeDataDestinationResponse;
+    readonly dataDestinationConfiguration: types.outputs.AnalyticsConnectorDataLakeDataDestinationResponse;
     /**
      * Data mapping configuration for Analytics Connector.
      */
-    readonly dataMappingConfiguration: types.outputs.healthcareapis.AnalyticsConnectorFhirToParquetMappingResponse;
+    readonly dataMappingConfiguration: types.outputs.AnalyticsConnectorFhirToParquetMappingResponse;
     /**
      * Data source for Analytics Connector.
      */
-    readonly dataSourceConfiguration: types.outputs.healthcareapis.AnalyticsConnectorFhirServiceDataSourceResponse;
+    readonly dataSourceConfiguration: types.outputs.AnalyticsConnectorFhirServiceDataSourceResponse;
     /**
      * An etag associated with the resource, used for optimistic concurrency when editing it.
      */
@@ -57,7 +57,7 @@ export interface GetAnalyticsConnectorResult {
     /**
      * Setting indicating whether the service has a managed identity associated with it.
      */
-    readonly identity?: types.outputs.healthcareapis.ServiceManagedIdentityResponseIdentity;
+    readonly identity?: types.outputs.ServiceManagedIdentityResponseIdentity;
     /**
      * The resource location.
      */
@@ -73,7 +73,7 @@ export interface GetAnalyticsConnectorResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.healthcareapis.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

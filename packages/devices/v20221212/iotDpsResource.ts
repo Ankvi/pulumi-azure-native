@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The description of the provisioning service.
  */
@@ -46,7 +46,7 @@ export class IotDpsResource extends pulumi.CustomResource {
     /**
      * Service specific properties for a provisioning service
      */
-    public readonly properties!: pulumi.Output<types.outputs.devices.v20221212.IotDpsPropertiesDescriptionResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.IotDpsPropertiesDescriptionResponse>;
     /**
      * The resource group of the resource.
      */
@@ -54,7 +54,7 @@ export class IotDpsResource extends pulumi.CustomResource {
     /**
      * Sku info for a provisioning Service.
      */
-    public readonly sku!: pulumi.Output<types.outputs.devices.v20221212.IotDpsSkuInfoResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.IotDpsSkuInfoResponse>;
     /**
      * The subscription id of the resource.
      */
@@ -62,7 +62,7 @@ export class IotDpsResource extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.devices.v20221212.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The resource tags.
      */
@@ -134,7 +134,7 @@ export interface IotDpsResourceArgs {
     /**
      * Service specific properties for a provisioning service
      */
-    properties: pulumi.Input<types.inputs.devices.v20221212.IotDpsPropertiesDescriptionArgs>;
+    properties: pulumi.Input<types.inputs.IotDpsPropertiesDescriptionArgs>;
     /**
      * Name of provisioning service to create or update.
      */
@@ -150,7 +150,7 @@ export interface IotDpsResourceArgs {
     /**
      * Sku info for a provisioning Service.
      */
-    sku: pulumi.Input<types.inputs.devices.v20221212.IotDpsSkuInfoArgs>;
+    sku: pulumi.Input<types.inputs.IotDpsSkuInfoArgs>;
     /**
      * The subscription id of the resource.
      */

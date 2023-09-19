@@ -57,7 +57,7 @@ export interface GetContentKeyPolicyResult {
     /**
      * The Key Policy options.
      */
-    readonly options: types.outputs.media.ContentKeyPolicyOptionResponse[];
+    readonly options: types.outputs.ContentKeyPolicyOptionResponse[];
     /**
      * The legacy Policy ID.
      */
@@ -65,7 +65,7 @@ export interface GetContentKeyPolicyResult {
     /**
      * The system metadata relating to this resource.
      */
-    readonly systemData: types.outputs.media.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

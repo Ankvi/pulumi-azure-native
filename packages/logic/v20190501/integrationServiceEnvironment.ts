@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The integration service environment.
  */
@@ -34,7 +34,7 @@ export class IntegrationServiceEnvironment extends pulumi.CustomResource {
     /**
      * Managed service identity properties.
      */
-    public readonly identity!: pulumi.Output<types.outputs.logic.v20190501.ManagedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * The resource location.
      */
@@ -46,11 +46,11 @@ export class IntegrationServiceEnvironment extends pulumi.CustomResource {
     /**
      * The integration service environment properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.logic.v20190501.IntegrationServiceEnvironmentPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.IntegrationServiceEnvironmentPropertiesResponse>;
     /**
      * The sku.
      */
-    public readonly sku!: pulumi.Output<types.outputs.logic.v20190501.IntegrationServiceEnvironmentSkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.IntegrationServiceEnvironmentSkuResponse | undefined>;
     /**
      * The resource tags.
      */
@@ -106,7 +106,7 @@ export interface IntegrationServiceEnvironmentArgs {
     /**
      * Managed service identity properties.
      */
-    identity?: pulumi.Input<types.inputs.logic.v20190501.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
      * The integration service environment name.
      */
@@ -118,7 +118,7 @@ export interface IntegrationServiceEnvironmentArgs {
     /**
      * The integration service environment properties.
      */
-    properties?: pulumi.Input<types.inputs.logic.v20190501.IntegrationServiceEnvironmentPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.IntegrationServiceEnvironmentPropertiesArgs>;
     /**
      * The resource group.
      */
@@ -126,7 +126,7 @@ export interface IntegrationServiceEnvironmentArgs {
     /**
      * The sku.
      */
-    sku?: pulumi.Input<types.inputs.logic.v20190501.IntegrationServiceEnvironmentSkuArgs>;
+    sku?: pulumi.Input<types.inputs.IntegrationServiceEnvironmentSkuArgs>;
     /**
      * The resource tags.
      */

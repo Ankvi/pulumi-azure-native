@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets details of the Flux Configuration.
  */
@@ -58,7 +58,7 @@ export interface GetFluxConfigurationResult {
     /**
      * Parameters to reconcile to the GitRepository source kind type.
      */
-    readonly gitRepository?: types.outputs.kubernetesconfiguration.v20211101preview.GitRepositoryDefinitionResponse;
+    readonly gitRepository?: types.outputs.GitRepositoryDefinitionResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -66,7 +66,7 @@ export interface GetFluxConfigurationResult {
     /**
      * Array of kustomizations used to reconcile the artifact pulled by the source type on the cluster.
      */
-    readonly kustomizations?: {[key: string]: types.outputs.kubernetesconfiguration.v20211101preview.KustomizationDefinitionResponse};
+    readonly kustomizations?: {[key: string]: types.outputs.KustomizationDefinitionResponse};
     /**
      * Datetime the fluxConfiguration last synced its source on the cluster.
      */
@@ -102,7 +102,7 @@ export interface GetFluxConfigurationResult {
     /**
      * Statuses of the Flux Kubernetes resources created by the fluxConfiguration or created by the managed objects provisioned by the fluxConfiguration.
      */
-    readonly statuses: types.outputs.kubernetesconfiguration.v20211101preview.ObjectStatusDefinitionResponse[];
+    readonly statuses: types.outputs.ObjectStatusDefinitionResponse[];
     /**
      * Whether this configuration should suspend its reconciliation of its kustomizations and sources.
      */
@@ -110,7 +110,7 @@ export interface GetFluxConfigurationResult {
     /**
      * Top level metadata https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-contracts.md#system-metadata-for-all-azure-resources
      */
-    readonly systemData: types.outputs.kubernetesconfiguration.v20211101preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

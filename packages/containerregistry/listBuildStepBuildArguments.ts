@@ -46,7 +46,7 @@ export interface ListBuildStepBuildArgumentsResult {
     /**
      * The collection value.
      */
-    readonly value?: types.outputs.containerregistry.BuildArgumentResponse[];
+    readonly value?: types.outputs.BuildArgumentResponse[];
 }
 /**
  * List the build arguments for a step including the secret arguments.

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Machine Learning datastore object wrapped into ARM resource envelope.
  */
@@ -34,7 +34,7 @@ export class MachineLearningDatastore extends pulumi.CustomResource {
     /**
      * The identity of the resource.
      */
-    public /*out*/ readonly identity!: pulumi.Output<types.outputs.machinelearningservices.v20200501preview.IdentityResponse | undefined>;
+    public /*out*/ readonly identity!: pulumi.Output<types.outputs.IdentityResponse | undefined>;
     /**
      * Specifies the location of the resource.
      */
@@ -46,11 +46,11 @@ export class MachineLearningDatastore extends pulumi.CustomResource {
     /**
      * Datastore properties
      */
-    public /*out*/ readonly properties!: pulumi.Output<types.outputs.machinelearningservices.v20200501preview.DatastoreResponse>;
+    public /*out*/ readonly properties!: pulumi.Output<types.outputs.DatastoreResponse>;
     /**
      * The sku of the workspace.
      */
-    public /*out*/ readonly sku!: pulumi.Output<types.outputs.machinelearningservices.v20200501preview.SkuResponse | undefined>;
+    public /*out*/ readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Contains resource tags defined as key/value pairs.
      */
@@ -175,7 +175,7 @@ export interface MachineLearningDatastoreArgs {
     /**
      * Specifies datastore type.
      */
-    dataStoreType: pulumi.Input<string | types.enums.v20200501preview.DatastoreTypeArm>;
+    dataStoreType: pulumi.Input<string | types.enums.DatastoreTypeArm>;
     /**
      * The database name.
      */

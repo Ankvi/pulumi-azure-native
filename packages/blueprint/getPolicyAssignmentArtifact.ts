@@ -62,7 +62,7 @@ export interface GetPolicyAssignmentArtifactResult {
     /**
      * Parameter values for the policy definition.
      */
-    readonly parameters: {[key: string]: types.outputs.blueprint.ParameterValueResponse};
+    readonly parameters: {[key: string]: types.outputs.ParameterValueResponse};
     /**
      * Azure resource ID of the policy definition.
      */

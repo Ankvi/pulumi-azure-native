@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 export class JitNetworkAccessPolicy extends pulumi.CustomResource {
     /**
      * Get an existing JitNetworkAccessPolicy resource's state with the given name, ID, and optional extra
@@ -44,7 +44,7 @@ export class JitNetworkAccessPolicy extends pulumi.CustomResource {
      * Gets the provisioning state of the Just-in-Time policy.
      */
     public /*out*/ readonly provisioningState!: pulumi.Output<string>;
-    public readonly requests!: pulumi.Output<types.outputs.security.v20200101.JitNetworkAccessRequestResponse[] | undefined>;
+    public readonly requests!: pulumi.Output<types.outputs.JitNetworkAccessRequestResponse[] | undefined>;
     /**
      * Resource type
      */
@@ -52,7 +52,7 @@ export class JitNetworkAccessPolicy extends pulumi.CustomResource {
     /**
      * Configurations for Microsoft.Compute/virtualMachines resource type.
      */
-    public readonly virtualMachines!: pulumi.Output<types.outputs.security.v20200101.JitNetworkAccessPolicyVirtualMachineResponse[]>;
+    public readonly virtualMachines!: pulumi.Output<types.outputs.JitNetworkAccessPolicyVirtualMachineResponse[]>;
 
     /**
      * Create a JitNetworkAccessPolicy resource with the given unique name, arguments, and options.
@@ -116,7 +116,7 @@ export interface JitNetworkAccessPolicyArgs {
      * Kind of the resource
      */
     kind?: pulumi.Input<string>;
-    requests?: pulumi.Input<pulumi.Input<types.inputs.security.v20200101.JitNetworkAccessRequestArgs>[]>;
+    requests?: pulumi.Input<pulumi.Input<types.inputs.JitNetworkAccessRequestArgs>[]>;
     /**
      * The name of the resource group within the user's subscription. The name is case insensitive.
      */
@@ -124,5 +124,5 @@ export interface JitNetworkAccessPolicyArgs {
     /**
      * Configurations for Microsoft.Compute/virtualMachines resource type.
      */
-    virtualMachines: pulumi.Input<pulumi.Input<types.inputs.security.v20200101.JitNetworkAccessPolicyVirtualMachineArgs>[]>;
+    virtualMachines: pulumi.Input<pulumi.Input<types.inputs.JitNetworkAccessPolicyVirtualMachineArgs>[]>;
 }

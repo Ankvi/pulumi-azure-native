@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The list credential result response.
  */
@@ -31,7 +31,7 @@ export interface ListFleetCredentialsResult {
     /**
      * Base64-encoded Kubernetes configuration file.
      */
-    readonly kubeconfigs: types.outputs.containerservice.v20220702preview.FleetCredentialResultResponse[];
+    readonly kubeconfigs: types.outputs.FleetCredentialResultResponse[];
 }
 /**
  * The list credential result response.

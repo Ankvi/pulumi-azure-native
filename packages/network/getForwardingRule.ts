@@ -65,11 +65,11 @@ export interface GetForwardingRuleResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.network.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * DNS servers to forward the DNS query to.
      */
-    readonly targetDnsServers: types.outputs.network.TargetDnsServerResponse[];
+    readonly targetDnsServers: types.outputs.TargetDnsServerResponse[];
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

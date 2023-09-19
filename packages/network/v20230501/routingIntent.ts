@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The routing intent child resource of a Virtual hub.
  */
@@ -46,7 +46,7 @@ export class RoutingIntent extends pulumi.CustomResource {
     /**
      * List of routing policies.
      */
-    public readonly routingPolicies!: pulumi.Output<types.outputs.network.v20230501.RoutingPolicyResponse[] | undefined>;
+    public readonly routingPolicies!: pulumi.Output<types.outputs.RoutingPolicyResponse[] | undefined>;
     /**
      * Resource type.
      */
@@ -115,7 +115,7 @@ export interface RoutingIntentArgs {
     /**
      * List of routing policies.
      */
-    routingPolicies?: pulumi.Input<pulumi.Input<types.inputs.network.v20230501.RoutingPolicyArgs>[]>;
+    routingPolicies?: pulumi.Input<pulumi.Input<types.inputs.RoutingPolicyArgs>[]>;
     /**
      * The name of the VirtualHub.
      */

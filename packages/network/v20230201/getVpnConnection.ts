@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves the details of a vpn connection.
  */
@@ -76,7 +76,7 @@ export interface GetVpnConnectionResult {
     /**
      * The IPSec Policies to be considered by this connection.
      */
-    readonly ipsecPolicies?: types.outputs.network.v20230201.IpsecPolicyResponse[];
+    readonly ipsecPolicies?: types.outputs.IpsecPolicyResponse[];
     /**
      * The name of the resource that is unique within a resource group. This name can be used to access the resource.
      */
@@ -88,11 +88,11 @@ export interface GetVpnConnectionResult {
     /**
      * Id of the connected vpn site.
      */
-    readonly remoteVpnSite?: types.outputs.network.v20230201.SubResourceResponse;
+    readonly remoteVpnSite?: types.outputs.SubResourceResponse;
     /**
      * The Routing Configuration indicating the associated and propagated route tables on this connection.
      */
-    readonly routingConfiguration?: types.outputs.network.v20230201.RoutingConfigurationResponse;
+    readonly routingConfiguration?: types.outputs.RoutingConfigurationResponse;
     /**
      * Routing weight for vpn connection.
      */
@@ -104,7 +104,7 @@ export interface GetVpnConnectionResult {
     /**
      * The Traffic Selector Policies to be considered by this connection.
      */
-    readonly trafficSelectorPolicies?: types.outputs.network.v20230201.TrafficSelectorPolicyResponse[];
+    readonly trafficSelectorPolicies?: types.outputs.TrafficSelectorPolicyResponse[];
     /**
      * Use local azure ip to initiate connection.
      */
@@ -120,7 +120,7 @@ export interface GetVpnConnectionResult {
     /**
      * List of all vpn site link connections to the gateway.
      */
-    readonly vpnLinkConnections?: types.outputs.network.v20230201.VpnSiteLinkConnectionResponse[];
+    readonly vpnLinkConnections?: types.outputs.VpnSiteLinkConnectionResponse[];
 }
 /**
  * Retrieves the details of a vpn connection.

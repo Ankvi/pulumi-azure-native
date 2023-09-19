@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An Azure Cosmos DB container.
  */
@@ -39,8 +39,8 @@ export class SqlResourceSqlContainer extends pulumi.CustomResource {
      * The name of the ARM resource.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
-    public readonly options!: pulumi.Output<types.outputs.documentdb.v20230415.SqlContainerGetPropertiesResponseOptions | undefined>;
-    public readonly resource!: pulumi.Output<types.outputs.documentdb.v20230415.SqlContainerGetPropertiesResponseResource | undefined>;
+    public readonly options!: pulumi.Output<types.outputs.SqlContainerGetPropertiesResponseOptions | undefined>;
+    public readonly resource!: pulumi.Output<types.outputs.SqlContainerGetPropertiesResponseResource | undefined>;
     /**
      * Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB".
      */
@@ -78,7 +78,7 @@ export class SqlResourceSqlContainer extends pulumi.CustomResource {
             resourceInputs["databaseName"] = args ? args.databaseName : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["options"] = args ? args.options : undefined;
-            resourceInputs["resource"] = args ? (args.resource ? pulumi.output(args.resource).apply(types.inputs.documentdb.v20230415.sqlContainerResourceArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["resource"] = args ? (args.resource ? pulumi.output(args.resource).apply(types.inputs.sqlContainerResourceArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["name"] = undefined /*out*/;
@@ -121,11 +121,11 @@ export interface SqlResourceSqlContainerArgs {
     /**
      * A key-value pair of options to be applied for the request. This corresponds to the headers sent with the request.
      */
-    options?: pulumi.Input<types.inputs.documentdb.v20230415.CreateUpdateOptionsArgs>;
+    options?: pulumi.Input<types.inputs.CreateUpdateOptionsArgs>;
     /**
      * The standard JSON format of a container
      */
-    resource: pulumi.Input<types.inputs.documentdb.v20230415.SqlContainerResourceArgs>;
+    resource: pulumi.Input<types.inputs.SqlContainerResourceArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

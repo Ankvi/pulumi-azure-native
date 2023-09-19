@@ -43,11 +43,11 @@ export class DataConnector extends pulumi.CustomResource {
     /**
      * DataConnector Properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.agfoodplatform.DataConnectorPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.DataConnectorPropertiesResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.agfoodplatform.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -110,7 +110,7 @@ export interface DataConnectorArgs {
     /**
      * DataConnector Properties.
      */
-    properties: pulumi.Input<types.inputs.agfoodplatform.DataConnectorPropertiesArgs>;
+    properties: pulumi.Input<types.inputs.DataConnectorPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

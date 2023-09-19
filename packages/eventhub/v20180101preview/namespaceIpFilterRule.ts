@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Single item in a List or Get IpFilterRules operation
  */
@@ -98,7 +98,7 @@ export interface NamespaceIpFilterRuleArgs {
     /**
      * The IP Filter Action
      */
-    action?: pulumi.Input<string | types.enums.v20180101preview.IPAction>;
+    action?: pulumi.Input<string | types.enums.IPAction>;
     /**
      * IP Filter name
      */

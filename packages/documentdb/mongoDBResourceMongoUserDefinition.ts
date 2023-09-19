@@ -55,7 +55,7 @@ export class MongoDBResourceMongoUserDefinition extends pulumi.CustomResource {
     /**
      * The set of roles inherited by the User Definition.
      */
-    public readonly roles!: pulumi.Output<types.outputs.documentdb.RoleResponse[] | undefined>;
+    public readonly roles!: pulumi.Output<types.outputs.RoleResponse[] | undefined>;
     /**
      * The type of Azure resource.
      */
@@ -145,7 +145,7 @@ export interface MongoDBResourceMongoUserDefinitionArgs {
     /**
      * The set of roles inherited by the User Definition.
      */
-    roles?: pulumi.Input<pulumi.Input<types.inputs.documentdb.RoleArgs>[]>;
+    roles?: pulumi.Input<pulumi.Input<types.inputs.RoleArgs>[]>;
     /**
      * The user name for User Definition.
      */

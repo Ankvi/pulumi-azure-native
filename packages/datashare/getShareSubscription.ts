@@ -97,7 +97,7 @@ export interface GetShareSubscriptionResult {
     /**
      * System Data of the Azure resource.
      */
-    readonly systemData: types.outputs.datashare.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Type of the azure resource
      */

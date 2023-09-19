@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents an instance of a orchestrator.
  */
@@ -34,7 +34,7 @@ export class DelegatedSubnetServiceDetails extends pulumi.CustomResource {
     /**
      * Properties of the controller.
      */
-    public readonly controllerDetails!: pulumi.Output<types.outputs.delegatednetwork.v20210315.ControllerDetailsResponse | undefined>;
+    public readonly controllerDetails!: pulumi.Output<types.outputs.ControllerDetailsResponse | undefined>;
     /**
      * Location of the resource.
      */
@@ -54,7 +54,7 @@ export class DelegatedSubnetServiceDetails extends pulumi.CustomResource {
     /**
      * subnet details
      */
-    public readonly subnetDetails!: pulumi.Output<types.outputs.delegatednetwork.v20210315.SubnetDetailsResponse | undefined>;
+    public readonly subnetDetails!: pulumi.Output<types.outputs.SubnetDetailsResponse | undefined>;
     /**
      * The resource tags.
      */
@@ -112,7 +112,7 @@ export interface DelegatedSubnetServiceDetailsArgs {
     /**
      * Properties of the controller.
      */
-    controllerDetails?: pulumi.Input<types.inputs.delegatednetwork.v20210315.ControllerDetailsArgs>;
+    controllerDetails?: pulumi.Input<types.inputs.ControllerDetailsArgs>;
     /**
      * Location of the resource.
      */
@@ -128,7 +128,7 @@ export interface DelegatedSubnetServiceDetailsArgs {
     /**
      * subnet details
      */
-    subnetDetails?: pulumi.Input<types.inputs.delegatednetwork.v20210315.SubnetDetailsArgs>;
+    subnetDetails?: pulumi.Input<types.inputs.SubnetDetailsArgs>;
     /**
      * The resource tags.
      */

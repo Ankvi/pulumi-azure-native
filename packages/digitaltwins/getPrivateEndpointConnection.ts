@@ -45,11 +45,11 @@ export interface GetPrivateEndpointConnectionResult {
     /**
      * The connection properties.
      */
-    readonly properties: types.outputs.digitaltwins.ConnectionPropertiesResponse;
+    readonly properties: types.outputs.ConnectionPropertiesResponse;
     /**
      * Metadata pertaining to creation and last modification of the private endpoint connection.
      */
-    readonly systemData: types.outputs.digitaltwins.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The resource type.
      */

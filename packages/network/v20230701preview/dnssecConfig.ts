@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents the DNSSEC configuration.
  */
@@ -46,11 +46,11 @@ export class DnssecConfig extends pulumi.CustomResource {
     /**
      * The list of signing keys.
      */
-    public /*out*/ readonly signingKeys!: pulumi.Output<types.outputs.network.v20230701preview.SigningKeyResponse[]>;
+    public /*out*/ readonly signingKeys!: pulumi.Output<types.outputs.SigningKeyResponse[]>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.network.v20230701preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the DNSSEC configuration.
      */

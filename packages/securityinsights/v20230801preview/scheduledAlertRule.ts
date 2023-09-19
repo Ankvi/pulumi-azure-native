@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents scheduled alert rule.
  */
@@ -34,7 +34,7 @@ export class ScheduledAlertRule extends pulumi.CustomResource {
     /**
      * The alert details override settings
      */
-    public readonly alertDetailsOverride!: pulumi.Output<types.outputs.securityinsights.v20230801preview.AlertDetailsOverrideResponse | undefined>;
+    public readonly alertDetailsOverride!: pulumi.Output<types.outputs.AlertDetailsOverrideResponse | undefined>;
     /**
      * The Name of the alert rule template used to create this rule.
      */
@@ -58,7 +58,7 @@ export class ScheduledAlertRule extends pulumi.CustomResource {
     /**
      * Array of the entity mappings of the alert rule
      */
-    public readonly entityMappings!: pulumi.Output<types.outputs.securityinsights.v20230801preview.EntityMappingResponse[] | undefined>;
+    public readonly entityMappings!: pulumi.Output<types.outputs.EntityMappingResponse[] | undefined>;
     /**
      * Etag of the azure resource
      */
@@ -66,11 +66,11 @@ export class ScheduledAlertRule extends pulumi.CustomResource {
     /**
      * The event grouping settings.
      */
-    public readonly eventGroupingSettings!: pulumi.Output<types.outputs.securityinsights.v20230801preview.EventGroupingSettingsResponse | undefined>;
+    public readonly eventGroupingSettings!: pulumi.Output<types.outputs.EventGroupingSettingsResponse | undefined>;
     /**
      * The settings of the incidents that created from alerts triggered by this analytics rule
      */
-    public readonly incidentConfiguration!: pulumi.Output<types.outputs.securityinsights.v20230801preview.IncidentConfigurationResponse | undefined>;
+    public readonly incidentConfiguration!: pulumi.Output<types.outputs.IncidentConfigurationResponse | undefined>;
     /**
      * The kind of the alert rule
      * Expected value is 'Scheduled'.
@@ -99,7 +99,7 @@ export class ScheduledAlertRule extends pulumi.CustomResource {
     /**
      * Array of the sentinel entity mappings of the alert rule
      */
-    public readonly sentinelEntitiesMappings!: pulumi.Output<types.outputs.securityinsights.v20230801preview.SentinelEntityMappingResponse[] | undefined>;
+    public readonly sentinelEntitiesMappings!: pulumi.Output<types.outputs.SentinelEntityMappingResponse[] | undefined>;
     /**
      * The severity for alerts created by this alert rule.
      */
@@ -115,7 +115,7 @@ export class ScheduledAlertRule extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.securityinsights.v20230801preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The tactics of the alert rule
      */
@@ -264,7 +264,7 @@ export interface ScheduledAlertRuleArgs {
     /**
      * The alert details override settings
      */
-    alertDetailsOverride?: pulumi.Input<types.inputs.securityinsights.v20230801preview.AlertDetailsOverrideArgs>;
+    alertDetailsOverride?: pulumi.Input<types.inputs.AlertDetailsOverrideArgs>;
     /**
      * The Name of the alert rule template used to create this rule.
      */
@@ -288,15 +288,15 @@ export interface ScheduledAlertRuleArgs {
     /**
      * Array of the entity mappings of the alert rule
      */
-    entityMappings?: pulumi.Input<pulumi.Input<types.inputs.securityinsights.v20230801preview.EntityMappingArgs>[]>;
+    entityMappings?: pulumi.Input<pulumi.Input<types.inputs.EntityMappingArgs>[]>;
     /**
      * The event grouping settings.
      */
-    eventGroupingSettings?: pulumi.Input<types.inputs.securityinsights.v20230801preview.EventGroupingSettingsArgs>;
+    eventGroupingSettings?: pulumi.Input<types.inputs.EventGroupingSettingsArgs>;
     /**
      * The settings of the incidents that created from alerts triggered by this analytics rule
      */
-    incidentConfiguration?: pulumi.Input<types.inputs.securityinsights.v20230801preview.IncidentConfigurationArgs>;
+    incidentConfiguration?: pulumi.Input<types.inputs.IncidentConfigurationArgs>;
     /**
      * The kind of the alert rule
      * Expected value is 'Scheduled'.
@@ -325,11 +325,11 @@ export interface ScheduledAlertRuleArgs {
     /**
      * Array of the sentinel entity mappings of the alert rule
      */
-    sentinelEntitiesMappings?: pulumi.Input<pulumi.Input<types.inputs.securityinsights.v20230801preview.SentinelEntityMappingArgs>[]>;
+    sentinelEntitiesMappings?: pulumi.Input<pulumi.Input<types.inputs.SentinelEntityMappingArgs>[]>;
     /**
      * The severity for alerts created by this alert rule.
      */
-    severity: pulumi.Input<string | types.enums.v20230801preview.AlertSeverity>;
+    severity: pulumi.Input<string | types.enums.AlertSeverity>;
     /**
      * The suppression (in ISO 8601 duration format) to wait since last time this alert rule been triggered.
      */
@@ -341,7 +341,7 @@ export interface ScheduledAlertRuleArgs {
     /**
      * The tactics of the alert rule
      */
-    tactics?: pulumi.Input<pulumi.Input<string | types.enums.v20230801preview.AttackTactic>[]>;
+    tactics?: pulumi.Input<pulumi.Input<string | types.enums.AttackTactic>[]>;
     /**
      * The techniques of the alert rule
      */
@@ -353,7 +353,7 @@ export interface ScheduledAlertRuleArgs {
     /**
      * The operation against the threshold that triggers alert rule.
      */
-    triggerOperator: pulumi.Input<types.enums.v20230801preview.TriggerOperator>;
+    triggerOperator: pulumi.Input<types.enums.TriggerOperator>;
     /**
      * The threshold triggers this alert rule.
      */

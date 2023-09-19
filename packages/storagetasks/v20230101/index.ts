@@ -13,7 +13,7 @@ utilities.lazyLoad(exports, ["StorageTask"], () => require("./storageTask"));
 
 
 // Export enums:
-export * from "../types/enums/v20230101";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

@@ -43,11 +43,11 @@ export class ManagedClusterService extends pulumi.CustomResource {
     /**
      * The service resource properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.servicefabric.StatefulServicePropertiesResponse | types.outputs.servicefabric.StatelessServicePropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.StatefulServicePropertiesResponse | types.outputs.StatelessServicePropertiesResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.servicefabric.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Azure resource tags.
      */
@@ -121,7 +121,7 @@ export interface ManagedClusterServiceArgs {
     /**
      * The service resource properties.
      */
-    properties?: pulumi.Input<types.inputs.servicefabric.StatefulServicePropertiesArgs | types.inputs.servicefabric.StatelessServicePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.StatefulServicePropertiesArgs | types.inputs.StatelessServicePropertiesArgs>;
     /**
      * The name of the resource group.
      */

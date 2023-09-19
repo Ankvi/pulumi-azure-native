@@ -47,7 +47,7 @@ export class AttestationProvider extends pulumi.CustomResource {
     /**
      * List of private endpoint connections associated with the attestation provider.
      */
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.attestation.PrivateEndpointConnectionResponse[]>;
+    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[]>;
     /**
      * Controls whether traffic from the public network is allowed to access the Attestation Provider APIs.
      */
@@ -59,7 +59,7 @@ export class AttestationProvider extends pulumi.CustomResource {
     /**
      * The system metadata relating to this resource
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.attestation.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -139,7 +139,7 @@ export interface AttestationProviderArgs {
     /**
      * Properties of the attestation provider
      */
-    properties: pulumi.Input<types.inputs.attestation.AttestationServiceCreationSpecificParamsArgs>;
+    properties: pulumi.Input<types.inputs.AttestationServiceCreationSpecificParamsArgs>;
     /**
      * Name of the attestation provider.
      */

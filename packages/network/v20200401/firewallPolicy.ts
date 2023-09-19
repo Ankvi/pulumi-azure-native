@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * FirewallPolicy Resource.
  */
@@ -34,11 +34,11 @@ export class FirewallPolicy extends pulumi.CustomResource {
     /**
      * The parent firewall policy from which rules are inherited.
      */
-    public readonly basePolicy!: pulumi.Output<types.outputs.network.v20200401.SubResourceResponse | undefined>;
+    public readonly basePolicy!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * List of references to Child Firewall Policies.
      */
-    public /*out*/ readonly childPolicies!: pulumi.Output<types.outputs.network.v20200401.SubResourceResponse[]>;
+    public /*out*/ readonly childPolicies!: pulumi.Output<types.outputs.SubResourceResponse[]>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -46,7 +46,7 @@ export class FirewallPolicy extends pulumi.CustomResource {
     /**
      * List of references to Azure Firewalls that this Firewall Policy is associated with.
      */
-    public /*out*/ readonly firewalls!: pulumi.Output<types.outputs.network.v20200401.SubResourceResponse[]>;
+    public /*out*/ readonly firewalls!: pulumi.Output<types.outputs.SubResourceResponse[]>;
     /**
      * Resource location.
      */
@@ -62,7 +62,7 @@ export class FirewallPolicy extends pulumi.CustomResource {
     /**
      * List of references to FirewallPolicyRuleGroups.
      */
-    public /*out*/ readonly ruleGroups!: pulumi.Output<types.outputs.network.v20200401.SubResourceResponse[]>;
+    public /*out*/ readonly ruleGroups!: pulumi.Output<types.outputs.SubResourceResponse[]>;
     /**
      * Resource tags.
      */
@@ -74,7 +74,7 @@ export class FirewallPolicy extends pulumi.CustomResource {
     /**
      * ThreatIntel Whitelist for Firewall Policy.
      */
-    public readonly threatIntelWhitelist!: pulumi.Output<types.outputs.network.v20200401.FirewallPolicyThreatIntelWhitelistResponse | undefined>;
+    public readonly threatIntelWhitelist!: pulumi.Output<types.outputs.FirewallPolicyThreatIntelWhitelistResponse | undefined>;
     /**
      * Resource type.
      */
@@ -137,7 +137,7 @@ export interface FirewallPolicyArgs {
     /**
      * The parent firewall policy from which rules are inherited.
      */
-    basePolicy?: pulumi.Input<types.inputs.network.v20200401.SubResourceArgs>;
+    basePolicy?: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * The name of the Firewall Policy.
      */
@@ -161,9 +161,9 @@ export interface FirewallPolicyArgs {
     /**
      * The operation mode for Threat Intelligence.
      */
-    threatIntelMode?: pulumi.Input<string | types.enums.v20200401.AzureFirewallThreatIntelMode>;
+    threatIntelMode?: pulumi.Input<string | types.enums.AzureFirewallThreatIntelMode>;
     /**
      * ThreatIntel Whitelist for Firewall Policy.
      */
-    threatIntelWhitelist?: pulumi.Input<types.inputs.network.v20200401.FirewallPolicyThreatIntelWhitelistArgs>;
+    threatIntelWhitelist?: pulumi.Input<types.inputs.FirewallPolicyThreatIntelWhitelistArgs>;
 }

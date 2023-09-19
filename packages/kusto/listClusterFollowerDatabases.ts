@@ -32,7 +32,7 @@ export interface ListClusterFollowerDatabasesResult {
     /**
      * The list of follower database result.
      */
-    readonly value?: types.outputs.kusto.FollowerDatabaseDefinitionResponse[];
+    readonly value?: types.outputs.FollowerDatabaseDefinitionResponse[];
 }
 /**
  * Returns a list of databases that are owned by this cluster and were followed by another cluster.

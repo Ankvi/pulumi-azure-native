@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves details about given subscription which is associated with the management group.
  */
@@ -43,7 +43,7 @@ export interface GetManagementGroupSubscriptionResult {
     /**
      * The ID of the parent management group.
      */
-    readonly parent?: types.outputs.management.v20210401.DescendantParentGroupInfoResponse;
+    readonly parent?: types.outputs.DescendantParentGroupInfoResponse;
     /**
      * The state of the subscription.
      */

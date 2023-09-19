@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Defines the GuestAgent.
  */
@@ -34,11 +34,11 @@ export class GuestAgent extends pulumi.CustomResource {
     /**
      * Username / Password Credentials to provision guest agent.
      */
-    public readonly credentials!: pulumi.Output<types.outputs.azurestackhci.v20230701preview.GuestCredentialResponse | undefined>;
+    public readonly credentials!: pulumi.Output<types.outputs.GuestCredentialResponse | undefined>;
     /**
      * HTTP Proxy configuration for the VM.
      */
-    public readonly httpProxyConfig!: pulumi.Output<types.outputs.azurestackhci.v20230701preview.HttpProxyConfigurationResponse | undefined>;
+    public readonly httpProxyConfig!: pulumi.Output<types.outputs.HttpProxyConfigurationResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -58,7 +58,7 @@ export class GuestAgent extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.azurestackhci.v20230701preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -109,15 +109,15 @@ export interface GuestAgentArgs {
     /**
      * Username / Password Credentials to provision guest agent.
      */
-    credentials?: pulumi.Input<types.inputs.azurestackhci.v20230701preview.GuestCredentialArgs>;
+    credentials?: pulumi.Input<types.inputs.GuestCredentialArgs>;
     /**
      * HTTP Proxy configuration for the VM.
      */
-    httpProxyConfig?: pulumi.Input<types.inputs.azurestackhci.v20230701preview.HttpProxyConfigurationArgs>;
+    httpProxyConfig?: pulumi.Input<types.inputs.HttpProxyConfigurationArgs>;
     /**
      * The guest agent provisioning action.
      */
-    provisioningAction?: pulumi.Input<string | types.enums.v20230701preview.ProvisioningAction>;
+    provisioningAction?: pulumi.Input<string | types.enums.ProvisioningAction>;
     /**
      * The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
      */

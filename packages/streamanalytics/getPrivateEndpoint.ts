@@ -49,7 +49,7 @@ export interface GetPrivateEndpointResult {
     /**
      * A list of connections to the remote resource. Immutable after it is set.
      */
-    readonly manualPrivateLinkServiceConnections?: types.outputs.streamanalytics.PrivateLinkServiceConnectionResponse[];
+    readonly manualPrivateLinkServiceConnections?: types.outputs.PrivateLinkServiceConnectionResponse[];
     /**
      * The name of the resource
      */

@@ -73,7 +73,7 @@ utilities.lazyLoad(exports, ["RegisteredPrefix"], () => require("./registeredPre
 
 
 // Export enums:
-export * from "../types/enums/v20221001";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

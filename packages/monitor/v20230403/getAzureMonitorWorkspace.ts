@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns the specified Azure Monitor Workspace
  */
@@ -35,7 +35,7 @@ export interface GetAzureMonitorWorkspaceResult {
     /**
      * The Data Collection Rule and Endpoint used for ingestion by default.
      */
-    readonly defaultIngestionSettings: types.outputs.monitor.v20230403.AzureMonitorWorkspaceResponseDefaultIngestionSettings;
+    readonly defaultIngestionSettings: types.outputs.AzureMonitorWorkspaceResponseDefaultIngestionSettings;
     /**
      * Resource entity tag (ETag)
      */
@@ -51,7 +51,7 @@ export interface GetAzureMonitorWorkspaceResult {
     /**
      * Properties related to the metrics container in the Azure Monitor Workspace
      */
-    readonly metrics: types.outputs.monitor.v20230403.AzureMonitorWorkspaceResponseMetrics;
+    readonly metrics: types.outputs.AzureMonitorWorkspaceResponseMetrics;
     /**
      * The name of the resource
      */
@@ -59,7 +59,7 @@ export interface GetAzureMonitorWorkspaceResult {
     /**
      * List of private endpoint connections
      */
-    readonly privateEndpointConnections: types.outputs.monitor.v20230403.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections: types.outputs.PrivateEndpointConnectionResponse[];
     /**
      * The provisioning state of the Azure Monitor Workspace. Set to Succeeded if everything is healthy.
      */
@@ -71,7 +71,7 @@ export interface GetAzureMonitorWorkspaceResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.monitor.v20230403.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

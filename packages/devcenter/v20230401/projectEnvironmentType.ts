@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents an environment type.
  */
@@ -34,7 +34,7 @@ export class ProjectEnvironmentType extends pulumi.CustomResource {
     /**
      * The role definition assigned to the environment creator on backing resources.
      */
-    public readonly creatorRoleAssignment!: pulumi.Output<types.outputs.devcenter.v20230401.ProjectEnvironmentTypeUpdatePropertiesResponseCreatorRoleAssignment | undefined>;
+    public readonly creatorRoleAssignment!: pulumi.Output<types.outputs.ProjectEnvironmentTypeUpdatePropertiesResponseCreatorRoleAssignment | undefined>;
     /**
      * Id of a subscription that the environment type will be mapped to. The environment's resources will be deployed into this subscription.
      */
@@ -42,7 +42,7 @@ export class ProjectEnvironmentType extends pulumi.CustomResource {
     /**
      * Managed identity properties
      */
-    public readonly identity!: pulumi.Output<types.outputs.devcenter.v20230401.ManagedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * The geo-location for the environment type
      */
@@ -62,7 +62,7 @@ export class ProjectEnvironmentType extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.devcenter.v20230401.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -74,7 +74,7 @@ export class ProjectEnvironmentType extends pulumi.CustomResource {
     /**
      * Role Assignments created on environment backing resources. This is a mapping from a user object ID to an object of role definition IDs.
      */
-    public readonly userRoleAssignments!: pulumi.Output<{[key: string]: types.outputs.devcenter.v20230401.UserRoleAssignmentResponse} | undefined>;
+    public readonly userRoleAssignments!: pulumi.Output<{[key: string]: types.outputs.UserRoleAssignmentResponse} | undefined>;
 
     /**
      * Create a ProjectEnvironmentType resource with the given unique name, arguments, and options.
@@ -134,7 +134,7 @@ export interface ProjectEnvironmentTypeArgs {
     /**
      * The role definition assigned to the environment creator on backing resources.
      */
-    creatorRoleAssignment?: pulumi.Input<types.inputs.devcenter.v20230401.ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignmentArgs>;
+    creatorRoleAssignment?: pulumi.Input<types.inputs.ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignmentArgs>;
     /**
      * Id of a subscription that the environment type will be mapped to. The environment's resources will be deployed into this subscription.
      */
@@ -146,7 +146,7 @@ export interface ProjectEnvironmentTypeArgs {
     /**
      * Managed identity properties
      */
-    identity?: pulumi.Input<types.inputs.devcenter.v20230401.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
      * The geo-location for the environment type
      */
@@ -162,7 +162,7 @@ export interface ProjectEnvironmentTypeArgs {
     /**
      * Defines whether this Environment Type can be used in this Project.
      */
-    status?: pulumi.Input<string | types.enums.v20230401.EnvironmentTypeEnableStatus>;
+    status?: pulumi.Input<string | types.enums.EnvironmentTypeEnableStatus>;
     /**
      * Resource tags.
      */
@@ -170,5 +170,5 @@ export interface ProjectEnvironmentTypeArgs {
     /**
      * Role Assignments created on environment backing resources. This is a mapping from a user object ID to an object of role definition IDs.
      */
-    userRoleAssignments?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.devcenter.v20230401.UserRoleAssignmentArgs>}>;
+    userRoleAssignments?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.UserRoleAssignmentArgs>}>;
 }

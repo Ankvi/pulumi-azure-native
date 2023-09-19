@@ -63,11 +63,11 @@ export class Endpoint extends pulumi.CustomResource {
     /**
      * The endpoint properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.hybridconnectivity.EndpointPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.EndpointPropertiesResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.hybridconnectivity.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -153,7 +153,7 @@ export interface EndpointArgs {
     /**
      * The endpoint properties.
      */
-    properties?: pulumi.Input<types.inputs.hybridconnectivity.EndpointPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.EndpointPropertiesArgs>;
     /**
      * The fully qualified Azure Resource manager identifier of the resource to be connected.
      */

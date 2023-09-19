@@ -44,7 +44,7 @@ export interface GetSecretResult {
     /**
      * Describes the properties of a secret resource.
      */
-    readonly properties: types.outputs.servicefabricmesh.SecretResourcePropertiesResponse;
+    readonly properties: types.outputs.SecretResourcePropertiesResponse;
     /**
      * Resource tags.
      */

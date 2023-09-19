@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get SQL pool properties
  */
@@ -84,7 +84,7 @@ export interface GetSqlPoolResult {
     /**
      * SQL pool SKU
      */
-    readonly sku?: types.outputs.synapse.v20210501.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * Source database to create from
      */

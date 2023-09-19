@@ -38,7 +38,7 @@ export interface GetCredentialSetResult {
      * List of authentication credentials stored for an upstream.
      * Usually consists of a primary and an optional secondary credential.
      */
-    readonly authCredentials?: types.outputs.containerregistry.AuthCredentialResponse[];
+    readonly authCredentials?: types.outputs.AuthCredentialResponse[];
     /**
      * The creation date of credential store resource.
      */
@@ -50,7 +50,7 @@ export interface GetCredentialSetResult {
     /**
      * Identities associated with the resource. This is used to access the KeyVault secrets.
      */
-    readonly identity?: types.outputs.containerregistry.IdentityPropertiesResponse;
+    readonly identity?: types.outputs.IdentityPropertiesResponse;
     /**
      * The credentials are stored for this upstream or login server.
      */
@@ -66,7 +66,7 @@ export interface GetCredentialSetResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.containerregistry.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource.
      */

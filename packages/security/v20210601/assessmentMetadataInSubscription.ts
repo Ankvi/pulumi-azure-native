@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Security assessment metadata response
  */
@@ -55,7 +55,7 @@ export class AssessmentMetadataInSubscription extends pulumi.CustomResource {
     /**
      * Describes the partner that created the assessment
      */
-    public readonly partnerData!: pulumi.Output<types.outputs.security.v20210601.SecurityAssessmentMetadataPartnerDataResponse | undefined>;
+    public readonly partnerData!: pulumi.Output<types.outputs.SecurityAssessmentMetadataPartnerDataResponse | undefined>;
     public readonly plannedDeprecationDate!: pulumi.Output<string | undefined>;
     /**
      * Azure resource ID of the policy definition that turns this assessment calculation on
@@ -65,7 +65,7 @@ export class AssessmentMetadataInSubscription extends pulumi.CustomResource {
      * True if this assessment is in preview release status
      */
     public readonly preview!: pulumi.Output<boolean | undefined>;
-    public readonly publishDates!: pulumi.Output<types.outputs.security.v20210601.SecurityAssessmentMetadataPropertiesResponseResponsePublishDates | undefined>;
+    public readonly publishDates!: pulumi.Output<types.outputs.SecurityAssessmentMetadataPropertiesResponseResponsePublishDates | undefined>;
     /**
      * Human readable description of what you should do to mitigate this security issue
      */
@@ -163,8 +163,8 @@ export interface AssessmentMetadataInSubscriptionArgs {
     /**
      * BuiltIn if the assessment based on built-in Azure Policy definition, Custom if the assessment based on custom Azure Policy definition
      */
-    assessmentType: pulumi.Input<string | types.enums.v20210601.AssessmentType>;
-    categories?: pulumi.Input<pulumi.Input<string | types.enums.v20210601.Categories>[]>;
+    assessmentType: pulumi.Input<string | types.enums.AssessmentType>;
+    categories?: pulumi.Input<pulumi.Input<string | types.enums.Categories>[]>;
     /**
      * Human readable description of the assessment
      */
@@ -176,17 +176,17 @@ export interface AssessmentMetadataInSubscriptionArgs {
     /**
      * The implementation effort required to remediate this assessment
      */
-    implementationEffort?: pulumi.Input<string | types.enums.v20210601.ImplementationEffort>;
+    implementationEffort?: pulumi.Input<string | types.enums.ImplementationEffort>;
     /**
      * Describes the partner that created the assessment
      */
-    partnerData?: pulumi.Input<types.inputs.security.v20210601.SecurityAssessmentMetadataPartnerDataArgs>;
+    partnerData?: pulumi.Input<types.inputs.SecurityAssessmentMetadataPartnerDataArgs>;
     plannedDeprecationDate?: pulumi.Input<string>;
     /**
      * True if this assessment is in preview release status
      */
     preview?: pulumi.Input<boolean>;
-    publishDates?: pulumi.Input<types.inputs.security.v20210601.SecurityAssessmentMetadataPropertiesResponsePublishDatesArgs>;
+    publishDates?: pulumi.Input<types.inputs.SecurityAssessmentMetadataPropertiesResponsePublishDatesArgs>;
     /**
      * Human readable description of what you should do to mitigate this security issue
      */
@@ -194,12 +194,12 @@ export interface AssessmentMetadataInSubscriptionArgs {
     /**
      * The severity level of the assessment
      */
-    severity: pulumi.Input<string | types.enums.v20210601.Severity>;
-    tactics?: pulumi.Input<pulumi.Input<string | types.enums.v20210601.Tactics>[]>;
-    techniques?: pulumi.Input<pulumi.Input<string | types.enums.v20210601.Techniques>[]>;
-    threats?: pulumi.Input<pulumi.Input<string | types.enums.v20210601.Threats>[]>;
+    severity: pulumi.Input<string | types.enums.Severity>;
+    tactics?: pulumi.Input<pulumi.Input<string | types.enums.Tactics>[]>;
+    techniques?: pulumi.Input<pulumi.Input<string | types.enums.Techniques>[]>;
+    threats?: pulumi.Input<pulumi.Input<string | types.enums.Threats>[]>;
     /**
      * The user impact of the assessment
      */
-    userImpact?: pulumi.Input<string | types.enums.v20210601.UserImpact>;
+    userImpact?: pulumi.Input<string | types.enums.UserImpact>;
 }

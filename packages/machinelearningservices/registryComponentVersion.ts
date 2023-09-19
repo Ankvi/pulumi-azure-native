@@ -35,7 +35,7 @@ export class RegistryComponentVersion extends pulumi.CustomResource {
     /**
      * [Required] Additional attributes of the entity.
      */
-    public readonly componentVersionProperties!: pulumi.Output<types.outputs.machinelearningservices.ComponentVersionResponse>;
+    public readonly componentVersionProperties!: pulumi.Output<types.outputs.ComponentVersionResponse>;
     /**
      * The name of the resource
      */
@@ -43,7 +43,7 @@ export class RegistryComponentVersion extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.machinelearningservices.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -73,7 +73,7 @@ export class RegistryComponentVersion extends pulumi.CustomResource {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
             resourceInputs["componentName"] = args ? args.componentName : undefined;
-            resourceInputs["componentVersionProperties"] = args ? (args.componentVersionProperties ? pulumi.output(args.componentVersionProperties).apply(types.inputs.machinelearningservices.componentVersionArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["componentVersionProperties"] = args ? (args.componentVersionProperties ? pulumi.output(args.componentVersionProperties).apply(types.inputs.componentVersionArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["registryName"] = args ? args.registryName : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["version"] = args ? args.version : undefined;
@@ -104,7 +104,7 @@ export interface RegistryComponentVersionArgs {
     /**
      * [Required] Additional attributes of the entity.
      */
-    componentVersionProperties: pulumi.Input<types.inputs.machinelearningservices.ComponentVersionArgs>;
+    componentVersionProperties: pulumi.Input<types.inputs.ComponentVersionArgs>;
     /**
      * Name of Azure Machine Learning registry. This is case-insensitive
      */

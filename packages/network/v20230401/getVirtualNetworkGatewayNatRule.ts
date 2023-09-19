@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves the details of a nat rule.
  */
@@ -40,7 +40,7 @@ export interface GetVirtualNetworkGatewayNatRuleResult {
     /**
      * The private IP address external mapping for NAT.
      */
-    readonly externalMappings?: types.outputs.network.v20230401.VpnNatRuleMappingResponse[];
+    readonly externalMappings?: types.outputs.VpnNatRuleMappingResponse[];
     /**
      * Resource ID.
      */
@@ -48,7 +48,7 @@ export interface GetVirtualNetworkGatewayNatRuleResult {
     /**
      * The private IP address internal mapping for NAT.
      */
-    readonly internalMappings?: types.outputs.network.v20230401.VpnNatRuleMappingResponse[];
+    readonly internalMappings?: types.outputs.VpnNatRuleMappingResponse[];
     /**
      * The IP Configuration ID this NAT rule applies to.
      */

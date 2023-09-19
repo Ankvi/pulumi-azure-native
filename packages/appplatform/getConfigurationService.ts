@@ -45,11 +45,11 @@ export interface GetConfigurationServiceResult {
     /**
      * Application Configuration Service properties payload
      */
-    readonly properties: types.outputs.appplatform.ConfigurationServicePropertiesResponse;
+    readonly properties: types.outputs.ConfigurationServicePropertiesResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.appplatform.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource.
      */

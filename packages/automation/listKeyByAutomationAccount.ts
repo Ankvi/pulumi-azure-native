@@ -29,7 +29,7 @@ export interface ListKeyByAutomationAccountResult {
     /**
      * Lists the automation keys.
      */
-    readonly keys?: types.outputs.automation.KeyResponse[];
+    readonly keys?: types.outputs.KeyResponse[];
 }
 /**
  * Retrieve the automation keys for an account.

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves the details of a VPN site.
  */
@@ -31,15 +31,15 @@ export interface GetVpnSiteResult {
     /**
      * The AddressSpace that contains an array of IP address ranges.
      */
-    readonly addressSpace?: types.outputs.network.v20180701.AddressSpaceResponse;
+    readonly addressSpace?: types.outputs.AddressSpaceResponse;
     /**
      * The set of bgp properties.
      */
-    readonly bgpProperties?: types.outputs.network.v20180701.BgpSettingsResponse;
+    readonly bgpProperties?: types.outputs.BgpSettingsResponse;
     /**
      * The device properties
      */
-    readonly deviceProperties?: types.outputs.network.v20180701.DevicePropertiesResponse;
+    readonly deviceProperties?: types.outputs.DevicePropertiesResponse;
     /**
      * Gets a unique read-only string that changes whenever the resource is updated.
      */
@@ -79,7 +79,7 @@ export interface GetVpnSiteResult {
     /**
      * The VirtualWAN to which the vpnSite belongs
      */
-    readonly virtualWAN?: types.outputs.network.v20180701.SubResourceResponse;
+    readonly virtualWAN?: types.outputs.SubResourceResponse;
 }
 /**
  * Retrieves the details of a VPN site.

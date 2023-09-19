@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The top level storage insight resource container.
  */
@@ -46,11 +46,11 @@ export class StorageInsightConfig extends pulumi.CustomResource {
     /**
      * The status of the storage insight
      */
-    public /*out*/ readonly status!: pulumi.Output<types.outputs.operationalinsights.v20200801.StorageInsightStatusResponse>;
+    public /*out*/ readonly status!: pulumi.Output<types.outputs.StorageInsightStatusResponse>;
     /**
      * The storage account connection details
      */
-    public readonly storageAccount!: pulumi.Output<types.outputs.operationalinsights.v20200801.StorageAccountResponse>;
+    public readonly storageAccount!: pulumi.Output<types.outputs.StorageAccountResponse>;
     /**
      * The names of the Azure tables that the workspace should read
      */
@@ -131,7 +131,7 @@ export interface StorageInsightConfigArgs {
     /**
      * The storage account connection details
      */
-    storageAccount: pulumi.Input<types.inputs.operationalinsights.v20200801.StorageAccountArgs>;
+    storageAccount: pulumi.Input<types.inputs.StorageAccountArgs>;
     /**
      * Name of the storageInsightsConfigs resource
      */

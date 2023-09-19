@@ -37,11 +37,11 @@ export interface GetProximityPlacementGroupResult {
     /**
      * A list of references to all availability sets in the proximity placement group.
      */
-    readonly availabilitySets: types.outputs.compute.SubResourceWithColocationStatusResponse[];
+    readonly availabilitySets: types.outputs.SubResourceWithColocationStatusResponse[];
     /**
      * Describes colocation status of the Proximity Placement Group.
      */
-    readonly colocationStatus?: types.outputs.compute.InstanceViewStatusResponse;
+    readonly colocationStatus?: types.outputs.InstanceViewStatusResponse;
     /**
      * Resource Id
      */
@@ -49,7 +49,7 @@ export interface GetProximityPlacementGroupResult {
     /**
      * Specifies the user intent of the proximity placement group.
      */
-    readonly intent?: types.outputs.compute.ProximityPlacementGroupPropertiesResponseIntent;
+    readonly intent?: types.outputs.ProximityPlacementGroupPropertiesResponseIntent;
     /**
      * Resource location
      */
@@ -73,11 +73,11 @@ export interface GetProximityPlacementGroupResult {
     /**
      * A list of references to all virtual machine scale sets in the proximity placement group.
      */
-    readonly virtualMachineScaleSets: types.outputs.compute.SubResourceWithColocationStatusResponse[];
+    readonly virtualMachineScaleSets: types.outputs.SubResourceWithColocationStatusResponse[];
     /**
      * A list of references to all virtual machines in the proximity placement group.
      */
-    readonly virtualMachines: types.outputs.compute.SubResourceWithColocationStatusResponse[];
+    readonly virtualMachines: types.outputs.SubResourceWithColocationStatusResponse[];
     /**
      * Specifies the Availability Zone where virtual machine, virtual machine scale set or availability set associated with the  proximity placement group can be created.
      */

@@ -71,11 +71,11 @@ export class BlobContainer extends pulumi.CustomResource {
     /**
      * The ImmutabilityPolicy property of the container.
      */
-    public /*out*/ readonly immutabilityPolicy!: pulumi.Output<types.outputs.storage.ImmutabilityPolicyPropertiesResponse>;
+    public /*out*/ readonly immutabilityPolicy!: pulumi.Output<types.outputs.ImmutabilityPolicyPropertiesResponse>;
     /**
      * The object level immutability property of the container. The property is immutable and can only be set to true at the container creation time. Existing containers must undergo a migration process.
      */
-    public readonly immutableStorageWithVersioning!: pulumi.Output<types.outputs.storage.ImmutableStorageWithVersioningResponse | undefined>;
+    public readonly immutableStorageWithVersioning!: pulumi.Output<types.outputs.ImmutableStorageWithVersioningResponse | undefined>;
     /**
      * Returns the date and time the container was last modified.
      */
@@ -95,7 +95,7 @@ export class BlobContainer extends pulumi.CustomResource {
     /**
      * The LegalHold property of the container.
      */
-    public /*out*/ readonly legalHold!: pulumi.Output<types.outputs.storage.LegalHoldPropertiesResponse>;
+    public /*out*/ readonly legalHold!: pulumi.Output<types.outputs.LegalHoldPropertiesResponse>;
     /**
      * A name-value pair to associate with the container as metadata.
      */
@@ -225,7 +225,7 @@ export interface BlobContainerArgs {
     /**
      * The object level immutability property of the container. The property is immutable and can only be set to true at the container creation time. Existing containers must undergo a migration process.
      */
-    immutableStorageWithVersioning?: pulumi.Input<types.inputs.storage.ImmutableStorageWithVersioningArgs>;
+    immutableStorageWithVersioning?: pulumi.Input<types.inputs.ImmutableStorageWithVersioningArgs>;
     /**
      * A name-value pair to associate with the container as metadata.
      */

@@ -57,7 +57,7 @@ export interface GetSAPSupportedSkuResult {
     /**
      * Gets the list of SAP supported SKUs.
      */
-    readonly supportedSkus?: types.outputs.workloads.SAPSupportedSkuResponse[];
+    readonly supportedSkus?: types.outputs.SAPSupportedSkuResponse[];
 }
 /**
  * Get a list of SAP supported SKUs for ASCS, Application and Database tier.

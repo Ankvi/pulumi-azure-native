@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Solution REST Resource.
  */
@@ -42,7 +42,7 @@ export class Solution extends pulumi.CustomResource {
     /**
      * Gets or sets the properties of the solution.
      */
-    public readonly properties!: pulumi.Output<types.outputs.migrate.v20180901preview.SolutionPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.SolutionPropertiesResponse>;
     /**
      * Gets the type of this REST resource.
      */
@@ -96,7 +96,7 @@ export interface SolutionArgs {
     /**
      * Gets or sets the properties of the solution.
      */
-    properties?: pulumi.Input<types.inputs.migrate.v20180901preview.SolutionPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.SolutionPropertiesArgs>;
     /**
      * Name of the Azure Resource Group that migrate project is part of.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An object that represents a machine learning workspace.
  */
@@ -66,7 +66,7 @@ export class Workspace extends pulumi.CustomResource {
     /**
      * The encryption settings of Azure ML workspace.
      */
-    public readonly encryption!: pulumi.Output<types.outputs.machinelearningservices.v20230401preview.EncryptionPropertyResponse | undefined>;
+    public readonly encryption!: pulumi.Output<types.outputs.EncryptionPropertyResponse | undefined>;
     /**
      * A list of existing workspaces used by Hub to perform convert.
      */
@@ -74,7 +74,7 @@ export class Workspace extends pulumi.CustomResource {
     /**
      * Settings for feature store type workspace.
      */
-    public readonly featureStoreSettings!: pulumi.Output<types.outputs.machinelearningservices.v20230401preview.FeatureStoreSettingsResponse | undefined>;
+    public readonly featureStoreSettings!: pulumi.Output<types.outputs.FeatureStoreSettingsResponse | undefined>;
     /**
      * The friendly name for this workspace. This name in mutable
      */
@@ -90,7 +90,7 @@ export class Workspace extends pulumi.CustomResource {
     /**
      * The identity of the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.machinelearningservices.v20230401preview.ManagedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * The compute name for image build
      */
@@ -111,7 +111,7 @@ export class Workspace extends pulumi.CustomResource {
     /**
      * Managed Network settings for a machine learning workspace.
      */
-    public readonly managedNetwork!: pulumi.Output<types.outputs.machinelearningservices.v20230401preview.ManagedNetworkSettingsResponse | undefined>;
+    public readonly managedNetwork!: pulumi.Output<types.outputs.ManagedNetworkSettingsResponse | undefined>;
     /**
      * The URI associated with this workspace that machine learning flow must point at to set up tracking.
      */
@@ -123,7 +123,7 @@ export class Workspace extends pulumi.CustomResource {
     /**
      * The notebook info of Azure ML workspace.
      */
-    public /*out*/ readonly notebookInfo!: pulumi.Output<types.outputs.machinelearningservices.v20230401preview.NotebookResourceInfoResponse>;
+    public /*out*/ readonly notebookInfo!: pulumi.Output<types.outputs.NotebookResourceInfoResponse>;
     /**
      * The user assigned identity resource id that represents the workspace identity.
      */
@@ -131,7 +131,7 @@ export class Workspace extends pulumi.CustomResource {
     /**
      * The list of private endpoint connections in the workspace.
      */
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.machinelearningservices.v20230401preview.PrivateEndpointConnectionResponse[]>;
+    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[]>;
     /**
      * Count of private connections in the workspace
      */
@@ -151,7 +151,7 @@ export class Workspace extends pulumi.CustomResource {
     /**
      * The service managed resource settings.
      */
-    public readonly serviceManagedResourcesSettings!: pulumi.Output<types.outputs.machinelearningservices.v20230401preview.ServiceManagedResourcesSettingsResponse | undefined>;
+    public readonly serviceManagedResourcesSettings!: pulumi.Output<types.outputs.ServiceManagedResourcesSettingsResponse | undefined>;
     /**
      * The name of the managed resource group created by workspace RP in customer subscription if the workspace is CMK workspace
      */
@@ -159,11 +159,11 @@ export class Workspace extends pulumi.CustomResource {
     /**
      * The list of shared private link resources in this workspace.
      */
-    public readonly sharedPrivateLinkResources!: pulumi.Output<types.outputs.machinelearningservices.v20230401preview.SharedPrivateLinkResourceResponse[] | undefined>;
+    public readonly sharedPrivateLinkResources!: pulumi.Output<types.outputs.SharedPrivateLinkResourceResponse[] | undefined>;
     /**
      * The sku of the workspace.
      */
-    public readonly sku!: pulumi.Output<types.outputs.machinelearningservices.v20230401preview.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Retention time in days after workspace get soft deleted.
      */
@@ -187,7 +187,7 @@ export class Workspace extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.machinelearningservices.v20230401preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The auth mode used for accessing the system datastores of the workspace
      */
@@ -365,7 +365,7 @@ export interface WorkspaceArgs {
     /**
      * The encryption settings of Azure ML workspace.
      */
-    encryption?: pulumi.Input<types.inputs.machinelearningservices.v20230401preview.EncryptionPropertyArgs>;
+    encryption?: pulumi.Input<types.inputs.EncryptionPropertyArgs>;
     /**
      * A list of existing workspaces used by Hub to perform convert.
      */
@@ -373,7 +373,7 @@ export interface WorkspaceArgs {
     /**
      * Settings for feature store type workspace.
      */
-    featureStoreSettings?: pulumi.Input<types.inputs.machinelearningservices.v20230401preview.FeatureStoreSettingsArgs>;
+    featureStoreSettings?: pulumi.Input<types.inputs.FeatureStoreSettingsArgs>;
     /**
      * The friendly name for this workspace. This name in mutable
      */
@@ -389,7 +389,7 @@ export interface WorkspaceArgs {
     /**
      * The identity of the resource.
      */
-    identity?: pulumi.Input<types.inputs.machinelearningservices.v20230401preview.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
      * The compute name for image build
      */
@@ -410,7 +410,7 @@ export interface WorkspaceArgs {
     /**
      * Managed Network settings for a machine learning workspace.
      */
-    managedNetwork?: pulumi.Input<types.inputs.machinelearningservices.v20230401preview.ManagedNetworkSettingsArgs>;
+    managedNetwork?: pulumi.Input<types.inputs.ManagedNetworkSettingsArgs>;
     /**
      * The user assigned identity resource id that represents the workspace identity.
      */
@@ -418,7 +418,7 @@ export interface WorkspaceArgs {
     /**
      * Whether requests from Public Network are allowed.
      */
-    publicNetworkAccess?: pulumi.Input<string | types.enums.v20230401preview.PublicNetworkAccess>;
+    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -426,15 +426,15 @@ export interface WorkspaceArgs {
     /**
      * The service managed resource settings.
      */
-    serviceManagedResourcesSettings?: pulumi.Input<types.inputs.machinelearningservices.v20230401preview.ServiceManagedResourcesSettingsArgs>;
+    serviceManagedResourcesSettings?: pulumi.Input<types.inputs.ServiceManagedResourcesSettingsArgs>;
     /**
      * The list of shared private link resources in this workspace.
      */
-    sharedPrivateLinkResources?: pulumi.Input<pulumi.Input<types.inputs.machinelearningservices.v20230401preview.SharedPrivateLinkResourceArgs>[]>;
+    sharedPrivateLinkResources?: pulumi.Input<pulumi.Input<types.inputs.SharedPrivateLinkResourceArgs>[]>;
     /**
      * The sku of the workspace.
      */
-    sku?: pulumi.Input<types.inputs.machinelearningservices.v20230401preview.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Retention time in days after workspace get soft deleted.
      */

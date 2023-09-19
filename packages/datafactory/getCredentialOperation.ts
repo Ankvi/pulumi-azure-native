@@ -49,7 +49,7 @@ export interface GetCredentialOperationResult {
     /**
      * Managed Identity Credential properties.
      */
-    readonly properties: types.outputs.datafactory.ManagedIdentityCredentialResponse;
+    readonly properties: types.outputs.ManagedIdentityCredentialResponse;
     /**
      * The resource type.
      */

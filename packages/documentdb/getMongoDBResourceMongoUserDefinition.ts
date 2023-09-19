@@ -61,7 +61,7 @@ export interface GetMongoDBResourceMongoUserDefinitionResult {
     /**
      * The set of roles inherited by the User Definition.
      */
-    readonly roles?: types.outputs.documentdb.RoleResponse[];
+    readonly roles?: types.outputs.RoleResponse[];
     /**
      * The type of Azure resource.
      */

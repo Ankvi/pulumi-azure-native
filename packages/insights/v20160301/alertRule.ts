@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The alert rule resource.
  */
@@ -34,15 +34,15 @@ export class AlertRule extends pulumi.CustomResource {
     /**
      * action that is performed when the alert rule becomes active, and when an alert condition is resolved.
      */
-    public readonly action!: pulumi.Output<types.outputs.insights.v20160301.RuleEmailActionResponse | types.outputs.insights.v20160301.RuleWebhookActionResponse | undefined>;
+    public readonly action!: pulumi.Output<types.outputs.RuleEmailActionResponse | types.outputs.RuleWebhookActionResponse | undefined>;
     /**
      * the array of actions that are performed when the alert rule becomes active, and when an alert condition is resolved.
      */
-    public readonly actions!: pulumi.Output<(types.outputs.insights.v20160301.RuleEmailActionResponse | types.outputs.insights.v20160301.RuleWebhookActionResponse)[] | undefined>;
+    public readonly actions!: pulumi.Output<(types.outputs.RuleEmailActionResponse | types.outputs.RuleWebhookActionResponse)[] | undefined>;
     /**
      * the condition that results in the alert rule being activated.
      */
-    public readonly condition!: pulumi.Output<types.outputs.insights.v20160301.LocationThresholdRuleConditionResponse | types.outputs.insights.v20160301.ManagementEventRuleConditionResponse | types.outputs.insights.v20160301.ThresholdRuleConditionResponse>;
+    public readonly condition!: pulumi.Output<types.outputs.LocationThresholdRuleConditionResponse | types.outputs.ManagementEventRuleConditionResponse | types.outputs.ThresholdRuleConditionResponse>;
     /**
      * the description of the alert rule that will be included in the alert email.
      */
@@ -139,15 +139,15 @@ export interface AlertRuleArgs {
     /**
      * action that is performed when the alert rule becomes active, and when an alert condition is resolved.
      */
-    action?: pulumi.Input<types.inputs.insights.v20160301.RuleEmailActionArgs | types.inputs.insights.v20160301.RuleWebhookActionArgs>;
+    action?: pulumi.Input<types.inputs.RuleEmailActionArgs | types.inputs.RuleWebhookActionArgs>;
     /**
      * the array of actions that are performed when the alert rule becomes active, and when an alert condition is resolved.
      */
-    actions?: pulumi.Input<pulumi.Input<types.inputs.insights.v20160301.RuleEmailActionArgs | types.inputs.insights.v20160301.RuleWebhookActionArgs>[]>;
+    actions?: pulumi.Input<pulumi.Input<types.inputs.RuleEmailActionArgs | types.inputs.RuleWebhookActionArgs>[]>;
     /**
      * the condition that results in the alert rule being activated.
      */
-    condition: pulumi.Input<types.inputs.insights.v20160301.LocationThresholdRuleConditionArgs | types.inputs.insights.v20160301.ManagementEventRuleConditionArgs | types.inputs.insights.v20160301.ThresholdRuleConditionArgs>;
+    condition: pulumi.Input<types.inputs.LocationThresholdRuleConditionArgs | types.inputs.ManagementEventRuleConditionArgs | types.inputs.ThresholdRuleConditionArgs>;
     /**
      * the description of the alert rule that will be included in the alert email.
      */

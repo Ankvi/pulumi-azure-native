@@ -56,7 +56,7 @@ export interface GetP2sVpnGatewayP2sVpnConnectionHealthResult {
     /**
      * List of all p2s connection configurations of the gateway.
      */
-    readonly p2SConnectionConfigurations?: types.outputs.network.P2SConnectionConfigurationResponse[];
+    readonly p2SConnectionConfigurations?: types.outputs.P2SConnectionConfigurationResponse[];
     /**
      * The provisioning state of the P2S VPN gateway resource.
      */
@@ -72,11 +72,11 @@ export interface GetP2sVpnGatewayP2sVpnConnectionHealthResult {
     /**
      * The VirtualHub to which the gateway belongs.
      */
-    readonly virtualHub?: types.outputs.network.SubResourceResponse;
+    readonly virtualHub?: types.outputs.SubResourceResponse;
     /**
      * All P2S VPN clients' connection health status.
      */
-    readonly vpnClientConnectionHealth: types.outputs.network.VpnClientConnectionHealthResponse;
+    readonly vpnClientConnectionHealth: types.outputs.VpnClientConnectionHealthResponse;
     /**
      * The scale unit for this p2s vpn gateway.
      */
@@ -84,7 +84,7 @@ export interface GetP2sVpnGatewayP2sVpnConnectionHealthResult {
     /**
      * The VpnServerConfiguration to which the p2sVpnGateway is attached to.
      */
-    readonly vpnServerConfiguration?: types.outputs.network.SubResourceResponse;
+    readonly vpnServerConfiguration?: types.outputs.SubResourceResponse;
 }
 /**
  * Gets the connection health of P2S clients of the virtual wan P2SVpnGateway in the specified resource group.

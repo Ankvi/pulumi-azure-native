@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets properties of a specified container.
  */
@@ -76,11 +76,11 @@ export interface GetBlobContainerResult {
     /**
      * The ImmutabilityPolicy property of the container.
      */
-    readonly immutabilityPolicy: types.outputs.storage.v20220901.ImmutabilityPolicyPropertiesResponse;
+    readonly immutabilityPolicy: types.outputs.ImmutabilityPolicyPropertiesResponse;
     /**
      * The object level immutability property of the container. The property is immutable and can only be set to true at the container creation time. Existing containers must undergo a migration process.
      */
-    readonly immutableStorageWithVersioning?: types.outputs.storage.v20220901.ImmutableStorageWithVersioningResponse;
+    readonly immutableStorageWithVersioning?: types.outputs.ImmutableStorageWithVersioningResponse;
     /**
      * Returns the date and time the container was last modified.
      */
@@ -100,7 +100,7 @@ export interface GetBlobContainerResult {
     /**
      * The LegalHold property of the container.
      */
-    readonly legalHold: types.outputs.storage.v20220901.LegalHoldPropertiesResponse;
+    readonly legalHold: types.outputs.LegalHoldPropertiesResponse;
     /**
      * A name-value pair to associate with the container as metadata.
      */

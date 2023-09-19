@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Description of a Namespace AuthorizationRules.
  */
@@ -78,7 +78,7 @@ export class NamespaceAuthorizationRule extends pulumi.CustomResource {
     /**
      * The sku of the created namespace
      */
-    public /*out*/ readonly sku!: pulumi.Output<types.outputs.notificationhubs.v20170401.SkuResponse | undefined>;
+    public /*out*/ readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Resource tags
      */
@@ -164,7 +164,7 @@ export interface NamespaceAuthorizationRuleArgs {
     /**
      * Properties of the Namespace AuthorizationRules.
      */
-    properties: pulumi.Input<types.inputs.notificationhubs.v20170401.SharedAccessAuthorizationRulePropertiesArgs>;
+    properties: pulumi.Input<types.inputs.SharedAccessAuthorizationRulePropertiesArgs>;
     /**
      * The name of the resource group.
      */

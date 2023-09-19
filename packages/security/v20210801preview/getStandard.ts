@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a specific security standard for the requested scope
  */
@@ -35,7 +35,7 @@ export interface GetStandardResult {
     /**
      * List of component objects containing component unique keys (such as assessment keys) to apply to standard scope.  Currently only supports assessment keys.
      */
-    readonly components?: types.outputs.security.v20210801preview.StandardComponentPropertiesResponse[];
+    readonly components?: types.outputs.StandardComponentPropertiesResponse[];
     /**
      * description of the standard
      */
@@ -75,7 +75,7 @@ export interface GetStandardResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.security.v20210801preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * A list of key value pairs that describe the resource.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Fabric model.
  */
@@ -42,8 +42,8 @@ export class Fabric extends pulumi.CustomResource {
     /**
      * Fabric model properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.datareplication.v20210216preview.FabricModelPropertiesResponse>;
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.datareplication.v20210216preview.FabricModelResponseSystemData>;
+    public readonly properties!: pulumi.Output<types.outputs.FabricModelPropertiesResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.FabricModelResponseSystemData>;
     /**
      * Gets or sets the resource tags.
      */
@@ -108,7 +108,7 @@ export interface FabricArgs {
     /**
      * Fabric model properties.
      */
-    properties: pulumi.Input<types.inputs.datareplication.v20210216preview.FabricModelPropertiesArgs>;
+    properties: pulumi.Input<types.inputs.FabricModelPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

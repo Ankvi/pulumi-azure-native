@@ -64,7 +64,7 @@ export interface GetSensorResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.iotsecurity.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * TI Automatic mode status of the IoT sensor
      */

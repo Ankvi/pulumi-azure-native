@@ -43,7 +43,7 @@ export class VirtualMachineTemplate extends pulumi.CustomResource {
     /**
      * Gets or sets the disks of the template.
      */
-    public /*out*/ readonly disks!: pulumi.Output<types.outputs.scvmm.VirtualDiskResponse[]>;
+    public /*out*/ readonly disks!: pulumi.Output<types.outputs.VirtualDiskResponse[]>;
     /**
      * Gets or sets a value indicating whether to enable dynamic memory or not.
      */
@@ -59,7 +59,7 @@ export class VirtualMachineTemplate extends pulumi.CustomResource {
     /**
      * The extended location.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.scvmm.ExtendedLocationResponse>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse>;
     /**
      * Gets or sets the generation for the vm.
      */
@@ -95,7 +95,7 @@ export class VirtualMachineTemplate extends pulumi.CustomResource {
     /**
      * Gets or sets the network interfaces of the template.
      */
-    public /*out*/ readonly networkInterfaces!: pulumi.Output<types.outputs.scvmm.NetworkInterfacesResponse[]>;
+    public /*out*/ readonly networkInterfaces!: pulumi.Output<types.outputs.NetworkInterfacesResponse[]>;
     /**
      * Gets or sets os name.
      */
@@ -111,7 +111,7 @@ export class VirtualMachineTemplate extends pulumi.CustomResource {
     /**
      * The system data.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.scvmm.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags
      */
@@ -212,7 +212,7 @@ export interface VirtualMachineTemplateArgs {
     /**
      * The extended location.
      */
-    extendedLocation: pulumi.Input<types.inputs.scvmm.ExtendedLocationArgs>;
+    extendedLocation: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * Gets or sets the inventory Item ID for the resource.
      */

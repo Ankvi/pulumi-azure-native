@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the credentials for the specified cluster such as Storage, ACR and ACS credentials. This is a long running operation because it fetches keys from dependencies.
  */
@@ -31,27 +31,27 @@ export interface ListOperationalizationClusterKeysResult {
     /**
      * Credentials for Azure AppInsights.
      */
-    readonly appInsights?: types.outputs.machinelearningcompute.v20170801preview.AppInsightsCredentialsResponse;
+    readonly appInsights?: types.outputs.AppInsightsCredentialsResponse;
     /**
      * Credentials for Azure Container Registry.
      */
-    readonly containerRegistry?: types.outputs.machinelearningcompute.v20170801preview.ContainerRegistryCredentialsResponse;
+    readonly containerRegistry?: types.outputs.ContainerRegistryCredentialsResponse;
     /**
      * Credentials for Azure Container Service.
      */
-    readonly containerService?: types.outputs.machinelearningcompute.v20170801preview.ContainerServiceCredentialsResponse;
+    readonly containerService?: types.outputs.ContainerServiceCredentialsResponse;
     /**
      * Global authorization keys for all user services deployed in cluster. These are used if the service does not have auth keys.
      */
-    readonly serviceAuthConfiguration?: types.outputs.machinelearningcompute.v20170801preview.ServiceAuthConfigurationResponse;
+    readonly serviceAuthConfiguration?: types.outputs.ServiceAuthConfigurationResponse;
     /**
      * The SSL configuration for the services.
      */
-    readonly sslConfiguration?: types.outputs.machinelearningcompute.v20170801preview.SslConfigurationResponse;
+    readonly sslConfiguration?: types.outputs.SslConfigurationResponse;
     /**
      * Credentials for the Storage Account.
      */
-    readonly storageAccount?: types.outputs.machinelearningcompute.v20170801preview.StorageAccountCredentialsResponse;
+    readonly storageAccount?: types.outputs.StorageAccountCredentialsResponse;
 }
 /**
  * Gets the credentials for the specified cluster such as Storage, ACR and ACS credentials. This is a long running operation because it fetches keys from dependencies.

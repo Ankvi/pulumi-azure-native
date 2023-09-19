@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents a Private Endpoint Connection ARM resource - a sub-resource of Notification Hubs namespace.
  */
@@ -38,11 +38,11 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * Private Endpoint Connection properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.notificationhubs.v20230101preview.PrivateEndpointConnectionPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.PrivateEndpointConnectionPropertiesResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.notificationhubs.v20230101preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -100,7 +100,7 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * Private Endpoint Connection properties.
      */
-    properties?: pulumi.Input<types.inputs.notificationhubs.v20230101preview.PrivateEndpointConnectionPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.PrivateEndpointConnectionPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A custom API
  */
@@ -46,7 +46,7 @@ export class CustomApi extends pulumi.CustomResource {
     /**
      * Custom API properties
      */
-    public readonly properties!: pulumi.Output<types.outputs.web.v20160601.CustomApiPropertiesDefinitionResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.CustomApiPropertiesDefinitionResponse>;
     /**
      * Resource tags
      */
@@ -109,7 +109,7 @@ export interface CustomApiArgs {
     /**
      * Custom API properties
      */
-    properties?: pulumi.Input<types.inputs.web.v20160601.CustomApiPropertiesDefinitionArgs>;
+    properties?: pulumi.Input<types.inputs.CustomApiPropertiesDefinitionArgs>;
     /**
      * The resource group
      */

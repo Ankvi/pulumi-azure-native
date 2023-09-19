@@ -18,7 +18,7 @@ utilities.lazyLoad(exports, ["listApplianceClusterUserCredential","listAppliance
 
 
 // Export enums:
-export * from "../types/enums/v20211031preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

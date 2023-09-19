@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The NetworkDevice resource definition.
  */
@@ -70,7 +70,7 @@ export class NetworkDevice extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.managednetworkfabric.v20230201preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -167,7 +167,7 @@ export interface NetworkDeviceArgs {
     /**
      * networkDeviceRole is the device role: Example: CE | ToR.
      */
-    networkDeviceRole: pulumi.Input<string | types.enums.v20230201preview.NetworkDeviceRoleTypes>;
+    networkDeviceRole: pulumi.Input<string | types.enums.NetworkDeviceRoleTypes>;
     /**
      * Network Device SKU name.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the Azure AD B2C tenant resource.
  */
@@ -28,7 +28,7 @@ export interface GetB2CTenantResult {
     /**
      * The billing configuration for the tenant.
      */
-    readonly billingConfig?: types.outputs.azureactivedirectory.v20230118preview.B2CTenantResourcePropertiesResponseBillingConfig;
+    readonly billingConfig?: types.outputs.B2CTenantResourcePropertiesResponseBillingConfig;
     /**
      * An identifier that represents the Azure AD B2C tenant resource.
      */
@@ -48,11 +48,11 @@ export interface GetB2CTenantResult {
     /**
      * SKU properties of the Azure AD B2C tenant. Learn more about Azure AD B2C billing at [aka.ms/b2cBilling](https://aka.ms/b2cBilling).
      */
-    readonly sku: types.outputs.azureactivedirectory.v20230118preview.B2CResourceSKUResponse;
+    readonly sku: types.outputs.B2CResourceSKUResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.azureactivedirectory.v20230118preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource Tags
      */

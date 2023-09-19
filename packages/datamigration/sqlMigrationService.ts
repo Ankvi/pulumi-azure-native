@@ -42,7 +42,7 @@ export class SqlMigrationService extends pulumi.CustomResource {
      * Provisioning state to track the async operation status.
      */
     public /*out*/ readonly provisioningState!: pulumi.Output<string>;
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.datamigration.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     public /*out*/ readonly type!: pulumi.Output<string>;
 

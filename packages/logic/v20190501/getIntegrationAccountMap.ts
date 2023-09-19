@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets an integration account map.
  */
@@ -44,7 +44,7 @@ export interface GetIntegrationAccountMapResult {
     /**
      * The content link.
      */
-    readonly contentLink: types.outputs.logic.v20190501.ContentLinkResponse;
+    readonly contentLink: types.outputs.ContentLinkResponse;
     /**
      * The content type.
      */
@@ -76,7 +76,7 @@ export interface GetIntegrationAccountMapResult {
     /**
      * The parameters schema of integration account map.
      */
-    readonly parametersSchema?: types.outputs.logic.v20190501.IntegrationAccountMapPropertiesResponseParametersSchema;
+    readonly parametersSchema?: types.outputs.IntegrationAccountMapPropertiesResponseParametersSchema;
     /**
      * The resource tags.
      */

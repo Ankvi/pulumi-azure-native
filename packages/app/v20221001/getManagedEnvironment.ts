@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the properties of a Managed Environment used to host container apps.
  */
@@ -33,11 +33,11 @@ export interface GetManagedEnvironmentResult {
      * app logs to a destination. Currently only "log-analytics" is
      * supported
      */
-    readonly appLogsConfiguration?: types.outputs.app.v20221001.AppLogsConfigurationResponse;
+    readonly appLogsConfiguration?: types.outputs.AppLogsConfigurationResponse;
     /**
      * Custom domain configuration for the environment
      */
-    readonly customDomainConfiguration?: types.outputs.app.v20221001.CustomDomainConfigurationResponse;
+    readonly customDomainConfiguration?: types.outputs.CustomDomainConfigurationResponse;
     /**
      * Application Insights connection string used by Dapr to export Service to Service communication telemetry
      */
@@ -81,7 +81,7 @@ export interface GetManagedEnvironmentResult {
     /**
      * SKU properties of the Environment.
      */
-    readonly sku?: types.outputs.app.v20221001.EnvironmentSkuPropertiesResponse;
+    readonly sku?: types.outputs.EnvironmentSkuPropertiesResponse;
     /**
      * Static IP of the Environment
      */
@@ -89,7 +89,7 @@ export interface GetManagedEnvironmentResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.app.v20221001.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -101,11 +101,11 @@ export interface GetManagedEnvironmentResult {
     /**
      * Vnet configuration for the environment
      */
-    readonly vnetConfiguration?: types.outputs.app.v20221001.VnetConfigurationResponse;
+    readonly vnetConfiguration?: types.outputs.VnetConfigurationResponse;
     /**
      * Workload profiles configured for the Managed Environment.
      */
-    readonly workloadProfiles?: types.outputs.app.v20221001.WorkloadProfileResponse[];
+    readonly workloadProfiles?: types.outputs.WorkloadProfileResponse[];
     /**
      * Whether or not this Managed Environment is zone-redundant.
      */

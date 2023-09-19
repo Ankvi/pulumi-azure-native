@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A workspace
  */
@@ -42,15 +42,15 @@ export class Workspace extends pulumi.CustomResource {
     /**
      * Initial workspace AAD admin properties for a CSP subscription
      */
-    public readonly cspWorkspaceAdminProperties!: pulumi.Output<types.outputs.synapse.v20210601.CspWorkspaceAdminPropertiesResponse | undefined>;
+    public readonly cspWorkspaceAdminProperties!: pulumi.Output<types.outputs.CspWorkspaceAdminPropertiesResponse | undefined>;
     /**
      * Workspace default data lake storage account details
      */
-    public readonly defaultDataLakeStorage!: pulumi.Output<types.outputs.synapse.v20210601.DataLakeStorageAccountDetailsResponse | undefined>;
+    public readonly defaultDataLakeStorage!: pulumi.Output<types.outputs.DataLakeStorageAccountDetailsResponse | undefined>;
     /**
      * The encryption details of the workspace
      */
-    public readonly encryption!: pulumi.Output<types.outputs.synapse.v20210601.EncryptionDetailsResponse | undefined>;
+    public readonly encryption!: pulumi.Output<types.outputs.EncryptionDetailsResponse | undefined>;
     /**
      * Workspace level configs and feature flags
      */
@@ -58,7 +58,7 @@ export class Workspace extends pulumi.CustomResource {
     /**
      * Identity of the workspace
      */
-    public readonly identity!: pulumi.Output<types.outputs.synapse.v20210601.ManagedIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedIdentityResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -74,7 +74,7 @@ export class Workspace extends pulumi.CustomResource {
     /**
      * Managed Virtual Network Settings
      */
-    public readonly managedVirtualNetworkSettings!: pulumi.Output<types.outputs.synapse.v20210601.ManagedVirtualNetworkSettingsResponse | undefined>;
+    public readonly managedVirtualNetworkSettings!: pulumi.Output<types.outputs.ManagedVirtualNetworkSettingsResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -82,7 +82,7 @@ export class Workspace extends pulumi.CustomResource {
     /**
      * Private endpoint connections to the workspace
      */
-    public readonly privateEndpointConnections!: pulumi.Output<types.outputs.synapse.v20210601.PrivateEndpointConnectionResponse[] | undefined>;
+    public readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[] | undefined>;
     /**
      * Resource provisioning state
      */
@@ -94,7 +94,7 @@ export class Workspace extends pulumi.CustomResource {
     /**
      * Purview Configuration
      */
-    public readonly purviewConfiguration!: pulumi.Output<types.outputs.synapse.v20210601.PurviewConfigurationResponse | undefined>;
+    public readonly purviewConfiguration!: pulumi.Output<types.outputs.PurviewConfigurationResponse | undefined>;
     /**
      * Workspace settings
      */
@@ -122,11 +122,11 @@ export class Workspace extends pulumi.CustomResource {
     /**
      * Virtual Network profile
      */
-    public readonly virtualNetworkProfile!: pulumi.Output<types.outputs.synapse.v20210601.VirtualNetworkProfileResponse | undefined>;
+    public readonly virtualNetworkProfile!: pulumi.Output<types.outputs.VirtualNetworkProfileResponse | undefined>;
     /**
      * Git integration settings
      */
-    public readonly workspaceRepositoryConfiguration!: pulumi.Output<types.outputs.synapse.v20210601.WorkspaceRepositoryConfigurationResponse | undefined>;
+    public readonly workspaceRepositoryConfiguration!: pulumi.Output<types.outputs.WorkspaceRepositoryConfigurationResponse | undefined>;
     /**
      * The workspace unique identifier
      */
@@ -219,19 +219,19 @@ export interface WorkspaceArgs {
     /**
      * Initial workspace AAD admin properties for a CSP subscription
      */
-    cspWorkspaceAdminProperties?: pulumi.Input<types.inputs.synapse.v20210601.CspWorkspaceAdminPropertiesArgs>;
+    cspWorkspaceAdminProperties?: pulumi.Input<types.inputs.CspWorkspaceAdminPropertiesArgs>;
     /**
      * Workspace default data lake storage account details
      */
-    defaultDataLakeStorage?: pulumi.Input<types.inputs.synapse.v20210601.DataLakeStorageAccountDetailsArgs>;
+    defaultDataLakeStorage?: pulumi.Input<types.inputs.DataLakeStorageAccountDetailsArgs>;
     /**
      * The encryption details of the workspace
      */
-    encryption?: pulumi.Input<types.inputs.synapse.v20210601.EncryptionDetailsArgs>;
+    encryption?: pulumi.Input<types.inputs.EncryptionDetailsArgs>;
     /**
      * Identity of the workspace
      */
-    identity?: pulumi.Input<types.inputs.synapse.v20210601.ManagedIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedIdentityArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -247,20 +247,20 @@ export interface WorkspaceArgs {
     /**
      * Managed Virtual Network Settings
      */
-    managedVirtualNetworkSettings?: pulumi.Input<types.inputs.synapse.v20210601.ManagedVirtualNetworkSettingsArgs>;
+    managedVirtualNetworkSettings?: pulumi.Input<types.inputs.ManagedVirtualNetworkSettingsArgs>;
     /**
      * Private endpoint connections to the workspace
      * These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
      */
-    privateEndpointConnections?: pulumi.Input<pulumi.Input<types.inputs.synapse.v20210601.PrivateEndpointConnectionArgs>[]>;
+    privateEndpointConnections?: pulumi.Input<pulumi.Input<types.inputs.PrivateEndpointConnectionArgs>[]>;
     /**
      * Enable or Disable public network access to workspace
      */
-    publicNetworkAccess?: pulumi.Input<string | types.enums.v20210601.WorkspacePublicNetworkAccess>;
+    publicNetworkAccess?: pulumi.Input<string | types.enums.WorkspacePublicNetworkAccess>;
     /**
      * Purview Configuration
      */
-    purviewConfiguration?: pulumi.Input<types.inputs.synapse.v20210601.PurviewConfigurationArgs>;
+    purviewConfiguration?: pulumi.Input<types.inputs.PurviewConfigurationArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -284,7 +284,7 @@ export interface WorkspaceArgs {
     /**
      * Virtual Network profile
      */
-    virtualNetworkProfile?: pulumi.Input<types.inputs.synapse.v20210601.VirtualNetworkProfileArgs>;
+    virtualNetworkProfile?: pulumi.Input<types.inputs.VirtualNetworkProfileArgs>;
     /**
      * The name of the workspace.
      */
@@ -292,5 +292,5 @@ export interface WorkspaceArgs {
     /**
      * Git integration settings
      */
-    workspaceRepositoryConfiguration?: pulumi.Input<types.inputs.synapse.v20210601.WorkspaceRepositoryConfigurationArgs>;
+    workspaceRepositoryConfiguration?: pulumi.Input<types.inputs.WorkspaceRepositoryConfigurationArgs>;
 }

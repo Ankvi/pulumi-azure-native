@@ -36,7 +36,7 @@ export interface ListConnectedPartnerResourceResult {
     /**
      * Results of a list operation.
      */
-    readonly value?: types.outputs.elastic.ConnectedPartnerResourcesListFormatResponse[];
+    readonly value?: types.outputs.ConnectedPartnerResourcesListFormatResponse[];
 }
 /**
  *  List of all active elastic deployments.

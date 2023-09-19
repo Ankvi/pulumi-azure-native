@@ -35,7 +35,7 @@ export class SecurityOperator extends pulumi.CustomResource {
     /**
      * Identity for the resource.
      */
-    public /*out*/ readonly identity!: pulumi.Output<types.outputs.security.IdentityResponse | undefined>;
+    public /*out*/ readonly identity!: pulumi.Output<types.outputs.IdentityResponse | undefined>;
     /**
      * Resource name
      */

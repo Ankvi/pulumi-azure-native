@@ -32,7 +32,7 @@ export interface ListAccountKeysResult {
     /**
      * Account keys
      */
-    readonly value: types.outputs.engagementfabric.KeyDescriptionResponse[];
+    readonly value: types.outputs.KeyDescriptionResponse[];
 }
 /**
  * The list of the EngagementFabric account keys

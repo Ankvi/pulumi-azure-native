@@ -56,11 +56,11 @@ export interface GetInternetGatewayRuleResult {
     /**
      * Rules for the InternetGateways
      */
-    readonly ruleProperties: types.outputs.managednetworkfabric.RulePropertiesResponse;
+    readonly ruleProperties: types.outputs.RulePropertiesResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.managednetworkfabric.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

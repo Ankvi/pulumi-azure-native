@@ -35,7 +35,7 @@ export class RegistryCodeVersion extends pulumi.CustomResource {
     /**
      * [Required] Additional attributes of the entity.
      */
-    public readonly codeVersionProperties!: pulumi.Output<types.outputs.machinelearningservices.CodeVersionResponse>;
+    public readonly codeVersionProperties!: pulumi.Output<types.outputs.CodeVersionResponse>;
     /**
      * The name of the resource
      */
@@ -43,7 +43,7 @@ export class RegistryCodeVersion extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.machinelearningservices.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -73,7 +73,7 @@ export class RegistryCodeVersion extends pulumi.CustomResource {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
             resourceInputs["codeName"] = args ? args.codeName : undefined;
-            resourceInputs["codeVersionProperties"] = args ? (args.codeVersionProperties ? pulumi.output(args.codeVersionProperties).apply(types.inputs.machinelearningservices.codeVersionArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["codeVersionProperties"] = args ? (args.codeVersionProperties ? pulumi.output(args.codeVersionProperties).apply(types.inputs.codeVersionArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["registryName"] = args ? args.registryName : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["version"] = args ? args.version : undefined;
@@ -104,7 +104,7 @@ export interface RegistryCodeVersionArgs {
     /**
      * [Required] Additional attributes of the entity.
      */
-    codeVersionProperties: pulumi.Input<types.inputs.machinelearningservices.CodeVersionArgs>;
+    codeVersionProperties: pulumi.Input<types.inputs.CodeVersionArgs>;
     /**
      * Name of Azure Machine Learning registry. This is case-insensitive
      */

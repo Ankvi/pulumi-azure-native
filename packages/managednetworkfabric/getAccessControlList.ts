@@ -40,7 +40,7 @@ export interface GetAccessControlListResult {
     /**
      * Access Control List conditions.
      */
-    readonly conditions: types.outputs.managednetworkfabric.AccessControlListConditionPropertiesResponse[];
+    readonly conditions: types.outputs.AccessControlListConditionPropertiesResponse[];
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -60,7 +60,7 @@ export interface GetAccessControlListResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.managednetworkfabric.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

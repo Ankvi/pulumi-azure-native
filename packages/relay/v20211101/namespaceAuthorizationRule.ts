@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Single item in a List or Get AuthorizationRule operation
  */
@@ -46,7 +46,7 @@ export class NamespaceAuthorizationRule extends pulumi.CustomResource {
     /**
      * The system meta data relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.relay.v20211101.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
      */
@@ -113,5 +113,5 @@ export interface NamespaceAuthorizationRuleArgs {
     /**
      * The rights associated with the rule.
      */
-    rights: pulumi.Input<pulumi.Input<string | types.enums.v20211101.AccessRights>[]>;
+    rights: pulumi.Input<pulumi.Input<string | types.enums.AccessRights>[]>;
 }

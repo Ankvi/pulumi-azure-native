@@ -35,7 +35,7 @@ export class SignalR extends pulumi.CustomResource {
     /**
      * Cross-Origin Resource Sharing (CORS) settings.
      */
-    public readonly cors!: pulumi.Output<types.outputs.signalrservice.SignalRCorsSettingsResponse | undefined>;
+    public readonly cors!: pulumi.Output<types.outputs.SignalRCorsSettingsResponse | undefined>;
     /**
      * DisableLocalAuth
      * Enable or disable aad auth
@@ -60,7 +60,7 @@ export class SignalR extends pulumi.CustomResource {
      * When a featureFlag is not explicitly set, its globally default value will be used
      * But keep in mind, the default value doesn't mean "false". It varies in terms of different FeatureFlags.
      */
-    public readonly features!: pulumi.Output<types.outputs.signalrservice.SignalRFeatureResponse[] | undefined>;
+    public readonly features!: pulumi.Output<types.outputs.SignalRFeatureResponse[] | undefined>;
     /**
      * FQDN of the service instance.
      */
@@ -72,7 +72,7 @@ export class SignalR extends pulumi.CustomResource {
     /**
      * A class represent managed identities used for request and response
      */
-    public readonly identity!: pulumi.Output<types.outputs.signalrservice.ManagedIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedIdentityResponse | undefined>;
     /**
      * The kind of the service, it can be SignalR or RawWebSockets
      */
@@ -80,7 +80,7 @@ export class SignalR extends pulumi.CustomResource {
     /**
      * Live trace configuration of a Microsoft.SignalRService resource.
      */
-    public readonly liveTraceConfiguration!: pulumi.Output<types.outputs.signalrservice.LiveTraceConfigurationResponse | undefined>;
+    public readonly liveTraceConfiguration!: pulumi.Output<types.outputs.LiveTraceConfigurationResponse | undefined>;
     /**
      * The GEO location of the resource. e.g. West US | East US | North Central US | South Central US.
      */
@@ -92,11 +92,11 @@ export class SignalR extends pulumi.CustomResource {
     /**
      * Network ACLs for the resource
      */
-    public readonly networkACLs!: pulumi.Output<types.outputs.signalrservice.SignalRNetworkACLsResponse | undefined>;
+    public readonly networkACLs!: pulumi.Output<types.outputs.SignalRNetworkACLsResponse | undefined>;
     /**
      * Private endpoint connections to the resource.
      */
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.signalrservice.PrivateEndpointConnectionResponse[]>;
+    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[]>;
     /**
      * Provisioning state of the resource.
      */
@@ -114,7 +114,7 @@ export class SignalR extends pulumi.CustomResource {
     /**
      * Resource log configuration of a Microsoft.SignalRService resource.
      */
-    public readonly resourceLogConfiguration!: pulumi.Output<types.outputs.signalrservice.ResourceLogConfigurationResponse | undefined>;
+    public readonly resourceLogConfiguration!: pulumi.Output<types.outputs.ResourceLogConfigurationResponse | undefined>;
     /**
      * The publicly accessible port of the resource which is designed for customer server side usage.
      */
@@ -122,19 +122,19 @@ export class SignalR extends pulumi.CustomResource {
     /**
      * Serverless settings.
      */
-    public readonly serverless!: pulumi.Output<types.outputs.signalrservice.ServerlessSettingsResponse | undefined>;
+    public readonly serverless!: pulumi.Output<types.outputs.ServerlessSettingsResponse | undefined>;
     /**
      * The list of shared private link resources.
      */
-    public /*out*/ readonly sharedPrivateLinkResources!: pulumi.Output<types.outputs.signalrservice.SharedPrivateLinkResourceResponse[]>;
+    public /*out*/ readonly sharedPrivateLinkResources!: pulumi.Output<types.outputs.SharedPrivateLinkResourceResponse[]>;
     /**
      * The billing information of the resource.
      */
-    public readonly sku!: pulumi.Output<types.outputs.signalrservice.ResourceSkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.ResourceSkuResponse | undefined>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.signalrservice.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Tags of the service which is a list of key value pairs that describe the resource.
      */
@@ -142,7 +142,7 @@ export class SignalR extends pulumi.CustomResource {
     /**
      * TLS settings for the resource
      */
-    public readonly tls!: pulumi.Output<types.outputs.signalrservice.SignalRTlsSettingsResponse | undefined>;
+    public readonly tls!: pulumi.Output<types.outputs.SignalRTlsSettingsResponse | undefined>;
     /**
      * The type of the resource - e.g. "Microsoft.SignalRService/SignalR"
      */
@@ -150,7 +150,7 @@ export class SignalR extends pulumi.CustomResource {
     /**
      * The settings for the Upstream when the service is in server-less mode.
      */
-    public readonly upstream!: pulumi.Output<types.outputs.signalrservice.ServerlessUpstreamSettingsResponse | undefined>;
+    public readonly upstream!: pulumi.Output<types.outputs.ServerlessUpstreamSettingsResponse | undefined>;
     /**
      * Version of the resource. Probably you need the same or higher version of client SDKs.
      */
@@ -176,17 +176,17 @@ export class SignalR extends pulumi.CustomResource {
             resourceInputs["features"] = args ? args.features : undefined;
             resourceInputs["identity"] = args ? args.identity : undefined;
             resourceInputs["kind"] = args ? args.kind : undefined;
-            resourceInputs["liveTraceConfiguration"] = args ? (args.liveTraceConfiguration ? pulumi.output(args.liveTraceConfiguration).apply(types.inputs.signalrservice.liveTraceConfigurationArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["liveTraceConfiguration"] = args ? (args.liveTraceConfiguration ? pulumi.output(args.liveTraceConfiguration).apply(types.inputs.liveTraceConfigurationArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["networkACLs"] = args ? args.networkACLs : undefined;
             resourceInputs["publicNetworkAccess"] = (args ? args.publicNetworkAccess : undefined) ?? "Enabled";
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["resourceLogConfiguration"] = args ? args.resourceLogConfiguration : undefined;
             resourceInputs["resourceName"] = args ? args.resourceName : undefined;
-            resourceInputs["serverless"] = args ? (args.serverless ? pulumi.output(args.serverless).apply(types.inputs.signalrservice.serverlessSettingsArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["serverless"] = args ? (args.serverless ? pulumi.output(args.serverless).apply(types.inputs.serverlessSettingsArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["sku"] = args ? args.sku : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["tls"] = args ? (args.tls ? pulumi.output(args.tls).apply(types.inputs.signalrservice.signalRTlsSettingsArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["tls"] = args ? (args.tls ? pulumi.output(args.tls).apply(types.inputs.signalRTlsSettingsArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["upstream"] = args ? args.upstream : undefined;
             resourceInputs["externalIP"] = undefined /*out*/;
             resourceInputs["hostName"] = undefined /*out*/;
@@ -244,7 +244,7 @@ export interface SignalRArgs {
     /**
      * Cross-Origin Resource Sharing (CORS) settings.
      */
-    cors?: pulumi.Input<types.inputs.signalrservice.SignalRCorsSettingsArgs>;
+    cors?: pulumi.Input<types.inputs.SignalRCorsSettingsArgs>;
     /**
      * DisableLocalAuth
      * Enable or disable aad auth
@@ -265,11 +265,11 @@ export interface SignalRArgs {
      * When a featureFlag is not explicitly set, its globally default value will be used
      * But keep in mind, the default value doesn't mean "false". It varies in terms of different FeatureFlags.
      */
-    features?: pulumi.Input<pulumi.Input<types.inputs.signalrservice.SignalRFeatureArgs>[]>;
+    features?: pulumi.Input<pulumi.Input<types.inputs.SignalRFeatureArgs>[]>;
     /**
      * A class represent managed identities used for request and response
      */
-    identity?: pulumi.Input<types.inputs.signalrservice.ManagedIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedIdentityArgs>;
     /**
      * The kind of the service, it can be SignalR or RawWebSockets
      */
@@ -277,7 +277,7 @@ export interface SignalRArgs {
     /**
      * Live trace configuration of a Microsoft.SignalRService resource.
      */
-    liveTraceConfiguration?: pulumi.Input<types.inputs.signalrservice.LiveTraceConfigurationArgs>;
+    liveTraceConfiguration?: pulumi.Input<types.inputs.LiveTraceConfigurationArgs>;
     /**
      * The GEO location of the resource. e.g. West US | East US | North Central US | South Central US.
      */
@@ -285,7 +285,7 @@ export interface SignalRArgs {
     /**
      * Network ACLs for the resource
      */
-    networkACLs?: pulumi.Input<types.inputs.signalrservice.SignalRNetworkACLsArgs>;
+    networkACLs?: pulumi.Input<types.inputs.SignalRNetworkACLsArgs>;
     /**
      * Enable or disable public network access. Default to "Enabled".
      * When it's Enabled, network ACLs still apply.
@@ -299,7 +299,7 @@ export interface SignalRArgs {
     /**
      * Resource log configuration of a Microsoft.SignalRService resource.
      */
-    resourceLogConfiguration?: pulumi.Input<types.inputs.signalrservice.ResourceLogConfigurationArgs>;
+    resourceLogConfiguration?: pulumi.Input<types.inputs.ResourceLogConfigurationArgs>;
     /**
      * The name of the resource.
      */
@@ -307,11 +307,11 @@ export interface SignalRArgs {
     /**
      * Serverless settings.
      */
-    serverless?: pulumi.Input<types.inputs.signalrservice.ServerlessSettingsArgs>;
+    serverless?: pulumi.Input<types.inputs.ServerlessSettingsArgs>;
     /**
      * The billing information of the resource.
      */
-    sku?: pulumi.Input<types.inputs.signalrservice.ResourceSkuArgs>;
+    sku?: pulumi.Input<types.inputs.ResourceSkuArgs>;
     /**
      * Tags of the service which is a list of key value pairs that describe the resource.
      */
@@ -319,9 +319,9 @@ export interface SignalRArgs {
     /**
      * TLS settings for the resource
      */
-    tls?: pulumi.Input<types.inputs.signalrservice.SignalRTlsSettingsArgs>;
+    tls?: pulumi.Input<types.inputs.SignalRTlsSettingsArgs>;
     /**
      * The settings for the Upstream when the service is in server-less mode.
      */
-    upstream?: pulumi.Input<types.inputs.signalrservice.ServerlessUpstreamSettingsArgs>;
+    upstream?: pulumi.Input<types.inputs.ServerlessUpstreamSettingsArgs>;
 }

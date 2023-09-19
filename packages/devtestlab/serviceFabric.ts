@@ -35,7 +35,7 @@ export class ServiceFabric extends pulumi.CustomResource {
     /**
      * The applicable schedule for the virtual machine.
      */
-    public /*out*/ readonly applicableSchedule!: pulumi.Output<types.outputs.devtestlab.ApplicableScheduleResponse>;
+    public /*out*/ readonly applicableSchedule!: pulumi.Output<types.outputs.ApplicableScheduleResponse>;
     /**
      * The resource id of the environment under which the service fabric resource is present
      */

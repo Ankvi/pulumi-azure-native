@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a KPI in the hub.
  */
@@ -36,7 +36,7 @@ export interface GetKpiResult {
     /**
      * The aliases.
      */
-    readonly aliases?: types.outputs.customerinsights.v20170426.KpiAliasResponse[];
+    readonly aliases?: types.outputs.KpiAliasResponse[];
     /**
      * The calculation window.
      */
@@ -68,7 +68,7 @@ export interface GetKpiResult {
     /**
      * The KPI extracts.
      */
-    readonly extracts?: types.outputs.customerinsights.v20170426.KpiExtractResponse[];
+    readonly extracts?: types.outputs.KpiExtractResponse[];
     /**
      * The filter expression for the KPI.
      */
@@ -84,7 +84,7 @@ export interface GetKpiResult {
     /**
      * The KPI GroupByMetadata.
      */
-    readonly groupByMetadata: types.outputs.customerinsights.v20170426.KpiGroupByMetadataResponse[];
+    readonly groupByMetadata: types.outputs.KpiGroupByMetadataResponse[];
     /**
      * Resource ID.
      */
@@ -100,7 +100,7 @@ export interface GetKpiResult {
     /**
      * The participant profiles.
      */
-    readonly participantProfilesMetadata: types.outputs.customerinsights.v20170426.KpiParticipantProfilesMetadataResponse[];
+    readonly participantProfilesMetadata: types.outputs.KpiParticipantProfilesMetadataResponse[];
     /**
      * Provisioning state.
      */
@@ -112,7 +112,7 @@ export interface GetKpiResult {
     /**
      * The KPI thresholds.
      */
-    readonly thresHolds?: types.outputs.customerinsights.v20170426.KpiThresholdsResponse;
+    readonly thresHolds?: types.outputs.KpiThresholdsResponse;
     /**
      * Resource type.
      */

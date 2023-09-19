@@ -46,7 +46,7 @@ export interface GetAuthorizationResult {
     /**
      * Authorization error details.
      */
-    readonly error?: types.outputs.apimanagement.AuthorizationErrorResponse;
+    readonly error?: types.outputs.AuthorizationErrorResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */

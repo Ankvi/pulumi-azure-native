@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Private dns zone group resource.
  */
@@ -42,7 +42,7 @@ export class PrivateDnsZoneGroup extends pulumi.CustomResource {
     /**
      * A collection of private dns zone configurations of the private dns zone group.
      */
-    public readonly privateDnsZoneConfigs!: pulumi.Output<types.outputs.network.v20230401.PrivateDnsZoneConfigResponse[] | undefined>;
+    public readonly privateDnsZoneConfigs!: pulumi.Output<types.outputs.PrivateDnsZoneConfigResponse[] | undefined>;
     /**
      * The provisioning state of the private dns zone group resource.
      */
@@ -101,7 +101,7 @@ export interface PrivateDnsZoneGroupArgs {
     /**
      * A collection of private dns zone configurations of the private dns zone group.
      */
-    privateDnsZoneConfigs?: pulumi.Input<pulumi.Input<types.inputs.network.v20230401.PrivateDnsZoneConfigArgs>[]>;
+    privateDnsZoneConfigs?: pulumi.Input<pulumi.Input<types.inputs.PrivateDnsZoneConfigArgs>[]>;
     /**
      * The name of the private dns zone group.
      */

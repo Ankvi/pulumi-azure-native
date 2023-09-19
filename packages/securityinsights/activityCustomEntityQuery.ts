@@ -76,7 +76,7 @@ export class ActivityCustomEntityQuery extends pulumi.CustomResource {
     /**
      * The Activity query definitions
      */
-    public readonly queryDefinitions!: pulumi.Output<types.outputs.securityinsights.ActivityEntityQueriesPropertiesResponseQueryDefinitions | undefined>;
+    public readonly queryDefinitions!: pulumi.Output<types.outputs.ActivityEntityQueriesPropertiesResponseQueryDefinitions | undefined>;
     /**
      * List of the fields of the source entity that are required to run the query
      */
@@ -84,7 +84,7 @@ export class ActivityCustomEntityQuery extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.securityinsights.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The template id this activity was created from
      */
@@ -198,7 +198,7 @@ export interface ActivityCustomEntityQueryArgs {
     /**
      * The Activity query definitions
      */
-    queryDefinitions?: pulumi.Input<types.inputs.securityinsights.ActivityEntityQueriesPropertiesQueryDefinitionsArgs>;
+    queryDefinitions?: pulumi.Input<types.inputs.ActivityEntityQueriesPropertiesQueryDefinitionsArgs>;
     /**
      * List of the fields of the source entity that are required to run the query
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the specified Data Lake Store account.
  */
@@ -47,7 +47,7 @@ export interface GetAccountResult {
     /**
      * The Key Vault encryption configuration.
      */
-    readonly encryptionConfig: types.outputs.datalakestore.v20161101.EncryptionConfigResponse;
+    readonly encryptionConfig: types.outputs.EncryptionConfigResponse;
     /**
      * The current state of encryption provisioning for this Data Lake Store account.
      */
@@ -67,7 +67,7 @@ export interface GetAccountResult {
     /**
      * The list of firewall rules associated with this Data Lake Store account.
      */
-    readonly firewallRules: types.outputs.datalakestore.v20161101.FirewallRuleResponse[];
+    readonly firewallRules: types.outputs.FirewallRuleResponse[];
     /**
      * The current state of the IP address firewall for this Data Lake Store account.
      */
@@ -79,7 +79,7 @@ export interface GetAccountResult {
     /**
      * The Key Vault encryption identity, if any.
      */
-    readonly identity: types.outputs.datalakestore.v20161101.EncryptionIdentityResponse;
+    readonly identity: types.outputs.EncryptionIdentityResponse;
     /**
      * The account last modified time.
      */
@@ -115,7 +115,7 @@ export interface GetAccountResult {
     /**
      * The list of trusted identity providers associated with this Data Lake Store account.
      */
-    readonly trustedIdProviders: types.outputs.datalakestore.v20161101.TrustedIdProviderResponse[];
+    readonly trustedIdProviders: types.outputs.TrustedIdProviderResponse[];
     /**
      * The resource type.
      */
@@ -123,7 +123,7 @@ export interface GetAccountResult {
     /**
      * The list of virtual network rules associated with this Data Lake Store account.
      */
-    readonly virtualNetworkRules: types.outputs.datalakestore.v20161101.VirtualNetworkRuleResponse[];
+    readonly virtualNetworkRules: types.outputs.VirtualNetworkRuleResponse[];
 }
 /**
  * Gets the specified Data Lake Store account.

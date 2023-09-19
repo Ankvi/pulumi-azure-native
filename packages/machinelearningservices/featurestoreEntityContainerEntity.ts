@@ -35,7 +35,7 @@ export class FeaturestoreEntityContainerEntity extends pulumi.CustomResource {
     /**
      * [Required] Additional attributes of the entity.
      */
-    public readonly featurestoreEntityContainerProperties!: pulumi.Output<types.outputs.machinelearningservices.FeaturestoreEntityContainerResponse>;
+    public readonly featurestoreEntityContainerProperties!: pulumi.Output<types.outputs.FeaturestoreEntityContainerResponse>;
     /**
      * The name of the resource
      */
@@ -43,7 +43,7 @@ export class FeaturestoreEntityContainerEntity extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.machinelearningservices.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -69,7 +69,7 @@ export class FeaturestoreEntityContainerEntity extends pulumi.CustomResource {
             if ((!args || args.workspaceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workspaceName'");
             }
-            resourceInputs["featurestoreEntityContainerProperties"] = args ? (args.featurestoreEntityContainerProperties ? pulumi.output(args.featurestoreEntityContainerProperties).apply(types.inputs.machinelearningservices.featurestoreEntityContainerArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["featurestoreEntityContainerProperties"] = args ? (args.featurestoreEntityContainerProperties ? pulumi.output(args.featurestoreEntityContainerProperties).apply(types.inputs.featurestoreEntityContainerArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["workspaceName"] = args ? args.workspaceName : undefined;
@@ -95,7 +95,7 @@ export interface FeaturestoreEntityContainerEntityArgs {
     /**
      * [Required] Additional attributes of the entity.
      */
-    featurestoreEntityContainerProperties: pulumi.Input<types.inputs.machinelearningservices.FeaturestoreEntityContainerArgs>;
+    featurestoreEntityContainerProperties: pulumi.Input<types.inputs.FeaturestoreEntityContainerArgs>;
     /**
      * Container name. This is case-sensitive.
      */

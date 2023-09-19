@@ -35,15 +35,15 @@ export class AlertRule extends pulumi.CustomResource {
     /**
      * action that is performed when the alert rule becomes active, and when an alert condition is resolved.
      */
-    public readonly action!: pulumi.Output<types.outputs.insights.RuleEmailActionResponse | types.outputs.insights.RuleWebhookActionResponse | undefined>;
+    public readonly action!: pulumi.Output<types.outputs.RuleEmailActionResponse | types.outputs.RuleWebhookActionResponse | undefined>;
     /**
      * the array of actions that are performed when the alert rule becomes active, and when an alert condition is resolved.
      */
-    public readonly actions!: pulumi.Output<(types.outputs.insights.RuleEmailActionResponse | types.outputs.insights.RuleWebhookActionResponse)[] | undefined>;
+    public readonly actions!: pulumi.Output<(types.outputs.RuleEmailActionResponse | types.outputs.RuleWebhookActionResponse)[] | undefined>;
     /**
      * the condition that results in the alert rule being activated.
      */
-    public readonly condition!: pulumi.Output<types.outputs.insights.LocationThresholdRuleConditionResponse | types.outputs.insights.ManagementEventRuleConditionResponse | types.outputs.insights.ThresholdRuleConditionResponse>;
+    public readonly condition!: pulumi.Output<types.outputs.LocationThresholdRuleConditionResponse | types.outputs.ManagementEventRuleConditionResponse | types.outputs.ThresholdRuleConditionResponse>;
     /**
      * the description of the alert rule that will be included in the alert email.
      */
@@ -140,15 +140,15 @@ export interface AlertRuleArgs {
     /**
      * action that is performed when the alert rule becomes active, and when an alert condition is resolved.
      */
-    action?: pulumi.Input<types.inputs.insights.RuleEmailActionArgs | types.inputs.insights.RuleWebhookActionArgs>;
+    action?: pulumi.Input<types.inputs.RuleEmailActionArgs | types.inputs.RuleWebhookActionArgs>;
     /**
      * the array of actions that are performed when the alert rule becomes active, and when an alert condition is resolved.
      */
-    actions?: pulumi.Input<pulumi.Input<types.inputs.insights.RuleEmailActionArgs | types.inputs.insights.RuleWebhookActionArgs>[]>;
+    actions?: pulumi.Input<pulumi.Input<types.inputs.RuleEmailActionArgs | types.inputs.RuleWebhookActionArgs>[]>;
     /**
      * the condition that results in the alert rule being activated.
      */
-    condition: pulumi.Input<types.inputs.insights.LocationThresholdRuleConditionArgs | types.inputs.insights.ManagementEventRuleConditionArgs | types.inputs.insights.ThresholdRuleConditionArgs>;
+    condition: pulumi.Input<types.inputs.LocationThresholdRuleConditionArgs | types.inputs.ManagementEventRuleConditionArgs | types.inputs.ThresholdRuleConditionArgs>;
     /**
      * the description of the alert rule that will be included in the alert email.
      */

@@ -67,7 +67,7 @@ export class SecurityPartnerProvider extends pulumi.CustomResource {
     /**
      * The virtualHub to which the Security Partner Provider belongs.
      */
-    public readonly virtualHub!: pulumi.Output<types.outputs.network.SubResourceResponse | undefined>;
+    public readonly virtualHub!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
 
     /**
      * Create a SecurityPartnerProvider resource with the given unique name, arguments, and options.
@@ -144,5 +144,5 @@ export interface SecurityPartnerProviderArgs {
     /**
      * The virtualHub to which the Security Partner Provider belongs.
      */
-    virtualHub?: pulumi.Input<types.inputs.network.SubResourceArgs>;
+    virtualHub?: pulumi.Input<types.inputs.SubResourceArgs>;
 }

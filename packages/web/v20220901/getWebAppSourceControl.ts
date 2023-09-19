@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Description for Gets the source control configuration of an app.
  */
@@ -39,7 +39,7 @@ export interface GetWebAppSourceControlResult {
     /**
      * If GitHub Action is selected, than the associated configuration.
      */
-    readonly gitHubActionConfiguration?: types.outputs.web.v20220901.GitHubActionConfigurationResponse;
+    readonly gitHubActionConfiguration?: types.outputs.GitHubActionConfigurationResponse;
     /**
      * Resource Id.
      */

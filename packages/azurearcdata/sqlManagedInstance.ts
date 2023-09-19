@@ -35,7 +35,7 @@ export class SqlManagedInstance extends pulumi.CustomResource {
     /**
      * The extendedLocation of the resource.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.azurearcdata.ExtendedLocationResponse | undefined>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -47,15 +47,15 @@ export class SqlManagedInstance extends pulumi.CustomResource {
     /**
      * null
      */
-    public readonly properties!: pulumi.Output<types.outputs.azurearcdata.SqlManagedInstancePropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.SqlManagedInstancePropertiesResponse>;
     /**
      * Resource sku.
      */
-    public readonly sku!: pulumi.Output<types.outputs.azurearcdata.SqlManagedInstanceSkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SqlManagedInstanceSkuResponse | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.azurearcdata.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -84,9 +84,9 @@ export class SqlManagedInstance extends pulumi.CustomResource {
             }
             resourceInputs["extendedLocation"] = args ? args.extendedLocation : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.azurearcdata.sqlManagedInstancePropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.sqlManagedInstancePropertiesArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["sku"] = args ? (args.sku ? pulumi.output(args.sku).apply(types.inputs.azurearcdata.sqlManagedInstanceSkuArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["sku"] = args ? (args.sku ? pulumi.output(args.sku).apply(types.inputs.sqlManagedInstanceSkuArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["sqlManagedInstanceName"] = args ? args.sqlManagedInstanceName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["name"] = undefined /*out*/;
@@ -116,7 +116,7 @@ export interface SqlManagedInstanceArgs {
     /**
      * The extendedLocation of the resource.
      */
-    extendedLocation?: pulumi.Input<types.inputs.azurearcdata.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -124,7 +124,7 @@ export interface SqlManagedInstanceArgs {
     /**
      * null
      */
-    properties: pulumi.Input<types.inputs.azurearcdata.SqlManagedInstancePropertiesArgs>;
+    properties: pulumi.Input<types.inputs.SqlManagedInstancePropertiesArgs>;
     /**
      * The name of the Azure resource group
      */
@@ -132,7 +132,7 @@ export interface SqlManagedInstanceArgs {
     /**
      * Resource sku.
      */
-    sku?: pulumi.Input<types.inputs.azurearcdata.SqlManagedInstanceSkuArgs>;
+    sku?: pulumi.Input<types.inputs.SqlManagedInstanceSkuArgs>;
     /**
      * Name of SQL Managed Instance
      */

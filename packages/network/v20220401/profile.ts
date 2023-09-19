@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Class representing a Traffic Manager profile.
  */
@@ -38,11 +38,11 @@ export class Profile extends pulumi.CustomResource {
     /**
      * The DNS settings of the Traffic Manager profile.
      */
-    public readonly dnsConfig!: pulumi.Output<types.outputs.network.v20220401.DnsConfigResponse | undefined>;
+    public readonly dnsConfig!: pulumi.Output<types.outputs.DnsConfigResponse | undefined>;
     /**
      * The list of endpoints in the Traffic Manager profile.
      */
-    public readonly endpoints!: pulumi.Output<types.outputs.network.v20220401.EndpointResponse[] | undefined>;
+    public readonly endpoints!: pulumi.Output<types.outputs.EndpointResponse[] | undefined>;
     /**
      * The Azure Region where the resource lives
      */
@@ -54,7 +54,7 @@ export class Profile extends pulumi.CustomResource {
     /**
      * The endpoint monitoring settings of the Traffic Manager profile.
      */
-    public readonly monitorConfig!: pulumi.Output<types.outputs.network.v20220401.MonitorConfigResponse | undefined>;
+    public readonly monitorConfig!: pulumi.Output<types.outputs.MonitorConfigResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -137,16 +137,16 @@ export interface ProfileArgs {
     /**
      * The list of allowed endpoint record types.
      */
-    allowedEndpointRecordTypes?: pulumi.Input<pulumi.Input<string | types.enums.v20220401.AllowedEndpointRecordType>[]>;
+    allowedEndpointRecordTypes?: pulumi.Input<pulumi.Input<string | types.enums.AllowedEndpointRecordType>[]>;
     /**
      * The DNS settings of the Traffic Manager profile.
      */
-    dnsConfig?: pulumi.Input<types.inputs.network.v20220401.DnsConfigArgs>;
+    dnsConfig?: pulumi.Input<types.inputs.DnsConfigArgs>;
     /**
      * The list of endpoints in the Traffic Manager profile.
      * These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
      */
-    endpoints?: pulumi.Input<pulumi.Input<types.inputs.network.v20220401.EndpointArgs>[]>;
+    endpoints?: pulumi.Input<pulumi.Input<types.inputs.EndpointArgs>[]>;
     /**
      * Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName}
      */
@@ -162,7 +162,7 @@ export interface ProfileArgs {
     /**
      * The endpoint monitoring settings of the Traffic Manager profile.
      */
-    monitorConfig?: pulumi.Input<types.inputs.network.v20220401.MonitorConfigArgs>;
+    monitorConfig?: pulumi.Input<types.inputs.MonitorConfigArgs>;
     /**
      * The name of the resource
      */
@@ -174,7 +174,7 @@ export interface ProfileArgs {
     /**
      * The status of the Traffic Manager profile.
      */
-    profileStatus?: pulumi.Input<string | types.enums.v20220401.ProfileStatus>;
+    profileStatus?: pulumi.Input<string | types.enums.ProfileStatus>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -186,11 +186,11 @@ export interface ProfileArgs {
     /**
      * The traffic routing method of the Traffic Manager profile.
      */
-    trafficRoutingMethod?: pulumi.Input<string | types.enums.v20220401.TrafficRoutingMethod>;
+    trafficRoutingMethod?: pulumi.Input<string | types.enums.TrafficRoutingMethod>;
     /**
      * Indicates whether Traffic View is 'Enabled' or 'Disabled' for the Traffic Manager profile. Null, indicates 'Disabled'. Enabling this feature will increase the cost of the Traffic Manage profile.
      */
-    trafficViewEnrollmentStatus?: pulumi.Input<string | types.enums.v20220401.TrafficViewEnrollmentStatus>;
+    trafficViewEnrollmentStatus?: pulumi.Input<string | types.enums.TrafficViewEnrollmentStatus>;
     /**
      * The type of the resource. Ex- Microsoft.Network/trafficManagerProfiles.
      */

@@ -53,7 +53,7 @@ export interface GetExpressRouteCrossConnectionPeeringResult {
     /**
      * The IPv6 peering configuration.
      */
-    readonly ipv6PeeringConfig?: types.outputs.network.Ipv6ExpressRouteCircuitPeeringConfigResponse;
+    readonly ipv6PeeringConfig?: types.outputs.Ipv6ExpressRouteCircuitPeeringConfigResponse;
     /**
      * Who was the last to modify the peering.
      */
@@ -61,7 +61,7 @@ export interface GetExpressRouteCrossConnectionPeeringResult {
     /**
      * The Microsoft peering configuration.
      */
-    readonly microsoftPeeringConfig?: types.outputs.network.ExpressRouteCircuitPeeringConfigResponse;
+    readonly microsoftPeeringConfig?: types.outputs.ExpressRouteCircuitPeeringConfigResponse;
     /**
      * The name of the resource that is unique within a resource group. This name can be used to access the resource.
      */

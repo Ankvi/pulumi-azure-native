@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Resource information with extended details.
  */
@@ -42,15 +42,15 @@ export class ManagedHsm extends pulumi.CustomResource {
     /**
      * Properties of the managed HSM
      */
-    public readonly properties!: pulumi.Output<types.outputs.keyvault.v20230201.ManagedHsmPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ManagedHsmPropertiesResponse>;
     /**
      * SKU details
      */
-    public readonly sku!: pulumi.Output<types.outputs.keyvault.v20230201.ManagedHsmSkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.ManagedHsmSkuResponse | undefined>;
     /**
      * Metadata pertaining to creation and last modification of the key vault resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.keyvault.v20230201.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags
      */
@@ -76,7 +76,7 @@ export class ManagedHsm extends pulumi.CustomResource {
             }
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.keyvault.v20230201.managedHsmPropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.managedHsmPropertiesArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["sku"] = args ? args.sku : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
@@ -113,7 +113,7 @@ export interface ManagedHsmArgs {
     /**
      * Properties of the managed HSM
      */
-    properties?: pulumi.Input<types.inputs.keyvault.v20230201.ManagedHsmPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ManagedHsmPropertiesArgs>;
     /**
      * Name of the resource group that contains the managed HSM pool.
      */
@@ -121,7 +121,7 @@ export interface ManagedHsmArgs {
     /**
      * SKU details
      */
-    sku?: pulumi.Input<types.inputs.keyvault.v20230201.ManagedHsmSkuArgs>;
+    sku?: pulumi.Input<types.inputs.ManagedHsmSkuArgs>;
     /**
      * Resource tags
      */

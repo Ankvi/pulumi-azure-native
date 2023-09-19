@@ -47,7 +47,7 @@ export class AttestationAtSubscription extends pulumi.CustomResource {
     /**
      * The evidence supporting the compliance state set in this attestation.
      */
-    public readonly evidence!: pulumi.Output<types.outputs.policyinsights.AttestationEvidenceResponse[] | undefined>;
+    public readonly evidence!: pulumi.Output<types.outputs.AttestationEvidenceResponse[] | undefined>;
     /**
      * The time the compliance state should expire.
      */
@@ -83,7 +83,7 @@ export class AttestationAtSubscription extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.policyinsights.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -164,7 +164,7 @@ export interface AttestationAtSubscriptionArgs {
     /**
      * The evidence supporting the compliance state set in this attestation.
      */
-    evidence?: pulumi.Input<pulumi.Input<types.inputs.policyinsights.AttestationEvidenceArgs>[]>;
+    evidence?: pulumi.Input<pulumi.Input<types.inputs.AttestationEvidenceArgs>[]>;
     /**
      * The time the compliance state should expire.
      */

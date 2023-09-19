@@ -37,11 +37,11 @@ export interface GetContentPackageResult {
     /**
      * The author of the package
      */
-    readonly author?: types.outputs.securityinsights.MetadataAuthorResponse;
+    readonly author?: types.outputs.MetadataAuthorResponse;
     /**
      * The categories of the package
      */
-    readonly categories?: types.outputs.securityinsights.MetadataCategoriesResponse;
+    readonly categories?: types.outputs.MetadataCategoriesResponse;
     /**
      * The package id
      */
@@ -57,7 +57,7 @@ export interface GetContentPackageResult {
     /**
      * The support tier of the package
      */
-    readonly dependencies?: types.outputs.securityinsights.MetadataDependenciesResponse;
+    readonly dependencies?: types.outputs.MetadataDependenciesResponse;
     /**
      * The description of the package
      */
@@ -113,15 +113,15 @@ export interface GetContentPackageResult {
     /**
      * The source of the package
      */
-    readonly source?: types.outputs.securityinsights.MetadataSourceResponse;
+    readonly source?: types.outputs.MetadataSourceResponse;
     /**
      * The support tier of the package
      */
-    readonly support?: types.outputs.securityinsights.MetadataSupportResponse;
+    readonly support?: types.outputs.MetadataSupportResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.securityinsights.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * the tactics the resource covers
      */

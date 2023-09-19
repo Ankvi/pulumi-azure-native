@@ -50,11 +50,11 @@ export interface GetGatewayCustomDomainResult {
     /**
      * The properties of custom domain for Spring Cloud Gateway
      */
-    readonly properties: types.outputs.appplatform.GatewayCustomDomainPropertiesResponse;
+    readonly properties: types.outputs.GatewayCustomDomainPropertiesResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.appplatform.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource.
      */

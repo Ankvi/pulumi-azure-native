@@ -61,11 +61,11 @@ export interface GetArcSettingResult {
     /**
      * contains connectivity related configuration for ARC resources
      */
-    readonly connectivityProperties?: types.outputs.azurestackhci.ArcConnectivityPropertiesResponse[];
+    readonly connectivityProperties?: types.outputs.ArcConnectivityPropertiesResponse[];
     /**
      * Properties for each of the default extensions category
      */
-    readonly defaultExtensions: types.outputs.azurestackhci.DefaultExtensionDetailsResponse[];
+    readonly defaultExtensions: types.outputs.DefaultExtensionDetailsResponse[];
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -77,7 +77,7 @@ export interface GetArcSettingResult {
     /**
      * State of Arc agent in each of the nodes.
      */
-    readonly perNodeDetails: types.outputs.azurestackhci.PerNodeStateResponse[];
+    readonly perNodeDetails: types.outputs.PerNodeStateResponse[];
     /**
      * Provisioning state of the ArcSetting proxy resource.
      */
@@ -85,7 +85,7 @@ export interface GetArcSettingResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.azurestackhci.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

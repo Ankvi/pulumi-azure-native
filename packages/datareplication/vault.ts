@@ -43,8 +43,8 @@ export class Vault extends pulumi.CustomResource {
     /**
      * Vault properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.datareplication.VaultModelPropertiesResponse>;
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.datareplication.VaultModelResponseSystemData>;
+    public readonly properties!: pulumi.Output<types.outputs.VaultModelPropertiesResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.VaultModelResponseSystemData>;
     /**
      * Gets or sets the resource tags.
      */
@@ -102,7 +102,7 @@ export interface VaultArgs {
     /**
      * Vault properties.
      */
-    properties?: pulumi.Input<types.inputs.datareplication.VaultModelPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.VaultModelPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

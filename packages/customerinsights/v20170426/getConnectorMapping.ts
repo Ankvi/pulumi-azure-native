@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a connector mapping in the connector.
  */
@@ -85,7 +85,7 @@ export interface GetConnectorMappingResult {
     /**
      * The properties of the mapping.
      */
-    readonly mappingProperties: types.outputs.customerinsights.v20170426.ConnectorMappingPropertiesResponse;
+    readonly mappingProperties: types.outputs.ConnectorMappingPropertiesResponse;
     /**
      * Resource name.
      */

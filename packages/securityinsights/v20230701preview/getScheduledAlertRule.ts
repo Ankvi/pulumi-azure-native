@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the alert rule.
  */
@@ -36,7 +36,7 @@ export interface GetScheduledAlertRuleResult {
     /**
      * The alert details override settings
      */
-    readonly alertDetailsOverride?: types.outputs.securityinsights.v20230701preview.AlertDetailsOverrideResponse;
+    readonly alertDetailsOverride?: types.outputs.AlertDetailsOverrideResponse;
     /**
      * The Name of the alert rule template used to create this rule.
      */
@@ -60,7 +60,7 @@ export interface GetScheduledAlertRuleResult {
     /**
      * Array of the entity mappings of the alert rule
      */
-    readonly entityMappings?: types.outputs.securityinsights.v20230701preview.EntityMappingResponse[];
+    readonly entityMappings?: types.outputs.EntityMappingResponse[];
     /**
      * Etag of the azure resource
      */
@@ -68,7 +68,7 @@ export interface GetScheduledAlertRuleResult {
     /**
      * The event grouping settings.
      */
-    readonly eventGroupingSettings?: types.outputs.securityinsights.v20230701preview.EventGroupingSettingsResponse;
+    readonly eventGroupingSettings?: types.outputs.EventGroupingSettingsResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -76,7 +76,7 @@ export interface GetScheduledAlertRuleResult {
     /**
      * The settings of the incidents that created from alerts triggered by this analytics rule
      */
-    readonly incidentConfiguration?: types.outputs.securityinsights.v20230701preview.IncidentConfigurationResponse;
+    readonly incidentConfiguration?: types.outputs.IncidentConfigurationResponse;
     /**
      * The kind of the alert rule
      * Expected value is 'Scheduled'.
@@ -105,7 +105,7 @@ export interface GetScheduledAlertRuleResult {
     /**
      * Array of the sentinel entity mappings of the alert rule
      */
-    readonly sentinelEntitiesMappings?: types.outputs.securityinsights.v20230701preview.SentinelEntityMappingResponse[];
+    readonly sentinelEntitiesMappings?: types.outputs.SentinelEntityMappingResponse[];
     /**
      * The severity for alerts created by this alert rule.
      */
@@ -121,7 +121,7 @@ export interface GetScheduledAlertRuleResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.securityinsights.v20230701preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The tactics of the alert rule
      */

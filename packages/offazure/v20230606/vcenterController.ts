@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A vcenter resource belonging to a site resource.
  */
@@ -38,7 +38,7 @@ export class VcenterController extends pulumi.CustomResource {
     /**
      * Gets the errors.
      */
-    public /*out*/ readonly errors!: pulumi.Output<types.outputs.offazure.v20230606.HealthErrorDetailsResponse[]>;
+    public /*out*/ readonly errors!: pulumi.Output<types.outputs.HealthErrorDetailsResponse[]>;
     /**
      * Gets or sets the FQDN/IPAddress of the vCenter.
      */
@@ -74,7 +74,7 @@ export class VcenterController extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.offazure.v20230606.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -164,7 +164,7 @@ export interface VcenterControllerArgs {
     /**
      * The status of the last operation.
      */
-    provisioningState?: pulumi.Input<string | types.enums.v20230606.ProvisioningState>;
+    provisioningState?: pulumi.Input<string | types.enums.ProvisioningState>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

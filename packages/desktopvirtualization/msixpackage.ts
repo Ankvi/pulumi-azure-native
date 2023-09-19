@@ -59,11 +59,11 @@ export class MSIXPackage extends pulumi.CustomResource {
     /**
      * List of package applications. 
      */
-    public readonly packageApplications!: pulumi.Output<types.outputs.desktopvirtualization.MsixPackageApplicationsResponse[] | undefined>;
+    public readonly packageApplications!: pulumi.Output<types.outputs.MsixPackageApplicationsResponse[] | undefined>;
     /**
      * List of package dependencies. 
      */
-    public readonly packageDependencies!: pulumi.Output<types.outputs.desktopvirtualization.MsixPackageDependenciesResponse[] | undefined>;
+    public readonly packageDependencies!: pulumi.Output<types.outputs.MsixPackageDependenciesResponse[] | undefined>;
     /**
      * Package Family Name from appxmanifest.xml. Contains Package Name and Publisher name. 
      */
@@ -79,7 +79,7 @@ export class MSIXPackage extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.desktopvirtualization.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -181,11 +181,11 @@ export interface MSIXPackageArgs {
     /**
      * List of package applications. 
      */
-    packageApplications?: pulumi.Input<pulumi.Input<types.inputs.desktopvirtualization.MsixPackageApplicationsArgs>[]>;
+    packageApplications?: pulumi.Input<pulumi.Input<types.inputs.MsixPackageApplicationsArgs>[]>;
     /**
      * List of package dependencies. 
      */
-    packageDependencies?: pulumi.Input<pulumi.Input<types.inputs.desktopvirtualization.MsixPackageDependenciesArgs>[]>;
+    packageDependencies?: pulumi.Input<pulumi.Input<types.inputs.MsixPackageDependenciesArgs>[]>;
     /**
      * Package Family Name from appxmanifest.xml. Contains Package Name and Publisher name. 
      */

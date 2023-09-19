@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 export function getResourceGuard(args: GetResourceGuardArgs, opts?: pulumi.InvokeOptions): Promise<GetResourceGuardResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -33,7 +33,7 @@ export interface GetResourceGuardResult {
     /**
      * Input Managed Identity Details
      */
-    readonly identity?: types.outputs.dataprotection.v20221101preview.DppIdentityDetailsResponse;
+    readonly identity?: types.outputs.DppIdentityDetailsResponse;
     /**
      * Resource location.
      */
@@ -45,11 +45,11 @@ export interface GetResourceGuardResult {
     /**
      * ResourceGuardResource properties
      */
-    readonly properties: types.outputs.dataprotection.v20221101preview.ResourceGuardResponse;
+    readonly properties: types.outputs.ResourceGuardResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.dataprotection.v20221101preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

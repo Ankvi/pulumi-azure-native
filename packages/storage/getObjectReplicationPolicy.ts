@@ -57,7 +57,7 @@ export interface GetObjectReplicationPolicyResult {
     /**
      * The storage account object replication rules.
      */
-    readonly rules?: types.outputs.storage.ObjectReplicationPolicyRuleResponse[];
+    readonly rules?: types.outputs.ObjectReplicationPolicyRuleResponse[];
     /**
      * Required. Source account name. It should be full resource id if allowCrossTenantReplication set to false.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An object that represents an export pipeline for a container registry.
  */
@@ -34,7 +34,7 @@ export class ExportPipeline extends pulumi.CustomResource {
     /**
      * The identity of the export pipeline.
      */
-    public readonly identity!: pulumi.Output<types.outputs.containerregistry.v20230801preview.IdentityPropertiesResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityPropertiesResponse | undefined>;
     /**
      * The location of the export pipeline.
      */
@@ -54,11 +54,11 @@ export class ExportPipeline extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.containerregistry.v20230801preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The target properties of the export pipeline.
      */
-    public readonly target!: pulumi.Output<types.outputs.containerregistry.v20230801preview.ExportPipelineTargetPropertiesResponse>;
+    public readonly target!: pulumi.Output<types.outputs.ExportPipelineTargetPropertiesResponse>;
     /**
      * The type of the resource.
      */
@@ -123,7 +123,7 @@ export interface ExportPipelineArgs {
     /**
      * The identity of the export pipeline.
      */
-    identity?: pulumi.Input<types.inputs.containerregistry.v20230801preview.IdentityPropertiesArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityPropertiesArgs>;
     /**
      * The location of the export pipeline.
      */
@@ -131,7 +131,7 @@ export interface ExportPipelineArgs {
     /**
      * The list of all options configured for the pipeline.
      */
-    options?: pulumi.Input<pulumi.Input<string | types.enums.v20230801preview.PipelineOptions>[]>;
+    options?: pulumi.Input<pulumi.Input<string | types.enums.PipelineOptions>[]>;
     /**
      * The name of the container registry.
      */
@@ -143,5 +143,5 @@ export interface ExportPipelineArgs {
     /**
      * The target properties of the export pipeline.
      */
-    target: pulumi.Input<types.inputs.containerregistry.v20230801preview.ExportPipelineTargetPropertiesArgs>;
+    target: pulumi.Input<types.inputs.ExportPipelineTargetPropertiesArgs>;
 }

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 export class IntegrationAccountCertificate extends pulumi.CustomResource {
     /**
      * Get an existing IntegrationAccountCertificate resource's state with the given name, ID, and optional extra
@@ -39,7 +39,7 @@ export class IntegrationAccountCertificate extends pulumi.CustomResource {
     /**
      * The key details in the key vault.
      */
-    public readonly key!: pulumi.Output<types.outputs.logic.v20150801preview.KeyVaultKeyReferenceResponse | undefined>;
+    public readonly key!: pulumi.Output<types.outputs.KeyVaultKeyReferenceResponse | undefined>;
     /**
      * The resource location.
      */
@@ -132,7 +132,7 @@ export interface IntegrationAccountCertificateArgs {
     /**
      * The key details in the key vault.
      */
-    key?: pulumi.Input<types.inputs.logic.v20150801preview.KeyVaultKeyReferenceArgs>;
+    key?: pulumi.Input<types.inputs.KeyVaultKeyReferenceArgs>;
     /**
      * The resource location.
      */

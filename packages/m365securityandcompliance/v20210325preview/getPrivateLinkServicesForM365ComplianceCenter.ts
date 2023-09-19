@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the metadata of a privateLinkServicesForM365ComplianceCenter resource.
  */
@@ -39,7 +39,7 @@ export interface GetPrivateLinkServicesForM365ComplianceCenterResult {
     /**
      * Setting indicating whether the service has a managed identity associated with it.
      */
-    readonly identity?: types.outputs.m365securityandcompliance.v20210325preview.ServicesResourceResponseIdentity;
+    readonly identity?: types.outputs.ServicesResourceResponseIdentity;
     /**
      * The kind of the service.
      */
@@ -55,11 +55,11 @@ export interface GetPrivateLinkServicesForM365ComplianceCenterResult {
     /**
      * The common properties of a service.
      */
-    readonly properties: types.outputs.m365securityandcompliance.v20210325preview.ServicesPropertiesResponse;
+    readonly properties: types.outputs.ServicesPropertiesResponse;
     /**
      * Required property for system data
      */
-    readonly systemData: types.outputs.m365securityandcompliance.v20210325preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The resource tags.
      */

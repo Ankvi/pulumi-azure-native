@@ -40,7 +40,7 @@ export interface GetOrchestratorInstanceServiceDetailsResult {
     /**
      * Properties of the controller.
      */
-    readonly controllerDetails: types.outputs.delegatednetwork.ControllerDetailsResponse;
+    readonly controllerDetails: types.outputs.ControllerDetailsResponse;
     /**
      * An identifier that represents the resource.
      */
@@ -48,7 +48,7 @@ export interface GetOrchestratorInstanceServiceDetailsResult {
     /**
      * The identity of the orchestrator
      */
-    readonly identity?: types.outputs.delegatednetwork.OrchestratorIdentityResponse;
+    readonly identity?: types.outputs.OrchestratorIdentityResponse;
     /**
      * The kind of workbook. Choices are user and shared.
      */

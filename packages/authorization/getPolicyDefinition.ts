@@ -51,7 +51,7 @@ export interface GetPolicyDefinitionResult {
     /**
      * The parameter definitions for parameters used in the policy rule. The keys are the parameter names.
      */
-    readonly parameters?: {[key: string]: types.outputs.authorization.ParameterDefinitionsValueResponse};
+    readonly parameters?: {[key: string]: types.outputs.ParameterDefinitionsValueResponse};
     /**
      * The policy rule.
      */
@@ -63,7 +63,7 @@ export interface GetPolicyDefinitionResult {
     /**
      * The system metadata relating to this resource.
      */
-    readonly systemData: types.outputs.authorization.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource (Microsoft.Authorization/policyDefinitions).
      */

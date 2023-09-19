@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Lists active security admin rules in a network manager.
  */
@@ -50,7 +50,7 @@ export interface ListActiveSecurityAdminRulesResult {
     /**
      * Gets a page of active security admin rules.
      */
-    readonly value?: (types.outputs.network.v20230501.ActiveDefaultSecurityAdminRuleResponse | types.outputs.network.v20230501.ActiveSecurityAdminRuleResponse)[];
+    readonly value?: (types.outputs.ActiveDefaultSecurityAdminRuleResponse | types.outputs.ActiveSecurityAdminRuleResponse)[];
 }
 /**
  * Lists active security admin rules in a network manager.

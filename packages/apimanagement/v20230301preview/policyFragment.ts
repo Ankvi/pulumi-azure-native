@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Policy fragment contract details.
  */
@@ -105,7 +105,7 @@ export interface PolicyFragmentArgs {
     /**
      * Format of the policy fragment content.
      */
-    format?: pulumi.Input<string | types.enums.v20230301preview.PolicyFragmentContentFormat>;
+    format?: pulumi.Input<string | types.enums.PolicyFragmentContentFormat>;
     /**
      * A resource identifier.
      */

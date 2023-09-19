@@ -50,7 +50,7 @@ export interface GetConnectionGatewayResult {
      * Resource name
      */
     readonly name: string;
-    readonly properties: types.outputs.web.ConnectionGatewayDefinitionResponseProperties;
+    readonly properties: types.outputs.ConnectionGatewayDefinitionResponseProperties;
     /**
      * Resource tags
      */

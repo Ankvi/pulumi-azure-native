@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the details for a specific student in the specified lab by student alias
  */
@@ -41,7 +41,7 @@ export interface GetStudentResult {
     /**
      * Student Budget
      */
-    readonly budget: types.outputs.education.v20211201preview.AmountResponse;
+    readonly budget: types.outputs.AmountResponse;
     /**
      * Date student was added to the lab
      */
@@ -93,7 +93,7 @@ export interface GetStudentResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.education.v20211201preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

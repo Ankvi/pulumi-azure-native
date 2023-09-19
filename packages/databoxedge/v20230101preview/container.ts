@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents a container on the  Data Box Edge/Gateway device.
  */
@@ -50,11 +50,11 @@ export class Container extends pulumi.CustomResource {
     /**
      * Details of the refresh job on this container.
      */
-    public /*out*/ readonly refreshDetails!: pulumi.Output<types.outputs.databoxedge.v20230101preview.RefreshDetailsResponse>;
+    public /*out*/ readonly refreshDetails!: pulumi.Output<types.outputs.RefreshDetailsResponse>;
     /**
      * Metadata pertaining to creation and last modification of Container
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.databoxedge.v20230101preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The hierarchical type of the object.
      */
@@ -121,7 +121,7 @@ export interface ContainerArgs {
     /**
      * DataFormat for Container
      */
-    dataFormat: pulumi.Input<string | types.enums.v20230101preview.AzureContainerDataFormat>;
+    dataFormat: pulumi.Input<string | types.enums.AzureContainerDataFormat>;
     /**
      * The device name.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a link in the hub.
  */
@@ -52,7 +52,7 @@ export interface GetLinkResult {
     /**
      * The set of properties mappings between the source and target Types.
      */
-    readonly mappings?: types.outputs.customerinsights.v20170426.TypePropertiesMappingResponse[];
+    readonly mappings?: types.outputs.TypePropertiesMappingResponse[];
     /**
      * Resource name.
      */
@@ -64,7 +64,7 @@ export interface GetLinkResult {
     /**
      * The properties that represent the participating profile.
      */
-    readonly participantPropertyReferences: types.outputs.customerinsights.v20170426.ParticipantPropertyReferenceResponse[];
+    readonly participantPropertyReferences: types.outputs.ParticipantPropertyReferenceResponse[];
     /**
      * Provisioning state.
      */

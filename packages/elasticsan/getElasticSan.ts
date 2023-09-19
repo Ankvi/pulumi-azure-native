@@ -60,11 +60,11 @@ export interface GetElasticSanResult {
     /**
      * resource sku
      */
-    readonly sku: types.outputs.elasticsan.SkuResponse;
+    readonly sku: types.outputs.SkuResponse;
     /**
      * Resource metadata required by ARM RPC
      */
-    readonly systemData: types.outputs.elasticsan.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Azure resource tags.
      */

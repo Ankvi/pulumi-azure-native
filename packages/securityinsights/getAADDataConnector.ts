@@ -37,7 +37,7 @@ export interface GetAADDataConnectorResult {
     /**
      * The available data types for the connector.
      */
-    readonly dataTypes?: types.outputs.securityinsights.AlertsDataTypeOfDataConnectorResponse;
+    readonly dataTypes?: types.outputs.AlertsDataTypeOfDataConnectorResponse;
     /**
      * Etag of the azure resource
      */
@@ -58,7 +58,7 @@ export interface GetAADDataConnectorResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.securityinsights.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The tenant id to connect to, and get the data from.
      */

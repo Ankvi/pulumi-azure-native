@@ -71,7 +71,7 @@ export interface GetBackupScheduleResult {
     /**
      * The schedule recurrence.
      */
-    readonly scheduleRecurrence: types.outputs.storsimple.ScheduleRecurrenceResponse;
+    readonly scheduleRecurrence: types.outputs.ScheduleRecurrenceResponse;
     /**
      * The schedule status.
      */

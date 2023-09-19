@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An attestation resource.
  */
@@ -46,7 +46,7 @@ export class AttestationAtResourceGroup extends pulumi.CustomResource {
     /**
      * The evidence supporting the compliance state set in this attestation.
      */
-    public readonly evidence!: pulumi.Output<types.outputs.policyinsights.v20220901.AttestationEvidenceResponse[] | undefined>;
+    public readonly evidence!: pulumi.Output<types.outputs.AttestationEvidenceResponse[] | undefined>;
     /**
      * The time the compliance state should expire.
      */
@@ -82,7 +82,7 @@ export class AttestationAtResourceGroup extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.policyinsights.v20220901.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -163,11 +163,11 @@ export interface AttestationAtResourceGroupArgs {
     /**
      * The compliance state that should be set on the resource.
      */
-    complianceState?: pulumi.Input<string | types.enums.v20220901.ComplianceState>;
+    complianceState?: pulumi.Input<string | types.enums.ComplianceState>;
     /**
      * The evidence supporting the compliance state set in this attestation.
      */
-    evidence?: pulumi.Input<pulumi.Input<types.inputs.policyinsights.v20220901.AttestationEvidenceArgs>[]>;
+    evidence?: pulumi.Input<pulumi.Input<types.inputs.AttestationEvidenceArgs>[]>;
     /**
      * The time the compliance state should expire.
      */

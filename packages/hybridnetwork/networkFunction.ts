@@ -35,7 +35,7 @@ export class NetworkFunction extends pulumi.CustomResource {
     /**
      * The reference to the device resource. Once set, it cannot be updated.
      */
-    public readonly device!: pulumi.Output<types.outputs.hybridnetwork.SubResourceResponse | undefined>;
+    public readonly device!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -47,7 +47,7 @@ export class NetworkFunction extends pulumi.CustomResource {
     /**
      * The resource URI of the managed application.
      */
-    public /*out*/ readonly managedApplication!: pulumi.Output<types.outputs.hybridnetwork.SubResourceResponse>;
+    public /*out*/ readonly managedApplication!: pulumi.Output<types.outputs.SubResourceResponse>;
     /**
      * The parameters for the managed application.
      */
@@ -63,7 +63,7 @@ export class NetworkFunction extends pulumi.CustomResource {
     /**
      * The network function configurations from the user.
      */
-    public readonly networkFunctionUserConfigurations!: pulumi.Output<types.outputs.hybridnetwork.NetworkFunctionUserConfigurationResponse[] | undefined>;
+    public readonly networkFunctionUserConfigurations!: pulumi.Output<types.outputs.NetworkFunctionUserConfigurationResponse[] | undefined>;
     /**
      * The provisioning state of the network function resource.
      */
@@ -83,7 +83,7 @@ export class NetworkFunction extends pulumi.CustomResource {
     /**
      * The system meta data relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.hybridnetwork.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -167,7 +167,7 @@ export interface NetworkFunctionArgs {
     /**
      * The reference to the device resource. Once set, it cannot be updated.
      */
-    device?: pulumi.Input<types.inputs.hybridnetwork.SubResourceArgs>;
+    device?: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -187,7 +187,7 @@ export interface NetworkFunctionArgs {
     /**
      * The network function configurations from the user.
      */
-    networkFunctionUserConfigurations?: pulumi.Input<pulumi.Input<types.inputs.hybridnetwork.NetworkFunctionUserConfigurationArgs>[]>;
+    networkFunctionUserConfigurations?: pulumi.Input<pulumi.Input<types.inputs.NetworkFunctionUserConfigurationArgs>[]>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

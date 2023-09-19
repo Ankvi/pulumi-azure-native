@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the properties of the specified container group in the specified subscription and resource group. The operation returns the properties of each container group including containers, image registry credentials, restart policy, IP address type, OS type, state, and volumes.
  */
@@ -31,19 +31,19 @@ export interface GetContainerGroupResult {
     /**
      * The containers within the container group.
      */
-    readonly containers: types.outputs.containerinstance.v20210301.ContainerResponse[];
+    readonly containers: types.outputs.ContainerResponse[];
     /**
      * The diagnostic information for a container group.
      */
-    readonly diagnostics?: types.outputs.containerinstance.v20210301.ContainerGroupDiagnosticsResponse;
+    readonly diagnostics?: types.outputs.ContainerGroupDiagnosticsResponse;
     /**
      * The DNS config information for a container group.
      */
-    readonly dnsConfig?: types.outputs.containerinstance.v20210301.DnsConfigurationResponse;
+    readonly dnsConfig?: types.outputs.DnsConfigurationResponse;
     /**
      * The encryption properties for a container group.
      */
-    readonly encryptionProperties?: types.outputs.containerinstance.v20210301.EncryptionPropertiesResponse;
+    readonly encryptionProperties?: types.outputs.EncryptionPropertiesResponse;
     /**
      * The resource id.
      */
@@ -51,23 +51,23 @@ export interface GetContainerGroupResult {
     /**
      * The identity of the container group, if configured.
      */
-    readonly identity?: types.outputs.containerinstance.v20210301.ContainerGroupIdentityResponse;
+    readonly identity?: types.outputs.ContainerGroupIdentityResponse;
     /**
      * The image registry credentials by which the container group is created from.
      */
-    readonly imageRegistryCredentials?: types.outputs.containerinstance.v20210301.ImageRegistryCredentialResponse[];
+    readonly imageRegistryCredentials?: types.outputs.ImageRegistryCredentialResponse[];
     /**
      * The init containers for a container group.
      */
-    readonly initContainers?: types.outputs.containerinstance.v20210301.InitContainerDefinitionResponse[];
+    readonly initContainers?: types.outputs.InitContainerDefinitionResponse[];
     /**
      * The instance view of the container group. Only valid in response.
      */
-    readonly instanceView: types.outputs.containerinstance.v20210301.ContainerGroupResponseInstanceView;
+    readonly instanceView: types.outputs.ContainerGroupResponseInstanceView;
     /**
      * The IP address type of the container group.
      */
-    readonly ipAddress?: types.outputs.containerinstance.v20210301.IpAddressResponse;
+    readonly ipAddress?: types.outputs.IpAddressResponse;
     /**
      * The resource location.
      */
@@ -79,7 +79,7 @@ export interface GetContainerGroupResult {
     /**
      * The network profile information for a container group.
      */
-    readonly networkProfile?: types.outputs.containerinstance.v20210301.ContainerGroupNetworkProfileResponse;
+    readonly networkProfile?: types.outputs.ContainerGroupNetworkProfileResponse;
     /**
      * The operating system type required by the containers in the container group.
      */
@@ -110,7 +110,7 @@ export interface GetContainerGroupResult {
     /**
      * The list of volumes that can be mounted by containers in this container group.
      */
-    readonly volumes?: types.outputs.containerinstance.v20210301.VolumeResponse[];
+    readonly volumes?: types.outputs.VolumeResponse[];
 }
 /**
  * Gets the properties of the specified container group in the specified subscription and resource group. The operation returns the properties of each container group including containers, image registry credentials, restart policy, IP address type, OS type, state, and volumes.

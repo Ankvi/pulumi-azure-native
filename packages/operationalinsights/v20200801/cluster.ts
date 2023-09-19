@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The top level Log Analytics cluster resource container.
  */
@@ -38,11 +38,11 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * The identity of the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.operationalinsights.v20200801.IdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityResponse | undefined>;
     /**
      * The associated key properties.
      */
-    public readonly keyVaultProperties!: pulumi.Output<types.outputs.operationalinsights.v20200801.KeyVaultPropertiesResponse | undefined>;
+    public readonly keyVaultProperties!: pulumi.Output<types.outputs.KeyVaultPropertiesResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -62,7 +62,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * The sku properties.
      */
-    public readonly sku!: pulumi.Output<types.outputs.operationalinsights.v20200801.ClusterSkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.ClusterSkuResponse | undefined>;
     /**
      * Resource tags.
      */
@@ -128,11 +128,11 @@ export interface ClusterArgs {
     /**
      * The identity of the resource.
      */
-    identity?: pulumi.Input<types.inputs.operationalinsights.v20200801.IdentityArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityArgs>;
     /**
      * The associated key properties.
      */
-    keyVaultProperties?: pulumi.Input<types.inputs.operationalinsights.v20200801.KeyVaultPropertiesArgs>;
+    keyVaultProperties?: pulumi.Input<types.inputs.KeyVaultPropertiesArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -148,7 +148,7 @@ export interface ClusterArgs {
     /**
      * The sku properties.
      */
-    sku?: pulumi.Input<types.inputs.operationalinsights.v20200801.ClusterSkuArgs>;
+    sku?: pulumi.Input<types.inputs.ClusterSkuArgs>;
     /**
      * Resource tags.
      */

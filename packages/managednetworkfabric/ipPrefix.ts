@@ -39,7 +39,7 @@ export class IpPrefix extends pulumi.CustomResource {
     /**
      * IpPrefix contains the list of IP PrefixRules objects.
      */
-    public readonly ipPrefixRules!: pulumi.Output<types.outputs.managednetworkfabric.IpPrefixPropertiesResponseIpPrefixRules[]>;
+    public readonly ipPrefixRules!: pulumi.Output<types.outputs.IpPrefixPropertiesResponseIpPrefixRules[]>;
     /**
      * The geo-location where the resource lives
      */
@@ -55,7 +55,7 @@ export class IpPrefix extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.managednetworkfabric.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -124,7 +124,7 @@ export interface IpPrefixArgs {
     /**
      * IpPrefix contains the list of IP PrefixRules objects.
      */
-    ipPrefixRules: pulumi.Input<pulumi.Input<types.inputs.managednetworkfabric.IpPrefixPropertiesIpPrefixRulesArgs>[]>;
+    ipPrefixRules: pulumi.Input<pulumi.Input<types.inputs.IpPrefixPropertiesIpPrefixRulesArgs>[]>;
     /**
      * The geo-location where the resource lives
      */

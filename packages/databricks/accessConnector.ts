@@ -35,7 +35,7 @@ export class AccessConnector extends pulumi.CustomResource {
     /**
      * Managed service identity (system assigned and/or user assigned identities)
      */
-    public readonly identity!: pulumi.Output<types.outputs.databricks.ManagedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -47,11 +47,11 @@ export class AccessConnector extends pulumi.CustomResource {
     /**
      * Azure Databricks accessConnector properties
      */
-    public /*out*/ readonly properties!: pulumi.Output<types.outputs.databricks.AccessConnectorPropertiesResponse>;
+    public /*out*/ readonly properties!: pulumi.Output<types.outputs.AccessConnectorPropertiesResponse>;
     /**
      * The system metadata relating to this resource
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.databricks.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -111,7 +111,7 @@ export interface AccessConnectorArgs {
     /**
      * Managed service identity (system assigned and/or user assigned identities)
      */
-    identity?: pulumi.Input<types.inputs.databricks.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
      * The geo-location where the resource lives
      */

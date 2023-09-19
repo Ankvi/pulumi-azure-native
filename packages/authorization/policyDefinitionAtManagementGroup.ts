@@ -55,7 +55,7 @@ export class PolicyDefinitionAtManagementGroup extends pulumi.CustomResource {
     /**
      * The parameter definitions for parameters used in the policy rule. The keys are the parameter names.
      */
-    public readonly parameters!: pulumi.Output<{[key: string]: types.outputs.authorization.ParameterDefinitionsValueResponse} | undefined>;
+    public readonly parameters!: pulumi.Output<{[key: string]: types.outputs.ParameterDefinitionsValueResponse} | undefined>;
     /**
      * The policy rule.
      */
@@ -67,7 +67,7 @@ export class PolicyDefinitionAtManagementGroup extends pulumi.CustomResource {
     /**
      * The system metadata relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.authorization.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource (Microsoft.Authorization/policyDefinitions).
      */
@@ -145,7 +145,7 @@ export interface PolicyDefinitionAtManagementGroupArgs {
     /**
      * The parameter definitions for parameters used in the policy rule. The keys are the parameter names.
      */
-    parameters?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.authorization.ParameterDefinitionsValueArgs>}>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.ParameterDefinitionsValueArgs>}>;
     /**
      * The name of the policy definition to create.
      */

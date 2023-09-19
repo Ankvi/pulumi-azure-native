@@ -46,7 +46,7 @@ export interface ListActiveConnectivityConfigurationResult {
     /**
      * Gets a page of active connectivity configurations.
      */
-    readonly value?: types.outputs.network.ActiveConnectivityConfigurationResponse[];
+    readonly value?: types.outputs.ActiveConnectivityConfigurationResponse[];
 }
 /**
  * Lists active connectivity configurations in a network manager.

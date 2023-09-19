@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a SQL virtual machine.
  */
@@ -36,15 +36,15 @@ export interface GetSqlVirtualMachineResult {
     /**
      * SQL best practices Assessment Settings.
      */
-    readonly assessmentSettings?: types.outputs.sqlvirtualmachine.v20230101preview.AssessmentSettingsResponse;
+    readonly assessmentSettings?: types.outputs.AssessmentSettingsResponse;
     /**
      * Auto backup settings for SQL Server.
      */
-    readonly autoBackupSettings?: types.outputs.sqlvirtualmachine.v20230101preview.AutoBackupSettingsResponse;
+    readonly autoBackupSettings?: types.outputs.AutoBackupSettingsResponse;
     /**
      * Auto patching settings for applying critical security updates to SQL virtual machine.
      */
-    readonly autoPatchingSettings?: types.outputs.sqlvirtualmachine.v20230101preview.AutoPatchingSettingsResponse;
+    readonly autoPatchingSettings?: types.outputs.AutoPatchingSettingsResponse;
     /**
      * Enable automatic upgrade of Sql IaaS extension Agent.
      */
@@ -56,11 +56,11 @@ export interface GetSqlVirtualMachineResult {
     /**
      * DO NOT USE. This value will be deprecated. Azure Active Directory identity of the server.
      */
-    readonly identity?: types.outputs.sqlvirtualmachine.v20230101preview.ResourceIdentityResponse;
+    readonly identity?: types.outputs.ResourceIdentityResponse;
     /**
      * Key vault credential settings.
      */
-    readonly keyVaultCredentialSettings?: types.outputs.sqlvirtualmachine.v20230101preview.KeyVaultCredentialSettingsResponse;
+    readonly keyVaultCredentialSettings?: types.outputs.KeyVaultCredentialSettingsResponse;
     /**
      * SQL IaaS Agent least privilege mode.
      */
@@ -80,7 +80,7 @@ export interface GetSqlVirtualMachineResult {
     /**
      * SQL Server configuration management settings.
      */
-    readonly serverConfigurationsManagementSettings?: types.outputs.sqlvirtualmachine.v20230101preview.ServerConfigurationsManagementSettingsResponse;
+    readonly serverConfigurationsManagementSettings?: types.outputs.ServerConfigurationsManagementSettingsResponse;
     /**
      * SQL image offer. Examples include SQL2016-WS2016, SQL2017-WS2016.
      */
@@ -104,11 +104,11 @@ export interface GetSqlVirtualMachineResult {
     /**
      * Storage Configuration Settings.
      */
-    readonly storageConfigurationSettings?: types.outputs.sqlvirtualmachine.v20230101preview.StorageConfigurationSettingsResponse;
+    readonly storageConfigurationSettings?: types.outputs.StorageConfigurationSettingsResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.sqlvirtualmachine.v20230101preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -116,7 +116,7 @@ export interface GetSqlVirtualMachineResult {
     /**
      * Troubleshooting status
      */
-    readonly troubleshootingStatus: types.outputs.sqlvirtualmachine.v20230101preview.TroubleshootingStatusResponse;
+    readonly troubleshootingStatus: types.outputs.TroubleshootingStatusResponse;
     /**
      * Resource type.
      */
@@ -128,7 +128,7 @@ export interface GetSqlVirtualMachineResult {
     /**
      * Domain credentials for setting up Windows Server Failover Cluster for SQL availability group.
      */
-    readonly wsfcDomainCredentials?: types.outputs.sqlvirtualmachine.v20230101preview.WsfcDomainCredentialsResponse;
+    readonly wsfcDomainCredentials?: types.outputs.WsfcDomainCredentialsResponse;
     /**
      * Domain credentials for setting up Windows Server Failover Cluster for SQL availability group.
      */

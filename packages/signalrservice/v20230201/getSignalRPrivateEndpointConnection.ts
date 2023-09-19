@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the specified private endpoint connection
  */
@@ -48,11 +48,11 @@ export interface GetSignalRPrivateEndpointConnectionResult {
     /**
      * Private endpoint
      */
-    readonly privateEndpoint?: types.outputs.signalrservice.v20230201.PrivateEndpointResponse;
+    readonly privateEndpoint?: types.outputs.PrivateEndpointResponse;
     /**
      * Connection state of the private endpoint connection
      */
-    readonly privateLinkServiceConnectionState?: types.outputs.signalrservice.v20230201.PrivateLinkServiceConnectionStateResponse;
+    readonly privateLinkServiceConnectionState?: types.outputs.PrivateLinkServiceConnectionStateResponse;
     /**
      * Provisioning state of the resource.
      */
@@ -60,7 +60,7 @@ export interface GetSignalRPrivateEndpointConnectionResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.signalrservice.v20230201.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource - e.g. "Microsoft.SignalRService/SignalR"
      */

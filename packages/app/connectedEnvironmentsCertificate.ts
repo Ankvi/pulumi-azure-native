@@ -43,11 +43,11 @@ export class ConnectedEnvironmentsCertificate extends pulumi.CustomResource {
     /**
      * Certificate resource specific properties
      */
-    public readonly properties!: pulumi.Output<types.outputs.app.CertificateResponseProperties>;
+    public readonly properties!: pulumi.Output<types.outputs.CertificateResponseProperties>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.app.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -117,7 +117,7 @@ export interface ConnectedEnvironmentsCertificateArgs {
     /**
      * Certificate resource specific properties
      */
-    properties?: pulumi.Input<types.inputs.app.CertificatePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.CertificatePropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An Azure SQL job agent.
  */
@@ -46,7 +46,7 @@ export class JobAgent extends pulumi.CustomResource {
     /**
      * The name and tier of the SKU.
      */
-    public readonly sku!: pulumi.Output<types.outputs.sql.v20211101.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * The state of the job agent.
      */
@@ -133,7 +133,7 @@ export interface JobAgentArgs {
     /**
      * The name and tier of the SKU.
      */
-    sku?: pulumi.Input<types.inputs.sql.v20211101.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Resource tags.
      */

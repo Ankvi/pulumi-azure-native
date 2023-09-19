@@ -32,7 +32,7 @@ export interface GetEventSubscriptionDeliveryAttributesResult {
     /**
      * A collection of DeliveryAttributeMapping
      */
-    readonly value?: (types.outputs.eventgrid.DynamicDeliveryAttributeMappingResponse | types.outputs.eventgrid.StaticDeliveryAttributeMappingResponse)[];
+    readonly value?: (types.outputs.DynamicDeliveryAttributeMappingResponse | types.outputs.StaticDeliveryAttributeMappingResponse)[];
 }
 /**
  * Get all delivery attributes for an event subscription.

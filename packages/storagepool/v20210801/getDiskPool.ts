@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a Disk pool.
  */
@@ -39,7 +39,7 @@ export interface GetDiskPoolResult {
     /**
      * List of Azure Managed Disks to attach to a Disk Pool.
      */
-    readonly disks?: types.outputs.storagepool.v20210801.DiskResponse[];
+    readonly disks?: types.outputs.DiskResponse[];
     /**
      * Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -75,7 +75,7 @@ export interface GetDiskPoolResult {
     /**
      * Resource metadata required by ARM RPC
      */
-    readonly systemData: types.outputs.storagepool.v20210801.SystemMetadataResponse;
+    readonly systemData: types.outputs.SystemMetadataResponse;
     /**
      * Resource tags.
      */

@@ -38,11 +38,11 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * Specifies the private endpoint.
      */
-    public readonly privateEndpoint!: pulumi.Output<types.outputs.powerbi.PrivateEndpointResponse | undefined>;
+    public readonly privateEndpoint!: pulumi.Output<types.outputs.PrivateEndpointResponse | undefined>;
     /**
      * Specifies the connection state.
      */
-    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.powerbi.ConnectionStateResponse | undefined>;
+    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.ConnectionStateResponse | undefined>;
     /**
      * Provisioning state of the Private Endpoint Connection.
      */
@@ -50,7 +50,7 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * The system meta data relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.powerbi.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Specifies the type of the resource.
      */
@@ -108,7 +108,7 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * Specifies the private endpoint.
      */
-    privateEndpoint?: pulumi.Input<types.inputs.powerbi.PrivateEndpointArgs>;
+    privateEndpoint?: pulumi.Input<types.inputs.PrivateEndpointArgs>;
     /**
      * The name of the private endpoint.
      */
@@ -116,7 +116,7 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * Specifies the connection state.
      */
-    privateLinkServiceConnectionState?: pulumi.Input<types.inputs.powerbi.ConnectionStateArgs>;
+    privateLinkServiceConnectionState?: pulumi.Input<types.inputs.ConnectionStateArgs>;
     /**
      * Provisioning state of the Private Endpoint Connection.
      */

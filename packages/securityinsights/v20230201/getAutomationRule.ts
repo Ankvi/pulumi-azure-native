@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the automation rule.
  */
@@ -33,11 +33,11 @@ export interface GetAutomationRuleResult {
     /**
      * The actions to execute when the automation rule is triggered.
      */
-    readonly actions: (types.outputs.securityinsights.v20230201.AutomationRuleModifyPropertiesActionResponse | types.outputs.securityinsights.v20230201.AutomationRuleRunPlaybookActionResponse)[];
+    readonly actions: (types.outputs.AutomationRuleModifyPropertiesActionResponse | types.outputs.AutomationRuleRunPlaybookActionResponse)[];
     /**
      * Information on the client (user or application) that made some action
      */
-    readonly createdBy: types.outputs.securityinsights.v20230201.ClientInfoResponse;
+    readonly createdBy: types.outputs.ClientInfoResponse;
     /**
      * The time the automation rule was created.
      */
@@ -57,7 +57,7 @@ export interface GetAutomationRuleResult {
     /**
      * Information on the client (user or application) that made some action
      */
-    readonly lastModifiedBy: types.outputs.securityinsights.v20230201.ClientInfoResponse;
+    readonly lastModifiedBy: types.outputs.ClientInfoResponse;
     /**
      * The last time the automation rule was updated.
      */
@@ -73,11 +73,11 @@ export interface GetAutomationRuleResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.securityinsights.v20230201.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Describes automation rule triggering logic.
      */
-    readonly triggeringLogic: types.outputs.securityinsights.v20230201.AutomationRuleTriggeringLogicResponse;
+    readonly triggeringLogic: types.outputs.AutomationRuleTriggeringLogicResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

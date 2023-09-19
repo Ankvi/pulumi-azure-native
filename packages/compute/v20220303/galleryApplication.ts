@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Specifies information about the gallery Application Definition that you want to create or update.
  */
@@ -34,7 +34,7 @@ export class GalleryApplication extends pulumi.CustomResource {
     /**
      * A list of custom actions that can be performed with all of the Gallery Application Versions within this Gallery Application.
      */
-    public readonly customActions!: pulumi.Output<types.outputs.compute.v20220303.GalleryApplicationCustomActionResponse[] | undefined>;
+    public readonly customActions!: pulumi.Output<types.outputs.GalleryApplicationCustomActionResponse[] | undefined>;
     /**
      * The description of this gallery Application Definition resource. This property is updatable.
      */
@@ -137,7 +137,7 @@ export interface GalleryApplicationArgs {
     /**
      * A list of custom actions that can be performed with all of the Gallery Application Versions within this Gallery Application.
      */
-    customActions?: pulumi.Input<pulumi.Input<types.inputs.compute.v20220303.GalleryApplicationCustomActionArgs>[]>;
+    customActions?: pulumi.Input<pulumi.Input<types.inputs.GalleryApplicationCustomActionArgs>[]>;
     /**
      * The description of this gallery Application Definition resource. This property is updatable.
      */
@@ -177,7 +177,7 @@ export interface GalleryApplicationArgs {
     /**
      * This property allows you to specify the supported type of the OS that application is built for. <br><br> Possible values are: <br><br> **Windows** <br><br> **Linux**
      */
-    supportedOSType: pulumi.Input<types.enums.v20220303.OperatingSystemTypes>;
+    supportedOSType: pulumi.Input<types.enums.OperatingSystemTypes>;
     /**
      * Resource tags
      */

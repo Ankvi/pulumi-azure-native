@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 export class WorkspaceCollection extends pulumi.CustomResource {
     /**
      * Get an existing WorkspaceCollection resource's state with the given name, ID, and optional extra
@@ -40,7 +40,7 @@ export class WorkspaceCollection extends pulumi.CustomResource {
      * Properties
      */
     public /*out*/ readonly properties!: pulumi.Output<any>;
-    public readonly sku!: pulumi.Output<types.outputs.powerbi.v20160129.AzureSkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.AzureSkuResponse | undefined>;
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Resource type
@@ -96,7 +96,7 @@ export interface WorkspaceCollectionArgs {
      * Azure resource group
      */
     resourceGroupName: pulumi.Input<string>;
-    sku?: pulumi.Input<types.inputs.powerbi.v20160129.AzureSkuArgs>;
+    sku?: pulumi.Input<types.inputs.AzureSkuArgs>;
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Power BI Embedded Workspace Collection name

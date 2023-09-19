@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An addon resource
  */
@@ -38,7 +38,7 @@ export class Addon extends pulumi.CustomResource {
     /**
      * The properties of an addon resource
      */
-    public readonly properties!: pulumi.Output<types.outputs.avs.v20220501.AddonArcPropertiesResponse | types.outputs.avs.v20220501.AddonHcxPropertiesResponse | types.outputs.avs.v20220501.AddonSrmPropertiesResponse | types.outputs.avs.v20220501.AddonVrPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.AddonArcPropertiesResponse | types.outputs.AddonHcxPropertiesResponse | types.outputs.AddonSrmPropertiesResponse | types.outputs.AddonVrPropertiesResponse>;
     /**
      * Resource type.
      */
@@ -94,7 +94,7 @@ export interface AddonArgs {
     /**
      * The properties of an addon resource
      */
-    properties?: pulumi.Input<types.inputs.avs.v20220501.AddonArcPropertiesArgs | types.inputs.avs.v20220501.AddonHcxPropertiesArgs | types.inputs.avs.v20220501.AddonSrmPropertiesArgs | types.inputs.avs.v20220501.AddonVrPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.AddonArcPropertiesArgs | types.inputs.AddonHcxPropertiesArgs | types.inputs.AddonSrmPropertiesArgs | types.inputs.AddonVrPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

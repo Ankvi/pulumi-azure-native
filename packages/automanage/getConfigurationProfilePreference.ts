@@ -44,7 +44,7 @@ export interface GetConfigurationProfilePreferenceResult {
     /**
      * Properties of the configuration profile preference.
      */
-    readonly properties: types.outputs.automanage.ConfigurationProfilePreferencePropertiesResponse;
+    readonly properties: types.outputs.ConfigurationProfilePreferencePropertiesResponse;
     /**
      * Resource tags.
      */

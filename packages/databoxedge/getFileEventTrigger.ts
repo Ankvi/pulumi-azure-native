@@ -54,15 +54,15 @@ export interface GetFileEventTriggerResult {
     /**
      * Role sink info.
      */
-    readonly sinkInfo: types.outputs.databoxedge.RoleSinkInfoResponse;
+    readonly sinkInfo: types.outputs.RoleSinkInfoResponse;
     /**
      * File event source details.
      */
-    readonly sourceInfo: types.outputs.databoxedge.FileSourceInfoResponse;
+    readonly sourceInfo: types.outputs.FileSourceInfoResponse;
     /**
      * Metadata pertaining to creation and last modification of Trigger
      */
-    readonly systemData: types.outputs.databoxedge.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The hierarchical type of the object.
      */

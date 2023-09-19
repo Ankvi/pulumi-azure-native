@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the specified static member.
  */
@@ -65,7 +65,7 @@ export interface GetStaticMemberResult {
     /**
      * The system metadata related to this resource.
      */
-    readonly systemData: types.outputs.network.v20230501.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource type.
      */

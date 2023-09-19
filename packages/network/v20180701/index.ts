@@ -83,7 +83,7 @@ utilities.lazyLoad(exports, ["VpnSite"], () => require("./vpnSite"));
 
 
 // Export enums:
-export * from "../types/enums/v20180701";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The Private Endpoint Connection resource.
  */
@@ -38,11 +38,11 @@ export class PrivateEndpointConnectionByName extends pulumi.CustomResource {
     /**
      * The resource of private end point.
      */
-    public /*out*/ readonly privateEndpoint!: pulumi.Output<types.outputs.apimanagement.v20220801.PrivateEndpointResponse | undefined>;
+    public /*out*/ readonly privateEndpoint!: pulumi.Output<types.outputs.PrivateEndpointResponse | undefined>;
     /**
      * A collection of information about the state of the connection between service consumer and provider.
      */
-    public /*out*/ readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.apimanagement.v20220801.PrivateLinkServiceConnectionStateResponse>;
+    public /*out*/ readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.PrivateLinkServiceConnectionStateResponse>;
     /**
      * The provisioning state of the private endpoint connection resource.
      */
@@ -108,7 +108,7 @@ export interface PrivateEndpointConnectionByNameArgs {
     /**
      * The connection state of the private endpoint connection.
      */
-    properties?: pulumi.Input<types.inputs.apimanagement.v20220801.PrivateEndpointConnectionRequestPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.PrivateEndpointConnectionRequestPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

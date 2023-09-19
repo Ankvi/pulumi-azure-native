@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * VpnConnection Resource.
  */
@@ -58,7 +58,7 @@ export class VpnConnection extends pulumi.CustomResource {
     /**
      * The IPSec Policies to be considered by this connection.
      */
-    public readonly ipsecPolicies!: pulumi.Output<types.outputs.network.v20180701.IpsecPolicyResponse[] | undefined>;
+    public readonly ipsecPolicies!: pulumi.Output<types.outputs.IpsecPolicyResponse[] | undefined>;
     /**
      * The name of the resource that is unique within a resource group. This name can be used to access the resource.
      */
@@ -70,7 +70,7 @@ export class VpnConnection extends pulumi.CustomResource {
     /**
      * Id of the connected vpn site.
      */
-    public readonly remoteVpnSite!: pulumi.Output<types.outputs.network.v20180701.SubResourceResponse | undefined>;
+    public readonly remoteVpnSite!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * routing weight for vpn connection.
      */
@@ -157,7 +157,7 @@ export interface VpnConnectionArgs {
     /**
      * The IPSec Policies to be considered by this connection.
      */
-    ipsecPolicies?: pulumi.Input<pulumi.Input<types.inputs.network.v20180701.IpsecPolicyArgs>[]>;
+    ipsecPolicies?: pulumi.Input<pulumi.Input<types.inputs.IpsecPolicyArgs>[]>;
     /**
      * The name of the resource that is unique within a resource group. This name can be used to access the resource.
      */
@@ -165,7 +165,7 @@ export interface VpnConnectionArgs {
     /**
      * Id of the connected vpn site.
      */
-    remoteVpnSite?: pulumi.Input<types.inputs.network.v20180701.SubResourceArgs>;
+    remoteVpnSite?: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * The resource group name of the VpnGateway.
      */

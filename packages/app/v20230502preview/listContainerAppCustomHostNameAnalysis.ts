@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Custom domain analysis.
  */
@@ -60,7 +60,7 @@ export interface ListContainerAppCustomHostNameAnalysisResult {
     /**
      * Raw failure information if DNS verification fails.
      */
-    readonly customDomainVerificationFailureInfo: types.outputs.app.v20230502preview.CustomHostnameAnalysisResultResponseCustomDomainVerificationFailureInfo;
+    readonly customDomainVerificationFailureInfo: types.outputs.CustomHostnameAnalysisResultResponseCustomDomainVerificationFailureInfo;
     /**
      * DNS verification test result.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * See [planned maintenance](https://docs.microsoft.com/azure/aks/planned-maintenance) for more information about planned maintenance.
  */
@@ -40,7 +40,7 @@ export interface GetMaintenanceConfigurationResult {
     /**
      * Maintenance window for the maintenance configuration.
      */
-    readonly maintenanceWindow?: types.outputs.containerservice.v20230602preview.MaintenanceWindowResponse;
+    readonly maintenanceWindow?: types.outputs.MaintenanceWindowResponse;
     /**
      * The name of the resource that is unique within a resource group. This name can be used to access the resource.
      */
@@ -48,15 +48,15 @@ export interface GetMaintenanceConfigurationResult {
     /**
      * Time slots on which upgrade is not allowed.
      */
-    readonly notAllowedTime?: types.outputs.containerservice.v20230602preview.TimeSpanResponse[];
+    readonly notAllowedTime?: types.outputs.TimeSpanResponse[];
     /**
      * The system metadata relating to this resource.
      */
-    readonly systemData: types.outputs.containerservice.v20230602preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * If two array entries specify the same day of the week, the applied configuration is the union of times in both entries.
      */
-    readonly timeInWeek?: types.outputs.containerservice.v20230602preview.TimeInWeekResponse[];
+    readonly timeInWeek?: types.outputs.TimeInWeekResponse[];
     /**
      * Resource type
      */

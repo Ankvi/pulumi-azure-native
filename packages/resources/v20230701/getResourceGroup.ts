@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a resource group.
  */
@@ -42,7 +42,7 @@ export interface GetResourceGroupResult {
     /**
      * The resource group properties.
      */
-    readonly properties: types.outputs.resources.v20230701.ResourceGroupPropertiesResponse;
+    readonly properties: types.outputs.ResourceGroupPropertiesResponse;
     /**
      * The tags attached to the resource group.
      */

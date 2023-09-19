@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A Cache instance. Follows Azure Resource Manager standards: https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md
  */
@@ -38,19 +38,19 @@ export class Cache extends pulumi.CustomResource {
     /**
      * Specifies Directory Services settings of the cache.
      */
-    public readonly directoryServicesSettings!: pulumi.Output<types.outputs.storagecache.v20210301.CacheDirectorySettingsResponse | undefined>;
+    public readonly directoryServicesSettings!: pulumi.Output<types.outputs.CacheDirectorySettingsResponse | undefined>;
     /**
      * Specifies encryption settings of the cache.
      */
-    public readonly encryptionSettings!: pulumi.Output<types.outputs.storagecache.v20210301.CacheEncryptionSettingsResponse | undefined>;
+    public readonly encryptionSettings!: pulumi.Output<types.outputs.CacheEncryptionSettingsResponse | undefined>;
     /**
      * Health of the Cache.
      */
-    public /*out*/ readonly health!: pulumi.Output<types.outputs.storagecache.v20210301.CacheHealthResponse>;
+    public /*out*/ readonly health!: pulumi.Output<types.outputs.CacheHealthResponse>;
     /**
      * The identity of the cache, if configured.
      */
-    public readonly identity!: pulumi.Output<types.outputs.storagecache.v20210301.CacheIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.CacheIdentityResponse | undefined>;
     /**
      * Region name string.
      */
@@ -66,7 +66,7 @@ export class Cache extends pulumi.CustomResource {
     /**
      * Specifies network settings of the cache.
      */
-    public readonly networkSettings!: pulumi.Output<types.outputs.storagecache.v20210301.CacheNetworkSettingsResponse | undefined>;
+    public readonly networkSettings!: pulumi.Output<types.outputs.CacheNetworkSettingsResponse | undefined>;
     /**
      * ARM provisioning state, see https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/Addendum.md#provisioningstate-property
      */
@@ -74,11 +74,11 @@ export class Cache extends pulumi.CustomResource {
     /**
      * Specifies security settings of the cache.
      */
-    public readonly securitySettings!: pulumi.Output<types.outputs.storagecache.v20210301.CacheSecuritySettingsResponse | undefined>;
+    public readonly securitySettings!: pulumi.Output<types.outputs.CacheSecuritySettingsResponse | undefined>;
     /**
      * SKU for the Cache.
      */
-    public readonly sku!: pulumi.Output<types.outputs.storagecache.v20210301.CacheResponseSku | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.CacheResponseSku | undefined>;
     /**
      * Subnet used for the Cache.
      */
@@ -86,7 +86,7 @@ export class Cache extends pulumi.CustomResource {
     /**
      * The system meta data relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.storagecache.v20210301.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -98,7 +98,7 @@ export class Cache extends pulumi.CustomResource {
     /**
      * Upgrade status of the Cache.
      */
-    public /*out*/ readonly upgradeStatus!: pulumi.Output<types.outputs.storagecache.v20210301.CacheUpgradeStatusResponse | undefined>;
+    public /*out*/ readonly upgradeStatus!: pulumi.Output<types.outputs.CacheUpgradeStatusResponse | undefined>;
 
     /**
      * Create a Cache resource with the given unique name, arguments, and options.
@@ -116,11 +116,11 @@ export class Cache extends pulumi.CustomResource {
             }
             resourceInputs["cacheName"] = args ? args.cacheName : undefined;
             resourceInputs["cacheSizeGB"] = args ? args.cacheSizeGB : undefined;
-            resourceInputs["directoryServicesSettings"] = args ? (args.directoryServicesSettings ? pulumi.output(args.directoryServicesSettings).apply(types.inputs.storagecache.v20210301.cacheDirectorySettingsArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["directoryServicesSettings"] = args ? (args.directoryServicesSettings ? pulumi.output(args.directoryServicesSettings).apply(types.inputs.cacheDirectorySettingsArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["encryptionSettings"] = args ? args.encryptionSettings : undefined;
             resourceInputs["identity"] = args ? args.identity : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["networkSettings"] = args ? (args.networkSettings ? pulumi.output(args.networkSettings).apply(types.inputs.storagecache.v20210301.cacheNetworkSettingsArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["networkSettings"] = args ? (args.networkSettings ? pulumi.output(args.networkSettings).apply(types.inputs.cacheNetworkSettingsArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["provisioningState"] = args ? args.provisioningState : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["securitySettings"] = args ? args.securitySettings : undefined;
@@ -174,15 +174,15 @@ export interface CacheArgs {
     /**
      * Specifies Directory Services settings of the cache.
      */
-    directoryServicesSettings?: pulumi.Input<types.inputs.storagecache.v20210301.CacheDirectorySettingsArgs>;
+    directoryServicesSettings?: pulumi.Input<types.inputs.CacheDirectorySettingsArgs>;
     /**
      * Specifies encryption settings of the cache.
      */
-    encryptionSettings?: pulumi.Input<types.inputs.storagecache.v20210301.CacheEncryptionSettingsArgs>;
+    encryptionSettings?: pulumi.Input<types.inputs.CacheEncryptionSettingsArgs>;
     /**
      * The identity of the cache, if configured.
      */
-    identity?: pulumi.Input<types.inputs.storagecache.v20210301.CacheIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.CacheIdentityArgs>;
     /**
      * Region name string.
      */
@@ -190,11 +190,11 @@ export interface CacheArgs {
     /**
      * Specifies network settings of the cache.
      */
-    networkSettings?: pulumi.Input<types.inputs.storagecache.v20210301.CacheNetworkSettingsArgs>;
+    networkSettings?: pulumi.Input<types.inputs.CacheNetworkSettingsArgs>;
     /**
      * ARM provisioning state, see https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/Addendum.md#provisioningstate-property
      */
-    provisioningState?: pulumi.Input<string | types.enums.v20210301.ProvisioningStateType>;
+    provisioningState?: pulumi.Input<string | types.enums.ProvisioningStateType>;
     /**
      * Target resource group.
      */
@@ -202,11 +202,11 @@ export interface CacheArgs {
     /**
      * Specifies security settings of the cache.
      */
-    securitySettings?: pulumi.Input<types.inputs.storagecache.v20210301.CacheSecuritySettingsArgs>;
+    securitySettings?: pulumi.Input<types.inputs.CacheSecuritySettingsArgs>;
     /**
      * SKU for the Cache.
      */
-    sku?: pulumi.Input<types.inputs.storagecache.v20210301.CacheSkuArgs>;
+    sku?: pulumi.Input<types.inputs.CacheSkuArgs>;
     /**
      * Subnet used for the Cache.
      */

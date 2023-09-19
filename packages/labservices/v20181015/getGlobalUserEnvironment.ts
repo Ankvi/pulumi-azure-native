@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the virtual machine details
  */
@@ -36,7 +36,7 @@ export interface GetGlobalUserEnvironmentResult {
     /**
      * Details of the environment
      */
-    readonly environment: types.outputs.labservices.v20181015.EnvironmentDetailsResponse;
+    readonly environment: types.outputs.EnvironmentDetailsResponse;
 }
 /**
  * Gets the virtual machine details

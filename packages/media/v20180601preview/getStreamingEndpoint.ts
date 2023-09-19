@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a StreamingEndpoint.
  */
@@ -36,7 +36,7 @@ export interface GetStreamingEndpointResult {
     /**
      * The access control definition of the StreamingEndpoint.
      */
-    readonly accessControl?: types.outputs.media.v20180601preview.StreamingEndpointAccessControlResponse;
+    readonly accessControl?: types.outputs.StreamingEndpointAccessControlResponse;
     /**
      * AvailabilitySet name
      */
@@ -60,7 +60,7 @@ export interface GetStreamingEndpointResult {
     /**
      * The StreamingEndpoint access policies.
      */
-    readonly crossSiteAccessPolicies?: types.outputs.media.v20180601preview.CrossSiteAccessPoliciesResponse;
+    readonly crossSiteAccessPolicies?: types.outputs.CrossSiteAccessPoliciesResponse;
     /**
      * The custom host names of the StreamingEndpoint
      */

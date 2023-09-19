@@ -44,11 +44,11 @@ export interface GetPrivateLinkScopeResult {
     /**
      * Properties that define a Azure Arc PrivateLinkScope resource.
      */
-    readonly properties: types.outputs.hybridcompute.HybridComputePrivateLinkScopePropertiesResponse;
+    readonly properties: types.outputs.HybridComputePrivateLinkScopePropertiesResponse;
     /**
      * The system meta data relating to this resource.
      */
-    readonly systemData: types.outputs.hybridcompute.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags
      */

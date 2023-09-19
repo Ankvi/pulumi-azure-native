@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Public IP prefix resource.
  */
@@ -42,11 +42,11 @@ export class PublicIPPrefix extends pulumi.CustomResource {
     /**
      * The list of tags associated with the public IP prefix.
      */
-    public readonly ipTags!: pulumi.Output<types.outputs.network.v20190601.IpTagResponse[] | undefined>;
+    public readonly ipTags!: pulumi.Output<types.outputs.IpTagResponse[] | undefined>;
     /**
      * The reference to load balancer frontend IP configuration associated with the public IP prefix.
      */
-    public /*out*/ readonly loadBalancerFrontendIpConfiguration!: pulumi.Output<types.outputs.network.v20190601.SubResourceResponse>;
+    public /*out*/ readonly loadBalancerFrontendIpConfiguration!: pulumi.Output<types.outputs.SubResourceResponse>;
     /**
      * Resource location.
      */
@@ -70,7 +70,7 @@ export class PublicIPPrefix extends pulumi.CustomResource {
     /**
      * The list of all referenced PublicIPAddresses.
      */
-    public readonly publicIPAddresses!: pulumi.Output<types.outputs.network.v20190601.ReferencedPublicIpAddressResponse[] | undefined>;
+    public readonly publicIPAddresses!: pulumi.Output<types.outputs.ReferencedPublicIpAddressResponse[] | undefined>;
     /**
      * The resource GUID property of the public IP prefix resource.
      */
@@ -78,7 +78,7 @@ export class PublicIPPrefix extends pulumi.CustomResource {
     /**
      * The public IP prefix SKU.
      */
-    public readonly sku!: pulumi.Output<types.outputs.network.v20190601.PublicIPPrefixSkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.PublicIPPrefixSkuResponse | undefined>;
     /**
      * Resource tags.
      */
@@ -163,7 +163,7 @@ export interface PublicIPPrefixArgs {
     /**
      * The list of tags associated with the public IP prefix.
      */
-    ipTags?: pulumi.Input<pulumi.Input<types.inputs.network.v20190601.IpTagArgs>[]>;
+    ipTags?: pulumi.Input<pulumi.Input<types.inputs.IpTagArgs>[]>;
     /**
      * Resource location.
      */
@@ -179,11 +179,11 @@ export interface PublicIPPrefixArgs {
     /**
      * The public IP address version.
      */
-    publicIPAddressVersion?: pulumi.Input<string | types.enums.v20190601.IPVersion>;
+    publicIPAddressVersion?: pulumi.Input<string | types.enums.IPVersion>;
     /**
      * The list of all referenced PublicIPAddresses.
      */
-    publicIPAddresses?: pulumi.Input<pulumi.Input<types.inputs.network.v20190601.ReferencedPublicIpAddressArgs>[]>;
+    publicIPAddresses?: pulumi.Input<pulumi.Input<types.inputs.ReferencedPublicIpAddressArgs>[]>;
     /**
      * The name of the public IP prefix.
      */
@@ -199,7 +199,7 @@ export interface PublicIPPrefixArgs {
     /**
      * The public IP prefix SKU.
      */
-    sku?: pulumi.Input<types.inputs.network.v20190601.PublicIPPrefixSkuArgs>;
+    sku?: pulumi.Input<types.inputs.PublicIPPrefixSkuArgs>;
     /**
      * Resource tags.
      */

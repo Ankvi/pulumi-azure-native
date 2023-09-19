@@ -55,7 +55,7 @@ export class RoleDefinition extends pulumi.CustomResource {
     /**
      * Role definition permissions.
      */
-    public readonly permissions!: pulumi.Output<types.outputs.authorization.PermissionResponse[] | undefined>;
+    public readonly permissions!: pulumi.Output<types.outputs.PermissionResponse[] | undefined>;
     /**
      * The role name.
      */
@@ -139,7 +139,7 @@ export interface RoleDefinitionArgs {
     /**
      * Role definition permissions.
      */
-    permissions?: pulumi.Input<pulumi.Input<types.inputs.authorization.PermissionArgs>[]>;
+    permissions?: pulumi.Input<pulumi.Input<types.inputs.PermissionArgs>[]>;
     /**
      * The ID of the role definition.
      */

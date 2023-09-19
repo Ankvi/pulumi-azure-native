@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a specific security operator for the requested scope.
  */
@@ -35,7 +35,7 @@ export interface GetSecurityOperatorResult {
     /**
      * Identity for the resource.
      */
-    readonly identity?: types.outputs.security.v20230101preview.IdentityResponse;
+    readonly identity?: types.outputs.IdentityResponse;
     /**
      * Resource name
      */

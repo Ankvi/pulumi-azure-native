@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a DNS zone. Retrieves the zone properties, but not the record sets within the zone.
  */
@@ -63,19 +63,19 @@ export interface GetZoneResult {
     /**
      * A list of references to virtual networks that register hostnames in this DNS zone. This is a only when ZoneType is Private.
      */
-    readonly registrationVirtualNetworks?: types.outputs.network.v20230701preview.SubResourceResponse[];
+    readonly registrationVirtualNetworks?: types.outputs.SubResourceResponse[];
     /**
      * A list of references to virtual networks that resolve records in this DNS zone. This is a only when ZoneType is Private.
      */
-    readonly resolutionVirtualNetworks?: types.outputs.network.v20230701preview.SubResourceResponse[];
+    readonly resolutionVirtualNetworks?: types.outputs.SubResourceResponse[];
     /**
      * The list of signing keys.
      */
-    readonly signingKeys: types.outputs.network.v20230701preview.SigningKeyResponse[];
+    readonly signingKeys: types.outputs.SigningKeyResponse[];
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.network.v20230701preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

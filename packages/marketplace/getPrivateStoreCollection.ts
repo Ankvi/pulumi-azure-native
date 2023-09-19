@@ -36,7 +36,7 @@ export interface GetPrivateStoreCollectionResult {
     /**
      * Gets list of collection rules
      */
-    readonly appliedRules: types.outputs.marketplace.RuleResponse[];
+    readonly appliedRules: types.outputs.RuleResponse[];
     /**
      * Indicating whether all items are approved for this collection (=true) or not (=false).
      */
@@ -80,7 +80,7 @@ export interface GetPrivateStoreCollectionResult {
     /**
      * Metadata pertaining to creation and last modification of the resource
      */
-    readonly systemData: types.outputs.marketplace.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource.
      */

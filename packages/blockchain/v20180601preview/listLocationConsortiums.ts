@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Lists the available consortiums for a subscription.
  */
@@ -26,7 +26,7 @@ export interface ListLocationConsortiumsResult {
     /**
      * Gets or sets the collection of consortiums.
      */
-    readonly value?: types.outputs.blockchain.v20180601preview.ConsortiumResponse[];
+    readonly value?: types.outputs.ConsortiumResponse[];
 }
 /**
  * Lists the available consortiums for a subscription.

@@ -40,7 +40,7 @@ export interface GetNamespaceNetworkRuleSetResult {
     /**
      * List of IpRules
      */
-    readonly ipRules?: types.outputs.servicebus.NWRuleSetIpRulesResponse[];
+    readonly ipRules?: types.outputs.NWRuleSetIpRulesResponse[];
     /**
      * The geo-location where the resource lives
      */
@@ -56,7 +56,7 @@ export interface GetNamespaceNetworkRuleSetResult {
     /**
      * The system meta data relating to this resource.
      */
-    readonly systemData: types.outputs.servicebus.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Value that indicates whether Trusted Service Access is Enabled or not.
      */
@@ -68,7 +68,7 @@ export interface GetNamespaceNetworkRuleSetResult {
     /**
      * List VirtualNetwork Rules
      */
-    readonly virtualNetworkRules?: types.outputs.servicebus.NWRuleSetVirtualNetworkRulesResponse[];
+    readonly virtualNetworkRules?: types.outputs.NWRuleSetVirtualNetworkRulesResponse[];
 }
 /**
  * Gets NetworkRuleSet for a Namespace.

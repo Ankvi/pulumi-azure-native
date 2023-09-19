@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  *  Response for PrivateEndpoint Connection object
  */
@@ -42,11 +42,11 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * Private Endpoint resource
      */
-    public /*out*/ readonly privateEndpoint!: pulumi.Output<types.outputs.elasticsan.v20221201preview.PrivateEndpointResponse | undefined>;
+    public /*out*/ readonly privateEndpoint!: pulumi.Output<types.outputs.PrivateEndpointResponse | undefined>;
     /**
      * Private Link Service Connection State.
      */
-    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.elasticsan.v20221201preview.PrivateLinkServiceConnectionStateResponse>;
+    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.PrivateLinkServiceConnectionStateResponse>;
     /**
      * Provisioning State of Private Endpoint connection resource
      */
@@ -54,7 +54,7 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.elasticsan.v20221201preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -125,7 +125,7 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * Private Link Service Connection State.
      */
-    privateLinkServiceConnectionState: pulumi.Input<types.inputs.elasticsan.v20221201preview.PrivateLinkServiceConnectionStateArgs>;
+    privateLinkServiceConnectionState: pulumi.Input<types.inputs.PrivateLinkServiceConnectionStateArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

@@ -53,11 +53,11 @@ export interface GetStaticSitePrivateEndpointConnectionResult {
     /**
      * PrivateEndpoint of a remote private endpoint connection
      */
-    readonly privateEndpoint?: types.outputs.web.ArmIdWrapperResponse;
+    readonly privateEndpoint?: types.outputs.ArmIdWrapperResponse;
     /**
      * The state of a private link connection
      */
-    readonly privateLinkServiceConnectionState?: types.outputs.web.PrivateLinkConnectionStateResponse;
+    readonly privateLinkServiceConnectionState?: types.outputs.PrivateLinkConnectionStateResponse;
     readonly provisioningState: string;
     /**
      * Resource type.

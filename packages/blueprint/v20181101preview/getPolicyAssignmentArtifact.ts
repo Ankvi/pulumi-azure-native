@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a blueprint artifact.
  */
@@ -61,7 +61,7 @@ export interface GetPolicyAssignmentArtifactResult {
     /**
      * Parameter values for the policy definition.
      */
-    readonly parameters: {[key: string]: types.outputs.blueprint.v20181101preview.ParameterValueResponse};
+    readonly parameters: {[key: string]: types.outputs.ParameterValueResponse};
     /**
      * Azure resource ID of the policy definition.
      */

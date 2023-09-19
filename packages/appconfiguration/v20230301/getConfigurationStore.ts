@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the properties of the specified configuration store.
  */
@@ -43,7 +43,7 @@ export interface GetConfigurationStoreResult {
     /**
      * The encryption settings of the configuration store.
      */
-    readonly encryption?: types.outputs.appconfiguration.v20230301.EncryptionPropertiesResponse;
+    readonly encryption?: types.outputs.EncryptionPropertiesResponse;
     /**
      * The DNS endpoint where the configuration store API will be available.
      */
@@ -55,7 +55,7 @@ export interface GetConfigurationStoreResult {
     /**
      * The managed identity information, if configured.
      */
-    readonly identity?: types.outputs.appconfiguration.v20230301.ResourceIdentityResponse;
+    readonly identity?: types.outputs.ResourceIdentityResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -67,7 +67,7 @@ export interface GetConfigurationStoreResult {
     /**
      * The list of private endpoint connections that are set up for this resource.
      */
-    readonly privateEndpointConnections: types.outputs.appconfiguration.v20230301.PrivateEndpointConnectionReferenceResponse[];
+    readonly privateEndpointConnections: types.outputs.PrivateEndpointConnectionReferenceResponse[];
     /**
      * The provisioning state of the configuration store.
      */
@@ -79,7 +79,7 @@ export interface GetConfigurationStoreResult {
     /**
      * The sku of the configuration store.
      */
-    readonly sku: types.outputs.appconfiguration.v20230301.SkuResponse;
+    readonly sku: types.outputs.SkuResponse;
     /**
      * The amount of time in days that the configuration store will be retained when it is soft deleted.
      */
@@ -87,7 +87,7 @@ export interface GetConfigurationStoreResult {
     /**
      * Resource system metadata.
      */
-    readonly systemData: types.outputs.appconfiguration.v20230301.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

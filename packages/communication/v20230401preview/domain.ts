@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A class representing a Domains resource.
  */
@@ -62,7 +62,7 @@ export class Domain extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.communication.v20230401preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -78,11 +78,11 @@ export class Domain extends pulumi.CustomResource {
     /**
      * List of DnsRecord
      */
-    public /*out*/ readonly verificationRecords!: pulumi.Output<types.outputs.communication.v20230401preview.DomainPropertiesResponseVerificationRecords>;
+    public /*out*/ readonly verificationRecords!: pulumi.Output<types.outputs.DomainPropertiesResponseVerificationRecords>;
     /**
      * List of VerificationStatusRecord
      */
-    public /*out*/ readonly verificationStates!: pulumi.Output<types.outputs.communication.v20230401preview.DomainPropertiesResponseVerificationStates>;
+    public /*out*/ readonly verificationStates!: pulumi.Output<types.outputs.DomainPropertiesResponseVerificationStates>;
 
     /**
      * Create a Domain resource with the given unique name, arguments, and options.
@@ -149,7 +149,7 @@ export interface DomainArgs {
     /**
      * Describes how a Domains resource is being managed.
      */
-    domainManagement: pulumi.Input<string | types.enums.v20230401preview.DomainManagement>;
+    domainManagement: pulumi.Input<string | types.enums.DomainManagement>;
     /**
      * The name of the Domains resource.
      */
@@ -173,5 +173,5 @@ export interface DomainArgs {
     /**
      * Describes whether user engagement tracking is enabled or disabled.
      */
-    userEngagementTracking?: pulumi.Input<string | types.enums.v20230401preview.UserEngagementTracking>;
+    userEngagementTracking?: pulumi.Input<string | types.enums.UserEngagementTracking>;
 }

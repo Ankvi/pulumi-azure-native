@@ -40,11 +40,11 @@ export interface GetGroupQuotaResult {
     /**
      * Properties and filters for ShareQuota. The request parameter is optional, if there are no filters specified.
      */
-    readonly properties: types.outputs.quota.GroupQuotasEntityBaseResponse;
+    readonly properties: types.outputs.GroupQuotasEntityBaseResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.quota.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

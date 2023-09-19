@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The DataManager resource.
  */
@@ -48,7 +48,7 @@ export class DataManager extends pulumi.CustomResource {
     /**
      * The sku type.
      */
-    public readonly sku!: pulumi.Output<types.outputs.hybriddata.v20190601.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * The list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource
      * (across resource groups).
@@ -117,7 +117,7 @@ export interface DataManagerArgs {
     /**
      * The sku type.
      */
-    sku?: pulumi.Input<types.inputs.hybriddata.v20190601.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * The list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource
      * (across resource groups).

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A schedule.
  */
@@ -38,11 +38,11 @@ export class Schedule extends pulumi.CustomResource {
     /**
      * If the schedule will occur once each day of the week, specify the daily recurrence.
      */
-    public readonly dailyRecurrence!: pulumi.Output<types.outputs.devtestlab.v20180915.DayDetailsResponse | undefined>;
+    public readonly dailyRecurrence!: pulumi.Output<types.outputs.DayDetailsResponse | undefined>;
     /**
      * If the schedule will occur multiple times a day, specify the hourly recurrence.
      */
-    public readonly hourlyRecurrence!: pulumi.Output<types.outputs.devtestlab.v20180915.HourDetailsResponse | undefined>;
+    public readonly hourlyRecurrence!: pulumi.Output<types.outputs.HourDetailsResponse | undefined>;
     /**
      * The location of the resource.
      */
@@ -54,7 +54,7 @@ export class Schedule extends pulumi.CustomResource {
     /**
      * Notification settings.
      */
-    public readonly notificationSettings!: pulumi.Output<types.outputs.devtestlab.v20180915.NotificationSettingsResponse | undefined>;
+    public readonly notificationSettings!: pulumi.Output<types.outputs.NotificationSettingsResponse | undefined>;
     /**
      * The provisioning status of the resource.
      */
@@ -90,7 +90,7 @@ export class Schedule extends pulumi.CustomResource {
     /**
      * If the schedule will occur only some days of the week, specify the weekly recurrence.
      */
-    public readonly weeklyRecurrence!: pulumi.Output<types.outputs.devtestlab.v20180915.WeekDetailsResponse | undefined>;
+    public readonly weeklyRecurrence!: pulumi.Output<types.outputs.WeekDetailsResponse | undefined>;
 
     /**
      * Create a Schedule resource with the given unique name, arguments, and options.
@@ -114,7 +114,7 @@ export class Schedule extends pulumi.CustomResource {
             resourceInputs["labName"] = args ? args.labName : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["notificationSettings"] = args ? (args.notificationSettings ? pulumi.output(args.notificationSettings).apply(types.inputs.devtestlab.v20180915.notificationSettingsArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["notificationSettings"] = args ? (args.notificationSettings ? pulumi.output(args.notificationSettings).apply(types.inputs.notificationSettingsArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["status"] = (args ? args.status : undefined) ?? "Disabled";
             resourceInputs["tags"] = args ? args.tags : undefined;
@@ -157,11 +157,11 @@ export interface ScheduleArgs {
     /**
      * If the schedule will occur once each day of the week, specify the daily recurrence.
      */
-    dailyRecurrence?: pulumi.Input<types.inputs.devtestlab.v20180915.DayDetailsArgs>;
+    dailyRecurrence?: pulumi.Input<types.inputs.DayDetailsArgs>;
     /**
      * If the schedule will occur multiple times a day, specify the hourly recurrence.
      */
-    hourlyRecurrence?: pulumi.Input<types.inputs.devtestlab.v20180915.HourDetailsArgs>;
+    hourlyRecurrence?: pulumi.Input<types.inputs.HourDetailsArgs>;
     /**
      * The name of the lab.
      */
@@ -177,7 +177,7 @@ export interface ScheduleArgs {
     /**
      * Notification settings.
      */
-    notificationSettings?: pulumi.Input<types.inputs.devtestlab.v20180915.NotificationSettingsArgs>;
+    notificationSettings?: pulumi.Input<types.inputs.NotificationSettingsArgs>;
     /**
      * The name of the resource group.
      */
@@ -185,7 +185,7 @@ export interface ScheduleArgs {
     /**
      * The status of the schedule (i.e. Enabled, Disabled)
      */
-    status?: pulumi.Input<string | types.enums.v20180915.EnableStatus>;
+    status?: pulumi.Input<string | types.enums.EnableStatus>;
     /**
      * The tags of the resource.
      */
@@ -205,5 +205,5 @@ export interface ScheduleArgs {
     /**
      * If the schedule will occur only some days of the week, specify the weekly recurrence.
      */
-    weeklyRecurrence?: pulumi.Input<types.inputs.devtestlab.v20180915.WeekDetailsArgs>;
+    weeklyRecurrence?: pulumi.Input<types.inputs.WeekDetailsArgs>;
 }

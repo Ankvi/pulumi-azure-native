@@ -1,138 +1,67 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
-export namespace guestconfiguration {
+/**
+ * Represents a configuration parameter.
+ */
+export interface ConfigurationParameterArgs {
     /**
-     * Represents a configuration parameter.
+     * Name of the configuration parameter.
      */
-    export interface ConfigurationParameterArgs {
-        /**
-         * Name of the configuration parameter.
-         */
-        name?: pulumi.Input<string>;
-        /**
-         * Value of the configuration parameter.
-         */
-        value?: pulumi.Input<string>;
-    }
-
+    name?: pulumi.Input<string>;
     /**
-     * Guest configuration assignment properties.
+     * Value of the configuration parameter.
      */
-    export interface GuestConfigurationAssignmentPropertiesArgs {
-        /**
-         * The source which initiated the guest configuration assignment. Ex: Azure Policy
-         */
-        context?: pulumi.Input<string>;
-        /**
-         * The guest configuration to assign.
-         */
-        guestConfiguration?: pulumi.Input<GuestConfigurationNavigationArgs>;
-    }
+    value?: pulumi.Input<string>;
+}
 
+/**
+ * Guest configuration assignment properties.
+ */
+export interface GuestConfigurationAssignmentPropertiesArgs {
     /**
-     * Guest configuration is an artifact that encapsulates DSC configuration and its dependencies. The artifact is a zip file containing DSC configuration (as MOF) and dependent resources and other dependencies like modules.
+     * The source which initiated the guest configuration assignment. Ex: Azure Policy
      */
-    export interface GuestConfigurationNavigationArgs {
-        /**
-         * Specifies the assignment type and execution of the configuration. Possible values are Audit, DeployAndAutoCorrect, ApplyAndAutoCorrect and ApplyAndMonitor.
-         */
-        assignmentType?: pulumi.Input<string | enums.AssignmentType>;
-        /**
-         * The configuration parameters for the guest configuration.
-         */
-        configurationParameter?: pulumi.Input<pulumi.Input<ConfigurationParameterArgs>[]>;
-        /**
-         * The protected configuration parameters for the guest configuration.
-         */
-        configurationProtectedParameter?: pulumi.Input<pulumi.Input<ConfigurationParameterArgs>[]>;
-        /**
-         * Combined hash of the guest configuration package and configuration parameters.
-         */
-        contentHash?: pulumi.Input<string>;
-        /**
-         * Uri of the storage where guest configuration package is uploaded.
-         */
-        contentUri?: pulumi.Input<string>;
-        /**
-         * Kind of the guest configuration. For example:DSC
-         */
-        kind?: pulumi.Input<string | enums.Kind>;
-        /**
-         * Name of the guest configuration.
-         */
-        name?: pulumi.Input<string>;
-        /**
-         * Version of the guest configuration.
-         */
-        version?: pulumi.Input<string>;
-    }
+    context?: pulumi.Input<string>;
+    /**
+     * The guest configuration to assign.
+     */
+    guestConfiguration?: pulumi.Input<GuestConfigurationNavigationArgs>;
+}
 
-    export namespace v20220125 {
-        /**
-         * Represents a configuration parameter.
-         */
-        export interface ConfigurationParameterArgs {
-            /**
-             * Name of the configuration parameter.
-             */
-            name?: pulumi.Input<string>;
-            /**
-             * Value of the configuration parameter.
-             */
-            value?: pulumi.Input<string>;
-        }
-
-        /**
-         * Guest configuration assignment properties.
-         */
-        export interface GuestConfigurationAssignmentPropertiesArgs {
-            /**
-             * The source which initiated the guest configuration assignment. Ex: Azure Policy
-             */
-            context?: pulumi.Input<string>;
-            /**
-             * The guest configuration to assign.
-             */
-            guestConfiguration?: pulumi.Input<v20220125.GuestConfigurationNavigationArgs>;
-        }
-
-        /**
-         * Guest configuration is an artifact that encapsulates DSC configuration and its dependencies. The artifact is a zip file containing DSC configuration (as MOF) and dependent resources and other dependencies like modules.
-         */
-        export interface GuestConfigurationNavigationArgs {
-            /**
-             * Specifies the assignment type and execution of the configuration. Possible values are Audit, DeployAndAutoCorrect, ApplyAndAutoCorrect and ApplyAndMonitor.
-             */
-            assignmentType?: pulumi.Input<string | enums.v20220125.AssignmentType>;
-            /**
-             * The configuration parameters for the guest configuration.
-             */
-            configurationParameter?: pulumi.Input<pulumi.Input<v20220125.ConfigurationParameterArgs>[]>;
-            /**
-             * The protected configuration parameters for the guest configuration.
-             */
-            configurationProtectedParameter?: pulumi.Input<pulumi.Input<v20220125.ConfigurationParameterArgs>[]>;
-            /**
-             * Combined hash of the guest configuration package and configuration parameters.
-             */
-            contentHash?: pulumi.Input<string>;
-            /**
-             * Uri of the storage where guest configuration package is uploaded.
-             */
-            contentUri?: pulumi.Input<string>;
-            /**
-             * Kind of the guest configuration. For example:DSC
-             */
-            kind?: pulumi.Input<string | enums.v20220125.Kind>;
-            /**
-             * Name of the guest configuration.
-             */
-            name?: pulumi.Input<string>;
-            /**
-             * Version of the guest configuration.
-             */
-            version?: pulumi.Input<string>;
-        }
-
-    }
+/**
+ * Guest configuration is an artifact that encapsulates DSC configuration and its dependencies. The artifact is a zip file containing DSC configuration (as MOF) and dependent resources and other dependencies like modules.
+ */
+export interface GuestConfigurationNavigationArgs {
+    /**
+     * Specifies the assignment type and execution of the configuration. Possible values are Audit, DeployAndAutoCorrect, ApplyAndAutoCorrect and ApplyAndMonitor.
+     */
+    assignmentType?: pulumi.Input<string | enums.AssignmentType>;
+    /**
+     * The configuration parameters for the guest configuration.
+     */
+    configurationParameter?: pulumi.Input<pulumi.Input<ConfigurationParameterArgs>[]>;
+    /**
+     * The protected configuration parameters for the guest configuration.
+     */
+    configurationProtectedParameter?: pulumi.Input<pulumi.Input<ConfigurationParameterArgs>[]>;
+    /**
+     * Combined hash of the guest configuration package and configuration parameters.
+     */
+    contentHash?: pulumi.Input<string>;
+    /**
+     * Uri of the storage where guest configuration package is uploaded.
+     */
+    contentUri?: pulumi.Input<string>;
+    /**
+     * Kind of the guest configuration. For example:DSC
+     */
+    kind?: pulumi.Input<string | enums.Kind>;
+    /**
+     * Name of the guest configuration.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Version of the guest configuration.
+     */
+    version?: pulumi.Input<string>;
 }

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the properties of the specified container registry.
  */
@@ -55,7 +55,7 @@ export interface GetRegistryResult {
     /**
      * The properties of the storage account for the container registry. If specified, the storage account must be in the same physical location as the container registry.
      */
-    readonly storageAccount: types.outputs.containerregistry.v20160627preview.StorageAccountPropertiesResponse;
+    readonly storageAccount: types.outputs.StorageAccountPropertiesResponse;
     /**
      * The tags of the resource.
      */

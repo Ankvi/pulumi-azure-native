@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Disk resource.
  */
@@ -46,7 +46,7 @@ export class Disk extends pulumi.CustomResource {
     /**
      * Disk source information. CreationData information cannot be changed after the disk has been created.
      */
-    public readonly creationData!: pulumi.Output<types.outputs.compute.v20230402.CreationDataResponse>;
+    public readonly creationData!: pulumi.Output<types.outputs.CreationDataResponse>;
     /**
      * Additional authentication requirements when exporting or uploading to a disk or snapshot.
      */
@@ -86,15 +86,15 @@ export class Disk extends pulumi.CustomResource {
     /**
      * Encryption property can be used to encrypt data at rest with customer managed keys or platform managed keys.
      */
-    public readonly encryption!: pulumi.Output<types.outputs.compute.v20230402.EncryptionResponse | undefined>;
+    public readonly encryption!: pulumi.Output<types.outputs.EncryptionResponse | undefined>;
     /**
      * Encryption settings collection used for Azure Disk Encryption, can contain multiple encryption settings per disk or snapshot.
      */
-    public readonly encryptionSettingsCollection!: pulumi.Output<types.outputs.compute.v20230402.EncryptionSettingsCollectionResponse | undefined>;
+    public readonly encryptionSettingsCollection!: pulumi.Output<types.outputs.EncryptionSettingsCollectionResponse | undefined>;
     /**
      * The extended location where the disk will be created. Extended location cannot be changed.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.compute.v20230402.ExtendedLocationResponse | undefined>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
     /**
      * The hypervisor generation of the Virtual Machine. Applicable to OS disks only.
      */
@@ -138,7 +138,7 @@ export class Disk extends pulumi.CustomResource {
     /**
      * Properties of the disk for which update is pending.
      */
-    public /*out*/ readonly propertyUpdatesInProgress!: pulumi.Output<types.outputs.compute.v20230402.PropertyUpdatesInProgressResponse>;
+    public /*out*/ readonly propertyUpdatesInProgress!: pulumi.Output<types.outputs.PropertyUpdatesInProgressResponse>;
     /**
      * The disk provisioning state.
      */
@@ -150,23 +150,23 @@ export class Disk extends pulumi.CustomResource {
     /**
      * Purchase plan information for the the image from which the OS disk was created. E.g. - {name: 2019-Datacenter, publisher: MicrosoftWindowsServer, product: WindowsServer}
      */
-    public readonly purchasePlan!: pulumi.Output<types.outputs.compute.v20230402.PurchasePlanResponse | undefined>;
+    public readonly purchasePlan!: pulumi.Output<types.outputs.PurchasePlanResponse | undefined>;
     /**
      * Contains the security related information for the resource.
      */
-    public readonly securityProfile!: pulumi.Output<types.outputs.compute.v20230402.DiskSecurityProfileResponse | undefined>;
+    public readonly securityProfile!: pulumi.Output<types.outputs.DiskSecurityProfileResponse | undefined>;
     /**
      * Details of the list of all VMs that have the disk attached. maxShares should be set to a value greater than one for disks to allow attaching them to multiple VMs.
      */
-    public /*out*/ readonly shareInfo!: pulumi.Output<types.outputs.compute.v20230402.ShareInfoElementResponse[]>;
+    public /*out*/ readonly shareInfo!: pulumi.Output<types.outputs.ShareInfoElementResponse[]>;
     /**
      * The disks sku name. Can be Standard_LRS, Premium_LRS, StandardSSD_LRS, UltraSSD_LRS, Premium_ZRS, StandardSSD_ZRS, or PremiumV2_LRS.
      */
-    public readonly sku!: pulumi.Output<types.outputs.compute.v20230402.DiskSkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.DiskSkuResponse | undefined>;
     /**
      * List of supported capabilities for the image from which the OS disk was created.
      */
-    public readonly supportedCapabilities!: pulumi.Output<types.outputs.compute.v20230402.SupportedCapabilitiesResponse | undefined>;
+    public readonly supportedCapabilities!: pulumi.Output<types.outputs.SupportedCapabilitiesResponse | undefined>;
     /**
      * Indicates the OS on a disk supports hibernation.
      */
@@ -321,11 +321,11 @@ export interface DiskArgs {
     /**
      * Disk source information. CreationData information cannot be changed after the disk has been created.
      */
-    creationData: pulumi.Input<types.inputs.compute.v20230402.CreationDataArgs>;
+    creationData: pulumi.Input<types.inputs.CreationDataArgs>;
     /**
      * Additional authentication requirements when exporting or uploading to a disk or snapshot.
      */
-    dataAccessAuthMode?: pulumi.Input<string | types.enums.v20230402.DataAccessAuthMode>;
+    dataAccessAuthMode?: pulumi.Input<string | types.enums.DataAccessAuthMode>;
     /**
      * ARM id of the DiskAccess resource for using private endpoints on disks.
      */
@@ -357,19 +357,19 @@ export interface DiskArgs {
     /**
      * Encryption property can be used to encrypt data at rest with customer managed keys or platform managed keys.
      */
-    encryption?: pulumi.Input<types.inputs.compute.v20230402.EncryptionArgs>;
+    encryption?: pulumi.Input<types.inputs.EncryptionArgs>;
     /**
      * Encryption settings collection used for Azure Disk Encryption, can contain multiple encryption settings per disk or snapshot.
      */
-    encryptionSettingsCollection?: pulumi.Input<types.inputs.compute.v20230402.EncryptionSettingsCollectionArgs>;
+    encryptionSettingsCollection?: pulumi.Input<types.inputs.EncryptionSettingsCollectionArgs>;
     /**
      * The extended location where the disk will be created. Extended location cannot be changed.
      */
-    extendedLocation?: pulumi.Input<types.inputs.compute.v20230402.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * The hypervisor generation of the Virtual Machine. Applicable to OS disks only.
      */
-    hyperVGeneration?: pulumi.Input<string | types.enums.v20230402.HyperVGeneration>;
+    hyperVGeneration?: pulumi.Input<string | types.enums.HyperVGeneration>;
     /**
      * Resource location
      */
@@ -381,7 +381,7 @@ export interface DiskArgs {
     /**
      * Policy for accessing the disk via network.
      */
-    networkAccessPolicy?: pulumi.Input<string | types.enums.v20230402.NetworkAccessPolicy>;
+    networkAccessPolicy?: pulumi.Input<string | types.enums.NetworkAccessPolicy>;
     /**
      * Setting this property to true improves reliability and performance of data disks that are frequently (more than 5 times a day) by detached from one virtual machine and attached to another. This property should not be set for disks that are not detached and attached frequently as it causes the disks to not align with the fault domain of the virtual machine.
      */
@@ -389,15 +389,15 @@ export interface DiskArgs {
     /**
      * The Operating System type.
      */
-    osType?: pulumi.Input<types.enums.v20230402.OperatingSystemTypes>;
+    osType?: pulumi.Input<types.enums.OperatingSystemTypes>;
     /**
      * Policy for controlling export on the disk.
      */
-    publicNetworkAccess?: pulumi.Input<string | types.enums.v20230402.PublicNetworkAccess>;
+    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess>;
     /**
      * Purchase plan information for the the image from which the OS disk was created. E.g. - {name: 2019-Datacenter, publisher: MicrosoftWindowsServer, product: WindowsServer}
      */
-    purchasePlan?: pulumi.Input<types.inputs.compute.v20230402.PurchasePlanArgs>;
+    purchasePlan?: pulumi.Input<types.inputs.PurchasePlanArgs>;
     /**
      * The name of the resource group.
      */
@@ -405,15 +405,15 @@ export interface DiskArgs {
     /**
      * Contains the security related information for the resource.
      */
-    securityProfile?: pulumi.Input<types.inputs.compute.v20230402.DiskSecurityProfileArgs>;
+    securityProfile?: pulumi.Input<types.inputs.DiskSecurityProfileArgs>;
     /**
      * The disks sku name. Can be Standard_LRS, Premium_LRS, StandardSSD_LRS, UltraSSD_LRS, Premium_ZRS, StandardSSD_ZRS, or PremiumV2_LRS.
      */
-    sku?: pulumi.Input<types.inputs.compute.v20230402.DiskSkuArgs>;
+    sku?: pulumi.Input<types.inputs.DiskSkuArgs>;
     /**
      * List of supported capabilities for the image from which the OS disk was created.
      */
-    supportedCapabilities?: pulumi.Input<types.inputs.compute.v20230402.SupportedCapabilitiesArgs>;
+    supportedCapabilities?: pulumi.Input<types.inputs.SupportedCapabilitiesArgs>;
     /**
      * Indicates the OS on a disk supports hibernation.
      */

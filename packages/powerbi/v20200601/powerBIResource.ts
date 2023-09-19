@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 export class PowerBIResource extends pulumi.CustomResource {
     /**
      * Get an existing PowerBIResource resource's state with the given name, ID, and optional extra
@@ -39,11 +39,11 @@ export class PowerBIResource extends pulumi.CustomResource {
     /**
      * Specifies the private endpoint connections of the resource.
      */
-    public readonly privateEndpointConnections!: pulumi.Output<types.outputs.powerbi.v20200601.PrivateEndpointConnectionResponse[] | undefined>;
+    public readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[] | undefined>;
     /**
      * The system metadata relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.powerbi.v20200601.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Specifies the tags of the resource.
      */
@@ -112,7 +112,7 @@ export interface PowerBIResourceArgs {
      * Specifies the private endpoint connections of the resource.
      * These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
      */
-    privateEndpointConnections?: pulumi.Input<pulumi.Input<types.inputs.powerbi.v20200601.PrivateEndpointConnectionArgs>[]>;
+    privateEndpointConnections?: pulumi.Input<pulumi.Input<types.inputs.PrivateEndpointConnectionArgs>[]>;
     /**
      * The name of the resource group.
      */

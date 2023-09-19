@@ -36,12 +36,12 @@ export interface GetDataCollectionRuleResult {
     /**
      * The specification of data flows.
      */
-    readonly dataFlows?: types.outputs.insights.DataFlowResponse[];
+    readonly dataFlows?: types.outputs.DataFlowResponse[];
     /**
      * The specification of data sources. 
      * This property is optional and can be omitted if the rule is meant to be used via direct calls to the provisioned endpoint.
      */
-    readonly dataSources?: types.outputs.insights.DataCollectionRuleResponseDataSources;
+    readonly dataSources?: types.outputs.DataCollectionRuleResponseDataSources;
     /**
      * Description of the data collection rule.
      */
@@ -49,7 +49,7 @@ export interface GetDataCollectionRuleResult {
     /**
      * The specification of destinations.
      */
-    readonly destinations?: types.outputs.insights.DataCollectionRuleResponseDestinations;
+    readonly destinations?: types.outputs.DataCollectionRuleResponseDestinations;
     /**
      * Resource entity tag (ETag).
      */
@@ -61,7 +61,7 @@ export interface GetDataCollectionRuleResult {
     /**
      * Managed service identity of the resource.
      */
-    readonly identity?: types.outputs.insights.DataCollectionRuleResourceResponseIdentity;
+    readonly identity?: types.outputs.DataCollectionRuleResourceResponseIdentity;
     /**
      * The immutable ID of this data collection rule. This property is READ-ONLY.
      */
@@ -77,7 +77,7 @@ export interface GetDataCollectionRuleResult {
     /**
      * Metadata about the resource
      */
-    readonly metadata: types.outputs.insights.DataCollectionRuleResponseMetadata;
+    readonly metadata: types.outputs.DataCollectionRuleResponseMetadata;
     /**
      * The name of the resource.
      */
@@ -89,11 +89,11 @@ export interface GetDataCollectionRuleResult {
     /**
      * Declaration of custom streams used in this rule.
      */
-    readonly streamDeclarations?: {[key: string]: types.outputs.insights.StreamDeclarationResponse};
+    readonly streamDeclarations?: {[key: string]: types.outputs.StreamDeclarationResponse};
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.insights.DataCollectionRuleResourceResponseSystemData;
+    readonly systemData: types.outputs.DataCollectionRuleResourceResponseSystemData;
     /**
      * Resource tags.
      */

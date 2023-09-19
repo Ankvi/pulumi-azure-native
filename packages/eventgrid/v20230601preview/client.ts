@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The Client resource.
  */
@@ -40,7 +40,7 @@ export class Client extends pulumi.CustomResource {
     /**
      * Authentication information for the client.
      */
-    public readonly authentication!: pulumi.Output<types.outputs.eventgrid.v20230601preview.ClientAuthenticationResponse | undefined>;
+    public readonly authentication!: pulumi.Output<types.outputs.ClientAuthenticationResponse | undefined>;
     /**
      * The name presented by the client for authentication. The default value is the name of the resource.
      */
@@ -48,7 +48,7 @@ export class Client extends pulumi.CustomResource {
     /**
      * The client certificate authentication information.
      */
-    public readonly clientCertificateAuthentication!: pulumi.Output<types.outputs.eventgrid.v20230601preview.ClientCertificateAuthenticationResponse | undefined>;
+    public readonly clientCertificateAuthentication!: pulumi.Output<types.outputs.ClientCertificateAuthenticationResponse | undefined>;
     /**
      * Description for the Client resource.
      */
@@ -68,7 +68,7 @@ export class Client extends pulumi.CustomResource {
     /**
      * The system metadata relating to the Client resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.eventgrid.v20230601preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Type of the resource.
      */
@@ -136,7 +136,7 @@ export interface ClientArgs {
     /**
      * Authentication information for the client.
      */
-    authentication?: pulumi.Input<types.inputs.eventgrid.v20230601preview.ClientAuthenticationArgs>;
+    authentication?: pulumi.Input<types.inputs.ClientAuthenticationArgs>;
     /**
      * The name presented by the client for authentication. The default value is the name of the resource.
      */
@@ -144,7 +144,7 @@ export interface ClientArgs {
     /**
      * The client certificate authentication information.
      */
-    clientCertificateAuthentication?: pulumi.Input<types.inputs.eventgrid.v20230601preview.ClientCertificateAuthenticationArgs>;
+    clientCertificateAuthentication?: pulumi.Input<types.inputs.ClientCertificateAuthenticationArgs>;
     /**
      * The client name.
      */
@@ -164,5 +164,5 @@ export interface ClientArgs {
     /**
      * Indicates if the client is enabled or not. Default value is Enabled.
      */
-    state?: pulumi.Input<string | types.enums.v20230601preview.ClientState>;
+    state?: pulumi.Input<string | types.enums.ClientState>;
 }

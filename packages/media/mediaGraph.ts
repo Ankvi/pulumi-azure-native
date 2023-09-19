@@ -51,11 +51,11 @@ export class MediaGraph extends pulumi.CustomResource {
     /**
      * Media Graph sinks.
      */
-    public readonly sinks!: pulumi.Output<types.outputs.media.MediaGraphAssetSinkResponse[]>;
+    public readonly sinks!: pulumi.Output<types.outputs.MediaGraphAssetSinkResponse[]>;
     /**
      * Media Graph sources.
      */
-    public readonly sources!: pulumi.Output<types.outputs.media.MediaGraphRtspSourceResponse[]>;
+    public readonly sources!: pulumi.Output<types.outputs.MediaGraphRtspSourceResponse[]>;
     /**
      * Media Graph state which indicates the resource allocation status for running the media graph pipeline.
      */
@@ -139,9 +139,9 @@ export interface MediaGraphArgs {
     /**
      * Media Graph sinks.
      */
-    sinks: pulumi.Input<pulumi.Input<types.inputs.media.MediaGraphAssetSinkArgs>[]>;
+    sinks: pulumi.Input<pulumi.Input<types.inputs.MediaGraphAssetSinkArgs>[]>;
     /**
      * Media Graph sources.
      */
-    sources: pulumi.Input<pulumi.Input<types.inputs.media.MediaGraphRtspSourceArgs>[]>;
+    sources: pulumi.Input<pulumi.Input<types.inputs.MediaGraphRtspSourceArgs>[]>;
 }

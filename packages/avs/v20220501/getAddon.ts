@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An addon resource
  */
@@ -44,7 +44,7 @@ export interface GetAddonResult {
     /**
      * The properties of an addon resource
      */
-    readonly properties: types.outputs.avs.v20220501.AddonArcPropertiesResponse | types.outputs.avs.v20220501.AddonHcxPropertiesResponse | types.outputs.avs.v20220501.AddonSrmPropertiesResponse | types.outputs.avs.v20220501.AddonVrPropertiesResponse;
+    readonly properties: types.outputs.AddonArcPropertiesResponse | types.outputs.AddonHcxPropertiesResponse | types.outputs.AddonSrmPropertiesResponse | types.outputs.AddonVrPropertiesResponse;
     /**
      * Resource type.
      */

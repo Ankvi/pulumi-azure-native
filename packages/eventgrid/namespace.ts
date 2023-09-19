@@ -35,11 +35,11 @@ export class Namespace extends pulumi.CustomResource {
     /**
      * Identity information for the Namespace resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.eventgrid.IdentityInfoResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityInfoResponse | undefined>;
     /**
      * This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled.
      */
-    public readonly inboundIpRules!: pulumi.Output<types.outputs.eventgrid.InboundIpRuleResponse[] | undefined>;
+    public readonly inboundIpRules!: pulumi.Output<types.outputs.InboundIpRuleResponse[] | undefined>;
     /**
      * Allows the user to specify if the service is zone-redundant. This is a required property and user needs to specify this value explicitly.
      * Once specified, this property cannot be updated.
@@ -57,7 +57,7 @@ export class Namespace extends pulumi.CustomResource {
      * Name of the resource.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
-    public readonly privateEndpointConnections!: pulumi.Output<types.outputs.eventgrid.PrivateEndpointConnectionResponse[] | undefined>;
+    public readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[] | undefined>;
     /**
      * Provisioning state of the namespace resource.
      */
@@ -70,11 +70,11 @@ export class Namespace extends pulumi.CustomResource {
     /**
      * Represents available Sku pricing tiers.
      */
-    public readonly sku!: pulumi.Output<types.outputs.eventgrid.NamespaceSkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.NamespaceSkuResponse | undefined>;
     /**
      * The system metadata relating to the namespace resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.eventgrid.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Tags of the resource.
      */
@@ -82,11 +82,11 @@ export class Namespace extends pulumi.CustomResource {
     /**
      * Topic spaces configuration information for the namespace resource
      */
-    public readonly topicSpacesConfiguration!: pulumi.Output<types.outputs.eventgrid.TopicSpacesConfigurationResponse | undefined>;
+    public readonly topicSpacesConfiguration!: pulumi.Output<types.outputs.TopicSpacesConfigurationResponse | undefined>;
     /**
      * Topics configuration information for the namespace resource
      */
-    public /*out*/ readonly topicsConfiguration!: pulumi.Output<types.outputs.eventgrid.TopicsConfigurationResponse | undefined>;
+    public /*out*/ readonly topicsConfiguration!: pulumi.Output<types.outputs.TopicsConfigurationResponse | undefined>;
     /**
      * Type of the resource.
      */
@@ -117,7 +117,7 @@ export class Namespace extends pulumi.CustomResource {
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["sku"] = args ? args.sku : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["topicSpacesConfiguration"] = args ? (args.topicSpacesConfiguration ? pulumi.output(args.topicSpacesConfiguration).apply(types.inputs.eventgrid.topicSpacesConfigurationArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["topicSpacesConfiguration"] = args ? (args.topicSpacesConfiguration ? pulumi.output(args.topicSpacesConfiguration).apply(types.inputs.topicSpacesConfigurationArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
@@ -154,11 +154,11 @@ export interface NamespaceArgs {
     /**
      * Identity information for the Namespace resource.
      */
-    identity?: pulumi.Input<types.inputs.eventgrid.IdentityInfoArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityInfoArgs>;
     /**
      * This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled.
      */
-    inboundIpRules?: pulumi.Input<pulumi.Input<types.inputs.eventgrid.InboundIpRuleArgs>[]>;
+    inboundIpRules?: pulumi.Input<pulumi.Input<types.inputs.InboundIpRuleArgs>[]>;
     /**
      * Allows the user to specify if the service is zone-redundant. This is a required property and user needs to specify this value explicitly.
      * Once specified, this property cannot be updated.
@@ -176,7 +176,7 @@ export interface NamespaceArgs {
      * Name of the namespace.
      */
     namespaceName?: pulumi.Input<string>;
-    privateEndpointConnections?: pulumi.Input<pulumi.Input<types.inputs.eventgrid.PrivateEndpointConnectionArgs>[]>;
+    privateEndpointConnections?: pulumi.Input<pulumi.Input<types.inputs.PrivateEndpointConnectionArgs>[]>;
     /**
      * This determines if traffic is allowed over public network. By default it is enabled.
      * You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.PubSub.NamespaceProperties.InboundIpRules" />
@@ -189,7 +189,7 @@ export interface NamespaceArgs {
     /**
      * Represents available Sku pricing tiers.
      */
-    sku?: pulumi.Input<types.inputs.eventgrid.NamespaceSkuArgs>;
+    sku?: pulumi.Input<types.inputs.NamespaceSkuArgs>;
     /**
      * Tags of the resource.
      */
@@ -197,5 +197,5 @@ export interface NamespaceArgs {
     /**
      * Topic spaces configuration information for the namespace resource
      */
-    topicSpacesConfiguration?: pulumi.Input<types.inputs.eventgrid.TopicSpacesConfigurationArgs>;
+    topicSpacesConfiguration?: pulumi.Input<types.inputs.TopicSpacesConfigurationArgs>;
 }

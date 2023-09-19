@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The bandwidth schedule details.
  */
@@ -54,7 +54,7 @@ export class BandwidthSchedule extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of BandwidthSchedule
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.databoxedge.v20220301.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The hierarchical type of the object.
      */
@@ -121,7 +121,7 @@ export interface BandwidthScheduleArgs {
     /**
      * The days of the week when this schedule is applicable.
      */
-    days: pulumi.Input<pulumi.Input<string | types.enums.v20220301.DayOfWeek>[]>;
+    days: pulumi.Input<pulumi.Input<string | types.enums.DayOfWeek>[]>;
     /**
      * The device name.
      */

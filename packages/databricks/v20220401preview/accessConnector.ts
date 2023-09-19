@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Information about azure databricks accessConnector.
  */
@@ -34,7 +34,7 @@ export class AccessConnector extends pulumi.CustomResource {
     /**
      * Identity for the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.databricks.v20220401preview.IdentityDataResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityDataResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -46,11 +46,11 @@ export class AccessConnector extends pulumi.CustomResource {
     /**
      * Azure Databricks accessConnector properties
      */
-    public /*out*/ readonly properties!: pulumi.Output<types.outputs.databricks.v20220401preview.AccessConnectorPropertiesResponse>;
+    public /*out*/ readonly properties!: pulumi.Output<types.outputs.AccessConnectorPropertiesResponse>;
     /**
      * The system metadata relating to this resource
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.databricks.v20220401preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -110,7 +110,7 @@ export interface AccessConnectorArgs {
     /**
      * Identity for the resource.
      */
-    identity?: pulumi.Input<types.inputs.databricks.v20220401preview.IdentityDataArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityDataArgs>;
     /**
      * The geo-location where the resource lives
      */

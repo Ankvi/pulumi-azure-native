@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the integration account callback URL.
  */
@@ -23,7 +23,7 @@ export interface ListIntegrationAccountCallbackUrlArgs {
     /**
      * The key type.
      */
-    keyType?: string | types.enums.v20190501.KeyType;
+    keyType?: string | types.enums.KeyType;
     /**
      * The expiry time.
      */
@@ -58,7 +58,7 @@ export interface ListIntegrationAccountCallbackUrlOutputArgs {
     /**
      * The key type.
      */
-    keyType?: pulumi.Input<string | types.enums.v20190501.KeyType>;
+    keyType?: pulumi.Input<string | types.enums.KeyType>;
     /**
      * The expiry time.
      */

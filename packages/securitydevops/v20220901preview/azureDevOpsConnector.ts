@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 export class AzureDevOpsConnector extends pulumi.CustomResource {
     /**
      * Get an existing AzureDevOpsConnector resource's state with the given name, ID, and optional extra
@@ -36,11 +36,11 @@ export class AzureDevOpsConnector extends pulumi.CustomResource {
      * The name of the resource
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
-    public readonly properties!: pulumi.Output<types.outputs.securitydevops.v20220901preview.AzureDevOpsConnectorPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.AzureDevOpsConnectorPropertiesResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.securitydevops.v20220901preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -99,7 +99,7 @@ export interface AzureDevOpsConnectorArgs {
      * The geo-location where the resource lives
      */
     location?: pulumi.Input<string>;
-    properties?: pulumi.Input<types.inputs.securitydevops.v20220901preview.AzureDevOpsConnectorPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.AzureDevOpsConnectorPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

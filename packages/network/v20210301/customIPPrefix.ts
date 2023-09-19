@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Custom IP prefix resource.
  */
@@ -38,7 +38,7 @@ export class CustomIPPrefix extends pulumi.CustomResource {
     /**
      * The list of all Children for IPv6 /48 CustomIpPrefix.
      */
-    public /*out*/ readonly childCustomIpPrefixes!: pulumi.Output<types.outputs.network.v20210301.CustomIpPrefixResponse[]>;
+    public /*out*/ readonly childCustomIpPrefixes!: pulumi.Output<types.outputs.CustomIpPrefixResponse[]>;
     /**
      * The prefix range in CIDR notation. Should include the start address and the prefix length.
      */
@@ -50,7 +50,7 @@ export class CustomIPPrefix extends pulumi.CustomResource {
     /**
      * The Parent CustomIpPrefix for IPv6 /64 CustomIpPrefix.
      */
-    public readonly customIpPrefixParent!: pulumi.Output<types.outputs.network.v20210301.CustomIpPrefixResponse | undefined>;
+    public readonly customIpPrefixParent!: pulumi.Output<types.outputs.CustomIpPrefixResponse | undefined>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -58,7 +58,7 @@ export class CustomIPPrefix extends pulumi.CustomResource {
     /**
      * The extended location of the custom IP prefix.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.network.v20210301.ExtendedLocationResponse | undefined>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
     /**
      * The reason why resource is in failed state.
      */
@@ -78,7 +78,7 @@ export class CustomIPPrefix extends pulumi.CustomResource {
     /**
      * The list of all referenced PublicIpPrefixes.
      */
-    public /*out*/ readonly publicIpPrefixes!: pulumi.Output<types.outputs.network.v20210301.SubResourceResponse[]>;
+    public /*out*/ readonly publicIpPrefixes!: pulumi.Output<types.outputs.SubResourceResponse[]>;
     /**
      * The resource GUID property of the custom IP prefix resource.
      */
@@ -175,7 +175,7 @@ export interface CustomIPPrefixArgs {
     /**
      * The commissioned state of the Custom IP Prefix.
      */
-    commissionedState?: pulumi.Input<string | types.enums.v20210301.CommissionedState>;
+    commissionedState?: pulumi.Input<string | types.enums.CommissionedState>;
     /**
      * The name of the custom IP prefix.
      */
@@ -183,11 +183,11 @@ export interface CustomIPPrefixArgs {
     /**
      * The Parent CustomIpPrefix for IPv6 /64 CustomIpPrefix.
      */
-    customIpPrefixParent?: pulumi.Input<types.inputs.network.v20210301.CustomIpPrefixArgs>;
+    customIpPrefixParent?: pulumi.Input<types.inputs.CustomIpPrefixArgs>;
     /**
      * The extended location of the custom IP prefix.
      */
-    extendedLocation?: pulumi.Input<types.inputs.network.v20210301.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * Resource ID.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Dapr Component.
  */
@@ -52,7 +52,7 @@ export interface GetDaprComponentResult {
     /**
      * Component metadata
      */
-    readonly metadata?: types.outputs.app.v20230501.DaprMetadataResponse[];
+    readonly metadata?: types.outputs.DaprMetadataResponse[];
     /**
      * The name of the resource
      */
@@ -68,11 +68,11 @@ export interface GetDaprComponentResult {
     /**
      * Collection of secrets used by a Dapr component
      */
-    readonly secrets?: types.outputs.app.v20230501.SecretResponse[];
+    readonly secrets?: types.outputs.SecretResponse[];
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.app.v20230501.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

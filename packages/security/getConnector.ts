@@ -27,11 +27,11 @@ export interface GetConnectorResult {
     /**
      * Settings for authentication management, these settings are relevant only for the cloud connector.
      */
-    readonly authenticationDetails?: types.outputs.security.AwAssumeRoleAuthenticationDetailsPropertiesResponse | types.outputs.security.AwsCredsAuthenticationDetailsPropertiesResponse | types.outputs.security.GcpCredentialsDetailsPropertiesResponse;
+    readonly authenticationDetails?: types.outputs.AwAssumeRoleAuthenticationDetailsPropertiesResponse | types.outputs.AwsCredsAuthenticationDetailsPropertiesResponse | types.outputs.GcpCredentialsDetailsPropertiesResponse;
     /**
      * Settings for hybrid compute management. These settings are relevant only for Arc autoProvision (Hybrid Compute).
      */
-    readonly hybridComputeSettings?: types.outputs.security.HybridComputeSettingsPropertiesResponse;
+    readonly hybridComputeSettings?: types.outputs.HybridComputeSettingsPropertiesResponse;
     /**
      * Resource Id
      */

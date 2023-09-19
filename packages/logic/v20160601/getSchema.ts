@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets an integration account schema.
  */
@@ -44,7 +44,7 @@ export interface GetSchemaResult {
     /**
      * The content link.
      */
-    readonly contentLink: types.outputs.logic.v20160601.ContentLinkResponse;
+    readonly contentLink: types.outputs.ContentLinkResponse;
     /**
      * The content type.
      */

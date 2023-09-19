@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the alert rule.
  */
@@ -73,7 +73,7 @@ export interface GetFusionAlertRuleResult {
     /**
      * Configuration to exclude scenarios in fusion detection.
      */
-    readonly scenarioExclusionPatterns?: types.outputs.securityinsights.v20230801preview.FusionScenarioExclusionPatternResponse[];
+    readonly scenarioExclusionPatterns?: types.outputs.FusionScenarioExclusionPatternResponse[];
     /**
      * The severity for alerts created by this alert rule.
      */
@@ -81,11 +81,11 @@ export interface GetFusionAlertRuleResult {
     /**
      * Configuration for all supported source signals in fusion detection.
      */
-    readonly sourceSettings?: types.outputs.securityinsights.v20230801preview.FusionSourceSettingsResponse[];
+    readonly sourceSettings?: types.outputs.FusionSourceSettingsResponse[];
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.securityinsights.v20230801preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The tactics of the alert rule
      */

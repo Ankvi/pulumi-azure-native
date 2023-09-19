@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An object that represents a machine learning workspace.
  */
@@ -54,7 +54,7 @@ export class Workspace extends pulumi.CustomResource {
     /**
      * The encryption settings of Azure ML workspace.
      */
-    public readonly encryption!: pulumi.Output<types.outputs.machinelearningservices.v20230401.EncryptionPropertyResponse | undefined>;
+    public readonly encryption!: pulumi.Output<types.outputs.EncryptionPropertyResponse | undefined>;
     /**
      * The friendly name for this workspace. This name in mutable
      */
@@ -66,7 +66,7 @@ export class Workspace extends pulumi.CustomResource {
     /**
      * The identity of the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.machinelearningservices.v20230401.ManagedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * The compute name for image build
      */
@@ -90,7 +90,7 @@ export class Workspace extends pulumi.CustomResource {
     /**
      * The notebook info of Azure ML workspace.
      */
-    public /*out*/ readonly notebookInfo!: pulumi.Output<types.outputs.machinelearningservices.v20230401.NotebookResourceInfoResponse>;
+    public /*out*/ readonly notebookInfo!: pulumi.Output<types.outputs.NotebookResourceInfoResponse>;
     /**
      * The user assigned identity resource id that represents the workspace identity.
      */
@@ -98,7 +98,7 @@ export class Workspace extends pulumi.CustomResource {
     /**
      * The list of private endpoint connections in the workspace.
      */
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.machinelearningservices.v20230401.PrivateEndpointConnectionResponse[]>;
+    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[]>;
     /**
      * Count of private connections in the workspace
      */
@@ -114,7 +114,7 @@ export class Workspace extends pulumi.CustomResource {
     /**
      * The service managed resource settings.
      */
-    public readonly serviceManagedResourcesSettings!: pulumi.Output<types.outputs.machinelearningservices.v20230401.ServiceManagedResourcesSettingsResponse | undefined>;
+    public readonly serviceManagedResourcesSettings!: pulumi.Output<types.outputs.ServiceManagedResourcesSettingsResponse | undefined>;
     /**
      * The name of the managed resource group created by workspace RP in customer subscription if the workspace is CMK workspace
      */
@@ -122,11 +122,11 @@ export class Workspace extends pulumi.CustomResource {
     /**
      * The list of shared private link resources in this workspace.
      */
-    public readonly sharedPrivateLinkResources!: pulumi.Output<types.outputs.machinelearningservices.v20230401.SharedPrivateLinkResourceResponse[] | undefined>;
+    public readonly sharedPrivateLinkResources!: pulumi.Output<types.outputs.SharedPrivateLinkResourceResponse[] | undefined>;
     /**
      * The sku of the workspace.
      */
-    public readonly sku!: pulumi.Output<types.outputs.machinelearningservices.v20230401.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * ARM id of the storage account associated with this workspace. This cannot be changed once the workspace has been created
      */
@@ -138,7 +138,7 @@ export class Workspace extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.machinelearningservices.v20230401.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Contains resource tags defined as key/value pairs.
      */
@@ -276,7 +276,7 @@ export interface WorkspaceArgs {
     /**
      * The encryption settings of Azure ML workspace.
      */
-    encryption?: pulumi.Input<types.inputs.machinelearningservices.v20230401.EncryptionPropertyArgs>;
+    encryption?: pulumi.Input<types.inputs.EncryptionPropertyArgs>;
     /**
      * The friendly name for this workspace. This name in mutable
      */
@@ -288,7 +288,7 @@ export interface WorkspaceArgs {
     /**
      * The identity of the resource.
      */
-    identity?: pulumi.Input<types.inputs.machinelearningservices.v20230401.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
      * The compute name for image build
      */
@@ -308,7 +308,7 @@ export interface WorkspaceArgs {
     /**
      * Whether requests from Public Network are allowed.
      */
-    publicNetworkAccess?: pulumi.Input<string | types.enums.v20230401.PublicNetworkAccess>;
+    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -316,15 +316,15 @@ export interface WorkspaceArgs {
     /**
      * The service managed resource settings.
      */
-    serviceManagedResourcesSettings?: pulumi.Input<types.inputs.machinelearningservices.v20230401.ServiceManagedResourcesSettingsArgs>;
+    serviceManagedResourcesSettings?: pulumi.Input<types.inputs.ServiceManagedResourcesSettingsArgs>;
     /**
      * The list of shared private link resources in this workspace.
      */
-    sharedPrivateLinkResources?: pulumi.Input<pulumi.Input<types.inputs.machinelearningservices.v20230401.SharedPrivateLinkResourceArgs>[]>;
+    sharedPrivateLinkResources?: pulumi.Input<pulumi.Input<types.inputs.SharedPrivateLinkResourceArgs>[]>;
     /**
      * The sku of the workspace.
      */
-    sku?: pulumi.Input<types.inputs.machinelearningservices.v20230401.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * ARM id of the storage account associated with this workspace. This cannot be changed once the workspace has been created
      */

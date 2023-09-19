@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents an instance of a Dedicated Capacity resource.
  */
@@ -34,7 +34,7 @@ export class CapacityDetails extends pulumi.CustomResource {
     /**
      * A collection of Dedicated capacity administrators
      */
-    public readonly administration!: pulumi.Output<types.outputs.powerbidedicated.v20210101.DedicatedCapacityAdministratorsResponse | undefined>;
+    public readonly administration!: pulumi.Output<types.outputs.DedicatedCapacityAdministratorsResponse | undefined>;
     /**
      * Capacity name
      */
@@ -58,7 +58,7 @@ export class CapacityDetails extends pulumi.CustomResource {
     /**
      * The SKU of the PowerBI Dedicated capacity resource.
      */
-    public readonly sku!: pulumi.Output<types.outputs.powerbidedicated.v20210101.CapacitySkuResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.CapacitySkuResponse>;
     /**
      * The current state of PowerBI Dedicated resource. The state is to indicate more states outside of resource provisioning.
      */
@@ -66,7 +66,7 @@ export class CapacityDetails extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public readonly systemData!: pulumi.Output<types.outputs.powerbidedicated.v20210101.SystemDataResponse | undefined>;
+    public readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse | undefined>;
     /**
      * Key-value pairs of additional resource provisioning properties.
      */
@@ -139,7 +139,7 @@ export interface CapacityDetailsArgs {
     /**
      * A collection of Dedicated capacity administrators
      */
-    administration?: pulumi.Input<types.inputs.powerbidedicated.v20210101.DedicatedCapacityAdministratorsArgs>;
+    administration?: pulumi.Input<types.inputs.DedicatedCapacityAdministratorsArgs>;
     /**
      * The name of the Dedicated capacity. It must be a minimum of 3 characters, and a maximum of 63.
      */
@@ -151,7 +151,7 @@ export interface CapacityDetailsArgs {
     /**
      * Specifies the generation of the Power BI Embedded capacity. If no value is specified, the default value 'Gen2' is used. [Learn More](https://docs.microsoft.com/power-bi/developer/embedded/power-bi-embedded-generation-2)
      */
-    mode?: pulumi.Input<string | types.enums.v20210101.Mode>;
+    mode?: pulumi.Input<string | types.enums.Mode>;
     /**
      * The name of the Azure Resource group of which a given PowerBIDedicated capacity is part. This name must be at least 1 character in length, and no more than 90.
      */
@@ -159,11 +159,11 @@ export interface CapacityDetailsArgs {
     /**
      * The SKU of the PowerBI Dedicated capacity resource.
      */
-    sku: pulumi.Input<types.inputs.powerbidedicated.v20210101.CapacitySkuArgs>;
+    sku: pulumi.Input<types.inputs.CapacitySkuArgs>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    systemData?: pulumi.Input<types.inputs.powerbidedicated.v20210101.SystemDataArgs>;
+    systemData?: pulumi.Input<types.inputs.SystemDataArgs>;
     /**
      * Key-value pairs of additional resource provisioning properties.
      */

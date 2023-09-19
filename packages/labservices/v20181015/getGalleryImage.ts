@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get gallery image
  */
@@ -61,7 +61,7 @@ export interface GetGalleryImageResult {
     /**
      * The image reference of the gallery image.
      */
-    readonly imageReference: types.outputs.labservices.v20181015.GalleryImageReferenceResponse;
+    readonly imageReference: types.outputs.GalleryImageReferenceResponse;
     /**
      * Indicates whether this gallery image is enabled.
      */
@@ -77,7 +77,7 @@ export interface GetGalleryImageResult {
     /**
      * The details of the latest operation. ex: status, error
      */
-    readonly latestOperationResult: types.outputs.labservices.v20181015.LatestOperationResultResponse;
+    readonly latestOperationResult: types.outputs.LatestOperationResultResponse;
     /**
      * The location of the resource.
      */

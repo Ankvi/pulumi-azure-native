@@ -39,11 +39,11 @@ export class ApiDiagnostic extends pulumi.CustomResource {
     /**
      * Diagnostic settings for incoming/outgoing HTTP messages to the Backend
      */
-    public readonly backend!: pulumi.Output<types.outputs.apimanagement.PipelineDiagnosticSettingsResponse | undefined>;
+    public readonly backend!: pulumi.Output<types.outputs.PipelineDiagnosticSettingsResponse | undefined>;
     /**
      * Diagnostic settings for incoming/outgoing HTTP messages to the Gateway.
      */
-    public readonly frontend!: pulumi.Output<types.outputs.apimanagement.PipelineDiagnosticSettingsResponse | undefined>;
+    public readonly frontend!: pulumi.Output<types.outputs.PipelineDiagnosticSettingsResponse | undefined>;
     /**
      * Sets correlation protocol to use for Application Insights diagnostics.
      */
@@ -71,7 +71,7 @@ export class ApiDiagnostic extends pulumi.CustomResource {
     /**
      * Sampling settings for Diagnostic.
      */
-    public readonly sampling!: pulumi.Output<types.outputs.apimanagement.SamplingSettingsResponse | undefined>;
+    public readonly sampling!: pulumi.Output<types.outputs.SamplingSettingsResponse | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -156,7 +156,7 @@ export interface ApiDiagnosticArgs {
     /**
      * Diagnostic settings for incoming/outgoing HTTP messages to the Backend
      */
-    backend?: pulumi.Input<types.inputs.apimanagement.PipelineDiagnosticSettingsArgs>;
+    backend?: pulumi.Input<types.inputs.PipelineDiagnosticSettingsArgs>;
     /**
      * Diagnostic identifier. Must be unique in the current API Management service instance.
      */
@@ -164,7 +164,7 @@ export interface ApiDiagnosticArgs {
     /**
      * Diagnostic settings for incoming/outgoing HTTP messages to the Gateway.
      */
-    frontend?: pulumi.Input<types.inputs.apimanagement.PipelineDiagnosticSettingsArgs>;
+    frontend?: pulumi.Input<types.inputs.PipelineDiagnosticSettingsArgs>;
     /**
      * Sets correlation protocol to use for Application Insights diagnostics.
      */
@@ -192,7 +192,7 @@ export interface ApiDiagnosticArgs {
     /**
      * Sampling settings for Diagnostic.
      */
-    sampling?: pulumi.Input<types.inputs.apimanagement.SamplingSettingsArgs>;
+    sampling?: pulumi.Input<types.inputs.SamplingSettingsArgs>;
     /**
      * The name of the API Management service.
      */

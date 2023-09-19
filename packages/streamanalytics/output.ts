@@ -35,11 +35,11 @@ export class Output extends pulumi.CustomResource {
     /**
      * Describes the data source that output will be written to. Required on PUT (CreateOrReplace) requests.
      */
-    public readonly datasource!: pulumi.Output<types.outputs.streamanalytics.AzureDataLakeStoreOutputDataSourceResponse | types.outputs.streamanalytics.AzureFunctionOutputDataSourceResponse | types.outputs.streamanalytics.AzureSqlDatabaseOutputDataSourceResponse | types.outputs.streamanalytics.AzureSynapseOutputDataSourceResponse | types.outputs.streamanalytics.AzureTableOutputDataSourceResponse | types.outputs.streamanalytics.BlobOutputDataSourceResponse | types.outputs.streamanalytics.DocumentDbOutputDataSourceResponse | types.outputs.streamanalytics.EventHubOutputDataSourceResponse | types.outputs.streamanalytics.EventHubV2OutputDataSourceResponse | types.outputs.streamanalytics.GatewayMessageBusOutputDataSourceResponse | types.outputs.streamanalytics.PowerBIOutputDataSourceResponse | types.outputs.streamanalytics.ServiceBusQueueOutputDataSourceResponse | types.outputs.streamanalytics.ServiceBusTopicOutputDataSourceResponse | undefined>;
+    public readonly datasource!: pulumi.Output<types.outputs.AzureDataLakeStoreOutputDataSourceResponse | types.outputs.AzureFunctionOutputDataSourceResponse | types.outputs.AzureSqlDatabaseOutputDataSourceResponse | types.outputs.AzureSynapseOutputDataSourceResponse | types.outputs.AzureTableOutputDataSourceResponse | types.outputs.BlobOutputDataSourceResponse | types.outputs.DocumentDbOutputDataSourceResponse | types.outputs.EventHubOutputDataSourceResponse | types.outputs.EventHubV2OutputDataSourceResponse | types.outputs.GatewayMessageBusOutputDataSourceResponse | types.outputs.PowerBIOutputDataSourceResponse | types.outputs.ServiceBusQueueOutputDataSourceResponse | types.outputs.ServiceBusTopicOutputDataSourceResponse | undefined>;
     /**
      * Describes conditions applicable to the Input, Output, or the job overall, that warrant customer attention.
      */
-    public /*out*/ readonly diagnostics!: pulumi.Output<types.outputs.streamanalytics.DiagnosticsResponse>;
+    public /*out*/ readonly diagnostics!: pulumi.Output<types.outputs.DiagnosticsResponse>;
     /**
      * The current entity tag for the output. This is an opaque string. You can use it to detect whether the resource has changed between requests. You can also use it in the If-Match or If-None-Match headers for write operations for optimistic concurrency.
      */
@@ -51,7 +51,7 @@ export class Output extends pulumi.CustomResource {
     /**
      * Describes how data from an input is serialized or how data is serialized when written to an output. Required on PUT (CreateOrReplace) requests.
      */
-    public readonly serialization!: pulumi.Output<types.outputs.streamanalytics.AvroSerializationResponse | types.outputs.streamanalytics.CsvSerializationResponse | types.outputs.streamanalytics.JsonSerializationResponse | types.outputs.streamanalytics.ParquetSerializationResponse | undefined>;
+    public readonly serialization!: pulumi.Output<types.outputs.AvroSerializationResponse | types.outputs.CsvSerializationResponse | types.outputs.JsonSerializationResponse | types.outputs.ParquetSerializationResponse | undefined>;
     /**
      * The size window to constrain a Stream Analytics output to.
      */
@@ -117,7 +117,7 @@ export interface OutputArgs {
     /**
      * Describes the data source that output will be written to. Required on PUT (CreateOrReplace) requests.
      */
-    datasource?: pulumi.Input<types.inputs.streamanalytics.AzureDataLakeStoreOutputDataSourceArgs | types.inputs.streamanalytics.AzureFunctionOutputDataSourceArgs | types.inputs.streamanalytics.AzureSqlDatabaseOutputDataSourceArgs | types.inputs.streamanalytics.AzureSynapseOutputDataSourceArgs | types.inputs.streamanalytics.AzureTableOutputDataSourceArgs | types.inputs.streamanalytics.BlobOutputDataSourceArgs | types.inputs.streamanalytics.DocumentDbOutputDataSourceArgs | types.inputs.streamanalytics.EventHubOutputDataSourceArgs | types.inputs.streamanalytics.EventHubV2OutputDataSourceArgs | types.inputs.streamanalytics.GatewayMessageBusOutputDataSourceArgs | types.inputs.streamanalytics.PowerBIOutputDataSourceArgs | types.inputs.streamanalytics.ServiceBusQueueOutputDataSourceArgs | types.inputs.streamanalytics.ServiceBusTopicOutputDataSourceArgs>;
+    datasource?: pulumi.Input<types.inputs.AzureDataLakeStoreOutputDataSourceArgs | types.inputs.AzureFunctionOutputDataSourceArgs | types.inputs.AzureSqlDatabaseOutputDataSourceArgs | types.inputs.AzureSynapseOutputDataSourceArgs | types.inputs.AzureTableOutputDataSourceArgs | types.inputs.BlobOutputDataSourceArgs | types.inputs.DocumentDbOutputDataSourceArgs | types.inputs.EventHubOutputDataSourceArgs | types.inputs.EventHubV2OutputDataSourceArgs | types.inputs.GatewayMessageBusOutputDataSourceArgs | types.inputs.PowerBIOutputDataSourceArgs | types.inputs.ServiceBusQueueOutputDataSourceArgs | types.inputs.ServiceBusTopicOutputDataSourceArgs>;
     /**
      * The name of the streaming job.
      */
@@ -137,7 +137,7 @@ export interface OutputArgs {
     /**
      * Describes how data from an input is serialized or how data is serialized when written to an output. Required on PUT (CreateOrReplace) requests.
      */
-    serialization?: pulumi.Input<types.inputs.streamanalytics.AvroSerializationArgs | types.inputs.streamanalytics.CsvSerializationArgs | types.inputs.streamanalytics.JsonSerializationArgs | types.inputs.streamanalytics.ParquetSerializationArgs>;
+    serialization?: pulumi.Input<types.inputs.AvroSerializationArgs | types.inputs.CsvSerializationArgs | types.inputs.JsonSerializationArgs | types.inputs.ParquetSerializationArgs>;
     /**
      * The size window to constrain a Stream Analytics output to.
      */

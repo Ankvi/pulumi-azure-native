@@ -39,7 +39,7 @@ export class LinkedWorkspace extends pulumi.CustomResource {
     /**
      * LinkedWorkspace specific properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.machinelearningservices.LinkedWorkspacePropsResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.LinkedWorkspacePropsResponse>;
     /**
      * Resource type of linked workspace.
      */
@@ -95,7 +95,7 @@ export interface LinkedWorkspaceArgs {
     /**
      * LinkedWorkspace specific properties.
      */
-    properties?: pulumi.Input<types.inputs.machinelearningservices.LinkedWorkspacePropsArgs>;
+    properties?: pulumi.Input<types.inputs.LinkedWorkspacePropsArgs>;
     /**
      * Name of the resource group in which workspace is located.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a specific private endpoint connection for Power BI by private endpoint name.
  */
@@ -41,11 +41,11 @@ export interface GetPrivateEndpointConnectionResult {
     /**
      * Specifies the private endpoint.
      */
-    readonly privateEndpoint?: types.outputs.powerbi.v20200601.PrivateEndpointResponse;
+    readonly privateEndpoint?: types.outputs.PrivateEndpointResponse;
     /**
      * Specifies the connection state.
      */
-    readonly privateLinkServiceConnectionState?: types.outputs.powerbi.v20200601.ConnectionStateResponse;
+    readonly privateLinkServiceConnectionState?: types.outputs.ConnectionStateResponse;
     /**
      * Provisioning state of the Private Endpoint Connection.
      */
@@ -53,7 +53,7 @@ export interface GetPrivateEndpointConnectionResult {
     /**
      * The system meta data relating to this resource.
      */
-    readonly systemData: types.outputs.powerbi.v20200601.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Specifies the type of the resource.
      */

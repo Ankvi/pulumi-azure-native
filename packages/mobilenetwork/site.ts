@@ -43,7 +43,7 @@ export class Site extends pulumi.CustomResource {
     /**
      * An array of IDs of the network functions deployed in the site. Deleting the site will delete any network functions that are deployed in the site.
      */
-    public /*out*/ readonly networkFunctions!: pulumi.Output<types.outputs.mobilenetwork.SubResourceResponse[]>;
+    public /*out*/ readonly networkFunctions!: pulumi.Output<types.outputs.SubResourceResponse[]>;
     /**
      * The provisioning state of the site resource.
      */
@@ -51,7 +51,7 @@ export class Site extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.mobilenetwork.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */

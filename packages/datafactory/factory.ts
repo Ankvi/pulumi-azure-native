@@ -43,15 +43,15 @@ export class Factory extends pulumi.CustomResource {
     /**
      * Properties to enable Customer Managed Key for the factory.
      */
-    public readonly encryption!: pulumi.Output<types.outputs.datafactory.EncryptionConfigurationResponse | undefined>;
+    public readonly encryption!: pulumi.Output<types.outputs.EncryptionConfigurationResponse | undefined>;
     /**
      * List of parameters for factory.
      */
-    public readonly globalParameters!: pulumi.Output<{[key: string]: types.outputs.datafactory.GlobalParameterSpecificationResponse} | undefined>;
+    public readonly globalParameters!: pulumi.Output<{[key: string]: types.outputs.GlobalParameterSpecificationResponse} | undefined>;
     /**
      * Managed service identity of the factory.
      */
-    public readonly identity!: pulumi.Output<types.outputs.datafactory.FactoryIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.FactoryIdentityResponse | undefined>;
     /**
      * The resource location.
      */
@@ -71,11 +71,11 @@ export class Factory extends pulumi.CustomResource {
     /**
      * Purview information of the factory.
      */
-    public readonly purviewConfiguration!: pulumi.Output<types.outputs.datafactory.PurviewConfigurationResponse | undefined>;
+    public readonly purviewConfiguration!: pulumi.Output<types.outputs.PurviewConfigurationResponse | undefined>;
     /**
      * Git repo information of the factory.
      */
-    public readonly repoConfiguration!: pulumi.Output<types.outputs.datafactory.FactoryGitHubConfigurationResponse | types.outputs.datafactory.FactoryVSTSConfigurationResponse | undefined>;
+    public readonly repoConfiguration!: pulumi.Output<types.outputs.FactoryGitHubConfigurationResponse | types.outputs.FactoryVSTSConfigurationResponse | undefined>;
     /**
      * The resource tags.
      */
@@ -149,7 +149,7 @@ export interface FactoryArgs {
     /**
      * Properties to enable Customer Managed Key for the factory.
      */
-    encryption?: pulumi.Input<types.inputs.datafactory.EncryptionConfigurationArgs>;
+    encryption?: pulumi.Input<types.inputs.EncryptionConfigurationArgs>;
     /**
      * The factory name.
      */
@@ -157,11 +157,11 @@ export interface FactoryArgs {
     /**
      * List of parameters for factory.
      */
-    globalParameters?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.datafactory.GlobalParameterSpecificationArgs>}>;
+    globalParameters?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.GlobalParameterSpecificationArgs>}>;
     /**
      * Managed service identity of the factory.
      */
-    identity?: pulumi.Input<types.inputs.datafactory.FactoryIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.FactoryIdentityArgs>;
     /**
      * The resource location.
      */
@@ -173,11 +173,11 @@ export interface FactoryArgs {
     /**
      * Purview information of the factory.
      */
-    purviewConfiguration?: pulumi.Input<types.inputs.datafactory.PurviewConfigurationArgs>;
+    purviewConfiguration?: pulumi.Input<types.inputs.PurviewConfigurationArgs>;
     /**
      * Git repo information of the factory.
      */
-    repoConfiguration?: pulumi.Input<types.inputs.datafactory.FactoryGitHubConfigurationArgs | types.inputs.datafactory.FactoryVSTSConfigurationArgs>;
+    repoConfiguration?: pulumi.Input<types.inputs.FactoryGitHubConfigurationArgs | types.inputs.FactoryVSTSConfigurationArgs>;
     /**
      * The resource group name.
      */

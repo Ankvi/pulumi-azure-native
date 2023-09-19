@@ -27,7 +27,7 @@ export interface ListBotConnectionServiceProvidersResult {
     /**
      * Gets the list of bot service providers and their properties.
      */
-    readonly value: types.outputs.botservice.ServiceProviderResponse[];
+    readonly value: types.outputs.ServiceProviderResponse[];
 }
 /**
  * Lists the available Service Providers for creating Connection Settings

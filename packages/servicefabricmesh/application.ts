@@ -43,7 +43,7 @@ export class Application extends pulumi.CustomResource {
     /**
      * Describes the diagnostics definition and usage for an application resource.
      */
-    public readonly diagnostics!: pulumi.Output<types.outputs.servicefabricmesh.DiagnosticsDescriptionResponse | undefined>;
+    public readonly diagnostics!: pulumi.Output<types.outputs.DiagnosticsDescriptionResponse | undefined>;
     /**
      * Describes the health state of an application resource.
      */
@@ -67,7 +67,7 @@ export class Application extends pulumi.CustomResource {
     /**
      * Describes the services in the application. This property is used to create or modify services of the application. On get only the name of the service is returned. The service description can be obtained by querying for the service resource.
      */
-    public readonly services!: pulumi.Output<types.outputs.servicefabricmesh.ServiceResourceDescriptionResponse[] | undefined>;
+    public readonly services!: pulumi.Output<types.outputs.ServiceResourceDescriptionResponse[] | undefined>;
     /**
      * Status of the application.
      */
@@ -161,7 +161,7 @@ export interface ApplicationArgs {
     /**
      * Describes the diagnostics definition and usage for an application resource.
      */
-    diagnostics?: pulumi.Input<types.inputs.servicefabricmesh.DiagnosticsDescriptionArgs>;
+    diagnostics?: pulumi.Input<types.inputs.DiagnosticsDescriptionArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -173,7 +173,7 @@ export interface ApplicationArgs {
     /**
      * Describes the services in the application. This property is used to create or modify services of the application. On get only the name of the service is returned. The service description can be obtained by querying for the service resource.
      */
-    services?: pulumi.Input<pulumi.Input<types.inputs.servicefabricmesh.ServiceResourceDescriptionArgs>[]>;
+    services?: pulumi.Input<pulumi.Input<types.inputs.ServiceResourceDescriptionArgs>[]>;
     /**
      * Resource tags.
      */

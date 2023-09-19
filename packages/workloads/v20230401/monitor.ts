@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * SAP monitor info on Azure (ARM properties and SAP monitor properties)
  */
@@ -38,11 +38,11 @@ export class Monitor extends pulumi.CustomResource {
     /**
      * Defines the SAP monitor errors.
      */
-    public /*out*/ readonly errors!: pulumi.Output<types.outputs.workloads.v20230401.MonitorPropertiesResponseErrors>;
+    public /*out*/ readonly errors!: pulumi.Output<types.outputs.MonitorPropertiesResponseErrors>;
     /**
      * [currently not in use] Managed service identity(user assigned identities)
      */
-    public readonly identity!: pulumi.Output<types.outputs.workloads.v20230401.UserAssignedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.UserAssignedServiceIdentityResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -54,7 +54,7 @@ export class Monitor extends pulumi.CustomResource {
     /**
      * Managed resource group configuration
      */
-    public readonly managedResourceGroupConfiguration!: pulumi.Output<types.outputs.workloads.v20230401.ManagedRGConfigurationResponse | undefined>;
+    public readonly managedResourceGroupConfiguration!: pulumi.Output<types.outputs.ManagedRGConfigurationResponse | undefined>;
     /**
      * The subnet which the SAP monitor will be deployed in
      */
@@ -82,7 +82,7 @@ export class Monitor extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.workloads.v20230401.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -164,7 +164,7 @@ export interface MonitorArgs {
     /**
      * [currently not in use] Managed service identity(user assigned identities)
      */
-    identity?: pulumi.Input<types.inputs.workloads.v20230401.UserAssignedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.UserAssignedServiceIdentityArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -176,7 +176,7 @@ export interface MonitorArgs {
     /**
      * Managed resource group configuration
      */
-    managedResourceGroupConfiguration?: pulumi.Input<types.inputs.workloads.v20230401.ManagedRGConfigurationArgs>;
+    managedResourceGroupConfiguration?: pulumi.Input<types.inputs.ManagedRGConfigurationArgs>;
     /**
      * Name of the SAP monitor resource.
      */
@@ -192,7 +192,7 @@ export interface MonitorArgs {
     /**
      * Sets the routing preference of the SAP monitor. By default only RFC1918 traffic is routed to the customer VNET.
      */
-    routingPreference?: pulumi.Input<string | types.enums.v20230401.RoutingPreference>;
+    routingPreference?: pulumi.Input<string | types.enums.RoutingPreference>;
     /**
      * Resource tags.
      */

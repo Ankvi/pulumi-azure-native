@@ -43,11 +43,11 @@ export class CustomImage extends pulumi.CustomResource {
     /**
      * Storage information about the plan related to this custom image
      */
-    public readonly customImagePlan!: pulumi.Output<types.outputs.devtestlab.CustomImagePropertiesFromPlanResponse | undefined>;
+    public readonly customImagePlan!: pulumi.Output<types.outputs.CustomImagePropertiesFromPlanResponse | undefined>;
     /**
      * Storage information about the data disks present in the custom image
      */
-    public readonly dataDiskStorageInfo!: pulumi.Output<types.outputs.devtestlab.DataDiskStorageTypeInfoResponse[] | undefined>;
+    public readonly dataDiskStorageInfo!: pulumi.Output<types.outputs.DataDiskStorageTypeInfoResponse[] | undefined>;
     /**
      * The description of the custom image.
      */
@@ -91,11 +91,11 @@ export class CustomImage extends pulumi.CustomResource {
     /**
      * The VHD from which the image is to be created.
      */
-    public readonly vhd!: pulumi.Output<types.outputs.devtestlab.CustomImagePropertiesCustomResponse | undefined>;
+    public readonly vhd!: pulumi.Output<types.outputs.CustomImagePropertiesCustomResponse | undefined>;
     /**
      * The virtual machine from which the image is to be created.
      */
-    public readonly vm!: pulumi.Output<types.outputs.devtestlab.CustomImagePropertiesFromVmResponse | undefined>;
+    public readonly vm!: pulumi.Output<types.outputs.CustomImagePropertiesFromVmResponse | undefined>;
 
     /**
      * Create a CustomImage resource with the given unique name, arguments, and options.
@@ -168,11 +168,11 @@ export interface CustomImageArgs {
     /**
      * Storage information about the plan related to this custom image
      */
-    customImagePlan?: pulumi.Input<types.inputs.devtestlab.CustomImagePropertiesFromPlanArgs>;
+    customImagePlan?: pulumi.Input<types.inputs.CustomImagePropertiesFromPlanArgs>;
     /**
      * Storage information about the data disks present in the custom image
      */
-    dataDiskStorageInfo?: pulumi.Input<pulumi.Input<types.inputs.devtestlab.DataDiskStorageTypeInfoArgs>[]>;
+    dataDiskStorageInfo?: pulumi.Input<pulumi.Input<types.inputs.DataDiskStorageTypeInfoArgs>[]>;
     /**
      * The description of the custom image.
      */
@@ -212,9 +212,9 @@ export interface CustomImageArgs {
     /**
      * The VHD from which the image is to be created.
      */
-    vhd?: pulumi.Input<types.inputs.devtestlab.CustomImagePropertiesCustomArgs>;
+    vhd?: pulumi.Input<types.inputs.CustomImagePropertiesCustomArgs>;
     /**
      * The virtual machine from which the image is to be created.
      */
-    vm?: pulumi.Input<types.inputs.devtestlab.CustomImagePropertiesFromVmArgs>;
+    vm?: pulumi.Input<types.inputs.CustomImagePropertiesFromVmArgs>;
 }

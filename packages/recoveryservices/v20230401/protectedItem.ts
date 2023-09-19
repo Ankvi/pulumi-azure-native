@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Base class for backup items.
  */
@@ -46,7 +46,7 @@ export class ProtectedItem extends pulumi.CustomResource {
     /**
      * ProtectedItemResource properties
      */
-    public readonly properties!: pulumi.Output<types.outputs.recoveryservices.v20230401.AzureFileshareProtectedItemResponse | types.outputs.recoveryservices.v20230401.AzureIaaSClassicComputeVMProtectedItemResponse | types.outputs.recoveryservices.v20230401.AzureIaaSComputeVMProtectedItemResponse | types.outputs.recoveryservices.v20230401.AzureIaaSVMProtectedItemResponse | types.outputs.recoveryservices.v20230401.AzureSqlProtectedItemResponse | types.outputs.recoveryservices.v20230401.AzureVmWorkloadProtectedItemResponse | types.outputs.recoveryservices.v20230401.AzureVmWorkloadSAPAseDatabaseProtectedItemResponse | types.outputs.recoveryservices.v20230401.AzureVmWorkloadSAPHanaDBInstanceProtectedItemResponse | types.outputs.recoveryservices.v20230401.AzureVmWorkloadSAPHanaDatabaseProtectedItemResponse | types.outputs.recoveryservices.v20230401.AzureVmWorkloadSQLDatabaseProtectedItemResponse | types.outputs.recoveryservices.v20230401.DPMProtectedItemResponse | types.outputs.recoveryservices.v20230401.GenericProtectedItemResponse | types.outputs.recoveryservices.v20230401.MabFileFolderProtectedItemResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.AzureFileshareProtectedItemResponse | types.outputs.AzureIaaSClassicComputeVMProtectedItemResponse | types.outputs.AzureIaaSComputeVMProtectedItemResponse | types.outputs.AzureIaaSVMProtectedItemResponse | types.outputs.AzureSqlProtectedItemResponse | types.outputs.AzureVmWorkloadProtectedItemResponse | types.outputs.AzureVmWorkloadSAPAseDatabaseProtectedItemResponse | types.outputs.AzureVmWorkloadSAPHanaDBInstanceProtectedItemResponse | types.outputs.AzureVmWorkloadSAPHanaDatabaseProtectedItemResponse | types.outputs.AzureVmWorkloadSQLDatabaseProtectedItemResponse | types.outputs.DPMProtectedItemResponse | types.outputs.GenericProtectedItemResponse | types.outputs.MabFileFolderProtectedItemResponse>;
     /**
      * Resource tags.
      */
@@ -128,7 +128,7 @@ export interface ProtectedItemArgs {
     /**
      * ProtectedItemResource properties
      */
-    properties?: pulumi.Input<types.inputs.recoveryservices.v20230401.AzureFileshareProtectedItemArgs | types.inputs.recoveryservices.v20230401.AzureIaaSClassicComputeVMProtectedItemArgs | types.inputs.recoveryservices.v20230401.AzureIaaSComputeVMProtectedItemArgs | types.inputs.recoveryservices.v20230401.AzureIaaSVMProtectedItemArgs | types.inputs.recoveryservices.v20230401.AzureSqlProtectedItemArgs | types.inputs.recoveryservices.v20230401.AzureVmWorkloadProtectedItemArgs | types.inputs.recoveryservices.v20230401.AzureVmWorkloadSAPAseDatabaseProtectedItemArgs | types.inputs.recoveryservices.v20230401.AzureVmWorkloadSAPHanaDBInstanceProtectedItemArgs | types.inputs.recoveryservices.v20230401.AzureVmWorkloadSAPHanaDatabaseProtectedItemArgs | types.inputs.recoveryservices.v20230401.AzureVmWorkloadSQLDatabaseProtectedItemArgs | types.inputs.recoveryservices.v20230401.DPMProtectedItemArgs | types.inputs.recoveryservices.v20230401.GenericProtectedItemArgs | types.inputs.recoveryservices.v20230401.MabFileFolderProtectedItemArgs>;
+    properties?: pulumi.Input<types.inputs.AzureFileshareProtectedItemArgs | types.inputs.AzureIaaSClassicComputeVMProtectedItemArgs | types.inputs.AzureIaaSComputeVMProtectedItemArgs | types.inputs.AzureIaaSVMProtectedItemArgs | types.inputs.AzureSqlProtectedItemArgs | types.inputs.AzureVmWorkloadProtectedItemArgs | types.inputs.AzureVmWorkloadSAPAseDatabaseProtectedItemArgs | types.inputs.AzureVmWorkloadSAPHanaDBInstanceProtectedItemArgs | types.inputs.AzureVmWorkloadSAPHanaDatabaseProtectedItemArgs | types.inputs.AzureVmWorkloadSQLDatabaseProtectedItemArgs | types.inputs.DPMProtectedItemArgs | types.inputs.GenericProtectedItemArgs | types.inputs.MabFileFolderProtectedItemArgs>;
     /**
      * Item name to be backed up.
      */

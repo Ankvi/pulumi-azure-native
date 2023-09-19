@@ -60,11 +60,11 @@ export class KustoTableDataSet extends pulumi.CustomResource {
     /**
      * System Data of the Azure resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.datashare.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Table level sharing properties for kusto database
      */
-    public readonly tableLevelSharingProperties!: pulumi.Output<types.outputs.datashare.TableLevelSharingPropertiesResponse>;
+    public readonly tableLevelSharingProperties!: pulumi.Output<types.outputs.TableLevelSharingPropertiesResponse>;
     /**
      * Type of the azure resource
      */
@@ -162,5 +162,5 @@ export interface KustoTableDataSetArgs {
     /**
      * Table level sharing properties for kusto database
      */
-    tableLevelSharingProperties: pulumi.Input<types.inputs.datashare.TableLevelSharingPropertiesArgs>;
+    tableLevelSharingProperties: pulumi.Input<types.inputs.TableLevelSharingPropertiesArgs>;
 }

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Description of subscription resource.
  */
@@ -42,11 +42,11 @@ export class Subscription extends pulumi.CustomResource {
     /**
      * Properties specific to client affine subscriptions.
      */
-    public readonly clientAffineProperties!: pulumi.Output<types.outputs.servicebus.v20221001preview.SBClientAffinePropertiesResponse | undefined>;
+    public readonly clientAffineProperties!: pulumi.Output<types.outputs.SBClientAffinePropertiesResponse | undefined>;
     /**
      * Message count details
      */
-    public /*out*/ readonly countDetails!: pulumi.Output<types.outputs.servicebus.v20221001preview.MessageCountDetailsResponse>;
+    public /*out*/ readonly countDetails!: pulumi.Output<types.outputs.MessageCountDetailsResponse>;
     /**
      * Exact time the message was created.
      */
@@ -114,7 +114,7 @@ export class Subscription extends pulumi.CustomResource {
     /**
      * The system meta data relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.servicebus.v20221001preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
      */
@@ -214,7 +214,7 @@ export interface SubscriptionArgs {
     /**
      * Properties specific to client affine subscriptions.
      */
-    clientAffineProperties?: pulumi.Input<types.inputs.servicebus.v20221001preview.SBClientAffinePropertiesArgs>;
+    clientAffineProperties?: pulumi.Input<types.inputs.SBClientAffinePropertiesArgs>;
     /**
      * Value that indicates whether a subscription has dead letter support on filter evaluation exceptions.
      */
@@ -270,7 +270,7 @@ export interface SubscriptionArgs {
     /**
      * Enumerates the possible values for the status of a messaging entity.
      */
-    status?: pulumi.Input<types.enums.v20221001preview.EntityStatus>;
+    status?: pulumi.Input<types.enums.EntityStatus>;
     /**
      * The subscription name.
      */

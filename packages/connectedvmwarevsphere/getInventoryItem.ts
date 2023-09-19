@@ -69,7 +69,7 @@ export interface GetInventoryItemResult {
     /**
      * The system data.
      */
-    readonly systemData: types.outputs.connectedvmwarevsphere.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

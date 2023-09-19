@@ -35,7 +35,7 @@ export class IoTRole extends pulumi.CustomResource {
     /**
      * Resource allocation
      */
-    public readonly computeResource!: pulumi.Output<types.outputs.databoxedge.ComputeResourceResponse | undefined>;
+    public readonly computeResource!: pulumi.Output<types.outputs.ComputeResourceResponse | undefined>;
     /**
      * Host OS supported by the IoT role.
      */
@@ -47,15 +47,15 @@ export class IoTRole extends pulumi.CustomResource {
     /**
      * IoT device metadata to which data box edge device needs to be connected.
      */
-    public readonly ioTDeviceDetails!: pulumi.Output<types.outputs.databoxedge.IoTDeviceInfoResponse>;
+    public readonly ioTDeviceDetails!: pulumi.Output<types.outputs.IoTDeviceInfoResponse>;
     /**
      * Iot edge agent details to download the agent and bootstrap iot runtime.
      */
-    public readonly ioTEdgeAgentInfo!: pulumi.Output<types.outputs.databoxedge.IoTEdgeAgentInfoResponse | undefined>;
+    public readonly ioTEdgeAgentInfo!: pulumi.Output<types.outputs.IoTEdgeAgentInfoResponse | undefined>;
     /**
      * IoT edge device to which the IoT role needs to be configured.
      */
-    public readonly ioTEdgeDeviceDetails!: pulumi.Output<types.outputs.databoxedge.IoTDeviceInfoResponse>;
+    public readonly ioTEdgeDeviceDetails!: pulumi.Output<types.outputs.IoTDeviceInfoResponse>;
     /**
      * Role type.
      * Expected value is 'IOT'.
@@ -72,11 +72,11 @@ export class IoTRole extends pulumi.CustomResource {
     /**
      * Mount points of shares in role(s).
      */
-    public readonly shareMappings!: pulumi.Output<types.outputs.databoxedge.MountPointMapResponse[] | undefined>;
+    public readonly shareMappings!: pulumi.Output<types.outputs.MountPointMapResponse[] | undefined>;
     /**
      * Metadata pertaining to creation and last modification of Role
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.databoxedge.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The hierarchical type of the object.
      */
@@ -156,7 +156,7 @@ export interface IoTRoleArgs {
     /**
      * Resource allocation
      */
-    computeResource?: pulumi.Input<types.inputs.databoxedge.ComputeResourceArgs>;
+    computeResource?: pulumi.Input<types.inputs.ComputeResourceArgs>;
     /**
      * The device name.
      */
@@ -168,15 +168,15 @@ export interface IoTRoleArgs {
     /**
      * IoT device metadata to which data box edge device needs to be connected.
      */
-    ioTDeviceDetails: pulumi.Input<types.inputs.databoxedge.IoTDeviceInfoArgs>;
+    ioTDeviceDetails: pulumi.Input<types.inputs.IoTDeviceInfoArgs>;
     /**
      * Iot edge agent details to download the agent and bootstrap iot runtime.
      */
-    ioTEdgeAgentInfo?: pulumi.Input<types.inputs.databoxedge.IoTEdgeAgentInfoArgs>;
+    ioTEdgeAgentInfo?: pulumi.Input<types.inputs.IoTEdgeAgentInfoArgs>;
     /**
      * IoT edge device to which the IoT role needs to be configured.
      */
-    ioTEdgeDeviceDetails: pulumi.Input<types.inputs.databoxedge.IoTDeviceInfoArgs>;
+    ioTEdgeDeviceDetails: pulumi.Input<types.inputs.IoTDeviceInfoArgs>;
     /**
      * Role type.
      * Expected value is 'IOT'.
@@ -197,5 +197,5 @@ export interface IoTRoleArgs {
     /**
      * Mount points of shares in role(s).
      */
-    shareMappings?: pulumi.Input<pulumi.Input<types.inputs.databoxedge.MountPointMapArgs>[]>;
+    shareMappings?: pulumi.Input<pulumi.Input<types.inputs.MountPointMapArgs>[]>;
 }

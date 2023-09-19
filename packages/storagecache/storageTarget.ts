@@ -39,15 +39,15 @@ export class StorageTarget extends pulumi.CustomResource {
     /**
      * Properties when targetType is blobNfs.
      */
-    public readonly blobNfs!: pulumi.Output<types.outputs.storagecache.BlobNfsTargetResponse | undefined>;
+    public readonly blobNfs!: pulumi.Output<types.outputs.BlobNfsTargetResponse | undefined>;
     /**
      * Properties when targetType is clfs.
      */
-    public readonly clfs!: pulumi.Output<types.outputs.storagecache.ClfsTargetResponse | undefined>;
+    public readonly clfs!: pulumi.Output<types.outputs.ClfsTargetResponse | undefined>;
     /**
      * List of cache namespace junctions to target for namespace associations.
      */
-    public readonly junctions!: pulumi.Output<types.outputs.storagecache.NamespaceJunctionResponse[] | undefined>;
+    public readonly junctions!: pulumi.Output<types.outputs.NamespaceJunctionResponse[] | undefined>;
     /**
      * Region name string.
      */
@@ -59,7 +59,7 @@ export class StorageTarget extends pulumi.CustomResource {
     /**
      * Properties when targetType is nfs3.
      */
-    public readonly nfs3!: pulumi.Output<types.outputs.storagecache.Nfs3TargetResponse | undefined>;
+    public readonly nfs3!: pulumi.Output<types.outputs.Nfs3TargetResponse | undefined>;
     /**
      * ARM provisioning state, see https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/Addendum.md#provisioningstate-property
      */
@@ -71,7 +71,7 @@ export class StorageTarget extends pulumi.CustomResource {
     /**
      * The system meta data relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.storagecache.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Type of the Storage Target.
      */
@@ -83,7 +83,7 @@ export class StorageTarget extends pulumi.CustomResource {
     /**
      * Properties when targetType is unknown.
      */
-    public readonly unknown!: pulumi.Output<types.outputs.storagecache.UnknownTargetResponse | undefined>;
+    public readonly unknown!: pulumi.Output<types.outputs.UnknownTargetResponse | undefined>;
 
     /**
      * Create a StorageTarget resource with the given unique name, arguments, and options.
@@ -150,7 +150,7 @@ export interface StorageTargetArgs {
     /**
      * Properties when targetType is blobNfs.
      */
-    blobNfs?: pulumi.Input<types.inputs.storagecache.BlobNfsTargetArgs>;
+    blobNfs?: pulumi.Input<types.inputs.BlobNfsTargetArgs>;
     /**
      * Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
      */
@@ -158,15 +158,15 @@ export interface StorageTargetArgs {
     /**
      * Properties when targetType is clfs.
      */
-    clfs?: pulumi.Input<types.inputs.storagecache.ClfsTargetArgs>;
+    clfs?: pulumi.Input<types.inputs.ClfsTargetArgs>;
     /**
      * List of cache namespace junctions to target for namespace associations.
      */
-    junctions?: pulumi.Input<pulumi.Input<types.inputs.storagecache.NamespaceJunctionArgs>[]>;
+    junctions?: pulumi.Input<pulumi.Input<types.inputs.NamespaceJunctionArgs>[]>;
     /**
      * Properties when targetType is nfs3.
      */
-    nfs3?: pulumi.Input<types.inputs.storagecache.Nfs3TargetArgs>;
+    nfs3?: pulumi.Input<types.inputs.Nfs3TargetArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -186,5 +186,5 @@ export interface StorageTargetArgs {
     /**
      * Properties when targetType is unknown.
      */
-    unknown?: pulumi.Input<types.inputs.storagecache.UnknownTargetArgs>;
+    unknown?: pulumi.Input<types.inputs.UnknownTargetArgs>;
 }

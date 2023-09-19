@@ -55,7 +55,7 @@ export interface ListPolicyFragmentReferencesResult {
     /**
      * A collection of resources.
      */
-    readonly value?: types.outputs.apimanagement.ResourceCollectionResponseValue[];
+    readonly value?: types.outputs.ResourceCollectionResponseValue[];
 }
 /**
  * Lists policy resources that reference the policy fragment.

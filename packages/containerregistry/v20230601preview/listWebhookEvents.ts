@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Lists recent events for the specified webhook.
  */
@@ -40,7 +40,7 @@ export interface ListWebhookEventsResult {
     /**
      * The list of events. Since this list may be incomplete, the nextLink field should be used to request the next list of events.
      */
-    readonly value?: types.outputs.containerregistry.v20230601preview.EventResponse[];
+    readonly value?: types.outputs.EventResponse[];
 }
 /**
  * Lists recent events for the specified webhook.

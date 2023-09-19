@@ -59,7 +59,7 @@ export class DnsResolver extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.network.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -71,7 +71,7 @@ export class DnsResolver extends pulumi.CustomResource {
     /**
      * The reference to the virtual network. This cannot be changed after creation.
      */
-    public readonly virtualNetwork!: pulumi.Output<types.outputs.network.SubResourceResponse>;
+    public readonly virtualNetwork!: pulumi.Output<types.outputs.SubResourceResponse>;
 
     /**
      * Create a DnsResolver resource with the given unique name, arguments, and options.
@@ -144,5 +144,5 @@ export interface DnsResolverArgs {
     /**
      * The reference to the virtual network. This cannot be changed after creation.
      */
-    virtualNetwork: pulumi.Input<types.inputs.network.SubResourceArgs>;
+    virtualNetwork: pulumi.Input<types.inputs.SubResourceArgs>;
 }

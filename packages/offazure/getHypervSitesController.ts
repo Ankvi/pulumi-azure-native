@@ -32,7 +32,7 @@ export interface GetHypervSitesControllerResult {
     /**
      * Gets or sets the on-premises agent details.
      */
-    readonly agentDetails?: types.outputs.offazure.SiteAgentPropertiesResponse;
+    readonly agentDetails?: types.outputs.SiteAgentPropertiesResponse;
     /**
      * Gets or sets the Appliance Name.
      */
@@ -70,11 +70,11 @@ export interface GetHypervSitesControllerResult {
      * communication
      *             to the service.
      */
-    readonly servicePrincipalIdentityDetails?: types.outputs.offazure.SiteSpnPropertiesResponse;
+    readonly servicePrincipalIdentityDetails?: types.outputs.SiteSpnPropertiesResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.offazure.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

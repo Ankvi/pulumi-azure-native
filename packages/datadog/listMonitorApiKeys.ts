@@ -36,7 +36,7 @@ export interface ListMonitorApiKeysResult {
     /**
      * Results of a list operation.
      */
-    readonly value?: types.outputs.datadog.DatadogApiKeyResponse[];
+    readonly value?: types.outputs.DatadogApiKeyResponse[];
 }
 /**
  * Response of a list operation.

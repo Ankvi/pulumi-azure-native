@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The VmmServers resource definition.
  */
@@ -38,7 +38,7 @@ export class VmmServer extends pulumi.CustomResource {
     /**
      * Credentials to connect to VMMServer.
      */
-    public readonly credentials!: pulumi.Output<types.outputs.scvmm.v20230401preview.VMMServerPropertiesResponseCredentials | undefined>;
+    public readonly credentials!: pulumi.Output<types.outputs.VMMServerPropertiesResponseCredentials | undefined>;
     /**
      * Gets or sets any error message if connection to vmmServer is having any issue.
      */
@@ -46,7 +46,7 @@ export class VmmServer extends pulumi.CustomResource {
     /**
      * The extended location.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.scvmm.v20230401preview.ExtendedLocationResponse>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse>;
     /**
      * Fqdn is the hostname/ip of the vmmServer.
      */
@@ -70,7 +70,7 @@ export class VmmServer extends pulumi.CustomResource {
     /**
      * The system data.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.scvmm.v20230401preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags
      */
@@ -154,11 +154,11 @@ export interface VmmServerArgs {
     /**
      * Credentials to connect to VMMServer.
      */
-    credentials?: pulumi.Input<types.inputs.scvmm.v20230401preview.VMMServerPropertiesCredentialsArgs>;
+    credentials?: pulumi.Input<types.inputs.VMMServerPropertiesCredentialsArgs>;
     /**
      * The extended location.
      */
-    extendedLocation: pulumi.Input<types.inputs.scvmm.v20230401preview.ExtendedLocationArgs>;
+    extendedLocation: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * Fqdn is the hostname/ip of the vmmServer.
      */

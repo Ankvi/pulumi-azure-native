@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The Private Endpoint Connection resource.
  */
@@ -40,7 +40,7 @@ export interface GetPrivateEndpointConnectionResult {
     /**
      * Managed service identity (system assigned and/or user assigned identities)
      */
-    readonly identity?: types.outputs.machinelearningservices.v20230601preview.ManagedServiceIdentityResponse;
+    readonly identity?: types.outputs.ManagedServiceIdentityResponse;
     /**
      * Same as workspace location.
      */
@@ -52,11 +52,11 @@ export interface GetPrivateEndpointConnectionResult {
     /**
      * The Private Endpoint resource.
      */
-    readonly privateEndpoint?: types.outputs.machinelearningservices.v20230601preview.WorkspacePrivateEndpointResourceResponse;
+    readonly privateEndpoint?: types.outputs.WorkspacePrivateEndpointResourceResponse;
     /**
      * The connection state.
      */
-    readonly privateLinkServiceConnectionState?: types.outputs.machinelearningservices.v20230601preview.PrivateLinkServiceConnectionStateResponse;
+    readonly privateLinkServiceConnectionState?: types.outputs.PrivateLinkServiceConnectionStateResponse;
     /**
      * The current provisioning state.
      */
@@ -64,11 +64,11 @@ export interface GetPrivateEndpointConnectionResult {
     /**
      * Optional. This field is required to be implemented by the RP because AML is supporting more than one tier
      */
-    readonly sku?: types.outputs.machinelearningservices.v20230601preview.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.machinelearningservices.v20230601preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     readonly tags?: {[key: string]: string};
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

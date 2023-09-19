@@ -43,11 +43,11 @@ export class Vendor extends pulumi.CustomResource {
     /**
      * A list of IDs of the vendor skus offered by the vendor.
      */
-    public /*out*/ readonly skus!: pulumi.Output<types.outputs.hybridnetwork.SubResourceResponse[]>;
+    public /*out*/ readonly skus!: pulumi.Output<types.outputs.SubResourceResponse[]>;
     /**
      * The system meta data relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.hybridnetwork.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

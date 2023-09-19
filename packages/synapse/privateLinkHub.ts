@@ -43,7 +43,7 @@ export class PrivateLinkHub extends pulumi.CustomResource {
     /**
      * List of private endpoint connections
      */
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.synapse.PrivateEndpointConnectionForPrivateLinkHubBasicResponse[]>;
+    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionForPrivateLinkHubBasicResponse[]>;
     /**
      * PrivateLinkHub provisioning state
      */

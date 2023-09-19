@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A private endpoint connection class.
  */
@@ -38,11 +38,11 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * The private endpoint information.
      */
-    public readonly privateEndpoint!: pulumi.Output<types.outputs.purview.v20211201.PrivateEndpointResponse | undefined>;
+    public readonly privateEndpoint!: pulumi.Output<types.outputs.PrivateEndpointResponse | undefined>;
     /**
      * The private link service connection state.
      */
-    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.purview.v20211201.PrivateLinkServiceConnectionStateResponse | undefined>;
+    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.PrivateLinkServiceConnectionStateResponse | undefined>;
     /**
      * The provisioning state.
      */
@@ -50,7 +50,7 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.purview.v20211201.ProxyResourceResponseSystemData>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.ProxyResourceResponseSystemData>;
     /**
      * Gets or sets the type.
      */
@@ -108,7 +108,7 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * The private endpoint information.
      */
-    privateEndpoint?: pulumi.Input<types.inputs.purview.v20211201.PrivateEndpointArgs>;
+    privateEndpoint?: pulumi.Input<types.inputs.PrivateEndpointArgs>;
     /**
      * Name of the private endpoint connection.
      */
@@ -116,7 +116,7 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * The private link service connection state.
      */
-    privateLinkServiceConnectionState?: pulumi.Input<types.inputs.purview.v20211201.PrivateLinkServiceConnectionStateArgs>;
+    privateLinkServiceConnectionState?: pulumi.Input<types.inputs.PrivateLinkServiceConnectionStateArgs>;
     /**
      * The resource group name.
      */

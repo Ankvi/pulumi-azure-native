@@ -37,11 +37,11 @@ export interface GetDicomServiceResult {
     /**
      * Dicom Service authentication configuration.
      */
-    readonly authenticationConfiguration?: types.outputs.healthcareapis.DicomServiceAuthenticationConfigurationResponse;
+    readonly authenticationConfiguration?: types.outputs.DicomServiceAuthenticationConfigurationResponse;
     /**
      * Dicom Service Cors configuration.
      */
-    readonly corsConfiguration?: types.outputs.healthcareapis.CorsConfigurationResponse;
+    readonly corsConfiguration?: types.outputs.CorsConfigurationResponse;
     /**
      * An etag associated with the resource, used for optimistic concurrency when editing it.
      */
@@ -57,7 +57,7 @@ export interface GetDicomServiceResult {
     /**
      * Setting indicating whether the service has a managed identity associated with it.
      */
-    readonly identity?: types.outputs.healthcareapis.ServiceManagedIdentityResponseIdentity;
+    readonly identity?: types.outputs.ServiceManagedIdentityResponseIdentity;
     /**
      * The resource location.
      */
@@ -69,7 +69,7 @@ export interface GetDicomServiceResult {
     /**
      * The list of private endpoint connections that are set up for this resource.
      */
-    readonly privateEndpointConnections: types.outputs.healthcareapis.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections: types.outputs.PrivateEndpointConnectionResponse[];
     /**
      * The provisioning state.
      */
@@ -85,7 +85,7 @@ export interface GetDicomServiceResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.healthcareapis.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

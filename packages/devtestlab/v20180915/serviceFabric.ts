@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A Service Fabric.
  */
@@ -34,7 +34,7 @@ export class ServiceFabric extends pulumi.CustomResource {
     /**
      * The applicable schedule for the virtual machine.
      */
-    public /*out*/ readonly applicableSchedule!: pulumi.Output<types.outputs.devtestlab.v20180915.ApplicableScheduleResponse>;
+    public /*out*/ readonly applicableSchedule!: pulumi.Output<types.outputs.ApplicableScheduleResponse>;
     /**
      * The resource id of the environment under which the service fabric resource is present
      */

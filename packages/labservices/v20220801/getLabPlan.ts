@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves the properties of a Lab Plan.
  */
@@ -35,15 +35,15 @@ export interface GetLabPlanResult {
     /**
      * The default lab shutdown profile. This can be changed on a lab resource and only provides a default profile.
      */
-    readonly defaultAutoShutdownProfile?: types.outputs.labservices.v20220801.AutoShutdownProfileResponse;
+    readonly defaultAutoShutdownProfile?: types.outputs.AutoShutdownProfileResponse;
     /**
      * The default lab connection profile. This can be changed on a lab resource and only provides a default profile.
      */
-    readonly defaultConnectionProfile?: types.outputs.labservices.v20220801.ConnectionProfileResponse;
+    readonly defaultConnectionProfile?: types.outputs.ConnectionProfileResponse;
     /**
      * The lab plan network profile. To enforce lab network policies they must be defined here and cannot be changed when there are existing labs associated with this lab plan.
      */
-    readonly defaultNetworkProfile?: types.outputs.labservices.v20220801.LabPlanNetworkProfileResponse;
+    readonly defaultNetworkProfile?: types.outputs.LabPlanNetworkProfileResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -51,7 +51,7 @@ export interface GetLabPlanResult {
     /**
      * Managed Identity Information
      */
-    readonly identity?: types.outputs.labservices.v20220801.IdentityResponse;
+    readonly identity?: types.outputs.IdentityResponse;
     /**
      * Base Url of the lms instance this lab plan can link lab rosters against.
      */
@@ -75,11 +75,11 @@ export interface GetLabPlanResult {
     /**
      * Support contact information and instructions for users of the lab plan. This information is displayed to lab owners and virtual machine users for all labs in the lab plan.
      */
-    readonly supportInfo?: types.outputs.labservices.v20220801.SupportInfoResponse;
+    readonly supportInfo?: types.outputs.SupportInfoResponse;
     /**
      * Metadata pertaining to creation and last modification of the lab plan.
      */
-    readonly systemData: types.outputs.labservices.v20220801.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

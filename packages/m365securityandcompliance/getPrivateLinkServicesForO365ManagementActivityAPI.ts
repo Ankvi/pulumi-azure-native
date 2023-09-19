@@ -40,7 +40,7 @@ export interface GetPrivateLinkServicesForO365ManagementActivityAPIResult {
     /**
      * Setting indicating whether the service has a managed identity associated with it.
      */
-    readonly identity?: types.outputs.m365securityandcompliance.ServicesResourceResponseIdentity;
+    readonly identity?: types.outputs.ServicesResourceResponseIdentity;
     /**
      * The kind of the service.
      */
@@ -56,11 +56,11 @@ export interface GetPrivateLinkServicesForO365ManagementActivityAPIResult {
     /**
      * The common properties of a service.
      */
-    readonly properties: types.outputs.m365securityandcompliance.ServicesPropertiesResponse;
+    readonly properties: types.outputs.ServicesPropertiesResponse;
     /**
      * Required property for system data
      */
-    readonly systemData: types.outputs.m365securityandcompliance.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The resource tags.
      */

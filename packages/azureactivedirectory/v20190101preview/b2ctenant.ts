@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 export class B2CTenant extends pulumi.CustomResource {
     /**
      * Get an existing B2CTenant resource's state with the given name, ID, and optional extra
@@ -31,7 +31,7 @@ export class B2CTenant extends pulumi.CustomResource {
     /**
      * The billing configuration for the tenant.
      */
-    public /*out*/ readonly billingConfig!: pulumi.Output<types.outputs.azureactivedirectory.v20190101preview.B2CTenantResourcePropertiesResponseBillingConfig | undefined>;
+    public /*out*/ readonly billingConfig!: pulumi.Output<types.outputs.B2CTenantResourcePropertiesResponseBillingConfig | undefined>;
     /**
      * The location in which the resource is hosted and data resides. Can be one of 'United States', 'Europe', 'Asia Pacific', or 'Australia' (preview). Refer to [this documentation](https://aka.ms/B2CDataResidency) for more information.
      */
@@ -43,7 +43,7 @@ export class B2CTenant extends pulumi.CustomResource {
     /**
      * SKU properties of the Azure AD B2C tenant. Learn more about Azure AD B2C billing at [aka.ms/b2cBilling](https://aka.ms/b2cBilling).
      */
-    public readonly sku!: pulumi.Output<types.outputs.azureactivedirectory.v20190101preview.B2CResourceSKUResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.B2CResourceSKUResponse>;
     /**
      * Resource Tags
      */
@@ -111,7 +111,7 @@ export interface B2CTenantArgs {
      * The location in which the resource is hosted and data resides. Can be one of 'United States', 'Europe', 'Asia Pacific', or 'Australia' (preview). Refer to [this documentation](https://aka.ms/B2CDataResidency) for more information.
      */
     location?: pulumi.Input<string>;
-    properties: pulumi.Input<types.inputs.azureactivedirectory.v20190101preview.CreateTenantRequestBodyPropertiesArgs>;
+    properties: pulumi.Input<types.inputs.CreateTenantRequestBodyPropertiesArgs>;
     /**
      * The name of the resource group.
      */
@@ -123,7 +123,7 @@ export interface B2CTenantArgs {
     /**
      * SKU properties of the Azure AD B2C tenant. Learn more about Azure AD B2C billing at [aka.ms/b2cBilling](https://aka.ms/b2cBilling).
      */
-    sku: pulumi.Input<types.inputs.azureactivedirectory.v20190101preview.B2CResourceSKUArgs>;
+    sku: pulumi.Input<types.inputs.B2CResourceSKUArgs>;
     /**
      * Resource Tags
      */

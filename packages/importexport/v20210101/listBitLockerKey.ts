@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns the BitLocker Keys for all drives in the specified job.
  */
@@ -31,7 +31,7 @@ export interface ListBitLockerKeyResult {
     /**
      * drive status
      */
-    readonly value?: types.outputs.importexport.v20210101.DriveBitLockerKeyResponse[];
+    readonly value?: types.outputs.DriveBitLockerKeyResponse[];
 }
 /**
  * Returns the BitLocker Keys for all drives in the specified job.

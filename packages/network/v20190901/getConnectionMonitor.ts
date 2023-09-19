@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a connection monitor by name.
  */
@@ -40,7 +40,7 @@ export interface GetConnectionMonitorResult {
     /**
      * Describes the destination of connection monitor.
      */
-    readonly destination: types.outputs.network.v20190901.ConnectionMonitorDestinationResponse;
+    readonly destination: types.outputs.ConnectionMonitorDestinationResponse;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -72,7 +72,7 @@ export interface GetConnectionMonitorResult {
     /**
      * Describes the source of connection monitor.
      */
-    readonly source: types.outputs.network.v20190901.ConnectionMonitorSourceResponse;
+    readonly source: types.outputs.ConnectionMonitorSourceResponse;
     /**
      * The date and time when the connection monitor was started.
      */

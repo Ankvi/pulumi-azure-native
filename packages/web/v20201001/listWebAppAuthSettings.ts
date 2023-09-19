@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the Authentication/Authorization settings of an app.
  */
@@ -207,7 +207,7 @@ export interface ListWebAppAuthSettingsResult {
     /**
      * The system metadata relating to this resource.
      */
-    readonly systemData: types.outputs.web.v20201001.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The number of hours after session token expiration that a session token can be used to
      * call the token refresh API. The default is 72 hours.

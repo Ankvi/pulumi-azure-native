@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get formula.
  */
@@ -53,7 +53,7 @@ export interface GetFormulaResult {
     /**
      * The content of the formula.
      */
-    readonly formulaContent?: types.outputs.devtestlab.v20180915.LabVirtualMachineCreationParameterResponse;
+    readonly formulaContent?: types.outputs.LabVirtualMachineCreationParameterResponse;
     /**
      * The identifier of the resource.
      */
@@ -89,7 +89,7 @@ export interface GetFormulaResult {
     /**
      * Information about a VM from which a formula is to be created.
      */
-    readonly vm?: types.outputs.devtestlab.v20180915.FormulaPropertiesFromVmResponse;
+    readonly vm?: types.outputs.FormulaPropertiesFromVmResponse;
 }
 /**
  * Get formula.

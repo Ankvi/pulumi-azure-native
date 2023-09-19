@@ -73,7 +73,7 @@ export interface GetBackupPolicyResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.netapp.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -85,7 +85,7 @@ export interface GetBackupPolicyResult {
     /**
      * A list of volumes assigned to this policy
      */
-    readonly volumeBackups: types.outputs.netapp.VolumeBackupsResponse[];
+    readonly volumeBackups: types.outputs.VolumeBackupsResponse[];
     /**
      * Volumes using current backup policy
      */

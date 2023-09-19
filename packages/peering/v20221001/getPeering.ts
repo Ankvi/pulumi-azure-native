@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets an existing peering with the specified name under the given subscription and resource group.
  */
@@ -31,11 +31,11 @@ export interface GetPeeringResult {
     /**
      * The properties that define a direct peering.
      */
-    readonly direct?: types.outputs.peering.v20221001.PeeringPropertiesDirectResponse;
+    readonly direct?: types.outputs.PeeringPropertiesDirectResponse;
     /**
      * The properties that define an exchange peering.
      */
-    readonly exchange?: types.outputs.peering.v20221001.PeeringPropertiesExchangeResponse;
+    readonly exchange?: types.outputs.PeeringPropertiesExchangeResponse;
     /**
      * The ID of the resource.
      */
@@ -63,7 +63,7 @@ export interface GetPeeringResult {
     /**
      * The SKU that defines the tier and kind of the peering.
      */
-    readonly sku: types.outputs.peering.v20221001.PeeringSkuResponse;
+    readonly sku: types.outputs.PeeringSkuResponse;
     /**
      * The resource tags.
      */

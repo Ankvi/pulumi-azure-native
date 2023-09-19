@@ -43,7 +43,7 @@ export class ReferenceDataSet extends pulumi.CustomResource {
     /**
      * The list of key properties for the reference data set.
      */
-    public readonly keyProperties!: pulumi.Output<types.outputs.timeseriesinsights.ReferenceDataSetKeyPropertyResponse[]>;
+    public readonly keyProperties!: pulumi.Output<types.outputs.ReferenceDataSetKeyPropertyResponse[]>;
     /**
      * Resource location
      */
@@ -128,7 +128,7 @@ export interface ReferenceDataSetArgs {
     /**
      * The list of key properties for the reference data set.
      */
-    keyProperties: pulumi.Input<pulumi.Input<types.inputs.timeseriesinsights.ReferenceDataSetKeyPropertyArgs>[]>;
+    keyProperties: pulumi.Input<pulumi.Input<types.inputs.ReferenceDataSetKeyPropertyArgs>[]>;
     /**
      * The location of the resource.
      */

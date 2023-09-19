@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Agent Pool.
  */
@@ -48,7 +48,7 @@ export interface GetAgentPoolResult {
     /**
      * CreationData to be used to specify the source Snapshot ID if the node pool will be created/upgraded using a snapshot.
      */
-    readonly creationData?: types.outputs.containerservice.v20230602preview.CreationDataResponse;
+    readonly creationData?: types.outputs.CreationDataResponse;
     /**
      * If orchestratorVersion was a fully specified version <major.minor.patch>, this field will be exactly equal to it. If orchestratorVersion was <major.minor>, this field will contain the full <major.minor.patch> version being used.
      */
@@ -92,7 +92,7 @@ export interface GetAgentPoolResult {
     /**
      * The Kubelet configuration on the agent pool nodes.
      */
-    readonly kubeletConfig?: types.outputs.containerservice.v20230602preview.KubeletConfigResponse;
+    readonly kubeletConfig?: types.outputs.KubeletConfigResponse;
     /**
      * Determines the placement of emptyDir volumes, container runtime data root, and Kubelet ephemeral storage.
      */
@@ -100,7 +100,7 @@ export interface GetAgentPoolResult {
     /**
      * The OS configuration of Linux agent nodes.
      */
-    readonly linuxOSConfig?: types.outputs.containerservice.v20230602preview.LinuxOSConfigResponse;
+    readonly linuxOSConfig?: types.outputs.LinuxOSConfigResponse;
     /**
      * The maximum number of nodes for auto-scaling
      */
@@ -128,7 +128,7 @@ export interface GetAgentPoolResult {
     /**
      * Network-related settings of an agent pool.
      */
-    readonly networkProfile?: types.outputs.containerservice.v20230602preview.AgentPoolNetworkProfileResponse;
+    readonly networkProfile?: types.outputs.AgentPoolNetworkProfileResponse;
     /**
      * The version of node image
      */
@@ -172,7 +172,7 @@ export interface GetAgentPoolResult {
     /**
      * When an Agent Pool is first created it is initially Running. The Agent Pool can be stopped by setting this field to Stopped. A stopped Agent Pool stops all of its VMs and does not accrue billing charges. An Agent Pool can only be stopped if it is Running and provisioning state is Succeeded
      */
-    readonly powerState?: types.outputs.containerservice.v20230602preview.PowerStateResponse;
+    readonly powerState?: types.outputs.PowerStateResponse;
     /**
      * The current deployment or provisioning state.
      */
@@ -196,7 +196,7 @@ export interface GetAgentPoolResult {
     /**
      * The security settings of an agent pool.
      */
-    readonly securityProfile?: types.outputs.containerservice.v20230602preview.AgentPoolSecurityProfileResponse;
+    readonly securityProfile?: types.outputs.AgentPoolSecurityProfileResponse;
     /**
      * Possible values are any decimal value greater than zero or -1 which indicates the willingness to pay any on-demand price. For more details on spot pricing, see [spot VMs pricing](https://docs.microsoft.com/azure/virtual-machines/spot-vms#pricing)
      */
@@ -212,7 +212,7 @@ export interface GetAgentPoolResult {
     /**
      * Settings for upgrading the agentpool
      */
-    readonly upgradeSettings?: types.outputs.containerservice.v20230602preview.AgentPoolUpgradeSettingsResponse;
+    readonly upgradeSettings?: types.outputs.AgentPoolUpgradeSettingsResponse;
     /**
      * VM size availability varies by region. If a node contains insufficient compute resources (memory, cpu, etc) pods might fail to run correctly. For more details on restricted VM sizes, see: https://docs.microsoft.com/azure/aks/quotas-skus-regions
      */
@@ -224,7 +224,7 @@ export interface GetAgentPoolResult {
     /**
      * The Windows agent pool's specific profile.
      */
-    readonly windowsProfile?: types.outputs.containerservice.v20230602preview.AgentPoolWindowsProfileResponse;
+    readonly windowsProfile?: types.outputs.AgentPoolWindowsProfileResponse;
     /**
      * Determines the type of workload a node can run.
      */

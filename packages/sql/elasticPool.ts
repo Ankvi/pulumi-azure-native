@@ -71,7 +71,7 @@ export class ElasticPool extends pulumi.CustomResource {
     /**
      * The per database settings for the elastic pool.
      */
-    public readonly perDatabaseSettings!: pulumi.Output<types.outputs.sql.ElasticPoolPerDatabaseSettingsResponse | undefined>;
+    public readonly perDatabaseSettings!: pulumi.Output<types.outputs.ElasticPoolPerDatabaseSettingsResponse | undefined>;
     /**
      * The elastic pool SKU.
      * 
@@ -81,7 +81,7 @@ export class ElasticPool extends pulumi.CustomResource {
      * az sql elastic-pool list-editions -l <location> -o table
      * ````
      */
-    public readonly sku!: pulumi.Output<types.outputs.sql.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * The state of the elastic pool.
      */
@@ -193,7 +193,7 @@ export interface ElasticPoolArgs {
     /**
      * The per database settings for the elastic pool.
      */
-    perDatabaseSettings?: pulumi.Input<types.inputs.sql.ElasticPoolPerDatabaseSettingsArgs>;
+    perDatabaseSettings?: pulumi.Input<types.inputs.ElasticPoolPerDatabaseSettingsArgs>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */
@@ -211,7 +211,7 @@ export interface ElasticPoolArgs {
      * az sql elastic-pool list-editions -l <location> -o table
      * ````
      */
-    sku?: pulumi.Input<types.inputs.sql.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Resource tags.
      */

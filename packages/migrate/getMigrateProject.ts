@@ -48,11 +48,11 @@ export interface GetMigrateProjectResult {
     /**
      * Gets or sets the nested properties.
      */
-    readonly properties: types.outputs.migrate.MigrateProjectPropertiesResponse;
+    readonly properties: types.outputs.MigrateProjectPropertiesResponse;
     /**
      * Gets or sets the tags.
      */
-    readonly tags?: types.outputs.migrate.MigrateProjectResponseTags;
+    readonly tags?: types.outputs.MigrateProjectResponseTags;
     /**
      * Handled by resource provider. Type = Microsoft.Migrate/MigrateProject.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Cognitive Services Account is an Azure resource representing the provisioned account, its type, location and SKU.
  */
@@ -38,7 +38,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * The identity of Cognitive Services account.
      */
-    public readonly identity!: pulumi.Output<types.outputs.cognitiveservices.v20170418.IdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityResponse | undefined>;
     /**
      * The Kind of the resource.
      */
@@ -54,11 +54,11 @@ export class Account extends pulumi.CustomResource {
     /**
      * Properties of Cognitive Services account.
      */
-    public readonly properties!: pulumi.Output<types.outputs.cognitiveservices.v20170418.CognitiveServicesAccountPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.CognitiveServicesAccountPropertiesResponse>;
     /**
      * The SKU of Cognitive Services account.
      */
-    public readonly sku!: pulumi.Output<types.outputs.cognitiveservices.v20170418.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters.
      */
@@ -86,7 +86,7 @@ export class Account extends pulumi.CustomResource {
             resourceInputs["identity"] = args ? args.identity : undefined;
             resourceInputs["kind"] = args ? args.kind : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.cognitiveservices.v20170418.cognitiveServicesAccountPropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.cognitiveServicesAccountPropertiesArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["sku"] = args ? args.sku : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
@@ -122,7 +122,7 @@ export interface AccountArgs {
     /**
      * The identity of Cognitive Services account.
      */
-    identity?: pulumi.Input<types.inputs.cognitiveservices.v20170418.IdentityArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityArgs>;
     /**
      * The Kind of the resource.
      */
@@ -134,7 +134,7 @@ export interface AccountArgs {
     /**
      * Properties of Cognitive Services account.
      */
-    properties?: pulumi.Input<types.inputs.cognitiveservices.v20170418.CognitiveServicesAccountPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.CognitiveServicesAccountPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -142,7 +142,7 @@ export interface AccountArgs {
     /**
      * The SKU of Cognitive Services account.
      */
-    sku?: pulumi.Input<types.inputs.cognitiveservices.v20170418.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters.
      */

@@ -35,7 +35,7 @@ export class CustomLocation extends pulumi.CustomResource {
     /**
      * This is optional input that contains the authentication that should be used to generate the namespace.
      */
-    public readonly authentication!: pulumi.Output<types.outputs.extendedlocation.CustomLocationPropertiesResponseAuthentication | undefined>;
+    public readonly authentication!: pulumi.Output<types.outputs.CustomLocationPropertiesResponseAuthentication | undefined>;
     /**
      * Contains the reference to the add-on that contains charts to deploy CRDs and operators.
      */
@@ -55,7 +55,7 @@ export class CustomLocation extends pulumi.CustomResource {
     /**
      * Identity for the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.extendedlocation.IdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -75,7 +75,7 @@ export class CustomLocation extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.extendedlocation.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -143,7 +143,7 @@ export interface CustomLocationArgs {
     /**
      * This is optional input that contains the authentication that should be used to generate the namespace.
      */
-    authentication?: pulumi.Input<types.inputs.extendedlocation.CustomLocationPropertiesAuthenticationArgs>;
+    authentication?: pulumi.Input<types.inputs.CustomLocationPropertiesAuthenticationArgs>;
     /**
      * Contains the reference to the add-on that contains charts to deploy CRDs and operators.
      */
@@ -163,7 +163,7 @@ export interface CustomLocationArgs {
     /**
      * Identity for the resource.
      */
-    identity?: pulumi.Input<types.inputs.extendedlocation.IdentityArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityArgs>;
     /**
      * The geo-location where the resource lives
      */

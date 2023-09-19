@@ -23,7 +23,7 @@ utilities.lazyLoad(exports, ["SecurityConnectorApplication"], () => require("./s
 
 
 // Export enums:
-export * from "../types/enums/v20220701preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

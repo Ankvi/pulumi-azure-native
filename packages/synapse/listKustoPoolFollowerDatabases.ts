@@ -37,7 +37,7 @@ export interface ListKustoPoolFollowerDatabasesResult {
     /**
      * The list of follower database result.
      */
-    readonly value?: types.outputs.synapse.FollowerDatabaseDefinitionResponse[];
+    readonly value?: types.outputs.FollowerDatabaseDefinitionResponse[];
 }
 /**
  * Returns a list of databases that are owned by this Kusto Pool and were followed by another Kusto Pool.

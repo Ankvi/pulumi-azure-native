@@ -37,7 +37,7 @@ export interface GetIncidentResult {
     /**
      * Additional data on the incident
      */
-    readonly additionalData: types.outputs.securityinsights.IncidentAdditionalDataResponse;
+    readonly additionalData: types.outputs.IncidentAdditionalDataResponse;
     /**
      * The reason the incident was closed
      */
@@ -81,7 +81,7 @@ export interface GetIncidentResult {
     /**
      * List of labels relevant to this incident
      */
-    readonly labels?: types.outputs.securityinsights.IncidentLabelResponse[];
+    readonly labels?: types.outputs.IncidentLabelResponse[];
     /**
      * The time of the last activity in the incident
      */
@@ -97,7 +97,7 @@ export interface GetIncidentResult {
     /**
      * Describes a user that the incident is assigned to
      */
-    readonly owner?: types.outputs.securityinsights.IncidentOwnerInfoResponse;
+    readonly owner?: types.outputs.IncidentOwnerInfoResponse;
     /**
      * The incident ID assigned by the incident provider
      */
@@ -121,7 +121,7 @@ export interface GetIncidentResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.securityinsights.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The title of the incident
      */

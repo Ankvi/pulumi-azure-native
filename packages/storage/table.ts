@@ -39,7 +39,7 @@ export class Table extends pulumi.CustomResource {
     /**
      * List of stored access policies specified on the table.
      */
-    public readonly signedIdentifiers!: pulumi.Output<types.outputs.storage.TableSignedIdentifierResponse[] | undefined>;
+    public readonly signedIdentifiers!: pulumi.Output<types.outputs.TableSignedIdentifierResponse[] | undefined>;
     /**
      * Table name under the specified account
      */
@@ -100,7 +100,7 @@ export interface TableArgs {
     /**
      * List of stored access policies specified on the table.
      */
-    signedIdentifiers?: pulumi.Input<pulumi.Input<types.inputs.storage.TableSignedIdentifierArgs>[]>;
+    signedIdentifiers?: pulumi.Input<pulumi.Input<types.inputs.TableSignedIdentifierArgs>[]>;
     /**
      * A table name must be unique within a storage account and must be between 3 and 63 characters.The name must comprise of only alphanumeric characters and it cannot begin with a numeric character.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Define the SAP Application Server Instance resource.
  */
@@ -34,7 +34,7 @@ export class SAPApplicationServerInstance extends pulumi.CustomResource {
     /**
      * Defines the Application Instance errors.
      */
-    public /*out*/ readonly errors!: pulumi.Output<types.outputs.workloads.v20211201preview.SAPVirtualInstanceErrorResponse>;
+    public /*out*/ readonly errors!: pulumi.Output<types.outputs.SAPVirtualInstanceErrorResponse>;
     /**
      * Application server instance gateway Port.
      */
@@ -90,7 +90,7 @@ export class SAPApplicationServerInstance extends pulumi.CustomResource {
     /**
      * Storage details of all the Storage Accounts attached to the App Virtual Machine. For e.g. NFS on AFS Shared Storage.
      */
-    public /*out*/ readonly storageDetails!: pulumi.Output<types.outputs.workloads.v20211201preview.StorageInformationResponse[]>;
+    public /*out*/ readonly storageDetails!: pulumi.Output<types.outputs.StorageInformationResponse[]>;
     /**
      * Application server Subnet.
      */
@@ -98,7 +98,7 @@ export class SAPApplicationServerInstance extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.workloads.v20211201preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */

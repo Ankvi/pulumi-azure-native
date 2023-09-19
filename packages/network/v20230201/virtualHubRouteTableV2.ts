@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * VirtualHubRouteTableV2 Resource.
  */
@@ -50,7 +50,7 @@ export class VirtualHubRouteTableV2 extends pulumi.CustomResource {
     /**
      * List of all routes.
      */
-    public readonly routes!: pulumi.Output<types.outputs.network.v20230201.VirtualHubRouteV2Response[] | undefined>;
+    public readonly routes!: pulumi.Output<types.outputs.VirtualHubRouteV2Response[] | undefined>;
 
     /**
      * Create a VirtualHubRouteTableV2 resource with the given unique name, arguments, and options.
@@ -119,7 +119,7 @@ export interface VirtualHubRouteTableV2Args {
     /**
      * List of all routes.
      */
-    routes?: pulumi.Input<pulumi.Input<types.inputs.network.v20230201.VirtualHubRouteV2Args>[]>;
+    routes?: pulumi.Input<pulumi.Input<types.inputs.VirtualHubRouteV2Args>[]>;
     /**
      * The name of the VirtualHub.
      */

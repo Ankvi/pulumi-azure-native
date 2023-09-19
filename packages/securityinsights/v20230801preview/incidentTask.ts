@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 export class IncidentTask extends pulumi.CustomResource {
     /**
      * Get an existing IncidentTask resource's state with the given name, ID, and optional extra
@@ -31,7 +31,7 @@ export class IncidentTask extends pulumi.CustomResource {
     /**
      * Information on the client (user or application) that made some action
      */
-    public readonly createdBy!: pulumi.Output<types.outputs.securityinsights.v20230801preview.ClientInfoResponse | undefined>;
+    public readonly createdBy!: pulumi.Output<types.outputs.ClientInfoResponse | undefined>;
     /**
      * The time the task was created
      */
@@ -47,7 +47,7 @@ export class IncidentTask extends pulumi.CustomResource {
     /**
      * Information on the client (user or application) that made some action
      */
-    public readonly lastModifiedBy!: pulumi.Output<types.outputs.securityinsights.v20230801preview.ClientInfoResponse | undefined>;
+    public readonly lastModifiedBy!: pulumi.Output<types.outputs.ClientInfoResponse | undefined>;
     /**
      * The last time the task was updated
      */
@@ -60,7 +60,7 @@ export class IncidentTask extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.securityinsights.v20230801preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The title of the task
      */
@@ -138,7 +138,7 @@ export interface IncidentTaskArgs {
     /**
      * Information on the client (user or application) that made some action
      */
-    createdBy?: pulumi.Input<types.inputs.securityinsights.v20230801preview.ClientInfoArgs>;
+    createdBy?: pulumi.Input<types.inputs.ClientInfoArgs>;
     /**
      * The description of the task
      */
@@ -154,12 +154,12 @@ export interface IncidentTaskArgs {
     /**
      * Information on the client (user or application) that made some action
      */
-    lastModifiedBy?: pulumi.Input<types.inputs.securityinsights.v20230801preview.ClientInfoArgs>;
+    lastModifiedBy?: pulumi.Input<types.inputs.ClientInfoArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
-    status: pulumi.Input<string | types.enums.v20230801preview.IncidentTaskStatus>;
+    status: pulumi.Input<string | types.enums.IncidentTaskStatus>;
     /**
      * The title of the task
      */

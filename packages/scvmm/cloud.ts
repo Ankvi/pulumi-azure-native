@@ -35,7 +35,7 @@ export class Cloud extends pulumi.CustomResource {
     /**
      * Capacity of the cloud.
      */
-    public /*out*/ readonly cloudCapacity!: pulumi.Output<types.outputs.scvmm.CloudCapacityResponse>;
+    public /*out*/ readonly cloudCapacity!: pulumi.Output<types.outputs.CloudCapacityResponse>;
     /**
      * Name of the cloud in VMMServer.
      */
@@ -43,7 +43,7 @@ export class Cloud extends pulumi.CustomResource {
     /**
      * The extended location.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.scvmm.ExtendedLocationResponse>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse>;
     /**
      * Gets or sets the inventory Item ID for the resource.
      */
@@ -63,11 +63,11 @@ export class Cloud extends pulumi.CustomResource {
     /**
      * List of QoS policies available for the cloud.
      */
-    public /*out*/ readonly storageQoSPolicies!: pulumi.Output<types.outputs.scvmm.StorageQoSPolicyResponse[]>;
+    public /*out*/ readonly storageQoSPolicies!: pulumi.Output<types.outputs.StorageQoSPolicyResponse[]>;
     /**
      * The system data.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.scvmm.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags
      */
@@ -149,7 +149,7 @@ export interface CloudArgs {
     /**
      * The extended location.
      */
-    extendedLocation: pulumi.Input<types.inputs.scvmm.ExtendedLocationArgs>;
+    extendedLocation: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * Gets or sets the inventory Item ID for the resource.
      */

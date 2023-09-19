@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Protection container mapping object.
  */
@@ -42,7 +42,7 @@ export class ReplicationProtectionContainerMapping extends pulumi.CustomResource
     /**
      * The custom data.
      */
-    public readonly properties!: pulumi.Output<types.outputs.recoveryservices.v20230401.ProtectionContainerMappingPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ProtectionContainerMappingPropertiesResponse>;
     /**
      * Resource Type
      */
@@ -108,7 +108,7 @@ export interface ReplicationProtectionContainerMappingArgs {
     /**
      * Configure protection input properties.
      */
-    properties?: pulumi.Input<types.inputs.recoveryservices.v20230401.CreateProtectionContainerMappingInputPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.CreateProtectionContainerMappingInputPropertiesArgs>;
     /**
      * Protection container name.
      */

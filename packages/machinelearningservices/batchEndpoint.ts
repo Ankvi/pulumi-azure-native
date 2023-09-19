@@ -34,11 +34,11 @@ export class BatchEndpoint extends pulumi.CustomResource {
     /**
      * [Required] Additional attributes of the entity.
      */
-    public readonly batchEndpointProperties!: pulumi.Output<types.outputs.machinelearningservices.BatchEndpointResponse>;
+    public readonly batchEndpointProperties!: pulumi.Output<types.outputs.BatchEndpointResponse>;
     /**
      * Managed service identity (system assigned and/or user assigned identities)
      */
-    public readonly identity!: pulumi.Output<types.outputs.machinelearningservices.ManagedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
      */
@@ -54,11 +54,11 @@ export class BatchEndpoint extends pulumi.CustomResource {
     /**
      * Sku details required for ARM contract for Autoscaling.
      */
-    public readonly sku!: pulumi.Output<types.outputs.machinelearningservices.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.machinelearningservices.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -125,7 +125,7 @@ export interface BatchEndpointArgs {
     /**
      * [Required] Additional attributes of the entity.
      */
-    batchEndpointProperties: pulumi.Input<types.inputs.machinelearningservices.BatchEndpointArgs>;
+    batchEndpointProperties: pulumi.Input<types.inputs.BatchEndpointArgs>;
     /**
      * Name for the Batch inference endpoint.
      */
@@ -133,7 +133,7 @@ export interface BatchEndpointArgs {
     /**
      * Managed service identity (system assigned and/or user assigned identities)
      */
-    identity?: pulumi.Input<types.inputs.machinelearningservices.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
      * Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
      */
@@ -149,7 +149,7 @@ export interface BatchEndpointArgs {
     /**
      * Sku details required for ARM contract for Autoscaling.
      */
-    sku?: pulumi.Input<types.inputs.machinelearningservices.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Resource tags.
      */

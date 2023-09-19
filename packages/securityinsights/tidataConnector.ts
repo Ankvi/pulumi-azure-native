@@ -35,7 +35,7 @@ export class TIDataConnector extends pulumi.CustomResource {
     /**
      * The available data types for the connector.
      */
-    public readonly dataTypes!: pulumi.Output<types.outputs.securityinsights.TIDataConnectorDataTypesResponse | undefined>;
+    public readonly dataTypes!: pulumi.Output<types.outputs.TIDataConnectorDataTypesResponse | undefined>;
     /**
      * Etag of the azure resource
      */
@@ -52,7 +52,7 @@ export class TIDataConnector extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.securityinsights.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The tenant id to connect to, and get the data from.
      */
@@ -125,7 +125,7 @@ export interface TIDataConnectorArgs {
     /**
      * The available data types for the connector.
      */
-    dataTypes?: pulumi.Input<types.inputs.securityinsights.TIDataConnectorDataTypesArgs>;
+    dataTypes?: pulumi.Input<types.inputs.TIDataConnectorDataTypesArgs>;
     /**
      * The kind of the data connector
      * Expected value is 'ThreatIntelligence'.

@@ -39,15 +39,15 @@ export class ConnectorDryrun extends pulumi.CustomResource {
     /**
      * the preview of the operations for creation
      */
-    public /*out*/ readonly operationPreviews!: pulumi.Output<types.outputs.servicelinker.DryrunOperationPreviewResponse[]>;
+    public /*out*/ readonly operationPreviews!: pulumi.Output<types.outputs.DryrunOperationPreviewResponse[]>;
     /**
      * The parameters of the dryrun
      */
-    public readonly parameters!: pulumi.Output<types.outputs.servicelinker.CreateOrUpdateDryrunParametersResponse | undefined>;
+    public readonly parameters!: pulumi.Output<types.outputs.CreateOrUpdateDryrunParametersResponse | undefined>;
     /**
      * the result of the dryrun
      */
-    public /*out*/ readonly prerequisiteResults!: pulumi.Output<(types.outputs.servicelinker.BasicErrorDryrunPrerequisiteResultResponse | types.outputs.servicelinker.PermissionsMissingDryrunPrerequisiteResultResponse)[]>;
+    public /*out*/ readonly prerequisiteResults!: pulumi.Output<(types.outputs.BasicErrorDryrunPrerequisiteResultResponse | types.outputs.PermissionsMissingDryrunPrerequisiteResultResponse)[]>;
     /**
      * The provisioning state. 
      */
@@ -55,7 +55,7 @@ export class ConnectorDryrun extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.servicelinker.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -120,7 +120,7 @@ export interface ConnectorDryrunArgs {
     /**
      * The parameters of the dryrun
      */
-    parameters?: pulumi.Input<types.inputs.servicelinker.CreateOrUpdateDryrunParametersArgs>;
+    parameters?: pulumi.Input<types.inputs.CreateOrUpdateDryrunParametersArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

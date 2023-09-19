@@ -40,15 +40,15 @@ export interface GetRegistrationDefinitionResult {
     /**
      * The details for the Managed Services offer’s plan in Azure Marketplace.
      */
-    readonly plan?: types.outputs.managedservices.PlanResponse;
+    readonly plan?: types.outputs.PlanResponse;
     /**
      * The properties of a registration definition.
      */
-    readonly properties: types.outputs.managedservices.RegistrationDefinitionPropertiesResponse;
+    readonly properties: types.outputs.RegistrationDefinitionPropertiesResponse;
     /**
      * The metadata for the registration assignment resource.
      */
-    readonly systemData: types.outputs.managedservices.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the Azure resource (Microsoft.ManagedServices/registrationDefinitions).
      */

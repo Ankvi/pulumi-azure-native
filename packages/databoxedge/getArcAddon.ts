@@ -83,7 +83,7 @@ export interface GetArcAddonResult {
     /**
      * Metadata pertaining to creation and last modification of Addon
      */
-    readonly systemData: types.outputs.databoxedge.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The hierarchical type of the object.
      */

@@ -43,7 +43,7 @@ export class PrivateDnsZoneGroup extends pulumi.CustomResource {
     /**
      * A collection of private dns zone configurations of the private dns zone group.
      */
-    public readonly privateDnsZoneConfigs!: pulumi.Output<types.outputs.network.PrivateDnsZoneConfigResponse[] | undefined>;
+    public readonly privateDnsZoneConfigs!: pulumi.Output<types.outputs.PrivateDnsZoneConfigResponse[] | undefined>;
     /**
      * The provisioning state of the private dns zone group resource.
      */
@@ -102,7 +102,7 @@ export interface PrivateDnsZoneGroupArgs {
     /**
      * A collection of private dns zone configurations of the private dns zone group.
      */
-    privateDnsZoneConfigs?: pulumi.Input<pulumi.Input<types.inputs.network.PrivateDnsZoneConfigArgs>[]>;
+    privateDnsZoneConfigs?: pulumi.Input<pulumi.Input<types.inputs.PrivateDnsZoneConfigArgs>[]>;
     /**
      * The name of the private dns zone group.
      */

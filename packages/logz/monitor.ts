@@ -31,7 +31,7 @@ export class Monitor extends pulumi.CustomResource {
         return obj['__pulumiType'] === Monitor.__pulumiType;
     }
 
-    public readonly identity!: pulumi.Output<types.outputs.logz.IdentityPropertiesResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityPropertiesResponse | undefined>;
     public readonly location!: pulumi.Output<string>;
     /**
      * Name of the monitor resource.
@@ -40,11 +40,11 @@ export class Monitor extends pulumi.CustomResource {
     /**
      * Properties specific to the monitor resource.
      */
-    public readonly properties!: pulumi.Output<types.outputs.logz.MonitorPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.MonitorPropertiesResponse>;
     /**
      * The system metadata relating to this resource
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.logz.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The type of the monitor resource.
@@ -94,7 +94,7 @@ export class Monitor extends pulumi.CustomResource {
  * The set of arguments for constructing a Monitor resource.
  */
 export interface MonitorArgs {
-    identity?: pulumi.Input<types.inputs.logz.IdentityPropertiesArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityPropertiesArgs>;
     location?: pulumi.Input<string>;
     /**
      * Monitor resource name
@@ -103,7 +103,7 @@ export interface MonitorArgs {
     /**
      * Properties specific to the monitor resource.
      */
-    properties?: pulumi.Input<types.inputs.logz.MonitorPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.MonitorPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

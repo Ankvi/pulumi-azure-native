@@ -37,7 +37,7 @@ export interface GetHybridRunbookWorkerGroupResult {
     /**
      * Sets the credential of a worker group.
      */
-    readonly credential?: types.outputs.automation.RunAsCredentialAssociationPropertyResponse;
+    readonly credential?: types.outputs.RunAsCredentialAssociationPropertyResponse;
     /**
      * Type of the HybridWorkerGroup.
      */
@@ -53,7 +53,7 @@ export interface GetHybridRunbookWorkerGroupResult {
     /**
      * Resource system metadata.
      */
-    readonly systemData: types.outputs.automation.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource.
      */

@@ -51,11 +51,11 @@ export class AssociationsInterface extends pulumi.CustomResource {
     /**
      * Association Subnet
      */
-    public readonly subnet!: pulumi.Output<types.outputs.servicenetworking.AssociationSubnetResponse | undefined>;
+    public readonly subnet!: pulumi.Output<types.outputs.AssociationSubnetResponse | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.servicenetworking.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -136,7 +136,7 @@ export interface AssociationsInterfaceArgs {
     /**
      * Association Subnet
      */
-    subnet?: pulumi.Input<types.inputs.servicenetworking.AssociationSubnetArgs>;
+    subnet?: pulumi.Input<types.inputs.AssociationSubnetArgs>;
     /**
      * Resource tags.
      */

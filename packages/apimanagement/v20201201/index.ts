@@ -18,7 +18,7 @@ utilities.lazyLoad(exports, ["getApiManagementServiceDomainOwnershipIdentifier",
 
 
 // Export enums:
-export * from "../types/enums/v20201201";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

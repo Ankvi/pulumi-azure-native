@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * NetworkSecurityGroup resource.
  */
@@ -34,7 +34,7 @@ export class NetworkSecurityGroup extends pulumi.CustomResource {
     /**
      * The default security rules of network security group.
      */
-    public readonly defaultSecurityRules!: pulumi.Output<types.outputs.network.v20190601.SecurityRuleResponse[] | undefined>;
+    public readonly defaultSecurityRules!: pulumi.Output<types.outputs.SecurityRuleResponse[] | undefined>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -50,7 +50,7 @@ export class NetworkSecurityGroup extends pulumi.CustomResource {
     /**
      * A collection of references to network interfaces.
      */
-    public /*out*/ readonly networkInterfaces!: pulumi.Output<types.outputs.network.v20190601.NetworkInterfaceResponse[]>;
+    public /*out*/ readonly networkInterfaces!: pulumi.Output<types.outputs.NetworkInterfaceResponse[]>;
     /**
      * The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
      */
@@ -62,11 +62,11 @@ export class NetworkSecurityGroup extends pulumi.CustomResource {
     /**
      * A collection of security rules of the network security group.
      */
-    public readonly securityRules!: pulumi.Output<types.outputs.network.v20190601.SecurityRuleResponse[] | undefined>;
+    public readonly securityRules!: pulumi.Output<types.outputs.SecurityRuleResponse[] | undefined>;
     /**
      * A collection of references to subnets.
      */
-    public /*out*/ readonly subnets!: pulumi.Output<types.outputs.network.v20190601.SubnetResponse[]>;
+    public /*out*/ readonly subnets!: pulumi.Output<types.outputs.SubnetResponse[]>;
     /**
      * Resource tags.
      */
@@ -132,7 +132,7 @@ export interface NetworkSecurityGroupArgs {
      * The default security rules of network security group.
      * These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
      */
-    defaultSecurityRules?: pulumi.Input<pulumi.Input<types.inputs.network.v20190601.SecurityRuleArgs>[]>;
+    defaultSecurityRules?: pulumi.Input<pulumi.Input<types.inputs.SecurityRuleArgs>[]>;
     /**
      * Resource ID.
      */
@@ -161,7 +161,7 @@ export interface NetworkSecurityGroupArgs {
      * A collection of security rules of the network security group.
      * These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
      */
-    securityRules?: pulumi.Input<pulumi.Input<types.inputs.network.v20190601.SecurityRuleArgs>[]>;
+    securityRules?: pulumi.Input<pulumi.Input<types.inputs.SecurityRuleArgs>[]>;
     /**
      * Resource tags.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Template Spec object.
  */
@@ -54,7 +54,7 @@ export class TemplateSpec extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.resources.v20220201.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -66,7 +66,7 @@ export class TemplateSpec extends pulumi.CustomResource {
     /**
      * High-level information about the versions within this Template Spec. The keys are the version names. Only populated if the $expand query parameter is set to 'versions'.
      */
-    public /*out*/ readonly versions!: pulumi.Output<{[key: string]: types.outputs.resources.v20220201.TemplateSpecVersionInfoResponse}>;
+    public /*out*/ readonly versions!: pulumi.Output<{[key: string]: types.outputs.TemplateSpecVersionInfoResponse}>;
 
     /**
      * Create a TemplateSpec resource with the given unique name, arguments, and options.

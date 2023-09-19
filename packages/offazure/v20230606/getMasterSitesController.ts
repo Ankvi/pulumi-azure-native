@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a MasterSite
  */
@@ -56,7 +56,7 @@ export interface GetMasterSitesControllerResult {
     /**
      * Gets the private endpoint connections.
      */
-    readonly privateEndpointConnections: types.outputs.offazure.v20230606.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections: types.outputs.PrivateEndpointConnectionResponse[];
     /**
      * provisioning state enum
      */
@@ -74,7 +74,7 @@ export interface GetMasterSitesControllerResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.offazure.v20230606.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

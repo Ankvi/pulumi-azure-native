@@ -52,7 +52,7 @@ export interface GetVendorSkusResult {
     /**
      * The template definition of the network function.
      */
-    readonly networkFunctionTemplate?: types.outputs.hybridnetwork.NetworkFunctionTemplateResponse;
+    readonly networkFunctionTemplate?: types.outputs.NetworkFunctionTemplateResponse;
     /**
      * The network function type.
      */
@@ -72,7 +72,7 @@ export interface GetVendorSkusResult {
     /**
      * The system meta data relating to this resource.
      */
-    readonly systemData: types.outputs.hybridnetwork.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

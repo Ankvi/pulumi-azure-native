@@ -49,7 +49,7 @@ export interface GetTagInheritanceSettingResult {
     /**
      * The properties of the tag inheritance setting.
      */
-    readonly properties: types.outputs.costmanagement.TagInheritancePropertiesResponse;
+    readonly properties: types.outputs.TagInheritancePropertiesResponse;
     /**
      * Resource type.
      */

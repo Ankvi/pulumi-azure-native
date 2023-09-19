@@ -49,7 +49,7 @@ export interface GetDomainTopicResult {
     /**
      * The system metadata relating to Domain Topic resource.
      */
-    readonly systemData: types.outputs.eventgrid.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Type of the resource.
      */

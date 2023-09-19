@@ -35,15 +35,15 @@ export class ProximityPlacementGroup extends pulumi.CustomResource {
     /**
      * A list of references to all availability sets in the proximity placement group.
      */
-    public /*out*/ readonly availabilitySets!: pulumi.Output<types.outputs.compute.SubResourceWithColocationStatusResponse[]>;
+    public /*out*/ readonly availabilitySets!: pulumi.Output<types.outputs.SubResourceWithColocationStatusResponse[]>;
     /**
      * Describes colocation status of the Proximity Placement Group.
      */
-    public readonly colocationStatus!: pulumi.Output<types.outputs.compute.InstanceViewStatusResponse | undefined>;
+    public readonly colocationStatus!: pulumi.Output<types.outputs.InstanceViewStatusResponse | undefined>;
     /**
      * Specifies the user intent of the proximity placement group.
      */
-    public readonly intent!: pulumi.Output<types.outputs.compute.ProximityPlacementGroupPropertiesResponseIntent | undefined>;
+    public readonly intent!: pulumi.Output<types.outputs.ProximityPlacementGroupPropertiesResponseIntent | undefined>;
     /**
      * Resource location
      */
@@ -67,11 +67,11 @@ export class ProximityPlacementGroup extends pulumi.CustomResource {
     /**
      * A list of references to all virtual machine scale sets in the proximity placement group.
      */
-    public /*out*/ readonly virtualMachineScaleSets!: pulumi.Output<types.outputs.compute.SubResourceWithColocationStatusResponse[]>;
+    public /*out*/ readonly virtualMachineScaleSets!: pulumi.Output<types.outputs.SubResourceWithColocationStatusResponse[]>;
     /**
      * A list of references to all virtual machines in the proximity placement group.
      */
-    public /*out*/ readonly virtualMachines!: pulumi.Output<types.outputs.compute.SubResourceWithColocationStatusResponse[]>;
+    public /*out*/ readonly virtualMachines!: pulumi.Output<types.outputs.SubResourceWithColocationStatusResponse[]>;
     /**
      * Specifies the Availability Zone where virtual machine, virtual machine scale set or availability set associated with the  proximity placement group can be created.
      */
@@ -131,11 +131,11 @@ export interface ProximityPlacementGroupArgs {
     /**
      * Describes colocation status of the Proximity Placement Group.
      */
-    colocationStatus?: pulumi.Input<types.inputs.compute.InstanceViewStatusArgs>;
+    colocationStatus?: pulumi.Input<types.inputs.InstanceViewStatusArgs>;
     /**
      * Specifies the user intent of the proximity placement group.
      */
-    intent?: pulumi.Input<types.inputs.compute.ProximityPlacementGroupPropertiesIntentArgs>;
+    intent?: pulumi.Input<types.inputs.ProximityPlacementGroupPropertiesIntentArgs>;
     /**
      * Resource location
      */

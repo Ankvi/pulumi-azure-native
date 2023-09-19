@@ -35,7 +35,7 @@ export class Extension extends pulumi.CustomResource {
     /**
      * Additional Api Properties.
      */
-    public readonly additionalApiProperties!: pulumi.Output<{[key: string]: types.outputs.agfoodplatform.ApiPropertiesResponse}>;
+    public readonly additionalApiProperties!: pulumi.Output<{[key: string]: types.outputs.ApiPropertiesResponse}>;
     /**
      * The ETag value to implement optimistic concurrency.
      */
@@ -67,7 +67,7 @@ export class Extension extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.agfoodplatform.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -129,7 +129,7 @@ export interface ExtensionArgs {
     /**
      * Additional Api Properties.
      */
-    additionalApiProperties?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.agfoodplatform.ApiPropertiesArgs>}>;
+    additionalApiProperties?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.ApiPropertiesArgs>}>;
     /**
      * DataManagerForAgriculture resource name.
      */

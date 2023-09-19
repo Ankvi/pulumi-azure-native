@@ -43,7 +43,7 @@ export class IntegrationAccountAssembly extends pulumi.CustomResource {
     /**
      * The assembly properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.logic.AssemblyPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.AssemblyPropertiesResponse>;
     /**
      * The resource tags.
      */
@@ -114,7 +114,7 @@ export interface IntegrationAccountAssemblyArgs {
     /**
      * The assembly properties.
      */
-    properties: pulumi.Input<types.inputs.logic.AssemblyPropertiesArgs>;
+    properties: pulumi.Input<types.inputs.AssemblyPropertiesArgs>;
     /**
      * The resource group name.
      */

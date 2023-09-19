@@ -47,7 +47,7 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * PrivateEndpointConnectionResource properties
      */
-    public readonly properties!: pulumi.Output<types.outputs.recoveryservices.PrivateEndpointConnectionResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse>;
     /**
      * Resource tags.
      */
@@ -117,7 +117,7 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * PrivateEndpointConnectionResource properties
      */
-    properties?: pulumi.Input<types.inputs.recoveryservices.PrivateEndpointConnectionArgs>;
+    properties?: pulumi.Input<types.inputs.PrivateEndpointConnectionArgs>;
     /**
      * The name of the resource group where the recovery services vault is present.
      */

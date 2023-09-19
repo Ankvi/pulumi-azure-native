@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Lists active connectivity configurations in a network manager.
  */
@@ -50,7 +50,7 @@ export interface ListActiveConnectivityConfigurationsResult {
     /**
      * Gets a page of active connectivity configurations.
      */
-    readonly value?: types.outputs.network.v20230201.ActiveConnectivityConfigurationResponse[];
+    readonly value?: types.outputs.ActiveConnectivityConfigurationResponse[];
 }
 /**
  * Lists active connectivity configurations in a network manager.

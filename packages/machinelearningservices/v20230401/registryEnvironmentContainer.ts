@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Azure Resource Manager resource envelope.
  */
@@ -34,7 +34,7 @@ export class RegistryEnvironmentContainer extends pulumi.CustomResource {
     /**
      * [Required] Additional attributes of the entity.
      */
-    public readonly environmentContainerProperties!: pulumi.Output<types.outputs.machinelearningservices.v20230401.EnvironmentContainerResponse>;
+    public readonly environmentContainerProperties!: pulumi.Output<types.outputs.EnvironmentContainerResponse>;
     /**
      * The name of the resource
      */
@@ -42,7 +42,7 @@ export class RegistryEnvironmentContainer extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.machinelearningservices.v20230401.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -68,7 +68,7 @@ export class RegistryEnvironmentContainer extends pulumi.CustomResource {
             if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["environmentContainerProperties"] = args ? (args.environmentContainerProperties ? pulumi.output(args.environmentContainerProperties).apply(types.inputs.machinelearningservices.v20230401.environmentContainerArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["environmentContainerProperties"] = args ? (args.environmentContainerProperties ? pulumi.output(args.environmentContainerProperties).apply(types.inputs.environmentContainerArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["environmentName"] = args ? args.environmentName : undefined;
             resourceInputs["registryName"] = args ? args.registryName : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
@@ -95,7 +95,7 @@ export interface RegistryEnvironmentContainerArgs {
     /**
      * [Required] Additional attributes of the entity.
      */
-    environmentContainerProperties: pulumi.Input<types.inputs.machinelearningservices.v20230401.EnvironmentContainerArgs>;
+    environmentContainerProperties: pulumi.Input<types.inputs.EnvironmentContainerArgs>;
     /**
      * Container name.
      */

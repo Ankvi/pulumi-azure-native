@@ -55,11 +55,11 @@ export interface GetBuildpackBindingResult {
     /**
      * Properties of a buildpack binding
      */
-    readonly properties: types.outputs.appplatform.BuildpackBindingPropertiesResponse;
+    readonly properties: types.outputs.BuildpackBindingPropertiesResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.appplatform.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource.
      */

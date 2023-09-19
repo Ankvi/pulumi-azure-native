@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Profile of a lab user.
  */
@@ -38,7 +38,7 @@ export class User extends pulumi.CustomResource {
     /**
      * The identity of the user.
      */
-    public readonly identity!: pulumi.Output<types.outputs.devtestlab.v20180915.UserIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.UserIdentityResponse | undefined>;
     /**
      * The location of the resource.
      */
@@ -54,7 +54,7 @@ export class User extends pulumi.CustomResource {
     /**
      * The secret store of the user.
      */
-    public readonly secretStore!: pulumi.Output<types.outputs.devtestlab.v20180915.UserSecretStoreResponse | undefined>;
+    public readonly secretStore!: pulumi.Output<types.outputs.UserSecretStoreResponse | undefined>;
     /**
      * The tags of the resource.
      */
@@ -121,7 +121,7 @@ export interface UserArgs {
     /**
      * The identity of the user.
      */
-    identity?: pulumi.Input<types.inputs.devtestlab.v20180915.UserIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.UserIdentityArgs>;
     /**
      * The name of the lab.
      */
@@ -141,7 +141,7 @@ export interface UserArgs {
     /**
      * The secret store of the user.
      */
-    secretStore?: pulumi.Input<types.inputs.devtestlab.v20180915.UserSecretStoreArgs>;
+    secretStore?: pulumi.Input<types.inputs.UserSecretStoreArgs>;
     /**
      * The tags of the resource.
      */

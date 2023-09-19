@@ -42,11 +42,11 @@ export interface GetRuleResult {
     /**
      * A list of actions that are executed when all the conditions of a rule are satisfied.
      */
-    readonly actions: (types.outputs.cdn.DeliveryRuleCacheExpirationActionResponse | types.outputs.cdn.DeliveryRuleCacheKeyQueryStringActionResponse | types.outputs.cdn.DeliveryRuleRequestHeaderActionResponse | types.outputs.cdn.DeliveryRuleResponseHeaderActionResponse | types.outputs.cdn.DeliveryRuleRouteConfigurationOverrideActionResponse | types.outputs.cdn.OriginGroupOverrideActionResponse | types.outputs.cdn.UrlRedirectActionResponse | types.outputs.cdn.UrlRewriteActionResponse | types.outputs.cdn.UrlSigningActionResponse)[];
+    readonly actions: (types.outputs.DeliveryRuleCacheExpirationActionResponse | types.outputs.DeliveryRuleCacheKeyQueryStringActionResponse | types.outputs.DeliveryRuleRequestHeaderActionResponse | types.outputs.DeliveryRuleResponseHeaderActionResponse | types.outputs.DeliveryRuleRouteConfigurationOverrideActionResponse | types.outputs.OriginGroupOverrideActionResponse | types.outputs.UrlRedirectActionResponse | types.outputs.UrlRewriteActionResponse | types.outputs.UrlSigningActionResponse)[];
     /**
      * A list of conditions that must be matched for the actions to be executed
      */
-    readonly conditions?: (types.outputs.cdn.DeliveryRuleClientPortConditionResponse | types.outputs.cdn.DeliveryRuleCookiesConditionResponse | types.outputs.cdn.DeliveryRuleHostNameConditionResponse | types.outputs.cdn.DeliveryRuleHttpVersionConditionResponse | types.outputs.cdn.DeliveryRuleIsDeviceConditionResponse | types.outputs.cdn.DeliveryRulePostArgsConditionResponse | types.outputs.cdn.DeliveryRuleQueryStringConditionResponse | types.outputs.cdn.DeliveryRuleRemoteAddressConditionResponse | types.outputs.cdn.DeliveryRuleRequestBodyConditionResponse | types.outputs.cdn.DeliveryRuleRequestHeaderConditionResponse | types.outputs.cdn.DeliveryRuleRequestMethodConditionResponse | types.outputs.cdn.DeliveryRuleRequestSchemeConditionResponse | types.outputs.cdn.DeliveryRuleRequestUriConditionResponse | types.outputs.cdn.DeliveryRuleServerPortConditionResponse | types.outputs.cdn.DeliveryRuleSocketAddrConditionResponse | types.outputs.cdn.DeliveryRuleSslProtocolConditionResponse | types.outputs.cdn.DeliveryRuleUrlFileExtensionConditionResponse | types.outputs.cdn.DeliveryRuleUrlFileNameConditionResponse | types.outputs.cdn.DeliveryRuleUrlPathConditionResponse)[];
+    readonly conditions?: (types.outputs.DeliveryRuleClientPortConditionResponse | types.outputs.DeliveryRuleCookiesConditionResponse | types.outputs.DeliveryRuleHostNameConditionResponse | types.outputs.DeliveryRuleHttpVersionConditionResponse | types.outputs.DeliveryRuleIsDeviceConditionResponse | types.outputs.DeliveryRulePostArgsConditionResponse | types.outputs.DeliveryRuleQueryStringConditionResponse | types.outputs.DeliveryRuleRemoteAddressConditionResponse | types.outputs.DeliveryRuleRequestBodyConditionResponse | types.outputs.DeliveryRuleRequestHeaderConditionResponse | types.outputs.DeliveryRuleRequestMethodConditionResponse | types.outputs.DeliveryRuleRequestSchemeConditionResponse | types.outputs.DeliveryRuleRequestUriConditionResponse | types.outputs.DeliveryRuleServerPortConditionResponse | types.outputs.DeliveryRuleSocketAddrConditionResponse | types.outputs.DeliveryRuleSslProtocolConditionResponse | types.outputs.DeliveryRuleUrlFileExtensionConditionResponse | types.outputs.DeliveryRuleUrlFileNameConditionResponse | types.outputs.DeliveryRuleUrlPathConditionResponse)[];
     readonly deploymentStatus: string;
     /**
      * Resource ID.
@@ -75,7 +75,7 @@ export interface GetRuleResult {
     /**
      * Read only system data
      */
-    readonly systemData: types.outputs.cdn.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource type.
      */

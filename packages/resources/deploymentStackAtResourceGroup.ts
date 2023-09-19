@@ -35,19 +35,19 @@ export class DeploymentStackAtResourceGroup extends pulumi.CustomResource {
     /**
      * Defines the behavior of resources that are not managed immediately after the stack is updated.
      */
-    public readonly actionOnUnmanage!: pulumi.Output<types.outputs.resources.DeploymentStackPropertiesResponseActionOnUnmanage>;
+    public readonly actionOnUnmanage!: pulumi.Output<types.outputs.DeploymentStackPropertiesResponseActionOnUnmanage>;
     /**
      * The debug setting of the deployment.
      */
-    public readonly debugSetting!: pulumi.Output<types.outputs.resources.DeploymentStacksDebugSettingResponse | undefined>;
+    public readonly debugSetting!: pulumi.Output<types.outputs.DeploymentStacksDebugSettingResponse | undefined>;
     /**
      * An array of resources that were deleted during the most recent update.
      */
-    public /*out*/ readonly deletedResources!: pulumi.Output<types.outputs.resources.ResourceReferenceResponse[]>;
+    public /*out*/ readonly deletedResources!: pulumi.Output<types.outputs.ResourceReferenceResponse[]>;
     /**
      * Defines how resources deployed by the stack are locked.
      */
-    public readonly denySettings!: pulumi.Output<types.outputs.resources.DenySettingsResponse>;
+    public readonly denySettings!: pulumi.Output<types.outputs.DenySettingsResponse>;
     /**
      * The resourceId of the deployment resource created by the deployment stack.
      */
@@ -63,7 +63,7 @@ export class DeploymentStackAtResourceGroup extends pulumi.CustomResource {
     /**
      * An array of resources that were detached during the most recent update.
      */
-    public /*out*/ readonly detachedResources!: pulumi.Output<types.outputs.resources.ResourceReferenceResponse[]>;
+    public /*out*/ readonly detachedResources!: pulumi.Output<types.outputs.ResourceReferenceResponse[]>;
     /**
      * The duration of the deployment stack update.
      */
@@ -71,11 +71,11 @@ export class DeploymentStackAtResourceGroup extends pulumi.CustomResource {
     /**
      * Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows the OData error response format.).
      */
-    public /*out*/ readonly error!: pulumi.Output<types.outputs.resources.ErrorResponseResponse | undefined>;
+    public /*out*/ readonly error!: pulumi.Output<types.outputs.ErrorResponseResponse | undefined>;
     /**
      * An array of resources that failed to reach goal state during the most recent update.
      */
-    public /*out*/ readonly failedResources!: pulumi.Output<types.outputs.resources.ResourceReferenceExtendedResponse[]>;
+    public /*out*/ readonly failedResources!: pulumi.Output<types.outputs.ResourceReferenceExtendedResponse[]>;
     /**
      * The location of the deployment stack. It cannot be changed after creation. It must be one of the supported Azure locations.
      */
@@ -95,7 +95,7 @@ export class DeploymentStackAtResourceGroup extends pulumi.CustomResource {
     /**
      * The URI of parameters file. Use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both.
      */
-    public readonly parametersLink!: pulumi.Output<types.outputs.resources.DeploymentStacksParametersLinkResponse | undefined>;
+    public readonly parametersLink!: pulumi.Output<types.outputs.DeploymentStacksParametersLinkResponse | undefined>;
     /**
      * State of the deployment stack.
      */
@@ -103,11 +103,11 @@ export class DeploymentStackAtResourceGroup extends pulumi.CustomResource {
     /**
      * An array of resources currently managed by the deployment stack.
      */
-    public /*out*/ readonly resources!: pulumi.Output<types.outputs.resources.ManagedResourceReferenceResponse[]>;
+    public /*out*/ readonly resources!: pulumi.Output<types.outputs.ManagedResourceReferenceResponse[]>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.resources.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Deployment stack resource tags.
      */
@@ -199,15 +199,15 @@ export interface DeploymentStackAtResourceGroupArgs {
     /**
      * Defines the behavior of resources that are not managed immediately after the stack is updated.
      */
-    actionOnUnmanage: pulumi.Input<types.inputs.resources.DeploymentStackPropertiesActionOnUnmanageArgs>;
+    actionOnUnmanage: pulumi.Input<types.inputs.DeploymentStackPropertiesActionOnUnmanageArgs>;
     /**
      * The debug setting of the deployment.
      */
-    debugSetting?: pulumi.Input<types.inputs.resources.DeploymentStacksDebugSettingArgs>;
+    debugSetting?: pulumi.Input<types.inputs.DeploymentStacksDebugSettingArgs>;
     /**
      * Defines how resources deployed by the stack are locked.
      */
-    denySettings: pulumi.Input<types.inputs.resources.DenySettingsArgs>;
+    denySettings: pulumi.Input<types.inputs.DenySettingsArgs>;
     /**
      * The scope at which the initial deployment should be created. If a scope is not specified, it will default to the scope of the deployment stack. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroupId}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}').
      */
@@ -231,7 +231,7 @@ export interface DeploymentStackAtResourceGroupArgs {
     /**
      * The URI of parameters file. Use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both.
      */
-    parametersLink?: pulumi.Input<types.inputs.resources.DeploymentStacksParametersLinkArgs>;
+    parametersLink?: pulumi.Input<types.inputs.DeploymentStacksParametersLinkArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -247,5 +247,5 @@ export interface DeploymentStackAtResourceGroupArgs {
     /**
      * The URI of the template. Use either the templateLink property or the template property, but not both.
      */
-    templateLink?: pulumi.Input<types.inputs.resources.DeploymentStacksTemplateLinkArgs>;
+    templateLink?: pulumi.Input<types.inputs.DeploymentStacksTemplateLinkArgs>;
 }

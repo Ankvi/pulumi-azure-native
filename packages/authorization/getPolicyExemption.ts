@@ -72,11 +72,11 @@ export interface GetPolicyExemptionResult {
     /**
      * The resource selector list to filter policies by resource properties.
      */
-    readonly resourceSelectors?: types.outputs.authorization.ResourceSelectorResponse[];
+    readonly resourceSelectors?: types.outputs.ResourceSelectorResponse[];
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.authorization.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource (Microsoft.Authorization/policyExemptions).
      */

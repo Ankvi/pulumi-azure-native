@@ -41,7 +41,7 @@ export interface GetInstanceResult {
     /**
      * Customer-initiated diagnostic log collection storage properties
      */
-    readonly diagnosticStorageProperties?: types.outputs.deviceupdate.DiagnosticStoragePropertiesResponse;
+    readonly diagnosticStorageProperties?: types.outputs.DiagnosticStoragePropertiesResponse;
     /**
      * Enables or Disables the diagnostic logs collection
      */
@@ -53,7 +53,7 @@ export interface GetInstanceResult {
     /**
      * List of IoT Hubs associated with the account.
      */
-    readonly iotHubs?: types.outputs.deviceupdate.IotHubSettingsResponse[];
+    readonly iotHubs?: types.outputs.IotHubSettingsResponse[];
     /**
      * The geo-location where the resource lives
      */
@@ -69,7 +69,7 @@ export interface GetInstanceResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.deviceupdate.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

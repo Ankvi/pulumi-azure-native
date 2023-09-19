@@ -42,7 +42,7 @@ export interface GetOnlineDeploymentResult {
     /**
      * Managed service identity (system assigned and/or user assigned identities)
      */
-    readonly identity?: types.outputs.machinelearningservices.ManagedServiceIdentityResponse;
+    readonly identity?: types.outputs.ManagedServiceIdentityResponse;
     /**
      * Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
      */
@@ -58,15 +58,15 @@ export interface GetOnlineDeploymentResult {
     /**
      * [Required] Additional attributes of the entity.
      */
-    readonly onlineDeploymentProperties: types.outputs.machinelearningservices.KubernetesOnlineDeploymentResponse | types.outputs.machinelearningservices.ManagedOnlineDeploymentResponse;
+    readonly onlineDeploymentProperties: types.outputs.KubernetesOnlineDeploymentResponse | types.outputs.ManagedOnlineDeploymentResponse;
     /**
      * Sku details required for ARM contract for Autoscaling.
      */
-    readonly sku?: types.outputs.machinelearningservices.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.machinelearningservices.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

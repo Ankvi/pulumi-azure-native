@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the custom resource provider manifest.
  */
@@ -31,7 +31,7 @@ export interface GetCustomResourceProviderResult {
     /**
      * A list of actions that the custom resource provider implements.
      */
-    readonly actions?: types.outputs.customproviders.v20180901preview.CustomRPActionRouteDefinitionResponse[];
+    readonly actions?: types.outputs.CustomRPActionRouteDefinitionResponse[];
     /**
      * Resource Id
      */
@@ -51,7 +51,7 @@ export interface GetCustomResourceProviderResult {
     /**
      * A list of resource types that the custom resource provider implements.
      */
-    readonly resourceTypes?: types.outputs.customproviders.v20180901preview.CustomRPResourceTypeRouteDefinitionResponse[];
+    readonly resourceTypes?: types.outputs.CustomRPResourceTypeRouteDefinitionResponse[];
     /**
      * Resource tags
      */
@@ -63,7 +63,7 @@ export interface GetCustomResourceProviderResult {
     /**
      * A list of validations to run on the custom resource provider's requests.
      */
-    readonly validations?: types.outputs.customproviders.v20180901preview.CustomRPValidationsResponse[];
+    readonly validations?: types.outputs.CustomRPValidationsResponse[];
 }
 /**
  * Gets the custom resource provider manifest.

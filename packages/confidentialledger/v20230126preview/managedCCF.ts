@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Managed CCF. Contains the properties of Managed CCF Resource.
  */
@@ -42,11 +42,11 @@ export class ManagedCCF extends pulumi.CustomResource {
     /**
      * Properties of Managed CCF Resource.
      */
-    public readonly properties!: pulumi.Output<types.outputs.confidentialledger.v20230126preview.ManagedCCFPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ManagedCCFPropertiesResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.confidentialledger.v20230126preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -108,7 +108,7 @@ export interface ManagedCCFArgs {
     /**
      * Properties of Managed CCF Resource.
      */
-    properties?: pulumi.Input<types.inputs.confidentialledger.v20230126preview.ManagedCCFPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ManagedCCFPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

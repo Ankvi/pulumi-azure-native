@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Post to List of Network Manager Deployment Status.
  */
@@ -21,7 +21,7 @@ export interface ListNetworkManagerDeploymentStatusArgs {
     /**
      * List of deployment types.
      */
-    deploymentTypes?: (string | types.enums.v20230201.ConfigurationType)[];
+    deploymentTypes?: (string | types.enums.ConfigurationType)[];
     /**
      * The name of the network manager.
      */
@@ -55,7 +55,7 @@ export interface ListNetworkManagerDeploymentStatusResult {
     /**
      * Gets a page of Network Manager Deployment Status
      */
-    readonly value?: types.outputs.network.v20230201.NetworkManagerDeploymentStatusResponse[];
+    readonly value?: types.outputs.NetworkManagerDeploymentStatusResponse[];
 }
 /**
  * Post to List of Network Manager Deployment Status.
@@ -68,7 +68,7 @@ export interface ListNetworkManagerDeploymentStatusOutputArgs {
     /**
      * List of deployment types.
      */
-    deploymentTypes?: pulumi.Input<pulumi.Input<string | types.enums.v20230201.ConfigurationType>[]>;
+    deploymentTypes?: pulumi.Input<pulumi.Input<string | types.enums.ConfigurationType>[]>;
     /**
      * The name of the network manager.
      */

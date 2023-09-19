@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The service configuration details associated with the target resource.
  */
@@ -78,7 +78,7 @@ export class ServiceConfiguration extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.hybridconnectivity.v20230315.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -157,7 +157,7 @@ export interface ServiceConfigurationArgs {
     /**
      * The type of identity that created the resource.
      */
-    createdByType?: pulumi.Input<string | types.enums.v20230315.CreatedByType>;
+    createdByType?: pulumi.Input<string | types.enums.CreatedByType>;
     /**
      * The endpoint name.
      */
@@ -173,7 +173,7 @@ export interface ServiceConfigurationArgs {
     /**
      * The type of identity that last modified the resource.
      */
-    lastModifiedByType?: pulumi.Input<string | types.enums.v20230315.CreatedByType>;
+    lastModifiedByType?: pulumi.Input<string | types.enums.CreatedByType>;
     /**
      * The port on which service is enabled.
      */
@@ -193,5 +193,5 @@ export interface ServiceConfigurationArgs {
     /**
      * Name of the service.
      */
-    serviceName: pulumi.Input<string | types.enums.v20230315.ServiceName>;
+    serviceName: pulumi.Input<string | types.enums.ServiceName>;
 }

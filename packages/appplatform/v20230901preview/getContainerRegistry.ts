@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the container registries resource.
  */
@@ -44,11 +44,11 @@ export interface GetContainerRegistryResult {
     /**
      * Properties of the container registry resource payload.
      */
-    readonly properties: types.outputs.appplatform.v20230901preview.ContainerRegistryPropertiesResponse;
+    readonly properties: types.outputs.ContainerRegistryPropertiesResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.appplatform.v20230901preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource.
      */

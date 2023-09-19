@@ -52,7 +52,7 @@ export interface GetClusterResult {
     /**
      * Properties of the cluster SKU.
      */
-    readonly sku?: types.outputs.eventhub.ClusterSkuResponse;
+    readonly sku?: types.outputs.ClusterSkuResponse;
     /**
      * Status of the Cluster resource
      */
@@ -64,7 +64,7 @@ export interface GetClusterResult {
     /**
      * The system meta data relating to this resource.
      */
-    readonly systemData: types.outputs.eventhub.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

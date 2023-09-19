@@ -35,7 +35,7 @@ export class InterfaceEndpoint extends pulumi.CustomResource {
     /**
      * A reference to the service being brought into the virtual network.
      */
-    public readonly endpointService!: pulumi.Output<types.outputs.network.EndpointServiceResponse | undefined>;
+    public readonly endpointService!: pulumi.Output<types.outputs.EndpointServiceResponse | undefined>;
     /**
      * Gets a unique read-only string that changes whenever the resource is updated.
      */
@@ -55,7 +55,7 @@ export class InterfaceEndpoint extends pulumi.CustomResource {
     /**
      * Gets an array of references to the network interfaces created for this interface endpoint.
      */
-    public /*out*/ readonly networkInterfaces!: pulumi.Output<types.outputs.network.NetworkInterfaceResponse[]>;
+    public /*out*/ readonly networkInterfaces!: pulumi.Output<types.outputs.NetworkInterfaceResponse[]>;
     /**
      * A read-only property that identifies who created this interface endpoint.
      */
@@ -67,7 +67,7 @@ export class InterfaceEndpoint extends pulumi.CustomResource {
     /**
      * The ID of the subnet from which the private IP will be allocated.
      */
-    public readonly subnet!: pulumi.Output<types.outputs.network.SubnetResponse | undefined>;
+    public readonly subnet!: pulumi.Output<types.outputs.SubnetResponse | undefined>;
     /**
      * Resource tags.
      */
@@ -97,7 +97,7 @@ export class InterfaceEndpoint extends pulumi.CustomResource {
             resourceInputs["interfaceEndpointName"] = args ? args.interfaceEndpointName : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["subnet"] = args ? (args.subnet ? pulumi.output(args.subnet).apply(types.inputs.network.subnetArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["subnet"] = args ? (args.subnet ? pulumi.output(args.subnet).apply(types.inputs.subnetArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -132,7 +132,7 @@ export interface InterfaceEndpointArgs {
     /**
      * A reference to the service being brought into the virtual network.
      */
-    endpointService?: pulumi.Input<types.inputs.network.EndpointServiceArgs>;
+    endpointService?: pulumi.Input<types.inputs.EndpointServiceArgs>;
     /**
      * A first-party service's FQDN that is mapped to the private IP allocated via this interface endpoint.
      */
@@ -156,7 +156,7 @@ export interface InterfaceEndpointArgs {
     /**
      * The ID of the subnet from which the private IP will be allocated.
      */
-    subnet?: pulumi.Input<types.inputs.network.SubnetArgs>;
+    subnet?: pulumi.Input<types.inputs.SubnetArgs>;
     /**
      * Resource tags.
      */

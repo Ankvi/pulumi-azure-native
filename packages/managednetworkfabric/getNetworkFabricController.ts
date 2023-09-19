@@ -40,11 +40,11 @@ export interface GetNetworkFabricControllerResult {
     /**
      * As part of an update, the Infrastructure ExpressRoute CircuitID should be provided to create and Provision a NFC. This Express route is dedicated for Infrastructure services. (This is a Mandatory attribute)
      */
-    readonly infrastructureExpressRouteConnections?: types.outputs.managednetworkfabric.ExpressRouteConnectionInformationResponse[];
+    readonly infrastructureExpressRouteConnections?: types.outputs.ExpressRouteConnectionInformationResponse[];
     /**
      * InfrastructureServices IP ranges.
      */
-    readonly infrastructureServices: types.outputs.managednetworkfabric.InfrastructureServicesResponse;
+    readonly infrastructureServices: types.outputs.InfrastructureServicesResponse;
     /**
      * IPv4 Network Fabric Controller Address Space.
      */
@@ -60,7 +60,7 @@ export interface GetNetworkFabricControllerResult {
     /**
      * Managed Resource Group configuration properties.
      */
-    readonly managedResourceGroupConfiguration?: types.outputs.managednetworkfabric.ManagedResourceGroupConfigurationResponse;
+    readonly managedResourceGroupConfiguration?: types.outputs.ManagedResourceGroupConfigurationResponse;
     /**
      * The name of the resource
      */
@@ -80,7 +80,7 @@ export interface GetNetworkFabricControllerResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.managednetworkfabric.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -92,7 +92,7 @@ export interface GetNetworkFabricControllerResult {
     /**
      * As part of an update, the workload ExpressRoute CircuitID should be provided to create and Provision a NFC. This Express route is dedicated for Workload services. (This is a Mandatory attribute).
      */
-    readonly workloadExpressRouteConnections?: types.outputs.managednetworkfabric.ExpressRouteConnectionInformationResponse[];
+    readonly workloadExpressRouteConnections?: types.outputs.ExpressRouteConnectionInformationResponse[];
     /**
      * A workload management network is required for all the tenant (workload) traffic. This traffic is only dedicated for Tenant workloads which are required to access internet or any other MSFT/Public endpoints.
      */
@@ -100,7 +100,7 @@ export interface GetNetworkFabricControllerResult {
     /**
      * WorkloadServices IP ranges.
      */
-    readonly workloadServices: types.outputs.managednetworkfabric.WorkloadServicesResponse;
+    readonly workloadServices: types.outputs.WorkloadServicesResponse;
 }
 /**
  * Shows the provisioning status of Network Fabric Controller.

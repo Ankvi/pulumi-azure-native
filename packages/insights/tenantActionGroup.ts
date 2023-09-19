@@ -35,11 +35,11 @@ export class TenantActionGroup extends pulumi.CustomResource {
     /**
      * The list of AzureAppPush receivers that are part of this tenant action group.
      */
-    public readonly azureAppPushReceivers!: pulumi.Output<types.outputs.insights.AzureAppPushReceiverResponse[] | undefined>;
+    public readonly azureAppPushReceivers!: pulumi.Output<types.outputs.AzureAppPushReceiverResponse[] | undefined>;
     /**
      * The list of email receivers that are part of this tenant action group.
      */
-    public readonly emailReceivers!: pulumi.Output<types.outputs.insights.EmailReceiverResponse[] | undefined>;
+    public readonly emailReceivers!: pulumi.Output<types.outputs.EmailReceiverResponse[] | undefined>;
     /**
      * Indicates whether this tenant action group is enabled. If a tenant action group is not enabled, then none of its receivers will receive communications.
      */
@@ -59,7 +59,7 @@ export class TenantActionGroup extends pulumi.CustomResource {
     /**
      * The list of SMS receivers that are part of this tenant action group.
      */
-    public readonly smsReceivers!: pulumi.Output<types.outputs.insights.SmsReceiverResponse[] | undefined>;
+    public readonly smsReceivers!: pulumi.Output<types.outputs.SmsReceiverResponse[] | undefined>;
     /**
      * Resource tags
      */
@@ -71,11 +71,11 @@ export class TenantActionGroup extends pulumi.CustomResource {
     /**
      * The list of voice receivers that are part of this tenant action group.
      */
-    public readonly voiceReceivers!: pulumi.Output<types.outputs.insights.VoiceReceiverResponse[] | undefined>;
+    public readonly voiceReceivers!: pulumi.Output<types.outputs.VoiceReceiverResponse[] | undefined>;
     /**
      * The list of webhook receivers that are part of this tenant action group.
      */
-    public readonly webhookReceivers!: pulumi.Output<types.outputs.insights.WebhookReceiverResponse[] | undefined>;
+    public readonly webhookReceivers!: pulumi.Output<types.outputs.WebhookReceiverResponse[] | undefined>;
 
     /**
      * Create a TenantActionGroup resource with the given unique name, arguments, and options.
@@ -137,11 +137,11 @@ export interface TenantActionGroupArgs {
     /**
      * The list of AzureAppPush receivers that are part of this tenant action group.
      */
-    azureAppPushReceivers?: pulumi.Input<pulumi.Input<types.inputs.insights.AzureAppPushReceiverArgs>[]>;
+    azureAppPushReceivers?: pulumi.Input<pulumi.Input<types.inputs.AzureAppPushReceiverArgs>[]>;
     /**
      * The list of email receivers that are part of this tenant action group.
      */
-    emailReceivers?: pulumi.Input<pulumi.Input<types.inputs.insights.EmailReceiverArgs>[]>;
+    emailReceivers?: pulumi.Input<pulumi.Input<types.inputs.EmailReceiverArgs>[]>;
     /**
      * Indicates whether this tenant action group is enabled. If a tenant action group is not enabled, then none of its receivers will receive communications.
      */
@@ -161,7 +161,7 @@ export interface TenantActionGroupArgs {
     /**
      * The list of SMS receivers that are part of this tenant action group.
      */
-    smsReceivers?: pulumi.Input<pulumi.Input<types.inputs.insights.SmsReceiverArgs>[]>;
+    smsReceivers?: pulumi.Input<pulumi.Input<types.inputs.SmsReceiverArgs>[]>;
     /**
      * Resource tags
      */
@@ -173,9 +173,9 @@ export interface TenantActionGroupArgs {
     /**
      * The list of voice receivers that are part of this tenant action group.
      */
-    voiceReceivers?: pulumi.Input<pulumi.Input<types.inputs.insights.VoiceReceiverArgs>[]>;
+    voiceReceivers?: pulumi.Input<pulumi.Input<types.inputs.VoiceReceiverArgs>[]>;
     /**
      * The list of webhook receivers that are part of this tenant action group.
      */
-    webhookReceivers?: pulumi.Input<pulumi.Input<types.inputs.insights.WebhookReceiverArgs>[]>;
+    webhookReceivers?: pulumi.Input<pulumi.Input<types.inputs.WebhookReceiverArgs>[]>;
 }

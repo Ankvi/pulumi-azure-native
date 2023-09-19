@@ -65,7 +65,7 @@ export interface GetMigrationConfigResult {
     /**
      * The system meta data relating to this resource.
      */
-    readonly systemData: types.outputs.servicebus.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Existing premium Namespace ARM Id name which has no entities, will be used for migration
      */

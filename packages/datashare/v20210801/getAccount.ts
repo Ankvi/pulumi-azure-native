@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get an account
  */
@@ -39,7 +39,7 @@ export interface GetAccountResult {
     /**
      * Identity Info on the Account
      */
-    readonly identity: types.outputs.datashare.v20210801.IdentityResponse;
+    readonly identity: types.outputs.IdentityResponse;
     /**
      * Location of the azure resource.
      */
@@ -55,7 +55,7 @@ export interface GetAccountResult {
     /**
      * System Data of the Azure resource.
      */
-    readonly systemData: types.outputs.datashare.v20210801.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Tags on the azure resource.
      */

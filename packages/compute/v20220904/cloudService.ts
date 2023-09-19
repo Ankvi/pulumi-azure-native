@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Describes the cloud service.
  */
@@ -42,11 +42,11 @@ export class CloudService extends pulumi.CustomResource {
     /**
      * Cloud service properties
      */
-    public readonly properties!: pulumi.Output<types.outputs.compute.v20220904.CloudServicePropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.CloudServicePropertiesResponse>;
     /**
      * The system meta data relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.compute.v20220904.SystemDataResponse | undefined>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse | undefined>;
     /**
      * Resource tags.
      */
@@ -114,7 +114,7 @@ export interface CloudServiceArgs {
     /**
      * Cloud service properties
      */
-    properties?: pulumi.Input<types.inputs.compute.v20220904.CloudServicePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.CloudServicePropertiesArgs>;
     /**
      * Name of the resource group.
      */

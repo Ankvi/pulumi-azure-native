@@ -47,7 +47,7 @@ export class Link extends pulumi.CustomResource {
     /**
      * The set of properties mappings between the source and target Types.
      */
-    public readonly mappings!: pulumi.Output<types.outputs.customerinsights.TypePropertiesMappingResponse[] | undefined>;
+    public readonly mappings!: pulumi.Output<types.outputs.TypePropertiesMappingResponse[] | undefined>;
     /**
      * Resource name.
      */
@@ -59,7 +59,7 @@ export class Link extends pulumi.CustomResource {
     /**
      * The properties that represent the participating profile.
      */
-    public readonly participantPropertyReferences!: pulumi.Output<types.outputs.customerinsights.ParticipantPropertyReferenceResponse[]>;
+    public readonly participantPropertyReferences!: pulumi.Output<types.outputs.ParticipantPropertyReferenceResponse[]>;
     /**
      * Provisioning state.
      */
@@ -189,7 +189,7 @@ export interface LinkArgs {
     /**
      * The set of properties mappings between the source and target Types.
      */
-    mappings?: pulumi.Input<pulumi.Input<types.inputs.customerinsights.TypePropertiesMappingArgs>[]>;
+    mappings?: pulumi.Input<pulumi.Input<types.inputs.TypePropertiesMappingArgs>[]>;
     /**
      * Determines whether this link is supposed to create or delete instances if Link is NOT Reference Only.
      */
@@ -197,7 +197,7 @@ export interface LinkArgs {
     /**
      * The properties that represent the participating profile.
      */
-    participantPropertyReferences: pulumi.Input<pulumi.Input<types.inputs.customerinsights.ParticipantPropertyReferenceArgs>[]>;
+    participantPropertyReferences: pulumi.Input<pulumi.Input<types.inputs.ParticipantPropertyReferenceArgs>[]>;
     /**
      * Indicating whether the link is reference only link. This flag is ignored if the Mappings are defined. If the mappings are not defined and it is set to true, links processing will not create or update profiles.
      */

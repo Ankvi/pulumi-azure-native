@@ -39,7 +39,7 @@ export class User extends pulumi.CustomResource {
     /**
      * The identity of the user.
      */
-    public readonly identity!: pulumi.Output<types.outputs.devtestlab.UserIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.UserIdentityResponse | undefined>;
     /**
      * The location of the resource.
      */
@@ -55,7 +55,7 @@ export class User extends pulumi.CustomResource {
     /**
      * The secret store of the user.
      */
-    public readonly secretStore!: pulumi.Output<types.outputs.devtestlab.UserSecretStoreResponse | undefined>;
+    public readonly secretStore!: pulumi.Output<types.outputs.UserSecretStoreResponse | undefined>;
     /**
      * The tags of the resource.
      */
@@ -122,7 +122,7 @@ export interface UserArgs {
     /**
      * The identity of the user.
      */
-    identity?: pulumi.Input<types.inputs.devtestlab.UserIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.UserIdentityArgs>;
     /**
      * The name of the lab.
      */
@@ -142,7 +142,7 @@ export interface UserArgs {
     /**
      * The secret store of the user.
      */
-    secretStore?: pulumi.Input<types.inputs.devtestlab.UserSecretStoreArgs>;
+    secretStore?: pulumi.Input<types.inputs.UserSecretStoreArgs>;
     /**
      * The tags of the resource.
      */

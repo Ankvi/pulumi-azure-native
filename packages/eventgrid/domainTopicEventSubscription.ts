@@ -36,22 +36,22 @@ export class DomainTopicEventSubscription extends pulumi.CustomResource {
      * The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.
      * Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering.
      */
-    public readonly deadLetterDestination!: pulumi.Output<types.outputs.eventgrid.StorageBlobDeadLetterDestinationResponse | undefined>;
+    public readonly deadLetterDestination!: pulumi.Output<types.outputs.StorageBlobDeadLetterDestinationResponse | undefined>;
     /**
      * The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.
      * Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery / dead-lettering.
      */
-    public readonly deadLetterWithResourceIdentity!: pulumi.Output<types.outputs.eventgrid.DeadLetterWithResourceIdentityResponse | undefined>;
+    public readonly deadLetterWithResourceIdentity!: pulumi.Output<types.outputs.DeadLetterWithResourceIdentityResponse | undefined>;
     /**
      * Information about the destination where events have to be delivered for the event subscription.
      * Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery / dead-lettering.
      */
-    public readonly deliveryWithResourceIdentity!: pulumi.Output<types.outputs.eventgrid.DeliveryWithResourceIdentityResponse | undefined>;
+    public readonly deliveryWithResourceIdentity!: pulumi.Output<types.outputs.DeliveryWithResourceIdentityResponse | undefined>;
     /**
      * Information about the destination where events have to be delivered for the event subscription.
      * Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering.
      */
-    public readonly destination!: pulumi.Output<types.outputs.eventgrid.AzureFunctionEventSubscriptionDestinationResponse | types.outputs.eventgrid.EventHubEventSubscriptionDestinationResponse | types.outputs.eventgrid.HybridConnectionEventSubscriptionDestinationResponse | types.outputs.eventgrid.ServiceBusQueueEventSubscriptionDestinationResponse | types.outputs.eventgrid.ServiceBusTopicEventSubscriptionDestinationResponse | types.outputs.eventgrid.StorageQueueEventSubscriptionDestinationResponse | types.outputs.eventgrid.WebHookEventSubscriptionDestinationResponse | undefined>;
+    public readonly destination!: pulumi.Output<types.outputs.AzureFunctionEventSubscriptionDestinationResponse | types.outputs.EventHubEventSubscriptionDestinationResponse | types.outputs.HybridConnectionEventSubscriptionDestinationResponse | types.outputs.ServiceBusQueueEventSubscriptionDestinationResponse | types.outputs.ServiceBusTopicEventSubscriptionDestinationResponse | types.outputs.StorageQueueEventSubscriptionDestinationResponse | types.outputs.WebHookEventSubscriptionDestinationResponse | undefined>;
     /**
      * The event delivery schema for the event subscription.
      */
@@ -63,7 +63,7 @@ export class DomainTopicEventSubscription extends pulumi.CustomResource {
     /**
      * Information about the filter for the event subscription.
      */
-    public readonly filter!: pulumi.Output<types.outputs.eventgrid.EventSubscriptionFilterResponse | undefined>;
+    public readonly filter!: pulumi.Output<types.outputs.EventSubscriptionFilterResponse | undefined>;
     /**
      * List of user defined labels.
      */
@@ -79,11 +79,11 @@ export class DomainTopicEventSubscription extends pulumi.CustomResource {
     /**
      * The retry policy for events. This can be used to configure maximum number of delivery attempts and time to live for events.
      */
-    public readonly retryPolicy!: pulumi.Output<types.outputs.eventgrid.RetryPolicyResponse | undefined>;
+    public readonly retryPolicy!: pulumi.Output<types.outputs.RetryPolicyResponse | undefined>;
     /**
      * The system metadata relating to Event Subscription resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.eventgrid.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Name of the topic of the event subscription.
      */
@@ -121,10 +121,10 @@ export class DomainTopicEventSubscription extends pulumi.CustomResource {
             resourceInputs["eventDeliverySchema"] = (args ? args.eventDeliverySchema : undefined) ?? "EventGridSchema";
             resourceInputs["eventSubscriptionName"] = args ? args.eventSubscriptionName : undefined;
             resourceInputs["expirationTimeUtc"] = args ? args.expirationTimeUtc : undefined;
-            resourceInputs["filter"] = args ? (args.filter ? pulumi.output(args.filter).apply(types.inputs.eventgrid.eventSubscriptionFilterArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["filter"] = args ? (args.filter ? pulumi.output(args.filter).apply(types.inputs.eventSubscriptionFilterArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["retryPolicy"] = args ? (args.retryPolicy ? pulumi.output(args.retryPolicy).apply(types.inputs.eventgrid.retryPolicyArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["retryPolicy"] = args ? (args.retryPolicy ? pulumi.output(args.retryPolicy).apply(types.inputs.retryPolicyArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["topicName"] = args ? args.topicName : undefined;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
@@ -162,22 +162,22 @@ export interface DomainTopicEventSubscriptionArgs {
      * The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.
      * Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering.
      */
-    deadLetterDestination?: pulumi.Input<types.inputs.eventgrid.StorageBlobDeadLetterDestinationArgs>;
+    deadLetterDestination?: pulumi.Input<types.inputs.StorageBlobDeadLetterDestinationArgs>;
     /**
      * The dead letter destination of the event subscription. Any event that cannot be delivered to its' destination is sent to the dead letter destination.
      * Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery / dead-lettering.
      */
-    deadLetterWithResourceIdentity?: pulumi.Input<types.inputs.eventgrid.DeadLetterWithResourceIdentityArgs>;
+    deadLetterWithResourceIdentity?: pulumi.Input<types.inputs.DeadLetterWithResourceIdentityArgs>;
     /**
      * Information about the destination where events have to be delivered for the event subscription.
      * Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during delivery / dead-lettering.
      */
-    deliveryWithResourceIdentity?: pulumi.Input<types.inputs.eventgrid.DeliveryWithResourceIdentityArgs>;
+    deliveryWithResourceIdentity?: pulumi.Input<types.inputs.DeliveryWithResourceIdentityArgs>;
     /**
      * Information about the destination where events have to be delivered for the event subscription.
      * Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering.
      */
-    destination?: pulumi.Input<types.inputs.eventgrid.AzureFunctionEventSubscriptionDestinationArgs | types.inputs.eventgrid.EventHubEventSubscriptionDestinationArgs | types.inputs.eventgrid.HybridConnectionEventSubscriptionDestinationArgs | types.inputs.eventgrid.ServiceBusQueueEventSubscriptionDestinationArgs | types.inputs.eventgrid.ServiceBusTopicEventSubscriptionDestinationArgs | types.inputs.eventgrid.StorageQueueEventSubscriptionDestinationArgs | types.inputs.eventgrid.WebHookEventSubscriptionDestinationArgs>;
+    destination?: pulumi.Input<types.inputs.AzureFunctionEventSubscriptionDestinationArgs | types.inputs.EventHubEventSubscriptionDestinationArgs | types.inputs.HybridConnectionEventSubscriptionDestinationArgs | types.inputs.ServiceBusQueueEventSubscriptionDestinationArgs | types.inputs.ServiceBusTopicEventSubscriptionDestinationArgs | types.inputs.StorageQueueEventSubscriptionDestinationArgs | types.inputs.WebHookEventSubscriptionDestinationArgs>;
     /**
      * Name of the top level domain.
      */
@@ -197,7 +197,7 @@ export interface DomainTopicEventSubscriptionArgs {
     /**
      * Information about the filter for the event subscription.
      */
-    filter?: pulumi.Input<types.inputs.eventgrid.EventSubscriptionFilterArgs>;
+    filter?: pulumi.Input<types.inputs.EventSubscriptionFilterArgs>;
     /**
      * List of user defined labels.
      */
@@ -209,7 +209,7 @@ export interface DomainTopicEventSubscriptionArgs {
     /**
      * The retry policy for events. This can be used to configure maximum number of delivery attempts and time to live for events.
      */
-    retryPolicy?: pulumi.Input<types.inputs.eventgrid.RetryPolicyArgs>;
+    retryPolicy?: pulumi.Input<types.inputs.RetryPolicyArgs>;
     /**
      * Name of the domain topic.
      */

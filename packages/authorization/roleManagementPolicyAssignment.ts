@@ -35,7 +35,7 @@ export class RoleManagementPolicyAssignment extends pulumi.CustomResource {
     /**
      * The readonly computed rule applied to the policy.
      */
-    public /*out*/ readonly effectiveRules!: pulumi.Output<(types.outputs.authorization.RoleManagementPolicyApprovalRuleResponse | types.outputs.authorization.RoleManagementPolicyAuthenticationContextRuleResponse | types.outputs.authorization.RoleManagementPolicyEnablementRuleResponse | types.outputs.authorization.RoleManagementPolicyExpirationRuleResponse | types.outputs.authorization.RoleManagementPolicyNotificationRuleResponse)[]>;
+    public /*out*/ readonly effectiveRules!: pulumi.Output<(types.outputs.RoleManagementPolicyApprovalRuleResponse | types.outputs.RoleManagementPolicyAuthenticationContextRuleResponse | types.outputs.RoleManagementPolicyEnablementRuleResponse | types.outputs.RoleManagementPolicyExpirationRuleResponse | types.outputs.RoleManagementPolicyNotificationRuleResponse)[]>;
     /**
      * The role management policy name.
      */
@@ -43,7 +43,7 @@ export class RoleManagementPolicyAssignment extends pulumi.CustomResource {
     /**
      * Additional properties of scope, role definition and policy
      */
-    public /*out*/ readonly policyAssignmentProperties!: pulumi.Output<types.outputs.authorization.PolicyAssignmentPropertiesResponse>;
+    public /*out*/ readonly policyAssignmentProperties!: pulumi.Output<types.outputs.PolicyAssignmentPropertiesResponse>;
     /**
      * The policy id role management policy assignment.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets detailed status information for an integration runtime.
  */
@@ -40,7 +40,7 @@ export interface GetIntegrationRuntimeStatusResult {
     /**
      * Integration runtime properties.
      */
-    readonly properties: types.outputs.datafactory.v20180601.ManagedIntegrationRuntimeStatusResponse | types.outputs.datafactory.v20180601.SelfHostedIntegrationRuntimeStatusResponse;
+    readonly properties: types.outputs.ManagedIntegrationRuntimeStatusResponse | types.outputs.SelfHostedIntegrationRuntimeStatusResponse;
 }
 /**
  * Gets detailed status information for an integration runtime.

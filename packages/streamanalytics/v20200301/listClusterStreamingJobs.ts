@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Lists all of the streaming jobs in the given cluster.
  */
@@ -35,7 +35,7 @@ export interface ListClusterStreamingJobsResult {
     /**
      * A list of streaming jobs.
      */
-    readonly value: types.outputs.streamanalytics.v20200301.ClusterJobResponse[];
+    readonly value: types.outputs.ClusterJobResponse[];
 }
 /**
  * Lists all of the streaming jobs in the given cluster.

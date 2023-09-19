@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 export class ProviderRegistration extends pulumi.CustomResource {
     /**
      * Get an existing ProviderRegistration resource's state with the given name, ID, and optional extra
@@ -32,11 +32,11 @@ export class ProviderRegistration extends pulumi.CustomResource {
      * The name of the resource
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
-    public readonly properties!: pulumi.Output<types.outputs.providerhub.v20210901preview.ProviderRegistrationResponseProperties>;
+    public readonly properties!: pulumi.Output<types.outputs.ProviderRegistrationResponseProperties>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.providerhub.v20210901preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -75,7 +75,7 @@ export class ProviderRegistration extends pulumi.CustomResource {
  * The set of arguments for constructing a ProviderRegistration resource.
  */
 export interface ProviderRegistrationArgs {
-    properties?: pulumi.Input<types.inputs.providerhub.v20210901preview.ProviderRegistrationPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ProviderRegistrationPropertiesArgs>;
     /**
      * The name of the resource provider hosted within ProviderHub.
      */

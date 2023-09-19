@@ -40,11 +40,11 @@ export interface GetFactoryResult {
     /**
      * Properties to enable Customer Managed Key for the factory.
      */
-    readonly encryption?: types.outputs.datafactory.EncryptionConfigurationResponse;
+    readonly encryption?: types.outputs.EncryptionConfigurationResponse;
     /**
      * List of parameters for factory.
      */
-    readonly globalParameters?: {[key: string]: types.outputs.datafactory.GlobalParameterSpecificationResponse};
+    readonly globalParameters?: {[key: string]: types.outputs.GlobalParameterSpecificationResponse};
     /**
      * The resource identifier.
      */
@@ -52,7 +52,7 @@ export interface GetFactoryResult {
     /**
      * Managed service identity of the factory.
      */
-    readonly identity?: types.outputs.datafactory.FactoryIdentityResponse;
+    readonly identity?: types.outputs.FactoryIdentityResponse;
     /**
      * The resource location.
      */
@@ -72,11 +72,11 @@ export interface GetFactoryResult {
     /**
      * Purview information of the factory.
      */
-    readonly purviewConfiguration?: types.outputs.datafactory.PurviewConfigurationResponse;
+    readonly purviewConfiguration?: types.outputs.PurviewConfigurationResponse;
     /**
      * Git repo information of the factory.
      */
-    readonly repoConfiguration?: types.outputs.datafactory.FactoryGitHubConfigurationResponse | types.outputs.datafactory.FactoryVSTSConfigurationResponse;
+    readonly repoConfiguration?: types.outputs.FactoryGitHubConfigurationResponse | types.outputs.FactoryVSTSConfigurationResponse;
     /**
      * The resource tags.
      */

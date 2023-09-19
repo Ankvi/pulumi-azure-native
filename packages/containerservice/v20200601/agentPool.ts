@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Agent Pool.
  */
@@ -122,7 +122,7 @@ export class AgentPool extends pulumi.CustomResource {
     /**
      * Settings for upgrading the agentpool
      */
-    public readonly upgradeSettings!: pulumi.Output<types.outputs.containerservice.v20200601.AgentPoolUpgradeSettingsResponse | undefined>;
+    public readonly upgradeSettings!: pulumi.Output<types.outputs.AgentPoolUpgradeSettingsResponse | undefined>;
     /**
      * Size of agent VMs.
      */
@@ -250,7 +250,7 @@ export interface AgentPoolArgs {
     /**
      * AgentPoolMode represents mode of an agent pool
      */
-    mode?: pulumi.Input<string | types.enums.v20200601.AgentPoolMode>;
+    mode?: pulumi.Input<string | types.enums.AgentPoolMode>;
     /**
      * Version of node image
      */
@@ -274,7 +274,7 @@ export interface AgentPoolArgs {
     /**
      * OsType to be used to specify os type. Choose from Linux and Windows. Default to Linux.
      */
-    osType?: pulumi.Input<string | types.enums.v20200601.OSType>;
+    osType?: pulumi.Input<string | types.enums.OSType>;
     /**
      * The ID for Proximity Placement Group.
      */
@@ -290,11 +290,11 @@ export interface AgentPoolArgs {
     /**
      * ScaleSetEvictionPolicy to be used to specify eviction policy for Spot virtual machine scale set. Default to Delete.
      */
-    scaleSetEvictionPolicy?: pulumi.Input<string | types.enums.v20200601.ScaleSetEvictionPolicy>;
+    scaleSetEvictionPolicy?: pulumi.Input<string | types.enums.ScaleSetEvictionPolicy>;
     /**
      * ScaleSetPriority to be used to specify virtual machine scale set priority. Default to regular.
      */
-    scaleSetPriority?: pulumi.Input<string | types.enums.v20200601.ScaleSetPriority>;
+    scaleSetPriority?: pulumi.Input<string | types.enums.ScaleSetPriority>;
     /**
      * SpotMaxPrice to be used to specify the maximum price you are willing to pay in US Dollars. Possible values are any decimal value greater than zero or -1 which indicates default price to be up-to on-demand.
      */
@@ -306,15 +306,15 @@ export interface AgentPoolArgs {
     /**
      * AgentPoolType represents types of an agent pool
      */
-    type?: pulumi.Input<string | types.enums.v20200601.AgentPoolType>;
+    type?: pulumi.Input<string | types.enums.AgentPoolType>;
     /**
      * Settings for upgrading the agentpool
      */
-    upgradeSettings?: pulumi.Input<types.inputs.containerservice.v20200601.AgentPoolUpgradeSettingsArgs>;
+    upgradeSettings?: pulumi.Input<types.inputs.AgentPoolUpgradeSettingsArgs>;
     /**
      * Size of agent VMs.
      */
-    vmSize?: pulumi.Input<string | types.enums.v20200601.ContainerServiceVMSizeTypes>;
+    vmSize?: pulumi.Input<string | types.enums.ContainerServiceVMSizeTypes>;
     /**
      * VNet SubnetID specifies the VNet's subnet identifier.
      */

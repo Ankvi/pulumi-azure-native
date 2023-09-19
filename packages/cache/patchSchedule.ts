@@ -43,7 +43,7 @@ export class PatchSchedule extends pulumi.CustomResource {
     /**
      * List of patch schedules for a Redis cache.
      */
-    public readonly scheduleEntries!: pulumi.Output<types.outputs.cache.ScheduleEntryResponse[]>;
+    public readonly scheduleEntries!: pulumi.Output<types.outputs.ScheduleEntryResponse[]>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -107,5 +107,5 @@ export interface PatchScheduleArgs {
     /**
      * List of patch schedules for a Redis cache.
      */
-    scheduleEntries: pulumi.Input<pulumi.Input<types.inputs.cache.ScheduleEntryArgs>[]>;
+    scheduleEntries: pulumi.Input<pulumi.Input<types.inputs.ScheduleEntryArgs>[]>;
 }

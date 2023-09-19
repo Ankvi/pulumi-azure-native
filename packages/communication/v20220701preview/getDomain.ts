@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the Domains resource and its properties.
  */
@@ -68,7 +68,7 @@ export interface GetDomainResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.communication.v20220701preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -88,11 +88,11 @@ export interface GetDomainResult {
     /**
      * List of DnsRecord
      */
-    readonly verificationRecords: types.outputs.communication.v20220701preview.DomainPropertiesResponseVerificationRecords;
+    readonly verificationRecords: types.outputs.DomainPropertiesResponseVerificationRecords;
     /**
      * List of VerificationStatusRecord
      */
-    readonly verificationStates: types.outputs.communication.v20220701preview.DomainPropertiesResponseVerificationStates;
+    readonly verificationStates: types.outputs.DomainPropertiesResponseVerificationStates;
 }
 /**
  * Get the Domains resource and its properties.

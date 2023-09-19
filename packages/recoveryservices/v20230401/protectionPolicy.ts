@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Base class for backup policy. Workload-specific backup policies are derived from this class.
  */
@@ -46,7 +46,7 @@ export class ProtectionPolicy extends pulumi.CustomResource {
     /**
      * ProtectionPolicyResource properties
      */
-    public readonly properties!: pulumi.Output<types.outputs.recoveryservices.v20230401.AzureFileShareProtectionPolicyResponse | types.outputs.recoveryservices.v20230401.AzureIaaSVMProtectionPolicyResponse | types.outputs.recoveryservices.v20230401.AzureSqlProtectionPolicyResponse | types.outputs.recoveryservices.v20230401.AzureVmWorkloadProtectionPolicyResponse | types.outputs.recoveryservices.v20230401.GenericProtectionPolicyResponse | types.outputs.recoveryservices.v20230401.MabProtectionPolicyResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.AzureFileShareProtectionPolicyResponse | types.outputs.AzureIaaSVMProtectionPolicyResponse | types.outputs.AzureSqlProtectionPolicyResponse | types.outputs.AzureVmWorkloadProtectionPolicyResponse | types.outputs.GenericProtectionPolicyResponse | types.outputs.MabProtectionPolicyResponse>;
     /**
      * Resource tags.
      */
@@ -116,7 +116,7 @@ export interface ProtectionPolicyArgs {
     /**
      * ProtectionPolicyResource properties
      */
-    properties?: pulumi.Input<types.inputs.recoveryservices.v20230401.AzureFileShareProtectionPolicyArgs | types.inputs.recoveryservices.v20230401.AzureIaaSVMProtectionPolicyArgs | types.inputs.recoveryservices.v20230401.AzureSqlProtectionPolicyArgs | types.inputs.recoveryservices.v20230401.AzureVmWorkloadProtectionPolicyArgs | types.inputs.recoveryservices.v20230401.GenericProtectionPolicyArgs | types.inputs.recoveryservices.v20230401.MabProtectionPolicyArgs>;
+    properties?: pulumi.Input<types.inputs.AzureFileShareProtectionPolicyArgs | types.inputs.AzureIaaSVMProtectionPolicyArgs | types.inputs.AzureSqlProtectionPolicyArgs | types.inputs.AzureVmWorkloadProtectionPolicyArgs | types.inputs.GenericProtectionPolicyArgs | types.inputs.MabProtectionPolicyArgs>;
     /**
      * The name of the resource group where the recovery services vault is present.
      */

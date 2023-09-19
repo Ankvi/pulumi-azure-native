@@ -43,7 +43,7 @@ export class WebAppConnectionStringsSlot extends pulumi.CustomResource {
     /**
      * Connection strings.
      */
-    public readonly properties!: pulumi.Output<{[key: string]: types.outputs.web.ConnStringValueTypePairResponse}>;
+    public readonly properties!: pulumi.Output<{[key: string]: types.outputs.ConnStringValueTypePairResponse}>;
     /**
      * Resource type.
      */
@@ -103,7 +103,7 @@ export interface WebAppConnectionStringsSlotArgs {
     /**
      * Connection strings.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.web.ConnStringValueTypePairArgs>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.ConnStringValueTypePairArgs>}>;
     /**
      * Name of the resource group to which the resource belongs.
      */

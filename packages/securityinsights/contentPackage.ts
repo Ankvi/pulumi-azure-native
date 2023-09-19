@@ -35,11 +35,11 @@ export class ContentPackage extends pulumi.CustomResource {
     /**
      * The author of the package
      */
-    public readonly author!: pulumi.Output<types.outputs.securityinsights.MetadataAuthorResponse | undefined>;
+    public readonly author!: pulumi.Output<types.outputs.MetadataAuthorResponse | undefined>;
     /**
      * The categories of the package
      */
-    public readonly categories!: pulumi.Output<types.outputs.securityinsights.MetadataCategoriesResponse | undefined>;
+    public readonly categories!: pulumi.Output<types.outputs.MetadataCategoriesResponse | undefined>;
     /**
      * The package id
      */
@@ -55,7 +55,7 @@ export class ContentPackage extends pulumi.CustomResource {
     /**
      * The support tier of the package
      */
-    public readonly dependencies!: pulumi.Output<types.outputs.securityinsights.MetadataDependenciesResponse | undefined>;
+    public readonly dependencies!: pulumi.Output<types.outputs.MetadataDependenciesResponse | undefined>;
     /**
      * The description of the package
      */
@@ -107,15 +107,15 @@ export class ContentPackage extends pulumi.CustomResource {
     /**
      * The source of the package
      */
-    public readonly source!: pulumi.Output<types.outputs.securityinsights.MetadataSourceResponse | undefined>;
+    public readonly source!: pulumi.Output<types.outputs.MetadataSourceResponse | undefined>;
     /**
      * The support tier of the package
      */
-    public readonly support!: pulumi.Output<types.outputs.securityinsights.MetadataSupportResponse | undefined>;
+    public readonly support!: pulumi.Output<types.outputs.MetadataSupportResponse | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.securityinsights.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * the tactics the resource covers
      */
@@ -231,11 +231,11 @@ export interface ContentPackageArgs {
     /**
      * The author of the package
      */
-    author?: pulumi.Input<types.inputs.securityinsights.MetadataAuthorArgs>;
+    author?: pulumi.Input<types.inputs.MetadataAuthorArgs>;
     /**
      * The categories of the package
      */
-    categories?: pulumi.Input<types.inputs.securityinsights.MetadataCategoriesArgs>;
+    categories?: pulumi.Input<types.inputs.MetadataCategoriesArgs>;
     /**
      * The package id
      */
@@ -251,7 +251,7 @@ export interface ContentPackageArgs {
     /**
      * The support tier of the package
      */
-    dependencies?: pulumi.Input<types.inputs.securityinsights.MetadataDependenciesArgs>;
+    dependencies?: pulumi.Input<types.inputs.MetadataDependenciesArgs>;
     /**
      * The description of the package
      */
@@ -303,11 +303,11 @@ export interface ContentPackageArgs {
     /**
      * The source of the package
      */
-    source?: pulumi.Input<types.inputs.securityinsights.MetadataSourceArgs>;
+    source?: pulumi.Input<types.inputs.MetadataSourceArgs>;
     /**
      * The support tier of the package
      */
-    support?: pulumi.Input<types.inputs.securityinsights.MetadataSupportArgs>;
+    support?: pulumi.Input<types.inputs.MetadataSupportArgs>;
     /**
      * the tactics the resource covers
      */

@@ -32,7 +32,7 @@ export interface GetManagedClusterSnapshotResult {
     /**
      * CreationData to be used to specify the source resource ID to create this snapshot.
      */
-    readonly creationData?: types.outputs.containerservice.CreationDataResponse;
+    readonly creationData?: types.outputs.CreationDataResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -44,7 +44,7 @@ export interface GetManagedClusterSnapshotResult {
     /**
      * What the properties will be showed when getting managed cluster snapshot. Those properties are read-only.
      */
-    readonly managedClusterPropertiesReadOnly: types.outputs.containerservice.ManagedClusterPropertiesForSnapshotResponse;
+    readonly managedClusterPropertiesReadOnly: types.outputs.ManagedClusterPropertiesForSnapshotResponse;
     /**
      * The name of the resource
      */
@@ -56,7 +56,7 @@ export interface GetManagedClusterSnapshotResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.containerservice.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

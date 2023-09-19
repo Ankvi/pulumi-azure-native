@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents a user who has access to one or more shares on the Data Box Edge/Gateway device.
  */
@@ -34,7 +34,7 @@ export class User extends pulumi.CustomResource {
     /**
      * The password details.
      */
-    public readonly encryptedPassword!: pulumi.Output<types.outputs.databoxedge.v20230101preview.AsymmetricEncryptedSecretResponse | undefined>;
+    public readonly encryptedPassword!: pulumi.Output<types.outputs.AsymmetricEncryptedSecretResponse | undefined>;
     /**
      * The object name.
      */
@@ -42,11 +42,11 @@ export class User extends pulumi.CustomResource {
     /**
      * List of shares that the user has rights on. This field should not be specified during user creation.
      */
-    public /*out*/ readonly shareAccessRights!: pulumi.Output<types.outputs.databoxedge.v20230101preview.ShareAccessRightResponse[]>;
+    public /*out*/ readonly shareAccessRights!: pulumi.Output<types.outputs.ShareAccessRightResponse[]>;
     /**
      * Metadata pertaining to creation and last modification of User
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.databoxedge.v20230101preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The hierarchical type of the object.
      */
@@ -110,7 +110,7 @@ export interface UserArgs {
     /**
      * The password details.
      */
-    encryptedPassword?: pulumi.Input<types.inputs.databoxedge.v20230101preview.AsymmetricEncryptedSecretArgs>;
+    encryptedPassword?: pulumi.Input<types.inputs.AsymmetricEncryptedSecretArgs>;
     /**
      * The user name.
      */
@@ -122,5 +122,5 @@ export interface UserArgs {
     /**
      * Type of the user.
      */
-    userType: pulumi.Input<string | types.enums.v20230101preview.UserType>;
+    userType: pulumi.Input<string | types.enums.UserType>;
 }

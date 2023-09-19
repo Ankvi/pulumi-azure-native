@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents a Hunt in Azure Security Insights.
  */
@@ -66,7 +66,7 @@ export class Hunt extends pulumi.CustomResource {
     /**
      * Describes a user that the hunt is assigned to
      */
-    public readonly owner!: pulumi.Output<types.outputs.securityinsights.v20230701preview.HuntOwnerResponse | undefined>;
+    public readonly owner!: pulumi.Output<types.outputs.HuntOwnerResponse | undefined>;
     /**
      * The status of the hunt.
      */
@@ -74,7 +74,7 @@ export class Hunt extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.securityinsights.v20230701preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -146,7 +146,7 @@ export interface HuntArgs {
     /**
      * A list of mitre attack tactics the hunt is associated with
      */
-    attackTactics?: pulumi.Input<pulumi.Input<string | types.enums.v20230701preview.AttackTactic>[]>;
+    attackTactics?: pulumi.Input<pulumi.Input<string | types.enums.AttackTactic>[]>;
     /**
      * A list of a mitre attack techniques the hunt is associated with
      */
@@ -166,7 +166,7 @@ export interface HuntArgs {
     /**
      * The hypothesis status of the hunt.
      */
-    hypothesisStatus?: pulumi.Input<string | types.enums.v20230701preview.HypothesisStatus>;
+    hypothesisStatus?: pulumi.Input<string | types.enums.HypothesisStatus>;
     /**
      * List of labels relevant to this hunt 
      */
@@ -174,7 +174,7 @@ export interface HuntArgs {
     /**
      * Describes a user that the hunt is assigned to
      */
-    owner?: pulumi.Input<types.inputs.securityinsights.v20230701preview.HuntOwnerArgs>;
+    owner?: pulumi.Input<types.inputs.HuntOwnerArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -182,7 +182,7 @@ export interface HuntArgs {
     /**
      * The status of the hunt.
      */
-    status?: pulumi.Input<string | types.enums.v20230701preview.Status>;
+    status?: pulumi.Input<string | types.enums.Status>;
     /**
      * The name of the workspace.
      */

@@ -47,11 +47,11 @@ export class AzurePowerShellScript extends pulumi.CustomResource {
     /**
      * Container settings.
      */
-    public readonly containerSettings!: pulumi.Output<types.outputs.resources.ContainerConfigurationResponse | undefined>;
+    public readonly containerSettings!: pulumi.Output<types.outputs.ContainerConfigurationResponse | undefined>;
     /**
      * The environment variables to pass over to the script.
      */
-    public readonly environmentVariables!: pulumi.Output<types.outputs.resources.EnvironmentVariableResponse[] | undefined>;
+    public readonly environmentVariables!: pulumi.Output<types.outputs.EnvironmentVariableResponse[] | undefined>;
     /**
      * Gets or sets how the deployment script should be forced to execute even if the script resource has not changed. Can be current time stamp or a GUID.
      */
@@ -59,7 +59,7 @@ export class AzurePowerShellScript extends pulumi.CustomResource {
     /**
      * Optional property. Managed identity to be used for this deployment script. Currently, only user-assigned MSI is supported.
      */
-    public readonly identity!: pulumi.Output<types.outputs.resources.ManagedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * Type of the script.
      * Expected value is 'AzurePowerShell'.
@@ -96,11 +96,11 @@ export class AzurePowerShellScript extends pulumi.CustomResource {
     /**
      * Contains the results of script execution.
      */
-    public /*out*/ readonly status!: pulumi.Output<types.outputs.resources.ScriptStatusResponse>;
+    public /*out*/ readonly status!: pulumi.Output<types.outputs.ScriptStatusResponse>;
     /**
      * Storage Account settings.
      */
-    public readonly storageAccountSettings!: pulumi.Output<types.outputs.resources.StorageAccountConfigurationResponse | undefined>;
+    public readonly storageAccountSettings!: pulumi.Output<types.outputs.StorageAccountConfigurationResponse | undefined>;
     /**
      * Supporting files for the external script.
      */
@@ -108,7 +108,7 @@ export class AzurePowerShellScript extends pulumi.CustomResource {
     /**
      * The system metadata related to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.resources.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -219,11 +219,11 @@ export interface AzurePowerShellScriptArgs {
     /**
      * Container settings.
      */
-    containerSettings?: pulumi.Input<types.inputs.resources.ContainerConfigurationArgs>;
+    containerSettings?: pulumi.Input<types.inputs.ContainerConfigurationArgs>;
     /**
      * The environment variables to pass over to the script.
      */
-    environmentVariables?: pulumi.Input<pulumi.Input<types.inputs.resources.EnvironmentVariableArgs>[]>;
+    environmentVariables?: pulumi.Input<pulumi.Input<types.inputs.EnvironmentVariableArgs>[]>;
     /**
      * Gets or sets how the deployment script should be forced to execute even if the script resource has not changed. Can be current time stamp or a GUID.
      */
@@ -231,7 +231,7 @@ export interface AzurePowerShellScriptArgs {
     /**
      * Optional property. Managed identity to be used for this deployment script. Currently, only user-assigned MSI is supported.
      */
-    identity?: pulumi.Input<types.inputs.resources.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
      * Type of the script.
      * Expected value is 'AzurePowerShell'.
@@ -264,7 +264,7 @@ export interface AzurePowerShellScriptArgs {
     /**
      * Storage Account settings.
      */
-    storageAccountSettings?: pulumi.Input<types.inputs.resources.StorageAccountConfigurationArgs>;
+    storageAccountSettings?: pulumi.Input<types.inputs.StorageAccountConfigurationArgs>;
     /**
      * Supporting files for the external script.
      */

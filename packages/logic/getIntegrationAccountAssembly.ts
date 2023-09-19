@@ -49,7 +49,7 @@ export interface GetIntegrationAccountAssemblyResult {
     /**
      * The assembly properties.
      */
-    readonly properties: types.outputs.logic.AssemblyPropertiesResponse;
+    readonly properties: types.outputs.AssemblyPropertiesResponse;
     /**
      * The resource tags.
      */

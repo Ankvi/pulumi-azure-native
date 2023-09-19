@@ -35,7 +35,7 @@ export class CollectorPolicy extends pulumi.CustomResource {
     /**
      * Emission policies.
      */
-    public readonly emissionPolicies!: pulumi.Output<types.outputs.networkfunction.EmissionPoliciesPropertiesFormatResponse[] | undefined>;
+    public readonly emissionPolicies!: pulumi.Output<types.outputs.EmissionPoliciesPropertiesFormatResponse[] | undefined>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -43,7 +43,7 @@ export class CollectorPolicy extends pulumi.CustomResource {
     /**
      * Ingestion policies.
      */
-    public readonly ingestionPolicy!: pulumi.Output<types.outputs.networkfunction.IngestionPolicyPropertiesFormatResponse | undefined>;
+    public readonly ingestionPolicy!: pulumi.Output<types.outputs.IngestionPolicyPropertiesFormatResponse | undefined>;
     /**
      * Resource location.
      */
@@ -59,7 +59,7 @@ export class CollectorPolicy extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.networkfunction.TrackedResourceResponseSystemData>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.TrackedResourceResponseSystemData>;
     /**
      * Resource tags.
      */
@@ -131,11 +131,11 @@ export interface CollectorPolicyArgs {
     /**
      * Emission policies.
      */
-    emissionPolicies?: pulumi.Input<pulumi.Input<types.inputs.networkfunction.EmissionPoliciesPropertiesFormatArgs>[]>;
+    emissionPolicies?: pulumi.Input<pulumi.Input<types.inputs.EmissionPoliciesPropertiesFormatArgs>[]>;
     /**
      * Ingestion policies.
      */
-    ingestionPolicy?: pulumi.Input<types.inputs.networkfunction.IngestionPolicyPropertiesFormatArgs>;
+    ingestionPolicy?: pulumi.Input<types.inputs.IngestionPolicyPropertiesFormatArgs>;
     /**
      * Resource location.
      */

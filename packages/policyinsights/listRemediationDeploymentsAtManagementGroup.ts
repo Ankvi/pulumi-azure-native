@@ -46,7 +46,7 @@ export interface ListRemediationDeploymentsAtManagementGroupResult {
     /**
      * Array of deployments for the remediation.
      */
-    readonly value: types.outputs.policyinsights.RemediationDeploymentResponse[];
+    readonly value: types.outputs.RemediationDeploymentResponse[];
 }
 /**
  * Gets all deployments for a remediation at management group scope.

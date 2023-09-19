@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Scheduled action definition.
  */
@@ -42,7 +42,7 @@ export class ScheduledActionByScope extends pulumi.CustomResource {
     /**
      * Destination format of the view data. This is optional.
      */
-    public readonly fileDestination!: pulumi.Output<types.outputs.costmanagement.v20230401preview.FileDestinationResponse | undefined>;
+    public readonly fileDestination!: pulumi.Output<types.outputs.FileDestinationResponse | undefined>;
     /**
      * Kind of the scheduled action.
      */
@@ -54,7 +54,7 @@ export class ScheduledActionByScope extends pulumi.CustomResource {
     /**
      * Notification properties based on scheduled action kind.
      */
-    public readonly notification!: pulumi.Output<types.outputs.costmanagement.v20230401preview.NotificationPropertiesResponse>;
+    public readonly notification!: pulumi.Output<types.outputs.NotificationPropertiesResponse>;
     /**
      * Email address of the point of contact that should get the unsubscribe requests and notification emails.
      */
@@ -62,7 +62,7 @@ export class ScheduledActionByScope extends pulumi.CustomResource {
     /**
      * Schedule of the scheduled action.
      */
-    public readonly schedule!: pulumi.Output<types.outputs.costmanagement.v20230401preview.SchedulePropertiesResponse>;
+    public readonly schedule!: pulumi.Output<types.outputs.SchedulePropertiesResponse>;
     /**
      * Cost Management scope like 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for BillingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for InvoiceSection scope, '/providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}' for ExternalBillingAccount scope, and '/providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}' for ExternalSubscription scope.
      */
@@ -74,7 +74,7 @@ export class ScheduledActionByScope extends pulumi.CustomResource {
     /**
      * Kind of the scheduled action.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.costmanagement.v20230401preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -159,11 +159,11 @@ export interface ScheduledActionByScopeArgs {
     /**
      * Destination format of the view data. This is optional.
      */
-    fileDestination?: pulumi.Input<types.inputs.costmanagement.v20230401preview.FileDestinationArgs>;
+    fileDestination?: pulumi.Input<types.inputs.FileDestinationArgs>;
     /**
      * Kind of the scheduled action.
      */
-    kind?: pulumi.Input<string | types.enums.v20230401preview.ScheduledActionKind>;
+    kind?: pulumi.Input<string | types.enums.ScheduledActionKind>;
     /**
      * Scheduled action name.
      */
@@ -171,7 +171,7 @@ export interface ScheduledActionByScopeArgs {
     /**
      * Notification properties based on scheduled action kind.
      */
-    notification: pulumi.Input<types.inputs.costmanagement.v20230401preview.NotificationPropertiesArgs>;
+    notification: pulumi.Input<types.inputs.NotificationPropertiesArgs>;
     /**
      * Email address of the point of contact that should get the unsubscribe requests and notification emails.
      */
@@ -179,7 +179,7 @@ export interface ScheduledActionByScopeArgs {
     /**
      * Schedule of the scheduled action.
      */
-    schedule: pulumi.Input<types.inputs.costmanagement.v20230401preview.SchedulePropertiesArgs>;
+    schedule: pulumi.Input<types.inputs.SchedulePropertiesArgs>;
     /**
      * Cost Management scope like 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for BillingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for InvoiceSection scope, '/providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}' for ExternalBillingAccount scope, and '/providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}' for ExternalSubscription scope.
      */
@@ -187,7 +187,7 @@ export interface ScheduledActionByScopeArgs {
     /**
      * Status of the scheduled action.
      */
-    status: pulumi.Input<string | types.enums.v20230401preview.ScheduledActionStatus>;
+    status: pulumi.Input<string | types.enums.ScheduledActionStatus>;
     /**
      * Cost analysis viewId used for scheduled action. For example, '/providers/Microsoft.CostManagement/views/swaggerExample'
      */

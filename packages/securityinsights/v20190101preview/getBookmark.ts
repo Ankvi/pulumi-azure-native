@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a bookmark.
  */
@@ -45,7 +45,7 @@ export interface GetBookmarkResult {
     /**
      * Describes a user that created the bookmark
      */
-    readonly createdBy?: types.outputs.securityinsights.v20190101preview.UserInfoResponse;
+    readonly createdBy?: types.outputs.UserInfoResponse;
     /**
      * The display name of the bookmark
      */
@@ -65,7 +65,7 @@ export interface GetBookmarkResult {
     /**
      * Describes an incident that relates to bookmark
      */
-    readonly incidentInfo?: types.outputs.securityinsights.v20190101preview.IncidentInfoResponse;
+    readonly incidentInfo?: types.outputs.IncidentInfoResponse;
     /**
      * List of labels relevant to this bookmark
      */
@@ -105,7 +105,7 @@ export interface GetBookmarkResult {
     /**
      * Describes a user that updated the bookmark
      */
-    readonly updatedBy?: types.outputs.securityinsights.v20190101preview.UserInfoResponse;
+    readonly updatedBy?: types.outputs.UserInfoResponse;
 }
 /**
  * Gets a bookmark.

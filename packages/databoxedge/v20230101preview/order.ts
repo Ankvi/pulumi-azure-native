@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The order details.
  */
@@ -34,15 +34,15 @@ export class Order extends pulumi.CustomResource {
     /**
      * The contact details.
      */
-    public readonly contactInformation!: pulumi.Output<types.outputs.databoxedge.v20230101preview.ContactDetailsResponse>;
+    public readonly contactInformation!: pulumi.Output<types.outputs.ContactDetailsResponse>;
     /**
      * Current status of the order.
      */
-    public /*out*/ readonly currentStatus!: pulumi.Output<types.outputs.databoxedge.v20230101preview.OrderStatusResponse>;
+    public /*out*/ readonly currentStatus!: pulumi.Output<types.outputs.OrderStatusResponse>;
     /**
      * Tracking information for the package delivered to the customer whether it has an original or a replacement device.
      */
-    public /*out*/ readonly deliveryTrackingInfo!: pulumi.Output<types.outputs.databoxedge.v20230101preview.TrackingInfoResponse[]>;
+    public /*out*/ readonly deliveryTrackingInfo!: pulumi.Output<types.outputs.TrackingInfoResponse[]>;
     /**
      * It specify the order api version.
      */
@@ -54,7 +54,7 @@ export class Order extends pulumi.CustomResource {
     /**
      * List of status changes in the order.
      */
-    public /*out*/ readonly orderHistory!: pulumi.Output<types.outputs.databoxedge.v20230101preview.OrderStatusResponse[]>;
+    public /*out*/ readonly orderHistory!: pulumi.Output<types.outputs.OrderStatusResponse[]>;
     /**
      * It specify the order resource id.
      */
@@ -62,7 +62,7 @@ export class Order extends pulumi.CustomResource {
     /**
      * Tracking information for the package returned from the customer whether it has an original or a replacement device.
      */
-    public /*out*/ readonly returnTrackingInfo!: pulumi.Output<types.outputs.databoxedge.v20230101preview.TrackingInfoResponse[]>;
+    public /*out*/ readonly returnTrackingInfo!: pulumi.Output<types.outputs.TrackingInfoResponse[]>;
     /**
      * Serial number of the device.
      */
@@ -74,11 +74,11 @@ export class Order extends pulumi.CustomResource {
     /**
      * The shipping address.
      */
-    public readonly shippingAddress!: pulumi.Output<types.outputs.databoxedge.v20230101preview.AddressResponse | undefined>;
+    public readonly shippingAddress!: pulumi.Output<types.outputs.AddressResponse | undefined>;
     /**
      * Metadata pertaining to creation and last modification of Order
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.databoxedge.v20230101preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The hierarchical type of the object.
      */
@@ -148,7 +148,7 @@ export interface OrderArgs {
     /**
      * The contact details.
      */
-    contactInformation: pulumi.Input<types.inputs.databoxedge.v20230101preview.ContactDetailsArgs>;
+    contactInformation: pulumi.Input<types.inputs.ContactDetailsArgs>;
     /**
      * The order details of a device.
      */
@@ -160,9 +160,9 @@ export interface OrderArgs {
     /**
      * ShipmentType of the order
      */
-    shipmentType?: pulumi.Input<string | types.enums.v20230101preview.ShipmentType>;
+    shipmentType?: pulumi.Input<string | types.enums.ShipmentType>;
     /**
      * The shipping address.
      */
-    shippingAddress?: pulumi.Input<types.inputs.databoxedge.v20230101preview.AddressArgs>;
+    shippingAddress?: pulumi.Input<types.inputs.AddressArgs>;
 }

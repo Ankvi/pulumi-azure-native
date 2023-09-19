@@ -39,11 +39,11 @@ export class MetricsSourceTagRule extends pulumi.CustomResource {
     /**
      * Definition of the properties for a TagRules resource.
      */
-    public readonly properties!: pulumi.Output<types.outputs.logz.MetricsTagRulesPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.MetricsTagRulesPropertiesResponse>;
     /**
      * The system metadata relating to this resource
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.logz.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the rule set.
      */
@@ -105,7 +105,7 @@ export interface MetricsSourceTagRuleArgs {
     /**
      * Definition of the properties for a TagRules resource.
      */
-    properties?: pulumi.Input<types.inputs.logz.MetricsTagRulesPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.MetricsTagRulesPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

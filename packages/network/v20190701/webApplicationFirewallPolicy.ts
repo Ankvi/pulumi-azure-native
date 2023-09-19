@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Defines web application firewall policy.
  */
@@ -34,11 +34,11 @@ export class WebApplicationFirewallPolicy extends pulumi.CustomResource {
     /**
      * A collection of references to application gateways.
      */
-    public /*out*/ readonly applicationGateways!: pulumi.Output<types.outputs.network.v20190701.ApplicationGatewayResponse[]>;
+    public /*out*/ readonly applicationGateways!: pulumi.Output<types.outputs.ApplicationGatewayResponse[]>;
     /**
      * Describes custom rules inside the policy.
      */
-    public readonly customRules!: pulumi.Output<types.outputs.network.v20190701.WebApplicationFirewallCustomRuleResponse[] | undefined>;
+    public readonly customRules!: pulumi.Output<types.outputs.WebApplicationFirewallCustomRuleResponse[] | undefined>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -54,7 +54,7 @@ export class WebApplicationFirewallPolicy extends pulumi.CustomResource {
     /**
      * Describes policySettings for policy.
      */
-    public readonly policySettings!: pulumi.Output<types.outputs.network.v20190701.PolicySettingsResponse | undefined>;
+    public readonly policySettings!: pulumi.Output<types.outputs.PolicySettingsResponse | undefined>;
     /**
      * The provisioning state of the web application firewall policy resource.
      */
@@ -125,7 +125,7 @@ export interface WebApplicationFirewallPolicyArgs {
     /**
      * Describes custom rules inside the policy.
      */
-    customRules?: pulumi.Input<pulumi.Input<types.inputs.network.v20190701.WebApplicationFirewallCustomRuleArgs>[]>;
+    customRules?: pulumi.Input<pulumi.Input<types.inputs.WebApplicationFirewallCustomRuleArgs>[]>;
     /**
      * Resource ID.
      */
@@ -141,7 +141,7 @@ export interface WebApplicationFirewallPolicyArgs {
     /**
      * Describes policySettings for policy.
      */
-    policySettings?: pulumi.Input<types.inputs.network.v20190701.PolicySettingsArgs>;
+    policySettings?: pulumi.Input<types.inputs.PolicySettingsArgs>;
     /**
      * The name of the resource group.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the specified FirewallPolicyRuleCollectionGroup.
  */
@@ -56,7 +56,7 @@ export interface GetFirewallPolicyRuleCollectionGroupResult {
     /**
      * Group of Firewall Policy rule collections.
      */
-    readonly ruleCollections?: (types.outputs.network.v20230201.FirewallPolicyFilterRuleCollectionResponse | types.outputs.network.v20230201.FirewallPolicyNatRuleCollectionResponse)[];
+    readonly ruleCollections?: (types.outputs.FirewallPolicyFilterRuleCollectionResponse | types.outputs.FirewallPolicyNatRuleCollectionResponse)[];
     /**
      * Rule Group type.
      */

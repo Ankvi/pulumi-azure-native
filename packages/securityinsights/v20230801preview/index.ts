@@ -598,7 +598,7 @@ utilities.lazyLoad(exports, ["WorkspaceManagerMember"], () => require("./workspa
 
 
 // Export enums:
-export * from "../types/enums/v20230801preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

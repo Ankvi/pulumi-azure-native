@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Description for Gets a virtual network the app (or deployment slot) is connected to by name.
  */
@@ -74,7 +74,7 @@ export interface GetWebAppVnetConnectionSlotResult {
     /**
      * The routes that this Virtual Network connection uses.
      */
-    readonly routes: types.outputs.web.v20220901.VnetRouteResponse[];
+    readonly routes: types.outputs.VnetRouteResponse[];
     /**
      * Resource type.
      */

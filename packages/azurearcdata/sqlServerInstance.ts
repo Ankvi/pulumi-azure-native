@@ -43,11 +43,11 @@ export class SqlServerInstance extends pulumi.CustomResource {
     /**
      * null
      */
-    public readonly properties!: pulumi.Output<types.outputs.azurearcdata.SqlServerInstancePropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.SqlServerInstancePropertiesResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.azurearcdata.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -105,7 +105,7 @@ export interface SqlServerInstanceArgs {
     /**
      * null
      */
-    properties?: pulumi.Input<types.inputs.azurearcdata.SqlServerInstancePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.SqlServerInstancePropertiesArgs>;
     /**
      * The name of the Azure resource group
      */

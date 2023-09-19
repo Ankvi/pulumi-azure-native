@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Export logs that show total throttled Api requests for this subscription in the given time window.
  */
@@ -66,7 +66,7 @@ export interface GetLogAnalyticExportThrottledRequestsResult {
     /**
      * LogAnalyticsOutput
      */
-    readonly properties: types.outputs.compute.v20230701.LogAnalyticsOutputResponse;
+    readonly properties: types.outputs.LogAnalyticsOutputResponse;
 }
 /**
  * Export logs that show total throttled Api requests for this subscription in the given time window.

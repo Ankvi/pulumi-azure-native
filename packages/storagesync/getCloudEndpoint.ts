@@ -50,7 +50,7 @@ export interface GetCloudEndpointResult {
     /**
      * Cloud endpoint change enumeration status
      */
-    readonly changeEnumerationStatus: types.outputs.storagesync.CloudEndpointChangeEnumerationStatusResponse;
+    readonly changeEnumerationStatus: types.outputs.CloudEndpointChangeEnumerationStatusResponse;
     /**
      * Friendly Name
      */
@@ -90,7 +90,7 @@ export interface GetCloudEndpointResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.storagesync.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

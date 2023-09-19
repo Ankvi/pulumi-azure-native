@@ -43,7 +43,7 @@ export class App extends pulumi.CustomResource {
     /**
      * The managed identities for the IoT Central application.
      */
-    public readonly identity!: pulumi.Output<types.outputs.iotcentral.SystemAssignedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.SystemAssignedServiceIdentityResponse | undefined>;
     /**
      * The resource location.
      */
@@ -55,7 +55,7 @@ export class App extends pulumi.CustomResource {
     /**
      * A valid instance SKU.
      */
-    public readonly sku!: pulumi.Output<types.outputs.iotcentral.AppSkuInfoResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.AppSkuInfoResponse>;
     /**
      * The current state of the application.
      */
@@ -138,7 +138,7 @@ export interface AppArgs {
     /**
      * The managed identities for the IoT Central application.
      */
-    identity?: pulumi.Input<types.inputs.iotcentral.SystemAssignedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.SystemAssignedServiceIdentityArgs>;
     /**
      * The resource location.
      */
@@ -154,7 +154,7 @@ export interface AppArgs {
     /**
      * A valid instance SKU.
      */
-    sku: pulumi.Input<types.inputs.iotcentral.AppSkuInfoArgs>;
+    sku: pulumi.Input<types.inputs.AppSkuInfoArgs>;
     /**
      * The subdomain of the application.
      */

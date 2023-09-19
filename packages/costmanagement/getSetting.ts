@@ -27,7 +27,7 @@ export interface GetSettingResult {
     /**
      * Array of scopes with additional details used by Cost Management in the Azure portal.
      */
-    readonly cache?: types.outputs.costmanagement.SettingsPropertiesResponseCache[];
+    readonly cache?: types.outputs.SettingsPropertiesResponseCache[];
     /**
      * Resource Id.
      */

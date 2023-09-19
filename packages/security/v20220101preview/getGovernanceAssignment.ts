@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a specific governanceAssignment for the requested scope by AssignmentKey
  */
@@ -36,11 +36,11 @@ export interface GetGovernanceAssignmentResult {
     /**
      * The additional data for the governance assignment - e.g. links to ticket (optional), see example
      */
-    readonly additionalData?: types.outputs.security.v20220101preview.GovernanceAssignmentAdditionalDataResponse;
+    readonly additionalData?: types.outputs.GovernanceAssignmentAdditionalDataResponse;
     /**
      * The email notifications settings for the governance rule, states whether to disable notifications for mangers and owners
      */
-    readonly governanceEmailNotification?: types.outputs.security.v20220101preview.GovernanceEmailNotificationResponse;
+    readonly governanceEmailNotification?: types.outputs.GovernanceEmailNotificationResponse;
     /**
      * Resource Id
      */
@@ -64,7 +64,7 @@ export interface GetGovernanceAssignmentResult {
     /**
      * The ETA (estimated time of arrival) for remediation (optional), see example
      */
-    readonly remediationEta?: types.outputs.security.v20220101preview.RemediationEtaResponse;
+    readonly remediationEta?: types.outputs.RemediationEtaResponse;
     /**
      * Resource type
      */

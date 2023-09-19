@@ -41,7 +41,7 @@ export interface ListGitLabSubgroupResult {
     /**
      * Gets or sets list of resources.
      */
-    readonly value?: types.outputs.security.GitLabGroupResponse[];
+    readonly value?: types.outputs.GitLabGroupResponse[];
 }
 /**
  * List of RP resources which supports pagination.

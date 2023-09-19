@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a Job Definition resource.
  */
@@ -93,7 +93,7 @@ export interface GetJobDefinitionResult {
     /**
      * Resource system metadata.
      */
-    readonly systemData: types.outputs.storagemover.v20230301.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The name of the target Endpoint.
      */

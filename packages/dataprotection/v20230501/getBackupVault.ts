@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns a resource belonging to a resource group.
  */
@@ -39,7 +39,7 @@ export interface GetBackupVaultResult {
     /**
      * Input Managed Identity Details
      */
-    readonly identity?: types.outputs.dataprotection.v20230501.DppIdentityDetailsResponse;
+    readonly identity?: types.outputs.DppIdentityDetailsResponse;
     /**
      * Resource location.
      */
@@ -51,11 +51,11 @@ export interface GetBackupVaultResult {
     /**
      * BackupVaultResource properties
      */
-    readonly properties: types.outputs.dataprotection.v20230501.BackupVaultResponse;
+    readonly properties: types.outputs.BackupVaultResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.dataprotection.v20230501.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

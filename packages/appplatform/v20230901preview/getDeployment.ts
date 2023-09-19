@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a Deployment and its properties.
  */
@@ -49,15 +49,15 @@ export interface GetDeploymentResult {
     /**
      * Properties of the Deployment resource
      */
-    readonly properties: types.outputs.appplatform.v20230901preview.DeploymentResourcePropertiesResponse;
+    readonly properties: types.outputs.DeploymentResourcePropertiesResponse;
     /**
      * Sku of the Deployment resource
      */
-    readonly sku?: types.outputs.appplatform.v20230901preview.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.appplatform.v20230901preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource.
      */

@@ -43,11 +43,11 @@ export class FileImport extends pulumi.CustomResource {
     /**
      * Represents the error file (if the import was ingested with errors or failed the validation).
      */
-    public /*out*/ readonly errorFile!: pulumi.Output<types.outputs.securityinsights.FileMetadataResponse>;
+    public /*out*/ readonly errorFile!: pulumi.Output<types.outputs.FileMetadataResponse>;
     /**
      * An ordered list of some of the errors that were encountered during validation.
      */
-    public /*out*/ readonly errorsPreview!: pulumi.Output<types.outputs.securityinsights.ValidationErrorResponse[]>;
+    public /*out*/ readonly errorsPreview!: pulumi.Output<types.outputs.ValidationErrorResponse[]>;
     /**
      * The time the files associated with this import are deleted from the storage account.
      */
@@ -55,7 +55,7 @@ export class FileImport extends pulumi.CustomResource {
     /**
      * Represents the imported file.
      */
-    public readonly importFile!: pulumi.Output<types.outputs.securityinsights.FileMetadataResponse>;
+    public readonly importFile!: pulumi.Output<types.outputs.FileMetadataResponse>;
     /**
      * The time the file import record is soft deleted from the database and history.
      */
@@ -83,7 +83,7 @@ export class FileImport extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.securityinsights.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The number of records in the file.
      */
@@ -185,7 +185,7 @@ export interface FileImportArgs {
     /**
      * Represents the imported file.
      */
-    importFile: pulumi.Input<types.inputs.securityinsights.FileMetadataArgs>;
+    importFile: pulumi.Input<types.inputs.FileMetadataArgs>;
     /**
      * Describes how to ingest the records in the file.
      */

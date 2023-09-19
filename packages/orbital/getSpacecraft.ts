@@ -36,7 +36,7 @@ export interface GetSpacecraftResult {
     /**
      * Immutable list of Spacecraft links.
      */
-    readonly links: types.outputs.orbital.SpacecraftLinkResponse[];
+    readonly links: types.outputs.SpacecraftLinkResponse[];
     /**
      * The geo-location where the resource lives
      */
@@ -52,7 +52,7 @@ export interface GetSpacecraftResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.orbital.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

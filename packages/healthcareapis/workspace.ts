@@ -47,11 +47,11 @@ export class Workspace extends pulumi.CustomResource {
     /**
      * Workspaces resource specific properties.
      */
-    public /*out*/ readonly properties!: pulumi.Output<types.outputs.healthcareapis.WorkspaceResponseProperties>;
+    public /*out*/ readonly properties!: pulumi.Output<types.outputs.WorkspaceResponseProperties>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.healthcareapis.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */

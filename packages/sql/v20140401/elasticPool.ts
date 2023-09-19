@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents a database elastic pool.
  */
@@ -158,7 +158,7 @@ export interface ElasticPoolArgs {
     /**
      * The edition of the elastic pool.
      */
-    edition?: pulumi.Input<string | types.enums.v20140401.ElasticPoolEdition>;
+    edition?: pulumi.Input<string | types.enums.ElasticPoolEdition>;
     /**
      * The name of the elastic pool to be operated on (updated or created).
      */

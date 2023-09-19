@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The RoutePolicy resource definition.
  */
@@ -50,11 +50,11 @@ export class RoutePolicy extends pulumi.CustomResource {
     /**
      * Route Policy statements.
      */
-    public readonly statements!: pulumi.Output<types.outputs.managednetworkfabric.v20230201preview.RoutePolicyStatementPropertiesResponse[]>;
+    public readonly statements!: pulumi.Output<types.outputs.RoutePolicyStatementPropertiesResponse[]>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.managednetworkfabric.v20230201preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -131,7 +131,7 @@ export interface RoutePolicyArgs {
     /**
      * Route Policy statements.
      */
-    statements: pulumi.Input<pulumi.Input<types.inputs.managednetworkfabric.v20230201preview.RoutePolicyStatementPropertiesArgs>[]>;
+    statements: pulumi.Input<pulumi.Input<types.inputs.RoutePolicyStatementPropertiesArgs>[]>;
     /**
      * Resource tags.
      */

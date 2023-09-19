@@ -58,7 +58,7 @@ export interface GetProtectionContainerResult {
     /**
      * ProtectionContainerResource properties
      */
-    readonly properties: types.outputs.recoveryservices.AzureBackupServerContainerResponse | types.outputs.recoveryservices.AzureIaaSClassicComputeVMContainerResponse | types.outputs.recoveryservices.AzureIaaSComputeVMContainerResponse | types.outputs.recoveryservices.AzureSQLAGWorkloadContainerProtectionContainerResponse | types.outputs.recoveryservices.AzureSqlContainerResponse | types.outputs.recoveryservices.AzureStorageContainerResponse | types.outputs.recoveryservices.AzureVMAppContainerProtectionContainerResponse | types.outputs.recoveryservices.AzureWorkloadContainerResponse | types.outputs.recoveryservices.DpmContainerResponse | types.outputs.recoveryservices.GenericContainerResponse | types.outputs.recoveryservices.IaaSVMContainerResponse | types.outputs.recoveryservices.MabContainerResponse;
+    readonly properties: types.outputs.AzureBackupServerContainerResponse | types.outputs.AzureIaaSClassicComputeVMContainerResponse | types.outputs.AzureIaaSComputeVMContainerResponse | types.outputs.AzureSQLAGWorkloadContainerProtectionContainerResponse | types.outputs.AzureSqlContainerResponse | types.outputs.AzureStorageContainerResponse | types.outputs.AzureVMAppContainerProtectionContainerResponse | types.outputs.AzureWorkloadContainerResponse | types.outputs.DpmContainerResponse | types.outputs.GenericContainerResponse | types.outputs.IaaSVMContainerResponse | types.outputs.MabContainerResponse;
     /**
      * Resource tags.
      */

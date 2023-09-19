@@ -47,7 +47,7 @@ export interface GetResourceGuardProxyResult {
     /**
      * ResourceGuardProxyBaseResource properties
      */
-    readonly properties: types.outputs.recoveryservices.ResourceGuardProxyBaseResponse;
+    readonly properties: types.outputs.ResourceGuardProxyBaseResponse;
     /**
      * Resource tags.
      */

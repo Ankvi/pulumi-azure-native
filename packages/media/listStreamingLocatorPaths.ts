@@ -41,7 +41,7 @@ export interface ListStreamingLocatorPathsResult {
     /**
      * Streaming Paths supported by current Streaming Locator
      */
-    readonly streamingPaths?: types.outputs.media.StreamingPathResponse[];
+    readonly streamingPaths?: types.outputs.StreamingPathResponse[];
 }
 /**
  * List Paths supported by this Streaming Locator

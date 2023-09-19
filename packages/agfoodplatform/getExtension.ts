@@ -37,7 +37,7 @@ export interface GetExtensionResult {
     /**
      * Additional Api Properties.
      */
-    readonly additionalApiProperties: {[key: string]: types.outputs.agfoodplatform.ApiPropertiesResponse};
+    readonly additionalApiProperties: {[key: string]: types.outputs.ApiPropertiesResponse};
     /**
      * The ETag value to implement optimistic concurrency.
      */
@@ -73,7 +73,7 @@ export interface GetExtensionResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.agfoodplatform.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

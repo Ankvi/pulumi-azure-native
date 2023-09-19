@@ -35,11 +35,11 @@ export class Rule extends pulumi.CustomResource {
     /**
      * Represents the filter actions which are allowed for the transformation of a message that have been matched by a filter expression.
      */
-    public readonly action!: pulumi.Output<types.outputs.servicebus.ActionResponse | undefined>;
+    public readonly action!: pulumi.Output<types.outputs.ActionResponse | undefined>;
     /**
      * Properties of correlationFilter
      */
-    public readonly correlationFilter!: pulumi.Output<types.outputs.servicebus.CorrelationFilterResponse | undefined>;
+    public readonly correlationFilter!: pulumi.Output<types.outputs.CorrelationFilterResponse | undefined>;
     /**
      * Filter type that is evaluated against a BrokeredMessage.
      */
@@ -55,11 +55,11 @@ export class Rule extends pulumi.CustomResource {
     /**
      * Properties of sqlFilter
      */
-    public readonly sqlFilter!: pulumi.Output<types.outputs.servicebus.SqlFilterResponse | undefined>;
+    public readonly sqlFilter!: pulumi.Output<types.outputs.SqlFilterResponse | undefined>;
     /**
      * The system meta data relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.servicebus.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
      */
@@ -88,13 +88,13 @@ export class Rule extends pulumi.CustomResource {
             if ((!args || args.topicName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'topicName'");
             }
-            resourceInputs["action"] = args ? (args.action ? pulumi.output(args.action).apply(types.inputs.servicebus.actionArgsProvideDefaults) : undefined) : undefined;
-            resourceInputs["correlationFilter"] = args ? (args.correlationFilter ? pulumi.output(args.correlationFilter).apply(types.inputs.servicebus.correlationFilterArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["action"] = args ? (args.action ? pulumi.output(args.action).apply(types.inputs.actionArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["correlationFilter"] = args ? (args.correlationFilter ? pulumi.output(args.correlationFilter).apply(types.inputs.correlationFilterArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["filterType"] = args ? args.filterType : undefined;
             resourceInputs["namespaceName"] = args ? args.namespaceName : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["ruleName"] = args ? args.ruleName : undefined;
-            resourceInputs["sqlFilter"] = args ? (args.sqlFilter ? pulumi.output(args.sqlFilter).apply(types.inputs.servicebus.sqlFilterArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["sqlFilter"] = args ? (args.sqlFilter ? pulumi.output(args.sqlFilter).apply(types.inputs.sqlFilterArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["subscriptionName"] = args ? args.subscriptionName : undefined;
             resourceInputs["topicName"] = args ? args.topicName : undefined;
             resourceInputs["location"] = undefined /*out*/;
@@ -125,11 +125,11 @@ export interface RuleArgs {
     /**
      * Represents the filter actions which are allowed for the transformation of a message that have been matched by a filter expression.
      */
-    action?: pulumi.Input<types.inputs.servicebus.ActionArgs>;
+    action?: pulumi.Input<types.inputs.ActionArgs>;
     /**
      * Properties of correlationFilter
      */
-    correlationFilter?: pulumi.Input<types.inputs.servicebus.CorrelationFilterArgs>;
+    correlationFilter?: pulumi.Input<types.inputs.CorrelationFilterArgs>;
     /**
      * Filter type that is evaluated against a BrokeredMessage.
      */
@@ -149,7 +149,7 @@ export interface RuleArgs {
     /**
      * Properties of sqlFilter
      */
-    sqlFilter?: pulumi.Input<types.inputs.servicebus.SqlFilterArgs>;
+    sqlFilter?: pulumi.Input<types.inputs.SqlFilterArgs>;
     /**
      * The subscription name.
      */

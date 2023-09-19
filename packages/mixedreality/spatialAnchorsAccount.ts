@@ -43,11 +43,11 @@ export class SpatialAnchorsAccount extends pulumi.CustomResource {
     /**
      * The identity associated with this account
      */
-    public readonly identity!: pulumi.Output<types.outputs.mixedreality.IdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityResponse | undefined>;
     /**
      * The kind of account, if supported
      */
-    public readonly kind!: pulumi.Output<types.outputs.mixedreality.SkuResponse | undefined>;
+    public readonly kind!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -59,11 +59,11 @@ export class SpatialAnchorsAccount extends pulumi.CustomResource {
     /**
      * The plan associated with this account
      */
-    public readonly plan!: pulumi.Output<types.outputs.mixedreality.IdentityResponse | undefined>;
+    public readonly plan!: pulumi.Output<types.outputs.IdentityResponse | undefined>;
     /**
      * The sku associated with this account
      */
-    public readonly sku!: pulumi.Output<types.outputs.mixedreality.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * The name of the storage account associated with this accountId
      */
@@ -71,7 +71,7 @@ export class SpatialAnchorsAccount extends pulumi.CustomResource {
     /**
      * System metadata for this account
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.mixedreality.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -141,11 +141,11 @@ export interface SpatialAnchorsAccountArgs {
     /**
      * The identity associated with this account
      */
-    identity?: pulumi.Input<types.inputs.mixedreality.IdentityArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityArgs>;
     /**
      * The kind of account, if supported
      */
-    kind?: pulumi.Input<types.inputs.mixedreality.SkuArgs>;
+    kind?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -153,7 +153,7 @@ export interface SpatialAnchorsAccountArgs {
     /**
      * The plan associated with this account
      */
-    plan?: pulumi.Input<types.inputs.mixedreality.IdentityArgs>;
+    plan?: pulumi.Input<types.inputs.IdentityArgs>;
     /**
      * Name of an Azure resource group.
      */
@@ -161,7 +161,7 @@ export interface SpatialAnchorsAccountArgs {
     /**
      * The sku associated with this account
      */
-    sku?: pulumi.Input<types.inputs.mixedreality.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * The name of the storage account associated with this accountId
      */

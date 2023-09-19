@@ -94,7 +94,7 @@ export interface GetJobDefinitionResult {
     /**
      * Resource system metadata.
      */
-    readonly systemData: types.outputs.storagemover.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The name of the target Endpoint.
      */

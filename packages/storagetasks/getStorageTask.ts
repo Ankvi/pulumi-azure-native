@@ -32,7 +32,7 @@ export interface GetStorageTaskResult {
     /**
      * The storage task action that is executed
      */
-    readonly action: types.outputs.storagetasks.StorageTaskActionResponse;
+    readonly action: types.outputs.StorageTaskActionResponse;
     /**
      * The creation date and time of the storage task in UTC.
      */
@@ -52,7 +52,7 @@ export interface GetStorageTaskResult {
     /**
      * The managed service identity of the resource.
      */
-    readonly identity?: types.outputs.storagetasks.ManagedServiceIdentityResponse;
+    readonly identity?: types.outputs.ManagedServiceIdentityResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -68,7 +68,7 @@ export interface GetStorageTaskResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.storagetasks.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

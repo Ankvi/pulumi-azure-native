@@ -25,7 +25,7 @@ export interface GetBillingHubServiceFreeHourBalanceArgs {
 }
 
 export interface GetBillingHubServiceFreeHourBalanceResult {
-    readonly incrementEntries?: types.outputs.testbase.BillingHubFreeHourIncrementEntryResponse[];
+    readonly incrementEntries?: types.outputs.BillingHubFreeHourIncrementEntryResponse[];
     readonly totalRemainingFreeHours?: number;
 }
 /**

@@ -35,7 +35,7 @@ export class StorageAccountCredential extends pulumi.CustomResource {
     /**
      * The details of the storage account password.
      */
-    public readonly accessKey!: pulumi.Output<types.outputs.storsimple.AsymmetricEncryptedSecretResponse | undefined>;
+    public readonly accessKey!: pulumi.Output<types.outputs.AsymmetricEncryptedSecretResponse | undefined>;
     /**
      * The storage endpoint
      */
@@ -117,7 +117,7 @@ export interface StorageAccountCredentialArgs {
     /**
      * The details of the storage account password.
      */
-    accessKey?: pulumi.Input<types.inputs.storsimple.AsymmetricEncryptedSecretArgs>;
+    accessKey?: pulumi.Input<types.inputs.AsymmetricEncryptedSecretArgs>;
     /**
      * The storage endpoint
      */

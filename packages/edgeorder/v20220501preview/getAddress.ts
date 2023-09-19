@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get information about the specified address.
  */
@@ -35,7 +35,7 @@ export interface GetAddressResult {
     /**
      * Contact details for the address.
      */
-    readonly contactDetails: types.outputs.edgeorder.v20220501preview.ContactDetailsResponse;
+    readonly contactDetails: types.outputs.ContactDetailsResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -51,11 +51,11 @@ export interface GetAddressResult {
     /**
      * Shipping details for the address.
      */
-    readonly shippingAddress?: types.outputs.edgeorder.v20220501preview.ShippingAddressResponse;
+    readonly shippingAddress?: types.outputs.ShippingAddressResponse;
     /**
      * Represents resource creation and update time.
      */
-    readonly systemData: types.outputs.edgeorder.v20220501preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

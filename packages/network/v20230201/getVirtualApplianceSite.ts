@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the specified Virtual Appliance Site.
  */
@@ -52,7 +52,7 @@ export interface GetVirtualApplianceSiteResult {
     /**
      * Office 365 Policy.
      */
-    readonly o365Policy?: types.outputs.network.v20230201.Office365PolicyPropertiesResponse;
+    readonly o365Policy?: types.outputs.Office365PolicyPropertiesResponse;
     /**
      * The provisioning state of the resource.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Payload of the blockchain member which is exposed in the request/response of the resource provider.
  */
@@ -58,7 +58,7 @@ export class BlockchainMember extends pulumi.CustomResource {
     /**
      * Gets or sets firewall rules
      */
-    public readonly firewallRules!: pulumi.Output<types.outputs.blockchain.v20180601preview.FirewallRuleResponse[] | undefined>;
+    public readonly firewallRules!: pulumi.Output<types.outputs.FirewallRuleResponse[] | undefined>;
     /**
      * The GEO location of the blockchain service.
      */
@@ -90,7 +90,7 @@ export class BlockchainMember extends pulumi.CustomResource {
     /**
      * Gets or sets the blockchain member Sku.
      */
-    public readonly sku!: pulumi.Output<types.outputs.blockchain.v20180601preview.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Tags of the service which is a list of key value pairs that describes the resource.
      */
@@ -106,7 +106,7 @@ export class BlockchainMember extends pulumi.CustomResource {
     /**
      * Gets or sets the blockchain validator nodes Sku.
      */
-    public readonly validatorNodesSku!: pulumi.Output<types.outputs.blockchain.v20180601preview.BlockchainMemberNodesSkuResponse | undefined>;
+    public readonly validatorNodesSku!: pulumi.Output<types.outputs.BlockchainMemberNodesSkuResponse | undefined>;
 
     /**
      * Create a BlockchainMember resource with the given unique name, arguments, and options.
@@ -198,7 +198,7 @@ export interface BlockchainMemberArgs {
     /**
      * Gets or sets firewall rules
      */
-    firewallRules?: pulumi.Input<pulumi.Input<types.inputs.blockchain.v20180601preview.FirewallRuleArgs>[]>;
+    firewallRules?: pulumi.Input<pulumi.Input<types.inputs.FirewallRuleArgs>[]>;
     /**
      * The GEO location of the blockchain service.
      */
@@ -210,7 +210,7 @@ export interface BlockchainMemberArgs {
     /**
      * Gets or sets the blockchain protocol.
      */
-    protocol?: pulumi.Input<string | types.enums.v20180601preview.BlockchainProtocol>;
+    protocol?: pulumi.Input<string | types.enums.BlockchainProtocol>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */
@@ -218,7 +218,7 @@ export interface BlockchainMemberArgs {
     /**
      * Gets or sets the blockchain member Sku.
      */
-    sku?: pulumi.Input<types.inputs.blockchain.v20180601preview.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Tags of the service which is a list of key value pairs that describes the resource.
      */
@@ -226,5 +226,5 @@ export interface BlockchainMemberArgs {
     /**
      * Gets or sets the blockchain validator nodes Sku.
      */
-    validatorNodesSku?: pulumi.Input<types.inputs.blockchain.v20180601preview.BlockchainMemberNodesSkuArgs>;
+    validatorNodesSku?: pulumi.Input<types.inputs.BlockchainMemberNodesSkuArgs>;
 }

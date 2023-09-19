@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The configuration of the event streaming service resource attached to the Purview account for kafka notifications.
  */
@@ -38,7 +38,7 @@ export class KafkaConfiguration extends pulumi.CustomResource {
     /**
      * Credentials to access event hub.
      */
-    public readonly credentials!: pulumi.Output<types.outputs.purview.v20211201.CredentialsResponse | undefined>;
+    public readonly credentials!: pulumi.Output<types.outputs.CredentialsResponse | undefined>;
     /**
      * Optional partition Id for notification event hub. If not set, all partitions will be leveraged.
      */
@@ -63,7 +63,7 @@ export class KafkaConfiguration extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.purview.v20211201.ProxyResourceResponseSystemData>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.ProxyResourceResponseSystemData>;
     /**
      * Gets or sets the type.
      */
@@ -133,7 +133,7 @@ export interface KafkaConfigurationArgs {
     /**
      * Credentials to access event hub.
      */
-    credentials?: pulumi.Input<types.inputs.purview.v20211201.CredentialsArgs>;
+    credentials?: pulumi.Input<types.inputs.CredentialsArgs>;
     /**
      * Optional partition Id for notification event hub. If not set, all partitions will be leveraged.
      */
@@ -142,15 +142,15 @@ export interface KafkaConfigurationArgs {
     /**
      * The event hub type.
      */
-    eventHubType?: pulumi.Input<string | types.enums.v20211201.EventHubType>;
+    eventHubType?: pulumi.Input<string | types.enums.EventHubType>;
     /**
      * The state of the event streaming service
      */
-    eventStreamingState?: pulumi.Input<string | types.enums.v20211201.EventStreamingState>;
+    eventStreamingState?: pulumi.Input<string | types.enums.EventStreamingState>;
     /**
      * The event streaming service type
      */
-    eventStreamingType?: pulumi.Input<string | types.enums.v20211201.EventStreamingType>;
+    eventStreamingType?: pulumi.Input<string | types.enums.EventStreamingType>;
     /**
      * The kafka configuration name.
      */

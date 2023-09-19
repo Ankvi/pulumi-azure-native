@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Specifies information about the Shared Image Gallery that you want to create or update.
  */
@@ -38,7 +38,7 @@ export class Gallery extends pulumi.CustomResource {
     /**
      * Describes the gallery unique name.
      */
-    public /*out*/ readonly identifier!: pulumi.Output<types.outputs.compute.v20220303.GalleryIdentifierResponse | undefined>;
+    public /*out*/ readonly identifier!: pulumi.Output<types.outputs.GalleryIdentifierResponse | undefined>;
     /**
      * Resource location
      */
@@ -54,15 +54,15 @@ export class Gallery extends pulumi.CustomResource {
     /**
      * Profile for gallery sharing to subscription or tenant
      */
-    public readonly sharingProfile!: pulumi.Output<types.outputs.compute.v20220303.SharingProfileResponse | undefined>;
+    public readonly sharingProfile!: pulumi.Output<types.outputs.SharingProfileResponse | undefined>;
     /**
      * Sharing status of current gallery.
      */
-    public /*out*/ readonly sharingStatus!: pulumi.Output<types.outputs.compute.v20220303.SharingStatusResponse>;
+    public /*out*/ readonly sharingStatus!: pulumi.Output<types.outputs.SharingStatusResponse>;
     /**
      * Contains information about the soft deletion policy of the gallery.
      */
-    public readonly softDeletePolicy!: pulumi.Output<types.outputs.compute.v20220303.SoftDeletePolicyResponse | undefined>;
+    public readonly softDeletePolicy!: pulumi.Output<types.outputs.SoftDeletePolicyResponse | undefined>;
     /**
      * Resource tags
      */
@@ -140,11 +140,11 @@ export interface GalleryArgs {
     /**
      * Profile for gallery sharing to subscription or tenant
      */
-    sharingProfile?: pulumi.Input<types.inputs.compute.v20220303.SharingProfileArgs>;
+    sharingProfile?: pulumi.Input<types.inputs.SharingProfileArgs>;
     /**
      * Contains information about the soft deletion policy of the gallery.
      */
-    softDeletePolicy?: pulumi.Input<types.inputs.compute.v20220303.SoftDeletePolicyArgs>;
+    softDeletePolicy?: pulumi.Input<types.inputs.SoftDeletePolicyArgs>;
     /**
      * Resource tags
      */

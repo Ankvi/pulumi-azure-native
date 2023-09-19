@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get Alias Subscription.
  */
@@ -34,11 +34,11 @@ export interface GetAliasResult {
     /**
      * Subscription Alias response properties.
      */
-    readonly properties: types.outputs.subscription.v20211001.SubscriptionAliasResponsePropertiesResponse;
+    readonly properties: types.outputs.SubscriptionAliasResponsePropertiesResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.subscription.v20211001.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource type, Microsoft.Subscription/aliases.
      */

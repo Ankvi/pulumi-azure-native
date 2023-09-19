@@ -59,7 +59,7 @@ export class NspAccessRule extends pulumi.CustomResource {
     /**
      * Rule specified by the perimeter id.
      */
-    public /*out*/ readonly networkSecurityPerimeters!: pulumi.Output<types.outputs.network.PerimeterBasedAccessRuleResponse[]>;
+    public /*out*/ readonly networkSecurityPerimeters!: pulumi.Output<types.outputs.PerimeterBasedAccessRuleResponse[]>;
     /**
      * Outbound rules phone number format.
      */
@@ -71,7 +71,7 @@ export class NspAccessRule extends pulumi.CustomResource {
     /**
      * List of subscription ids
      */
-    public readonly subscriptions!: pulumi.Output<types.outputs.network.SubscriptionIdResponse[] | undefined>;
+    public readonly subscriptions!: pulumi.Output<types.outputs.SubscriptionIdResponse[] | undefined>;
     /**
      * Resource tags.
      */
@@ -194,7 +194,7 @@ export interface NspAccessRuleArgs {
     /**
      * List of subscription ids
      */
-    subscriptions?: pulumi.Input<pulumi.Input<types.inputs.network.SubscriptionIdArgs>[]>;
+    subscriptions?: pulumi.Input<pulumi.Input<types.inputs.SubscriptionIdArgs>[]>;
     /**
      * Resource tags.
      */

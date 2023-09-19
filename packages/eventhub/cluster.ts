@@ -51,7 +51,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * Properties of the cluster SKU.
      */
-    public readonly sku!: pulumi.Output<types.outputs.eventhub.ClusterSkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.ClusterSkuResponse | undefined>;
     /**
      * Status of the Cluster resource
      */
@@ -63,7 +63,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * The system meta data relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.eventhub.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -143,7 +143,7 @@ export interface ClusterArgs {
     /**
      * Properties of the cluster SKU.
      */
-    sku?: pulumi.Input<types.inputs.eventhub.ClusterSkuArgs>;
+    sku?: pulumi.Input<types.inputs.ClusterSkuArgs>;
     /**
      * A value that indicates whether Scaling is Supported.
      */

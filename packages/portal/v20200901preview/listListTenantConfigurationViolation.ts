@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets list of items that violate tenant's configuration.
  */
@@ -26,7 +26,7 @@ export interface ListListTenantConfigurationViolationResult {
     /**
      * The array of violations.
      */
-    readonly value?: types.outputs.portal.v20200901preview.ViolationResponse[];
+    readonly value?: types.outputs.ViolationResponse[];
 }
 /**
  * Gets list of items that violate tenant's configuration.

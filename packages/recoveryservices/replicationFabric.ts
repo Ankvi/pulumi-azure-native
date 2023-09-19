@@ -43,7 +43,7 @@ export class ReplicationFabric extends pulumi.CustomResource {
     /**
      * Fabric related data.
      */
-    public readonly properties!: pulumi.Output<types.outputs.recoveryservices.FabricPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.FabricPropertiesResponse>;
     /**
      * Resource Type
      */
@@ -97,7 +97,7 @@ export interface ReplicationFabricArgs {
     /**
      * Fabric creation input.
      */
-    properties?: pulumi.Input<types.inputs.recoveryservices.FabricCreationInputPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.FabricCreationInputPropertiesArgs>;
     /**
      * The name of the resource group where the recovery services vault is present.
      */

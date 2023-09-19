@@ -36,7 +36,7 @@ export interface GetArtifactSourceResult {
     /**
      * The authentication method to use to access the artifact source.
      */
-    readonly authentication: types.outputs.deploymentmanager.SasAuthenticationResponse;
+    readonly authentication: types.outputs.SasAuthenticationResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */

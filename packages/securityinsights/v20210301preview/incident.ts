@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents an incident in Azure Security Insights.
  */
@@ -34,7 +34,7 @@ export class Incident extends pulumi.CustomResource {
     /**
      * Additional data on the incident
      */
-    public /*out*/ readonly additionalData!: pulumi.Output<types.outputs.securityinsights.v20210301preview.IncidentAdditionalDataResponse>;
+    public /*out*/ readonly additionalData!: pulumi.Output<types.outputs.IncidentAdditionalDataResponse>;
     /**
      * The reason the incident was closed
      */
@@ -74,7 +74,7 @@ export class Incident extends pulumi.CustomResource {
     /**
      * List of labels relevant to this incident
      */
-    public readonly labels!: pulumi.Output<types.outputs.securityinsights.v20210301preview.IncidentLabelResponse[] | undefined>;
+    public readonly labels!: pulumi.Output<types.outputs.IncidentLabelResponse[] | undefined>;
     /**
      * The time of the last activity in the incident
      */
@@ -90,7 +90,7 @@ export class Incident extends pulumi.CustomResource {
     /**
      * Describes a user that the incident is assigned to
      */
-    public readonly owner!: pulumi.Output<types.outputs.securityinsights.v20210301preview.IncidentOwnerInfoResponse | undefined>;
+    public readonly owner!: pulumi.Output<types.outputs.IncidentOwnerInfoResponse | undefined>;
     /**
      * The incident ID assigned by the incident provider
      */
@@ -114,11 +114,11 @@ export class Incident extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.securityinsights.v20210301preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Describes a team for the incident
      */
-    public /*out*/ readonly teamInformation!: pulumi.Output<types.outputs.securityinsights.v20210301preview.TeamInformationResponse | undefined>;
+    public /*out*/ readonly teamInformation!: pulumi.Output<types.outputs.TeamInformationResponse | undefined>;
     /**
      * The title of the incident
      */
@@ -225,7 +225,7 @@ export interface IncidentArgs {
     /**
      * The reason the incident was closed
      */
-    classification?: pulumi.Input<string | types.enums.v20210301preview.IncidentClassification>;
+    classification?: pulumi.Input<string | types.enums.IncidentClassification>;
     /**
      * Describes the reason the incident was closed
      */
@@ -233,7 +233,7 @@ export interface IncidentArgs {
     /**
      * The classification reason the incident was closed with
      */
-    classificationReason?: pulumi.Input<string | types.enums.v20210301preview.IncidentClassificationReason>;
+    classificationReason?: pulumi.Input<string | types.enums.IncidentClassificationReason>;
     /**
      * The description of the incident
      */
@@ -249,7 +249,7 @@ export interface IncidentArgs {
     /**
      * List of labels relevant to this incident
      */
-    labels?: pulumi.Input<pulumi.Input<types.inputs.securityinsights.v20210301preview.IncidentLabelArgs>[]>;
+    labels?: pulumi.Input<pulumi.Input<types.inputs.IncidentLabelArgs>[]>;
     /**
      * The time of the last activity in the incident
      */
@@ -261,7 +261,7 @@ export interface IncidentArgs {
     /**
      * Describes a user that the incident is assigned to
      */
-    owner?: pulumi.Input<types.inputs.securityinsights.v20210301preview.IncidentOwnerInfoArgs>;
+    owner?: pulumi.Input<types.inputs.IncidentOwnerInfoArgs>;
     /**
      * The incident ID assigned by the incident provider
      */
@@ -277,11 +277,11 @@ export interface IncidentArgs {
     /**
      * The severity of the incident
      */
-    severity: pulumi.Input<string | types.enums.v20210301preview.IncidentSeverity>;
+    severity: pulumi.Input<string | types.enums.IncidentSeverity>;
     /**
      * The status of the incident
      */
-    status: pulumi.Input<string | types.enums.v20210301preview.IncidentStatus>;
+    status: pulumi.Input<string | types.enums.IncidentStatus>;
     /**
      * The title of the incident
      */

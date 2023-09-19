@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents a Package in Azure Security Insights.
  */
@@ -34,11 +34,11 @@ export class ContentPackage extends pulumi.CustomResource {
     /**
      * The author of the package
      */
-    public readonly author!: pulumi.Output<types.outputs.securityinsights.v20230601preview.MetadataAuthorResponse | undefined>;
+    public readonly author!: pulumi.Output<types.outputs.MetadataAuthorResponse | undefined>;
     /**
      * The categories of the package
      */
-    public readonly categories!: pulumi.Output<types.outputs.securityinsights.v20230601preview.MetadataCategoriesResponse | undefined>;
+    public readonly categories!: pulumi.Output<types.outputs.MetadataCategoriesResponse | undefined>;
     /**
      * The package id
      */
@@ -54,7 +54,7 @@ export class ContentPackage extends pulumi.CustomResource {
     /**
      * The support tier of the package
      */
-    public readonly dependencies!: pulumi.Output<types.outputs.securityinsights.v20230601preview.MetadataDependenciesResponse | undefined>;
+    public readonly dependencies!: pulumi.Output<types.outputs.MetadataDependenciesResponse | undefined>;
     /**
      * The description of the package
      */
@@ -106,15 +106,15 @@ export class ContentPackage extends pulumi.CustomResource {
     /**
      * The source of the package
      */
-    public readonly source!: pulumi.Output<types.outputs.securityinsights.v20230601preview.MetadataSourceResponse | undefined>;
+    public readonly source!: pulumi.Output<types.outputs.MetadataSourceResponse | undefined>;
     /**
      * The support tier of the package
      */
-    public readonly support!: pulumi.Output<types.outputs.securityinsights.v20230601preview.MetadataSupportResponse | undefined>;
+    public readonly support!: pulumi.Output<types.outputs.MetadataSupportResponse | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.securityinsights.v20230601preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * the tactics the resource covers
      */
@@ -230,11 +230,11 @@ export interface ContentPackageArgs {
     /**
      * The author of the package
      */
-    author?: pulumi.Input<types.inputs.securityinsights.v20230601preview.MetadataAuthorArgs>;
+    author?: pulumi.Input<types.inputs.MetadataAuthorArgs>;
     /**
      * The categories of the package
      */
-    categories?: pulumi.Input<types.inputs.securityinsights.v20230601preview.MetadataCategoriesArgs>;
+    categories?: pulumi.Input<types.inputs.MetadataCategoriesArgs>;
     /**
      * The package id
      */
@@ -242,7 +242,7 @@ export interface ContentPackageArgs {
     /**
      * The package kind
      */
-    contentKind: pulumi.Input<string | types.enums.v20230601preview.PackageKind>;
+    contentKind: pulumi.Input<string | types.enums.PackageKind>;
     /**
      * The version of the content schema.
      */
@@ -250,7 +250,7 @@ export interface ContentPackageArgs {
     /**
      * The support tier of the package
      */
-    dependencies?: pulumi.Input<types.inputs.securityinsights.v20230601preview.MetadataDependenciesArgs>;
+    dependencies?: pulumi.Input<types.inputs.MetadataDependenciesArgs>;
     /**
      * The description of the package
      */
@@ -270,15 +270,15 @@ export interface ContentPackageArgs {
     /**
      * Flag indicates if this package is among the featured list.
      */
-    isFeatured?: pulumi.Input<string | types.enums.v20230601preview.Flag>;
+    isFeatured?: pulumi.Input<string | types.enums.Flag>;
     /**
      * Flag indicates if this is a newly published package.
      */
-    isNew?: pulumi.Input<string | types.enums.v20230601preview.Flag>;
+    isNew?: pulumi.Input<string | types.enums.Flag>;
     /**
      * Flag indicates if this package is in preview.
      */
-    isPreview?: pulumi.Input<string | types.enums.v20230601preview.Flag>;
+    isPreview?: pulumi.Input<string | types.enums.Flag>;
     /**
      * last publish date for the package item
      */
@@ -302,11 +302,11 @@ export interface ContentPackageArgs {
     /**
      * The source of the package
      */
-    source?: pulumi.Input<types.inputs.securityinsights.v20230601preview.MetadataSourceArgs>;
+    source?: pulumi.Input<types.inputs.MetadataSourceArgs>;
     /**
      * The support tier of the package
      */
-    support?: pulumi.Input<types.inputs.securityinsights.v20230601preview.MetadataSupportArgs>;
+    support?: pulumi.Input<types.inputs.MetadataSupportArgs>;
     /**
      * the tactics the resource covers
      */

@@ -68,7 +68,7 @@ utilities.lazyLoad(exports, ["NodeType"], () => require("./nodeType"));
 
 
 // Export enums:
-export * from "../types/enums/v20230301preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

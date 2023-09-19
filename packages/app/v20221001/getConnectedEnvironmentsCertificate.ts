@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Certificate used for Custom Domain bindings of Container Apps in a Managed Environment
  */
@@ -48,11 +48,11 @@ export interface GetConnectedEnvironmentsCertificateResult {
     /**
      * Certificate resource specific properties
      */
-    readonly properties: types.outputs.app.v20221001.CertificateResponseProperties;
+    readonly properties: types.outputs.CertificateResponseProperties;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.app.v20221001.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

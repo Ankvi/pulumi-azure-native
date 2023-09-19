@@ -32,7 +32,7 @@ export interface ListLinkerConfigurationsResult {
     /**
      * The configuration properties for source resource.
      */
-    readonly configurations?: types.outputs.servicelinker.SourceConfigurationResponse[];
+    readonly configurations?: types.outputs.SourceConfigurationResponse[];
 }
 /**
  * list source configurations for a Linker.

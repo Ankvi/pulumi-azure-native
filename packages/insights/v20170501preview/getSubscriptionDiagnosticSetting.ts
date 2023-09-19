@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the active subscription diagnostic settings for the specified resource.
  */
@@ -42,7 +42,7 @@ export interface GetSubscriptionDiagnosticSettingResult {
     /**
      * The list of logs settings.
      */
-    readonly logs?: types.outputs.insights.v20170501preview.SubscriptionLogSettingsResponse[];
+    readonly logs?: types.outputs.SubscriptionLogSettingsResponse[];
     /**
      * Azure resource name
      */

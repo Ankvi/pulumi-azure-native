@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the kafka configuration for the account
  */
@@ -40,7 +40,7 @@ export interface GetKafkaConfigurationResult {
     /**
      * Credentials to access event hub.
      */
-    readonly credentials?: types.outputs.purview.v20211201.CredentialsResponse;
+    readonly credentials?: types.outputs.CredentialsResponse;
     /**
      * Optional partition Id for notification event hub. If not set, all partitions will be leveraged.
      */
@@ -69,7 +69,7 @@ export interface GetKafkaConfigurationResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.purview.v20211201.ProxyResourceResponseSystemData;
+    readonly systemData: types.outputs.ProxyResourceResponseSystemData;
     /**
      * Gets or sets the type.
      */

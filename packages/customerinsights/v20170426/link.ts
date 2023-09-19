@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The link resource format.
  */
@@ -46,7 +46,7 @@ export class Link extends pulumi.CustomResource {
     /**
      * The set of properties mappings between the source and target Types.
      */
-    public readonly mappings!: pulumi.Output<types.outputs.customerinsights.v20170426.TypePropertiesMappingResponse[] | undefined>;
+    public readonly mappings!: pulumi.Output<types.outputs.TypePropertiesMappingResponse[] | undefined>;
     /**
      * Resource name.
      */
@@ -58,7 +58,7 @@ export class Link extends pulumi.CustomResource {
     /**
      * The properties that represent the participating profile.
      */
-    public readonly participantPropertyReferences!: pulumi.Output<types.outputs.customerinsights.v20170426.ParticipantPropertyReferenceResponse[]>;
+    public readonly participantPropertyReferences!: pulumi.Output<types.outputs.ParticipantPropertyReferenceResponse[]>;
     /**
      * Provisioning state.
      */
@@ -188,15 +188,15 @@ export interface LinkArgs {
     /**
      * The set of properties mappings between the source and target Types.
      */
-    mappings?: pulumi.Input<pulumi.Input<types.inputs.customerinsights.v20170426.TypePropertiesMappingArgs>[]>;
+    mappings?: pulumi.Input<pulumi.Input<types.inputs.TypePropertiesMappingArgs>[]>;
     /**
      * Determines whether this link is supposed to create or delete instances if Link is NOT Reference Only.
      */
-    operationType?: pulumi.Input<types.enums.v20170426.InstanceOperationType>;
+    operationType?: pulumi.Input<types.enums.InstanceOperationType>;
     /**
      * The properties that represent the participating profile.
      */
-    participantPropertyReferences: pulumi.Input<pulumi.Input<types.inputs.customerinsights.v20170426.ParticipantPropertyReferenceArgs>[]>;
+    participantPropertyReferences: pulumi.Input<pulumi.Input<types.inputs.ParticipantPropertyReferenceArgs>[]>;
     /**
      * Indicating whether the link is reference only link. This flag is ignored if the Mappings are defined. If the mappings are not defined and it is set to true, links processing will not create or update profiles.
      */
@@ -208,7 +208,7 @@ export interface LinkArgs {
     /**
      * Type of source entity.
      */
-    sourceEntityType: pulumi.Input<types.enums.v20170426.EntityType>;
+    sourceEntityType: pulumi.Input<types.enums.EntityType>;
     /**
      * Name of the source Entity Type.
      */
@@ -216,7 +216,7 @@ export interface LinkArgs {
     /**
      * Type of target entity.
      */
-    targetEntityType: pulumi.Input<types.enums.v20170426.EntityType>;
+    targetEntityType: pulumi.Input<types.enums.EntityType>;
     /**
      * Name of the target Entity Type.
      */

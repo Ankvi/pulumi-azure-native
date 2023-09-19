@@ -59,7 +59,7 @@ export interface GetProtectionIntentResult {
     /**
      * ProtectionIntentResource properties
      */
-    readonly properties: types.outputs.recoveryservices.AzureRecoveryServiceVaultProtectionIntentResponse | types.outputs.recoveryservices.AzureResourceProtectionIntentResponse | types.outputs.recoveryservices.AzureWorkloadAutoProtectionIntentResponse | types.outputs.recoveryservices.AzureWorkloadContainerAutoProtectionIntentResponse | types.outputs.recoveryservices.AzureWorkloadSQLAutoProtectionIntentResponse;
+    readonly properties: types.outputs.AzureRecoveryServiceVaultProtectionIntentResponse | types.outputs.AzureResourceProtectionIntentResponse | types.outputs.AzureWorkloadAutoProtectionIntentResponse | types.outputs.AzureWorkloadContainerAutoProtectionIntentResponse | types.outputs.AzureWorkloadSQLAutoProtectionIntentResponse;
     /**
      * Resource tags.
      */

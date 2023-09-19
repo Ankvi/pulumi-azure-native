@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The StreamingEndpoint.
  */
@@ -34,7 +34,7 @@ export class StreamingEndpoint extends pulumi.CustomResource {
     /**
      * The access control definition of the StreamingEndpoint.
      */
-    public readonly accessControl!: pulumi.Output<types.outputs.media.v20180601preview.StreamingEndpointAccessControlResponse | undefined>;
+    public readonly accessControl!: pulumi.Output<types.outputs.StreamingEndpointAccessControlResponse | undefined>;
     /**
      * AvailabilitySet name
      */
@@ -58,7 +58,7 @@ export class StreamingEndpoint extends pulumi.CustomResource {
     /**
      * The StreamingEndpoint access policies.
      */
-    public readonly crossSiteAccessPolicies!: pulumi.Output<types.outputs.media.v20180601preview.CrossSiteAccessPoliciesResponse | undefined>;
+    public readonly crossSiteAccessPolicies!: pulumi.Output<types.outputs.CrossSiteAccessPoliciesResponse | undefined>;
     /**
      * The custom host names of the StreamingEndpoint
      */
@@ -189,7 +189,7 @@ export interface StreamingEndpointArgs {
     /**
      * The access control definition of the StreamingEndpoint.
      */
-    accessControl?: pulumi.Input<types.inputs.media.v20180601preview.StreamingEndpointAccessControlArgs>;
+    accessControl?: pulumi.Input<types.inputs.StreamingEndpointAccessControlArgs>;
     /**
      * The Media Services account name.
      */
@@ -217,7 +217,7 @@ export interface StreamingEndpointArgs {
     /**
      * The StreamingEndpoint access policies.
      */
-    crossSiteAccessPolicies?: pulumi.Input<types.inputs.media.v20180601preview.CrossSiteAccessPoliciesArgs>;
+    crossSiteAccessPolicies?: pulumi.Input<types.inputs.CrossSiteAccessPoliciesArgs>;
     /**
      * The custom host names of the StreamingEndpoint
      */

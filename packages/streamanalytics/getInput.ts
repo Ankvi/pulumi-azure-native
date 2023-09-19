@@ -45,7 +45,7 @@ export interface GetInputResult {
     /**
      * The properties that are associated with an input. Required on PUT (CreateOrReplace) requests.
      */
-    readonly properties: types.outputs.streamanalytics.ReferenceInputPropertiesResponse | types.outputs.streamanalytics.StreamInputPropertiesResponse;
+    readonly properties: types.outputs.ReferenceInputPropertiesResponse | types.outputs.StreamInputPropertiesResponse;
     /**
      * Resource type
      */

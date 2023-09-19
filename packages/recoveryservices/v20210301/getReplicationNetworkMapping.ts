@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the details of an ASR network mapping
  */
@@ -58,7 +58,7 @@ export interface GetReplicationNetworkMappingResult {
     /**
      * The Network Mapping Properties.
      */
-    readonly properties: types.outputs.recoveryservices.v20210301.NetworkMappingPropertiesResponse;
+    readonly properties: types.outputs.NetworkMappingPropertiesResponse;
     /**
      * Resource Type
      */

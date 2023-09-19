@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Class representing a Kusto kusto pool.
  */
@@ -58,7 +58,7 @@ export class KustoPool extends pulumi.CustomResource {
     /**
      * The SKU of the kusto pool.
      */
-    public readonly sku!: pulumi.Output<types.outputs.synapse.v20210401preview.AzureSkuResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.AzureSkuResponse>;
     /**
      * The state of the resource.
      */
@@ -70,7 +70,7 @@ export class KustoPool extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.synapse.v20210401preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -155,7 +155,7 @@ export interface KustoPoolArgs {
     /**
      * The engine type
      */
-    engineType?: pulumi.Input<string | types.enums.v20210401preview.EngineType>;
+    engineType?: pulumi.Input<string | types.enums.EngineType>;
     /**
      * The name of the Kusto pool.
      */
@@ -171,7 +171,7 @@ export interface KustoPoolArgs {
     /**
      * The SKU of the kusto pool.
      */
-    sku: pulumi.Input<types.inputs.synapse.v20210401preview.AzureSkuArgs>;
+    sku: pulumi.Input<types.inputs.AzureSkuArgs>;
     /**
      * Resource tags.
      */

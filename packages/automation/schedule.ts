@@ -35,7 +35,7 @@ export class Schedule extends pulumi.CustomResource {
     /**
      * Gets or sets the advanced schedule.
      */
-    public readonly advancedSchedule!: pulumi.Output<types.outputs.automation.AdvancedScheduleResponse | undefined>;
+    public readonly advancedSchedule!: pulumi.Output<types.outputs.AdvancedScheduleResponse | undefined>;
     /**
      * Gets or sets the creation time.
      */
@@ -174,7 +174,7 @@ export interface ScheduleArgs {
     /**
      * Gets or sets the AdvancedSchedule.
      */
-    advancedSchedule?: pulumi.Input<types.inputs.automation.AdvancedScheduleArgs>;
+    advancedSchedule?: pulumi.Input<types.inputs.AdvancedScheduleArgs>;
     /**
      * The name of the automation account.
      */

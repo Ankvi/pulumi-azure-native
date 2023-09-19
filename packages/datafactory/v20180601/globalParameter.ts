@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Global parameters resource type.
  */
@@ -42,7 +42,7 @@ export class GlobalParameter extends pulumi.CustomResource {
     /**
      * Properties of the global parameter.
      */
-    public readonly properties!: pulumi.Output<{[key: string]: types.outputs.datafactory.v20180601.GlobalParameterSpecificationResponse}>;
+    public readonly properties!: pulumi.Output<{[key: string]: types.outputs.GlobalParameterSpecificationResponse}>;
     /**
      * The resource type.
      */
@@ -103,7 +103,7 @@ export interface GlobalParameterArgs {
     /**
      * Properties of the global parameter.
      */
-    properties: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.datafactory.v20180601.GlobalParameterSpecificationArgs>}>;
+    properties: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.GlobalParameterSpecificationArgs>}>;
     /**
      * The resource group name.
      */

@@ -32,7 +32,7 @@ export interface GetPrivateLinkScopeResult {
     /**
      * Access mode settings
      */
-    readonly accessModeSettings: types.outputs.insights.AccessModeSettingsResponse;
+    readonly accessModeSettings: types.outputs.AccessModeSettingsResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -48,7 +48,7 @@ export interface GetPrivateLinkScopeResult {
     /**
      * List of private endpoint connections.
      */
-    readonly privateEndpointConnections: types.outputs.insights.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections: types.outputs.PrivateEndpointConnectionResponse[];
     /**
      * Current state of this PrivateLinkScope: whether or not is has been provisioned within the resource group it is defined. Users cannot change this value but are able to read from it. Values will include Provisioning ,Succeeded, Canceled and Failed.
      */
@@ -56,7 +56,7 @@ export interface GetPrivateLinkScopeResult {
     /**
      * System data
      */
-    readonly systemData: types.outputs.insights.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

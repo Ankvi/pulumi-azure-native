@@ -59,7 +59,7 @@ export interface GetReplicationStorageClassificationMappingResult {
     /**
      * Properties of the storage mapping object.
      */
-    readonly properties: types.outputs.recoveryservices.StorageClassificationMappingPropertiesResponse;
+    readonly properties: types.outputs.StorageClassificationMappingPropertiesResponse;
     /**
      * Resource Type
      */

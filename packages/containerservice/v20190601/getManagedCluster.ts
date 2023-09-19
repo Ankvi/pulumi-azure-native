@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the details of the managed cluster with a specified resource group and name.
  */
@@ -31,15 +31,15 @@ export interface GetManagedClusterResult {
     /**
      * Profile of Azure Active Directory configuration.
      */
-    readonly aadProfile?: types.outputs.containerservice.v20190601.ManagedClusterAADProfileResponse;
+    readonly aadProfile?: types.outputs.ManagedClusterAADProfileResponse;
     /**
      * Profile of managed cluster add-on.
      */
-    readonly addonProfiles?: {[key: string]: types.outputs.containerservice.v20190601.ManagedClusterAddonProfileResponse};
+    readonly addonProfiles?: {[key: string]: types.outputs.ManagedClusterAddonProfileResponse};
     /**
      * Properties of the agent pool.
      */
-    readonly agentPoolProfiles?: types.outputs.containerservice.v20190601.ManagedClusterAgentPoolProfileResponse[];
+    readonly agentPoolProfiles?: types.outputs.ManagedClusterAgentPoolProfileResponse[];
     /**
      * (PREVIEW) Authorized IP Ranges to kubernetes API server.
      */
@@ -67,7 +67,7 @@ export interface GetManagedClusterResult {
     /**
      * The identity of the managed cluster, if configured.
      */
-    readonly identity?: types.outputs.containerservice.v20190601.ManagedClusterIdentityResponse;
+    readonly identity?: types.outputs.ManagedClusterIdentityResponse;
     /**
      * Version of Kubernetes specified when creating the managed cluster.
      */
@@ -75,7 +75,7 @@ export interface GetManagedClusterResult {
     /**
      * Profile for Linux VMs in the container service cluster.
      */
-    readonly linuxProfile?: types.outputs.containerservice.v20190601.ContainerServiceLinuxProfileResponse;
+    readonly linuxProfile?: types.outputs.ContainerServiceLinuxProfileResponse;
     /**
      * Resource location
      */
@@ -91,7 +91,7 @@ export interface GetManagedClusterResult {
     /**
      * Profile of network configuration.
      */
-    readonly networkProfile?: types.outputs.containerservice.v20190601.ContainerServiceNetworkProfileResponse;
+    readonly networkProfile?: types.outputs.ContainerServiceNetworkProfileResponse;
     /**
      * Name of the resource group containing agent pool nodes.
      */
@@ -103,7 +103,7 @@ export interface GetManagedClusterResult {
     /**
      * Information about a service principal identity for the cluster to use for manipulating Azure APIs.
      */
-    readonly servicePrincipalProfile?: types.outputs.containerservice.v20190601.ManagedClusterServicePrincipalProfileResponse;
+    readonly servicePrincipalProfile?: types.outputs.ManagedClusterServicePrincipalProfileResponse;
     /**
      * Resource tags
      */
@@ -115,7 +115,7 @@ export interface GetManagedClusterResult {
     /**
      * Profile for Windows VMs in the container service cluster.
      */
-    readonly windowsProfile?: types.outputs.containerservice.v20190601.ManagedClusterWindowsProfileResponse;
+    readonly windowsProfile?: types.outputs.ManagedClusterWindowsProfileResponse;
 }
 /**
  * Gets the details of the managed cluster with a specified resource group and name.

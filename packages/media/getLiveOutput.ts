@@ -58,7 +58,7 @@ export interface GetLiveOutputResult {
     /**
      * HTTP Live Streaming (HLS) packing setting for the live output.
      */
-    readonly hls?: types.outputs.media.HlsResponse;
+    readonly hls?: types.outputs.HlsResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -94,7 +94,7 @@ export interface GetLiveOutputResult {
     /**
      * The system metadata relating to this resource.
      */
-    readonly systemData: types.outputs.media.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

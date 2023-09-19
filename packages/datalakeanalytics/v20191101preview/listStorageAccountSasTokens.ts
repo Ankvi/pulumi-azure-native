@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the SAS token associated with the specified Data Lake Analytics and Azure Storage account and container combination.
  */
@@ -45,7 +45,7 @@ export interface ListStorageAccountSasTokensResult {
     /**
      * The results of the list operation.
      */
-    readonly value: types.outputs.datalakeanalytics.v20191101preview.SasTokenInformationResponse[];
+    readonly value: types.outputs.SasTokenInformationResponse[];
 }
 /**
  * Gets the SAS token associated with the specified Data Lake Analytics and Azure Storage account and container combination.

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns a database.
  */
@@ -69,7 +69,7 @@ export interface GetReadWriteDatabaseResult {
     /**
      * The statistics of the database.
      */
-    readonly statistics: types.outputs.kusto.v20221229.DatabaseStatisticsResponse;
+    readonly statistics: types.outputs.DatabaseStatisticsResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

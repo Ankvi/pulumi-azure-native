@@ -13,7 +13,7 @@ utilities.lazyLoad(exports, ["PrivateEndpointConnection"], () => require("./priv
 
 
 // Export enums:
-export * from "../types/enums/v20180101preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

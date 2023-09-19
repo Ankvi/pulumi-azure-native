@@ -49,7 +49,7 @@ export interface GetSiteResult {
     /**
      * An array of IDs of the network functions deployed in the site. Deleting the site will delete any network functions that are deployed in the site.
      */
-    readonly networkFunctions: types.outputs.mobilenetwork.SubResourceResponse[];
+    readonly networkFunctions: types.outputs.SubResourceResponse[];
     /**
      * The provisioning state of the site resource.
      */
@@ -57,7 +57,7 @@ export interface GetSiteResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.mobilenetwork.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

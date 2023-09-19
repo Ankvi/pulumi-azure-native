@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The agentPool resource definition
  */
@@ -38,12 +38,12 @@ export class AgentPool extends pulumi.CustomResource {
     /**
      * The underlying cloud infra provider properties.
      */
-    public readonly cloudProviderProfile!: pulumi.Output<types.outputs.hybridcontainerservice.v20220901preview.CloudProviderProfileResponse | undefined>;
+    public readonly cloudProviderProfile!: pulumi.Output<types.outputs.CloudProviderProfileResponse | undefined>;
     /**
      * Count - Number of agents to host docker containers. Allowed values must be in the range of 1 to 100 (inclusive). The default value is 1.
      */
     public readonly count!: pulumi.Output<number | undefined>;
-    public readonly extendedLocation!: pulumi.Output<types.outputs.hybridcontainerservice.v20220901preview.AgentPoolResponseExtendedLocation | undefined>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.AgentPoolResponseExtendedLocation | undefined>;
     /**
      * The resource location
      */
@@ -88,11 +88,11 @@ export class AgentPool extends pulumi.CustomResource {
     /**
      * HybridAKSNodePoolStatus defines the observed state of HybridAKSNodePool
      */
-    public readonly status!: pulumi.Output<types.outputs.hybridcontainerservice.v20220901preview.AgentPoolProvisioningStatusResponseStatus | undefined>;
+    public readonly status!: pulumi.Output<types.outputs.AgentPoolProvisioningStatusResponseStatus | undefined>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.hybridcontainerservice.v20220901preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags
      */
@@ -190,12 +190,12 @@ export interface AgentPoolArgs {
     /**
      * The underlying cloud infra provider properties.
      */
-    cloudProviderProfile?: pulumi.Input<types.inputs.hybridcontainerservice.v20220901preview.CloudProviderProfileArgs>;
+    cloudProviderProfile?: pulumi.Input<types.inputs.CloudProviderProfileArgs>;
     /**
      * Count - Number of agents to host docker containers. Allowed values must be in the range of 1 to 100 (inclusive). The default value is 1.
      */
     count?: pulumi.Input<number>;
-    extendedLocation?: pulumi.Input<types.inputs.hybridcontainerservice.v20220901preview.AgentPoolExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.AgentPoolExtendedLocationArgs>;
     /**
      * The resource location
      */
@@ -215,7 +215,7 @@ export interface AgentPoolArgs {
     /**
      * Mode - AgentPoolMode represents mode of an agent pool. Possible values include: 'System', 'LB', 'User'. Default is 'User'
      */
-    mode?: pulumi.Input<string | types.enums.v20220901preview.Mode>;
+    mode?: pulumi.Input<string | types.enums.Mode>;
     /**
      * The version of node image
      */
@@ -231,7 +231,7 @@ export interface AgentPoolArgs {
     /**
      * OsType - OsType to be used to specify os type. Choose from Linux and Windows. Default to Linux. Possible values include: 'Linux', 'Windows'
      */
-    osType?: pulumi.Input<string | types.enums.v20220901preview.OsType>;
+    osType?: pulumi.Input<string | types.enums.OsType>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -243,7 +243,7 @@ export interface AgentPoolArgs {
     /**
      * HybridAKSNodePoolStatus defines the observed state of HybridAKSNodePool
      */
-    status?: pulumi.Input<types.inputs.hybridcontainerservice.v20220901preview.AgentPoolProvisioningStatusStatusArgs>;
+    status?: pulumi.Input<types.inputs.AgentPoolProvisioningStatusStatusArgs>;
     /**
      * Resource tags
      */

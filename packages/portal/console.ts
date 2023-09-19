@@ -35,7 +35,7 @@ export class Console extends pulumi.CustomResource {
     /**
      * Cloud shell console properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.portal.ConsolePropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ConsolePropertiesResponse>;
 
     /**
      * Create a Console resource with the given unique name, arguments, and options.
@@ -74,5 +74,5 @@ export interface ConsoleArgs {
     /**
      * Cloud shell properties for creating a console.
      */
-    properties: pulumi.Input<types.inputs.portal.ConsoleCreatePropertiesArgs>;
+    properties: pulumi.Input<types.inputs.ConsoleCreatePropertiesArgs>;
 }

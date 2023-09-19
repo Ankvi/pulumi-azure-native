@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Description of a namespace resource.
  */
@@ -46,11 +46,11 @@ export class Namespace extends pulumi.CustomResource {
     /**
      * Properties of BYOK Encryption description
      */
-    public readonly encryption!: pulumi.Output<types.outputs.servicebus.v20220101preview.EncryptionResponse | undefined>;
+    public readonly encryption!: pulumi.Output<types.outputs.EncryptionResponse | undefined>;
     /**
      * Properties of BYOK Identity description
      */
-    public readonly identity!: pulumi.Output<types.outputs.servicebus.v20220101preview.IdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityResponse | undefined>;
     /**
      * The Geo-location where the resource lives
      */
@@ -70,7 +70,7 @@ export class Namespace extends pulumi.CustomResource {
     /**
      * List of private endpoint connections.
      */
-    public readonly privateEndpointConnections!: pulumi.Output<types.outputs.servicebus.v20220101preview.PrivateEndpointConnectionResponse[] | undefined>;
+    public readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[] | undefined>;
     /**
      * Provisioning state of the namespace.
      */
@@ -86,7 +86,7 @@ export class Namespace extends pulumi.CustomResource {
     /**
      * Properties of SKU
      */
-    public readonly sku!: pulumi.Output<types.outputs.servicebus.v20220101preview.SBSkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SBSkuResponse | undefined>;
     /**
      * Status of the namespace.
      */
@@ -94,7 +94,7 @@ export class Namespace extends pulumi.CustomResource {
     /**
      * The system meta data relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.servicebus.v20220101preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags
      */
@@ -128,7 +128,7 @@ export class Namespace extends pulumi.CustomResource {
             }
             resourceInputs["alternateName"] = args ? args.alternateName : undefined;
             resourceInputs["disableLocalAuth"] = args ? args.disableLocalAuth : undefined;
-            resourceInputs["encryption"] = args ? (args.encryption ? pulumi.output(args.encryption).apply(types.inputs.servicebus.v20220101preview.encryptionArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["encryption"] = args ? (args.encryption ? pulumi.output(args.encryption).apply(types.inputs.encryptionArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["identity"] = args ? args.identity : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["minimumTlsVersion"] = args ? args.minimumTlsVersion : undefined;
@@ -192,11 +192,11 @@ export interface NamespaceArgs {
     /**
      * Properties of BYOK Encryption description
      */
-    encryption?: pulumi.Input<types.inputs.servicebus.v20220101preview.EncryptionArgs>;
+    encryption?: pulumi.Input<types.inputs.EncryptionArgs>;
     /**
      * Properties of BYOK Identity description
      */
-    identity?: pulumi.Input<types.inputs.servicebus.v20220101preview.IdentityArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityArgs>;
     /**
      * The Geo-location where the resource lives
      */
@@ -204,7 +204,7 @@ export interface NamespaceArgs {
     /**
      * The minimum TLS version for the cluster to support, e.g. '1.2'
      */
-    minimumTlsVersion?: pulumi.Input<string | types.enums.v20220101preview.TlsVersion>;
+    minimumTlsVersion?: pulumi.Input<string | types.enums.TlsVersion>;
     /**
      * The namespace name.
      */
@@ -213,11 +213,11 @@ export interface NamespaceArgs {
      * List of private endpoint connections.
      * These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
      */
-    privateEndpointConnections?: pulumi.Input<pulumi.Input<types.inputs.servicebus.v20220101preview.PrivateEndpointConnectionArgs>[]>;
+    privateEndpointConnections?: pulumi.Input<pulumi.Input<types.inputs.PrivateEndpointConnectionArgs>[]>;
     /**
      * This determines if traffic is allowed over public network. By default it is enabled.
      */
-    publicNetworkAccess?: pulumi.Input<string | types.enums.v20220101preview.PublicNetworkAccess>;
+    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess>;
     /**
      * Name of the Resource group within the Azure subscription.
      */
@@ -225,7 +225,7 @@ export interface NamespaceArgs {
     /**
      * Properties of SKU
      */
-    sku?: pulumi.Input<types.inputs.servicebus.v20220101preview.SBSkuArgs>;
+    sku?: pulumi.Input<types.inputs.SBSkuArgs>;
     /**
      * Resource tags
      */

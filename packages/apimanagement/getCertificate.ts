@@ -45,7 +45,7 @@ export interface GetCertificateResult {
     /**
      * KeyVault location details of the certificate.
      */
-    readonly keyVault?: types.outputs.apimanagement.KeyVaultContractPropertiesResponse;
+    readonly keyVault?: types.outputs.KeyVaultContractPropertiesResponse;
     /**
      * The name of the resource
      */

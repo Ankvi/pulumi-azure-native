@@ -13,7 +13,7 @@ utilities.lazyLoad(exports, ["getAzureBareMetalStorageInstance","getAzureBareMet
 
 
 // Export enums:
-export * from "../types/enums/v20230406";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

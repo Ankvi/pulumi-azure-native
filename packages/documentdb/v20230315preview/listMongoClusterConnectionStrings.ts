@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * List mongo cluster connection strings. This includes the default connection string using SCRAM-SHA-256, as well as other connection strings supported by the cluster.
  */
@@ -31,7 +31,7 @@ export interface ListMongoClusterConnectionStringsResult {
     /**
      * An array that contains the connection strings for a mongo cluster.
      */
-    readonly connectionStrings: types.outputs.documentdb.v20230315preview.ConnectionStringResponse[];
+    readonly connectionStrings: types.outputs.ConnectionStringResponse[];
 }
 /**
  * List mongo cluster connection strings. This includes the default connection string using SCRAM-SHA-256, as well as other connection strings supported by the cluster.

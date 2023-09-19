@@ -50,11 +50,11 @@ export interface GetGatewayRouteConfigResult {
     /**
      * API route config of the Spring Cloud Gateway
      */
-    readonly properties: types.outputs.appplatform.GatewayRouteConfigPropertiesResponse;
+    readonly properties: types.outputs.GatewayRouteConfigPropertiesResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.appplatform.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource.
      */

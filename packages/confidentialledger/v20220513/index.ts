@@ -13,7 +13,7 @@ utilities.lazyLoad(exports, ["Ledger"], () => require("./ledger"));
 
 
 // Export enums:
-export * from "../types/enums/v20220513";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

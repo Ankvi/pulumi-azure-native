@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * SIM policy resource.
  */
@@ -46,7 +46,7 @@ export class SimPolicy extends pulumi.CustomResource {
     /**
      * The default slice to use if the UE does not explicitly specify it. This slice must exist in the `sliceConfigurations` map.
      */
-    public readonly defaultSlice!: pulumi.Output<types.outputs.mobilenetwork.v20220401preview.SliceResourceIdResponse>;
+    public readonly defaultSlice!: pulumi.Output<types.outputs.SliceResourceIdResponse>;
     /**
      * The timestamp of resource last modification (UTC)
      */
@@ -82,11 +82,11 @@ export class SimPolicy extends pulumi.CustomResource {
     /**
      * The allowed slices and the settings to use for them. The list must not contain duplicate items and must contain at least one item.
      */
-    public readonly sliceConfigurations!: pulumi.Output<types.outputs.mobilenetwork.v20220401preview.SliceConfigurationResponse[]>;
+    public readonly sliceConfigurations!: pulumi.Output<types.outputs.SliceConfigurationResponse[]>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.mobilenetwork.v20220401preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -98,7 +98,7 @@ export class SimPolicy extends pulumi.CustomResource {
     /**
      * Aggregate maximum bit rate across all non-GBR QoS flows of all PDU sessions of a given UE. See 3GPP TS23.501 section 5.7.2.6 for a full description of the UE-AMBR.
      */
-    public readonly ueAmbr!: pulumi.Output<types.outputs.mobilenetwork.v20220401preview.AmbrResponse>;
+    public readonly ueAmbr!: pulumi.Output<types.outputs.AmbrResponse>;
 
     /**
      * Create a SimPolicy resource with the given unique name, arguments, and options.
@@ -187,11 +187,11 @@ export interface SimPolicyArgs {
     /**
      * The type of identity that created the resource.
      */
-    createdByType?: pulumi.Input<string | types.enums.v20220401preview.CreatedByType>;
+    createdByType?: pulumi.Input<string | types.enums.CreatedByType>;
     /**
      * The default slice to use if the UE does not explicitly specify it. This slice must exist in the `sliceConfigurations` map.
      */
-    defaultSlice: pulumi.Input<types.inputs.mobilenetwork.v20220401preview.SliceResourceIdArgs>;
+    defaultSlice: pulumi.Input<types.inputs.SliceResourceIdArgs>;
     /**
      * The timestamp of resource last modification (UTC)
      */
@@ -203,7 +203,7 @@ export interface SimPolicyArgs {
     /**
      * The type of identity that last modified the resource.
      */
-    lastModifiedByType?: pulumi.Input<string | types.enums.v20220401preview.CreatedByType>;
+    lastModifiedByType?: pulumi.Input<string | types.enums.CreatedByType>;
     /**
      * The geo-location where the resource lives
      */
@@ -231,7 +231,7 @@ export interface SimPolicyArgs {
     /**
      * The allowed slices and the settings to use for them. The list must not contain duplicate items and must contain at least one item.
      */
-    sliceConfigurations: pulumi.Input<pulumi.Input<types.inputs.mobilenetwork.v20220401preview.SliceConfigurationArgs>[]>;
+    sliceConfigurations: pulumi.Input<pulumi.Input<types.inputs.SliceConfigurationArgs>[]>;
     /**
      * Resource tags.
      */
@@ -239,5 +239,5 @@ export interface SimPolicyArgs {
     /**
      * Aggregate maximum bit rate across all non-GBR QoS flows of all PDU sessions of a given UE. See 3GPP TS23.501 section 5.7.2.6 for a full description of the UE-AMBR.
      */
-    ueAmbr: pulumi.Input<types.inputs.mobilenetwork.v20220401preview.AmbrArgs>;
+    ueAmbr: pulumi.Input<types.inputs.AmbrArgs>;
 }

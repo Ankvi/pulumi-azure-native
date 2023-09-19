@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * API details.
  */
@@ -46,7 +46,7 @@ export class ProductApi extends pulumi.CustomResource {
     /**
      * Api Version Set Contract details.
      */
-    public /*out*/ readonly apiVersionSet!: pulumi.Output<types.outputs.apimanagement.v20170301.ApiVersionSetContractResponse | undefined>;
+    public /*out*/ readonly apiVersionSet!: pulumi.Output<types.outputs.ApiVersionSetContractResponse | undefined>;
     /**
      * A resource identifier for the related ApiVersionSet.
      */
@@ -54,7 +54,7 @@ export class ProductApi extends pulumi.CustomResource {
     /**
      * Collection of authentication settings included into this API.
      */
-    public /*out*/ readonly authenticationSettings!: pulumi.Output<types.outputs.apimanagement.v20170301.AuthenticationSettingsContractResponse | undefined>;
+    public /*out*/ readonly authenticationSettings!: pulumi.Output<types.outputs.AuthenticationSettingsContractResponse | undefined>;
     /**
      * Description of the API. May include HTML formatting tags.
      */
@@ -90,7 +90,7 @@ export class ProductApi extends pulumi.CustomResource {
     /**
      * Protocols over which API is made available.
      */
-    public /*out*/ readonly subscriptionKeyParameterNames!: pulumi.Output<types.outputs.apimanagement.v20170301.SubscriptionKeyParameterNamesContractResponse | undefined>;
+    public /*out*/ readonly subscriptionKeyParameterNames!: pulumi.Output<types.outputs.SubscriptionKeyParameterNamesContractResponse | undefined>;
     /**
      * Resource type for API Management resource.
      */

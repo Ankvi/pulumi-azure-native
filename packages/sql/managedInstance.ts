@@ -39,7 +39,7 @@ export class ManagedInstance extends pulumi.CustomResource {
     /**
      * The Azure Active Directory administrator of the server.
      */
-    public readonly administrators!: pulumi.Output<types.outputs.sql.ManagedInstanceExternalAdministratorResponse | undefined>;
+    public readonly administrators!: pulumi.Output<types.outputs.ManagedInstanceExternalAdministratorResponse | undefined>;
     /**
      * Collation of the managed instance.
      */
@@ -59,7 +59,7 @@ export class ManagedInstance extends pulumi.CustomResource {
     /**
      * The Azure Active Directory identity of the managed instance.
      */
-    public readonly identity!: pulumi.Output<types.outputs.sql.ResourceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ResourceIdentityResponse | undefined>;
     /**
      * The Id of the instance pool this managed server belongs to.
      */
@@ -95,7 +95,7 @@ export class ManagedInstance extends pulumi.CustomResource {
     /**
      * List of private endpoint connections on a managed instance.
      */
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.sql.ManagedInstancePecPropertyResponse[]>;
+    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.ManagedInstancePecPropertyResponse[]>;
     public /*out*/ readonly provisioningState!: pulumi.Output<string>;
     /**
      * Connection type used for connecting to the instance.
@@ -112,11 +112,11 @@ export class ManagedInstance extends pulumi.CustomResource {
     /**
      * The managed instance's service principal.
      */
-    public readonly servicePrincipal!: pulumi.Output<types.outputs.sql.ServicePrincipalResponse | undefined>;
+    public readonly servicePrincipal!: pulumi.Output<types.outputs.ServicePrincipalResponse | undefined>;
     /**
      * Managed instance SKU. Allowed values for sku.name: GP_Gen5, GP_G8IM, GP_G8IH, BC_Gen5, BC_G8IM, BC_G8IH
      */
-    public readonly sku!: pulumi.Output<types.outputs.sql.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * The state of the managed instance.
      */
@@ -260,7 +260,7 @@ export interface ManagedInstanceArgs {
     /**
      * The Azure Active Directory administrator of the server.
      */
-    administrators?: pulumi.Input<types.inputs.sql.ManagedInstanceExternalAdministratorArgs>;
+    administrators?: pulumi.Input<types.inputs.ManagedInstanceExternalAdministratorArgs>;
     /**
      * Collation of the managed instance.
      */
@@ -272,7 +272,7 @@ export interface ManagedInstanceArgs {
     /**
      * The Azure Active Directory identity of the managed instance.
      */
-    identity?: pulumi.Input<types.inputs.sql.ResourceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ResourceIdentityArgs>;
     /**
      * The Id of the instance pool this managed server belongs to.
      */
@@ -336,11 +336,11 @@ export interface ManagedInstanceArgs {
     /**
      * The managed instance's service principal.
      */
-    servicePrincipal?: pulumi.Input<types.inputs.sql.ServicePrincipalArgs>;
+    servicePrincipal?: pulumi.Input<types.inputs.ServicePrincipalArgs>;
     /**
      * Managed instance SKU. Allowed values for sku.name: GP_Gen5, GP_G8IM, GP_G8IH, BC_Gen5, BC_G8IM, BC_G8IH
      */
-    sku?: pulumi.Input<types.inputs.sql.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * The resource identifier of the source managed instance associated with create operation of this instance.
      */

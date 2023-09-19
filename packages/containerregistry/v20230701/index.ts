@@ -98,7 +98,7 @@ utilities.lazyLoad(exports, ["Webhook"], () => require("./webhook"));
 
 
 // Export enums:
-export * from "../types/enums/v20230701";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

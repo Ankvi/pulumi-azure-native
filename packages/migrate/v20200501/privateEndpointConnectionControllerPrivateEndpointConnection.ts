@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * REST model used to encapsulate the user visible state of a PrivateEndpoint.
  */
@@ -42,11 +42,11 @@ export class PrivateEndpointConnectionControllerPrivateEndpointConnection extend
     /**
      * Gets the properties of the object.
      */
-    public readonly properties!: pulumi.Output<types.outputs.migrate.v20200501.PrivateEndpointConnectionPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.PrivateEndpointConnectionPropertiesResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.migrate.v20200501.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Gets the resource type.
      */
@@ -110,7 +110,7 @@ export interface PrivateEndpointConnectionControllerPrivateEndpointConnectionArg
     /**
      * Properties of Connection state request.
      */
-    properties?: pulumi.Input<types.inputs.migrate.v20200501.ConnectionStateRequestBodyPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ConnectionStateRequestBodyPropertiesArgs>;
     /**
      * Name of the Azure Resource Group that project is part of.
      */

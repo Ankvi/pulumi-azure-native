@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents a and external administrator to be created.
  */
@@ -115,7 +115,7 @@ export interface ServerAdministratorArgs {
     /**
      * The type of administrator.
      */
-    administratorType: pulumi.Input<string | types.enums.v20180601privatepreview.AdministratorType>;
+    administratorType: pulumi.Input<string | types.enums.AdministratorType>;
     /**
      * The server administrator login account name.
      */

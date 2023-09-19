@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The list credential result response.
  */
@@ -36,7 +36,7 @@ export interface ListManagedClusterAdminCredentialsResult {
     /**
      * Base64-encoded Kubernetes configuration file.
      */
-    readonly kubeconfigs: types.outputs.containerservice.v20230502preview.CredentialResultResponse[];
+    readonly kubeconfigs: types.outputs.CredentialResultResponse[];
 }
 /**
  * The list credential result response.

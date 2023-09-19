@@ -32,11 +32,11 @@ export interface GetTenantActionGroupResult {
     /**
      * The list of AzureAppPush receivers that are part of this tenant action group.
      */
-    readonly azureAppPushReceivers?: types.outputs.insights.AzureAppPushReceiverResponse[];
+    readonly azureAppPushReceivers?: types.outputs.AzureAppPushReceiverResponse[];
     /**
      * The list of email receivers that are part of this tenant action group.
      */
-    readonly emailReceivers?: types.outputs.insights.EmailReceiverResponse[];
+    readonly emailReceivers?: types.outputs.EmailReceiverResponse[];
     /**
      * Indicates whether this tenant action group is enabled. If a tenant action group is not enabled, then none of its receivers will receive communications.
      */
@@ -60,7 +60,7 @@ export interface GetTenantActionGroupResult {
     /**
      * The list of SMS receivers that are part of this tenant action group.
      */
-    readonly smsReceivers?: types.outputs.insights.SmsReceiverResponse[];
+    readonly smsReceivers?: types.outputs.SmsReceiverResponse[];
     /**
      * Resource tags
      */
@@ -72,11 +72,11 @@ export interface GetTenantActionGroupResult {
     /**
      * The list of voice receivers that are part of this tenant action group.
      */
-    readonly voiceReceivers?: types.outputs.insights.VoiceReceiverResponse[];
+    readonly voiceReceivers?: types.outputs.VoiceReceiverResponse[];
     /**
      * The list of webhook receivers that are part of this tenant action group.
      */
-    readonly webhookReceivers?: types.outputs.insights.WebhookReceiverResponse[];
+    readonly webhookReceivers?: types.outputs.WebhookReceiverResponse[];
 }
 /**
  * Get a tenant action group.

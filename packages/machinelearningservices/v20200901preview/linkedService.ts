@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Linked service.
  */
@@ -34,7 +34,7 @@ export class LinkedService extends pulumi.CustomResource {
     /**
      * Identity for the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.machinelearningservices.v20200901preview.IdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityResponse | undefined>;
     /**
      * location of the linked service.
      */
@@ -46,7 +46,7 @@ export class LinkedService extends pulumi.CustomResource {
     /**
      * LinkedService specific properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.machinelearningservices.v20200901preview.LinkedServicePropsResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.LinkedServicePropsResponse>;
     /**
      * Resource type of linked service.
      */
@@ -98,7 +98,7 @@ export interface LinkedServiceArgs {
     /**
      * Identity for the resource.
      */
-    identity?: pulumi.Input<types.inputs.machinelearningservices.v20200901preview.IdentityArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityArgs>;
     /**
      * Friendly name of the linked workspace
      */
@@ -114,7 +114,7 @@ export interface LinkedServiceArgs {
     /**
      * LinkedService specific properties.
      */
-    properties?: pulumi.Input<types.inputs.machinelearningservices.v20200901preview.LinkedServicePropsArgs>;
+    properties?: pulumi.Input<types.inputs.LinkedServicePropsArgs>;
     /**
      * Name of the resource group in which workspace is located.
      */

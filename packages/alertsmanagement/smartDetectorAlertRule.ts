@@ -35,7 +35,7 @@ export class SmartDetectorAlertRule extends pulumi.CustomResource {
     /**
      * The alert rule actions.
      */
-    public readonly actionGroups!: pulumi.Output<types.outputs.alertsmanagement.ActionGroupsInformationResponse>;
+    public readonly actionGroups!: pulumi.Output<types.outputs.ActionGroupsInformationResponse>;
     /**
      * The alert rule description.
      */
@@ -43,7 +43,7 @@ export class SmartDetectorAlertRule extends pulumi.CustomResource {
     /**
      * The alert rule's detector.
      */
-    public readonly detector!: pulumi.Output<types.outputs.alertsmanagement.DetectorResponse>;
+    public readonly detector!: pulumi.Output<types.outputs.DetectorResponse>;
     /**
      * The alert rule frequency in ISO8601 format. The time granularity must be in minutes and minimum value is 1 minute, depending on the detector.
      */
@@ -75,7 +75,7 @@ export class SmartDetectorAlertRule extends pulumi.CustomResource {
     /**
      * The alert rule throttling information.
      */
-    public readonly throttling!: pulumi.Output<types.outputs.alertsmanagement.ThrottlingInformationResponse | undefined>;
+    public readonly throttling!: pulumi.Output<types.outputs.ThrottlingInformationResponse | undefined>;
     /**
      * The resource type.
      */
@@ -155,7 +155,7 @@ export interface SmartDetectorAlertRuleArgs {
     /**
      * The alert rule actions.
      */
-    actionGroups: pulumi.Input<types.inputs.alertsmanagement.ActionGroupsInformationArgs>;
+    actionGroups: pulumi.Input<types.inputs.ActionGroupsInformationArgs>;
     /**
      * The name of the alert rule.
      */
@@ -167,7 +167,7 @@ export interface SmartDetectorAlertRuleArgs {
     /**
      * The alert rule's detector.
      */
-    detector: pulumi.Input<types.inputs.alertsmanagement.DetectorArgs>;
+    detector: pulumi.Input<types.inputs.DetectorArgs>;
     /**
      * The alert rule frequency in ISO8601 format. The time granularity must be in minutes and minimum value is 1 minute, depending on the detector.
      */
@@ -199,5 +199,5 @@ export interface SmartDetectorAlertRuleArgs {
     /**
      * The alert rule throttling information.
      */
-    throttling?: pulumi.Input<types.inputs.alertsmanagement.ThrottlingInformationArgs>;
+    throttling?: pulumi.Input<types.inputs.ThrottlingInformationArgs>;
 }

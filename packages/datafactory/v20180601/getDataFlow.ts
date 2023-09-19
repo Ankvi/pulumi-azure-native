@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a data flow.
  */
@@ -48,7 +48,7 @@ export interface GetDataFlowResult {
     /**
      * Data flow properties.
      */
-    readonly properties: types.outputs.datafactory.v20180601.FlowletResponse | types.outputs.datafactory.v20180601.MappingDataFlowResponse | types.outputs.datafactory.v20180601.WranglingDataFlowResponse;
+    readonly properties: types.outputs.FlowletResponse | types.outputs.MappingDataFlowResponse | types.outputs.WranglingDataFlowResponse;
     /**
      * The resource type.
      */

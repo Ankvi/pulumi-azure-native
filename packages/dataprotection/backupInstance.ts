@@ -39,11 +39,11 @@ export class BackupInstance extends pulumi.CustomResource {
     /**
      * BackupInstanceResource properties
      */
-    public readonly properties!: pulumi.Output<types.outputs.dataprotection.BackupInstanceResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.BackupInstanceResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.dataprotection.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Proxy Resource tags.
      */
@@ -103,7 +103,7 @@ export interface BackupInstanceArgs {
     /**
      * BackupInstanceResource properties
      */
-    properties?: pulumi.Input<types.inputs.dataprotection.BackupInstanceArgs>;
+    properties?: pulumi.Input<types.inputs.BackupInstanceArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

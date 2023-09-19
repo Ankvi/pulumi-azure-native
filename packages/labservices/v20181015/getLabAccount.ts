@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get lab account
  */
@@ -44,7 +44,7 @@ export interface GetLabAccountResult {
     /**
      * The details of the latest operation. ex: status, error
      */
-    readonly latestOperationResult: types.outputs.labservices.v20181015.LatestOperationResultResponse;
+    readonly latestOperationResult: types.outputs.LatestOperationResultResponse;
     /**
      * The location of the resource.
      */
@@ -60,7 +60,7 @@ export interface GetLabAccountResult {
     /**
      * Represents the size configuration under the lab account
      */
-    readonly sizeConfiguration: types.outputs.labservices.v20181015.SizeConfigurationPropertiesResponse;
+    readonly sizeConfiguration: types.outputs.SizeConfigurationPropertiesResponse;
     /**
      * The tags of the resource.
      */

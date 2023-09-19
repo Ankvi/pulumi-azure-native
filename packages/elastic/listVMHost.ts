@@ -36,7 +36,7 @@ export interface ListVMHostResult {
     /**
      * Results of a list operation.
      */
-    readonly value?: types.outputs.elastic.VMResourcesResponse[];
+    readonly value?: types.outputs.VMResourcesResponse[];
 }
 /**
  * Response of a list operation.

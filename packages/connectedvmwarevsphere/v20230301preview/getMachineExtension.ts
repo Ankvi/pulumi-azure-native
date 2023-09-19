@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The operation to get the extension.
  */
@@ -52,7 +52,7 @@ export interface GetMachineExtensionResult {
     /**
      * The machine extension instance view.
      */
-    readonly instanceView?: types.outputs.connectedvmwarevsphere.v20230301preview.MachineExtensionPropertiesResponseInstanceView;
+    readonly instanceView?: types.outputs.MachineExtensionPropertiesResponseInstanceView;
     /**
      * Gets or sets the location.
      */
@@ -80,7 +80,7 @@ export interface GetMachineExtensionResult {
     /**
      * The system data.
      */
-    readonly systemData: types.outputs.connectedvmwarevsphere.v20230301preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Gets or sets the Resource tags.
      */

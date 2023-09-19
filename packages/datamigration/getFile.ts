@@ -54,11 +54,11 @@ export interface GetFileResult {
     /**
      * Custom file properties
      */
-    readonly properties: types.outputs.datamigration.ProjectFilePropertiesResponse;
+    readonly properties: types.outputs.ProjectFilePropertiesResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.datamigration.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource type.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets an integration account RosettaNetProcessConfiguration.
  */
@@ -36,7 +36,7 @@ export interface GetRosettaNetProcessConfigurationResult {
     /**
      * The RosettaNet process configuration activity settings.
      */
-    readonly activitySettings: types.outputs.logic.v20160601.RosettaNetPipActivitySettingsResponse;
+    readonly activitySettings: types.outputs.RosettaNetPipActivitySettingsResponse;
     /**
      * The changed time.
      */
@@ -56,7 +56,7 @@ export interface GetRosettaNetProcessConfigurationResult {
     /**
      * The RosettaNet initiator role settings.
      */
-    readonly initiatorRoleSettings: types.outputs.logic.v20160601.RosettaNetPipRoleSettingsResponse;
+    readonly initiatorRoleSettings: types.outputs.RosettaNetPipRoleSettingsResponse;
     /**
      * The resource location.
      */
@@ -84,7 +84,7 @@ export interface GetRosettaNetProcessConfigurationResult {
     /**
      * The RosettaNet responder role settings.
      */
-    readonly responderRoleSettings: types.outputs.logic.v20160601.RosettaNetPipRoleSettingsResponse;
+    readonly responderRoleSettings: types.outputs.RosettaNetPipRoleSettingsResponse;
     /**
      * The resource tags.
      */

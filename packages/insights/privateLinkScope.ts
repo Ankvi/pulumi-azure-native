@@ -35,7 +35,7 @@ export class PrivateLinkScope extends pulumi.CustomResource {
     /**
      * Access mode settings
      */
-    public readonly accessModeSettings!: pulumi.Output<types.outputs.insights.AccessModeSettingsResponse>;
+    public readonly accessModeSettings!: pulumi.Output<types.outputs.AccessModeSettingsResponse>;
     /**
      * The geo-location where the resource lives
      */
@@ -47,7 +47,7 @@ export class PrivateLinkScope extends pulumi.CustomResource {
     /**
      * List of private endpoint connections.
      */
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.insights.PrivateEndpointConnectionResponse[]>;
+    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[]>;
     /**
      * Current state of this PrivateLinkScope: whether or not is has been provisioned within the resource group it is defined. Users cannot change this value but are able to read from it. Values will include Provisioning ,Succeeded, Canceled and Failed.
      */
@@ -55,7 +55,7 @@ export class PrivateLinkScope extends pulumi.CustomResource {
     /**
      * System data
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.insights.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -116,7 +116,7 @@ export interface PrivateLinkScopeArgs {
     /**
      * Access mode settings
      */
-    accessModeSettings: pulumi.Input<types.inputs.insights.AccessModeSettingsArgs>;
+    accessModeSettings: pulumi.Input<types.inputs.AccessModeSettingsArgs>;
     /**
      * The geo-location where the resource lives
      */

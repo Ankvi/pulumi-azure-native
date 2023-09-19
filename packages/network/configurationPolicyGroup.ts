@@ -47,11 +47,11 @@ export class ConfigurationPolicyGroup extends pulumi.CustomResource {
     /**
      * List of references to P2SConnectionConfigurations.
      */
-    public /*out*/ readonly p2SConnectionConfigurations!: pulumi.Output<types.outputs.network.SubResourceResponse[]>;
+    public /*out*/ readonly p2SConnectionConfigurations!: pulumi.Output<types.outputs.SubResourceResponse[]>;
     /**
      * Multiple PolicyMembers for VpnServerConfigurationPolicyGroup.
      */
-    public readonly policyMembers!: pulumi.Output<types.outputs.network.VpnServerConfigurationPolicyGroupMemberResponse[] | undefined>;
+    public readonly policyMembers!: pulumi.Output<types.outputs.VpnServerConfigurationPolicyGroupMemberResponse[] | undefined>;
     /**
      * Priority for VpnServerConfigurationPolicyGroup.
      */
@@ -134,7 +134,7 @@ export interface ConfigurationPolicyGroupArgs {
     /**
      * Multiple PolicyMembers for VpnServerConfigurationPolicyGroup.
      */
-    policyMembers?: pulumi.Input<pulumi.Input<types.inputs.network.VpnServerConfigurationPolicyGroupMemberArgs>[]>;
+    policyMembers?: pulumi.Input<pulumi.Input<types.inputs.VpnServerConfigurationPolicyGroupMemberArgs>[]>;
     /**
      * Priority for VpnServerConfigurationPolicyGroup.
      */

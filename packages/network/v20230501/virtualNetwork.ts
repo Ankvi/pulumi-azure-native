@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Virtual Network resource.
  */
@@ -34,19 +34,19 @@ export class VirtualNetwork extends pulumi.CustomResource {
     /**
      * The AddressSpace that contains an array of IP address ranges that can be used by subnets.
      */
-    public readonly addressSpace!: pulumi.Output<types.outputs.network.v20230501.AddressSpaceResponse | undefined>;
+    public readonly addressSpace!: pulumi.Output<types.outputs.AddressSpaceResponse | undefined>;
     /**
      * Bgp Communities sent over ExpressRoute with each route corresponding to a prefix in this VNET.
      */
-    public readonly bgpCommunities!: pulumi.Output<types.outputs.network.v20230501.VirtualNetworkBgpCommunitiesResponse | undefined>;
+    public readonly bgpCommunities!: pulumi.Output<types.outputs.VirtualNetworkBgpCommunitiesResponse | undefined>;
     /**
      * The DDoS protection plan associated with the virtual network.
      */
-    public readonly ddosProtectionPlan!: pulumi.Output<types.outputs.network.v20230501.SubResourceResponse | undefined>;
+    public readonly ddosProtectionPlan!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * The dhcpOptions that contains an array of DNS servers available to VMs deployed in the virtual network.
      */
-    public readonly dhcpOptions!: pulumi.Output<types.outputs.network.v20230501.DhcpOptionsResponse | undefined>;
+    public readonly dhcpOptions!: pulumi.Output<types.outputs.DhcpOptionsResponse | undefined>;
     /**
      * Indicates if DDoS protection is enabled for all the protected resources in the virtual network. It requires a DDoS protection plan associated with the resource.
      */
@@ -58,7 +58,7 @@ export class VirtualNetwork extends pulumi.CustomResource {
     /**
      * Indicates if encryption is enabled on virtual network and if VM without encryption is allowed in encrypted VNet.
      */
-    public readonly encryption!: pulumi.Output<types.outputs.network.v20230501.VirtualNetworkEncryptionResponse | undefined>;
+    public readonly encryption!: pulumi.Output<types.outputs.VirtualNetworkEncryptionResponse | undefined>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -66,11 +66,11 @@ export class VirtualNetwork extends pulumi.CustomResource {
     /**
      * The extended location of the virtual network.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.network.v20230501.ExtendedLocationResponse | undefined>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
     /**
      * A collection of references to flow log resources.
      */
-    public /*out*/ readonly flowLogs!: pulumi.Output<types.outputs.network.v20230501.FlowLogResponse[]>;
+    public /*out*/ readonly flowLogs!: pulumi.Output<types.outputs.FlowLogResponse[]>;
     /**
      * The FlowTimeout value (in minutes) for the Virtual Network
      */
@@ -78,7 +78,7 @@ export class VirtualNetwork extends pulumi.CustomResource {
     /**
      * Array of IpAllocation which reference this VNET.
      */
-    public readonly ipAllocations!: pulumi.Output<types.outputs.network.v20230501.SubResourceResponse[] | undefined>;
+    public readonly ipAllocations!: pulumi.Output<types.outputs.SubResourceResponse[] | undefined>;
     /**
      * Resource location.
      */
@@ -98,7 +98,7 @@ export class VirtualNetwork extends pulumi.CustomResource {
     /**
      * A list of subnets in a Virtual Network.
      */
-    public readonly subnets!: pulumi.Output<types.outputs.network.v20230501.SubnetResponse[] | undefined>;
+    public readonly subnets!: pulumi.Output<types.outputs.SubnetResponse[] | undefined>;
     /**
      * Resource tags.
      */
@@ -110,7 +110,7 @@ export class VirtualNetwork extends pulumi.CustomResource {
     /**
      * A list of peerings in a Virtual Network.
      */
-    public readonly virtualNetworkPeerings!: pulumi.Output<types.outputs.network.v20230501.VirtualNetworkPeeringResponse[] | undefined>;
+    public readonly virtualNetworkPeerings!: pulumi.Output<types.outputs.VirtualNetworkPeeringResponse[] | undefined>;
 
     /**
      * Create a VirtualNetwork resource with the given unique name, arguments, and options.
@@ -185,19 +185,19 @@ export interface VirtualNetworkArgs {
     /**
      * The AddressSpace that contains an array of IP address ranges that can be used by subnets.
      */
-    addressSpace?: pulumi.Input<types.inputs.network.v20230501.AddressSpaceArgs>;
+    addressSpace?: pulumi.Input<types.inputs.AddressSpaceArgs>;
     /**
      * Bgp Communities sent over ExpressRoute with each route corresponding to a prefix in this VNET.
      */
-    bgpCommunities?: pulumi.Input<types.inputs.network.v20230501.VirtualNetworkBgpCommunitiesArgs>;
+    bgpCommunities?: pulumi.Input<types.inputs.VirtualNetworkBgpCommunitiesArgs>;
     /**
      * The DDoS protection plan associated with the virtual network.
      */
-    ddosProtectionPlan?: pulumi.Input<types.inputs.network.v20230501.SubResourceArgs>;
+    ddosProtectionPlan?: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * The dhcpOptions that contains an array of DNS servers available to VMs deployed in the virtual network.
      */
-    dhcpOptions?: pulumi.Input<types.inputs.network.v20230501.DhcpOptionsArgs>;
+    dhcpOptions?: pulumi.Input<types.inputs.DhcpOptionsArgs>;
     /**
      * Indicates if DDoS protection is enabled for all the protected resources in the virtual network. It requires a DDoS protection plan associated with the resource.
      */
@@ -209,11 +209,11 @@ export interface VirtualNetworkArgs {
     /**
      * Indicates if encryption is enabled on virtual network and if VM without encryption is allowed in encrypted VNet.
      */
-    encryption?: pulumi.Input<types.inputs.network.v20230501.VirtualNetworkEncryptionArgs>;
+    encryption?: pulumi.Input<types.inputs.VirtualNetworkEncryptionArgs>;
     /**
      * The extended location of the virtual network.
      */
-    extendedLocation?: pulumi.Input<types.inputs.network.v20230501.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * The FlowTimeout value (in minutes) for the Virtual Network
      */
@@ -225,7 +225,7 @@ export interface VirtualNetworkArgs {
     /**
      * Array of IpAllocation which reference this VNET.
      */
-    ipAllocations?: pulumi.Input<pulumi.Input<types.inputs.network.v20230501.SubResourceArgs>[]>;
+    ipAllocations?: pulumi.Input<pulumi.Input<types.inputs.SubResourceArgs>[]>;
     /**
      * Resource location.
      */
@@ -238,7 +238,7 @@ export interface VirtualNetworkArgs {
      * A list of subnets in a Virtual Network.
      * These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
      */
-    subnets?: pulumi.Input<pulumi.Input<types.inputs.network.v20230501.SubnetArgs>[]>;
+    subnets?: pulumi.Input<pulumi.Input<types.inputs.SubnetArgs>[]>;
     /**
      * Resource tags.
      */
@@ -251,5 +251,5 @@ export interface VirtualNetworkArgs {
      * A list of peerings in a Virtual Network.
      * These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
      */
-    virtualNetworkPeerings?: pulumi.Input<pulumi.Input<types.inputs.network.v20230501.VirtualNetworkPeeringArgs>[]>;
+    virtualNetworkPeerings?: pulumi.Input<pulumi.Input<types.inputs.VirtualNetworkPeeringArgs>[]>;
 }

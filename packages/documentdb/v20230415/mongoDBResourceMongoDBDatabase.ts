@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An Azure Cosmos DB MongoDB database.
  */
@@ -39,8 +39,8 @@ export class MongoDBResourceMongoDBDatabase extends pulumi.CustomResource {
      * The name of the ARM resource.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
-    public readonly options!: pulumi.Output<types.outputs.documentdb.v20230415.MongoDBDatabaseGetPropertiesResponseOptions | undefined>;
-    public readonly resource!: pulumi.Output<types.outputs.documentdb.v20230415.MongoDBDatabaseGetPropertiesResponseResource | undefined>;
+    public readonly options!: pulumi.Output<types.outputs.MongoDBDatabaseGetPropertiesResponseOptions | undefined>;
+    public readonly resource!: pulumi.Output<types.outputs.MongoDBDatabaseGetPropertiesResponseResource | undefined>;
     /**
      * Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB".
      */
@@ -113,11 +113,11 @@ export interface MongoDBResourceMongoDBDatabaseArgs {
     /**
      * A key-value pair of options to be applied for the request. This corresponds to the headers sent with the request.
      */
-    options?: pulumi.Input<types.inputs.documentdb.v20230415.CreateUpdateOptionsArgs>;
+    options?: pulumi.Input<types.inputs.CreateUpdateOptionsArgs>;
     /**
      * The standard JSON format of a MongoDB database
      */
-    resource: pulumi.Input<types.inputs.documentdb.v20230415.MongoDBDatabaseResourceArgs>;
+    resource: pulumi.Input<types.inputs.MongoDBDatabaseResourceArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

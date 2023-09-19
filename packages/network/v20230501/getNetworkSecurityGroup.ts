@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the specified network security group.
  */
@@ -36,7 +36,7 @@ export interface GetNetworkSecurityGroupResult {
     /**
      * The default security rules of network security group.
      */
-    readonly defaultSecurityRules: types.outputs.network.v20230501.SecurityRuleResponse[];
+    readonly defaultSecurityRules: types.outputs.SecurityRuleResponse[];
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -44,7 +44,7 @@ export interface GetNetworkSecurityGroupResult {
     /**
      * A collection of references to flow log resources.
      */
-    readonly flowLogs: types.outputs.network.v20230501.FlowLogResponse[];
+    readonly flowLogs: types.outputs.FlowLogResponse[];
     /**
      * When enabled, flows created from Network Security Group connections will be re-evaluated when rules are updates. Initial enablement will trigger re-evaluation.
      */
@@ -64,7 +64,7 @@ export interface GetNetworkSecurityGroupResult {
     /**
      * A collection of references to network interfaces.
      */
-    readonly networkInterfaces: types.outputs.network.v20230501.NetworkInterfaceResponse[];
+    readonly networkInterfaces: types.outputs.NetworkInterfaceResponse[];
     /**
      * The provisioning state of the network security group resource.
      */
@@ -76,11 +76,11 @@ export interface GetNetworkSecurityGroupResult {
     /**
      * A collection of security rules of the network security group.
      */
-    readonly securityRules?: types.outputs.network.v20230501.SecurityRuleResponse[];
+    readonly securityRules?: types.outputs.SecurityRuleResponse[];
     /**
      * A collection of references to subnets.
      */
-    readonly subnets: types.outputs.network.v20230501.SubnetResponse[];
+    readonly subnets: types.outputs.SubnetResponse[];
     /**
      * Resource tags.
      */

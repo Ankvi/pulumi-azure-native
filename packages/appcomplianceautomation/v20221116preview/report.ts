@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A class represent an AppComplianceAutomation report resource.
  */
@@ -38,11 +38,11 @@ export class Report extends pulumi.CustomResource {
     /**
      * Report property.
      */
-    public readonly properties!: pulumi.Output<types.outputs.appcomplianceautomation.v20221116preview.ReportPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ReportPropertiesResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.appcomplianceautomation.v20221116preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -87,7 +87,7 @@ export interface ReportArgs {
     /**
      * Report property.
      */
-    properties: pulumi.Input<types.inputs.appcomplianceautomation.v20221116preview.ReportPropertiesArgs>;
+    properties: pulumi.Input<types.inputs.ReportPropertiesArgs>;
     /**
      * Report Name.
      */

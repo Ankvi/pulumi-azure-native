@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Address Resource.
  */
@@ -38,7 +38,7 @@ export class AddressByName extends pulumi.CustomResource {
     /**
      * Contact details for the address
      */
-    public readonly contactDetails!: pulumi.Output<types.outputs.edgeorder.v20211201.ContactDetailsResponse>;
+    public readonly contactDetails!: pulumi.Output<types.outputs.ContactDetailsResponse>;
     /**
      * The geo-location where the resource lives
      */
@@ -50,11 +50,11 @@ export class AddressByName extends pulumi.CustomResource {
     /**
      * Shipping details for the address
      */
-    public readonly shippingAddress!: pulumi.Output<types.outputs.edgeorder.v20211201.ShippingAddressResponse | undefined>;
+    public readonly shippingAddress!: pulumi.Output<types.outputs.ShippingAddressResponse | undefined>;
     /**
      * Represents resource creation and update time
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.edgeorder.v20211201.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -119,7 +119,7 @@ export interface AddressByNameArgs {
     /**
      * Contact details for the address
      */
-    contactDetails: pulumi.Input<types.inputs.edgeorder.v20211201.ContactDetailsArgs>;
+    contactDetails: pulumi.Input<types.inputs.ContactDetailsArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -131,7 +131,7 @@ export interface AddressByNameArgs {
     /**
      * Shipping details for the address
      */
-    shippingAddress?: pulumi.Input<types.inputs.edgeorder.v20211201.ShippingAddressArgs>;
+    shippingAddress?: pulumi.Input<types.inputs.ShippingAddressArgs>;
     /**
      * Resource tags.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * States and configurations of Cost Analysis.
  */
@@ -46,7 +46,7 @@ export class ViewByScope extends pulumi.CustomResource {
     /**
      * Has definition for data in this report config.
      */
-    public readonly dataset!: pulumi.Output<types.outputs.costmanagement.v20200601.ReportConfigDatasetResponse | undefined>;
+    public readonly dataset!: pulumi.Output<types.outputs.ReportConfigDatasetResponse | undefined>;
     /**
      * User input name of the view. Required.
      */
@@ -58,7 +58,7 @@ export class ViewByScope extends pulumi.CustomResource {
     /**
      * List of KPIs to show in Cost Analysis UI.
      */
-    public readonly kpis!: pulumi.Output<types.outputs.costmanagement.v20200601.KpiPropertiesResponse[] | undefined>;
+    public readonly kpis!: pulumi.Output<types.outputs.KpiPropertiesResponse[] | undefined>;
     /**
      * Metric to use when displaying costs.
      */
@@ -74,7 +74,7 @@ export class ViewByScope extends pulumi.CustomResource {
     /**
      * Configuration of 3 sub-views in the Cost Analysis UI.
      */
-    public readonly pivots!: pulumi.Output<types.outputs.costmanagement.v20200601.PivotPropertiesResponse[] | undefined>;
+    public readonly pivots!: pulumi.Output<types.outputs.PivotPropertiesResponse[] | undefined>;
     /**
      * Cost Management scope to save the view on. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for BillingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for InvoiceSection scope, 'providers/Microsoft.Management/managementGroups/{managementGroupId}' for Management Group scope, '/providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}' for ExternalBillingAccount scope, and '/providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}' for ExternalSubscription scope.
      */
@@ -82,7 +82,7 @@ export class ViewByScope extends pulumi.CustomResource {
     /**
      * Has time period for pulling data for the report.
      */
-    public readonly timePeriod!: pulumi.Output<types.outputs.costmanagement.v20200601.ReportConfigTimePeriodResponse | undefined>;
+    public readonly timePeriod!: pulumi.Output<types.outputs.ReportConfigTimePeriodResponse | undefined>;
     /**
      * The time frame for pulling data for the report. If custom, then a specific time period must be provided.
      */
@@ -159,15 +159,15 @@ export interface ViewByScopeArgs {
     /**
      * Show costs accumulated over time.
      */
-    accumulated?: pulumi.Input<string | types.enums.v20200601.AccumulatedType>;
+    accumulated?: pulumi.Input<string | types.enums.AccumulatedType>;
     /**
      * Chart type of the main view in Cost Analysis. Required.
      */
-    chart?: pulumi.Input<string | types.enums.v20200601.ChartType>;
+    chart?: pulumi.Input<string | types.enums.ChartType>;
     /**
      * Has definition for data in this report config.
      */
-    dataset?: pulumi.Input<types.inputs.costmanagement.v20200601.ReportConfigDatasetArgs>;
+    dataset?: pulumi.Input<types.inputs.ReportConfigDatasetArgs>;
     /**
      * User input name of the view. Required.
      */
@@ -179,15 +179,15 @@ export interface ViewByScopeArgs {
     /**
      * List of KPIs to show in Cost Analysis UI.
      */
-    kpis?: pulumi.Input<pulumi.Input<types.inputs.costmanagement.v20200601.KpiPropertiesArgs>[]>;
+    kpis?: pulumi.Input<pulumi.Input<types.inputs.KpiPropertiesArgs>[]>;
     /**
      * Metric to use when displaying costs.
      */
-    metric?: pulumi.Input<string | types.enums.v20200601.MetricType>;
+    metric?: pulumi.Input<string | types.enums.MetricType>;
     /**
      * Configuration of 3 sub-views in the Cost Analysis UI.
      */
-    pivots?: pulumi.Input<pulumi.Input<types.inputs.costmanagement.v20200601.PivotPropertiesArgs>[]>;
+    pivots?: pulumi.Input<pulumi.Input<types.inputs.PivotPropertiesArgs>[]>;
     /**
      * Cost Management scope to save the view on. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for BillingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for InvoiceSection scope, 'providers/Microsoft.Management/managementGroups/{managementGroupId}' for Management Group scope, '/providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}' for ExternalBillingAccount scope, and '/providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}' for ExternalSubscription scope.
      */
@@ -195,15 +195,15 @@ export interface ViewByScopeArgs {
     /**
      * Has time period for pulling data for the report.
      */
-    timePeriod?: pulumi.Input<types.inputs.costmanagement.v20200601.ReportConfigTimePeriodArgs>;
+    timePeriod?: pulumi.Input<types.inputs.ReportConfigTimePeriodArgs>;
     /**
      * The time frame for pulling data for the report. If custom, then a specific time period must be provided.
      */
-    timeframe: pulumi.Input<string | types.enums.v20200601.ReportTimeframeType>;
+    timeframe: pulumi.Input<string | types.enums.ReportTimeframeType>;
     /**
      * The type of the report. Usage represents actual usage, forecast represents forecasted data and UsageAndForecast represents both usage and forecasted data. Actual usage and forecasted data can be differentiated based on dates.
      */
-    type: pulumi.Input<string | types.enums.v20200601.ReportType>;
+    type: pulumi.Input<string | types.enums.ReportType>;
     /**
      * View name
      */

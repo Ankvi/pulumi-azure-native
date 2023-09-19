@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a deployment script with a given name.
  */
@@ -43,11 +43,11 @@ export interface GetAzureCliScriptResult {
     /**
      * Container settings.
      */
-    readonly containerSettings?: types.outputs.resources.v20201001.ContainerConfigurationResponse;
+    readonly containerSettings?: types.outputs.ContainerConfigurationResponse;
     /**
      * The environment variables to pass over to the script.
      */
-    readonly environmentVariables?: types.outputs.resources.v20201001.EnvironmentVariableResponse[];
+    readonly environmentVariables?: types.outputs.EnvironmentVariableResponse[];
     /**
      * Gets or sets how the deployment script should be forced to execute even if the script resource has not changed. Can be current time stamp or a GUID.
      */
@@ -59,7 +59,7 @@ export interface GetAzureCliScriptResult {
     /**
      * Optional property. Managed identity to be used for this deployment script. Currently, only user-assigned MSI is supported.
      */
-    readonly identity?: types.outputs.resources.v20201001.ManagedServiceIdentityResponse;
+    readonly identity?: types.outputs.ManagedServiceIdentityResponse;
     /**
      * Type of the script.
      * Expected value is 'AzureCLI'.
@@ -96,11 +96,11 @@ export interface GetAzureCliScriptResult {
     /**
      * Contains the results of script execution.
      */
-    readonly status: types.outputs.resources.v20201001.ScriptStatusResponse;
+    readonly status: types.outputs.ScriptStatusResponse;
     /**
      * Storage Account settings.
      */
-    readonly storageAccountSettings?: types.outputs.resources.v20201001.StorageAccountConfigurationResponse;
+    readonly storageAccountSettings?: types.outputs.StorageAccountConfigurationResponse;
     /**
      * Supporting files for the external script.
      */
@@ -108,7 +108,7 @@ export interface GetAzureCliScriptResult {
     /**
      * The system metadata related to this resource.
      */
-    readonly systemData: types.outputs.resources.v20201001.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

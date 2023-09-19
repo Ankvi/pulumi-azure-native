@@ -36,7 +36,7 @@ export interface GetServiceResult {
     /**
      * The identity of the service.
      */
-    readonly identity?: types.outputs.apicenter.ManagedServiceIdentityResponse;
+    readonly identity?: types.outputs.ManagedServiceIdentityResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -52,7 +52,7 @@ export interface GetServiceResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.apicenter.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

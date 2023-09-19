@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets an integration account agreement.
  */
@@ -41,7 +41,7 @@ export interface GetIntegrationAccountAgreementResult {
     /**
      * The agreement content.
      */
-    readonly content?: types.outputs.logic.v20150801preview.AgreementContentResponse;
+    readonly content?: types.outputs.AgreementContentResponse;
     /**
      * The created time.
      */
@@ -49,7 +49,7 @@ export interface GetIntegrationAccountAgreementResult {
     /**
      * The guest identity.
      */
-    readonly guestIdentity?: types.outputs.logic.v20150801preview.BusinessIdentityResponse;
+    readonly guestIdentity?: types.outputs.BusinessIdentityResponse;
     /**
      * The guest partner.
      */
@@ -57,7 +57,7 @@ export interface GetIntegrationAccountAgreementResult {
     /**
      * The host identity.
      */
-    readonly hostIdentity?: types.outputs.logic.v20150801preview.BusinessIdentityResponse;
+    readonly hostIdentity?: types.outputs.BusinessIdentityResponse;
     /**
      * The host partner.
      */

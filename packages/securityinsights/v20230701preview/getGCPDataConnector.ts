@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a data connector.
  */
@@ -36,7 +36,7 @@ export interface GetGCPDataConnectorResult {
     /**
      * The auth section of the connector.
      */
-    readonly auth: types.outputs.securityinsights.v20230701preview.GCPAuthPropertiesResponse;
+    readonly auth: types.outputs.GCPAuthPropertiesResponse;
     /**
      * The name of the connector definition that represents the UI config.
      */
@@ -44,7 +44,7 @@ export interface GetGCPDataConnectorResult {
     /**
      * The configuration of the destination of the data.
      */
-    readonly dcrConfig?: types.outputs.securityinsights.v20230701preview.DCRConfigurationResponse;
+    readonly dcrConfig?: types.outputs.DCRConfigurationResponse;
     /**
      * Etag of the azure resource
      */
@@ -65,11 +65,11 @@ export interface GetGCPDataConnectorResult {
     /**
      * The request section of the connector.
      */
-    readonly request: types.outputs.securityinsights.v20230701preview.GCPRequestPropertiesResponse;
+    readonly request: types.outputs.GCPRequestPropertiesResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.securityinsights.v20230701preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

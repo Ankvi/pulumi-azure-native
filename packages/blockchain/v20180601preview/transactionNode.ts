@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Payload of the transaction node which is the request/response of the resource provider.
  */
@@ -38,7 +38,7 @@ export class TransactionNode extends pulumi.CustomResource {
     /**
      * Gets or sets the firewall rules.
      */
-    public readonly firewallRules!: pulumi.Output<types.outputs.blockchain.v20180601preview.FirewallRuleResponse[] | undefined>;
+    public readonly firewallRules!: pulumi.Output<types.outputs.FirewallRuleResponse[] | undefined>;
     /**
      * Gets or sets the transaction node location.
      */
@@ -126,7 +126,7 @@ export interface TransactionNodeArgs {
     /**
      * Gets or sets the firewall rules.
      */
-    firewallRules?: pulumi.Input<pulumi.Input<types.inputs.blockchain.v20180601preview.FirewallRuleArgs>[]>;
+    firewallRules?: pulumi.Input<pulumi.Input<types.inputs.FirewallRuleArgs>[]>;
     /**
      * Gets or sets the transaction node location.
      */

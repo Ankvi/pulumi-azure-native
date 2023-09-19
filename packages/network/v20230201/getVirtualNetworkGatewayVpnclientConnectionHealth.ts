@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get VPN client connection health detail per P2S client connection of the virtual network gateway in the specified resource group.
  */
@@ -31,7 +31,7 @@ export interface GetVirtualNetworkGatewayVpnclientConnectionHealthResult {
     /**
      * List of vpn client connection health.
      */
-    readonly value?: types.outputs.network.v20230201.VpnClientConnectionHealthDetailResponse[];
+    readonly value?: types.outputs.VpnClientConnectionHealthDetailResponse[];
 }
 /**
  * Get VPN client connection health detail per P2S client connection of the virtual network gateway in the specified resource group.

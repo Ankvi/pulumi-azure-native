@@ -35,7 +35,7 @@ export class ServerTrustGroup extends pulumi.CustomResource {
     /**
      * Group members information for the server trust group.
      */
-    public readonly groupMembers!: pulumi.Output<types.outputs.sql.ServerInfoResponse[]>;
+    public readonly groupMembers!: pulumi.Output<types.outputs.ServerInfoResponse[]>;
     /**
      * Resource name.
      */
@@ -99,7 +99,7 @@ export interface ServerTrustGroupArgs {
     /**
      * Group members information for the server trust group.
      */
-    groupMembers: pulumi.Input<pulumi.Input<types.inputs.sql.ServerInfoArgs>[]>;
+    groupMembers: pulumi.Input<pulumi.Input<types.inputs.ServerInfoArgs>[]>;
     /**
      * The name of the region where the resource is located.
      */

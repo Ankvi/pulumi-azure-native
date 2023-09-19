@@ -51,7 +51,7 @@ export class VirtualHubRouteTableV2 extends pulumi.CustomResource {
     /**
      * List of all routes.
      */
-    public readonly routes!: pulumi.Output<types.outputs.network.VirtualHubRouteV2Response[] | undefined>;
+    public readonly routes!: pulumi.Output<types.outputs.VirtualHubRouteV2Response[] | undefined>;
 
     /**
      * Create a VirtualHubRouteTableV2 resource with the given unique name, arguments, and options.
@@ -120,7 +120,7 @@ export interface VirtualHubRouteTableV2Args {
     /**
      * List of all routes.
      */
-    routes?: pulumi.Input<pulumi.Input<types.inputs.network.VirtualHubRouteV2Args>[]>;
+    routes?: pulumi.Input<pulumi.Input<types.inputs.VirtualHubRouteV2Args>[]>;
     /**
      * The name of the VirtualHub.
      */

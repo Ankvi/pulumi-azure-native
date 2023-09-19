@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get FarmBeats resource.
  */
@@ -51,11 +51,11 @@ export interface GetFarmBeatsModelResult {
     /**
      * The resource model definition representing SKU
      */
-    readonly sku?: types.outputs.agfoodplatform.v20200512preview.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.agfoodplatform.v20200512preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

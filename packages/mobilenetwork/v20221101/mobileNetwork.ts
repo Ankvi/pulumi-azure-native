@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Mobile network resource.
  */
@@ -46,7 +46,7 @@ export class MobileNetwork extends pulumi.CustomResource {
     /**
      * The unique public land mobile network identifier for the network. This is made up of the mobile country code and mobile network code, as defined in https://www.itu.int/rec/T-REC-E.212. The values 001-01 and 001-001 can be used for testing and the values 999-99 and 999-999 can be used on internal private networks.
      */
-    public readonly publicLandMobileNetworkIdentifier!: pulumi.Output<types.outputs.mobilenetwork.v20221101.PlmnIdResponse>;
+    public readonly publicLandMobileNetworkIdentifier!: pulumi.Output<types.outputs.PlmnIdResponse>;
     /**
      * The mobile network resource identifier
      */
@@ -54,7 +54,7 @@ export class MobileNetwork extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.mobilenetwork.v20221101.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -123,7 +123,7 @@ export interface MobileNetworkArgs {
     /**
      * The unique public land mobile network identifier for the network. This is made up of the mobile country code and mobile network code, as defined in https://www.itu.int/rec/T-REC-E.212. The values 001-01 and 001-001 can be used for testing and the values 999-99 and 999-999 can be used on internal private networks.
      */
-    publicLandMobileNetworkIdentifier: pulumi.Input<types.inputs.mobilenetwork.v20221101.PlmnIdArgs>;
+    publicLandMobileNetworkIdentifier: pulumi.Input<types.inputs.PlmnIdArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

@@ -32,7 +32,7 @@ export interface GetGlobalUserOperationBatchStatusResult {
     /**
      * Gets a collection of items that contain the operation url and status.
      */
-    readonly items: types.outputs.labservices.OperationBatchStatusResponseItemResponse[];
+    readonly items: types.outputs.OperationBatchStatusResponseItemResponse[];
 }
 /**
  * Get batch operation status

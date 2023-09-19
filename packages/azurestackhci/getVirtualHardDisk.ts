@@ -49,7 +49,7 @@ export interface GetVirtualHardDiskResult {
     /**
      * The extendedLocation of the resource.
      */
-    readonly extendedLocation?: types.outputs.azurestackhci.ExtendedLocationResponse;
+    readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
     /**
      * The hypervisor generation of the Virtual Machine [V1, V2]
      */
@@ -75,11 +75,11 @@ export interface GetVirtualHardDiskResult {
     /**
      * The observed state of virtual hard disks
      */
-    readonly status: types.outputs.azurestackhci.VirtualHardDiskStatusResponse;
+    readonly status: types.outputs.VirtualHardDiskStatusResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.azurestackhci.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

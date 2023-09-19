@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An extended database blob auditing policy.
  */
@@ -334,7 +334,7 @@ export interface ExtendedDatabaseBlobAuditingPolicyArgs {
     /**
      * Specifies the state of the audit. If state is Enabled, storageEndpoint or isAzureMonitorTargetEnabled are required.
      */
-    state: pulumi.Input<types.enums.v20211101.BlobAuditingPolicyState>;
+    state: pulumi.Input<types.enums.BlobAuditingPolicyState>;
     /**
      * Specifies the identifier key of the auditing storage account. 
      * If state is Enabled and storageEndpoint is specified, not specifying the storageAccountAccessKey will use SQL server system-assigned managed identity to access the storage.

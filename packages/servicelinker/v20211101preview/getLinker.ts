@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns Linker resource for a given name.
  */
@@ -31,7 +31,7 @@ export interface GetLinkerResult {
     /**
      * The authentication type.
      */
-    readonly authInfo?: types.outputs.servicelinker.v20211101preview.SecretAuthInfoResponse | types.outputs.servicelinker.v20211101preview.ServicePrincipalCertificateAuthInfoResponse | types.outputs.servicelinker.v20211101preview.ServicePrincipalSecretAuthInfoResponse | types.outputs.servicelinker.v20211101preview.SystemAssignedIdentityAuthInfoResponse | types.outputs.servicelinker.v20211101preview.UserAssignedIdentityAuthInfoResponse;
+    readonly authInfo?: types.outputs.SecretAuthInfoResponse | types.outputs.ServicePrincipalCertificateAuthInfoResponse | types.outputs.ServicePrincipalSecretAuthInfoResponse | types.outputs.SystemAssignedIdentityAuthInfoResponse | types.outputs.UserAssignedIdentityAuthInfoResponse;
     /**
      * The application client type
      */
@@ -51,11 +51,11 @@ export interface GetLinkerResult {
     /**
      * An option to store secret value in secure place
      */
-    readonly secretStore?: types.outputs.servicelinker.v20211101preview.SecretStoreResponse;
+    readonly secretStore?: types.outputs.SecretStoreResponse;
     /**
      * The system data.
      */
-    readonly systemData: types.outputs.servicelinker.v20211101preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The resource Id of target service.
      */
@@ -67,7 +67,7 @@ export interface GetLinkerResult {
     /**
      * The VNet solution.
      */
-    readonly vNetSolution?: types.outputs.servicelinker.v20211101preview.VNetSolutionResponse;
+    readonly vNetSolution?: types.outputs.VNetSolutionResponse;
 }
 /**
  * Returns Linker resource for a given name.

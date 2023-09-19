@@ -51,11 +51,11 @@ export class RestorePointCollection extends pulumi.CustomResource {
     /**
      * A list containing all restore points created under this restore point collection.
      */
-    public /*out*/ readonly restorePoints!: pulumi.Output<types.outputs.compute.RestorePointResponse[]>;
+    public /*out*/ readonly restorePoints!: pulumi.Output<types.outputs.RestorePointResponse[]>;
     /**
      * The properties of the source resource that this restore point collection is created from.
      */
-    public readonly source!: pulumi.Output<types.outputs.compute.RestorePointCollectionSourcePropertiesResponse | undefined>;
+    public readonly source!: pulumi.Output<types.outputs.RestorePointCollectionSourcePropertiesResponse | undefined>;
     /**
      * Resource tags
      */
@@ -125,7 +125,7 @@ export interface RestorePointCollectionArgs {
     /**
      * The properties of the source resource that this restore point collection is created from.
      */
-    source?: pulumi.Input<types.inputs.compute.RestorePointCollectionSourcePropertiesArgs>;
+    source?: pulumi.Input<types.inputs.RestorePointCollectionSourcePropertiesArgs>;
     /**
      * Resource tags
      */

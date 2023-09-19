@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Schedule for automatically turning virtual machines in a lab on and off at specified times.
  */
@@ -46,7 +46,7 @@ export class Schedule extends pulumi.CustomResource {
     /**
      * The recurrence pattern of the scheduled actions.
      */
-    public readonly recurrencePattern!: pulumi.Output<types.outputs.labservices.v20220801.RecurrencePatternResponse | undefined>;
+    public readonly recurrencePattern!: pulumi.Output<types.outputs.RecurrencePatternResponse | undefined>;
     /**
      * When lab user virtual machines will be started. Timestamp offsets will be ignored and timeZoneId is used instead.
      */
@@ -58,7 +58,7 @@ export class Schedule extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the schedule.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.labservices.v20220801.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The IANA timezone id for the schedule.
      */
@@ -136,7 +136,7 @@ export interface ScheduleArgs {
     /**
      * The recurrence pattern of the scheduled actions.
      */
-    recurrencePattern?: pulumi.Input<types.inputs.labservices.v20220801.RecurrencePatternArgs>;
+    recurrencePattern?: pulumi.Input<types.inputs.RecurrencePatternArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

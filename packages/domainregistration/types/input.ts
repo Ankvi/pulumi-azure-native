@@ -1,300 +1,99 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
-export namespace domainregistration {
+/**
+ * Address information for domain registration.
+ */
+export interface AddressArgs {
     /**
-     * Address information for domain registration.
+     * First line of an Address.
      */
-    export interface AddressArgs {
-        /**
-         * First line of an Address.
-         */
-        address1: pulumi.Input<string>;
-        /**
-         * The second line of the Address. Optional.
-         */
-        address2?: pulumi.Input<string>;
-        /**
-         * The city for the address.
-         */
-        city: pulumi.Input<string>;
-        /**
-         * The country for the address.
-         */
-        country: pulumi.Input<string>;
-        /**
-         * The postal code for the address.
-         */
-        postalCode: pulumi.Input<string>;
-        /**
-         * The state or province for the address.
-         */
-        state: pulumi.Input<string>;
-    }
-
+    address1: pulumi.Input<string>;
     /**
-     * Contact information for domain registration. If 'Domain Privacy' option is not selected then the contact information is made publicly available through the Whois 
-     * directories as per ICANN requirements.
+     * The second line of the Address. Optional.
      */
-    export interface ContactArgs {
-        /**
-         * Mailing address.
-         */
-        addressMailing?: pulumi.Input<AddressArgs>;
-        /**
-         * Email address.
-         */
-        email: pulumi.Input<string>;
-        /**
-         * Fax number.
-         */
-        fax?: pulumi.Input<string>;
-        /**
-         * Job title.
-         */
-        jobTitle?: pulumi.Input<string>;
-        /**
-         * First name.
-         */
-        nameFirst: pulumi.Input<string>;
-        /**
-         * Last name.
-         */
-        nameLast: pulumi.Input<string>;
-        /**
-         * Middle name.
-         */
-        nameMiddle?: pulumi.Input<string>;
-        /**
-         * Organization contact belongs to.
-         */
-        organization?: pulumi.Input<string>;
-        /**
-         * Phone number.
-         */
-        phone: pulumi.Input<string>;
-    }
-
+    address2?: pulumi.Input<string>;
     /**
-     * Domain purchase consent object, representing acceptance of applicable legal agreements.
+     * The city for the address.
      */
-    export interface DomainPurchaseConsentArgs {
-        /**
-         * Timestamp when the agreements were accepted.
-         */
-        agreedAt?: pulumi.Input<string>;
-        /**
-         * Client IP address.
-         */
-        agreedBy?: pulumi.Input<string>;
-        /**
-         * List of applicable legal agreement keys. This list can be retrieved using ListLegalAgreements API under <code>TopLevelDomain</code> resource.
-         */
-        agreementKeys?: pulumi.Input<pulumi.Input<string>[]>;
-    }
-
-    export namespace v20201001 {
-        /**
-         * Address information for domain registration.
-         */
-        export interface AddressArgs {
-            /**
-             * First line of an Address.
-             */
-            address1: pulumi.Input<string>;
-            /**
-             * The second line of the Address. Optional.
-             */
-            address2?: pulumi.Input<string>;
-            /**
-             * The city for the address.
-             */
-            city: pulumi.Input<string>;
-            /**
-             * The country for the address.
-             */
-            country: pulumi.Input<string>;
-            /**
-             * The postal code for the address.
-             */
-            postalCode: pulumi.Input<string>;
-            /**
-             * The state or province for the address.
-             */
-            state: pulumi.Input<string>;
-        }
-
-        /**
-         * Contact information for domain registration. If 'Domain Privacy' option is not selected then the contact information is made publicly available through the Whois 
-         * directories as per ICANN requirements.
-         */
-        export interface ContactArgs {
-            /**
-             * Mailing address.
-             */
-            addressMailing?: pulumi.Input<v20201001.AddressArgs>;
-            /**
-             * Email address.
-             */
-            email: pulumi.Input<string>;
-            /**
-             * Fax number.
-             */
-            fax?: pulumi.Input<string>;
-            /**
-             * Job title.
-             */
-            jobTitle?: pulumi.Input<string>;
-            /**
-             * First name.
-             */
-            nameFirst: pulumi.Input<string>;
-            /**
-             * Last name.
-             */
-            nameLast: pulumi.Input<string>;
-            /**
-             * Middle name.
-             */
-            nameMiddle?: pulumi.Input<string>;
-            /**
-             * Organization contact belongs to.
-             */
-            organization?: pulumi.Input<string>;
-            /**
-             * Phone number.
-             */
-            phone: pulumi.Input<string>;
-        }
-
-        /**
-         * Domain purchase consent object, representing acceptance of applicable legal agreements.
-         */
-        export interface DomainPurchaseConsentArgs {
-            /**
-             * Timestamp when the agreements were accepted.
-             */
-            agreedAt?: pulumi.Input<string>;
-            /**
-             * Client IP address.
-             */
-            agreedBy?: pulumi.Input<string>;
-            /**
-             * List of applicable legal agreement keys. This list can be retrieved using ListLegalAgreements API under <code>TopLevelDomain</code> resource.
-             */
-            agreementKeys?: pulumi.Input<pulumi.Input<string>[]>;
-        }
-
-    }
-
-    export namespace v20201201 {
-    }
-
-    export namespace v20210101 {
-    }
-
-    export namespace v20210115 {
-    }
-
-    export namespace v20210201 {
-    }
-
-    export namespace v20210301 {
-    }
-
-    export namespace v20220301 {
-    }
-
-    export namespace v20220901 {
-        /**
-         * Address information for domain registration.
-         */
-        export interface AddressArgs {
-            /**
-             * First line of an Address.
-             */
-            address1: pulumi.Input<string>;
-            /**
-             * The second line of the Address. Optional.
-             */
-            address2?: pulumi.Input<string>;
-            /**
-             * The city for the address.
-             */
-            city: pulumi.Input<string>;
-            /**
-             * The country for the address.
-             */
-            country: pulumi.Input<string>;
-            /**
-             * The postal code for the address.
-             */
-            postalCode: pulumi.Input<string>;
-            /**
-             * The state or province for the address.
-             */
-            state: pulumi.Input<string>;
-        }
-
-        /**
-         * Contact information for domain registration. If 'Domain Privacy' option is not selected then the contact information is made publicly available through the Whois 
-         * directories as per ICANN requirements.
-         */
-        export interface ContactArgs {
-            /**
-             * Mailing address.
-             */
-            addressMailing?: pulumi.Input<v20220901.AddressArgs>;
-            /**
-             * Email address.
-             */
-            email: pulumi.Input<string>;
-            /**
-             * Fax number.
-             */
-            fax?: pulumi.Input<string>;
-            /**
-             * Job title.
-             */
-            jobTitle?: pulumi.Input<string>;
-            /**
-             * First name.
-             */
-            nameFirst: pulumi.Input<string>;
-            /**
-             * Last name.
-             */
-            nameLast: pulumi.Input<string>;
-            /**
-             * Middle name.
-             */
-            nameMiddle?: pulumi.Input<string>;
-            /**
-             * Organization contact belongs to.
-             */
-            organization?: pulumi.Input<string>;
-            /**
-             * Phone number.
-             */
-            phone: pulumi.Input<string>;
-        }
-
-        /**
-         * Domain purchase consent object, representing acceptance of applicable legal agreements.
-         */
-        export interface DomainPurchaseConsentArgs {
-            /**
-             * Timestamp when the agreements were accepted.
-             */
-            agreedAt?: pulumi.Input<string>;
-            /**
-             * Client IP address.
-             */
-            agreedBy?: pulumi.Input<string>;
-            /**
-             * List of applicable legal agreement keys. This list can be retrieved using ListLegalAgreements API under <code>TopLevelDomain</code> resource.
-             */
-            agreementKeys?: pulumi.Input<pulumi.Input<string>[]>;
-        }
-
-    }
+    city: pulumi.Input<string>;
+    /**
+     * The country for the address.
+     */
+    country: pulumi.Input<string>;
+    /**
+     * The postal code for the address.
+     */
+    postalCode: pulumi.Input<string>;
+    /**
+     * The state or province for the address.
+     */
+    state: pulumi.Input<string>;
 }
+
+/**
+ * Contact information for domain registration. If 'Domain Privacy' option is not selected then the contact information is made publicly available through the Whois 
+ * directories as per ICANN requirements.
+ */
+export interface ContactArgs {
+    /**
+     * Mailing address.
+     */
+    addressMailing?: pulumi.Input<AddressArgs>;
+    /**
+     * Email address.
+     */
+    email: pulumi.Input<string>;
+    /**
+     * Fax number.
+     */
+    fax?: pulumi.Input<string>;
+    /**
+     * Job title.
+     */
+    jobTitle?: pulumi.Input<string>;
+    /**
+     * First name.
+     */
+    nameFirst: pulumi.Input<string>;
+    /**
+     * Last name.
+     */
+    nameLast: pulumi.Input<string>;
+    /**
+     * Middle name.
+     */
+    nameMiddle?: pulumi.Input<string>;
+    /**
+     * Organization contact belongs to.
+     */
+    organization?: pulumi.Input<string>;
+    /**
+     * Phone number.
+     */
+    phone: pulumi.Input<string>;
+}
+
+/**
+ * Domain purchase consent object, representing acceptance of applicable legal agreements.
+ */
+export interface DomainPurchaseConsentArgs {
+    /**
+     * Timestamp when the agreements were accepted.
+     */
+    agreedAt?: pulumi.Input<string>;
+    /**
+     * Client IP address.
+     */
+    agreedBy?: pulumi.Input<string>;
+    /**
+     * List of applicable legal agreement keys. This list can be retrieved using ListLegalAgreements API under <code>TopLevelDomain</code> resource.
+     */
+    agreementKeys?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+
+
+
+
+
+

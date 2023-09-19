@@ -35,11 +35,11 @@ export class NetworkProfile extends pulumi.CustomResource {
     /**
      * List of chid container network interface configurations.
      */
-    public readonly containerNetworkInterfaceConfigurations!: pulumi.Output<types.outputs.network.ContainerNetworkInterfaceConfigurationResponse[] | undefined>;
+    public readonly containerNetworkInterfaceConfigurations!: pulumi.Output<types.outputs.ContainerNetworkInterfaceConfigurationResponse[] | undefined>;
     /**
      * List of child container network interfaces.
      */
-    public /*out*/ readonly containerNetworkInterfaces!: pulumi.Output<types.outputs.network.ContainerNetworkInterfaceResponse[]>;
+    public /*out*/ readonly containerNetworkInterfaces!: pulumi.Output<types.outputs.ContainerNetworkInterfaceResponse[]>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -120,7 +120,7 @@ export interface NetworkProfileArgs {
     /**
      * List of chid container network interface configurations.
      */
-    containerNetworkInterfaceConfigurations?: pulumi.Input<pulumi.Input<types.inputs.network.ContainerNetworkInterfaceConfigurationArgs>[]>;
+    containerNetworkInterfaceConfigurations?: pulumi.Input<pulumi.Input<types.inputs.ContainerNetworkInterfaceConfigurationArgs>[]>;
     /**
      * Resource ID.
      */

@@ -47,7 +47,7 @@ export class WorkloadNetworkSegment extends pulumi.CustomResource {
     /**
      * Port Vif which segment is associated with.
      */
-    public /*out*/ readonly portVif!: pulumi.Output<types.outputs.avs.WorkloadNetworkSegmentPortVifResponse[]>;
+    public /*out*/ readonly portVif!: pulumi.Output<types.outputs.WorkloadNetworkSegmentPortVifResponse[]>;
     /**
      * The provisioning state
      */
@@ -63,7 +63,7 @@ export class WorkloadNetworkSegment extends pulumi.CustomResource {
     /**
      * Subnet which to connect segment to.
      */
-    public readonly subnet!: pulumi.Output<types.outputs.avs.WorkloadNetworkSegmentSubnetResponse | undefined>;
+    public readonly subnet!: pulumi.Output<types.outputs.WorkloadNetworkSegmentSubnetResponse | undefined>;
     /**
      * Resource type.
      */
@@ -147,5 +147,5 @@ export interface WorkloadNetworkSegmentArgs {
     /**
      * Subnet which to connect segment to.
      */
-    subnet?: pulumi.Input<types.inputs.avs.WorkloadNetworkSegmentSubnetArgs>;
+    subnet?: pulumi.Input<types.inputs.WorkloadNetworkSegmentSubnetArgs>;
 }

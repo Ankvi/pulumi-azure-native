@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the specified Bastion Host.
  */
@@ -67,7 +67,7 @@ export interface GetBastionHostResult {
     /**
      * IP configuration of the Bastion Host resource.
      */
-    readonly ipConfigurations?: types.outputs.network.v20230401.BastionHostIPConfigurationResponse[];
+    readonly ipConfigurations?: types.outputs.BastionHostIPConfigurationResponse[];
     /**
      * Resource location.
      */
@@ -87,7 +87,7 @@ export interface GetBastionHostResult {
     /**
      * The sku of this Bastion Host.
      */
-    readonly sku?: types.outputs.network.v20230401.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * Resource tags.
      */

@@ -23,7 +23,7 @@ utilities.lazyLoad(exports, ["LogProfile"], () => require("./logProfile"));
 
 
 // Export enums:
-export * from "../types/enums/v20160301";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

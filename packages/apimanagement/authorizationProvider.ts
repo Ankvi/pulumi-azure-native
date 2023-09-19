@@ -47,7 +47,7 @@ export class AuthorizationProvider extends pulumi.CustomResource {
     /**
      * OAuth2 settings
      */
-    public readonly oauth2!: pulumi.Output<types.outputs.apimanagement.AuthorizationProviderOAuth2SettingsResponse | undefined>;
+    public readonly oauth2!: pulumi.Output<types.outputs.AuthorizationProviderOAuth2SettingsResponse | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -111,7 +111,7 @@ export interface AuthorizationProviderArgs {
     /**
      * OAuth2 settings
      */
-    oauth2?: pulumi.Input<types.inputs.apimanagement.AuthorizationProviderOAuth2SettingsArgs>;
+    oauth2?: pulumi.Input<types.inputs.AuthorizationProviderOAuth2SettingsArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

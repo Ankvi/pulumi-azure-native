@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents the response of a service unit resource.
  */
@@ -34,7 +34,7 @@ export class ServiceUnit extends pulumi.CustomResource {
     /**
      * The artifacts for the service unit.
      */
-    public readonly artifacts!: pulumi.Output<types.outputs.deploymentmanager.v20191101preview.ServiceUnitArtifactsResponse | undefined>;
+    public readonly artifacts!: pulumi.Output<types.outputs.ServiceUnitArtifactsResponse | undefined>;
     /**
      * Describes the type of ARM deployment to be performed on the resource.
      */
@@ -120,11 +120,11 @@ export interface ServiceUnitArgs {
     /**
      * The artifacts for the service unit.
      */
-    artifacts?: pulumi.Input<types.inputs.deploymentmanager.v20191101preview.ServiceUnitArtifactsArgs>;
+    artifacts?: pulumi.Input<types.inputs.ServiceUnitArtifactsArgs>;
     /**
      * Describes the type of ARM deployment to be performed on the resource.
      */
-    deploymentMode: pulumi.Input<types.enums.v20191101preview.DeploymentMode>;
+    deploymentMode: pulumi.Input<types.enums.DeploymentMode>;
     /**
      * The geo-location where the resource lives
      */

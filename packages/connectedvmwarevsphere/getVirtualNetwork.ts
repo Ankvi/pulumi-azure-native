@@ -36,7 +36,7 @@ export interface GetVirtualNetworkResult {
     /**
      * Gets or sets the extended location.
      */
-    readonly extendedLocation?: types.outputs.connectedvmwarevsphere.ExtendedLocationResponse;
+    readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
     /**
      * Gets or sets the Id.
      */
@@ -72,11 +72,11 @@ export interface GetVirtualNetworkResult {
     /**
      * The resource status information.
      */
-    readonly statuses: types.outputs.connectedvmwarevsphere.ResourceStatusResponse[];
+    readonly statuses: types.outputs.ResourceStatusResponse[];
     /**
      * The system data.
      */
-    readonly systemData: types.outputs.connectedvmwarevsphere.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Gets or sets the Resource tags.
      */

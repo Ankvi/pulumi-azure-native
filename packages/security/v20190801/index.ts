@@ -23,7 +23,7 @@ utilities.lazyLoad(exports, ["IotSecuritySolution"], () => require("./iotSecurit
 
 
 // Export enums:
-export * from "../types/enums/v20190801";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

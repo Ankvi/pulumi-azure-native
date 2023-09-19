@@ -1,146 +1,71 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
-export namespace blockchain {
+/**
+ * API key payload which is exposed in the request/response of the resource provider.
+ */
+export interface ApiKeyResponse {
     /**
-     * API key payload which is exposed in the request/response of the resource provider.
+     * Gets or sets the API key name.
      */
-    export interface ApiKeyResponse {
-        /**
-         * Gets or sets the API key name.
-         */
-        keyName?: string;
-        /**
-         * Gets or sets the API key value.
-         */
-        value?: string;
-    }
-
+    keyName?: string;
     /**
-     * Payload of the blockchain member nodes Sku for a blockchain member.
+     * Gets or sets the API key value.
      */
-    export interface BlockchainMemberNodesSkuResponse {
-        /**
-         * Gets or sets the nodes capacity.
-         */
-        capacity?: number;
-    }
+    value?: string;
+}
 
+/**
+ * Payload of the blockchain member nodes Sku for a blockchain member.
+ */
+export interface BlockchainMemberNodesSkuResponse {
     /**
-     * Consortium payload
+     * Gets or sets the nodes capacity.
      */
-    export interface ConsortiumResponse {
-        /**
-         * Gets or sets the blockchain member name.
-         */
-        name?: string;
-        /**
-         * Gets or sets the protocol for the consortium.
-         */
-        protocol?: string;
-    }
+    capacity?: number;
+}
 
+/**
+ * Consortium payload
+ */
+export interface ConsortiumResponse {
     /**
-     * Ip range for firewall rules
+     * Gets or sets the blockchain member name.
      */
-    export interface FirewallRuleResponse {
-        /**
-         * Gets or sets the end IP address of the firewall rule range.
-         */
-        endIpAddress?: string;
-        /**
-         * Gets or sets the name of the firewall rules.
-         */
-        ruleName?: string;
-        /**
-         * Gets or sets the start IP address of the firewall rule range.
-         */
-        startIpAddress?: string;
-    }
-
+    name?: string;
     /**
-     * Blockchain member Sku in payload
+     * Gets or sets the protocol for the consortium.
      */
-    export interface SkuResponse {
-        /**
-         * Gets or sets Sku name
-         */
-        name?: string;
-        /**
-         * Gets or sets Sku tier
-         */
-        tier?: string;
-    }
+    protocol?: string;
+}
 
-    export namespace v20180601preview {
-        /**
-         * API key payload which is exposed in the request/response of the resource provider.
-         */
-        export interface ApiKeyResponse {
-            /**
-             * Gets or sets the API key name.
-             */
-            keyName?: string;
-            /**
-             * Gets or sets the API key value.
-             */
-            value?: string;
-        }
+/**
+ * Ip range for firewall rules
+ */
+export interface FirewallRuleResponse {
+    /**
+     * Gets or sets the end IP address of the firewall rule range.
+     */
+    endIpAddress?: string;
+    /**
+     * Gets or sets the name of the firewall rules.
+     */
+    ruleName?: string;
+    /**
+     * Gets or sets the start IP address of the firewall rule range.
+     */
+    startIpAddress?: string;
+}
 
-        /**
-         * Payload of the blockchain member nodes Sku for a blockchain member.
-         */
-        export interface BlockchainMemberNodesSkuResponse {
-            /**
-             * Gets or sets the nodes capacity.
-             */
-            capacity?: number;
-        }
-
-        /**
-         * Consortium payload
-         */
-        export interface ConsortiumResponse {
-            /**
-             * Gets or sets the blockchain member name.
-             */
-            name?: string;
-            /**
-             * Gets or sets the protocol for the consortium.
-             */
-            protocol?: string;
-        }
-
-        /**
-         * Ip range for firewall rules
-         */
-        export interface FirewallRuleResponse {
-            /**
-             * Gets or sets the end IP address of the firewall rule range.
-             */
-            endIpAddress?: string;
-            /**
-             * Gets or sets the name of the firewall rules.
-             */
-            ruleName?: string;
-            /**
-             * Gets or sets the start IP address of the firewall rule range.
-             */
-            startIpAddress?: string;
-        }
-
-        /**
-         * Blockchain member Sku in payload
-         */
-        export interface SkuResponse {
-            /**
-             * Gets or sets Sku name
-             */
-            name?: string;
-            /**
-             * Gets or sets Sku tier
-             */
-            tier?: string;
-        }
-
-    }
+/**
+ * Blockchain member Sku in payload
+ */
+export interface SkuResponse {
+    /**
+     * Gets or sets Sku name
+     */
+    name?: string;
+    /**
+     * Gets or sets Sku tier
+     */
+    tier?: string;
 }

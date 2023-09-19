@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the details of the Diagnostic specified by its identifier.
  */
@@ -40,11 +40,11 @@ export interface GetDiagnosticResult {
     /**
      * Diagnostic settings for incoming/outgoing HTTP messages to the Backend
      */
-    readonly backend?: types.outputs.apimanagement.v20220901preview.PipelineDiagnosticSettingsResponse;
+    readonly backend?: types.outputs.PipelineDiagnosticSettingsResponse;
     /**
      * Diagnostic settings for incoming/outgoing HTTP messages to the Gateway.
      */
-    readonly frontend?: types.outputs.apimanagement.v20220901preview.PipelineDiagnosticSettingsResponse;
+    readonly frontend?: types.outputs.PipelineDiagnosticSettingsResponse;
     /**
      * Sets correlation protocol to use for Application Insights diagnostics.
      */
@@ -76,7 +76,7 @@ export interface GetDiagnosticResult {
     /**
      * Sampling settings for Diagnostic.
      */
-    readonly sampling?: types.outputs.apimanagement.v20220901preview.SamplingSettingsResponse;
+    readonly sampling?: types.outputs.SamplingSettingsResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

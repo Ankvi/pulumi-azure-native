@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents a ApplicationGroup definition.
  */
@@ -55,7 +55,7 @@ export class ApplicationGroup extends pulumi.CustomResource {
      * HostPool arm path of ApplicationGroup.
      */
     public readonly hostPoolArmPath!: pulumi.Output<string>;
-    public readonly identity!: pulumi.Output<types.outputs.desktopvirtualization.v20220401preview.ResourceModelWithAllowedPropertySetResponseIdentity | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ResourceModelWithAllowedPropertySetResponseIdentity | undefined>;
     /**
      * Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
      */
@@ -71,7 +71,7 @@ export class ApplicationGroup extends pulumi.CustomResource {
     /**
      * The registration info of HostPool.
      */
-    public readonly migrationRequest!: pulumi.Output<types.outputs.desktopvirtualization.v20220401preview.MigrationRequestPropertiesResponse | undefined>;
+    public readonly migrationRequest!: pulumi.Output<types.outputs.MigrationRequestPropertiesResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -80,12 +80,12 @@ export class ApplicationGroup extends pulumi.CustomResource {
      * ObjectId of ApplicationGroup. (internal use)
      */
     public /*out*/ readonly objectId!: pulumi.Output<string>;
-    public readonly plan!: pulumi.Output<types.outputs.desktopvirtualization.v20220401preview.ResourceModelWithAllowedPropertySetResponsePlan | undefined>;
-    public readonly sku!: pulumi.Output<types.outputs.desktopvirtualization.v20220401preview.ResourceModelWithAllowedPropertySetResponseSku | undefined>;
+    public readonly plan!: pulumi.Output<types.outputs.ResourceModelWithAllowedPropertySetResponsePlan | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.ResourceModelWithAllowedPropertySetResponseSku | undefined>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.desktopvirtualization.v20220401preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -179,7 +179,7 @@ export interface ApplicationGroupArgs {
     /**
      * Resource Type of ApplicationGroup.
      */
-    applicationGroupType: pulumi.Input<string | types.enums.v20220401preview.ApplicationGroupType>;
+    applicationGroupType: pulumi.Input<string | types.enums.ApplicationGroupType>;
     /**
      * Description of ApplicationGroup.
      */
@@ -192,7 +192,7 @@ export interface ApplicationGroupArgs {
      * HostPool arm path of ApplicationGroup.
      */
     hostPoolArmPath: pulumi.Input<string>;
-    identity?: pulumi.Input<types.inputs.desktopvirtualization.v20220401preview.ResourceModelWithAllowedPropertySetIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ResourceModelWithAllowedPropertySetIdentityArgs>;
     /**
      * Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
      */
@@ -208,13 +208,13 @@ export interface ApplicationGroupArgs {
     /**
      * The registration info of HostPool.
      */
-    migrationRequest?: pulumi.Input<types.inputs.desktopvirtualization.v20220401preview.MigrationRequestPropertiesArgs>;
-    plan?: pulumi.Input<types.inputs.desktopvirtualization.v20220401preview.ResourceModelWithAllowedPropertySetPlanArgs>;
+    migrationRequest?: pulumi.Input<types.inputs.MigrationRequestPropertiesArgs>;
+    plan?: pulumi.Input<types.inputs.ResourceModelWithAllowedPropertySetPlanArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
-    sku?: pulumi.Input<types.inputs.desktopvirtualization.v20220401preview.ResourceModelWithAllowedPropertySetSkuArgs>;
+    sku?: pulumi.Input<types.inputs.ResourceModelWithAllowedPropertySetSkuArgs>;
     /**
      * Resource tags.
      */

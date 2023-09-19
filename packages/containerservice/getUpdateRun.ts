@@ -45,7 +45,7 @@ export interface GetUpdateRunResult {
     /**
      * The update to be applied to all clusters in the UpdateRun. The managedClusterUpdate can be modified until the run is started.
      */
-    readonly managedClusterUpdate: types.outputs.containerservice.ManagedClusterUpdateResponse;
+    readonly managedClusterUpdate: types.outputs.ManagedClusterUpdateResponse;
     /**
      * The name of the resource
      */
@@ -57,17 +57,17 @@ export interface GetUpdateRunResult {
     /**
      * The status of the UpdateRun.
      */
-    readonly status: types.outputs.containerservice.UpdateRunStatusResponse;
+    readonly status: types.outputs.UpdateRunStatusResponse;
     /**
      * The strategy defines the order in which the clusters will be updated. 
      * If not set, all members will be updated sequentially. The UpdateRun status will show a single UpdateStage and a single UpdateGroup targeting all members.
      * The strategy of the UpdateRun can be modified until the run is started.
      */
-    readonly strategy?: types.outputs.containerservice.UpdateRunStrategyResponse;
+    readonly strategy?: types.outputs.UpdateRunStrategyResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.containerservice.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

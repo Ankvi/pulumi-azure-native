@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the resource description of the specified Event Hubs Cluster.
  */
@@ -51,7 +51,7 @@ export interface GetClusterResult {
     /**
      * Properties of the cluster SKU.
      */
-    readonly sku?: types.outputs.eventhub.v20221001preview.ClusterSkuResponse;
+    readonly sku?: types.outputs.ClusterSkuResponse;
     /**
      * Status of the Cluster resource
      */
@@ -63,7 +63,7 @@ export interface GetClusterResult {
     /**
      * The system meta data relating to this resource.
      */
-    readonly systemData: types.outputs.eventhub.v20221001preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

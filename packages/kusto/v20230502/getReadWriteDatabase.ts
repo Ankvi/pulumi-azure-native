@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns a database.
  */
@@ -48,7 +48,7 @@ export interface GetReadWriteDatabaseResult {
     /**
      * KeyVault properties for the database encryption.
      */
-    readonly keyVaultProperties?: types.outputs.kusto.v20230502.KeyVaultPropertiesResponse;
+    readonly keyVaultProperties?: types.outputs.KeyVaultPropertiesResponse;
     /**
      * Kind of the database
      * Expected value is 'ReadWrite'.
@@ -73,11 +73,11 @@ export interface GetReadWriteDatabaseResult {
     /**
      * The statistics of the database.
      */
-    readonly statistics: types.outputs.kusto.v20230502.DatabaseStatisticsResponse;
+    readonly statistics: types.outputs.DatabaseStatisticsResponse;
     /**
      * The database suspension details. If the database is suspended, this object contains information related to the database's suspension state.
      */
-    readonly suspensionDetails: types.outputs.kusto.v20230502.SuspensionDetailsResponse;
+    readonly suspensionDetails: types.outputs.SuspensionDetailsResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

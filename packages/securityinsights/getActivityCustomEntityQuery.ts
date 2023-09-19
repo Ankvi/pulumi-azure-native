@@ -82,7 +82,7 @@ export interface GetActivityCustomEntityQueryResult {
     /**
      * The Activity query definitions
      */
-    readonly queryDefinitions?: types.outputs.securityinsights.ActivityEntityQueriesPropertiesResponseQueryDefinitions;
+    readonly queryDefinitions?: types.outputs.ActivityEntityQueriesPropertiesResponseQueryDefinitions;
     /**
      * List of the fields of the source entity that are required to run the query
      */
@@ -90,7 +90,7 @@ export interface GetActivityCustomEntityQueryResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.securityinsights.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The template id this activity was created from
      */

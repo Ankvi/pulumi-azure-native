@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieve the details of the gateway resource.
  */
@@ -44,11 +44,11 @@ export interface GetManagedGatewayResult {
     /**
      * The properties of a gateway resource.
      */
-    readonly properties: types.outputs.scom.v20230707preview.ManagedGatewayPropertiesResponse;
+    readonly properties: types.outputs.ManagedGatewayPropertiesResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.scom.v20230707preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

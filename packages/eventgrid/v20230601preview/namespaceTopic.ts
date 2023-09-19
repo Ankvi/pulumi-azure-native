@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Namespace topic details.
  */
@@ -55,7 +55,7 @@ export class NamespaceTopic extends pulumi.CustomResource {
     /**
      * The system metadata relating to namespace topic resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.eventgrid.v20230601preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Type of the resource.
      */
@@ -116,7 +116,7 @@ export interface NamespaceTopicArgs {
     /**
      * This determines the format that is expected for incoming events published to the topic.
      */
-    inputSchema?: pulumi.Input<string | types.enums.v20230601preview.EventInputSchema>;
+    inputSchema?: pulumi.Input<string | types.enums.EventInputSchema>;
     /**
      * Name of the namespace.
      */
@@ -124,7 +124,7 @@ export interface NamespaceTopicArgs {
     /**
      * Publisher type of the namespace topic.
      */
-    publisherType?: pulumi.Input<string | types.enums.v20230601preview.PublisherType>;
+    publisherType?: pulumi.Input<string | types.enums.PublisherType>;
     /**
      * The name of the resource group within the user's subscription.
      */

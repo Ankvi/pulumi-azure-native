@@ -77,7 +77,7 @@ export interface GetVpnConnectionResult {
     /**
      * The IPSec Policies to be considered by this connection.
      */
-    readonly ipsecPolicies?: types.outputs.network.IpsecPolicyResponse[];
+    readonly ipsecPolicies?: types.outputs.IpsecPolicyResponse[];
     /**
      * The name of the resource that is unique within a resource group. This name can be used to access the resource.
      */
@@ -89,11 +89,11 @@ export interface GetVpnConnectionResult {
     /**
      * Id of the connected vpn site.
      */
-    readonly remoteVpnSite?: types.outputs.network.SubResourceResponse;
+    readonly remoteVpnSite?: types.outputs.SubResourceResponse;
     /**
      * The Routing Configuration indicating the associated and propagated route tables on this connection.
      */
-    readonly routingConfiguration?: types.outputs.network.RoutingConfigurationResponse;
+    readonly routingConfiguration?: types.outputs.RoutingConfigurationResponse;
     /**
      * Routing weight for vpn connection.
      */
@@ -105,7 +105,7 @@ export interface GetVpnConnectionResult {
     /**
      * The Traffic Selector Policies to be considered by this connection.
      */
-    readonly trafficSelectorPolicies?: types.outputs.network.TrafficSelectorPolicyResponse[];
+    readonly trafficSelectorPolicies?: types.outputs.TrafficSelectorPolicyResponse[];
     /**
      * Use local azure ip to initiate connection.
      */
@@ -121,7 +121,7 @@ export interface GetVpnConnectionResult {
     /**
      * List of all vpn site link connections to the gateway.
      */
-    readonly vpnLinkConnections?: types.outputs.network.VpnSiteLinkConnectionResponse[];
+    readonly vpnLinkConnections?: types.outputs.VpnSiteLinkConnectionResponse[];
 }
 /**
  * Retrieves the details of a vpn connection.

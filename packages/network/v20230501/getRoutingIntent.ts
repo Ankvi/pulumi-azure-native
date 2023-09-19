@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves the details of a RoutingIntent.
  */
@@ -52,7 +52,7 @@ export interface GetRoutingIntentResult {
     /**
      * List of routing policies.
      */
-    readonly routingPolicies?: types.outputs.network.v20230501.RoutingPolicyResponse[];
+    readonly routingPolicies?: types.outputs.RoutingPolicyResponse[];
     /**
      * Resource type.
      */

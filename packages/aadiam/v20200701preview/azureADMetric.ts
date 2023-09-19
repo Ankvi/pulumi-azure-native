@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * AzureADMetrics resource.
  */
@@ -39,7 +39,7 @@ export class AzureADMetric extends pulumi.CustomResource {
      * The name of the resource
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
-    public /*out*/ readonly properties!: pulumi.Output<types.outputs.aadiam.v20200701preview.AzureADMetricsPropertiesFormatResponse>;
+    public /*out*/ readonly properties!: pulumi.Output<types.outputs.AzureADMetricsPropertiesFormatResponse>;
     /**
      * Resource tags.
      */

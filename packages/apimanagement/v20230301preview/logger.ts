@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Logger details.
  */
@@ -131,7 +131,7 @@ export interface LoggerArgs {
     /**
      * Logger type.
      */
-    loggerType: pulumi.Input<string | types.enums.v20230301preview.LoggerType>;
+    loggerType: pulumi.Input<string | types.enums.LoggerType>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

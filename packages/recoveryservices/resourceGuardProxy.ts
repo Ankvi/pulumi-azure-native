@@ -46,7 +46,7 @@ export class ResourceGuardProxy extends pulumi.CustomResource {
     /**
      * ResourceGuardProxyBaseResource properties
      */
-    public readonly properties!: pulumi.Output<types.outputs.recoveryservices.ResourceGuardProxyBaseResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ResourceGuardProxyBaseResponse>;
     /**
      * Resource tags.
      */
@@ -112,7 +112,7 @@ export interface ResourceGuardProxyArgs {
     /**
      * ResourceGuardProxyBaseResource properties
      */
-    properties?: pulumi.Input<types.inputs.recoveryservices.ResourceGuardProxyBaseArgs>;
+    properties?: pulumi.Input<types.inputs.ResourceGuardProxyBaseArgs>;
     /**
      * The name of the resource group where the recovery services vault is present.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Migrate project.
  */
@@ -46,11 +46,11 @@ export class MigrateProjectsControllerMigrateProject extends pulumi.CustomResour
     /**
      * Properties of a migrate project.
      */
-    public readonly properties!: pulumi.Output<types.outputs.migrate.v20200501.MigrateProjectPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.MigrateProjectPropertiesResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.migrate.v20200501.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Type of the object = [Microsoft.Migrate/migrateProjects].
      */
@@ -112,7 +112,7 @@ export interface MigrateProjectsControllerMigrateProjectArgs {
     /**
      * Properties of a migrate project.
      */
-    properties?: pulumi.Input<types.inputs.migrate.v20200501.MigrateProjectPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.MigrateProjectPropertiesArgs>;
     /**
      * Name of the Azure Resource Group that project is part of.
      */

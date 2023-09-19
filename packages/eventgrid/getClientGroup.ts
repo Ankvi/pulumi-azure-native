@@ -58,7 +58,7 @@ export interface GetClientGroupResult {
     /**
      * The system metadata relating to the ClientGroup resource.
      */
-    readonly systemData: types.outputs.eventgrid.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Type of the resource.
      */

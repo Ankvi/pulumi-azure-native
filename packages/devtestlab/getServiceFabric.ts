@@ -47,7 +47,7 @@ export interface GetServiceFabricResult {
     /**
      * The applicable schedule for the virtual machine.
      */
-    readonly applicableSchedule: types.outputs.devtestlab.ApplicableScheduleResponse;
+    readonly applicableSchedule: types.outputs.ApplicableScheduleResponse;
     /**
      * The resource id of the environment under which the service fabric resource is present
      */

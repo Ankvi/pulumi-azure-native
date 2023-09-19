@@ -39,7 +39,7 @@ export class PartnerTopic extends pulumi.CustomResource {
     /**
      * Event Type information from the corresponding event channel.
      */
-    public readonly eventTypeInfo!: pulumi.Output<types.outputs.eventgrid.EventTypeInfoResponse | undefined>;
+    public readonly eventTypeInfo!: pulumi.Output<types.outputs.EventTypeInfoResponse | undefined>;
     /**
      * Expiration time of the partner topic. If this timer expires while the partner topic is still never activated,
      * the partner topic and corresponding event channel are deleted.
@@ -48,7 +48,7 @@ export class PartnerTopic extends pulumi.CustomResource {
     /**
      * Identity information for the Partner Topic resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.eventgrid.IdentityInfoResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityInfoResponse | undefined>;
     /**
      * Location of the resource.
      */
@@ -81,7 +81,7 @@ export class PartnerTopic extends pulumi.CustomResource {
     /**
      * The system metadata relating to Partner Topic resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.eventgrid.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Tags of the resource.
      */
@@ -155,7 +155,7 @@ export interface PartnerTopicArgs {
     /**
      * Event Type information from the corresponding event channel.
      */
-    eventTypeInfo?: pulumi.Input<types.inputs.eventgrid.EventTypeInfoArgs>;
+    eventTypeInfo?: pulumi.Input<types.inputs.EventTypeInfoArgs>;
     /**
      * Expiration time of the partner topic. If this timer expires while the partner topic is still never activated,
      * the partner topic and corresponding event channel are deleted.
@@ -164,7 +164,7 @@ export interface PartnerTopicArgs {
     /**
      * Identity information for the Partner Topic resource.
      */
-    identity?: pulumi.Input<types.inputs.eventgrid.IdentityInfoArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityInfoArgs>;
     /**
      * Location of the resource.
      */

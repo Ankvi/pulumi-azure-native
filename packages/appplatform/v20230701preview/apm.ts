@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * APM Resource object
  */
@@ -38,11 +38,11 @@ export class Apm extends pulumi.CustomResource {
     /**
      * Properties of an APM
      */
-    public readonly properties!: pulumi.Output<types.outputs.appplatform.v20230701preview.ApmPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ApmPropertiesResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.appplatform.v20230701preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource.
      */
@@ -96,7 +96,7 @@ export interface ApmArgs {
     /**
      * Properties of an APM
      */
-    properties?: pulumi.Input<types.inputs.appplatform.v20230701preview.ApmPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ApmPropertiesArgs>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */

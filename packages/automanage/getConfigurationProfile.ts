@@ -44,11 +44,11 @@ export interface GetConfigurationProfileResult {
     /**
      * Properties of the configuration profile.
      */
-    readonly properties: types.outputs.automanage.ConfigurationProfilePropertiesResponse;
+    readonly properties: types.outputs.ConfigurationProfilePropertiesResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.automanage.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

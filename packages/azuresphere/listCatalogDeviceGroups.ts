@@ -61,7 +61,7 @@ export interface ListCatalogDeviceGroupsResult {
     /**
      * The DeviceGroup items on this page
      */
-    readonly value: types.outputs.azuresphere.DeviceGroupResponse[];
+    readonly value: types.outputs.DeviceGroupResponse[];
 }
 /**
  * List the device groups for the catalog.

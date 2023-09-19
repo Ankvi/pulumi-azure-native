@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 export function getOnlineEndpoint(args: GetOnlineEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetOnlineEndpointResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -34,7 +34,7 @@ export interface GetOnlineEndpointResult {
     /**
      * Service identity associated with a resource.
      */
-    readonly identity?: types.outputs.machinelearningservices.v20210301preview.ResourceIdentityResponse;
+    readonly identity?: types.outputs.ResourceIdentityResponse;
     /**
      * Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
      */
@@ -50,11 +50,11 @@ export interface GetOnlineEndpointResult {
     /**
      * [Required] Additional attributes of the entity.
      */
-    readonly properties: types.outputs.machinelearningservices.v20210301preview.OnlineEndpointResponse;
+    readonly properties: types.outputs.OnlineEndpointResponse;
     /**
      * System data associated with resource provider
      */
-    readonly systemData: types.outputs.machinelearningservices.v20210301preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

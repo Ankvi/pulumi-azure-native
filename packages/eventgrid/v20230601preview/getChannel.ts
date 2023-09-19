@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get properties of a channel.
  */
@@ -57,11 +57,11 @@ export interface GetChannelResult {
     /**
      * This property should be populated when channelType is PartnerDestination and represents information about the partner destination resource corresponding to the channel.
      */
-    readonly partnerDestinationInfo?: types.outputs.eventgrid.v20230601preview.WebhookPartnerDestinationInfoResponse;
+    readonly partnerDestinationInfo?: types.outputs.WebhookPartnerDestinationInfoResponse;
     /**
      * This property should be populated when channelType is PartnerTopic and represents information about the partner topic resource corresponding to the channel.
      */
-    readonly partnerTopicInfo?: types.outputs.eventgrid.v20230601preview.PartnerTopicInfoResponse;
+    readonly partnerTopicInfo?: types.outputs.PartnerTopicInfoResponse;
     /**
      * Provisioning state of the channel.
      */
@@ -73,7 +73,7 @@ export interface GetChannelResult {
     /**
      * The system metadata relating to Channel resource.
      */
-    readonly systemData: types.outputs.eventgrid.v20230601preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Type of the resource.
      */

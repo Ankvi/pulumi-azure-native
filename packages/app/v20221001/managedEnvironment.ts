@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An environment for hosting container apps
  */
@@ -36,11 +36,11 @@ export class ManagedEnvironment extends pulumi.CustomResource {
      * app logs to a destination. Currently only "log-analytics" is
      * supported
      */
-    public readonly appLogsConfiguration!: pulumi.Output<types.outputs.app.v20221001.AppLogsConfigurationResponse | undefined>;
+    public readonly appLogsConfiguration!: pulumi.Output<types.outputs.AppLogsConfigurationResponse | undefined>;
     /**
      * Custom domain configuration for the environment
      */
-    public readonly customDomainConfiguration!: pulumi.Output<types.outputs.app.v20221001.CustomDomainConfigurationResponse | undefined>;
+    public readonly customDomainConfiguration!: pulumi.Output<types.outputs.CustomDomainConfigurationResponse | undefined>;
     /**
      * Application Insights connection string used by Dapr to export Service to Service communication telemetry
      */
@@ -80,7 +80,7 @@ export class ManagedEnvironment extends pulumi.CustomResource {
     /**
      * SKU properties of the Environment.
      */
-    public readonly sku!: pulumi.Output<types.outputs.app.v20221001.EnvironmentSkuPropertiesResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.EnvironmentSkuPropertiesResponse | undefined>;
     /**
      * Static IP of the Environment
      */
@@ -88,7 +88,7 @@ export class ManagedEnvironment extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.app.v20221001.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -100,11 +100,11 @@ export class ManagedEnvironment extends pulumi.CustomResource {
     /**
      * Vnet configuration for the environment
      */
-    public readonly vnetConfiguration!: pulumi.Output<types.outputs.app.v20221001.VnetConfigurationResponse | undefined>;
+    public readonly vnetConfiguration!: pulumi.Output<types.outputs.VnetConfigurationResponse | undefined>;
     /**
      * Workload profiles configured for the Managed Environment.
      */
-    public readonly workloadProfiles!: pulumi.Output<types.outputs.app.v20221001.WorkloadProfileResponse[] | undefined>;
+    public readonly workloadProfiles!: pulumi.Output<types.outputs.WorkloadProfileResponse[] | undefined>;
     /**
      * Whether or not this Managed Environment is zone-redundant.
      */
@@ -182,11 +182,11 @@ export interface ManagedEnvironmentArgs {
      * app logs to a destination. Currently only "log-analytics" is
      * supported
      */
-    appLogsConfiguration?: pulumi.Input<types.inputs.app.v20221001.AppLogsConfigurationArgs>;
+    appLogsConfiguration?: pulumi.Input<types.inputs.AppLogsConfigurationArgs>;
     /**
      * Custom domain configuration for the environment
      */
-    customDomainConfiguration?: pulumi.Input<types.inputs.app.v20221001.CustomDomainConfigurationArgs>;
+    customDomainConfiguration?: pulumi.Input<types.inputs.CustomDomainConfigurationArgs>;
     /**
      * Application Insights connection string used by Dapr to export Service to Service communication telemetry
      */
@@ -214,7 +214,7 @@ export interface ManagedEnvironmentArgs {
     /**
      * SKU properties of the Environment.
      */
-    sku?: pulumi.Input<types.inputs.app.v20221001.EnvironmentSkuPropertiesArgs>;
+    sku?: pulumi.Input<types.inputs.EnvironmentSkuPropertiesArgs>;
     /**
      * Resource tags.
      */
@@ -222,11 +222,11 @@ export interface ManagedEnvironmentArgs {
     /**
      * Vnet configuration for the environment
      */
-    vnetConfiguration?: pulumi.Input<types.inputs.app.v20221001.VnetConfigurationArgs>;
+    vnetConfiguration?: pulumi.Input<types.inputs.VnetConfigurationArgs>;
     /**
      * Workload profiles configured for the Managed Environment.
      */
-    workloadProfiles?: pulumi.Input<pulumi.Input<types.inputs.app.v20221001.WorkloadProfileArgs>[]>;
+    workloadProfiles?: pulumi.Input<pulumi.Input<types.inputs.WorkloadProfileArgs>[]>;
     /**
      * Whether or not this Managed Environment is zone-redundant.
      */

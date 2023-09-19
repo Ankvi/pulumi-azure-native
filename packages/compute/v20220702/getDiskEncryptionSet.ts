@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets information about a disk encryption set.
  */
@@ -31,11 +31,11 @@ export interface GetDiskEncryptionSetResult {
     /**
      * The key vault key which is currently used by this disk encryption set.
      */
-    readonly activeKey?: types.outputs.compute.v20220702.KeyForDiskEncryptionSetResponse;
+    readonly activeKey?: types.outputs.KeyForDiskEncryptionSetResponse;
     /**
      * The error that was encountered during auto-key rotation. If an error is present, then auto-key rotation will not be attempted until the error on this disk encryption set is fixed.
      */
-    readonly autoKeyRotationError: types.outputs.compute.v20220702.ApiErrorResponse;
+    readonly autoKeyRotationError: types.outputs.ApiErrorResponse;
     /**
      * The type of key used to encrypt the data of the disk.
      */
@@ -51,7 +51,7 @@ export interface GetDiskEncryptionSetResult {
     /**
      * The managed identity for the disk encryption set. It should be given permission on the key vault before it can be used to encrypt disks.
      */
-    readonly identity?: types.outputs.compute.v20220702.EncryptionSetIdentityResponse;
+    readonly identity?: types.outputs.EncryptionSetIdentityResponse;
     /**
      * The time when the active key of this disk encryption set was updated.
      */
@@ -67,7 +67,7 @@ export interface GetDiskEncryptionSetResult {
     /**
      * A readonly collection of key vault keys previously used by this disk encryption set while a key rotation is in progress. It will be empty if there is no ongoing key rotation.
      */
-    readonly previousKeys: types.outputs.compute.v20220702.KeyForDiskEncryptionSetResponse[];
+    readonly previousKeys: types.outputs.KeyForDiskEncryptionSetResponse[];
     /**
      * The disk encryption set provisioning state.
      */

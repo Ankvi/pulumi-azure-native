@@ -45,11 +45,11 @@ export interface GetExperimentResult {
     /**
      * The endpoint A of an experiment
      */
-    readonly endpointA?: types.outputs.network.ExperimentEndpointResponse;
+    readonly endpointA?: types.outputs.ExperimentEndpointResponse;
     /**
      * The endpoint B of an experiment
      */
-    readonly endpointB?: types.outputs.network.ExperimentEndpointResponse;
+    readonly endpointB?: types.outputs.ExperimentEndpointResponse;
     /**
      * Resource ID.
      */

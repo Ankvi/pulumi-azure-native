@@ -39,7 +39,7 @@ export class Server extends pulumi.CustomResource {
     /**
      * The Azure Active Directory administrator of the server.
      */
-    public readonly administrators!: pulumi.Output<types.outputs.sql.ServerExternalAdministratorResponse | undefined>;
+    public readonly administrators!: pulumi.Output<types.outputs.ServerExternalAdministratorResponse | undefined>;
     /**
      * The Client id used for cross tenant CMK scenario
      */
@@ -51,7 +51,7 @@ export class Server extends pulumi.CustomResource {
     /**
      * The Azure Active Directory identity of the server.
      */
-    public readonly identity!: pulumi.Output<types.outputs.sql.ResourceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ResourceIdentityResponse | undefined>;
     /**
      * A CMK URI of the key to use for encryption.
      */
@@ -79,7 +79,7 @@ export class Server extends pulumi.CustomResource {
     /**
      * List of private endpoint connections on a server
      */
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.sql.ServerPrivateEndpointConnectionResponse[]>;
+    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.ServerPrivateEndpointConnectionResponse[]>;
     /**
      * Whether or not public endpoint access is allowed for this server.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'
      */
@@ -188,7 +188,7 @@ export interface ServerArgs {
     /**
      * The Azure Active Directory administrator of the server.
      */
-    administrators?: pulumi.Input<types.inputs.sql.ServerExternalAdministratorArgs>;
+    administrators?: pulumi.Input<types.inputs.ServerExternalAdministratorArgs>;
     /**
      * The Client id used for cross tenant CMK scenario
      */
@@ -196,7 +196,7 @@ export interface ServerArgs {
     /**
      * The Azure Active Directory identity of the server.
      */
-    identity?: pulumi.Input<types.inputs.sql.ResourceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ResourceIdentityArgs>;
     /**
      * A CMK URI of the key to use for encryption.
      */

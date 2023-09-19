@@ -53,7 +53,7 @@ export interface GetWorkloadNetworkSegmentResult {
     /**
      * Port Vif which segment is associated with.
      */
-    readonly portVif: types.outputs.avs.WorkloadNetworkSegmentPortVifResponse[];
+    readonly portVif: types.outputs.WorkloadNetworkSegmentPortVifResponse[];
     /**
      * The provisioning state
      */
@@ -69,7 +69,7 @@ export interface GetWorkloadNetworkSegmentResult {
     /**
      * Subnet which to connect segment to.
      */
-    readonly subnet?: types.outputs.avs.WorkloadNetworkSegmentSubnetResponse;
+    readonly subnet?: types.outputs.WorkloadNetworkSegmentSubnetResponse;
     /**
      * Resource type.
      */

@@ -26,7 +26,7 @@ export interface ListPrivateStoreStopSellOffersPlansNotificationsArgs {
  * List of stop sell offers and plans notifications.
  */
 export interface ListPrivateStoreStopSellOffersPlansNotificationsResult {
-    readonly stopSellNotifications?: types.outputs.marketplace.StopSellOffersPlansNotificationsListPropertiesResponse[];
+    readonly stopSellNotifications?: types.outputs.StopSellOffersPlansNotificationsListPropertiesResponse[];
 }
 /**
  * List stop sell notifications for both stop sell offers and stop sell plans

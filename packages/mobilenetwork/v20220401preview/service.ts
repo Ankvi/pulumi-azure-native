@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Service resource.
  */
@@ -66,7 +66,7 @@ export class Service extends pulumi.CustomResource {
     /**
      * The set of data flow policy rules that make up this service.
      */
-    public readonly pccRules!: pulumi.Output<types.outputs.mobilenetwork.v20220401preview.PccRuleConfigurationResponse[]>;
+    public readonly pccRules!: pulumi.Output<types.outputs.PccRuleConfigurationResponse[]>;
     /**
      * The provisioning state of the service resource.
      */
@@ -78,11 +78,11 @@ export class Service extends pulumi.CustomResource {
     /**
      * The QoS policy to use for packets matching this service. This can be overridden for particular flows using the ruleQosPolicy field in a PccRuleConfiguration. If this field is null then the UE's SIM policy will define the QoS settings.
      */
-    public readonly serviceQosPolicy!: pulumi.Output<types.outputs.mobilenetwork.v20220401preview.QosPolicyResponse | undefined>;
+    public readonly serviceQosPolicy!: pulumi.Output<types.outputs.QosPolicyResponse | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.mobilenetwork.v20220401preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -127,7 +127,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
             resourceInputs["servicePrecedence"] = args ? args.servicePrecedence : undefined;
-            resourceInputs["serviceQosPolicy"] = args ? (args.serviceQosPolicy ? pulumi.output(args.serviceQosPolicy).apply(types.inputs.mobilenetwork.v20220401preview.qosPolicyArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["serviceQosPolicy"] = args ? (args.serviceQosPolicy ? pulumi.output(args.serviceQosPolicy).apply(types.inputs.qosPolicyArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
@@ -172,7 +172,7 @@ export interface ServiceArgs {
     /**
      * The type of identity that created the resource.
      */
-    createdByType?: pulumi.Input<string | types.enums.v20220401preview.CreatedByType>;
+    createdByType?: pulumi.Input<string | types.enums.CreatedByType>;
     /**
      * The timestamp of resource last modification (UTC)
      */
@@ -184,7 +184,7 @@ export interface ServiceArgs {
     /**
      * The type of identity that last modified the resource.
      */
-    lastModifiedByType?: pulumi.Input<string | types.enums.v20220401preview.CreatedByType>;
+    lastModifiedByType?: pulumi.Input<string | types.enums.CreatedByType>;
     /**
      * The geo-location where the resource lives
      */
@@ -196,7 +196,7 @@ export interface ServiceArgs {
     /**
      * The set of data flow policy rules that make up this service.
      */
-    pccRules: pulumi.Input<pulumi.Input<types.inputs.mobilenetwork.v20220401preview.PccRuleConfigurationArgs>[]>;
+    pccRules: pulumi.Input<pulumi.Input<types.inputs.PccRuleConfigurationArgs>[]>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -212,7 +212,7 @@ export interface ServiceArgs {
     /**
      * The QoS policy to use for packets matching this service. This can be overridden for particular flows using the ruleQosPolicy field in a PccRuleConfiguration. If this field is null then the UE's SIM policy will define the QoS settings.
      */
-    serviceQosPolicy?: pulumi.Input<types.inputs.mobilenetwork.v20220401preview.QosPolicyArgs>;
+    serviceQosPolicy?: pulumi.Input<types.inputs.QosPolicyArgs>;
     /**
      * Resource tags.
      */

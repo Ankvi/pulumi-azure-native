@@ -39,11 +39,11 @@ export class EnergyService extends pulumi.CustomResource {
      * The name of the resource
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
-    public readonly properties!: pulumi.Output<types.outputs.openenergyplatform.EnergyServicePropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.EnergyServicePropertiesResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.openenergyplatform.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -98,7 +98,7 @@ export interface EnergyServiceArgs {
      * Geo-location where the resource lives.
      */
     location?: pulumi.Input<string>;
-    properties?: pulumi.Input<types.inputs.openenergyplatform.EnergyServicePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.EnergyServicePropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

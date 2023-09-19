@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A Job resource type. The progress and state can be obtained by polling a Job or subscribing to events using EventGrid.
  */
@@ -50,7 +50,7 @@ export class Job extends pulumi.CustomResource {
     /**
      * The inputs for the Job.
      */
-    public readonly input!: pulumi.Output<types.outputs.media.v20220701.JobInputAssetResponse | types.outputs.media.v20220701.JobInputClipResponse | types.outputs.media.v20220701.JobInputHttpResponse | types.outputs.media.v20220701.JobInputSequenceResponse | types.outputs.media.v20220701.JobInputsResponse>;
+    public readonly input!: pulumi.Output<types.outputs.JobInputAssetResponse | types.outputs.JobInputClipResponse | types.outputs.JobInputHttpResponse | types.outputs.JobInputSequenceResponse | types.outputs.JobInputsResponse>;
     /**
      * The UTC date and time when the customer has last updated the Job, in 'YYYY-MM-DDThh:mm:ssZ' format.
      */
@@ -62,7 +62,7 @@ export class Job extends pulumi.CustomResource {
     /**
      * The outputs for the Job.
      */
-    public readonly outputs!: pulumi.Output<types.outputs.media.v20220701.JobOutputAssetResponse[]>;
+    public readonly outputs!: pulumi.Output<types.outputs.JobOutputAssetResponse[]>;
     /**
      * Priority with which the job should be processed. Higher priority jobs are processed before lower priority jobs. If not set, the default is normal.
      */
@@ -78,7 +78,7 @@ export class Job extends pulumi.CustomResource {
     /**
      * The system metadata relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.media.v20220701.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -168,7 +168,7 @@ export interface JobArgs {
     /**
      * The inputs for the Job.
      */
-    input: pulumi.Input<types.inputs.media.v20220701.JobInputAssetArgs | types.inputs.media.v20220701.JobInputClipArgs | types.inputs.media.v20220701.JobInputHttpArgs | types.inputs.media.v20220701.JobInputSequenceArgs | types.inputs.media.v20220701.JobInputsArgs>;
+    input: pulumi.Input<types.inputs.JobInputAssetArgs | types.inputs.JobInputClipArgs | types.inputs.JobInputHttpArgs | types.inputs.JobInputSequenceArgs | types.inputs.JobInputsArgs>;
     /**
      * The Job name.
      */
@@ -176,11 +176,11 @@ export interface JobArgs {
     /**
      * The outputs for the Job.
      */
-    outputs: pulumi.Input<pulumi.Input<types.inputs.media.v20220701.JobOutputAssetArgs>[]>;
+    outputs: pulumi.Input<pulumi.Input<types.inputs.JobOutputAssetArgs>[]>;
     /**
      * Priority with which the job should be processed. Higher priority jobs are processed before lower priority jobs. If not set, the default is normal.
      */
-    priority?: pulumi.Input<string | types.enums.v20220701.Priority>;
+    priority?: pulumi.Input<string | types.enums.Priority>;
     /**
      * The name of the resource group within the Azure subscription.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The Managed Network resource
  */
@@ -34,7 +34,7 @@ export class ManagedNetwork extends pulumi.CustomResource {
     /**
      * The collection of groups and policies concerned with connectivity
      */
-    public /*out*/ readonly connectivity!: pulumi.Output<types.outputs.managednetwork.v20190601preview.ConnectivityCollectionResponse>;
+    public /*out*/ readonly connectivity!: pulumi.Output<types.outputs.ConnectivityCollectionResponse>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -54,7 +54,7 @@ export class ManagedNetwork extends pulumi.CustomResource {
     /**
      * The collection of management groups, subscriptions, virtual networks, and subnets by the Managed Network. This is a read-only property that is reflective of all ScopeAssignments for this Managed Network
      */
-    public readonly scope!: pulumi.Output<types.outputs.managednetwork.v20190601preview.ScopeResponse | undefined>;
+    public readonly scope!: pulumi.Output<types.outputs.ScopeResponse | undefined>;
     /**
      * Resource tags
      */
@@ -124,7 +124,7 @@ export interface ManagedNetworkArgs {
     /**
      * The collection of management groups, subscriptions, virtual networks, and subnets by the Managed Network. This is a read-only property that is reflective of all ScopeAssignments for this Managed Network
      */
-    scope?: pulumi.Input<types.inputs.managednetwork.v20190601preview.ScopeArgs>;
+    scope?: pulumi.Input<types.inputs.ScopeArgs>;
     /**
      * Resource tags
      */

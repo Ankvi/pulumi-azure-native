@@ -50,15 +50,15 @@ export interface GetDeploymentResult {
     /**
      * Properties of the Deployment resource
      */
-    readonly properties: types.outputs.appplatform.DeploymentResourcePropertiesResponse;
+    readonly properties: types.outputs.DeploymentResourcePropertiesResponse;
     /**
      * Sku of the Deployment resource
      */
-    readonly sku?: types.outputs.appplatform.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.appplatform.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource.
      */

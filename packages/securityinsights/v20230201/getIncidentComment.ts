@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a comment for a given incident.
  */
@@ -41,7 +41,7 @@ export interface GetIncidentCommentResult {
     /**
      * Describes the client that created the comment
      */
-    readonly author: types.outputs.securityinsights.v20230201.ClientInfoResponse;
+    readonly author: types.outputs.ClientInfoResponse;
     /**
      * The time the comment was created
      */
@@ -69,7 +69,7 @@ export interface GetIncidentCommentResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.securityinsights.v20230201.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

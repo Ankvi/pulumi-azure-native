@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieve the schedule identified by schedule name.
  */
@@ -36,7 +36,7 @@ export interface GetScheduleResult {
     /**
      * Gets or sets the advanced schedule.
      */
-    readonly advancedSchedule?: types.outputs.automation.v20220808.AdvancedScheduleResponse;
+    readonly advancedSchedule?: types.outputs.AdvancedScheduleResponse;
     /**
      * Gets or sets the creation time.
      */

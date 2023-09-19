@@ -39,11 +39,11 @@ export class VirtualNetworkGatewayNatRule extends pulumi.CustomResource {
     /**
      * The private IP address external mapping for NAT.
      */
-    public readonly externalMappings!: pulumi.Output<types.outputs.network.VpnNatRuleMappingResponse[] | undefined>;
+    public readonly externalMappings!: pulumi.Output<types.outputs.VpnNatRuleMappingResponse[] | undefined>;
     /**
      * The private IP address internal mapping for NAT.
      */
-    public readonly internalMappings!: pulumi.Output<types.outputs.network.VpnNatRuleMappingResponse[] | undefined>;
+    public readonly internalMappings!: pulumi.Output<types.outputs.VpnNatRuleMappingResponse[] | undefined>;
     /**
      * The IP Configuration ID this NAT rule applies to.
      */
@@ -118,7 +118,7 @@ export interface VirtualNetworkGatewayNatRuleArgs {
     /**
      * The private IP address external mapping for NAT.
      */
-    externalMappings?: pulumi.Input<pulumi.Input<types.inputs.network.VpnNatRuleMappingArgs>[]>;
+    externalMappings?: pulumi.Input<pulumi.Input<types.inputs.VpnNatRuleMappingArgs>[]>;
     /**
      * Resource ID.
      */
@@ -126,7 +126,7 @@ export interface VirtualNetworkGatewayNatRuleArgs {
     /**
      * The private IP address internal mapping for NAT.
      */
-    internalMappings?: pulumi.Input<pulumi.Input<types.inputs.network.VpnNatRuleMappingArgs>[]>;
+    internalMappings?: pulumi.Input<pulumi.Input<types.inputs.VpnNatRuleMappingArgs>[]>;
     /**
      * The IP Configuration ID this NAT rule applies to.
      */

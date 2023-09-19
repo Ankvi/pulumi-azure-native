@@ -73,7 +73,7 @@ export interface GetSqlPoolResult {
     /**
      * SQL pool SKU
      */
-    readonly sku?: types.outputs.synapse.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * Specifies the time that the sql pool was deleted
      */

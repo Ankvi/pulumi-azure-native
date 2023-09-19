@@ -35,7 +35,7 @@ export class DscNodeConfiguration extends pulumi.CustomResource {
     /**
      * Gets or sets the configuration of the node.
      */
-    public readonly configuration!: pulumi.Output<types.outputs.automation.DscConfigurationAssociationPropertyResponse | undefined>;
+    public readonly configuration!: pulumi.Output<types.outputs.DscConfigurationAssociationPropertyResponse | undefined>;
     /**
      * Gets or sets creation time.
      */
@@ -128,7 +128,7 @@ export interface DscNodeConfigurationArgs {
     /**
      * Gets or sets the configuration of the node.
      */
-    configuration: pulumi.Input<types.inputs.automation.DscConfigurationAssociationPropertyArgs>;
+    configuration: pulumi.Input<types.inputs.DscConfigurationAssociationPropertyArgs>;
     /**
      * If a new build version of NodeConfiguration is required.
      */
@@ -148,7 +148,7 @@ export interface DscNodeConfigurationArgs {
     /**
      * Gets or sets the source.
      */
-    source: pulumi.Input<types.inputs.automation.ContentSourceArgs>;
+    source: pulumi.Input<types.inputs.ContentSourceArgs>;
     /**
      * Gets or sets the tags attached to the resource.
      */

@@ -43,7 +43,7 @@ export class ReplicationRecoveryPlan extends pulumi.CustomResource {
     /**
      * The custom details.
      */
-    public readonly properties!: pulumi.Output<types.outputs.recoveryservices.RecoveryPlanPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.RecoveryPlanPropertiesResponse>;
     /**
      * Resource Type
      */
@@ -96,7 +96,7 @@ export interface ReplicationRecoveryPlanArgs {
     /**
      * Recovery plan creation properties.
      */
-    properties: pulumi.Input<types.inputs.recoveryservices.CreateRecoveryPlanInputPropertiesArgs>;
+    properties: pulumi.Input<types.inputs.CreateRecoveryPlanInputPropertiesArgs>;
     /**
      * Recovery plan name.
      */

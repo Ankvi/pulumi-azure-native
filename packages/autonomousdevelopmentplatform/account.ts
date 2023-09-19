@@ -51,7 +51,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * The system meta data relating to this resource
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.autonomousdevelopmentplatform.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */

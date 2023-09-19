@@ -39,7 +39,7 @@ export class Vault extends pulumi.CustomResource {
     /**
      * Identity for the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.recoveryservices.IdentityDataResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityDataResponse | undefined>;
     /**
      * Resource location.
      */
@@ -51,15 +51,15 @@ export class Vault extends pulumi.CustomResource {
     /**
      * Properties of the vault.
      */
-    public readonly properties!: pulumi.Output<types.outputs.recoveryservices.VaultPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.VaultPropertiesResponse>;
     /**
      * Identifies the unique system identifier for each Azure resource.
      */
-    public readonly sku!: pulumi.Output<types.outputs.recoveryservices.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.recoveryservices.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -119,7 +119,7 @@ export interface VaultArgs {
     /**
      * Identity for the resource.
      */
-    identity?: pulumi.Input<types.inputs.recoveryservices.IdentityDataArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityDataArgs>;
     /**
      * Resource location.
      */
@@ -127,7 +127,7 @@ export interface VaultArgs {
     /**
      * Properties of the vault.
      */
-    properties?: pulumi.Input<types.inputs.recoveryservices.VaultPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.VaultPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -135,7 +135,7 @@ export interface VaultArgs {
     /**
      * Identifies the unique system identifier for each Azure resource.
      */
-    sku?: pulumi.Input<types.inputs.recoveryservices.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Resource tags.
      */

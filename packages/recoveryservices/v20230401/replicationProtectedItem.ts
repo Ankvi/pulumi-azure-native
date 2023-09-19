@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Replication protected item.
  */
@@ -42,7 +42,7 @@ export class ReplicationProtectedItem extends pulumi.CustomResource {
     /**
      * The custom data.
      */
-    public readonly properties!: pulumi.Output<types.outputs.recoveryservices.v20230401.ReplicationProtectedItemPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ReplicationProtectedItemPropertiesResponse>;
     /**
      * Resource Type
      */
@@ -104,7 +104,7 @@ export interface ReplicationProtectedItemArgs {
     /**
      * Enable protection input properties.
      */
-    properties?: pulumi.Input<types.inputs.recoveryservices.v20230401.EnableProtectionInputPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.EnableProtectionInputPropertiesArgs>;
     /**
      * Protection container name.
      */

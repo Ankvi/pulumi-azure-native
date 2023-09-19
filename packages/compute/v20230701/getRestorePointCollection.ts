@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The operation to get the restore point collection.
  */
@@ -56,11 +56,11 @@ export interface GetRestorePointCollectionResult {
     /**
      * A list containing all restore points created under this restore point collection.
      */
-    readonly restorePoints: types.outputs.compute.v20230701.RestorePointResponse[];
+    readonly restorePoints: types.outputs.RestorePointResponse[];
     /**
      * The properties of the source resource that this restore point collection is created from.
      */
-    readonly source?: types.outputs.compute.v20230701.RestorePointCollectionSourcePropertiesResponse;
+    readonly source?: types.outputs.RestorePointCollectionSourcePropertiesResponse;
     /**
      * Resource tags
      */

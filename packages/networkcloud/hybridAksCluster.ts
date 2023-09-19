@@ -51,7 +51,7 @@ export class HybridAksCluster extends pulumi.CustomResource {
     /**
      * The list of node configurations detailing associated VMs that are part of the control plane nodes of this Hybrid AKS cluster.
      */
-    public /*out*/ readonly controlPlaneNodes!: pulumi.Output<types.outputs.networkcloud.NodeConfigurationResponse[]>;
+    public /*out*/ readonly controlPlaneNodes!: pulumi.Output<types.outputs.NodeConfigurationResponse[]>;
     /**
      * The resource ID of the associated default CNI network.
      */
@@ -67,7 +67,7 @@ export class HybridAksCluster extends pulumi.CustomResource {
     /**
      * The extended location of the cluster associated with the resource.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.networkcloud.ExtendedLocationResponse>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse>;
     /**
      * The resource ID of the Hybrid AKS cluster that this additional information is for.
      */
@@ -87,7 +87,7 @@ export class HybridAksCluster extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.networkcloud.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -107,7 +107,7 @@ export class HybridAksCluster extends pulumi.CustomResource {
     /**
      * The list of node configurations detailing associated VMs that are part of the worker nodes of this Hybrid AKS cluster.
      */
-    public /*out*/ readonly workerNodes!: pulumi.Output<types.outputs.networkcloud.NodeConfigurationResponse[]>;
+    public /*out*/ readonly workerNodes!: pulumi.Output<types.outputs.NodeConfigurationResponse[]>;
 
     /**
      * Create a HybridAksCluster resource with the given unique name, arguments, and options.
@@ -202,7 +202,7 @@ export interface HybridAksClusterArgs {
     /**
      * The extended location of the cluster associated with the resource.
      */
-    extendedLocation: pulumi.Input<types.inputs.networkcloud.ExtendedLocationArgs>;
+    extendedLocation: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * The name of the Hybrid AKS cluster.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets information about the specified packet core data plane.
  */
@@ -52,7 +52,7 @@ export interface GetPacketCoreDataPlaneResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.mobilenetwork.v20230601.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -64,7 +64,7 @@ export interface GetPacketCoreDataPlaneResult {
     /**
      * The user plane interface on the access network. For 5G networks, this is the N3 interface. For 4G networks, this is the S1-U interface.
      */
-    readonly userPlaneAccessInterface: types.outputs.mobilenetwork.v20230601.InterfacePropertiesResponse;
+    readonly userPlaneAccessInterface: types.outputs.InterfacePropertiesResponse;
 }
 /**
  * Gets information about the specified packet core data plane.

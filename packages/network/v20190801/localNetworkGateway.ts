@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A common class for general resource information.
  */
@@ -34,7 +34,7 @@ export class LocalNetworkGateway extends pulumi.CustomResource {
     /**
      * Local network gateway's BGP speaker settings.
      */
-    public readonly bgpSettings!: pulumi.Output<types.outputs.network.v20190801.BgpSettingsResponse | undefined>;
+    public readonly bgpSettings!: pulumi.Output<types.outputs.BgpSettingsResponse | undefined>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -46,7 +46,7 @@ export class LocalNetworkGateway extends pulumi.CustomResource {
     /**
      * Local network site address space.
      */
-    public readonly localNetworkAddressSpace!: pulumi.Output<types.outputs.network.v20190801.AddressSpaceResponse | undefined>;
+    public readonly localNetworkAddressSpace!: pulumi.Output<types.outputs.AddressSpaceResponse | undefined>;
     /**
      * Resource location.
      */
@@ -125,7 +125,7 @@ export interface LocalNetworkGatewayArgs {
     /**
      * Local network gateway's BGP speaker settings.
      */
-    bgpSettings?: pulumi.Input<types.inputs.network.v20190801.BgpSettingsArgs>;
+    bgpSettings?: pulumi.Input<types.inputs.BgpSettingsArgs>;
     /**
      * IP address of local network gateway.
      */
@@ -137,7 +137,7 @@ export interface LocalNetworkGatewayArgs {
     /**
      * Local network site address space.
      */
-    localNetworkAddressSpace?: pulumi.Input<types.inputs.network.v20190801.AddressSpaceArgs>;
+    localNetworkAddressSpace?: pulumi.Input<types.inputs.AddressSpaceArgs>;
     /**
      * The name of the local network gateway.
      */

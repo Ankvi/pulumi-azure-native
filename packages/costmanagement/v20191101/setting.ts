@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * State of the myscope setting.
  */
@@ -34,7 +34,7 @@ export class Setting extends pulumi.CustomResource {
     /**
      * Array of scopes with additional details used by Cost Management in the Azure portal.
      */
-    public readonly cache!: pulumi.Output<types.outputs.costmanagement.v20191101.SettingsPropertiesResponseCache[] | undefined>;
+    public readonly cache!: pulumi.Output<types.outputs.SettingsPropertiesResponseCache[] | undefined>;
     /**
      * Resource kind.
      */
@@ -99,7 +99,7 @@ export interface SettingArgs {
     /**
      * Array of scopes with additional details used by Cost Management in the Azure portal.
      */
-    cache?: pulumi.Input<pulumi.Input<types.inputs.costmanagement.v20191101.SettingsPropertiesCacheArgs>[]>;
+    cache?: pulumi.Input<pulumi.Input<types.inputs.SettingsPropertiesCacheArgs>[]>;
     /**
      * Sets the default scope the current user will see when they sign into Azure Cost Management in the Azure portal.
      */

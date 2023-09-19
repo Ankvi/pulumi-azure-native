@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets details about the specified function.
  */
@@ -44,7 +44,7 @@ export interface GetFunctionResult {
     /**
      * The properties that are associated with a function.
      */
-    readonly properties: types.outputs.streamanalytics.v20200301.AggregateFunctionPropertiesResponse | types.outputs.streamanalytics.v20200301.ScalarFunctionPropertiesResponse;
+    readonly properties: types.outputs.AggregateFunctionPropertiesResponse | types.outputs.ScalarFunctionPropertiesResponse;
     /**
      * Resource type
      */

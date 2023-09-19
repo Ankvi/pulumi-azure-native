@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the Dashboard.
  */
@@ -35,7 +35,7 @@ export interface GetDashboardResult {
     /**
      * The dashboard lenses.
      */
-    readonly lenses?: types.outputs.portal.v20200901preview.DashboardLensResponse[];
+    readonly lenses?: types.outputs.DashboardLensResponse[];
     /**
      * Resource location
      */

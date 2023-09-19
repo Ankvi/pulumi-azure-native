@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a specific role by name.
  */
@@ -38,7 +38,7 @@ export interface GetCloudEdgeManagementRoleResult {
     /**
      * Edge Profile of the resource
      */
-    readonly edgeProfile: types.outputs.databoxedge.v20230701.EdgeProfileResponse;
+    readonly edgeProfile: types.outputs.EdgeProfileResponse;
     /**
      * The path ID that uniquely identifies the object.
      */
@@ -63,7 +63,7 @@ export interface GetCloudEdgeManagementRoleResult {
     /**
      * Metadata pertaining to creation and last modification of Role
      */
-    readonly systemData: types.outputs.databoxedge.v20230701.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The hierarchical type of the object.
      */

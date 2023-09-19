@@ -35,7 +35,7 @@ export class Deployment extends pulumi.CustomResource {
     /**
      * Images deployed
      */
-    public readonly deployedImages!: pulumi.Output<types.outputs.azuresphere.ImageResponse[] | undefined>;
+    public readonly deployedImages!: pulumi.Output<types.outputs.ImageResponse[] | undefined>;
     /**
      * Deployment date UTC
      */
@@ -55,7 +55,7 @@ export class Deployment extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.azuresphere.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -123,7 +123,7 @@ export interface DeploymentArgs {
     /**
      * Images deployed
      */
-    deployedImages?: pulumi.Input<pulumi.Input<types.inputs.azuresphere.ImageArgs>[]>;
+    deployedImages?: pulumi.Input<pulumi.Input<types.inputs.ImageArgs>[]>;
     /**
      * Deployment ID
      */

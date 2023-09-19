@@ -27,11 +27,11 @@ export interface GetVirtualMachineInstanceResult {
     /**
      * Gets or sets the extended location.
      */
-    readonly extendedLocation?: types.outputs.connectedvmwarevsphere.ExtendedLocationResponse;
+    readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
     /**
      * Hardware properties.
      */
-    readonly hardwareProfile?: types.outputs.connectedvmwarevsphere.HardwareProfileResponse;
+    readonly hardwareProfile?: types.outputs.HardwareProfileResponse;
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -39,7 +39,7 @@ export interface GetVirtualMachineInstanceResult {
     /**
      * Gets the infrastructure profile.
      */
-    readonly infrastructureProfile?: types.outputs.connectedvmwarevsphere.InfrastructureProfileResponse;
+    readonly infrastructureProfile?: types.outputs.InfrastructureProfileResponse;
     /**
      * The name of the resource
      */
@@ -47,15 +47,15 @@ export interface GetVirtualMachineInstanceResult {
     /**
      * Network properties.
      */
-    readonly networkProfile?: types.outputs.connectedvmwarevsphere.NetworkProfileResponse;
+    readonly networkProfile?: types.outputs.NetworkProfileResponse;
     /**
      * OS properties.
      */
-    readonly osProfile?: types.outputs.connectedvmwarevsphere.OsProfileForVMInstanceResponse;
+    readonly osProfile?: types.outputs.OsProfileForVMInstanceResponse;
     /**
      * Placement properties.
      */
-    readonly placementProfile?: types.outputs.connectedvmwarevsphere.PlacementProfileResponse;
+    readonly placementProfile?: types.outputs.PlacementProfileResponse;
     /**
      * Gets the power state of the virtual machine.
      */
@@ -71,19 +71,19 @@ export interface GetVirtualMachineInstanceResult {
     /**
      * Gets the security profile.
      */
-    readonly securityProfile?: types.outputs.connectedvmwarevsphere.SecurityProfileResponse;
+    readonly securityProfile?: types.outputs.SecurityProfileResponse;
     /**
      * The resource status information.
      */
-    readonly statuses: types.outputs.connectedvmwarevsphere.ResourceStatusResponse[];
+    readonly statuses: types.outputs.ResourceStatusResponse[];
     /**
      * Storage properties.
      */
-    readonly storageProfile?: types.outputs.connectedvmwarevsphere.StorageProfileResponse;
+    readonly storageProfile?: types.outputs.StorageProfileResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.connectedvmwarevsphere.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

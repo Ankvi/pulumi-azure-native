@@ -68,7 +68,7 @@ export interface GetSqlVirtualMachineGroupResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.sqlvirtualmachine.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -80,7 +80,7 @@ export interface GetSqlVirtualMachineGroupResult {
     /**
      * Cluster Active Directory domain profile.
      */
-    readonly wsfcDomainProfile?: types.outputs.sqlvirtualmachine.WsfcDomainProfileResponse;
+    readonly wsfcDomainProfile?: types.outputs.WsfcDomainProfileResponse;
 }
 /**
  * Gets a SQL virtual machine group.

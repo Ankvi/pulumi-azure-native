@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The connector resource format.
  */
@@ -159,7 +159,7 @@ export interface ConnectorArgs {
     /**
      * Type of connector.
      */
-    connectorType: pulumi.Input<string | types.enums.v20170426.ConnectorTypes>;
+    connectorType: pulumi.Input<string | types.enums.ConnectorTypes>;
     /**
      * Description of the connector.
      */

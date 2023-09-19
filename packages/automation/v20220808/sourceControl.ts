@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Definition of the source control.
  */
@@ -167,7 +167,7 @@ export interface SourceControlArgs {
     /**
      * The authorization token for the repo of the source control.
      */
-    securityToken?: pulumi.Input<types.inputs.automation.v20220808.SourceControlSecurityTokenPropertiesArgs>;
+    securityToken?: pulumi.Input<types.inputs.SourceControlSecurityTokenPropertiesArgs>;
     /**
      * The source control name.
      */
@@ -175,5 +175,5 @@ export interface SourceControlArgs {
     /**
      * The source type. Must be one of VsoGit, VsoTfvc, GitHub, case sensitive.
      */
-    sourceType?: pulumi.Input<string | types.enums.v20220808.SourceType>;
+    sourceType?: pulumi.Input<string | types.enums.SourceType>;
 }

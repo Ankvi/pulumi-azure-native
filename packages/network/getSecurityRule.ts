@@ -53,7 +53,7 @@ export interface GetSecurityRuleResult {
     /**
      * The application security group specified as destination.
      */
-    readonly destinationApplicationSecurityGroups?: types.outputs.network.ApplicationSecurityGroupResponse[];
+    readonly destinationApplicationSecurityGroups?: types.outputs.ApplicationSecurityGroupResponse[];
     /**
      * The destination port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
      */
@@ -101,7 +101,7 @@ export interface GetSecurityRuleResult {
     /**
      * The application security group specified as source.
      */
-    readonly sourceApplicationSecurityGroups?: types.outputs.network.ApplicationSecurityGroupResponse[];
+    readonly sourceApplicationSecurityGroups?: types.outputs.ApplicationSecurityGroupResponse[];
     /**
      * The source port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
      */

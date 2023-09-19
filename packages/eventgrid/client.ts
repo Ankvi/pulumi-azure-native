@@ -41,7 +41,7 @@ export class Client extends pulumi.CustomResource {
     /**
      * Authentication information for the client.
      */
-    public readonly authentication!: pulumi.Output<types.outputs.eventgrid.ClientAuthenticationResponse | undefined>;
+    public readonly authentication!: pulumi.Output<types.outputs.ClientAuthenticationResponse | undefined>;
     /**
      * The name presented by the client for authentication. The default value is the name of the resource.
      */
@@ -49,7 +49,7 @@ export class Client extends pulumi.CustomResource {
     /**
      * The client certificate authentication information.
      */
-    public readonly clientCertificateAuthentication!: pulumi.Output<types.outputs.eventgrid.ClientCertificateAuthenticationResponse | undefined>;
+    public readonly clientCertificateAuthentication!: pulumi.Output<types.outputs.ClientCertificateAuthenticationResponse | undefined>;
     /**
      * Description for the Client resource.
      */
@@ -69,7 +69,7 @@ export class Client extends pulumi.CustomResource {
     /**
      * The system metadata relating to the Client resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.eventgrid.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Type of the resource.
      */
@@ -137,7 +137,7 @@ export interface ClientArgs {
     /**
      * Authentication information for the client.
      */
-    authentication?: pulumi.Input<types.inputs.eventgrid.ClientAuthenticationArgs>;
+    authentication?: pulumi.Input<types.inputs.ClientAuthenticationArgs>;
     /**
      * The name presented by the client for authentication. The default value is the name of the resource.
      */
@@ -145,7 +145,7 @@ export interface ClientArgs {
     /**
      * The client certificate authentication information.
      */
-    clientCertificateAuthentication?: pulumi.Input<types.inputs.eventgrid.ClientCertificateAuthenticationArgs>;
+    clientCertificateAuthentication?: pulumi.Input<types.inputs.ClientCertificateAuthenticationArgs>;
     /**
      * The client name.
      */

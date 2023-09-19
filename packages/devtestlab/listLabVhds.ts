@@ -36,7 +36,7 @@ export interface ListLabVhdsResult {
     /**
      * Results of the list operation.
      */
-    readonly value?: types.outputs.devtestlab.LabVhdResponse[];
+    readonly value?: types.outputs.LabVhdResponse[];
 }
 /**
  * List disk images available for custom image creation.

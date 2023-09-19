@@ -39,7 +39,7 @@ export class Archife extends pulumi.CustomResource {
     /**
      * The package source of the archive.
      */
-    public readonly packageSource!: pulumi.Output<types.outputs.containerregistry.ArchivePackageSourcePropertiesResponse | undefined>;
+    public readonly packageSource!: pulumi.Output<types.outputs.ArchivePackageSourcePropertiesResponse | undefined>;
     /**
      * The provisioning state of the archive at the time the operation was called.
      */
@@ -53,7 +53,7 @@ export class Archife extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.containerregistry.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource.
      */
@@ -119,7 +119,7 @@ export interface ArchifeArgs {
     /**
      * The package source of the archive.
      */
-    packageSource?: pulumi.Input<types.inputs.containerregistry.ArchivePackageSourcePropertiesArgs>;
+    packageSource?: pulumi.Input<types.inputs.ArchivePackageSourcePropertiesArgs>;
     /**
      * The type of the package resource.
      */

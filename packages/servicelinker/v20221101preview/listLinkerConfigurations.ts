@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * list source configurations for a Linker.
  */
@@ -31,7 +31,7 @@ export interface ListLinkerConfigurationsResult {
     /**
      * The configuration properties for source resource.
      */
-    readonly configurations?: types.outputs.servicelinker.v20221101preview.SourceConfigurationResponse[];
+    readonly configurations?: types.outputs.SourceConfigurationResponse[];
 }
 /**
  * list source configurations for a Linker.

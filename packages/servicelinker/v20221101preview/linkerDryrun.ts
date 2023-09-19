@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * a dryrun job resource
  */
@@ -38,15 +38,15 @@ export class LinkerDryrun extends pulumi.CustomResource {
     /**
      * the preview of the operations for creation
      */
-    public /*out*/ readonly operationPreviews!: pulumi.Output<types.outputs.servicelinker.v20221101preview.DryrunOperationPreviewResponse[]>;
+    public /*out*/ readonly operationPreviews!: pulumi.Output<types.outputs.DryrunOperationPreviewResponse[]>;
     /**
      * The parameters of the dryrun
      */
-    public readonly parameters!: pulumi.Output<types.outputs.servicelinker.v20221101preview.CreateOrUpdateDryrunParametersResponse | undefined>;
+    public readonly parameters!: pulumi.Output<types.outputs.CreateOrUpdateDryrunParametersResponse | undefined>;
     /**
      * the result of the dryrun
      */
-    public /*out*/ readonly prerequisiteResults!: pulumi.Output<(types.outputs.servicelinker.v20221101preview.BasicErrorDryrunPrerequisiteResultResponse | types.outputs.servicelinker.v20221101preview.PermissionsMissingDryrunPrerequisiteResultResponse)[]>;
+    public /*out*/ readonly prerequisiteResults!: pulumi.Output<(types.outputs.BasicErrorDryrunPrerequisiteResultResponse | types.outputs.PermissionsMissingDryrunPrerequisiteResultResponse)[]>;
     /**
      * The provisioning state. 
      */
@@ -54,7 +54,7 @@ export class LinkerDryrun extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.servicelinker.v20221101preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -110,7 +110,7 @@ export interface LinkerDryrunArgs {
     /**
      * The parameters of the dryrun
      */
-    parameters?: pulumi.Input<types.inputs.servicelinker.v20221101preview.CreateOrUpdateDryrunParametersArgs>;
+    parameters?: pulumi.Input<types.inputs.CreateOrUpdateDryrunParametersArgs>;
     /**
      * The fully qualified Azure Resource manager identifier of the resource to be connected.
      */

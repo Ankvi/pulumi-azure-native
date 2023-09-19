@@ -8,4 +8,4 @@ utilities.lazyLoad(exports, ["getGetCachedServerNameExecute","getGetCachedServer
 
 
 // Export enums:
-export * from "../types/enums/v20220308privatepreview";
+export * from "./types/enums";

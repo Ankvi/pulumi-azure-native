@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Private endpoint connection proxy details.
  */
@@ -46,7 +46,7 @@ export class PrivateEndpointConnectionProxy extends pulumi.CustomResource {
     /**
      * Remote private endpoint details.
      */
-    public readonly remotePrivateEndpoint!: pulumi.Output<types.outputs.deviceupdate.v20230701.RemotePrivateEndpointResponse | undefined>;
+    public readonly remotePrivateEndpoint!: pulumi.Output<types.outputs.RemotePrivateEndpointResponse | undefined>;
     /**
      * Operation status.
      */
@@ -54,7 +54,7 @@ export class PrivateEndpointConnectionProxy extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.deviceupdate.v20230701.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -118,7 +118,7 @@ export interface PrivateEndpointConnectionProxyArgs {
     /**
      * Remote private endpoint details.
      */
-    remotePrivateEndpoint?: pulumi.Input<types.inputs.deviceupdate.v20230701.RemotePrivateEndpointArgs>;
+    remotePrivateEndpoint?: pulumi.Input<types.inputs.RemotePrivateEndpointArgs>;
     /**
      * The resource group name.
      */

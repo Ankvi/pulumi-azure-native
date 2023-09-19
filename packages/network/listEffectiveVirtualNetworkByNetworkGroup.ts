@@ -46,7 +46,7 @@ export interface ListEffectiveVirtualNetworkByNetworkGroupResult {
     /**
      * Gets a page of EffectiveVirtualNetwork
      */
-    readonly value?: types.outputs.network.EffectiveVirtualNetworkResponse[];
+    readonly value?: types.outputs.EffectiveVirtualNetworkResponse[];
 }
 /**
  * Lists all effective virtual networks by specified network group.

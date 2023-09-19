@@ -53,7 +53,7 @@ export interface GetMachineExtensionResult {
     /**
      * The machine extension instance view.
      */
-    readonly instanceView?: types.outputs.hybridcompute.MachineExtensionInstanceViewResponse;
+    readonly instanceView?: types.outputs.MachineExtensionInstanceViewResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -81,7 +81,7 @@ export interface GetMachineExtensionResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.hybridcompute.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

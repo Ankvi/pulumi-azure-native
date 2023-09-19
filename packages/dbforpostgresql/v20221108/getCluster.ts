@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets information about a cluster such as compute and storage configuration and cluster lifecycle metadata such as cluster creation date and time.
  */
@@ -75,7 +75,7 @@ export interface GetClusterResult {
     /**
      * Maintenance window of a cluster.
      */
-    readonly maintenanceWindow?: types.outputs.dbforpostgresql.v20221108.MaintenanceWindowResponse;
+    readonly maintenanceWindow?: types.outputs.MaintenanceWindowResponse;
     /**
      * The name of the resource
      */
@@ -115,7 +115,7 @@ export interface GetClusterResult {
     /**
      * The private endpoint connections for a cluster.
      */
-    readonly privateEndpointConnections: types.outputs.dbforpostgresql.v20221108.SimplePrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections: types.outputs.SimplePrivateEndpointConnectionResponse[];
     /**
      * Provisioning state of the cluster
      */
@@ -127,7 +127,7 @@ export interface GetClusterResult {
     /**
      * The list of server names in the cluster
      */
-    readonly serverNames: types.outputs.dbforpostgresql.v20221108.ServerNameItemResponse[];
+    readonly serverNames: types.outputs.ServerNameItemResponse[];
     /**
      * The Azure region of source cluster for read replica clusters.
      */
@@ -143,7 +143,7 @@ export interface GetClusterResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.dbforpostgresql.v20221108.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

@@ -44,11 +44,11 @@ export interface GetDocumentProcessorResult {
     /**
      * Document processor properties.
      */
-    readonly properties: types.outputs.syntex.DocumentProcessorPropertiesResponse;
+    readonly properties: types.outputs.DocumentProcessorPropertiesResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.syntex.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

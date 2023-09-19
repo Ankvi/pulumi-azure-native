@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves information about the model view or the instance view of a hybrid machine.
  */
@@ -60,16 +60,16 @@ export interface GetMachineResult {
     /**
      * Details about the error state.
      */
-    readonly errorDetails: types.outputs.hybridcompute.v20200815preview.ErrorDetailResponse[];
+    readonly errorDetails: types.outputs.ErrorDetailResponse[];
     /**
      * Machine Extensions information
      */
-    readonly extensions?: types.outputs.hybridcompute.v20200815preview.MachineExtensionInstanceViewResponse[];
+    readonly extensions?: types.outputs.MachineExtensionInstanceViewResponse[];
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
     readonly id: string;
-    readonly identity?: types.outputs.hybridcompute.v20200815preview.MachineResponseIdentity;
+    readonly identity?: types.outputs.MachineResponseIdentity;
     /**
      * The time of the last status change.
      */
@@ -81,7 +81,7 @@ export interface GetMachineResult {
     /**
      * Metadata pertaining to the geographic location of the resource.
      */
-    readonly locationData?: types.outputs.hybridcompute.v20200815preview.LocationDataResponse;
+    readonly locationData?: types.outputs.LocationDataResponse;
     /**
      * Specifies the hybrid machine FQDN.
      */
@@ -97,7 +97,7 @@ export interface GetMachineResult {
     /**
      * Specifies the operating system settings for the hybrid machine.
      */
-    readonly osProfile?: types.outputs.hybridcompute.v20200815preview.MachinePropertiesResponseOsProfile;
+    readonly osProfile?: types.outputs.MachinePropertiesResponseOsProfile;
     /**
      * Specifies the Operating System product SKU.
      */

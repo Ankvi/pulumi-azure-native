@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The X509 Certificate.
  */
@@ -42,7 +42,7 @@ export class Certificate extends pulumi.CustomResource {
     /**
      * The description of an X509 CA Certificate.
      */
-    public readonly properties!: pulumi.Output<types.outputs.devices.v20230630preview.CertificatePropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.CertificatePropertiesResponse>;
     /**
      * The resource type.
      */
@@ -96,7 +96,7 @@ export interface CertificateArgs {
     /**
      * The description of an X509 CA Certificate.
      */
-    properties?: pulumi.Input<types.inputs.devices.v20230630preview.CertificatePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.CertificatePropertiesArgs>;
     /**
      * The name of the resource group that contains the IoT hub.
      */

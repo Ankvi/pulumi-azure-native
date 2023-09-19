@@ -44,7 +44,7 @@ export interface GetConfigurationStoreResult {
     /**
      * The encryption settings of the configuration store.
      */
-    readonly encryption?: types.outputs.appconfiguration.EncryptionPropertiesResponse;
+    readonly encryption?: types.outputs.EncryptionPropertiesResponse;
     /**
      * The DNS endpoint where the configuration store API will be available.
      */
@@ -56,7 +56,7 @@ export interface GetConfigurationStoreResult {
     /**
      * The managed identity information, if configured.
      */
-    readonly identity?: types.outputs.appconfiguration.ResourceIdentityResponse;
+    readonly identity?: types.outputs.ResourceIdentityResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -68,7 +68,7 @@ export interface GetConfigurationStoreResult {
     /**
      * The list of private endpoint connections that are set up for this resource.
      */
-    readonly privateEndpointConnections: types.outputs.appconfiguration.PrivateEndpointConnectionReferenceResponse[];
+    readonly privateEndpointConnections: types.outputs.PrivateEndpointConnectionReferenceResponse[];
     /**
      * The provisioning state of the configuration store.
      */
@@ -80,7 +80,7 @@ export interface GetConfigurationStoreResult {
     /**
      * The sku of the configuration store.
      */
-    readonly sku: types.outputs.appconfiguration.SkuResponse;
+    readonly sku: types.outputs.SkuResponse;
     /**
      * The amount of time in days that the configuration store will be retained when it is soft deleted.
      */
@@ -88,7 +88,7 @@ export interface GetConfigurationStoreResult {
     /**
      * Resource system metadata.
      */
-    readonly systemData: types.outputs.appconfiguration.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

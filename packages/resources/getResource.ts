@@ -47,7 +47,7 @@ export interface GetResourceResult {
     /**
      * Resource extended location.
      */
-    readonly extendedLocation?: types.outputs.resources.ExtendedLocationResponse;
+    readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
     /**
      * Resource ID
      */
@@ -55,7 +55,7 @@ export interface GetResourceResult {
     /**
      * The identity of the resource.
      */
-    readonly identity?: types.outputs.resources.IdentityResponse;
+    readonly identity?: types.outputs.IdentityResponse;
     /**
      * The kind of the resource.
      */
@@ -75,7 +75,7 @@ export interface GetResourceResult {
     /**
      * The plan of the resource.
      */
-    readonly plan?: types.outputs.resources.PlanResponse;
+    readonly plan?: types.outputs.PlanResponse;
     /**
      * The resource properties.
      */
@@ -83,7 +83,7 @@ export interface GetResourceResult {
     /**
      * The SKU of the resource.
      */
-    readonly sku?: types.outputs.resources.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * Resource tags
      */

@@ -60,7 +60,7 @@ export interface GetDnsResolverResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.network.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -72,7 +72,7 @@ export interface GetDnsResolverResult {
     /**
      * The reference to the virtual network. This cannot be changed after creation.
      */
-    readonly virtualNetwork: types.outputs.network.SubResourceResponse;
+    readonly virtualNetwork: types.outputs.SubResourceResponse;
 }
 /**
  * Gets properties of a DNS resolver.

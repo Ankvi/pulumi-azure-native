@@ -28,7 +28,7 @@ utilities.lazyLoad(exports, ["VideoAnalyzer"], () => require("./videoAnalyzer"))
 
 
 // Export enums:
-export * from "../types/enums/v20210501preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

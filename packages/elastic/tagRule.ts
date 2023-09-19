@@ -39,11 +39,11 @@ export class TagRule extends pulumi.CustomResource {
     /**
      * Properties of the monitoring tag rules.
      */
-    public readonly properties!: pulumi.Output<types.outputs.elastic.MonitoringTagRulesPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.MonitoringTagRulesPropertiesResponse>;
     /**
      * The system metadata relating to this resource
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.elastic.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the rule set.
      */
@@ -97,7 +97,7 @@ export interface TagRuleArgs {
     /**
      * Properties of the monitoring tag rules.
      */
-    properties?: pulumi.Input<types.inputs.elastic.MonitoringTagRulesPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.MonitoringTagRulesPropertiesArgs>;
     /**
      * The name of the resource group to which the Elastic resource belongs.
      */

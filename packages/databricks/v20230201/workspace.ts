@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Information about workspace.
  */
@@ -34,11 +34,11 @@ export class Workspace extends pulumi.CustomResource {
     /**
      * The workspace provider authorizations.
      */
-    public readonly authorizations!: pulumi.Output<types.outputs.databricks.v20230201.WorkspaceProviderAuthorizationResponse[] | undefined>;
+    public readonly authorizations!: pulumi.Output<types.outputs.WorkspaceProviderAuthorizationResponse[] | undefined>;
     /**
      * Indicates the Object ID, PUID and Application ID of entity that created the workspace.
      */
-    public /*out*/ readonly createdBy!: pulumi.Output<types.outputs.databricks.v20230201.CreatedByResponse | undefined>;
+    public /*out*/ readonly createdBy!: pulumi.Output<types.outputs.CreatedByResponse | undefined>;
     /**
      * Specifies the date and time when the workspace is created.
      */
@@ -50,7 +50,7 @@ export class Workspace extends pulumi.CustomResource {
     /**
      * Encryption properties for databricks workspace
      */
-    public readonly encryption!: pulumi.Output<types.outputs.databricks.v20230201.WorkspacePropertiesResponseEncryption | undefined>;
+    public readonly encryption!: pulumi.Output<types.outputs.WorkspacePropertiesResponseEncryption | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -58,7 +58,7 @@ export class Workspace extends pulumi.CustomResource {
     /**
      * The details of Managed Identity of Disk Encryption Set used for Managed Disk Encryption
      */
-    public /*out*/ readonly managedDiskIdentity!: pulumi.Output<types.outputs.databricks.v20230201.ManagedIdentityConfigurationResponse | undefined>;
+    public /*out*/ readonly managedDiskIdentity!: pulumi.Output<types.outputs.ManagedIdentityConfigurationResponse | undefined>;
     /**
      * The managed resource group Id.
      */
@@ -70,11 +70,11 @@ export class Workspace extends pulumi.CustomResource {
     /**
      * The workspace's custom parameters.
      */
-    public readonly parameters!: pulumi.Output<types.outputs.databricks.v20230201.WorkspaceCustomParametersResponse | undefined>;
+    public readonly parameters!: pulumi.Output<types.outputs.WorkspaceCustomParametersResponse | undefined>;
     /**
      * Private endpoint connections created on the workspace
      */
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.databricks.v20230201.PrivateEndpointConnectionResponse[]>;
+    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[]>;
     /**
      * The workspace provisioning state.
      */
@@ -90,15 +90,15 @@ export class Workspace extends pulumi.CustomResource {
     /**
      * The SKU of the resource.
      */
-    public readonly sku!: pulumi.Output<types.outputs.databricks.v20230201.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * The details of Managed Identity of Storage Account
      */
-    public /*out*/ readonly storageAccountIdentity!: pulumi.Output<types.outputs.databricks.v20230201.ManagedIdentityConfigurationResponse | undefined>;
+    public /*out*/ readonly storageAccountIdentity!: pulumi.Output<types.outputs.ManagedIdentityConfigurationResponse | undefined>;
     /**
      * The system metadata relating to this resource
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.databricks.v20230201.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -114,7 +114,7 @@ export class Workspace extends pulumi.CustomResource {
     /**
      * Indicates the Object ID, PUID and Application ID of entity that last updated the workspace.
      */
-    public /*out*/ readonly updatedBy!: pulumi.Output<types.outputs.databricks.v20230201.CreatedByResponse | undefined>;
+    public /*out*/ readonly updatedBy!: pulumi.Output<types.outputs.CreatedByResponse | undefined>;
     /**
      * The unique identifier of the databricks workspace in databricks control plane.
      */
@@ -145,7 +145,7 @@ export class Workspace extends pulumi.CustomResource {
             resourceInputs["encryption"] = args ? args.encryption : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["managedResourceGroupId"] = args ? args.managedResourceGroupId : undefined;
-            resourceInputs["parameters"] = args ? (args.parameters ? pulumi.output(args.parameters).apply(types.inputs.databricks.v20230201.workspaceCustomParametersArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["parameters"] = args ? (args.parameters ? pulumi.output(args.parameters).apply(types.inputs.workspaceCustomParametersArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["publicNetworkAccess"] = args ? args.publicNetworkAccess : undefined;
             resourceInputs["requiredNsgRules"] = args ? args.requiredNsgRules : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
@@ -205,11 +205,11 @@ export interface WorkspaceArgs {
     /**
      * The workspace provider authorizations.
      */
-    authorizations?: pulumi.Input<pulumi.Input<types.inputs.databricks.v20230201.WorkspaceProviderAuthorizationArgs>[]>;
+    authorizations?: pulumi.Input<pulumi.Input<types.inputs.WorkspaceProviderAuthorizationArgs>[]>;
     /**
      * Encryption properties for databricks workspace
      */
-    encryption?: pulumi.Input<types.inputs.databricks.v20230201.WorkspacePropertiesEncryptionArgs>;
+    encryption?: pulumi.Input<types.inputs.WorkspacePropertiesEncryptionArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -221,15 +221,15 @@ export interface WorkspaceArgs {
     /**
      * The workspace's custom parameters.
      */
-    parameters?: pulumi.Input<types.inputs.databricks.v20230201.WorkspaceCustomParametersArgs>;
+    parameters?: pulumi.Input<types.inputs.WorkspaceCustomParametersArgs>;
     /**
      * The network access type for accessing workspace. Set value to disabled to access workspace only via private link.
      */
-    publicNetworkAccess?: pulumi.Input<string | types.enums.v20230201.PublicNetworkAccess>;
+    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess>;
     /**
      * Gets or sets a value indicating whether data plane (clusters) to control plane communication happen over private endpoint. Supported values are 'AllRules' and 'NoAzureDatabricksRules'. 'NoAzureServiceRules' value is for internal use only.
      */
-    requiredNsgRules?: pulumi.Input<string | types.enums.v20230201.RequiredNsgRules>;
+    requiredNsgRules?: pulumi.Input<string | types.enums.RequiredNsgRules>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -237,7 +237,7 @@ export interface WorkspaceArgs {
     /**
      * The SKU of the resource.
      */
-    sku?: pulumi.Input<types.inputs.databricks.v20230201.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Resource tags.
      */

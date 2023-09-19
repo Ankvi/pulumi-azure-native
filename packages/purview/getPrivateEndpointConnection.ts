@@ -45,11 +45,11 @@ export interface GetPrivateEndpointConnectionResult {
     /**
      * The private endpoint information.
      */
-    readonly privateEndpoint?: types.outputs.purview.PrivateEndpointResponse;
+    readonly privateEndpoint?: types.outputs.PrivateEndpointResponse;
     /**
      * The private link service connection state.
      */
-    readonly privateLinkServiceConnectionState?: types.outputs.purview.PrivateLinkServiceConnectionStateResponse;
+    readonly privateLinkServiceConnectionState?: types.outputs.PrivateLinkServiceConnectionStateResponse;
     /**
      * The provisioning state.
      */
@@ -57,7 +57,7 @@ export interface GetPrivateEndpointConnectionResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.purview.ProxyResourceResponseSystemData;
+    readonly systemData: types.outputs.ProxyResourceResponseSystemData;
     /**
      * Gets or sets the type.
      */

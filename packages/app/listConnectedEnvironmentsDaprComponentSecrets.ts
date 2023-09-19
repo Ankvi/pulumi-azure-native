@@ -37,7 +37,7 @@ export interface ListConnectedEnvironmentsDaprComponentSecretsResult {
     /**
      * Collection of secrets used by a Dapr component
      */
-    readonly value: types.outputs.app.DaprSecretResponse[];
+    readonly value: types.outputs.DaprSecretResponse[];
 }
 /**
  * Dapr component Secrets Collection for ListSecrets Action.

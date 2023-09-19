@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents the response of a service unit resource.
  */
@@ -41,7 +41,7 @@ export interface GetServiceUnitResult {
     /**
      * The artifacts for the service unit.
      */
-    readonly artifacts?: types.outputs.deploymentmanager.v20191101preview.ServiceUnitArtifactsResponse;
+    readonly artifacts?: types.outputs.ServiceUnitArtifactsResponse;
     /**
      * Describes the type of ARM deployment to be performed on the resource.
      */

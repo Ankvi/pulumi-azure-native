@@ -39,7 +39,7 @@ export class Function extends pulumi.CustomResource {
     /**
      * The properties that are associated with a function.
      */
-    public readonly properties!: pulumi.Output<types.outputs.streamanalytics.AggregateFunctionPropertiesResponse | types.outputs.streamanalytics.ScalarFunctionPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.AggregateFunctionPropertiesResponse | types.outputs.ScalarFunctionPropertiesResponse>;
     /**
      * Resource type
      */
@@ -99,7 +99,7 @@ export interface FunctionArgs {
     /**
      * The properties that are associated with a function.
      */
-    properties?: pulumi.Input<types.inputs.streamanalytics.AggregateFunctionPropertiesArgs | types.inputs.streamanalytics.ScalarFunctionPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.AggregateFunctionPropertiesArgs | types.inputs.ScalarFunctionPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

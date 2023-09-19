@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Implements VirtualNetwork GET method.
  */
@@ -31,7 +31,7 @@ export interface GetVirtualNetworkResult {
     /**
      * The extended location.
      */
-    readonly extendedLocation: types.outputs.scvmm.v20220521preview.ExtendedLocationResponse;
+    readonly extendedLocation: types.outputs.ExtendedLocationResponse;
     /**
      * Resource Id
      */
@@ -59,7 +59,7 @@ export interface GetVirtualNetworkResult {
     /**
      * The system data.
      */
-    readonly systemData: types.outputs.scvmm.v20220521preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets information about a server.
  */
@@ -40,7 +40,7 @@ export interface GetServerResult {
      * Status showing whether the data encryption is enabled with customer-managed keys.
      */
     readonly byokEnforcement: string;
-    readonly delegatedSubnetArguments?: types.outputs.dbforpostgresql.v20210410privatepreview.ServerPropertiesResponseDelegatedSubnetArguments;
+    readonly delegatedSubnetArguments?: types.outputs.ServerPropertiesResponseDelegatedSubnetArguments;
     /**
      * The display name of a server.
      */
@@ -64,7 +64,7 @@ export interface GetServerResult {
     /**
      * The Azure Active Directory identity of the server.
      */
-    readonly identity?: types.outputs.dbforpostgresql.v20210410privatepreview.IdentityResponse;
+    readonly identity?: types.outputs.IdentityResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -72,7 +72,7 @@ export interface GetServerResult {
     /**
      * Maintenance window of a server.
      */
-    readonly maintenanceWindow?: types.outputs.dbforpostgresql.v20210410privatepreview.MaintenanceWindowResponse;
+    readonly maintenanceWindow?: types.outputs.MaintenanceWindowResponse;
     /**
      * The name of the resource
      */
@@ -81,7 +81,7 @@ export interface GetServerResult {
      * Restore point creation time (ISO8601 format), specifying the time to restore from.
      */
     readonly pointInTimeUTC?: string;
-    readonly privateDnsZoneArguments?: types.outputs.dbforpostgresql.v20210410privatepreview.ServerPropertiesResponsePrivateDnsZoneArguments;
+    readonly privateDnsZoneArguments?: types.outputs.ServerPropertiesResponsePrivateDnsZoneArguments;
     /**
      * public network access is enabled or not
      */
@@ -89,7 +89,7 @@ export interface GetServerResult {
     /**
      * The SKU (pricing tier) of the server.
      */
-    readonly sku?: types.outputs.dbforpostgresql.v20210410privatepreview.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * The resource group name of source PostgreSQL server name to restore from.
      */
@@ -113,7 +113,7 @@ export interface GetServerResult {
     /**
      * Storage profile of a server.
      */
-    readonly storageProfile?: types.outputs.dbforpostgresql.v20210410privatepreview.StorageProfileResponse;
+    readonly storageProfile?: types.outputs.StorageProfileResponse;
     /**
      * Resource tags.
      */

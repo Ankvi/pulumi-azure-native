@@ -48,7 +48,7 @@ export interface GetDeviceResult {
     /**
      * The list of network functions deployed on the device.
      */
-    readonly networkFunctions: types.outputs.hybridnetwork.SubResourceResponse[];
+    readonly networkFunctions: types.outputs.SubResourceResponse[];
     /**
      * The provisioning state of the device resource.
      */
@@ -60,7 +60,7 @@ export interface GetDeviceResult {
     /**
      * The system meta data relating to this resource.
      */
-    readonly systemData: types.outputs.hybridnetwork.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

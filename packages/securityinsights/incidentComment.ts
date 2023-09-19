@@ -35,7 +35,7 @@ export class IncidentComment extends pulumi.CustomResource {
     /**
      * Describes the client that created the comment
      */
-    public /*out*/ readonly author!: pulumi.Output<types.outputs.securityinsights.ClientInfoResponse>;
+    public /*out*/ readonly author!: pulumi.Output<types.outputs.ClientInfoResponse>;
     /**
      * The time the comment was created
      */
@@ -59,7 +59,7 @@ export class IncidentComment extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.securityinsights.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the details of a static site.
  */
@@ -39,7 +39,7 @@ export interface GetStaticSiteResult {
     /**
      * Build properties to configure on the repository.
      */
-    readonly buildProperties?: types.outputs.web.v20210201.StaticSiteBuildPropertiesResponse;
+    readonly buildProperties?: types.outputs.StaticSiteBuildPropertiesResponse;
     /**
      * The content distribution endpoint for the static site.
      */
@@ -59,7 +59,7 @@ export interface GetStaticSiteResult {
     /**
      * Managed service identity.
      */
-    readonly identity?: types.outputs.web.v20210201.ManagedServiceIdentityResponse;
+    readonly identity?: types.outputs.ManagedServiceIdentityResponse;
     /**
      * Identity to use for Key Vault Reference authentication.
      */
@@ -79,7 +79,7 @@ export interface GetStaticSiteResult {
     /**
      * Private endpoint connections
      */
-    readonly privateEndpointConnections: types.outputs.web.v20210201.ResponseMessageEnvelopeRemotePrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections: types.outputs.ResponseMessageEnvelopeRemotePrivateEndpointConnectionResponse[];
     /**
      * The provider that submitted the last deployment to the primary environment of the static site.
      */
@@ -95,7 +95,7 @@ export interface GetStaticSiteResult {
     /**
      * Description of a SKU for a scalable resource.
      */
-    readonly sku?: types.outputs.web.v20210201.SkuDescriptionResponse;
+    readonly sku?: types.outputs.SkuDescriptionResponse;
     /**
      * State indicating whether staging environments are allowed or not allowed for a static web app.
      */
@@ -107,7 +107,7 @@ export interface GetStaticSiteResult {
     /**
      * Template options for generating a new repository.
      */
-    readonly templateProperties?: types.outputs.web.v20210201.StaticSiteTemplateOptionsResponse;
+    readonly templateProperties?: types.outputs.StaticSiteTemplateOptionsResponse;
     /**
      * Resource type.
      */
@@ -115,7 +115,7 @@ export interface GetStaticSiteResult {
     /**
      * User provided function apps registered with the static site
      */
-    readonly userProvidedFunctionApps: types.outputs.web.v20210201.StaticSiteUserProvidedFunctionAppResponse[];
+    readonly userProvidedFunctionApps: types.outputs.StaticSiteUserProvidedFunctionAppResponse[];
 }
 /**
  * Gets the details of a static site.

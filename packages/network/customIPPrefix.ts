@@ -43,7 +43,7 @@ export class CustomIPPrefix extends pulumi.CustomResource {
     /**
      * The list of all Children for IPv6 /48 CustomIpPrefix.
      */
-    public /*out*/ readonly childCustomIpPrefixes!: pulumi.Output<types.outputs.network.SubResourceResponse[]>;
+    public /*out*/ readonly childCustomIpPrefixes!: pulumi.Output<types.outputs.SubResourceResponse[]>;
     /**
      * The prefix range in CIDR notation. Should include the start address and the prefix length.
      */
@@ -55,7 +55,7 @@ export class CustomIPPrefix extends pulumi.CustomResource {
     /**
      * The Parent CustomIpPrefix for IPv6 /64 CustomIpPrefix.
      */
-    public readonly customIpPrefixParent!: pulumi.Output<types.outputs.network.SubResourceResponse | undefined>;
+    public readonly customIpPrefixParent!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -67,7 +67,7 @@ export class CustomIPPrefix extends pulumi.CustomResource {
     /**
      * The extended location of the custom IP prefix.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.network.ExtendedLocationResponse | undefined>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
     /**
      * The reason why resource is in failed state.
      */
@@ -99,7 +99,7 @@ export class CustomIPPrefix extends pulumi.CustomResource {
     /**
      * The list of all referenced PublicIpPrefixes.
      */
-    public /*out*/ readonly publicIpPrefixes!: pulumi.Output<types.outputs.network.SubResourceResponse[]>;
+    public /*out*/ readonly publicIpPrefixes!: pulumi.Output<types.outputs.SubResourceResponse[]>;
     /**
      * The resource GUID property of the custom IP prefix resource.
      */
@@ -218,7 +218,7 @@ export interface CustomIPPrefixArgs {
     /**
      * The Parent CustomIpPrefix for IPv6 /64 CustomIpPrefix.
      */
-    customIpPrefixParent?: pulumi.Input<types.inputs.network.SubResourceArgs>;
+    customIpPrefixParent?: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * Whether to do express route advertise.
      */
@@ -226,7 +226,7 @@ export interface CustomIPPrefixArgs {
     /**
      * The extended location of the custom IP prefix.
      */
-    extendedLocation?: pulumi.Input<types.inputs.network.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * The Geo for CIDR advertising. Should be an Geo code.
      */

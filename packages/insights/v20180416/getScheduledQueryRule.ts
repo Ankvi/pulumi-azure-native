@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets an Log Search rule
  */
@@ -31,7 +31,7 @@ export interface GetScheduledQueryRuleResult {
     /**
      * Action needs to be taken on rule execution.
      */
-    readonly action: types.outputs.insights.v20180416.AlertingActionResponse | types.outputs.insights.v20180416.LogToMetricActionResponse;
+    readonly action: types.outputs.AlertingActionResponse | types.outputs.LogToMetricActionResponse;
     /**
      * The flag that indicates whether the alert should be automatically resolved or not. The default is false.
      */
@@ -87,11 +87,11 @@ export interface GetScheduledQueryRuleResult {
     /**
      * Schedule (Frequency, Time Window) for rule. Required for action type - AlertingAction
      */
-    readonly schedule?: types.outputs.insights.v20180416.ScheduleResponse;
+    readonly schedule?: types.outputs.ScheduleResponse;
     /**
      * Data Source against which rule will Query Data
      */
-    readonly source: types.outputs.insights.v20180416.SourceResponse;
+    readonly source: types.outputs.SourceResponse;
     /**
      * Resource tags
      */

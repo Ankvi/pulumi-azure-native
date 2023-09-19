@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The list of the EngagementFabric account keys
  */
@@ -31,7 +31,7 @@ export interface ListAccountKeysResult {
     /**
      * Account keys
      */
-    readonly value: types.outputs.engagementfabric.v20180901preview.KeyDescriptionResponse[];
+    readonly value: types.outputs.KeyDescriptionResponse[];
 }
 /**
  * The list of the EngagementFabric account keys

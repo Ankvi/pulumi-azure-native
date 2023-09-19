@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the details of a protection container mapping.
  */
@@ -58,7 +58,7 @@ export interface GetReplicationProtectionContainerMappingResult {
     /**
      * The custom data.
      */
-    readonly properties: types.outputs.recoveryservices.v20230401.ProtectionContainerMappingPropertiesResponse;
+    readonly properties: types.outputs.ProtectionContainerMappingPropertiesResponse;
     /**
      * Resource Type
      */

@@ -53,11 +53,11 @@ export interface GetMHSMPrivateEndpointConnectionResult {
     /**
      * Properties of the private endpoint object.
      */
-    readonly privateEndpoint?: types.outputs.keyvault.MHSMPrivateEndpointResponse;
+    readonly privateEndpoint?: types.outputs.MHSMPrivateEndpointResponse;
     /**
      * Approval state of the private link connection.
      */
-    readonly privateLinkServiceConnectionState?: types.outputs.keyvault.MHSMPrivateLinkServiceConnectionStateResponse;
+    readonly privateLinkServiceConnectionState?: types.outputs.MHSMPrivateLinkServiceConnectionStateResponse;
     /**
      * Provisioning state of the private endpoint connection.
      */
@@ -65,11 +65,11 @@ export interface GetMHSMPrivateEndpointConnectionResult {
     /**
      * SKU details
      */
-    readonly sku?: types.outputs.keyvault.ManagedHsmSkuResponse;
+    readonly sku?: types.outputs.ManagedHsmSkuResponse;
     /**
      * Metadata pertaining to creation and last modification of the key vault resource.
      */
-    readonly systemData: types.outputs.keyvault.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags
      */

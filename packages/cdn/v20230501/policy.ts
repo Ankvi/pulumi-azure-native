@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Defines web application firewall policy for Azure CDN.
  */
@@ -34,11 +34,11 @@ export class Policy extends pulumi.CustomResource {
     /**
      * Describes custom rules inside the policy.
      */
-    public readonly customRules!: pulumi.Output<types.outputs.cdn.v20230501.CustomRuleListResponse | undefined>;
+    public readonly customRules!: pulumi.Output<types.outputs.CustomRuleListResponse | undefined>;
     /**
      * Describes Azure CDN endpoints associated with this Web Application Firewall policy.
      */
-    public /*out*/ readonly endpointLinks!: pulumi.Output<types.outputs.cdn.v20230501.CdnEndpointResponse[]>;
+    public /*out*/ readonly endpointLinks!: pulumi.Output<types.outputs.CdnEndpointResponse[]>;
     /**
      * Gets a unique read-only string that changes whenever the resource is updated.
      */
@@ -54,7 +54,7 @@ export class Policy extends pulumi.CustomResource {
     /**
      * Describes managed rules inside the policy.
      */
-    public readonly managedRules!: pulumi.Output<types.outputs.cdn.v20230501.ManagedRuleSetListResponse | undefined>;
+    public readonly managedRules!: pulumi.Output<types.outputs.ManagedRuleSetListResponse | undefined>;
     /**
      * Resource name.
      */
@@ -62,7 +62,7 @@ export class Policy extends pulumi.CustomResource {
     /**
      * Describes  policySettings for policy
      */
-    public readonly policySettings!: pulumi.Output<types.outputs.cdn.v20230501.PolicySettingsResponse | undefined>;
+    public readonly policySettings!: pulumi.Output<types.outputs.PolicySettingsResponse | undefined>;
     /**
      * Provisioning state of the WebApplicationFirewallPolicy.
      */
@@ -70,16 +70,16 @@ export class Policy extends pulumi.CustomResource {
     /**
      * Describes rate limit rules inside the policy.
      */
-    public readonly rateLimitRules!: pulumi.Output<types.outputs.cdn.v20230501.RateLimitRuleListResponse | undefined>;
+    public readonly rateLimitRules!: pulumi.Output<types.outputs.RateLimitRuleListResponse | undefined>;
     public /*out*/ readonly resourceState!: pulumi.Output<string>;
     /**
      * The pricing tier (defines a CDN provider, feature list and rate) of the CdnWebApplicationFirewallPolicy.
      */
-    public readonly sku!: pulumi.Output<types.outputs.cdn.v20230501.SkuResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse>;
     /**
      * Read only system data
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.cdn.v20230501.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -154,7 +154,7 @@ export interface PolicyArgs {
     /**
      * Describes custom rules inside the policy.
      */
-    customRules?: pulumi.Input<types.inputs.cdn.v20230501.CustomRuleListArgs>;
+    customRules?: pulumi.Input<types.inputs.CustomRuleListArgs>;
     /**
      * Key-Value pair representing additional properties for Web Application Firewall policy.
      */
@@ -166,7 +166,7 @@ export interface PolicyArgs {
     /**
      * Describes managed rules inside the policy.
      */
-    managedRules?: pulumi.Input<types.inputs.cdn.v20230501.ManagedRuleSetListArgs>;
+    managedRules?: pulumi.Input<types.inputs.ManagedRuleSetListArgs>;
     /**
      * The name of the CdnWebApplicationFirewallPolicy.
      */
@@ -174,11 +174,11 @@ export interface PolicyArgs {
     /**
      * Describes  policySettings for policy
      */
-    policySettings?: pulumi.Input<types.inputs.cdn.v20230501.PolicySettingsArgs>;
+    policySettings?: pulumi.Input<types.inputs.PolicySettingsArgs>;
     /**
      * Describes rate limit rules inside the policy.
      */
-    rateLimitRules?: pulumi.Input<types.inputs.cdn.v20230501.RateLimitRuleListArgs>;
+    rateLimitRules?: pulumi.Input<types.inputs.RateLimitRuleListArgs>;
     /**
      * Name of the Resource group within the Azure subscription.
      */
@@ -186,7 +186,7 @@ export interface PolicyArgs {
     /**
      * The pricing tier (defines a CDN provider, feature list and rate) of the CdnWebApplicationFirewallPolicy.
      */
-    sku: pulumi.Input<types.inputs.cdn.v20230501.SkuArgs>;
+    sku: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Resource tags.
      */

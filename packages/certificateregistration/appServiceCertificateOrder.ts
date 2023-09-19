@@ -43,11 +43,11 @@ export class AppServiceCertificateOrder extends pulumi.CustomResource {
     /**
      * State of the Key Vault secret.
      */
-    public readonly certificates!: pulumi.Output<{[key: string]: types.outputs.certificateregistration.AppServiceCertificateResponse} | undefined>;
+    public readonly certificates!: pulumi.Output<{[key: string]: types.outputs.AppServiceCertificateResponse} | undefined>;
     /**
      * Contact info
      */
-    public /*out*/ readonly contact!: pulumi.Output<types.outputs.certificateregistration.CertificateOrderContactResponse>;
+    public /*out*/ readonly contact!: pulumi.Output<types.outputs.CertificateOrderContactResponse>;
     /**
      * Last CSR that was created for this order.
      */
@@ -67,7 +67,7 @@ export class AppServiceCertificateOrder extends pulumi.CustomResource {
     /**
      * Intermediate certificate.
      */
-    public /*out*/ readonly intermediate!: pulumi.Output<types.outputs.certificateregistration.CertificateDetailsResponse>;
+    public /*out*/ readonly intermediate!: pulumi.Output<types.outputs.CertificateDetailsResponse>;
     /**
      * <code>true</code> if private key is external; otherwise, <code>false</code>.
      */
@@ -107,7 +107,7 @@ export class AppServiceCertificateOrder extends pulumi.CustomResource {
     /**
      * Root certificate.
      */
-    public /*out*/ readonly root!: pulumi.Output<types.outputs.certificateregistration.CertificateDetailsResponse>;
+    public /*out*/ readonly root!: pulumi.Output<types.outputs.CertificateDetailsResponse>;
     /**
      * Current serial number of the certificate.
      */
@@ -115,7 +115,7 @@ export class AppServiceCertificateOrder extends pulumi.CustomResource {
     /**
      * Signed certificate.
      */
-    public /*out*/ readonly signedCertificate!: pulumi.Output<types.outputs.certificateregistration.CertificateDetailsResponse>;
+    public /*out*/ readonly signedCertificate!: pulumi.Output<types.outputs.CertificateDetailsResponse>;
     /**
      * Current order status.
      */
@@ -226,7 +226,7 @@ export interface AppServiceCertificateOrderArgs {
     /**
      * State of the Key Vault secret.
      */
-    certificates?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.certificateregistration.AppServiceCertificateArgs>}>;
+    certificates?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.AppServiceCertificateArgs>}>;
     /**
      * Last CSR that was created for this order.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a Deployment. '.default' and '.unassigned' are system defined values and cannot be used for product or device group name.
  */
@@ -46,7 +46,7 @@ export interface GetDeploymentResult {
     /**
      * Images deployed
      */
-    readonly deployedImages?: types.outputs.azuresphere.v20220901preview.ImageResponse[];
+    readonly deployedImages?: types.outputs.ImageResponse[];
     /**
      * Deployment date UTC
      */
@@ -70,7 +70,7 @@ export interface GetDeploymentResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.azuresphere.v20220901preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

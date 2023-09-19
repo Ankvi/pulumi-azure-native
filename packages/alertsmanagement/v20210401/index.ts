@@ -13,7 +13,7 @@ utilities.lazyLoad(exports, ["SmartDetectorAlertRule"], () => require("./smartDe
 
 
 // Export enums:
-export * from "../types/enums/v20210401";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Inbound NAT rule of the load balancer.
  */
@@ -34,11 +34,11 @@ export class InboundNatRule extends pulumi.CustomResource {
     /**
      * A reference to backendAddressPool resource.
      */
-    public readonly backendAddressPool!: pulumi.Output<types.outputs.network.v20230201.SubResourceResponse | undefined>;
+    public readonly backendAddressPool!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * A reference to a private IP address defined on a network interface of a VM. Traffic sent to the frontend port of each of the frontend IP configurations is forwarded to the backend IP.
      */
-    public /*out*/ readonly backendIPConfiguration!: pulumi.Output<types.outputs.network.v20230201.NetworkInterfaceIPConfigurationResponse>;
+    public /*out*/ readonly backendIPConfiguration!: pulumi.Output<types.outputs.NetworkInterfaceIPConfigurationResponse>;
     /**
      * The port used for the internal endpoint. Acceptable values range from 1 to 65535.
      */
@@ -58,7 +58,7 @@ export class InboundNatRule extends pulumi.CustomResource {
     /**
      * A reference to frontend IP addresses.
      */
-    public readonly frontendIPConfiguration!: pulumi.Output<types.outputs.network.v20230201.SubResourceResponse | undefined>;
+    public readonly frontendIPConfiguration!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * The port for the external endpoint. Port numbers for each rule must be unique within the Load Balancer. Acceptable values range from 1 to 65534.
      */
@@ -159,7 +159,7 @@ export interface InboundNatRuleArgs {
     /**
      * A reference to backendAddressPool resource.
      */
-    backendAddressPool?: pulumi.Input<types.inputs.network.v20230201.SubResourceArgs>;
+    backendAddressPool?: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * The port used for the internal endpoint. Acceptable values range from 1 to 65535.
      */
@@ -175,7 +175,7 @@ export interface InboundNatRuleArgs {
     /**
      * A reference to frontend IP addresses.
      */
-    frontendIPConfiguration?: pulumi.Input<types.inputs.network.v20230201.SubResourceArgs>;
+    frontendIPConfiguration?: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * The port for the external endpoint. Port numbers for each rule must be unique within the Load Balancer. Acceptable values range from 1 to 65534.
      */
@@ -211,7 +211,7 @@ export interface InboundNatRuleArgs {
     /**
      * The reference to the transport protocol used by the load balancing rule.
      */
-    protocol?: pulumi.Input<string | types.enums.v20230201.TransportProtocol>;
+    protocol?: pulumi.Input<string | types.enums.TransportProtocol>;
     /**
      * The name of the resource group.
      */

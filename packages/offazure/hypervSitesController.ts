@@ -35,7 +35,7 @@ export class HypervSitesController extends pulumi.CustomResource {
     /**
      * Gets or sets the on-premises agent details.
      */
-    public readonly agentDetails!: pulumi.Output<types.outputs.offazure.SiteAgentPropertiesResponse | undefined>;
+    public readonly agentDetails!: pulumi.Output<types.outputs.SiteAgentPropertiesResponse | undefined>;
     /**
      * Gets or sets the Appliance Name.
      */
@@ -69,11 +69,11 @@ export class HypervSitesController extends pulumi.CustomResource {
      * communication
      *             to the service.
      */
-    public readonly servicePrincipalIdentityDetails!: pulumi.Output<types.outputs.offazure.SiteSpnPropertiesResponse | undefined>;
+    public readonly servicePrincipalIdentityDetails!: pulumi.Output<types.outputs.SiteSpnPropertiesResponse | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.offazure.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -139,7 +139,7 @@ export interface HypervSitesControllerArgs {
     /**
      * Gets or sets the on-premises agent details.
      */
-    agentDetails?: pulumi.Input<types.inputs.offazure.SiteAgentPropertiesArgs>;
+    agentDetails?: pulumi.Input<types.inputs.SiteAgentPropertiesArgs>;
     /**
      * Gets or sets the Appliance Name.
      */
@@ -165,7 +165,7 @@ export interface HypervSitesControllerArgs {
      * communication
      *             to the service.
      */
-    servicePrincipalIdentityDetails?: pulumi.Input<types.inputs.offazure.SiteSpnPropertiesArgs>;
+    servicePrincipalIdentityDetails?: pulumi.Input<types.inputs.SiteSpnPropertiesArgs>;
     /**
      * Site name
      */

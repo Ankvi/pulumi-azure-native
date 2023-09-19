@@ -67,11 +67,11 @@ export class SyncGroup extends pulumi.CustomResource {
     /**
      * Sync schema of the sync group.
      */
-    public readonly schema!: pulumi.Output<types.outputs.sql.SyncGroupSchemaResponse | undefined>;
+    public readonly schema!: pulumi.Output<types.outputs.SyncGroupSchemaResponse | undefined>;
     /**
      * The name and capacity of the SKU.
      */
-    public readonly sku!: pulumi.Output<types.outputs.sql.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * ARM resource id of the sync database in the sync group.
      */
@@ -190,7 +190,7 @@ export interface SyncGroupArgs {
     /**
      * Sync schema of the sync group.
      */
-    schema?: pulumi.Input<types.inputs.sql.SyncGroupSchemaArgs>;
+    schema?: pulumi.Input<types.inputs.SyncGroupSchemaArgs>;
     /**
      * The name of the server.
      */
@@ -198,7 +198,7 @@ export interface SyncGroupArgs {
     /**
      * The name and capacity of the SKU.
      */
-    sku?: pulumi.Input<types.inputs.sql.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * ARM resource id of the sync database in the sync group.
      */

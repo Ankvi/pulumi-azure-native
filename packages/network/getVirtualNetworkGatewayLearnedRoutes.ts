@@ -32,7 +32,7 @@ export interface GetVirtualNetworkGatewayLearnedRoutesResult {
     /**
      * List of gateway routes.
      */
-    readonly value?: types.outputs.network.GatewayRouteResponse[];
+    readonly value?: types.outputs.GatewayRouteResponse[];
 }
 /**
  * This operation retrieves a list of routes the virtual network gateway has learned, including routes learned from BGP peers.

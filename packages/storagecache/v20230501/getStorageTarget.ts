@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns a Storage Target from a cache.
  */
@@ -40,11 +40,11 @@ export interface GetStorageTargetResult {
     /**
      * Properties when targetType is blobNfs.
      */
-    readonly blobNfs?: types.outputs.storagecache.v20230501.BlobNfsTargetResponse;
+    readonly blobNfs?: types.outputs.BlobNfsTargetResponse;
     /**
      * Properties when targetType is clfs.
      */
-    readonly clfs?: types.outputs.storagecache.v20230501.ClfsTargetResponse;
+    readonly clfs?: types.outputs.ClfsTargetResponse;
     /**
      * Resource ID of the Storage Target.
      */
@@ -52,7 +52,7 @@ export interface GetStorageTargetResult {
     /**
      * List of cache namespace junctions to target for namespace associations.
      */
-    readonly junctions?: types.outputs.storagecache.v20230501.NamespaceJunctionResponse[];
+    readonly junctions?: types.outputs.NamespaceJunctionResponse[];
     /**
      * Region name string.
      */
@@ -64,7 +64,7 @@ export interface GetStorageTargetResult {
     /**
      * Properties when targetType is nfs3.
      */
-    readonly nfs3?: types.outputs.storagecache.v20230501.Nfs3TargetResponse;
+    readonly nfs3?: types.outputs.Nfs3TargetResponse;
     /**
      * ARM provisioning state, see https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/Addendum.md#provisioningstate-property
      */
@@ -76,7 +76,7 @@ export interface GetStorageTargetResult {
     /**
      * The system meta data relating to this resource.
      */
-    readonly systemData: types.outputs.storagecache.v20230501.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Type of the Storage Target.
      */
@@ -88,7 +88,7 @@ export interface GetStorageTargetResult {
     /**
      * Properties when targetType is unknown.
      */
-    readonly unknown?: types.outputs.storagecache.v20230501.UnknownTargetResponse;
+    readonly unknown?: types.outputs.UnknownTargetResponse;
 }
 /**
  * Returns a Storage Target from a cache.

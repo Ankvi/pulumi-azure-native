@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the specified custom IP prefix in a specified resource group.
  */
@@ -40,7 +40,7 @@ export interface GetCustomIPPrefixResult {
     /**
      * The list of all Children for IPv6 /48 CustomIpPrefix.
      */
-    readonly childCustomIpPrefixes: types.outputs.network.v20210301.CustomIpPrefixResponse[];
+    readonly childCustomIpPrefixes: types.outputs.CustomIpPrefixResponse[];
     /**
      * The prefix range in CIDR notation. Should include the start address and the prefix length.
      */
@@ -52,7 +52,7 @@ export interface GetCustomIPPrefixResult {
     /**
      * The Parent CustomIpPrefix for IPv6 /64 CustomIpPrefix.
      */
-    readonly customIpPrefixParent?: types.outputs.network.v20210301.CustomIpPrefixResponse;
+    readonly customIpPrefixParent?: types.outputs.CustomIpPrefixResponse;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -60,7 +60,7 @@ export interface GetCustomIPPrefixResult {
     /**
      * The extended location of the custom IP prefix.
      */
-    readonly extendedLocation?: types.outputs.network.v20210301.ExtendedLocationResponse;
+    readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
     /**
      * The reason why resource is in failed state.
      */
@@ -84,7 +84,7 @@ export interface GetCustomIPPrefixResult {
     /**
      * The list of all referenced PublicIpPrefixes.
      */
-    readonly publicIpPrefixes: types.outputs.network.v20210301.SubResourceResponse[];
+    readonly publicIpPrefixes: types.outputs.SubResourceResponse[];
     /**
      * The resource GUID property of the custom IP prefix resource.
      */

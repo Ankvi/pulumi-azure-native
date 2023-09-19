@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents a server.
  */
@@ -46,7 +46,7 @@ export class Server extends pulumi.CustomResource {
     /**
      * The Azure Active Directory identity of the server.
      */
-    public /*out*/ readonly identity!: pulumi.Output<types.outputs.dbformariadb.v20180601preview.ResourceIdentityResponse | undefined>;
+    public /*out*/ readonly identity!: pulumi.Output<types.outputs.ResourceIdentityResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -74,7 +74,7 @@ export class Server extends pulumi.CustomResource {
     /**
      * The SKU (pricing tier) of the server.
      */
-    public readonly sku!: pulumi.Output<types.outputs.dbformariadb.v20180601preview.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Enable ssl enforcement or not when connect to server.
      */
@@ -82,7 +82,7 @@ export class Server extends pulumi.CustomResource {
     /**
      * Storage profile of a server.
      */
-    public /*out*/ readonly storageProfile!: pulumi.Output<types.outputs.dbformariadb.v20180601preview.StorageProfileResponse | undefined>;
+    public /*out*/ readonly storageProfile!: pulumi.Output<types.outputs.StorageProfileResponse | undefined>;
     /**
      * Resource tags.
      */
@@ -174,7 +174,7 @@ export interface ServerArgs {
     /**
      * Properties of the server.
      */
-    properties: pulumi.Input<types.inputs.dbformariadb.v20180601preview.ServerPropertiesForDefaultCreateArgs | types.inputs.dbformariadb.v20180601preview.ServerPropertiesForGeoRestoreArgs | types.inputs.dbformariadb.v20180601preview.ServerPropertiesForReplicaArgs | types.inputs.dbformariadb.v20180601preview.ServerPropertiesForRestoreArgs>;
+    properties: pulumi.Input<types.inputs.ServerPropertiesForDefaultCreateArgs | types.inputs.ServerPropertiesForGeoRestoreArgs | types.inputs.ServerPropertiesForReplicaArgs | types.inputs.ServerPropertiesForRestoreArgs>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */
@@ -186,7 +186,7 @@ export interface ServerArgs {
     /**
      * The SKU (pricing tier) of the server.
      */
-    sku?: pulumi.Input<types.inputs.dbformariadb.v20180601preview.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Application-specific metadata in the form of key-value pairs.
      */

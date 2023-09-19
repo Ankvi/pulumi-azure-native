@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Data store.
  */
@@ -34,7 +34,7 @@ export class DataStore extends pulumi.CustomResource {
     /**
      * List of customer secrets containing a key identifier and key value. The key identifier is a way for the specific data source to understand the key. Value contains customer secret encrypted by the encryptionKeys.
      */
-    public readonly customerSecrets!: pulumi.Output<types.outputs.hybriddata.v20190601.CustomerSecretResponse[] | undefined>;
+    public readonly customerSecrets!: pulumi.Output<types.outputs.CustomerSecretResponse[] | undefined>;
     /**
      * The arm id of the data store type.
      */
@@ -116,7 +116,7 @@ export interface DataStoreArgs {
     /**
      * List of customer secrets containing a key identifier and key value. The key identifier is a way for the specific data source to understand the key. Value contains customer secret encrypted by the encryptionKeys.
      */
-    customerSecrets?: pulumi.Input<pulumi.Input<types.inputs.hybriddata.v20190601.CustomerSecretArgs>[]>;
+    customerSecrets?: pulumi.Input<pulumi.Input<types.inputs.CustomerSecretArgs>[]>;
     /**
      * The name of the DataManager Resource within the specified resource group. DataManager names must be between 3 and 24 characters in length and use any alphanumeric and underscore only
      */
@@ -144,5 +144,5 @@ export interface DataStoreArgs {
     /**
      * State of the data source.
      */
-    state: pulumi.Input<types.enums.v20190601.State>;
+    state: pulumi.Input<types.enums.State>;
 }

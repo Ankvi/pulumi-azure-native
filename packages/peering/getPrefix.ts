@@ -46,7 +46,7 @@ export interface GetPrefixResult {
     /**
      * The list of events for peering service prefix
      */
-    readonly events: types.outputs.peering.PeeringServicePrefixEventResponse[];
+    readonly events: types.outputs.PeeringServicePrefixEventResponse[];
     /**
      * The ID of the resource.
      */

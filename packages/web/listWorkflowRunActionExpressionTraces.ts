@@ -44,7 +44,7 @@ export interface ListWorkflowRunActionExpressionTracesArgs {
  * The expression traces.
  */
 export interface ListWorkflowRunActionExpressionTracesResult {
-    readonly inputs?: types.outputs.web.ExpressionRootResponse[];
+    readonly inputs?: types.outputs.ExpressionRootResponse[];
     /**
      * The link used to get the next page of recommendations.
      */

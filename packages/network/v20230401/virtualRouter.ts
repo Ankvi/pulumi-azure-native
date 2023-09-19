@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * VirtualRouter Resource.
  */
@@ -38,11 +38,11 @@ export class VirtualRouter extends pulumi.CustomResource {
     /**
      * The Gateway on which VirtualRouter is hosted.
      */
-    public readonly hostedGateway!: pulumi.Output<types.outputs.network.v20230401.SubResourceResponse | undefined>;
+    public readonly hostedGateway!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * The Subnet on which VirtualRouter is hosted.
      */
-    public readonly hostedSubnet!: pulumi.Output<types.outputs.network.v20230401.SubResourceResponse | undefined>;
+    public readonly hostedSubnet!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * Resource location.
      */
@@ -54,7 +54,7 @@ export class VirtualRouter extends pulumi.CustomResource {
     /**
      * List of references to VirtualRouterPeerings.
      */
-    public /*out*/ readonly peerings!: pulumi.Output<types.outputs.network.v20230401.SubResourceResponse[]>;
+    public /*out*/ readonly peerings!: pulumi.Output<types.outputs.SubResourceResponse[]>;
     /**
      * The provisioning state of the resource.
      */
@@ -131,11 +131,11 @@ export interface VirtualRouterArgs {
     /**
      * The Gateway on which VirtualRouter is hosted.
      */
-    hostedGateway?: pulumi.Input<types.inputs.network.v20230401.SubResourceArgs>;
+    hostedGateway?: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * The Subnet on which VirtualRouter is hosted.
      */
-    hostedSubnet?: pulumi.Input<types.inputs.network.v20230401.SubResourceArgs>;
+    hostedSubnet?: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * Resource ID.
      */

@@ -37,7 +37,7 @@ export interface ListAssetStreamingLocatorsResult {
     /**
      * The list of Streaming Locators.
      */
-    readonly streamingLocators: types.outputs.media.AssetStreamingLocatorResponse[];
+    readonly streamingLocators: types.outputs.AssetStreamingLocatorResponse[];
 }
 /**
  * Lists Streaming Locators which are associated with this asset.

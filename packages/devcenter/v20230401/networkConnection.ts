@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Network related settings
  */
@@ -78,7 +78,7 @@ export class NetworkConnection extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.devcenter.v20230401.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -154,7 +154,7 @@ export interface NetworkConnectionArgs {
     /**
      * AAD Join type.
      */
-    domainJoinType: pulumi.Input<string | types.enums.v20230401.DomainJoinType>;
+    domainJoinType: pulumi.Input<string | types.enums.DomainJoinType>;
     /**
      * Active Directory domain name
      */

@@ -43,7 +43,7 @@ export class PrivateAtlase extends pulumi.CustomResource {
     /**
      * The Private Atlas resource properties.
      */
-    public /*out*/ readonly properties!: pulumi.Output<types.outputs.maps.PrivateAtlasPropertiesResponse>;
+    public /*out*/ readonly properties!: pulumi.Output<types.outputs.PrivateAtlasPropertiesResponse>;
     /**
      * Resource tags.
      */

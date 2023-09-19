@@ -29,7 +29,7 @@ export interface GetVirtualNetworkRetrieveArgs {
  * The virtualNetworks resource definition.
  */
 export interface GetVirtualNetworkRetrieveResult {
-    readonly extendedLocation?: types.outputs.hybridcontainerservice.VirtualNetworksResponseExtendedLocation;
+    readonly extendedLocation?: types.outputs.VirtualNetworksResponseExtendedLocation;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -45,11 +45,11 @@ export interface GetVirtualNetworkRetrieveResult {
     /**
      * HybridAKSNetworkSpec defines the desired state of HybridAKSNetwork
      */
-    readonly properties: types.outputs.hybridcontainerservice.VirtualNetworksPropertiesResponse;
+    readonly properties: types.outputs.VirtualNetworksPropertiesResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.hybridcontainerservice.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

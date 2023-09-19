@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Notification Hubs Namespace Resource.
  */
@@ -42,15 +42,15 @@ export class Namespace extends pulumi.CustomResource {
     /**
      * Represents namespace properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.notificationhubs.v20230901.NamespacePropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.NamespacePropertiesResponse>;
     /**
      * The Sku description for a namespace
      */
-    public readonly sku!: pulumi.Output<types.outputs.notificationhubs.v20230901.SkuResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.notificationhubs.v20230901.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -117,7 +117,7 @@ export interface NamespaceArgs {
     /**
      * Represents namespace properties.
      */
-    properties?: pulumi.Input<types.inputs.notificationhubs.v20230901.NamespacePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.NamespacePropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -125,7 +125,7 @@ export interface NamespaceArgs {
     /**
      * The Sku description for a namespace
      */
-    sku: pulumi.Input<types.inputs.notificationhubs.v20230901.SkuArgs>;
+    sku: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Resource tags.
      */

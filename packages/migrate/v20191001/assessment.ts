@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An assessment created for a group in the Migration project.
  */
@@ -42,7 +42,7 @@ export class Assessment extends pulumi.CustomResource {
     /**
      * Properties of the assessment.
      */
-    public readonly properties!: pulumi.Output<types.outputs.migrate.v20191001.AssessmentPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.AssessmentPropertiesResponse>;
     /**
      * Type of the object = [Microsoft.Migrate/assessmentProjects/groups/assessments].
      */
@@ -115,7 +115,7 @@ export interface AssessmentArgs {
     /**
      * Properties of the assessment.
      */
-    properties: pulumi.Input<types.inputs.migrate.v20191001.AssessmentPropertiesArgs>;
+    properties: pulumi.Input<types.inputs.AssessmentPropertiesArgs>;
     /**
      * Name of the Azure Resource Group that project is part of.
      */

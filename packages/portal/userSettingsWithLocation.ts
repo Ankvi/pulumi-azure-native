@@ -35,7 +35,7 @@ export class UserSettingsWithLocation extends pulumi.CustomResource {
     /**
      * The cloud shell user settings properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.portal.UserPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.UserPropertiesResponse>;
 
     /**
      * Create a UserSettingsWithLocation resource with the given unique name, arguments, and options.
@@ -78,7 +78,7 @@ export interface UserSettingsWithLocationArgs {
     /**
      * The cloud shell user settings properties.
      */
-    properties: pulumi.Input<types.inputs.portal.UserPropertiesArgs>;
+    properties: pulumi.Input<types.inputs.UserPropertiesArgs>;
     /**
      * The name of the user settings
      */

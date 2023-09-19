@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The storage account credential.
  */
@@ -34,7 +34,7 @@ export class StorageAccountCredential extends pulumi.CustomResource {
     /**
      * The details of the storage account password.
      */
-    public readonly accessKey!: pulumi.Output<types.outputs.storsimple.v20170601.AsymmetricEncryptedSecretResponse | undefined>;
+    public readonly accessKey!: pulumi.Output<types.outputs.AsymmetricEncryptedSecretResponse | undefined>;
     /**
      * The storage endpoint
      */
@@ -116,7 +116,7 @@ export interface StorageAccountCredentialArgs {
     /**
      * The details of the storage account password.
      */
-    accessKey?: pulumi.Input<types.inputs.storsimple.v20170601.AsymmetricEncryptedSecretArgs>;
+    accessKey?: pulumi.Input<types.inputs.AsymmetricEncryptedSecretArgs>;
     /**
      * The storage endpoint
      */
@@ -124,7 +124,7 @@ export interface StorageAccountCredentialArgs {
     /**
      * The Kind of the object. Currently only Series8000 is supported
      */
-    kind?: pulumi.Input<types.enums.v20170601.Kind>;
+    kind?: pulumi.Input<types.enums.Kind>;
     /**
      * The manager name
      */
@@ -136,7 +136,7 @@ export interface StorageAccountCredentialArgs {
     /**
      * Signifies whether SSL needs to be enabled or not.
      */
-    sslStatus: pulumi.Input<types.enums.v20170601.SslStatus>;
+    sslStatus: pulumi.Input<types.enums.SslStatus>;
     /**
      * The storage account credential name.
      */

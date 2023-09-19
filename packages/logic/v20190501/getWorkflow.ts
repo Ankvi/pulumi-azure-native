@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a workflow.
  */
@@ -31,7 +31,7 @@ export interface GetWorkflowResult {
     /**
      * The access control configuration.
      */
-    readonly accessControl?: types.outputs.logic.v20190501.FlowAccessControlConfigurationResponse;
+    readonly accessControl?: types.outputs.FlowAccessControlConfigurationResponse;
     /**
      * Gets the access endpoint.
      */
@@ -51,7 +51,7 @@ export interface GetWorkflowResult {
     /**
      * The endpoints configuration.
      */
-    readonly endpointsConfiguration?: types.outputs.logic.v20190501.FlowEndpointsConfigurationResponse;
+    readonly endpointsConfiguration?: types.outputs.FlowEndpointsConfigurationResponse;
     /**
      * The resource id.
      */
@@ -59,15 +59,15 @@ export interface GetWorkflowResult {
     /**
      * Managed service identity properties.
      */
-    readonly identity?: types.outputs.logic.v20190501.ManagedServiceIdentityResponse;
+    readonly identity?: types.outputs.ManagedServiceIdentityResponse;
     /**
      * The integration account.
      */
-    readonly integrationAccount?: types.outputs.logic.v20190501.ResourceReferenceResponse;
+    readonly integrationAccount?: types.outputs.ResourceReferenceResponse;
     /**
      * The integration service environment.
      */
-    readonly integrationServiceEnvironment?: types.outputs.logic.v20190501.ResourceReferenceResponse;
+    readonly integrationServiceEnvironment?: types.outputs.ResourceReferenceResponse;
     /**
      * The resource location.
      */
@@ -79,7 +79,7 @@ export interface GetWorkflowResult {
     /**
      * The parameters.
      */
-    readonly parameters?: {[key: string]: types.outputs.logic.v20190501.WorkflowParameterResponse};
+    readonly parameters?: {[key: string]: types.outputs.WorkflowParameterResponse};
     /**
      * Gets the provisioning state.
      */
@@ -87,7 +87,7 @@ export interface GetWorkflowResult {
     /**
      * The sku.
      */
-    readonly sku: types.outputs.logic.v20190501.SkuResponse;
+    readonly sku: types.outputs.SkuResponse;
     /**
      * The state.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves the details of a Virtual Hub Bgp Connection.
  */
@@ -44,7 +44,7 @@ export interface GetVirtualHubBgpConnectionResult {
     /**
      * The reference to the HubVirtualNetworkConnection resource.
      */
-    readonly hubVirtualNetworkConnection?: types.outputs.network.v20230201.SubResourceResponse;
+    readonly hubVirtualNetworkConnection?: types.outputs.SubResourceResponse;
     /**
      * Resource ID.
      */

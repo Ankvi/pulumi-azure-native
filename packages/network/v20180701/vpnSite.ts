@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * VpnSite Resource.
  */
@@ -34,15 +34,15 @@ export class VpnSite extends pulumi.CustomResource {
     /**
      * The AddressSpace that contains an array of IP address ranges.
      */
-    public readonly addressSpace!: pulumi.Output<types.outputs.network.v20180701.AddressSpaceResponse | undefined>;
+    public readonly addressSpace!: pulumi.Output<types.outputs.AddressSpaceResponse | undefined>;
     /**
      * The set of bgp properties.
      */
-    public readonly bgpProperties!: pulumi.Output<types.outputs.network.v20180701.BgpSettingsResponse | undefined>;
+    public readonly bgpProperties!: pulumi.Output<types.outputs.BgpSettingsResponse | undefined>;
     /**
      * The device properties
      */
-    public readonly deviceProperties!: pulumi.Output<types.outputs.network.v20180701.DevicePropertiesResponse | undefined>;
+    public readonly deviceProperties!: pulumi.Output<types.outputs.DevicePropertiesResponse | undefined>;
     /**
      * Gets a unique read-only string that changes whenever the resource is updated.
      */
@@ -78,7 +78,7 @@ export class VpnSite extends pulumi.CustomResource {
     /**
      * The VirtualWAN to which the vpnSite belongs
      */
-    public readonly virtualWAN!: pulumi.Output<types.outputs.network.v20180701.SubResourceResponse | undefined>;
+    public readonly virtualWAN!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
 
     /**
      * Create a VpnSite resource with the given unique name, arguments, and options.
@@ -137,15 +137,15 @@ export interface VpnSiteArgs {
     /**
      * The AddressSpace that contains an array of IP address ranges.
      */
-    addressSpace?: pulumi.Input<types.inputs.network.v20180701.AddressSpaceArgs>;
+    addressSpace?: pulumi.Input<types.inputs.AddressSpaceArgs>;
     /**
      * The set of bgp properties.
      */
-    bgpProperties?: pulumi.Input<types.inputs.network.v20180701.BgpSettingsArgs>;
+    bgpProperties?: pulumi.Input<types.inputs.BgpSettingsArgs>;
     /**
      * The device properties
      */
-    deviceProperties?: pulumi.Input<types.inputs.network.v20180701.DevicePropertiesArgs>;
+    deviceProperties?: pulumi.Input<types.inputs.DevicePropertiesArgs>;
     /**
      * Resource ID.
      */
@@ -173,7 +173,7 @@ export interface VpnSiteArgs {
     /**
      * The VirtualWAN to which the vpnSite belongs
      */
-    virtualWAN?: pulumi.Input<types.inputs.network.v20180701.SubResourceArgs>;
+    virtualWAN?: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * The name of the VpnSite being created or updated.
      */

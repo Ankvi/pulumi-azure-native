@@ -42,7 +42,7 @@ export interface ListDeviceFailoverTarsResult {
     /**
      * The list of all the failover targets.
      */
-    readonly value?: types.outputs.storsimple.FailoverTargetResponse[];
+    readonly value?: types.outputs.FailoverTargetResponse[];
 }
 /**
  * Given a list of volume containers to be failed over from a source device, this method returns the eligibility result, as a failover target, for all devices under that resource.

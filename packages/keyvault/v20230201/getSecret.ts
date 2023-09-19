@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the specified secret.  NOTE: This API is intended for internal use in ARM deployments. Users should use the data-plane REST service for interaction with vault secrets.
  */
@@ -48,7 +48,7 @@ export interface GetSecretResult {
     /**
      * Properties of the secret
      */
-    readonly properties: types.outputs.keyvault.v20230201.SecretPropertiesResponse;
+    readonly properties: types.outputs.SecretPropertiesResponse;
     /**
      * Tags assigned to the key vault resource.
      */

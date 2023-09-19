@@ -47,7 +47,7 @@ export class ExpressRouteCircuit extends pulumi.CustomResource {
     /**
      * The list of authorizations.
      */
-    public readonly authorizations!: pulumi.Output<types.outputs.network.ExpressRouteCircuitAuthorizationResponse[] | undefined>;
+    public readonly authorizations!: pulumi.Output<types.outputs.ExpressRouteCircuitAuthorizationResponse[] | undefined>;
     /**
      * The bandwidth of the circuit when the circuit is provisioned on an ExpressRoutePort resource.
      */
@@ -63,7 +63,7 @@ export class ExpressRouteCircuit extends pulumi.CustomResource {
     /**
      * The reference to the ExpressRoutePort resource when the circuit is provisioned on an ExpressRoutePort resource.
      */
-    public readonly expressRoutePort!: pulumi.Output<types.outputs.network.SubResourceResponse | undefined>;
+    public readonly expressRoutePort!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * The GatewayManager Etag.
      */
@@ -83,7 +83,7 @@ export class ExpressRouteCircuit extends pulumi.CustomResource {
     /**
      * The list of peerings.
      */
-    public readonly peerings!: pulumi.Output<types.outputs.network.ExpressRouteCircuitPeeringResponse[] | undefined>;
+    public readonly peerings!: pulumi.Output<types.outputs.ExpressRouteCircuitPeeringResponse[] | undefined>;
     /**
      * The provisioning state of the express route circuit resource.
      */
@@ -99,7 +99,7 @@ export class ExpressRouteCircuit extends pulumi.CustomResource {
     /**
      * The ServiceProviderProperties.
      */
-    public readonly serviceProviderProperties!: pulumi.Output<types.outputs.network.ExpressRouteCircuitServiceProviderPropertiesResponse | undefined>;
+    public readonly serviceProviderProperties!: pulumi.Output<types.outputs.ExpressRouteCircuitServiceProviderPropertiesResponse | undefined>;
     /**
      * The ServiceProviderProvisioningState state of the resource.
      */
@@ -107,7 +107,7 @@ export class ExpressRouteCircuit extends pulumi.CustomResource {
     /**
      * The SKU.
      */
-    public readonly sku!: pulumi.Output<types.outputs.network.ExpressRouteCircuitSkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.ExpressRouteCircuitSkuResponse | undefined>;
     /**
      * The identifier of the circuit traffic. Outer tag for QinQ encapsulation.
      */
@@ -207,7 +207,7 @@ export interface ExpressRouteCircuitArgs {
      * The list of authorizations.
      * These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
      */
-    authorizations?: pulumi.Input<pulumi.Input<types.inputs.network.ExpressRouteCircuitAuthorizationArgs>[]>;
+    authorizations?: pulumi.Input<pulumi.Input<types.inputs.ExpressRouteCircuitAuthorizationArgs>[]>;
     /**
      * The bandwidth of the circuit when the circuit is provisioned on an ExpressRoutePort resource.
      */
@@ -223,7 +223,7 @@ export interface ExpressRouteCircuitArgs {
     /**
      * The reference to the ExpressRoutePort resource when the circuit is provisioned on an ExpressRoutePort resource.
      */
-    expressRoutePort?: pulumi.Input<types.inputs.network.SubResourceArgs>;
+    expressRoutePort?: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * The GatewayManager Etag.
      */
@@ -244,7 +244,7 @@ export interface ExpressRouteCircuitArgs {
      * The list of peerings.
      * These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
      */
-    peerings?: pulumi.Input<pulumi.Input<types.inputs.network.ExpressRouteCircuitPeeringArgs>[]>;
+    peerings?: pulumi.Input<pulumi.Input<types.inputs.ExpressRouteCircuitPeeringArgs>[]>;
     /**
      * The name of the resource group.
      */
@@ -260,7 +260,7 @@ export interface ExpressRouteCircuitArgs {
     /**
      * The ServiceProviderProperties.
      */
-    serviceProviderProperties?: pulumi.Input<types.inputs.network.ExpressRouteCircuitServiceProviderPropertiesArgs>;
+    serviceProviderProperties?: pulumi.Input<types.inputs.ExpressRouteCircuitServiceProviderPropertiesArgs>;
     /**
      * The ServiceProviderProvisioningState state of the resource.
      */
@@ -268,7 +268,7 @@ export interface ExpressRouteCircuitArgs {
     /**
      * The SKU.
      */
-    sku?: pulumi.Input<types.inputs.network.ExpressRouteCircuitSkuArgs>;
+    sku?: pulumi.Input<types.inputs.ExpressRouteCircuitSkuArgs>;
     /**
      * Resource tags.
      */

@@ -23,7 +23,7 @@ utilities.lazyLoad(exports, ["listIotDpsResourceKeysForKeyName","listIotDpsResou
 
 
 // Export enums:
-export * from "../types/enums/v20200901preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

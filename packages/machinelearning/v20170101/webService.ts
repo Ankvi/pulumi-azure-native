@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Instance of an Azure ML web service resource.
  */
@@ -42,7 +42,7 @@ export class WebService extends pulumi.CustomResource {
     /**
      * Contains the property payload that describes the web service.
      */
-    public readonly properties!: pulumi.Output<types.outputs.machinelearning.v20170101.WebServicePropertiesForGraphResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.WebServicePropertiesForGraphResponse>;
     /**
      * Contains resource tags defined as key/value pairs.
      */
@@ -70,7 +70,7 @@ export class WebService extends pulumi.CustomResource {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
             resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.machinelearning.v20170101.webServicePropertiesForGraphArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.webServicePropertiesForGraphArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["webServiceName"] = args ? args.webServiceName : undefined;
@@ -101,7 +101,7 @@ export interface WebServiceArgs {
     /**
      * Contains the property payload that describes the web service.
      */
-    properties: pulumi.Input<types.inputs.machinelearning.v20170101.WebServicePropertiesForGraphArgs>;
+    properties: pulumi.Input<types.inputs.WebServicePropertiesForGraphArgs>;
     /**
      * Name of the resource group in which the web service is located.
      */

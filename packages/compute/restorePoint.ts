@@ -39,11 +39,11 @@ export class RestorePoint extends pulumi.CustomResource {
     /**
      * List of disk resource ids that the customer wishes to exclude from the restore point. If no disks are specified, all disks will be included.
      */
-    public readonly excludeDisks!: pulumi.Output<types.outputs.compute.ApiEntityReferenceResponse[] | undefined>;
+    public readonly excludeDisks!: pulumi.Output<types.outputs.ApiEntityReferenceResponse[] | undefined>;
     /**
      * The restore point instance view.
      */
-    public /*out*/ readonly instanceView!: pulumi.Output<types.outputs.compute.RestorePointInstanceViewResponse>;
+    public /*out*/ readonly instanceView!: pulumi.Output<types.outputs.RestorePointInstanceViewResponse>;
     /**
      * Resource name
      */
@@ -55,11 +55,11 @@ export class RestorePoint extends pulumi.CustomResource {
     /**
      * Gets the details of the VM captured at the time of the restore point creation.
      */
-    public readonly sourceMetadata!: pulumi.Output<types.outputs.compute.RestorePointSourceMetadataResponse | undefined>;
+    public readonly sourceMetadata!: pulumi.Output<types.outputs.RestorePointSourceMetadataResponse | undefined>;
     /**
      * Resource Id of the source restore point from which a copy needs to be created.
      */
-    public readonly sourceRestorePoint!: pulumi.Output<types.outputs.compute.ApiEntityReferenceResponse | undefined>;
+    public readonly sourceRestorePoint!: pulumi.Output<types.outputs.ApiEntityReferenceResponse | undefined>;
     /**
      * Gets the creation time of the restore point.
      */
@@ -127,7 +127,7 @@ export interface RestorePointArgs {
     /**
      * List of disk resource ids that the customer wishes to exclude from the restore point. If no disks are specified, all disks will be included.
      */
-    excludeDisks?: pulumi.Input<pulumi.Input<types.inputs.compute.ApiEntityReferenceArgs>[]>;
+    excludeDisks?: pulumi.Input<pulumi.Input<types.inputs.ApiEntityReferenceArgs>[]>;
     /**
      * The name of the resource group.
      */
@@ -143,11 +143,11 @@ export interface RestorePointArgs {
     /**
      * Gets the details of the VM captured at the time of the restore point creation.
      */
-    sourceMetadata?: pulumi.Input<types.inputs.compute.RestorePointSourceMetadataArgs>;
+    sourceMetadata?: pulumi.Input<types.inputs.RestorePointSourceMetadataArgs>;
     /**
      * Resource Id of the source restore point from which a copy needs to be created.
      */
-    sourceRestorePoint?: pulumi.Input<types.inputs.compute.ApiEntityReferenceArgs>;
+    sourceRestorePoint?: pulumi.Input<types.inputs.ApiEntityReferenceArgs>;
     /**
      * Gets the creation time of the restore point.
      */

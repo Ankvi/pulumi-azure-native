@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the default rollout details.
  */
@@ -39,11 +39,11 @@ export interface GetDefaultRolloutResult {
     /**
      * Properties of the rollout.
      */
-    readonly properties: types.outputs.providerhub.v20210901preview.DefaultRolloutResponseProperties;
+    readonly properties: types.outputs.DefaultRolloutResponseProperties;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.providerhub.v20210901preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a Test Base CustomerEvent.
  */
@@ -48,11 +48,11 @@ export interface GetCustomerEventResult {
     /**
      * The notification event receivers.
      */
-    readonly receivers: types.outputs.testbase.v20220401preview.NotificationEventReceiverResponse[];
+    readonly receivers: types.outputs.NotificationEventReceiverResponse[];
     /**
      * The system metadata relating to this resource
      */
-    readonly systemData: types.outputs.testbase.v20220401preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource type.
      */

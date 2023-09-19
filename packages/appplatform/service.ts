@@ -43,15 +43,15 @@ export class Service extends pulumi.CustomResource {
     /**
      * Properties of the Service resource
      */
-    public readonly properties!: pulumi.Output<types.outputs.appplatform.ClusterResourcePropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ClusterResourcePropertiesResponse>;
     /**
      * Sku of the Service resource
      */
-    public readonly sku!: pulumi.Output<types.outputs.appplatform.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.appplatform.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Tags of the service which is a list of key value pairs that describe the resource.
      */
@@ -76,10 +76,10 @@ export class Service extends pulumi.CustomResource {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
             resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.appplatform.clusterResourcePropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.clusterResourcePropertiesArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
-            resourceInputs["sku"] = args ? (args.sku ? pulumi.output(args.sku).apply(types.inputs.appplatform.skuArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["sku"] = args ? (args.sku ? pulumi.output(args.sku).apply(types.inputs.skuArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
@@ -111,7 +111,7 @@ export interface ServiceArgs {
     /**
      * Properties of the Service resource
      */
-    properties?: pulumi.Input<types.inputs.appplatform.ClusterResourcePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ClusterResourcePropertiesArgs>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */
@@ -123,7 +123,7 @@ export interface ServiceArgs {
     /**
      * Sku of the Service resource
      */
-    sku?: pulumi.Input<types.inputs.appplatform.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Tags of the service which is a list of key value pairs that describe the resource.
      */

@@ -45,7 +45,7 @@ export interface GetTableResult {
     /**
      * List of stored access policies specified on the table.
      */
-    readonly signedIdentifiers?: types.outputs.storage.TableSignedIdentifierResponse[];
+    readonly signedIdentifiers?: types.outputs.TableSignedIdentifierResponse[];
     /**
      * Table name under the specified account
      */

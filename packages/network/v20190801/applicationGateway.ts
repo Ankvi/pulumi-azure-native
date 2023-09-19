@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Application gateway resource.
  */
@@ -34,23 +34,23 @@ export class ApplicationGateway extends pulumi.CustomResource {
     /**
      * Authentication certificates of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      */
-    public readonly authenticationCertificates!: pulumi.Output<types.outputs.network.v20190801.ApplicationGatewayAuthenticationCertificateResponse[] | undefined>;
+    public readonly authenticationCertificates!: pulumi.Output<types.outputs.ApplicationGatewayAuthenticationCertificateResponse[] | undefined>;
     /**
      * Autoscale Configuration.
      */
-    public readonly autoscaleConfiguration!: pulumi.Output<types.outputs.network.v20190801.ApplicationGatewayAutoscaleConfigurationResponse | undefined>;
+    public readonly autoscaleConfiguration!: pulumi.Output<types.outputs.ApplicationGatewayAutoscaleConfigurationResponse | undefined>;
     /**
      * Backend address pool of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      */
-    public readonly backendAddressPools!: pulumi.Output<types.outputs.network.v20190801.ApplicationGatewayBackendAddressPoolResponse[] | undefined>;
+    public readonly backendAddressPools!: pulumi.Output<types.outputs.ApplicationGatewayBackendAddressPoolResponse[] | undefined>;
     /**
      * Backend http settings of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      */
-    public readonly backendHttpSettingsCollection!: pulumi.Output<types.outputs.network.v20190801.ApplicationGatewayBackendHttpSettingsResponse[] | undefined>;
+    public readonly backendHttpSettingsCollection!: pulumi.Output<types.outputs.ApplicationGatewayBackendHttpSettingsResponse[] | undefined>;
     /**
      * Custom error configurations of the application gateway resource.
      */
-    public readonly customErrorConfigurations!: pulumi.Output<types.outputs.network.v20190801.ApplicationGatewayCustomErrorResponse[] | undefined>;
+    public readonly customErrorConfigurations!: pulumi.Output<types.outputs.ApplicationGatewayCustomErrorResponse[] | undefined>;
     /**
      * Whether FIPS is enabled on the application gateway resource.
      */
@@ -66,27 +66,27 @@ export class ApplicationGateway extends pulumi.CustomResource {
     /**
      * Reference of the FirewallPolicy resource.
      */
-    public readonly firewallPolicy!: pulumi.Output<types.outputs.network.v20190801.SubResourceResponse | undefined>;
+    public readonly firewallPolicy!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * Frontend IP addresses of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      */
-    public readonly frontendIPConfigurations!: pulumi.Output<types.outputs.network.v20190801.ApplicationGatewayFrontendIPConfigurationResponse[] | undefined>;
+    public readonly frontendIPConfigurations!: pulumi.Output<types.outputs.ApplicationGatewayFrontendIPConfigurationResponse[] | undefined>;
     /**
      * Frontend ports of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      */
-    public readonly frontendPorts!: pulumi.Output<types.outputs.network.v20190801.ApplicationGatewayFrontendPortResponse[] | undefined>;
+    public readonly frontendPorts!: pulumi.Output<types.outputs.ApplicationGatewayFrontendPortResponse[] | undefined>;
     /**
      * Subnets of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      */
-    public readonly gatewayIPConfigurations!: pulumi.Output<types.outputs.network.v20190801.ApplicationGatewayIPConfigurationResponse[] | undefined>;
+    public readonly gatewayIPConfigurations!: pulumi.Output<types.outputs.ApplicationGatewayIPConfigurationResponse[] | undefined>;
     /**
      * Http listeners of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      */
-    public readonly httpListeners!: pulumi.Output<types.outputs.network.v20190801.ApplicationGatewayHttpListenerResponse[] | undefined>;
+    public readonly httpListeners!: pulumi.Output<types.outputs.ApplicationGatewayHttpListenerResponse[] | undefined>;
     /**
      * The identity of the application gateway, if configured.
      */
-    public readonly identity!: pulumi.Output<types.outputs.network.v20190801.ManagedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * Resource location.
      */
@@ -102,7 +102,7 @@ export class ApplicationGateway extends pulumi.CustomResource {
     /**
      * Probes of the application gateway resource.
      */
-    public readonly probes!: pulumi.Output<types.outputs.network.v20190801.ApplicationGatewayProbeResponse[] | undefined>;
+    public readonly probes!: pulumi.Output<types.outputs.ApplicationGatewayProbeResponse[] | undefined>;
     /**
      * The provisioning state of the application gateway resource.
      */
@@ -110,11 +110,11 @@ export class ApplicationGateway extends pulumi.CustomResource {
     /**
      * Redirect configurations of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      */
-    public readonly redirectConfigurations!: pulumi.Output<types.outputs.network.v20190801.ApplicationGatewayRedirectConfigurationResponse[] | undefined>;
+    public readonly redirectConfigurations!: pulumi.Output<types.outputs.ApplicationGatewayRedirectConfigurationResponse[] | undefined>;
     /**
      * Request routing rules of the application gateway resource.
      */
-    public readonly requestRoutingRules!: pulumi.Output<types.outputs.network.v20190801.ApplicationGatewayRequestRoutingRuleResponse[] | undefined>;
+    public readonly requestRoutingRules!: pulumi.Output<types.outputs.ApplicationGatewayRequestRoutingRuleResponse[] | undefined>;
     /**
      * The resource GUID property of the application gateway resource.
      */
@@ -122,19 +122,19 @@ export class ApplicationGateway extends pulumi.CustomResource {
     /**
      * Rewrite rules for the application gateway resource.
      */
-    public readonly rewriteRuleSets!: pulumi.Output<types.outputs.network.v20190801.ApplicationGatewayRewriteRuleSetResponse[] | undefined>;
+    public readonly rewriteRuleSets!: pulumi.Output<types.outputs.ApplicationGatewayRewriteRuleSetResponse[] | undefined>;
     /**
      * SKU of the application gateway resource.
      */
-    public readonly sku!: pulumi.Output<types.outputs.network.v20190801.ApplicationGatewaySkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.ApplicationGatewaySkuResponse | undefined>;
     /**
      * SSL certificates of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      */
-    public readonly sslCertificates!: pulumi.Output<types.outputs.network.v20190801.ApplicationGatewaySslCertificateResponse[] | undefined>;
+    public readonly sslCertificates!: pulumi.Output<types.outputs.ApplicationGatewaySslCertificateResponse[] | undefined>;
     /**
      * SSL policy of the application gateway resource.
      */
-    public readonly sslPolicy!: pulumi.Output<types.outputs.network.v20190801.ApplicationGatewaySslPolicyResponse | undefined>;
+    public readonly sslPolicy!: pulumi.Output<types.outputs.ApplicationGatewaySslPolicyResponse | undefined>;
     /**
      * Resource tags.
      */
@@ -142,7 +142,7 @@ export class ApplicationGateway extends pulumi.CustomResource {
     /**
      * Trusted Root certificates of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      */
-    public readonly trustedRootCertificates!: pulumi.Output<types.outputs.network.v20190801.ApplicationGatewayTrustedRootCertificateResponse[] | undefined>;
+    public readonly trustedRootCertificates!: pulumi.Output<types.outputs.ApplicationGatewayTrustedRootCertificateResponse[] | undefined>;
     /**
      * Resource type.
      */
@@ -150,11 +150,11 @@ export class ApplicationGateway extends pulumi.CustomResource {
     /**
      * URL path map of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      */
-    public readonly urlPathMaps!: pulumi.Output<types.outputs.network.v20190801.ApplicationGatewayUrlPathMapResponse[] | undefined>;
+    public readonly urlPathMaps!: pulumi.Output<types.outputs.ApplicationGatewayUrlPathMapResponse[] | undefined>;
     /**
      * Web application firewall configuration.
      */
-    public readonly webApplicationFirewallConfiguration!: pulumi.Output<types.outputs.network.v20190801.ApplicationGatewayWebApplicationFirewallConfigurationResponse | undefined>;
+    public readonly webApplicationFirewallConfiguration!: pulumi.Output<types.outputs.ApplicationGatewayWebApplicationFirewallConfigurationResponse | undefined>;
     /**
      * A list of availability zones denoting where the resource needs to come from.
      */
@@ -261,23 +261,23 @@ export interface ApplicationGatewayArgs {
     /**
      * Authentication certificates of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      */
-    authenticationCertificates?: pulumi.Input<pulumi.Input<types.inputs.network.v20190801.ApplicationGatewayAuthenticationCertificateArgs>[]>;
+    authenticationCertificates?: pulumi.Input<pulumi.Input<types.inputs.ApplicationGatewayAuthenticationCertificateArgs>[]>;
     /**
      * Autoscale Configuration.
      */
-    autoscaleConfiguration?: pulumi.Input<types.inputs.network.v20190801.ApplicationGatewayAutoscaleConfigurationArgs>;
+    autoscaleConfiguration?: pulumi.Input<types.inputs.ApplicationGatewayAutoscaleConfigurationArgs>;
     /**
      * Backend address pool of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      */
-    backendAddressPools?: pulumi.Input<pulumi.Input<types.inputs.network.v20190801.ApplicationGatewayBackendAddressPoolArgs>[]>;
+    backendAddressPools?: pulumi.Input<pulumi.Input<types.inputs.ApplicationGatewayBackendAddressPoolArgs>[]>;
     /**
      * Backend http settings of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      */
-    backendHttpSettingsCollection?: pulumi.Input<pulumi.Input<types.inputs.network.v20190801.ApplicationGatewayBackendHttpSettingsArgs>[]>;
+    backendHttpSettingsCollection?: pulumi.Input<pulumi.Input<types.inputs.ApplicationGatewayBackendHttpSettingsArgs>[]>;
     /**
      * Custom error configurations of the application gateway resource.
      */
-    customErrorConfigurations?: pulumi.Input<pulumi.Input<types.inputs.network.v20190801.ApplicationGatewayCustomErrorArgs>[]>;
+    customErrorConfigurations?: pulumi.Input<pulumi.Input<types.inputs.ApplicationGatewayCustomErrorArgs>[]>;
     /**
      * Whether FIPS is enabled on the application gateway resource.
      */
@@ -289,23 +289,23 @@ export interface ApplicationGatewayArgs {
     /**
      * Reference of the FirewallPolicy resource.
      */
-    firewallPolicy?: pulumi.Input<types.inputs.network.v20190801.SubResourceArgs>;
+    firewallPolicy?: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * Frontend IP addresses of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      */
-    frontendIPConfigurations?: pulumi.Input<pulumi.Input<types.inputs.network.v20190801.ApplicationGatewayFrontendIPConfigurationArgs>[]>;
+    frontendIPConfigurations?: pulumi.Input<pulumi.Input<types.inputs.ApplicationGatewayFrontendIPConfigurationArgs>[]>;
     /**
      * Frontend ports of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      */
-    frontendPorts?: pulumi.Input<pulumi.Input<types.inputs.network.v20190801.ApplicationGatewayFrontendPortArgs>[]>;
+    frontendPorts?: pulumi.Input<pulumi.Input<types.inputs.ApplicationGatewayFrontendPortArgs>[]>;
     /**
      * Subnets of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      */
-    gatewayIPConfigurations?: pulumi.Input<pulumi.Input<types.inputs.network.v20190801.ApplicationGatewayIPConfigurationArgs>[]>;
+    gatewayIPConfigurations?: pulumi.Input<pulumi.Input<types.inputs.ApplicationGatewayIPConfigurationArgs>[]>;
     /**
      * Http listeners of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      */
-    httpListeners?: pulumi.Input<pulumi.Input<types.inputs.network.v20190801.ApplicationGatewayHttpListenerArgs>[]>;
+    httpListeners?: pulumi.Input<pulumi.Input<types.inputs.ApplicationGatewayHttpListenerArgs>[]>;
     /**
      * Resource ID.
      */
@@ -313,7 +313,7 @@ export interface ApplicationGatewayArgs {
     /**
      * The identity of the application gateway, if configured.
      */
-    identity?: pulumi.Input<types.inputs.network.v20190801.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
      * Resource location.
      */
@@ -321,15 +321,15 @@ export interface ApplicationGatewayArgs {
     /**
      * Probes of the application gateway resource.
      */
-    probes?: pulumi.Input<pulumi.Input<types.inputs.network.v20190801.ApplicationGatewayProbeArgs>[]>;
+    probes?: pulumi.Input<pulumi.Input<types.inputs.ApplicationGatewayProbeArgs>[]>;
     /**
      * Redirect configurations of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      */
-    redirectConfigurations?: pulumi.Input<pulumi.Input<types.inputs.network.v20190801.ApplicationGatewayRedirectConfigurationArgs>[]>;
+    redirectConfigurations?: pulumi.Input<pulumi.Input<types.inputs.ApplicationGatewayRedirectConfigurationArgs>[]>;
     /**
      * Request routing rules of the application gateway resource.
      */
-    requestRoutingRules?: pulumi.Input<pulumi.Input<types.inputs.network.v20190801.ApplicationGatewayRequestRoutingRuleArgs>[]>;
+    requestRoutingRules?: pulumi.Input<pulumi.Input<types.inputs.ApplicationGatewayRequestRoutingRuleArgs>[]>;
     /**
      * The name of the resource group.
      */
@@ -341,19 +341,19 @@ export interface ApplicationGatewayArgs {
     /**
      * Rewrite rules for the application gateway resource.
      */
-    rewriteRuleSets?: pulumi.Input<pulumi.Input<types.inputs.network.v20190801.ApplicationGatewayRewriteRuleSetArgs>[]>;
+    rewriteRuleSets?: pulumi.Input<pulumi.Input<types.inputs.ApplicationGatewayRewriteRuleSetArgs>[]>;
     /**
      * SKU of the application gateway resource.
      */
-    sku?: pulumi.Input<types.inputs.network.v20190801.ApplicationGatewaySkuArgs>;
+    sku?: pulumi.Input<types.inputs.ApplicationGatewaySkuArgs>;
     /**
      * SSL certificates of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      */
-    sslCertificates?: pulumi.Input<pulumi.Input<types.inputs.network.v20190801.ApplicationGatewaySslCertificateArgs>[]>;
+    sslCertificates?: pulumi.Input<pulumi.Input<types.inputs.ApplicationGatewaySslCertificateArgs>[]>;
     /**
      * SSL policy of the application gateway resource.
      */
-    sslPolicy?: pulumi.Input<types.inputs.network.v20190801.ApplicationGatewaySslPolicyArgs>;
+    sslPolicy?: pulumi.Input<types.inputs.ApplicationGatewaySslPolicyArgs>;
     /**
      * Resource tags.
      */
@@ -361,15 +361,15 @@ export interface ApplicationGatewayArgs {
     /**
      * Trusted Root certificates of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      */
-    trustedRootCertificates?: pulumi.Input<pulumi.Input<types.inputs.network.v20190801.ApplicationGatewayTrustedRootCertificateArgs>[]>;
+    trustedRootCertificates?: pulumi.Input<pulumi.Input<types.inputs.ApplicationGatewayTrustedRootCertificateArgs>[]>;
     /**
      * URL path map of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
      */
-    urlPathMaps?: pulumi.Input<pulumi.Input<types.inputs.network.v20190801.ApplicationGatewayUrlPathMapArgs>[]>;
+    urlPathMaps?: pulumi.Input<pulumi.Input<types.inputs.ApplicationGatewayUrlPathMapArgs>[]>;
     /**
      * Web application firewall configuration.
      */
-    webApplicationFirewallConfiguration?: pulumi.Input<types.inputs.network.v20190801.ApplicationGatewayWebApplicationFirewallConfigurationArgs>;
+    webApplicationFirewallConfiguration?: pulumi.Input<types.inputs.ApplicationGatewayWebApplicationFirewallConfigurationArgs>;
     /**
      * A list of availability zones denoting where the resource needs to come from.
      */

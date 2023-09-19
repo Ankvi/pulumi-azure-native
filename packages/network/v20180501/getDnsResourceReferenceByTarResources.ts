@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns the DNS records specified by the referencing targetResourceIds.
  */
@@ -17,7 +17,7 @@ export interface GetDnsResourceReferenceByTarResourcesArgs {
     /**
      * A list of references to azure resources for which referencing dns records need to be queried.
      */
-    targetResources?: types.inputs.network.v20180501.SubResource[];
+    targetResources?: types.inputs.SubResource[];
 }
 
 /**
@@ -27,7 +27,7 @@ export interface GetDnsResourceReferenceByTarResourcesResult {
     /**
      * The result of dns resource reference request. A list of dns resource references for each of the azure resource in the request
      */
-    readonly dnsResourceReferences?: types.outputs.network.v20180501.DnsResourceReferenceResponse[];
+    readonly dnsResourceReferences?: types.outputs.DnsResourceReferenceResponse[];
 }
 /**
  * Returns the DNS records specified by the referencing targetResourceIds.
@@ -40,5 +40,5 @@ export interface GetDnsResourceReferenceByTarResourcesOutputArgs {
     /**
      * A list of references to azure resources for which referencing dns records need to be queried.
      */
-    targetResources?: pulumi.Input<pulumi.Input<types.inputs.network.v20180501.SubResourceArgs>[]>;
+    targetResources?: pulumi.Input<pulumi.Input<types.inputs.SubResourceArgs>[]>;
 }

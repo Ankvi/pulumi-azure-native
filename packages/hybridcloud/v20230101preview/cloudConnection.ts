@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Resource which represents the managed network connection between Azure Gateways and remote cloud gateways.
  */
@@ -34,7 +34,7 @@ export class CloudConnection extends pulumi.CustomResource {
     /**
      * The cloud connector which discovered the remote resource.
      */
-    public readonly cloudConnector!: pulumi.Output<types.outputs.hybridcloud.v20230101preview.ResourceReferenceResponse | undefined>;
+    public readonly cloudConnector!: pulumi.Output<types.outputs.ResourceReferenceResponse | undefined>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -62,7 +62,7 @@ export class CloudConnection extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.hybridcloud.v20230101preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -74,7 +74,7 @@ export class CloudConnection extends pulumi.CustomResource {
     /**
      * The virtualHub to which the cloud connection belongs.
      */
-    public readonly virtualHub!: pulumi.Output<types.outputs.hybridcloud.v20230101preview.ResourceReferenceResponse | undefined>;
+    public readonly virtualHub!: pulumi.Output<types.outputs.ResourceReferenceResponse | undefined>;
 
     /**
      * Create a CloudConnection resource with the given unique name, arguments, and options.
@@ -134,7 +134,7 @@ export interface CloudConnectionArgs {
     /**
      * The cloud connector which discovered the remote resource.
      */
-    cloudConnector?: pulumi.Input<types.inputs.hybridcloud.v20230101preview.ResourceReferenceArgs>;
+    cloudConnector?: pulumi.Input<types.inputs.ResourceReferenceArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -158,5 +158,5 @@ export interface CloudConnectionArgs {
     /**
      * The virtualHub to which the cloud connection belongs.
      */
-    virtualHub?: pulumi.Input<types.inputs.hybridcloud.v20230101preview.ResourceReferenceArgs>;
+    virtualHub?: pulumi.Input<types.inputs.ResourceReferenceArgs>;
 }

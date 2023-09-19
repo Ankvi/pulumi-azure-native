@@ -44,7 +44,7 @@ export interface GetAppResult {
     /**
      * The managed identities for the IoT Central application.
      */
-    readonly identity?: types.outputs.iotcentral.SystemAssignedServiceIdentityResponse;
+    readonly identity?: types.outputs.SystemAssignedServiceIdentityResponse;
     /**
      * The resource location.
      */
@@ -56,7 +56,7 @@ export interface GetAppResult {
     /**
      * A valid instance SKU.
      */
-    readonly sku: types.outputs.iotcentral.AppSkuInfoResponse;
+    readonly sku: types.outputs.AppSkuInfoResponse;
     /**
      * The current state of the application.
      */

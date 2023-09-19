@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Contact details for security issues
  */
@@ -105,11 +105,11 @@ export interface SecurityContactArgs {
     /**
      * Whether to send security alerts notifications to the security contact
      */
-    alertNotifications: pulumi.Input<string | types.enums.v20170801preview.AlertNotifications>;
+    alertNotifications: pulumi.Input<string | types.enums.AlertNotifications>;
     /**
      * Whether to send security alerts notifications to subscription admins
      */
-    alertsToAdmins: pulumi.Input<string | types.enums.v20170801preview.AlertsToAdmins>;
+    alertsToAdmins: pulumi.Input<string | types.enums.AlertsToAdmins>;
     /**
      * The email of this security contact
      */

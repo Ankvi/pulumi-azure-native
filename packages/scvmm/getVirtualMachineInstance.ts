@@ -27,15 +27,15 @@ export interface GetVirtualMachineInstanceResult {
     /**
      * Availability Sets in vm.
      */
-    readonly availabilitySets?: types.outputs.scvmm.VirtualMachineInstancePropertiesResponseAvailabilitySets[];
+    readonly availabilitySets?: types.outputs.VirtualMachineInstancePropertiesResponseAvailabilitySets[];
     /**
      * Gets or sets the extended location.
      */
-    readonly extendedLocation: types.outputs.scvmm.ExtendedLocationResponse;
+    readonly extendedLocation: types.outputs.ExtendedLocationResponse;
     /**
      * Hardware properties.
      */
-    readonly hardwareProfile?: types.outputs.scvmm.HardwareProfileResponse;
+    readonly hardwareProfile?: types.outputs.HardwareProfileResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -43,7 +43,7 @@ export interface GetVirtualMachineInstanceResult {
     /**
      * Gets the infrastructure profile.
      */
-    readonly infrastructureProfile?: types.outputs.scvmm.InfrastructureProfileResponse;
+    readonly infrastructureProfile?: types.outputs.InfrastructureProfileResponse;
     /**
      * The name of the resource
      */
@@ -51,11 +51,11 @@ export interface GetVirtualMachineInstanceResult {
     /**
      * Network properties.
      */
-    readonly networkProfile?: types.outputs.scvmm.NetworkProfileResponse;
+    readonly networkProfile?: types.outputs.NetworkProfileResponse;
     /**
      * OS properties.
      */
-    readonly osProfile?: types.outputs.scvmm.OsProfileForVMInstanceResponse;
+    readonly osProfile?: types.outputs.OsProfileForVMInstanceResponse;
     /**
      * Gets the power state of the virtual machine.
      */
@@ -67,11 +67,11 @@ export interface GetVirtualMachineInstanceResult {
     /**
      * Storage properties.
      */
-    readonly storageProfile?: types.outputs.scvmm.StorageProfileResponse;
+    readonly storageProfile?: types.outputs.StorageProfileResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.scvmm.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

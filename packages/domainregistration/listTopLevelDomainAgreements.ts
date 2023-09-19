@@ -41,7 +41,7 @@ export interface ListTopLevelDomainAgreementsResult {
     /**
      * Collection of resources.
      */
-    readonly value: types.outputs.domainregistration.TldLegalAgreementResponse[];
+    readonly value: types.outputs.TldLegalAgreementResponse[];
 }
 /**
  * Description for Gets all legal agreements that user needs to accept before purchasing a domain.

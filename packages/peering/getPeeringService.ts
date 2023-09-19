@@ -40,7 +40,7 @@ export interface GetPeeringServiceResult {
     /**
      * The Log Analytics Workspace Properties
      */
-    readonly logAnalyticsWorkspaceProperties?: types.outputs.peering.LogAnalyticsWorkspacePropertiesResponse;
+    readonly logAnalyticsWorkspaceProperties?: types.outputs.LogAnalyticsWorkspacePropertiesResponse;
     /**
      * The name of the resource.
      */
@@ -68,7 +68,7 @@ export interface GetPeeringServiceResult {
     /**
      * The SKU that defines the type of the peering service.
      */
-    readonly sku?: types.outputs.peering.PeeringServiceSkuResponse;
+    readonly sku?: types.outputs.PeeringServiceSkuResponse;
     /**
      * The resource tags.
      */

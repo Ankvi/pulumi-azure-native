@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The server encryption protector.
  */
@@ -147,7 +147,7 @@ export interface EncryptionProtectorArgs {
     /**
      * The encryption protector type like 'ServiceManaged', 'AzureKeyVault'.
      */
-    serverKeyType: pulumi.Input<string | types.enums.v20221101preview.ServerKeyType>;
+    serverKeyType: pulumi.Input<string | types.enums.ServerKeyType>;
     /**
      * The name of the server.
      */

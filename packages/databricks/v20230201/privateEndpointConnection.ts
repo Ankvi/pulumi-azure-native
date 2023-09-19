@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The private endpoint connection of a workspace
  */
@@ -38,7 +38,7 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * The private endpoint connection properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.databricks.v20230201.PrivateEndpointConnectionPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.PrivateEndpointConnectionPropertiesResponse>;
     /**
      * The resource type.
      */
@@ -93,7 +93,7 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * The private endpoint connection properties.
      */
-    properties: pulumi.Input<types.inputs.databricks.v20230201.PrivateEndpointConnectionPropertiesArgs>;
+    properties: pulumi.Input<types.inputs.PrivateEndpointConnectionPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

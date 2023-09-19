@@ -1,696 +1,346 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
-export namespace machinelearningcompute {
+/**
+ * Information about the container service backing the cluster
+ */
+export interface AcsClusterPropertiesResponse {
     /**
-     * Information about the container service backing the cluster
+     * The number of agent nodes in the Container Service. This can be changed to scale the cluster.
      */
-    export interface AcsClusterPropertiesResponse {
-        /**
-         * The number of agent nodes in the Container Service. This can be changed to scale the cluster.
-         */
-        agentCount?: number;
-        /**
-         * The Azure VM size of the agent VM nodes. This cannot be changed once the cluster is created. This list is non exhaustive; refer to https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes for the possible VM sizes.
-         */
-        agentVmSize?: string;
-        /**
-         * The FQDN of the cluster. 
-         */
-        clusterFqdn: string;
-        /**
-         * The number of master nodes in the container service.
-         */
-        masterCount?: number;
-        /**
-         * Orchestrator specific properties
-         */
-        orchestratorProperties?: KubernetesClusterPropertiesResponse;
-        /**
-         * Type of orchestrator. It cannot be changed once the cluster is created.
-         */
-        orchestratorType: string;
-        /**
-         * The system services deployed to the cluster
-         */
-        systemServices?: SystemServiceResponse[];
-    }
+    agentCount?: number;
     /**
-     * acsClusterPropertiesResponseProvideDefaults sets the appropriate defaults for AcsClusterPropertiesResponse
+     * The Azure VM size of the agent VM nodes. This cannot be changed once the cluster is created. This list is non exhaustive; refer to https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes for the possible VM sizes.
      */
-    export function acsClusterPropertiesResponseProvideDefaults(val: AcsClusterPropertiesResponse): AcsClusterPropertiesResponse {
-        return {
-            ...val,
-            agentCount: (val.agentCount) ?? 2,
-            agentVmSize: (val.agentVmSize) ?? "Standard_D3_v2",
-            masterCount: (val.masterCount) ?? 1,
-        };
-    }
-
+    agentVmSize?: string;
     /**
-     * AppInsights credentials.
+     * The FQDN of the cluster. 
      */
-    export interface AppInsightsCredentialsResponse {
-        /**
-         * The AppInsights application ID.
-         */
-        appId?: string;
-        /**
-         * The AppInsights instrumentation key. This is not returned in response of GET/PUT on the resource. To see this please call listKeys API.
-         */
-        instrumentationKey?: string;
-    }
-
+    clusterFqdn: string;
     /**
-     * Properties of App Insights.
+     * The number of master nodes in the container service.
      */
-    export interface AppInsightsPropertiesResponse {
-        /**
-         * ARM resource ID of the App Insights.
-         */
-        resourceId?: string;
-    }
-
+    masterCount?: number;
     /**
-     * AutoScale configuration properties.
+     * Orchestrator specific properties
      */
-    export interface AutoScaleConfigurationResponse {
-        /**
-         * The maximum number of replicas for each service.
-         */
-        maxReplicas?: number;
-        /**
-         * The minimum number of replicas for each service.
-         */
-        minReplicas?: number;
-        /**
-         * Refresh period in seconds.
-         */
-        refreshPeriodInSeconds?: number;
-        /**
-         * If auto-scale is enabled for all services. Each service can turn it off individually.
-         */
-        status?: string;
-        /**
-         * The target utilization.
-         */
-        targetUtilization?: number;
-    }
+    orchestratorProperties?: KubernetesClusterPropertiesResponse;
     /**
-     * autoScaleConfigurationResponseProvideDefaults sets the appropriate defaults for AutoScaleConfigurationResponse
+     * Type of orchestrator. It cannot be changed once the cluster is created.
      */
-    export function autoScaleConfigurationResponseProvideDefaults(val: AutoScaleConfigurationResponse): AutoScaleConfigurationResponse {
-        return {
-            ...val,
-            maxReplicas: (val.maxReplicas) ?? 100,
-            minReplicas: (val.minReplicas) ?? 1,
-            status: (val.status) ?? "Disabled",
-        };
-    }
-
+    orchestratorType: string;
     /**
-     * Information about the Azure Container Registry which contains the images deployed to the cluster.
+     * The system services deployed to the cluster
      */
-    export interface ContainerRegistryCredentialsResponse {
-        /**
-         * The ACR login server name. User name is the first part of the FQDN.
-         */
-        loginServer: string;
-        /**
-         * The ACR primary password.
-         */
-        password: string;
-        /**
-         * The ACR secondary password.
-         */
-        password2: string;
-        /**
-         * The ACR login username.
-         */
-        username: string;
-    }
+    systemServices?: SystemServiceResponse[];
+}
+/**
+ * acsClusterPropertiesResponseProvideDefaults sets the appropriate defaults for AcsClusterPropertiesResponse
+ */
+export function acsClusterPropertiesResponseProvideDefaults(val: AcsClusterPropertiesResponse): AcsClusterPropertiesResponse {
+    return {
+        ...val,
+        agentCount: (val.agentCount) ?? 2,
+        agentVmSize: (val.agentVmSize) ?? "Standard_D3_v2",
+        masterCount: (val.masterCount) ?? 1,
+    };
+}
 
+/**
+ * AppInsights credentials.
+ */
+export interface AppInsightsCredentialsResponse {
     /**
-     * Properties of Azure Container Registry.
+     * The AppInsights application ID.
      */
-    export interface ContainerRegistryPropertiesResponse {
-        /**
-         * ARM resource ID of the Azure Container Registry used to store Docker images for web services in the cluster. If not provided one will be created. This cannot be changed once the cluster is created.
-         */
-        resourceId?: string;
-    }
-
+    appId?: string;
     /**
-     * Information about the Azure Container Registry which contains the images deployed to the cluster.
+     * The AppInsights instrumentation key. This is not returned in response of GET/PUT on the resource. To see this please call listKeys API.
      */
-    export interface ContainerServiceCredentialsResponse {
-        /**
-         * The ACS kube config file.
-         */
-        acsKubeConfig: string;
-        /**
-         * The ACR image pull secret name which was created in Kubernetes.
-         */
-        imagePullSecretName: string;
-        /**
-         * Service principal configuration used by Kubernetes.
-         */
-        servicePrincipalConfiguration: ServicePrincipalPropertiesResponse;
-    }
+    instrumentationKey?: string;
+}
 
+/**
+ * Properties of App Insights.
+ */
+export interface AppInsightsPropertiesResponse {
     /**
-     * Error detail information.
+     * ARM resource ID of the App Insights.
      */
-    export interface ErrorDetailResponse {
-        /**
-         * Error code.
-         */
-        code: string;
-        /**
-         * Error message.
-         */
-        message: string;
-    }
+    resourceId?: string;
+}
 
+/**
+ * AutoScale configuration properties.
+ */
+export interface AutoScaleConfigurationResponse {
     /**
-     * Error response information.
+     * The maximum number of replicas for each service.
      */
-    export interface ErrorResponseResponse {
-        /**
-         * Error code.
-         */
-        code: string;
-        /**
-         * An array of error detail objects.
-         */
-        details?: ErrorDetailResponse[];
-        /**
-         * Error message.
-         */
-        message: string;
-    }
-
+    maxReplicas?: number;
     /**
-     * Wrapper for error response to follow ARM guidelines.
+     * The minimum number of replicas for each service.
      */
-    export interface ErrorResponseWrapperResponse {
-        /**
-         * The error response.
-         */
-        error?: ErrorResponseResponse;
-    }
-
+    minReplicas?: number;
     /**
-     * Global configuration for services in the cluster.
+     * Refresh period in seconds.
      */
-    export interface GlobalServiceConfigurationResponse {
-        /**
-         * The auto-scale configuration
-         */
-        autoScale?: AutoScaleConfigurationResponse;
-        /**
-         * The configuration ETag for updates.
-         */
-        etag?: string;
-        /**
-         * Optional global authorization keys for all user services deployed in cluster. These are used if the service does not have auth keys.
-         */
-        serviceAuth?: ServiceAuthConfigurationResponse;
-        /**
-         * The SSL configuration properties
-         */
-        ssl?: SslConfigurationResponse;
-    }
+    refreshPeriodInSeconds?: number;
     /**
-     * globalServiceConfigurationResponseProvideDefaults sets the appropriate defaults for GlobalServiceConfigurationResponse
+     * If auto-scale is enabled for all services. Each service can turn it off individually.
      */
-    export function globalServiceConfigurationResponseProvideDefaults(val: GlobalServiceConfigurationResponse): GlobalServiceConfigurationResponse {
-        return {
-            ...val,
-            autoScale: (val.autoScale ? autoScaleConfigurationResponseProvideDefaults(val.autoScale) : undefined),
-            ssl: (val.ssl ? sslConfigurationResponseProvideDefaults(val.ssl) : undefined),
-        };
-    }
-
+    status?: string;
     /**
-     * Kubernetes cluster specific properties
+     * The target utilization.
      */
-    export interface KubernetesClusterPropertiesResponse {
-        /**
-         * The Azure Service Principal used by Kubernetes
-         */
-        servicePrincipal?: ServicePrincipalPropertiesResponse;
-    }
+    targetUtilization?: number;
+}
+/**
+ * autoScaleConfigurationResponseProvideDefaults sets the appropriate defaults for AutoScaleConfigurationResponse
+ */
+export function autoScaleConfigurationResponseProvideDefaults(val: AutoScaleConfigurationResponse): AutoScaleConfigurationResponse {
+    return {
+        ...val,
+        maxReplicas: (val.maxReplicas) ?? 100,
+        minReplicas: (val.minReplicas) ?? 1,
+        status: (val.status) ?? "Disabled",
+    };
+}
 
+/**
+ * Information about the Azure Container Registry which contains the images deployed to the cluster.
+ */
+export interface ContainerRegistryCredentialsResponse {
     /**
-     * Global service auth configuration properties. These are the data-plane authorization keys and are used if a service doesn't define it's own.
+     * The ACR login server name. User name is the first part of the FQDN.
      */
-    export interface ServiceAuthConfigurationResponse {
-        /**
-         * The primary auth key hash. This is not returned in response of GET/PUT on the resource.. To see this please call listKeys API.
-         */
-        primaryAuthKeyHash: string;
-        /**
-         * The secondary auth key hash. This is not returned in response of GET/PUT on the resource.. To see this please call listKeys API.
-         */
-        secondaryAuthKeyHash: string;
-    }
-
+    loginServer: string;
     /**
-     * The Azure service principal used by Kubernetes for configuring load balancers
+     * The ACR primary password.
      */
-    export interface ServicePrincipalPropertiesResponse {
-        /**
-         * The service principal client ID
-         */
-        clientId: string;
-        /**
-         * The service principal secret. This is not returned in response of GET/PUT on the resource. To see this please call listKeys.
-         */
-        secret: string;
-    }
-
+    password: string;
     /**
-     * SSL configuration. If configured data-plane calls to user services will be exposed over SSL only.
+     * The ACR secondary password.
      */
-    export interface SslConfigurationResponse {
-        /**
-         * The SSL cert data in PEM format.
-         */
-        cert?: string;
-        /**
-         * The CName of the certificate.
-         */
-        cname?: string;
-        /**
-         * The SSL key data in PEM format. This is not returned in response of GET/PUT on the resource. To see this please call listKeys API.
-         */
-        key?: string;
-        /**
-         * SSL status. Allowed values are Enabled and Disabled.
-         */
-        status?: string;
-    }
+    password2: string;
     /**
-     * sslConfigurationResponseProvideDefaults sets the appropriate defaults for SslConfigurationResponse
+     * The ACR login username.
      */
-    export function sslConfigurationResponseProvideDefaults(val: SslConfigurationResponse): SslConfigurationResponse {
-        return {
-            ...val,
-            status: (val.status) ?? "Enabled",
-        };
-    }
+    username: string;
+}
 
+/**
+ * Properties of Azure Container Registry.
+ */
+export interface ContainerRegistryPropertiesResponse {
     /**
-     * Access information for the storage account.
+     * ARM resource ID of the Azure Container Registry used to store Docker images for web services in the cluster. If not provided one will be created. This cannot be changed once the cluster is created.
      */
-    export interface StorageAccountCredentialsResponse {
-        /**
-         * The primary key of the storage account.
-         */
-        primaryKey: string;
-        /**
-         * The ARM resource ID of the storage account.
-         */
-        resourceId: string;
-        /**
-         * The secondary key of the storage account.
-         */
-        secondaryKey: string;
-    }
+    resourceId?: string;
+}
 
+/**
+ * Information about the Azure Container Registry which contains the images deployed to the cluster.
+ */
+export interface ContainerServiceCredentialsResponse {
     /**
-     * Properties of Storage Account.
+     * The ACS kube config file.
      */
-    export interface StorageAccountPropertiesResponse {
-        /**
-         * ARM resource ID of the Azure Storage Account to store CLI specific files. If not provided one will be created. This cannot be changed once the cluster is created.
-         */
-        resourceId?: string;
-    }
-
+    acsKubeConfig: string;
     /**
-     * Information about a system service deployed in the cluster
+     * The ACR image pull secret name which was created in Kubernetes.
      */
-    export interface SystemServiceResponse {
-        /**
-         * The public IP address of the system service
-         */
-        publicIpAddress: string;
-        /**
-         * The system service type
-         */
-        systemServiceType: string;
-        /**
-         * The state of the system service
-         */
-        version: string;
-    }
+    imagePullSecretName: string;
+    /**
+     * Service principal configuration used by Kubernetes.
+     */
+    servicePrincipalConfiguration: ServicePrincipalPropertiesResponse;
+}
 
-    export namespace v20170801preview {
-        /**
-         * Information about the container service backing the cluster
-         */
-        export interface AcsClusterPropertiesResponse {
-            /**
-             * The number of agent nodes in the Container Service. This can be changed to scale the cluster.
-             */
-            agentCount?: number;
-            /**
-             * The Azure VM size of the agent VM nodes. This cannot be changed once the cluster is created. This list is non exhaustive; refer to https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes for the possible VM sizes.
-             */
-            agentVmSize?: string;
-            /**
-             * The FQDN of the cluster. 
-             */
-            clusterFqdn: string;
-            /**
-             * The number of master nodes in the container service.
-             */
-            masterCount?: number;
-            /**
-             * Orchestrator specific properties
-             */
-            orchestratorProperties?: v20170801preview.KubernetesClusterPropertiesResponse;
-            /**
-             * Type of orchestrator. It cannot be changed once the cluster is created.
-             */
-            orchestratorType: string;
-            /**
-             * The system services deployed to the cluster
-             */
-            systemServices?: v20170801preview.SystemServiceResponse[];
-        }
-        /**
-         * acsClusterPropertiesResponseProvideDefaults sets the appropriate defaults for AcsClusterPropertiesResponse
-         */
-        export function acsClusterPropertiesResponseProvideDefaults(val: AcsClusterPropertiesResponse): AcsClusterPropertiesResponse {
-            return {
-                ...val,
-                agentCount: (val.agentCount) ?? 2,
-                agentVmSize: (val.agentVmSize) ?? "Standard_D3_v2",
-                masterCount: (val.masterCount) ?? 1,
-            };
-        }
+/**
+ * Error detail information.
+ */
+export interface ErrorDetailResponse {
+    /**
+     * Error code.
+     */
+    code: string;
+    /**
+     * Error message.
+     */
+    message: string;
+}
 
-        /**
-         * AppInsights credentials.
-         */
-        export interface AppInsightsCredentialsResponse {
-            /**
-             * The AppInsights application ID.
-             */
-            appId?: string;
-            /**
-             * The AppInsights instrumentation key. This is not returned in response of GET/PUT on the resource. To see this please call listKeys API.
-             */
-            instrumentationKey?: string;
-        }
+/**
+ * Error response information.
+ */
+export interface ErrorResponseResponse {
+    /**
+     * Error code.
+     */
+    code: string;
+    /**
+     * An array of error detail objects.
+     */
+    details?: ErrorDetailResponse[];
+    /**
+     * Error message.
+     */
+    message: string;
+}
 
-        /**
-         * Properties of App Insights.
-         */
-        export interface AppInsightsPropertiesResponse {
-            /**
-             * ARM resource ID of the App Insights.
-             */
-            resourceId?: string;
-        }
+/**
+ * Wrapper for error response to follow ARM guidelines.
+ */
+export interface ErrorResponseWrapperResponse {
+    /**
+     * The error response.
+     */
+    error?: ErrorResponseResponse;
+}
 
-        /**
-         * AutoScale configuration properties.
-         */
-        export interface AutoScaleConfigurationResponse {
-            /**
-             * The maximum number of replicas for each service.
-             */
-            maxReplicas?: number;
-            /**
-             * The minimum number of replicas for each service.
-             */
-            minReplicas?: number;
-            /**
-             * Refresh period in seconds.
-             */
-            refreshPeriodInSeconds?: number;
-            /**
-             * If auto-scale is enabled for all services. Each service can turn it off individually.
-             */
-            status?: string;
-            /**
-             * The target utilization.
-             */
-            targetUtilization?: number;
-        }
-        /**
-         * autoScaleConfigurationResponseProvideDefaults sets the appropriate defaults for AutoScaleConfigurationResponse
-         */
-        export function autoScaleConfigurationResponseProvideDefaults(val: AutoScaleConfigurationResponse): AutoScaleConfigurationResponse {
-            return {
-                ...val,
-                maxReplicas: (val.maxReplicas) ?? 100,
-                minReplicas: (val.minReplicas) ?? 1,
-                status: (val.status) ?? "Disabled",
-            };
-        }
+/**
+ * Global configuration for services in the cluster.
+ */
+export interface GlobalServiceConfigurationResponse {
+    /**
+     * The auto-scale configuration
+     */
+    autoScale?: AutoScaleConfigurationResponse;
+    /**
+     * The configuration ETag for updates.
+     */
+    etag?: string;
+    /**
+     * Optional global authorization keys for all user services deployed in cluster. These are used if the service does not have auth keys.
+     */
+    serviceAuth?: ServiceAuthConfigurationResponse;
+    /**
+     * The SSL configuration properties
+     */
+    ssl?: SslConfigurationResponse;
+}
+/**
+ * globalServiceConfigurationResponseProvideDefaults sets the appropriate defaults for GlobalServiceConfigurationResponse
+ */
+export function globalServiceConfigurationResponseProvideDefaults(val: GlobalServiceConfigurationResponse): GlobalServiceConfigurationResponse {
+    return {
+        ...val,
+        autoScale: (val.autoScale ? autoScaleConfigurationResponseProvideDefaults(val.autoScale) : undefined),
+        ssl: (val.ssl ? sslConfigurationResponseProvideDefaults(val.ssl) : undefined),
+    };
+}
 
-        /**
-         * Information about the Azure Container Registry which contains the images deployed to the cluster.
-         */
-        export interface ContainerRegistryCredentialsResponse {
-            /**
-             * The ACR login server name. User name is the first part of the FQDN.
-             */
-            loginServer: string;
-            /**
-             * The ACR primary password.
-             */
-            password: string;
-            /**
-             * The ACR secondary password.
-             */
-            password2: string;
-            /**
-             * The ACR login username.
-             */
-            username: string;
-        }
+/**
+ * Kubernetes cluster specific properties
+ */
+export interface KubernetesClusterPropertiesResponse {
+    /**
+     * The Azure Service Principal used by Kubernetes
+     */
+    servicePrincipal?: ServicePrincipalPropertiesResponse;
+}
 
-        /**
-         * Properties of Azure Container Registry.
-         */
-        export interface ContainerRegistryPropertiesResponse {
-            /**
-             * ARM resource ID of the Azure Container Registry used to store Docker images for web services in the cluster. If not provided one will be created. This cannot be changed once the cluster is created.
-             */
-            resourceId?: string;
-        }
+/**
+ * Global service auth configuration properties. These are the data-plane authorization keys and are used if a service doesn't define it's own.
+ */
+export interface ServiceAuthConfigurationResponse {
+    /**
+     * The primary auth key hash. This is not returned in response of GET/PUT on the resource.. To see this please call listKeys API.
+     */
+    primaryAuthKeyHash: string;
+    /**
+     * The secondary auth key hash. This is not returned in response of GET/PUT on the resource.. To see this please call listKeys API.
+     */
+    secondaryAuthKeyHash: string;
+}
 
-        /**
-         * Information about the Azure Container Registry which contains the images deployed to the cluster.
-         */
-        export interface ContainerServiceCredentialsResponse {
-            /**
-             * The ACS kube config file.
-             */
-            acsKubeConfig: string;
-            /**
-             * The ACR image pull secret name which was created in Kubernetes.
-             */
-            imagePullSecretName: string;
-            /**
-             * Service principal configuration used by Kubernetes.
-             */
-            servicePrincipalConfiguration: v20170801preview.ServicePrincipalPropertiesResponse;
-        }
+/**
+ * The Azure service principal used by Kubernetes for configuring load balancers
+ */
+export interface ServicePrincipalPropertiesResponse {
+    /**
+     * The service principal client ID
+     */
+    clientId: string;
+    /**
+     * The service principal secret. This is not returned in response of GET/PUT on the resource. To see this please call listKeys.
+     */
+    secret: string;
+}
 
-        /**
-         * Error detail information.
-         */
-        export interface ErrorDetailResponse {
-            /**
-             * Error code.
-             */
-            code: string;
-            /**
-             * Error message.
-             */
-            message: string;
-        }
+/**
+ * SSL configuration. If configured data-plane calls to user services will be exposed over SSL only.
+ */
+export interface SslConfigurationResponse {
+    /**
+     * The SSL cert data in PEM format.
+     */
+    cert?: string;
+    /**
+     * The CName of the certificate.
+     */
+    cname?: string;
+    /**
+     * The SSL key data in PEM format. This is not returned in response of GET/PUT on the resource. To see this please call listKeys API.
+     */
+    key?: string;
+    /**
+     * SSL status. Allowed values are Enabled and Disabled.
+     */
+    status?: string;
+}
+/**
+ * sslConfigurationResponseProvideDefaults sets the appropriate defaults for SslConfigurationResponse
+ */
+export function sslConfigurationResponseProvideDefaults(val: SslConfigurationResponse): SslConfigurationResponse {
+    return {
+        ...val,
+        status: (val.status) ?? "Enabled",
+    };
+}
 
-        /**
-         * Error response information.
-         */
-        export interface ErrorResponseResponse {
-            /**
-             * Error code.
-             */
-            code: string;
-            /**
-             * An array of error detail objects.
-             */
-            details?: v20170801preview.ErrorDetailResponse[];
-            /**
-             * Error message.
-             */
-            message: string;
-        }
+/**
+ * Access information for the storage account.
+ */
+export interface StorageAccountCredentialsResponse {
+    /**
+     * The primary key of the storage account.
+     */
+    primaryKey: string;
+    /**
+     * The ARM resource ID of the storage account.
+     */
+    resourceId: string;
+    /**
+     * The secondary key of the storage account.
+     */
+    secondaryKey: string;
+}
 
-        /**
-         * Wrapper for error response to follow ARM guidelines.
-         */
-        export interface ErrorResponseWrapperResponse {
-            /**
-             * The error response.
-             */
-            error?: v20170801preview.ErrorResponseResponse;
-        }
+/**
+ * Properties of Storage Account.
+ */
+export interface StorageAccountPropertiesResponse {
+    /**
+     * ARM resource ID of the Azure Storage Account to store CLI specific files. If not provided one will be created. This cannot be changed once the cluster is created.
+     */
+    resourceId?: string;
+}
 
-        /**
-         * Global configuration for services in the cluster.
-         */
-        export interface GlobalServiceConfigurationResponse {
-            /**
-             * The auto-scale configuration
-             */
-            autoScale?: v20170801preview.AutoScaleConfigurationResponse;
-            /**
-             * The configuration ETag for updates.
-             */
-            etag?: string;
-            /**
-             * Optional global authorization keys for all user services deployed in cluster. These are used if the service does not have auth keys.
-             */
-            serviceAuth?: v20170801preview.ServiceAuthConfigurationResponse;
-            /**
-             * The SSL configuration properties
-             */
-            ssl?: v20170801preview.SslConfigurationResponse;
-        }
-        /**
-         * globalServiceConfigurationResponseProvideDefaults sets the appropriate defaults for GlobalServiceConfigurationResponse
-         */
-        export function globalServiceConfigurationResponseProvideDefaults(val: GlobalServiceConfigurationResponse): GlobalServiceConfigurationResponse {
-            return {
-                ...val,
-                autoScale: (val.autoScale ? v20170801preview.autoScaleConfigurationResponseProvideDefaults(val.autoScale) : undefined),
-                ssl: (val.ssl ? v20170801preview.sslConfigurationResponseProvideDefaults(val.ssl) : undefined),
-            };
-        }
-
-        /**
-         * Kubernetes cluster specific properties
-         */
-        export interface KubernetesClusterPropertiesResponse {
-            /**
-             * The Azure Service Principal used by Kubernetes
-             */
-            servicePrincipal?: v20170801preview.ServicePrincipalPropertiesResponse;
-        }
-
-        /**
-         * Global service auth configuration properties. These are the data-plane authorization keys and are used if a service doesn't define it's own.
-         */
-        export interface ServiceAuthConfigurationResponse {
-            /**
-             * The primary auth key hash. This is not returned in response of GET/PUT on the resource.. To see this please call listKeys API.
-             */
-            primaryAuthKeyHash: string;
-            /**
-             * The secondary auth key hash. This is not returned in response of GET/PUT on the resource.. To see this please call listKeys API.
-             */
-            secondaryAuthKeyHash: string;
-        }
-
-        /**
-         * The Azure service principal used by Kubernetes for configuring load balancers
-         */
-        export interface ServicePrincipalPropertiesResponse {
-            /**
-             * The service principal client ID
-             */
-            clientId: string;
-            /**
-             * The service principal secret. This is not returned in response of GET/PUT on the resource. To see this please call listKeys.
-             */
-            secret: string;
-        }
-
-        /**
-         * SSL configuration. If configured data-plane calls to user services will be exposed over SSL only.
-         */
-        export interface SslConfigurationResponse {
-            /**
-             * The SSL cert data in PEM format.
-             */
-            cert?: string;
-            /**
-             * The CName of the certificate.
-             */
-            cname?: string;
-            /**
-             * The SSL key data in PEM format. This is not returned in response of GET/PUT on the resource. To see this please call listKeys API.
-             */
-            key?: string;
-            /**
-             * SSL status. Allowed values are Enabled and Disabled.
-             */
-            status?: string;
-        }
-        /**
-         * sslConfigurationResponseProvideDefaults sets the appropriate defaults for SslConfigurationResponse
-         */
-        export function sslConfigurationResponseProvideDefaults(val: SslConfigurationResponse): SslConfigurationResponse {
-            return {
-                ...val,
-                status: (val.status) ?? "Enabled",
-            };
-        }
-
-        /**
-         * Access information for the storage account.
-         */
-        export interface StorageAccountCredentialsResponse {
-            /**
-             * The primary key of the storage account.
-             */
-            primaryKey: string;
-            /**
-             * The ARM resource ID of the storage account.
-             */
-            resourceId: string;
-            /**
-             * The secondary key of the storage account.
-             */
-            secondaryKey: string;
-        }
-
-        /**
-         * Properties of Storage Account.
-         */
-        export interface StorageAccountPropertiesResponse {
-            /**
-             * ARM resource ID of the Azure Storage Account to store CLI specific files. If not provided one will be created. This cannot be changed once the cluster is created.
-             */
-            resourceId?: string;
-        }
-
-        /**
-         * Information about a system service deployed in the cluster
-         */
-        export interface SystemServiceResponse {
-            /**
-             * The public IP address of the system service
-             */
-            publicIpAddress: string;
-            /**
-             * The system service type
-             */
-            systemServiceType: string;
-            /**
-             * The state of the system service
-             */
-            version: string;
-        }
-
-    }
+/**
+ * Information about a system service deployed in the cluster
+ */
+export interface SystemServiceResponse {
+    /**
+     * The public IP address of the system service
+     */
+    publicIpAddress: string;
+    /**
+     * The system service type
+     */
+    systemServiceType: string;
+    /**
+     * The state of the system service
+     */
+    version: string;
 }

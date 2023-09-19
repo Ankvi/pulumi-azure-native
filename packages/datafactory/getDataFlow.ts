@@ -49,7 +49,7 @@ export interface GetDataFlowResult {
     /**
      * Data flow properties.
      */
-    readonly properties: types.outputs.datafactory.FlowletResponse | types.outputs.datafactory.MappingDataFlowResponse | types.outputs.datafactory.WranglingDataFlowResponse;
+    readonly properties: types.outputs.FlowletResponse | types.outputs.MappingDataFlowResponse | types.outputs.WranglingDataFlowResponse;
     /**
      * The resource type.
      */

@@ -35,7 +35,7 @@ export class LabelingJob extends pulumi.CustomResource {
     /**
      * [Required] Additional attributes of the entity.
      */
-    public readonly labelingJobProperties!: pulumi.Output<types.outputs.machinelearningservices.LabelingJobResponse>;
+    public readonly labelingJobProperties!: pulumi.Output<types.outputs.LabelingJobResponse>;
     /**
      * The name of the resource
      */
@@ -43,7 +43,7 @@ export class LabelingJob extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.machinelearningservices.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -70,7 +70,7 @@ export class LabelingJob extends pulumi.CustomResource {
                 throw new Error("Missing required property 'workspaceName'");
             }
             resourceInputs["id"] = args ? args.id : undefined;
-            resourceInputs["labelingJobProperties"] = args ? (args.labelingJobProperties ? pulumi.output(args.labelingJobProperties).apply(types.inputs.machinelearningservices.labelingJobArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["labelingJobProperties"] = args ? (args.labelingJobProperties ? pulumi.output(args.labelingJobProperties).apply(types.inputs.labelingJobArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["workspaceName"] = args ? args.workspaceName : undefined;
             resourceInputs["name"] = undefined /*out*/;
@@ -100,7 +100,7 @@ export interface LabelingJobArgs {
     /**
      * [Required] Additional attributes of the entity.
      */
-    labelingJobProperties: pulumi.Input<types.inputs.machinelearningservices.LabelingJobArgs>;
+    labelingJobProperties: pulumi.Input<types.inputs.LabelingJobArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

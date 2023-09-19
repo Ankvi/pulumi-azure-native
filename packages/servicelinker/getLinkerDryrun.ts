@@ -40,15 +40,15 @@ export interface GetLinkerDryrunResult {
     /**
      * the preview of the operations for creation
      */
-    readonly operationPreviews: types.outputs.servicelinker.DryrunOperationPreviewResponse[];
+    readonly operationPreviews: types.outputs.DryrunOperationPreviewResponse[];
     /**
      * The parameters of the dryrun
      */
-    readonly parameters?: types.outputs.servicelinker.CreateOrUpdateDryrunParametersResponse;
+    readonly parameters?: types.outputs.CreateOrUpdateDryrunParametersResponse;
     /**
      * the result of the dryrun
      */
-    readonly prerequisiteResults: (types.outputs.servicelinker.BasicErrorDryrunPrerequisiteResultResponse | types.outputs.servicelinker.PermissionsMissingDryrunPrerequisiteResultResponse)[];
+    readonly prerequisiteResults: (types.outputs.BasicErrorDryrunPrerequisiteResultResponse | types.outputs.PermissionsMissingDryrunPrerequisiteResultResponse)[];
     /**
      * The provisioning state. 
      */
@@ -56,7 +56,7 @@ export interface GetLinkerDryrunResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.servicelinker.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

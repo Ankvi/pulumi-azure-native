@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Backup policy information
  */
@@ -66,7 +66,7 @@ export class BackupPolicy extends pulumi.CustomResource {
     /**
      * A list of volumes assigned to this policy
      */
-    public readonly volumeBackups!: pulumi.Output<types.outputs.netapp.v20210401preview.VolumeBackupsResponse[] | undefined>;
+    public readonly volumeBackups!: pulumi.Output<types.outputs.VolumeBackupsResponse[] | undefined>;
     /**
      * Volumes using current backup policy
      */
@@ -172,7 +172,7 @@ export interface BackupPolicyArgs {
     /**
      * A list of volumes assigned to this policy
      */
-    volumeBackups?: pulumi.Input<pulumi.Input<types.inputs.netapp.v20210401preview.VolumeBackupsArgs>[]>;
+    volumeBackups?: pulumi.Input<pulumi.Input<types.inputs.VolumeBackupsArgs>[]>;
     /**
      * Volumes using current backup policy
      */

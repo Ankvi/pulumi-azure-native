@@ -47,7 +47,7 @@ export class VirtualApplianceSite extends pulumi.CustomResource {
     /**
      * Office 365 Policy.
      */
-    public readonly o365Policy!: pulumi.Output<types.outputs.network.Office365PolicyPropertiesResponse | undefined>;
+    public readonly o365Policy!: pulumi.Output<types.outputs.Office365PolicyPropertiesResponse | undefined>;
     /**
      * The provisioning state of the resource.
      */
@@ -122,7 +122,7 @@ export interface VirtualApplianceSiteArgs {
     /**
      * Office 365 Policy.
      */
-    o365Policy?: pulumi.Input<types.inputs.network.Office365PolicyPropertiesArgs>;
+    o365Policy?: pulumi.Input<types.inputs.Office365PolicyPropertiesArgs>;
     /**
      * The name of the resource group.
      */

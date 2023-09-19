@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * List tokens for application.
  */
@@ -41,7 +41,7 @@ export interface ListApplicationTokensResult {
     /**
      * The array of managed identity tokens.
      */
-    readonly value?: types.outputs.solutions.v20210701.ManagedIdentityTokenResponse[];
+    readonly value?: types.outputs.ManagedIdentityTokenResponse[];
 }
 /**
  * List tokens for application.

@@ -55,7 +55,7 @@ export class WorkspaceApi extends pulumi.CustomResource {
     /**
      * Version set details
      */
-    public readonly apiVersionSet!: pulumi.Output<types.outputs.apimanagement.ApiVersionSetContractDetailsResponse | undefined>;
+    public readonly apiVersionSet!: pulumi.Output<types.outputs.ApiVersionSetContractDetailsResponse | undefined>;
     /**
      * A resource identifier for the related ApiVersionSet.
      */
@@ -63,11 +63,11 @@ export class WorkspaceApi extends pulumi.CustomResource {
     /**
      * Collection of authentication settings included into this API.
      */
-    public readonly authenticationSettings!: pulumi.Output<types.outputs.apimanagement.AuthenticationSettingsContractResponse | undefined>;
+    public readonly authenticationSettings!: pulumi.Output<types.outputs.AuthenticationSettingsContractResponse | undefined>;
     /**
      * Contact information for the API.
      */
-    public readonly contact!: pulumi.Output<types.outputs.apimanagement.ApiContactInformationResponse | undefined>;
+    public readonly contact!: pulumi.Output<types.outputs.ApiContactInformationResponse | undefined>;
     /**
      * Description of the API. May include HTML formatting tags.
      */
@@ -87,7 +87,7 @@ export class WorkspaceApi extends pulumi.CustomResource {
     /**
      * License information for the API.
      */
-    public readonly license!: pulumi.Output<types.outputs.apimanagement.ApiLicenseInformationResponse | undefined>;
+    public readonly license!: pulumi.Output<types.outputs.ApiLicenseInformationResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -111,7 +111,7 @@ export class WorkspaceApi extends pulumi.CustomResource {
     /**
      * Protocols over which API is made available.
      */
-    public readonly subscriptionKeyParameterNames!: pulumi.Output<types.outputs.apimanagement.SubscriptionKeyParameterNamesContractResponse | undefined>;
+    public readonly subscriptionKeyParameterNames!: pulumi.Output<types.outputs.SubscriptionKeyParameterNamesContractResponse | undefined>;
     /**
      * Specifies whether an API or Product subscription is required for accessing the API.
      */
@@ -243,7 +243,7 @@ export interface WorkspaceApiArgs {
     /**
      * Version set details
      */
-    apiVersionSet?: pulumi.Input<types.inputs.apimanagement.ApiVersionSetContractDetailsArgs>;
+    apiVersionSet?: pulumi.Input<types.inputs.ApiVersionSetContractDetailsArgs>;
     /**
      * A resource identifier for the related ApiVersionSet.
      */
@@ -251,11 +251,11 @@ export interface WorkspaceApiArgs {
     /**
      * Collection of authentication settings included into this API.
      */
-    authenticationSettings?: pulumi.Input<types.inputs.apimanagement.AuthenticationSettingsContractArgs>;
+    authenticationSettings?: pulumi.Input<types.inputs.AuthenticationSettingsContractArgs>;
     /**
      * Contact information for the API.
      */
-    contact?: pulumi.Input<types.inputs.apimanagement.ApiContactInformationArgs>;
+    contact?: pulumi.Input<types.inputs.ApiContactInformationArgs>;
     /**
      * Description of the API. May include HTML formatting tags.
      */
@@ -275,7 +275,7 @@ export interface WorkspaceApiArgs {
     /**
      * License information for the API.
      */
-    license?: pulumi.Input<types.inputs.apimanagement.ApiLicenseInformationArgs>;
+    license?: pulumi.Input<types.inputs.ApiLicenseInformationArgs>;
     /**
      * Relative URL uniquely identifying this API and all of its resource paths within the API Management service instance. It is appended to the API endpoint base URL specified during the service instance creation to form a public URL for this API.
      */
@@ -311,7 +311,7 @@ export interface WorkspaceApiArgs {
     /**
      * Protocols over which API is made available.
      */
-    subscriptionKeyParameterNames?: pulumi.Input<types.inputs.apimanagement.SubscriptionKeyParameterNamesContractArgs>;
+    subscriptionKeyParameterNames?: pulumi.Input<types.inputs.SubscriptionKeyParameterNamesContractArgs>;
     /**
      * Specifies whether an API or Product subscription is required for accessing the API.
      */
@@ -335,5 +335,5 @@ export interface WorkspaceApiArgs {
     /**
      * Criteria to limit import of WSDL to a subset of the document.
      */
-    wsdlSelector?: pulumi.Input<types.inputs.apimanagement.ApiCreateOrUpdatePropertiesWsdlSelectorArgs>;
+    wsdlSelector?: pulumi.Input<types.inputs.ApiCreateOrUpdatePropertiesWsdlSelectorArgs>;
 }

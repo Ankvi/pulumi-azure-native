@@ -35,19 +35,19 @@ export class OpenShiftCluster extends pulumi.CustomResource {
     /**
      * The cluster API server profile.
      */
-    public readonly apiserverProfile!: pulumi.Output<types.outputs.redhatopenshift.APIServerProfileResponse | undefined>;
+    public readonly apiserverProfile!: pulumi.Output<types.outputs.APIServerProfileResponse | undefined>;
     /**
      * The cluster profile.
      */
-    public readonly clusterProfile!: pulumi.Output<types.outputs.redhatopenshift.ClusterProfileResponse | undefined>;
+    public readonly clusterProfile!: pulumi.Output<types.outputs.ClusterProfileResponse | undefined>;
     /**
      * The console profile.
      */
-    public readonly consoleProfile!: pulumi.Output<types.outputs.redhatopenshift.ConsoleProfileResponse | undefined>;
+    public readonly consoleProfile!: pulumi.Output<types.outputs.ConsoleProfileResponse | undefined>;
     /**
      * The cluster ingress profiles.
      */
-    public readonly ingressProfiles!: pulumi.Output<types.outputs.redhatopenshift.IngressProfileResponse[] | undefined>;
+    public readonly ingressProfiles!: pulumi.Output<types.outputs.IngressProfileResponse[] | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -55,7 +55,7 @@ export class OpenShiftCluster extends pulumi.CustomResource {
     /**
      * The cluster master profile.
      */
-    public readonly masterProfile!: pulumi.Output<types.outputs.redhatopenshift.MasterProfileResponse | undefined>;
+    public readonly masterProfile!: pulumi.Output<types.outputs.MasterProfileResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -63,7 +63,7 @@ export class OpenShiftCluster extends pulumi.CustomResource {
     /**
      * The cluster network profile.
      */
-    public readonly networkProfile!: pulumi.Output<types.outputs.redhatopenshift.NetworkProfileResponse | undefined>;
+    public readonly networkProfile!: pulumi.Output<types.outputs.NetworkProfileResponse | undefined>;
     /**
      * The cluster provisioning state.
      */
@@ -71,11 +71,11 @@ export class OpenShiftCluster extends pulumi.CustomResource {
     /**
      * The cluster service principal profile.
      */
-    public readonly servicePrincipalProfile!: pulumi.Output<types.outputs.redhatopenshift.ServicePrincipalProfileResponse | undefined>;
+    public readonly servicePrincipalProfile!: pulumi.Output<types.outputs.ServicePrincipalProfileResponse | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.redhatopenshift.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -87,7 +87,7 @@ export class OpenShiftCluster extends pulumi.CustomResource {
     /**
      * The cluster worker profiles.
      */
-    public readonly workerProfiles!: pulumi.Output<types.outputs.redhatopenshift.WorkerProfileResponse[] | undefined>;
+    public readonly workerProfiles!: pulumi.Output<types.outputs.WorkerProfileResponse[] | undefined>;
 
     /**
      * Create a OpenShiftCluster resource with the given unique name, arguments, and options.
@@ -149,19 +149,19 @@ export interface OpenShiftClusterArgs {
     /**
      * The cluster API server profile.
      */
-    apiserverProfile?: pulumi.Input<types.inputs.redhatopenshift.APIServerProfileArgs>;
+    apiserverProfile?: pulumi.Input<types.inputs.APIServerProfileArgs>;
     /**
      * The cluster profile.
      */
-    clusterProfile?: pulumi.Input<types.inputs.redhatopenshift.ClusterProfileArgs>;
+    clusterProfile?: pulumi.Input<types.inputs.ClusterProfileArgs>;
     /**
      * The console profile.
      */
-    consoleProfile?: pulumi.Input<types.inputs.redhatopenshift.ConsoleProfileArgs>;
+    consoleProfile?: pulumi.Input<types.inputs.ConsoleProfileArgs>;
     /**
      * The cluster ingress profiles.
      */
-    ingressProfiles?: pulumi.Input<pulumi.Input<types.inputs.redhatopenshift.IngressProfileArgs>[]>;
+    ingressProfiles?: pulumi.Input<pulumi.Input<types.inputs.IngressProfileArgs>[]>;
     /**
      * The geo-location where the resource lives
      */
@@ -169,11 +169,11 @@ export interface OpenShiftClusterArgs {
     /**
      * The cluster master profile.
      */
-    masterProfile?: pulumi.Input<types.inputs.redhatopenshift.MasterProfileArgs>;
+    masterProfile?: pulumi.Input<types.inputs.MasterProfileArgs>;
     /**
      * The cluster network profile.
      */
-    networkProfile?: pulumi.Input<types.inputs.redhatopenshift.NetworkProfileArgs>;
+    networkProfile?: pulumi.Input<types.inputs.NetworkProfileArgs>;
     /**
      * The cluster provisioning state.
      */
@@ -189,7 +189,7 @@ export interface OpenShiftClusterArgs {
     /**
      * The cluster service principal profile.
      */
-    servicePrincipalProfile?: pulumi.Input<types.inputs.redhatopenshift.ServicePrincipalProfileArgs>;
+    servicePrincipalProfile?: pulumi.Input<types.inputs.ServicePrincipalProfileArgs>;
     /**
      * Resource tags.
      */
@@ -197,5 +197,5 @@ export interface OpenShiftClusterArgs {
     /**
      * The cluster worker profiles.
      */
-    workerProfiles?: pulumi.Input<pulumi.Input<types.inputs.redhatopenshift.WorkerProfileArgs>[]>;
+    workerProfiles?: pulumi.Input<pulumi.Input<types.inputs.WorkerProfileArgs>[]>;
 }

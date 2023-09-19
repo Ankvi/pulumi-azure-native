@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets details of a migration.
  */
@@ -41,7 +41,7 @@ export interface GetMigrationResult {
     /**
      * Migration status.
      */
-    readonly currentStatus: types.outputs.dbforpostgresql.v20210615privatepreview.MigrationStatusResponse;
+    readonly currentStatus: types.outputs.MigrationStatusResponse;
     readonly dBsToMigrate?: string[];
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -60,7 +60,7 @@ export interface GetMigrationResult {
     /**
      * Migration resource group.
      */
-    readonly migrationResourceGroup?: types.outputs.dbforpostgresql.v20210615privatepreview.MigrationResourceGroupResponse;
+    readonly migrationResourceGroup?: types.outputs.MigrationResourceGroupResponse;
     readonly migrationWindowStartTimeInUtc?: string;
     /**
      * The name of the resource
@@ -70,18 +70,18 @@ export interface GetMigrationResult {
     /**
      * Migration secret parameters.
      */
-    readonly secretParameters?: types.outputs.dbforpostgresql.v20210615privatepreview.MigrationSecretParametersResponse;
+    readonly secretParameters?: types.outputs.MigrationSecretParametersResponse;
     readonly setupLogicalReplicationOnSourceDBIfNeeded?: boolean;
     /**
      * Database server metadata.
      */
-    readonly sourceDBServerMetadata: types.outputs.dbforpostgresql.v20210615privatepreview.DBServerMetadataResponse;
+    readonly sourceDBServerMetadata: types.outputs.DBServerMetadataResponse;
     readonly sourceDBServerResourceId?: string;
     readonly startDataMigration?: boolean;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.dbforpostgresql.v20210615privatepreview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -89,7 +89,7 @@ export interface GetMigrationResult {
     /**
      * Database server metadata.
      */
-    readonly targetDBServerMetadata: types.outputs.dbforpostgresql.v20210615privatepreview.DBServerMetadataResponse;
+    readonly targetDBServerMetadata: types.outputs.DBServerMetadataResponse;
     readonly targetDBServerResourceId: string;
     readonly triggerCutover?: boolean;
     /**

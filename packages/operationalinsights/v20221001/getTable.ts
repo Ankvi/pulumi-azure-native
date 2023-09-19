@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a Log Analytics workspace table.
  */
@@ -60,11 +60,11 @@ export interface GetTableResult {
     /**
      * Parameters of the restore operation that initiated this table.
      */
-    readonly restoredLogs?: types.outputs.operationalinsights.v20221001.RestoredLogsResponse;
+    readonly restoredLogs?: types.outputs.RestoredLogsResponse;
     /**
      * Search job execution statistics.
      */
-    readonly resultStatistics: types.outputs.operationalinsights.v20221001.ResultStatisticsResponse;
+    readonly resultStatistics: types.outputs.ResultStatisticsResponse;
     /**
      * The table retention in days, between 4 and 730. Setting this property to -1 will default to the workspace retention.
      */
@@ -76,15 +76,15 @@ export interface GetTableResult {
     /**
      * Table schema.
      */
-    readonly schema?: types.outputs.operationalinsights.v20221001.SchemaResponse;
+    readonly schema?: types.outputs.SchemaResponse;
     /**
      * Parameters of the search job that initiated this table.
      */
-    readonly searchResults?: types.outputs.operationalinsights.v20221001.SearchResultsResponse;
+    readonly searchResults?: types.outputs.SearchResultsResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.operationalinsights.v20221001.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The table total retention in days, between 4 and 2556. Setting this property to -1 will default to table retention.
      */

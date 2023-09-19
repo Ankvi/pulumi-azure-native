@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An Azure SQL managed instance administrator.
  */
@@ -114,7 +114,7 @@ export interface ManagedInstanceAdministratorArgs {
     /**
      * Type of the managed instance administrator.
      */
-    administratorType: pulumi.Input<string | types.enums.v20221101preview.ManagedInstanceAdministratorType>;
+    administratorType: pulumi.Input<string | types.enums.ManagedInstanceAdministratorType>;
     /**
      * Login name of the managed instance administrator.
      */

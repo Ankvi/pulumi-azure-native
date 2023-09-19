@@ -35,7 +35,7 @@ export class MetricAlert extends pulumi.CustomResource {
     /**
      * the array of actions that are performed when the alert rule becomes active, and when an alert condition is resolved.
      */
-    public readonly actions!: pulumi.Output<types.outputs.insights.MetricAlertActionResponse[] | undefined>;
+    public readonly actions!: pulumi.Output<types.outputs.MetricAlertActionResponse[] | undefined>;
     /**
      * the flag that indicates whether the alert should be auto resolved or not. The default is true.
      */
@@ -43,7 +43,7 @@ export class MetricAlert extends pulumi.CustomResource {
     /**
      * defines the specific alert criteria information.
      */
-    public readonly criteria!: pulumi.Output<types.outputs.insights.MetricAlertMultipleResourceMultipleMetricCriteriaResponse | types.outputs.insights.MetricAlertSingleResourceMultipleMetricCriteriaResponse | types.outputs.insights.WebtestLocationAvailabilityCriteriaResponse>;
+    public readonly criteria!: pulumi.Output<types.outputs.MetricAlertMultipleResourceMultipleMetricCriteriaResponse | types.outputs.MetricAlertSingleResourceMultipleMetricCriteriaResponse | types.outputs.WebtestLocationAvailabilityCriteriaResponse>;
     /**
      * the description of the metric alert that will be included in the alert email.
      */
@@ -185,7 +185,7 @@ export interface MetricAlertArgs {
     /**
      * the array of actions that are performed when the alert rule becomes active, and when an alert condition is resolved.
      */
-    actions?: pulumi.Input<pulumi.Input<types.inputs.insights.MetricAlertActionArgs>[]>;
+    actions?: pulumi.Input<pulumi.Input<types.inputs.MetricAlertActionArgs>[]>;
     /**
      * the flag that indicates whether the alert should be auto resolved or not. The default is true.
      */
@@ -193,7 +193,7 @@ export interface MetricAlertArgs {
     /**
      * defines the specific alert criteria information.
      */
-    criteria: pulumi.Input<types.inputs.insights.MetricAlertMultipleResourceMultipleMetricCriteriaArgs | types.inputs.insights.MetricAlertSingleResourceMultipleMetricCriteriaArgs | types.inputs.insights.WebtestLocationAvailabilityCriteriaArgs>;
+    criteria: pulumi.Input<types.inputs.MetricAlertMultipleResourceMultipleMetricCriteriaArgs | types.inputs.MetricAlertSingleResourceMultipleMetricCriteriaArgs | types.inputs.WebtestLocationAvailabilityCriteriaArgs>;
     /**
      * the description of the metric alert that will be included in the alert email.
      */

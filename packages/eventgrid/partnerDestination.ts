@@ -72,7 +72,7 @@ export class PartnerDestination extends pulumi.CustomResource {
     /**
      * The system metadata relating to Partner Destination resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.eventgrid.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Tags of the resource.
      */

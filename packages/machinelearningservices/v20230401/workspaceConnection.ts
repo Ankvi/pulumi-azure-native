@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 export class WorkspaceConnection extends pulumi.CustomResource {
     /**
      * Get an existing WorkspaceConnection resource's state with the given name, ID, and optional extra
@@ -32,11 +32,11 @@ export class WorkspaceConnection extends pulumi.CustomResource {
      * The name of the resource
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
-    public readonly properties!: pulumi.Output<types.outputs.machinelearningservices.v20230401.ManagedIdentityAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.machinelearningservices.v20230401.NoneAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.machinelearningservices.v20230401.PATAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.machinelearningservices.v20230401.SASAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.machinelearningservices.v20230401.UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ManagedIdentityAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.NoneAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.PATAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.SASAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.machinelearningservices.v20230401.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -90,7 +90,7 @@ export interface WorkspaceConnectionArgs {
      * Friendly name of the workspace connection
      */
     connectionName?: pulumi.Input<string>;
-    properties: pulumi.Input<types.inputs.machinelearningservices.v20230401.ManagedIdentityAuthTypeWorkspaceConnectionPropertiesArgs | types.inputs.machinelearningservices.v20230401.NoneAuthTypeWorkspaceConnectionPropertiesArgs | types.inputs.machinelearningservices.v20230401.PATAuthTypeWorkspaceConnectionPropertiesArgs | types.inputs.machinelearningservices.v20230401.SASAuthTypeWorkspaceConnectionPropertiesArgs | types.inputs.machinelearningservices.v20230401.UsernamePasswordAuthTypeWorkspaceConnectionPropertiesArgs>;
+    properties: pulumi.Input<types.inputs.ManagedIdentityAuthTypeWorkspaceConnectionPropertiesArgs | types.inputs.NoneAuthTypeWorkspaceConnectionPropertiesArgs | types.inputs.PATAuthTypeWorkspaceConnectionPropertiesArgs | types.inputs.SASAuthTypeWorkspaceConnectionPropertiesArgs | types.inputs.UsernamePasswordAuthTypeWorkspaceConnectionPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

@@ -41,7 +41,7 @@ export interface GetKafkaConfigurationResult {
     /**
      * Credentials to access event hub.
      */
-    readonly credentials?: types.outputs.purview.CredentialsResponse;
+    readonly credentials?: types.outputs.CredentialsResponse;
     /**
      * Optional partition Id for notification event hub. If not set, all partitions will be leveraged.
      */
@@ -70,7 +70,7 @@ export interface GetKafkaConfigurationResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.purview.ProxyResourceResponseSystemData;
+    readonly systemData: types.outputs.ProxyResourceResponseSystemData;
     /**
      * Gets or sets the type.
      */

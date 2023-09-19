@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * VirtualWAN Resource.
  */
@@ -62,7 +62,7 @@ export class VirtualWan extends pulumi.CustomResource {
     /**
      * List of all P2SVpnServerConfigurations associated with the virtual wan.
      */
-    public readonly p2SVpnServerConfigurations!: pulumi.Output<types.outputs.network.v20190701.P2SVpnServerConfigurationResponse[] | undefined>;
+    public readonly p2SVpnServerConfigurations!: pulumi.Output<types.outputs.P2SVpnServerConfigurationResponse[] | undefined>;
     /**
      * The provisioning state of the virtual WAN resource.
      */
@@ -82,11 +82,11 @@ export class VirtualWan extends pulumi.CustomResource {
     /**
      * List of VirtualHubs in the VirtualWAN.
      */
-    public /*out*/ readonly virtualHubs!: pulumi.Output<types.outputs.network.v20190701.SubResourceResponse[]>;
+    public /*out*/ readonly virtualHubs!: pulumi.Output<types.outputs.SubResourceResponse[]>;
     /**
      * List of VpnSites in the VirtualWAN.
      */
-    public /*out*/ readonly vpnSites!: pulumi.Output<types.outputs.network.v20190701.SubResourceResponse[]>;
+    public /*out*/ readonly vpnSites!: pulumi.Output<types.outputs.SubResourceResponse[]>;
 
     /**
      * Create a VirtualWan resource with the given unique name, arguments, and options.
@@ -169,7 +169,7 @@ export interface VirtualWanArgs {
     /**
      * List of all P2SVpnServerConfigurations associated with the virtual wan.
      */
-    p2SVpnServerConfigurations?: pulumi.Input<pulumi.Input<types.inputs.network.v20190701.P2SVpnServerConfigurationArgs>[]>;
+    p2SVpnServerConfigurations?: pulumi.Input<pulumi.Input<types.inputs.P2SVpnServerConfigurationArgs>[]>;
     /**
      * The resource group name of the VirtualWan.
      */

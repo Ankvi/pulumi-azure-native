@@ -36,7 +36,7 @@ export interface ListAzureDevOpsOrgAvailableResult {
     /**
      * Gets or sets list of resources.
      */
-    readonly value?: types.outputs.security.AzureDevOpsOrgResponse[];
+    readonly value?: types.outputs.AzureDevOpsOrgResponse[];
 }
 /**
  * List of RP resources which supports pagination.

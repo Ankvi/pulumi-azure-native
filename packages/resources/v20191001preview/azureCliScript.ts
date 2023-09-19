@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Object model for the Azure CLI script.
  */
@@ -46,11 +46,11 @@ export class AzureCliScript extends pulumi.CustomResource {
     /**
      * Container settings.
      */
-    public readonly containerSettings!: pulumi.Output<types.outputs.resources.v20191001preview.ContainerConfigurationResponse | undefined>;
+    public readonly containerSettings!: pulumi.Output<types.outputs.ContainerConfigurationResponse | undefined>;
     /**
      * The environment variables to pass over to the script.
      */
-    public readonly environmentVariables!: pulumi.Output<types.outputs.resources.v20191001preview.EnvironmentVariableResponse[] | undefined>;
+    public readonly environmentVariables!: pulumi.Output<types.outputs.EnvironmentVariableResponse[] | undefined>;
     /**
      * Gets or sets how the deployment script should be forced to execute even if the script resource has not changed. Can be current time stamp or a GUID.
      */
@@ -58,7 +58,7 @@ export class AzureCliScript extends pulumi.CustomResource {
     /**
      * Managed identity to be used for this deployment script. Currently, only user-assigned MSI is supported.
      */
-    public readonly identity!: pulumi.Output<types.outputs.resources.v20191001preview.ManagedServiceIdentityResponse>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse>;
     /**
      * Type of the script.
      * Expected value is 'AzureCLI'.
@@ -95,11 +95,11 @@ export class AzureCliScript extends pulumi.CustomResource {
     /**
      * Contains the results of script execution.
      */
-    public /*out*/ readonly status!: pulumi.Output<types.outputs.resources.v20191001preview.ScriptStatusResponse>;
+    public /*out*/ readonly status!: pulumi.Output<types.outputs.ScriptStatusResponse>;
     /**
      * Storage Account settings.
      */
-    public readonly storageAccountSettings!: pulumi.Output<types.outputs.resources.v20191001preview.StorageAccountConfigurationResponse | undefined>;
+    public readonly storageAccountSettings!: pulumi.Output<types.outputs.StorageAccountConfigurationResponse | undefined>;
     /**
      * Supporting files for the external script.
      */
@@ -107,7 +107,7 @@ export class AzureCliScript extends pulumi.CustomResource {
     /**
      * The system metadata related to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.resources.v20191001preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -217,15 +217,15 @@ export interface AzureCliScriptArgs {
     /**
      * The clean up preference when the script execution gets in a terminal state. Default setting is 'Always'.
      */
-    cleanupPreference?: pulumi.Input<string | types.enums.v20191001preview.CleanupOptions>;
+    cleanupPreference?: pulumi.Input<string | types.enums.CleanupOptions>;
     /**
      * Container settings.
      */
-    containerSettings?: pulumi.Input<types.inputs.resources.v20191001preview.ContainerConfigurationArgs>;
+    containerSettings?: pulumi.Input<types.inputs.ContainerConfigurationArgs>;
     /**
      * The environment variables to pass over to the script.
      */
-    environmentVariables?: pulumi.Input<pulumi.Input<types.inputs.resources.v20191001preview.EnvironmentVariableArgs>[]>;
+    environmentVariables?: pulumi.Input<pulumi.Input<types.inputs.EnvironmentVariableArgs>[]>;
     /**
      * Gets or sets how the deployment script should be forced to execute even if the script resource has not changed. Can be current time stamp or a GUID.
      */
@@ -233,7 +233,7 @@ export interface AzureCliScriptArgs {
     /**
      * Managed identity to be used for this deployment script. Currently, only user-assigned MSI is supported.
      */
-    identity: pulumi.Input<types.inputs.resources.v20191001preview.ManagedServiceIdentityArgs>;
+    identity: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
      * Type of the script.
      * Expected value is 'AzureCLI'.
@@ -266,7 +266,7 @@ export interface AzureCliScriptArgs {
     /**
      * Storage Account settings.
      */
-    storageAccountSettings?: pulumi.Input<types.inputs.resources.v20191001preview.StorageAccountConfigurationArgs>;
+    storageAccountSettings?: pulumi.Input<types.inputs.StorageAccountConfigurationArgs>;
     /**
      * Supporting files for the external script.
      */

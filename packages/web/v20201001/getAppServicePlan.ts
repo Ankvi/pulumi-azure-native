@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get an App Service plan.
  */
@@ -39,7 +39,7 @@ export interface GetAppServicePlanResult {
     /**
      * Specification for the App Service Environment to use for the App Service plan.
      */
-    readonly hostingEnvironmentProfile?: types.outputs.web.v20201001.HostingEnvironmentProfileResponse;
+    readonly hostingEnvironmentProfile?: types.outputs.HostingEnvironmentProfileResponse;
     /**
      * If Hyper-V container app service plan <code>true</code>, <code>false</code> otherwise.
      */
@@ -100,7 +100,7 @@ export interface GetAppServicePlanResult {
     /**
      * Description of a SKU for a scalable resource.
      */
-    readonly sku?: types.outputs.web.v20201001.SkuDescriptionResponse;
+    readonly sku?: types.outputs.SkuDescriptionResponse;
     /**
      * The time when the server farm expires. Valid only if it is a spot server farm.
      */
@@ -116,7 +116,7 @@ export interface GetAppServicePlanResult {
     /**
      * The system metadata relating to this resource.
      */
-    readonly systemData: types.outputs.web.v20201001.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

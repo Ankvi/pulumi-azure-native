@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get Tenant Activity Log Alert rule.
  */
@@ -31,11 +31,11 @@ export interface GetTenantActivityLogAlertResult {
     /**
      * The actions that will activate when the condition is met.
      */
-    readonly actions: types.outputs.alertsmanagement.v20230401preview.ActionListResponse;
+    readonly actions: types.outputs.ActionListResponse;
     /**
      * The condition that will cause this alert to activate.
      */
-    readonly condition: types.outputs.alertsmanagement.v20230401preview.AlertRuleAllOfConditionResponse;
+    readonly condition: types.outputs.AlertRuleAllOfConditionResponse;
     /**
      * A description of this Activity Log Alert rule.
      */

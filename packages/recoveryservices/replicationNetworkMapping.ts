@@ -43,7 +43,7 @@ export class ReplicationNetworkMapping extends pulumi.CustomResource {
     /**
      * The Network Mapping Properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.recoveryservices.NetworkMappingPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.NetworkMappingPropertiesResponse>;
     /**
      * Resource Type
      */
@@ -116,7 +116,7 @@ export interface ReplicationNetworkMappingArgs {
     /**
      * Input properties for creating network mapping.
      */
-    properties: pulumi.Input<types.inputs.recoveryservices.CreateNetworkMappingInputPropertiesArgs>;
+    properties: pulumi.Input<types.inputs.CreateNetworkMappingInputPropertiesArgs>;
     /**
      * The name of the resource group where the recovery services vault is present.
      */

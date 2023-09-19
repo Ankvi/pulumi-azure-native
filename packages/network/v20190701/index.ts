@@ -48,7 +48,7 @@ utilities.lazyLoad(exports, ["WebApplicationFirewallPolicy"], () => require("./w
 
 
 // Export enums:
-export * from "../types/enums/v20190701";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

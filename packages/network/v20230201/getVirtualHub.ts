@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves the details of a VirtualHub.
  */
@@ -39,11 +39,11 @@ export interface GetVirtualHubResult {
     /**
      * The azureFirewall associated with this VirtualHub.
      */
-    readonly azureFirewall?: types.outputs.network.v20230201.SubResourceResponse;
+    readonly azureFirewall?: types.outputs.SubResourceResponse;
     /**
      * List of references to Bgp Connections.
      */
-    readonly bgpConnections: types.outputs.network.v20230201.SubResourceResponse[];
+    readonly bgpConnections: types.outputs.SubResourceResponse[];
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -51,7 +51,7 @@ export interface GetVirtualHubResult {
     /**
      * The expressRouteGateway associated with this VirtualHub.
      */
-    readonly expressRouteGateway?: types.outputs.network.v20230201.SubResourceResponse;
+    readonly expressRouteGateway?: types.outputs.SubResourceResponse;
     /**
      * The hubRoutingPreference of this VirtualHub.
      */
@@ -63,7 +63,7 @@ export interface GetVirtualHubResult {
     /**
      * List of references to IpConfigurations.
      */
-    readonly ipConfigurations: types.outputs.network.v20230201.SubResourceResponse[];
+    readonly ipConfigurations: types.outputs.SubResourceResponse[];
     /**
      * Kind of service virtual hub. This is metadata used for the Azure portal experience for Route Server.
      */
@@ -79,7 +79,7 @@ export interface GetVirtualHubResult {
     /**
      * The P2SVpnGateway associated with this VirtualHub.
      */
-    readonly p2SVpnGateway?: types.outputs.network.v20230201.SubResourceResponse;
+    readonly p2SVpnGateway?: types.outputs.SubResourceResponse;
     /**
      * The preferred gateway to route on-prem traffic
      */
@@ -91,11 +91,11 @@ export interface GetVirtualHubResult {
     /**
      * List of references to RouteMaps.
      */
-    readonly routeMaps: types.outputs.network.v20230201.SubResourceResponse[];
+    readonly routeMaps: types.outputs.SubResourceResponse[];
     /**
      * The routeTable associated with this virtual hub.
      */
-    readonly routeTable?: types.outputs.network.v20230201.VirtualHubRouteTableResponse;
+    readonly routeTable?: types.outputs.VirtualHubRouteTableResponse;
     /**
      * The routing state.
      */
@@ -103,7 +103,7 @@ export interface GetVirtualHubResult {
     /**
      * The securityPartnerProvider associated with this VirtualHub.
      */
-    readonly securityPartnerProvider?: types.outputs.network.v20230201.SubResourceResponse;
+    readonly securityPartnerProvider?: types.outputs.SubResourceResponse;
     /**
      * The Security Provider name.
      */
@@ -123,7 +123,7 @@ export interface GetVirtualHubResult {
     /**
      * List of all virtual hub route table v2s associated with this VirtualHub.
      */
-    readonly virtualHubRouteTableV2s?: types.outputs.network.v20230201.VirtualHubRouteTableV2Response[];
+    readonly virtualHubRouteTableV2s?: types.outputs.VirtualHubRouteTableV2Response[];
     /**
      * VirtualRouter ASN.
      */
@@ -131,7 +131,7 @@ export interface GetVirtualHubResult {
     /**
      * The VirtualHub Router autoscale configuration.
      */
-    readonly virtualRouterAutoScaleConfiguration?: types.outputs.network.v20230201.VirtualRouterAutoScaleConfigurationResponse;
+    readonly virtualRouterAutoScaleConfiguration?: types.outputs.VirtualRouterAutoScaleConfigurationResponse;
     /**
      * VirtualRouter IPs.
      */
@@ -139,11 +139,11 @@ export interface GetVirtualHubResult {
     /**
      * The VirtualWAN to which the VirtualHub belongs.
      */
-    readonly virtualWan?: types.outputs.network.v20230201.SubResourceResponse;
+    readonly virtualWan?: types.outputs.SubResourceResponse;
     /**
      * The VpnGateway associated with this VirtualHub.
      */
-    readonly vpnGateway?: types.outputs.network.v20230201.SubResourceResponse;
+    readonly vpnGateway?: types.outputs.SubResourceResponse;
 }
 /**
  * Retrieves the details of a VirtualHub.

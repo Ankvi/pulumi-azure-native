@@ -13,7 +13,7 @@ utilities.lazyLoad(exports, ["MultipleActivationKey"], () => require("./multiple
 
 
 // Export enums:
-export * from "../types/enums/v20190916preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

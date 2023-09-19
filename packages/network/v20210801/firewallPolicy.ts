@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * FirewallPolicy Resource.
  */
@@ -34,15 +34,15 @@ export class FirewallPolicy extends pulumi.CustomResource {
     /**
      * The parent firewall policy from which rules are inherited.
      */
-    public readonly basePolicy!: pulumi.Output<types.outputs.network.v20210801.SubResourceResponse | undefined>;
+    public readonly basePolicy!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * List of references to Child Firewall Policies.
      */
-    public /*out*/ readonly childPolicies!: pulumi.Output<types.outputs.network.v20210801.SubResourceResponse[]>;
+    public /*out*/ readonly childPolicies!: pulumi.Output<types.outputs.SubResourceResponse[]>;
     /**
      * DNS Proxy Settings definition.
      */
-    public readonly dnsSettings!: pulumi.Output<types.outputs.network.v20210801.DnsSettingsResponse | undefined>;
+    public readonly dnsSettings!: pulumi.Output<types.outputs.DnsSettingsResponse | undefined>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -50,23 +50,23 @@ export class FirewallPolicy extends pulumi.CustomResource {
     /**
      * Explicit Proxy Settings definition.
      */
-    public readonly explicitProxySettings!: pulumi.Output<types.outputs.network.v20210801.ExplicitProxySettingsResponse | undefined>;
+    public readonly explicitProxySettings!: pulumi.Output<types.outputs.ExplicitProxySettingsResponse | undefined>;
     /**
      * List of references to Azure Firewalls that this Firewall Policy is associated with.
      */
-    public /*out*/ readonly firewalls!: pulumi.Output<types.outputs.network.v20210801.SubResourceResponse[]>;
+    public /*out*/ readonly firewalls!: pulumi.Output<types.outputs.SubResourceResponse[]>;
     /**
      * The identity of the firewall policy.
      */
-    public readonly identity!: pulumi.Output<types.outputs.network.v20210801.ManagedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * Insights on Firewall Policy.
      */
-    public readonly insights!: pulumi.Output<types.outputs.network.v20210801.FirewallPolicyInsightsResponse | undefined>;
+    public readonly insights!: pulumi.Output<types.outputs.FirewallPolicyInsightsResponse | undefined>;
     /**
      * The configuration for Intrusion detection.
      */
-    public readonly intrusionDetection!: pulumi.Output<types.outputs.network.v20210801.FirewallPolicyIntrusionDetectionResponse | undefined>;
+    public readonly intrusionDetection!: pulumi.Output<types.outputs.FirewallPolicyIntrusionDetectionResponse | undefined>;
     /**
      * Resource location.
      */
@@ -82,19 +82,19 @@ export class FirewallPolicy extends pulumi.CustomResource {
     /**
      * List of references to FirewallPolicyRuleCollectionGroups.
      */
-    public /*out*/ readonly ruleCollectionGroups!: pulumi.Output<types.outputs.network.v20210801.SubResourceResponse[]>;
+    public /*out*/ readonly ruleCollectionGroups!: pulumi.Output<types.outputs.SubResourceResponse[]>;
     /**
      * The Firewall Policy SKU.
      */
-    public readonly sku!: pulumi.Output<types.outputs.network.v20210801.FirewallPolicySkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.FirewallPolicySkuResponse | undefined>;
     /**
      * The private IP addresses/IP ranges to which traffic will not be SNAT.
      */
-    public readonly snat!: pulumi.Output<types.outputs.network.v20210801.FirewallPolicySNATResponse | undefined>;
+    public readonly snat!: pulumi.Output<types.outputs.FirewallPolicySNATResponse | undefined>;
     /**
      * SQL Settings definition.
      */
-    public readonly sql!: pulumi.Output<types.outputs.network.v20210801.FirewallPolicySQLResponse | undefined>;
+    public readonly sql!: pulumi.Output<types.outputs.FirewallPolicySQLResponse | undefined>;
     /**
      * Resource tags.
      */
@@ -106,11 +106,11 @@ export class FirewallPolicy extends pulumi.CustomResource {
     /**
      * ThreatIntel Whitelist for Firewall Policy.
      */
-    public readonly threatIntelWhitelist!: pulumi.Output<types.outputs.network.v20210801.FirewallPolicyThreatIntelWhitelistResponse | undefined>;
+    public readonly threatIntelWhitelist!: pulumi.Output<types.outputs.FirewallPolicyThreatIntelWhitelistResponse | undefined>;
     /**
      * TLS Configuration definition.
      */
-    public readonly transportSecurity!: pulumi.Output<types.outputs.network.v20210801.FirewallPolicyTransportSecurityResponse | undefined>;
+    public readonly transportSecurity!: pulumi.Output<types.outputs.FirewallPolicyTransportSecurityResponse | undefined>;
     /**
      * Resource type.
      */
@@ -191,15 +191,15 @@ export interface FirewallPolicyArgs {
     /**
      * The parent firewall policy from which rules are inherited.
      */
-    basePolicy?: pulumi.Input<types.inputs.network.v20210801.SubResourceArgs>;
+    basePolicy?: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * DNS Proxy Settings definition.
      */
-    dnsSettings?: pulumi.Input<types.inputs.network.v20210801.DnsSettingsArgs>;
+    dnsSettings?: pulumi.Input<types.inputs.DnsSettingsArgs>;
     /**
      * Explicit Proxy Settings definition.
      */
-    explicitProxySettings?: pulumi.Input<types.inputs.network.v20210801.ExplicitProxySettingsArgs>;
+    explicitProxySettings?: pulumi.Input<types.inputs.ExplicitProxySettingsArgs>;
     /**
      * The name of the Firewall Policy.
      */
@@ -211,15 +211,15 @@ export interface FirewallPolicyArgs {
     /**
      * The identity of the firewall policy.
      */
-    identity?: pulumi.Input<types.inputs.network.v20210801.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
      * Insights on Firewall Policy.
      */
-    insights?: pulumi.Input<types.inputs.network.v20210801.FirewallPolicyInsightsArgs>;
+    insights?: pulumi.Input<types.inputs.FirewallPolicyInsightsArgs>;
     /**
      * The configuration for Intrusion detection.
      */
-    intrusionDetection?: pulumi.Input<types.inputs.network.v20210801.FirewallPolicyIntrusionDetectionArgs>;
+    intrusionDetection?: pulumi.Input<types.inputs.FirewallPolicyIntrusionDetectionArgs>;
     /**
      * Resource location.
      */
@@ -231,15 +231,15 @@ export interface FirewallPolicyArgs {
     /**
      * The Firewall Policy SKU.
      */
-    sku?: pulumi.Input<types.inputs.network.v20210801.FirewallPolicySkuArgs>;
+    sku?: pulumi.Input<types.inputs.FirewallPolicySkuArgs>;
     /**
      * The private IP addresses/IP ranges to which traffic will not be SNAT.
      */
-    snat?: pulumi.Input<types.inputs.network.v20210801.FirewallPolicySNATArgs>;
+    snat?: pulumi.Input<types.inputs.FirewallPolicySNATArgs>;
     /**
      * SQL Settings definition.
      */
-    sql?: pulumi.Input<types.inputs.network.v20210801.FirewallPolicySQLArgs>;
+    sql?: pulumi.Input<types.inputs.FirewallPolicySQLArgs>;
     /**
      * Resource tags.
      */
@@ -247,13 +247,13 @@ export interface FirewallPolicyArgs {
     /**
      * The operation mode for Threat Intelligence.
      */
-    threatIntelMode?: pulumi.Input<string | types.enums.v20210801.AzureFirewallThreatIntelMode>;
+    threatIntelMode?: pulumi.Input<string | types.enums.AzureFirewallThreatIntelMode>;
     /**
      * ThreatIntel Whitelist for Firewall Policy.
      */
-    threatIntelWhitelist?: pulumi.Input<types.inputs.network.v20210801.FirewallPolicyThreatIntelWhitelistArgs>;
+    threatIntelWhitelist?: pulumi.Input<types.inputs.FirewallPolicyThreatIntelWhitelistArgs>;
     /**
      * TLS Configuration definition.
      */
-    transportSecurity?: pulumi.Input<types.inputs.network.v20210801.FirewallPolicyTransportSecurityArgs>;
+    transportSecurity?: pulumi.Input<types.inputs.FirewallPolicyTransportSecurityArgs>;
 }

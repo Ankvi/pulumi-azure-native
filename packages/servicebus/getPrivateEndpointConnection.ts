@@ -49,11 +49,11 @@ export interface GetPrivateEndpointConnectionResult {
     /**
      * The Private Endpoint resource for this Connection.
      */
-    readonly privateEndpoint?: types.outputs.servicebus.PrivateEndpointResponse;
+    readonly privateEndpoint?: types.outputs.PrivateEndpointResponse;
     /**
      * Details about the state of the connection.
      */
-    readonly privateLinkServiceConnectionState?: types.outputs.servicebus.ConnectionStateResponse;
+    readonly privateLinkServiceConnectionState?: types.outputs.ConnectionStateResponse;
     /**
      * Provisioning state of the Private Endpoint Connection.
      */
@@ -61,7 +61,7 @@ export interface GetPrivateEndpointConnectionResult {
     /**
      * The system meta data relating to this resource.
      */
-    readonly systemData: types.outputs.servicebus.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
      */

@@ -39,11 +39,11 @@ export class ApiPortalCustomDomain extends pulumi.CustomResource {
     /**
      * The properties of custom domain for API portal
      */
-    public readonly properties!: pulumi.Output<types.outputs.appplatform.ApiPortalCustomDomainPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ApiPortalCustomDomainPropertiesResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.appplatform.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource.
      */
@@ -105,7 +105,7 @@ export interface ApiPortalCustomDomainArgs {
     /**
      * The properties of custom domain for API portal
      */
-    properties?: pulumi.Input<types.inputs.appplatform.ApiPortalCustomDomainPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ApiPortalCustomDomainPropertiesArgs>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */

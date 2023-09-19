@@ -78,7 +78,7 @@ export interface GetEntityResult {
     /**
      * The list of entities.
      */
-    readonly value?: types.outputs.management.EntityInfoResponse[];
+    readonly value?: types.outputs.EntityInfoResponse[];
 }
 /**
  * List all entities (Management Groups, Subscriptions, etc.) for the authenticated user.

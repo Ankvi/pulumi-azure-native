@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the properties of the specified token.
  */
@@ -40,7 +40,7 @@ export interface GetTokenResult {
     /**
      * The credentials that can be used for authenticating the token.
      */
-    readonly credentials?: types.outputs.containerregistry.v20230801preview.TokenCredentialsPropertiesResponse;
+    readonly credentials?: types.outputs.TokenCredentialsPropertiesResponse;
     /**
      * The resource ID.
      */
@@ -64,7 +64,7 @@ export interface GetTokenResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.containerregistry.v20230801preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource.
      */

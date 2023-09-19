@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Description of a NotificationHub Resource.
  */
@@ -34,23 +34,23 @@ export class NotificationHub extends pulumi.CustomResource {
     /**
      * The AdmCredential of the created NotificationHub
      */
-    public readonly admCredential!: pulumi.Output<types.outputs.notificationhubs.v20170401.AdmCredentialResponse | undefined>;
+    public readonly admCredential!: pulumi.Output<types.outputs.AdmCredentialResponse | undefined>;
     /**
      * The ApnsCredential of the created NotificationHub
      */
-    public readonly apnsCredential!: pulumi.Output<types.outputs.notificationhubs.v20170401.ApnsCredentialResponse | undefined>;
+    public readonly apnsCredential!: pulumi.Output<types.outputs.ApnsCredentialResponse | undefined>;
     /**
      * The AuthorizationRules of the created NotificationHub
      */
-    public readonly authorizationRules!: pulumi.Output<types.outputs.notificationhubs.v20170401.SharedAccessAuthorizationRulePropertiesResponse[] | undefined>;
+    public readonly authorizationRules!: pulumi.Output<types.outputs.SharedAccessAuthorizationRulePropertiesResponse[] | undefined>;
     /**
      * The BaiduCredential of the created NotificationHub
      */
-    public readonly baiduCredential!: pulumi.Output<types.outputs.notificationhubs.v20170401.BaiduCredentialResponse | undefined>;
+    public readonly baiduCredential!: pulumi.Output<types.outputs.BaiduCredentialResponse | undefined>;
     /**
      * The GcmCredential of the created NotificationHub
      */
-    public readonly gcmCredential!: pulumi.Output<types.outputs.notificationhubs.v20170401.GcmCredentialResponse | undefined>;
+    public readonly gcmCredential!: pulumi.Output<types.outputs.GcmCredentialResponse | undefined>;
     /**
      * Resource location
      */
@@ -58,7 +58,7 @@ export class NotificationHub extends pulumi.CustomResource {
     /**
      * The MpnsCredential of the created NotificationHub
      */
-    public readonly mpnsCredential!: pulumi.Output<types.outputs.notificationhubs.v20170401.MpnsCredentialResponse | undefined>;
+    public readonly mpnsCredential!: pulumi.Output<types.outputs.MpnsCredentialResponse | undefined>;
     /**
      * Resource name
      */
@@ -70,7 +70,7 @@ export class NotificationHub extends pulumi.CustomResource {
     /**
      * The sku of the created namespace
      */
-    public readonly sku!: pulumi.Output<types.outputs.notificationhubs.v20170401.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Resource tags
      */
@@ -82,7 +82,7 @@ export class NotificationHub extends pulumi.CustomResource {
     /**
      * The WnsCredential of the created NotificationHub
      */
-    public readonly wnsCredential!: pulumi.Output<types.outputs.notificationhubs.v20170401.WnsCredentialResponse | undefined>;
+    public readonly wnsCredential!: pulumi.Output<types.outputs.WnsCredentialResponse | undefined>;
 
     /**
      * Create a NotificationHub resource with the given unique name, arguments, and options.
@@ -146,23 +146,23 @@ export interface NotificationHubArgs {
     /**
      * The AdmCredential of the created NotificationHub
      */
-    admCredential?: pulumi.Input<types.inputs.notificationhubs.v20170401.AdmCredentialArgs>;
+    admCredential?: pulumi.Input<types.inputs.AdmCredentialArgs>;
     /**
      * The ApnsCredential of the created NotificationHub
      */
-    apnsCredential?: pulumi.Input<types.inputs.notificationhubs.v20170401.ApnsCredentialArgs>;
+    apnsCredential?: pulumi.Input<types.inputs.ApnsCredentialArgs>;
     /**
      * The AuthorizationRules of the created NotificationHub
      */
-    authorizationRules?: pulumi.Input<pulumi.Input<types.inputs.notificationhubs.v20170401.SharedAccessAuthorizationRulePropertiesArgs>[]>;
+    authorizationRules?: pulumi.Input<pulumi.Input<types.inputs.SharedAccessAuthorizationRulePropertiesArgs>[]>;
     /**
      * The BaiduCredential of the created NotificationHub
      */
-    baiduCredential?: pulumi.Input<types.inputs.notificationhubs.v20170401.BaiduCredentialArgs>;
+    baiduCredential?: pulumi.Input<types.inputs.BaiduCredentialArgs>;
     /**
      * The GcmCredential of the created NotificationHub
      */
-    gcmCredential?: pulumi.Input<types.inputs.notificationhubs.v20170401.GcmCredentialArgs>;
+    gcmCredential?: pulumi.Input<types.inputs.GcmCredentialArgs>;
     /**
      * Resource location
      */
@@ -170,7 +170,7 @@ export interface NotificationHubArgs {
     /**
      * The MpnsCredential of the created NotificationHub
      */
-    mpnsCredential?: pulumi.Input<types.inputs.notificationhubs.v20170401.MpnsCredentialArgs>;
+    mpnsCredential?: pulumi.Input<types.inputs.MpnsCredentialArgs>;
     /**
      * The NotificationHub name.
      */
@@ -194,7 +194,7 @@ export interface NotificationHubArgs {
     /**
      * The sku of the created namespace
      */
-    sku?: pulumi.Input<types.inputs.notificationhubs.v20170401.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Resource tags
      */
@@ -202,5 +202,5 @@ export interface NotificationHubArgs {
     /**
      * The WnsCredential of the created NotificationHub
      */
-    wnsCredential?: pulumi.Input<types.inputs.notificationhubs.v20170401.WnsCredentialArgs>;
+    wnsCredential?: pulumi.Input<types.inputs.WnsCredentialArgs>;
 }

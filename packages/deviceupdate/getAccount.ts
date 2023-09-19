@@ -32,7 +32,7 @@ export interface GetAccountResult {
     /**
      * CMK encryption at rest properties
      */
-    readonly encryption?: types.outputs.deviceupdate.EncryptionResponse;
+    readonly encryption?: types.outputs.EncryptionResponse;
     /**
      * API host name.
      */
@@ -44,7 +44,7 @@ export interface GetAccountResult {
     /**
      * The type of identity used for the resource.
      */
-    readonly identity?: types.outputs.deviceupdate.ManagedServiceIdentityResponse;
+    readonly identity?: types.outputs.ManagedServiceIdentityResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -52,7 +52,7 @@ export interface GetAccountResult {
     /**
      * Device Update account primary and failover location details
      */
-    readonly locations: types.outputs.deviceupdate.LocationResponse[];
+    readonly locations: types.outputs.LocationResponse[];
     /**
      * The name of the resource
      */
@@ -60,7 +60,7 @@ export interface GetAccountResult {
     /**
      * List of private endpoint connections associated with the account.
      */
-    readonly privateEndpointConnections?: types.outputs.deviceupdate.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections?: types.outputs.PrivateEndpointConnectionResponse[];
     /**
      * Provisioning state.
      */
@@ -76,7 +76,7 @@ export interface GetAccountResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.deviceupdate.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

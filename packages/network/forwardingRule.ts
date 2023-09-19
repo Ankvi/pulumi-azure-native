@@ -59,11 +59,11 @@ export class ForwardingRule extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.network.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * DNS servers to forward the DNS query to.
      */
-    public readonly targetDnsServers!: pulumi.Output<types.outputs.network.TargetDnsServerResponse[]>;
+    public readonly targetDnsServers!: pulumi.Output<types.outputs.TargetDnsServerResponse[]>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -153,5 +153,5 @@ export interface ForwardingRuleArgs {
     /**
      * DNS servers to forward the DNS query to.
      */
-    targetDnsServers: pulumi.Input<pulumi.Input<types.inputs.network.TargetDnsServerArgs>[]>;
+    targetDnsServers: pulumi.Input<pulumi.Input<types.inputs.TargetDnsServerArgs>[]>;
 }

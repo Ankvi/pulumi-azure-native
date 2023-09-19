@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the specified deployments associated with the Cognitive Services account.
  */
@@ -48,15 +48,15 @@ export interface GetDeploymentResult {
     /**
      * Properties of Cognitive Services account deployment.
      */
-    readonly properties: types.outputs.cognitiveservices.v20230501.DeploymentPropertiesResponse;
+    readonly properties: types.outputs.DeploymentPropertiesResponse;
     /**
      * The resource model definition representing SKU
      */
-    readonly sku?: types.outputs.cognitiveservices.v20230501.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.cognitiveservices.v20230501.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

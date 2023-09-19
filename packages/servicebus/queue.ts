@@ -43,7 +43,7 @@ export class Queue extends pulumi.CustomResource {
     /**
      * Message Count Details.
      */
-    public /*out*/ readonly countDetails!: pulumi.Output<types.outputs.servicebus.MessageCountDetailsResponse>;
+    public /*out*/ readonly countDetails!: pulumi.Output<types.outputs.MessageCountDetailsResponse>;
     /**
      * The exact time the message was created.
      */
@@ -127,7 +127,7 @@ export class Queue extends pulumi.CustomResource {
     /**
      * The system meta data relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.servicebus.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
      */

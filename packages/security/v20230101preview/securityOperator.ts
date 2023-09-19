@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Security operator under a given subscription and pricing
  */
@@ -34,7 +34,7 @@ export class SecurityOperator extends pulumi.CustomResource {
     /**
      * Identity for the resource.
      */
-    public /*out*/ readonly identity!: pulumi.Output<types.outputs.security.v20230101preview.IdentityResponse | undefined>;
+    public /*out*/ readonly identity!: pulumi.Output<types.outputs.IdentityResponse | undefined>;
     /**
      * Resource name
      */

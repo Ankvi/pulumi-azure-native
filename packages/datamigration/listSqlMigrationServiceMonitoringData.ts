@@ -36,7 +36,7 @@ export interface ListSqlMigrationServiceMonitoringDataResult {
     /**
      * Integration Runtime node monitoring data.
      */
-    readonly nodes: types.outputs.datamigration.NodeMonitoringDataResponse[];
+    readonly nodes: types.outputs.NodeMonitoringDataResponse[];
 }
 /**
  * Retrieve the registered Integration Runtime nodes and their monitoring data for a given Database Migration Service.

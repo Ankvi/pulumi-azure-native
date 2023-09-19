@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents a SourceControl in Azure Security Insights.
  */
@@ -50,7 +50,7 @@ export class SourceControl extends pulumi.CustomResource {
     /**
      * Information regarding the latest deployment for the source control.
      */
-    public readonly lastDeploymentInfo!: pulumi.Output<types.outputs.securityinsights.v20230501preview.DeploymentInfoResponse | undefined>;
+    public readonly lastDeploymentInfo!: pulumi.Output<types.outputs.DeploymentInfoResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -62,15 +62,15 @@ export class SourceControl extends pulumi.CustomResource {
     /**
      * Repository metadata.
      */
-    public readonly repository!: pulumi.Output<types.outputs.securityinsights.v20230501preview.RepositoryResponse>;
+    public readonly repository!: pulumi.Output<types.outputs.RepositoryResponse>;
     /**
      * Information regarding the resources created in user's repository.
      */
-    public readonly repositoryResourceInfo!: pulumi.Output<types.outputs.securityinsights.v20230501preview.RepositoryResourceInfoResponse | undefined>;
+    public readonly repositoryResourceInfo!: pulumi.Output<types.outputs.RepositoryResourceInfoResponse | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.securityinsights.v20230501preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -153,7 +153,7 @@ export interface SourceControlArgs {
     /**
      * Array of source control content types.
      */
-    contentTypes: pulumi.Input<pulumi.Input<string | types.enums.v20230501preview.ContentType>[]>;
+    contentTypes: pulumi.Input<pulumi.Input<string | types.enums.ContentType>[]>;
     /**
      * A description of the source control
      */
@@ -169,19 +169,19 @@ export interface SourceControlArgs {
     /**
      * Information regarding the latest deployment for the source control.
      */
-    lastDeploymentInfo?: pulumi.Input<types.inputs.securityinsights.v20230501preview.DeploymentInfoArgs>;
+    lastDeploymentInfo?: pulumi.Input<types.inputs.DeploymentInfoArgs>;
     /**
      * The repository type of the source control
      */
-    repoType: pulumi.Input<string | types.enums.v20230501preview.RepoType>;
+    repoType: pulumi.Input<string | types.enums.RepoType>;
     /**
      * Repository metadata.
      */
-    repository: pulumi.Input<types.inputs.securityinsights.v20230501preview.RepositoryArgs>;
+    repository: pulumi.Input<types.inputs.RepositoryArgs>;
     /**
      * Information regarding the resources created in user's repository.
      */
-    repositoryResourceInfo?: pulumi.Input<types.inputs.securityinsights.v20230501preview.RepositoryResourceInfoArgs>;
+    repositoryResourceInfo?: pulumi.Input<types.inputs.RepositoryResourceInfoArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -193,7 +193,7 @@ export interface SourceControlArgs {
     /**
      * The version number associated with the source control
      */
-    version?: pulumi.Input<string | types.enums.v20230501preview.Version>;
+    version?: pulumi.Input<string | types.enums.Version>;
     /**
      * The name of the workspace.
      */

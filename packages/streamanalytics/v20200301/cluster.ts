@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A Stream Analytics Cluster object
  */
@@ -66,7 +66,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * The SKU of the cluster. This determines the size/capacity of the cluster. Required on PUT (CreateOrUpdate) requests.
      */
-    public readonly sku!: pulumi.Output<types.outputs.streamanalytics.v20200301.ClusterSkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.ClusterSkuResponse | undefined>;
     /**
      * Resource tags.
      */
@@ -142,7 +142,7 @@ export interface ClusterArgs {
     /**
      * The SKU of the cluster. This determines the size/capacity of the cluster. Required on PUT (CreateOrUpdate) requests.
      */
-    sku?: pulumi.Input<types.inputs.streamanalytics.v20200301.ClusterSkuArgs>;
+    sku?: pulumi.Input<types.inputs.ClusterSkuArgs>;
     /**
      * Resource tags.
      */

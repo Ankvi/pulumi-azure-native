@@ -27,7 +27,7 @@ export interface GetVMInstanceGuestAgentResult {
     /**
      * Username / Password Credentials to provision guest agent.
      */
-    readonly credentials?: types.outputs.connectedvmwarevsphere.GuestCredentialResponse;
+    readonly credentials?: types.outputs.GuestCredentialResponse;
     /**
      * Gets the name of the corresponding resource in Kubernetes.
      */
@@ -35,7 +35,7 @@ export interface GetVMInstanceGuestAgentResult {
     /**
      * HTTP Proxy configuration for the VM.
      */
-    readonly httpProxyConfig?: types.outputs.connectedvmwarevsphere.HttpProxyConfigurationResponse;
+    readonly httpProxyConfig?: types.outputs.HttpProxyConfigurationResponse;
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -63,11 +63,11 @@ export interface GetVMInstanceGuestAgentResult {
     /**
      * The resource status information.
      */
-    readonly statuses: types.outputs.connectedvmwarevsphere.ResourceStatusResponse[];
+    readonly statuses: types.outputs.ResourceStatusResponse[];
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.connectedvmwarevsphere.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

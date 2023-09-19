@@ -32,7 +32,7 @@ export interface GetCloudConnectionResult {
     /**
      * The cloud connector which discovered the remote resource.
      */
-    readonly cloudConnector?: types.outputs.hybridcloud.ResourceReferenceResponse;
+    readonly cloudConnector?: types.outputs.ResourceReferenceResponse;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -64,7 +64,7 @@ export interface GetCloudConnectionResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.hybridcloud.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -76,7 +76,7 @@ export interface GetCloudConnectionResult {
     /**
      * The virtualHub to which the cloud connection belongs.
      */
-    readonly virtualHub?: types.outputs.hybridcloud.ResourceReferenceResponse;
+    readonly virtualHub?: types.outputs.ResourceReferenceResponse;
 }
 /**
  * Gets the specified cloud connection in a specified resource group.

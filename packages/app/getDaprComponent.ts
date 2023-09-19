@@ -53,7 +53,7 @@ export interface GetDaprComponentResult {
     /**
      * Component metadata
      */
-    readonly metadata?: types.outputs.app.DaprMetadataResponse[];
+    readonly metadata?: types.outputs.DaprMetadataResponse[];
     /**
      * The name of the resource
      */
@@ -69,11 +69,11 @@ export interface GetDaprComponentResult {
     /**
      * Collection of secrets used by a Dapr component
      */
-    readonly secrets?: types.outputs.app.SecretResponse[];
+    readonly secrets?: types.outputs.SecretResponse[];
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.app.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

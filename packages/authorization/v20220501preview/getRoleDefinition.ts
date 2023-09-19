@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get role definition by ID (GUID).
  */
@@ -55,7 +55,7 @@ export interface GetRoleDefinitionResult {
     /**
      * Role definition permissions.
      */
-    readonly permissions?: types.outputs.authorization.v20220501preview.PermissionResponse[];
+    readonly permissions?: types.outputs.PermissionResponse[];
     /**
      * The role name.
      */

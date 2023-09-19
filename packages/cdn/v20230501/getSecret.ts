@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets an existing Secret within a profile.
  */
@@ -45,7 +45,7 @@ export interface GetSecretResult {
     /**
      * object which contains secret parameters
      */
-    readonly parameters?: types.outputs.cdn.v20230501.AzureFirstPartyManagedCertificateParametersResponse | types.outputs.cdn.v20230501.CustomerCertificateParametersResponse | types.outputs.cdn.v20230501.ManagedCertificateParametersResponse | types.outputs.cdn.v20230501.UrlSigningKeyParametersResponse;
+    readonly parameters?: types.outputs.AzureFirstPartyManagedCertificateParametersResponse | types.outputs.CustomerCertificateParametersResponse | types.outputs.ManagedCertificateParametersResponse | types.outputs.UrlSigningKeyParametersResponse;
     /**
      * The name of the profile which holds the secret.
      */
@@ -57,7 +57,7 @@ export interface GetSecretResult {
     /**
      * Read only system data
      */
-    readonly systemData: types.outputs.cdn.v20230501.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource type.
      */

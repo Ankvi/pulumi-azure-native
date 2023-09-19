@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the properties of a specified task.
  */
@@ -37,7 +37,7 @@ export interface GetTaskResult {
     /**
      * The machine configuration of the run agent.
      */
-    readonly agentConfiguration?: types.outputs.containerregistry.v20190401.AgentPropertiesResponse;
+    readonly agentConfiguration?: types.outputs.AgentPropertiesResponse;
     /**
      * The creation date of task.
      */
@@ -45,7 +45,7 @@ export interface GetTaskResult {
     /**
      * The properties that describes a set of credentials that will be used when this run is invoked.
      */
-    readonly credentials?: types.outputs.containerregistry.v20190401.CredentialsResponse;
+    readonly credentials?: types.outputs.CredentialsResponse;
     /**
      * The resource ID.
      */
@@ -53,7 +53,7 @@ export interface GetTaskResult {
     /**
      * Identity for the resource.
      */
-    readonly identity?: types.outputs.containerregistry.v20190401.IdentityPropertiesResponse;
+    readonly identity?: types.outputs.IdentityPropertiesResponse;
     /**
      * The location of the resource. This cannot be changed after the resource is created.
      */
@@ -65,7 +65,7 @@ export interface GetTaskResult {
     /**
      * The platform properties against which the run has to happen.
      */
-    readonly platform: types.outputs.containerregistry.v20190401.PlatformPropertiesResponse;
+    readonly platform: types.outputs.PlatformPropertiesResponse;
     /**
      * The provisioning state of the task.
      */
@@ -77,7 +77,7 @@ export interface GetTaskResult {
     /**
      * The properties of a task step.
      */
-    readonly step: types.outputs.containerregistry.v20190401.DockerBuildStepResponse | types.outputs.containerregistry.v20190401.EncodedTaskStepResponse | types.outputs.containerregistry.v20190401.FileTaskStepResponse;
+    readonly step: types.outputs.DockerBuildStepResponse | types.outputs.EncodedTaskStepResponse | types.outputs.FileTaskStepResponse;
     /**
      * The tags of the resource.
      */
@@ -89,7 +89,7 @@ export interface GetTaskResult {
     /**
      * The properties that describe all triggers for the task.
      */
-    readonly trigger?: types.outputs.containerregistry.v20190401.TriggerPropertiesResponse;
+    readonly trigger?: types.outputs.TriggerPropertiesResponse;
     /**
      * The type of the resource.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The policy exemption.
  */
@@ -70,11 +70,11 @@ export class PolicyExemption extends pulumi.CustomResource {
     /**
      * The resource selector list to filter policies by resource properties.
      */
-    public readonly resourceSelectors!: pulumi.Output<types.outputs.authorization.v20220701preview.ResourceSelectorResponse[] | undefined>;
+    public readonly resourceSelectors!: pulumi.Output<types.outputs.ResourceSelectorResponse[] | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.authorization.v20220701preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource (Microsoft.Authorization/policyExemptions).
      */
@@ -142,7 +142,7 @@ export interface PolicyExemptionArgs {
     /**
      * The option whether validate the exemption is at or under the assignment scope.
      */
-    assignmentScopeValidation?: pulumi.Input<string | types.enums.v20220701preview.AssignmentScopeValidation>;
+    assignmentScopeValidation?: pulumi.Input<string | types.enums.AssignmentScopeValidation>;
     /**
      * The description of the policy exemption.
      */
@@ -154,7 +154,7 @@ export interface PolicyExemptionArgs {
     /**
      * The policy exemption category. Possible values are Waiver and Mitigated.
      */
-    exemptionCategory: pulumi.Input<string | types.enums.v20220701preview.ExemptionCategory>;
+    exemptionCategory: pulumi.Input<string | types.enums.ExemptionCategory>;
     /**
      * The expiration date and time (in UTC ISO 8601 format yyyy-MM-ddTHH:mm:ssZ) of the policy exemption.
      */
@@ -178,7 +178,7 @@ export interface PolicyExemptionArgs {
     /**
      * The resource selector list to filter policies by resource properties.
      */
-    resourceSelectors?: pulumi.Input<pulumi.Input<types.inputs.authorization.v20220701preview.ResourceSelectorArgs>[]>;
+    resourceSelectors?: pulumi.Input<pulumi.Input<types.inputs.ResourceSelectorArgs>[]>;
     /**
      * The scope of the policy exemption. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
      */

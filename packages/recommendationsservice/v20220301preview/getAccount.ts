@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns RecommendationsService Account resource for a given name.
  */
@@ -35,7 +35,7 @@ export interface GetAccountResult {
     /**
      * The identity used for the resource.
      */
-    readonly identity?: types.outputs.recommendationsservice.v20220301preview.ManagedServiceIdentityResponse;
+    readonly identity?: types.outputs.ManagedServiceIdentityResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -47,11 +47,11 @@ export interface GetAccountResult {
     /**
      * Account resource properties.
      */
-    readonly properties: types.outputs.recommendationsservice.v20220301preview.AccountResourceResponseProperties;
+    readonly properties: types.outputs.AccountResourceResponseProperties;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.recommendationsservice.v20220301preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

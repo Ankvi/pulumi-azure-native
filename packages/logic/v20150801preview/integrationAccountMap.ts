@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 export class IntegrationAccountMap extends pulumi.CustomResource {
     /**
      * Get an existing IntegrationAccountMap resource's state with the given name, ID, and optional extra
@@ -39,7 +39,7 @@ export class IntegrationAccountMap extends pulumi.CustomResource {
     /**
      * The content link.
      */
-    public /*out*/ readonly contentLink!: pulumi.Output<types.outputs.logic.v20150801preview.IntegrationAccountContentLinkResponse>;
+    public /*out*/ readonly contentLink!: pulumi.Output<types.outputs.IntegrationAccountContentLinkResponse>;
     /**
      * The content type.
      */
@@ -156,7 +156,7 @@ export interface IntegrationAccountMapArgs {
     /**
      * The map type.
      */
-    mapType?: pulumi.Input<types.enums.v20150801preview.MapType>;
+    mapType?: pulumi.Input<types.enums.MapType>;
     /**
      * The metadata.
      */

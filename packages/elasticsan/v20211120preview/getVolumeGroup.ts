@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get an VolumeGroups.
  */
@@ -48,7 +48,7 @@ export interface GetVolumeGroupResult {
     /**
      * A collection of rules governing the accessibility from specific network locations.
      */
-    readonly networkAcls?: types.outputs.elasticsan.v20211120preview.NetworkRuleSetResponse;
+    readonly networkAcls?: types.outputs.NetworkRuleSetResponse;
     /**
      * Type of storage target
      */
@@ -60,7 +60,7 @@ export interface GetVolumeGroupResult {
     /**
      * Resource metadata required by ARM RPC
      */
-    readonly systemData: types.outputs.elasticsan.v20211120preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Azure resource tags.
      */

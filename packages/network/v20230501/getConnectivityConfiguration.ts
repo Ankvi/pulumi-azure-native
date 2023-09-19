@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a Network Connectivity Configuration, specified by the resource group, network manager name, and connectivity Configuration name
  */
@@ -36,7 +36,7 @@ export interface GetConnectivityConfigurationResult {
     /**
      * Groups for configuration
      */
-    readonly appliesToGroups: types.outputs.network.v20230501.ConnectivityGroupItemResponse[];
+    readonly appliesToGroups: types.outputs.ConnectivityGroupItemResponse[];
     /**
      * Connectivity topology type.
      */
@@ -56,7 +56,7 @@ export interface GetConnectivityConfigurationResult {
     /**
      * List of hubItems
      */
-    readonly hubs?: types.outputs.network.v20230501.HubResponse[];
+    readonly hubs?: types.outputs.HubResponse[];
     /**
      * Resource ID.
      */
@@ -80,7 +80,7 @@ export interface GetConnectivityConfigurationResult {
     /**
      * The system metadata related to this resource.
      */
-    readonly systemData: types.outputs.network.v20230501.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource type.
      */

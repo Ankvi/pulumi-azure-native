@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The network group resource
  */
@@ -50,7 +50,7 @@ export class NetworkGroup extends pulumi.CustomResource {
     /**
      * Group members of network group.
      */
-    public readonly groupMembers!: pulumi.Output<types.outputs.network.v20210201preview.GroupMembersItemResponse[] | undefined>;
+    public readonly groupMembers!: pulumi.Output<types.outputs.GroupMembersItemResponse[] | undefined>;
     /**
      * Group member type.
      */
@@ -66,7 +66,7 @@ export class NetworkGroup extends pulumi.CustomResource {
     /**
      * The system metadata related to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.network.v20210201preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource type.
      */
@@ -140,7 +140,7 @@ export interface NetworkGroupArgs {
     /**
      * Group members of network group.
      */
-    groupMembers?: pulumi.Input<pulumi.Input<types.inputs.network.v20210201preview.GroupMembersItemArgs>[]>;
+    groupMembers?: pulumi.Input<pulumi.Input<types.inputs.GroupMembersItemArgs>[]>;
     /**
      * Group member type.
      */

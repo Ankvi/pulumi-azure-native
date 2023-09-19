@@ -39,11 +39,11 @@ export class ManagedGateway extends pulumi.CustomResource {
     /**
      * The properties of a gateway resource.
      */
-    public /*out*/ readonly properties!: pulumi.Output<types.outputs.scom.ManagedGatewayPropertiesResponse>;
+    public /*out*/ readonly properties!: pulumi.Output<types.outputs.ManagedGatewayPropertiesResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.scom.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

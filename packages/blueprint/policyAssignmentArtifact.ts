@@ -56,7 +56,7 @@ export class PolicyAssignmentArtifact extends pulumi.CustomResource {
     /**
      * Parameter values for the policy definition.
      */
-    public readonly parameters!: pulumi.Output<{[key: string]: types.outputs.blueprint.ParameterValueResponse}>;
+    public readonly parameters!: pulumi.Output<{[key: string]: types.outputs.ParameterValueResponse}>;
     /**
      * Azure resource ID of the policy definition.
      */
@@ -158,7 +158,7 @@ export interface PolicyAssignmentArtifactArgs {
     /**
      * Parameter values for the policy definition.
      */
-    parameters: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.blueprint.ParameterValueArgs>}>;
+    parameters: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.ParameterValueArgs>}>;
     /**
      * Azure resource ID of the policy definition.
      */

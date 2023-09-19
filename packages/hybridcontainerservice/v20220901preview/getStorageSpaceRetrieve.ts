@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the Hybrid AKS storage space object
  */
@@ -28,7 +28,7 @@ export interface GetStorageSpaceRetrieveArgs {
  * The storageSpaces resource definition.
  */
 export interface GetStorageSpaceRetrieveResult {
-    readonly extendedLocation?: types.outputs.hybridcontainerservice.v20220901preview.StorageSpacesResponseExtendedLocation;
+    readonly extendedLocation?: types.outputs.StorageSpacesResponseExtendedLocation;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -44,11 +44,11 @@ export interface GetStorageSpaceRetrieveResult {
     /**
      * HybridAKSStorageSpec defines the desired state of HybridAKSStorage
      */
-    readonly properties: types.outputs.hybridcontainerservice.v20220901preview.StorageSpacesPropertiesResponse;
+    readonly properties: types.outputs.StorageSpacesPropertiesResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.hybridcontainerservice.v20220901preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

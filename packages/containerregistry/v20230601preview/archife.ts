@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An object that represents a archive for a container registry.
  */
@@ -38,7 +38,7 @@ export class Archife extends pulumi.CustomResource {
     /**
      * The package source of the archive.
      */
-    public readonly packageSource!: pulumi.Output<types.outputs.containerregistry.v20230601preview.ArchivePackageSourcePropertiesResponse | undefined>;
+    public readonly packageSource!: pulumi.Output<types.outputs.ArchivePackageSourcePropertiesResponse | undefined>;
     /**
      * The provisioning state of the archive at the time the operation was called.
      */
@@ -52,7 +52,7 @@ export class Archife extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.containerregistry.v20230601preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource.
      */
@@ -118,7 +118,7 @@ export interface ArchifeArgs {
     /**
      * The package source of the archive.
      */
-    packageSource?: pulumi.Input<types.inputs.containerregistry.v20230601preview.ArchivePackageSourcePropertiesArgs>;
+    packageSource?: pulumi.Input<types.inputs.ArchivePackageSourcePropertiesArgs>;
     /**
      * The type of the package resource.
      */

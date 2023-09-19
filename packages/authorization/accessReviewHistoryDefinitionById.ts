@@ -51,7 +51,7 @@ export class AccessReviewHistoryDefinitionById extends pulumi.CustomResource {
     /**
      * Set of access review history instances for this history definition.
      */
-    public readonly instances!: pulumi.Output<types.outputs.authorization.AccessReviewHistoryInstanceResponse[] | undefined>;
+    public readonly instances!: pulumi.Output<types.outputs.AccessReviewHistoryInstanceResponse[] | undefined>;
     /**
      * The interval for recurrence. For a quarterly review, the interval is 3 for type : absoluteMonthly.
      */
@@ -87,7 +87,7 @@ export class AccessReviewHistoryDefinitionById extends pulumi.CustomResource {
     /**
      * A collection of scopes used when selecting review history data
      */
-    public readonly scopes!: pulumi.Output<types.outputs.authorization.AccessReviewScopeResponse[] | undefined>;
+    public readonly scopes!: pulumi.Output<types.outputs.AccessReviewScopeResponse[] | undefined>;
     /**
      * The DateTime when the review is scheduled to be start. This could be a date in the future. Required on create.
      */
@@ -185,7 +185,7 @@ export interface AccessReviewHistoryDefinitionByIdArgs {
     /**
      * Set of access review history instances for this history definition.
      */
-    instances?: pulumi.Input<pulumi.Input<types.inputs.authorization.AccessReviewHistoryInstanceArgs>[]>;
+    instances?: pulumi.Input<pulumi.Input<types.inputs.AccessReviewHistoryInstanceArgs>[]>;
     /**
      * The interval for recurrence. For a quarterly review, the interval is 3 for type : absoluteMonthly.
      */
@@ -197,7 +197,7 @@ export interface AccessReviewHistoryDefinitionByIdArgs {
     /**
      * A collection of scopes used when selecting review history data
      */
-    scopes?: pulumi.Input<pulumi.Input<types.inputs.authorization.AccessReviewScopeArgs>[]>;
+    scopes?: pulumi.Input<pulumi.Input<types.inputs.AccessReviewScopeArgs>[]>;
     /**
      * The DateTime when the review is scheduled to be start. This could be a date in the future. Required on create.
      */

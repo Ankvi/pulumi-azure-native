@@ -1,262 +1,129 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
-export namespace powerplatform {
+/**
+ * The identity of the EnterprisePolicy.
+ */
+export interface EnterprisePolicyIdentityArgs {
     /**
-     * The identity of the EnterprisePolicy.
+     * The type of identity used for the EnterprisePolicy. Currently, the only supported type is 'SystemAssigned', which implicitly creates an identity.
      */
-    export interface EnterprisePolicyIdentityArgs {
-        /**
-         * The type of identity used for the EnterprisePolicy. Currently, the only supported type is 'SystemAssigned', which implicitly creates an identity.
-         */
-        type?: pulumi.Input<enums.ResourceIdentityType>;
-    }
+    type?: pulumi.Input<enums.ResourceIdentityType>;
+}
 
+/**
+ * Url and version of the KeyVault Secret
+ */
+export interface KeyPropertiesArgs {
     /**
-     * Url and version of the KeyVault Secret
+     * The identifier of the key vault key used to encrypt data.
      */
-    export interface KeyPropertiesArgs {
-        /**
-         * The identifier of the key vault key used to encrypt data.
-         */
-        name?: pulumi.Input<string>;
-        /**
-         * The version of the identity which will be used to access key vault.
-         */
-        version?: pulumi.Input<string>;
-    }
-
+    name?: pulumi.Input<string>;
     /**
-     * Settings concerning key vault encryption for a configuration store.
+     * The version of the identity which will be used to access key vault.
      */
-    export interface KeyVaultPropertiesArgs {
-        /**
-         * Uri of KeyVault
-         */
-        id?: pulumi.Input<string>;
-        /**
-         * Identity of the secret that includes name and version.
-         */
-        key?: pulumi.Input<KeyPropertiesArgs>;
-    }
+    version?: pulumi.Input<string>;
+}
 
+/**
+ * Settings concerning key vault encryption for a configuration store.
+ */
+export interface KeyVaultPropertiesArgs {
     /**
-     * A collection of information about the state of the connection between service consumer and provider.
+     * Uri of KeyVault
      */
-    export interface PrivateLinkServiceConnectionStateArgs {
-        /**
-         * A message indicating if changes on the service provider require any updates on the consumer.
-         */
-        actionsRequired?: pulumi.Input<string>;
-        /**
-         * The reason for approval/rejection of the connection.
-         */
-        description?: pulumi.Input<string>;
-        /**
-         * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-         */
-        status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus>;
-    }
-
+    id?: pulumi.Input<string>;
     /**
-     * The encryption settings for a configuration store.
+     * Identity of the secret that includes name and version.
      */
-    export interface PropertiesEncryptionArgs {
-        /**
-         * Key vault properties.
-         */
-        keyVault?: pulumi.Input<KeyVaultPropertiesArgs>;
-        /**
-         * The state of onboarding, which only appears in the response.
-         */
-        state?: pulumi.Input<string | enums.State>;
-    }
+    key?: pulumi.Input<KeyPropertiesArgs>;
+}
 
+/**
+ * A collection of information about the state of the connection between service consumer and provider.
+ */
+export interface PrivateLinkServiceConnectionStateArgs {
     /**
-     * Settings concerning lockbox.
+     * A message indicating if changes on the service provider require any updates on the consumer.
      */
-    export interface PropertiesLockboxArgs {
-        /**
-         * lockbox configuration
-         */
-        state?: pulumi.Input<string | enums.State>;
-    }
-
+    actionsRequired?: pulumi.Input<string>;
     /**
-     * Settings concerning network injection.
+     * The reason for approval/rejection of the connection.
      */
-    export interface PropertiesNetworkInjectionArgs {
-        /**
-         * Network injection configuration
-         */
-        virtualNetworks?: pulumi.Input<VirtualNetworkPropertiesListArgs>;
-    }
+    description?: pulumi.Input<string>;
+    /**
+     * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+     */
+    status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus>;
+}
 
+/**
+ * The encryption settings for a configuration store.
+ */
+export interface PropertiesEncryptionArgs {
+    /**
+     * Key vault properties.
+     */
+    keyVault?: pulumi.Input<KeyVaultPropertiesArgs>;
+    /**
+     * The state of onboarding, which only appears in the response.
+     */
+    state?: pulumi.Input<string | enums.State>;
+}
+
+/**
+ * Settings concerning lockbox.
+ */
+export interface PropertiesLockboxArgs {
+    /**
+     * lockbox configuration
+     */
+    state?: pulumi.Input<string | enums.State>;
+}
+
+/**
+ * Settings concerning network injection.
+ */
+export interface PropertiesNetworkInjectionArgs {
+    /**
+     * Network injection configuration
+     */
+    virtualNetworks?: pulumi.Input<VirtualNetworkPropertiesListArgs>;
+}
+
+/**
+ * Properties of a subnet.
+ */
+export interface SubnetPropertiesArgs {
+    /**
+     * Subnet name.
+     */
+    name?: pulumi.Input<string>;
+}
+
+/**
+ * Settings concerning the virtual network.
+ */
+export interface VirtualNetworkPropertiesArgs {
+    /**
+     * Uri of the virtual network.
+     */
+    id?: pulumi.Input<string>;
     /**
      * Properties of a subnet.
      */
-    export interface SubnetPropertiesArgs {
-        /**
-         * Subnet name.
-         */
-        name?: pulumi.Input<string>;
-    }
+    subnet?: pulumi.Input<SubnetPropertiesArgs>;
+}
 
+/**
+ * A list of private link resources
+ */
+export interface VirtualNetworkPropertiesListArgs {
     /**
-     * Settings concerning the virtual network.
+     * Next page link if any.
      */
-    export interface VirtualNetworkPropertiesArgs {
-        /**
-         * Uri of the virtual network.
-         */
-        id?: pulumi.Input<string>;
-        /**
-         * Properties of a subnet.
-         */
-        subnet?: pulumi.Input<SubnetPropertiesArgs>;
-    }
-
+    nextLink?: pulumi.Input<string>;
     /**
-     * A list of private link resources
+     * Array of virtual networks.
      */
-    export interface VirtualNetworkPropertiesListArgs {
-        /**
-         * Next page link if any.
-         */
-        nextLink?: pulumi.Input<string>;
-        /**
-         * Array of virtual networks.
-         */
-        value?: pulumi.Input<pulumi.Input<VirtualNetworkPropertiesArgs>[]>;
-    }
-
-    export namespace v20201030preview {
-        /**
-         * The identity of the EnterprisePolicy.
-         */
-        export interface EnterprisePolicyIdentityArgs {
-            /**
-             * The type of identity used for the EnterprisePolicy. Currently, the only supported type is 'SystemAssigned', which implicitly creates an identity.
-             */
-            type?: pulumi.Input<enums.v20201030preview.ResourceIdentityType>;
-        }
-
-        /**
-         * Url and version of the KeyVault Secret
-         */
-        export interface KeyPropertiesArgs {
-            /**
-             * The identifier of the key vault key used to encrypt data.
-             */
-            name?: pulumi.Input<string>;
-            /**
-             * The version of the identity which will be used to access key vault.
-             */
-            version?: pulumi.Input<string>;
-        }
-
-        /**
-         * Settings concerning key vault encryption for a configuration store.
-         */
-        export interface KeyVaultPropertiesArgs {
-            /**
-             * Uri of KeyVault
-             */
-            id?: pulumi.Input<string>;
-            /**
-             * Identity of the secret that includes name and version.
-             */
-            key?: pulumi.Input<v20201030preview.KeyPropertiesArgs>;
-        }
-
-        /**
-         * A collection of information about the state of the connection between service consumer and provider.
-         */
-        export interface PrivateLinkServiceConnectionStateArgs {
-            /**
-             * A message indicating if changes on the service provider require any updates on the consumer.
-             */
-            actionsRequired?: pulumi.Input<string>;
-            /**
-             * The reason for approval/rejection of the connection.
-             */
-            description?: pulumi.Input<string>;
-            /**
-             * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-             */
-            status?: pulumi.Input<string | enums.v20201030preview.PrivateEndpointServiceConnectionStatus>;
-        }
-
-        /**
-         * The encryption settings for a configuration store.
-         */
-        export interface PropertiesEncryptionArgs {
-            /**
-             * Key vault properties.
-             */
-            keyVault?: pulumi.Input<v20201030preview.KeyVaultPropertiesArgs>;
-            /**
-             * The state of onboarding, which only appears in the response.
-             */
-            state?: pulumi.Input<string | enums.v20201030preview.State>;
-        }
-
-        /**
-         * Settings concerning lockbox.
-         */
-        export interface PropertiesLockboxArgs {
-            /**
-             * lockbox configuration
-             */
-            state?: pulumi.Input<string | enums.v20201030preview.State>;
-        }
-
-        /**
-         * Settings concerning network injection.
-         */
-        export interface PropertiesNetworkInjectionArgs {
-            /**
-             * Network injection configuration
-             */
-            virtualNetworks?: pulumi.Input<v20201030preview.VirtualNetworkPropertiesListArgs>;
-        }
-
-        /**
-         * Properties of a subnet.
-         */
-        export interface SubnetPropertiesArgs {
-            /**
-             * Subnet name.
-             */
-            name?: pulumi.Input<string>;
-        }
-
-        /**
-         * Settings concerning the virtual network.
-         */
-        export interface VirtualNetworkPropertiesArgs {
-            /**
-             * Uri of the virtual network.
-             */
-            id?: pulumi.Input<string>;
-            /**
-             * Properties of a subnet.
-             */
-            subnet?: pulumi.Input<v20201030preview.SubnetPropertiesArgs>;
-        }
-
-        /**
-         * A list of private link resources
-         */
-        export interface VirtualNetworkPropertiesListArgs {
-            /**
-             * Next page link if any.
-             */
-            nextLink?: pulumi.Input<string>;
-            /**
-             * Array of virtual networks.
-             */
-            value?: pulumi.Input<pulumi.Input<v20201030preview.VirtualNetworkPropertiesArgs>[]>;
-        }
-
-    }
+    value?: pulumi.Input<pulumi.Input<VirtualNetworkPropertiesArgs>[]>;
 }

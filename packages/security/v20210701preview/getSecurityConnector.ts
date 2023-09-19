@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves details of a specific security connector
  */
@@ -59,15 +59,15 @@ export interface GetSecurityConnectorResult {
     /**
      * A collection of offerings for the security connector.
      */
-    readonly offerings?: (types.outputs.security.v20210701preview.CspmMonitorAwsOfferingResponse | types.outputs.security.v20210701preview.DefenderForContainersAwsOfferingResponse | types.outputs.security.v20210701preview.DefenderForServersAwsOfferingResponse | types.outputs.security.v20210701preview.InformationProtectionAwsOfferingResponse)[];
+    readonly offerings?: (types.outputs.CspmMonitorAwsOfferingResponse | types.outputs.DefenderForContainersAwsOfferingResponse | types.outputs.DefenderForServersAwsOfferingResponse | types.outputs.InformationProtectionAwsOfferingResponse)[];
     /**
      * The multi cloud account's organizational data
      */
-    readonly organizationalData?: types.outputs.security.v20210701preview.SecurityConnectorPropertiesResponseOrganizationalData;
+    readonly organizationalData?: types.outputs.SecurityConnectorPropertiesResponseOrganizationalData;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.security.v20210701preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * A list of key value pairs that describe the resource.
      */

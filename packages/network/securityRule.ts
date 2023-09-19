@@ -51,7 +51,7 @@ export class SecurityRule extends pulumi.CustomResource {
     /**
      * The application security group specified as destination.
      */
-    public readonly destinationApplicationSecurityGroups!: pulumi.Output<types.outputs.network.ApplicationSecurityGroupResponse[] | undefined>;
+    public readonly destinationApplicationSecurityGroups!: pulumi.Output<types.outputs.ApplicationSecurityGroupResponse[] | undefined>;
     /**
      * The destination port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
      */
@@ -95,7 +95,7 @@ export class SecurityRule extends pulumi.CustomResource {
     /**
      * The application security group specified as source.
      */
-    public readonly sourceApplicationSecurityGroups!: pulumi.Output<types.outputs.network.ApplicationSecurityGroupResponse[] | undefined>;
+    public readonly sourceApplicationSecurityGroups!: pulumi.Output<types.outputs.ApplicationSecurityGroupResponse[] | undefined>;
     /**
      * The source port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
      */
@@ -212,7 +212,7 @@ export interface SecurityRuleArgs {
     /**
      * The application security group specified as destination.
      */
-    destinationApplicationSecurityGroups?: pulumi.Input<pulumi.Input<types.inputs.network.ApplicationSecurityGroupArgs>[]>;
+    destinationApplicationSecurityGroups?: pulumi.Input<pulumi.Input<types.inputs.ApplicationSecurityGroupArgs>[]>;
     /**
      * The destination port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
      */
@@ -264,7 +264,7 @@ export interface SecurityRuleArgs {
     /**
      * The application security group specified as source.
      */
-    sourceApplicationSecurityGroups?: pulumi.Input<pulumi.Input<types.inputs.network.ApplicationSecurityGroupArgs>[]>;
+    sourceApplicationSecurityGroups?: pulumi.Input<pulumi.Input<types.inputs.ApplicationSecurityGroupArgs>[]>;
     /**
      * The source port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
      */

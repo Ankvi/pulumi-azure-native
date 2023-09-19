@@ -32,19 +32,19 @@ export interface GetDeploymentStackAtResourceGroupResult {
     /**
      * Defines the behavior of resources that are not managed immediately after the stack is updated.
      */
-    readonly actionOnUnmanage: types.outputs.resources.DeploymentStackPropertiesResponseActionOnUnmanage;
+    readonly actionOnUnmanage: types.outputs.DeploymentStackPropertiesResponseActionOnUnmanage;
     /**
      * The debug setting of the deployment.
      */
-    readonly debugSetting?: types.outputs.resources.DeploymentStacksDebugSettingResponse;
+    readonly debugSetting?: types.outputs.DeploymentStacksDebugSettingResponse;
     /**
      * An array of resources that were deleted during the most recent update.
      */
-    readonly deletedResources: types.outputs.resources.ResourceReferenceResponse[];
+    readonly deletedResources: types.outputs.ResourceReferenceResponse[];
     /**
      * Defines how resources deployed by the stack are locked.
      */
-    readonly denySettings: types.outputs.resources.DenySettingsResponse;
+    readonly denySettings: types.outputs.DenySettingsResponse;
     /**
      * The resourceId of the deployment resource created by the deployment stack.
      */
@@ -60,7 +60,7 @@ export interface GetDeploymentStackAtResourceGroupResult {
     /**
      * An array of resources that were detached during the most recent update.
      */
-    readonly detachedResources: types.outputs.resources.ResourceReferenceResponse[];
+    readonly detachedResources: types.outputs.ResourceReferenceResponse[];
     /**
      * The duration of the deployment stack update.
      */
@@ -68,11 +68,11 @@ export interface GetDeploymentStackAtResourceGroupResult {
     /**
      * Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows the OData error response format.).
      */
-    readonly error?: types.outputs.resources.ErrorResponseResponse;
+    readonly error?: types.outputs.ErrorResponseResponse;
     /**
      * An array of resources that failed to reach goal state during the most recent update.
      */
-    readonly failedResources: types.outputs.resources.ResourceReferenceExtendedResponse[];
+    readonly failedResources: types.outputs.ResourceReferenceExtendedResponse[];
     /**
      * String Id used to locate any resource on Azure.
      */
@@ -96,7 +96,7 @@ export interface GetDeploymentStackAtResourceGroupResult {
     /**
      * The URI of parameters file. Use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both.
      */
-    readonly parametersLink?: types.outputs.resources.DeploymentStacksParametersLinkResponse;
+    readonly parametersLink?: types.outputs.DeploymentStacksParametersLinkResponse;
     /**
      * State of the deployment stack.
      */
@@ -104,11 +104,11 @@ export interface GetDeploymentStackAtResourceGroupResult {
     /**
      * An array of resources currently managed by the deployment stack.
      */
-    readonly resources: types.outputs.resources.ManagedResourceReferenceResponse[];
+    readonly resources: types.outputs.ManagedResourceReferenceResponse[];
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.resources.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Deployment stack resource tags.
      */

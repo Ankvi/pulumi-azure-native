@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Interface endpoint resource.
  */
@@ -34,7 +34,7 @@ export class InterfaceEndpoint extends pulumi.CustomResource {
     /**
      * A reference to the service being brought into the virtual network.
      */
-    public readonly endpointService!: pulumi.Output<types.outputs.network.v20190201.EndpointServiceResponse | undefined>;
+    public readonly endpointService!: pulumi.Output<types.outputs.EndpointServiceResponse | undefined>;
     /**
      * Gets a unique read-only string that changes whenever the resource is updated.
      */
@@ -54,7 +54,7 @@ export class InterfaceEndpoint extends pulumi.CustomResource {
     /**
      * Gets an array of references to the network interfaces created for this interface endpoint.
      */
-    public /*out*/ readonly networkInterfaces!: pulumi.Output<types.outputs.network.v20190201.NetworkInterfaceResponse[]>;
+    public /*out*/ readonly networkInterfaces!: pulumi.Output<types.outputs.NetworkInterfaceResponse[]>;
     /**
      * A read-only property that identifies who created this interface endpoint.
      */
@@ -66,7 +66,7 @@ export class InterfaceEndpoint extends pulumi.CustomResource {
     /**
      * The ID of the subnet from which the private IP will be allocated.
      */
-    public readonly subnet!: pulumi.Output<types.outputs.network.v20190201.SubnetResponse | undefined>;
+    public readonly subnet!: pulumi.Output<types.outputs.SubnetResponse | undefined>;
     /**
      * Resource tags.
      */
@@ -131,7 +131,7 @@ export interface InterfaceEndpointArgs {
     /**
      * A reference to the service being brought into the virtual network.
      */
-    endpointService?: pulumi.Input<types.inputs.network.v20190201.EndpointServiceArgs>;
+    endpointService?: pulumi.Input<types.inputs.EndpointServiceArgs>;
     /**
      * A first-party service's FQDN that is mapped to the private IP allocated via this interface endpoint.
      */
@@ -155,7 +155,7 @@ export interface InterfaceEndpointArgs {
     /**
      * The ID of the subnet from which the private IP will be allocated.
      */
-    subnet?: pulumi.Input<types.inputs.network.v20190201.SubnetArgs>;
+    subnet?: pulumi.Input<types.inputs.SubnetArgs>;
     /**
      * Resource tags.
      */

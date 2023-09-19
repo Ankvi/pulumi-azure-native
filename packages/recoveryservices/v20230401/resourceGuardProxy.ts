@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 export class ResourceGuardProxy extends pulumi.CustomResource {
     /**
      * Get an existing ResourceGuardProxy resource's state with the given name, ID, and optional extra
@@ -43,7 +43,7 @@ export class ResourceGuardProxy extends pulumi.CustomResource {
     /**
      * ResourceGuardProxyBaseResource properties
      */
-    public readonly properties!: pulumi.Output<types.outputs.recoveryservices.v20230401.ResourceGuardProxyBaseResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ResourceGuardProxyBaseResponse>;
     /**
      * Resource tags.
      */
@@ -109,7 +109,7 @@ export interface ResourceGuardProxyArgs {
     /**
      * ResourceGuardProxyBaseResource properties
      */
-    properties?: pulumi.Input<types.inputs.recoveryservices.v20230401.ResourceGuardProxyBaseArgs>;
+    properties?: pulumi.Input<types.inputs.ResourceGuardProxyBaseArgs>;
     /**
      * The name of the resource group where the recovery services vault is present.
      */

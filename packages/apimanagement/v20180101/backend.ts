@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Backend details.
  */
@@ -34,7 +34,7 @@ export class Backend extends pulumi.CustomResource {
     /**
      * Backend Credentials Contract Properties
      */
-    public readonly credentials!: pulumi.Output<types.outputs.apimanagement.v20180101.BackendCredentialsContractResponse | undefined>;
+    public readonly credentials!: pulumi.Output<types.outputs.BackendCredentialsContractResponse | undefined>;
     /**
      * Backend Description.
      */
@@ -46,7 +46,7 @@ export class Backend extends pulumi.CustomResource {
     /**
      * Backend Properties contract
      */
-    public readonly properties!: pulumi.Output<types.outputs.apimanagement.v20180101.BackendPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.BackendPropertiesResponse>;
     /**
      * Backend communication protocol.
      */
@@ -54,7 +54,7 @@ export class Backend extends pulumi.CustomResource {
     /**
      * Backend Proxy Contract Properties
      */
-    public readonly proxy!: pulumi.Output<types.outputs.apimanagement.v20180101.BackendProxyContractResponse | undefined>;
+    public readonly proxy!: pulumi.Output<types.outputs.BackendProxyContractResponse | undefined>;
     /**
      * Management Uri of the Resource in External System. This url can be the Arm Resource Id of Logic Apps, Function Apps or Api Apps.
      */
@@ -66,7 +66,7 @@ export class Backend extends pulumi.CustomResource {
     /**
      * Backend TLS Properties
      */
-    public readonly tls!: pulumi.Output<types.outputs.apimanagement.v20180101.BackendTlsPropertiesResponse | undefined>;
+    public readonly tls!: pulumi.Output<types.outputs.BackendTlsPropertiesResponse | undefined>;
     /**
      * Resource type for API Management resource.
      */
@@ -109,7 +109,7 @@ export class Backend extends pulumi.CustomResource {
             resourceInputs["resourceId"] = args ? args.resourceId : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
             resourceInputs["title"] = args ? args.title : undefined;
-            resourceInputs["tls"] = args ? (args.tls ? pulumi.output(args.tls).apply(types.inputs.apimanagement.v20180101.backendTlsPropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["tls"] = args ? (args.tls ? pulumi.output(args.tls).apply(types.inputs.backendTlsPropertiesArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["url"] = args ? args.url : undefined;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
@@ -144,7 +144,7 @@ export interface BackendArgs {
     /**
      * Backend Credentials Contract Properties
      */
-    credentials?: pulumi.Input<types.inputs.apimanagement.v20180101.BackendCredentialsContractArgs>;
+    credentials?: pulumi.Input<types.inputs.BackendCredentialsContractArgs>;
     /**
      * Backend Description.
      */
@@ -152,15 +152,15 @@ export interface BackendArgs {
     /**
      * Backend Properties contract
      */
-    properties?: pulumi.Input<types.inputs.apimanagement.v20180101.BackendPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.BackendPropertiesArgs>;
     /**
      * Backend communication protocol.
      */
-    protocol: pulumi.Input<string | types.enums.v20180101.BackendProtocol>;
+    protocol: pulumi.Input<string | types.enums.BackendProtocol>;
     /**
      * Backend Proxy Contract Properties
      */
-    proxy?: pulumi.Input<types.inputs.apimanagement.v20180101.BackendProxyContractArgs>;
+    proxy?: pulumi.Input<types.inputs.BackendProxyContractArgs>;
     /**
      * The name of the resource group.
      */
@@ -180,7 +180,7 @@ export interface BackendArgs {
     /**
      * Backend TLS Properties
      */
-    tls?: pulumi.Input<types.inputs.apimanagement.v20180101.BackendTlsPropertiesArgs>;
+    tls?: pulumi.Input<types.inputs.BackendTlsPropertiesArgs>;
     /**
      * Runtime Url of the Backend.
      */

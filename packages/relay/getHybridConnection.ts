@@ -61,7 +61,7 @@ export interface GetHybridConnectionResult {
     /**
      * The system meta data relating to this resource.
      */
-    readonly systemData: types.outputs.relay.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
      */

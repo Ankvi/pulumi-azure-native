@@ -59,7 +59,7 @@ export class Database extends pulumi.CustomResource {
     /**
      * The name and tier of the SKU.
      */
-    public /*out*/ readonly currentSku!: pulumi.Output<types.outputs.sql.SkuResponse>;
+    public /*out*/ readonly currentSku!: pulumi.Output<types.outputs.SkuResponse>;
     /**
      * The ID of the database.
      */
@@ -91,7 +91,7 @@ export class Database extends pulumi.CustomResource {
     /**
      * The Azure Active Directory identity of the database.
      */
-    public readonly identity!: pulumi.Output<types.outputs.sql.DatabaseIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.DatabaseIdentityResponse | undefined>;
     /**
      * Infra encryption is enabled for this database.
      */
@@ -173,7 +173,7 @@ export class Database extends pulumi.CustomResource {
      * Get-AzSqlServerServiceObjective -Location <location>
      * ````
      */
-    public readonly sku!: pulumi.Output<types.outputs.sql.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * The status of the database.
      */
@@ -359,7 +359,7 @@ export interface DatabaseArgs {
     /**
      * The Azure Active Directory identity of the database.
      */
-    identity?: pulumi.Input<types.inputs.sql.DatabaseIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.DatabaseIdentityArgs>;
     /**
      * Whether or not this database is a ledger database, which means all tables in the database are ledger tables. Note: the value of this property cannot be changed after the database has been created.
      */
@@ -441,7 +441,7 @@ export interface DatabaseArgs {
      * Get-AzSqlServerServiceObjective -Location <location>
      * ````
      */
-    sku?: pulumi.Input<types.inputs.sql.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Specifies the time that the database was deleted.
      */

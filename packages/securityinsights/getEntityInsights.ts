@@ -57,11 +57,11 @@ export interface GetEntityInsightsResult {
     /**
      * The metadata from the get insights operation results.
      */
-    readonly metaData?: types.outputs.securityinsights.GetInsightsResultsMetadataResponse;
+    readonly metaData?: types.outputs.GetInsightsResultsMetadataResponse;
     /**
      * The insights result values.
      */
-    readonly value?: types.outputs.securityinsights.EntityInsightItemResponse[];
+    readonly value?: types.outputs.EntityInsightItemResponse[];
 }
 /**
  * Execute Insights for an entity.

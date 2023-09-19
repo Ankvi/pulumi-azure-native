@@ -39,7 +39,7 @@ export class PlacementPolicy extends pulumi.CustomResource {
     /**
      * placement policy properties
      */
-    public readonly properties!: pulumi.Output<types.outputs.avs.VmHostPlacementPolicyPropertiesResponse | types.outputs.avs.VmVmPlacementPolicyPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.VmHostPlacementPolicyPropertiesResponse | types.outputs.VmVmPlacementPolicyPropertiesResponse>;
     /**
      * Resource type.
      */
@@ -103,7 +103,7 @@ export interface PlacementPolicyArgs {
     /**
      * placement policy properties
      */
-    properties?: pulumi.Input<types.inputs.avs.VmHostPlacementPolicyPropertiesArgs | types.inputs.avs.VmVmPlacementPolicyPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.VmHostPlacementPolicyPropertiesArgs | types.inputs.VmVmPlacementPolicyPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

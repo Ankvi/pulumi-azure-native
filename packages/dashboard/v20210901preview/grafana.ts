@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The grafana resource type.
  */
@@ -34,7 +34,7 @@ export class Grafana extends pulumi.CustomResource {
     /**
      * The managed identity of the grafana resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.dashboard.v20210901preview.ManagedIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedIdentityResponse | undefined>;
     /**
      * The geo-location where the grafana resource lives
      */
@@ -46,15 +46,15 @@ export class Grafana extends pulumi.CustomResource {
     /**
      * Properties specific to the grafana resource.
      */
-    public readonly properties!: pulumi.Output<types.outputs.dashboard.v20210901preview.ManagedGrafanaPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ManagedGrafanaPropertiesResponse>;
     /**
      * The Sku of the grafana resource.
      */
-    public readonly sku!: pulumi.Output<types.outputs.dashboard.v20210901preview.ResourceSkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.ResourceSkuResponse | undefined>;
     /**
      * The system meta data relating to this grafana resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.dashboard.v20210901preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The tags for grafana resource.
      */
@@ -112,7 +112,7 @@ export interface GrafanaArgs {
     /**
      * The managed identity of the grafana resource.
      */
-    identity?: pulumi.Input<types.inputs.dashboard.v20210901preview.ManagedIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedIdentityArgs>;
     /**
      * The geo-location where the grafana resource lives
      */
@@ -120,7 +120,7 @@ export interface GrafanaArgs {
     /**
      * Properties specific to the grafana resource.
      */
-    properties?: pulumi.Input<types.inputs.dashboard.v20210901preview.ManagedGrafanaPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ManagedGrafanaPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -128,7 +128,7 @@ export interface GrafanaArgs {
     /**
      * The Sku of the grafana resource.
      */
-    sku?: pulumi.Input<types.inputs.dashboard.v20210901preview.ResourceSkuArgs>;
+    sku?: pulumi.Input<types.inputs.ResourceSkuArgs>;
     /**
      * The tags for grafana resource.
      */

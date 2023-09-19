@@ -50,7 +50,7 @@ export interface GetPlacementPolicyResult {
     /**
      * placement policy properties
      */
-    readonly properties: types.outputs.avs.VmHostPlacementPolicyPropertiesResponse | types.outputs.avs.VmVmPlacementPolicyPropertiesResponse;
+    readonly properties: types.outputs.VmHostPlacementPolicyPropertiesResponse | types.outputs.VmVmPlacementPolicyPropertiesResponse;
     /**
      * Resource type.
      */

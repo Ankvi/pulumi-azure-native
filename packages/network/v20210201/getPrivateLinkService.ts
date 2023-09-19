@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the specified private link service by resource group.
  */
@@ -40,7 +40,7 @@ export interface GetPrivateLinkServiceResult {
     /**
      * The auto-approval list of the private link service.
      */
-    readonly autoApproval?: types.outputs.network.v20210201.PrivateLinkServicePropertiesResponseAutoApproval;
+    readonly autoApproval?: types.outputs.PrivateLinkServicePropertiesResponseAutoApproval;
     /**
      * Whether the private link service is enabled for proxy protocol or not.
      */
@@ -52,7 +52,7 @@ export interface GetPrivateLinkServiceResult {
     /**
      * The extended location of the load balancer.
      */
-    readonly extendedLocation?: types.outputs.network.v20210201.ExtendedLocationResponse;
+    readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
     /**
      * The list of Fqdn.
      */
@@ -64,11 +64,11 @@ export interface GetPrivateLinkServiceResult {
     /**
      * An array of private link service IP configurations.
      */
-    readonly ipConfigurations?: types.outputs.network.v20210201.PrivateLinkServiceIpConfigurationResponse[];
+    readonly ipConfigurations?: types.outputs.PrivateLinkServiceIpConfigurationResponse[];
     /**
      * An array of references to the load balancer IP configurations.
      */
-    readonly loadBalancerFrontendIpConfigurations?: types.outputs.network.v20210201.FrontendIPConfigurationResponse[];
+    readonly loadBalancerFrontendIpConfigurations?: types.outputs.FrontendIPConfigurationResponse[];
     /**
      * Resource location.
      */
@@ -80,11 +80,11 @@ export interface GetPrivateLinkServiceResult {
     /**
      * An array of references to the network interfaces created for this private link service.
      */
-    readonly networkInterfaces: types.outputs.network.v20210201.NetworkInterfaceResponse[];
+    readonly networkInterfaces: types.outputs.NetworkInterfaceResponse[];
     /**
      * An array of list about connections to the private endpoint.
      */
-    readonly privateEndpointConnections: types.outputs.network.v20210201.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections: types.outputs.PrivateEndpointConnectionResponse[];
     /**
      * The provisioning state of the private link service resource.
      */
@@ -104,7 +104,7 @@ export interface GetPrivateLinkServiceResult {
     /**
      * The visibility list of the private link service.
      */
-    readonly visibility?: types.outputs.network.v20210201.PrivateLinkServicePropertiesResponseVisibility;
+    readonly visibility?: types.outputs.PrivateLinkServicePropertiesResponseVisibility;
 }
 /**
  * Gets the specified private link service by resource group.

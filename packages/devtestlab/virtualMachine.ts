@@ -39,15 +39,15 @@ export class VirtualMachine extends pulumi.CustomResource {
     /**
      * The applicable schedule for the virtual machine.
      */
-    public /*out*/ readonly applicableSchedule!: pulumi.Output<types.outputs.devtestlab.ApplicableScheduleResponse>;
+    public /*out*/ readonly applicableSchedule!: pulumi.Output<types.outputs.ApplicableScheduleResponse>;
     /**
      * The artifact deployment status for the virtual machine.
      */
-    public /*out*/ readonly artifactDeploymentStatus!: pulumi.Output<types.outputs.devtestlab.ArtifactDeploymentStatusPropertiesResponse>;
+    public /*out*/ readonly artifactDeploymentStatus!: pulumi.Output<types.outputs.ArtifactDeploymentStatusPropertiesResponse>;
     /**
      * The artifacts to be installed on the virtual machine.
      */
-    public readonly artifacts!: pulumi.Output<types.outputs.devtestlab.ArtifactInstallPropertiesResponse[] | undefined>;
+    public readonly artifacts!: pulumi.Output<types.outputs.ArtifactInstallPropertiesResponse[] | undefined>;
     /**
      * The resource identifier (Microsoft.Compute) of the virtual machine.
      */
@@ -55,7 +55,7 @@ export class VirtualMachine extends pulumi.CustomResource {
     /**
      * The compute virtual machine properties.
      */
-    public /*out*/ readonly computeVm!: pulumi.Output<types.outputs.devtestlab.ComputeVmPropertiesResponse>;
+    public /*out*/ readonly computeVm!: pulumi.Output<types.outputs.ComputeVmPropertiesResponse>;
     /**
      * The email address of creator of the virtual machine.
      */
@@ -75,7 +75,7 @@ export class VirtualMachine extends pulumi.CustomResource {
     /**
      * New or existing data disks to attach to the virtual machine after creation
      */
-    public readonly dataDiskParameters!: pulumi.Output<types.outputs.devtestlab.DataDiskPropertiesResponse[] | undefined>;
+    public readonly dataDiskParameters!: pulumi.Output<types.outputs.DataDiskPropertiesResponse[] | undefined>;
     /**
      * Indicates whether the virtual machine is to be created without a public IP address.
      */
@@ -95,7 +95,7 @@ export class VirtualMachine extends pulumi.CustomResource {
     /**
      * The Microsoft Azure Marketplace image reference of the virtual machine.
      */
-    public readonly galleryImageReference!: pulumi.Output<types.outputs.devtestlab.GalleryImageReferenceResponse | undefined>;
+    public readonly galleryImageReference!: pulumi.Output<types.outputs.GalleryImageReferenceResponse | undefined>;
     /**
      * Indicates whether this virtual machine uses an SSH key for authentication.
      */
@@ -123,7 +123,7 @@ export class VirtualMachine extends pulumi.CustomResource {
     /**
      * The network interface properties.
      */
-    public readonly networkInterface!: pulumi.Output<types.outputs.devtestlab.NetworkInterfacePropertiesResponse | undefined>;
+    public readonly networkInterface!: pulumi.Output<types.outputs.NetworkInterfacePropertiesResponse | undefined>;
     /**
      * The notes of the virtual machine.
      */
@@ -155,7 +155,7 @@ export class VirtualMachine extends pulumi.CustomResource {
     /**
      * Virtual Machine schedules to be created
      */
-    public readonly scheduleParameters!: pulumi.Output<types.outputs.devtestlab.ScheduleCreationParameterResponse[] | undefined>;
+    public readonly scheduleParameters!: pulumi.Output<types.outputs.ScheduleCreationParameterResponse[] | undefined>;
     /**
      * The size of the virtual machine.
      */
@@ -306,7 +306,7 @@ export interface VirtualMachineArgs {
     /**
      * The artifacts to be installed on the virtual machine.
      */
-    artifacts?: pulumi.Input<pulumi.Input<types.inputs.devtestlab.ArtifactInstallPropertiesArgs>[]>;
+    artifacts?: pulumi.Input<pulumi.Input<types.inputs.ArtifactInstallPropertiesArgs>[]>;
     /**
      * The creation date of the virtual machine.
      */
@@ -318,7 +318,7 @@ export interface VirtualMachineArgs {
     /**
      * New or existing data disks to attach to the virtual machine after creation
      */
-    dataDiskParameters?: pulumi.Input<pulumi.Input<types.inputs.devtestlab.DataDiskPropertiesArgs>[]>;
+    dataDiskParameters?: pulumi.Input<pulumi.Input<types.inputs.DataDiskPropertiesArgs>[]>;
     /**
      * Indicates whether the virtual machine is to be created without a public IP address.
      */
@@ -334,7 +334,7 @@ export interface VirtualMachineArgs {
     /**
      * The Microsoft Azure Marketplace image reference of the virtual machine.
      */
-    galleryImageReference?: pulumi.Input<types.inputs.devtestlab.GalleryImageReferenceArgs>;
+    galleryImageReference?: pulumi.Input<types.inputs.GalleryImageReferenceArgs>;
     /**
      * Indicates whether this virtual machine uses an SSH key for authentication.
      */
@@ -362,7 +362,7 @@ export interface VirtualMachineArgs {
     /**
      * The network interface properties.
      */
-    networkInterface?: pulumi.Input<types.inputs.devtestlab.NetworkInterfacePropertiesArgs>;
+    networkInterface?: pulumi.Input<types.inputs.NetworkInterfacePropertiesArgs>;
     /**
      * The notes of the virtual machine.
      */
@@ -390,7 +390,7 @@ export interface VirtualMachineArgs {
     /**
      * Virtual Machine schedules to be created
      */
-    scheduleParameters?: pulumi.Input<pulumi.Input<types.inputs.devtestlab.ScheduleCreationParameterArgs>[]>;
+    scheduleParameters?: pulumi.Input<pulumi.Input<types.inputs.ScheduleCreationParameterArgs>[]>;
     /**
      * The size of the virtual machine.
      */

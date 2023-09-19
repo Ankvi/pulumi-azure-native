@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Definition of the configuration profile preference.
  */
@@ -42,7 +42,7 @@ export class ConfigurationProfilePreference extends pulumi.CustomResource {
     /**
      * Properties of the configuration profile preference.
      */
-    public readonly properties!: pulumi.Output<types.outputs.automanage.v20200630preview.ConfigurationProfilePreferencePropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ConfigurationProfilePreferencePropertiesResponse>;
     /**
      * Resource tags.
      */
@@ -102,7 +102,7 @@ export interface ConfigurationProfilePreferenceArgs {
     /**
      * Properties of the configuration profile preference.
      */
-    properties?: pulumi.Input<types.inputs.automanage.v20200630preview.ConfigurationProfilePreferencePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ConfigurationProfilePreferencePropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

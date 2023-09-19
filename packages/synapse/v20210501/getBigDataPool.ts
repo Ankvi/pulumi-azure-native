@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a Big Data pool.
  */
@@ -36,11 +36,11 @@ export interface GetBigDataPoolResult {
     /**
      * Auto-pausing properties
      */
-    readonly autoPause?: types.outputs.synapse.v20210501.AutoPausePropertiesResponse;
+    readonly autoPause?: types.outputs.AutoPausePropertiesResponse;
     /**
      * Auto-scaling properties
      */
-    readonly autoScale?: types.outputs.synapse.v20210501.AutoScalePropertiesResponse;
+    readonly autoScale?: types.outputs.AutoScalePropertiesResponse;
     /**
      * The cache size
      */
@@ -52,7 +52,7 @@ export interface GetBigDataPoolResult {
     /**
      * List of custom libraries/packages associated with the spark pool.
      */
-    readonly customLibraries?: types.outputs.synapse.v20210501.LibraryInfoResponse[];
+    readonly customLibraries?: types.outputs.LibraryInfoResponse[];
     /**
      * The default folder where Spark logs will be written.
      */
@@ -60,7 +60,7 @@ export interface GetBigDataPoolResult {
     /**
      * Dynamic Executor Allocation
      */
-    readonly dynamicExecutorAllocation?: types.outputs.synapse.v20210501.DynamicExecutorAllocationResponse;
+    readonly dynamicExecutorAllocation?: types.outputs.DynamicExecutorAllocationResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -76,7 +76,7 @@ export interface GetBigDataPoolResult {
     /**
      * Library version requirements
      */
-    readonly libraryRequirements?: types.outputs.synapse.v20210501.LibraryRequirementsResponse;
+    readonly libraryRequirements?: types.outputs.LibraryRequirementsResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -108,7 +108,7 @@ export interface GetBigDataPoolResult {
     /**
      * Spark configuration file to specify additional properties
      */
-    readonly sparkConfigProperties?: types.outputs.synapse.v20210501.LibraryRequirementsResponse;
+    readonly sparkConfigProperties?: types.outputs.LibraryRequirementsResponse;
     /**
      * The Spark events folder
      */

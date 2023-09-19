@@ -53,7 +53,7 @@ export interface GetMachineExtensionResult {
     /**
      * The machine extension instance view.
      */
-    readonly instanceView?: types.outputs.scvmm.MachineExtensionPropertiesResponseInstanceView;
+    readonly instanceView?: types.outputs.MachineExtensionPropertiesResponseInstanceView;
     /**
      * The geo-location where the resource lives
      */
@@ -81,7 +81,7 @@ export interface GetMachineExtensionResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.scvmm.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the specified ExpressRouteConnection.
  */
@@ -48,7 +48,7 @@ export interface GetExpressRouteConnectionResult {
     /**
      * The ExpressRoute circuit peering.
      */
-    readonly expressRouteCircuitPeering: types.outputs.network.v20230401.ExpressRouteCircuitPeeringIdResponse;
+    readonly expressRouteCircuitPeering: types.outputs.ExpressRouteCircuitPeeringIdResponse;
     /**
      * Enable FastPath to vWan Firewall hub.
      */
@@ -68,7 +68,7 @@ export interface GetExpressRouteConnectionResult {
     /**
      * The Routing Configuration indicating the associated and propagated route tables on this connection.
      */
-    readonly routingConfiguration?: types.outputs.network.v20230401.RoutingConfigurationResponse;
+    readonly routingConfiguration?: types.outputs.RoutingConfigurationResponse;
     /**
      * The routing weight associated to the connection.
      */

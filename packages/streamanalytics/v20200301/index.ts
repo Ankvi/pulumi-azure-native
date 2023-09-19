@@ -68,7 +68,7 @@ utilities.lazyLoad(exports, ["StreamingJob"], () => require("./streamingJob"));
 
 
 // Export enums:
-export * from "../types/enums/v20200301";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

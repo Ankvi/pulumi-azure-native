@@ -39,7 +39,7 @@ export interface GetPartnerConfigurationResult {
     /**
      * The details of authorized partners.
      */
-    readonly partnerAuthorization?: types.outputs.eventgrid.PartnerAuthorizationResponse;
+    readonly partnerAuthorization?: types.outputs.PartnerAuthorizationResponse;
     /**
      * Provisioning state of the partner configuration.
      */
@@ -47,7 +47,7 @@ export interface GetPartnerConfigurationResult {
     /**
      * The system metadata relating to partner configuration resource.
      */
-    readonly systemData: types.outputs.eventgrid.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Tags of the resource.
      */

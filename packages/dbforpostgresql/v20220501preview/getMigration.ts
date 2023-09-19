@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets details of a migration.
  */
@@ -45,7 +45,7 @@ export interface GetMigrationResult {
     /**
      * Migration status.
      */
-    readonly currentStatus: types.outputs.dbforpostgresql.v20220501preview.MigrationStatusResponse;
+    readonly currentStatus: types.outputs.MigrationStatusResponse;
     /**
      * When you want to trigger cancel for specific databases send triggerCutover flag as true and database names in this array
      */
@@ -83,13 +83,13 @@ export interface GetMigrationResult {
     /**
      * Database server metadata.
      */
-    readonly sourceDBServerMetadata: types.outputs.dbforpostgresql.v20220501preview.DBServerMetadataResponse;
+    readonly sourceDBServerMetadata: types.outputs.DBServerMetadataResponse;
     readonly sourceDBServerResourceId?: string;
     readonly startDataMigration?: boolean;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.dbforpostgresql.v20220501preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -98,7 +98,7 @@ export interface GetMigrationResult {
     /**
      * Database server metadata.
      */
-    readonly targetDBServerMetadata: types.outputs.dbforpostgresql.v20220501preview.DBServerMetadataResponse;
+    readonly targetDBServerMetadata: types.outputs.DBServerMetadataResponse;
     readonly targetDBServerResourceId: string;
     /**
      * To trigger cutover for entire migration we need to send this flag as true

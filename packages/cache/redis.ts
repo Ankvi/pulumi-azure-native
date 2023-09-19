@@ -35,7 +35,7 @@ export class Redis extends pulumi.CustomResource {
     /**
      * The keys of the Redis cache - not set if this object is not the response to Create or Update redis cache
      */
-    public /*out*/ readonly accessKeys!: pulumi.Output<types.outputs.cache.RedisAccessKeysResponse>;
+    public /*out*/ readonly accessKeys!: pulumi.Output<types.outputs.RedisAccessKeysResponse>;
     /**
      * Specifies whether the non-ssl Redis server port (6379) is enabled.
      */
@@ -47,15 +47,15 @@ export class Redis extends pulumi.CustomResource {
     /**
      * The identity of the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.cache.ManagedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * List of the Redis instances associated with the cache
      */
-    public /*out*/ readonly instances!: pulumi.Output<types.outputs.cache.RedisInstanceDetailsResponse[]>;
+    public /*out*/ readonly instances!: pulumi.Output<types.outputs.RedisInstanceDetailsResponse[]>;
     /**
      * List of the linked servers associated with the cache
      */
-    public /*out*/ readonly linkedServers!: pulumi.Output<types.outputs.cache.RedisLinkedServerResponse[]>;
+    public /*out*/ readonly linkedServers!: pulumi.Output<types.outputs.RedisLinkedServerResponse[]>;
     /**
      * The geo-location where the resource lives
      */
@@ -75,7 +75,7 @@ export class Redis extends pulumi.CustomResource {
     /**
      * List of private endpoint connection associated with the specified redis cache
      */
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.cache.PrivateEndpointConnectionResponse[]>;
+    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[]>;
     /**
      * Redis instance provisioning status.
      */
@@ -87,7 +87,7 @@ export class Redis extends pulumi.CustomResource {
     /**
      * All Redis Settings. Few possible keys: rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta,maxmemory-policy,notify-keyspace-events,maxmemory-samples,slowlog-log-slower-than,slowlog-max-len,list-max-ziplist-entries,list-max-ziplist-value,hash-max-ziplist-entries,hash-max-ziplist-value,set-max-intset-entries,zset-max-ziplist-entries,zset-max-ziplist-value etc.
      */
-    public readonly redisConfiguration!: pulumi.Output<types.outputs.cache.RedisCommonPropertiesResponseRedisConfiguration | undefined>;
+    public readonly redisConfiguration!: pulumi.Output<types.outputs.RedisCommonPropertiesResponseRedisConfiguration | undefined>;
     /**
      * Redis version. This should be in the form 'major[.minor]' (only 'major' is required) or the value 'latest' which refers to the latest stable Redis version that is available. Supported versions: 4.0, 6.0 (latest). Default value is 'latest'.
      */
@@ -107,7 +107,7 @@ export class Redis extends pulumi.CustomResource {
     /**
      * The SKU of the Redis cache to deploy.
      */
-    public readonly sku!: pulumi.Output<types.outputs.cache.SkuResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse>;
     /**
      * Redis SSL port.
      */
@@ -227,7 +227,7 @@ export interface RedisArgs {
     /**
      * The identity of the resource.
      */
-    identity?: pulumi.Input<types.inputs.cache.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -247,7 +247,7 @@ export interface RedisArgs {
     /**
      * All Redis Settings. Few possible keys: rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta,maxmemory-policy,notify-keyspace-events,maxmemory-samples,slowlog-log-slower-than,slowlog-max-len,list-max-ziplist-entries,list-max-ziplist-value,hash-max-ziplist-entries,hash-max-ziplist-value,set-max-intset-entries,zset-max-ziplist-entries,zset-max-ziplist-value etc.
      */
-    redisConfiguration?: pulumi.Input<types.inputs.cache.RedisCommonPropertiesRedisConfigurationArgs>;
+    redisConfiguration?: pulumi.Input<types.inputs.RedisCommonPropertiesRedisConfigurationArgs>;
     /**
      * Redis version. This should be in the form 'major[.minor]' (only 'major' is required) or the value 'latest' which refers to the latest stable Redis version that is available. Supported versions: 4.0, 6.0 (latest). Default value is 'latest'.
      */
@@ -271,7 +271,7 @@ export interface RedisArgs {
     /**
      * The SKU of the Redis cache to deploy.
      */
-    sku: pulumi.Input<types.inputs.cache.SkuArgs>;
+    sku: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Static IP address. Optionally, may be specified when deploying a Redis cache inside an existing Azure Virtual Network; auto assigned by default.
      */

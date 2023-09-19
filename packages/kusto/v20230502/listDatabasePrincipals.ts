@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns a list of database principals of the given Kusto cluster and database.
  */
@@ -36,7 +36,7 @@ export interface ListDatabasePrincipalsResult {
     /**
      * The list of Kusto database principals.
      */
-    readonly value?: types.outputs.kusto.v20230502.DatabasePrincipalResponse[];
+    readonly value?: types.outputs.DatabasePrincipalResponse[];
 }
 /**
  * Returns a list of database principals of the given Kusto cluster and database.

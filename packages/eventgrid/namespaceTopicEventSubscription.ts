@@ -35,7 +35,7 @@ export class NamespaceTopicEventSubscription extends pulumi.CustomResource {
     /**
      * Information about the delivery configuration of the event subscription.
      */
-    public readonly deliveryConfiguration!: pulumi.Output<types.outputs.eventgrid.DeliveryConfigurationResponse | undefined>;
+    public readonly deliveryConfiguration!: pulumi.Output<types.outputs.DeliveryConfigurationResponse | undefined>;
     /**
      * The event delivery schema for the event subscription.
      */
@@ -43,7 +43,7 @@ export class NamespaceTopicEventSubscription extends pulumi.CustomResource {
     /**
      * Information about the filter for the event subscription.
      */
-    public readonly filtersConfiguration!: pulumi.Output<types.outputs.eventgrid.FiltersConfigurationResponse | undefined>;
+    public readonly filtersConfiguration!: pulumi.Output<types.outputs.FiltersConfigurationResponse | undefined>;
     /**
      * Name of the resource.
      */
@@ -55,7 +55,7 @@ export class NamespaceTopicEventSubscription extends pulumi.CustomResource {
     /**
      * The system metadata relating to Event Subscription resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.eventgrid.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Type of the resource.
      */
@@ -115,7 +115,7 @@ export interface NamespaceTopicEventSubscriptionArgs {
     /**
      * Information about the delivery configuration of the event subscription.
      */
-    deliveryConfiguration?: pulumi.Input<types.inputs.eventgrid.DeliveryConfigurationArgs>;
+    deliveryConfiguration?: pulumi.Input<types.inputs.DeliveryConfigurationArgs>;
     /**
      * The event delivery schema for the event subscription.
      */
@@ -127,7 +127,7 @@ export interface NamespaceTopicEventSubscriptionArgs {
     /**
      * Information about the filter for the event subscription.
      */
-    filtersConfiguration?: pulumi.Input<types.inputs.eventgrid.FiltersConfigurationArgs>;
+    filtersConfiguration?: pulumi.Input<types.inputs.FiltersConfigurationArgs>;
     /**
      * Name of the namespace.
      */

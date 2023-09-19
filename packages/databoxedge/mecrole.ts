@@ -35,7 +35,7 @@ export class MECRole extends pulumi.CustomResource {
     /**
      * Activation key of the MEC.
      */
-    public readonly connectionString!: pulumi.Output<types.outputs.databoxedge.AsymmetricEncryptedSecretResponse | undefined>;
+    public readonly connectionString!: pulumi.Output<types.outputs.AsymmetricEncryptedSecretResponse | undefined>;
     /**
      * Controller Endpoint.
      */
@@ -60,7 +60,7 @@ export class MECRole extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of Role
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.databoxedge.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The hierarchical type of the object.
      */
@@ -123,7 +123,7 @@ export interface MECRoleArgs {
     /**
      * Activation key of the MEC.
      */
-    connectionString?: pulumi.Input<types.inputs.databoxedge.AsymmetricEncryptedSecretArgs>;
+    connectionString?: pulumi.Input<types.inputs.AsymmetricEncryptedSecretArgs>;
     /**
      * Controller Endpoint.
      */

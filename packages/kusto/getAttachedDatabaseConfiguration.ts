@@ -77,7 +77,7 @@ export interface GetAttachedDatabaseConfigurationResult {
     /**
      * Table level sharing specifications
      */
-    readonly tableLevelSharingProperties?: types.outputs.kusto.TableLevelSharingPropertiesResponse;
+    readonly tableLevelSharingProperties?: types.outputs.TableLevelSharingPropertiesResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

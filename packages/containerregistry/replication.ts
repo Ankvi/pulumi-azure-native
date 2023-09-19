@@ -51,11 +51,11 @@ export class Replication extends pulumi.CustomResource {
     /**
      * The status of the replication at the time the operation was called.
      */
-    public /*out*/ readonly status!: pulumi.Output<types.outputs.containerregistry.StatusResponse>;
+    public /*out*/ readonly status!: pulumi.Output<types.outputs.StatusResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.containerregistry.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The tags of the resource.
      */

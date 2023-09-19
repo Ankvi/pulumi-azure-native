@@ -48,7 +48,7 @@ export interface GetProjectResult {
     /**
      * Properties of the project.
      */
-    readonly properties: types.outputs.migrate.ProjectPropertiesResponse;
+    readonly properties: types.outputs.ProjectPropertiesResponse;
     /**
      * Tags provided by Azure Tagging service.
      */

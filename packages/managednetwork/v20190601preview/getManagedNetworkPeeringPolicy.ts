@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The Get ManagedNetworkPeeringPolicies operation gets a Managed Network Peering Policy resource, specified by the  resource group, Managed Network name, and peering policy name
  */
@@ -48,7 +48,7 @@ export interface GetManagedNetworkPeeringPolicyResult {
     /**
      * Gets or sets the properties of a Managed Network Policy
      */
-    readonly properties: types.outputs.managednetwork.v20190601preview.ManagedNetworkPeeringPolicyPropertiesResponse;
+    readonly properties: types.outputs.ManagedNetworkPeeringPolicyPropertiesResponse;
     /**
      * The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
      */

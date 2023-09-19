@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The policy definition.
  */
@@ -134,7 +134,7 @@ export interface PolicyDefinitionAtManagementGroupArgs {
     /**
      * The policy definition mode. Possible values are NotSpecified, Indexed, and All.
      */
-    mode?: pulumi.Input<string | types.enums.v20180501.PolicyMode>;
+    mode?: pulumi.Input<string | types.enums.PolicyMode>;
     /**
      * Required if a parameter is used in policy rule.
      */
@@ -150,5 +150,5 @@ export interface PolicyDefinitionAtManagementGroupArgs {
     /**
      * The type of policy definition. Possible values are NotSpecified, BuiltIn, and Custom.
      */
-    policyType?: pulumi.Input<string | types.enums.v20180501.PolicyType>;
+    policyType?: pulumi.Input<string | types.enums.PolicyType>;
 }

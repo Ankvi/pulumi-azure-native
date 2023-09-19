@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An environment, which is essentially an ARM template deployment.
  */
@@ -42,7 +42,7 @@ export class Environment extends pulumi.CustomResource {
     /**
      * The deployment properties of the environment.
      */
-    public readonly deploymentProperties!: pulumi.Output<types.outputs.devtestlab.v20180915.EnvironmentDeploymentPropertiesResponse | undefined>;
+    public readonly deploymentProperties!: pulumi.Output<types.outputs.EnvironmentDeploymentPropertiesResponse | undefined>;
     /**
      * The location of the resource.
      */
@@ -135,7 +135,7 @@ export interface EnvironmentArgs {
     /**
      * The deployment properties of the environment.
      */
-    deploymentProperties?: pulumi.Input<types.inputs.devtestlab.v20180915.EnvironmentDeploymentPropertiesArgs>;
+    deploymentProperties?: pulumi.Input<types.inputs.EnvironmentDeploymentPropertiesArgs>;
     /**
      * The name of the lab.
      */

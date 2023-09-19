@@ -41,7 +41,7 @@ export interface GetRecoveryPointAccessTokenArgs {
     /**
      * AADPropertiesResource properties
      */
-    properties?: types.inputs.recoveryservices.AADProperties;
+    properties?: types.inputs.AADProperties;
     /**
      * Name of the Protected Item.
      */
@@ -84,7 +84,7 @@ export interface GetRecoveryPointAccessTokenResult {
     /**
      * CrrAccessTokenResource properties
      */
-    readonly properties: types.outputs.recoveryservices.WorkloadCrrAccessTokenResponse;
+    readonly properties: types.outputs.WorkloadCrrAccessTokenResponse;
     /**
      * Resource tags.
      */
@@ -121,7 +121,7 @@ export interface GetRecoveryPointAccessTokenOutputArgs {
     /**
      * AADPropertiesResource properties
      */
-    properties?: pulumi.Input<types.inputs.recoveryservices.AADPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.AADPropertiesArgs>;
     /**
      * Name of the Protected Item.
      */

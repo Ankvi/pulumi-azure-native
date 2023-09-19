@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The gateway definition
  */
@@ -43,7 +43,7 @@ export class ConnectionGateway extends pulumi.CustomResource {
      * Resource name
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
-    public readonly properties!: pulumi.Output<types.outputs.web.v20160601.ConnectionGatewayDefinitionResponseProperties>;
+    public readonly properties!: pulumi.Output<types.outputs.ConnectionGatewayDefinitionResponseProperties>;
     /**
      * Resource tags
      */
@@ -103,7 +103,7 @@ export interface ConnectionGatewayArgs {
      * Resource location
      */
     location?: pulumi.Input<string>;
-    properties?: pulumi.Input<types.inputs.web.v20160601.ConnectionGatewayDefinitionPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ConnectionGatewayDefinitionPropertiesArgs>;
     /**
      * The resource group
      */

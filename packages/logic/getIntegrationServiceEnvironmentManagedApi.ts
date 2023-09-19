@@ -41,11 +41,11 @@ export interface GetIntegrationServiceEnvironmentManagedApiResult {
     /**
      * The api definitions.
      */
-    readonly apiDefinitions: types.outputs.logic.ApiResourceDefinitionsResponse;
+    readonly apiDefinitions: types.outputs.ApiResourceDefinitionsResponse;
     /**
      * The backend service.
      */
-    readonly backendService: types.outputs.logic.ApiResourceBackendServiceResponse;
+    readonly backendService: types.outputs.ApiResourceBackendServiceResponse;
     /**
      * The capabilities.
      */
@@ -61,11 +61,11 @@ export interface GetIntegrationServiceEnvironmentManagedApiResult {
     /**
      * The integration service environment managed api deployment parameters.
      */
-    readonly deploymentParameters?: types.outputs.logic.IntegrationServiceEnvironmentManagedApiDeploymentParametersResponse;
+    readonly deploymentParameters?: types.outputs.IntegrationServiceEnvironmentManagedApiDeploymentParametersResponse;
     /**
      * The api general information.
      */
-    readonly generalInformation: types.outputs.logic.ApiResourceGeneralInformationResponse;
+    readonly generalInformation: types.outputs.ApiResourceGeneralInformationResponse;
     /**
      * The resource id.
      */
@@ -73,7 +73,7 @@ export interface GetIntegrationServiceEnvironmentManagedApiResult {
     /**
      * The integration service environment reference.
      */
-    readonly integrationServiceEnvironment?: types.outputs.logic.ResourceReferenceResponse;
+    readonly integrationServiceEnvironment?: types.outputs.ResourceReferenceResponse;
     /**
      * The resource location.
      */
@@ -81,7 +81,7 @@ export interface GetIntegrationServiceEnvironmentManagedApiResult {
     /**
      * The metadata.
      */
-    readonly metadata: types.outputs.logic.ApiResourceMetadataResponse;
+    readonly metadata: types.outputs.ApiResourceMetadataResponse;
     /**
      * Gets the resource name.
      */
@@ -89,7 +89,7 @@ export interface GetIntegrationServiceEnvironmentManagedApiResult {
     /**
      * The policies for the API.
      */
-    readonly policies: types.outputs.logic.ApiResourcePoliciesResponse;
+    readonly policies: types.outputs.ApiResourcePoliciesResponse;
     /**
      * The provisioning state.
      */

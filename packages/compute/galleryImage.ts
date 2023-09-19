@@ -43,7 +43,7 @@ export class GalleryImage extends pulumi.CustomResource {
     /**
      * Describes the disallowed disk types.
      */
-    public readonly disallowed!: pulumi.Output<types.outputs.compute.DisallowedResponse | undefined>;
+    public readonly disallowed!: pulumi.Output<types.outputs.DisallowedResponse | undefined>;
     /**
      * The end of life date of the gallery image definition. This property can be used for decommissioning purposes. This property is updatable.
      */
@@ -55,7 +55,7 @@ export class GalleryImage extends pulumi.CustomResource {
     /**
      * A list of gallery image features.
      */
-    public readonly features!: pulumi.Output<types.outputs.compute.GalleryImageFeatureResponse[] | undefined>;
+    public readonly features!: pulumi.Output<types.outputs.GalleryImageFeatureResponse[] | undefined>;
     /**
      * The hypervisor generation of the Virtual Machine. Applicable to OS disks only.
      */
@@ -63,7 +63,7 @@ export class GalleryImage extends pulumi.CustomResource {
     /**
      * This is the gallery image definition identifier.
      */
-    public readonly identifier!: pulumi.Output<types.outputs.compute.GalleryImageIdentifierResponse>;
+    public readonly identifier!: pulumi.Output<types.outputs.GalleryImageIdentifierResponse>;
     /**
      * Resource location
      */
@@ -91,11 +91,11 @@ export class GalleryImage extends pulumi.CustomResource {
     /**
      * Describes the gallery image definition purchase plan. This is used by marketplace images.
      */
-    public readonly purchasePlan!: pulumi.Output<types.outputs.compute.ImagePurchasePlanResponse | undefined>;
+    public readonly purchasePlan!: pulumi.Output<types.outputs.ImagePurchasePlanResponse | undefined>;
     /**
      * The properties describe the recommended machine configuration for this Image Definition. These properties are updatable.
      */
-    public readonly recommended!: pulumi.Output<types.outputs.compute.RecommendedMachineConfigurationResponse | undefined>;
+    public readonly recommended!: pulumi.Output<types.outputs.RecommendedMachineConfigurationResponse | undefined>;
     /**
      * The release note uri.
      */
@@ -200,7 +200,7 @@ export interface GalleryImageArgs {
     /**
      * Describes the disallowed disk types.
      */
-    disallowed?: pulumi.Input<types.inputs.compute.DisallowedArgs>;
+    disallowed?: pulumi.Input<types.inputs.DisallowedArgs>;
     /**
      * The end of life date of the gallery image definition. This property can be used for decommissioning purposes. This property is updatable.
      */
@@ -212,7 +212,7 @@ export interface GalleryImageArgs {
     /**
      * A list of gallery image features.
      */
-    features?: pulumi.Input<pulumi.Input<types.inputs.compute.GalleryImageFeatureArgs>[]>;
+    features?: pulumi.Input<pulumi.Input<types.inputs.GalleryImageFeatureArgs>[]>;
     /**
      * The name of the gallery image definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
      */
@@ -228,7 +228,7 @@ export interface GalleryImageArgs {
     /**
      * This is the gallery image definition identifier.
      */
-    identifier: pulumi.Input<types.inputs.compute.GalleryImageIdentifierArgs>;
+    identifier: pulumi.Input<types.inputs.GalleryImageIdentifierArgs>;
     /**
      * Resource location
      */
@@ -248,11 +248,11 @@ export interface GalleryImageArgs {
     /**
      * Describes the gallery image definition purchase plan. This is used by marketplace images.
      */
-    purchasePlan?: pulumi.Input<types.inputs.compute.ImagePurchasePlanArgs>;
+    purchasePlan?: pulumi.Input<types.inputs.ImagePurchasePlanArgs>;
     /**
      * The properties describe the recommended machine configuration for this Image Definition. These properties are updatable.
      */
-    recommended?: pulumi.Input<types.inputs.compute.RecommendedMachineConfigurationArgs>;
+    recommended?: pulumi.Input<types.inputs.RecommendedMachineConfigurationArgs>;
     /**
      * The release note uri.
      */

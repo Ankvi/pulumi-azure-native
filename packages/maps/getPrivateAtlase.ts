@@ -49,7 +49,7 @@ export interface GetPrivateAtlaseResult {
     /**
      * The Private Atlas resource properties.
      */
-    readonly properties: types.outputs.maps.PrivateAtlasPropertiesResponse;
+    readonly properties: types.outputs.PrivateAtlasPropertiesResponse;
     /**
      * Resource tags.
      */

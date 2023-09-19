@@ -65,7 +65,7 @@ export interface ListUserAssignedIdentityAssociatedResourcesResult {
     /**
      * The collection of Azure resources returned by the resource action to get a list of assigned resources.
      */
-    readonly value: types.outputs.managedidentity.AzureResourceResponse[];
+    readonly value: types.outputs.AzureResourceResponse[];
 }
 /**
  * Lists the associated resources for this identity.

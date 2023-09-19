@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The Live Event.
  */
@@ -38,7 +38,7 @@ export class LiveEvent extends pulumi.CustomResource {
     /**
      * The Live Event access policies.
      */
-    public readonly crossSiteAccessPolicies!: pulumi.Output<types.outputs.media.v20190501preview.CrossSiteAccessPoliciesResponse | undefined>;
+    public readonly crossSiteAccessPolicies!: pulumi.Output<types.outputs.CrossSiteAccessPoliciesResponse | undefined>;
     /**
      * The Live Event description.
      */
@@ -46,11 +46,11 @@ export class LiveEvent extends pulumi.CustomResource {
     /**
      * The Live Event encoding.
      */
-    public readonly encoding!: pulumi.Output<types.outputs.media.v20190501preview.LiveEventEncodingResponse | undefined>;
+    public readonly encoding!: pulumi.Output<types.outputs.LiveEventEncodingResponse | undefined>;
     /**
      * The Live Event input.
      */
-    public readonly input!: pulumi.Output<types.outputs.media.v20190501preview.LiveEventInputResponse>;
+    public readonly input!: pulumi.Output<types.outputs.LiveEventInputResponse>;
     /**
      * The exact time the Live Event was last modified.
      */
@@ -66,7 +66,7 @@ export class LiveEvent extends pulumi.CustomResource {
     /**
      * The Live Event preview.
      */
-    public readonly preview!: pulumi.Output<types.outputs.media.v20190501preview.LiveEventPreviewResponse | undefined>;
+    public readonly preview!: pulumi.Output<types.outputs.LiveEventPreviewResponse | undefined>;
     /**
      * The provisioning state of the Live Event.
      */
@@ -86,7 +86,7 @@ export class LiveEvent extends pulumi.CustomResource {
     /**
      * The Live Event transcription.
      */
-    public readonly transcriptions!: pulumi.Output<types.outputs.media.v20190501preview.LiveEventTranscriptionResponse[] | undefined>;
+    public readonly transcriptions!: pulumi.Output<types.outputs.LiveEventTranscriptionResponse[] | undefined>;
     /**
      * The type of the resource.
      */
@@ -176,7 +176,7 @@ export interface LiveEventArgs {
     /**
      * The Live Event access policies.
      */
-    crossSiteAccessPolicies?: pulumi.Input<types.inputs.media.v20190501preview.CrossSiteAccessPoliciesArgs>;
+    crossSiteAccessPolicies?: pulumi.Input<types.inputs.CrossSiteAccessPoliciesArgs>;
     /**
      * The Live Event description.
      */
@@ -184,11 +184,11 @@ export interface LiveEventArgs {
     /**
      * The Live Event encoding.
      */
-    encoding?: pulumi.Input<types.inputs.media.v20190501preview.LiveEventEncodingArgs>;
+    encoding?: pulumi.Input<types.inputs.LiveEventEncodingArgs>;
     /**
      * The Live Event input.
      */
-    input: pulumi.Input<types.inputs.media.v20190501preview.LiveEventInputArgs>;
+    input: pulumi.Input<types.inputs.LiveEventInputArgs>;
     /**
      * The name of the Live Event.
      */
@@ -200,7 +200,7 @@ export interface LiveEventArgs {
     /**
      * The Live Event preview.
      */
-    preview?: pulumi.Input<types.inputs.media.v20190501preview.LiveEventPreviewArgs>;
+    preview?: pulumi.Input<types.inputs.LiveEventPreviewArgs>;
     /**
      * The name of the resource group within the Azure subscription.
      */
@@ -208,7 +208,7 @@ export interface LiveEventArgs {
     /**
      * The options to use for the LiveEvent.  This value is specified at creation time and cannot be updated.
      */
-    streamOptions?: pulumi.Input<pulumi.Input<string | types.enums.v20190501preview.StreamOptionsFlag>[]>;
+    streamOptions?: pulumi.Input<pulumi.Input<string | types.enums.StreamOptionsFlag>[]>;
     /**
      * Resource tags.
      */
@@ -216,7 +216,7 @@ export interface LiveEventArgs {
     /**
      * The Live Event transcription.
      */
-    transcriptions?: pulumi.Input<pulumi.Input<types.inputs.media.v20190501preview.LiveEventTranscriptionArgs>[]>;
+    transcriptions?: pulumi.Input<pulumi.Input<types.inputs.LiveEventTranscriptionArgs>[]>;
     /**
      * Specifies whether to use a vanity url with the Live Event.  This value is specified at creation time and cannot be updated.
      */

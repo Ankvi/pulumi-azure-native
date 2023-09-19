@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Description for Get domain name recommendations based on keywords.
  */
@@ -36,7 +36,7 @@ export interface ListDomainRecommendationsResult {
     /**
      * Collection of resources.
      */
-    readonly value: types.outputs.domainregistration.v20220301.NameIdentifierResponse[];
+    readonly value: types.outputs.NameIdentifierResponse[];
 }
 /**
  * Description for Get domain name recommendations based on keywords.

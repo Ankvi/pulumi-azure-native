@@ -74,11 +74,11 @@ export interface GetKustoPoolAttachedDatabaseConfigurationResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.synapse.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Table level sharing specifications
      */
-    readonly tableLevelSharingProperties?: types.outputs.synapse.TableLevelSharingPropertiesResponse;
+    readonly tableLevelSharingProperties?: types.outputs.TableLevelSharingPropertiesResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

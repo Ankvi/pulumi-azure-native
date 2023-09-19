@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents a ScalingPlanPooledSchedule definition.
  */
@@ -46,7 +46,7 @@ export class ScalingPlanPooledSchedule extends pulumi.CustomResource {
     /**
      * Starting time for off-peak period.
      */
-    public readonly offPeakStartTime!: pulumi.Output<types.outputs.desktopvirtualization.v20221014preview.TimeResponse | undefined>;
+    public readonly offPeakStartTime!: pulumi.Output<types.outputs.TimeResponse | undefined>;
     /**
      * Load balancing algorithm for peak period.
      */
@@ -54,7 +54,7 @@ export class ScalingPlanPooledSchedule extends pulumi.CustomResource {
     /**
      * Starting time for peak period.
      */
-    public readonly peakStartTime!: pulumi.Output<types.outputs.desktopvirtualization.v20221014preview.TimeResponse | undefined>;
+    public readonly peakStartTime!: pulumi.Output<types.outputs.TimeResponse | undefined>;
     /**
      * Capacity threshold for ramp down period.
      */
@@ -78,7 +78,7 @@ export class ScalingPlanPooledSchedule extends pulumi.CustomResource {
     /**
      * Starting time for ramp down period.
      */
-    public readonly rampDownStartTime!: pulumi.Output<types.outputs.desktopvirtualization.v20221014preview.TimeResponse | undefined>;
+    public readonly rampDownStartTime!: pulumi.Output<types.outputs.TimeResponse | undefined>;
     /**
      * Specifies when to stop hosts during ramp down period.
      */
@@ -102,11 +102,11 @@ export class ScalingPlanPooledSchedule extends pulumi.CustomResource {
     /**
      * Starting time for ramp up period.
      */
-    public readonly rampUpStartTime!: pulumi.Output<types.outputs.desktopvirtualization.v20221014preview.TimeResponse | undefined>;
+    public readonly rampUpStartTime!: pulumi.Output<types.outputs.TimeResponse | undefined>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.desktopvirtualization.v20221014preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -188,23 +188,23 @@ export interface ScalingPlanPooledScheduleArgs {
     /**
      * Set of days of the week on which this schedule is active.
      */
-    daysOfWeek?: pulumi.Input<pulumi.Input<string | types.enums.v20221014preview.DayOfWeek>[]>;
+    daysOfWeek?: pulumi.Input<pulumi.Input<string | types.enums.DayOfWeek>[]>;
     /**
      * Load balancing algorithm for off-peak period.
      */
-    offPeakLoadBalancingAlgorithm?: pulumi.Input<string | types.enums.v20221014preview.SessionHostLoadBalancingAlgorithm>;
+    offPeakLoadBalancingAlgorithm?: pulumi.Input<string | types.enums.SessionHostLoadBalancingAlgorithm>;
     /**
      * Starting time for off-peak period.
      */
-    offPeakStartTime?: pulumi.Input<types.inputs.desktopvirtualization.v20221014preview.TimeArgs>;
+    offPeakStartTime?: pulumi.Input<types.inputs.TimeArgs>;
     /**
      * Load balancing algorithm for peak period.
      */
-    peakLoadBalancingAlgorithm?: pulumi.Input<string | types.enums.v20221014preview.SessionHostLoadBalancingAlgorithm>;
+    peakLoadBalancingAlgorithm?: pulumi.Input<string | types.enums.SessionHostLoadBalancingAlgorithm>;
     /**
      * Starting time for peak period.
      */
-    peakStartTime?: pulumi.Input<types.inputs.desktopvirtualization.v20221014preview.TimeArgs>;
+    peakStartTime?: pulumi.Input<types.inputs.TimeArgs>;
     /**
      * Capacity threshold for ramp down period.
      */
@@ -216,7 +216,7 @@ export interface ScalingPlanPooledScheduleArgs {
     /**
      * Load balancing algorithm for ramp down period.
      */
-    rampDownLoadBalancingAlgorithm?: pulumi.Input<string | types.enums.v20221014preview.SessionHostLoadBalancingAlgorithm>;
+    rampDownLoadBalancingAlgorithm?: pulumi.Input<string | types.enums.SessionHostLoadBalancingAlgorithm>;
     /**
      * Minimum host percentage for ramp down period.
      */
@@ -228,11 +228,11 @@ export interface ScalingPlanPooledScheduleArgs {
     /**
      * Starting time for ramp down period.
      */
-    rampDownStartTime?: pulumi.Input<types.inputs.desktopvirtualization.v20221014preview.TimeArgs>;
+    rampDownStartTime?: pulumi.Input<types.inputs.TimeArgs>;
     /**
      * Specifies when to stop hosts during ramp down period.
      */
-    rampDownStopHostsWhen?: pulumi.Input<string | types.enums.v20221014preview.StopHostsWhen>;
+    rampDownStopHostsWhen?: pulumi.Input<string | types.enums.StopHostsWhen>;
     /**
      * Number of minutes to wait to stop hosts during ramp down period.
      */
@@ -244,7 +244,7 @@ export interface ScalingPlanPooledScheduleArgs {
     /**
      * Load balancing algorithm for ramp up period.
      */
-    rampUpLoadBalancingAlgorithm?: pulumi.Input<string | types.enums.v20221014preview.SessionHostLoadBalancingAlgorithm>;
+    rampUpLoadBalancingAlgorithm?: pulumi.Input<string | types.enums.SessionHostLoadBalancingAlgorithm>;
     /**
      * Minimum host percentage for ramp up period.
      */
@@ -252,7 +252,7 @@ export interface ScalingPlanPooledScheduleArgs {
     /**
      * Starting time for ramp up period.
      */
-    rampUpStartTime?: pulumi.Input<types.inputs.desktopvirtualization.v20221014preview.TimeArgs>;
+    rampUpStartTime?: pulumi.Input<types.inputs.TimeArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves the details of a P2SVpnServerConfiguration.
  */
@@ -48,23 +48,23 @@ export interface GetP2sVpnServerConfigurationResult {
     /**
      * List of references to P2SVpnGateways.
      */
-    readonly p2SVpnGateways: types.outputs.network.v20190701.SubResourceResponse[];
+    readonly p2SVpnGateways: types.outputs.SubResourceResponse[];
     /**
      * Radius client root certificate of P2SVpnServerConfiguration.
      */
-    readonly p2SVpnServerConfigRadiusClientRootCertificates?: types.outputs.network.v20190701.P2SVpnServerConfigRadiusClientRootCertificateResponse[];
+    readonly p2SVpnServerConfigRadiusClientRootCertificates?: types.outputs.P2SVpnServerConfigRadiusClientRootCertificateResponse[];
     /**
      * Radius Server root certificate of P2SVpnServerConfiguration.
      */
-    readonly p2SVpnServerConfigRadiusServerRootCertificates?: types.outputs.network.v20190701.P2SVpnServerConfigRadiusServerRootCertificateResponse[];
+    readonly p2SVpnServerConfigRadiusServerRootCertificates?: types.outputs.P2SVpnServerConfigRadiusServerRootCertificateResponse[];
     /**
      * VPN client revoked certificate of P2SVpnServerConfiguration.
      */
-    readonly p2SVpnServerConfigVpnClientRevokedCertificates?: types.outputs.network.v20190701.P2SVpnServerConfigVpnClientRevokedCertificateResponse[];
+    readonly p2SVpnServerConfigVpnClientRevokedCertificates?: types.outputs.P2SVpnServerConfigVpnClientRevokedCertificateResponse[];
     /**
      * VPN client root certificate of P2SVpnServerConfiguration.
      */
-    readonly p2SVpnServerConfigVpnClientRootCertificates?: types.outputs.network.v20190701.P2SVpnServerConfigVpnClientRootCertificateResponse[];
+    readonly p2SVpnServerConfigVpnClientRootCertificates?: types.outputs.P2SVpnServerConfigVpnClientRootCertificateResponse[];
     /**
      * The provisioning state of the P2S VPN server configuration resource.
      */
@@ -80,7 +80,7 @@ export interface GetP2sVpnServerConfigurationResult {
     /**
      * VpnClientIpsecPolicies for P2SVpnServerConfiguration.
      */
-    readonly vpnClientIpsecPolicies?: types.outputs.network.v20190701.IpsecPolicyResponse[];
+    readonly vpnClientIpsecPolicies?: types.outputs.IpsecPolicyResponse[];
     /**
      * VPN protocols for the P2SVpnServerConfiguration.
      */

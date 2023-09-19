@@ -51,7 +51,7 @@ export class EnvironmentSetting extends pulumi.CustomResource {
     /**
      * The details of the latest operation. ex: status, error
      */
-    public /*out*/ readonly latestOperationResult!: pulumi.Output<types.outputs.labservices.LatestOperationResultResponse>;
+    public /*out*/ readonly latestOperationResult!: pulumi.Output<types.outputs.LatestOperationResultResponse>;
     /**
      * The location of the resource.
      */
@@ -71,7 +71,7 @@ export class EnvironmentSetting extends pulumi.CustomResource {
     /**
      * The resource specific settings
      */
-    public readonly resourceSettings!: pulumi.Output<types.outputs.labservices.ResourceSettingsResponse>;
+    public readonly resourceSettings!: pulumi.Output<types.outputs.ResourceSettingsResponse>;
     /**
      * The tags of the resource.
      */
@@ -192,7 +192,7 @@ export interface EnvironmentSettingArgs {
     /**
      * The resource specific settings
      */
-    resourceSettings: pulumi.Input<types.inputs.labservices.ResourceSettingsArgs>;
+    resourceSettings: pulumi.Input<types.inputs.ResourceSettingsArgs>;
     /**
      * The tags of the resource.
      */

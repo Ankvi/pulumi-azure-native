@@ -35,11 +35,11 @@ export class ContentTemplate extends pulumi.CustomResource {
     /**
      * The creator of the content item.
      */
-    public readonly author!: pulumi.Output<types.outputs.securityinsights.MetadataAuthorResponse | undefined>;
+    public readonly author!: pulumi.Output<types.outputs.MetadataAuthorResponse | undefined>;
     /**
      * Categories for the item
      */
-    public readonly categories!: pulumi.Output<types.outputs.securityinsights.MetadataCategoriesResponse | undefined>;
+    public readonly categories!: pulumi.Output<types.outputs.MetadataCategoriesResponse | undefined>;
     /**
      * Static ID for the content.  Used to identify dependencies and content from solutions or community.  Hard-coded/static for out of the box content and solutions. Dynamic for user-created.  This is the resource name
      */
@@ -59,7 +59,7 @@ export class ContentTemplate extends pulumi.CustomResource {
     /**
      * Dependencies for the content item, what other content items it requires to work.  Can describe more complex dependencies using a recursive/nested structure. For a single dependency an id/kind/version can be supplied or operator/criteria for complex formats.
      */
-    public readonly dependencies!: pulumi.Output<types.outputs.securityinsights.MetadataDependenciesResponse | undefined>;
+    public readonly dependencies!: pulumi.Output<types.outputs.MetadataDependenciesResponse | undefined>;
     /**
      * The display name of the template
      */
@@ -115,15 +115,15 @@ export class ContentTemplate extends pulumi.CustomResource {
     /**
      * Source of the content.  This is where/how it was created.
      */
-    public readonly source!: pulumi.Output<types.outputs.securityinsights.MetadataSourceResponse>;
+    public readonly source!: pulumi.Output<types.outputs.MetadataSourceResponse>;
     /**
      * Support information for the template - type, name, contact information
      */
-    public readonly support!: pulumi.Output<types.outputs.securityinsights.MetadataSupportResponse | undefined>;
+    public readonly support!: pulumi.Output<types.outputs.MetadataSupportResponse | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.securityinsights.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * the tactics the resource covers
      */
@@ -249,11 +249,11 @@ export interface ContentTemplateArgs {
     /**
      * The creator of the content item.
      */
-    author?: pulumi.Input<types.inputs.securityinsights.MetadataAuthorArgs>;
+    author?: pulumi.Input<types.inputs.MetadataAuthorArgs>;
     /**
      * Categories for the item
      */
-    categories?: pulumi.Input<types.inputs.securityinsights.MetadataCategoriesArgs>;
+    categories?: pulumi.Input<types.inputs.MetadataCategoriesArgs>;
     /**
      * Static ID for the content.  Used to identify dependencies and content from solutions or community.  Hard-coded/static for out of the box content and solutions. Dynamic for user-created.  This is the resource name
      */
@@ -273,7 +273,7 @@ export interface ContentTemplateArgs {
     /**
      * Dependencies for the content item, what other content items it requires to work.  Can describe more complex dependencies using a recursive/nested structure. For a single dependency an id/kind/version can be supplied or operator/criteria for complex formats.
      */
-    dependencies?: pulumi.Input<types.inputs.securityinsights.MetadataDependenciesArgs>;
+    dependencies?: pulumi.Input<types.inputs.MetadataDependenciesArgs>;
     /**
      * The display name of the template
      */
@@ -325,11 +325,11 @@ export interface ContentTemplateArgs {
     /**
      * Source of the content.  This is where/how it was created.
      */
-    source: pulumi.Input<types.inputs.securityinsights.MetadataSourceArgs>;
+    source: pulumi.Input<types.inputs.MetadataSourceArgs>;
     /**
      * Support information for the template - type, name, contact information
      */
-    support?: pulumi.Input<types.inputs.securityinsights.MetadataSupportArgs>;
+    support?: pulumi.Input<types.inputs.MetadataSupportArgs>;
     /**
      * template Id
      */

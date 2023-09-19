@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * IoT Addon.
  */
@@ -42,11 +42,11 @@ export class IoTAddon extends pulumi.CustomResource {
     /**
      * IoT device metadata to which appliance needs to be connected.
      */
-    public readonly ioTDeviceDetails!: pulumi.Output<types.outputs.databoxedge.v20220301.IoTDeviceInfoResponse>;
+    public readonly ioTDeviceDetails!: pulumi.Output<types.outputs.IoTDeviceInfoResponse>;
     /**
      * IoT edge device to which the IoT Addon needs to be configured.
      */
-    public readonly ioTEdgeDeviceDetails!: pulumi.Output<types.outputs.databoxedge.v20220301.IoTDeviceInfoResponse>;
+    public readonly ioTEdgeDeviceDetails!: pulumi.Output<types.outputs.IoTDeviceInfoResponse>;
     /**
      * Addon type.
      * Expected value is 'IotEdge'.
@@ -63,7 +63,7 @@ export class IoTAddon extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of Addon
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.databoxedge.v20220301.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The hierarchical type of the object.
      */
@@ -150,11 +150,11 @@ export interface IoTAddonArgs {
     /**
      * IoT device metadata to which appliance needs to be connected.
      */
-    ioTDeviceDetails: pulumi.Input<types.inputs.databoxedge.v20220301.IoTDeviceInfoArgs>;
+    ioTDeviceDetails: pulumi.Input<types.inputs.IoTDeviceInfoArgs>;
     /**
      * IoT edge device to which the IoT Addon needs to be configured.
      */
-    ioTEdgeDeviceDetails: pulumi.Input<types.inputs.databoxedge.v20220301.IoTDeviceInfoArgs>;
+    ioTEdgeDeviceDetails: pulumi.Input<types.inputs.IoTDeviceInfoArgs>;
     /**
      * Addon type.
      * Expected value is 'IotEdge'.

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns current billing features for an Application Insights component.
  */
@@ -35,7 +35,7 @@ export interface GetComponentCurrentBillingFeatureResult {
     /**
      * An Application Insights component daily data volume cap
      */
-    readonly dataVolumeCap?: types.outputs.insights.v20150501.ApplicationInsightsComponentDataVolumeCapResponse;
+    readonly dataVolumeCap?: types.outputs.ApplicationInsightsComponentDataVolumeCapResponse;
 }
 /**
  * Returns current billing features for an Application Insights component.

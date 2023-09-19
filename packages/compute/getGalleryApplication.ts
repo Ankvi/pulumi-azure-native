@@ -37,7 +37,7 @@ export interface GetGalleryApplicationResult {
     /**
      * A list of custom actions that can be performed with all of the Gallery Application Versions within this Gallery Application.
      */
-    readonly customActions?: types.outputs.compute.GalleryApplicationCustomActionResponse[];
+    readonly customActions?: types.outputs.GalleryApplicationCustomActionResponse[];
     /**
      * The description of this gallery Application Definition resource. This property is updatable.
      */

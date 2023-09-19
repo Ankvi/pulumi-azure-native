@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a target group.
  */
@@ -45,7 +45,7 @@ export interface GetJobTargetGroupResult {
     /**
      * Members of the target group.
      */
-    readonly members: types.outputs.sql.v20211101.JobTargetResponse[];
+    readonly members: types.outputs.JobTargetResponse[];
     /**
      * Resource name.
      */

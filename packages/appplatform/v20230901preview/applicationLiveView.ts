@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Application Live View resource
  */
@@ -38,11 +38,11 @@ export class ApplicationLiveView extends pulumi.CustomResource {
     /**
      * Application Live View properties payload
      */
-    public /*out*/ readonly properties!: pulumi.Output<types.outputs.appplatform.v20230901preview.ApplicationLiveViewPropertiesResponse>;
+    public /*out*/ readonly properties!: pulumi.Output<types.outputs.ApplicationLiveViewPropertiesResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.appplatform.v20230901preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource.
      */

@@ -43,7 +43,7 @@ export class WebAppSourceControl extends pulumi.CustomResource {
     /**
      * If GitHub Action is selected, than the associated configuration.
      */
-    public readonly gitHubActionConfiguration!: pulumi.Output<types.outputs.web.GitHubActionConfigurationResponse | undefined>;
+    public readonly gitHubActionConfiguration!: pulumi.Output<types.outputs.GitHubActionConfigurationResponse | undefined>;
     /**
      * <code>true</code> if this is deployed via GitHub action.
      */
@@ -135,7 +135,7 @@ export interface WebAppSourceControlArgs {
     /**
      * If GitHub Action is selected, than the associated configuration.
      */
-    gitHubActionConfiguration?: pulumi.Input<types.inputs.web.GitHubActionConfigurationArgs>;
+    gitHubActionConfiguration?: pulumi.Input<types.inputs.GitHubActionConfigurationArgs>;
     /**
      * <code>true</code> if this is deployed via GitHub action.
      */

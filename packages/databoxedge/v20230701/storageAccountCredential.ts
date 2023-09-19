@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The storage account credential.
  */
@@ -34,7 +34,7 @@ export class StorageAccountCredential extends pulumi.CustomResource {
     /**
      * Encrypted storage key.
      */
-    public readonly accountKey!: pulumi.Output<types.outputs.databoxedge.v20230701.AsymmetricEncryptedSecretResponse | undefined>;
+    public readonly accountKey!: pulumi.Output<types.outputs.AsymmetricEncryptedSecretResponse | undefined>;
     /**
      * Type of storage accessed on the storage account.
      */
@@ -66,7 +66,7 @@ export class StorageAccountCredential extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of StorageAccountCredential
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.databoxedge.v20230701.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The hierarchical type of the object.
      */
@@ -142,11 +142,11 @@ export interface StorageAccountCredentialArgs {
     /**
      * Encrypted storage key.
      */
-    accountKey?: pulumi.Input<types.inputs.databoxedge.v20230701.AsymmetricEncryptedSecretArgs>;
+    accountKey?: pulumi.Input<types.inputs.AsymmetricEncryptedSecretArgs>;
     /**
      * Type of storage accessed on the storage account.
      */
-    accountType: pulumi.Input<string | types.enums.v20230701.AccountType>;
+    accountType: pulumi.Input<string | types.enums.AccountType>;
     /**
      * Alias for the storage account.
      */
@@ -174,7 +174,7 @@ export interface StorageAccountCredentialArgs {
     /**
      * Signifies whether SSL needs to be enabled or not.
      */
-    sslStatus: pulumi.Input<string | types.enums.v20230701.SSLStatus>;
+    sslStatus: pulumi.Input<string | types.enums.SSLStatus>;
     /**
      * Id of the storage account.
      */

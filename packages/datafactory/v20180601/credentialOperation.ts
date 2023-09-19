@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Credential resource type.
  */
@@ -42,7 +42,7 @@ export class CredentialOperation extends pulumi.CustomResource {
     /**
      * Managed Identity Credential properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.datafactory.v20180601.ManagedIdentityCredentialResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ManagedIdentityCredentialResponse>;
     /**
      * The resource type.
      */
@@ -103,7 +103,7 @@ export interface CredentialOperationArgs {
     /**
      * Managed Identity Credential properties.
      */
-    properties: pulumi.Input<types.inputs.datafactory.v20180601.ManagedIdentityCredentialArgs>;
+    properties: pulumi.Input<types.inputs.ManagedIdentityCredentialArgs>;
     /**
      * The resource group name.
      */

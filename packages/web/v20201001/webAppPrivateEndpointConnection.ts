@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Private Endpoint Connection ARM resource.
  */
@@ -42,16 +42,16 @@ export class WebAppPrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * PrivateEndpoint of a remote private endpoint connection
      */
-    public /*out*/ readonly privateEndpoint!: pulumi.Output<types.outputs.web.v20201001.ArmIdWrapperResponse | undefined>;
+    public /*out*/ readonly privateEndpoint!: pulumi.Output<types.outputs.ArmIdWrapperResponse | undefined>;
     /**
      * The state of a private link connection
      */
-    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.web.v20201001.PrivateLinkConnectionStateResponse | undefined>;
+    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.PrivateLinkConnectionStateResponse | undefined>;
     public /*out*/ readonly provisioningState!: pulumi.Output<string>;
     /**
      * The system metadata relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.web.v20201001.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource type.
      */
@@ -115,7 +115,7 @@ export interface WebAppPrivateEndpointConnectionArgs {
     /**
      * The state of a private link connection
      */
-    privateLinkServiceConnectionState?: pulumi.Input<types.inputs.web.v20201001.PrivateLinkConnectionStateArgs>;
+    privateLinkServiceConnectionState?: pulumi.Input<types.inputs.PrivateLinkConnectionStateArgs>;
     /**
      * Name of the resource group to which the resource belongs.
      */

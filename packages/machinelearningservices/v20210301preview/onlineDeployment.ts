@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 export class OnlineDeployment extends pulumi.CustomResource {
     /**
      * Get an existing OnlineDeployment resource's state with the given name, ID, and optional extra
@@ -31,7 +31,7 @@ export class OnlineDeployment extends pulumi.CustomResource {
     /**
      * Service identity associated with a resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.machinelearningservices.v20210301preview.ResourceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ResourceIdentityResponse | undefined>;
     /**
      * Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
      */
@@ -47,11 +47,11 @@ export class OnlineDeployment extends pulumi.CustomResource {
     /**
      * [Required] Additional attributes of the entity.
      */
-    public readonly properties!: pulumi.Output<types.outputs.machinelearningservices.v20210301preview.K8sOnlineDeploymentResponse | types.outputs.machinelearningservices.v20210301preview.ManagedOnlineDeploymentResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.K8sOnlineDeploymentResponse | types.outputs.ManagedOnlineDeploymentResponse>;
     /**
      * System data associated with resource provider
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.machinelearningservices.v20210301preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -128,7 +128,7 @@ export interface OnlineDeploymentArgs {
     /**
      * Service identity associated with a resource.
      */
-    identity?: pulumi.Input<types.inputs.machinelearningservices.v20210301preview.ResourceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ResourceIdentityArgs>;
     /**
      * Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
      */
@@ -140,7 +140,7 @@ export interface OnlineDeploymentArgs {
     /**
      * [Required] Additional attributes of the entity.
      */
-    properties: pulumi.Input<types.inputs.machinelearningservices.v20210301preview.K8sOnlineDeploymentArgs | types.inputs.machinelearningservices.v20210301preview.ManagedOnlineDeploymentArgs>;
+    properties: pulumi.Input<types.inputs.K8sOnlineDeploymentArgs | types.inputs.ManagedOnlineDeploymentArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

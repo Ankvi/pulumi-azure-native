@@ -35,7 +35,7 @@ export class Datastore extends pulumi.CustomResource {
     /**
      * An iSCSI volume
      */
-    public readonly diskPoolVolume!: pulumi.Output<types.outputs.avs.DiskPoolVolumeResponse | undefined>;
+    public readonly diskPoolVolume!: pulumi.Output<types.outputs.DiskPoolVolumeResponse | undefined>;
     /**
      * Resource name.
      */
@@ -43,7 +43,7 @@ export class Datastore extends pulumi.CustomResource {
     /**
      * An Azure NetApp Files volume
      */
-    public readonly netAppVolume!: pulumi.Output<types.outputs.avs.NetAppVolumeResponse | undefined>;
+    public readonly netAppVolume!: pulumi.Output<types.outputs.NetAppVolumeResponse | undefined>;
     /**
      * The state of the datastore provisioning
      */
@@ -79,7 +79,7 @@ export class Datastore extends pulumi.CustomResource {
             }
             resourceInputs["clusterName"] = args ? args.clusterName : undefined;
             resourceInputs["datastoreName"] = args ? args.datastoreName : undefined;
-            resourceInputs["diskPoolVolume"] = args ? (args.diskPoolVolume ? pulumi.output(args.diskPoolVolume).apply(types.inputs.avs.diskPoolVolumeArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["diskPoolVolume"] = args ? (args.diskPoolVolume ? pulumi.output(args.diskPoolVolume).apply(types.inputs.diskPoolVolumeArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["netAppVolume"] = args ? args.netAppVolume : undefined;
             resourceInputs["privateCloudName"] = args ? args.privateCloudName : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
@@ -117,11 +117,11 @@ export interface DatastoreArgs {
     /**
      * An iSCSI volume
      */
-    diskPoolVolume?: pulumi.Input<types.inputs.avs.DiskPoolVolumeArgs>;
+    diskPoolVolume?: pulumi.Input<types.inputs.DiskPoolVolumeArgs>;
     /**
      * An Azure NetApp Files volume
      */
-    netAppVolume?: pulumi.Input<types.inputs.avs.NetAppVolumeArgs>;
+    netAppVolume?: pulumi.Input<types.inputs.NetAppVolumeArgs>;
     /**
      * Name of the private cloud
      */

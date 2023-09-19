@@ -54,7 +54,7 @@ export interface GetReplicationRecoveryServicesProviderResult {
     /**
      * Provider properties.
      */
-    readonly properties: types.outputs.recoveryservices.RecoveryServicesProviderPropertiesResponse;
+    readonly properties: types.outputs.RecoveryServicesProviderPropertiesResponse;
     /**
      * Resource Type
      */

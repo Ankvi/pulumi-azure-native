@@ -35,7 +35,7 @@ export class SAPVirtualInstance extends pulumi.CustomResource {
     /**
      * Defines if the SAP system is being created using Azure Center for SAP solutions (ACSS) or if an existing SAP system is being registered with ACSS
      */
-    public readonly configuration!: pulumi.Output<types.outputs.workloads.DeploymentConfigurationResponse | types.outputs.workloads.DeploymentWithOSConfigurationResponse | types.outputs.workloads.DiscoveryConfigurationResponse>;
+    public readonly configuration!: pulumi.Output<types.outputs.DeploymentConfigurationResponse | types.outputs.DeploymentWithOSConfigurationResponse | types.outputs.DiscoveryConfigurationResponse>;
     /**
      * Defines the environment type - Production/Non Production.
      */
@@ -43,7 +43,7 @@ export class SAPVirtualInstance extends pulumi.CustomResource {
     /**
      * Indicates any errors on the Virtual Instance for SAP solutions resource.
      */
-    public /*out*/ readonly errors!: pulumi.Output<types.outputs.workloads.SAPVirtualInstanceErrorResponse>;
+    public /*out*/ readonly errors!: pulumi.Output<types.outputs.SAPVirtualInstanceErrorResponse>;
     /**
      * Defines the health of SAP Instances.
      */
@@ -51,7 +51,7 @@ export class SAPVirtualInstance extends pulumi.CustomResource {
     /**
      * A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide.
      */
-    public readonly identity!: pulumi.Output<types.outputs.workloads.UserAssignedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.UserAssignedServiceIdentityResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -59,7 +59,7 @@ export class SAPVirtualInstance extends pulumi.CustomResource {
     /**
      * Managed resource group configuration
      */
-    public readonly managedResourceGroupConfiguration!: pulumi.Output<types.outputs.workloads.ManagedRGConfigurationResponse | undefined>;
+    public readonly managedResourceGroupConfiguration!: pulumi.Output<types.outputs.ManagedRGConfigurationResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -83,7 +83,7 @@ export class SAPVirtualInstance extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.workloads.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -164,7 +164,7 @@ export interface SAPVirtualInstanceArgs {
     /**
      * Defines if the SAP system is being created using Azure Center for SAP solutions (ACSS) or if an existing SAP system is being registered with ACSS
      */
-    configuration: pulumi.Input<types.inputs.workloads.DeploymentConfigurationArgs | types.inputs.workloads.DeploymentWithOSConfigurationArgs | types.inputs.workloads.DiscoveryConfigurationArgs>;
+    configuration: pulumi.Input<types.inputs.DeploymentConfigurationArgs | types.inputs.DeploymentWithOSConfigurationArgs | types.inputs.DiscoveryConfigurationArgs>;
     /**
      * Defines the environment type - Production/Non Production.
      */
@@ -172,7 +172,7 @@ export interface SAPVirtualInstanceArgs {
     /**
      * A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide.
      */
-    identity?: pulumi.Input<types.inputs.workloads.UserAssignedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.UserAssignedServiceIdentityArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -180,7 +180,7 @@ export interface SAPVirtualInstanceArgs {
     /**
      * Managed resource group configuration
      */
-    managedResourceGroupConfiguration?: pulumi.Input<types.inputs.workloads.ManagedRGConfigurationArgs>;
+    managedResourceGroupConfiguration?: pulumi.Input<types.inputs.ManagedRGConfigurationArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a Traffic Controller Association
  */
@@ -56,11 +56,11 @@ export interface GetAssociationsInterfaceResult {
     /**
      * Association Subnet
      */
-    readonly subnet?: types.outputs.servicenetworking.v20221001preview.AssociationSubnetResponse;
+    readonly subnet?: types.outputs.AssociationSubnetResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.servicenetworking.v20221001preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

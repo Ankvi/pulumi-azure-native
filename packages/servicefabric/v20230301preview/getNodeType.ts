@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a Service Fabric node type of a given managed cluster.
  */
@@ -36,11 +36,11 @@ export interface GetNodeTypeResult {
     /**
      * Additional managed data disks.
      */
-    readonly additionalDataDisks?: types.outputs.servicefabric.v20230301preview.VmssDataDiskResponse[];
+    readonly additionalDataDisks?: types.outputs.VmssDataDiskResponse[];
     /**
      * The range of ports from which cluster assigned port to Service Fabric applications.
      */
-    readonly applicationPorts?: types.outputs.servicefabric.v20230301preview.EndpointRangeDescriptionResponse;
+    readonly applicationPorts?: types.outputs.EndpointRangeDescriptionResponse;
     /**
      * The capacity tags applied to the nodes in the node type, the cluster resource manager uses these tags to understand how much resource a node has.
      */
@@ -76,7 +76,7 @@ export interface GetNodeTypeResult {
     /**
      * The range of ephemeral ports that nodes in this node type should be configured with.
      */
-    readonly ephemeralPorts?: types.outputs.servicefabric.v20230301preview.EndpointRangeDescriptionResponse;
+    readonly ephemeralPorts?: types.outputs.EndpointRangeDescriptionResponse;
     /**
      * Specifies the eviction policy for virtual machines in a SPOT node type. Default is Delete.
      */
@@ -84,7 +84,7 @@ export interface GetNodeTypeResult {
     /**
      * Indicates the node type uses its own frontend configurations instead of the default one for the cluster. This setting can only be specified for non-primary node types and can not be added or removed after the node type is created.
      */
-    readonly frontendConfigurations?: types.outputs.servicefabric.v20230301preview.FrontendConfigurationResponse[];
+    readonly frontendConfigurations?: types.outputs.FrontendConfigurationResponse[];
     /**
      * Specifies the full host group resource Id. This property is used for deploying on azure dedicated hosts.
      */
@@ -120,7 +120,7 @@ export interface GetNodeTypeResult {
     /**
      * The Network Security Rules for this node type. This setting can only be specified for node types that are configured with frontend configurations.
      */
-    readonly networkSecurityRules?: types.outputs.servicefabric.v20230301preview.NetworkSecurityRuleResponse[];
+    readonly networkSecurityRules?: types.outputs.NetworkSecurityRuleResponse[];
     /**
      * The placement tags applied to nodes in the node type, which can be used to indicate where certain services (workload) should run.
      */
@@ -140,7 +140,7 @@ export interface GetNodeTypeResult {
     /**
      * The node type sku.
      */
-    readonly sku?: types.outputs.servicefabric.v20230301preview.NodeTypeSkuResponse;
+    readonly sku?: types.outputs.NodeTypeSkuResponse;
     /**
      * Indicates the time duration after which the platform will not try to restore the VMSS SPOT instances specified as ISO 8601.
      */
@@ -152,7 +152,7 @@ export interface GetNodeTypeResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.servicefabric.v20230301preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Azure resource tags.
      */
@@ -176,7 +176,7 @@ export interface GetNodeTypeResult {
     /**
      * Set of extensions that should be installed onto the virtual machines.
      */
-    readonly vmExtensions?: types.outputs.servicefabric.v20230301preview.VMSSExtensionResponse[];
+    readonly vmExtensions?: types.outputs.VMSSExtensionResponse[];
     /**
      * The offer type of the Azure Virtual Machines Marketplace image. For example, UbuntuServer or WindowsServer.
      */
@@ -184,7 +184,7 @@ export interface GetNodeTypeResult {
     /**
      * Specifies information about the marketplace image used to create the virtual machine. This element is only used for marketplace images. Before you can use a marketplace image from an API, you must enable the image for programmatic use. In the Azure portal, find the marketplace image that you want to use and then click Want to deploy programmatically, Get Started ->. Enter any required information and then click Save.
      */
-    readonly vmImagePlan?: types.outputs.servicefabric.v20230301preview.VmImagePlanResponse;
+    readonly vmImagePlan?: types.outputs.VmImagePlanResponse;
     /**
      * The publisher of the Azure Virtual Machines Marketplace image. For example, Canonical or MicrosoftWindowsServer.
      */
@@ -208,11 +208,11 @@ export interface GetNodeTypeResult {
     /**
      * Identities to assign to the virtual machine scale set under the node type.
      */
-    readonly vmManagedIdentity?: types.outputs.servicefabric.v20230301preview.VmManagedIdentityResponse;
+    readonly vmManagedIdentity?: types.outputs.VmManagedIdentityResponse;
     /**
      * The secrets to install in the virtual machines.
      */
-    readonly vmSecrets?: types.outputs.servicefabric.v20230301preview.VaultSecretGroupResponse[];
+    readonly vmSecrets?: types.outputs.VaultSecretGroupResponse[];
     /**
      * Specifies the actions to be performed on the vms before bootstrapping the service fabric runtime.
      */

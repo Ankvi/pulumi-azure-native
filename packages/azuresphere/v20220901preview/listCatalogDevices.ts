@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Lists devices for catalog.
  */
@@ -55,7 +55,7 @@ export interface ListCatalogDevicesResult {
     /**
      * The Device items on this page
      */
-    readonly value: types.outputs.azuresphere.v20220901preview.DeviceResponse[];
+    readonly value: types.outputs.DeviceResponse[];
 }
 /**
  * Lists devices for catalog.

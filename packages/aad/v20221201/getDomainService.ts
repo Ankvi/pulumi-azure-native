@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The Get Domain Service operation retrieves a json representation of the Domain Service.
  */
@@ -31,7 +31,7 @@ export interface GetDomainServiceResult {
     /**
      * Configuration diagnostics data containing latest execution from client.
      */
-    readonly configDiagnostics?: types.outputs.aad.v20221201.ConfigDiagnosticsResponse;
+    readonly configDiagnostics?: types.outputs.ConfigDiagnosticsResponse;
     /**
      * Deployment Id
      */
@@ -47,7 +47,7 @@ export interface GetDomainServiceResult {
     /**
      * DomainSecurity Settings
      */
-    readonly domainSecuritySettings?: types.outputs.aad.v20221201.DomainSecuritySettingsResponse;
+    readonly domainSecuritySettings?: types.outputs.DomainSecuritySettingsResponse;
     /**
      * Resource etag
      */
@@ -63,7 +63,7 @@ export interface GetDomainServiceResult {
     /**
      * Secure LDAP Settings
      */
-    readonly ldapsSettings?: types.outputs.aad.v20221201.LdapsSettingsResponse;
+    readonly ldapsSettings?: types.outputs.LdapsSettingsResponse;
     /**
      * Resource location
      */
@@ -71,7 +71,7 @@ export interface GetDomainServiceResult {
     /**
      * Migration Properties
      */
-    readonly migrationProperties: types.outputs.aad.v20221201.MigrationPropertiesResponse;
+    readonly migrationProperties: types.outputs.MigrationPropertiesResponse;
     /**
      * Resource name
      */
@@ -79,7 +79,7 @@ export interface GetDomainServiceResult {
     /**
      * Notification Settings
      */
-    readonly notificationSettings?: types.outputs.aad.v20221201.NotificationSettingsResponse;
+    readonly notificationSettings?: types.outputs.NotificationSettingsResponse;
     /**
      * the current deployment or provisioning state, which only appears in the response.
      */
@@ -87,11 +87,11 @@ export interface GetDomainServiceResult {
     /**
      * List of ReplicaSets
      */
-    readonly replicaSets?: types.outputs.aad.v20221201.ReplicaSetResponse[];
+    readonly replicaSets?: types.outputs.ReplicaSetResponse[];
     /**
      * Resource Forest Settings
      */
-    readonly resourceForestSettings?: types.outputs.aad.v20221201.ResourceForestSettingsResponse;
+    readonly resourceForestSettings?: types.outputs.ResourceForestSettingsResponse;
     /**
      * Sku Type
      */
@@ -111,7 +111,7 @@ export interface GetDomainServiceResult {
     /**
      * The system meta data relating to this resource.
      */
-    readonly systemData: types.outputs.aad.v20221201.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags
      */

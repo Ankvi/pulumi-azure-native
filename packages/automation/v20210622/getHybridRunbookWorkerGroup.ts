@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieve a hybrid runbook worker group.
  */
@@ -36,7 +36,7 @@ export interface GetHybridRunbookWorkerGroupResult {
     /**
      * Sets the credential of a worker group.
      */
-    readonly credential?: types.outputs.automation.v20210622.RunAsCredentialAssociationPropertyResponse;
+    readonly credential?: types.outputs.RunAsCredentialAssociationPropertyResponse;
     /**
      * Type of the HybridWorkerGroup.
      */
@@ -44,7 +44,7 @@ export interface GetHybridRunbookWorkerGroupResult {
     /**
      * Gets or sets the list of hybrid runbook workers.
      */
-    readonly hybridRunbookWorkers?: types.outputs.automation.v20210622.HybridRunbookWorkerLegacyResponse[];
+    readonly hybridRunbookWorkers?: types.outputs.HybridRunbookWorkerLegacyResponse[];
     /**
      * Gets or sets the id of the resource.
      */
@@ -56,7 +56,7 @@ export interface GetHybridRunbookWorkerGroupResult {
     /**
      * Resource system metadata.
      */
-    readonly systemData: types.outputs.automation.v20210622.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource.
      */

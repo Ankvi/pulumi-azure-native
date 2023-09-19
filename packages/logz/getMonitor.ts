@@ -29,7 +29,7 @@ export interface GetMonitorResult {
      * ARM id of the monitor resource.
      */
     readonly id: string;
-    readonly identity?: types.outputs.logz.IdentityPropertiesResponse;
+    readonly identity?: types.outputs.IdentityPropertiesResponse;
     readonly location: string;
     /**
      * Name of the monitor resource.
@@ -38,11 +38,11 @@ export interface GetMonitorResult {
     /**
      * Properties specific to the monitor resource.
      */
-    readonly properties: types.outputs.logz.MonitorPropertiesResponse;
+    readonly properties: types.outputs.MonitorPropertiesResponse;
     /**
      * The system metadata relating to this resource
      */
-    readonly systemData: types.outputs.logz.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     readonly tags?: {[key: string]: string};
     /**
      * The type of the monitor resource.

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 export function getAzureDevOpsConnector(args: GetAzureDevOpsConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetAzureDevOpsConnectorResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -34,11 +34,11 @@ export interface GetAzureDevOpsConnectorResult {
      * The name of the resource
      */
     readonly name: string;
-    readonly properties: types.outputs.securitydevops.v20220901preview.AzureDevOpsConnectorPropertiesResponse;
+    readonly properties: types.outputs.AzureDevOpsConnectorPropertiesResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.securitydevops.v20220901preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

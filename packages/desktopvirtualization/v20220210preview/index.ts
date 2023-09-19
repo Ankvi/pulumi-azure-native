@@ -13,7 +13,7 @@ utilities.lazyLoad(exports, ["ScalingPlan"], () => require("./scalingPlan"));
 
 
 // Export enums:
-export * from "../types/enums/v20220210preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

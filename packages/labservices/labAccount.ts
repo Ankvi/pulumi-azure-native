@@ -39,7 +39,7 @@ export class LabAccount extends pulumi.CustomResource {
     /**
      * The details of the latest operation. ex: status, error
      */
-    public /*out*/ readonly latestOperationResult!: pulumi.Output<types.outputs.labservices.LatestOperationResultResponse>;
+    public /*out*/ readonly latestOperationResult!: pulumi.Output<types.outputs.LatestOperationResultResponse>;
     /**
      * The location of the resource.
      */
@@ -55,7 +55,7 @@ export class LabAccount extends pulumi.CustomResource {
     /**
      * Represents the size configuration under the lab account
      */
-    public /*out*/ readonly sizeConfiguration!: pulumi.Output<types.outputs.labservices.SizeConfigurationPropertiesResponse>;
+    public /*out*/ readonly sizeConfiguration!: pulumi.Output<types.outputs.SizeConfigurationPropertiesResponse>;
     /**
      * The tags of the resource.
      */

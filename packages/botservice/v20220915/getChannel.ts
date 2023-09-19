@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns a BotService Channel registration specified by the parameters.
  */
@@ -56,11 +56,11 @@ export interface GetChannelResult {
     /**
      * The set of properties specific to bot channel resource
      */
-    readonly properties: types.outputs.botservice.v20220915.AcsChatChannelResponse | types.outputs.botservice.v20220915.AlexaChannelResponse | types.outputs.botservice.v20220915.DirectLineChannelResponse | types.outputs.botservice.v20220915.DirectLineSpeechChannelResponse | types.outputs.botservice.v20220915.EmailChannelResponse | types.outputs.botservice.v20220915.FacebookChannelResponse | types.outputs.botservice.v20220915.KikChannelResponse | types.outputs.botservice.v20220915.LineChannelResponse | types.outputs.botservice.v20220915.M365ExtensionsResponse | types.outputs.botservice.v20220915.MsTeamsChannelResponse | types.outputs.botservice.v20220915.OmnichannelResponse | types.outputs.botservice.v20220915.OutlookChannelResponse | types.outputs.botservice.v20220915.SearchAssistantResponse | types.outputs.botservice.v20220915.SkypeChannelResponse | types.outputs.botservice.v20220915.SlackChannelResponse | types.outputs.botservice.v20220915.SmsChannelResponse | types.outputs.botservice.v20220915.TelegramChannelResponse | types.outputs.botservice.v20220915.TelephonyChannelResponse | types.outputs.botservice.v20220915.WebChatChannelResponse;
+    readonly properties: types.outputs.AcsChatChannelResponse | types.outputs.AlexaChannelResponse | types.outputs.DirectLineChannelResponse | types.outputs.DirectLineSpeechChannelResponse | types.outputs.EmailChannelResponse | types.outputs.FacebookChannelResponse | types.outputs.KikChannelResponse | types.outputs.LineChannelResponse | types.outputs.M365ExtensionsResponse | types.outputs.MsTeamsChannelResponse | types.outputs.OmnichannelResponse | types.outputs.OutlookChannelResponse | types.outputs.SearchAssistantResponse | types.outputs.SkypeChannelResponse | types.outputs.SlackChannelResponse | types.outputs.SmsChannelResponse | types.outputs.TelegramChannelResponse | types.outputs.TelephonyChannelResponse | types.outputs.WebChatChannelResponse;
     /**
      * Gets or sets the SKU of the resource.
      */
-    readonly sku?: types.outputs.botservice.v20220915.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * Contains resource tags defined as key/value pairs.
      */

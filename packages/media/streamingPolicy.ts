@@ -35,11 +35,11 @@ export class StreamingPolicy extends pulumi.CustomResource {
     /**
      * Configuration of CommonEncryptionCbcs
      */
-    public readonly commonEncryptionCbcs!: pulumi.Output<types.outputs.media.CommonEncryptionCbcsResponse | undefined>;
+    public readonly commonEncryptionCbcs!: pulumi.Output<types.outputs.CommonEncryptionCbcsResponse | undefined>;
     /**
      * Configuration of CommonEncryptionCenc
      */
-    public readonly commonEncryptionCenc!: pulumi.Output<types.outputs.media.CommonEncryptionCencResponse | undefined>;
+    public readonly commonEncryptionCenc!: pulumi.Output<types.outputs.CommonEncryptionCencResponse | undefined>;
     /**
      * Creation time of Streaming Policy
      */
@@ -51,7 +51,7 @@ export class StreamingPolicy extends pulumi.CustomResource {
     /**
      * Configuration of EnvelopeEncryption
      */
-    public readonly envelopeEncryption!: pulumi.Output<types.outputs.media.EnvelopeEncryptionResponse | undefined>;
+    public readonly envelopeEncryption!: pulumi.Output<types.outputs.EnvelopeEncryptionResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -59,11 +59,11 @@ export class StreamingPolicy extends pulumi.CustomResource {
     /**
      * Configurations of NoEncryption
      */
-    public readonly noEncryption!: pulumi.Output<types.outputs.media.NoEncryptionResponse | undefined>;
+    public readonly noEncryption!: pulumi.Output<types.outputs.NoEncryptionResponse | undefined>;
     /**
      * The system metadata relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.media.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -127,11 +127,11 @@ export interface StreamingPolicyArgs {
     /**
      * Configuration of CommonEncryptionCbcs
      */
-    commonEncryptionCbcs?: pulumi.Input<types.inputs.media.CommonEncryptionCbcsArgs>;
+    commonEncryptionCbcs?: pulumi.Input<types.inputs.CommonEncryptionCbcsArgs>;
     /**
      * Configuration of CommonEncryptionCenc
      */
-    commonEncryptionCenc?: pulumi.Input<types.inputs.media.CommonEncryptionCencArgs>;
+    commonEncryptionCenc?: pulumi.Input<types.inputs.CommonEncryptionCencArgs>;
     /**
      * Default ContentKey used by current Streaming Policy
      */
@@ -139,11 +139,11 @@ export interface StreamingPolicyArgs {
     /**
      * Configuration of EnvelopeEncryption
      */
-    envelopeEncryption?: pulumi.Input<types.inputs.media.EnvelopeEncryptionArgs>;
+    envelopeEncryption?: pulumi.Input<types.inputs.EnvelopeEncryptionArgs>;
     /**
      * Configurations of NoEncryption
      */
-    noEncryption?: pulumi.Input<types.inputs.media.NoEncryptionArgs>;
+    noEncryption?: pulumi.Input<types.inputs.NoEncryptionArgs>;
     /**
      * The name of the resource group within the Azure subscription.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get properties of a partner topic.
  */
@@ -35,7 +35,7 @@ export interface GetPartnerTopicResult {
     /**
      * Event Type information from the corresponding event channel.
      */
-    readonly eventTypeInfo?: types.outputs.eventgrid.v20230601preview.EventTypeInfoResponse;
+    readonly eventTypeInfo?: types.outputs.EventTypeInfoResponse;
     /**
      * Expiration time of the partner topic. If this timer expires while the partner topic is still never activated,
      * the partner topic and corresponding event channel are deleted.
@@ -48,7 +48,7 @@ export interface GetPartnerTopicResult {
     /**
      * Identity information for the Partner Topic resource.
      */
-    readonly identity?: types.outputs.eventgrid.v20230601preview.IdentityInfoResponse;
+    readonly identity?: types.outputs.IdentityInfoResponse;
     /**
      * Location of the resource.
      */
@@ -81,7 +81,7 @@ export interface GetPartnerTopicResult {
     /**
      * The system metadata relating to Partner Topic resource.
      */
-    readonly systemData: types.outputs.eventgrid.v20230601preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Tags of the resource.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * String dictionary resource.
  */
@@ -42,11 +42,11 @@ export class WebAppConnectionStrings extends pulumi.CustomResource {
     /**
      * Connection strings.
      */
-    public readonly properties!: pulumi.Output<{[key: string]: types.outputs.web.v20201001.ConnStringValueTypePairResponse}>;
+    public readonly properties!: pulumi.Output<{[key: string]: types.outputs.ConnStringValueTypePairResponse}>;
     /**
      * The system metadata relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.web.v20201001.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource type.
      */
@@ -104,7 +104,7 @@ export interface WebAppConnectionStringsArgs {
     /**
      * Connection strings.
      */
-    properties?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.web.v20201001.ConnStringValueTypePairArgs>}>;
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.ConnStringValueTypePairArgs>}>;
     /**
      * Name of the resource group to which the resource belongs.
      */

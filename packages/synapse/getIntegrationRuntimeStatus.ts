@@ -41,7 +41,7 @@ export interface GetIntegrationRuntimeStatusResult {
     /**
      * Integration runtime properties.
      */
-    readonly properties: types.outputs.synapse.ManagedIntegrationRuntimeStatusResponse | types.outputs.synapse.SelfHostedIntegrationRuntimeStatusResponse;
+    readonly properties: types.outputs.ManagedIntegrationRuntimeStatusResponse | types.outputs.SelfHostedIntegrationRuntimeStatusResponse;
 }
 /**
  * Get the integration runtime status

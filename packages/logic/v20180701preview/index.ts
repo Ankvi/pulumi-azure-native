@@ -38,7 +38,7 @@ utilities.lazyLoad(exports, ["Workflow"], () => require("./workflow"));
 
 
 // Export enums:
-export * from "../types/enums/v20180701preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

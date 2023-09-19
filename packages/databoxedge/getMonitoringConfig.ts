@@ -41,7 +41,7 @@ export interface GetMonitoringConfigResult {
     /**
      * The metrics configuration details
      */
-    readonly metricConfigurations: types.outputs.databoxedge.MetricConfigurationResponse[];
+    readonly metricConfigurations: types.outputs.MetricConfigurationResponse[];
     /**
      * The object name.
      */
@@ -49,7 +49,7 @@ export interface GetMonitoringConfigResult {
     /**
      * Metadata pertaining to creation and last modification of MonitoringConfiguration
      */
-    readonly systemData: types.outputs.databoxedge.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The hierarchical type of the object.
      */

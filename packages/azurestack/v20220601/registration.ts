@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Registration information.
  */
@@ -116,7 +116,7 @@ export interface RegistrationArgs {
     /**
      * Location of the resource.
      */
-    location?: pulumi.Input<string | types.enums.v20220601.Location>;
+    location?: pulumi.Input<string | types.enums.Location>;
     /**
      * Name of the Azure Stack registration.
      */

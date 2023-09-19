@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Factory resource type.
  */
@@ -42,15 +42,15 @@ export class Factory extends pulumi.CustomResource {
     /**
      * Properties to enable Customer Managed Key for the factory.
      */
-    public readonly encryption!: pulumi.Output<types.outputs.datafactory.v20180601.EncryptionConfigurationResponse | undefined>;
+    public readonly encryption!: pulumi.Output<types.outputs.EncryptionConfigurationResponse | undefined>;
     /**
      * List of parameters for factory.
      */
-    public readonly globalParameters!: pulumi.Output<{[key: string]: types.outputs.datafactory.v20180601.GlobalParameterSpecificationResponse} | undefined>;
+    public readonly globalParameters!: pulumi.Output<{[key: string]: types.outputs.GlobalParameterSpecificationResponse} | undefined>;
     /**
      * Managed service identity of the factory.
      */
-    public readonly identity!: pulumi.Output<types.outputs.datafactory.v20180601.FactoryIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.FactoryIdentityResponse | undefined>;
     /**
      * The resource location.
      */
@@ -70,11 +70,11 @@ export class Factory extends pulumi.CustomResource {
     /**
      * Purview information of the factory.
      */
-    public readonly purviewConfiguration!: pulumi.Output<types.outputs.datafactory.v20180601.PurviewConfigurationResponse | undefined>;
+    public readonly purviewConfiguration!: pulumi.Output<types.outputs.PurviewConfigurationResponse | undefined>;
     /**
      * Git repo information of the factory.
      */
-    public readonly repoConfiguration!: pulumi.Output<types.outputs.datafactory.v20180601.FactoryGitHubConfigurationResponse | types.outputs.datafactory.v20180601.FactoryVSTSConfigurationResponse | undefined>;
+    public readonly repoConfiguration!: pulumi.Output<types.outputs.FactoryGitHubConfigurationResponse | types.outputs.FactoryVSTSConfigurationResponse | undefined>;
     /**
      * The resource tags.
      */
@@ -148,7 +148,7 @@ export interface FactoryArgs {
     /**
      * Properties to enable Customer Managed Key for the factory.
      */
-    encryption?: pulumi.Input<types.inputs.datafactory.v20180601.EncryptionConfigurationArgs>;
+    encryption?: pulumi.Input<types.inputs.EncryptionConfigurationArgs>;
     /**
      * The factory name.
      */
@@ -156,11 +156,11 @@ export interface FactoryArgs {
     /**
      * List of parameters for factory.
      */
-    globalParameters?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.datafactory.v20180601.GlobalParameterSpecificationArgs>}>;
+    globalParameters?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.GlobalParameterSpecificationArgs>}>;
     /**
      * Managed service identity of the factory.
      */
-    identity?: pulumi.Input<types.inputs.datafactory.v20180601.FactoryIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.FactoryIdentityArgs>;
     /**
      * The resource location.
      */
@@ -168,15 +168,15 @@ export interface FactoryArgs {
     /**
      * Whether or not public network access is allowed for the data factory.
      */
-    publicNetworkAccess?: pulumi.Input<string | types.enums.v20180601.PublicNetworkAccess>;
+    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess>;
     /**
      * Purview information of the factory.
      */
-    purviewConfiguration?: pulumi.Input<types.inputs.datafactory.v20180601.PurviewConfigurationArgs>;
+    purviewConfiguration?: pulumi.Input<types.inputs.PurviewConfigurationArgs>;
     /**
      * Git repo information of the factory.
      */
-    repoConfiguration?: pulumi.Input<types.inputs.datafactory.v20180601.FactoryGitHubConfigurationArgs | types.inputs.datafactory.v20180601.FactoryVSTSConfigurationArgs>;
+    repoConfiguration?: pulumi.Input<types.inputs.FactoryGitHubConfigurationArgs | types.inputs.FactoryVSTSConfigurationArgs>;
     /**
      * The resource group name.
      */

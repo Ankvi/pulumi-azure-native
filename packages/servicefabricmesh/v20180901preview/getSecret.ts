@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the information about the secret resource with the given name. The information include the description and other properties of the secret.
  */
@@ -43,7 +43,7 @@ export interface GetSecretResult {
     /**
      * Describes the properties of a secret resource.
      */
-    readonly properties: types.outputs.servicefabricmesh.v20180901preview.SecretResourcePropertiesResponse;
+    readonly properties: types.outputs.SecretResourcePropertiesResponse;
     /**
      * Resource tags.
      */

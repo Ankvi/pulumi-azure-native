@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets information about the specified network function resource.
  */
@@ -31,7 +31,7 @@ export interface GetNetworkFunctionResult {
     /**
      * The reference to the device resource. Once set, it cannot be updated.
      */
-    readonly device?: types.outputs.hybridnetwork.v20220101preview.SubResourceResponse;
+    readonly device?: types.outputs.SubResourceResponse;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -47,7 +47,7 @@ export interface GetNetworkFunctionResult {
     /**
      * The resource URI of the managed application.
      */
-    readonly managedApplication: types.outputs.hybridnetwork.v20220101preview.SubResourceResponse;
+    readonly managedApplication: types.outputs.SubResourceResponse;
     /**
      * The parameters for the managed application.
      */
@@ -63,7 +63,7 @@ export interface GetNetworkFunctionResult {
     /**
      * The network function configurations from the user.
      */
-    readonly networkFunctionUserConfigurations?: types.outputs.hybridnetwork.v20220101preview.NetworkFunctionUserConfigurationResponse[];
+    readonly networkFunctionUserConfigurations?: types.outputs.NetworkFunctionUserConfigurationResponse[];
     /**
      * The provisioning state of the network function resource.
      */
@@ -83,7 +83,7 @@ export interface GetNetworkFunctionResult {
     /**
      * The system meta data relating to this resource.
      */
-    readonly systemData: types.outputs.hybridnetwork.v20220101preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

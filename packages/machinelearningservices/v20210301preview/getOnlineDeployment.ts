@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 export function getOnlineDeployment(args: GetOnlineDeploymentArgs, opts?: pulumi.InvokeOptions): Promise<GetOnlineDeploymentResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -39,7 +39,7 @@ export interface GetOnlineDeploymentResult {
     /**
      * Service identity associated with a resource.
      */
-    readonly identity?: types.outputs.machinelearningservices.v20210301preview.ResourceIdentityResponse;
+    readonly identity?: types.outputs.ResourceIdentityResponse;
     /**
      * Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
      */
@@ -55,11 +55,11 @@ export interface GetOnlineDeploymentResult {
     /**
      * [Required] Additional attributes of the entity.
      */
-    readonly properties: types.outputs.machinelearningservices.v20210301preview.K8sOnlineDeploymentResponse | types.outputs.machinelearningservices.v20210301preview.ManagedOnlineDeploymentResponse;
+    readonly properties: types.outputs.K8sOnlineDeploymentResponse | types.outputs.ManagedOnlineDeploymentResponse;
     /**
      * System data associated with resource provider
      */
-    readonly systemData: types.outputs.machinelearningservices.v20210301preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

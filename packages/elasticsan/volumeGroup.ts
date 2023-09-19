@@ -43,7 +43,7 @@ export class VolumeGroup extends pulumi.CustomResource {
     /**
      * A collection of rules governing the accessibility from specific network locations.
      */
-    public readonly networkAcls!: pulumi.Output<types.outputs.elasticsan.NetworkRuleSetResponse | undefined>;
+    public readonly networkAcls!: pulumi.Output<types.outputs.NetworkRuleSetResponse | undefined>;
     /**
      * Type of storage target
      */
@@ -55,7 +55,7 @@ export class VolumeGroup extends pulumi.CustomResource {
     /**
      * Resource metadata required by ARM RPC
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.elasticsan.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Azure resource tags.
      */
@@ -125,7 +125,7 @@ export interface VolumeGroupArgs {
     /**
      * A collection of rules governing the accessibility from specific network locations.
      */
-    networkAcls?: pulumi.Input<types.inputs.elasticsan.NetworkRuleSetArgs>;
+    networkAcls?: pulumi.Input<types.inputs.NetworkRuleSetArgs>;
     /**
      * Type of storage target
      */

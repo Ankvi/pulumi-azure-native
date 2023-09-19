@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Peering is a logical representation of a set of connections to the Microsoft Cloud Edge at a location.
  */
@@ -34,11 +34,11 @@ export class Peering extends pulumi.CustomResource {
     /**
      * The properties that define a direct peering.
      */
-    public readonly direct!: pulumi.Output<types.outputs.peering.v20221001.PeeringPropertiesDirectResponse | undefined>;
+    public readonly direct!: pulumi.Output<types.outputs.PeeringPropertiesDirectResponse | undefined>;
     /**
      * The properties that define an exchange peering.
      */
-    public readonly exchange!: pulumi.Output<types.outputs.peering.v20221001.PeeringPropertiesExchangeResponse | undefined>;
+    public readonly exchange!: pulumi.Output<types.outputs.PeeringPropertiesExchangeResponse | undefined>;
     /**
      * The kind of the peering.
      */
@@ -62,7 +62,7 @@ export class Peering extends pulumi.CustomResource {
     /**
      * The SKU that defines the tier and kind of the peering.
      */
-    public readonly sku!: pulumi.Output<types.outputs.peering.v20221001.PeeringSkuResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.PeeringSkuResponse>;
     /**
      * The resource tags.
      */
@@ -130,15 +130,15 @@ export interface PeeringArgs {
     /**
      * The properties that define a direct peering.
      */
-    direct?: pulumi.Input<types.inputs.peering.v20221001.PeeringPropertiesDirectArgs>;
+    direct?: pulumi.Input<types.inputs.PeeringPropertiesDirectArgs>;
     /**
      * The properties that define an exchange peering.
      */
-    exchange?: pulumi.Input<types.inputs.peering.v20221001.PeeringPropertiesExchangeArgs>;
+    exchange?: pulumi.Input<types.inputs.PeeringPropertiesExchangeArgs>;
     /**
      * The kind of the peering.
      */
-    kind: pulumi.Input<string | types.enums.v20221001.Kind>;
+    kind: pulumi.Input<string | types.enums.Kind>;
     /**
      * The location of the resource.
      */
@@ -158,7 +158,7 @@ export interface PeeringArgs {
     /**
      * The SKU that defines the tier and kind of the peering.
      */
-    sku: pulumi.Input<types.inputs.peering.v20221001.PeeringSkuArgs>;
+    sku: pulumi.Input<types.inputs.PeeringSkuArgs>;
     /**
      * The resource tags.
      */

@@ -49,7 +49,7 @@ export interface GetRulesEngineResult {
     /**
      * A list of rules that define a particular Rules Engine Configuration.
      */
-    readonly rules?: types.outputs.network.RulesEngineRuleResponse[];
+    readonly rules?: types.outputs.RulesEngineRuleResponse[];
     /**
      * Resource type.
      */

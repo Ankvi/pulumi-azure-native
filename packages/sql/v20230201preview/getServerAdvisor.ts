@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a server advisor.
  */
@@ -72,7 +72,7 @@ export interface GetServerAdvisorResult {
     /**
      * Gets the recommended actions for this advisor.
      */
-    readonly recommendedActions: types.outputs.sql.v20230201preview.RecommendedActionResponse[];
+    readonly recommendedActions: types.outputs.RecommendedActionResponse[];
     /**
      * Resource type.
      */

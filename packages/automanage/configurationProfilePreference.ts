@@ -43,7 +43,7 @@ export class ConfigurationProfilePreference extends pulumi.CustomResource {
     /**
      * Properties of the configuration profile preference.
      */
-    public readonly properties!: pulumi.Output<types.outputs.automanage.ConfigurationProfilePreferencePropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ConfigurationProfilePreferencePropertiesResponse>;
     /**
      * Resource tags.
      */
@@ -103,7 +103,7 @@ export interface ConfigurationProfilePreferenceArgs {
     /**
      * Properties of the configuration profile preference.
      */
-    properties?: pulumi.Input<types.inputs.automanage.ConfigurationProfilePreferencePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ConfigurationProfilePreferencePropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

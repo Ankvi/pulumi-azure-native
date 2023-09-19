@@ -43,7 +43,7 @@ utilities.lazyLoad(exports, ["VirtualNetworkRule"], () => require("./virtualNetw
 
 
 // Export enums:
-export * from "../types/enums/v20171201preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

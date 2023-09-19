@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the details of a Content Key Policy in the Media Services account
  */
@@ -56,7 +56,7 @@ export interface GetContentKeyPolicyResult {
     /**
      * The Key Policy options.
      */
-    readonly options: types.outputs.media.v20230101.ContentKeyPolicyOptionResponse[];
+    readonly options: types.outputs.ContentKeyPolicyOptionResponse[];
     /**
      * The legacy Policy ID.
      */
@@ -64,7 +64,7 @@ export interface GetContentKeyPolicyResult {
     /**
      * The system metadata relating to this resource.
      */
-    readonly systemData: types.outputs.media.v20230101.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

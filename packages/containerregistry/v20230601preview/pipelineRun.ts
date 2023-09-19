@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An object that represents a pipeline run for a container registry.
  */
@@ -46,15 +46,15 @@ export class PipelineRun extends pulumi.CustomResource {
     /**
      * The request parameters for a pipeline run.
      */
-    public readonly request!: pulumi.Output<types.outputs.containerregistry.v20230601preview.PipelineRunRequestResponse | undefined>;
+    public readonly request!: pulumi.Output<types.outputs.PipelineRunRequestResponse | undefined>;
     /**
      * The response of a pipeline run.
      */
-    public /*out*/ readonly response!: pulumi.Output<types.outputs.containerregistry.v20230601preview.PipelineRunResponseResponse>;
+    public /*out*/ readonly response!: pulumi.Output<types.outputs.PipelineRunResponseResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.containerregistry.v20230601preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource.
      */
@@ -80,7 +80,7 @@ export class PipelineRun extends pulumi.CustomResource {
             resourceInputs["forceUpdateTag"] = args ? args.forceUpdateTag : undefined;
             resourceInputs["pipelineRunName"] = args ? args.pipelineRunName : undefined;
             resourceInputs["registryName"] = args ? args.registryName : undefined;
-            resourceInputs["request"] = args ? (args.request ? pulumi.output(args.request).apply(types.inputs.containerregistry.v20230601preview.pipelineRunRequestArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["request"] = args ? (args.request ? pulumi.output(args.request).apply(types.inputs.pipelineRunRequestArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
@@ -122,7 +122,7 @@ export interface PipelineRunArgs {
     /**
      * The request parameters for a pipeline run.
      */
-    request?: pulumi.Input<types.inputs.containerregistry.v20230601preview.PipelineRunRequestArgs>;
+    request?: pulumi.Input<types.inputs.PipelineRunRequestArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

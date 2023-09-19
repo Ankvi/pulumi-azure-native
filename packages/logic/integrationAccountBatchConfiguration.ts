@@ -43,7 +43,7 @@ export class IntegrationAccountBatchConfiguration extends pulumi.CustomResource 
     /**
      * The batch configuration properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.logic.BatchConfigurationPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.BatchConfigurationPropertiesResponse>;
     /**
      * The resource tags.
      */
@@ -114,7 +114,7 @@ export interface IntegrationAccountBatchConfigurationArgs {
     /**
      * The batch configuration properties.
      */
-    properties: pulumi.Input<types.inputs.logic.BatchConfigurationPropertiesArgs>;
+    properties: pulumi.Input<types.inputs.BatchConfigurationPropertiesArgs>;
     /**
      * The resource group name.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The integration account.
  */
@@ -34,7 +34,7 @@ export class IntegrationAccount extends pulumi.CustomResource {
     /**
      * The integration service environment.
      */
-    public readonly integrationServiceEnvironment!: pulumi.Output<types.outputs.logic.v20190501.ResourceReferenceResponse | undefined>;
+    public readonly integrationServiceEnvironment!: pulumi.Output<types.outputs.ResourceReferenceResponse | undefined>;
     /**
      * The resource location.
      */
@@ -46,7 +46,7 @@ export class IntegrationAccount extends pulumi.CustomResource {
     /**
      * The sku.
      */
-    public readonly sku!: pulumi.Output<types.outputs.logic.v20190501.IntegrationAccountSkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.IntegrationAccountSkuResponse | undefined>;
     /**
      * The workflow state.
      */
@@ -110,7 +110,7 @@ export interface IntegrationAccountArgs {
     /**
      * The integration service environment.
      */
-    integrationServiceEnvironment?: pulumi.Input<types.inputs.logic.v20190501.ResourceReferenceArgs>;
+    integrationServiceEnvironment?: pulumi.Input<types.inputs.ResourceReferenceArgs>;
     /**
      * The resource location.
      */
@@ -122,11 +122,11 @@ export interface IntegrationAccountArgs {
     /**
      * The sku.
      */
-    sku?: pulumi.Input<types.inputs.logic.v20190501.IntegrationAccountSkuArgs>;
+    sku?: pulumi.Input<types.inputs.IntegrationAccountSkuArgs>;
     /**
      * The workflow state.
      */
-    state?: pulumi.Input<string | types.enums.v20190501.WorkflowState>;
+    state?: pulumi.Input<string | types.enums.WorkflowState>;
     /**
      * The resource tags.
      */

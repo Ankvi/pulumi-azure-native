@@ -35,7 +35,7 @@ export class FeaturestoreEntityVersion extends pulumi.CustomResource {
     /**
      * [Required] Additional attributes of the entity.
      */
-    public readonly featurestoreEntityVersionProperties!: pulumi.Output<types.outputs.machinelearningservices.FeaturestoreEntityVersionResponse>;
+    public readonly featurestoreEntityVersionProperties!: pulumi.Output<types.outputs.FeaturestoreEntityVersionResponse>;
     /**
      * The name of the resource
      */
@@ -43,7 +43,7 @@ export class FeaturestoreEntityVersion extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.machinelearningservices.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -72,7 +72,7 @@ export class FeaturestoreEntityVersion extends pulumi.CustomResource {
             if ((!args || args.workspaceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workspaceName'");
             }
-            resourceInputs["featurestoreEntityVersionProperties"] = args ? (args.featurestoreEntityVersionProperties ? pulumi.output(args.featurestoreEntityVersionProperties).apply(types.inputs.machinelearningservices.featurestoreEntityVersionArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["featurestoreEntityVersionProperties"] = args ? (args.featurestoreEntityVersionProperties ? pulumi.output(args.featurestoreEntityVersionProperties).apply(types.inputs.featurestoreEntityVersionArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["version"] = args ? args.version : undefined;
@@ -99,7 +99,7 @@ export interface FeaturestoreEntityVersionArgs {
     /**
      * [Required] Additional attributes of the entity.
      */
-    featurestoreEntityVersionProperties: pulumi.Input<types.inputs.machinelearningservices.FeaturestoreEntityVersionArgs>;
+    featurestoreEntityVersionProperties: pulumi.Input<types.inputs.FeaturestoreEntityVersionArgs>;
     /**
      * Container name. This is case-sensitive.
      */

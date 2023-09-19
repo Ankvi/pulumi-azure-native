@@ -39,11 +39,11 @@ export class Monitor extends pulumi.CustomResource {
     /**
      * Defines the SAP monitor errors.
      */
-    public /*out*/ readonly errors!: pulumi.Output<types.outputs.workloads.MonitorPropertiesResponseErrors>;
+    public /*out*/ readonly errors!: pulumi.Output<types.outputs.MonitorPropertiesResponseErrors>;
     /**
      * [currently not in use] Managed service identity(user assigned identities)
      */
-    public readonly identity!: pulumi.Output<types.outputs.workloads.UserAssignedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.UserAssignedServiceIdentityResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -55,7 +55,7 @@ export class Monitor extends pulumi.CustomResource {
     /**
      * Managed resource group configuration
      */
-    public readonly managedResourceGroupConfiguration!: pulumi.Output<types.outputs.workloads.ManagedRGConfigurationResponse | undefined>;
+    public readonly managedResourceGroupConfiguration!: pulumi.Output<types.outputs.ManagedRGConfigurationResponse | undefined>;
     /**
      * The subnet which the SAP monitor will be deployed in
      */
@@ -83,7 +83,7 @@ export class Monitor extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.workloads.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -165,7 +165,7 @@ export interface MonitorArgs {
     /**
      * [currently not in use] Managed service identity(user assigned identities)
      */
-    identity?: pulumi.Input<types.inputs.workloads.UserAssignedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.UserAssignedServiceIdentityArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -177,7 +177,7 @@ export interface MonitorArgs {
     /**
      * Managed resource group configuration
      */
-    managedResourceGroupConfiguration?: pulumi.Input<types.inputs.workloads.ManagedRGConfigurationArgs>;
+    managedResourceGroupConfiguration?: pulumi.Input<types.inputs.ManagedRGConfigurationArgs>;
     /**
      * Name of the SAP monitor resource.
      */

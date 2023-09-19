@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Azure Migrate Project.
  */
@@ -186,7 +186,7 @@ export interface ProjectArgs {
     /**
      * Provisioning state of the project.
      */
-    provisioningState?: pulumi.Input<string | types.enums.v20180202.ProvisioningState>;
+    provisioningState?: pulumi.Input<string | types.enums.ProvisioningState>;
     /**
      * Name of the Azure Resource Group that project is part of.
      */

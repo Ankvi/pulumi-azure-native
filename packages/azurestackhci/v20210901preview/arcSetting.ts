@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * ArcSetting details.
  */
@@ -70,7 +70,7 @@ export class ArcSetting extends pulumi.CustomResource {
     /**
      * State of Arc agent in each of the nodes.
      */
-    public /*out*/ readonly perNodeDetails!: pulumi.Output<types.outputs.azurestackhci.v20210901preview.PerNodeStateResponse[]>;
+    public /*out*/ readonly perNodeDetails!: pulumi.Output<types.outputs.PerNodeStateResponse[]>;
     /**
      * Provisioning state of the ArcSetting proxy resource.
      */
@@ -156,7 +156,7 @@ export interface ArcSettingArgs {
     /**
      * The type of identity that created the resource.
      */
-    createdByType?: pulumi.Input<string | types.enums.v20210901preview.CreatedByType>;
+    createdByType?: pulumi.Input<string | types.enums.CreatedByType>;
     /**
      * The timestamp of resource last modification (UTC)
      */
@@ -168,7 +168,7 @@ export interface ArcSettingArgs {
     /**
      * The type of identity that last modified the resource.
      */
-    lastModifiedByType?: pulumi.Input<string | types.enums.v20210901preview.CreatedByType>;
+    lastModifiedByType?: pulumi.Input<string | types.enums.CreatedByType>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

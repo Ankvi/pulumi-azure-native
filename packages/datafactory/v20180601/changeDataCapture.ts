@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Change data capture resource type.
  */
@@ -46,7 +46,7 @@ export class ChangeDataCapture extends pulumi.CustomResource {
     /**
      * The folder that this CDC is in. If not specified, CDC will appear at the root level.
      */
-    public readonly folder!: pulumi.Output<types.outputs.datafactory.v20180601.ChangeDataCaptureResponseFolder | undefined>;
+    public readonly folder!: pulumi.Output<types.outputs.ChangeDataCaptureResponseFolder | undefined>;
     /**
      * The resource name.
      */
@@ -54,11 +54,11 @@ export class ChangeDataCapture extends pulumi.CustomResource {
     /**
      * CDC policy
      */
-    public readonly policy!: pulumi.Output<types.outputs.datafactory.v20180601.MapperPolicyResponse>;
+    public readonly policy!: pulumi.Output<types.outputs.MapperPolicyResponse>;
     /**
      * List of sources connections that can be used as sources in the CDC.
      */
-    public readonly sourceConnectionsInfo!: pulumi.Output<types.outputs.datafactory.v20180601.MapperSourceConnectionsInfoResponse[]>;
+    public readonly sourceConnectionsInfo!: pulumi.Output<types.outputs.MapperSourceConnectionsInfoResponse[]>;
     /**
      * Status of the CDC as to if it is running or stopped.
      */
@@ -66,7 +66,7 @@ export class ChangeDataCapture extends pulumi.CustomResource {
     /**
      * List of target connections that can be used as sources in the CDC.
      */
-    public readonly targetConnectionsInfo!: pulumi.Output<types.outputs.datafactory.v20180601.MapperTargetConnectionsInfoResponse[]>;
+    public readonly targetConnectionsInfo!: pulumi.Output<types.outputs.MapperTargetConnectionsInfoResponse[]>;
     /**
      * The resource type.
      */
@@ -153,11 +153,11 @@ export interface ChangeDataCaptureArgs {
     /**
      * The folder that this CDC is in. If not specified, CDC will appear at the root level.
      */
-    folder?: pulumi.Input<types.inputs.datafactory.v20180601.ChangeDataCaptureFolderArgs>;
+    folder?: pulumi.Input<types.inputs.ChangeDataCaptureFolderArgs>;
     /**
      * CDC policy
      */
-    policy: pulumi.Input<types.inputs.datafactory.v20180601.MapperPolicyArgs>;
+    policy: pulumi.Input<types.inputs.MapperPolicyArgs>;
     /**
      * The resource group name.
      */
@@ -165,7 +165,7 @@ export interface ChangeDataCaptureArgs {
     /**
      * List of sources connections that can be used as sources in the CDC.
      */
-    sourceConnectionsInfo: pulumi.Input<pulumi.Input<types.inputs.datafactory.v20180601.MapperSourceConnectionsInfoArgs>[]>;
+    sourceConnectionsInfo: pulumi.Input<pulumi.Input<types.inputs.MapperSourceConnectionsInfoArgs>[]>;
     /**
      * Status of the CDC as to if it is running or stopped.
      */
@@ -173,5 +173,5 @@ export interface ChangeDataCaptureArgs {
     /**
      * List of target connections that can be used as sources in the CDC.
      */
-    targetConnectionsInfo: pulumi.Input<pulumi.Input<types.inputs.datafactory.v20180601.MapperTargetConnectionsInfoArgs>[]>;
+    targetConnectionsInfo: pulumi.Input<pulumi.Input<types.inputs.MapperTargetConnectionsInfoArgs>[]>;
 }

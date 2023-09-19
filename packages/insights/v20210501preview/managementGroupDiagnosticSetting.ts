@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The management group diagnostic setting resource.
  */
@@ -42,7 +42,7 @@ export class ManagementGroupDiagnosticSetting extends pulumi.CustomResource {
     /**
      * The list of logs settings.
      */
-    public readonly logs!: pulumi.Output<types.outputs.insights.v20210501preview.ManagementGroupLogSettingsResponse[] | undefined>;
+    public readonly logs!: pulumi.Output<types.outputs.ManagementGroupLogSettingsResponse[] | undefined>;
     /**
      * The full ARM resource ID of the Marketplace resource to which you would like to send Diagnostic Logs.
      */
@@ -62,7 +62,7 @@ export class ManagementGroupDiagnosticSetting extends pulumi.CustomResource {
     /**
      * The system metadata related to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.insights.v20210501preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -131,7 +131,7 @@ export interface ManagementGroupDiagnosticSettingArgs {
     /**
      * The list of logs settings.
      */
-    logs?: pulumi.Input<pulumi.Input<types.inputs.insights.v20210501preview.ManagementGroupLogSettingsArgs>[]>;
+    logs?: pulumi.Input<pulumi.Input<types.inputs.ManagementGroupLogSettingsArgs>[]>;
     /**
      * The management group id.
      */

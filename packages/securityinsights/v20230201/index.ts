@@ -183,7 +183,7 @@ utilities.lazyLoad(exports, ["WatchlistItem"], () => require("./watchlistItem"))
 
 
 // Export enums:
-export * from "../types/enums/v20230201";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

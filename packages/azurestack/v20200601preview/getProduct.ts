@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns the specified product.
  */
@@ -40,7 +40,7 @@ export interface GetProductResult {
     /**
      * Product compatibility with current device.
      */
-    readonly compatibility?: types.outputs.azurestack.v20200601preview.CompatibilityResponse;
+    readonly compatibility?: types.outputs.CompatibilityResponse;
     /**
      * The description of the product.
      */
@@ -60,7 +60,7 @@ export interface GetProductResult {
     /**
      * Additional links available for this product.
      */
-    readonly iconUris?: types.outputs.azurestack.v20200601preview.IconUrisResponse;
+    readonly iconUris?: types.outputs.IconUrisResponse;
     /**
      * ID of the resource.
      */
@@ -72,7 +72,7 @@ export interface GetProductResult {
     /**
      * Additional links available for this product.
      */
-    readonly links?: types.outputs.azurestack.v20200601preview.ProductLinkResponse[];
+    readonly links?: types.outputs.ProductLinkResponse[];
     /**
      * Name of the resource.
      */
@@ -100,7 +100,7 @@ export interface GetProductResult {
     /**
      * Additional properties for the product.
      */
-    readonly productProperties?: types.outputs.azurestack.v20200601preview.ProductPropertiesResponse;
+    readonly productProperties?: types.outputs.ProductPropertiesResponse;
     /**
      * The user-friendly name of the product publisher.
      */
@@ -116,7 +116,7 @@ export interface GetProductResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.azurestack.v20200601preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Type of Resource.
      */

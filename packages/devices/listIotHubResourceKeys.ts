@@ -36,7 +36,7 @@ export interface ListIotHubResourceKeysResult {
     /**
      * The list of shared access policies.
      */
-    readonly value?: types.outputs.devices.SharedAccessSignatureAuthorizationRuleResponse[];
+    readonly value?: types.outputs.SharedAccessSignatureAuthorizationRuleResponse[];
 }
 /**
  * Get the security metadata for an IoT hub. For more information, see: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security.

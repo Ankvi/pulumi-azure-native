@@ -35,7 +35,7 @@ export class LinkedService extends pulumi.CustomResource {
     /**
      * Identity for the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.machinelearningservices.IdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityResponse | undefined>;
     /**
      * location of the linked service.
      */
@@ -47,7 +47,7 @@ export class LinkedService extends pulumi.CustomResource {
     /**
      * LinkedService specific properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.machinelearningservices.LinkedServicePropsResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.LinkedServicePropsResponse>;
     /**
      * Resource type of linked service.
      */
@@ -99,7 +99,7 @@ export interface LinkedServiceArgs {
     /**
      * Identity for the resource.
      */
-    identity?: pulumi.Input<types.inputs.machinelearningservices.IdentityArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityArgs>;
     /**
      * Friendly name of the linked workspace
      */
@@ -115,7 +115,7 @@ export interface LinkedServiceArgs {
     /**
      * LinkedService specific properties.
      */
-    properties?: pulumi.Input<types.inputs.machinelearningservices.LinkedServicePropsArgs>;
+    properties?: pulumi.Input<types.inputs.LinkedServicePropsArgs>;
     /**
      * Name of the resource group in which workspace is located.
      */

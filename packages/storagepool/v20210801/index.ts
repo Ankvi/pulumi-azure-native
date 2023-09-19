@@ -23,7 +23,7 @@ utilities.lazyLoad(exports, ["IscsiTarget"], () => require("./iscsiTarget"));
 
 
 // Export enums:
-export * from "../types/enums/v20210801";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

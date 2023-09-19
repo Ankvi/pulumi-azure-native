@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Solution REST Resource.
  */
@@ -48,7 +48,7 @@ export interface GetSolutionResult {
     /**
      * Gets or sets the properties of the solution.
      */
-    readonly properties: types.outputs.migrate.v20180901preview.SolutionPropertiesResponse;
+    readonly properties: types.outputs.SolutionPropertiesResponse;
     /**
      * Gets the type of this REST resource.
      */

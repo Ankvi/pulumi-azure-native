@@ -47,7 +47,7 @@ export class ProtectionIntent extends pulumi.CustomResource {
     /**
      * ProtectionIntentResource properties
      */
-    public readonly properties!: pulumi.Output<types.outputs.recoveryservices.AzureRecoveryServiceVaultProtectionIntentResponse | types.outputs.recoveryservices.AzureResourceProtectionIntentResponse | types.outputs.recoveryservices.AzureWorkloadAutoProtectionIntentResponse | types.outputs.recoveryservices.AzureWorkloadContainerAutoProtectionIntentResponse | types.outputs.recoveryservices.AzureWorkloadSQLAutoProtectionIntentResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.AzureRecoveryServiceVaultProtectionIntentResponse | types.outputs.AzureResourceProtectionIntentResponse | types.outputs.AzureWorkloadAutoProtectionIntentResponse | types.outputs.AzureWorkloadContainerAutoProtectionIntentResponse | types.outputs.AzureWorkloadSQLAutoProtectionIntentResponse>;
     /**
      * Resource tags.
      */
@@ -125,7 +125,7 @@ export interface ProtectionIntentArgs {
     /**
      * ProtectionIntentResource properties
      */
-    properties?: pulumi.Input<types.inputs.recoveryservices.AzureRecoveryServiceVaultProtectionIntentArgs | types.inputs.recoveryservices.AzureResourceProtectionIntentArgs | types.inputs.recoveryservices.AzureWorkloadAutoProtectionIntentArgs | types.inputs.recoveryservices.AzureWorkloadContainerAutoProtectionIntentArgs | types.inputs.recoveryservices.AzureWorkloadSQLAutoProtectionIntentArgs>;
+    properties?: pulumi.Input<types.inputs.AzureRecoveryServiceVaultProtectionIntentArgs | types.inputs.AzureResourceProtectionIntentArgs | types.inputs.AzureWorkloadAutoProtectionIntentArgs | types.inputs.AzureWorkloadContainerAutoProtectionIntentArgs | types.inputs.AzureWorkloadSQLAutoProtectionIntentArgs>;
     /**
      * The name of the resource group where the recovery services vault is present.
      */

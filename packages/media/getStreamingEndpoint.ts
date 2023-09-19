@@ -37,7 +37,7 @@ export interface GetStreamingEndpointResult {
     /**
      * The access control definition of the streaming endpoint.
      */
-    readonly accessControl?: types.outputs.media.StreamingEndpointAccessControlResponse;
+    readonly accessControl?: types.outputs.StreamingEndpointAccessControlResponse;
     /**
      * This feature is deprecated, do not set a value for this property.
      */
@@ -61,7 +61,7 @@ export interface GetStreamingEndpointResult {
     /**
      * The streaming endpoint access policies.
      */
-    readonly crossSiteAccessPolicies?: types.outputs.media.CrossSiteAccessPoliciesResponse;
+    readonly crossSiteAccessPolicies?: types.outputs.CrossSiteAccessPoliciesResponse;
     /**
      * The custom host names of the streaming endpoint
      */
@@ -113,11 +113,11 @@ export interface GetStreamingEndpointResult {
     /**
      * The streaming endpoint sku.
      */
-    readonly sku?: types.outputs.media.ArmStreamingEndpointCurrentSkuResponse;
+    readonly sku?: types.outputs.ArmStreamingEndpointCurrentSkuResponse;
     /**
      * The system metadata relating to this resource.
      */
-    readonly systemData: types.outputs.media.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

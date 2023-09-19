@@ -39,7 +39,7 @@ export class Migration extends pulumi.CustomResource {
     /**
      * Current status of migration
      */
-    public /*out*/ readonly currentStatus!: pulumi.Output<types.outputs.dbforpostgresql.MigrationStatusResponse>;
+    public /*out*/ readonly currentStatus!: pulumi.Output<types.outputs.MigrationStatusResponse>;
     /**
      * When you want to trigger cancel for specific databases send cancel flag as True and database names in this array
      */
@@ -91,7 +91,7 @@ export class Migration extends pulumi.CustomResource {
     /**
      * Metadata of the source database server
      */
-    public /*out*/ readonly sourceDbServerMetadata!: pulumi.Output<types.outputs.dbforpostgresql.DbServerMetadataResponse>;
+    public /*out*/ readonly sourceDbServerMetadata!: pulumi.Output<types.outputs.DbServerMetadataResponse>;
     /**
      * ResourceId of the source database server
      */
@@ -103,7 +103,7 @@ export class Migration extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.dbforpostgresql.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -115,7 +115,7 @@ export class Migration extends pulumi.CustomResource {
     /**
      * Metadata of the target database server
      */
-    public /*out*/ readonly targetDbServerMetadata!: pulumi.Output<types.outputs.dbforpostgresql.DbServerMetadataResponse>;
+    public /*out*/ readonly targetDbServerMetadata!: pulumi.Output<types.outputs.DbServerMetadataResponse>;
     /**
      * ResourceId of the source database server
      */
@@ -259,7 +259,7 @@ export interface MigrationArgs {
     /**
      * Migration secret parameters
      */
-    secretParameters?: pulumi.Input<types.inputs.dbforpostgresql.MigrationSecretParametersArgs>;
+    secretParameters?: pulumi.Input<types.inputs.MigrationSecretParametersArgs>;
     /**
      * Indicates whether to setup LogicalReplicationOnSourceDb, if needed
      */

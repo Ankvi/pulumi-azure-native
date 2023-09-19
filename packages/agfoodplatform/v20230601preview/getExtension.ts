@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get installed extension details by extension id.
  */
@@ -36,7 +36,7 @@ export interface GetExtensionResult {
     /**
      * Additional Api Properties.
      */
-    readonly additionalApiProperties: {[key: string]: types.outputs.agfoodplatform.v20230601preview.ApiPropertiesResponse};
+    readonly additionalApiProperties: {[key: string]: types.outputs.ApiPropertiesResponse};
     /**
      * The ETag value to implement optimistic concurrency.
      */
@@ -72,7 +72,7 @@ export interface GetExtensionResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.agfoodplatform.v20230601preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

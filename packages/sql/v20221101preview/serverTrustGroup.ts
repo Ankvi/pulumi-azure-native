@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A server trust group.
  */
@@ -34,7 +34,7 @@ export class ServerTrustGroup extends pulumi.CustomResource {
     /**
      * Group members information for the server trust group.
      */
-    public readonly groupMembers!: pulumi.Output<types.outputs.sql.v20221101preview.ServerInfoResponse[]>;
+    public readonly groupMembers!: pulumi.Output<types.outputs.ServerInfoResponse[]>;
     /**
      * Resource name.
      */
@@ -98,7 +98,7 @@ export interface ServerTrustGroupArgs {
     /**
      * Group members information for the server trust group.
      */
-    groupMembers: pulumi.Input<pulumi.Input<types.inputs.sql.v20221101preview.ServerInfoArgs>[]>;
+    groupMembers: pulumi.Input<pulumi.Input<types.inputs.ServerInfoArgs>[]>;
     /**
      * The name of the region where the resource is located.
      */

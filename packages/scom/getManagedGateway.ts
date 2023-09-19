@@ -45,11 +45,11 @@ export interface GetManagedGatewayResult {
     /**
      * The properties of a gateway resource.
      */
-    readonly properties: types.outputs.scom.ManagedGatewayPropertiesResponse;
+    readonly properties: types.outputs.ManagedGatewayPropertiesResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.scom.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

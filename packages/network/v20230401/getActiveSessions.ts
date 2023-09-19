@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns the list of currently active sessions on the Bastion.
  */
@@ -35,7 +35,7 @@ export interface GetActiveSessionsResult {
     /**
      * List of active sessions on the bastion.
      */
-    readonly value?: types.outputs.network.v20230401.BastionActiveSessionResponse[];
+    readonly value?: types.outputs.BastionActiveSessionResponse[];
 }
 /**
  * Returns the list of currently active sessions on the Bastion.

@@ -13,7 +13,7 @@ utilities.lazyLoad(exports, ["getDevBoxDefinition","getDevBoxDefinitionOutput"],
 
 
 // Export enums:
-export * from "../types/enums/v20221111preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

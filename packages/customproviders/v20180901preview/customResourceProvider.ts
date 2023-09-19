@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A manifest file that defines the custom resource provider resources.
  */
@@ -34,7 +34,7 @@ export class CustomResourceProvider extends pulumi.CustomResource {
     /**
      * A list of actions that the custom resource provider implements.
      */
-    public readonly actions!: pulumi.Output<types.outputs.customproviders.v20180901preview.CustomRPActionRouteDefinitionResponse[] | undefined>;
+    public readonly actions!: pulumi.Output<types.outputs.CustomRPActionRouteDefinitionResponse[] | undefined>;
     /**
      * Resource location
      */
@@ -50,7 +50,7 @@ export class CustomResourceProvider extends pulumi.CustomResource {
     /**
      * A list of resource types that the custom resource provider implements.
      */
-    public readonly resourceTypes!: pulumi.Output<types.outputs.customproviders.v20180901preview.CustomRPResourceTypeRouteDefinitionResponse[] | undefined>;
+    public readonly resourceTypes!: pulumi.Output<types.outputs.CustomRPResourceTypeRouteDefinitionResponse[] | undefined>;
     /**
      * Resource tags
      */
@@ -62,7 +62,7 @@ export class CustomResourceProvider extends pulumi.CustomResource {
     /**
      * A list of validations to run on the custom resource provider's requests.
      */
-    public readonly validations!: pulumi.Output<types.outputs.customproviders.v20180901preview.CustomRPValidationsResponse[] | undefined>;
+    public readonly validations!: pulumi.Output<types.outputs.CustomRPValidationsResponse[] | undefined>;
 
     /**
      * Create a CustomResourceProvider resource with the given unique name, arguments, and options.
@@ -112,7 +112,7 @@ export interface CustomResourceProviderArgs {
     /**
      * A list of actions that the custom resource provider implements.
      */
-    actions?: pulumi.Input<pulumi.Input<types.inputs.customproviders.v20180901preview.CustomRPActionRouteDefinitionArgs>[]>;
+    actions?: pulumi.Input<pulumi.Input<types.inputs.CustomRPActionRouteDefinitionArgs>[]>;
     /**
      * Resource location
      */
@@ -128,7 +128,7 @@ export interface CustomResourceProviderArgs {
     /**
      * A list of resource types that the custom resource provider implements.
      */
-    resourceTypes?: pulumi.Input<pulumi.Input<types.inputs.customproviders.v20180901preview.CustomRPResourceTypeRouteDefinitionArgs>[]>;
+    resourceTypes?: pulumi.Input<pulumi.Input<types.inputs.CustomRPResourceTypeRouteDefinitionArgs>[]>;
     /**
      * Resource tags
      */
@@ -136,5 +136,5 @@ export interface CustomResourceProviderArgs {
     /**
      * A list of validations to run on the custom resource provider's requests.
      */
-    validations?: pulumi.Input<pulumi.Input<types.inputs.customproviders.v20180901preview.CustomRPValidationsArgs>[]>;
+    validations?: pulumi.Input<pulumi.Input<types.inputs.CustomRPValidationsArgs>[]>;
 }

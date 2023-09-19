@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A failover group.
  */
@@ -46,15 +46,15 @@ export class FailoverGroup extends pulumi.CustomResource {
     /**
      * List of partner server information for the failover group.
      */
-    public readonly partnerServers!: pulumi.Output<types.outputs.sql.v20211101.PartnerInfoResponse[]>;
+    public readonly partnerServers!: pulumi.Output<types.outputs.PartnerInfoResponse[]>;
     /**
      * Read-only endpoint of the failover group instance.
      */
-    public readonly readOnlyEndpoint!: pulumi.Output<types.outputs.sql.v20211101.FailoverGroupReadOnlyEndpointResponse | undefined>;
+    public readonly readOnlyEndpoint!: pulumi.Output<types.outputs.FailoverGroupReadOnlyEndpointResponse | undefined>;
     /**
      * Read-write endpoint of the failover group instance.
      */
-    public readonly readWriteEndpoint!: pulumi.Output<types.outputs.sql.v20211101.FailoverGroupReadWriteEndpointResponse>;
+    public readonly readWriteEndpoint!: pulumi.Output<types.outputs.FailoverGroupReadWriteEndpointResponse>;
     /**
      * Local replication role of the failover group instance.
      */
@@ -142,15 +142,15 @@ export interface FailoverGroupArgs {
     /**
      * List of partner server information for the failover group.
      */
-    partnerServers: pulumi.Input<pulumi.Input<types.inputs.sql.v20211101.PartnerInfoArgs>[]>;
+    partnerServers: pulumi.Input<pulumi.Input<types.inputs.PartnerInfoArgs>[]>;
     /**
      * Read-only endpoint of the failover group instance.
      */
-    readOnlyEndpoint?: pulumi.Input<types.inputs.sql.v20211101.FailoverGroupReadOnlyEndpointArgs>;
+    readOnlyEndpoint?: pulumi.Input<types.inputs.FailoverGroupReadOnlyEndpointArgs>;
     /**
      * Read-write endpoint of the failover group instance.
      */
-    readWriteEndpoint: pulumi.Input<types.inputs.sql.v20211101.FailoverGroupReadWriteEndpointArgs>;
+    readWriteEndpoint: pulumi.Input<types.inputs.FailoverGroupReadWriteEndpointArgs>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */

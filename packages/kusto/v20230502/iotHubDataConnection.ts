@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Class representing an iot hub data connection.
  */
@@ -181,7 +181,7 @@ export interface IotHubDataConnectionArgs {
     /**
      * The data format of the message. Optionally the data format can be added to each message.
      */
-    dataFormat?: pulumi.Input<string | types.enums.v20230502.IotHubDataFormat>;
+    dataFormat?: pulumi.Input<string | types.enums.IotHubDataFormat>;
     /**
      * The name of the database in the Kusto cluster.
      */
@@ -189,7 +189,7 @@ export interface IotHubDataConnectionArgs {
     /**
      * Indication for database routing information from the data connection, by default only database routing information is allowed
      */
-    databaseRouting?: pulumi.Input<string | types.enums.v20230502.DatabaseRouting>;
+    databaseRouting?: pulumi.Input<string | types.enums.DatabaseRouting>;
     /**
      * System properties of the iot hub
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An elastic pool.
  */
@@ -74,7 +74,7 @@ export class ElasticPool extends pulumi.CustomResource {
     /**
      * The per database settings for the elastic pool.
      */
-    public readonly perDatabaseSettings!: pulumi.Output<types.outputs.sql.v20230201preview.ElasticPoolPerDatabaseSettingsResponse | undefined>;
+    public readonly perDatabaseSettings!: pulumi.Output<types.outputs.ElasticPoolPerDatabaseSettingsResponse | undefined>;
     /**
      * Type of enclave requested on the elastic pool.
      */
@@ -88,7 +88,7 @@ export class ElasticPool extends pulumi.CustomResource {
      * az sql elastic-pool list-editions -l <location> -o table
      * ````
      */
-    public readonly sku!: pulumi.Output<types.outputs.sql.v20230201preview.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * The state of the elastic pool.
      */
@@ -176,7 +176,7 @@ export interface ElasticPoolArgs {
     /**
      * Specifies the availability zone the pool's primary replica is pinned to.
      */
-    availabilityZone?: pulumi.Input<string | types.enums.v20230201preview.AvailabilityZoneType>;
+    availabilityZone?: pulumi.Input<string | types.enums.AvailabilityZoneType>;
     /**
      * The name of the elastic pool.
      */
@@ -188,7 +188,7 @@ export interface ElasticPoolArgs {
     /**
      * The license type to apply for this elastic pool.
      */
-    licenseType?: pulumi.Input<string | types.enums.v20230201preview.ElasticPoolLicenseType>;
+    licenseType?: pulumi.Input<string | types.enums.ElasticPoolLicenseType>;
     /**
      * Resource location.
      */
@@ -208,11 +208,11 @@ export interface ElasticPoolArgs {
     /**
      * The per database settings for the elastic pool.
      */
-    perDatabaseSettings?: pulumi.Input<types.inputs.sql.v20230201preview.ElasticPoolPerDatabaseSettingsArgs>;
+    perDatabaseSettings?: pulumi.Input<types.inputs.ElasticPoolPerDatabaseSettingsArgs>;
     /**
      * Type of enclave requested on the elastic pool.
      */
-    preferredEnclaveType?: pulumi.Input<string | types.enums.v20230201preview.AlwaysEncryptedEnclaveType>;
+    preferredEnclaveType?: pulumi.Input<string | types.enums.AlwaysEncryptedEnclaveType>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */
@@ -230,7 +230,7 @@ export interface ElasticPoolArgs {
      * az sql elastic-pool list-editions -l <location> -o table
      * ````
      */
-    sku?: pulumi.Input<types.inputs.sql.v20230201preview.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Resource tags.
      */

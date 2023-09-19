@@ -45,11 +45,11 @@ export interface GetFileImportResult {
     /**
      * Represents the error file (if the import was ingested with errors or failed the validation).
      */
-    readonly errorFile: types.outputs.securityinsights.FileMetadataResponse;
+    readonly errorFile: types.outputs.FileMetadataResponse;
     /**
      * An ordered list of some of the errors that were encountered during validation.
      */
-    readonly errorsPreview: types.outputs.securityinsights.ValidationErrorResponse[];
+    readonly errorsPreview: types.outputs.ValidationErrorResponse[];
     /**
      * The time the files associated with this import are deleted from the storage account.
      */
@@ -61,7 +61,7 @@ export interface GetFileImportResult {
     /**
      * Represents the imported file.
      */
-    readonly importFile: types.outputs.securityinsights.FileMetadataResponse;
+    readonly importFile: types.outputs.FileMetadataResponse;
     /**
      * The time the file import record is soft deleted from the database and history.
      */
@@ -89,7 +89,7 @@ export interface GetFileImportResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.securityinsights.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The number of records in the file.
      */

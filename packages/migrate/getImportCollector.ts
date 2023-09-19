@@ -34,7 +34,7 @@ export interface GetImportCollectorResult {
     readonly eTag?: string;
     readonly id: string;
     readonly name: string;
-    readonly properties: types.outputs.migrate.ImportCollectorPropertiesResponse;
+    readonly properties: types.outputs.ImportCollectorPropertiesResponse;
     readonly type: string;
 }
 /**

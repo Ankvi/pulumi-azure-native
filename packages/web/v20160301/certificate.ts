@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * SSL certificate for an app.
  */
@@ -54,7 +54,7 @@ export class Certificate extends pulumi.CustomResource {
     /**
      * Specification for the App Service Environment to use for the certificate.
      */
-    public /*out*/ readonly hostingEnvironmentProfile!: pulumi.Output<types.outputs.web.v20160301.HostingEnvironmentProfileResponse>;
+    public /*out*/ readonly hostingEnvironmentProfile!: pulumi.Output<types.outputs.HostingEnvironmentProfileResponse>;
     /**
      * Certificate issue Date.
      */

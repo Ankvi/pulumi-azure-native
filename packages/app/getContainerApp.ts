@@ -32,7 +32,7 @@ export interface GetContainerAppResult {
     /**
      * Non versioned Container App configuration properties.
      */
-    readonly configuration?: types.outputs.app.ConfigurationResponse;
+    readonly configuration?: types.outputs.ConfigurationResponse;
     /**
      * Id used to verify domain name ownership
      */
@@ -48,7 +48,7 @@ export interface GetContainerAppResult {
     /**
      * The complex type of the extended location.
      */
-    readonly extendedLocation?: types.outputs.app.ExtendedLocationResponse;
+    readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -56,7 +56,7 @@ export interface GetContainerAppResult {
     /**
      * managed identities for the Container App to interact with other Azure services without maintaining any secrets or credentials in code.
      */
-    readonly identity?: types.outputs.app.ManagedServiceIdentityResponse;
+    readonly identity?: types.outputs.ManagedServiceIdentityResponse;
     /**
      * Name of the latest ready revision of the Container App.
      */
@@ -92,7 +92,7 @@ export interface GetContainerAppResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.app.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -100,7 +100,7 @@ export interface GetContainerAppResult {
     /**
      * Container App versioned application definition.
      */
-    readonly template?: types.outputs.app.TemplateResponse;
+    readonly template?: types.outputs.TemplateResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

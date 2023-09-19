@@ -32,15 +32,15 @@ export interface GetOpenShiftClusterResult {
     /**
      * The cluster API server profile.
      */
-    readonly apiserverProfile?: types.outputs.redhatopenshift.APIServerProfileResponse;
+    readonly apiserverProfile?: types.outputs.APIServerProfileResponse;
     /**
      * The cluster profile.
      */
-    readonly clusterProfile?: types.outputs.redhatopenshift.ClusterProfileResponse;
+    readonly clusterProfile?: types.outputs.ClusterProfileResponse;
     /**
      * The console profile.
      */
-    readonly consoleProfile?: types.outputs.redhatopenshift.ConsoleProfileResponse;
+    readonly consoleProfile?: types.outputs.ConsoleProfileResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -48,7 +48,7 @@ export interface GetOpenShiftClusterResult {
     /**
      * The cluster ingress profiles.
      */
-    readonly ingressProfiles?: types.outputs.redhatopenshift.IngressProfileResponse[];
+    readonly ingressProfiles?: types.outputs.IngressProfileResponse[];
     /**
      * The geo-location where the resource lives
      */
@@ -56,7 +56,7 @@ export interface GetOpenShiftClusterResult {
     /**
      * The cluster master profile.
      */
-    readonly masterProfile?: types.outputs.redhatopenshift.MasterProfileResponse;
+    readonly masterProfile?: types.outputs.MasterProfileResponse;
     /**
      * The name of the resource
      */
@@ -64,7 +64,7 @@ export interface GetOpenShiftClusterResult {
     /**
      * The cluster network profile.
      */
-    readonly networkProfile?: types.outputs.redhatopenshift.NetworkProfileResponse;
+    readonly networkProfile?: types.outputs.NetworkProfileResponse;
     /**
      * The cluster provisioning state.
      */
@@ -72,11 +72,11 @@ export interface GetOpenShiftClusterResult {
     /**
      * The cluster service principal profile.
      */
-    readonly servicePrincipalProfile?: types.outputs.redhatopenshift.ServicePrincipalProfileResponse;
+    readonly servicePrincipalProfile?: types.outputs.ServicePrincipalProfileResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.redhatopenshift.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -88,7 +88,7 @@ export interface GetOpenShiftClusterResult {
     /**
      * The cluster worker profiles.
      */
-    readonly workerProfiles?: types.outputs.redhatopenshift.WorkerProfileResponse[];
+    readonly workerProfiles?: types.outputs.WorkerProfileResponse[];
 }
 /**
  * The operation returns properties of a OpenShift cluster.

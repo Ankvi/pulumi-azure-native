@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Model that represents a Capability resource.
  */
@@ -38,11 +38,11 @@ export class Capability extends pulumi.CustomResource {
     /**
      * The properties of a capability resource.
      */
-    public /*out*/ readonly properties!: pulumi.Output<types.outputs.chaos.v20230415preview.CapabilityPropertiesResponse>;
+    public /*out*/ readonly properties!: pulumi.Output<types.outputs.CapabilityPropertiesResponse>;
     /**
      * The standard system metadata of a resource type.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.chaos.v20230415preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

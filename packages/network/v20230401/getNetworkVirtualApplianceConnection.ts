@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves the details of specified NVA connection.
  */
@@ -60,7 +60,7 @@ export interface GetNetworkVirtualApplianceConnectionResult {
     /**
      * The Routing Configuration indicating the associated and propagated route tables on this connection.
      */
-    readonly routingConfiguration?: types.outputs.network.v20230401.RoutingConfigurationNfvResponse;
+    readonly routingConfiguration?: types.outputs.RoutingConfigurationNfvResponse;
     /**
      * Unique identifier for the connection.
      */

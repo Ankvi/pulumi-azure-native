@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An server Active Directory Administrator.
  */
@@ -120,7 +120,7 @@ export interface ServerAzureADAdministratorArgs {
     /**
      * The type of administrator.
      */
-    administratorType: pulumi.Input<string | types.enums.v20140401.AdministratorType>;
+    administratorType: pulumi.Input<string | types.enums.AdministratorType>;
     /**
      * The server administrator login value.
      */

@@ -32,7 +32,7 @@ export interface GetScheduledQueryRuleResult {
     /**
      * Actions to invoke when the alert fires.
      */
-    readonly actions?: types.outputs.insights.ActionsResponse;
+    readonly actions?: types.outputs.ActionsResponse;
     /**
      * The flag that indicates whether the alert should be automatically resolved or not. The default is true. Relevant only for rules of the kind LogAlert.
      */
@@ -48,7 +48,7 @@ export interface GetScheduledQueryRuleResult {
     /**
      * The rule criteria that defines the conditions of the scheduled query rule.
      */
-    readonly criteria: types.outputs.insights.ScheduledQueryRuleCriteriaResponse;
+    readonly criteria: types.outputs.ScheduledQueryRuleCriteriaResponse;
     /**
      * The description of the scheduled query rule.
      */
@@ -76,7 +76,7 @@ export interface GetScheduledQueryRuleResult {
     /**
      * The identity of the resource.
      */
-    readonly identity?: types.outputs.insights.IdentityResponse;
+    readonly identity?: types.outputs.IdentityResponse;
     /**
      * True if alert rule is legacy Log Analytic rule
      */
@@ -108,7 +108,7 @@ export interface GetScheduledQueryRuleResult {
     /**
      * Defines the configuration for resolving fired alerts. Relevant only for rules of the kind LogAlert.
      */
-    readonly ruleResolveConfiguration?: types.outputs.insights.RuleResolveConfigurationResponse;
+    readonly ruleResolveConfiguration?: types.outputs.RuleResolveConfigurationResponse;
     /**
      * The list of resource id's that this scheduled query rule is scoped to.
      */
@@ -124,7 +124,7 @@ export interface GetScheduledQueryRuleResult {
     /**
      * SystemData of ScheduledQueryRule.
      */
-    readonly systemData: types.outputs.insights.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

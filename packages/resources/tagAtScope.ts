@@ -39,7 +39,7 @@ export class TagAtScope extends pulumi.CustomResource {
     /**
      * The set of tags.
      */
-    public readonly properties!: pulumi.Output<types.outputs.resources.TagsResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.TagsResponse>;
     /**
      * The type of the tags wrapper resource.
      */
@@ -85,7 +85,7 @@ export interface TagAtScopeArgs {
     /**
      * The set of tags.
      */
-    properties: pulumi.Input<types.inputs.resources.TagsArgs>;
+    properties: pulumi.Input<types.inputs.TagsArgs>;
     /**
      * The resource scope.
      */

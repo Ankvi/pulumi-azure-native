@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns the properties of the specified bandwidth setting name.
  */
@@ -48,7 +48,7 @@ export interface GetBandwidthSettingResult {
     /**
      * The schedules.
      */
-    readonly schedules: types.outputs.storsimple.v20170601.BandwidthScheduleResponse[];
+    readonly schedules: types.outputs.BandwidthScheduleResponse[];
     /**
      * The hierarchical type of the object.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets properties of a SAP HANA instance for the specified subscription, resource group, and instance name.
  */
@@ -35,7 +35,7 @@ export interface GetHanaInstanceResult {
     /**
      * Specifies the hardware settings for the HANA instance.
      */
-    readonly hardwareProfile?: types.outputs.hanaonazure.v20171103preview.HardwareProfileResponse;
+    readonly hardwareProfile?: types.outputs.HardwareProfileResponse;
     /**
      * Hardware revision of a HANA instance
      */
@@ -55,11 +55,11 @@ export interface GetHanaInstanceResult {
     /**
      * Specifies the network settings for the HANA instance.
      */
-    readonly networkProfile?: types.outputs.hanaonazure.v20171103preview.NetworkProfileResponse;
+    readonly networkProfile?: types.outputs.NetworkProfileResponse;
     /**
      * Specifies the operating system settings for the HANA instance.
      */
-    readonly osProfile?: types.outputs.hanaonazure.v20171103preview.OSProfileResponse;
+    readonly osProfile?: types.outputs.OSProfileResponse;
     /**
      * ARM ID of another HanaInstance that will share a network with this HanaInstance
      */
@@ -79,7 +79,7 @@ export interface GetHanaInstanceResult {
     /**
      * Specifies the storage settings for the HANA instance disks.
      */
-    readonly storageProfile?: types.outputs.hanaonazure.v20171103preview.StorageProfileResponse;
+    readonly storageProfile?: types.outputs.StorageProfileResponse;
     /**
      * Resource tags
      */

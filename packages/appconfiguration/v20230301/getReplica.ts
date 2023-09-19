@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the properties of the specified replica.
  */
@@ -56,7 +56,7 @@ export interface GetReplicaResult {
     /**
      * Resource system metadata.
      */
-    readonly systemData: types.outputs.appconfiguration.v20230301.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource.
      */

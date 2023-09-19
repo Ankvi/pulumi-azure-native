@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Describes a Machine Extension.
  */
@@ -42,7 +42,7 @@ export class MachineExtension extends pulumi.CustomResource {
     /**
      * The machine extension instance view.
      */
-    public readonly instanceView!: pulumi.Output<types.outputs.hybridcompute.v20200815preview.MachineExtensionPropertiesResponseInstanceView | undefined>;
+    public readonly instanceView!: pulumi.Output<types.outputs.MachineExtensionPropertiesResponseInstanceView | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -151,7 +151,7 @@ export interface MachineExtensionArgs {
     /**
      * The machine extension instance view.
      */
-    instanceView?: pulumi.Input<types.inputs.hybridcompute.v20200815preview.MachineExtensionPropertiesInstanceViewArgs>;
+    instanceView?: pulumi.Input<types.inputs.MachineExtensionPropertiesInstanceViewArgs>;
     /**
      * The geo-location where the resource lives
      */

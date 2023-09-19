@@ -59,11 +59,11 @@ export class RouteTable extends pulumi.CustomResource {
     /**
      * Collection of routes contained within a route table.
      */
-    public readonly routes!: pulumi.Output<types.outputs.network.RouteResponse[] | undefined>;
+    public readonly routes!: pulumi.Output<types.outputs.RouteResponse[] | undefined>;
     /**
      * A collection of references to subnets.
      */
-    public /*out*/ readonly subnets!: pulumi.Output<types.outputs.network.SubnetResponse[]>;
+    public /*out*/ readonly subnets!: pulumi.Output<types.outputs.SubnetResponse[]>;
     /**
      * Resource tags.
      */
@@ -147,7 +147,7 @@ export interface RouteTableArgs {
      * Collection of routes contained within a route table.
      * These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
      */
-    routes?: pulumi.Input<pulumi.Input<types.inputs.network.RouteArgs>[]>;
+    routes?: pulumi.Input<pulumi.Input<types.inputs.RouteArgs>[]>;
     /**
      * Resource tags.
      */

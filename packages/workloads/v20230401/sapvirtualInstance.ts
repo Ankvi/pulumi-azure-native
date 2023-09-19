@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Define the Virtual Instance for SAP solutions resource.
  */
@@ -34,7 +34,7 @@ export class SAPVirtualInstance extends pulumi.CustomResource {
     /**
      * Defines if the SAP system is being created using Azure Center for SAP solutions (ACSS) or if an existing SAP system is being registered with ACSS
      */
-    public readonly configuration!: pulumi.Output<types.outputs.workloads.v20230401.DeploymentConfigurationResponse | types.outputs.workloads.v20230401.DeploymentWithOSConfigurationResponse | types.outputs.workloads.v20230401.DiscoveryConfigurationResponse>;
+    public readonly configuration!: pulumi.Output<types.outputs.DeploymentConfigurationResponse | types.outputs.DeploymentWithOSConfigurationResponse | types.outputs.DiscoveryConfigurationResponse>;
     /**
      * Defines the environment type - Production/Non Production.
      */
@@ -42,7 +42,7 @@ export class SAPVirtualInstance extends pulumi.CustomResource {
     /**
      * Indicates any errors on the Virtual Instance for SAP solutions resource.
      */
-    public /*out*/ readonly errors!: pulumi.Output<types.outputs.workloads.v20230401.SAPVirtualInstanceErrorResponse>;
+    public /*out*/ readonly errors!: pulumi.Output<types.outputs.SAPVirtualInstanceErrorResponse>;
     /**
      * Defines the health of SAP Instances.
      */
@@ -50,7 +50,7 @@ export class SAPVirtualInstance extends pulumi.CustomResource {
     /**
      * A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide.
      */
-    public readonly identity!: pulumi.Output<types.outputs.workloads.v20230401.UserAssignedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.UserAssignedServiceIdentityResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -58,7 +58,7 @@ export class SAPVirtualInstance extends pulumi.CustomResource {
     /**
      * Managed resource group configuration
      */
-    public readonly managedResourceGroupConfiguration!: pulumi.Output<types.outputs.workloads.v20230401.ManagedRGConfigurationResponse | undefined>;
+    public readonly managedResourceGroupConfiguration!: pulumi.Output<types.outputs.ManagedRGConfigurationResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -82,7 +82,7 @@ export class SAPVirtualInstance extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.workloads.v20230401.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -163,15 +163,15 @@ export interface SAPVirtualInstanceArgs {
     /**
      * Defines if the SAP system is being created using Azure Center for SAP solutions (ACSS) or if an existing SAP system is being registered with ACSS
      */
-    configuration: pulumi.Input<types.inputs.workloads.v20230401.DeploymentConfigurationArgs | types.inputs.workloads.v20230401.DeploymentWithOSConfigurationArgs | types.inputs.workloads.v20230401.DiscoveryConfigurationArgs>;
+    configuration: pulumi.Input<types.inputs.DeploymentConfigurationArgs | types.inputs.DeploymentWithOSConfigurationArgs | types.inputs.DiscoveryConfigurationArgs>;
     /**
      * Defines the environment type - Production/Non Production.
      */
-    environment: pulumi.Input<string | types.enums.v20230401.SAPEnvironmentType>;
+    environment: pulumi.Input<string | types.enums.SAPEnvironmentType>;
     /**
      * A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide.
      */
-    identity?: pulumi.Input<types.inputs.workloads.v20230401.UserAssignedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.UserAssignedServiceIdentityArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -179,7 +179,7 @@ export interface SAPVirtualInstanceArgs {
     /**
      * Managed resource group configuration
      */
-    managedResourceGroupConfiguration?: pulumi.Input<types.inputs.workloads.v20230401.ManagedRGConfigurationArgs>;
+    managedResourceGroupConfiguration?: pulumi.Input<types.inputs.ManagedRGConfigurationArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -187,7 +187,7 @@ export interface SAPVirtualInstanceArgs {
     /**
      * Defines the SAP Product type.
      */
-    sapProduct: pulumi.Input<string | types.enums.v20230401.SAPProductType>;
+    sapProduct: pulumi.Input<string | types.enums.SAPProductType>;
     /**
      * The name of the Virtual Instances for SAP solutions resource
      */

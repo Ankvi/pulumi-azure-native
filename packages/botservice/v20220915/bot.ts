@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Bot resource definition
  */
@@ -50,11 +50,11 @@ export class Bot extends pulumi.CustomResource {
     /**
      * The set of properties specific to bot resource
      */
-    public readonly properties!: pulumi.Output<types.outputs.botservice.v20220915.BotPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.BotPropertiesResponse>;
     /**
      * Gets or sets the SKU of the resource.
      */
-    public readonly sku!: pulumi.Output<types.outputs.botservice.v20220915.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Contains resource tags defined as key/value pairs.
      */
@@ -84,7 +84,7 @@ export class Bot extends pulumi.CustomResource {
             }
             resourceInputs["kind"] = args ? args.kind : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.botservice.v20220915.botPropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.botPropertiesArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["resourceName"] = args ? args.resourceName : undefined;
             resourceInputs["sku"] = args ? args.sku : undefined;
@@ -118,7 +118,7 @@ export interface BotArgs {
     /**
      * Required. Gets or sets the Kind of the resource.
      */
-    kind?: pulumi.Input<string | types.enums.v20220915.Kind>;
+    kind?: pulumi.Input<string | types.enums.Kind>;
     /**
      * Specifies the location of the resource.
      */
@@ -126,7 +126,7 @@ export interface BotArgs {
     /**
      * The set of properties specific to bot resource
      */
-    properties?: pulumi.Input<types.inputs.botservice.v20220915.BotPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.BotPropertiesArgs>;
     /**
      * The name of the Bot resource group in the user subscription.
      */
@@ -138,7 +138,7 @@ export interface BotArgs {
     /**
      * Gets or sets the SKU of the resource.
      */
-    sku?: pulumi.Input<types.inputs.botservice.v20220915.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Contains resource tags defined as key/value pairs.
      */

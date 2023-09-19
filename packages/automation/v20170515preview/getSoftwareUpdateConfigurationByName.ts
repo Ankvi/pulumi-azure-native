@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a single software update configuration by name.
  */
@@ -44,7 +44,7 @@ export interface GetSoftwareUpdateConfigurationByNameResult {
     /**
      * Details of provisioning error
      */
-    readonly error?: types.outputs.automation.v20170515preview.ErrorResponseResponse;
+    readonly error?: types.outputs.ErrorResponseResponse;
     /**
      * Resource Id.
      */
@@ -68,11 +68,11 @@ export interface GetSoftwareUpdateConfigurationByNameResult {
     /**
      * Schedule information for the Software update configuration
      */
-    readonly scheduleInfo: types.outputs.automation.v20170515preview.SchedulePropertiesResponse;
+    readonly scheduleInfo: types.outputs.SchedulePropertiesResponse;
     /**
      * Tasks information for the Software update configuration.
      */
-    readonly tasks?: types.outputs.automation.v20170515preview.SoftwareUpdateConfigurationTasksResponse;
+    readonly tasks?: types.outputs.SoftwareUpdateConfigurationTasksResponse;
     /**
      * Resource type
      */
@@ -80,7 +80,7 @@ export interface GetSoftwareUpdateConfigurationByNameResult {
     /**
      * update specific properties for the Software update configuration
      */
-    readonly updateConfiguration: types.outputs.automation.v20170515preview.UpdateConfigurationResponse;
+    readonly updateConfiguration: types.outputs.UpdateConfigurationResponse;
 }
 /**
  * Get a single software update configuration by name.

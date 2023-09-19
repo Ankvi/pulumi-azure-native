@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A managed cluster snapshot resource.
  */
@@ -31,7 +31,7 @@ export interface GetManagedClusterSnapshotResult {
     /**
      * CreationData to be used to specify the source resource ID to create this snapshot.
      */
-    readonly creationData?: types.outputs.containerservice.v20230602preview.CreationDataResponse;
+    readonly creationData?: types.outputs.CreationDataResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -43,7 +43,7 @@ export interface GetManagedClusterSnapshotResult {
     /**
      * What the properties will be showed when getting managed cluster snapshot. Those properties are read-only.
      */
-    readonly managedClusterPropertiesReadOnly: types.outputs.containerservice.v20230602preview.ManagedClusterPropertiesForSnapshotResponse;
+    readonly managedClusterPropertiesReadOnly: types.outputs.ManagedClusterPropertiesForSnapshotResponse;
     /**
      * The name of the resource
      */
@@ -55,7 +55,7 @@ export interface GetManagedClusterSnapshotResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.containerservice.v20230602preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

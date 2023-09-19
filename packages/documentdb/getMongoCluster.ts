@@ -60,7 +60,7 @@ export interface GetMongoClusterResult {
     /**
      * The list of node group specs in the cluster.
      */
-    readonly nodeGroupSpecs?: types.outputs.documentdb.NodeGroupSpecResponse[];
+    readonly nodeGroupSpecs?: types.outputs.NodeGroupSpecResponse[];
     /**
      * A provisioning state of the mongo cluster.
      */
@@ -72,7 +72,7 @@ export interface GetMongoClusterResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.documentdb.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

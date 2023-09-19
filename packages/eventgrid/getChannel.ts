@@ -58,7 +58,7 @@ export interface GetChannelResult {
     /**
      * This property should be populated when channelType is PartnerTopic and represents information about the partner topic resource corresponding to the channel.
      */
-    readonly partnerTopicInfo?: types.outputs.eventgrid.PartnerTopicInfoResponse;
+    readonly partnerTopicInfo?: types.outputs.PartnerTopicInfoResponse;
     /**
      * Provisioning state of the channel.
      */
@@ -70,7 +70,7 @@ export interface GetChannelResult {
     /**
      * The system metadata relating to Channel resource.
      */
-    readonly systemData: types.outputs.eventgrid.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Type of the resource.
      */

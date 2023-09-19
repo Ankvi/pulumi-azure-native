@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * AFDOrigin group comprising of origins is used for load balancing to origins when the content cannot be served from Azure Front Door.
  */
@@ -35,11 +35,11 @@ export class AFDOriginGroup extends pulumi.CustomResource {
     /**
      * Health probe settings to the origin that is used to determine the health of the origin.
      */
-    public readonly healthProbeSettings!: pulumi.Output<types.outputs.cdn.v20230501.HealthProbeParametersResponse | undefined>;
+    public readonly healthProbeSettings!: pulumi.Output<types.outputs.HealthProbeParametersResponse | undefined>;
     /**
      * Load balancing settings for a backend pool
      */
-    public readonly loadBalancingSettings!: pulumi.Output<types.outputs.cdn.v20230501.LoadBalancingSettingsParametersResponse | undefined>;
+    public readonly loadBalancingSettings!: pulumi.Output<types.outputs.LoadBalancingSettingsParametersResponse | undefined>;
     /**
      * Resource name.
      */
@@ -59,7 +59,7 @@ export class AFDOriginGroup extends pulumi.CustomResource {
     /**
      * Read only system data
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.cdn.v20230501.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Time in minutes to shift the traffic to the endpoint gradually when an unhealthy endpoint comes healthy or a new endpoint is added. Default is 10 mins. This property is currently not supported.
      */
@@ -124,11 +124,11 @@ export interface AFDOriginGroupArgs {
     /**
      * Health probe settings to the origin that is used to determine the health of the origin.
      */
-    healthProbeSettings?: pulumi.Input<types.inputs.cdn.v20230501.HealthProbeParametersArgs>;
+    healthProbeSettings?: pulumi.Input<types.inputs.HealthProbeParametersArgs>;
     /**
      * Load balancing settings for a backend pool
      */
-    loadBalancingSettings?: pulumi.Input<types.inputs.cdn.v20230501.LoadBalancingSettingsParametersArgs>;
+    loadBalancingSettings?: pulumi.Input<types.inputs.LoadBalancingSettingsParametersArgs>;
     /**
      * Name of the origin group which is unique within the endpoint.
      */
@@ -144,7 +144,7 @@ export interface AFDOriginGroupArgs {
     /**
      * Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled'
      */
-    sessionAffinityState?: pulumi.Input<string | types.enums.v20230501.EnabledState>;
+    sessionAffinityState?: pulumi.Input<string | types.enums.EnabledState>;
     /**
      * Time in minutes to shift the traffic to the endpoint gradually when an unhealthy endpoint comes healthy or a new endpoint is added. Default is 10 mins. This property is currently not supported.
      */

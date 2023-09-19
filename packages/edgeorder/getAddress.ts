@@ -36,7 +36,7 @@ export interface GetAddressResult {
     /**
      * Contact details for the address.
      */
-    readonly contactDetails: types.outputs.edgeorder.ContactDetailsResponse;
+    readonly contactDetails: types.outputs.ContactDetailsResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -52,11 +52,11 @@ export interface GetAddressResult {
     /**
      * Shipping details for the address.
      */
-    readonly shippingAddress?: types.outputs.edgeorder.ShippingAddressResponse;
+    readonly shippingAddress?: types.outputs.ShippingAddressResponse;
     /**
      * Represents resource creation and update time.
      */
-    readonly systemData: types.outputs.edgeorder.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

@@ -48,7 +48,7 @@ utilities.lazyLoad(exports, ["Replica"], () => require("./replica"));
 
 
 // Export enums:
-export * from "../types/enums/v20230301";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

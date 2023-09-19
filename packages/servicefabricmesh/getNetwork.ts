@@ -44,7 +44,7 @@ export interface GetNetworkResult {
     /**
      * Describes properties of a network resource.
      */
-    readonly properties: types.outputs.servicefabricmesh.NetworkResourcePropertiesResponse;
+    readonly properties: types.outputs.NetworkResourcePropertiesResponse;
     /**
      * Resource tags.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Lists all applicable schedules
  */
@@ -40,7 +40,7 @@ export interface ListScheduleApplicableResult {
     /**
      * Results of the list operation.
      */
-    readonly value?: types.outputs.devtestlab.v20180915.ScheduleResponse[];
+    readonly value?: types.outputs.ScheduleResponse[];
 }
 /**
  * Lists all applicable schedules

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A vulnerability assessments setting on Azure servers in the defined scope.
  */
@@ -47,7 +47,7 @@ export class AzureServersSetting extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.security.v20230501.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -102,7 +102,7 @@ export interface AzureServersSettingArgs {
     /**
      * The selected vulnerability assessments provider on Azure servers in the defined scope.
      */
-    selectedProvider: pulumi.Input<string | types.enums.v20230501.ServerVulnerabilityAssessmentsAzureSettingSelectedProvider>;
+    selectedProvider: pulumi.Input<string | types.enums.ServerVulnerabilityAssessmentsAzureSettingSelectedProvider>;
     /**
      * The kind of the server vulnerability assessments setting
      */

@@ -68,7 +68,7 @@ utilities.lazyLoad(exports, ["SignalRSharedPrivateLinkResource"], () => require(
 
 
 // Export enums:
-export * from "../types/enums/v20230601preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

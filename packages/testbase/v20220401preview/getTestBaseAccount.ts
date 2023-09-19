@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a Test Base Account.
  */
@@ -55,11 +55,11 @@ export interface GetTestBaseAccountResult {
     /**
      * The SKU of the Test Base Account.
      */
-    readonly sku: types.outputs.testbase.v20220401preview.TestBaseAccountSKUResponse;
+    readonly sku: types.outputs.TestBaseAccountSKUResponse;
     /**
      * The system metadata relating to this resource
      */
-    readonly systemData: types.outputs.testbase.v20220401preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The tags of the resource.
      */

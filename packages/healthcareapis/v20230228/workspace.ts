@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Workspace resource.
  */
@@ -46,11 +46,11 @@ export class Workspace extends pulumi.CustomResource {
     /**
      * Workspaces resource specific properties.
      */
-    public /*out*/ readonly properties!: pulumi.Output<types.outputs.healthcareapis.v20230228.WorkspaceResponseProperties>;
+    public /*out*/ readonly properties!: pulumi.Output<types.outputs.WorkspaceResponseProperties>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.healthcareapis.v20230228.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */

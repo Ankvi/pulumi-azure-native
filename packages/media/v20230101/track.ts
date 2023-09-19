@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An Asset Track resource.
  */
@@ -42,7 +42,7 @@ export class Track extends pulumi.CustomResource {
     /**
      * Detailed information about a track in the asset.
      */
-    public readonly track!: pulumi.Output<types.outputs.media.v20230101.AudioTrackResponse | types.outputs.media.v20230101.TextTrackResponse | types.outputs.media.v20230101.VideoTrackResponse | undefined>;
+    public readonly track!: pulumi.Output<types.outputs.AudioTrackResponse | types.outputs.TextTrackResponse | types.outputs.VideoTrackResponse | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -108,7 +108,7 @@ export interface TrackArgs {
     /**
      * Detailed information about a track in the asset.
      */
-    track?: pulumi.Input<types.inputs.media.v20230101.AudioTrackArgs | types.inputs.media.v20230101.TextTrackArgs | types.inputs.media.v20230101.VideoTrackArgs>;
+    track?: pulumi.Input<types.inputs.AudioTrackArgs | types.inputs.TextTrackArgs | types.inputs.VideoTrackArgs>;
     /**
      * The Asset Track name.
      */

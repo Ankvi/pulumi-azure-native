@@ -39,7 +39,7 @@ export class NamespaceNetworkRuleSet extends pulumi.CustomResource {
     /**
      * List of IpRules
      */
-    public readonly ipRules!: pulumi.Output<types.outputs.eventhub.NWRuleSetIpRulesResponse[] | undefined>;
+    public readonly ipRules!: pulumi.Output<types.outputs.NWRuleSetIpRulesResponse[] | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -55,7 +55,7 @@ export class NamespaceNetworkRuleSet extends pulumi.CustomResource {
     /**
      * The system meta data relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.eventhub.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Value that indicates whether Trusted Service Access is Enabled or not.
      */
@@ -67,7 +67,7 @@ export class NamespaceNetworkRuleSet extends pulumi.CustomResource {
     /**
      * List VirtualNetwork Rules
      */
-    public readonly virtualNetworkRules!: pulumi.Output<types.outputs.eventhub.NWRuleSetVirtualNetworkRulesResponse[] | undefined>;
+    public readonly virtualNetworkRules!: pulumi.Output<types.outputs.NWRuleSetVirtualNetworkRulesResponse[] | undefined>;
 
     /**
      * Create a NamespaceNetworkRuleSet resource with the given unique name, arguments, and options.
@@ -126,7 +126,7 @@ export interface NamespaceNetworkRuleSetArgs {
     /**
      * List of IpRules
      */
-    ipRules?: pulumi.Input<pulumi.Input<types.inputs.eventhub.NWRuleSetIpRulesArgs>[]>;
+    ipRules?: pulumi.Input<pulumi.Input<types.inputs.NWRuleSetIpRulesArgs>[]>;
     /**
      * The Namespace name
      */
@@ -146,5 +146,5 @@ export interface NamespaceNetworkRuleSetArgs {
     /**
      * List VirtualNetwork Rules
      */
-    virtualNetworkRules?: pulumi.Input<pulumi.Input<types.inputs.eventhub.NWRuleSetVirtualNetworkRulesArgs>[]>;
+    virtualNetworkRules?: pulumi.Input<pulumi.Input<types.inputs.NWRuleSetVirtualNetworkRulesArgs>[]>;
 }

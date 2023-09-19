@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets information about the specified data manager resource.
  */
@@ -49,7 +49,7 @@ export interface GetDataManagerResult {
     /**
      * The sku type.
      */
-    readonly sku?: types.outputs.hybriddata.v20190601.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * The list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource
      * (across resource groups).

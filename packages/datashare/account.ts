@@ -39,7 +39,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * Identity Info on the Account
      */
-    public readonly identity!: pulumi.Output<types.outputs.datashare.IdentityResponse>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityResponse>;
     /**
      * Location of the azure resource.
      */
@@ -55,7 +55,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * System Data of the Azure resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.datashare.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Tags on the azure resource.
      */
@@ -132,7 +132,7 @@ export interface AccountArgs {
     /**
      * Identity Info on the Account
      */
-    identity: pulumi.Input<types.inputs.datashare.IdentityArgs>;
+    identity: pulumi.Input<types.inputs.IdentityArgs>;
     /**
      * Location of the azure resource.
      */

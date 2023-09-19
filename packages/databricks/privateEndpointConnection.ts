@@ -39,7 +39,7 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * The private endpoint connection properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.databricks.PrivateEndpointConnectionPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.PrivateEndpointConnectionPropertiesResponse>;
     /**
      * The resource type.
      */
@@ -94,7 +94,7 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * The private endpoint connection properties.
      */
-    properties: pulumi.Input<types.inputs.databricks.PrivateEndpointConnectionPropertiesArgs>;
+    properties: pulumi.Input<types.inputs.PrivateEndpointConnectionPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

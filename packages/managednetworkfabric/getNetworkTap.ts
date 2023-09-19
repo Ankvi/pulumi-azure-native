@@ -44,7 +44,7 @@ export interface GetNetworkTapResult {
     /**
      * List of destinations to send the filter traffic.
      */
-    readonly destinations: types.outputs.managednetworkfabric.NetworkTapPropertiesResponseDestinations[];
+    readonly destinations: types.outputs.NetworkTapPropertiesResponseDestinations[];
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -76,7 +76,7 @@ export interface GetNetworkTapResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.managednetworkfabric.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

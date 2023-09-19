@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the integration service environment managed Api.
  */
@@ -40,11 +40,11 @@ export interface GetIntegrationServiceEnvironmentManagedApiResult {
     /**
      * The api definitions.
      */
-    readonly apiDefinitions: types.outputs.logic.v20190501.ApiResourceDefinitionsResponse;
+    readonly apiDefinitions: types.outputs.ApiResourceDefinitionsResponse;
     /**
      * The backend service.
      */
-    readonly backendService: types.outputs.logic.v20190501.ApiResourceBackendServiceResponse;
+    readonly backendService: types.outputs.ApiResourceBackendServiceResponse;
     /**
      * The capabilities.
      */
@@ -60,11 +60,11 @@ export interface GetIntegrationServiceEnvironmentManagedApiResult {
     /**
      * The integration service environment managed api deployment parameters.
      */
-    readonly deploymentParameters?: types.outputs.logic.v20190501.IntegrationServiceEnvironmentManagedApiDeploymentParametersResponse;
+    readonly deploymentParameters?: types.outputs.IntegrationServiceEnvironmentManagedApiDeploymentParametersResponse;
     /**
      * The api general information.
      */
-    readonly generalInformation: types.outputs.logic.v20190501.ApiResourceGeneralInformationResponse;
+    readonly generalInformation: types.outputs.ApiResourceGeneralInformationResponse;
     /**
      * The resource id.
      */
@@ -72,7 +72,7 @@ export interface GetIntegrationServiceEnvironmentManagedApiResult {
     /**
      * The integration service environment reference.
      */
-    readonly integrationServiceEnvironment?: types.outputs.logic.v20190501.ResourceReferenceResponse;
+    readonly integrationServiceEnvironment?: types.outputs.ResourceReferenceResponse;
     /**
      * The resource location.
      */
@@ -80,7 +80,7 @@ export interface GetIntegrationServiceEnvironmentManagedApiResult {
     /**
      * The metadata.
      */
-    readonly metadata: types.outputs.logic.v20190501.ApiResourceMetadataResponse;
+    readonly metadata: types.outputs.ApiResourceMetadataResponse;
     /**
      * Gets the resource name.
      */
@@ -88,7 +88,7 @@ export interface GetIntegrationServiceEnvironmentManagedApiResult {
     /**
      * The policies for the API.
      */
-    readonly policies: types.outputs.logic.v20190501.ApiResourcePoliciesResponse;
+    readonly policies: types.outputs.ApiResourcePoliciesResponse;
     /**
      * The provisioning state.
      */

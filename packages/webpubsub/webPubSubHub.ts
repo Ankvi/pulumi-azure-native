@@ -39,11 +39,11 @@ export class WebPubSubHub extends pulumi.CustomResource {
     /**
      * Properties of a hub.
      */
-    public readonly properties!: pulumi.Output<types.outputs.webpubsub.WebPubSubHubPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.WebPubSubHubPropertiesResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.webpubsub.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource - e.g. "Microsoft.SignalRService/SignalR"
      */
@@ -70,7 +70,7 @@ export class WebPubSubHub extends pulumi.CustomResource {
                 throw new Error("Missing required property 'resourceName'");
             }
             resourceInputs["hubName"] = args ? args.hubName : undefined;
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.webpubsub.webPubSubHubPropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.webPubSubHubPropertiesArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["resourceName"] = args ? args.resourceName : undefined;
             resourceInputs["name"] = undefined /*out*/;
@@ -100,7 +100,7 @@ export interface WebPubSubHubArgs {
     /**
      * Properties of a hub.
      */
-    properties: pulumi.Input<types.inputs.webpubsub.WebPubSubHubPropertiesArgs>;
+    properties: pulumi.Input<types.inputs.WebPubSubHubPropertiesArgs>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */

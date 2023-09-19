@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get track ingest heartbeat events telemetry of a live event.
  */
@@ -36,7 +36,7 @@ export interface GetLiveEventTrackIngestHeartbeatsResult {
     /**
      * The result of the get live event track events.
      */
-    readonly value?: types.outputs.media.v20221101.LiveEventTrackEventResponse[];
+    readonly value?: types.outputs.LiveEventTrackEventResponse[];
 }
 /**
  * Get track ingest heartbeat events telemetry of a live event.

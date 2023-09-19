@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the properties of a specified build task.
  */
@@ -56,7 +56,7 @@ export interface GetBuildTaskResult {
     /**
      * The platform properties against which the build has to happen.
      */
-    readonly platform: types.outputs.containerregistry.v20180201preview.PlatformPropertiesResponse;
+    readonly platform: types.outputs.PlatformPropertiesResponse;
     /**
      * The provisioning state of the build task.
      */
@@ -64,7 +64,7 @@ export interface GetBuildTaskResult {
     /**
      * The properties that describes the source(code) for the build task.
      */
-    readonly sourceRepository: types.outputs.containerregistry.v20180201preview.SourceRepositoryPropertiesResponse;
+    readonly sourceRepository: types.outputs.SourceRepositoryPropertiesResponse;
     /**
      * The current status of build task.
      */

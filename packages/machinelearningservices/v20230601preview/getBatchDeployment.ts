@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 export function getBatchDeployment(args: GetBatchDeploymentArgs, opts?: pulumi.InvokeOptions): Promise<GetBatchDeploymentResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -35,7 +35,7 @@ export interface GetBatchDeploymentResult {
     /**
      * [Required] Additional attributes of the entity.
      */
-    readonly batchDeploymentProperties: types.outputs.machinelearningservices.v20230601preview.BatchDeploymentResponse;
+    readonly batchDeploymentProperties: types.outputs.BatchDeploymentResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -43,7 +43,7 @@ export interface GetBatchDeploymentResult {
     /**
      * Managed service identity (system assigned and/or user assigned identities)
      */
-    readonly identity?: types.outputs.machinelearningservices.v20230601preview.ManagedServiceIdentityResponse;
+    readonly identity?: types.outputs.ManagedServiceIdentityResponse;
     /**
      * Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
      */
@@ -59,11 +59,11 @@ export interface GetBatchDeploymentResult {
     /**
      * Sku details required for ARM contract for Autoscaling.
      */
-    readonly sku?: types.outputs.machinelearningservices.v20230601preview.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.machinelearningservices.v20230601preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

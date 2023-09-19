@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A cluster resource
  */
@@ -60,7 +60,7 @@ export interface GetClusterResult {
     /**
      * The cluster SKU
      */
-    readonly sku: types.outputs.avs.v20230301.SkuResponse;
+    readonly sku: types.outputs.SkuResponse;
     /**
      * Resource type.
      */

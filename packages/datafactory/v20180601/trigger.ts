@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Trigger resource type.
  */
@@ -42,7 +42,7 @@ export class Trigger extends pulumi.CustomResource {
     /**
      * Properties of the trigger.
      */
-    public readonly properties!: pulumi.Output<types.outputs.datafactory.v20180601.BlobEventsTriggerResponse | types.outputs.datafactory.v20180601.BlobTriggerResponse | types.outputs.datafactory.v20180601.ChainingTriggerResponse | types.outputs.datafactory.v20180601.CustomEventsTriggerResponse | types.outputs.datafactory.v20180601.MultiplePipelineTriggerResponse | types.outputs.datafactory.v20180601.RerunTumblingWindowTriggerResponse | types.outputs.datafactory.v20180601.ScheduleTriggerResponse | types.outputs.datafactory.v20180601.TumblingWindowTriggerResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.BlobEventsTriggerResponse | types.outputs.BlobTriggerResponse | types.outputs.ChainingTriggerResponse | types.outputs.CustomEventsTriggerResponse | types.outputs.MultiplePipelineTriggerResponse | types.outputs.RerunTumblingWindowTriggerResponse | types.outputs.ScheduleTriggerResponse | types.outputs.TumblingWindowTriggerResponse>;
     /**
      * The resource type.
      */
@@ -99,7 +99,7 @@ export interface TriggerArgs {
     /**
      * Properties of the trigger.
      */
-    properties: pulumi.Input<types.inputs.datafactory.v20180601.BlobEventsTriggerArgs | types.inputs.datafactory.v20180601.BlobTriggerArgs | types.inputs.datafactory.v20180601.ChainingTriggerArgs | types.inputs.datafactory.v20180601.CustomEventsTriggerArgs | types.inputs.datafactory.v20180601.MultiplePipelineTriggerArgs | types.inputs.datafactory.v20180601.RerunTumblingWindowTriggerArgs | types.inputs.datafactory.v20180601.ScheduleTriggerArgs | types.inputs.datafactory.v20180601.TumblingWindowTriggerArgs>;
+    properties: pulumi.Input<types.inputs.BlobEventsTriggerArgs | types.inputs.BlobTriggerArgs | types.inputs.ChainingTriggerArgs | types.inputs.CustomEventsTriggerArgs | types.inputs.MultiplePipelineTriggerArgs | types.inputs.RerunTumblingWindowTriggerArgs | types.inputs.ScheduleTriggerArgs | types.inputs.TumblingWindowTriggerArgs>;
     /**
      * The resource group name.
      */

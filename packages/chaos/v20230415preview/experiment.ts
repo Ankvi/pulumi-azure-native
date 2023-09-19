@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Model that represents a Experiment resource.
  */
@@ -34,7 +34,7 @@ export class Experiment extends pulumi.CustomResource {
     /**
      * The identity of the experiment resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.chaos.v20230415preview.ResourceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ResourceIdentityResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -46,11 +46,11 @@ export class Experiment extends pulumi.CustomResource {
     /**
      * The properties of the experiment resource.
      */
-    public readonly properties!: pulumi.Output<types.outputs.chaos.v20230415preview.ExperimentPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ExperimentPropertiesResponse>;
     /**
      * The system metadata of the experiment resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.chaos.v20230415preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -113,7 +113,7 @@ export interface ExperimentArgs {
     /**
      * The identity of the experiment resource.
      */
-    identity?: pulumi.Input<types.inputs.chaos.v20230415preview.ResourceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ResourceIdentityArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -121,7 +121,7 @@ export interface ExperimentArgs {
     /**
      * The properties of the experiment resource.
      */
-    properties: pulumi.Input<types.inputs.chaos.v20230415preview.ExperimentPropertiesArgs>;
+    properties: pulumi.Input<types.inputs.ExperimentPropertiesArgs>;
     /**
      * String that represents an Azure resource group.
      */

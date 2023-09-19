@@ -44,11 +44,11 @@ export interface GetSolutionResult {
     /**
      * Plan for solution object supported by the OperationsManagement resource provider.
      */
-    readonly plan?: types.outputs.operationsmanagement.SolutionPlanResponse;
+    readonly plan?: types.outputs.SolutionPlanResponse;
     /**
      * Properties for solution object supported by the OperationsManagement resource provider.
      */
-    readonly properties: types.outputs.operationsmanagement.SolutionPropertiesResponse;
+    readonly properties: types.outputs.SolutionPropertiesResponse;
     /**
      * Resource tags
      */

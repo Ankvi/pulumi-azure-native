@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get properties of the provided default CNI network.
  */
@@ -36,7 +36,7 @@ export interface GetDefaultCniNetworkResult {
     /**
      * The Calico BGP configuration.
      */
-    readonly cniBgpConfiguration?: types.outputs.networkcloud.v20221212preview.CniBgpConfigurationResponse;
+    readonly cniBgpConfiguration?: types.outputs.CniBgpConfigurationResponse;
     /**
      * The more detailed status of the default CNI network.
      */
@@ -48,11 +48,11 @@ export interface GetDefaultCniNetworkResult {
     /**
      * The extended location of the cluster associated with the resource.
      */
-    readonly extendedLocation: types.outputs.networkcloud.v20221212preview.ExtendedLocationResponse;
+    readonly extendedLocation: types.outputs.ExtendedLocationResponse;
     /**
      * The L3 isolation fabric BGP peering connectivity information necessary for BGP peering the Hybrid AKS Cluster with the switch fabric.
      */
-    readonly fabricBgpPeers: types.outputs.networkcloud.v20221212preview.BgpPeerResponse[];
+    readonly fabricBgpPeers: types.outputs.BgpPeerResponse[];
     /**
      * The list of Hybrid AKS cluster resource ID(s) that are associated with this default CNI network.
      */
@@ -98,7 +98,7 @@ export interface GetDefaultCniNetworkResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.networkcloud.v20221212preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

@@ -36,7 +36,7 @@ export interface ListMonitorHostsResult {
     /**
      * Results of a list operation.
      */
-    readonly value?: types.outputs.datadog.DatadogHostResponse[];
+    readonly value?: types.outputs.DatadogHostResponse[];
 }
 /**
  * Response of a list operation.

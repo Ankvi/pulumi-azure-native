@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the specified trigger for the specified image template resource
  */
@@ -52,11 +52,11 @@ export interface GetTriggerResult {
     /**
      * Trigger status
      */
-    readonly status: types.outputs.virtualmachineimages.v20220701.TriggerStatusResponse;
+    readonly status: types.outputs.TriggerStatusResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.virtualmachineimages.v20220701.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

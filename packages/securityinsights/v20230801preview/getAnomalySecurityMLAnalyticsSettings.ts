@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the Security ML Analytics Settings.
  */
@@ -89,7 +89,7 @@ export interface GetAnomalySecurityMLAnalyticsSettingsResult {
     /**
      * The required data sources for this SecurityMLAnalyticsSettings
      */
-    readonly requiredDataConnectors?: types.outputs.securityinsights.v20230801preview.SecurityMLAnalyticsSettingsDataSourceResponse[];
+    readonly requiredDataConnectors?: types.outputs.SecurityMLAnalyticsSettingsDataSourceResponse[];
     /**
      * The anomaly settings definition Id
      */
@@ -101,7 +101,7 @@ export interface GetAnomalySecurityMLAnalyticsSettingsResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.securityinsights.v20230801preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The tactics of the SecurityMLAnalyticsSettings
      */

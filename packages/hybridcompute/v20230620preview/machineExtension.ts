@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Describes a Machine Extension.
  */
@@ -42,11 +42,11 @@ export class MachineExtension extends pulumi.CustomResource {
     /**
      * Describes Machine Extension Properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.hybridcompute.v20230620preview.MachineExtensionPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.MachineExtensionPropertiesResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.hybridcompute.v20230620preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -116,7 +116,7 @@ export interface MachineExtensionArgs {
     /**
      * Describes Machine Extension Properties.
      */
-    properties?: pulumi.Input<types.inputs.hybridcompute.v20230620preview.MachineExtensionPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.MachineExtensionPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

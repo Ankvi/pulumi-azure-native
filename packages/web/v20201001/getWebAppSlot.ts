@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the details of a web, mobile, or API app.
  */
@@ -84,7 +84,7 @@ export interface GetWebAppSlotResult {
     /**
      * Hostname SSL states are used to manage the SSL bindings for app's hostnames.
      */
-    readonly hostNameSslStates?: types.outputs.web.v20201001.HostNameSslStateResponse[];
+    readonly hostNameSslStates?: types.outputs.HostNameSslStateResponse[];
     /**
      * Hostnames associated with the app.
      */
@@ -97,7 +97,7 @@ export interface GetWebAppSlotResult {
     /**
      * App Service Environment to use for the app.
      */
-    readonly hostingEnvironmentProfile?: types.outputs.web.v20201001.HostingEnvironmentProfileResponse;
+    readonly hostingEnvironmentProfile?: types.outputs.HostingEnvironmentProfileResponse;
     /**
      * HttpsOnly: configures a web site to accept only https requests. Issues redirect for
      * http requests
@@ -114,7 +114,7 @@ export interface GetWebAppSlotResult {
     /**
      * Managed service identity.
      */
-    readonly identity?: types.outputs.web.v20201001.ManagedServiceIdentityResponse;
+    readonly identity?: types.outputs.ManagedServiceIdentityResponse;
     /**
      * Specifies an operation id if this site has a pending operation.
      */
@@ -183,11 +183,11 @@ export interface GetWebAppSlotResult {
     /**
      * Configuration of the app.
      */
-    readonly siteConfig?: types.outputs.web.v20201001.SiteConfigResponse;
+    readonly siteConfig?: types.outputs.SiteConfigResponse;
     /**
      * Status of the last deployment slot swap operation.
      */
-    readonly slotSwapStatus: types.outputs.web.v20201001.SlotSwapStatusResponse;
+    readonly slotSwapStatus: types.outputs.SlotSwapStatusResponse;
     /**
      * Current state of the app.
      */
@@ -203,7 +203,7 @@ export interface GetWebAppSlotResult {
     /**
      * The system metadata relating to this resource.
      */
-    readonly systemData: types.outputs.web.v20201001.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Complete information about the private endpoint.
  */
@@ -42,7 +42,7 @@ export class PrivateEndpoint extends pulumi.CustomResource {
     /**
      * The properties associated with a private endpoint.
      */
-    public readonly properties!: pulumi.Output<types.outputs.streamanalytics.v20200301preview.PrivateEndpointPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.PrivateEndpointPropertiesResponse>;
     /**
      * The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
      */
@@ -100,7 +100,7 @@ export interface PrivateEndpointArgs {
     /**
      * The properties associated with a private endpoint.
      */
-    properties?: pulumi.Input<types.inputs.streamanalytics.v20200301preview.PrivateEndpointPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.PrivateEndpointPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

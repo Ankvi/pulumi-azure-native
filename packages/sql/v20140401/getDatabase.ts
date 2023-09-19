@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a database.
  */
@@ -115,7 +115,7 @@ export interface GetDatabaseResult {
     /**
      * The recommended indices for this database.
      */
-    readonly recommendedIndex: types.outputs.sql.v20140401.RecommendedIndexResponse[];
+    readonly recommendedIndex: types.outputs.RecommendedIndexResponse[];
     /**
      * The configured service level objective ID of the database. This is the service level objective that is in the process of being applied to the database. Once successfully updated, it will match the value of currentServiceObjectiveId property. If requestedServiceObjectiveId and requestedServiceObjectiveName are both updated, the value of requestedServiceObjectiveId overrides the value of requestedServiceObjectiveName.
      * 
@@ -143,7 +143,7 @@ export interface GetDatabaseResult {
     /**
      * The list of service tier advisors for this database. Expanded property
      */
-    readonly serviceTierAdvisors: types.outputs.sql.v20140401.ServiceTierAdvisorResponse[];
+    readonly serviceTierAdvisors: types.outputs.ServiceTierAdvisorResponse[];
     /**
      * The status of the database.
      */
@@ -155,7 +155,7 @@ export interface GetDatabaseResult {
     /**
      * The transparent data encryption info for this database.
      */
-    readonly transparentDataEncryption: types.outputs.sql.v20140401.TransparentDataEncryptionResponse[];
+    readonly transparentDataEncryption: types.outputs.TransparentDataEncryptionResponse[];
     /**
      * Resource type.
      */

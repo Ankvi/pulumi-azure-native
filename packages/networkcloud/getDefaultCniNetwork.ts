@@ -37,7 +37,7 @@ export interface GetDefaultCniNetworkResult {
     /**
      * The Calico BGP configuration.
      */
-    readonly cniBgpConfiguration?: types.outputs.networkcloud.CniBgpConfigurationResponse;
+    readonly cniBgpConfiguration?: types.outputs.CniBgpConfigurationResponse;
     /**
      * The more detailed status of the default CNI network.
      */
@@ -49,11 +49,11 @@ export interface GetDefaultCniNetworkResult {
     /**
      * The extended location of the cluster associated with the resource.
      */
-    readonly extendedLocation: types.outputs.networkcloud.ExtendedLocationResponse;
+    readonly extendedLocation: types.outputs.ExtendedLocationResponse;
     /**
      * The L3 isolation fabric BGP peering connectivity information necessary for BGP peering the Hybrid AKS Cluster with the switch fabric.
      */
-    readonly fabricBgpPeers: types.outputs.networkcloud.BgpPeerResponse[];
+    readonly fabricBgpPeers: types.outputs.BgpPeerResponse[];
     /**
      * The list of Hybrid AKS cluster resource ID(s) that are associated with this default CNI network.
      */
@@ -99,7 +99,7 @@ export interface GetDefaultCniNetworkResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.networkcloud.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

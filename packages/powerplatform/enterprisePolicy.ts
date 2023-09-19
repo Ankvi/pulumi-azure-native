@@ -35,7 +35,7 @@ export class EnterprisePolicy extends pulumi.CustomResource {
     /**
      * The encryption settings for a configuration store.
      */
-    public readonly encryption!: pulumi.Output<types.outputs.powerplatform.PropertiesResponseEncryption | undefined>;
+    public readonly encryption!: pulumi.Output<types.outputs.PropertiesResponseEncryption | undefined>;
     /**
      * The health status of the resource.
      */
@@ -43,7 +43,7 @@ export class EnterprisePolicy extends pulumi.CustomResource {
     /**
      * The identity of the EnterprisePolicy.
      */
-    public readonly identity!: pulumi.Output<types.outputs.powerplatform.EnterprisePolicyIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.EnterprisePolicyIdentityResponse | undefined>;
     /**
      * The kind (type) of Enterprise Policy.
      */
@@ -55,7 +55,7 @@ export class EnterprisePolicy extends pulumi.CustomResource {
     /**
      * Settings concerning lockbox.
      */
-    public readonly lockbox!: pulumi.Output<types.outputs.powerplatform.PropertiesResponseLockbox | undefined>;
+    public readonly lockbox!: pulumi.Output<types.outputs.PropertiesResponseLockbox | undefined>;
     /**
      * The name of the resource
      */
@@ -63,11 +63,11 @@ export class EnterprisePolicy extends pulumi.CustomResource {
     /**
      * Settings concerning network injection.
      */
-    public readonly networkInjection!: pulumi.Output<types.outputs.powerplatform.PropertiesResponseNetworkInjection | undefined>;
+    public readonly networkInjection!: pulumi.Output<types.outputs.PropertiesResponseNetworkInjection | undefined>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.powerplatform.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The internally assigned unique identifier of the resource.
      */
@@ -140,7 +140,7 @@ export interface EnterprisePolicyArgs {
     /**
      * The encryption settings for a configuration store.
      */
-    encryption?: pulumi.Input<types.inputs.powerplatform.PropertiesEncryptionArgs>;
+    encryption?: pulumi.Input<types.inputs.PropertiesEncryptionArgs>;
     /**
      * Name of the EnterprisePolicy.
      */
@@ -152,7 +152,7 @@ export interface EnterprisePolicyArgs {
     /**
      * The identity of the EnterprisePolicy.
      */
-    identity?: pulumi.Input<types.inputs.powerplatform.EnterprisePolicyIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.EnterprisePolicyIdentityArgs>;
     /**
      * The kind (type) of Enterprise Policy.
      */
@@ -164,11 +164,11 @@ export interface EnterprisePolicyArgs {
     /**
      * Settings concerning lockbox.
      */
-    lockbox?: pulumi.Input<types.inputs.powerplatform.PropertiesLockboxArgs>;
+    lockbox?: pulumi.Input<types.inputs.PropertiesLockboxArgs>;
     /**
      * Settings concerning network injection.
      */
-    networkInjection?: pulumi.Input<types.inputs.powerplatform.PropertiesNetworkInjectionArgs>;
+    networkInjection?: pulumi.Input<types.inputs.PropertiesNetworkInjectionArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

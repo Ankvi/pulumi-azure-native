@@ -35,7 +35,7 @@ export class CloudConnection extends pulumi.CustomResource {
     /**
      * The cloud connector which discovered the remote resource.
      */
-    public readonly cloudConnector!: pulumi.Output<types.outputs.hybridcloud.ResourceReferenceResponse | undefined>;
+    public readonly cloudConnector!: pulumi.Output<types.outputs.ResourceReferenceResponse | undefined>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -63,7 +63,7 @@ export class CloudConnection extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.hybridcloud.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -75,7 +75,7 @@ export class CloudConnection extends pulumi.CustomResource {
     /**
      * The virtualHub to which the cloud connection belongs.
      */
-    public readonly virtualHub!: pulumi.Output<types.outputs.hybridcloud.ResourceReferenceResponse | undefined>;
+    public readonly virtualHub!: pulumi.Output<types.outputs.ResourceReferenceResponse | undefined>;
 
     /**
      * Create a CloudConnection resource with the given unique name, arguments, and options.
@@ -135,7 +135,7 @@ export interface CloudConnectionArgs {
     /**
      * The cloud connector which discovered the remote resource.
      */
-    cloudConnector?: pulumi.Input<types.inputs.hybridcloud.ResourceReferenceArgs>;
+    cloudConnector?: pulumi.Input<types.inputs.ResourceReferenceArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -159,5 +159,5 @@ export interface CloudConnectionArgs {
     /**
      * The virtualHub to which the cloud connection belongs.
      */
-    virtualHub?: pulumi.Input<types.inputs.hybridcloud.ResourceReferenceArgs>;
+    virtualHub?: pulumi.Input<types.inputs.ResourceReferenceArgs>;
 }

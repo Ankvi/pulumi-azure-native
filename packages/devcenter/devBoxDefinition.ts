@@ -35,7 +35,7 @@ export class DevBoxDefinition extends pulumi.CustomResource {
     /**
      * Image reference information for the currently active image (only populated during updates).
      */
-    public /*out*/ readonly activeImageReference!: pulumi.Output<types.outputs.devcenter.ImageReferenceResponse>;
+    public /*out*/ readonly activeImageReference!: pulumi.Output<types.outputs.ImageReferenceResponse>;
     /**
      * Indicates whether Dev Boxes created with this definition are capable of hibernation. Not all images are capable of supporting hibernation. To find out more see https://aka.ms/devbox/hibernate
      */
@@ -43,11 +43,11 @@ export class DevBoxDefinition extends pulumi.CustomResource {
     /**
      * Image reference information.
      */
-    public readonly imageReference!: pulumi.Output<types.outputs.devcenter.ImageReferenceResponse>;
+    public readonly imageReference!: pulumi.Output<types.outputs.ImageReferenceResponse>;
     /**
      * Details for image validator error. Populated when the image validation is not successful.
      */
-    public /*out*/ readonly imageValidationErrorDetails!: pulumi.Output<types.outputs.devcenter.ImageValidationErrorDetailsResponse>;
+    public /*out*/ readonly imageValidationErrorDetails!: pulumi.Output<types.outputs.ImageValidationErrorDetailsResponse>;
     /**
      * Validation status of the configured image.
      */
@@ -71,11 +71,11 @@ export class DevBoxDefinition extends pulumi.CustomResource {
     /**
      * The SKU for Dev Boxes created using this definition.
      */
-    public readonly sku!: pulumi.Output<types.outputs.devcenter.SkuResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.devcenter.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -165,7 +165,7 @@ export interface DevBoxDefinitionArgs {
     /**
      * Image reference information.
      */
-    imageReference: pulumi.Input<types.inputs.devcenter.ImageReferenceArgs>;
+    imageReference: pulumi.Input<types.inputs.ImageReferenceArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -181,7 +181,7 @@ export interface DevBoxDefinitionArgs {
     /**
      * The SKU for Dev Boxes created using this definition.
      */
-    sku: pulumi.Input<types.inputs.devcenter.SkuArgs>;
+    sku: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Resource tags.
      */

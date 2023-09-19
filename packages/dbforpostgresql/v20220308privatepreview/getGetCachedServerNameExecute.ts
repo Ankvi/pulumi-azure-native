@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get available cached server name for fast provisioning
  */
@@ -28,15 +28,15 @@ export interface GetGetCachedServerNameExecuteArgs {
     /**
      * The SKU (pricing tier) of the server.
      */
-    sku: types.inputs.dbforpostgresql.v20220308privatepreview.Sku;
+    sku: types.inputs.Sku;
     /**
      * Storage properties of a server.
      */
-    storage: types.inputs.dbforpostgresql.v20220308privatepreview.Storage;
+    storage: types.inputs.Storage;
     /**
      * PostgreSQL Server version.
      */
-    version: string | types.enums.v20220308privatepreview.ServerVersion;
+    version: string | types.enums.ServerVersion;
 }
 
 /**
@@ -67,13 +67,13 @@ export interface GetGetCachedServerNameExecuteOutputArgs {
     /**
      * The SKU (pricing tier) of the server.
      */
-    sku: pulumi.Input<types.inputs.dbforpostgresql.v20220308privatepreview.SkuArgs>;
+    sku: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Storage properties of a server.
      */
-    storage: pulumi.Input<types.inputs.dbforpostgresql.v20220308privatepreview.StorageArgs>;
+    storage: pulumi.Input<types.inputs.StorageArgs>;
     /**
      * PostgreSQL Server version.
      */
-    version: pulumi.Input<string | types.enums.v20220308privatepreview.ServerVersion>;
+    version: pulumi.Input<string | types.enums.ServerVersion>;
 }

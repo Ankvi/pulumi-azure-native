@@ -48,7 +48,7 @@ export interface GetAssignmentResult {
     /**
      * Managed identity for this blueprint assignment.
      */
-    readonly identity: types.outputs.blueprint.ManagedServiceIdentityResponse;
+    readonly identity: types.outputs.ManagedServiceIdentityResponse;
     /**
      * The location of this blueprint assignment.
      */
@@ -56,7 +56,7 @@ export interface GetAssignmentResult {
     /**
      * Defines how resources deployed by a blueprint assignment are locked.
      */
-    readonly locks?: types.outputs.blueprint.AssignmentLockSettingsResponse;
+    readonly locks?: types.outputs.AssignmentLockSettingsResponse;
     /**
      * Name of this resource.
      */
@@ -64,7 +64,7 @@ export interface GetAssignmentResult {
     /**
      * Blueprint assignment parameter values.
      */
-    readonly parameters: {[key: string]: types.outputs.blueprint.ParameterValueResponse};
+    readonly parameters: {[key: string]: types.outputs.ParameterValueResponse};
     /**
      * State of the blueprint assignment.
      */
@@ -72,7 +72,7 @@ export interface GetAssignmentResult {
     /**
      * Names and locations of resource group placeholders.
      */
-    readonly resourceGroups: {[key: string]: types.outputs.blueprint.ResourceGroupValueResponse};
+    readonly resourceGroups: {[key: string]: types.outputs.ResourceGroupValueResponse};
     /**
      * The target subscription scope of the blueprint assignment (format: '/subscriptions/{subscriptionId}'). For management group level assignments, the property is required.
      */
@@ -80,7 +80,7 @@ export interface GetAssignmentResult {
     /**
      * Status of blueprint assignment. This field is readonly.
      */
-    readonly status: types.outputs.blueprint.AssignmentStatusResponse;
+    readonly status: types.outputs.AssignmentStatusResponse;
     /**
      * Type of this resource.
      */

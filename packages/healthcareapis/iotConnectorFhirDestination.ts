@@ -39,7 +39,7 @@ export class IotConnectorFhirDestination extends pulumi.CustomResource {
     /**
      * FHIR Mappings
      */
-    public readonly fhirMapping!: pulumi.Output<types.outputs.healthcareapis.IotMappingPropertiesResponse>;
+    public readonly fhirMapping!: pulumi.Output<types.outputs.IotMappingPropertiesResponse>;
     /**
      * Fully qualified resource id of the FHIR service to connect to.
      */
@@ -59,7 +59,7 @@ export class IotConnectorFhirDestination extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.healthcareapis.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The resource type.
      */
@@ -134,7 +134,7 @@ export interface IotConnectorFhirDestinationArgs {
     /**
      * FHIR Mappings
      */
-    fhirMapping: pulumi.Input<types.inputs.healthcareapis.IotMappingPropertiesArgs>;
+    fhirMapping: pulumi.Input<types.inputs.IotMappingPropertiesArgs>;
     /**
      * Fully qualified resource id of the FHIR service to connect to.
      */

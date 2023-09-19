@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A Disk.
  */
@@ -169,7 +169,7 @@ export interface DiskArgs {
     /**
      * The storage type for the disk (i.e. Standard, Premium).
      */
-    diskType?: pulumi.Input<string | types.enums.v20180915.StorageType>;
+    diskType?: pulumi.Input<string | types.enums.StorageType>;
     /**
      * When backed by a blob, the URI of underlying blob.
      */

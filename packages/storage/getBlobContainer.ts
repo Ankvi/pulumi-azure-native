@@ -77,11 +77,11 @@ export interface GetBlobContainerResult {
     /**
      * The ImmutabilityPolicy property of the container.
      */
-    readonly immutabilityPolicy: types.outputs.storage.ImmutabilityPolicyPropertiesResponse;
+    readonly immutabilityPolicy: types.outputs.ImmutabilityPolicyPropertiesResponse;
     /**
      * The object level immutability property of the container. The property is immutable and can only be set to true at the container creation time. Existing containers must undergo a migration process.
      */
-    readonly immutableStorageWithVersioning?: types.outputs.storage.ImmutableStorageWithVersioningResponse;
+    readonly immutableStorageWithVersioning?: types.outputs.ImmutableStorageWithVersioningResponse;
     /**
      * Returns the date and time the container was last modified.
      */
@@ -101,7 +101,7 @@ export interface GetBlobContainerResult {
     /**
      * The LegalHold property of the container.
      */
-    readonly legalHold: types.outputs.storage.LegalHoldPropertiesResponse;
+    readonly legalHold: types.outputs.LegalHoldPropertiesResponse;
     /**
      * A name-value pair to associate with the container as metadata.
      */

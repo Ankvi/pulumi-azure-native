@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A notification.
  */
@@ -46,7 +46,7 @@ export class NotificationChannel extends pulumi.CustomResource {
     /**
      * The list of event for which this notification is enabled.
      */
-    public readonly events!: pulumi.Output<types.outputs.devtestlab.v20180915.EventResponse[] | undefined>;
+    public readonly events!: pulumi.Output<types.outputs.EventResponse[] | undefined>;
     /**
      * The location of the resource.
      */
@@ -147,7 +147,7 @@ export interface NotificationChannelArgs {
     /**
      * The list of event for which this notification is enabled.
      */
-    events?: pulumi.Input<pulumi.Input<types.inputs.devtestlab.v20180915.EventArgs>[]>;
+    events?: pulumi.Input<pulumi.Input<types.inputs.EventArgs>[]>;
     /**
      * The name of the lab.
      */

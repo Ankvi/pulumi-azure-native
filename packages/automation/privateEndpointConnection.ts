@@ -43,11 +43,11 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * Private endpoint which the connection belongs to.
      */
-    public readonly privateEndpoint!: pulumi.Output<types.outputs.automation.PrivateEndpointPropertyResponse | undefined>;
+    public readonly privateEndpoint!: pulumi.Output<types.outputs.PrivateEndpointPropertyResponse | undefined>;
     /**
      * Connection State of the Private Endpoint Connection.
      */
-    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.automation.PrivateLinkServiceConnectionStatePropertyResponse | undefined>;
+    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.PrivateLinkServiceConnectionStatePropertyResponse | undefined>;
     /**
      * The type of the resource.
      */
@@ -107,7 +107,7 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * Private endpoint which the connection belongs to.
      */
-    privateEndpoint?: pulumi.Input<types.inputs.automation.PrivateEndpointPropertyArgs>;
+    privateEndpoint?: pulumi.Input<types.inputs.PrivateEndpointPropertyArgs>;
     /**
      * The name of the private endpoint connection.
      */
@@ -115,7 +115,7 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * Connection State of the Private Endpoint Connection.
      */
-    privateLinkServiceConnectionState?: pulumi.Input<types.inputs.automation.PrivateLinkServiceConnectionStatePropertyArgs>;
+    privateLinkServiceConnectionState?: pulumi.Input<types.inputs.PrivateLinkServiceConnectionStatePropertyArgs>;
     /**
      * Name of an Azure Resource group.
      */

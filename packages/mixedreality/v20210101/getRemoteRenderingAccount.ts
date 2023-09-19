@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieve a Remote Rendering Account.
  */
@@ -43,11 +43,11 @@ export interface GetRemoteRenderingAccountResult {
     /**
      * The identity associated with this account
      */
-    readonly identity?: types.outputs.mixedreality.v20210101.IdentityResponse;
+    readonly identity?: types.outputs.IdentityResponse;
     /**
      * The kind of account, if supported
      */
-    readonly kind?: types.outputs.mixedreality.v20210101.SkuResponse;
+    readonly kind?: types.outputs.SkuResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -59,11 +59,11 @@ export interface GetRemoteRenderingAccountResult {
     /**
      * The plan associated with this account
      */
-    readonly plan?: types.outputs.mixedreality.v20210101.IdentityResponse;
+    readonly plan?: types.outputs.IdentityResponse;
     /**
      * The sku associated with this account
      */
-    readonly sku?: types.outputs.mixedreality.v20210101.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * The name of the storage account associated with this accountId
      */
@@ -71,7 +71,7 @@ export interface GetRemoteRenderingAccountResult {
     /**
      * System metadata for this account
      */
-    readonly systemData: types.outputs.mixedreality.v20210101.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

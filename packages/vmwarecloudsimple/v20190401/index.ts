@@ -33,7 +33,7 @@ utilities.lazyLoad(exports, ["VirtualMachine"], () => require("./virtualMachine"
 
 
 // Export enums:
-export * from "../types/enums/v20190401";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a msixpackage.
  */
@@ -64,11 +64,11 @@ export interface GetMSIXPackageResult {
     /**
      * List of package applications. 
      */
-    readonly packageApplications?: types.outputs.desktopvirtualization.v20230707preview.MsixPackageApplicationsResponse[];
+    readonly packageApplications?: types.outputs.MsixPackageApplicationsResponse[];
     /**
      * List of package dependencies. 
      */
-    readonly packageDependencies?: types.outputs.desktopvirtualization.v20230707preview.MsixPackageDependenciesResponse[];
+    readonly packageDependencies?: types.outputs.MsixPackageDependenciesResponse[];
     /**
      * Package Family Name from appxmanifest.xml. Contains Package Name and Publisher name. 
      */
@@ -84,7 +84,7 @@ export interface GetMSIXPackageResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.desktopvirtualization.v20230707preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

@@ -43,7 +43,7 @@ export class ManagementAssociation extends pulumi.CustomResource {
     /**
      * Properties for ManagementAssociation object supported by the OperationsManagement resource provider.
      */
-    public readonly properties!: pulumi.Output<types.outputs.operationsmanagement.ManagementAssociationPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ManagementAssociationPropertiesResponse>;
     /**
      * Resource type.
      */
@@ -109,7 +109,7 @@ export interface ManagementAssociationArgs {
     /**
      * Properties for ManagementAssociation object supported by the OperationsManagement resource provider.
      */
-    properties?: pulumi.Input<types.inputs.operationsmanagement.ManagementAssociationPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ManagementAssociationPropertiesArgs>;
     /**
      * Provider name for the parent resource.
      */

@@ -37,7 +37,7 @@ export interface GetIotConnectorResult {
     /**
      * Device Mappings.
      */
-    readonly deviceMapping?: types.outputs.healthcareapis.IotMappingPropertiesResponse;
+    readonly deviceMapping?: types.outputs.IotMappingPropertiesResponse;
     /**
      * An etag associated with the resource, used for optimistic concurrency when editing it.
      */
@@ -49,11 +49,11 @@ export interface GetIotConnectorResult {
     /**
      * Setting indicating whether the service has a managed identity associated with it.
      */
-    readonly identity?: types.outputs.healthcareapis.ServiceManagedIdentityResponseIdentity;
+    readonly identity?: types.outputs.ServiceManagedIdentityResponseIdentity;
     /**
      * Source configuration.
      */
-    readonly ingestionEndpointConfiguration?: types.outputs.healthcareapis.IotEventHubIngestionEndpointConfigurationResponse;
+    readonly ingestionEndpointConfiguration?: types.outputs.IotEventHubIngestionEndpointConfigurationResponse;
     /**
      * The resource location.
      */
@@ -69,7 +69,7 @@ export interface GetIotConnectorResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.healthcareapis.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

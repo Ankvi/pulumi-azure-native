@@ -33,7 +33,7 @@ utilities.lazyLoad(exports, ["HybridAksCluster"], () => require("./hybridAksClus
 
 
 // Export enums:
-export * from "../types/enums/v20221212preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

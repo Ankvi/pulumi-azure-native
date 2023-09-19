@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the properties of the specified machine learning workspace.
  */
@@ -55,7 +55,7 @@ export interface GetWorkspaceResult {
     /**
      * The encryption settings of Azure ML workspace.
      */
-    readonly encryption?: types.outputs.machinelearningservices.v20200801.EncryptionPropertyResponse;
+    readonly encryption?: types.outputs.EncryptionPropertyResponse;
     /**
      * The friendly name for this workspace. This name in mutable
      */
@@ -71,7 +71,7 @@ export interface GetWorkspaceResult {
     /**
      * The identity of the resource.
      */
-    readonly identity?: types.outputs.machinelearningservices.v20200801.IdentityResponse;
+    readonly identity?: types.outputs.IdentityResponse;
     /**
      * The compute name for image build
      */
@@ -91,11 +91,11 @@ export interface GetWorkspaceResult {
     /**
      * The notebook info of Azure ML workspace.
      */
-    readonly notebookInfo: types.outputs.machinelearningservices.v20200801.NotebookResourceInfoResponse;
+    readonly notebookInfo: types.outputs.NotebookResourceInfoResponse;
     /**
      * The list of private endpoint connections in the workspace.
      */
-    readonly privateEndpointConnections: types.outputs.machinelearningservices.v20200801.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections: types.outputs.PrivateEndpointConnectionResponse[];
     /**
      * Count of private connections in the workspace
      */
@@ -111,11 +111,11 @@ export interface GetWorkspaceResult {
     /**
      * The list of shared private link resources in this workspace.
      */
-    readonly sharedPrivateLinkResources?: types.outputs.machinelearningservices.v20200801.SharedPrivateLinkResourceResponse[];
+    readonly sharedPrivateLinkResources?: types.outputs.SharedPrivateLinkResourceResponse[];
     /**
      * The sku of the workspace.
      */
-    readonly sku?: types.outputs.machinelearningservices.v20200801.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * ARM id of the storage account associated with this workspace. This cannot be changed once the workspace has been created
      */

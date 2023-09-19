@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Response for iSCSI Target requests.
  */
@@ -42,7 +42,7 @@ export class IscsiTarget extends pulumi.CustomResource {
     /**
      * List of LUNs to be exposed through iSCSI Target.
      */
-    public readonly luns!: pulumi.Output<types.outputs.storagepool.v20210801.IscsiLunResponse[] | undefined>;
+    public readonly luns!: pulumi.Output<types.outputs.IscsiLunResponse[] | undefined>;
     /**
      * Azure resource id. Indicates if this resource is managed by another Azure resource.
      */
@@ -70,7 +70,7 @@ export class IscsiTarget extends pulumi.CustomResource {
     /**
      * Access Control List (ACL) for an iSCSI Target; defines LUN masking policy
      */
-    public readonly staticAcls!: pulumi.Output<types.outputs.storagepool.v20210801.AclResponse[] | undefined>;
+    public readonly staticAcls!: pulumi.Output<types.outputs.AclResponse[] | undefined>;
     /**
      * Operational status of the iSCSI Target.
      */
@@ -78,7 +78,7 @@ export class IscsiTarget extends pulumi.CustomResource {
     /**
      * Resource metadata required by ARM RPC
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.storagepool.v20210801.SystemMetadataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemMetadataResponse>;
     /**
      * iSCSI Target IQN (iSCSI Qualified Name); example: "iqn.2005-03.org.iscsi:server".
      */
@@ -155,7 +155,7 @@ export interface IscsiTargetArgs {
     /**
      * Mode for Target connectivity.
      */
-    aclMode: pulumi.Input<string | types.enums.v20210801.IscsiTargetAclMode>;
+    aclMode: pulumi.Input<string | types.enums.IscsiTargetAclMode>;
     /**
      * The name of the Disk Pool.
      */
@@ -167,7 +167,7 @@ export interface IscsiTargetArgs {
     /**
      * List of LUNs to be exposed through iSCSI Target.
      */
-    luns?: pulumi.Input<pulumi.Input<types.inputs.storagepool.v20210801.IscsiLunArgs>[]>;
+    luns?: pulumi.Input<pulumi.Input<types.inputs.IscsiLunArgs>[]>;
     /**
      * Azure resource id. Indicates if this resource is managed by another Azure resource.
      */
@@ -183,7 +183,7 @@ export interface IscsiTargetArgs {
     /**
      * Access Control List (ACL) for an iSCSI Target; defines LUN masking policy
      */
-    staticAcls?: pulumi.Input<pulumi.Input<types.inputs.storagepool.v20210801.AclArgs>[]>;
+    staticAcls?: pulumi.Input<pulumi.Input<types.inputs.AclArgs>[]>;
     /**
      * iSCSI Target IQN (iSCSI Qualified Name); example: "iqn.2005-03.org.iscsi:server".
      */

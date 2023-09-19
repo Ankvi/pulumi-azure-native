@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the Spring Cloud Gateway custom domain.
  */
@@ -49,11 +49,11 @@ export interface GetGatewayCustomDomainResult {
     /**
      * The properties of custom domain for Spring Cloud Gateway
      */
-    readonly properties: types.outputs.appplatform.v20230701preview.GatewayCustomDomainPropertiesResponse;
+    readonly properties: types.outputs.GatewayCustomDomainPropertiesResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.appplatform.v20230701preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource.
      */

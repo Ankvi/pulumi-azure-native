@@ -55,11 +55,11 @@ export class VirtualHubIpConfiguration extends pulumi.CustomResource {
     /**
      * The reference to the public IP resource.
      */
-    public readonly publicIPAddress!: pulumi.Output<types.outputs.network.PublicIPAddressResponse | undefined>;
+    public readonly publicIPAddress!: pulumi.Output<types.outputs.PublicIPAddressResponse | undefined>;
     /**
      * The reference to the subnet resource.
      */
-    public readonly subnet!: pulumi.Output<types.outputs.network.SubnetResponse | undefined>;
+    public readonly subnet!: pulumi.Output<types.outputs.SubnetResponse | undefined>;
     /**
      * Ipconfiguration type.
      */
@@ -89,7 +89,7 @@ export class VirtualHubIpConfiguration extends pulumi.CustomResource {
             resourceInputs["privateIPAllocationMethod"] = args ? args.privateIPAllocationMethod : undefined;
             resourceInputs["publicIPAddress"] = args ? args.publicIPAddress : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["subnet"] = args ? (args.subnet ? pulumi.output(args.subnet).apply(types.inputs.network.subnetArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["subnet"] = args ? (args.subnet ? pulumi.output(args.subnet).apply(types.inputs.subnetArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["virtualHubName"] = args ? args.virtualHubName : undefined;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
@@ -138,7 +138,7 @@ export interface VirtualHubIpConfigurationArgs {
     /**
      * The reference to the public IP resource.
      */
-    publicIPAddress?: pulumi.Input<types.inputs.network.PublicIPAddressArgs>;
+    publicIPAddress?: pulumi.Input<types.inputs.PublicIPAddressArgs>;
     /**
      * The resource group name of the VirtualHub.
      */
@@ -146,7 +146,7 @@ export interface VirtualHubIpConfigurationArgs {
     /**
      * The reference to the subnet resource.
      */
-    subnet?: pulumi.Input<types.inputs.network.SubnetArgs>;
+    subnet?: pulumi.Input<types.inputs.SubnetArgs>;
     /**
      * The name of the VirtualHub.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A private cloud resource
  */
@@ -31,19 +31,19 @@ export interface GetPrivateCloudResult {
     /**
      * Properties describing how the cloud is distributed across availability zones
      */
-    readonly availability?: types.outputs.avs.v20230301.AvailabilityPropertiesResponse;
+    readonly availability?: types.outputs.AvailabilityPropertiesResponse;
     /**
      * An ExpressRoute Circuit
      */
-    readonly circuit?: types.outputs.avs.v20230301.CircuitResponse;
+    readonly circuit?: types.outputs.CircuitResponse;
     /**
      * Customer managed key encryption, can be enabled or disabled
      */
-    readonly encryption?: types.outputs.avs.v20230301.EncryptionResponse;
+    readonly encryption?: types.outputs.EncryptionResponse;
     /**
      * The endpoints
      */
-    readonly endpoints: types.outputs.avs.v20230301.EndpointsResponse;
+    readonly endpoints: types.outputs.EndpointsResponse;
     /**
      * Array of additional networks noncontiguous with networkBlock. Networks must be unique and non-overlapping across VNet in your subscription, on-premise, and this privateCloud networkBlock attribute. Make sure the CIDR format conforms to (A.B.C.D/X).
      */
@@ -59,11 +59,11 @@ export interface GetPrivateCloudResult {
     /**
      * The identity of the private cloud, if configured.
      */
-    readonly identity?: types.outputs.avs.v20230301.PrivateCloudIdentityResponse;
+    readonly identity?: types.outputs.PrivateCloudIdentityResponse;
     /**
      * vCenter Single Sign On Identity Sources
      */
-    readonly identitySources?: types.outputs.avs.v20230301.IdentitySourceResponse[];
+    readonly identitySources?: types.outputs.IdentitySourceResponse[];
     /**
      * Connectivity to internet is enabled or disabled
      */
@@ -75,7 +75,7 @@ export interface GetPrivateCloudResult {
     /**
      * The default cluster used for management
      */
-    readonly managementCluster: types.outputs.avs.v20230301.ManagementClusterResponse;
+    readonly managementCluster: types.outputs.ManagementClusterResponse;
     /**
      * Network used to access vCenter Server and NSX-T Manager
      */
@@ -111,11 +111,11 @@ export interface GetPrivateCloudResult {
     /**
      * A secondary expressRoute circuit from a separate AZ. Only present in a stretched private cloud
      */
-    readonly secondaryCircuit?: types.outputs.avs.v20230301.CircuitResponse;
+    readonly secondaryCircuit?: types.outputs.CircuitResponse;
     /**
      * The private cloud SKU
      */
-    readonly sku: types.outputs.avs.v20230301.SkuResponse;
+    readonly sku: types.outputs.SkuResponse;
     /**
      * Resource tags
      */

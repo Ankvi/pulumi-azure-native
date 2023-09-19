@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a Connection Setting registration for a Bot Service
  */
@@ -56,11 +56,11 @@ export interface ListBotConnectionWithSecretsResult {
     /**
      * The set of properties specific to bot channel resource
      */
-    readonly properties: types.outputs.botservice.v20220915.ConnectionSettingPropertiesResponse;
+    readonly properties: types.outputs.ConnectionSettingPropertiesResponse;
     /**
      * Gets or sets the SKU of the resource.
      */
-    readonly sku?: types.outputs.botservice.v20220915.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * Contains resource tags defined as key/value pairs.
      */

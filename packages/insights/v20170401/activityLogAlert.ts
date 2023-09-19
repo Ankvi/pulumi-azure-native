@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An activity log alert resource.
  */
@@ -34,11 +34,11 @@ export class ActivityLogAlert extends pulumi.CustomResource {
     /**
      * The actions that will activate when the condition is met.
      */
-    public readonly actions!: pulumi.Output<types.outputs.insights.v20170401.ActivityLogAlertActionListResponse>;
+    public readonly actions!: pulumi.Output<types.outputs.ActivityLogAlertActionListResponse>;
     /**
      * The condition that will cause this alert to activate.
      */
-    public readonly condition!: pulumi.Output<types.outputs.insights.v20170401.ActivityLogAlertAllOfConditionResponse>;
+    public readonly condition!: pulumi.Output<types.outputs.ActivityLogAlertAllOfConditionResponse>;
     /**
      * A description of this activity log alert.
      */
@@ -127,7 +127,7 @@ export interface ActivityLogAlertArgs {
     /**
      * The actions that will activate when the condition is met.
      */
-    actions: pulumi.Input<types.inputs.insights.v20170401.ActivityLogAlertActionListArgs>;
+    actions: pulumi.Input<types.inputs.ActivityLogAlertActionListArgs>;
     /**
      * The name of the activity log alert.
      */
@@ -135,7 +135,7 @@ export interface ActivityLogAlertArgs {
     /**
      * The condition that will cause this alert to activate.
      */
-    condition: pulumi.Input<types.inputs.insights.v20170401.ActivityLogAlertAllOfConditionArgs>;
+    condition: pulumi.Input<types.inputs.ActivityLogAlertAllOfConditionArgs>;
     /**
      * A description of this activity log alert.
      */

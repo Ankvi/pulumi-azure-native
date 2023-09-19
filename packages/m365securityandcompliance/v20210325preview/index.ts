@@ -123,7 +123,7 @@ utilities.lazyLoad(exports, ["PrivateLinkServicesForSCCPowershell"], () => requi
 
 
 // Export enums:
-export * from "../types/enums/v20210325preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

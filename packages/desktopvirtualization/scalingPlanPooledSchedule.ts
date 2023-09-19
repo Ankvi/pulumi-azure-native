@@ -47,7 +47,7 @@ export class ScalingPlanPooledSchedule extends pulumi.CustomResource {
     /**
      * Starting time for off-peak period.
      */
-    public readonly offPeakStartTime!: pulumi.Output<types.outputs.desktopvirtualization.TimeResponse | undefined>;
+    public readonly offPeakStartTime!: pulumi.Output<types.outputs.TimeResponse | undefined>;
     /**
      * Load balancing algorithm for peak period.
      */
@@ -55,7 +55,7 @@ export class ScalingPlanPooledSchedule extends pulumi.CustomResource {
     /**
      * Starting time for peak period.
      */
-    public readonly peakStartTime!: pulumi.Output<types.outputs.desktopvirtualization.TimeResponse | undefined>;
+    public readonly peakStartTime!: pulumi.Output<types.outputs.TimeResponse | undefined>;
     /**
      * Capacity threshold for ramp down period.
      */
@@ -79,7 +79,7 @@ export class ScalingPlanPooledSchedule extends pulumi.CustomResource {
     /**
      * Starting time for ramp down period.
      */
-    public readonly rampDownStartTime!: pulumi.Output<types.outputs.desktopvirtualization.TimeResponse | undefined>;
+    public readonly rampDownStartTime!: pulumi.Output<types.outputs.TimeResponse | undefined>;
     /**
      * Specifies when to stop hosts during ramp down period.
      */
@@ -103,11 +103,11 @@ export class ScalingPlanPooledSchedule extends pulumi.CustomResource {
     /**
      * Starting time for ramp up period.
      */
-    public readonly rampUpStartTime!: pulumi.Output<types.outputs.desktopvirtualization.TimeResponse | undefined>;
+    public readonly rampUpStartTime!: pulumi.Output<types.outputs.TimeResponse | undefined>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.desktopvirtualization.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -197,7 +197,7 @@ export interface ScalingPlanPooledScheduleArgs {
     /**
      * Starting time for off-peak period.
      */
-    offPeakStartTime?: pulumi.Input<types.inputs.desktopvirtualization.TimeArgs>;
+    offPeakStartTime?: pulumi.Input<types.inputs.TimeArgs>;
     /**
      * Load balancing algorithm for peak period.
      */
@@ -205,7 +205,7 @@ export interface ScalingPlanPooledScheduleArgs {
     /**
      * Starting time for peak period.
      */
-    peakStartTime?: pulumi.Input<types.inputs.desktopvirtualization.TimeArgs>;
+    peakStartTime?: pulumi.Input<types.inputs.TimeArgs>;
     /**
      * Capacity threshold for ramp down period.
      */
@@ -229,7 +229,7 @@ export interface ScalingPlanPooledScheduleArgs {
     /**
      * Starting time for ramp down period.
      */
-    rampDownStartTime?: pulumi.Input<types.inputs.desktopvirtualization.TimeArgs>;
+    rampDownStartTime?: pulumi.Input<types.inputs.TimeArgs>;
     /**
      * Specifies when to stop hosts during ramp down period.
      */
@@ -253,7 +253,7 @@ export interface ScalingPlanPooledScheduleArgs {
     /**
      * Starting time for ramp up period.
      */
-    rampUpStartTime?: pulumi.Input<types.inputs.desktopvirtualization.TimeArgs>;
+    rampUpStartTime?: pulumi.Input<types.inputs.TimeArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the specified virtual network by resource group.
  */
@@ -36,15 +36,15 @@ export interface GetVirtualNetworkResult {
     /**
      * The AddressSpace that contains an array of IP address ranges that can be used by subnets.
      */
-    readonly addressSpace?: types.outputs.network.v20190601.AddressSpaceResponse;
+    readonly addressSpace?: types.outputs.AddressSpaceResponse;
     /**
      * The DDoS protection plan associated with the virtual network.
      */
-    readonly ddosProtectionPlan?: types.outputs.network.v20190601.SubResourceResponse;
+    readonly ddosProtectionPlan?: types.outputs.SubResourceResponse;
     /**
      * The dhcpOptions that contains an array of DNS servers available to VMs deployed in the virtual network.
      */
-    readonly dhcpOptions?: types.outputs.network.v20190601.DhcpOptionsResponse;
+    readonly dhcpOptions?: types.outputs.DhcpOptionsResponse;
     /**
      * Indicates if DDoS protection is enabled for all the protected resources in the virtual network. It requires a DDoS protection plan associated with the resource.
      */
@@ -80,7 +80,7 @@ export interface GetVirtualNetworkResult {
     /**
      * A list of subnets in a Virtual Network.
      */
-    readonly subnets?: types.outputs.network.v20190601.SubnetResponse[];
+    readonly subnets?: types.outputs.SubnetResponse[];
     /**
      * Resource tags.
      */
@@ -92,7 +92,7 @@ export interface GetVirtualNetworkResult {
     /**
      * A list of peerings in a Virtual Network.
      */
-    readonly virtualNetworkPeerings?: types.outputs.network.v20190601.VirtualNetworkPeeringResponse[];
+    readonly virtualNetworkPeerings?: types.outputs.VirtualNetworkPeeringResponse[];
 }
 /**
  * Gets the specified virtual network by resource group.

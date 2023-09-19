@@ -39,7 +39,7 @@ export class ServerEndpoint extends pulumi.CustomResource {
     /**
      * Cloud tiering status. Only populated if cloud tiering is enabled.
      */
-    public /*out*/ readonly cloudTieringStatus!: pulumi.Output<types.outputs.storagesync.ServerEndpointCloudTieringStatusResponse>;
+    public /*out*/ readonly cloudTieringStatus!: pulumi.Output<types.outputs.ServerEndpointCloudTieringStatusResponse>;
     /**
      * Friendly Name
      */
@@ -91,7 +91,7 @@ export class ServerEndpoint extends pulumi.CustomResource {
     /**
      * Recall status. Only populated if cloud tiering is enabled.
      */
-    public /*out*/ readonly recallStatus!: pulumi.Output<types.outputs.storagesync.ServerEndpointRecallStatusResponse>;
+    public /*out*/ readonly recallStatus!: pulumi.Output<types.outputs.ServerEndpointRecallStatusResponse>;
     /**
      * Server Local path.
      */
@@ -107,11 +107,11 @@ export class ServerEndpoint extends pulumi.CustomResource {
     /**
      * Server Endpoint sync status
      */
-    public /*out*/ readonly syncStatus!: pulumi.Output<types.outputs.storagesync.ServerEndpointSyncStatusResponse>;
+    public /*out*/ readonly syncStatus!: pulumi.Output<types.outputs.ServerEndpointSyncStatusResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.storagesync.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Tier files older than days.
      */

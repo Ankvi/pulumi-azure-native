@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Response to put/get patch schedules for Redis cache.
  */
@@ -42,7 +42,7 @@ export class PatchSchedule extends pulumi.CustomResource {
     /**
      * List of patch schedules for a Redis cache.
      */
-    public readonly scheduleEntries!: pulumi.Output<types.outputs.cache.v20230801.ScheduleEntryResponse[]>;
+    public readonly scheduleEntries!: pulumi.Output<types.outputs.ScheduleEntryResponse[]>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -106,5 +106,5 @@ export interface PatchScheduleArgs {
     /**
      * List of patch schedules for a Redis cache.
      */
-    scheduleEntries: pulumi.Input<pulumi.Input<types.inputs.cache.v20230801.ScheduleEntryArgs>[]>;
+    scheduleEntries: pulumi.Input<pulumi.Input<types.inputs.ScheduleEntryArgs>[]>;
 }

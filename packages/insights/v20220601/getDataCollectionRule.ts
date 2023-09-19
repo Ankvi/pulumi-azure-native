@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Definition of ARM tracked top level resource.
  */
@@ -35,12 +35,12 @@ export interface GetDataCollectionRuleResult {
     /**
      * The specification of data flows.
      */
-    readonly dataFlows?: types.outputs.insights.v20220601.DataFlowResponse[];
+    readonly dataFlows?: types.outputs.DataFlowResponse[];
     /**
      * The specification of data sources. 
      * This property is optional and can be omitted if the rule is meant to be used via direct calls to the provisioned endpoint.
      */
-    readonly dataSources?: types.outputs.insights.v20220601.DataCollectionRuleResponseDataSources;
+    readonly dataSources?: types.outputs.DataCollectionRuleResponseDataSources;
     /**
      * Description of the data collection rule.
      */
@@ -48,7 +48,7 @@ export interface GetDataCollectionRuleResult {
     /**
      * The specification of destinations.
      */
-    readonly destinations?: types.outputs.insights.v20220601.DataCollectionRuleResponseDestinations;
+    readonly destinations?: types.outputs.DataCollectionRuleResponseDestinations;
     /**
      * Resource entity tag (ETag).
      */
@@ -60,7 +60,7 @@ export interface GetDataCollectionRuleResult {
     /**
      * Managed service identity of the resource.
      */
-    readonly identity?: types.outputs.insights.v20220601.DataCollectionRuleResourceResponseIdentity;
+    readonly identity?: types.outputs.DataCollectionRuleResourceResponseIdentity;
     /**
      * The immutable ID of this data collection rule. This property is READ-ONLY.
      */
@@ -76,7 +76,7 @@ export interface GetDataCollectionRuleResult {
     /**
      * Metadata about the resource
      */
-    readonly metadata: types.outputs.insights.v20220601.DataCollectionRuleResponseMetadata;
+    readonly metadata: types.outputs.DataCollectionRuleResponseMetadata;
     /**
      * The name of the resource.
      */
@@ -88,11 +88,11 @@ export interface GetDataCollectionRuleResult {
     /**
      * Declaration of custom streams used in this rule.
      */
-    readonly streamDeclarations?: {[key: string]: types.outputs.insights.v20220601.StreamDeclarationResponse};
+    readonly streamDeclarations?: {[key: string]: types.outputs.StreamDeclarationResponse};
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.insights.v20220601.DataCollectionRuleResourceResponseSystemData;
+    readonly systemData: types.outputs.DataCollectionRuleResourceResponseSystemData;
     /**
      * Resource tags.
      */

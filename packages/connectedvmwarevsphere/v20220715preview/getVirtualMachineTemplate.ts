@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Implements virtual machine template GET method.
  */
@@ -35,11 +35,11 @@ export interface GetVirtualMachineTemplateResult {
     /**
      * Gets or sets the disks the template.
      */
-    readonly disks: types.outputs.connectedvmwarevsphere.v20220715preview.VirtualDiskResponse[];
+    readonly disks: types.outputs.VirtualDiskResponse[];
     /**
      * Gets or sets the extended location.
      */
-    readonly extendedLocation?: types.outputs.connectedvmwarevsphere.v20220715preview.ExtendedLocationResponse;
+    readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
     /**
      * Firmware type
      */
@@ -84,7 +84,7 @@ export interface GetVirtualMachineTemplateResult {
     /**
      * Gets or sets the network interfaces of the template.
      */
-    readonly networkInterfaces: types.outputs.connectedvmwarevsphere.v20220715preview.NetworkInterfaceResponse[];
+    readonly networkInterfaces: types.outputs.NetworkInterfaceResponse[];
     /**
      * Gets or sets the number of vCPUs for the template.
      */
@@ -109,11 +109,11 @@ export interface GetVirtualMachineTemplateResult {
     /**
      * The resource status information.
      */
-    readonly statuses: types.outputs.connectedvmwarevsphere.v20220715preview.ResourceStatusResponse[];
+    readonly statuses: types.outputs.ResourceStatusResponse[];
     /**
      * The system data.
      */
-    readonly systemData: types.outputs.connectedvmwarevsphere.v20220715preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Gets or sets the Resource tags.
      */

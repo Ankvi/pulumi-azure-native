@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a certificate order.
  */
@@ -39,7 +39,7 @@ export interface GetAppServiceCertificateOrderResult {
     /**
      * State of the Key Vault secret.
      */
-    readonly certificates?: {[key: string]: types.outputs.certificateregistration.v20201001.AppServiceCertificateResponse};
+    readonly certificates?: {[key: string]: types.outputs.AppServiceCertificateResponse};
     /**
      * Last CSR that was created for this order.
      */
@@ -63,7 +63,7 @@ export interface GetAppServiceCertificateOrderResult {
     /**
      * Intermediate certificate.
      */
-    readonly intermediate: types.outputs.certificateregistration.v20201001.CertificateDetailsResponse;
+    readonly intermediate: types.outputs.CertificateDetailsResponse;
     /**
      * <code>true</code> if private key is external; otherwise, <code>false</code>.
      */
@@ -103,7 +103,7 @@ export interface GetAppServiceCertificateOrderResult {
     /**
      * Root certificate.
      */
-    readonly root: types.outputs.certificateregistration.v20201001.CertificateDetailsResponse;
+    readonly root: types.outputs.CertificateDetailsResponse;
     /**
      * Current serial number of the certificate.
      */
@@ -111,7 +111,7 @@ export interface GetAppServiceCertificateOrderResult {
     /**
      * Signed certificate.
      */
-    readonly signedCertificate: types.outputs.certificateregistration.v20201001.CertificateDetailsResponse;
+    readonly signedCertificate: types.outputs.CertificateDetailsResponse;
     /**
      * Current order status.
      */
@@ -119,7 +119,7 @@ export interface GetAppServiceCertificateOrderResult {
     /**
      * The system metadata relating to this resource.
      */
-    readonly systemData: types.outputs.certificateregistration.v20201001.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

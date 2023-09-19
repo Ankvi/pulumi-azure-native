@@ -43,11 +43,11 @@ export class IoTAddon extends pulumi.CustomResource {
     /**
      * IoT device metadata to which appliance needs to be connected.
      */
-    public readonly ioTDeviceDetails!: pulumi.Output<types.outputs.databoxedge.IoTDeviceInfoResponse>;
+    public readonly ioTDeviceDetails!: pulumi.Output<types.outputs.IoTDeviceInfoResponse>;
     /**
      * IoT edge device to which the IoT Addon needs to be configured.
      */
-    public readonly ioTEdgeDeviceDetails!: pulumi.Output<types.outputs.databoxedge.IoTDeviceInfoResponse>;
+    public readonly ioTEdgeDeviceDetails!: pulumi.Output<types.outputs.IoTDeviceInfoResponse>;
     /**
      * Addon type.
      * Expected value is 'IotEdge'.
@@ -64,7 +64,7 @@ export class IoTAddon extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of Addon
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.databoxedge.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The hierarchical type of the object.
      */
@@ -151,11 +151,11 @@ export interface IoTAddonArgs {
     /**
      * IoT device metadata to which appliance needs to be connected.
      */
-    ioTDeviceDetails: pulumi.Input<types.inputs.databoxedge.IoTDeviceInfoArgs>;
+    ioTDeviceDetails: pulumi.Input<types.inputs.IoTDeviceInfoArgs>;
     /**
      * IoT edge device to which the IoT Addon needs to be configured.
      */
-    ioTEdgeDeviceDetails: pulumi.Input<types.inputs.databoxedge.IoTDeviceInfoArgs>;
+    ioTEdgeDeviceDetails: pulumi.Input<types.inputs.IoTDeviceInfoArgs>;
     /**
      * Addon type.
      * Expected value is 'IotEdge'.

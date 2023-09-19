@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Description of topic resource.
  */
@@ -38,7 +38,7 @@ export class NamespaceNetworkRuleSet extends pulumi.CustomResource {
     /**
      * List of IpRules
      */
-    public readonly ipRules!: pulumi.Output<types.outputs.eventhub.v20221001preview.NWRuleSetIpRulesResponse[] | undefined>;
+    public readonly ipRules!: pulumi.Output<types.outputs.NWRuleSetIpRulesResponse[] | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -54,7 +54,7 @@ export class NamespaceNetworkRuleSet extends pulumi.CustomResource {
     /**
      * The system meta data relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.eventhub.v20221001preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Value that indicates whether Trusted Service Access is Enabled or not.
      */
@@ -66,7 +66,7 @@ export class NamespaceNetworkRuleSet extends pulumi.CustomResource {
     /**
      * List VirtualNetwork Rules
      */
-    public readonly virtualNetworkRules!: pulumi.Output<types.outputs.eventhub.v20221001preview.NWRuleSetVirtualNetworkRulesResponse[] | undefined>;
+    public readonly virtualNetworkRules!: pulumi.Output<types.outputs.NWRuleSetVirtualNetworkRulesResponse[] | undefined>;
 
     /**
      * Create a NamespaceNetworkRuleSet resource with the given unique name, arguments, and options.
@@ -121,11 +121,11 @@ export interface NamespaceNetworkRuleSetArgs {
     /**
      * Default Action for Network Rule Set
      */
-    defaultAction?: pulumi.Input<string | types.enums.v20221001preview.DefaultAction>;
+    defaultAction?: pulumi.Input<string | types.enums.DefaultAction>;
     /**
      * List of IpRules
      */
-    ipRules?: pulumi.Input<pulumi.Input<types.inputs.eventhub.v20221001preview.NWRuleSetIpRulesArgs>[]>;
+    ipRules?: pulumi.Input<pulumi.Input<types.inputs.NWRuleSetIpRulesArgs>[]>;
     /**
      * The Namespace name
      */
@@ -133,7 +133,7 @@ export interface NamespaceNetworkRuleSetArgs {
     /**
      * This determines if traffic is allowed over public network. By default it is enabled. If value is SecuredByPerimeter then Inbound and Outbound communication is controlled by the network security perimeter and profile's access rules. 
      */
-    publicNetworkAccess?: pulumi.Input<string | types.enums.v20221001preview.PublicNetworkAccessFlag>;
+    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccessFlag>;
     /**
      * Name of the resource group within the azure subscription.
      */
@@ -145,5 +145,5 @@ export interface NamespaceNetworkRuleSetArgs {
     /**
      * List VirtualNetwork Rules
      */
-    virtualNetworkRules?: pulumi.Input<pulumi.Input<types.inputs.eventhub.v20221001preview.NWRuleSetVirtualNetworkRulesArgs>[]>;
+    virtualNetworkRules?: pulumi.Input<pulumi.Input<types.inputs.NWRuleSetVirtualNetworkRulesArgs>[]>;
 }

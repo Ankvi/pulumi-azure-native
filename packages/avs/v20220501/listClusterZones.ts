@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * List of all zones and associated hosts for a cluster
  */
@@ -36,7 +36,7 @@ export interface ListClusterZonesResult {
     /**
      * Zone and associated hosts info
      */
-    readonly zones?: types.outputs.avs.v20220501.ClusterZoneResponse[];
+    readonly zones?: types.outputs.ClusterZoneResponse[];
 }
 /**
  * List of all zones and associated hosts for a cluster

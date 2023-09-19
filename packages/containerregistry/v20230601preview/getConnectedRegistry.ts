@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the properties of the connected registry.
  */
@@ -36,7 +36,7 @@ export interface GetConnectedRegistryResult {
     /**
      * The activation properties of the connected registry.
      */
-    readonly activation: types.outputs.containerregistry.v20230601preview.ActivationPropertiesResponse;
+    readonly activation: types.outputs.ActivationPropertiesResponse;
     /**
      * The list of the ACR token resource IDs used to authenticate clients to the connected registry.
      */
@@ -56,11 +56,11 @@ export interface GetConnectedRegistryResult {
     /**
      * The logging properties of the connected registry.
      */
-    readonly logging?: types.outputs.containerregistry.v20230601preview.LoggingPropertiesResponse;
+    readonly logging?: types.outputs.LoggingPropertiesResponse;
     /**
      * The login server properties of the connected registry.
      */
-    readonly loginServer?: types.outputs.containerregistry.v20230601preview.LoginServerPropertiesResponse;
+    readonly loginServer?: types.outputs.LoginServerPropertiesResponse;
     /**
      * The mode of the connected registry resource that indicates the permissions of the registry.
      */
@@ -76,7 +76,7 @@ export interface GetConnectedRegistryResult {
     /**
      * The parent of the connected registry.
      */
-    readonly parent: types.outputs.containerregistry.v20230601preview.ParentPropertiesResponse;
+    readonly parent: types.outputs.ParentPropertiesResponse;
     /**
      * Provisioning state of the resource.
      */
@@ -84,11 +84,11 @@ export interface GetConnectedRegistryResult {
     /**
      * The list of current statuses of the connected registry.
      */
-    readonly statusDetails: types.outputs.containerregistry.v20230601preview.StatusDetailPropertiesResponse[];
+    readonly statusDetails: types.outputs.StatusDetailPropertiesResponse[];
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.containerregistry.v20230601preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource.
      */

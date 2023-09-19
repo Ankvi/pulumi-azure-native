@@ -36,11 +36,11 @@ export class AFDOriginGroup extends pulumi.CustomResource {
     /**
      * Health probe settings to the origin that is used to determine the health of the origin.
      */
-    public readonly healthProbeSettings!: pulumi.Output<types.outputs.cdn.HealthProbeParametersResponse | undefined>;
+    public readonly healthProbeSettings!: pulumi.Output<types.outputs.HealthProbeParametersResponse | undefined>;
     /**
      * Load balancing settings for a backend pool
      */
-    public readonly loadBalancingSettings!: pulumi.Output<types.outputs.cdn.LoadBalancingSettingsParametersResponse | undefined>;
+    public readonly loadBalancingSettings!: pulumi.Output<types.outputs.LoadBalancingSettingsParametersResponse | undefined>;
     /**
      * Resource name.
      */
@@ -60,7 +60,7 @@ export class AFDOriginGroup extends pulumi.CustomResource {
     /**
      * Read only system data
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.cdn.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Time in minutes to shift the traffic to the endpoint gradually when an unhealthy endpoint comes healthy or a new endpoint is added. Default is 10 mins. This property is currently not supported.
      */
@@ -125,11 +125,11 @@ export interface AFDOriginGroupArgs {
     /**
      * Health probe settings to the origin that is used to determine the health of the origin.
      */
-    healthProbeSettings?: pulumi.Input<types.inputs.cdn.HealthProbeParametersArgs>;
+    healthProbeSettings?: pulumi.Input<types.inputs.HealthProbeParametersArgs>;
     /**
      * Load balancing settings for a backend pool
      */
-    loadBalancingSettings?: pulumi.Input<types.inputs.cdn.LoadBalancingSettingsParametersArgs>;
+    loadBalancingSettings?: pulumi.Input<types.inputs.LoadBalancingSettingsParametersArgs>;
     /**
      * Name of the origin group which is unique within the endpoint.
      */

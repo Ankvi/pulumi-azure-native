@@ -75,7 +75,7 @@ export class Webhook extends pulumi.CustomResource {
     /**
      * Gets or sets the runbook the webhook is associated with.
      */
-    public readonly runbook!: pulumi.Output<types.outputs.automation.RunbookAssociationPropertyResponse | undefined>;
+    public readonly runbook!: pulumi.Output<types.outputs.RunbookAssociationPropertyResponse | undefined>;
     /**
      * The type of the resource.
      */
@@ -178,7 +178,7 @@ export interface WebhookArgs {
     /**
      * Gets or sets the runbook.
      */
-    runbook?: pulumi.Input<types.inputs.automation.RunbookAssociationPropertyArgs>;
+    runbook?: pulumi.Input<types.inputs.RunbookAssociationPropertyArgs>;
     /**
      * Gets or sets the uri.
      */

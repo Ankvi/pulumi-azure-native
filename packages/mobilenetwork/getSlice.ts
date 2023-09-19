@@ -57,11 +57,11 @@ export interface GetSliceResult {
     /**
      * Single-network slice selection assistance information (S-NSSAI). Unique at the scope of a mobile network.
      */
-    readonly snssai: types.outputs.mobilenetwork.SnssaiResponse;
+    readonly snssai: types.outputs.SnssaiResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.mobilenetwork.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Domain service.
  */
@@ -34,7 +34,7 @@ export class DomainService extends pulumi.CustomResource {
     /**
      * Configuration diagnostics data containing latest execution from client.
      */
-    public readonly configDiagnostics!: pulumi.Output<types.outputs.aad.v20221201.ConfigDiagnosticsResponse | undefined>;
+    public readonly configDiagnostics!: pulumi.Output<types.outputs.ConfigDiagnosticsResponse | undefined>;
     /**
      * Deployment Id
      */
@@ -50,7 +50,7 @@ export class DomainService extends pulumi.CustomResource {
     /**
      * DomainSecurity Settings
      */
-    public readonly domainSecuritySettings!: pulumi.Output<types.outputs.aad.v20221201.DomainSecuritySettingsResponse | undefined>;
+    public readonly domainSecuritySettings!: pulumi.Output<types.outputs.DomainSecuritySettingsResponse | undefined>;
     /**
      * Resource etag
      */
@@ -62,7 +62,7 @@ export class DomainService extends pulumi.CustomResource {
     /**
      * Secure LDAP Settings
      */
-    public readonly ldapsSettings!: pulumi.Output<types.outputs.aad.v20221201.LdapsSettingsResponse | undefined>;
+    public readonly ldapsSettings!: pulumi.Output<types.outputs.LdapsSettingsResponse | undefined>;
     /**
      * Resource location
      */
@@ -70,7 +70,7 @@ export class DomainService extends pulumi.CustomResource {
     /**
      * Migration Properties
      */
-    public /*out*/ readonly migrationProperties!: pulumi.Output<types.outputs.aad.v20221201.MigrationPropertiesResponse>;
+    public /*out*/ readonly migrationProperties!: pulumi.Output<types.outputs.MigrationPropertiesResponse>;
     /**
      * Resource name
      */
@@ -78,7 +78,7 @@ export class DomainService extends pulumi.CustomResource {
     /**
      * Notification Settings
      */
-    public readonly notificationSettings!: pulumi.Output<types.outputs.aad.v20221201.NotificationSettingsResponse | undefined>;
+    public readonly notificationSettings!: pulumi.Output<types.outputs.NotificationSettingsResponse | undefined>;
     /**
      * the current deployment or provisioning state, which only appears in the response.
      */
@@ -86,11 +86,11 @@ export class DomainService extends pulumi.CustomResource {
     /**
      * List of ReplicaSets
      */
-    public readonly replicaSets!: pulumi.Output<types.outputs.aad.v20221201.ReplicaSetResponse[] | undefined>;
+    public readonly replicaSets!: pulumi.Output<types.outputs.ReplicaSetResponse[] | undefined>;
     /**
      * Resource Forest Settings
      */
-    public readonly resourceForestSettings!: pulumi.Output<types.outputs.aad.v20221201.ResourceForestSettingsResponse | undefined>;
+    public readonly resourceForestSettings!: pulumi.Output<types.outputs.ResourceForestSettingsResponse | undefined>;
     /**
      * Sku Type
      */
@@ -110,7 +110,7 @@ export class DomainService extends pulumi.CustomResource {
     /**
      * The system meta data relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.aad.v20221201.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags
      */
@@ -145,10 +145,10 @@ export class DomainService extends pulumi.CustomResource {
             resourceInputs["configDiagnostics"] = args ? args.configDiagnostics : undefined;
             resourceInputs["domainConfigurationType"] = args ? args.domainConfigurationType : undefined;
             resourceInputs["domainName"] = args ? args.domainName : undefined;
-            resourceInputs["domainSecuritySettings"] = args ? (args.domainSecuritySettings ? pulumi.output(args.domainSecuritySettings).apply(types.inputs.aad.v20221201.domainSecuritySettingsArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["domainSecuritySettings"] = args ? (args.domainSecuritySettings ? pulumi.output(args.domainSecuritySettings).apply(types.inputs.domainSecuritySettingsArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["domainServiceName"] = args ? args.domainServiceName : undefined;
             resourceInputs["filteredSync"] = args ? args.filteredSync : undefined;
-            resourceInputs["ldapsSettings"] = args ? (args.ldapsSettings ? pulumi.output(args.ldapsSettings).apply(types.inputs.aad.v20221201.ldapsSettingsArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["ldapsSettings"] = args ? (args.ldapsSettings ? pulumi.output(args.ldapsSettings).apply(types.inputs.ldapsSettingsArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["notificationSettings"] = args ? args.notificationSettings : undefined;
             resourceInputs["replicaSets"] = args ? args.replicaSets : undefined;
@@ -208,7 +208,7 @@ export interface DomainServiceArgs {
     /**
      * Configuration diagnostics data containing latest execution from client.
      */
-    configDiagnostics?: pulumi.Input<types.inputs.aad.v20221201.ConfigDiagnosticsArgs>;
+    configDiagnostics?: pulumi.Input<types.inputs.ConfigDiagnosticsArgs>;
     /**
      * Domain Configuration Type
      */
@@ -220,7 +220,7 @@ export interface DomainServiceArgs {
     /**
      * DomainSecurity Settings
      */
-    domainSecuritySettings?: pulumi.Input<types.inputs.aad.v20221201.DomainSecuritySettingsArgs>;
+    domainSecuritySettings?: pulumi.Input<types.inputs.DomainSecuritySettingsArgs>;
     /**
      * The name of the domain service.
      */
@@ -228,11 +228,11 @@ export interface DomainServiceArgs {
     /**
      * Enabled or Disabled flag to turn on Group-based filtered sync
      */
-    filteredSync?: pulumi.Input<string | types.enums.v20221201.FilteredSync>;
+    filteredSync?: pulumi.Input<string | types.enums.FilteredSync>;
     /**
      * Secure LDAP Settings
      */
-    ldapsSettings?: pulumi.Input<types.inputs.aad.v20221201.LdapsSettingsArgs>;
+    ldapsSettings?: pulumi.Input<types.inputs.LdapsSettingsArgs>;
     /**
      * Resource location
      */
@@ -240,15 +240,15 @@ export interface DomainServiceArgs {
     /**
      * Notification Settings
      */
-    notificationSettings?: pulumi.Input<types.inputs.aad.v20221201.NotificationSettingsArgs>;
+    notificationSettings?: pulumi.Input<types.inputs.NotificationSettingsArgs>;
     /**
      * List of ReplicaSets
      */
-    replicaSets?: pulumi.Input<pulumi.Input<types.inputs.aad.v20221201.ReplicaSetArgs>[]>;
+    replicaSets?: pulumi.Input<pulumi.Input<types.inputs.ReplicaSetArgs>[]>;
     /**
      * Resource Forest Settings
      */
-    resourceForestSettings?: pulumi.Input<types.inputs.aad.v20221201.ResourceForestSettingsArgs>;
+    resourceForestSettings?: pulumi.Input<types.inputs.ResourceForestSettingsArgs>;
     /**
      * The name of the resource group within the user's subscription. The name is case insensitive.
      */
@@ -260,7 +260,7 @@ export interface DomainServiceArgs {
     /**
      * All or CloudOnly, All users in AAD are synced to AAD DS domain or only users actively syncing in the cloud
      */
-    syncScope?: pulumi.Input<string | types.enums.v20221201.SyncScope>;
+    syncScope?: pulumi.Input<string | types.enums.SyncScope>;
     /**
      * Resource tags
      */

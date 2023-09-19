@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The NetworkToNetworkInterconnect resource definition.
  */
@@ -42,11 +42,11 @@ export class NetworkToNetworkInterconnect extends pulumi.CustomResource {
     /**
      * Common properties for Layer2Configuration.
      */
-    public readonly layer2Configuration!: pulumi.Output<types.outputs.managednetworkfabric.v20230201preview.Layer2ConfigurationResponse | undefined>;
+    public readonly layer2Configuration!: pulumi.Output<types.outputs.Layer2ConfigurationResponse | undefined>;
     /**
      * Common properties for Layer3Configuration.
      */
-    public readonly layer3Configuration!: pulumi.Output<types.outputs.managednetworkfabric.v20230201preview.Layer3ConfigurationResponse | undefined>;
+    public readonly layer3Configuration!: pulumi.Output<types.outputs.Layer3ConfigurationResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -62,7 +62,7 @@ export class NetworkToNetworkInterconnect extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.managednetworkfabric.v20230201preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -96,7 +96,7 @@ export class NetworkToNetworkInterconnect extends pulumi.CustomResource {
                 throw new Error("Missing required property 'useOptionB'");
             }
             resourceInputs["isManagementType"] = args ? args.isManagementType : undefined;
-            resourceInputs["layer2Configuration"] = args ? (args.layer2Configuration ? pulumi.output(args.layer2Configuration).apply(types.inputs.managednetworkfabric.v20230201preview.layer2ConfigurationArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["layer2Configuration"] = args ? (args.layer2Configuration ? pulumi.output(args.layer2Configuration).apply(types.inputs.layer2ConfigurationArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["layer3Configuration"] = args ? args.layer3Configuration : undefined;
             resourceInputs["networkFabricName"] = args ? args.networkFabricName : undefined;
             resourceInputs["networkToNetworkInterconnectName"] = args ? args.networkToNetworkInterconnectName : undefined;
@@ -134,15 +134,15 @@ export interface NetworkToNetworkInterconnectArgs {
     /**
      * Configuration to use NNI for Infrastructure Management. Example: True/False.
      */
-    isManagementType: pulumi.Input<string | types.enums.v20230201preview.BooleanEnumProperty>;
+    isManagementType: pulumi.Input<string | types.enums.BooleanEnumProperty>;
     /**
      * Common properties for Layer2Configuration.
      */
-    layer2Configuration?: pulumi.Input<types.inputs.managednetworkfabric.v20230201preview.Layer2ConfigurationArgs>;
+    layer2Configuration?: pulumi.Input<types.inputs.Layer2ConfigurationArgs>;
     /**
      * Common properties for Layer3Configuration.
      */
-    layer3Configuration?: pulumi.Input<types.inputs.managednetworkfabric.v20230201preview.Layer3ConfigurationArgs>;
+    layer3Configuration?: pulumi.Input<types.inputs.Layer3ConfigurationArgs>;
     /**
      * Name of the NetworkFabric.
      */
@@ -154,7 +154,7 @@ export interface NetworkToNetworkInterconnectArgs {
     /**
      * Type of NNI used. Example: CE | NPB
      */
-    nniType?: pulumi.Input<string | types.enums.v20230201preview.NniType>;
+    nniType?: pulumi.Input<string | types.enums.NniType>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -162,5 +162,5 @@ export interface NetworkToNetworkInterconnectArgs {
     /**
      * Based on this parameter the layer2/layer3 is made as mandatory. Example: True/False
      */
-    useOptionB: pulumi.Input<string | types.enums.v20230201preview.BooleanEnumProperty>;
+    useOptionB: pulumi.Input<string | types.enums.BooleanEnumProperty>;
 }

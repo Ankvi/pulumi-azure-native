@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns a feature registration
  */
@@ -36,7 +36,7 @@ export interface GetSubscriptionFeatureRegistrationResult {
      * Azure resource name.
      */
     readonly name: string;
-    readonly properties: types.outputs.features.v20210701.SubscriptionFeatureRegistrationResponseProperties;
+    readonly properties: types.outputs.SubscriptionFeatureRegistrationResponseProperties;
     /**
      * Azure resource type.
      */

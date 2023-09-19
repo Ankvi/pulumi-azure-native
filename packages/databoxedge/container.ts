@@ -51,11 +51,11 @@ export class Container extends pulumi.CustomResource {
     /**
      * Details of the refresh job on this container.
      */
-    public /*out*/ readonly refreshDetails!: pulumi.Output<types.outputs.databoxedge.RefreshDetailsResponse>;
+    public /*out*/ readonly refreshDetails!: pulumi.Output<types.outputs.RefreshDetailsResponse>;
     /**
      * Metadata pertaining to creation and last modification of Container
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.databoxedge.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The hierarchical type of the object.
      */

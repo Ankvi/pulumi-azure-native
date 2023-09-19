@@ -13,7 +13,7 @@ utilities.lazyLoad(exports, ["getDiagnosticSetting","getDiagnosticSettingOutput"
 
 
 // Export enums:
-export * from "../types/enums/v20170401preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

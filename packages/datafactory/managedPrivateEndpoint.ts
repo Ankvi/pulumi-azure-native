@@ -43,7 +43,7 @@ export class ManagedPrivateEndpoint extends pulumi.CustomResource {
     /**
      * Managed private endpoint properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.datafactory.ManagedPrivateEndpointResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ManagedPrivateEndpointResponse>;
     /**
      * The resource type.
      */
@@ -112,7 +112,7 @@ export interface ManagedPrivateEndpointArgs {
     /**
      * Managed private endpoint properties.
      */
-    properties: pulumi.Input<types.inputs.datafactory.ManagedPrivateEndpointArgs>;
+    properties: pulumi.Input<types.inputs.ManagedPrivateEndpointArgs>;
     /**
      * The resource group name.
      */

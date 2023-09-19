@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Resource group information.
  */
@@ -46,7 +46,7 @@ export class ResourceGroup extends pulumi.CustomResource {
     /**
      * The resource group properties.
      */
-    public /*out*/ readonly properties!: pulumi.Output<types.outputs.resources.v20220901.ResourceGroupPropertiesResponse>;
+    public /*out*/ readonly properties!: pulumi.Output<types.outputs.ResourceGroupPropertiesResponse>;
     /**
      * The tags attached to the resource group.
      */

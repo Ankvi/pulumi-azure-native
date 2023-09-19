@@ -35,7 +35,7 @@ export class CapacityReservation extends pulumi.CustomResource {
     /**
      * The Capacity reservation instance view.
      */
-    public /*out*/ readonly instanceView!: pulumi.Output<types.outputs.compute.CapacityReservationInstanceViewResponse>;
+    public /*out*/ readonly instanceView!: pulumi.Output<types.outputs.CapacityReservationInstanceViewResponse>;
     /**
      * Resource location
      */
@@ -63,7 +63,7 @@ export class CapacityReservation extends pulumi.CustomResource {
     /**
      * SKU of the resource for which capacity needs be reserved. The SKU name and capacity is required to be set. Currently VM Skus with the capability called 'CapacityReservationSupported' set to true are supported. Refer to List Microsoft.Compute SKUs in a region (https://docs.microsoft.com/rest/api/compute/resourceskus/list) for supported values.
      */
-    public readonly sku!: pulumi.Output<types.outputs.compute.SkuResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse>;
     /**
      * Resource tags
      */
@@ -79,7 +79,7 @@ export class CapacityReservation extends pulumi.CustomResource {
     /**
      * A list of all virtual machine resource ids that are associated with the capacity reservation.
      */
-    public /*out*/ readonly virtualMachinesAssociated!: pulumi.Output<types.outputs.compute.SubResourceReadOnlyResponse[]>;
+    public /*out*/ readonly virtualMachinesAssociated!: pulumi.Output<types.outputs.SubResourceReadOnlyResponse[]>;
     /**
      * Availability Zone to use for this capacity reservation. The zone has to be single value and also should be part for the list of zones specified during the capacity reservation group creation. The zone can be assigned only during creation. If not provided, the reservation supports only non-zonal deployments. If provided, enforces VM/VMSS using this capacity reservation to be in same zone.
      */
@@ -166,7 +166,7 @@ export interface CapacityReservationArgs {
     /**
      * SKU of the resource for which capacity needs be reserved. The SKU name and capacity is required to be set. Currently VM Skus with the capability called 'CapacityReservationSupported' set to true are supported. Refer to List Microsoft.Compute SKUs in a region (https://docs.microsoft.com/rest/api/compute/resourceskus/list) for supported values.
      */
-    sku: pulumi.Input<types.inputs.compute.SkuArgs>;
+    sku: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Resource tags
      */

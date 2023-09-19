@@ -37,7 +37,7 @@ export interface GetSignalRCustomDomainResult {
     /**
      * Reference to a resource.
      */
-    readonly customCertificate: types.outputs.signalrservice.ResourceReferenceResponse;
+    readonly customCertificate: types.outputs.ResourceReferenceResponse;
     /**
      * The custom domain name.
      */
@@ -57,7 +57,7 @@ export interface GetSignalRCustomDomainResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.signalrservice.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource - e.g. "Microsoft.SignalRService/SignalR"
      */

@@ -32,11 +32,11 @@ export interface GetPolicyResult {
     /**
      * Describes custom rules inside the policy.
      */
-    readonly customRules?: types.outputs.cdn.CustomRuleListResponse;
+    readonly customRules?: types.outputs.CustomRuleListResponse;
     /**
      * Describes Azure CDN endpoints associated with this Web Application Firewall policy.
      */
-    readonly endpointLinks: types.outputs.cdn.CdnEndpointResponse[];
+    readonly endpointLinks: types.outputs.CdnEndpointResponse[];
     /**
      * Gets a unique read-only string that changes whenever the resource is updated.
      */
@@ -56,7 +56,7 @@ export interface GetPolicyResult {
     /**
      * Describes managed rules inside the policy.
      */
-    readonly managedRules?: types.outputs.cdn.ManagedRuleSetListResponse;
+    readonly managedRules?: types.outputs.ManagedRuleSetListResponse;
     /**
      * Resource name.
      */
@@ -64,7 +64,7 @@ export interface GetPolicyResult {
     /**
      * Describes  policySettings for policy
      */
-    readonly policySettings?: types.outputs.cdn.PolicySettingsResponse;
+    readonly policySettings?: types.outputs.PolicySettingsResponse;
     /**
      * Provisioning state of the WebApplicationFirewallPolicy.
      */
@@ -72,16 +72,16 @@ export interface GetPolicyResult {
     /**
      * Describes rate limit rules inside the policy.
      */
-    readonly rateLimitRules?: types.outputs.cdn.RateLimitRuleListResponse;
+    readonly rateLimitRules?: types.outputs.RateLimitRuleListResponse;
     readonly resourceState: string;
     /**
      * The pricing tier (defines a CDN provider, feature list and rate) of the CdnWebApplicationFirewallPolicy.
      */
-    readonly sku: types.outputs.cdn.SkuResponse;
+    readonly sku: types.outputs.SkuResponse;
     /**
      * Read only system data
      */
-    readonly systemData: types.outputs.cdn.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

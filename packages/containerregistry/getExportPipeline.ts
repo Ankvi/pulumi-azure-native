@@ -41,7 +41,7 @@ export interface GetExportPipelineResult {
     /**
      * The identity of the export pipeline.
      */
-    readonly identity?: types.outputs.containerregistry.IdentityPropertiesResponse;
+    readonly identity?: types.outputs.IdentityPropertiesResponse;
     /**
      * The location of the export pipeline.
      */
@@ -61,11 +61,11 @@ export interface GetExportPipelineResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.containerregistry.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The target properties of the export pipeline.
      */
-    readonly target: types.outputs.containerregistry.ExportPipelineTargetPropertiesResponse;
+    readonly target: types.outputs.ExportPipelineTargetPropertiesResponse;
     /**
      * The type of the resource.
      */

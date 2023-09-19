@@ -49,7 +49,7 @@ export class DataManager extends pulumi.CustomResource {
     /**
      * The sku type.
      */
-    public readonly sku!: pulumi.Output<types.outputs.hybriddata.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * The list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource
      * (across resource groups).
@@ -118,7 +118,7 @@ export interface DataManagerArgs {
     /**
      * The sku type.
      */
-    sku?: pulumi.Input<types.inputs.hybriddata.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * The list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource
      * (across resource groups).

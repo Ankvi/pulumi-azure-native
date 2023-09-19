@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents a lab.
  */
@@ -50,7 +50,7 @@ export class Lab extends pulumi.CustomResource {
     /**
      * The details of the latest operation. ex: status, error
      */
-    public /*out*/ readonly latestOperationResult!: pulumi.Output<types.outputs.labservices.v20181015.LatestOperationResultResponse>;
+    public /*out*/ readonly latestOperationResult!: pulumi.Output<types.outputs.LatestOperationResultResponse>;
     /**
      * The location of the resource.
      */
@@ -192,5 +192,5 @@ export interface LabArgs {
     /**
      * Lab user access mode (open to all vs. restricted to those listed on the lab).
      */
-    userAccessMode?: pulumi.Input<string | types.enums.v20181015.LabUserAccessMode>;
+    userAccessMode?: pulumi.Input<string | types.enums.LabUserAccessMode>;
 }

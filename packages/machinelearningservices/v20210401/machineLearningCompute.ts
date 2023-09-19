@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Machine Learning compute object wrapped into ARM resource envelope.
  */
@@ -34,7 +34,7 @@ export class MachineLearningCompute extends pulumi.CustomResource {
     /**
      * The identity of the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.machinelearningservices.v20210401.IdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityResponse | undefined>;
     /**
      * Specifies the location of the resource.
      */
@@ -46,15 +46,15 @@ export class MachineLearningCompute extends pulumi.CustomResource {
     /**
      * Compute properties
      */
-    public readonly properties!: pulumi.Output<types.outputs.machinelearningservices.v20210401.AKSResponse | types.outputs.machinelearningservices.v20210401.AmlComputeResponse | types.outputs.machinelearningservices.v20210401.ComputeInstanceResponse | types.outputs.machinelearningservices.v20210401.DataFactoryResponse | types.outputs.machinelearningservices.v20210401.DataLakeAnalyticsResponse | types.outputs.machinelearningservices.v20210401.DatabricksResponse | types.outputs.machinelearningservices.v20210401.HDInsightResponse | types.outputs.machinelearningservices.v20210401.SynapseSparkResponse | types.outputs.machinelearningservices.v20210401.VirtualMachineResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.AKSResponse | types.outputs.AmlComputeResponse | types.outputs.ComputeInstanceResponse | types.outputs.DataFactoryResponse | types.outputs.DataLakeAnalyticsResponse | types.outputs.DatabricksResponse | types.outputs.HDInsightResponse | types.outputs.SynapseSparkResponse | types.outputs.VirtualMachineResponse>;
     /**
      * The sku of the workspace.
      */
-    public readonly sku!: pulumi.Output<types.outputs.machinelearningservices.v20210401.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Read only system data
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.machinelearningservices.v20210401.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Contains resource tags defined as key/value pairs.
      */
@@ -120,7 +120,7 @@ export interface MachineLearningComputeArgs {
     /**
      * The identity of the resource.
      */
-    identity?: pulumi.Input<types.inputs.machinelearningservices.v20210401.IdentityArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityArgs>;
     /**
      * Specifies the location of the resource.
      */
@@ -128,7 +128,7 @@ export interface MachineLearningComputeArgs {
     /**
      * Compute properties
      */
-    properties?: pulumi.Input<types.inputs.machinelearningservices.v20210401.AKSArgs | types.inputs.machinelearningservices.v20210401.AmlComputeArgs | types.inputs.machinelearningservices.v20210401.ComputeInstanceArgs | types.inputs.machinelearningservices.v20210401.DataFactoryArgs | types.inputs.machinelearningservices.v20210401.DataLakeAnalyticsArgs | types.inputs.machinelearningservices.v20210401.DatabricksArgs | types.inputs.machinelearningservices.v20210401.HDInsightArgs | types.inputs.machinelearningservices.v20210401.SynapseSparkArgs | types.inputs.machinelearningservices.v20210401.VirtualMachineArgs>;
+    properties?: pulumi.Input<types.inputs.AKSArgs | types.inputs.AmlComputeArgs | types.inputs.ComputeInstanceArgs | types.inputs.DataFactoryArgs | types.inputs.DataLakeAnalyticsArgs | types.inputs.DatabricksArgs | types.inputs.HDInsightArgs | types.inputs.SynapseSparkArgs | types.inputs.VirtualMachineArgs>;
     /**
      * Name of the resource group in which workspace is located.
      */
@@ -136,7 +136,7 @@ export interface MachineLearningComputeArgs {
     /**
      * The sku of the workspace.
      */
-    sku?: pulumi.Input<types.inputs.machinelearningservices.v20210401.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Contains resource tags defined as key/value pairs.
      */

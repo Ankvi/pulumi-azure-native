@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets an Endpoint resource.
  */
@@ -44,11 +44,11 @@ export interface GetEndpointResult {
     /**
      * The resource specific properties for the Storage Mover resource.
      */
-    readonly properties: types.outputs.storagemover.v20230701preview.AzureStorageBlobContainerEndpointPropertiesResponse | types.outputs.storagemover.v20230701preview.AzureStorageSmbFileShareEndpointPropertiesResponse | types.outputs.storagemover.v20230701preview.NfsMountEndpointPropertiesResponse | types.outputs.storagemover.v20230701preview.SmbMountEndpointPropertiesResponse;
+    readonly properties: types.outputs.AzureStorageBlobContainerEndpointPropertiesResponse | types.outputs.AzureStorageSmbFileShareEndpointPropertiesResponse | types.outputs.NfsMountEndpointPropertiesResponse | types.outputs.SmbMountEndpointPropertiesResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.storagemover.v20230701preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

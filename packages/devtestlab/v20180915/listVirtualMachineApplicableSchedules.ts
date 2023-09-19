@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Lists the applicable start/stop schedules, if any.
  */
@@ -40,11 +40,11 @@ export interface ListVirtualMachineApplicableSchedulesResult {
     /**
      * The auto-shutdown schedule, if one has been set at the lab or lab resource level.
      */
-    readonly labVmsShutdown?: types.outputs.devtestlab.v20180915.ScheduleResponse;
+    readonly labVmsShutdown?: types.outputs.ScheduleResponse;
     /**
      * The auto-startup schedule, if one has been set at the lab or lab resource level.
      */
-    readonly labVmsStartup?: types.outputs.devtestlab.v20180915.ScheduleResponse;
+    readonly labVmsStartup?: types.outputs.ScheduleResponse;
     /**
      * The location of the resource.
      */

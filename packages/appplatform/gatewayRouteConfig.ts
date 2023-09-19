@@ -39,11 +39,11 @@ export class GatewayRouteConfig extends pulumi.CustomResource {
     /**
      * API route config of the Spring Cloud Gateway
      */
-    public readonly properties!: pulumi.Output<types.outputs.appplatform.GatewayRouteConfigPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.GatewayRouteConfigPropertiesResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.appplatform.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource.
      */
@@ -70,7 +70,7 @@ export class GatewayRouteConfig extends pulumi.CustomResource {
                 throw new Error("Missing required property 'serviceName'");
             }
             resourceInputs["gatewayName"] = args ? args.gatewayName : undefined;
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.appplatform.gatewayRouteConfigPropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.gatewayRouteConfigPropertiesArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["routeConfigName"] = args ? args.routeConfigName : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
@@ -101,7 +101,7 @@ export interface GatewayRouteConfigArgs {
     /**
      * API route config of the Spring Cloud Gateway
      */
-    properties?: pulumi.Input<types.inputs.appplatform.GatewayRouteConfigPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.GatewayRouteConfigPropertiesArgs>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Schema for Application properties.
  */
@@ -94,7 +94,7 @@ export class Application extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.desktopvirtualization.v20220909.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -181,7 +181,7 @@ export interface ApplicationArgs {
     /**
      * Resource Type of Application.
      */
-    applicationType?: pulumi.Input<string | types.enums.v20220909.RemoteApplicationType>;
+    applicationType?: pulumi.Input<string | types.enums.RemoteApplicationType>;
     /**
      * Command Line Arguments for Application.
      */
@@ -189,7 +189,7 @@ export interface ApplicationArgs {
     /**
      * Specifies whether this published application can be launched with command line arguments provided by the client, command line arguments specified at publish time, or no command line arguments at all.
      */
-    commandLineSetting: pulumi.Input<string | types.enums.v20220909.CommandLineSetting>;
+    commandLineSetting: pulumi.Input<string | types.enums.CommandLineSetting>;
     /**
      * Description of Application.
      */

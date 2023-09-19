@@ -47,7 +47,7 @@ export class VirtualMachineScaleSetVMExtension extends pulumi.CustomResource {
     /**
      * The virtual machine extension instance view.
      */
-    public readonly instanceView!: pulumi.Output<types.outputs.compute.VirtualMachineExtensionInstanceViewResponse | undefined>;
+    public readonly instanceView!: pulumi.Output<types.outputs.VirtualMachineExtensionInstanceViewResponse | undefined>;
     /**
      * The location of the extension.
      */
@@ -63,7 +63,7 @@ export class VirtualMachineScaleSetVMExtension extends pulumi.CustomResource {
     /**
      * The extensions protected settings that are passed by reference, and consumed from key vault
      */
-    public readonly protectedSettingsFromKeyVault!: pulumi.Output<types.outputs.compute.KeyVaultSecretReferenceResponse | undefined>;
+    public readonly protectedSettingsFromKeyVault!: pulumi.Output<types.outputs.KeyVaultSecretReferenceResponse | undefined>;
     /**
      * Collection of extension names after which this extension needs to be provisioned.
      */
@@ -179,7 +179,7 @@ export interface VirtualMachineScaleSetVMExtensionArgs {
     /**
      * The virtual machine extension instance view.
      */
-    instanceView?: pulumi.Input<types.inputs.compute.VirtualMachineExtensionInstanceViewArgs>;
+    instanceView?: pulumi.Input<types.inputs.VirtualMachineExtensionInstanceViewArgs>;
     /**
      * The location of the extension.
      */
@@ -191,7 +191,7 @@ export interface VirtualMachineScaleSetVMExtensionArgs {
     /**
      * The extensions protected settings that are passed by reference, and consumed from key vault
      */
-    protectedSettingsFromKeyVault?: pulumi.Input<types.inputs.compute.KeyVaultSecretReferenceArgs>;
+    protectedSettingsFromKeyVault?: pulumi.Input<types.inputs.KeyVaultSecretReferenceArgs>;
     /**
      * Collection of extension names after which this extension needs to be provisioned.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A file resource
  */
@@ -42,11 +42,11 @@ export class File extends pulumi.CustomResource {
     /**
      * Custom file properties
      */
-    public readonly properties!: pulumi.Output<types.outputs.datamigration.v20210630.ProjectFilePropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ProjectFilePropertiesResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.datamigration.v20210630.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource type.
      */
@@ -114,7 +114,7 @@ export interface FileArgs {
     /**
      * Custom file properties
      */
-    properties?: pulumi.Input<types.inputs.datamigration.v20210630.ProjectFilePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ProjectFilePropertiesArgs>;
     /**
      * Name of the service
      */

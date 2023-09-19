@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Details of a specific cloud account connector
  */
@@ -26,11 +26,11 @@ export interface GetConnectorResult {
     /**
      * Settings for authentication management, these settings are relevant only for the cloud connector.
      */
-    readonly authenticationDetails?: types.outputs.security.v20200101preview.AwAssumeRoleAuthenticationDetailsPropertiesResponse | types.outputs.security.v20200101preview.AwsCredsAuthenticationDetailsPropertiesResponse | types.outputs.security.v20200101preview.GcpCredentialsDetailsPropertiesResponse;
+    readonly authenticationDetails?: types.outputs.AwAssumeRoleAuthenticationDetailsPropertiesResponse | types.outputs.AwsCredsAuthenticationDetailsPropertiesResponse | types.outputs.GcpCredentialsDetailsPropertiesResponse;
     /**
      * Settings for hybrid compute management. These settings are relevant only for Arc autoProvision (Hybrid Compute).
      */
-    readonly hybridComputeSettings?: types.outputs.security.v20200101preview.HybridComputeSettingsPropertiesResponse;
+    readonly hybridComputeSettings?: types.outputs.HybridComputeSettingsPropertiesResponse;
     /**
      * Resource Id
      */

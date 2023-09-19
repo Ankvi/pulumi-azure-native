@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a Media Service.
  */
@@ -31,7 +31,7 @@ export interface GetMediaServiceResult {
     /**
      * Read-only property that lists the Media Services REST API endpoints for this resource. If supplied on a PUT or PATCH, the value will be ignored.
      */
-    readonly apiEndpoints: types.outputs.media.v20151001.ApiEndpointResponse[];
+    readonly apiEndpoints: types.outputs.ApiEndpointResponse[];
     /**
      * The id of the resource.
      */
@@ -47,7 +47,7 @@ export interface GetMediaServiceResult {
     /**
      * The storage accounts for this resource.
      */
-    readonly storageAccounts?: types.outputs.media.v20151001.StorageAccountResponse[];
+    readonly storageAccounts?: types.outputs.StorageAccountResponse[];
     /**
      * Tags to help categorize the resource in the Azure portal.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Policy model.
  */
@@ -38,8 +38,8 @@ export class Policy extends pulumi.CustomResource {
     /**
      * Policy model properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.datareplication.v20210216preview.PolicyModelPropertiesResponse>;
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.datareplication.v20210216preview.PolicyModelResponseSystemData>;
+    public readonly properties!: pulumi.Output<types.outputs.PolicyModelPropertiesResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.PolicyModelResponseSystemData>;
     /**
      * Gets or sets the type of the resource.
      */
@@ -96,7 +96,7 @@ export interface PolicyArgs {
     /**
      * Policy model properties.
      */
-    properties: pulumi.Input<types.inputs.datareplication.v20210216preview.PolicyModelPropertiesArgs>;
+    properties: pulumi.Input<types.inputs.PolicyModelPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

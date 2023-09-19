@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Dedicated cloud node model
  */
@@ -86,7 +86,7 @@ export class DedicatedCloudNode extends pulumi.CustomResource {
     /**
      * Dedicated Cloud Nodes SKU
      */
-    public readonly sku!: pulumi.Output<types.outputs.vmwarecloudsimple.v20190401.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Node status, indicates is private cloud set up on this node or not
      */
@@ -227,7 +227,7 @@ export interface DedicatedCloudNodeArgs {
     /**
      * Dedicated Cloud Nodes SKU
      */
-    sku?: pulumi.Input<types.inputs.vmwarecloudsimple.v20190401.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Dedicated Cloud Nodes tags
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Description for Get a certificate.
  */
@@ -55,7 +55,7 @@ export interface GetCertificateResult {
     /**
      * Specification for the App Service Environment to use for the certificate.
      */
-    readonly hostingEnvironmentProfile: types.outputs.web.v20220901.HostingEnvironmentProfileResponse;
+    readonly hostingEnvironmentProfile: types.outputs.HostingEnvironmentProfileResponse;
     /**
      * Resource Id.
      */

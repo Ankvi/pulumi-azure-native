@@ -28,7 +28,7 @@ utilities.lazyLoad(exports, ["PrivateEndpoint"], () => require("./privateEndpoin
 
 
 // Export enums:
-export * from "../types/enums/v20200301preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

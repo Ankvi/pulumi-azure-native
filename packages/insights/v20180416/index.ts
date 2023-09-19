@@ -13,7 +13,7 @@ utilities.lazyLoad(exports, ["ScheduledQueryRule"], () => require("./scheduledQu
 
 
 // Export enums:
-export * from "../types/enums/v20180416";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

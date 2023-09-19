@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The management group details.
  */
@@ -34,11 +34,11 @@ export class ManagementGroup extends pulumi.CustomResource {
     /**
      * The list of children.
      */
-    public /*out*/ readonly children!: pulumi.Output<types.outputs.management.v20210401.ManagementGroupChildInfoResponse[] | undefined>;
+    public /*out*/ readonly children!: pulumi.Output<types.outputs.ManagementGroupChildInfoResponse[] | undefined>;
     /**
      * The details of a management group.
      */
-    public readonly details!: pulumi.Output<types.outputs.management.v20210401.ManagementGroupDetailsResponse | undefined>;
+    public readonly details!: pulumi.Output<types.outputs.ManagementGroupDetailsResponse | undefined>;
     /**
      * The friendly name of the management group.
      */
@@ -96,7 +96,7 @@ export interface ManagementGroupArgs {
     /**
      * The details of a management group used during creation.
      */
-    details?: pulumi.Input<types.inputs.management.v20210401.CreateManagementGroupDetailsArgs>;
+    details?: pulumi.Input<types.inputs.CreateManagementGroupDetailsArgs>;
     /**
      * The friendly name of the management group. If no value is passed then this  field will be set to the groupId.
      */

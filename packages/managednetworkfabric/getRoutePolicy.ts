@@ -52,11 +52,11 @@ export interface GetRoutePolicyResult {
     /**
      * Route Policy statements.
      */
-    readonly statements: types.outputs.managednetworkfabric.RoutePolicyStatementPropertiesResponse[];
+    readonly statements: types.outputs.RoutePolicyStatementPropertiesResponse[];
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.managednetworkfabric.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

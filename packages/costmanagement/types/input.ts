@@ -1,3835 +1,899 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
-export namespace costmanagement {
+/**
+ * The comparison expression to be used in the budgets.
+ */
+export interface BudgetComparisonExpressionArgs {
     /**
-     * The comparison expression to be used in the budgets.
+     * The name of the column to use in comparison.
      */
-    export interface BudgetComparisonExpressionArgs {
-        /**
-         * The name of the column to use in comparison.
-         */
-        name: pulumi.Input<string>;
-        /**
-         * The operator to use for comparison.
-         */
-        operator: pulumi.Input<string | enums.BudgetOperatorType>;
-        /**
-         * Array of values to use for comparison
-         */
-        values: pulumi.Input<pulumi.Input<string>[]>;
-    }
-
+    name: pulumi.Input<string>;
     /**
-     * May be used to filter budgets by user-specified dimensions and/or tags.
+     * The operator to use for comparison.
+     */
+    operator: pulumi.Input<string | enums.BudgetOperatorType>;
+    /**
+     * Array of values to use for comparison
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+/**
+ * May be used to filter budgets by user-specified dimensions and/or tags.
+ *
+ *  Supported for CategoryType(s): Cost, ReservationUtilization.
+ */
+export interface BudgetFilterArgs {
+    /**
+     * The logical "AND" expression. Must have at least 2 items.
      *
-     *  Supported for CategoryType(s): Cost, ReservationUtilization.
+     *  Supported for CategoryType(s): Cost.
      */
-    export interface BudgetFilterArgs {
-        /**
-         * The logical "AND" expression. Must have at least 2 items.
-         *
-         *  Supported for CategoryType(s): Cost.
-         */
-        and?: pulumi.Input<pulumi.Input<BudgetFilterPropertiesArgs>[]>;
-        /**
-         * Has comparison expression for a dimension.
-         *
-         *  Supported for CategoryType(s): Cost, ReservationUtilization.
-         *
-         * Supported dimension names for **CategoryType: ReservationUtilization** 
-         * - ReservationId
-         * - ReservedResourceType
-         */
-        dimensions?: pulumi.Input<BudgetComparisonExpressionArgs>;
-        /**
-         * Has comparison expression for a tag.
-         *
-         *  Supported for CategoryType(s): Cost.
-         */
-        tags?: pulumi.Input<BudgetComparisonExpressionArgs>;
-    }
-
+    and?: pulumi.Input<pulumi.Input<BudgetFilterPropertiesArgs>[]>;
     /**
-     * The Dimensions or Tags to filter a budget by.
-     *
-     *  Supported for CategoryType(s): Cost, ReservationUtilization.
-     */
-    export interface BudgetFilterPropertiesArgs {
-        /**
-         * Has comparison expression for a dimension.
-         *
-         *  Supported for CategoryType(s): Cost, ReservationUtilization.
-         *
-         * Supported dimension names for **CategoryType: ReservationUtilization** 
-         * - ReservationId
-         * - ReservedResourceType
-         */
-        dimensions?: pulumi.Input<BudgetComparisonExpressionArgs>;
-        /**
-         * Has comparison expression for a tag.
-         *
-         *  Supported for CategoryType(s): Cost.
-         */
-        tags?: pulumi.Input<BudgetComparisonExpressionArgs>;
-    }
-
-    /**
-     * The time period that defines the active period of the budget. The budget will evaluate data on or after the startDate and will expire on the endDate.
+     * Has comparison expression for a dimension.
      *
      *  Supported for CategoryType(s): Cost, ReservationUtilization.
      *
-     *  Required for CategoryType(s): Cost, ReservationUtilization.
+     * Supported dimension names for **CategoryType: ReservationUtilization** 
+     * - ReservationId
+     * - ReservedResourceType
      */
-    export interface BudgetTimePeriodArgs {
-        /**
-         * The end date for the budget.
-         *
-         * - Constraints for **CategoryType: Cost** - No constraints. If not provided, we default this to 10 years from the start date.
-         *
-         * - Constraints for **CategoryType: ReservationUtilization** - End date cannot be more than 3 years after the start date.
-         */
-        endDate?: pulumi.Input<string>;
-        /**
-         * The start date for the budget.
-         *
-         * - Constraints for **CategoryType: Cost** - Must be first of the month and should be less than the end date. Budget start date must be on or after June 1, 2017. Future start date should not be more than twelve months. Past start date should  be selected within the timegrain period.
-         *
-         * - Constraints for **CategoryType: ReservationUtilization** - Must be on or after the current date and less than the end date.
-         */
-        startDate: pulumi.Input<string>;
-    }
-
+    dimensions?: pulumi.Input<BudgetComparisonExpressionArgs>;
     /**
-     * Target resources and allocation
+     * Has comparison expression for a tag.
+     *
+     *  Supported for CategoryType(s): Cost.
      */
-    export interface CostAllocationProportionArgs {
-        /**
-         * Target resource for cost allocation
-         */
-        name: pulumi.Input<string>;
-        /**
-         * Percentage of source cost to allocate to this resource. This value can be specified to two decimal places and the total percentage of all resources in this rule must sum to 100.00.
-         */
-        percentage: pulumi.Input<number>;
-    }
+    tags?: pulumi.Input<BudgetComparisonExpressionArgs>;
+}
 
+/**
+ * The Dimensions or Tags to filter a budget by.
+ *
+ *  Supported for CategoryType(s): Cost, ReservationUtilization.
+ */
+export interface BudgetFilterPropertiesArgs {
     /**
-     * Resource details of the cost allocation rule
+     * Has comparison expression for a dimension.
+     *
+     *  Supported for CategoryType(s): Cost, ReservationUtilization.
+     *
+     * Supported dimension names for **CategoryType: ReservationUtilization** 
+     * - ReservationId
+     * - ReservedResourceType
      */
-    export interface CostAllocationRuleDetailsArgs {
-        /**
-         * Source resources for cost allocation. At this time, this list can contain no more than one element.
-         */
-        sourceResources?: pulumi.Input<pulumi.Input<SourceCostAllocationResourceArgs>[]>;
-        /**
-         * Target resources for cost allocation. At this time, this list can contain no more than one element.
-         */
-        targetResources?: pulumi.Input<pulumi.Input<TargetCostAllocationResourceArgs>[]>;
-    }
-
+    dimensions?: pulumi.Input<BudgetComparisonExpressionArgs>;
     /**
-     * The properties of a cost allocation rule
+     * Has comparison expression for a tag.
+     *
+     *  Supported for CategoryType(s): Cost.
      */
-    export interface CostAllocationRulePropertiesArgs {
-        /**
-         * Description of a cost allocation rule.
-         */
-        description?: pulumi.Input<string>;
-        /**
-         * Resource information for the cost allocation rule
-         */
-        details: pulumi.Input<CostAllocationRuleDetailsArgs>;
-        /**
-         * Status of the rule
-         */
-        status: pulumi.Input<string | enums.RuleStatus>;
-    }
+    tags?: pulumi.Input<BudgetComparisonExpressionArgs>;
+}
 
+/**
+ * The time period that defines the active period of the budget. The budget will evaluate data on or after the startDate and will expire on the endDate.
+ *
+ *  Supported for CategoryType(s): Cost, ReservationUtilization.
+ *
+ *  Required for CategoryType(s): Cost, ReservationUtilization.
+ */
+export interface BudgetTimePeriodArgs {
     /**
-     * The customer billing metadata
+     * The end date for the budget.
+     *
+     * - Constraints for **CategoryType: Cost** - No constraints. If not provided, we default this to 10 years from the start date.
+     *
+     * - Constraints for **CategoryType: ReservationUtilization** - End date cannot be more than 3 years after the start date.
      */
-    export interface CustomerMetadataArgs {
-        /**
-         * Customer billing account id
-         */
-        billingAccountId: pulumi.Input<string>;
-        /**
-         * Customer billing profile id
-         */
-        billingProfileId: pulumi.Input<string>;
-    }
+    endDate?: pulumi.Input<string>;
+    /**
+     * The start date for the budget.
+     *
+     * - Constraints for **CategoryType: Cost** - Must be first of the month and should be less than the end date. Budget start date must be on or after June 1, 2017. Future start date should not be more than twelve months. Past start date should  be selected within the timegrain period.
+     *
+     * - Constraints for **CategoryType: ReservationUtilization** - Must be on or after the current date and less than the end date.
+     */
+    startDate: pulumi.Input<string>;
+}
 
+/**
+ * Target resources and allocation
+ */
+export interface CostAllocationProportionArgs {
+    /**
+     * Target resource for cost allocation
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Percentage of source cost to allocate to this resource. This value can be specified to two decimal places and the total percentage of all resources in this rule must sum to 100.00.
+     */
+    percentage: pulumi.Input<number>;
+}
+
+/**
+ * Resource details of the cost allocation rule
+ */
+export interface CostAllocationRuleDetailsArgs {
+    /**
+     * Source resources for cost allocation. At this time, this list can contain no more than one element.
+     */
+    sourceResources?: pulumi.Input<pulumi.Input<SourceCostAllocationResourceArgs>[]>;
+    /**
+     * Target resources for cost allocation. At this time, this list can contain no more than one element.
+     */
+    targetResources?: pulumi.Input<pulumi.Input<TargetCostAllocationResourceArgs>[]>;
+}
+
+/**
+ * The properties of a cost allocation rule
+ */
+export interface CostAllocationRulePropertiesArgs {
+    /**
+     * Description of a cost allocation rule.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Resource information for the cost allocation rule
+     */
+    details: pulumi.Input<CostAllocationRuleDetailsArgs>;
+    /**
+     * Status of the rule
+     */
+    status: pulumi.Input<string | enums.RuleStatus>;
+}
+
+/**
+ * The customer billing metadata
+ */
+export interface CustomerMetadataArgs {
+    /**
+     * Customer billing account id
+     */
+    billingAccountId: pulumi.Input<string>;
+    /**
+     * Customer billing profile id
+     */
+    billingProfileId: pulumi.Input<string>;
+}
+
+/**
+ * The definition for data in the export.
+ */
+export interface ExportDatasetArgs {
+    /**
+     * The export dataset configuration.
+     */
+    configuration?: pulumi.Input<ExportDatasetConfigurationArgs>;
+    /**
+     * The granularity of rows in the export. Currently only 'Daily' is supported.
+     */
+    granularity?: pulumi.Input<string | enums.GranularityType>;
+}
+
+/**
+ * The export dataset configuration. Allows columns to be selected for the export. If not provided then the export will include all available columns.
+ */
+export interface ExportDatasetConfigurationArgs {
+    /**
+     * Array of column names to be included in the export. If not provided then the export will include all available columns. The available columns can vary by customer channel (see examples).
+     */
+    columns?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+/**
+ * The definition of an export.
+ */
+export interface ExportDefinitionArgs {
     /**
      * The definition for data in the export.
      */
-    export interface ExportDatasetArgs {
-        /**
-         * The export dataset configuration.
-         */
-        configuration?: pulumi.Input<ExportDatasetConfigurationArgs>;
-        /**
-         * The granularity of rows in the export. Currently only 'Daily' is supported.
-         */
-        granularity?: pulumi.Input<string | enums.GranularityType>;
-    }
-
+    dataSet?: pulumi.Input<ExportDatasetArgs>;
     /**
-     * The export dataset configuration. Allows columns to be selected for the export. If not provided then the export will include all available columns.
+     * Has time period for pulling data for the export.
      */
-    export interface ExportDatasetConfigurationArgs {
-        /**
-         * Array of column names to be included in the export. If not provided then the export will include all available columns. The available columns can vary by customer channel (see examples).
-         */
-        columns?: pulumi.Input<pulumi.Input<string>[]>;
-    }
-
+    timePeriod?: pulumi.Input<ExportTimePeriodArgs>;
     /**
-     * The definition of an export.
+     * The time frame for pulling data for the export. If custom, then a specific time period must be provided.
      */
-    export interface ExportDefinitionArgs {
-        /**
-         * The definition for data in the export.
-         */
-        dataSet?: pulumi.Input<ExportDatasetArgs>;
-        /**
-         * Has time period for pulling data for the export.
-         */
-        timePeriod?: pulumi.Input<ExportTimePeriodArgs>;
-        /**
-         * The time frame for pulling data for the export. If custom, then a specific time period must be provided.
-         */
-        timeframe: pulumi.Input<string | enums.TimeframeType>;
-        /**
-         * The type of the export. Note that 'Usage' is equivalent to 'ActualCost' and is applicable to exports that do not yet provide data for charges or amortization for service reservations.
-         */
-        type: pulumi.Input<string | enums.ExportType>;
-    }
-
+    timeframe: pulumi.Input<string | enums.TimeframeType>;
     /**
-     * This represents the blob storage account location where exports of costs will be delivered. There are two ways to configure the destination. The approach recommended for most customers is to specify the resourceId of the storage account. This requires a one-time registration of the account's subscription with the Microsoft.CostManagementExports resource provider in order to give Cost Management services access to the storage. When creating an export in the Azure portal this registration is performed automatically but API users may need to register the subscription explicitly (for more information see https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-supported-services ). Another way to configure the destination is available ONLY to Partners with a Microsoft Partner Agreement plan who are global admins of their billing account. These Partners, instead of specifying the resourceId of a storage account, can specify the storage account name along with a SAS token for the account. This allows exports of costs to a storage account in any tenant. The SAS token should be created for the blob service with Service/Container/Object resource types and with Read/Write/Delete/List/Add/Create permissions (for more information see https://docs.microsoft.com/en-us/azure/cost-management-billing/costs/export-cost-data-storage-account-sas-key ).
+     * The type of the export. Note that 'Usage' is equivalent to 'ActualCost' and is applicable to exports that do not yet provide data for charges or amortization for service reservations.
      */
-    export interface ExportDeliveryDestinationArgs {
-        /**
-         * The name of the container where exports will be uploaded. If the container does not exist it will be created.
-         */
-        container: pulumi.Input<string>;
-        /**
-         * The resource id of the storage account where exports will be delivered. This is not required if a sasToken and storageAccount are specified.
-         */
-        resourceId?: pulumi.Input<string>;
-        /**
-         * The name of the directory where exports will be uploaded.
-         */
-        rootFolderPath?: pulumi.Input<string>;
-        /**
-         * A SAS token for the storage account. For a restricted set of Azure customers this together with storageAccount can be specified instead of resourceId. Note: the value returned by the API for this property will always be obfuscated. Returning this same obfuscated value will not result in the SAS token being updated. To update this value a new SAS token must be specified.
-         */
-        sasToken?: pulumi.Input<string>;
-        /**
-         * The storage account where exports will be uploaded. For a restricted set of Azure customers this together with sasToken can be specified instead of resourceId.
-         */
-        storageAccount?: pulumi.Input<string>;
-    }
+    type: pulumi.Input<string | enums.ExportType>;
+}
 
+/**
+ * This represents the blob storage account location where exports of costs will be delivered. There are two ways to configure the destination. The approach recommended for most customers is to specify the resourceId of the storage account. This requires a one-time registration of the account's subscription with the Microsoft.CostManagementExports resource provider in order to give Cost Management services access to the storage. When creating an export in the Azure portal this registration is performed automatically but API users may need to register the subscription explicitly (for more information see https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-supported-services ). Another way to configure the destination is available ONLY to Partners with a Microsoft Partner Agreement plan who are global admins of their billing account. These Partners, instead of specifying the resourceId of a storage account, can specify the storage account name along with a SAS token for the account. This allows exports of costs to a storage account in any tenant. The SAS token should be created for the blob service with Service/Container/Object resource types and with Read/Write/Delete/List/Add/Create permissions (for more information see https://docs.microsoft.com/en-us/azure/cost-management-billing/costs/export-cost-data-storage-account-sas-key ).
+ */
+export interface ExportDeliveryDestinationArgs {
     /**
-     * The delivery information associated with a export.
+     * The name of the container where exports will be uploaded. If the container does not exist it will be created.
      */
-    export interface ExportDeliveryInfoArgs {
-        /**
-         * Has destination for the export being delivered.
-         */
-        destination: pulumi.Input<ExportDeliveryDestinationArgs>;
-    }
-
+    container: pulumi.Input<string>;
     /**
-     * The start and end date for recurrence schedule.
+     * The resource id of the storage account where exports will be delivered. This is not required if a sasToken and storageAccount are specified.
      */
-    export interface ExportRecurrencePeriodArgs {
-        /**
-         * The start date of recurrence.
-         */
-        from: pulumi.Input<string>;
-        /**
-         * The end date of recurrence.
-         */
-        to?: pulumi.Input<string>;
-    }
-
+    resourceId?: pulumi.Input<string>;
     /**
-     * The schedule associated with the export.
+     * The name of the directory where exports will be uploaded.
      */
-    export interface ExportScheduleArgs {
-        /**
-         * The schedule recurrence.
-         */
-        recurrence?: pulumi.Input<string | enums.RecurrenceType>;
-        /**
-         * Has start and end date of the recurrence. The start date must be in future. If present, the end date must be greater than start date.
-         */
-        recurrencePeriod?: pulumi.Input<ExportRecurrencePeriodArgs>;
-        /**
-         * The status of the export's schedule. If 'Inactive', the export's schedule is paused.
-         */
-        status?: pulumi.Input<string | enums.StatusType>;
-    }
-
+    rootFolderPath?: pulumi.Input<string>;
     /**
-     * The date range for data in the export. This should only be specified with timeFrame set to 'Custom'. The maximum date range is 3 months.
+     * A SAS token for the storage account. For a restricted set of Azure customers this together with storageAccount can be specified instead of resourceId. Note: the value returned by the API for this property will always be obfuscated. Returning this same obfuscated value will not result in the SAS token being updated. To update this value a new SAS token must be specified.
      */
-    export interface ExportTimePeriodArgs {
-        /**
-         * The start date for export data.
-         */
-        from: pulumi.Input<string>;
-        /**
-         * The end date for export data.
-         */
-        to: pulumi.Input<string>;
-    }
-
+    sasToken?: pulumi.Input<string>;
     /**
-     * Destination of the view data. This is optional. Currently only CSV format is supported.
+     * The storage account where exports will be uploaded. For a restricted set of Azure customers this together with sasToken can be specified instead of resourceId.
      */
-    export interface FileDestinationArgs {
-        /**
-         * Destination of the view data. Currently only CSV format is supported.
-         */
-        fileFormats?: pulumi.Input<pulumi.Input<string | enums.FileFormat>[]>;
-    }
+    storageAccount?: pulumi.Input<string>;
+}
 
+/**
+ * The delivery information associated with a export.
+ */
+export interface ExportDeliveryInfoArgs {
     /**
-     * Each KPI must contain a 'type' and 'enabled' key.
+     * Has destination for the export being delivered.
      */
-    export interface KpiPropertiesArgs {
-        /**
-         * show the KPI in the UI?
-         */
-        enabled?: pulumi.Input<boolean>;
-        /**
-         * ID of resource related to metric (budget).
-         */
-        id?: pulumi.Input<string>;
-        /**
-         * KPI type (Forecast, Budget).
-         */
-        type?: pulumi.Input<string | enums.KpiTypeType>;
-    }
+    destination: pulumi.Input<ExportDeliveryDestinationArgs>;
+}
 
+/**
+ * The start and end date for recurrence schedule.
+ */
+export interface ExportRecurrencePeriodArgs {
     /**
-     * The notification associated with a budget.
+     * The start date of recurrence.
+     */
+    from: pulumi.Input<string>;
+    /**
+     * The end date of recurrence.
+     */
+    to?: pulumi.Input<string>;
+}
+
+/**
+ * The schedule associated with the export.
+ */
+export interface ExportScheduleArgs {
+    /**
+     * The schedule recurrence.
+     */
+    recurrence?: pulumi.Input<string | enums.RecurrenceType>;
+    /**
+     * Has start and end date of the recurrence. The start date must be in future. If present, the end date must be greater than start date.
+     */
+    recurrencePeriod?: pulumi.Input<ExportRecurrencePeriodArgs>;
+    /**
+     * The status of the export's schedule. If 'Inactive', the export's schedule is paused.
+     */
+    status?: pulumi.Input<string | enums.StatusType>;
+}
+
+/**
+ * The date range for data in the export. This should only be specified with timeFrame set to 'Custom'. The maximum date range is 3 months.
+ */
+export interface ExportTimePeriodArgs {
+    /**
+     * The start date for export data.
+     */
+    from: pulumi.Input<string>;
+    /**
+     * The end date for export data.
+     */
+    to: pulumi.Input<string>;
+}
+
+/**
+ * Destination of the view data. This is optional. Currently only CSV format is supported.
+ */
+export interface FileDestinationArgs {
+    /**
+     * Destination of the view data. Currently only CSV format is supported.
+     */
+    fileFormats?: pulumi.Input<pulumi.Input<string | enums.FileFormat>[]>;
+}
+
+/**
+ * Each KPI must contain a 'type' and 'enabled' key.
+ */
+export interface KpiPropertiesArgs {
+    /**
+     * show the KPI in the UI?
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * ID of resource related to metric (budget).
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * KPI type (Forecast, Budget).
+     */
+    type?: pulumi.Input<string | enums.KpiTypeType>;
+}
+
+/**
+ * The notification associated with a budget.
+ *
+ *  Supported for CategoryType(s): Cost, ReservationUtilization.
+ */
+export interface NotificationArgs {
+    /**
+     * Email addresses to send the notification to when the threshold is breached. Must have at least one contact email or contact group specified at the Subscription or Resource Group scopes. All other scopes must have at least one contact email specified.
      *
      *  Supported for CategoryType(s): Cost, ReservationUtilization.
      */
-    export interface NotificationArgs {
-        /**
-         * Email addresses to send the notification to when the threshold is breached. Must have at least one contact email or contact group specified at the Subscription or Resource Group scopes. All other scopes must have at least one contact email specified.
-         *
-         *  Supported for CategoryType(s): Cost, ReservationUtilization.
-         */
-        contactEmails: pulumi.Input<pulumi.Input<string>[]>;
-        /**
-         * Subscription or Resource Group scopes only. Action groups to send the notification to when the threshold is exceeded. Must be provided as a fully qualified Azure resource id.
-         *
-         *  Supported for CategoryType(s): Cost.
-         */
-        contactGroups?: pulumi.Input<pulumi.Input<string>[]>;
-        /**
-         * Subscription or Resource Group scopes only. Contact roles to send the notification to when the threshold is breached.
-         *
-         *  Supported for CategoryType(s): Cost.
-         */
-        contactRoles?: pulumi.Input<pulumi.Input<string>[]>;
-        /**
-         * The notification is enabled or not.
-         *
-         *  Supported for CategoryType(s): Cost, ReservationUtilization.
-         */
-        enabled: pulumi.Input<boolean>;
-        /**
-         * Frequency of a notification. Represents how long the notification will be silent after triggering an alert for a threshold breach. If not specified, the frequency will be set by default based on the timeGrain (Weekly when timeGrain: Last7Days, Monthly when timeGrain: Last30Days).
-         *
-         *  Supported for CategoryType(s): ReservationUtilization.
-         */
-        frequency?: pulumi.Input<string | enums.Frequency>;
-        /**
-         * Language in which the recipient will receive the notification, 
-         *
-         *  Supported for CategoryType(s): Cost, ReservationUtilization.
-         */
-        locale?: pulumi.Input<string | enums.CultureCode>;
-        /**
-         * The comparison operator.
-         *
-         *  Supported for CategoryType(s): Cost, ReservationUtilization.
-         *
-         *  Supported operators for **CategoryType: Cost**
-         * - GreaterThan
-         * - GreaterThanOrEqualTo
-         *
-         *  Supported operators for **CategoryType: ReservationUtilization**
-         * - LessThan
-         */
-        operator: pulumi.Input<string | enums.BudgetNotificationOperatorType>;
-        /**
-         * Threshold value associated with a notification. It is always percent with a maximum of 2 decimal places.
-         *
-         *  Supported for CategoryType(s): Cost, ReservationUtilization.
-         *
-         *  **CategoryType: Cost** - Must be between 0 and 1000. Notification is sent when the cost exceeded the threshold.
-         *
-         *  **CategoryType: ReservationUtilization** - Must be between 0 and 100. Notification is sent when a reservation has a utilization percentage below the threshold.
-         */
-        threshold: pulumi.Input<number>;
-        /**
-         * The type of threshold.
-         *
-         *  Supported for CategoryType(s): Cost.
-         */
-        thresholdType?: pulumi.Input<string | enums.ThresholdType>;
-    }
+    contactEmails: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * notificationArgsProvideDefaults sets the appropriate defaults for NotificationArgs
+     * Subscription or Resource Group scopes only. Action groups to send the notification to when the threshold is exceeded. Must be provided as a fully qualified Azure resource id.
+     *
+     *  Supported for CategoryType(s): Cost.
      */
-    export function notificationArgsProvideDefaults(val: NotificationArgs): NotificationArgs {
-        return {
-            ...val,
-            thresholdType: (val.thresholdType) ?? "Actual",
-        };
-    }
-
+    contactGroups?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The properties of the scheduled action notification.
+     * Subscription or Resource Group scopes only. Contact roles to send the notification to when the threshold is breached.
+     *
+     *  Supported for CategoryType(s): Cost.
      */
-    export interface NotificationPropertiesArgs {
-        /**
-         * Locale of the email.
-         */
-        language?: pulumi.Input<string>;
-        /**
-         * Optional message to be added in the email. Length is limited to 250 characters.
-         */
-        message?: pulumi.Input<string>;
-        /**
-         * Regional format used for formatting date/time and currency values in the email.
-         */
-        regionalFormat?: pulumi.Input<string>;
-        /**
-         * Subject of the email. Length is limited to 70 characters.
-         */
-        subject: pulumi.Input<string>;
-        /**
-         * Array of email addresses.
-         */
-        to: pulumi.Input<pulumi.Input<string>[]>;
-    }
-
+    contactRoles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Each pivot must contain a 'type' and 'name'.
+     * The notification is enabled or not.
+     *
+     *  Supported for CategoryType(s): Cost, ReservationUtilization.
      */
-    export interface PivotPropertiesArgs {
-        /**
-         * Data field to show in view.
-         */
-        name?: pulumi.Input<string>;
-        /**
-         * Data type to show in view.
-         */
-        type?: pulumi.Input<string | enums.PivotTypeType>;
-    }
-
+    enabled: pulumi.Input<boolean>;
     /**
-     * The aggregation expression to be used in the report.
+     * Frequency of a notification. Represents how long the notification will be silent after triggering an alert for a threshold breach. If not specified, the frequency will be set by default based on the timeGrain (Weekly when timeGrain: Last7Days, Monthly when timeGrain: Last30Days).
+     *
+     *  Supported for CategoryType(s): ReservationUtilization.
      */
-    export interface ReportAggregationArgs {
-        /**
-         * The name of the aggregation function to use.
-         */
-        function: pulumi.Input<string | enums.FunctionType>;
-        /**
-         * The name of the column to aggregate.
-         */
-        name: pulumi.Input<string>;
-    }
-
+    frequency?: pulumi.Input<string | enums.Frequency>;
     /**
-     * The comparison expression to be used in the report.
+     * Language in which the recipient will receive the notification, 
+     *
+     *  Supported for CategoryType(s): Cost, ReservationUtilization.
      */
-    export interface ReportComparisonExpressionArgs {
-        /**
-         * The name of the column to use in comparison.
-         */
-        name: pulumi.Input<string>;
-        /**
-         * The operator to use for comparison.
-         */
-        operator: pulumi.Input<string | enums.OperatorType>;
-        /**
-         * Array of values to use for comparison
-         */
-        values: pulumi.Input<pulumi.Input<string>[]>;
-    }
-
+    locale?: pulumi.Input<string | enums.CultureCode>;
     /**
-     * The aggregation expression to be used in the report.
+     * The comparison operator.
+     *
+     *  Supported for CategoryType(s): Cost, ReservationUtilization.
+     *
+     *  Supported operators for **CategoryType: Cost**
+     * - GreaterThan
+     * - GreaterThanOrEqualTo
+     *
+     *  Supported operators for **CategoryType: ReservationUtilization**
+     * - LessThan
      */
-    export interface ReportConfigAggregationArgs {
-        /**
-         * The name of the aggregation function to use.
-         */
-        function: pulumi.Input<string | enums.FunctionType>;
-        /**
-         * The name of the column to aggregate.
-         */
-        name: pulumi.Input<string>;
-    }
-
+    operator: pulumi.Input<string | enums.BudgetNotificationOperatorType>;
     /**
-     * The comparison expression to be used in the report.
+     * Threshold value associated with a notification. It is always percent with a maximum of 2 decimal places.
+     *
+     *  Supported for CategoryType(s): Cost, ReservationUtilization.
+     *
+     *  **CategoryType: Cost** - Must be between 0 and 1000. Notification is sent when the cost exceeded the threshold.
+     *
+     *  **CategoryType: ReservationUtilization** - Must be between 0 and 100. Notification is sent when a reservation has a utilization percentage below the threshold.
      */
-    export interface ReportConfigComparisonExpressionArgs {
-        /**
-         * The name of the column to use in comparison.
-         */
-        name: pulumi.Input<string>;
-        /**
-         * The operator to use for comparison.
-         */
-        operator: pulumi.Input<string | enums.OperatorType>;
-        /**
-         * Array of values to use for comparison
-         */
-        values: pulumi.Input<pulumi.Input<string>[]>;
-    }
-
+    threshold: pulumi.Input<number>;
     /**
-     * The definition of data present in the report.
+     * The type of threshold.
+     *
+     *  Supported for CategoryType(s): Cost.
      */
-    export interface ReportConfigDatasetArgs {
-        /**
-         * Dictionary of aggregation expression to use in the report. The key of each item in the dictionary is the alias for the aggregated column. Report can have up to 2 aggregation clauses.
-         */
-        aggregation?: pulumi.Input<{[key: string]: pulumi.Input<ReportConfigAggregationArgs>}>;
-        /**
-         * Has configuration information for the data in the report. The configuration will be ignored if aggregation and grouping are provided.
-         */
-        configuration?: pulumi.Input<ReportConfigDatasetConfigurationArgs>;
-        /**
-         * Has filter expression to use in the report.
-         */
-        filter?: pulumi.Input<ReportConfigFilterArgs>;
-        /**
-         * The granularity of rows in the report.
-         */
-        granularity?: pulumi.Input<string | enums.ReportGranularityType>;
-        /**
-         * Array of group by expression to use in the report. Report can have up to 2 group by clauses.
-         */
-        grouping?: pulumi.Input<pulumi.Input<ReportConfigGroupingArgs>[]>;
-        /**
-         * Array of order by expression to use in the report.
-         */
-        sorting?: pulumi.Input<pulumi.Input<ReportConfigSortingArgs>[]>;
-    }
-
-    /**
-     * The configuration of dataset in the report.
-     */
-    export interface ReportConfigDatasetConfigurationArgs {
-        /**
-         * Array of column names to be included in the report. Any valid report column name is allowed. If not provided, then report includes all columns.
-         */
-        columns?: pulumi.Input<pulumi.Input<string>[]>;
-    }
-
-    /**
-     * The filter expression to be used in the report.
-     */
-    export interface ReportConfigFilterArgs {
-        /**
-         * The logical "AND" expression. Must have at least 2 items.
-         */
-        and?: pulumi.Input<pulumi.Input<ReportConfigFilterArgs>[]>;
-        /**
-         * Has comparison expression for a dimension
-         */
-        dimensions?: pulumi.Input<ReportConfigComparisonExpressionArgs>;
-        /**
-         * The logical "OR" expression. Must have at least 2 items.
-         */
-        or?: pulumi.Input<pulumi.Input<ReportConfigFilterArgs>[]>;
-        /**
-         * Has comparison expression for a tag
-         */
-        tags?: pulumi.Input<ReportConfigComparisonExpressionArgs>;
-    }
-
-    /**
-     * The group by expression to be used in the report.
-     */
-    export interface ReportConfigGroupingArgs {
-        /**
-         * The name of the column to group. This version supports subscription lowest possible grain.
-         */
-        name: pulumi.Input<string>;
-        /**
-         * Has type of the column to group.
-         */
-        type: pulumi.Input<string | enums.QueryColumnType>;
-    }
-
-    /**
-     * The order by expression to be used in the report.
-     */
-    export interface ReportConfigSortingArgs {
-        /**
-         * Direction of sort.
-         */
-        direction?: pulumi.Input<string | enums.ReportConfigSortingType>;
-        /**
-         * The name of the column to sort.
-         */
-        name: pulumi.Input<string>;
-    }
-
-    /**
-     * The start and end date for pulling data for the report.
-     */
-    export interface ReportConfigTimePeriodArgs {
-        /**
-         * The start date to pull data from.
-         */
-        from: pulumi.Input<string>;
-        /**
-         * The end date to pull data to.
-         */
-        to: pulumi.Input<string>;
-    }
-
-    /**
-     * The definition of data present in the report.
-     */
-    export interface ReportDatasetArgs {
-        /**
-         * Dictionary of aggregation expression to use in the report. The key of each item in the dictionary is the alias for the aggregated column. Report can have up to 2 aggregation clauses.
-         */
-        aggregation?: pulumi.Input<{[key: string]: pulumi.Input<ReportAggregationArgs>}>;
-        /**
-         * Has configuration information for the data in the report. The configuration will be ignored if aggregation and grouping are provided.
-         */
-        configuration?: pulumi.Input<ReportDatasetConfigurationArgs>;
-        /**
-         * Has filter expression to use in the report.
-         */
-        filter?: pulumi.Input<ReportFilterArgs>;
-        /**
-         * The granularity of rows in the report.
-         */
-        granularity?: pulumi.Input<string | enums.GranularityType>;
-        /**
-         * Array of group by expression to use in the report. Report can have up to 2 group by clauses.
-         */
-        grouping?: pulumi.Input<pulumi.Input<ReportGroupingArgs>[]>;
-    }
-
-    /**
-     * The configuration of dataset in the report.
-     */
-    export interface ReportDatasetConfigurationArgs {
-        /**
-         * Array of column names to be included in the report. Any valid report column name is allowed. If not provided, then report includes all columns.
-         */
-        columns?: pulumi.Input<pulumi.Input<string>[]>;
-    }
-
-    /**
-     * The definition of a report.
-     */
-    export interface ReportDefinitionArgs {
-        /**
-         * Has definition for data in this report.
-         */
-        dataset?: pulumi.Input<ReportDatasetArgs>;
-        /**
-         * Has time period for pulling data for the report.
-         */
-        timePeriod?: pulumi.Input<ReportTimePeriodArgs>;
-        /**
-         * The time frame for pulling data for the report. If custom, then a specific time period must be provided.
-         */
-        timeframe: pulumi.Input<string | enums.TimeframeType>;
-        /**
-         * The type of the report.
-         */
-        type: pulumi.Input<string | enums.ReportType>;
-    }
-
-    /**
-     * The destination information for the delivery of the report.
-     */
-    export interface ReportDeliveryDestinationArgs {
-        /**
-         * The name of the container where reports will be uploaded.
-         */
-        container: pulumi.Input<string>;
-        /**
-         * The resource id of the storage account where reports will be delivered.
-         */
-        resourceId: pulumi.Input<string>;
-        /**
-         * The name of the directory where reports will be uploaded.
-         */
-        rootFolderPath?: pulumi.Input<string>;
-    }
-
-    /**
-     * The delivery information associated with a report.
-     */
-    export interface ReportDeliveryInfoArgs {
-        /**
-         * Has destination for the report being delivered.
-         */
-        destination: pulumi.Input<ReportDeliveryDestinationArgs>;
-    }
-
-    /**
-     * The filter expression to be used in the report.
-     */
-    export interface ReportFilterArgs {
-        /**
-         * The logical "AND" expression. Must have at least 2 items.
-         */
-        and?: pulumi.Input<pulumi.Input<ReportFilterArgs>[]>;
-        /**
-         * Has comparison expression for a dimension
-         */
-        dimension?: pulumi.Input<ReportComparisonExpressionArgs>;
-        /**
-         * The logical "NOT" expression.
-         */
-        not?: pulumi.Input<ReportFilterArgs>;
-        /**
-         * The logical "OR" expression. Must have at least 2 items.
-         */
-        or?: pulumi.Input<pulumi.Input<ReportFilterArgs>[]>;
-        /**
-         * Has comparison expression for a tag
-         */
-        tag?: pulumi.Input<ReportComparisonExpressionArgs>;
-    }
-
-    /**
-     * The group by expression to be used in the report.
-     */
-    export interface ReportGroupingArgs {
-        /**
-         * The name of the column to group.
-         */
-        name: pulumi.Input<string>;
-        /**
-         * Has type of the column to group.
-         */
-        type: pulumi.Input<string | enums.ReportColumnType>;
-    }
-
-    /**
-     * The start and end date for recurrence schedule.
-     */
-    export interface ReportRecurrencePeriodArgs {
-        /**
-         * The start date of recurrence.
-         */
-        from: pulumi.Input<string>;
-        /**
-         * The end date of recurrence.
-         */
-        to?: pulumi.Input<string>;
-    }
-
-    /**
-     * The schedule associated with a report.
-     */
-    export interface ReportScheduleArgs {
-        /**
-         * The schedule recurrence.
-         */
-        recurrence: pulumi.Input<string | enums.RecurrenceType>;
-        /**
-         * Has start and end date of the recurrence. The start date must be in future. If present, the end date must be greater than start date.
-         */
-        recurrencePeriod?: pulumi.Input<ReportRecurrencePeriodArgs>;
-        /**
-         * The status of the schedule. Whether active or not. If inactive, the report's scheduled execution is paused.
-         */
-        status?: pulumi.Input<string | enums.StatusType>;
-    }
-
-    /**
-     * The start and end date for pulling data for the report.
-     */
-    export interface ReportTimePeriodArgs {
-        /**
-         * The start date to pull data from.
-         */
-        from: pulumi.Input<string>;
-        /**
-         * The end date to pull data to.
-         */
-        to: pulumi.Input<string>;
-    }
-
-    /**
-     * The properties of the schedule.
-     */
-    export interface SchedulePropertiesArgs {
-        /**
-         * UTC day on which cost analysis data will be emailed. Must be between 1 and 31. This property is applicable when frequency is Monthly and overrides weeksOfMonth or daysOfWeek.
-         */
-        dayOfMonth?: pulumi.Input<number>;
-        /**
-         * Day names in english on which cost analysis data will be emailed. This property is applicable when frequency is Weekly or Monthly.
-         */
-        daysOfWeek?: pulumi.Input<pulumi.Input<string | enums.DaysOfWeek>[]>;
-        /**
-         * The end date and time of the scheduled action (UTC).
-         */
-        endDate: pulumi.Input<string>;
-        /**
-         * Frequency of the schedule.
-         */
-        frequency: pulumi.Input<string | enums.ScheduleFrequency>;
-        /**
-         * UTC time at which cost analysis data will be emailed.
-         */
-        hourOfDay?: pulumi.Input<number>;
-        /**
-         * The start date and time of the scheduled action (UTC).
-         */
-        startDate: pulumi.Input<string>;
-        /**
-         * Weeks in which cost analysis data will be emailed. This property is applicable when frequency is Monthly and used in combination with daysOfWeek.
-         */
-        weeksOfMonth?: pulumi.Input<pulumi.Input<string | enums.WeeksOfMonth>[]>;
-    }
-
-    export interface SettingsPropertiesCacheArgs {
-        /**
-         * Indicates the account type. Allowed values include: EA, PAYG, Modern, Internal, Unknown.
-         */
-        channel: pulumi.Input<string>;
-        /**
-         * Resource ID used by Resource Manager to uniquely identify the scope.
-         */
-        id: pulumi.Input<string>;
-        /**
-         * Display name for the scope.
-         */
-        name: pulumi.Input<string>;
-        /**
-         * Resource ID of the parent scope. For instance, subscription's resource ID for a resource group or a management group resource ID for a subscription.
-         */
-        parent?: pulumi.Input<string>;
-        /**
-         * Indicates the status of the scope. Status only applies to subscriptions and billing accounts.
-         */
-        status?: pulumi.Input<string>;
-        /**
-         * Indicates the type of modern account. Allowed values include: Individual, Enterprise, Partner, Indirect, NotApplicable
-         */
-        subchannel: pulumi.Input<string>;
-    }
-
-    /**
-     * Source resources for cost allocation
-     */
-    export interface SourceCostAllocationResourceArgs {
-        /**
-         * If resource type is dimension, this must be either ResourceGroupName or SubscriptionId. If resource type is tag, this must be a valid Azure tag
-         */
-        name: pulumi.Input<string>;
-        /**
-         * Type of resources contained in this cost allocation rule
-         */
-        resourceType: pulumi.Input<string | enums.CostAllocationResourceType>;
-        /**
-         * Source Resources for cost allocation. This list cannot contain more than 25 values.
-         */
-        values: pulumi.Input<pulumi.Input<string>[]>;
-    }
-
-    /**
-     * The properties of the tag inheritance setting.
-     */
-    export interface TagInheritancePropertiesArgs {
-        /**
-         * When resource has the same tag as subscription or resource group and this property is set to true - the subscription or resource group tag will be applied. If subscription and resource group tags are also the same, subscription tag will be applied.
-         */
-        preferContainerTags: pulumi.Input<boolean>;
-    }
-
-    /**
-     * Target resources for cost allocation.
-     */
-    export interface TargetCostAllocationResourceArgs {
-        /**
-         * If resource type is dimension, this must be either ResourceGroupName or SubscriptionId. If resource type is tag, this must be a valid Azure tag
-         */
-        name: pulumi.Input<string>;
-        /**
-         * Method of cost allocation for the rule
-         */
-        policyType: pulumi.Input<string | enums.CostAllocationPolicyType>;
-        /**
-         * Type of resources contained in this cost allocation rule
-         */
-        resourceType: pulumi.Input<string | enums.CostAllocationResourceType>;
-        /**
-         * Target resources for cost allocation. This list cannot contain more than 25 values.
-         */
-        values: pulumi.Input<pulumi.Input<CostAllocationProportionArgs>[]>;
-    }
-
-    export namespace v20180801preview {
-        /**
-         * The aggregation expression to be used in the report.
-         */
-        export interface ReportAggregationArgs {
-            /**
-             * The name of the aggregation function to use.
-             */
-            function: pulumi.Input<string | enums.v20180801preview.FunctionType>;
-            /**
-             * The name of the column to aggregate.
-             */
-            name: pulumi.Input<string>;
-        }
-
-        /**
-         * The comparison expression to be used in the report.
-         */
-        export interface ReportComparisonExpressionArgs {
-            /**
-             * The name of the column to use in comparison.
-             */
-            name: pulumi.Input<string>;
-            /**
-             * The operator to use for comparison.
-             */
-            operator: pulumi.Input<string | enums.v20180801preview.OperatorType>;
-            /**
-             * Array of values to use for comparison
-             */
-            values: pulumi.Input<pulumi.Input<string>[]>;
-        }
-
-        /**
-         * The definition of data present in the report.
-         */
-        export interface ReportDatasetArgs {
-            /**
-             * Dictionary of aggregation expression to use in the report. The key of each item in the dictionary is the alias for the aggregated column. Report can have up to 2 aggregation clauses.
-             */
-            aggregation?: pulumi.Input<{[key: string]: pulumi.Input<v20180801preview.ReportAggregationArgs>}>;
-            /**
-             * Has configuration information for the data in the report. The configuration will be ignored if aggregation and grouping are provided.
-             */
-            configuration?: pulumi.Input<v20180801preview.ReportDatasetConfigurationArgs>;
-            /**
-             * Has filter expression to use in the report.
-             */
-            filter?: pulumi.Input<v20180801preview.ReportFilterArgs>;
-            /**
-             * The granularity of rows in the report.
-             */
-            granularity?: pulumi.Input<string | enums.v20180801preview.GranularityType>;
-            /**
-             * Array of group by expression to use in the report. Report can have up to 2 group by clauses.
-             */
-            grouping?: pulumi.Input<pulumi.Input<v20180801preview.ReportGroupingArgs>[]>;
-        }
-
-        /**
-         * The configuration of dataset in the report.
-         */
-        export interface ReportDatasetConfigurationArgs {
-            /**
-             * Array of column names to be included in the report. Any valid report column name is allowed. If not provided, then report includes all columns.
-             */
-            columns?: pulumi.Input<pulumi.Input<string>[]>;
-        }
-
-        /**
-         * The definition of a report.
-         */
-        export interface ReportDefinitionArgs {
-            /**
-             * Has definition for data in this report.
-             */
-            dataset?: pulumi.Input<v20180801preview.ReportDatasetArgs>;
-            /**
-             * Has time period for pulling data for the report.
-             */
-            timePeriod?: pulumi.Input<v20180801preview.ReportTimePeriodArgs>;
-            /**
-             * The time frame for pulling data for the report. If custom, then a specific time period must be provided.
-             */
-            timeframe: pulumi.Input<string | enums.v20180801preview.TimeframeType>;
-            /**
-             * The type of the report.
-             */
-            type: pulumi.Input<string | enums.v20180801preview.ReportType>;
-        }
-
-        /**
-         * The destination information for the delivery of the report.
-         */
-        export interface ReportDeliveryDestinationArgs {
-            /**
-             * The name of the container where reports will be uploaded.
-             */
-            container: pulumi.Input<string>;
-            /**
-             * The resource id of the storage account where reports will be delivered.
-             */
-            resourceId: pulumi.Input<string>;
-            /**
-             * The name of the directory where reports will be uploaded.
-             */
-            rootFolderPath?: pulumi.Input<string>;
-        }
-
-        /**
-         * The delivery information associated with a report.
-         */
-        export interface ReportDeliveryInfoArgs {
-            /**
-             * Has destination for the report being delivered.
-             */
-            destination: pulumi.Input<v20180801preview.ReportDeliveryDestinationArgs>;
-        }
-
-        /**
-         * The filter expression to be used in the report.
-         */
-        export interface ReportFilterArgs {
-            /**
-             * The logical "AND" expression. Must have at least 2 items.
-             */
-            and?: pulumi.Input<pulumi.Input<v20180801preview.ReportFilterArgs>[]>;
-            /**
-             * Has comparison expression for a dimension
-             */
-            dimension?: pulumi.Input<v20180801preview.ReportComparisonExpressionArgs>;
-            /**
-             * The logical "NOT" expression.
-             */
-            not?: pulumi.Input<v20180801preview.ReportFilterArgs>;
-            /**
-             * The logical "OR" expression. Must have at least 2 items.
-             */
-            or?: pulumi.Input<pulumi.Input<v20180801preview.ReportFilterArgs>[]>;
-            /**
-             * Has comparison expression for a tag
-             */
-            tag?: pulumi.Input<v20180801preview.ReportComparisonExpressionArgs>;
-        }
-
-        /**
-         * The group by expression to be used in the report.
-         */
-        export interface ReportGroupingArgs {
-            /**
-             * The name of the column to group.
-             */
-            name: pulumi.Input<string>;
-            /**
-             * Has type of the column to group.
-             */
-            type: pulumi.Input<string | enums.v20180801preview.ReportColumnType>;
-        }
-
-        /**
-         * The start and end date for recurrence schedule.
-         */
-        export interface ReportRecurrencePeriodArgs {
-            /**
-             * The start date of recurrence.
-             */
-            from: pulumi.Input<string>;
-            /**
-             * The end date of recurrence.
-             */
-            to?: pulumi.Input<string>;
-        }
-
-        /**
-         * The schedule associated with a report.
-         */
-        export interface ReportScheduleArgs {
-            /**
-             * The schedule recurrence.
-             */
-            recurrence: pulumi.Input<string | enums.v20180801preview.RecurrenceType>;
-            /**
-             * Has start and end date of the recurrence. The start date must be in future. If present, the end date must be greater than start date.
-             */
-            recurrencePeriod?: pulumi.Input<v20180801preview.ReportRecurrencePeriodArgs>;
-            /**
-             * The status of the schedule. Whether active or not. If inactive, the report's scheduled execution is paused.
-             */
-            status?: pulumi.Input<string | enums.v20180801preview.StatusType>;
-        }
-
-        /**
-         * The start and end date for pulling data for the report.
-         */
-        export interface ReportTimePeriodArgs {
-            /**
-             * The start date to pull data from.
-             */
-            from: pulumi.Input<string>;
-            /**
-             * The end date to pull data to.
-             */
-            to: pulumi.Input<string>;
-        }
-
-    }
-
-    export namespace v20190301preview {
-    }
-
-    export namespace v20190401preview {
-        /**
-         * The start and end date for a budget.
-         */
-        export interface BudgetTimePeriodArgs {
-            /**
-             * The end date for the budget. If not provided, we default this to 10 years from the start date.
-             */
-            endDate?: pulumi.Input<string>;
-            /**
-             * The start date for the budget.
-             */
-            startDate: pulumi.Input<string>;
-        }
-
-        /**
-         * The notification associated with a budget.
-         */
-        export interface NotificationArgs {
-            /**
-             * Email addresses to send the budget notification to when the threshold is exceeded.
-             */
-            contactEmails: pulumi.Input<pulumi.Input<string>[]>;
-            /**
-             * Action groups to send the budget notification to when the threshold is exceeded.
-             */
-            contactGroups?: pulumi.Input<pulumi.Input<string>[]>;
-            /**
-             * Contact roles to send the budget notification to when the threshold is exceeded.
-             */
-            contactRoles?: pulumi.Input<pulumi.Input<string>[]>;
-            /**
-             * The notification is enabled or not.
-             */
-            enabled: pulumi.Input<boolean>;
-            /**
-             * The comparison operator.
-             */
-            operator: pulumi.Input<string | enums.v20190401preview.NotificationOperatorType>;
-            /**
-             * Threshold value associated with a notification. Notification is sent when the cost exceeded the threshold. It is always percent and has to be between 0 and 1000.
-             */
-            threshold: pulumi.Input<number>;
-        }
-
-        /**
-         * The comparison expression to be used in the report.
-         */
-        export interface ReportConfigComparisonExpressionArgs {
-            /**
-             * The name of the column to use in comparison.
-             */
-            name: pulumi.Input<string>;
-            /**
-             * The operator to use for comparison.
-             */
-            operator: pulumi.Input<string | enums.v20190401preview.OperatorType>;
-            /**
-             * Array of values to use for comparison
-             */
-            values: pulumi.Input<pulumi.Input<string>[]>;
-        }
-
-        /**
-         * The filter expression to be used in the report.
-         */
-        export interface ReportConfigFilterArgs {
-            /**
-             * The logical "AND" expression. Must have at least 2 items.
-             */
-            and?: pulumi.Input<pulumi.Input<v20190401preview.ReportConfigFilterArgs>[]>;
-            /**
-             * Has comparison expression for a dimension
-             */
-            dimension?: pulumi.Input<v20190401preview.ReportConfigComparisonExpressionArgs>;
-            /**
-             * The logical "NOT" expression.
-             */
-            not?: pulumi.Input<v20190401preview.ReportConfigFilterArgs>;
-            /**
-             * The logical "OR" expression. Must have at least 2 items.
-             */
-            or?: pulumi.Input<pulumi.Input<v20190401preview.ReportConfigFilterArgs>[]>;
-            /**
-             * Has comparison expression for a tag
-             */
-            tag?: pulumi.Input<v20190401preview.ReportConfigComparisonExpressionArgs>;
-        }
-
-    }
-
-    export namespace v20191001 {
-        /**
-         * The destination information for the delivery of the export.
-         */
-        export interface ExportDeliveryDestinationArgs {
-            /**
-             * The name of the container where exports will be uploaded.
-             */
-            container: pulumi.Input<string>;
-            /**
-             * The resource id of the storage account where exports will be delivered.
-             */
-            resourceId: pulumi.Input<string>;
-            /**
-             * The name of the directory where exports will be uploaded.
-             */
-            rootFolderPath?: pulumi.Input<string>;
-        }
-
-        /**
-         * The delivery information associated with a export.
-         */
-        export interface ExportDeliveryInfoArgs {
-            /**
-             * Has destination for the export being delivered.
-             */
-            destination: pulumi.Input<v20191001.ExportDeliveryDestinationArgs>;
-        }
-
-        /**
-         * The start and end date for recurrence schedule.
-         */
-        export interface ExportRecurrencePeriodArgs {
-            /**
-             * The start date of recurrence.
-             */
-            from: pulumi.Input<string>;
-            /**
-             * The end date of recurrence.
-             */
-            to?: pulumi.Input<string>;
-        }
-
-        /**
-         * The schedule associated with a export.
-         */
-        export interface ExportScheduleArgs {
-            /**
-             * The schedule recurrence.
-             */
-            recurrence: pulumi.Input<string | enums.v20191001.RecurrenceType>;
-            /**
-             * Has start and end date of the recurrence. The start date must be in future. If present, the end date must be greater than start date.
-             */
-            recurrencePeriod?: pulumi.Input<v20191001.ExportRecurrencePeriodArgs>;
-            /**
-             * The status of the schedule. Whether active or not. If inactive, the export's scheduled execution is paused.
-             */
-            status?: pulumi.Input<string | enums.v20191001.StatusType>;
-        }
-
-        /**
-         * The aggregation expression to be used in the query.
-         */
-        export interface QueryAggregationArgs {
-            /**
-             * The name of the aggregation function to use.
-             */
-            function: pulumi.Input<string | enums.v20191001.FunctionType>;
-            /**
-             * The name of the column to aggregate.
-             */
-            name: pulumi.Input<string>;
-        }
-
-        /**
-         * The comparison expression to be used in the query.
-         */
-        export interface QueryComparisonExpressionArgs {
-            /**
-             * The name of the column to use in comparison.
-             */
-            name: pulumi.Input<string>;
-            /**
-             * The operator to use for comparison.
-             */
-            operator: pulumi.Input<string | enums.v20191001.OperatorType>;
-            /**
-             * Array of values to use for comparison
-             */
-            values: pulumi.Input<pulumi.Input<string>[]>;
-        }
-
-        /**
-         * The definition of data present in the query.
-         */
-        export interface QueryDatasetArgs {
-            /**
-             * Dictionary of aggregation expression to use in the query. The key of each item in the dictionary is the alias for the aggregated column. Query can have up to 2 aggregation clauses.
-             */
-            aggregation?: pulumi.Input<{[key: string]: pulumi.Input<v20191001.QueryAggregationArgs>}>;
-            /**
-             * Has configuration information for the data in the export. The configuration will be ignored if aggregation and grouping are provided.
-             */
-            configuration?: pulumi.Input<v20191001.QueryDatasetConfigurationArgs>;
-            /**
-             * The filter expression to use in the query. Please reference our Query API REST documentation for how to properly format the filter.
-             */
-            filter?: pulumi.Input<v20191001.QueryFilterArgs>;
-            /**
-             * The granularity of rows in the query.
-             */
-            granularity?: pulumi.Input<string | enums.v20191001.GranularityType>;
-            /**
-             * Array of group by expression to use in the query. Query can have up to 2 group by clauses.
-             */
-            grouping?: pulumi.Input<pulumi.Input<v20191001.QueryGroupingArgs>[]>;
-            /**
-             * Array of sorting by columns in query.
-             */
-            sorting?: pulumi.Input<pulumi.Input<v20191001.QuerySortingConfigurationArgs>[]>;
-        }
-
-        /**
-         * The configuration of dataset in the query.
-         */
-        export interface QueryDatasetConfigurationArgs {
-            /**
-             * Array of column names to be included in the query. Any valid query column name is allowed. If not provided, then query includes all columns.
-             */
-            columns?: pulumi.Input<pulumi.Input<string>[]>;
-        }
-
-        /**
-         * The definition of a query.
-         */
-        export interface QueryDefinitionArgs {
-            /**
-             * Has definition for data in this query.
-             */
-            dataset?: pulumi.Input<v20191001.QueryDatasetArgs>;
-            /**
-             * Has time period for pulling data for the query.
-             */
-            timePeriod?: pulumi.Input<v20191001.QueryTimePeriodArgs>;
-            /**
-             * The time frame for pulling data for the query. If custom, then a specific time period must be provided.
-             */
-            timeframe: pulumi.Input<string | enums.v20191001.TimeframeType>;
-            /**
-             * The type of the query.
-             */
-            type: pulumi.Input<string | enums.v20191001.ExportType>;
-        }
-
-        /**
-         * The filter expression to be used in the export.
-         */
-        export interface QueryFilterArgs {
-            /**
-             * The logical "AND" expression. Must have at least 2 items.
-             */
-            and?: pulumi.Input<pulumi.Input<v20191001.QueryFilterArgs>[]>;
-            /**
-             * Has comparison expression for a dimension
-             */
-            dimension?: pulumi.Input<v20191001.QueryComparisonExpressionArgs>;
-            /**
-             * The logical "NOT" expression.
-             */
-            not?: pulumi.Input<v20191001.QueryFilterArgs>;
-            /**
-             * The logical "OR" expression. Must have at least 2 items.
-             */
-            or?: pulumi.Input<pulumi.Input<v20191001.QueryFilterArgs>[]>;
-            /**
-             * Has comparison expression for a tag
-             */
-            tag?: pulumi.Input<v20191001.QueryComparisonExpressionArgs>;
-        }
-
-        /**
-         * The group by expression to be used in the query.
-         */
-        export interface QueryGroupingArgs {
-            /**
-             * The name of the column to group.
-             */
-            name: pulumi.Input<string>;
-            /**
-             * Has type of the column to group.
-             */
-            type: pulumi.Input<string | enums.v20191001.QueryColumnType>;
-        }
-
-        /**
-         * The configuration for sorting in the query.
-         */
-        export interface QuerySortingConfigurationArgs {
-            /**
-             * The name of the column to use in sorting.
-             */
-            name?: pulumi.Input<string>;
-            /**
-             * The sorting direction
-             */
-            querySortingDirection?: pulumi.Input<string | enums.v20191001.SortDirection>;
-        }
-
-        /**
-         * The start and end date for pulling data for the query.
-         */
-        export interface QueryTimePeriodArgs {
-            /**
-             * The start date to pull data from.
-             */
-            from: pulumi.Input<string>;
-            /**
-             * The end date to pull data to.
-             */
-            to: pulumi.Input<string>;
-        }
-
-    }
-
-    export namespace v20191101 {
-        /**
-         * Each KPI must contain a 'type' and 'enabled' key.
-         */
-        export interface KpiPropertiesArgs {
-            /**
-             * show the KPI in the UI?
-             */
-            enabled?: pulumi.Input<boolean>;
-            /**
-             * ID of resource related to metric (budget).
-             */
-            id?: pulumi.Input<string>;
-            /**
-             * KPI type (Forecast, Budget).
-             */
-            type?: pulumi.Input<string | enums.v20191101.KpiTypeType>;
-        }
-
-        /**
-         * Each pivot must contain a 'type' and 'name'.
-         */
-        export interface PivotPropertiesArgs {
-            /**
-             * Data field to show in view.
-             */
-            name?: pulumi.Input<string>;
-            /**
-             * Data type to show in view.
-             */
-            type?: pulumi.Input<string | enums.v20191101.PivotTypeType>;
-        }
-
-        /**
-         * The aggregation expression to be used in the report.
-         */
-        export interface ReportConfigAggregationArgs {
-            /**
-             * The name of the aggregation function to use.
-             */
-            function: pulumi.Input<string | enums.v20191101.FunctionType>;
-            /**
-             * The name of the column to aggregate.
-             */
-            name: pulumi.Input<string>;
-        }
-
-        /**
-         * The comparison expression to be used in the report.
-         */
-        export interface ReportConfigComparisonExpressionArgs {
-            /**
-             * The name of the column to use in comparison.
-             */
-            name: pulumi.Input<string>;
-            /**
-             * The operator to use for comparison.
-             */
-            operator: pulumi.Input<string | enums.v20191101.OperatorType>;
-            /**
-             * Array of values to use for comparison
-             */
-            values: pulumi.Input<pulumi.Input<string>[]>;
-        }
-
-        /**
-         * The definition of data present in the report.
-         */
-        export interface ReportConfigDatasetArgs {
-            /**
-             * Dictionary of aggregation expression to use in the report. The key of each item in the dictionary is the alias for the aggregated column. Report can have up to 2 aggregation clauses.
-             */
-            aggregation?: pulumi.Input<{[key: string]: pulumi.Input<v20191101.ReportConfigAggregationArgs>}>;
-            /**
-             * Has configuration information for the data in the report. The configuration will be ignored if aggregation and grouping are provided.
-             */
-            configuration?: pulumi.Input<v20191101.ReportConfigDatasetConfigurationArgs>;
-            /**
-             * Has filter expression to use in the report.
-             */
-            filter?: pulumi.Input<v20191101.ReportConfigFilterArgs>;
-            /**
-             * The granularity of rows in the report.
-             */
-            granularity?: pulumi.Input<string | enums.v20191101.ReportGranularityType>;
-            /**
-             * Array of group by expression to use in the report. Report can have up to 2 group by clauses.
-             */
-            grouping?: pulumi.Input<pulumi.Input<v20191101.ReportConfigGroupingArgs>[]>;
-            /**
-             * Array of order by expression to use in the report.
-             */
-            sorting?: pulumi.Input<pulumi.Input<v20191101.ReportConfigSortingArgs>[]>;
-        }
-
-        /**
-         * The configuration of dataset in the report.
-         */
-        export interface ReportConfigDatasetConfigurationArgs {
-            /**
-             * Array of column names to be included in the report. Any valid report column name is allowed. If not provided, then report includes all columns.
-             */
-            columns?: pulumi.Input<pulumi.Input<string>[]>;
-        }
-
-        /**
-         * The filter expression to be used in the report.
-         */
-        export interface ReportConfigFilterArgs {
-            /**
-             * The logical "AND" expression. Must have at least 2 items.
-             */
-            and?: pulumi.Input<pulumi.Input<v20191101.ReportConfigFilterArgs>[]>;
-            /**
-             * Has comparison expression for a dimension
-             */
-            dimensions?: pulumi.Input<v20191101.ReportConfigComparisonExpressionArgs>;
-            /**
-             * The logical "OR" expression. Must have at least 2 items.
-             */
-            or?: pulumi.Input<pulumi.Input<v20191101.ReportConfigFilterArgs>[]>;
-            /**
-             * Has comparison expression for a tag key
-             */
-            tagKey?: pulumi.Input<v20191101.ReportConfigComparisonExpressionArgs>;
-            /**
-             * Has comparison expression for a tag value
-             */
-            tagValue?: pulumi.Input<v20191101.ReportConfigComparisonExpressionArgs>;
-            /**
-             * Has comparison expression for a tag
-             */
-            tags?: pulumi.Input<v20191101.ReportConfigComparisonExpressionArgs>;
-        }
-
-        /**
-         * The group by expression to be used in the report.
-         */
-        export interface ReportConfigGroupingArgs {
-            /**
-             * The name of the column to group. This version supports subscription lowest possible grain.
-             */
-            name: pulumi.Input<string>;
-            /**
-             * Has type of the column to group.
-             */
-            type: pulumi.Input<string | enums.v20191101.ReportConfigColumnType>;
-        }
-
-        /**
-         * The order by expression to be used in the report.
-         */
-        export interface ReportConfigSortingArgs {
-            /**
-             * Direction of sort.
-             */
-            direction?: pulumi.Input<string>;
-            /**
-             * The name of the column to sort.
-             */
-            name: pulumi.Input<string>;
-        }
-
-        /**
-         * The start and end date for pulling data for the report.
-         */
-        export interface ReportConfigTimePeriodArgs {
-            /**
-             * The start date to pull data from.
-             */
-            from: pulumi.Input<string>;
-            /**
-             * The end date to pull data to.
-             */
-            to: pulumi.Input<string>;
-        }
-
-        export interface SettingsPropertiesCacheArgs {
-            /**
-             * Indicates the account type. Allowed values include: EA, PAYG, Modern, Internal, Unknown.
-             */
-            channel: pulumi.Input<string>;
-            /**
-             * Resource ID used by Resource Manager to uniquely identify the scope.
-             */
-            id: pulumi.Input<string>;
-            /**
-             * Display name for the scope.
-             */
-            name: pulumi.Input<string>;
-            /**
-             * Resource ID of the parent scope. For instance, subscription's resource ID for a resource group or a management group resource ID for a subscription.
-             */
-            parent?: pulumi.Input<string>;
-            /**
-             * Indicates the status of the scope. Status only applies to subscriptions and billing accounts.
-             */
-            status?: pulumi.Input<string>;
-            /**
-             * Indicates the type of modern account. Allowed values include: Individual, Enterprise, Partner, Indirect, NotApplicable
-             */
-            subchannel: pulumi.Input<string>;
-        }
-
-    }
-
-    export namespace v20200301preview {
-        /**
-         * Target resources and allocation
-         */
-        export interface CostAllocationProportionArgs {
-            /**
-             * Target resource for cost allocation
-             */
-            name: pulumi.Input<string>;
-            /**
-             * Percentage of source cost to allocate to this resource. This value can be specified to two decimal places and the total percentage of all resources in this rule must sum to 100.00.
-             */
-            percentage: pulumi.Input<number>;
-        }
-
-        /**
-         * Resource details of the cost allocation rule
-         */
-        export interface CostAllocationRuleDetailsArgs {
-            /**
-             * Source resources for cost allocation. At this time, this list can contain no more than one element.
-             */
-            sourceResources?: pulumi.Input<pulumi.Input<v20200301preview.SourceCostAllocationResourceArgs>[]>;
-            /**
-             * Target resources for cost allocation. At this time, this list can contain no more than one element.
-             */
-            targetResources?: pulumi.Input<pulumi.Input<v20200301preview.TargetCostAllocationResourceArgs>[]>;
-        }
-
-        /**
-         * The properties of a cost allocation rule
-         */
-        export interface CostAllocationRulePropertiesArgs {
-            /**
-             * Description of a cost allocation rule.
-             */
-            description?: pulumi.Input<string>;
-            /**
-             * Resource information for the cost allocation rule
-             */
-            details: pulumi.Input<v20200301preview.CostAllocationRuleDetailsArgs>;
-            /**
-             * Status of the rule
-             */
-            status: pulumi.Input<string | enums.v20200301preview.RuleStatus>;
-        }
-
-        /**
-         * Source resources for cost allocation
-         */
-        export interface SourceCostAllocationResourceArgs {
-            /**
-             * If resource type is dimension, this must be either ResourceGroupName or SubscriptionId. If resource type is tag, this must be a valid Azure tag
-             */
-            name: pulumi.Input<string>;
-            /**
-             * Type of resources contained in this cost allocation rule
-             */
-            resourceType: pulumi.Input<string | enums.v20200301preview.CostAllocationResourceType>;
-            /**
-             * Source Resources for cost allocation. This list cannot contain more than 25 values.
-             */
-            values: pulumi.Input<pulumi.Input<string>[]>;
-        }
-
-        /**
-         * Target resources for cost allocation.
-         */
-        export interface TargetCostAllocationResourceArgs {
-            /**
-             * If resource type is dimension, this must be either ResourceGroupName or SubscriptionId. If resource type is tag, this must be a valid Azure tag
-             */
-            name: pulumi.Input<string>;
-            /**
-             * Method of cost allocation for the rule
-             */
-            policyType: pulumi.Input<string | enums.v20200301preview.CostAllocationPolicyType>;
-            /**
-             * Type of resources contained in this cost allocation rule
-             */
-            resourceType: pulumi.Input<string | enums.v20200301preview.CostAllocationResourceType>;
-            /**
-             * Target resources for cost allocation. This list cannot contain more than 25 values.
-             */
-            values: pulumi.Input<pulumi.Input<v20200301preview.CostAllocationProportionArgs>[]>;
-        }
-
-    }
-
-    export namespace v20200601 {
-        /**
-         * Each KPI must contain a 'type' and 'enabled' key.
-         */
-        export interface KpiPropertiesArgs {
-            /**
-             * show the KPI in the UI?
-             */
-            enabled?: pulumi.Input<boolean>;
-            /**
-             * ID of resource related to metric (budget).
-             */
-            id?: pulumi.Input<string>;
-            /**
-             * KPI type (Forecast, Budget).
-             */
-            type?: pulumi.Input<string | enums.v20200601.KpiTypeType>;
-        }
-
-        /**
-         * Each pivot must contain a 'type' and 'name'.
-         */
-        export interface PivotPropertiesArgs {
-            /**
-             * Data field to show in view.
-             */
-            name?: pulumi.Input<string>;
-            /**
-             * Data type to show in view.
-             */
-            type?: pulumi.Input<string | enums.v20200601.PivotTypeType>;
-        }
-
-        /**
-         * The aggregation expression to be used in the report.
-         */
-        export interface ReportConfigAggregationArgs {
-            /**
-             * The name of the aggregation function to use.
-             */
-            function: pulumi.Input<string | enums.v20200601.FunctionType>;
-            /**
-             * The name of the column to aggregate.
-             */
-            name: pulumi.Input<string>;
-        }
-
-        /**
-         * The comparison expression to be used in the report.
-         */
-        export interface ReportConfigComparisonExpressionArgs {
-            /**
-             * The name of the column to use in comparison.
-             */
-            name: pulumi.Input<string>;
-            /**
-             * The operator to use for comparison.
-             */
-            operator: pulumi.Input<string | enums.v20200601.OperatorType>;
-            /**
-             * Array of values to use for comparison
-             */
-            values: pulumi.Input<pulumi.Input<string>[]>;
-        }
-
-        /**
-         * The definition of data present in the report.
-         */
-        export interface ReportConfigDatasetArgs {
-            /**
-             * Dictionary of aggregation expression to use in the report. The key of each item in the dictionary is the alias for the aggregated column. Report can have up to 2 aggregation clauses.
-             */
-            aggregation?: pulumi.Input<{[key: string]: pulumi.Input<v20200601.ReportConfigAggregationArgs>}>;
-            /**
-             * Has configuration information for the data in the report. The configuration will be ignored if aggregation and grouping are provided.
-             */
-            configuration?: pulumi.Input<v20200601.ReportConfigDatasetConfigurationArgs>;
-            /**
-             * Has filter expression to use in the report.
-             */
-            filter?: pulumi.Input<v20200601.ReportConfigFilterArgs>;
-            /**
-             * The granularity of rows in the report.
-             */
-            granularity?: pulumi.Input<string | enums.v20200601.ReportGranularityType>;
-            /**
-             * Array of group by expression to use in the report. Report can have up to 2 group by clauses.
-             */
-            grouping?: pulumi.Input<pulumi.Input<v20200601.ReportConfigGroupingArgs>[]>;
-            /**
-             * Array of order by expression to use in the report.
-             */
-            sorting?: pulumi.Input<pulumi.Input<v20200601.ReportConfigSortingArgs>[]>;
-        }
-
-        /**
-         * The configuration of dataset in the report.
-         */
-        export interface ReportConfigDatasetConfigurationArgs {
-            /**
-             * Array of column names to be included in the report. Any valid report column name is allowed. If not provided, then report includes all columns.
-             */
-            columns?: pulumi.Input<pulumi.Input<string>[]>;
-        }
-
-        /**
-         * The filter expression to be used in the report.
-         */
-        export interface ReportConfigFilterArgs {
-            /**
-             * The logical "AND" expression. Must have at least 2 items.
-             */
-            and?: pulumi.Input<pulumi.Input<v20200601.ReportConfigFilterArgs>[]>;
-            /**
-             * Has comparison expression for a dimension
-             */
-            dimension?: pulumi.Input<v20200601.ReportConfigComparisonExpressionArgs>;
-            /**
-             * The logical "NOT" expression.
-             */
-            not?: pulumi.Input<v20200601.ReportConfigFilterArgs>;
-            /**
-             * The logical "OR" expression. Must have at least 2 items.
-             */
-            or?: pulumi.Input<pulumi.Input<v20200601.ReportConfigFilterArgs>[]>;
-            /**
-             * Has comparison expression for a tag
-             */
-            tag?: pulumi.Input<v20200601.ReportConfigComparisonExpressionArgs>;
-        }
-
-        /**
-         * The group by expression to be used in the report.
-         */
-        export interface ReportConfigGroupingArgs {
-            /**
-             * The name of the column to group. This version supports subscription lowest possible grain.
-             */
-            name: pulumi.Input<string>;
-            /**
-             * Has type of the column to group.
-             */
-            type: pulumi.Input<string | enums.v20200601.ReportConfigColumnType>;
-        }
-
-        /**
-         * The order by expression to be used in the report.
-         */
-        export interface ReportConfigSortingArgs {
-            /**
-             * Direction of sort.
-             */
-            direction?: pulumi.Input<string>;
-            /**
-             * The name of the column to sort.
-             */
-            name: pulumi.Input<string>;
-        }
-
-        /**
-         * The start and end date for pulling data for the report.
-         */
-        export interface ReportConfigTimePeriodArgs {
-            /**
-             * The start date to pull data from.
-             */
-            from: pulumi.Input<string>;
-            /**
-             * The end date to pull data to.
-             */
-            to: pulumi.Input<string>;
-        }
-
-    }
-
-    export namespace v20221001 {
-        /**
-         * Each KPI must contain a 'type' and 'enabled' key.
-         */
-        export interface KpiPropertiesArgs {
-            /**
-             * show the KPI in the UI?
-             */
-            enabled?: pulumi.Input<boolean>;
-            /**
-             * ID of resource related to metric (budget).
-             */
-            id?: pulumi.Input<string>;
-            /**
-             * KPI type (Forecast, Budget).
-             */
-            type?: pulumi.Input<string | enums.v20221001.KpiTypeType>;
-        }
-
-        /**
-         * Each pivot must contain a 'type' and 'name'.
-         */
-        export interface PivotPropertiesArgs {
-            /**
-             * Data field to show in view.
-             */
-            name?: pulumi.Input<string>;
-            /**
-             * Data type to show in view.
-             */
-            type?: pulumi.Input<string | enums.v20221001.PivotTypeType>;
-        }
-
-        /**
-         * The aggregation expression to be used in the report.
-         */
-        export interface ReportConfigAggregationArgs {
-            /**
-             * The name of the aggregation function to use.
-             */
-            function: pulumi.Input<string | enums.v20221001.FunctionType>;
-            /**
-             * The name of the column to aggregate.
-             */
-            name: pulumi.Input<string>;
-        }
-
-        /**
-         * The comparison expression to be used in the report.
-         */
-        export interface ReportConfigComparisonExpressionArgs {
-            /**
-             * The name of the column to use in comparison.
-             */
-            name: pulumi.Input<string>;
-            /**
-             * The operator to use for comparison.
-             */
-            operator: pulumi.Input<string | enums.v20221001.OperatorType>;
-            /**
-             * Array of values to use for comparison
-             */
-            values: pulumi.Input<pulumi.Input<string>[]>;
-        }
-
-        /**
-         * The definition of data present in the report.
-         */
-        export interface ReportConfigDatasetArgs {
-            /**
-             * Dictionary of aggregation expression to use in the report. The key of each item in the dictionary is the alias for the aggregated column. Report can have up to 2 aggregation clauses.
-             */
-            aggregation?: pulumi.Input<{[key: string]: pulumi.Input<v20221001.ReportConfigAggregationArgs>}>;
-            /**
-             * Has configuration information for the data in the report. The configuration will be ignored if aggregation and grouping are provided.
-             */
-            configuration?: pulumi.Input<v20221001.ReportConfigDatasetConfigurationArgs>;
-            /**
-             * Has filter expression to use in the report.
-             */
-            filter?: pulumi.Input<v20221001.ReportConfigFilterArgs>;
-            /**
-             * The granularity of rows in the report.
-             */
-            granularity?: pulumi.Input<string | enums.v20221001.ReportGranularityType>;
-            /**
-             * Array of group by expression to use in the report. Report can have up to 2 group by clauses.
-             */
-            grouping?: pulumi.Input<pulumi.Input<v20221001.ReportConfigGroupingArgs>[]>;
-            /**
-             * Array of order by expression to use in the report.
-             */
-            sorting?: pulumi.Input<pulumi.Input<v20221001.ReportConfigSortingArgs>[]>;
-        }
-
-        /**
-         * The configuration of dataset in the report.
-         */
-        export interface ReportConfigDatasetConfigurationArgs {
-            /**
-             * Array of column names to be included in the report. Any valid report column name is allowed. If not provided, then report includes all columns.
-             */
-            columns?: pulumi.Input<pulumi.Input<string>[]>;
-        }
-
-        /**
-         * The filter expression to be used in the report.
-         */
-        export interface ReportConfigFilterArgs {
-            /**
-             * The logical "AND" expression. Must have at least 2 items.
-             */
-            and?: pulumi.Input<pulumi.Input<v20221001.ReportConfigFilterArgs>[]>;
-            /**
-             * Has comparison expression for a dimension
-             */
-            dimensions?: pulumi.Input<v20221001.ReportConfigComparisonExpressionArgs>;
-            /**
-             * The logical "OR" expression. Must have at least 2 items.
-             */
-            or?: pulumi.Input<pulumi.Input<v20221001.ReportConfigFilterArgs>[]>;
-            /**
-             * Has comparison expression for a tag
-             */
-            tags?: pulumi.Input<v20221001.ReportConfigComparisonExpressionArgs>;
-        }
-
-        /**
-         * The group by expression to be used in the report.
-         */
-        export interface ReportConfigGroupingArgs {
-            /**
-             * The name of the column to group. This version supports subscription lowest possible grain.
-             */
-            name: pulumi.Input<string>;
-            /**
-             * Has type of the column to group.
-             */
-            type: pulumi.Input<string | enums.v20221001.QueryColumnType>;
-        }
-
-        /**
-         * The order by expression to be used in the report.
-         */
-        export interface ReportConfigSortingArgs {
-            /**
-             * Direction of sort.
-             */
-            direction?: pulumi.Input<string | enums.v20221001.ReportConfigSortingType>;
-            /**
-             * The name of the column to sort.
-             */
-            name: pulumi.Input<string>;
-        }
-
-        /**
-         * The start and end date for pulling data for the report.
-         */
-        export interface ReportConfigTimePeriodArgs {
-            /**
-             * The start date to pull data from.
-             */
-            from: pulumi.Input<string>;
-            /**
-             * The end date to pull data to.
-             */
-            to: pulumi.Input<string>;
-        }
-
-    }
-
-    export namespace v20221005preview {
-        /**
-         * The customer billing metadata
-         */
-        export interface CustomerMetadataArgs {
-            /**
-             * Customer billing account id
-             */
-            billingAccountId: pulumi.Input<string>;
-            /**
-             * Customer billing profile id
-             */
-            billingProfileId: pulumi.Input<string>;
-        }
-
-        /**
-         * Each KPI must contain a 'type' and 'enabled' key.
-         */
-        export interface KpiPropertiesArgs {
-            /**
-             * show the KPI in the UI?
-             */
-            enabled?: pulumi.Input<boolean>;
-            /**
-             * ID of resource related to metric (budget).
-             */
-            id?: pulumi.Input<string>;
-            /**
-             * KPI type (Forecast, Budget).
-             */
-            type?: pulumi.Input<string | enums.v20221005preview.KpiTypeType>;
-        }
-
-        /**
-         * Each pivot must contain a 'type' and 'name'.
-         */
-        export interface PivotPropertiesArgs {
-            /**
-             * Data field to show in view.
-             */
-            name?: pulumi.Input<string>;
-            /**
-             * Data type to show in view.
-             */
-            type?: pulumi.Input<string | enums.v20221005preview.PivotTypeType>;
-        }
-
-        /**
-         * The aggregation expression to be used in the report.
-         */
-        export interface ReportConfigAggregationArgs {
-            /**
-             * The name of the aggregation function to use.
-             */
-            function: pulumi.Input<string | enums.v20221005preview.FunctionType>;
-            /**
-             * The name of the column to aggregate.
-             */
-            name: pulumi.Input<string>;
-        }
-
-        /**
-         * The comparison expression to be used in the report.
-         */
-        export interface ReportConfigComparisonExpressionArgs {
-            /**
-             * The name of the column to use in comparison.
-             */
-            name: pulumi.Input<string>;
-            /**
-             * The operator to use for comparison.
-             */
-            operator: pulumi.Input<string | enums.v20221005preview.OperatorType>;
-            /**
-             * Array of values to use for comparison
-             */
-            values: pulumi.Input<pulumi.Input<string>[]>;
-        }
-
-        /**
-         * The definition of data present in the report.
-         */
-        export interface ReportConfigDatasetArgs {
-            /**
-             * Dictionary of aggregation expression to use in the report. The key of each item in the dictionary is the alias for the aggregated column. Report can have up to 2 aggregation clauses.
-             */
-            aggregation?: pulumi.Input<{[key: string]: pulumi.Input<v20221005preview.ReportConfigAggregationArgs>}>;
-            /**
-             * Has configuration information for the data in the report. The configuration will be ignored if aggregation and grouping are provided.
-             */
-            configuration?: pulumi.Input<v20221005preview.ReportConfigDatasetConfigurationArgs>;
-            /**
-             * Has filter expression to use in the report.
-             */
-            filter?: pulumi.Input<v20221005preview.ReportConfigFilterArgs>;
-            /**
-             * The granularity of rows in the report.
-             */
-            granularity?: pulumi.Input<string | enums.v20221005preview.ReportGranularityType>;
-            /**
-             * Array of group by expression to use in the report. Report can have up to 2 group by clauses.
-             */
-            grouping?: pulumi.Input<pulumi.Input<v20221005preview.ReportConfigGroupingArgs>[]>;
-            /**
-             * Array of order by expression to use in the report.
-             */
-            sorting?: pulumi.Input<pulumi.Input<v20221005preview.ReportConfigSortingArgs>[]>;
-        }
-
-        /**
-         * The configuration of dataset in the report.
-         */
-        export interface ReportConfigDatasetConfigurationArgs {
-            /**
-             * Array of column names to be included in the report. Any valid report column name is allowed. If not provided, then report includes all columns.
-             */
-            columns?: pulumi.Input<pulumi.Input<string>[]>;
-        }
-
-        /**
-         * The filter expression to be used in the report.
-         */
-        export interface ReportConfigFilterArgs {
-            /**
-             * The logical "AND" expression. Must have at least 2 items.
-             */
-            and?: pulumi.Input<pulumi.Input<v20221005preview.ReportConfigFilterArgs>[]>;
-            /**
-             * Has comparison expression for a dimension
-             */
-            dimensions?: pulumi.Input<v20221005preview.ReportConfigComparisonExpressionArgs>;
-            /**
-             * The logical "OR" expression. Must have at least 2 items.
-             */
-            or?: pulumi.Input<pulumi.Input<v20221005preview.ReportConfigFilterArgs>[]>;
-            /**
-             * Has comparison expression for a tag
-             */
-            tags?: pulumi.Input<v20221005preview.ReportConfigComparisonExpressionArgs>;
-        }
-
-        /**
-         * The group by expression to be used in the report.
-         */
-        export interface ReportConfigGroupingArgs {
-            /**
-             * The name of the column to group. This version supports subscription lowest possible grain.
-             */
-            name: pulumi.Input<string>;
-            /**
-             * Has type of the column to group.
-             */
-            type: pulumi.Input<string | enums.v20221005preview.ReportConfigColumnType>;
-        }
-
-        /**
-         * The order by expression to be used in the report.
-         */
-        export interface ReportConfigSortingArgs {
-            /**
-             * Direction of sort.
-             */
-            direction?: pulumi.Input<string | enums.v20221005preview.ReportConfigSortingType>;
-            /**
-             * The name of the column to sort.
-             */
-            name: pulumi.Input<string>;
-        }
-
-        /**
-         * The start and end date for pulling data for the report.
-         */
-        export interface ReportConfigTimePeriodArgs {
-            /**
-             * The start date to pull data from.
-             */
-            from: pulumi.Input<string>;
-            /**
-             * The end date to pull data to.
-             */
-            to: pulumi.Input<string>;
-        }
-
-        /**
-         * The properties of the tag inheritance setting.
-         */
-        export interface TagInheritancePropertiesArgs {
-            /**
-             * When resource has the same tag as subscription or resource group and this property is set to true - the subscription or resource group tag will be applied. If subscription and resource group tags are also the same, subscription tag will be applied.
-             */
-            preferContainerTags: pulumi.Input<boolean>;
-        }
-
-    }
-
-    export namespace v20230301 {
-        /**
-         * The definition for data in the export.
-         */
-        export interface ExportDatasetArgs {
-            /**
-             * The export dataset configuration.
-             */
-            configuration?: pulumi.Input<v20230301.ExportDatasetConfigurationArgs>;
-            /**
-             * The granularity of rows in the export. Currently only 'Daily' is supported.
-             */
-            granularity?: pulumi.Input<string | enums.v20230301.GranularityType>;
-        }
-
-        /**
-         * The export dataset configuration. Allows columns to be selected for the export. If not provided then the export will include all available columns.
-         */
-        export interface ExportDatasetConfigurationArgs {
-            /**
-             * Array of column names to be included in the export. If not provided then the export will include all available columns. The available columns can vary by customer channel (see examples).
-             */
-            columns?: pulumi.Input<pulumi.Input<string>[]>;
-        }
-
-        /**
-         * The definition of an export.
-         */
-        export interface ExportDefinitionArgs {
-            /**
-             * The definition for data in the export.
-             */
-            dataSet?: pulumi.Input<v20230301.ExportDatasetArgs>;
-            /**
-             * Has time period for pulling data for the export.
-             */
-            timePeriod?: pulumi.Input<v20230301.ExportTimePeriodArgs>;
-            /**
-             * The time frame for pulling data for the export. If custom, then a specific time period must be provided.
-             */
-            timeframe: pulumi.Input<string | enums.v20230301.TimeframeType>;
-            /**
-             * The type of the export. Note that 'Usage' is equivalent to 'ActualCost' and is applicable to exports that do not yet provide data for charges or amortization for service reservations.
-             */
-            type: pulumi.Input<string | enums.v20230301.ExportType>;
-        }
-
-        /**
-         * This represents the blob storage account location where exports of costs will be delivered. There are two ways to configure the destination. The approach recommended for most customers is to specify the resourceId of the storage account. This requires a one-time registration of the account's subscription with the Microsoft.CostManagementExports resource provider in order to give Cost Management services access to the storage. When creating an export in the Azure portal this registration is performed automatically but API users may need to register the subscription explicitly (for more information see https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-supported-services ). Another way to configure the destination is available ONLY to Partners with a Microsoft Partner Agreement plan who are global admins of their billing account. These Partners, instead of specifying the resourceId of a storage account, can specify the storage account name along with a SAS token for the account. This allows exports of costs to a storage account in any tenant. The SAS token should be created for the blob service with Service/Container/Object resource types and with Read/Write/Delete/List/Add/Create permissions (for more information see https://docs.microsoft.com/en-us/azure/cost-management-billing/costs/export-cost-data-storage-account-sas-key ).
-         */
-        export interface ExportDeliveryDestinationArgs {
-            /**
-             * The name of the container where exports will be uploaded. If the container does not exist it will be created.
-             */
-            container: pulumi.Input<string>;
-            /**
-             * The resource id of the storage account where exports will be delivered. This is not required if a sasToken and storageAccount are specified.
-             */
-            resourceId?: pulumi.Input<string>;
-            /**
-             * The name of the directory where exports will be uploaded.
-             */
-            rootFolderPath?: pulumi.Input<string>;
-            /**
-             * A SAS token for the storage account. For a restricted set of Azure customers this together with storageAccount can be specified instead of resourceId. Note: the value returned by the API for this property will always be obfuscated. Returning this same obfuscated value will not result in the SAS token being updated. To update this value a new SAS token must be specified.
-             */
-            sasToken?: pulumi.Input<string>;
-            /**
-             * The storage account where exports will be uploaded. For a restricted set of Azure customers this together with sasToken can be specified instead of resourceId.
-             */
-            storageAccount?: pulumi.Input<string>;
-        }
-
-        /**
-         * The delivery information associated with a export.
-         */
-        export interface ExportDeliveryInfoArgs {
-            /**
-             * Has destination for the export being delivered.
-             */
-            destination: pulumi.Input<v20230301.ExportDeliveryDestinationArgs>;
-        }
-
-        /**
-         * The start and end date for recurrence schedule.
-         */
-        export interface ExportRecurrencePeriodArgs {
-            /**
-             * The start date of recurrence.
-             */
-            from: pulumi.Input<string>;
-            /**
-             * The end date of recurrence.
-             */
-            to?: pulumi.Input<string>;
-        }
-
-        /**
-         * The schedule associated with the export.
-         */
-        export interface ExportScheduleArgs {
-            /**
-             * The schedule recurrence.
-             */
-            recurrence?: pulumi.Input<string | enums.v20230301.RecurrenceType>;
-            /**
-             * Has start and end date of the recurrence. The start date must be in future. If present, the end date must be greater than start date.
-             */
-            recurrencePeriod?: pulumi.Input<v20230301.ExportRecurrencePeriodArgs>;
-            /**
-             * The status of the export's schedule. If 'Inactive', the export's schedule is paused.
-             */
-            status?: pulumi.Input<string | enums.v20230301.StatusType>;
-        }
-
-        /**
-         * The date range for data in the export. This should only be specified with timeFrame set to 'Custom'. The maximum date range is 3 months.
-         */
-        export interface ExportTimePeriodArgs {
-            /**
-             * The start date for export data.
-             */
-            from: pulumi.Input<string>;
-            /**
-             * The end date for export data.
-             */
-            to: pulumi.Input<string>;
-        }
-
-        /**
-         * Destination of the view data. This is optional. Currently only CSV format is supported.
-         */
-        export interface FileDestinationArgs {
-            /**
-             * Destination of the view data. Currently only CSV format is supported.
-             */
-            fileFormats?: pulumi.Input<pulumi.Input<string | enums.v20230301.FileFormat>[]>;
-        }
-
-        /**
-         * Each KPI must contain a 'type' and 'enabled' key.
-         */
-        export interface KpiPropertiesArgs {
-            /**
-             * show the KPI in the UI?
-             */
-            enabled?: pulumi.Input<boolean>;
-            /**
-             * ID of resource related to metric (budget).
-             */
-            id?: pulumi.Input<string>;
-            /**
-             * KPI type (Forecast, Budget).
-             */
-            type?: pulumi.Input<string | enums.v20230301.KpiTypeType>;
-        }
-
-        /**
-         * The properties of the scheduled action notification.
-         */
-        export interface NotificationPropertiesArgs {
-            /**
-             * Locale of the email.
-             */
-            language?: pulumi.Input<string>;
-            /**
-             * Optional message to be added in the email. Length is limited to 250 characters.
-             */
-            message?: pulumi.Input<string>;
-            /**
-             * Regional format used for formatting date/time and currency values in the email.
-             */
-            regionalFormat?: pulumi.Input<string>;
-            /**
-             * Subject of the email. Length is limited to 70 characters.
-             */
-            subject: pulumi.Input<string>;
-            /**
-             * Array of email addresses.
-             */
-            to: pulumi.Input<pulumi.Input<string>[]>;
-        }
-
-        /**
-         * Each pivot must contain a 'type' and 'name'.
-         */
-        export interface PivotPropertiesArgs {
-            /**
-             * Data field to show in view.
-             */
-            name?: pulumi.Input<string>;
-            /**
-             * Data type to show in view.
-             */
-            type?: pulumi.Input<string | enums.v20230301.PivotTypeType>;
-        }
-
-        /**
-         * The aggregation expression to be used in the report.
-         */
-        export interface ReportConfigAggregationArgs {
-            /**
-             * The name of the aggregation function to use.
-             */
-            function: pulumi.Input<string | enums.v20230301.FunctionType>;
-            /**
-             * The name of the column to aggregate.
-             */
-            name: pulumi.Input<string>;
-        }
-
-        /**
-         * The comparison expression to be used in the report.
-         */
-        export interface ReportConfigComparisonExpressionArgs {
-            /**
-             * The name of the column to use in comparison.
-             */
-            name: pulumi.Input<string>;
-            /**
-             * The operator to use for comparison.
-             */
-            operator: pulumi.Input<string | enums.v20230301.OperatorType>;
-            /**
-             * Array of values to use for comparison
-             */
-            values: pulumi.Input<pulumi.Input<string>[]>;
-        }
-
-        /**
-         * The definition of data present in the report.
-         */
-        export interface ReportConfigDatasetArgs {
-            /**
-             * Dictionary of aggregation expression to use in the report. The key of each item in the dictionary is the alias for the aggregated column. Report can have up to 2 aggregation clauses.
-             */
-            aggregation?: pulumi.Input<{[key: string]: pulumi.Input<v20230301.ReportConfigAggregationArgs>}>;
-            /**
-             * Has configuration information for the data in the report. The configuration will be ignored if aggregation and grouping are provided.
-             */
-            configuration?: pulumi.Input<v20230301.ReportConfigDatasetConfigurationArgs>;
-            /**
-             * Has filter expression to use in the report.
-             */
-            filter?: pulumi.Input<v20230301.ReportConfigFilterArgs>;
-            /**
-             * The granularity of rows in the report.
-             */
-            granularity?: pulumi.Input<string | enums.v20230301.ReportGranularityType>;
-            /**
-             * Array of group by expression to use in the report. Report can have up to 2 group by clauses.
-             */
-            grouping?: pulumi.Input<pulumi.Input<v20230301.ReportConfigGroupingArgs>[]>;
-            /**
-             * Array of order by expression to use in the report.
-             */
-            sorting?: pulumi.Input<pulumi.Input<v20230301.ReportConfigSortingArgs>[]>;
-        }
-
-        /**
-         * The configuration of dataset in the report.
-         */
-        export interface ReportConfigDatasetConfigurationArgs {
-            /**
-             * Array of column names to be included in the report. Any valid report column name is allowed. If not provided, then report includes all columns.
-             */
-            columns?: pulumi.Input<pulumi.Input<string>[]>;
-        }
-
-        /**
-         * The filter expression to be used in the report.
-         */
-        export interface ReportConfigFilterArgs {
-            /**
-             * The logical "AND" expression. Must have at least 2 items.
-             */
-            and?: pulumi.Input<pulumi.Input<v20230301.ReportConfigFilterArgs>[]>;
-            /**
-             * Has comparison expression for a dimension
-             */
-            dimensions?: pulumi.Input<v20230301.ReportConfigComparisonExpressionArgs>;
-            /**
-             * The logical "OR" expression. Must have at least 2 items.
-             */
-            or?: pulumi.Input<pulumi.Input<v20230301.ReportConfigFilterArgs>[]>;
-            /**
-             * Has comparison expression for a tag
-             */
-            tags?: pulumi.Input<v20230301.ReportConfigComparisonExpressionArgs>;
-        }
-
-        /**
-         * The group by expression to be used in the report.
-         */
-        export interface ReportConfigGroupingArgs {
-            /**
-             * The name of the column to group. This version supports subscription lowest possible grain.
-             */
-            name: pulumi.Input<string>;
-            /**
-             * Has type of the column to group.
-             */
-            type: pulumi.Input<string | enums.v20230301.QueryColumnType>;
-        }
-
-        /**
-         * The order by expression to be used in the report.
-         */
-        export interface ReportConfigSortingArgs {
-            /**
-             * Direction of sort.
-             */
-            direction?: pulumi.Input<string | enums.v20230301.ReportConfigSortingType>;
-            /**
-             * The name of the column to sort.
-             */
-            name: pulumi.Input<string>;
-        }
-
-        /**
-         * The start and end date for pulling data for the report.
-         */
-        export interface ReportConfigTimePeriodArgs {
-            /**
-             * The start date to pull data from.
-             */
-            from: pulumi.Input<string>;
-            /**
-             * The end date to pull data to.
-             */
-            to: pulumi.Input<string>;
-        }
-
-        /**
-         * The properties of the schedule.
-         */
-        export interface SchedulePropertiesArgs {
-            /**
-             * UTC day on which cost analysis data will be emailed. Must be between 1 and 31. This property is applicable when frequency is Monthly and overrides weeksOfMonth or daysOfWeek.
-             */
-            dayOfMonth?: pulumi.Input<number>;
-            /**
-             * Day names in english on which cost analysis data will be emailed. This property is applicable when frequency is Weekly or Monthly.
-             */
-            daysOfWeek?: pulumi.Input<pulumi.Input<string | enums.v20230301.DaysOfWeek>[]>;
-            /**
-             * The end date and time of the scheduled action (UTC).
-             */
-            endDate: pulumi.Input<string>;
-            /**
-             * Frequency of the schedule.
-             */
-            frequency: pulumi.Input<string | enums.v20230301.ScheduleFrequency>;
-            /**
-             * UTC time at which cost analysis data will be emailed.
-             */
-            hourOfDay?: pulumi.Input<number>;
-            /**
-             * The start date and time of the scheduled action (UTC).
-             */
-            startDate: pulumi.Input<string>;
-            /**
-             * Weeks in which cost analysis data will be emailed. This property is applicable when frequency is Monthly and used in combination with daysOfWeek.
-             */
-            weeksOfMonth?: pulumi.Input<pulumi.Input<string | enums.v20230301.WeeksOfMonth>[]>;
-        }
-
-    }
-
-    export namespace v20230401preview {
-        /**
-         * The comparison expression to be used in the budgets.
-         */
-        export interface BudgetComparisonExpressionArgs {
-            /**
-             * The name of the column to use in comparison.
-             */
-            name: pulumi.Input<string>;
-            /**
-             * The operator to use for comparison.
-             */
-            operator: pulumi.Input<string | enums.v20230401preview.BudgetOperatorType>;
-            /**
-             * Array of values to use for comparison
-             */
-            values: pulumi.Input<pulumi.Input<string>[]>;
-        }
-
-        /**
-         * May be used to filter budgets by user-specified dimensions and/or tags.
-         *
-         *  Supported for CategoryType(s): Cost, ReservationUtilization.
-         */
-        export interface BudgetFilterArgs {
-            /**
-             * The logical "AND" expression. Must have at least 2 items.
-             *
-             *  Supported for CategoryType(s): Cost.
-             */
-            and?: pulumi.Input<pulumi.Input<v20230401preview.BudgetFilterPropertiesArgs>[]>;
-            /**
-             * Has comparison expression for a dimension.
-             *
-             *  Supported for CategoryType(s): Cost, ReservationUtilization.
-             *
-             * Supported dimension names for **CategoryType: ReservationUtilization** 
-             * - ReservationId
-             * - ReservedResourceType
-             */
-            dimensions?: pulumi.Input<v20230401preview.BudgetComparisonExpressionArgs>;
-            /**
-             * Has comparison expression for a tag.
-             *
-             *  Supported for CategoryType(s): Cost.
-             */
-            tags?: pulumi.Input<v20230401preview.BudgetComparisonExpressionArgs>;
-        }
-
-        /**
-         * The Dimensions or Tags to filter a budget by.
-         *
-         *  Supported for CategoryType(s): Cost, ReservationUtilization.
-         */
-        export interface BudgetFilterPropertiesArgs {
-            /**
-             * Has comparison expression for a dimension.
-             *
-             *  Supported for CategoryType(s): Cost, ReservationUtilization.
-             *
-             * Supported dimension names for **CategoryType: ReservationUtilization** 
-             * - ReservationId
-             * - ReservedResourceType
-             */
-            dimensions?: pulumi.Input<v20230401preview.BudgetComparisonExpressionArgs>;
-            /**
-             * Has comparison expression for a tag.
-             *
-             *  Supported for CategoryType(s): Cost.
-             */
-            tags?: pulumi.Input<v20230401preview.BudgetComparisonExpressionArgs>;
-        }
-
-        /**
-         * The time period that defines the active period of the budget. The budget will evaluate data on or after the startDate and will expire on the endDate.
-         *
-         *  Supported for CategoryType(s): Cost, ReservationUtilization.
-         *
-         *  Required for CategoryType(s): Cost, ReservationUtilization.
-         */
-        export interface BudgetTimePeriodArgs {
-            /**
-             * The end date for the budget.
-             *
-             * - Constraints for **CategoryType: Cost** - No constraints. If not provided, we default this to 10 years from the start date.
-             *
-             * - Constraints for **CategoryType: ReservationUtilization** - End date cannot be more than 3 years after the start date.
-             */
-            endDate?: pulumi.Input<string>;
-            /**
-             * The start date for the budget.
-             *
-             * - Constraints for **CategoryType: Cost** - Must be first of the month and should be less than the end date. Budget start date must be on or after June 1, 2017. Future start date should not be more than twelve months. Past start date should  be selected within the timegrain period.
-             *
-             * - Constraints for **CategoryType: ReservationUtilization** - Must be on or after the current date and less than the end date.
-             */
-            startDate: pulumi.Input<string>;
-        }
-
-        /**
-         * The definition for data in the export.
-         */
-        export interface ExportDatasetArgs {
-            /**
-             * The export dataset configuration.
-             */
-            configuration?: pulumi.Input<v20230401preview.ExportDatasetConfigurationArgs>;
-            /**
-             * The granularity of rows in the export. Currently only 'Daily' is supported.
-             */
-            granularity?: pulumi.Input<string | enums.v20230401preview.GranularityType>;
-        }
-
-        /**
-         * The export dataset configuration. Allows columns to be selected for the export. If not provided then the export will include all available columns.
-         */
-        export interface ExportDatasetConfigurationArgs {
-            /**
-             * Array of column names to be included in the export. If not provided then the export will include all available columns. The available columns can vary by customer channel (see examples).
-             */
-            columns?: pulumi.Input<pulumi.Input<string>[]>;
-        }
-
-        /**
-         * The definition of an export.
-         */
-        export interface ExportDefinitionArgs {
-            /**
-             * The definition for data in the export.
-             */
-            dataSet?: pulumi.Input<v20230401preview.ExportDatasetArgs>;
-            /**
-             * Has time period for pulling data for the export.
-             */
-            timePeriod?: pulumi.Input<v20230401preview.ExportTimePeriodArgs>;
-            /**
-             * The time frame for pulling data for the export. If custom, then a specific time period must be provided.
-             */
-            timeframe: pulumi.Input<string | enums.v20230401preview.TimeframeType>;
-            /**
-             * The type of the export. Note that 'Usage' is equivalent to 'ActualCost' and is applicable to exports that do not yet provide data for charges or amortization for service reservations.
-             */
-            type: pulumi.Input<string | enums.v20230401preview.ExportType>;
-        }
-
-        /**
-         * This represents the blob storage account location where exports of costs will be delivered. There are two ways to configure the destination. The approach recommended for most customers is to specify the resourceId of the storage account. This requires a one-time registration of the account's subscription with the Microsoft.CostManagementExports resource provider in order to give Cost Management services access to the storage. When creating an export in the Azure portal this registration is performed automatically but API users may need to register the subscription explicitly (for more information see https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-supported-services ). Another way to configure the destination is available ONLY to Partners with a Microsoft Partner Agreement plan who are global admins of their billing account. These Partners, instead of specifying the resourceId of a storage account, can specify the storage account name along with a SAS token for the account. This allows exports of costs to a storage account in any tenant. The SAS token should be created for the blob service with Service/Container/Object resource types and with Read/Write/Delete/List/Add/Create permissions (for more information see https://docs.microsoft.com/en-us/azure/cost-management-billing/costs/export-cost-data-storage-account-sas-key ).
-         */
-        export interface ExportDeliveryDestinationArgs {
-            /**
-             * The name of the container where exports will be uploaded. If the container does not exist it will be created.
-             */
-            container: pulumi.Input<string>;
-            /**
-             * The resource id of the storage account where exports will be delivered. This is not required if a sasToken and storageAccount are specified.
-             */
-            resourceId?: pulumi.Input<string>;
-            /**
-             * The name of the directory where exports will be uploaded.
-             */
-            rootFolderPath?: pulumi.Input<string>;
-            /**
-             * A SAS token for the storage account. For a restricted set of Azure customers this together with storageAccount can be specified instead of resourceId. Note: the value returned by the API for this property will always be obfuscated. Returning this same obfuscated value will not result in the SAS token being updated. To update this value a new SAS token must be specified.
-             */
-            sasToken?: pulumi.Input<string>;
-            /**
-             * The storage account where exports will be uploaded. For a restricted set of Azure customers this together with sasToken can be specified instead of resourceId.
-             */
-            storageAccount?: pulumi.Input<string>;
-        }
-
-        /**
-         * The delivery information associated with a export.
-         */
-        export interface ExportDeliveryInfoArgs {
-            /**
-             * Has destination for the export being delivered.
-             */
-            destination: pulumi.Input<v20230401preview.ExportDeliveryDestinationArgs>;
-        }
-
-        /**
-         * The start and end date for recurrence schedule.
-         */
-        export interface ExportRecurrencePeriodArgs {
-            /**
-             * The start date of recurrence.
-             */
-            from: pulumi.Input<string>;
-            /**
-             * The end date of recurrence.
-             */
-            to?: pulumi.Input<string>;
-        }
-
-        /**
-         * The schedule associated with the export.
-         */
-        export interface ExportScheduleArgs {
-            /**
-             * The schedule recurrence.
-             */
-            recurrence?: pulumi.Input<string | enums.v20230401preview.RecurrenceType>;
-            /**
-             * Has start and end date of the recurrence. The start date must be in future. If present, the end date must be greater than start date.
-             */
-            recurrencePeriod?: pulumi.Input<v20230401preview.ExportRecurrencePeriodArgs>;
-            /**
-             * The status of the export's schedule. If 'Inactive', the export's schedule is paused.
-             */
-            status?: pulumi.Input<string | enums.v20230401preview.StatusType>;
-        }
-
-        /**
-         * The date range for data in the export. This should only be specified with timeFrame set to 'Custom'. The maximum date range is 3 months.
-         */
-        export interface ExportTimePeriodArgs {
-            /**
-             * The start date for export data.
-             */
-            from: pulumi.Input<string>;
-            /**
-             * The end date for export data.
-             */
-            to: pulumi.Input<string>;
-        }
-
-        /**
-         * Destination of the view data. This is optional. Currently only CSV format is supported.
-         */
-        export interface FileDestinationArgs {
-            /**
-             * Destination of the view data. Currently only CSV format is supported.
-             */
-            fileFormats?: pulumi.Input<pulumi.Input<string | enums.v20230401preview.FileFormat>[]>;
-        }
-
-        /**
-         * Each KPI must contain a 'type' and 'enabled' key.
-         */
-        export interface KpiPropertiesArgs {
-            /**
-             * show the KPI in the UI?
-             */
-            enabled?: pulumi.Input<boolean>;
-            /**
-             * ID of resource related to metric (budget).
-             */
-            id?: pulumi.Input<string>;
-            /**
-             * KPI type (Forecast, Budget).
-             */
-            type?: pulumi.Input<string | enums.v20230401preview.KpiTypeType>;
-        }
-
-        /**
-         * The notification associated with a budget.
-         *
-         *  Supported for CategoryType(s): Cost, ReservationUtilization.
-         */
-        export interface NotificationArgs {
-            /**
-             * Email addresses to send the notification to when the threshold is breached. Must have at least one contact email or contact group specified at the Subscription or Resource Group scopes. All other scopes must have at least one contact email specified.
-             *
-             *  Supported for CategoryType(s): Cost, ReservationUtilization.
-             */
-            contactEmails: pulumi.Input<pulumi.Input<string>[]>;
-            /**
-             * Subscription or Resource Group scopes only. Action groups to send the notification to when the threshold is exceeded. Must be provided as a fully qualified Azure resource id.
-             *
-             *  Supported for CategoryType(s): Cost.
-             */
-            contactGroups?: pulumi.Input<pulumi.Input<string>[]>;
-            /**
-             * Subscription or Resource Group scopes only. Contact roles to send the notification to when the threshold is breached.
-             *
-             *  Supported for CategoryType(s): Cost.
-             */
-            contactRoles?: pulumi.Input<pulumi.Input<string>[]>;
-            /**
-             * The notification is enabled or not.
-             *
-             *  Supported for CategoryType(s): Cost, ReservationUtilization.
-             */
-            enabled: pulumi.Input<boolean>;
-            /**
-             * Frequency of a notification. Represents how long the notification will be silent after triggering an alert for a threshold breach. If not specified, the frequency will be set by default based on the timeGrain (Weekly when timeGrain: Last7Days, Monthly when timeGrain: Last30Days).
-             *
-             *  Supported for CategoryType(s): ReservationUtilization.
-             */
-            frequency?: pulumi.Input<string | enums.v20230401preview.Frequency>;
-            /**
-             * Language in which the recipient will receive the notification, 
-             *
-             *  Supported for CategoryType(s): Cost, ReservationUtilization.
-             */
-            locale?: pulumi.Input<string | enums.v20230401preview.CultureCode>;
-            /**
-             * The comparison operator.
-             *
-             *  Supported for CategoryType(s): Cost, ReservationUtilization.
-             *
-             *  Supported operators for **CategoryType: Cost**
-             * - GreaterThan
-             * - GreaterThanOrEqualTo
-             *
-             *  Supported operators for **CategoryType: ReservationUtilization**
-             * - LessThan
-             */
-            operator: pulumi.Input<string | enums.v20230401preview.BudgetNotificationOperatorType>;
-            /**
-             * Threshold value associated with a notification. It is always percent with a maximum of 2 decimal places.
-             *
-             *  Supported for CategoryType(s): Cost, ReservationUtilization.
-             *
-             *  **CategoryType: Cost** - Must be between 0 and 1000. Notification is sent when the cost exceeded the threshold.
-             *
-             *  **CategoryType: ReservationUtilization** - Must be between 0 and 100. Notification is sent when a reservation has a utilization percentage below the threshold.
-             */
-            threshold: pulumi.Input<number>;
-            /**
-             * The type of threshold.
-             *
-             *  Supported for CategoryType(s): Cost.
-             */
-            thresholdType?: pulumi.Input<string | enums.v20230401preview.ThresholdType>;
-        }
-        /**
-         * notificationArgsProvideDefaults sets the appropriate defaults for NotificationArgs
-         */
-        export function notificationArgsProvideDefaults(val: NotificationArgs): NotificationArgs {
-            return {
-                ...val,
-                thresholdType: (val.thresholdType) ?? "Actual",
-            };
-        }
-
-        /**
-         * The properties of the scheduled action notification.
-         */
-        export interface NotificationPropertiesArgs {
-            /**
-             * Locale of the email.
-             */
-            language?: pulumi.Input<string>;
-            /**
-             * Optional message to be added in the email. Length is limited to 250 characters.
-             */
-            message?: pulumi.Input<string>;
-            /**
-             * Regional format used for formatting date/time and currency values in the email.
-             */
-            regionalFormat?: pulumi.Input<string>;
-            /**
-             * Subject of the email. Length is limited to 70 characters.
-             */
-            subject: pulumi.Input<string>;
-            /**
-             * Array of email addresses.
-             */
-            to: pulumi.Input<pulumi.Input<string>[]>;
-        }
-
-        /**
-         * Each pivot must contain a 'type' and 'name'.
-         */
-        export interface PivotPropertiesArgs {
-            /**
-             * Data field to show in view.
-             */
-            name?: pulumi.Input<string>;
-            /**
-             * Data type to show in view.
-             */
-            type?: pulumi.Input<string | enums.v20230401preview.PivotTypeType>;
-        }
-
-        /**
-         * The aggregation expression to be used in the report.
-         */
-        export interface ReportConfigAggregationArgs {
-            /**
-             * The name of the aggregation function to use.
-             */
-            function: pulumi.Input<string | enums.v20230401preview.FunctionType>;
-            /**
-             * The name of the column to aggregate.
-             */
-            name: pulumi.Input<string>;
-        }
-
-        /**
-         * The comparison expression to be used in the report.
-         */
-        export interface ReportConfigComparisonExpressionArgs {
-            /**
-             * The name of the column to use in comparison.
-             */
-            name: pulumi.Input<string>;
-            /**
-             * The operator to use for comparison.
-             */
-            operator: pulumi.Input<string | enums.v20230401preview.OperatorType>;
-            /**
-             * Array of values to use for comparison
-             */
-            values: pulumi.Input<pulumi.Input<string>[]>;
-        }
-
-        /**
-         * The definition of data present in the report.
-         */
-        export interface ReportConfigDatasetArgs {
-            /**
-             * Dictionary of aggregation expression to use in the report. The key of each item in the dictionary is the alias for the aggregated column. Report can have up to 2 aggregation clauses.
-             */
-            aggregation?: pulumi.Input<{[key: string]: pulumi.Input<v20230401preview.ReportConfigAggregationArgs>}>;
-            /**
-             * Has configuration information for the data in the report. The configuration will be ignored if aggregation and grouping are provided.
-             */
-            configuration?: pulumi.Input<v20230401preview.ReportConfigDatasetConfigurationArgs>;
-            /**
-             * Has filter expression to use in the report.
-             */
-            filter?: pulumi.Input<v20230401preview.ReportConfigFilterArgs>;
-            /**
-             * The granularity of rows in the report.
-             */
-            granularity?: pulumi.Input<string | enums.v20230401preview.ReportGranularityType>;
-            /**
-             * Array of group by expression to use in the report. Report can have up to 2 group by clauses.
-             */
-            grouping?: pulumi.Input<pulumi.Input<v20230401preview.ReportConfigGroupingArgs>[]>;
-            /**
-             * Array of order by expression to use in the report.
-             */
-            sorting?: pulumi.Input<pulumi.Input<v20230401preview.ReportConfigSortingArgs>[]>;
-        }
-
-        /**
-         * The configuration of dataset in the report.
-         */
-        export interface ReportConfigDatasetConfigurationArgs {
-            /**
-             * Array of column names to be included in the report. Any valid report column name is allowed. If not provided, then report includes all columns.
-             */
-            columns?: pulumi.Input<pulumi.Input<string>[]>;
-        }
-
-        /**
-         * The filter expression to be used in the report.
-         */
-        export interface ReportConfigFilterArgs {
-            /**
-             * The logical "AND" expression. Must have at least 2 items.
-             */
-            and?: pulumi.Input<pulumi.Input<v20230401preview.ReportConfigFilterArgs>[]>;
-            /**
-             * Has comparison expression for a dimension
-             */
-            dimensions?: pulumi.Input<v20230401preview.ReportConfigComparisonExpressionArgs>;
-            /**
-             * The logical "OR" expression. Must have at least 2 items.
-             */
-            or?: pulumi.Input<pulumi.Input<v20230401preview.ReportConfigFilterArgs>[]>;
-            /**
-             * Has comparison expression for a tag
-             */
-            tags?: pulumi.Input<v20230401preview.ReportConfigComparisonExpressionArgs>;
-        }
-
-        /**
-         * The group by expression to be used in the report.
-         */
-        export interface ReportConfigGroupingArgs {
-            /**
-             * The name of the column to group. This version supports subscription lowest possible grain.
-             */
-            name: pulumi.Input<string>;
-            /**
-             * Has type of the column to group.
-             */
-            type: pulumi.Input<string | enums.v20230401preview.QueryColumnType>;
-        }
-
-        /**
-         * The order by expression to be used in the report.
-         */
-        export interface ReportConfigSortingArgs {
-            /**
-             * Direction of sort.
-             */
-            direction?: pulumi.Input<string | enums.v20230401preview.ReportConfigSortingType>;
-            /**
-             * The name of the column to sort.
-             */
-            name: pulumi.Input<string>;
-        }
-
-        /**
-         * The start and end date for pulling data for the report.
-         */
-        export interface ReportConfigTimePeriodArgs {
-            /**
-             * The start date to pull data from.
-             */
-            from: pulumi.Input<string>;
-            /**
-             * The end date to pull data to.
-             */
-            to: pulumi.Input<string>;
-        }
-
-        /**
-         * The properties of the schedule.
-         */
-        export interface SchedulePropertiesArgs {
-            /**
-             * UTC day on which cost analysis data will be emailed. Must be between 1 and 31. This property is applicable when frequency is Monthly and overrides weeksOfMonth or daysOfWeek.
-             */
-            dayOfMonth?: pulumi.Input<number>;
-            /**
-             * Day names in english on which cost analysis data will be emailed. This property is applicable when frequency is Weekly or Monthly.
-             */
-            daysOfWeek?: pulumi.Input<pulumi.Input<string | enums.v20230401preview.DaysOfWeek>[]>;
-            /**
-             * The end date and time of the scheduled action (UTC).
-             */
-            endDate: pulumi.Input<string>;
-            /**
-             * Frequency of the schedule.
-             */
-            frequency: pulumi.Input<string | enums.v20230401preview.ScheduleFrequency>;
-            /**
-             * UTC time at which cost analysis data will be emailed.
-             */
-            hourOfDay?: pulumi.Input<number>;
-            /**
-             * The start date and time of the scheduled action (UTC).
-             */
-            startDate: pulumi.Input<string>;
-            /**
-             * Weeks in which cost analysis data will be emailed. This property is applicable when frequency is Monthly and used in combination with daysOfWeek.
-             */
-            weeksOfMonth?: pulumi.Input<pulumi.Input<string | enums.v20230401preview.WeeksOfMonth>[]>;
-        }
-
-        /**
-         * Managed service identity (either system assigned, or none)
-         */
-        export interface SystemAssignedServiceIdentityArgs {
-            /**
-             * Type of managed service identity (either system assigned, or none).
-             */
-            type: pulumi.Input<string | enums.v20230401preview.SystemAssignedServiceIdentityType>;
-        }
-
-    }
-
-    export namespace v20230801 {
-        /**
-         * The comparison expression to be used in the budgets.
-         */
-        export interface BudgetComparisonExpressionArgs {
-            /**
-             * The name of the column to use in comparison.
-             */
-            name: pulumi.Input<string>;
-            /**
-             * The operator to use for comparison.
-             */
-            operator: pulumi.Input<string | enums.v20230801.BudgetOperatorType>;
-            /**
-             * Array of values to use for comparison
-             */
-            values: pulumi.Input<pulumi.Input<string>[]>;
-        }
-
-        /**
-         * May be used to filter budgets by user-specified dimensions and/or tags.
-         *
-         *  Supported for CategoryType(s): Cost, ReservationUtilization.
-         */
-        export interface BudgetFilterArgs {
-            /**
-             * The logical "AND" expression. Must have at least 2 items.
-             *
-             *  Supported for CategoryType(s): Cost.
-             */
-            and?: pulumi.Input<pulumi.Input<v20230801.BudgetFilterPropertiesArgs>[]>;
-            /**
-             * Has comparison expression for a dimension.
-             *
-             *  Supported for CategoryType(s): Cost, ReservationUtilization.
-             *
-             * Supported dimension names for **CategoryType: ReservationUtilization** 
-             * - ReservationId
-             * - ReservedResourceType
-             */
-            dimensions?: pulumi.Input<v20230801.BudgetComparisonExpressionArgs>;
-            /**
-             * Has comparison expression for a tag.
-             *
-             *  Supported for CategoryType(s): Cost.
-             */
-            tags?: pulumi.Input<v20230801.BudgetComparisonExpressionArgs>;
-        }
-
-        /**
-         * The Dimensions or Tags to filter a budget by.
-         *
-         *  Supported for CategoryType(s): Cost, ReservationUtilization.
-         */
-        export interface BudgetFilterPropertiesArgs {
-            /**
-             * Has comparison expression for a dimension.
-             *
-             *  Supported for CategoryType(s): Cost, ReservationUtilization.
-             *
-             * Supported dimension names for **CategoryType: ReservationUtilization** 
-             * - ReservationId
-             * - ReservedResourceType
-             */
-            dimensions?: pulumi.Input<v20230801.BudgetComparisonExpressionArgs>;
-            /**
-             * Has comparison expression for a tag.
-             *
-             *  Supported for CategoryType(s): Cost.
-             */
-            tags?: pulumi.Input<v20230801.BudgetComparisonExpressionArgs>;
-        }
-
-        /**
-         * The time period that defines the active period of the budget. The budget will evaluate data on or after the startDate and will expire on the endDate.
-         *
-         *  Supported for CategoryType(s): Cost, ReservationUtilization.
-         *
-         *  Required for CategoryType(s): Cost, ReservationUtilization.
-         */
-        export interface BudgetTimePeriodArgs {
-            /**
-             * The end date for the budget.
-             *
-             * - Constraints for **CategoryType: Cost** - No constraints. If not provided, we default this to 10 years from the start date.
-             *
-             * - Constraints for **CategoryType: ReservationUtilization** - End date cannot be more than 3 years after the start date.
-             */
-            endDate?: pulumi.Input<string>;
-            /**
-             * The start date for the budget.
-             *
-             * - Constraints for **CategoryType: Cost** - Must be first of the month and should be less than the end date. Budget start date must be on or after June 1, 2017. Future start date should not be more than twelve months. Past start date should  be selected within the timegrain period.
-             *
-             * - Constraints for **CategoryType: ReservationUtilization** - Must be on or after the current date and less than the end date.
-             */
-            startDate: pulumi.Input<string>;
-        }
-
-        /**
-         * Target resources and allocation
-         */
-        export interface CostAllocationProportionArgs {
-            /**
-             * Target resource for cost allocation
-             */
-            name: pulumi.Input<string>;
-            /**
-             * Percentage of source cost to allocate to this resource. This value can be specified to two decimal places and the total percentage of all resources in this rule must sum to 100.00.
-             */
-            percentage: pulumi.Input<number>;
-        }
-
-        /**
-         * Resource details of the cost allocation rule
-         */
-        export interface CostAllocationRuleDetailsArgs {
-            /**
-             * Source resources for cost allocation. At this time, this list can contain no more than one element.
-             */
-            sourceResources?: pulumi.Input<pulumi.Input<v20230801.SourceCostAllocationResourceArgs>[]>;
-            /**
-             * Target resources for cost allocation. At this time, this list can contain no more than one element.
-             */
-            targetResources?: pulumi.Input<pulumi.Input<v20230801.TargetCostAllocationResourceArgs>[]>;
-        }
-
-        /**
-         * The properties of a cost allocation rule
-         */
-        export interface CostAllocationRulePropertiesArgs {
-            /**
-             * Description of a cost allocation rule.
-             */
-            description?: pulumi.Input<string>;
-            /**
-             * Resource information for the cost allocation rule
-             */
-            details: pulumi.Input<v20230801.CostAllocationRuleDetailsArgs>;
-            /**
-             * Status of the rule
-             */
-            status: pulumi.Input<string | enums.v20230801.RuleStatus>;
-        }
-
-        /**
-         * The definition for data in the export.
-         */
-        export interface ExportDatasetArgs {
-            /**
-             * The export dataset configuration.
-             */
-            configuration?: pulumi.Input<v20230801.ExportDatasetConfigurationArgs>;
-            /**
-             * The granularity of rows in the export. Currently only 'Daily' is supported.
-             */
-            granularity?: pulumi.Input<string | enums.v20230801.GranularityType>;
-        }
-
-        /**
-         * The export dataset configuration. Allows columns to be selected for the export. If not provided then the export will include all available columns.
-         */
-        export interface ExportDatasetConfigurationArgs {
-            /**
-             * Array of column names to be included in the export. If not provided then the export will include all available columns. The available columns can vary by customer channel (see examples).
-             */
-            columns?: pulumi.Input<pulumi.Input<string>[]>;
-        }
-
-        /**
-         * The definition of an export.
-         */
-        export interface ExportDefinitionArgs {
-            /**
-             * The definition for data in the export.
-             */
-            dataSet?: pulumi.Input<v20230801.ExportDatasetArgs>;
-            /**
-             * Has time period for pulling data for the export.
-             */
-            timePeriod?: pulumi.Input<v20230801.ExportTimePeriodArgs>;
-            /**
-             * The time frame for pulling data for the export. If custom, then a specific time period must be provided.
-             */
-            timeframe: pulumi.Input<string | enums.v20230801.TimeframeType>;
-            /**
-             * The type of the export. Note that 'Usage' is equivalent to 'ActualCost' and is applicable to exports that do not yet provide data for charges or amortization for service reservations.
-             */
-            type: pulumi.Input<string | enums.v20230801.ExportType>;
-        }
-
-        /**
-         * This represents the blob storage account location where exports of costs will be delivered. There are two ways to configure the destination. The approach recommended for most customers is to specify the resourceId of the storage account. This requires a one-time registration of the account's subscription with the Microsoft.CostManagementExports resource provider in order to give Cost Management services access to the storage. When creating an export in the Azure portal this registration is performed automatically but API users may need to register the subscription explicitly (for more information see https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-supported-services ). Another way to configure the destination is available ONLY to Partners with a Microsoft Partner Agreement plan who are global admins of their billing account. These Partners, instead of specifying the resourceId of a storage account, can specify the storage account name along with a SAS token for the account. This allows exports of costs to a storage account in any tenant. The SAS token should be created for the blob service with Service/Container/Object resource types and with Read/Write/Delete/List/Add/Create permissions (for more information see https://docs.microsoft.com/en-us/azure/cost-management-billing/costs/export-cost-data-storage-account-sas-key ).
-         */
-        export interface ExportDeliveryDestinationArgs {
-            /**
-             * The name of the container where exports will be uploaded. If the container does not exist it will be created.
-             */
-            container: pulumi.Input<string>;
-            /**
-             * The resource id of the storage account where exports will be delivered. This is not required if a sasToken and storageAccount are specified.
-             */
-            resourceId?: pulumi.Input<string>;
-            /**
-             * The name of the directory where exports will be uploaded.
-             */
-            rootFolderPath?: pulumi.Input<string>;
-            /**
-             * A SAS token for the storage account. For a restricted set of Azure customers this together with storageAccount can be specified instead of resourceId. Note: the value returned by the API for this property will always be obfuscated. Returning this same obfuscated value will not result in the SAS token being updated. To update this value a new SAS token must be specified.
-             */
-            sasToken?: pulumi.Input<string>;
-            /**
-             * The storage account where exports will be uploaded. For a restricted set of Azure customers this together with sasToken can be specified instead of resourceId.
-             */
-            storageAccount?: pulumi.Input<string>;
-        }
-
-        /**
-         * The delivery information associated with a export.
-         */
-        export interface ExportDeliveryInfoArgs {
-            /**
-             * Has destination for the export being delivered.
-             */
-            destination: pulumi.Input<v20230801.ExportDeliveryDestinationArgs>;
-        }
-
-        /**
-         * The start and end date for recurrence schedule.
-         */
-        export interface ExportRecurrencePeriodArgs {
-            /**
-             * The start date of recurrence.
-             */
-            from: pulumi.Input<string>;
-            /**
-             * The end date of recurrence.
-             */
-            to?: pulumi.Input<string>;
-        }
-
-        /**
-         * The schedule associated with the export.
-         */
-        export interface ExportScheduleArgs {
-            /**
-             * The schedule recurrence.
-             */
-            recurrence?: pulumi.Input<string | enums.v20230801.RecurrenceType>;
-            /**
-             * Has start and end date of the recurrence. The start date must be in future. If present, the end date must be greater than start date.
-             */
-            recurrencePeriod?: pulumi.Input<v20230801.ExportRecurrencePeriodArgs>;
-            /**
-             * The status of the export's schedule. If 'Inactive', the export's schedule is paused.
-             */
-            status?: pulumi.Input<string | enums.v20230801.StatusType>;
-        }
-
-        /**
-         * The date range for data in the export. This should only be specified with timeFrame set to 'Custom'. The maximum date range is 3 months.
-         */
-        export interface ExportTimePeriodArgs {
-            /**
-             * The start date for export data.
-             */
-            from: pulumi.Input<string>;
-            /**
-             * The end date for export data.
-             */
-            to: pulumi.Input<string>;
-        }
-
-        /**
-         * Destination of the view data. This is optional. Currently only CSV format is supported.
-         */
-        export interface FileDestinationArgs {
-            /**
-             * Destination of the view data. Currently only CSV format is supported.
-             */
-            fileFormats?: pulumi.Input<pulumi.Input<string | enums.v20230801.FileFormat>[]>;
-        }
-
-        /**
-         * Each KPI must contain a 'type' and 'enabled' key.
-         */
-        export interface KpiPropertiesArgs {
-            /**
-             * show the KPI in the UI?
-             */
-            enabled?: pulumi.Input<boolean>;
-            /**
-             * ID of resource related to metric (budget).
-             */
-            id?: pulumi.Input<string>;
-            /**
-             * KPI type (Forecast, Budget).
-             */
-            type?: pulumi.Input<string | enums.v20230801.KpiTypeType>;
-        }
-
-        /**
-         * The notification associated with a budget.
-         *
-         *  Supported for CategoryType(s): Cost, ReservationUtilization.
-         */
-        export interface NotificationArgs {
-            /**
-             * Email addresses to send the notification to when the threshold is breached. Must have at least one contact email or contact group specified at the Subscription or Resource Group scopes. All other scopes must have at least one contact email specified.
-             *
-             *  Supported for CategoryType(s): Cost, ReservationUtilization.
-             */
-            contactEmails: pulumi.Input<pulumi.Input<string>[]>;
-            /**
-             * Subscription or Resource Group scopes only. Action groups to send the notification to when the threshold is exceeded. Must be provided as a fully qualified Azure resource id.
-             *
-             *  Supported for CategoryType(s): Cost.
-             */
-            contactGroups?: pulumi.Input<pulumi.Input<string>[]>;
-            /**
-             * Subscription or Resource Group scopes only. Contact roles to send the notification to when the threshold is breached.
-             *
-             *  Supported for CategoryType(s): Cost.
-             */
-            contactRoles?: pulumi.Input<pulumi.Input<string>[]>;
-            /**
-             * The notification is enabled or not.
-             *
-             *  Supported for CategoryType(s): Cost, ReservationUtilization.
-             */
-            enabled: pulumi.Input<boolean>;
-            /**
-             * Frequency of a notification. Represents how long the notification will be silent after triggering an alert for a threshold breach. If not specified, the frequency will be set by default based on the timeGrain (Weekly when timeGrain: Last7Days, Monthly when timeGrain: Last30Days).
-             *
-             *  Supported for CategoryType(s): ReservationUtilization.
-             */
-            frequency?: pulumi.Input<string | enums.v20230801.Frequency>;
-            /**
-             * Language in which the recipient will receive the notification, 
-             *
-             *  Supported for CategoryType(s): Cost, ReservationUtilization.
-             */
-            locale?: pulumi.Input<string | enums.v20230801.CultureCode>;
-            /**
-             * The comparison operator.
-             *
-             *  Supported for CategoryType(s): Cost, ReservationUtilization.
-             *
-             *  Supported operators for **CategoryType: Cost**
-             * - GreaterThan
-             * - GreaterThanOrEqualTo
-             *
-             *  Supported operators for **CategoryType: ReservationUtilization**
-             * - LessThan
-             */
-            operator: pulumi.Input<string | enums.v20230801.BudgetNotificationOperatorType>;
-            /**
-             * Threshold value associated with a notification. It is always percent with a maximum of 2 decimal places.
-             *
-             *  Supported for CategoryType(s): Cost, ReservationUtilization.
-             *
-             *  **CategoryType: Cost** - Must be between 0 and 1000. Notification is sent when the cost exceeded the threshold.
-             *
-             *  **CategoryType: ReservationUtilization** - Must be between 0 and 100. Notification is sent when a reservation has a utilization percentage below the threshold.
-             */
-            threshold: pulumi.Input<number>;
-            /**
-             * The type of threshold.
-             *
-             *  Supported for CategoryType(s): Cost.
-             */
-            thresholdType?: pulumi.Input<string | enums.v20230801.ThresholdType>;
-        }
-        /**
-         * notificationArgsProvideDefaults sets the appropriate defaults for NotificationArgs
-         */
-        export function notificationArgsProvideDefaults(val: NotificationArgs): NotificationArgs {
-            return {
-                ...val,
-                thresholdType: (val.thresholdType) ?? "Actual",
-            };
-        }
-
-        /**
-         * The properties of the scheduled action notification.
-         */
-        export interface NotificationPropertiesArgs {
-            /**
-             * Locale of the email.
-             */
-            language?: pulumi.Input<string>;
-            /**
-             * Optional message to be added in the email. Length is limited to 250 characters.
-             */
-            message?: pulumi.Input<string>;
-            /**
-             * Regional format used for formatting date/time and currency values in the email.
-             */
-            regionalFormat?: pulumi.Input<string>;
-            /**
-             * Subject of the email. Length is limited to 70 characters.
-             */
-            subject: pulumi.Input<string>;
-            /**
-             * Array of email addresses.
-             */
-            to: pulumi.Input<pulumi.Input<string>[]>;
-        }
-
-        /**
-         * Each pivot must contain a 'type' and 'name'.
-         */
-        export interface PivotPropertiesArgs {
-            /**
-             * Data field to show in view.
-             */
-            name?: pulumi.Input<string>;
-            /**
-             * Data type to show in view.
-             */
-            type?: pulumi.Input<string | enums.v20230801.PivotTypeType>;
-        }
-
-        /**
-         * The aggregation expression to be used in the report.
-         */
-        export interface ReportConfigAggregationArgs {
-            /**
-             * The name of the aggregation function to use.
-             */
-            function: pulumi.Input<string | enums.v20230801.FunctionType>;
-            /**
-             * The name of the column to aggregate.
-             */
-            name: pulumi.Input<string>;
-        }
-
-        /**
-         * The comparison expression to be used in the report.
-         */
-        export interface ReportConfigComparisonExpressionArgs {
-            /**
-             * The name of the column to use in comparison.
-             */
-            name: pulumi.Input<string>;
-            /**
-             * The operator to use for comparison.
-             */
-            operator: pulumi.Input<string | enums.v20230801.OperatorType>;
-            /**
-             * Array of values to use for comparison
-             */
-            values: pulumi.Input<pulumi.Input<string>[]>;
-        }
-
-        /**
-         * The definition of data present in the report.
-         */
-        export interface ReportConfigDatasetArgs {
-            /**
-             * Dictionary of aggregation expression to use in the report. The key of each item in the dictionary is the alias for the aggregated column. Report can have up to 2 aggregation clauses.
-             */
-            aggregation?: pulumi.Input<{[key: string]: pulumi.Input<v20230801.ReportConfigAggregationArgs>}>;
-            /**
-             * Has configuration information for the data in the report. The configuration will be ignored if aggregation and grouping are provided.
-             */
-            configuration?: pulumi.Input<v20230801.ReportConfigDatasetConfigurationArgs>;
-            /**
-             * Has filter expression to use in the report.
-             */
-            filter?: pulumi.Input<v20230801.ReportConfigFilterArgs>;
-            /**
-             * The granularity of rows in the report.
-             */
-            granularity?: pulumi.Input<string | enums.v20230801.ReportGranularityType>;
-            /**
-             * Array of group by expression to use in the report. Report can have up to 2 group by clauses.
-             */
-            grouping?: pulumi.Input<pulumi.Input<v20230801.ReportConfigGroupingArgs>[]>;
-            /**
-             * Array of order by expression to use in the report.
-             */
-            sorting?: pulumi.Input<pulumi.Input<v20230801.ReportConfigSortingArgs>[]>;
-        }
-
-        /**
-         * The configuration of dataset in the report.
-         */
-        export interface ReportConfigDatasetConfigurationArgs {
-            /**
-             * Array of column names to be included in the report. Any valid report column name is allowed. If not provided, then report includes all columns.
-             */
-            columns?: pulumi.Input<pulumi.Input<string>[]>;
-        }
-
-        /**
-         * The filter expression to be used in the report.
-         */
-        export interface ReportConfigFilterArgs {
-            /**
-             * The logical "AND" expression. Must have at least 2 items.
-             */
-            and?: pulumi.Input<pulumi.Input<v20230801.ReportConfigFilterArgs>[]>;
-            /**
-             * Has comparison expression for a dimension
-             */
-            dimensions?: pulumi.Input<v20230801.ReportConfigComparisonExpressionArgs>;
-            /**
-             * The logical "OR" expression. Must have at least 2 items.
-             */
-            or?: pulumi.Input<pulumi.Input<v20230801.ReportConfigFilterArgs>[]>;
-            /**
-             * Has comparison expression for a tag
-             */
-            tags?: pulumi.Input<v20230801.ReportConfigComparisonExpressionArgs>;
-        }
-
-        /**
-         * The group by expression to be used in the report.
-         */
-        export interface ReportConfigGroupingArgs {
-            /**
-             * The name of the column to group. This version supports subscription lowest possible grain.
-             */
-            name: pulumi.Input<string>;
-            /**
-             * Has type of the column to group.
-             */
-            type: pulumi.Input<string | enums.v20230801.QueryColumnType>;
-        }
-
-        /**
-         * The order by expression to be used in the report.
-         */
-        export interface ReportConfigSortingArgs {
-            /**
-             * Direction of sort.
-             */
-            direction?: pulumi.Input<string | enums.v20230801.ReportConfigSortingType>;
-            /**
-             * The name of the column to sort.
-             */
-            name: pulumi.Input<string>;
-        }
-
-        /**
-         * The start and end date for pulling data for the report.
-         */
-        export interface ReportConfigTimePeriodArgs {
-            /**
-             * The start date to pull data from.
-             */
-            from: pulumi.Input<string>;
-            /**
-             * The end date to pull data to.
-             */
-            to: pulumi.Input<string>;
-        }
-
-        /**
-         * The properties of the schedule.
-         */
-        export interface SchedulePropertiesArgs {
-            /**
-             * UTC day on which cost analysis data will be emailed. Must be between 1 and 31. This property is applicable when frequency is Monthly and overrides weeksOfMonth or daysOfWeek.
-             */
-            dayOfMonth?: pulumi.Input<number>;
-            /**
-             * Day names in english on which cost analysis data will be emailed. This property is applicable when frequency is Weekly or Monthly.
-             */
-            daysOfWeek?: pulumi.Input<pulumi.Input<string | enums.v20230801.DaysOfWeek>[]>;
-            /**
-             * The end date and time of the scheduled action (UTC).
-             */
-            endDate: pulumi.Input<string>;
-            /**
-             * Frequency of the schedule.
-             */
-            frequency: pulumi.Input<string | enums.v20230801.ScheduleFrequency>;
-            /**
-             * UTC time at which cost analysis data will be emailed.
-             */
-            hourOfDay?: pulumi.Input<number>;
-            /**
-             * The start date and time of the scheduled action (UTC).
-             */
-            startDate: pulumi.Input<string>;
-            /**
-             * Weeks in which cost analysis data will be emailed. This property is applicable when frequency is Monthly and used in combination with daysOfWeek.
-             */
-            weeksOfMonth?: pulumi.Input<pulumi.Input<string | enums.v20230801.WeeksOfMonth>[]>;
-        }
-
-        /**
-         * Source resources for cost allocation
-         */
-        export interface SourceCostAllocationResourceArgs {
-            /**
-             * If resource type is dimension, this must be either ResourceGroupName or SubscriptionId. If resource type is tag, this must be a valid Azure tag
-             */
-            name: pulumi.Input<string>;
-            /**
-             * Type of resources contained in this cost allocation rule
-             */
-            resourceType: pulumi.Input<string | enums.v20230801.CostAllocationResourceType>;
-            /**
-             * Source Resources for cost allocation. This list cannot contain more than 25 values.
-             */
-            values: pulumi.Input<pulumi.Input<string>[]>;
-        }
-
-        /**
-         * Managed service identity (either system assigned, or none)
-         */
-        export interface SystemAssignedServiceIdentityArgs {
-            /**
-             * Type of managed service identity (either system assigned, or none).
-             */
-            type: pulumi.Input<string | enums.v20230801.SystemAssignedServiceIdentityType>;
-        }
-
-        /**
-         * The properties of the tag inheritance setting.
-         */
-        export interface TagInheritancePropertiesArgs {
-            /**
-             * When resource has the same tag as subscription or resource group and this property is set to true - the subscription or resource group tag will be applied. If subscription and resource group tags are also the same, subscription tag will be applied.
-             */
-            preferContainerTags: pulumi.Input<boolean>;
-        }
-
-        /**
-         * Target resources for cost allocation.
-         */
-        export interface TargetCostAllocationResourceArgs {
-            /**
-             * If resource type is dimension, this must be either ResourceGroupName or SubscriptionId. If resource type is tag, this must be a valid Azure tag
-             */
-            name: pulumi.Input<string>;
-            /**
-             * Method of cost allocation for the rule
-             */
-            policyType: pulumi.Input<string | enums.v20230801.CostAllocationPolicyType>;
-            /**
-             * Type of resources contained in this cost allocation rule
-             */
-            resourceType: pulumi.Input<string | enums.v20230801.CostAllocationResourceType>;
-            /**
-             * Target resources for cost allocation. This list cannot contain more than 25 values.
-             */
-            values: pulumi.Input<pulumi.Input<v20230801.CostAllocationProportionArgs>[]>;
-        }
-
-    }
+    thresholdType?: pulumi.Input<string | enums.ThresholdType>;
 }
+/**
+ * notificationArgsProvideDefaults sets the appropriate defaults for NotificationArgs
+ */
+export function notificationArgsProvideDefaults(val: NotificationArgs): NotificationArgs {
+    return {
+        ...val,
+        thresholdType: (val.thresholdType) ?? "Actual",
+    };
+}
+
+/**
+ * The properties of the scheduled action notification.
+ */
+export interface NotificationPropertiesArgs {
+    /**
+     * Locale of the email.
+     */
+    language?: pulumi.Input<string>;
+    /**
+     * Optional message to be added in the email. Length is limited to 250 characters.
+     */
+    message?: pulumi.Input<string>;
+    /**
+     * Regional format used for formatting date/time and currency values in the email.
+     */
+    regionalFormat?: pulumi.Input<string>;
+    /**
+     * Subject of the email. Length is limited to 70 characters.
+     */
+    subject: pulumi.Input<string>;
+    /**
+     * Array of email addresses.
+     */
+    to: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+/**
+ * Each pivot must contain a 'type' and 'name'.
+ */
+export interface PivotPropertiesArgs {
+    /**
+     * Data field to show in view.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Data type to show in view.
+     */
+    type?: pulumi.Input<string | enums.PivotTypeType>;
+}
+
+/**
+ * The aggregation expression to be used in the report.
+ */
+export interface ReportAggregationArgs {
+    /**
+     * The name of the aggregation function to use.
+     */
+    function: pulumi.Input<string | enums.FunctionType>;
+    /**
+     * The name of the column to aggregate.
+     */
+    name: pulumi.Input<string>;
+}
+
+/**
+ * The comparison expression to be used in the report.
+ */
+export interface ReportComparisonExpressionArgs {
+    /**
+     * The name of the column to use in comparison.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The operator to use for comparison.
+     */
+    operator: pulumi.Input<string | enums.OperatorType>;
+    /**
+     * Array of values to use for comparison
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+/**
+ * The aggregation expression to be used in the report.
+ */
+export interface ReportConfigAggregationArgs {
+    /**
+     * The name of the aggregation function to use.
+     */
+    function: pulumi.Input<string | enums.FunctionType>;
+    /**
+     * The name of the column to aggregate.
+     */
+    name: pulumi.Input<string>;
+}
+
+/**
+ * The comparison expression to be used in the report.
+ */
+export interface ReportConfigComparisonExpressionArgs {
+    /**
+     * The name of the column to use in comparison.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The operator to use for comparison.
+     */
+    operator: pulumi.Input<string | enums.OperatorType>;
+    /**
+     * Array of values to use for comparison
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+/**
+ * The definition of data present in the report.
+ */
+export interface ReportConfigDatasetArgs {
+    /**
+     * Dictionary of aggregation expression to use in the report. The key of each item in the dictionary is the alias for the aggregated column. Report can have up to 2 aggregation clauses.
+     */
+    aggregation?: pulumi.Input<{[key: string]: pulumi.Input<ReportConfigAggregationArgs>}>;
+    /**
+     * Has configuration information for the data in the report. The configuration will be ignored if aggregation and grouping are provided.
+     */
+    configuration?: pulumi.Input<ReportConfigDatasetConfigurationArgs>;
+    /**
+     * Has filter expression to use in the report.
+     */
+    filter?: pulumi.Input<ReportConfigFilterArgs>;
+    /**
+     * The granularity of rows in the report.
+     */
+    granularity?: pulumi.Input<string | enums.ReportGranularityType>;
+    /**
+     * Array of group by expression to use in the report. Report can have up to 2 group by clauses.
+     */
+    grouping?: pulumi.Input<pulumi.Input<ReportConfigGroupingArgs>[]>;
+    /**
+     * Array of order by expression to use in the report.
+     */
+    sorting?: pulumi.Input<pulumi.Input<ReportConfigSortingArgs>[]>;
+}
+
+/**
+ * The configuration of dataset in the report.
+ */
+export interface ReportConfigDatasetConfigurationArgs {
+    /**
+     * Array of column names to be included in the report. Any valid report column name is allowed. If not provided, then report includes all columns.
+     */
+    columns?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+/**
+ * The filter expression to be used in the report.
+ */
+export interface ReportConfigFilterArgs {
+    /**
+     * The logical "AND" expression. Must have at least 2 items.
+     */
+    and?: pulumi.Input<pulumi.Input<ReportConfigFilterArgs>[]>;
+    /**
+     * Has comparison expression for a dimension
+     */
+    dimensions?: pulumi.Input<ReportConfigComparisonExpressionArgs>;
+    /**
+     * The logical "OR" expression. Must have at least 2 items.
+     */
+    or?: pulumi.Input<pulumi.Input<ReportConfigFilterArgs>[]>;
+    /**
+     * Has comparison expression for a tag
+     */
+    tags?: pulumi.Input<ReportConfigComparisonExpressionArgs>;
+}
+
+/**
+ * The group by expression to be used in the report.
+ */
+export interface ReportConfigGroupingArgs {
+    /**
+     * The name of the column to group. This version supports subscription lowest possible grain.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Has type of the column to group.
+     */
+    type: pulumi.Input<string | enums.QueryColumnType>;
+}
+
+/**
+ * The order by expression to be used in the report.
+ */
+export interface ReportConfigSortingArgs {
+    /**
+     * Direction of sort.
+     */
+    direction?: pulumi.Input<string | enums.ReportConfigSortingType>;
+    /**
+     * The name of the column to sort.
+     */
+    name: pulumi.Input<string>;
+}
+
+/**
+ * The start and end date for pulling data for the report.
+ */
+export interface ReportConfigTimePeriodArgs {
+    /**
+     * The start date to pull data from.
+     */
+    from: pulumi.Input<string>;
+    /**
+     * The end date to pull data to.
+     */
+    to: pulumi.Input<string>;
+}
+
+/**
+ * The definition of data present in the report.
+ */
+export interface ReportDatasetArgs {
+    /**
+     * Dictionary of aggregation expression to use in the report. The key of each item in the dictionary is the alias for the aggregated column. Report can have up to 2 aggregation clauses.
+     */
+    aggregation?: pulumi.Input<{[key: string]: pulumi.Input<ReportAggregationArgs>}>;
+    /**
+     * Has configuration information for the data in the report. The configuration will be ignored if aggregation and grouping are provided.
+     */
+    configuration?: pulumi.Input<ReportDatasetConfigurationArgs>;
+    /**
+     * Has filter expression to use in the report.
+     */
+    filter?: pulumi.Input<ReportFilterArgs>;
+    /**
+     * The granularity of rows in the report.
+     */
+    granularity?: pulumi.Input<string | enums.GranularityType>;
+    /**
+     * Array of group by expression to use in the report. Report can have up to 2 group by clauses.
+     */
+    grouping?: pulumi.Input<pulumi.Input<ReportGroupingArgs>[]>;
+}
+
+/**
+ * The configuration of dataset in the report.
+ */
+export interface ReportDatasetConfigurationArgs {
+    /**
+     * Array of column names to be included in the report. Any valid report column name is allowed. If not provided, then report includes all columns.
+     */
+    columns?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+/**
+ * The definition of a report.
+ */
+export interface ReportDefinitionArgs {
+    /**
+     * Has definition for data in this report.
+     */
+    dataset?: pulumi.Input<ReportDatasetArgs>;
+    /**
+     * Has time period for pulling data for the report.
+     */
+    timePeriod?: pulumi.Input<ReportTimePeriodArgs>;
+    /**
+     * The time frame for pulling data for the report. If custom, then a specific time period must be provided.
+     */
+    timeframe: pulumi.Input<string | enums.TimeframeType>;
+    /**
+     * The type of the report.
+     */
+    type: pulumi.Input<string | enums.ReportType>;
+}
+
+/**
+ * The destination information for the delivery of the report.
+ */
+export interface ReportDeliveryDestinationArgs {
+    /**
+     * The name of the container where reports will be uploaded.
+     */
+    container: pulumi.Input<string>;
+    /**
+     * The resource id of the storage account where reports will be delivered.
+     */
+    resourceId: pulumi.Input<string>;
+    /**
+     * The name of the directory where reports will be uploaded.
+     */
+    rootFolderPath?: pulumi.Input<string>;
+}
+
+/**
+ * The delivery information associated with a report.
+ */
+export interface ReportDeliveryInfoArgs {
+    /**
+     * Has destination for the report being delivered.
+     */
+    destination: pulumi.Input<ReportDeliveryDestinationArgs>;
+}
+
+/**
+ * The filter expression to be used in the report.
+ */
+export interface ReportFilterArgs {
+    /**
+     * The logical "AND" expression. Must have at least 2 items.
+     */
+    and?: pulumi.Input<pulumi.Input<ReportFilterArgs>[]>;
+    /**
+     * Has comparison expression for a dimension
+     */
+    dimension?: pulumi.Input<ReportComparisonExpressionArgs>;
+    /**
+     * The logical "NOT" expression.
+     */
+    not?: pulumi.Input<ReportFilterArgs>;
+    /**
+     * The logical "OR" expression. Must have at least 2 items.
+     */
+    or?: pulumi.Input<pulumi.Input<ReportFilterArgs>[]>;
+    /**
+     * Has comparison expression for a tag
+     */
+    tag?: pulumi.Input<ReportComparisonExpressionArgs>;
+}
+
+/**
+ * The group by expression to be used in the report.
+ */
+export interface ReportGroupingArgs {
+    /**
+     * The name of the column to group.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Has type of the column to group.
+     */
+    type: pulumi.Input<string | enums.ReportColumnType>;
+}
+
+/**
+ * The start and end date for recurrence schedule.
+ */
+export interface ReportRecurrencePeriodArgs {
+    /**
+     * The start date of recurrence.
+     */
+    from: pulumi.Input<string>;
+    /**
+     * The end date of recurrence.
+     */
+    to?: pulumi.Input<string>;
+}
+
+/**
+ * The schedule associated with a report.
+ */
+export interface ReportScheduleArgs {
+    /**
+     * The schedule recurrence.
+     */
+    recurrence: pulumi.Input<string | enums.RecurrenceType>;
+    /**
+     * Has start and end date of the recurrence. The start date must be in future. If present, the end date must be greater than start date.
+     */
+    recurrencePeriod?: pulumi.Input<ReportRecurrencePeriodArgs>;
+    /**
+     * The status of the schedule. Whether active or not. If inactive, the report's scheduled execution is paused.
+     */
+    status?: pulumi.Input<string | enums.StatusType>;
+}
+
+/**
+ * The start and end date for pulling data for the report.
+ */
+export interface ReportTimePeriodArgs {
+    /**
+     * The start date to pull data from.
+     */
+    from: pulumi.Input<string>;
+    /**
+     * The end date to pull data to.
+     */
+    to: pulumi.Input<string>;
+}
+
+/**
+ * The properties of the schedule.
+ */
+export interface SchedulePropertiesArgs {
+    /**
+     * UTC day on which cost analysis data will be emailed. Must be between 1 and 31. This property is applicable when frequency is Monthly and overrides weeksOfMonth or daysOfWeek.
+     */
+    dayOfMonth?: pulumi.Input<number>;
+    /**
+     * Day names in english on which cost analysis data will be emailed. This property is applicable when frequency is Weekly or Monthly.
+     */
+    daysOfWeek?: pulumi.Input<pulumi.Input<string | enums.DaysOfWeek>[]>;
+    /**
+     * The end date and time of the scheduled action (UTC).
+     */
+    endDate: pulumi.Input<string>;
+    /**
+     * Frequency of the schedule.
+     */
+    frequency: pulumi.Input<string | enums.ScheduleFrequency>;
+    /**
+     * UTC time at which cost analysis data will be emailed.
+     */
+    hourOfDay?: pulumi.Input<number>;
+    /**
+     * The start date and time of the scheduled action (UTC).
+     */
+    startDate: pulumi.Input<string>;
+    /**
+     * Weeks in which cost analysis data will be emailed. This property is applicable when frequency is Monthly and used in combination with daysOfWeek.
+     */
+    weeksOfMonth?: pulumi.Input<pulumi.Input<string | enums.WeeksOfMonth>[]>;
+}
+
+export interface SettingsPropertiesCacheArgs {
+    /**
+     * Indicates the account type. Allowed values include: EA, PAYG, Modern, Internal, Unknown.
+     */
+    channel: pulumi.Input<string>;
+    /**
+     * Resource ID used by Resource Manager to uniquely identify the scope.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * Display name for the scope.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Resource ID of the parent scope. For instance, subscription's resource ID for a resource group or a management group resource ID for a subscription.
+     */
+    parent?: pulumi.Input<string>;
+    /**
+     * Indicates the status of the scope. Status only applies to subscriptions and billing accounts.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * Indicates the type of modern account. Allowed values include: Individual, Enterprise, Partner, Indirect, NotApplicable
+     */
+    subchannel: pulumi.Input<string>;
+}
+
+/**
+ * Source resources for cost allocation
+ */
+export interface SourceCostAllocationResourceArgs {
+    /**
+     * If resource type is dimension, this must be either ResourceGroupName or SubscriptionId. If resource type is tag, this must be a valid Azure tag
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Type of resources contained in this cost allocation rule
+     */
+    resourceType: pulumi.Input<string | enums.CostAllocationResourceType>;
+    /**
+     * Source Resources for cost allocation. This list cannot contain more than 25 values.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+/**
+ * The properties of the tag inheritance setting.
+ */
+export interface TagInheritancePropertiesArgs {
+    /**
+     * When resource has the same tag as subscription or resource group and this property is set to true - the subscription or resource group tag will be applied. If subscription and resource group tags are also the same, subscription tag will be applied.
+     */
+    preferContainerTags: pulumi.Input<boolean>;
+}
+
+/**
+ * Target resources for cost allocation.
+ */
+export interface TargetCostAllocationResourceArgs {
+    /**
+     * If resource type is dimension, this must be either ResourceGroupName or SubscriptionId. If resource type is tag, this must be a valid Azure tag
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Method of cost allocation for the rule
+     */
+    policyType: pulumi.Input<string | enums.CostAllocationPolicyType>;
+    /**
+     * Type of resources contained in this cost allocation rule
+     */
+    resourceType: pulumi.Input<string | enums.CostAllocationResourceType>;
+    /**
+     * Target resources for cost allocation. This list cannot contain more than 25 values.
+     */
+    values: pulumi.Input<pulumi.Input<CostAllocationProportionArgs>[]>;
+}
+
+
+
+
+
+
+
+
+
+
+

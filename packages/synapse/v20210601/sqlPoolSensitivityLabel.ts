@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A sensitivity label.
  */
@@ -167,7 +167,7 @@ export interface SqlPoolSensitivityLabelArgs {
      * The label name.
      */
     labelName?: pulumi.Input<string>;
-    rank?: pulumi.Input<types.enums.v20210601.SensitivityLabelRank>;
+    rank?: pulumi.Input<types.enums.SensitivityLabelRank>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

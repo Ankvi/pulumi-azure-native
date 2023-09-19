@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 export class WorkspaceConnection extends pulumi.CustomResource {
     /**
      * Get an existing WorkspaceConnection resource's state with the given name, ID, and optional extra
@@ -32,11 +32,11 @@ export class WorkspaceConnection extends pulumi.CustomResource {
      * The name of the resource
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
-    public readonly properties!: pulumi.Output<types.outputs.machinelearningservices.v20230601preview.AccessKeyAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.machinelearningservices.v20230601preview.ApiKeyAuthWorkspaceConnectionPropertiesResponse | types.outputs.machinelearningservices.v20230601preview.CustomKeysWorkspaceConnectionPropertiesResponse | types.outputs.machinelearningservices.v20230601preview.ManagedIdentityAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.machinelearningservices.v20230601preview.NoneAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.machinelearningservices.v20230601preview.PATAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.machinelearningservices.v20230601preview.SASAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.machinelearningservices.v20230601preview.ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.machinelearningservices.v20230601preview.UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.AccessKeyAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.ApiKeyAuthWorkspaceConnectionPropertiesResponse | types.outputs.CustomKeysWorkspaceConnectionPropertiesResponse | types.outputs.ManagedIdentityAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.NoneAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.PATAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.SASAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.ServicePrincipalAuthTypeWorkspaceConnectionPropertiesResponse | types.outputs.UsernamePasswordAuthTypeWorkspaceConnectionPropertiesResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.machinelearningservices.v20230601preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -90,7 +90,7 @@ export interface WorkspaceConnectionArgs {
      * Friendly name of the workspace connection
      */
     connectionName?: pulumi.Input<string>;
-    properties: pulumi.Input<types.inputs.machinelearningservices.v20230601preview.AccessKeyAuthTypeWorkspaceConnectionPropertiesArgs | types.inputs.machinelearningservices.v20230601preview.ApiKeyAuthWorkspaceConnectionPropertiesArgs | types.inputs.machinelearningservices.v20230601preview.CustomKeysWorkspaceConnectionPropertiesArgs | types.inputs.machinelearningservices.v20230601preview.ManagedIdentityAuthTypeWorkspaceConnectionPropertiesArgs | types.inputs.machinelearningservices.v20230601preview.NoneAuthTypeWorkspaceConnectionPropertiesArgs | types.inputs.machinelearningservices.v20230601preview.PATAuthTypeWorkspaceConnectionPropertiesArgs | types.inputs.machinelearningservices.v20230601preview.SASAuthTypeWorkspaceConnectionPropertiesArgs | types.inputs.machinelearningservices.v20230601preview.ServicePrincipalAuthTypeWorkspaceConnectionPropertiesArgs | types.inputs.machinelearningservices.v20230601preview.UsernamePasswordAuthTypeWorkspaceConnectionPropertiesArgs>;
+    properties: pulumi.Input<types.inputs.AccessKeyAuthTypeWorkspaceConnectionPropertiesArgs | types.inputs.ApiKeyAuthWorkspaceConnectionPropertiesArgs | types.inputs.CustomKeysWorkspaceConnectionPropertiesArgs | types.inputs.ManagedIdentityAuthTypeWorkspaceConnectionPropertiesArgs | types.inputs.NoneAuthTypeWorkspaceConnectionPropertiesArgs | types.inputs.PATAuthTypeWorkspaceConnectionPropertiesArgs | types.inputs.SASAuthTypeWorkspaceConnectionPropertiesArgs | types.inputs.ServicePrincipalAuthTypeWorkspaceConnectionPropertiesArgs | types.inputs.UsernamePasswordAuthTypeWorkspaceConnectionPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Customer creates a contact resource for a spacecraft resource.
  */
@@ -34,11 +34,11 @@ export class Contact extends pulumi.CustomResource {
     /**
      * The configuration associated with the allocated antenna.
      */
-    public /*out*/ readonly antennaConfiguration!: pulumi.Output<types.outputs.orbital.v20220301.ContactsPropertiesResponseAntennaConfiguration>;
+    public /*out*/ readonly antennaConfiguration!: pulumi.Output<types.outputs.ContactsPropertiesResponseAntennaConfiguration>;
     /**
      * The reference to the contact profile resource.
      */
-    public readonly contactProfile!: pulumi.Output<types.outputs.orbital.v20220301.ContactsPropertiesResponseContactProfile>;
+    public readonly contactProfile!: pulumi.Output<types.outputs.ContactsPropertiesResponseContactProfile>;
     /**
      * Azimuth of the antenna at the end of the contact in decimal degrees.
      */
@@ -98,7 +98,7 @@ export class Contact extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.orbital.v20220301.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Transmit end time of a contact (ISO 8601 UTC standard).
      */
@@ -204,7 +204,7 @@ export interface ContactArgs {
     /**
      * The reference to the contact profile resource.
      */
-    contactProfile: pulumi.Input<types.inputs.orbital.v20220301.ContactsPropertiesContactProfileArgs>;
+    contactProfile: pulumi.Input<types.inputs.ContactsPropertiesContactProfileArgs>;
     /**
      * Azure Ground Station name.
      */

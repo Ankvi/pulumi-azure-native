@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns the cluster customer user credentials for the dedicated appliance.
  */
@@ -31,11 +31,11 @@ export interface ListApplianceClusterCustomerUserCredentialResult {
     /**
      * The list of appliance kubeconfigs.
      */
-    readonly kubeconfigs: types.outputs.resourceconnector.v20220415preview.ApplianceCredentialKubeconfigResponse[];
+    readonly kubeconfigs: types.outputs.ApplianceCredentialKubeconfigResponse[];
     /**
      * Map of Customer User Public and Private SSH Keys
      */
-    readonly sshKeys: {[key: string]: types.outputs.resourceconnector.v20220415preview.SSHKeyResponse};
+    readonly sshKeys: {[key: string]: types.outputs.SSHKeyResponse};
 }
 /**
  * Returns the cluster customer user credentials for the dedicated appliance.

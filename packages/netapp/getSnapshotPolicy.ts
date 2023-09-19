@@ -37,7 +37,7 @@ export interface GetSnapshotPolicyResult {
     /**
      * Schedule for daily snapshots
      */
-    readonly dailySchedule?: types.outputs.netapp.DailyScheduleResponse;
+    readonly dailySchedule?: types.outputs.DailyScheduleResponse;
     /**
      * The property to decide policy is enabled or not
      */
@@ -49,7 +49,7 @@ export interface GetSnapshotPolicyResult {
     /**
      * Schedule for hourly snapshots
      */
-    readonly hourlySchedule?: types.outputs.netapp.HourlyScheduleResponse;
+    readonly hourlySchedule?: types.outputs.HourlyScheduleResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -61,7 +61,7 @@ export interface GetSnapshotPolicyResult {
     /**
      * Schedule for monthly snapshots
      */
-    readonly monthlySchedule?: types.outputs.netapp.MonthlyScheduleResponse;
+    readonly monthlySchedule?: types.outputs.MonthlyScheduleResponse;
     /**
      * The name of the resource
      */
@@ -73,7 +73,7 @@ export interface GetSnapshotPolicyResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.netapp.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -85,7 +85,7 @@ export interface GetSnapshotPolicyResult {
     /**
      * Schedule for weekly snapshots
      */
-    readonly weeklySchedule?: types.outputs.netapp.WeeklyScheduleResponse;
+    readonly weeklySchedule?: types.outputs.WeeklyScheduleResponse;
 }
 /**
  * Get a snapshot Policy

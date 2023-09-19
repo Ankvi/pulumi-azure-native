@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents a migration resource.
  */
@@ -34,7 +34,7 @@ export class Migration extends pulumi.CustomResource {
     /**
      * Migration status.
      */
-    public /*out*/ readonly currentStatus!: pulumi.Output<types.outputs.dbforpostgresql.v20210615privatepreview.MigrationStatusResponse>;
+    public /*out*/ readonly currentStatus!: pulumi.Output<types.outputs.MigrationStatusResponse>;
     public readonly dBsToMigrate!: pulumi.Output<string[] | undefined>;
     /**
      * The geo-location where the resource lives
@@ -49,7 +49,7 @@ export class Migration extends pulumi.CustomResource {
     /**
      * Migration resource group.
      */
-    public readonly migrationResourceGroup!: pulumi.Output<types.outputs.dbforpostgresql.v20210615privatepreview.MigrationResourceGroupResponse | undefined>;
+    public readonly migrationResourceGroup!: pulumi.Output<types.outputs.MigrationResourceGroupResponse | undefined>;
     public readonly migrationWindowStartTimeInUtc!: pulumi.Output<string | undefined>;
     /**
      * The name of the resource
@@ -59,18 +59,18 @@ export class Migration extends pulumi.CustomResource {
     /**
      * Migration secret parameters.
      */
-    public readonly secretParameters!: pulumi.Output<types.outputs.dbforpostgresql.v20210615privatepreview.MigrationSecretParametersResponse | undefined>;
+    public readonly secretParameters!: pulumi.Output<types.outputs.MigrationSecretParametersResponse | undefined>;
     public readonly setupLogicalReplicationOnSourceDBIfNeeded!: pulumi.Output<boolean | undefined>;
     /**
      * Database server metadata.
      */
-    public /*out*/ readonly sourceDBServerMetadata!: pulumi.Output<types.outputs.dbforpostgresql.v20210615privatepreview.DBServerMetadataResponse>;
+    public /*out*/ readonly sourceDBServerMetadata!: pulumi.Output<types.outputs.DBServerMetadataResponse>;
     public readonly sourceDBServerResourceId!: pulumi.Output<string | undefined>;
     public readonly startDataMigration!: pulumi.Output<boolean | undefined>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.dbforpostgresql.v20210615privatepreview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -78,7 +78,7 @@ export class Migration extends pulumi.CustomResource {
     /**
      * Database server metadata.
      */
-    public /*out*/ readonly targetDBServerMetadata!: pulumi.Output<types.outputs.dbforpostgresql.v20210615privatepreview.DBServerMetadataResponse>;
+    public /*out*/ readonly targetDBServerMetadata!: pulumi.Output<types.outputs.DBServerMetadataResponse>;
     public /*out*/ readonly targetDBServerResourceId!: pulumi.Output<string>;
     public readonly triggerCutover!: pulumi.Output<boolean | undefined>;
     /**
@@ -179,13 +179,13 @@ export interface MigrationArgs {
     /**
      * Migration resource group.
      */
-    migrationResourceGroup?: pulumi.Input<types.inputs.dbforpostgresql.v20210615privatepreview.MigrationResourceGroupArgs>;
+    migrationResourceGroup?: pulumi.Input<types.inputs.MigrationResourceGroupArgs>;
     migrationWindowStartTimeInUtc?: pulumi.Input<string>;
     overwriteDBsInTarget?: pulumi.Input<boolean>;
     /**
      * Migration secret parameters.
      */
-    secretParameters?: pulumi.Input<types.inputs.dbforpostgresql.v20210615privatepreview.MigrationSecretParametersArgs>;
+    secretParameters?: pulumi.Input<types.inputs.MigrationSecretParametersArgs>;
     setupLogicalReplicationOnSourceDBIfNeeded?: pulumi.Input<boolean>;
     sourceDBServerResourceId?: pulumi.Input<string>;
     startDataMigration?: pulumi.Input<boolean>;

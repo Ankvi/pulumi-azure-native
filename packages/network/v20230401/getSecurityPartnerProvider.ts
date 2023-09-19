@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the specified Security Partner Provider.
  */
@@ -67,7 +67,7 @@ export interface GetSecurityPartnerProviderResult {
     /**
      * The virtualHub to which the Security Partner Provider belongs.
      */
-    readonly virtualHub?: types.outputs.network.v20230401.SubResourceResponse;
+    readonly virtualHub?: types.outputs.SubResourceResponse;
 }
 /**
  * Gets the specified Security Partner Provider.

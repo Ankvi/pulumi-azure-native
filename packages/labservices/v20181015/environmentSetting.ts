@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents settings of an environment, from which environment instances would be created
  */
@@ -50,7 +50,7 @@ export class EnvironmentSetting extends pulumi.CustomResource {
     /**
      * The details of the latest operation. ex: status, error
      */
-    public /*out*/ readonly latestOperationResult!: pulumi.Output<types.outputs.labservices.v20181015.LatestOperationResultResponse>;
+    public /*out*/ readonly latestOperationResult!: pulumi.Output<types.outputs.LatestOperationResultResponse>;
     /**
      * The location of the resource.
      */
@@ -70,7 +70,7 @@ export class EnvironmentSetting extends pulumi.CustomResource {
     /**
      * The resource specific settings
      */
-    public readonly resourceSettings!: pulumi.Output<types.outputs.labservices.v20181015.ResourceSettingsResponse>;
+    public readonly resourceSettings!: pulumi.Output<types.outputs.ResourceSettingsResponse>;
     /**
      * The tags of the resource.
      */
@@ -159,7 +159,7 @@ export interface EnvironmentSettingArgs {
     /**
      * Describes the user's progress in configuring their environment setting
      */
-    configurationState?: pulumi.Input<string | types.enums.v20181015.ConfigurationState>;
+    configurationState?: pulumi.Input<string | types.enums.ConfigurationState>;
     /**
      * Describes the environment and its resource settings
      */
@@ -191,7 +191,7 @@ export interface EnvironmentSettingArgs {
     /**
      * The resource specific settings
      */
-    resourceSettings: pulumi.Input<types.inputs.labservices.v20181015.ResourceSettingsArgs>;
+    resourceSettings: pulumi.Input<types.inputs.ResourceSettingsArgs>;
     /**
      * The tags of the resource.
      */

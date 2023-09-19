@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The relationship resource format.
  */
@@ -50,11 +50,11 @@ export class Relationship extends pulumi.CustomResource {
     /**
      * The properties of the Relationship.
      */
-    public readonly fields!: pulumi.Output<types.outputs.customerinsights.v20170426.PropertyDefinitionResponse[] | undefined>;
+    public readonly fields!: pulumi.Output<types.outputs.PropertyDefinitionResponse[] | undefined>;
     /**
      * Optional property to be used to map fields in profile to their strong ids in related profile.
      */
-    public readonly lookupMappings!: pulumi.Output<types.outputs.customerinsights.v20170426.RelationshipTypeMappingResponse[] | undefined>;
+    public readonly lookupMappings!: pulumi.Output<types.outputs.RelationshipTypeMappingResponse[] | undefined>;
     /**
      * Resource name.
      */
@@ -157,7 +157,7 @@ export interface RelationshipArgs {
     /**
      * The Relationship Cardinality.
      */
-    cardinality?: pulumi.Input<types.enums.v20170426.CardinalityTypes>;
+    cardinality?: pulumi.Input<types.enums.CardinalityTypes>;
     /**
      * Localized descriptions for the Relationship.
      */
@@ -173,7 +173,7 @@ export interface RelationshipArgs {
     /**
      * The properties of the Relationship.
      */
-    fields?: pulumi.Input<pulumi.Input<types.inputs.customerinsights.v20170426.PropertyDefinitionArgs>[]>;
+    fields?: pulumi.Input<pulumi.Input<types.inputs.PropertyDefinitionArgs>[]>;
     /**
      * The name of the hub.
      */
@@ -181,7 +181,7 @@ export interface RelationshipArgs {
     /**
      * Optional property to be used to map fields in profile to their strong ids in related profile.
      */
-    lookupMappings?: pulumi.Input<pulumi.Input<types.inputs.customerinsights.v20170426.RelationshipTypeMappingArgs>[]>;
+    lookupMappings?: pulumi.Input<pulumi.Input<types.inputs.RelationshipTypeMappingArgs>[]>;
     /**
      * Profile type.
      */

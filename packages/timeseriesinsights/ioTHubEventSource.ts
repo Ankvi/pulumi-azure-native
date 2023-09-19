@@ -60,7 +60,7 @@ export class IoTHubEventSource extends pulumi.CustomResource {
     /**
      * An object that represents the local timestamp property. It contains the format of local timestamp that needs to be used and the corresponding timezone offset information. If a value isn't specified for localTimestamp, or if null, then the local timestamp will not be ingressed with the events.
      */
-    public readonly localTimestamp!: pulumi.Output<types.outputs.timeseriesinsights.LocalTimestampResponse | undefined>;
+    public readonly localTimestamp!: pulumi.Output<types.outputs.LocalTimestampResponse | undefined>;
     /**
      * Resource location
      */
@@ -202,7 +202,7 @@ export interface IoTHubEventSourceArgs {
     /**
      * An object that represents the local timestamp property. It contains the format of local timestamp that needs to be used and the corresponding timezone offset information. If a value isn't specified for localTimestamp, or if null, then the local timestamp will not be ingressed with the events.
      */
-    localTimestamp?: pulumi.Input<types.inputs.timeseriesinsights.LocalTimestampArgs>;
+    localTimestamp?: pulumi.Input<types.inputs.LocalTimestampArgs>;
     /**
      * The location of the resource.
      */

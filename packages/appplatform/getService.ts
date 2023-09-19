@@ -44,15 +44,15 @@ export interface GetServiceResult {
     /**
      * Properties of the Service resource
      */
-    readonly properties: types.outputs.appplatform.ClusterResourcePropertiesResponse;
+    readonly properties: types.outputs.ClusterResourcePropertiesResponse;
     /**
      * Sku of the Service resource
      */
-    readonly sku?: types.outputs.appplatform.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.appplatform.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Tags of the service which is a list of key value pairs that describe the resource.
      */

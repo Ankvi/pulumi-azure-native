@@ -61,7 +61,7 @@ export interface GetAzureADAdministratorResult {
     /**
      * The system metadata relating to this resource.
      */
-    readonly systemData: types.outputs.dbformysql.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Tenant ID of the administrator.
      */

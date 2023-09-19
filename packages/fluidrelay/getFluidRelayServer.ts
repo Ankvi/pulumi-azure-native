@@ -32,11 +32,11 @@ export interface GetFluidRelayServerResult {
     /**
      * All encryption configuration for a resource.
      */
-    readonly encryption?: types.outputs.fluidrelay.EncryptionPropertiesResponse;
+    readonly encryption?: types.outputs.EncryptionPropertiesResponse;
     /**
      * The Fluid Relay Service endpoints for this server.
      */
-    readonly fluidRelayEndpoints: types.outputs.fluidrelay.FluidRelayEndpointsResponse;
+    readonly fluidRelayEndpoints: types.outputs.FluidRelayEndpointsResponse;
     /**
      * The Fluid tenantId for this server
      */
@@ -48,7 +48,7 @@ export interface GetFluidRelayServerResult {
     /**
      * The type of identity used for the resource.
      */
-    readonly identity?: types.outputs.fluidrelay.IdentityResponse;
+    readonly identity?: types.outputs.IdentityResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -68,7 +68,7 @@ export interface GetFluidRelayServerResult {
     /**
      * System meta data for this resource, including creation and modification information.
      */
-    readonly systemData: types.outputs.fluidrelay.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

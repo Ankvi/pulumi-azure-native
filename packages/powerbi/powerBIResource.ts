@@ -42,11 +42,11 @@ export class PowerBIResource extends pulumi.CustomResource {
     /**
      * Specifies the private endpoint connections of the resource.
      */
-    public readonly privateEndpointConnections!: pulumi.Output<types.outputs.powerbi.PrivateEndpointConnectionResponse[] | undefined>;
+    public readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[] | undefined>;
     /**
      * The system metadata relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.powerbi.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Specifies the tags of the resource.
      */
@@ -115,7 +115,7 @@ export interface PowerBIResourceArgs {
      * Specifies the private endpoint connections of the resource.
      * These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
      */
-    privateEndpointConnections?: pulumi.Input<pulumi.Input<types.inputs.powerbi.PrivateEndpointConnectionArgs>[]>;
+    privateEndpointConnections?: pulumi.Input<pulumi.Input<types.inputs.PrivateEndpointConnectionArgs>[]>;
     /**
      * The name of the resource group.
      */

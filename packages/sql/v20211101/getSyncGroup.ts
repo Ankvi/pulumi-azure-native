@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a sync group.
  */
@@ -77,11 +77,11 @@ export interface GetSyncGroupResult {
     /**
      * Sync schema of the sync group.
      */
-    readonly schema?: types.outputs.sql.v20211101.SyncGroupSchemaResponse;
+    readonly schema?: types.outputs.SyncGroupSchemaResponse;
     /**
      * The name and capacity of the SKU.
      */
-    readonly sku?: types.outputs.sql.v20211101.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * ARM resource id of the sync database in the sync group.
      */

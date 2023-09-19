@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents an automation rule.
  */
@@ -34,11 +34,11 @@ export class AutomationRule extends pulumi.CustomResource {
     /**
      * The actions to execute when the automation rule is triggered
      */
-    public readonly actions!: pulumi.Output<(types.outputs.securityinsights.v20190101preview.AutomationRuleModifyPropertiesActionResponse | types.outputs.securityinsights.v20190101preview.AutomationRuleRunPlaybookActionResponse)[]>;
+    public readonly actions!: pulumi.Output<(types.outputs.AutomationRuleModifyPropertiesActionResponse | types.outputs.AutomationRuleRunPlaybookActionResponse)[]>;
     /**
      * Describes the client that created the automation rule
      */
-    public /*out*/ readonly createdBy!: pulumi.Output<types.outputs.securityinsights.v20190101preview.ClientInfoResponse>;
+    public /*out*/ readonly createdBy!: pulumi.Output<types.outputs.ClientInfoResponse>;
     /**
      * The time the automation rule was created
      */
@@ -54,7 +54,7 @@ export class AutomationRule extends pulumi.CustomResource {
     /**
      * Describes the client that last updated the automation rule
      */
-    public /*out*/ readonly lastModifiedBy!: pulumi.Output<types.outputs.securityinsights.v20190101preview.ClientInfoResponse>;
+    public /*out*/ readonly lastModifiedBy!: pulumi.Output<types.outputs.ClientInfoResponse>;
     /**
      * The last time the automation rule was updated
      */
@@ -70,7 +70,7 @@ export class AutomationRule extends pulumi.CustomResource {
     /**
      * The triggering logic of the automation rule
      */
-    public readonly triggeringLogic!: pulumi.Output<types.outputs.securityinsights.v20190101preview.AutomationRuleTriggeringLogicResponse>;
+    public readonly triggeringLogic!: pulumi.Output<types.outputs.AutomationRuleTriggeringLogicResponse>;
     /**
      * Azure resource type
      */
@@ -150,7 +150,7 @@ export interface AutomationRuleArgs {
     /**
      * The actions to execute when the automation rule is triggered
      */
-    actions: pulumi.Input<pulumi.Input<types.inputs.securityinsights.v20190101preview.AutomationRuleModifyPropertiesActionArgs | types.inputs.securityinsights.v20190101preview.AutomationRuleRunPlaybookActionArgs>[]>;
+    actions: pulumi.Input<pulumi.Input<types.inputs.AutomationRuleModifyPropertiesActionArgs | types.inputs.AutomationRuleRunPlaybookActionArgs>[]>;
     /**
      * Automation rule ID
      */
@@ -174,7 +174,7 @@ export interface AutomationRuleArgs {
     /**
      * The triggering logic of the automation rule
      */
-    triggeringLogic: pulumi.Input<types.inputs.securityinsights.v20190101preview.AutomationRuleTriggeringLogicArgs>;
+    triggeringLogic: pulumi.Input<types.inputs.AutomationRuleTriggeringLogicArgs>;
     /**
      * The name of the workspace.
      */

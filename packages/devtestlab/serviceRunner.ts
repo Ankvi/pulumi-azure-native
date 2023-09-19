@@ -35,7 +35,7 @@ export class ServiceRunner extends pulumi.CustomResource {
     /**
      * The identity of the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.devtestlab.IdentityPropertiesResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityPropertiesResponse | undefined>;
     /**
      * The location of the resource.
      */
@@ -98,7 +98,7 @@ export interface ServiceRunnerArgs {
     /**
      * The identity of the resource.
      */
-    identity?: pulumi.Input<types.inputs.devtestlab.IdentityPropertiesArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityPropertiesArgs>;
     /**
      * The name of the lab.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a list of repositories metadata.
  */
@@ -35,7 +35,7 @@ export interface ListSourceControlRepositoriesResult {
     /**
      * Array of repositories.
      */
-    readonly value: types.outputs.securityinsights.v20211001preview.RepoResponse[];
+    readonly value: types.outputs.RepoResponse[];
 }
 /**
  * Gets a list of repositories metadata.

@@ -43,11 +43,11 @@ export class OrchestratorInstanceServiceDetails extends pulumi.CustomResource {
     /**
      * Properties of the controller.
      */
-    public readonly controllerDetails!: pulumi.Output<types.outputs.delegatednetwork.ControllerDetailsResponse>;
+    public readonly controllerDetails!: pulumi.Output<types.outputs.ControllerDetailsResponse>;
     /**
      * The identity of the orchestrator
      */
-    public readonly identity!: pulumi.Output<types.outputs.delegatednetwork.OrchestratorIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.OrchestratorIdentityResponse | undefined>;
     /**
      * The kind of workbook. Choices are user and shared.
      */
@@ -163,11 +163,11 @@ export interface OrchestratorInstanceServiceDetailsArgs {
     /**
      * Properties of the controller.
      */
-    controllerDetails: pulumi.Input<types.inputs.delegatednetwork.ControllerDetailsArgs>;
+    controllerDetails: pulumi.Input<types.inputs.ControllerDetailsArgs>;
     /**
      * The identity of the orchestrator
      */
-    identity?: pulumi.Input<types.inputs.delegatednetwork.OrchestratorIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.OrchestratorIdentityArgs>;
     /**
      * The kind of workbook. Choices are user and shared.
      */

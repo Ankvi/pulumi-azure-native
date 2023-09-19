@@ -13,7 +13,7 @@ utilities.lazyLoad(exports, ["getCustomLocation","getCustomLocationOutput"], () 
 
 
 // Export enums:
-export * from "../types/enums/v20210815";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

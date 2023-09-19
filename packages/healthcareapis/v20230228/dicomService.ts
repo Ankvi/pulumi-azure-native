@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The description of Dicom Service
  */
@@ -34,11 +34,11 @@ export class DicomService extends pulumi.CustomResource {
     /**
      * Dicom Service authentication configuration.
      */
-    public /*out*/ readonly authenticationConfiguration!: pulumi.Output<types.outputs.healthcareapis.v20230228.DicomServiceAuthenticationConfigurationResponse | undefined>;
+    public /*out*/ readonly authenticationConfiguration!: pulumi.Output<types.outputs.DicomServiceAuthenticationConfigurationResponse | undefined>;
     /**
      * Dicom Service Cors configuration.
      */
-    public readonly corsConfiguration!: pulumi.Output<types.outputs.healthcareapis.v20230228.CorsConfigurationResponse | undefined>;
+    public readonly corsConfiguration!: pulumi.Output<types.outputs.CorsConfigurationResponse | undefined>;
     /**
      * An etag associated with the resource, used for optimistic concurrency when editing it.
      */
@@ -50,7 +50,7 @@ export class DicomService extends pulumi.CustomResource {
     /**
      * Setting indicating whether the service has a managed identity associated with it.
      */
-    public readonly identity!: pulumi.Output<types.outputs.healthcareapis.v20230228.ServiceManagedIdentityResponseIdentity | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ServiceManagedIdentityResponseIdentity | undefined>;
     /**
      * The resource location.
      */
@@ -62,7 +62,7 @@ export class DicomService extends pulumi.CustomResource {
     /**
      * The list of private endpoint connections that are set up for this resource.
      */
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.healthcareapis.v20230228.PrivateEndpointConnectionResponse[]>;
+    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[]>;
     /**
      * The provisioning state.
      */
@@ -78,7 +78,7 @@ export class DicomService extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.healthcareapis.v20230228.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -152,7 +152,7 @@ export interface DicomServiceArgs {
     /**
      * Dicom Service Cors configuration.
      */
-    corsConfiguration?: pulumi.Input<types.inputs.healthcareapis.v20230228.CorsConfigurationArgs>;
+    corsConfiguration?: pulumi.Input<types.inputs.CorsConfigurationArgs>;
     /**
      * The name of DICOM Service resource.
      */
@@ -160,7 +160,7 @@ export interface DicomServiceArgs {
     /**
      * Setting indicating whether the service has a managed identity associated with it.
      */
-    identity?: pulumi.Input<types.inputs.healthcareapis.v20230228.ServiceManagedIdentityIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ServiceManagedIdentityIdentityArgs>;
     /**
      * The resource location.
      */

@@ -49,11 +49,11 @@ export interface GetSignalRPrivateEndpointConnectionResult {
     /**
      * Private endpoint
      */
-    readonly privateEndpoint?: types.outputs.signalrservice.PrivateEndpointResponse;
+    readonly privateEndpoint?: types.outputs.PrivateEndpointResponse;
     /**
      * Connection state of the private endpoint connection
      */
-    readonly privateLinkServiceConnectionState?: types.outputs.signalrservice.PrivateLinkServiceConnectionStateResponse;
+    readonly privateLinkServiceConnectionState?: types.outputs.PrivateLinkServiceConnectionStateResponse;
     /**
      * Provisioning state of the resource.
      */
@@ -61,7 +61,7 @@ export interface GetSignalRPrivateEndpointConnectionResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.signalrservice.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource - e.g. "Microsoft.SignalRService/SignalR"
      */

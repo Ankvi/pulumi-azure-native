@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Policy Contract details.
  */
@@ -95,7 +95,7 @@ export interface PolicyArgs {
     /**
      * Format of the policyContent.
      */
-    contentFormat?: pulumi.Input<string | types.enums.v20180601preview.PolicyContentFormat>;
+    contentFormat?: pulumi.Input<string | types.enums.PolicyContentFormat>;
     /**
      * Json escaped Xml Encoded contents of the Policy.
      */

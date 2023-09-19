@@ -32,11 +32,11 @@ export interface GetVpnServerConfigurationResult {
     /**
      * The set of aad vpn authentication parameters.
      */
-    readonly aadAuthenticationParameters?: types.outputs.network.AadAuthenticationParametersResponse;
+    readonly aadAuthenticationParameters?: types.outputs.AadAuthenticationParametersResponse;
     /**
      * List of all VpnServerConfigurationPolicyGroups.
      */
-    readonly configurationPolicyGroups?: types.outputs.network.VpnServerConfigurationPolicyGroupResponse[];
+    readonly configurationPolicyGroups?: types.outputs.VpnServerConfigurationPolicyGroupResponse[];
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -56,7 +56,7 @@ export interface GetVpnServerConfigurationResult {
     /**
      * List of references to P2SVpnGateways.
      */
-    readonly p2SVpnGateways: types.outputs.network.P2SVpnGatewayResponse[];
+    readonly p2SVpnGateways: types.outputs.P2SVpnGatewayResponse[];
     /**
      * The provisioning state of the VpnServerConfiguration resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
      */
@@ -64,7 +64,7 @@ export interface GetVpnServerConfigurationResult {
     /**
      * Radius client root certificate of VpnServerConfiguration.
      */
-    readonly radiusClientRootCertificates?: types.outputs.network.VpnServerConfigRadiusClientRootCertificateResponse[];
+    readonly radiusClientRootCertificates?: types.outputs.VpnServerConfigRadiusClientRootCertificateResponse[];
     /**
      * The radius server address property of the VpnServerConfiguration resource for point to site client connection.
      */
@@ -72,7 +72,7 @@ export interface GetVpnServerConfigurationResult {
     /**
      * Radius Server root certificate of VpnServerConfiguration.
      */
-    readonly radiusServerRootCertificates?: types.outputs.network.VpnServerConfigRadiusServerRootCertificateResponse[];
+    readonly radiusServerRootCertificates?: types.outputs.VpnServerConfigRadiusServerRootCertificateResponse[];
     /**
      * The radius secret property of the VpnServerConfiguration resource for point to site client connection.
      */
@@ -80,7 +80,7 @@ export interface GetVpnServerConfigurationResult {
     /**
      * Multiple Radius Server configuration for VpnServerConfiguration.
      */
-    readonly radiusServers?: types.outputs.network.RadiusServerResponse[];
+    readonly radiusServers?: types.outputs.RadiusServerResponse[];
     /**
      * Resource tags.
      */
@@ -96,15 +96,15 @@ export interface GetVpnServerConfigurationResult {
     /**
      * VpnClientIpsecPolicies for VpnServerConfiguration.
      */
-    readonly vpnClientIpsecPolicies?: types.outputs.network.IpsecPolicyResponse[];
+    readonly vpnClientIpsecPolicies?: types.outputs.IpsecPolicyResponse[];
     /**
      * VPN client revoked certificate of VpnServerConfiguration.
      */
-    readonly vpnClientRevokedCertificates?: types.outputs.network.VpnServerConfigVpnClientRevokedCertificateResponse[];
+    readonly vpnClientRevokedCertificates?: types.outputs.VpnServerConfigVpnClientRevokedCertificateResponse[];
     /**
      * VPN client root certificate of VpnServerConfiguration.
      */
-    readonly vpnClientRootCertificates?: types.outputs.network.VpnServerConfigVpnClientRootCertificateResponse[];
+    readonly vpnClientRootCertificates?: types.outputs.VpnServerConfigVpnClientRootCertificateResponse[];
     /**
      * VPN protocols for the VpnServerConfiguration.
      */

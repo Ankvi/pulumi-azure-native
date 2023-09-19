@@ -61,7 +61,7 @@ export interface GetCacheRuleResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.containerregistry.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Target repository specified in docker pull command.
      * Eg: docker pull myregistry.azurecr.io/{targetRepository}:{tag}

@@ -41,11 +41,11 @@ export interface GetObjectAnchorsAccountResult {
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
     readonly id: string;
-    readonly identity?: types.outputs.mixedreality.ObjectAnchorsAccountResponseIdentity;
+    readonly identity?: types.outputs.ObjectAnchorsAccountResponseIdentity;
     /**
      * The kind of account, if supported
      */
-    readonly kind?: types.outputs.mixedreality.SkuResponse;
+    readonly kind?: types.outputs.SkuResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -57,11 +57,11 @@ export interface GetObjectAnchorsAccountResult {
     /**
      * The plan associated with this account
      */
-    readonly plan?: types.outputs.mixedreality.IdentityResponse;
+    readonly plan?: types.outputs.IdentityResponse;
     /**
      * The sku associated with this account
      */
-    readonly sku?: types.outputs.mixedreality.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * The name of the storage account associated with this accountId
      */
@@ -69,7 +69,7 @@ export interface GetObjectAnchorsAccountResult {
     /**
      * The system metadata related to an object anchors account.
      */
-    readonly systemData: types.outputs.mixedreality.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

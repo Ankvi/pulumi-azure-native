@@ -43,11 +43,11 @@ export class NamespaceAuthorizationRule extends pulumi.CustomResource {
     /**
      * SharedAccessAuthorizationRule properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.notificationhubs.SharedAccessAuthorizationRulePropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.SharedAccessAuthorizationRulePropertiesResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.notificationhubs.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Deprecated - only for compatibility.
      */
@@ -117,7 +117,7 @@ export interface NamespaceAuthorizationRuleArgs {
     /**
      * SharedAccessAuthorizationRule properties.
      */
-    properties?: pulumi.Input<types.inputs.notificationhubs.SharedAccessAuthorizationRulePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.SharedAccessAuthorizationRulePropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The scheduled query rule resource.
  */
@@ -31,7 +31,7 @@ export class ScheduledQueryRule extends pulumi.CustomResource {
         return obj['__pulumiType'] === ScheduledQueryRule.__pulumiType;
     }
 
-    public readonly actions!: pulumi.Output<types.outputs.insights.v20200501preview.ActionResponse[] | undefined>;
+    public readonly actions!: pulumi.Output<types.outputs.ActionResponse[] | undefined>;
     /**
      * The api-version used when creating this alert rule
      */
@@ -39,7 +39,7 @@ export class ScheduledQueryRule extends pulumi.CustomResource {
     /**
      * The rule criteria that defines the conditions of the scheduled query rule.
      */
-    public readonly criteria!: pulumi.Output<types.outputs.insights.v20200501preview.ScheduledQueryRuleCriteriaResponse>;
+    public readonly criteria!: pulumi.Output<types.outputs.ScheduledQueryRuleCriteriaResponse>;
     /**
      * The description of the scheduled query rule.
      */
@@ -196,11 +196,11 @@ export class ScheduledQueryRule extends pulumi.CustomResource {
  * The set of arguments for constructing a ScheduledQueryRule resource.
  */
 export interface ScheduledQueryRuleArgs {
-    actions?: pulumi.Input<pulumi.Input<types.inputs.insights.v20200501preview.ActionArgs>[]>;
+    actions?: pulumi.Input<pulumi.Input<types.inputs.ActionArgs>[]>;
     /**
      * The rule criteria that defines the conditions of the scheduled query rule.
      */
-    criteria: pulumi.Input<types.inputs.insights.v20200501preview.ScheduledQueryRuleCriteriaArgs>;
+    criteria: pulumi.Input<types.inputs.ScheduledQueryRuleCriteriaArgs>;
     /**
      * The description of the scheduled query rule.
      */

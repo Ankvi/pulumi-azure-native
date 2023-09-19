@@ -56,7 +56,7 @@ export interface ListCatalogDeviceInsightsResult {
     /**
      * The DeviceInsight items on this page
      */
-    readonly value: types.outputs.azuresphere.DeviceInsightResponse[];
+    readonly value: types.outputs.DeviceInsightResponse[];
 }
 /**
  * Lists device insights for catalog.

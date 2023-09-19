@@ -32,7 +32,7 @@ export interface ListAccountChannelTypesResult {
     /**
      * Channel descriptions
      */
-    readonly value?: types.outputs.engagementfabric.ChannelTypeDescriptionResponse[];
+    readonly value?: types.outputs.ChannelTypeDescriptionResponse[];
 }
 /**
  * List of the EngagementFabric channel descriptions

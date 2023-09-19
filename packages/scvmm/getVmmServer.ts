@@ -36,7 +36,7 @@ export interface GetVmmServerResult {
     /**
      * Credentials to connect to VMMServer.
      */
-    readonly credentials?: types.outputs.scvmm.VMMServerPropertiesResponseCredentials;
+    readonly credentials?: types.outputs.VMMServerPropertiesResponseCredentials;
     /**
      * Gets or sets any error message if connection to vmmServer is having any issue.
      */
@@ -44,7 +44,7 @@ export interface GetVmmServerResult {
     /**
      * The extended location.
      */
-    readonly extendedLocation: types.outputs.scvmm.ExtendedLocationResponse;
+    readonly extendedLocation: types.outputs.ExtendedLocationResponse;
     /**
      * Fqdn is the hostname/ip of the vmmServer.
      */
@@ -72,7 +72,7 @@ export interface GetVmmServerResult {
     /**
      * The system data.
      */
-    readonly systemData: types.outputs.scvmm.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags
      */

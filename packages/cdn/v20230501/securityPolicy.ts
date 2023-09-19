@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * SecurityPolicy association for AzureFrontDoor profile
  */
@@ -39,7 +39,7 @@ export class SecurityPolicy extends pulumi.CustomResource {
     /**
      * object which contains security policy parameters
      */
-    public readonly parameters!: pulumi.Output<types.outputs.cdn.v20230501.SecurityPolicyWebApplicationFirewallParametersResponse | undefined>;
+    public readonly parameters!: pulumi.Output<types.outputs.SecurityPolicyWebApplicationFirewallParametersResponse | undefined>;
     /**
      * The name of the profile which holds the security policy.
      */
@@ -51,7 +51,7 @@ export class SecurityPolicy extends pulumi.CustomResource {
     /**
      * Read only system data
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.cdn.v20230501.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource type.
      */
@@ -106,7 +106,7 @@ export interface SecurityPolicyArgs {
     /**
      * object which contains security policy parameters
      */
-    parameters?: pulumi.Input<types.inputs.cdn.v20230501.SecurityPolicyWebApplicationFirewallParametersArgs>;
+    parameters?: pulumi.Input<types.inputs.SecurityPolicyWebApplicationFirewallParametersArgs>;
     /**
      * Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
      */

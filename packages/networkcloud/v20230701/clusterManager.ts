@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 export class ClusterManager extends pulumi.CustomResource {
     /**
      * Get an existing ClusterManager resource's state with the given name, ID, and optional extra
@@ -39,7 +39,7 @@ export class ClusterManager extends pulumi.CustomResource {
     /**
      * The list of the cluster versions the manager supports. It is used as input in clusterVersion property of a cluster resource.
      */
-    public /*out*/ readonly clusterVersions!: pulumi.Output<types.outputs.networkcloud.v20230701.ClusterAvailableVersionResponse[]>;
+    public /*out*/ readonly clusterVersions!: pulumi.Output<types.outputs.ClusterAvailableVersionResponse[]>;
     /**
      * The detailed status that provides additional information about the cluster manager.
      */
@@ -59,11 +59,11 @@ export class ClusterManager extends pulumi.CustomResource {
     /**
      * The configuration of the managed resource group associated with the resource.
      */
-    public readonly managedResourceGroupConfiguration!: pulumi.Output<types.outputs.networkcloud.v20230701.ManagedResourceGroupConfigurationResponse | undefined>;
+    public readonly managedResourceGroupConfiguration!: pulumi.Output<types.outputs.ManagedResourceGroupConfigurationResponse | undefined>;
     /**
      * The extended location (custom location) that represents the cluster manager's control plane location. This extended location is used when creating cluster and rack manifest resources.
      */
-    public /*out*/ readonly managerExtendedLocation!: pulumi.Output<types.outputs.networkcloud.v20230701.ExtendedLocationResponse>;
+    public /*out*/ readonly managerExtendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse>;
     /**
      * The name of the resource
      */
@@ -75,7 +75,7 @@ export class ClusterManager extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.networkcloud.v20230701.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -174,7 +174,7 @@ export interface ClusterManagerArgs {
     /**
      * The configuration of the managed resource group associated with the resource.
      */
-    managedResourceGroupConfiguration?: pulumi.Input<types.inputs.networkcloud.v20230701.ManagedResourceGroupConfigurationArgs>;
+    managedResourceGroupConfiguration?: pulumi.Input<types.inputs.ManagedResourceGroupConfigurationArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

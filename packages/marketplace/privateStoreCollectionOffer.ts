@@ -59,7 +59,7 @@ export class PrivateStoreCollectionOffer extends pulumi.CustomResource {
     /**
      * Offer plans
      */
-    public readonly plans!: pulumi.Output<types.outputs.marketplace.PlanResponse[] | undefined>;
+    public readonly plans!: pulumi.Output<types.outputs.PlanResponse[] | undefined>;
     /**
      * Private store unique id
      */
@@ -75,7 +75,7 @@ export class PrivateStoreCollectionOffer extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.marketplace.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource.
      */
@@ -168,7 +168,7 @@ export interface PrivateStoreCollectionOfferArgs {
     /**
      * Offer plans
      */
-    plans?: pulumi.Input<pulumi.Input<types.inputs.marketplace.PlanArgs>[]>;
+    plans?: pulumi.Input<pulumi.Input<types.inputs.PlanArgs>[]>;
     /**
      * The store ID - must use the tenant ID
      */

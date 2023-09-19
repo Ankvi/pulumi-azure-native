@@ -55,11 +55,11 @@ export class AutoScaleVCore extends pulumi.CustomResource {
     /**
      * The SKU of the auto scale v-core resource.
      */
-    public readonly sku!: pulumi.Output<types.outputs.powerbidedicated.AutoScaleVCoreSkuResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.AutoScaleVCoreSkuResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public readonly systemData!: pulumi.Output<types.outputs.powerbidedicated.SystemDataResponse | undefined>;
+    public readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse | undefined>;
     /**
      * Key-value pairs of additional resource provisioning properties.
      */
@@ -138,11 +138,11 @@ export interface AutoScaleVCoreArgs {
     /**
      * The SKU of the auto scale v-core resource.
      */
-    sku: pulumi.Input<types.inputs.powerbidedicated.AutoScaleVCoreSkuArgs>;
+    sku: pulumi.Input<types.inputs.AutoScaleVCoreSkuArgs>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    systemData?: pulumi.Input<types.inputs.powerbidedicated.SystemDataArgs>;
+    systemData?: pulumi.Input<types.inputs.SystemDataArgs>;
     /**
      * Key-value pairs of additional resource provisioning properties.
      */

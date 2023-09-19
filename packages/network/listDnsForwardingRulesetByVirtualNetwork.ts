@@ -41,7 +41,7 @@ export interface ListDnsForwardingRulesetByVirtualNetworkResult {
     /**
      * Enumeration of the Virtual Network DNS Forwarding Ruleset.
      */
-    readonly value?: types.outputs.network.VirtualNetworkDnsForwardingRulesetResponse[];
+    readonly value?: types.outputs.VirtualNetworkDnsForwardingRulesetResponse[];
 }
 /**
  * Lists DNS forwarding ruleset resource IDs attached to a virtual network.

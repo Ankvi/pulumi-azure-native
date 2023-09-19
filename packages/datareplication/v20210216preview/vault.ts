@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Vault model.
  */
@@ -42,8 +42,8 @@ export class Vault extends pulumi.CustomResource {
     /**
      * Vault properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.datareplication.v20210216preview.VaultModelPropertiesResponse>;
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.datareplication.v20210216preview.VaultModelResponseSystemData>;
+    public readonly properties!: pulumi.Output<types.outputs.VaultModelPropertiesResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.VaultModelResponseSystemData>;
     /**
      * Gets or sets the resource tags.
      */
@@ -101,7 +101,7 @@ export interface VaultArgs {
     /**
      * Vault properties.
      */
-    properties?: pulumi.Input<types.inputs.datareplication.v20210216preview.VaultModelPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.VaultModelPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

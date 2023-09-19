@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the properties of a Data Pool
  */
@@ -44,7 +44,7 @@ export interface GetDataPoolResult {
     /**
      * Gets or sets the collection of locations where Data Pool resources should be created
      */
-    readonly locations: types.outputs.autonomousdevelopmentplatform.v20211101preview.DataPoolLocationResponse[];
+    readonly locations: types.outputs.DataPoolLocationResponse[];
     /**
      * The name of the resource
      */
@@ -56,7 +56,7 @@ export interface GetDataPoolResult {
     /**
      * The system meta data relating to this resource
      */
-    readonly systemData: types.outputs.autonomousdevelopmentplatform.v20211101preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags
      */

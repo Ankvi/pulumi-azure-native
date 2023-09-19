@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * This operation retrieves the policy set definition in the given subscription with the given name.
  */
@@ -50,7 +50,7 @@ export interface GetPolicySetDefinitionResult {
     /**
      * An array of policy definition references.
      */
-    readonly policyDefinitions: types.outputs.authorization.v20190601.PolicyDefinitionReferenceResponse[];
+    readonly policyDefinitions: types.outputs.PolicyDefinitionReferenceResponse[];
     /**
      * The type of policy definition. Possible values are NotSpecified, BuiltIn, and Custom.
      */

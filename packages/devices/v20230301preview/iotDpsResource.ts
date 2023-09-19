@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The description of the provisioning service.
  */
@@ -38,7 +38,7 @@ export class IotDpsResource extends pulumi.CustomResource {
     /**
      * The managed identities for a provisioning service.
      */
-    public readonly identity!: pulumi.Output<types.outputs.devices.v20230301preview.ManagedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * The resource location.
      */
@@ -50,7 +50,7 @@ export class IotDpsResource extends pulumi.CustomResource {
     /**
      * Service specific properties for a provisioning service
      */
-    public readonly properties!: pulumi.Output<types.outputs.devices.v20230301preview.IotDpsPropertiesDescriptionResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.IotDpsPropertiesDescriptionResponse>;
     /**
      * The resource group of the resource.
      */
@@ -58,7 +58,7 @@ export class IotDpsResource extends pulumi.CustomResource {
     /**
      * Sku info for a provisioning Service.
      */
-    public readonly sku!: pulumi.Output<types.outputs.devices.v20230301preview.IotDpsSkuInfoResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.IotDpsSkuInfoResponse>;
     /**
      * The subscription id of the resource.
      */
@@ -66,7 +66,7 @@ export class IotDpsResource extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.devices.v20230301preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The resource tags.
      */
@@ -136,7 +136,7 @@ export interface IotDpsResourceArgs {
     /**
      * The managed identities for a provisioning service.
      */
-    identity?: pulumi.Input<types.inputs.devices.v20230301preview.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
      * The resource location.
      */
@@ -144,7 +144,7 @@ export interface IotDpsResourceArgs {
     /**
      * Service specific properties for a provisioning service
      */
-    properties: pulumi.Input<types.inputs.devices.v20230301preview.IotDpsPropertiesDescriptionArgs>;
+    properties: pulumi.Input<types.inputs.IotDpsPropertiesDescriptionArgs>;
     /**
      * Name of provisioning service to create or update.
      */
@@ -160,7 +160,7 @@ export interface IotDpsResourceArgs {
     /**
      * Sku info for a provisioning Service.
      */
-    sku: pulumi.Input<types.inputs.devices.v20230301preview.IotDpsSkuInfoArgs>;
+    sku: pulumi.Input<types.inputs.IotDpsSkuInfoArgs>;
     /**
      * The subscription id of the resource.
      */

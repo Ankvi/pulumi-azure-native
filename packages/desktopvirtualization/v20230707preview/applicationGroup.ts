@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents a ApplicationGroup definition.
  */
@@ -55,7 +55,7 @@ export class ApplicationGroup extends pulumi.CustomResource {
      * HostPool arm path of ApplicationGroup.
      */
     public readonly hostPoolArmPath!: pulumi.Output<string>;
-    public readonly identity!: pulumi.Output<types.outputs.desktopvirtualization.v20230707preview.ResourceModelWithAllowedPropertySetResponseIdentity | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ResourceModelWithAllowedPropertySetResponseIdentity | undefined>;
     /**
      * Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
      */
@@ -76,16 +76,16 @@ export class ApplicationGroup extends pulumi.CustomResource {
      * ObjectId of ApplicationGroup. (internal use)
      */
     public /*out*/ readonly objectId!: pulumi.Output<string>;
-    public readonly plan!: pulumi.Output<types.outputs.desktopvirtualization.v20230707preview.ResourceModelWithAllowedPropertySetResponsePlan | undefined>;
+    public readonly plan!: pulumi.Output<types.outputs.ResourceModelWithAllowedPropertySetResponsePlan | undefined>;
     /**
      * Boolean representing whether the applicationGroup is show in the feed.
      */
     public readonly showInFeed!: pulumi.Output<boolean | undefined>;
-    public readonly sku!: pulumi.Output<types.outputs.desktopvirtualization.v20230707preview.ResourceModelWithAllowedPropertySetResponseSku | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.ResourceModelWithAllowedPropertySetResponseSku | undefined>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.desktopvirtualization.v20230707preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -179,7 +179,7 @@ export interface ApplicationGroupArgs {
     /**
      * Resource Type of ApplicationGroup.
      */
-    applicationGroupType: pulumi.Input<string | types.enums.v20230707preview.ApplicationGroupType>;
+    applicationGroupType: pulumi.Input<string | types.enums.ApplicationGroupType>;
     /**
      * Description of ApplicationGroup.
      */
@@ -192,7 +192,7 @@ export interface ApplicationGroupArgs {
      * HostPool arm path of ApplicationGroup.
      */
     hostPoolArmPath: pulumi.Input<string>;
-    identity?: pulumi.Input<types.inputs.desktopvirtualization.v20230707preview.ResourceModelWithAllowedPropertySetIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ResourceModelWithAllowedPropertySetIdentityArgs>;
     /**
      * Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
      */
@@ -205,7 +205,7 @@ export interface ApplicationGroupArgs {
      * The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
      */
     managedBy?: pulumi.Input<string>;
-    plan?: pulumi.Input<types.inputs.desktopvirtualization.v20230707preview.ResourceModelWithAllowedPropertySetPlanArgs>;
+    plan?: pulumi.Input<types.inputs.ResourceModelWithAllowedPropertySetPlanArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -214,7 +214,7 @@ export interface ApplicationGroupArgs {
      * Boolean representing whether the applicationGroup is show in the feed.
      */
     showInFeed?: pulumi.Input<boolean>;
-    sku?: pulumi.Input<types.inputs.desktopvirtualization.v20230707preview.ResourceModelWithAllowedPropertySetSkuArgs>;
+    sku?: pulumi.Input<types.inputs.ResourceModelWithAllowedPropertySetSkuArgs>;
     /**
      * Resource tags.
      */

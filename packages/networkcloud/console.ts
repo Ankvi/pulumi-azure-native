@@ -50,7 +50,7 @@ export class Console extends pulumi.CustomResource {
     /**
      * The extended location of the cluster manager associated with the cluster this virtual machine is created on.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.networkcloud.ExtendedLocationResponse>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse>;
     /**
      * The geo-location where the resource lives
      */
@@ -70,11 +70,11 @@ export class Console extends pulumi.CustomResource {
     /**
      * The SSH public key that will be provisioned for user access. The user is expected to have the corresponding SSH private key for logging in.
      */
-    public readonly sshPublicKey!: pulumi.Output<types.outputs.networkcloud.SshPublicKeyResponse>;
+    public readonly sshPublicKey!: pulumi.Output<types.outputs.SshPublicKeyResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.networkcloud.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -173,7 +173,7 @@ export interface ConsoleArgs {
     /**
      * The extended location of the cluster manager associated with the cluster this virtual machine is created on.
      */
-    extendedLocation: pulumi.Input<types.inputs.networkcloud.ExtendedLocationArgs>;
+    extendedLocation: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -185,7 +185,7 @@ export interface ConsoleArgs {
     /**
      * The SSH public key that will be provisioned for user access. The user is expected to have the corresponding SSH private key for logging in.
      */
-    sshPublicKey: pulumi.Input<types.inputs.networkcloud.SshPublicKeyArgs>;
+    sshPublicKey: pulumi.Input<types.inputs.SshPublicKeyArgs>;
     /**
      * Resource tags.
      */

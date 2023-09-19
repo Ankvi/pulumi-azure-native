@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Azure Resource Manager resource envelope.
  */
@@ -34,7 +34,7 @@ export class Datastore extends pulumi.CustomResource {
     /**
      * [Required] Additional attributes of the entity.
      */
-    public readonly datastoreDetails!: pulumi.Output<types.outputs.machinelearningservices.v20220201preview.AzureBlobDatastoreResponse | types.outputs.machinelearningservices.v20220201preview.AzureDataLakeGen1DatastoreResponse | types.outputs.machinelearningservices.v20220201preview.AzureDataLakeGen2DatastoreResponse | types.outputs.machinelearningservices.v20220201preview.AzureFileDatastoreResponse | types.outputs.machinelearningservices.v20220201preview.HdfsDatastoreResponse>;
+    public readonly datastoreDetails!: pulumi.Output<types.outputs.AzureBlobDatastoreResponse | types.outputs.AzureDataLakeGen1DatastoreResponse | types.outputs.AzureDataLakeGen2DatastoreResponse | types.outputs.AzureFileDatastoreResponse | types.outputs.HdfsDatastoreResponse>;
     /**
      * The name of the resource
      */
@@ -42,7 +42,7 @@ export class Datastore extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.machinelearningservices.v20220201preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -95,7 +95,7 @@ export interface DatastoreArgs {
     /**
      * [Required] Additional attributes of the entity.
      */
-    datastoreDetails: pulumi.Input<types.inputs.machinelearningservices.v20220201preview.AzureBlobDatastoreArgs | types.inputs.machinelearningservices.v20220201preview.AzureDataLakeGen1DatastoreArgs | types.inputs.machinelearningservices.v20220201preview.AzureDataLakeGen2DatastoreArgs | types.inputs.machinelearningservices.v20220201preview.AzureFileDatastoreArgs | types.inputs.machinelearningservices.v20220201preview.HdfsDatastoreArgs>;
+    datastoreDetails: pulumi.Input<types.inputs.AzureBlobDatastoreArgs | types.inputs.AzureDataLakeGen1DatastoreArgs | types.inputs.AzureDataLakeGen2DatastoreArgs | types.inputs.AzureFileDatastoreArgs | types.inputs.HdfsDatastoreArgs>;
     /**
      * Datastore name.
      */

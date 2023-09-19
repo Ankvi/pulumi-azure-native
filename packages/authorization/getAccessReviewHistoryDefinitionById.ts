@@ -47,7 +47,7 @@ export interface GetAccessReviewHistoryDefinitionByIdResult {
     /**
      * Set of access review history instances for this history definition.
      */
-    readonly instances?: types.outputs.authorization.AccessReviewHistoryInstanceResponse[];
+    readonly instances?: types.outputs.AccessReviewHistoryInstanceResponse[];
     /**
      * The interval for recurrence. For a quarterly review, the interval is 3 for type : absoluteMonthly.
      */
@@ -83,7 +83,7 @@ export interface GetAccessReviewHistoryDefinitionByIdResult {
     /**
      * A collection of scopes used when selecting review history data
      */
-    readonly scopes?: types.outputs.authorization.AccessReviewScopeResponse[];
+    readonly scopes?: types.outputs.AccessReviewScopeResponse[];
     /**
      * The DateTime when the review is scheduled to be start. This could be a date in the future. Required on create.
      */

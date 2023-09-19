@@ -45,7 +45,7 @@ export interface GetPrivateEndpointConnectionResult {
     /**
      * The private endpoint connection properties.
      */
-    readonly properties: types.outputs.databricks.PrivateEndpointConnectionPropertiesResponse;
+    readonly properties: types.outputs.PrivateEndpointConnectionPropertiesResponse;
     /**
      * The resource type.
      */

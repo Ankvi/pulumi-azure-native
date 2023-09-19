@@ -28,7 +28,7 @@ utilities.lazyLoad(exports, ["WorkflowAccessKey"], () => require("./workflowAcce
 
 
 // Export enums:
-export * from "../types/enums/v20150201preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

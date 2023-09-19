@@ -20,11 +20,11 @@ export interface ListProductsAndConfigurationsArgs {
     /**
      * Holds details about product hierarchy information and filterable property.
      */
-    configurationFilter?: types.inputs.edgeorder.ConfigurationFilter;
+    configurationFilter?: types.inputs.ConfigurationFilter;
     /**
      * Customer subscription properties. Clients can display available products to unregistered customers by explicitly passing subscription details.
      */
-    customerSubscriptionDetails?: types.inputs.edgeorder.CustomerSubscriptionDetails;
+    customerSubscriptionDetails?: types.inputs.CustomerSubscriptionDetails;
     /**
      * $skipToken is supported on list of configurations, which provides the next page in the list of configurations.
      */
@@ -42,7 +42,7 @@ export interface ListProductsAndConfigurationsResult {
     /**
      * List of configurations.
      */
-    readonly value: types.outputs.edgeorder.ConfigurationResponse[];
+    readonly value: types.outputs.ConfigurationResponse[];
 }
 /**
  * List configurations for the given product family, product line and product for the given subscription.
@@ -56,11 +56,11 @@ export interface ListProductsAndConfigurationsOutputArgs {
     /**
      * Holds details about product hierarchy information and filterable property.
      */
-    configurationFilter?: pulumi.Input<types.inputs.edgeorder.ConfigurationFilterArgs>;
+    configurationFilter?: pulumi.Input<types.inputs.ConfigurationFilterArgs>;
     /**
      * Customer subscription properties. Clients can display available products to unregistered customers by explicitly passing subscription details.
      */
-    customerSubscriptionDetails?: pulumi.Input<types.inputs.edgeorder.CustomerSubscriptionDetailsArgs>;
+    customerSubscriptionDetails?: pulumi.Input<types.inputs.CustomerSubscriptionDetailsArgs>;
     /**
      * $skipToken is supported on list of configurations, which provides the next page in the list of configurations.
      */

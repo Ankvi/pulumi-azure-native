@@ -48,7 +48,7 @@ export interface GetViewByScopeResult {
     /**
      * Has definition for data in this report config.
      */
-    readonly dataSet?: types.outputs.costmanagement.ReportConfigDatasetResponse;
+    readonly dataSet?: types.outputs.ReportConfigDatasetResponse;
     /**
      * Date range of the current view.
      */
@@ -72,7 +72,7 @@ export interface GetViewByScopeResult {
     /**
      * List of KPIs to show in Cost Analysis UI.
      */
-    readonly kpis?: types.outputs.costmanagement.KpiPropertiesResponse[];
+    readonly kpis?: types.outputs.KpiPropertiesResponse[];
     /**
      * Metric to use when displaying costs.
      */
@@ -88,7 +88,7 @@ export interface GetViewByScopeResult {
     /**
      * Configuration of 3 sub-views in the Cost Analysis UI.
      */
-    readonly pivots?: types.outputs.costmanagement.PivotPropertiesResponse[];
+    readonly pivots?: types.outputs.PivotPropertiesResponse[];
     /**
      * Cost Management scope to save the view on. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for BillingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for InvoiceSection scope, 'providers/Microsoft.Management/managementGroups/{managementGroupId}' for Management Group scope, '/providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}' for ExternalBillingAccount scope, and '/providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}' for ExternalSubscription scope.
      */
@@ -96,7 +96,7 @@ export interface GetViewByScopeResult {
     /**
      * Has time period for pulling data for the report.
      */
-    readonly timePeriod?: types.outputs.costmanagement.ReportConfigTimePeriodResponse;
+    readonly timePeriod?: types.outputs.ReportConfigTimePeriodResponse;
     /**
      * The time frame for pulling data for the report. If custom, then a specific time period must be provided.
      */

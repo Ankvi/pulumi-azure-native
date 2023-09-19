@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The resource proxy definition object for quantum workspace.
  */
@@ -38,7 +38,7 @@ export class Workspace extends pulumi.CustomResource {
     /**
      * Managed Identity information.
      */
-    public readonly identity!: pulumi.Output<types.outputs.quantum.v20220110preview.QuantumWorkspaceResponseIdentity | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.QuantumWorkspaceResponseIdentity | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -50,7 +50,7 @@ export class Workspace extends pulumi.CustomResource {
     /**
      * List of Providers selected for this Workspace
      */
-    public readonly providers!: pulumi.Output<types.outputs.quantum.v20220110preview.ProviderResponse[] | undefined>;
+    public readonly providers!: pulumi.Output<types.outputs.ProviderResponse[] | undefined>;
     /**
      * Provisioning status field
      */
@@ -62,7 +62,7 @@ export class Workspace extends pulumi.CustomResource {
     /**
      * System metadata
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.quantum.v20220110preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -130,7 +130,7 @@ export interface WorkspaceArgs {
     /**
      * Managed Identity information.
      */
-    identity?: pulumi.Input<types.inputs.quantum.v20220110preview.QuantumWorkspaceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.QuantumWorkspaceIdentityArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -138,7 +138,7 @@ export interface WorkspaceArgs {
     /**
      * List of Providers selected for this Workspace
      */
-    providers?: pulumi.Input<pulumi.Input<types.inputs.quantum.v20220110preview.ProviderArgs>[]>;
+    providers?: pulumi.Input<pulumi.Input<types.inputs.ProviderArgs>[]>;
     /**
      * The name of the resource group.
      */

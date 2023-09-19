@@ -23,7 +23,7 @@ utilities.lazyLoad(exports, ["RegistrationDefinition"], () => require("./registr
 
 
 // Export enums:
-export * from "../types/enums/v20221001";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

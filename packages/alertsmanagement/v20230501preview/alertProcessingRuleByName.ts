@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Alert processing rule object containing target scopes, conditions and scheduling logic.
  */
@@ -42,11 +42,11 @@ export class AlertProcessingRuleByName extends pulumi.CustomResource {
     /**
      * Alert processing rule properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.alertsmanagement.v20230501preview.AlertProcessingRulePropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.AlertProcessingRulePropertiesResponse>;
     /**
      * Alert processing rule system data.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.alertsmanagement.v20230501preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags
      */
@@ -72,7 +72,7 @@ export class AlertProcessingRuleByName extends pulumi.CustomResource {
             }
             resourceInputs["alertProcessingRuleName"] = args ? args.alertProcessingRuleName : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.alertsmanagement.v20230501preview.alertProcessingRulePropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.alertProcessingRulePropertiesArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["name"] = undefined /*out*/;
@@ -108,7 +108,7 @@ export interface AlertProcessingRuleByNameArgs {
     /**
      * Alert processing rule properties.
      */
-    properties?: pulumi.Input<types.inputs.alertsmanagement.v20230501preview.AlertProcessingRulePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.AlertProcessingRulePropertiesArgs>;
     /**
      * Resource group name where the resource is created.
      */

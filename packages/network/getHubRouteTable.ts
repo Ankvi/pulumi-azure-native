@@ -65,7 +65,7 @@ export interface GetHubRouteTableResult {
     /**
      * List of all routes.
      */
-    readonly routes?: types.outputs.network.HubRouteResponse[];
+    readonly routes?: types.outputs.HubRouteResponse[];
     /**
      * Resource type.
      */

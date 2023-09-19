@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the details of an ASR replication protected item.
  */
@@ -58,7 +58,7 @@ export interface GetReplicationProtectedItemResult {
     /**
      * The custom data.
      */
-    readonly properties: types.outputs.recoveryservices.v20230601.ReplicationProtectedItemPropertiesResponse;
+    readonly properties: types.outputs.ReplicationProtectedItemPropertiesResponse;
     /**
      * Resource Type
      */

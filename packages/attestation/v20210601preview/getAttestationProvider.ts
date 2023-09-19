@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the status of Attestation Provider.
  */
@@ -47,7 +47,7 @@ export interface GetAttestationProviderResult {
     /**
      * List of private endpoint connections associated with the attestation provider.
      */
-    readonly privateEndpointConnections: types.outputs.attestation.v20210601preview.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections: types.outputs.PrivateEndpointConnectionResponse[];
     /**
      * Controls whether traffic from the public network is allowed to access the Attestation Provider APIs.
      */
@@ -59,7 +59,7 @@ export interface GetAttestationProviderResult {
     /**
      * The system metadata relating to this resource
      */
-    readonly systemData: types.outputs.attestation.v20210601preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

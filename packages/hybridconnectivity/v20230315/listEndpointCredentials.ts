@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the endpoint access credentials to the resource.
  */
@@ -31,7 +31,7 @@ export interface ListEndpointCredentialsArgs {
     /**
      * The name of the service. If not provided, the request will by pass the generation of service configuration token 
      */
-    serviceName?: string | types.enums.v20230315.ServiceName;
+    serviceName?: string | types.enums.ServiceName;
 }
 
 /**
@@ -86,5 +86,5 @@ export interface ListEndpointCredentialsOutputArgs {
     /**
      * The name of the service. If not provided, the request will by pass the generation of service configuration token 
      */
-    serviceName?: pulumi.Input<string | types.enums.v20230315.ServiceName>;
+    serviceName?: pulumi.Input<string | types.enums.ServiceName>;
 }

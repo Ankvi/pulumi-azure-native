@@ -32,7 +32,7 @@ export class ModernizeProject extends pulumi.CustomResource {
         return obj['__pulumiType'] === ModernizeProject.__pulumiType;
     }
 
-    public readonly identity!: pulumi.Output<types.outputs.migrate.ResourceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ResourceIdentityResponse | undefined>;
     /**
      * Gets or sets the location of the modernizeProject.
      */
@@ -44,8 +44,8 @@ export class ModernizeProject extends pulumi.CustomResource {
     /**
      * ModernizeProject properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.migrate.ModernizeProjectModelPropertiesResponse>;
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.migrate.ModernizeProjectModelResponseSystemData>;
+    public readonly properties!: pulumi.Output<types.outputs.ModernizeProjectModelPropertiesResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.ModernizeProjectModelResponseSystemData>;
     /**
      * Gets or sets the resource tags.
      */
@@ -99,7 +99,7 @@ export class ModernizeProject extends pulumi.CustomResource {
  * The set of arguments for constructing a ModernizeProject resource.
  */
 export interface ModernizeProjectArgs {
-    identity?: pulumi.Input<types.inputs.migrate.ResourceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ResourceIdentityArgs>;
     /**
      * Gets or sets the location of the modernizeProject.
      */
@@ -111,7 +111,7 @@ export interface ModernizeProjectArgs {
     /**
      * ModernizeProject properties.
      */
-    properties?: pulumi.Input<types.inputs.migrate.ModernizeProjectModelPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ModernizeProjectModelPropertiesArgs>;
     /**
      * Name of the Azure Resource Group that project is part of.
      */

@@ -32,7 +32,7 @@ export interface GetAccountResult {
     /**
      * Active Directories
      */
-    readonly activeDirectories?: types.outputs.netapp.ActiveDirectoryResponse[];
+    readonly activeDirectories?: types.outputs.ActiveDirectoryResponse[];
     /**
      * Shows the status of disableShowmount for all volumes under the subscription, null equals false
      */
@@ -40,7 +40,7 @@ export interface GetAccountResult {
     /**
      * Encryption settings
      */
-    readonly encryption?: types.outputs.netapp.AccountEncryptionResponse;
+    readonly encryption?: types.outputs.AccountEncryptionResponse;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -52,7 +52,7 @@ export interface GetAccountResult {
     /**
      * The identity used for the resource.
      */
-    readonly identity?: types.outputs.netapp.ManagedServiceIdentityResponse;
+    readonly identity?: types.outputs.ManagedServiceIdentityResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -68,7 +68,7 @@ export interface GetAccountResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.netapp.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

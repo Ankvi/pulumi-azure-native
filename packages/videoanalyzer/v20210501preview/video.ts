@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The representation of a single video in a Video Analyzer account.
  */
@@ -38,11 +38,11 @@ export class Video extends pulumi.CustomResource {
     /**
      * Video flags contain information about the available video actions and its dynamic properties based on the current video state.
      */
-    public /*out*/ readonly flags!: pulumi.Output<types.outputs.videoanalyzer.v20210501preview.VideoFlagsResponse>;
+    public /*out*/ readonly flags!: pulumi.Output<types.outputs.VideoFlagsResponse>;
     /**
      * Contains information about the video and audio content.
      */
-    public /*out*/ readonly mediaInfo!: pulumi.Output<types.outputs.videoanalyzer.v20210501preview.VideoMediaInfoResponse>;
+    public /*out*/ readonly mediaInfo!: pulumi.Output<types.outputs.VideoMediaInfoResponse>;
     /**
      * The name of the resource
      */
@@ -50,11 +50,11 @@ export class Video extends pulumi.CustomResource {
     /**
      * Video streaming holds information about video streaming URLs.
      */
-    public /*out*/ readonly streaming!: pulumi.Output<types.outputs.videoanalyzer.v20210501preview.VideoStreamingResponse>;
+    public /*out*/ readonly streaming!: pulumi.Output<types.outputs.VideoStreamingResponse>;
     /**
      * The system metadata relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.videoanalyzer.v20210501preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Optional video title provided by the user. Value can be up to 256 characters long.
      */

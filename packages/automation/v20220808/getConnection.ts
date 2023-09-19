@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieve the connection identified by connection name.
  */
@@ -36,7 +36,7 @@ export interface GetConnectionResult {
     /**
      * Gets or sets the connectionType of the connection.
      */
-    readonly connectionType?: types.outputs.automation.v20220808.ConnectionTypeAssociationPropertyResponse;
+    readonly connectionType?: types.outputs.ConnectionTypeAssociationPropertyResponse;
     /**
      * Gets the creation time.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a specific role by name.
  */
@@ -60,11 +60,11 @@ export interface GetKubernetesRoleResult {
     /**
      * Kubernetes cluster configuration
      */
-    readonly kubernetesClusterInfo: types.outputs.databoxedge.v20230701.KubernetesClusterInfoResponse;
+    readonly kubernetesClusterInfo: types.outputs.KubernetesClusterInfoResponse;
     /**
      * Kubernetes role resources
      */
-    readonly kubernetesRoleResources: types.outputs.databoxedge.v20230701.KubernetesRoleResourcesResponse;
+    readonly kubernetesRoleResources: types.outputs.KubernetesRoleResourcesResponse;
     /**
      * The object name.
      */
@@ -80,7 +80,7 @@ export interface GetKubernetesRoleResult {
     /**
      * Metadata pertaining to creation and last modification of Role
      */
-    readonly systemData: types.outputs.databoxedge.v20230701.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The hierarchical type of the object.
      */

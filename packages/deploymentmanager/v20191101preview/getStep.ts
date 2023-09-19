@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The resource representation of a rollout step.
  */
@@ -43,7 +43,7 @@ export interface GetStepResult {
     /**
      * The properties that define the step.
      */
-    readonly properties: types.outputs.deploymentmanager.v20191101preview.HealthCheckStepPropertiesResponse | types.outputs.deploymentmanager.v20191101preview.WaitStepPropertiesResponse;
+    readonly properties: types.outputs.HealthCheckStepPropertiesResponse | types.outputs.WaitStepPropertiesResponse;
     /**
      * Resource tags.
      */

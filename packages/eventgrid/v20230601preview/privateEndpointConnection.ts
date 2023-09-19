@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * Get an existing PrivateEndpointConnection resource's state with the given name, ID, and optional extra
@@ -39,11 +39,11 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * The Private Endpoint resource for this Connection.
      */
-    public readonly privateEndpoint!: pulumi.Output<types.outputs.eventgrid.v20230601preview.PrivateEndpointResponse | undefined>;
+    public readonly privateEndpoint!: pulumi.Output<types.outputs.PrivateEndpointResponse | undefined>;
     /**
      * Details about the state of the connection.
      */
-    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.eventgrid.v20230601preview.ConnectionStateResponse | undefined>;
+    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.ConnectionStateResponse | undefined>;
     /**
      * Provisioning state of the Private Endpoint Connection.
      */
@@ -117,7 +117,7 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * The Private Endpoint resource for this Connection.
      */
-    privateEndpoint?: pulumi.Input<types.inputs.eventgrid.v20230601preview.PrivateEndpointArgs>;
+    privateEndpoint?: pulumi.Input<types.inputs.PrivateEndpointArgs>;
     /**
      * The name of the private endpoint connection connection.
      */
@@ -125,11 +125,11 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * Details about the state of the connection.
      */
-    privateLinkServiceConnectionState?: pulumi.Input<types.inputs.eventgrid.v20230601preview.ConnectionStateArgs>;
+    privateLinkServiceConnectionState?: pulumi.Input<types.inputs.ConnectionStateArgs>;
     /**
      * Provisioning state of the Private Endpoint Connection.
      */
-    provisioningState?: pulumi.Input<string | types.enums.v20230601preview.ResourceProvisioningState>;
+    provisioningState?: pulumi.Input<string | types.enums.ResourceProvisioningState>;
     /**
      * The name of the resource group within the user's subscription.
      */

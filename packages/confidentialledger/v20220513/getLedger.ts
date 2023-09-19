@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves the properties of a Confidential Ledger.
  */
@@ -43,11 +43,11 @@ export interface GetLedgerResult {
     /**
      * Properties of Confidential Ledger Resource.
      */
-    readonly properties: types.outputs.confidentialledger.v20220513.LedgerPropertiesResponse;
+    readonly properties: types.outputs.LedgerPropertiesResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource
      */
-    readonly systemData: types.outputs.confidentialledger.v20220513.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Additional tags for Confidential Ledger
      */

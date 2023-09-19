@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get an App and its properties.
  */
@@ -45,7 +45,7 @@ export interface GetAppResult {
     /**
      * The Managed Identity type of the app resource
      */
-    readonly identity?: types.outputs.appplatform.v20230901preview.ManagedIdentityPropertiesResponse;
+    readonly identity?: types.outputs.ManagedIdentityPropertiesResponse;
     /**
      * The GEO location of the application, always the same with its parent resource
      */
@@ -57,11 +57,11 @@ export interface GetAppResult {
     /**
      * Properties of the App resource
      */
-    readonly properties: types.outputs.appplatform.v20230901preview.AppResourcePropertiesResponse;
+    readonly properties: types.outputs.AppResourcePropertiesResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.appplatform.v20230901preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource.
      */

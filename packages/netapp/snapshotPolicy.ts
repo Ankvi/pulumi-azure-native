@@ -35,7 +35,7 @@ export class SnapshotPolicy extends pulumi.CustomResource {
     /**
      * Schedule for daily snapshots
      */
-    public readonly dailySchedule!: pulumi.Output<types.outputs.netapp.DailyScheduleResponse | undefined>;
+    public readonly dailySchedule!: pulumi.Output<types.outputs.DailyScheduleResponse | undefined>;
     /**
      * The property to decide policy is enabled or not
      */
@@ -47,7 +47,7 @@ export class SnapshotPolicy extends pulumi.CustomResource {
     /**
      * Schedule for hourly snapshots
      */
-    public readonly hourlySchedule!: pulumi.Output<types.outputs.netapp.HourlyScheduleResponse | undefined>;
+    public readonly hourlySchedule!: pulumi.Output<types.outputs.HourlyScheduleResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -55,7 +55,7 @@ export class SnapshotPolicy extends pulumi.CustomResource {
     /**
      * Schedule for monthly snapshots
      */
-    public readonly monthlySchedule!: pulumi.Output<types.outputs.netapp.MonthlyScheduleResponse | undefined>;
+    public readonly monthlySchedule!: pulumi.Output<types.outputs.MonthlyScheduleResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -67,7 +67,7 @@ export class SnapshotPolicy extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.netapp.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -79,7 +79,7 @@ export class SnapshotPolicy extends pulumi.CustomResource {
     /**
      * Schedule for weekly snapshots
      */
-    public readonly weeklySchedule!: pulumi.Output<types.outputs.netapp.WeeklyScheduleResponse | undefined>;
+    public readonly weeklySchedule!: pulumi.Output<types.outputs.WeeklyScheduleResponse | undefined>;
 
     /**
      * Create a SnapshotPolicy resource with the given unique name, arguments, and options.
@@ -145,7 +145,7 @@ export interface SnapshotPolicyArgs {
     /**
      * Schedule for daily snapshots
      */
-    dailySchedule?: pulumi.Input<types.inputs.netapp.DailyScheduleArgs>;
+    dailySchedule?: pulumi.Input<types.inputs.DailyScheduleArgs>;
     /**
      * The property to decide policy is enabled or not
      */
@@ -153,7 +153,7 @@ export interface SnapshotPolicyArgs {
     /**
      * Schedule for hourly snapshots
      */
-    hourlySchedule?: pulumi.Input<types.inputs.netapp.HourlyScheduleArgs>;
+    hourlySchedule?: pulumi.Input<types.inputs.HourlyScheduleArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -161,7 +161,7 @@ export interface SnapshotPolicyArgs {
     /**
      * Schedule for monthly snapshots
      */
-    monthlySchedule?: pulumi.Input<types.inputs.netapp.MonthlyScheduleArgs>;
+    monthlySchedule?: pulumi.Input<types.inputs.MonthlyScheduleArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -177,5 +177,5 @@ export interface SnapshotPolicyArgs {
     /**
      * Schedule for weekly snapshots
      */
-    weeklySchedule?: pulumi.Input<types.inputs.netapp.WeeklyScheduleArgs>;
+    weeklySchedule?: pulumi.Input<types.inputs.WeeklyScheduleArgs>;
 }

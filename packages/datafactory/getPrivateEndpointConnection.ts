@@ -49,7 +49,7 @@ export interface GetPrivateEndpointConnectionResult {
     /**
      * Core resource properties
      */
-    readonly properties: types.outputs.datafactory.RemotePrivateEndpointConnectionResponse;
+    readonly properties: types.outputs.RemotePrivateEndpointConnectionResponse;
     /**
      * The resource type.
      */

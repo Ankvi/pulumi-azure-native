@@ -45,7 +45,7 @@ export interface GetServiceResult {
     /**
      * Services response resource.
      */
-    readonly properties: types.outputs.documentdb.DataTransferServiceResourcePropertiesResponse | types.outputs.documentdb.GraphAPIComputeServiceResourcePropertiesResponse | types.outputs.documentdb.MaterializedViewsBuilderServiceResourcePropertiesResponse | types.outputs.documentdb.SqlDedicatedGatewayServiceResourcePropertiesResponse;
+    readonly properties: types.outputs.DataTransferServiceResourcePropertiesResponse | types.outputs.GraphAPIComputeServiceResourcePropertiesResponse | types.outputs.MaterializedViewsBuilderServiceResourcePropertiesResponse | types.outputs.SqlDedicatedGatewayServiceResourcePropertiesResponse;
     /**
      * The type of Azure resource.
      */

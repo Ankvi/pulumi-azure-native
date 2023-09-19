@@ -52,7 +52,7 @@ export interface GetStorageMoverResult {
     /**
      * Resource system metadata.
      */
-    readonly systemData: types.outputs.storagemover.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

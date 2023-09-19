@@ -47,7 +47,7 @@ export class GovernanceRule extends pulumi.CustomResource {
     /**
      * The email notifications settings for the governance rule, states whether to disable notifications for mangers and owners
      */
-    public readonly governanceEmailNotification!: pulumi.Output<types.outputs.security.GovernanceRuleEmailNotificationResponse | undefined>;
+    public readonly governanceEmailNotification!: pulumi.Output<types.outputs.GovernanceRuleEmailNotificationResponse | undefined>;
     /**
      * Defines whether the rule is management scope rule (master connector as a single scope or management scope)
      */
@@ -63,7 +63,7 @@ export class GovernanceRule extends pulumi.CustomResource {
     /**
      * The governance rule metadata
      */
-    public /*out*/ readonly metadata!: pulumi.Output<types.outputs.security.GovernanceRuleMetadataResponse | undefined>;
+    public /*out*/ readonly metadata!: pulumi.Output<types.outputs.GovernanceRuleMetadataResponse | undefined>;
     /**
      * Resource name
      */
@@ -71,7 +71,7 @@ export class GovernanceRule extends pulumi.CustomResource {
     /**
      * The owner source for the governance rule - e.g. Manually by user@contoso.com - see example
      */
-    public readonly ownerSource!: pulumi.Output<types.outputs.security.GovernanceRuleOwnerSourceResponse>;
+    public readonly ownerSource!: pulumi.Output<types.outputs.GovernanceRuleOwnerSourceResponse>;
     /**
      * Governance rule remediation timeframe - this is the time that will affect on the grace-period duration e.g. 7.00:00:00 - means 7 days
      */
@@ -188,7 +188,7 @@ export interface GovernanceRuleArgs {
     /**
      * The email notifications settings for the governance rule, states whether to disable notifications for mangers and owners
      */
-    governanceEmailNotification?: pulumi.Input<types.inputs.security.GovernanceRuleEmailNotificationArgs>;
+    governanceEmailNotification?: pulumi.Input<types.inputs.GovernanceRuleEmailNotificationArgs>;
     /**
      * Defines whether the rule is management scope rule (master connector as a single scope or management scope)
      */
@@ -204,7 +204,7 @@ export interface GovernanceRuleArgs {
     /**
      * The owner source for the governance rule - e.g. Manually by user@contoso.com - see example
      */
-    ownerSource: pulumi.Input<types.inputs.security.GovernanceRuleOwnerSourceArgs>;
+    ownerSource: pulumi.Input<types.inputs.GovernanceRuleOwnerSourceArgs>;
     /**
      * Governance rule remediation timeframe - this is the time that will affect on the grace-period duration e.g. 7.00:00:00 - means 7 days
      */

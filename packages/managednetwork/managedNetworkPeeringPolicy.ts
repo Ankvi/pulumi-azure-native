@@ -43,7 +43,7 @@ export class ManagedNetworkPeeringPolicy extends pulumi.CustomResource {
     /**
      * Gets or sets the properties of a Managed Network Policy
      */
-    public readonly properties!: pulumi.Output<types.outputs.managednetwork.ManagedNetworkPeeringPolicyPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ManagedNetworkPeeringPolicyPropertiesResponse>;
     /**
      * The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
      */
@@ -105,7 +105,7 @@ export interface ManagedNetworkPeeringPolicyArgs {
     /**
      * Gets or sets the properties of a Managed Network Policy
      */
-    properties?: pulumi.Input<types.inputs.managednetwork.ManagedNetworkPeeringPolicyPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ManagedNetworkPeeringPolicyPropertiesArgs>;
     /**
      * The name of the resource group.
      */

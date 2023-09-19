@@ -47,11 +47,11 @@ export class MigrateProject extends pulumi.CustomResource {
     /**
      * Gets or sets the nested properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.migrate.MigrateProjectPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.MigrateProjectPropertiesResponse>;
     /**
      * Gets or sets the tags.
      */
-    public readonly tags!: pulumi.Output<types.outputs.migrate.MigrateProjectResponseTags | undefined>;
+    public readonly tags!: pulumi.Output<types.outputs.MigrateProjectResponseTags | undefined>;
     /**
      * Handled by resource provider. Type = Microsoft.Migrate/MigrateProject.
      */
@@ -113,7 +113,7 @@ export interface MigrateProjectArgs {
     /**
      * Gets or sets the nested properties.
      */
-    properties?: pulumi.Input<types.inputs.migrate.MigrateProjectPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.MigrateProjectPropertiesArgs>;
     /**
      * Name of the Azure Resource Group that migrate project is part of.
      */
@@ -121,5 +121,5 @@ export interface MigrateProjectArgs {
     /**
      * Gets or sets the tags.
      */
-    tags?: pulumi.Input<types.inputs.migrate.MigrateProjectTagsArgs>;
+    tags?: pulumi.Input<types.inputs.MigrateProjectTagsArgs>;
 }

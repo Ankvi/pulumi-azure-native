@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Definition of the module type.
  */
@@ -38,7 +38,7 @@ export class Python3Package extends pulumi.CustomResource {
     /**
      * Gets or sets the contentLink of the module.
      */
-    public readonly contentLink!: pulumi.Output<types.outputs.automation.v20220808.ContentLinkResponse | undefined>;
+    public readonly contentLink!: pulumi.Output<types.outputs.ContentLinkResponse | undefined>;
     /**
      * Gets or sets the creation time.
      */
@@ -50,7 +50,7 @@ export class Python3Package extends pulumi.CustomResource {
     /**
      * Gets or sets the error info of the module.
      */
-    public /*out*/ readonly error!: pulumi.Output<types.outputs.automation.v20220808.ModuleErrorInfoResponse | undefined>;
+    public /*out*/ readonly error!: pulumi.Output<types.outputs.ModuleErrorInfoResponse | undefined>;
     /**
      * Gets or sets the etag of the resource.
      */
@@ -171,7 +171,7 @@ export interface Python3PackageArgs {
     /**
      * Gets or sets the module content link.
      */
-    contentLink: pulumi.Input<types.inputs.automation.v20220808.ContentLinkArgs>;
+    contentLink: pulumi.Input<types.inputs.ContentLinkArgs>;
     /**
      * The name of python package.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Description of a namespace resource.
  */
@@ -50,7 +50,7 @@ export class Namespace extends pulumi.CustomResource {
     /**
      * List of private endpoint connections.
      */
-    public readonly privateEndpointConnections!: pulumi.Output<types.outputs.relay.v20211101.PrivateEndpointConnectionResponse[] | undefined>;
+    public readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[] | undefined>;
     /**
      * Provisioning state of the Namespace.
      */
@@ -66,7 +66,7 @@ export class Namespace extends pulumi.CustomResource {
     /**
      * SKU of the namespace.
      */
-    public readonly sku!: pulumi.Output<types.outputs.relay.v20211101.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Status of the Namespace.
      */
@@ -74,7 +74,7 @@ export class Namespace extends pulumi.CustomResource {
     /**
      * The system meta data relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.relay.v20211101.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -157,11 +157,11 @@ export interface NamespaceArgs {
      * List of private endpoint connections.
      * These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
      */
-    privateEndpointConnections?: pulumi.Input<pulumi.Input<types.inputs.relay.v20211101.PrivateEndpointConnectionArgs>[]>;
+    privateEndpointConnections?: pulumi.Input<pulumi.Input<types.inputs.PrivateEndpointConnectionArgs>[]>;
     /**
      * This determines if traffic is allowed over public network. By default it is enabled.
      */
-    publicNetworkAccess?: pulumi.Input<string | types.enums.v20211101.PublicNetworkAccess>;
+    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess>;
     /**
      * Name of the Resource group within the Azure subscription.
      */
@@ -169,7 +169,7 @@ export interface NamespaceArgs {
     /**
      * SKU of the namespace.
      */
-    sku?: pulumi.Input<types.inputs.relay.v20211101.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Resource tags.
      */

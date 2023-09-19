@@ -32,7 +32,7 @@ export interface GetConnectorResult {
     /**
      * Collection information
      */
-    readonly collection: types.outputs.costmanagement.ConnectorCollectionInfoResponse;
+    readonly collection: types.outputs.ConnectorCollectionInfoResponse;
     /**
      * Connector definition creation datetime
      */

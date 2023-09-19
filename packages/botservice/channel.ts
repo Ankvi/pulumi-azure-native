@@ -51,11 +51,11 @@ export class Channel extends pulumi.CustomResource {
     /**
      * The set of properties specific to bot channel resource
      */
-    public readonly properties!: pulumi.Output<types.outputs.botservice.AcsChatChannelResponse | types.outputs.botservice.AlexaChannelResponse | types.outputs.botservice.DirectLineChannelResponse | types.outputs.botservice.DirectLineSpeechChannelResponse | types.outputs.botservice.EmailChannelResponse | types.outputs.botservice.FacebookChannelResponse | types.outputs.botservice.KikChannelResponse | types.outputs.botservice.LineChannelResponse | types.outputs.botservice.M365ExtensionsResponse | types.outputs.botservice.MsTeamsChannelResponse | types.outputs.botservice.OmnichannelResponse | types.outputs.botservice.OutlookChannelResponse | types.outputs.botservice.SearchAssistantResponse | types.outputs.botservice.SkypeChannelResponse | types.outputs.botservice.SlackChannelResponse | types.outputs.botservice.SmsChannelResponse | types.outputs.botservice.TelegramChannelResponse | types.outputs.botservice.TelephonyChannelResponse | types.outputs.botservice.WebChatChannelResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.AcsChatChannelResponse | types.outputs.AlexaChannelResponse | types.outputs.DirectLineChannelResponse | types.outputs.DirectLineSpeechChannelResponse | types.outputs.EmailChannelResponse | types.outputs.FacebookChannelResponse | types.outputs.KikChannelResponse | types.outputs.LineChannelResponse | types.outputs.M365ExtensionsResponse | types.outputs.MsTeamsChannelResponse | types.outputs.OmnichannelResponse | types.outputs.OutlookChannelResponse | types.outputs.SearchAssistantResponse | types.outputs.SkypeChannelResponse | types.outputs.SlackChannelResponse | types.outputs.SmsChannelResponse | types.outputs.TelegramChannelResponse | types.outputs.TelephonyChannelResponse | types.outputs.WebChatChannelResponse>;
     /**
      * Gets or sets the SKU of the resource.
      */
-    public readonly sku!: pulumi.Output<types.outputs.botservice.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Contains resource tags defined as key/value pairs.
      */
@@ -135,7 +135,7 @@ export interface ChannelArgs {
     /**
      * The set of properties specific to bot channel resource
      */
-    properties?: pulumi.Input<types.inputs.botservice.AcsChatChannelArgs | types.inputs.botservice.AlexaChannelArgs | types.inputs.botservice.DirectLineChannelArgs | types.inputs.botservice.DirectLineSpeechChannelArgs | types.inputs.botservice.EmailChannelArgs | types.inputs.botservice.FacebookChannelArgs | types.inputs.botservice.KikChannelArgs | types.inputs.botservice.LineChannelArgs | types.inputs.botservice.M365ExtensionsArgs | types.inputs.botservice.MsTeamsChannelArgs | types.inputs.botservice.OmnichannelArgs | types.inputs.botservice.OutlookChannelArgs | types.inputs.botservice.SearchAssistantArgs | types.inputs.botservice.SkypeChannelArgs | types.inputs.botservice.SlackChannelArgs | types.inputs.botservice.SmsChannelArgs | types.inputs.botservice.TelegramChannelArgs | types.inputs.botservice.TelephonyChannelArgs | types.inputs.botservice.WebChatChannelArgs>;
+    properties?: pulumi.Input<types.inputs.AcsChatChannelArgs | types.inputs.AlexaChannelArgs | types.inputs.DirectLineChannelArgs | types.inputs.DirectLineSpeechChannelArgs | types.inputs.EmailChannelArgs | types.inputs.FacebookChannelArgs | types.inputs.KikChannelArgs | types.inputs.LineChannelArgs | types.inputs.M365ExtensionsArgs | types.inputs.MsTeamsChannelArgs | types.inputs.OmnichannelArgs | types.inputs.OutlookChannelArgs | types.inputs.SearchAssistantArgs | types.inputs.SkypeChannelArgs | types.inputs.SlackChannelArgs | types.inputs.SmsChannelArgs | types.inputs.TelegramChannelArgs | types.inputs.TelephonyChannelArgs | types.inputs.WebChatChannelArgs>;
     /**
      * The name of the Bot resource group in the user subscription.
      */
@@ -147,7 +147,7 @@ export interface ChannelArgs {
     /**
      * Gets or sets the SKU of the resource.
      */
-    sku?: pulumi.Input<types.inputs.botservice.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Contains resource tags defined as key/value pairs.
      */

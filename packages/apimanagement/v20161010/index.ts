@@ -23,7 +23,7 @@ utilities.lazyLoad(exports, ["getUserSharedAccessToken","getUserSharedAccessToke
 
 
 // Export enums:
-export * from "../types/enums/v20161010";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

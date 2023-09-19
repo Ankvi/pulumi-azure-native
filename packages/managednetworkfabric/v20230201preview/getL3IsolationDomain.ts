@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves details of this L3 Isolation Domain.
  */
@@ -35,7 +35,7 @@ export interface GetL3IsolationDomainResult {
     /**
      * List of Ipv4 and Ipv6 route configurations.
      */
-    readonly aggregateRouteConfiguration?: types.outputs.managednetworkfabric.v20230201preview.AggregateRouteConfigurationResponse;
+    readonly aggregateRouteConfiguration?: types.outputs.AggregateRouteConfigurationResponse;
     /**
      * Switch configuration description.
      */
@@ -43,7 +43,7 @@ export interface GetL3IsolationDomainResult {
     /**
      * Connected Subnet RoutePolicy
      */
-    readonly connectedSubnetRoutePolicy?: types.outputs.managednetworkfabric.v20230201preview.L3IsolationDomainPatchPropertiesResponseConnectedSubnetRoutePolicy;
+    readonly connectedSubnetRoutePolicy?: types.outputs.L3IsolationDomainPatchPropertiesResponseConnectedSubnetRoutePolicy;
     /**
      * L3 Isolation Domain description.
      */
@@ -87,7 +87,7 @@ export interface GetL3IsolationDomainResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.managednetworkfabric.v20230201preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

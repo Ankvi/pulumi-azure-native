@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Access Review Schedule Definition.
  */
@@ -42,7 +42,7 @@ export class AccessReviewScheduleDefinitionById extends pulumi.CustomResource {
     /**
      * This is the collection of backup reviewers.
      */
-    public readonly backupReviewers!: pulumi.Output<types.outputs.authorization.v20211201preview.AccessReviewReviewerResponse[] | undefined>;
+    public readonly backupReviewers!: pulumi.Output<types.outputs.AccessReviewReviewerResponse[] | undefined>;
     /**
      * This specifies the behavior for the autoReview feature when an access review completes.
      */
@@ -98,7 +98,7 @@ export class AccessReviewScheduleDefinitionById extends pulumi.CustomResource {
     /**
      * This is the collection of instances returned when one does an expand on it.
      */
-    public readonly instances!: pulumi.Output<types.outputs.authorization.v20211201preview.AccessReviewInstanceResponse[] | undefined>;
+    public readonly instances!: pulumi.Output<types.outputs.AccessReviewInstanceResponse[] | undefined>;
     /**
      * The interval for recurrence. For a quarterly review, the interval is 3 for type : absoluteMonthly.
      */
@@ -150,7 +150,7 @@ export class AccessReviewScheduleDefinitionById extends pulumi.CustomResource {
     /**
      * This is the collection of reviewers.
      */
-    public readonly reviewers!: pulumi.Output<types.outputs.authorization.v20211201preview.AccessReviewReviewerResponse[] | undefined>;
+    public readonly reviewers!: pulumi.Output<types.outputs.AccessReviewReviewerResponse[] | undefined>;
     /**
      * This field specifies the type of reviewers for a review. Usually for a review, reviewers are explicitly assigned. However, in some cases, the reviewers may not be assigned and instead be chosen dynamically. For example managers review or self review.
      */
@@ -280,11 +280,11 @@ export interface AccessReviewScheduleDefinitionByIdArgs {
     /**
      * This is the collection of backup reviewers.
      */
-    backupReviewers?: pulumi.Input<pulumi.Input<types.inputs.authorization.v20211201preview.AccessReviewReviewerArgs>[]>;
+    backupReviewers?: pulumi.Input<pulumi.Input<types.inputs.AccessReviewReviewerArgs>[]>;
     /**
      * This specifies the behavior for the autoReview feature when an access review completes.
      */
-    defaultDecision?: pulumi.Input<string | types.enums.v20211201preview.DefaultDecisionType>;
+    defaultDecision?: pulumi.Input<string | types.enums.DefaultDecisionType>;
     /**
      * Flag to indicate whether reviewers are required to provide a justification when reviewing access.
      */
@@ -336,7 +336,7 @@ export interface AccessReviewScheduleDefinitionByIdArgs {
     /**
      * This is the collection of instances returned when one does an expand on it.
      */
-    instances?: pulumi.Input<pulumi.Input<types.inputs.authorization.v20211201preview.AccessReviewInstanceArgs>[]>;
+    instances?: pulumi.Input<pulumi.Input<types.inputs.AccessReviewInstanceArgs>[]>;
     /**
      * The interval for recurrence. For a quarterly review, the interval is 3 for type : absoluteMonthly.
      */
@@ -368,7 +368,7 @@ export interface AccessReviewScheduleDefinitionByIdArgs {
     /**
      * This is the collection of reviewers.
      */
-    reviewers?: pulumi.Input<pulumi.Input<types.inputs.authorization.v20211201preview.AccessReviewReviewerArgs>[]>;
+    reviewers?: pulumi.Input<pulumi.Input<types.inputs.AccessReviewReviewerArgs>[]>;
     /**
      * The id of the access review schedule definition.
      */
@@ -380,5 +380,5 @@ export interface AccessReviewScheduleDefinitionByIdArgs {
     /**
      * The recurrence range type. The possible values are: endDate, noEnd, numbered.
      */
-    type?: pulumi.Input<string | types.enums.v20211201preview.AccessReviewRecurrenceRangeType>;
+    type?: pulumi.Input<string | types.enums.AccessReviewRecurrenceRangeType>;
 }

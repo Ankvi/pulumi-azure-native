@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Lists the login credentials for the specified container registry.
  */
@@ -31,7 +31,7 @@ export interface ListRegistryCredentialsResult {
     /**
      * The list of passwords for a container registry.
      */
-    readonly passwords?: types.outputs.containerregistry.v20230801preview.RegistryPasswordResponse[];
+    readonly passwords?: types.outputs.RegistryPasswordResponse[];
     /**
      * The username for a container registry.
      */

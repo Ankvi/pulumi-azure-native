@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a hunt, without relations and comments.
  */
@@ -72,7 +72,7 @@ export interface GetHuntResult {
     /**
      * Describes a user that the hunt is assigned to
      */
-    readonly owner?: types.outputs.securityinsights.v20230601preview.HuntOwnerResponse;
+    readonly owner?: types.outputs.HuntOwnerResponse;
     /**
      * The status of the hunt.
      */
@@ -80,7 +80,7 @@ export interface GetHuntResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.securityinsights.v20230601preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

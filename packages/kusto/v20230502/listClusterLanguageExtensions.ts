@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns a list of language extensions that can run within KQL queries.
  */
@@ -31,7 +31,7 @@ export interface ListClusterLanguageExtensionsResult {
     /**
      * The list of language extensions.
      */
-    readonly value?: types.outputs.kusto.v20230502.LanguageExtensionResponse[];
+    readonly value?: types.outputs.LanguageExtensionResponse[];
 }
 /**
  * Returns a list of language extensions that can run within KQL queries.

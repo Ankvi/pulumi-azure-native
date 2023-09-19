@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Lists DNS resolver resource IDs linked to a virtual network.
  */
@@ -40,7 +40,7 @@ export interface ListDnsResolverByVirtualNetworkResult {
     /**
      * Enumeration of the sub-resources.
      */
-    readonly value?: types.outputs.network.v20220701.SubResourceResponse[];
+    readonly value?: types.outputs.SubResourceResponse[];
 }
 /**
  * Lists DNS resolver resource IDs linked to a virtual network.

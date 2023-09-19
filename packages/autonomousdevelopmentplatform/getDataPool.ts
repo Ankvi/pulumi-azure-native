@@ -45,7 +45,7 @@ export interface GetDataPoolResult {
     /**
      * Gets or sets the collection of locations where Data Pool resources should be created
      */
-    readonly locations: types.outputs.autonomousdevelopmentplatform.DataPoolLocationResponse[];
+    readonly locations: types.outputs.DataPoolLocationResponse[];
     /**
      * The name of the resource
      */
@@ -57,7 +57,7 @@ export interface GetDataPoolResult {
     /**
      * The system meta data relating to this resource
      */
-    readonly systemData: types.outputs.autonomousdevelopmentplatform.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags
      */

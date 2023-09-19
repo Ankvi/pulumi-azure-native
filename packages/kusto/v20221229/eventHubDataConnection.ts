@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Class representing an event hub data connection.
  */
@@ -182,7 +182,7 @@ export interface EventHubDataConnectionArgs {
     /**
      * The event hub messages compression type
      */
-    compression?: pulumi.Input<string | types.enums.v20221229.Compression>;
+    compression?: pulumi.Input<string | types.enums.Compression>;
     /**
      * The event hub consumer group.
      */
@@ -194,7 +194,7 @@ export interface EventHubDataConnectionArgs {
     /**
      * The data format of the message. Optionally the data format can be added to each message.
      */
-    dataFormat?: pulumi.Input<string | types.enums.v20221229.EventHubDataFormat>;
+    dataFormat?: pulumi.Input<string | types.enums.EventHubDataFormat>;
     /**
      * The name of the database in the Kusto cluster.
      */
@@ -202,7 +202,7 @@ export interface EventHubDataConnectionArgs {
     /**
      * Indication for database routing information from the data connection, by default only database routing information is allowed
      */
-    databaseRouting?: pulumi.Input<string | types.enums.v20221229.DatabaseRouting>;
+    databaseRouting?: pulumi.Input<string | types.enums.DatabaseRouting>;
     /**
      * The resource ID of the event hub to be used to create a data connection.
      */

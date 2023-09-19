@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 export class WebAppAuthSettingsV2 extends pulumi.CustomResource {
     /**
      * Get an existing WebAppAuthSettingsV2 resource's state with the given name, ID, and optional extra
@@ -28,23 +28,23 @@ export class WebAppAuthSettingsV2 extends pulumi.CustomResource {
         return obj['__pulumiType'] === WebAppAuthSettingsV2.__pulumiType;
     }
 
-    public readonly globalValidation!: pulumi.Output<types.outputs.web.v20201001.GlobalValidationResponse | undefined>;
-    public readonly httpSettings!: pulumi.Output<types.outputs.web.v20201001.HttpSettingsResponse | undefined>;
-    public readonly identityProviders!: pulumi.Output<types.outputs.web.v20201001.IdentityProvidersResponse | undefined>;
+    public readonly globalValidation!: pulumi.Output<types.outputs.GlobalValidationResponse | undefined>;
+    public readonly httpSettings!: pulumi.Output<types.outputs.HttpSettingsResponse | undefined>;
+    public readonly identityProviders!: pulumi.Output<types.outputs.IdentityProvidersResponse | undefined>;
     /**
      * Kind of resource.
      */
     public readonly kind!: pulumi.Output<string | undefined>;
-    public readonly login!: pulumi.Output<types.outputs.web.v20201001.LoginResponse | undefined>;
+    public readonly login!: pulumi.Output<types.outputs.LoginResponse | undefined>;
     /**
      * Resource Name.
      */
     public readonly name!: pulumi.Output<string>;
-    public readonly platform!: pulumi.Output<types.outputs.web.v20201001.AuthPlatformResponse | undefined>;
+    public readonly platform!: pulumi.Output<types.outputs.AuthPlatformResponse | undefined>;
     /**
      * The system metadata relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.web.v20201001.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource type.
      */
@@ -99,19 +99,19 @@ export class WebAppAuthSettingsV2 extends pulumi.CustomResource {
  * The set of arguments for constructing a WebAppAuthSettingsV2 resource.
  */
 export interface WebAppAuthSettingsV2Args {
-    globalValidation?: pulumi.Input<types.inputs.web.v20201001.GlobalValidationArgs>;
-    httpSettings?: pulumi.Input<types.inputs.web.v20201001.HttpSettingsArgs>;
-    identityProviders?: pulumi.Input<types.inputs.web.v20201001.IdentityProvidersArgs>;
+    globalValidation?: pulumi.Input<types.inputs.GlobalValidationArgs>;
+    httpSettings?: pulumi.Input<types.inputs.HttpSettingsArgs>;
+    identityProviders?: pulumi.Input<types.inputs.IdentityProvidersArgs>;
     /**
      * Kind of resource.
      */
     kind?: pulumi.Input<string>;
-    login?: pulumi.Input<types.inputs.web.v20201001.LoginArgs>;
+    login?: pulumi.Input<types.inputs.LoginArgs>;
     /**
      * Name of web app.
      */
     name: pulumi.Input<string>;
-    platform?: pulumi.Input<types.inputs.web.v20201001.AuthPlatformArgs>;
+    platform?: pulumi.Input<types.inputs.AuthPlatformArgs>;
     /**
      * Name of the resource group to which the resource belongs.
      */

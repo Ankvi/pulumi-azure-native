@@ -47,19 +47,19 @@ export class GalleryImageVersion extends pulumi.CustomResource {
     /**
      * The publishing profile of a gallery image Version.
      */
-    public readonly publishingProfile!: pulumi.Output<types.outputs.compute.GalleryImageVersionPublishingProfileResponse | undefined>;
+    public readonly publishingProfile!: pulumi.Output<types.outputs.GalleryImageVersionPublishingProfileResponse | undefined>;
     /**
      * This is the replication status of the gallery image version.
      */
-    public /*out*/ readonly replicationStatus!: pulumi.Output<types.outputs.compute.ReplicationStatusResponse>;
+    public /*out*/ readonly replicationStatus!: pulumi.Output<types.outputs.ReplicationStatusResponse>;
     /**
      * This is the safety profile of the Gallery Image Version.
      */
-    public readonly safetyProfile!: pulumi.Output<types.outputs.compute.GalleryImageVersionSafetyProfileResponse | undefined>;
+    public readonly safetyProfile!: pulumi.Output<types.outputs.GalleryImageVersionSafetyProfileResponse | undefined>;
     /**
      * This is the storage profile of a Gallery Image Version.
      */
-    public readonly storageProfile!: pulumi.Output<types.outputs.compute.GalleryImageVersionStorageProfileResponse>;
+    public readonly storageProfile!: pulumi.Output<types.outputs.GalleryImageVersionStorageProfileResponse>;
     /**
      * Resource tags
      */
@@ -146,7 +146,7 @@ export interface GalleryImageVersionArgs {
     /**
      * The publishing profile of a gallery image Version.
      */
-    publishingProfile?: pulumi.Input<types.inputs.compute.GalleryImageVersionPublishingProfileArgs>;
+    publishingProfile?: pulumi.Input<types.inputs.GalleryImageVersionPublishingProfileArgs>;
     /**
      * The name of the resource group.
      */
@@ -154,11 +154,11 @@ export interface GalleryImageVersionArgs {
     /**
      * This is the safety profile of the Gallery Image Version.
      */
-    safetyProfile?: pulumi.Input<types.inputs.compute.GalleryImageVersionSafetyProfileArgs>;
+    safetyProfile?: pulumi.Input<types.inputs.GalleryImageVersionSafetyProfileArgs>;
     /**
      * This is the storage profile of a Gallery Image Version.
      */
-    storageProfile: pulumi.Input<types.inputs.compute.GalleryImageVersionStorageProfileArgs>;
+    storageProfile: pulumi.Input<types.inputs.GalleryImageVersionStorageProfileArgs>;
     /**
      * Resource tags
      */

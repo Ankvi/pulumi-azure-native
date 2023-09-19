@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the properties of a storage account’s Blob service, including properties for Storage Analytics and CORS (Cross-Origin Resource Sharing) rules.
  */
@@ -40,15 +40,15 @@ export interface GetBlobServicePropertiesResult {
     /**
      * The blob service properties for change feed events.
      */
-    readonly changeFeed?: types.outputs.storage.v20220901.ChangeFeedResponse;
+    readonly changeFeed?: types.outputs.ChangeFeedResponse;
     /**
      * The blob service properties for container soft delete.
      */
-    readonly containerDeleteRetentionPolicy?: types.outputs.storage.v20220901.DeleteRetentionPolicyResponse;
+    readonly containerDeleteRetentionPolicy?: types.outputs.DeleteRetentionPolicyResponse;
     /**
      * Specifies CORS rules for the Blob service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the Blob service.
      */
-    readonly cors?: types.outputs.storage.v20220901.CorsRulesResponse;
+    readonly cors?: types.outputs.CorsRulesResponse;
     /**
      * DefaultServiceVersion indicates the default version to use for requests to the Blob service if an incoming request’s version is not specified. Possible values include version 2008-10-27 and all more recent versions.
      */
@@ -56,7 +56,7 @@ export interface GetBlobServicePropertiesResult {
     /**
      * The blob service properties for blob soft delete.
      */
-    readonly deleteRetentionPolicy?: types.outputs.storage.v20220901.DeleteRetentionPolicyResponse;
+    readonly deleteRetentionPolicy?: types.outputs.DeleteRetentionPolicyResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -68,7 +68,7 @@ export interface GetBlobServicePropertiesResult {
     /**
      * The blob service property to configure last access time based tracking policy.
      */
-    readonly lastAccessTimeTrackingPolicy?: types.outputs.storage.v20220901.LastAccessTimeTrackingPolicyResponse;
+    readonly lastAccessTimeTrackingPolicy?: types.outputs.LastAccessTimeTrackingPolicyResponse;
     /**
      * The name of the resource
      */
@@ -76,11 +76,11 @@ export interface GetBlobServicePropertiesResult {
     /**
      * The blob service properties for blob restore policy.
      */
-    readonly restorePolicy?: types.outputs.storage.v20220901.RestorePolicyPropertiesResponse;
+    readonly restorePolicy?: types.outputs.RestorePolicyPropertiesResponse;
     /**
      * Sku name and tier.
      */
-    readonly sku: types.outputs.storage.v20220901.SkuResponse;
+    readonly sku: types.outputs.SkuResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

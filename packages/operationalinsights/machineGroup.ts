@@ -56,7 +56,7 @@ export class MachineGroup extends pulumi.CustomResource {
     /**
      * References of the machines in this group. The hints within each reference do not represent the current value of the corresponding fields. They are a snapshot created during the last time the machine group was updated.
      */
-    public readonly machines!: pulumi.Output<types.outputs.operationalinsights.MachineReferenceWithHintsResponse[] | undefined>;
+    public readonly machines!: pulumi.Output<types.outputs.MachineReferenceWithHintsResponse[] | undefined>;
     /**
      * Resource name.
      */
@@ -145,7 +145,7 @@ export interface MachineGroupArgs {
     /**
      * References of the machines in this group. The hints within each reference do not represent the current value of the corresponding fields. They are a snapshot created during the last time the machine group was updated.
      */
-    machines?: pulumi.Input<pulumi.Input<types.inputs.operationalinsights.MachineReferenceWithHintsArgs>[]>;
+    machines?: pulumi.Input<pulumi.Input<types.inputs.MachineReferenceWithHintsArgs>[]>;
     /**
      * Resource group name within the specified subscriptionId.
      */

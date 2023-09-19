@@ -39,11 +39,11 @@ export class ContainerRegistry extends pulumi.CustomResource {
     /**
      * Properties of the container registry resource payload.
      */
-    public readonly properties!: pulumi.Output<types.outputs.appplatform.ContainerRegistryPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ContainerRegistryPropertiesResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.appplatform.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource.
      */
@@ -97,7 +97,7 @@ export interface ContainerRegistryArgs {
     /**
      * Properties of the container registry resource payload.
      */
-    properties?: pulumi.Input<types.inputs.appplatform.ContainerRegistryPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ContainerRegistryPropertiesArgs>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */

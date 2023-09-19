@@ -79,7 +79,7 @@ export interface GetSqlDWTableDataSetMappingResult {
     /**
      * System Data of the Azure resource.
      */
-    readonly systemData: types.outputs.datashare.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * SQL DW table name.
      */

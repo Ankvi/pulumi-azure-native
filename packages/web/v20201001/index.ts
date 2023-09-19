@@ -608,7 +608,7 @@ utilities.lazyLoad(exports, ["WebAppVnetConnectionSlot"], () => require("./webAp
 
 
 // Export enums:
-export * from "../types/enums/v20201001";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

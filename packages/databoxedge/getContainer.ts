@@ -62,11 +62,11 @@ export interface GetContainerResult {
     /**
      * Details of the refresh job on this container.
      */
-    readonly refreshDetails: types.outputs.databoxedge.RefreshDetailsResponse;
+    readonly refreshDetails: types.outputs.RefreshDetailsResponse;
     /**
      * Metadata pertaining to creation and last modification of Container
      */
-    readonly systemData: types.outputs.databoxedge.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The hierarchical type of the object.
      */

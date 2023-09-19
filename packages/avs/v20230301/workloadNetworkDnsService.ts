@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * NSX DNS Service
  */
@@ -148,7 +148,7 @@ export interface WorkloadNetworkDnsServiceArgs {
     /**
      * DNS Service log level.
      */
-    logLevel?: pulumi.Input<string | types.enums.v20230301.DnsServiceLogLevelEnum>;
+    logLevel?: pulumi.Input<string | types.enums.DnsServiceLogLevelEnum>;
     /**
      * Name of the private cloud
      */

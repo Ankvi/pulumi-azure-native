@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Event Subscription.
  */
@@ -34,7 +34,7 @@ export class NamespaceTopicEventSubscription extends pulumi.CustomResource {
     /**
      * Information about the delivery configuration of the event subscription.
      */
-    public readonly deliveryConfiguration!: pulumi.Output<types.outputs.eventgrid.v20230601preview.DeliveryConfigurationResponse | undefined>;
+    public readonly deliveryConfiguration!: pulumi.Output<types.outputs.DeliveryConfigurationResponse | undefined>;
     /**
      * The event delivery schema for the event subscription.
      */
@@ -42,7 +42,7 @@ export class NamespaceTopicEventSubscription extends pulumi.CustomResource {
     /**
      * Information about the filter for the event subscription.
      */
-    public readonly filtersConfiguration!: pulumi.Output<types.outputs.eventgrid.v20230601preview.FiltersConfigurationResponse | undefined>;
+    public readonly filtersConfiguration!: pulumi.Output<types.outputs.FiltersConfigurationResponse | undefined>;
     /**
      * Name of the resource.
      */
@@ -54,7 +54,7 @@ export class NamespaceTopicEventSubscription extends pulumi.CustomResource {
     /**
      * The system metadata relating to Event Subscription resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.eventgrid.v20230601preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Type of the resource.
      */
@@ -114,11 +114,11 @@ export interface NamespaceTopicEventSubscriptionArgs {
     /**
      * Information about the delivery configuration of the event subscription.
      */
-    deliveryConfiguration?: pulumi.Input<types.inputs.eventgrid.v20230601preview.DeliveryConfigurationArgs>;
+    deliveryConfiguration?: pulumi.Input<types.inputs.DeliveryConfigurationArgs>;
     /**
      * The event delivery schema for the event subscription.
      */
-    eventDeliverySchema?: pulumi.Input<string | types.enums.v20230601preview.DeliverySchema>;
+    eventDeliverySchema?: pulumi.Input<string | types.enums.DeliverySchema>;
     /**
      * Name of the event subscription to be created. Event subscription names must be between 3 and 100 characters in length and use alphanumeric letters only.
      */
@@ -126,7 +126,7 @@ export interface NamespaceTopicEventSubscriptionArgs {
     /**
      * Information about the filter for the event subscription.
      */
-    filtersConfiguration?: pulumi.Input<types.inputs.eventgrid.v20230601preview.FiltersConfigurationArgs>;
+    filtersConfiguration?: pulumi.Input<types.inputs.FiltersConfigurationArgs>;
     /**
      * Name of the namespace.
      */

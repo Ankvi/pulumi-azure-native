@@ -46,11 +46,11 @@ export interface GetDatabaseMigrationsSqlDbResult {
     /**
      * Database Migration Resource properties for SQL database.
      */
-    readonly properties: types.outputs.datamigration.DatabaseMigrationPropertiesSqlDbResponse;
+    readonly properties: types.outputs.DatabaseMigrationPropertiesSqlDbResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.datamigration.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     readonly type: string;
 }
 /**

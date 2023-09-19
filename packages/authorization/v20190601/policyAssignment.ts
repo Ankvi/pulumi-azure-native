@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The policy assignment.
  */
@@ -46,7 +46,7 @@ export class PolicyAssignment extends pulumi.CustomResource {
     /**
      * The managed identity associated with the policy assignment.
      */
-    public readonly identity!: pulumi.Output<types.outputs.authorization.v20190601.IdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityResponse | undefined>;
     /**
      * The location of the policy assignment. Only required when utilizing managed identity.
      */
@@ -78,7 +78,7 @@ export class PolicyAssignment extends pulumi.CustomResource {
     /**
      * The policy sku. This property is optional, obsolete, and will be ignored.
      */
-    public readonly sku!: pulumi.Output<types.outputs.authorization.v20190601.PolicySkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.PolicySkuResponse | undefined>;
     /**
      * The type of the policy assignment.
      */
@@ -149,11 +149,11 @@ export interface PolicyAssignmentArgs {
     /**
      * The policy assignment enforcement mode. Possible values are Default and DoNotEnforce.
      */
-    enforcementMode?: pulumi.Input<string | types.enums.v20190601.EnforcementMode>;
+    enforcementMode?: pulumi.Input<string | types.enums.EnforcementMode>;
     /**
      * The managed identity associated with the policy assignment.
      */
-    identity?: pulumi.Input<types.inputs.authorization.v20190601.IdentityArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityArgs>;
     /**
      * The location of the policy assignment. Only required when utilizing managed identity.
      */
@@ -185,5 +185,5 @@ export interface PolicyAssignmentArgs {
     /**
      * The policy sku. This property is optional, obsolete, and will be ignored.
      */
-    sku?: pulumi.Input<types.inputs.authorization.v20190601.PolicySkuArgs>;
+    sku?: pulumi.Input<types.inputs.PolicySkuArgs>;
 }

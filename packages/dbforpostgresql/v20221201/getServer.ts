@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets information about a server.
  */
@@ -35,7 +35,7 @@ export interface GetServerResult {
     /**
      * AuthConfig properties of a server.
      */
-    readonly authConfig?: types.outputs.dbforpostgresql.v20221201.AuthConfigResponse;
+    readonly authConfig?: types.outputs.AuthConfigResponse;
     /**
      * availability zone information of the server.
      */
@@ -43,11 +43,11 @@ export interface GetServerResult {
     /**
      * Backup properties of a server.
      */
-    readonly backup?: types.outputs.dbforpostgresql.v20221201.BackupResponse;
+    readonly backup?: types.outputs.BackupResponse;
     /**
      * Data encryption properties of a server.
      */
-    readonly dataEncryption?: types.outputs.dbforpostgresql.v20221201.DataEncryptionResponse;
+    readonly dataEncryption?: types.outputs.DataEncryptionResponse;
     /**
      * The fully qualified domain name of a server.
      */
@@ -55,7 +55,7 @@ export interface GetServerResult {
     /**
      * High availability properties of a server.
      */
-    readonly highAvailability?: types.outputs.dbforpostgresql.v20221201.HighAvailabilityResponse;
+    readonly highAvailability?: types.outputs.HighAvailabilityResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -63,7 +63,7 @@ export interface GetServerResult {
     /**
      * Describes the identity of the application.
      */
-    readonly identity?: types.outputs.dbforpostgresql.v20221201.UserAssignedIdentityResponse;
+    readonly identity?: types.outputs.UserAssignedIdentityResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -71,7 +71,7 @@ export interface GetServerResult {
     /**
      * Maintenance window properties of a server.
      */
-    readonly maintenanceWindow?: types.outputs.dbforpostgresql.v20221201.MaintenanceWindowResponse;
+    readonly maintenanceWindow?: types.outputs.MaintenanceWindowResponse;
     /**
      * The minor version of the server.
      */
@@ -83,7 +83,7 @@ export interface GetServerResult {
     /**
      * Network properties of a server. This Network property is required to be passed only in case you want the server to be Private access server.
      */
-    readonly network?: types.outputs.dbforpostgresql.v20221201.NetworkResponse;
+    readonly network?: types.outputs.NetworkResponse;
     /**
      * Replicas allowed for a server.
      */
@@ -95,7 +95,7 @@ export interface GetServerResult {
     /**
      * The SKU (pricing tier) of the server.
      */
-    readonly sku?: types.outputs.dbforpostgresql.v20221201.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * The source server resource ID to restore from. It's required when 'createMode' is 'PointInTimeRestore' or 'GeoRestore' or 'Replica'. This property is returned only for Replica server
      */
@@ -107,11 +107,11 @@ export interface GetServerResult {
     /**
      * Storage properties of a server.
      */
-    readonly storage?: types.outputs.dbforpostgresql.v20221201.StorageResponse;
+    readonly storage?: types.outputs.StorageResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.dbforpostgresql.v20221201.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

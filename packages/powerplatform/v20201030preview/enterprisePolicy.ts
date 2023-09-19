@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Definition of the EnterprisePolicy.
  */
@@ -34,7 +34,7 @@ export class EnterprisePolicy extends pulumi.CustomResource {
     /**
      * The encryption settings for a configuration store.
      */
-    public readonly encryption!: pulumi.Output<types.outputs.powerplatform.v20201030preview.PropertiesResponseEncryption | undefined>;
+    public readonly encryption!: pulumi.Output<types.outputs.PropertiesResponseEncryption | undefined>;
     /**
      * The health status of the resource.
      */
@@ -42,7 +42,7 @@ export class EnterprisePolicy extends pulumi.CustomResource {
     /**
      * The identity of the EnterprisePolicy.
      */
-    public readonly identity!: pulumi.Output<types.outputs.powerplatform.v20201030preview.EnterprisePolicyIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.EnterprisePolicyIdentityResponse | undefined>;
     /**
      * The kind (type) of Enterprise Policy.
      */
@@ -54,7 +54,7 @@ export class EnterprisePolicy extends pulumi.CustomResource {
     /**
      * Settings concerning lockbox.
      */
-    public readonly lockbox!: pulumi.Output<types.outputs.powerplatform.v20201030preview.PropertiesResponseLockbox | undefined>;
+    public readonly lockbox!: pulumi.Output<types.outputs.PropertiesResponseLockbox | undefined>;
     /**
      * The name of the resource
      */
@@ -62,11 +62,11 @@ export class EnterprisePolicy extends pulumi.CustomResource {
     /**
      * Settings concerning network injection.
      */
-    public readonly networkInjection!: pulumi.Output<types.outputs.powerplatform.v20201030preview.PropertiesResponseNetworkInjection | undefined>;
+    public readonly networkInjection!: pulumi.Output<types.outputs.PropertiesResponseNetworkInjection | undefined>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.powerplatform.v20201030preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The internally assigned unique identifier of the resource.
      */
@@ -139,7 +139,7 @@ export interface EnterprisePolicyArgs {
     /**
      * The encryption settings for a configuration store.
      */
-    encryption?: pulumi.Input<types.inputs.powerplatform.v20201030preview.PropertiesEncryptionArgs>;
+    encryption?: pulumi.Input<types.inputs.PropertiesEncryptionArgs>;
     /**
      * Name of the EnterprisePolicy.
      */
@@ -147,15 +147,15 @@ export interface EnterprisePolicyArgs {
     /**
      * The health status of the resource.
      */
-    healthStatus?: pulumi.Input<string | types.enums.v20201030preview.HealthStatus>;
+    healthStatus?: pulumi.Input<string | types.enums.HealthStatus>;
     /**
      * The identity of the EnterprisePolicy.
      */
-    identity?: pulumi.Input<types.inputs.powerplatform.v20201030preview.EnterprisePolicyIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.EnterprisePolicyIdentityArgs>;
     /**
      * The kind (type) of Enterprise Policy.
      */
-    kind: pulumi.Input<string | types.enums.v20201030preview.EnterprisePolicyKind>;
+    kind: pulumi.Input<string | types.enums.EnterprisePolicyKind>;
     /**
      * The geo-location where the resource lives
      */
@@ -163,11 +163,11 @@ export interface EnterprisePolicyArgs {
     /**
      * Settings concerning lockbox.
      */
-    lockbox?: pulumi.Input<types.inputs.powerplatform.v20201030preview.PropertiesLockboxArgs>;
+    lockbox?: pulumi.Input<types.inputs.PropertiesLockboxArgs>;
     /**
      * Settings concerning network injection.
      */
-    networkInjection?: pulumi.Input<types.inputs.powerplatform.v20201030preview.PropertiesNetworkInjectionArgs>;
+    networkInjection?: pulumi.Input<types.inputs.PropertiesNetworkInjectionArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

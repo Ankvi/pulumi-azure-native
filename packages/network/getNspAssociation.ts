@@ -57,11 +57,11 @@ export interface GetNspAssociationResult {
     /**
      * The PaaS resource to be associated.
      */
-    readonly privateLinkResource?: types.outputs.network.SubResourceResponse;
+    readonly privateLinkResource?: types.outputs.SubResourceResponse;
     /**
      * Profile id to which the PaaS resource is associated.
      */
-    readonly profile?: types.outputs.network.SubResourceResponse;
+    readonly profile?: types.outputs.SubResourceResponse;
     /**
      * The provisioning state of the resource  association resource.
      */

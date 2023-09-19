@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An instance failover group.
  */
@@ -34,7 +34,7 @@ export class InstanceFailoverGroup extends pulumi.CustomResource {
     /**
      * List of managed instance pairs in the failover group.
      */
-    public readonly managedInstancePairs!: pulumi.Output<types.outputs.sql.v20221101preview.ManagedInstancePairInfoResponse[]>;
+    public readonly managedInstancePairs!: pulumi.Output<types.outputs.ManagedInstancePairInfoResponse[]>;
     /**
      * Resource name.
      */
@@ -42,15 +42,15 @@ export class InstanceFailoverGroup extends pulumi.CustomResource {
     /**
      * Partner region information for the failover group.
      */
-    public readonly partnerRegions!: pulumi.Output<types.outputs.sql.v20221101preview.PartnerRegionInfoResponse[]>;
+    public readonly partnerRegions!: pulumi.Output<types.outputs.PartnerRegionInfoResponse[]>;
     /**
      * Read-only endpoint of the failover group instance.
      */
-    public readonly readOnlyEndpoint!: pulumi.Output<types.outputs.sql.v20221101preview.InstanceFailoverGroupReadOnlyEndpointResponse | undefined>;
+    public readonly readOnlyEndpoint!: pulumi.Output<types.outputs.InstanceFailoverGroupReadOnlyEndpointResponse | undefined>;
     /**
      * Read-write endpoint of the failover group instance.
      */
-    public readonly readWriteEndpoint!: pulumi.Output<types.outputs.sql.v20221101preview.InstanceFailoverGroupReadWriteEndpointResponse>;
+    public readonly readWriteEndpoint!: pulumi.Output<types.outputs.InstanceFailoverGroupReadWriteEndpointResponse>;
     /**
      * Local replication role of the failover group instance.
      */
@@ -139,19 +139,19 @@ export interface InstanceFailoverGroupArgs {
     /**
      * List of managed instance pairs in the failover group.
      */
-    managedInstancePairs: pulumi.Input<pulumi.Input<types.inputs.sql.v20221101preview.ManagedInstancePairInfoArgs>[]>;
+    managedInstancePairs: pulumi.Input<pulumi.Input<types.inputs.ManagedInstancePairInfoArgs>[]>;
     /**
      * Partner region information for the failover group.
      */
-    partnerRegions: pulumi.Input<pulumi.Input<types.inputs.sql.v20221101preview.PartnerRegionInfoArgs>[]>;
+    partnerRegions: pulumi.Input<pulumi.Input<types.inputs.PartnerRegionInfoArgs>[]>;
     /**
      * Read-only endpoint of the failover group instance.
      */
-    readOnlyEndpoint?: pulumi.Input<types.inputs.sql.v20221101preview.InstanceFailoverGroupReadOnlyEndpointArgs>;
+    readOnlyEndpoint?: pulumi.Input<types.inputs.InstanceFailoverGroupReadOnlyEndpointArgs>;
     /**
      * Read-write endpoint of the failover group instance.
      */
-    readWriteEndpoint: pulumi.Input<types.inputs.sql.v20221101preview.InstanceFailoverGroupReadWriteEndpointArgs>;
+    readWriteEndpoint: pulumi.Input<types.inputs.InstanceFailoverGroupReadWriteEndpointArgs>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */
@@ -159,5 +159,5 @@ export interface InstanceFailoverGroupArgs {
     /**
      * Type of the geo-secondary instance. Set 'Standby' if the instance is used as a DR option only.
      */
-    secondaryType?: pulumi.Input<string | types.enums.v20221101preview.SecondaryInstanceType>;
+    secondaryType?: pulumi.Input<string | types.enums.SecondaryInstanceType>;
 }

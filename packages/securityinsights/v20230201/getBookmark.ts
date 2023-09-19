@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a bookmark.
  */
@@ -40,7 +40,7 @@ export interface GetBookmarkResult {
     /**
      * Describes a user that created the bookmark
      */
-    readonly createdBy?: types.outputs.securityinsights.v20230201.UserInfoResponse;
+    readonly createdBy?: types.outputs.UserInfoResponse;
     /**
      * The display name of the bookmark
      */
@@ -60,7 +60,7 @@ export interface GetBookmarkResult {
     /**
      * Describes an incident that relates to bookmark
      */
-    readonly incidentInfo?: types.outputs.securityinsights.v20230201.IncidentInfoResponse;
+    readonly incidentInfo?: types.outputs.IncidentInfoResponse;
     /**
      * List of labels relevant to this bookmark
      */
@@ -92,7 +92,7 @@ export interface GetBookmarkResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.securityinsights.v20230201.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -104,7 +104,7 @@ export interface GetBookmarkResult {
     /**
      * Describes a user that updated the bookmark
      */
-    readonly updatedBy?: types.outputs.securityinsights.v20230201.UserInfoResponse;
+    readonly updatedBy?: types.outputs.UserInfoResponse;
 }
 /**
  * Gets a bookmark.

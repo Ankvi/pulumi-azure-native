@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A web app, a mobile app backend, or an API app.
  */
@@ -67,7 +67,7 @@ export class WebAppSlot extends pulumi.CustomResource {
     /**
      * Hostname SSL states are used to manage the SSL bindings for app's hostnames.
      */
-    public readonly hostNameSslStates!: pulumi.Output<types.outputs.web.v20160801.HostNameSslStateResponse[] | undefined>;
+    public readonly hostNameSslStates!: pulumi.Output<types.outputs.HostNameSslStateResponse[] | undefined>;
     /**
      * Hostnames associated with the app.
      */
@@ -80,7 +80,7 @@ export class WebAppSlot extends pulumi.CustomResource {
     /**
      * App Service Environment to use for the app.
      */
-    public readonly hostingEnvironmentProfile!: pulumi.Output<types.outputs.web.v20160801.HostingEnvironmentProfileResponse | undefined>;
+    public readonly hostingEnvironmentProfile!: pulumi.Output<types.outputs.HostingEnvironmentProfileResponse | undefined>;
     /**
      * HttpsOnly: configures a web site to accept only https requests. Issues redirect for
      * http requests
@@ -89,7 +89,7 @@ export class WebAppSlot extends pulumi.CustomResource {
     /**
      * Managed service identity.
      */
-    public readonly identity!: pulumi.Output<types.outputs.web.v20160801.ManagedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * <code>true</code> if the app is a default container; otherwise, <code>false</code>.
      */
@@ -146,11 +146,11 @@ export class WebAppSlot extends pulumi.CustomResource {
     /**
      * Configuration of the app.
      */
-    public readonly siteConfig!: pulumi.Output<types.outputs.web.v20160801.SiteConfigResponse | undefined>;
+    public readonly siteConfig!: pulumi.Output<types.outputs.SiteConfigResponse | undefined>;
     /**
      * Status of the last deployment slot swap operation.
      */
-    public /*out*/ readonly slotSwapStatus!: pulumi.Output<types.outputs.web.v20160801.SlotSwapStatusResponse>;
+    public /*out*/ readonly slotSwapStatus!: pulumi.Output<types.outputs.SlotSwapStatusResponse>;
     /**
      * Current state of the app.
      */
@@ -216,7 +216,7 @@ export class WebAppSlot extends pulumi.CustomResource {
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["scmSiteAlsoStopped"] = (args ? args.scmSiteAlsoStopped : undefined) ?? false;
             resourceInputs["serverFarmId"] = args ? args.serverFarmId : undefined;
-            resourceInputs["siteConfig"] = args ? (args.siteConfig ? pulumi.output(args.siteConfig).apply(types.inputs.web.v20160801.siteConfigArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["siteConfig"] = args ? (args.siteConfig ? pulumi.output(args.siteConfig).apply(types.inputs.siteConfigArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["skipCustomDomainVerification"] = args ? args.skipCustomDomainVerification : undefined;
             resourceInputs["skipDnsRegistration"] = args ? args.skipDnsRegistration : undefined;
             resourceInputs["slot"] = args ? args.slot : undefined;
@@ -301,7 +301,7 @@ export interface WebAppSlotArgs {
     /**
      * If specified during app creation, the app is cloned from a source app.
      */
-    cloningInfo?: pulumi.Input<types.inputs.web.v20160801.CloningInfoArgs>;
+    cloningInfo?: pulumi.Input<types.inputs.CloningInfoArgs>;
     /**
      * Size of the function container.
      */
@@ -321,7 +321,7 @@ export interface WebAppSlotArgs {
     /**
      * Hostname SSL states are used to manage the SSL bindings for app's hostnames.
      */
-    hostNameSslStates?: pulumi.Input<pulumi.Input<types.inputs.web.v20160801.HostNameSslStateArgs>[]>;
+    hostNameSslStates?: pulumi.Input<pulumi.Input<types.inputs.HostNameSslStateArgs>[]>;
     /**
      * <code>true</code> to disable the public hostnames of the app; otherwise, <code>false</code>.
      *  If <code>true</code>, the app is only accessible via API management process.
@@ -330,7 +330,7 @@ export interface WebAppSlotArgs {
     /**
      * App Service Environment to use for the app.
      */
-    hostingEnvironmentProfile?: pulumi.Input<types.inputs.web.v20160801.HostingEnvironmentProfileArgs>;
+    hostingEnvironmentProfile?: pulumi.Input<types.inputs.HostingEnvironmentProfileArgs>;
     /**
      * HttpsOnly: configures a web site to accept only https requests. Issues redirect for
      * http requests
@@ -339,7 +339,7 @@ export interface WebAppSlotArgs {
     /**
      * Managed service identity.
      */
-    identity?: pulumi.Input<types.inputs.web.v20160801.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
      * Kind of resource.
      */
@@ -371,7 +371,7 @@ export interface WebAppSlotArgs {
     /**
      * Configuration of the app.
      */
-    siteConfig?: pulumi.Input<types.inputs.web.v20160801.SiteConfigArgs>;
+    siteConfig?: pulumi.Input<types.inputs.SiteConfigArgs>;
     /**
      * If true, custom (non *.azurewebsites.net) domains associated with web app are not verified.
      */
@@ -388,7 +388,7 @@ export interface WebAppSlotArgs {
     /**
      * If specified during app creation, the app is created from a previous snapshot.
      */
-    snapshotInfo?: pulumi.Input<types.inputs.web.v20160801.SnapshotRecoveryRequestArgs>;
+    snapshotInfo?: pulumi.Input<types.inputs.SnapshotRecoveryRequestArgs>;
     /**
      * Resource tags.
      */

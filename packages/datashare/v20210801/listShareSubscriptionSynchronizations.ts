@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * List synchronizations of a share subscription
  */
@@ -55,7 +55,7 @@ export interface ListShareSubscriptionSynchronizationsResult {
     /**
      * Collection of items of type DataTransferObjects.
      */
-    readonly value: types.outputs.datashare.v20210801.ShareSubscriptionSynchronizationResponse[];
+    readonly value: types.outputs.ShareSubscriptionSynchronizationResponse[];
 }
 /**
  * List synchronizations of a share subscription

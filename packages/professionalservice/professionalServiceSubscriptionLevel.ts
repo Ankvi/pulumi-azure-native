@@ -39,7 +39,7 @@ export class ProfessionalServiceSubscriptionLevel extends pulumi.CustomResource 
     /**
      * professionalService properties
      */
-    public readonly properties!: pulumi.Output<types.outputs.professionalservice.ProfessionalServiceResourceResponseProperties>;
+    public readonly properties!: pulumi.Output<types.outputs.ProfessionalServiceResourceResponseProperties>;
     /**
      * the resource tags.
      */
@@ -99,7 +99,7 @@ export interface ProfessionalServiceSubscriptionLevelArgs {
     /**
      * Properties of the ProfessionalService resource that are relevant for creation.
      */
-    properties?: pulumi.Input<types.inputs.professionalservice.ProfessionalServiceCreationPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ProfessionalServiceCreationPropertiesArgs>;
     /**
      * The name of the resource group.
      */

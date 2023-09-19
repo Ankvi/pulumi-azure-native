@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets network interfaces by resource name
  */
@@ -28,11 +28,11 @@ export interface GetNetworkinterfaceRetrieveResult {
     /**
      * DNS Settings for the interface
      */
-    readonly dnsSettings?: types.outputs.azurestackhci.v20210901preview.InterfaceDNSSettingsResponse;
+    readonly dnsSettings?: types.outputs.InterfaceDNSSettingsResponse;
     /**
      * The extendedLocation of the resource.
      */
-    readonly extendedLocation?: types.outputs.azurestackhci.v20210901preview.ExtendedLocationResponse;
+    readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -40,7 +40,7 @@ export interface GetNetworkinterfaceRetrieveResult {
     /**
      * IPConfigurations - A list of IPConfigurations of the network interface.
      */
-    readonly ipConfigurations?: types.outputs.azurestackhci.v20210901preview.IpConfigurationResponse[];
+    readonly ipConfigurations?: types.outputs.IpConfigurationResponse[];
     /**
      * The geo-location where the resource lives
      */
@@ -61,11 +61,11 @@ export interface GetNetworkinterfaceRetrieveResult {
     /**
      * NetworkInterfaceStatus defines the observed state of network interfaces
      */
-    readonly status: types.outputs.azurestackhci.v20210901preview.NetworkInterfaceStatusResponse;
+    readonly status: types.outputs.NetworkInterfaceStatusResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.azurestackhci.v20210901preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

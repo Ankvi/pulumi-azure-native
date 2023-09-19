@@ -68,7 +68,7 @@ export interface GetSecurityPartnerProviderResult {
     /**
      * The virtualHub to which the Security Partner Provider belongs.
      */
-    readonly virtualHub?: types.outputs.network.SubResourceResponse;
+    readonly virtualHub?: types.outputs.SubResourceResponse;
 }
 /**
  * Gets the specified Security Partner Provider.

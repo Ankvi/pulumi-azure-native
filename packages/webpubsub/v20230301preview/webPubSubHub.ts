@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A hub setting
  */
@@ -38,11 +38,11 @@ export class WebPubSubHub extends pulumi.CustomResource {
     /**
      * Properties of a hub.
      */
-    public readonly properties!: pulumi.Output<types.outputs.webpubsub.v20230301preview.WebPubSubHubPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.WebPubSubHubPropertiesResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.webpubsub.v20230301preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -69,7 +69,7 @@ export class WebPubSubHub extends pulumi.CustomResource {
                 throw new Error("Missing required property 'resourceName'");
             }
             resourceInputs["hubName"] = args ? args.hubName : undefined;
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.webpubsub.v20230301preview.webPubSubHubPropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.webPubSubHubPropertiesArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["resourceName"] = args ? args.resourceName : undefined;
             resourceInputs["name"] = undefined /*out*/;
@@ -99,7 +99,7 @@ export interface WebPubSubHubArgs {
     /**
      * Properties of a hub.
      */
-    properties: pulumi.Input<types.inputs.webpubsub.v20230301preview.WebPubSubHubPropertiesArgs>;
+    properties: pulumi.Input<types.inputs.WebPubSubHubPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

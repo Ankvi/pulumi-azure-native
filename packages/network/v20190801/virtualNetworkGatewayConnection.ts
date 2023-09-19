@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A common class for general resource information.
  */
@@ -70,11 +70,11 @@ export class VirtualNetworkGatewayConnection extends pulumi.CustomResource {
     /**
      * The IPSec Policies to be considered by this connection.
      */
-    public readonly ipsecPolicies!: pulumi.Output<types.outputs.network.v20190801.IpsecPolicyResponse[] | undefined>;
+    public readonly ipsecPolicies!: pulumi.Output<types.outputs.IpsecPolicyResponse[] | undefined>;
     /**
      * The reference to local network gateway resource.
      */
-    public readonly localNetworkGateway2!: pulumi.Output<types.outputs.network.v20190801.LocalNetworkGatewayResponse | undefined>;
+    public readonly localNetworkGateway2!: pulumi.Output<types.outputs.LocalNetworkGatewayResponse | undefined>;
     /**
      * Resource location.
      */
@@ -86,7 +86,7 @@ export class VirtualNetworkGatewayConnection extends pulumi.CustomResource {
     /**
      * The reference to peerings resource.
      */
-    public readonly peer!: pulumi.Output<types.outputs.network.v20190801.SubResourceResponse | undefined>;
+    public readonly peer!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * The provisioning state of the virtual network gateway connection resource.
      */
@@ -110,11 +110,11 @@ export class VirtualNetworkGatewayConnection extends pulumi.CustomResource {
     /**
      * The Traffic Selector Policies to be considered by this connection.
      */
-    public readonly trafficSelectorPolicies!: pulumi.Output<types.outputs.network.v20190801.TrafficSelectorPolicyResponse[] | undefined>;
+    public readonly trafficSelectorPolicies!: pulumi.Output<types.outputs.TrafficSelectorPolicyResponse[] | undefined>;
     /**
      * Collection of all tunnels' connection health status.
      */
-    public /*out*/ readonly tunnelConnectionStatus!: pulumi.Output<types.outputs.network.v20190801.TunnelConnectionHealthResponse[]>;
+    public /*out*/ readonly tunnelConnectionStatus!: pulumi.Output<types.outputs.TunnelConnectionHealthResponse[]>;
     /**
      * Resource type.
      */
@@ -126,11 +126,11 @@ export class VirtualNetworkGatewayConnection extends pulumi.CustomResource {
     /**
      * The reference to virtual network gateway resource.
      */
-    public readonly virtualNetworkGateway1!: pulumi.Output<types.outputs.network.v20190801.VirtualNetworkGatewayResponse>;
+    public readonly virtualNetworkGateway1!: pulumi.Output<types.outputs.VirtualNetworkGatewayResponse>;
     /**
      * The reference to virtual network gateway resource.
      */
-    public readonly virtualNetworkGateway2!: pulumi.Output<types.outputs.network.v20190801.VirtualNetworkGatewayResponse | undefined>;
+    public readonly virtualNetworkGateway2!: pulumi.Output<types.outputs.VirtualNetworkGatewayResponse | undefined>;
 
     /**
      * Create a VirtualNetworkGatewayConnection resource with the given unique name, arguments, and options.
@@ -225,11 +225,11 @@ export interface VirtualNetworkGatewayConnectionArgs {
     /**
      * Connection protocol used for this connection.
      */
-    connectionProtocol?: pulumi.Input<string | types.enums.v20190801.VirtualNetworkGatewayConnectionProtocol>;
+    connectionProtocol?: pulumi.Input<string | types.enums.VirtualNetworkGatewayConnectionProtocol>;
     /**
      * Gateway connection type.
      */
-    connectionType: pulumi.Input<string | types.enums.v20190801.VirtualNetworkGatewayConnectionType>;
+    connectionType: pulumi.Input<string | types.enums.VirtualNetworkGatewayConnectionType>;
     /**
      * EnableBgp flag.
      */
@@ -245,11 +245,11 @@ export interface VirtualNetworkGatewayConnectionArgs {
     /**
      * The IPSec Policies to be considered by this connection.
      */
-    ipsecPolicies?: pulumi.Input<pulumi.Input<types.inputs.network.v20190801.IpsecPolicyArgs>[]>;
+    ipsecPolicies?: pulumi.Input<pulumi.Input<types.inputs.IpsecPolicyArgs>[]>;
     /**
      * The reference to local network gateway resource.
      */
-    localNetworkGateway2?: pulumi.Input<types.inputs.network.v20190801.LocalNetworkGatewayArgs>;
+    localNetworkGateway2?: pulumi.Input<types.inputs.LocalNetworkGatewayArgs>;
     /**
      * Resource location.
      */
@@ -257,7 +257,7 @@ export interface VirtualNetworkGatewayConnectionArgs {
     /**
      * The reference to peerings resource.
      */
-    peer?: pulumi.Input<types.inputs.network.v20190801.SubResourceArgs>;
+    peer?: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * The name of the resource group.
      */
@@ -281,7 +281,7 @@ export interface VirtualNetworkGatewayConnectionArgs {
     /**
      * The Traffic Selector Policies to be considered by this connection.
      */
-    trafficSelectorPolicies?: pulumi.Input<pulumi.Input<types.inputs.network.v20190801.TrafficSelectorPolicyArgs>[]>;
+    trafficSelectorPolicies?: pulumi.Input<pulumi.Input<types.inputs.TrafficSelectorPolicyArgs>[]>;
     /**
      * Enable policy-based traffic selectors.
      */
@@ -289,11 +289,11 @@ export interface VirtualNetworkGatewayConnectionArgs {
     /**
      * The reference to virtual network gateway resource.
      */
-    virtualNetworkGateway1: pulumi.Input<types.inputs.network.v20190801.VirtualNetworkGatewayArgs>;
+    virtualNetworkGateway1: pulumi.Input<types.inputs.VirtualNetworkGatewayArgs>;
     /**
      * The reference to virtual network gateway resource.
      */
-    virtualNetworkGateway2?: pulumi.Input<types.inputs.network.v20190801.VirtualNetworkGatewayArgs>;
+    virtualNetworkGateway2?: pulumi.Input<types.inputs.VirtualNetworkGatewayArgs>;
     /**
      * The name of the virtual network gateway connection.
      */

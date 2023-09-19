@@ -39,7 +39,7 @@ export class CassandraDataCenter extends pulumi.CustomResource {
     /**
      * Properties of a managed Cassandra data center.
      */
-    public readonly properties!: pulumi.Output<types.outputs.documentdb.DataCenterResourceResponseProperties>;
+    public readonly properties!: pulumi.Output<types.outputs.DataCenterResourceResponseProperties>;
     /**
      * The type of Azure resource.
      */
@@ -95,7 +95,7 @@ export interface CassandraDataCenterArgs {
     /**
      * Properties of a managed Cassandra data center.
      */
-    properties?: pulumi.Input<types.inputs.documentdb.DataCenterResourcePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.DataCenterResourcePropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

@@ -49,7 +49,7 @@ export interface GetPrivateEndpointConnectionResult {
     /**
      * Properties of the private endpoint endpoint connection.
      */
-    readonly properties: types.outputs.migrate.PrivateEndpointConnectionPropertiesResponse;
+    readonly properties: types.outputs.PrivateEndpointConnectionPropertiesResponse;
     /**
      * Type of the object = [Microsoft.Migrate/assessmentProjects/privateEndpointConnections].
      */

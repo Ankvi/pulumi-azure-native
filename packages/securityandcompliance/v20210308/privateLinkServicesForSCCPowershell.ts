@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The description of the service.
  */
@@ -38,7 +38,7 @@ export class PrivateLinkServicesForSCCPowershell extends pulumi.CustomResource {
     /**
      * Setting indicating whether the service has a managed identity associated with it.
      */
-    public readonly identity!: pulumi.Output<types.outputs.securityandcompliance.v20210308.ServicesResourceResponseIdentity | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ServicesResourceResponseIdentity | undefined>;
     /**
      * The kind of the service.
      */
@@ -54,11 +54,11 @@ export class PrivateLinkServicesForSCCPowershell extends pulumi.CustomResource {
     /**
      * The common properties of a service.
      */
-    public readonly properties!: pulumi.Output<types.outputs.securityandcompliance.v20210308.ServicesPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ServicesPropertiesResponse>;
     /**
      * Required property for system data
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.securityandcompliance.v20210308.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The resource tags.
      */
@@ -121,11 +121,11 @@ export interface PrivateLinkServicesForSCCPowershellArgs {
     /**
      * Setting indicating whether the service has a managed identity associated with it.
      */
-    identity?: pulumi.Input<types.inputs.securityandcompliance.v20210308.ServicesResourceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ServicesResourceIdentityArgs>;
     /**
      * The kind of the service.
      */
-    kind: pulumi.Input<types.enums.v20210308.Kind>;
+    kind: pulumi.Input<types.enums.Kind>;
     /**
      * The resource location.
      */
@@ -133,7 +133,7 @@ export interface PrivateLinkServicesForSCCPowershellArgs {
     /**
      * The common properties of a service.
      */
-    properties?: pulumi.Input<types.inputs.securityandcompliance.v20210308.ServicesPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ServicesPropertiesArgs>;
     /**
      * The name of the resource group that contains the service instance.
      */

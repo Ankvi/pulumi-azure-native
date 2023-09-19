@@ -39,11 +39,11 @@ export class DppResourceGuardProxy extends pulumi.CustomResource {
     /**
      * ResourceGuardProxyBaseResource properties
      */
-    public readonly properties!: pulumi.Output<types.outputs.dataprotection.ResourceGuardProxyBaseResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ResourceGuardProxyBaseResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.dataprotection.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
      */
@@ -93,7 +93,7 @@ export interface DppResourceGuardProxyArgs {
     /**
      * ResourceGuardProxyBaseResource properties
      */
-    properties?: pulumi.Input<types.inputs.dataprotection.ResourceGuardProxyBaseArgs>;
+    properties?: pulumi.Input<types.inputs.ResourceGuardProxyBaseArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

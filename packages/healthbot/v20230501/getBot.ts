@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a HealthBot.
  */
@@ -35,7 +35,7 @@ export interface GetBotResult {
     /**
      * The identity of the Azure Health Bot.
      */
-    readonly identity?: types.outputs.healthbot.v20230501.IdentityResponse;
+    readonly identity?: types.outputs.IdentityResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -47,15 +47,15 @@ export interface GetBotResult {
     /**
      * The set of properties specific to Azure Health Bot resource.
      */
-    readonly properties: types.outputs.healthbot.v20230501.HealthBotPropertiesResponse;
+    readonly properties: types.outputs.HealthBotPropertiesResponse;
     /**
      * SKU of the Azure Health Bot.
      */
-    readonly sku: types.outputs.healthbot.v20230501.SkuResponse;
+    readonly sku: types.outputs.SkuResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource
      */
-    readonly systemData: types.outputs.healthbot.v20230501.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

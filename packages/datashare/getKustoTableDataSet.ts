@@ -71,11 +71,11 @@ export interface GetKustoTableDataSetResult {
     /**
      * System Data of the Azure resource.
      */
-    readonly systemData: types.outputs.datashare.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Table level sharing properties for kusto database
      */
-    readonly tableLevelSharingProperties: types.outputs.datashare.TableLevelSharingPropertiesResponse;
+    readonly tableLevelSharingProperties: types.outputs.TableLevelSharingPropertiesResponse;
     /**
      * Type of the azure resource
      */

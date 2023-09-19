@@ -35,7 +35,7 @@ export class Spacecraft extends pulumi.CustomResource {
     /**
      * Immutable list of Spacecraft links.
      */
-    public readonly links!: pulumi.Output<types.outputs.orbital.SpacecraftLinkResponse[]>;
+    public readonly links!: pulumi.Output<types.outputs.SpacecraftLinkResponse[]>;
     /**
      * The geo-location where the resource lives
      */
@@ -51,7 +51,7 @@ export class Spacecraft extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.orbital.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -137,7 +137,7 @@ export interface SpacecraftArgs {
     /**
      * Immutable list of Spacecraft links.
      */
-    links: pulumi.Input<pulumi.Input<types.inputs.orbital.SpacecraftLinkArgs>[]>;
+    links: pulumi.Input<pulumi.Input<types.inputs.SpacecraftLinkArgs>[]>;
     /**
      * The geo-location where the resource lives
      */

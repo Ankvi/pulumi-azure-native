@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * AzureBareMetalStorageInstance info on Azure (ARM properties and AzureBareMetalStorage properties)
  */
@@ -46,11 +46,11 @@ export class AzureBareMetalStorageInstance extends pulumi.CustomResource {
     /**
      * Specifies the storage properties for the AzureBareMetalStorage instance.
      */
-    public readonly storageProperties!: pulumi.Output<types.outputs.baremetalinfrastructure.v20230406.StoragePropertiesResponse | undefined>;
+    public readonly storageProperties!: pulumi.Output<types.outputs.StoragePropertiesResponse | undefined>;
     /**
      * The system metadata relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.baremetalinfrastructure.v20230406.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -122,7 +122,7 @@ export interface AzureBareMetalStorageInstanceArgs {
     /**
      * Specifies the storage properties for the AzureBareMetalStorage instance.
      */
-    storageProperties?: pulumi.Input<types.inputs.baremetalinfrastructure.v20230406.StoragePropertiesArgs>;
+    storageProperties?: pulumi.Input<types.inputs.StoragePropertiesArgs>;
     /**
      * Resource tags.
      */

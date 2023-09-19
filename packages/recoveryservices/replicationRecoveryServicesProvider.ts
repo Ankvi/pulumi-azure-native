@@ -43,7 +43,7 @@ export class ReplicationRecoveryServicesProvider extends pulumi.CustomResource {
     /**
      * Provider properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.recoveryservices.RecoveryServicesProviderPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.RecoveryServicesProviderPropertiesResponse>;
     /**
      * Resource Type
      */
@@ -104,7 +104,7 @@ export interface ReplicationRecoveryServicesProviderArgs {
     /**
      * The properties of an add provider request.
      */
-    properties: pulumi.Input<types.inputs.recoveryservices.AddRecoveryServicesProviderInputPropertiesArgs>;
+    properties: pulumi.Input<types.inputs.AddRecoveryServicesProviderInputPropertiesArgs>;
     /**
      * Recovery services provider name.
      */

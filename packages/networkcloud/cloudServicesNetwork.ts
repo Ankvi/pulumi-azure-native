@@ -38,7 +38,7 @@ export class CloudServicesNetwork extends pulumi.CustomResource {
     /**
      * The list of egress endpoints. This allows for connection from a Hybrid AKS cluster to the specified endpoint.
      */
-    public readonly additionalEgressEndpoints!: pulumi.Output<types.outputs.networkcloud.EgressEndpointResponse[] | undefined>;
+    public readonly additionalEgressEndpoints!: pulumi.Output<types.outputs.EgressEndpointResponse[] | undefined>;
     /**
      * The list of resource IDs for the other Microsoft.NetworkCloud resources that have attached this network.
      */
@@ -62,11 +62,11 @@ export class CloudServicesNetwork extends pulumi.CustomResource {
     /**
      * The full list of additional and default egress endpoints that are currently enabled.
      */
-    public /*out*/ readonly enabledEgressEndpoints!: pulumi.Output<types.outputs.networkcloud.EgressEndpointResponse[]>;
+    public /*out*/ readonly enabledEgressEndpoints!: pulumi.Output<types.outputs.EgressEndpointResponse[]>;
     /**
      * The extended location of the cluster associated with the resource.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.networkcloud.ExtendedLocationResponse>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse>;
     /**
      * Field Deprecated. These fields will be empty/omitted. The list of Hybrid AKS cluster resource IDs that are associated with this cloud services network.
      */
@@ -90,7 +90,7 @@ export class CloudServicesNetwork extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.networkcloud.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -173,7 +173,7 @@ export interface CloudServicesNetworkArgs {
     /**
      * The list of egress endpoints. This allows for connection from a Hybrid AKS cluster to the specified endpoint.
      */
-    additionalEgressEndpoints?: pulumi.Input<pulumi.Input<types.inputs.networkcloud.EgressEndpointArgs>[]>;
+    additionalEgressEndpoints?: pulumi.Input<pulumi.Input<types.inputs.EgressEndpointArgs>[]>;
     /**
      * The name of the cloud services network.
      */
@@ -185,7 +185,7 @@ export interface CloudServicesNetworkArgs {
     /**
      * The extended location of the cluster associated with the resource.
      */
-    extendedLocation: pulumi.Input<types.inputs.networkcloud.ExtendedLocationArgs>;
+    extendedLocation: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * The geo-location where the resource lives
      */

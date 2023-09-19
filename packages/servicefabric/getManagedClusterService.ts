@@ -54,11 +54,11 @@ export interface GetManagedClusterServiceResult {
     /**
      * The service resource properties.
      */
-    readonly properties: types.outputs.servicefabric.StatefulServicePropertiesResponse | types.outputs.servicefabric.StatelessServicePropertiesResponse;
+    readonly properties: types.outputs.StatefulServicePropertiesResponse | types.outputs.StatelessServicePropertiesResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.servicefabric.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Azure resource tags.
      */

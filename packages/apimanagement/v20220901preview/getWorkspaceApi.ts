@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the details of the API specified by its identifier.
  */
@@ -61,7 +61,7 @@ export interface GetWorkspaceApiResult {
     /**
      * Version set details
      */
-    readonly apiVersionSet?: types.outputs.apimanagement.v20220901preview.ApiVersionSetContractDetailsResponse;
+    readonly apiVersionSet?: types.outputs.ApiVersionSetContractDetailsResponse;
     /**
      * A resource identifier for the related ApiVersionSet.
      */
@@ -69,11 +69,11 @@ export interface GetWorkspaceApiResult {
     /**
      * Collection of authentication settings included into this API.
      */
-    readonly authenticationSettings?: types.outputs.apimanagement.v20220901preview.AuthenticationSettingsContractResponse;
+    readonly authenticationSettings?: types.outputs.AuthenticationSettingsContractResponse;
     /**
      * Contact information for the API.
      */
-    readonly contact?: types.outputs.apimanagement.v20220901preview.ApiContactInformationResponse;
+    readonly contact?: types.outputs.ApiContactInformationResponse;
     /**
      * Description of the API. May include HTML formatting tags.
      */
@@ -97,7 +97,7 @@ export interface GetWorkspaceApiResult {
     /**
      * License information for the API.
      */
-    readonly license?: types.outputs.apimanagement.v20220901preview.ApiLicenseInformationResponse;
+    readonly license?: types.outputs.ApiLicenseInformationResponse;
     /**
      * The name of the resource
      */
@@ -121,7 +121,7 @@ export interface GetWorkspaceApiResult {
     /**
      * Protocols over which API is made available.
      */
-    readonly subscriptionKeyParameterNames?: types.outputs.apimanagement.v20220901preview.SubscriptionKeyParameterNamesContractResponse;
+    readonly subscriptionKeyParameterNames?: types.outputs.SubscriptionKeyParameterNamesContractResponse;
     /**
      * Specifies whether an API or Product subscription is required for accessing the API.
      */

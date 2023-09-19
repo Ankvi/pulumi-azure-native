@@ -36,7 +36,7 @@ export interface GetVirtualMachineResult {
     /**
      * Gets or sets the extended location.
      */
-    readonly extendedLocation?: types.outputs.connectedvmwarevsphere.ExtendedLocationResponse;
+    readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
     /**
      * Firmware type
      */
@@ -48,11 +48,11 @@ export interface GetVirtualMachineResult {
     /**
      * Guest agent status properties.
      */
-    readonly guestAgentProfile?: types.outputs.connectedvmwarevsphere.GuestAgentProfileResponse;
+    readonly guestAgentProfile?: types.outputs.GuestAgentProfileResponse;
     /**
      * Hardware properties.
      */
-    readonly hardwareProfile?: types.outputs.connectedvmwarevsphere.HardwareProfileResponse;
+    readonly hardwareProfile?: types.outputs.HardwareProfileResponse;
     /**
      * Gets or sets the Id.
      */
@@ -60,7 +60,7 @@ export interface GetVirtualMachineResult {
     /**
      * The identity of the resource.
      */
-    readonly identity?: types.outputs.connectedvmwarevsphere.IdentityResponse;
+    readonly identity?: types.outputs.IdentityResponse;
     /**
      * Gets or sets the instance uuid of the vm.
      */
@@ -92,15 +92,15 @@ export interface GetVirtualMachineResult {
     /**
      * Network properties.
      */
-    readonly networkProfile?: types.outputs.connectedvmwarevsphere.NetworkProfileResponse;
+    readonly networkProfile?: types.outputs.NetworkProfileResponse;
     /**
      * OS properties.
      */
-    readonly osProfile?: types.outputs.connectedvmwarevsphere.OsProfileResponse;
+    readonly osProfile?: types.outputs.OsProfileResponse;
     /**
      * Placement properties.
      */
-    readonly placementProfile?: types.outputs.connectedvmwarevsphere.PlacementProfileResponse;
+    readonly placementProfile?: types.outputs.PlacementProfileResponse;
     /**
      * Gets the power state of the virtual machine.
      */
@@ -117,7 +117,7 @@ export interface GetVirtualMachineResult {
     /**
      * Gets the security profile.
      */
-    readonly securityProfile?: types.outputs.connectedvmwarevsphere.SecurityProfileResponse;
+    readonly securityProfile?: types.outputs.SecurityProfileResponse;
     /**
      * Gets or sets the SMBIOS UUID of the vm.
      */
@@ -125,15 +125,15 @@ export interface GetVirtualMachineResult {
     /**
      * The resource status information.
      */
-    readonly statuses: types.outputs.connectedvmwarevsphere.ResourceStatusResponse[];
+    readonly statuses: types.outputs.ResourceStatusResponse[];
     /**
      * Storage properties.
      */
-    readonly storageProfile?: types.outputs.connectedvmwarevsphere.StorageProfileResponse;
+    readonly storageProfile?: types.outputs.StorageProfileResponse;
     /**
      * The system data.
      */
-    readonly systemData: types.outputs.connectedvmwarevsphere.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Gets or sets the Resource tags.
      */

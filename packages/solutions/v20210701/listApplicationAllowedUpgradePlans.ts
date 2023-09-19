@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * List allowed upgrade plans for application.
  */
@@ -31,7 +31,7 @@ export interface ListApplicationAllowedUpgradePlansResult {
     /**
      * The array of plans.
      */
-    readonly value?: types.outputs.solutions.v20210701.PlanResponse[];
+    readonly value?: types.outputs.PlanResponse[];
 }
 /**
  * List allowed upgrade plans for application.

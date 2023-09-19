@@ -39,7 +39,7 @@ export class CloudHsmCluster extends pulumi.CustomResource {
     /**
      * An array of Cloud HSM Cluster's HSMs
      */
-    public readonly hsms!: pulumi.Output<types.outputs.hardwaresecuritymodules.CloudHsmPropertiesResponse[] | undefined>;
+    public readonly hsms!: pulumi.Output<types.outputs.CloudHsmPropertiesResponse[] | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -51,7 +51,7 @@ export class CloudHsmCluster extends pulumi.CustomResource {
     /**
      * List of private endpoint connection resources
      */
-    public readonly privateEndpointConnections!: pulumi.Output<types.outputs.hardwaresecuritymodules.PrivateEndpointConnectionResponse[] | undefined>;
+    public readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[] | undefined>;
     /**
      * The Cloud HSM Cluster's provisioningState
      */
@@ -63,15 +63,15 @@ export class CloudHsmCluster extends pulumi.CustomResource {
     /**
      * Security domain properties information for Cloud HSM cluster
      */
-    public readonly securityDomain!: pulumi.Output<types.outputs.hardwaresecuritymodules.CloudHsmClusterSecurityDomainPropertiesResponse | undefined>;
+    public readonly securityDomain!: pulumi.Output<types.outputs.CloudHsmClusterSecurityDomainPropertiesResponse | undefined>;
     /**
      * SKU details
      */
-    public readonly sku!: pulumi.Output<types.outputs.hardwaresecuritymodules.CloudHsmClusterSkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.CloudHsmClusterSkuResponse | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.hardwaresecuritymodules.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -145,7 +145,7 @@ export interface CloudHsmClusterArgs {
     /**
      * An array of Cloud HSM Cluster's HSMs
      */
-    hsms?: pulumi.Input<pulumi.Input<types.inputs.hardwaresecuritymodules.CloudHsmPropertiesArgs>[]>;
+    hsms?: pulumi.Input<pulumi.Input<types.inputs.CloudHsmPropertiesArgs>[]>;
     /**
      * The geo-location where the resource lives
      */
@@ -154,7 +154,7 @@ export interface CloudHsmClusterArgs {
      * List of private endpoint connection resources
      * These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
      */
-    privateEndpointConnections?: pulumi.Input<pulumi.Input<types.inputs.hardwaresecuritymodules.PrivateEndpointConnectionArgs>[]>;
+    privateEndpointConnections?: pulumi.Input<pulumi.Input<types.inputs.PrivateEndpointConnectionArgs>[]>;
     /**
      * The Cloud HSM Cluster's provisioningState
      */
@@ -170,11 +170,11 @@ export interface CloudHsmClusterArgs {
     /**
      * Security domain properties information for Cloud HSM cluster
      */
-    securityDomain?: pulumi.Input<types.inputs.hardwaresecuritymodules.CloudHsmClusterSecurityDomainPropertiesArgs>;
+    securityDomain?: pulumi.Input<types.inputs.CloudHsmClusterSecurityDomainPropertiesArgs>;
     /**
      * SKU details
      */
-    sku?: pulumi.Input<types.inputs.hardwaresecuritymodules.CloudHsmClusterSkuArgs>;
+    sku?: pulumi.Input<types.inputs.CloudHsmClusterSkuArgs>;
     /**
      * Resource tags.
      */

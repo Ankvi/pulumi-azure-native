@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a published version of a blueprint definition.
  */
@@ -60,15 +60,15 @@ export interface GetPublishedBlueprintResult {
     /**
      * Parameters required by this blueprint definition.
      */
-    readonly parameters?: {[key: string]: types.outputs.blueprint.v20181101preview.ParameterDefinitionResponse};
+    readonly parameters?: {[key: string]: types.outputs.ParameterDefinitionResponse};
     /**
      * Resource group placeholders defined by this blueprint definition.
      */
-    readonly resourceGroups?: {[key: string]: types.outputs.blueprint.v20181101preview.ResourceGroupDefinitionResponse};
+    readonly resourceGroups?: {[key: string]: types.outputs.ResourceGroupDefinitionResponse};
     /**
      * Status of the blueprint. This field is readonly.
      */
-    readonly status: types.outputs.blueprint.v20181101preview.BlueprintStatusResponse;
+    readonly status: types.outputs.BlueprintStatusResponse;
     /**
      * The scope where this blueprint definition can be assigned.
      */

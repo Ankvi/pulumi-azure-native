@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a workspace instance.
  */
@@ -47,7 +47,7 @@ export interface GetWorkspaceResult {
     /**
      * Workspace features.
      */
-    readonly features?: types.outputs.operationalinsights.v20221001.WorkspaceFeaturesResponse;
+    readonly features?: types.outputs.WorkspaceFeaturesResponse;
     /**
      * Indicates whether customer managed storage is mandatory for query management.
      */
@@ -59,7 +59,7 @@ export interface GetWorkspaceResult {
     /**
      * The identity of the resource.
      */
-    readonly identity?: types.outputs.operationalinsights.v20221001.IdentityResponse;
+    readonly identity?: types.outputs.IdentityResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -75,7 +75,7 @@ export interface GetWorkspaceResult {
     /**
      * List of linked private link scope resources.
      */
-    readonly privateLinkScopedResources: types.outputs.operationalinsights.v20221001.PrivateLinkScopedResourceResponse[];
+    readonly privateLinkScopedResources: types.outputs.PrivateLinkScopedResourceResponse[];
     /**
      * The provisioning state of the workspace.
      */
@@ -95,11 +95,11 @@ export interface GetWorkspaceResult {
     /**
      * The SKU of the workspace.
      */
-    readonly sku?: types.outputs.operationalinsights.v20221001.WorkspaceSkuResponse;
+    readonly sku?: types.outputs.WorkspaceSkuResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.operationalinsights.v20221001.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -111,7 +111,7 @@ export interface GetWorkspaceResult {
     /**
      * The daily volume cap for ingestion.
      */
-    readonly workspaceCapping?: types.outputs.operationalinsights.v20221001.WorkspaceCappingResponse;
+    readonly workspaceCapping?: types.outputs.WorkspaceCappingResponse;
 }
 /**
  * Gets a workspace instance.

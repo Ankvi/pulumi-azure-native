@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * This type describes a network resource.
  */
@@ -42,7 +42,7 @@ export class Network extends pulumi.CustomResource {
     /**
      * Describes properties of a network resource.
      */
-    public readonly properties!: pulumi.Output<types.outputs.servicefabricmesh.v20180901preview.NetworkResourcePropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.NetworkResourcePropertiesResponse>;
     /**
      * Resource tags.
      */
@@ -105,7 +105,7 @@ export interface NetworkArgs {
     /**
      * Describes properties of a network resource.
      */
-    properties: pulumi.Input<types.inputs.servicefabricmesh.v20180901preview.NetworkResourcePropertiesArgs>;
+    properties: pulumi.Input<types.inputs.NetworkResourcePropertiesArgs>;
     /**
      * Azure resource group name
      */

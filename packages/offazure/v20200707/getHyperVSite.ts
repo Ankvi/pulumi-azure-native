@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Site REST Resource.
  */
@@ -47,11 +47,11 @@ export interface GetHyperVSiteResult {
     /**
      * Nested properties of Hyper-V site.
      */
-    readonly properties: types.outputs.offazure.v20200707.SitePropertiesResponse;
+    readonly properties: types.outputs.SitePropertiesResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.offazure.v20200707.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     readonly tags?: {[key: string]: string};
     /**
      * Type of resource. Type = Microsoft.OffAzure/HyperVSites.

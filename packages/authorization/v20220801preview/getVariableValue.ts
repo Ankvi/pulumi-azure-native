@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * This operation retrieves a single variable value; given its name, subscription it was created at and the variable it's created for.
  */
@@ -39,7 +39,7 @@ export interface GetVariableValueResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.authorization.v20220801preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource (Microsoft.Authorization/variables/values).
      */
@@ -47,7 +47,7 @@ export interface GetVariableValueResult {
     /**
      * Variable value column value array.
      */
-    readonly values: types.outputs.authorization.v20220801preview.PolicyVariableValueColumnValueResponse[];
+    readonly values: types.outputs.PolicyVariableValueColumnValueResponse[];
 }
 /**
  * This operation retrieves a single variable value; given its name, subscription it was created at and the variable it's created for.

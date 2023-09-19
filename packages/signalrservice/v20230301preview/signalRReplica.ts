@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A class represent a replica resource.
  */
@@ -46,11 +46,11 @@ export class SignalRReplica extends pulumi.CustomResource {
     /**
      * The billing information of the resource.
      */
-    public readonly sku!: pulumi.Output<types.outputs.signalrservice.v20230301preview.ResourceSkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.ResourceSkuResponse | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.signalrservice.v20230301preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -126,7 +126,7 @@ export interface SignalRReplicaArgs {
     /**
      * The billing information of the resource.
      */
-    sku?: pulumi.Input<types.inputs.signalrservice.v20230301preview.ResourceSkuArgs>;
+    sku?: pulumi.Input<types.inputs.ResourceSkuArgs>;
     /**
      * Resource tags.
      */

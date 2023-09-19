@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves information about the view of a license profile.
  */
@@ -52,7 +52,7 @@ export interface GetLicenseProfileResult {
     /**
      * The list of ESU keys.
      */
-    readonly esuKeys: types.outputs.hybridcompute.v20230620preview.EsuKeyResponse[];
+    readonly esuKeys: types.outputs.EsuKeyResponse[];
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -76,7 +76,7 @@ export interface GetLicenseProfileResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.hybridcompute.v20230620preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

@@ -35,11 +35,11 @@ export class ProviderInstance extends pulumi.CustomResource {
     /**
      * Defines the provider instance errors.
      */
-    public /*out*/ readonly errors!: pulumi.Output<types.outputs.workloads.ProviderInstancePropertiesResponseErrors>;
+    public /*out*/ readonly errors!: pulumi.Output<types.outputs.ProviderInstancePropertiesResponseErrors>;
     /**
      * [currently not in use] Managed service identity(user assigned identities)
      */
-    public readonly identity!: pulumi.Output<types.outputs.workloads.UserAssignedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.UserAssignedServiceIdentityResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -47,7 +47,7 @@ export class ProviderInstance extends pulumi.CustomResource {
     /**
      * Defines the provider specific properties.
      */
-    public readonly providerSettings!: pulumi.Output<types.outputs.workloads.DB2ProviderInstancePropertiesResponse | types.outputs.workloads.HanaDbProviderInstancePropertiesResponse | types.outputs.workloads.MsSqlServerProviderInstancePropertiesResponse | types.outputs.workloads.PrometheusHaClusterProviderInstancePropertiesResponse | types.outputs.workloads.PrometheusOSProviderInstancePropertiesResponse | types.outputs.workloads.SapNetWeaverProviderInstancePropertiesResponse | undefined>;
+    public readonly providerSettings!: pulumi.Output<types.outputs.DB2ProviderInstancePropertiesResponse | types.outputs.HanaDbProviderInstancePropertiesResponse | types.outputs.MsSqlServerProviderInstancePropertiesResponse | types.outputs.PrometheusHaClusterProviderInstancePropertiesResponse | types.outputs.PrometheusOSProviderInstancePropertiesResponse | types.outputs.SapNetWeaverProviderInstancePropertiesResponse | undefined>;
     /**
      * State of provisioning of the provider instance
      */
@@ -55,7 +55,7 @@ export class ProviderInstance extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.workloads.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -111,7 +111,7 @@ export interface ProviderInstanceArgs {
     /**
      * [currently not in use] Managed service identity(user assigned identities)
      */
-    identity?: pulumi.Input<types.inputs.workloads.UserAssignedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.UserAssignedServiceIdentityArgs>;
     /**
      * Name of the SAP monitor resource.
      */
@@ -123,7 +123,7 @@ export interface ProviderInstanceArgs {
     /**
      * Defines the provider specific properties.
      */
-    providerSettings?: pulumi.Input<types.inputs.workloads.DB2ProviderInstancePropertiesArgs | types.inputs.workloads.HanaDbProviderInstancePropertiesArgs | types.inputs.workloads.MsSqlServerProviderInstancePropertiesArgs | types.inputs.workloads.PrometheusHaClusterProviderInstancePropertiesArgs | types.inputs.workloads.PrometheusOSProviderInstancePropertiesArgs | types.inputs.workloads.SapNetWeaverProviderInstancePropertiesArgs>;
+    providerSettings?: pulumi.Input<types.inputs.DB2ProviderInstancePropertiesArgs | types.inputs.HanaDbProviderInstancePropertiesArgs | types.inputs.MsSqlServerProviderInstancePropertiesArgs | types.inputs.PrometheusHaClusterProviderInstancePropertiesArgs | types.inputs.PrometheusOSProviderInstancePropertiesArgs | types.inputs.SapNetWeaverProviderInstancePropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

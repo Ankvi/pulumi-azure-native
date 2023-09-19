@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Describes a hybrid machine.
  */
@@ -34,7 +34,7 @@ export class Machine extends pulumi.CustomResource {
     /**
      * Identity for the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.hybridcompute.v20220510preview.IdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -46,15 +46,15 @@ export class Machine extends pulumi.CustomResource {
     /**
      * Hybrid Compute Machine properties
      */
-    public readonly properties!: pulumi.Output<types.outputs.hybridcompute.v20220510preview.MachinePropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.MachinePropertiesResponse>;
     /**
      * The list of extensions affiliated to the machine
      */
-    public /*out*/ readonly resources!: pulumi.Output<types.outputs.hybridcompute.v20220510preview.MachineExtensionResponse[]>;
+    public /*out*/ readonly resources!: pulumi.Output<types.outputs.MachineExtensionResponse[]>;
     /**
      * The system meta data relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.hybridcompute.v20220510preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -112,7 +112,7 @@ export interface MachineArgs {
     /**
      * Identity for the resource.
      */
-    identity?: pulumi.Input<types.inputs.hybridcompute.v20220510preview.IdentityArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -124,7 +124,7 @@ export interface MachineArgs {
     /**
      * Hybrid Compute Machine properties
      */
-    properties?: pulumi.Input<types.inputs.hybridcompute.v20220510preview.MachinePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.MachinePropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get dismiss rule, with name: {alertsSuppressionRuleName}, for the given subscription
  */
@@ -58,7 +58,7 @@ export interface GetAlertsSuppressionRuleResult {
     /**
      * The suppression conditions
      */
-    readonly suppressionAlertsScope?: types.outputs.security.v20190101preview.SuppressionAlertsScopeResponse;
+    readonly suppressionAlertsScope?: types.outputs.SuppressionAlertsScopeResponse;
     /**
      * Resource type
      */

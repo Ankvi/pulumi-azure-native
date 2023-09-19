@@ -41,19 +41,19 @@ export interface GetEndpointResult {
     /**
      * The custom domains under the endpoint.
      */
-    readonly customDomains: types.outputs.cdn.DeepCreatedCustomDomainResponse[];
+    readonly customDomains: types.outputs.DeepCreatedCustomDomainResponse[];
     /**
      * A reference to the origin group.
      */
-    readonly defaultOriginGroup?: types.outputs.cdn.ResourceReferenceResponse;
+    readonly defaultOriginGroup?: types.outputs.ResourceReferenceResponse;
     /**
      * A policy that specifies the delivery rules to be used for an endpoint.
      */
-    readonly deliveryPolicy?: types.outputs.cdn.EndpointPropertiesUpdateParametersResponseDeliveryPolicy;
+    readonly deliveryPolicy?: types.outputs.EndpointPropertiesUpdateParametersResponseDeliveryPolicy;
     /**
      * List of rules defining the user's geo access within a CDN endpoint. Each geo filter defines an access rule to a specified path or content, e.g. block APAC for path /pictures/
      */
-    readonly geoFilters?: types.outputs.cdn.GeoFilterResponse[];
+    readonly geoFilters?: types.outputs.GeoFilterResponse[];
     /**
      * The host name of the endpoint structured as {endpointName}.{DNSZone}, e.g. contoso.azureedge.net
      */
@@ -89,7 +89,7 @@ export interface GetEndpointResult {
     /**
      * The origin groups comprising of origins that are used for load balancing the traffic based on availability.
      */
-    readonly originGroups?: types.outputs.cdn.DeepCreatedOriginGroupResponse[];
+    readonly originGroups?: types.outputs.DeepCreatedOriginGroupResponse[];
     /**
      * The host header value sent to the origin with each request. This property at Endpoint is only allowed when endpoint uses single origin and can be overridden by the same property specified at origin.If you leave this blank, the request hostname determines this value. Azure CDN origins, such as Web Apps, Blob Storage, and Cloud Services require this host header value to match the origin hostname by default.
      */
@@ -101,7 +101,7 @@ export interface GetEndpointResult {
     /**
      * The source of the content being delivered via CDN.
      */
-    readonly origins: types.outputs.cdn.DeepCreatedOriginResponse[];
+    readonly origins: types.outputs.DeepCreatedOriginResponse[];
     /**
      * Path to a file hosted on the origin which helps accelerate delivery of the dynamic content and calculate the most optimal routes for the CDN. This is relative to the origin path. This property is only relevant when using a single origin.
      */
@@ -121,7 +121,7 @@ export interface GetEndpointResult {
     /**
      * Read only system data
      */
-    readonly systemData: types.outputs.cdn.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -133,11 +133,11 @@ export interface GetEndpointResult {
     /**
      * List of keys used to validate the signed URL hashes.
      */
-    readonly urlSigningKeys?: types.outputs.cdn.UrlSigningKeyResponse[];
+    readonly urlSigningKeys?: types.outputs.UrlSigningKeyResponse[];
     /**
      * Defines the Web Application Firewall policy for the endpoint (if applicable)
      */
-    readonly webApplicationFirewallPolicyLink?: types.outputs.cdn.EndpointPropertiesUpdateParametersResponseWebApplicationFirewallPolicyLink;
+    readonly webApplicationFirewallPolicyLink?: types.outputs.EndpointPropertiesUpdateParametersResponseWebApplicationFirewallPolicyLink;
 }
 /**
  * Gets an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.

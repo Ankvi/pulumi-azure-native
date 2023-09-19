@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets an existing origin within an origin group.
  */
@@ -41,7 +41,7 @@ export interface GetAFDOriginResult {
     /**
      * Resource reference to the Azure origin resource.
      */
-    readonly azureOrigin?: types.outputs.cdn.v20230501.ResourceReferenceResponse;
+    readonly azureOrigin?: types.outputs.ResourceReferenceResponse;
     readonly deploymentStatus: string;
     /**
      * Whether to enable health probes to be made against backends defined under backendPools. Health probes can only be disabled if there is a single enabled backend in single enabled backend pool.
@@ -90,11 +90,11 @@ export interface GetAFDOriginResult {
     /**
      * The properties of the private link resource for private origin.
      */
-    readonly sharedPrivateLinkResource?: types.outputs.cdn.v20230501.SharedPrivateLinkResourcePropertiesResponse;
+    readonly sharedPrivateLinkResource?: types.outputs.SharedPrivateLinkResourcePropertiesResponse;
     /**
      * Read only system data
      */
-    readonly systemData: types.outputs.cdn.v20230501.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource type.
      */

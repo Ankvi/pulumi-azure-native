@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a data connector.
  */
@@ -36,7 +36,7 @@ export interface GetOfficeATPDataConnectorResult {
     /**
      * The available data types for the connector.
      */
-    readonly dataTypes?: types.outputs.securityinsights.v20230701preview.AlertsDataTypeOfDataConnectorResponse;
+    readonly dataTypes?: types.outputs.AlertsDataTypeOfDataConnectorResponse;
     /**
      * Etag of the azure resource
      */
@@ -57,7 +57,7 @@ export interface GetOfficeATPDataConnectorResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.securityinsights.v20230701preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The tenant id to connect to, and get the data from.
      */

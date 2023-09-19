@@ -35,7 +35,7 @@ export class VirtualMachine extends pulumi.CustomResource {
     /**
      * Availability Sets in vm.
      */
-    public readonly availabilitySets!: pulumi.Output<types.outputs.scvmm.VirtualMachinePropertiesResponseAvailabilitySets[] | undefined>;
+    public readonly availabilitySets!: pulumi.Output<types.outputs.VirtualMachinePropertiesResponseAvailabilitySets[] | undefined>;
     /**
      * Type of checkpoint supported for the vm.
      */
@@ -43,7 +43,7 @@ export class VirtualMachine extends pulumi.CustomResource {
     /**
      * Checkpoints in the vm.
      */
-    public readonly checkpoints!: pulumi.Output<types.outputs.scvmm.CheckpointResponse[] | undefined>;
+    public readonly checkpoints!: pulumi.Output<types.outputs.CheckpointResponse[] | undefined>;
     /**
      * ARM Id of the cloud resource to use for deploying the vm.
      */
@@ -51,7 +51,7 @@ export class VirtualMachine extends pulumi.CustomResource {
     /**
      * The extended location.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.scvmm.ExtendedLocationResponse>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse>;
     /**
      * Gets or sets the generation for the vm.
      */
@@ -59,15 +59,15 @@ export class VirtualMachine extends pulumi.CustomResource {
     /**
      * Guest agent status properties.
      */
-    public readonly guestAgentProfile!: pulumi.Output<types.outputs.scvmm.GuestAgentProfileResponse | undefined>;
+    public readonly guestAgentProfile!: pulumi.Output<types.outputs.GuestAgentProfileResponse | undefined>;
     /**
      * Hardware properties.
      */
-    public readonly hardwareProfile!: pulumi.Output<types.outputs.scvmm.HardwareProfileResponse | undefined>;
+    public readonly hardwareProfile!: pulumi.Output<types.outputs.HardwareProfileResponse | undefined>;
     /**
      * The identity of the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.scvmm.IdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityResponse | undefined>;
     /**
      * Gets or sets the inventory Item ID for the resource.
      */
@@ -75,7 +75,7 @@ export class VirtualMachine extends pulumi.CustomResource {
     /**
      * Last restored checkpoint in the vm.
      */
-    public /*out*/ readonly lastRestoredVMCheckpoint!: pulumi.Output<types.outputs.scvmm.CheckpointResponse>;
+    public /*out*/ readonly lastRestoredVMCheckpoint!: pulumi.Output<types.outputs.CheckpointResponse>;
     /**
      * Gets or sets the location.
      */
@@ -87,11 +87,11 @@ export class VirtualMachine extends pulumi.CustomResource {
     /**
      * Network properties.
      */
-    public readonly networkProfile!: pulumi.Output<types.outputs.scvmm.NetworkProfileResponse | undefined>;
+    public readonly networkProfile!: pulumi.Output<types.outputs.NetworkProfileResponse | undefined>;
     /**
      * OS properties.
      */
-    public readonly osProfile!: pulumi.Output<types.outputs.scvmm.OsProfileResponse | undefined>;
+    public readonly osProfile!: pulumi.Output<types.outputs.OsProfileResponse | undefined>;
     /**
      * Gets the power state of the virtual machine.
      */
@@ -103,11 +103,11 @@ export class VirtualMachine extends pulumi.CustomResource {
     /**
      * Storage properties.
      */
-    public readonly storageProfile!: pulumi.Output<types.outputs.scvmm.StorageProfileResponse | undefined>;
+    public readonly storageProfile!: pulumi.Output<types.outputs.StorageProfileResponse | undefined>;
     /**
      * The system data.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.scvmm.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags
      */
@@ -218,7 +218,7 @@ export interface VirtualMachineArgs {
     /**
      * Availability Sets in vm.
      */
-    availabilitySets?: pulumi.Input<pulumi.Input<types.inputs.scvmm.VirtualMachinePropertiesAvailabilitySetsArgs>[]>;
+    availabilitySets?: pulumi.Input<pulumi.Input<types.inputs.VirtualMachinePropertiesAvailabilitySetsArgs>[]>;
     /**
      * Type of checkpoint supported for the vm.
      */
@@ -226,7 +226,7 @@ export interface VirtualMachineArgs {
     /**
      * Checkpoints in the vm.
      */
-    checkpoints?: pulumi.Input<pulumi.Input<types.inputs.scvmm.CheckpointArgs>[]>;
+    checkpoints?: pulumi.Input<pulumi.Input<types.inputs.CheckpointArgs>[]>;
     /**
      * ARM Id of the cloud resource to use for deploying the vm.
      */
@@ -234,7 +234,7 @@ export interface VirtualMachineArgs {
     /**
      * The extended location.
      */
-    extendedLocation: pulumi.Input<types.inputs.scvmm.ExtendedLocationArgs>;
+    extendedLocation: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * Gets or sets the generation for the vm.
      */
@@ -242,15 +242,15 @@ export interface VirtualMachineArgs {
     /**
      * Guest agent status properties.
      */
-    guestAgentProfile?: pulumi.Input<types.inputs.scvmm.GuestAgentProfileArgs>;
+    guestAgentProfile?: pulumi.Input<types.inputs.GuestAgentProfileArgs>;
     /**
      * Hardware properties.
      */
-    hardwareProfile?: pulumi.Input<types.inputs.scvmm.HardwareProfileArgs>;
+    hardwareProfile?: pulumi.Input<types.inputs.HardwareProfileArgs>;
     /**
      * The identity of the resource.
      */
-    identity?: pulumi.Input<types.inputs.scvmm.IdentityArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityArgs>;
     /**
      * Gets or sets the inventory Item ID for the resource.
      */
@@ -262,11 +262,11 @@ export interface VirtualMachineArgs {
     /**
      * Network properties.
      */
-    networkProfile?: pulumi.Input<types.inputs.scvmm.NetworkProfileArgs>;
+    networkProfile?: pulumi.Input<types.inputs.NetworkProfileArgs>;
     /**
      * OS properties.
      */
-    osProfile?: pulumi.Input<types.inputs.scvmm.OsProfileArgs>;
+    osProfile?: pulumi.Input<types.inputs.OsProfileArgs>;
     /**
      * The name of the resource group.
      */
@@ -274,7 +274,7 @@ export interface VirtualMachineArgs {
     /**
      * Storage properties.
      */
-    storageProfile?: pulumi.Input<types.inputs.scvmm.StorageProfileArgs>;
+    storageProfile?: pulumi.Input<types.inputs.StorageProfileArgs>;
     /**
      * Resource tags
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An object that represents a container registry.
  */
@@ -58,11 +58,11 @@ export class Registry extends pulumi.CustomResource {
     /**
      * The SKU of the container registry.
      */
-    public readonly sku!: pulumi.Output<types.outputs.containerregistry.v20170301.SkuResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse>;
     /**
      * The properties of the storage account for the container registry.
      */
-    public readonly storageAccount!: pulumi.Output<types.outputs.containerregistry.v20170301.StorageAccountPropertiesResponse | undefined>;
+    public readonly storageAccount!: pulumi.Output<types.outputs.StorageAccountPropertiesResponse | undefined>;
     /**
      * The tags of the resource.
      */
@@ -146,11 +146,11 @@ export interface RegistryArgs {
     /**
      * The SKU of the container registry.
      */
-    sku: pulumi.Input<types.inputs.containerregistry.v20170301.SkuArgs>;
+    sku: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * The parameters of a storage account for the container registry. If specified, the storage account must be in the same physical location as the container registry.
      */
-    storageAccount: pulumi.Input<types.inputs.containerregistry.v20170301.StorageAccountParametersArgs>;
+    storageAccount: pulumi.Input<types.inputs.StorageAccountParametersArgs>;
     /**
      * The tags for the container registry.
      */

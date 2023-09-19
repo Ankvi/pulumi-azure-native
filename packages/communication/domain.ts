@@ -63,7 +63,7 @@ export class Domain extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.communication.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -79,11 +79,11 @@ export class Domain extends pulumi.CustomResource {
     /**
      * List of DnsRecord
      */
-    public /*out*/ readonly verificationRecords!: pulumi.Output<types.outputs.communication.DomainPropertiesResponseVerificationRecords>;
+    public /*out*/ readonly verificationRecords!: pulumi.Output<types.outputs.DomainPropertiesResponseVerificationRecords>;
     /**
      * List of VerificationStatusRecord
      */
-    public /*out*/ readonly verificationStates!: pulumi.Output<types.outputs.communication.DomainPropertiesResponseVerificationStates>;
+    public /*out*/ readonly verificationStates!: pulumi.Output<types.outputs.DomainPropertiesResponseVerificationStates>;
 
     /**
      * Create a Domain resource with the given unique name, arguments, and options.

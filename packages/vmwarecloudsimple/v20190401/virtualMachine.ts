@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Virtual machine model
  */
@@ -38,15 +38,15 @@ export class VirtualMachine extends pulumi.CustomResource {
     /**
      * The list of Virtual Disks' Controllers
      */
-    public /*out*/ readonly controllers!: pulumi.Output<types.outputs.vmwarecloudsimple.v20190401.VirtualDiskControllerResponse[]>;
+    public /*out*/ readonly controllers!: pulumi.Output<types.outputs.VirtualDiskControllerResponse[]>;
     /**
      * Virtual machine properties
      */
-    public readonly customization!: pulumi.Output<types.outputs.vmwarecloudsimple.v20190401.GuestOSCustomizationResponse | undefined>;
+    public readonly customization!: pulumi.Output<types.outputs.GuestOSCustomizationResponse | undefined>;
     /**
      * The list of Virtual Disks
      */
-    public readonly disks!: pulumi.Output<types.outputs.vmwarecloudsimple.v20190401.VirtualDiskResponse[] | undefined>;
+    public readonly disks!: pulumi.Output<types.outputs.VirtualDiskResponse[] | undefined>;
     /**
      * The DNS name of Virtual Machine in VCenter
      */
@@ -78,7 +78,7 @@ export class VirtualMachine extends pulumi.CustomResource {
     /**
      * The list of Virtual NICs
      */
-    public readonly nics!: pulumi.Output<types.outputs.vmwarecloudsimple.v20190401.VirtualNicResponse[] | undefined>;
+    public readonly nics!: pulumi.Output<types.outputs.VirtualNicResponse[] | undefined>;
     /**
      * The number of CPU cores
      */
@@ -102,7 +102,7 @@ export class VirtualMachine extends pulumi.CustomResource {
     /**
      * Virtual Machines Resource Pool
      */
-    public readonly resourcePool!: pulumi.Output<types.outputs.vmwarecloudsimple.v20190401.ResourcePoolResponse | undefined>;
+    public readonly resourcePool!: pulumi.Output<types.outputs.ResourcePoolResponse | undefined>;
     /**
      * The status of Virtual machine
      */
@@ -233,11 +233,11 @@ export interface VirtualMachineArgs {
     /**
      * Virtual machine properties
      */
-    customization?: pulumi.Input<types.inputs.vmwarecloudsimple.v20190401.GuestOSCustomizationArgs>;
+    customization?: pulumi.Input<types.inputs.GuestOSCustomizationArgs>;
     /**
      * The list of Virtual Disks
      */
-    disks?: pulumi.Input<pulumi.Input<types.inputs.vmwarecloudsimple.v20190401.VirtualDiskArgs>[]>;
+    disks?: pulumi.Input<pulumi.Input<types.inputs.VirtualDiskArgs>[]>;
     /**
      * Expose Guest OS or not
      */
@@ -249,7 +249,7 @@ export interface VirtualMachineArgs {
     /**
      * The list of Virtual NICs
      */
-    nics?: pulumi.Input<pulumi.Input<types.inputs.vmwarecloudsimple.v20190401.VirtualNicArgs>[]>;
+    nics?: pulumi.Input<pulumi.Input<types.inputs.VirtualNicArgs>[]>;
     /**
      * The number of CPU cores
      */
@@ -269,7 +269,7 @@ export interface VirtualMachineArgs {
     /**
      * Virtual Machines Resource Pool
      */
-    resourcePool?: pulumi.Input<types.inputs.vmwarecloudsimple.v20190401.ResourcePoolArgs>;
+    resourcePool?: pulumi.Input<types.inputs.ResourcePoolArgs>;
     /**
      * The list of tags
      */

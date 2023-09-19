@@ -43,7 +43,7 @@ export class Assessment extends pulumi.CustomResource {
     /**
      * Properties of the assessment.
      */
-    public readonly properties!: pulumi.Output<types.outputs.migrate.AssessmentPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.AssessmentPropertiesResponse>;
     /**
      * Type of the object = [Microsoft.Migrate/assessmentProjects/groups/assessments].
      */
@@ -116,7 +116,7 @@ export interface AssessmentArgs {
     /**
      * Properties of the assessment.
      */
-    properties: pulumi.Input<types.inputs.migrate.AssessmentPropertiesArgs>;
+    properties: pulumi.Input<types.inputs.AssessmentPropertiesArgs>;
     /**
      * Name of the Azure Resource Group that project is part of.
      */

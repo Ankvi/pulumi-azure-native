@@ -61,11 +61,11 @@ export interface GetNatGatewayResult {
     /**
      * An array of public ip addresses associated with the nat gateway resource.
      */
-    readonly publicIpAddresses?: types.outputs.network.SubResourceResponse[];
+    readonly publicIpAddresses?: types.outputs.SubResourceResponse[];
     /**
      * An array of public ip prefixes associated with the nat gateway resource.
      */
-    readonly publicIpPrefixes?: types.outputs.network.SubResourceResponse[];
+    readonly publicIpPrefixes?: types.outputs.SubResourceResponse[];
     /**
      * The resource GUID property of the NAT gateway resource.
      */
@@ -73,11 +73,11 @@ export interface GetNatGatewayResult {
     /**
      * The nat gateway SKU.
      */
-    readonly sku?: types.outputs.network.NatGatewaySkuResponse;
+    readonly sku?: types.outputs.NatGatewaySkuResponse;
     /**
      * An array of references to the subnets using this nat gateway resource.
      */
-    readonly subnets: types.outputs.network.SubResourceResponse[];
+    readonly subnets: types.outputs.SubResourceResponse[];
     /**
      * Resource tags.
      */

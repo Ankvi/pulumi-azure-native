@@ -36,7 +36,7 @@ export class Task extends pulumi.CustomResource {
     /**
      * The machine configuration of the run agent.
      */
-    public readonly agentConfiguration!: pulumi.Output<types.outputs.containerregistry.AgentPropertiesResponse | undefined>;
+    public readonly agentConfiguration!: pulumi.Output<types.outputs.AgentPropertiesResponse | undefined>;
     /**
      * The dedicated agent pool for the task.
      */
@@ -48,11 +48,11 @@ export class Task extends pulumi.CustomResource {
     /**
      * The properties that describes a set of credentials that will be used when this run is invoked.
      */
-    public readonly credentials!: pulumi.Output<types.outputs.containerregistry.CredentialsResponse | undefined>;
+    public readonly credentials!: pulumi.Output<types.outputs.CredentialsResponse | undefined>;
     /**
      * Identity for the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.containerregistry.IdentityPropertiesResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityPropertiesResponse | undefined>;
     /**
      * The value of this property indicates whether the task resource is system task or not.
      */
@@ -72,7 +72,7 @@ export class Task extends pulumi.CustomResource {
     /**
      * The platform properties against which the run has to happen.
      */
-    public readonly platform!: pulumi.Output<types.outputs.containerregistry.PlatformPropertiesResponse | undefined>;
+    public readonly platform!: pulumi.Output<types.outputs.PlatformPropertiesResponse | undefined>;
     /**
      * The provisioning state of the task.
      */
@@ -84,11 +84,11 @@ export class Task extends pulumi.CustomResource {
     /**
      * The properties of a task step.
      */
-    public readonly step!: pulumi.Output<types.outputs.containerregistry.DockerBuildStepResponse | types.outputs.containerregistry.EncodedTaskStepResponse | types.outputs.containerregistry.FileTaskStepResponse | undefined>;
+    public readonly step!: pulumi.Output<types.outputs.DockerBuildStepResponse | types.outputs.EncodedTaskStepResponse | types.outputs.FileTaskStepResponse | undefined>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.containerregistry.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The tags of the resource.
      */
@@ -100,7 +100,7 @@ export class Task extends pulumi.CustomResource {
     /**
      * The properties that describe all triggers for the task.
      */
-    public readonly trigger!: pulumi.Output<types.outputs.containerregistry.TriggerPropertiesResponse | undefined>;
+    public readonly trigger!: pulumi.Output<types.outputs.TriggerPropertiesResponse | undefined>;
     /**
      * The type of the resource.
      */
@@ -138,7 +138,7 @@ export class Task extends pulumi.CustomResource {
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["taskName"] = args ? args.taskName : undefined;
             resourceInputs["timeout"] = (args ? args.timeout : undefined) ?? 3600;
-            resourceInputs["trigger"] = args ? (args.trigger ? pulumi.output(args.trigger).apply(types.inputs.containerregistry.triggerPropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["trigger"] = args ? (args.trigger ? pulumi.output(args.trigger).apply(types.inputs.triggerPropertiesArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["creationDate"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
@@ -178,7 +178,7 @@ export interface TaskArgs {
     /**
      * The machine configuration of the run agent.
      */
-    agentConfiguration?: pulumi.Input<types.inputs.containerregistry.AgentPropertiesArgs>;
+    agentConfiguration?: pulumi.Input<types.inputs.AgentPropertiesArgs>;
     /**
      * The dedicated agent pool for the task.
      */
@@ -186,11 +186,11 @@ export interface TaskArgs {
     /**
      * The properties that describes a set of credentials that will be used when this run is invoked.
      */
-    credentials?: pulumi.Input<types.inputs.containerregistry.CredentialsArgs>;
+    credentials?: pulumi.Input<types.inputs.CredentialsArgs>;
     /**
      * Identity for the resource.
      */
-    identity?: pulumi.Input<types.inputs.containerregistry.IdentityPropertiesArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityPropertiesArgs>;
     /**
      * The value of this property indicates whether the task resource is system task or not.
      */
@@ -206,7 +206,7 @@ export interface TaskArgs {
     /**
      * The platform properties against which the run has to happen.
      */
-    platform?: pulumi.Input<types.inputs.containerregistry.PlatformPropertiesArgs>;
+    platform?: pulumi.Input<types.inputs.PlatformPropertiesArgs>;
     /**
      * The name of the container registry.
      */
@@ -222,7 +222,7 @@ export interface TaskArgs {
     /**
      * The properties of a task step.
      */
-    step?: pulumi.Input<types.inputs.containerregistry.DockerBuildStepArgs | types.inputs.containerregistry.EncodedTaskStepArgs | types.inputs.containerregistry.FileTaskStepArgs>;
+    step?: pulumi.Input<types.inputs.DockerBuildStepArgs | types.inputs.EncodedTaskStepArgs | types.inputs.FileTaskStepArgs>;
     /**
      * The tags of the resource.
      */
@@ -238,5 +238,5 @@ export interface TaskArgs {
     /**
      * The properties that describe all triggers for the task.
      */
-    trigger?: pulumi.Input<types.inputs.containerregistry.TriggerPropertiesArgs>;
+    trigger?: pulumi.Input<types.inputs.TriggerPropertiesArgs>;
 }

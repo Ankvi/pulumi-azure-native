@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the details (e.g IP address, port etc) of all the compute nodes in the compute.
  */
@@ -40,7 +40,7 @@ export interface ListComputeNodesResult {
     /**
      * The collection of returned AmlCompute nodes details.
      */
-    readonly nodes: types.outputs.machinelearningservices.v20220101preview.AmlComputeNodeInformationResponse[];
+    readonly nodes: types.outputs.AmlComputeNodeInformationResponse[];
 }
 /**
  * Get the details (e.g IP address, port etc) of all the compute nodes in the compute.

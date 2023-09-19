@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Lists policy resources that reference the policy fragment.
  */
@@ -54,7 +54,7 @@ export interface ListPolicyFragmentReferencesResult {
     /**
      * A collection of resources.
      */
-    readonly value?: types.outputs.apimanagement.v20220801.ResourceCollectionResponseValue[];
+    readonly value?: types.outputs.ResourceCollectionResponseValue[];
 }
 /**
  * Lists policy resources that reference the policy fragment.

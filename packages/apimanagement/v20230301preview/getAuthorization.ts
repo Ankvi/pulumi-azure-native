@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the details of the authorization specified by its identifier.
  */
@@ -45,7 +45,7 @@ export interface GetAuthorizationResult {
     /**
      * Authorization error details.
      */
-    readonly error?: types.outputs.apimanagement.v20230301preview.AuthorizationErrorResponse;
+    readonly error?: types.outputs.AuthorizationErrorResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */

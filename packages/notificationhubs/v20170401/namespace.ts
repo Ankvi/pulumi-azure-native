@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Description of a Namespace resource.
  */
@@ -82,7 +82,7 @@ export class Namespace extends pulumi.CustomResource {
     /**
      * The sku of the created namespace
      */
-    public readonly sku!: pulumi.Output<types.outputs.notificationhubs.v20170401.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Status of the namespace. It can be any of these values:1 = Created/Active2 = Creating3 = Suspended4 = Deleting
      */
@@ -200,7 +200,7 @@ export interface NamespaceArgs {
     /**
      * The namespace type.
      */
-    namespaceType?: pulumi.Input<types.enums.v20170401.NamespaceType>;
+    namespaceType?: pulumi.Input<types.enums.NamespaceType>;
     /**
      * Provisioning state of the Namespace.
      */
@@ -224,7 +224,7 @@ export interface NamespaceArgs {
     /**
      * The sku of the created namespace
      */
-    sku?: pulumi.Input<types.inputs.notificationhubs.v20170401.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Status of the namespace. It can be any of these values:1 = Created/Active2 = Creating3 = Suspended4 = Deleting
      */

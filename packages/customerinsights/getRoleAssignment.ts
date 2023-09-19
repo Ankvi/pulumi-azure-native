@@ -41,11 +41,11 @@ export interface GetRoleAssignmentResult {
     /**
      * Widget types set for the assignment.
      */
-    readonly conflationPolicies?: types.outputs.customerinsights.ResourceSetDescriptionResponse;
+    readonly conflationPolicies?: types.outputs.ResourceSetDescriptionResponse;
     /**
      * Connectors set for the assignment.
      */
-    readonly connectors?: types.outputs.customerinsights.ResourceSetDescriptionResponse;
+    readonly connectors?: types.outputs.ResourceSetDescriptionResponse;
     /**
      * Localized description for the metadata.
      */
@@ -61,15 +61,15 @@ export interface GetRoleAssignmentResult {
     /**
      * Interactions set for the assignment.
      */
-    readonly interactions?: types.outputs.customerinsights.ResourceSetDescriptionResponse;
+    readonly interactions?: types.outputs.ResourceSetDescriptionResponse;
     /**
      * Kpis set for the assignment.
      */
-    readonly kpis?: types.outputs.customerinsights.ResourceSetDescriptionResponse;
+    readonly kpis?: types.outputs.ResourceSetDescriptionResponse;
     /**
      * Links set for the assignment.
      */
-    readonly links?: types.outputs.customerinsights.ResourceSetDescriptionResponse;
+    readonly links?: types.outputs.ResourceSetDescriptionResponse;
     /**
      * Resource name.
      */
@@ -77,11 +77,11 @@ export interface GetRoleAssignmentResult {
     /**
      * The principals being assigned to.
      */
-    readonly principals: types.outputs.customerinsights.AssignmentPrincipalResponse[];
+    readonly principals: types.outputs.AssignmentPrincipalResponse[];
     /**
      * Profiles set for the assignment.
      */
-    readonly profiles?: types.outputs.customerinsights.ResourceSetDescriptionResponse;
+    readonly profiles?: types.outputs.ResourceSetDescriptionResponse;
     /**
      * Provisioning state.
      */
@@ -89,11 +89,11 @@ export interface GetRoleAssignmentResult {
     /**
      * The Role assignments set for the relationship links.
      */
-    readonly relationshipLinks?: types.outputs.customerinsights.ResourceSetDescriptionResponse;
+    readonly relationshipLinks?: types.outputs.ResourceSetDescriptionResponse;
     /**
      * The Role assignments set for the relationships.
      */
-    readonly relationships?: types.outputs.customerinsights.ResourceSetDescriptionResponse;
+    readonly relationships?: types.outputs.ResourceSetDescriptionResponse;
     /**
      * Type of roles.
      */
@@ -101,15 +101,15 @@ export interface GetRoleAssignmentResult {
     /**
      * The Role assignments set for the assignment.
      */
-    readonly roleAssignments?: types.outputs.customerinsights.ResourceSetDescriptionResponse;
+    readonly roleAssignments?: types.outputs.ResourceSetDescriptionResponse;
     /**
      * Sas Policies set for the assignment.
      */
-    readonly sasPolicies?: types.outputs.customerinsights.ResourceSetDescriptionResponse;
+    readonly sasPolicies?: types.outputs.ResourceSetDescriptionResponse;
     /**
      * The Role assignments set for the assignment.
      */
-    readonly segments?: types.outputs.customerinsights.ResourceSetDescriptionResponse;
+    readonly segments?: types.outputs.ResourceSetDescriptionResponse;
     /**
      * The hub name.
      */
@@ -121,11 +121,11 @@ export interface GetRoleAssignmentResult {
     /**
      * Views set for the assignment.
      */
-    readonly views?: types.outputs.customerinsights.ResourceSetDescriptionResponse;
+    readonly views?: types.outputs.ResourceSetDescriptionResponse;
     /**
      * Widget types set for the assignment.
      */
-    readonly widgetTypes?: types.outputs.customerinsights.ResourceSetDescriptionResponse;
+    readonly widgetTypes?: types.outputs.ResourceSetDescriptionResponse;
 }
 /**
  * Gets the role assignment in the hub.

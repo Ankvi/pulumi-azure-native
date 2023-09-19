@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The endpoint for the target resource.
  */
@@ -135,7 +135,7 @@ export interface EndpointArgs {
     /**
      * The type of identity that created the resource.
      */
-    createdByType?: pulumi.Input<string | types.enums.v20220501preview.CreatedByType>;
+    createdByType?: pulumi.Input<string | types.enums.CreatedByType>;
     /**
      * The endpoint name.
      */
@@ -151,7 +151,7 @@ export interface EndpointArgs {
     /**
      * The type of identity that last modified the resource.
      */
-    lastModifiedByType?: pulumi.Input<string | types.enums.v20220501preview.CreatedByType>;
+    lastModifiedByType?: pulumi.Input<string | types.enums.CreatedByType>;
     /**
      * The resource Id of the connectivity endpoint (optional).
      */
@@ -163,5 +163,5 @@ export interface EndpointArgs {
     /**
      * The type of endpoint.
      */
-    type: pulumi.Input<string | types.enums.v20220501preview.Type>;
+    type: pulumi.Input<string | types.enums.Type>;
 }

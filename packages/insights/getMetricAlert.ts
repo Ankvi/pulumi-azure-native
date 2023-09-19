@@ -32,7 +32,7 @@ export interface GetMetricAlertResult {
     /**
      * the array of actions that are performed when the alert rule becomes active, and when an alert condition is resolved.
      */
-    readonly actions?: types.outputs.insights.MetricAlertActionResponse[];
+    readonly actions?: types.outputs.MetricAlertActionResponse[];
     /**
      * the flag that indicates whether the alert should be auto resolved or not. The default is true.
      */
@@ -40,7 +40,7 @@ export interface GetMetricAlertResult {
     /**
      * defines the specific alert criteria information.
      */
-    readonly criteria: types.outputs.insights.MetricAlertMultipleResourceMultipleMetricCriteriaResponse | types.outputs.insights.MetricAlertSingleResourceMultipleMetricCriteriaResponse | types.outputs.insights.WebtestLocationAvailabilityCriteriaResponse;
+    readonly criteria: types.outputs.MetricAlertMultipleResourceMultipleMetricCriteriaResponse | types.outputs.MetricAlertSingleResourceMultipleMetricCriteriaResponse | types.outputs.WebtestLocationAvailabilityCriteriaResponse;
     /**
      * the description of the metric alert that will be included in the alert email.
      */

@@ -24,7 +24,7 @@ export interface ListPrivateStoreNewPlansNotificationsArgs {
  * List of all new plans notifications for public offers
  */
 export interface ListPrivateStoreNewPlansNotificationsResult {
-    readonly newPlansNotifications?: types.outputs.marketplace.NewNotificationsResponse[];
+    readonly newPlansNotifications?: types.outputs.NewNotificationsResponse[];
 }
 /**
  * List new plans notifications

@@ -43,7 +43,7 @@ export class IntegrationAccountSchema extends pulumi.CustomResource {
     /**
      * The content link.
      */
-    public /*out*/ readonly contentLink!: pulumi.Output<types.outputs.logic.ContentLinkResponse>;
+    public /*out*/ readonly contentLink!: pulumi.Output<types.outputs.ContentLinkResponse>;
     /**
      * The content type.
      */

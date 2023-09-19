@@ -43,7 +43,7 @@ export class IntegrationAccountAgreement extends pulumi.CustomResource {
     /**
      * The agreement content.
      */
-    public readonly content!: pulumi.Output<types.outputs.logic.AgreementContentResponse>;
+    public readonly content!: pulumi.Output<types.outputs.AgreementContentResponse>;
     /**
      * The created time.
      */
@@ -51,7 +51,7 @@ export class IntegrationAccountAgreement extends pulumi.CustomResource {
     /**
      * The business identity of the guest partner.
      */
-    public readonly guestIdentity!: pulumi.Output<types.outputs.logic.BusinessIdentityResponse>;
+    public readonly guestIdentity!: pulumi.Output<types.outputs.BusinessIdentityResponse>;
     /**
      * The integration account partner that is set as guest partner for this agreement.
      */
@@ -59,7 +59,7 @@ export class IntegrationAccountAgreement extends pulumi.CustomResource {
     /**
      * The business identity of the host partner.
      */
-    public readonly hostIdentity!: pulumi.Output<types.outputs.logic.BusinessIdentityResponse>;
+    public readonly hostIdentity!: pulumi.Output<types.outputs.BusinessIdentityResponse>;
     /**
      * The integration account partner that is set as host partner for this agreement.
      */
@@ -173,11 +173,11 @@ export interface IntegrationAccountAgreementArgs {
     /**
      * The agreement content.
      */
-    content: pulumi.Input<types.inputs.logic.AgreementContentArgs>;
+    content: pulumi.Input<types.inputs.AgreementContentArgs>;
     /**
      * The business identity of the guest partner.
      */
-    guestIdentity: pulumi.Input<types.inputs.logic.BusinessIdentityArgs>;
+    guestIdentity: pulumi.Input<types.inputs.BusinessIdentityArgs>;
     /**
      * The integration account partner that is set as guest partner for this agreement.
      */
@@ -185,7 +185,7 @@ export interface IntegrationAccountAgreementArgs {
     /**
      * The business identity of the host partner.
      */
-    hostIdentity: pulumi.Input<types.inputs.logic.BusinessIdentityArgs>;
+    hostIdentity: pulumi.Input<types.inputs.BusinessIdentityArgs>;
     /**
      * The integration account partner that is set as host partner for this agreement.
      */

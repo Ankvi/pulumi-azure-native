@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An Application Insights workbook definition.
  */
@@ -50,7 +50,7 @@ export class Workbook extends pulumi.CustomResource {
     /**
      * Identity used for BYOS
      */
-    public readonly identity!: pulumi.Output<types.outputs.insights.v20210308.WorkbookManagedIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.WorkbookManagedIdentityResponse | undefined>;
     /**
      * The kind of workbook. Choices are user and shared.
      */
@@ -82,7 +82,7 @@ export class Workbook extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.insights.v20210308.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags
      */
@@ -198,11 +198,11 @@ export interface WorkbookArgs {
     /**
      * Identity used for BYOS
      */
-    identity?: pulumi.Input<types.inputs.insights.v20210308.WorkbookManagedIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.WorkbookManagedIdentityArgs>;
     /**
      * The kind of workbook. Choices are user and shared.
      */
-    kind?: pulumi.Input<string | types.enums.v20210308.Kind>;
+    kind?: pulumi.Input<string | types.enums.Kind>;
     /**
      * Resource location
      */

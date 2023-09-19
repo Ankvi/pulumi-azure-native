@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An deployment resource belonging to a device group resource.
  */
@@ -34,7 +34,7 @@ export class Deployment extends pulumi.CustomResource {
     /**
      * Images deployed
      */
-    public readonly deployedImages!: pulumi.Output<types.outputs.azuresphere.v20220901preview.ImageResponse[] | undefined>;
+    public readonly deployedImages!: pulumi.Output<types.outputs.ImageResponse[] | undefined>;
     /**
      * Deployment date UTC
      */
@@ -54,7 +54,7 @@ export class Deployment extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.azuresphere.v20220901preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -122,7 +122,7 @@ export interface DeploymentArgs {
     /**
      * Images deployed
      */
-    deployedImages?: pulumi.Input<pulumi.Input<types.inputs.azuresphere.v20220901preview.ImageArgs>[]>;
+    deployedImages?: pulumi.Input<pulumi.Input<types.inputs.ImageArgs>[]>;
     /**
      * Deployment ID
      */

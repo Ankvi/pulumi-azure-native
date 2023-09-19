@@ -43,11 +43,11 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * Private endpoint which the connection belongs to.
      */
-    public readonly privateEndpoint!: pulumi.Output<types.outputs.documentdb.PrivateEndpointPropertyResponse | undefined>;
+    public readonly privateEndpoint!: pulumi.Output<types.outputs.PrivateEndpointPropertyResponse | undefined>;
     /**
      * Connection State of the Private Endpoint Connection.
      */
-    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.documentdb.PrivateLinkServiceConnectionStatePropertyResponse | undefined>;
+    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.PrivateLinkServiceConnectionStatePropertyResponse | undefined>;
     /**
      * Provisioning state of the private endpoint.
      */
@@ -113,7 +113,7 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * Private endpoint which the connection belongs to.
      */
-    privateEndpoint?: pulumi.Input<types.inputs.documentdb.PrivateEndpointPropertyArgs>;
+    privateEndpoint?: pulumi.Input<types.inputs.PrivateEndpointPropertyArgs>;
     /**
      * The name of the private endpoint connection.
      */
@@ -121,7 +121,7 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * Connection State of the Private Endpoint Connection.
      */
-    privateLinkServiceConnectionState?: pulumi.Input<types.inputs.documentdb.PrivateLinkServiceConnectionStatePropertyArgs>;
+    privateLinkServiceConnectionState?: pulumi.Input<types.inputs.PrivateLinkServiceConnectionStatePropertyArgs>;
     /**
      * Provisioning state of the private endpoint.
      */

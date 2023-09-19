@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents a HostPool definition.
  */
@@ -34,7 +34,7 @@ export class HostPool extends pulumi.CustomResource {
     /**
      * The session host configuration for updating agent, monitoring agent, and stack component.
      */
-    public readonly agentUpdate!: pulumi.Output<types.outputs.desktopvirtualization.v20220909.AgentUpdatePropertiesResponse | undefined>;
+    public readonly agentUpdate!: pulumi.Output<types.outputs.AgentUpdatePropertiesResponse | undefined>;
     /**
      * List of applicationGroup links.
      */
@@ -63,7 +63,7 @@ export class HostPool extends pulumi.CustomResource {
      * HostPool type for desktop.
      */
     public readonly hostPoolType!: pulumi.Output<string>;
-    public readonly identity!: pulumi.Output<types.outputs.desktopvirtualization.v20220909.ResourceModelWithAllowedPropertySetResponseIdentity | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ResourceModelWithAllowedPropertySetResponseIdentity | undefined>;
     /**
      * Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
      */
@@ -96,7 +96,7 @@ export class HostPool extends pulumi.CustomResource {
      * PersonalDesktopAssignment type for HostPool.
      */
     public readonly personalDesktopAssignmentType!: pulumi.Output<string | undefined>;
-    public readonly plan!: pulumi.Output<types.outputs.desktopvirtualization.v20220909.ResourceModelWithAllowedPropertySetResponsePlan | undefined>;
+    public readonly plan!: pulumi.Output<types.outputs.ResourceModelWithAllowedPropertySetResponsePlan | undefined>;
     /**
      * The type of preferred application group type, default to Desktop Application Group
      */
@@ -104,12 +104,12 @@ export class HostPool extends pulumi.CustomResource {
     /**
      * The registration info of HostPool.
      */
-    public readonly registrationInfo!: pulumi.Output<types.outputs.desktopvirtualization.v20220909.RegistrationInfoResponse | undefined>;
+    public readonly registrationInfo!: pulumi.Output<types.outputs.RegistrationInfoResponse | undefined>;
     /**
      * The ring number of HostPool.
      */
     public readonly ring!: pulumi.Output<number | undefined>;
-    public readonly sku!: pulumi.Output<types.outputs.desktopvirtualization.v20220909.ResourceModelWithAllowedPropertySetResponseSku | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.ResourceModelWithAllowedPropertySetResponseSku | undefined>;
     /**
      * ClientId for the registered Relying Party used to issue WVD SSO certificates.
      */
@@ -133,7 +133,7 @@ export class HostPool extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.desktopvirtualization.v20220909.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -256,7 +256,7 @@ export interface HostPoolArgs {
     /**
      * The session host configuration for updating agent, monitoring agent, and stack component.
      */
-    agentUpdate?: pulumi.Input<types.inputs.desktopvirtualization.v20220909.AgentUpdatePropertiesArgs>;
+    agentUpdate?: pulumi.Input<types.inputs.AgentUpdatePropertiesArgs>;
     /**
      * Custom rdp property of HostPool.
      */
@@ -276,8 +276,8 @@ export interface HostPoolArgs {
     /**
      * HostPool type for desktop.
      */
-    hostPoolType: pulumi.Input<string | types.enums.v20220909.HostPoolType>;
-    identity?: pulumi.Input<types.inputs.desktopvirtualization.v20220909.ResourceModelWithAllowedPropertySetIdentityArgs>;
+    hostPoolType: pulumi.Input<string | types.enums.HostPoolType>;
+    identity?: pulumi.Input<types.inputs.ResourceModelWithAllowedPropertySetIdentityArgs>;
     /**
      * Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
      */
@@ -285,7 +285,7 @@ export interface HostPoolArgs {
     /**
      * The type of the load balancer.
      */
-    loadBalancerType: pulumi.Input<string | types.enums.v20220909.LoadBalancerType>;
+    loadBalancerType: pulumi.Input<string | types.enums.LoadBalancerType>;
     /**
      * The geo-location where the resource lives
      */
@@ -301,16 +301,16 @@ export interface HostPoolArgs {
     /**
      * PersonalDesktopAssignment type for HostPool.
      */
-    personalDesktopAssignmentType?: pulumi.Input<string | types.enums.v20220909.PersonalDesktopAssignmentType>;
-    plan?: pulumi.Input<types.inputs.desktopvirtualization.v20220909.ResourceModelWithAllowedPropertySetPlanArgs>;
+    personalDesktopAssignmentType?: pulumi.Input<string | types.enums.PersonalDesktopAssignmentType>;
+    plan?: pulumi.Input<types.inputs.ResourceModelWithAllowedPropertySetPlanArgs>;
     /**
      * The type of preferred application group type, default to Desktop Application Group
      */
-    preferredAppGroupType: pulumi.Input<string | types.enums.v20220909.PreferredAppGroupType>;
+    preferredAppGroupType: pulumi.Input<string | types.enums.PreferredAppGroupType>;
     /**
      * The registration info of HostPool.
      */
-    registrationInfo?: pulumi.Input<types.inputs.desktopvirtualization.v20220909.RegistrationInfoArgs>;
+    registrationInfo?: pulumi.Input<types.inputs.RegistrationInfoArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -319,7 +319,7 @@ export interface HostPoolArgs {
      * The ring number of HostPool.
      */
     ring?: pulumi.Input<number>;
-    sku?: pulumi.Input<types.inputs.desktopvirtualization.v20220909.ResourceModelWithAllowedPropertySetSkuArgs>;
+    sku?: pulumi.Input<types.inputs.ResourceModelWithAllowedPropertySetSkuArgs>;
     /**
      * ClientId for the registered Relying Party used to issue WVD SSO certificates.
      */
@@ -331,7 +331,7 @@ export interface HostPoolArgs {
     /**
      * The type of single sign on Secret Type.
      */
-    ssoSecretType?: pulumi.Input<string | types.enums.v20220909.SSOSecretType>;
+    ssoSecretType?: pulumi.Input<string | types.enums.SSOSecretType>;
     /**
      * URL to customer ADFS server for signing WVD SSO certificates.
      */

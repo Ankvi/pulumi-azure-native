@@ -13,7 +13,7 @@ utilities.lazyLoad(exports, ["SoftwareUpdateConfigurationByName"], () => require
 
 
 // Export enums:
-export * from "../types/enums/v20170515preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

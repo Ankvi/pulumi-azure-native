@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get object metadata from an integration runtime
  */
@@ -45,7 +45,7 @@ export interface GetIntegrationRuntimeObjectMetadatumResult {
     /**
      * List of SSIS object metadata.
      */
-    readonly value?: (types.outputs.synapse.v20210601.SsisEnvironmentResponse | types.outputs.synapse.v20210601.SsisFolderResponse | types.outputs.synapse.v20210601.SsisPackageResponse | types.outputs.synapse.v20210601.SsisProjectResponse)[];
+    readonly value?: (types.outputs.SsisEnvironmentResponse | types.outputs.SsisFolderResponse | types.outputs.SsisPackageResponse | types.outputs.SsisProjectResponse)[];
 }
 /**
  * Get object metadata from an integration runtime

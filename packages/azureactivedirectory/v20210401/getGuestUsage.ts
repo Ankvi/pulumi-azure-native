@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a Guest Usages resource for the Microsoft.AzureActiveDirectory resource provider
  */
@@ -43,7 +43,7 @@ export interface GetGuestUsageResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.azureactivedirectory.v20210401.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Key-value pairs of additional resource provisioning properties.
      */

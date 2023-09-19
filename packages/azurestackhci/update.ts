@@ -83,7 +83,7 @@ export class Update extends pulumi.CustomResource {
     /**
      * If update State is HasPrerequisite, this property contains an array of objects describing prerequisite updates before installing this update. Otherwise, it is empty.
      */
-    public readonly prerequisites!: pulumi.Output<types.outputs.azurestackhci.UpdatePrerequisiteResponse[] | undefined>;
+    public readonly prerequisites!: pulumi.Output<types.outputs.UpdatePrerequisiteResponse[] | undefined>;
     /**
      * Progress percentage of ongoing operation. Currently this property is only valid when the update is in the Downloading state, where it maps to how much of the update content has been downloaded.
      */
@@ -107,7 +107,7 @@ export class Update extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.azurestackhci.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -243,7 +243,7 @@ export interface UpdateArgs {
     /**
      * If update State is HasPrerequisite, this property contains an array of objects describing prerequisite updates before installing this update. Otherwise, it is empty.
      */
-    prerequisites?: pulumi.Input<pulumi.Input<types.inputs.azurestackhci.UpdatePrerequisiteArgs>[]>;
+    prerequisites?: pulumi.Input<pulumi.Input<types.inputs.UpdatePrerequisiteArgs>[]>;
     /**
      * Progress percentage of ongoing operation. Currently this property is only valid when the update is in the Downloading state, where it maps to how much of the update content has been downloaded.
      */

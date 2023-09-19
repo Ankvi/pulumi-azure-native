@@ -55,7 +55,7 @@ export interface GetDefaultUserRuleResult {
     /**
      * The destination address prefixes. CIDR or destination IP ranges.
      */
-    readonly destinations: types.outputs.network.AddressPrefixItemResponse[];
+    readonly destinations: types.outputs.AddressPrefixItemResponse[];
     /**
      * Indicates if the traffic matched against the rule in inbound or outbound.
      */
@@ -96,11 +96,11 @@ export interface GetDefaultUserRuleResult {
     /**
      * The CIDR or source IP ranges.
      */
-    readonly sources: types.outputs.network.AddressPrefixItemResponse[];
+    readonly sources: types.outputs.AddressPrefixItemResponse[];
     /**
      * The system metadata related to this resource.
      */
-    readonly systemData: types.outputs.network.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource type.
      */

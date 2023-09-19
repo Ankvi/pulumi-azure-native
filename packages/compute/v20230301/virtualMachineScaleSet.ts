@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Describes a Virtual Machine Scale Set.
  */
@@ -34,11 +34,11 @@ export class VirtualMachineScaleSet extends pulumi.CustomResource {
     /**
      * Specifies additional capabilities enabled or disabled on the Virtual Machines in the Virtual Machine Scale Set. For instance: whether the Virtual Machines have the capability to support attaching managed data disks with UltraSSD_LRS storage account type.
      */
-    public readonly additionalCapabilities!: pulumi.Output<types.outputs.compute.v20230301.AdditionalCapabilitiesResponse | undefined>;
+    public readonly additionalCapabilities!: pulumi.Output<types.outputs.AdditionalCapabilitiesResponse | undefined>;
     /**
      * Policy for automatic repairs.
      */
-    public readonly automaticRepairsPolicy!: pulumi.Output<types.outputs.compute.v20230301.AutomaticRepairsPolicyResponse | undefined>;
+    public readonly automaticRepairsPolicy!: pulumi.Output<types.outputs.AutomaticRepairsPolicyResponse | undefined>;
     /**
      * Optional property which must either be set to True or omitted.
      */
@@ -50,15 +50,15 @@ export class VirtualMachineScaleSet extends pulumi.CustomResource {
     /**
      * The extended location of the Virtual Machine Scale Set.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.compute.v20230301.ExtendedLocationResponse | undefined>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
     /**
      * Specifies information about the dedicated host group that the virtual machine scale set resides in. Minimum api-version: 2020-06-01.
      */
-    public readonly hostGroup!: pulumi.Output<types.outputs.compute.v20230301.SubResourceResponse | undefined>;
+    public readonly hostGroup!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * The identity of the virtual machine scale set, if configured.
      */
-    public readonly identity!: pulumi.Output<types.outputs.compute.v20230301.VirtualMachineScaleSetIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.VirtualMachineScaleSetIdentityResponse | undefined>;
     /**
      * Resource location
      */
@@ -78,7 +78,7 @@ export class VirtualMachineScaleSet extends pulumi.CustomResource {
     /**
      * Specifies information about the marketplace image used to create the virtual machine. This element is only used for marketplace images. Before you can use a marketplace image from an API, you must enable the image for programmatic use.  In the Azure portal, find the marketplace image that you want to use and then click **Want to deploy programmatically, Get Started ->**. Enter any required information and then click **Save**.
      */
-    public readonly plan!: pulumi.Output<types.outputs.compute.v20230301.PlanResponse | undefined>;
+    public readonly plan!: pulumi.Output<types.outputs.PlanResponse | undefined>;
     /**
      * Fault Domain count for each placement group.
      */
@@ -86,7 +86,7 @@ export class VirtualMachineScaleSet extends pulumi.CustomResource {
     /**
      * Specifies the desired targets for mixing Spot and Regular priority VMs within the same VMSS Flex instance.
      */
-    public readonly priorityMixPolicy!: pulumi.Output<types.outputs.compute.v20230301.PriorityMixPolicyResponse | undefined>;
+    public readonly priorityMixPolicy!: pulumi.Output<types.outputs.PriorityMixPolicyResponse | undefined>;
     /**
      * The provisioning state, which only appears in the response.
      */
@@ -94,11 +94,11 @@ export class VirtualMachineScaleSet extends pulumi.CustomResource {
     /**
      * Specifies information about the proximity placement group that the virtual machine scale set should be assigned to. Minimum api-version: 2018-04-01.
      */
-    public readonly proximityPlacementGroup!: pulumi.Output<types.outputs.compute.v20230301.SubResourceResponse | undefined>;
+    public readonly proximityPlacementGroup!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * Specifies the policies applied when scaling in Virtual Machines in the Virtual Machine Scale Set.
      */
-    public readonly scaleInPolicy!: pulumi.Output<types.outputs.compute.v20230301.ScaleInPolicyResponse | undefined>;
+    public readonly scaleInPolicy!: pulumi.Output<types.outputs.ScaleInPolicyResponse | undefined>;
     /**
      * When true this limits the scale set to a single placement group, of max size 100 virtual machines. NOTE: If singlePlacementGroup is true, it may be modified to false. However, if singlePlacementGroup is false, it may not be modified to true.
      */
@@ -106,11 +106,11 @@ export class VirtualMachineScaleSet extends pulumi.CustomResource {
     /**
      * The virtual machine scale set sku.
      */
-    public readonly sku!: pulumi.Output<types.outputs.compute.v20230301.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Specifies the Spot Restore properties for the virtual machine scale set.
      */
-    public readonly spotRestorePolicy!: pulumi.Output<types.outputs.compute.v20230301.SpotRestorePolicyResponse | undefined>;
+    public readonly spotRestorePolicy!: pulumi.Output<types.outputs.SpotRestorePolicyResponse | undefined>;
     /**
      * Resource tags
      */
@@ -130,11 +130,11 @@ export class VirtualMachineScaleSet extends pulumi.CustomResource {
     /**
      * The upgrade policy.
      */
-    public readonly upgradePolicy!: pulumi.Output<types.outputs.compute.v20230301.UpgradePolicyResponse | undefined>;
+    public readonly upgradePolicy!: pulumi.Output<types.outputs.UpgradePolicyResponse | undefined>;
     /**
      * The virtual machine profile.
      */
-    public readonly virtualMachineProfile!: pulumi.Output<types.outputs.compute.v20230301.VirtualMachineScaleSetVMProfileResponse | undefined>;
+    public readonly virtualMachineProfile!: pulumi.Output<types.outputs.VirtualMachineScaleSetVMProfileResponse | undefined>;
     /**
      * Whether to force strictly even Virtual Machine distribution cross x-zones in case there is zone outage. zoneBalance property can only be set if the zones property of the scale set contains more than one zone. If there are no zones or only one zone specified, then zoneBalance property should not be set.
      */
@@ -232,11 +232,11 @@ export interface VirtualMachineScaleSetArgs {
     /**
      * Specifies additional capabilities enabled or disabled on the Virtual Machines in the Virtual Machine Scale Set. For instance: whether the Virtual Machines have the capability to support attaching managed data disks with UltraSSD_LRS storage account type.
      */
-    additionalCapabilities?: pulumi.Input<types.inputs.compute.v20230301.AdditionalCapabilitiesArgs>;
+    additionalCapabilities?: pulumi.Input<types.inputs.AdditionalCapabilitiesArgs>;
     /**
      * Policy for automatic repairs.
      */
-    automaticRepairsPolicy?: pulumi.Input<types.inputs.compute.v20230301.AutomaticRepairsPolicyArgs>;
+    automaticRepairsPolicy?: pulumi.Input<types.inputs.AutomaticRepairsPolicyArgs>;
     /**
      * Optional property which must either be set to True or omitted.
      */
@@ -248,15 +248,15 @@ export interface VirtualMachineScaleSetArgs {
     /**
      * The extended location of the Virtual Machine Scale Set.
      */
-    extendedLocation?: pulumi.Input<types.inputs.compute.v20230301.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * Specifies information about the dedicated host group that the virtual machine scale set resides in. Minimum api-version: 2020-06-01.
      */
-    hostGroup?: pulumi.Input<types.inputs.compute.v20230301.SubResourceArgs>;
+    hostGroup?: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * The identity of the virtual machine scale set, if configured.
      */
-    identity?: pulumi.Input<types.inputs.compute.v20230301.VirtualMachineScaleSetIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.VirtualMachineScaleSetIdentityArgs>;
     /**
      * Resource location
      */
@@ -264,7 +264,7 @@ export interface VirtualMachineScaleSetArgs {
     /**
      * Specifies the orchestration mode for the virtual machine scale set.
      */
-    orchestrationMode?: pulumi.Input<string | types.enums.v20230301.OrchestrationMode>;
+    orchestrationMode?: pulumi.Input<string | types.enums.OrchestrationMode>;
     /**
      * Specifies whether the Virtual Machine Scale Set should be overprovisioned.
      */
@@ -272,7 +272,7 @@ export interface VirtualMachineScaleSetArgs {
     /**
      * Specifies information about the marketplace image used to create the virtual machine. This element is only used for marketplace images. Before you can use a marketplace image from an API, you must enable the image for programmatic use.  In the Azure portal, find the marketplace image that you want to use and then click **Want to deploy programmatically, Get Started ->**. Enter any required information and then click **Save**.
      */
-    plan?: pulumi.Input<types.inputs.compute.v20230301.PlanArgs>;
+    plan?: pulumi.Input<types.inputs.PlanArgs>;
     /**
      * Fault Domain count for each placement group.
      */
@@ -280,11 +280,11 @@ export interface VirtualMachineScaleSetArgs {
     /**
      * Specifies the desired targets for mixing Spot and Regular priority VMs within the same VMSS Flex instance.
      */
-    priorityMixPolicy?: pulumi.Input<types.inputs.compute.v20230301.PriorityMixPolicyArgs>;
+    priorityMixPolicy?: pulumi.Input<types.inputs.PriorityMixPolicyArgs>;
     /**
      * Specifies information about the proximity placement group that the virtual machine scale set should be assigned to. Minimum api-version: 2018-04-01.
      */
-    proximityPlacementGroup?: pulumi.Input<types.inputs.compute.v20230301.SubResourceArgs>;
+    proximityPlacementGroup?: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * The name of the resource group.
      */
@@ -292,7 +292,7 @@ export interface VirtualMachineScaleSetArgs {
     /**
      * Specifies the policies applied when scaling in Virtual Machines in the Virtual Machine Scale Set.
      */
-    scaleInPolicy?: pulumi.Input<types.inputs.compute.v20230301.ScaleInPolicyArgs>;
+    scaleInPolicy?: pulumi.Input<types.inputs.ScaleInPolicyArgs>;
     /**
      * When true this limits the scale set to a single placement group, of max size 100 virtual machines. NOTE: If singlePlacementGroup is true, it may be modified to false. However, if singlePlacementGroup is false, it may not be modified to true.
      */
@@ -300,11 +300,11 @@ export interface VirtualMachineScaleSetArgs {
     /**
      * The virtual machine scale set sku.
      */
-    sku?: pulumi.Input<types.inputs.compute.v20230301.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Specifies the Spot Restore properties for the virtual machine scale set.
      */
-    spotRestorePolicy?: pulumi.Input<types.inputs.compute.v20230301.SpotRestorePolicyArgs>;
+    spotRestorePolicy?: pulumi.Input<types.inputs.SpotRestorePolicyArgs>;
     /**
      * Resource tags
      */
@@ -312,11 +312,11 @@ export interface VirtualMachineScaleSetArgs {
     /**
      * The upgrade policy.
      */
-    upgradePolicy?: pulumi.Input<types.inputs.compute.v20230301.UpgradePolicyArgs>;
+    upgradePolicy?: pulumi.Input<types.inputs.UpgradePolicyArgs>;
     /**
      * The virtual machine profile.
      */
-    virtualMachineProfile?: pulumi.Input<types.inputs.compute.v20230301.VirtualMachineScaleSetVMProfileArgs>;
+    virtualMachineProfile?: pulumi.Input<types.inputs.VirtualMachineScaleSetVMProfileArgs>;
     /**
      * The name of the VM scale set to create or update.
      */

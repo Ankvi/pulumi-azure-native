@@ -32,7 +32,7 @@ export interface GetRedisResult {
     /**
      * The keys of the Redis cache - not set if this object is not the response to Create or Update redis cache
      */
-    readonly accessKeys: types.outputs.cache.RedisAccessKeysResponse;
+    readonly accessKeys: types.outputs.RedisAccessKeysResponse;
     /**
      * Specifies whether the non-ssl Redis server port (6379) is enabled.
      */
@@ -48,15 +48,15 @@ export interface GetRedisResult {
     /**
      * The identity of the resource.
      */
-    readonly identity?: types.outputs.cache.ManagedServiceIdentityResponse;
+    readonly identity?: types.outputs.ManagedServiceIdentityResponse;
     /**
      * List of the Redis instances associated with the cache
      */
-    readonly instances: types.outputs.cache.RedisInstanceDetailsResponse[];
+    readonly instances: types.outputs.RedisInstanceDetailsResponse[];
     /**
      * List of the linked servers associated with the cache
      */
-    readonly linkedServers: types.outputs.cache.RedisLinkedServerResponse[];
+    readonly linkedServers: types.outputs.RedisLinkedServerResponse[];
     /**
      * The geo-location where the resource lives
      */
@@ -76,7 +76,7 @@ export interface GetRedisResult {
     /**
      * List of private endpoint connection associated with the specified redis cache
      */
-    readonly privateEndpointConnections: types.outputs.cache.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections: types.outputs.PrivateEndpointConnectionResponse[];
     /**
      * Redis instance provisioning status.
      */
@@ -88,7 +88,7 @@ export interface GetRedisResult {
     /**
      * All Redis Settings. Few possible keys: rdb-backup-enabled,rdb-storage-connection-string,rdb-backup-frequency,maxmemory-delta,maxmemory-policy,notify-keyspace-events,maxmemory-samples,slowlog-log-slower-than,slowlog-max-len,list-max-ziplist-entries,list-max-ziplist-value,hash-max-ziplist-entries,hash-max-ziplist-value,set-max-intset-entries,zset-max-ziplist-entries,zset-max-ziplist-value etc.
      */
-    readonly redisConfiguration?: types.outputs.cache.RedisCommonPropertiesResponseRedisConfiguration;
+    readonly redisConfiguration?: types.outputs.RedisCommonPropertiesResponseRedisConfiguration;
     /**
      * Redis version. This should be in the form 'major[.minor]' (only 'major' is required) or the value 'latest' which refers to the latest stable Redis version that is available. Supported versions: 4.0, 6.0 (latest). Default value is 'latest'.
      */
@@ -108,7 +108,7 @@ export interface GetRedisResult {
     /**
      * The SKU of the Redis cache to deploy.
      */
-    readonly sku: types.outputs.cache.SkuResponse;
+    readonly sku: types.outputs.SkuResponse;
     /**
      * Redis SSL port.
      */

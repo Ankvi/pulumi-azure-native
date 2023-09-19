@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Subscription feature registration details
  */
@@ -35,7 +35,7 @@ export class SubscriptionFeatureRegistration extends pulumi.CustomResource {
      * Azure resource name.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
-    public readonly properties!: pulumi.Output<types.outputs.features.v20210701.SubscriptionFeatureRegistrationResponseProperties>;
+    public readonly properties!: pulumi.Output<types.outputs.SubscriptionFeatureRegistrationResponseProperties>;
     /**
      * Azure resource type.
      */
@@ -56,7 +56,7 @@ export class SubscriptionFeatureRegistration extends pulumi.CustomResource {
                 throw new Error("Missing required property 'providerNamespace'");
             }
             resourceInputs["featureName"] = args ? args.featureName : undefined;
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.features.v20210701.subscriptionFeatureRegistrationPropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.subscriptionFeatureRegistrationPropertiesArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["providerNamespace"] = args ? args.providerNamespace : undefined;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
@@ -80,7 +80,7 @@ export interface SubscriptionFeatureRegistrationArgs {
      * The feature name.
      */
     featureName?: pulumi.Input<string>;
-    properties?: pulumi.Input<types.inputs.features.v20210701.SubscriptionFeatureRegistrationPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.SubscriptionFeatureRegistrationPropertiesArgs>;
     /**
      * The provider namespace.
      */

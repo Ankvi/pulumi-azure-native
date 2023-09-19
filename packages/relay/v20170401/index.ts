@@ -33,7 +33,7 @@ utilities.lazyLoad(exports, ["WCFRelayAuthorizationRule"], () => require("./wcfr
 
 
 // Export enums:
-export * from "../types/enums/v20170401";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

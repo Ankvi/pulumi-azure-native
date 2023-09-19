@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a blueprint artifact.
  */
@@ -61,7 +61,7 @@ export interface GetTemplateArtifactResult {
     /**
      * Resource Manager template blueprint artifact parameter values.
      */
-    readonly parameters: {[key: string]: types.outputs.blueprint.v20181101preview.ParameterValueResponse};
+    readonly parameters: {[key: string]: types.outputs.ParameterValueResponse};
     /**
      * If applicable, the name of the resource group placeholder to which the Resource Manager template blueprint artifact will be deployed.
      */

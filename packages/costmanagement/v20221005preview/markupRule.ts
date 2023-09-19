@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Markup rule
  */
@@ -34,7 +34,7 @@ export class MarkupRule extends pulumi.CustomResource {
     /**
      * Customer information for the markup rule.
      */
-    public readonly customerDetails!: pulumi.Output<types.outputs.costmanagement.v20221005preview.CustomerMetadataResponse>;
+    public readonly customerDetails!: pulumi.Output<types.outputs.CustomerMetadataResponse>;
     /**
      * The description of the markup rule.
      */
@@ -132,7 +132,7 @@ export interface MarkupRuleArgs {
     /**
      * Customer information for the markup rule.
      */
-    customerDetails: pulumi.Input<types.inputs.costmanagement.v20221005preview.CustomerMetadataArgs>;
+    customerDetails: pulumi.Input<types.inputs.CustomerMetadataArgs>;
     /**
      * The description of the markup rule.
      */

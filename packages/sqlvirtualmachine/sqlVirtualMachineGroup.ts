@@ -67,7 +67,7 @@ export class SqlVirtualMachineGroup extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.sqlvirtualmachine.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -79,7 +79,7 @@ export class SqlVirtualMachineGroup extends pulumi.CustomResource {
     /**
      * Cluster Active Directory domain profile.
      */
-    public readonly wsfcDomainProfile!: pulumi.Output<types.outputs.sqlvirtualmachine.WsfcDomainProfileResponse | undefined>;
+    public readonly wsfcDomainProfile!: pulumi.Output<types.outputs.WsfcDomainProfileResponse | undefined>;
 
     /**
      * Create a SqlVirtualMachineGroup resource with the given unique name, arguments, and options.
@@ -161,5 +161,5 @@ export interface SqlVirtualMachineGroupArgs {
     /**
      * Cluster Active Directory domain profile.
      */
-    wsfcDomainProfile?: pulumi.Input<types.inputs.sqlvirtualmachine.WsfcDomainProfileArgs>;
+    wsfcDomainProfile?: pulumi.Input<types.inputs.WsfcDomainProfileArgs>;
 }

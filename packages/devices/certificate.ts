@@ -43,7 +43,7 @@ export class Certificate extends pulumi.CustomResource {
     /**
      * The description of an X509 CA Certificate.
      */
-    public readonly properties!: pulumi.Output<types.outputs.devices.CertificatePropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.CertificatePropertiesResponse>;
     /**
      * The resource type.
      */
@@ -97,7 +97,7 @@ export interface CertificateArgs {
     /**
      * The description of an X509 CA Certificate.
      */
-    properties?: pulumi.Input<types.inputs.devices.CertificatePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.CertificatePropertiesArgs>;
     /**
      * The name of the resource group that contains the IoT hub.
      */

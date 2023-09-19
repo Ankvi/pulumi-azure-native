@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Cluster details.
  */
@@ -74,7 +74,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * Desired properties of the cluster.
      */
-    public readonly desiredProperties!: pulumi.Output<types.outputs.azurestackhci.v20220901.ClusterDesiredPropertiesResponse | undefined>;
+    public readonly desiredProperties!: pulumi.Output<types.outputs.ClusterDesiredPropertiesResponse | undefined>;
     /**
      * Most recent billing meter timestamp.
      */
@@ -114,7 +114,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * Properties reported by cluster agent.
      */
-    public /*out*/ readonly reportedProperties!: pulumi.Output<types.outputs.azurestackhci.v20220901.ClusterReportedPropertiesResponse>;
+    public /*out*/ readonly reportedProperties!: pulumi.Output<types.outputs.ClusterReportedPropertiesResponse>;
     /**
      * Region specific DataPath Endpoint of the cluster.
      */
@@ -122,7 +122,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * Software Assurance properties of the cluster.
      */
-    public readonly softwareAssuranceProperties!: pulumi.Output<types.outputs.azurestackhci.v20220901.SoftwareAssurancePropertiesResponse | undefined>;
+    public readonly softwareAssuranceProperties!: pulumi.Output<types.outputs.SoftwareAssurancePropertiesResponse | undefined>;
     /**
      * Status of the cluster agent.
      */
@@ -258,11 +258,11 @@ export interface ClusterArgs {
     /**
      * The type of identity that created the resource.
      */
-    createdByType?: pulumi.Input<string | types.enums.v20220901.CreatedByType>;
+    createdByType?: pulumi.Input<string | types.enums.CreatedByType>;
     /**
      * Desired properties of the cluster.
      */
-    desiredProperties?: pulumi.Input<types.inputs.azurestackhci.v20220901.ClusterDesiredPropertiesArgs>;
+    desiredProperties?: pulumi.Input<types.inputs.ClusterDesiredPropertiesArgs>;
     /**
      * The timestamp of resource last modification (UTC)
      */
@@ -274,7 +274,7 @@ export interface ClusterArgs {
     /**
      * The type of identity that last modified the resource.
      */
-    lastModifiedByType?: pulumi.Input<string | types.enums.v20220901.CreatedByType>;
+    lastModifiedByType?: pulumi.Input<string | types.enums.CreatedByType>;
     /**
      * The geo-location where the resource lives
      */
@@ -286,7 +286,7 @@ export interface ClusterArgs {
     /**
      * Software Assurance properties of the cluster.
      */
-    softwareAssuranceProperties?: pulumi.Input<types.inputs.azurestackhci.v20220901.SoftwareAssurancePropertiesArgs>;
+    softwareAssuranceProperties?: pulumi.Input<types.inputs.SoftwareAssurancePropertiesArgs>;
     /**
      * Resource tags.
      */

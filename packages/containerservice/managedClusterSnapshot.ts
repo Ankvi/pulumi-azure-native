@@ -35,7 +35,7 @@ export class ManagedClusterSnapshot extends pulumi.CustomResource {
     /**
      * CreationData to be used to specify the source resource ID to create this snapshot.
      */
-    public readonly creationData!: pulumi.Output<types.outputs.containerservice.CreationDataResponse | undefined>;
+    public readonly creationData!: pulumi.Output<types.outputs.CreationDataResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -43,7 +43,7 @@ export class ManagedClusterSnapshot extends pulumi.CustomResource {
     /**
      * What the properties will be showed when getting managed cluster snapshot. Those properties are read-only.
      */
-    public /*out*/ readonly managedClusterPropertiesReadOnly!: pulumi.Output<types.outputs.containerservice.ManagedClusterPropertiesForSnapshotResponse>;
+    public /*out*/ readonly managedClusterPropertiesReadOnly!: pulumi.Output<types.outputs.ManagedClusterPropertiesForSnapshotResponse>;
     /**
      * The name of the resource
      */
@@ -55,7 +55,7 @@ export class ManagedClusterSnapshot extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.containerservice.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -113,7 +113,7 @@ export interface ManagedClusterSnapshotArgs {
     /**
      * CreationData to be used to specify the source resource ID to create this snapshot.
      */
-    creationData?: pulumi.Input<types.inputs.containerservice.CreationDataArgs>;
+    creationData?: pulumi.Input<types.inputs.CreationDataArgs>;
     /**
      * The geo-location where the resource lives
      */

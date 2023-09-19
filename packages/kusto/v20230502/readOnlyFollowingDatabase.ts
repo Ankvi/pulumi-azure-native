@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Class representing a read only following database.
  */
@@ -79,15 +79,15 @@ export class ReadOnlyFollowingDatabase extends pulumi.CustomResource {
     /**
      * The statistics of the database.
      */
-    public /*out*/ readonly statistics!: pulumi.Output<types.outputs.kusto.v20230502.DatabaseStatisticsResponse>;
+    public /*out*/ readonly statistics!: pulumi.Output<types.outputs.DatabaseStatisticsResponse>;
     /**
      * The database suspension details. If the database is suspended, this object contains information related to the database's suspension state.
      */
-    public /*out*/ readonly suspensionDetails!: pulumi.Output<types.outputs.kusto.v20230502.SuspensionDetailsResponse>;
+    public /*out*/ readonly suspensionDetails!: pulumi.Output<types.outputs.SuspensionDetailsResponse>;
     /**
      * Table level sharing specifications
      */
-    public /*out*/ readonly tableLevelSharingProperties!: pulumi.Output<types.outputs.kusto.v20230502.TableLevelSharingPropertiesResponse>;
+    public /*out*/ readonly tableLevelSharingProperties!: pulumi.Output<types.outputs.TableLevelSharingPropertiesResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

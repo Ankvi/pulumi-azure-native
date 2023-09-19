@@ -32,7 +32,7 @@ export interface GetVirtualNetworkResult {
     /**
      * The extended location.
      */
-    readonly extendedLocation: types.outputs.scvmm.ExtendedLocationResponse;
+    readonly extendedLocation: types.outputs.ExtendedLocationResponse;
     /**
      * Resource Id
      */
@@ -60,7 +60,7 @@ export interface GetVirtualNetworkResult {
     /**
      * The system data.
      */
-    readonly systemData: types.outputs.scvmm.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags
      */

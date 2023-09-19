@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves the details of a HubVirtualNetworkConnection.
  */
@@ -64,11 +64,11 @@ export interface GetHubVirtualNetworkConnectionResult {
     /**
      * Reference to the remote virtual network.
      */
-    readonly remoteVirtualNetwork?: types.outputs.network.v20230401.SubResourceResponse;
+    readonly remoteVirtualNetwork?: types.outputs.SubResourceResponse;
     /**
      * The Routing Configuration indicating the associated and propagated route tables on this connection.
      */
-    readonly routingConfiguration?: types.outputs.network.v20230401.RoutingConfigurationResponse;
+    readonly routingConfiguration?: types.outputs.RoutingConfigurationResponse;
 }
 /**
  * Retrieves the details of a HubVirtualNetworkConnection.

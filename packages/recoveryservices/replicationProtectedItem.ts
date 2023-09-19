@@ -43,7 +43,7 @@ export class ReplicationProtectedItem extends pulumi.CustomResource {
     /**
      * The custom data.
      */
-    public readonly properties!: pulumi.Output<types.outputs.recoveryservices.ReplicationProtectedItemPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ReplicationProtectedItemPropertiesResponse>;
     /**
      * Resource Type
      */
@@ -105,7 +105,7 @@ export interface ReplicationProtectedItemArgs {
     /**
      * Enable protection input properties.
      */
-    properties?: pulumi.Input<types.inputs.recoveryservices.EnableProtectionInputPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.EnableProtectionInputPropertiesArgs>;
     /**
      * Protection container name.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets details about the specified Analysis Services server.
  */
@@ -31,7 +31,7 @@ export interface GetServerDetailsResult {
     /**
      * A collection of AS server administrators
      */
-    readonly asAdministrators?: types.outputs.analysisservices.v20170801beta.ServerAdministratorsResponse;
+    readonly asAdministrators?: types.outputs.ServerAdministratorsResponse;
     /**
      * The SAS container URI to the backup container.
      */
@@ -39,7 +39,7 @@ export interface GetServerDetailsResult {
     /**
      * The gateway details configured for the AS server.
      */
-    readonly gatewayDetails?: types.outputs.analysisservices.v20170801beta.GatewayDetailsResponse;
+    readonly gatewayDetails?: types.outputs.GatewayDetailsResponse;
     /**
      * An identifier that represents the Analysis Services resource.
      */
@@ -47,7 +47,7 @@ export interface GetServerDetailsResult {
     /**
      * The firewall settings for the AS server.
      */
-    readonly ipV4FirewallSettings?: types.outputs.analysisservices.v20170801beta.IPv4FirewallSettingsResponse;
+    readonly ipV4FirewallSettings?: types.outputs.IPv4FirewallSettingsResponse;
     /**
      * Location of the Analysis Services resource.
      */
@@ -79,7 +79,7 @@ export interface GetServerDetailsResult {
     /**
      * The SKU of the Analysis Services resource.
      */
-    readonly sku: types.outputs.analysisservices.v20170801beta.ResourceSkuResponse;
+    readonly sku: types.outputs.ResourceSkuResponse;
     /**
      * The current state of Analysis Services resource. The state is to indicate more states outside of resource provisioning.
      */

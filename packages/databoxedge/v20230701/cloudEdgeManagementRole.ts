@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The preview of Virtual Machine Cloud Management from the Azure supports deploying and managing VMs on your Azure Stack Edge device from Azure Portal.
  * For more information, refer to: https://docs.microsoft.com/en-us/azure/databox-online/azure-stack-edge-gpu-virtual-machine-overview
@@ -36,7 +36,7 @@ export class CloudEdgeManagementRole extends pulumi.CustomResource {
     /**
      * Edge Profile of the resource
      */
-    public /*out*/ readonly edgeProfile!: pulumi.Output<types.outputs.databoxedge.v20230701.EdgeProfileResponse>;
+    public /*out*/ readonly edgeProfile!: pulumi.Output<types.outputs.EdgeProfileResponse>;
     /**
      * Role type.
      * Expected value is 'CloudEdgeManagement'.
@@ -57,7 +57,7 @@ export class CloudEdgeManagementRole extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of Role
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.databoxedge.v20230701.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The hierarchical type of the object.
      */
@@ -135,5 +135,5 @@ export interface CloudEdgeManagementRoleArgs {
     /**
      * Role status.
      */
-    roleStatus: pulumi.Input<string | types.enums.v20230701.RoleStatus>;
+    roleStatus: pulumi.Input<string | types.enums.RoleStatus>;
 }

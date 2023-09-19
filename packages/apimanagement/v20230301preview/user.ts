@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * User details.
  */
@@ -42,11 +42,11 @@ export class User extends pulumi.CustomResource {
     /**
      * Collection of groups user is part of.
      */
-    public /*out*/ readonly groups!: pulumi.Output<types.outputs.apimanagement.v20230301preview.GroupContractPropertiesResponse[]>;
+    public /*out*/ readonly groups!: pulumi.Output<types.outputs.GroupContractPropertiesResponse[]>;
     /**
      * Collection of user identities.
      */
-    public readonly identities!: pulumi.Output<types.outputs.apimanagement.v20230301preview.UserIdentityContractResponse[] | undefined>;
+    public readonly identities!: pulumi.Output<types.outputs.UserIdentityContractResponse[] | undefined>;
     /**
      * Last name.
      */
@@ -141,11 +141,11 @@ export interface UserArgs {
     /**
      * Determines the type of application which send the create user request. Default is legacy portal.
      */
-    appType?: pulumi.Input<string | types.enums.v20230301preview.AppType>;
+    appType?: pulumi.Input<string | types.enums.AppType>;
     /**
      * Determines the type of confirmation e-mail that will be sent to the newly created user.
      */
-    confirmation?: pulumi.Input<string | types.enums.v20230301preview.Confirmation>;
+    confirmation?: pulumi.Input<string | types.enums.Confirmation>;
     /**
      * Email address. Must not be empty and must be unique within the service instance.
      */
@@ -157,7 +157,7 @@ export interface UserArgs {
     /**
      * Collection of user identities.
      */
-    identities?: pulumi.Input<pulumi.Input<types.inputs.apimanagement.v20230301preview.UserIdentityContractArgs>[]>;
+    identities?: pulumi.Input<pulumi.Input<types.inputs.UserIdentityContractArgs>[]>;
     /**
      * Last name.
      */
@@ -185,7 +185,7 @@ export interface UserArgs {
     /**
      * Account state. Specifies whether the user is active or not. Blocked users are unable to sign into the developer portal or call any APIs of subscribed products. Default state is Active.
      */
-    state?: pulumi.Input<string | types.enums.v20230301preview.UserState>;
+    state?: pulumi.Input<string | types.enums.UserState>;
     /**
      * User identifier. Must be unique in the current API Management service instance.
      */

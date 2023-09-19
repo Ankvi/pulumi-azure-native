@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the specified spacecraft in a specified resource group.
  */
@@ -35,7 +35,7 @@ export interface GetSpacecraftResult {
     /**
      * Immutable list of Spacecraft links.
      */
-    readonly links: types.outputs.orbital.v20221101.SpacecraftLinkResponse[];
+    readonly links: types.outputs.SpacecraftLinkResponse[];
     /**
      * The geo-location where the resource lives
      */
@@ -51,7 +51,7 @@ export interface GetSpacecraftResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.orbital.v20221101.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The resource representation of a rollout step.
  */
@@ -42,7 +42,7 @@ export class Step extends pulumi.CustomResource {
     /**
      * The properties that define the step.
      */
-    public readonly properties!: pulumi.Output<types.outputs.deploymentmanager.v20191101preview.HealthCheckStepPropertiesResponse | types.outputs.deploymentmanager.v20191101preview.WaitStepPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.HealthCheckStepPropertiesResponse | types.outputs.WaitStepPropertiesResponse>;
     /**
      * Resource tags.
      */
@@ -101,7 +101,7 @@ export interface StepArgs {
     /**
      * The properties that define the step.
      */
-    properties: pulumi.Input<types.inputs.deploymentmanager.v20191101preview.HealthCheckStepPropertiesArgs | types.inputs.deploymentmanager.v20191101preview.WaitStepPropertiesArgs>;
+    properties: pulumi.Input<types.inputs.HealthCheckStepPropertiesArgs | types.inputs.WaitStepPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets an integration account partner.
  */
@@ -37,7 +37,7 @@ export interface GetIntegrationAccountPartnerResult {
     /**
      * The partner content.
      */
-    readonly content?: types.outputs.logic.v20150801preview.PartnerContentResponse;
+    readonly content?: types.outputs.PartnerContentResponse;
     /**
      * The created time.
      */

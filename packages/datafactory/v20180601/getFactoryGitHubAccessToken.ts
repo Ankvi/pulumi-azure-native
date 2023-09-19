@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get GitHub Access Token.
  */
@@ -37,7 +37,7 @@ export interface GetFactoryGitHubAccessTokenArgs {
     /**
      * GitHub bring your own app client secret information.
      */
-    gitHubClientSecret?: types.inputs.datafactory.v20180601.GitHubClientSecret;
+    gitHubClientSecret?: types.inputs.GitHubClientSecret;
     /**
      * The resource group name.
      */
@@ -80,7 +80,7 @@ export interface GetFactoryGitHubAccessTokenOutputArgs {
     /**
      * GitHub bring your own app client secret information.
      */
-    gitHubClientSecret?: pulumi.Input<types.inputs.datafactory.v20180601.GitHubClientSecretArgs>;
+    gitHubClientSecret?: pulumi.Input<types.inputs.GitHubClientSecretArgs>;
     /**
      * The resource group name.
      */

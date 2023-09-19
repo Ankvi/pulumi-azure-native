@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Buildpack Binding Resource object
  */
@@ -38,11 +38,11 @@ export class BuildpackBinding extends pulumi.CustomResource {
     /**
      * Properties of a buildpack binding
      */
-    public readonly properties!: pulumi.Output<types.outputs.appplatform.v20230701preview.BuildpackBindingPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.BuildpackBindingPropertiesResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.appplatform.v20230701preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource.
      */
@@ -112,7 +112,7 @@ export interface BuildpackBindingArgs {
     /**
      * Properties of a buildpack binding
      */
-    properties?: pulumi.Input<types.inputs.appplatform.v20230701preview.BuildpackBindingPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.BuildpackBindingPropertiesArgs>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a InternalNetworks.
  */
@@ -52,7 +52,7 @@ export interface GetInternalNetworkResult {
     /**
      * BGP configuration properties
      */
-    readonly bgpConfiguration?: types.outputs.managednetworkfabric.v20230201preview.BgpConfigurationResponse;
+    readonly bgpConfiguration?: types.outputs.BgpConfigurationResponse;
     /**
      * List of resources the BGP is disabled on. Can be either entire NetworkFabric or NetworkRack.
      */
@@ -60,11 +60,11 @@ export interface GetInternalNetworkResult {
     /**
      * List with object connected IPv4 Subnets.
      */
-    readonly connectedIPv4Subnets?: types.outputs.managednetworkfabric.v20230201preview.ConnectedSubnetResponse[];
+    readonly connectedIPv4Subnets?: types.outputs.ConnectedSubnetResponse[];
     /**
      * List with object connected IPv6 Subnets.
      */
-    readonly connectedIPv6Subnets?: types.outputs.managednetworkfabric.v20230201preview.ConnectedSubnetResponse[];
+    readonly connectedIPv6Subnets?: types.outputs.ConnectedSubnetResponse[];
     /**
      * List of resources the InternalNetwork is disabled on. Can be either entire NetworkFabric or NetworkRack.
      */
@@ -96,11 +96,11 @@ export interface GetInternalNetworkResult {
     /**
      * Static Route Configuration properties.
      */
-    readonly staticRouteConfiguration?: types.outputs.managednetworkfabric.v20230201preview.StaticRouteConfigurationResponse;
+    readonly staticRouteConfiguration?: types.outputs.StaticRouteConfigurationResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.managednetworkfabric.v20230201preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

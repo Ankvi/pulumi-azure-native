@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Contract details.
  */
@@ -135,7 +135,7 @@ export interface WorkspaceGroupArgs {
     /**
      * Group type.
      */
-    type?: pulumi.Input<types.enums.v20230301preview.GroupType>;
+    type?: pulumi.Input<types.enums.GroupType>;
     /**
      * Workspace identifier. Must be unique in the current API Management service instance.
      */

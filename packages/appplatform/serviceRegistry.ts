@@ -39,11 +39,11 @@ export class ServiceRegistry extends pulumi.CustomResource {
     /**
      * Service Registry properties payload
      */
-    public /*out*/ readonly properties!: pulumi.Output<types.outputs.appplatform.ServiceRegistryPropertiesResponse>;
+    public /*out*/ readonly properties!: pulumi.Output<types.outputs.ServiceRegistryPropertiesResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.appplatform.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource.
      */

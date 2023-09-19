@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * HubVirtualNetworkConnection Resource.
  */
@@ -58,11 +58,11 @@ export class HubVirtualNetworkConnection extends pulumi.CustomResource {
     /**
      * Reference to the remote virtual network.
      */
-    public readonly remoteVirtualNetwork!: pulumi.Output<types.outputs.network.v20230401.SubResourceResponse | undefined>;
+    public readonly remoteVirtualNetwork!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * The Routing Configuration indicating the associated and propagated route tables on this connection.
      */
-    public readonly routingConfiguration!: pulumi.Output<types.outputs.network.v20230401.RoutingConfigurationResponse | undefined>;
+    public readonly routingConfiguration!: pulumi.Output<types.outputs.RoutingConfigurationResponse | undefined>;
 
     /**
      * Create a HubVirtualNetworkConnection resource with the given unique name, arguments, and options.
@@ -141,7 +141,7 @@ export interface HubVirtualNetworkConnectionArgs {
     /**
      * Reference to the remote virtual network.
      */
-    remoteVirtualNetwork?: pulumi.Input<types.inputs.network.v20230401.SubResourceArgs>;
+    remoteVirtualNetwork?: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * The resource group name of the HubVirtualNetworkConnection.
      */
@@ -149,7 +149,7 @@ export interface HubVirtualNetworkConnectionArgs {
     /**
      * The Routing Configuration indicating the associated and propagated route tables on this connection.
      */
-    routingConfiguration?: pulumi.Input<types.inputs.network.v20230401.RoutingConfigurationArgs>;
+    routingConfiguration?: pulumi.Input<types.inputs.RoutingConfigurationArgs>;
     /**
      * The name of the VirtualHub.
      */

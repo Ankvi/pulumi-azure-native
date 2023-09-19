@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The network manager connectivity configuration resource
  */
@@ -34,7 +34,7 @@ export class ConnectivityConfiguration extends pulumi.CustomResource {
     /**
      * Groups for configuration
      */
-    public readonly appliesToGroups!: pulumi.Output<types.outputs.network.v20230201.ConnectivityGroupItemResponse[]>;
+    public readonly appliesToGroups!: pulumi.Output<types.outputs.ConnectivityGroupItemResponse[]>;
     /**
      * Connectivity topology type.
      */
@@ -54,7 +54,7 @@ export class ConnectivityConfiguration extends pulumi.CustomResource {
     /**
      * List of hubItems
      */
-    public readonly hubs!: pulumi.Output<types.outputs.network.v20230201.HubResponse[] | undefined>;
+    public readonly hubs!: pulumi.Output<types.outputs.HubResponse[] | undefined>;
     /**
      * Flag if global mesh is supported.
      */
@@ -74,7 +74,7 @@ export class ConnectivityConfiguration extends pulumi.CustomResource {
     /**
      * The system metadata related to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.network.v20230201.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource type.
      */
@@ -146,7 +146,7 @@ export interface ConnectivityConfigurationArgs {
     /**
      * Groups for configuration
      */
-    appliesToGroups: pulumi.Input<pulumi.Input<types.inputs.network.v20230201.ConnectivityGroupItemArgs>[]>;
+    appliesToGroups: pulumi.Input<pulumi.Input<types.inputs.ConnectivityGroupItemArgs>[]>;
     /**
      * The name of the network manager connectivity configuration.
      */
@@ -154,11 +154,11 @@ export interface ConnectivityConfigurationArgs {
     /**
      * Connectivity topology type.
      */
-    connectivityTopology: pulumi.Input<string | types.enums.v20230201.ConnectivityTopology>;
+    connectivityTopology: pulumi.Input<string | types.enums.ConnectivityTopology>;
     /**
      * Flag if need to remove current existing peerings.
      */
-    deleteExistingPeering?: pulumi.Input<string | types.enums.v20230201.DeleteExistingPeering>;
+    deleteExistingPeering?: pulumi.Input<string | types.enums.DeleteExistingPeering>;
     /**
      * A description of the connectivity configuration.
      */
@@ -166,11 +166,11 @@ export interface ConnectivityConfigurationArgs {
     /**
      * List of hubItems
      */
-    hubs?: pulumi.Input<pulumi.Input<types.inputs.network.v20230201.HubArgs>[]>;
+    hubs?: pulumi.Input<pulumi.Input<types.inputs.HubArgs>[]>;
     /**
      * Flag if global mesh is supported.
      */
-    isGlobal?: pulumi.Input<string | types.enums.v20230201.IsGlobal>;
+    isGlobal?: pulumi.Input<string | types.enums.IsGlobal>;
     /**
      * The name of the network manager.
      */

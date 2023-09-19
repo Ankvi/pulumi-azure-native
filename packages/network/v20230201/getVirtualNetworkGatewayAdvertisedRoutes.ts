@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * This operation retrieves a list of routes the virtual network gateway is advertising to the specified peer.
  */
@@ -36,7 +36,7 @@ export interface GetVirtualNetworkGatewayAdvertisedRoutesResult {
     /**
      * List of gateway routes.
      */
-    readonly value?: types.outputs.network.v20230201.GatewayRouteResponse[];
+    readonly value?: types.outputs.GatewayRouteResponse[];
 }
 /**
  * This operation retrieves a list of routes the virtual network gateway is advertising to the specified peer.

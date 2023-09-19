@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves the description for the specified rule.
  */
@@ -46,11 +46,11 @@ export interface GetRuleResult {
     /**
      * Represents the filter actions which are allowed for the transformation of a message that have been matched by a filter expression.
      */
-    readonly action?: types.outputs.servicebus.v20221001preview.ActionResponse;
+    readonly action?: types.outputs.ActionResponse;
     /**
      * Properties of correlationFilter
      */
-    readonly correlationFilter?: types.outputs.servicebus.v20221001preview.CorrelationFilterResponse;
+    readonly correlationFilter?: types.outputs.CorrelationFilterResponse;
     /**
      * Filter type that is evaluated against a BrokeredMessage.
      */
@@ -70,11 +70,11 @@ export interface GetRuleResult {
     /**
      * Properties of sqlFilter
      */
-    readonly sqlFilter?: types.outputs.servicebus.v20221001preview.SqlFilterResponse;
+    readonly sqlFilter?: types.outputs.SqlFilterResponse;
     /**
      * The system meta data relating to this resource.
      */
-    readonly systemData: types.outputs.servicebus.v20221001preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
      */

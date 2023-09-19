@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * List all effective security admin rules applied on a virtual network.
  */
@@ -40,7 +40,7 @@ export interface ListNetworkManagerEffectiveSecurityAdminRulesResult {
     /**
      * Gets a page of NetworkManagerEffectiveSecurityAdminRules
      */
-    readonly value?: (types.outputs.network.v20220401preview.EffectiveDefaultSecurityAdminRuleResponse | types.outputs.network.v20220401preview.EffectiveSecurityAdminRuleResponse)[];
+    readonly value?: (types.outputs.EffectiveDefaultSecurityAdminRuleResponse | types.outputs.EffectiveSecurityAdminRuleResponse)[];
 }
 /**
  * List all effective security admin rules applied on a virtual network.

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves a specific pipeline topology by name. If a topology with that name has been previously created, the call will return the JSON representation of that topology.
  */
@@ -57,27 +57,27 @@ export interface GetPipelineTopologyResult {
     /**
      * List of the topology parameter declarations. Parameters declared here can be referenced throughout the topology nodes through the use of "${PARAMETER_NAME}" string pattern. Parameters can have optional default values and can later be defined in individual instances of the pipeline.
      */
-    readonly parameters?: types.outputs.videoanalyzer.v20211101preview.ParameterDeclarationResponse[];
+    readonly parameters?: types.outputs.ParameterDeclarationResponse[];
     /**
      * List of the topology processor nodes. Processor nodes enable pipeline data to be analyzed, processed or transformed.
      */
-    readonly processors?: types.outputs.videoanalyzer.v20211101preview.EncoderProcessorResponse[];
+    readonly processors?: types.outputs.EncoderProcessorResponse[];
     /**
      * List of the topology sink nodes. Sink nodes allow pipeline data to be stored or exported.
      */
-    readonly sinks: types.outputs.videoanalyzer.v20211101preview.VideoSinkResponse[];
+    readonly sinks: types.outputs.VideoSinkResponse[];
     /**
      * Describes the properties of a SKU.
      */
-    readonly sku: types.outputs.videoanalyzer.v20211101preview.SkuResponse;
+    readonly sku: types.outputs.SkuResponse;
     /**
      * List of the topology source nodes. Source nodes enable external data to be ingested by the pipeline.
      */
-    readonly sources: (types.outputs.videoanalyzer.v20211101preview.RtspSourceResponse | types.outputs.videoanalyzer.v20211101preview.VideoSourceResponse)[];
+    readonly sources: (types.outputs.RtspSourceResponse | types.outputs.VideoSourceResponse)[];
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.videoanalyzer.v20211101preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

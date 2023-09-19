@@ -36,7 +36,7 @@ export interface GetBotResult {
     /**
      * The identity of the Azure Health Bot.
      */
-    readonly identity?: types.outputs.healthbot.IdentityResponse;
+    readonly identity?: types.outputs.IdentityResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -48,15 +48,15 @@ export interface GetBotResult {
     /**
      * The set of properties specific to Azure Health Bot resource.
      */
-    readonly properties: types.outputs.healthbot.HealthBotPropertiesResponse;
+    readonly properties: types.outputs.HealthBotPropertiesResponse;
     /**
      * SKU of the Azure Health Bot.
      */
-    readonly sku: types.outputs.healthbot.SkuResponse;
+    readonly sku: types.outputs.SkuResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource
      */
-    readonly systemData: types.outputs.healthbot.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

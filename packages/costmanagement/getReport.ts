@@ -27,11 +27,11 @@ export interface GetReportResult {
     /**
      * Has definition for the report.
      */
-    readonly definition: types.outputs.costmanagement.ReportDefinitionResponse;
+    readonly definition: types.outputs.ReportDefinitionResponse;
     /**
      * Has delivery information for the report.
      */
-    readonly deliveryInfo: types.outputs.costmanagement.ReportDeliveryInfoResponse;
+    readonly deliveryInfo: types.outputs.ReportDeliveryInfoResponse;
     /**
      * The format of the report being delivered.
      */
@@ -47,7 +47,7 @@ export interface GetReportResult {
     /**
      * Has schedule information for the report.
      */
-    readonly schedule?: types.outputs.costmanagement.ReportScheduleResponse;
+    readonly schedule?: types.outputs.ReportScheduleResponse;
     /**
      * Resource tags.
      */

@@ -37,11 +37,11 @@ export interface GetStreamingPolicyResult {
     /**
      * Configuration of CommonEncryptionCbcs
      */
-    readonly commonEncryptionCbcs?: types.outputs.media.CommonEncryptionCbcsResponse;
+    readonly commonEncryptionCbcs?: types.outputs.CommonEncryptionCbcsResponse;
     /**
      * Configuration of CommonEncryptionCenc
      */
-    readonly commonEncryptionCenc?: types.outputs.media.CommonEncryptionCencResponse;
+    readonly commonEncryptionCenc?: types.outputs.CommonEncryptionCencResponse;
     /**
      * Creation time of Streaming Policy
      */
@@ -53,7 +53,7 @@ export interface GetStreamingPolicyResult {
     /**
      * Configuration of EnvelopeEncryption
      */
-    readonly envelopeEncryption?: types.outputs.media.EnvelopeEncryptionResponse;
+    readonly envelopeEncryption?: types.outputs.EnvelopeEncryptionResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -65,11 +65,11 @@ export interface GetStreamingPolicyResult {
     /**
      * Configurations of NoEncryption
      */
-    readonly noEncryption?: types.outputs.media.NoEncryptionResponse;
+    readonly noEncryption?: types.outputs.NoEncryptionResponse;
     /**
      * The system metadata relating to this resource.
      */
-    readonly systemData: types.outputs.media.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

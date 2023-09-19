@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets all legal agreements that user needs to accept before purchasing a domain.
  */
@@ -40,7 +40,7 @@ export interface ListTopLevelDomainAgreementsResult {
     /**
      * Collection of resources.
      */
-    readonly value: types.outputs.domainregistration.v20210101.TldLegalAgreementResponse[];
+    readonly value: types.outputs.TldLegalAgreementResponse[];
 }
 /**
  * Gets all legal agreements that user needs to accept before purchasing a domain.

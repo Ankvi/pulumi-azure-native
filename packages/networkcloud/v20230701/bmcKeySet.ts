@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 export class BmcKeySet extends pulumi.CustomResource {
     /**
      * Get an existing BmcKeySet resource's state with the given name, ID, and optional extra
@@ -47,7 +47,7 @@ export class BmcKeySet extends pulumi.CustomResource {
     /**
      * The extended location of the cluster associated with the resource.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.networkcloud.v20230701.ExtendedLocationResponse>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse>;
     /**
      * The last time this key set was validated.
      */
@@ -71,7 +71,7 @@ export class BmcKeySet extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.networkcloud.v20230701.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -83,11 +83,11 @@ export class BmcKeySet extends pulumi.CustomResource {
     /**
      * The unique list of permitted users.
      */
-    public readonly userList!: pulumi.Output<types.outputs.networkcloud.v20230701.KeySetUserResponse[]>;
+    public readonly userList!: pulumi.Output<types.outputs.KeySetUserResponse[]>;
     /**
      * The status evaluation of each user.
      */
-    public /*out*/ readonly userListStatus!: pulumi.Output<types.outputs.networkcloud.v20230701.KeySetUserStatusResponse[]>;
+    public /*out*/ readonly userListStatus!: pulumi.Output<types.outputs.KeySetUserStatusResponse[]>;
 
     /**
      * Create a BmcKeySet resource with the given unique name, arguments, and options.
@@ -186,7 +186,7 @@ export interface BmcKeySetArgs {
     /**
      * The extended location of the cluster associated with the resource.
      */
-    extendedLocation: pulumi.Input<types.inputs.networkcloud.v20230701.ExtendedLocationArgs>;
+    extendedLocation: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -194,7 +194,7 @@ export interface BmcKeySetArgs {
     /**
      * The access level allowed for the users in this key set.
      */
-    privilegeLevel: pulumi.Input<string | types.enums.v20230701.BmcKeySetPrivilegeLevel>;
+    privilegeLevel: pulumi.Input<string | types.enums.BmcKeySetPrivilegeLevel>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -206,5 +206,5 @@ export interface BmcKeySetArgs {
     /**
      * The unique list of permitted users.
      */
-    userList: pulumi.Input<pulumi.Input<types.inputs.networkcloud.v20230701.KeySetUserArgs>[]>;
+    userList: pulumi.Input<pulumi.Input<types.inputs.KeySetUserArgs>[]>;
 }

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Authorization contract.
  */
@@ -38,7 +38,7 @@ export class Authorization extends pulumi.CustomResource {
     /**
      * Authorization error details.
      */
-    public readonly error!: pulumi.Output<types.outputs.apimanagement.v20230301preview.AuthorizationErrorResponse | undefined>;
+    public readonly error!: pulumi.Output<types.outputs.AuthorizationErrorResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -122,15 +122,15 @@ export interface AuthorizationArgs {
     /**
      * Authorization type options
      */
-    authorizationType?: pulumi.Input<string | types.enums.v20230301preview.AuthorizationType>;
+    authorizationType?: pulumi.Input<string | types.enums.AuthorizationType>;
     /**
      * Authorization error details.
      */
-    error?: pulumi.Input<types.inputs.apimanagement.v20230301preview.AuthorizationErrorArgs>;
+    error?: pulumi.Input<types.inputs.AuthorizationErrorArgs>;
     /**
      * OAuth2 grant type options
      */
-    oAuth2GrantType?: pulumi.Input<string | types.enums.v20230301preview.OAuth2GrantType>;
+    oAuth2GrantType?: pulumi.Input<string | types.enums.OAuth2GrantType>;
     /**
      * Authorization parameters
      */

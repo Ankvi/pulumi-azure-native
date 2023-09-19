@@ -37,7 +37,7 @@ export interface ListStorageAccountKeysResult {
     /**
      * Gets the list of storage account keys and their properties for the specified storage account.
      */
-    readonly keys: types.outputs.storage.StorageAccountKeyResponse[];
+    readonly keys: types.outputs.StorageAccountKeyResponse[];
 }
 /**
  * Lists the access keys or Kerberos keys (if active directory enabled) for the specified storage account.

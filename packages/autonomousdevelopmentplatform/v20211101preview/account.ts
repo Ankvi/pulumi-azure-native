@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * ADP account
  */
@@ -50,7 +50,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * The system meta data relating to this resource
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.autonomousdevelopmentplatform.v20211101preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */

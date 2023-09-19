@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets properties of a specified share.
  */
@@ -113,7 +113,7 @@ export interface GetFileShareResult {
     /**
      * List of stored access policies specified on the share.
      */
-    readonly signedIdentifiers?: types.outputs.storage.v20230101.SignedIdentifierResponse[];
+    readonly signedIdentifiers?: types.outputs.SignedIdentifierResponse[];
     /**
      * Creation time of share snapshot returned in the response of list shares with expand param "snapshots".
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents a mongo cluster resource.
  */
@@ -58,7 +58,7 @@ export class MongoCluster extends pulumi.CustomResource {
     /**
      * The list of node group specs in the cluster.
      */
-    public readonly nodeGroupSpecs!: pulumi.Output<types.outputs.documentdb.v20230315preview.NodeGroupSpecResponse[] | undefined>;
+    public readonly nodeGroupSpecs!: pulumi.Output<types.outputs.NodeGroupSpecResponse[] | undefined>;
     /**
      * A provisioning state of the mongo cluster.
      */
@@ -70,7 +70,7 @@ export class MongoCluster extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.documentdb.v20230315preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -147,7 +147,7 @@ export interface MongoClusterArgs {
     /**
      * The mode to create a mongo cluster.
      */
-    createMode?: pulumi.Input<string | types.enums.v20230315preview.CreateMode>;
+    createMode?: pulumi.Input<string | types.enums.CreateMode>;
     /**
      * The geo-location where the resource lives
      */
@@ -159,7 +159,7 @@ export interface MongoClusterArgs {
     /**
      * The list of node group specs in the cluster.
      */
-    nodeGroupSpecs?: pulumi.Input<pulumi.Input<types.inputs.documentdb.v20230315preview.NodeGroupSpecArgs>[]>;
+    nodeGroupSpecs?: pulumi.Input<pulumi.Input<types.inputs.NodeGroupSpecArgs>[]>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -167,7 +167,7 @@ export interface MongoClusterArgs {
     /**
      * Parameters used for restore operations
      */
-    restoreParameters?: pulumi.Input<types.inputs.documentdb.v20230315preview.MongoClusterRestoreParametersArgs>;
+    restoreParameters?: pulumi.Input<types.inputs.MongoClusterRestoreParametersArgs>;
     /**
      * The Mongo DB server version. Defaults to the latest available version if not specified.
      */

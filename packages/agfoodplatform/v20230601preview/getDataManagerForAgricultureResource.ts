@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get DataManagerForAgriculture resource.
  */
@@ -35,7 +35,7 @@ export interface GetDataManagerForAgricultureResourceResult {
     /**
      * Identity for the resource.
      */
-    readonly identity?: types.outputs.agfoodplatform.v20230601preview.IdentityResponse;
+    readonly identity?: types.outputs.IdentityResponse;
     /**
      * Uri of the Data Manager For Agriculture instance.
      */
@@ -51,7 +51,7 @@ export interface GetDataManagerForAgricultureResourceResult {
     /**
      * Private endpoints.
      */
-    readonly privateEndpointConnections: types.outputs.agfoodplatform.v20230601preview.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections: types.outputs.PrivateEndpointConnectionResponse[];
     /**
      * Data Manager For Agriculture instance provisioning state.
      */
@@ -63,11 +63,11 @@ export interface GetDataManagerForAgricultureResourceResult {
     /**
      * Sensor integration request model.
      */
-    readonly sensorIntegration?: types.outputs.agfoodplatform.v20230601preview.SensorIntegrationResponse;
+    readonly sensorIntegration?: types.outputs.SensorIntegrationResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.agfoodplatform.v20230601preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

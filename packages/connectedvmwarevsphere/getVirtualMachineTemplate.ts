@@ -36,11 +36,11 @@ export interface GetVirtualMachineTemplateResult {
     /**
      * Gets or sets the disks the template.
      */
-    readonly disks: types.outputs.connectedvmwarevsphere.VirtualDiskResponse[];
+    readonly disks: types.outputs.VirtualDiskResponse[];
     /**
      * Gets or sets the extended location.
      */
-    readonly extendedLocation?: types.outputs.connectedvmwarevsphere.ExtendedLocationResponse;
+    readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
     /**
      * Firmware type
      */
@@ -85,7 +85,7 @@ export interface GetVirtualMachineTemplateResult {
     /**
      * Gets or sets the network interfaces of the template.
      */
-    readonly networkInterfaces: types.outputs.connectedvmwarevsphere.NetworkInterfaceResponse[];
+    readonly networkInterfaces: types.outputs.NetworkInterfaceResponse[];
     /**
      * Gets or sets the number of vCPUs for the template.
      */
@@ -110,11 +110,11 @@ export interface GetVirtualMachineTemplateResult {
     /**
      * The resource status information.
      */
-    readonly statuses: types.outputs.connectedvmwarevsphere.ResourceStatusResponse[];
+    readonly statuses: types.outputs.ResourceStatusResponse[];
     /**
      * The system data.
      */
-    readonly systemData: types.outputs.connectedvmwarevsphere.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Gets or sets the Resource tags.
      */

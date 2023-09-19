@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Replication extension model.
  */
@@ -38,8 +38,8 @@ export class ReplicationExtension extends pulumi.CustomResource {
     /**
      * Replication extension model properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.datareplication.v20210216preview.ReplicationExtensionModelPropertiesResponse>;
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.datareplication.v20210216preview.ReplicationExtensionModelResponseSystemData>;
+    public readonly properties!: pulumi.Output<types.outputs.ReplicationExtensionModelPropertiesResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.ReplicationExtensionModelResponseSystemData>;
     /**
      * Gets or sets the type of the resource.
      */
@@ -92,7 +92,7 @@ export interface ReplicationExtensionArgs {
     /**
      * Replication extension model properties.
      */
-    properties: pulumi.Input<types.inputs.datareplication.v20210216preview.ReplicationExtensionModelPropertiesArgs>;
+    properties: pulumi.Input<types.inputs.ReplicationExtensionModelPropertiesArgs>;
     /**
      * The replication extension name.
      */

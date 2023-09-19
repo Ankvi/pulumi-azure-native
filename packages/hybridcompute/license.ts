@@ -35,7 +35,7 @@ export class License extends pulumi.CustomResource {
     /**
      * Describes the properties of a License.
      */
-    public readonly licenseDetails!: pulumi.Output<types.outputs.hybridcompute.LicenseDetailsResponse | undefined>;
+    public readonly licenseDetails!: pulumi.Output<types.outputs.LicenseDetailsResponse | undefined>;
     /**
      * The type of the license resource.
      */
@@ -55,7 +55,7 @@ export class License extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.hybridcompute.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -119,7 +119,7 @@ export interface LicenseArgs {
     /**
      * Describes the properties of a License.
      */
-    licenseDetails?: pulumi.Input<types.inputs.hybridcompute.LicenseDetailsArgs>;
+    licenseDetails?: pulumi.Input<types.inputs.LicenseDetailsArgs>;
     /**
      * The name of the license.
      */

@@ -51,11 +51,11 @@ export interface GetVirtualMachineScheduleResult {
     /**
      * If the schedule will occur once each day of the week, specify the daily recurrence.
      */
-    readonly dailyRecurrence?: types.outputs.devtestlab.DayDetailsResponse;
+    readonly dailyRecurrence?: types.outputs.DayDetailsResponse;
     /**
      * If the schedule will occur multiple times a day, specify the hourly recurrence.
      */
-    readonly hourlyRecurrence?: types.outputs.devtestlab.HourDetailsResponse;
+    readonly hourlyRecurrence?: types.outputs.HourDetailsResponse;
     /**
      * The identifier of the resource.
      */
@@ -71,7 +71,7 @@ export interface GetVirtualMachineScheduleResult {
     /**
      * Notification settings.
      */
-    readonly notificationSettings?: types.outputs.devtestlab.NotificationSettingsResponse;
+    readonly notificationSettings?: types.outputs.NotificationSettingsResponse;
     /**
      * The provisioning status of the resource.
      */
@@ -107,7 +107,7 @@ export interface GetVirtualMachineScheduleResult {
     /**
      * If the schedule will occur only some days of the week, specify the weekly recurrence.
      */
-    readonly weeklyRecurrence?: types.outputs.devtestlab.WeekDetailsResponse;
+    readonly weeklyRecurrence?: types.outputs.WeekDetailsResponse;
 }
 /**
  * Get schedule.

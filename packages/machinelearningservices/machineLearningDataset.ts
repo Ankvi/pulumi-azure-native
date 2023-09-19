@@ -35,7 +35,7 @@ export class MachineLearningDataset extends pulumi.CustomResource {
     /**
      * The identity of the resource.
      */
-    public /*out*/ readonly identity!: pulumi.Output<types.outputs.machinelearningservices.IdentityResponse | undefined>;
+    public /*out*/ readonly identity!: pulumi.Output<types.outputs.IdentityResponse | undefined>;
     /**
      * Specifies the location of the resource.
      */
@@ -47,11 +47,11 @@ export class MachineLearningDataset extends pulumi.CustomResource {
     /**
      * Dataset properties
      */
-    public /*out*/ readonly properties!: pulumi.Output<types.outputs.machinelearningservices.DatasetResponse>;
+    public /*out*/ readonly properties!: pulumi.Output<types.outputs.DatasetResponse>;
     /**
      * The sku of the workspace.
      */
-    public /*out*/ readonly sku!: pulumi.Output<types.outputs.machinelearningservices.SkuResponse | undefined>;
+    public /*out*/ readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Contains resource tags defined as key/value pairs.
      */
@@ -89,7 +89,7 @@ export class MachineLearningDataset extends pulumi.CustomResource {
             }
             resourceInputs["datasetName"] = args ? args.datasetName : undefined;
             resourceInputs["datasetType"] = args ? args.datasetType : undefined;
-            resourceInputs["parameters"] = args ? (args.parameters ? pulumi.output(args.parameters).apply(types.inputs.machinelearningservices.datasetCreateRequestParametersArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["parameters"] = args ? (args.parameters ? pulumi.output(args.parameters).apply(types.inputs.datasetCreateRequestParametersArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["registration"] = args ? args.registration : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["skipValidation"] = (args ? args.skipValidation : undefined) ?? false;
@@ -130,8 +130,8 @@ export interface MachineLearningDatasetArgs {
      * Specifies dataset type.
      */
     datasetType: pulumi.Input<string | types.enums.DatasetType>;
-    parameters: pulumi.Input<types.inputs.machinelearningservices.DatasetCreateRequestParametersArgs>;
-    registration: pulumi.Input<types.inputs.machinelearningservices.DatasetCreateRequestRegistrationArgs>;
+    parameters: pulumi.Input<types.inputs.DatasetCreateRequestParametersArgs>;
+    registration: pulumi.Input<types.inputs.DatasetCreateRequestRegistrationArgs>;
     /**
      * Name of the resource group in which workspace is located.
      */
@@ -140,7 +140,7 @@ export interface MachineLearningDatasetArgs {
      * Skip validation that ensures data can be loaded from the dataset before registration.
      */
     skipValidation?: pulumi.Input<boolean>;
-    timeSeries?: pulumi.Input<types.inputs.machinelearningservices.DatasetCreateRequestTimeSeriesArgs>;
+    timeSeries?: pulumi.Input<types.inputs.DatasetCreateRequestTimeSeriesArgs>;
     /**
      * Name of Azure Machine Learning workspace.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the integration account's Key Vault keys.
  */
@@ -23,7 +23,7 @@ export interface ListIntegrationAccountKeyVaultKeysArgs {
     /**
      * The key vault reference.
      */
-    keyVault: types.inputs.logic.v20190501.KeyVaultReference;
+    keyVault: types.inputs.KeyVaultReference;
     /**
      * The resource group name.
      */
@@ -45,7 +45,7 @@ export interface ListIntegrationAccountKeyVaultKeysResult {
     /**
      * The key vault keys.
      */
-    readonly value?: types.outputs.logic.v20190501.KeyVaultKeyResponse[];
+    readonly value?: types.outputs.KeyVaultKeyResponse[];
 }
 /**
  * Gets the integration account's Key Vault keys.
@@ -62,7 +62,7 @@ export interface ListIntegrationAccountKeyVaultKeysOutputArgs {
     /**
      * The key vault reference.
      */
-    keyVault: pulumi.Input<types.inputs.logic.v20190501.KeyVaultReferenceArgs>;
+    keyVault: pulumi.Input<types.inputs.KeyVaultReferenceArgs>;
     /**
      * The resource group name.
      */

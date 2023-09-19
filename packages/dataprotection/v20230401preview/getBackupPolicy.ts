@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a backup policy belonging to a backup vault
  */
@@ -41,11 +41,11 @@ export interface GetBackupPolicyResult {
     /**
      * BaseBackupPolicyResource properties
      */
-    readonly properties: types.outputs.dataprotection.v20230401preview.BackupPolicyResponse;
+    readonly properties: types.outputs.BackupPolicyResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.dataprotection.v20230401preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
      */

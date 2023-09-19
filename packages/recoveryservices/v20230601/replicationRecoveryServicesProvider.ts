@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Provider details.
  */
@@ -42,7 +42,7 @@ export class ReplicationRecoveryServicesProvider extends pulumi.CustomResource {
     /**
      * Provider properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.recoveryservices.v20230601.RecoveryServicesProviderPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.RecoveryServicesProviderPropertiesResponse>;
     /**
      * Resource Type
      */
@@ -103,7 +103,7 @@ export interface ReplicationRecoveryServicesProviderArgs {
     /**
      * The properties of an add provider request.
      */
-    properties: pulumi.Input<types.inputs.recoveryservices.v20230601.AddRecoveryServicesProviderInputPropertiesArgs>;
+    properties: pulumi.Input<types.inputs.AddRecoveryServicesProviderInputPropertiesArgs>;
     /**
      * Recovery services provider name.
      */

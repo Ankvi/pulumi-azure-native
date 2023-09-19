@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a specific action rule
  */
@@ -43,7 +43,7 @@ export interface GetActionRuleByNameResult {
     /**
      * action rule properties
      */
-    readonly properties: types.outputs.alertsmanagement.v20190505preview.ActionGroupResponse | types.outputs.alertsmanagement.v20190505preview.DiagnosticsResponse | types.outputs.alertsmanagement.v20190505preview.SuppressionResponse;
+    readonly properties: types.outputs.ActionGroupResponse | types.outputs.DiagnosticsResponse | types.outputs.SuppressionResponse;
     /**
      * Resource tags
      */

@@ -56,7 +56,7 @@ export class MasterSitesController extends pulumi.CustomResource {
     /**
      * Gets the private endpoint connections.
      */
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.offazure.PrivateEndpointConnectionResponse[]>;
+    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[]>;
     /**
      * provisioning state enum
      */
@@ -74,7 +74,7 @@ export class MasterSitesController extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.offazure.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */

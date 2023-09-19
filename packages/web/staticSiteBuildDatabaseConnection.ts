@@ -35,7 +35,7 @@ export class StaticSiteBuildDatabaseConnection extends pulumi.CustomResource {
     /**
      * A list of configuration files associated with this database connection.
      */
-    public /*out*/ readonly configurationFiles!: pulumi.Output<types.outputs.web.StaticSiteDatabaseConnectionConfigurationFileOverviewResponse[]>;
+    public /*out*/ readonly configurationFiles!: pulumi.Output<types.outputs.StaticSiteDatabaseConnectionConfigurationFileOverviewResponse[]>;
     /**
      * If present, the identity is used in conjunction with connection string to connect to the database. Use of the system-assigned managed identity is indicated with the string 'SystemAssigned', while use of a user-assigned managed identity is indicated with the resource id of the managed identity resource.
      */

@@ -45,11 +45,11 @@ export interface GetServiceRegistryResult {
     /**
      * Service Registry properties payload
      */
-    readonly properties: types.outputs.appplatform.ServiceRegistryPropertiesResponse;
+    readonly properties: types.outputs.ServiceRegistryPropertiesResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.appplatform.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a Transform.
  */
@@ -56,11 +56,11 @@ export interface GetTransformResult {
     /**
      * An array of one or more TransformOutputs that the Transform should generate.
      */
-    readonly outputs: types.outputs.media.v20220701.TransformOutputResponse[];
+    readonly outputs: types.outputs.TransformOutputResponse[];
     /**
      * The system metadata relating to this resource.
      */
-    readonly systemData: types.outputs.media.v20220701.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

@@ -42,7 +42,7 @@ export interface GetVolumeResult {
     /**
      * State of the operation on the resource.
      */
-    readonly creationData?: types.outputs.elasticsan.SourceCreationDataResponse;
+    readonly creationData?: types.outputs.SourceCreationDataResponse;
     /**
      * Azure resource identifier.
      */
@@ -58,11 +58,11 @@ export interface GetVolumeResult {
     /**
      * Storage target information
      */
-    readonly storageTarget: types.outputs.elasticsan.IscsiTargetInfoResponse;
+    readonly storageTarget: types.outputs.IscsiTargetInfoResponse;
     /**
      * Resource metadata required by ARM RPC
      */
-    readonly systemData: types.outputs.elasticsan.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Azure resource tags.
      */

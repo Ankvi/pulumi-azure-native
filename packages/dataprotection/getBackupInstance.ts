@@ -45,11 +45,11 @@ export interface GetBackupInstanceResult {
     /**
      * BackupInstanceResource properties
      */
-    readonly properties: types.outputs.dataprotection.BackupInstanceResponse;
+    readonly properties: types.outputs.BackupInstanceResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.dataprotection.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Proxy Resource tags.
      */

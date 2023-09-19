@@ -39,7 +39,7 @@ export class ResourceManagementPrivateLink extends pulumi.CustomResource {
      * The rmpl Name.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
-    public /*out*/ readonly properties!: pulumi.Output<types.outputs.authorization.ResourceManagementPrivateLinkEndpointConnectionsResponse>;
+    public /*out*/ readonly properties!: pulumi.Output<types.outputs.ResourceManagementPrivateLinkEndpointConnectionsResponse>;
     /**
      * The operation type.
      */

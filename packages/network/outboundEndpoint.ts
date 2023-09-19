@@ -55,11 +55,11 @@ export class OutboundEndpoint extends pulumi.CustomResource {
     /**
      * The reference to the subnet used for the outbound endpoint.
      */
-    public readonly subnet!: pulumi.Output<types.outputs.network.SubResourceResponse>;
+    public readonly subnet!: pulumi.Output<types.outputs.SubResourceResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.network.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -142,7 +142,7 @@ export interface OutboundEndpointArgs {
     /**
      * The reference to the subnet used for the outbound endpoint.
      */
-    subnet: pulumi.Input<types.inputs.network.SubResourceArgs>;
+    subnet: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * Resource tags.
      */

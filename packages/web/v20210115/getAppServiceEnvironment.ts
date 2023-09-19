@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the properties of an App Service Environment.
  */
@@ -31,7 +31,7 @@ export interface GetAppServiceEnvironmentResult {
     /**
      * Custom settings for changing the behavior of the App Service Environment.
      */
-    readonly clusterSettings?: types.outputs.web.v20210115.NameValuePairResponse[];
+    readonly clusterSettings?: types.outputs.NameValuePairResponse[];
     /**
      * Dedicated Host Count
      */
@@ -112,7 +112,7 @@ export interface GetAppServiceEnvironmentResult {
     /**
      * Description of the Virtual Network.
      */
-    readonly virtualNetwork: types.outputs.web.v20210115.VirtualNetworkProfileResponse;
+    readonly virtualNetwork: types.outputs.VirtualNetworkProfileResponse;
 }
 /**
  * Get the properties of an App Service Environment.

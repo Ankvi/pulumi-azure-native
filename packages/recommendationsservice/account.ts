@@ -43,11 +43,11 @@ export class Account extends pulumi.CustomResource {
     /**
      * Account resource properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.recommendationsservice.AccountResourceResponseProperties>;
+    public readonly properties!: pulumi.Output<types.outputs.AccountResourceResponseProperties>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.recommendationsservice.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -109,7 +109,7 @@ export interface AccountArgs {
     /**
      * Account resource properties.
      */
-    properties?: pulumi.Input<types.inputs.recommendationsservice.AccountResourcePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.AccountResourcePropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

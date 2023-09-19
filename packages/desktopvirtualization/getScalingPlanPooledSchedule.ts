@@ -53,7 +53,7 @@ export interface GetScalingPlanPooledScheduleResult {
     /**
      * Starting time for off-peak period.
      */
-    readonly offPeakStartTime?: types.outputs.desktopvirtualization.TimeResponse;
+    readonly offPeakStartTime?: types.outputs.TimeResponse;
     /**
      * Load balancing algorithm for peak period.
      */
@@ -61,7 +61,7 @@ export interface GetScalingPlanPooledScheduleResult {
     /**
      * Starting time for peak period.
      */
-    readonly peakStartTime?: types.outputs.desktopvirtualization.TimeResponse;
+    readonly peakStartTime?: types.outputs.TimeResponse;
     /**
      * Capacity threshold for ramp down period.
      */
@@ -85,7 +85,7 @@ export interface GetScalingPlanPooledScheduleResult {
     /**
      * Starting time for ramp down period.
      */
-    readonly rampDownStartTime?: types.outputs.desktopvirtualization.TimeResponse;
+    readonly rampDownStartTime?: types.outputs.TimeResponse;
     /**
      * Specifies when to stop hosts during ramp down period.
      */
@@ -109,11 +109,11 @@ export interface GetScalingPlanPooledScheduleResult {
     /**
      * Starting time for ramp up period.
      */
-    readonly rampUpStartTime?: types.outputs.desktopvirtualization.TimeResponse;
+    readonly rampUpStartTime?: types.outputs.TimeResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.desktopvirtualization.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

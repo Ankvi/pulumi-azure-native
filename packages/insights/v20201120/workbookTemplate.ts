@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An Application Insights workbook template definition.
  */
@@ -38,11 +38,11 @@ export class WorkbookTemplate extends pulumi.CustomResource {
     /**
      * Workbook galleries supported by the template.
      */
-    public readonly galleries!: pulumi.Output<types.outputs.insights.v20201120.WorkbookTemplateGalleryResponse[]>;
+    public readonly galleries!: pulumi.Output<types.outputs.WorkbookTemplateGalleryResponse[]>;
     /**
      * Key value pair of localized gallery. Each key is the locale code of languages supported by the Azure portal.
      */
-    public readonly localized!: pulumi.Output<{[key: string]: types.outputs.insights.v20201120.WorkbookTemplateLocalizedGalleryResponse[]} | undefined>;
+    public readonly localized!: pulumi.Output<{[key: string]: types.outputs.WorkbookTemplateLocalizedGalleryResponse[]} | undefined>;
     /**
      * Resource location
      */
@@ -128,11 +128,11 @@ export interface WorkbookTemplateArgs {
     /**
      * Workbook galleries supported by the template.
      */
-    galleries: pulumi.Input<pulumi.Input<types.inputs.insights.v20201120.WorkbookTemplateGalleryArgs>[]>;
+    galleries: pulumi.Input<pulumi.Input<types.inputs.WorkbookTemplateGalleryArgs>[]>;
     /**
      * Key value pair of localized gallery. Each key is the locale code of languages supported by the Azure portal.
      */
-    localized?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<types.inputs.insights.v20201120.WorkbookTemplateLocalizedGalleryArgs>[]>}>;
+    localized?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<types.inputs.WorkbookTemplateLocalizedGalleryArgs>[]>}>;
     /**
      * Resource location
      */

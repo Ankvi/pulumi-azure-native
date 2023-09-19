@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Resource information.
  */
@@ -34,11 +34,11 @@ export class Resource extends pulumi.CustomResource {
     /**
      * Resource extended location.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.resources.v20220901.ExtendedLocationResponse | undefined>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
     /**
      * The identity of the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.resources.v20220901.IdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityResponse | undefined>;
     /**
      * The kind of the resource.
      */
@@ -58,7 +58,7 @@ export class Resource extends pulumi.CustomResource {
     /**
      * The plan of the resource.
      */
-    public readonly plan!: pulumi.Output<types.outputs.resources.v20220901.PlanResponse | undefined>;
+    public readonly plan!: pulumi.Output<types.outputs.PlanResponse | undefined>;
     /**
      * The resource properties.
      */
@@ -66,7 +66,7 @@ export class Resource extends pulumi.CustomResource {
     /**
      * The SKU of the resource.
      */
-    public readonly sku!: pulumi.Output<types.outputs.resources.v20220901.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Resource tags
      */
@@ -142,11 +142,11 @@ export interface ResourceArgs {
     /**
      * Resource extended location.
      */
-    extendedLocation?: pulumi.Input<types.inputs.resources.v20220901.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * The identity of the resource.
      */
-    identity?: pulumi.Input<types.inputs.resources.v20220901.IdentityArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityArgs>;
     /**
      * The kind of the resource.
      */
@@ -166,7 +166,7 @@ export interface ResourceArgs {
     /**
      * The plan of the resource.
      */
-    plan?: pulumi.Input<types.inputs.resources.v20220901.PlanArgs>;
+    plan?: pulumi.Input<types.inputs.PlanArgs>;
     /**
      * The resource properties.
      */
@@ -190,7 +190,7 @@ export interface ResourceArgs {
     /**
      * The SKU of the resource.
      */
-    sku?: pulumi.Input<types.inputs.resources.v20220901.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Resource tags
      */

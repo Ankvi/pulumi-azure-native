@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Public IP address resource.
  */
@@ -34,7 +34,7 @@ export class PublicIPAddress extends pulumi.CustomResource {
     /**
      * The DDoS protection custom policy associated with the public IP address.
      */
-    public readonly ddosSettings!: pulumi.Output<types.outputs.network.v20230201.DdosSettingsResponse | undefined>;
+    public readonly ddosSettings!: pulumi.Output<types.outputs.DdosSettingsResponse | undefined>;
     /**
      * Specify what happens to the public IP address when the VM using it is deleted
      */
@@ -42,7 +42,7 @@ export class PublicIPAddress extends pulumi.CustomResource {
     /**
      * The FQDN of the DNS record associated with the public IP address.
      */
-    public readonly dnsSettings!: pulumi.Output<types.outputs.network.v20230201.PublicIPAddressDnsSettingsResponse | undefined>;
+    public readonly dnsSettings!: pulumi.Output<types.outputs.PublicIPAddressDnsSettingsResponse | undefined>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -50,7 +50,7 @@ export class PublicIPAddress extends pulumi.CustomResource {
     /**
      * The extended location of the public ip address.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.network.v20230201.ExtendedLocationResponse | undefined>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
     /**
      * The idle timeout of the public IP address.
      */
@@ -62,15 +62,15 @@ export class PublicIPAddress extends pulumi.CustomResource {
     /**
      * The IP configuration associated with the public IP address.
      */
-    public /*out*/ readonly ipConfiguration!: pulumi.Output<types.outputs.network.v20230201.IPConfigurationResponse>;
+    public /*out*/ readonly ipConfiguration!: pulumi.Output<types.outputs.IPConfigurationResponse>;
     /**
      * The list of tags associated with the public IP address.
      */
-    public readonly ipTags!: pulumi.Output<types.outputs.network.v20230201.IpTagResponse[] | undefined>;
+    public readonly ipTags!: pulumi.Output<types.outputs.IpTagResponse[] | undefined>;
     /**
      * The linked public IP address of the public IP address resource.
      */
-    public readonly linkedPublicIPAddress!: pulumi.Output<types.outputs.network.v20230201.PublicIPAddressResponse | undefined>;
+    public readonly linkedPublicIPAddress!: pulumi.Output<types.outputs.PublicIPAddressResponse | undefined>;
     /**
      * Resource location.
      */
@@ -86,7 +86,7 @@ export class PublicIPAddress extends pulumi.CustomResource {
     /**
      * The NatGateway for the Public IP address.
      */
-    public readonly natGateway!: pulumi.Output<types.outputs.network.v20230201.NatGatewayResponse | undefined>;
+    public readonly natGateway!: pulumi.Output<types.outputs.NatGatewayResponse | undefined>;
     /**
      * The provisioning state of the public IP address resource.
      */
@@ -102,7 +102,7 @@ export class PublicIPAddress extends pulumi.CustomResource {
     /**
      * The Public IP Prefix this Public IP Address should be allocated from.
      */
-    public readonly publicIPPrefix!: pulumi.Output<types.outputs.network.v20230201.SubResourceResponse | undefined>;
+    public readonly publicIPPrefix!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * The resource GUID property of the public IP address resource.
      */
@@ -110,11 +110,11 @@ export class PublicIPAddress extends pulumi.CustomResource {
     /**
      * The service public IP address of the public IP address resource.
      */
-    public readonly servicePublicIPAddress!: pulumi.Output<types.outputs.network.v20230201.PublicIPAddressResponse | undefined>;
+    public readonly servicePublicIPAddress!: pulumi.Output<types.outputs.PublicIPAddressResponse | undefined>;
     /**
      * The public IP address SKU.
      */
-    public readonly sku!: pulumi.Output<types.outputs.network.v20230201.PublicIPAddressSkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.PublicIPAddressSkuResponse | undefined>;
     /**
      * Resource tags.
      */
@@ -209,19 +209,19 @@ export interface PublicIPAddressArgs {
     /**
      * The DDoS protection custom policy associated with the public IP address.
      */
-    ddosSettings?: pulumi.Input<types.inputs.network.v20230201.DdosSettingsArgs>;
+    ddosSettings?: pulumi.Input<types.inputs.DdosSettingsArgs>;
     /**
      * Specify what happens to the public IP address when the VM using it is deleted
      */
-    deleteOption?: pulumi.Input<string | types.enums.v20230201.DeleteOptions>;
+    deleteOption?: pulumi.Input<string | types.enums.DeleteOptions>;
     /**
      * The FQDN of the DNS record associated with the public IP address.
      */
-    dnsSettings?: pulumi.Input<types.inputs.network.v20230201.PublicIPAddressDnsSettingsArgs>;
+    dnsSettings?: pulumi.Input<types.inputs.PublicIPAddressDnsSettingsArgs>;
     /**
      * The extended location of the public ip address.
      */
-    extendedLocation?: pulumi.Input<types.inputs.network.v20230201.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * Resource ID.
      */
@@ -237,11 +237,11 @@ export interface PublicIPAddressArgs {
     /**
      * The list of tags associated with the public IP address.
      */
-    ipTags?: pulumi.Input<pulumi.Input<types.inputs.network.v20230201.IpTagArgs>[]>;
+    ipTags?: pulumi.Input<pulumi.Input<types.inputs.IpTagArgs>[]>;
     /**
      * The linked public IP address of the public IP address resource.
      */
-    linkedPublicIPAddress?: pulumi.Input<types.inputs.network.v20230201.PublicIPAddressArgs>;
+    linkedPublicIPAddress?: pulumi.Input<types.inputs.PublicIPAddressArgs>;
     /**
      * Resource location.
      */
@@ -249,23 +249,23 @@ export interface PublicIPAddressArgs {
     /**
      * Migration phase of Public IP Address.
      */
-    migrationPhase?: pulumi.Input<string | types.enums.v20230201.PublicIPAddressMigrationPhase>;
+    migrationPhase?: pulumi.Input<string | types.enums.PublicIPAddressMigrationPhase>;
     /**
      * The NatGateway for the Public IP address.
      */
-    natGateway?: pulumi.Input<types.inputs.network.v20230201.NatGatewayArgs>;
+    natGateway?: pulumi.Input<types.inputs.NatGatewayArgs>;
     /**
      * The public IP address version.
      */
-    publicIPAddressVersion?: pulumi.Input<string | types.enums.v20230201.IPVersion>;
+    publicIPAddressVersion?: pulumi.Input<string | types.enums.IPVersion>;
     /**
      * The public IP address allocation method.
      */
-    publicIPAllocationMethod?: pulumi.Input<string | types.enums.v20230201.IPAllocationMethod>;
+    publicIPAllocationMethod?: pulumi.Input<string | types.enums.IPAllocationMethod>;
     /**
      * The Public IP Prefix this Public IP Address should be allocated from.
      */
-    publicIPPrefix?: pulumi.Input<types.inputs.network.v20230201.SubResourceArgs>;
+    publicIPPrefix?: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * The name of the public IP address.
      */
@@ -277,11 +277,11 @@ export interface PublicIPAddressArgs {
     /**
      * The service public IP address of the public IP address resource.
      */
-    servicePublicIPAddress?: pulumi.Input<types.inputs.network.v20230201.PublicIPAddressArgs>;
+    servicePublicIPAddress?: pulumi.Input<types.inputs.PublicIPAddressArgs>;
     /**
      * The public IP address SKU.
      */
-    sku?: pulumi.Input<types.inputs.network.v20230201.PublicIPAddressSkuArgs>;
+    sku?: pulumi.Input<types.inputs.PublicIPAddressSkuArgs>;
     /**
      * Resource tags.
      */

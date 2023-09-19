@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the Update run for a specified update
  */
@@ -93,11 +93,11 @@ export interface GetUpdateRunResult {
     /**
      * Recursive model for child steps of this step.
      */
-    readonly steps?: types.outputs.azurestackhci.v20230601.StepResponse[];
+    readonly steps?: types.outputs.StepResponse[];
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.azurestackhci.v20230601.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Timestamp of the update run was started.
      */

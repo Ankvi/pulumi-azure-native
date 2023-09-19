@@ -43,7 +43,7 @@ export class Extension extends pulumi.CustomResource {
     /**
      * The extension plan that was purchased.
      */
-    public readonly plan!: pulumi.Output<types.outputs.visualstudio.ExtensionResourcePlanResponse | undefined>;
+    public readonly plan!: pulumi.Output<types.outputs.ExtensionResourcePlanResponse | undefined>;
     /**
      * Resource properties.
      */
@@ -117,7 +117,7 @@ export interface ExtensionArgs {
     /**
      * Extended information about the plan being purchased for this extension resource.
      */
-    plan?: pulumi.Input<types.inputs.visualstudio.ExtensionResourcePlanArgs>;
+    plan?: pulumi.Input<types.inputs.ExtensionResourcePlanArgs>;
     /**
      * A dictionary of extended properties. This property is currently unused.
      */

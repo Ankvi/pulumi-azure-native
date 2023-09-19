@@ -44,11 +44,11 @@ export interface GetSqlServerInstanceResult {
     /**
      * null
      */
-    readonly properties: types.outputs.azurearcdata.SqlServerInstancePropertiesResponse;
+    readonly properties: types.outputs.SqlServerInstancePropertiesResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.azurearcdata.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * NSX Segment
  */
@@ -46,7 +46,7 @@ export class WorkloadNetworkSegment extends pulumi.CustomResource {
     /**
      * Port Vif which segment is associated with.
      */
-    public /*out*/ readonly portVif!: pulumi.Output<types.outputs.avs.v20220501.WorkloadNetworkSegmentPortVifResponse[]>;
+    public /*out*/ readonly portVif!: pulumi.Output<types.outputs.WorkloadNetworkSegmentPortVifResponse[]>;
     /**
      * The provisioning state
      */
@@ -62,7 +62,7 @@ export class WorkloadNetworkSegment extends pulumi.CustomResource {
     /**
      * Subnet which to connect segment to.
      */
-    public readonly subnet!: pulumi.Output<types.outputs.avs.v20220501.WorkloadNetworkSegmentSubnetResponse | undefined>;
+    public readonly subnet!: pulumi.Output<types.outputs.WorkloadNetworkSegmentSubnetResponse | undefined>;
     /**
      * Resource type.
      */
@@ -146,5 +146,5 @@ export interface WorkloadNetworkSegmentArgs {
     /**
      * Subnet which to connect segment to.
      */
-    subnet?: pulumi.Input<types.inputs.avs.v20220501.WorkloadNetworkSegmentSubnetArgs>;
+    subnet?: pulumi.Input<types.inputs.WorkloadNetworkSegmentSubnetArgs>;
 }

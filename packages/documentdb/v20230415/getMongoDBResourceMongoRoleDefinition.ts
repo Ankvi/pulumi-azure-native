@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves the properties of an existing Azure Cosmos DB Mongo Role Definition with the given Id.
  */
@@ -48,7 +48,7 @@ export interface GetMongoDBResourceMongoRoleDefinitionResult {
     /**
      * A set of privileges contained by the Role Definition. This will allow application of this Role Definition on the entire database account or any underlying Database / Collection. Scopes higher than Database are not enforceable as privilege.
      */
-    readonly privileges?: types.outputs.documentdb.v20230415.PrivilegeResponse[];
+    readonly privileges?: types.outputs.PrivilegeResponse[];
     /**
      * A user-friendly name for the Role Definition. Must be unique for the database account.
      */
@@ -56,7 +56,7 @@ export interface GetMongoDBResourceMongoRoleDefinitionResult {
     /**
      * The set of roles inherited by this Role Definition.
      */
-    readonly roles?: types.outputs.documentdb.v20230415.RoleResponse[];
+    readonly roles?: types.outputs.RoleResponse[];
     /**
      * The type of Azure resource.
      */

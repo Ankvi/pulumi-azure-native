@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Describes a DNS resolver.
  */
@@ -58,7 +58,7 @@ export class DnsResolver extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.network.v20220701.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -70,7 +70,7 @@ export class DnsResolver extends pulumi.CustomResource {
     /**
      * The reference to the virtual network. This cannot be changed after creation.
      */
-    public readonly virtualNetwork!: pulumi.Output<types.outputs.network.v20220701.SubResourceResponse>;
+    public readonly virtualNetwork!: pulumi.Output<types.outputs.SubResourceResponse>;
 
     /**
      * Create a DnsResolver resource with the given unique name, arguments, and options.
@@ -143,5 +143,5 @@ export interface DnsResolverArgs {
     /**
      * The reference to the virtual network. This cannot be changed after creation.
      */
-    virtualNetwork: pulumi.Input<types.inputs.network.v20220701.SubResourceArgs>;
+    virtualNetwork: pulumi.Input<types.inputs.SubResourceArgs>;
 }

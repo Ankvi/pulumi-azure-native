@@ -23,7 +23,7 @@ utilities.lazyLoad(exports, ["listAppServicePlanHybridConnectionKeys","listAppSe
 
 
 // Export enums:
-export * from "../types/enums/v20160901";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

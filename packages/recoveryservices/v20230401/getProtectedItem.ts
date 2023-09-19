@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Provides the details of the backed up item. This is an asynchronous operation. To know the status of the operation,
  * call the GetItemOperationResult API.
@@ -68,7 +68,7 @@ export interface GetProtectedItemResult {
     /**
      * ProtectedItemResource properties
      */
-    readonly properties: types.outputs.recoveryservices.v20230401.AzureFileshareProtectedItemResponse | types.outputs.recoveryservices.v20230401.AzureIaaSClassicComputeVMProtectedItemResponse | types.outputs.recoveryservices.v20230401.AzureIaaSComputeVMProtectedItemResponse | types.outputs.recoveryservices.v20230401.AzureIaaSVMProtectedItemResponse | types.outputs.recoveryservices.v20230401.AzureSqlProtectedItemResponse | types.outputs.recoveryservices.v20230401.AzureVmWorkloadProtectedItemResponse | types.outputs.recoveryservices.v20230401.AzureVmWorkloadSAPAseDatabaseProtectedItemResponse | types.outputs.recoveryservices.v20230401.AzureVmWorkloadSAPHanaDBInstanceProtectedItemResponse | types.outputs.recoveryservices.v20230401.AzureVmWorkloadSAPHanaDatabaseProtectedItemResponse | types.outputs.recoveryservices.v20230401.AzureVmWorkloadSQLDatabaseProtectedItemResponse | types.outputs.recoveryservices.v20230401.DPMProtectedItemResponse | types.outputs.recoveryservices.v20230401.GenericProtectedItemResponse | types.outputs.recoveryservices.v20230401.MabFileFolderProtectedItemResponse;
+    readonly properties: types.outputs.AzureFileshareProtectedItemResponse | types.outputs.AzureIaaSClassicComputeVMProtectedItemResponse | types.outputs.AzureIaaSComputeVMProtectedItemResponse | types.outputs.AzureIaaSVMProtectedItemResponse | types.outputs.AzureSqlProtectedItemResponse | types.outputs.AzureVmWorkloadProtectedItemResponse | types.outputs.AzureVmWorkloadSAPAseDatabaseProtectedItemResponse | types.outputs.AzureVmWorkloadSAPHanaDBInstanceProtectedItemResponse | types.outputs.AzureVmWorkloadSAPHanaDatabaseProtectedItemResponse | types.outputs.AzureVmWorkloadSQLDatabaseProtectedItemResponse | types.outputs.DPMProtectedItemResponse | types.outputs.GenericProtectedItemResponse | types.outputs.MabFileFolderProtectedItemResponse;
     /**
      * Resource tags.
      */

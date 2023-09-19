@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the specified Cloud HSM Cluster
  */
@@ -35,7 +35,7 @@ export interface GetCloudHsmClusterResult {
     /**
      * An array of Cloud HSM Cluster's HSMs
      */
-    readonly hsms?: types.outputs.hardwaresecuritymodules.v20220831preview.CloudHsmPropertiesResponse[];
+    readonly hsms?: types.outputs.CloudHsmPropertiesResponse[];
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
@@ -51,7 +51,7 @@ export interface GetCloudHsmClusterResult {
     /**
      * List of private endpoint connection resources
      */
-    readonly privateEndpointConnections?: types.outputs.hardwaresecuritymodules.v20220831preview.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections?: types.outputs.PrivateEndpointConnectionResponse[];
     /**
      * The Cloud HSM Cluster's provisioningState
      */
@@ -63,15 +63,15 @@ export interface GetCloudHsmClusterResult {
     /**
      * Security domain properties information for Cloud HSM cluster
      */
-    readonly securityDomain?: types.outputs.hardwaresecuritymodules.v20220831preview.CloudHsmClusterSecurityDomainPropertiesResponse;
+    readonly securityDomain?: types.outputs.CloudHsmClusterSecurityDomainPropertiesResponse;
     /**
      * SKU details
      */
-    readonly sku?: types.outputs.hardwaresecuritymodules.v20220831preview.CloudHsmClusterSkuResponse;
+    readonly sku?: types.outputs.CloudHsmClusterSkuResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.hardwaresecuritymodules.v20220831preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

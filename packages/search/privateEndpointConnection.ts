@@ -39,7 +39,7 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * Describes the properties of an existing Private Endpoint connection to the Azure Cognitive Search service.
      */
-    public readonly properties!: pulumi.Output<types.outputs.search.PrivateEndpointConnectionPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.PrivateEndpointConnectionPropertiesResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -63,7 +63,7 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
                 throw new Error("Missing required property 'searchServiceName'");
             }
             resourceInputs["privateEndpointConnectionName"] = args ? args.privateEndpointConnectionName : undefined;
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.search.privateEndpointConnectionPropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.privateEndpointConnectionPropertiesArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["searchServiceName"] = args ? args.searchServiceName : undefined;
             resourceInputs["name"] = undefined /*out*/;
@@ -91,7 +91,7 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * Describes the properties of an existing Private Endpoint connection to the Azure Cognitive Search service.
      */
-    properties?: pulumi.Input<types.inputs.search.PrivateEndpointConnectionPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.PrivateEndpointConnectionPropertiesArgs>;
     /**
      * The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
      */

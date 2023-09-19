@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Outbound Rule Basic Resource for the managed network of a machine learning workspace.
  */
@@ -38,11 +38,11 @@ export class ManagedNetworkSettingsRule extends pulumi.CustomResource {
     /**
      * Outbound Rule for the managed network of a machine learning workspace.
      */
-    public readonly properties!: pulumi.Output<types.outputs.machinelearningservices.v20230401preview.FqdnOutboundRuleResponse | types.outputs.machinelearningservices.v20230401preview.PrivateEndpointOutboundRuleResponse | types.outputs.machinelearningservices.v20230401preview.ServiceTagOutboundRuleResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.FqdnOutboundRuleResponse | types.outputs.PrivateEndpointOutboundRuleResponse | types.outputs.ServiceTagOutboundRuleResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.machinelearningservices.v20230401preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -95,7 +95,7 @@ export interface ManagedNetworkSettingsRuleArgs {
     /**
      * Outbound Rule for the managed network of a machine learning workspace.
      */
-    properties: pulumi.Input<types.inputs.machinelearningservices.v20230401preview.FqdnOutboundRuleArgs | types.inputs.machinelearningservices.v20230401preview.PrivateEndpointOutboundRuleArgs | types.inputs.machinelearningservices.v20230401preview.ServiceTagOutboundRuleArgs>;
+    properties: pulumi.Input<types.inputs.FqdnOutboundRuleArgs | types.inputs.PrivateEndpointOutboundRuleArgs | types.inputs.ServiceTagOutboundRuleArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

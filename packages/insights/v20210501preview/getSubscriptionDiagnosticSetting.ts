@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the active subscription diagnostic settings for the specified resource.
  */
@@ -38,7 +38,7 @@ export interface GetSubscriptionDiagnosticSettingResult {
     /**
      * The list of logs settings.
      */
-    readonly logs?: types.outputs.insights.v20210501preview.SubscriptionLogSettingsResponse[];
+    readonly logs?: types.outputs.SubscriptionLogSettingsResponse[];
     /**
      * The full ARM resource ID of the Marketplace resource to which you would like to send Diagnostic Logs.
      */
@@ -58,7 +58,7 @@ export interface GetSubscriptionDiagnosticSettingResult {
     /**
      * The system metadata related to this resource.
      */
-    readonly systemData: types.outputs.insights.v20210501preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

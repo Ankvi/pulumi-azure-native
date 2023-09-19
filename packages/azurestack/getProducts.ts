@@ -41,7 +41,7 @@ export interface GetProductsResult {
     /**
      * List of products.
      */
-    readonly value?: types.outputs.azurestack.ProductResponse[];
+    readonly value?: types.outputs.ProductResponse[];
 }
 /**
  * Returns a list of products.

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 export class Console extends pulumi.CustomResource {
     /**
      * Get an existing Console resource's state with the given name, ID, and optional extra
@@ -47,7 +47,7 @@ export class Console extends pulumi.CustomResource {
     /**
      * The extended location of the cluster manager associated with the cluster this virtual machine is created on.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.networkcloud.v20230501preview.ExtendedLocationResponse>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse>;
     /**
      * The geo-location where the resource lives
      */
@@ -67,11 +67,11 @@ export class Console extends pulumi.CustomResource {
     /**
      * The SSH public key that will be provisioned for user access. The user is expected to have the corresponding SSH private key for logging in.
      */
-    public readonly sshPublicKey!: pulumi.Output<types.outputs.networkcloud.v20230501preview.SshPublicKeyResponse>;
+    public readonly sshPublicKey!: pulumi.Output<types.outputs.SshPublicKeyResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.networkcloud.v20230501preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -162,7 +162,7 @@ export interface ConsoleArgs {
     /**
      * The indicator of whether the console access is enabled.
      */
-    enabled: pulumi.Input<string | types.enums.v20230501preview.ConsoleEnabled>;
+    enabled: pulumi.Input<string | types.enums.ConsoleEnabled>;
     /**
      * The date and time after which the key will be disallowed access.
      */
@@ -170,7 +170,7 @@ export interface ConsoleArgs {
     /**
      * The extended location of the cluster manager associated with the cluster this virtual machine is created on.
      */
-    extendedLocation: pulumi.Input<types.inputs.networkcloud.v20230501preview.ExtendedLocationArgs>;
+    extendedLocation: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -182,7 +182,7 @@ export interface ConsoleArgs {
     /**
      * The SSH public key that will be provisioned for user access. The user is expected to have the corresponding SSH private key for logging in.
      */
-    sshPublicKey: pulumi.Input<types.inputs.networkcloud.v20230501preview.SshPublicKeyArgs>;
+    sshPublicKey: pulumi.Input<types.inputs.SshPublicKeyArgs>;
     /**
      * Resource tags.
      */

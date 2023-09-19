@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Lists impacted resources in the subscription by an event (Security Advisory).
  */
@@ -35,7 +35,7 @@ export interface ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdR
     /**
      * The list of eventImpactedResources.
      */
-    readonly value: types.outputs.resourcehealth.v20230701preview.EventImpactedResourceResponse[];
+    readonly value: types.outputs.EventImpactedResourceResponse[];
 }
 /**
  * Lists impacted resources in the subscription by an event (Security Advisory).

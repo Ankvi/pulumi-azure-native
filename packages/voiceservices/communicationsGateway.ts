@@ -63,7 +63,7 @@ export class CommunicationsGateway extends pulumi.CustomResource {
     /**
      * The managed service identities assigned to this resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.voiceservices.ManagedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * Whether an integrated Mobile Control Point is in use.
      */
@@ -91,7 +91,7 @@ export class CommunicationsGateway extends pulumi.CustomResource {
     /**
      * The regions in which to deploy the resources needed for Teams Calling
      */
-    public readonly serviceLocations!: pulumi.Output<types.outputs.voiceservices.ServiceRegionPropertiesResponse[]>;
+    public readonly serviceLocations!: pulumi.Output<types.outputs.ServiceRegionPropertiesResponse[]>;
     /**
      * The current status of the deployment.
      */
@@ -99,7 +99,7 @@ export class CommunicationsGateway extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.voiceservices.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -228,7 +228,7 @@ export interface CommunicationsGatewayArgs {
     /**
      * The managed service identities assigned to this resource.
      */
-    identity?: pulumi.Input<types.inputs.voiceservices.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
      * Whether an integrated Mobile Control Point is in use.
      */
@@ -252,7 +252,7 @@ export interface CommunicationsGatewayArgs {
     /**
      * The regions in which to deploy the resources needed for Teams Calling
      */
-    serviceLocations: pulumi.Input<pulumi.Input<types.inputs.voiceservices.ServiceRegionPropertiesArgs>[]>;
+    serviceLocations: pulumi.Input<pulumi.Input<types.inputs.ServiceRegionPropertiesArgs>[]>;
     /**
      * Resource tags.
      */

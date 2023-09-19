@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A Video Analyzer account.
  */
@@ -34,15 +34,15 @@ export class VideoAnalyzer extends pulumi.CustomResource {
     /**
      * The account encryption properties.
      */
-    public readonly encryption!: pulumi.Output<types.outputs.videoanalyzer.v20210501preview.AccountEncryptionResponse>;
+    public readonly encryption!: pulumi.Output<types.outputs.AccountEncryptionResponse>;
     /**
      * The list of endpoints associated with this resource.
      */
-    public /*out*/ readonly endpoints!: pulumi.Output<types.outputs.videoanalyzer.v20210501preview.EndpointResponse[]>;
+    public /*out*/ readonly endpoints!: pulumi.Output<types.outputs.EndpointResponse[]>;
     /**
      * The set of managed identities associated with the Video Analyzer resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.videoanalyzer.v20210501preview.VideoAnalyzerIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.VideoAnalyzerIdentityResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -54,11 +54,11 @@ export class VideoAnalyzer extends pulumi.CustomResource {
     /**
      * The storage accounts for this resource.
      */
-    public readonly storageAccounts!: pulumi.Output<types.outputs.videoanalyzer.v20210501preview.StorageAccountResponse[]>;
+    public readonly storageAccounts!: pulumi.Output<types.outputs.StorageAccountResponse[]>;
     /**
      * The system data of the Video Analyzer account.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.videoanalyzer.v20210501preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -128,11 +128,11 @@ export interface VideoAnalyzerArgs {
     /**
      * The account encryption properties.
      */
-    encryption: pulumi.Input<types.inputs.videoanalyzer.v20210501preview.AccountEncryptionArgs>;
+    encryption: pulumi.Input<types.inputs.AccountEncryptionArgs>;
     /**
      * The set of managed identities associated with the Video Analyzer resource.
      */
-    identity?: pulumi.Input<types.inputs.videoanalyzer.v20210501preview.VideoAnalyzerIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.VideoAnalyzerIdentityArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -144,7 +144,7 @@ export interface VideoAnalyzerArgs {
     /**
      * The storage accounts for this resource.
      */
-    storageAccounts: pulumi.Input<pulumi.Input<types.inputs.videoanalyzer.v20210501preview.StorageAccountArgs>[]>;
+    storageAccounts: pulumi.Input<pulumi.Input<types.inputs.StorageAccountArgs>[]>;
     /**
      * Resource tags.
      */

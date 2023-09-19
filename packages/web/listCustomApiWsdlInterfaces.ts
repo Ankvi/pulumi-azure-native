@@ -34,7 +34,7 @@ export interface ListCustomApiWsdlInterfacesArgs {
     /**
      * The service with name and endpoint names
      */
-    service?: types.inputs.web.WsdlService;
+    service?: types.inputs.WsdlService;
     /**
      * Subscription Id
      */
@@ -52,7 +52,7 @@ export interface ListCustomApiWsdlInterfacesResult {
     /**
      * Collection of WSDL interfaces
      */
-    readonly value?: types.outputs.web.WsdlServiceResponse[];
+    readonly value?: types.outputs.WsdlServiceResponse[];
 }
 /**
  * This returns the list of interfaces in the WSDL
@@ -78,7 +78,7 @@ export interface ListCustomApiWsdlInterfacesOutputArgs {
     /**
      * The service with name and endpoint names
      */
-    service?: pulumi.Input<types.inputs.web.WsdlServiceArgs>;
+    service?: pulumi.Input<types.inputs.WsdlServiceArgs>;
     /**
      * Subscription Id
      */

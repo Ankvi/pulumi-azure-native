@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The variable.
  */
@@ -34,7 +34,7 @@ export class VariableAtManagementGroup extends pulumi.CustomResource {
     /**
      * Variable column definitions.
      */
-    public readonly columns!: pulumi.Output<types.outputs.authorization.v20220801preview.PolicyVariableColumnResponse[]>;
+    public readonly columns!: pulumi.Output<types.outputs.PolicyVariableColumnResponse[]>;
     /**
      * The name of the variable.
      */
@@ -42,7 +42,7 @@ export class VariableAtManagementGroup extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.authorization.v20220801preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource (Microsoft.Authorization/variables).
      */
@@ -91,7 +91,7 @@ export interface VariableAtManagementGroupArgs {
     /**
      * Variable column definitions.
      */
-    columns: pulumi.Input<pulumi.Input<types.inputs.authorization.v20220801preview.PolicyVariableColumnArgs>[]>;
+    columns: pulumi.Input<pulumi.Input<types.inputs.PolicyVariableColumnArgs>[]>;
     /**
      * The ID of the management group.
      */

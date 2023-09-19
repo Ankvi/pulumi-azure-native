@@ -44,7 +44,7 @@ export interface GetGovernanceRuleResult {
     /**
      * The email notifications settings for the governance rule, states whether to disable notifications for mangers and owners
      */
-    readonly governanceEmailNotification?: types.outputs.security.GovernanceRuleEmailNotificationResponse;
+    readonly governanceEmailNotification?: types.outputs.GovernanceRuleEmailNotificationResponse;
     /**
      * Resource Id
      */
@@ -64,7 +64,7 @@ export interface GetGovernanceRuleResult {
     /**
      * The governance rule metadata
      */
-    readonly metadata?: types.outputs.security.GovernanceRuleMetadataResponse;
+    readonly metadata?: types.outputs.GovernanceRuleMetadataResponse;
     /**
      * Resource name
      */
@@ -72,7 +72,7 @@ export interface GetGovernanceRuleResult {
     /**
      * The owner source for the governance rule - e.g. Manually by user@contoso.com - see example
      */
-    readonly ownerSource: types.outputs.security.GovernanceRuleOwnerSourceResponse;
+    readonly ownerSource: types.outputs.GovernanceRuleOwnerSourceResponse;
     /**
      * Governance rule remediation timeframe - this is the time that will affect on the grace-period duration e.g. 7.00:00:00 - means 7 days
      */

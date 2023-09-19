@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the metadata of an IoT Central application.
  */
@@ -43,7 +43,7 @@ export interface GetAppResult {
     /**
      * The managed identities for the IoT Central application.
      */
-    readonly identity?: types.outputs.iotcentral.v20211101preview.SystemAssignedServiceIdentityResponse;
+    readonly identity?: types.outputs.SystemAssignedServiceIdentityResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -55,11 +55,11 @@ export interface GetAppResult {
     /**
      * Network Rule Set Properties of this IoT Central application.
      */
-    readonly networkRuleSets?: types.outputs.iotcentral.v20211101preview.NetworkRuleSetsResponse;
+    readonly networkRuleSets?: types.outputs.NetworkRuleSetsResponse;
     /**
      * Private endpoint connections created on this IoT Central application.
      */
-    readonly privateEndpointConnections: types.outputs.iotcentral.v20211101preview.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections: types.outputs.PrivateEndpointConnectionResponse[];
     /**
      * The provisioning state of the application.
      */
@@ -71,7 +71,7 @@ export interface GetAppResult {
     /**
      * A valid instance SKU.
      */
-    readonly sku: types.outputs.iotcentral.v20211101preview.AppSkuInfoResponse;
+    readonly sku: types.outputs.AppSkuInfoResponse;
     /**
      * The current state of the application.
      */
@@ -83,7 +83,7 @@ export interface GetAppResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.iotcentral.v20211101preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Definition of hybrid runbook worker group.
  */
@@ -34,7 +34,7 @@ export class HybridRunbookWorkerGroup extends pulumi.CustomResource {
     /**
      * Sets the credential of a worker group.
      */
-    public readonly credential!: pulumi.Output<types.outputs.automation.v20220808.RunAsCredentialAssociationPropertyResponse | undefined>;
+    public readonly credential!: pulumi.Output<types.outputs.RunAsCredentialAssociationPropertyResponse | undefined>;
     /**
      * Type of the HybridWorkerGroup.
      */
@@ -46,7 +46,7 @@ export class HybridRunbookWorkerGroup extends pulumi.CustomResource {
     /**
      * Resource system metadata.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.automation.v20220808.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource.
      */
@@ -102,7 +102,7 @@ export interface HybridRunbookWorkerGroupArgs {
     /**
      * Sets the credential of a worker group.
      */
-    credential?: pulumi.Input<types.inputs.automation.v20220808.RunAsCredentialAssociationPropertyArgs>;
+    credential?: pulumi.Input<types.inputs.RunAsCredentialAssociationPropertyArgs>;
     /**
      * The hybrid runbook worker group name
      */

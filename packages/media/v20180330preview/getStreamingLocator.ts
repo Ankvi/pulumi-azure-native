@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the details of a Streaming Locator in the Media Services account
  */
@@ -40,7 +40,7 @@ export interface GetStreamingLocatorResult {
     /**
      * ContentKeys used by this Streaming Locator
      */
-    readonly contentKeys?: types.outputs.media.v20180330preview.StreamingLocatorUserDefinedContentKeyResponse[];
+    readonly contentKeys?: types.outputs.StreamingLocatorUserDefinedContentKeyResponse[];
     /**
      * Creation time of Streaming Locator
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A Media Services account.
  */
@@ -34,15 +34,15 @@ export class MediaService extends pulumi.CustomResource {
     /**
      * The account encryption properties.
      */
-    public readonly encryption!: pulumi.Output<types.outputs.media.v20230101.AccountEncryptionResponse | undefined>;
+    public readonly encryption!: pulumi.Output<types.outputs.AccountEncryptionResponse | undefined>;
     /**
      * The Managed Identity for the Media Services account.
      */
-    public readonly identity!: pulumi.Output<types.outputs.media.v20230101.MediaServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.MediaServiceIdentityResponse | undefined>;
     /**
      * The Key Delivery properties for Media Services account.
      */
-    public readonly keyDelivery!: pulumi.Output<types.outputs.media.v20230101.KeyDeliveryResponse | undefined>;
+    public readonly keyDelivery!: pulumi.Output<types.outputs.KeyDeliveryResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -62,7 +62,7 @@ export class MediaService extends pulumi.CustomResource {
     /**
      * The Private Endpoint Connections created for the Media Service account.
      */
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.media.v20230101.PrivateEndpointConnectionResponse[]>;
+    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[]>;
     /**
      * Provisioning state of the Media Services account.
      */
@@ -74,12 +74,12 @@ export class MediaService extends pulumi.CustomResource {
     /**
      * The storage accounts for this resource.
      */
-    public readonly storageAccounts!: pulumi.Output<types.outputs.media.v20230101.StorageAccountResponse[] | undefined>;
+    public readonly storageAccounts!: pulumi.Output<types.outputs.StorageAccountResponse[] | undefined>;
     public readonly storageAuthentication!: pulumi.Output<string | undefined>;
     /**
      * The system metadata relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.media.v20230101.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -155,15 +155,15 @@ export interface MediaServiceArgs {
     /**
      * The account encryption properties.
      */
-    encryption?: pulumi.Input<types.inputs.media.v20230101.AccountEncryptionArgs>;
+    encryption?: pulumi.Input<types.inputs.AccountEncryptionArgs>;
     /**
      * The Managed Identity for the Media Services account.
      */
-    identity?: pulumi.Input<types.inputs.media.v20230101.MediaServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.MediaServiceIdentityArgs>;
     /**
      * The Key Delivery properties for Media Services account.
      */
-    keyDelivery?: pulumi.Input<types.inputs.media.v20230101.KeyDeliveryArgs>;
+    keyDelivery?: pulumi.Input<types.inputs.KeyDeliveryArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -171,11 +171,11 @@ export interface MediaServiceArgs {
     /**
      * The minimum TLS version allowed for this account's requests. This is an optional property. If unspecified, a secure default value will be used.
      */
-    minimumTlsVersion?: pulumi.Input<string | types.enums.v20230101.MinimumTlsVersion>;
+    minimumTlsVersion?: pulumi.Input<string | types.enums.MinimumTlsVersion>;
     /**
      * Whether or not public network access is allowed for resources under the Media Services account.
      */
-    publicNetworkAccess?: pulumi.Input<string | types.enums.v20230101.PublicNetworkAccess>;
+    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess>;
     /**
      * The name of the resource group within the Azure subscription.
      */
@@ -183,8 +183,8 @@ export interface MediaServiceArgs {
     /**
      * The storage accounts for this resource.
      */
-    storageAccounts?: pulumi.Input<pulumi.Input<types.inputs.media.v20230101.StorageAccountArgs>[]>;
-    storageAuthentication?: pulumi.Input<string | types.enums.v20230101.StorageAuthentication>;
+    storageAccounts?: pulumi.Input<pulumi.Input<types.inputs.StorageAccountArgs>[]>;
+    storageAuthentication?: pulumi.Input<string | types.enums.StorageAuthentication>;
     /**
      * Resource tags.
      */

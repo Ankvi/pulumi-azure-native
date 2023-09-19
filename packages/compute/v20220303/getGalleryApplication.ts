@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves information about a gallery Application Definition.
  */
@@ -36,7 +36,7 @@ export interface GetGalleryApplicationResult {
     /**
      * A list of custom actions that can be performed with all of the Gallery Application Versions within this Gallery Application.
      */
-    readonly customActions?: types.outputs.compute.v20220303.GalleryApplicationCustomActionResponse[];
+    readonly customActions?: types.outputs.GalleryApplicationCustomActionResponse[];
     /**
      * The description of this gallery Application Definition resource. This property is updatable.
      */

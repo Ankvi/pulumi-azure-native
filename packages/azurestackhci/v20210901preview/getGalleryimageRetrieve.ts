@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets galleryimages by resource name
  */
@@ -39,7 +39,7 @@ export interface GetGalleryimageRetrieveResult {
     /**
      * The extendedLocation of the resource.
      */
-    readonly extendedLocation?: types.outputs.azurestackhci.v20210901preview.ExtendedLocationResponse;
+    readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
     /**
      * The hypervisor generation of the Virtual Machine [V1, V2]
      */
@@ -51,7 +51,7 @@ export interface GetGalleryimageRetrieveResult {
     /**
      * This is the gallery image definition identifier.
      */
-    readonly identifier?: types.outputs.azurestackhci.v20210901preview.GalleryImageIdentifierResponse;
+    readonly identifier?: types.outputs.GalleryImageIdentifierResponse;
     /**
      * location of the image the gallery image should be created from
      */
@@ -79,11 +79,11 @@ export interface GetGalleryimageRetrieveResult {
     /**
      * GalleryImageStatus defines the observed state of galleryimages
      */
-    readonly status: types.outputs.azurestackhci.v20210901preview.GalleryImageStatusResponse;
+    readonly status: types.outputs.GalleryImageStatusResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.azurestackhci.v20210901preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -95,7 +95,7 @@ export interface GetGalleryimageRetrieveResult {
     /**
      * Specifies information about the gallery image version that you want to create or update.
      */
-    readonly version?: types.outputs.azurestackhci.v20210901preview.GalleryImageVersionResponse;
+    readonly version?: types.outputs.GalleryImageVersionResponse;
 }
 /**
  * Gets galleryimages by resource name

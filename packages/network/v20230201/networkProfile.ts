@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Network profile resource.
  */
@@ -34,11 +34,11 @@ export class NetworkProfile extends pulumi.CustomResource {
     /**
      * List of chid container network interface configurations.
      */
-    public readonly containerNetworkInterfaceConfigurations!: pulumi.Output<types.outputs.network.v20230201.ContainerNetworkInterfaceConfigurationResponse[] | undefined>;
+    public readonly containerNetworkInterfaceConfigurations!: pulumi.Output<types.outputs.ContainerNetworkInterfaceConfigurationResponse[] | undefined>;
     /**
      * List of child container network interfaces.
      */
-    public /*out*/ readonly containerNetworkInterfaces!: pulumi.Output<types.outputs.network.v20230201.ContainerNetworkInterfaceResponse[]>;
+    public /*out*/ readonly containerNetworkInterfaces!: pulumi.Output<types.outputs.ContainerNetworkInterfaceResponse[]>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -119,7 +119,7 @@ export interface NetworkProfileArgs {
     /**
      * List of chid container network interface configurations.
      */
-    containerNetworkInterfaceConfigurations?: pulumi.Input<pulumi.Input<types.inputs.network.v20230201.ContainerNetworkInterfaceConfigurationArgs>[]>;
+    containerNetworkInterfaceConfigurations?: pulumi.Input<pulumi.Input<types.inputs.ContainerNetworkInterfaceConfigurationArgs>[]>;
     /**
      * Resource ID.
      */

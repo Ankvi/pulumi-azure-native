@@ -40,7 +40,7 @@ export class SecurityPolicy extends pulumi.CustomResource {
     /**
      * object which contains security policy parameters
      */
-    public readonly parameters!: pulumi.Output<types.outputs.cdn.SecurityPolicyWebApplicationFirewallParametersResponse | undefined>;
+    public readonly parameters!: pulumi.Output<types.outputs.SecurityPolicyWebApplicationFirewallParametersResponse | undefined>;
     /**
      * The name of the profile which holds the security policy.
      */
@@ -52,7 +52,7 @@ export class SecurityPolicy extends pulumi.CustomResource {
     /**
      * Read only system data
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.cdn.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource type.
      */
@@ -107,7 +107,7 @@ export interface SecurityPolicyArgs {
     /**
      * object which contains security policy parameters
      */
-    parameters?: pulumi.Input<types.inputs.cdn.SecurityPolicyWebApplicationFirewallParametersArgs>;
+    parameters?: pulumi.Input<types.inputs.SecurityPolicyWebApplicationFirewallParametersArgs>;
     /**
      * Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
      */

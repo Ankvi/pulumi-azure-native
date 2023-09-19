@@ -37,7 +37,7 @@ export class CloudEdgeManagementRole extends pulumi.CustomResource {
     /**
      * Edge Profile of the resource
      */
-    public /*out*/ readonly edgeProfile!: pulumi.Output<types.outputs.databoxedge.EdgeProfileResponse>;
+    public /*out*/ readonly edgeProfile!: pulumi.Output<types.outputs.EdgeProfileResponse>;
     /**
      * Role type.
      * Expected value is 'CloudEdgeManagement'.
@@ -58,7 +58,7 @@ export class CloudEdgeManagementRole extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of Role
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.databoxedge.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The hierarchical type of the object.
      */

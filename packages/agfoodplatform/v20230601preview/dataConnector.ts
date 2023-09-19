@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * DataConnector Model.
  */
@@ -42,11 +42,11 @@ export class DataConnector extends pulumi.CustomResource {
     /**
      * DataConnector Properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.agfoodplatform.v20230601preview.DataConnectorPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.DataConnectorPropertiesResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.agfoodplatform.v20230601preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -109,7 +109,7 @@ export interface DataConnectorArgs {
     /**
      * DataConnector Properties.
      */
-    properties: pulumi.Input<types.inputs.agfoodplatform.v20230601preview.DataConnectorPropertiesArgs>;
+    properties: pulumi.Input<types.inputs.DataConnectorPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

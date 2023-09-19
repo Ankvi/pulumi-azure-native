@@ -51,7 +51,7 @@ export class DdosProtectionPlan extends pulumi.CustomResource {
     /**
      * The list of public IPs associated with the DDoS protection plan resource. This list is read-only.
      */
-    public /*out*/ readonly publicIPAddresses!: pulumi.Output<types.outputs.network.SubResourceResponse[]>;
+    public /*out*/ readonly publicIPAddresses!: pulumi.Output<types.outputs.SubResourceResponse[]>;
     /**
      * The resource GUID property of the DDoS protection plan resource. It uniquely identifies the resource, even if the user changes its name or migrate the resource across subscriptions or resource groups.
      */
@@ -67,7 +67,7 @@ export class DdosProtectionPlan extends pulumi.CustomResource {
     /**
      * The list of virtual networks associated with the DDoS protection plan resource. This list is read-only.
      */
-    public /*out*/ readonly virtualNetworks!: pulumi.Output<types.outputs.network.SubResourceResponse[]>;
+    public /*out*/ readonly virtualNetworks!: pulumi.Output<types.outputs.SubResourceResponse[]>;
 
     /**
      * Create a DdosProtectionPlan resource with the given unique name, arguments, and options.

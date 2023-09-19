@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a failover group.
  */
@@ -40,7 +40,7 @@ export interface GetInstanceFailoverGroupResult {
     /**
      * List of managed instance pairs in the failover group.
      */
-    readonly managedInstancePairs: types.outputs.sql.v20230201preview.ManagedInstancePairInfoResponse[];
+    readonly managedInstancePairs: types.outputs.ManagedInstancePairInfoResponse[];
     /**
      * Resource name.
      */
@@ -48,15 +48,15 @@ export interface GetInstanceFailoverGroupResult {
     /**
      * Partner region information for the failover group.
      */
-    readonly partnerRegions: types.outputs.sql.v20230201preview.PartnerRegionInfoResponse[];
+    readonly partnerRegions: types.outputs.PartnerRegionInfoResponse[];
     /**
      * Read-only endpoint of the failover group instance.
      */
-    readonly readOnlyEndpoint?: types.outputs.sql.v20230201preview.InstanceFailoverGroupReadOnlyEndpointResponse;
+    readonly readOnlyEndpoint?: types.outputs.InstanceFailoverGroupReadOnlyEndpointResponse;
     /**
      * Read-write endpoint of the failover group instance.
      */
-    readonly readWriteEndpoint: types.outputs.sql.v20230201preview.InstanceFailoverGroupReadWriteEndpointResponse;
+    readonly readWriteEndpoint: types.outputs.InstanceFailoverGroupReadWriteEndpointResponse;
     /**
      * Local replication role of the failover group instance.
      */

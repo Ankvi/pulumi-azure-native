@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An Application Insights WebTest definition.
  */
@@ -34,7 +34,7 @@ export class WebTest extends pulumi.CustomResource {
     /**
      * An XML configuration specification for a WebTest.
      */
-    public readonly configuration!: pulumi.Output<types.outputs.insights.v20220615.WebTestPropertiesResponseConfiguration | undefined>;
+    public readonly configuration!: pulumi.Output<types.outputs.WebTestPropertiesResponseConfiguration | undefined>;
     /**
      * User defined description for this WebTest.
      */
@@ -58,7 +58,7 @@ export class WebTest extends pulumi.CustomResource {
     /**
      * A list of where to physically run the tests from to give global coverage for accessibility of your application.
      */
-    public readonly locations!: pulumi.Output<types.outputs.insights.v20220615.WebTestGeolocationResponse[]>;
+    public readonly locations!: pulumi.Output<types.outputs.WebTestGeolocationResponse[]>;
     /**
      * Azure resource name
      */
@@ -70,7 +70,7 @@ export class WebTest extends pulumi.CustomResource {
     /**
      * The collection of request properties
      */
-    public readonly request!: pulumi.Output<types.outputs.insights.v20220615.WebTestPropertiesResponseRequest | undefined>;
+    public readonly request!: pulumi.Output<types.outputs.WebTestPropertiesResponseRequest | undefined>;
     /**
      * Allow for retries should this WebTest fail.
      */
@@ -94,7 +94,7 @@ export class WebTest extends pulumi.CustomResource {
     /**
      * The collection of validation rule properties
      */
-    public readonly validationRules!: pulumi.Output<types.outputs.insights.v20220615.WebTestPropertiesResponseValidationRules | undefined>;
+    public readonly validationRules!: pulumi.Output<types.outputs.WebTestPropertiesResponseValidationRules | undefined>;
     /**
      * The kind of web test this is, valid choices are ping, multistep and standard.
      */
@@ -180,7 +180,7 @@ export interface WebTestArgs {
     /**
      * An XML configuration specification for a WebTest.
      */
-    configuration?: pulumi.Input<types.inputs.insights.v20220615.WebTestPropertiesConfigurationArgs>;
+    configuration?: pulumi.Input<types.inputs.WebTestPropertiesConfigurationArgs>;
     /**
      * User defined description for this WebTest.
      */
@@ -196,7 +196,7 @@ export interface WebTestArgs {
     /**
      * The kind of WebTest that this web test watches. Choices are ping, multistep and standard.
      */
-    kind?: pulumi.Input<types.enums.v20220615.WebTestKind>;
+    kind?: pulumi.Input<types.enums.WebTestKind>;
     /**
      * Resource location
      */
@@ -204,11 +204,11 @@ export interface WebTestArgs {
     /**
      * A list of where to physically run the tests from to give global coverage for accessibility of your application.
      */
-    locations: pulumi.Input<pulumi.Input<types.inputs.insights.v20220615.WebTestGeolocationArgs>[]>;
+    locations: pulumi.Input<pulumi.Input<types.inputs.WebTestGeolocationArgs>[]>;
     /**
      * The collection of request properties
      */
-    request?: pulumi.Input<types.inputs.insights.v20220615.WebTestPropertiesRequestArgs>;
+    request?: pulumi.Input<types.inputs.WebTestPropertiesRequestArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -232,11 +232,11 @@ export interface WebTestArgs {
     /**
      * The collection of validation rule properties
      */
-    validationRules?: pulumi.Input<types.inputs.insights.v20220615.WebTestPropertiesValidationRulesArgs>;
+    validationRules?: pulumi.Input<types.inputs.WebTestPropertiesValidationRulesArgs>;
     /**
      * The kind of web test this is, valid choices are ping, multistep and standard.
      */
-    webTestKind: pulumi.Input<types.enums.v20220615.WebTestKind>;
+    webTestKind: pulumi.Input<types.enums.WebTestKind>;
     /**
      * User defined name if this WebTest.
      */

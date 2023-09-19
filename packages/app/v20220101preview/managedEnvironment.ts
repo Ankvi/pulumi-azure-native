@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An environment for hosting container apps
  */
@@ -36,7 +36,7 @@ export class ManagedEnvironment extends pulumi.CustomResource {
      * app logs to a destination. Currently only "log-analytics" is
      * supported
      */
-    public readonly appLogsConfiguration!: pulumi.Output<types.outputs.app.v20220101preview.AppLogsConfigurationResponse | undefined>;
+    public readonly appLogsConfiguration!: pulumi.Output<types.outputs.AppLogsConfigurationResponse | undefined>;
     /**
      * Azure Monitor instrumentation key used by Dapr to export Service to Service communication telemetry
      */
@@ -68,7 +68,7 @@ export class ManagedEnvironment extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.app.v20220101preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -80,7 +80,7 @@ export class ManagedEnvironment extends pulumi.CustomResource {
     /**
      * Vnet configuration for the environment
      */
-    public readonly vnetConfiguration!: pulumi.Output<types.outputs.app.v20220101preview.VnetConfigurationResponse | undefined>;
+    public readonly vnetConfiguration!: pulumi.Output<types.outputs.VnetConfigurationResponse | undefined>;
 
     /**
      * Create a ManagedEnvironment resource with the given unique name, arguments, and options.
@@ -139,7 +139,7 @@ export interface ManagedEnvironmentArgs {
      * app logs to a destination. Currently only "log-analytics" is
      * supported
      */
-    appLogsConfiguration?: pulumi.Input<types.inputs.app.v20220101preview.AppLogsConfigurationArgs>;
+    appLogsConfiguration?: pulumi.Input<types.inputs.AppLogsConfigurationArgs>;
     /**
      * Azure Monitor instrumentation key used by Dapr to export Service to Service communication telemetry
      */
@@ -163,5 +163,5 @@ export interface ManagedEnvironmentArgs {
     /**
      * Vnet configuration for the environment
      */
-    vnetConfiguration?: pulumi.Input<types.inputs.app.v20220101preview.VnetConfigurationArgs>;
+    vnetConfiguration?: pulumi.Input<types.inputs.VnetConfigurationArgs>;
 }

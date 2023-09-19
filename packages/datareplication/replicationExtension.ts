@@ -39,8 +39,8 @@ export class ReplicationExtension extends pulumi.CustomResource {
     /**
      * Replication extension model properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.datareplication.ReplicationExtensionModelPropertiesResponse>;
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.datareplication.ReplicationExtensionModelResponseSystemData>;
+    public readonly properties!: pulumi.Output<types.outputs.ReplicationExtensionModelPropertiesResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.ReplicationExtensionModelResponseSystemData>;
     /**
      * Gets or sets the type of the resource.
      */
@@ -93,7 +93,7 @@ export interface ReplicationExtensionArgs {
     /**
      * Replication extension model properties.
      */
-    properties: pulumi.Input<types.inputs.datareplication.ReplicationExtensionModelPropertiesArgs>;
+    properties: pulumi.Input<types.inputs.ReplicationExtensionModelPropertiesArgs>;
     /**
      * The replication extension name.
      */

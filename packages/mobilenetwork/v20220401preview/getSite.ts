@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets information about the specified mobile network site.
  */
@@ -72,7 +72,7 @@ export interface GetSiteResult {
     /**
      * An array of IDs of the network functions deployed on the site, maintained by the user.
      */
-    readonly networkFunctions?: types.outputs.mobilenetwork.v20220401preview.SubResourceResponse[];
+    readonly networkFunctions?: types.outputs.SubResourceResponse[];
     /**
      * The provisioning state of the site resource.
      */
@@ -80,7 +80,7 @@ export interface GetSiteResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.mobilenetwork.v20220401preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

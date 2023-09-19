@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Storage Sync Service object.
  */
@@ -54,7 +54,7 @@ export class StorageSyncService extends pulumi.CustomResource {
     /**
      * List of private endpoint connection associated with the specified storage sync service
      */
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.storagesync.v20220601.PrivateEndpointConnectionResponse[]>;
+    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[]>;
     /**
      * StorageSyncService Provisioning State
      */
@@ -70,7 +70,7 @@ export class StorageSyncService extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.storagesync.v20220601.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -136,7 +136,7 @@ export interface StorageSyncServiceArgs {
     /**
      * Incoming Traffic Policy
      */
-    incomingTrafficPolicy?: pulumi.Input<string | types.enums.v20220601.IncomingTrafficPolicy>;
+    incomingTrafficPolicy?: pulumi.Input<string | types.enums.IncomingTrafficPolicy>;
     /**
      * Required. Gets or sets the location of the resource. This will be one of the supported and registered Azure Geo Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region of a resource cannot be changed once it is created, but if an identical geo region is specified on update, the request will succeed.
      */

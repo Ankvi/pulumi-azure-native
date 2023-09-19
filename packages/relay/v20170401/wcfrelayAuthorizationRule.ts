@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Description of a namespace authorization rule.
  */
@@ -109,5 +109,5 @@ export interface WCFRelayAuthorizationRuleArgs {
     /**
      * The rights associated with the rule.
      */
-    rights: pulumi.Input<pulumi.Input<types.enums.v20170401.AccessRights>[]>;
+    rights: pulumi.Input<pulumi.Input<types.enums.AccessRights>[]>;
 }

@@ -37,7 +37,7 @@ export interface GetDevBoxDefinitionResult {
     /**
      * Image reference information for the currently active image (only populated during updates).
      */
-    readonly activeImageReference: types.outputs.devcenter.ImageReferenceResponse;
+    readonly activeImageReference: types.outputs.ImageReferenceResponse;
     /**
      * Indicates whether Dev Boxes created with this definition are capable of hibernation. Not all images are capable of supporting hibernation. To find out more see https://aka.ms/devbox/hibernate
      */
@@ -49,11 +49,11 @@ export interface GetDevBoxDefinitionResult {
     /**
      * Image reference information.
      */
-    readonly imageReference: types.outputs.devcenter.ImageReferenceResponse;
+    readonly imageReference: types.outputs.ImageReferenceResponse;
     /**
      * Details for image validator error. Populated when the image validation is not successful.
      */
-    readonly imageValidationErrorDetails: types.outputs.devcenter.ImageValidationErrorDetailsResponse;
+    readonly imageValidationErrorDetails: types.outputs.ImageValidationErrorDetailsResponse;
     /**
      * Validation status of the configured image.
      */
@@ -77,11 +77,11 @@ export interface GetDevBoxDefinitionResult {
     /**
      * The SKU for Dev Boxes created using this definition.
      */
-    readonly sku: types.outputs.devcenter.SkuResponse;
+    readonly sku: types.outputs.SkuResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.devcenter.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

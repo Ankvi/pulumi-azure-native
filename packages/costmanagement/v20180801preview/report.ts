@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A report resource.
  */
@@ -34,11 +34,11 @@ export class Report extends pulumi.CustomResource {
     /**
      * Has definition for the report.
      */
-    public readonly definition!: pulumi.Output<types.outputs.costmanagement.v20180801preview.ReportDefinitionResponse>;
+    public readonly definition!: pulumi.Output<types.outputs.ReportDefinitionResponse>;
     /**
      * Has delivery information for the report.
      */
-    public readonly deliveryInfo!: pulumi.Output<types.outputs.costmanagement.v20180801preview.ReportDeliveryInfoResponse>;
+    public readonly deliveryInfo!: pulumi.Output<types.outputs.ReportDeliveryInfoResponse>;
     /**
      * The format of the report being delivered.
      */
@@ -50,7 +50,7 @@ export class Report extends pulumi.CustomResource {
     /**
      * Has schedule information for the report.
      */
-    public readonly schedule!: pulumi.Output<types.outputs.costmanagement.v20180801preview.ReportScheduleResponse | undefined>;
+    public readonly schedule!: pulumi.Output<types.outputs.ReportScheduleResponse | undefined>;
     /**
      * Resource tags.
      */
@@ -108,15 +108,15 @@ export interface ReportArgs {
     /**
      * Has definition for the report.
      */
-    definition: pulumi.Input<types.inputs.costmanagement.v20180801preview.ReportDefinitionArgs>;
+    definition: pulumi.Input<types.inputs.ReportDefinitionArgs>;
     /**
      * Has delivery information for the report.
      */
-    deliveryInfo: pulumi.Input<types.inputs.costmanagement.v20180801preview.ReportDeliveryInfoArgs>;
+    deliveryInfo: pulumi.Input<types.inputs.ReportDeliveryInfoArgs>;
     /**
      * The format of the report being delivered.
      */
-    format?: pulumi.Input<string | types.enums.v20180801preview.FormatType>;
+    format?: pulumi.Input<string | types.enums.FormatType>;
     /**
      * Report Name.
      */
@@ -124,5 +124,5 @@ export interface ReportArgs {
     /**
      * Has schedule information for the report.
      */
-    schedule?: pulumi.Input<types.inputs.costmanagement.v20180801preview.ReportScheduleArgs>;
+    schedule?: pulumi.Input<types.inputs.ReportScheduleArgs>;
 }

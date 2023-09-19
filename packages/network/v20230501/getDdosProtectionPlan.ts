@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets information about the specified DDoS protection plan.
  */
@@ -51,7 +51,7 @@ export interface GetDdosProtectionPlanResult {
     /**
      * The list of public IPs associated with the DDoS protection plan resource. This list is read-only.
      */
-    readonly publicIPAddresses: types.outputs.network.v20230501.SubResourceResponse[];
+    readonly publicIPAddresses: types.outputs.SubResourceResponse[];
     /**
      * The resource GUID property of the DDoS protection plan resource. It uniquely identifies the resource, even if the user changes its name or migrate the resource across subscriptions or resource groups.
      */
@@ -67,7 +67,7 @@ export interface GetDdosProtectionPlanResult {
     /**
      * The list of virtual networks associated with the DDoS protection plan resource. This list is read-only.
      */
-    readonly virtualNetworks: types.outputs.network.v20230501.SubResourceResponse[];
+    readonly virtualNetworks: types.outputs.SubResourceResponse[];
 }
 /**
  * Gets information about the specified DDoS protection plan.

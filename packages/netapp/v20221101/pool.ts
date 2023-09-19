@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Capacity pool resource
  */
@@ -74,7 +74,7 @@ export class Pool extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.netapp.v20221101.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -172,7 +172,7 @@ export interface PoolArgs {
     /**
      * Encryption type of the capacity pool, set encryption type for data at rest for this pool and all volumes in it. This value can only be set when creating new pool.
      */
-    encryptionType?: pulumi.Input<string | types.enums.v20221101.EncryptionType>;
+    encryptionType?: pulumi.Input<string | types.enums.EncryptionType>;
     /**
      * The geo-location where the resource lives
      */
@@ -184,7 +184,7 @@ export interface PoolArgs {
     /**
      * The qos type of the pool
      */
-    qosType?: pulumi.Input<string | types.enums.v20221101.QosType>;
+    qosType?: pulumi.Input<string | types.enums.QosType>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -192,7 +192,7 @@ export interface PoolArgs {
     /**
      * The service level of the file system
      */
-    serviceLevel: pulumi.Input<string | types.enums.v20221101.ServiceLevel>;
+    serviceLevel: pulumi.Input<string | types.enums.ServiceLevel>;
     /**
      * Provisioned size of the pool (in bytes). Allowed values are in 1TiB chunks (value must be multiply of 4398046511104).
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A Geo backup policy.
  */
@@ -127,5 +127,5 @@ export interface GeoBackupPolicyArgs {
     /**
      * The state of the geo backup policy.
      */
-    state: pulumi.Input<types.enums.v20221101preview.GeoBackupPolicyState>;
+    state: pulumi.Input<types.enums.GeoBackupPolicyState>;
 }

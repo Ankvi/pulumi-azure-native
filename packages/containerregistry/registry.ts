@@ -51,11 +51,11 @@ export class Registry extends pulumi.CustomResource {
     /**
      * The encryption settings of container registry.
      */
-    public readonly encryption!: pulumi.Output<types.outputs.containerregistry.EncryptionPropertyResponse | undefined>;
+    public readonly encryption!: pulumi.Output<types.outputs.EncryptionPropertyResponse | undefined>;
     /**
      * The identity of the container registry.
      */
-    public readonly identity!: pulumi.Output<types.outputs.containerregistry.IdentityPropertiesResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityPropertiesResponse | undefined>;
     /**
      * The location of the resource. This cannot be changed after the resource is created.
      */
@@ -75,15 +75,15 @@ export class Registry extends pulumi.CustomResource {
     /**
      * The network rule set for a container registry.
      */
-    public readonly networkRuleSet!: pulumi.Output<types.outputs.containerregistry.NetworkRuleSetResponse | undefined>;
+    public readonly networkRuleSet!: pulumi.Output<types.outputs.NetworkRuleSetResponse | undefined>;
     /**
      * The policies for a container registry.
      */
-    public readonly policies!: pulumi.Output<types.outputs.containerregistry.PoliciesResponse | undefined>;
+    public readonly policies!: pulumi.Output<types.outputs.PoliciesResponse | undefined>;
     /**
      * List of private endpoint connections for a container registry.
      */
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.containerregistry.PrivateEndpointConnectionResponse[]>;
+    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[]>;
     /**
      * The provisioning state of the container registry at the time the operation was called.
      */
@@ -95,15 +95,15 @@ export class Registry extends pulumi.CustomResource {
     /**
      * The SKU of the container registry.
      */
-    public readonly sku!: pulumi.Output<types.outputs.containerregistry.SkuResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse>;
     /**
      * The status of the container registry at the time the operation was called.
      */
-    public /*out*/ readonly status!: pulumi.Output<types.outputs.containerregistry.StatusResponse>;
+    public /*out*/ readonly status!: pulumi.Output<types.outputs.StatusResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.containerregistry.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The tags of the resource.
      */
@@ -140,8 +140,8 @@ export class Registry extends pulumi.CustomResource {
             resourceInputs["identity"] = args ? args.identity : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["networkRuleBypassOptions"] = (args ? args.networkRuleBypassOptions : undefined) ?? "AzureServices";
-            resourceInputs["networkRuleSet"] = args ? (args.networkRuleSet ? pulumi.output(args.networkRuleSet).apply(types.inputs.containerregistry.networkRuleSetArgsProvideDefaults) : undefined) : undefined;
-            resourceInputs["policies"] = args ? (args.policies ? pulumi.output(args.policies).apply(types.inputs.containerregistry.policiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["networkRuleSet"] = args ? (args.networkRuleSet ? pulumi.output(args.networkRuleSet).apply(types.inputs.networkRuleSetArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["policies"] = args ? (args.policies ? pulumi.output(args.policies).apply(types.inputs.policiesArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["publicNetworkAccess"] = (args ? args.publicNetworkAccess : undefined) ?? "Enabled";
             resourceInputs["registryName"] = args ? args.registryName : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
@@ -202,11 +202,11 @@ export interface RegistryArgs {
     /**
      * The encryption settings of container registry.
      */
-    encryption?: pulumi.Input<types.inputs.containerregistry.EncryptionPropertyArgs>;
+    encryption?: pulumi.Input<types.inputs.EncryptionPropertyArgs>;
     /**
      * The identity of the container registry.
      */
-    identity?: pulumi.Input<types.inputs.containerregistry.IdentityPropertiesArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityPropertiesArgs>;
     /**
      * The location of the resource. This cannot be changed after the resource is created.
      */
@@ -218,11 +218,11 @@ export interface RegistryArgs {
     /**
      * The network rule set for a container registry.
      */
-    networkRuleSet?: pulumi.Input<types.inputs.containerregistry.NetworkRuleSetArgs>;
+    networkRuleSet?: pulumi.Input<types.inputs.NetworkRuleSetArgs>;
     /**
      * The policies for a container registry.
      */
-    policies?: pulumi.Input<types.inputs.containerregistry.PoliciesArgs>;
+    policies?: pulumi.Input<types.inputs.PoliciesArgs>;
     /**
      * Whether or not public network access is allowed for the container registry.
      */
@@ -238,7 +238,7 @@ export interface RegistryArgs {
     /**
      * The SKU of the container registry.
      */
-    sku: pulumi.Input<types.inputs.containerregistry.SkuArgs>;
+    sku: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * The tags of the resource.
      */

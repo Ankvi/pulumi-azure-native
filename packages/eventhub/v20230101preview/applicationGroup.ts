@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The Application Group object
  */
@@ -50,11 +50,11 @@ export class ApplicationGroup extends pulumi.CustomResource {
     /**
      * List of group policies that define the behavior of application group. The policies can support resource governance scenarios such as limiting ingress or egress traffic.
      */
-    public readonly policies!: pulumi.Output<types.outputs.eventhub.v20230101preview.ThrottlingPolicyResponse[] | undefined>;
+    public readonly policies!: pulumi.Output<types.outputs.ThrottlingPolicyResponse[] | undefined>;
     /**
      * The system meta data relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.eventhub.v20230101preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
      */
@@ -129,7 +129,7 @@ export interface ApplicationGroupArgs {
     /**
      * List of group policies that define the behavior of application group. The policies can support resource governance scenarios such as limiting ingress or egress traffic.
      */
-    policies?: pulumi.Input<pulumi.Input<types.inputs.eventhub.v20230101preview.ThrottlingPolicyArgs>[]>;
+    policies?: pulumi.Input<pulumi.Input<types.inputs.ThrottlingPolicyArgs>[]>;
     /**
      * Name of the resource group within the azure subscription.
      */

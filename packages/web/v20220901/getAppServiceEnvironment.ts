@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Description for Get the properties of an App Service Environment.
  */
@@ -31,11 +31,11 @@ export interface GetAppServiceEnvironmentResult {
     /**
      * Custom settings for changing the behavior of the App Service Environment.
      */
-    readonly clusterSettings?: types.outputs.web.v20220901.NameValuePairResponse[];
+    readonly clusterSettings?: types.outputs.NameValuePairResponse[];
     /**
      * Full view of the custom domain suffix configuration for ASEv3.
      */
-    readonly customDnsSuffixConfiguration?: types.outputs.web.v20220901.CustomDnsSuffixConfigurationResponse;
+    readonly customDnsSuffixConfiguration?: types.outputs.CustomDnsSuffixConfigurationResponse;
     /**
      * Dedicated Host Count
      */
@@ -91,7 +91,7 @@ export interface GetAppServiceEnvironmentResult {
     /**
      * Full view of networking configuration for an ASE.
      */
-    readonly networkingConfiguration?: types.outputs.web.v20220901.AseV3NetworkingConfigurationResponse;
+    readonly networkingConfiguration?: types.outputs.AseV3NetworkingConfigurationResponse;
     /**
      * Provisioning state of the App Service Environment.
      */
@@ -128,7 +128,7 @@ export interface GetAppServiceEnvironmentResult {
     /**
      * Description of the Virtual Network.
      */
-    readonly virtualNetwork: types.outputs.web.v20220901.VirtualNetworkProfileResponse;
+    readonly virtualNetwork: types.outputs.VirtualNetworkProfileResponse;
     /**
      * Whether or not this App Service Environment is zone-redundant.
      */

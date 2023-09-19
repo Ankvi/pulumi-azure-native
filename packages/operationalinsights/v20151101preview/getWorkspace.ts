@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a workspace instance.
  */
@@ -63,7 +63,7 @@ export interface GetWorkspaceResult {
     /**
      * The SKU of the workspace.
      */
-    readonly sku?: types.outputs.operationalinsights.v20151101preview.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * This is a read-only legacy property. It is always set to 'Azure' by the service. Kept here for backward compatibility.
      */

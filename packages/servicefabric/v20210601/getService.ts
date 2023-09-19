@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a Service Fabric service resource created or in the process of being created in the Service Fabric application resource.
  */
@@ -41,7 +41,7 @@ export interface GetServiceResult {
     /**
      * A list that describes the correlation of the service with other services.
      */
-    readonly correlationScheme?: types.outputs.servicefabric.v20210601.ServiceCorrelationDescriptionResponse[];
+    readonly correlationScheme?: types.outputs.ServiceCorrelationDescriptionResponse[];
     /**
      * Specifies the move cost for the service.
      */
@@ -65,7 +65,7 @@ export interface GetServiceResult {
     /**
      * Describes how the service is partitioned.
      */
-    readonly partitionDescription?: types.outputs.servicefabric.v20210601.NamedPartitionSchemeDescriptionResponse | types.outputs.servicefabric.v20210601.SingletonPartitionSchemeDescriptionResponse | types.outputs.servicefabric.v20210601.UniformInt64RangePartitionSchemeDescriptionResponse;
+    readonly partitionDescription?: types.outputs.NamedPartitionSchemeDescriptionResponse | types.outputs.SingletonPartitionSchemeDescriptionResponse | types.outputs.UniformInt64RangePartitionSchemeDescriptionResponse;
     /**
      * The placement constraints as a string. Placement constraints are boolean expressions on node properties and allow for restricting a service to particular nodes based on the service requirements. For example, to place a service on nodes where NodeType is blue specify the following: "NodeColor == blue)".
      */
@@ -85,7 +85,7 @@ export interface GetServiceResult {
     /**
      * The service load metrics is given as an array of ServiceLoadMetricDescription objects.
      */
-    readonly serviceLoadMetrics?: types.outputs.servicefabric.v20210601.ServiceLoadMetricDescriptionResponse[];
+    readonly serviceLoadMetrics?: types.outputs.ServiceLoadMetricDescriptionResponse[];
     /**
      * The activation Mode of the service package
      */
@@ -93,7 +93,7 @@ export interface GetServiceResult {
     /**
      * A list that describes the correlation of the service with other services.
      */
-    readonly servicePlacementPolicies?: types.outputs.servicefabric.v20210601.ServicePlacementPolicyDescriptionResponse[];
+    readonly servicePlacementPolicies?: types.outputs.ServicePlacementPolicyDescriptionResponse[];
     /**
      * The name of the service type
      */
@@ -101,7 +101,7 @@ export interface GetServiceResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.servicefabric.v20210601.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Azure resource tags.
      */

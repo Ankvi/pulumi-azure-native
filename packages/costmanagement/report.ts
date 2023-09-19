@@ -35,11 +35,11 @@ export class Report extends pulumi.CustomResource {
     /**
      * Has definition for the report.
      */
-    public readonly definition!: pulumi.Output<types.outputs.costmanagement.ReportDefinitionResponse>;
+    public readonly definition!: pulumi.Output<types.outputs.ReportDefinitionResponse>;
     /**
      * Has delivery information for the report.
      */
-    public readonly deliveryInfo!: pulumi.Output<types.outputs.costmanagement.ReportDeliveryInfoResponse>;
+    public readonly deliveryInfo!: pulumi.Output<types.outputs.ReportDeliveryInfoResponse>;
     /**
      * The format of the report being delivered.
      */
@@ -51,7 +51,7 @@ export class Report extends pulumi.CustomResource {
     /**
      * Has schedule information for the report.
      */
-    public readonly schedule!: pulumi.Output<types.outputs.costmanagement.ReportScheduleResponse | undefined>;
+    public readonly schedule!: pulumi.Output<types.outputs.ReportScheduleResponse | undefined>;
     /**
      * Resource tags.
      */
@@ -109,11 +109,11 @@ export interface ReportArgs {
     /**
      * Has definition for the report.
      */
-    definition: pulumi.Input<types.inputs.costmanagement.ReportDefinitionArgs>;
+    definition: pulumi.Input<types.inputs.ReportDefinitionArgs>;
     /**
      * Has delivery information for the report.
      */
-    deliveryInfo: pulumi.Input<types.inputs.costmanagement.ReportDeliveryInfoArgs>;
+    deliveryInfo: pulumi.Input<types.inputs.ReportDeliveryInfoArgs>;
     /**
      * The format of the report being delivered.
      */
@@ -125,5 +125,5 @@ export interface ReportArgs {
     /**
      * Has schedule information for the report.
      */
-    schedule?: pulumi.Input<types.inputs.costmanagement.ReportScheduleArgs>;
+    schedule?: pulumi.Input<types.inputs.ReportScheduleArgs>;
 }

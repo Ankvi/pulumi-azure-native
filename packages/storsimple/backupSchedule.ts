@@ -55,7 +55,7 @@ export class BackupSchedule extends pulumi.CustomResource {
     /**
      * The schedule recurrence.
      */
-    public readonly scheduleRecurrence!: pulumi.Output<types.outputs.storsimple.ScheduleRecurrenceResponse>;
+    public readonly scheduleRecurrence!: pulumi.Output<types.outputs.ScheduleRecurrenceResponse>;
     /**
      * The schedule status.
      */
@@ -178,7 +178,7 @@ export interface BackupScheduleArgs {
     /**
      * The schedule recurrence.
      */
-    scheduleRecurrence: pulumi.Input<types.inputs.storsimple.ScheduleRecurrenceArgs>;
+    scheduleRecurrence: pulumi.Input<types.inputs.ScheduleRecurrenceArgs>;
     /**
      * The schedule status.
      */

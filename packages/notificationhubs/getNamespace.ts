@@ -44,15 +44,15 @@ export interface GetNamespaceResult {
     /**
      * Represents namespace properties.
      */
-    readonly properties: types.outputs.notificationhubs.NamespacePropertiesResponse;
+    readonly properties: types.outputs.NamespacePropertiesResponse;
     /**
      * The Sku description for a namespace
      */
-    readonly sku: types.outputs.notificationhubs.SkuResponse;
+    readonly sku: types.outputs.SkuResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.notificationhubs.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

@@ -39,7 +39,7 @@ export class Authorization extends pulumi.CustomResource {
     /**
      * Authorization error details.
      */
-    public readonly error!: pulumi.Output<types.outputs.apimanagement.AuthorizationErrorResponse | undefined>;
+    public readonly error!: pulumi.Output<types.outputs.AuthorizationErrorResponse | undefined>;
     /**
      * The name of the resource
      */
@@ -127,7 +127,7 @@ export interface AuthorizationArgs {
     /**
      * Authorization error details.
      */
-    error?: pulumi.Input<types.inputs.apimanagement.AuthorizationErrorArgs>;
+    error?: pulumi.Input<types.inputs.AuthorizationErrorArgs>;
     /**
      * OAuth2 grant type options
      */

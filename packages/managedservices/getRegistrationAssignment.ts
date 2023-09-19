@@ -45,11 +45,11 @@ export interface GetRegistrationAssignmentResult {
     /**
      * The properties of a registration assignment.
      */
-    readonly properties: types.outputs.managedservices.RegistrationAssignmentPropertiesResponse;
+    readonly properties: types.outputs.RegistrationAssignmentPropertiesResponse;
     /**
      * The metadata for the registration assignment resource.
      */
-    readonly systemData: types.outputs.managedservices.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the Azure resource (Microsoft.ManagedServices/registrationAssignments).
      */

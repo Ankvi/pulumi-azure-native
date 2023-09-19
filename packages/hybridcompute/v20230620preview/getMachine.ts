@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieves information about the model view or the instance view of a hybrid machine.
  */
@@ -40,11 +40,11 @@ export interface GetMachineResult {
     /**
      * Configurable properties that the user can set locally via the azcmagent config command, or remotely via ARM.
      */
-    readonly agentConfiguration: types.outputs.hybridcompute.v20230620preview.AgentConfigurationResponse;
+    readonly agentConfiguration: types.outputs.AgentConfigurationResponse;
     /**
      * The info of the machine w.r.t Agent Upgrade
      */
-    readonly agentUpgrade?: types.outputs.hybridcompute.v20230620preview.AgentUpgradeResponse;
+    readonly agentUpgrade?: types.outputs.AgentUpgradeResponse;
     /**
      * The hybrid machine agent full version.
      */
@@ -56,7 +56,7 @@ export interface GetMachineResult {
     /**
      * The metadata of the cloud environment (Azure/GCP/AWS/OCI...).
      */
-    readonly cloudMetadata?: types.outputs.hybridcompute.v20230620preview.CloudMetadataResponse;
+    readonly cloudMetadata?: types.outputs.CloudMetadataResponse;
     /**
      * Detected properties from the machine.
      */
@@ -76,11 +76,11 @@ export interface GetMachineResult {
     /**
      * Details about the error state.
      */
-    readonly errorDetails: types.outputs.hybridcompute.v20230620preview.ErrorDetailResponse[];
+    readonly errorDetails: types.outputs.ErrorDetailResponse[];
     /**
      * Machine Extensions information (deprecated field)
      */
-    readonly extensions?: types.outputs.hybridcompute.v20230620preview.MachineExtensionInstanceViewResponse[];
+    readonly extensions?: types.outputs.MachineExtensionInstanceViewResponse[];
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -88,7 +88,7 @@ export interface GetMachineResult {
     /**
      * Identity for the resource.
      */
-    readonly identity?: types.outputs.hybridcompute.v20230620preview.IdentityResponse;
+    readonly identity?: types.outputs.IdentityResponse;
     /**
      * Indicates which kind of Arc machine placement on-premises, such as HCI, SCVMM or VMware etc.
      */
@@ -100,7 +100,7 @@ export interface GetMachineResult {
     /**
      * Specifies the ESU related properties for a machine.
      */
-    readonly licenseProfile?: types.outputs.hybridcompute.v20230620preview.LicenseProfileMachineInstanceViewResponse;
+    readonly licenseProfile?: types.outputs.LicenseProfileMachineInstanceViewResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -108,7 +108,7 @@ export interface GetMachineResult {
     /**
      * Metadata pertaining to the geographic location of the resource.
      */
-    readonly locationData?: types.outputs.hybridcompute.v20230620preview.LocationDataResponse;
+    readonly locationData?: types.outputs.LocationDataResponse;
     /**
      * Specifies the hybrid machine FQDN.
      */
@@ -124,7 +124,7 @@ export interface GetMachineResult {
     /**
      * Information about the network the machine is on.
      */
-    readonly networkProfile: types.outputs.hybridcompute.v20230620preview.NetworkProfileResponse;
+    readonly networkProfile: types.outputs.NetworkProfileResponse;
     /**
      * The Operating System running on the hybrid machine.
      */
@@ -132,7 +132,7 @@ export interface GetMachineResult {
     /**
      * Specifies the operating system settings for the hybrid machine.
      */
-    readonly osProfile?: types.outputs.hybridcompute.v20230620preview.OSProfileResponse;
+    readonly osProfile?: types.outputs.OSProfileResponse;
     /**
      * Specifies the Operating System product SKU.
      */
@@ -160,11 +160,11 @@ export interface GetMachineResult {
     /**
      * The list of extensions affiliated to the machine
      */
-    readonly resources: types.outputs.hybridcompute.v20230620preview.MachineExtensionResponse[];
+    readonly resources: types.outputs.MachineExtensionResponse[];
     /**
      * Statuses of dependent services that are reported back to ARM.
      */
-    readonly serviceStatuses?: types.outputs.hybridcompute.v20230620preview.ServiceStatusesResponse;
+    readonly serviceStatuses?: types.outputs.ServiceStatusesResponse;
     /**
      * The status of the hybrid machine agent.
      */
@@ -172,7 +172,7 @@ export interface GetMachineResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.hybridcompute.v20230620preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

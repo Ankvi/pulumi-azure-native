@@ -35,7 +35,7 @@ export class OrderItem extends pulumi.CustomResource {
     /**
      * Represents shipping and return address for order item.
      */
-    public readonly addressDetails!: pulumi.Output<types.outputs.edgeorder.AddressDetailsResponse>;
+    public readonly addressDetails!: pulumi.Output<types.outputs.AddressDetailsResponse>;
     /**
      * The geo-location where the resource lives
      */
@@ -51,7 +51,7 @@ export class OrderItem extends pulumi.CustomResource {
     /**
      * Represents order item details.
      */
-    public readonly orderItemDetails!: pulumi.Output<types.outputs.edgeorder.OrderItemDetailsResponse>;
+    public readonly orderItemDetails!: pulumi.Output<types.outputs.OrderItemDetailsResponse>;
     /**
      * Start time of order item.
      */
@@ -59,7 +59,7 @@ export class OrderItem extends pulumi.CustomResource {
     /**
      * Represents resource creation and update time.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.edgeorder.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -128,7 +128,7 @@ export interface OrderItemArgs {
     /**
      * Represents shipping and return address for order item.
      */
-    addressDetails: pulumi.Input<types.inputs.edgeorder.AddressDetailsArgs>;
+    addressDetails: pulumi.Input<types.inputs.AddressDetailsArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -140,7 +140,7 @@ export interface OrderItemArgs {
     /**
      * Represents order item details.
      */
-    orderItemDetails: pulumi.Input<types.inputs.edgeorder.OrderItemDetailsArgs>;
+    orderItemDetails: pulumi.Input<types.inputs.OrderItemDetailsArgs>;
     /**
      * The name of the order item.
      */

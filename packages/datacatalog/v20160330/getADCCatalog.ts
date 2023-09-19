@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The Get Azure Data Catalog Service operation retrieves a json representation of the data catalog.
  */
@@ -31,7 +31,7 @@ export interface GetADCCatalogResult {
     /**
      * Azure data catalog admin list.
      */
-    readonly admins?: types.outputs.datacatalog.v20160330.PrincipalsResponse[];
+    readonly admins?: types.outputs.PrincipalsResponse[];
     /**
      * Automatic unit adjustment enabled or not.
      */
@@ -75,7 +75,7 @@ export interface GetADCCatalogResult {
     /**
      * Azure data catalog user list.
      */
-    readonly users?: types.outputs.datacatalog.v20160330.PrincipalsResponse[];
+    readonly users?: types.outputs.PrincipalsResponse[];
 }
 /**
  * The Get Azure Data Catalog Service operation retrieves a json representation of the data catalog.

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * DigitalTwinsInstance endpoint resource.
  */
@@ -38,11 +38,11 @@ export class DigitalTwinsEndpoint extends pulumi.CustomResource {
     /**
      * DigitalTwinsInstance endpoint resource properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.digitaltwins.v20230131.EventGridResponse | types.outputs.digitaltwins.v20230131.EventHubResponse | types.outputs.digitaltwins.v20230131.ServiceBusResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.EventGridResponse | types.outputs.EventHubResponse | types.outputs.ServiceBusResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.digitaltwins.v20230131.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The resource type.
      */
@@ -99,7 +99,7 @@ export interface DigitalTwinsEndpointArgs {
     /**
      * DigitalTwinsInstance endpoint resource properties.
      */
-    properties: pulumi.Input<types.inputs.digitaltwins.v20230131.EventGridArgs | types.inputs.digitaltwins.v20230131.EventHubArgs | types.inputs.digitaltwins.v20230131.ServiceBusArgs>;
+    properties: pulumi.Input<types.inputs.EventGridArgs | types.inputs.EventHubArgs | types.inputs.ServiceBusArgs>;
     /**
      * The name of the resource group that contains the DigitalTwinsInstance.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Virtual Network route contract used to pass routing information for a Virtual Network.
  */
@@ -137,7 +137,7 @@ export interface AppServicePlanRouteForVnetArgs {
      *
      * These values will be used for syncing an app's routes with those from a Virtual Network.
      */
-    routeType?: pulumi.Input<string | types.enums.v20220901.RouteType>;
+    routeType?: pulumi.Input<string | types.enums.RouteType>;
     /**
      * The starting address for this route. This may also include a CIDR notation, in which case the end address must not be specified.
      */

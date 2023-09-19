@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Instance of an Azure ML Operationalization Cluster resource.
  */
@@ -34,7 +34,7 @@ export class OperationalizationCluster extends pulumi.CustomResource {
     /**
      * AppInsights configuration.
      */
-    public readonly appInsights!: pulumi.Output<types.outputs.machinelearningcompute.v20170801preview.AppInsightsPropertiesResponse | undefined>;
+    public readonly appInsights!: pulumi.Output<types.outputs.AppInsightsPropertiesResponse | undefined>;
     /**
      * The cluster type.
      */
@@ -42,11 +42,11 @@ export class OperationalizationCluster extends pulumi.CustomResource {
     /**
      * Container Registry properties.
      */
-    public readonly containerRegistry!: pulumi.Output<types.outputs.machinelearningcompute.v20170801preview.ContainerRegistryPropertiesResponse | undefined>;
+    public readonly containerRegistry!: pulumi.Output<types.outputs.ContainerRegistryPropertiesResponse | undefined>;
     /**
      * Parameters for the Azure Container Service cluster.
      */
-    public readonly containerService!: pulumi.Output<types.outputs.machinelearningcompute.v20170801preview.AcsClusterPropertiesResponse | undefined>;
+    public readonly containerService!: pulumi.Output<types.outputs.AcsClusterPropertiesResponse | undefined>;
     /**
      * The date and time when the cluster was created.
      */
@@ -58,7 +58,7 @@ export class OperationalizationCluster extends pulumi.CustomResource {
     /**
      * Contains global configuration for the web services in the cluster.
      */
-    public readonly globalServiceConfiguration!: pulumi.Output<types.outputs.machinelearningcompute.v20170801preview.GlobalServiceConfigurationResponse | undefined>;
+    public readonly globalServiceConfiguration!: pulumi.Output<types.outputs.GlobalServiceConfigurationResponse | undefined>;
     /**
      * Specifies the location of the resource.
      */
@@ -74,7 +74,7 @@ export class OperationalizationCluster extends pulumi.CustomResource {
     /**
      * List of provisioning errors reported by the resource provider.
      */
-    public /*out*/ readonly provisioningErrors!: pulumi.Output<types.outputs.machinelearningcompute.v20170801preview.ErrorResponseWrapperResponse[]>;
+    public /*out*/ readonly provisioningErrors!: pulumi.Output<types.outputs.ErrorResponseWrapperResponse[]>;
     /**
      * The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
      */
@@ -82,7 +82,7 @@ export class OperationalizationCluster extends pulumi.CustomResource {
     /**
      * Storage Account properties.
      */
-    public readonly storageAccount!: pulumi.Output<types.outputs.machinelearningcompute.v20170801preview.StorageAccountPropertiesResponse | undefined>;
+    public readonly storageAccount!: pulumi.Output<types.outputs.StorageAccountPropertiesResponse | undefined>;
     /**
      * Contains resource tags defined as key/value pairs.
      */
@@ -113,9 +113,9 @@ export class OperationalizationCluster extends pulumi.CustomResource {
             resourceInputs["clusterName"] = args ? args.clusterName : undefined;
             resourceInputs["clusterType"] = args ? args.clusterType : undefined;
             resourceInputs["containerRegistry"] = args ? args.containerRegistry : undefined;
-            resourceInputs["containerService"] = args ? (args.containerService ? pulumi.output(args.containerService).apply(types.inputs.machinelearningcompute.v20170801preview.acsClusterPropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["containerService"] = args ? (args.containerService ? pulumi.output(args.containerService).apply(types.inputs.acsClusterPropertiesArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["globalServiceConfiguration"] = args ? (args.globalServiceConfiguration ? pulumi.output(args.globalServiceConfiguration).apply(types.inputs.machinelearningcompute.v20170801preview.globalServiceConfigurationArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["globalServiceConfiguration"] = args ? (args.globalServiceConfiguration ? pulumi.output(args.globalServiceConfiguration).apply(types.inputs.globalServiceConfigurationArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["storageAccount"] = args ? args.storageAccount : undefined;
@@ -157,7 +157,7 @@ export interface OperationalizationClusterArgs {
     /**
      * AppInsights configuration.
      */
-    appInsights?: pulumi.Input<types.inputs.machinelearningcompute.v20170801preview.AppInsightsPropertiesArgs>;
+    appInsights?: pulumi.Input<types.inputs.AppInsightsPropertiesArgs>;
     /**
      * The name of the cluster.
      */
@@ -165,15 +165,15 @@ export interface OperationalizationClusterArgs {
     /**
      * The cluster type.
      */
-    clusterType: pulumi.Input<string | types.enums.v20170801preview.ClusterType>;
+    clusterType: pulumi.Input<string | types.enums.ClusterType>;
     /**
      * Container Registry properties.
      */
-    containerRegistry?: pulumi.Input<types.inputs.machinelearningcompute.v20170801preview.ContainerRegistryPropertiesArgs>;
+    containerRegistry?: pulumi.Input<types.inputs.ContainerRegistryPropertiesArgs>;
     /**
      * Parameters for the Azure Container Service cluster.
      */
-    containerService?: pulumi.Input<types.inputs.machinelearningcompute.v20170801preview.AcsClusterPropertiesArgs>;
+    containerService?: pulumi.Input<types.inputs.AcsClusterPropertiesArgs>;
     /**
      * The description of the cluster.
      */
@@ -181,7 +181,7 @@ export interface OperationalizationClusterArgs {
     /**
      * Contains global configuration for the web services in the cluster.
      */
-    globalServiceConfiguration?: pulumi.Input<types.inputs.machinelearningcompute.v20170801preview.GlobalServiceConfigurationArgs>;
+    globalServiceConfiguration?: pulumi.Input<types.inputs.GlobalServiceConfigurationArgs>;
     /**
      * Specifies the location of the resource.
      */
@@ -193,7 +193,7 @@ export interface OperationalizationClusterArgs {
     /**
      * Storage Account properties.
      */
-    storageAccount?: pulumi.Input<types.inputs.machinelearningcompute.v20170801preview.StorageAccountPropertiesArgs>;
+    storageAccount?: pulumi.Input<types.inputs.StorageAccountPropertiesArgs>;
     /**
      * Contains resource tags defined as key/value pairs.
      */

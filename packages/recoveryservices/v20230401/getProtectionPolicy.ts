@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Provides the details of the backup policies associated to Recovery Services Vault. This is an asynchronous
  * operation. Status of the operation can be fetched using GetPolicyOperationResult API.
@@ -53,7 +53,7 @@ export interface GetProtectionPolicyResult {
     /**
      * ProtectionPolicyResource properties
      */
-    readonly properties: types.outputs.recoveryservices.v20230401.AzureFileShareProtectionPolicyResponse | types.outputs.recoveryservices.v20230401.AzureIaaSVMProtectionPolicyResponse | types.outputs.recoveryservices.v20230401.AzureSqlProtectionPolicyResponse | types.outputs.recoveryservices.v20230401.AzureVmWorkloadProtectionPolicyResponse | types.outputs.recoveryservices.v20230401.GenericProtectionPolicyResponse | types.outputs.recoveryservices.v20230401.MabProtectionPolicyResponse;
+    readonly properties: types.outputs.AzureFileShareProtectionPolicyResponse | types.outputs.AzureIaaSVMProtectionPolicyResponse | types.outputs.AzureSqlProtectionPolicyResponse | types.outputs.AzureVmWorkloadProtectionPolicyResponse | types.outputs.GenericProtectionPolicyResponse | types.outputs.MabProtectionPolicyResponse;
     /**
      * Resource tags.
      */

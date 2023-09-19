@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the Hybrid AKS provisioned cluster
  */
@@ -28,7 +28,7 @@ export interface GetProvisionedClusterArgs {
  * The provisionedClusters resource definition.
  */
 export interface GetProvisionedClusterResult {
-    readonly extendedLocation?: types.outputs.hybridcontainerservice.v20220901preview.ProvisionedClustersResponseResponseExtendedLocation;
+    readonly extendedLocation?: types.outputs.ProvisionedClustersResponseResponseExtendedLocation;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -36,7 +36,7 @@ export interface GetProvisionedClusterResult {
     /**
      * Identity for the Provisioned cluster.
      */
-    readonly identity?: types.outputs.hybridcontainerservice.v20220901preview.ProvisionedClusterIdentityResponse;
+    readonly identity?: types.outputs.ProvisionedClusterIdentityResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -45,11 +45,11 @@ export interface GetProvisionedClusterResult {
      * The name of the resource
      */
     readonly name: string;
-    readonly properties: types.outputs.hybridcontainerservice.v20220901preview.ProvisionedClustersResponsePropertiesResponse;
+    readonly properties: types.outputs.ProvisionedClustersResponsePropertiesResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.hybridcontainerservice.v20220901preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

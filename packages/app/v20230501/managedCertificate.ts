@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Managed certificates used for Custom Domain bindings of Container Apps in a Managed Environment
  */
@@ -42,11 +42,11 @@ export class ManagedCertificate extends pulumi.CustomResource {
     /**
      * Certificate resource specific properties
      */
-    public readonly properties!: pulumi.Output<types.outputs.app.v20230501.ManagedCertificateResponseProperties>;
+    public readonly properties!: pulumi.Output<types.outputs.ManagedCertificateResponseProperties>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.app.v20230501.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -116,7 +116,7 @@ export interface ManagedCertificateArgs {
     /**
      * Certificate resource specific properties
      */
-    properties?: pulumi.Input<types.inputs.app.v20230501.ManagedCertificatePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ManagedCertificatePropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

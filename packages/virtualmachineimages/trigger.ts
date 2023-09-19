@@ -47,11 +47,11 @@ export class Trigger extends pulumi.CustomResource {
     /**
      * Trigger status
      */
-    public /*out*/ readonly status!: pulumi.Output<types.outputs.virtualmachineimages.TriggerStatusResponse>;
+    public /*out*/ readonly status!: pulumi.Output<types.outputs.TriggerStatusResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.virtualmachineimages.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

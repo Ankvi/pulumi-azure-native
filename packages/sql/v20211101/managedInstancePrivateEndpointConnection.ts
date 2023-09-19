@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A private endpoint connection
  */
@@ -38,11 +38,11 @@ export class ManagedInstancePrivateEndpointConnection extends pulumi.CustomResou
     /**
      * Private endpoint which the connection belongs to.
      */
-    public readonly privateEndpoint!: pulumi.Output<types.outputs.sql.v20211101.ManagedInstancePrivateEndpointPropertyResponse | undefined>;
+    public readonly privateEndpoint!: pulumi.Output<types.outputs.ManagedInstancePrivateEndpointPropertyResponse | undefined>;
     /**
      * Connection State of the Private Endpoint Connection.
      */
-    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.sql.v20211101.ManagedInstancePrivateLinkServiceConnectionStatePropertyResponse | undefined>;
+    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.ManagedInstancePrivateLinkServiceConnectionStatePropertyResponse | undefined>;
     /**
      * State of the Private Endpoint Connection.
      */
@@ -102,12 +102,12 @@ export interface ManagedInstancePrivateEndpointConnectionArgs {
     /**
      * Private endpoint which the connection belongs to.
      */
-    privateEndpoint?: pulumi.Input<types.inputs.sql.v20211101.ManagedInstancePrivateEndpointPropertyArgs>;
+    privateEndpoint?: pulumi.Input<types.inputs.ManagedInstancePrivateEndpointPropertyArgs>;
     privateEndpointConnectionName?: pulumi.Input<string>;
     /**
      * Connection State of the Private Endpoint Connection.
      */
-    privateLinkServiceConnectionState?: pulumi.Input<types.inputs.sql.v20211101.ManagedInstancePrivateLinkServiceConnectionStatePropertyArgs>;
+    privateLinkServiceConnectionState?: pulumi.Input<types.inputs.ManagedInstancePrivateLinkServiceConnectionStatePropertyArgs>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */

@@ -35,11 +35,11 @@ export class Skus extends pulumi.CustomResource {
      * The name of the resource
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
-    public readonly properties!: pulumi.Output<types.outputs.providerhub.SkuResourceResponseProperties>;
+    public readonly properties!: pulumi.Output<types.outputs.SkuResourceResponseProperties>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.providerhub.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -86,7 +86,7 @@ export class Skus extends pulumi.CustomResource {
  * The set of arguments for constructing a Skus resource.
  */
 export interface SkusArgs {
-    properties?: pulumi.Input<types.inputs.providerhub.SkuResourcePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.SkuResourcePropertiesArgs>;
     /**
      * The name of the resource provider hosted within ProviderHub.
      */

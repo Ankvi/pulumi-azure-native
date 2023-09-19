@@ -71,11 +71,11 @@ export class PolicyExemption extends pulumi.CustomResource {
     /**
      * The resource selector list to filter policies by resource properties.
      */
-    public readonly resourceSelectors!: pulumi.Output<types.outputs.authorization.ResourceSelectorResponse[] | undefined>;
+    public readonly resourceSelectors!: pulumi.Output<types.outputs.ResourceSelectorResponse[] | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.authorization.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource (Microsoft.Authorization/policyExemptions).
      */
@@ -179,7 +179,7 @@ export interface PolicyExemptionArgs {
     /**
      * The resource selector list to filter policies by resource properties.
      */
-    resourceSelectors?: pulumi.Input<pulumi.Input<types.inputs.authorization.ResourceSelectorArgs>[]>;
+    resourceSelectors?: pulumi.Input<pulumi.Input<types.inputs.ResourceSelectorArgs>[]>;
     /**
      * The scope of the policy exemption. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
      */

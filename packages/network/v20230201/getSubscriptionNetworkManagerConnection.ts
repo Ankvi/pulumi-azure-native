@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a specified connection created by this subscription.
  */
@@ -46,7 +46,7 @@ export interface GetSubscriptionNetworkManagerConnectionResult {
     /**
      * The system metadata related to this resource.
      */
-    readonly systemData: types.outputs.network.v20230201.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource type.
      */

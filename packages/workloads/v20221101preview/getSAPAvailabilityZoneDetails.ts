@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the recommended SAP Availability Zone Pair Details for your region.
  */
@@ -23,7 +23,7 @@ export interface GetSAPAvailabilityZoneDetailsArgs {
     /**
      * The database type. Eg: HANA, DB2, etc
      */
-    databaseType: string | types.enums.v20221101preview.SAPDatabaseType;
+    databaseType: string | types.enums.SAPDatabaseType;
     /**
      * The name of Azure region.
      */
@@ -31,7 +31,7 @@ export interface GetSAPAvailabilityZoneDetailsArgs {
     /**
      * Defines the SAP Product type.
      */
-    sapProduct: string | types.enums.v20221101preview.SAPProductType;
+    sapProduct: string | types.enums.SAPProductType;
 }
 
 /**
@@ -41,7 +41,7 @@ export interface GetSAPAvailabilityZoneDetailsResult {
     /**
      * Gets the list of availability zone pairs.
      */
-    readonly availabilityZonePairs?: types.outputs.workloads.v20221101preview.SAPAvailabilityZonePairResponse[];
+    readonly availabilityZonePairs?: types.outputs.SAPAvailabilityZonePairResponse[];
 }
 /**
  * Get the recommended SAP Availability Zone Pair Details for your region.
@@ -58,7 +58,7 @@ export interface GetSAPAvailabilityZoneDetailsOutputArgs {
     /**
      * The database type. Eg: HANA, DB2, etc
      */
-    databaseType: pulumi.Input<string | types.enums.v20221101preview.SAPDatabaseType>;
+    databaseType: pulumi.Input<string | types.enums.SAPDatabaseType>;
     /**
      * The name of Azure region.
      */
@@ -66,5 +66,5 @@ export interface GetSAPAvailabilityZoneDetailsOutputArgs {
     /**
      * Defines the SAP Product type.
      */
-    sapProduct: pulumi.Input<string | types.enums.v20221101preview.SAPProductType>;
+    sapProduct: pulumi.Input<string | types.enums.SAPProductType>;
 }

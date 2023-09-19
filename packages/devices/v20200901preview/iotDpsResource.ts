@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The description of the provisioning service.
  */
@@ -38,7 +38,7 @@ export class IotDpsResource extends pulumi.CustomResource {
     /**
      * The managed identities for the IotDps instance.
      */
-    public readonly identity!: pulumi.Output<types.outputs.devices.v20200901preview.ArmIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ArmIdentityResponse | undefined>;
     /**
      * The resource location.
      */
@@ -50,11 +50,11 @@ export class IotDpsResource extends pulumi.CustomResource {
     /**
      * Service specific properties for a provisioning service
      */
-    public readonly properties!: pulumi.Output<types.outputs.devices.v20200901preview.IotDpsPropertiesDescriptionResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.IotDpsPropertiesDescriptionResponse>;
     /**
      * Sku info for a provisioning Service.
      */
-    public readonly sku!: pulumi.Output<types.outputs.devices.v20200901preview.IotDpsSkuInfoResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.IotDpsSkuInfoResponse>;
     /**
      * The resource tags.
      */
@@ -118,7 +118,7 @@ export interface IotDpsResourceArgs {
     /**
      * The managed identities for the IotDps instance.
      */
-    identity?: pulumi.Input<types.inputs.devices.v20200901preview.ArmIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ArmIdentityArgs>;
     /**
      * The resource location.
      */
@@ -126,7 +126,7 @@ export interface IotDpsResourceArgs {
     /**
      * Service specific properties for a provisioning service
      */
-    properties: pulumi.Input<types.inputs.devices.v20200901preview.IotDpsPropertiesDescriptionArgs>;
+    properties: pulumi.Input<types.inputs.IotDpsPropertiesDescriptionArgs>;
     /**
      * Name of provisioning service to create or update.
      */
@@ -138,7 +138,7 @@ export interface IotDpsResourceArgs {
     /**
      * Sku info for a provisioning Service.
      */
-    sku: pulumi.Input<types.inputs.devices.v20200901preview.IotDpsSkuInfoArgs>;
+    sku: pulumi.Input<types.inputs.IotDpsSkuInfoArgs>;
     /**
      * The resource tags.
      */

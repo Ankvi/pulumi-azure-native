@@ -62,7 +62,7 @@ export interface GetHybridRunbookWorkerResult {
     /**
      * Resource system metadata.
      */
-    readonly systemData: types.outputs.automation.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource.
      */

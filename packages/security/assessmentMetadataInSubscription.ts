@@ -56,7 +56,7 @@ export class AssessmentMetadataInSubscription extends pulumi.CustomResource {
     /**
      * Describes the partner that created the assessment
      */
-    public readonly partnerData!: pulumi.Output<types.outputs.security.SecurityAssessmentMetadataPartnerDataResponse | undefined>;
+    public readonly partnerData!: pulumi.Output<types.outputs.SecurityAssessmentMetadataPartnerDataResponse | undefined>;
     public readonly plannedDeprecationDate!: pulumi.Output<string | undefined>;
     /**
      * Azure resource ID of the policy definition that turns this assessment calculation on
@@ -66,7 +66,7 @@ export class AssessmentMetadataInSubscription extends pulumi.CustomResource {
      * True if this assessment is in preview release status
      */
     public readonly preview!: pulumi.Output<boolean | undefined>;
-    public readonly publishDates!: pulumi.Output<types.outputs.security.SecurityAssessmentMetadataPropertiesResponseResponsePublishDates | undefined>;
+    public readonly publishDates!: pulumi.Output<types.outputs.SecurityAssessmentMetadataPropertiesResponseResponsePublishDates | undefined>;
     /**
      * Human readable description of what you should do to mitigate this security issue
      */
@@ -181,13 +181,13 @@ export interface AssessmentMetadataInSubscriptionArgs {
     /**
      * Describes the partner that created the assessment
      */
-    partnerData?: pulumi.Input<types.inputs.security.SecurityAssessmentMetadataPartnerDataArgs>;
+    partnerData?: pulumi.Input<types.inputs.SecurityAssessmentMetadataPartnerDataArgs>;
     plannedDeprecationDate?: pulumi.Input<string>;
     /**
      * True if this assessment is in preview release status
      */
     preview?: pulumi.Input<boolean>;
-    publishDates?: pulumi.Input<types.inputs.security.SecurityAssessmentMetadataPropertiesResponsePublishDatesArgs>;
+    publishDates?: pulumi.Input<types.inputs.SecurityAssessmentMetadataPropertiesResponsePublishDatesArgs>;
     /**
      * Human readable description of what you should do to mitigate this security issue
      */

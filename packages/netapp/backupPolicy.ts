@@ -67,7 +67,7 @@ export class BackupPolicy extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.netapp.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -79,7 +79,7 @@ export class BackupPolicy extends pulumi.CustomResource {
     /**
      * A list of volumes assigned to this policy
      */
-    public /*out*/ readonly volumeBackups!: pulumi.Output<types.outputs.netapp.VolumeBackupsResponse[]>;
+    public /*out*/ readonly volumeBackups!: pulumi.Output<types.outputs.VolumeBackupsResponse[]>;
     /**
      * Volumes using current backup policy
      */

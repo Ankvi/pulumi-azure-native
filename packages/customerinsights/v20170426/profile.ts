@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The profile resource format.
  */
@@ -54,7 +54,7 @@ export class Profile extends pulumi.CustomResource {
     /**
      * The properties of the Profile.
      */
-    public readonly fields!: pulumi.Output<types.outputs.customerinsights.v20170426.PropertyDefinitionResponse[] | undefined>;
+    public readonly fields!: pulumi.Output<types.outputs.PropertyDefinitionResponse[] | undefined>;
     /**
      * The instance count.
      */
@@ -94,7 +94,7 @@ export class Profile extends pulumi.CustomResource {
     /**
      * The strong IDs.
      */
-    public readonly strongIds!: pulumi.Output<types.outputs.customerinsights.v20170426.StrongIdResponse[] | undefined>;
+    public readonly strongIds!: pulumi.Output<types.outputs.StrongIdResponse[] | undefined>;
     /**
      * The hub name.
      */
@@ -204,11 +204,11 @@ export interface ProfileArgs {
     /**
      * Type of entity.
      */
-    entityType?: pulumi.Input<types.enums.v20170426.EntityTypes>;
+    entityType?: pulumi.Input<types.enums.EntityTypes>;
     /**
      * The properties of the Profile.
      */
-    fields?: pulumi.Input<pulumi.Input<types.inputs.customerinsights.v20170426.PropertyDefinitionArgs>[]>;
+    fields?: pulumi.Input<pulumi.Input<types.inputs.PropertyDefinitionArgs>[]>;
     /**
      * The name of the hub.
      */
@@ -248,7 +248,7 @@ export interface ProfileArgs {
     /**
      * The strong IDs.
      */
-    strongIds?: pulumi.Input<pulumi.Input<types.inputs.customerinsights.v20170426.StrongIdArgs>[]>;
+    strongIds?: pulumi.Input<pulumi.Input<types.inputs.StrongIdArgs>[]>;
     /**
      * The timestamp property name. Represents the time when the interaction or profile update happened.
      */

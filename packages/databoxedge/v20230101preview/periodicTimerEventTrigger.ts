@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Trigger details.
  */
@@ -47,15 +47,15 @@ export class PeriodicTimerEventTrigger extends pulumi.CustomResource {
     /**
      * Role Sink information.
      */
-    public readonly sinkInfo!: pulumi.Output<types.outputs.databoxedge.v20230101preview.RoleSinkInfoResponse>;
+    public readonly sinkInfo!: pulumi.Output<types.outputs.RoleSinkInfoResponse>;
     /**
      * Periodic timer details.
      */
-    public readonly sourceInfo!: pulumi.Output<types.outputs.databoxedge.v20230101preview.PeriodicTimerSourceInfoResponse>;
+    public readonly sourceInfo!: pulumi.Output<types.outputs.PeriodicTimerSourceInfoResponse>;
     /**
      * Metadata pertaining to creation and last modification of Trigger
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.databoxedge.v20230101preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The hierarchical type of the object.
      */
@@ -140,9 +140,9 @@ export interface PeriodicTimerEventTriggerArgs {
     /**
      * Role Sink information.
      */
-    sinkInfo: pulumi.Input<types.inputs.databoxedge.v20230101preview.RoleSinkInfoArgs>;
+    sinkInfo: pulumi.Input<types.inputs.RoleSinkInfoArgs>;
     /**
      * Periodic timer details.
      */
-    sourceInfo: pulumi.Input<types.inputs.databoxedge.v20230101preview.PeriodicTimerSourceInfoArgs>;
+    sourceInfo: pulumi.Input<types.inputs.PeriodicTimerSourceInfoArgs>;
 }

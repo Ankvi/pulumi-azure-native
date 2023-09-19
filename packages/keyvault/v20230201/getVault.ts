@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the specified Azure key vault.
  */
@@ -43,11 +43,11 @@ export interface GetVaultResult {
     /**
      * Properties of the vault
      */
-    readonly properties: types.outputs.keyvault.v20230201.VaultPropertiesResponse;
+    readonly properties: types.outputs.VaultPropertiesResponse;
     /**
      * System metadata for the key vault.
      */
-    readonly systemData: types.outputs.keyvault.v20230201.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Tags assigned to the key vault resource.
      */

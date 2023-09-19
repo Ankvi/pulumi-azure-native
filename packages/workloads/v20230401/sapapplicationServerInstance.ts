@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Define the SAP Application Server Instance resource.
  */
@@ -34,7 +34,7 @@ export class SAPApplicationServerInstance extends pulumi.CustomResource {
     /**
      * Defines the Application Instance errors.
      */
-    public /*out*/ readonly errors!: pulumi.Output<types.outputs.workloads.v20230401.SAPVirtualInstanceErrorResponse>;
+    public /*out*/ readonly errors!: pulumi.Output<types.outputs.SAPVirtualInstanceErrorResponse>;
     /**
      * Application server instance gateway Port.
      */
@@ -74,7 +74,7 @@ export class SAPApplicationServerInstance extends pulumi.CustomResource {
     /**
      * The Load Balancer details such as LoadBalancer ID attached to Application Server Virtual Machines
      */
-    public /*out*/ readonly loadBalancerDetails!: pulumi.Output<types.outputs.workloads.v20230401.LoadBalancerDetailsResponse>;
+    public /*out*/ readonly loadBalancerDetails!: pulumi.Output<types.outputs.LoadBalancerDetailsResponse>;
     /**
      * The geo-location where the resource lives
      */
@@ -98,7 +98,7 @@ export class SAPApplicationServerInstance extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.workloads.v20230401.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -110,7 +110,7 @@ export class SAPApplicationServerInstance extends pulumi.CustomResource {
     /**
      * The list of virtual machines.
      */
-    public /*out*/ readonly vmDetails!: pulumi.Output<types.outputs.workloads.v20230401.ApplicationServerVmDetailsResponse[]>;
+    public /*out*/ readonly vmDetails!: pulumi.Output<types.outputs.ApplicationServerVmDetailsResponse[]>;
 
     /**
      * Create a SAPApplicationServerInstance resource with the given unique name, arguments, and options.

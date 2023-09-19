@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Class representing an attached database configuration.
  */
@@ -62,11 +62,11 @@ export class KustoPoolAttachedDatabaseConfiguration extends pulumi.CustomResourc
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.synapse.v20210601preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Table level sharing specifications
      */
-    public readonly tableLevelSharingProperties!: pulumi.Output<types.outputs.synapse.v20210601preview.TableLevelSharingPropertiesResponse | undefined>;
+    public readonly tableLevelSharingProperties!: pulumi.Output<types.outputs.TableLevelSharingPropertiesResponse | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -149,7 +149,7 @@ export interface KustoPoolAttachedDatabaseConfigurationArgs {
     /**
      * The default principals modification kind
      */
-    defaultPrincipalsModificationKind: pulumi.Input<string | types.enums.v20210601preview.DefaultPrincipalsModificationKind>;
+    defaultPrincipalsModificationKind: pulumi.Input<string | types.enums.DefaultPrincipalsModificationKind>;
     /**
      * The name of the Kusto pool.
      */
@@ -169,7 +169,7 @@ export interface KustoPoolAttachedDatabaseConfigurationArgs {
     /**
      * Table level sharing specifications
      */
-    tableLevelSharingProperties?: pulumi.Input<types.inputs.synapse.v20210601preview.TableLevelSharingPropertiesArgs>;
+    tableLevelSharingProperties?: pulumi.Input<types.inputs.TableLevelSharingPropertiesArgs>;
     /**
      * The name of the workspace.
      */

@@ -43,7 +43,7 @@ utilities.lazyLoad(exports, ["getBlobStorageAccountDataSetMapping","getBlobStora
 
 
 // Export enums:
-export * from "../types/enums/v20201001preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

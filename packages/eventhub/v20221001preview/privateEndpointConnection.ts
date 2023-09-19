@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Properties of the PrivateEndpointConnection.
  */
@@ -42,11 +42,11 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * The Private Endpoint resource for this Connection.
      */
-    public readonly privateEndpoint!: pulumi.Output<types.outputs.eventhub.v20221001preview.PrivateEndpointResponse | undefined>;
+    public readonly privateEndpoint!: pulumi.Output<types.outputs.PrivateEndpointResponse | undefined>;
     /**
      * Details about the state of the connection.
      */
-    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.eventhub.v20221001preview.ConnectionStateResponse | undefined>;
+    public readonly privateLinkServiceConnectionState!: pulumi.Output<types.outputs.ConnectionStateResponse | undefined>;
     /**
      * Provisioning state of the Private Endpoint Connection.
      */
@@ -54,7 +54,7 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
      * The system meta data relating to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.eventhub.v20221001preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
      */
@@ -114,7 +114,7 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * The Private Endpoint resource for this Connection.
      */
-    privateEndpoint?: pulumi.Input<types.inputs.eventhub.v20221001preview.PrivateEndpointArgs>;
+    privateEndpoint?: pulumi.Input<types.inputs.PrivateEndpointArgs>;
     /**
      * The PrivateEndpointConnection name
      */
@@ -122,11 +122,11 @@ export interface PrivateEndpointConnectionArgs {
     /**
      * Details about the state of the connection.
      */
-    privateLinkServiceConnectionState?: pulumi.Input<types.inputs.eventhub.v20221001preview.ConnectionStateArgs>;
+    privateLinkServiceConnectionState?: pulumi.Input<types.inputs.ConnectionStateArgs>;
     /**
      * Provisioning state of the Private Endpoint Connection.
      */
-    provisioningState?: pulumi.Input<string | types.enums.v20221001preview.EndPointProvisioningState>;
+    provisioningState?: pulumi.Input<string | types.enums.EndPointProvisioningState>;
     /**
      * Name of the resource group within the azure subscription.
      */

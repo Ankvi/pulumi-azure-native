@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * This method gets the data store/repository by name.
  */
@@ -36,7 +36,7 @@ export interface GetDataStoreResult {
     /**
      * List of customer secrets containing a key identifier and key value. The key identifier is a way for the specific data source to understand the key. Value contains customer secret encrypted by the encryptionKeys.
      */
-    readonly customerSecrets?: types.outputs.hybriddata.v20190601.CustomerSecretResponse[];
+    readonly customerSecrets?: types.outputs.CustomerSecretResponse[];
     /**
      * The arm id of the data store type.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieve the registered Integration Runtime nodes and their monitoring data for a given Database Migration Service.
  */
@@ -35,7 +35,7 @@ export interface ListSqlMigrationServiceMonitoringDataResult {
     /**
      * Integration Runtime node monitoring data.
      */
-    readonly nodes: types.outputs.datamigration.v20220330preview.NodeMonitoringDataResponse[];
+    readonly nodes: types.outputs.NodeMonitoringDataResponse[];
 }
 /**
  * Retrieve the registered Integration Runtime nodes and their monitoring data for a given Database Migration Service.

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the report for a subscription by report name.
  */
@@ -26,11 +26,11 @@ export interface GetReportResult {
     /**
      * Has definition for the report.
      */
-    readonly definition: types.outputs.costmanagement.v20180801preview.ReportDefinitionResponse;
+    readonly definition: types.outputs.ReportDefinitionResponse;
     /**
      * Has delivery information for the report.
      */
-    readonly deliveryInfo: types.outputs.costmanagement.v20180801preview.ReportDeliveryInfoResponse;
+    readonly deliveryInfo: types.outputs.ReportDeliveryInfoResponse;
     /**
      * The format of the report being delivered.
      */
@@ -46,7 +46,7 @@ export interface GetReportResult {
     /**
      * Has schedule information for the report.
      */
-    readonly schedule?: types.outputs.costmanagement.v20180801preview.ReportScheduleResponse;
+    readonly schedule?: types.outputs.ReportScheduleResponse;
     /**
      * Resource tags.
      */

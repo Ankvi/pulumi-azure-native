@@ -63,11 +63,11 @@ export class KustoPoolAttachedDatabaseConfiguration extends pulumi.CustomResourc
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.synapse.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Table level sharing specifications
      */
-    public readonly tableLevelSharingProperties!: pulumi.Output<types.outputs.synapse.TableLevelSharingPropertiesResponse | undefined>;
+    public readonly tableLevelSharingProperties!: pulumi.Output<types.outputs.TableLevelSharingPropertiesResponse | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -170,7 +170,7 @@ export interface KustoPoolAttachedDatabaseConfigurationArgs {
     /**
      * Table level sharing specifications
      */
-    tableLevelSharingProperties?: pulumi.Input<types.inputs.synapse.TableLevelSharingPropertiesArgs>;
+    tableLevelSharingProperties?: pulumi.Input<types.inputs.TableLevelSharingPropertiesArgs>;
     /**
      * The name of the workspace.
      */

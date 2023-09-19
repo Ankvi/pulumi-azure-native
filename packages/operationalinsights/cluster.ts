@@ -35,7 +35,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * The list of Log Analytics workspaces associated with the cluster
      */
-    public /*out*/ readonly associatedWorkspaces!: pulumi.Output<types.outputs.operationalinsights.AssociatedWorkspaceResponse[] | undefined>;
+    public /*out*/ readonly associatedWorkspaces!: pulumi.Output<types.outputs.AssociatedWorkspaceResponse[] | undefined>;
     /**
      * The cluster's billing type.
      */
@@ -43,7 +43,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * Additional properties for capacity reservation
      */
-    public /*out*/ readonly capacityReservationProperties!: pulumi.Output<types.outputs.operationalinsights.CapacityReservationPropertiesResponse | undefined>;
+    public /*out*/ readonly capacityReservationProperties!: pulumi.Output<types.outputs.CapacityReservationPropertiesResponse | undefined>;
     /**
      * The ID associated with the cluster.
      */
@@ -55,7 +55,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * The identity of the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.operationalinsights.IdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityResponse | undefined>;
     /**
      * Sets whether the cluster will support availability zones. This can be set as true only in regions where Azure Data Explorer support Availability Zones. This Property can not be modified after cluster creation. Default value is 'true' if region supports Availability Zones.
      */
@@ -63,7 +63,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * The associated key properties.
      */
-    public readonly keyVaultProperties!: pulumi.Output<types.outputs.operationalinsights.KeyVaultPropertiesResponse | undefined>;
+    public readonly keyVaultProperties!: pulumi.Output<types.outputs.KeyVaultPropertiesResponse | undefined>;
     /**
      * The last time the cluster was updated.
      */
@@ -83,7 +83,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * The sku properties.
      */
-    public readonly sku!: pulumi.Output<types.outputs.operationalinsights.ClusterSkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.ClusterSkuResponse | undefined>;
     /**
      * Resource tags.
      */
@@ -164,7 +164,7 @@ export interface ClusterArgs {
     /**
      * The identity of the resource.
      */
-    identity?: pulumi.Input<types.inputs.operationalinsights.IdentityArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityArgs>;
     /**
      * Sets whether the cluster will support availability zones. This can be set as true only in regions where Azure Data Explorer support Availability Zones. This Property can not be modified after cluster creation. Default value is 'true' if region supports Availability Zones.
      */
@@ -176,7 +176,7 @@ export interface ClusterArgs {
     /**
      * The associated key properties.
      */
-    keyVaultProperties?: pulumi.Input<types.inputs.operationalinsights.KeyVaultPropertiesArgs>;
+    keyVaultProperties?: pulumi.Input<types.inputs.KeyVaultPropertiesArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -188,7 +188,7 @@ export interface ClusterArgs {
     /**
      * The sku properties.
      */
-    sku?: pulumi.Input<types.inputs.operationalinsights.ClusterSkuArgs>;
+    sku?: pulumi.Input<types.inputs.ClusterSkuArgs>;
     /**
      * Resource tags.
      */

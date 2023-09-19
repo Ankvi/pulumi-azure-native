@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * ExpressRouteConnection resource.
  */
@@ -46,7 +46,7 @@ export class ExpressRouteConnection extends pulumi.CustomResource {
     /**
      * The ExpressRoute circuit peering.
      */
-    public readonly expressRouteCircuitPeering!: pulumi.Output<types.outputs.network.v20230401.ExpressRouteCircuitPeeringIdResponse>;
+    public readonly expressRouteCircuitPeering!: pulumi.Output<types.outputs.ExpressRouteCircuitPeeringIdResponse>;
     /**
      * Enable FastPath to vWan Firewall hub.
      */
@@ -62,7 +62,7 @@ export class ExpressRouteConnection extends pulumi.CustomResource {
     /**
      * The Routing Configuration indicating the associated and propagated route tables on this connection.
      */
-    public readonly routingConfiguration!: pulumi.Output<types.outputs.network.v20230401.RoutingConfigurationResponse | undefined>;
+    public readonly routingConfiguration!: pulumi.Output<types.outputs.RoutingConfigurationResponse | undefined>;
     /**
      * The routing weight associated to the connection.
      */
@@ -145,7 +145,7 @@ export interface ExpressRouteConnectionArgs {
     /**
      * The ExpressRoute circuit peering.
      */
-    expressRouteCircuitPeering: pulumi.Input<types.inputs.network.v20230401.ExpressRouteCircuitPeeringIdArgs>;
+    expressRouteCircuitPeering: pulumi.Input<types.inputs.ExpressRouteCircuitPeeringIdArgs>;
     /**
      * Enable FastPath to vWan Firewall hub.
      */
@@ -169,7 +169,7 @@ export interface ExpressRouteConnectionArgs {
     /**
      * The Routing Configuration indicating the associated and propagated route tables on this connection.
      */
-    routingConfiguration?: pulumi.Input<types.inputs.network.v20230401.RoutingConfigurationArgs>;
+    routingConfiguration?: pulumi.Input<types.inputs.RoutingConfigurationArgs>;
     /**
      * The routing weight associated to the connection.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a Service and its properties.
  */
@@ -43,15 +43,15 @@ export interface GetServiceResult {
     /**
      * Properties of the Service resource
      */
-    readonly properties: types.outputs.appplatform.v20230701preview.ClusterResourcePropertiesResponse;
+    readonly properties: types.outputs.ClusterResourcePropertiesResponse;
     /**
      * Sku of the Service resource
      */
-    readonly sku?: types.outputs.appplatform.v20230701preview.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.appplatform.v20230701preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Tags of the service which is a list of key value pairs that describe the resource.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Restore Point details.
  */
@@ -38,11 +38,11 @@ export class RestorePoint extends pulumi.CustomResource {
     /**
      * List of disk resource ids that the customer wishes to exclude from the restore point. If no disks are specified, all disks will be included.
      */
-    public readonly excludeDisks!: pulumi.Output<types.outputs.compute.v20211101.ApiEntityReferenceResponse[] | undefined>;
+    public readonly excludeDisks!: pulumi.Output<types.outputs.ApiEntityReferenceResponse[] | undefined>;
     /**
      * The restore point instance view.
      */
-    public /*out*/ readonly instanceView!: pulumi.Output<types.outputs.compute.v20211101.RestorePointInstanceViewResponse>;
+    public /*out*/ readonly instanceView!: pulumi.Output<types.outputs.RestorePointInstanceViewResponse>;
     /**
      * Resource name
      */
@@ -54,11 +54,11 @@ export class RestorePoint extends pulumi.CustomResource {
     /**
      * Gets the details of the VM captured at the time of the restore point creation.
      */
-    public /*out*/ readonly sourceMetadata!: pulumi.Output<types.outputs.compute.v20211101.RestorePointSourceMetadataResponse>;
+    public /*out*/ readonly sourceMetadata!: pulumi.Output<types.outputs.RestorePointSourceMetadataResponse>;
     /**
      * Resource Id of the source restore point from which a copy needs to be created.
      */
-    public readonly sourceRestorePoint!: pulumi.Output<types.outputs.compute.v20211101.ApiEntityReferenceResponse | undefined>;
+    public readonly sourceRestorePoint!: pulumi.Output<types.outputs.ApiEntityReferenceResponse | undefined>;
     /**
      * Gets the creation time of the restore point.
      */
@@ -122,7 +122,7 @@ export interface RestorePointArgs {
     /**
      * List of disk resource ids that the customer wishes to exclude from the restore point. If no disks are specified, all disks will be included.
      */
-    excludeDisks?: pulumi.Input<pulumi.Input<types.inputs.compute.v20211101.ApiEntityReferenceArgs>[]>;
+    excludeDisks?: pulumi.Input<pulumi.Input<types.inputs.ApiEntityReferenceArgs>[]>;
     /**
      * The name of the resource group.
      */
@@ -138,7 +138,7 @@ export interface RestorePointArgs {
     /**
      * Resource Id of the source restore point from which a copy needs to be created.
      */
-    sourceRestorePoint?: pulumi.Input<types.inputs.compute.v20211101.ApiEntityReferenceArgs>;
+    sourceRestorePoint?: pulumi.Input<types.inputs.ApiEntityReferenceArgs>;
     /**
      * Gets the creation time of the restore point.
      */

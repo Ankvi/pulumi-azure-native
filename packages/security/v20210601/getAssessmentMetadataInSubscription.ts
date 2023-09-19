@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get metadata information on an assessment type in a specific subscription
  */
@@ -51,7 +51,7 @@ export interface GetAssessmentMetadataInSubscriptionResult {
     /**
      * Describes the partner that created the assessment
      */
-    readonly partnerData?: types.outputs.security.v20210601.SecurityAssessmentMetadataPartnerDataResponse;
+    readonly partnerData?: types.outputs.SecurityAssessmentMetadataPartnerDataResponse;
     readonly plannedDeprecationDate?: string;
     /**
      * Azure resource ID of the policy definition that turns this assessment calculation on
@@ -61,7 +61,7 @@ export interface GetAssessmentMetadataInSubscriptionResult {
      * True if this assessment is in preview release status
      */
     readonly preview?: boolean;
-    readonly publishDates?: types.outputs.security.v20210601.SecurityAssessmentMetadataPropertiesResponseResponsePublishDates;
+    readonly publishDates?: types.outputs.SecurityAssessmentMetadataPropertiesResponseResponsePublishDates;
     /**
      * Human readable description of what you should do to mitigate this security issue
      */

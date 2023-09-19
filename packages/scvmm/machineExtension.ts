@@ -47,7 +47,7 @@ export class MachineExtension extends pulumi.CustomResource {
     /**
      * The machine extension instance view.
      */
-    public /*out*/ readonly instanceView!: pulumi.Output<types.outputs.scvmm.MachineExtensionPropertiesResponseInstanceView | undefined>;
+    public /*out*/ readonly instanceView!: pulumi.Output<types.outputs.MachineExtensionPropertiesResponseInstanceView | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -75,7 +75,7 @@ export class MachineExtension extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.scvmm.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */

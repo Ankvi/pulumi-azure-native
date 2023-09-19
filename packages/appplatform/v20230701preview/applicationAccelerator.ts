@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Application accelerator resource
  */
@@ -38,15 +38,15 @@ export class ApplicationAccelerator extends pulumi.CustomResource {
     /**
      * Application accelerator properties payload
      */
-    public /*out*/ readonly properties!: pulumi.Output<types.outputs.appplatform.v20230701preview.ApplicationAcceleratorPropertiesResponse>;
+    public /*out*/ readonly properties!: pulumi.Output<types.outputs.ApplicationAcceleratorPropertiesResponse>;
     /**
      * Sku of the application accelerator resource
      */
-    public readonly sku!: pulumi.Output<types.outputs.appplatform.v20230701preview.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.appplatform.v20230701preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource.
      */
@@ -72,7 +72,7 @@ export class ApplicationAccelerator extends pulumi.CustomResource {
             resourceInputs["applicationAcceleratorName"] = args ? args.applicationAcceleratorName : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
-            resourceInputs["sku"] = args ? (args.sku ? pulumi.output(args.sku).apply(types.inputs.appplatform.v20230701preview.skuArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["sku"] = args ? (args.sku ? pulumi.output(args.sku).apply(types.inputs.skuArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["properties"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
@@ -110,5 +110,5 @@ export interface ApplicationAcceleratorArgs {
     /**
      * Sku of the application accelerator resource
      */
-    sku?: pulumi.Input<types.inputs.appplatform.v20230701preview.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
 }

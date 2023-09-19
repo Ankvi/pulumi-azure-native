@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a scoped resource in a private link scope.
  */
@@ -52,7 +52,7 @@ export interface GetPrivateLinkScopedResourceResult {
     /**
      * System data
      */
-    readonly systemData: types.outputs.insights.v20210701preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

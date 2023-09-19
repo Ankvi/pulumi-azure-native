@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Configuration settings for the Azure ContainerApp Service Authentication / Authorization feature.
  */
@@ -36,11 +36,11 @@ export interface GetContainerAppsAuthConfigResult {
     /**
      * The configuration settings that determines the validation flow of users using  Service Authentication/Authorization.
      */
-    readonly globalValidation?: types.outputs.app.v20230501.GlobalValidationResponse;
+    readonly globalValidation?: types.outputs.GlobalValidationResponse;
     /**
      * The configuration settings of the HTTP requests for authentication and authorization requests made against ContainerApp Service Authentication/Authorization.
      */
-    readonly httpSettings?: types.outputs.app.v20230501.HttpSettingsResponse;
+    readonly httpSettings?: types.outputs.HttpSettingsResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -48,11 +48,11 @@ export interface GetContainerAppsAuthConfigResult {
     /**
      * The configuration settings of each of the identity providers used to configure ContainerApp Service Authentication/Authorization.
      */
-    readonly identityProviders?: types.outputs.app.v20230501.IdentityProvidersResponse;
+    readonly identityProviders?: types.outputs.IdentityProvidersResponse;
     /**
      * The configuration settings of the login flow of users using ContainerApp Service Authentication/Authorization.
      */
-    readonly login?: types.outputs.app.v20230501.LoginResponse;
+    readonly login?: types.outputs.LoginResponse;
     /**
      * The name of the resource
      */
@@ -60,11 +60,11 @@ export interface GetContainerAppsAuthConfigResult {
     /**
      * The configuration settings of the platform of ContainerApp Service Authentication/Authorization.
      */
-    readonly platform?: types.outputs.app.v20230501.AuthPlatformResponse;
+    readonly platform?: types.outputs.AuthPlatformResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.app.v20230501.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

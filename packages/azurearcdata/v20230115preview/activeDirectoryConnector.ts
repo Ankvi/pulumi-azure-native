@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Active directory connector resource
  */
@@ -38,11 +38,11 @@ export class ActiveDirectoryConnector extends pulumi.CustomResource {
     /**
      * null
      */
-    public readonly properties!: pulumi.Output<types.outputs.azurearcdata.v20230115preview.ActiveDirectoryConnectorPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ActiveDirectoryConnectorPropertiesResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.azurearcdata.v20230115preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -70,7 +70,7 @@ export class ActiveDirectoryConnector extends pulumi.CustomResource {
             }
             resourceInputs["activeDirectoryConnectorName"] = args ? args.activeDirectoryConnectorName : undefined;
             resourceInputs["dataControllerName"] = args ? args.dataControllerName : undefined;
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.azurearcdata.v20230115preview.activeDirectoryConnectorPropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.activeDirectoryConnectorPropertiesArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
@@ -103,7 +103,7 @@ export interface ActiveDirectoryConnectorArgs {
     /**
      * null
      */
-    properties: pulumi.Input<types.inputs.azurearcdata.v20230115preview.ActiveDirectoryConnectorPropertiesArgs>;
+    properties: pulumi.Input<types.inputs.ActiveDirectoryConnectorPropertiesArgs>;
     /**
      * The name of the Azure resource group
      */

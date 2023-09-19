@@ -39,7 +39,7 @@ export class CloudConnector extends pulumi.CustomResource {
     /**
      * Collection information
      */
-    public /*out*/ readonly collectionInfo!: pulumi.Output<types.outputs.costmanagement.ConnectorCollectionInfoResponse>;
+    public /*out*/ readonly collectionInfo!: pulumi.Output<types.outputs.ConnectorCollectionInfoResponse>;
     /**
      * Connector definition creation datetime
      */

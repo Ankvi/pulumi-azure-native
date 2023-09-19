@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Public certificate object
  */
@@ -119,7 +119,7 @@ export interface WebAppPublicCertificateSlotArgs {
     /**
      * Public Certificate Location
      */
-    publicCertificateLocation?: pulumi.Input<types.enums.v20220901.PublicCertificateLocation>;
+    publicCertificateLocation?: pulumi.Input<types.enums.PublicCertificateLocation>;
     /**
      * Public certificate name.
      */

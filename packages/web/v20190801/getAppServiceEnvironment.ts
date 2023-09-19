@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the properties of an App Service Environment.
  */
@@ -43,7 +43,7 @@ export interface GetAppServiceEnvironmentResult {
     /**
      * Custom settings for changing the behavior of the App Service Environment.
      */
-    readonly clusterSettings?: types.outputs.web.v20190801.NameValuePairResponse[];
+    readonly clusterSettings?: types.outputs.NameValuePairResponse[];
     /**
      * Edition of the metadata database for the App Service Environment, e.g. "Standard".
      */
@@ -68,7 +68,7 @@ export interface GetAppServiceEnvironmentResult {
     /**
      * Current total, used, and available worker capacities.
      */
-    readonly environmentCapacities: types.outputs.web.v20190801.StampCapacityResponse[];
+    readonly environmentCapacities: types.outputs.StampCapacityResponse[];
     /**
      * True/false indicating whether the App Service Environment is healthy.
      */
@@ -132,7 +132,7 @@ export interface GetAppServiceEnvironmentResult {
     /**
      * Access control list for controlling traffic to the App Service Environment.
      */
-    readonly networkAccessControlList?: types.outputs.web.v20190801.NetworkAccessControlEntryResponse[];
+    readonly networkAccessControlList?: types.outputs.NetworkAccessControlEntryResponse[];
     /**
      * Provisioning state of the App Service Environment.
      */
@@ -181,11 +181,11 @@ export interface GetAppServiceEnvironmentResult {
     /**
      * Description of IP SSL mapping for the App Service Environment.
      */
-    readonly vipMappings: types.outputs.web.v20190801.VirtualIPMappingResponse[];
+    readonly vipMappings: types.outputs.VirtualIPMappingResponse[];
     /**
      * Description of the Virtual Network.
      */
-    readonly virtualNetwork: types.outputs.web.v20190801.VirtualNetworkProfileResponse;
+    readonly virtualNetwork: types.outputs.VirtualNetworkProfileResponse;
     /**
      * Name of the Virtual Network for the App Service Environment.
      */
@@ -201,7 +201,7 @@ export interface GetAppServiceEnvironmentResult {
     /**
      * Description of worker pools with worker size IDs, VM sizes, and number of workers in each pool.
      */
-    readonly workerPools: types.outputs.web.v20190801.WorkerPoolResponse[];
+    readonly workerPools: types.outputs.WorkerPoolResponse[];
 }
 /**
  * Get the properties of an App Service Environment.

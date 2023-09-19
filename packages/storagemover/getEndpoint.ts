@@ -45,11 +45,11 @@ export interface GetEndpointResult {
     /**
      * The resource specific properties for the Storage Mover resource.
      */
-    readonly properties: types.outputs.storagemover.AzureStorageBlobContainerEndpointPropertiesResponse | types.outputs.storagemover.NfsMountEndpointPropertiesResponse;
+    readonly properties: types.outputs.AzureStorageBlobContainerEndpointPropertiesResponse | types.outputs.NfsMountEndpointPropertiesResponse;
     /**
      * Resource system metadata.
      */
-    readonly systemData: types.outputs.storagemover.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

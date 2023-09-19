@@ -114,7 +114,7 @@ export interface GetFileShareResult {
     /**
      * List of stored access policies specified on the share.
      */
-    readonly signedIdentifiers?: types.outputs.storage.SignedIdentifierResponse[];
+    readonly signedIdentifiers?: types.outputs.SignedIdentifierResponse[];
     /**
      * Creation time of share snapshot returned in the response of list shares with expand param "snapshots".
      */

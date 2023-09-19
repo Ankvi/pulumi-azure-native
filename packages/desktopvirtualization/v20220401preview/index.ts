@@ -23,7 +23,7 @@ utilities.lazyLoad(exports, ["HostPool"], () => require("./hostPool"));
 
 
 // Export enums:
-export * from "../types/enums/v20220401preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

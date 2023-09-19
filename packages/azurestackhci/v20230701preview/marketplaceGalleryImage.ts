@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The marketplace gallery image resource definition.
  */
@@ -42,7 +42,7 @@ export class MarketplaceGalleryImage extends pulumi.CustomResource {
     /**
      * The extendedLocation of the resource.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.azurestackhci.v20230701preview.ExtendedLocationResponse | undefined>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
     /**
      * The hypervisor generation of the Virtual Machine [V1, V2]
      */
@@ -50,7 +50,7 @@ export class MarketplaceGalleryImage extends pulumi.CustomResource {
     /**
      * This is the gallery image definition identifier.
      */
-    public readonly identifier!: pulumi.Output<types.outputs.azurestackhci.v20230701preview.GalleryImageIdentifierResponse | undefined>;
+    public readonly identifier!: pulumi.Output<types.outputs.GalleryImageIdentifierResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -70,11 +70,11 @@ export class MarketplaceGalleryImage extends pulumi.CustomResource {
     /**
      * The observed state of marketplace gallery images
      */
-    public /*out*/ readonly status!: pulumi.Output<types.outputs.azurestackhci.v20230701preview.MarketplaceGalleryImageStatusResponse>;
+    public /*out*/ readonly status!: pulumi.Output<types.outputs.MarketplaceGalleryImageStatusResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.azurestackhci.v20230701preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -86,7 +86,7 @@ export class MarketplaceGalleryImage extends pulumi.CustomResource {
     /**
      * Specifies information about the gallery image version that you want to create or update.
      */
-    public readonly version!: pulumi.Output<types.outputs.azurestackhci.v20230701preview.GalleryImageVersionResponse | undefined>;
+    public readonly version!: pulumi.Output<types.outputs.GalleryImageVersionResponse | undefined>;
 
     /**
      * Create a MarketplaceGalleryImage resource with the given unique name, arguments, and options.
@@ -151,7 +151,7 @@ export interface MarketplaceGalleryImageArgs {
     /**
      * Datasource for the gallery image when provisioning with cloud-init [NoCloud, Azure]
      */
-    cloudInitDataSource?: pulumi.Input<string | types.enums.v20230701preview.CloudInitDataSource>;
+    cloudInitDataSource?: pulumi.Input<string | types.enums.CloudInitDataSource>;
     /**
      * Storage ContainerID of the storage container to be used for marketplace gallery image
      */
@@ -159,15 +159,15 @@ export interface MarketplaceGalleryImageArgs {
     /**
      * The extendedLocation of the resource.
      */
-    extendedLocation?: pulumi.Input<types.inputs.azurestackhci.v20230701preview.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * The hypervisor generation of the Virtual Machine [V1, V2]
      */
-    hyperVGeneration?: pulumi.Input<string | types.enums.v20230701preview.HyperVGeneration>;
+    hyperVGeneration?: pulumi.Input<string | types.enums.HyperVGeneration>;
     /**
      * This is the gallery image definition identifier.
      */
-    identifier?: pulumi.Input<types.inputs.azurestackhci.v20230701preview.GalleryImageIdentifierArgs>;
+    identifier?: pulumi.Input<types.inputs.GalleryImageIdentifierArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -179,7 +179,7 @@ export interface MarketplaceGalleryImageArgs {
     /**
      * Operating system type that the gallery image uses [Windows, Linux]
      */
-    osType: pulumi.Input<types.enums.v20230701preview.OperatingSystemTypes>;
+    osType: pulumi.Input<types.enums.OperatingSystemTypes>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -191,5 +191,5 @@ export interface MarketplaceGalleryImageArgs {
     /**
      * Specifies information about the gallery image version that you want to create or update.
      */
-    version?: pulumi.Input<types.inputs.azurestackhci.v20230701preview.GalleryImageVersionArgs>;
+    version?: pulumi.Input<types.inputs.GalleryImageVersionArgs>;
 }

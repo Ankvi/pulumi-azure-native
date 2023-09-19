@@ -35,7 +35,7 @@ export class Monitor extends pulumi.CustomResource {
     /**
      * Identity properties of the monitor resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.elastic.IdentityPropertiesResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityPropertiesResponse | undefined>;
     /**
      * The location of the monitor resource
      */
@@ -47,15 +47,15 @@ export class Monitor extends pulumi.CustomResource {
     /**
      * Properties of the monitor resource.
      */
-    public readonly properties!: pulumi.Output<types.outputs.elastic.MonitorPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.MonitorPropertiesResponse>;
     /**
      * SKU of the monitor resource.
      */
-    public readonly sku!: pulumi.Output<types.outputs.elastic.ResourceSkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.ResourceSkuResponse | undefined>;
     /**
      * The system metadata relating to this resource
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.elastic.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The tags of the monitor resource.
      */
@@ -113,7 +113,7 @@ export interface MonitorArgs {
     /**
      * Identity properties of the monitor resource.
      */
-    identity?: pulumi.Input<types.inputs.elastic.IdentityPropertiesArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityPropertiesArgs>;
     /**
      * The location of the monitor resource
      */
@@ -125,7 +125,7 @@ export interface MonitorArgs {
     /**
      * Properties of the monitor resource.
      */
-    properties?: pulumi.Input<types.inputs.elastic.MonitorPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.MonitorPropertiesArgs>;
     /**
      * The name of the resource group to which the Elastic resource belongs.
      */
@@ -133,7 +133,7 @@ export interface MonitorArgs {
     /**
      * SKU of the monitor resource.
      */
-    sku?: pulumi.Input<types.inputs.elastic.ResourceSkuArgs>;
+    sku?: pulumi.Input<types.inputs.ResourceSkuArgs>;
     /**
      * The tags of the monitor resource.
      */

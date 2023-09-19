@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a SQL Server registration.
  */
@@ -55,7 +55,7 @@ export interface GetSqlServerRegistrationResult {
     /**
      * Read only system data
      */
-    readonly systemData: types.outputs.azuredata.v20190724preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the properties of a managed Cassandra data center.
  */
@@ -44,7 +44,7 @@ export interface GetCassandraDataCenterResult {
     /**
      * Properties of a managed Cassandra data center.
      */
-    readonly properties: types.outputs.documentdb.v20230415.DataCenterResourceResponseProperties;
+    readonly properties: types.outputs.DataCenterResourceResponseProperties;
     /**
      * The type of Azure resource.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets a job.
  */
@@ -41,7 +41,7 @@ export interface GetJobResult {
     /**
      * Gets or sets the job properties.
      */
-    readonly properties: types.outputs.scheduler.v20160301.JobPropertiesResponse;
+    readonly properties: types.outputs.JobPropertiesResponse;
     /**
      * Gets the job resource type.
      */

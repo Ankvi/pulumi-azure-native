@@ -39,7 +39,7 @@ export class EncryptionScope extends pulumi.CustomResource {
     /**
      * The key vault properties for the encryption scope. This is a required field if encryption scope 'source' attribute is set to 'Microsoft.KeyVault'.
      */
-    public readonly keyVaultProperties!: pulumi.Output<types.outputs.storage.EncryptionScopeKeyVaultPropertiesResponse | undefined>;
+    public readonly keyVaultProperties!: pulumi.Output<types.outputs.EncryptionScopeKeyVaultPropertiesResponse | undefined>;
     /**
      * Gets the last modification date and time of the encryption scope in UTC.
      */
@@ -125,7 +125,7 @@ export interface EncryptionScopeArgs {
     /**
      * The key vault properties for the encryption scope. This is a required field if encryption scope 'source' attribute is set to 'Microsoft.KeyVault'.
      */
-    keyVaultProperties?: pulumi.Input<types.inputs.storage.EncryptionScopeKeyVaultPropertiesArgs>;
+    keyVaultProperties?: pulumi.Input<types.inputs.EncryptionScopeKeyVaultPropertiesArgs>;
     /**
      * A boolean indicating whether or not the service applies a secondary layer of encryption with platform managed keys for data at rest.
      */

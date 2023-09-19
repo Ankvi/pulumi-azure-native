@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A ProactiveDetection configuration definition.
  */
@@ -54,7 +54,7 @@ export class ProactiveDetectionConfiguration extends pulumi.CustomResource {
     /**
      * Static definitions of the ProactiveDetection configuration rule (same values for all components).
      */
-    public readonly ruleDefinitions!: pulumi.Output<types.outputs.insights.v20180501preview.ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponseRuleDefinitions | undefined>;
+    public readonly ruleDefinitions!: pulumi.Output<types.outputs.ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponseRuleDefinitions | undefined>;
     /**
      * A flag that indicated whether notifications on this rule should be sent to subscription owners
      */
@@ -144,7 +144,7 @@ export interface ProactiveDetectionConfigurationArgs {
     /**
      * Static definitions of the ProactiveDetection configuration rule (same values for all components).
      */
-    ruleDefinitions?: pulumi.Input<types.inputs.insights.v20180501preview.ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRuleDefinitionsArgs>;
+    ruleDefinitions?: pulumi.Input<types.inputs.ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRuleDefinitionsArgs>;
     /**
      * A flag that indicated whether notifications on this rule should be sent to subscription owners
      */

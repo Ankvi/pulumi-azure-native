@@ -55,11 +55,11 @@ export class TestBaseAccount extends pulumi.CustomResource {
     /**
      * The SKU of the Test Base Account.
      */
-    public readonly sku!: pulumi.Output<types.outputs.testbase.TestBaseAccountSKUResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.TestBaseAccountSKUResponse>;
     /**
      * The system metadata relating to this resource
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.testbase.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The tags of the resource.
      */
@@ -135,7 +135,7 @@ export interface TestBaseAccountArgs {
     /**
      * The SKU of the Test Base Account.
      */
-    sku: pulumi.Input<types.inputs.testbase.TestBaseAccountSKUArgs>;
+    sku: pulumi.Input<types.inputs.TestBaseAccountSKUArgs>;
     /**
      * The tags of the resource.
      */

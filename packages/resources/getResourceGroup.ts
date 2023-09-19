@@ -43,7 +43,7 @@ export interface GetResourceGroupResult {
     /**
      * The resource group properties.
      */
-    readonly properties: types.outputs.resources.ResourceGroupPropertiesResponse;
+    readonly properties: types.outputs.ResourceGroupPropertiesResponse;
     /**
      * The tags attached to the resource group.
      */

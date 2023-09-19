@@ -23,7 +23,7 @@ utilities.lazyLoad(exports, ["SecurityContact"], () => require("./securityContac
 
 
 // Export enums:
-export * from "../types/enums/v20200101preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get details of the specified volume group
  */
@@ -36,7 +36,7 @@ export interface GetVolumeGroupResult {
     /**
      * Volume group details
      */
-    readonly groupMetaData?: types.outputs.netapp.v20211001.VolumeGroupMetaDataResponse;
+    readonly groupMetaData?: types.outputs.VolumeGroupMetaDataResponse;
     /**
      * Resource Id
      */
@@ -64,7 +64,7 @@ export interface GetVolumeGroupResult {
     /**
      * List of volumes from group
      */
-    readonly volumes?: types.outputs.netapp.v20211001.VolumeGroupVolumePropertiesResponse[];
+    readonly volumes?: types.outputs.VolumeGroupVolumePropertiesResponse[];
 }
 /**
  * Get details of the specified volume group

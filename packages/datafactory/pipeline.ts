@@ -35,7 +35,7 @@ export class Pipeline extends pulumi.CustomResource {
     /**
      * List of activities in pipeline.
      */
-    public readonly activities!: pulumi.Output<(types.outputs.datafactory.AppendVariableActivityResponse | types.outputs.datafactory.AzureDataExplorerCommandActivityResponse | types.outputs.datafactory.AzureFunctionActivityResponse | types.outputs.datafactory.AzureMLBatchExecutionActivityResponse | types.outputs.datafactory.AzureMLExecutePipelineActivityResponse | types.outputs.datafactory.AzureMLUpdateResourceActivityResponse | types.outputs.datafactory.ControlActivityResponse | types.outputs.datafactory.CopyActivityResponse | types.outputs.datafactory.CustomActivityResponse | types.outputs.datafactory.DataLakeAnalyticsUSQLActivityResponse | types.outputs.datafactory.DatabricksNotebookActivityResponse | types.outputs.datafactory.DatabricksSparkJarActivityResponse | types.outputs.datafactory.DatabricksSparkPythonActivityResponse | types.outputs.datafactory.DeleteActivityResponse | types.outputs.datafactory.ExecuteDataFlowActivityResponse | types.outputs.datafactory.ExecutePipelineActivityResponse | types.outputs.datafactory.ExecuteSSISPackageActivityResponse | types.outputs.datafactory.ExecuteWranglingDataflowActivityResponse | types.outputs.datafactory.ExecutionActivityResponse | types.outputs.datafactory.FailActivityResponse | types.outputs.datafactory.FilterActivityResponse | types.outputs.datafactory.ForEachActivityResponse | types.outputs.datafactory.GetMetadataActivityResponse | types.outputs.datafactory.HDInsightHiveActivityResponse | types.outputs.datafactory.HDInsightMapReduceActivityResponse | types.outputs.datafactory.HDInsightPigActivityResponse | types.outputs.datafactory.HDInsightSparkActivityResponse | types.outputs.datafactory.HDInsightStreamingActivityResponse | types.outputs.datafactory.IfConditionActivityResponse | types.outputs.datafactory.LookupActivityResponse | types.outputs.datafactory.ScriptActivityResponse | types.outputs.datafactory.SetVariableActivityResponse | types.outputs.datafactory.SqlServerStoredProcedureActivityResponse | types.outputs.datafactory.SwitchActivityResponse | types.outputs.datafactory.SynapseNotebookActivityResponse | types.outputs.datafactory.SynapseSparkJobDefinitionActivityResponse | types.outputs.datafactory.UntilActivityResponse | types.outputs.datafactory.ValidationActivityResponse | types.outputs.datafactory.WaitActivityResponse | types.outputs.datafactory.WebActivityResponse | types.outputs.datafactory.WebHookActivityResponse)[] | undefined>;
+    public readonly activities!: pulumi.Output<(types.outputs.AppendVariableActivityResponse | types.outputs.AzureDataExplorerCommandActivityResponse | types.outputs.AzureFunctionActivityResponse | types.outputs.AzureMLBatchExecutionActivityResponse | types.outputs.AzureMLExecutePipelineActivityResponse | types.outputs.AzureMLUpdateResourceActivityResponse | types.outputs.ControlActivityResponse | types.outputs.CopyActivityResponse | types.outputs.CustomActivityResponse | types.outputs.DataLakeAnalyticsUSQLActivityResponse | types.outputs.DatabricksNotebookActivityResponse | types.outputs.DatabricksSparkJarActivityResponse | types.outputs.DatabricksSparkPythonActivityResponse | types.outputs.DeleteActivityResponse | types.outputs.ExecuteDataFlowActivityResponse | types.outputs.ExecutePipelineActivityResponse | types.outputs.ExecuteSSISPackageActivityResponse | types.outputs.ExecuteWranglingDataflowActivityResponse | types.outputs.ExecutionActivityResponse | types.outputs.FailActivityResponse | types.outputs.FilterActivityResponse | types.outputs.ForEachActivityResponse | types.outputs.GetMetadataActivityResponse | types.outputs.HDInsightHiveActivityResponse | types.outputs.HDInsightMapReduceActivityResponse | types.outputs.HDInsightPigActivityResponse | types.outputs.HDInsightSparkActivityResponse | types.outputs.HDInsightStreamingActivityResponse | types.outputs.IfConditionActivityResponse | types.outputs.LookupActivityResponse | types.outputs.ScriptActivityResponse | types.outputs.SetVariableActivityResponse | types.outputs.SqlServerStoredProcedureActivityResponse | types.outputs.SwitchActivityResponse | types.outputs.SynapseNotebookActivityResponse | types.outputs.SynapseSparkJobDefinitionActivityResponse | types.outputs.UntilActivityResponse | types.outputs.ValidationActivityResponse | types.outputs.WaitActivityResponse | types.outputs.WebActivityResponse | types.outputs.WebHookActivityResponse)[] | undefined>;
     /**
      * List of tags that can be used for describing the Pipeline.
      */
@@ -55,7 +55,7 @@ export class Pipeline extends pulumi.CustomResource {
     /**
      * The folder that this Pipeline is in. If not specified, Pipeline will appear at the root level.
      */
-    public readonly folder!: pulumi.Output<types.outputs.datafactory.PipelineResponseFolder | undefined>;
+    public readonly folder!: pulumi.Output<types.outputs.PipelineResponseFolder | undefined>;
     /**
      * The resource name.
      */
@@ -63,11 +63,11 @@ export class Pipeline extends pulumi.CustomResource {
     /**
      * List of parameters for pipeline.
      */
-    public readonly parameters!: pulumi.Output<{[key: string]: types.outputs.datafactory.ParameterSpecificationResponse} | undefined>;
+    public readonly parameters!: pulumi.Output<{[key: string]: types.outputs.ParameterSpecificationResponse} | undefined>;
     /**
      * Pipeline Policy.
      */
-    public readonly policy!: pulumi.Output<types.outputs.datafactory.PipelinePolicyResponse | undefined>;
+    public readonly policy!: pulumi.Output<types.outputs.PipelinePolicyResponse | undefined>;
     /**
      * Dimensions emitted by Pipeline.
      */
@@ -79,7 +79,7 @@ export class Pipeline extends pulumi.CustomResource {
     /**
      * List of variables for pipeline.
      */
-    public readonly variables!: pulumi.Output<{[key: string]: types.outputs.datafactory.VariableSpecificationResponse} | undefined>;
+    public readonly variables!: pulumi.Output<{[key: string]: types.outputs.VariableSpecificationResponse} | undefined>;
 
     /**
      * Create a Pipeline resource with the given unique name, arguments, and options.
@@ -141,7 +141,7 @@ export interface PipelineArgs {
     /**
      * List of activities in pipeline.
      */
-    activities?: pulumi.Input<pulumi.Input<types.inputs.datafactory.AppendVariableActivityArgs | types.inputs.datafactory.AzureDataExplorerCommandActivityArgs | types.inputs.datafactory.AzureFunctionActivityArgs | types.inputs.datafactory.AzureMLBatchExecutionActivityArgs | types.inputs.datafactory.AzureMLExecutePipelineActivityArgs | types.inputs.datafactory.AzureMLUpdateResourceActivityArgs | types.inputs.datafactory.ControlActivityArgs | types.inputs.datafactory.CopyActivityArgs | types.inputs.datafactory.CustomActivityArgs | types.inputs.datafactory.DataLakeAnalyticsUSQLActivityArgs | types.inputs.datafactory.DatabricksNotebookActivityArgs | types.inputs.datafactory.DatabricksSparkJarActivityArgs | types.inputs.datafactory.DatabricksSparkPythonActivityArgs | types.inputs.datafactory.DeleteActivityArgs | types.inputs.datafactory.ExecuteDataFlowActivityArgs | types.inputs.datafactory.ExecutePipelineActivityArgs | types.inputs.datafactory.ExecuteSSISPackageActivityArgs | types.inputs.datafactory.ExecuteWranglingDataflowActivityArgs | types.inputs.datafactory.ExecutionActivityArgs | types.inputs.datafactory.FailActivityArgs | types.inputs.datafactory.FilterActivityArgs | types.inputs.datafactory.ForEachActivityArgs | types.inputs.datafactory.GetMetadataActivityArgs | types.inputs.datafactory.HDInsightHiveActivityArgs | types.inputs.datafactory.HDInsightMapReduceActivityArgs | types.inputs.datafactory.HDInsightPigActivityArgs | types.inputs.datafactory.HDInsightSparkActivityArgs | types.inputs.datafactory.HDInsightStreamingActivityArgs | types.inputs.datafactory.IfConditionActivityArgs | types.inputs.datafactory.LookupActivityArgs | types.inputs.datafactory.ScriptActivityArgs | types.inputs.datafactory.SetVariableActivityArgs | types.inputs.datafactory.SqlServerStoredProcedureActivityArgs | types.inputs.datafactory.SwitchActivityArgs | types.inputs.datafactory.SynapseNotebookActivityArgs | types.inputs.datafactory.SynapseSparkJobDefinitionActivityArgs | types.inputs.datafactory.UntilActivityArgs | types.inputs.datafactory.ValidationActivityArgs | types.inputs.datafactory.WaitActivityArgs | types.inputs.datafactory.WebActivityArgs | types.inputs.datafactory.WebHookActivityArgs>[]>;
+    activities?: pulumi.Input<pulumi.Input<types.inputs.AppendVariableActivityArgs | types.inputs.AzureDataExplorerCommandActivityArgs | types.inputs.AzureFunctionActivityArgs | types.inputs.AzureMLBatchExecutionActivityArgs | types.inputs.AzureMLExecutePipelineActivityArgs | types.inputs.AzureMLUpdateResourceActivityArgs | types.inputs.ControlActivityArgs | types.inputs.CopyActivityArgs | types.inputs.CustomActivityArgs | types.inputs.DataLakeAnalyticsUSQLActivityArgs | types.inputs.DatabricksNotebookActivityArgs | types.inputs.DatabricksSparkJarActivityArgs | types.inputs.DatabricksSparkPythonActivityArgs | types.inputs.DeleteActivityArgs | types.inputs.ExecuteDataFlowActivityArgs | types.inputs.ExecutePipelineActivityArgs | types.inputs.ExecuteSSISPackageActivityArgs | types.inputs.ExecuteWranglingDataflowActivityArgs | types.inputs.ExecutionActivityArgs | types.inputs.FailActivityArgs | types.inputs.FilterActivityArgs | types.inputs.ForEachActivityArgs | types.inputs.GetMetadataActivityArgs | types.inputs.HDInsightHiveActivityArgs | types.inputs.HDInsightMapReduceActivityArgs | types.inputs.HDInsightPigActivityArgs | types.inputs.HDInsightSparkActivityArgs | types.inputs.HDInsightStreamingActivityArgs | types.inputs.IfConditionActivityArgs | types.inputs.LookupActivityArgs | types.inputs.ScriptActivityArgs | types.inputs.SetVariableActivityArgs | types.inputs.SqlServerStoredProcedureActivityArgs | types.inputs.SwitchActivityArgs | types.inputs.SynapseNotebookActivityArgs | types.inputs.SynapseSparkJobDefinitionActivityArgs | types.inputs.UntilActivityArgs | types.inputs.ValidationActivityArgs | types.inputs.WaitActivityArgs | types.inputs.WebActivityArgs | types.inputs.WebHookActivityArgs>[]>;
     /**
      * List of tags that can be used for describing the Pipeline.
      */
@@ -161,11 +161,11 @@ export interface PipelineArgs {
     /**
      * The folder that this Pipeline is in. If not specified, Pipeline will appear at the root level.
      */
-    folder?: pulumi.Input<types.inputs.datafactory.PipelineFolderArgs>;
+    folder?: pulumi.Input<types.inputs.PipelineFolderArgs>;
     /**
      * List of parameters for pipeline.
      */
-    parameters?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.datafactory.ParameterSpecificationArgs>}>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.ParameterSpecificationArgs>}>;
     /**
      * The pipeline name.
      */
@@ -173,7 +173,7 @@ export interface PipelineArgs {
     /**
      * Pipeline Policy.
      */
-    policy?: pulumi.Input<types.inputs.datafactory.PipelinePolicyArgs>;
+    policy?: pulumi.Input<types.inputs.PipelinePolicyArgs>;
     /**
      * The resource group name.
      */
@@ -185,5 +185,5 @@ export interface PipelineArgs {
     /**
      * List of variables for pipeline.
      */
-    variables?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.datafactory.VariableSpecificationArgs>}>;
+    variables?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.VariableSpecificationArgs>}>;
 }

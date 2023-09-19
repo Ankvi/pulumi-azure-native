@@ -40,11 +40,11 @@ export interface GetAppServiceCertificateOrderResult {
     /**
      * State of the Key Vault secret.
      */
-    readonly certificates?: {[key: string]: types.outputs.certificateregistration.AppServiceCertificateResponse};
+    readonly certificates?: {[key: string]: types.outputs.AppServiceCertificateResponse};
     /**
      * Contact info
      */
-    readonly contact: types.outputs.certificateregistration.CertificateOrderContactResponse;
+    readonly contact: types.outputs.CertificateOrderContactResponse;
     /**
      * Last CSR that was created for this order.
      */
@@ -68,7 +68,7 @@ export interface GetAppServiceCertificateOrderResult {
     /**
      * Intermediate certificate.
      */
-    readonly intermediate: types.outputs.certificateregistration.CertificateDetailsResponse;
+    readonly intermediate: types.outputs.CertificateDetailsResponse;
     /**
      * <code>true</code> if private key is external; otherwise, <code>false</code>.
      */
@@ -108,7 +108,7 @@ export interface GetAppServiceCertificateOrderResult {
     /**
      * Root certificate.
      */
-    readonly root: types.outputs.certificateregistration.CertificateDetailsResponse;
+    readonly root: types.outputs.CertificateDetailsResponse;
     /**
      * Current serial number of the certificate.
      */
@@ -116,7 +116,7 @@ export interface GetAppServiceCertificateOrderResult {
     /**
      * Signed certificate.
      */
-    readonly signedCertificate: types.outputs.certificateregistration.CertificateDetailsResponse;
+    readonly signedCertificate: types.outputs.CertificateDetailsResponse;
     /**
      * Current order status.
      */

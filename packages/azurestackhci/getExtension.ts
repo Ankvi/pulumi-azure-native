@@ -70,7 +70,7 @@ export interface GetExtensionResult {
     /**
      * State of Arc Extension in each of the nodes.
      */
-    readonly perNodeExtensionDetails: types.outputs.azurestackhci.PerNodeExtensionStateResponse[];
+    readonly perNodeExtensionDetails: types.outputs.PerNodeExtensionStateResponse[];
     /**
      * Protected settings (may contain secrets).
      */
@@ -90,7 +90,7 @@ export interface GetExtensionResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.azurestackhci.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

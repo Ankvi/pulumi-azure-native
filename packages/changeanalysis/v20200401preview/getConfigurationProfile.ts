@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A profile object that contains change analysis configuration, such as notification settings, for this subscription
  */
@@ -30,7 +30,7 @@ export interface GetConfigurationProfileResult {
     /**
      * The identity block returned by ARM resource that supports managed identity.
      */
-    readonly identity?: types.outputs.changeanalysis.v20200401preview.ResourceIdentityResponse;
+    readonly identity?: types.outputs.ResourceIdentityResponse;
     /**
      * The location where the resource is to be deployed.
      */
@@ -42,11 +42,11 @@ export interface GetConfigurationProfileResult {
     /**
      * The properties of a configuration profile.
      */
-    readonly properties: types.outputs.changeanalysis.v20200401preview.ConfigurationProfileResourcePropertiesResponse;
+    readonly properties: types.outputs.ConfigurationProfileResourcePropertiesResponse;
     /**
      * Top level metadata https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-contracts.md#system-metadata-for-all-azure-resources
      */
-    readonly systemData?: types.outputs.changeanalysis.v20200401preview.SystemDataResponse;
+    readonly systemData?: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

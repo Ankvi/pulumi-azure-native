@@ -33,7 +33,7 @@ utilities.lazyLoad(exports, ["MonitoredResource"], () => require("./monitoredRes
 
 
 // Export enums:
-export * from "../types/enums/v20230707preview";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

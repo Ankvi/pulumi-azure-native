@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Class representing a Kusto cluster.
  */
@@ -34,7 +34,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * The cluster's accepted audiences.
      */
-    public readonly acceptedAudiences!: pulumi.Output<types.outputs.kusto.v20220707.AcceptedAudiencesResponse[] | undefined>;
+    public readonly acceptedAudiences!: pulumi.Output<types.outputs.AcceptedAudiencesResponse[] | undefined>;
     /**
      * List of allowed FQDNs(Fully Qualified Domain Name) for egress from Cluster.
      */
@@ -78,15 +78,15 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * The identity of the cluster, if configured.
      */
-    public readonly identity!: pulumi.Output<types.outputs.kusto.v20220707.IdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityResponse | undefined>;
     /**
      * KeyVault properties for the cluster encryption.
      */
-    public readonly keyVaultProperties!: pulumi.Output<types.outputs.kusto.v20220707.KeyVaultPropertiesResponse | undefined>;
+    public readonly keyVaultProperties!: pulumi.Output<types.outputs.KeyVaultPropertiesResponse | undefined>;
     /**
      * List of the cluster's language extensions.
      */
-    public /*out*/ readonly languageExtensions!: pulumi.Output<types.outputs.kusto.v20220707.LanguageExtensionsListResponse>;
+    public /*out*/ readonly languageExtensions!: pulumi.Output<types.outputs.LanguageExtensionsListResponse>;
     /**
      * The geo-location where the resource lives
      */
@@ -98,11 +98,11 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * Optimized auto scale definition.
      */
-    public readonly optimizedAutoscale!: pulumi.Output<types.outputs.kusto.v20220707.OptimizedAutoscaleResponse | undefined>;
+    public readonly optimizedAutoscale!: pulumi.Output<types.outputs.OptimizedAutoscaleResponse | undefined>;
     /**
      * A list of private endpoint connections.
      */
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.kusto.v20220707.PrivateEndpointConnectionResponse[]>;
+    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[]>;
     /**
      * The provisioned state of the resource.
      */
@@ -122,7 +122,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * The SKU of the cluster.
      */
-    public readonly sku!: pulumi.Output<types.outputs.kusto.v20220707.AzureSkuResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.AzureSkuResponse>;
     /**
      * The state of the resource.
      */
@@ -134,7 +134,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.kusto.v20220707.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -142,7 +142,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * The cluster's external tenants.
      */
-    public readonly trustedExternalTenants!: pulumi.Output<types.outputs.kusto.v20220707.TrustedExternalTenantResponse[] | undefined>;
+    public readonly trustedExternalTenants!: pulumi.Output<types.outputs.TrustedExternalTenantResponse[] | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -154,7 +154,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * Virtual network definition.
      */
-    public readonly virtualNetworkConfiguration!: pulumi.Output<types.outputs.kusto.v20220707.VirtualNetworkConfigurationResponse | undefined>;
+    public readonly virtualNetworkConfiguration!: pulumi.Output<types.outputs.VirtualNetworkConfigurationResponse | undefined>;
     /**
      * The availability zones of the cluster.
      */
@@ -260,7 +260,7 @@ export interface ClusterArgs {
     /**
      * The cluster's accepted audiences.
      */
-    acceptedAudiences?: pulumi.Input<pulumi.Input<types.inputs.kusto.v20220707.AcceptedAudiencesArgs>[]>;
+    acceptedAudiences?: pulumi.Input<pulumi.Input<types.inputs.AcceptedAudiencesArgs>[]>;
     /**
      * List of allowed FQDNs(Fully Qualified Domain Name) for egress from Cluster.
      */
@@ -296,15 +296,15 @@ export interface ClusterArgs {
     /**
      * The engine type
      */
-    engineType?: pulumi.Input<string | types.enums.v20220707.EngineType>;
+    engineType?: pulumi.Input<string | types.enums.EngineType>;
     /**
      * The identity of the cluster, if configured.
      */
-    identity?: pulumi.Input<types.inputs.kusto.v20220707.IdentityArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityArgs>;
     /**
      * KeyVault properties for the cluster encryption.
      */
-    keyVaultProperties?: pulumi.Input<types.inputs.kusto.v20220707.KeyVaultPropertiesArgs>;
+    keyVaultProperties?: pulumi.Input<types.inputs.KeyVaultPropertiesArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -312,15 +312,15 @@ export interface ClusterArgs {
     /**
      * Optimized auto scale definition.
      */
-    optimizedAutoscale?: pulumi.Input<types.inputs.kusto.v20220707.OptimizedAutoscaleArgs>;
+    optimizedAutoscale?: pulumi.Input<types.inputs.OptimizedAutoscaleArgs>;
     /**
      * Indicates what public IP type to create - IPv4 (default), or DualStack (both IPv4 and IPv6)
      */
-    publicIPType?: pulumi.Input<string | types.enums.v20220707.PublicIPType>;
+    publicIPType?: pulumi.Input<string | types.enums.PublicIPType>;
     /**
      * Public network access to the cluster is enabled by default. When disabled, only private endpoint connection to the cluster is allowed
      */
-    publicNetworkAccess?: pulumi.Input<string | types.enums.v20220707.PublicNetworkAccess>;
+    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess>;
     /**
      * The name of the resource group containing the Kusto cluster.
      */
@@ -328,11 +328,11 @@ export interface ClusterArgs {
     /**
      * Whether or not to restrict outbound network access.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'
      */
-    restrictOutboundNetworkAccess?: pulumi.Input<string | types.enums.v20220707.ClusterNetworkAccessFlag>;
+    restrictOutboundNetworkAccess?: pulumi.Input<string | types.enums.ClusterNetworkAccessFlag>;
     /**
      * The SKU of the cluster.
      */
-    sku: pulumi.Input<types.inputs.kusto.v20220707.AzureSkuArgs>;
+    sku: pulumi.Input<types.inputs.AzureSkuArgs>;
     /**
      * Resource tags.
      */
@@ -340,7 +340,7 @@ export interface ClusterArgs {
     /**
      * The cluster's external tenants.
      */
-    trustedExternalTenants?: pulumi.Input<pulumi.Input<types.inputs.kusto.v20220707.TrustedExternalTenantArgs>[]>;
+    trustedExternalTenants?: pulumi.Input<pulumi.Input<types.inputs.TrustedExternalTenantArgs>[]>;
     /**
      * Virtual Cluster graduation properties
      */
@@ -348,7 +348,7 @@ export interface ClusterArgs {
     /**
      * Virtual network definition.
      */
-    virtualNetworkConfiguration?: pulumi.Input<types.inputs.kusto.v20220707.VirtualNetworkConfigurationArgs>;
+    virtualNetworkConfiguration?: pulumi.Input<types.inputs.VirtualNetworkConfigurationArgs>;
     /**
      * The availability zones of the cluster.
      */

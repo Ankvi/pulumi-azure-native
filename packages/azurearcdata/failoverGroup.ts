@@ -39,11 +39,11 @@ export class FailoverGroup extends pulumi.CustomResource {
     /**
      * null
      */
-    public readonly properties!: pulumi.Output<types.outputs.azurearcdata.FailoverGroupPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.FailoverGroupPropertiesResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.azurearcdata.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -70,7 +70,7 @@ export class FailoverGroup extends pulumi.CustomResource {
                 throw new Error("Missing required property 'sqlManagedInstanceName'");
             }
             resourceInputs["failoverGroupName"] = args ? args.failoverGroupName : undefined;
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.azurearcdata.failoverGroupPropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.failoverGroupPropertiesArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["sqlManagedInstanceName"] = args ? args.sqlManagedInstanceName : undefined;
             resourceInputs["name"] = undefined /*out*/;
@@ -100,7 +100,7 @@ export interface FailoverGroupArgs {
     /**
      * null
      */
-    properties: pulumi.Input<types.inputs.azurearcdata.FailoverGroupPropertiesArgs>;
+    properties: pulumi.Input<types.inputs.FailoverGroupPropertiesArgs>;
     /**
      * The name of the Azure resource group
      */

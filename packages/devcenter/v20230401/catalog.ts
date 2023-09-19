@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents a catalog.
  */
@@ -34,11 +34,11 @@ export class Catalog extends pulumi.CustomResource {
     /**
      * Properties for an Azure DevOps catalog type.
      */
-    public readonly adoGit!: pulumi.Output<types.outputs.devcenter.v20230401.GitCatalogResponse | undefined>;
+    public readonly adoGit!: pulumi.Output<types.outputs.GitCatalogResponse | undefined>;
     /**
      * Properties for a GitHub catalog type.
      */
-    public readonly gitHub!: pulumi.Output<types.outputs.devcenter.v20230401.GitCatalogResponse | undefined>;
+    public readonly gitHub!: pulumi.Output<types.outputs.GitCatalogResponse | undefined>;
     /**
      * When the catalog was last synced.
      */
@@ -58,7 +58,7 @@ export class Catalog extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.devcenter.v20230401.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -116,7 +116,7 @@ export interface CatalogArgs {
     /**
      * Properties for an Azure DevOps catalog type.
      */
-    adoGit?: pulumi.Input<types.inputs.devcenter.v20230401.GitCatalogArgs>;
+    adoGit?: pulumi.Input<types.inputs.GitCatalogArgs>;
     /**
      * The name of the Catalog.
      */
@@ -128,7 +128,7 @@ export interface CatalogArgs {
     /**
      * Properties for a GitHub catalog type.
      */
-    gitHub?: pulumi.Input<types.inputs.devcenter.v20230401.GitCatalogArgs>;
+    gitHub?: pulumi.Input<types.inputs.GitCatalogArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

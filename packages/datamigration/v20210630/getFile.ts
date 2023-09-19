@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The files resource is a nested, proxy-only resource representing a file stored under the project resource. This method retrieves information about a file.
  */
@@ -53,11 +53,11 @@ export interface GetFileResult {
     /**
      * Custom file properties
      */
-    readonly properties: types.outputs.datamigration.v20210630.ProjectFilePropertiesResponse;
+    readonly properties: types.outputs.ProjectFilePropertiesResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.datamigration.v20210630.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource type.
      */

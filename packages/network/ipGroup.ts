@@ -39,11 +39,11 @@ export class IpGroup extends pulumi.CustomResource {
     /**
      * List of references to Firewall Policies resources that this IpGroups is associated with.
      */
-    public /*out*/ readonly firewallPolicies!: pulumi.Output<types.outputs.network.SubResourceResponse[]>;
+    public /*out*/ readonly firewallPolicies!: pulumi.Output<types.outputs.SubResourceResponse[]>;
     /**
      * List of references to Firewall resources that this IpGroups is associated with.
      */
-    public /*out*/ readonly firewalls!: pulumi.Output<types.outputs.network.SubResourceResponse[]>;
+    public /*out*/ readonly firewalls!: pulumi.Output<types.outputs.SubResourceResponse[]>;
     /**
      * IpAddresses/IpAddressPrefixes in the IpGroups resource.
      */

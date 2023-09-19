@@ -23,7 +23,7 @@ utilities.lazyLoad(exports, ["JobCollection"], () => require("./jobCollection"))
 
 
 // Export enums:
-export * from "../types/enums/v20160301";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

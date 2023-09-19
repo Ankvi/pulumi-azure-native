@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The Endpoint resource, which contains information about file sources and targets.
  */
@@ -38,11 +38,11 @@ export class Endpoint extends pulumi.CustomResource {
     /**
      * The resource specific properties for the Storage Mover resource.
      */
-    public readonly properties!: pulumi.Output<types.outputs.storagemover.v20230301.AzureStorageBlobContainerEndpointPropertiesResponse | types.outputs.storagemover.v20230301.NfsMountEndpointPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.AzureStorageBlobContainerEndpointPropertiesResponse | types.outputs.NfsMountEndpointPropertiesResponse>;
     /**
      * Resource system metadata.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.storagemover.v20230301.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -99,7 +99,7 @@ export interface EndpointArgs {
     /**
      * The resource specific properties for the Storage Mover resource.
      */
-    properties: pulumi.Input<types.inputs.storagemover.v20230301.AzureStorageBlobContainerEndpointPropertiesArgs | types.inputs.storagemover.v20230301.NfsMountEndpointPropertiesArgs>;
+    properties: pulumi.Input<types.inputs.AzureStorageBlobContainerEndpointPropertiesArgs | types.inputs.NfsMountEndpointPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

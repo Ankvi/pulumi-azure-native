@@ -40,7 +40,7 @@ export interface ListDeploymentInfoResult {
     /**
      * Marketplace SaaS Info of the resource.
      */
-    readonly marketplaceSaasInfo: types.outputs.elastic.MarketplaceSaaSInfoResponse;
+    readonly marketplaceSaasInfo: types.outputs.MarketplaceSaaSInfoResponse;
     /**
      * RAM capacity of the elasticsearch in Elastic cloud deployment.
      */

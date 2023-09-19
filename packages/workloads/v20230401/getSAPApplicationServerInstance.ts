@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the SAP Application Server Instance corresponding to the Virtual Instance for SAP solutions resource.
  */
@@ -36,7 +36,7 @@ export interface GetSAPApplicationServerInstanceResult {
     /**
      * Defines the Application Instance errors.
      */
-    readonly errors: types.outputs.workloads.v20230401.SAPVirtualInstanceErrorResponse;
+    readonly errors: types.outputs.SAPVirtualInstanceErrorResponse;
     /**
      * Application server instance gateway Port.
      */
@@ -80,7 +80,7 @@ export interface GetSAPApplicationServerInstanceResult {
     /**
      * The Load Balancer details such as LoadBalancer ID attached to Application Server Virtual Machines
      */
-    readonly loadBalancerDetails: types.outputs.workloads.v20230401.LoadBalancerDetailsResponse;
+    readonly loadBalancerDetails: types.outputs.LoadBalancerDetailsResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -104,7 +104,7 @@ export interface GetSAPApplicationServerInstanceResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.workloads.v20230401.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */
@@ -116,7 +116,7 @@ export interface GetSAPApplicationServerInstanceResult {
     /**
      * The list of virtual machines.
      */
-    readonly vmDetails: types.outputs.workloads.v20230401.ApplicationServerVmDetailsResponse[];
+    readonly vmDetails: types.outputs.ApplicationServerVmDetailsResponse[];
 }
 /**
  * Gets the SAP Application Server Instance corresponding to the Virtual Instance for SAP solutions resource.

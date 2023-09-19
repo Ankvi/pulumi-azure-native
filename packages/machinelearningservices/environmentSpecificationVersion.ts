@@ -39,11 +39,11 @@ export class EnvironmentSpecificationVersion extends pulumi.CustomResource {
     /**
      * [Required] Additional attributes of the entity.
      */
-    public readonly properties!: pulumi.Output<types.outputs.machinelearningservices.EnvironmentSpecificationVersionResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.EnvironmentSpecificationVersionResponse>;
     /**
      * System data associated with resource provider
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.machinelearningservices.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -103,7 +103,7 @@ export interface EnvironmentSpecificationVersionArgs {
     /**
      * [Required] Additional attributes of the entity.
      */
-    properties: pulumi.Input<types.inputs.machinelearningservices.EnvironmentSpecificationVersionArgs>;
+    properties: pulumi.Input<types.inputs.EnvironmentSpecificationVersionArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

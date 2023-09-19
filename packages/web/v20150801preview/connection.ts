@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * API Connection
  */
@@ -34,7 +34,7 @@ export class Connection extends pulumi.CustomResource {
     /**
      * expanded connection provider name
      */
-    public readonly api!: pulumi.Output<types.outputs.web.v20150801preview.ExpandedParentApiEntityResponse | undefined>;
+    public readonly api!: pulumi.Output<types.outputs.ExpandedParentApiEntityResponse | undefined>;
     /**
      * Timestamp of last connection change.
      */
@@ -46,7 +46,7 @@ export class Connection extends pulumi.CustomResource {
     /**
      * Custom login setting values.
      */
-    public readonly customParameterValues!: pulumi.Output<{[key: string]: types.outputs.web.v20150801preview.ParameterCustomLoginSettingValuesResponse} | undefined>;
+    public readonly customParameterValues!: pulumi.Output<{[key: string]: types.outputs.ParameterCustomLoginSettingValuesResponse} | undefined>;
     /**
      * display name
      */
@@ -83,7 +83,7 @@ export class Connection extends pulumi.CustomResource {
     /**
      * Status of the connection
      */
-    public readonly statuses!: pulumi.Output<types.outputs.web.v20150801preview.ConnectionStatusResponse[] | undefined>;
+    public readonly statuses!: pulumi.Output<types.outputs.ConnectionStatusResponse[] | undefined>;
     /**
      * Resource tags
      */
@@ -161,7 +161,7 @@ export interface ConnectionArgs {
     /**
      * expanded connection provider name
      */
-    api?: pulumi.Input<types.inputs.web.v20150801preview.ExpandedParentApiEntityArgs>;
+    api?: pulumi.Input<types.inputs.ExpandedParentApiEntityArgs>;
     /**
      * Timestamp of last connection change.
      */
@@ -177,7 +177,7 @@ export interface ConnectionArgs {
     /**
      * Custom login setting values.
      */
-    customParameterValues?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.web.v20150801preview.ParameterCustomLoginSettingValuesArgs>}>;
+    customParameterValues?: pulumi.Input<{[key: string]: pulumi.Input<types.inputs.ParameterCustomLoginSettingValuesArgs>}>;
     /**
      * display name
      */
@@ -222,7 +222,7 @@ export interface ConnectionArgs {
     /**
      * Status of the connection
      */
-    statuses?: pulumi.Input<pulumi.Input<types.inputs.web.v20150801preview.ConnectionStatusArgs>[]>;
+    statuses?: pulumi.Input<pulumi.Input<types.inputs.ConnectionStatusArgs>[]>;
     /**
      * Resource tags
      */

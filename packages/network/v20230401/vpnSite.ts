@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * VpnSite Resource.
  */
@@ -34,15 +34,15 @@ export class VpnSite extends pulumi.CustomResource {
     /**
      * The AddressSpace that contains an array of IP address ranges.
      */
-    public readonly addressSpace!: pulumi.Output<types.outputs.network.v20230401.AddressSpaceResponse | undefined>;
+    public readonly addressSpace!: pulumi.Output<types.outputs.AddressSpaceResponse | undefined>;
     /**
      * The set of bgp properties.
      */
-    public readonly bgpProperties!: pulumi.Output<types.outputs.network.v20230401.BgpSettingsResponse | undefined>;
+    public readonly bgpProperties!: pulumi.Output<types.outputs.BgpSettingsResponse | undefined>;
     /**
      * The device properties.
      */
-    public readonly deviceProperties!: pulumi.Output<types.outputs.network.v20230401.DevicePropertiesResponse | undefined>;
+    public readonly deviceProperties!: pulumi.Output<types.outputs.DevicePropertiesResponse | undefined>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -66,7 +66,7 @@ export class VpnSite extends pulumi.CustomResource {
     /**
      * Office365 Policy.
      */
-    public readonly o365Policy!: pulumi.Output<types.outputs.network.v20230401.O365PolicyPropertiesResponse | undefined>;
+    public readonly o365Policy!: pulumi.Output<types.outputs.O365PolicyPropertiesResponse | undefined>;
     /**
      * The provisioning state of the VPN site resource.
      */
@@ -86,11 +86,11 @@ export class VpnSite extends pulumi.CustomResource {
     /**
      * The VirtualWAN to which the vpnSite belongs.
      */
-    public readonly virtualWan!: pulumi.Output<types.outputs.network.v20230401.SubResourceResponse | undefined>;
+    public readonly virtualWan!: pulumi.Output<types.outputs.SubResourceResponse | undefined>;
     /**
      * List of all vpn site links.
      */
-    public readonly vpnSiteLinks!: pulumi.Output<types.outputs.network.v20230401.VpnSiteLinkResponse[] | undefined>;
+    public readonly vpnSiteLinks!: pulumi.Output<types.outputs.VpnSiteLinkResponse[] | undefined>;
 
     /**
      * Create a VpnSite resource with the given unique name, arguments, and options.
@@ -155,15 +155,15 @@ export interface VpnSiteArgs {
     /**
      * The AddressSpace that contains an array of IP address ranges.
      */
-    addressSpace?: pulumi.Input<types.inputs.network.v20230401.AddressSpaceArgs>;
+    addressSpace?: pulumi.Input<types.inputs.AddressSpaceArgs>;
     /**
      * The set of bgp properties.
      */
-    bgpProperties?: pulumi.Input<types.inputs.network.v20230401.BgpSettingsArgs>;
+    bgpProperties?: pulumi.Input<types.inputs.BgpSettingsArgs>;
     /**
      * The device properties.
      */
-    deviceProperties?: pulumi.Input<types.inputs.network.v20230401.DevicePropertiesArgs>;
+    deviceProperties?: pulumi.Input<types.inputs.DevicePropertiesArgs>;
     /**
      * Resource ID.
      */
@@ -183,7 +183,7 @@ export interface VpnSiteArgs {
     /**
      * Office365 Policy.
      */
-    o365Policy?: pulumi.Input<types.inputs.network.v20230401.O365PolicyPropertiesArgs>;
+    o365Policy?: pulumi.Input<types.inputs.O365PolicyPropertiesArgs>;
     /**
      * The resource group name of the VpnSite.
      */
@@ -199,11 +199,11 @@ export interface VpnSiteArgs {
     /**
      * The VirtualWAN to which the vpnSite belongs.
      */
-    virtualWan?: pulumi.Input<types.inputs.network.v20230401.SubResourceArgs>;
+    virtualWan?: pulumi.Input<types.inputs.SubResourceArgs>;
     /**
      * List of all vpn site links.
      */
-    vpnSiteLinks?: pulumi.Input<pulumi.Input<types.inputs.network.v20230401.VpnSiteLinkArgs>[]>;
+    vpnSiteLinks?: pulumi.Input<pulumi.Input<types.inputs.VpnSiteLinkArgs>[]>;
     /**
      * The name of the VpnSite being created or updated.
      */

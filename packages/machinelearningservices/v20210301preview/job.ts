@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Azure Resource Manager resource envelope.
  */
@@ -38,11 +38,11 @@ export class Job extends pulumi.CustomResource {
     /**
      * [Required] Additional attributes of the entity.
      */
-    public readonly properties!: pulumi.Output<types.outputs.machinelearningservices.v20210301preview.CommandJobResponse | types.outputs.machinelearningservices.v20210301preview.SweepJobResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.CommandJobResponse | types.outputs.SweepJobResponse>;
     /**
      * System data associated with resource provider
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.machinelearningservices.v20210301preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -99,7 +99,7 @@ export interface JobArgs {
     /**
      * [Required] Additional attributes of the entity.
      */
-    properties: pulumi.Input<types.inputs.machinelearningservices.v20210301preview.CommandJobArgs | types.inputs.machinelearningservices.v20210301preview.SweepJobArgs>;
+    properties: pulumi.Input<types.inputs.CommandJobArgs | types.inputs.SweepJobArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

@@ -61,11 +61,11 @@ export interface GetKubernetesRoleResult {
     /**
      * Kubernetes cluster configuration
      */
-    readonly kubernetesClusterInfo: types.outputs.databoxedge.KubernetesClusterInfoResponse;
+    readonly kubernetesClusterInfo: types.outputs.KubernetesClusterInfoResponse;
     /**
      * Kubernetes role resources
      */
-    readonly kubernetesRoleResources: types.outputs.databoxedge.KubernetesRoleResourcesResponse;
+    readonly kubernetesRoleResources: types.outputs.KubernetesRoleResourcesResponse;
     /**
      * The object name.
      */
@@ -81,7 +81,7 @@ export interface GetKubernetesRoleResult {
     /**
      * Metadata pertaining to creation and last modification of Role
      */
-    readonly systemData: types.outputs.databoxedge.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The hierarchical type of the object.
      */

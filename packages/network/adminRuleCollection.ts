@@ -35,7 +35,7 @@ export class AdminRuleCollection extends pulumi.CustomResource {
     /**
      * Groups for configuration
      */
-    public readonly appliesToGroups!: pulumi.Output<types.outputs.network.NetworkManagerSecurityGroupItemResponse[]>;
+    public readonly appliesToGroups!: pulumi.Output<types.outputs.NetworkManagerSecurityGroupItemResponse[]>;
     /**
      * A description of the admin rule collection.
      */
@@ -59,7 +59,7 @@ export class AdminRuleCollection extends pulumi.CustomResource {
     /**
      * The system metadata related to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.network.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource type.
      */
@@ -124,7 +124,7 @@ export interface AdminRuleCollectionArgs {
     /**
      * Groups for configuration
      */
-    appliesToGroups: pulumi.Input<pulumi.Input<types.inputs.network.NetworkManagerSecurityGroupItemArgs>[]>;
+    appliesToGroups: pulumi.Input<pulumi.Input<types.inputs.NetworkManagerSecurityGroupItemArgs>[]>;
     /**
      * The name of the network manager Security Configuration.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The HDInsight cluster.
  */
@@ -38,7 +38,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * The identity of the cluster, if configured.
      */
-    public readonly identity!: pulumi.Output<types.outputs.hdinsight.v20210601.ClusterIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ClusterIdentityResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -50,11 +50,11 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * The properties of the cluster.
      */
-    public readonly properties!: pulumi.Output<types.outputs.hdinsight.v20210601.ClusterGetPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.ClusterGetPropertiesResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.hdinsight.v20210601.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -85,7 +85,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["clusterName"] = args ? args.clusterName : undefined;
             resourceInputs["identity"] = args ? args.identity : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.hdinsight.v20210601.clusterCreatePropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.clusterCreatePropertiesArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["zones"] = args ? args.zones : undefined;
@@ -122,7 +122,7 @@ export interface ClusterArgs {
     /**
      * The identity of the cluster, if configured.
      */
-    identity?: pulumi.Input<types.inputs.hdinsight.v20210601.ClusterIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ClusterIdentityArgs>;
     /**
      * The location of the cluster.
      */
@@ -130,7 +130,7 @@ export interface ClusterArgs {
     /**
      * The cluster create parameters.
      */
-    properties?: pulumi.Input<types.inputs.hdinsight.v20210601.ClusterCreatePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.ClusterCreatePropertiesArgs>;
     /**
      * The name of the resource group.
      */

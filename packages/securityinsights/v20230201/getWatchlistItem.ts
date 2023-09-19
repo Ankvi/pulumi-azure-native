@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a watchlist item.
  */
@@ -45,7 +45,7 @@ export interface GetWatchlistItemResult {
     /**
      * Describes a user that created the watchlist item
      */
-    readonly createdBy?: types.outputs.securityinsights.v20230201.WatchlistUserInfoResponse;
+    readonly createdBy?: types.outputs.WatchlistUserInfoResponse;
     /**
      * key-value pairs for a watchlist item entity mapping
      */
@@ -73,7 +73,7 @@ export interface GetWatchlistItemResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.securityinsights.v20230201.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The tenantId to which the watchlist item belongs to
      */
@@ -89,7 +89,7 @@ export interface GetWatchlistItemResult {
     /**
      * Describes a user that updated the watchlist item
      */
-    readonly updatedBy?: types.outputs.securityinsights.v20230201.WatchlistUserInfoResponse;
+    readonly updatedBy?: types.outputs.WatchlistUserInfoResponse;
     /**
      * The id (a Guid) of the watchlist item
      */

@@ -40,7 +40,7 @@ export interface GetVirtualMachineTemplateResult {
     /**
      * Gets or sets the disks of the template.
      */
-    readonly disks: types.outputs.scvmm.VirtualDiskResponse[];
+    readonly disks: types.outputs.VirtualDiskResponse[];
     /**
      * Gets or sets a value indicating whether to enable dynamic memory or not.
      */
@@ -56,7 +56,7 @@ export interface GetVirtualMachineTemplateResult {
     /**
      * The extended location.
      */
-    readonly extendedLocation: types.outputs.scvmm.ExtendedLocationResponse;
+    readonly extendedLocation: types.outputs.ExtendedLocationResponse;
     /**
      * Gets or sets the generation for the vm.
      */
@@ -96,7 +96,7 @@ export interface GetVirtualMachineTemplateResult {
     /**
      * Gets or sets the network interfaces of the template.
      */
-    readonly networkInterfaces: types.outputs.scvmm.NetworkInterfacesResponse[];
+    readonly networkInterfaces: types.outputs.NetworkInterfacesResponse[];
     /**
      * Gets or sets os name.
      */
@@ -112,7 +112,7 @@ export interface GetVirtualMachineTemplateResult {
     /**
      * The system data.
      */
-    readonly systemData: types.outputs.scvmm.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags
      */

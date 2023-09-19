@@ -32,7 +32,7 @@ export interface GetAzureTrafficCollectorResult {
     /**
      * Collector Policies for Azure Traffic Collector.
      */
-    readonly collectorPolicies: types.outputs.networkfunction.ResourceReferenceResponse[];
+    readonly collectorPolicies: types.outputs.ResourceReferenceResponse[];
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -56,7 +56,7 @@ export interface GetAzureTrafficCollectorResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.networkfunction.TrackedResourceResponseSystemData;
+    readonly systemData: types.outputs.TrackedResourceResponseSystemData;
     /**
      * Resource tags.
      */
@@ -68,7 +68,7 @@ export interface GetAzureTrafficCollectorResult {
     /**
      * The virtualHub to which the Azure Traffic Collector belongs.
      */
-    readonly virtualHub?: types.outputs.networkfunction.ResourceReferenceResponse;
+    readonly virtualHub?: types.outputs.ResourceReferenceResponse;
 }
 /**
  * Gets the specified Azure Traffic Collector in a specified resource group

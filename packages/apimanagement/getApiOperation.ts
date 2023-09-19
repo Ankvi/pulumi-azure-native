@@ -66,15 +66,15 @@ export interface GetApiOperationResult {
     /**
      * An entity containing request details.
      */
-    readonly request?: types.outputs.apimanagement.RequestContractResponse;
+    readonly request?: types.outputs.RequestContractResponse;
     /**
      * Array of Operation responses.
      */
-    readonly responses?: types.outputs.apimanagement.ResponseContractResponse[];
+    readonly responses?: types.outputs.ResponseContractResponse[];
     /**
      * Collection of URL template parameters.
      */
-    readonly templateParameters?: types.outputs.apimanagement.ParameterContractResponse[];
+    readonly templateParameters?: types.outputs.ParameterContractResponse[];
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

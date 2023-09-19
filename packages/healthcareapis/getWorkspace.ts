@@ -48,11 +48,11 @@ export interface GetWorkspaceResult {
     /**
      * Workspaces resource specific properties.
      */
-    readonly properties: types.outputs.healthcareapis.WorkspaceResponseProperties;
+    readonly properties: types.outputs.WorkspaceResponseProperties;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.healthcareapis.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

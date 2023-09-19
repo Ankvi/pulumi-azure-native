@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Attestation service response message.
  */
@@ -46,7 +46,7 @@ export class AttestationProvider extends pulumi.CustomResource {
     /**
      * List of private endpoint connections associated with the attestation provider.
      */
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.attestation.v20210601.PrivateEndpointConnectionResponse[]>;
+    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[]>;
     /**
      * Controls whether traffic from the public network is allowed to access the Attestation Provider APIs.
      */
@@ -58,7 +58,7 @@ export class AttestationProvider extends pulumi.CustomResource {
     /**
      * The system metadata relating to this resource
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.attestation.v20210601.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -138,7 +138,7 @@ export interface AttestationProviderArgs {
     /**
      * Properties of the attestation provider
      */
-    properties: pulumi.Input<types.inputs.attestation.v20210601.AttestationServiceCreationSpecificParamsArgs>;
+    properties: pulumi.Input<types.inputs.AttestationServiceCreationSpecificParamsArgs>;
     /**
      * Name of the attestation provider.
      */

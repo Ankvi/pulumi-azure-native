@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents a SourceControl in Azure Security Insights.
  */
@@ -82,11 +82,11 @@ export class SourceControl extends pulumi.CustomResource {
     /**
      * Repository metadata.
      */
-    public readonly repository!: pulumi.Output<types.outputs.securityinsights.v20210301preview.RepositoryResponse>;
+    public readonly repository!: pulumi.Output<types.outputs.RepositoryResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.securityinsights.v20210301preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Azure resource type
      */
@@ -175,7 +175,7 @@ export interface SourceControlArgs {
     /**
      * Array of source control content types.
      */
-    contentTypes: pulumi.Input<pulumi.Input<string | types.enums.v20210301preview.ContentType>[]>;
+    contentTypes: pulumi.Input<pulumi.Input<string | types.enums.ContentType>[]>;
     /**
      * The timestamp of resource creation (UTC).
      */
@@ -187,7 +187,7 @@ export interface SourceControlArgs {
     /**
      * The type of identity that created the resource.
      */
-    createdByType?: pulumi.Input<string | types.enums.v20210301preview.CreatedByType>;
+    createdByType?: pulumi.Input<string | types.enums.CreatedByType>;
     /**
      * A description of the source control
      */
@@ -211,7 +211,7 @@ export interface SourceControlArgs {
     /**
      * The type of identity that last modified the resource.
      */
-    lastModifiedByType?: pulumi.Input<string | types.enums.v20210301preview.CreatedByType>;
+    lastModifiedByType?: pulumi.Input<string | types.enums.CreatedByType>;
     /**
      * The namespace of workspaces resource provider- Microsoft.OperationalInsights.
      */
@@ -219,11 +219,11 @@ export interface SourceControlArgs {
     /**
      * The repository type of the source control
      */
-    repoType: pulumi.Input<string | types.enums.v20210301preview.RepoType>;
+    repoType: pulumi.Input<string | types.enums.RepoType>;
     /**
      * Repository metadata.
      */
-    repository: pulumi.Input<types.inputs.securityinsights.v20210301preview.RepositoryArgs>;
+    repository: pulumi.Input<types.inputs.RepositoryArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

@@ -40,11 +40,11 @@ export interface GetServerResult {
     /**
      * Backup related properties of a server.
      */
-    readonly backup?: types.outputs.dbformysql.BackupResponse;
+    readonly backup?: types.outputs.BackupResponse;
     /**
      * The Data Encryption for CMK.
      */
-    readonly dataEncryption?: types.outputs.dbformysql.DataEncryptionResponse;
+    readonly dataEncryption?: types.outputs.DataEncryptionResponse;
     /**
      * The fully qualified domain name of a server.
      */
@@ -52,7 +52,7 @@ export interface GetServerResult {
     /**
      * High availability related properties of a server.
      */
-    readonly highAvailability?: types.outputs.dbformysql.HighAvailabilityResponse;
+    readonly highAvailability?: types.outputs.HighAvailabilityResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -60,7 +60,7 @@ export interface GetServerResult {
     /**
      * The cmk identity for the server.
      */
-    readonly identity?: types.outputs.dbformysql.IdentityResponse;
+    readonly identity?: types.outputs.IdentityResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -68,7 +68,7 @@ export interface GetServerResult {
     /**
      * Maintenance window of a server.
      */
-    readonly maintenanceWindow?: types.outputs.dbformysql.MaintenanceWindowResponse;
+    readonly maintenanceWindow?: types.outputs.MaintenanceWindowResponse;
     /**
      * The name of the resource
      */
@@ -76,7 +76,7 @@ export interface GetServerResult {
     /**
      * Network related properties of a server.
      */
-    readonly network?: types.outputs.dbformysql.NetworkResponse;
+    readonly network?: types.outputs.NetworkResponse;
     /**
      * The maximum number of replicas that a primary server can have.
      */
@@ -88,7 +88,7 @@ export interface GetServerResult {
     /**
      * The SKU (pricing tier) of the server.
      */
-    readonly sku?: types.outputs.dbformysql.SkuResponse;
+    readonly sku?: types.outputs.SkuResponse;
     /**
      * The source MySQL server id.
      */
@@ -100,11 +100,11 @@ export interface GetServerResult {
     /**
      * Storage related properties of a server.
      */
-    readonly storage?: types.outputs.dbformysql.StorageResponse;
+    readonly storage?: types.outputs.StorageResponse;
     /**
      * The system metadata relating to this resource.
      */
-    readonly systemData: types.outputs.dbformysql.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

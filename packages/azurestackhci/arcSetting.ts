@@ -59,11 +59,11 @@ export class ArcSetting extends pulumi.CustomResource {
     /**
      * contains connectivity related configuration for ARC resources
      */
-    public readonly connectivityProperties!: pulumi.Output<types.outputs.azurestackhci.ArcConnectivityPropertiesResponse[] | undefined>;
+    public readonly connectivityProperties!: pulumi.Output<types.outputs.ArcConnectivityPropertiesResponse[] | undefined>;
     /**
      * Properties for each of the default extensions category
      */
-    public /*out*/ readonly defaultExtensions!: pulumi.Output<types.outputs.azurestackhci.DefaultExtensionDetailsResponse[]>;
+    public /*out*/ readonly defaultExtensions!: pulumi.Output<types.outputs.DefaultExtensionDetailsResponse[]>;
     /**
      * The name of the resource
      */
@@ -71,7 +71,7 @@ export class ArcSetting extends pulumi.CustomResource {
     /**
      * State of Arc agent in each of the nodes.
      */
-    public /*out*/ readonly perNodeDetails!: pulumi.Output<types.outputs.azurestackhci.PerNodeStateResponse[]>;
+    public /*out*/ readonly perNodeDetails!: pulumi.Output<types.outputs.PerNodeStateResponse[]>;
     /**
      * Provisioning state of the ArcSetting proxy resource.
      */
@@ -79,7 +79,7 @@ export class ArcSetting extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.azurestackhci.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -175,7 +175,7 @@ export interface ArcSettingArgs {
     /**
      * contains connectivity related configuration for ARC resources
      */
-    connectivityProperties?: pulumi.Input<pulumi.Input<types.inputs.azurestackhci.ArcConnectivityPropertiesArgs>[]>;
+    connectivityProperties?: pulumi.Input<pulumi.Input<types.inputs.ArcConnectivityPropertiesArgs>[]>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

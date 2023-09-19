@@ -42,7 +42,7 @@ export interface GetAvailabilityGroupListenerResult {
     /**
      * Availability Group configuration.
      */
-    readonly availabilityGroupConfiguration?: types.outputs.sqlvirtualmachine.AgConfigurationResponse;
+    readonly availabilityGroupConfiguration?: types.outputs.AgConfigurationResponse;
     /**
      * Name of the availability group.
      */
@@ -58,11 +58,11 @@ export interface GetAvailabilityGroupListenerResult {
     /**
      * List of load balancer configurations for an availability group listener.
      */
-    readonly loadBalancerConfigurations?: types.outputs.sqlvirtualmachine.LoadBalancerConfigurationResponse[];
+    readonly loadBalancerConfigurations?: types.outputs.LoadBalancerConfigurationResponse[];
     /**
      * List of multi subnet IP configurations for an AG listener.
      */
-    readonly multiSubnetIpConfigurations?: types.outputs.sqlvirtualmachine.MultiSubnetIpConfigurationResponse[];
+    readonly multiSubnetIpConfigurations?: types.outputs.MultiSubnetIpConfigurationResponse[];
     /**
      * Resource name.
      */
@@ -78,7 +78,7 @@ export interface GetAvailabilityGroupListenerResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.sqlvirtualmachine.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource type.
      */

@@ -39,11 +39,11 @@ export class DevToolPortal extends pulumi.CustomResource {
     /**
      * Dev Tool Portal properties payload
      */
-    public readonly properties!: pulumi.Output<types.outputs.appplatform.DevToolPortalPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.DevToolPortalPropertiesResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.appplatform.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource.
      */
@@ -67,7 +67,7 @@ export class DevToolPortal extends pulumi.CustomResource {
                 throw new Error("Missing required property 'serviceName'");
             }
             resourceInputs["devToolPortalName"] = args ? args.devToolPortalName : undefined;
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.appplatform.devToolPortalPropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.devToolPortalPropertiesArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
             resourceInputs["name"] = undefined /*out*/;
@@ -97,7 +97,7 @@ export interface DevToolPortalArgs {
     /**
      * Dev Tool Portal properties payload
      */
-    properties?: pulumi.Input<types.inputs.appplatform.DevToolPortalPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.DevToolPortalPropertiesArgs>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */

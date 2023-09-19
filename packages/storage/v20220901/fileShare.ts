@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Properties of the file share, including Id, resource name, resource type, Etag.
  */
@@ -102,7 +102,7 @@ export class FileShare extends pulumi.CustomResource {
     /**
      * List of stored access policies specified on the share.
      */
-    public readonly signedIdentifiers!: pulumi.Output<types.outputs.storage.v20220901.SignedIdentifierResponse[] | undefined>;
+    public readonly signedIdentifiers!: pulumi.Output<types.outputs.SignedIdentifierResponse[] | undefined>;
     /**
      * Creation time of share snapshot returned in the response of list shares with expand param "snapshots".
      */
@@ -195,7 +195,7 @@ export interface FileShareArgs {
     /**
      * Access tier for specific share. GpV2 account can choose between TransactionOptimized (default), Hot, and Cool. FileStorage account can choose Premium.
      */
-    accessTier?: pulumi.Input<string | types.enums.v20220901.ShareAccessTier>;
+    accessTier?: pulumi.Input<string | types.enums.ShareAccessTier>;
     /**
      * The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
      */
@@ -203,7 +203,7 @@ export interface FileShareArgs {
     /**
      * The authentication protocol that is used for the file share. Can only be specified when creating a share.
      */
-    enabledProtocols?: pulumi.Input<string | types.enums.v20220901.EnabledProtocols>;
+    enabledProtocols?: pulumi.Input<string | types.enums.EnabledProtocols>;
     /**
      * Optional, used to expand the properties within share's properties. Valid values are: snapshots. Should be passed as a string with delimiter ','
      */
@@ -219,7 +219,7 @@ export interface FileShareArgs {
     /**
      * The property is for NFS share only. The default is NoRootSquash.
      */
-    rootSquash?: pulumi.Input<string | types.enums.v20220901.RootSquashType>;
+    rootSquash?: pulumi.Input<string | types.enums.RootSquashType>;
     /**
      * The name of the file share within the specified storage account. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only. Every dash (-) character must be immediately preceded and followed by a letter or number.
      */
@@ -231,5 +231,5 @@ export interface FileShareArgs {
     /**
      * List of stored access policies specified on the share.
      */
-    signedIdentifiers?: pulumi.Input<pulumi.Input<types.inputs.storage.v20220901.SignedIdentifierArgs>[]>;
+    signedIdentifiers?: pulumi.Input<pulumi.Input<types.inputs.SignedIdentifierArgs>[]>;
 }

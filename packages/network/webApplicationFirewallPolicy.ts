@@ -35,11 +35,11 @@ export class WebApplicationFirewallPolicy extends pulumi.CustomResource {
     /**
      * A collection of references to application gateways.
      */
-    public /*out*/ readonly applicationGateways!: pulumi.Output<types.outputs.network.ApplicationGatewayResponse[]>;
+    public /*out*/ readonly applicationGateways!: pulumi.Output<types.outputs.ApplicationGatewayResponse[]>;
     /**
      * The custom rules inside the policy.
      */
-    public readonly customRules!: pulumi.Output<types.outputs.network.WebApplicationFirewallCustomRuleResponse[] | undefined>;
+    public readonly customRules!: pulumi.Output<types.outputs.WebApplicationFirewallCustomRuleResponse[] | undefined>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -47,7 +47,7 @@ export class WebApplicationFirewallPolicy extends pulumi.CustomResource {
     /**
      * A collection of references to application gateway http listeners.
      */
-    public /*out*/ readonly httpListeners!: pulumi.Output<types.outputs.network.SubResourceResponse[]>;
+    public /*out*/ readonly httpListeners!: pulumi.Output<types.outputs.SubResourceResponse[]>;
     /**
      * Resource location.
      */
@@ -55,7 +55,7 @@ export class WebApplicationFirewallPolicy extends pulumi.CustomResource {
     /**
      * Describes the managedRules structure.
      */
-    public readonly managedRules!: pulumi.Output<types.outputs.network.ManagedRulesDefinitionResponse>;
+    public readonly managedRules!: pulumi.Output<types.outputs.ManagedRulesDefinitionResponse>;
     /**
      * Resource name.
      */
@@ -63,11 +63,11 @@ export class WebApplicationFirewallPolicy extends pulumi.CustomResource {
     /**
      * A collection of references to application gateway path rules.
      */
-    public /*out*/ readonly pathBasedRules!: pulumi.Output<types.outputs.network.SubResourceResponse[]>;
+    public /*out*/ readonly pathBasedRules!: pulumi.Output<types.outputs.SubResourceResponse[]>;
     /**
      * The PolicySettings for policy.
      */
-    public readonly policySettings!: pulumi.Output<types.outputs.network.PolicySettingsResponse | undefined>;
+    public readonly policySettings!: pulumi.Output<types.outputs.PolicySettingsResponse | undefined>;
     /**
      * The provisioning state of the web application firewall policy resource.
      */
@@ -107,7 +107,7 @@ export class WebApplicationFirewallPolicy extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["managedRules"] = args ? args.managedRules : undefined;
             resourceInputs["policyName"] = args ? args.policyName : undefined;
-            resourceInputs["policySettings"] = args ? (args.policySettings ? pulumi.output(args.policySettings).apply(types.inputs.network.policySettingsArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["policySettings"] = args ? (args.policySettings ? pulumi.output(args.policySettings).apply(types.inputs.policySettingsArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["applicationGateways"] = undefined /*out*/;
@@ -147,7 +147,7 @@ export interface WebApplicationFirewallPolicyArgs {
     /**
      * The custom rules inside the policy.
      */
-    customRules?: pulumi.Input<pulumi.Input<types.inputs.network.WebApplicationFirewallCustomRuleArgs>[]>;
+    customRules?: pulumi.Input<pulumi.Input<types.inputs.WebApplicationFirewallCustomRuleArgs>[]>;
     /**
      * Resource ID.
      */
@@ -159,7 +159,7 @@ export interface WebApplicationFirewallPolicyArgs {
     /**
      * Describes the managedRules structure.
      */
-    managedRules: pulumi.Input<types.inputs.network.ManagedRulesDefinitionArgs>;
+    managedRules: pulumi.Input<types.inputs.ManagedRulesDefinitionArgs>;
     /**
      * The name of the policy.
      */
@@ -167,7 +167,7 @@ export interface WebApplicationFirewallPolicyArgs {
     /**
      * The PolicySettings for policy.
      */
-    policySettings?: pulumi.Input<types.inputs.network.PolicySettingsArgs>;
+    policySettings?: pulumi.Input<types.inputs.PolicySettingsArgs>;
     /**
      * The name of the resource group.
      */

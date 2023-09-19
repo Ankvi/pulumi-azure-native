@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An object that represents an import pipeline for a container registry.
  */
@@ -34,7 +34,7 @@ export class ImportPipeline extends pulumi.CustomResource {
     /**
      * The identity of the import pipeline.
      */
-    public readonly identity!: pulumi.Output<types.outputs.containerregistry.v20230801preview.IdentityPropertiesResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityPropertiesResponse | undefined>;
     /**
      * The location of the import pipeline.
      */
@@ -54,15 +54,15 @@ export class ImportPipeline extends pulumi.CustomResource {
     /**
      * The source properties of the import pipeline.
      */
-    public readonly source!: pulumi.Output<types.outputs.containerregistry.v20230801preview.ImportPipelineSourcePropertiesResponse>;
+    public readonly source!: pulumi.Output<types.outputs.ImportPipelineSourcePropertiesResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.containerregistry.v20230801preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The properties that describe the trigger of the import pipeline.
      */
-    public readonly trigger!: pulumi.Output<types.outputs.containerregistry.v20230801preview.PipelineTriggerPropertiesResponse | undefined>;
+    public readonly trigger!: pulumi.Output<types.outputs.PipelineTriggerPropertiesResponse | undefined>;
     /**
      * The type of the resource.
      */
@@ -94,8 +94,8 @@ export class ImportPipeline extends pulumi.CustomResource {
             resourceInputs["options"] = args ? args.options : undefined;
             resourceInputs["registryName"] = args ? args.registryName : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["source"] = args ? (args.source ? pulumi.output(args.source).apply(types.inputs.containerregistry.v20230801preview.importPipelineSourcePropertiesArgsProvideDefaults) : undefined) : undefined;
-            resourceInputs["trigger"] = args ? (args.trigger ? pulumi.output(args.trigger).apply(types.inputs.containerregistry.v20230801preview.pipelineTriggerPropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["source"] = args ? (args.source ? pulumi.output(args.source).apply(types.inputs.importPipelineSourcePropertiesArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["trigger"] = args ? (args.trigger ? pulumi.output(args.trigger).apply(types.inputs.pipelineTriggerPropertiesArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
@@ -125,7 +125,7 @@ export interface ImportPipelineArgs {
     /**
      * The identity of the import pipeline.
      */
-    identity?: pulumi.Input<types.inputs.containerregistry.v20230801preview.IdentityPropertiesArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityPropertiesArgs>;
     /**
      * The name of the import pipeline.
      */
@@ -137,7 +137,7 @@ export interface ImportPipelineArgs {
     /**
      * The list of all options configured for the pipeline.
      */
-    options?: pulumi.Input<pulumi.Input<string | types.enums.v20230801preview.PipelineOptions>[]>;
+    options?: pulumi.Input<pulumi.Input<string | types.enums.PipelineOptions>[]>;
     /**
      * The name of the container registry.
      */
@@ -149,9 +149,9 @@ export interface ImportPipelineArgs {
     /**
      * The source properties of the import pipeline.
      */
-    source: pulumi.Input<types.inputs.containerregistry.v20230801preview.ImportPipelineSourcePropertiesArgs>;
+    source: pulumi.Input<types.inputs.ImportPipelineSourcePropertiesArgs>;
     /**
      * The properties that describe the trigger of the import pipeline.
      */
-    trigger?: pulumi.Input<types.inputs.containerregistry.v20230801preview.PipelineTriggerPropertiesArgs>;
+    trigger?: pulumi.Input<types.inputs.PipelineTriggerPropertiesArgs>;
 }

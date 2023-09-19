@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Collector policy resource.
  */
@@ -34,7 +34,7 @@ export class CollectorPolicy extends pulumi.CustomResource {
     /**
      * Emission policies.
      */
-    public readonly emissionPolicies!: pulumi.Output<types.outputs.networkfunction.v20220501.EmissionPoliciesPropertiesFormatResponse[] | undefined>;
+    public readonly emissionPolicies!: pulumi.Output<types.outputs.EmissionPoliciesPropertiesFormatResponse[] | undefined>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -42,7 +42,7 @@ export class CollectorPolicy extends pulumi.CustomResource {
     /**
      * Ingestion policies.
      */
-    public readonly ingestionPolicy!: pulumi.Output<types.outputs.networkfunction.v20220501.IngestionPolicyPropertiesFormatResponse | undefined>;
+    public readonly ingestionPolicy!: pulumi.Output<types.outputs.IngestionPolicyPropertiesFormatResponse | undefined>;
     /**
      * Azure resource name
      */
@@ -54,7 +54,7 @@ export class CollectorPolicy extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.networkfunction.v20220501.CollectorPolicyResponseSystemData>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.CollectorPolicyResponseSystemData>;
     /**
      * Azure resource type
      */
@@ -118,11 +118,11 @@ export interface CollectorPolicyArgs {
     /**
      * Emission policies.
      */
-    emissionPolicies?: pulumi.Input<pulumi.Input<types.inputs.networkfunction.v20220501.EmissionPoliciesPropertiesFormatArgs>[]>;
+    emissionPolicies?: pulumi.Input<pulumi.Input<types.inputs.EmissionPoliciesPropertiesFormatArgs>[]>;
     /**
      * Ingestion policies.
      */
-    ingestionPolicy?: pulumi.Input<types.inputs.networkfunction.v20220501.IngestionPolicyPropertiesFormatArgs>;
+    ingestionPolicy?: pulumi.Input<types.inputs.IngestionPolicyPropertiesFormatArgs>;
     /**
      * The name of the resource group.
      */

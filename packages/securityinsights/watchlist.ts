@@ -43,7 +43,7 @@ export class Watchlist extends pulumi.CustomResource {
     /**
      * Describes a user that created the watchlist
      */
-    public readonly createdBy!: pulumi.Output<types.outputs.securityinsights.WatchlistUserInfoResponse | undefined>;
+    public readonly createdBy!: pulumi.Output<types.outputs.WatchlistUserInfoResponse | undefined>;
     /**
      * The default duration of a watchlist (in ISO 8601 duration format)
      */
@@ -97,7 +97,7 @@ export class Watchlist extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.securityinsights.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The tenantId where the watchlist belongs to
      */
@@ -113,7 +113,7 @@ export class Watchlist extends pulumi.CustomResource {
     /**
      * Describes a user that updated the watchlist
      */
-    public readonly updatedBy!: pulumi.Output<types.outputs.securityinsights.WatchlistUserInfoResponse | undefined>;
+    public readonly updatedBy!: pulumi.Output<types.outputs.WatchlistUserInfoResponse | undefined>;
     /**
      * The status of the Watchlist upload : New, InProgress or Complete. **Note** : When a Watchlist upload status is InProgress, the Watchlist cannot be deleted
      */
@@ -234,7 +234,7 @@ export interface WatchlistArgs {
     /**
      * Describes a user that created the watchlist
      */
-    createdBy?: pulumi.Input<types.inputs.securityinsights.WatchlistUserInfoArgs>;
+    createdBy?: pulumi.Input<types.inputs.WatchlistUserInfoArgs>;
     /**
      * The default duration of a watchlist (in ISO 8601 duration format)
      */
@@ -292,7 +292,7 @@ export interface WatchlistArgs {
     /**
      * Describes a user that updated the watchlist
      */
-    updatedBy?: pulumi.Input<types.inputs.securityinsights.WatchlistUserInfoArgs>;
+    updatedBy?: pulumi.Input<types.inputs.WatchlistUserInfoArgs>;
     /**
      * The status of the Watchlist upload : New, InProgress or Complete. **Note** : When a Watchlist upload status is InProgress, the Watchlist cannot be deleted
      */

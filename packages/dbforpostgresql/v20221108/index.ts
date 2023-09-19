@@ -43,7 +43,7 @@ utilities.lazyLoad(exports, ["Role"], () => require("./role"));
 
 
 // Export enums:
-export * from "../types/enums/v20221108";
+export * from "./types/enums";
 
 const _module = {
     version: utilities.getVersion(),

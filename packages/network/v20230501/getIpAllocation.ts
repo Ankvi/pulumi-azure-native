@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the specified IpAllocation by resource group.
  */
@@ -72,7 +72,7 @@ export interface GetIpAllocationResult {
     /**
      * The Subnet that using the prefix of this IpAllocation resource.
      */
-    readonly subnet: types.outputs.network.v20230501.SubResourceResponse;
+    readonly subnet: types.outputs.SubResourceResponse;
     /**
      * Resource tags.
      */
@@ -84,7 +84,7 @@ export interface GetIpAllocationResult {
     /**
      * The VirtualNetwork that using the prefix of this IpAllocation resource.
      */
-    readonly virtualNetwork: types.outputs.network.v20230501.SubResourceResponse;
+    readonly virtualNetwork: types.outputs.SubResourceResponse;
 }
 /**
  * Gets the specified IpAllocation by resource group.

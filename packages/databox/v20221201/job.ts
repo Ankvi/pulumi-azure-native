@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Job Resource.
  */
@@ -38,7 +38,7 @@ export class Job extends pulumi.CustomResource {
     /**
      * Delivery Info of Job.
      */
-    public readonly deliveryInfo!: pulumi.Output<types.outputs.databox.v20221201.JobDeliveryInfoResponse | undefined>;
+    public readonly deliveryInfo!: pulumi.Output<types.outputs.JobDeliveryInfoResponse | undefined>;
     /**
      * Delivery type of Job.
      */
@@ -46,15 +46,15 @@ export class Job extends pulumi.CustomResource {
     /**
      * Details of a job run. This field will only be sent for expand details filter.
      */
-    public readonly details!: pulumi.Output<types.outputs.databox.v20221201.DataBoxCustomerDiskJobDetailsResponse | types.outputs.databox.v20221201.DataBoxDiskJobDetailsResponse | types.outputs.databox.v20221201.DataBoxHeavyJobDetailsResponse | types.outputs.databox.v20221201.DataBoxJobDetailsResponse | undefined>;
+    public readonly details!: pulumi.Output<types.outputs.DataBoxCustomerDiskJobDetailsResponse | types.outputs.DataBoxDiskJobDetailsResponse | types.outputs.DataBoxHeavyJobDetailsResponse | types.outputs.DataBoxJobDetailsResponse | undefined>;
     /**
      * Top level error for the job.
      */
-    public /*out*/ readonly error!: pulumi.Output<types.outputs.databox.v20221201.CloudErrorResponse>;
+    public /*out*/ readonly error!: pulumi.Output<types.outputs.CloudErrorResponse>;
     /**
      * Msi identity of the resource
      */
-    public readonly identity!: pulumi.Output<types.outputs.databox.v20221201.ResourceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ResourceIdentityResponse | undefined>;
     /**
      * Describes whether the job is cancellable or not.
      */
@@ -94,7 +94,7 @@ export class Job extends pulumi.CustomResource {
     /**
      * The sku type.
      */
-    public readonly sku!: pulumi.Output<types.outputs.databox.v20221201.SkuResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse>;
     /**
      * Time at which the job was started in UTC ISO 8601 format.
      */
@@ -106,7 +106,7 @@ export class Job extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.databox.v20221201.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups).
      */
@@ -143,7 +143,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["deliveryInfo"] = args ? args.deliveryInfo : undefined;
             resourceInputs["deliveryType"] = (args ? args.deliveryType : undefined) ?? "NonScheduled";
             resourceInputs["details"] = args ? args.details : undefined;
-            resourceInputs["identity"] = args ? (args.identity ? pulumi.output(args.identity).apply(types.inputs.databox.v20221201.resourceIdentityArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["identity"] = args ? (args.identity ? pulumi.output(args.identity).apply(types.inputs.resourceIdentityArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["jobName"] = args ? args.jobName : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
@@ -202,19 +202,19 @@ export interface JobArgs {
     /**
      * Delivery Info of Job.
      */
-    deliveryInfo?: pulumi.Input<types.inputs.databox.v20221201.JobDeliveryInfoArgs>;
+    deliveryInfo?: pulumi.Input<types.inputs.JobDeliveryInfoArgs>;
     /**
      * Delivery type of Job.
      */
-    deliveryType?: pulumi.Input<string | types.enums.v20221201.JobDeliveryType>;
+    deliveryType?: pulumi.Input<string | types.enums.JobDeliveryType>;
     /**
      * Details of a job run. This field will only be sent for expand details filter.
      */
-    details?: pulumi.Input<types.inputs.databox.v20221201.DataBoxCustomerDiskJobDetailsArgs | types.inputs.databox.v20221201.DataBoxDiskJobDetailsArgs | types.inputs.databox.v20221201.DataBoxHeavyJobDetailsArgs | types.inputs.databox.v20221201.DataBoxJobDetailsArgs>;
+    details?: pulumi.Input<types.inputs.DataBoxCustomerDiskJobDetailsArgs | types.inputs.DataBoxDiskJobDetailsArgs | types.inputs.DataBoxHeavyJobDetailsArgs | types.inputs.DataBoxJobDetailsArgs>;
     /**
      * Msi identity of the resource
      */
-    identity?: pulumi.Input<types.inputs.databox.v20221201.ResourceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ResourceIdentityArgs>;
     /**
      * The name of the job Resource within the specified resource group. job names must be between 3 and 24 characters in length and use any alphanumeric and underscore only
      */
@@ -230,7 +230,7 @@ export interface JobArgs {
     /**
      * The sku type.
      */
-    sku: pulumi.Input<types.inputs.databox.v20221201.SkuArgs>;
+    sku: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * The list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups).
      */
@@ -238,5 +238,5 @@ export interface JobArgs {
     /**
      * Type of the data transfer.
      */
-    transferType: pulumi.Input<string | types.enums.v20221201.TransferType>;
+    transferType: pulumi.Input<string | types.enums.TransferType>;
 }

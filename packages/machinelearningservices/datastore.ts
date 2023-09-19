@@ -35,7 +35,7 @@ export class Datastore extends pulumi.CustomResource {
     /**
      * [Required] Additional attributes of the entity.
      */
-    public readonly datastoreProperties!: pulumi.Output<types.outputs.machinelearningservices.AzureBlobDatastoreResponse | types.outputs.machinelearningservices.AzureDataLakeGen1DatastoreResponse | types.outputs.machinelearningservices.AzureDataLakeGen2DatastoreResponse | types.outputs.machinelearningservices.AzureFileDatastoreResponse>;
+    public readonly datastoreProperties!: pulumi.Output<types.outputs.AzureBlobDatastoreResponse | types.outputs.AzureDataLakeGen1DatastoreResponse | types.outputs.AzureDataLakeGen2DatastoreResponse | types.outputs.AzureFileDatastoreResponse>;
     /**
      * The name of the resource
      */
@@ -43,7 +43,7 @@ export class Datastore extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.machinelearningservices.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -96,7 +96,7 @@ export interface DatastoreArgs {
     /**
      * [Required] Additional attributes of the entity.
      */
-    datastoreProperties: pulumi.Input<types.inputs.machinelearningservices.AzureBlobDatastoreArgs | types.inputs.machinelearningservices.AzureDataLakeGen1DatastoreArgs | types.inputs.machinelearningservices.AzureDataLakeGen2DatastoreArgs | types.inputs.machinelearningservices.AzureFileDatastoreArgs>;
+    datastoreProperties: pulumi.Input<types.inputs.AzureBlobDatastoreArgs | types.inputs.AzureDataLakeGen1DatastoreArgs | types.inputs.AzureDataLakeGen2DatastoreArgs | types.inputs.AzureFileDatastoreArgs>;
     /**
      * Datastore name.
      */

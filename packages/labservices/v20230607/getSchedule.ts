@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns the properties of a lab Schedule.
  */
@@ -52,11 +52,11 @@ export interface GetScheduleResult {
     /**
      * The recurrence pattern of the scheduled actions.
      */
-    readonly recurrencePattern?: types.outputs.labservices.v20230607.RecurrencePatternResponse;
+    readonly recurrencePattern?: types.outputs.RecurrencePatternResponse;
     /**
      * Error details of last operation done on schedule.
      */
-    readonly resourceOperationError: types.outputs.labservices.v20230607.ResourceOperationErrorResponse;
+    readonly resourceOperationError: types.outputs.ResourceOperationErrorResponse;
     /**
      * When lab user virtual machines will be started. Timestamp offsets will be ignored and timeZoneId is used instead.
      */
@@ -68,7 +68,7 @@ export interface GetScheduleResult {
     /**
      * Metadata pertaining to creation and last modification of the schedule.
      */
-    readonly systemData: types.outputs.labservices.v20230607.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The IANA timezone id for the schedule.
      */

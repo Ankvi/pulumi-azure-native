@@ -44,11 +44,11 @@ export interface GetManagedCCFResult {
     /**
      * Properties of Managed CCF Resource.
      */
-    readonly properties: types.outputs.confidentialledger.ManagedCCFPropertiesResponse;
+    readonly properties: types.outputs.ManagedCCFPropertiesResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.confidentialledger.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

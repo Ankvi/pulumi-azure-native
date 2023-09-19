@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the specified network security rule.
  */
@@ -52,7 +52,7 @@ export interface GetSecurityRuleResult {
     /**
      * The application security group specified as destination.
      */
-    readonly destinationApplicationSecurityGroups?: types.outputs.network.v20230201.ApplicationSecurityGroupResponse[];
+    readonly destinationApplicationSecurityGroups?: types.outputs.ApplicationSecurityGroupResponse[];
     /**
      * The destination port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
      */
@@ -100,7 +100,7 @@ export interface GetSecurityRuleResult {
     /**
      * The application security group specified as source.
      */
-    readonly sourceApplicationSecurityGroups?: types.outputs.network.v20230201.ApplicationSecurityGroupResponse[];
+    readonly sourceApplicationSecurityGroups?: types.outputs.ApplicationSecurityGroupResponse[];
     /**
      * The source port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
      */

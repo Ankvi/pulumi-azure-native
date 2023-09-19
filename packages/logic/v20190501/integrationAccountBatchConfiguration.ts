@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The batch configuration resource definition.
  */
@@ -42,7 +42,7 @@ export class IntegrationAccountBatchConfiguration extends pulumi.CustomResource 
     /**
      * The batch configuration properties.
      */
-    public readonly properties!: pulumi.Output<types.outputs.logic.v20190501.BatchConfigurationPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.BatchConfigurationPropertiesResponse>;
     /**
      * The resource tags.
      */
@@ -113,7 +113,7 @@ export interface IntegrationAccountBatchConfigurationArgs {
     /**
      * The batch configuration properties.
      */
-    properties: pulumi.Input<types.inputs.logic.v20190501.BatchConfigurationPropertiesArgs>;
+    properties: pulumi.Input<types.inputs.BatchConfigurationPropertiesArgs>;
     /**
      * The resource group name.
      */

@@ -41,7 +41,7 @@ export interface GetHypervHostControllerResult {
     /**
      * Gets the errors.
      */
-    readonly errors: types.outputs.offazure.HealthErrorDetailsResponse[];
+    readonly errors: types.outputs.HealthErrorDetailsResponse[];
     /**
      * Gets or sets the FQDN/IPAddress of the Hyper-V host.
      */
@@ -65,7 +65,7 @@ export interface GetHypervHostControllerResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.offazure.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

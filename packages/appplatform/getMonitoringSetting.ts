@@ -40,11 +40,11 @@ export interface GetMonitoringSettingResult {
     /**
      * Properties of the Monitoring Setting resource
      */
-    readonly properties: types.outputs.appplatform.MonitoringSettingPropertiesResponse;
+    readonly properties: types.outputs.MonitoringSettingPropertiesResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.appplatform.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource.
      */

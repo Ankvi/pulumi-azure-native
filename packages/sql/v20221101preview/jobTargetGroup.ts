@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * A group of job targets.
  */
@@ -34,7 +34,7 @@ export class JobTargetGroup extends pulumi.CustomResource {
     /**
      * Members of the target group.
      */
-    public readonly members!: pulumi.Output<types.outputs.sql.v20221101preview.JobTargetResponse[]>;
+    public readonly members!: pulumi.Output<types.outputs.JobTargetResponse[]>;
     /**
      * Resource name.
      */
@@ -97,7 +97,7 @@ export interface JobTargetGroupArgs {
     /**
      * Members of the target group.
      */
-    members: pulumi.Input<pulumi.Input<types.inputs.sql.v20221101preview.JobTargetArgs>[]>;
+    members: pulumi.Input<pulumi.Input<types.inputs.JobTargetArgs>[]>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */

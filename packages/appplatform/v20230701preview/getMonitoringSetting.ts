@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get the Monitoring Setting and its properties.
  */
@@ -39,11 +39,11 @@ export interface GetMonitoringSettingResult {
     /**
      * Properties of the Monitoring Setting resource
      */
-    readonly properties: types.outputs.appplatform.v20230701preview.MonitoringSettingPropertiesResponse;
+    readonly properties: types.outputs.MonitoringSettingPropertiesResponse;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.appplatform.v20230701preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource.
      */

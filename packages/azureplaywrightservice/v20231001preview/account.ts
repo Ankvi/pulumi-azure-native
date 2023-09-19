@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An account resource
  */
@@ -62,7 +62,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.azureplaywrightservice.v20231001preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -131,11 +131,11 @@ export interface AccountArgs {
     /**
      * This property sets the connection region for Playwright client workers to cloud-hosted browsers. If enabled, workers connect to browsers in the closest Azure region, ensuring lower latency. If disabled, workers connect to browsers in the Azure region in which the workspace was initially created.
      */
-    regionalAffinity?: pulumi.Input<string | types.enums.v20231001preview.EnablementStatus>;
+    regionalAffinity?: pulumi.Input<string | types.enums.EnablementStatus>;
     /**
      * When enabled, this feature allows the workspace to upload and display test results, including artifacts like traces and screenshots, in the Playwright portal. This enables faster and more efficient troubleshooting.
      */
-    reporting?: pulumi.Input<string | types.enums.v20231001preview.EnablementStatus>;
+    reporting?: pulumi.Input<string | types.enums.EnablementStatus>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -143,7 +143,7 @@ export interface AccountArgs {
     /**
      * When enabled, Playwright client workers can connect to cloud-hosted browsers. This can increase the number of parallel workers for a test run, significantly minimizing test completion durations.
      */
-    scalableExecution?: pulumi.Input<string | types.enums.v20231001preview.EnablementStatus>;
+    scalableExecution?: pulumi.Input<string | types.enums.EnablementStatus>;
     /**
      * Resource tags.
      */

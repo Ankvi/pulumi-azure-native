@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Container App.
  */
@@ -34,7 +34,7 @@ export class ContainerApp extends pulumi.CustomResource {
     /**
      * Non versioned Container App configuration properties.
      */
-    public readonly configuration!: pulumi.Output<types.outputs.app.v20220101preview.ConfigurationResponse | undefined>;
+    public readonly configuration!: pulumi.Output<types.outputs.ConfigurationResponse | undefined>;
     /**
      * Id used to verify domain name ownership
      */
@@ -42,7 +42,7 @@ export class ContainerApp extends pulumi.CustomResource {
     /**
      * managed identities for the Container App to interact with other Azure services without maintaining any secrets or credentials in code.
      */
-    public readonly identity!: pulumi.Output<types.outputs.app.v20220101preview.ManagedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * Fully Qualified Domain Name of the latest revision of the Container App.
      */
@@ -74,7 +74,7 @@ export class ContainerApp extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.app.v20220101preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -82,7 +82,7 @@ export class ContainerApp extends pulumi.CustomResource {
     /**
      * Container App versioned application definition.
      */
-    public readonly template!: pulumi.Output<types.outputs.app.v20220101preview.TemplateResponse | undefined>;
+    public readonly template!: pulumi.Output<types.outputs.TemplateResponse | undefined>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -102,14 +102,14 @@ export class ContainerApp extends pulumi.CustomResource {
             if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["configuration"] = args ? (args.configuration ? pulumi.output(args.configuration).apply(types.inputs.app.v20220101preview.configurationArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["configuration"] = args ? (args.configuration ? pulumi.output(args.configuration).apply(types.inputs.configurationArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["identity"] = args ? args.identity : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["managedEnvironmentId"] = args ? args.managedEnvironmentId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["template"] = args ? (args.template ? pulumi.output(args.template).apply(types.inputs.app.v20220101preview.templateArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["template"] = args ? (args.template ? pulumi.output(args.template).apply(types.inputs.templateArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["customDomainVerificationId"] = undefined /*out*/;
             resourceInputs["latestRevisionFqdn"] = undefined /*out*/;
             resourceInputs["latestRevisionName"] = undefined /*out*/;
@@ -147,11 +147,11 @@ export interface ContainerAppArgs {
     /**
      * Non versioned Container App configuration properties.
      */
-    configuration?: pulumi.Input<types.inputs.app.v20220101preview.ConfigurationArgs>;
+    configuration?: pulumi.Input<types.inputs.ConfigurationArgs>;
     /**
      * managed identities for the Container App to interact with other Azure services without maintaining any secrets or credentials in code.
      */
-    identity?: pulumi.Input<types.inputs.app.v20220101preview.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -175,5 +175,5 @@ export interface ContainerAppArgs {
     /**
      * Container App versioned application definition.
      */
-    template?: pulumi.Input<types.inputs.app.v20220101preview.TemplateArgs>;
+    template?: pulumi.Input<types.inputs.TemplateArgs>;
 }

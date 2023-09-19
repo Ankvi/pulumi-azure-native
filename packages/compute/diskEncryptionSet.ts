@@ -35,11 +35,11 @@ export class DiskEncryptionSet extends pulumi.CustomResource {
     /**
      * The key vault key which is currently used by this disk encryption set.
      */
-    public readonly activeKey!: pulumi.Output<types.outputs.compute.KeyForDiskEncryptionSetResponse | undefined>;
+    public readonly activeKey!: pulumi.Output<types.outputs.KeyForDiskEncryptionSetResponse | undefined>;
     /**
      * The error that was encountered during auto-key rotation. If an error is present, then auto-key rotation will not be attempted until the error on this disk encryption set is fixed.
      */
-    public /*out*/ readonly autoKeyRotationError!: pulumi.Output<types.outputs.compute.ApiErrorResponse>;
+    public /*out*/ readonly autoKeyRotationError!: pulumi.Output<types.outputs.ApiErrorResponse>;
     /**
      * The type of key used to encrypt the data of the disk.
      */
@@ -51,7 +51,7 @@ export class DiskEncryptionSet extends pulumi.CustomResource {
     /**
      * The managed identity for the disk encryption set. It should be given permission on the key vault before it can be used to encrypt disks.
      */
-    public readonly identity!: pulumi.Output<types.outputs.compute.EncryptionSetIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.EncryptionSetIdentityResponse | undefined>;
     /**
      * The time when the active key of this disk encryption set was updated.
      */
@@ -67,7 +67,7 @@ export class DiskEncryptionSet extends pulumi.CustomResource {
     /**
      * A readonly collection of key vault keys previously used by this disk encryption set while a key rotation is in progress. It will be empty if there is no ongoing key rotation.
      */
-    public /*out*/ readonly previousKeys!: pulumi.Output<types.outputs.compute.KeyForDiskEncryptionSetResponse[]>;
+    public /*out*/ readonly previousKeys!: pulumi.Output<types.outputs.KeyForDiskEncryptionSetResponse[]>;
     /**
      * The disk encryption set provisioning state.
      */
@@ -143,7 +143,7 @@ export interface DiskEncryptionSetArgs {
     /**
      * The key vault key which is currently used by this disk encryption set.
      */
-    activeKey?: pulumi.Input<types.inputs.compute.KeyForDiskEncryptionSetArgs>;
+    activeKey?: pulumi.Input<types.inputs.KeyForDiskEncryptionSetArgs>;
     /**
      * The name of the disk encryption set that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
      */
@@ -159,7 +159,7 @@ export interface DiskEncryptionSetArgs {
     /**
      * The managed identity for the disk encryption set. It should be given permission on the key vault before it can be used to encrypt disks.
      */
-    identity?: pulumi.Input<types.inputs.compute.EncryptionSetIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.EncryptionSetIdentityArgs>;
     /**
      * Resource location
      */

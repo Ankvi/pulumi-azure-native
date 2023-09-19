@@ -39,7 +39,7 @@ export class TemplateSpecVersion extends pulumi.CustomResource {
     /**
      * An array of linked template artifacts.
      */
-    public readonly linkedTemplates!: pulumi.Output<types.outputs.resources.LinkedTemplateArtifactResponse[] | undefined>;
+    public readonly linkedTemplates!: pulumi.Output<types.outputs.LinkedTemplateArtifactResponse[] | undefined>;
     /**
      * The location of the Template Spec Version. It must match the location of the parent Template Spec.
      */
@@ -59,7 +59,7 @@ export class TemplateSpecVersion extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.resources.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -133,7 +133,7 @@ export interface TemplateSpecVersionArgs {
     /**
      * An array of linked template artifacts.
      */
-    linkedTemplates?: pulumi.Input<pulumi.Input<types.inputs.resources.LinkedTemplateArtifactArgs>[]>;
+    linkedTemplates?: pulumi.Input<pulumi.Input<types.inputs.LinkedTemplateArtifactArgs>[]>;
     /**
      * The location of the Template Spec Version. It must match the location of the parent Template Spec.
      */

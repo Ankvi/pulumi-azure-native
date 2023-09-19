@@ -35,7 +35,7 @@ export class RegistryCodeContainer extends pulumi.CustomResource {
     /**
      * [Required] Additional attributes of the entity.
      */
-    public readonly codeContainerProperties!: pulumi.Output<types.outputs.machinelearningservices.CodeContainerResponse>;
+    public readonly codeContainerProperties!: pulumi.Output<types.outputs.CodeContainerResponse>;
     /**
      * The name of the resource
      */
@@ -43,7 +43,7 @@ export class RegistryCodeContainer extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.machinelearningservices.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -69,7 +69,7 @@ export class RegistryCodeContainer extends pulumi.CustomResource {
             if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["codeContainerProperties"] = args ? (args.codeContainerProperties ? pulumi.output(args.codeContainerProperties).apply(types.inputs.machinelearningservices.codeContainerArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["codeContainerProperties"] = args ? (args.codeContainerProperties ? pulumi.output(args.codeContainerProperties).apply(types.inputs.codeContainerArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["codeName"] = args ? args.codeName : undefined;
             resourceInputs["registryName"] = args ? args.registryName : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
@@ -96,7 +96,7 @@ export interface RegistryCodeContainerArgs {
     /**
      * [Required] Additional attributes of the entity.
      */
-    codeContainerProperties: pulumi.Input<types.inputs.machinelearningservices.CodeContainerArgs>;
+    codeContainerProperties: pulumi.Input<types.inputs.CodeContainerArgs>;
     /**
      * Container name.
      */

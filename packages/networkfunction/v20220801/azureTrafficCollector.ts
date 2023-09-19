@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Azure Traffic Collector resource.
  */
@@ -34,7 +34,7 @@ export class AzureTrafficCollector extends pulumi.CustomResource {
     /**
      * Collector Policies for Azure Traffic Collector.
      */
-    public readonly collectorPolicies!: pulumi.Output<types.outputs.networkfunction.v20220801.CollectorPolicyResponse[] | undefined>;
+    public readonly collectorPolicies!: pulumi.Output<types.outputs.CollectorPolicyResponse[] | undefined>;
     /**
      * A unique read-only string that changes whenever the resource is updated.
      */
@@ -54,7 +54,7 @@ export class AzureTrafficCollector extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.networkfunction.v20220801.TrackedResourceResponseSystemData>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.TrackedResourceResponseSystemData>;
     /**
      * Resource tags.
      */
@@ -66,7 +66,7 @@ export class AzureTrafficCollector extends pulumi.CustomResource {
     /**
      * The virtualHub to which the Azure Traffic Collector belongs.
      */
-    public /*out*/ readonly virtualHub!: pulumi.Output<types.outputs.networkfunction.v20220801.ResourceReferenceResponse | undefined>;
+    public /*out*/ readonly virtualHub!: pulumi.Output<types.outputs.ResourceReferenceResponse | undefined>;
 
     /**
      * Create a AzureTrafficCollector resource with the given unique name, arguments, and options.
@@ -123,7 +123,7 @@ export interface AzureTrafficCollectorArgs {
      * Collector Policies for Azure Traffic Collector.
      * These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
      */
-    collectorPolicies?: pulumi.Input<pulumi.Input<types.inputs.networkfunction.v20220801.CollectorPolicyArgs>[]>;
+    collectorPolicies?: pulumi.Input<pulumi.Input<types.inputs.CollectorPolicyArgs>[]>;
     /**
      * Resource location.
      */

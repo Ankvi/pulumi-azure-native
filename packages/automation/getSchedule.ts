@@ -37,7 +37,7 @@ export interface GetScheduleResult {
     /**
      * Gets or sets the advanced schedule.
      */
-    readonly advancedSchedule?: types.outputs.automation.AdvancedScheduleResponse;
+    readonly advancedSchedule?: types.outputs.AdvancedScheduleResponse;
     /**
      * Gets or sets the creation time.
      */

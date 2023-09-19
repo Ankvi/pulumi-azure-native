@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the properties of the specified user.
  */
@@ -36,7 +36,7 @@ export interface GetUserResult {
     /**
      * The password details.
      */
-    readonly encryptedPassword?: types.outputs.databoxedge.v20230701.AsymmetricEncryptedSecretResponse;
+    readonly encryptedPassword?: types.outputs.AsymmetricEncryptedSecretResponse;
     /**
      * The path ID that uniquely identifies the object.
      */
@@ -48,11 +48,11 @@ export interface GetUserResult {
     /**
      * List of shares that the user has rights on. This field should not be specified during user creation.
      */
-    readonly shareAccessRights: types.outputs.databoxedge.v20230701.ShareAccessRightResponse[];
+    readonly shareAccessRights: types.outputs.ShareAccessRightResponse[];
     /**
      * Metadata pertaining to creation and last modification of User
      */
-    readonly systemData: types.outputs.databoxedge.v20230701.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The hierarchical type of the object.
      */

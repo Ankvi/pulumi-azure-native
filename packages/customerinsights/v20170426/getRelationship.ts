@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets information about the specified relationship.
  */
@@ -52,7 +52,7 @@ export interface GetRelationshipResult {
     /**
      * The properties of the Relationship.
      */
-    readonly fields?: types.outputs.customerinsights.v20170426.PropertyDefinitionResponse[];
+    readonly fields?: types.outputs.PropertyDefinitionResponse[];
     /**
      * Resource ID.
      */
@@ -60,7 +60,7 @@ export interface GetRelationshipResult {
     /**
      * Optional property to be used to map fields in profile to their strong ids in related profile.
      */
-    readonly lookupMappings?: types.outputs.customerinsights.v20170426.RelationshipTypeMappingResponse[];
+    readonly lookupMappings?: types.outputs.RelationshipTypeMappingResponse[];
     /**
      * Resource name.
      */

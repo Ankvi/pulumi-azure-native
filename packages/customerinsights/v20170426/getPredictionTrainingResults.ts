@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets training results.
  */
@@ -36,11 +36,11 @@ export interface GetPredictionTrainingResultsResult {
     /**
      * Canonical profiles.
      */
-    readonly canonicalProfiles: types.outputs.customerinsights.v20170426.CanonicalProfileDefinitionResponse[];
+    readonly canonicalProfiles: types.outputs.CanonicalProfileDefinitionResponse[];
     /**
      * Prediction distribution.
      */
-    readonly predictionDistribution: types.outputs.customerinsights.v20170426.PredictionDistributionDefinitionResponse;
+    readonly predictionDistribution: types.outputs.PredictionDistributionDefinitionResponse;
     /**
      * Instance count of the primary profile.
      */

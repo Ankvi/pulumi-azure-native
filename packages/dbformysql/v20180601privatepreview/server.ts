@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents a server.
  */
@@ -50,7 +50,7 @@ export class Server extends pulumi.CustomResource {
     /**
      * The Azure Active Directory identity of the server.
      */
-    public /*out*/ readonly identity!: pulumi.Output<types.outputs.dbformysql.v20180601privatepreview.ResourceIdentityResponse | undefined>;
+    public /*out*/ readonly identity!: pulumi.Output<types.outputs.ResourceIdentityResponse | undefined>;
     /**
      * Status showing whether the server enabled infrastructure encryption.
      */
@@ -74,7 +74,7 @@ export class Server extends pulumi.CustomResource {
     /**
      * List of private endpoint connections on a server
      */
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.dbformysql.v20180601privatepreview.ServerPrivateEndpointConnectionResponse[]>;
+    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.ServerPrivateEndpointConnectionResponse[]>;
     /**
      * Whether or not public endpoint access is allowed for this server.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'
      */
@@ -90,7 +90,7 @@ export class Server extends pulumi.CustomResource {
     /**
      * The SKU (pricing tier) of the server.
      */
-    public readonly sku!: pulumi.Output<types.outputs.dbformysql.v20180601privatepreview.SkuResponse | undefined>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse | undefined>;
     /**
      * Enable ssl enforcement or not when connect to server.
      */
@@ -98,7 +98,7 @@ export class Server extends pulumi.CustomResource {
     /**
      * Storage profile of a server.
      */
-    public /*out*/ readonly storageProfile!: pulumi.Output<types.outputs.dbformysql.v20180601privatepreview.StorageProfileResponse | undefined>;
+    public /*out*/ readonly storageProfile!: pulumi.Output<types.outputs.StorageProfileResponse | undefined>;
     /**
      * Resource tags.
      */
@@ -198,7 +198,7 @@ export interface ServerArgs {
     /**
      * Properties of the server.
      */
-    properties: pulumi.Input<types.inputs.dbformysql.v20180601privatepreview.ServerPropertiesForDefaultCreateArgs | types.inputs.dbformysql.v20180601privatepreview.ServerPropertiesForGeoRestoreArgs | types.inputs.dbformysql.v20180601privatepreview.ServerPropertiesForReplicaArgs | types.inputs.dbformysql.v20180601privatepreview.ServerPropertiesForRestoreArgs>;
+    properties: pulumi.Input<types.inputs.ServerPropertiesForDefaultCreateArgs | types.inputs.ServerPropertiesForGeoRestoreArgs | types.inputs.ServerPropertiesForReplicaArgs | types.inputs.ServerPropertiesForRestoreArgs>;
     /**
      * The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
      */
@@ -210,7 +210,7 @@ export interface ServerArgs {
     /**
      * The SKU (pricing tier) of the server.
      */
-    sku?: pulumi.Input<types.inputs.dbformysql.v20180601privatepreview.SkuArgs>;
+    sku?: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Application-specific metadata in the form of key-value pairs.
      */

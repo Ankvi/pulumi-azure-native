@@ -37,7 +37,7 @@ export interface GetMarkupRuleResult {
     /**
      * Customer information for the markup rule.
      */
-    readonly customerDetails: types.outputs.costmanagement.CustomerMetadataResponse;
+    readonly customerDetails: types.outputs.CustomerMetadataResponse;
     /**
      * The description of the markup rule.
      */

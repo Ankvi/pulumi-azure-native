@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Network admin rule.
  */
@@ -46,7 +46,7 @@ export class AdminRule extends pulumi.CustomResource {
     /**
      * The destination address prefixes. CIDR or destination IP ranges.
      */
-    public readonly destinations!: pulumi.Output<types.outputs.network.v20230401.AddressPrefixItemResponse[] | undefined>;
+    public readonly destinations!: pulumi.Output<types.outputs.AddressPrefixItemResponse[] | undefined>;
     /**
      * Indicates if the traffic matched against the rule in inbound or outbound.
      */
@@ -87,11 +87,11 @@ export class AdminRule extends pulumi.CustomResource {
     /**
      * The CIDR or source IP ranges.
      */
-    public readonly sources!: pulumi.Output<types.outputs.network.v20230401.AddressPrefixItemResponse[] | undefined>;
+    public readonly sources!: pulumi.Output<types.outputs.AddressPrefixItemResponse[] | undefined>;
     /**
      * The system metadata related to this resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.network.v20230401.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource type.
      */
@@ -188,7 +188,7 @@ export interface AdminRuleArgs {
     /**
      * Indicates the access allowed for this particular rule
      */
-    access: pulumi.Input<string | types.enums.v20230401.SecurityConfigurationRuleAccess>;
+    access: pulumi.Input<string | types.enums.SecurityConfigurationRuleAccess>;
     /**
      * The name of the network manager Security Configuration.
      */
@@ -204,11 +204,11 @@ export interface AdminRuleArgs {
     /**
      * The destination address prefixes. CIDR or destination IP ranges.
      */
-    destinations?: pulumi.Input<pulumi.Input<types.inputs.network.v20230401.AddressPrefixItemArgs>[]>;
+    destinations?: pulumi.Input<pulumi.Input<types.inputs.AddressPrefixItemArgs>[]>;
     /**
      * Indicates if the traffic matched against the rule in inbound or outbound.
      */
-    direction: pulumi.Input<string | types.enums.v20230401.SecurityConfigurationRuleDirection>;
+    direction: pulumi.Input<string | types.enums.SecurityConfigurationRuleDirection>;
     /**
      * Whether the rule is custom or default.
      * Expected value is 'Custom'.
@@ -225,7 +225,7 @@ export interface AdminRuleArgs {
     /**
      * Network protocol this rule applies to.
      */
-    protocol: pulumi.Input<string | types.enums.v20230401.SecurityConfigurationRuleProtocol>;
+    protocol: pulumi.Input<string | types.enums.SecurityConfigurationRuleProtocol>;
     /**
      * The name of the resource group.
      */
@@ -245,5 +245,5 @@ export interface AdminRuleArgs {
     /**
      * The CIDR or source IP ranges.
      */
-    sources?: pulumi.Input<pulumi.Input<types.inputs.network.v20230401.AddressPrefixItemArgs>[]>;
+    sources?: pulumi.Input<pulumi.Input<types.inputs.AddressPrefixItemArgs>[]>;
 }

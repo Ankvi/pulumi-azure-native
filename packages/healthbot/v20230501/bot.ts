@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Azure Health Bot resource definition
  */
@@ -34,7 +34,7 @@ export class Bot extends pulumi.CustomResource {
     /**
      * The identity of the Azure Health Bot.
      */
-    public readonly identity!: pulumi.Output<types.outputs.healthbot.v20230501.IdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.IdentityResponse | undefined>;
     /**
      * The geo-location where the resource lives
      */
@@ -46,15 +46,15 @@ export class Bot extends pulumi.CustomResource {
     /**
      * The set of properties specific to Azure Health Bot resource.
      */
-    public readonly properties!: pulumi.Output<types.outputs.healthbot.v20230501.HealthBotPropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.HealthBotPropertiesResponse>;
     /**
      * SKU of the Azure Health Bot.
      */
-    public readonly sku!: pulumi.Output<types.outputs.healthbot.v20230501.SkuResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse>;
     /**
      * Metadata pertaining to creation and last modification of the resource
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.healthbot.v20230501.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -119,7 +119,7 @@ export interface BotArgs {
     /**
      * The identity of the Azure Health Bot.
      */
-    identity?: pulumi.Input<types.inputs.healthbot.v20230501.IdentityArgs>;
+    identity?: pulumi.Input<types.inputs.IdentityArgs>;
     /**
      * The geo-location where the resource lives
      */
@@ -127,7 +127,7 @@ export interface BotArgs {
     /**
      * The set of properties specific to Azure Health Bot resource.
      */
-    properties?: pulumi.Input<types.inputs.healthbot.v20230501.HealthBotPropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.HealthBotPropertiesArgs>;
     /**
      * The name of the Bot resource group in the user subscription.
      */
@@ -135,7 +135,7 @@ export interface BotArgs {
     /**
      * SKU of the Azure Health Bot.
      */
-    sku: pulumi.Input<types.inputs.healthbot.v20230501.SkuArgs>;
+    sku: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Resource tags.
      */

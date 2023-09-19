@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Friendly Secret name mapping to the any Secret or secret related information.
  */
@@ -39,7 +39,7 @@ export class Secret extends pulumi.CustomResource {
     /**
      * object which contains secret parameters
      */
-    public readonly parameters!: pulumi.Output<types.outputs.cdn.v20230501.AzureFirstPartyManagedCertificateParametersResponse | types.outputs.cdn.v20230501.CustomerCertificateParametersResponse | types.outputs.cdn.v20230501.ManagedCertificateParametersResponse | types.outputs.cdn.v20230501.UrlSigningKeyParametersResponse | undefined>;
+    public readonly parameters!: pulumi.Output<types.outputs.AzureFirstPartyManagedCertificateParametersResponse | types.outputs.CustomerCertificateParametersResponse | types.outputs.ManagedCertificateParametersResponse | types.outputs.UrlSigningKeyParametersResponse | undefined>;
     /**
      * The name of the profile which holds the secret.
      */
@@ -51,7 +51,7 @@ export class Secret extends pulumi.CustomResource {
     /**
      * Read only system data
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.cdn.v20230501.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource type.
      */
@@ -106,7 +106,7 @@ export interface SecretArgs {
     /**
      * object which contains secret parameters
      */
-    parameters?: pulumi.Input<types.inputs.cdn.v20230501.AzureFirstPartyManagedCertificateParametersArgs | types.inputs.cdn.v20230501.CustomerCertificateParametersArgs | types.inputs.cdn.v20230501.ManagedCertificateParametersArgs | types.inputs.cdn.v20230501.UrlSigningKeyParametersArgs>;
+    parameters?: pulumi.Input<types.inputs.AzureFirstPartyManagedCertificateParametersArgs | types.inputs.CustomerCertificateParametersArgs | types.inputs.ManagedCertificateParametersArgs | types.inputs.UrlSigningKeyParametersArgs>;
     /**
      * Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
      */

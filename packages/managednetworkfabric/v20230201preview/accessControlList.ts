@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The AccessControlList resource definition.
  */
@@ -42,7 +42,7 @@ export class AccessControlList extends pulumi.CustomResource {
     /**
      * Access Control List conditions.
      */
-    public readonly conditions!: pulumi.Output<types.outputs.managednetworkfabric.v20230201preview.AccessControlListConditionPropertiesResponse[]>;
+    public readonly conditions!: pulumi.Output<types.outputs.AccessControlListConditionPropertiesResponse[]>;
     /**
      * The geo-location where the resource lives
      */
@@ -58,7 +58,7 @@ export class AccessControlList extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.managednetworkfabric.v20230201preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -128,7 +128,7 @@ export interface AccessControlListArgs {
     /**
      * IP address family. Example: ipv4 | ipv6.
      */
-    addressFamily: pulumi.Input<string | types.enums.v20230201preview.AddressFamily>;
+    addressFamily: pulumi.Input<string | types.enums.AddressFamily>;
     /**
      * Switch configuration description.
      */
@@ -136,7 +136,7 @@ export interface AccessControlListArgs {
     /**
      * Access Control List conditions.
      */
-    conditions: pulumi.Input<pulumi.Input<types.inputs.managednetworkfabric.v20230201preview.AccessControlListConditionPropertiesArgs>[]>;
+    conditions: pulumi.Input<pulumi.Input<types.inputs.AccessControlListConditionPropertiesArgs>[]>;
     /**
      * The geo-location where the resource lives
      */

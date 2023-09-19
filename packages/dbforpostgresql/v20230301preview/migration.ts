@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Represents a migration resource.
  */
@@ -38,7 +38,7 @@ export class Migration extends pulumi.CustomResource {
     /**
      * Current status of migration
      */
-    public /*out*/ readonly currentStatus!: pulumi.Output<types.outputs.dbforpostgresql.v20230301preview.MigrationStatusResponse>;
+    public /*out*/ readonly currentStatus!: pulumi.Output<types.outputs.MigrationStatusResponse>;
     /**
      * When you want to trigger cancel for specific databases send cancel flag as True and database names in this array
      */
@@ -90,7 +90,7 @@ export class Migration extends pulumi.CustomResource {
     /**
      * Metadata of the source database server
      */
-    public /*out*/ readonly sourceDbServerMetadata!: pulumi.Output<types.outputs.dbforpostgresql.v20230301preview.DbServerMetadataResponse>;
+    public /*out*/ readonly sourceDbServerMetadata!: pulumi.Output<types.outputs.DbServerMetadataResponse>;
     /**
      * ResourceId of the source database server
      */
@@ -102,7 +102,7 @@ export class Migration extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.dbforpostgresql.v20230301preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -114,7 +114,7 @@ export class Migration extends pulumi.CustomResource {
     /**
      * Metadata of the target database server
      */
-    public /*out*/ readonly targetDbServerMetadata!: pulumi.Output<types.outputs.dbforpostgresql.v20230301preview.DbServerMetadataResponse>;
+    public /*out*/ readonly targetDbServerMetadata!: pulumi.Output<types.outputs.DbServerMetadataResponse>;
     /**
      * ResourceId of the source database server
      */
@@ -214,7 +214,7 @@ export interface MigrationArgs {
     /**
      * To trigger cancel for entire migration we need to send this flag as True
      */
-    cancel?: pulumi.Input<string | types.enums.v20230301preview.CancelEnum>;
+    cancel?: pulumi.Input<string | types.enums.CancelEnum>;
     /**
      * When you want to trigger cancel for specific databases send cancel flag as True and database names in this array
      */
@@ -234,7 +234,7 @@ export interface MigrationArgs {
     /**
      * There are two types of migration modes Online and Offline
      */
-    migrationMode?: pulumi.Input<string | types.enums.v20230301preview.MigrationMode>;
+    migrationMode?: pulumi.Input<string | types.enums.MigrationMode>;
     /**
      * The name of the migration.
      */
@@ -250,7 +250,7 @@ export interface MigrationArgs {
     /**
      * Indicates whether the databases on the target server can be overwritten, if already present. If set to False, the migration workflow will wait for a confirmation, if it detects that the database already exists.
      */
-    overwriteDbsInTarget?: pulumi.Input<string | types.enums.v20230301preview.OverwriteDbsInTargetEnum>;
+    overwriteDbsInTarget?: pulumi.Input<string | types.enums.OverwriteDbsInTargetEnum>;
     /**
      * The resource group name of the target database server.
      */
@@ -258,11 +258,11 @@ export interface MigrationArgs {
     /**
      * Migration secret parameters
      */
-    secretParameters?: pulumi.Input<types.inputs.dbforpostgresql.v20230301preview.MigrationSecretParametersArgs>;
+    secretParameters?: pulumi.Input<types.inputs.MigrationSecretParametersArgs>;
     /**
      * Indicates whether to setup LogicalReplicationOnSourceDb, if needed
      */
-    setupLogicalReplicationOnSourceDbIfNeeded?: pulumi.Input<string | types.enums.v20230301preview.LogicalReplicationOnSourceDbEnum>;
+    setupLogicalReplicationOnSourceDbIfNeeded?: pulumi.Input<string | types.enums.LogicalReplicationOnSourceDbEnum>;
     /**
      * Source server fully qualified domain name or ip. It is a optional value, if customer provide it, dms will always use it for connection
      */
@@ -274,7 +274,7 @@ export interface MigrationArgs {
     /**
      * Indicates whether the data migration should start right away
      */
-    startDataMigration?: pulumi.Input<string | types.enums.v20230301preview.StartDataMigrationEnum>;
+    startDataMigration?: pulumi.Input<string | types.enums.StartDataMigrationEnum>;
     /**
      * The subscription ID of the target database server.
      */
@@ -294,5 +294,5 @@ export interface MigrationArgs {
     /**
      * To trigger cutover for entire migration we need to send this flag as True
      */
-    triggerCutover?: pulumi.Input<string | types.enums.v20230301preview.TriggerCutoverEnum>;
+    triggerCutover?: pulumi.Input<string | types.enums.TriggerCutoverEnum>;
 }

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Retrieve the Database Migration Service
  */
@@ -39,7 +39,7 @@ export interface GetSqlMigrationServiceResult {
      * Provisioning state to track the async operation status.
      */
     readonly provisioningState: string;
-    readonly systemData: types.outputs.datamigration.v20220330preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     readonly tags?: {[key: string]: string};
     readonly type: string;
 }

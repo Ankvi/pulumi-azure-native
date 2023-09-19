@@ -31,7 +31,7 @@ export interface ListMediaServiceEdgePoliciesArgs {
 }
 
 export interface ListMediaServiceEdgePoliciesResult {
-    readonly usageDataCollectionPolicy?: types.outputs.media.EdgeUsageDataCollectionPolicyResponse;
+    readonly usageDataCollectionPolicy?: types.outputs.EdgeUsageDataCollectionPolicyResponse;
 }
 /**
  * List all the media edge policies associated with the Media Services account.

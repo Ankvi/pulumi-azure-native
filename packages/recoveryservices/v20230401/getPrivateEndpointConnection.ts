@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get Private Endpoint Connection. This call is made by Backup Admin.
  */
@@ -52,7 +52,7 @@ export interface GetPrivateEndpointConnectionResult {
     /**
      * PrivateEndpointConnectionResource properties
      */
-    readonly properties: types.outputs.recoveryservices.v20230401.PrivateEndpointConnectionResponse;
+    readonly properties: types.outputs.PrivateEndpointConnectionResponse;
     /**
      * Resource tags.
      */

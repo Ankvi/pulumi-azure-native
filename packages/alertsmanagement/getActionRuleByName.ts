@@ -44,7 +44,7 @@ export interface GetActionRuleByNameResult {
     /**
      * action rule properties
      */
-    readonly properties: types.outputs.alertsmanagement.ActionGroupResponse | types.outputs.alertsmanagement.DiagnosticsResponse | types.outputs.alertsmanagement.SuppressionResponse;
+    readonly properties: types.outputs.ActionGroupResponse | types.outputs.DiagnosticsResponse | types.outputs.SuppressionResponse;
     /**
      * Resource tags
      */

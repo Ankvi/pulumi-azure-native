@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Gets the properties of the specified IoT Connector.
  */
@@ -36,7 +36,7 @@ export interface GetIotConnectorResult {
     /**
      * Device Mappings.
      */
-    readonly deviceMapping?: types.outputs.healthcareapis.v20230228.IotMappingPropertiesResponse;
+    readonly deviceMapping?: types.outputs.IotMappingPropertiesResponse;
     /**
      * An etag associated with the resource, used for optimistic concurrency when editing it.
      */
@@ -48,11 +48,11 @@ export interface GetIotConnectorResult {
     /**
      * Setting indicating whether the service has a managed identity associated with it.
      */
-    readonly identity?: types.outputs.healthcareapis.v20230228.ServiceManagedIdentityResponseIdentity;
+    readonly identity?: types.outputs.ServiceManagedIdentityResponseIdentity;
     /**
      * Source configuration.
      */
-    readonly ingestionEndpointConfiguration?: types.outputs.healthcareapis.v20230228.IotEventHubIngestionEndpointConfigurationResponse;
+    readonly ingestionEndpointConfiguration?: types.outputs.IotEventHubIngestionEndpointConfigurationResponse;
     /**
      * The resource location.
      */
@@ -68,7 +68,7 @@ export interface GetIotConnectorResult {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    readonly systemData: types.outputs.healthcareapis.v20230228.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

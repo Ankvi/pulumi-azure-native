@@ -43,7 +43,7 @@ export class Profile extends pulumi.CustomResource {
     /**
      * Managed service identity (system assigned and/or user assigned identities).
      */
-    public readonly identity!: pulumi.Output<types.outputs.cdn.ManagedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
      * Kind of the profile. Used by portal to differentiate traditional CDN profile and new AFD profile.
      */
@@ -71,11 +71,11 @@ export class Profile extends pulumi.CustomResource {
     /**
      * The pricing tier (defines Azure Front Door Standard or Premium or a CDN provider, feature list and rate) of the profile.
      */
-    public readonly sku!: pulumi.Output<types.outputs.cdn.SkuResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse>;
     /**
      * Read only system data
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.cdn.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -146,7 +146,7 @@ export interface ProfileArgs {
     /**
      * Managed service identity (system assigned and/or user assigned identities).
      */
-    identity?: pulumi.Input<types.inputs.cdn.ManagedServiceIdentityArgs>;
+    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
      * Resource location.
      */
@@ -166,7 +166,7 @@ export interface ProfileArgs {
     /**
      * The pricing tier (defines Azure Front Door Standard or Premium or a CDN provider, feature list and rate) of the profile.
      */
-    sku: pulumi.Input<types.inputs.cdn.SkuArgs>;
+    sku: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Resource tags.
      */

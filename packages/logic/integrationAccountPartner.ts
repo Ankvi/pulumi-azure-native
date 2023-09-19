@@ -39,7 +39,7 @@ export class IntegrationAccountPartner extends pulumi.CustomResource {
     /**
      * The partner content.
      */
-    public readonly content!: pulumi.Output<types.outputs.logic.PartnerContentResponse>;
+    public readonly content!: pulumi.Output<types.outputs.PartnerContentResponse>;
     /**
      * The created time.
      */
@@ -129,7 +129,7 @@ export interface IntegrationAccountPartnerArgs {
     /**
      * The partner content.
      */
-    content: pulumi.Input<types.inputs.logic.PartnerContentArgs>;
+    content: pulumi.Input<types.inputs.PartnerContentArgs>;
     /**
      * The integration account name.
      */

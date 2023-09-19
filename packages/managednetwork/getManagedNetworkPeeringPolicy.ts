@@ -49,7 +49,7 @@ export interface GetManagedNetworkPeeringPolicyResult {
     /**
      * Gets or sets the properties of a Managed Network Policy
      */
-    readonly properties: types.outputs.managednetwork.ManagedNetworkPeeringPolicyPropertiesResponse;
+    readonly properties: types.outputs.ManagedNetworkPeeringPolicyPropertiesResponse;
     /**
      * The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
      */

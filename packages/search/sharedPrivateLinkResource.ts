@@ -39,7 +39,7 @@ export class SharedPrivateLinkResource extends pulumi.CustomResource {
     /**
      * Describes the properties of a Shared Private Link Resource managed by the Azure Cognitive Search service.
      */
-    public readonly properties!: pulumi.Output<types.outputs.search.SharedPrivateLinkResourcePropertiesResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.SharedPrivateLinkResourcePropertiesResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -87,7 +87,7 @@ export interface SharedPrivateLinkResourceArgs {
     /**
      * Describes the properties of a Shared Private Link Resource managed by the Azure Cognitive Search service.
      */
-    properties?: pulumi.Input<types.inputs.search.SharedPrivateLinkResourcePropertiesArgs>;
+    properties?: pulumi.Input<types.inputs.SharedPrivateLinkResourcePropertiesArgs>;
     /**
      * The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Attached data network resource. Must be created in the same location as its parent packet core data plane.
  */
@@ -47,7 +47,7 @@ export class AttachedDataNetwork extends pulumi.CustomResource {
      * The network address and port translation (NAPT) configuration.
      * If this is not specified, the attached data network will use a default NAPT configuration with NAPT enabled.
      */
-    public readonly naptConfiguration!: pulumi.Output<types.outputs.mobilenetwork.v20221101.NaptConfigurationResponse | undefined>;
+    public readonly naptConfiguration!: pulumi.Output<types.outputs.NaptConfigurationResponse | undefined>;
     /**
      * The provisioning state of the attached data network resource.
      */
@@ -55,7 +55,7 @@ export class AttachedDataNetwork extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.mobilenetwork.v20221101.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -79,7 +79,7 @@ export class AttachedDataNetwork extends pulumi.CustomResource {
     /**
      * The user plane interface on the data network. For 5G networks, this is the N6 interface. For 4G networks, this is the SGi interface.
      */
-    public readonly userPlaneDataInterface!: pulumi.Output<types.outputs.mobilenetwork.v20221101.InterfacePropertiesResponse>;
+    public readonly userPlaneDataInterface!: pulumi.Output<types.outputs.InterfacePropertiesResponse>;
 
     /**
      * Create a AttachedDataNetwork resource with the given unique name, arguments, and options.
@@ -110,7 +110,7 @@ export class AttachedDataNetwork extends pulumi.CustomResource {
             resourceInputs["attachedDataNetworkName"] = args ? args.attachedDataNetworkName : undefined;
             resourceInputs["dnsAddresses"] = args ? args.dnsAddresses : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["naptConfiguration"] = args ? (args.naptConfiguration ? pulumi.output(args.naptConfiguration).apply(types.inputs.mobilenetwork.v20221101.naptConfigurationArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["naptConfiguration"] = args ? (args.naptConfiguration ? pulumi.output(args.naptConfiguration).apply(types.inputs.naptConfigurationArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["packetCoreControlPlaneName"] = args ? args.packetCoreControlPlaneName : undefined;
             resourceInputs["packetCoreDataPlaneName"] = args ? args.packetCoreDataPlaneName : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
@@ -162,7 +162,7 @@ export interface AttachedDataNetworkArgs {
      * The network address and port translation (NAPT) configuration.
      * If this is not specified, the attached data network will use a default NAPT configuration with NAPT enabled.
      */
-    naptConfiguration?: pulumi.Input<types.inputs.mobilenetwork.v20221101.NaptConfigurationArgs>;
+    naptConfiguration?: pulumi.Input<types.inputs.NaptConfigurationArgs>;
     /**
      * The name of the packet core control plane.
      */
@@ -194,5 +194,5 @@ export interface AttachedDataNetworkArgs {
     /**
      * The user plane interface on the data network. For 5G networks, this is the N6 interface. For 4G networks, this is the SGi interface.
      */
-    userPlaneDataInterface: pulumi.Input<types.inputs.mobilenetwork.v20221101.InterfacePropertiesArgs>;
+    userPlaneDataInterface: pulumi.Input<types.inputs.InterfacePropertiesArgs>;
 }

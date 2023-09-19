@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Returns the properties for the specified storage account including but not limited to name, SKU name, location, and account status. The ListKeys operation should be used to retrieve storage keys.
  */
@@ -56,11 +56,11 @@ export interface GetStorageAccountResult {
     /**
      * Provides the identity based authentication settings for Azure Files.
      */
-    readonly azureFilesIdentityBasedAuthentication?: types.outputs.storage.v20220901.AzureFilesIdentityBasedAuthenticationResponse;
+    readonly azureFilesIdentityBasedAuthentication?: types.outputs.AzureFilesIdentityBasedAuthenticationResponse;
     /**
      * Blob restore status
      */
-    readonly blobRestoreStatus: types.outputs.storage.v20220901.BlobRestoreStatusResponse;
+    readonly blobRestoreStatus: types.outputs.BlobRestoreStatusResponse;
     /**
      * Gets the creation date and time of the storage account in UTC.
      */
@@ -68,7 +68,7 @@ export interface GetStorageAccountResult {
     /**
      * Gets the custom domain the user assigned to this storage account.
      */
-    readonly customDomain: types.outputs.storage.v20220901.CustomDomainResponse;
+    readonly customDomain: types.outputs.CustomDomainResponse;
     /**
      * A boolean flag which indicates whether the default authentication is OAuth or not. The default interpretation is false for this property.
      */
@@ -88,11 +88,11 @@ export interface GetStorageAccountResult {
     /**
      * Encryption settings to be used for server-side encryption for the storage account.
      */
-    readonly encryption: types.outputs.storage.v20220901.EncryptionResponse;
+    readonly encryption: types.outputs.EncryptionResponse;
     /**
      * The extendedLocation of the resource.
      */
-    readonly extendedLocation?: types.outputs.storage.v20220901.ExtendedLocationResponse;
+    readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
     /**
      * If the failover is in progress, the value will be true, otherwise, it will be null.
      */
@@ -100,7 +100,7 @@ export interface GetStorageAccountResult {
     /**
      * Geo Replication Stats
      */
-    readonly geoReplicationStats: types.outputs.storage.v20220901.GeoReplicationStatsResponse;
+    readonly geoReplicationStats: types.outputs.GeoReplicationStatsResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -108,11 +108,11 @@ export interface GetStorageAccountResult {
     /**
      * The identity of the resource.
      */
-    readonly identity?: types.outputs.storage.v20220901.IdentityResponse;
+    readonly identity?: types.outputs.IdentityResponse;
     /**
      * The property is immutable and can only be set to true at the account creation time. When set to true, it enables object level immutability for all the containers in the account by default.
      */
-    readonly immutableStorageWithVersioning?: types.outputs.storage.v20220901.ImmutableStorageAccountResponse;
+    readonly immutableStorageWithVersioning?: types.outputs.ImmutableStorageAccountResponse;
     /**
      * Account HierarchicalNamespace enabled if sets to true.
      */
@@ -128,11 +128,11 @@ export interface GetStorageAccountResult {
     /**
      * Storage account keys creation time.
      */
-    readonly keyCreationTime: types.outputs.storage.v20220901.KeyCreationTimeResponse;
+    readonly keyCreationTime: types.outputs.KeyCreationTimeResponse;
     /**
      * KeyPolicy assigned to the storage account.
      */
-    readonly keyPolicy: types.outputs.storage.v20220901.KeyPolicyResponse;
+    readonly keyPolicy: types.outputs.KeyPolicyResponse;
     /**
      * Gets the Kind.
      */
@@ -160,11 +160,11 @@ export interface GetStorageAccountResult {
     /**
      * Network rule set
      */
-    readonly networkRuleSet: types.outputs.storage.v20220901.NetworkRuleSetResponse;
+    readonly networkRuleSet: types.outputs.NetworkRuleSetResponse;
     /**
      * Gets the URLs that are used to perform a retrieval of a public blob, queue, or table object. Note that Standard_ZRS and Premium_LRS accounts only return the blob endpoint.
      */
-    readonly primaryEndpoints: types.outputs.storage.v20220901.EndpointsResponse;
+    readonly primaryEndpoints: types.outputs.EndpointsResponse;
     /**
      * Gets the location of the primary data center for the storage account.
      */
@@ -172,7 +172,7 @@ export interface GetStorageAccountResult {
     /**
      * List of private endpoint connection associated with the specified storage account
      */
-    readonly privateEndpointConnections: types.outputs.storage.v20220901.PrivateEndpointConnectionResponse[];
+    readonly privateEndpointConnections: types.outputs.PrivateEndpointConnectionResponse[];
     /**
      * Gets the status of the storage account at the time the operation was called.
      */
@@ -184,15 +184,15 @@ export interface GetStorageAccountResult {
     /**
      * Maintains information about the network routing choice opted by the user for data transfer
      */
-    readonly routingPreference?: types.outputs.storage.v20220901.RoutingPreferenceResponse;
+    readonly routingPreference?: types.outputs.RoutingPreferenceResponse;
     /**
      * SasPolicy assigned to the storage account.
      */
-    readonly sasPolicy: types.outputs.storage.v20220901.SasPolicyResponse;
+    readonly sasPolicy: types.outputs.SasPolicyResponse;
     /**
      * Gets the URLs that are used to perform a retrieval of a public blob, queue, or table object from the secondary location of the storage account. Only available if the SKU name is Standard_RAGRS.
      */
-    readonly secondaryEndpoints: types.outputs.storage.v20220901.EndpointsResponse;
+    readonly secondaryEndpoints: types.outputs.EndpointsResponse;
     /**
      * Gets the location of the geo-replicated secondary for the storage account. Only available if the accountType is Standard_GRS or Standard_RAGRS.
      */
@@ -200,7 +200,7 @@ export interface GetStorageAccountResult {
     /**
      * Gets the SKU.
      */
-    readonly sku: types.outputs.storage.v20220901.SkuResponse;
+    readonly sku: types.outputs.SkuResponse;
     /**
      * Gets the status indicating whether the primary location of the storage account is available or unavailable.
      */
@@ -212,7 +212,7 @@ export interface GetStorageAccountResult {
     /**
      * This property is readOnly and is set by server during asynchronous storage account sku conversion operations.
      */
-    readonly storageAccountSkuConversionStatus?: types.outputs.storage.v20220901.StorageAccountSkuConversionStatusResponse;
+    readonly storageAccountSkuConversionStatus?: types.outputs.StorageAccountSkuConversionStatusResponse;
     /**
      * Resource tags.
      */

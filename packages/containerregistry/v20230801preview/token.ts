@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * An object that represents a token for a container registry.
  */
@@ -38,7 +38,7 @@ export class Token extends pulumi.CustomResource {
     /**
      * The credentials that can be used for authenticating the token.
      */
-    public readonly credentials!: pulumi.Output<types.outputs.containerregistry.v20230801preview.TokenCredentialsPropertiesResponse | undefined>;
+    public readonly credentials!: pulumi.Output<types.outputs.TokenCredentialsPropertiesResponse | undefined>;
     /**
      * The name of the resource.
      */
@@ -58,7 +58,7 @@ export class Token extends pulumi.CustomResource {
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.containerregistry.v20230801preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource.
      */
@@ -116,7 +116,7 @@ export interface TokenArgs {
     /**
      * The credentials that can be used for authenticating the token.
      */
-    credentials?: pulumi.Input<types.inputs.containerregistry.v20230801preview.TokenCredentialsPropertiesArgs>;
+    credentials?: pulumi.Input<types.inputs.TokenCredentialsPropertiesArgs>;
     /**
      * The name of the container registry.
      */
@@ -132,7 +132,7 @@ export interface TokenArgs {
     /**
      * The status of the token example enabled or disabled.
      */
-    status?: pulumi.Input<string | types.enums.v20230801preview.TokenStatus>;
+    status?: pulumi.Input<string | types.enums.TokenStatus>;
     /**
      * The name of the token.
      */

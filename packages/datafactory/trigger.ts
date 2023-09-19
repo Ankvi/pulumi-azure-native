@@ -43,7 +43,7 @@ export class Trigger extends pulumi.CustomResource {
     /**
      * Properties of the trigger.
      */
-    public readonly properties!: pulumi.Output<types.outputs.datafactory.BlobEventsTriggerResponse | types.outputs.datafactory.BlobTriggerResponse | types.outputs.datafactory.ChainingTriggerResponse | types.outputs.datafactory.CustomEventsTriggerResponse | types.outputs.datafactory.MultiplePipelineTriggerResponse | types.outputs.datafactory.RerunTumblingWindowTriggerResponse | types.outputs.datafactory.ScheduleTriggerResponse | types.outputs.datafactory.TumblingWindowTriggerResponse>;
+    public readonly properties!: pulumi.Output<types.outputs.BlobEventsTriggerResponse | types.outputs.BlobTriggerResponse | types.outputs.ChainingTriggerResponse | types.outputs.CustomEventsTriggerResponse | types.outputs.MultiplePipelineTriggerResponse | types.outputs.RerunTumblingWindowTriggerResponse | types.outputs.ScheduleTriggerResponse | types.outputs.TumblingWindowTriggerResponse>;
     /**
      * The resource type.
      */
@@ -100,7 +100,7 @@ export interface TriggerArgs {
     /**
      * Properties of the trigger.
      */
-    properties: pulumi.Input<types.inputs.datafactory.BlobEventsTriggerArgs | types.inputs.datafactory.BlobTriggerArgs | types.inputs.datafactory.ChainingTriggerArgs | types.inputs.datafactory.CustomEventsTriggerArgs | types.inputs.datafactory.MultiplePipelineTriggerArgs | types.inputs.datafactory.RerunTumblingWindowTriggerArgs | types.inputs.datafactory.ScheduleTriggerArgs | types.inputs.datafactory.TumblingWindowTriggerArgs>;
+    properties: pulumi.Input<types.inputs.BlobEventsTriggerArgs | types.inputs.BlobTriggerArgs | types.inputs.ChainingTriggerArgs | types.inputs.CustomEventsTriggerArgs | types.inputs.MultiplePipelineTriggerArgs | types.inputs.RerunTumblingWindowTriggerArgs | types.inputs.ScheduleTriggerArgs | types.inputs.TumblingWindowTriggerArgs>;
     /**
      * The resource group name.
      */

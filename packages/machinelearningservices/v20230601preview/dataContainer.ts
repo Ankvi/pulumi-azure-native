@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Azure Resource Manager resource envelope.
  */
@@ -34,7 +34,7 @@ export class DataContainer extends pulumi.CustomResource {
     /**
      * [Required] Additional attributes of the entity.
      */
-    public readonly dataContainerProperties!: pulumi.Output<types.outputs.machinelearningservices.v20230601preview.DataContainerResponse>;
+    public readonly dataContainerProperties!: pulumi.Output<types.outputs.DataContainerResponse>;
     /**
      * The name of the resource
      */
@@ -42,7 +42,7 @@ export class DataContainer extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.machinelearningservices.v20230601preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -68,7 +68,7 @@ export class DataContainer extends pulumi.CustomResource {
             if ((!args || args.workspaceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workspaceName'");
             }
-            resourceInputs["dataContainerProperties"] = args ? (args.dataContainerProperties ? pulumi.output(args.dataContainerProperties).apply(types.inputs.machinelearningservices.v20230601preview.dataContainerArgsProvideDefaults) : undefined) : undefined;
+            resourceInputs["dataContainerProperties"] = args ? (args.dataContainerProperties ? pulumi.output(args.dataContainerProperties).apply(types.inputs.dataContainerArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["workspaceName"] = args ? args.workspaceName : undefined;
@@ -94,7 +94,7 @@ export interface DataContainerArgs {
     /**
      * [Required] Additional attributes of the entity.
      */
-    dataContainerProperties: pulumi.Input<types.inputs.machinelearningservices.v20230601preview.DataContainerArgs>;
+    dataContainerProperties: pulumi.Input<types.inputs.DataContainerArgs>;
     /**
      * Container name.
      */

@@ -75,7 +75,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * The properties of the storage account for the machine learning team account.
      */
-    public readonly storageAccount!: pulumi.Output<types.outputs.machinelearningexperimentation.StorageAccountPropertiesResponse>;
+    public readonly storageAccount!: pulumi.Output<types.outputs.StorageAccountPropertiesResponse>;
     /**
      * The tags of the resource.
      */
@@ -186,7 +186,7 @@ export interface AccountArgs {
     /**
      * The properties of the storage account for the machine learning team account.
      */
-    storageAccount: pulumi.Input<types.inputs.machinelearningexperimentation.StorageAccountPropertiesArgs>;
+    storageAccount: pulumi.Input<types.inputs.StorageAccountPropertiesArgs>;
     /**
      * The tags of the resource.
      */

@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * The virtual network resource definition.
  */
@@ -31,11 +31,11 @@ export interface GetVirtualNetworkResult {
     /**
      * DhcpOptions contains an array of DNS servers available to VMs deployed in the virtual network. Standard DHCP option for a subnet overrides VNET DHCP options.
      */
-    readonly dhcpOptions?: types.outputs.azurestackhci.v20221215preview.VirtualNetworkPropertiesResponseDhcpOptions;
+    readonly dhcpOptions?: types.outputs.VirtualNetworkPropertiesResponseDhcpOptions;
     /**
      * The extendedLocation of the resource.
      */
-    readonly extendedLocation?: types.outputs.azurestackhci.v20221215preview.ExtendedLocationResponse;
+    readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
     /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
@@ -59,15 +59,15 @@ export interface GetVirtualNetworkResult {
     /**
      * The observed state of virtual networks
      */
-    readonly status: types.outputs.azurestackhci.v20221215preview.VirtualNetworkStatusResponse;
+    readonly status: types.outputs.VirtualNetworkStatusResponse;
     /**
      * Subnet - list of subnets under the virtual network
      */
-    readonly subnets?: types.outputs.azurestackhci.v20221215preview.VirtualNetworkPropertiesResponseSubnets[];
+    readonly subnets?: types.outputs.VirtualNetworkPropertiesResponseSubnets[];
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.azurestackhci.v20221215preview.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * Resource tags.
      */

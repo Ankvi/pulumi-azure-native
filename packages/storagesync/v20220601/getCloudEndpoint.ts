@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Get a given CloudEndpoint.
  */
@@ -49,7 +49,7 @@ export interface GetCloudEndpointResult {
     /**
      * Cloud endpoint change enumeration status
      */
-    readonly changeEnumerationStatus: types.outputs.storagesync.v20220601.CloudEndpointChangeEnumerationStatusResponse;
+    readonly changeEnumerationStatus: types.outputs.CloudEndpointChangeEnumerationStatusResponse;
     /**
      * Friendly Name
      */
@@ -89,7 +89,7 @@ export interface GetCloudEndpointResult {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    readonly systemData: types.outputs.storagesync.v20220601.SystemDataResponse;
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */

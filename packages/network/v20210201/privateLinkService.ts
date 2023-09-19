@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Private link service resource.
  */
@@ -38,7 +38,7 @@ export class PrivateLinkService extends pulumi.CustomResource {
     /**
      * The auto-approval list of the private link service.
      */
-    public readonly autoApproval!: pulumi.Output<types.outputs.network.v20210201.PrivateLinkServicePropertiesResponseAutoApproval | undefined>;
+    public readonly autoApproval!: pulumi.Output<types.outputs.PrivateLinkServicePropertiesResponseAutoApproval | undefined>;
     /**
      * Whether the private link service is enabled for proxy protocol or not.
      */
@@ -50,7 +50,7 @@ export class PrivateLinkService extends pulumi.CustomResource {
     /**
      * The extended location of the load balancer.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.network.v20210201.ExtendedLocationResponse | undefined>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse | undefined>;
     /**
      * The list of Fqdn.
      */
@@ -58,11 +58,11 @@ export class PrivateLinkService extends pulumi.CustomResource {
     /**
      * An array of private link service IP configurations.
      */
-    public readonly ipConfigurations!: pulumi.Output<types.outputs.network.v20210201.PrivateLinkServiceIpConfigurationResponse[] | undefined>;
+    public readonly ipConfigurations!: pulumi.Output<types.outputs.PrivateLinkServiceIpConfigurationResponse[] | undefined>;
     /**
      * An array of references to the load balancer IP configurations.
      */
-    public readonly loadBalancerFrontendIpConfigurations!: pulumi.Output<types.outputs.network.v20210201.FrontendIPConfigurationResponse[] | undefined>;
+    public readonly loadBalancerFrontendIpConfigurations!: pulumi.Output<types.outputs.FrontendIPConfigurationResponse[] | undefined>;
     /**
      * Resource location.
      */
@@ -74,11 +74,11 @@ export class PrivateLinkService extends pulumi.CustomResource {
     /**
      * An array of references to the network interfaces created for this private link service.
      */
-    public /*out*/ readonly networkInterfaces!: pulumi.Output<types.outputs.network.v20210201.NetworkInterfaceResponse[]>;
+    public /*out*/ readonly networkInterfaces!: pulumi.Output<types.outputs.NetworkInterfaceResponse[]>;
     /**
      * An array of list about connections to the private endpoint.
      */
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.network.v20210201.PrivateEndpointConnectionResponse[]>;
+    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[]>;
     /**
      * The provisioning state of the private link service resource.
      */
@@ -98,7 +98,7 @@ export class PrivateLinkService extends pulumi.CustomResource {
     /**
      * The visibility list of the private link service.
      */
-    public readonly visibility!: pulumi.Output<types.outputs.network.v20210201.PrivateLinkServicePropertiesResponseVisibility | undefined>;
+    public readonly visibility!: pulumi.Output<types.outputs.PrivateLinkServicePropertiesResponseVisibility | undefined>;
 
     /**
      * Create a PrivateLinkService resource with the given unique name, arguments, and options.
@@ -167,7 +167,7 @@ export interface PrivateLinkServiceArgs {
     /**
      * The auto-approval list of the private link service.
      */
-    autoApproval?: pulumi.Input<types.inputs.network.v20210201.PrivateLinkServicePropertiesAutoApprovalArgs>;
+    autoApproval?: pulumi.Input<types.inputs.PrivateLinkServicePropertiesAutoApprovalArgs>;
     /**
      * Whether the private link service is enabled for proxy protocol or not.
      */
@@ -175,7 +175,7 @@ export interface PrivateLinkServiceArgs {
     /**
      * The extended location of the load balancer.
      */
-    extendedLocation?: pulumi.Input<types.inputs.network.v20210201.ExtendedLocationArgs>;
+    extendedLocation?: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * The list of Fqdn.
      */
@@ -187,11 +187,11 @@ export interface PrivateLinkServiceArgs {
     /**
      * An array of private link service IP configurations.
      */
-    ipConfigurations?: pulumi.Input<pulumi.Input<types.inputs.network.v20210201.PrivateLinkServiceIpConfigurationArgs>[]>;
+    ipConfigurations?: pulumi.Input<pulumi.Input<types.inputs.PrivateLinkServiceIpConfigurationArgs>[]>;
     /**
      * An array of references to the load balancer IP configurations.
      */
-    loadBalancerFrontendIpConfigurations?: pulumi.Input<pulumi.Input<types.inputs.network.v20210201.FrontendIPConfigurationArgs>[]>;
+    loadBalancerFrontendIpConfigurations?: pulumi.Input<pulumi.Input<types.inputs.FrontendIPConfigurationArgs>[]>;
     /**
      * Resource location.
      */
@@ -215,5 +215,5 @@ export interface PrivateLinkServiceArgs {
     /**
      * The visibility list of the private link service.
      */
-    visibility?: pulumi.Input<types.inputs.network.v20210201.PrivateLinkServicePropertiesVisibilityArgs>;
+    visibility?: pulumi.Input<types.inputs.PrivateLinkServicePropertiesVisibilityArgs>;
 }

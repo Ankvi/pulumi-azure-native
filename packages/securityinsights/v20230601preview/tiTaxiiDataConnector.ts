@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Data connector to pull Threat intelligence data from TAXII 2.0/2.1 server
  */
@@ -38,7 +38,7 @@ export class TiTaxiiDataConnector extends pulumi.CustomResource {
     /**
      * The available data types for Threat Intelligence TAXII data connector.
      */
-    public readonly dataTypes!: pulumi.Output<types.outputs.securityinsights.v20230601preview.TiTaxiiDataConnectorDataTypesResponse>;
+    public readonly dataTypes!: pulumi.Output<types.outputs.TiTaxiiDataConnectorDataTypesResponse>;
     /**
      * Etag of the azure resource
      */
@@ -67,7 +67,7 @@ export class TiTaxiiDataConnector extends pulumi.CustomResource {
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.securityinsights.v20230601preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * The lookback period for the TAXII server.
      */
@@ -179,7 +179,7 @@ export interface TiTaxiiDataConnectorArgs {
     /**
      * The available data types for Threat Intelligence TAXII data connector.
      */
-    dataTypes: pulumi.Input<types.inputs.securityinsights.v20230601preview.TiTaxiiDataConnectorDataTypesArgs>;
+    dataTypes: pulumi.Input<types.inputs.TiTaxiiDataConnectorDataTypesArgs>;
     /**
      * The friendly name for the TAXII server.
      */
@@ -196,7 +196,7 @@ export interface TiTaxiiDataConnectorArgs {
     /**
      * The polling frequency for the TAXII server.
      */
-    pollingFrequency: pulumi.Input<string | types.enums.v20230601preview.PollingFrequency>;
+    pollingFrequency: pulumi.Input<string | types.enums.PollingFrequency>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

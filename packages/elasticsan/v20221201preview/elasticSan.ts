@@ -1,6 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
-import * as types from "../types";
+import * as types from "./types";
 /**
  * Response for ElasticSan request.
  */
@@ -54,7 +54,7 @@ export class ElasticSan extends pulumi.CustomResource {
     /**
      * The list of Private Endpoint Connections.
      */
-    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.elasticsan.v20221201preview.PrivateEndpointConnectionResponse[]>;
+    public /*out*/ readonly privateEndpointConnections!: pulumi.Output<types.outputs.PrivateEndpointConnectionResponse[]>;
     /**
      * State of the operation on the resource.
      */
@@ -62,11 +62,11 @@ export class ElasticSan extends pulumi.CustomResource {
     /**
      * resource sku
      */
-    public readonly sku!: pulumi.Output<types.outputs.elasticsan.v20221201preview.SkuResponse>;
+    public readonly sku!: pulumi.Output<types.outputs.SkuResponse>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
-    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.elasticsan.v20221201preview.SystemDataResponse>;
+    public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
      * Resource tags.
      */
@@ -193,7 +193,7 @@ export interface ElasticSanArgs {
     /**
      * resource sku
      */
-    sku: pulumi.Input<types.inputs.elasticsan.v20221201preview.SkuArgs>;
+    sku: pulumi.Input<types.inputs.SkuArgs>;
     /**
      * Resource tags.
      */
