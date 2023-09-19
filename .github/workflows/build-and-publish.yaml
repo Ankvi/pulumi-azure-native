@@ -3,8 +3,8 @@ name: Publish packages to npm
 on:
   workflow_dispatch:
 
-  schedule:
-    - cron: "50 * * * 1,2"
+  # schedule:
+  #   - cron: "50 * * * 1,3,5"
 
 jobs:
   build-and-publish:
