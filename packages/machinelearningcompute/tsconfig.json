@@ -1,16 +1,5 @@
 {
-    "compilerOptions": {
-        "target": "ES2016",
-        "module": "CommonJS",
-        "skipLibCheck": true,
-        "skipDefaultLibCheck": true,
-        "moduleResolution": "node",
-        "declaration": true,
-        "inlineSourceMap": true,
-        "experimentalDecorators": true,
-        "forceConsistentCasingInFileNames": true,
-        "strict": true
-    },
+    "extends": "../../tsconfig",
     "include": [
         "**/*.ts"
     ],

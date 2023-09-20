@@ -28,6 +28,6 @@
     "scripts": {
         "build": "tsc",
         "lint": "tsc --noEmit",
-        "prepublish": "pnpm run build"
+        "prepublish": "test -f index.js"
     }
 }
