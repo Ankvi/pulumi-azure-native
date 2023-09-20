@@ -33,11 +33,11 @@ if (!options.yes) {
 for (const name of packagesForCurrentHour) {
     console.log(`Publishing ${name}`);
 
-    const proc = Bun.spawn(["pnpm", "--filter", name, "publish"], {
-        cwd: `${import.meta.dir}/..`
-    });
-    await proc.exited;
+    const buildProcess = Bun.spawn(["pnpm", "--filter", name, "build"]);
+    const exitCode = await buildProcess.exited;
+    if (exitCode) {
+        throw new Error(`Build failed with exit code: ${exitCode}\n${buildProcess.stderr}`);
+    }
 
-    console.log(`Finished publishing ${name}. Waiting 10 seconds until next publish to avoid rate limiting.`);
-    await Bun.sleep(10 * 1000);
+    await Bun.spawn(["pnpm", "--filter", name, "publish"]).exited;
 }

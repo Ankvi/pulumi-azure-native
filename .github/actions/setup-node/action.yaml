@@ -28,3 +28,13 @@ runs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
+
+      - uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      - name: Install bun dependencies
+        shell: bash
+        run: |
+          bun install
+        working-directory: scripts

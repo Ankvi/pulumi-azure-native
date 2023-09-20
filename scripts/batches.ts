@@ -27,7 +27,7 @@ export async function getBatches(): Promise<Batches> {
 export function getCurrentBatchNumber(): number {
     const now = new Date();
     const currentDay = now.getDay() % DAYS;
-    const currentHour = now.getHours();
+    const currentHour = now.getHours() % HOURS;
     const batchNumber = currentDay * HOURS + currentHour;
 
     return batchNumber;

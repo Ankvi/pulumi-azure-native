@@ -22,6 +22,11 @@ jobs:
         run: |
           make node_modules/ci
 
+      - name: Run tests
+        run: |
+          bun test
+        working-directory: scripts
+
       - name: Lint
         run: |
           make lint
