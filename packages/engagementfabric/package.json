@@ -1,6 +1,6 @@
 {
     "name": "@kengachu-pulumi/azure-native-engagementfabric",
-    "version": "2.8.0",
+    "version": "2.8.2",
     "description": "Pulumi Azure Native package for engagementfabric",
     "keywords": [
         "pulumi",
