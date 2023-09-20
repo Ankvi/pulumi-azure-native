@@ -39,7 +39,7 @@ export function getEnvNumber(...vars: string[]): number | undefined {
 }
 
 export function getVersion(): string {
-    let version = require('./package.json').version;
+    let version = "v2.8.0";
     // Node allows for the version to be prefixed by a "v", while semver doesn't.
     // If there is a v, strip it off.
     if (version.indexOf('v') === 0) {
