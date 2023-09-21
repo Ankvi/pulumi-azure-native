@@ -17,6 +17,6 @@ team uses.
 - [x] Move types/enums into each respective module
 - [x] Move types/enums from earlier versions in their respective sub modules
   - (e.g. `v20230101`/`v20230101preview`)
-- [ ] Publish all packages to npm (~80/208)
+- [ ] Publish all packages to npm (~100/208)
   - Takes time as npm has rate limiting measures against publishing a lot of packages
     in a short time
