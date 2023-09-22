@@ -48,6 +48,7 @@ for (const pkg of packages) {
         console.log("Build succeeded. Publishing");
         publishing.add(pkg.name);
         await publish(pkg);
+        published.add(pkg.name);
 
         if (published.size >= options.max) {
             console.log("Reached maximum packages to publish. Exiting.");
