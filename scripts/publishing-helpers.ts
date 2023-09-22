@@ -36,12 +36,11 @@ export async function publish(pkg: PackageInfo): Promise<boolean> {
 
     const response = await new Response(proc.stdout).text();
 
-    switch (response) {
-        case skippedMessage:
-            throw new SkippedError();
-        case `+ ${pkg.name}@${pkg.version}`:
-            return true;
-        default:
-            throw new Error(`Unknown publish output for ${pkg.name}:\n${response}`);
+    if (response === skippedMessage) {
+        throw new SkippedError();
+    } else if (response.includes(`+ ${pkg.name}${pkg.version}`)) {
+        return true;
+    } else {
+        throw new Error(`Unknown publish output for ${pkg.name}:\n${response}`);
     }
 }
