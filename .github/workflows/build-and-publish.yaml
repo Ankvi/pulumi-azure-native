@@ -25,7 +25,7 @@ jobs:
 
       - name: Publish packages
         run: |
-          bun scripts/publish-packages-for-current-hour.ts --yes
+          bun scripts/publish.ts
 
     env:
       NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
