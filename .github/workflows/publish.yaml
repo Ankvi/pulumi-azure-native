@@ -3,8 +3,8 @@ name: Publish packages to npm
 on:
   workflow_dispatch:
 
-  # schedule:
-  #   - cron: "50 */3 * * 1,3,5"
+  schedule:
+    - cron: "0 12 * * 1,3,5"
 
 jobs:
   build-and-publish:
@@ -25,7 +25,7 @@ jobs:
 
       - name: Publish packages
         run: |
-          bun scripts/publish.ts
+          pnpm -r publish
 
     env:
       NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

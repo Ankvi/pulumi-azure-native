@@ -38,9 +38,6 @@ export async function publish(pkg: PackageInfo): Promise<boolean> {
 
     if (response === skippedMessage) {
         throw new SkippedError();
-    } else if (response.includes(`+ ${pkg.name}${pkg.version}`)) {
-        return true;
-    } else {
-        throw new Error(`Unknown publish output for ${pkg.name}:\n${response}`);
     }
+    return true;
 }
