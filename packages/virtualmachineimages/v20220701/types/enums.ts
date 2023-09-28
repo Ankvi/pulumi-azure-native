@@ -3,6 +3,9 @@ export const ResourceIdentityType = {
     None: "None",
 } as const;
 
+/**
+ * The type of identity used for the image template. The type 'None' will remove any identities from the image template.
+ */
 export type ResourceIdentityType = (typeof ResourceIdentityType)[keyof typeof ResourceIdentityType];
 
 export const SharedImageStorageAccountType = {
@@ -11,6 +14,9 @@ export const SharedImageStorageAccountType = {
     Premium_LRS: "Premium_LRS",
 } as const;
 
+/**
+ * Specifies the storage account type to be used to store the image in this region. Omit to use the default (Standard_LRS).
+ */
 export type SharedImageStorageAccountType = (typeof SharedImageStorageAccountType)[keyof typeof SharedImageStorageAccountType];
 
 export const VMBootOptimizationState = {
@@ -18,4 +24,7 @@ export const VMBootOptimizationState = {
     Disabled: "Disabled",
 } as const;
 
+/**
+ * Enabling this field will improve VM boot time by optimizing the final customized image output.
+ */
 export type VMBootOptimizationState = (typeof VMBootOptimizationState)[keyof typeof VMBootOptimizationState];

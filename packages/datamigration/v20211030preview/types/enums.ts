@@ -6,6 +6,9 @@ export const AuthenticationType = {
     ActiveDirectoryPassword: "ActiveDirectoryPassword",
 } as const;
 
+/**
+ * Authentication type to use for connection
+ */
 export type AuthenticationType = (typeof AuthenticationType)[keyof typeof AuthenticationType];
 
 export const ProjectSourcePlatform = {
@@ -16,6 +19,9 @@ export const ProjectSourcePlatform = {
     Unknown: "Unknown",
 } as const;
 
+/**
+ * Source platform for the project
+ */
 export type ProjectSourcePlatform = (typeof ProjectSourcePlatform)[keyof typeof ProjectSourcePlatform];
 
 export const ProjectTargetPlatform = {
@@ -27,10 +33,16 @@ export const ProjectTargetPlatform = {
     Unknown: "Unknown",
 } as const;
 
+/**
+ * Target platform for the project
+ */
 export type ProjectTargetPlatform = (typeof ProjectTargetPlatform)[keyof typeof ProjectTargetPlatform];
 
 export const SqlSourcePlatform = {
     SqlOnPrem: "SqlOnPrem",
 } as const;
 
+/**
+ * Server platform type for connection
+ */
 export type SqlSourcePlatform = (typeof SqlSourcePlatform)[keyof typeof SqlSourcePlatform];

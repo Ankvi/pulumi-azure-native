@@ -143,7 +143,7 @@ import * as pulumi from "@pulumi/pulumi";
          */
         systemCreatedAcrAccount?: pulumi.Input<SystemCreatedAcrAccountArgs>;
         /**
-         * Details of user created ACR account to be used for the Registry
+         * Details of user created ACR account to be used for the Registry. Not supported in most cases and will throw 400 error if provided.
          */
         userCreatedAcrAccount?: pulumi.Input<UserCreatedAcrAccountArgs>;
     }
@@ -8197,7 +8197,7 @@ import * as pulumi from "@pulumi/pulumi";
          */
         systemCreatedStorageAccount?: pulumi.Input<SystemCreatedStorageAccountArgs>;
         /**
-         * Details of user created storage account to be used for the registry
+         * Details of user created storage account to be used for the registry.  Not supported in most cases and will throw 400 error if provided.
          */
         userCreatedStorageAccount?: pulumi.Input<UserCreatedStorageAccountArgs>;
     }

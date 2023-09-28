@@ -4,6 +4,9 @@ export const AADObjectType = {
     ServicePrincipal: "ServicePrincipal",
 } as const;
 
+/**
+ * The type of AAD object the object identifier refers to.
+ */
 export type AADObjectType = (typeof AADObjectType)[keyof typeof AADObjectType];
 
 export const FirewallAllowAzureIpsState = {
@@ -11,6 +14,9 @@ export const FirewallAllowAzureIpsState = {
     Disabled: "Disabled",
 } as const;
 
+/**
+ * The current state of allowing or disallowing IPs originating within Azure through the firewall. If the firewall is disabled, this is not enforced.
+ */
 export type FirewallAllowAzureIpsState = (typeof FirewallAllowAzureIpsState)[keyof typeof FirewallAllowAzureIpsState];
 
 export const FirewallState = {
@@ -18,6 +24,9 @@ export const FirewallState = {
     Disabled: "Disabled",
 } as const;
 
+/**
+ * The current state of the IP address firewall for this account.
+ */
 export type FirewallState = (typeof FirewallState)[keyof typeof FirewallState];
 
 export const TierType = {
@@ -32,4 +41,7 @@ export const TierType = {
     Commitment_500000AUHours: "Commitment_500000AUHours",
 } as const;
 
+/**
+ * The commitment tier for the next month.
+ */
 export type TierType = (typeof TierType)[keyof typeof TierType];

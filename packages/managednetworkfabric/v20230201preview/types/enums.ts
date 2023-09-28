@@ -3,6 +3,9 @@ export const AddressFamily = {
     Ipv6: "ipv6",
 } as const;
 
+/**
+ * IP address family. Example: ipv4 | ipv6.
+ */
 export type AddressFamily = (typeof AddressFamily)[keyof typeof AddressFamily];
 
 export const AllowASOverride = {
@@ -10,6 +13,9 @@ export const AllowASOverride = {
     Disable: "Disable",
 } as const;
 
+/**
+ * Enable Or Disable state.
+ */
 export type AllowASOverride = (typeof AllowASOverride)[keyof typeof AllowASOverride];
 
 export const BooleanEnumProperty = {
@@ -17,6 +23,9 @@ export const BooleanEnumProperty = {
     False: "False",
 } as const;
 
+/**
+ * Based on this parameter the layer2/layer3 is made as mandatory. Example: True/False
+ */
 export type BooleanEnumProperty = (typeof BooleanEnumProperty)[keyof typeof BooleanEnumProperty];
 
 export const CommunityActionTypes = {
@@ -24,6 +33,9 @@ export const CommunityActionTypes = {
     Deny: "Deny",
 } as const;
 
+/**
+ * action. Example: Permit | Deny.
+ */
 export type CommunityActionTypes = (typeof CommunityActionTypes)[keyof typeof CommunityActionTypes];
 
 export const Condition = {
@@ -32,6 +44,9 @@ export const Condition = {
     LesserThanOrEqualTo: "LesserThanOrEqualTo",
 } as const;
 
+/**
+ * Specify prefix-list bounds.
+ */
 export type Condition = (typeof Condition)[keyof typeof Condition];
 
 export const ConditionActionType = {
@@ -39,6 +54,9 @@ export const ConditionActionType = {
     Deny: "deny",
 } as const;
 
+/**
+ * action. Example: allow | deny.
+ */
 export type ConditionActionType = (typeof ConditionActionType)[keyof typeof ConditionActionType];
 
 export const NetworkDeviceRoleTypes = {
@@ -49,6 +67,9 @@ export const NetworkDeviceRoleTypes = {
     Management: "Management",
 } as const;
 
+/**
+ * networkDeviceRole is the device role: Example: CE | ToR.
+ */
 export type NetworkDeviceRoleTypes = (typeof NetworkDeviceRoleTypes)[keyof typeof NetworkDeviceRoleTypes];
 
 export const NniType = {
@@ -56,6 +77,9 @@ export const NniType = {
     NPB: "NPB",
 } as const;
 
+/**
+ * Type of NNI used. Example: CE | NPB
+ */
 export type NniType = (typeof NniType)[keyof typeof NniType];
 
 export const PeeringOption = {
@@ -63,6 +87,9 @@ export const PeeringOption = {
     OptionB: "OptionB",
 } as const;
 
+/**
+ * Peering option list.
+ */
 export type PeeringOption = (typeof PeeringOption)[keyof typeof PeeringOption];
 
 export const RedistributeConnectedSubnets = {
@@ -70,6 +97,9 @@ export const RedistributeConnectedSubnets = {
     False: "False",
 } as const;
 
+/**
+ * Advertise Connected Subnets. Ex: "True" | "False".
+ */
 export type RedistributeConnectedSubnets = (typeof RedistributeConnectedSubnets)[keyof typeof RedistributeConnectedSubnets];
 
 export const RedistributeStaticRoutes = {
@@ -77,6 +107,9 @@ export const RedistributeStaticRoutes = {
     False: "False",
 } as const;
 
+/**
+ * Advertise Static Routes. Ex: "True" | "False".
+ */
 export type RedistributeStaticRoutes = (typeof RedistributeStaticRoutes)[keyof typeof RedistributeStaticRoutes];
 
 export const WellKnownCommunities = {
@@ -87,4 +120,12 @@ export const WellKnownCommunities = {
     GShut: "GShut",
 } as const;
 
+/**
+ *
+ * `Internet` - Advertise routes to internet community.
+ *  `LocalAS` - Advertise routes to only localAS peers.
+ *  `NoAdvertise` - Don't advertise routes to any peer.
+ * `NoExport` - Don't export to next AS.
+ * `GShut` - Graceful Shutdown (GSHUT) withdraw routes before terminating BGP connection.
+ */
 export type WellKnownCommunities = (typeof WellKnownCommunities)[keyof typeof WellKnownCommunities];

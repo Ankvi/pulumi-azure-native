@@ -5,4 +5,7 @@ export const ConnectorBillingModel = {
     Expired: "expired",
 } as const;
 
+/**
+ * Connector billing model
+ */
 export type ConnectorBillingModel = (typeof ConnectorBillingModel)[keyof typeof ConnectorBillingModel];

@@ -16,6 +16,9 @@ export const DataSetKind = {
     BlobStorageAccount: "BlobStorageAccount",
 } as const;
 
+/**
+ * Kind of data set.
+ */
 export type DataSetKind = (typeof DataSetKind)[keyof typeof DataSetKind];
 
 export const DataSetMappingKind = {
@@ -34,4 +37,7 @@ export const DataSetMappingKind = {
     BlobStorageAccount: "BlobStorageAccount",
 } as const;
 
+/**
+ * Kind of data set mapping.
+ */
 export type DataSetMappingKind = (typeof DataSetMappingKind)[keyof typeof DataSetMappingKind];

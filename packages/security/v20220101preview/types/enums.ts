@@ -9,6 +9,9 @@ export const GovernanceRuleOwnerSourceType = {
     Manually: "Manually",
 } as const;
 
+/**
+ * The owner type for the governance rule owner source
+ */
 export type GovernanceRuleOwnerSourceType = (typeof GovernanceRuleOwnerSourceType)[keyof typeof GovernanceRuleOwnerSourceType];
 
 export const GovernanceRuleSourceResourceType = {
@@ -18,6 +21,9 @@ export const GovernanceRuleSourceResourceType = {
     Assessments: "Assessments",
 } as const;
 
+/**
+ * The governance rule source, what the rule affects, e.g. Assessments
+ */
 export type GovernanceRuleSourceResourceType = (typeof GovernanceRuleSourceResourceType)[keyof typeof GovernanceRuleSourceResourceType];
 
 export const GovernanceRuleType = {
@@ -31,4 +37,7 @@ export const GovernanceRuleType = {
     ServiceNow: "ServiceNow",
 } as const;
 
+/**
+ * The rule type of the governance rule, defines the source of the rule e.g. Integrated
+ */
 export type GovernanceRuleType = (typeof GovernanceRuleType)[keyof typeof GovernanceRuleType];

@@ -181,37 +181,6 @@ export function baseImageTriggerResponseProvideDefaults(val: BaseImageTriggerRes
 }
 
 /**
- * Properties of a build argument.
- */
-export interface BuildArgumentResponse {
-    /**
-     * Flag to indicate whether the argument represents a secret and want to be removed from build logs.
-     */
-    isSecret?: boolean;
-    /**
-     * The name of the argument.
-     */
-    name: string;
-    /**
-     * The type of the argument.
-     */
-    type: string;
-    /**
-     * The value of the argument.
-     */
-    value: string;
-}
-/**
- * buildArgumentResponseProvideDefaults sets the appropriate defaults for BuildArgumentResponse
- */
-export function buildArgumentResponseProvideDefaults(val: BuildArgumentResponse): BuildArgumentResponse {
-    return {
-        ...val,
-        isSecret: (val.isSecret) ?? false,
-    };
-}
-
-/**
  * The health of the auth credential.
  */
 export interface CredentialHealthResponse {
@@ -361,18 +330,6 @@ export interface DockerBuildStepResponse {
      */
     baseImageDependencies: BaseImageDependencyResponse[];
     /**
-     * The type of the auto trigger for base image dependency updates.
-     */
-    baseImageTrigger?: string;
-    /**
-     * The repository branch name.
-     */
-    branch?: string;
-    /**
-     * The custom arguments for building this build step.
-     */
-    buildArguments?: BuildArgumentResponse[];
-    /**
      * The token (git PAT or SAS token of storage account blob) associated with the context for a step.
      */
     contextAccessToken?: string;
@@ -396,10 +353,6 @@ export interface DockerBuildStepResponse {
      * The value of this property indicates whether the image cache is enabled or not.
      */
     noCache?: boolean;
-    /**
-     * The provisioning state of the build step.
-     */
-    provisioningState?: string;
     /**
      * The name of the target build stage for the docker build.
      */
@@ -1586,32 +1539,6 @@ export interface SkuResponse {
 }
 
 /**
- * The authorization properties for accessing the source code repository.
- */
-export interface SourceControlAuthInfoResponse {
-    /**
-     * Time in seconds that the token remains valid
-     */
-    expiresIn?: number;
-    /**
-     * The refresh token used to refresh the access token.
-     */
-    refreshToken?: string;
-    /**
-     * The scope of the access token.
-     */
-    scope?: string;
-    /**
-     * The access token used to access the source control provider.
-     */
-    token: string;
-    /**
-     * The type of Auth token.
-     */
-    tokenType?: string;
-}
-
-/**
  * The properties of the source code repository.
  */
 export interface SourcePropertiesResponse {
@@ -2087,8 +2014,6 @@ export interface UserIdentityPropertiesResponse {
      */
     principalId?: string;
 }
-
-
 
 
 

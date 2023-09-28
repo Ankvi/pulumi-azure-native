@@ -781,6 +781,13 @@ import * as pulumi from "@pulumi/pulumi";
     }
 
     /**
+     * Settings for Azure Monitor based alerts
+     */
+    export interface AzureMonitorAlertSettingsResponse {
+        alertsForAllJobFailures?: string;
+    }
+
+    /**
      * A2A Network Mapping fabric specific settings.
      */
     export interface AzureToAzureNetworkMappingSettingsResponse {
@@ -860,6 +867,37 @@ import * as pulumi from "@pulumi/pulumi";
     }
 
     /**
+     * Settings for classic alerts
+     */
+    export interface ClassicAlertSettingsResponse {
+        alertsForCriticalOperations?: string;
+    }
+
+    /**
+     * The details of the identity used for CMK
+     */
+    export interface CmkKekIdentityResponse {
+        /**
+         * Indicate that system assigned identity should be used. Mutually exclusive with 'userAssignedIdentity' field
+         */
+        useSystemAssignedIdentity?: boolean;
+        /**
+         * The user assigned identity to be used to grant permissions in case the type of identity used is UserAssigned
+         */
+        userAssignedIdentity?: string;
+    }
+
+    /**
+     * The properties of the Key Vault which hosts CMK
+     */
+    export interface CmkKeyVaultPropertiesResponse {
+        /**
+         * The key uri of the Customer Managed Key
+         */
+        keyUri?: string;
+    }
+
+    /**
      * Critical past job details of the migration item.
      */
     export interface CriticalJobHistoryDetailsResponse {
@@ -879,6 +917,13 @@ import * as pulumi from "@pulumi/pulumi";
          * The start time of the job.
          */
         startTime: string;
+    }
+
+    /**
+     * Settings for Cross Subscription Restore Settings
+     */
+    export interface CrossSubscriptionRestoreSettingsResponse {
+        crossSubscriptionRestoreState?: string;
     }
 
     /**
@@ -1729,6 +1774,28 @@ import * as pulumi from "@pulumi/pulumi";
     }
 
     /**
+     * Identity for the resource.
+     */
+    export interface IdentityDataResponse {
+        /**
+         * The principal ID of resource identity.
+         */
+        principalId: string;
+        /**
+         * The tenant ID of resource.
+         */
+        tenantId: string;
+        /**
+         * The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identities.
+         */
+        type: string;
+        /**
+         * The list of user-assigned identities associated with the resource. The user-assigned identity dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+         */
+        userAssignedIdentities?: {[key: string]: UserIdentityResponse};
+    }
+
+    /**
      * Identity provider details.
      */
     export interface IdentityProviderDetailsResponse {
@@ -1752,6 +1819,13 @@ import * as pulumi from "@pulumi/pulumi";
          * The tenant Id for the service principal with which the on-premise management/data plane components would communicate with our Azure services.
          */
         tenantId?: string;
+    }
+
+    /**
+     * Immutability Settings of vault
+     */
+    export interface ImmutabilitySettingsResponse {
+        state?: string;
     }
 
     /**
@@ -3941,6 +4015,20 @@ import * as pulumi from "@pulumi/pulumi";
     }
 
     /**
+     * Monitoring Settings of the vault
+     */
+    export interface MonitoringSettingsResponse {
+        /**
+         * Settings for Azure Monitor based alerts
+         */
+        azureMonitorAlertSettings?: AzureMonitorAlertSettingsResponse;
+        /**
+         * Settings for classic alerts
+         */
+        classicAlertSettings?: ClassicAlertSettingsResponse;
+    }
+
+    /**
      * Network Mapping Properties.
      */
     export interface NetworkMappingPropertiesResponse {
@@ -4056,6 +4144,42 @@ import * as pulumi from "@pulumi/pulumi";
          * The ReplicationChannelSetting.
          */
         providerSpecificDetails?: A2APolicyDetailsResponse | HyperVReplicaAzurePolicyDetailsResponse | HyperVReplicaBasePolicyDetailsResponse | HyperVReplicaBluePolicyDetailsResponse | HyperVReplicaPolicyDetailsResponse | InMageAzureV2PolicyDetailsResponse | InMageBasePolicyDetailsResponse | InMagePolicyDetailsResponse | InMageRcmFailbackPolicyDetailsResponse | InMageRcmPolicyDetailsResponse | VmwareCbtPolicyDetailsResponse;
+    }
+
+    /**
+     * Information to be stored in Vault properties as an element of privateEndpointConnections List.
+     */
+    export interface PrivateEndpointConnectionVaultPropertiesResponse {
+        /**
+         * Format of id subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.[Service]/{resource}/{resourceName}/privateEndpointConnections/{connectionName}.
+         */
+        id: string;
+        /**
+         * The location of the private Endpoint connection
+         */
+        location: string;
+        /**
+         * The name of the private Endpoint Connection
+         */
+        name: string;
+        /**
+         * Private Endpoint Connection Response Properties.
+         */
+        properties: VaultPrivateEndpointConnectionResponse;
+        /**
+         * The type, which will be of the format, Microsoft.RecoveryServices/vaults/privateEndpointConnections
+         */
+        type: string;
+    }
+
+    /**
+     * The Private Endpoint network resource that is linked to the Private Endpoint connection.
+     */
+    export interface PrivateEndpointResponse {
+        /**
+         * Gets or sets id.
+         */
+        id: string;
     }
 
     /**
@@ -4997,6 +5121,16 @@ import * as pulumi from "@pulumi/pulumi";
     }
 
     /**
+     * Restore Settings  of the vault
+     */
+    export interface RestoreSettingsResponse {
+        /**
+         * Settings for CrossSubscriptionRestore
+         */
+        crossSubscriptionRestoreSettings?: CrossSubscriptionRestoreSettingsResponse;
+    }
+
+    /**
      * The retention details of the MT.
      */
     export interface RetentionVolumeResponse {
@@ -5033,6 +5167,61 @@ import * as pulumi from "@pulumi/pulumi";
     }
 
     /**
+     * Security Settings of the vault
+     */
+    export interface SecuritySettingsResponse {
+        /**
+         * Immutability Settings of a vault
+         */
+        immutabilitySettings?: ImmutabilitySettingsResponse;
+        /**
+         * MUA Settings of a vault
+         */
+        multiUserAuthorization: string;
+        /**
+         * Soft delete Settings of a vault
+         */
+        softDeleteSettings?: SoftDeleteSettingsResponse;
+    }
+
+    /**
+     * Identifies the unique system identifier for each Azure resource.
+     */
+    export interface SkuResponse {
+        /**
+         * The sku capacity
+         */
+        capacity?: string;
+        /**
+         * The sku family
+         */
+        family?: string;
+        /**
+         * Name of SKU is RS0 (Recovery Services 0th version) and the tier is standard tier. They do not have affect on backend storage redundancy or any other vault settings. To manage storage redundancy, use the backupstorageconfig
+         */
+        name: string;
+        /**
+         * The sku size
+         */
+        size?: string;
+        /**
+         * The Sku tier.
+         */
+        tier?: string;
+    }
+
+    /**
+     * Soft delete Settings of vault
+     */
+    export interface SoftDeleteSettingsResponse {
+        /**
+         * Soft delete retention period in days
+         */
+        softDeleteRetentionPeriodInDays?: number;
+        softDeleteState?: string;
+    }
+
+    /**
      * Storage mapping properties.
      */
     export interface StorageClassificationMappingPropertiesResponse {
@@ -5040,6 +5229,92 @@ import * as pulumi from "@pulumi/pulumi";
          * Target storage object Id.
          */
         targetStorageClassificationId?: string;
+    }
+
+    /**
+     * Metadata pertaining to creation and last modification of the resource.
+     */
+    export interface SystemDataResponse {
+        /**
+         * The timestamp of resource creation (UTC).
+         */
+        createdAt?: string;
+        /**
+         * The identity that created the resource.
+         */
+        createdBy?: string;
+        /**
+         * The type of identity that created the resource.
+         */
+        createdByType?: string;
+        /**
+         * The type of identity that last modified the resource.
+         */
+        lastModifiedAt?: string;
+        /**
+         * The identity that last modified the resource.
+         */
+        lastModifiedBy?: string;
+        /**
+         * The type of identity that last modified the resource.
+         */
+        lastModifiedByType?: string;
+    }
+
+    /**
+     * Details for upgrading vault.
+     */
+    export interface UpgradeDetailsResponse {
+        /**
+         * UTC time at which the upgrade operation has ended.
+         */
+        endTimeUtc: string;
+        /**
+         * UTC time at which the upgrade operation status was last updated.
+         */
+        lastUpdatedTimeUtc: string;
+        /**
+         * Message to the user containing information about the upgrade operation.
+         */
+        message: string;
+        /**
+         * ID of the vault upgrade operation.
+         */
+        operationId: string;
+        /**
+         * Resource ID of the vault before the upgrade.
+         */
+        previousResourceId: string;
+        /**
+         * UTC time at which the upgrade operation has started.
+         */
+        startTimeUtc: string;
+        /**
+         * Status of the vault upgrade operation.
+         */
+        status: string;
+        /**
+         * The way the vault upgrade was triggered.
+         */
+        triggerType: string;
+        /**
+         * Resource ID of the upgraded vault.
+         */
+        upgradedResourceId: string;
+    }
+
+    /**
+     * A resource identity that is managed by the user of the service.
+     */
+    export interface UserIdentityResponse {
+        /**
+         * The client ID of the user-assigned identity.
+         */
+        clientId: string;
+        /**
+         * The principal ID of the user-assigned identity.
+         */
+        principalId: string;
     }
 
     /**
@@ -5764,6 +6039,170 @@ import * as pulumi from "@pulumi/pulumi";
          * The ARM Id of the VMware site.
          */
         vmwareSiteId: string;
+    }
+
+    /**
+     * Private Endpoint Connection Response Properties.
+     */
+    export interface VaultPrivateEndpointConnectionResponse {
+        /**
+         * Group Ids for the Private Endpoint
+         */
+        groupIds?: string[];
+        /**
+         * The Private Endpoint network resource that is linked to the Private Endpoint connection.
+         */
+        privateEndpoint: PrivateEndpointResponse;
+        /**
+         * Gets or sets private link service connection state.
+         */
+        privateLinkServiceConnectionState: VaultPrivateLinkServiceConnectionStateResponse;
+        /**
+         * Gets or sets provisioning state of the private endpoint connection.
+         */
+        provisioningState: string;
+    }
+
+    /**
+     * Gets or sets private link service connection state.
+     */
+    export interface VaultPrivateLinkServiceConnectionStateResponse {
+        /**
+         * Gets or sets actions required.
+         */
+        actionsRequired: string;
+        /**
+         * Gets or sets description.
+         */
+        description: string;
+        /**
+         * Gets or sets the status.
+         */
+        status: string;
+    }
+
+    /**
+     * Properties of the vault.
+     */
+    export interface VaultPropertiesResponse {
+        /**
+         * Backup storage version
+         */
+        backupStorageVersion: string;
+        /**
+         * Customer Managed Key details of the resource.
+         */
+        encryption?: VaultPropertiesResponseEncryption;
+        /**
+         * Monitoring Settings of the vault
+         */
+        monitoringSettings?: MonitoringSettingsResponse;
+        /**
+         * The details of the latest move operation performed on the Azure Resource
+         */
+        moveDetails?: VaultPropertiesResponseMoveDetails;
+        /**
+         * The State of the Resource after the move operation
+         */
+        moveState: string;
+        /**
+         * List of private endpoint connection.
+         */
+        privateEndpointConnections: PrivateEndpointConnectionVaultPropertiesResponse[];
+        /**
+         * Private endpoint state for backup.
+         */
+        privateEndpointStateForBackup: string;
+        /**
+         * Private endpoint state for site recovery.
+         */
+        privateEndpointStateForSiteRecovery: string;
+        /**
+         * Provisioning State.
+         */
+        provisioningState: string;
+        /**
+         * property to enable or disable resource provider inbound network traffic from public clients
+         */
+        publicNetworkAccess?: string;
+        /**
+         * The redundancy Settings of a Vault
+         */
+        redundancySettings?: VaultPropertiesResponseRedundancySettings;
+        /**
+         * Restore Settings of the vault
+         */
+        restoreSettings?: RestoreSettingsResponse;
+        /**
+         * Secure Score of Recovery Services Vault
+         */
+        secureScore: string;
+        /**
+         * Security Settings of the vault
+         */
+        securitySettings?: SecuritySettingsResponse;
+        /**
+         * Details for upgrading vault.
+         */
+        upgradeDetails?: UpgradeDetailsResponse;
+    }
+
+    /**
+     * Customer Managed Key details of the resource.
+     */
+    export interface VaultPropertiesResponseEncryption {
+        /**
+         * Enabling/Disabling the Double Encryption state
+         */
+        infrastructureEncryption?: string;
+        /**
+         * The details of the identity used for CMK
+         */
+        kekIdentity?: CmkKekIdentityResponse;
+        /**
+         * The properties of the Key Vault which hosts CMK
+         */
+        keyVaultProperties?: CmkKeyVaultPropertiesResponse;
+    }
+
+    /**
+     * The details of the latest move operation performed on the Azure Resource
+     */
+    export interface VaultPropertiesResponseMoveDetails {
+        /**
+         * End Time of the Resource Move Operation
+         */
+        completionTimeUtc: string;
+        /**
+         * OperationId of the Resource Move Operation
+         */
+        operationId: string;
+        /**
+         * Source Resource of the Resource Move Operation
+         */
+        sourceResourceId: string;
+        /**
+         * Start Time of the Resource Move Operation
+         */
+        startTimeUtc: string;
+        /**
+         * Target Resource of the Resource Move Operation
+         */
+        targetResourceId: string;
+    }
+
+    /**
+     * The redundancy Settings of a Vault
+     */
+    export interface VaultPropertiesResponseRedundancySettings {
+        /**
+         * Flag to show if Cross Region Restore is enabled on the Vault or not
+         */
+        crossRegionRestore: string;
+        /**
+         * The storage redundancy setting of a vault
+         */
+        standardTierStorageRedundancy: string;
     }
 
     /**

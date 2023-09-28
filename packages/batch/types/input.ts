@@ -238,6 +238,15 @@ export interface DeploymentConfigurationArgs {
      */
     virtualMachineConfiguration?: pulumi.Input<VirtualMachineConfigurationArgs>;
 }
+/**
+ * deploymentConfigurationArgsProvideDefaults sets the appropriate defaults for DeploymentConfigurationArgs
+ */
+export function deploymentConfigurationArgsProvideDefaults(val: DeploymentConfigurationArgs): DeploymentConfigurationArgs {
+    return {
+        ...val,
+        virtualMachineConfiguration: (val.virtualMachineConfiguration ? pulumi.output(val.virtualMachineConfiguration).apply(virtualMachineConfigurationArgsProvideDefaults) : undefined),
+    };
+}
 
 export interface DiffDiskSettingsArgs {
     /**
@@ -307,6 +316,15 @@ export interface FixedScaleSettingsArgs {
      */
     targetLowPriorityNodes?: pulumi.Input<number>;
 }
+/**
+ * fixedScaleSettingsArgsProvideDefaults sets the appropriate defaults for FixedScaleSettingsArgs
+ */
+export function fixedScaleSettingsArgsProvideDefaults(val: FixedScaleSettingsArgs): FixedScaleSettingsArgs {
+    return {
+        ...val,
+        resizeTimeout: (val.resizeTimeout) ?? "PT15M",
+    };
+}
 
 /**
  * Rule to filter client IP address.
@@ -343,6 +361,15 @@ export interface ImageReferenceArgs {
      * A value of 'latest' can be specified to select the latest version of an image. If omitted, the default is 'latest'.
      */
     version?: pulumi.Input<string>;
+}
+/**
+ * imageReferenceArgsProvideDefaults sets the appropriate defaults for ImageReferenceArgs
+ */
+export function imageReferenceArgsProvideDefaults(val: ImageReferenceArgs): ImageReferenceArgs {
+    return {
+        ...val,
+        version: (val.version) ?? "latest",
+    };
 }
 
 export interface InboundNatPoolArgs {
@@ -473,6 +500,15 @@ export interface NetworkConfigurationArgs {
      */
     subnetId?: pulumi.Input<string>;
 }
+/**
+ * networkConfigurationArgsProvideDefaults sets the appropriate defaults for NetworkConfigurationArgs
+ */
+export function networkConfigurationArgsProvideDefaults(val: NetworkConfigurationArgs): NetworkConfigurationArgs {
+    return {
+        ...val,
+        dynamicVnetAssignmentScope: (val.dynamicVnetAssignmentScope) ?? "none",
+    };
+}
 
 /**
  * Network profile for Batch account, which contains network rule settings for each endpoint.
@@ -583,6 +619,15 @@ export interface ScaleSettingsArgs {
      */
     fixedScale?: pulumi.Input<FixedScaleSettingsArgs>;
 }
+/**
+ * scaleSettingsArgsProvideDefaults sets the appropriate defaults for ScaleSettingsArgs
+ */
+export function scaleSettingsArgsProvideDefaults(val: ScaleSettingsArgs): ScaleSettingsArgs {
+    return {
+        ...val,
+        fixedScale: (val.fixedScale ? pulumi.output(val.fixedScale).apply(fixedScaleSettingsArgsProvideDefaults) : undefined),
+    };
+}
 
 /**
  * In some cases the start task may be re-run even though the node was not rebooted. Due to this, start tasks should be idempotent and exit gracefully if the setup they're performing has already been done. Special care should be taken to avoid start tasks which create breakaway process or install/launch services from the start task working directory, as this will block Batch from being able to re-run the start task.
@@ -598,7 +643,7 @@ export interface StartTaskArgs {
     containerSettings?: pulumi.Input<TaskContainerSettingsArgs>;
     environmentSettings?: pulumi.Input<pulumi.Input<EnvironmentSettingArgs>[]>;
     /**
-     * The Batch service retries a task if its exit code is nonzero. Note that this value specifically controls the number of retries. The Batch service will try the task once, and may then retry up to this limit. For example, if the maximum retry count is 3, Batch tries the task up to 4 times (one initial try and 3 retries). If the maximum retry count is 0, the Batch service does not retry the task. If the maximum retry count is -1, the Batch service retries the task without limit.
+     * The Batch service retries a task if its exit code is nonzero. Note that this value specifically controls the number of retries. The Batch service will try the task once, and may then retry up to this limit. For example, if the maximum retry count is 3, Batch tries the task up to 4 times (one initial try and 3 retries). If the maximum retry count is 0, the Batch service does not retry the task. If the maximum retry count is -1, the Batch service retries the task without limit. Default is 0.
      */
     maxTaskRetryCount?: pulumi.Input<number>;
     resourceFiles?: pulumi.Input<pulumi.Input<ResourceFileArgs>[]>;
@@ -610,6 +655,15 @@ export interface StartTaskArgs {
      * If true and the start task fails on a compute node, the Batch service retries the start task up to its maximum retry count (maxTaskRetryCount). If the task has still not completed successfully after all retries, then the Batch service marks the compute node unusable, and will not schedule tasks to it. This condition can be detected via the node state and scheduling error detail. If false, the Batch service will not wait for the start task to complete. In this case, other tasks can start executing on the compute node while the start task is still running; and even if the start task fails, new tasks will continue to be scheduled on the node. The default is true.
      */
     waitForSuccess?: pulumi.Input<boolean>;
+}
+/**
+ * startTaskArgsProvideDefaults sets the appropriate defaults for StartTaskArgs
+ */
+export function startTaskArgsProvideDefaults(val: StartTaskArgs): StartTaskArgs {
+    return {
+        ...val,
+        maxTaskRetryCount: (val.maxTaskRetryCount) ?? 0,
+    };
 }
 
 export interface TaskContainerSettingsArgs {
@@ -630,6 +684,15 @@ export interface TaskContainerSettingsArgs {
 
 export interface TaskSchedulingPolicyArgs {
     nodeFillType: pulumi.Input<enums.ComputeNodeFillType>;
+}
+/**
+ * taskSchedulingPolicyArgsProvideDefaults sets the appropriate defaults for TaskSchedulingPolicyArgs
+ */
+export function taskSchedulingPolicyArgsProvideDefaults(val: TaskSchedulingPolicyArgs): TaskSchedulingPolicyArgs {
+    return {
+        ...val,
+        nodeFillType: (val.nodeFillType) ?? "Spread",
+    };
 }
 
 export interface UserAccountArgs {
@@ -728,6 +791,15 @@ export interface VirtualMachineConfigurationArgs {
      * This property must not be specified if the imageReference specifies a Linux OS image.
      */
     windowsConfiguration?: pulumi.Input<WindowsConfigurationArgs>;
+}
+/**
+ * virtualMachineConfigurationArgsProvideDefaults sets the appropriate defaults for VirtualMachineConfigurationArgs
+ */
+export function virtualMachineConfigurationArgsProvideDefaults(val: VirtualMachineConfigurationArgs): VirtualMachineConfigurationArgs {
+    return {
+        ...val,
+        imageReference: pulumi.output(val.imageReference).apply(imageReferenceArgsProvideDefaults),
+    };
 }
 
 export interface WindowsConfigurationArgs {

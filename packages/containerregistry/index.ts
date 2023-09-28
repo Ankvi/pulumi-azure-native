@@ -16,11 +16,6 @@ export type ArchiveVersion = import("./archiveVersion").ArchiveVersion;
 export const ArchiveVersion: typeof import("./archiveVersion").ArchiveVersion = null as any;
 utilities.lazyLoad(exports, ["ArchiveVersion"], () => require("./archiveVersion"));
 
-export { BuildStepArgs } from "./buildStep";
-export type BuildStep = import("./buildStep").BuildStep;
-export const BuildStep: typeof import("./buildStep").BuildStep = null as any;
-utilities.lazyLoad(exports, ["BuildStep"], () => require("./buildStep"));
-
 export { CacheRuleArgs } from "./cacheRule";
 export type CacheRule = import("./cacheRule").CacheRule;
 export const CacheRule: typeof import("./cacheRule").CacheRule = null as any;
@@ -55,16 +50,6 @@ export { GetArchiveVersionArgs, GetArchiveVersionResult, GetArchiveVersionOutput
 export const getArchiveVersion: typeof import("./getArchiveVersion").getArchiveVersion = null as any;
 export const getArchiveVersionOutput: typeof import("./getArchiveVersion").getArchiveVersionOutput = null as any;
 utilities.lazyLoad(exports, ["getArchiveVersion","getArchiveVersionOutput"], () => require("./getArchiveVersion"));
-
-export { GetBuildLogLinkArgs, GetBuildLogLinkResult, GetBuildLogLinkOutputArgs } from "./getBuildLogLink";
-export const getBuildLogLink: typeof import("./getBuildLogLink").getBuildLogLink = null as any;
-export const getBuildLogLinkOutput: typeof import("./getBuildLogLink").getBuildLogLinkOutput = null as any;
-utilities.lazyLoad(exports, ["getBuildLogLink","getBuildLogLinkOutput"], () => require("./getBuildLogLink"));
-
-export { GetBuildStepArgs, GetBuildStepResult, GetBuildStepOutputArgs } from "./getBuildStep";
-export const getBuildStep: typeof import("./getBuildStep").getBuildStep = null as any;
-export const getBuildStepOutput: typeof import("./getBuildStep").getBuildStepOutput = null as any;
-utilities.lazyLoad(exports, ["getBuildStep","getBuildStepOutput"], () => require("./getBuildStep"));
 
 export { GetCacheRuleArgs, GetCacheRuleResult, GetCacheRuleOutputArgs } from "./getCacheRule";
 export const getCacheRule: typeof import("./getCacheRule").getCacheRule = null as any;
@@ -105,16 +90,6 @@ export { GetRegistryArgs, GetRegistryResult, GetRegistryOutputArgs } from "./get
 export const getRegistry: typeof import("./getRegistry").getRegistry = null as any;
 export const getRegistryOutput: typeof import("./getRegistry").getRegistryOutput = null as any;
 utilities.lazyLoad(exports, ["getRegistry","getRegistryOutput"], () => require("./getRegistry"));
-
-export { GetRegistryBuildSourceUploadUrlArgs, GetRegistryBuildSourceUploadUrlResult, GetRegistryBuildSourceUploadUrlOutputArgs } from "./getRegistryBuildSourceUploadUrl";
-export const getRegistryBuildSourceUploadUrl: typeof import("./getRegistryBuildSourceUploadUrl").getRegistryBuildSourceUploadUrl = null as any;
-export const getRegistryBuildSourceUploadUrlOutput: typeof import("./getRegistryBuildSourceUploadUrl").getRegistryBuildSourceUploadUrlOutput = null as any;
-utilities.lazyLoad(exports, ["getRegistryBuildSourceUploadUrl","getRegistryBuildSourceUploadUrlOutput"], () => require("./getRegistryBuildSourceUploadUrl"));
-
-export { GetRegistryCredentialsArgs, GetRegistryCredentialsResult, GetRegistryCredentialsOutputArgs } from "./getRegistryCredentials";
-export const getRegistryCredentials: typeof import("./getRegistryCredentials").getRegistryCredentials = null as any;
-export const getRegistryCredentialsOutput: typeof import("./getRegistryCredentials").getRegistryCredentialsOutput = null as any;
-utilities.lazyLoad(exports, ["getRegistryCredentials","getRegistryCredentialsOutput"], () => require("./getRegistryCredentials"));
 
 export { GetReplicationArgs, GetReplicationResult, GetReplicationOutputArgs } from "./getReplication";
 export const getReplication: typeof import("./getReplication").getReplication = null as any;
@@ -160,16 +135,6 @@ export { ListAgentPoolQueueStatusArgs, ListAgentPoolQueueStatusResult, ListAgent
 export const listAgentPoolQueueStatus: typeof import("./listAgentPoolQueueStatus").listAgentPoolQueueStatus = null as any;
 export const listAgentPoolQueueStatusOutput: typeof import("./listAgentPoolQueueStatus").listAgentPoolQueueStatusOutput = null as any;
 utilities.lazyLoad(exports, ["listAgentPoolQueueStatus","listAgentPoolQueueStatusOutput"], () => require("./listAgentPoolQueueStatus"));
-
-export { ListBuildStepBuildArgumentsArgs, ListBuildStepBuildArgumentsResult, ListBuildStepBuildArgumentsOutputArgs } from "./listBuildStepBuildArguments";
-export const listBuildStepBuildArguments: typeof import("./listBuildStepBuildArguments").listBuildStepBuildArguments = null as any;
-export const listBuildStepBuildArgumentsOutput: typeof import("./listBuildStepBuildArguments").listBuildStepBuildArgumentsOutput = null as any;
-utilities.lazyLoad(exports, ["listBuildStepBuildArguments","listBuildStepBuildArgumentsOutput"], () => require("./listBuildStepBuildArguments"));
-
-export { ListBuildTaskSourceRepositoryPropertiesArgs, ListBuildTaskSourceRepositoryPropertiesResult, ListBuildTaskSourceRepositoryPropertiesOutputArgs } from "./listBuildTaskSourceRepositoryProperties";
-export const listBuildTaskSourceRepositoryProperties: typeof import("./listBuildTaskSourceRepositoryProperties").listBuildTaskSourceRepositoryProperties = null as any;
-export const listBuildTaskSourceRepositoryPropertiesOutput: typeof import("./listBuildTaskSourceRepositoryProperties").listBuildTaskSourceRepositoryPropertiesOutput = null as any;
-utilities.lazyLoad(exports, ["listBuildTaskSourceRepositoryProperties","listBuildTaskSourceRepositoryPropertiesOutput"], () => require("./listBuildTaskSourceRepositoryProperties"));
 
 export { ListRegistryBuildSourceUploadUrlArgs, ListRegistryBuildSourceUploadUrlResult, ListRegistryBuildSourceUploadUrlOutputArgs } from "./listRegistryBuildSourceUploadUrl";
 export const listRegistryBuildSourceUploadUrl: typeof import("./listRegistryBuildSourceUploadUrl").listRegistryBuildSourceUploadUrl = null as any;
@@ -251,9 +216,7 @@ utilities.lazyLoad(exports, ["Webhook"], () => require("./webhook"));
 export * from "./types/enums";
 
 // Export sub-modules:
-import * as v20160627preview from "./v20160627preview";
 import * as v20170301 from "./v20170301";
-import * as v20180201preview from "./v20180201preview";
 import * as v20180901 from "./v20180901";
 import * as v20190401 from "./v20190401";
 import * as v20190501 from "./v20190501";
@@ -265,9 +228,7 @@ import * as v20230701 from "./v20230701";
 import * as v20230801preview from "./v20230801preview";
 
 export {
-    v20160627preview,
     v20170301,
-    v20180201preview,
     v20180901,
     v20190401,
     v20190501,
@@ -289,8 +250,6 @@ const _module = {
                 return new Archife(name, <any>undefined, { urn })
             case "azure-native:containerregistry:ArchiveVersion":
                 return new ArchiveVersion(name, <any>undefined, { urn })
-            case "azure-native:containerregistry:BuildStep":
-                return new BuildStep(name, <any>undefined, { urn })
             case "azure-native:containerregistry:CacheRule":
                 return new CacheRule(name, <any>undefined, { urn })
             case "azure-native:containerregistry:ConnectedRegistry":

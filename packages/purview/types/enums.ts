@@ -4,6 +4,9 @@ export const CredentialsType = {
     UserAssigned: "UserAssigned",
 } as const;
 
+/**
+ * Identity Type.
+ */
 export type CredentialsType = (typeof CredentialsType)[keyof typeof CredentialsType];
 
 export const EventHubType = {
@@ -11,6 +14,9 @@ export const EventHubType = {
     Hook: "Hook",
 } as const;
 
+/**
+ * The event hub type.
+ */
 export type EventHubType = (typeof EventHubType)[keyof typeof EventHubType];
 
 export const EventStreamingState = {
@@ -18,6 +24,9 @@ export const EventStreamingState = {
     Enabled: "Enabled",
 } as const;
 
+/**
+ * The state of the event streaming service
+ */
 export type EventStreamingState = (typeof EventStreamingState)[keyof typeof EventStreamingState];
 
 export const EventStreamingType = {
@@ -26,6 +35,9 @@ export const EventStreamingType = {
     Azure: "Azure",
 } as const;
 
+/**
+ * The event streaming service type
+ */
 export type EventStreamingType = (typeof EventStreamingType)[keyof typeof EventStreamingType];
 
 export const ManagedEventHubState = {
@@ -34,6 +46,9 @@ export const ManagedEventHubState = {
     Enabled: "Enabled",
 } as const;
 
+/**
+ *  Gets or sets the state of managed eventhub. If enabled managed eventhub will be created, if disabled the managed eventhub will be removed.
+ */
 export type ManagedEventHubState = (typeof ManagedEventHubState)[keyof typeof ManagedEventHubState];
 
 export const ManagedResourcesPublicNetworkAccess = {
@@ -42,6 +57,9 @@ export const ManagedResourcesPublicNetworkAccess = {
     Disabled: "Disabled",
 } as const;
 
+/**
+ * Gets or sets the public network access for managed resources.
+ */
 export type ManagedResourcesPublicNetworkAccess = (typeof ManagedResourcesPublicNetworkAccess)[keyof typeof ManagedResourcesPublicNetworkAccess];
 
 export const PublicNetworkAccess = {
@@ -50,6 +68,9 @@ export const PublicNetworkAccess = {
     Disabled: "Disabled",
 } as const;
 
+/**
+ * Gets or sets the public network access.
+ */
 export type PublicNetworkAccess = (typeof PublicNetworkAccess)[keyof typeof PublicNetworkAccess];
 
 export const Status = {
@@ -60,6 +81,9 @@ export const Status = {
     Disconnected: "Disconnected",
 } as const;
 
+/**
+ * The status.
+ */
 export type Status = (typeof Status)[keyof typeof Status];
 
 export const Type = {
@@ -68,4 +92,7 @@ export const Type = {
     UserAssigned: "UserAssigned",
 } as const;
 
+/**
+ * Identity Type
+ */
 export type Type = (typeof Type)[keyof typeof Type];

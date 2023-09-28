@@ -9,6 +9,9 @@ export const AssignmentScopeValidation = {
     DoNotValidate: "DoNotValidate",
 } as const;
 
+/**
+ * The option whether validate the exemption is at or under the assignment scope.
+ */
 export type AssignmentScopeValidation = (typeof AssignmentScopeValidation)[keyof typeof AssignmentScopeValidation];
 
 export const ExemptionCategory = {
@@ -22,6 +25,9 @@ export const ExemptionCategory = {
     Mitigated: "Mitigated",
 } as const;
 
+/**
+ * The policy exemption category. Possible values are Waiver and Mitigated.
+ */
 export type ExemptionCategory = (typeof ExemptionCategory)[keyof typeof ExemptionCategory];
 
 export const SelectorKind = {
@@ -43,4 +49,7 @@ export const SelectorKind = {
     PolicyDefinitionReferenceId: "policyDefinitionReferenceId",
 } as const;
 
+/**
+ * The selector kind.
+ */
 export type SelectorKind = (typeof SelectorKind)[keyof typeof SelectorKind];

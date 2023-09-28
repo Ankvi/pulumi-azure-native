@@ -13,6 +13,9 @@ export const AddressType = {
     Commercial: "Commercial",
 } as const;
 
+/**
+ * Type of address.
+ */
 export type AddressType = (typeof AddressType)[keyof typeof AddressType];
 
 export const ClassDiscriminator = {
@@ -34,6 +37,9 @@ export const ClassDiscriminator = {
     DataBoxCustomerDisk: "DataBoxCustomerDisk",
 } as const;
 
+/**
+ * Indicates the type of job details.
+ */
 export type ClassDiscriminator = (typeof ClassDiscriminator)[keyof typeof ClassDiscriminator];
 
 export const DataAccountType = {
@@ -47,6 +53,9 @@ export const DataAccountType = {
     ManagedDisk: "ManagedDisk",
 } as const;
 
+/**
+ * Type of the account of data.
+ */
 export type DataAccountType = (typeof DataAccountType)[keyof typeof DataAccountType];
 
 export const DoubleEncryption = {
@@ -60,6 +69,9 @@ export const DoubleEncryption = {
     Disabled: "Disabled",
 } as const;
 
+/**
+ * Defines secondary layer of software-based encryption enablement.
+ */
 export type DoubleEncryption = (typeof DoubleEncryption)[keyof typeof DoubleEncryption];
 
 export const FilterFileType = {
@@ -73,6 +85,9 @@ export const FilterFileType = {
     AzureFile: "AzureFile",
 } as const;
 
+/**
+ * Type of the filter file.
+ */
 export type FilterFileType = (typeof FilterFileType)[keyof typeof FilterFileType];
 
 export const HardwareEncryption = {
@@ -86,6 +101,9 @@ export const HardwareEncryption = {
     Disabled: "Disabled",
 } as const;
 
+/**
+ * Defines Hardware level encryption (Only for disk)
+ */
 export type HardwareEncryption = (typeof HardwareEncryption)[keyof typeof HardwareEncryption];
 
 export const JobDeliveryType = {
@@ -99,6 +117,9 @@ export const JobDeliveryType = {
     Scheduled: "Scheduled",
 } as const;
 
+/**
+ * Delivery type of Job.
+ */
 export type JobDeliveryType = (typeof JobDeliveryType)[keyof typeof JobDeliveryType];
 
 export const KekType = {
@@ -112,6 +133,9 @@ export const KekType = {
     CustomerManaged: "CustomerManaged",
 } as const;
 
+/**
+ * Type of encryption key used for key encryption.
+ */
 export type KekType = (typeof KekType)[keyof typeof KekType];
 
 export const LogCollectionLevel = {
@@ -125,6 +149,9 @@ export const LogCollectionLevel = {
     Verbose: "Verbose",
 } as const;
 
+/**
+ * Level of the logs to be collected.
+ */
 export type LogCollectionLevel = (typeof LogCollectionLevel)[keyof typeof LogCollectionLevel];
 
 export const NotificationStageName = {
@@ -162,6 +189,9 @@ export const NotificationStageName = {
     ShippedToCustomer: "ShippedToCustomer",
 } as const;
 
+/**
+ * Name of the stage.
+ */
 export type NotificationStageName = (typeof NotificationStageName)[keyof typeof NotificationStageName];
 
 export const SkuName = {
@@ -183,6 +213,9 @@ export const SkuName = {
     DataBoxCustomerDisk: "DataBoxCustomerDisk",
 } as const;
 
+/**
+ * The sku name.
+ */
 export type SkuName = (typeof SkuName)[keyof typeof SkuName];
 
 export const StorageAccountAccessTier = {
@@ -205,6 +238,9 @@ export const TransferConfigurationType = {
     TransferUsingFilter: "TransferUsingFilter",
 } as const;
 
+/**
+ * Type of the configuration for transfer.
+ */
 export type TransferConfigurationType = (typeof TransferConfigurationType)[keyof typeof TransferConfigurationType];
 
 export const TransferType = {
@@ -218,6 +254,9 @@ export const TransferType = {
     ExportFromAzure: "ExportFromAzure",
 } as const;
 
+/**
+ * Type of the data transfer.
+ */
 export type TransferType = (typeof TransferType)[keyof typeof TransferType];
 
 export const TransportShipmentTypes = {
@@ -231,4 +270,7 @@ export const TransportShipmentTypes = {
     MicrosoftManaged: "MicrosoftManaged",
 } as const;
 
+/**
+ * Indicates Shipment Logistics type that the customer preferred.
+ */
 export type TransportShipmentTypes = (typeof TransportShipmentTypes)[keyof typeof TransportShipmentTypes];

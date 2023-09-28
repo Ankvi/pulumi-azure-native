@@ -26,6 +26,11 @@ export const getVolumeGroup: typeof import("./getVolumeGroup").getVolumeGroup = 
 export const getVolumeGroupOutput: typeof import("./getVolumeGroup").getVolumeGroupOutput = null as any;
 utilities.lazyLoad(exports, ["getVolumeGroup","getVolumeGroupOutput"], () => require("./getVolumeGroup"));
 
+export { GetVolumeSnapshotArgs, GetVolumeSnapshotResult, GetVolumeSnapshotOutputArgs } from "./getVolumeSnapshot";
+export const getVolumeSnapshot: typeof import("./getVolumeSnapshot").getVolumeSnapshot = null as any;
+export const getVolumeSnapshotOutput: typeof import("./getVolumeSnapshot").getVolumeSnapshotOutput = null as any;
+utilities.lazyLoad(exports, ["getVolumeSnapshot","getVolumeSnapshotOutput"], () => require("./getVolumeSnapshot"));
+
 export { PrivateEndpointConnectionArgs } from "./privateEndpointConnection";
 export type PrivateEndpointConnection = import("./privateEndpointConnection").PrivateEndpointConnection;
 export const PrivateEndpointConnection: typeof import("./privateEndpointConnection").PrivateEndpointConnection = null as any;
@@ -41,6 +46,11 @@ export type VolumeGroup = import("./volumeGroup").VolumeGroup;
 export const VolumeGroup: typeof import("./volumeGroup").VolumeGroup = null as any;
 utilities.lazyLoad(exports, ["VolumeGroup"], () => require("./volumeGroup"));
 
+export { VolumeSnapshotArgs } from "./volumeSnapshot";
+export type VolumeSnapshot = import("./volumeSnapshot").VolumeSnapshot;
+export const VolumeSnapshot: typeof import("./volumeSnapshot").VolumeSnapshot = null as any;
+utilities.lazyLoad(exports, ["VolumeSnapshot"], () => require("./volumeSnapshot"));
+
 
 // Export enums:
 export * from "./types/enums";
@@ -48,10 +58,12 @@ export * from "./types/enums";
 // Export sub-modules:
 import * as v20211120preview from "./v20211120preview";
 import * as v20221201preview from "./v20221201preview";
+import * as v20230101 from "./v20230101";
 
 export {
     v20211120preview,
     v20221201preview,
+    v20230101,
 };
 
 const _module = {
@@ -66,6 +78,8 @@ const _module = {
                 return new Volume(name, <any>undefined, { urn })
             case "azure-native:elasticsan:VolumeGroup":
                 return new VolumeGroup(name, <any>undefined, { urn })
+            case "azure-native:elasticsan:VolumeSnapshot":
+                return new VolumeSnapshot(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

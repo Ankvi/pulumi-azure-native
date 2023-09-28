@@ -4,6 +4,9 @@ export const ActionType = {
     Workspace: "Workspace",
 } as const;
 
+/**
+ * The type of the action that will be triggered by the Automation
+ */
 export type ActionType = (typeof ActionType)[keyof typeof ActionType];
 
 export const AdditionalWorkspaceDataType = {
@@ -11,12 +14,18 @@ export const AdditionalWorkspaceDataType = {
     RawEvents: "RawEvents",
 } as const;
 
+/**
+ * Data types sent to workspace.
+ */
 export type AdditionalWorkspaceDataType = (typeof AdditionalWorkspaceDataType)[keyof typeof AdditionalWorkspaceDataType];
 
 export const AdditionalWorkspaceType = {
     Sentinel: "Sentinel",
 } as const;
 
+/**
+ * Workspace type.
+ */
 export type AdditionalWorkspaceType = (typeof AdditionalWorkspaceType)[keyof typeof AdditionalWorkspaceType];
 
 export const ApplicationSourceResourceType = {
@@ -26,6 +35,9 @@ export const ApplicationSourceResourceType = {
     Assessments: "Assessments",
 } as const;
 
+/**
+ * The application source, what it affects, e.g. Assessments
+ */
 export type ApplicationSourceResourceType = (typeof ApplicationSourceResourceType)[keyof typeof ApplicationSourceResourceType];
 
 export const AssessmentStatusCode = {
@@ -43,6 +55,9 @@ export const AssessmentStatusCode = {
     NotApplicable: "NotApplicable",
 } as const;
 
+/**
+ * Programmatic code for the status of the assessment
+ */
 export type AssessmentStatusCode = (typeof AssessmentStatusCode)[keyof typeof AssessmentStatusCode];
 
 export const AssessmentType = {
@@ -60,6 +75,9 @@ export const AssessmentType = {
     CustomerManaged: "CustomerManaged",
 } as const;
 
+/**
+ * BuiltIn if the assessment based on built-in Azure Policy definition, Custom if the assessment based on custom Azure Policy definition
+ */
 export type AssessmentType = (typeof AssessmentType)[keyof typeof AssessmentType];
 
 export const AuthenticationType = {
@@ -77,6 +95,9 @@ export const AuthenticationType = {
     GcpCredentials: "gcpCredentials",
 } as const;
 
+/**
+ * Connect to your cloud account, for AWS use either account credentials or role-based authentication. For GCP use account organization credentials.
+ */
 export type AuthenticationType = (typeof AuthenticationType)[keyof typeof AuthenticationType];
 
 export const AutoDiscovery = {
@@ -85,6 +106,9 @@ export const AutoDiscovery = {
     NotApplicable: "NotApplicable",
 } as const;
 
+/**
+ * AutoDiscovery states.
+ */
 export type AutoDiscovery = (typeof AutoDiscovery)[keyof typeof AutoDiscovery];
 
 export const AutoProvision = {
@@ -98,6 +122,9 @@ export const AutoProvision = {
     Off: "Off",
 } as const;
 
+/**
+ * Whether or not to automatically install Azure Arc (hybrid compute) agents on machines
+ */
 export type AutoProvision = (typeof AutoProvision)[keyof typeof AutoProvision];
 
 export const Categories = {
@@ -108,6 +135,9 @@ export const Categories = {
     IoT: "IoT",
 } as const;
 
+/**
+ * The categories of resource that is at risk when the assessment is unhealthy
+ */
 export type Categories = (typeof Categories)[keyof typeof Categories];
 
 export const CloudName = {
@@ -119,6 +149,9 @@ export const CloudName = {
     GitLab: "GitLab",
 } as const;
 
+/**
+ * The multi cloud resource's cloud name.
+ */
 export type CloudName = (typeof CloudName)[keyof typeof CloudName];
 
 export const DataSource = {
@@ -140,6 +173,17 @@ export const DevOpsProvisioningState = {
     DeletionFailure: "DeletionFailure",
 } as const;
 
+/**
+ * The provisioning state of the resource.
+ * 
+ * Pending - Provisioning pending.
+ * Failed - Provisioning failed.
+ * Succeeded - Successful provisioning.
+ * Canceled - Provisioning canceled.
+ * PendingDeletion - Deletion pending.
+ * DeletionSuccess - Deletion successful.
+ * DeletionFailure - Deletion failure.
+ */
 export type DevOpsProvisioningState = (typeof DevOpsProvisioningState)[keyof typeof DevOpsProvisioningState];
 
 export const EnvironmentType = {
@@ -150,6 +194,9 @@ export const EnvironmentType = {
     GitlabScope: "GitlabScope",
 } as const;
 
+/**
+ * The type of the environment data.
+ */
 export type EnvironmentType = (typeof EnvironmentType)[keyof typeof EnvironmentType];
 
 export const EventSource = {
@@ -166,6 +213,9 @@ export const EventSource = {
     RegulatoryComplianceAssessmentSnapshot: "RegulatoryComplianceAssessmentSnapshot",
 } as const;
 
+/**
+ * A valid event source type.
+ */
 export type EventSource = (typeof EventSource)[keyof typeof EventSource];
 
 export const ExportData = {
@@ -188,6 +238,9 @@ export const GovernanceRuleOwnerSourceType = {
     Manually: "Manually",
 } as const;
 
+/**
+ * The owner type for the governance rule owner source
+ */
 export type GovernanceRuleOwnerSourceType = (typeof GovernanceRuleOwnerSourceType)[keyof typeof GovernanceRuleOwnerSourceType];
 
 export const GovernanceRuleSourceResourceType = {
@@ -197,6 +250,9 @@ export const GovernanceRuleSourceResourceType = {
     Assessments: "Assessments",
 } as const;
 
+/**
+ * The governance rule source, what the rule affects, e.g. Assessments
+ */
 export type GovernanceRuleSourceResourceType = (typeof GovernanceRuleSourceResourceType)[keyof typeof GovernanceRuleSourceResourceType];
 
 export const GovernanceRuleType = {
@@ -210,6 +266,9 @@ export const GovernanceRuleType = {
     ServiceNow: "ServiceNow",
 } as const;
 
+/**
+ * The rule type of the governance rule, defines the source of the rule e.g. Integrated
+ */
 export type GovernanceRuleType = (typeof GovernanceRuleType)[keyof typeof GovernanceRuleType];
 
 export const ImplementationEffort = {
@@ -218,6 +277,9 @@ export const ImplementationEffort = {
     High: "High",
 } as const;
 
+/**
+ * The implementation effort required to remediate this assessment
+ */
 export type ImplementationEffort = (typeof ImplementationEffort)[keyof typeof ImplementationEffort];
 
 export const MinimalSeverity = {
@@ -235,6 +297,9 @@ export const MinimalSeverity = {
     Low: "Low",
 } as const;
 
+/**
+ * Defines the minimal alert severity which will be sent as email notifications
+ */
 export type MinimalSeverity = (typeof MinimalSeverity)[keyof typeof MinimalSeverity];
 
 export const OfferingType = {
@@ -257,6 +322,9 @@ export const OfferingType = {
     DefenderForDevOpsGitLab: "DefenderForDevOpsGitLab",
 } as const;
 
+/**
+ * The type of the security offering.
+ */
 export type OfferingType = (typeof OfferingType)[keyof typeof OfferingType];
 
 export const Operator = {
@@ -298,6 +366,9 @@ export const Operator = {
     EndsWith: "EndsWith",
 } as const;
 
+/**
+ * A valid comparer operator to use. A case-insensitive comparison will be applied for String PropertyType.
+ */
 export type Operator = (typeof Operator)[keyof typeof Operator];
 
 export const OrganizationMembershipType = {
@@ -305,6 +376,9 @@ export const OrganizationMembershipType = {
     Organization: "Organization",
 } as const;
 
+/**
+ * The multi cloud account's membership type in the organization
+ */
 export type OrganizationMembershipType = (typeof OrganizationMembershipType)[keyof typeof OrganizationMembershipType];
 
 export const PropertyType = {
@@ -314,6 +388,9 @@ export const PropertyType = {
     Boolean: "Boolean",
 } as const;
 
+/**
+ * The data type of the compared operands (string, integer, floating point number or a boolean [true/false]]
+ */
 export type PropertyType = (typeof PropertyType)[keyof typeof PropertyType];
 
 export const Protocol = {
@@ -329,6 +406,9 @@ export const RecommendationConfigStatus = {
     Enabled: "Enabled",
 } as const;
 
+/**
+ * Recommendation status. When the recommendation status is disabled recommendations are not generated.
+ */
 export type RecommendationConfigStatus = (typeof RecommendationConfigStatus)[keyof typeof RecommendationConfigStatus];
 
 export const RecommendationType = {
@@ -398,6 +478,9 @@ export const RecommendationType = {
     IoT_VulnerableTLSCipherSuite: "IoT_VulnerableTLSCipherSuite",
 } as const;
 
+/**
+ * The type of IoT Security recommendation.
+ */
 export type RecommendationType = (typeof RecommendationType)[keyof typeof RecommendationType];
 
 export const Roles = {
@@ -419,6 +502,9 @@ export const Roles = {
     Contributor: "Contributor",
 } as const;
 
+/**
+ * A possible role to configure sending security notification alerts to
+ */
 export type Roles = (typeof Roles)[keyof typeof Roles];
 
 export const RuleState = {
@@ -427,12 +513,18 @@ export const RuleState = {
     Expired: "Expired",
 } as const;
 
+/**
+ * Possible states of the rule
+ */
 export type RuleState = (typeof RuleState)[keyof typeof RuleState];
 
 export const ScanningMode = {
     Default: "Default",
 } as const;
 
+/**
+ * The scanning mode for the VM scan.
+ */
 export type ScanningMode = (typeof ScanningMode)[keyof typeof ScanningMode];
 
 export const SecuritySolutionStatus = {
@@ -440,6 +532,9 @@ export const SecuritySolutionStatus = {
     Disabled: "Disabled",
 } as const;
 
+/**
+ * Status of the IoT Security solution.
+ */
 export type SecuritySolutionStatus = (typeof SecuritySolutionStatus)[keyof typeof SecuritySolutionStatus];
 
 export const ServerVulnerabilityAssessmentsAzureSettingSelectedProvider = {
@@ -449,12 +544,18 @@ export const ServerVulnerabilityAssessmentsAzureSettingSelectedProvider = {
     MdeTvm: "MdeTvm",
 } as const;
 
+/**
+ * The selected vulnerability assessments provider on Azure servers in the defined scope.
+ */
 export type ServerVulnerabilityAssessmentsAzureSettingSelectedProvider = (typeof ServerVulnerabilityAssessmentsAzureSettingSelectedProvider)[keyof typeof ServerVulnerabilityAssessmentsAzureSettingSelectedProvider];
 
 export const ServerVulnerabilityAssessmentsSettingKind = {
     AzureServersSetting: "AzureServersSetting",
 } as const;
 
+/**
+ * The kind of the server vulnerability assessments setting.
+ */
 export type ServerVulnerabilityAssessmentsSettingKind = (typeof ServerVulnerabilityAssessmentsSettingKind)[keyof typeof ServerVulnerabilityAssessmentsSettingKind];
 
 export const Severity = {
@@ -463,6 +564,9 @@ export const Severity = {
     High: "High",
 } as const;
 
+/**
+ * The severity level of the assessment
+ */
 export type Severity = (typeof Severity)[keyof typeof Severity];
 
 export const SeverityEnum = {
@@ -471,6 +575,9 @@ export const SeverityEnum = {
     Low: "Low",
 } as const;
 
+/**
+ * The severity to relate to the assessments generated by this assessment automation.
+ */
 export type SeverityEnum = (typeof SeverityEnum)[keyof typeof SeverityEnum];
 
 export const Source = {
@@ -488,6 +595,9 @@ export const Source = {
     OnPremiseSql: "OnPremiseSql",
 } as const;
 
+/**
+ * The platform where the assessed resource resides
+ */
 export type Source = (typeof Source)[keyof typeof Source];
 
 export const StandardSupportedClouds = {
@@ -495,6 +605,9 @@ export const StandardSupportedClouds = {
     GCP: "GCP",
 } as const;
 
+/**
+ * The cloud that the standard is supported on.
+ */
 export type StandardSupportedClouds = (typeof StandardSupportedClouds)[keyof typeof StandardSupportedClouds];
 
 export const State = {
@@ -508,6 +621,9 @@ export const State = {
     Off: "Off",
 } as const;
 
+/**
+ * Defines whether to send email notifications from AMicrosoft Defender for Cloud to persons with specific RBAC roles on the subscription.
+ */
 export type State = (typeof State)[keyof typeof State];
 
 export const Status = {
@@ -515,6 +631,9 @@ export const Status = {
     Initiated: "Initiated",
 } as const;
 
+/**
+ * The status of the port
+ */
 export type Status = (typeof Status)[keyof typeof Status];
 
 export const StatusReason = {
@@ -523,6 +642,9 @@ export const StatusReason = {
     NewerRequestInitiated: "NewerRequestInitiated",
 } as const;
 
+/**
+ * A description of why the `status` has its value
+ */
 export type StatusReason = (typeof StatusReason)[keyof typeof StatusReason];
 
 export const SubPlan = {
@@ -530,6 +652,9 @@ export const SubPlan = {
     P2: "P2",
 } as const;
 
+/**
+ * The available sub plans
+ */
 export type SubPlan = (typeof SubPlan)[keyof typeof SubPlan];
 
 export const SupportedCloudEnum = {
@@ -537,6 +662,9 @@ export const SupportedCloudEnum = {
     GCP: "GCP",
 } as const;
 
+/**
+ * Relevant cloud for the custom assessment automation.
+ */
 export type SupportedCloudEnum = (typeof SupportedCloudEnum)[keyof typeof SupportedCloudEnum];
 
 export const Tactics = {
@@ -556,6 +684,9 @@ export const Tactics = {
     Impact: "Impact",
 } as const;
 
+/**
+ * Tactic of the assessment
+ */
 export type Tactics = (typeof Tactics)[keyof typeof Tactics];
 
 export const Techniques = {
@@ -665,6 +796,9 @@ export const Techniques = {
     File_and_Directory_Permissions_Modification: "File and Directory Permissions Modification",
 } as const;
 
+/**
+ * Techniques of the assessment
+ */
 export type Techniques = (typeof Techniques)[keyof typeof Techniques];
 
 export const Threats = {
@@ -678,6 +812,9 @@ export const Threats = {
     DenialOfService: "denialOfService",
 } as const;
 
+/**
+ * Threats impact of the assessment
+ */
 export type Threats = (typeof Threats)[keyof typeof Threats];
 
 export const Type = {
@@ -685,6 +822,9 @@ export const Type = {
     TVM: "TVM",
 } as const;
 
+/**
+ * The Vulnerability Assessment solution to be provisioned. Can be either 'TVM' or 'Qualys'
+ */
 export type Type = (typeof Type)[keyof typeof Type];
 
 export const UnmaskedIpLoggingStatus = {
@@ -698,6 +838,9 @@ export const UnmaskedIpLoggingStatus = {
     Enabled: "Enabled",
 } as const;
 
+/**
+ * Unmasked IP address logging status
+ */
 export type UnmaskedIpLoggingStatus = (typeof UnmaskedIpLoggingStatus)[keyof typeof UnmaskedIpLoggingStatus];
 
 export const UserImpact = {
@@ -706,4 +849,7 @@ export const UserImpact = {
     High: "High",
 } as const;
 
+/**
+ * The user impact of the assessment
+ */
 export type UserImpact = (typeof UserImpact)[keyof typeof UserImpact];

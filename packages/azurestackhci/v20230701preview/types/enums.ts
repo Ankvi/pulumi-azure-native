@@ -3,6 +3,9 @@ export const CloudInitDataSource = {
     Azure: "Azure",
 } as const;
 
+/**
+ * Datasource for the gallery image when provisioning with cloud-init [NoCloud, Azure]
+ */
 export type CloudInitDataSource = (typeof CloudInitDataSource)[keyof typeof CloudInitDataSource];
 
 export const DiskFileFormat = {
@@ -10,12 +13,18 @@ export const DiskFileFormat = {
     Vhd: "vhd",
 } as const;
 
+/**
+ * The format of the actual VHD file [vhd, vhdx]
+ */
 export type DiskFileFormat = (typeof DiskFileFormat)[keyof typeof DiskFileFormat];
 
 export const ExtendedLocationTypes = {
     CustomLocation: "CustomLocation",
 } as const;
 
+/**
+ * The type of the extended location.
+ */
 export type ExtendedLocationTypes = (typeof ExtendedLocationTypes)[keyof typeof ExtendedLocationTypes];
 
 export const HyperVGeneration = {
@@ -23,6 +32,9 @@ export const HyperVGeneration = {
     V2: "V2",
 } as const;
 
+/**
+ * The hypervisor generation of the Virtual Machine [V1, V2]
+ */
 export type HyperVGeneration = (typeof HyperVGeneration)[keyof typeof HyperVGeneration];
 
 export const IpAllocationMethodEnum = {
@@ -30,6 +42,9 @@ export const IpAllocationMethodEnum = {
     Static: "Static",
 } as const;
 
+/**
+ * IPAllocationMethod - The IP address allocation method. Possible values include: 'Static', 'Dynamic'
+ */
 export type IpAllocationMethodEnum = (typeof IpAllocationMethodEnum)[keyof typeof IpAllocationMethodEnum];
 
 export const NetworkTypeEnum = {
@@ -44,6 +59,9 @@ export const NetworkTypeEnum = {
     Mirrored: "Mirrored",
 } as const;
 
+/**
+ * Type of the network
+ */
 export type NetworkTypeEnum = (typeof NetworkTypeEnum)[keyof typeof NetworkTypeEnum];
 
 export const OperatingSystemTypes = {
@@ -51,6 +69,9 @@ export const OperatingSystemTypes = {
     Windows: "Windows",
 } as const;
 
+/**
+ * This property allows you to specify the type of the OS that is included in the disk if creating a VM from user-image or a specialized VHD. Possible values are: **Windows,** **Linux.**
+ */
 export type OperatingSystemTypes = (typeof OperatingSystemTypes)[keyof typeof OperatingSystemTypes];
 
 export const ProvisioningAction = {
@@ -59,12 +80,18 @@ export const ProvisioningAction = {
     Repair: "repair",
 } as const;
 
+/**
+ * The guest agent provisioning action.
+ */
 export type ProvisioningAction = (typeof ProvisioningAction)[keyof typeof ProvisioningAction];
 
 export const ResourceIdentityType = {
     SystemAssigned: "SystemAssigned",
 } as const;
 
+/**
+ * The identity type.
+ */
 export type ResourceIdentityType = (typeof ResourceIdentityType)[keyof typeof ResourceIdentityType];
 
 export const SecurityTypes = {
@@ -72,6 +99,9 @@ export const SecurityTypes = {
     ConfidentialVM: "ConfidentialVM",
 } as const;
 
+/**
+ * Specifies the SecurityType of the virtual machine. EnableTPM and SecureBootEnabled must be set to true for SecurityType to function.
+ */
 export type SecurityTypes = (typeof SecurityTypes)[keyof typeof SecurityTypes];
 
 export const VmSizeEnum = {

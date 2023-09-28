@@ -9,6 +9,9 @@ export const NetworkFunctionAdministrativeState = {
     Decommissioned: "Decommissioned",
 } as const;
 
+/**
+ * Administrative state of the network function
+ */
 export type NetworkFunctionAdministrativeState = (typeof NetworkFunctionAdministrativeState)[keyof typeof NetworkFunctionAdministrativeState];
 
 export const NetworkFunctionType = {
@@ -70,6 +73,9 @@ export const NetworkFunctionType = {
     OperationsPolicyManager: "OperationsPolicyManager",
 } as const;
 
+/**
+ * Type of network function
+ */
 export type NetworkFunctionType = (typeof NetworkFunctionType)[keyof typeof NetworkFunctionType];
 
 export const SkuDefinitions = {
@@ -91,4 +97,7 @@ export const SkuDefinitions = {
     NexusProduction: "NexusProduction",
 } as const;
 
+/**
+ * Provisioned SKU Value.
+ */
 export type SkuDefinitions = (typeof SkuDefinitions)[keyof typeof SkuDefinitions];

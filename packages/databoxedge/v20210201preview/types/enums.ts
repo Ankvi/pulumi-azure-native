@@ -8,6 +8,9 @@ export const DataBoxEdgeDeviceStatus = {
     Maintenance: "Maintenance",
 } as const;
 
+/**
+ * The status of the Data Box Edge/Gateway device.
+ */
 export type DataBoxEdgeDeviceStatus = (typeof DataBoxEdgeDeviceStatus)[keyof typeof DataBoxEdgeDeviceStatus];
 
 export const EncryptionAlgorithm = {
@@ -16,6 +19,9 @@ export const EncryptionAlgorithm = {
     RSAES_PKCS1_v_1_5: "RSAES_PKCS1_v_1_5",
 } as const;
 
+/**
+ * The algorithm used to encrypt "Value".
+ */
 export type EncryptionAlgorithm = (typeof EncryptionAlgorithm)[keyof typeof EncryptionAlgorithm];
 
 export const MsiIdentityType = {
@@ -24,6 +30,9 @@ export const MsiIdentityType = {
     UserAssigned: "UserAssigned",
 } as const;
 
+/**
+ * Identity type
+ */
 export type MsiIdentityType = (typeof MsiIdentityType)[keyof typeof MsiIdentityType];
 
 export const SkuName = {
@@ -54,12 +63,18 @@ export const SkuName = {
     Management: "Management",
 } as const;
 
+/**
+ * SKU name.
+ */
 export type SkuName = (typeof SkuName)[keyof typeof SkuName];
 
 export const SkuTier = {
     Standard: "Standard",
 } as const;
 
+/**
+ * The SKU tier. This is based on the SKU name.
+ */
 export type SkuTier = (typeof SkuTier)[keyof typeof SkuTier];
 
 export const UserType = {
@@ -68,4 +83,7 @@ export const UserType = {
     ARM: "ARM",
 } as const;
 
+/**
+ * Type of the user.
+ */
 export type UserType = (typeof UserType)[keyof typeof UserType];

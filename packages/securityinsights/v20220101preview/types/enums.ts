@@ -13,6 +13,9 @@ export const EntityTimelineKind = {
     SecurityAlert: "SecurityAlert",
 } as const;
 
+/**
+ * The entity query kind
+ */
 export type EntityTimelineKind = (typeof EntityTimelineKind)[keyof typeof EntityTimelineKind];
 
 export const SettingKind = {
@@ -22,6 +25,9 @@ export const SettingKind = {
     Ueba: "Ueba",
 } as const;
 
+/**
+ * The kind of the setting
+ */
 export type SettingKind = (typeof SettingKind)[keyof typeof SettingKind];
 
 export const SourceType = {
@@ -29,4 +35,7 @@ export const SourceType = {
     Remote_storage: "Remote storage",
 } as const;
 
+/**
+ * The sourceType of the watchlist
+ */
 export type SourceType = (typeof SourceType)[keyof typeof SourceType];

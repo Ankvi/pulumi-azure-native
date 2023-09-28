@@ -6,6 +6,9 @@ export const AuthType = {
     Secret: "secret",
 } as const;
 
+/**
+ * The authentication type.
+ */
 export type AuthType = (typeof AuthType)[keyof typeof AuthType];
 
 export const ClientType = {
@@ -21,6 +24,9 @@ export const ClientType = {
     SpringBoot: "springBoot",
 } as const;
 
+/**
+ * The application client type
+ */
 export type ClientType = (typeof ClientType)[keyof typeof ClientType];
 
 export const VNetSolutionType = {
@@ -28,4 +34,7 @@ export const VNetSolutionType = {
     PrivateLink: "privateLink",
 } as const;
 
+/**
+ * Type of VNet solution.
+ */
 export type VNetSolutionType = (typeof VNetSolutionType)[keyof typeof VNetSolutionType];

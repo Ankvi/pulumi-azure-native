@@ -29,4 +29,7 @@ export const SkuName = {
     PayShield10K_LMK2_CPS2500: "payShield10K_LMK2_CPS2500",
 } as const;
 
+/**
+ * SKU of the dedicated HSM
+ */
 export type SkuName = (typeof SkuName)[keyof typeof SkuName];

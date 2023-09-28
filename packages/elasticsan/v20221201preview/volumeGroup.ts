@@ -103,7 +103,7 @@ export class VolumeGroup extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:elasticsan:VolumeGroup" }, { type: "azure-native:elasticsan/v20211120preview:VolumeGroup" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:elasticsan:VolumeGroup" }, { type: "azure-native:elasticsan/v20211120preview:VolumeGroup" }, { type: "azure-native:elasticsan/v20230101:VolumeGroup" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(VolumeGroup.__pulumiType, name, resourceInputs, opts);
     }

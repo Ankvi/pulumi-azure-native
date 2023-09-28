@@ -4,6 +4,9 @@ export const AvailabilityType = {
     Notify: "Notify",
 } as const;
 
+/**
+ * Indicates the way the update content can be downloaded.
+ */
 export type AvailabilityType = (typeof AvailabilityType)[keyof typeof AvailabilityType];
 
 export const CloudInitDataSource = {
@@ -11,6 +14,9 @@ export const CloudInitDataSource = {
     Azure: "Azure",
 } as const;
 
+/**
+ * Datasource for the gallery image when provisioning with cloud-init [NoCloud, Azure]
+ */
 export type CloudInitDataSource = (typeof CloudInitDataSource)[keyof typeof CloudInitDataSource];
 
 export const CreatedByType = {
@@ -20,6 +26,9 @@ export const CreatedByType = {
     Key: "Key",
 } as const;
 
+/**
+ * The type of identity that last modified the resource.
+ */
 export type CreatedByType = (typeof CreatedByType)[keyof typeof CreatedByType];
 
 export const DiagnosticLevel = {
@@ -28,6 +37,9 @@ export const DiagnosticLevel = {
     Enhanced: "Enhanced",
 } as const;
 
+/**
+ * Desired level of diagnostic data emitted by the cluster.
+ */
 export type DiagnosticLevel = (typeof DiagnosticLevel)[keyof typeof DiagnosticLevel];
 
 export const DiskFileFormat = {
@@ -35,12 +47,18 @@ export const DiskFileFormat = {
     Vhd: "vhd",
 } as const;
 
+/**
+ * The format of the actual VHD file [vhd, vhdx]
+ */
 export type DiskFileFormat = (typeof DiskFileFormat)[keyof typeof DiskFileFormat];
 
 export const ExtendedLocationTypes = {
     CustomLocation: "CustomLocation",
 } as const;
 
+/**
+ * The type of the extended location.
+ */
 export type ExtendedLocationTypes = (typeof ExtendedLocationTypes)[keyof typeof ExtendedLocationTypes];
 
 export const HyperVGeneration = {
@@ -48,6 +66,9 @@ export const HyperVGeneration = {
     V2: "V2",
 } as const;
 
+/**
+ * The hypervisor generation of the Virtual Machine [V1, V2]
+ */
 export type HyperVGeneration = (typeof HyperVGeneration)[keyof typeof HyperVGeneration];
 
 export const IPPoolTypeEnum = {
@@ -55,6 +76,9 @@ export const IPPoolTypeEnum = {
     Vippool: "vippool",
 } as const;
 
+/**
+ * ip pool type
+ */
 export type IPPoolTypeEnum = (typeof IPPoolTypeEnum)[keyof typeof IPPoolTypeEnum];
 
 export const IpAllocationMethodEnum = {
@@ -62,6 +86,9 @@ export const IpAllocationMethodEnum = {
     Static: "Static",
 } as const;
 
+/**
+ * IPAllocationMethod - The IP address allocation method. Possible values include: 'Static', 'Dynamic'
+ */
 export type IpAllocationMethodEnum = (typeof IpAllocationMethodEnum)[keyof typeof IpAllocationMethodEnum];
 
 export const ManagedServiceIdentityType = {
@@ -71,6 +98,9 @@ export const ManagedServiceIdentityType = {
     SystemAssigned_UserAssigned: "SystemAssigned, UserAssigned",
 } as const;
 
+/**
+ * Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+ */
 export type ManagedServiceIdentityType = (typeof ManagedServiceIdentityType)[keyof typeof ManagedServiceIdentityType];
 
 export const NetworkTypeEnum = {
@@ -85,6 +115,9 @@ export const NetworkTypeEnum = {
     Mirrored: "Mirrored",
 } as const;
 
+/**
+ * Type of the network
+ */
 export type NetworkTypeEnum = (typeof NetworkTypeEnum)[keyof typeof NetworkTypeEnum];
 
 export const OperatingSystemTypes = {
@@ -92,6 +125,9 @@ export const OperatingSystemTypes = {
     Linux: "Linux",
 } as const;
 
+/**
+ * Operating system type that the gallery image uses [Windows, Linux]
+ */
 export type OperatingSystemTypes = (typeof OperatingSystemTypes)[keyof typeof OperatingSystemTypes];
 
 export const OsTypeEnum = {
@@ -99,6 +135,9 @@ export const OsTypeEnum = {
     Windows: "Windows",
 } as const;
 
+/**
+ * OsType - string specifying whether the OS is Linux or Windows
+ */
 export type OsTypeEnum = (typeof OsTypeEnum)[keyof typeof OsTypeEnum];
 
 export const PrivateIPAllocationMethodEnum = {
@@ -106,6 +145,9 @@ export const PrivateIPAllocationMethodEnum = {
     Static: "Static",
 } as const;
 
+/**
+ * PrivateIPAllocationMethod - The private IP address allocation method. Possible values include: 'Static', 'Dynamic'
+ */
 export type PrivateIPAllocationMethodEnum = (typeof PrivateIPAllocationMethodEnum)[keyof typeof PrivateIPAllocationMethodEnum];
 
 export const ProvisioningAction = {
@@ -114,12 +156,18 @@ export const ProvisioningAction = {
     Repair: "repair",
 } as const;
 
+/**
+ * The guest agent provisioning action.
+ */
 export type ProvisioningAction = (typeof ProvisioningAction)[keyof typeof ProvisioningAction];
 
 export const ResourceIdentityType = {
     SystemAssigned: "SystemAssigned",
 } as const;
 
+/**
+ * The identity type.
+ */
 export type ResourceIdentityType = (typeof ResourceIdentityType)[keyof typeof ResourceIdentityType];
 
 export const SoftwareAssuranceIntent = {
@@ -127,6 +175,9 @@ export const SoftwareAssuranceIntent = {
     Disable: "Disable",
 } as const;
 
+/**
+ * Customer Intent for Software Assurance Benefit.
+ */
 export type SoftwareAssuranceIntent = (typeof SoftwareAssuranceIntent)[keyof typeof SoftwareAssuranceIntent];
 
 export const SoftwareAssuranceStatus = {
@@ -134,6 +185,9 @@ export const SoftwareAssuranceStatus = {
     Disabled: "Disabled",
 } as const;
 
+/**
+ * Status of the Software Assurance for the cluster.
+ */
 export type SoftwareAssuranceStatus = (typeof SoftwareAssuranceStatus)[keyof typeof SoftwareAssuranceStatus];
 
 export const State = {
@@ -157,6 +211,9 @@ export const State = {
     ScanFailed: "ScanFailed",
 } as const;
 
+/**
+ * State of the update as it relates to this stamp.
+ */
 export type State = (typeof State)[keyof typeof State];
 
 export const UpdateRunPropertiesState = {
@@ -166,6 +223,9 @@ export const UpdateRunPropertiesState = {
     Failed: "Failed",
 } as const;
 
+/**
+ * State of the update run.
+ */
 export type UpdateRunPropertiesState = (typeof UpdateRunPropertiesState)[keyof typeof UpdateRunPropertiesState];
 
 export const UpdateSummariesPropertiesState = {
@@ -179,6 +239,9 @@ export const UpdateSummariesPropertiesState = {
     PreparationFailed: "PreparationFailed",
 } as const;
 
+/**
+ * Overall update state of the stamp.
+ */
 export type UpdateSummariesPropertiesState = (typeof UpdateSummariesPropertiesState)[keyof typeof UpdateSummariesPropertiesState];
 
 export const VmSizeEnum = {
@@ -214,4 +277,7 @@ export const WindowsServerSubscription = {
     Enabled: "Enabled",
 } as const;
 
+/**
+ * Desired state of Windows Server Subscription.
+ */
 export type WindowsServerSubscription = (typeof WindowsServerSubscription)[keyof typeof WindowsServerSubscription];

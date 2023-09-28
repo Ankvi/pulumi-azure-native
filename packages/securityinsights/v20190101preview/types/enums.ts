@@ -9,6 +9,9 @@ export const AutomationRuleActionType = {
     RunPlaybook: "RunPlaybook",
 } as const;
 
+/**
+ * The type of the automation rule action
+ */
 export type AutomationRuleActionType = (typeof AutomationRuleActionType)[keyof typeof AutomationRuleActionType];
 
 export const AutomationRuleConditionType = {
@@ -18,6 +21,9 @@ export const AutomationRuleConditionType = {
     Property: "Property",
 } as const;
 
+/**
+ * The type of the automation rule condition
+ */
 export type AutomationRuleConditionType = (typeof AutomationRuleConditionType)[keyof typeof AutomationRuleConditionType];
 
 export const AutomationRulePropertyConditionSupportedOperator = {
@@ -55,6 +61,9 @@ export const AutomationRulePropertyConditionSupportedOperator = {
     NotEndsWith: "NotEndsWith",
 } as const;
 
+/**
+ * The operator to use for evaluation the condition
+ */
 export type AutomationRulePropertyConditionSupportedOperator = (typeof AutomationRulePropertyConditionSupportedOperator)[keyof typeof AutomationRulePropertyConditionSupportedOperator];
 
 export const AutomationRulePropertyConditionSupportedProperty = {
@@ -268,6 +277,9 @@ export const AutomationRulePropertyConditionSupportedProperty = {
     Url: "Url",
 } as const;
 
+/**
+ * The property to evaluate
+ */
 export type AutomationRulePropertyConditionSupportedProperty = (typeof AutomationRulePropertyConditionSupportedProperty)[keyof typeof AutomationRulePropertyConditionSupportedProperty];
 
 export const EntityTimelineKind = {
@@ -285,6 +297,9 @@ export const EntityTimelineKind = {
     SecurityAlert: "SecurityAlert",
 } as const;
 
+/**
+ * The entity query kind
+ */
 export type EntityTimelineKind = (typeof EntityTimelineKind)[keyof typeof EntityTimelineKind];
 
 export const IncidentClassification = {
@@ -306,6 +321,9 @@ export const IncidentClassification = {
     FalsePositive: "FalsePositive",
 } as const;
 
+/**
+ * The reason the incident was closed
+ */
 export type IncidentClassification = (typeof IncidentClassification)[keyof typeof IncidentClassification];
 
 export const IncidentClassificationReason = {
@@ -327,6 +345,9 @@ export const IncidentClassificationReason = {
     InaccurateData: "InaccurateData",
 } as const;
 
+/**
+ * The classification reason to close the incident with
+ */
 export type IncidentClassificationReason = (typeof IncidentClassificationReason)[keyof typeof IncidentClassificationReason];
 
 export const IncidentSeverity = {
@@ -348,6 +369,9 @@ export const IncidentSeverity = {
     Informational: "Informational",
 } as const;
 
+/**
+ * The severity of the incident
+ */
 export type IncidentSeverity = (typeof IncidentSeverity)[keyof typeof IncidentSeverity];
 
 export const IncidentStatus = {
@@ -365,6 +389,9 @@ export const IncidentStatus = {
     Closed: "Closed",
 } as const;
 
+/**
+ * The status of the incident
+ */
 export type IncidentStatus = (typeof IncidentStatus)[keyof typeof IncidentStatus];
 
 export const SettingKind = {
@@ -374,6 +401,9 @@ export const SettingKind = {
     Ueba: "Ueba",
 } as const;
 
+/**
+ * The kind of the setting
+ */
 export type SettingKind = (typeof SettingKind)[keyof typeof SettingKind];
 
 export const Source = {
@@ -381,6 +411,9 @@ export const Source = {
     Remote_storage: "Remote storage",
 } as const;
 
+/**
+ * The source of the watchlist
+ */
 export type Source = (typeof Source)[keyof typeof Source];
 
 export const TriggersOn = {
@@ -390,6 +423,9 @@ export const TriggersOn = {
     Incidents: "Incidents",
 } as const;
 
+/**
+ * The type of object the automation rule triggers on
+ */
 export type TriggersOn = (typeof TriggersOn)[keyof typeof TriggersOn];
 
 export const TriggersWhen = {
@@ -399,4 +435,7 @@ export const TriggersWhen = {
     Created: "Created",
 } as const;
 
+/**
+ * The type of event the automation rule triggers on
+ */
 export type TriggersWhen = (typeof TriggersWhen)[keyof typeof TriggersWhen];

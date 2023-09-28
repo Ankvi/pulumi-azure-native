@@ -5,6 +5,9 @@ export const ApplicationScopedVolumeKind = {
     ServiceFabricVolumeDisk: "ServiceFabricVolumeDisk",
 } as const;
 
+/**
+ * Specifies the application-scoped volume kind.
+ */
 export type ApplicationScopedVolumeKind = (typeof ApplicationScopedVolumeKind)[keyof typeof ApplicationScopedVolumeKind];
 
 export const AutoScalingMechanismKind = {
@@ -14,6 +17,9 @@ export const AutoScalingMechanismKind = {
     AddRemoveReplica: "AddRemoveReplica",
 } as const;
 
+/**
+ * The type of auto scaling mechanism.
+ */
 export type AutoScalingMechanismKind = (typeof AutoScalingMechanismKind)[keyof typeof AutoScalingMechanismKind];
 
 export const AutoScalingMetricKind = {
@@ -23,6 +29,9 @@ export const AutoScalingMetricKind = {
     Resource: "Resource",
 } as const;
 
+/**
+ * The type of auto scaling metric
+ */
 export type AutoScalingMetricKind = (typeof AutoScalingMetricKind)[keyof typeof AutoScalingMetricKind];
 
 export const AutoScalingResourceMetricName = {
@@ -36,6 +45,9 @@ export const AutoScalingResourceMetricName = {
     MemoryInGB: "memoryInGB",
 } as const;
 
+/**
+ * Name of the resource.
+ */
 export type AutoScalingResourceMetricName = (typeof AutoScalingResourceMetricName)[keyof typeof AutoScalingResourceMetricName];
 
 export const AutoScalingTriggerKind = {
@@ -45,6 +57,9 @@ export const AutoScalingTriggerKind = {
     AverageLoad: "AverageLoad",
 } as const;
 
+/**
+ * The type of auto scaling trigger
+ */
 export type AutoScalingTriggerKind = (typeof AutoScalingTriggerKind)[keyof typeof AutoScalingTriggerKind];
 
 export const DiagnosticsSinkKind = {
@@ -58,12 +73,18 @@ export const DiagnosticsSinkKind = {
     AzureInternalMonitoringPipeline: "AzureInternalMonitoringPipeline",
 } as const;
 
+/**
+ * The kind of DiagnosticsSink.
+ */
 export type DiagnosticsSinkKind = (typeof DiagnosticsSinkKind)[keyof typeof DiagnosticsSinkKind];
 
 export const HeaderMatchType = {
     Exact: "exact",
 } as const;
 
+/**
+ * how to match header value
+ */
 export type HeaderMatchType = (typeof HeaderMatchType)[keyof typeof HeaderMatchType];
 
 export const NetworkKind = {
@@ -73,6 +94,9 @@ export const NetworkKind = {
     Local: "Local",
 } as const;
 
+/**
+ * The type of a Service Fabric container network.
+ */
 export type NetworkKind = (typeof NetworkKind)[keyof typeof NetworkKind];
 
 export const OperatingSystemType = {
@@ -86,12 +110,18 @@ export const OperatingSystemType = {
     Windows: "Windows",
 } as const;
 
+/**
+ * The operation system required by the code in service.
+ */
 export type OperatingSystemType = (typeof OperatingSystemType)[keyof typeof OperatingSystemType];
 
 export const PathMatchType = {
     Prefix: "prefix",
 } as const;
 
+/**
+ * how to match value in the Uri
+ */
 export type PathMatchType = (typeof PathMatchType)[keyof typeof PathMatchType];
 
 export const SecretKind = {
@@ -101,6 +131,9 @@ export const SecretKind = {
     InlinedValue: "inlinedValue",
 } as const;
 
+/**
+ * Describes the kind of secret.
+ */
 export type SecretKind = (typeof SecretKind)[keyof typeof SecretKind];
 
 export const SizeTypes = {
@@ -109,6 +142,9 @@ export const SizeTypes = {
     Large: "Large",
 } as const;
 
+/**
+ * Volume size
+ */
 export type SizeTypes = (typeof SizeTypes)[keyof typeof SizeTypes];
 
 export const VolumeProvider = {
@@ -118,4 +154,7 @@ export const VolumeProvider = {
     SFAzureFile: "SFAzureFile",
 } as const;
 
+/**
+ * Provider of the volume.
+ */
 export type VolumeProvider = (typeof VolumeProvider)[keyof typeof VolumeProvider];

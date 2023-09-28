@@ -87,7 +87,7 @@ import * as pulumi from "@pulumi/pulumi";
      */
     export interface AccessControlListPortConditionArgs {
         /**
-         * List of protocol flags that need to be matched.
+         * List of protocol flags that need to be matched. Example: established | initial | <List-of-TCP-flags>. List of eligible TCP Flags are ack, fin, not-ack, not-fin, not-psh, not-rst, not-syn, not-urg, psh, rst, syn, urg
          */
         flags?: pulumi.Input<pulumi.Input<string>[]>;
         /**

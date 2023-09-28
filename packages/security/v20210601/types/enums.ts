@@ -13,6 +13,9 @@ export const AssessmentStatusCode = {
     NotApplicable: "NotApplicable",
 } as const;
 
+/**
+ * Programmatic code for the status of the assessment
+ */
 export type AssessmentStatusCode = (typeof AssessmentStatusCode)[keyof typeof AssessmentStatusCode];
 
 export const AssessmentType = {
@@ -34,6 +37,9 @@ export const AssessmentType = {
     VerifiedPartner: "VerifiedPartner",
 } as const;
 
+/**
+ * BuiltIn if the assessment based on built-in Azure Policy definition, Custom if the assessment based on custom Azure Policy definition
+ */
 export type AssessmentType = (typeof AssessmentType)[keyof typeof AssessmentType];
 
 export const Categories = {
@@ -44,6 +50,9 @@ export const Categories = {
     IoT: "IoT",
 } as const;
 
+/**
+ * The categories of resource that is at risk when the assessment is unhealthy
+ */
 export type Categories = (typeof Categories)[keyof typeof Categories];
 
 export const ImplementationEffort = {
@@ -52,6 +61,9 @@ export const ImplementationEffort = {
     High: "High",
 } as const;
 
+/**
+ * The implementation effort required to remediate this assessment
+ */
 export type ImplementationEffort = (typeof ImplementationEffort)[keyof typeof ImplementationEffort];
 
 export const Severity = {
@@ -60,6 +72,9 @@ export const Severity = {
     High: "High",
 } as const;
 
+/**
+ * The severity level of the assessment
+ */
 export type Severity = (typeof Severity)[keyof typeof Severity];
 
 export const Source = {
@@ -77,6 +92,9 @@ export const Source = {
     OnPremiseSql: "OnPremiseSql",
 } as const;
 
+/**
+ * The platform where the assessed resource resides
+ */
 export type Source = (typeof Source)[keyof typeof Source];
 
 export const Tactics = {
@@ -96,6 +114,9 @@ export const Tactics = {
     Impact: "Impact",
 } as const;
 
+/**
+ * Tactic of the assessment
+ */
 export type Tactics = (typeof Tactics)[keyof typeof Tactics];
 
 export const Techniques = {
@@ -205,6 +226,9 @@ export const Techniques = {
     File_and_Directory_Permissions_Modification: "File and Directory Permissions Modification",
 } as const;
 
+/**
+ * Techniques of the assessment
+ */
 export type Techniques = (typeof Techniques)[keyof typeof Techniques];
 
 export const Threats = {
@@ -218,6 +242,9 @@ export const Threats = {
     DenialOfService: "denialOfService",
 } as const;
 
+/**
+ * Threats impact of the assessment
+ */
 export type Threats = (typeof Threats)[keyof typeof Threats];
 
 export const UserImpact = {
@@ -226,4 +253,7 @@ export const UserImpact = {
     High: "High",
 } as const;
 
+/**
+ * The user impact of the assessment
+ */
 export type UserImpact = (typeof UserImpact)[keyof typeof UserImpact];

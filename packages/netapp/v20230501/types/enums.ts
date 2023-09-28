@@ -3,6 +3,9 @@ export const ApplicationType = {
     ORACLE: "ORACLE",
 } as const;
 
+/**
+ * Application Type
+ */
 export type ApplicationType = (typeof ApplicationType)[keyof typeof ApplicationType];
 
 export const AvsDataStore = {
@@ -16,6 +19,9 @@ export const AvsDataStore = {
     Disabled: "Disabled",
 } as const;
 
+/**
+ * Specifies whether the volume is enabled for Azure VMware Solution (AVS) datastore purpose
+ */
 export type AvsDataStore = (typeof AvsDataStore)[keyof typeof AvsDataStore];
 
 export const ChownMode = {
@@ -23,6 +29,9 @@ export const ChownMode = {
     Unrestricted: "Unrestricted",
 } as const;
 
+/**
+ * This parameter specifies who is authorized to change the ownership of a file. restricted - Only root user can change the ownership of the file. unrestricted - Non-root users can change ownership of files that they own.
+ */
 export type ChownMode = (typeof ChownMode)[keyof typeof ChownMode];
 
 export const CoolAccessRetrievalPolicy = {
@@ -31,6 +40,12 @@ export const CoolAccessRetrievalPolicy = {
     Never: "Never",
 } as const;
 
+/**
+ * coolAccessRetrievalPolicy determines the data retrieval behavior from the cool tier to standard storage based on the read pattern for cool access enabled volumes. The possible values for this field are: 
+ *  Default - Data will be pulled from cool tier to standard storage on random reads. This policy is the default.
+ *  OnRead - All client-driven data read is pulled from cool tier to standard storage on both sequential and random reads.
+ *  Never - No client-driven data is pulled from cool tier to standard storage.
+ */
 export type CoolAccessRetrievalPolicy = (typeof CoolAccessRetrievalPolicy)[keyof typeof CoolAccessRetrievalPolicy];
 
 export const EnableSubvolumes = {
@@ -44,6 +59,9 @@ export const EnableSubvolumes = {
     Disabled: "Disabled",
 } as const;
 
+/**
+ * Flag indicating whether subvolume operations are enabled on the volume
+ */
 export type EnableSubvolumes = (typeof EnableSubvolumes)[keyof typeof EnableSubvolumes];
 
 export const EncryptionKeySource = {
@@ -57,6 +75,9 @@ export const EncryptionKeySource = {
     Microsoft_KeyVault: "Microsoft.KeyVault",
 } as const;
 
+/**
+ * Source of key used to encrypt data in volume. Applicable if NetApp account has encryption.keySource = 'Microsoft.KeyVault'. Possible values (case-insensitive) are: 'Microsoft.NetApp, Microsoft.KeyVault'
+ */
 export type EncryptionKeySource = (typeof EncryptionKeySource)[keyof typeof EncryptionKeySource];
 
 export const EncryptionType = {
@@ -70,6 +91,9 @@ export const EncryptionType = {
     Double: "Double",
 } as const;
 
+/**
+ * Encryption type of the capacity pool, set encryption type for data at rest for this pool and all volumes in it. This value can only be set when creating new pool.
+ */
 export type EncryptionType = (typeof EncryptionType)[keyof typeof EncryptionType];
 
 export const EndpointType = {
@@ -77,6 +101,9 @@ export const EndpointType = {
     Dst: "dst",
 } as const;
 
+/**
+ * Indicates whether the local volume is the source or destination for the Volume Replication
+ */
 export type EndpointType = (typeof EndpointType)[keyof typeof EndpointType];
 
 export const KeySource = {
@@ -90,6 +117,9 @@ export const KeySource = {
     Microsoft_KeyVault: "Microsoft.KeyVault",
 } as const;
 
+/**
+ * The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.NetApp, Microsoft.KeyVault
+ */
 export type KeySource = (typeof KeySource)[keyof typeof KeySource];
 
 export const ManagedServiceIdentityType = {
@@ -99,6 +129,9 @@ export const ManagedServiceIdentityType = {
     SystemAssigned_UserAssigned: "SystemAssigned,UserAssigned",
 } as const;
 
+/**
+ * Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+ */
 export type ManagedServiceIdentityType = (typeof ManagedServiceIdentityType)[keyof typeof ManagedServiceIdentityType];
 
 export const NetworkFeatures = {
@@ -120,6 +153,9 @@ export const NetworkFeatures = {
     Standard_Basic: "Standard_Basic",
 } as const;
 
+/**
+ * Network features available to the volume, or current state of update.
+ */
 export type NetworkFeatures = (typeof NetworkFeatures)[keyof typeof NetworkFeatures];
 
 export const QosType = {
@@ -133,6 +169,9 @@ export const QosType = {
     Manual: "Manual",
 } as const;
 
+/**
+ * The qos type of the pool
+ */
 export type QosType = (typeof QosType)[keyof typeof QosType];
 
 export const ReplicationSchedule = {
@@ -141,6 +180,9 @@ export const ReplicationSchedule = {
     Daily: "daily",
 } as const;
 
+/**
+ * Schedule
+ */
 export type ReplicationSchedule = (typeof ReplicationSchedule)[keyof typeof ReplicationSchedule];
 
 export const SecurityStyle = {
@@ -148,6 +190,9 @@ export const SecurityStyle = {
     Unix: "unix",
 } as const;
 
+/**
+ * The security style of volume, default unix, defaults to ntfs for dual protocol or CIFS protocol
+ */
 export type SecurityStyle = (typeof SecurityStyle)[keyof typeof SecurityStyle];
 
 export const ServiceLevel = {
@@ -169,6 +214,9 @@ export const ServiceLevel = {
     StandardZRS: "StandardZRS",
 } as const;
 
+/**
+ * The service level of the file system
+ */
 export type ServiceLevel = (typeof ServiceLevel)[keyof typeof ServiceLevel];
 
 export const SmbAccessBasedEnumeration = {
@@ -182,6 +230,9 @@ export const SmbAccessBasedEnumeration = {
     Enabled: "Enabled",
 } as const;
 
+/**
+ * Enables access-based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume
+ */
 export type SmbAccessBasedEnumeration = (typeof SmbAccessBasedEnumeration)[keyof typeof SmbAccessBasedEnumeration];
 
 export const SmbNonBrowsable = {
@@ -195,6 +246,9 @@ export const SmbNonBrowsable = {
     Enabled: "Enabled",
 } as const;
 
+/**
+ * Enables non-browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume
+ */
 export type SmbNonBrowsable = (typeof SmbNonBrowsable)[keyof typeof SmbNonBrowsable];
 
 export const Type = {
@@ -216,4 +270,7 @@ export const Type = {
     IndividualGroupQuota: "IndividualGroupQuota",
 } as const;
 
+/**
+ * Type of quota
+ */
 export type Type = (typeof Type)[keyof typeof Type];

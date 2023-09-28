@@ -8,6 +8,9 @@ export const KnownColumnDefinitionType = {
     Dynamic: "dynamic",
 } as const;
 
+/**
+ * The type of the column data.
+ */
 export type KnownColumnDefinitionType = (typeof KnownColumnDefinitionType)[keyof typeof KnownColumnDefinitionType];
 
 export const KnownDataCollectionEndpointResourceKind = {
@@ -15,6 +18,9 @@ export const KnownDataCollectionEndpointResourceKind = {
     Windows: "Windows",
 } as const;
 
+/**
+ * The kind of the resource.
+ */
 export type KnownDataCollectionEndpointResourceKind = (typeof KnownDataCollectionEndpointResourceKind)[keyof typeof KnownDataCollectionEndpointResourceKind];
 
 export const KnownDataCollectionRuleResourceKind = {
@@ -22,6 +28,9 @@ export const KnownDataCollectionRuleResourceKind = {
     Windows: "Windows",
 } as const;
 
+/**
+ * The kind of the resource.
+ */
 export type KnownDataCollectionRuleResourceKind = (typeof KnownDataCollectionRuleResourceKind)[keyof typeof KnownDataCollectionRuleResourceKind];
 
 export const KnownDataFlowStreams = {
@@ -56,12 +65,18 @@ export const KnownLogFileTextSettingsRecordStartTimestampFormat = {
     Yyyy_MM_ddTHH_mm_ssK: "yyyy-MM-ddTHH:mm:ssK",
 } as const;
 
+/**
+ * One of the supported timestamp formats
+ */
 export type KnownLogFileTextSettingsRecordStartTimestampFormat = (typeof KnownLogFileTextSettingsRecordStartTimestampFormat)[keyof typeof KnownLogFileTextSettingsRecordStartTimestampFormat];
 
 export const KnownLogFilesDataSourceFormat = {
     Text: "text",
 } as const;
 
+/**
+ * The data format of the log files
+ */
 export type KnownLogFilesDataSourceFormat = (typeof KnownLogFilesDataSourceFormat)[keyof typeof KnownLogFilesDataSourceFormat];
 
 export const KnownPerfCounterDataSourceStreams = {
@@ -83,6 +98,9 @@ export const KnownPublicNetworkAccessOptions = {
     SecuredByPerimeter: "SecuredByPerimeter",
 } as const;
 
+/**
+ * The configuration to set whether network access from public internet to the endpoints are allowed.
+ */
 export type KnownPublicNetworkAccessOptions = (typeof KnownPublicNetworkAccessOptions)[keyof typeof KnownPublicNetworkAccessOptions];
 
 export const KnownSyslogDataSourceFacilityNames = {
@@ -145,4 +163,7 @@ export const ManagedServiceIdentityType = {
     SystemAssigned_UserAssigned: "SystemAssigned,UserAssigned",
 } as const;
 
+/**
+ * Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+ */
 export type ManagedServiceIdentityType = (typeof ManagedServiceIdentityType)[keyof typeof ManagedServiceIdentityType];

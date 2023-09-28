@@ -4,6 +4,9 @@ export const AppSku = {
     ST2: "ST2",
 } as const;
 
+/**
+ * The name of the SKU.
+ */
 export type AppSku = (typeof AppSku)[keyof typeof AppSku];
 
 export const PrivateEndpointServiceConnectionStatus = {
@@ -12,6 +15,9 @@ export const PrivateEndpointServiceConnectionStatus = {
     Rejected: "Rejected",
 } as const;
 
+/**
+ * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+ */
 export type PrivateEndpointServiceConnectionStatus = (typeof PrivateEndpointServiceConnectionStatus)[keyof typeof PrivateEndpointServiceConnectionStatus];
 
 export const SystemAssignedServiceIdentityType = {
@@ -19,4 +25,7 @@ export const SystemAssignedServiceIdentityType = {
     SystemAssigned: "SystemAssigned",
 } as const;
 
+/**
+ * Type of managed service identity (either system assigned, or none).
+ */
 export type SystemAssignedServiceIdentityType = (typeof SystemAssignedServiceIdentityType)[keyof typeof SystemAssignedServiceIdentityType];

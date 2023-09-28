@@ -4,6 +4,9 @@ export const AvailabilityType = {
     Notify: "Notify",
 } as const;
 
+/**
+ * Indicates the way the update content can be downloaded.
+ */
 export type AvailabilityType = (typeof AvailabilityType)[keyof typeof AvailabilityType];
 
 export const DiagnosticLevel = {
@@ -12,6 +15,9 @@ export const DiagnosticLevel = {
     Enhanced: "Enhanced",
 } as const;
 
+/**
+ * Desired level of diagnostic data emitted by the cluster.
+ */
 export type DiagnosticLevel = (typeof DiagnosticLevel)[keyof typeof DiagnosticLevel];
 
 export const ManagedServiceIdentityType = {
@@ -21,6 +27,9 @@ export const ManagedServiceIdentityType = {
     SystemAssigned_UserAssigned: "SystemAssigned, UserAssigned",
 } as const;
 
+/**
+ * Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+ */
 export type ManagedServiceIdentityType = (typeof ManagedServiceIdentityType)[keyof typeof ManagedServiceIdentityType];
 
 export const SoftwareAssuranceIntent = {
@@ -28,6 +37,9 @@ export const SoftwareAssuranceIntent = {
     Disable: "Disable",
 } as const;
 
+/**
+ * Customer Intent for Software Assurance Benefit.
+ */
 export type SoftwareAssuranceIntent = (typeof SoftwareAssuranceIntent)[keyof typeof SoftwareAssuranceIntent];
 
 export const SoftwareAssuranceStatus = {
@@ -35,6 +47,9 @@ export const SoftwareAssuranceStatus = {
     Disabled: "Disabled",
 } as const;
 
+/**
+ * Status of the Software Assurance for the cluster.
+ */
 export type SoftwareAssuranceStatus = (typeof SoftwareAssuranceStatus)[keyof typeof SoftwareAssuranceStatus];
 
 export const State = {
@@ -58,6 +73,9 @@ export const State = {
     ScanFailed: "ScanFailed",
 } as const;
 
+/**
+ * State of the update as it relates to this stamp.
+ */
 export type State = (typeof State)[keyof typeof State];
 
 export const UpdateRunPropertiesState = {
@@ -67,6 +85,9 @@ export const UpdateRunPropertiesState = {
     Failed: "Failed",
 } as const;
 
+/**
+ * State of the update run.
+ */
 export type UpdateRunPropertiesState = (typeof UpdateRunPropertiesState)[keyof typeof UpdateRunPropertiesState];
 
 export const UpdateSummariesPropertiesState = {
@@ -80,6 +101,9 @@ export const UpdateSummariesPropertiesState = {
     PreparationFailed: "PreparationFailed",
 } as const;
 
+/**
+ * Overall update state of the stamp.
+ */
 export type UpdateSummariesPropertiesState = (typeof UpdateSummariesPropertiesState)[keyof typeof UpdateSummariesPropertiesState];
 
 export const WindowsServerSubscription = {
@@ -87,4 +111,7 @@ export const WindowsServerSubscription = {
     Enabled: "Enabled",
 } as const;
 
+/**
+ * Desired state of Windows Server Subscription.
+ */
 export type WindowsServerSubscription = (typeof WindowsServerSubscription)[keyof typeof WindowsServerSubscription];

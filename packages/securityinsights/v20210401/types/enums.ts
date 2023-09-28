@@ -3,6 +3,9 @@ export const Source = {
     Remote_storage: "Remote storage",
 } as const;
 
+/**
+ * The source of the watchlist
+ */
 export type Source = (typeof Source)[keyof typeof Source];
 
 export const ThreatIntelligenceResourceInnerKind = {
@@ -12,4 +15,7 @@ export const ThreatIntelligenceResourceInnerKind = {
     Indicator: "indicator",
 } as const;
 
+/**
+ * The kind of the entity.
+ */
 export type ThreatIntelligenceResourceInnerKind = (typeof ThreatIntelligenceResourceInnerKind)[keyof typeof ThreatIntelligenceResourceInnerKind];

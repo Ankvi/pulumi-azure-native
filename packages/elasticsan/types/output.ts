@@ -79,6 +79,16 @@ export interface SkuResponse {
 }
 
 /**
+ * Data used when creating a volume snapshot.
+ */
+export interface SnapshotCreationDataResponse {
+    /**
+     * Fully qualified resource ID of the volume. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/volumes/{volumeName}"
+     */
+    sourceId: string;
+}
+
+/**
  * Data source used when creating the volume.
  */
 export interface SourceCreationDataResponse {
@@ -148,4 +158,5 @@ export function virtualNetworkRuleResponseProvideDefaults(val: VirtualNetworkRul
         action: (val.action) ?? "Allow",
     };
 }
+
 

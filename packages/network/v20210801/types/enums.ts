@@ -4,6 +4,9 @@ export const AzureFirewallThreatIntelMode = {
     Off: "Off",
 } as const;
 
+/**
+ * The operation mode for Threat Intelligence.
+ */
 export type AzureFirewallThreatIntelMode = (typeof AzureFirewallThreatIntelMode)[keyof typeof AzureFirewallThreatIntelMode];
 
 export const FirewallPolicyIDPSQuerySortOrder = {
@@ -11,6 +14,9 @@ export const FirewallPolicyIDPSQuerySortOrder = {
     Descending: "Descending",
 } as const;
 
+/**
+ * Describes if results should be in ascending/descending order
+ */
 export type FirewallPolicyIDPSQuerySortOrder = (typeof FirewallPolicyIDPSQuerySortOrder)[keyof typeof FirewallPolicyIDPSQuerySortOrder];
 
 export const FirewallPolicyIntrusionDetectionProtocol = {
@@ -20,6 +26,9 @@ export const FirewallPolicyIntrusionDetectionProtocol = {
     ANY: "ANY",
 } as const;
 
+/**
+ * The rule bypass protocol.
+ */
 export type FirewallPolicyIntrusionDetectionProtocol = (typeof FirewallPolicyIntrusionDetectionProtocol)[keyof typeof FirewallPolicyIntrusionDetectionProtocol];
 
 export const FirewallPolicyIntrusionDetectionStateType = {
@@ -28,6 +37,9 @@ export const FirewallPolicyIntrusionDetectionStateType = {
     Deny: "Deny",
 } as const;
 
+/**
+ * Intrusion detection general state.
+ */
 export type FirewallPolicyIntrusionDetectionStateType = (typeof FirewallPolicyIntrusionDetectionStateType)[keyof typeof FirewallPolicyIntrusionDetectionStateType];
 
 export const FirewallPolicySkuTier = {
@@ -36,6 +48,9 @@ export const FirewallPolicySkuTier = {
     Basic: "Basic",
 } as const;
 
+/**
+ * Tier of Firewall Policy.
+ */
 export type FirewallPolicySkuTier = (typeof FirewallPolicySkuTier)[keyof typeof FirewallPolicySkuTier];
 
 export const ResourceIdentityType = {
@@ -45,4 +60,7 @@ export const ResourceIdentityType = {
     None: "None",
 } as const;
 
+/**
+ * The type of identity used for the resource. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the virtual machine.
+ */
 export type ResourceIdentityType = (typeof ResourceIdentityType)[keyof typeof ResourceIdentityType];

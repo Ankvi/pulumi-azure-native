@@ -9,6 +9,9 @@ export const AlertNotifications = {
     Off: "Off",
 } as const;
 
+/**
+ * Whether to send security alerts notifications to the security contact
+ */
 export type AlertNotifications = (typeof AlertNotifications)[keyof typeof AlertNotifications];
 
 export const AlertsToAdmins = {
@@ -22,6 +25,9 @@ export const AlertsToAdmins = {
     Off: "Off",
 } as const;
 
+/**
+ * Whether to send security alerts notifications to subscription admins
+ */
 export type AlertsToAdmins = (typeof AlertsToAdmins)[keyof typeof AlertsToAdmins];
 
 export const DataSource = {
@@ -47,6 +53,9 @@ export const RecommendationConfigStatus = {
     Enabled: "Enabled",
 } as const;
 
+/**
+ * Recommendation status. The recommendation is not generated when the status is disabled
+ */
 export type RecommendationConfigStatus = (typeof RecommendationConfigStatus)[keyof typeof RecommendationConfigStatus];
 
 export const RecommendationType = {
@@ -116,6 +125,9 @@ export const RecommendationType = {
     IoT_VulnerableTLSCipherSuite: "IoT_VulnerableTLSCipherSuite",
 } as const;
 
+/**
+ * The recommendation type.
+ */
 export type RecommendationType = (typeof RecommendationType)[keyof typeof RecommendationType];
 
 export const SecuritySolutionStatus = {
@@ -123,4 +135,7 @@ export const SecuritySolutionStatus = {
     Disabled: "Disabled",
 } as const;
 
+/**
+ * Security solution status
+ */
 export type SecuritySolutionStatus = (typeof SecuritySolutionStatus)[keyof typeof SecuritySolutionStatus];

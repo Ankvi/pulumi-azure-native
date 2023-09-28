@@ -5,6 +5,9 @@ export const ServerVersion = {
     ServerVersion_11: "11",
 } as const;
 
+/**
+ * PostgreSQL Server version.
+ */
 export type ServerVersion = (typeof ServerVersion)[keyof typeof ServerVersion];
 
 export const SkuTier = {
@@ -13,4 +16,7 @@ export const SkuTier = {
     MemoryOptimized: "MemoryOptimized",
 } as const;
 
+/**
+ * The tier of the particular SKU, e.g. Burstable.
+ */
 export type SkuTier = (typeof SkuTier)[keyof typeof SkuTier];

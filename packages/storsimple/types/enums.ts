@@ -3,6 +3,9 @@ export const BackupType = {
     CloudSnapshot: "CloudSnapshot",
 } as const;
 
+/**
+ * The type of backup which needs to be taken.
+ */
 export type BackupType = (typeof BackupType)[keyof typeof BackupType];
 
 export const DayOfWeek = {
@@ -23,18 +26,27 @@ export const EncryptionAlgorithm = {
     RSAES_PKCS1_v_1_5: "RSAES_PKCS1_v_1_5",
 } as const;
 
+/**
+ * The algorithm used to encrypt "Value".
+ */
 export type EncryptionAlgorithm = (typeof EncryptionAlgorithm)[keyof typeof EncryptionAlgorithm];
 
 export const Kind = {
     Series8000: "Series8000",
 } as const;
 
+/**
+ * The Kind of the object. Currently only Series8000 is supported
+ */
 export type Kind = (typeof Kind)[keyof typeof Kind];
 
 export const ManagerSkuType = {
     Standard: "Standard",
 } as const;
 
+/**
+ * Refers to the sku name which should be "Standard"
+ */
 export type ManagerSkuType = (typeof ManagerSkuType)[keyof typeof ManagerSkuType];
 
 export const ManagerType = {
@@ -42,6 +54,9 @@ export const ManagerType = {
     HelsinkiV1: "HelsinkiV1",
 } as const;
 
+/**
+ * The type of StorSimple Manager.
+ */
 export type ManagerType = (typeof ManagerType)[keyof typeof ManagerType];
 
 export const MonitoringStatus = {
@@ -49,6 +64,9 @@ export const MonitoringStatus = {
     Disabled: "Disabled",
 } as const;
 
+/**
+ * The monitoring status of the volume.
+ */
 export type MonitoringStatus = (typeof MonitoringStatus)[keyof typeof MonitoringStatus];
 
 export const RecurrenceType = {
@@ -58,6 +76,9 @@ export const RecurrenceType = {
     Weekly: "Weekly",
 } as const;
 
+/**
+ * The recurrence type.
+ */
 export type RecurrenceType = (typeof RecurrenceType)[keyof typeof RecurrenceType];
 
 export const ScheduleStatus = {
@@ -65,6 +86,9 @@ export const ScheduleStatus = {
     Disabled: "Disabled",
 } as const;
 
+/**
+ * The schedule status.
+ */
 export type ScheduleStatus = (typeof ScheduleStatus)[keyof typeof ScheduleStatus];
 
 export const SslStatus = {
@@ -72,6 +96,9 @@ export const SslStatus = {
     Disabled: "Disabled",
 } as const;
 
+/**
+ * Signifies whether SSL needs to be enabled or not.
+ */
 export type SslStatus = (typeof SslStatus)[keyof typeof SslStatus];
 
 export const VolumeStatus = {
@@ -79,6 +106,9 @@ export const VolumeStatus = {
     Offline: "Offline",
 } as const;
 
+/**
+ * The volume status.
+ */
 export type VolumeStatus = (typeof VolumeStatus)[keyof typeof VolumeStatus];
 
 export const VolumeType = {
@@ -87,4 +117,7 @@ export const VolumeType = {
     LocallyPinned: "LocallyPinned",
 } as const;
 
+/**
+ * The type of the volume.
+ */
 export type VolumeType = (typeof VolumeType)[keyof typeof VolumeType];

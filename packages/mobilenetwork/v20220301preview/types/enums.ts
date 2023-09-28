@@ -9,6 +9,9 @@ export const CoreNetworkType = {
     EPC: "EPC",
 } as const;
 
+/**
+ * The core network technology generation.
+ */
 export type CoreNetworkType = (typeof CoreNetworkType)[keyof typeof CoreNetworkType];
 
 export const CreatedByType = {
@@ -18,4 +21,7 @@ export const CreatedByType = {
     Key: "Key",
 } as const;
 
+/**
+ * The type of identity that last modified the resource.
+ */
 export type CreatedByType = (typeof CreatedByType)[keyof typeof CreatedByType];

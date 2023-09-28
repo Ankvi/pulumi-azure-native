@@ -2,18 +2,27 @@ export const ExportType = {
     Usage: "Usage",
 } as const;
 
+/**
+ * The type of the query.
+ */
 export type ExportType = (typeof ExportType)[keyof typeof ExportType];
 
 export const FormatType = {
     Csv: "Csv",
 } as const;
 
+/**
+ * The format of the export being delivered.
+ */
 export type FormatType = (typeof FormatType)[keyof typeof FormatType];
 
 export const FunctionType = {
     Sum: "Sum",
 } as const;
 
+/**
+ * The name of the aggregation function to use.
+ */
 export type FunctionType = (typeof FunctionType)[keyof typeof FunctionType];
 
 export const GranularityType = {
@@ -21,12 +30,18 @@ export const GranularityType = {
     Hourly: "Hourly",
 } as const;
 
+/**
+ * The granularity of rows in the query.
+ */
 export type GranularityType = (typeof GranularityType)[keyof typeof GranularityType];
 
 export const OperatorType = {
     In: "In",
 } as const;
 
+/**
+ * The operator to use for comparison.
+ */
 export type OperatorType = (typeof OperatorType)[keyof typeof OperatorType];
 
 export const QueryColumnType = {
@@ -34,6 +49,9 @@ export const QueryColumnType = {
     Dimension: "Dimension",
 } as const;
 
+/**
+ * Has type of the column to group.
+ */
 export type QueryColumnType = (typeof QueryColumnType)[keyof typeof QueryColumnType];
 
 export const RecurrenceType = {
@@ -43,6 +61,9 @@ export const RecurrenceType = {
     Annually: "Annually",
 } as const;
 
+/**
+ * The schedule recurrence.
+ */
 export type RecurrenceType = (typeof RecurrenceType)[keyof typeof RecurrenceType];
 
 export const SortDirection = {
@@ -50,6 +71,9 @@ export const SortDirection = {
     Descending: "Descending",
 } as const;
 
+/**
+ * The sorting direction
+ */
 export type SortDirection = (typeof SortDirection)[keyof typeof SortDirection];
 
 export const StatusType = {
@@ -57,6 +81,9 @@ export const StatusType = {
     Inactive: "Inactive",
 } as const;
 
+/**
+ * The status of the schedule. Whether active or not. If inactive, the export's scheduled execution is paused.
+ */
 export type StatusType = (typeof StatusType)[keyof typeof StatusType];
 
 export const TimeframeType = {
@@ -69,4 +96,7 @@ export const TimeframeType = {
     Custom: "Custom",
 } as const;
 
+/**
+ * The time frame for pulling data for the query. If custom, then a specific time period must be provided.
+ */
 export type TimeframeType = (typeof TimeframeType)[keyof typeof TimeframeType];

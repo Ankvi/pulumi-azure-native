@@ -106,3 +106,4 @@ export interface UserRoleAssignmentArgs {
     roles?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+

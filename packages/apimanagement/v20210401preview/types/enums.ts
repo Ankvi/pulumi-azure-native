@@ -9,4 +9,7 @@ export const SchemaType = {
     Json: "json",
 } as const;
 
+/**
+ * Schema Type. Immutable.
+ */
 export type SchemaType = (typeof SchemaType)[keyof typeof SchemaType];

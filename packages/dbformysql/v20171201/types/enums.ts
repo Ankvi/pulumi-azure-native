@@ -5,6 +5,9 @@ export const CreateMode = {
     Replica: "Replica",
 } as const;
 
+/**
+ * The mode to create a new server.
+ */
 export type CreateMode = (typeof CreateMode)[keyof typeof CreateMode];
 
 export const GeoRedundantBackup = {
@@ -12,12 +15,18 @@ export const GeoRedundantBackup = {
     Disabled: "Disabled",
 } as const;
 
+/**
+ * Enable Geo-redundant or not for server backup.
+ */
 export type GeoRedundantBackup = (typeof GeoRedundantBackup)[keyof typeof GeoRedundantBackup];
 
 export const IdentityType = {
     SystemAssigned: "SystemAssigned",
 } as const;
 
+/**
+ * The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
+ */
 export type IdentityType = (typeof IdentityType)[keyof typeof IdentityType];
 
 export const InfrastructureEncryption = {
@@ -31,6 +40,9 @@ export const InfrastructureEncryption = {
     Disabled: "Disabled",
 } as const;
 
+/**
+ * Status showing whether the server enabled infrastructure encryption.
+ */
 export type InfrastructureEncryption = (typeof InfrastructureEncryption)[keyof typeof InfrastructureEncryption];
 
 export const MinimalTlsVersionEnum = {
@@ -40,6 +52,9 @@ export const MinimalTlsVersionEnum = {
     TLSEnforcementDisabled: "TLSEnforcementDisabled",
 } as const;
 
+/**
+ * Enforce a minimal Tls version for the server.
+ */
 export type MinimalTlsVersionEnum = (typeof MinimalTlsVersionEnum)[keyof typeof MinimalTlsVersionEnum];
 
 export const PublicNetworkAccessEnum = {
@@ -47,6 +62,9 @@ export const PublicNetworkAccessEnum = {
     Disabled: "Disabled",
 } as const;
 
+/**
+ * Whether or not public network access is allowed for this server. Value is optional but if passed in, must be 'Enabled' or 'Disabled'
+ */
 export type PublicNetworkAccessEnum = (typeof PublicNetworkAccessEnum)[keyof typeof PublicNetworkAccessEnum];
 
 export const ServerVersion = {
@@ -55,6 +73,9 @@ export const ServerVersion = {
     ServerVersion_8_0: "8.0",
 } as const;
 
+/**
+ * Server version.
+ */
 export type ServerVersion = (typeof ServerVersion)[keyof typeof ServerVersion];
 
 export const SkuTier = {
@@ -63,6 +84,9 @@ export const SkuTier = {
     MemoryOptimized: "MemoryOptimized",
 } as const;
 
+/**
+ * The tier of the particular SKU, e.g. Basic.
+ */
 export type SkuTier = (typeof SkuTier)[keyof typeof SkuTier];
 
 export const SslEnforcementEnum = {
@@ -70,6 +94,9 @@ export const SslEnforcementEnum = {
     Disabled: "Disabled",
 } as const;
 
+/**
+ * Enable ssl enforcement or not when connect to server.
+ */
 export type SslEnforcementEnum = (typeof SslEnforcementEnum)[keyof typeof SslEnforcementEnum];
 
 export const StorageAutogrow = {
@@ -77,4 +104,7 @@ export const StorageAutogrow = {
     Disabled: "Disabled",
 } as const;
 
+/**
+ * Enable Storage Auto Grow.
+ */
 export type StorageAutogrow = (typeof StorageAutogrow)[keyof typeof StorageAutogrow];

@@ -3,6 +3,9 @@ export const AgentPoolType = {
     AvailabilitySet: "AvailabilitySet",
 } as const;
 
+/**
+ * AgentPoolType represents types of an agent pool
+ */
 export type AgentPoolType = (typeof AgentPoolType)[keyof typeof AgentPoolType];
 
 export const ContainerServiceVMSizeTypes = {
@@ -182,6 +185,9 @@ export const ContainerServiceVMSizeTypes = {
     Standard_NV6: "Standard_NV6",
 } as const;
 
+/**
+ * Size of agent VMs.
+ */
 export type ContainerServiceVMSizeTypes = (typeof ContainerServiceVMSizeTypes)[keyof typeof ContainerServiceVMSizeTypes];
 
 export const LoadBalancerSku = {
@@ -189,6 +195,9 @@ export const LoadBalancerSku = {
     Basic: "basic",
 } as const;
 
+/**
+ * The load balancer sku for the managed cluster.
+ */
 export type LoadBalancerSku = (typeof LoadBalancerSku)[keyof typeof LoadBalancerSku];
 
 export const NetworkPlugin = {
@@ -196,6 +205,9 @@ export const NetworkPlugin = {
     Kubenet: "kubenet",
 } as const;
 
+/**
+ * Network plugin used for building Kubernetes network.
+ */
 export type NetworkPlugin = (typeof NetworkPlugin)[keyof typeof NetworkPlugin];
 
 export const NetworkPolicy = {
@@ -203,6 +215,9 @@ export const NetworkPolicy = {
     Azure: "azure",
 } as const;
 
+/**
+ * Network policy used for building Kubernetes network.
+ */
 export type NetworkPolicy = (typeof NetworkPolicy)[keyof typeof NetworkPolicy];
 
 export const OSType = {
@@ -210,6 +225,9 @@ export const OSType = {
     Windows: "Windows",
 } as const;
 
+/**
+ * OsType to be used to specify os type. Choose from Linux and Windows. Default to Linux.
+ */
 export type OSType = (typeof OSType)[keyof typeof OSType];
 
 export const ResourceIdentityType = {
@@ -217,6 +235,9 @@ export const ResourceIdentityType = {
     None: "None",
 } as const;
 
+/**
+ * The type of identity used for the managed cluster. Type 'SystemAssigned' will use an implicitly created identity in master components and an auto-created user assigned identity in MC_ resource group in agent nodes. Type 'None' will not use MSI for the managed cluster, service principal will be used instead.
+ */
 export type ResourceIdentityType = (typeof ResourceIdentityType)[keyof typeof ResourceIdentityType];
 
 export const ScaleSetEvictionPolicy = {
@@ -224,6 +245,9 @@ export const ScaleSetEvictionPolicy = {
     Deallocate: "Deallocate",
 } as const;
 
+/**
+ * ScaleSetEvictionPolicy to be used to specify eviction policy for low priority virtual machine scale set. Default to Delete.
+ */
 export type ScaleSetEvictionPolicy = (typeof ScaleSetEvictionPolicy)[keyof typeof ScaleSetEvictionPolicy];
 
 export const ScaleSetPriority = {
@@ -231,4 +255,7 @@ export const ScaleSetPriority = {
     Regular: "Regular",
 } as const;
 
+/**
+ * ScaleSetPriority to be used to specify virtual machine scale set priority. Default to regular.
+ */
 export type ScaleSetPriority = (typeof ScaleSetPriority)[keyof typeof ScaleSetPriority];

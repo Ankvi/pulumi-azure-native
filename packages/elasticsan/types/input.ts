@@ -43,6 +43,16 @@ export interface SkuArgs {
 }
 
 /**
+ * Data used when creating a volume snapshot.
+ */
+export interface SnapshotCreationDataArgs {
+    /**
+     * Fully qualified resource ID of the volume. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/volumes/{volumeName}"
+     */
+    sourceId: pulumi.Input<string>;
+}
+
+/**
  * Data source used when creating the volume.
  */
 export interface SourceCreationDataArgs {
@@ -78,4 +88,5 @@ export function virtualNetworkRuleArgsProvideDefaults(val: VirtualNetworkRuleArg
         action: (val.action) ?? "Allow",
     };
 }
+
 

@@ -4,6 +4,9 @@ export const ActivityOnInactiveMarkAs = {
     Skipped: "Skipped",
 } as const;
 
+/**
+ * Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+ */
 export type ActivityOnInactiveMarkAs = (typeof ActivityOnInactiveMarkAs)[keyof typeof ActivityOnInactiveMarkAs];
 
 export const ActivityState = {
@@ -11,6 +14,9 @@ export const ActivityState = {
     Inactive: "Inactive",
 } as const;
 
+/**
+ * Activity state. This is an optional property and if not provided, the state will be Active by default.
+ */
 export type ActivityState = (typeof ActivityState)[keyof typeof ActivityState];
 
 export const AzureFunctionActivityMethod = {
@@ -23,6 +29,9 @@ export const AzureFunctionActivityMethod = {
     TRACE: "TRACE",
 } as const;
 
+/**
+ * Rest API method for target endpoint.
+ */
 export type AzureFunctionActivityMethod = (typeof AzureFunctionActivityMethod)[keyof typeof AzureFunctionActivityMethod];
 
 export const AzureSearchIndexWriteBehaviorType = {
@@ -30,6 +39,9 @@ export const AzureSearchIndexWriteBehaviorType = {
     Upload: "Upload",
 } as const;
 
+/**
+ * Specify the write behavior when upserting documents into Azure Search Index.
+ */
 export type AzureSearchIndexWriteBehaviorType = (typeof AzureSearchIndexWriteBehaviorType)[keyof typeof AzureSearchIndexWriteBehaviorType];
 
 export const AzureStorageAuthenticationType = {
@@ -40,12 +52,18 @@ export const AzureStorageAuthenticationType = {
     Msi: "Msi",
 } as const;
 
+/**
+ * The type used for authentication. Type: string.
+ */
 export type AzureStorageAuthenticationType = (typeof AzureStorageAuthenticationType)[keyof typeof AzureStorageAuthenticationType];
 
 export const BigDataPoolReferenceType = {
     BigDataPoolReference: "BigDataPoolReference",
 } as const;
 
+/**
+ * Big data pool reference type.
+ */
 export type BigDataPoolReferenceType = (typeof BigDataPoolReferenceType)[keyof typeof BigDataPoolReferenceType];
 
 export const BlobEventTypes = {
@@ -68,6 +86,9 @@ export const CassandraSourceReadConsistencyLevels = {
     LOCAL_SERIAL: "LOCAL_SERIAL",
 } as const;
 
+/**
+ * The consistency level specifies how many Cassandra servers must respond to a read request before returning data to the client application. Cassandra checks the specified number of Cassandra servers for data to satisfy the read request. Must be one of cassandraSourceReadConsistencyLevels. The default value is 'ONE'. It is case-insensitive.
+ */
 export type CassandraSourceReadConsistencyLevels = (typeof CassandraSourceReadConsistencyLevels)[keyof typeof CassandraSourceReadConsistencyLevels];
 
 export const ConfigurationType = {
@@ -76,12 +97,18 @@ export const ConfigurationType = {
     Artifact: "Artifact",
 } as const;
 
+/**
+ * The type of the spark config.
+ */
 export type ConfigurationType = (typeof ConfigurationType)[keyof typeof ConfigurationType];
 
 export const ConnectionType = {
     Linkedservicetype: "linkedservicetype",
 } as const;
 
+/**
+ * Type of connection via linked service or dataset.
+ */
 export type ConnectionType = (typeof ConnectionType)[keyof typeof ConnectionType];
 
 export const CosmosDbConnectionMode = {
@@ -89,12 +116,18 @@ export const CosmosDbConnectionMode = {
     Direct: "Direct",
 } as const;
 
+/**
+ * The connection mode used to access CosmosDB account. Type: string.
+ */
 export type CosmosDbConnectionMode = (typeof CosmosDbConnectionMode)[keyof typeof CosmosDbConnectionMode];
 
 export const CredentialReferenceType = {
     CredentialReference: "CredentialReference",
 } as const;
 
+/**
+ * Credential reference type.
+ */
 export type CredentialReferenceType = (typeof CredentialReferenceType)[keyof typeof CredentialReferenceType];
 
 export const DataFlowComputeType = {
@@ -103,12 +136,18 @@ export const DataFlowComputeType = {
     ComputeOptimized: "ComputeOptimized",
 } as const;
 
+/**
+ * Compute type of the cluster which will execute data flow job.
+ */
 export type DataFlowComputeType = (typeof DataFlowComputeType)[keyof typeof DataFlowComputeType];
 
 export const DataFlowReferenceType = {
     DataFlowReference: "DataFlowReference",
 } as const;
 
+/**
+ * Data flow reference type.
+ */
 export type DataFlowReferenceType = (typeof DataFlowReferenceType)[keyof typeof DataFlowReferenceType];
 
 export const DayOfWeek = {
@@ -121,6 +160,9 @@ export const DayOfWeek = {
     Saturday: "Saturday",
 } as const;
 
+/**
+ * The day of the week.
+ */
 export type DayOfWeek = (typeof DayOfWeek)[keyof typeof DayOfWeek];
 
 export const DaysOfWeek = {
@@ -139,6 +181,9 @@ export const Db2AuthenticationType = {
     Basic: "Basic",
 } as const;
 
+/**
+ * AuthenticationType to be used for connection. It is mutually exclusive with connectionString property.
+ */
 export type Db2AuthenticationType = (typeof Db2AuthenticationType)[keyof typeof Db2AuthenticationType];
 
 export const DependencyCondition = {
@@ -154,6 +199,9 @@ export const DynamicsSinkWriteBehavior = {
     Upsert: "Upsert",
 } as const;
 
+/**
+ * The write behavior for the operation.
+ */
 export type DynamicsSinkWriteBehavior = (typeof DynamicsSinkWriteBehavior)[keyof typeof DynamicsSinkWriteBehavior];
 
 export const FactoryIdentityType = {
@@ -162,6 +210,9 @@ export const FactoryIdentityType = {
     SystemAssigned_UserAssigned: "SystemAssigned,UserAssigned",
 } as const;
 
+/**
+ * The identity type.
+ */
 export type FactoryIdentityType = (typeof FactoryIdentityType)[keyof typeof FactoryIdentityType];
 
 export const FrequencyType = {
@@ -170,6 +221,9 @@ export const FrequencyType = {
     Second: "Second",
 } as const;
 
+/**
+ * Frequency of period in terms of 'Hour', 'Minute' or 'Second'.
+ */
 export type FrequencyType = (typeof FrequencyType)[keyof typeof FrequencyType];
 
 export const FtpAuthenticationType = {
@@ -177,6 +231,9 @@ export const FtpAuthenticationType = {
     Anonymous: "Anonymous",
 } as const;
 
+/**
+ * The authentication type to be used to connect to the FTP server.
+ */
 export type FtpAuthenticationType = (typeof FtpAuthenticationType)[keyof typeof FtpAuthenticationType];
 
 export const GlobalParameterType = {
@@ -188,6 +245,9 @@ export const GlobalParameterType = {
     Array: "Array",
 } as const;
 
+/**
+ * Global Parameter type.
+ */
 export type GlobalParameterType = (typeof GlobalParameterType)[keyof typeof GlobalParameterType];
 
 export const GoogleAdWordsAuthenticationType = {
@@ -195,6 +255,9 @@ export const GoogleAdWordsAuthenticationType = {
     UserAuthentication: "UserAuthentication",
 } as const;
 
+/**
+ * The OAuth 2.0 authentication mechanism used for authentication. ServiceAuthentication can only be used on self-hosted IR.
+ */
 export type GoogleAdWordsAuthenticationType = (typeof GoogleAdWordsAuthenticationType)[keyof typeof GoogleAdWordsAuthenticationType];
 
 export const GoogleBigQueryAuthenticationType = {
@@ -202,6 +265,9 @@ export const GoogleBigQueryAuthenticationType = {
     UserAuthentication: "UserAuthentication",
 } as const;
 
+/**
+ * The OAuth 2.0 authentication mechanism used for authentication. ServiceAuthentication can only be used on self-hosted IR.
+ */
 export type GoogleBigQueryAuthenticationType = (typeof GoogleBigQueryAuthenticationType)[keyof typeof GoogleBigQueryAuthenticationType];
 
 export const HBaseAuthenticationType = {
@@ -209,6 +275,9 @@ export const HBaseAuthenticationType = {
     Basic: "Basic",
 } as const;
 
+/**
+ * The authentication mechanism to use to connect to the HBase server.
+ */
 export type HBaseAuthenticationType = (typeof HBaseAuthenticationType)[keyof typeof HBaseAuthenticationType];
 
 export const HDInsightActivityDebugInfoOption = {
@@ -217,6 +286,9 @@ export const HDInsightActivityDebugInfoOption = {
     Failure: "Failure",
 } as const;
 
+/**
+ * Debug info option.
+ */
 export type HDInsightActivityDebugInfoOption = (typeof HDInsightActivityDebugInfoOption)[keyof typeof HDInsightActivityDebugInfoOption];
 
 export const HiveAuthenticationType = {
@@ -226,6 +298,9 @@ export const HiveAuthenticationType = {
     WindowsAzureHDInsightService: "WindowsAzureHDInsightService",
 } as const;
 
+/**
+ * The authentication method used to access the Hive server.
+ */
 export type HiveAuthenticationType = (typeof HiveAuthenticationType)[keyof typeof HiveAuthenticationType];
 
 export const HiveServerType = {
@@ -234,6 +309,9 @@ export const HiveServerType = {
     HiveThriftServer: "HiveThriftServer",
 } as const;
 
+/**
+ * The type of Hive server.
+ */
 export type HiveServerType = (typeof HiveServerType)[keyof typeof HiveServerType];
 
 export const HiveThriftTransportProtocol = {
@@ -242,6 +320,9 @@ export const HiveThriftTransportProtocol = {
     HTTP_: "HTTP ",
 } as const;
 
+/**
+ * The transport protocol to use in the Thrift layer.
+ */
 export type HiveThriftTransportProtocol = (typeof HiveThriftTransportProtocol)[keyof typeof HiveThriftTransportProtocol];
 
 export const HttpAuthenticationType = {
@@ -252,6 +333,9 @@ export const HttpAuthenticationType = {
     ClientCertificate: "ClientCertificate",
 } as const;
 
+/**
+ * The authentication type to be used to connect to the HTTP server.
+ */
 export type HttpAuthenticationType = (typeof HttpAuthenticationType)[keyof typeof HttpAuthenticationType];
 
 export const ImpalaAuthenticationType = {
@@ -260,6 +344,9 @@ export const ImpalaAuthenticationType = {
     UsernameAndPassword: "UsernameAndPassword",
 } as const;
 
+/**
+ * The authentication type to use.
+ */
 export type ImpalaAuthenticationType = (typeof ImpalaAuthenticationType)[keyof typeof ImpalaAuthenticationType];
 
 export const IntegrationRuntimeEdition = {
@@ -267,6 +354,9 @@ export const IntegrationRuntimeEdition = {
     Enterprise: "Enterprise",
 } as const;
 
+/**
+ * The edition for the SSIS Integration Runtime
+ */
 export type IntegrationRuntimeEdition = (typeof IntegrationRuntimeEdition)[keyof typeof IntegrationRuntimeEdition];
 
 export const IntegrationRuntimeEntityReferenceType = {
@@ -274,6 +364,9 @@ export const IntegrationRuntimeEntityReferenceType = {
     LinkedServiceReference: "LinkedServiceReference",
 } as const;
 
+/**
+ * The type of this referenced entity.
+ */
 export type IntegrationRuntimeEntityReferenceType = (typeof IntegrationRuntimeEntityReferenceType)[keyof typeof IntegrationRuntimeEntityReferenceType];
 
 export const IntegrationRuntimeLicenseType = {
@@ -281,6 +374,9 @@ export const IntegrationRuntimeLicenseType = {
     LicenseIncluded: "LicenseIncluded",
 } as const;
 
+/**
+ * License type for bringing your own license scenario.
+ */
 export type IntegrationRuntimeLicenseType = (typeof IntegrationRuntimeLicenseType)[keyof typeof IntegrationRuntimeLicenseType];
 
 export const IntegrationRuntimeSsisCatalogPricingTier = {
@@ -290,6 +386,9 @@ export const IntegrationRuntimeSsisCatalogPricingTier = {
     PremiumRS: "PremiumRS",
 } as const;
 
+/**
+ * The pricing tier for the catalog database. The valid values could be found in https://azure.microsoft.com/en-us/pricing/details/sql-database/
+ */
 export type IntegrationRuntimeSsisCatalogPricingTier = (typeof IntegrationRuntimeSsisCatalogPricingTier)[keyof typeof IntegrationRuntimeSsisCatalogPricingTier];
 
 export const IntegrationRuntimeType = {
@@ -297,12 +396,18 @@ export const IntegrationRuntimeType = {
     SelfHosted: "SelfHosted",
 } as const;
 
+/**
+ * Type of integration runtime.
+ */
 export type IntegrationRuntimeType = (typeof IntegrationRuntimeType)[keyof typeof IntegrationRuntimeType];
 
 export const ManagedVirtualNetworkReferenceType = {
     ManagedVirtualNetworkReference: "ManagedVirtualNetworkReference",
 } as const;
 
+/**
+ * Managed Virtual Network reference type.
+ */
 export type ManagedVirtualNetworkReferenceType = (typeof ManagedVirtualNetworkReferenceType)[keyof typeof ManagedVirtualNetworkReferenceType];
 
 export const MappingType = {
@@ -311,6 +416,9 @@ export const MappingType = {
     Aggregate: "Aggregate",
 } as const;
 
+/**
+ * Type of the CDC attribute mapping. Note: 'Advanced' mapping type is also saved as 'Derived'.
+ */
 export type MappingType = (typeof MappingType)[keyof typeof MappingType];
 
 export const MongoDbAuthenticationType = {
@@ -318,6 +426,9 @@ export const MongoDbAuthenticationType = {
     Anonymous: "Anonymous",
 } as const;
 
+/**
+ * The authentication type to be used to connect to the MongoDB database.
+ */
 export type MongoDbAuthenticationType = (typeof MongoDbAuthenticationType)[keyof typeof MongoDbAuthenticationType];
 
 export const NotebookParameterType = {
@@ -327,12 +438,18 @@ export const NotebookParameterType = {
     Bool: "bool",
 } as const;
 
+/**
+ * Notebook parameter type.
+ */
 export type NotebookParameterType = (typeof NotebookParameterType)[keyof typeof NotebookParameterType];
 
 export const NotebookReferenceType = {
     NotebookReference: "NotebookReference",
 } as const;
 
+/**
+ * Synapse notebook reference type.
+ */
 export type NotebookReferenceType = (typeof NotebookReferenceType)[keyof typeof NotebookReferenceType];
 
 export const ODataAadServicePrincipalCredentialType = {
@@ -340,6 +457,9 @@ export const ODataAadServicePrincipalCredentialType = {
     ServicePrincipalCert: "ServicePrincipalCert",
 } as const;
 
+/**
+ * Specify the credential type (key or cert) is used for service principal.
+ */
 export type ODataAadServicePrincipalCredentialType = (typeof ODataAadServicePrincipalCredentialType)[keyof typeof ODataAadServicePrincipalCredentialType];
 
 export const ODataAuthenticationType = {
@@ -350,6 +470,9 @@ export const ODataAuthenticationType = {
     ManagedServiceIdentity: "ManagedServiceIdentity",
 } as const;
 
+/**
+ * Type of authentication used to connect to the OData service.
+ */
 export type ODataAuthenticationType = (typeof ODataAuthenticationType)[keyof typeof ODataAuthenticationType];
 
 export const ParameterType = {
@@ -362,6 +485,9 @@ export const ParameterType = {
     SecureString: "SecureString",
 } as const;
 
+/**
+ * Parameter type.
+ */
 export type ParameterType = (typeof ParameterType)[keyof typeof ParameterType];
 
 export const PhoenixAuthenticationType = {
@@ -370,6 +496,9 @@ export const PhoenixAuthenticationType = {
     WindowsAzureHDInsightService: "WindowsAzureHDInsightService",
 } as const;
 
+/**
+ * The authentication mechanism used to connect to the Phoenix server.
+ */
 export type PhoenixAuthenticationType = (typeof PhoenixAuthenticationType)[keyof typeof PhoenixAuthenticationType];
 
 export const PolybaseSettingsRejectType = {
@@ -377,6 +506,9 @@ export const PolybaseSettingsRejectType = {
     Percentage: "percentage",
 } as const;
 
+/**
+ * Reject type.
+ */
 export type PolybaseSettingsRejectType = (typeof PolybaseSettingsRejectType)[keyof typeof PolybaseSettingsRejectType];
 
 export const PrestoAuthenticationType = {
@@ -384,6 +516,9 @@ export const PrestoAuthenticationType = {
     LDAP: "LDAP",
 } as const;
 
+/**
+ * The authentication mechanism used to connect to the Presto server.
+ */
 export type PrestoAuthenticationType = (typeof PrestoAuthenticationType)[keyof typeof PrestoAuthenticationType];
 
 export const PublicNetworkAccess = {
@@ -391,6 +526,9 @@ export const PublicNetworkAccess = {
     Disabled: "Disabled",
 } as const;
 
+/**
+ * Whether or not public network access is allowed for the data factory.
+ */
 export type PublicNetworkAccess = (typeof PublicNetworkAccess)[keyof typeof PublicNetworkAccess];
 
 export const RecurrenceFrequency = {
@@ -403,6 +541,9 @@ export const RecurrenceFrequency = {
     Year: "Year",
 } as const;
 
+/**
+ * The frequency.
+ */
 export type RecurrenceFrequency = (typeof RecurrenceFrequency)[keyof typeof RecurrenceFrequency];
 
 export const RestServiceAuthenticationType = {
@@ -413,6 +554,9 @@ export const RestServiceAuthenticationType = {
     OAuth2ClientCredential: "OAuth2ClientCredential",
 } as const;
 
+/**
+ * Type of authentication used to connect to the REST service.
+ */
 export type RestServiceAuthenticationType = (typeof RestServiceAuthenticationType)[keyof typeof RestServiceAuthenticationType];
 
 export const SalesforceSinkWriteBehavior = {
@@ -420,6 +564,9 @@ export const SalesforceSinkWriteBehavior = {
     Upsert: "Upsert",
 } as const;
 
+/**
+ * The write behavior for the operation. Default is Insert.
+ */
 export type SalesforceSinkWriteBehavior = (typeof SalesforceSinkWriteBehavior)[keyof typeof SalesforceSinkWriteBehavior];
 
 export const SapCloudForCustomerSinkWriteBehavior = {
@@ -427,6 +574,9 @@ export const SapCloudForCustomerSinkWriteBehavior = {
     Update: "Update",
 } as const;
 
+/**
+ * The write behavior for the operation. Default is 'Insert'.
+ */
 export type SapCloudForCustomerSinkWriteBehavior = (typeof SapCloudForCustomerSinkWriteBehavior)[keyof typeof SapCloudForCustomerSinkWriteBehavior];
 
 export const SapHanaAuthenticationType = {
@@ -434,6 +584,9 @@ export const SapHanaAuthenticationType = {
     Windows: "Windows",
 } as const;
 
+/**
+ * The authentication type to be used to connect to the SAP HANA server.
+ */
 export type SapHanaAuthenticationType = (typeof SapHanaAuthenticationType)[keyof typeof SapHanaAuthenticationType];
 
 export const ScriptActivityLogDestination = {
@@ -441,6 +594,9 @@ export const ScriptActivityLogDestination = {
     ExternalStore: "ExternalStore",
 } as const;
 
+/**
+ * The destination of logs. Type: string.
+ */
 export type ScriptActivityLogDestination = (typeof ScriptActivityLogDestination)[keyof typeof ScriptActivityLogDestination];
 
 export const ScriptActivityParameterDirection = {
@@ -449,6 +605,9 @@ export const ScriptActivityParameterDirection = {
     ValueInputOutput: "InputOutput",
 } as const;
 
+/**
+ * The direction of the parameter.
+ */
 export type ScriptActivityParameterDirection = (typeof ScriptActivityParameterDirection)[keyof typeof ScriptActivityParameterDirection];
 
 export const ScriptActivityParameterType = {
@@ -466,6 +625,9 @@ export const ScriptActivityParameterType = {
     Timespan: "Timespan",
 } as const;
 
+/**
+ * The type of the parameter.
+ */
 export type ScriptActivityParameterType = (typeof ScriptActivityParameterType)[keyof typeof ScriptActivityParameterType];
 
 export const ScriptType = {
@@ -473,6 +635,9 @@ export const ScriptType = {
     NonQuery: "NonQuery",
 } as const;
 
+/**
+ * The type of the query. Type: string.
+ */
 export type ScriptType = (typeof ScriptType)[keyof typeof ScriptType];
 
 export const ServiceNowAuthenticationType = {
@@ -480,6 +645,9 @@ export const ServiceNowAuthenticationType = {
     OAuth2: "OAuth2",
 } as const;
 
+/**
+ * The authentication type to use.
+ */
 export type ServiceNowAuthenticationType = (typeof ServiceNowAuthenticationType)[keyof typeof ServiceNowAuthenticationType];
 
 export const SftpAuthenticationType = {
@@ -488,6 +656,9 @@ export const SftpAuthenticationType = {
     MultiFactor: "MultiFactor",
 } as const;
 
+/**
+ * The authentication type to be used to connect to the FTP server.
+ */
 export type SftpAuthenticationType = (typeof SftpAuthenticationType)[keyof typeof SftpAuthenticationType];
 
 export const SparkAuthenticationType = {
@@ -497,18 +668,27 @@ export const SparkAuthenticationType = {
     WindowsAzureHDInsightService: "WindowsAzureHDInsightService",
 } as const;
 
+/**
+ * The authentication method used to access the Spark server.
+ */
 export type SparkAuthenticationType = (typeof SparkAuthenticationType)[keyof typeof SparkAuthenticationType];
 
 export const SparkConfigurationReferenceType = {
     SparkConfigurationReference: "SparkConfigurationReference",
 } as const;
 
+/**
+ * Spark configuration reference type.
+ */
 export type SparkConfigurationReferenceType = (typeof SparkConfigurationReferenceType)[keyof typeof SparkConfigurationReferenceType];
 
 export const SparkJobReferenceType = {
     SparkJobDefinitionReference: "SparkJobDefinitionReference",
 } as const;
 
+/**
+ * Synapse spark job reference type.
+ */
 export type SparkJobReferenceType = (typeof SparkJobReferenceType)[keyof typeof SparkJobReferenceType];
 
 export const SparkServerType = {
@@ -517,6 +697,9 @@ export const SparkServerType = {
     SparkThriftServer: "SparkThriftServer",
 } as const;
 
+/**
+ * The type of Spark server.
+ */
 export type SparkServerType = (typeof SparkServerType)[keyof typeof SparkServerType];
 
 export const SparkThriftTransportProtocol = {
@@ -525,6 +708,9 @@ export const SparkThriftTransportProtocol = {
     HTTP_: "HTTP ",
 } as const;
 
+/**
+ * The transport protocol to use in the Thrift layer.
+ */
 export type SparkThriftTransportProtocol = (typeof SparkThriftTransportProtocol)[keyof typeof SparkThriftTransportProtocol];
 
 export const SqlAlwaysEncryptedAkvAuthType = {
@@ -533,12 +719,18 @@ export const SqlAlwaysEncryptedAkvAuthType = {
     UserAssignedManagedIdentity: "UserAssignedManagedIdentity",
 } as const;
 
+/**
+ * Sql always encrypted AKV authentication type. Type: string.
+ */
 export type SqlAlwaysEncryptedAkvAuthType = (typeof SqlAlwaysEncryptedAkvAuthType)[keyof typeof SqlAlwaysEncryptedAkvAuthType];
 
 export const SsisLogLocationType = {
     File: "File",
 } as const;
 
+/**
+ * The type of SSIS log location.
+ */
 export type SsisLogLocationType = (typeof SsisLogLocationType)[keyof typeof SsisLogLocationType];
 
 export const SsisPackageLocationType = {
@@ -548,6 +740,9 @@ export const SsisPackageLocationType = {
     PackageStore: "PackageStore",
 } as const;
 
+/**
+ * The type of SSIS package location.
+ */
 export type SsisPackageLocationType = (typeof SsisPackageLocationType)[keyof typeof SsisPackageLocationType];
 
 export const SybaseAuthenticationType = {
@@ -555,6 +750,9 @@ export const SybaseAuthenticationType = {
     Windows: "Windows",
 } as const;
 
+/**
+ * AuthenticationType to be used for connection.
+ */
 export type SybaseAuthenticationType = (typeof SybaseAuthenticationType)[keyof typeof SybaseAuthenticationType];
 
 export const TeamDeskAuthenticationType = {
@@ -562,6 +760,9 @@ export const TeamDeskAuthenticationType = {
     Token: "Token",
 } as const;
 
+/**
+ * The authentication type to use.
+ */
 export type TeamDeskAuthenticationType = (typeof TeamDeskAuthenticationType)[keyof typeof TeamDeskAuthenticationType];
 
 export const TeradataAuthenticationType = {
@@ -569,12 +770,18 @@ export const TeradataAuthenticationType = {
     Windows: "Windows",
 } as const;
 
+/**
+ * AuthenticationType to be used for connection.
+ */
 export type TeradataAuthenticationType = (typeof TeradataAuthenticationType)[keyof typeof TeradataAuthenticationType];
 
 export const TriggerReferenceType = {
     TriggerReference: "TriggerReference",
 } as const;
 
+/**
+ * Trigger reference type.
+ */
 export type TriggerReferenceType = (typeof TriggerReferenceType)[keyof typeof TriggerReferenceType];
 
 export const TumblingWindowFrequency = {
@@ -583,12 +790,18 @@ export const TumblingWindowFrequency = {
     Month: "Month",
 } as const;
 
+/**
+ * The frequency of the time windows.
+ */
 export type TumblingWindowFrequency = (typeof TumblingWindowFrequency)[keyof typeof TumblingWindowFrequency];
 
 export const Type = {
     LinkedServiceReference: "LinkedServiceReference",
 } as const;
 
+/**
+ * Linked service reference type.
+ */
 export type Type = (typeof Type)[keyof typeof Type];
 
 export const VariableType = {
@@ -597,6 +810,9 @@ export const VariableType = {
     Array: "Array",
 } as const;
 
+/**
+ * Variable type.
+ */
 export type VariableType = (typeof VariableType)[keyof typeof VariableType];
 
 export const WebActivityMethod = {
@@ -606,6 +822,9 @@ export const WebActivityMethod = {
     DELETE: "DELETE",
 } as const;
 
+/**
+ * Rest API method for target endpoint.
+ */
 export type WebActivityMethod = (typeof WebActivityMethod)[keyof typeof WebActivityMethod];
 
 export const WebAuthenticationType = {
@@ -614,12 +833,18 @@ export const WebAuthenticationType = {
     ClientCertificate: "ClientCertificate",
 } as const;
 
+/**
+ * Type of authentication used to connect to the web table source.
+ */
 export type WebAuthenticationType = (typeof WebAuthenticationType)[keyof typeof WebAuthenticationType];
 
 export const WebHookActivityMethod = {
     POST: "POST",
 } as const;
 
+/**
+ * Rest API method for target endpoint.
+ */
 export type WebHookActivityMethod = (typeof WebHookActivityMethod)[keyof typeof WebHookActivityMethod];
 
 export const ZendeskAuthenticationType = {
@@ -627,4 +852,7 @@ export const ZendeskAuthenticationType = {
     Token: "Token",
 } as const;
 
+/**
+ * The authentication type to use.
+ */
 export type ZendeskAuthenticationType = (typeof ZendeskAuthenticationType)[keyof typeof ZendeskAuthenticationType];

@@ -9,6 +9,9 @@ export const AllowCrashDumpCollection = {
     Disabled: "Disabled",
 } as const;
 
+/**
+ * Flag to define if the user allows for crash dump collection.
+ */
 export type AllowCrashDumpCollection = (typeof AllowCrashDumpCollection)[keyof typeof AllowCrashDumpCollection];
 
 export const OSFeedType = {
@@ -22,6 +25,9 @@ export const OSFeedType = {
     RetailEval: "RetailEval",
 } as const;
 
+/**
+ * Operating system feed type of the device group.
+ */
 export type OSFeedType = (typeof OSFeedType)[keyof typeof OSFeedType];
 
 export const RegionalDataBoundary = {
@@ -35,6 +41,9 @@ export const RegionalDataBoundary = {
     EU: "EU",
 } as const;
 
+/**
+ * Regional data boundary for an image
+ */
 export type RegionalDataBoundary = (typeof RegionalDataBoundary)[keyof typeof RegionalDataBoundary];
 
 export const UpdatePolicy = {
@@ -48,4 +57,7 @@ export const UpdatePolicy = {
     No3rdPartyAppUpdates: "No3rdPartyAppUpdates",
 } as const;
 
+/**
+ * Update policy of the device group.
+ */
 export type UpdatePolicy = (typeof UpdatePolicy)[keyof typeof UpdatePolicy];

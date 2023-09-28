@@ -3,4 +3,7 @@ export const CertificateProductType = {
     StandardDomainValidatedWildCardSsl: "StandardDomainValidatedWildCardSsl",
 } as const;
 
+/**
+ * Certificate product type.
+ */
 export type CertificateProductType = (typeof CertificateProductType)[keyof typeof CertificateProductType];

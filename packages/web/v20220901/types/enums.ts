@@ -4,6 +4,9 @@ export const AutoHealActionType = {
     CustomAction: "CustomAction",
 } as const;
 
+/**
+ * Predefined action to be taken.
+ */
 export type AutoHealActionType = (typeof AutoHealActionType)[keyof typeof AutoHealActionType];
 
 export const AzureResourceType = {
@@ -11,6 +14,9 @@ export const AzureResourceType = {
     TrafficManager: "TrafficManager",
 } as const;
 
+/**
+ * Azure resource type.
+ */
 export type AzureResourceType = (typeof AzureResourceType)[keyof typeof AzureResourceType];
 
 export const AzureStorageType = {
@@ -18,6 +24,9 @@ export const AzureStorageType = {
     AzureBlob: "AzureBlob",
 } as const;
 
+/**
+ * Type of storage.
+ */
 export type AzureStorageType = (typeof AzureStorageType)[keyof typeof AzureStorageType];
 
 export const BuiltInAuthenticationProvider = {
@@ -29,6 +38,11 @@ export const BuiltInAuthenticationProvider = {
     Github: "Github",
 } as const;
 
+/**
+ * The default authentication provider to use when multiple providers are configured.
+ * This setting is only needed if multiple providers are configured and the unauthenticated client
+ * action is set to "RedirectToLoginPage".
+ */
 export type BuiltInAuthenticationProvider = (typeof BuiltInAuthenticationProvider)[keyof typeof BuiltInAuthenticationProvider];
 
 export const ClientCertMode = {
@@ -37,6 +51,12 @@ export const ClientCertMode = {
     OptionalInteractiveUser: "OptionalInteractiveUser",
 } as const;
 
+/**
+ * This composes with ClientCertEnabled setting.
+ * - ClientCertEnabled: false means ClientCert is ignored.
+ * - ClientCertEnabled: true and ClientCertMode: Required means ClientCert is required.
+ * - ClientCertEnabled: true and ClientCertMode: Optional means ClientCert is optional or accepted.
+ */
 export type ClientCertMode = (typeof ClientCertMode)[keyof typeof ClientCertMode];
 
 export const ConnectionStringType = {
@@ -53,6 +73,9 @@ export const ConnectionStringType = {
     PostgreSQL: "PostgreSQL",
 } as const;
 
+/**
+ * Type of database.
+ */
 export type ConnectionStringType = (typeof ConnectionStringType)[keyof typeof ConnectionStringType];
 
 export const CustomHostNameDnsRecordType = {
@@ -60,6 +83,9 @@ export const CustomHostNameDnsRecordType = {
     A: "A",
 } as const;
 
+/**
+ * Custom DNS record type.
+ */
 export type CustomHostNameDnsRecordType = (typeof CustomHostNameDnsRecordType)[keyof typeof CustomHostNameDnsRecordType];
 
 export const DatabaseType = {
@@ -69,6 +95,9 @@ export const DatabaseType = {
     PostgreSql: "PostgreSql",
 } as const;
 
+/**
+ * Database type (e.g. SqlAzure / MySql).
+ */
 export type DatabaseType = (typeof DatabaseType)[keyof typeof DatabaseType];
 
 export const DefaultAction = {
@@ -76,6 +105,9 @@ export const DefaultAction = {
     Deny: "Deny",
 } as const;
 
+/**
+ * Default action for scm access restriction if no rules are matched.
+ */
 export type DefaultAction = (typeof DefaultAction)[keyof typeof DefaultAction];
 
 export const EnterpriseGradeCdnStatus = {
@@ -85,6 +117,9 @@ export const EnterpriseGradeCdnStatus = {
     Disabling: "Disabling",
 } as const;
 
+/**
+ * State indicating the status of the enterprise grade CDN serving traffic to the static web app.
+ */
 export type EnterpriseGradeCdnStatus = (typeof EnterpriseGradeCdnStatus)[keyof typeof EnterpriseGradeCdnStatus];
 
 export const FrequencyUnit = {
@@ -92,6 +127,9 @@ export const FrequencyUnit = {
     Hour: "Hour",
 } as const;
 
+/**
+ * The unit of time for how often the backup should be executed (e.g. for weekly backup, this should be set to Day and FrequencyInterval should be set to 7)
+ */
 export type FrequencyUnit = (typeof FrequencyUnit)[keyof typeof FrequencyUnit];
 
 export const FrontEndServiceType = {
@@ -107,6 +145,9 @@ export const FtpsState = {
     Disabled: "Disabled",
 } as const;
 
+/**
+ * State of FTP / FTPS service
+ */
 export type FtpsState = (typeof FtpsState)[keyof typeof FtpsState];
 
 export const HostNameType = {
@@ -114,6 +155,9 @@ export const HostNameType = {
     Managed: "Managed",
 } as const;
 
+/**
+ * Hostname type.
+ */
 export type HostNameType = (typeof HostNameType)[keyof typeof HostNameType];
 
 export const HostType = {
@@ -121,6 +165,9 @@ export const HostType = {
     Repository: "Repository",
 } as const;
 
+/**
+ * Indicates whether the hostname is a standard or repository hostname.
+ */
 export type HostType = (typeof HostType)[keyof typeof HostType];
 
 export const IpFilterTag = {
@@ -129,6 +176,9 @@ export const IpFilterTag = {
     ServiceTag: "ServiceTag",
 } as const;
 
+/**
+ * Defines what this IP filter will be used for. This is to support IP filtering on proxies.
+ */
 export type IpFilterTag = (typeof IpFilterTag)[keyof typeof IpFilterTag];
 
 export const LoadBalancingMode = {
@@ -138,6 +188,9 @@ export const LoadBalancingMode = {
     Web_Publishing: "Web, Publishing",
 } as const;
 
+/**
+ * Specifies which endpoints to serve internally in the Virtual Network for the App Service Environment.
+ */
 export type LoadBalancingMode = (typeof LoadBalancingMode)[keyof typeof LoadBalancingMode];
 
 export const LogLevel = {
@@ -148,6 +201,9 @@ export const LogLevel = {
     Error: "Error",
 } as const;
 
+/**
+ * Log level.
+ */
 export type LogLevel = (typeof LogLevel)[keyof typeof LogLevel];
 
 export const ManagedPipelineMode = {
@@ -155,6 +211,9 @@ export const ManagedPipelineMode = {
     Classic: "Classic",
 } as const;
 
+/**
+ * Managed pipeline mode.
+ */
 export type ManagedPipelineMode = (typeof ManagedPipelineMode)[keyof typeof ManagedPipelineMode];
 
 export const ManagedServiceIdentityType = {
@@ -164,6 +223,9 @@ export const ManagedServiceIdentityType = {
     None: "None",
 } as const;
 
+/**
+ * Type of managed service identity.
+ */
 export type ManagedServiceIdentityType = (typeof ManagedServiceIdentityType)[keyof typeof ManagedServiceIdentityType];
 
 export const PublicCertificateLocation = {
@@ -172,6 +234,9 @@ export const PublicCertificateLocation = {
     Unknown: "Unknown",
 } as const;
 
+/**
+ * Public Certificate Location
+ */
 export type PublicCertificateLocation = (typeof PublicCertificateLocation)[keyof typeof PublicCertificateLocation];
 
 export const RedundancyMode = {
@@ -182,6 +247,9 @@ export const RedundancyMode = {
     GeoRedundant: "GeoRedundant",
 } as const;
 
+/**
+ * Site redundancy mode
+ */
 export type RedundancyMode = (typeof RedundancyMode)[keyof typeof RedundancyMode];
 
 export const RouteType = {
@@ -190,6 +258,14 @@ export const RouteType = {
     STATIC: "STATIC",
 } as const;
 
+/**
+ * The type of route this is:
+ * DEFAULT - By default, every app has routes to the local address ranges specified by RFC1918
+ * INHERITED - Routes inherited from the real Virtual Network routes
+ * STATIC - Static route set on the app only
+ *
+ * These values will be used for syncing an app's routes with those from a Virtual Network.
+ */
 export type RouteType = (typeof RouteType)[keyof typeof RouteType];
 
 export const ScmType = {
@@ -209,6 +285,9 @@ export const ScmType = {
     VSTSRM: "VSTSRM",
 } as const;
 
+/**
+ * SCM type.
+ */
 export type ScmType = (typeof ScmType)[keyof typeof ScmType];
 
 export const SiteLoadBalancing = {
@@ -220,6 +299,9 @@ export const SiteLoadBalancing = {
     PerSiteRoundRobin: "PerSiteRoundRobin",
 } as const;
 
+/**
+ * Site load balancing.
+ */
 export type SiteLoadBalancing = (typeof SiteLoadBalancing)[keyof typeof SiteLoadBalancing];
 
 export const SslState = {
@@ -228,6 +310,9 @@ export const SslState = {
     IpBasedEnabled: "IpBasedEnabled",
 } as const;
 
+/**
+ * SSL type.
+ */
 export type SslState = (typeof SslState)[keyof typeof SslState];
 
 export const StagingEnvironmentPolicy = {
@@ -235,6 +320,9 @@ export const StagingEnvironmentPolicy = {
     Disabled: "Disabled",
 } as const;
 
+/**
+ * State indicating whether staging environments are allowed or not allowed for a static web app.
+ */
 export type StagingEnvironmentPolicy = (typeof StagingEnvironmentPolicy)[keyof typeof StagingEnvironmentPolicy];
 
 export const StorageType = {
@@ -250,6 +338,9 @@ export const SupportedTlsVersions = {
     SupportedTlsVersions_1_2: "1.2",
 } as const;
 
+/**
+ * ScmMinTlsVersion: configures the minimum version of TLS required for SSL requests for SCM site
+ */
 export type SupportedTlsVersions = (typeof SupportedTlsVersions)[keyof typeof SupportedTlsVersions];
 
 export const UnauthenticatedClientAction = {
@@ -257,6 +348,9 @@ export const UnauthenticatedClientAction = {
     AllowAnonymous: "AllowAnonymous",
 } as const;
 
+/**
+ * The action to take when an unauthenticated client attempts to access the app.
+ */
 export type UnauthenticatedClientAction = (typeof UnauthenticatedClientAction)[keyof typeof UnauthenticatedClientAction];
 
 export const UpgradePreference = {
@@ -278,4 +372,7 @@ export const UpgradePreference = {
     Manual: "Manual",
 } as const;
 
+/**
+ * Upgrade Preference
+ */
 export type UpgradePreference = (typeof UpgradePreference)[keyof typeof UpgradePreference];

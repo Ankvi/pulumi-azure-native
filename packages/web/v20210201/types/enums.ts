@@ -2,6 +2,9 @@ export const ClientCredentialMethod = {
     ClientSecretPost: "ClientSecretPost",
 } as const;
 
+/**
+ * The method that should be used to authenticate the user.
+ */
 export type ClientCredentialMethod = (typeof ClientCredentialMethod)[keyof typeof ClientCredentialMethod];
 
 export const CookieExpirationConvention = {
@@ -9,6 +12,9 @@ export const CookieExpirationConvention = {
     IdentityProviderDerived: "IdentityProviderDerived",
 } as const;
 
+/**
+ * The convention used when determining the session cookie's expiration.
+ */
 export type CookieExpirationConvention = (typeof CookieExpirationConvention)[keyof typeof CookieExpirationConvention];
 
 export const ForwardProxyConvention = {
@@ -17,6 +23,9 @@ export const ForwardProxyConvention = {
     Custom: "Custom",
 } as const;
 
+/**
+ * The convention used to determine the url of the request made.
+ */
 export type ForwardProxyConvention = (typeof ForwardProxyConvention)[keyof typeof ForwardProxyConvention];
 
 export const ManagedServiceIdentityType = {
@@ -26,6 +35,9 @@ export const ManagedServiceIdentityType = {
     None: "None",
 } as const;
 
+/**
+ * Type of managed service identity.
+ */
 export type ManagedServiceIdentityType = (typeof ManagedServiceIdentityType)[keyof typeof ManagedServiceIdentityType];
 
 export const StagingEnvironmentPolicy = {
@@ -33,6 +45,9 @@ export const StagingEnvironmentPolicy = {
     Disabled: "Disabled",
 } as const;
 
+/**
+ * State indicating whether staging environments are allowed or not allowed for a static web app.
+ */
 export type StagingEnvironmentPolicy = (typeof StagingEnvironmentPolicy)[keyof typeof StagingEnvironmentPolicy];
 
 export const UnauthenticatedClientActionV2 = {
@@ -42,4 +57,7 @@ export const UnauthenticatedClientActionV2 = {
     Return403: "Return403",
 } as const;
 
+/**
+ * The action to take when an unauthenticated client attempts to access the app.
+ */
 export type UnauthenticatedClientActionV2 = (typeof UnauthenticatedClientActionV2)[keyof typeof UnauthenticatedClientActionV2];

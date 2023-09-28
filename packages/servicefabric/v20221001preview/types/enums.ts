@@ -3,6 +3,9 @@ export const Access = {
     Deny: "deny",
 } as const;
 
+/**
+ * The network traffic is allowed or denied.
+ */
 export type Access = (typeof Access)[keyof typeof Access];
 
 export const ClusterUpgradeCadence = {
@@ -20,6 +23,9 @@ export const ClusterUpgradeCadence = {
     Wave2: "Wave2",
 } as const;
 
+/**
+ * Indicates when new cluster runtime version upgrades will be applied after they are released. By default is Wave0. Only applies when **clusterUpgradeMode** is set to 'Automatic'.
+ */
 export type ClusterUpgradeCadence = (typeof ClusterUpgradeCadence)[keyof typeof ClusterUpgradeCadence];
 
 export const ClusterUpgradeMode = {
@@ -33,6 +39,9 @@ export const ClusterUpgradeMode = {
     Manual: "Manual",
 } as const;
 
+/**
+ * The upgrade mode of the cluster when new Service Fabric runtime version is available.
+ */
 export type ClusterUpgradeMode = (typeof ClusterUpgradeMode)[keyof typeof ClusterUpgradeMode];
 
 export const Direction = {
@@ -40,6 +49,9 @@ export const Direction = {
     Outbound: "outbound",
 } as const;
 
+/**
+ * Network security rule direction.
+ */
 export type Direction = (typeof Direction)[keyof typeof Direction];
 
 export const ManagedClusterAddOnFeature = {
@@ -57,6 +69,9 @@ export const ManagedClusterAddOnFeature = {
     ResourceMonitorService: "ResourceMonitorService",
 } as const;
 
+/**
+ * Available cluster add-on features
+ */
 export type ManagedClusterAddOnFeature = (typeof ManagedClusterAddOnFeature)[keyof typeof ManagedClusterAddOnFeature];
 
 export const NsgProtocol = {
@@ -69,6 +84,9 @@ export const NsgProtocol = {
     Esp: "esp",
 } as const;
 
+/**
+ * Network protocol this rule applies to.
+ */
 export type NsgProtocol = (typeof NsgProtocol)[keyof typeof NsgProtocol];
 
 export const PrivateEndpointNetworkPolicies = {
@@ -76,6 +94,9 @@ export const PrivateEndpointNetworkPolicies = {
     Disabled: "disabled",
 } as const;
 
+/**
+ * Enable or Disable apply network policies on private end point in the subnet.
+ */
 export type PrivateEndpointNetworkPolicies = (typeof PrivateEndpointNetworkPolicies)[keyof typeof PrivateEndpointNetworkPolicies];
 
 export const PrivateLinkServiceNetworkPolicies = {
@@ -83,6 +104,9 @@ export const PrivateLinkServiceNetworkPolicies = {
     Disabled: "disabled",
 } as const;
 
+/**
+ * Enable or Disable apply network policies on private link service in the subnet.
+ */
 export type PrivateLinkServiceNetworkPolicies = (typeof PrivateLinkServiceNetworkPolicies)[keyof typeof PrivateLinkServiceNetworkPolicies];
 
 export const ProbeProtocol = {
@@ -91,6 +115,9 @@ export const ProbeProtocol = {
     Https: "https",
 } as const;
 
+/**
+ * the reference to the load balancer probe used by the load balancing rule.
+ */
 export type ProbeProtocol = (typeof ProbeProtocol)[keyof typeof ProbeProtocol];
 
 export const Protocol = {
@@ -98,6 +125,9 @@ export const Protocol = {
     Udp: "udp",
 } as const;
 
+/**
+ * The reference to the transport protocol used by the load balancing rule.
+ */
 export type Protocol = (typeof Protocol)[keyof typeof Protocol];
 
 export const SkuName = {
@@ -111,6 +141,9 @@ export const SkuName = {
     Standard: "Standard",
 } as const;
 
+/**
+ * Sku Name.
+ */
 export type SkuName = (typeof SkuName)[keyof typeof SkuName];
 
 export const ZonalUpdateMode = {
@@ -124,4 +157,7 @@ export const ZonalUpdateMode = {
     Fast: "Fast",
 } as const;
 
+/**
+ * Indicates the update mode for Cross Az clusters.
+ */
 export type ZonalUpdateMode = (typeof ZonalUpdateMode)[keyof typeof ZonalUpdateMode];

@@ -3,6 +3,9 @@ export const AutomationArtifactStatus = {
     Generated: "Generated",
 } as const;
 
+/**
+ * Gets or sets the status of automation artifacts.
+ */
 export type AutomationArtifactStatus = (typeof AutomationArtifactStatus)[keyof typeof AutomationArtifactStatus];
 
 export const ConfigurationType = {
@@ -11,6 +14,9 @@ export const ConfigurationType = {
     ApacheTomcatContextResource: "ApacheTomcatContextResource",
 } as const;
 
+/**
+ * Gets or sets the configuration type.
+ */
 export type ConfigurationType = (typeof ConfigurationType)[keyof typeof ConfigurationType];
 
 export const LoadBalancerType = {
@@ -18,6 +24,9 @@ export const LoadBalancerType = {
     Public: "Public",
 } as const;
 
+/**
+ * Gets or sets the load balancer type.
+ */
 export type LoadBalancerType = (typeof LoadBalancerType)[keyof typeof LoadBalancerType];
 
 export const OperatingSystemType = {
@@ -48,6 +57,10 @@ export const TargetHydrationStorageProviderType = {
     AzureFileShare: "AzureFileShare",
 } as const;
 
+/**
+ * Gets or sets the storage provider type on the target.
+ * Applicable when StorageProjectionType is not ContainerFileSystem.
+ */
 export type TargetHydrationStorageProviderType = (typeof TargetHydrationStorageProviderType)[keyof typeof TargetHydrationStorageProviderType];
 
 export const TargetStorageAccessType = {
@@ -55,6 +68,9 @@ export const TargetStorageAccessType = {
     Exclusive: "Exclusive",
 } as const;
 
+/**
+ * Gets or sets the target storage access type.
+ */
 export type TargetStorageAccessType = (typeof TargetStorageAccessType)[keyof typeof TargetStorageAccessType];
 
 export const TargetStorageProjectionType = {
@@ -62,6 +78,9 @@ export const TargetStorageProjectionType = {
     PersistentVolume: "PersistentVolume",
 } as const;
 
+/**
+ * Gets or sets the target projection type.
+ */
 export type TargetStorageProjectionType = (typeof TargetStorageProjectionType)[keyof typeof TargetStorageProjectionType];
 
 export const WorkloadDeploymentTarget = {
@@ -70,6 +89,9 @@ export const WorkloadDeploymentTarget = {
     AzureAppServiceNative: "AzureAppServiceNative",
 } as const;
 
+/**
+ * Gets or sets the deployment target platform.
+ */
 export type WorkloadDeploymentTarget = (typeof WorkloadDeploymentTarget)[keyof typeof WorkloadDeploymentTarget];
 
 export const WorkloadDeploymentType = {
@@ -77,6 +99,9 @@ export const WorkloadDeploymentType = {
     ApacheTomcatAKSWorkloadDeployment: "ApacheTomcatAKSWorkloadDeployment",
 } as const;
 
+/**
+ * Gets or sets the instance type.
+ */
 export type WorkloadDeploymentType = (typeof WorkloadDeploymentType)[keyof typeof WorkloadDeploymentType];
 
 export const WorkloadType = {
@@ -84,4 +109,7 @@ export const WorkloadType = {
     ApacheTomcatWorkload: "ApacheTomcatWorkload",
 } as const;
 
+/**
+ * Gets or sets the instance type.
+ */
 export type WorkloadType = (typeof WorkloadType)[keyof typeof WorkloadType];

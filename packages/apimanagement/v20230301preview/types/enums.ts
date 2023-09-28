@@ -5,6 +5,9 @@ export const AlwaysLog = {
     AllErrors: "allErrors",
 } as const;
 
+/**
+ * Specifies for what type of messages sampling settings should not apply.
+ */
 export type AlwaysLog = (typeof AlwaysLog)[keyof typeof AlwaysLog];
 
 export const ApiType = {
@@ -15,6 +18,9 @@ export const ApiType = {
     Odata: "odata",
 } as const;
 
+/**
+ * Type of API.
+ */
 export type ApiType = (typeof ApiType)[keyof typeof ApiType];
 
 export const ApimIdentityType = {
@@ -24,6 +30,9 @@ export const ApimIdentityType = {
     None: "None",
 } as const;
 
+/**
+ * The type of identity used for the resource. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the service.
+ */
 export type ApimIdentityType = (typeof ApimIdentityType)[keyof typeof ApimIdentityType];
 
 export const AppType = {
@@ -37,6 +46,9 @@ export const AppType = {
     DeveloperPortal: "developerPortal",
 } as const;
 
+/**
+ * Determines the type of application which send the create user request. Default is legacy portal.
+ */
 export type AppType = (typeof AppType)[keyof typeof AppType];
 
 export const AuthorizationMethod = {
@@ -59,6 +71,9 @@ export const AuthorizationType = {
     OAuth2: "OAuth2",
 } as const;
 
+/**
+ * Authorization type options
+ */
 export type AuthorizationType = (typeof AuthorizationType)[keyof typeof AuthorizationType];
 
 export const BackendProtocol = {
@@ -72,6 +87,9 @@ export const BackendProtocol = {
     Soap: "soap",
 } as const;
 
+/**
+ * Backend communication protocol.
+ */
 export type BackendProtocol = (typeof BackendProtocol)[keyof typeof BackendProtocol];
 
 export const BearerTokenSendingMethod = {
@@ -92,6 +110,9 @@ export const BearerTokenSendingMethods = {
     Query: "query",
 } as const;
 
+/**
+ * Form of an authorization grant, which the client uses to request the access token.
+ */
 export type BearerTokenSendingMethods = (typeof BearerTokenSendingMethods)[keyof typeof BearerTokenSendingMethods];
 
 export const CertificateSource = {
@@ -101,6 +122,9 @@ export const CertificateSource = {
     BuiltIn: "BuiltIn",
 } as const;
 
+/**
+ * Certificate Source.
+ */
 export type CertificateSource = (typeof CertificateSource)[keyof typeof CertificateSource];
 
 export const CertificateStatus = {
@@ -109,6 +133,9 @@ export const CertificateStatus = {
     InProgress: "InProgress",
 } as const;
 
+/**
+ * Certificate Status.
+ */
 export type CertificateStatus = (typeof CertificateStatus)[keyof typeof CertificateStatus];
 
 export const ClientAuthenticationMethod = {
@@ -135,6 +162,9 @@ export const Confirmation = {
     Invite: "invite",
 } as const;
 
+/**
+ * Determines the type of confirmation e-mail that will be sent to the newly created user.
+ */
 export type Confirmation = (typeof Confirmation)[keyof typeof Confirmation];
 
 export const ContentFormat = {
@@ -192,6 +222,9 @@ export const ContentFormat = {
     Odata_link: "odata-link",
 } as const;
 
+/**
+ * Format of the Content in which the API is getting imported. New formats can be added in the future
+ */
 export type ContentFormat = (typeof ContentFormat)[keyof typeof ContentFormat];
 
 export const DataMaskingMode = {
@@ -205,6 +238,9 @@ export const DataMaskingMode = {
     Hide: "Hide",
 } as const;
 
+/**
+ * Data masking mode.
+ */
 export type DataMaskingMode = (typeof DataMaskingMode)[keyof typeof DataMaskingMode];
 
 export const DeveloperPortalStatus = {
@@ -218,6 +254,9 @@ export const DeveloperPortalStatus = {
     Disabled: "Disabled",
 } as const;
 
+/**
+ * Status of developer portal in this API Management service.
+ */
 export type DeveloperPortalStatus = (typeof DeveloperPortalStatus)[keyof typeof DeveloperPortalStatus];
 
 export const GatewayListDebugCredentialsContractPurpose = {
@@ -227,6 +266,9 @@ export const GatewayListDebugCredentialsContractPurpose = {
     Tracing: "tracing",
 } as const;
 
+/**
+ * Purpose of debug credential.
+ */
 export type GatewayListDebugCredentialsContractPurpose = (typeof GatewayListDebugCredentialsContractPurpose)[keyof typeof GatewayListDebugCredentialsContractPurpose];
 
 export const GrantType = {
@@ -256,6 +298,9 @@ export const GroupType = {
     External: "external",
 } as const;
 
+/**
+ * Group type.
+ */
 export type GroupType = (typeof GroupType)[keyof typeof GroupType];
 
 export const HostnameType = {
@@ -267,6 +312,9 @@ export const HostnameType = {
     ConfigurationApi: "ConfigurationApi",
 } as const;
 
+/**
+ * Hostname type.
+ */
 export type HostnameType = (typeof HostnameType)[keyof typeof HostnameType];
 
 export const HttpCorrelationProtocol = {
@@ -284,6 +332,9 @@ export const HttpCorrelationProtocol = {
     W3C: "W3C",
 } as const;
 
+/**
+ * Sets correlation protocol to use for Application Insights diagnostics.
+ */
 export type HttpCorrelationProtocol = (typeof HttpCorrelationProtocol)[keyof typeof HttpCorrelationProtocol];
 
 export const IdentityProviderType = {
@@ -313,6 +364,9 @@ export const IdentityProviderType = {
     AadB2C: "aadB2C",
 } as const;
 
+/**
+ * Identity Provider Type identifier.
+ */
 export type IdentityProviderType = (typeof IdentityProviderType)[keyof typeof IdentityProviderType];
 
 export const KeyType = {
@@ -320,6 +374,9 @@ export const KeyType = {
     Secondary: "secondary",
 } as const;
 
+/**
+ * The Key to be used to generate token for user.
+ */
 export type KeyType = (typeof KeyType)[keyof typeof KeyType];
 
 export const LegacyApiState = {
@@ -333,6 +390,9 @@ export const LegacyApiState = {
     Disabled: "Disabled",
 } as const;
 
+/**
+ * Indication whether or not the legacy Configuration API (v1) should be exposed on the API Management service. Value is optional but must be 'Enabled' or 'Disabled'. If 'Disabled', legacy Configuration API (v1) will not be available for self-hosted gateways. Default value is 'Enabled'
+ */
 export type LegacyApiState = (typeof LegacyApiState)[keyof typeof LegacyApiState];
 
 export const LegacyPortalStatus = {
@@ -346,6 +406,9 @@ export const LegacyPortalStatus = {
     Disabled: "Disabled",
 } as const;
 
+/**
+ * Status of legacy portal in the API Management service.
+ */
 export type LegacyPortalStatus = (typeof LegacyPortalStatus)[keyof typeof LegacyPortalStatus];
 
 export const LoggerType = {
@@ -363,6 +426,9 @@ export const LoggerType = {
     AzureMonitor: "azureMonitor",
 } as const;
 
+/**
+ * Logger type.
+ */
 export type LoggerType = (typeof LoggerType)[keyof typeof LoggerType];
 
 export const NatGatewayState = {
@@ -376,6 +442,9 @@ export const NatGatewayState = {
     Disabled: "Disabled",
 } as const;
 
+/**
+ * Property can be used to enable NAT Gateway for this API Management service.
+ */
 export type NatGatewayState = (typeof NatGatewayState)[keyof typeof NatGatewayState];
 
 export const OAuth2GrantType = {
@@ -389,6 +458,9 @@ export const OAuth2GrantType = {
     ClientCredentials: "ClientCredentials",
 } as const;
 
+/**
+ * OAuth2 grant type options
+ */
 export type OAuth2GrantType = (typeof OAuth2GrantType)[keyof typeof OAuth2GrantType];
 
 export const OperationNameFormat = {
@@ -402,6 +474,9 @@ export const OperationNameFormat = {
     Url: "Url",
 } as const;
 
+/**
+ * The format of the Operation Name for Application Insights telemetries. Default is Name.
+ */
 export type OperationNameFormat = (typeof OperationNameFormat)[keyof typeof OperationNameFormat];
 
 export const PolicyContentFormat = {
@@ -423,6 +498,9 @@ export const PolicyContentFormat = {
     Rawxml_link: "rawxml-link",
 } as const;
 
+/**
+ * Format of the policyContent.
+ */
 export type PolicyContentFormat = (typeof PolicyContentFormat)[keyof typeof PolicyContentFormat];
 
 export const PolicyFragmentContentFormat = {
@@ -436,6 +514,9 @@ export const PolicyFragmentContentFormat = {
     Rawxml: "rawxml",
 } as const;
 
+/**
+ * Format of the policy fragment content.
+ */
 export type PolicyFragmentContentFormat = (typeof PolicyFragmentContentFormat)[keyof typeof PolicyFragmentContentFormat];
 
 export const PrivateEndpointServiceConnectionStatus = {
@@ -444,6 +525,9 @@ export const PrivateEndpointServiceConnectionStatus = {
     Rejected: "Rejected",
 } as const;
 
+/**
+ * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+ */
 export type PrivateEndpointServiceConnectionStatus = (typeof PrivateEndpointServiceConnectionStatus)[keyof typeof PrivateEndpointServiceConnectionStatus];
 
 export const ProductState = {
@@ -451,6 +535,9 @@ export const ProductState = {
     Published: "published",
 } as const;
 
+/**
+ * whether product is published or not. Published products are discoverable by users of developer portal. Non published products are visible only to administrators. Default state of Product is notPublished.
+ */
 export type ProductState = (typeof ProductState)[keyof typeof ProductState];
 
 export const Protocol = {
@@ -466,6 +553,9 @@ export const ProvisioningState = {
     Created: "created",
 } as const;
 
+/**
+ * Provisioning state.
+ */
 export type ProvisioningState = (typeof ProvisioningState)[keyof typeof ProvisioningState];
 
 export const PublicNetworkAccess = {
@@ -473,6 +563,9 @@ export const PublicNetworkAccess = {
     Disabled: "Disabled",
 } as const;
 
+/**
+ * Whether or not public endpoint access is allowed for this API Management service.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'. If 'Disabled', private endpoints are the exclusive access method. Default value is 'Enabled'
+ */
 export type PublicNetworkAccess = (typeof PublicNetworkAccess)[keyof typeof PublicNetworkAccess];
 
 export const SamplingType = {
@@ -482,6 +575,9 @@ export const SamplingType = {
     Fixed: "fixed",
 } as const;
 
+/**
+ * Sampling type.
+ */
 export type SamplingType = (typeof SamplingType)[keyof typeof SamplingType];
 
 export const SchemaType = {
@@ -495,6 +591,9 @@ export const SchemaType = {
     Json: "json",
 } as const;
 
+/**
+ * Schema Type. Immutable.
+ */
 export type SchemaType = (typeof SchemaType)[keyof typeof SchemaType];
 
 export const SkuType = {
@@ -524,6 +623,9 @@ export const SkuType = {
     Isolated: "Isolated",
 } as const;
 
+/**
+ * Name of the Sku.
+ */
 export type SkuType = (typeof SkuType)[keyof typeof SkuType];
 
 export const SoapApiType = {
@@ -549,6 +651,14 @@ export const SoapApiType = {
     OData: "odata",
 } as const;
 
+/**
+ * Type of API to create. 
+ *  * `http` creates a REST API 
+ *  * `soap` creates a SOAP pass-through API  
+ *  * `websocket` creates websocket API 
+ *  * `graphql` creates GraphQL API. 
+ *  New types can be added in the future.
+ */
 export type SoapApiType = (typeof SoapApiType)[keyof typeof SoapApiType];
 
 export const State = {
@@ -574,6 +684,9 @@ export const State = {
     Closed: "closed",
 } as const;
 
+/**
+ * Status of the issue.
+ */
 export type State = (typeof State)[keyof typeof State];
 
 export const SubscriptionState = {
@@ -585,6 +698,9 @@ export const SubscriptionState = {
     Cancelled: "cancelled",
 } as const;
 
+/**
+ * Initial subscription state. If no value is specified, subscription is created with Submitted state. Possible states are * active – the subscription is active, * suspended – the subscription is blocked, and the subscriber cannot call any APIs of the product, * submitted – the subscription request has been made by the developer, but has not yet been approved or rejected, * rejected – the subscription request has been denied by an administrator, * cancelled – the subscription has been cancelled by the developer or administrator, * expired – the subscription reached its expiration date and was deactivated.
+ */
 export type SubscriptionState = (typeof SubscriptionState)[keyof typeof SubscriptionState];
 
 export const TranslateRequiredQueryParametersConduct = {
@@ -598,6 +714,9 @@ export const TranslateRequiredQueryParametersConduct = {
     Query: "query",
 } as const;
 
+/**
+ * Strategy of translating required query parameters to template ones. By default has value 'template'. Possible values: 'template', 'query'
+ */
 export type TranslateRequiredQueryParametersConduct = (typeof TranslateRequiredQueryParametersConduct)[keyof typeof TranslateRequiredQueryParametersConduct];
 
 export const UserState = {
@@ -619,6 +738,9 @@ export const UserState = {
     Deleted: "deleted",
 } as const;
 
+/**
+ * Account state. Specifies whether the user is active or not. Blocked users are unable to sign into the developer portal or call any APIs of subscribed products. Default state is Active.
+ */
 export type UserState = (typeof UserState)[keyof typeof UserState];
 
 export const Verbosity = {
@@ -636,6 +758,9 @@ export const Verbosity = {
     Error: "error",
 } as const;
 
+/**
+ * The verbosity level applied to traces emitted by trace policies.
+ */
 export type Verbosity = (typeof Verbosity)[keyof typeof Verbosity];
 
 export const VersioningScheme = {
@@ -653,6 +778,9 @@ export const VersioningScheme = {
     Header: "Header",
 } as const;
 
+/**
+ * An value that determines where the API Version identifier will be located in a HTTP request.
+ */
 export type VersioningScheme = (typeof VersioningScheme)[keyof typeof VersioningScheme];
 
 export const VirtualNetworkType = {
@@ -670,4 +798,7 @@ export const VirtualNetworkType = {
     Internal: "Internal",
 } as const;
 
+/**
+ * The type of VPN in which API Management service needs to be configured in. None (Default Value) means the API Management service is not part of any Virtual Network, External means the API Management deployment is set up inside a Virtual Network having an Internet Facing Endpoint, and Internal means that API Management deployment is setup inside a Virtual Network having an Intranet Facing Endpoint only.
+ */
 export type VirtualNetworkType = (typeof VirtualNetworkType)[keyof typeof VirtualNetworkType];

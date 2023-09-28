@@ -4,6 +4,9 @@ export const PcProtocol = {
     Any: "Any",
 } as const;
 
+/**
+ * Protocol to be filtered on.
+ */
 export type PcProtocol = (typeof PcProtocol)[keyof typeof PcProtocol];
 
 export const RouteNextHopType = {
@@ -14,6 +17,9 @@ export const RouteNextHopType = {
     None: "None",
 } as const;
 
+/**
+ * The type of Azure hop the packet should be sent to.
+ */
 export type RouteNextHopType = (typeof RouteNextHopType)[keyof typeof RouteNextHopType];
 
 export const SecurityRuleAccess = {
@@ -21,6 +27,9 @@ export const SecurityRuleAccess = {
     Deny: "Deny",
 } as const;
 
+/**
+ * The network traffic is allowed or denied.
+ */
 export type SecurityRuleAccess = (typeof SecurityRuleAccess)[keyof typeof SecurityRuleAccess];
 
 export const SecurityRuleDirection = {
@@ -28,6 +37,9 @@ export const SecurityRuleDirection = {
     Outbound: "Outbound",
 } as const;
 
+/**
+ * The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic.
+ */
 export type SecurityRuleDirection = (typeof SecurityRuleDirection)[keyof typeof SecurityRuleDirection];
 
 export const SecurityRuleProtocol = {
@@ -39,4 +51,7 @@ export const SecurityRuleProtocol = {
     Ah: "Ah",
 } as const;
 
+/**
+ * Network protocol this rule applies to.
+ */
 export type SecurityRuleProtocol = (typeof SecurityRuleProtocol)[keyof typeof SecurityRuleProtocol];

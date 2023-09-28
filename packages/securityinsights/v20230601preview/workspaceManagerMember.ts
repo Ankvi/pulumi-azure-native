@@ -46,7 +46,7 @@ export class WorkspaceManagerMember extends pulumi.CustomResource {
     /**
      * Fully qualified resource ID of the target Sentinel workspace joining the given Sentinel workspace manager
      */
-    public readonly targetWorkspaceId!: pulumi.Output<string>;
+    public readonly targetWorkspaceResourceId!: pulumi.Output<string>;
     /**
      * Tenant id of the target Sentinel workspace joining the given Sentinel workspace manager
      */
@@ -70,8 +70,8 @@ export class WorkspaceManagerMember extends pulumi.CustomResource {
             if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            if ((!args || args.targetWorkspaceId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'targetWorkspaceId'");
+            if ((!args || args.targetWorkspaceResourceId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'targetWorkspaceResourceId'");
             }
             if ((!args || args.targetWorkspaceTenantId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'targetWorkspaceTenantId'");
@@ -80,7 +80,7 @@ export class WorkspaceManagerMember extends pulumi.CustomResource {
                 throw new Error("Missing required property 'workspaceName'");
             }
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
-            resourceInputs["targetWorkspaceId"] = args ? args.targetWorkspaceId : undefined;
+            resourceInputs["targetWorkspaceResourceId"] = args ? args.targetWorkspaceResourceId : undefined;
             resourceInputs["targetWorkspaceTenantId"] = args ? args.targetWorkspaceTenantId : undefined;
             resourceInputs["workspaceManagerMemberName"] = args ? args.workspaceManagerMemberName : undefined;
             resourceInputs["workspaceName"] = args ? args.workspaceName : undefined;
@@ -92,12 +92,12 @@ export class WorkspaceManagerMember extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
-            resourceInputs["targetWorkspaceId"] = undefined /*out*/;
+            resourceInputs["targetWorkspaceResourceId"] = undefined /*out*/;
             resourceInputs["targetWorkspaceTenantId"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:securityinsights:WorkspaceManagerMember" }, { type: "azure-native:securityinsights/v20230401preview:WorkspaceManagerMember" }, { type: "azure-native:securityinsights/v20230501preview:WorkspaceManagerMember" }, { type: "azure-native:securityinsights/v20230701preview:WorkspaceManagerMember" }, { type: "azure-native:securityinsights/v20230801preview:WorkspaceManagerMember" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:securityinsights:WorkspaceManagerMember" }, { type: "azure-native:securityinsights/v20230401preview:WorkspaceManagerMember" }, { type: "azure-native:securityinsights/v20230501preview:WorkspaceManagerMember" }, { type: "azure-native:securityinsights/v20230701preview:WorkspaceManagerMember" }, { type: "azure-native:securityinsights/v20230801preview:WorkspaceManagerMember" }, { type: "azure-native:securityinsights/v20230901preview:WorkspaceManagerMember" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(WorkspaceManagerMember.__pulumiType, name, resourceInputs, opts);
     }
@@ -114,7 +114,7 @@ export interface WorkspaceManagerMemberArgs {
     /**
      * Fully qualified resource ID of the target Sentinel workspace joining the given Sentinel workspace manager
      */
-    targetWorkspaceId: pulumi.Input<string>;
+    targetWorkspaceResourceId: pulumi.Input<string>;
     /**
      * Tenant id of the target Sentinel workspace joining the given Sentinel workspace manager
      */

@@ -16,6 +16,11 @@ export type FleetMember = import("./fleetMember").FleetMember;
 export const FleetMember: typeof import("./fleetMember").FleetMember = null as any;
 utilities.lazyLoad(exports, ["FleetMember"], () => require("./fleetMember"));
 
+export { FleetUpdateStrategyArgs } from "./fleetUpdateStrategy";
+export type FleetUpdateStrategy = import("./fleetUpdateStrategy").FleetUpdateStrategy;
+export const FleetUpdateStrategy: typeof import("./fleetUpdateStrategy").FleetUpdateStrategy = null as any;
+utilities.lazyLoad(exports, ["FleetUpdateStrategy"], () => require("./fleetUpdateStrategy"));
+
 export { GetAgentPoolArgs, GetAgentPoolResult, GetAgentPoolOutputArgs } from "./getAgentPool";
 export const getAgentPool: typeof import("./getAgentPool").getAgentPool = null as any;
 export const getAgentPoolOutput: typeof import("./getAgentPool").getAgentPoolOutput = null as any;
@@ -30,6 +35,11 @@ export { GetFleetMemberArgs, GetFleetMemberResult, GetFleetMemberOutputArgs } fr
 export const getFleetMember: typeof import("./getFleetMember").getFleetMember = null as any;
 export const getFleetMemberOutput: typeof import("./getFleetMember").getFleetMemberOutput = null as any;
 utilities.lazyLoad(exports, ["getFleetMember","getFleetMemberOutput"], () => require("./getFleetMember"));
+
+export { GetFleetUpdateStrategyArgs, GetFleetUpdateStrategyResult, GetFleetUpdateStrategyOutputArgs } from "./getFleetUpdateStrategy";
+export const getFleetUpdateStrategy: typeof import("./getFleetUpdateStrategy").getFleetUpdateStrategy = null as any;
+export const getFleetUpdateStrategyOutput: typeof import("./getFleetUpdateStrategy").getFleetUpdateStrategyOutput = null as any;
+utilities.lazyLoad(exports, ["getFleetUpdateStrategy","getFleetUpdateStrategyOutput"], () => require("./getFleetUpdateStrategy"));
 
 export { GetMaintenanceConfigurationArgs, GetMaintenanceConfigurationResult, GetMaintenanceConfigurationOutputArgs } from "./getMaintenanceConfiguration";
 export const getMaintenanceConfiguration: typeof import("./getMaintenanceConfiguration").getMaintenanceConfiguration = null as any;
@@ -158,6 +168,8 @@ import * as v20230602preview from "./v20230602preview";
 import * as v20230615preview from "./v20230615preview";
 import * as v20230701 from "./v20230701";
 import * as v20230702preview from "./v20230702preview";
+import * as v20230801 from "./v20230801";
+import * as v20230815preview from "./v20230815preview";
 
 export {
     v20190601,
@@ -177,6 +189,8 @@ export {
     v20230615preview,
     v20230701,
     v20230702preview,
+    v20230801,
+    v20230815preview,
 };
 
 const _module = {
@@ -189,6 +203,8 @@ const _module = {
                 return new Fleet(name, <any>undefined, { urn })
             case "azure-native:containerservice:FleetMember":
                 return new FleetMember(name, <any>undefined, { urn })
+            case "azure-native:containerservice:FleetUpdateStrategy":
+                return new FleetUpdateStrategy(name, <any>undefined, { urn })
             case "azure-native:containerservice:MaintenanceConfiguration":
                 return new MaintenanceConfiguration(name, <any>undefined, { urn })
             case "azure-native:containerservice:ManagedCluster":

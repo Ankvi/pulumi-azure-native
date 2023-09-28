@@ -30,7 +30,7 @@ export interface GetUpdateRunArgs {
 }
 
 /**
- * An UpdateRun is a multi-stage process to perform update operations across members of a Fleet.
+ * A multi-stage process to perform update operations across members of a Fleet.
  */
 export interface GetUpdateRunResult {
     /**

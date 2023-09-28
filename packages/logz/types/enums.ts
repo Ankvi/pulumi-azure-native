@@ -10,6 +10,9 @@ export const MarketplaceSubscriptionStatus = {
     Suspended: "Suspended",
 } as const;
 
+/**
+ * Flag specifying the Marketplace Subscription Status of the resource. If payment is not made in time, the resource will go in Suspended state.
+ */
 export type MarketplaceSubscriptionStatus = (typeof MarketplaceSubscriptionStatus)[keyof typeof MarketplaceSubscriptionStatus];
 
 export const MonitoringStatus = {
@@ -17,6 +20,9 @@ export const MonitoringStatus = {
     Disabled: "Disabled",
 } as const;
 
+/**
+ * Flag specifying if the resource monitoring is enabled or disabled.
+ */
 export type MonitoringStatus = (typeof MonitoringStatus)[keyof typeof MonitoringStatus];
 
 export const TagAction = {
@@ -24,4 +30,7 @@ export const TagAction = {
     Exclude: "Exclude",
 } as const;
 
+/**
+ * Valid actions for a filtering tag. Exclusion takes priority over inclusion.
+ */
 export type TagAction = (typeof TagAction)[keyof typeof TagAction];

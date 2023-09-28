@@ -9,4 +9,7 @@ export const MediaGraphRtspTransport = {
     Tcp: "Tcp",
 } as const;
 
+/**
+ * Underlying RTSP transport. This can be used to enable or disable HTTP tunneling.
+ */
 export type MediaGraphRtspTransport = (typeof MediaGraphRtspTransport)[keyof typeof MediaGraphRtspTransport];

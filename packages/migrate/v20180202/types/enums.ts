@@ -3,6 +3,9 @@ export const AssessmentSizingCriterion = {
     AsOnPremises: "AsOnPremises",
 } as const;
 
+/**
+ * Assessment sizing criterion.
+ */
 export type AssessmentSizingCriterion = (typeof AssessmentSizingCriterion)[keyof typeof AssessmentSizingCriterion];
 
 export const AssessmentStage = {
@@ -11,6 +14,9 @@ export const AssessmentStage = {
     Approved: "Approved",
 } as const;
 
+/**
+ * User configurable setting that describes the status of the assessment.
+ */
 export type AssessmentStage = (typeof AssessmentStage)[keyof typeof AssessmentStage];
 
 export const AzureHybridUseBenefit = {
@@ -19,6 +25,9 @@ export const AzureHybridUseBenefit = {
     No: "No",
 } as const;
 
+/**
+ * AHUB discount on windows virtual machines.
+ */
 export type AzureHybridUseBenefit = (typeof AzureHybridUseBenefit)[keyof typeof AzureHybridUseBenefit];
 
 export const AzureLocation = {
@@ -55,6 +64,9 @@ export const AzureLocation = {
     ChinaEast: "ChinaEast",
 } as const;
 
+/**
+ * Target Azure location for which the machines should be assessed. These enums are the same as used by Compute API.
+ */
 export type AzureLocation = (typeof AzureLocation)[keyof typeof AzureLocation];
 
 export const AzureOfferCode = {
@@ -98,6 +110,9 @@ export const AzureOfferCode = {
     MSAZRDE0044P: "MSAZRDE0044P",
 } as const;
 
+/**
+ * Offer code according to which cost estimation is done.
+ */
 export type AzureOfferCode = (typeof AzureOfferCode)[keyof typeof AzureOfferCode];
 
 export const AzurePricingTier = {
@@ -105,6 +120,9 @@ export const AzurePricingTier = {
     Basic: "Basic",
 } as const;
 
+/**
+ * Pricing tier for Size evaluation.
+ */
 export type AzurePricingTier = (typeof AzurePricingTier)[keyof typeof AzurePricingTier];
 
 export const AzureStorageRedundancy = {
@@ -115,6 +133,9 @@ export const AzureStorageRedundancy = {
     ReadAccessGeoRedundant: "ReadAccessGeoRedundant",
 } as const;
 
+/**
+ * Storage Redundancy type offered by Azure.
+ */
 export type AzureStorageRedundancy = (typeof AzureStorageRedundancy)[keyof typeof AzureStorageRedundancy];
 
 export const Currency = {
@@ -146,6 +167,9 @@ export const Currency = {
     CNY: "CNY",
 } as const;
 
+/**
+ * Currency to report prices in.
+ */
 export type Currency = (typeof Currency)[keyof typeof Currency];
 
 export const Percentile = {
@@ -155,6 +179,9 @@ export const Percentile = {
     Percentile99: "Percentile99",
 } as const;
 
+/**
+ * Percentile of performance data used to recommend Azure size.
+ */
 export type Percentile = (typeof Percentile)[keyof typeof Percentile];
 
 export const ProvisioningState = {
@@ -166,6 +193,9 @@ export const ProvisioningState = {
     Succeeded: "Succeeded",
 } as const;
 
+/**
+ * Provisioning state of the project.
+ */
 export type ProvisioningState = (typeof ProvisioningState)[keyof typeof ProvisioningState];
 
 export const TimeRange = {
@@ -174,4 +204,7 @@ export const TimeRange = {
     Month: "Month",
 } as const;
 
+/**
+ * Time range of performance data used to recommend a size.
+ */
 export type TimeRange = (typeof TimeRange)[keyof typeof TimeRange];

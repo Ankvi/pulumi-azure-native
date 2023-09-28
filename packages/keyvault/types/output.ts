@@ -24,7 +24,7 @@ export interface AccessPolicyEntryResponse {
 
 export interface ActionResponse {
     /**
-     * The type of the action.
+     * The type of the action. The value should be compared case-insensitively.
      */
     type?: string;
 }

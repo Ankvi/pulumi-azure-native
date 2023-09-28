@@ -2,6 +2,9 @@ export const AdministratorType = {
     ActiveDirectory: "ActiveDirectory",
 } as const;
 
+/**
+ * Type of the sever administrator.
+ */
 export type AdministratorType = (typeof AdministratorType)[keyof typeof AdministratorType];
 
 export const ConfigurationSource = {
@@ -9,6 +12,9 @@ export const ConfigurationSource = {
     User_override: "user-override",
 } as const;
 
+/**
+ * Source of the configuration.
+ */
 export type ConfigurationSource = (typeof ConfigurationSource)[keyof typeof ConfigurationSource];
 
 export const CreateMode = {
@@ -18,6 +24,9 @@ export const CreateMode = {
     GeoRestore: "GeoRestore",
 } as const;
 
+/**
+ * The mode to create a new MySQL server.
+ */
 export type CreateMode = (typeof CreateMode)[keyof typeof CreateMode];
 
 export const DataEncryptionType = {
@@ -25,6 +34,9 @@ export const DataEncryptionType = {
     SystemManaged: "SystemManaged",
 } as const;
 
+/**
+ * The key type, AzureKeyVault for enable cmk, SystemManaged for disable cmk.
+ */
 export type DataEncryptionType = (typeof DataEncryptionType)[keyof typeof DataEncryptionType];
 
 export const EnableStatusEnum = {
@@ -32,6 +44,9 @@ export const EnableStatusEnum = {
     Disabled: "Disabled",
 } as const;
 
+/**
+ * Enable Log On Disk or not.
+ */
 export type EnableStatusEnum = (typeof EnableStatusEnum)[keyof typeof EnableStatusEnum];
 
 export const HighAvailabilityMode = {
@@ -40,12 +55,18 @@ export const HighAvailabilityMode = {
     SameZone: "SameZone",
 } as const;
 
+/**
+ * High availability mode for a server.
+ */
 export type HighAvailabilityMode = (typeof HighAvailabilityMode)[keyof typeof HighAvailabilityMode];
 
 export const ManagedServiceIdentityType = {
     UserAssigned: "UserAssigned",
 } as const;
 
+/**
+ * Type of managed service identity.
+ */
 export type ManagedServiceIdentityType = (typeof ManagedServiceIdentityType)[keyof typeof ManagedServiceIdentityType];
 
 export const PrivateEndpointServiceConnectionStatus = {
@@ -54,6 +75,9 @@ export const PrivateEndpointServiceConnectionStatus = {
     Rejected: "Rejected",
 } as const;
 
+/**
+ * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+ */
 export type PrivateEndpointServiceConnectionStatus = (typeof PrivateEndpointServiceConnectionStatus)[keyof typeof PrivateEndpointServiceConnectionStatus];
 
 export const ReplicationRole = {
@@ -62,6 +86,9 @@ export const ReplicationRole = {
     Replica: "Replica",
 } as const;
 
+/**
+ * The replication role.
+ */
 export type ReplicationRole = (typeof ReplicationRole)[keyof typeof ReplicationRole];
 
 export const ServerVersion = {
@@ -69,6 +96,9 @@ export const ServerVersion = {
     ServerVersion_8_0_21: "8.0.21",
 } as const;
 
+/**
+ * Server version.
+ */
 export type ServerVersion = (typeof ServerVersion)[keyof typeof ServerVersion];
 
 export const SkuTier = {
@@ -77,4 +107,7 @@ export const SkuTier = {
     MemoryOptimized: "MemoryOptimized",
 } as const;
 
+/**
+ * The tier of the particular SKU, e.g. GeneralPurpose.
+ */
 export type SkuTier = (typeof SkuTier)[keyof typeof SkuTier];

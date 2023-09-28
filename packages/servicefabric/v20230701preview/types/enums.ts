@@ -3,6 +3,9 @@ export const Access = {
     Deny: "deny",
 } as const;
 
+/**
+ * The network traffic is allowed or denied.
+ */
 export type Access = (typeof Access)[keyof typeof Access];
 
 export const ClusterUpgradeCadence = {
@@ -20,6 +23,9 @@ export const ClusterUpgradeCadence = {
     Wave2: "Wave2",
 } as const;
 
+/**
+ * Indicates when new cluster runtime version upgrades will be applied after they are released. By default is Wave0. Only applies when **clusterUpgradeMode** is set to 'Automatic'.
+ */
 export type ClusterUpgradeCadence = (typeof ClusterUpgradeCadence)[keyof typeof ClusterUpgradeCadence];
 
 export const ClusterUpgradeMode = {
@@ -33,6 +39,9 @@ export const ClusterUpgradeMode = {
     Manual: "Manual",
 } as const;
 
+/**
+ * The upgrade mode of the cluster when new Service Fabric runtime version is available.
+ */
 export type ClusterUpgradeMode = (typeof ClusterUpgradeMode)[keyof typeof ClusterUpgradeMode];
 
 export const Direction = {
@@ -40,6 +49,9 @@ export const Direction = {
     Outbound: "outbound",
 } as const;
 
+/**
+ * Network security rule direction.
+ */
 export type Direction = (typeof Direction)[keyof typeof Direction];
 
 export const DiskType = {
@@ -57,6 +69,9 @@ export const DiskType = {
     Premium_LRS: "Premium_LRS",
 } as const;
 
+/**
+ * Managed data disk type. Specifies the storage account type for the managed disk
+ */
 export type DiskType = (typeof DiskType)[keyof typeof DiskType];
 
 export const EvictionPolicyType = {
@@ -70,6 +85,9 @@ export const EvictionPolicyType = {
     Deallocate: "Deallocate",
 } as const;
 
+/**
+ * Specifies the eviction policy for virtual machines in a SPOT node type. Default is Delete.
+ */
 export type EvictionPolicyType = (typeof EvictionPolicyType)[keyof typeof EvictionPolicyType];
 
 export const FailureAction = {
@@ -83,6 +101,9 @@ export const FailureAction = {
     Manual: "Manual",
 } as const;
 
+/**
+ * The compensating action to perform when a Monitored upgrade encounters monitoring policy or health policy violations. Invalid indicates the failure action is invalid. Rollback specifies that the upgrade will start rolling back automatically. Manual indicates that the upgrade will switch to UnmonitoredManual upgrade mode.
+ */
 export type FailureAction = (typeof FailureAction)[keyof typeof FailureAction];
 
 export const IPAddressType = {
@@ -96,6 +117,9 @@ export const IPAddressType = {
     IPv6: "IPv6",
 } as const;
 
+/**
+ * The IP address type of this frontend configuration. If omitted the default value is IPv4.
+ */
 export type IPAddressType = (typeof IPAddressType)[keyof typeof IPAddressType];
 
 export const ManagedClusterAddOnFeature = {
@@ -113,6 +137,9 @@ export const ManagedClusterAddOnFeature = {
     ResourceMonitorService: "ResourceMonitorService",
 } as const;
 
+/**
+ * Available cluster add-on features
+ */
 export type ManagedClusterAddOnFeature = (typeof ManagedClusterAddOnFeature)[keyof typeof ManagedClusterAddOnFeature];
 
 export const ManagedIdentityType = {
@@ -134,6 +161,9 @@ export const ManagedIdentityType = {
     SystemAssigned_UserAssigned: "SystemAssigned, UserAssigned",
 } as const;
 
+/**
+ * The type of managed identity for the resource.
+ */
 export type ManagedIdentityType = (typeof ManagedIdentityType)[keyof typeof ManagedIdentityType];
 
 export const MoveCost = {
@@ -155,6 +185,9 @@ export const MoveCost = {
     High: "High",
 } as const;
 
+/**
+ * Specifies the move cost for the service.
+ */
 export type MoveCost = (typeof MoveCost)[keyof typeof MoveCost];
 
 export const NsgProtocol = {
@@ -167,6 +200,9 @@ export const NsgProtocol = {
     Esp: "esp",
 } as const;
 
+/**
+ * Network protocol this rule applies to.
+ */
 export type NsgProtocol = (typeof NsgProtocol)[keyof typeof NsgProtocol];
 
 export const PartitionScheme = {
@@ -184,6 +220,9 @@ export const PartitionScheme = {
     Named: "Named",
 } as const;
 
+/**
+ * Specifies how the service is partitioned.
+ */
 export type PartitionScheme = (typeof PartitionScheme)[keyof typeof PartitionScheme];
 
 export const PrivateEndpointNetworkPolicies = {
@@ -191,6 +230,9 @@ export const PrivateEndpointNetworkPolicies = {
     Disabled: "disabled",
 } as const;
 
+/**
+ * Enable or Disable apply network policies on private end point in the subnet.
+ */
 export type PrivateEndpointNetworkPolicies = (typeof PrivateEndpointNetworkPolicies)[keyof typeof PrivateEndpointNetworkPolicies];
 
 export const PrivateLinkServiceNetworkPolicies = {
@@ -198,6 +240,9 @@ export const PrivateLinkServiceNetworkPolicies = {
     Disabled: "disabled",
 } as const;
 
+/**
+ * Enable or Disable apply network policies on private link service in the subnet.
+ */
 export type PrivateLinkServiceNetworkPolicies = (typeof PrivateLinkServiceNetworkPolicies)[keyof typeof PrivateLinkServiceNetworkPolicies];
 
 export const ProbeProtocol = {
@@ -206,6 +251,9 @@ export const ProbeProtocol = {
     Https: "https",
 } as const;
 
+/**
+ * the reference to the load balancer probe used by the load balancing rule.
+ */
 export type ProbeProtocol = (typeof ProbeProtocol)[keyof typeof ProbeProtocol];
 
 export const Protocol = {
@@ -213,6 +261,9 @@ export const Protocol = {
     Udp: "udp",
 } as const;
 
+/**
+ * The reference to the transport protocol used by the load balancing rule.
+ */
 export type Protocol = (typeof Protocol)[keyof typeof Protocol];
 
 export const RollingUpgradeMode = {
@@ -226,6 +277,9 @@ export const RollingUpgradeMode = {
     UnmonitoredAuto: "UnmonitoredAuto",
 } as const;
 
+/**
+ * The mode used to monitor health during a rolling upgrade. The values are Monitored, and UnmonitoredAuto.
+ */
 export type RollingUpgradeMode = (typeof RollingUpgradeMode)[keyof typeof RollingUpgradeMode];
 
 export const SecurityType = {
@@ -235,6 +289,9 @@ export const SecurityType = {
     TrustedLaunch: "TrustedLaunch",
 } as const;
 
+/**
+ * Specifies the security type of the nodeType. Only TrustedLaunch is currently supported
+ */
 export type SecurityType = (typeof SecurityType)[keyof typeof SecurityType];
 
 export const ServiceCorrelationScheme = {
@@ -248,6 +305,9 @@ export const ServiceCorrelationScheme = {
     NonAlignedAffinity: "NonAlignedAffinity",
 } as const;
 
+/**
+ * The ServiceCorrelationScheme which describes the relationship between this service and the service specified via ServiceName.
+ */
 export type ServiceCorrelationScheme = (typeof ServiceCorrelationScheme)[keyof typeof ServiceCorrelationScheme];
 
 export const ServiceKind = {
@@ -261,6 +321,9 @@ export const ServiceKind = {
     Stateful: "Stateful",
 } as const;
 
+/**
+ * The kind of service (Stateless or Stateful).
+ */
 export type ServiceKind = (typeof ServiceKind)[keyof typeof ServiceKind];
 
 export const ServiceLoadMetricWeight = {
@@ -282,6 +345,9 @@ export const ServiceLoadMetricWeight = {
     High: "High",
 } as const;
 
+/**
+ * The service load metric relative weight, compared to other metrics configured for this service, as a number.
+ */
 export type ServiceLoadMetricWeight = (typeof ServiceLoadMetricWeight)[keyof typeof ServiceLoadMetricWeight];
 
 export const ServicePackageActivationMode = {
@@ -295,6 +361,9 @@ export const ServicePackageActivationMode = {
     ExclusiveProcess: "ExclusiveProcess",
 } as const;
 
+/**
+ * The activation Mode of the service package
+ */
 export type ServicePackageActivationMode = (typeof ServicePackageActivationMode)[keyof typeof ServicePackageActivationMode];
 
 export const ServicePlacementPolicyType = {
@@ -320,6 +389,9 @@ export const ServicePlacementPolicyType = {
     NonPartiallyPlaceService: "NonPartiallyPlaceService",
 } as const;
 
+/**
+ * The type of placement policy for a service fabric service. Following are the possible values.
+ */
 export type ServicePlacementPolicyType = (typeof ServicePlacementPolicyType)[keyof typeof ServicePlacementPolicyType];
 
 export const ServiceScalingMechanismKind = {
@@ -333,6 +405,9 @@ export const ServiceScalingMechanismKind = {
     AddRemoveIncrementalNamedPartition: "AddRemoveIncrementalNamedPartition",
 } as const;
 
+/**
+ * Specifies the mechanism associated with this scaling policy.
+ */
 export type ServiceScalingMechanismKind = (typeof ServiceScalingMechanismKind)[keyof typeof ServiceScalingMechanismKind];
 
 export const ServiceScalingTriggerKind = {
@@ -346,6 +421,9 @@ export const ServiceScalingTriggerKind = {
     AverageServiceLoadTrigger: "AverageServiceLoadTrigger",
 } as const;
 
+/**
+ * Specifies the trigger associated with this scaling policy.
+ */
 export type ServiceScalingTriggerKind = (typeof ServiceScalingTriggerKind)[keyof typeof ServiceScalingTriggerKind];
 
 export const SkuName = {
@@ -359,6 +437,9 @@ export const SkuName = {
     Standard: "Standard",
 } as const;
 
+/**
+ * Sku Name.
+ */
 export type SkuName = (typeof SkuName)[keyof typeof SkuName];
 
 export const VmSetupAction = {
@@ -372,6 +453,9 @@ export const VmSetupAction = {
     EnableHyperV: "EnableHyperV",
 } as const;
 
+/**
+ * action to be performed on the vms before bootstrapping the service fabric runtime.
+ */
 export type VmSetupAction = (typeof VmSetupAction)[keyof typeof VmSetupAction];
 
 export const ZonalUpdateMode = {
@@ -385,4 +469,7 @@ export const ZonalUpdateMode = {
     Fast: "Fast",
 } as const;
 
+/**
+ * Indicates the update mode for Cross Az clusters.
+ */
 export type ZonalUpdateMode = (typeof ZonalUpdateMode)[keyof typeof ZonalUpdateMode];

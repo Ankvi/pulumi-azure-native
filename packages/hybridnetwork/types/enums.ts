@@ -3,6 +3,9 @@ export const DeviceType = {
     AzureStackEdge: "AzureStackEdge",
 } as const;
 
+/**
+ * The type of the device.
+ */
 export type DeviceType = (typeof DeviceType)[keyof typeof DeviceType];
 
 export const DiskCreateOptionTypes = {
@@ -10,6 +13,9 @@ export const DiskCreateOptionTypes = {
     Empty: "Empty",
 } as const;
 
+/**
+ * Specifies how the virtual machine should be created.
+ */
 export type DiskCreateOptionTypes = (typeof DiskCreateOptionTypes)[keyof typeof DiskCreateOptionTypes];
 
 export const IPAllocationMethod = {
@@ -18,6 +24,9 @@ export const IPAllocationMethod = {
     Dynamic: "Dynamic",
 } as const;
 
+/**
+ * IP address allocation method.
+ */
 export type IPAllocationMethod = (typeof IPAllocationMethod)[keyof typeof IPAllocationMethod];
 
 export const IPVersion = {
@@ -25,6 +34,9 @@ export const IPVersion = {
     IPv4: "IPv4",
 } as const;
 
+/**
+ * IP address version.
+ */
 export type IPVersion = (typeof IPVersion)[keyof typeof IPVersion];
 
 export const NetworkFunctionRoleConfigurationType = {
@@ -32,6 +44,9 @@ export const NetworkFunctionRoleConfigurationType = {
     VirtualMachine: "VirtualMachine",
 } as const;
 
+/**
+ * Role type.
+ */
 export type NetworkFunctionRoleConfigurationType = (typeof NetworkFunctionRoleConfigurationType)[keyof typeof NetworkFunctionRoleConfigurationType];
 
 export const NetworkFunctionType = {
@@ -40,6 +55,9 @@ export const NetworkFunctionType = {
     ContainerizedNetworkFunction: "ContainerizedNetworkFunction",
 } as const;
 
+/**
+ * The network function type.
+ */
 export type NetworkFunctionType = (typeof NetworkFunctionType)[keyof typeof NetworkFunctionType];
 
 export const OperatingSystemTypes = {
@@ -48,6 +66,9 @@ export const OperatingSystemTypes = {
     Linux: "Linux",
 } as const;
 
+/**
+ * The OS type.
+ */
 export type OperatingSystemTypes = (typeof OperatingSystemTypes)[keyof typeof OperatingSystemTypes];
 
 export const SkuDeploymentMode = {
@@ -56,6 +77,9 @@ export const SkuDeploymentMode = {
     PrivateEdgeZone: "PrivateEdgeZone",
 } as const;
 
+/**
+ * The sku deployment mode.
+ */
 export type SkuDeploymentMode = (typeof SkuDeploymentMode)[keyof typeof SkuDeploymentMode];
 
 export const SkuType = {
@@ -65,6 +89,9 @@ export const SkuType = {
     Firewall: "Firewall",
 } as const;
 
+/**
+ * The sku type.
+ */
 export type SkuType = (typeof SkuType)[keyof typeof SkuType];
 
 export const VMSwitchType = {
@@ -74,6 +101,9 @@ export const VMSwitchType = {
     Lan: "Lan",
 } as const;
 
+/**
+ * The type of the VM switch.
+ */
 export type VMSwitchType = (typeof VMSwitchType)[keyof typeof VMSwitchType];
 
 export const VirtualMachineSizeTypes = {
@@ -106,4 +136,7 @@ export const VirtualMachineSizeTypes = {
     Standard_F16s: "Standard_F16s",
 } as const;
 
+/**
+ * The size of the virtual machine.
+ */
 export type VirtualMachineSizeTypes = (typeof VirtualMachineSizeTypes)[keyof typeof VirtualMachineSizeTypes];

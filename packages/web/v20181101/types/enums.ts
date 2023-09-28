@@ -4,6 +4,9 @@ export const AutoHealActionType = {
     CustomAction: "CustomAction",
 } as const;
 
+/**
+ * Predefined action to be taken.
+ */
 export type AutoHealActionType = (typeof AutoHealActionType)[keyof typeof AutoHealActionType];
 
 export const AzureStorageType = {
@@ -11,6 +14,9 @@ export const AzureStorageType = {
     AzureBlob: "AzureBlob",
 } as const;
 
+/**
+ * Type of storage.
+ */
 export type AzureStorageType = (typeof AzureStorageType)[keyof typeof AzureStorageType];
 
 export const ConnectionStringType = {
@@ -27,6 +33,9 @@ export const ConnectionStringType = {
     PostgreSQL: "PostgreSQL",
 } as const;
 
+/**
+ * Type of database.
+ */
 export type ConnectionStringType = (typeof ConnectionStringType)[keyof typeof ConnectionStringType];
 
 export const DatabaseType = {
@@ -36,6 +45,9 @@ export const DatabaseType = {
     PostgreSql: "PostgreSql",
 } as const;
 
+/**
+ * Database type (e.g. SqlAzure / MySql).
+ */
 export type DatabaseType = (typeof DatabaseType)[keyof typeof DatabaseType];
 
 export const FrequencyUnit = {
@@ -43,6 +55,9 @@ export const FrequencyUnit = {
     Hour: "Hour",
 } as const;
 
+/**
+ * The unit of time for how often the backup should be executed (e.g. for weekly backup, this should be set to Day and FrequencyInterval should be set to 7)
+ */
 export type FrequencyUnit = (typeof FrequencyUnit)[keyof typeof FrequencyUnit];
 
 export const FtpsState = {
@@ -51,6 +66,9 @@ export const FtpsState = {
     Disabled: "Disabled",
 } as const;
 
+/**
+ * State of FTP / FTPS service
+ */
 export type FtpsState = (typeof FtpsState)[keyof typeof FtpsState];
 
 export const HostType = {
@@ -58,6 +76,9 @@ export const HostType = {
     Repository: "Repository",
 } as const;
 
+/**
+ * Indicates whether the hostname is a standard or repository hostname.
+ */
 export type HostType = (typeof HostType)[keyof typeof HostType];
 
 export const IpFilterTag = {
@@ -65,6 +86,9 @@ export const IpFilterTag = {
     XffProxy: "XffProxy",
 } as const;
 
+/**
+ * Defines what this IP filter will be used for. This is to support IP filtering on proxies.
+ */
 export type IpFilterTag = (typeof IpFilterTag)[keyof typeof IpFilterTag];
 
 export const ManagedPipelineMode = {
@@ -72,6 +96,9 @@ export const ManagedPipelineMode = {
     Classic: "Classic",
 } as const;
 
+/**
+ * Managed pipeline mode.
+ */
 export type ManagedPipelineMode = (typeof ManagedPipelineMode)[keyof typeof ManagedPipelineMode];
 
 export const ManagedServiceIdentityType = {
@@ -81,6 +108,9 @@ export const ManagedServiceIdentityType = {
     None: "None",
 } as const;
 
+/**
+ * Type of managed service identity.
+ */
 export type ManagedServiceIdentityType = (typeof ManagedServiceIdentityType)[keyof typeof ManagedServiceIdentityType];
 
 export const RedundancyMode = {
@@ -91,6 +121,9 @@ export const RedundancyMode = {
     GeoRedundant: "GeoRedundant",
 } as const;
 
+/**
+ * Site redundancy mode
+ */
 export type RedundancyMode = (typeof RedundancyMode)[keyof typeof RedundancyMode];
 
 export const ScmType = {
@@ -109,6 +142,9 @@ export const ScmType = {
     VSO: "VSO",
 } as const;
 
+/**
+ * SCM type.
+ */
 export type ScmType = (typeof ScmType)[keyof typeof ScmType];
 
 export const SiteLoadBalancing = {
@@ -119,6 +155,9 @@ export const SiteLoadBalancing = {
     RequestHash: "RequestHash",
 } as const;
 
+/**
+ * Site load balancing.
+ */
 export type SiteLoadBalancing = (typeof SiteLoadBalancing)[keyof typeof SiteLoadBalancing];
 
 export const SslState = {
@@ -127,6 +166,9 @@ export const SslState = {
     IpBasedEnabled: "IpBasedEnabled",
 } as const;
 
+/**
+ * SSL type.
+ */
 export type SslState = (typeof SslState)[keyof typeof SslState];
 
 export const SupportedTlsVersions = {
@@ -135,4 +177,7 @@ export const SupportedTlsVersions = {
     SupportedTlsVersions_1_2: "1.2",
 } as const;
 
+/**
+ * MinTlsVersion: configures the minimum version of TLS required for SSL requests
+ */
 export type SupportedTlsVersions = (typeof SupportedTlsVersions)[keyof typeof SupportedTlsVersions];

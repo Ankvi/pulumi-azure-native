@@ -296,6 +296,13 @@ import * as pulumi from "@pulumi/pulumi";
     }
 
     /**
+     * Settings for Azure Monitor based alerts
+     */
+    export interface AzureMonitorAlertSettingsArgs {
+        alertsForAllJobFailures?: pulumi.Input<string | enums.AlertsState>;
+    }
+
+    /**
      * Create network mappings input properties/behavior specific to Azure to Azure Network mapping.
      */
     export interface AzureToAzureCreateNetworkMappingInputArgs {
@@ -308,6 +315,37 @@ import * as pulumi from "@pulumi/pulumi";
          * The primary azure vnet Id.
          */
         primaryNetworkId: pulumi.Input<string>;
+    }
+
+    /**
+     * Settings for classic alerts
+     */
+    export interface ClassicAlertSettingsArgs {
+        alertsForCriticalOperations?: pulumi.Input<string | enums.AlertsState>;
+    }
+
+    /**
+     * The details of the identity used for CMK
+     */
+    export interface CmkKekIdentityArgs {
+        /**
+         * Indicate that system assigned identity should be used. Mutually exclusive with 'userAssignedIdentity' field
+         */
+        useSystemAssignedIdentity?: pulumi.Input<boolean>;
+        /**
+         * The user assigned identity to be used to grant permissions in case the type of identity used is UserAssigned
+         */
+        userAssignedIdentity?: pulumi.Input<string>;
+    }
+
+    /**
+     * The properties of the Key Vault which hosts CMK
+     */
+    export interface CmkKeyVaultPropertiesArgs {
+        /**
+         * The key uri of the Customer Managed Key
+         */
+        keyUri?: pulumi.Input<string>;
     }
 
     /**
@@ -380,6 +418,13 @@ import * as pulumi from "@pulumi/pulumi";
          * The recovery fabric Id.
          */
         recoveryFabricId: pulumi.Input<string>;
+    }
+
+    /**
+     * Settings for Cross Subscription Restore Settings
+     */
+    export interface CrossSubscriptionRestoreSettingsArgs {
+        crossSubscriptionRestoreState?: pulumi.Input<string | enums.CrossSubscriptionRestoreState>;
     }
 
     /**
@@ -749,6 +794,20 @@ import * as pulumi from "@pulumi/pulumi";
     }
 
     /**
+     * Identity for the resource.
+     */
+    export interface IdentityDataArgs {
+        /**
+         * The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identities.
+         */
+        type: pulumi.Input<string | enums.ResourceIdentityType>;
+        /**
+         * The list of user-assigned identities associated with the resource. The user-assigned identity dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+         */
+        userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    /**
      * Identity provider input.
      */
     export interface IdentityProviderInputArgs {
@@ -772,6 +831,13 @@ import * as pulumi from "@pulumi/pulumi";
          * The tenant Id for the service principal with which the on-premise management/data plane components would communicate with our Azure services.
          */
         tenantId: pulumi.Input<string>;
+    }
+
+    /**
+     * Immutability Settings of vault
+     */
+    export interface ImmutabilitySettingsArgs {
+        state?: pulumi.Input<string | enums.ImmutabilityState>;
     }
 
     /**
@@ -1265,6 +1331,20 @@ import * as pulumi from "@pulumi/pulumi";
     }
 
     /**
+     * Monitoring Settings of the vault
+     */
+    export interface MonitoringSettingsArgs {
+        /**
+         * Settings for Azure Monitor based alerts
+         */
+        azureMonitorAlertSettings?: pulumi.Input<AzureMonitorAlertSettingsArgs>;
+        /**
+         * Settings for classic alerts
+         */
+        classicAlertSettings?: pulumi.Input<ClassicAlertSettingsArgs>;
+    }
+
+    /**
      * Recovery plan A2A input.
      */
     export interface RecoveryPlanA2AInputArgs {
@@ -1408,6 +1488,67 @@ import * as pulumi from "@pulumi/pulumi";
          * The script timeout.
          */
         timeout?: pulumi.Input<string>;
+    }
+
+    /**
+     * Restore Settings  of the vault
+     */
+    export interface RestoreSettingsArgs {
+        /**
+         * Settings for CrossSubscriptionRestore
+         */
+        crossSubscriptionRestoreSettings?: pulumi.Input<CrossSubscriptionRestoreSettingsArgs>;
+    }
+
+    /**
+     * Security Settings of the vault
+     */
+    export interface SecuritySettingsArgs {
+        /**
+         * Immutability Settings of a vault
+         */
+        immutabilitySettings?: pulumi.Input<ImmutabilitySettingsArgs>;
+        /**
+         * Soft delete Settings of a vault
+         */
+        softDeleteSettings?: pulumi.Input<SoftDeleteSettingsArgs>;
+    }
+
+    /**
+     * Identifies the unique system identifier for each Azure resource.
+     */
+    export interface SkuArgs {
+        /**
+         * The sku capacity
+         */
+        capacity?: pulumi.Input<string>;
+        /**
+         * The sku family
+         */
+        family?: pulumi.Input<string>;
+        /**
+         * Name of SKU is RS0 (Recovery Services 0th version) and the tier is standard tier. They do not have affect on backend storage redundancy or any other vault settings. To manage storage redundancy, use the backupstorageconfig
+         */
+        name: pulumi.Input<string | enums.SkuName>;
+        /**
+         * The sku size
+         */
+        size?: pulumi.Input<string>;
+        /**
+         * The Sku tier.
+         */
+        tier?: pulumi.Input<string>;
+    }
+
+    /**
+     * Soft delete Settings of vault
+     */
+    export interface SoftDeleteSettingsArgs {
+        /**
+         * Soft delete retention period in days
+         */
+        softDeleteRetentionPeriodInDays?: pulumi.Input<number>;
+        softDeleteState?: pulumi.Input<string | enums.SoftDeleteState>;
     }
 
     /**
@@ -1666,6 +1807,50 @@ import * as pulumi from "@pulumi/pulumi";
          * The ARM Id of the VMware site.
          */
         vmwareSiteId?: pulumi.Input<string>;
+    }
+
+    /**
+     * Properties of the vault.
+     */
+    export interface VaultPropertiesArgs {
+        /**
+         * Customer Managed Key details of the resource.
+         */
+        encryption?: pulumi.Input<VaultPropertiesEncryptionArgs>;
+        /**
+         * Monitoring Settings of the vault
+         */
+        monitoringSettings?: pulumi.Input<MonitoringSettingsArgs>;
+        /**
+         * property to enable or disable resource provider inbound network traffic from public clients
+         */
+        publicNetworkAccess?: pulumi.Input<string | enums.PublicNetworkAccess>;
+        /**
+         * Restore Settings of the vault
+         */
+        restoreSettings?: pulumi.Input<RestoreSettingsArgs>;
+        /**
+         * Security Settings of the vault
+         */
+        securitySettings?: pulumi.Input<SecuritySettingsArgs>;
+    }
+
+    /**
+     * Customer Managed Key details of the resource.
+     */
+    export interface VaultPropertiesEncryptionArgs {
+        /**
+         * Enabling/Disabling the Double Encryption state
+         */
+        infrastructureEncryption?: pulumi.Input<string | enums.InfrastructureEncryptionState>;
+        /**
+         * The details of the identity used for CMK
+         */
+        kekIdentity?: pulumi.Input<CmkKekIdentityArgs>;
+        /**
+         * The properties of the Key Vault which hosts CMK
+         */
+        keyVaultProperties?: pulumi.Input<CmkKeyVaultPropertiesArgs>;
     }
 
     /**

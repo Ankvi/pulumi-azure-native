@@ -61,6 +61,11 @@ export const getEndpoint: typeof import("./getEndpoint").getEndpoint = null as a
 export const getEndpointOutput: typeof import("./getEndpoint").getEndpointOutput = null as any;
 utilities.lazyLoad(exports, ["getEndpoint","getEndpointOutput"], () => require("./getEndpoint"));
 
+export { GetKeyGroupArgs, GetKeyGroupResult, GetKeyGroupOutputArgs } from "./getKeyGroup";
+export const getKeyGroup: typeof import("./getKeyGroup").getKeyGroup = null as any;
+export const getKeyGroupOutput: typeof import("./getKeyGroup").getKeyGroupOutput = null as any;
+utilities.lazyLoad(exports, ["getKeyGroup","getKeyGroupOutput"], () => require("./getKeyGroup"));
+
 export { GetOriginArgs, GetOriginResult, GetOriginOutputArgs } from "./getOrigin";
 export const getOrigin: typeof import("./getOrigin").getOrigin = null as any;
 export const getOriginOutput: typeof import("./getOrigin").getOriginOutput = null as any;
@@ -110,6 +115,11 @@ export { GetSecurityPolicyArgs, GetSecurityPolicyResult, GetSecurityPolicyOutput
 export const getSecurityPolicy: typeof import("./getSecurityPolicy").getSecurityPolicy = null as any;
 export const getSecurityPolicyOutput: typeof import("./getSecurityPolicy").getSecurityPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getSecurityPolicy","getSecurityPolicyOutput"], () => require("./getSecurityPolicy"));
+
+export { KeyGroupArgs } from "./keyGroup";
+export type KeyGroup = import("./keyGroup").KeyGroup;
+export const KeyGroup: typeof import("./keyGroup").KeyGroup = null as any;
+utilities.lazyLoad(exports, ["KeyGroup"], () => require("./keyGroup"));
 
 export { OriginArgs } from "./origin";
 export type Origin = import("./origin").Origin;
@@ -163,10 +173,12 @@ export * from "./types/enums";
 // Export sub-modules:
 import * as v20200901 from "./v20200901";
 import * as v20230501 from "./v20230501";
+import * as v20230701preview from "./v20230701preview";
 
 export {
     v20200901,
     v20230501,
+    v20230701preview,
 };
 
 const _module = {
@@ -185,6 +197,8 @@ const _module = {
                 return new CustomDomain(name, <any>undefined, { urn })
             case "azure-native:cdn:Endpoint":
                 return new Endpoint(name, <any>undefined, { urn })
+            case "azure-native:cdn:KeyGroup":
+                return new KeyGroup(name, <any>undefined, { urn })
             case "azure-native:cdn:Origin":
                 return new Origin(name, <any>undefined, { urn })
             case "azure-native:cdn:OriginGroup":

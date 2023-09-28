@@ -5,6 +5,9 @@ export const LinuxUpdateClasses = {
     Other: "Other",
 } as const;
 
+/**
+ * Update classifications included in the software update configuration.
+ */
 export type LinuxUpdateClasses = (typeof LinuxUpdateClasses)[keyof typeof LinuxUpdateClasses];
 
 export const OperatingSystemType = {
@@ -12,6 +15,9 @@ export const OperatingSystemType = {
     Linux: "Linux",
 } as const;
 
+/**
+ * operating system of target machines
+ */
 export type OperatingSystemType = (typeof OperatingSystemType)[keyof typeof OperatingSystemType];
 
 export const ScheduleDay = {
@@ -24,6 +30,9 @@ export const ScheduleDay = {
     Sunday: "Sunday",
 } as const;
 
+/**
+ * Day of the occurrence. Must be one of monday, tuesday, wednesday, thursday, friday, saturday, sunday.
+ */
 export type ScheduleDay = (typeof ScheduleDay)[keyof typeof ScheduleDay];
 
 export const ScheduleFrequency = {
@@ -38,6 +47,9 @@ export const ScheduleFrequency = {
     Minute: "Minute",
 } as const;
 
+/**
+ * Gets or sets the frequency of the schedule.
+ */
 export type ScheduleFrequency = (typeof ScheduleFrequency)[keyof typeof ScheduleFrequency];
 
 export const TagOperators = {
@@ -45,6 +57,9 @@ export const TagOperators = {
     Any: "Any",
 } as const;
 
+/**
+ * Filter VMs by Any or All specified tags.
+ */
 export type TagOperators = (typeof TagOperators)[keyof typeof TagOperators];
 
 export const WindowsUpdateClasses = {
@@ -59,4 +74,7 @@ export const WindowsUpdateClasses = {
     Updates: "Updates",
 } as const;
 
+/**
+ * Update classification included in the software update configuration. A comma separated string with required values
+ */
 export type WindowsUpdateClasses = (typeof WindowsUpdateClasses)[keyof typeof WindowsUpdateClasses];

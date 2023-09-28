@@ -2,7 +2,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * An UpdateRun is a multi-stage process to perform update operations across members of a Fleet.
+ * A multi-stage process to perform update operations across members of a Fleet.
  * Azure REST API version: 2023-03-15-preview.
  */
 export class UpdateRun extends pulumi.CustomResource {
@@ -109,7 +109,7 @@ export class UpdateRun extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:containerservice/v20230315preview:UpdateRun" }, { type: "azure-native:containerservice/v20230615preview:UpdateRun" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:containerservice/v20230315preview:UpdateRun" }, { type: "azure-native:containerservice/v20230615preview:UpdateRun" }, { type: "azure-native:containerservice/v20230815preview:UpdateRun" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(UpdateRun.__pulumiType, name, resourceInputs, opts);
     }

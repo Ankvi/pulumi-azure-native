@@ -6,6 +6,9 @@ export const ConditionOperator = {
     LessThanOrEqual: "LessThanOrEqual",
 } as const;
 
+/**
+ * The criteria operator. Relevant and required only for rules of the kind LogAlert.
+ */
 export type ConditionOperator = (typeof ConditionOperator)[keyof typeof ConditionOperator];
 
 export const DimensionOperator = {
@@ -13,6 +16,9 @@ export const DimensionOperator = {
     Exclude: "Exclude",
 } as const;
 
+/**
+ * Operator for dimension values
+ */
 export type DimensionOperator = (typeof DimensionOperator)[keyof typeof DimensionOperator];
 
 export const IdentityType = {
@@ -21,6 +27,9 @@ export const IdentityType = {
     None: "None",
 } as const;
 
+/**
+ * Type of managed service identity.
+ */
 export type IdentityType = (typeof IdentityType)[keyof typeof IdentityType];
 
 export const Kind = {
@@ -28,6 +37,9 @@ export const Kind = {
     LogToMetric: "LogToMetric",
 } as const;
 
+/**
+ * Indicates the type of scheduled query rule. The default is LogAlert.
+ */
 export type Kind = (typeof Kind)[keyof typeof Kind];
 
 export const TimeAggregation = {
@@ -38,4 +50,7 @@ export const TimeAggregation = {
     Total: "Total",
 } as const;
 
+/**
+ * Aggregation type. Relevant and required only for rules of the kind LogAlert.
+ */
 export type TimeAggregation = (typeof TimeAggregation)[keyof typeof TimeAggregation];

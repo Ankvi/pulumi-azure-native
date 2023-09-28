@@ -20,6 +20,9 @@ export const AdvancedFilterOperatorType = {
     IsNotNull: "IsNotNull",
 } as const;
 
+/**
+ * The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
+ */
 export type AdvancedFilterOperatorType = (typeof AdvancedFilterOperatorType)[keyof typeof AdvancedFilterOperatorType];
 
 export const ChannelProvisioningState = {
@@ -32,12 +35,18 @@ export const ChannelProvisioningState = {
     IdleDueToMirroredPartnerTopicDeletion: "IdleDueToMirroredPartnerTopicDeletion",
 } as const;
 
+/**
+ * Provisioning state of the channel.
+ */
 export type ChannelProvisioningState = (typeof ChannelProvisioningState)[keyof typeof ChannelProvisioningState];
 
 export const ChannelType = {
     PartnerTopic: "PartnerTopic",
 } as const;
 
+/**
+ * The type of the event channel which represents the direction flow of events.
+ */
 export type ChannelType = (typeof ChannelType)[keyof typeof ChannelType];
 
 export const DataResidencyBoundary = {
@@ -45,12 +54,18 @@ export const DataResidencyBoundary = {
     WithinRegion: "WithinRegion",
 } as const;
 
+/**
+ * Data Residency Boundary of the resource.
+ */
 export type DataResidencyBoundary = (typeof DataResidencyBoundary)[keyof typeof DataResidencyBoundary];
 
 export const DeadLetterEndPointType = {
     StorageBlob: "StorageBlob",
 } as const;
 
+/**
+ * Type of the endpoint for the dead letter destination
+ */
 export type DeadLetterEndPointType = (typeof DeadLetterEndPointType)[keyof typeof DeadLetterEndPointType];
 
 export const DeliveryAttributeMappingType = {
@@ -58,6 +73,9 @@ export const DeliveryAttributeMappingType = {
     Dynamic: "Dynamic",
 } as const;
 
+/**
+ * Type of the delivery attribute or header name.
+ */
 export type DeliveryAttributeMappingType = (typeof DeliveryAttributeMappingType)[keyof typeof DeliveryAttributeMappingType];
 
 export const EndpointType = {
@@ -70,12 +88,18 @@ export const EndpointType = {
     AzureFunction: "AzureFunction",
 } as const;
 
+/**
+ * Type of the endpoint for the event subscription destination.
+ */
 export type EndpointType = (typeof EndpointType)[keyof typeof EndpointType];
 
 export const EventDefinitionKind = {
     Inline: "Inline",
 } as const;
 
+/**
+ * The kind of event type used.
+ */
 export type EventDefinitionKind = (typeof EventDefinitionKind)[keyof typeof EventDefinitionKind];
 
 export const EventDeliverySchema = {
@@ -84,6 +108,9 @@ export const EventDeliverySchema = {
     CloudEventSchemaV1_0: "CloudEventSchemaV1_0",
 } as const;
 
+/**
+ * The event delivery schema for the event subscription.
+ */
 export type EventDeliverySchema = (typeof EventDeliverySchema)[keyof typeof EventDeliverySchema];
 
 export const EventSubscriptionIdentityType = {
@@ -91,6 +118,9 @@ export const EventSubscriptionIdentityType = {
     UserAssigned: "UserAssigned",
 } as const;
 
+/**
+ * The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identity.
+ */
 export type EventSubscriptionIdentityType = (typeof EventSubscriptionIdentityType)[keyof typeof EventSubscriptionIdentityType];
 
 export const IdentityType = {
@@ -100,6 +130,9 @@ export const IdentityType = {
     SystemAssigned_UserAssigned: "SystemAssigned, UserAssigned",
 } as const;
 
+/**
+ * The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identity.
+ */
 export type IdentityType = (typeof IdentityType)[keyof typeof IdentityType];
 
 export const InputSchema = {
@@ -108,18 +141,27 @@ export const InputSchema = {
     CloudEventSchemaV1_0: "CloudEventSchemaV1_0",
 } as const;
 
+/**
+ * This determines the format that Event Grid should expect for incoming events published to the topic.
+ */
 export type InputSchema = (typeof InputSchema)[keyof typeof InputSchema];
 
 export const InputSchemaMappingType = {
     Json: "Json",
 } as const;
 
+/**
+ * Type of the custom mapping
+ */
 export type InputSchemaMappingType = (typeof InputSchemaMappingType)[keyof typeof InputSchemaMappingType];
 
 export const IpActionType = {
     Allow: "Allow",
 } as const;
 
+/**
+ * Action to perform based on the match or no match of the IpMask.
+ */
 export type IpActionType = (typeof IpActionType)[keyof typeof IpActionType];
 
 export const PartnerConfigurationProvisioningState = {
@@ -131,6 +173,9 @@ export const PartnerConfigurationProvisioningState = {
     Failed: "Failed",
 } as const;
 
+/**
+ * Provisioning state of the partner configuration.
+ */
 export type PartnerConfigurationProvisioningState = (typeof PartnerConfigurationProvisioningState)[keyof typeof PartnerConfigurationProvisioningState];
 
 export const PartnerTopicActivationState = {
@@ -139,6 +184,9 @@ export const PartnerTopicActivationState = {
     Deactivated: "Deactivated",
 } as const;
 
+/**
+ * Activation state of the partner topic.
+ */
 export type PartnerTopicActivationState = (typeof PartnerTopicActivationState)[keyof typeof PartnerTopicActivationState];
 
 export const PartnerTopicRoutingMode = {
@@ -146,6 +194,10 @@ export const PartnerTopicRoutingMode = {
     ChannelNameHeader: "ChannelNameHeader",
 } as const;
 
+/**
+ * This determines if events published to this partner namespace should use the source attribute in the event payload
+ * or use the channel name in the header when matching to the partner topic. If none is specified, source attribute routing will be used to match the partner topic.
+ */
 export type PartnerTopicRoutingMode = (typeof PartnerTopicRoutingMode)[keyof typeof PartnerTopicRoutingMode];
 
 export const PersistedConnectionStatus = {
@@ -155,6 +207,9 @@ export const PersistedConnectionStatus = {
     Disconnected: "Disconnected",
 } as const;
 
+/**
+ * Status of the connection.
+ */
 export type PersistedConnectionStatus = (typeof PersistedConnectionStatus)[keyof typeof PersistedConnectionStatus];
 
 export const PublicNetworkAccess = {
@@ -162,6 +217,10 @@ export const PublicNetworkAccess = {
     Disabled: "Disabled",
 } as const;
 
+/**
+ * This determines if traffic is allowed over public network. By default it is enabled. 
+ * You can further restrict to specific IPs by configuring <seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.TopicProperties.InboundIpRules" />
+ */
 export type PublicNetworkAccess = (typeof PublicNetworkAccess)[keyof typeof PublicNetworkAccess];
 
 export const ReadinessState = {
@@ -169,6 +228,9 @@ export const ReadinessState = {
     Activated: "Activated",
 } as const;
 
+/**
+ * The readiness state of the corresponding partner topic.
+ */
 export type ReadinessState = (typeof ReadinessState)[keyof typeof ReadinessState];
 
 export const ResourceProvisioningState = {
@@ -180,4 +242,7 @@ export const ResourceProvisioningState = {
     Failed: "Failed",
 } as const;
 
+/**
+ * Provisioning state of the Private Endpoint Connection.
+ */
 export type ResourceProvisioningState = (typeof ResourceProvisioningState)[keyof typeof ResourceProvisioningState];

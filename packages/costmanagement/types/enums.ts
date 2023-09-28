@@ -3,6 +3,9 @@ export const AccumulatedType = {
     False: "false",
 } as const;
 
+/**
+ * Show costs accumulated over time.
+ */
 export type AccumulatedType = (typeof AccumulatedType)[keyof typeof AccumulatedType];
 
 export const BudgetNotificationOperatorType = {
@@ -32,12 +35,27 @@ export const BudgetNotificationOperatorType = {
     LessThan: "LessThan",
 } as const;
 
+/**
+ * The comparison operator.
+ *
+ *  Supported for CategoryType(s): Cost, ReservationUtilization.
+ *
+ *  Supported operators for **CategoryType: Cost**
+ * - GreaterThan
+ * - GreaterThanOrEqualTo
+ *
+ *  Supported operators for **CategoryType: ReservationUtilization**
+ * - LessThan
+ */
 export type BudgetNotificationOperatorType = (typeof BudgetNotificationOperatorType)[keyof typeof BudgetNotificationOperatorType];
 
 export const BudgetOperatorType = {
     In: "In",
 } as const;
 
+/**
+ * The operator to use for comparison.
+ */
 export type BudgetOperatorType = (typeof BudgetOperatorType)[keyof typeof BudgetOperatorType];
 
 export const CategoryType = {
@@ -51,6 +69,11 @@ export const CategoryType = {
     ReservationUtilization: "ReservationUtilization",
 } as const;
 
+/**
+ * The category of the budget.
+ * - 'Cost' defines a Budget.
+ * - 'ReservationUtilization' defines a Reservation Utilization Alert Rule.
+ */
 export type CategoryType = (typeof CategoryType)[keyof typeof CategoryType];
 
 export const ChartType = {
@@ -61,6 +84,9 @@ export const ChartType = {
     Table: "Table",
 } as const;
 
+/**
+ * Chart type of the main view in Cost Analysis. Required.
+ */
 export type ChartType = (typeof ChartType)[keyof typeof ChartType];
 
 export const ConnectorBillingModel = {
@@ -70,6 +96,9 @@ export const ConnectorBillingModel = {
     Expired: "expired",
 } as const;
 
+/**
+ * Connector billing model
+ */
 export type ConnectorBillingModel = (typeof ConnectorBillingModel)[keyof typeof ConnectorBillingModel];
 
 export const ConnectorStatus = {
@@ -78,12 +107,18 @@ export const ConnectorStatus = {
     Suspended: "suspended",
 } as const;
 
+/**
+ * Connector status
+ */
 export type ConnectorStatus = (typeof ConnectorStatus)[keyof typeof ConnectorStatus];
 
 export const CostAllocationPolicyType = {
     FixedProportion: "FixedProportion",
 } as const;
 
+/**
+ * Method of cost allocation for the rule
+ */
 export type CostAllocationPolicyType = (typeof CostAllocationPolicyType)[keyof typeof CostAllocationPolicyType];
 
 export const CostAllocationResourceType = {
@@ -97,6 +132,9 @@ export const CostAllocationResourceType = {
     Tag: "Tag",
 } as const;
 
+/**
+ * Type of resources contained in this cost allocation rule
+ */
 export type CostAllocationResourceType = (typeof CostAllocationResourceType)[keyof typeof CostAllocationResourceType];
 
 export const CultureCode = {
@@ -123,6 +161,11 @@ export const CultureCode = {
     Sv_se: "sv-se",
 } as const;
 
+/**
+ * Language in which the recipient will receive the notification, 
+ *
+ *  Supported for CategoryType(s): Cost, ReservationUtilization.
+ */
 export type CultureCode = (typeof CultureCode)[keyof typeof CultureCode];
 
 export const DaysOfWeek = {
@@ -135,6 +178,9 @@ export const DaysOfWeek = {
     Sunday: "Sunday",
 } as const;
 
+/**
+ * Days of Week.
+ */
 export type DaysOfWeek = (typeof DaysOfWeek)[keyof typeof DaysOfWeek];
 
 export const ExportType = {
@@ -143,18 +189,27 @@ export const ExportType = {
     AmortizedCost: "AmortizedCost",
 } as const;
 
+/**
+ * The type of the export. Note that 'Usage' is equivalent to 'ActualCost' and is applicable to exports that do not yet provide data for charges or amortization for service reservations.
+ */
 export type ExportType = (typeof ExportType)[keyof typeof ExportType];
 
 export const FileFormat = {
     Csv: "Csv",
 } as const;
 
+/**
+ * Destination of the view data. Currently only CSV format is supported.
+ */
 export type FileFormat = (typeof FileFormat)[keyof typeof FileFormat];
 
 export const FormatType = {
     Csv: "Csv",
 } as const;
 
+/**
+ * The format of the report being delivered.
+ */
 export type FormatType = (typeof FormatType)[keyof typeof FormatType];
 
 export const Frequency = {
@@ -172,12 +227,20 @@ export const Frequency = {
     Monthly: "Monthly",
 } as const;
 
+/**
+ * Frequency of a notification. Represents how long the notification will be silent after triggering an alert for a threshold breach. If not specified, the frequency will be set by default based on the timeGrain (Weekly when timeGrain: Last7Days, Monthly when timeGrain: Last30Days).
+ *
+ *  Supported for CategoryType(s): ReservationUtilization.
+ */
 export type Frequency = (typeof Frequency)[keyof typeof Frequency];
 
 export const FunctionType = {
     Sum: "Sum",
 } as const;
 
+/**
+ * The name of the aggregation function to use.
+ */
 export type FunctionType = (typeof FunctionType)[keyof typeof FunctionType];
 
 export const GranularityType = {
@@ -185,6 +248,9 @@ export const GranularityType = {
     Hourly: "Hourly",
 } as const;
 
+/**
+ * The granularity of rows in the report.
+ */
 export type GranularityType = (typeof GranularityType)[keyof typeof GranularityType];
 
 export const KpiTypeType = {
@@ -192,6 +258,9 @@ export const KpiTypeType = {
     Budget: "Budget",
 } as const;
 
+/**
+ * KPI type (Forecast, Budget).
+ */
 export type KpiTypeType = (typeof KpiTypeType)[keyof typeof KpiTypeType];
 
 export const MetricType = {
@@ -200,6 +269,9 @@ export const MetricType = {
     AHUB: "AHUB",
 } as const;
 
+/**
+ * Metric to use when displaying costs.
+ */
 export type MetricType = (typeof MetricType)[keyof typeof MetricType];
 
 export const OperatorType = {
@@ -207,6 +279,9 @@ export const OperatorType = {
     Contains: "Contains",
 } as const;
 
+/**
+ * The operator to use for comparison.
+ */
 export type OperatorType = (typeof OperatorType)[keyof typeof OperatorType];
 
 export const PivotTypeType = {
@@ -214,6 +289,9 @@ export const PivotTypeType = {
     TagKey: "TagKey",
 } as const;
 
+/**
+ * Data type to show in view.
+ */
 export type PivotTypeType = (typeof PivotTypeType)[keyof typeof PivotTypeType];
 
 export const QueryColumnType = {
@@ -227,6 +305,9 @@ export const QueryColumnType = {
     Dimension: "Dimension",
 } as const;
 
+/**
+ * Has type of the column to group.
+ */
 export type QueryColumnType = (typeof QueryColumnType)[keyof typeof QueryColumnType];
 
 export const RecurrenceType = {
@@ -236,6 +317,9 @@ export const RecurrenceType = {
     Annually: "Annually",
 } as const;
 
+/**
+ * The schedule recurrence.
+ */
 export type RecurrenceType = (typeof RecurrenceType)[keyof typeof RecurrenceType];
 
 export const ReportColumnType = {
@@ -243,6 +327,9 @@ export const ReportColumnType = {
     Dimension: "Dimension",
 } as const;
 
+/**
+ * Has type of the column to group.
+ */
 export type ReportColumnType = (typeof ReportColumnType)[keyof typeof ReportColumnType];
 
 export const ReportConfigSortingType = {
@@ -250,6 +337,9 @@ export const ReportConfigSortingType = {
     Descending: "Descending",
 } as const;
 
+/**
+ * Direction of sort.
+ */
 export type ReportConfigSortingType = (typeof ReportConfigSortingType)[keyof typeof ReportConfigSortingType];
 
 export const ReportGranularityType = {
@@ -257,6 +347,9 @@ export const ReportGranularityType = {
     Monthly: "Monthly",
 } as const;
 
+/**
+ * The granularity of rows in the report.
+ */
 export type ReportGranularityType = (typeof ReportGranularityType)[keyof typeof ReportGranularityType];
 
 export const ReportTimeframeType = {
@@ -266,12 +359,18 @@ export const ReportTimeframeType = {
     Custom: "Custom",
 } as const;
 
+/**
+ * The time frame for pulling data for the report. If custom, then a specific time period must be provided.
+ */
 export type ReportTimeframeType = (typeof ReportTimeframeType)[keyof typeof ReportTimeframeType];
 
 export const ReportType = {
     Usage: "Usage",
 } as const;
 
+/**
+ * The type of the report. Usage represents actual usage, forecast represents forecasted data and UsageAndForecast represents both usage and forecasted data. Actual usage and forecasted data can be differentiated based on dates.
+ */
 export type ReportType = (typeof ReportType)[keyof typeof ReportType];
 
 export const RuleStatus = {
@@ -289,6 +388,9 @@ export const RuleStatus = {
     Processing: "Processing",
 } as const;
 
+/**
+ * Status of the rule
+ */
 export type RuleStatus = (typeof RuleStatus)[keyof typeof RuleStatus];
 
 export const ScheduleFrequency = {
@@ -306,6 +408,9 @@ export const ScheduleFrequency = {
     Monthly: "Monthly",
 } as const;
 
+/**
+ * Frequency of the schedule.
+ */
 export type ScheduleFrequency = (typeof ScheduleFrequency)[keyof typeof ScheduleFrequency];
 
 export const ScheduledActionKind = {
@@ -319,6 +424,9 @@ export const ScheduledActionKind = {
     InsightAlert: "InsightAlert",
 } as const;
 
+/**
+ * Kind of the scheduled action.
+ */
 export type ScheduledActionKind = (typeof ScheduledActionKind)[keyof typeof ScheduledActionKind];
 
 export const ScheduledActionStatus = {
@@ -336,12 +444,18 @@ export const ScheduledActionStatus = {
     Expired: "Expired",
 } as const;
 
+/**
+ * Status of the scheduled action.
+ */
 export type ScheduledActionStatus = (typeof ScheduledActionStatus)[keyof typeof ScheduledActionStatus];
 
 export const SettingsKind = {
     Taginheritance: "taginheritance",
 } as const;
 
+/**
+ * Specifies the kind of settings.
+ */
 export type SettingsKind = (typeof SettingsKind)[keyof typeof SettingsKind];
 
 export const StatusType = {
@@ -349,6 +463,9 @@ export const StatusType = {
     Inactive: "Inactive",
 } as const;
 
+/**
+ * The status of the schedule. Whether active or not. If inactive, the report's scheduled execution is paused.
+ */
 export type StatusType = (typeof StatusType)[keyof typeof StatusType];
 
 export const ThresholdType = {
@@ -362,6 +479,11 @@ export const ThresholdType = {
     Forecasted: "Forecasted",
 } as const;
 
+/**
+ * The type of threshold.
+ *
+ *  Supported for CategoryType(s): Cost.
+ */
 export type ThresholdType = (typeof ThresholdType)[keyof typeof ThresholdType];
 
 export const TimeGrainType = {
@@ -415,6 +537,28 @@ export const TimeGrainType = {
     Last30Days: "Last30Days",
 } as const;
 
+/**
+ * The time covered by a budget. Tracking of the amount will be reset based on the time grain.
+ *
+ * Supported for CategoryType(s): Cost, ReservationUtilization.
+ *
+ *  Supported timeGrainTypes for **CategoryType: Cost**
+ *
+ * - Monthly
+ * - Quarterly
+ * - Annually
+ * - BillingMonth*
+ * - BillingQuarter*
+ * - BillingAnnual*
+ *
+ *   *only supported for Web Direct customers.
+ *
+ *  Supported timeGrainTypes for **CategoryType: ReservationUtilization**
+ * - Last7Days
+ * - Last30Days
+ *
+ *  Required for CategoryType(s): Cost, ReservationUtilization.
+ */
 export type TimeGrainType = (typeof TimeGrainType)[keyof typeof TimeGrainType];
 
 export const TimeframeType = {
@@ -423,6 +567,9 @@ export const TimeframeType = {
     Custom: "Custom",
 } as const;
 
+/**
+ * The time frame for pulling data for the report. If custom, then a specific time period must be provided.
+ */
 export type TimeframeType = (typeof TimeframeType)[keyof typeof TimeframeType];
 
 export const WeeksOfMonth = {
@@ -433,4 +580,7 @@ export const WeeksOfMonth = {
     Last: "Last",
 } as const;
 
+/**
+ * Weeks of month.
+ */
 export type WeeksOfMonth = (typeof WeeksOfMonth)[keyof typeof WeeksOfMonth];

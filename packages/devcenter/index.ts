@@ -41,6 +41,21 @@ export const getCatalog: typeof import("./getCatalog").getCatalog = null as any;
 export const getCatalogOutput: typeof import("./getCatalog").getCatalogOutput = null as any;
 utilities.lazyLoad(exports, ["getCatalog","getCatalogOutput"], () => require("./getCatalog"));
 
+export { GetCatalogDevBoxDefinitionErrorDetailsArgs, GetCatalogDevBoxDefinitionErrorDetailsResult, GetCatalogDevBoxDefinitionErrorDetailsOutputArgs } from "./getCatalogDevBoxDefinitionErrorDetails";
+export const getCatalogDevBoxDefinitionErrorDetails: typeof import("./getCatalogDevBoxDefinitionErrorDetails").getCatalogDevBoxDefinitionErrorDetails = null as any;
+export const getCatalogDevBoxDefinitionErrorDetailsOutput: typeof import("./getCatalogDevBoxDefinitionErrorDetails").getCatalogDevBoxDefinitionErrorDetailsOutput = null as any;
+utilities.lazyLoad(exports, ["getCatalogDevBoxDefinitionErrorDetails","getCatalogDevBoxDefinitionErrorDetailsOutput"], () => require("./getCatalogDevBoxDefinitionErrorDetails"));
+
+export { GetCatalogSyncErrorDetailsArgs, GetCatalogSyncErrorDetailsResult, GetCatalogSyncErrorDetailsOutputArgs } from "./getCatalogSyncErrorDetails";
+export const getCatalogSyncErrorDetails: typeof import("./getCatalogSyncErrorDetails").getCatalogSyncErrorDetails = null as any;
+export const getCatalogSyncErrorDetailsOutput: typeof import("./getCatalogSyncErrorDetails").getCatalogSyncErrorDetailsOutput = null as any;
+utilities.lazyLoad(exports, ["getCatalogSyncErrorDetails","getCatalogSyncErrorDetailsOutput"], () => require("./getCatalogSyncErrorDetails"));
+
+export { GetCustomizationTaskErrorDetailsArgs, GetCustomizationTaskErrorDetailsResult, GetCustomizationTaskErrorDetailsOutputArgs } from "./getCustomizationTaskErrorDetails";
+export const getCustomizationTaskErrorDetails: typeof import("./getCustomizationTaskErrorDetails").getCustomizationTaskErrorDetails = null as any;
+export const getCustomizationTaskErrorDetailsOutput: typeof import("./getCustomizationTaskErrorDetails").getCustomizationTaskErrorDetailsOutput = null as any;
+utilities.lazyLoad(exports, ["getCustomizationTaskErrorDetails","getCustomizationTaskErrorDetailsOutput"], () => require("./getCustomizationTaskErrorDetails"));
+
 export { GetDevBoxDefinitionArgs, GetDevBoxDefinitionResult, GetDevBoxDefinitionOutputArgs } from "./getDevBoxDefinition";
 export const getDevBoxDefinition: typeof import("./getDevBoxDefinition").getDevBoxDefinition = null as any;
 export const getDevBoxDefinitionOutput: typeof import("./getDevBoxDefinition").getDevBoxDefinitionOutput = null as any;
@@ -50,6 +65,11 @@ export { GetDevCenterArgs, GetDevCenterResult, GetDevCenterOutputArgs } from "./
 export const getDevCenter: typeof import("./getDevCenter").getDevCenter = null as any;
 export const getDevCenterOutput: typeof import("./getDevCenter").getDevCenterOutput = null as any;
 utilities.lazyLoad(exports, ["getDevCenter","getDevCenterOutput"], () => require("./getDevCenter"));
+
+export { GetEnvironmentDefinitionErrorDetailsArgs, GetEnvironmentDefinitionErrorDetailsResult, GetEnvironmentDefinitionErrorDetailsOutputArgs } from "./getEnvironmentDefinitionErrorDetails";
+export const getEnvironmentDefinitionErrorDetails: typeof import("./getEnvironmentDefinitionErrorDetails").getEnvironmentDefinitionErrorDetails = null as any;
+export const getEnvironmentDefinitionErrorDetailsOutput: typeof import("./getEnvironmentDefinitionErrorDetails").getEnvironmentDefinitionErrorDetailsOutput = null as any;
+utilities.lazyLoad(exports, ["getEnvironmentDefinitionErrorDetails","getEnvironmentDefinitionErrorDetailsOutput"], () => require("./getEnvironmentDefinitionErrorDetails"));
 
 export { GetEnvironmentTypeArgs, GetEnvironmentTypeResult, GetEnvironmentTypeOutputArgs } from "./getEnvironmentType";
 export const getEnvironmentType: typeof import("./getEnvironmentType").getEnvironmentType = null as any;
@@ -118,10 +138,12 @@ export * from "./types/enums";
 // Export sub-modules:
 import * as v20221111preview from "./v20221111preview";
 import * as v20230401 from "./v20230401";
+import * as v20230801preview from "./v20230801preview";
 
 export {
     v20221111preview,
     v20230401,
+    v20230801preview,
 };
 
 const _module = {

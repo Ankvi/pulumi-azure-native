@@ -6,6 +6,9 @@ export const AggregationTypeEnum = {
     Total: "Total",
 } as const;
 
+/**
+ * the criteria time aggregation types.
+ */
 export type AggregationTypeEnum = (typeof AggregationTypeEnum)[keyof typeof AggregationTypeEnum];
 
 export const CriterionType = {
@@ -13,6 +16,9 @@ export const CriterionType = {
     DynamicThresholdCriterion: "DynamicThresholdCriterion",
 } as const;
 
+/**
+ * Specifies the type of threshold criteria
+ */
 export type CriterionType = (typeof CriterionType)[keyof typeof CriterionType];
 
 export const DynamicThresholdOperator = {
@@ -21,6 +27,9 @@ export const DynamicThresholdOperator = {
     GreaterOrLessThan: "GreaterOrLessThan",
 } as const;
 
+/**
+ * The operator used to compare the metric value against the threshold.
+ */
 export type DynamicThresholdOperator = (typeof DynamicThresholdOperator)[keyof typeof DynamicThresholdOperator];
 
 export const DynamicThresholdSensitivity = {
@@ -29,6 +38,9 @@ export const DynamicThresholdSensitivity = {
     High: "High",
 } as const;
 
+/**
+ * The extent of deviation required to trigger an alert. This will affect how tight the threshold is to the metric series pattern.
+ */
 export type DynamicThresholdSensitivity = (typeof DynamicThresholdSensitivity)[keyof typeof DynamicThresholdSensitivity];
 
 export const Odatatype = {
@@ -37,6 +49,9 @@ export const Odatatype = {
     Microsoft_Azure_Monitor_WebtestLocationAvailabilityCriteria: "Microsoft.Azure.Monitor.WebtestLocationAvailabilityCriteria",
 } as const;
 
+/**
+ * specifies the type of the alert criteria.
+ */
 export type Odatatype = (typeof Odatatype)[keyof typeof Odatatype];
 
 export const Operator = {
@@ -47,4 +62,7 @@ export const Operator = {
     LessThanOrEqual: "LessThanOrEqual",
 } as const;
 
+/**
+ * the criteria operator.
+ */
 export type Operator = (typeof Operator)[keyof typeof Operator];

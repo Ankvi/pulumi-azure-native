@@ -4,6 +4,9 @@ export const LedgerRoleName = {
     Administrator: "Administrator",
 } as const;
 
+/**
+ * LedgerRole associated with the Security Principal of Ledger
+ */
 export type LedgerRoleName = (typeof LedgerRoleName)[keyof typeof LedgerRoleName];
 
 export const LedgerType = {
@@ -12,4 +15,7 @@ export const LedgerType = {
     Private: "Private",
 } as const;
 
+/**
+ * Type of Confidential Ledger
+ */
 export type LedgerType = (typeof LedgerType)[keyof typeof LedgerType];

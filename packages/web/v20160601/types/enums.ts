@@ -4,6 +4,9 @@ export const ApiType = {
     Soap: "Soap",
 } as const;
 
+/**
+ * The API type
+ */
 export type ApiType = (typeof ApiType)[keyof typeof ApiType];
 
 export const ConnectionParameterType = {
@@ -18,6 +21,9 @@ export const ConnectionParameterType = {
     Connection: "connection",
 } as const;
 
+/**
+ * Type of the parameter
+ */
 export type ConnectionParameterType = (typeof ConnectionParameterType)[keyof typeof ConnectionParameterType];
 
 export const WsdlImportMethod = {
@@ -26,4 +32,7 @@ export const WsdlImportMethod = {
     SoapPassThrough: "SoapPassThrough",
 } as const;
 
+/**
+ * The WSDL import method
+ */
 export type WsdlImportMethod = (typeof WsdlImportMethod)[keyof typeof WsdlImportMethod];

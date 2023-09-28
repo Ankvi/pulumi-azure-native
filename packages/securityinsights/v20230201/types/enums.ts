@@ -9,6 +9,9 @@ export const ActionType = {
     RunPlaybook: "RunPlaybook",
 } as const;
 
+/**
+ * The type of the automation rule action.
+ */
 export type ActionType = (typeof ActionType)[keyof typeof ActionType];
 
 export const AutomationRulePropertyArrayChangedConditionSupportedArrayType = {
@@ -335,6 +338,9 @@ export const AutomationRulePropertyConditionSupportedProperty = {
     Url: "Url",
 } as const;
 
+/**
+ * The property to evaluate in an automation rule property condition.
+ */
 export type AutomationRulePropertyConditionSupportedProperty = (typeof AutomationRulePropertyConditionSupportedProperty)[keyof typeof AutomationRulePropertyConditionSupportedProperty];
 
 export const ConditionType = {
@@ -365,6 +371,9 @@ export const DataConnectorKind = {
     MicrosoftDefenderAdvancedThreatProtection: "MicrosoftDefenderAdvancedThreatProtection",
 } as const;
 
+/**
+ * The data connector kind
+ */
 export type DataConnectorKind = (typeof DataConnectorKind)[keyof typeof DataConnectorKind];
 
 export const DataTypeState = {
@@ -372,6 +381,9 @@ export const DataTypeState = {
     Disabled: "Disabled",
 } as const;
 
+/**
+ * Describe whether this data type connection is enabled or not.
+ */
 export type DataTypeState = (typeof DataTypeState)[keyof typeof DataTypeState];
 
 export const IncidentClassification = {
@@ -393,6 +405,9 @@ export const IncidentClassification = {
     FalsePositive: "FalsePositive",
 } as const;
 
+/**
+ * The reason the incident was closed
+ */
 export type IncidentClassification = (typeof IncidentClassification)[keyof typeof IncidentClassification];
 
 export const IncidentClassificationReason = {
@@ -414,6 +429,9 @@ export const IncidentClassificationReason = {
     InaccurateData: "InaccurateData",
 } as const;
 
+/**
+ * The classification reason the incident was closed with
+ */
 export type IncidentClassificationReason = (typeof IncidentClassificationReason)[keyof typeof IncidentClassificationReason];
 
 export const IncidentSeverity = {
@@ -435,6 +453,9 @@ export const IncidentSeverity = {
     Informational: "Informational",
 } as const;
 
+/**
+ * The severity of the incident
+ */
 export type IncidentSeverity = (typeof IncidentSeverity)[keyof typeof IncidentSeverity];
 
 export const IncidentStatus = {
@@ -452,6 +473,9 @@ export const IncidentStatus = {
     Closed: "Closed",
 } as const;
 
+/**
+ * The status of the incident
+ */
 export type IncidentStatus = (typeof IncidentStatus)[keyof typeof IncidentStatus];
 
 export const Operator = {
@@ -459,6 +483,9 @@ export const Operator = {
     OR: "OR",
 } as const;
 
+/**
+ * Operator used for list of dependencies in criteria array.
+ */
 export type Operator = (typeof Operator)[keyof typeof Operator];
 
 export const OwnerType = {
@@ -476,6 +503,9 @@ export const OwnerType = {
     Group: "Group",
 } as const;
 
+/**
+ * The type of the owner the incident is assigned to.
+ */
 export type OwnerType = (typeof OwnerType)[keyof typeof OwnerType];
 
 export const Source = {
@@ -483,6 +513,9 @@ export const Source = {
     Remote_storage: "Remote storage",
 } as const;
 
+/**
+ * The source of the watchlist
+ */
 export type Source = (typeof Source)[keyof typeof Source];
 
 export const SourceKind = {
@@ -492,6 +525,9 @@ export const SourceKind = {
     SourceRepository: "SourceRepository",
 } as const;
 
+/**
+ * Source type of the content
+ */
 export type SourceKind = (typeof SourceKind)[keyof typeof SourceKind];
 
 export const SupportTier = {
@@ -500,6 +536,9 @@ export const SupportTier = {
     Community: "Community",
 } as const;
 
+/**
+ * Type of support for content item
+ */
 export type SupportTier = (typeof SupportTier)[keyof typeof SupportTier];
 
 export const ThreatIntelligenceResourceInnerKind = {
@@ -509,6 +548,9 @@ export const ThreatIntelligenceResourceInnerKind = {
     Indicator: "indicator",
 } as const;
 
+/**
+ * The kind of the entity.
+ */
 export type ThreatIntelligenceResourceInnerKind = (typeof ThreatIntelligenceResourceInnerKind)[keyof typeof ThreatIntelligenceResourceInnerKind];
 
 export const TriggersOn = {

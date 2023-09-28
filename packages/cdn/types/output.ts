@@ -2345,3 +2345,4 @@ export interface UserManagedHttpsParametersResponse {
     protocolType: string;
 }
 
+

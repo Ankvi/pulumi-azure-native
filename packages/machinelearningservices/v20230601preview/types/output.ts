@@ -148,7 +148,7 @@ import * as pulumi from "@pulumi/pulumi";
          */
         systemCreatedAcrAccount?: SystemCreatedAcrAccountResponse;
         /**
-         * Details of user created ACR account to be used for the Registry
+         * Details of user created ACR account to be used for the Registry. Not supported in most cases and will throw 400 error if provided.
          */
         userCreatedAcrAccount?: UserCreatedAcrAccountResponse;
     }
@@ -9081,7 +9081,7 @@ import * as pulumi from "@pulumi/pulumi";
          */
         systemCreatedStorageAccount?: SystemCreatedStorageAccountResponse;
         /**
-         * Details of user created storage account to be used for the registry
+         * Details of user created storage account to be used for the registry.  Not supported in most cases and will throw 400 error if provided.
          */
         userCreatedStorageAccount?: UserCreatedStorageAccountResponse;
     }

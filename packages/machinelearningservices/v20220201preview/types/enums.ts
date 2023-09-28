@@ -4,6 +4,9 @@ export const BatchLoggingLevel = {
     Debug: "Debug",
 } as const;
 
+/**
+ * Logging level for batch inference operation.
+ */
 export type BatchLoggingLevel = (typeof BatchLoggingLevel)[keyof typeof BatchLoggingLevel];
 
 export const BatchOutputAction = {
@@ -11,6 +14,9 @@ export const BatchOutputAction = {
     AppendRow: "AppendRow",
 } as const;
 
+/**
+ * Indicates how the output will be organized.
+ */
 export type BatchOutputAction = (typeof BatchOutputAction)[keyof typeof BatchOutputAction];
 
 export const ClassificationModels = {
@@ -80,6 +86,9 @@ export const ClassificationModels = {
     XGBoostClassifier: "XGBoostClassifier",
 } as const;
 
+/**
+ * Enum for all classification models supported by AutoML.
+ */
 export type ClassificationModels = (typeof ClassificationModels)[keyof typeof ClassificationModels];
 
 export const ClassificationMultilabelPrimaryMetrics = {
@@ -113,6 +122,9 @@ export const ClassificationMultilabelPrimaryMetrics = {
     IOU: "IOU",
 } as const;
 
+/**
+ * Primary metric to optimize for this task.
+ */
 export type ClassificationMultilabelPrimaryMetrics = (typeof ClassificationMultilabelPrimaryMetrics)[keyof typeof ClassificationMultilabelPrimaryMetrics];
 
 export const ClassificationPrimaryMetrics = {
@@ -142,6 +154,9 @@ export const ClassificationPrimaryMetrics = {
     PrecisionScoreWeighted: "PrecisionScoreWeighted",
 } as const;
 
+/**
+ * Primary metric for Text-Classification task.
+ */
 export type ClassificationPrimaryMetrics = (typeof ClassificationPrimaryMetrics)[keyof typeof ClassificationPrimaryMetrics];
 
 export const CredentialsType = {
@@ -154,6 +169,9 @@ export const CredentialsType = {
     KerberosPassword: "KerberosPassword",
 } as const;
 
+/**
+ * [Required] Credential type used to authentication with storage.
+ */
 export type CredentialsType = (typeof CredentialsType)[keyof typeof CredentialsType];
 
 export const DataType = {
@@ -162,6 +180,9 @@ export const DataType = {
     MLTable: "MLTable",
 } as const;
 
+/**
+ * [Required] Specifies the type of data.
+ */
 export type DataType = (typeof DataType)[keyof typeof DataType];
 
 export const DatastoreType = {
@@ -172,6 +193,9 @@ export const DatastoreType = {
     Hdfs: "Hdfs",
 } as const;
 
+/**
+ * [Required] Storage type backing the datastore.
+ */
 export type DatastoreType = (typeof DatastoreType)[keyof typeof DatastoreType];
 
 export const DistributionType = {
@@ -180,6 +204,9 @@ export const DistributionType = {
     Mpi: "Mpi",
 } as const;
 
+/**
+ * [Required] Specifies the type of distribution framework.
+ */
 export type DistributionType = (typeof DistributionType)[keyof typeof DistributionType];
 
 export const EarlyTerminationPolicyType = {
@@ -188,6 +215,9 @@ export const EarlyTerminationPolicyType = {
     TruncationSelection: "TruncationSelection",
 } as const;
 
+/**
+ * [Required] Name of policy configuration
+ */
 export type EarlyTerminationPolicyType = (typeof EarlyTerminationPolicyType)[keyof typeof EarlyTerminationPolicyType];
 
 export const EgressPublicNetworkAccessType = {
@@ -195,6 +225,9 @@ export const EgressPublicNetworkAccessType = {
     Disabled: "Disabled",
 } as const;
 
+/**
+ * If Enabled, allow egress public network access. If Disabled, this will create secure egress. Default: Enabled.
+ */
 export type EgressPublicNetworkAccessType = (typeof EgressPublicNetworkAccessType)[keyof typeof EgressPublicNetworkAccessType];
 
 export const EndpointAuthMode = {
@@ -203,6 +236,9 @@ export const EndpointAuthMode = {
     AADToken: "AADToken",
 } as const;
 
+/**
+ * [Required] Use 'Key' for key based authentication and 'AMLToken' for Azure Machine Learning token-based authentication. 'Key' doesn't expire but 'AMLToken' does.
+ */
 export type EndpointAuthMode = (typeof EndpointAuthMode)[keyof typeof EndpointAuthMode];
 
 export const EndpointComputeType = {
@@ -211,6 +247,9 @@ export const EndpointComputeType = {
     AzureMLCompute: "AzureMLCompute",
 } as const;
 
+/**
+ * [Required] The compute type of the endpoint.
+ */
 export type EndpointComputeType = (typeof EndpointComputeType)[keyof typeof EndpointComputeType];
 
 export const FeatureLags = {
@@ -224,6 +263,9 @@ export const FeatureLags = {
     Auto: "Auto",
 } as const;
 
+/**
+ * Flag for generating lags for the numeric features with 'auto' or null.
+ */
 export type FeatureLags = (typeof FeatureLags)[keyof typeof FeatureLags];
 
 export const FeaturizationMode = {
@@ -241,6 +283,11 @@ export const FeaturizationMode = {
     Off: "Off",
 } as const;
 
+/**
+ * Featurization mode - User can keep the default 'Auto' mode and AutoML will take care of necessary transformation of the data in featurization phase.
+ * If 'Off' is selected then no featurization is done.
+ * If 'Custom' is selected then user can specify additional inputs to customize how featurization is done.
+ */
 export type FeaturizationMode = (typeof FeaturizationMode)[keyof typeof FeaturizationMode];
 
 export const ForecastHorizonMode = {
@@ -254,6 +301,9 @@ export const ForecastHorizonMode = {
     Custom: "Custom",
 } as const;
 
+/**
+ * [Required] Set forecast horizon value selection mode.
+ */
 export type ForecastHorizonMode = (typeof ForecastHorizonMode)[keyof typeof ForecastHorizonMode];
 
 export const ForecastingModels = {
@@ -344,6 +394,9 @@ export const ForecastingModels = {
     XGBoostRegressor: "XGBoostRegressor",
 } as const;
 
+/**
+ * Enum for all forecasting models supported by AutoML.
+ */
 export type ForecastingModels = (typeof ForecastingModels)[keyof typeof ForecastingModels];
 
 export const ForecastingPrimaryMetrics = {
@@ -365,6 +418,9 @@ export const ForecastingPrimaryMetrics = {
     NormalizedMeanAbsoluteError: "NormalizedMeanAbsoluteError",
 } as const;
 
+/**
+ * Primary metric for forecasting task.
+ */
 export type ForecastingPrimaryMetrics = (typeof ForecastingPrimaryMetrics)[keyof typeof ForecastingPrimaryMetrics];
 
 export const Goal = {
@@ -372,6 +428,9 @@ export const Goal = {
     Maximize: "Maximize",
 } as const;
 
+/**
+ * [Required] Defines supported metric goals for hyperparameter tuning
+ */
 export type Goal = (typeof Goal)[keyof typeof Goal];
 
 export const IdentityConfigurationType = {
@@ -380,6 +439,9 @@ export const IdentityConfigurationType = {
     UserIdentity: "UserIdentity",
 } as const;
 
+/**
+ * [Required] Specifies the type of identity framework.
+ */
 export type IdentityConfigurationType = (typeof IdentityConfigurationType)[keyof typeof IdentityConfigurationType];
 
 export const InputDeliveryMode = {
@@ -391,6 +453,9 @@ export const InputDeliveryMode = {
     EvalDownload: "EvalDownload",
 } as const;
 
+/**
+ * Input Asset Delivery Mode.
+ */
 export type InputDeliveryMode = (typeof InputDeliveryMode)[keyof typeof InputDeliveryMode];
 
 export const InstanceSegmentationPrimaryMetrics = {
@@ -401,6 +466,9 @@ export const InstanceSegmentationPrimaryMetrics = {
     MeanAveragePrecision: "MeanAveragePrecision",
 } as const;
 
+/**
+ * Primary metric to optimize for this task.
+ */
 export type InstanceSegmentationPrimaryMetrics = (typeof InstanceSegmentationPrimaryMetrics)[keyof typeof InstanceSegmentationPrimaryMetrics];
 
 export const JobInputType = {
@@ -413,6 +481,9 @@ export const JobInputType = {
     TritonModel: "TritonModel",
 } as const;
 
+/**
+ * [Required] Specifies the type of job.
+ */
 export type JobInputType = (typeof JobInputType)[keyof typeof JobInputType];
 
 export const JobLimitsType = {
@@ -420,6 +491,9 @@ export const JobLimitsType = {
     Sweep: "Sweep",
 } as const;
 
+/**
+ * [Required] JobLimit type.
+ */
 export type JobLimitsType = (typeof JobLimitsType)[keyof typeof JobLimitsType];
 
 export const JobOutputType = {
@@ -431,6 +505,9 @@ export const JobOutputType = {
     TritonModel: "TritonModel",
 } as const;
 
+/**
+ * [Required] Specifies the type of job.
+ */
 export type JobOutputType = (typeof JobOutputType)[keyof typeof JobOutputType];
 
 export const JobType = {
@@ -440,6 +517,9 @@ export const JobType = {
     Pipeline: "Pipeline",
 } as const;
 
+/**
+ * [Required] Specifies the type of job.
+ */
 export type JobType = (typeof JobType)[keyof typeof JobType];
 
 export const LearningRateScheduler = {
@@ -457,6 +537,9 @@ export const LearningRateScheduler = {
     Step: "Step",
 } as const;
 
+/**
+ * Type of learning rate scheduler. Must be 'warmup_cosine' or 'step'.
+ */
 export type LearningRateScheduler = (typeof LearningRateScheduler)[keyof typeof LearningRateScheduler];
 
 export const LogVerbosity = {
@@ -486,6 +569,9 @@ export const LogVerbosity = {
     Critical: "Critical",
 } as const;
 
+/**
+ * Log verbosity for the job.
+ */
 export type LogVerbosity = (typeof LogVerbosity)[keyof typeof LogVerbosity];
 
 export const ManagedServiceIdentityType = {
@@ -495,6 +581,9 @@ export const ManagedServiceIdentityType = {
     SystemAssigned_UserAssigned: "SystemAssigned,UserAssigned",
 } as const;
 
+/**
+ * Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+ */
 export type ManagedServiceIdentityType = (typeof ManagedServiceIdentityType)[keyof typeof ManagedServiceIdentityType];
 
 export const ModelSize = {
@@ -520,6 +609,11 @@ export const ModelSize = {
     ExtraLarge: "ExtraLarge",
 } as const;
 
+/**
+ * Model size. Must be 'small', 'medium', 'large', or 'xlarge'.
+ * Note: training run may get into CUDA OOM if the model size is too big.
+ * Note: This settings is only supported for the 'yolov5' algorithm.
+ */
 export type ModelSize = (typeof ModelSize)[keyof typeof ModelSize];
 
 export const ModelType = {
@@ -528,6 +622,9 @@ export const ModelType = {
     TritonModel: "TritonModel",
 } as const;
 
+/**
+ * The storage format for this entity. Used for NCD.
+ */
 export type ModelType = (typeof ModelType)[keyof typeof ModelType];
 
 export const NCrossValidationsMode = {
@@ -541,6 +638,9 @@ export const NCrossValidationsMode = {
     Custom: "Custom",
 } as const;
 
+/**
+ * [Required] Mode for determining N-Cross validations.
+ */
 export type NCrossValidationsMode = (typeof NCrossValidationsMode)[keyof typeof NCrossValidationsMode];
 
 export const ObjectDetectionPrimaryMetrics = {
@@ -551,6 +651,9 @@ export const ObjectDetectionPrimaryMetrics = {
     MeanAveragePrecision: "MeanAveragePrecision",
 } as const;
 
+/**
+ * Primary metric to optimize for this task.
+ */
 export type ObjectDetectionPrimaryMetrics = (typeof ObjectDetectionPrimaryMetrics)[keyof typeof ObjectDetectionPrimaryMetrics];
 
 export const OperatingSystemType = {
@@ -558,6 +661,9 @@ export const OperatingSystemType = {
     Windows: "Windows",
 } as const;
 
+/**
+ * The OS type of the environment.
+ */
 export type OperatingSystemType = (typeof OperatingSystemType)[keyof typeof OperatingSystemType];
 
 export const OutputDeliveryMode = {
@@ -565,6 +671,9 @@ export const OutputDeliveryMode = {
     Upload: "Upload",
 } as const;
 
+/**
+ * Output Asset Delivery Mode.
+ */
 export type OutputDeliveryMode = (typeof OutputDeliveryMode)[keyof typeof OutputDeliveryMode];
 
 export const PublicNetworkAccessType = {
@@ -572,6 +681,9 @@ export const PublicNetworkAccessType = {
     Disabled: "Disabled",
 } as const;
 
+/**
+ * Set to "Enabled" for endpoints that should allow public access when Private Link is enabled.
+ */
 export type PublicNetworkAccessType = (typeof PublicNetworkAccessType)[keyof typeof PublicNetworkAccessType];
 
 export const RandomSamplingAlgorithmRule = {
@@ -579,6 +691,9 @@ export const RandomSamplingAlgorithmRule = {
     Sobol: "Sobol",
 } as const;
 
+/**
+ * The specific type of random algorithm
+ */
 export type RandomSamplingAlgorithmRule = (typeof RandomSamplingAlgorithmRule)[keyof typeof RandomSamplingAlgorithmRule];
 
 export const RecurrenceFrequency = {
@@ -604,6 +719,9 @@ export const RecurrenceFrequency = {
     Month: "Month",
 } as const;
 
+/**
+ * [Required] Specifies frequency with with which to trigger schedule
+ */
 export type RecurrenceFrequency = (typeof RecurrenceFrequency)[keyof typeof RecurrenceFrequency];
 
 export const ReferenceType = {
@@ -612,6 +730,9 @@ export const ReferenceType = {
     OutputPath: "OutputPath",
 } as const;
 
+/**
+ * [Required] Specifies the type of asset reference.
+ */
 export type ReferenceType = (typeof ReferenceType)[keyof typeof ReferenceType];
 
 export const RegressionModels = {
@@ -663,6 +784,9 @@ export const RegressionModels = {
     XGBoostRegressor: "XGBoostRegressor",
 } as const;
 
+/**
+ * Enum for all Regression models supported by AutoML.
+ */
 export type RegressionModels = (typeof RegressionModels)[keyof typeof RegressionModels];
 
 export const RegressionPrimaryMetrics = {
@@ -684,6 +808,9 @@ export const RegressionPrimaryMetrics = {
     NormalizedMeanAbsoluteError: "NormalizedMeanAbsoluteError",
 } as const;
 
+/**
+ * Primary metric for regression task.
+ */
 export type RegressionPrimaryMetrics = (typeof RegressionPrimaryMetrics)[keyof typeof RegressionPrimaryMetrics];
 
 export const SamplingAlgorithmType = {
@@ -692,6 +819,9 @@ export const SamplingAlgorithmType = {
     Bayesian: "Bayesian",
 } as const;
 
+/**
+ * [Required] The algorithm used for generating hyperparameter values, along with configuration properties
+ */
 export type SamplingAlgorithmType = (typeof SamplingAlgorithmType)[keyof typeof SamplingAlgorithmType];
 
 export const ScaleType = {
@@ -699,6 +829,9 @@ export const ScaleType = {
     TargetUtilization: "TargetUtilization",
 } as const;
 
+/**
+ * [Required] Type of deployment scaling algorithm
+ */
 export type ScaleType = (typeof ScaleType)[keyof typeof ScaleType];
 
 export const ScheduleStatus = {
@@ -712,6 +845,9 @@ export const ScheduleStatus = {
     Disabled: "Disabled",
 } as const;
 
+/**
+ * Specifies the schedule's status
+ */
 export type ScheduleStatus = (typeof ScheduleStatus)[keyof typeof ScheduleStatus];
 
 export const ScheduleType = {
@@ -725,6 +861,9 @@ export const ScheduleType = {
     Recurrence: "Recurrence",
 } as const;
 
+/**
+ * [Required] Specifies the schedule type
+ */
 export type ScheduleType = (typeof ScheduleType)[keyof typeof ScheduleType];
 
 export const SeasonalityMode = {
@@ -738,6 +877,9 @@ export const SeasonalityMode = {
     Custom: "Custom",
 } as const;
 
+/**
+ * [Required] Seasonality mode.
+ */
 export type SeasonalityMode = (typeof SeasonalityMode)[keyof typeof SeasonalityMode];
 
 export const SecretsType = {
@@ -749,6 +891,9 @@ export const SecretsType = {
     KerberosKeytab: "KerberosKeytab",
 } as const;
 
+/**
+ * [Required] Credential type used to authentication with storage.
+ */
 export type SecretsType = (typeof SecretsType)[keyof typeof SecretsType];
 
 export const ServiceDataAccessAuthIdentity = {
@@ -766,6 +911,9 @@ export const ServiceDataAccessAuthIdentity = {
     WorkspaceUserAssignedIdentity: "WorkspaceUserAssignedIdentity",
 } as const;
 
+/**
+ * Indicates which identity to use to authenticate service data access to customer's storage.
+ */
 export type ServiceDataAccessAuthIdentity = (typeof ServiceDataAccessAuthIdentity)[keyof typeof ServiceDataAccessAuthIdentity];
 
 export const ShortSeriesHandlingConfiguration = {
@@ -787,6 +935,9 @@ export const ShortSeriesHandlingConfiguration = {
     Drop: "Drop",
 } as const;
 
+/**
+ * The parameter defining how if AutoML should handle short time series.
+ */
 export type ShortSeriesHandlingConfiguration = (typeof ShortSeriesHandlingConfiguration)[keyof typeof ShortSeriesHandlingConfiguration];
 
 export const SkuTier = {
@@ -796,6 +947,9 @@ export const SkuTier = {
     Premium: "Premium",
 } as const;
 
+/**
+ * This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+ */
 export type SkuTier = (typeof SkuTier)[keyof typeof SkuTier];
 
 export const StackMetaLearnerType = {
@@ -821,6 +975,9 @@ export const StackMetaLearnerType = {
     LinearRegression: "LinearRegression",
 } as const;
 
+/**
+ * The meta-learner is a model trained on the output of the individual heterogeneous models.
+ */
 export type StackMetaLearnerType = (typeof StackMetaLearnerType)[keyof typeof StackMetaLearnerType];
 
 export const StochasticOptimizer = {
@@ -842,6 +999,9 @@ export const StochasticOptimizer = {
     Adamw: "Adamw",
 } as const;
 
+/**
+ * Type of optimizer.
+ */
 export type StochasticOptimizer = (typeof StochasticOptimizer)[keyof typeof StochasticOptimizer];
 
 export const TargetAggregationFunction = {
@@ -855,6 +1015,10 @@ export const TargetAggregationFunction = {
     Mean: "Mean",
 } as const;
 
+/**
+ * The function to be used to aggregate the time series target column to conform to a user specified frequency.
+ * If the TargetAggregateFunction is set i.e. not 'None', but the freq parameter is not set, the error is raised. The possible target aggregation functions are: "sum", "max", "min" and "mean".
+ */
 export type TargetAggregationFunction = (typeof TargetAggregationFunction)[keyof typeof TargetAggregationFunction];
 
 export const TargetLagsMode = {
@@ -868,6 +1032,9 @@ export const TargetLagsMode = {
     Custom: "Custom",
 } as const;
 
+/**
+ * [Required] Set target lags mode - Auto/Custom
+ */
 export type TargetLagsMode = (typeof TargetLagsMode)[keyof typeof TargetLagsMode];
 
 export const TargetRollingWindowSizeMode = {
@@ -881,6 +1048,9 @@ export const TargetRollingWindowSizeMode = {
     Custom: "Custom",
 } as const;
 
+/**
+ * [Required] TargetRollingWindowSiz detection mode.
+ */
 export type TargetRollingWindowSizeMode = (typeof TargetRollingWindowSizeMode)[keyof typeof TargetRollingWindowSizeMode];
 
 export const TaskType = {
@@ -934,6 +1104,9 @@ export const TaskType = {
     TextNER: "TextNER",
 } as const;
 
+/**
+ * [Required] Task type for AutoMLJob.
+ */
 export type TaskType = (typeof TaskType)[keyof typeof TaskType];
 
 export const UseStl = {
@@ -945,6 +1118,9 @@ export const UseStl = {
     SeasonTrend: "SeasonTrend",
 } as const;
 
+/**
+ * Configure STL Decomposition of the time-series target column.
+ */
 export type UseStl = (typeof UseStl)[keyof typeof UseStl];
 
 export const ValidationMetricType = {
@@ -966,12 +1142,18 @@ export const ValidationMetricType = {
     CocoVoc: "CocoVoc",
 } as const;
 
+/**
+ * Metric computation method to use for validation metrics.
+ */
 export type ValidationMetricType = (typeof ValidationMetricType)[keyof typeof ValidationMetricType];
 
 export const ValueFormat = {
     JSON: "JSON",
 } as const;
 
+/**
+ * format for the workspace connection value
+ */
 export type ValueFormat = (typeof ValueFormat)[keyof typeof ValueFormat];
 
 export const Weekday = {
@@ -1005,4 +1187,7 @@ export const Weekday = {
     Sunday: "Sunday",
 } as const;
 
+/**
+ * Enum of weekdays
+ */
 export type Weekday = (typeof Weekday)[keyof typeof Weekday];

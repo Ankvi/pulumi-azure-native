@@ -2,6 +2,9 @@ export const ResourceIdentityType = {
     SystemAssigned: "SystemAssigned",
 } as const;
 
+/**
+ * The identity type.
+ */
 export type ResourceIdentityType = (typeof ResourceIdentityType)[keyof typeof ResourceIdentityType];
 
 export const ScalingHostPoolType = {
@@ -11,6 +14,9 @@ export const ScalingHostPoolType = {
     Pooled: "Pooled",
 } as const;
 
+/**
+ * HostPool type for desktop.
+ */
 export type ScalingHostPoolType = (typeof ScalingHostPoolType)[keyof typeof ScalingHostPoolType];
 
 export const SessionHostLoadBalancingAlgorithm = {
@@ -18,6 +24,9 @@ export const SessionHostLoadBalancingAlgorithm = {
     DepthFirst: "DepthFirst",
 } as const;
 
+/**
+ * Load balancing algorithm for ramp up period.
+ */
 export type SessionHostLoadBalancingAlgorithm = (typeof SessionHostLoadBalancingAlgorithm)[keyof typeof SessionHostLoadBalancingAlgorithm];
 
 export const SkuTier = {
@@ -27,6 +36,9 @@ export const SkuTier = {
     Premium: "Premium",
 } as const;
 
+/**
+ * This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+ */
 export type SkuTier = (typeof SkuTier)[keyof typeof SkuTier];
 
 export const StopHostsWhen = {
@@ -34,4 +46,7 @@ export const StopHostsWhen = {
     ZeroActiveSessions: "ZeroActiveSessions",
 } as const;
 
+/**
+ * Specifies when to stop hosts during ramp down period.
+ */
 export type StopHostsWhen = (typeof StopHostsWhen)[keyof typeof StopHostsWhen];

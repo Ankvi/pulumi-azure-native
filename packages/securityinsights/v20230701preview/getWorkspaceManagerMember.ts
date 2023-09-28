@@ -52,7 +52,7 @@ export interface GetWorkspaceManagerMemberResult {
     /**
      * Fully qualified resource ID of the target Sentinel workspace joining the given Sentinel workspace manager
      */
-    readonly targetWorkspaceId: string;
+    readonly targetWorkspaceResourceId: string;
     /**
      * Tenant id of the target Sentinel workspace joining the given Sentinel workspace manager
      */

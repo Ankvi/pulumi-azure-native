@@ -106,6 +106,11 @@ export const getReadWriteDatabase: typeof import("./getReadWriteDatabase").getRe
 export const getReadWriteDatabaseOutput: typeof import("./getReadWriteDatabase").getReadWriteDatabaseOutput = null as any;
 utilities.lazyLoad(exports, ["getReadWriteDatabase","getReadWriteDatabaseOutput"], () => require("./getReadWriteDatabase"));
 
+export { GetSandboxCustomImageArgs, GetSandboxCustomImageResult, GetSandboxCustomImageOutputArgs } from "./getSandboxCustomImage";
+export const getSandboxCustomImage: typeof import("./getSandboxCustomImage").getSandboxCustomImage = null as any;
+export const getSandboxCustomImageOutput: typeof import("./getSandboxCustomImage").getSandboxCustomImageOutput = null as any;
+utilities.lazyLoad(exports, ["getSandboxCustomImage","getSandboxCustomImageOutput"], () => require("./getSandboxCustomImage"));
+
 export { GetScriptArgs, GetScriptResult, GetScriptOutputArgs } from "./getScript";
 export const getScript: typeof import("./getScript").getScript = null as any;
 export const getScriptOutput: typeof import("./getScript").getScriptOutput = null as any;
@@ -151,6 +156,11 @@ export type ReadWriteDatabase = import("./readWriteDatabase").ReadWriteDatabase;
 export const ReadWriteDatabase: typeof import("./readWriteDatabase").ReadWriteDatabase = null as any;
 utilities.lazyLoad(exports, ["ReadWriteDatabase"], () => require("./readWriteDatabase"));
 
+export { SandboxCustomImageArgs } from "./sandboxCustomImage";
+export type SandboxCustomImage = import("./sandboxCustomImage").SandboxCustomImage;
+export const SandboxCustomImage: typeof import("./sandboxCustomImage").SandboxCustomImage = null as any;
+utilities.lazyLoad(exports, ["SandboxCustomImage"], () => require("./sandboxCustomImage"));
+
 export { ScriptArgs } from "./script";
 export type Script = import("./script").Script;
 export const Script: typeof import("./script").Script = null as any;
@@ -170,6 +180,7 @@ import * as v20210827 from "./v20210827";
 import * as v20220707 from "./v20220707";
 import * as v20221229 from "./v20221229";
 import * as v20230502 from "./v20230502";
+import * as v20230815 from "./v20230815";
 
 export {
     v20180907preview,
@@ -181,6 +192,7 @@ export {
     v20220707,
     v20221229,
     v20230502,
+    v20230815,
 };
 
 const _module = {
@@ -213,6 +225,8 @@ const _module = {
                 return new ReadOnlyFollowingDatabase(name, <any>undefined, { urn })
             case "azure-native:kusto:ReadWriteDatabase":
                 return new ReadWriteDatabase(name, <any>undefined, { urn })
+            case "azure-native:kusto:SandboxCustomImage":
+                return new SandboxCustomImage(name, <any>undefined, { urn })
             case "azure-native:kusto:Script":
                 return new Script(name, <any>undefined, { urn })
             default:

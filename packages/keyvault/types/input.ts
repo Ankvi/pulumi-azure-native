@@ -24,7 +24,7 @@ export interface AccessPolicyEntryArgs {
 
 export interface ActionArgs {
     /**
-     * The type of the action.
+     * The type of the action. The value should be compared case-insensitively.
      */
     type?: pulumi.Input<enums.KeyRotationPolicyActionType>;
 }

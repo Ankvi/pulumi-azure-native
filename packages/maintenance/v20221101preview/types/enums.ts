@@ -29,6 +29,9 @@ export const MaintenanceScope = {
     SQLManagedInstance: "SQLManagedInstance",
 } as const;
 
+/**
+ * Gets or sets maintenanceScope of the configuration
+ */
 export type MaintenanceScope = (typeof MaintenanceScope)[keyof typeof MaintenanceScope];
 
 export const RebootOptions = {
@@ -37,6 +40,9 @@ export const RebootOptions = {
     Always: "Always",
 } as const;
 
+/**
+ * Possible reboot preference as defined by the user based on which it would be decided to reboot the machine or not after the patch operation is completed.
+ */
 export type RebootOptions = (typeof RebootOptions)[keyof typeof RebootOptions];
 
 export const TaskScope = {
@@ -44,6 +50,9 @@ export const TaskScope = {
     Resource: "Resource",
 } as const;
 
+/**
+ * Global Task execute once when schedule trigger. Resource task execute for each VM.
+ */
 export type TaskScope = (typeof TaskScope)[keyof typeof TaskScope];
 
 export const Visibility = {
@@ -57,4 +66,7 @@ export const Visibility = {
     Public: "Public",
 } as const;
 
+/**
+ * Gets or sets the visibility of the configuration. The default value is 'Custom'
+ */
 export type Visibility = (typeof Visibility)[keyof typeof Visibility];

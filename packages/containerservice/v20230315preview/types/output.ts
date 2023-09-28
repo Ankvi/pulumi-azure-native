@@ -155,9 +155,8 @@ import * as pulumi from "@pulumi/pulumi";
      */
     export interface UpdateGroupResponse {
         /**
-         * The name of the Fleet member group to update. 
-         * It should match the name of an existing FleetMember group.
-         * A group can only appear once across all UpdateStages in the UpdateRun.
+         * Name of the group.
+         * It must match a group name of an existing fleet member. 
          */
         name: string;
     }
@@ -195,21 +194,23 @@ import * as pulumi from "@pulumi/pulumi";
     }
 
     /**
-     * The UpdateRunStrategy configures the sequence of Stages and Groups in which the clusters will be updated.
+     * Defines the update sequence of the clusters via stages and groups.
+     *
+     * Stages within a run are executed sequentially one after another.
+     * Groups within a stage are executed in parallel.
+     * Member clusters within a group are updated sequentially one after another.
+     *
+     * A valid strategy contains no duplicate groups within or across stages.
      */
     export interface UpdateRunStrategyResponse {
         /**
-         * The list of stages that compose this update run.
+         * The list of stages that compose this update run. Min size: 1.
          */
         stages: UpdateStageResponse[];
     }
 
     /**
-     * Contains the groups to be updated by an UpdateRun.
-     * Update order:
-     * - Sequential between stages: Stages run sequentially. The previous stage must complete before the next one starts.
-     * - Parallel within a stage: Groups within a stage run in parallel.
-     * - Sequential within a group: Clusters within a group are updated sequentially.
+     * Defines a stage which contains the groups to update and the steps to take (e.g., wait for a time period) before starting the next stage.
      */
     export interface UpdateStageResponse {
         /**
@@ -217,8 +218,7 @@ import * as pulumi from "@pulumi/pulumi";
          */
         afterStageWaitInSeconds?: number;
         /**
-         * A list of group names that compose the stage.
-         * The groups will be updated in parallel. Each group name can only appear once in the UpdateRun.
+         * Defines the groups to be executed in parallel in this stage. Duplicate groups are not allowed. Min size: 1.
          */
         groups?: UpdateGroupResponse[];
         /**

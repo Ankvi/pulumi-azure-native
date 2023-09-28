@@ -9,6 +9,9 @@ export const DhGroup = {
     DHGroup24: "DHGroup24",
 } as const;
 
+/**
+ * The DH Group used in IKE Phase 1 for initial SA.
+ */
 export type DhGroup = (typeof DhGroup)[keyof typeof DhGroup];
 
 export const IkeEncryption = {
@@ -21,6 +24,9 @@ export const IkeEncryption = {
     GCMAES128: "GCMAES128",
 } as const;
 
+/**
+ * The IKE encryption algorithm (IKE phase 2).
+ */
 export type IkeEncryption = (typeof IkeEncryption)[keyof typeof IkeEncryption];
 
 export const IkeIntegrity = {
@@ -32,6 +38,9 @@ export const IkeIntegrity = {
     GCMAES128: "GCMAES128",
 } as const;
 
+/**
+ * The IKE integrity algorithm (IKE phase 2).
+ */
 export type IkeIntegrity = (typeof IkeIntegrity)[keyof typeof IkeIntegrity];
 
 export const IpsecEncryption = {
@@ -46,6 +55,9 @@ export const IpsecEncryption = {
     GCMAES256: "GCMAES256",
 } as const;
 
+/**
+ * The IPSec encryption algorithm (IKE phase 1).
+ */
 export type IpsecEncryption = (typeof IpsecEncryption)[keyof typeof IpsecEncryption];
 
 export const IpsecIntegrity = {
@@ -57,6 +69,9 @@ export const IpsecIntegrity = {
     GCMAES256: "GCMAES256",
 } as const;
 
+/**
+ * The IPSec integrity algorithm (IKE phase 1).
+ */
 export type IpsecIntegrity = (typeof IpsecIntegrity)[keyof typeof IpsecIntegrity];
 
 export const PfsGroup = {
@@ -71,6 +86,9 @@ export const PfsGroup = {
     PFSMM: "PFSMM",
 } as const;
 
+/**
+ * The Pfs Group used in IKE Phase 2 for new child SA.
+ */
 export type PfsGroup = (typeof PfsGroup)[keyof typeof PfsGroup];
 
 export const VpnGatewayTunnelingProtocol = {
@@ -78,6 +96,9 @@ export const VpnGatewayTunnelingProtocol = {
     OpenVPN: "OpenVPN",
 } as const;
 
+/**
+ * VPN protocol enabled for the P2SVpnServerConfiguration.
+ */
 export type VpnGatewayTunnelingProtocol = (typeof VpnGatewayTunnelingProtocol)[keyof typeof VpnGatewayTunnelingProtocol];
 
 export const WebApplicationFirewallAction = {
@@ -86,6 +107,9 @@ export const WebApplicationFirewallAction = {
     Log: "Log",
 } as const;
 
+/**
+ * Type of Actions.
+ */
 export type WebApplicationFirewallAction = (typeof WebApplicationFirewallAction)[keyof typeof WebApplicationFirewallAction];
 
 export const WebApplicationFirewallEnabledState = {
@@ -93,6 +117,9 @@ export const WebApplicationFirewallEnabledState = {
     Enabled: "Enabled",
 } as const;
 
+/**
+ * Describes if the policy is in enabled state or disabled state.
+ */
 export type WebApplicationFirewallEnabledState = (typeof WebApplicationFirewallEnabledState)[keyof typeof WebApplicationFirewallEnabledState];
 
 export const WebApplicationFirewallMatchVariable = {
@@ -106,6 +133,9 @@ export const WebApplicationFirewallMatchVariable = {
     RequestCookies: "RequestCookies",
 } as const;
 
+/**
+ * Match Variable.
+ */
 export type WebApplicationFirewallMatchVariable = (typeof WebApplicationFirewallMatchVariable)[keyof typeof WebApplicationFirewallMatchVariable];
 
 export const WebApplicationFirewallMode = {
@@ -113,6 +143,9 @@ export const WebApplicationFirewallMode = {
     Detection: "Detection",
 } as const;
 
+/**
+ * Describes if it is in detection mode or prevention mode at policy level.
+ */
 export type WebApplicationFirewallMode = (typeof WebApplicationFirewallMode)[keyof typeof WebApplicationFirewallMode];
 
 export const WebApplicationFirewallOperator = {
@@ -128,6 +161,9 @@ export const WebApplicationFirewallOperator = {
     Regex: "Regex",
 } as const;
 
+/**
+ * Describes operator to be matched.
+ */
 export type WebApplicationFirewallOperator = (typeof WebApplicationFirewallOperator)[keyof typeof WebApplicationFirewallOperator];
 
 export const WebApplicationFirewallRuleType = {
@@ -135,6 +171,9 @@ export const WebApplicationFirewallRuleType = {
     Invalid: "Invalid",
 } as const;
 
+/**
+ * Describes type of rule.
+ */
 export type WebApplicationFirewallRuleType = (typeof WebApplicationFirewallRuleType)[keyof typeof WebApplicationFirewallRuleType];
 
 export const WebApplicationFirewallTransform = {
@@ -146,4 +185,7 @@ export const WebApplicationFirewallTransform = {
     HtmlEntityDecode: "HtmlEntityDecode",
 } as const;
 
+/**
+ * Describes what transforms applied before matching.
+ */
 export type WebApplicationFirewallTransform = (typeof WebApplicationFirewallTransform)[keyof typeof WebApplicationFirewallTransform];

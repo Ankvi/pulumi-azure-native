@@ -9,6 +9,9 @@ export const AlertDetail = {
     Severity: "Severity",
 } as const;
 
+/**
+ * Alert detail
+ */
 export type AlertDetail = (typeof AlertDetail)[keyof typeof AlertDetail];
 
 export const AlertRuleKind = {
@@ -19,6 +22,9 @@ export const AlertRuleKind = {
     ThreatIntelligence: "ThreatIntelligence",
 } as const;
 
+/**
+ * The kind of the alert rule
+ */
 export type AlertRuleKind = (typeof AlertRuleKind)[keyof typeof AlertRuleKind];
 
 export const AlertSeverity = {
@@ -40,6 +46,9 @@ export const AlertSeverity = {
     Informational: "Informational",
 } as const;
 
+/**
+ * The severity for alerts created by this alert rule.
+ */
 export type AlertSeverity = (typeof AlertSeverity)[keyof typeof AlertSeverity];
 
 export const AttackTactic = {
@@ -58,12 +67,18 @@ export const AttackTactic = {
     PreAttack: "PreAttack",
 } as const;
 
+/**
+ * The severity for alerts created by this alert rule.
+ */
 export type AttackTactic = (typeof AttackTactic)[keyof typeof AttackTactic];
 
 export const ConnectivityType = {
     IsConnectedQuery: "IsConnectedQuery",
 } as const;
 
+/**
+ * type of connectivity
+ */
 export type ConnectivityType = (typeof ConnectivityType)[keyof typeof ConnectivityType];
 
 export const ContentType = {
@@ -71,6 +86,9 @@ export const ContentType = {
     Workbook: "Workbook",
 } as const;
 
+/**
+ * Content type.
+ */
 export type ContentType = (typeof ContentType)[keyof typeof ContentType];
 
 export const CreatedByType = {
@@ -80,12 +98,18 @@ export const CreatedByType = {
     Key: "Key",
 } as const;
 
+/**
+ * The type of identity that last modified the resource.
+ */
 export type CreatedByType = (typeof CreatedByType)[keyof typeof CreatedByType];
 
 export const CustomEntityQueryKind = {
     Activity: "Activity",
 } as const;
 
+/**
+ * the entity query kind
+ */
 export type CustomEntityQueryKind = (typeof CustomEntityQueryKind)[keyof typeof CustomEntityQueryKind];
 
 export const DataConnectorKind = {
@@ -105,6 +129,9 @@ export const DataConnectorKind = {
     GenericUI: "GenericUI",
 } as const;
 
+/**
+ * The data connector kind
+ */
 export type DataConnectorKind = (typeof DataConnectorKind)[keyof typeof DataConnectorKind];
 
 export const DataTypeState = {
@@ -112,6 +139,9 @@ export const DataTypeState = {
     Disabled: "Disabled",
 } as const;
 
+/**
+ * Describe whether this data type connection is enabled or not.
+ */
 export type DataTypeState = (typeof DataTypeState)[keyof typeof DataTypeState];
 
 export const EntityMappingType = {
@@ -189,6 +219,9 @@ export const EntityMappingType = {
     SubmissionMail: "SubmissionMail",
 } as const;
 
+/**
+ * The V3 type of the mapped entity
+ */
 export type EntityMappingType = (typeof EntityMappingType)[keyof typeof EntityMappingType];
 
 export const EntityType = {
@@ -278,6 +311,9 @@ export const EntityType = {
     SubmissionMail: "SubmissionMail",
 } as const;
 
+/**
+ * The type of the query's source entity
+ */
 export type EntityType = (typeof EntityType)[keyof typeof EntityType];
 
 export const EventGroupingAggregationKind = {
@@ -285,6 +321,9 @@ export const EventGroupingAggregationKind = {
     AlertPerResult: "AlertPerResult",
 } as const;
 
+/**
+ * The event grouping aggregation kinds
+ */
 export type EventGroupingAggregationKind = (typeof EventGroupingAggregationKind)[keyof typeof EventGroupingAggregationKind];
 
 export const IncidentClassification = {
@@ -306,6 +345,9 @@ export const IncidentClassification = {
     FalsePositive: "FalsePositive",
 } as const;
 
+/**
+ * The reason the incident was closed
+ */
 export type IncidentClassification = (typeof IncidentClassification)[keyof typeof IncidentClassification];
 
 export const IncidentClassificationReason = {
@@ -327,6 +369,9 @@ export const IncidentClassificationReason = {
     InaccurateData: "InaccurateData",
 } as const;
 
+/**
+ * The classification reason the incident was closed with
+ */
 export type IncidentClassificationReason = (typeof IncidentClassificationReason)[keyof typeof IncidentClassificationReason];
 
 export const IncidentSeverity = {
@@ -348,6 +393,9 @@ export const IncidentSeverity = {
     Informational: "Informational",
 } as const;
 
+/**
+ * The severity of the incident
+ */
 export type IncidentSeverity = (typeof IncidentSeverity)[keyof typeof IncidentSeverity];
 
 export const IncidentStatus = {
@@ -365,6 +413,9 @@ export const IncidentStatus = {
     Closed: "Closed",
 } as const;
 
+/**
+ * The status of the incident
+ */
 export type IncidentStatus = (typeof IncidentStatus)[keyof typeof IncidentStatus];
 
 export const Kind = {
@@ -384,6 +435,9 @@ export const Kind = {
     Solution: "Solution",
 } as const;
 
+/**
+ * The kind of content the metadata is for.
+ */
 export type Kind = (typeof Kind)[keyof typeof Kind];
 
 export const MatchingMethod = {
@@ -401,6 +455,9 @@ export const MatchingMethod = {
     Selected: "Selected",
 } as const;
 
+/**
+ * Grouping matching method. When method is Selected at least one of groupByEntities, groupByAlertDetails, groupByCustomDetails must be provided and not empty.
+ */
 export type MatchingMethod = (typeof MatchingMethod)[keyof typeof MatchingMethod];
 
 export const MicrosoftSecurityProductName = {
@@ -413,6 +470,9 @@ export const MicrosoftSecurityProductName = {
     Microsoft_Defender_Advanced_Threat_Protection: "Microsoft Defender Advanced Threat Protection",
 } as const;
 
+/**
+ * The alerts' productName on which the cases will be generated
+ */
 export type MicrosoftSecurityProductName = (typeof MicrosoftSecurityProductName)[keyof typeof MicrosoftSecurityProductName];
 
 export const Operator = {
@@ -420,6 +480,9 @@ export const Operator = {
     OR: "OR",
 } as const;
 
+/**
+ * Operator used for list of dependencies in criteria array.
+ */
 export type Operator = (typeof Operator)[keyof typeof Operator];
 
 export const PermissionProviderScope = {
@@ -428,6 +491,9 @@ export const PermissionProviderScope = {
     Workspace: "Workspace",
 } as const;
 
+/**
+ * Permission provider scope
+ */
 export type PermissionProviderScope = (typeof PermissionProviderScope)[keyof typeof PermissionProviderScope];
 
 export const PollingFrequency = {
@@ -445,6 +511,9 @@ export const PollingFrequency = {
     OnceADay: "OnceADay",
 } as const;
 
+/**
+ * The polling frequency for the TAXII server.
+ */
 export type PollingFrequency = (typeof PollingFrequency)[keyof typeof PollingFrequency];
 
 export const ProviderName = {
@@ -456,6 +525,9 @@ export const ProviderName = {
     Microsoft_Authorization_policyAssignments: "Microsoft.Authorization/policyAssignments",
 } as const;
 
+/**
+ * Provider name
+ */
 export type ProviderName = (typeof ProviderName)[keyof typeof ProviderName];
 
 export const RepoType = {
@@ -463,6 +535,9 @@ export const RepoType = {
     DevOps: "DevOps",
 } as const;
 
+/**
+ * The repository type of the source control
+ */
 export type RepoType = (typeof RepoType)[keyof typeof RepoType];
 
 export const SettingKind = {
@@ -472,6 +547,9 @@ export const SettingKind = {
     Ueba: "Ueba",
 } as const;
 
+/**
+ * The kind of the setting
+ */
 export type SettingKind = (typeof SettingKind)[keyof typeof SettingKind];
 
 export const SettingType = {
@@ -480,6 +558,9 @@ export const SettingType = {
     InfoMessage: "InfoMessage",
 } as const;
 
+/**
+ * The kind of the setting
+ */
 export type SettingType = (typeof SettingType)[keyof typeof SettingType];
 
 export const Source = {
@@ -487,6 +568,9 @@ export const Source = {
     Remote_storage: "Remote storage",
 } as const;
 
+/**
+ * The source of the watchlist
+ */
 export type Source = (typeof Source)[keyof typeof Source];
 
 export const SourceKind = {
@@ -496,6 +580,9 @@ export const SourceKind = {
     SourceRepository: "SourceRepository",
 } as const;
 
+/**
+ * Source type of the content
+ */
 export type SourceKind = (typeof SourceKind)[keyof typeof SourceKind];
 
 export const SupportTier = {
@@ -504,6 +591,9 @@ export const SupportTier = {
     Community: "Community",
 } as const;
 
+/**
+ * Type of support for content item
+ */
 export type SupportTier = (typeof SupportTier)[keyof typeof SupportTier];
 
 export const TriggerOperator = {
@@ -513,6 +603,9 @@ export const TriggerOperator = {
     NotEqual: "NotEqual",
 } as const;
 
+/**
+ * The operation against the threshold that triggers alert rule.
+ */
 export type TriggerOperator = (typeof TriggerOperator)[keyof typeof TriggerOperator];
 
 export const UebaDataSources = {
@@ -522,4 +615,7 @@ export const UebaDataSources = {
     SigninLogs: "SigninLogs",
 } as const;
 
+/**
+ * The data source that enriched by ueba.
+ */
 export type UebaDataSources = (typeof UebaDataSources)[keyof typeof UebaDataSources];

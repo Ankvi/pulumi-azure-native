@@ -1,6 +1,48 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
+ * An individual conflict error.
+ */
+export interface CatalogConflictErrorResponse {
+    /**
+     * Name of the conflicting catalog item.
+     */
+    name: string;
+    /**
+     * The path of the file that has a conflicting name.
+     */
+    path: string;
+}
+
+/**
+ * Catalog error details
+ */
+export interface CatalogErrorDetailsResponse {
+    /**
+     * An identifier for the error.
+     */
+    code?: string;
+    /**
+     * A message describing the error.
+     */
+    message?: string;
+}
+
+/**
+ * An individual synchronization error.
+ */
+export interface CatalogSyncErrorResponse {
+    /**
+     * Errors associated with the file.
+     */
+    errorDetails: CatalogErrorDetailsResponse[];
+    /**
+     * The path of the file the error is associated with.
+     */
+    path: string;
+}
+
+/**
  * A role that can be assigned to a user.
  */
 export interface EnvironmentRoleResponse {
@@ -203,4 +245,5 @@ export interface UserRoleAssignmentResponse {
      */
     roles?: {[key: string]: EnvironmentRoleResponse};
 }
+
 

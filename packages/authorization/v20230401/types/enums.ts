@@ -9,6 +9,9 @@ export const EnforcementMode = {
     DoNotEnforce: "DoNotEnforce",
 } as const;
 
+/**
+ * The policy assignment enforcement mode. Possible values are Default and DoNotEnforce.
+ */
 export type EnforcementMode = (typeof EnforcementMode)[keyof typeof EnforcementMode];
 
 export const OverrideKind = {
@@ -18,6 +21,9 @@ export const OverrideKind = {
     PolicyEffect: "policyEffect",
 } as const;
 
+/**
+ * The override kind.
+ */
 export type OverrideKind = (typeof OverrideKind)[keyof typeof OverrideKind];
 
 export const ParameterType = {
@@ -30,6 +36,9 @@ export const ParameterType = {
     DateTime: "DateTime",
 } as const;
 
+/**
+ * The data type of the parameter.
+ */
 export type ParameterType = (typeof ParameterType)[keyof typeof ParameterType];
 
 export const PolicyType = {
@@ -39,6 +48,9 @@ export const PolicyType = {
     Static: "Static",
 } as const;
 
+/**
+ * The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
+ */
 export type PolicyType = (typeof PolicyType)[keyof typeof PolicyType];
 
 export const ResourceIdentityType = {
@@ -56,6 +68,9 @@ export const ResourceIdentityType = {
     None: "None",
 } as const;
 
+/**
+ * The identity type. This is the only required field when adding a system or user assigned identity to a resource.
+ */
 export type ResourceIdentityType = (typeof ResourceIdentityType)[keyof typeof ResourceIdentityType];
 
 export const SelectorKind = {
@@ -77,4 +92,7 @@ export const SelectorKind = {
     PolicyDefinitionReferenceId: "policyDefinitionReferenceId",
 } as const;
 
+/**
+ * The selector kind.
+ */
 export type SelectorKind = (typeof SelectorKind)[keyof typeof SelectorKind];

@@ -13,6 +13,9 @@ export const ComplianceState = {
     Unknown: "Unknown",
 } as const;
 
+/**
+ * The compliance state that should be set on the resource.
+ */
 export type ComplianceState = (typeof ComplianceState)[keyof typeof ComplianceState];
 
 export const ResourceDiscoveryMode = {
@@ -26,4 +29,7 @@ export const ResourceDiscoveryMode = {
     ReEvaluateCompliance: "ReEvaluateCompliance",
 } as const;
 
+/**
+ * The way resources to remediate are discovered. Defaults to ExistingNonCompliant if not specified.
+ */
 export type ResourceDiscoveryMode = (typeof ResourceDiscoveryMode)[keyof typeof ResourceDiscoveryMode];

@@ -5,6 +5,9 @@ export const DataBoxEdgeDeviceKind = {
     AzureModularDataCentre: "AzureModularDataCentre",
 } as const;
 
+/**
+ * The kind of the device.
+ */
 export type DataBoxEdgeDeviceKind = (typeof DataBoxEdgeDeviceKind)[keyof typeof DataBoxEdgeDeviceKind];
 
 export const DataBoxEdgeDeviceStatus = {
@@ -17,6 +20,9 @@ export const DataBoxEdgeDeviceStatus = {
     Maintenance: "Maintenance",
 } as const;
 
+/**
+ * The status of the Data Box Edge/Gateway device.
+ */
 export type DataBoxEdgeDeviceStatus = (typeof DataBoxEdgeDeviceStatus)[keyof typeof DataBoxEdgeDeviceStatus];
 
 export const DataResidencyType = {
@@ -24,6 +30,9 @@ export const DataResidencyType = {
     ZoneReplication: "ZoneReplication",
 } as const;
 
+/**
+ * DataResidencyType enum
+ */
 export type DataResidencyType = (typeof DataResidencyType)[keyof typeof DataResidencyType];
 
 export const MsiIdentityType = {
@@ -32,6 +41,9 @@ export const MsiIdentityType = {
     UserAssigned: "UserAssigned",
 } as const;
 
+/**
+ * Identity type
+ */
 export type MsiIdentityType = (typeof MsiIdentityType)[keyof typeof MsiIdentityType];
 
 export const SkuName = {
@@ -62,10 +74,16 @@ export const SkuName = {
     Management: "Management",
 } as const;
 
+/**
+ * SKU name.
+ */
 export type SkuName = (typeof SkuName)[keyof typeof SkuName];
 
 export const SkuTier = {
     Standard: "Standard",
 } as const;
 
+/**
+ * The SKU tier. This is based on the SKU name.
+ */
 export type SkuTier = (typeof SkuTier)[keyof typeof SkuTier];

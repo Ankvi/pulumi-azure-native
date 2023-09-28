@@ -3,6 +3,9 @@ export const ApiType = {
     Soap: "soap",
 } as const;
 
+/**
+ * Type of API.
+ */
 export type ApiType = (typeof ApiType)[keyof typeof ApiType];
 
 export const BearerTokenSendingMethods = {
@@ -16,6 +19,9 @@ export const BearerTokenSendingMethods = {
     Query: "query",
 } as const;
 
+/**
+ * Form of an authorization grant, which the client uses to request the access token.
+ */
 export type BearerTokenSendingMethods = (typeof BearerTokenSendingMethods)[keyof typeof BearerTokenSendingMethods];
 
 export const ContentFormat = {
@@ -61,6 +67,9 @@ export const ContentFormat = {
     Openapi_json_link: "openapi+json-link",
 } as const;
 
+/**
+ * Format of the Content in which the API is getting imported.
+ */
 export type ContentFormat = (typeof ContentFormat)[keyof typeof ContentFormat];
 
 export const Protocol = {
@@ -81,4 +90,9 @@ export const SoapApiType = {
     SoapPassThrough: "soap",
 } as const;
 
+/**
+ * Type of Api to create. 
+ *  * `http` creates a SOAP to REST API 
+ *  * `soap` creates a SOAP pass-through API .
+ */
 export type SoapApiType = (typeof SoapApiType)[keyof typeof SoapApiType];

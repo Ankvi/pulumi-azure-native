@@ -122,7 +122,7 @@ export class VMInstanceGuestAgent extends pulumi.CustomResource {
             resourceInputs["uuid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:connectedvmwarevsphere:VMInstanceGuestAgent" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:connectedvmwarevsphere:VMInstanceGuestAgent" }, { type: "azure-native:connectedvmwarevsphere/v20231001:VMInstanceGuestAgent" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(VMInstanceGuestAgent.__pulumiType, name, resourceInputs, opts);
     }

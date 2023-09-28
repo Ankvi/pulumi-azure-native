@@ -271,6 +271,15 @@ import * as pulumi from "@pulumi/pulumi";
          */
         virtualMachineConfiguration?: VirtualMachineConfigurationResponse;
     }
+    /**
+     * deploymentConfigurationResponseProvideDefaults sets the appropriate defaults for DeploymentConfigurationResponse
+     */
+    export function deploymentConfigurationResponseProvideDefaults(val: DeploymentConfigurationResponse): DeploymentConfigurationResponse {
+        return {
+            ...val,
+            virtualMachineConfiguration: (val.virtualMachineConfiguration ? virtualMachineConfigurationResponseProvideDefaults(val.virtualMachineConfiguration) : undefined),
+        };
+    }
 
     export interface DiffDiskSettingsResponse {
         /**
@@ -336,6 +345,15 @@ import * as pulumi from "@pulumi/pulumi";
          */
         targetLowPriorityNodes?: number;
     }
+    /**
+     * fixedScaleSettingsResponseProvideDefaults sets the appropriate defaults for FixedScaleSettingsResponse
+     */
+    export function fixedScaleSettingsResponseProvideDefaults(val: FixedScaleSettingsResponse): FixedScaleSettingsResponse {
+        return {
+            ...val,
+            resizeTimeout: (val.resizeTimeout) ?? "PT15M",
+        };
+    }
 
     /**
      * Rule to filter client IP address.
@@ -372,6 +390,15 @@ import * as pulumi from "@pulumi/pulumi";
          * A value of 'latest' can be specified to select the latest version of an image. If omitted, the default is 'latest'.
          */
         version?: string;
+    }
+    /**
+     * imageReferenceResponseProvideDefaults sets the appropriate defaults for ImageReferenceResponse
+     */
+    export function imageReferenceResponseProvideDefaults(val: ImageReferenceResponse): ImageReferenceResponse {
+        return {
+            ...val,
+            version: (val.version) ?? "latest",
+        };
     }
 
     export interface InboundNatPoolResponse {
@@ -501,6 +528,15 @@ import * as pulumi from "@pulumi/pulumi";
          * The virtual network must be in the same region and subscription as the Azure Batch account. The specified subnet should have enough free IP addresses to accommodate the number of nodes in the pool. If the subnet doesn't have enough free IP addresses, the pool will partially allocate compute nodes and a resize error will occur. The 'MicrosoftAzureBatch' service principal must have the 'Classic Virtual Machine Contributor' Role-Based Access Control (RBAC) role for the specified VNet. The specified subnet must allow communication from the Azure Batch service to be able to schedule tasks on the compute nodes. This can be verified by checking if the specified VNet has any associated Network Security Groups (NSG). If communication to the compute nodes in the specified subnet is denied by an NSG, then the Batch service will set the state of the compute nodes to unusable. If the specified VNet has any associated Network Security Groups (NSG), then a few reserved system ports must be enabled for inbound communication. For pools created with a virtual machine configuration, enable ports 29876 and 29877, as well as port 22 for Linux and port 3389 for Windows. For pools created with a cloud service configuration, enable ports 10100, 20100, and 30100. Also enable outbound connections to Azure Storage on port 443. For cloudServiceConfiguration pools, only 'classic' VNETs are supported. For more details see: https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
          */
         subnetId?: string;
+    }
+    /**
+     * networkConfigurationResponseProvideDefaults sets the appropriate defaults for NetworkConfigurationResponse
+     */
+    export function networkConfigurationResponseProvideDefaults(val: NetworkConfigurationResponse): NetworkConfigurationResponse {
+        return {
+            ...val,
+            dynamicVnetAssignmentScope: (val.dynamicVnetAssignmentScope) ?? "none",
+        };
     }
 
     /**
@@ -692,6 +728,15 @@ import * as pulumi from "@pulumi/pulumi";
          */
         fixedScale?: FixedScaleSettingsResponse;
     }
+    /**
+     * scaleSettingsResponseProvideDefaults sets the appropriate defaults for ScaleSettingsResponse
+     */
+    export function scaleSettingsResponseProvideDefaults(val: ScaleSettingsResponse): ScaleSettingsResponse {
+        return {
+            ...val,
+            fixedScale: (val.fixedScale ? fixedScaleSettingsResponseProvideDefaults(val.fixedScale) : undefined),
+        };
+    }
 
     /**
      * In some cases the start task may be re-run even though the node was not rebooted. Due to this, start tasks should be idempotent and exit gracefully if the setup they're performing has already been done. Special care should be taken to avoid start tasks which create breakaway process or install/launch services from the start task working directory, as this will block Batch from being able to re-run the start task.
@@ -707,7 +752,7 @@ import * as pulumi from "@pulumi/pulumi";
         containerSettings?: TaskContainerSettingsResponse;
         environmentSettings?: EnvironmentSettingResponse[];
         /**
-         * The Batch service retries a task if its exit code is nonzero. Note that this value specifically controls the number of retries. The Batch service will try the task once, and may then retry up to this limit. For example, if the maximum retry count is 3, Batch tries the task up to 4 times (one initial try and 3 retries). If the maximum retry count is 0, the Batch service does not retry the task. If the maximum retry count is -1, the Batch service retries the task without limit.
+         * The Batch service retries a task if its exit code is nonzero. Note that this value specifically controls the number of retries. The Batch service will try the task once, and may then retry up to this limit. For example, if the maximum retry count is 3, Batch tries the task up to 4 times (one initial try and 3 retries). If the maximum retry count is 0, the Batch service does not retry the task. If the maximum retry count is -1, the Batch service retries the task without limit. Default is 0.
          */
         maxTaskRetryCount?: number;
         resourceFiles?: ResourceFileResponse[];
@@ -719,6 +764,15 @@ import * as pulumi from "@pulumi/pulumi";
          * If true and the start task fails on a compute node, the Batch service retries the start task up to its maximum retry count (maxTaskRetryCount). If the task has still not completed successfully after all retries, then the Batch service marks the compute node unusable, and will not schedule tasks to it. This condition can be detected via the node state and scheduling error detail. If false, the Batch service will not wait for the start task to complete. In this case, other tasks can start executing on the compute node while the start task is still running; and even if the start task fails, new tasks will continue to be scheduled on the node. The default is true.
          */
         waitForSuccess?: boolean;
+    }
+    /**
+     * startTaskResponseProvideDefaults sets the appropriate defaults for StartTaskResponse
+     */
+    export function startTaskResponseProvideDefaults(val: StartTaskResponse): StartTaskResponse {
+        return {
+            ...val,
+            maxTaskRetryCount: (val.maxTaskRetryCount) ?? 0,
+        };
     }
 
     export interface TaskContainerSettingsResponse {
@@ -739,6 +793,15 @@ import * as pulumi from "@pulumi/pulumi";
 
     export interface TaskSchedulingPolicyResponse {
         nodeFillType: string;
+    }
+    /**
+     * taskSchedulingPolicyResponseProvideDefaults sets the appropriate defaults for TaskSchedulingPolicyResponse
+     */
+    export function taskSchedulingPolicyResponseProvideDefaults(val: TaskSchedulingPolicyResponse): TaskSchedulingPolicyResponse {
+        return {
+            ...val,
+            nodeFillType: (val.nodeFillType) ?? "Spread",
+        };
     }
 
     export interface UserAccountResponse {
@@ -851,6 +914,15 @@ import * as pulumi from "@pulumi/pulumi";
          * This property must not be specified if the imageReference specifies a Linux OS image.
          */
         windowsConfiguration?: WindowsConfigurationResponse;
+    }
+    /**
+     * virtualMachineConfigurationResponseProvideDefaults sets the appropriate defaults for VirtualMachineConfigurationResponse
+     */
+    export function virtualMachineConfigurationResponseProvideDefaults(val: VirtualMachineConfigurationResponse): VirtualMachineConfigurationResponse {
+        return {
+            ...val,
+            imageReference: imageReferenceResponseProvideDefaults(val.imageReference),
+        };
     }
 
     /**

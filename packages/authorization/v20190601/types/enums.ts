@@ -9,6 +9,9 @@ export const EnforcementMode = {
     DoNotEnforce: "DoNotEnforce",
 } as const;
 
+/**
+ * The policy assignment enforcement mode. Possible values are Default and DoNotEnforce.
+ */
 export type EnforcementMode = (typeof EnforcementMode)[keyof typeof EnforcementMode];
 
 export const PolicyType = {
@@ -17,6 +20,9 @@ export const PolicyType = {
     Custom: "Custom",
 } as const;
 
+/**
+ * The type of policy definition. Possible values are NotSpecified, BuiltIn, and Custom.
+ */
 export type PolicyType = (typeof PolicyType)[keyof typeof PolicyType];
 
 export const ResourceIdentityType = {
@@ -24,4 +30,7 @@ export const ResourceIdentityType = {
     None: "None",
 } as const;
 
+/**
+ * The identity type.
+ */
 export type ResourceIdentityType = (typeof ResourceIdentityType)[keyof typeof ResourceIdentityType];

@@ -5,4 +5,7 @@ export const TemplateSpecArtifactKind = {
     Template: "template",
 } as const;
 
+/**
+ * The kind of artifact.
+ */
 export type TemplateSpecArtifactKind = (typeof TemplateSpecArtifactKind)[keyof typeof TemplateSpecArtifactKind];

@@ -5,6 +5,9 @@ export const PersistedConnectionStatus = {
     Disconnected: "Disconnected",
 } as const;
 
+/**
+ * Status of the connection.
+ */
 export type PersistedConnectionStatus = (typeof PersistedConnectionStatus)[keyof typeof PersistedConnectionStatus];
 
 export const ResourceProvisioningState = {
@@ -16,4 +19,7 @@ export const ResourceProvisioningState = {
     Failed: "Failed",
 } as const;
 
+/**
+ * Provisioning state of the Private Endpoint Connection.
+ */
 export type ResourceProvisioningState = (typeof ResourceProvisioningState)[keyof typeof ResourceProvisioningState];

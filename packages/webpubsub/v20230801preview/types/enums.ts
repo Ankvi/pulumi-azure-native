@@ -3,6 +3,9 @@ export const ACLAction = {
     Deny: "Deny",
 } as const;
 
+/**
+ * Azure Networking ACL Action.
+ */
 export type ACLAction = (typeof ACLAction)[keyof typeof ACLAction];
 
 export const EventListenerEndpointDiscriminator = {
@@ -23,6 +26,9 @@ export const ManagedIdentityType = {
     UserAssigned: "UserAssigned",
 } as const;
 
+/**
+ * Represents the identity type: systemAssigned, userAssigned, None
+ */
 export type ManagedIdentityType = (typeof ManagedIdentityType)[keyof typeof ManagedIdentityType];
 
 export const PrivateLinkServiceConnectionStatus = {
@@ -32,6 +38,9 @@ export const PrivateLinkServiceConnectionStatus = {
     Disconnected: "Disconnected",
 } as const;
 
+/**
+ * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+ */
 export type PrivateLinkServiceConnectionStatus = (typeof PrivateLinkServiceConnectionStatus)[keyof typeof PrivateLinkServiceConnectionStatus];
 
 export const ServiceKind = {
@@ -39,6 +48,9 @@ export const ServiceKind = {
     SocketIO: "SocketIO",
 } as const;
 
+/**
+ * The kind of the service
+ */
 export type ServiceKind = (typeof ServiceKind)[keyof typeof ServiceKind];
 
 export const UpstreamAuthType = {
@@ -46,6 +58,9 @@ export const UpstreamAuthType = {
     ManagedIdentity: "ManagedIdentity",
 } as const;
 
+/**
+ * Upstream auth type enum.
+ */
 export type UpstreamAuthType = (typeof UpstreamAuthType)[keyof typeof UpstreamAuthType];
 
 export const WebPubSubRequestType = {
@@ -55,6 +70,9 @@ export const WebPubSubRequestType = {
     Trace: "Trace",
 } as const;
 
+/**
+ * The incoming request type to the service
+ */
 export type WebPubSubRequestType = (typeof WebPubSubRequestType)[keyof typeof WebPubSubRequestType];
 
 export const WebPubSubSkuTier = {
@@ -64,4 +82,9 @@ export const WebPubSubSkuTier = {
     Premium: "Premium",
 } as const;
 
+/**
+ * Optional tier of this particular SKU. 'Standard' or 'Free'. 
+ * 
+ * `Basic` is deprecated, use `Standard` instead.
+ */
 export type WebPubSubSkuTier = (typeof WebPubSubSkuTier)[keyof typeof WebPubSubSkuTier];

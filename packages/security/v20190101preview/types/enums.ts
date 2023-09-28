@@ -4,6 +4,9 @@ export const ActionType = {
     Workspace: "Workspace",
 } as const;
 
+/**
+ * The type of the action that will be triggered by the Automation
+ */
 export type ActionType = (typeof ActionType)[keyof typeof ActionType];
 
 export const AssessmentType = {
@@ -21,6 +24,9 @@ export const AssessmentType = {
     CustomerManaged: "CustomerManaged",
 } as const;
 
+/**
+ * BuiltIn if the assessment based on built-in Azure Policy definition, Custom if the assessment based on custom Azure Policy definition
+ */
 export type AssessmentType = (typeof AssessmentType)[keyof typeof AssessmentType];
 
 export const Categories = {
@@ -31,6 +37,9 @@ export const Categories = {
     IoT: "IoT",
 } as const;
 
+/**
+ * The categories of resource that is at risk when the assessment is unhealthy
+ */
 export type Categories = (typeof Categories)[keyof typeof Categories];
 
 export const EventSource = {
@@ -47,6 +56,9 @@ export const EventSource = {
     RegulatoryComplianceAssessmentSnapshot: "RegulatoryComplianceAssessmentSnapshot",
 } as const;
 
+/**
+ * A valid event source type.
+ */
 export type EventSource = (typeof EventSource)[keyof typeof EventSource];
 
 export const ImplementationEffort = {
@@ -55,6 +67,9 @@ export const ImplementationEffort = {
     High: "High",
 } as const;
 
+/**
+ * The implementation effort required to remediate this assessment
+ */
 export type ImplementationEffort = (typeof ImplementationEffort)[keyof typeof ImplementationEffort];
 
 export const Operator = {
@@ -96,6 +111,9 @@ export const Operator = {
     EndsWith: "EndsWith",
 } as const;
 
+/**
+ * A valid comparer operator to use. A case-insensitive comparison will be applied for String PropertyType.
+ */
 export type Operator = (typeof Operator)[keyof typeof Operator];
 
 export const PropertyType = {
@@ -105,6 +123,9 @@ export const PropertyType = {
     Boolean: "Boolean",
 } as const;
 
+/**
+ * The data type of the compared operands (string, integer, floating point number or a boolean [true/false]]
+ */
 export type PropertyType = (typeof PropertyType)[keyof typeof PropertyType];
 
 export const RuleState = {
@@ -113,6 +134,9 @@ export const RuleState = {
     Expired: "Expired",
 } as const;
 
+/**
+ * Possible states of the rule
+ */
 export type RuleState = (typeof RuleState)[keyof typeof RuleState];
 
 export const Severity = {
@@ -121,6 +145,9 @@ export const Severity = {
     High: "High",
 } as const;
 
+/**
+ * The severity level of the assessment
+ */
 export type Severity = (typeof Severity)[keyof typeof Severity];
 
 export const Threats = {
@@ -134,6 +161,9 @@ export const Threats = {
     DenialOfService: "denialOfService",
 } as const;
 
+/**
+ * Threats impact of the assessment
+ */
 export type Threats = (typeof Threats)[keyof typeof Threats];
 
 export const UserImpact = {
@@ -142,4 +172,7 @@ export const UserImpact = {
     High: "High",
 } as const;
 
+/**
+ * The user impact of the assessment
+ */
 export type UserImpact = (typeof UserImpact)[keyof typeof UserImpact];

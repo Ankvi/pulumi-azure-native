@@ -3,6 +3,9 @@ export const ApplicationGroupType = {
     Desktop: "Desktop",
 } as const;
 
+/**
+ * Resource Type of ApplicationGroup.
+ */
 export type ApplicationGroupType = (typeof ApplicationGroupType)[keyof typeof ApplicationGroupType];
 
 export const DayOfWeek = {
@@ -15,6 +18,9 @@ export const DayOfWeek = {
     Sunday: "Sunday",
 } as const;
 
+/**
+ * Day of the week.
+ */
 export type DayOfWeek = (typeof DayOfWeek)[keyof typeof DayOfWeek];
 
 export const HostPoolType = {
@@ -32,6 +38,9 @@ export const HostPoolType = {
     BYODesktop: "BYODesktop",
 } as const;
 
+/**
+ * HostPool type for desktop.
+ */
 export type HostPoolType = (typeof HostPoolType)[keyof typeof HostPoolType];
 
 export const HostpoolPublicNetworkAccess = {
@@ -41,6 +50,9 @@ export const HostpoolPublicNetworkAccess = {
     EnabledForClientsOnly: "EnabledForClientsOnly",
 } as const;
 
+/**
+ * Enabled allows this resource to be accessed from both public and private networks, Disabled allows this resource to only be accessed via private endpoints
+ */
 export type HostpoolPublicNetworkAccess = (typeof HostpoolPublicNetworkAccess)[keyof typeof HostpoolPublicNetworkAccess];
 
 export const LoadBalancerType = {
@@ -49,6 +61,9 @@ export const LoadBalancerType = {
     Persistent: "Persistent",
 } as const;
 
+/**
+ * The type of the load balancer.
+ */
 export type LoadBalancerType = (typeof LoadBalancerType)[keyof typeof LoadBalancerType];
 
 export const Operation = {
@@ -74,6 +89,9 @@ export const Operation = {
     Unhide: "Unhide",
 } as const;
 
+/**
+ * The type of operation for migration.
+ */
 export type Operation = (typeof Operation)[keyof typeof Operation];
 
 export const PersonalDesktopAssignmentType = {
@@ -81,6 +99,9 @@ export const PersonalDesktopAssignmentType = {
     Direct: "Direct",
 } as const;
 
+/**
+ * PersonalDesktopAssignment type for HostPool.
+ */
 export type PersonalDesktopAssignmentType = (typeof PersonalDesktopAssignmentType)[keyof typeof PersonalDesktopAssignmentType];
 
 export const PreferredAppGroupType = {
@@ -89,6 +110,9 @@ export const PreferredAppGroupType = {
     RailApplications: "RailApplications",
 } as const;
 
+/**
+ * The type of preferred application group type, default to Desktop Application Group
+ */
 export type PreferredAppGroupType = (typeof PreferredAppGroupType)[keyof typeof PreferredAppGroupType];
 
 export const RegistrationTokenOperation = {
@@ -97,12 +121,18 @@ export const RegistrationTokenOperation = {
     Update: "Update",
 } as const;
 
+/**
+ * The type of resetting the token.
+ */
 export type RegistrationTokenOperation = (typeof RegistrationTokenOperation)[keyof typeof RegistrationTokenOperation];
 
 export const ResourceIdentityType = {
     SystemAssigned: "SystemAssigned",
 } as const;
 
+/**
+ * The identity type.
+ */
 export type ResourceIdentityType = (typeof ResourceIdentityType)[keyof typeof ResourceIdentityType];
 
 export const SSOSecretType = {
@@ -112,6 +142,9 @@ export const SSOSecretType = {
     CertificateInKeyVault: "CertificateInKeyVault",
 } as const;
 
+/**
+ * The type of single sign on Secret Type.
+ */
 export type SSOSecretType = (typeof SSOSecretType)[keyof typeof SSOSecretType];
 
 export const SessionHostComponentUpdateType = {
@@ -125,6 +158,9 @@ export const SessionHostComponentUpdateType = {
     Scheduled: "Scheduled",
 } as const;
 
+/**
+ * The type of maintenance for session host components.
+ */
 export type SessionHostComponentUpdateType = (typeof SessionHostComponentUpdateType)[keyof typeof SessionHostComponentUpdateType];
 
 export const SkuTier = {
@@ -134,4 +170,7 @@ export const SkuTier = {
     Premium: "Premium",
 } as const;
 
+/**
+ * This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+ */
 export type SkuTier = (typeof SkuTier)[keyof typeof SkuTier];
