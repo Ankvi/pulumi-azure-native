@@ -1797,22 +1797,6 @@ importers:
         specifier: ^5.0.0
         version: 5.2.2
 
-  packages/iotsecurity:
-    dependencies:
-      '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
-        version: link:../core
-      '@pulumi/pulumi':
-        specifier: ^3.0.0
-        version: 3.82.1
-    devDependencies:
-      '@types/node':
-        specifier: ^20.0.0
-        version: 20.6.2
-      typescript:
-        specifier: ^5.0.0
-        version: 5.2.2
-
   packages/keyvault:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
@@ -3061,6 +3045,22 @@ importers:
         specifier: ^5.0.0
         version: 5.2.2
 
+  packages/storageactions:
+    dependencies:
+      '@kengachu-pulumi/azure-native-core':
+        specifier: workspace:^
+        version: link:../core
+      '@pulumi/pulumi':
+        specifier: ^3.0.0
+        version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
+
   packages/storagecache:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
@@ -3110,22 +3110,6 @@ importers:
         version: 5.2.2
 
   packages/storagesync:
-    dependencies:
-      '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
-        version: link:../core
-      '@pulumi/pulumi':
-        specifier: ^3.0.0
-        version: 3.82.1
-    devDependencies:
-      '@types/node':
-        specifier: ^20.0.0
-        version: 20.6.2
-      typescript:
-        specifier: ^5.0.0
-        version: 5.2.2
-
-  packages/storagetasks:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
         specifier: workspace:^
