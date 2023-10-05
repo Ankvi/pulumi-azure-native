@@ -14,7 +14,7 @@ team uses.
 
 ## TODOs
 
-- [x] Move types/enums into each respective module
-- [x] Move types/enums from earlier versions in their respective sub modules
+- [x] ~~Move types/enums into each respective module~~
+- [x] ~~Move types/enums from earlier versions in their respective sub modules~~
   - (e.g. `v20230101`/`v20230101preview`)
-- [x] Publish all packages to npm
+- [x] ~~Publish all packages to npm~~
