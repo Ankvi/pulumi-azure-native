@@ -68,6 +68,20 @@ export interface ManagedGrafanaPropertiesResponse {
 }
 
 /**
+ * The state of managed private endpoint connection.
+ */
+export interface ManagedPrivateEndpointConnectionStateResponse {
+    /**
+     * Gets or sets the reason for approval/rejection of the connection.
+     */
+    description: string;
+    /**
+     * The approval/rejection status of managed private endpoint connection.
+     */
+    status: string;
+}
+
+/**
  * Managed service identity (system assigned and/or user assigned identities)
  */
 export interface ManagedServiceIdentityResponse {
@@ -202,4 +216,5 @@ export interface UserAssignedIdentityResponse {
      */
     principalId: string;
 }
+
 

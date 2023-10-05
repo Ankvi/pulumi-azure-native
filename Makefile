@@ -15,3 +15,6 @@ lint:
 
 build:
 	pnpm -r run build
+
+publish:
+	pnpm -r run publish

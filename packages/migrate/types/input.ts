@@ -1574,7 +1574,7 @@ export interface SolutionPropertiesArgs {
     /**
      * Gets or sets the cleanup state of the solution.
      */
-    cleanupState?: pulumi.Input<string>;
+    cleanupState?: pulumi.Input<string | enums.CleanupState>;
     /**
      * Gets or sets the details of the solution.
      */
@@ -1582,19 +1582,19 @@ export interface SolutionPropertiesArgs {
     /**
      * Gets or sets the goal of the solution.
      */
-    goal?: pulumi.Input<string>;
+    goal?: pulumi.Input<string | enums.Goal>;
     /**
      * Gets or sets the purpose of the solution.
      */
-    purpose?: pulumi.Input<string>;
+    purpose?: pulumi.Input<string | enums.Purpose>;
     /**
      * Gets or sets the current status of the solution.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | enums.Status>;
     /**
      * Gets or sets the tool being used in the solution.
      */
-    tool?: pulumi.Input<string>;
+    tool?: pulumi.Input<string | enums.Tool>;
 }
 
 /**
@@ -1993,6 +1993,7 @@ export interface WorkloadInstanceModelPropertiesArgs {
      */
     sourcePlatform?: pulumi.Input<string>;
 }
+
 
 
 

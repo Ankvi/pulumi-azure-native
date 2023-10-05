@@ -38,11 +38,61 @@ export interface DatadogOrganizationPropertiesArgs {
     redirectUri?: pulumi.Input<string>;
 }
 
+/**
+ * The definition of a filtering tag. Filtering tags are used for capturing resources and include/exclude them from being monitored.
+ */
+export interface FilteringTagArgs {
+    /**
+     * Valid actions for a filtering tag. Exclusion takes priority over inclusion.
+     */
+    action?: pulumi.Input<string | enums.TagAction>;
+    /**
+     * The name (also known as the key) of the tag.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The value of the tag.
+     */
+    value?: pulumi.Input<string>;
+}
+
 export interface IdentityPropertiesArgs {
     /**
      * Identity type
      */
     type?: pulumi.Input<string | enums.ManagedIdentityTypes>;
+}
+
+/**
+ * Set of rules for sending logs for the Monitor resource.
+ */
+export interface LogRulesArgs {
+    /**
+     * List of filtering tags to be used for capturing logs. This only takes effect if SendResourceLogs flag is enabled. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.
+     */
+    filteringTags?: pulumi.Input<pulumi.Input<FilteringTagArgs>[]>;
+    /**
+     * Flag specifying if AAD logs should be sent for the Monitor resource.
+     */
+    sendAadLogs?: pulumi.Input<boolean>;
+    /**
+     * Flag specifying if Azure resource logs should be sent for the Monitor resource.
+     */
+    sendResourceLogs?: pulumi.Input<boolean>;
+    /**
+     * Flag specifying if Azure subscription logs should be sent for the Monitor resource.
+     */
+    sendSubscriptionLogs?: pulumi.Input<boolean>;
+}
+
+/**
+ * Set of rules for sending metrics for the Monitor resource.
+ */
+export interface MetricRulesArgs {
+    /**
+     * List of filtering tags to be used for capturing metrics. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.
+     */
+    filteringTags?: pulumi.Input<pulumi.Input<FilteringTagArgs>[]>;
 }
 
 /**
@@ -63,11 +113,65 @@ export interface MonitorPropertiesArgs {
     userInfo?: pulumi.Input<UserInfoArgs>;
 }
 
+/**
+ * The list of subscriptions and it's monitoring status by current Datadog monitor.
+ */
+export interface MonitoredSubscriptionArgs {
+    /**
+     * The reason of not monitoring the subscription.
+     */
+    error?: pulumi.Input<string>;
+    /**
+     * The state of monitoring.
+     */
+    status?: pulumi.Input<string | enums.Status>;
+    /**
+     * The subscriptionId to be monitored.
+     */
+    subscriptionId?: pulumi.Input<string>;
+    /**
+     * Definition of the properties for a TagRules resource.
+     */
+    tagRules?: pulumi.Input<MonitoringTagRulesPropertiesArgs>;
+}
+
+/**
+ * Definition of the properties for a TagRules resource.
+ */
+export interface MonitoringTagRulesPropertiesArgs {
+    /**
+     * Configuration to enable/disable auto-muting flag
+     */
+    automuting?: pulumi.Input<boolean>;
+    /**
+     * Set of rules for sending logs for the Monitor resource.
+     */
+    logRules?: pulumi.Input<LogRulesArgs>;
+    /**
+     * Set of rules for sending metrics for the Monitor resource.
+     */
+    metricRules?: pulumi.Input<MetricRulesArgs>;
+}
+
 export interface ResourceSkuArgs {
     /**
      * Name of the SKU.
      */
     name: pulumi.Input<string>;
+}
+
+/**
+ * The request to update subscriptions needed to be monitored by the Datadog monitor resource.
+ */
+export interface SubscriptionListArgs {
+    /**
+     * List of subscriptions and the state of the monitoring.
+     */
+    monitoredSubscriptionList?: pulumi.Input<pulumi.Input<MonitoredSubscriptionArgs>[]>;
+    /**
+     * The operation for the patch on the resource.
+     */
+    operation?: pulumi.Input<string | enums.Operation>;
 }
 
 /**
@@ -87,3 +191,5 @@ export interface UserInfoArgs {
      */
     phoneNumber?: pulumi.Input<string>;
 }
+
+

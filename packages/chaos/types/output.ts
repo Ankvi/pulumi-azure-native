@@ -309,3 +309,4 @@ export interface UserAssignedIdentityResponse {
      */
     principalId: string;
 }
+

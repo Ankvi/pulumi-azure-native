@@ -80,6 +80,24 @@ export interface DatadogOrganizationPropertiesResponse {
     name?: string;
 }
 
+/**
+ * The definition of a filtering tag. Filtering tags are used for capturing resources and include/exclude them from being monitored.
+ */
+export interface FilteringTagResponse {
+    /**
+     * Valid actions for a filtering tag. Exclusion takes priority over inclusion.
+     */
+    action?: string;
+    /**
+     * The name (also known as the key) of the tag.
+     */
+    name?: string;
+    /**
+     * The value of the tag.
+     */
+    value?: string;
+}
+
 export interface IdentityPropertiesResponse {
     /**
      * The identity ID.
@@ -103,6 +121,38 @@ export interface LinkedResourceResponse {
      * The ARM id of the linked resource.
      */
     id?: string;
+}
+
+/**
+ * Set of rules for sending logs for the Monitor resource.
+ */
+export interface LogRulesResponse {
+    /**
+     * List of filtering tags to be used for capturing logs. This only takes effect if SendResourceLogs flag is enabled. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.
+     */
+    filteringTags?: FilteringTagResponse[];
+    /**
+     * Flag specifying if AAD logs should be sent for the Monitor resource.
+     */
+    sendAadLogs?: boolean;
+    /**
+     * Flag specifying if Azure resource logs should be sent for the Monitor resource.
+     */
+    sendResourceLogs?: boolean;
+    /**
+     * Flag specifying if Azure subscription logs should be sent for the Monitor resource.
+     */
+    sendSubscriptionLogs?: boolean;
+}
+
+/**
+ * Set of rules for sending metrics for the Monitor resource.
+ */
+export interface MetricRulesResponse {
+    /**
+     * List of filtering tags to be used for capturing metrics. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.
+     */
+    filteringTags?: FilteringTagResponse[];
 }
 
 /**
@@ -159,11 +209,62 @@ export interface MonitoredResourceResponse {
     sendingMetrics?: boolean;
 }
 
+/**
+ * The list of subscriptions and it's monitoring status by current Datadog monitor.
+ */
+export interface MonitoredSubscriptionResponse {
+    /**
+     * The reason of not monitoring the subscription.
+     */
+    error?: string;
+    /**
+     * The state of monitoring.
+     */
+    status?: string;
+    /**
+     * The subscriptionId to be monitored.
+     */
+    subscriptionId?: string;
+    /**
+     * Definition of the properties for a TagRules resource.
+     */
+    tagRules?: MonitoringTagRulesPropertiesResponse;
+}
+
+/**
+ * Definition of the properties for a TagRules resource.
+ */
+export interface MonitoringTagRulesPropertiesResponse {
+    /**
+     * Configuration to enable/disable auto-muting flag
+     */
+    automuting?: boolean;
+    /**
+     * Set of rules for sending logs for the Monitor resource.
+     */
+    logRules?: LogRulesResponse;
+    /**
+     * Set of rules for sending metrics for the Monitor resource.
+     */
+    metricRules?: MetricRulesResponse;
+    provisioningState: string;
+}
+
 export interface ResourceSkuResponse {
     /**
      * Name of the SKU.
      */
     name: string;
+}
+
+/**
+ * The request to update subscriptions needed to be monitored by the Datadog monitor resource.
+ */
+export interface SubscriptionListResponse {
+    /**
+     * List of subscriptions and the state of the monitoring.
+     */
+    monitoredSubscriptionList?: MonitoredSubscriptionResponse[];
 }
 
 /**
@@ -213,3 +314,5 @@ export interface UserInfoResponse {
      */
     phoneNumber?: string;
 }
+
+

@@ -23071,6 +23071,10 @@ import * as pulumi from "@pulumi/pulumi";
          */
         onInactiveMarkAs?: pulumi.Input<string | enums.ActivityOnInactiveMarkAs>;
         /**
+         * Activity policy.
+         */
+        policy?: pulumi.Input<SecureInputOutputPolicyArgs>;
+        /**
          * When set to true, statusCode, output and error in callback request body will be consumed by activity. The activity can be marked as failed by setting statusCode >= 400 in callback request. Default is false. Type: boolean (or Expression with resultType boolean).
          */
         reportStatusOnCallBack?: any;

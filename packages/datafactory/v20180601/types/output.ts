@@ -23693,6 +23693,10 @@ import * as pulumi from "@pulumi/pulumi";
          */
         onInactiveMarkAs?: string;
         /**
+         * Activity policy.
+         */
+        policy?: SecureInputOutputPolicyResponse;
+        /**
          * When set to true, statusCode, output and error in callback request body will be consumed by activity. The activity can be marked as failed by setting statusCode >= 400 in callback request. Default is false. Type: boolean (or Expression with resultType boolean).
          */
         reportStatusOnCallBack?: any;

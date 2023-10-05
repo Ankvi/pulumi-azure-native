@@ -778,6 +778,19 @@ export interface GmsaAuthenticationPropertiesResponse {
 }
 
 /**
+ * Defines Private link service group connectivity.
+ */
+export interface GroupConnectivityInformationResponse {
+    customerVisibleFqdns?: string[];
+    groupId?: string;
+    id?: string;
+    internalFqdn?: string;
+    memberName?: string;
+    privateLinkServiceArmRegion?: string;
+    redirectMapId?: string;
+}
+
+/**
  * Properties of group resource.
  */
 export interface GroupPropertiesResponse {
@@ -1271,6 +1284,17 @@ export interface InnerHealthErrorModelResponse {
      * Gets or sets the error summary.
      */
     summary: string;
+}
+
+/**
+ * Defines Private link IP configuration.
+ */
+export interface IpConfigurationResponse {
+    groupId?: string;
+    id?: string;
+    linkIdentifier?: string;
+    memberName?: string;
+    privateIpAddress?: string;
 }
 
 /**
@@ -2031,6 +2055,17 @@ export interface PrivateEndpointConnectionPropertiesResponse {
 }
 
 /**
+ * Properties of a private endpoint connection proxy.
+ */
+export interface PrivateEndpointConnectionProxyPropertiesResponse {
+    /**
+     * Defines Private endpoint additional details.
+     */
+    remotePrivateEndpoint: PrivateEndpointDetailsResponse;
+    status: string;
+}
+
+/**
  * A private endpoint connection for a project.
  */
 export interface PrivateEndpointConnectionResponse {
@@ -2061,6 +2096,27 @@ export interface PrivateEndpointConnectionResponse {
 }
 
 /**
+ * Defines Private endpoint additional details.
+ */
+export interface PrivateEndpointDetailsResponse {
+    connectionDetails?: IpConfigurationResponse[];
+    id?: string;
+    manualPrivateLinkServiceConnections?: PrivateLinkServiceConnectionResponse[];
+    privateLinkServiceConnections?: PrivateLinkServiceConnectionResponse[];
+    privateLinkServiceProxies?: PrivateLinkServiceProxyResponse[];
+}
+
+/**
+ * Defines Private link service connection.
+ */
+export interface PrivateLinkServiceConnectionResponse {
+    groupIds?: string[];
+    id?: string;
+    name?: string;
+    requestMessage?: string;
+}
+
+/**
  * State of a private endpoint connection.
  */
 export interface PrivateLinkServiceConnectionStateResponse {
@@ -2076,6 +2132,22 @@ export interface PrivateLinkServiceConnectionStateResponse {
      * Connection status of the private endpoint connection.
      */
     status?: string;
+}
+
+/**
+ * Defines Private link service proxy.
+ */
+export interface PrivateLinkServiceProxyResponse {
+    groupConnectivityInformation?: GroupConnectivityInformationResponse[];
+    id?: string;
+    /**
+     * Defines resource ID of a private endpoint connection.
+     */
+    remotePrivateEndpointConnection?: ResourceIdResponse;
+    /**
+     * Private endpoint connection state.
+     */
+    remotePrivateLinkServiceConnectionState?: PrivateLinkServiceConnectionStateResponse;
 }
 
 /**
@@ -2395,11 +2467,21 @@ export interface SolutionPropertiesResponse {
     /**
      * Gets or sets the summary of the solution.
      */
-    summary?: DatabasesSolutionSummaryResponse | ServersSolutionSummaryResponse;
+    summary?: DatabasesSolutionSummaryResponse | ServersSolutionSummaryResponse | SolutionSummaryResponse;
     /**
      * Gets or sets the tool being used in the solution.
      */
     tool?: string;
+}
+
+/**
+ * The solution summary class.
+ */
+export interface SolutionSummaryResponse {
+    /**
+     * Gets the Instance type.
+     */
+    instanceType: string;
 }
 
 /**
@@ -2524,7 +2606,7 @@ export interface SystemDataResponse {
      */
     createdByType?: string;
     /**
-     * The type of identity that last modified the resource.
+     * The timestamp of resource last modification (UTC)
      */
     lastModifiedAt?: string;
     /**
@@ -3038,6 +3120,7 @@ export interface WorkloadInstanceModelResponseSystemData {
      */
     lastModifiedByType?: string;
 }
+
 
 
 
