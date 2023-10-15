@@ -948,6 +948,17 @@ export function buildContextArgsProvideDefaults(val: BuildContextArgs): BuildCon
     };
 }
 
+export interface CapacityReservationGroupArgs {
+    /**
+     * Offer used by this capacity reservation group.
+     */
+    offer?: pulumi.Input<ServerlessOfferArgs>;
+    /**
+     * [Required] Specifies the amount of capacity to reserve.
+     */
+    reservedCapacity: pulumi.Input<number>;
+}
+
 /**
  * Certificate datastore credentials configuration.
  */
@@ -4149,6 +4160,109 @@ export interface InferenceContainerPropertiesArgs {
 }
 
 /**
+ * InferenceEndpoint configuration
+ */
+export interface InferenceEndpointArgs {
+    /**
+     * [Required] Authentication mode for the endpoint.
+     */
+    authMode: pulumi.Input<string | enums.AuthMode>;
+    /**
+     * Description of the resource.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * [Required] Group within the same pool with which this endpoint needs to be associated with.
+     */
+    groupId: pulumi.Input<string>;
+    /**
+     * Property dictionary. Properties can be added, but not removed or altered.
+     */
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+/**
+ * Inference group configuration
+ */
+export interface InferenceGroupArgs {
+    /**
+     * Capacity to be used from the pool's reserved capacity.
+     * optional
+     */
+    bonusExtraCapacity?: pulumi.Input<number>;
+    /**
+     * Description of the resource.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Metadata for the inference group.
+     */
+    metadata?: pulumi.Input<string>;
+    /**
+     * Priority of the group within the N:Microsoft.MachineLearning.ManagementFrontEnd.Contracts.V20230801Preview.Pools.InferencePools.
+     */
+    priority?: pulumi.Input<number>;
+    /**
+     * Property dictionary. Properties can be added, but not removed or altered.
+     */
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+/**
+ * inferenceGroupArgsProvideDefaults sets the appropriate defaults for InferenceGroupArgs
+ */
+export function inferenceGroupArgsProvideDefaults(val: InferenceGroupArgs): InferenceGroupArgs {
+    return {
+        ...val,
+        bonusExtraCapacity: (val.bonusExtraCapacity) ?? 0,
+        priority: (val.priority) ?? 0,
+    };
+}
+
+/**
+ * Inference pool configuration
+ */
+export interface InferencePoolArgs {
+    /**
+     * Code configuration for the inference pool.
+     */
+    codeConfiguration?: pulumi.Input<CodeConfigurationArgs>;
+    /**
+     * Description of the resource.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * EnvironmentConfiguration for the inference pool.
+     */
+    environmentConfiguration?: pulumi.Input<PoolEnvironmentConfigurationArgs>;
+    /**
+     * ModelConfiguration for the inference pool.
+     */
+    modelConfiguration?: pulumi.Input<PoolModelConfigurationArgs>;
+    /**
+     * [Required] Compute instance type.
+     */
+    nodeSkuType: pulumi.Input<string>;
+    /**
+     * Property dictionary. Properties can be added, but not removed or altered.
+     */
+    properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Request configuration for the inference pool.
+     */
+    requestConfiguration?: pulumi.Input<RequestConfigurationArgs>;
+}
+/**
+ * inferencePoolArgsProvideDefaults sets the appropriate defaults for InferencePoolArgs
+ */
+export function inferencePoolArgsProvideDefaults(val: InferencePoolArgs): InferencePoolArgs {
+    return {
+        ...val,
+        environmentConfiguration: (val.environmentConfiguration ? pulumi.output(val.environmentConfiguration).apply(poolEnvironmentConfigurationArgsProvideDefaults) : undefined),
+        requestConfiguration: (val.requestConfiguration ? pulumi.output(val.requestConfiguration).apply(requestConfigurationArgsProvideDefaults) : undefined),
+    };
+}
+
+/**
  * Instance type schema.
  */
 export interface InstanceTypeSchemaArgs {
@@ -5514,6 +5628,53 @@ export function pipelineJobArgsProvideDefaults(val: PipelineJobArgs): PipelineJo
 }
 
 /**
+ * Environment configuration options.
+ */
+export interface PoolEnvironmentConfigurationArgs {
+    /**
+     * ARM resource ID of the environment specification for the inference pool.
+     */
+    environmentId?: pulumi.Input<string>;
+    /**
+     * Environment variables configuration for the inference pool.
+     */
+    environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Liveness probe monitors the health of the container regularly.
+     */
+    livenessProbe?: pulumi.Input<ProbeSettingsArgs>;
+    /**
+     * Readiness probe validates if the container is ready to serve traffic. The properties and defaults are the same as liveness probe.
+     */
+    readinessProbe?: pulumi.Input<ProbeSettingsArgs>;
+    /**
+     * This verifies whether the application within a container is started. Startup probes run before any other probe, and, unless it finishes successfully, disables other probes.
+     */
+    startupProbe?: pulumi.Input<ProbeSettingsArgs>;
+}
+/**
+ * poolEnvironmentConfigurationArgsProvideDefaults sets the appropriate defaults for PoolEnvironmentConfigurationArgs
+ */
+export function poolEnvironmentConfigurationArgsProvideDefaults(val: PoolEnvironmentConfigurationArgs): PoolEnvironmentConfigurationArgs {
+    return {
+        ...val,
+        livenessProbe: (val.livenessProbe ? pulumi.output(val.livenessProbe).apply(probeSettingsArgsProvideDefaults) : undefined),
+        readinessProbe: (val.readinessProbe ? pulumi.output(val.readinessProbe).apply(probeSettingsArgsProvideDefaults) : undefined),
+        startupProbe: (val.startupProbe ? pulumi.output(val.startupProbe).apply(probeSettingsArgsProvideDefaults) : undefined),
+    };
+}
+
+/**
+ * Model configuration options.
+ */
+export interface PoolModelConfigurationArgs {
+    /**
+     * The URI path to the model.
+     */
+    modelId?: pulumi.Input<string>;
+}
+
+/**
  * Private Endpoint destination for a Private Endpoint Outbound Rule for the managed network of a machine learning workspace.
  */
 export interface PrivateEndpointDestinationArgs {
@@ -6017,6 +6178,31 @@ export function regressionTrainingSettingsArgsProvideDefaults(val: RegressionTra
 }
 
 /**
+ * Scoring requests configuration.
+ */
+export interface RequestConfigurationArgs {
+    /**
+     * The number of maximum concurrent requests per node allowed per deployment. Defaults to 1.
+     */
+    maxConcurrentRequestsPerInstance?: pulumi.Input<number>;
+    /**
+     * The scoring timeout in ISO 8601 format.
+     * Defaults to 5000ms.
+     */
+    requestTimeout?: pulumi.Input<string>;
+}
+/**
+ * requestConfigurationArgsProvideDefaults sets the appropriate defaults for RequestConfigurationArgs
+ */
+export function requestConfigurationArgsProvideDefaults(val: RequestConfigurationArgs): RequestConfigurationArgs {
+    return {
+        ...val,
+        maxConcurrentRequestsPerInstance: (val.maxConcurrentRequestsPerInstance) ?? 1,
+        requestTimeout: (val.requestTimeout) ?? "PT5S",
+    };
+}
+
+/**
  * Represents a resource ID. For example, for a subnet, it is the resource URL for the subnet.
  */
 export interface ResourceIdArgs {
@@ -6223,6 +6409,44 @@ export interface SecretConfigurationArgs {
      * Name of secret in workspace key vault.
      */
     workspaceSecretName?: pulumi.Input<string>;
+}
+
+export interface ServerlessEndpointArgs {
+    /**
+     * Specifies the authentication mode for the Serverless endpoint.
+     */
+    authMode?: pulumi.Input<string | enums.ServerlessInferenceEndpointAuthMode>;
+    /**
+     * Optional capacity reservation information for the endpoint. When specified, the Serverless Endpoint
+     * will be allocated capacity from the specified capacity reservation group.
+     */
+    capacityReservation?: pulumi.Input<ServerlessEndpointCapacityReservationArgs>;
+    /**
+     * [Required] The publisher-defined Serverless Offer to provision the endpoint with.
+     */
+    offer: pulumi.Input<ServerlessOfferArgs>;
+}
+
+export interface ServerlessEndpointCapacityReservationArgs {
+    /**
+     * [Required] Specifies a capacity reservation group ID to allocate capacity from.
+     */
+    capacityReservationGroupId: pulumi.Input<string>;
+    /**
+     * Specifies a capacity amount to reserve for this endpoint within the parent capacity reservation group.
+     */
+    endpointReservedCapacity?: pulumi.Input<number>;
+}
+
+export interface ServerlessOfferArgs {
+    /**
+     * [Required] The name of the Serverless Offer
+     */
+    offerName: pulumi.Input<string>;
+    /**
+     * [Required] Publisher name of the Serverless Offer
+     */
+    publisher: pulumi.Input<string>;
 }
 
 export interface ServiceManagedResourcesSettingsArgs {
@@ -7561,6 +7785,7 @@ export interface WorkspaceConnectionUsernamePasswordArgs {
     password?: pulumi.Input<string>;
     username?: pulumi.Input<string>;
 }
+
 
 
 

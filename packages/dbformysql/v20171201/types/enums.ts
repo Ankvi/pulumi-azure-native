@@ -1,3 +1,12 @@
+export const AdministratorType = {
+    ActiveDirectory: "ActiveDirectory",
+} as const;
+
+/**
+ * The type of administrator.
+ */
+export type AdministratorType = (typeof AdministratorType)[keyof typeof AdministratorType];
+
 export const CreateMode = {
     Default: "Default",
     PointInTimeRestore: "PointInTimeRestore",

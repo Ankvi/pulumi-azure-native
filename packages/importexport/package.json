@@ -1,6 +1,6 @@
 {
     "name": "@kengachu-pulumi/azure-native-importexport",
-    "version": "2.10.0",
+    "version": "2.11.0",
     "description": "Pulumi Azure Native package for importexport",
     "keywords": [
         "pulumi",
@@ -28,6 +28,6 @@
     "scripts": {
         "build": "tsc",
         "lint": "tsc --noEmit",
-        "prepublish": "test -f index.js"
+        "prepublishOnly": "./prepublish.sh"
     }
 }

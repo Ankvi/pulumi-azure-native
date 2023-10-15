@@ -8,6 +8,15 @@ export const ApplicationSharingPolicy = {
  */
 export type ApplicationSharingPolicy = (typeof ApplicationSharingPolicy)[keyof typeof ApplicationSharingPolicy];
 
+export const AuthMode = {
+    AAD: "AAD",
+} as const;
+
+/**
+ * [Required] Authentication mode for the endpoint.
+ */
+export type AuthMode = (typeof AuthMode)[keyof typeof AuthMode];
+
 export const AutoDeleteCondition = {
     CreatedGreaterThan: "CreatedGreaterThan",
     LastAccessedGreaterThan: "LastAccessedGreaterThan",
@@ -1344,6 +1353,16 @@ export const SecretsType = {
  * [Required] Credential type used to authentication with storage.
  */
 export type SecretsType = (typeof SecretsType)[keyof typeof SecretsType];
+
+export const ServerlessInferenceEndpointAuthMode = {
+    Key: "Key",
+    AAD: "AAD",
+} as const;
+
+/**
+ * Specifies the authentication mode for the Serverless endpoint.
+ */
+export type ServerlessInferenceEndpointAuthMode = (typeof ServerlessInferenceEndpointAuthMode)[keyof typeof ServerlessInferenceEndpointAuthMode];
 
 export const ServiceDataAccessAuthIdentity = {
     /**

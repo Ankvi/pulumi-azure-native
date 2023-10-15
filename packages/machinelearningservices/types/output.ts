@@ -153,6 +153,32 @@ export interface AcrDetailsResponse {
     userCreatedAcrAccount?: UserCreatedAcrAccountResponse;
 }
 
+export interface ActualCapacityInfoResponse {
+    /**
+     * Gets or sets the total number of instances for the group.
+     */
+    allocated?: number;
+    /**
+     * Gets or sets the number of instances which failed to successfully complete assignment.
+     */
+    assignmentFailed?: number;
+    /**
+     * Gets or sets the number of instances which successfully completed assignment.
+     */
+    assignmentSuccess?: number;
+}
+/**
+ * actualCapacityInfoResponseProvideDefaults sets the appropriate defaults for ActualCapacityInfoResponse
+ */
+export function actualCapacityInfoResponseProvideDefaults(val: ActualCapacityInfoResponse): ActualCapacityInfoResponse {
+    return {
+        ...val,
+        allocated: (val.allocated) ?? 0,
+        assignmentFailed: (val.assignmentFailed) ?? 0,
+        assignmentSuccess: (val.assignmentSuccess) ?? 0,
+    };
+}
+
 /**
  * Advance configuration for AKS networking
  */
@@ -1457,6 +1483,17 @@ export function buildContextResponseProvideDefaults(val: BuildContextResponse): 
         ...val,
         dockerfilePath: (val.dockerfilePath) ?? "Dockerfile",
     };
+}
+
+export interface CapacityReservationGroupResponse {
+    /**
+     * Offer used by this capacity reservation group.
+     */
+    offer?: ServerlessOfferResponse;
+    /**
+     * [Required] Specifies the amount of capacity to reserve.
+     */
+    reservedCapacity: number;
 }
 
 /**
@@ -3692,6 +3729,42 @@ export interface ErrorResponseResponse {
 }
 
 /**
+ * The estimated price info for using a VM of a particular OS type, tier, etc.
+ */
+export interface EstimatedVMPriceResponse {
+    /**
+     * Operating system type used by the VM.
+     */
+    osType: string;
+    /**
+     * The price charged for using the VM.
+     */
+    retailPrice: number;
+    /**
+     * The type of the VM.
+     */
+    vmTier: string;
+}
+
+/**
+ * The estimated price info for using a VM.
+ */
+export interface EstimatedVMPricesResponse {
+    /**
+     * Three lettered code specifying the currency of the VM price. Example: USD
+     */
+    billingCurrency: string;
+    /**
+     * The unit of time measurement for the specified VM price. Example: OneHour
+     */
+    unitOfMeasure: string;
+    /**
+     * The list of estimated prices for using a VM of a particular OS type, tier, etc.
+     */
+    values: EstimatedVMPriceResponse[];
+}
+
+/**
  * Dto object representing feature
  */
 export interface FeatureResponse {
@@ -5557,6 +5630,125 @@ export interface InferenceContainerPropertiesResponse {
 }
 
 /**
+ * InferenceEndpoint configuration
+ */
+export interface InferenceEndpointResponse {
+    /**
+     * [Required] Authentication mode for the endpoint.
+     */
+    authMode: string;
+    /**
+     * Description of the resource.
+     */
+    description?: string;
+    /**
+     * Endpoint URI for the inference endpoint.
+     */
+    endpointUri: string;
+    /**
+     * [Required] Group within the same pool with which this endpoint needs to be associated with.
+     */
+    groupId: string;
+    /**
+     * Property dictionary. Properties can be added, but not removed or altered.
+     */
+    properties?: {[key: string]: string};
+    /**
+     * Provisioning state for the endpoint.
+     */
+    provisioningState: string;
+}
+
+/**
+ * Inference group configuration
+ */
+export interface InferenceGroupResponse {
+    /**
+     * Capacity to be used from the pool's reserved capacity.
+     * optional
+     */
+    bonusExtraCapacity?: number;
+    /**
+     * Description of the resource.
+     */
+    description?: string;
+    /**
+     * Metadata for the inference group.
+     */
+    metadata?: string;
+    /**
+     * Priority of the group within the N:Microsoft.MachineLearning.ManagementFrontEnd.Contracts.V20230801Preview.Pools.InferencePools.
+     */
+    priority?: number;
+    /**
+     * Property dictionary. Properties can be added, but not removed or altered.
+     */
+    properties?: {[key: string]: string};
+    /**
+     * Provisioning state for the inference group.
+     */
+    provisioningState: string;
+}
+/**
+ * inferenceGroupResponseProvideDefaults sets the appropriate defaults for InferenceGroupResponse
+ */
+export function inferenceGroupResponseProvideDefaults(val: InferenceGroupResponse): InferenceGroupResponse {
+    return {
+        ...val,
+        bonusExtraCapacity: (val.bonusExtraCapacity) ?? 0,
+        priority: (val.priority) ?? 0,
+    };
+}
+
+/**
+ * Inference pool configuration
+ */
+export interface InferencePoolResponse {
+    /**
+     * Code configuration for the inference pool.
+     */
+    codeConfiguration?: CodeConfigurationResponse;
+    /**
+     * Description of the resource.
+     */
+    description?: string;
+    /**
+     * EnvironmentConfiguration for the inference pool.
+     */
+    environmentConfiguration?: PoolEnvironmentConfigurationResponse;
+    /**
+     * ModelConfiguration for the inference pool.
+     */
+    modelConfiguration?: PoolModelConfigurationResponse;
+    /**
+     * [Required] Compute instance type.
+     */
+    nodeSkuType: string;
+    /**
+     * Property dictionary. Properties can be added, but not removed or altered.
+     */
+    properties?: {[key: string]: string};
+    /**
+     * Provisioning state for the pool.
+     */
+    provisioningState: string;
+    /**
+     * Request configuration for the inference pool.
+     */
+    requestConfiguration?: RequestConfigurationResponse;
+}
+/**
+ * inferencePoolResponseProvideDefaults sets the appropriate defaults for InferencePoolResponse
+ */
+export function inferencePoolResponseProvideDefaults(val: InferencePoolResponse): InferencePoolResponse {
+    return {
+        ...val,
+        environmentConfiguration: (val.environmentConfiguration ? poolEnvironmentConfigurationResponseProvideDefaults(val.environmentConfiguration) : undefined),
+        requestConfiguration: (val.requestConfiguration ? requestConfigurationResponseProvideDefaults(val.requestConfiguration) : undefined),
+    };
+}
+
+/**
  * Instance type schema.
  */
 export interface InstanceTypeSchemaResponse {
@@ -7098,6 +7290,53 @@ export function pipelineJobResponseProvideDefaults(val: PipelineJobResponse): Pi
 }
 
 /**
+ * Environment configuration options.
+ */
+export interface PoolEnvironmentConfigurationResponse {
+    /**
+     * ARM resource ID of the environment specification for the inference pool.
+     */
+    environmentId?: string;
+    /**
+     * Environment variables configuration for the inference pool.
+     */
+    environmentVariables?: {[key: string]: string};
+    /**
+     * Liveness probe monitors the health of the container regularly.
+     */
+    livenessProbe?: ProbeSettingsResponse;
+    /**
+     * Readiness probe validates if the container is ready to serve traffic. The properties and defaults are the same as liveness probe.
+     */
+    readinessProbe?: ProbeSettingsResponse;
+    /**
+     * This verifies whether the application within a container is started. Startup probes run before any other probe, and, unless it finishes successfully, disables other probes.
+     */
+    startupProbe?: ProbeSettingsResponse;
+}
+/**
+ * poolEnvironmentConfigurationResponseProvideDefaults sets the appropriate defaults for PoolEnvironmentConfigurationResponse
+ */
+export function poolEnvironmentConfigurationResponseProvideDefaults(val: PoolEnvironmentConfigurationResponse): PoolEnvironmentConfigurationResponse {
+    return {
+        ...val,
+        livenessProbe: (val.livenessProbe ? probeSettingsResponseProvideDefaults(val.livenessProbe) : undefined),
+        readinessProbe: (val.readinessProbe ? probeSettingsResponseProvideDefaults(val.readinessProbe) : undefined),
+        startupProbe: (val.startupProbe ? probeSettingsResponseProvideDefaults(val.startupProbe) : undefined),
+    };
+}
+
+/**
+ * Model configuration options.
+ */
+export interface PoolModelConfigurationResponse {
+    /**
+     * The URI path to the model.
+     */
+    modelId?: string;
+}
+
+/**
  * The Private Endpoint Connection resource.
  */
 export interface PrivateEndpointConnectionResponse {
@@ -7693,6 +7932,31 @@ export function regressionTrainingSettingsResponseProvideDefaults(val: Regressio
 }
 
 /**
+ * Scoring requests configuration.
+ */
+export interface RequestConfigurationResponse {
+    /**
+     * The number of maximum concurrent requests per node allowed per deployment. Defaults to 1.
+     */
+    maxConcurrentRequestsPerInstance?: number;
+    /**
+     * The scoring timeout in ISO 8601 format.
+     * Defaults to 5000ms.
+     */
+    requestTimeout?: string;
+}
+/**
+ * requestConfigurationResponseProvideDefaults sets the appropriate defaults for RequestConfigurationResponse
+ */
+export function requestConfigurationResponseProvideDefaults(val: RequestConfigurationResponse): RequestConfigurationResponse {
+    return {
+        ...val,
+        maxConcurrentRequestsPerInstance: (val.maxConcurrentRequestsPerInstance) ?? 1,
+        requestTimeout: (val.requestTimeout) ?? "PT5S",
+    };
+}
+
+/**
  * Represents a resource ID. For example, for a subnet, it is the resource URL for the subnet.
  */
 export interface ResourceIdResponse {
@@ -7886,6 +8150,63 @@ export interface SecretConfigurationResponse {
      * Name of secret in workspace key vault.
      */
     workspaceSecretName?: string;
+}
+
+export interface ServerlessEndpointCapacityReservationResponse {
+    /**
+     * [Required] Specifies a capacity reservation group ID to allocate capacity from.
+     */
+    capacityReservationGroupId: string;
+    /**
+     * Specifies a capacity amount to reserve for this endpoint within the parent capacity reservation group.
+     */
+    endpointReservedCapacity?: number;
+}
+
+export interface ServerlessEndpointResponse {
+    /**
+     * Specifies the authentication mode for the Serverless endpoint.
+     */
+    authMode?: string;
+    /**
+     * Optional capacity reservation information for the endpoint. When specified, the Serverless Endpoint
+     * will be allocated capacity from the specified capacity reservation group.
+     */
+    capacityReservation?: ServerlessEndpointCapacityReservationResponse;
+    /**
+     * The inference uri to target when making requests against the serverless endpoint
+     */
+    inferenceEndpoint: ServerlessInferenceEndpointResponse;
+    /**
+     * [Required] The publisher-defined Serverless Offer to provision the endpoint with.
+     */
+    offer: ServerlessOfferResponse;
+    /**
+     * Provisioning state for the endpoint.
+     */
+    provisioningState: string;
+}
+
+export interface ServerlessInferenceEndpointResponse {
+    /**
+     * Specifies any required headers to target this serverless endpoint.
+     */
+    headers: {[key: string]: string};
+    /**
+     * [Required] The inference uri to target when making requests against the Serverless Endpoint.
+     */
+    uri: string;
+}
+
+export interface ServerlessOfferResponse {
+    /**
+     * [Required] The name of the Serverless Offer
+     */
+    offerName: string;
+    /**
+     * [Required] Publisher name of the Serverless Offer
+     */
+    publisher: string;
 }
 
 export interface ServiceManagedResourcesSettingsResponse {
@@ -9304,6 +9625,56 @@ export interface VirtualMachineSchemaResponseProperties {
 }
 
 /**
+ * Describes the properties of a VM size.
+ */
+export interface VirtualMachineSizeResponse {
+    /**
+     * The estimated price information for using a VM.
+     */
+    estimatedVMPrices?: EstimatedVMPricesResponse;
+    /**
+     * The family name of the virtual machine size.
+     */
+    family: string;
+    /**
+     * The number of gPUs supported by the virtual machine size.
+     */
+    gpus: number;
+    /**
+     * Specifies if the virtual machine size supports low priority VMs.
+     */
+    lowPriorityCapable: boolean;
+    /**
+     * The resource volume size, in MB, allowed by the virtual machine size.
+     */
+    maxResourceVolumeMB: number;
+    /**
+     * The amount of memory, in GB, supported by the virtual machine size.
+     */
+    memoryGB: number;
+    /**
+     * The name of the virtual machine size.
+     */
+    name: string;
+    /**
+     * The OS VHD disk size, in MB, allowed by the virtual machine size.
+     */
+    osVhdSizeMB: number;
+    /**
+     * Specifies if the virtual machine size supports premium IO.
+     */
+    premiumIO: boolean;
+    /**
+     * Specifies the compute types supported by the virtual machine size.
+     */
+    supportedComputeTypes?: string[];
+    /**
+     * The number of vCPUs supported by the virtual machine size.
+     */
+    vCPUs: number;
+}
+
+/**
  * Admin credentials for virtual machine
  */
 export interface VirtualMachineSshCredentialsResponse {
@@ -9417,6 +9788,7 @@ export interface WorkspaceConnectionUsernamePasswordResponse {
     password?: string;
     username?: string;
 }
+
 
 
 
