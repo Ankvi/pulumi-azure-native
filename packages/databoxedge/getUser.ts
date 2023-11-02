@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets the properties of the specified user.
  * Azure REST API version: 2022-03-01.
+ *
+ * Other available API versions: 2019-07-01, 2019-08-01, 2021-02-01-preview, 2023-01-01-preview, 2023-07-01.
  */
 export function getUser(args: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
 
@@ -66,6 +68,8 @@ export interface GetUserResult {
 /**
  * Gets the properties of the specified user.
  * Azure REST API version: 2022-03-01.
+ *
+ * Other available API versions: 2019-07-01, 2019-08-01, 2021-02-01-preview, 2023-01-01-preview, 2023-07-01.
  */
 export function getUserOutput(args: GetUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserResult> {
     return pulumi.output(args).apply((a: any) => getUser(a, opts))

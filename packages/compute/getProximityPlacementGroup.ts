@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Retrieves information about a proximity placement group .
  * Azure REST API version: 2023-03-01.
+ *
+ * Other available API versions: 2019-03-01, 2023-07-01.
  */
 export function getProximityPlacementGroup(args: GetProximityPlacementGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetProximityPlacementGroupResult> {
 
@@ -86,6 +88,8 @@ export interface GetProximityPlacementGroupResult {
 /**
  * Retrieves information about a proximity placement group .
  * Azure REST API version: 2023-03-01.
+ *
+ * Other available API versions: 2019-03-01, 2023-07-01.
  */
 export function getProximityPlacementGroupOutput(args: GetProximityPlacementGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProximityPlacementGroupResult> {
     return pulumi.output(args).apply((a: any) => getProximityPlacementGroup(a, opts))

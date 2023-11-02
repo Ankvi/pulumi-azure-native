@@ -3,7 +3,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * The Private Endpoint Connection resource.
- * Azure REST API version: 2022-06-01. Prior API version in Azure Native 1.x: 2020-03-01
+ * Azure REST API version: 2022-06-01. Prior API version in Azure Native 1.x: 2020-03-01.
+ *
+ * Other available API versions: 2022-09-01.
  */
 export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
@@ -95,7 +97,7 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:storagesync/v20200301:PrivateEndpointConnection" }, { type: "azure-native:storagesync/v20200901:PrivateEndpointConnection" }, { type: "azure-native:storagesync/v20220601:PrivateEndpointConnection" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:storagesync/v20200301:PrivateEndpointConnection" }, { type: "azure-native:storagesync/v20200901:PrivateEndpointConnection" }, { type: "azure-native:storagesync/v20220601:PrivateEndpointConnection" }, { type: "azure-native:storagesync/v20220901:PrivateEndpointConnection" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PrivateEndpointConnection.__pulumiType, name, resourceInputs, opts);
     }

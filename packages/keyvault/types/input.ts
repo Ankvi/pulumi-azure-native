@@ -516,3 +516,4 @@ export interface VirtualNetworkRuleArgs {
      */
     ignoreMissingVnetServiceEndpoint?: pulumi.Input<boolean>;
 }
+

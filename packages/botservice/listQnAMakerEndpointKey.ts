@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Lists the QnA Maker endpoint keys
  * Azure REST API version: 2022-09-15.
+ *
+ * Other available API versions: 2022-06-15-preview, 2023-09-15-preview.
  */
 export function listQnAMakerEndpointKey(args?: ListQnAMakerEndpointKeyArgs, opts?: pulumi.InvokeOptions): Promise<ListQnAMakerEndpointKeyResult> {
     args = args || {};
@@ -49,6 +51,8 @@ export interface ListQnAMakerEndpointKeyResult {
 /**
  * Lists the QnA Maker endpoint keys
  * Azure REST API version: 2022-09-15.
+ *
+ * Other available API versions: 2022-06-15-preview, 2023-09-15-preview.
  */
 export function listQnAMakerEndpointKeyOutput(args?: ListQnAMakerEndpointKeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListQnAMakerEndpointKeyResult> {
     return pulumi.output(args).apply((a: any) => listQnAMakerEndpointKey(a, opts))

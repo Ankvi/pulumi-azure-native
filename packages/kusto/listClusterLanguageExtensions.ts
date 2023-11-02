@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Returns a list of language extensions that can run within KQL queries.
  * Azure REST API version: 2022-12-29.
+ *
+ * Other available API versions: 2022-07-07, 2023-05-02, 2023-08-15.
  */
 export function listClusterLanguageExtensions(args: ListClusterLanguageExtensionsArgs, opts?: pulumi.InvokeOptions): Promise<ListClusterLanguageExtensionsResult> {
 
@@ -37,6 +39,8 @@ export interface ListClusterLanguageExtensionsResult {
 /**
  * Returns a list of language extensions that can run within KQL queries.
  * Azure REST API version: 2022-12-29.
+ *
+ * Other available API versions: 2022-07-07, 2023-05-02, 2023-08-15.
  */
 export function listClusterLanguageExtensionsOutput(args: ListClusterLanguageExtensionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListClusterLanguageExtensionsResult> {
     return pulumi.output(args).apply((a: any) => listClusterLanguageExtensions(a, opts))

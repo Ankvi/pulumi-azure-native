@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Get the private scheduled action by name.
  * Azure REST API version: 2023-03-01.
+ *
+ * Other available API versions: 2023-04-01-preview, 2023-08-01.
  */
 export function getScheduledAction(args: GetScheduledActionArgs, opts?: pulumi.InvokeOptions): Promise<GetScheduledActionResult> {
 
@@ -84,6 +86,8 @@ export interface GetScheduledActionResult {
 /**
  * Get the private scheduled action by name.
  * Azure REST API version: 2023-03-01.
+ *
+ * Other available API versions: 2023-04-01-preview, 2023-08-01.
  */
 export function getScheduledActionOutput(args: GetScheduledActionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetScheduledActionResult> {
     return pulumi.output(args).apply((a: any) => getScheduledAction(a, opts))

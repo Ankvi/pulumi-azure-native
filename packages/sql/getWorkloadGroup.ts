@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Gets a workload group
  * Azure REST API version: 2021-11-01.
+ *
+ * Other available API versions: 2022-11-01-preview, 2023-02-01-preview.
  */
 export function getWorkloadGroup(args: GetWorkloadGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkloadGroupResult> {
 
@@ -78,6 +80,8 @@ export interface GetWorkloadGroupResult {
 /**
  * Gets a workload group
  * Azure REST API version: 2021-11-01.
+ *
+ * Other available API versions: 2022-11-01-preview, 2023-02-01-preview.
  */
 export function getWorkloadGroupOutput(args: GetWorkloadGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkloadGroupResult> {
     return pulumi.output(args).apply((a: any) => getWorkloadGroup(a, opts))

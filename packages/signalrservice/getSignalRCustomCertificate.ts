@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Get a custom certificate.
  * Azure REST API version: 2023-02-01.
+ *
+ * Other available API versions: 2023-03-01-preview, 2023-06-01-preview, 2023-08-01-preview.
  */
 export function getSignalRCustomCertificate(args: GetSignalRCustomCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetSignalRCustomCertificateResult> {
 
@@ -70,6 +72,8 @@ export interface GetSignalRCustomCertificateResult {
 /**
  * Get a custom certificate.
  * Azure REST API version: 2023-02-01.
+ *
+ * Other available API versions: 2023-03-01-preview, 2023-06-01-preview, 2023-08-01-preview.
  */
 export function getSignalRCustomCertificateOutput(args: GetSignalRCustomCertificateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSignalRCustomCertificateResult> {
     return pulumi.output(args).apply((a: any) => getSignalRCustomCertificate(a, opts))

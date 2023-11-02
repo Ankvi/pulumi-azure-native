@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Get a Frontend
  * Azure REST API version: 2023-05-01-preview.
+ *
+ * Other available API versions: 2022-10-01-preview, 2023-11-01.
  */
 export function getFrontendsInterface(args: GetFrontendsInterfaceArgs, opts?: pulumi.InvokeOptions): Promise<GetFrontendsInterfaceResult> {
 
@@ -70,6 +72,8 @@ export interface GetFrontendsInterfaceResult {
 /**
  * Get a Frontend
  * Azure REST API version: 2023-05-01-preview.
+ *
+ * Other available API versions: 2022-10-01-preview, 2023-11-01.
  */
 export function getFrontendsInterfaceOutput(args: GetFrontendsInterfaceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFrontendsInterfaceResult> {
     return pulumi.output(args).apply((a: any) => getFrontendsInterface(a, opts))

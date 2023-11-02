@@ -3,7 +3,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Describes a federated identity credential.
- * Azure REST API version: 2023-01-31. Prior API version in Azure Native 1.x: 2022-01-31-preview
+ * Azure REST API version: 2023-01-31. Prior API version in Azure Native 1.x: 2022-01-31-preview.
  */
 export class FederatedIdentityCredential extends pulumi.CustomResource {
     /**

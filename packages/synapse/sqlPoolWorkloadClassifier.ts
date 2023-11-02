@@ -2,7 +2,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Workload classifier operations for a data warehouse
- * Azure REST API version: 2021-06-01. Prior API version in Azure Native 1.x: 2021-03-01
+ * Azure REST API version: 2021-06-01. Prior API version in Azure Native 1.x: 2021-03-01.
+ *
+ * Other available API versions: 2021-06-01-preview.
  */
 export class SqlPoolWorkloadClassifier extends pulumi.CustomResource {
     /**

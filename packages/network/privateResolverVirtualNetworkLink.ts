@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Describes a virtual network link.
  * Azure REST API version: 2022-07-01.
+ *
+ * Other available API versions: 2020-04-01-preview.
  */
 export class PrivateResolverVirtualNetworkLink extends pulumi.CustomResource {
     /**

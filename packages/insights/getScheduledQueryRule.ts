@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Retrieve an scheduled query rule definition.
  * Azure REST API version: 2023-03-15-preview.
+ *
+ * Other available API versions: 2018-04-16, 2020-05-01-preview, 2022-08-01-preview.
  */
 export function getScheduledQueryRule(args: GetScheduledQueryRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetScheduledQueryRuleResult> {
 
@@ -145,6 +147,8 @@ export interface GetScheduledQueryRuleResult {
 /**
  * Retrieve an scheduled query rule definition.
  * Azure REST API version: 2023-03-15-preview.
+ *
+ * Other available API versions: 2018-04-16, 2020-05-01-preview, 2022-08-01-preview.
  */
 export function getScheduledQueryRuleOutput(args: GetScheduledQueryRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetScheduledQueryRuleResult> {
     return pulumi.output(args).apply((a: any) => getScheduledQueryRule(a, opts))

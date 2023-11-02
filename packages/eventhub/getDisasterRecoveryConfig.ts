@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Retrieves Alias(Disaster Recovery configuration) for primary or secondary namespace
  * Azure REST API version: 2022-10-01-preview.
+ *
+ * Other available API versions: 2023-01-01-preview.
  */
 export function getDisasterRecoveryConfig(args: GetDisasterRecoveryConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetDisasterRecoveryConfigResult> {
 
@@ -78,6 +80,8 @@ export interface GetDisasterRecoveryConfigResult {
 /**
  * Retrieves Alias(Disaster Recovery configuration) for primary or secondary namespace
  * Azure REST API version: 2022-10-01-preview.
+ *
+ * Other available API versions: 2023-01-01-preview.
  */
 export function getDisasterRecoveryConfigOutput(args: GetDisasterRecoveryConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDisasterRecoveryConfigResult> {
     return pulumi.output(args).apply((a: any) => getDisasterRecoveryConfig(a, opts))

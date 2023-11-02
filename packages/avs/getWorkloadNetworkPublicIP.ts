@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * NSX Public IP Block
  * Azure REST API version: 2022-05-01.
+ *
+ * Other available API versions: 2023-03-01.
  */
 export function getWorkloadNetworkPublicIP(args: GetWorkloadNetworkPublicIPArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkloadNetworkPublicIPResult> {
 
@@ -65,6 +67,8 @@ export interface GetWorkloadNetworkPublicIPResult {
 /**
  * NSX Public IP Block
  * Azure REST API version: 2022-05-01.
+ *
+ * Other available API versions: 2023-03-01.
  */
 export function getWorkloadNetworkPublicIPOutput(args: GetWorkloadNetworkPublicIPOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkloadNetworkPublicIPResult> {
     return pulumi.output(args).apply((a: any) => getWorkloadNetworkPublicIP(a, opts))

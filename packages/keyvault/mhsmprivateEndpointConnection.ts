@@ -3,7 +3,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Private endpoint connection resource.
- * Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2021-06-01-preview
+ * Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2021-06-01-preview.
+ *
+ * Other available API versions: 2023-07-01.
  */
 export class MHSMPrivateEndpointConnection extends pulumi.CustomResource {
     /**
@@ -115,7 +117,7 @@ export class MHSMPrivateEndpointConnection extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:keyvault/v20210401preview:MHSMPrivateEndpointConnection" }, { type: "azure-native:keyvault/v20210601preview:MHSMPrivateEndpointConnection" }, { type: "azure-native:keyvault/v20211001:MHSMPrivateEndpointConnection" }, { type: "azure-native:keyvault/v20211101preview:MHSMPrivateEndpointConnection" }, { type: "azure-native:keyvault/v20220201preview:MHSMPrivateEndpointConnection" }, { type: "azure-native:keyvault/v20220701:MHSMPrivateEndpointConnection" }, { type: "azure-native:keyvault/v20221101:MHSMPrivateEndpointConnection" }, { type: "azure-native:keyvault/v20230201:MHSMPrivateEndpointConnection" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:keyvault/v20210401preview:MHSMPrivateEndpointConnection" }, { type: "azure-native:keyvault/v20210601preview:MHSMPrivateEndpointConnection" }, { type: "azure-native:keyvault/v20211001:MHSMPrivateEndpointConnection" }, { type: "azure-native:keyvault/v20211101preview:MHSMPrivateEndpointConnection" }, { type: "azure-native:keyvault/v20220201preview:MHSMPrivateEndpointConnection" }, { type: "azure-native:keyvault/v20220701:MHSMPrivateEndpointConnection" }, { type: "azure-native:keyvault/v20221101:MHSMPrivateEndpointConnection" }, { type: "azure-native:keyvault/v20230201:MHSMPrivateEndpointConnection" }, { type: "azure-native:keyvault/v20230701:MHSMPrivateEndpointConnection" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(MHSMPrivateEndpointConnection.__pulumiType, name, resourceInputs, opts);
     }

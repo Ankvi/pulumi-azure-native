@@ -3,7 +3,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Packet core control plane resource.
- * Azure REST API version: 2023-06-01. Prior API version in Azure Native 1.x: 2022-04-01-preview
+ * Azure REST API version: 2023-06-01. Prior API version in Azure Native 1.x: 2022-04-01-preview.
+ *
+ * Other available API versions: 2022-03-01-preview, 2022-04-01-preview, 2022-11-01, 2023-09-01.
  */
 export class PacketCoreControlPlane extends pulumi.CustomResource {
     /**
@@ -187,7 +189,7 @@ export class PacketCoreControlPlane extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:mobilenetwork/v20220301preview:PacketCoreControlPlane" }, { type: "azure-native:mobilenetwork/v20220401preview:PacketCoreControlPlane" }, { type: "azure-native:mobilenetwork/v20221101:PacketCoreControlPlane" }, { type: "azure-native:mobilenetwork/v20230601:PacketCoreControlPlane" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:mobilenetwork/v20220301preview:PacketCoreControlPlane" }, { type: "azure-native:mobilenetwork/v20220401preview:PacketCoreControlPlane" }, { type: "azure-native:mobilenetwork/v20221101:PacketCoreControlPlane" }, { type: "azure-native:mobilenetwork/v20230601:PacketCoreControlPlane" }, { type: "azure-native:mobilenetwork/v20230901:PacketCoreControlPlane" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PacketCoreControlPlane.__pulumiType, name, resourceInputs, opts);
     }

@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets the specified contact Profile in a specified resource group.
  * Azure REST API version: 2022-11-01.
+ *
+ * Other available API versions: 2022-03-01.
  */
 export function getContactProfile(args: GetContactProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetContactProfileResult> {
 
@@ -85,6 +87,8 @@ export interface GetContactProfileResult {
 /**
  * Gets the specified contact Profile in a specified resource group.
  * Azure REST API version: 2022-11-01.
+ *
+ * Other available API versions: 2022-03-01.
  */
 export function getContactProfileOutput(args: GetContactProfileOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContactProfileResult> {
     return pulumi.output(args).apply((a: any) => getContactProfile(a, opts))

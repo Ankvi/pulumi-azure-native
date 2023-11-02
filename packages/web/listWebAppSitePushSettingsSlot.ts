@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Description for Gets the Push settings associated with web app.
  * Azure REST API version: 2022-09-01.
+ *
+ * Other available API versions: 2020-10-01.
  */
 export function listWebAppSitePushSettingsSlot(args: ListWebAppSitePushSettingsSlotArgs, opts?: pulumi.InvokeOptions): Promise<ListWebAppSitePushSettingsSlotResult> {
 
@@ -72,6 +74,8 @@ export interface ListWebAppSitePushSettingsSlotResult {
 /**
  * Description for Gets the Push settings associated with web app.
  * Azure REST API version: 2022-09-01.
+ *
+ * Other available API versions: 2020-10-01.
  */
 export function listWebAppSitePushSettingsSlotOutput(args: ListWebAppSitePushSettingsSlotOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListWebAppSitePushSettingsSlotResult> {
     return pulumi.output(args).apply((a: any) => listWebAppSitePushSettingsSlot(a, opts))

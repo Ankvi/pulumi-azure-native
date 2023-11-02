@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets an existing AzureFrontDoor domain with the specified domain name under the specified subscription, resource group and profile.
  * Azure REST API version: 2023-05-01.
+ *
+ * Other available API versions: 2023-07-01-preview.
  */
 export function getAFDCustomDomain(args: GetAFDCustomDomainArgs, opts?: pulumi.InvokeOptions): Promise<GetAFDCustomDomainResult> {
 
@@ -91,6 +93,8 @@ export interface GetAFDCustomDomainResult {
 /**
  * Gets an existing AzureFrontDoor domain with the specified domain name under the specified subscription, resource group and profile.
  * Azure REST API version: 2023-05-01.
+ *
+ * Other available API versions: 2023-07-01-preview.
  */
 export function getAFDCustomDomainOutput(args: GetAFDCustomDomainOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAFDCustomDomainResult> {
     return pulumi.output(args).apply((a: any) => getAFDCustomDomain(a, opts))

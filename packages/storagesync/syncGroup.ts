@@ -3,7 +3,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Sync Group object.
- * Azure REST API version: 2022-06-01. Prior API version in Azure Native 1.x: 2020-03-01
+ * Azure REST API version: 2022-06-01. Prior API version in Azure Native 1.x: 2020-03-01.
+ *
+ * Other available API versions: 2017-06-05-preview, 2018-04-02, 2022-09-01.
  */
 export class SyncGroup extends pulumi.CustomResource {
     /**
@@ -86,7 +88,7 @@ export class SyncGroup extends pulumi.CustomResource {
             resourceInputs["uniqueId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:storagesync/v20170605preview:SyncGroup" }, { type: "azure-native:storagesync/v20180402:SyncGroup" }, { type: "azure-native:storagesync/v20180701:SyncGroup" }, { type: "azure-native:storagesync/v20181001:SyncGroup" }, { type: "azure-native:storagesync/v20190201:SyncGroup" }, { type: "azure-native:storagesync/v20190301:SyncGroup" }, { type: "azure-native:storagesync/v20190601:SyncGroup" }, { type: "azure-native:storagesync/v20191001:SyncGroup" }, { type: "azure-native:storagesync/v20200301:SyncGroup" }, { type: "azure-native:storagesync/v20200901:SyncGroup" }, { type: "azure-native:storagesync/v20220601:SyncGroup" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:storagesync/v20170605preview:SyncGroup" }, { type: "azure-native:storagesync/v20180402:SyncGroup" }, { type: "azure-native:storagesync/v20180701:SyncGroup" }, { type: "azure-native:storagesync/v20181001:SyncGroup" }, { type: "azure-native:storagesync/v20190201:SyncGroup" }, { type: "azure-native:storagesync/v20190301:SyncGroup" }, { type: "azure-native:storagesync/v20190601:SyncGroup" }, { type: "azure-native:storagesync/v20191001:SyncGroup" }, { type: "azure-native:storagesync/v20200301:SyncGroup" }, { type: "azure-native:storagesync/v20200901:SyncGroup" }, { type: "azure-native:storagesync/v20220601:SyncGroup" }, { type: "azure-native:storagesync/v20220901:SyncGroup" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(SyncGroup.__pulumiType, name, resourceInputs, opts);
     }

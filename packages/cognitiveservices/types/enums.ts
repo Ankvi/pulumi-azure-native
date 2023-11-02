@@ -1,3 +1,14 @@
+export const AllowedContentLevel = {
+    Low: "Low",
+    Medium: "Medium",
+    High: "High",
+} as const;
+
+/**
+ * Level at which content is filtered.
+ */
+export type AllowedContentLevel = (typeof AllowedContentLevel)[keyof typeof AllowedContentLevel];
+
 export const DeploymentModelVersionUpgradeOption = {
     OnceNewDefaultVersionAvailable: "OnceNewDefaultVersionAvailable",
     OnceCurrentVersionExpired: "OnceCurrentVersionExpired",
@@ -18,6 +29,16 @@ export const DeploymentScaleType = {
  * Deployment scale type.
  */
 export type DeploymentScaleType = (typeof DeploymentScaleType)[keyof typeof DeploymentScaleType];
+
+export const EncryptionScopeState = {
+    Disabled: "Disabled",
+    Enabled: "Enabled",
+} as const;
+
+/**
+ * The encryptionScope state.
+ */
+export type EncryptionScopeState = (typeof EncryptionScopeState)[keyof typeof EncryptionScopeState];
 
 export const HostingModel = {
     Web: "Web",
@@ -71,6 +92,27 @@ export const PublicNetworkAccess = {
  * Whether or not public endpoint access is allowed for this account.
  */
 export type PublicNetworkAccess = (typeof PublicNetworkAccess)[keyof typeof PublicNetworkAccess];
+
+export const RaiPolicyContentSource = {
+    Prompt: "Prompt",
+    Completion: "Completion",
+} as const;
+
+/**
+ * Content source to apply the Content Filters.
+ */
+export type RaiPolicyContentSource = (typeof RaiPolicyContentSource)[keyof typeof RaiPolicyContentSource];
+
+export const RaiPolicyMode = {
+    Default: "Default",
+    Deferred: "Deferred",
+    Blocking: "Blocking",
+} as const;
+
+/**
+ * Content Filters mode.
+ */
+export type RaiPolicyMode = (typeof RaiPolicyMode)[keyof typeof RaiPolicyMode];
 
 export const ResourceIdentityType = {
     None: "None",

@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Azure Resource Manager resource envelope.
  * Azure REST API version: 2023-04-01-preview.
+ *
+ * Other available API versions: 2023-06-01-preview, 2023-08-01-preview, 2023-10-01.
  */
 export function getFeaturesetContainerEntity(args: GetFeaturesetContainerEntityArgs, opts?: pulumi.InvokeOptions): Promise<GetFeaturesetContainerEntityResult> {
 
@@ -58,6 +60,8 @@ export interface GetFeaturesetContainerEntityResult {
 /**
  * Azure Resource Manager resource envelope.
  * Azure REST API version: 2023-04-01-preview.
+ *
+ * Other available API versions: 2023-06-01-preview, 2023-08-01-preview, 2023-10-01.
  */
 export function getFeaturesetContainerEntityOutput(args: GetFeaturesetContainerEntityOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFeaturesetContainerEntityResult> {
     return pulumi.output(args).apply((a: any) => getFeaturesetContainerEntity(a, opts))

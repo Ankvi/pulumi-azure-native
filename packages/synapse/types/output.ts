@@ -1466,7 +1466,7 @@ export interface WorkspaceRepositoryConfigurationResponse {
      */
     collaborationBranch?: string;
     /**
-     * GitHub Enterprise host name. For example: https://github.mydomain.com
+     * GitHub Enterprise host name. For example: `https://github.mydomain.com`
      */
     hostName?: string;
     /**

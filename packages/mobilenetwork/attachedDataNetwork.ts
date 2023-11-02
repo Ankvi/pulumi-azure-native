@@ -3,7 +3,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Attached data network resource. Must be created in the same location as its parent packet core data plane.
- * Azure REST API version: 2023-06-01. Prior API version in Azure Native 1.x: 2022-04-01-preview
+ * Azure REST API version: 2023-06-01. Prior API version in Azure Native 1.x: 2022-04-01-preview.
+ *
+ * Other available API versions: 2022-04-01-preview, 2022-11-01, 2023-09-01.
  */
 export class AttachedDataNetwork extends pulumi.CustomResource {
     /**
@@ -137,7 +139,7 @@ export class AttachedDataNetwork extends pulumi.CustomResource {
             resourceInputs["userPlaneDataInterface"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:mobilenetwork/v20220301preview:AttachedDataNetwork" }, { type: "azure-native:mobilenetwork/v20220401preview:AttachedDataNetwork" }, { type: "azure-native:mobilenetwork/v20221101:AttachedDataNetwork" }, { type: "azure-native:mobilenetwork/v20230601:AttachedDataNetwork" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:mobilenetwork/v20220301preview:AttachedDataNetwork" }, { type: "azure-native:mobilenetwork/v20220401preview:AttachedDataNetwork" }, { type: "azure-native:mobilenetwork/v20221101:AttachedDataNetwork" }, { type: "azure-native:mobilenetwork/v20230601:AttachedDataNetwork" }, { type: "azure-native:mobilenetwork/v20230901:AttachedDataNetwork" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(AttachedDataNetwork.__pulumiType, name, resourceInputs, opts);
     }

@@ -3,7 +3,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Site REST Resource.
- * Azure REST API version: 2020-07-07. Prior API version in Azure Native 1.x: 2020-01-01
+ * Azure REST API version: 2020-07-07. Prior API version in Azure Native 1.x: 2020-01-01.
  */
 export class HyperVSite extends pulumi.CustomResource {
     /**

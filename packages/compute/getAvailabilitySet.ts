@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Retrieves information about an availability set.
  * Azure REST API version: 2023-03-01.
+ *
+ * Other available API versions: 2016-04-30-preview, 2023-07-01.
  */
 export function getAvailabilitySet(args: GetAvailabilitySetArgs, opts?: pulumi.InvokeOptions): Promise<GetAvailabilitySetResult> {
 
@@ -77,6 +79,8 @@ export interface GetAvailabilitySetResult {
 /**
  * Retrieves information about an availability set.
  * Azure REST API version: 2023-03-01.
+ *
+ * Other available API versions: 2016-04-30-preview, 2023-07-01.
  */
 export function getAvailabilitySetOutput(args: GetAvailabilitySetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAvailabilitySetResult> {
     return pulumi.output(args).apply((a: any) => getAvailabilitySet(a, opts))

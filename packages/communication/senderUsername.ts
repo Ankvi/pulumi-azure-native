@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * A class representing a SenderUsername resource.
  * Azure REST API version: 2023-03-31.
+ *
+ * Other available API versions: 2023-04-01-preview, 2023-06-01-preview.
  */
 export class SenderUsername extends pulumi.CustomResource {
     /**

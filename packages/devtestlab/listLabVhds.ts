@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * List disk images available for custom image creation.
  * Azure REST API version: 2018-09-15.
+ *
+ * Other available API versions: 2015-05-21-preview, 2016-05-15.
  */
 export function listLabVhds(args: ListLabVhdsArgs, opts?: pulumi.InvokeOptions): Promise<ListLabVhdsResult> {
 
@@ -41,6 +43,8 @@ export interface ListLabVhdsResult {
 /**
  * List disk images available for custom image creation.
  * Azure REST API version: 2018-09-15.
+ *
+ * Other available API versions: 2015-05-21-preview, 2016-05-15.
  */
 export function listLabVhdsOutput(args: ListLabVhdsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListLabVhdsResult> {
     return pulumi.output(args).apply((a: any) => listLabVhds(a, opts))

@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Get service
  * Azure REST API version: 2023-07-01-preview.
+ *
+ * Other available API versions: 2024-03-01.
  */
 export function getService(args: GetServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceResult> {
 
@@ -65,6 +67,8 @@ export interface GetServiceResult {
 /**
  * Get service
  * Azure REST API version: 2023-07-01-preview.
+ *
+ * Other available API versions: 2024-03-01.
  */
 export function getServiceOutput(args: GetServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceResult> {
     return pulumi.output(args).apply((a: any) => getService(a, opts))

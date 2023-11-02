@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Lists all of the streaming jobs in the given cluster.
  * Azure REST API version: 2020-03-01.
+ *
+ * Other available API versions: 2020-03-01-preview.
  */
 export function listClusterStreamingJobs(args: ListClusterStreamingJobsArgs, opts?: pulumi.InvokeOptions): Promise<ListClusterStreamingJobsResult> {
 
@@ -41,6 +43,8 @@ export interface ListClusterStreamingJobsResult {
 /**
  * Lists all of the streaming jobs in the given cluster.
  * Azure REST API version: 2020-03-01.
+ *
+ * Other available API versions: 2020-03-01-preview.
  */
 export function listClusterStreamingJobsOutput(args: ListClusterStreamingJobsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListClusterStreamingJobsResult> {
     return pulumi.output(args).apply((a: any) => listClusterStreamingJobs(a, opts))

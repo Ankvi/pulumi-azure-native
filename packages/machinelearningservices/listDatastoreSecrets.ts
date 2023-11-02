@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Base definition for datastore secrets.
  * Azure REST API version: 2023-04-01.
+ *
+ * Other available API versions: 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01.
  */
 export function listDatastoreSecrets(args: ListDatastoreSecretsArgs, opts?: pulumi.InvokeOptions): Promise<ListDatastoreSecretsResult> {
 
@@ -41,6 +43,8 @@ export interface ListDatastoreSecretsResult {
 /**
  * Base definition for datastore secrets.
  * Azure REST API version: 2023-04-01.
+ *
+ * Other available API versions: 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01.
  */
 export function listDatastoreSecretsOutput(args: ListDatastoreSecretsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListDatastoreSecretsResult> {
     return pulumi.output(args).apply((a: any) => listDatastoreSecrets(a, opts))

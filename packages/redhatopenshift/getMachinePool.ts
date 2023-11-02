@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * The operation returns properties of a MachinePool.
  * Azure REST API version: 2022-09-04.
+ *
+ * Other available API versions: 2023-04-01, 2023-07-01-preview, 2023-09-04.
  */
 export function getMachinePool(args: GetMachinePoolArgs, opts?: pulumi.InvokeOptions): Promise<GetMachinePoolResult> {
 
@@ -55,6 +57,8 @@ export interface GetMachinePoolResult {
 /**
  * The operation returns properties of a MachinePool.
  * Azure REST API version: 2022-09-04.
+ *
+ * Other available API versions: 2023-04-01, 2023-07-01-preview, 2023-09-04.
  */
 export function getMachinePoolOutput(args: GetMachinePoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMachinePoolResult> {
     return pulumi.output(args).apply((a: any) => getMachinePool(a, opts))

@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Azure REST API version: 2023-05-01-preview.
+ *
+ * Other available API versions: 2023-07-01.
  */
 export class AgentPool extends pulumi.CustomResource {
     /**

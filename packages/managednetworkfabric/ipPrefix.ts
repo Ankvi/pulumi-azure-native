@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * The IPPrefix resource definition.
  * Azure REST API version: 2023-02-01-preview.
+ *
+ * Other available API versions: 2023-06-15.
  */
 export class IpPrefix extends pulumi.CustomResource {
     /**

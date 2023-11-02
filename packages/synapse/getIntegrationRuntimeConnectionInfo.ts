@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Get connection info for an integration runtime
  * Azure REST API version: 2021-06-01.
+ *
+ * Other available API versions: 2021-06-01-preview.
  */
 export function getIntegrationRuntimeConnectionInfo(args: GetIntegrationRuntimeConnectionInfoArgs, opts?: pulumi.InvokeOptions): Promise<GetIntegrationRuntimeConnectionInfoResult> {
 
@@ -61,6 +63,8 @@ export interface GetIntegrationRuntimeConnectionInfoResult {
 /**
  * Get connection info for an integration runtime
  * Azure REST API version: 2021-06-01.
+ *
+ * Other available API versions: 2021-06-01-preview.
  */
 export function getIntegrationRuntimeConnectionInfoOutput(args: GetIntegrationRuntimeConnectionInfoOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIntegrationRuntimeConnectionInfoResult> {
     return pulumi.output(args).apply((a: any) => getIntegrationRuntimeConnectionInfo(a, opts))

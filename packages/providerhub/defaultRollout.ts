@@ -3,7 +3,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Default rollout definition.
- * Azure REST API version: 2021-09-01-preview. Prior API version in Azure Native 1.x: 2020-11-20
+ * Azure REST API version: 2021-09-01-preview. Prior API version in Azure Native 1.x: 2020-11-20.
  */
 export class DefaultRollout extends pulumi.CustomResource {
     /**

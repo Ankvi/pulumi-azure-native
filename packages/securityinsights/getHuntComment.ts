@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets a hunt comment
  * Azure REST API version: 2023-06-01-preview.
+ *
+ * Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview.
  */
 export function getHuntComment(args: GetHuntCommentArgs, opts?: pulumi.InvokeOptions): Promise<GetHuntCommentResult> {
 
@@ -67,6 +69,8 @@ export interface GetHuntCommentResult {
 /**
  * Gets a hunt comment
  * Azure REST API version: 2023-06-01-preview.
+ *
+ * Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview.
  */
 export function getHuntCommentOutput(args: GetHuntCommentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHuntCommentResult> {
     return pulumi.output(args).apply((a: any) => getHuntComment(a, opts))

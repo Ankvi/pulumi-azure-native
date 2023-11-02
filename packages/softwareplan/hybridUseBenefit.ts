@@ -3,7 +3,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Response on GET of a hybrid use benefit
- * Azure REST API version: 2019-12-01. Prior API version in Azure Native 1.x: 2019-06-01-preview
+ * Azure REST API version: 2019-12-01. Prior API version in Azure Native 1.x: 2019-06-01-preview.
  */
 export class HybridUseBenefit extends pulumi.CustomResource {
     /**

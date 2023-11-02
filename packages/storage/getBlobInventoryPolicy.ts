@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets the blob inventory policy associated with the specified storage account.
  * Azure REST API version: 2022-09-01.
+ *
+ * Other available API versions: 2023-01-01.
  */
 export function getBlobInventoryPolicy(args: GetBlobInventoryPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetBlobInventoryPolicyResult> {
 
@@ -62,6 +64,8 @@ export interface GetBlobInventoryPolicyResult {
 /**
  * Gets the blob inventory policy associated with the specified storage account.
  * Azure REST API version: 2022-09-01.
+ *
+ * Other available API versions: 2023-01-01.
  */
 export function getBlobInventoryPolicyOutput(args: GetBlobInventoryPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBlobInventoryPolicyResult> {
     return pulumi.output(args).apply((a: any) => getBlobInventoryPolicy(a, opts))

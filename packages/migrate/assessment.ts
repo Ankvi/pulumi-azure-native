@@ -3,7 +3,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * An assessment created for a group in the Migration project.
- * Azure REST API version: 2019-10-01. Prior API version in Azure Native 1.x: 2019-10-01
+ * Azure REST API version: 2019-10-01. Prior API version in Azure Native 1.x: 2019-10-01.
+ *
+ * Other available API versions: 2017-11-11-preview, 2018-02-02.
  */
 export class Assessment extends pulumi.CustomResource {
     /**
@@ -87,7 +89,7 @@ export class Assessment extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:migrate/v20191001:Assessment" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:migrate/v20191001:Assessment" }, { type: "azure-native:migrate/v20230315:Assessment" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Assessment.__pulumiType, name, resourceInputs, opts);
     }

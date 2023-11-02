@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Returns a subscription description for the specified topic.
  * Azure REST API version: 2022-01-01-preview.
+ *
+ * Other available API versions: 2015-08-01, 2022-10-01-preview.
  */
 export function getSubscription(args: GetSubscriptionArgs, opts?: pulumi.InvokeOptions): Promise<GetSubscriptionResult> {
 
@@ -139,6 +141,8 @@ export interface GetSubscriptionResult {
 /**
  * Returns a subscription description for the specified topic.
  * Azure REST API version: 2022-01-01-preview.
+ *
+ * Other available API versions: 2015-08-01, 2022-10-01-preview.
  */
 export function getSubscriptionOutput(args: GetSubscriptionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubscriptionResult> {
     return pulumi.output(args).apply((a: any) => getSubscription(a, opts))

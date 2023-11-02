@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Migrate project.
  * Azure REST API version: 2020-05-01.
+ *
+ * Other available API versions: 2023-01-01.
  */
 export class MigrateProjectsControllerMigrateProject extends pulumi.CustomResource {
     /**

@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * The operation to get the extension.
  * Azure REST API version: 2022-12-27.
+ *
+ * Other available API versions: 2019-08-02-preview, 2020-08-15-preview, 2022-05-10-preview, 2023-06-20-preview.
  */
 export function getMachineExtension(args: GetMachineExtensionArgs, opts?: pulumi.InvokeOptions): Promise<GetMachineExtensionResult> {
 
@@ -35,25 +37,9 @@ export interface GetMachineExtensionArgs {
  */
 export interface GetMachineExtensionResult {
     /**
-     * Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
-     */
-    readonly autoUpgradeMinorVersion?: boolean;
-    /**
-     * Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available.
-     */
-    readonly enableAutomaticUpgrade?: boolean;
-    /**
-     * How the extension handler should be forced to update even if the extension configuration has not changed.
-     */
-    readonly forceUpdateTag?: string;
-    /**
      * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
      */
     readonly id: string;
-    /**
-     * The machine extension instance view.
-     */
-    readonly instanceView?: types.outputs.MachineExtensionInstanceViewResponse;
     /**
      * The geo-location where the resource lives
      */
@@ -63,21 +49,9 @@ export interface GetMachineExtensionResult {
      */
     readonly name: string;
     /**
-     * The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
+     * Describes Machine Extension Properties.
      */
-    readonly protectedSettings?: any;
-    /**
-     * The provisioning state, which only appears in the response.
-     */
-    readonly provisioningState: string;
-    /**
-     * The name of the extension handler publisher.
-     */
-    readonly publisher?: string;
-    /**
-     * Json formatted public settings for the extension.
-     */
-    readonly settings?: any;
+    readonly properties: types.outputs.MachineExtensionPropertiesResponse;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
@@ -90,14 +64,12 @@ export interface GetMachineExtensionResult {
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
-    /**
-     * Specifies the version of the script handler.
-     */
-    readonly typeHandlerVersion?: string;
 }
 /**
  * The operation to get the extension.
  * Azure REST API version: 2022-12-27.
+ *
+ * Other available API versions: 2019-08-02-preview, 2020-08-15-preview, 2022-05-10-preview, 2023-06-20-preview.
  */
 export function getMachineExtensionOutput(args: GetMachineExtensionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMachineExtensionResult> {
     return pulumi.output(args).apply((a: any) => getMachineExtension(a, opts))

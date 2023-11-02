@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Description for Get function keys for a function in a web site, or a deployment slot.
  * Azure REST API version: 2022-09-01.
+ *
+ * Other available API versions: 2020-10-01.
  */
 export function listWebAppFunctionKeys(args: ListWebAppFunctionKeysArgs, opts?: pulumi.InvokeOptions): Promise<ListWebAppFunctionKeysResult> {
 
@@ -57,6 +59,8 @@ export interface ListWebAppFunctionKeysResult {
 /**
  * Description for Get function keys for a function in a web site, or a deployment slot.
  * Azure REST API version: 2022-09-01.
+ *
+ * Other available API versions: 2020-10-01.
  */
 export function listWebAppFunctionKeysOutput(args: ListWebAppFunctionKeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListWebAppFunctionKeysResult> {
     return pulumi.output(args).apply((a: any) => listWebAppFunctionKeys(a, opts))

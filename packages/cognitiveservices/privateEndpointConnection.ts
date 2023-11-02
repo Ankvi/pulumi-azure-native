@@ -3,7 +3,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * The Private Endpoint Connection resource.
- * Azure REST API version: 2023-05-01. Prior API version in Azure Native 1.x: 2017-04-18
+ * Azure REST API version: 2023-05-01. Prior API version in Azure Native 1.x: 2017-04-18.
+ *
+ * Other available API versions: 2023-10-01-preview.
  */
 export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
@@ -92,7 +94,7 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:cognitiveservices/v20170418:PrivateEndpointConnection" }, { type: "azure-native:cognitiveservices/v20210430:PrivateEndpointConnection" }, { type: "azure-native:cognitiveservices/v20211001:PrivateEndpointConnection" }, { type: "azure-native:cognitiveservices/v20220301:PrivateEndpointConnection" }, { type: "azure-native:cognitiveservices/v20221001:PrivateEndpointConnection" }, { type: "azure-native:cognitiveservices/v20221201:PrivateEndpointConnection" }, { type: "azure-native:cognitiveservices/v20230501:PrivateEndpointConnection" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:cognitiveservices/v20170418:PrivateEndpointConnection" }, { type: "azure-native:cognitiveservices/v20210430:PrivateEndpointConnection" }, { type: "azure-native:cognitiveservices/v20211001:PrivateEndpointConnection" }, { type: "azure-native:cognitiveservices/v20220301:PrivateEndpointConnection" }, { type: "azure-native:cognitiveservices/v20221001:PrivateEndpointConnection" }, { type: "azure-native:cognitiveservices/v20221201:PrivateEndpointConnection" }, { type: "azure-native:cognitiveservices/v20230501:PrivateEndpointConnection" }, { type: "azure-native:cognitiveservices/v20231001preview:PrivateEndpointConnection" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PrivateEndpointConnection.__pulumiType, name, resourceInputs, opts);
     }

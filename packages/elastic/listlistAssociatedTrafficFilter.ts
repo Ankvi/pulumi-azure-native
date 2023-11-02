@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * List of elastic traffic filters in the account
  * Azure REST API version: 2023-06-01.
+ *
+ * Other available API versions: 2023-06-15-preview, 2023-07-01-preview, 2023-10-01-preview.
  */
 export function listlistAssociatedTrafficFilter(args: ListlistAssociatedTrafficFilterArgs, opts?: pulumi.InvokeOptions): Promise<ListlistAssociatedTrafficFilterResult> {
 
@@ -37,6 +39,8 @@ export interface ListlistAssociatedTrafficFilterResult {
 /**
  * List of elastic traffic filters in the account
  * Azure REST API version: 2023-06-01.
+ *
+ * Other available API versions: 2023-06-15-preview, 2023-07-01-preview, 2023-10-01-preview.
  */
 export function listlistAssociatedTrafficFilterOutput(args: ListlistAssociatedTrafficFilterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListlistAssociatedTrafficFilterResult> {
     return pulumi.output(args).apply((a: any) => listlistAssociatedTrafficFilter(a, opts))

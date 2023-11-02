@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Get the Azure AD B2C tenant resource.
  * Azure REST API version: 2021-04-01.
+ *
+ * Other available API versions: 2019-01-01-preview, 2023-01-18-preview.
  */
 export function getB2CTenant(args: GetB2CTenantArgs, opts?: pulumi.InvokeOptions): Promise<GetB2CTenantResult> {
 
@@ -66,6 +68,8 @@ export interface GetB2CTenantResult {
 /**
  * Get the Azure AD B2C tenant resource.
  * Azure REST API version: 2021-04-01.
+ *
+ * Other available API versions: 2019-01-01-preview, 2023-01-18-preview.
  */
 export function getB2CTenantOutput(args: GetB2CTenantOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetB2CTenantResult> {
     return pulumi.output(args).apply((a: any) => getB2CTenant(a, opts))

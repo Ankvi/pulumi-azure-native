@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Get formula.
  * Azure REST API version: 2018-09-15.
+ *
+ * Other available API versions: 2016-05-15.
  */
 export function getFormula(args: GetFormulaArgs, opts?: pulumi.InvokeOptions): Promise<GetFormulaResult> {
 
@@ -95,6 +97,8 @@ export interface GetFormulaResult {
 /**
  * Get formula.
  * Azure REST API version: 2018-09-15.
+ *
+ * Other available API versions: 2016-05-15.
  */
 export function getFormulaOutput(args: GetFormulaOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFormulaResult> {
     return pulumi.output(args).apply((a: any) => getFormula(a, opts))

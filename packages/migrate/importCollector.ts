@@ -2,7 +2,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Azure REST API version: 2019-10-01. Prior API version in Azure Native 1.x: 2019-10-01
+ * Azure REST API version: 2019-10-01. Prior API version in Azure Native 1.x: 2019-10-01.
  */
 export class ImportCollector extends pulumi.CustomResource {
     /**
@@ -67,7 +67,7 @@ export class ImportCollector extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:migrate/v20191001:ImportCollector" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:migrate/v20191001:ImportCollector" }, { type: "azure-native:migrate/v20230315:ImportCollector" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ImportCollector.__pulumiType, name, resourceInputs, opts);
     }

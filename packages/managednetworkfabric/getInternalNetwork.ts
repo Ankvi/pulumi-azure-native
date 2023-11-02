@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets a InternalNetworks.
  * Azure REST API version: 2023-02-01-preview.
+ *
+ * Other available API versions: 2023-06-15.
  */
 export function getInternalNetwork(args: GetInternalNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetInternalNetworkResult> {
 
@@ -114,6 +116,8 @@ export interface GetInternalNetworkResult {
 /**
  * Gets a InternalNetworks.
  * Azure REST API version: 2023-02-01-preview.
+ *
+ * Other available API versions: 2023-06-15.
  */
 export function getInternalNetworkOutput(args: GetInternalNetworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInternalNetworkResult> {
     return pulumi.output(args).apply((a: any) => getInternalNetwork(a, opts))

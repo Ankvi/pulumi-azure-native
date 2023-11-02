@@ -3,7 +3,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Concrete tracked resource types can be created by aliasing this type using a specific property type.
- * Azure REST API version: 2023-05-01-preview. Prior API version in Azure Native 1.x: 2022-10-01-preview
+ * Azure REST API version: 2023-05-01-preview. Prior API version in Azure Native 1.x: 2022-10-01-preview.
+ *
+ * Other available API versions: 2022-10-01-preview, 2023-11-01.
  */
 export class TrafficControllerInterface extends pulumi.CustomResource {
     /**
@@ -106,7 +108,7 @@ export class TrafficControllerInterface extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:servicenetworking/v20221001preview:TrafficControllerInterface" }, { type: "azure-native:servicenetworking/v20230501preview:TrafficControllerInterface" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:servicenetworking/v20221001preview:TrafficControllerInterface" }, { type: "azure-native:servicenetworking/v20230501preview:TrafficControllerInterface" }, { type: "azure-native:servicenetworking/v20231101:TrafficControllerInterface" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(TrafficControllerInterface.__pulumiType, name, resourceInputs, opts);
     }

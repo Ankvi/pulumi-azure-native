@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets the search service with the given name in the given resource group.
  * Azure REST API version: 2022-09-01.
+ *
+ * Other available API versions: 2021-04-01-preview, 2023-11-01.
  */
 export function getService(args: GetServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceResult> {
 
@@ -113,6 +115,8 @@ export interface GetServiceResult {
 /**
  * Gets the search service with the given name in the given resource group.
  * Azure REST API version: 2022-09-01.
+ *
+ * Other available API versions: 2021-04-01-preview, 2023-11-01.
  */
 export function getServiceOutput(args: GetServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceResult> {
     return pulumi.output(args).apply((a: any) => getService(a, opts))

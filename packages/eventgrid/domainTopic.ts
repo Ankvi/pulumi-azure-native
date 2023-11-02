@@ -3,7 +3,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Domain Topic.
- * Azure REST API version: 2022-06-15. Prior API version in Azure Native 1.x: 2020-06-01
+ * Azure REST API version: 2022-06-15. Prior API version in Azure Native 1.x: 2020-06-01.
+ *
+ * Other available API versions: 2023-06-01-preview.
  */
 export class DomainTopic extends pulumi.CustomResource {
     /**

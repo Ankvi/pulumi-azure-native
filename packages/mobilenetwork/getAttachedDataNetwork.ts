@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets information about the specified attached data network.
  * Azure REST API version: 2023-06-01.
+ *
+ * Other available API versions: 2022-04-01-preview, 2022-11-01, 2023-09-01.
  */
 export function getAttachedDataNetwork(args: GetAttachedDataNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetAttachedDataNetworkResult> {
 
@@ -96,6 +98,8 @@ export interface GetAttachedDataNetworkResult {
 /**
  * Gets information about the specified attached data network.
  * Azure REST API version: 2023-06-01.
+ *
+ * Other available API versions: 2022-04-01-preview, 2022-11-01, 2023-09-01.
  */
 export function getAttachedDataNetworkOutput(args: GetAttachedDataNetworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAttachedDataNetworkResult> {
     return pulumi.output(args).apply((a: any) => getAttachedDataNetwork(a, opts))

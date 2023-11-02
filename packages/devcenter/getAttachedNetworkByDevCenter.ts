@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets an attached NetworkConnection.
  * Azure REST API version: 2023-04-01.
+ *
+ * Other available API versions: 2023-08-01-preview, 2023-10-01-preview.
  */
 export function getAttachedNetworkByDevCenter(args: GetAttachedNetworkByDevCenterArgs, opts?: pulumi.InvokeOptions): Promise<GetAttachedNetworkByDevCenterResult> {
 
@@ -74,6 +76,8 @@ export interface GetAttachedNetworkByDevCenterResult {
 /**
  * Gets an attached NetworkConnection.
  * Azure REST API version: 2023-04-01.
+ *
+ * Other available API versions: 2023-08-01-preview, 2023-10-01-preview.
  */
 export function getAttachedNetworkByDevCenterOutput(args: GetAttachedNetworkByDevCenterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAttachedNetworkByDevCenterResult> {
     return pulumi.output(args).apply((a: any) => getAttachedNetworkByDevCenter(a, opts))

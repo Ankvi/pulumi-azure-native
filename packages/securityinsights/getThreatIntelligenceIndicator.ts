@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * View a threat intelligence indicator by name.
  * Azure REST API version: 2023-02-01.
+ *
+ * Other available API versions: 2021-04-01, 2021-09-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview.
  */
 export function getThreatIntelligenceIndicator(args: GetThreatIntelligenceIndicatorArgs, opts?: pulumi.InvokeOptions): Promise<GetThreatIntelligenceIndicatorResult> {
 
@@ -62,6 +64,8 @@ export interface GetThreatIntelligenceIndicatorResult {
 /**
  * View a threat intelligence indicator by name.
  * Azure REST API version: 2023-02-01.
+ *
+ * Other available API versions: 2021-04-01, 2021-09-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview.
  */
 export function getThreatIntelligenceIndicatorOutput(args: GetThreatIntelligenceIndicatorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetThreatIntelligenceIndicatorResult> {
     return pulumi.output(args).apply((a: any) => getThreatIntelligenceIndicator(a, opts))

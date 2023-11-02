@@ -38,10 +38,12 @@ export * from "./types/enums";
 // Export sub-modules:
 import * as v20221001preview from "./v20221001preview";
 import * as v20230501preview from "./v20230501preview";
+import * as v20231101 from "./v20231101";
 
 export {
     v20221001preview,
     v20230501preview,
+    v20231101,
 };
 
 const _module = {

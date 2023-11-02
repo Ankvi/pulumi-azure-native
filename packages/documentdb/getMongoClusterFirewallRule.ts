@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets information about a mongo cluster firewall rule.
  * Azure REST API version: 2023-03-15-preview.
+ *
+ * Other available API versions: 2023-09-15-preview.
  */
 export function getMongoClusterFirewallRule(args: GetMongoClusterFirewallRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetMongoClusterFirewallRuleResult> {
 
@@ -66,6 +68,8 @@ export interface GetMongoClusterFirewallRuleResult {
 /**
  * Gets information about a mongo cluster firewall rule.
  * Azure REST API version: 2023-03-15-preview.
+ *
+ * Other available API versions: 2023-09-15-preview.
  */
 export function getMongoClusterFirewallRuleOutput(args: GetMongoClusterFirewallRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMongoClusterFirewallRuleResult> {
     return pulumi.output(args).apply((a: any) => getMongoClusterFirewallRule(a, opts))

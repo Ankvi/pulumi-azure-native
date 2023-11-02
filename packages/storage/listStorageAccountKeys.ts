@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Lists the access keys or Kerberos keys (if active directory enabled) for the specified storage account.
  * Azure REST API version: 2022-09-01.
+ *
+ * Other available API versions: 2015-05-01-preview, 2015-06-15, 2018-11-01, 2023-01-01.
  */
 export function listStorageAccountKeys(args: ListStorageAccountKeysArgs, opts?: pulumi.InvokeOptions): Promise<ListStorageAccountKeysResult> {
 
@@ -42,6 +44,8 @@ export interface ListStorageAccountKeysResult {
 /**
  * Lists the access keys or Kerberos keys (if active directory enabled) for the specified storage account.
  * Azure REST API version: 2022-09-01.
+ *
+ * Other available API versions: 2015-05-01-preview, 2015-06-15, 2018-11-01, 2023-01-01.
  */
 export function listStorageAccountKeysOutput(args: ListStorageAccountKeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListStorageAccountKeysResult> {
     return pulumi.output(args).apply((a: any) => listStorageAccountKeys(a, opts))

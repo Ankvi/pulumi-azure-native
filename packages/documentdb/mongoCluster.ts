@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Represents a mongo cluster resource.
  * Azure REST API version: 2023-03-15-preview.
+ *
+ * Other available API versions: 2023-09-15-preview.
  */
 export class MongoCluster extends pulumi.CustomResource {
     /**

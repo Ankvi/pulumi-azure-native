@@ -1318,7 +1318,7 @@ import * as pulumi from "@pulumi/pulumi";
          */
         collaborationBranch?: string;
         /**
-         * GitHub Enterprise host name. For example: https://github.mydomain.com
+         * GitHub Enterprise host name. For example: `https://github.mydomain.com`
          */
         hostName?: string;
         /**

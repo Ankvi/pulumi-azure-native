@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets a network manager security admin configuration rule collection.
  * Azure REST API version: 2023-02-01.
+ *
+ * Other available API versions: 2021-02-01-preview, 2021-05-01-preview, 2023-04-01, 2023-05-01.
  */
 export function getAdminRuleCollection(args: GetAdminRuleCollectionArgs, opts?: pulumi.InvokeOptions): Promise<GetAdminRuleCollectionResult> {
 
@@ -79,6 +81,8 @@ export interface GetAdminRuleCollectionResult {
 /**
  * Gets a network manager security admin configuration rule collection.
  * Azure REST API version: 2023-02-01.
+ *
+ * Other available API versions: 2021-02-01-preview, 2021-05-01-preview, 2023-04-01, 2023-05-01.
  */
 export function getAdminRuleCollectionOutput(args: GetAdminRuleCollectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAdminRuleCollectionResult> {
     return pulumi.output(args).apply((a: any) => getAdminRuleCollection(a, opts))

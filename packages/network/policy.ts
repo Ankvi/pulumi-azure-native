@@ -3,7 +3,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Defines web application firewall policy.
- * Azure REST API version: 2022-05-01. Prior API version in Azure Native 1.x: 2020-11-01
+ * Azure REST API version: 2022-05-01. Prior API version in Azure Native 1.x: 2020-11-01.
+ *
+ * Other available API versions: 2021-06-01.
  */
 export class Policy extends pulumi.CustomResource {
     /**

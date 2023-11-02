@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Get a given SyncGroup.
  * Azure REST API version: 2022-06-01.
+ *
+ * Other available API versions: 2017-06-05-preview, 2018-04-02, 2022-09-01.
  */
 export function getSyncGroup(args: GetSyncGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetSyncGroupResult> {
 
@@ -62,6 +64,8 @@ export interface GetSyncGroupResult {
 /**
  * Get a given SyncGroup.
  * Azure REST API version: 2022-06-01.
+ *
+ * Other available API versions: 2017-06-05-preview, 2018-04-02, 2022-09-01.
  */
 export function getSyncGroupOutput(args: GetSyncGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSyncGroupResult> {
     return pulumi.output(args).apply((a: any) => getSyncGroup(a, opts))

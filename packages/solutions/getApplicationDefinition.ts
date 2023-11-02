@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets the managed application definition.
  * Azure REST API version: 2021-07-01.
+ *
+ * Other available API versions: 2017-12-01.
  */
 export function getApplicationDefinition(args: GetApplicationDefinitionArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationDefinitionResult> {
 
@@ -125,6 +127,8 @@ export interface GetApplicationDefinitionResult {
 /**
  * Gets the managed application definition.
  * Azure REST API version: 2021-07-01.
+ *
+ * Other available API versions: 2017-12-01.
  */
 export function getApplicationDefinitionOutput(args: GetApplicationDefinitionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationDefinitionResult> {
     return pulumi.output(args).apply((a: any) => getApplicationDefinition(a, opts))

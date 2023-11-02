@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets the specified spacecraft in a specified resource group.
  * Azure REST API version: 2022-11-01.
+ *
+ * Other available API versions: 2022-03-01.
  */
 export function getSpacecraft(args: GetSpacecraftArgs, opts?: pulumi.InvokeOptions): Promise<GetSpacecraftResult> {
 
@@ -77,6 +79,8 @@ export interface GetSpacecraftResult {
 /**
  * Gets the specified spacecraft in a specified resource group.
  * Azure REST API version: 2022-11-01.
+ *
+ * Other available API versions: 2022-03-01.
  */
 export function getSpacecraftOutput(args: GetSpacecraftOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSpacecraftResult> {
     return pulumi.output(args).apply((a: any) => getSpacecraft(a, opts))

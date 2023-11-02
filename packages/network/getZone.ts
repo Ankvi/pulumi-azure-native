@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets a DNS zone. Retrieves the zone properties, but not the record sets within the zone.
  * Azure REST API version: 2018-05-01.
+ *
+ * Other available API versions: 2015-05-04-preview, 2016-04-01, 2023-07-01-preview.
  */
 export function getZone(args: GetZoneArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneResult> {
 
@@ -85,6 +87,8 @@ export interface GetZoneResult {
 /**
  * Gets a DNS zone. Retrieves the zone properties, but not the record sets within the zone.
  * Azure REST API version: 2018-05-01.
+ *
+ * Other available API versions: 2015-05-04-preview, 2016-04-01, 2023-07-01-preview.
  */
 export function getZoneOutput(args: GetZoneOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZoneResult> {
     return pulumi.output(args).apply((a: any) => getZone(a, opts))

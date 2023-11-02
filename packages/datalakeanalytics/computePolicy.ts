@@ -3,7 +3,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Data Lake Analytics compute policy information.
- * Azure REST API version: 2019-11-01-preview. Prior API version in Azure Native 1.x: 2016-11-01
+ * Azure REST API version: 2019-11-01-preview. Prior API version in Azure Native 1.x: 2016-11-01.
  */
 export class ComputePolicy extends pulumi.CustomResource {
     /**

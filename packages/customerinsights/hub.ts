@@ -3,7 +3,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Hub resource.
- * Azure REST API version: 2017-04-26. Prior API version in Azure Native 1.x: 2017-04-26
+ * Azure REST API version: 2017-04-26. Prior API version in Azure Native 1.x: 2017-04-26.
  */
 export class Hub extends pulumi.CustomResource {
     /**

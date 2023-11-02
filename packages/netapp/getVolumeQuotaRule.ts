@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Get details of the specified quota rule
  * Azure REST API version: 2022-11-01.
+ *
+ * Other available API versions: 2022-11-01-preview, 2023-05-01.
  */
 export function getVolumeQuotaRule(args: GetVolumeQuotaRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetVolumeQuotaRuleResult> {
 
@@ -88,6 +90,8 @@ export interface GetVolumeQuotaRuleResult {
 /**
  * Get details of the specified quota rule
  * Azure REST API version: 2022-11-01.
+ *
+ * Other available API versions: 2022-11-01-preview, 2023-05-01.
  */
 export function getVolumeQuotaRuleOutput(args: GetVolumeQuotaRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVolumeQuotaRuleResult> {
     return pulumi.output(args).apply((a: any) => getVolumeQuotaRule(a, opts))

@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Get a TestLine
  * Azure REST API version: 2023-04-03.
+ *
+ * Other available API versions: 2022-12-01-preview.
  */
 export function getTestLine(args: GetTestLineArgs, opts?: pulumi.InvokeOptions): Promise<GetTestLineResult> {
 
@@ -74,6 +76,8 @@ export interface GetTestLineResult {
 /**
  * Get a TestLine
  * Azure REST API version: 2023-04-03.
+ *
+ * Other available API versions: 2022-12-01-preview.
  */
 export function getTestLineOutput(args: GetTestLineOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTestLineResult> {
     return pulumi.output(args).apply((a: any) => getTestLine(a, opts))

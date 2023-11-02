@@ -3,7 +3,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Represents an environment type.
- * Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2022-09-01-preview
+ * Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2022-09-01-preview.
+ *
+ * Other available API versions: 2023-08-01-preview, 2023-10-01-preview.
  */
 export class ProjectEnvironmentType extends pulumi.CustomResource {
     /**
@@ -122,7 +124,7 @@ export class ProjectEnvironmentType extends pulumi.CustomResource {
             resourceInputs["userRoleAssignments"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:devcenter/v20220801preview:ProjectEnvironmentType" }, { type: "azure-native:devcenter/v20220901preview:ProjectEnvironmentType" }, { type: "azure-native:devcenter/v20221012preview:ProjectEnvironmentType" }, { type: "azure-native:devcenter/v20221111preview:ProjectEnvironmentType" }, { type: "azure-native:devcenter/v20230101preview:ProjectEnvironmentType" }, { type: "azure-native:devcenter/v20230401:ProjectEnvironmentType" }, { type: "azure-native:devcenter/v20230801preview:ProjectEnvironmentType" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:devcenter/v20220801preview:ProjectEnvironmentType" }, { type: "azure-native:devcenter/v20220901preview:ProjectEnvironmentType" }, { type: "azure-native:devcenter/v20221012preview:ProjectEnvironmentType" }, { type: "azure-native:devcenter/v20221111preview:ProjectEnvironmentType" }, { type: "azure-native:devcenter/v20230101preview:ProjectEnvironmentType" }, { type: "azure-native:devcenter/v20230401:ProjectEnvironmentType" }, { type: "azure-native:devcenter/v20230801preview:ProjectEnvironmentType" }, { type: "azure-native:devcenter/v20231001preview:ProjectEnvironmentType" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ProjectEnvironmentType.__pulumiType, name, resourceInputs, opts);
     }

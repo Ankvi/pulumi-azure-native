@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Azure Resource Manager resource envelope.
  * Azure REST API version: 2023-04-01-preview.
+ *
+ * Other available API versions: 2023-06-01-preview, 2023-08-01-preview, 2023-10-01.
  */
 export class FeaturesetVersion extends pulumi.CustomResource {
     /**
@@ -86,7 +88,7 @@ export class FeaturesetVersion extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:machinelearningservices/v20230201preview:FeaturesetVersion" }, { type: "azure-native:machinelearningservices/v20230401preview:FeaturesetVersion" }, { type: "azure-native:machinelearningservices/v20230601preview:FeaturesetVersion" }, { type: "azure-native:machinelearningservices/v20230801preview:FeaturesetVersion" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:machinelearningservices/v20230201preview:FeaturesetVersion" }, { type: "azure-native:machinelearningservices/v20230401preview:FeaturesetVersion" }, { type: "azure-native:machinelearningservices/v20230601preview:FeaturesetVersion" }, { type: "azure-native:machinelearningservices/v20230801preview:FeaturesetVersion" }, { type: "azure-native:machinelearningservices/v20231001:FeaturesetVersion" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(FeaturesetVersion.__pulumiType, name, resourceInputs, opts);
     }

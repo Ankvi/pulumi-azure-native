@@ -3,7 +3,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * A rules engine configuration containing a list of rules that will run to modify the runtime behavior of the request and response.
- * Azure REST API version: 2021-06-01. Prior API version in Azure Native 1.x: 2020-05-01
+ * Azure REST API version: 2021-06-01. Prior API version in Azure Native 1.x: 2020-05-01.
  */
 export class RulesEngine extends pulumi.CustomResource {
     /**

@@ -135,6 +135,79 @@ export interface DB2ProviderInstancePropertiesArgs {
 }
 
 /**
+ * Defines the policy properties for database backup.
+ */
+export interface DBBackupPolicyPropertiesArgs {
+    /**
+     * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+     * Expected value is 'AzureWorkload'.
+     */
+    backupManagementType: pulumi.Input<"AzureWorkload">;
+    /**
+     * Fix the policy inconsistency
+     */
+    makePolicyConsistent?: pulumi.Input<boolean>;
+    /**
+     * The name of the DB backup policy.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Number of items associated with this policy.
+     */
+    protectedItemsCount?: pulumi.Input<number>;
+    /**
+     * ResourceGuard Operation Requests
+     */
+    resourceGuardOperationRequests?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Common settings for the backup management
+     */
+    settings?: pulumi.Input<SettingsArgs>;
+    /**
+     * List of sub-protection policies which includes schedule and retention
+     */
+    subProtectionPolicy?: pulumi.Input<pulumi.Input<SubProtectionPolicyArgs>[]>;
+    /**
+     * Type of workload for the backup management
+     */
+    workLoadType?: pulumi.Input<string | enums.WorkloadType>;
+}
+
+/**
+ * Daily retention format.
+ */
+export interface DailyRetentionFormatArgs {
+    /**
+     * List of days of the month.
+     */
+    daysOfTheMonth?: pulumi.Input<pulumi.Input<DayArgs>[]>;
+}
+
+/**
+ * Daily retention schedule.
+ */
+export interface DailyRetentionScheduleArgs {
+    /**
+     * Retention duration of retention Policy.
+     */
+    retentionDuration?: pulumi.Input<RetentionDurationArgs>;
+    /**
+     * Retention times of retention policy.
+     */
+    retentionTimes?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+/**
+ * Daily schedule.
+ */
+export interface DailyScheduleArgs {
+    /**
+     * List of times of day this schedule has to be run.
+     */
+    scheduleRunTimes?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+/**
  * Gets or sets the database configuration.
  */
 export interface DatabaseConfigurationArgs {
@@ -176,6 +249,20 @@ export interface DatabaseServerFullResourceNamesArgs {
      * The list of virtual machine naming details.
      */
     virtualMachines?: pulumi.Input<pulumi.Input<VirtualMachineResourceNamesArgs>[]>;
+}
+
+/**
+ * Day of the week.
+ */
+export interface DayArgs {
+    /**
+     * Date of the month
+     */
+    date?: pulumi.Input<number>;
+    /**
+     * Whether Date is last date of month
+     */
+    isLast?: pulumi.Input<boolean>;
 }
 
 /**
@@ -272,6 +359,20 @@ export interface DiskConfigurationArgs {
 }
 
 /**
+ * Defines the disk exclusion properties for virtual machine backup.
+ */
+export interface DiskExclusionPropertiesArgs {
+    /**
+     * List of Disks' Logical Unit Numbers (LUN) to be used for VM Protection.
+     */
+    diskLunList: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * Flag to indicate whether DiskLunList is to be included/ excluded from backup.
+     */
+    isInclusionList: pulumi.Input<boolean>;
+}
+
+/**
  * The type of disk sku. For example, Standard_LRS, Standard_ZRS, Premium_LRS, Premium_ZRS.
  */
 export interface DiskSkuArgs {
@@ -300,6 +401,21 @@ export interface DiskVolumeConfigurationArgs {
 }
 
 /**
+ * Existing recovery services vault.
+ */
+export interface ExistingRecoveryServicesVaultArgs {
+    /**
+     * The resource ID of the recovery services vault that has been created.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * The vault type, whether it is existing or has to be created.
+     * Expected value is 'Existing'.
+     */
+    vaultType: pulumi.Input<"Existing">;
+}
+
+/**
  * The SAP Software configuration Input when the software is installed externally outside the service.
  */
 export interface ExternalInstallationSoftwareConfigurationArgs {
@@ -312,6 +428,41 @@ export interface ExternalInstallationSoftwareConfigurationArgs {
      * Expected value is 'External'.
      */
     softwareInstallationType: pulumi.Input<"External">;
+}
+
+/**
+ * Defines the HANA Backup data for a virtual instance for SAP.
+ */
+export interface HanaBackupDataArgs {
+    /**
+     * Defines the policy properties for database backup.
+     */
+    backupPolicy: pulumi.Input<DBBackupPolicyPropertiesArgs>;
+    /**
+     * The type of backup, VM, SQL or HANA.
+     * Expected value is 'HANA'.
+     */
+    backupType: pulumi.Input<"HANA">;
+    /**
+     * Defines the policy properties for database backup.
+     */
+    dbInstanceSnapshotBackupPolicy?: pulumi.Input<DBBackupPolicyPropertiesArgs>;
+    /**
+     * Name of the HANA Database User Store Key.
+     */
+    hdbuserstoreKeyName: pulumi.Input<string>;
+    /**
+     * Gets or sets the database instance number.
+     */
+    instanceNumber?: pulumi.Input<string>;
+    /**
+     * The properties of the recovery services vault used for backup.
+     */
+    recoveryServicesVault: pulumi.Input<ExistingRecoveryServicesVaultArgs | NewRecoveryServicesVaultArgs>;
+    /**
+     * Path of the SSL key store.
+     */
+    sslConfiguration?: pulumi.Input<SSLConfigurationArgs>;
 }
 
 /**
@@ -394,6 +545,25 @@ export interface HighAvailabilitySoftwareConfigurationArgs {
 }
 
 /**
+ * Hourly schedule.
+ */
+export interface HourlyScheduleArgs {
+    /**
+     * Interval at which backup needs to be triggered. For hourly the value
+     *  can be 4/6/8/12
+     */
+    interval?: pulumi.Input<number>;
+    /**
+     * To specify duration of the backup window
+     */
+    scheduleWindowDuration?: pulumi.Input<number>;
+    /**
+     * To specify start time of the backup window
+     */
+    scheduleWindowStartTime?: pulumi.Input<string>;
+}
+
+/**
  * Specifies information about the image to use. You can specify information about platform images, marketplace images, or virtual machine images. This element is required when you want to use a platform image, marketplace image, or virtual machine image, but is not used in other creation operations. NOTE: Image reference publisher and offer can only be set when you create the scale set.
  */
 export interface ImageReferenceArgs {
@@ -413,6 +583,20 @@ export interface ImageReferenceArgs {
      * Specifies the version of the platform image or marketplace image used to create the virtual machine. The allowed formats are Major.Minor.Build or 'latest'. Major, Minor, and Build are decimal numbers. Specify 'latest' to use the latest version of an image available at deploy time. Even if you use 'latest', the VM image will not automatically update after deploy time even if a new version becomes available.
      */
     version?: pulumi.Input<string>;
+}
+
+/**
+ * Instant recovery point additional details.
+ */
+export interface InstantRPAdditionalDetailsArgs {
+    /**
+     * Azure backup resource group name prefix.
+     */
+    azureBackupRGNamePrefix?: pulumi.Input<string>;
+    /**
+     * Azure backup resource group name suffix.
+     */
+    azureBackupRGNameSuffix?: pulumi.Input<string>;
 }
 
 /**
@@ -461,6 +645,59 @@ export interface LoadBalancerResourceNamesArgs {
 }
 
 /**
+ * Log policy schedule.
+ */
+export interface LogSchedulePolicyArgs {
+    /**
+     * Frequency of the log schedule operation of this policy in minutes.
+     */
+    scheduleFrequencyInMins?: pulumi.Input<number>;
+    /**
+     * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+     * Expected value is 'LogSchedulePolicy'.
+     */
+    schedulePolicyType: pulumi.Input<"LogSchedulePolicy">;
+}
+
+/**
+ * Long term retention policy.
+ */
+export interface LongTermRetentionPolicyArgs {
+    /**
+     * Daily retention schedule of the protection policy.
+     */
+    dailySchedule?: pulumi.Input<DailyRetentionScheduleArgs>;
+    /**
+     * Monthly retention schedule of the protection policy.
+     */
+    monthlySchedule?: pulumi.Input<MonthlyRetentionScheduleArgs>;
+    /**
+     * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+     * Expected value is 'LongTermRetentionPolicy'.
+     */
+    retentionPolicyType: pulumi.Input<"LongTermRetentionPolicy">;
+    /**
+     * Weekly retention schedule of the protection policy.
+     */
+    weeklySchedule?: pulumi.Input<WeeklyRetentionScheduleArgs>;
+    /**
+     * Yearly retention schedule of the protection policy.
+     */
+    yearlySchedule?: pulumi.Input<YearlyRetentionScheduleArgs>;
+}
+
+/**
+ * Long term policy schedule.
+ */
+export interface LongTermSchedulePolicyArgs {
+    /**
+     * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+     * Expected value is 'LongTermSchedulePolicy'.
+     */
+    schedulePolicyType: pulumi.Input<"LongTermSchedulePolicy">;
+}
+
+/**
  * Managed resource group configuration
  */
 export interface ManagedRGConfigurationArgs {
@@ -468,6 +705,32 @@ export interface ManagedRGConfigurationArgs {
      * Managed resource group name
      */
     name?: pulumi.Input<string>;
+}
+
+/**
+ * Monthly retention schedule.
+ */
+export interface MonthlyRetentionScheduleArgs {
+    /**
+     * Retention duration of retention Policy.
+     */
+    retentionDuration?: pulumi.Input<RetentionDurationArgs>;
+    /**
+     * Daily retention format for monthly retention policy.
+     */
+    retentionScheduleDaily?: pulumi.Input<DailyRetentionFormatArgs>;
+    /**
+     * Retention schedule format type for monthly retention policy.
+     */
+    retentionScheduleFormatType?: pulumi.Input<string | enums.RetentionScheduleFormat>;
+    /**
+     * Weekly retention format for monthly retention policy.
+     */
+    retentionScheduleWeekly?: pulumi.Input<WeeklyRetentionFormatArgs>;
+    /**
+     * Retention times of retention policy.
+     */
+    retentionTimes?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -559,6 +822,25 @@ export interface NetworkInterfaceResourceNamesArgs {
      * The full name for network interface. If name is not provided, service uses a default name based on the deployment type. For SingleServer, default name is {SID}-Nic. In case of HA-AvZone systems, default name will be {SID}-{App/ASCS/DB}-Zone{A/B}-Nic with an incrementor at the end in case of more than 1 instance per layer. For distributed and HA-AvSet systems, default name will be {SID}-{App/ASCS/DB}-Nic with an incrementor at the end in case of more than 1 instance per layer.
      */
     networkInterfaceName?: pulumi.Input<string>;
+}
+
+/**
+ * New recovery services vault.
+ */
+export interface NewRecoveryServicesVaultArgs {
+    /**
+     * The name of the recovery services vault has to be created.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The name of the resource group where the recovery services vault has to be created.
+     */
+    resourceGroup: pulumi.Input<string>;
+    /**
+     * The vault type, whether it is existing or has to be created.
+     * Expected value is 'New'.
+     */
+    vaultType: pulumi.Input<"New">;
 }
 
 /**
@@ -656,6 +938,21 @@ export interface PrometheusOSProviderInstancePropertiesArgs {
 }
 
 /**
+ * Retention duration.
+ */
+export interface RetentionDurationArgs {
+    /**
+     * Count of duration types. Retention duration is obtained by the counting the duration type Count times.
+     * For example, when Count = 3 and DurationType = Weeks, retention duration will be three weeks.
+     */
+    count?: pulumi.Input<number>;
+    /**
+     * Retention duration type of retention policy.
+     */
+    durationType?: pulumi.Input<string | enums.RetentionDurationType>;
+}
+
+/**
  * The SAP Software configuration Input when the software is to be installed by service without OS Configurations
  */
 export interface SAPInstallWithoutOSConfigSoftwareConfigurationArgs {
@@ -680,6 +977,28 @@ export interface SAPInstallWithoutOSConfigSoftwareConfigurationArgs {
      * The software version to install.
      */
     softwareVersion: pulumi.Input<string>;
+}
+
+/**
+ * Specify the HANA database TLS/SSL properties which will be used for enabling Azure Backup for this database. You need to specify these details if you have enabled secure communication for your HANA database.
+ */
+export interface SSLConfigurationArgs {
+    /**
+     * Specify the crypto provider being used (commoncrypto/openssl). If this argument is not provided, it is automatically determined by searching in the configuration files.
+     */
+    sslCryptoProvider?: pulumi.Input<string | enums.SslCryptoProvider>;
+    /**
+     * Specify the hostname as mentioned in the SSL certificate. If this argument is not provided, it is automatically determined by searching in the SSL certificate.
+     */
+    sslHostNameInCertificate?: pulumi.Input<string>;
+    /**
+     * Specify the name of the keystore file that contains the client's identity (eg. sapsrv.pse). The script will search for the file in the appropriate directory depending on the crypto provider mentioned. If this argument is not provided, it is automatically determined by searching in the configuration files.
+     */
+    sslKeyStore?: pulumi.Input<string>;
+    /**
+     * Specify the name of the trust store file that contains the server’s public certificates (eg. sapsrv.pse). The script will search for the file in the appropriate directory depending on the crypto provider mentioned. If this argument is not provided, it is automatically determined by searching in the configuration files.
+     */
+    sslTrustStore?: pulumi.Input<string>;
 }
 
 /**
@@ -823,6 +1142,25 @@ export interface ServiceInitiatedSoftwareConfigurationArgs {
 }
 
 /**
+ * Common settings field for backup management
+ */
+export interface SettingsArgs {
+    /**
+     * Workload compression flag. This has been added so that 'isSqlCompression'
+     * will be deprecated once clients upgrade to consider this flag.
+     */
+    isCompression?: pulumi.Input<boolean>;
+    /**
+     * SQL compression flag
+     */
+    issqlcompression?: pulumi.Input<boolean>;
+    /**
+     * TimeZone optional input as string. For example: TimeZone = "Pacific Standard Time".
+     */
+    timeZone?: pulumi.Input<string>;
+}
+
+/**
  * The resource names object for shared storage.
  */
 export interface SharedStorageResourceNamesArgs {
@@ -834,6 +1172,79 @@ export interface SharedStorageResourceNamesArgs {
      * The full name of private end point for the shared storage account. If it is not provided, it will be defaulted to {storageAccountName}_pe
      */
     sharedStorageAccountPrivateEndPointName?: pulumi.Input<string>;
+}
+
+/**
+ * Simple policy retention.
+ */
+export interface SimpleRetentionPolicyArgs {
+    /**
+     * Retention duration of the protection policy.
+     */
+    retentionDuration?: pulumi.Input<RetentionDurationArgs>;
+    /**
+     * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+     * Expected value is 'SimpleRetentionPolicy'.
+     */
+    retentionPolicyType: pulumi.Input<"SimpleRetentionPolicy">;
+}
+
+/**
+ * Simple policy schedule.
+ */
+export interface SimpleSchedulePolicyArgs {
+    /**
+     * Hourly Schedule of this Policy
+     */
+    hourlySchedule?: pulumi.Input<HourlyScheduleArgs>;
+    /**
+     * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+     * Expected value is 'SimpleSchedulePolicy'.
+     */
+    schedulePolicyType: pulumi.Input<"SimpleSchedulePolicy">;
+    /**
+     * List of days of week this schedule has to be run.
+     */
+    scheduleRunDays?: pulumi.Input<pulumi.Input<enums.DayOfWeek>[]>;
+    /**
+     * Frequency of the schedule operation of this policy.
+     */
+    scheduleRunFrequency?: pulumi.Input<string | enums.ScheduleRunType>;
+    /**
+     * List of times of day this schedule has to be run.
+     */
+    scheduleRunTimes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * At every number weeks this schedule has to be run.
+     */
+    scheduleWeeklyFrequency?: pulumi.Input<number>;
+}
+
+/**
+ * The V2 policy schedule for IaaS that supports hourly backups.
+ */
+export interface SimpleSchedulePolicyV2Args {
+    /**
+     * Daily schedule of this policy
+     */
+    dailySchedule?: pulumi.Input<DailyScheduleArgs>;
+    /**
+     * hourly schedule of this policy
+     */
+    hourlySchedule?: pulumi.Input<HourlyScheduleArgs>;
+    /**
+     * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+     * Expected value is 'SimpleSchedulePolicyV2'.
+     */
+    schedulePolicyType: pulumi.Input<"SimpleSchedulePolicyV2">;
+    /**
+     * Frequency of the schedule operation of this policy.
+     */
+    scheduleRunFrequency?: pulumi.Input<string | enums.ScheduleRunType>;
+    /**
+     * Weekly schedule of this policy
+     */
+    weeklySchedule?: pulumi.Input<WeeklyScheduleArgs>;
 }
 
 /**
@@ -911,6 +1322,43 @@ export interface SkipFileShareConfigurationArgs {
 }
 
 /**
+ * Snapshot Backup related fields for WorkloadType SAP Hana system
+ */
+export interface SnapshotBackupAdditionalDetailsArgs {
+    /**
+     * Instant RP details for the snapshot.
+     */
+    instantRPDetails?: pulumi.Input<string>;
+    /**
+     * Retention range for instant Rp in days.
+     */
+    instantRpRetentionRangeInDays?: pulumi.Input<number>;
+    /**
+     * User Assigned managed identity details used for snapshot policy.
+     */
+    userAssignedManagedIdentityDetails?: pulumi.Input<UserAssignedManagedIdentityDetailsArgs>;
+}
+
+/**
+ * Defines the SQL Backup data for a virtual instance for SAP.
+ */
+export interface SqlBackupDataArgs {
+    /**
+     * Defines the policy properties for database backup.
+     */
+    backupPolicy: pulumi.Input<DBBackupPolicyPropertiesArgs>;
+    /**
+     * The type of backup, VM, SQL or HANA.
+     * Expected value is 'SQL'.
+     */
+    backupType: pulumi.Input<"SQL">;
+    /**
+     * The properties of the recovery services vault used for backup.
+     */
+    recoveryServicesVault: pulumi.Input<ExistingRecoveryServicesVaultArgs | NewRecoveryServicesVaultArgs>;
+}
+
+/**
  * SSH configuration for Linux based VMs running on Azure
  */
 export interface SshConfigurationArgs {
@@ -952,6 +1400,34 @@ export interface StorageConfigurationArgs {
      * The properties of the transport directory attached to the VIS. The default for transportFileShareConfiguration is the createAndMount flow if storage configuration is missing.
      */
     transportFileShareConfiguration?: pulumi.Input<CreateAndMountFileShareConfigurationArgs | MountFileShareConfigurationArgs | SkipFileShareConfigurationArgs>;
+}
+
+/**
+ * Sub-protection policy which includes schedule and retention
+ */
+export interface SubProtectionPolicyArgs {
+    /**
+     * Type of backup policy type
+     */
+    policyType?: pulumi.Input<string | enums.PolicyType>;
+    /**
+     * Retention policy with the details on backup copy retention ranges.
+     */
+    retentionPolicy?: pulumi.Input<LongTermRetentionPolicyArgs | SimpleRetentionPolicyArgs>;
+    /**
+     * Backup schedule specified as part of backup policy.
+     */
+    schedulePolicy?: pulumi.Input<LogSchedulePolicyArgs | LongTermSchedulePolicyArgs | SimpleSchedulePolicyArgs | SimpleSchedulePolicyV2Args>;
+    /**
+     * Hana DB instance snapshot backup additional details.
+     */
+    snapshotBackupAdditionalDetails?: pulumi.Input<SnapshotBackupAdditionalDetailsArgs>;
+    /**
+     * Tiering policy to automatically move RPs to another tier.
+     * Key is Target Tier, defined in RecoveryPointTierType enum.
+     * Tiering policy specifies the criteria to move RP to the target tier.
+     */
+    tieringPolicy?: pulumi.Input<{[key: string]: pulumi.Input<TieringPolicyArgs>}>;
 }
 
 /**
@@ -1034,6 +1510,50 @@ export interface ThreeTierFullResourceNamesArgs {
 }
 
 /**
+ * Tiering Policy for a target tier.
+ * If the policy is not specified for a given target tier, service retains the existing configured tiering policy for that tier
+ */
+export interface TieringPolicyArgs {
+    /**
+     * Number of days/weeks/months/years to retain backups in current tier before tiering.
+     * Used only if TieringMode is set to TierAfter
+     */
+    duration?: pulumi.Input<number>;
+    /**
+     * Retention duration type: days/weeks/months/years
+     * Used only if TieringMode is set to TierAfter
+     */
+    durationType?: pulumi.Input<string | enums.RetentionDurationType>;
+    /**
+     * Tiering Mode to control automatic tiering of recovery points. Supported values are:
+     * 1. TierRecommended: Tier all recovery points recommended to be tiered
+     * 2. TierAfter: Tier all recovery points after a fixed period, as specified in duration + durationType below.
+     * 3. DoNotTier: Do not tier any recovery points
+     */
+    tieringMode?: pulumi.Input<string | enums.TieringMode>;
+}
+
+/**
+ * User assigned managed identity properties.
+ */
+export interface UserAssignedIdentityPropertiesArgs {
+    clientId?: pulumi.Input<string>;
+    principalId?: pulumi.Input<string>;
+}
+
+/**
+ * User assigned managed identity details.
+ */
+export interface UserAssignedManagedIdentityDetailsArgs {
+    identityArmId?: pulumi.Input<string>;
+    identityName?: pulumi.Input<string>;
+    /**
+     * User assigned managed identity properties.
+     */
+    userAssignedIdentityProperties?: pulumi.Input<UserAssignedIdentityPropertiesArgs>;
+}
+
+/**
  * A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide.
  */
 export interface UserAssignedServiceIdentityArgs {
@@ -1045,6 +1565,82 @@ export interface UserAssignedServiceIdentityArgs {
      * User assigned identities dictionary
      */
     userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+/**
+ * Defines the VM Backup data for a virtual instance for SAP.
+ */
+export interface VMBackupDataArgs {
+    /**
+     * Defines the policy properties for virtual machine backup.
+     */
+    backupPolicy: pulumi.Input<VMBackupPolicyPropertiesArgs>;
+    /**
+     * The type of backup, VM, SQL or HANA.
+     * Expected value is 'VM'.
+     */
+    backupType: pulumi.Input<"VM">;
+    /**
+     * Defines the disk exclusion properties for virtual machine backup.
+     */
+    diskExclusionProperties?: pulumi.Input<DiskExclusionPropertiesArgs>;
+    /**
+     * The properties of the recovery services vault used for backup.
+     */
+    recoveryServicesVault: pulumi.Input<ExistingRecoveryServicesVaultArgs | NewRecoveryServicesVaultArgs>;
+}
+
+/**
+ * Defines the policy properties for virtual machine backup.
+ */
+export interface VMBackupPolicyPropertiesArgs {
+    /**
+     * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+     * Expected value is 'AzureIaasVM'.
+     */
+    backupManagementType: pulumi.Input<"AzureIaasVM">;
+    /**
+     * Instant recovery point additional details.
+     */
+    instantRPDetails?: pulumi.Input<InstantRPAdditionalDetailsArgs>;
+    /**
+     * Instant RP retention policy range in days
+     */
+    instantRpRetentionRangeInDays?: pulumi.Input<number>;
+    /**
+     * The name of the VM Backup policy.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The policy type.
+     */
+    policyType?: pulumi.Input<string | enums.IAASVMPolicyType>;
+    /**
+     * Number of items associated with this policy.
+     */
+    protectedItemsCount?: pulumi.Input<number>;
+    /**
+     * ResourceGuard Operation Requests
+     */
+    resourceGuardOperationRequests?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Retention policy with the details on backup copy retention ranges.
+     */
+    retentionPolicy?: pulumi.Input<LongTermRetentionPolicyArgs | SimpleRetentionPolicyArgs>;
+    /**
+     * Backup schedule specified as part of backup policy.
+     */
+    schedulePolicy?: pulumi.Input<LogSchedulePolicyArgs | LongTermSchedulePolicyArgs | SimpleSchedulePolicyArgs | SimpleSchedulePolicyV2Args>;
+    /**
+     * Tiering policy to automatically move RPs to another tier
+     * Key is Target Tier, defined in RecoveryPointTierType enum.
+     * Tiering policy specifies the criteria to move RP to the target tier.
+     */
+    tieringPolicy?: pulumi.Input<{[key: string]: pulumi.Input<TieringPolicyArgs>}>;
+    /**
+     * Time zone optional input as string. For example: "Pacific Standard Time".
+     */
+    timeZone?: pulumi.Input<string>;
 }
 
 /**
@@ -1092,6 +1688,52 @@ export interface VirtualMachineResourceNamesArgs {
 }
 
 /**
+ * Weekly retention format.
+ */
+export interface WeeklyRetentionFormatArgs {
+    /**
+     * List of days of the week.
+     */
+    daysOfTheWeek?: pulumi.Input<pulumi.Input<enums.DayOfWeek>[]>;
+    /**
+     * List of weeks of month.
+     */
+    weeksOfTheMonth?: pulumi.Input<pulumi.Input<enums.WeekOfMonth>[]>;
+}
+
+/**
+ * Weekly retention schedule.
+ */
+export interface WeeklyRetentionScheduleArgs {
+    /**
+     * List of days of week for weekly retention policy.
+     */
+    daysOfTheWeek?: pulumi.Input<pulumi.Input<enums.DayOfWeek>[]>;
+    /**
+     * Retention duration of retention Policy.
+     */
+    retentionDuration?: pulumi.Input<RetentionDurationArgs>;
+    /**
+     * Retention times of retention policy.
+     */
+    retentionTimes?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+/**
+ * Weekly schedule.
+ */
+export interface WeeklyScheduleArgs {
+    /**
+     * Schedule run days.
+     */
+    scheduleRunDays?: pulumi.Input<pulumi.Input<enums.DayOfWeek>[]>;
+    /**
+     * List of times of day this schedule has to be run.
+     */
+    scheduleRunTimes?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+/**
  * Specifies Windows operating system settings on the virtual machine.
  */
 export interface WindowsConfigurationArgs {
@@ -1101,5 +1743,36 @@ export interface WindowsConfigurationArgs {
      */
     osType: pulumi.Input<"Windows">;
 }
+
+/**
+ * Yearly retention schedule.
+ */
+export interface YearlyRetentionScheduleArgs {
+    /**
+     * List of months of year of yearly retention policy.
+     */
+    monthsOfYear?: pulumi.Input<pulumi.Input<enums.MonthOfYear>[]>;
+    /**
+     * Retention duration of retention Policy.
+     */
+    retentionDuration?: pulumi.Input<RetentionDurationArgs>;
+    /**
+     * Daily retention format for yearly retention policy.
+     */
+    retentionScheduleDaily?: pulumi.Input<DailyRetentionFormatArgs>;
+    /**
+     * Retention schedule format for yearly retention policy.
+     */
+    retentionScheduleFormatType?: pulumi.Input<string | enums.RetentionScheduleFormat>;
+    /**
+     * Weekly retention format for yearly retention policy.
+     */
+    retentionScheduleWeekly?: pulumi.Input<WeeklyRetentionFormatArgs>;
+    /**
+     * Retention times of retention policy.
+     */
+    retentionTimes?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 
 

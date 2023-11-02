@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Gets the details of the Cache specified by its identifier.
  * Azure REST API version: 2022-08-01.
+ *
+ * Other available API versions: 2019-12-01-preview, 2022-09-01-preview, 2023-03-01-preview.
  */
 export function getCache(args: GetCacheArgs, opts?: pulumi.InvokeOptions): Promise<GetCacheResult> {
 
@@ -65,6 +67,8 @@ export interface GetCacheResult {
 /**
  * Gets the details of the Cache specified by its identifier.
  * Azure REST API version: 2022-08-01.
+ *
+ * Other available API versions: 2019-12-01-preview, 2022-09-01-preview, 2023-03-01-preview.
  */
 export function getCacheOutput(args: GetCacheOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCacheResult> {
     return pulumi.output(args).apply((a: any) => getCache(a, opts))

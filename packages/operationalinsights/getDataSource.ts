@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Gets a datasource instance.
  * Azure REST API version: 2020-08-01.
+ *
+ * Other available API versions: 2015-11-01-preview.
  */
 export function getDataSource(args: GetDataSourceArgs, opts?: pulumi.InvokeOptions): Promise<GetDataSourceResult> {
 
@@ -65,6 +67,8 @@ export interface GetDataSourceResult {
 /**
  * Gets a datasource instance.
  * Azure REST API version: 2020-08-01.
+ *
+ * Other available API versions: 2015-11-01-preview.
  */
 export function getDataSourceOutput(args: GetDataSourceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDataSourceResult> {
     return pulumi.output(args).apply((a: any) => getDataSource(a, opts))

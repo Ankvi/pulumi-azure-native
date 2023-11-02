@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Description for Gets the application settings of a static site.
  * Azure REST API version: 2022-09-01.
+ *
+ * Other available API versions: 2021-02-01.
  */
 export function listStaticSiteAppSettings(args: ListStaticSiteAppSettingsArgs, opts?: pulumi.InvokeOptions): Promise<ListStaticSiteAppSettingsResult> {
 
@@ -52,6 +54,8 @@ export interface ListStaticSiteAppSettingsResult {
 /**
  * Description for Gets the application settings of a static site.
  * Azure REST API version: 2022-09-01.
+ *
+ * Other available API versions: 2021-02-01.
  */
 export function listStaticSiteAppSettingsOutput(args: ListStaticSiteAppSettingsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListStaticSiteAppSettingsResult> {
     return pulumi.output(args).apply((a: any) => listStaticSiteAppSettings(a, opts))

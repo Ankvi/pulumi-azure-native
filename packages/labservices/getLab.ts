@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Returns the properties of a lab resource.
  * Azure REST API version: 2022-08-01.
+ *
+ * Other available API versions: 2018-10-15, 2023-06-07.
  */
 export function getLab(args: GetLabArgs, opts?: pulumi.InvokeOptions): Promise<GetLabResult> {
 
@@ -101,6 +103,8 @@ export interface GetLabResult {
 /**
  * Returns the properties of a lab resource.
  * Azure REST API version: 2022-08-01.
+ *
+ * Other available API versions: 2018-10-15, 2023-06-07.
  */
 export function getLabOutput(args: GetLabOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLabResult> {
     return pulumi.output(args).apply((a: any) => getLab(a, opts))

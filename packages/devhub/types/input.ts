@@ -62,3 +62,4 @@ export interface WorkflowRunArgs {
      */
     workflowRunStatus?: pulumi.Input<string | enums.WorkflowRunStatus>;
 }
+

@@ -4,7 +4,7 @@ import * as types from "./types";
 /**
  * The task run that has the ARM resource and properties.
  * The task run will have the information of request and result of a run.
- * Azure REST API version: 2019-06-01-preview. Prior API version in Azure Native 1.x: 2019-06-01-preview
+ * Azure REST API version: 2019-06-01-preview. Prior API version in Azure Native 1.x: 2019-06-01-preview.
  */
 export class TaskRun extends pulumi.CustomResource {
     /**

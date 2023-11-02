@@ -99,6 +99,24 @@ export interface CentralServerVmDetailsResponse {
 }
 
 /**
+ * Error definition.
+ */
+export interface ConnectorErrorDefinitionResponse {
+    /**
+     * Service specific error code which serves as the substatus for the HTTP error code.
+     */
+    code: string;
+    /**
+     * Internal error details.
+     */
+    details: ConnectorErrorDefinitionResponse[];
+    /**
+     * Description of the error.
+     */
+    message: string;
+}
+
+/**
  * Gets or sets the file share configuration where the transport directory fileshare is created and mounted as a part of the create infra flow. Please pre-create the resource group you intend to place the transport directory in. The storage account and fileshare will be auto-created by the ACSS and doesn’t need to pre-created.
  */
 export interface CreateAndMountFileShareConfigurationResponse {
@@ -165,6 +183,79 @@ export interface DB2ProviderInstancePropertiesResponse {
 }
 
 /**
+ * Defines the policy properties for database backup.
+ */
+export interface DBBackupPolicyPropertiesResponse {
+    /**
+     * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+     * Expected value is 'AzureWorkload'.
+     */
+    backupManagementType: "AzureWorkload";
+    /**
+     * Fix the policy inconsistency
+     */
+    makePolicyConsistent?: boolean;
+    /**
+     * The name of the DB backup policy.
+     */
+    name: string;
+    /**
+     * Number of items associated with this policy.
+     */
+    protectedItemsCount?: number;
+    /**
+     * ResourceGuard Operation Requests
+     */
+    resourceGuardOperationRequests?: string[];
+    /**
+     * Common settings for the backup management
+     */
+    settings?: SettingsResponse;
+    /**
+     * List of sub-protection policies which includes schedule and retention
+     */
+    subProtectionPolicy?: SubProtectionPolicyResponse[];
+    /**
+     * Type of workload for the backup management
+     */
+    workLoadType?: string;
+}
+
+/**
+ * Daily retention format.
+ */
+export interface DailyRetentionFormatResponse {
+    /**
+     * List of days of the month.
+     */
+    daysOfTheMonth?: DayResponse[];
+}
+
+/**
+ * Daily retention schedule.
+ */
+export interface DailyRetentionScheduleResponse {
+    /**
+     * Retention duration of retention Policy.
+     */
+    retentionDuration?: RetentionDurationResponse;
+    /**
+     * Retention times of retention policy.
+     */
+    retentionTimes?: string[];
+}
+
+/**
+ * Daily schedule.
+ */
+export interface DailyScheduleResponse {
+    /**
+     * List of times of day this schedule has to be run.
+     */
+    scheduleRunTimes?: string[];
+}
+
+/**
  * Gets or sets the database configuration.
  */
 export interface DatabaseConfigurationResponse {
@@ -221,6 +312,20 @@ export interface DatabaseVmDetailsResponse {
      */
     storageDetails: StorageInformationResponse[];
     virtualMachineId: string;
+}
+
+/**
+ * Day of the week.
+ */
+export interface DayResponse {
+    /**
+     * Date of the month
+     */
+    date?: number;
+    /**
+     * Whether Date is last date of month
+     */
+    isLast?: boolean;
 }
 
 /**
@@ -352,6 +457,20 @@ export interface DiskDetailsResponse {
      * The type of disk sku. For example, Standard_LRS, Standard_ZRS, Premium_LRS, Premium_ZRS.
      */
     sku?: DiskSkuResponse;
+}
+
+/**
+ * Defines the disk exclusion properties for virtual machine backup.
+ */
+export interface DiskExclusionPropertiesResponse {
+    /**
+     * List of Disks' Logical Unit Numbers (LUN) to be used for VM Protection.
+     */
+    diskLunList: number[];
+    /**
+     * Flag to indicate whether DiskLunList is to be included/ excluded from backup.
+     */
+    isInclusionList: boolean;
 }
 
 /**
@@ -493,6 +612,21 @@ export interface ErrorResponseInnerError {
 }
 
 /**
+ * Existing recovery services vault.
+ */
+export interface ExistingRecoveryServicesVaultResponse {
+    /**
+     * The resource ID of the recovery services vault that has been created.
+     */
+    id: string;
+    /**
+     * The vault type, whether it is existing or has to be created.
+     * Expected value is 'Existing'.
+     */
+    vaultType: "Existing";
+}
+
+/**
  * The SAP Software configuration Input when the software is installed externally outside the service.
  */
 export interface ExternalInstallationSoftwareConfigurationResponse {
@@ -519,6 +653,41 @@ export interface GatewayServerPropertiesResponse {
      * Gateway Port.
      */
     port: number;
+}
+
+/**
+ * Defines the HANA Backup data for a virtual instance for SAP.
+ */
+export interface HanaBackupDataResponse {
+    /**
+     * Defines the policy properties for database backup.
+     */
+    backupPolicy: DBBackupPolicyPropertiesResponse;
+    /**
+     * The type of backup, VM, SQL or HANA.
+     * Expected value is 'HANA'.
+     */
+    backupType: "HANA";
+    /**
+     * Defines the policy properties for database backup.
+     */
+    dbInstanceSnapshotBackupPolicy?: DBBackupPolicyPropertiesResponse;
+    /**
+     * Name of the HANA Database User Store Key.
+     */
+    hdbuserstoreKeyName: string;
+    /**
+     * Gets or sets the database instance number.
+     */
+    instanceNumber?: string;
+    /**
+     * The properties of the recovery services vault used for backup.
+     */
+    recoveryServicesVault: ExistingRecoveryServicesVaultResponse | NewRecoveryServicesVaultResponse;
+    /**
+     * Path of the SSL key store.
+     */
+    sslConfiguration?: SSLConfigurationResponse;
 }
 
 /**
@@ -601,6 +770,25 @@ export interface HighAvailabilitySoftwareConfigurationResponse {
 }
 
 /**
+ * Hourly schedule.
+ */
+export interface HourlyScheduleResponse {
+    /**
+     * Interval at which backup needs to be triggered. For hourly the value
+     *  can be 4/6/8/12
+     */
+    interval?: number;
+    /**
+     * To specify duration of the backup window
+     */
+    scheduleWindowDuration?: number;
+    /**
+     * To specify start time of the backup window
+     */
+    scheduleWindowStartTime?: string;
+}
+
+/**
  * Specifies information about the image to use. You can specify information about platform images, marketplace images, or virtual machine images. This element is required when you want to use a platform image, marketplace image, or virtual machine image, but is not used in other creation operations. NOTE: Image reference publisher and offer can only be set when you create the scale set.
  */
 export interface ImageReferenceResponse {
@@ -620,6 +808,20 @@ export interface ImageReferenceResponse {
      * Specifies the version of the platform image or marketplace image used to create the virtual machine. The allowed formats are Major.Minor.Build or 'latest'. Major, Minor, and Build are decimal numbers. Specify 'latest' to use the latest version of an image available at deploy time. Even if you use 'latest', the VM image will not automatically update after deploy time even if a new version becomes available.
      */
     version?: string;
+}
+
+/**
+ * Instant recovery point additional details.
+ */
+export interface InstantRPAdditionalDetailsResponse {
+    /**
+     * Azure backup resource group name prefix.
+     */
+    azureBackupRGNamePrefix?: string;
+    /**
+     * Azure backup resource group name suffix.
+     */
+    azureBackupRGNameSuffix?: string;
 }
 
 /**
@@ -672,6 +874,59 @@ export interface LoadBalancerResourceNamesResponse {
      * The full resource name for load balancer. If this value is not provided, load balancer will be name as {ASCS/DB}-loadBalancer.
      */
     loadBalancerName?: string;
+}
+
+/**
+ * Log policy schedule.
+ */
+export interface LogSchedulePolicyResponse {
+    /**
+     * Frequency of the log schedule operation of this policy in minutes.
+     */
+    scheduleFrequencyInMins?: number;
+    /**
+     * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+     * Expected value is 'LogSchedulePolicy'.
+     */
+    schedulePolicyType: "LogSchedulePolicy";
+}
+
+/**
+ * Long term retention policy.
+ */
+export interface LongTermRetentionPolicyResponse {
+    /**
+     * Daily retention schedule of the protection policy.
+     */
+    dailySchedule?: DailyRetentionScheduleResponse;
+    /**
+     * Monthly retention schedule of the protection policy.
+     */
+    monthlySchedule?: MonthlyRetentionScheduleResponse;
+    /**
+     * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+     * Expected value is 'LongTermRetentionPolicy'.
+     */
+    retentionPolicyType: "LongTermRetentionPolicy";
+    /**
+     * Weekly retention schedule of the protection policy.
+     */
+    weeklySchedule?: WeeklyRetentionScheduleResponse;
+    /**
+     * Yearly retention schedule of the protection policy.
+     */
+    yearlySchedule?: YearlyRetentionScheduleResponse;
+}
+
+/**
+ * Long term policy schedule.
+ */
+export interface LongTermSchedulePolicyResponse {
+    /**
+     * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+     * Expected value is 'LongTermSchedulePolicy'.
+     */
+    schedulePolicyType: "LongTermSchedulePolicy";
 }
 
 /**
@@ -742,6 +997,32 @@ export interface MonitorPropertiesResponseErrors {
      * Target of the error.
      */
     target: string;
+}
+
+/**
+ * Monthly retention schedule.
+ */
+export interface MonthlyRetentionScheduleResponse {
+    /**
+     * Retention duration of retention Policy.
+     */
+    retentionDuration?: RetentionDurationResponse;
+    /**
+     * Daily retention format for monthly retention policy.
+     */
+    retentionScheduleDaily?: DailyRetentionFormatResponse;
+    /**
+     * Retention schedule format type for monthly retention policy.
+     */
+    retentionScheduleFormatType?: string;
+    /**
+     * Weekly retention format for monthly retention policy.
+     */
+    retentionScheduleWeekly?: WeeklyRetentionFormatResponse;
+    /**
+     * Retention times of retention policy.
+     */
+    retentionTimes?: string[];
 }
 
 /**
@@ -833,6 +1114,25 @@ export interface NetworkInterfaceResourceNamesResponse {
      * The full name for network interface. If name is not provided, service uses a default name based on the deployment type. For SingleServer, default name is {SID}-Nic. In case of HA-AvZone systems, default name will be {SID}-{App/ASCS/DB}-Zone{A/B}-Nic with an incrementor at the end in case of more than 1 instance per layer. For distributed and HA-AvSet systems, default name will be {SID}-{App/ASCS/DB}-Nic with an incrementor at the end in case of more than 1 instance per layer.
      */
     networkInterfaceName?: string;
+}
+
+/**
+ * New recovery services vault.
+ */
+export interface NewRecoveryServicesVaultResponse {
+    /**
+     * The name of the recovery services vault has to be created.
+     */
+    name: string;
+    /**
+     * The name of the resource group where the recovery services vault has to be created.
+     */
+    resourceGroup: string;
+    /**
+     * The vault type, whether it is existing or has to be created.
+     * Expected value is 'New'.
+     */
+    vaultType: "New";
 }
 
 /**
@@ -956,6 +1256,21 @@ export interface ProviderInstancePropertiesResponseErrors {
 }
 
 /**
+ * Retention duration.
+ */
+export interface RetentionDurationResponse {
+    /**
+     * Count of duration types. Retention duration is obtained by the counting the duration type Count times.
+     * For example, when Count = 3 and DurationType = Weeks, retention duration will be three weeks.
+     */
+    count?: number;
+    /**
+     * Retention duration type of retention policy.
+     */
+    durationType?: string;
+}
+
+/**
  * The SAP Availability Zone Pair.
  */
 export interface SAPAvailabilityZonePairResponse {
@@ -1036,6 +1351,28 @@ export interface SAPVirtualInstanceErrorResponse {
      * The Virtual Instance for SAP error body.
      */
     properties?: ErrorDefinitionResponse;
+}
+
+/**
+ * Specify the HANA database TLS/SSL properties which will be used for enabling Azure Backup for this database. You need to specify these details if you have enabled secure communication for your HANA database.
+ */
+export interface SSLConfigurationResponse {
+    /**
+     * Specify the crypto provider being used (commoncrypto/openssl). If this argument is not provided, it is automatically determined by searching in the configuration files.
+     */
+    sslCryptoProvider?: string;
+    /**
+     * Specify the hostname as mentioned in the SSL certificate. If this argument is not provided, it is automatically determined by searching in the SSL certificate.
+     */
+    sslHostNameInCertificate?: string;
+    /**
+     * Specify the name of the keystore file that contains the client's identity (eg. sapsrv.pse). The script will search for the file in the appropriate directory depending on the crypto provider mentioned. If this argument is not provided, it is automatically determined by searching in the configuration files.
+     */
+    sslKeyStore?: string;
+    /**
+     * Specify the name of the trust store file that contains the server’s public certificates (eg. sapsrv.pse). The script will search for the file in the appropriate directory depending on the crypto provider mentioned. If this argument is not provided, it is automatically determined by searching in the configuration files.
+     */
+    sslTrustStore?: string;
 }
 
 /**
@@ -1179,6 +1516,25 @@ export interface ServiceInitiatedSoftwareConfigurationResponse {
 }
 
 /**
+ * Common settings field for backup management
+ */
+export interface SettingsResponse {
+    /**
+     * Workload compression flag. This has been added so that 'isSqlCompression'
+     * will be deprecated once clients upgrade to consider this flag.
+     */
+    isCompression?: boolean;
+    /**
+     * SQL compression flag
+     */
+    issqlcompression?: boolean;
+    /**
+     * TimeZone optional input as string. For example: TimeZone = "Pacific Standard Time".
+     */
+    timeZone?: string;
+}
+
+/**
  * The resource names object for shared storage.
  */
 export interface SharedStorageResourceNamesResponse {
@@ -1190,6 +1546,79 @@ export interface SharedStorageResourceNamesResponse {
      * The full name of private end point for the shared storage account. If it is not provided, it will be defaulted to {storageAccountName}_pe
      */
     sharedStorageAccountPrivateEndPointName?: string;
+}
+
+/**
+ * Simple policy retention.
+ */
+export interface SimpleRetentionPolicyResponse {
+    /**
+     * Retention duration of the protection policy.
+     */
+    retentionDuration?: RetentionDurationResponse;
+    /**
+     * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+     * Expected value is 'SimpleRetentionPolicy'.
+     */
+    retentionPolicyType: "SimpleRetentionPolicy";
+}
+
+/**
+ * Simple policy schedule.
+ */
+export interface SimpleSchedulePolicyResponse {
+    /**
+     * Hourly Schedule of this Policy
+     */
+    hourlySchedule?: HourlyScheduleResponse;
+    /**
+     * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+     * Expected value is 'SimpleSchedulePolicy'.
+     */
+    schedulePolicyType: "SimpleSchedulePolicy";
+    /**
+     * List of days of week this schedule has to be run.
+     */
+    scheduleRunDays?: string[];
+    /**
+     * Frequency of the schedule operation of this policy.
+     */
+    scheduleRunFrequency?: string;
+    /**
+     * List of times of day this schedule has to be run.
+     */
+    scheduleRunTimes?: string[];
+    /**
+     * At every number weeks this schedule has to be run.
+     */
+    scheduleWeeklyFrequency?: number;
+}
+
+/**
+ * The V2 policy schedule for IaaS that supports hourly backups.
+ */
+export interface SimpleSchedulePolicyV2Response {
+    /**
+     * Daily schedule of this policy
+     */
+    dailySchedule?: DailyScheduleResponse;
+    /**
+     * hourly schedule of this policy
+     */
+    hourlySchedule?: HourlyScheduleResponse;
+    /**
+     * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+     * Expected value is 'SimpleSchedulePolicyV2'.
+     */
+    schedulePolicyType: "SimpleSchedulePolicyV2";
+    /**
+     * Frequency of the schedule operation of this policy.
+     */
+    scheduleRunFrequency?: string;
+    /**
+     * Weekly schedule of this policy
+     */
+    weeklySchedule?: WeeklyScheduleResponse;
 }
 
 /**
@@ -1267,6 +1696,43 @@ export interface SkipFileShareConfigurationResponse {
 }
 
 /**
+ * Snapshot Backup related fields for WorkloadType SAP Hana system
+ */
+export interface SnapshotBackupAdditionalDetailsResponse {
+    /**
+     * Instant RP details for the snapshot.
+     */
+    instantRPDetails?: string;
+    /**
+     * Retention range for instant Rp in days.
+     */
+    instantRpRetentionRangeInDays?: number;
+    /**
+     * User Assigned managed identity details used for snapshot policy.
+     */
+    userAssignedManagedIdentityDetails?: UserAssignedManagedIdentityDetailsResponse;
+}
+
+/**
+ * Defines the SQL Backup data for a virtual instance for SAP.
+ */
+export interface SqlBackupDataResponse {
+    /**
+     * Defines the policy properties for database backup.
+     */
+    backupPolicy: DBBackupPolicyPropertiesResponse;
+    /**
+     * The type of backup, VM, SQL or HANA.
+     * Expected value is 'SQL'.
+     */
+    backupType: "SQL";
+    /**
+     * The properties of the recovery services vault used for backup.
+     */
+    recoveryServicesVault: ExistingRecoveryServicesVaultResponse | NewRecoveryServicesVaultResponse;
+}
+
+/**
  * SSH configuration for Linux based VMs running on Azure
  */
 export interface SshConfigurationResponse {
@@ -1315,6 +1781,34 @@ export interface StorageConfigurationResponse {
  */
 export interface StorageInformationResponse {
     id: string;
+}
+
+/**
+ * Sub-protection policy which includes schedule and retention
+ */
+export interface SubProtectionPolicyResponse {
+    /**
+     * Type of backup policy type
+     */
+    policyType?: string;
+    /**
+     * Retention policy with the details on backup copy retention ranges.
+     */
+    retentionPolicy?: LongTermRetentionPolicyResponse | SimpleRetentionPolicyResponse;
+    /**
+     * Backup schedule specified as part of backup policy.
+     */
+    schedulePolicy?: LogSchedulePolicyResponse | LongTermSchedulePolicyResponse | SimpleSchedulePolicyResponse | SimpleSchedulePolicyV2Response;
+    /**
+     * Hana DB instance snapshot backup additional details.
+     */
+    snapshotBackupAdditionalDetails?: SnapshotBackupAdditionalDetailsResponse;
+    /**
+     * Tiering policy to automatically move RPs to another tier.
+     * Key is Target Tier, defined in RecoveryPointTierType enum.
+     * Tiering policy specifies the criteria to move RP to the target tier.
+     */
+    tieringPolicy?: {[key: string]: TieringPolicyResponse};
 }
 
 /**
@@ -1427,6 +1921,38 @@ export interface ThreeTierFullResourceNamesResponse {
 }
 
 /**
+ * Tiering Policy for a target tier.
+ * If the policy is not specified for a given target tier, service retains the existing configured tiering policy for that tier
+ */
+export interface TieringPolicyResponse {
+    /**
+     * Number of days/weeks/months/years to retain backups in current tier before tiering.
+     * Used only if TieringMode is set to TierAfter
+     */
+    duration?: number;
+    /**
+     * Retention duration type: days/weeks/months/years
+     * Used only if TieringMode is set to TierAfter
+     */
+    durationType?: string;
+    /**
+     * Tiering Mode to control automatic tiering of recovery points. Supported values are:
+     * 1. TierRecommended: Tier all recovery points recommended to be tiered
+     * 2. TierAfter: Tier all recovery points after a fixed period, as specified in duration + durationType below.
+     * 3. DoNotTier: Do not tier any recovery points
+     */
+    tieringMode?: string;
+}
+
+/**
+ * User assigned managed identity properties.
+ */
+export interface UserAssignedIdentityPropertiesResponse {
+    clientId?: string;
+    principalId?: string;
+}
+
+/**
  * User assigned identity properties
  */
 export interface UserAssignedIdentityResponse {
@@ -1441,6 +1967,18 @@ export interface UserAssignedIdentityResponse {
 }
 
 /**
+ * User assigned managed identity details.
+ */
+export interface UserAssignedManagedIdentityDetailsResponse {
+    identityArmId?: string;
+    identityName?: string;
+    /**
+     * User assigned managed identity properties.
+     */
+    userAssignedIdentityProperties?: UserAssignedIdentityPropertiesResponse;
+}
+
+/**
  * A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide.
  */
 export interface UserAssignedServiceIdentityResponse {
@@ -1452,6 +1990,82 @@ export interface UserAssignedServiceIdentityResponse {
      * User assigned identities dictionary
      */
     userAssignedIdentities?: {[key: string]: UserAssignedIdentityResponse};
+}
+
+/**
+ * Defines the VM Backup data for a virtual instance for SAP.
+ */
+export interface VMBackupDataResponse {
+    /**
+     * Defines the policy properties for virtual machine backup.
+     */
+    backupPolicy: VMBackupPolicyPropertiesResponse;
+    /**
+     * The type of backup, VM, SQL or HANA.
+     * Expected value is 'VM'.
+     */
+    backupType: "VM";
+    /**
+     * Defines the disk exclusion properties for virtual machine backup.
+     */
+    diskExclusionProperties?: DiskExclusionPropertiesResponse;
+    /**
+     * The properties of the recovery services vault used for backup.
+     */
+    recoveryServicesVault: ExistingRecoveryServicesVaultResponse | NewRecoveryServicesVaultResponse;
+}
+
+/**
+ * Defines the policy properties for virtual machine backup.
+ */
+export interface VMBackupPolicyPropertiesResponse {
+    /**
+     * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+     * Expected value is 'AzureIaasVM'.
+     */
+    backupManagementType: "AzureIaasVM";
+    /**
+     * Instant recovery point additional details.
+     */
+    instantRPDetails?: InstantRPAdditionalDetailsResponse;
+    /**
+     * Instant RP retention policy range in days
+     */
+    instantRpRetentionRangeInDays?: number;
+    /**
+     * The name of the VM Backup policy.
+     */
+    name: string;
+    /**
+     * The policy type.
+     */
+    policyType?: string;
+    /**
+     * Number of items associated with this policy.
+     */
+    protectedItemsCount?: number;
+    /**
+     * ResourceGuard Operation Requests
+     */
+    resourceGuardOperationRequests?: string[];
+    /**
+     * Retention policy with the details on backup copy retention ranges.
+     */
+    retentionPolicy?: LongTermRetentionPolicyResponse | SimpleRetentionPolicyResponse;
+    /**
+     * Backup schedule specified as part of backup policy.
+     */
+    schedulePolicy?: LogSchedulePolicyResponse | LongTermSchedulePolicyResponse | SimpleSchedulePolicyResponse | SimpleSchedulePolicyV2Response;
+    /**
+     * Tiering policy to automatically move RPs to another tier
+     * Key is Target Tier, defined in RecoveryPointTierType enum.
+     * Tiering policy specifies the criteria to move RP to the target tier.
+     */
+    tieringPolicy?: {[key: string]: TieringPolicyResponse};
+    /**
+     * Time zone optional input as string. For example: "Pacific Standard Time".
+     */
+    timeZone?: string;
 }
 
 /**
@@ -1499,6 +2113,52 @@ export interface VirtualMachineResourceNamesResponse {
 }
 
 /**
+ * Weekly retention format.
+ */
+export interface WeeklyRetentionFormatResponse {
+    /**
+     * List of days of the week.
+     */
+    daysOfTheWeek?: string[];
+    /**
+     * List of weeks of month.
+     */
+    weeksOfTheMonth?: string[];
+}
+
+/**
+ * Weekly retention schedule.
+ */
+export interface WeeklyRetentionScheduleResponse {
+    /**
+     * List of days of week for weekly retention policy.
+     */
+    daysOfTheWeek?: string[];
+    /**
+     * Retention duration of retention Policy.
+     */
+    retentionDuration?: RetentionDurationResponse;
+    /**
+     * Retention times of retention policy.
+     */
+    retentionTimes?: string[];
+}
+
+/**
+ * Weekly schedule.
+ */
+export interface WeeklyScheduleResponse {
+    /**
+     * Schedule run days.
+     */
+    scheduleRunDays?: string[];
+    /**
+     * List of times of day this schedule has to be run.
+     */
+    scheduleRunTimes?: string[];
+}
+
+/**
  * Specifies Windows operating system settings on the virtual machine.
  */
 export interface WindowsConfigurationResponse {
@@ -1508,5 +2168,36 @@ export interface WindowsConfigurationResponse {
      */
     osType: "Windows";
 }
+
+/**
+ * Yearly retention schedule.
+ */
+export interface YearlyRetentionScheduleResponse {
+    /**
+     * List of months of year of yearly retention policy.
+     */
+    monthsOfYear?: string[];
+    /**
+     * Retention duration of retention Policy.
+     */
+    retentionDuration?: RetentionDurationResponse;
+    /**
+     * Daily retention format for yearly retention policy.
+     */
+    retentionScheduleDaily?: DailyRetentionFormatResponse;
+    /**
+     * Retention schedule format for yearly retention policy.
+     */
+    retentionScheduleFormatType?: string;
+    /**
+     * Weekly retention format for yearly retention policy.
+     */
+    retentionScheduleWeekly?: WeeklyRetentionFormatResponse;
+    /**
+     * Retention times of retention policy.
+     */
+    retentionTimes?: string[];
+}
+
 
 

@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Primary and secondary connection strings to the queue.
  * Azure REST API version: 2022-01-01-preview.
+ *
+ * Other available API versions: 2015-08-01, 2022-10-01-preview.
  */
 export function listQueueKeys(args: ListQueueKeysArgs, opts?: pulumi.InvokeOptions): Promise<ListQueueKeysResult> {
 
@@ -70,6 +72,8 @@ export interface ListQueueKeysResult {
 /**
  * Primary and secondary connection strings to the queue.
  * Azure REST API version: 2022-01-01-preview.
+ *
+ * Other available API versions: 2015-08-01, 2022-10-01-preview.
  */
 export function listQueueKeysOutput(args: ListQueueKeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListQueueKeysResult> {
     return pulumi.output(args).apply((a: any) => listQueueKeys(a, opts))

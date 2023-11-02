@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Defines the PUT rollout request body.
  * Azure REST API version: 2019-11-01-preview.
+ *
+ * Other available API versions: 2018-09-01-preview.
  */
 export function getRollout(args: GetRolloutArgs, opts?: pulumi.InvokeOptions): Promise<GetRolloutResult> {
 
@@ -94,6 +96,8 @@ export interface GetRolloutResult {
 /**
  * Defines the PUT rollout request body.
  * Azure REST API version: 2019-11-01-preview.
+ *
+ * Other available API versions: 2018-09-01-preview.
  */
 export function getRolloutOutput(args: GetRolloutOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRolloutResult> {
     return pulumi.output(args).apply((a: any) => getRollout(a, opts))

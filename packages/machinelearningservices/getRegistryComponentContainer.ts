@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Azure Resource Manager resource envelope.
  * Azure REST API version: 2023-04-01.
+ *
+ * Other available API versions: 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01.
  */
 export function getRegistryComponentContainer(args: GetRegistryComponentContainerArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistryComponentContainerResult> {
 
@@ -58,6 +60,8 @@ export interface GetRegistryComponentContainerResult {
 /**
  * Azure Resource Manager resource envelope.
  * Azure REST API version: 2023-04-01.
+ *
+ * Other available API versions: 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01.
  */
 export function getRegistryComponentContainerOutput(args: GetRegistryComponentContainerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegistryComponentContainerResult> {
     return pulumi.output(args).apply((a: any) => getRegistryComponentContainer(a, opts))

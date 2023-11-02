@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Gets the specified network watcher by resource group.
  * Azure REST API version: 2023-02-01.
+ *
+ * Other available API versions: 2018-01-01, 2022-05-01, 2023-04-01, 2023-05-01.
  */
 export function getNetworkWatcher(args: GetNetworkWatcherArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkWatcherResult> {
 
@@ -60,6 +62,8 @@ export interface GetNetworkWatcherResult {
 /**
  * Gets the specified network watcher by resource group.
  * Azure REST API version: 2023-02-01.
+ *
+ * Other available API versions: 2018-01-01, 2022-05-01, 2023-04-01, 2023-05-01.
  */
 export function getNetworkWatcherOutput(args: GetNetworkWatcherOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkWatcherResult> {
     return pulumi.output(args).apply((a: any) => getNetworkWatcher(a, opts))

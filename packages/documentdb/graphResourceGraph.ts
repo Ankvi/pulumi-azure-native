@@ -3,7 +3,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * An Azure Cosmos DB Graph resource.
- * Azure REST API version: 2023-03-15-preview. Prior API version in Azure Native 1.x: 2021-07-01-preview
+ * Azure REST API version: 2023-03-15-preview. Prior API version in Azure Native 1.x: 2021-07-01-preview.
+ *
+ * Other available API versions: 2023-09-15-preview.
  */
 export class GraphResourceGraph extends pulumi.CustomResource {
     /**

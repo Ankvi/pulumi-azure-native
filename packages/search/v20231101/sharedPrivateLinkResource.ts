@@ -2,7 +2,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Describes a Shared Private Link Resource managed by the Azure Cognitive Search service.
+ * Describes a Shared Private Link Resource managed by the search service.
  */
 export class SharedPrivateLinkResource extends pulumi.CustomResource {
     /**
@@ -36,7 +36,7 @@ export class SharedPrivateLinkResource extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * Describes the properties of a Shared Private Link Resource managed by the Azure Cognitive Search service.
+     * Describes the properties of a Shared Private Link Resource managed by the search service.
      */
     public readonly properties!: pulumi.Output<types.outputs.SharedPrivateLinkResourcePropertiesResponse>;
     /**
@@ -84,7 +84,7 @@ export class SharedPrivateLinkResource extends pulumi.CustomResource {
  */
 export interface SharedPrivateLinkResourceArgs {
     /**
-     * Describes the properties of a Shared Private Link Resource managed by the Azure Cognitive Search service.
+     * Describes the properties of a Shared Private Link Resource managed by the search service.
      */
     properties?: pulumi.Input<types.inputs.SharedPrivateLinkResourcePropertiesArgs>;
     /**
@@ -92,11 +92,11 @@ export interface SharedPrivateLinkResourceArgs {
      */
     resourceGroupName: pulumi.Input<string>;
     /**
-     * The name of the Azure Cognitive Search service associated with the specified resource group.
+     * The name of the search service associated with the specified resource group.
      */
     searchServiceName: pulumi.Input<string>;
     /**
-     * The name of the shared private link resource managed by the Azure Cognitive Search service within the specified resource group.
+     * The name of the shared private link resource managed by the search service within the specified resource group.
      */
     sharedPrivateLinkResourceName?: pulumi.Input<string>;
 }

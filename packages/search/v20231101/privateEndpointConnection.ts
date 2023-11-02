@@ -2,7 +2,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Describes an existing Private Endpoint connection to the Azure Cognitive Search service.
+ * Describes an existing private endpoint connection to the search service.
  */
 export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
@@ -36,7 +36,7 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * Describes the properties of an existing Private Endpoint connection to the Azure Cognitive Search service.
+     * Describes the properties of an existing private endpoint connection to the search service.
      */
     public readonly properties!: pulumi.Output<types.outputs.PrivateEndpointConnectionPropertiesResponse>;
     /**
@@ -84,11 +84,11 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
  */
 export interface PrivateEndpointConnectionArgs {
     /**
-     * The name of the private endpoint connection to the Azure Cognitive Search service with the specified resource group.
+     * The name of the private endpoint connection to the search service with the specified resource group.
      */
     privateEndpointConnectionName?: pulumi.Input<string>;
     /**
-     * Describes the properties of an existing Private Endpoint connection to the Azure Cognitive Search service.
+     * Describes the properties of an existing private endpoint connection to the search service.
      */
     properties?: pulumi.Input<types.inputs.PrivateEndpointConnectionPropertiesArgs>;
     /**
@@ -96,7 +96,7 @@ export interface PrivateEndpointConnectionArgs {
      */
     resourceGroupName: pulumi.Input<string>;
     /**
-     * The name of the Azure Cognitive Search service associated with the specified resource group.
+     * The name of the search service associated with the specified resource group.
      */
     searchServiceName: pulumi.Input<string>;
 }

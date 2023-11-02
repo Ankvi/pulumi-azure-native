@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  *  Response for PrivateEndpoint Connection object
  * Azure REST API version: 2022-12-01-preview.
+ *
+ * Other available API versions: 2023-01-01.
  */
 export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**

@@ -3,7 +3,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Graph Query entity definition.
- * Azure REST API version: 2020-04-01-preview. Prior API version in Azure Native 1.x: 2018-09-01-preview
+ * Azure REST API version: 2020-04-01-preview. Prior API version in Azure Native 1.x: 2018-09-01-preview.
+ *
+ * Other available API versions: 2018-09-01-preview.
  */
 export class GraphQuery extends pulumi.CustomResource {
     /**

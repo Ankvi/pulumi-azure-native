@@ -3,7 +3,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Resource information with extended details.
- * Azure REST API version: 2021-11-30. Prior API version in Azure Native 1.x: 2018-10-31-preview
+ * Azure REST API version: 2021-11-30. Prior API version in Azure Native 1.x: 2018-10-31-preview.
  */
 export class DedicatedHsm extends pulumi.CustomResource {
     /**

@@ -135,6 +135,48 @@ export interface MachineExtensionInstanceViewStatusArgs {
 }
 
 /**
+ * Describes the properties of a Machine Extension.
+ */
+export interface MachineExtensionPropertiesArgs {
+    /**
+     * Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
+     */
+    autoUpgradeMinorVersion?: pulumi.Input<boolean>;
+    /**
+     * Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available.
+     */
+    enableAutomaticUpgrade?: pulumi.Input<boolean>;
+    /**
+     * How the extension handler should be forced to update even if the extension configuration has not changed.
+     */
+    forceUpdateTag?: pulumi.Input<string>;
+    /**
+     * The machine extension instance view.
+     */
+    instanceView?: pulumi.Input<MachineExtensionInstanceViewArgs>;
+    /**
+     * The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
+     */
+    protectedSettings?: any;
+    /**
+     * The name of the extension handler publisher.
+     */
+    publisher?: pulumi.Input<string>;
+    /**
+     * Json formatted public settings for the extension.
+     */
+    settings?: any;
+    /**
+     * Specifies the type of the extension; an example is "CustomScriptExtension".
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * Specifies the version of the script handler.
+     */
+    typeHandlerVersion?: pulumi.Input<string>;
+}
+
+/**
  * Specifies the operating system settings for the hybrid machine.
  */
 export interface OSProfileArgs {

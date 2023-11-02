@@ -3,7 +3,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Server Endpoint object.
- * Azure REST API version: 2022-06-01. Prior API version in Azure Native 1.x: 2020-03-01
+ * Azure REST API version: 2022-06-01. Prior API version in Azure Native 1.x: 2020-03-01.
+ *
+ * Other available API versions: 2017-06-05-preview, 2018-04-02, 2018-07-01, 2018-10-01, 2019-10-01, 2022-09-01.
  */
 export class ServerEndpoint extends pulumi.CustomResource {
     /**
@@ -198,7 +200,7 @@ export class ServerEndpoint extends pulumi.CustomResource {
             resourceInputs["volumeFreeSpacePercent"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:storagesync/v20170605preview:ServerEndpoint" }, { type: "azure-native:storagesync/v20180402:ServerEndpoint" }, { type: "azure-native:storagesync/v20180701:ServerEndpoint" }, { type: "azure-native:storagesync/v20181001:ServerEndpoint" }, { type: "azure-native:storagesync/v20190201:ServerEndpoint" }, { type: "azure-native:storagesync/v20190301:ServerEndpoint" }, { type: "azure-native:storagesync/v20190601:ServerEndpoint" }, { type: "azure-native:storagesync/v20191001:ServerEndpoint" }, { type: "azure-native:storagesync/v20200301:ServerEndpoint" }, { type: "azure-native:storagesync/v20200901:ServerEndpoint" }, { type: "azure-native:storagesync/v20220601:ServerEndpoint" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:storagesync/v20170605preview:ServerEndpoint" }, { type: "azure-native:storagesync/v20180402:ServerEndpoint" }, { type: "azure-native:storagesync/v20180701:ServerEndpoint" }, { type: "azure-native:storagesync/v20181001:ServerEndpoint" }, { type: "azure-native:storagesync/v20190201:ServerEndpoint" }, { type: "azure-native:storagesync/v20190301:ServerEndpoint" }, { type: "azure-native:storagesync/v20190601:ServerEndpoint" }, { type: "azure-native:storagesync/v20191001:ServerEndpoint" }, { type: "azure-native:storagesync/v20200301:ServerEndpoint" }, { type: "azure-native:storagesync/v20200901:ServerEndpoint" }, { type: "azure-native:storagesync/v20220601:ServerEndpoint" }, { type: "azure-native:storagesync/v20220901:ServerEndpoint" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ServerEndpoint.__pulumiType, name, resourceInputs, opts);
     }

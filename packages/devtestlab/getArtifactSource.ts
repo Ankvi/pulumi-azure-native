@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Get artifact source.
  * Azure REST API version: 2018-09-15.
+ *
+ * Other available API versions: 2016-05-15.
  */
 export function getArtifactSource(args: GetArtifactSourceArgs, opts?: pulumi.InvokeOptions): Promise<GetArtifactSourceResult> {
 
@@ -106,6 +108,8 @@ export interface GetArtifactSourceResult {
 /**
  * Get artifact source.
  * Azure REST API version: 2018-09-15.
+ *
+ * Other available API versions: 2016-05-15.
  */
 export function getArtifactSourceOutput(args: GetArtifactSourceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetArtifactSourceResult> {
     return pulumi.output(args).apply((a: any) => getArtifactSource(a, opts))

@@ -484,6 +484,10 @@ export interface IPPoolResponse {
      */
     ipPoolType?: string;
     /**
+     * Name of the IP-Pool
+     */
+    name?: string;
+    /**
      * start of the ip address pool
      */
     start?: string;
@@ -538,6 +542,42 @@ export interface InterfaceDNSSettingsResponse {
      * List of DNS server IP Addresses for the interface
      */
     dnsServers?: string[];
+}
+
+/**
+ * DhcpOptions contains an array of DNS servers available to VMs deployed in the logical network. Standard DHCP option for a subnet overrides logical network DHCP options.
+ */
+export interface LogicalNetworkPropertiesResponseDhcpOptions {
+    /**
+     * The list of DNS servers IP addresses.
+     */
+    dnsServers?: string[];
+}
+
+/**
+ * The observed state of logical networks
+ */
+export interface LogicalNetworkStatusResponse {
+    /**
+     * LogicalNetwork provisioning error code
+     */
+    errorCode?: string;
+    /**
+     * Descriptive error message
+     */
+    errorMessage?: string;
+    provisioningStatus?: LogicalNetworkStatusResponseProvisioningStatus;
+}
+
+export interface LogicalNetworkStatusResponseProvisioningStatus {
+    /**
+     * The ID of the operation performed on the logical network
+     */
+    operationId?: string;
+    /**
+     * The status of the operation performed on the logical network [Succeeded, Failed, InProgress]
+     */
+    status?: string;
 }
 
 /**
@@ -703,6 +743,46 @@ export interface PerNodeStateResponse {
 }
 
 /**
+ * Route - Route resource.
+ */
+export interface RouteResponse {
+    /**
+     * The destination CIDR to which the route applies.
+     */
+    addressPrefix?: string;
+    /**
+     * Name - name of the subnet
+     */
+    name?: string;
+    /**
+     * The IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is VirtualAppliance.
+     */
+    nextHopIpAddress?: string;
+}
+
+/**
+ * Route table resource.
+ */
+export interface RouteTableResponse {
+    /**
+     * A unique read-only string that changes whenever the resource is updated.
+     */
+    etag: string;
+    /**
+     * Resource name.
+     */
+    name: string;
+    /**
+     * Collection of routes contained within a route table.
+     */
+    routes?: RouteResponse[];
+    /**
+     * Resource type.
+     */
+    type: string;
+}
+
+/**
  * Software Assurance properties of the cluster.
  */
 export interface SoftwareAssurancePropertiesResponse {
@@ -814,6 +894,51 @@ export interface StorageContainerStatusResponseProvisioningStatus {
      * The status of the operation performed on the storage container [Succeeded, Failed, InProgress]
      */
     status?: string;
+}
+
+/**
+ * IPConfigurationReference - Describes a IPConfiguration under the virtual network
+ */
+export interface SubnetPropertiesFormatResponseIpConfigurationReferences {
+    /**
+     * IPConfigurationID
+     */
+    id?: string;
+}
+
+export interface SubnetResponse {
+    /**
+     * The address prefix for the subnet: Cidr for this subnet - IPv4, IPv6.
+     */
+    addressPrefix?: string;
+    /**
+     * List of address prefixes for the subnet.
+     */
+    addressPrefixes?: string[];
+    /**
+     * IPAllocationMethod - The IP address allocation method. Possible values include: 'Static', 'Dynamic'
+     */
+    ipAllocationMethod?: string;
+    /**
+     * IPConfigurationReferences - list of IPConfigurationReferences
+     */
+    ipConfigurationReferences?: SubnetPropertiesFormatResponseIpConfigurationReferences[];
+    /**
+     * network associated pool of IP Addresses
+     */
+    ipPools?: IPPoolResponse[];
+    /**
+     * Name - The name of the resource that is unique within a resource group. This name can be used to access the resource.
+     */
+    name?: string;
+    /**
+     * Route table resource.
+     */
+    routeTable?: RouteTableResponse;
+    /**
+     * Vlan to use for the subnet
+     */
+    vlan?: number;
 }
 
 /**
@@ -1595,6 +1720,7 @@ export interface VirtualNetworkStatusResponseProvisioningStatus {
      */
     status?: string;
 }
+
 
 
 

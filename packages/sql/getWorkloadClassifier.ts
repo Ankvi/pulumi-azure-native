@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Gets a workload classifier
  * Azure REST API version: 2021-11-01.
+ *
+ * Other available API versions: 2022-11-01-preview, 2023-02-01-preview.
  */
 export function getWorkloadClassifier(args: GetWorkloadClassifierArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkloadClassifierResult> {
 
@@ -83,6 +85,8 @@ export interface GetWorkloadClassifierResult {
 /**
  * Gets a workload classifier
  * Azure REST API version: 2021-11-01.
+ *
+ * Other available API versions: 2022-11-01-preview, 2023-02-01-preview.
  */
 export function getWorkloadClassifierOutput(args: GetWorkloadClassifierOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkloadClassifierResult> {
     return pulumi.output(args).apply((a: any) => getWorkloadClassifier(a, opts))

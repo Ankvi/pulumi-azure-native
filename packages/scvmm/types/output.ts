@@ -578,3 +578,4 @@ export interface VirtualMachinePropertiesResponseAvailabilitySets {
     name?: string;
 }
 
+

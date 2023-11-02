@@ -2,7 +2,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Key Vault container ARM resource for a certificate that is purchased through Azure.
- * Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2020-10-01
+ * Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2020-10-01.
+ *
+ * Other available API versions: 2020-10-01.
  */
 export class AppServiceCertificateOrderCertificate extends pulumi.CustomResource {
     /**

@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Description for Gets the application settings of an app.
  * Azure REST API version: 2022-09-01.
+ *
+ * Other available API versions: 2020-10-01.
  */
 export function listWebAppApplicationSettings(args: ListWebAppApplicationSettingsArgs, opts?: pulumi.InvokeOptions): Promise<ListWebAppApplicationSettingsResult> {
 
@@ -52,6 +54,8 @@ export interface ListWebAppApplicationSettingsResult {
 /**
  * Description for Gets the application settings of an app.
  * Azure REST API version: 2022-09-01.
+ *
+ * Other available API versions: 2020-10-01.
  */
 export function listWebAppApplicationSettingsOutput(args: ListWebAppApplicationSettingsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListWebAppApplicationSettingsResult> {
     return pulumi.output(args).apply((a: any) => listWebAppApplicationSettings(a, opts))

@@ -3,7 +3,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Define the SAP Central Services Instance resource.
- * Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2021-12-01-preview
+ * Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2021-12-01-preview.
+ *
+ * Other available API versions: 2023-10-01-preview.
  */
 export class SAPCentralInstance extends pulumi.CustomResource {
     /**
@@ -170,7 +172,7 @@ export class SAPCentralInstance extends pulumi.CustomResource {
             resourceInputs["vmDetails"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:workloads/v20211201preview:SAPCentralInstance" }, { type: "azure-native:workloads/v20221101preview:SAPCentralInstance" }, { type: "azure-native:workloads/v20230401:SAPCentralInstance" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:workloads/v20211201preview:SAPCentralInstance" }, { type: "azure-native:workloads/v20221101preview:SAPCentralInstance" }, { type: "azure-native:workloads/v20230401:SAPCentralInstance" }, { type: "azure-native:workloads/v20231001preview:SAPCentralInstance" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(SAPCentralInstance.__pulumiType, name, resourceInputs, opts);
     }

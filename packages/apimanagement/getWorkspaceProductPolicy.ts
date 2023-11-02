@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Get the policy configuration at the Product level.
  * Azure REST API version: 2022-09-01-preview.
+ *
+ * Other available API versions: 2023-03-01-preview.
  */
 export function getWorkspaceProductPolicy(args: GetWorkspaceProductPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkspaceProductPolicyResult> {
 
@@ -72,6 +74,8 @@ export interface GetWorkspaceProductPolicyResult {
 /**
  * Get the policy configuration at the Product level.
  * Azure REST API version: 2022-09-01-preview.
+ *
+ * Other available API versions: 2023-03-01-preview.
  */
 export function getWorkspaceProductPolicyOutput(args: GetWorkspaceProductPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkspaceProductPolicyResult> {
     return pulumi.output(args).apply((a: any) => getWorkspaceProductPolicy(a, opts))

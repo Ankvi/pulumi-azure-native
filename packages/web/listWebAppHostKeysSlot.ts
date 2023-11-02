@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Description for Get host secrets for a function app.
  * Azure REST API version: 2022-09-01.
+ *
+ * Other available API versions: 2020-10-01.
  */
 export function listWebAppHostKeysSlot(args: ListWebAppHostKeysSlotArgs, opts?: pulumi.InvokeOptions): Promise<ListWebAppHostKeysSlotResult> {
 
@@ -49,6 +51,8 @@ export interface ListWebAppHostKeysSlotResult {
 /**
  * Description for Get host secrets for a function app.
  * Azure REST API version: 2022-09-01.
+ *
+ * Other available API versions: 2020-10-01.
  */
 export function listWebAppHostKeysSlotOutput(args: ListWebAppHostKeysSlotOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListWebAppHostKeysSlotResult> {
     return pulumi.output(args).apply((a: any) => listWebAppHostKeysSlot(a, opts))

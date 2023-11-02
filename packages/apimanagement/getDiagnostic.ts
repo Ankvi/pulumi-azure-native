@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets the details of the Diagnostic specified by its identifier.
  * Azure REST API version: 2022-08-01.
+ *
+ * Other available API versions: 2018-01-01, 2019-01-01, 2022-09-01-preview, 2023-03-01-preview.
  */
 export function getDiagnostic(args: GetDiagnosticArgs, opts?: pulumi.InvokeOptions): Promise<GetDiagnosticResult> {
 
@@ -90,6 +92,8 @@ export interface GetDiagnosticResult {
 /**
  * Gets the details of the Diagnostic specified by its identifier.
  * Azure REST API version: 2022-08-01.
+ *
+ * Other available API versions: 2018-01-01, 2019-01-01, 2022-09-01-preview, 2023-03-01-preview.
  */
 export function getDiagnosticOutput(args: GetDiagnosticOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDiagnosticResult> {
     return pulumi.output(args).apply((a: any) => getDiagnostic(a, opts))

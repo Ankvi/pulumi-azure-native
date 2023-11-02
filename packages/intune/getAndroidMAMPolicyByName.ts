@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Returns AndroidMAMPolicy with given name.
  * Azure REST API version: 2015-01-14-preview.
+ *
+ * Other available API versions: 2015-01-14-privatepreview.
  */
 export function getAndroidMAMPolicyByName(args: GetAndroidMAMPolicyByNameArgs, opts?: pulumi.InvokeOptions): Promise<GetAndroidMAMPolicyByNameResult> {
 
@@ -77,6 +79,8 @@ export interface GetAndroidMAMPolicyByNameResult {
 /**
  * Returns AndroidMAMPolicy with given name.
  * Azure REST API version: 2015-01-14-preview.
+ *
+ * Other available API versions: 2015-01-14-privatepreview.
  */
 export function getAndroidMAMPolicyByNameOutput(args: GetAndroidMAMPolicyByNameOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAndroidMAMPolicyByNameResult> {
     return pulumi.output(args).apply((a: any) => getAndroidMAMPolicyByName(a, opts))

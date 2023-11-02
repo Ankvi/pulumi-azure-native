@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Get private DNS zone suffix in the cloud.
  * Azure REST API version: 2022-01-01.
+ *
+ * Other available API versions: 2021-05-01, 2021-05-01-preview, 2021-12-01-preview, 2022-09-30-preview, 2023-06-01-preview, 2023-06-30.
  */
 export function getGetPrivateDnsZoneSuffixExecute(args?: GetGetPrivateDnsZoneSuffixExecuteArgs, opts?: pulumi.InvokeOptions): Promise<GetGetPrivateDnsZoneSuffixExecuteResult> {
     args = args || {};
@@ -27,6 +29,8 @@ export interface GetGetPrivateDnsZoneSuffixExecuteResult {
 /**
  * Get private DNS zone suffix in the cloud.
  * Azure REST API version: 2022-01-01.
+ *
+ * Other available API versions: 2021-05-01, 2021-05-01-preview, 2021-12-01-preview, 2022-09-30-preview, 2023-06-01-preview, 2023-06-30.
  */
 export function getGetPrivateDnsZoneSuffixExecuteOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetGetPrivateDnsZoneSuffixExecuteResult> {
     return pulumi.output(getGetPrivateDnsZoneSuffixExecute(opts))

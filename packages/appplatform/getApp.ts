@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Get an App and its properties.
  * Azure REST API version: 2023-05-01-preview.
+ *
+ * Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview.
  */
 export function getApp(args: GetAppArgs, opts?: pulumi.InvokeOptions): Promise<GetAppResult> {
 
@@ -71,6 +73,8 @@ export interface GetAppResult {
 /**
  * Get an App and its properties.
  * Azure REST API version: 2023-05-01-preview.
+ *
+ * Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview.
  */
 export function getAppOutput(args: GetAppOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppResult> {
     return pulumi.output(args).apply((a: any) => getApp(a, opts))

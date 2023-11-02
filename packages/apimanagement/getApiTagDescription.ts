@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Get Tag description in scope of API
  * Azure REST API version: 2022-08-01.
+ *
+ * Other available API versions: 2019-01-01, 2022-09-01-preview, 2023-03-01-preview.
  */
 export function getApiTagDescription(args: GetApiTagDescriptionArgs, opts?: pulumi.InvokeOptions): Promise<GetApiTagDescriptionResult> {
 
@@ -74,6 +76,8 @@ export interface GetApiTagDescriptionResult {
 /**
  * Get Tag description in scope of API
  * Azure REST API version: 2022-08-01.
+ *
+ * Other available API versions: 2019-01-01, 2022-09-01-preview, 2023-03-01-preview.
  */
 export function getApiTagDescriptionOutput(args: GetApiTagDescriptionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApiTagDescriptionResult> {
     return pulumi.output(args).apply((a: any) => getApiTagDescription(a, opts))

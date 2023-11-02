@@ -2,7 +2,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * The view resource format.
- * Azure REST API version: 2017-04-26. Prior API version in Azure Native 1.x: 2017-04-26
+ * Azure REST API version: 2017-04-26. Prior API version in Azure Native 1.x: 2017-04-26.
  */
 export class View extends pulumi.CustomResource {
     /**

@@ -3,7 +3,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * The NSP resource association resource
- * Azure REST API version: 2021-02-01-preview. Prior API version in Azure Native 1.x: 2021-02-01-preview
+ * Azure REST API version: 2021-02-01-preview. Prior API version in Azure Native 1.x: 2021-02-01-preview.
+ *
+ * Other available API versions: 2023-07-01-preview, 2023-08-01-preview.
  */
 export class NspAssociation extends pulumi.CustomResource {
     /**
@@ -111,7 +113,7 @@ export class NspAssociation extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20210201preview:NspAssociation" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20210201preview:NspAssociation" }, { type: "azure-native:network/v20230701preview:NspAssociation" }, { type: "azure-native:network/v20230801preview:NspAssociation" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(NspAssociation.__pulumiType, name, resourceInputs, opts);
     }

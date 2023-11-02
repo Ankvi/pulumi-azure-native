@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Get the full endpoint URL for an event subscription of a system topic.
  * Azure REST API version: 2022-06-15.
+ *
+ * Other available API versions: 2023-06-01-preview.
  */
 export function getSystemTopicEventSubscriptionFullUrl(args: GetSystemTopicEventSubscriptionFullUrlArgs, opts?: pulumi.InvokeOptions): Promise<GetSystemTopicEventSubscriptionFullUrlResult> {
 
@@ -41,6 +43,8 @@ export interface GetSystemTopicEventSubscriptionFullUrlResult {
 /**
  * Get the full endpoint URL for an event subscription of a system topic.
  * Azure REST API version: 2022-06-15.
+ *
+ * Other available API versions: 2023-06-01-preview.
  */
 export function getSystemTopicEventSubscriptionFullUrlOutput(args: GetSystemTopicEventSubscriptionFullUrlOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSystemTopicEventSubscriptionFullUrlResult> {
     return pulumi.output(args).apply((a: any) => getSystemTopicEventSubscriptionFullUrl(a, opts))

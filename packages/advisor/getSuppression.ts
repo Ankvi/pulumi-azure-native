@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Obtains the details of a suppression.
  * Azure REST API version: 2023-01-01.
+ *
+ * Other available API versions: 2016-07-12-preview.
  */
 export function getSuppression(args: GetSuppressionArgs, opts?: pulumi.InvokeOptions): Promise<GetSuppressionResult> {
 
@@ -66,6 +68,8 @@ export interface GetSuppressionResult {
 /**
  * Obtains the details of a suppression.
  * Azure REST API version: 2023-01-01.
+ *
+ * Other available API versions: 2016-07-12-preview.
  */
 export function getSuppressionOutput(args: GetSuppressionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSuppressionResult> {
     return pulumi.output(args).apply((a: any) => getSuppression(a, opts))

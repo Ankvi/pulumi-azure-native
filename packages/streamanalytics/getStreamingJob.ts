@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets details about the specified streaming job.
  * Azure REST API version: 2020-03-01.
+ *
+ * Other available API versions: 2017-04-01-preview, 2021-10-01-preview.
  */
 export function getStreamingJob(args: GetStreamingJobArgs, opts?: pulumi.InvokeOptions): Promise<GetStreamingJobResult> {
 
@@ -154,6 +156,8 @@ export interface GetStreamingJobResult {
 /**
  * Gets details about the specified streaming job.
  * Azure REST API version: 2020-03-01.
+ *
+ * Other available API versions: 2017-04-01-preview, 2021-10-01-preview.
  */
 export function getStreamingJobOutput(args: GetStreamingJobOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStreamingJobResult> {
     return pulumi.output(args).apply((a: any) => getStreamingJob(a, opts))

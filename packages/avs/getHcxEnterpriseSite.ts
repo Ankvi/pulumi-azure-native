@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * An HCX Enterprise Site resource
  * Azure REST API version: 2022-05-01.
+ *
+ * Other available API versions: 2023-03-01.
  */
 export function getHcxEnterpriseSite(args: GetHcxEnterpriseSiteArgs, opts?: pulumi.InvokeOptions): Promise<GetHcxEnterpriseSiteResult> {
 
@@ -57,6 +59,8 @@ export interface GetHcxEnterpriseSiteResult {
 /**
  * An HCX Enterprise Site resource
  * Azure REST API version: 2022-05-01.
+ *
+ * Other available API versions: 2023-03-01.
  */
 export function getHcxEnterpriseSiteOutput(args: GetHcxEnterpriseSiteOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHcxEnterpriseSiteResult> {
     return pulumi.output(args).apply((a: any) => getHcxEnterpriseSite(a, opts))

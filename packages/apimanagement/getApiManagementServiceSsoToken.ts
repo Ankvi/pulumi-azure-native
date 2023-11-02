@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Gets the Single-Sign-On token for the API Management Service which is valid for 5 Minutes.
  * Azure REST API version: 2022-08-01.
+ *
+ * Other available API versions: 2016-10-10, 2017-03-01, 2022-09-01-preview, 2023-03-01-preview.
  */
 export function getApiManagementServiceSsoToken(args: GetApiManagementServiceSsoTokenArgs, opts?: pulumi.InvokeOptions): Promise<GetApiManagementServiceSsoTokenResult> {
 
@@ -36,6 +38,8 @@ export interface GetApiManagementServiceSsoTokenResult {
 /**
  * Gets the Single-Sign-On token for the API Management Service which is valid for 5 Minutes.
  * Azure REST API version: 2022-08-01.
+ *
+ * Other available API versions: 2016-10-10, 2017-03-01, 2022-09-01-preview, 2023-03-01-preview.
  */
 export function getApiManagementServiceSsoTokenOutput(args: GetApiManagementServiceSsoTokenOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApiManagementServiceSsoTokenResult> {
     return pulumi.output(args).apply((a: any) => getApiManagementServiceSsoToken(a, opts))

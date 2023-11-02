@@ -2,7 +2,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * The status of the Canonical support plan.
- * Azure REST API version: 2018-03-01. Prior API version in Azure Native 1.x: 2018-03-01
+ * Azure REST API version: 2018-03-01. Prior API version in Azure Native 1.x: 2018-03-01.
  */
 export class SupportPlanType extends pulumi.CustomResource {
     /**

@@ -3,7 +3,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Model that represents a Experiment resource.
- * Azure REST API version: 2023-04-15-preview. Prior API version in Azure Native 1.x: 2021-09-15-preview
+ * Azure REST API version: 2023-04-15-preview. Prior API version in Azure Native 1.x: 2021-09-15-preview.
+ *
+ * Other available API versions: 2023-09-01-preview, 2023-10-27-preview.
  */
 export class Experiment extends pulumi.CustomResource {
     /**
@@ -97,7 +99,7 @@ export class Experiment extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:chaos/v20210915preview:Experiment" }, { type: "azure-native:chaos/v20220701preview:Experiment" }, { type: "azure-native:chaos/v20221001preview:Experiment" }, { type: "azure-native:chaos/v20230401preview:Experiment" }, { type: "azure-native:chaos/v20230415preview:Experiment" }, { type: "azure-native:chaos/v20230901preview:Experiment" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:chaos/v20210915preview:Experiment" }, { type: "azure-native:chaos/v20220701preview:Experiment" }, { type: "azure-native:chaos/v20221001preview:Experiment" }, { type: "azure-native:chaos/v20230401preview:Experiment" }, { type: "azure-native:chaos/v20230415preview:Experiment" }, { type: "azure-native:chaos/v20230901preview:Experiment" }, { type: "azure-native:chaos/v20231027preview:Experiment" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Experiment.__pulumiType, name, resourceInputs, opts);
     }

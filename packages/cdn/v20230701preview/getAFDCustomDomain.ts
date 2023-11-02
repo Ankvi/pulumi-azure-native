@@ -71,6 +71,10 @@ export interface GetAFDCustomDomainResult {
      */
     readonly provisioningState: string;
     /**
+     * The JSON object list that contains the overall picture of how routes are used for the shared custom domain across different profiles.
+     */
+    readonly referencedRoutePaths: types.outputs.AFDDomainReferencedRoutePathResponse[];
+    /**
      * Read only system data
      */
     readonly systemData: types.outputs.SystemDataResponse;

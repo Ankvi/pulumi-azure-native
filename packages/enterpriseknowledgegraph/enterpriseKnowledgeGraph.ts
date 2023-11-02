@@ -3,7 +3,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * EnterpriseKnowledgeGraph resource definition
- * Azure REST API version: 2018-12-03. Prior API version in Azure Native 1.x: 2018-12-03
+ * Azure REST API version: 2018-12-03. Prior API version in Azure Native 1.x: 2018-12-03.
  */
 export class EnterpriseKnowledgeGraph extends pulumi.CustomResource {
     /**

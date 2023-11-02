@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Keys for endpoint authentication.
  * Azure REST API version: 2023-04-01.
+ *
+ * Other available API versions: 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01.
  */
 export function listOnlineEndpointKeys(args: ListOnlineEndpointKeysArgs, opts?: pulumi.InvokeOptions): Promise<ListOnlineEndpointKeysResult> {
 
@@ -45,6 +47,8 @@ export interface ListOnlineEndpointKeysResult {
 /**
  * Keys for endpoint authentication.
  * Azure REST API version: 2023-04-01.
+ *
+ * Other available API versions: 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01.
  */
 export function listOnlineEndpointKeysOutput(args: ListOnlineEndpointKeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListOnlineEndpointKeysResult> {
     return pulumi.output(args).apply((a: any) => listOnlineEndpointKeys(a, opts))

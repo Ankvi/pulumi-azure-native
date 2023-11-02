@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Gets the details of the issue Attachment for an API specified by its identifier.
  * Azure REST API version: 2022-08-01.
+ *
+ * Other available API versions: 2022-09-01-preview, 2023-03-01-preview.
  */
 export function getApiIssueAttachment(args: GetApiIssueAttachmentArgs, opts?: pulumi.InvokeOptions): Promise<GetApiIssueAttachmentResult> {
 
@@ -71,6 +73,8 @@ export interface GetApiIssueAttachmentResult {
 /**
  * Gets the details of the issue Attachment for an API specified by its identifier.
  * Azure REST API version: 2022-08-01.
+ *
+ * Other available API versions: 2022-09-01-preview, 2023-03-01-preview.
  */
 export function getApiIssueAttachmentOutput(args: GetApiIssueAttachmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApiIssueAttachmentResult> {
     return pulumi.output(args).apply((a: any) => getApiIssueAttachment(a, opts))

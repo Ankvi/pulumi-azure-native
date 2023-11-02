@@ -1971,20 +1971,6 @@ export interface InformationProtectionAwsOfferingResponseInformationProtection {
     cloudRoleArn?: string;
 }
 
-/**
- * Connection string for ingesting security data and logs
- */
-export interface IngestionConnectionStringResponse {
-    /**
-     * The region where ingested logs and data resides
-     */
-    location: string;
-    /**
-     * Connection string value
-     */
-    value: string;
-}
-
 export interface JitNetworkAccessPolicyVirtualMachineResponse {
     /**
      * Resource ID of the virtual machine that is linked to this policy
@@ -2592,7 +2578,6 @@ export interface VmRecommendationResponse {
      */
     resourceId?: string;
 }
-
 
 
 

@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Get properties of a partner configuration.
  * Azure REST API version: 2022-06-15.
+ *
+ * Other available API versions: 2023-06-01-preview.
  */
 export function getPartnerConfiguration(args: GetPartnerConfigurationArgs, opts?: pulumi.InvokeOptions): Promise<GetPartnerConfigurationResult> {
 
@@ -60,6 +62,8 @@ export interface GetPartnerConfigurationResult {
 /**
  * Get properties of a partner configuration.
  * Azure REST API version: 2022-06-15.
+ *
+ * Other available API versions: 2023-06-01-preview.
  */
 export function getPartnerConfigurationOutput(args: GetPartnerConfigurationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPartnerConfigurationResult> {
     return pulumi.output(args).apply((a: any) => getPartnerConfiguration(a, opts))

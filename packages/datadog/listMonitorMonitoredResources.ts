@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Response of a list operation.
  * Azure REST API version: 2022-06-01.
+ *
+ * Other available API versions: 2022-08-01, 2023-01-01.
  */
 export function listMonitorMonitoredResources(args: ListMonitorMonitoredResourcesArgs, opts?: pulumi.InvokeOptions): Promise<ListMonitorMonitoredResourcesResult> {
 
@@ -41,6 +43,8 @@ export interface ListMonitorMonitoredResourcesResult {
 /**
  * Response of a list operation.
  * Azure REST API version: 2022-06-01.
+ *
+ * Other available API versions: 2022-08-01, 2023-01-01.
  */
 export function listMonitorMonitoredResourcesOutput(args: ListMonitorMonitoredResourcesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListMonitorMonitoredResourcesResult> {
     return pulumi.output(args).apply((a: any) => listMonitorMonitoredResources(a, opts))

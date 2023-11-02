@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets the specified managed HSM Pool.
  * Azure REST API version: 2023-02-01.
+ *
+ * Other available API versions: 2023-07-01.
  */
 export function getManagedHsm(args: GetManagedHsmArgs, opts?: pulumi.InvokeOptions): Promise<GetManagedHsmResult> {
 
@@ -65,6 +67,8 @@ export interface GetManagedHsmResult {
 /**
  * Gets the specified managed HSM Pool.
  * Azure REST API version: 2023-02-01.
+ *
+ * Other available API versions: 2023-07-01.
  */
 export function getManagedHsmOutput(args: GetManagedHsmOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetManagedHsmResult> {
     return pulumi.output(args).apply((a: any) => getManagedHsm(a, opts))

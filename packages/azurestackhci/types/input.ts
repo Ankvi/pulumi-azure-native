@@ -146,6 +146,10 @@ export interface IPPoolArgs {
      */
     ipPoolType?: pulumi.Input<enums.IPPoolTypeEnum>;
     /**
+     * Name of the IP-Pool
+     */
+    name?: pulumi.Input<string>;
+    /**
      * start of the ip address pool
      */
     start?: pulumi.Input<string>;
@@ -166,6 +170,44 @@ export interface InterfaceDNSSettingsArgs {
      * List of DNS server IP Addresses for the interface
      */
     dnsServers?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+/**
+ * DhcpOptions contains an array of DNS servers available to VMs deployed in the logical network. Standard DHCP option for a subnet overrides logical network DHCP options.
+ */
+export interface LogicalNetworkPropertiesDhcpOptionsArgs {
+    /**
+     * The list of DNS servers IP addresses.
+     */
+    dnsServers?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+/**
+ * Route - Route resource.
+ */
+export interface RouteArgs {
+    /**
+     * The destination CIDR to which the route applies.
+     */
+    addressPrefix?: pulumi.Input<string>;
+    /**
+     * Name - name of the subnet
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is VirtualAppliance.
+     */
+    nextHopIpAddress?: pulumi.Input<string>;
+}
+
+/**
+ * Route table resource.
+ */
+export interface RouteTableArgs {
+    /**
+     * Collection of routes contained within a route table.
+     */
+    routes?: pulumi.Input<pulumi.Input<RouteArgs>[]>;
 }
 
 /**
@@ -242,6 +284,51 @@ export interface StepArgs {
      * Recursive model for child steps of this step.
      */
     steps?: pulumi.Input<pulumi.Input<StepArgs>[]>;
+}
+
+export interface SubnetArgs {
+    /**
+     * The address prefix for the subnet: Cidr for this subnet - IPv4, IPv6.
+     */
+    addressPrefix?: pulumi.Input<string>;
+    /**
+     * List of address prefixes for the subnet.
+     */
+    addressPrefixes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * IPAllocationMethod - The IP address allocation method. Possible values include: 'Static', 'Dynamic'
+     */
+    ipAllocationMethod?: pulumi.Input<string | enums.IpAllocationMethodEnum>;
+    /**
+     * IPConfigurationReferences - list of IPConfigurationReferences
+     */
+    ipConfigurationReferences?: pulumi.Input<pulumi.Input<SubnetPropertiesFormatIpConfigurationReferencesArgs>[]>;
+    /**
+     * network associated pool of IP Addresses
+     */
+    ipPools?: pulumi.Input<pulumi.Input<IPPoolArgs>[]>;
+    /**
+     * Name - The name of the resource that is unique within a resource group. This name can be used to access the resource.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Route table resource.
+     */
+    routeTable?: pulumi.Input<RouteTableArgs>;
+    /**
+     * Vlan to use for the subnet
+     */
+    vlan?: pulumi.Input<number>;
+}
+
+/**
+ * IPConfigurationReference - Describes a IPConfiguration under the virtual network
+ */
+export interface SubnetPropertiesFormatIpConfigurationReferencesArgs {
+    /**
+     * IPConfigurationID
+     */
+    id?: pulumi.Input<string>;
 }
 
 /**
@@ -851,6 +938,7 @@ export interface VirtualNetworkPropertiesSubnetsArgs {
      */
     vlan?: pulumi.Input<number>;
 }
+
 
 
 

@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Gets a managed instance key.
  * Azure REST API version: 2021-11-01.
+ *
+ * Other available API versions: 2022-11-01-preview, 2023-02-01-preview.
  */
 export function getManagedInstanceKey(args: GetManagedInstanceKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetManagedInstanceKeyResult> {
 
@@ -65,6 +67,8 @@ export interface GetManagedInstanceKeyResult {
 /**
  * Gets a managed instance key.
  * Azure REST API version: 2021-11-01.
+ *
+ * Other available API versions: 2022-11-01-preview, 2023-02-01-preview.
  */
 export function getManagedInstanceKeyOutput(args: GetManagedInstanceKeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetManagedInstanceKeyResult> {
     return pulumi.output(args).apply((a: any) => getManagedInstanceKey(a, opts))

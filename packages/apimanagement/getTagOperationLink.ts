@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Gets the operation link for the tag.
  * Azure REST API version: 2022-09-01-preview.
+ *
+ * Other available API versions: 2023-03-01-preview.
  */
 export function getTagOperationLink(args: GetTagOperationLinkArgs, opts?: pulumi.InvokeOptions): Promise<GetTagOperationLinkResult> {
 
@@ -58,6 +60,8 @@ export interface GetTagOperationLinkResult {
 /**
  * Gets the operation link for the tag.
  * Azure REST API version: 2022-09-01-preview.
+ *
+ * Other available API versions: 2023-03-01-preview.
  */
 export function getTagOperationLinkOutput(args: GetTagOperationLinkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTagOperationLinkResult> {
     return pulumi.output(args).apply((a: any) => getTagOperationLink(a, opts))

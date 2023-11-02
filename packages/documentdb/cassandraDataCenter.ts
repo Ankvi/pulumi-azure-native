@@ -3,7 +3,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * A managed Cassandra data center.
- * Azure REST API version: 2023-04-15. Prior API version in Azure Native 1.x: 2021-03-01-preview
+ * Azure REST API version: 2023-04-15. Prior API version in Azure Native 1.x: 2021-03-01-preview.
+ *
+ * Other available API versions: 2023-09-15, 2023-09-15-preview.
  */
 export class CassandraDataCenter extends pulumi.CustomResource {
     /**

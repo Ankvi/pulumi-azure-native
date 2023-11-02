@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets a marketplace gallery image
  * Azure REST API version: 2022-12-15-preview.
+ *
+ * Other available API versions: 2023-07-01-preview, 2023-09-01-preview.
  */
 export function getMarketplaceGalleryImage(args: GetMarketplaceGalleryImageArgs, opts?: pulumi.InvokeOptions): Promise<GetMarketplaceGalleryImageResult> {
 
@@ -93,6 +95,8 @@ export interface GetMarketplaceGalleryImageResult {
 /**
  * Gets a marketplace gallery image
  * Azure REST API version: 2022-12-15-preview.
+ *
+ * Other available API versions: 2023-07-01-preview, 2023-09-01-preview.
  */
 export function getMarketplaceGalleryImageOutput(args: GetMarketplaceGalleryImageOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMarketplaceGalleryImageResult> {
     return pulumi.output(args).apply((a: any) => getMarketplaceGalleryImage(a, opts))

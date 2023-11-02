@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets a workspace
  * Azure REST API version: 2021-06-01.
+ *
+ * Other available API versions: 2021-05-01, 2021-06-01-preview.
  */
 export function getWorkspace(args: GetWorkspaceArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkspaceResult> {
 
@@ -137,6 +139,8 @@ export interface GetWorkspaceResult {
 /**
  * Gets a workspace
  * Azure REST API version: 2021-06-01.
+ *
+ * Other available API versions: 2021-05-01, 2021-06-01-preview.
  */
 export function getWorkspaceOutput(args: GetWorkspaceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkspaceResult> {
     return pulumi.output(args).apply((a: any) => getWorkspace(a, opts))

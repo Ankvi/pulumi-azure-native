@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets a job agent.
  * Azure REST API version: 2021-11-01.
+ *
+ * Other available API versions: 2022-11-01-preview, 2023-02-01-preview.
  */
 export function getJobAgent(args: GetJobAgentArgs, opts?: pulumi.InvokeOptions): Promise<GetJobAgentResult> {
 
@@ -70,6 +72,8 @@ export interface GetJobAgentResult {
 /**
  * Gets a job agent.
  * Azure REST API version: 2021-11-01.
+ *
+ * Other available API versions: 2022-11-01-preview, 2023-02-01-preview.
  */
 export function getJobAgentOutput(args: GetJobAgentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetJobAgentResult> {
     return pulumi.output(args).apply((a: any) => getJobAgent(a, opts))

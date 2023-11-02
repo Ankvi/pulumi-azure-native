@@ -3,7 +3,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Capture logs and metrics of Azure resources based on ARM tags.
- * Azure REST API version: 2022-01-01-preview. Prior API version in Azure Native 1.x: 2020-10-01
+ * Azure REST API version: 2022-01-01-preview. Prior API version in Azure Native 1.x: 2020-10-01.
  */
 export class TagRule extends pulumi.CustomResource {
     /**

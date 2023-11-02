@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets a storage container
  * Azure REST API version: 2022-12-15-preview.
+ *
+ * Other available API versions: 2023-07-01-preview, 2023-09-01-preview.
  */
 export function getStorageContainer(args: GetStorageContainerArgs, opts?: pulumi.InvokeOptions): Promise<GetStorageContainerResult> {
 
@@ -73,6 +75,8 @@ export interface GetStorageContainerResult {
 /**
  * Gets a storage container
  * Azure REST API version: 2022-12-15-preview.
+ *
+ * Other available API versions: 2023-07-01-preview, 2023-09-01-preview.
  */
 export function getStorageContainerOutput(args: GetStorageContainerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStorageContainerResult> {
     return pulumi.output(args).apply((a: any) => getStorageContainer(a, opts))

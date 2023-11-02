@@ -3,7 +3,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Document processor details
- * Azure REST API version: 2022-09-15-preview. Prior API version in Azure Native 1.x: 2022-09-15-preview
+ * Azure REST API version: 2022-09-15-preview. Prior API version in Azure Native 1.x: 2022-09-15-preview.
  */
 export class DocumentProcessor extends pulumi.CustomResource {
     /**

@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Outbound Rule Basic Resource for the managed network of a machine learning workspace.
  * Azure REST API version: 2023-04-01-preview.
+ *
+ * Other available API versions: 2023-06-01-preview, 2023-08-01-preview, 2023-10-01.
  */
 export class ManagedNetworkSettingsRule extends pulumi.CustomResource {
     /**
@@ -83,7 +85,7 @@ export class ManagedNetworkSettingsRule extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:machinelearningservices/v20230401preview:ManagedNetworkSettingsRule" }, { type: "azure-native:machinelearningservices/v20230601preview:ManagedNetworkSettingsRule" }, { type: "azure-native:machinelearningservices/v20230801preview:ManagedNetworkSettingsRule" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:machinelearningservices/v20230401preview:ManagedNetworkSettingsRule" }, { type: "azure-native:machinelearningservices/v20230601preview:ManagedNetworkSettingsRule" }, { type: "azure-native:machinelearningservices/v20230801preview:ManagedNetworkSettingsRule" }, { type: "azure-native:machinelearningservices/v20231001:ManagedNetworkSettingsRule" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ManagedNetworkSettingsRule.__pulumiType, name, resourceInputs, opts);
     }

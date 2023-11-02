@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Returns Azure Stack Activation Key.
  * Azure REST API version: 2022-06-01.
+ *
+ * Other available API versions: 2020-06-01-preview.
  */
 export function getRegistrationActivationKey(args: GetRegistrationActivationKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistrationActivationKeyResult> {
 
@@ -36,6 +38,8 @@ export interface GetRegistrationActivationKeyResult {
 /**
  * Returns Azure Stack Activation Key.
  * Azure REST API version: 2022-06-01.
+ *
+ * Other available API versions: 2020-06-01-preview.
  */
 export function getRegistrationActivationKeyOutput(args: GetRegistrationActivationKeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegistrationActivationKeyResult> {
     return pulumi.output(args).apply((a: any) => getRegistrationActivationKey(a, opts))

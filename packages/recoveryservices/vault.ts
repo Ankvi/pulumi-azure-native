@@ -3,7 +3,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Resource information, as returned by the resource provider.
- * Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2021-01-01
+ * Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2021-01-01.
+ *
+ * Other available API versions: 2020-02-02, 2023-06-01.
  */
 export class Vault extends pulumi.CustomResource {
     /**

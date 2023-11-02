@@ -3,7 +3,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * An Application Insights workbook template definition.
- * Azure REST API version: 2020-11-20. Prior API version in Azure Native 1.x: 2019-10-17-preview
+ * Azure REST API version: 2020-11-20. Prior API version in Azure Native 1.x: 2019-10-17-preview.
  */
 export class WorkbookTemplate extends pulumi.CustomResource {
     /**

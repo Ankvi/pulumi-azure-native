@@ -3,7 +3,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Security Assignment on a resource group over a given scope
- * Azure REST API version: 2021-08-01-preview. Prior API version in Azure Native 1.x: 2021-08-01-preview
+ * Azure REST API version: 2021-08-01-preview. Prior API version in Azure Native 1.x: 2021-08-01-preview.
  */
 export class Assignment extends pulumi.CustomResource {
     /**

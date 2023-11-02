@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Returns the path associated with the subvolumeName provided
  * Azure REST API version: 2022-11-01.
+ *
+ * Other available API versions: 2022-11-01-preview, 2023-05-01.
  */
 export function getSubvolume(args: GetSubvolumeArgs, opts?: pulumi.InvokeOptions): Promise<GetSubvolumeResult> {
 
@@ -76,6 +78,8 @@ export interface GetSubvolumeResult {
 /**
  * Returns the path associated with the subvolumeName provided
  * Azure REST API version: 2022-11-01.
+ *
+ * Other available API versions: 2022-11-01-preview, 2023-05-01.
  */
 export function getSubvolumeOutput(args: GetSubvolumeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubvolumeResult> {
     return pulumi.output(args).apply((a: any) => getSubvolume(a, opts))

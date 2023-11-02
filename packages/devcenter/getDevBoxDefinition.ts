@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets a Dev Box definition
  * Azure REST API version: 2023-04-01.
+ *
+ * Other available API versions: 2022-11-11-preview, 2023-08-01-preview, 2023-10-01-preview.
  */
 export function getDevBoxDefinition(args: GetDevBoxDefinitionArgs, opts?: pulumi.InvokeOptions): Promise<GetDevBoxDefinitionResult> {
 
@@ -94,6 +96,8 @@ export interface GetDevBoxDefinitionResult {
 /**
  * Gets a Dev Box definition
  * Azure REST API version: 2023-04-01.
+ *
+ * Other available API versions: 2022-11-11-preview, 2023-08-01-preview, 2023-10-01-preview.
  */
 export function getDevBoxDefinitionOutput(args: GetDevBoxDefinitionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDevBoxDefinitionResult> {
     return pulumi.output(args).apply((a: any) => getDevBoxDefinition(a, opts))

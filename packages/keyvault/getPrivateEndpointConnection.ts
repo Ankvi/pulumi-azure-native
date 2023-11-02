@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets the specified private endpoint connection associated with the key vault.
  * Azure REST API version: 2023-02-01.
+ *
+ * Other available API versions: 2023-07-01.
  */
 export function getPrivateEndpointConnection(args: GetPrivateEndpointConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetPrivateEndpointConnectionResult> {
 
@@ -74,6 +76,8 @@ export interface GetPrivateEndpointConnectionResult {
 /**
  * Gets the specified private endpoint connection associated with the key vault.
  * Azure REST API version: 2023-02-01.
+ *
+ * Other available API versions: 2023-07-01.
  */
 export function getPrivateEndpointConnectionOutput(args: GetPrivateEndpointConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrivateEndpointConnectionResult> {
     return pulumi.output(args).apply((a: any) => getPrivateEndpointConnection(a, opts))

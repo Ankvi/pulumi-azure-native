@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Gets information about the specified application.
  * Azure REST API version: 2023-05-01.
+ *
+ * Other available API versions: 2017-09-01.
  */
 export function getApplication(args: GetApplicationArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationResult> {
 
@@ -65,6 +67,8 @@ export interface GetApplicationResult {
 /**
  * Gets information about the specified application.
  * Azure REST API version: 2023-05-01.
+ *
+ * Other available API versions: 2017-09-01.
  */
 export function getApplicationOutput(args: GetApplicationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationResult> {
     return pulumi.output(args).apply((a: any) => getApplication(a, opts))

@@ -3,7 +3,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Definition of generic ARM proxy resource.
- * Azure REST API version: 2022-06-01. Prior API version in Azure Native 1.x: 2019-11-01-preview
+ * Azure REST API version: 2022-06-01. Prior API version in Azure Native 1.x: 2019-11-01-preview.
  */
 export class DataCollectionRuleAssociation extends pulumi.CustomResource {
     /**

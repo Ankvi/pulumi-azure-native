@@ -3,7 +3,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * The log profile resource.
- * Azure REST API version: 2016-03-01. Prior API version in Azure Native 1.x: 2016-03-01
+ * Azure REST API version: 2016-03-01. Prior API version in Azure Native 1.x: 2016-03-01.
  */
 export class LogProfile extends pulumi.CustomResource {
     /**

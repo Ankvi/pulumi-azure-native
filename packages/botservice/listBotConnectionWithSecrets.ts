@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Get a Connection Setting registration for a Bot Service
  * Azure REST API version: 2022-09-15.
+ *
+ * Other available API versions: 2023-09-15-preview.
  */
 export function listBotConnectionWithSecrets(args: ListBotConnectionWithSecretsArgs, opts?: pulumi.InvokeOptions): Promise<ListBotConnectionWithSecretsResult> {
 
@@ -78,6 +80,8 @@ export interface ListBotConnectionWithSecretsResult {
 /**
  * Get a Connection Setting registration for a Bot Service
  * Azure REST API version: 2022-09-15.
+ *
+ * Other available API versions: 2023-09-15-preview.
  */
 export function listBotConnectionWithSecretsOutput(args: ListBotConnectionWithSecretsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListBotConnectionWithSecretsResult> {
     return pulumi.output(args).apply((a: any) => listBotConnectionWithSecrets(a, opts))

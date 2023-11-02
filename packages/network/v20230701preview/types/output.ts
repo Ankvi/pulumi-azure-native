@@ -166,6 +166,21 @@ import * as pulumi from "@pulumi/pulumi";
         nsdname?: string;
     }
 
+    export interface PerimeterBasedAccessRuleResponse {
+        /**
+         * NSP id in the ARM id format.
+         */
+        id: string;
+        /**
+         * Location of the NSP supplied.
+         */
+        location: string;
+        /**
+         * Resource guid of the NSP supplied.
+         */
+        perimeterGuid: string;
+    }
+
     /**
      * A PTR record.
      */
@@ -268,6 +283,13 @@ import * as pulumi from "@pulumi/pulumi";
     export interface SubResourceResponse {
         /**
          * Resource Id.
+         */
+        id?: string;
+    }
+
+    export interface SubscriptionIdResponse {
+        /**
+         * Subscription id in the ARM id format.
          */
         id?: string;
     }

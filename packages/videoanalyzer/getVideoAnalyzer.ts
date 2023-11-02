@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Get the details of the specified Video Analyzer account
  * Azure REST API version: 2021-11-01-preview.
+ *
+ * Other available API versions: 2021-05-01-preview.
  */
 export function getVideoAnalyzer(args: GetVideoAnalyzerArgs, opts?: pulumi.InvokeOptions): Promise<GetVideoAnalyzerResult> {
 
@@ -93,6 +95,8 @@ export interface GetVideoAnalyzerResult {
 /**
  * Get the details of the specified Video Analyzer account
  * Azure REST API version: 2021-11-01-preview.
+ *
+ * Other available API versions: 2021-05-01-preview.
  */
 export function getVideoAnalyzerOutput(args: GetVideoAnalyzerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVideoAnalyzerResult> {
     return pulumi.output(args).apply((a: any) => getVideoAnalyzer(a, opts))

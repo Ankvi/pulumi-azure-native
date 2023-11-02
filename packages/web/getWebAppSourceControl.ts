@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Description for Gets the source control configuration of an app.
  * Azure REST API version: 2022-09-01.
+ *
+ * Other available API versions: 2020-10-01.
  */
 export function getWebAppSourceControl(args: GetWebAppSourceControlArgs, opts?: pulumi.InvokeOptions): Promise<GetWebAppSourceControlResult> {
 
@@ -77,6 +79,8 @@ export interface GetWebAppSourceControlResult {
 /**
  * Description for Gets the source control configuration of an app.
  * Azure REST API version: 2022-09-01.
+ *
+ * Other available API versions: 2020-10-01.
  */
 export function getWebAppSourceControlOutput(args: GetWebAppSourceControlOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebAppSourceControlResult> {
     return pulumi.output(args).apply((a: any) => getWebAppSourceControl(a, opts))

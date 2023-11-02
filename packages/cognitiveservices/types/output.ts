@@ -386,6 +386,37 @@ export function encryptionResponseProvideDefaults(val: EncryptionResponse): Encr
 }
 
 /**
+ * Properties to EncryptionScope
+ */
+export interface EncryptionScopePropertiesResponse {
+    /**
+     * Enumerates the possible value of keySource for Encryption
+     */
+    keySource?: string;
+    /**
+     * Properties of KeyVault
+     */
+    keyVaultProperties?: KeyVaultPropertiesResponse;
+    /**
+     * Gets the status of the resource at the time the operation was called.
+     */
+    provisioningState: string;
+    /**
+     * The encryptionScope state.
+     */
+    state?: string;
+}
+/**
+ * encryptionScopePropertiesResponseProvideDefaults sets the appropriate defaults for EncryptionScopePropertiesResponse
+ */
+export function encryptionScopePropertiesResponseProvideDefaults(val: EncryptionScopePropertiesResponse): EncryptionScopePropertiesResponse {
+    return {
+        ...val,
+        keySource: (val.keySource) ?? "Microsoft.KeyVault",
+    };
+}
+
+/**
  * Identity for the resource.
  */
 export interface IdentityResponse {
@@ -556,6 +587,100 @@ export interface QuotaLimitResponse {
 }
 
 /**
+ * Azure OpenAI blocklist config.
+ */
+export interface RaiBlocklistConfigResponse {
+    /**
+     * If blocking would occur.
+     */
+    blocking?: boolean;
+    /**
+     * Name of ContentFilter.
+     */
+    blocklistName?: string;
+}
+
+/**
+ * RAI Custom Blocklist Item properties.
+ */
+export interface RaiBlocklistItemPropertiesResponse {
+    /**
+     * If the pattern is a regex pattern.
+     */
+    isRegex?: boolean;
+    /**
+     * Pattern to match against.
+     */
+    pattern?: string;
+}
+
+/**
+ * RAI Custom Blocklist properties.
+ */
+export interface RaiBlocklistPropertiesResponse {
+    /**
+     * Description of the block list.
+     */
+    description?: string;
+}
+
+/**
+ * Azure OpenAI Content Filter.
+ */
+export interface RaiPolicyContentFilterResponse {
+    /**
+     * Level at which content is filtered.
+     */
+    allowedContentLevel?: string;
+    /**
+     * If blocking would occur.
+     */
+    blocking?: boolean;
+    /**
+     * If the ContentFilter is enabled.
+     */
+    enabled?: boolean;
+    /**
+     * Name of ContentFilter.
+     */
+    policyName?: string;
+    /**
+     * Content source to apply the Content Filters.
+     */
+    source?: string;
+}
+
+/**
+ * Azure OpenAI Content Filters properties.
+ */
+export interface RaiPolicyPropertiesResponse {
+    /**
+     * Name of the base Content Filters.
+     */
+    basePolicyName?: string;
+    /**
+     * The list of blocklists for completion.
+     */
+    completionBlocklists?: RaiBlocklistConfigResponse[];
+    /**
+     * The list of Content Filters.
+     */
+    contentFilters?: RaiPolicyContentFilterResponse[];
+    /**
+     * Content Filters mode.
+     */
+    mode?: string;
+    /**
+     * Content Filters policy type.
+     */
+    policyType: string;
+    /**
+     * The list of blocklists for prompt.
+     */
+    promptBlocklists?: RaiBlocklistConfigResponse[];
+}
+
+/**
  * The call rate limit Cognitive Services account.
  */
 export interface RegionSettingResponse {
@@ -717,4 +842,5 @@ export interface VirtualNetworkRuleResponse {
      */
     state?: string;
 }
+
 

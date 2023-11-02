@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Get the status of Attestation Provider.
  * Azure REST API version: 2021-06-01.
+ *
+ * Other available API versions: 2021-06-01-preview.
  */
 export function getAttestationProvider(args: GetAttestationProviderArgs, opts?: pulumi.InvokeOptions): Promise<GetAttestationProviderResult> {
 
@@ -81,6 +83,8 @@ export interface GetAttestationProviderResult {
 /**
  * Get the status of Attestation Provider.
  * Azure REST API version: 2021-06-01.
+ *
+ * Other available API versions: 2021-06-01-preview.
  */
 export function getAttestationProviderOutput(args: GetAttestationProviderOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAttestationProviderResult> {
     return pulumi.output(args).apply((a: any) => getAttestationProvider(a, opts))

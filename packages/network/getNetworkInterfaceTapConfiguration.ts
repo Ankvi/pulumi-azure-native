@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Get the specified tap configuration on a network interface.
  * Azure REST API version: 2023-02-01.
+ *
+ * Other available API versions: 2023-04-01, 2023-05-01.
  */
 export function getNetworkInterfaceTapConfiguration(args: GetNetworkInterfaceTapConfigurationArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkInterfaceTapConfigurationResult> {
 
@@ -62,6 +64,8 @@ export interface GetNetworkInterfaceTapConfigurationResult {
 /**
  * Get the specified tap configuration on a network interface.
  * Azure REST API version: 2023-02-01.
+ *
+ * Other available API versions: 2023-04-01, 2023-05-01.
  */
 export function getNetworkInterfaceTapConfigurationOutput(args: GetNetworkInterfaceTapConfigurationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkInterfaceTapConfigurationResult> {
     return pulumi.output(args).apply((a: any) => getNetworkInterfaceTapConfiguration(a, opts))

@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Retrieves the details of a Virtual Hub Bgp Connection.
  * Azure REST API version: 2023-02-01.
+ *
+ * Other available API versions: 2023-04-01, 2023-05-01.
  */
 export function getVirtualHubBgpConnection(args: GetVirtualHubBgpConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualHubBgpConnectionResult> {
 
@@ -74,6 +76,8 @@ export interface GetVirtualHubBgpConnectionResult {
 /**
  * Retrieves the details of a Virtual Hub Bgp Connection.
  * Azure REST API version: 2023-02-01.
+ *
+ * Other available API versions: 2023-04-01, 2023-05-01.
  */
 export function getVirtualHubBgpConnectionOutput(args: GetVirtualHubBgpConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVirtualHubBgpConnectionResult> {
     return pulumi.output(args).apply((a: any) => getVirtualHubBgpConnection(a, opts))

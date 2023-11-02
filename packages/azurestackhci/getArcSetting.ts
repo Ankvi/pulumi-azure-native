@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Get ArcSetting resource details of HCI Cluster.
  * Azure REST API version: 2023-03-01.
+ *
+ * Other available API versions: 2021-09-01-preview, 2022-12-15-preview, 2023-06-01, 2023-08-01.
  */
 export function getArcSetting(args: GetArcSettingArgs, opts?: pulumi.InvokeOptions): Promise<GetArcSettingResult> {
 
@@ -94,6 +96,8 @@ export interface GetArcSettingResult {
 /**
  * Get ArcSetting resource details of HCI Cluster.
  * Azure REST API version: 2023-03-01.
+ *
+ * Other available API versions: 2021-09-01-preview, 2022-12-15-preview, 2023-06-01, 2023-08-01.
  */
 export function getArcSettingOutput(args: GetArcSettingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetArcSettingResult> {
     return pulumi.output(args).apply((a: any) => getArcSetting(a, opts))

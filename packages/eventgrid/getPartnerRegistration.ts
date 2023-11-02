@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets a partner registration with the specified parameters.
  * Azure REST API version: 2022-06-15.
+ *
+ * Other available API versions: 2021-10-15-preview, 2023-06-01-preview.
  */
 export function getPartnerRegistration(args: GetPartnerRegistrationArgs, opts?: pulumi.InvokeOptions): Promise<GetPartnerRegistrationResult> {
 
@@ -66,6 +68,8 @@ export interface GetPartnerRegistrationResult {
 /**
  * Gets a partner registration with the specified parameters.
  * Azure REST API version: 2022-06-15.
+ *
+ * Other available API versions: 2021-10-15-preview, 2023-06-01-preview.
  */
 export function getPartnerRegistrationOutput(args: GetPartnerRegistrationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPartnerRegistrationResult> {
     return pulumi.output(args).apply((a: any) => getPartnerRegistration(a, opts))

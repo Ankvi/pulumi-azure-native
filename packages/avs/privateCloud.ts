@@ -3,7 +3,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * A private cloud resource
- * Azure REST API version: 2022-05-01. Prior API version in Azure Native 1.x: 2020-03-20
+ * Azure REST API version: 2022-05-01. Prior API version in Azure Native 1.x: 2020-03-20.
+ *
+ * Other available API versions: 2023-03-01.
  */
 export class PrivateCloud extends pulumi.CustomResource {
     /**

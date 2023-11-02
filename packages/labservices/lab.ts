@@ -3,7 +3,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * The lab resource.
- * Azure REST API version: 2022-08-01. Prior API version in Azure Native 1.x: 2018-10-15
+ * Azure REST API version: 2022-08-01. Prior API version in Azure Native 1.x: 2018-10-15.
+ *
+ * Other available API versions: 2018-10-15, 2023-06-07.
  */
 export class Lab extends pulumi.CustomResource {
     /**

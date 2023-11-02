@@ -2,7 +2,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Data Lake Store virtual network rule information.
- * Azure REST API version: 2016-11-01. Prior API version in Azure Native 1.x: 2016-11-01
+ * Azure REST API version: 2016-11-01. Prior API version in Azure Native 1.x: 2016-11-01.
  */
 export class VirtualNetworkRule extends pulumi.CustomResource {
     /**

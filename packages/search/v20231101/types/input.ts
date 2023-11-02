@@ -1,35 +1,35 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
     /**
-     * Indicates that either the API key or an access token from Azure Active Directory can be used for authentication.
+     * Indicates that either the API key or an access token from a Microsoft Entra ID tenant can be used for authentication.
      */
     export interface DataPlaneAadOrApiKeyAuthOptionArgs {
         /**
-         * Describes what response the data plane API of a Search service would send for requests that failed authentication.
+         * Describes what response the data plane API of a search service would send for requests that failed authentication.
          */
         aadAuthFailureMode?: pulumi.Input<enums.AadAuthFailureMode>;
     }
 
     /**
-     * Defines the options for how the data plane API of a Search service authenticates requests. This cannot be set if 'disableLocalAuth' is set to true.
+     * Defines the options for how the search service authenticates a data plane request. This cannot be set if 'disableLocalAuth' is set to true.
      */
     export interface DataPlaneAuthOptionsArgs {
         /**
-         * Indicates that either the API key or an access token from Azure Active Directory can be used for authentication.
+         * Indicates that either the API key or an access token from a Microsoft Entra ID tenant can be used for authentication.
          */
         aadOrApiKey?: pulumi.Input<DataPlaneAadOrApiKeyAuthOptionArgs>;
         /**
-         * Indicates that only the API key needs to be used for authentication.
+         * Indicates that only the API key can be used for authentication.
          */
         apiKeyOnly?: any;
     }
 
     /**
-     * Describes a policy that determines how resources within the search service are to be encrypted with Customer Managed Keys.
+     * Describes a policy that determines how resources within the search service are to be encrypted with customer=managed keys.
      */
     export interface EncryptionWithCmkArgs {
         /**
-         * Describes how a search service should enforce having one or more non customer encrypted resources.
+         * Describes how a search service should enforce having one or more non-customer-encrypted resources.
          */
         enforcement?: pulumi.Input<enums.SearchEncryptionWithCmk>;
     }
@@ -45,27 +45,27 @@ import * as pulumi from "@pulumi/pulumi";
     }
 
     /**
-     * The IP restriction rule of the Azure Cognitive Search service.
+     * The IP restriction rule of the search service.
      */
     export interface IpRuleArgs {
         /**
-         * Value corresponding to a single IPv4 address (eg., 123.1.2.3) or an IP range in CIDR format (eg., 123.1.2.3/24) to be allowed.
+         * Value corresponding to a single IPv4 address (for example, 123.1.2.3) or an IP range in CIDR format (for example, 123.1.2.3/24) to be allowed.
          */
         value?: pulumi.Input<string>;
     }
 
     /**
-     * Network specific rules that determine how the Azure Cognitive Search service may be reached.
+     * Network-specific rules that determine how the search service can be reached.
      */
     export interface NetworkRuleSetArgs {
         /**
-         * A list of IP restriction rules that defines the inbound network(s) with allowing access to the search service endpoint. At the meantime, all other public IP networks are blocked by the firewall. These restriction rules are applied only when the 'publicNetworkAccess' of the search service is 'enabled'; otherwise, traffic over public interface is not allowed even with any public IP rules, and private endpoint connections would be the exclusive access method.
+         * A list of IP restriction rules used for an IP firewall. Any IPs that do not match the rules are blocked by the firewall. These rules are only applied when the 'publicNetworkAccess' of the search service is 'enabled'.
          */
         ipRules?: pulumi.Input<pulumi.Input<IpRuleArgs>[]>;
     }
 
     /**
-     * Describes the properties of an existing Private Endpoint connection to the Azure Cognitive Search service.
+     * Describes the properties of an existing Private Endpoint connection to the search service.
      */
     export interface PrivateEndpointConnectionPropertiesArgs {
         /**
@@ -81,7 +81,7 @@ import * as pulumi from "@pulumi/pulumi";
          */
         privateLinkServiceConnectionState?: pulumi.Input<PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateArgs>;
         /**
-         * The provisioning state of the private link service connection. Can be Updating, Deleting, Failed, Succeeded, or Incomplete
+         * The provisioning state of the private link service connection. Valid values are Updating, Deleting, Failed, Succeeded, or Incomplete
          */
         provisioningState?: pulumi.Input<string | enums.PrivateLinkServiceConnectionProvisioningState>;
     }
@@ -118,7 +118,7 @@ import * as pulumi from "@pulumi/pulumi";
          */
         description?: pulumi.Input<string>;
         /**
-         * Status of the the private link service connection. Can be Pending, Approved, Rejected, or Disconnected.
+         * Status of the the private link service connection. Valid values are Pending, Approved, Rejected, or Disconnected.
          */
         status?: pulumi.Input<enums.PrivateLinkServiceConnectionStatus>;
     }
@@ -133,7 +133,7 @@ import * as pulumi from "@pulumi/pulumi";
     }
 
     /**
-     * Describes the properties of an existing Shared Private Link Resource managed by the Azure Cognitive Search service.
+     * Describes the properties of an existing Shared Private Link Resource managed by the search service.
      */
     export interface SharedPrivateLinkResourcePropertiesArgs {
         /**
@@ -145,7 +145,7 @@ import * as pulumi from "@pulumi/pulumi";
          */
         privateLinkResourceId?: pulumi.Input<string>;
         /**
-         * The provisioning state of the shared private link resource. Can be Updating, Deleting, Failed, Succeeded or Incomplete.
+         * The provisioning state of the shared private link resource. Valid values are Updating, Deleting, Failed, Succeeded or Incomplete.
          */
         provisioningState?: pulumi.Input<enums.SharedPrivateLinkResourceProvisioningState>;
         /**
@@ -157,13 +157,13 @@ import * as pulumi from "@pulumi/pulumi";
          */
         resourceRegion?: pulumi.Input<string>;
         /**
-         * Status of the shared private link resource. Can be Pending, Approved, Rejected or Disconnected.
+         * Status of the shared private link resource. Valid values are Pending, Approved, Rejected or Disconnected.
          */
         status?: pulumi.Input<enums.SharedPrivateLinkResourceStatus>;
     }
 
     /**
-     * Defines the SKU of an Azure Cognitive Search Service, which determines price tier and capacity limits.
+     * Defines the SKU of a search service, which determines billing rate and capacity limits.
      */
     export interface SkuArgs {
         /**

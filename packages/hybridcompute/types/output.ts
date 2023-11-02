@@ -291,9 +291,9 @@ export interface MachineExtensionInstanceViewResponseStatus {
 }
 
 /**
- * Describes a Machine Extension.
+ * Describes the properties of a Machine Extension.
  */
-export interface MachineExtensionResponse {
+export interface MachineExtensionPropertiesResponse {
     /**
      * Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
      */
@@ -307,21 +307,9 @@ export interface MachineExtensionResponse {
      */
     forceUpdateTag?: string;
     /**
-     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-     */
-    id: string;
-    /**
      * The machine extension instance view.
      */
     instanceView?: MachineExtensionInstanceViewResponse;
-    /**
-     * The geo-location where the resource lives
-     */
-    location: string;
-    /**
-     * The name of the resource
-     */
-    name: string;
     /**
      * The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
      */
@@ -339,6 +327,36 @@ export interface MachineExtensionResponse {
      */
     settings?: any;
     /**
+     * Specifies the type of the extension; an example is "CustomScriptExtension".
+     */
+    type?: string;
+    /**
+     * Specifies the version of the script handler.
+     */
+    typeHandlerVersion?: string;
+}
+
+/**
+ * Describes a Machine Extension.
+ */
+export interface MachineExtensionResponse {
+    /**
+     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     */
+    id: string;
+    /**
+     * The geo-location where the resource lives
+     */
+    location: string;
+    /**
+     * The name of the resource
+     */
+    name: string;
+    /**
+     * Describes Machine Extension Properties.
+     */
+    properties?: MachineExtensionPropertiesResponse;
+    /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
     systemData: SystemDataResponse;
@@ -350,10 +368,6 @@ export interface MachineExtensionResponse {
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     type: string;
-    /**
-     * Specifies the version of the script handler.
-     */
-    typeHandlerVersion?: string;
 }
 
 /**

@@ -3,7 +3,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * The management group diagnostic setting resource.
- * Azure REST API version: 2021-05-01-preview. Prior API version in Azure Native 1.x: 2020-01-01-preview
+ * Azure REST API version: 2021-05-01-preview. Prior API version in Azure Native 1.x: 2020-01-01-preview.
+ *
+ * Other available API versions: 2020-01-01-preview.
  */
 export class ManagementGroupDiagnosticSetting extends pulumi.CustomResource {
     /**

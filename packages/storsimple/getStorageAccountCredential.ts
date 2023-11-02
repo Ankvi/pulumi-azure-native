@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets the properties of the specified storage account credential name.
  * Azure REST API version: 2017-06-01.
+ *
+ * Other available API versions: 2016-10-01.
  */
 export function getStorageAccountCredential(args: GetStorageAccountCredentialArgs, opts?: pulumi.InvokeOptions): Promise<GetStorageAccountCredentialResult> {
 
@@ -70,6 +72,8 @@ export interface GetStorageAccountCredentialResult {
 /**
  * Gets the properties of the specified storage account credential name.
  * Azure REST API version: 2017-06-01.
+ *
+ * Other available API versions: 2016-10-01.
  */
 export function getStorageAccountCredentialOutput(args: GetStorageAccountCredentialOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStorageAccountCredentialResult> {
     return pulumi.output(args).apply((a: any) => getStorageAccountCredential(a, opts))

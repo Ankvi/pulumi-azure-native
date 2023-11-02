@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Get the API portal custom domain.
  * Azure REST API version: 2023-05-01-preview.
+ *
+ * Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview.
  */
 export function getApiPortalCustomDomain(args: GetApiPortalCustomDomainArgs, opts?: pulumi.InvokeOptions): Promise<GetApiPortalCustomDomainResult> {
 
@@ -63,6 +65,8 @@ export interface GetApiPortalCustomDomainResult {
 /**
  * Get the API portal custom domain.
  * Azure REST API version: 2023-05-01-preview.
+ *
+ * Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview.
  */
 export function getApiPortalCustomDomainOutput(args: GetApiPortalCustomDomainOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApiPortalCustomDomainResult> {
     return pulumi.output(args).apply((a: any) => getApiPortalCustomDomain(a, opts))

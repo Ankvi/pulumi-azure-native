@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Get the policy configuration at the GraphQL API Resolver level.
  * Azure REST API version: 2022-08-01.
+ *
+ * Other available API versions: 2022-09-01-preview, 2023-03-01-preview.
  */
 export function getGraphQLApiResolverPolicy(args: GetGraphQLApiResolverPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetGraphQLApiResolverPolicyResult> {
 
@@ -72,6 +74,8 @@ export interface GetGraphQLApiResolverPolicyResult {
 /**
  * Get the policy configuration at the GraphQL API Resolver level.
  * Azure REST API version: 2022-08-01.
+ *
+ * Other available API versions: 2022-09-01-preview, 2023-03-01-preview.
  */
 export function getGraphQLApiResolverPolicyOutput(args: GetGraphQLApiResolverPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGraphQLApiResolverPolicyResult> {
     return pulumi.output(args).apply((a: any) => getGraphQLApiResolverPolicy(a, opts))

@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Defines a multi-stage process to perform update operations across members of a Fleet.
  * Azure REST API version: 2023-08-15-preview.
+ *
+ * Other available API versions: 2023-10-15.
  */
 export class FleetUpdateStrategy extends pulumi.CustomResource {
     /**
@@ -95,7 +97,7 @@ export class FleetUpdateStrategy extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:containerservice/v20230815preview:FleetUpdateStrategy" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:containerservice/v20230815preview:FleetUpdateStrategy" }, { type: "azure-native:containerservice/v20231015:FleetUpdateStrategy" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(FleetUpdateStrategy.__pulumiType, name, resourceInputs, opts);
     }

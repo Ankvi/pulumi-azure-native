@@ -1,6 +1,6 @@
 {
     "name": "@kengachu-pulumi/azure-native-fluidrelay",
-    "version": "2.11.0",
+    "version": "2.14.1",
     "description": "Pulumi Azure Native package for fluidrelay",
     "keywords": [
         "pulumi",

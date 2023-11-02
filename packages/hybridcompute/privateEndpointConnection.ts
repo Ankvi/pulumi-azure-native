@@ -3,7 +3,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * A private endpoint connection
- * Azure REST API version: 2022-12-27. Prior API version in Azure Native 1.x: 2021-03-25-preview
+ * Azure REST API version: 2022-12-27. Prior API version in Azure Native 1.x: 2021-03-25-preview.
+ *
+ * Other available API versions: 2020-08-15-preview, 2023-06-20-preview.
  */
 export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**

@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Gets the client secret details of the OpenID Connect Provider.
  * Azure REST API version: 2022-08-01.
+ *
+ * Other available API versions: 2022-09-01-preview, 2023-03-01-preview.
  */
 export function listOpenIdConnectProviderSecrets(args: ListOpenIdConnectProviderSecretsArgs, opts?: pulumi.InvokeOptions): Promise<ListOpenIdConnectProviderSecretsResult> {
 
@@ -41,6 +43,8 @@ export interface ListOpenIdConnectProviderSecretsResult {
 /**
  * Gets the client secret details of the OpenID Connect Provider.
  * Azure REST API version: 2022-08-01.
+ *
+ * Other available API versions: 2022-09-01-preview, 2023-03-01-preview.
  */
 export function listOpenIdConnectProviderSecretsOutput(args: ListOpenIdConnectProviderSecretsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListOpenIdConnectProviderSecretsResult> {
     return pulumi.output(args).apply((a: any) => listOpenIdConnectProviderSecrets(a, opts))

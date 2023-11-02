@@ -344,3 +344,4 @@ export interface VirtualMachinePropertiesAvailabilitySetsArgs {
     name?: pulumi.Input<string>;
 }
 
+

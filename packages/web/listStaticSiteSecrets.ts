@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Description for Lists the secrets for an existing static site.
  * Azure REST API version: 2022-09-01.
+ *
+ * Other available API versions: 2020-10-01, 2021-02-01.
  */
 export function listStaticSiteSecrets(args: ListStaticSiteSecretsArgs, opts?: pulumi.InvokeOptions): Promise<ListStaticSiteSecretsResult> {
 
@@ -52,6 +54,8 @@ export interface ListStaticSiteSecretsResult {
 /**
  * Description for Lists the secrets for an existing static site.
  * Azure REST API version: 2022-09-01.
+ *
+ * Other available API versions: 2020-10-01, 2021-02-01.
  */
 export function listStaticSiteSecretsOutput(args: ListStaticSiteSecretsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListStaticSiteSecretsResult> {
     return pulumi.output(args).apply((a: any) => listStaticSiteSecrets(a, opts))

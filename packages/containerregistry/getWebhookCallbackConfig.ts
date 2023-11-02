@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Gets the configuration of service URI and custom headers for the webhook.
  * Azure REST API version: 2022-12-01.
+ *
+ * Other available API versions: 2023-01-01-preview, 2023-06-01-preview, 2023-07-01, 2023-08-01-preview.
  */
 export function getWebhookCallbackConfig(args: GetWebhookCallbackConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetWebhookCallbackConfigResult> {
 
@@ -45,6 +47,8 @@ export interface GetWebhookCallbackConfigResult {
 /**
  * Gets the configuration of service URI and custom headers for the webhook.
  * Azure REST API version: 2022-12-01.
+ *
+ * Other available API versions: 2023-01-01-preview, 2023-06-01-preview, 2023-07-01, 2023-08-01-preview.
  */
 export function getWebhookCallbackConfigOutput(args: GetWebhookCallbackConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebhookCallbackConfigResult> {
     return pulumi.output(args).apply((a: any) => getWebhookCallbackConfig(a, opts))

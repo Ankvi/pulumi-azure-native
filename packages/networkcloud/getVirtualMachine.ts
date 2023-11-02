@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Get properties of the provided virtual machine.
  * Azure REST API version: 2023-05-01-preview.
+ *
+ * Other available API versions: 2023-07-01.
  */
 export function getVirtualMachine(args: GetVirtualMachineArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualMachineResult> {
 
@@ -154,6 +156,8 @@ export interface GetVirtualMachineResult {
 /**
  * Get properties of the provided virtual machine.
  * Azure REST API version: 2023-05-01-preview.
+ *
+ * Other available API versions: 2023-07-01.
  */
 export function getVirtualMachineOutput(args: GetVirtualMachineOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVirtualMachineResult> {
     return pulumi.output(args).apply((a: any) => getVirtualMachine(a, opts))

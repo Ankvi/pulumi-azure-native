@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * A long term retention policy.
  * Azure REST API version: 2022-11-01-preview.
+ *
+ * Other available API versions: 2023-02-01-preview.
  */
 export class ManagedInstanceLongTermRetentionPolicy extends pulumi.CustomResource {
     /**

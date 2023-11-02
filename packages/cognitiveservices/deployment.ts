@@ -3,7 +3,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Cognitive Services account deployment.
- * Azure REST API version: 2023-05-01. Prior API version in Azure Native 1.x: 2021-10-01
+ * Azure REST API version: 2023-05-01. Prior API version in Azure Native 1.x: 2021-10-01.
+ *
+ * Other available API versions: 2023-10-01-preview.
  */
 export class Deployment extends pulumi.CustomResource {
     /**
@@ -92,7 +94,7 @@ export class Deployment extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:cognitiveservices/v20211001:Deployment" }, { type: "azure-native:cognitiveservices/v20220301:Deployment" }, { type: "azure-native:cognitiveservices/v20221001:Deployment" }, { type: "azure-native:cognitiveservices/v20221201:Deployment" }, { type: "azure-native:cognitiveservices/v20230501:Deployment" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:cognitiveservices/v20211001:Deployment" }, { type: "azure-native:cognitiveservices/v20220301:Deployment" }, { type: "azure-native:cognitiveservices/v20221001:Deployment" }, { type: "azure-native:cognitiveservices/v20221201:Deployment" }, { type: "azure-native:cognitiveservices/v20230501:Deployment" }, { type: "azure-native:cognitiveservices/v20231001preview:Deployment" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Deployment.__pulumiType, name, resourceInputs, opts);
     }

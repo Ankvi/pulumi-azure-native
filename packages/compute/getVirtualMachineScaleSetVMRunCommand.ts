@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * The operation to get the VMSS VM run command.
  * Azure REST API version: 2023-03-01.
+ *
+ * Other available API versions: 2023-07-01.
  */
 export function getVirtualMachineScaleSetVMRunCommand(args: GetVirtualMachineScaleSetVMRunCommandArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualMachineScaleSetVMRunCommandResult> {
 
@@ -124,6 +126,8 @@ export interface GetVirtualMachineScaleSetVMRunCommandResult {
 /**
  * The operation to get the VMSS VM run command.
  * Azure REST API version: 2023-03-01.
+ *
+ * Other available API versions: 2023-07-01.
  */
 export function getVirtualMachineScaleSetVMRunCommandOutput(args: GetVirtualMachineScaleSetVMRunCommandOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVirtualMachineScaleSetVMRunCommandResult> {
     return pulumi.output(args).apply((a: any) => getVirtualMachineScaleSetVMRunCommand(a, opts))

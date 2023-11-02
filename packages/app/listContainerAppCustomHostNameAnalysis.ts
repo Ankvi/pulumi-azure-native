@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Custom domain analysis.
  * Azure REST API version: 2022-10-01.
+ *
+ * Other available API versions: 2022-01-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview.
  */
 export function listContainerAppCustomHostNameAnalysis(args: ListContainerAppCustomHostNameAnalysisArgs, opts?: pulumi.InvokeOptions): Promise<ListContainerAppCustomHostNameAnalysisResult> {
 
@@ -86,6 +88,8 @@ export interface ListContainerAppCustomHostNameAnalysisResult {
 /**
  * Custom domain analysis.
  * Azure REST API version: 2022-10-01.
+ *
+ * Other available API versions: 2022-01-01-preview, 2023-04-01-preview, 2023-05-01, 2023-05-02-preview.
  */
 export function listContainerAppCustomHostNameAnalysisOutput(args: ListContainerAppCustomHostNameAnalysisOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListContainerAppCustomHostNameAnalysisResult> {
     return pulumi.output(args).apply((a: any) => listContainerAppCustomHostNameAnalysis(a, opts))

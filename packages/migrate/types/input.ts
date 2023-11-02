@@ -450,6 +450,54 @@ export interface CollectorAgentPropertiesArgs {
     spnDetails?: pulumi.Input<CollectorBodyAgentSpnPropertiesArgs>;
 }
 
+/**
+ * Collector agent property class.
+ */
+export interface CollectorAgentPropertiesBaseArgs {
+    /**
+     * Gets the collector agent id.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Gets the collector last heartbeat time.
+     */
+    lastHeartbeatUtc?: pulumi.Input<string>;
+    /**
+     * Gets or sets the SPN details.
+     */
+    spnDetails?: pulumi.Input<CollectorAgentSpnPropertiesBaseArgs>;
+    /**
+     * Gets the collector agent version.
+     */
+    version?: pulumi.Input<string>;
+}
+
+/**
+ * Collector agent SPN details class.
+ */
+export interface CollectorAgentSpnPropertiesBaseArgs {
+    /**
+     * Gets the AAD application id.
+     */
+    applicationId?: pulumi.Input<string>;
+    /**
+     * Gets the AAD audience url.
+     */
+    audience?: pulumi.Input<string>;
+    /**
+     * Gets the AAD authority endpoint.
+     */
+    authority?: pulumi.Input<string>;
+    /**
+     * Gets the object id of the AAD application.
+     */
+    objectId?: pulumi.Input<string>;
+    /**
+     * Gets the tenant id of the AAD application.
+     */
+    tenantId?: pulumi.Input<string>;
+}
+
 export interface CollectorBodyAgentSpnPropertiesArgs {
     /**
      * Application/client Id for the service principal with which the on-premise management/data plane components would communicate with our Azure services.
@@ -552,6 +600,20 @@ export interface DiskEncryptionSetResourceSettingsArgs {
      * Gets or sets the target Resource name.
      */
     targetResourceName: pulumi.Input<string>;
+}
+
+/**
+ * Entity Uptime.
+ */
+export interface EntityUptimeArgs {
+    /**
+     * Gets the days per month.
+     */
+    daysPerMonth?: pulumi.Input<number>;
+    /**
+     * Gets the hours per day.
+     */
+    hoursPerDay?: pulumi.Input<number>;
 }
 
 /**
@@ -1400,21 +1462,21 @@ export interface PrivateEndpointConnectionPropertiesArgs {
 }
 
 /**
- * Private endpoint connection state.
+ * A collection of information about the state of the connection between service consumer and provider.
  */
 export interface PrivateLinkServiceConnectionStateArgs {
     /**
-     * Action required.
+     * A message indicating if changes on the service provider require any updates on the consumer.
      */
     actionsRequired?: pulumi.Input<string>;
     /**
-     * Description of the object.
+     * The reason for approval/rejection of the connection.
      */
     description?: pulumi.Input<string>;
     /**
-     * Private link connection state.
+     * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
      */
-    status?: pulumi.Input<string | enums.Status>;
+    status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus | enums.Status>;
 }
 
 /**
@@ -1625,6 +1687,28 @@ export interface SqlDatabaseResourceSettingsArgs {
 }
 
 /**
+ * SQL database assessment settings.
+ */
+export interface SqlDbSettingsArgs {
+    /**
+     * Gets or sets the azure SQL compute tier.
+     */
+    azureSqlComputeTier?: pulumi.Input<string | enums.ComputeTier>;
+    /**
+     * Gets or sets the azure PAAS SQL instance type.
+     */
+    azureSqlDataBaseType?: pulumi.Input<string | enums.AzureSqlDataBaseType>;
+    /**
+     * Gets or sets the azure SQL purchase model.
+     */
+    azureSqlPurchaseModel?: pulumi.Input<string | enums.AzureSqlPurchaseModel>;
+    /**
+     * Gets or sets the azure SQL service tier.
+     */
+    azureSqlServiceTier?: pulumi.Input<string | enums.AzureSqlServiceTier>;
+}
+
+/**
  * Defines the Sql ElasticPool resource settings.
  */
 export interface SqlElasticPoolResourceSettingsArgs {
@@ -1652,6 +1736,20 @@ export interface SqlElasticPoolResourceSettingsArgs {
 }
 
 /**
+ * SQL managed instance assessment settings.
+ */
+export interface SqlMiSettingsArgs {
+    /**
+     * Gets or sets the azure PAAS SQL instance type.
+     */
+    azureSqlInstanceType?: pulumi.Input<string | enums.AzureSqlInstanceType>;
+    /**
+     * Gets or sets the azure SQL service tier.
+     */
+    azureSqlServiceTier?: pulumi.Input<string | enums.AzureSqlServiceTier>;
+}
+
+/**
  * Defines the SQL Server resource settings.
  */
 export interface SqlServerResourceSettingsArgs {
@@ -1668,6 +1766,17 @@ export interface SqlServerResourceSettingsArgs {
      * Gets or sets the target Resource name.
      */
     targetResourceName: pulumi.Input<string>;
+}
+
+/**
+ * SQL VM assessment settings.
+ */
+export interface SqlVmSettingsArgs {
+    /**
+     * Gets or sets the Azure VM families (calling instance series to keep it
+     * consistent with other targets).
+     */
+    instanceSeries?: pulumi.Input<pulumi.Input<string | enums.AzureVmFamily>[]>;
 }
 
 /**
@@ -1993,6 +2102,7 @@ export interface WorkloadInstanceModelPropertiesArgs {
      */
     sourcePlatform?: pulumi.Input<string>;
 }
+
 
 
 

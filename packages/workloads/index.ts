@@ -1,6 +1,26 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 // Export members:
+export { ACSSBackupConnectionArgs } from "./acssbackupConnection";
+export type ACSSBackupConnection = import("./acssbackupConnection").ACSSBackupConnection;
+export const ACSSBackupConnection: typeof import("./acssbackupConnection").ACSSBackupConnection = null as any;
+utilities.lazyLoad(exports, ["ACSSBackupConnection"], () => require("./acssbackupConnection"));
+
+export { ConnectorArgs } from "./connector";
+export type Connector = import("./connector").Connector;
+export const Connector: typeof import("./connector").Connector = null as any;
+utilities.lazyLoad(exports, ["Connector"], () => require("./connector"));
+
+export { GetACSSBackupConnectionArgs, GetACSSBackupConnectionResult, GetACSSBackupConnectionOutputArgs } from "./getACSSBackupConnection";
+export const getACSSBackupConnection: typeof import("./getACSSBackupConnection").getACSSBackupConnection = null as any;
+export const getACSSBackupConnectionOutput: typeof import("./getACSSBackupConnection").getACSSBackupConnectionOutput = null as any;
+utilities.lazyLoad(exports, ["getACSSBackupConnection","getACSSBackupConnectionOutput"], () => require("./getACSSBackupConnection"));
+
+export { GetConnectorArgs, GetConnectorResult, GetConnectorOutputArgs } from "./getConnector";
+export const getConnector: typeof import("./getConnector").getConnector = null as any;
+export const getConnectorOutput: typeof import("./getConnector").getConnectorOutput = null as any;
+utilities.lazyLoad(exports, ["getConnector","getConnectorOutput"], () => require("./getConnector"));
+
 export { GetMonitorArgs, GetMonitorResult, GetMonitorOutputArgs } from "./getMonitor";
 export const getMonitor: typeof import("./getMonitor").getMonitor = null as any;
 export const getMonitorOutput: typeof import("./getMonitor").getMonitorOutput = null as any;
@@ -99,17 +119,23 @@ export * from "./types/enums";
 import * as v20211201preview from "./v20211201preview";
 import * as v20221101preview from "./v20221101preview";
 import * as v20230401 from "./v20230401";
+import * as v20231001preview from "./v20231001preview";
 
 export {
     v20211201preview,
     v20221101preview,
     v20230401,
+    v20231001preview,
 };
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "azure-native:workloads:ACSSBackupConnection":
+                return new ACSSBackupConnection(name, <any>undefined, { urn })
+            case "azure-native:workloads:Connector":
+                return new Connector(name, <any>undefined, { urn })
             case "azure-native:workloads:Monitor":
                 return new Monitor(name, <any>undefined, { urn })
             case "azure-native:workloads:ProviderInstance":

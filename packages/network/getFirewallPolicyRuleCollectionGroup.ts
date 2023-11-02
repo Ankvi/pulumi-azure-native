@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets the specified FirewallPolicyRuleCollectionGroup.
  * Azure REST API version: 2023-02-01.
+ *
+ * Other available API versions: 2023-04-01, 2023-05-01.
  */
 export function getFirewallPolicyRuleCollectionGroup(args: GetFirewallPolicyRuleCollectionGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetFirewallPolicyRuleCollectionGroupResult> {
 
@@ -66,6 +68,8 @@ export interface GetFirewallPolicyRuleCollectionGroupResult {
 /**
  * Gets the specified FirewallPolicyRuleCollectionGroup.
  * Azure REST API version: 2023-02-01.
+ *
+ * Other available API versions: 2023-04-01, 2023-05-01.
  */
 export function getFirewallPolicyRuleCollectionGroupOutput(args: GetFirewallPolicyRuleCollectionGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFirewallPolicyRuleCollectionGroupResult> {
     return pulumi.output(args).apply((a: any) => getFirewallPolicyRuleCollectionGroup(a, opts))

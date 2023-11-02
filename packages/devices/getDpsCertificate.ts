@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Get the certificate from the provisioning service.
  * Azure REST API version: 2022-12-12.
+ *
+ * Other available API versions: 2021-10-15, 2023-03-01-preview.
  */
 export function getDpsCertificate(args: GetDpsCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetDpsCertificateResult> {
 
@@ -62,6 +64,8 @@ export interface GetDpsCertificateResult {
 /**
  * Get the certificate from the provisioning service.
  * Azure REST API version: 2022-12-12.
+ *
+ * Other available API versions: 2021-10-15, 2023-03-01-preview.
  */
 export function getDpsCertificateOutput(args: GetDpsCertificateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDpsCertificateResult> {
     return pulumi.output(args).apply((a: any) => getDpsCertificate(a, opts))

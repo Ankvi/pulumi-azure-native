@@ -226,6 +226,13 @@ import * as pulumi from "@pulumi/pulumi";
         id?: pulumi.Input<string>;
     }
 
+    export interface SubscriptionIdArgs {
+        /**
+         * Subscription id in the ARM id format.
+         */
+        id?: pulumi.Input<string>;
+    }
+
     /**
      * A TLSA record. For more information about the TLSA record format, see RFC 6698: https://www.rfc-editor.org/rfc/rfc6698
      */

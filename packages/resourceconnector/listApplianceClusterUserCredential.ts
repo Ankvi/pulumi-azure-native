@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Returns the cluster user credentials for the dedicated appliance.
  * Azure REST API version: 2022-10-27.
+ *
+ * Other available API versions: 2021-10-31-preview.
  */
 export function listApplianceClusterUserCredential(args: ListApplianceClusterUserCredentialArgs, opts?: pulumi.InvokeOptions): Promise<ListApplianceClusterUserCredentialResult> {
 
@@ -41,6 +43,8 @@ export interface ListApplianceClusterUserCredentialResult {
 /**
  * Returns the cluster user credentials for the dedicated appliance.
  * Azure REST API version: 2022-10-27.
+ *
+ * Other available API versions: 2021-10-31-preview.
  */
 export function listApplianceClusterUserCredentialOutput(args: ListApplianceClusterUserCredentialOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListApplianceClusterUserCredentialResult> {
     return pulumi.output(args).apply((a: any) => listApplianceClusterUserCredential(a, opts))

@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets a Traffic Manager profile.
  * Azure REST API version: 2022-04-01.
+ *
+ * Other available API versions: 2017-03-01, 2018-02-01, 2022-04-01-preview.
  */
 export function getProfile(args: GetProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetProfileResult> {
 
@@ -85,6 +87,8 @@ export interface GetProfileResult {
 /**
  * Gets a Traffic Manager profile.
  * Azure REST API version: 2022-04-01.
+ *
+ * Other available API versions: 2017-03-01, 2018-02-01, 2022-04-01-preview.
  */
 export function getProfileOutput(args: GetProfileOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProfileResult> {
     return pulumi.output(args).apply((a: any) => getProfile(a, opts))

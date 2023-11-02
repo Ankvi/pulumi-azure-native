@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Description for Gets the Git/FTP publishing credentials of an app.
  * Azure REST API version: 2022-09-01.
+ *
+ * Other available API versions: 2016-08-01, 2018-11-01, 2020-10-01.
  */
 export function listWebAppPublishingCredentials(args: ListWebAppPublishingCredentialsArgs, opts?: pulumi.InvokeOptions): Promise<ListWebAppPublishingCredentialsResult> {
 
@@ -68,6 +70,8 @@ export interface ListWebAppPublishingCredentialsResult {
 /**
  * Description for Gets the Git/FTP publishing credentials of an app.
  * Azure REST API version: 2022-09-01.
+ *
+ * Other available API versions: 2016-08-01, 2018-11-01, 2020-10-01.
  */
 export function listWebAppPublishingCredentialsOutput(args: ListWebAppPublishingCredentialsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListWebAppPublishingCredentialsResult> {
     return pulumi.output(args).apply((a: any) => listWebAppPublishingCredentials(a, opts))

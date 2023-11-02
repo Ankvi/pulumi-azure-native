@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Description for Gets the backup configuration of an app.
  * Azure REST API version: 2022-09-01.
+ *
+ * Other available API versions: 2016-08-01, 2020-10-01.
  */
 export function listWebAppBackupConfiguration(args: ListWebAppBackupConfigurationArgs, opts?: pulumi.InvokeOptions): Promise<ListWebAppBackupConfigurationResult> {
 
@@ -69,6 +71,8 @@ export interface ListWebAppBackupConfigurationResult {
 /**
  * Description for Gets the backup configuration of an app.
  * Azure REST API version: 2022-09-01.
+ *
+ * Other available API versions: 2016-08-01, 2020-10-01.
  */
 export function listWebAppBackupConfigurationOutput(args: ListWebAppBackupConfigurationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListWebAppBackupConfigurationResult> {
     return pulumi.output(args).apply((a: any) => listWebAppBackupConfiguration(a, opts))

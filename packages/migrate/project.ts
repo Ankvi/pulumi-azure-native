@@ -3,7 +3,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Azure Migrate Project.
- * Azure REST API version: 2019-10-01. Prior API version in Azure Native 1.x: 2019-10-01
+ * Azure REST API version: 2019-10-01. Prior API version in Azure Native 1.x: 2019-10-01.
+ *
+ * Other available API versions: 2018-02-02.
  */
 export class Project extends pulumi.CustomResource {
     /**
@@ -88,7 +90,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:migrate/v20191001:Project" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:migrate/v20191001:Project" }, { type: "azure-native:migrate/v20230315:Project" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Project.__pulumiType, name, resourceInputs, opts);
     }

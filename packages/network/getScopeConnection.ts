@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Get specified scope connection created by this Network Manager.
  * Azure REST API version: 2023-02-01.
+ *
+ * Other available API versions: 2023-04-01, 2023-05-01.
  */
 export function getScopeConnection(args: GetScopeConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetScopeConnectionResult> {
 
@@ -70,6 +72,8 @@ export interface GetScopeConnectionResult {
 /**
  * Get specified scope connection created by this Network Manager.
  * Azure REST API version: 2023-02-01.
+ *
+ * Other available API versions: 2023-04-01, 2023-05-01.
  */
 export function getScopeConnectionOutput(args: GetScopeConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetScopeConnectionResult> {
     return pulumi.output(args).apply((a: any) => getScopeConnection(a, opts))

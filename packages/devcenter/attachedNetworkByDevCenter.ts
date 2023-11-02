@@ -3,7 +3,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Represents an attached NetworkConnection.
- * Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2022-09-01-preview
+ * Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2022-09-01-preview.
+ *
+ * Other available API versions: 2023-08-01-preview, 2023-10-01-preview.
  */
 export class AttachedNetworkByDevCenter extends pulumi.CustomResource {
     /**
@@ -107,7 +109,7 @@ export class AttachedNetworkByDevCenter extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:devcenter/v20220801preview:AttachedNetworkByDevCenter" }, { type: "azure-native:devcenter/v20220901preview:AttachedNetworkByDevCenter" }, { type: "azure-native:devcenter/v20221012preview:AttachedNetworkByDevCenter" }, { type: "azure-native:devcenter/v20221111preview:AttachedNetworkByDevCenter" }, { type: "azure-native:devcenter/v20230101preview:AttachedNetworkByDevCenter" }, { type: "azure-native:devcenter/v20230401:AttachedNetworkByDevCenter" }, { type: "azure-native:devcenter/v20230801preview:AttachedNetworkByDevCenter" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:devcenter/v20220801preview:AttachedNetworkByDevCenter" }, { type: "azure-native:devcenter/v20220901preview:AttachedNetworkByDevCenter" }, { type: "azure-native:devcenter/v20221012preview:AttachedNetworkByDevCenter" }, { type: "azure-native:devcenter/v20221111preview:AttachedNetworkByDevCenter" }, { type: "azure-native:devcenter/v20230101preview:AttachedNetworkByDevCenter" }, { type: "azure-native:devcenter/v20230401:AttachedNetworkByDevCenter" }, { type: "azure-native:devcenter/v20230801preview:AttachedNetworkByDevCenter" }, { type: "azure-native:devcenter/v20231001preview:AttachedNetworkByDevCenter" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(AttachedNetworkByDevCenter.__pulumiType, name, resourceInputs, opts);
     }

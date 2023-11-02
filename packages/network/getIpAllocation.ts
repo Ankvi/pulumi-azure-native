@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets the specified IpAllocation by resource group.
  * Azure REST API version: 2023-02-01.
+ *
+ * Other available API versions: 2023-04-01, 2023-05-01.
  */
 export function getIpAllocation(args: GetIpAllocationArgs, opts?: pulumi.InvokeOptions): Promise<GetIpAllocationResult> {
 
@@ -90,6 +92,8 @@ export interface GetIpAllocationResult {
 /**
  * Gets the specified IpAllocation by resource group.
  * Azure REST API version: 2023-02-01.
+ *
+ * Other available API versions: 2023-04-01, 2023-05-01.
  */
 export function getIpAllocationOutput(args: GetIpAllocationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpAllocationResult> {
     return pulumi.output(args).apply((a: any) => getIpAllocation(a, opts))

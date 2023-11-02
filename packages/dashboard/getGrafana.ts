@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * The grafana resource type.
  * Azure REST API version: 2022-08-01.
+ *
+ * Other available API versions: 2021-09-01-preview, 2022-10-01-preview.
  */
 export function getGrafana(args: GetGrafanaArgs, opts?: pulumi.InvokeOptions): Promise<GetGrafanaResult> {
 
@@ -69,6 +71,8 @@ export interface GetGrafanaResult {
 /**
  * The grafana resource type.
  * Azure REST API version: 2022-08-01.
+ *
+ * Other available API versions: 2021-09-01-preview, 2022-10-01-preview.
  */
 export function getGrafanaOutput(args: GetGrafanaOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGrafanaResult> {
     return pulumi.output(args).apply((a: any) => getGrafana(a, opts))

@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets an integration account map.
  * Azure REST API version: 2019-05-01.
+ *
+ * Other available API versions: 2015-08-01-preview.
  */
 export function getIntegrationAccountMap(args: GetIntegrationAccountMapArgs, opts?: pulumi.InvokeOptions): Promise<GetIntegrationAccountMapResult> {
 
@@ -90,6 +92,8 @@ export interface GetIntegrationAccountMapResult {
 /**
  * Gets an integration account map.
  * Azure REST API version: 2019-05-01.
+ *
+ * Other available API versions: 2015-08-01-preview.
  */
 export function getIntegrationAccountMapOutput(args: GetIntegrationAccountMapOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIntegrationAccountMapResult> {
     return pulumi.output(args).apply((a: any) => getIntegrationAccountMap(a, opts))

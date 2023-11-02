@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * List all replications for a specified volume
  * Azure REST API version: 2022-11-01.
+ *
+ * Other available API versions: 2022-11-01-preview, 2023-05-01.
  */
 export function listVolumeReplications(args: ListVolumeReplicationsArgs, opts?: pulumi.InvokeOptions): Promise<ListVolumeReplicationsResult> {
 
@@ -47,6 +49,8 @@ export interface ListVolumeReplicationsResult {
 /**
  * List all replications for a specified volume
  * Azure REST API version: 2022-11-01.
+ *
+ * Other available API versions: 2022-11-01-preview, 2023-05-01.
  */
 export function listVolumeReplicationsOutput(args: ListVolumeReplicationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListVolumeReplicationsResult> {
     return pulumi.output(args).apply((a: any) => listVolumeReplications(a, opts))

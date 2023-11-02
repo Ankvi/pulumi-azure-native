@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Implements HybridIdentityMetadata GET method.
  * Azure REST API version: 2022-07-15-preview.
+ *
+ * Other available API versions: 2023-03-01-preview.
  */
 export function getHybridIdentityMetadatum(args: GetHybridIdentityMetadatumArgs, opts?: pulumi.InvokeOptions): Promise<GetHybridIdentityMetadatumResult> {
 
@@ -70,6 +72,8 @@ export interface GetHybridIdentityMetadatumResult {
 /**
  * Implements HybridIdentityMetadata GET method.
  * Azure REST API version: 2022-07-15-preview.
+ *
+ * Other available API versions: 2023-03-01-preview.
  */
 export function getHybridIdentityMetadatumOutput(args: GetHybridIdentityMetadatumOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHybridIdentityMetadatumResult> {
     return pulumi.output(args).apply((a: any) => getHybridIdentityMetadatum(a, opts))

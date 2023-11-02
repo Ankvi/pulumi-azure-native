@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets information about the specified pool.
  * Azure REST API version: 2023-05-01.
+ *
+ * Other available API versions: 2020-05-01.
  */
 export function getPool(args: GetPoolArgs, opts?: pulumi.InvokeOptions): Promise<GetPoolResult> {
 
@@ -141,6 +143,8 @@ export interface GetPoolResult {
 /**
  * Gets information about the specified pool.
  * Azure REST API version: 2023-05-01.
+ *
+ * Other available API versions: 2020-05-01.
  */
 export function getPoolOutput(args: GetPoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPoolResult> {
     return pulumi.output(args).apply((a: any) => getPool(a, opts))

@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Get a single graph query by its resourceName.
  * Azure REST API version: 2020-04-01-preview.
+ *
+ * Other available API versions: 2018-09-01-preview.
  */
 export function getGraphQuery(args: GetGraphQueryArgs, opts?: pulumi.InvokeOptions): Promise<GetGraphQueryResult> {
 
@@ -77,6 +79,8 @@ export interface GetGraphQueryResult {
 /**
  * Get a single graph query by its resourceName.
  * Azure REST API version: 2020-04-01-preview.
+ *
+ * Other available API versions: 2018-09-01-preview.
  */
 export function getGraphQueryOutput(args: GetGraphQueryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGraphQueryResult> {
     return pulumi.output(args).apply((a: any) => getGraphQuery(a, opts))

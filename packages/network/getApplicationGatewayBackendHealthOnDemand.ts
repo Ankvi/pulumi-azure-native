@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets the backend health for given combination of backend pool and http setting of the specified application gateway in a resource group.
  * Azure REST API version: 2023-02-01.
+ *
+ * Other available API versions: 2019-06-01, 2019-08-01, 2023-04-01, 2023-05-01.
  */
 export function getApplicationGatewayBackendHealthOnDemand(args: GetApplicationGatewayBackendHealthOnDemandArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationGatewayBackendHealthOnDemandResult> {
 
@@ -86,6 +88,8 @@ export interface GetApplicationGatewayBackendHealthOnDemandResult {
 /**
  * Gets the backend health for given combination of backend pool and http setting of the specified application gateway in a resource group.
  * Azure REST API version: 2023-02-01.
+ *
+ * Other available API versions: 2019-06-01, 2019-08-01, 2023-04-01, 2023-05-01.
  */
 export function getApplicationGatewayBackendHealthOnDemandOutput(args: GetApplicationGatewayBackendHealthOnDemandOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationGatewayBackendHealthOnDemandResult> {
     return pulumi.output(args).apply((a: any) => getApplicationGatewayBackendHealthOnDemand(a, opts))

@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Gets a virtual network rule.
  * Azure REST API version: 2021-11-01.
+ *
+ * Other available API versions: 2022-11-01-preview, 2023-02-01-preview.
  */
 export function getVirtualNetworkRule(args: GetVirtualNetworkRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualNetworkRuleResult> {
 
@@ -61,6 +63,8 @@ export interface GetVirtualNetworkRuleResult {
 /**
  * Gets a virtual network rule.
  * Azure REST API version: 2021-11-01.
+ *
+ * Other available API versions: 2022-11-01-preview, 2023-02-01-preview.
  */
 export function getVirtualNetworkRuleOutput(args: GetVirtualNetworkRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVirtualNetworkRuleResult> {
     return pulumi.output(args).apply((a: any) => getVirtualNetworkRule(a, opts))

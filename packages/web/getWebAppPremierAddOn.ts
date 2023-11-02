@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Description for Gets a named add-on of an app.
  * Azure REST API version: 2022-09-01.
+ *
+ * Other available API versions: 2016-08-01, 2020-10-01.
  */
 export function getWebAppPremierAddOn(args: GetWebAppPremierAddOnArgs, opts?: pulumi.InvokeOptions): Promise<GetWebAppPremierAddOnResult> {
 
@@ -81,6 +83,8 @@ export interface GetWebAppPremierAddOnResult {
 /**
  * Description for Gets a named add-on of an app.
  * Azure REST API version: 2022-09-01.
+ *
+ * Other available API versions: 2016-08-01, 2020-10-01.
  */
 export function getWebAppPremierAddOnOutput(args: GetWebAppPremierAddOnOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebAppPremierAddOnResult> {
     return pulumi.output(args).apply((a: any) => getWebAppPremierAddOn(a, opts))

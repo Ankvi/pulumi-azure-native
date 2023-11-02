@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Get bare metal machine key set of the provided cluster.
  * Azure REST API version: 2023-05-01-preview.
+ *
+ * Other available API versions: 2023-07-01.
  */
 export function getBareMetalMachineKeySet(args: GetBareMetalMachineKeySetArgs, opts?: pulumi.InvokeOptions): Promise<GetBareMetalMachineKeySetResult> {
 
@@ -107,6 +109,8 @@ export interface GetBareMetalMachineKeySetResult {
 /**
  * Get bare metal machine key set of the provided cluster.
  * Azure REST API version: 2023-05-01-preview.
+ *
+ * Other available API versions: 2023-07-01.
  */
 export function getBareMetalMachineKeySetOutput(args: GetBareMetalMachineKeySetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBareMetalMachineKeySetResult> {
     return pulumi.output(args).apply((a: any) => getBareMetalMachineKeySet(a, opts))

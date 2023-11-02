@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Return the gateway status of the specified Analysis Services server instance.
  * Azure REST API version: 2017-08-01.
+ *
+ * Other available API versions: 2017-08-01-beta.
  */
 export function listServerGatewayStatus(args: ListServerGatewayStatusArgs, opts?: pulumi.InvokeOptions): Promise<ListServerGatewayStatusResult> {
 
@@ -36,6 +38,8 @@ export interface ListServerGatewayStatusResult {
 /**
  * Return the gateway status of the specified Analysis Services server instance.
  * Azure REST API version: 2017-08-01.
+ *
+ * Other available API versions: 2017-08-01-beta.
  */
 export function listServerGatewayStatusOutput(args: ListServerGatewayStatusOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListServerGatewayStatusResult> {
     return pulumi.output(args).apply((a: any) => listServerGatewayStatus(a, opts))

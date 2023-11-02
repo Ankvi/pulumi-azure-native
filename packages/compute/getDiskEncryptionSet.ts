@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets information about a disk encryption set.
  * Azure REST API version: 2022-07-02.
+ *
+ * Other available API versions: 2020-06-30, 2023-01-02, 2023-04-02.
  */
 export function getDiskEncryptionSet(args: GetDiskEncryptionSetArgs, opts?: pulumi.InvokeOptions): Promise<GetDiskEncryptionSetResult> {
 
@@ -89,6 +91,8 @@ export interface GetDiskEncryptionSetResult {
 /**
  * Gets information about a disk encryption set.
  * Azure REST API version: 2022-07-02.
+ *
+ * Other available API versions: 2020-06-30, 2023-01-02, 2023-04-02.
  */
 export function getDiskEncryptionSetOutput(args: GetDiskEncryptionSetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDiskEncryptionSetResult> {
     return pulumi.output(args).apply((a: any) => getDiskEncryptionSet(a, opts))

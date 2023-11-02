@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Description for Gets existing backups of an app.
  * Azure REST API version: 2022-09-01.
+ *
+ * Other available API versions: 2020-10-01.
  */
 export function listWebAppSiteBackupsSlot(args: ListWebAppSiteBackupsSlotArgs, opts?: pulumi.InvokeOptions): Promise<ListWebAppSiteBackupsSlotResult> {
 
@@ -46,6 +48,8 @@ export interface ListWebAppSiteBackupsSlotResult {
 /**
  * Description for Gets existing backups of an app.
  * Azure REST API version: 2022-09-01.
+ *
+ * Other available API versions: 2020-10-01.
  */
 export function listWebAppSiteBackupsSlotOutput(args: ListWebAppSiteBackupsSlotOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListWebAppSiteBackupsSlotResult> {
     return pulumi.output(args).apply((a: any) => listWebAppSiteBackupsSlot(a, opts))

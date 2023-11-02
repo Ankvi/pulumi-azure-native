@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Retrieves information about a gallery image version.
  * Azure REST API version: 2022-03-03.
+ *
+ * Other available API versions: 2019-03-01.
  */
 export function getGalleryImageVersion(args: GetGalleryImageVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetGalleryImageVersionResult> {
 
@@ -88,6 +90,8 @@ export interface GetGalleryImageVersionResult {
 /**
  * Retrieves information about a gallery image version.
  * Azure REST API version: 2022-03-03.
+ *
+ * Other available API versions: 2019-03-01.
  */
 export function getGalleryImageVersionOutput(args: GetGalleryImageVersionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGalleryImageVersionResult> {
     return pulumi.output(args).apply((a: any) => getGalleryImageVersion(a, opts))

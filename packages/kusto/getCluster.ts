@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets a Kusto cluster.
  * Azure REST API version: 2022-12-29.
+ *
+ * Other available API versions: 2022-07-07, 2023-05-02, 2023-08-15.
  */
 export function getCluster(args: GetClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterResult> {
 
@@ -165,6 +167,8 @@ export interface GetClusterResult {
 /**
  * Gets a Kusto cluster.
  * Azure REST API version: 2022-12-29.
+ *
+ * Other available API versions: 2022-07-07, 2023-05-02, 2023-08-15.
  */
 export function getClusterOutput(args: GetClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterResult> {
     return pulumi.output(args).apply((a: any) => getCluster(a, opts))

@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Get a Service Fabric application type name resource created or in the process of being created in the Service Fabric managed cluster resource.
  * Azure REST API version: 2023-03-01-preview.
+ *
+ * Other available API versions: 2023-07-01-preview, 2023-09-01-preview.
  */
 export function getManagedClusterApplicationType(args: GetManagedClusterApplicationTypeArgs, opts?: pulumi.InvokeOptions): Promise<GetManagedClusterApplicationTypeResult> {
 
@@ -66,6 +68,8 @@ export interface GetManagedClusterApplicationTypeResult {
 /**
  * Get a Service Fabric application type name resource created or in the process of being created in the Service Fabric managed cluster resource.
  * Azure REST API version: 2023-03-01-preview.
+ *
+ * Other available API versions: 2023-07-01-preview, 2023-09-01-preview.
  */
 export function getManagedClusterApplicationTypeOutput(args: GetManagedClusterApplicationTypeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetManagedClusterApplicationTypeResult> {
     return pulumi.output(args).apply((a: any) => getManagedClusterApplicationType(a, opts))

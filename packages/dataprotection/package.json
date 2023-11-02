@@ -1,6 +1,6 @@
 {
     "name": "@kengachu-pulumi/azure-native-dataprotection",
-    "version": "2.11.0",
+    "version": "2.14.1",
     "description": "Pulumi Azure Native package for dataprotection",
     "keywords": [
         "pulumi",

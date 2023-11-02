@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Get a security assessment on your scanned resource
  * Azure REST API version: 2021-06-01.
+ *
+ * Other available API versions: 2020-01-01.
  */
 export function getAssessment(args: GetAssessmentArgs, opts?: pulumi.InvokeOptions): Promise<GetAssessmentResult> {
 
@@ -78,6 +80,8 @@ export interface GetAssessmentResult {
 /**
  * Get a security assessment on your scanned resource
  * Azure REST API version: 2021-06-01.
+ *
+ * Other available API versions: 2020-01-01.
  */
 export function getAssessmentOutput(args: GetAssessmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAssessmentResult> {
     return pulumi.output(args).apply((a: any) => getAssessment(a, opts))

@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * A FluidRelay Server.
  * Azure REST API version: 2022-06-01.
+ *
+ * Other available API versions: 2021-06-15-preview.
  */
 export function getFluidRelayServer(args: GetFluidRelayServerArgs, opts?: pulumi.InvokeOptions): Promise<GetFluidRelayServerResult> {
 
@@ -81,6 +83,8 @@ export interface GetFluidRelayServerResult {
 /**
  * A FluidRelay Server.
  * Azure REST API version: 2022-06-01.
+ *
+ * Other available API versions: 2021-06-15-preview.
  */
 export function getFluidRelayServerOutput(args: GetFluidRelayServerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFluidRelayServerResult> {
     return pulumi.output(args).apply((a: any) => getFluidRelayServer(a, opts))

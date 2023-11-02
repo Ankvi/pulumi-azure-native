@@ -19,6 +19,20 @@ import * as pulumi from "@pulumi/pulumi";
     }
 
     /**
+     * route configuration of the shared custom domain.
+     */
+    export interface AFDDomainReferencedRoutePathResponse {
+        /**
+         * List of paths of the route.
+         */
+        paths?: string[];
+        /**
+         * Resource reference to the route.
+         */
+        routeId?: ResourceReferenceResponse;
+    }
+
+    /**
      * Reference to another resource along with its state.
      */
     export interface ActivatedResourceReferenceResponse {

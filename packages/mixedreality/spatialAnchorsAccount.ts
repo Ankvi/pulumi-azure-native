@@ -3,7 +3,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * SpatialAnchorsAccount Response.
- * Azure REST API version: 2021-01-01. Prior API version in Azure Native 1.x: 2021-01-01
+ * Azure REST API version: 2021-01-01. Prior API version in Azure Native 1.x: 2021-01-01.
+ *
+ * Other available API versions: 2019-02-28-preview, 2021-03-01-preview.
  */
 export class SpatialAnchorsAccount extends pulumi.CustomResource {
     /**

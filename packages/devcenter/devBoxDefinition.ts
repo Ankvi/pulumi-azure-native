@@ -3,7 +3,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Represents a definition for a Developer Machine.
- * Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2022-09-01-preview
+ * Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2022-09-01-preview.
+ *
+ * Other available API versions: 2022-11-11-preview, 2023-08-01-preview, 2023-10-01-preview.
  */
 export class DevBoxDefinition extends pulumi.CustomResource {
     /**
@@ -140,7 +142,7 @@ export class DevBoxDefinition extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:devcenter/v20220801preview:DevBoxDefinition" }, { type: "azure-native:devcenter/v20220901preview:DevBoxDefinition" }, { type: "azure-native:devcenter/v20221012preview:DevBoxDefinition" }, { type: "azure-native:devcenter/v20221111preview:DevBoxDefinition" }, { type: "azure-native:devcenter/v20230101preview:DevBoxDefinition" }, { type: "azure-native:devcenter/v20230401:DevBoxDefinition" }, { type: "azure-native:devcenter/v20230801preview:DevBoxDefinition" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:devcenter/v20220801preview:DevBoxDefinition" }, { type: "azure-native:devcenter/v20220901preview:DevBoxDefinition" }, { type: "azure-native:devcenter/v20221012preview:DevBoxDefinition" }, { type: "azure-native:devcenter/v20221111preview:DevBoxDefinition" }, { type: "azure-native:devcenter/v20230101preview:DevBoxDefinition" }, { type: "azure-native:devcenter/v20230401:DevBoxDefinition" }, { type: "azure-native:devcenter/v20230801preview:DevBoxDefinition" }, { type: "azure-native:devcenter/v20231001preview:DevBoxDefinition" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(DevBoxDefinition.__pulumiType, name, resourceInputs, opts);
     }

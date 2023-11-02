@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Get a buildpack binding by name.
  * Azure REST API version: 2023-05-01-preview.
+ *
+ * Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview.
  */
 export function getBuildpackBinding(args: GetBuildpackBindingArgs, opts?: pulumi.InvokeOptions): Promise<GetBuildpackBindingResult> {
 
@@ -68,6 +70,8 @@ export interface GetBuildpackBindingResult {
 /**
  * Get a buildpack binding by name.
  * Azure REST API version: 2023-05-01-preview.
+ *
+ * Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview.
  */
 export function getBuildpackBindingOutput(args: GetBuildpackBindingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBuildpackBindingResult> {
     return pulumi.output(args).apply((a: any) => getBuildpackBinding(a, opts))

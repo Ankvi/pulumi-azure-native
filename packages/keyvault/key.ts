@@ -3,7 +3,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * The key resource.
- * Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2019-09-01
+ * Azure REST API version: 2023-02-01. Prior API version in Azure Native 1.x: 2019-09-01.
+ *
+ * Other available API versions: 2023-07-01.
  */
 export class Key extends pulumi.CustomResource {
     /**
@@ -135,7 +137,7 @@ export class Key extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:keyvault/v20190901:Key" }, { type: "azure-native:keyvault/v20200401preview:Key" }, { type: "azure-native:keyvault/v20210401preview:Key" }, { type: "azure-native:keyvault/v20210601preview:Key" }, { type: "azure-native:keyvault/v20211001:Key" }, { type: "azure-native:keyvault/v20211101preview:Key" }, { type: "azure-native:keyvault/v20220201preview:Key" }, { type: "azure-native:keyvault/v20220701:Key" }, { type: "azure-native:keyvault/v20221101:Key" }, { type: "azure-native:keyvault/v20230201:Key" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:keyvault/v20190901:Key" }, { type: "azure-native:keyvault/v20200401preview:Key" }, { type: "azure-native:keyvault/v20210401preview:Key" }, { type: "azure-native:keyvault/v20210601preview:Key" }, { type: "azure-native:keyvault/v20211001:Key" }, { type: "azure-native:keyvault/v20211101preview:Key" }, { type: "azure-native:keyvault/v20220201preview:Key" }, { type: "azure-native:keyvault/v20220701:Key" }, { type: "azure-native:keyvault/v20221101:Key" }, { type: "azure-native:keyvault/v20230201:Key" }, { type: "azure-native:keyvault/v20230701:Key" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Key.__pulumiType, name, resourceInputs, opts);
     }

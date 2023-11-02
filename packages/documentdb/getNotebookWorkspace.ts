@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Gets the notebook workspace for a Cosmos DB account.
  * Azure REST API version: 2023-04-15.
+ *
+ * Other available API versions: 2023-09-15, 2023-09-15-preview.
  */
 export function getNotebookWorkspace(args: GetNotebookWorkspaceArgs, opts?: pulumi.InvokeOptions): Promise<GetNotebookWorkspaceResult> {
 
@@ -57,6 +59,8 @@ export interface GetNotebookWorkspaceResult {
 /**
  * Gets the notebook workspace for a Cosmos DB account.
  * Azure REST API version: 2023-04-15.
+ *
+ * Other available API versions: 2023-09-15, 2023-09-15-preview.
  */
 export function getNotebookWorkspaceOutput(args: GetNotebookWorkspaceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNotebookWorkspaceResult> {
     return pulumi.output(args).apply((a: any) => getNotebookWorkspace(a, opts))

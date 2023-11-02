@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets the details of the authorization provider specified by its identifier.
  * Azure REST API version: 2022-08-01.
+ *
+ * Other available API versions: 2022-09-01-preview, 2023-03-01-preview.
  */
 export function getAuthorizationProvider(args: GetAuthorizationProviderArgs, opts?: pulumi.InvokeOptions): Promise<GetAuthorizationProviderResult> {
 
@@ -62,6 +64,8 @@ export interface GetAuthorizationProviderResult {
 /**
  * Gets the details of the authorization provider specified by its identifier.
  * Azure REST API version: 2022-08-01.
+ *
+ * Other available API versions: 2022-09-01-preview, 2023-03-01-preview.
  */
 export function getAuthorizationProviderOutput(args: GetAuthorizationProviderOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAuthorizationProviderResult> {
     return pulumi.output(args).apply((a: any) => getAuthorizationProvider(a, opts))

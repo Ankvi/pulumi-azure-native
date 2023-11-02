@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets a given incident.
  * Azure REST API version: 2023-02-01.
+ *
+ * Other available API versions: 2021-03-01-preview, 2023-02-01-preview, 2023-03-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview.
  */
 export function getIncident(args: GetIncidentArgs, opts?: pulumi.InvokeOptions): Promise<GetIncidentResult> {
 
@@ -134,6 +136,8 @@ export interface GetIncidentResult {
 /**
  * Gets a given incident.
  * Azure REST API version: 2023-02-01.
+ *
+ * Other available API versions: 2021-03-01-preview, 2023-02-01-preview, 2023-03-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview.
  */
 export function getIncidentOutput(args: GetIncidentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIncidentResult> {
     return pulumi.output(args).apply((a: any) => getIncident(a, opts))

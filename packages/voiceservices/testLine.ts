@@ -3,7 +3,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * A TestLine resource
- * Azure REST API version: 2023-04-03. Prior API version in Azure Native 1.x: 2022-12-01-preview
+ * Azure REST API version: 2023-04-03. Prior API version in Azure Native 1.x: 2022-12-01-preview.
+ *
+ * Other available API versions: 2022-12-01-preview.
  */
 export class TestLine extends pulumi.CustomResource {
     /**

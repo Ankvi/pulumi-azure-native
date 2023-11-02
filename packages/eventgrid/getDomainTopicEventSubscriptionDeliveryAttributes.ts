@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Get all delivery attributes for an event subscription for domain topic.
  * Azure REST API version: 2022-06-15.
+ *
+ * Other available API versions: 2023-06-01-preview.
  */
 export function getDomainTopicEventSubscriptionDeliveryAttributes(args: GetDomainTopicEventSubscriptionDeliveryAttributesArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainTopicEventSubscriptionDeliveryAttributesResult> {
 
@@ -47,6 +49,8 @@ export interface GetDomainTopicEventSubscriptionDeliveryAttributesResult {
 /**
  * Get all delivery attributes for an event subscription for domain topic.
  * Azure REST API version: 2022-06-15.
+ *
+ * Other available API versions: 2023-06-01-preview.
  */
 export function getDomainTopicEventSubscriptionDeliveryAttributesOutput(args: GetDomainTopicEventSubscriptionDeliveryAttributesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainTopicEventSubscriptionDeliveryAttributesResult> {
     return pulumi.output(args).apply((a: any) => getDomainTopicEventSubscriptionDeliveryAttributes(a, opts))

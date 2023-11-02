@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Application accelerator resource
  * Azure REST API version: 2023-05-01-preview.
+ *
+ * Other available API versions: 2023-07-01-preview, 2023-09-01-preview, 2023-11-01-preview.
  */
 export class ApplicationAccelerator extends pulumi.CustomResource {
     /**
@@ -86,7 +88,7 @@ export class ApplicationAccelerator extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:appplatform/v20221101preview:ApplicationAccelerator" }, { type: "azure-native:appplatform/v20230101preview:ApplicationAccelerator" }, { type: "azure-native:appplatform/v20230301preview:ApplicationAccelerator" }, { type: "azure-native:appplatform/v20230501preview:ApplicationAccelerator" }, { type: "azure-native:appplatform/v20230701preview:ApplicationAccelerator" }, { type: "azure-native:appplatform/v20230901preview:ApplicationAccelerator" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:appplatform/v20221101preview:ApplicationAccelerator" }, { type: "azure-native:appplatform/v20230101preview:ApplicationAccelerator" }, { type: "azure-native:appplatform/v20230301preview:ApplicationAccelerator" }, { type: "azure-native:appplatform/v20230501preview:ApplicationAccelerator" }, { type: "azure-native:appplatform/v20230701preview:ApplicationAccelerator" }, { type: "azure-native:appplatform/v20230901preview:ApplicationAccelerator" }, { type: "azure-native:appplatform/v20231101preview:ApplicationAccelerator" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ApplicationAccelerator.__pulumiType, name, resourceInputs, opts);
     }

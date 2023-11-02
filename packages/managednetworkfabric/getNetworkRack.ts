@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Get Network Rack resource details.
  * Azure REST API version: 2023-02-01-preview.
+ *
+ * Other available API versions: 2023-06-15.
  */
 export function getNetworkRack(args: GetNetworkRackArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkRackResult> {
 
@@ -77,6 +79,8 @@ export interface GetNetworkRackResult {
 /**
  * Get Network Rack resource details.
  * Azure REST API version: 2023-02-01-preview.
+ *
+ * Other available API versions: 2023-06-15.
  */
 export function getNetworkRackOutput(args: GetNetworkRackOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkRackResult> {
     return pulumi.output(args).apply((a: any) => getNetworkRack(a, opts))

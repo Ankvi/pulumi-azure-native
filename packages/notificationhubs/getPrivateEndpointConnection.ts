@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Represents a Private Endpoint Connection ARM resource - a sub-resource of Notification Hubs namespace.
  * Azure REST API version: 2023-01-01-preview.
+ *
+ * Other available API versions: 2023-09-01.
  */
 export function getPrivateEndpointConnection(args: GetPrivateEndpointConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetPrivateEndpointConnectionResult> {
 
@@ -58,6 +60,8 @@ export interface GetPrivateEndpointConnectionResult {
 /**
  * Represents a Private Endpoint Connection ARM resource - a sub-resource of Notification Hubs namespace.
  * Azure REST API version: 2023-01-01-preview.
+ *
+ * Other available API versions: 2023-09-01.
  */
 export function getPrivateEndpointConnectionOutput(args: GetPrivateEndpointConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrivateEndpointConnectionResult> {
     return pulumi.output(args).apply((a: any) => getPrivateEndpointConnection(a, opts))

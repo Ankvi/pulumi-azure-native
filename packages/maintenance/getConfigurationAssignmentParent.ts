@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Get configuration for resource.
  * Azure REST API version: 2022-11-01-preview.
+ *
+ * Other available API versions: 2023-04-01, 2023-09-01-preview.
  */
 export function getConfigurationAssignmentParent(args: GetConfigurationAssignmentParentArgs, opts?: pulumi.InvokeOptions): Promise<GetConfigurationAssignmentParentResult> {
 
@@ -86,6 +88,8 @@ export interface GetConfigurationAssignmentParentResult {
 /**
  * Get configuration for resource.
  * Azure REST API version: 2022-11-01-preview.
+ *
+ * Other available API versions: 2023-04-01, 2023-09-01-preview.
  */
 export function getConfigurationAssignmentParentOutput(args: GetConfigurationAssignmentParentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConfigurationAssignmentParentResult> {
     return pulumi.output(args).apply((a: any) => getConfigurationAssignmentParent(a, opts))

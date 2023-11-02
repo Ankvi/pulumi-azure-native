@@ -16,7 +16,7 @@ export function getPrivateEndpointConnection(args: GetPrivateEndpointConnectionA
 
 export interface GetPrivateEndpointConnectionArgs {
     /**
-     * The name of the private endpoint connection to the Azure Cognitive Search service with the specified resource group.
+     * The name of the private endpoint connection to the search service with the specified resource group.
      */
     privateEndpointConnectionName: string;
     /**
@@ -24,13 +24,13 @@ export interface GetPrivateEndpointConnectionArgs {
      */
     resourceGroupName: string;
     /**
-     * The name of the Azure Cognitive Search service associated with the specified resource group.
+     * The name of the search service associated with the specified resource group.
      */
     searchServiceName: string;
 }
 
 /**
- * Describes an existing Private Endpoint connection to the Azure Cognitive Search service.
+ * Describes an existing private endpoint connection to the search service.
  */
 export interface GetPrivateEndpointConnectionResult {
     /**
@@ -42,7 +42,7 @@ export interface GetPrivateEndpointConnectionResult {
      */
     readonly name: string;
     /**
-     * Describes the properties of an existing Private Endpoint connection to the Azure Cognitive Search service.
+     * Describes the properties of an existing private endpoint connection to the search service.
      */
     readonly properties: types.outputs.PrivateEndpointConnectionPropertiesResponse;
     /**
@@ -59,7 +59,7 @@ export function getPrivateEndpointConnectionOutput(args: GetPrivateEndpointConne
 
 export interface GetPrivateEndpointConnectionOutputArgs {
     /**
-     * The name of the private endpoint connection to the Azure Cognitive Search service with the specified resource group.
+     * The name of the private endpoint connection to the search service with the specified resource group.
      */
     privateEndpointConnectionName: pulumi.Input<string>;
     /**
@@ -67,7 +67,7 @@ export interface GetPrivateEndpointConnectionOutputArgs {
      */
     resourceGroupName: pulumi.Input<string>;
     /**
-     * The name of the Azure Cognitive Search service associated with the specified resource group.
+     * The name of the search service associated with the specified resource group.
      */
     searchServiceName: pulumi.Input<string>;
 }

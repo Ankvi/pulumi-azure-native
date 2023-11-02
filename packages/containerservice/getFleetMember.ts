@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Get a FleetMember
  * Azure REST API version: 2023-03-15-preview.
+ *
+ * Other available API versions: 2022-07-02-preview, 2023-06-15-preview, 2023-08-15-preview, 2023-10-15.
  */
 export function getFleetMember(args: GetFleetMemberArgs, opts?: pulumi.InvokeOptions): Promise<GetFleetMemberResult> {
 
@@ -70,6 +72,8 @@ export interface GetFleetMemberResult {
 /**
  * Get a FleetMember
  * Azure REST API version: 2023-03-15-preview.
+ *
+ * Other available API versions: 2022-07-02-preview, 2023-06-15-preview, 2023-08-15-preview, 2023-10-15.
  */
 export function getFleetMemberOutput(args: GetFleetMemberOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFleetMemberResult> {
     return pulumi.output(args).apply((a: any) => getFleetMember(a, opts))

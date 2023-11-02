@@ -3,7 +3,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * SIM policy resource.
- * Azure REST API version: 2023-06-01. Prior API version in Azure Native 1.x: 2022-04-01-preview
+ * Azure REST API version: 2023-06-01. Prior API version in Azure Native 1.x: 2022-04-01-preview.
+ *
+ * Other available API versions: 2022-04-01-preview, 2022-11-01, 2023-09-01.
  */
 export class SimPolicy extends pulumi.CustomResource {
     /**
@@ -137,7 +139,7 @@ export class SimPolicy extends pulumi.CustomResource {
             resourceInputs["ueAmbr"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:mobilenetwork/v20220301preview:SimPolicy" }, { type: "azure-native:mobilenetwork/v20220401preview:SimPolicy" }, { type: "azure-native:mobilenetwork/v20221101:SimPolicy" }, { type: "azure-native:mobilenetwork/v20230601:SimPolicy" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:mobilenetwork/v20220301preview:SimPolicy" }, { type: "azure-native:mobilenetwork/v20220401preview:SimPolicy" }, { type: "azure-native:mobilenetwork/v20221101:SimPolicy" }, { type: "azure-native:mobilenetwork/v20230601:SimPolicy" }, { type: "azure-native:mobilenetwork/v20230901:SimPolicy" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(SimPolicy.__pulumiType, name, resourceInputs, opts);
     }

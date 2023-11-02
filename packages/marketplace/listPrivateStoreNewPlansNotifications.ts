@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * List new plans notifications
  * Azure REST API version: 2023-01-01.
+ *
+ * Other available API versions: 2021-12-01, 2022-03-01, 2022-09-01.
  */
 export function listPrivateStoreNewPlansNotifications(args: ListPrivateStoreNewPlansNotificationsArgs, opts?: pulumi.InvokeOptions): Promise<ListPrivateStoreNewPlansNotificationsResult> {
 
@@ -29,6 +31,8 @@ export interface ListPrivateStoreNewPlansNotificationsResult {
 /**
  * List new plans notifications
  * Azure REST API version: 2023-01-01.
+ *
+ * Other available API versions: 2021-12-01, 2022-03-01, 2022-09-01.
  */
 export function listPrivateStoreNewPlansNotificationsOutput(args: ListPrivateStoreNewPlansNotificationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListPrivateStoreNewPlansNotificationsResult> {
     return pulumi.output(args).apply((a: any) => listPrivateStoreNewPlansNotifications(a, opts))

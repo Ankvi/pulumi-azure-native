@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Gets the product link for the tag.
  * Azure REST API version: 2022-09-01-preview.
+ *
+ * Other available API versions: 2023-03-01-preview.
  */
 export function getWorkspaceTagProductLink(args: GetWorkspaceTagProductLinkArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkspaceTagProductLinkResult> {
 
@@ -63,6 +65,8 @@ export interface GetWorkspaceTagProductLinkResult {
 /**
  * Gets the product link for the tag.
  * Azure REST API version: 2022-09-01-preview.
+ *
+ * Other available API versions: 2023-03-01-preview.
  */
 export function getWorkspaceTagProductLinkOutput(args: GetWorkspaceTagProductLinkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkspaceTagProductLinkResult> {
     return pulumi.output(args).apply((a: any) => getWorkspaceTagProductLink(a, opts))

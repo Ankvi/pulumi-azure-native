@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Get custom image.
  * Azure REST API version: 2018-09-15.
+ *
+ * Other available API versions: 2016-05-15.
  */
 export function getCustomImage(args: GetCustomImageArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomImageResult> {
 
@@ -111,6 +113,8 @@ export interface GetCustomImageResult {
 /**
  * Get custom image.
  * Azure REST API version: 2018-09-15.
+ *
+ * Other available API versions: 2016-05-15.
  */
 export function getCustomImageOutput(args: GetCustomImageOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomImageResult> {
     return pulumi.output(args).apply((a: any) => getCustomImage(a, opts))

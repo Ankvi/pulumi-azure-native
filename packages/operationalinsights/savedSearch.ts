@@ -3,7 +3,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Value object for saved search results.
- * Azure REST API version: 2020-08-01. Prior API version in Azure Native 1.x: 2020-08-01
+ * Azure REST API version: 2020-08-01. Prior API version in Azure Native 1.x: 2020-08-01.
+ *
+ * Other available API versions: 2015-03-20.
  */
 export class SavedSearch extends pulumi.CustomResource {
     /**

@@ -3,7 +3,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Remote Private Endpoint Connection ARM resource.
- * Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2020-12-01
+ * Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2020-12-01.
  */
 export class StaticSitePrivateEndpointConnection extends pulumi.CustomResource {
     /**

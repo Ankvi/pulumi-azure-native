@@ -3,7 +3,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Storage Sync Service object.
- * Azure REST API version: 2022-06-01. Prior API version in Azure Native 1.x: 2020-03-01
+ * Azure REST API version: 2022-06-01. Prior API version in Azure Native 1.x: 2020-03-01.
+ *
+ * Other available API versions: 2017-06-05-preview, 2019-10-01, 2022-09-01.
  */
 export class StorageSyncService extends pulumi.CustomResource {
     /**
@@ -124,7 +126,7 @@ export class StorageSyncService extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:storagesync/v20170605preview:StorageSyncService" }, { type: "azure-native:storagesync/v20180402:StorageSyncService" }, { type: "azure-native:storagesync/v20180701:StorageSyncService" }, { type: "azure-native:storagesync/v20181001:StorageSyncService" }, { type: "azure-native:storagesync/v20190201:StorageSyncService" }, { type: "azure-native:storagesync/v20190301:StorageSyncService" }, { type: "azure-native:storagesync/v20190601:StorageSyncService" }, { type: "azure-native:storagesync/v20191001:StorageSyncService" }, { type: "azure-native:storagesync/v20200301:StorageSyncService" }, { type: "azure-native:storagesync/v20200901:StorageSyncService" }, { type: "azure-native:storagesync/v20220601:StorageSyncService" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:storagesync/v20170605preview:StorageSyncService" }, { type: "azure-native:storagesync/v20180402:StorageSyncService" }, { type: "azure-native:storagesync/v20180701:StorageSyncService" }, { type: "azure-native:storagesync/v20181001:StorageSyncService" }, { type: "azure-native:storagesync/v20190201:StorageSyncService" }, { type: "azure-native:storagesync/v20190301:StorageSyncService" }, { type: "azure-native:storagesync/v20190601:StorageSyncService" }, { type: "azure-native:storagesync/v20191001:StorageSyncService" }, { type: "azure-native:storagesync/v20200301:StorageSyncService" }, { type: "azure-native:storagesync/v20200901:StorageSyncService" }, { type: "azure-native:storagesync/v20220601:StorageSyncService" }, { type: "azure-native:storagesync/v20220901:StorageSyncService" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(StorageSyncService.__pulumiType, name, resourceInputs, opts);
     }

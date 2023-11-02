@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Returns Modeling resources for a given name.
  * Azure REST API version: 2022-02-01.
+ *
+ * Other available API versions: 2022-03-01-preview.
  */
 export function getModeling(args: GetModelingArgs, opts?: pulumi.InvokeOptions): Promise<GetModelingResult> {
 
@@ -66,6 +68,8 @@ export interface GetModelingResult {
 /**
  * Returns Modeling resources for a given name.
  * Azure REST API version: 2022-02-01.
+ *
+ * Other available API versions: 2022-03-01-preview.
  */
 export function getModelingOutput(args: GetModelingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetModelingResult> {
     return pulumi.output(args).apply((a: any) => getModeling(a, opts))

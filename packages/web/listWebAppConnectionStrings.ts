@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Description for Gets the connection strings of an app.
  * Azure REST API version: 2022-09-01.
+ *
+ * Other available API versions: 2020-10-01.
  */
 export function listWebAppConnectionStrings(args: ListWebAppConnectionStringsArgs, opts?: pulumi.InvokeOptions): Promise<ListWebAppConnectionStringsResult> {
 
@@ -53,6 +55,8 @@ export interface ListWebAppConnectionStringsResult {
 /**
  * Description for Gets the connection strings of an app.
  * Azure REST API version: 2022-09-01.
+ *
+ * Other available API versions: 2020-10-01.
  */
 export function listWebAppConnectionStringsOutput(args: ListWebAppConnectionStringsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListWebAppConnectionStringsResult> {
     return pulumi.output(args).apply((a: any) => listWebAppConnectionStrings(a, opts))

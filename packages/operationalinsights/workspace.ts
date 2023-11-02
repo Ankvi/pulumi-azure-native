@@ -3,7 +3,9 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * The top level Workspace resource container.
- * Azure REST API version: 2022-10-01. Prior API version in Azure Native 1.x: 2020-10-01
+ * Azure REST API version: 2022-10-01. Prior API version in Azure Native 1.x: 2020-10-01.
+ *
+ * Other available API versions: 2015-11-01-preview, 2020-08-01, 2020-10-01, 2021-06-01, 2021-12-01-preview.
  */
 export class Workspace extends pulumi.CustomResource {
     /**

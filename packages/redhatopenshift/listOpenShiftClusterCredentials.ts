@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * The operation returns the credentials.
  * Azure REST API version: 2022-09-04.
+ *
+ * Other available API versions: 2023-04-01, 2023-07-01-preview, 2023-09-04.
  */
 export function listOpenShiftClusterCredentials(args: ListOpenShiftClusterCredentialsArgs, opts?: pulumi.InvokeOptions): Promise<ListOpenShiftClusterCredentialsResult> {
 
@@ -40,6 +42,8 @@ export interface ListOpenShiftClusterCredentialsResult {
 /**
  * The operation returns the credentials.
  * Azure REST API version: 2022-09-04.
+ *
+ * Other available API versions: 2023-04-01, 2023-07-01-preview, 2023-09-04.
  */
 export function listOpenShiftClusterCredentialsOutput(args: ListOpenShiftClusterCredentialsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListOpenShiftClusterCredentialsResult> {
     return pulumi.output(args).apply((a: any) => listOpenShiftClusterCredentials(a, opts))

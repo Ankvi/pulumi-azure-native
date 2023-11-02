@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Gets a Kusto cluster database principalAssignment.
  * Azure REST API version: 2022-12-29.
+ *
+ * Other available API versions: 2023-05-02, 2023-08-15.
  */
 export function getDatabasePrincipalAssignment(args: GetDatabasePrincipalAssignmentArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabasePrincipalAssignmentResult> {
 
@@ -86,6 +88,8 @@ export interface GetDatabasePrincipalAssignmentResult {
 /**
  * Gets a Kusto cluster database principalAssignment.
  * Azure REST API version: 2022-12-29.
+ *
+ * Other available API versions: 2023-05-02, 2023-08-15.
  */
 export function getDatabasePrincipalAssignmentOutput(args: GetDatabasePrincipalAssignmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabasePrincipalAssignmentResult> {
     return pulumi.output(args).apply((a: any) => getDatabasePrincipalAssignment(a, opts))

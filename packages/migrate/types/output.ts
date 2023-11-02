@@ -521,11 +521,59 @@ export interface CertResponse {
     secretStore?: string;
 }
 
+/**
+ * Collector agent property class.
+ */
+export interface CollectorAgentPropertiesBaseResponse {
+    /**
+     * Gets the collector agent id.
+     */
+    id?: string;
+    /**
+     * Gets the collector last heartbeat time.
+     */
+    lastHeartbeatUtc?: string;
+    /**
+     * Gets or sets the SPN details.
+     */
+    spnDetails?: CollectorAgentSpnPropertiesBaseResponse;
+    /**
+     * Gets the collector agent version.
+     */
+    version?: string;
+}
+
 export interface CollectorAgentPropertiesResponse {
     id: string;
     lastHeartbeatUtc: string;
     spnDetails?: CollectorBodyAgentSpnPropertiesResponse;
     version: string;
+}
+
+/**
+ * Collector agent SPN details class.
+ */
+export interface CollectorAgentSpnPropertiesBaseResponse {
+    /**
+     * Gets the AAD application id.
+     */
+    applicationId?: string;
+    /**
+     * Gets the AAD audience url.
+     */
+    audience?: string;
+    /**
+     * Gets the AAD authority endpoint.
+     */
+    authority?: string;
+    /**
+     * Gets the object id of the AAD application.
+     */
+    objectId?: string;
+    /**
+     * Gets the tenant id of the AAD application.
+     */
+    tenantId?: string;
 }
 
 export interface CollectorBodyAgentSpnPropertiesResponse {
@@ -724,6 +772,20 @@ export interface DiskEncryptionSetResourceSettingsResponse {
      * Gets or sets the target Resource name.
      */
     targetResourceName: string;
+}
+
+/**
+ * Entity Uptime.
+ */
+export interface EntityUptimeResponse {
+    /**
+     * Gets the days per month.
+     */
+    daysPerMonth?: number;
+    /**
+     * Gets the hours per day.
+     */
+    hoursPerDay?: number;
 }
 
 /**
@@ -2074,6 +2136,10 @@ export interface PrivateEndpointConnectionResponse {
      */
     eTag?: string;
     /**
+     * The group ids for the private endpoint resource.
+     */
+    groupIds?: string[];
+    /**
      * Path reference to this private endpoint endpoint connection. /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/privateEndpointConnections/{privateEndpointConnectionName}
      */
     id: string;
@@ -2082,9 +2148,21 @@ export interface PrivateEndpointConnectionResponse {
      */
     name: string;
     /**
+     * The private endpoint resource.
+     */
+    privateEndpoint?: PrivateEndpointResponse;
+    /**
+     * A collection of information about the state of the connection between service consumer and provider.
+     */
+    privateLinkServiceConnectionState?: PrivateLinkServiceConnectionStateResponse;
+    /**
      * Properties of the private endpoint endpoint connection.
      */
     properties: PrivateEndpointConnectionPropertiesResponse;
+    /**
+     * The provisioning state of the private endpoint connection resource.
+     */
+    provisioningState?: string;
     /**
      * Metadata pertaining to creation and last modification of the resource.
      */
@@ -2104,6 +2182,16 @@ export interface PrivateEndpointDetailsResponse {
     manualPrivateLinkServiceConnections?: PrivateLinkServiceConnectionResponse[];
     privateLinkServiceConnections?: PrivateLinkServiceConnectionResponse[];
     privateLinkServiceProxies?: PrivateLinkServiceProxyResponse[];
+}
+
+/**
+ * The private endpoint resource.
+ */
+export interface PrivateEndpointResponse {
+    /**
+     * The ARM identifier for private endpoint.
+     */
+    id: string;
 }
 
 /**
@@ -2512,6 +2600,28 @@ export interface SqlDatabaseResourceSettingsResponse {
 }
 
 /**
+ * SQL database assessment settings.
+ */
+export interface SqlDbSettingsResponse {
+    /**
+     * Gets or sets the azure SQL compute tier.
+     */
+    azureSqlComputeTier?: string;
+    /**
+     * Gets or sets the azure PAAS SQL instance type.
+     */
+    azureSqlDataBaseType?: string;
+    /**
+     * Gets or sets the azure SQL purchase model.
+     */
+    azureSqlPurchaseModel?: string;
+    /**
+     * Gets or sets the azure SQL service tier.
+     */
+    azureSqlServiceTier?: string;
+}
+
+/**
  * Defines the Sql ElasticPool resource settings.
  */
 export interface SqlElasticPoolResourceSettingsResponse {
@@ -2539,6 +2649,20 @@ export interface SqlElasticPoolResourceSettingsResponse {
 }
 
 /**
+ * SQL managed instance assessment settings.
+ */
+export interface SqlMiSettingsResponse {
+    /**
+     * Gets or sets the azure PAAS SQL instance type.
+     */
+    azureSqlInstanceType?: string;
+    /**
+     * Gets or sets the azure SQL service tier.
+     */
+    azureSqlServiceTier?: string;
+}
+
+/**
  * Defines the SQL Server resource settings.
  */
 export interface SqlServerResourceSettingsResponse {
@@ -2555,6 +2679,17 @@ export interface SqlServerResourceSettingsResponse {
      * Gets or sets the target Resource name.
      */
     targetResourceName: string;
+}
+
+/**
+ * SQL VM assessment settings.
+ */
+export interface SqlVmSettingsResponse {
+    /**
+     * Gets or sets the Azure VM families (calling instance series to keep it
+     * consistent with other targets).
+     */
+    instanceSeries?: string[];
 }
 
 /**
@@ -3120,6 +3255,7 @@ export interface WorkloadInstanceModelResponseSystemData {
      */
     lastModifiedByType?: string;
 }
+
 
 
 

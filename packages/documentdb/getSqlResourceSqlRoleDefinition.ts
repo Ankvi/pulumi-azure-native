@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Retrieves the properties of an existing Azure Cosmos DB SQL Role Definition with the given Id.
  * Azure REST API version: 2023-04-15.
+ *
+ * Other available API versions: 2023-09-15, 2023-09-15-preview.
  */
 export function getSqlResourceSqlRoleDefinition(args: GetSqlResourceSqlRoleDefinitionArgs, opts?: pulumi.InvokeOptions): Promise<GetSqlResourceSqlRoleDefinitionResult> {
 
@@ -62,6 +64,8 @@ export interface GetSqlResourceSqlRoleDefinitionResult {
 /**
  * Retrieves the properties of an existing Azure Cosmos DB SQL Role Definition with the given Id.
  * Azure REST API version: 2023-04-15.
+ *
+ * Other available API versions: 2023-09-15, 2023-09-15-preview.
  */
 export function getSqlResourceSqlRoleDefinitionOutput(args: GetSqlResourceSqlRoleDefinitionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSqlResourceSqlRoleDefinitionResult> {
     return pulumi.output(args).apply((a: any) => getSqlResourceSqlRoleDefinition(a, opts))

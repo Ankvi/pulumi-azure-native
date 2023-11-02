@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * A paginated list of FeaturesetJob entities.
  * Azure REST API version: 2023-04-01-preview.
+ *
+ * Other available API versions: 2023-06-01-preview.
  */
 export function listFeaturesetVersionMaterializationJobs(args: ListFeaturesetVersionMaterializationJobsArgs, opts?: pulumi.InvokeOptions): Promise<ListFeaturesetVersionMaterializationJobsResult> {
 
@@ -71,6 +73,8 @@ export interface ListFeaturesetVersionMaterializationJobsResult {
 /**
  * A paginated list of FeaturesetJob entities.
  * Azure REST API version: 2023-04-01-preview.
+ *
+ * Other available API versions: 2023-06-01-preview.
  */
 export function listFeaturesetVersionMaterializationJobsOutput(args: ListFeaturesetVersionMaterializationJobsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListFeaturesetVersionMaterializationJobsResult> {
     return pulumi.output(args).apply((a: any) => listFeaturesetVersionMaterializationJobs(a, opts))

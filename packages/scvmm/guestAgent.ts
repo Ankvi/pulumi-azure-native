@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Defines the GuestAgent.
  * Azure REST API version: 2022-05-21-preview.
+ *
+ * Other available API versions: 2023-04-01-preview.
  */
 export class GuestAgent extends pulumi.CustomResource {
     /**

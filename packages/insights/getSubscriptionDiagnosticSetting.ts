@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets the active subscription diagnostic settings for the specified resource.
  * Azure REST API version: 2021-05-01-preview.
+ *
+ * Other available API versions: 2017-05-01-preview.
  */
 export function getSubscriptionDiagnosticSetting(args: GetSubscriptionDiagnosticSettingArgs, opts?: pulumi.InvokeOptions): Promise<GetSubscriptionDiagnosticSettingResult> {
 
@@ -72,6 +74,8 @@ export interface GetSubscriptionDiagnosticSettingResult {
 /**
  * Gets the active subscription diagnostic settings for the specified resource.
  * Azure REST API version: 2021-05-01-preview.
+ *
+ * Other available API versions: 2017-05-01-preview.
  */
 export function getSubscriptionDiagnosticSettingOutput(args: GetSubscriptionDiagnosticSettingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubscriptionDiagnosticSettingResult> {
     return pulumi.output(args).apply((a: any) => getSubscriptionDiagnosticSetting(a, opts))

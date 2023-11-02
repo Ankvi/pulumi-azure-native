@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * The operation to get the extension.
  * Azure REST API version: 2022-05-21-preview.
+ *
+ * Other available API versions: 2023-04-01-preview.
  */
 export function getMachineExtension(args: GetMachineExtensionArgs, opts?: pulumi.InvokeOptions): Promise<GetMachineExtensionResult> {
 
@@ -98,6 +100,8 @@ export interface GetMachineExtensionResult {
 /**
  * The operation to get the extension.
  * Azure REST API version: 2022-05-21-preview.
+ *
+ * Other available API versions: 2023-04-01-preview.
  */
 export function getMachineExtensionOutput(args: GetMachineExtensionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMachineExtensionResult> {
     return pulumi.output(args).apply((a: any) => getMachineExtension(a, opts))

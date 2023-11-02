@@ -2,7 +2,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * The key-value resource along with all resource properties.
- * Azure REST API version: 2023-03-01. Prior API version in Azure Native 1.x: 2020-07-01-preview
+ * Azure REST API version: 2023-03-01. Prior API version in Azure Native 1.x: 2020-07-01-preview.
  */
 export class KeyValue extends pulumi.CustomResource {
     /**

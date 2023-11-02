@@ -3,7 +3,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * A private endpoint connection for a project.
- * Azure REST API version: 2019-10-01. Prior API version in Azure Native 1.x: 2019-10-01
+ * Azure REST API version: 2019-10-01. Prior API version in Azure Native 1.x: 2019-10-01.
  */
 export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
@@ -83,7 +83,7 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:migrate/v20191001:PrivateEndpointConnection" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:migrate/v20191001:PrivateEndpointConnection" }, { type: "azure-native:migrate/v20230315:PrivateEndpointConnection" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PrivateEndpointConnection.__pulumiType, name, resourceInputs, opts);
     }

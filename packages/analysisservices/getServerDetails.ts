@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets details about the specified Analysis Services server.
  * Azure REST API version: 2017-08-01.
+ *
+ * Other available API versions: 2017-08-01-beta.
  */
 export function getServerDetails(args: GetServerDetailsArgs, opts?: pulumi.InvokeOptions): Promise<GetServerDetailsResult> {
 
@@ -97,6 +99,8 @@ export interface GetServerDetailsResult {
 /**
  * Gets details about the specified Analysis Services server.
  * Azure REST API version: 2017-08-01.
+ *
+ * Other available API versions: 2017-08-01-beta.
  */
 export function getServerDetailsOutput(args: GetServerDetailsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerDetailsResult> {
     return pulumi.output(args).apply((a: any) => getServerDetails(a, opts))

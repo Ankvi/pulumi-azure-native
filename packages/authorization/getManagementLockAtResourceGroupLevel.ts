@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets a management lock at the resource group level.
  * Azure REST API version: 2020-05-01.
+ *
+ * Other available API versions: 2015-01-01.
  */
 export function getManagementLockAtResourceGroupLevel(args: GetManagementLockAtResourceGroupLevelArgs, opts?: pulumi.InvokeOptions): Promise<GetManagementLockAtResourceGroupLevelResult> {
 
@@ -61,6 +63,8 @@ export interface GetManagementLockAtResourceGroupLevelResult {
 /**
  * Gets a management lock at the resource group level.
  * Azure REST API version: 2020-05-01.
+ *
+ * Other available API versions: 2015-01-01.
  */
 export function getManagementLockAtResourceGroupLevelOutput(args: GetManagementLockAtResourceGroupLevelOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetManagementLockAtResourceGroupLevelResult> {
     return pulumi.output(args).apply((a: any) => getManagementLockAtResourceGroupLevel(a, opts))

@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Description for Gets the Azure storage account configurations of an app.
  * Azure REST API version: 2022-09-01.
+ *
+ * Other available API versions: 2020-10-01.
  */
 export function listWebAppAzureStorageAccountsSlot(args: ListWebAppAzureStorageAccountsSlotArgs, opts?: pulumi.InvokeOptions): Promise<ListWebAppAzureStorageAccountsSlotResult> {
 
@@ -58,6 +60,8 @@ export interface ListWebAppAzureStorageAccountsSlotResult {
 /**
  * Description for Gets the Azure storage account configurations of an app.
  * Azure REST API version: 2022-09-01.
+ *
+ * Other available API versions: 2020-10-01.
  */
 export function listWebAppAzureStorageAccountsSlotOutput(args: ListWebAppAzureStorageAccountsSlotOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListWebAppAzureStorageAccountsSlotResult> {
     return pulumi.output(args).apply((a: any) => listWebAppAzureStorageAccountsSlot(a, opts))

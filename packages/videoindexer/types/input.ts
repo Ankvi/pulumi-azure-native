@@ -27,3 +27,4 @@ export interface MediaServicesForPutRequestArgs {
      */
     userAssignedIdentity?: pulumi.Input<string>;
 }
+

@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * The commitment plan association.
  * Azure REST API version: 2023-05-01.
+ *
+ * Other available API versions: 2023-10-01-preview.
  */
 export class CommitmentPlanAssociation extends pulumi.CustomResource {
     /**
@@ -86,7 +88,7 @@ export class CommitmentPlanAssociation extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:cognitiveservices/v20221201:CommitmentPlanAssociation" }, { type: "azure-native:cognitiveservices/v20230501:CommitmentPlanAssociation" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:cognitiveservices/v20221201:CommitmentPlanAssociation" }, { type: "azure-native:cognitiveservices/v20230501:CommitmentPlanAssociation" }, { type: "azure-native:cognitiveservices/v20231001preview:CommitmentPlanAssociation" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(CommitmentPlanAssociation.__pulumiType, name, resourceInputs, opts);
     }

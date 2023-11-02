@@ -4,6 +4,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Gets the hierarchy settings defined at the Management Group level. Settings can only be set on the root Management Group of the hierarchy.
  *
  * Azure REST API version: 2021-04-01.
+ *
+ * Other available API versions: 2023-04-01.
  */
 export function getHierarchySetting(args: GetHierarchySettingArgs, opts?: pulumi.InvokeOptions): Promise<GetHierarchySettingResult> {
 
@@ -53,6 +55,8 @@ export interface GetHierarchySettingResult {
  * Gets the hierarchy settings defined at the Management Group level. Settings can only be set on the root Management Group of the hierarchy.
  *
  * Azure REST API version: 2021-04-01.
+ *
+ * Other available API versions: 2023-04-01.
  */
 export function getHierarchySettingOutput(args: GetHierarchySettingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHierarchySettingResult> {
     return pulumi.output(args).apply((a: any) => getHierarchySetting(a, opts))

@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Get an integration runtime
  * Azure REST API version: 2021-06-01.
+ *
+ * Other available API versions: 2021-06-01-preview.
  */
 export function getIntegrationRuntime(args: GetIntegrationRuntimeArgs, opts?: pulumi.InvokeOptions): Promise<GetIntegrationRuntimeResult> {
 
@@ -58,6 +60,8 @@ export interface GetIntegrationRuntimeResult {
 /**
  * Get an integration runtime
  * Azure REST API version: 2021-06-01.
+ *
+ * Other available API versions: 2021-06-01-preview.
  */
 export function getIntegrationRuntimeOutput(args: GetIntegrationRuntimeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIntegrationRuntimeResult> {
     return pulumi.output(args).apply((a: any) => getIntegrationRuntime(a, opts))

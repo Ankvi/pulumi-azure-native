@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * The network security perimeter link resource
  * Azure REST API version: 2021-02-01-preview.
+ *
+ * Other available API versions: 2023-07-01-preview, 2023-08-01-preview.
  */
 export class NspLink extends pulumi.CustomResource {
     /**
@@ -133,7 +135,7 @@ export class NspLink extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:network/v20210201preview:NspLink" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:network/v20210201preview:NspLink" }, { type: "azure-native:network/v20230701preview:NspLink" }, { type: "azure-native:network/v20230801preview:NspLink" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(NspLink.__pulumiType, name, resourceInputs, opts);
     }
