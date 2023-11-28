@@ -29,6 +29,30 @@ export interface B2CTenantResourcePropertiesResponseBillingConfig {
 }
 
 /**
+ * SKU properties of the Azure AD for customers tenant. Learn more about Azure AD for customers billing at [https://aka.ms/ciambilling](https://aka.ms/ciambilling).
+ */
+export interface CIAMResourceSKUResponse {
+    /**
+     * The name of the SKU for the tenant.
+     */
+    name: string;
+}
+
+/**
+ * These properties are used to create the Azure AD for customers tenant. These properties are not part of the Azure resource.
+ */
+export interface CreateCIAMTenantPropertiesResponse {
+    /**
+     * Country code of Azure tenant (e.g. 'US'). Refer to [https://aka.ms/ciam-data-location](https://aka.ms/ciam-data-location) to see valid country codes and corresponding data residency locations. If you do not see a country code in an valid data residency location, choose one from the list.
+     */
+    countryCode: string;
+    /**
+     * The display name of the Azure AD for customers tenant.
+     */
+    displayName: string;
+}
+
+/**
  * Metadata pertaining to creation and last modification of the resource.
  */
 export interface SystemDataResponse {
@@ -57,5 +81,6 @@ export interface SystemDataResponse {
      */
     lastModifiedByType?: string;
 }
+
 
 

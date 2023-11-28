@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Definition of the dsc node configuration.
  * Azure REST API version: 2022-08-08. Prior API version in Azure Native 1.x: 2019-06-01.
+ *
+ * Other available API versions: 2023-05-15-preview, 2023-11-01.
  */
 export class DscNodeConfiguration extends pulumi.CustomResource {
     /**
@@ -111,7 +113,7 @@ export class DscNodeConfiguration extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:automation/v20151031:DscNodeConfiguration" }, { type: "azure-native:automation/v20180115:DscNodeConfiguration" }, { type: "azure-native:automation/v20190601:DscNodeConfiguration" }, { type: "azure-native:automation/v20200113preview:DscNodeConfiguration" }, { type: "azure-native:automation/v20220808:DscNodeConfiguration" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:automation/v20151031:DscNodeConfiguration" }, { type: "azure-native:automation/v20180115:DscNodeConfiguration" }, { type: "azure-native:automation/v20190601:DscNodeConfiguration" }, { type: "azure-native:automation/v20200113preview:DscNodeConfiguration" }, { type: "azure-native:automation/v20220808:DscNodeConfiguration" }, { type: "azure-native:automation/v20230515preview:DscNodeConfiguration" }, { type: "azure-native:automation/v20231101:DscNodeConfiguration" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(DscNodeConfiguration.__pulumiType, name, resourceInputs, opts);
     }

@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Retrieves information about the view of a license profile.
  * Azure REST API version: 2023-06-20-preview.
+ *
+ * Other available API versions: 2023-10-03-preview.
  */
 export function getLicenseProfile(args: GetLicenseProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetLicenseProfileResult> {
 
@@ -90,6 +92,8 @@ export interface GetLicenseProfileResult {
 /**
  * Retrieves information about the view of a license profile.
  * Azure REST API version: 2023-06-20-preview.
+ *
+ * Other available API versions: 2023-10-03-preview.
  */
 export function getLicenseProfileOutput(args: GetLicenseProfileOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLicenseProfileResult> {
     return pulumi.output(args).apply((a: any) => getLicenseProfile(a, opts))

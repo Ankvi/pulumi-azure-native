@@ -281,6 +281,72 @@ import * as pulumi from "@pulumi/pulumi";
     }
 
     /**
+     * AzureBackupServer (DPMVenus) workload-specific protection container.
+     */
+    export interface AzureBackupServerContainerArgs {
+        /**
+         * Type of backup management for the container.
+         */
+        backupManagementType?: pulumi.Input<string | enums.BackupManagementType>;
+        /**
+         * Specifies whether the container is re-registrable.
+         */
+        canReRegister?: pulumi.Input<boolean>;
+        /**
+         * ID of container.
+         */
+        containerId?: pulumi.Input<string>;
+        /**
+         * Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+         * Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+         * Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+         * Backup is VMAppContainer
+         * Expected value is 'AzureBackupServerContainer'.
+         */
+        containerType: pulumi.Input<"AzureBackupServerContainer">;
+        /**
+         * Backup engine Agent version
+         */
+        dpmAgentVersion?: pulumi.Input<string>;
+        /**
+         * List of BackupEngines protecting the container
+         */
+        dpmServers?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Extended Info of the container.
+         */
+        extendedInfo?: pulumi.Input<DPMContainerExtendedInfoArgs>;
+        /**
+         * Friendly name of the container.
+         */
+        friendlyName?: pulumi.Input<string>;
+        /**
+         * Status of health of the container.
+         */
+        healthStatus?: pulumi.Input<string>;
+        /**
+         * Type of the protectable object associated with this container
+         */
+        protectableObjectType?: pulumi.Input<string>;
+        /**
+         * Number of protected items in the BackupEngine
+         */
+        protectedItemCount?: pulumi.Input<number>;
+        /**
+         * Protection status of the container.
+         */
+        protectionStatus?: pulumi.Input<string>;
+        /**
+         * Status of registration of the container with the Recovery Services Vault.
+         */
+        registrationStatus?: pulumi.Input<string>;
+        /**
+         * To check if upgrade available
+         */
+        upgradeAvailable?: pulumi.Input<boolean>;
+    }
+
+    /**
      * Fabric provider specific settings.
      */
     export interface AzureFabricCreationInputArgs {
@@ -296,10 +362,948 @@ import * as pulumi from "@pulumi/pulumi";
     }
 
     /**
+     * AzureStorage backup policy.
+     */
+    export interface AzureFileShareProtectionPolicyArgs {
+        /**
+         * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+         * Expected value is 'AzureStorage'.
+         */
+        backupManagementType: pulumi.Input<"AzureStorage">;
+        /**
+         * Number of items associated with this policy.
+         */
+        protectedItemsCount?: pulumi.Input<number>;
+        /**
+         * ResourceGuard Operation Requests
+         */
+        resourceGuardOperationRequests?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Retention policy with the details on backup copy retention ranges.
+         */
+        retentionPolicy?: pulumi.Input<LongTermRetentionPolicyArgs | SimpleRetentionPolicyArgs>;
+        /**
+         * Backup schedule specified as part of backup policy.
+         */
+        schedulePolicy?: pulumi.Input<LogSchedulePolicyArgs | LongTermSchedulePolicyArgs | SimpleSchedulePolicyArgs | SimpleSchedulePolicyV2Args>;
+        /**
+         * TimeZone optional input as string. For example: TimeZone = "Pacific Standard Time".
+         */
+        timeZone?: pulumi.Input<string>;
+        /**
+         * Retention policy with the details on hardened backup copy retention ranges.
+         */
+        vaultRetentionPolicy?: pulumi.Input<VaultRetentionPolicyArgs>;
+        /**
+         * Type of workload for the backup management
+         */
+        workLoadType?: pulumi.Input<string | enums.WorkloadType>;
+    }
+
+    /**
+     * Azure File Share workload-specific backup item.
+     */
+    export interface AzureFileshareProtectedItemArgs {
+        /**
+         * Name of the backup set the backup item belongs to
+         */
+        backupSetName?: pulumi.Input<string>;
+        /**
+         * Unique name of container
+         */
+        containerName?: pulumi.Input<string>;
+        /**
+         * Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+         */
+        createMode?: pulumi.Input<string | enums.CreateMode>;
+        /**
+         * Time for deferred deletion in UTC
+         */
+        deferredDeleteTimeInUTC?: pulumi.Input<string>;
+        /**
+         * Time remaining before the DS marked for deferred delete is permanently deleted
+         */
+        deferredDeleteTimeRemaining?: pulumi.Input<string>;
+        /**
+         * Additional information with this backup item.
+         */
+        extendedInfo?: pulumi.Input<AzureFileshareProtectedItemExtendedInfoArgs>;
+        /**
+         * Friendly name of the fileshare represented by this backup item.
+         */
+        friendlyName?: pulumi.Input<string>;
+        /**
+         * Flag to identify whether datasource is protected in archive
+         */
+        isArchiveEnabled?: pulumi.Input<boolean>;
+        /**
+         * Flag to identify whether the deferred deleted DS is to be purged soon
+         */
+        isDeferredDeleteScheduleUpcoming?: pulumi.Input<boolean>;
+        /**
+         * Flag to identify that deferred deleted DS is to be moved into Pause state
+         */
+        isRehydrate?: pulumi.Input<boolean>;
+        /**
+         * Flag to identify whether the DS is scheduled for deferred delete
+         */
+        isScheduledForDeferredDelete?: pulumi.Input<boolean>;
+        /**
+         * Health details of different KPIs
+         */
+        kpisHealths?: pulumi.Input<{[key: string]: pulumi.Input<KPIResourceHealthDetailsArgs>}>;
+        /**
+         * Last backup operation status. Possible values: Healthy, Unhealthy.
+         */
+        lastBackupStatus?: pulumi.Input<string>;
+        /**
+         * Timestamp of the last backup operation on this backup item.
+         */
+        lastBackupTime?: pulumi.Input<string>;
+        /**
+         * Timestamp when the last (latest) backup copy was created for this backup item.
+         */
+        lastRecoveryPoint?: pulumi.Input<string>;
+        /**
+         * ID of the backup policy with which this item is backed up.
+         */
+        policyId?: pulumi.Input<string>;
+        /**
+         * Name of the policy used for protection
+         */
+        policyName?: pulumi.Input<string>;
+        /**
+         * backup item type.
+         * Expected value is 'AzureFileShareProtectedItem'.
+         */
+        protectedItemType: pulumi.Input<"AzureFileShareProtectedItem">;
+        /**
+         * Backup state of this backup item.
+         */
+        protectionState?: pulumi.Input<string | enums.ProtectionState>;
+        /**
+         * Backup status of this backup item.
+         */
+        protectionStatus?: pulumi.Input<string>;
+        /**
+         * ResourceGuardOperationRequests on which LAC check will be performed
+         */
+        resourceGuardOperationRequests?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Soft delete retention period in days
+         */
+        softDeleteRetentionPeriodInDays?: pulumi.Input<number>;
+        /**
+         * ARM ID of the resource to be backed up.
+         */
+        sourceResourceId?: pulumi.Input<string>;
+    }
+
+    /**
+     * Additional information about Azure File Share backup item.
+     */
+    export interface AzureFileshareProtectedItemExtendedInfoArgs {
+        /**
+         * The oldest backup copy available for this item in the service.
+         */
+        oldestRecoveryPoint?: pulumi.Input<string>;
+        /**
+         * Indicates consistency of policy object and policy applied to this backup item.
+         */
+        policyState?: pulumi.Input<string>;
+        /**
+         * Number of available backup copies associated with this backup item.
+         */
+        recoveryPointCount?: pulumi.Input<number>;
+    }
+
+    /**
+     * IaaS VM workload-specific backup item representing a classic virtual machine.
+     */
+    export interface AzureIaaSClassicComputeVMContainerArgs {
+        /**
+         * Type of backup management for the container.
+         */
+        backupManagementType?: pulumi.Input<string | enums.BackupManagementType>;
+        /**
+         * Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+         * Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+         * Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+         * Backup is VMAppContainer
+         * Expected value is 'Microsoft.ClassicCompute/virtualMachines'.
+         */
+        containerType: pulumi.Input<"Microsoft.ClassicCompute/virtualMachines">;
+        /**
+         * Friendly name of the container.
+         */
+        friendlyName?: pulumi.Input<string>;
+        /**
+         * Status of health of the container.
+         */
+        healthStatus?: pulumi.Input<string>;
+        /**
+         * Type of the protectable object associated with this container
+         */
+        protectableObjectType?: pulumi.Input<string>;
+        /**
+         * Status of registration of the container with the Recovery Services Vault.
+         */
+        registrationStatus?: pulumi.Input<string>;
+        /**
+         * Resource group name of Recovery Services Vault.
+         */
+        resourceGroup?: pulumi.Input<string>;
+        /**
+         * Fully qualified ARM url of the virtual machine represented by this Azure IaaS VM container.
+         */
+        virtualMachineId?: pulumi.Input<string>;
+        /**
+         * Specifies whether the container represents a Classic or an Azure Resource Manager VM.
+         */
+        virtualMachineVersion?: pulumi.Input<string>;
+    }
+
+    /**
+     * IaaS VM workload-specific backup item representing the Classic Compute VM.
+     */
+    export interface AzureIaaSClassicComputeVMProtectedItemArgs {
+        /**
+         * Name of the backup set the backup item belongs to
+         */
+        backupSetName?: pulumi.Input<string>;
+        /**
+         * Unique name of container
+         */
+        containerName?: pulumi.Input<string>;
+        /**
+         * Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+         */
+        createMode?: pulumi.Input<string | enums.CreateMode>;
+        /**
+         * Time for deferred deletion in UTC
+         */
+        deferredDeleteTimeInUTC?: pulumi.Input<string>;
+        /**
+         * Time remaining before the DS marked for deferred delete is permanently deleted
+         */
+        deferredDeleteTimeRemaining?: pulumi.Input<string>;
+        /**
+         * Additional information for this backup item.
+         */
+        extendedInfo?: pulumi.Input<AzureIaaSVMProtectedItemExtendedInfoArgs>;
+        /**
+         * Extended Properties for Azure IaasVM Backup.
+         */
+        extendedProperties?: pulumi.Input<ExtendedPropertiesArgs>;
+        /**
+         * Flag to identify whether datasource is protected in archive
+         */
+        isArchiveEnabled?: pulumi.Input<boolean>;
+        /**
+         * Flag to identify whether the deferred deleted DS is to be purged soon
+         */
+        isDeferredDeleteScheduleUpcoming?: pulumi.Input<boolean>;
+        /**
+         * Flag to identify that deferred deleted DS is to be moved into Pause state
+         */
+        isRehydrate?: pulumi.Input<boolean>;
+        /**
+         * Flag to identify whether the DS is scheduled for deferred delete
+         */
+        isScheduledForDeferredDelete?: pulumi.Input<boolean>;
+        /**
+         * Health details of different KPIs
+         */
+        kpisHealths?: pulumi.Input<{[key: string]: pulumi.Input<KPIResourceHealthDetailsArgs>}>;
+        /**
+         * Last backup operation status.
+         */
+        lastBackupStatus?: pulumi.Input<string>;
+        /**
+         * Timestamp when the last (latest) backup copy was created for this backup item.
+         */
+        lastRecoveryPoint?: pulumi.Input<string>;
+        /**
+         * ID of the backup policy with which this item is backed up.
+         */
+        policyId?: pulumi.Input<string>;
+        /**
+         * Name of the policy used for protection
+         */
+        policyName?: pulumi.Input<string>;
+        /**
+         * backup item type.
+         * Expected value is 'Microsoft.ClassicCompute/virtualMachines'.
+         */
+        protectedItemType: pulumi.Input<"Microsoft.ClassicCompute/virtualMachines">;
+        /**
+         * Backup state of this backup item.
+         */
+        protectionState?: pulumi.Input<string | enums.ProtectionState>;
+        /**
+         * Backup status of this backup item.
+         */
+        protectionStatus?: pulumi.Input<string>;
+        /**
+         * ResourceGuardOperationRequests on which LAC check will be performed
+         */
+        resourceGuardOperationRequests?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Soft delete retention period in days
+         */
+        softDeleteRetentionPeriodInDays?: pulumi.Input<number>;
+        /**
+         * ARM ID of the resource to be backed up.
+         */
+        sourceResourceId?: pulumi.Input<string>;
+    }
+
+    /**
+     * IaaS VM workload-specific backup item representing an Azure Resource Manager virtual machine.
+     */
+    export interface AzureIaaSComputeVMContainerArgs {
+        /**
+         * Type of backup management for the container.
+         */
+        backupManagementType?: pulumi.Input<string | enums.BackupManagementType>;
+        /**
+         * Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+         * Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+         * Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+         * Backup is VMAppContainer
+         * Expected value is 'Microsoft.Compute/virtualMachines'.
+         */
+        containerType: pulumi.Input<"Microsoft.Compute/virtualMachines">;
+        /**
+         * Friendly name of the container.
+         */
+        friendlyName?: pulumi.Input<string>;
+        /**
+         * Status of health of the container.
+         */
+        healthStatus?: pulumi.Input<string>;
+        /**
+         * Type of the protectable object associated with this container
+         */
+        protectableObjectType?: pulumi.Input<string>;
+        /**
+         * Status of registration of the container with the Recovery Services Vault.
+         */
+        registrationStatus?: pulumi.Input<string>;
+        /**
+         * Resource group name of Recovery Services Vault.
+         */
+        resourceGroup?: pulumi.Input<string>;
+        /**
+         * Fully qualified ARM url of the virtual machine represented by this Azure IaaS VM container.
+         */
+        virtualMachineId?: pulumi.Input<string>;
+        /**
+         * Specifies whether the container represents a Classic or an Azure Resource Manager VM.
+         */
+        virtualMachineVersion?: pulumi.Input<string>;
+    }
+
+    /**
+     * IaaS VM workload-specific backup item representing the Azure Resource Manager VM.
+     */
+    export interface AzureIaaSComputeVMProtectedItemArgs {
+        /**
+         * Name of the backup set the backup item belongs to
+         */
+        backupSetName?: pulumi.Input<string>;
+        /**
+         * Unique name of container
+         */
+        containerName?: pulumi.Input<string>;
+        /**
+         * Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+         */
+        createMode?: pulumi.Input<string | enums.CreateMode>;
+        /**
+         * Time for deferred deletion in UTC
+         */
+        deferredDeleteTimeInUTC?: pulumi.Input<string>;
+        /**
+         * Time remaining before the DS marked for deferred delete is permanently deleted
+         */
+        deferredDeleteTimeRemaining?: pulumi.Input<string>;
+        /**
+         * Additional information for this backup item.
+         */
+        extendedInfo?: pulumi.Input<AzureIaaSVMProtectedItemExtendedInfoArgs>;
+        /**
+         * Extended Properties for Azure IaasVM Backup.
+         */
+        extendedProperties?: pulumi.Input<ExtendedPropertiesArgs>;
+        /**
+         * Flag to identify whether datasource is protected in archive
+         */
+        isArchiveEnabled?: pulumi.Input<boolean>;
+        /**
+         * Flag to identify whether the deferred deleted DS is to be purged soon
+         */
+        isDeferredDeleteScheduleUpcoming?: pulumi.Input<boolean>;
+        /**
+         * Flag to identify that deferred deleted DS is to be moved into Pause state
+         */
+        isRehydrate?: pulumi.Input<boolean>;
+        /**
+         * Flag to identify whether the DS is scheduled for deferred delete
+         */
+        isScheduledForDeferredDelete?: pulumi.Input<boolean>;
+        /**
+         * Health details of different KPIs
+         */
+        kpisHealths?: pulumi.Input<{[key: string]: pulumi.Input<KPIResourceHealthDetailsArgs>}>;
+        /**
+         * Last backup operation status.
+         */
+        lastBackupStatus?: pulumi.Input<string>;
+        /**
+         * Timestamp when the last (latest) backup copy was created for this backup item.
+         */
+        lastRecoveryPoint?: pulumi.Input<string>;
+        /**
+         * ID of the backup policy with which this item is backed up.
+         */
+        policyId?: pulumi.Input<string>;
+        /**
+         * Name of the policy used for protection
+         */
+        policyName?: pulumi.Input<string>;
+        /**
+         * backup item type.
+         * Expected value is 'Microsoft.Compute/virtualMachines'.
+         */
+        protectedItemType: pulumi.Input<"Microsoft.Compute/virtualMachines">;
+        /**
+         * Backup state of this backup item.
+         */
+        protectionState?: pulumi.Input<string | enums.ProtectionState>;
+        /**
+         * Backup status of this backup item.
+         */
+        protectionStatus?: pulumi.Input<string>;
+        /**
+         * ResourceGuardOperationRequests on which LAC check will be performed
+         */
+        resourceGuardOperationRequests?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Soft delete retention period in days
+         */
+        softDeleteRetentionPeriodInDays?: pulumi.Input<number>;
+        /**
+         * ARM ID of the resource to be backed up.
+         */
+        sourceResourceId?: pulumi.Input<string>;
+    }
+
+    /**
+     * IaaS VM workload-specific backup item.
+     */
+    export interface AzureIaaSVMProtectedItemArgs {
+        /**
+         * Name of the backup set the backup item belongs to
+         */
+        backupSetName?: pulumi.Input<string>;
+        /**
+         * Unique name of container
+         */
+        containerName?: pulumi.Input<string>;
+        /**
+         * Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+         */
+        createMode?: pulumi.Input<string | enums.CreateMode>;
+        /**
+         * Time for deferred deletion in UTC
+         */
+        deferredDeleteTimeInUTC?: pulumi.Input<string>;
+        /**
+         * Time remaining before the DS marked for deferred delete is permanently deleted
+         */
+        deferredDeleteTimeRemaining?: pulumi.Input<string>;
+        /**
+         * Additional information for this backup item.
+         */
+        extendedInfo?: pulumi.Input<AzureIaaSVMProtectedItemExtendedInfoArgs>;
+        /**
+         * Extended Properties for Azure IaasVM Backup.
+         */
+        extendedProperties?: pulumi.Input<ExtendedPropertiesArgs>;
+        /**
+         * Flag to identify whether datasource is protected in archive
+         */
+        isArchiveEnabled?: pulumi.Input<boolean>;
+        /**
+         * Flag to identify whether the deferred deleted DS is to be purged soon
+         */
+        isDeferredDeleteScheduleUpcoming?: pulumi.Input<boolean>;
+        /**
+         * Flag to identify that deferred deleted DS is to be moved into Pause state
+         */
+        isRehydrate?: pulumi.Input<boolean>;
+        /**
+         * Flag to identify whether the DS is scheduled for deferred delete
+         */
+        isScheduledForDeferredDelete?: pulumi.Input<boolean>;
+        /**
+         * Health details of different KPIs
+         */
+        kpisHealths?: pulumi.Input<{[key: string]: pulumi.Input<KPIResourceHealthDetailsArgs>}>;
+        /**
+         * Last backup operation status.
+         */
+        lastBackupStatus?: pulumi.Input<string>;
+        /**
+         * Timestamp when the last (latest) backup copy was created for this backup item.
+         */
+        lastRecoveryPoint?: pulumi.Input<string>;
+        /**
+         * ID of the backup policy with which this item is backed up.
+         */
+        policyId?: pulumi.Input<string>;
+        /**
+         * Name of the policy used for protection
+         */
+        policyName?: pulumi.Input<string>;
+        /**
+         * backup item type.
+         * Expected value is 'AzureIaaSVMProtectedItem'.
+         */
+        protectedItemType: pulumi.Input<"AzureIaaSVMProtectedItem">;
+        /**
+         * Backup state of this backup item.
+         */
+        protectionState?: pulumi.Input<string | enums.ProtectionState>;
+        /**
+         * Backup status of this backup item.
+         */
+        protectionStatus?: pulumi.Input<string>;
+        /**
+         * ResourceGuardOperationRequests on which LAC check will be performed
+         */
+        resourceGuardOperationRequests?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Soft delete retention period in days
+         */
+        softDeleteRetentionPeriodInDays?: pulumi.Input<number>;
+        /**
+         * ARM ID of the resource to be backed up.
+         */
+        sourceResourceId?: pulumi.Input<string>;
+    }
+
+    /**
+     * Additional information on Azure IaaS VM specific backup item.
+     */
+    export interface AzureIaaSVMProtectedItemExtendedInfoArgs {
+        /**
+         * The latest backup copy available for this backup item in archive tier
+         */
+        newestRecoveryPointInArchive?: pulumi.Input<string>;
+        /**
+         * The oldest backup copy available for this backup item across all tiers.
+         */
+        oldestRecoveryPoint?: pulumi.Input<string>;
+        /**
+         * The oldest backup copy available for this backup item in archive tier
+         */
+        oldestRecoveryPointInArchive?: pulumi.Input<string>;
+        /**
+         * The oldest backup copy available for this backup item in vault tier
+         */
+        oldestRecoveryPointInVault?: pulumi.Input<string>;
+        /**
+         * Specifies if backup policy associated with the backup item is inconsistent.
+         */
+        policyInconsistent?: pulumi.Input<boolean>;
+        /**
+         * Number of backup copies available for this backup item.
+         */
+        recoveryPointCount?: pulumi.Input<number>;
+    }
+
+    /**
+     * IaaS VM workload-specific backup policy.
+     */
+    export interface AzureIaaSVMProtectionPolicyArgs {
+        /**
+         * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+         * Expected value is 'AzureIaasVM'.
+         */
+        backupManagementType: pulumi.Input<"AzureIaasVM">;
+        instantRPDetails?: pulumi.Input<InstantRPAdditionalDetailsArgs>;
+        /**
+         * Instant RP retention policy range in days
+         */
+        instantRpRetentionRangeInDays?: pulumi.Input<number>;
+        policyType?: pulumi.Input<string | enums.IAASVMPolicyType>;
+        /**
+         * Number of items associated with this policy.
+         */
+        protectedItemsCount?: pulumi.Input<number>;
+        /**
+         * ResourceGuard Operation Requests
+         */
+        resourceGuardOperationRequests?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Retention policy with the details on backup copy retention ranges.
+         */
+        retentionPolicy?: pulumi.Input<LongTermRetentionPolicyArgs | SimpleRetentionPolicyArgs>;
+        /**
+         * Backup schedule specified as part of backup policy.
+         */
+        schedulePolicy?: pulumi.Input<LogSchedulePolicyArgs | LongTermSchedulePolicyArgs | SimpleSchedulePolicyArgs | SimpleSchedulePolicyV2Args>;
+        /**
+         * Tiering policy to automatically move RPs to another tier
+         * Key is Target Tier, defined in RecoveryPointTierType enum.
+         * Tiering policy specifies the criteria to move RP to the target tier.
+         */
+        tieringPolicy?: pulumi.Input<{[key: string]: pulumi.Input<TieringPolicyArgs>}>;
+        /**
+         * TimeZone optional input as string. For example: TimeZone = "Pacific Standard Time".
+         */
+        timeZone?: pulumi.Input<string>;
+    }
+
+    /**
      * Settings for Azure Monitor based alerts
      */
     export interface AzureMonitorAlertSettingsArgs {
         alertsForAllJobFailures?: pulumi.Input<string | enums.AlertsState>;
+    }
+
+    /**
+     * Azure Recovery Services Vault specific protection intent item.
+     */
+    export interface AzureRecoveryServiceVaultProtectionIntentArgs {
+        /**
+         * Type of backup management for the backed up item.
+         */
+        backupManagementType?: pulumi.Input<string | enums.BackupManagementType>;
+        /**
+         * ID of the item which is getting protected, In case of Azure Vm , it is ProtectedItemId
+         */
+        itemId?: pulumi.Input<string>;
+        /**
+         * ID of the backup policy with which this item is backed up.
+         */
+        policyId?: pulumi.Input<string>;
+        /**
+         * backup protectionIntent type.
+         * Expected value is 'RecoveryServiceVaultItem'.
+         */
+        protectionIntentItemType: pulumi.Input<"RecoveryServiceVaultItem">;
+        /**
+         * Backup state of this backup item.
+         */
+        protectionState?: pulumi.Input<string | enums.ProtectionStatus>;
+        /**
+         * ARM ID of the resource to be backed up.
+         */
+        sourceResourceId?: pulumi.Input<string>;
+    }
+
+    /**
+     * IaaS VM specific backup protection intent item.
+     */
+    export interface AzureResourceProtectionIntentArgs {
+        /**
+         * Type of backup management for the backed up item.
+         */
+        backupManagementType?: pulumi.Input<string | enums.BackupManagementType>;
+        /**
+         * Friendly name of the VM represented by this backup item.
+         */
+        friendlyName?: pulumi.Input<string>;
+        /**
+         * ID of the item which is getting protected, In case of Azure Vm , it is ProtectedItemId
+         */
+        itemId?: pulumi.Input<string>;
+        /**
+         * ID of the backup policy with which this item is backed up.
+         */
+        policyId?: pulumi.Input<string>;
+        /**
+         * backup protectionIntent type.
+         * Expected value is 'AzureResourceItem'.
+         */
+        protectionIntentItemType: pulumi.Input<"AzureResourceItem">;
+        /**
+         * Backup state of this backup item.
+         */
+        protectionState?: pulumi.Input<string | enums.ProtectionStatus>;
+        /**
+         * ARM ID of the resource to be backed up.
+         */
+        sourceResourceId?: pulumi.Input<string>;
+    }
+
+    /**
+     * Container for SQL workloads under SQL Availability Group.
+     */
+    export interface AzureSQLAGWorkloadContainerProtectionContainerArgs {
+        /**
+         * Type of backup management for the container.
+         */
+        backupManagementType?: pulumi.Input<string | enums.BackupManagementType>;
+        /**
+         * Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+         * Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+         * Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+         * Backup is VMAppContainer
+         * Expected value is 'SQLAGWorkLoadContainer'.
+         */
+        containerType: pulumi.Input<"SQLAGWorkLoadContainer">;
+        /**
+         * Additional details of a workload container.
+         */
+        extendedInfo?: pulumi.Input<AzureWorkloadContainerExtendedInfoArgs>;
+        /**
+         * Friendly name of the container.
+         */
+        friendlyName?: pulumi.Input<string>;
+        /**
+         * Status of health of the container.
+         */
+        healthStatus?: pulumi.Input<string>;
+        /**
+         * Time stamp when this container was updated.
+         */
+        lastUpdatedTime?: pulumi.Input<string>;
+        /**
+         * Re-Do Operation
+         */
+        operationType?: pulumi.Input<string | enums.OperationType>;
+        /**
+         * Type of the protectable object associated with this container
+         */
+        protectableObjectType?: pulumi.Input<string>;
+        /**
+         * Status of registration of the container with the Recovery Services Vault.
+         */
+        registrationStatus?: pulumi.Input<string>;
+        /**
+         * ARM ID of the virtual machine represented by this Azure Workload Container
+         */
+        sourceResourceId?: pulumi.Input<string>;
+        /**
+         * Workload type for which registration was sent.
+         */
+        workloadType?: pulumi.Input<string | enums.WorkloadType>;
+    }
+
+    /**
+     * Azure Sql workload-specific container.
+     */
+    export interface AzureSqlContainerArgs {
+        /**
+         * Type of backup management for the container.
+         */
+        backupManagementType?: pulumi.Input<string | enums.BackupManagementType>;
+        /**
+         * Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+         * Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+         * Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+         * Backup is VMAppContainer
+         * Expected value is 'AzureSqlContainer'.
+         */
+        containerType: pulumi.Input<"AzureSqlContainer">;
+        /**
+         * Friendly name of the container.
+         */
+        friendlyName?: pulumi.Input<string>;
+        /**
+         * Status of health of the container.
+         */
+        healthStatus?: pulumi.Input<string>;
+        /**
+         * Type of the protectable object associated with this container
+         */
+        protectableObjectType?: pulumi.Input<string>;
+        /**
+         * Status of registration of the container with the Recovery Services Vault.
+         */
+        registrationStatus?: pulumi.Input<string>;
+    }
+
+    /**
+     * Azure SQL workload-specific backup item.
+     */
+    export interface AzureSqlProtectedItemArgs {
+        /**
+         * Name of the backup set the backup item belongs to
+         */
+        backupSetName?: pulumi.Input<string>;
+        /**
+         * Unique name of container
+         */
+        containerName?: pulumi.Input<string>;
+        /**
+         * Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+         */
+        createMode?: pulumi.Input<string | enums.CreateMode>;
+        /**
+         * Time for deferred deletion in UTC
+         */
+        deferredDeleteTimeInUTC?: pulumi.Input<string>;
+        /**
+         * Time remaining before the DS marked for deferred delete is permanently deleted
+         */
+        deferredDeleteTimeRemaining?: pulumi.Input<string>;
+        /**
+         * Additional information for this backup item.
+         */
+        extendedInfo?: pulumi.Input<AzureSqlProtectedItemExtendedInfoArgs>;
+        /**
+         * Flag to identify whether datasource is protected in archive
+         */
+        isArchiveEnabled?: pulumi.Input<boolean>;
+        /**
+         * Flag to identify whether the deferred deleted DS is to be purged soon
+         */
+        isDeferredDeleteScheduleUpcoming?: pulumi.Input<boolean>;
+        /**
+         * Flag to identify that deferred deleted DS is to be moved into Pause state
+         */
+        isRehydrate?: pulumi.Input<boolean>;
+        /**
+         * Flag to identify whether the DS is scheduled for deferred delete
+         */
+        isScheduledForDeferredDelete?: pulumi.Input<boolean>;
+        /**
+         * Timestamp when the last (latest) backup copy was created for this backup item.
+         */
+        lastRecoveryPoint?: pulumi.Input<string>;
+        /**
+         * ID of the backup policy with which this item is backed up.
+         */
+        policyId?: pulumi.Input<string>;
+        /**
+         * Name of the policy used for protection
+         */
+        policyName?: pulumi.Input<string>;
+        /**
+         * Internal ID of a backup item. Used by Azure SQL Backup engine to contact Recovery Services.
+         */
+        protectedItemDataId?: pulumi.Input<string>;
+        /**
+         * backup item type.
+         * Expected value is 'Microsoft.Sql/servers/databases'.
+         */
+        protectedItemType: pulumi.Input<"Microsoft.Sql/servers/databases">;
+        /**
+         * Backup state of the backed up item.
+         */
+        protectionState?: pulumi.Input<string | enums.ProtectedItemState>;
+        /**
+         * ResourceGuardOperationRequests on which LAC check will be performed
+         */
+        resourceGuardOperationRequests?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Soft delete retention period in days
+         */
+        softDeleteRetentionPeriodInDays?: pulumi.Input<number>;
+        /**
+         * ARM ID of the resource to be backed up.
+         */
+        sourceResourceId?: pulumi.Input<string>;
+    }
+
+    /**
+     * Additional information on Azure Sql specific protected item.
+     */
+    export interface AzureSqlProtectedItemExtendedInfoArgs {
+        /**
+         * The oldest backup copy available for this item in the service.
+         */
+        oldestRecoveryPoint?: pulumi.Input<string>;
+        /**
+         * State of the backup policy associated with this backup item.
+         */
+        policyState?: pulumi.Input<string>;
+        /**
+         * Number of available backup copies associated with this backup item.
+         */
+        recoveryPointCount?: pulumi.Input<number>;
+    }
+
+    /**
+     * Azure SQL workload-specific backup policy.
+     */
+    export interface AzureSqlProtectionPolicyArgs {
+        /**
+         * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+         * Expected value is 'AzureSql'.
+         */
+        backupManagementType: pulumi.Input<"AzureSql">;
+        /**
+         * Number of items associated with this policy.
+         */
+        protectedItemsCount?: pulumi.Input<number>;
+        /**
+         * ResourceGuard Operation Requests
+         */
+        resourceGuardOperationRequests?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Retention policy details.
+         */
+        retentionPolicy?: pulumi.Input<LongTermRetentionPolicyArgs | SimpleRetentionPolicyArgs>;
+    }
+
+    /**
+     * Azure Storage Account workload-specific container.
+     */
+    export interface AzureStorageContainerArgs {
+        /**
+         * Whether storage account lock is to be acquired for this container or not.
+         */
+        acquireStorageAccountLock?: pulumi.Input<string | enums.AcquireStorageAccountLock>;
+        /**
+         * Type of backup management for the container.
+         */
+        backupManagementType?: pulumi.Input<string | enums.BackupManagementType>;
+        /**
+         * Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+         * Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+         * Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+         * Backup is VMAppContainer
+         * Expected value is 'StorageContainer'.
+         */
+        containerType: pulumi.Input<"StorageContainer">;
+        /**
+         * Friendly name of the container.
+         */
+        friendlyName?: pulumi.Input<string>;
+        /**
+         * Status of health of the container.
+         */
+        healthStatus?: pulumi.Input<string>;
+        /**
+         * Type of the protectable object associated with this container
+         */
+        protectableObjectType?: pulumi.Input<string>;
+        /**
+         * Number of items backed up in this container.
+         */
+        protectedItemCount?: pulumi.Input<number>;
+        /**
+         * Status of registration of the container with the Recovery Services Vault.
+         */
+        registrationStatus?: pulumi.Input<string>;
+        /**
+         * Resource group name of Recovery Services Vault.
+         */
+        resourceGroup?: pulumi.Input<string>;
+        /**
+         * Fully qualified ARM url.
+         */
+        sourceResourceId?: pulumi.Input<string>;
+        /**
+         * Storage account version.
+         */
+        storageAccountVersion?: pulumi.Input<string>;
     }
 
     /**
@@ -315,6 +1319,873 @@ import * as pulumi from "@pulumi/pulumi";
          * The primary azure vnet Id.
          */
         primaryNetworkId: pulumi.Input<string>;
+    }
+
+    /**
+     * Container for SQL workloads under Azure Virtual Machines.
+     */
+    export interface AzureVMAppContainerProtectionContainerArgs {
+        /**
+         * Type of backup management for the container.
+         */
+        backupManagementType?: pulumi.Input<string | enums.BackupManagementType>;
+        /**
+         * Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+         * Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+         * Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+         * Backup is VMAppContainer
+         * Expected value is 'VMAppContainer'.
+         */
+        containerType: pulumi.Input<"VMAppContainer">;
+        /**
+         * Additional details of a workload container.
+         */
+        extendedInfo?: pulumi.Input<AzureWorkloadContainerExtendedInfoArgs>;
+        /**
+         * Friendly name of the container.
+         */
+        friendlyName?: pulumi.Input<string>;
+        /**
+         * Status of health of the container.
+         */
+        healthStatus?: pulumi.Input<string>;
+        /**
+         * Time stamp when this container was updated.
+         */
+        lastUpdatedTime?: pulumi.Input<string>;
+        /**
+         * Re-Do Operation
+         */
+        operationType?: pulumi.Input<string | enums.OperationType>;
+        /**
+         * Type of the protectable object associated with this container
+         */
+        protectableObjectType?: pulumi.Input<string>;
+        /**
+         * Status of registration of the container with the Recovery Services Vault.
+         */
+        registrationStatus?: pulumi.Input<string>;
+        /**
+         * ARM ID of the virtual machine represented by this Azure Workload Container
+         */
+        sourceResourceId?: pulumi.Input<string>;
+        /**
+         * Workload type for which registration was sent.
+         */
+        workloadType?: pulumi.Input<string | enums.WorkloadType>;
+    }
+
+    /**
+     * Azure VM workload-specific protected item.
+     */
+    export interface AzureVmWorkloadProtectedItemArgs {
+        /**
+         * Name of the backup set the backup item belongs to
+         */
+        backupSetName?: pulumi.Input<string>;
+        /**
+         * Unique name of container
+         */
+        containerName?: pulumi.Input<string>;
+        /**
+         * Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+         */
+        createMode?: pulumi.Input<string | enums.CreateMode>;
+        /**
+         * Time for deferred deletion in UTC
+         */
+        deferredDeleteTimeInUTC?: pulumi.Input<string>;
+        /**
+         * Time remaining before the DS marked for deferred delete is permanently deleted
+         */
+        deferredDeleteTimeRemaining?: pulumi.Input<string>;
+        /**
+         * Additional information for this backup item.
+         */
+        extendedInfo?: pulumi.Input<AzureVmWorkloadProtectedItemExtendedInfoArgs>;
+        /**
+         * Flag to identify whether datasource is protected in archive
+         */
+        isArchiveEnabled?: pulumi.Input<boolean>;
+        /**
+         * Flag to identify whether the deferred deleted DS is to be purged soon
+         */
+        isDeferredDeleteScheduleUpcoming?: pulumi.Input<boolean>;
+        /**
+         * Flag to identify that deferred deleted DS is to be moved into Pause state
+         */
+        isRehydrate?: pulumi.Input<boolean>;
+        /**
+         * Flag to identify whether the DS is scheduled for deferred delete
+         */
+        isScheduledForDeferredDelete?: pulumi.Input<boolean>;
+        /**
+         * Health details of different KPIs
+         */
+        kpisHealths?: pulumi.Input<{[key: string]: pulumi.Input<KPIResourceHealthDetailsArgs>}>;
+        /**
+         * Last backup operation status. Possible values: Healthy, Unhealthy.
+         */
+        lastBackupStatus?: pulumi.Input<string | enums.LastBackupStatus>;
+        /**
+         * Timestamp of the last backup operation on this backup item.
+         */
+        lastBackupTime?: pulumi.Input<string>;
+        /**
+         * Timestamp when the last (latest) backup copy was created for this backup item.
+         */
+        lastRecoveryPoint?: pulumi.Input<string>;
+        /**
+         * List of the nodes in case of distributed container.
+         */
+        nodesList?: pulumi.Input<pulumi.Input<DistributedNodesInfoArgs>[]>;
+        /**
+         * Parent name of the DB such as Instance or Availability Group.
+         */
+        parentName?: pulumi.Input<string>;
+        /**
+         * Parent type of protected item, example: for a DB, standalone server or distributed
+         */
+        parentType?: pulumi.Input<string>;
+        /**
+         * ID of the backup policy with which this item is backed up.
+         */
+        policyId?: pulumi.Input<string>;
+        /**
+         * Name of the policy used for protection
+         */
+        policyName?: pulumi.Input<string>;
+        /**
+         * Data ID of the protected item.
+         */
+        protectedItemDataSourceId?: pulumi.Input<string>;
+        /**
+         * Health status of the backup item, evaluated based on last heartbeat received
+         */
+        protectedItemHealthStatus?: pulumi.Input<string | enums.ProtectedItemHealthStatus>;
+        /**
+         * backup item type.
+         * Expected value is 'AzureVmWorkloadProtectedItem'.
+         */
+        protectedItemType: pulumi.Input<"AzureVmWorkloadProtectedItem">;
+        /**
+         * Backup state of this backup item.
+         */
+        protectionState?: pulumi.Input<string | enums.ProtectionState>;
+        /**
+         * ResourceGuardOperationRequests on which LAC check will be performed
+         */
+        resourceGuardOperationRequests?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Host/Cluster Name for instance or AG
+         */
+        serverName?: pulumi.Input<string>;
+        /**
+         * Soft delete retention period in days
+         */
+        softDeleteRetentionPeriodInDays?: pulumi.Input<number>;
+        /**
+         * ARM ID of the resource to be backed up.
+         */
+        sourceResourceId?: pulumi.Input<string>;
+    }
+
+    /**
+     * Additional information on Azure Workload for SQL specific backup item.
+     */
+    export interface AzureVmWorkloadProtectedItemExtendedInfoArgs {
+        /**
+         * The latest backup copy available for this backup item in archive tier
+         */
+        newestRecoveryPointInArchive?: pulumi.Input<string>;
+        /**
+         * The oldest backup copy available for this backup item across all tiers.
+         */
+        oldestRecoveryPoint?: pulumi.Input<string>;
+        /**
+         * The oldest backup copy available for this backup item in archive tier
+         */
+        oldestRecoveryPointInArchive?: pulumi.Input<string>;
+        /**
+         * The oldest backup copy available for this backup item in vault tier
+         */
+        oldestRecoveryPointInVault?: pulumi.Input<string>;
+        /**
+         * Indicates consistency of policy object and policy applied to this backup item.
+         */
+        policyState?: pulumi.Input<string>;
+        /**
+         * Indicates consistency of policy object and policy applied to this backup item.
+         */
+        recoveryModel?: pulumi.Input<string>;
+        /**
+         * Number of backup copies available for this backup item.
+         */
+        recoveryPointCount?: pulumi.Input<number>;
+    }
+
+    /**
+     * Azure VM (Mercury) workload-specific backup policy.
+     */
+    export interface AzureVmWorkloadProtectionPolicyArgs {
+        /**
+         * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+         * Expected value is 'AzureWorkload'.
+         */
+        backupManagementType: pulumi.Input<"AzureWorkload">;
+        /**
+         * Fix the policy inconsistency
+         */
+        makePolicyConsistent?: pulumi.Input<boolean>;
+        /**
+         * Number of items associated with this policy.
+         */
+        protectedItemsCount?: pulumi.Input<number>;
+        /**
+         * ResourceGuard Operation Requests
+         */
+        resourceGuardOperationRequests?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Common settings for the backup management
+         */
+        settings?: pulumi.Input<SettingsArgs>;
+        /**
+         * List of sub-protection policies which includes schedule and retention
+         */
+        subProtectionPolicy?: pulumi.Input<pulumi.Input<SubProtectionPolicyArgs>[]>;
+        /**
+         * Type of workload for the backup management
+         */
+        workLoadType?: pulumi.Input<string | enums.WorkloadType>;
+    }
+
+    /**
+     * Azure VM workload-specific protected item representing SAP ASE Database.
+     */
+    export interface AzureVmWorkloadSAPAseDatabaseProtectedItemArgs {
+        /**
+         * Name of the backup set the backup item belongs to
+         */
+        backupSetName?: pulumi.Input<string>;
+        /**
+         * Unique name of container
+         */
+        containerName?: pulumi.Input<string>;
+        /**
+         * Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+         */
+        createMode?: pulumi.Input<string | enums.CreateMode>;
+        /**
+         * Time for deferred deletion in UTC
+         */
+        deferredDeleteTimeInUTC?: pulumi.Input<string>;
+        /**
+         * Time remaining before the DS marked for deferred delete is permanently deleted
+         */
+        deferredDeleteTimeRemaining?: pulumi.Input<string>;
+        /**
+         * Additional information for this backup item.
+         */
+        extendedInfo?: pulumi.Input<AzureVmWorkloadProtectedItemExtendedInfoArgs>;
+        /**
+         * Flag to identify whether datasource is protected in archive
+         */
+        isArchiveEnabled?: pulumi.Input<boolean>;
+        /**
+         * Flag to identify whether the deferred deleted DS is to be purged soon
+         */
+        isDeferredDeleteScheduleUpcoming?: pulumi.Input<boolean>;
+        /**
+         * Flag to identify that deferred deleted DS is to be moved into Pause state
+         */
+        isRehydrate?: pulumi.Input<boolean>;
+        /**
+         * Flag to identify whether the DS is scheduled for deferred delete
+         */
+        isScheduledForDeferredDelete?: pulumi.Input<boolean>;
+        /**
+         * Health details of different KPIs
+         */
+        kpisHealths?: pulumi.Input<{[key: string]: pulumi.Input<KPIResourceHealthDetailsArgs>}>;
+        /**
+         * Last backup operation status. Possible values: Healthy, Unhealthy.
+         */
+        lastBackupStatus?: pulumi.Input<string | enums.LastBackupStatus>;
+        /**
+         * Timestamp of the last backup operation on this backup item.
+         */
+        lastBackupTime?: pulumi.Input<string>;
+        /**
+         * Timestamp when the last (latest) backup copy was created for this backup item.
+         */
+        lastRecoveryPoint?: pulumi.Input<string>;
+        /**
+         * List of the nodes in case of distributed container.
+         */
+        nodesList?: pulumi.Input<pulumi.Input<DistributedNodesInfoArgs>[]>;
+        /**
+         * Parent name of the DB such as Instance or Availability Group.
+         */
+        parentName?: pulumi.Input<string>;
+        /**
+         * Parent type of protected item, example: for a DB, standalone server or distributed
+         */
+        parentType?: pulumi.Input<string>;
+        /**
+         * ID of the backup policy with which this item is backed up.
+         */
+        policyId?: pulumi.Input<string>;
+        /**
+         * Name of the policy used for protection
+         */
+        policyName?: pulumi.Input<string>;
+        /**
+         * Data ID of the protected item.
+         */
+        protectedItemDataSourceId?: pulumi.Input<string>;
+        /**
+         * Health status of the backup item, evaluated based on last heartbeat received
+         */
+        protectedItemHealthStatus?: pulumi.Input<string | enums.ProtectedItemHealthStatus>;
+        /**
+         * backup item type.
+         * Expected value is 'AzureVmWorkloadSAPAseDatabase'.
+         */
+        protectedItemType: pulumi.Input<"AzureVmWorkloadSAPAseDatabase">;
+        /**
+         * Backup state of this backup item.
+         */
+        protectionState?: pulumi.Input<string | enums.ProtectionState>;
+        /**
+         * ResourceGuardOperationRequests on which LAC check will be performed
+         */
+        resourceGuardOperationRequests?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Host/Cluster Name for instance or AG
+         */
+        serverName?: pulumi.Input<string>;
+        /**
+         * Soft delete retention period in days
+         */
+        softDeleteRetentionPeriodInDays?: pulumi.Input<number>;
+        /**
+         * ARM ID of the resource to be backed up.
+         */
+        sourceResourceId?: pulumi.Input<string>;
+    }
+
+    /**
+     * Azure VM workload-specific protected item representing SAP HANA DBInstance.
+     */
+    export interface AzureVmWorkloadSAPHanaDBInstanceProtectedItemArgs {
+        /**
+         * Name of the backup set the backup item belongs to
+         */
+        backupSetName?: pulumi.Input<string>;
+        /**
+         * Unique name of container
+         */
+        containerName?: pulumi.Input<string>;
+        /**
+         * Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+         */
+        createMode?: pulumi.Input<string | enums.CreateMode>;
+        /**
+         * Time for deferred deletion in UTC
+         */
+        deferredDeleteTimeInUTC?: pulumi.Input<string>;
+        /**
+         * Time remaining before the DS marked for deferred delete is permanently deleted
+         */
+        deferredDeleteTimeRemaining?: pulumi.Input<string>;
+        /**
+         * Additional information for this backup item.
+         */
+        extendedInfo?: pulumi.Input<AzureVmWorkloadProtectedItemExtendedInfoArgs>;
+        /**
+         * Flag to identify whether datasource is protected in archive
+         */
+        isArchiveEnabled?: pulumi.Input<boolean>;
+        /**
+         * Flag to identify whether the deferred deleted DS is to be purged soon
+         */
+        isDeferredDeleteScheduleUpcoming?: pulumi.Input<boolean>;
+        /**
+         * Flag to identify that deferred deleted DS is to be moved into Pause state
+         */
+        isRehydrate?: pulumi.Input<boolean>;
+        /**
+         * Flag to identify whether the DS is scheduled for deferred delete
+         */
+        isScheduledForDeferredDelete?: pulumi.Input<boolean>;
+        /**
+         * Health details of different KPIs
+         */
+        kpisHealths?: pulumi.Input<{[key: string]: pulumi.Input<KPIResourceHealthDetailsArgs>}>;
+        /**
+         * Last backup operation status. Possible values: Healthy, Unhealthy.
+         */
+        lastBackupStatus?: pulumi.Input<string | enums.LastBackupStatus>;
+        /**
+         * Timestamp of the last backup operation on this backup item.
+         */
+        lastBackupTime?: pulumi.Input<string>;
+        /**
+         * Timestamp when the last (latest) backup copy was created for this backup item.
+         */
+        lastRecoveryPoint?: pulumi.Input<string>;
+        /**
+         * List of the nodes in case of distributed container.
+         */
+        nodesList?: pulumi.Input<pulumi.Input<DistributedNodesInfoArgs>[]>;
+        /**
+         * Parent name of the DB such as Instance or Availability Group.
+         */
+        parentName?: pulumi.Input<string>;
+        /**
+         * Parent type of protected item, example: for a DB, standalone server or distributed
+         */
+        parentType?: pulumi.Input<string>;
+        /**
+         * ID of the backup policy with which this item is backed up.
+         */
+        policyId?: pulumi.Input<string>;
+        /**
+         * Name of the policy used for protection
+         */
+        policyName?: pulumi.Input<string>;
+        /**
+         * Data ID of the protected item.
+         */
+        protectedItemDataSourceId?: pulumi.Input<string>;
+        /**
+         * Health status of the backup item, evaluated based on last heartbeat received
+         */
+        protectedItemHealthStatus?: pulumi.Input<string | enums.ProtectedItemHealthStatus>;
+        /**
+         * backup item type.
+         * Expected value is 'AzureVmWorkloadSAPHanaDBInstance'.
+         */
+        protectedItemType: pulumi.Input<"AzureVmWorkloadSAPHanaDBInstance">;
+        /**
+         * Backup state of this backup item.
+         */
+        protectionState?: pulumi.Input<string | enums.ProtectionState>;
+        /**
+         * ResourceGuardOperationRequests on which LAC check will be performed
+         */
+        resourceGuardOperationRequests?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Host/Cluster Name for instance or AG
+         */
+        serverName?: pulumi.Input<string>;
+        /**
+         * Soft delete retention period in days
+         */
+        softDeleteRetentionPeriodInDays?: pulumi.Input<number>;
+        /**
+         * ARM ID of the resource to be backed up.
+         */
+        sourceResourceId?: pulumi.Input<string>;
+    }
+
+    /**
+     * Azure VM workload-specific protected item representing SAP HANA Database.
+     */
+    export interface AzureVmWorkloadSAPHanaDatabaseProtectedItemArgs {
+        /**
+         * Name of the backup set the backup item belongs to
+         */
+        backupSetName?: pulumi.Input<string>;
+        /**
+         * Unique name of container
+         */
+        containerName?: pulumi.Input<string>;
+        /**
+         * Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+         */
+        createMode?: pulumi.Input<string | enums.CreateMode>;
+        /**
+         * Time for deferred deletion in UTC
+         */
+        deferredDeleteTimeInUTC?: pulumi.Input<string>;
+        /**
+         * Time remaining before the DS marked for deferred delete is permanently deleted
+         */
+        deferredDeleteTimeRemaining?: pulumi.Input<string>;
+        /**
+         * Additional information for this backup item.
+         */
+        extendedInfo?: pulumi.Input<AzureVmWorkloadProtectedItemExtendedInfoArgs>;
+        /**
+         * Flag to identify whether datasource is protected in archive
+         */
+        isArchiveEnabled?: pulumi.Input<boolean>;
+        /**
+         * Flag to identify whether the deferred deleted DS is to be purged soon
+         */
+        isDeferredDeleteScheduleUpcoming?: pulumi.Input<boolean>;
+        /**
+         * Flag to identify that deferred deleted DS is to be moved into Pause state
+         */
+        isRehydrate?: pulumi.Input<boolean>;
+        /**
+         * Flag to identify whether the DS is scheduled for deferred delete
+         */
+        isScheduledForDeferredDelete?: pulumi.Input<boolean>;
+        /**
+         * Health details of different KPIs
+         */
+        kpisHealths?: pulumi.Input<{[key: string]: pulumi.Input<KPIResourceHealthDetailsArgs>}>;
+        /**
+         * Last backup operation status. Possible values: Healthy, Unhealthy.
+         */
+        lastBackupStatus?: pulumi.Input<string | enums.LastBackupStatus>;
+        /**
+         * Timestamp of the last backup operation on this backup item.
+         */
+        lastBackupTime?: pulumi.Input<string>;
+        /**
+         * Timestamp when the last (latest) backup copy was created for this backup item.
+         */
+        lastRecoveryPoint?: pulumi.Input<string>;
+        /**
+         * List of the nodes in case of distributed container.
+         */
+        nodesList?: pulumi.Input<pulumi.Input<DistributedNodesInfoArgs>[]>;
+        /**
+         * Parent name of the DB such as Instance or Availability Group.
+         */
+        parentName?: pulumi.Input<string>;
+        /**
+         * Parent type of protected item, example: for a DB, standalone server or distributed
+         */
+        parentType?: pulumi.Input<string>;
+        /**
+         * ID of the backup policy with which this item is backed up.
+         */
+        policyId?: pulumi.Input<string>;
+        /**
+         * Name of the policy used for protection
+         */
+        policyName?: pulumi.Input<string>;
+        /**
+         * Data ID of the protected item.
+         */
+        protectedItemDataSourceId?: pulumi.Input<string>;
+        /**
+         * Health status of the backup item, evaluated based on last heartbeat received
+         */
+        protectedItemHealthStatus?: pulumi.Input<string | enums.ProtectedItemHealthStatus>;
+        /**
+         * backup item type.
+         * Expected value is 'AzureVmWorkloadSAPHanaDatabase'.
+         */
+        protectedItemType: pulumi.Input<"AzureVmWorkloadSAPHanaDatabase">;
+        /**
+         * Backup state of this backup item.
+         */
+        protectionState?: pulumi.Input<string | enums.ProtectionState>;
+        /**
+         * ResourceGuardOperationRequests on which LAC check will be performed
+         */
+        resourceGuardOperationRequests?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Host/Cluster Name for instance or AG
+         */
+        serverName?: pulumi.Input<string>;
+        /**
+         * Soft delete retention period in days
+         */
+        softDeleteRetentionPeriodInDays?: pulumi.Input<number>;
+        /**
+         * ARM ID of the resource to be backed up.
+         */
+        sourceResourceId?: pulumi.Input<string>;
+    }
+
+    /**
+     * Azure VM workload-specific protected item representing SQL Database.
+     */
+    export interface AzureVmWorkloadSQLDatabaseProtectedItemArgs {
+        /**
+         * Name of the backup set the backup item belongs to
+         */
+        backupSetName?: pulumi.Input<string>;
+        /**
+         * Unique name of container
+         */
+        containerName?: pulumi.Input<string>;
+        /**
+         * Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+         */
+        createMode?: pulumi.Input<string | enums.CreateMode>;
+        /**
+         * Time for deferred deletion in UTC
+         */
+        deferredDeleteTimeInUTC?: pulumi.Input<string>;
+        /**
+         * Time remaining before the DS marked for deferred delete is permanently deleted
+         */
+        deferredDeleteTimeRemaining?: pulumi.Input<string>;
+        /**
+         * Additional information for this backup item.
+         */
+        extendedInfo?: pulumi.Input<AzureVmWorkloadProtectedItemExtendedInfoArgs>;
+        /**
+         * Flag to identify whether datasource is protected in archive
+         */
+        isArchiveEnabled?: pulumi.Input<boolean>;
+        /**
+         * Flag to identify whether the deferred deleted DS is to be purged soon
+         */
+        isDeferredDeleteScheduleUpcoming?: pulumi.Input<boolean>;
+        /**
+         * Flag to identify that deferred deleted DS is to be moved into Pause state
+         */
+        isRehydrate?: pulumi.Input<boolean>;
+        /**
+         * Flag to identify whether the DS is scheduled for deferred delete
+         */
+        isScheduledForDeferredDelete?: pulumi.Input<boolean>;
+        /**
+         * Health details of different KPIs
+         */
+        kpisHealths?: pulumi.Input<{[key: string]: pulumi.Input<KPIResourceHealthDetailsArgs>}>;
+        /**
+         * Last backup operation status. Possible values: Healthy, Unhealthy.
+         */
+        lastBackupStatus?: pulumi.Input<string | enums.LastBackupStatus>;
+        /**
+         * Timestamp of the last backup operation on this backup item.
+         */
+        lastBackupTime?: pulumi.Input<string>;
+        /**
+         * Timestamp when the last (latest) backup copy was created for this backup item.
+         */
+        lastRecoveryPoint?: pulumi.Input<string>;
+        /**
+         * List of the nodes in case of distributed container.
+         */
+        nodesList?: pulumi.Input<pulumi.Input<DistributedNodesInfoArgs>[]>;
+        /**
+         * Parent name of the DB such as Instance or Availability Group.
+         */
+        parentName?: pulumi.Input<string>;
+        /**
+         * Parent type of protected item, example: for a DB, standalone server or distributed
+         */
+        parentType?: pulumi.Input<string>;
+        /**
+         * ID of the backup policy with which this item is backed up.
+         */
+        policyId?: pulumi.Input<string>;
+        /**
+         * Name of the policy used for protection
+         */
+        policyName?: pulumi.Input<string>;
+        /**
+         * Data ID of the protected item.
+         */
+        protectedItemDataSourceId?: pulumi.Input<string>;
+        /**
+         * Health status of the backup item, evaluated based on last heartbeat received
+         */
+        protectedItemHealthStatus?: pulumi.Input<string | enums.ProtectedItemHealthStatus>;
+        /**
+         * backup item type.
+         * Expected value is 'AzureVmWorkloadSQLDatabase'.
+         */
+        protectedItemType: pulumi.Input<"AzureVmWorkloadSQLDatabase">;
+        /**
+         * Backup state of this backup item.
+         */
+        protectionState?: pulumi.Input<string | enums.ProtectionState>;
+        /**
+         * ResourceGuardOperationRequests on which LAC check will be performed
+         */
+        resourceGuardOperationRequests?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Host/Cluster Name for instance or AG
+         */
+        serverName?: pulumi.Input<string>;
+        /**
+         * Soft delete retention period in days
+         */
+        softDeleteRetentionPeriodInDays?: pulumi.Input<number>;
+        /**
+         * ARM ID of the resource to be backed up.
+         */
+        sourceResourceId?: pulumi.Input<string>;
+    }
+
+    /**
+     * Azure Recovery Services Vault specific protection intent item.
+     */
+    export interface AzureWorkloadAutoProtectionIntentArgs {
+        /**
+         * Type of backup management for the backed up item.
+         */
+        backupManagementType?: pulumi.Input<string | enums.BackupManagementType>;
+        /**
+         * ID of the item which is getting protected, In case of Azure Vm , it is ProtectedItemId
+         */
+        itemId?: pulumi.Input<string>;
+        /**
+         * ID of the backup policy with which this item is backed up.
+         */
+        policyId?: pulumi.Input<string>;
+        /**
+         * backup protectionIntent type.
+         * Expected value is 'AzureWorkloadAutoProtectionIntent'.
+         */
+        protectionIntentItemType: pulumi.Input<"AzureWorkloadAutoProtectionIntent">;
+        /**
+         * Backup state of this backup item.
+         */
+        protectionState?: pulumi.Input<string | enums.ProtectionStatus>;
+        /**
+         * ARM ID of the resource to be backed up.
+         */
+        sourceResourceId?: pulumi.Input<string>;
+    }
+
+    /**
+     * Container for the workloads running inside Azure Compute or Classic Compute.
+     */
+    export interface AzureWorkloadContainerArgs {
+        /**
+         * Type of backup management for the container.
+         */
+        backupManagementType?: pulumi.Input<string | enums.BackupManagementType>;
+        /**
+         * Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+         * Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+         * Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+         * Backup is VMAppContainer
+         * Expected value is 'AzureWorkloadContainer'.
+         */
+        containerType: pulumi.Input<"AzureWorkloadContainer">;
+        /**
+         * Additional details of a workload container.
+         */
+        extendedInfo?: pulumi.Input<AzureWorkloadContainerExtendedInfoArgs>;
+        /**
+         * Friendly name of the container.
+         */
+        friendlyName?: pulumi.Input<string>;
+        /**
+         * Status of health of the container.
+         */
+        healthStatus?: pulumi.Input<string>;
+        /**
+         * Time stamp when this container was updated.
+         */
+        lastUpdatedTime?: pulumi.Input<string>;
+        /**
+         * Re-Do Operation
+         */
+        operationType?: pulumi.Input<string | enums.OperationType>;
+        /**
+         * Type of the protectable object associated with this container
+         */
+        protectableObjectType?: pulumi.Input<string>;
+        /**
+         * Status of registration of the container with the Recovery Services Vault.
+         */
+        registrationStatus?: pulumi.Input<string>;
+        /**
+         * ARM ID of the virtual machine represented by this Azure Workload Container
+         */
+        sourceResourceId?: pulumi.Input<string>;
+        /**
+         * Workload type for which registration was sent.
+         */
+        workloadType?: pulumi.Input<string | enums.WorkloadType>;
+    }
+
+    /**
+     * Azure workload specific protection intent item.
+     */
+    export interface AzureWorkloadContainerAutoProtectionIntentArgs {
+        /**
+         * Type of backup management for the backed up item.
+         */
+        backupManagementType?: pulumi.Input<string | enums.BackupManagementType>;
+        /**
+         * ID of the item which is getting protected, In case of Azure Vm , it is ProtectedItemId
+         */
+        itemId?: pulumi.Input<string>;
+        /**
+         * ID of the backup policy with which this item is backed up.
+         */
+        policyId?: pulumi.Input<string>;
+        /**
+         * backup protectionIntent type.
+         * Expected value is 'AzureWorkloadContainerAutoProtectionIntent'.
+         */
+        protectionIntentItemType: pulumi.Input<"AzureWorkloadContainerAutoProtectionIntent">;
+        /**
+         * Backup state of this backup item.
+         */
+        protectionState?: pulumi.Input<string | enums.ProtectionStatus>;
+        /**
+         * ARM ID of the resource to be backed up.
+         */
+        sourceResourceId?: pulumi.Input<string>;
+    }
+
+    /**
+     * Extended information of the container.
+     */
+    export interface AzureWorkloadContainerExtendedInfoArgs {
+        /**
+         * Host Os Name in case of Stand Alone and Cluster Name in case of distributed container.
+         */
+        hostServerName?: pulumi.Input<string>;
+        /**
+         * Inquiry Status for the container.
+         */
+        inquiryInfo?: pulumi.Input<InquiryInfoArgs>;
+        /**
+         * List of the nodes in case of distributed container.
+         */
+        nodesList?: pulumi.Input<pulumi.Input<DistributedNodesInfoArgs>[]>;
+    }
+
+    /**
+     * Azure Workload SQL Auto Protection intent item.
+     */
+    export interface AzureWorkloadSQLAutoProtectionIntentArgs {
+        /**
+         * Type of backup management for the backed up item.
+         */
+        backupManagementType?: pulumi.Input<string | enums.BackupManagementType>;
+        /**
+         * ID of the item which is getting protected, In case of Azure Vm , it is ProtectedItemId
+         */
+        itemId?: pulumi.Input<string>;
+        /**
+         * ID of the backup policy with which this item is backed up.
+         */
+        policyId?: pulumi.Input<string>;
+        /**
+         * backup protectionIntent type.
+         * Expected value is 'AzureWorkloadSQLAutoProtectionIntent'.
+         */
+        protectionIntentItemType: pulumi.Input<"AzureWorkloadSQLAutoProtectionIntent">;
+        /**
+         * Backup state of this backup item.
+         */
+        protectionState?: pulumi.Input<string | enums.ProtectionStatus>;
+        /**
+         * ARM ID of the resource to be backed up.
+         */
+        sourceResourceId?: pulumi.Input<string>;
+        /**
+         * Workload item type of the item for which intent is to be set
+         */
+        workloadItemType?: pulumi.Input<string | enums.WorkloadItemType>;
     }
 
     /**
@@ -346,6 +2217,28 @@ import * as pulumi from "@pulumi/pulumi";
          * The key uri of the Customer Managed Key
          */
         keyUri?: pulumi.Input<string>;
+    }
+
+    /**
+     * Container identity information
+     */
+    export interface ContainerIdentityInfoArgs {
+        /**
+         * Protection container identity - AAD Tenant
+         */
+        aadTenantId?: pulumi.Input<string>;
+        /**
+         * Protection container identity - Audience
+         */
+        audience?: pulumi.Input<string>;
+        /**
+         * Protection container identity - AAD Service Principal
+         */
+        servicePrincipalClientId?: pulumi.Input<string>;
+        /**
+         * Unique name of the container
+         */
+        uniqueName?: pulumi.Input<string>;
     }
 
     /**
@@ -428,6 +2321,210 @@ import * as pulumi from "@pulumi/pulumi";
     }
 
     /**
+     * Additional information of the DPMContainer.
+     */
+    export interface DPMContainerExtendedInfoArgs {
+        /**
+         * Last refresh time of the DPMContainer.
+         */
+        lastRefreshedAt?: pulumi.Input<string>;
+    }
+
+    /**
+     * Additional information on Backup engine specific backup item.
+     */
+    export interface DPMProtectedItemArgs {
+        /**
+         * Backup Management server protecting this backup item
+         */
+        backupEngineName?: pulumi.Input<string>;
+        /**
+         * Name of the backup set the backup item belongs to
+         */
+        backupSetName?: pulumi.Input<string>;
+        /**
+         * Unique name of container
+         */
+        containerName?: pulumi.Input<string>;
+        /**
+         * Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+         */
+        createMode?: pulumi.Input<string | enums.CreateMode>;
+        /**
+         * Time for deferred deletion in UTC
+         */
+        deferredDeleteTimeInUTC?: pulumi.Input<string>;
+        /**
+         * Time remaining before the DS marked for deferred delete is permanently deleted
+         */
+        deferredDeleteTimeRemaining?: pulumi.Input<string>;
+        /**
+         * Extended info of the backup item.
+         */
+        extendedInfo?: pulumi.Input<DPMProtectedItemExtendedInfoArgs>;
+        /**
+         * Friendly name of the managed item
+         */
+        friendlyName?: pulumi.Input<string>;
+        /**
+         * Flag to identify whether datasource is protected in archive
+         */
+        isArchiveEnabled?: pulumi.Input<boolean>;
+        /**
+         * Flag to identify whether the deferred deleted DS is to be purged soon
+         */
+        isDeferredDeleteScheduleUpcoming?: pulumi.Input<boolean>;
+        /**
+         * Flag to identify that deferred deleted DS is to be moved into Pause state
+         */
+        isRehydrate?: pulumi.Input<boolean>;
+        /**
+         * Flag to identify whether the DS is scheduled for deferred delete
+         */
+        isScheduledForDeferredDelete?: pulumi.Input<boolean>;
+        /**
+         * Timestamp when the last (latest) backup copy was created for this backup item.
+         */
+        lastRecoveryPoint?: pulumi.Input<string>;
+        /**
+         * ID of the backup policy with which this item is backed up.
+         */
+        policyId?: pulumi.Input<string>;
+        /**
+         * Name of the policy used for protection
+         */
+        policyName?: pulumi.Input<string>;
+        /**
+         * backup item type.
+         * Expected value is 'DPMProtectedItem'.
+         */
+        protectedItemType: pulumi.Input<"DPMProtectedItem">;
+        /**
+         * Protection state of the backup engine
+         */
+        protectionState?: pulumi.Input<string | enums.ProtectedItemState>;
+        /**
+         * ResourceGuardOperationRequests on which LAC check will be performed
+         */
+        resourceGuardOperationRequests?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Soft delete retention period in days
+         */
+        softDeleteRetentionPeriodInDays?: pulumi.Input<number>;
+        /**
+         * ARM ID of the resource to be backed up.
+         */
+        sourceResourceId?: pulumi.Input<string>;
+    }
+
+    /**
+     * Additional information of DPM Protected item.
+     */
+    export interface DPMProtectedItemExtendedInfoArgs {
+        /**
+         * Used Disk storage in bytes.
+         */
+        diskStorageUsedInBytes?: pulumi.Input<string>;
+        /**
+         * To check if backup item is collocated.
+         */
+        isCollocated?: pulumi.Input<boolean>;
+        /**
+         * To check if backup item is cloud protected.
+         */
+        isPresentOnCloud?: pulumi.Input<boolean>;
+        /**
+         * Last backup status information on backup item.
+         */
+        lastBackupStatus?: pulumi.Input<string>;
+        /**
+         * Last refresh time on backup item.
+         */
+        lastRefreshedAt?: pulumi.Input<string>;
+        /**
+         * Oldest cloud recovery point time.
+         */
+        oldestRecoveryPoint?: pulumi.Input<string>;
+        /**
+         * latest disk recovery point time.
+         */
+        onPremiseLatestRecoveryPoint?: pulumi.Input<string>;
+        /**
+         * Oldest disk recovery point time.
+         */
+        onPremiseOldestRecoveryPoint?: pulumi.Input<string>;
+        /**
+         * disk recovery point count.
+         */
+        onPremiseRecoveryPointCount?: pulumi.Input<number>;
+        /**
+         * Attribute to provide information on various DBs.
+         */
+        protectableObjectLoadPath?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * To check if backup item is disk protected.
+         */
+        protected?: pulumi.Input<boolean>;
+        /**
+         * Protection group name of the backup item.
+         */
+        protectionGroupName?: pulumi.Input<string>;
+        /**
+         * cloud recovery point count.
+         */
+        recoveryPointCount?: pulumi.Input<number>;
+        /**
+         * total Disk storage in bytes.
+         */
+        totalDiskStorageSizeInBytes?: pulumi.Input<string>;
+    }
+
+    /**
+     * Daily retention format.
+     */
+    export interface DailyRetentionFormatArgs {
+        /**
+         * List of days of the month.
+         */
+        daysOfTheMonth?: pulumi.Input<pulumi.Input<DayArgs>[]>;
+    }
+
+    /**
+     * Daily retention schedule.
+     */
+    export interface DailyRetentionScheduleArgs {
+        /**
+         * Retention duration of retention Policy.
+         */
+        retentionDuration?: pulumi.Input<RetentionDurationArgs>;
+        /**
+         * Retention times of retention policy.
+         */
+        retentionTimes?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface DailyScheduleArgs {
+        /**
+         * List of times of day this schedule has to be run.
+         */
+        scheduleRunTimes?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    /**
+     * Day of the week.
+     */
+    export interface DayArgs {
+        /**
+         * Date of the month
+         */
+        date?: pulumi.Input<number>;
+        /**
+         * Whether Date is last date of month
+         */
+        isLast?: pulumi.Input<boolean>;
+    }
+
+    /**
      * Recovery disk encryption info (BEK and KEK).
      */
     export interface DiskEncryptionInfoArgs {
@@ -453,6 +2550,102 @@ import * as pulumi from "@pulumi/pulumi";
          * The secret url / identifier.
          */
         secretIdentifier?: pulumi.Input<string>;
+    }
+
+    export interface DiskExclusionPropertiesArgs {
+        /**
+         * List of Disks' Logical Unit Numbers (LUN) to be used for VM Protection.
+         */
+        diskLunList?: pulumi.Input<pulumi.Input<number>[]>;
+        /**
+         * Flag to indicate whether DiskLunList is to be included/ excluded from backup.
+         */
+        isInclusionList?: pulumi.Input<boolean>;
+    }
+
+    /**
+     * This is used to represent the various nodes of the distributed container.
+     */
+    export interface DistributedNodesInfoArgs {
+        /**
+         * Name of the node under a distributed container.
+         */
+        nodeName?: pulumi.Input<string>;
+        /**
+         * ARM resource id of the node
+         */
+        sourceResourceId?: pulumi.Input<string>;
+        /**
+         * Status of this Node.
+         * Failed | Succeeded
+         */
+        status?: pulumi.Input<string>;
+    }
+
+    /**
+     * DPM workload-specific protection container.
+     */
+    export interface DpmContainerArgs {
+        /**
+         * Type of backup management for the container.
+         */
+        backupManagementType?: pulumi.Input<string | enums.BackupManagementType>;
+        /**
+         * Specifies whether the container is re-registrable.
+         */
+        canReRegister?: pulumi.Input<boolean>;
+        /**
+         * ID of container.
+         */
+        containerId?: pulumi.Input<string>;
+        /**
+         * Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+         * Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+         * Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+         * Backup is VMAppContainer
+         * Expected value is 'DPMContainer'.
+         */
+        containerType: pulumi.Input<"DPMContainer">;
+        /**
+         * Backup engine Agent version
+         */
+        dpmAgentVersion?: pulumi.Input<string>;
+        /**
+         * List of BackupEngines protecting the container
+         */
+        dpmServers?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Extended Info of the container.
+         */
+        extendedInfo?: pulumi.Input<DPMContainerExtendedInfoArgs>;
+        /**
+         * Friendly name of the container.
+         */
+        friendlyName?: pulumi.Input<string>;
+        /**
+         * Status of health of the container.
+         */
+        healthStatus?: pulumi.Input<string>;
+        /**
+         * Type of the protectable object associated with this container
+         */
+        protectableObjectType?: pulumi.Input<string>;
+        /**
+         * Number of protected items in the BackupEngine
+         */
+        protectedItemCount?: pulumi.Input<number>;
+        /**
+         * Protection status of the container.
+         */
+        protectionStatus?: pulumi.Input<string>;
+        /**
+         * Status of registration of the container with the Recovery Services Vault.
+         */
+        registrationStatus?: pulumi.Input<string>;
+        /**
+         * To check if upgrade available
+         */
+        upgradeAvailable?: pulumi.Input<boolean>;
     }
 
     /**
@@ -502,6 +2695,20 @@ import * as pulumi from "@pulumi/pulumi";
     }
 
     /**
+     * Extended Properties for Azure IaasVM Backup.
+     */
+    export interface ExtendedPropertiesArgs {
+        /**
+         * Extended Properties for Disk Exclusion.
+         */
+        diskExclusionProperties?: pulumi.Input<DiskExclusionPropertiesArgs>;
+        /**
+         * Linux VM name
+         */
+        linuxVmApplicationName?: pulumi.Input<string>;
+    }
+
+    /**
      * Properties of site details provided during the time of site creation.
      */
     export interface FabricCreationInputPropertiesArgs {
@@ -509,6 +2716,208 @@ import * as pulumi from "@pulumi/pulumi";
          * Fabric provider specific creation input.
          */
         customDetails?: pulumi.Input<AzureFabricCreationInputArgs | InMageRcmFabricCreationInputArgs | VMwareV2FabricCreationInputArgs>;
+    }
+
+    /**
+     * Base class for generic container of backup items
+     */
+    export interface GenericContainerArgs {
+        /**
+         * Type of backup management for the container.
+         */
+        backupManagementType?: pulumi.Input<string | enums.BackupManagementType>;
+        /**
+         * Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+         * Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+         * Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+         * Backup is VMAppContainer
+         * Expected value is 'GenericContainer'.
+         */
+        containerType: pulumi.Input<"GenericContainer">;
+        /**
+         * Extended information (not returned in List container API calls)
+         */
+        extendedInformation?: pulumi.Input<GenericContainerExtendedInfoArgs>;
+        /**
+         * Name of the container's fabric
+         */
+        fabricName?: pulumi.Input<string>;
+        /**
+         * Friendly name of the container.
+         */
+        friendlyName?: pulumi.Input<string>;
+        /**
+         * Status of health of the container.
+         */
+        healthStatus?: pulumi.Input<string>;
+        /**
+         * Type of the protectable object associated with this container
+         */
+        protectableObjectType?: pulumi.Input<string>;
+        /**
+         * Status of registration of the container with the Recovery Services Vault.
+         */
+        registrationStatus?: pulumi.Input<string>;
+    }
+
+    /**
+     * Container extended information
+     */
+    export interface GenericContainerExtendedInfoArgs {
+        /**
+         * Container identity information
+         */
+        containerIdentityInfo?: pulumi.Input<ContainerIdentityInfoArgs>;
+        /**
+         * Public key of container cert
+         */
+        rawCertData?: pulumi.Input<string>;
+        /**
+         * Azure Backup Service Endpoints for the container
+         */
+        serviceEndpoints?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    }
+
+    /**
+     * Base class for backup items.
+     */
+    export interface GenericProtectedItemArgs {
+        /**
+         * Name of the backup set the backup item belongs to
+         */
+        backupSetName?: pulumi.Input<string>;
+        /**
+         * Unique name of container
+         */
+        containerName?: pulumi.Input<string>;
+        /**
+         * Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+         */
+        createMode?: pulumi.Input<string | enums.CreateMode>;
+        /**
+         * Time for deferred deletion in UTC
+         */
+        deferredDeleteTimeInUTC?: pulumi.Input<string>;
+        /**
+         * Time remaining before the DS marked for deferred delete is permanently deleted
+         */
+        deferredDeleteTimeRemaining?: pulumi.Input<string>;
+        /**
+         * Name of this backup item's fabric.
+         */
+        fabricName?: pulumi.Input<string>;
+        /**
+         * Friendly name of the container.
+         */
+        friendlyName?: pulumi.Input<string>;
+        /**
+         * Flag to identify whether datasource is protected in archive
+         */
+        isArchiveEnabled?: pulumi.Input<boolean>;
+        /**
+         * Flag to identify whether the deferred deleted DS is to be purged soon
+         */
+        isDeferredDeleteScheduleUpcoming?: pulumi.Input<boolean>;
+        /**
+         * Flag to identify that deferred deleted DS is to be moved into Pause state
+         */
+        isRehydrate?: pulumi.Input<boolean>;
+        /**
+         * Flag to identify whether the DS is scheduled for deferred delete
+         */
+        isScheduledForDeferredDelete?: pulumi.Input<boolean>;
+        /**
+         * Timestamp when the last (latest) backup copy was created for this backup item.
+         */
+        lastRecoveryPoint?: pulumi.Input<string>;
+        /**
+         * ID of the backup policy with which this item is backed up.
+         */
+        policyId?: pulumi.Input<string>;
+        /**
+         * Name of the policy used for protection
+         */
+        policyName?: pulumi.Input<string>;
+        /**
+         * Indicates consistency of policy object and policy applied to this backup item.
+         */
+        policyState?: pulumi.Input<string>;
+        /**
+         * Data Plane Service ID of the protected item.
+         */
+        protectedItemId?: pulumi.Input<number>;
+        /**
+         * backup item type.
+         * Expected value is 'GenericProtectedItem'.
+         */
+        protectedItemType: pulumi.Input<"GenericProtectedItem">;
+        /**
+         * Backup state of this backup item.
+         */
+        protectionState?: pulumi.Input<string | enums.ProtectionState>;
+        /**
+         * ResourceGuardOperationRequests on which LAC check will be performed
+         */
+        resourceGuardOperationRequests?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Soft delete retention period in days
+         */
+        softDeleteRetentionPeriodInDays?: pulumi.Input<number>;
+        /**
+         * Loosely coupled (type, value) associations (example - parent of a protected item)
+         */
+        sourceAssociations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * ARM ID of the resource to be backed up.
+         */
+        sourceResourceId?: pulumi.Input<string>;
+    }
+
+    /**
+     * Azure VM (Mercury) workload-specific backup policy.
+     */
+    export interface GenericProtectionPolicyArgs {
+        /**
+         * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+         * Expected value is 'GenericProtectionPolicy'.
+         */
+        backupManagementType: pulumi.Input<"GenericProtectionPolicy">;
+        /**
+         * Name of this policy's fabric.
+         */
+        fabricName?: pulumi.Input<string>;
+        /**
+         * Number of items associated with this policy.
+         */
+        protectedItemsCount?: pulumi.Input<number>;
+        /**
+         * ResourceGuard Operation Requests
+         */
+        resourceGuardOperationRequests?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * List of sub-protection policies which includes schedule and retention
+         */
+        subProtectionPolicy?: pulumi.Input<pulumi.Input<SubProtectionPolicyArgs>[]>;
+        /**
+         * TimeZone optional input as string. For example: TimeZone = "Pacific Standard Time".
+         */
+        timeZone?: pulumi.Input<string>;
+    }
+
+    export interface HourlyScheduleArgs {
+        /**
+         * Interval at which backup needs to be triggered. For hourly the value
+         *  can be 4/6/8/12
+         */
+        interval?: pulumi.Input<number>;
+        /**
+         * To specify duration of the backup window
+         */
+        scheduleWindowDuration?: pulumi.Input<number>;
+        /**
+         * To specify start time of the backup window
+         */
+        scheduleWindowStartTime?: pulumi.Input<string>;
     }
 
     /**
@@ -791,6 +3200,52 @@ import * as pulumi from "@pulumi/pulumi";
          * A value indicating the recovery HTTPS port.
          */
         replicationPort?: pulumi.Input<number>;
+    }
+
+    /**
+     * IaaS VM workload-specific container.
+     */
+    export interface IaaSVMContainerArgs {
+        /**
+         * Type of backup management for the container.
+         */
+        backupManagementType?: pulumi.Input<string | enums.BackupManagementType>;
+        /**
+         * Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+         * Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+         * Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+         * Backup is VMAppContainer
+         * Expected value is 'IaasVMContainer'.
+         */
+        containerType: pulumi.Input<"IaasVMContainer">;
+        /**
+         * Friendly name of the container.
+         */
+        friendlyName?: pulumi.Input<string>;
+        /**
+         * Status of health of the container.
+         */
+        healthStatus?: pulumi.Input<string>;
+        /**
+         * Type of the protectable object associated with this container
+         */
+        protectableObjectType?: pulumi.Input<string>;
+        /**
+         * Status of registration of the container with the Recovery Services Vault.
+         */
+        registrationStatus?: pulumi.Input<string>;
+        /**
+         * Resource group name of Recovery Services Vault.
+         */
+        resourceGroup?: pulumi.Input<string>;
+        /**
+         * Fully qualified ARM url of the virtual machine represented by this Azure IaaS VM container.
+         */
+        virtualMachineId?: pulumi.Input<string>;
+        /**
+         * Specifies whether the container represents a Classic or an Azure Resource Manager VM.
+         */
+        virtualMachineVersion?: pulumi.Input<string>;
     }
 
     /**
@@ -1317,6 +3772,47 @@ import * as pulumi from "@pulumi/pulumi";
     }
 
     /**
+     * Details about inquired protectable items under a given container.
+     */
+    export interface InquiryInfoArgs {
+        /**
+         * Inquiry Details which will have workload specific details.
+         * For e.g. - For SQL and oracle this will contain different details.
+         */
+        inquiryDetails?: pulumi.Input<pulumi.Input<WorkloadInquiryDetailsArgs>[]>;
+        /**
+         * Inquiry Status for this container such as
+         * InProgress | Failed | Succeeded
+         */
+        status?: pulumi.Input<string>;
+    }
+
+    /**
+     * Validation for inquired protectable items under a given container.
+     */
+    export interface InquiryValidationArgs {
+        /**
+         * Status for the Inquiry Validation.
+         */
+        status?: pulumi.Input<string>;
+    }
+
+    export interface InstantRPAdditionalDetailsArgs {
+        azureBackupRGNamePrefix?: pulumi.Input<string>;
+        azureBackupRGNameSuffix?: pulumi.Input<string>;
+    }
+
+    /**
+     * KPI Resource Health Details
+     */
+    export interface KPIResourceHealthDetailsArgs {
+        /**
+         * Resource Health Status
+         */
+        resourceHealthStatus?: pulumi.Input<string | enums.ResourceHealthStatus>;
+    }
+
+    /**
      * Key Encryption Key (KEK) information.
      */
     export interface KeyEncryptionKeyInfoArgs {
@@ -1331,6 +3827,313 @@ import * as pulumi from "@pulumi/pulumi";
     }
 
     /**
+     * Log policy schedule.
+     */
+    export interface LogSchedulePolicyArgs {
+        /**
+         * Frequency of the log schedule operation of this policy in minutes.
+         */
+        scheduleFrequencyInMins?: pulumi.Input<number>;
+        /**
+         * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+         * Expected value is 'LogSchedulePolicy'.
+         */
+        schedulePolicyType: pulumi.Input<"LogSchedulePolicy">;
+    }
+
+    /**
+     * Long term retention policy.
+     */
+    export interface LongTermRetentionPolicyArgs {
+        /**
+         * Daily retention schedule of the protection policy.
+         */
+        dailySchedule?: pulumi.Input<DailyRetentionScheduleArgs>;
+        /**
+         * Monthly retention schedule of the protection policy.
+         */
+        monthlySchedule?: pulumi.Input<MonthlyRetentionScheduleArgs>;
+        /**
+         * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+         * Expected value is 'LongTermRetentionPolicy'.
+         */
+        retentionPolicyType: pulumi.Input<"LongTermRetentionPolicy">;
+        /**
+         * Weekly retention schedule of the protection policy.
+         */
+        weeklySchedule?: pulumi.Input<WeeklyRetentionScheduleArgs>;
+        /**
+         * Yearly retention schedule of the protection policy.
+         */
+        yearlySchedule?: pulumi.Input<YearlyRetentionScheduleArgs>;
+    }
+
+    /**
+     * Long term policy schedule.
+     */
+    export interface LongTermSchedulePolicyArgs {
+        /**
+         * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+         * Expected value is 'LongTermSchedulePolicy'.
+         */
+        schedulePolicyType: pulumi.Input<"LongTermSchedulePolicy">;
+    }
+
+    /**
+     * MAB workload-specific Health Details.
+     */
+    export interface MABContainerHealthDetailsArgs {
+        /**
+         * Health Code
+         */
+        code?: pulumi.Input<number>;
+        /**
+         * Health Message
+         */
+        message?: pulumi.Input<string>;
+        /**
+         * Health Recommended Actions
+         */
+        recommendations?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Health Title
+         */
+        title?: pulumi.Input<string>;
+    }
+
+    /**
+     * Container with items backed up using MAB backup engine.
+     */
+    export interface MabContainerArgs {
+        /**
+         * Agent version of this container.
+         */
+        agentVersion?: pulumi.Input<string>;
+        /**
+         * Type of backup management for the container.
+         */
+        backupManagementType?: pulumi.Input<string | enums.BackupManagementType>;
+        /**
+         * Can the container be registered one more time.
+         */
+        canReRegister?: pulumi.Input<boolean>;
+        /**
+         * Health state of mab container.
+         */
+        containerHealthState?: pulumi.Input<string>;
+        /**
+         * ContainerID represents the container.
+         */
+        containerId?: pulumi.Input<number>;
+        /**
+         * Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
+         * Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
+         * Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
+         * Backup is VMAppContainer
+         * Expected value is 'Windows'.
+         */
+        containerType: pulumi.Input<"Windows">;
+        /**
+         * Additional information for this container
+         */
+        extendedInfo?: pulumi.Input<MabContainerExtendedInfoArgs>;
+        /**
+         * Friendly name of the container.
+         */
+        friendlyName?: pulumi.Input<string>;
+        /**
+         * Status of health of the container.
+         */
+        healthStatus?: pulumi.Input<string>;
+        /**
+         * Health details on this mab container.
+         */
+        mabContainerHealthDetails?: pulumi.Input<pulumi.Input<MABContainerHealthDetailsArgs>[]>;
+        /**
+         * Type of the protectable object associated with this container
+         */
+        protectableObjectType?: pulumi.Input<string>;
+        /**
+         * Number of items backed up in this container.
+         */
+        protectedItemCount?: pulumi.Input<number>;
+        /**
+         * Status of registration of the container with the Recovery Services Vault.
+         */
+        registrationStatus?: pulumi.Input<string>;
+    }
+
+    /**
+     * Additional information of the container.
+     */
+    export interface MabContainerExtendedInfoArgs {
+        /**
+         * Type of backup items associated with this container.
+         */
+        backupItemType?: pulumi.Input<string | enums.BackupItemType>;
+        /**
+         * List of backup items associated with this container.
+         */
+        backupItems?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Latest backup status of this container.
+         */
+        lastBackupStatus?: pulumi.Input<string>;
+        /**
+         * Time stamp when this container was refreshed.
+         */
+        lastRefreshedAt?: pulumi.Input<string>;
+        /**
+         * Backup policy associated with this container.
+         */
+        policyName?: pulumi.Input<string>;
+    }
+
+    /**
+     * MAB workload-specific backup item.
+     */
+    export interface MabFileFolderProtectedItemArgs {
+        /**
+         * Name of the backup set the backup item belongs to
+         */
+        backupSetName?: pulumi.Input<string>;
+        /**
+         * Name of the computer associated with this backup item.
+         */
+        computerName?: pulumi.Input<string>;
+        /**
+         * Unique name of container
+         */
+        containerName?: pulumi.Input<string>;
+        /**
+         * Create mode to indicate recovery of existing soft deleted data source or creation of new data source.
+         */
+        createMode?: pulumi.Input<string | enums.CreateMode>;
+        /**
+         * Sync time for deferred deletion in UTC
+         */
+        deferredDeleteSyncTimeInUTC?: pulumi.Input<number>;
+        /**
+         * Time for deferred deletion in UTC
+         */
+        deferredDeleteTimeInUTC?: pulumi.Input<string>;
+        /**
+         * Time remaining before the DS marked for deferred delete is permanently deleted
+         */
+        deferredDeleteTimeRemaining?: pulumi.Input<string>;
+        /**
+         * Additional information with this backup item.
+         */
+        extendedInfo?: pulumi.Input<MabFileFolderProtectedItemExtendedInfoArgs>;
+        /**
+         * Friendly name of this backup item.
+         */
+        friendlyName?: pulumi.Input<string>;
+        /**
+         * Flag to identify whether datasource is protected in archive
+         */
+        isArchiveEnabled?: pulumi.Input<boolean>;
+        /**
+         * Flag to identify whether the deferred deleted DS is to be purged soon
+         */
+        isDeferredDeleteScheduleUpcoming?: pulumi.Input<boolean>;
+        /**
+         * Flag to identify that deferred deleted DS is to be moved into Pause state
+         */
+        isRehydrate?: pulumi.Input<boolean>;
+        /**
+         * Flag to identify whether the DS is scheduled for deferred delete
+         */
+        isScheduledForDeferredDelete?: pulumi.Input<boolean>;
+        /**
+         * Status of last backup operation.
+         */
+        lastBackupStatus?: pulumi.Input<string>;
+        /**
+         * Timestamp of the last backup operation on this backup item.
+         */
+        lastBackupTime?: pulumi.Input<string>;
+        /**
+         * Timestamp when the last (latest) backup copy was created for this backup item.
+         */
+        lastRecoveryPoint?: pulumi.Input<string>;
+        /**
+         * ID of the backup policy with which this item is backed up.
+         */
+        policyId?: pulumi.Input<string>;
+        /**
+         * Name of the policy used for protection
+         */
+        policyName?: pulumi.Input<string>;
+        /**
+         * backup item type.
+         * Expected value is 'MabFileFolderProtectedItem'.
+         */
+        protectedItemType: pulumi.Input<"MabFileFolderProtectedItem">;
+        /**
+         * Protected, ProtectionStopped, IRPending or ProtectionError
+         */
+        protectionState?: pulumi.Input<string>;
+        /**
+         * ResourceGuardOperationRequests on which LAC check will be performed
+         */
+        resourceGuardOperationRequests?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Soft delete retention period in days
+         */
+        softDeleteRetentionPeriodInDays?: pulumi.Input<number>;
+        /**
+         * ARM ID of the resource to be backed up.
+         */
+        sourceResourceId?: pulumi.Input<string>;
+    }
+
+    /**
+     * Additional information on the backed up item.
+     */
+    export interface MabFileFolderProtectedItemExtendedInfoArgs {
+        /**
+         * Last time when the agent data synced to service.
+         */
+        lastRefreshedAt?: pulumi.Input<string>;
+        /**
+         * The oldest backup copy available.
+         */
+        oldestRecoveryPoint?: pulumi.Input<string>;
+        /**
+         * Number of backup copies associated with the backup item.
+         */
+        recoveryPointCount?: pulumi.Input<number>;
+    }
+
+    /**
+     * Mab container-specific backup policy.
+     */
+    export interface MabProtectionPolicyArgs {
+        /**
+         * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+         * Expected value is 'MAB'.
+         */
+        backupManagementType: pulumi.Input<"MAB">;
+        /**
+         * Number of items associated with this policy.
+         */
+        protectedItemsCount?: pulumi.Input<number>;
+        /**
+         * ResourceGuard Operation Requests
+         */
+        resourceGuardOperationRequests?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Retention policy details.
+         */
+        retentionPolicy?: pulumi.Input<LongTermRetentionPolicyArgs | SimpleRetentionPolicyArgs>;
+        /**
+         * Backup schedule of backup policy.
+         */
+        schedulePolicy?: pulumi.Input<LogSchedulePolicyArgs | LongTermSchedulePolicyArgs | SimpleSchedulePolicyArgs | SimpleSchedulePolicyV2Args>;
+    }
+
+    /**
      * Monitoring Settings of the vault
      */
     export interface MonitoringSettingsArgs {
@@ -1342,6 +4145,82 @@ import * as pulumi from "@pulumi/pulumi";
          * Settings for classic alerts
          */
         classicAlertSettings?: pulumi.Input<ClassicAlertSettingsArgs>;
+    }
+
+    /**
+     * Monthly retention schedule.
+     */
+    export interface MonthlyRetentionScheduleArgs {
+        /**
+         * Retention duration of retention Policy.
+         */
+        retentionDuration?: pulumi.Input<RetentionDurationArgs>;
+        /**
+         * Daily retention format for monthly retention policy.
+         */
+        retentionScheduleDaily?: pulumi.Input<DailyRetentionFormatArgs>;
+        /**
+         * Retention schedule format type for monthly retention policy.
+         */
+        retentionScheduleFormatType?: pulumi.Input<string | enums.RetentionScheduleFormat>;
+        /**
+         * Weekly retention format for monthly retention policy.
+         */
+        retentionScheduleWeekly?: pulumi.Input<WeeklyRetentionFormatArgs>;
+        /**
+         * Retention times of retention policy.
+         */
+        retentionTimes?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    /**
+     * The Private Endpoint network resource that is linked to the Private Endpoint connection
+     */
+    export interface PrivateEndpointArgs {
+        /**
+         * Gets or sets id
+         */
+        id?: pulumi.Input<string>;
+    }
+
+    /**
+     * Private Endpoint Connection Response Properties
+     */
+    export interface PrivateEndpointConnectionArgs {
+        /**
+         * Group Ids for the Private Endpoint
+         */
+        groupIds?: pulumi.Input<pulumi.Input<string | enums.VaultSubResourceType>[]>;
+        /**
+         * Gets or sets private endpoint associated with the private endpoint connection
+         */
+        privateEndpoint?: pulumi.Input<PrivateEndpointArgs>;
+        /**
+         * Gets or sets private link service connection state
+         */
+        privateLinkServiceConnectionState?: pulumi.Input<PrivateLinkServiceConnectionStateArgs>;
+        /**
+         * Gets or sets provisioning state of the private endpoint connection
+         */
+        provisioningState?: pulumi.Input<string | enums.ProvisioningState>;
+    }
+
+    /**
+     * Private Link Service Connection State
+     */
+    export interface PrivateLinkServiceConnectionStateArgs {
+        /**
+         * Gets or sets actions required
+         */
+        actionsRequired?: pulumi.Input<string>;
+        /**
+         * Gets or sets description
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * Gets or sets the status
+         */
+        status?: pulumi.Input<string | enums.PrivateEndpointConnectionStatus>;
     }
 
     /**
@@ -1490,6 +4369,18 @@ import * as pulumi from "@pulumi/pulumi";
         timeout?: pulumi.Input<string>;
     }
 
+    export interface ResourceGuardOperationDetailArgs {
+        defaultResourceRequest?: pulumi.Input<string>;
+        vaultCriticalOperation?: pulumi.Input<string>;
+    }
+
+    export interface ResourceGuardProxyBaseArgs {
+        description?: pulumi.Input<string>;
+        lastUpdatedTime?: pulumi.Input<string>;
+        resourceGuardOperationDetails?: pulumi.Input<pulumi.Input<ResourceGuardOperationDetailArgs>[]>;
+        resourceGuardResourceId: pulumi.Input<string>;
+    }
+
     /**
      * Restore Settings  of the vault
      */
@@ -1498,6 +4389,21 @@ import * as pulumi from "@pulumi/pulumi";
          * Settings for CrossSubscriptionRestore
          */
         crossSubscriptionRestoreSettings?: pulumi.Input<CrossSubscriptionRestoreSettingsArgs>;
+    }
+
+    /**
+     * Retention duration.
+     */
+    export interface RetentionDurationArgs {
+        /**
+         * Count of duration types. Retention duration is obtained by the counting the duration type Count times.
+         * For example, when Count = 3 and DurationType = Weeks, retention duration will be three weeks.
+         */
+        count?: pulumi.Input<number>;
+        /**
+         * Retention duration type of retention policy.
+         */
+        durationType?: pulumi.Input<string | enums.RetentionDurationType>;
     }
 
     /**
@@ -1512,6 +4418,98 @@ import * as pulumi from "@pulumi/pulumi";
          * Soft delete Settings of a vault
          */
         softDeleteSettings?: pulumi.Input<SoftDeleteSettingsArgs>;
+    }
+
+    /**
+     * Common settings field for backup management
+     */
+    export interface SettingsArgs {
+        /**
+         * Workload compression flag. This has been added so that 'isSqlCompression'
+         * will be deprecated once clients upgrade to consider this flag.
+         */
+        isCompression?: pulumi.Input<boolean>;
+        /**
+         * SQL compression flag
+         */
+        issqlcompression?: pulumi.Input<boolean>;
+        /**
+         * TimeZone optional input as string. For example: TimeZone = "Pacific Standard Time".
+         */
+        timeZone?: pulumi.Input<string>;
+    }
+
+    /**
+     * Simple policy retention.
+     */
+    export interface SimpleRetentionPolicyArgs {
+        /**
+         * Retention duration of the protection policy.
+         */
+        retentionDuration?: pulumi.Input<RetentionDurationArgs>;
+        /**
+         * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+         * Expected value is 'SimpleRetentionPolicy'.
+         */
+        retentionPolicyType: pulumi.Input<"SimpleRetentionPolicy">;
+    }
+
+    /**
+     * Simple policy schedule.
+     */
+    export interface SimpleSchedulePolicyArgs {
+        /**
+         * Hourly Schedule of this Policy
+         */
+        hourlySchedule?: pulumi.Input<HourlyScheduleArgs>;
+        /**
+         * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+         * Expected value is 'SimpleSchedulePolicy'.
+         */
+        schedulePolicyType: pulumi.Input<"SimpleSchedulePolicy">;
+        /**
+         * List of days of week this schedule has to be run.
+         */
+        scheduleRunDays?: pulumi.Input<pulumi.Input<enums.DayOfWeek>[]>;
+        /**
+         * Frequency of the schedule operation of this policy.
+         */
+        scheduleRunFrequency?: pulumi.Input<string | enums.ScheduleRunType>;
+        /**
+         * List of times of day this schedule has to be run.
+         */
+        scheduleRunTimes?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * At every number weeks this schedule has to be run.
+         */
+        scheduleWeeklyFrequency?: pulumi.Input<number>;
+    }
+
+    /**
+     * The V2 policy schedule for IaaS that supports hourly backups.
+     */
+    export interface SimpleSchedulePolicyV2Args {
+        /**
+         * Daily schedule of this policy
+         */
+        dailySchedule?: pulumi.Input<DailyScheduleArgs>;
+        /**
+         * hourly schedule of this policy
+         */
+        hourlySchedule?: pulumi.Input<HourlyScheduleArgs>;
+        /**
+         * This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
+         * Expected value is 'SimpleSchedulePolicyV2'.
+         */
+        schedulePolicyType: pulumi.Input<"SimpleSchedulePolicyV2">;
+        /**
+         * Frequency of the schedule operation of this policy.
+         */
+        scheduleRunFrequency?: pulumi.Input<string | enums.ScheduleRunType>;
+        /**
+         * Weekly schedule of this policy
+         */
+        weeklySchedule?: pulumi.Input<WeeklyScheduleArgs>;
     }
 
     /**
@@ -1541,6 +4539,15 @@ import * as pulumi from "@pulumi/pulumi";
     }
 
     /**
+     * Snapshot Backup related fields for WorkloadType SaPHanaSystem
+     */
+    export interface SnapshotBackupAdditionalDetailsArgs {
+        instantRPDetails?: pulumi.Input<string>;
+        instantRpRetentionRangeInDays?: pulumi.Input<number>;
+        userAssignedManagedIdentityDetails?: pulumi.Input<UserAssignedManagedIdentityDetailsArgs>;
+    }
+
+    /**
      * Soft delete Settings of vault
      */
     export interface SoftDeleteSettingsArgs {
@@ -1559,6 +4566,63 @@ import * as pulumi from "@pulumi/pulumi";
          * The ID of the storage object.
          */
         targetStorageClassificationId?: pulumi.Input<string>;
+    }
+
+    /**
+     * Sub-protection policy which includes schedule and retention
+     */
+    export interface SubProtectionPolicyArgs {
+        /**
+         * Type of backup policy type
+         */
+        policyType?: pulumi.Input<string | enums.PolicyType>;
+        /**
+         * Retention policy with the details on backup copy retention ranges.
+         */
+        retentionPolicy?: pulumi.Input<LongTermRetentionPolicyArgs | SimpleRetentionPolicyArgs>;
+        /**
+         * Backup schedule specified as part of backup policy.
+         */
+        schedulePolicy?: pulumi.Input<LogSchedulePolicyArgs | LongTermSchedulePolicyArgs | SimpleSchedulePolicyArgs | SimpleSchedulePolicyV2Args>;
+        /**
+         * Snapshot Backup related fields for WorkloadType SaPHanaSystem
+         */
+        snapshotBackupAdditionalDetails?: pulumi.Input<SnapshotBackupAdditionalDetailsArgs>;
+        /**
+         * Tiering policy to automatically move RPs to another tier.
+         * Key is Target Tier, defined in RecoveryPointTierType enum.
+         * Tiering policy specifies the criteria to move RP to the target tier.
+         */
+        tieringPolicy?: pulumi.Input<{[key: string]: pulumi.Input<TieringPolicyArgs>}>;
+    }
+
+    /**
+     * Tiering Policy for a target tier.
+     * If the policy is not specified for a given target tier, service retains the existing configured tiering policy for that tier
+     */
+    export interface TieringPolicyArgs {
+        /**
+         * Number of days/weeks/months/years to retain backups in current tier before tiering.
+         * Used only if TieringMode is set to TierAfter
+         */
+        duration?: pulumi.Input<number>;
+        /**
+         * Retention duration type: days/weeks/months/years
+         * Used only if TieringMode is set to TierAfter
+         */
+        durationType?: pulumi.Input<string | enums.RetentionDurationType>;
+        /**
+         * Tiering Mode to control automatic tiering of recovery points. Supported values are:
+         * 1. TierRecommended: Tier all recovery points recommended to be tiered
+         * 2. TierAfter: Tier all recovery points after a fixed period, as specified in duration + durationType below.
+         * 3. DoNotTier: Do not tier any recovery points
+         */
+        tieringMode?: pulumi.Input<string | enums.TieringMode>;
+    }
+
+    export interface UserAssignedManagedIdentityDetailsArgs {
+        identityArmId?: pulumi.Input<string>;
+        identityName?: pulumi.Input<string>;
     }
 
     /**
@@ -1854,6 +4918,17 @@ import * as pulumi from "@pulumi/pulumi";
     }
 
     /**
+     * Vault retention policy for AzureFileShare
+     */
+    export interface VaultRetentionPolicyArgs {
+        snapshotRetentionInDays: pulumi.Input<number>;
+        /**
+         * Base class for retention policy.
+         */
+        vaultRetention: pulumi.Input<LongTermRetentionPolicyArgs | SimpleRetentionPolicyArgs>;
+    }
+
+    /**
      * Create network mappings input properties/behavior specific to Vmm to Azure Network mapping.
      */
     export interface VmmToAzureCreateNetworkMappingInputArgs {
@@ -1873,4 +4948,92 @@ import * as pulumi from "@pulumi/pulumi";
          * Expected value is 'VmmToVmm'.
          */
         instanceType: pulumi.Input<"VmmToVmm">;
+    }
+
+    /**
+     * Weekly retention format.
+     */
+    export interface WeeklyRetentionFormatArgs {
+        /**
+         * List of days of the week.
+         */
+        daysOfTheWeek?: pulumi.Input<pulumi.Input<enums.DayOfWeek>[]>;
+        /**
+         * List of weeks of month.
+         */
+        weeksOfTheMonth?: pulumi.Input<pulumi.Input<enums.WeekOfMonth>[]>;
+    }
+
+    /**
+     * Weekly retention schedule.
+     */
+    export interface WeeklyRetentionScheduleArgs {
+        /**
+         * List of days of week for weekly retention policy.
+         */
+        daysOfTheWeek?: pulumi.Input<pulumi.Input<enums.DayOfWeek>[]>;
+        /**
+         * Retention duration of retention Policy.
+         */
+        retentionDuration?: pulumi.Input<RetentionDurationArgs>;
+        /**
+         * Retention times of retention policy.
+         */
+        retentionTimes?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface WeeklyScheduleArgs {
+        scheduleRunDays?: pulumi.Input<pulumi.Input<enums.DayOfWeek>[]>;
+        /**
+         * List of times of day this schedule has to be run.
+         */
+        scheduleRunTimes?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    /**
+     * Details of an inquired protectable item.
+     */
+    export interface WorkloadInquiryDetailsArgs {
+        /**
+         * Inquiry validation such as permissions and other backup validations.
+         */
+        inquiryValidation?: pulumi.Input<InquiryValidationArgs>;
+        /**
+         * Contains the protectable item Count inside this Container.
+         */
+        itemCount?: pulumi.Input<number>;
+        /**
+         * Type of the Workload such as SQL, Oracle etc.
+         */
+        type?: pulumi.Input<string>;
+    }
+
+    /**
+     * Yearly retention schedule.
+     */
+    export interface YearlyRetentionScheduleArgs {
+        /**
+         * List of months of year of yearly retention policy.
+         */
+        monthsOfYear?: pulumi.Input<pulumi.Input<enums.MonthOfYear>[]>;
+        /**
+         * Retention duration of retention Policy.
+         */
+        retentionDuration?: pulumi.Input<RetentionDurationArgs>;
+        /**
+         * Daily retention format for yearly retention policy.
+         */
+        retentionScheduleDaily?: pulumi.Input<DailyRetentionFormatArgs>;
+        /**
+         * Retention schedule format for yearly retention policy.
+         */
+        retentionScheduleFormatType?: pulumi.Input<string | enums.RetentionScheduleFormat>;
+        /**
+         * Weekly retention format for yearly retention policy.
+         */
+        retentionScheduleWeekly?: pulumi.Input<WeeklyRetentionFormatArgs>;
+        /**
+         * Retention times of retention policy.
+         */
+        retentionTimes?: pulumi.Input<pulumi.Input<string>[]>;
     }

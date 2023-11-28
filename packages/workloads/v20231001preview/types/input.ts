@@ -88,6 +88,53 @@ import * as pulumi from "@pulumi/pulumi";
     }
 
     /**
+     * Gets or sets the DB2 provider properties.
+     */
+    export interface DB2ProviderInstancePropertiesArgs {
+        /**
+         * Gets or sets the db2 database name.
+         */
+        dbName?: pulumi.Input<string>;
+        /**
+         * Gets or sets the db2 database password.
+         */
+        dbPassword?: pulumi.Input<string>;
+        /**
+         * Gets or sets the key vault URI to secret with the database password.
+         */
+        dbPasswordUri?: pulumi.Input<string>;
+        /**
+         * Gets or sets the db2 database sql port.
+         */
+        dbPort?: pulumi.Input<string>;
+        /**
+         * Gets or sets the db2 database user name.
+         */
+        dbUsername?: pulumi.Input<string>;
+        /**
+         * Gets or sets the target virtual machine name.
+         */
+        hostname?: pulumi.Input<string>;
+        /**
+         * The provider type. For example, the value can be SapHana.
+         * Expected value is 'Db2'.
+         */
+        providerType: pulumi.Input<"Db2">;
+        /**
+         * Gets or sets the SAP System Identifier
+         */
+        sapSid?: pulumi.Input<string>;
+        /**
+         * Gets or sets the blob URI to SSL certificate for the DB2 Database.
+         */
+        sslCertificateUri?: pulumi.Input<string>;
+        /**
+         * Gets or sets certificate preference if secure communication is enabled.
+         */
+        sslPreference?: pulumi.Input<string | enums.SslPreference>;
+    }
+
+    /**
      * Defines the policy properties for database backup.
      */
     export interface DBBackupPolicyPropertiesArgs {
@@ -419,6 +466,61 @@ import * as pulumi from "@pulumi/pulumi";
     }
 
     /**
+     * Gets or sets the provider properties.
+     */
+    export interface HanaDbProviderInstancePropertiesArgs {
+        /**
+         * Gets or sets the hana database name.
+         */
+        dbName?: pulumi.Input<string>;
+        /**
+         * Gets or sets the database password.
+         */
+        dbPassword?: pulumi.Input<string>;
+        /**
+         * Gets or sets the key vault URI to secret with the database password.
+         */
+        dbPasswordUri?: pulumi.Input<string>;
+        /**
+         * Gets or sets the database user name.
+         */
+        dbUsername?: pulumi.Input<string>;
+        /**
+         * Gets or sets the target virtual machine size.
+         */
+        hostname?: pulumi.Input<string>;
+        /**
+         * Gets or sets the database instance number.
+         */
+        instanceNumber?: pulumi.Input<string>;
+        /**
+         * The provider type. For example, the value can be SapHana.
+         * Expected value is 'SapHana'.
+         */
+        providerType: pulumi.Input<"SapHana">;
+        /**
+         * Gets or sets the SAP System Identifier.
+         */
+        sapSid?: pulumi.Input<string>;
+        /**
+         * Gets or sets the database sql port.
+         */
+        sqlPort?: pulumi.Input<string>;
+        /**
+         * Gets or sets the blob URI to SSL certificate for the DB.
+         */
+        sslCertificateUri?: pulumi.Input<string>;
+        /**
+         * Gets or sets the hostname(s) in the SSL certificate.
+         */
+        sslHostNameInCertificate?: pulumi.Input<string>;
+        /**
+         * Gets or sets certificate preference if secure communication is enabled.
+         */
+        sslPreference?: pulumi.Input<string | enums.SslPreference>;
+    }
+
+    /**
      * Gets or sets the high availability configuration.
      */
     export interface HighAvailabilityConfigurationArgs {
@@ -610,6 +712,20 @@ import * as pulumi from "@pulumi/pulumi";
     }
 
     /**
+     * The Managed service identity.
+     */
+    export interface ManagedServiceIdentityArgs {
+        /**
+         * The managed service identity for all identities.
+         */
+        type: pulumi.Input<string | enums.ManagedServiceIdentityType>;
+        /**
+         * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+         */
+        userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    /**
      * Monthly retention schedule.
      */
     export interface MonthlyRetentionScheduleArgs {
@@ -652,6 +768,49 @@ import * as pulumi from "@pulumi/pulumi";
          * The private endpoint resource ID
          */
         privateEndpointId: pulumi.Input<string>;
+    }
+
+    /**
+     * Gets or sets the SQL server provider properties.
+     */
+    export interface MsSqlServerProviderInstancePropertiesArgs {
+        /**
+         * Gets or sets the database password.
+         */
+        dbPassword?: pulumi.Input<string>;
+        /**
+         * Gets or sets the key vault URI to secret with the database password.
+         */
+        dbPasswordUri?: pulumi.Input<string>;
+        /**
+         * Gets or sets the database sql port.
+         */
+        dbPort?: pulumi.Input<string>;
+        /**
+         * Gets or sets the database user name.
+         */
+        dbUsername?: pulumi.Input<string>;
+        /**
+         * Gets or sets the SQL server host name.
+         */
+        hostname?: pulumi.Input<string>;
+        /**
+         * The provider type. For example, the value can be SapHana.
+         * Expected value is 'MsSqlServer'.
+         */
+        providerType: pulumi.Input<"MsSqlServer">;
+        /**
+         * Gets or sets the SAP System Identifier
+         */
+        sapSid?: pulumi.Input<string>;
+        /**
+         * Gets or sets the blob URI to SSL certificate for the SQL Database.
+         */
+        sslCertificateUri?: pulumi.Input<string>;
+        /**
+         * Gets or sets certificate preference if secure communication is enabled.
+         */
+        sslPreference?: pulumi.Input<string | enums.SslPreference>;
     }
 
     /**
@@ -735,6 +894,68 @@ import * as pulumi from "@pulumi/pulumi";
     }
 
     /**
+     * Gets or sets the PrometheusHaCluster provider properties.
+     */
+    export interface PrometheusHaClusterProviderInstancePropertiesArgs {
+        /**
+         * Gets or sets the clusterName.
+         */
+        clusterName?: pulumi.Input<string>;
+        /**
+         * Gets or sets the target machine name.
+         */
+        hostname?: pulumi.Input<string>;
+        /**
+         * URL of the Node Exporter endpoint.
+         */
+        prometheusUrl?: pulumi.Input<string>;
+        /**
+         * The provider type. For example, the value can be SapHana.
+         * Expected value is 'PrometheusHaCluster'.
+         */
+        providerType: pulumi.Input<"PrometheusHaCluster">;
+        /**
+         * Gets or sets the cluster sid.
+         */
+        sid?: pulumi.Input<string>;
+        /**
+         * Gets or sets the blob URI to SSL certificate for the HA cluster exporter.
+         */
+        sslCertificateUri?: pulumi.Input<string>;
+        /**
+         * Gets or sets certificate preference if secure communication is enabled.
+         */
+        sslPreference?: pulumi.Input<string | enums.SslPreference>;
+    }
+
+    /**
+     * Gets or sets the PrometheusOS provider properties.
+     */
+    export interface PrometheusOSProviderInstancePropertiesArgs {
+        /**
+         * URL of the Node Exporter endpoint
+         */
+        prometheusUrl?: pulumi.Input<string>;
+        /**
+         * The provider type. For example, the value can be SapHana.
+         * Expected value is 'PrometheusOS'.
+         */
+        providerType: pulumi.Input<"PrometheusOS">;
+        /**
+         * Gets or sets the SAP System Identifier
+         */
+        sapSid?: pulumi.Input<string>;
+        /**
+         * Gets or sets the blob URI to SSL certificate for the prometheus node exporter.
+         */
+        sslCertificateUri?: pulumi.Input<string>;
+        /**
+         * Gets or sets certificate preference if secure communication is enabled.
+         */
+        sslPreference?: pulumi.Input<string | enums.SslPreference>;
+    }
+
+    /**
      * Retention duration.
      */
     export interface RetentionDurationArgs {
@@ -796,6 +1017,111 @@ import * as pulumi from "@pulumi/pulumi";
          * Specify the name of the trust store file that contains the server’s public certificates (eg. sapsrv.pse). The script will search for the file in the appropriate directory depending on the crypto provider mentioned. If this argument is not provided, it is automatically determined by searching in the configuration files.
          */
         sslTrustStore?: pulumi.Input<string>;
+    }
+
+    /**
+     * Gets or sets the Threshold Values for Top Metrics Health.
+     */
+    export interface SapLandscapeMonitorMetricThresholdsArgs {
+        /**
+         * Gets or sets the threshold value for Green.
+         */
+        green?: pulumi.Input<number>;
+        /**
+         * Gets or sets the name of the threshold.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * Gets or sets the threshold value for Red.
+         */
+        red?: pulumi.Input<number>;
+        /**
+         * Gets or sets the threshold value for Yellow.
+         */
+        yellow?: pulumi.Input<number>;
+    }
+
+    /**
+     * Gets or sets the SID groupings by landscape and Environment.
+     */
+    export interface SapLandscapeMonitorPropertiesGroupingArgs {
+        /**
+         * Gets or sets the list of landscape to SID mappings.
+         */
+        landscape?: pulumi.Input<pulumi.Input<SapLandscapeMonitorSidMappingArgs>[]>;
+        /**
+         * Gets or sets the list of Sap Applications to SID mappings.
+         */
+        sapApplication?: pulumi.Input<pulumi.Input<SapLandscapeMonitorSidMappingArgs>[]>;
+    }
+
+    /**
+     * Gets or sets the mapping for SID to Environment/Applications.
+     */
+    export interface SapLandscapeMonitorSidMappingArgs {
+        /**
+         * Gets or sets the name of the grouping.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * Gets or sets the list of SID's.
+         */
+        topSid?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    /**
+     * Gets or sets the provider properties.
+     */
+    export interface SapNetWeaverProviderInstancePropertiesArgs {
+        /**
+         * The provider type. For example, the value can be SapHana.
+         * Expected value is 'SapNetWeaver'.
+         */
+        providerType: pulumi.Input<"SapNetWeaver">;
+        /**
+         * Gets or sets the SAP Client ID.
+         */
+        sapClientId?: pulumi.Input<string>;
+        /**
+         * Gets or sets the list of HostFile Entries
+         */
+        sapHostFileEntries?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Gets or sets the target virtual machine IP Address/FQDN.
+         */
+        sapHostname?: pulumi.Input<string>;
+        /**
+         * Gets or sets the instance number of SAP NetWeaver.
+         */
+        sapInstanceNr?: pulumi.Input<string>;
+        /**
+         * Sets the SAP password.
+         */
+        sapPassword?: pulumi.Input<string>;
+        /**
+         * Gets or sets the key vault URI to secret with the SAP password.
+         */
+        sapPasswordUri?: pulumi.Input<string>;
+        /**
+         * Gets or sets the SAP HTTP port number.
+         */
+        sapPortNumber?: pulumi.Input<string>;
+        /**
+         * Gets or sets the SAP System Identifier
+         */
+        sapSid?: pulumi.Input<string>;
+        /**
+         * Gets or sets the SAP user name.
+         */
+        sapUsername?: pulumi.Input<string>;
+        /**
+         * Gets or sets the blob URI to SSL certificate for the SAP system.
+         */
+        sslCertificateUri?: pulumi.Input<string>;
+        /**
+         * Gets or sets certificate preference if secure communication is enabled.
+         */
+        sslPreference?: pulumi.Input<string | enums.SslPreference>;
     }
 
     /**

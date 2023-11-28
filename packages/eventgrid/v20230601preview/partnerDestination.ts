@@ -124,7 +124,7 @@ export class PartnerDestination extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:eventgrid:PartnerDestination" }, { type: "azure-native:eventgrid/v20211015preview:PartnerDestination" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:eventgrid:PartnerDestination" }, { type: "azure-native:eventgrid/v20211015preview:PartnerDestination" }, { type: "azure-native:eventgrid/v20231215preview:PartnerDestination" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PartnerDestination.__pulumiType, name, resourceInputs, opts);
     }

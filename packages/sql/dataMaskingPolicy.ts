@@ -5,7 +5,7 @@ import * as types from "./types";
  * A database data masking policy.
  * Azure REST API version: 2021-11-01. Prior API version in Azure Native 1.x: 2014-04-01.
  *
- * Other available API versions: 2022-11-01-preview, 2023-02-01-preview.
+ * Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview.
  */
 export class DataMaskingPolicy extends pulumi.CustomResource {
     /**
@@ -113,7 +113,7 @@ export class DataMaskingPolicy extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20140401:DataMaskingPolicy" }, { type: "azure-native:sql/v20211101:DataMaskingPolicy" }, { type: "azure-native:sql/v20220201preview:DataMaskingPolicy" }, { type: "azure-native:sql/v20220501preview:DataMaskingPolicy" }, { type: "azure-native:sql/v20220801preview:DataMaskingPolicy" }, { type: "azure-native:sql/v20221101preview:DataMaskingPolicy" }, { type: "azure-native:sql/v20230201preview:DataMaskingPolicy" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:sql/v20140401:DataMaskingPolicy" }, { type: "azure-native:sql/v20211101:DataMaskingPolicy" }, { type: "azure-native:sql/v20220201preview:DataMaskingPolicy" }, { type: "azure-native:sql/v20220501preview:DataMaskingPolicy" }, { type: "azure-native:sql/v20220801preview:DataMaskingPolicy" }, { type: "azure-native:sql/v20221101preview:DataMaskingPolicy" }, { type: "azure-native:sql/v20230201preview:DataMaskingPolicy" }, { type: "azure-native:sql/v20230501preview:DataMaskingPolicy" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(DataMaskingPolicy.__pulumiType, name, resourceInputs, opts);
     }

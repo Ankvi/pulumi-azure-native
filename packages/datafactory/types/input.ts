@@ -1120,7 +1120,7 @@ export interface AvroDatasetArgs {
     /**
      * The location of the avro storage.
      */
-    location: pulumi.Input<AmazonS3CompatibleLocationArgs | AmazonS3LocationArgs | AzureBlobFSLocationArgs | AzureBlobStorageLocationArgs | AzureDataLakeStoreLocationArgs | AzureFileStorageLocationArgs | FileServerLocationArgs | FtpServerLocationArgs | GoogleCloudStorageLocationArgs | HdfsLocationArgs | HttpServerLocationArgs | OracleCloudStorageLocationArgs | SftpLocationArgs>;
+    location: pulumi.Input<AmazonS3CompatibleLocationArgs | AmazonS3LocationArgs | AzureBlobFSLocationArgs | AzureBlobStorageLocationArgs | AzureDataLakeStoreLocationArgs | AzureFileStorageLocationArgs | FileServerLocationArgs | FtpServerLocationArgs | GoogleCloudStorageLocationArgs | HdfsLocationArgs | HttpServerLocationArgs | LakeHouseLocationArgs | OracleCloudStorageLocationArgs | SftpLocationArgs>;
     /**
      * Parameters for dataset.
      */
@@ -1186,7 +1186,7 @@ export interface AvroSinkArgs {
     /**
      * Avro store settings.
      */
-    storeSettings?: pulumi.Input<AzureBlobFSWriteSettingsArgs | AzureBlobStorageWriteSettingsArgs | AzureDataLakeStoreWriteSettingsArgs | AzureFileStorageWriteSettingsArgs | FileServerWriteSettingsArgs | SftpWriteSettingsArgs>;
+    storeSettings?: pulumi.Input<AzureBlobFSWriteSettingsArgs | AzureBlobStorageWriteSettingsArgs | AzureDataLakeStoreWriteSettingsArgs | AzureFileStorageWriteSettingsArgs | FileServerWriteSettingsArgs | LakeHouseWriteSettingsArgs | SftpWriteSettingsArgs>;
     /**
      * Copy sink type.
      * Expected value is 'AvroSink'.
@@ -1229,7 +1229,7 @@ export interface AvroSourceArgs {
     /**
      * Avro store settings.
      */
-    storeSettings?: pulumi.Input<AmazonS3CompatibleReadSettingsArgs | AmazonS3ReadSettingsArgs | AzureBlobFSReadSettingsArgs | AzureBlobStorageReadSettingsArgs | AzureDataLakeStoreReadSettingsArgs | AzureFileStorageReadSettingsArgs | FileServerReadSettingsArgs | FtpReadSettingsArgs | GoogleCloudStorageReadSettingsArgs | HdfsReadSettingsArgs | HttpReadSettingsArgs | OracleCloudStorageReadSettingsArgs | SftpReadSettingsArgs>;
+    storeSettings?: pulumi.Input<AmazonS3CompatibleReadSettingsArgs | AmazonS3ReadSettingsArgs | AzureBlobFSReadSettingsArgs | AzureBlobStorageReadSettingsArgs | AzureDataLakeStoreReadSettingsArgs | AzureFileStorageReadSettingsArgs | FileServerReadSettingsArgs | FtpReadSettingsArgs | GoogleCloudStorageReadSettingsArgs | HdfsReadSettingsArgs | HttpReadSettingsArgs | LakeHouseReadSettingsArgs | OracleCloudStorageReadSettingsArgs | SftpReadSettingsArgs>;
     /**
      * Copy source type.
      * Expected value is 'AvroSource'.
@@ -4855,7 +4855,7 @@ export interface BinaryDatasetArgs {
     /**
      * The location of the Binary storage.
      */
-    location: pulumi.Input<AmazonS3CompatibleLocationArgs | AmazonS3LocationArgs | AzureBlobFSLocationArgs | AzureBlobStorageLocationArgs | AzureDataLakeStoreLocationArgs | AzureFileStorageLocationArgs | FileServerLocationArgs | FtpServerLocationArgs | GoogleCloudStorageLocationArgs | HdfsLocationArgs | HttpServerLocationArgs | OracleCloudStorageLocationArgs | SftpLocationArgs>;
+    location: pulumi.Input<AmazonS3CompatibleLocationArgs | AmazonS3LocationArgs | AzureBlobFSLocationArgs | AzureBlobStorageLocationArgs | AzureDataLakeStoreLocationArgs | AzureFileStorageLocationArgs | FileServerLocationArgs | FtpServerLocationArgs | GoogleCloudStorageLocationArgs | HdfsLocationArgs | HttpServerLocationArgs | LakeHouseLocationArgs | OracleCloudStorageLocationArgs | SftpLocationArgs>;
     /**
      * Parameters for dataset.
      */
@@ -4913,7 +4913,7 @@ export interface BinarySinkArgs {
     /**
      * Binary store settings.
      */
-    storeSettings?: pulumi.Input<AzureBlobFSWriteSettingsArgs | AzureBlobStorageWriteSettingsArgs | AzureDataLakeStoreWriteSettingsArgs | AzureFileStorageWriteSettingsArgs | FileServerWriteSettingsArgs | SftpWriteSettingsArgs>;
+    storeSettings?: pulumi.Input<AzureBlobFSWriteSettingsArgs | AzureBlobStorageWriteSettingsArgs | AzureDataLakeStoreWriteSettingsArgs | AzureFileStorageWriteSettingsArgs | FileServerWriteSettingsArgs | LakeHouseWriteSettingsArgs | SftpWriteSettingsArgs>;
     /**
      * Copy sink type.
      * Expected value is 'BinarySink'.
@@ -4956,7 +4956,7 @@ export interface BinarySourceArgs {
     /**
      * Binary store settings.
      */
-    storeSettings?: pulumi.Input<AmazonS3CompatibleReadSettingsArgs | AmazonS3ReadSettingsArgs | AzureBlobFSReadSettingsArgs | AzureBlobStorageReadSettingsArgs | AzureDataLakeStoreReadSettingsArgs | AzureFileStorageReadSettingsArgs | FileServerReadSettingsArgs | FtpReadSettingsArgs | GoogleCloudStorageReadSettingsArgs | HdfsReadSettingsArgs | HttpReadSettingsArgs | OracleCloudStorageReadSettingsArgs | SftpReadSettingsArgs>;
+    storeSettings?: pulumi.Input<AmazonS3CompatibleReadSettingsArgs | AmazonS3ReadSettingsArgs | AzureBlobFSReadSettingsArgs | AzureBlobStorageReadSettingsArgs | AzureDataLakeStoreReadSettingsArgs | AzureFileStorageReadSettingsArgs | FileServerReadSettingsArgs | FtpReadSettingsArgs | GoogleCloudStorageReadSettingsArgs | HdfsReadSettingsArgs | HttpReadSettingsArgs | LakeHouseReadSettingsArgs | OracleCloudStorageReadSettingsArgs | SftpReadSettingsArgs>;
     /**
      * Copy source type.
      * Expected value is 'BinarySource'.
@@ -5821,7 +5821,7 @@ export interface CopyActivityArgs {
     /**
      * Copy activity sink.
      */
-    sink: pulumi.Input<AvroSinkArgs | AzureBlobFSSinkArgs | AzureDataExplorerSinkArgs | AzureDataLakeStoreSinkArgs | AzureDatabricksDeltaLakeSinkArgs | AzureMySqlSinkArgs | AzurePostgreSqlSinkArgs | AzureQueueSinkArgs | AzureSearchIndexSinkArgs | AzureSqlSinkArgs | AzureTableSinkArgs | BinarySinkArgs | BlobSinkArgs | CommonDataServiceForAppsSinkArgs | CosmosDbMongoDbApiSinkArgs | CosmosDbSqlApiSinkArgs | DelimitedTextSinkArgs | DocumentDbCollectionSinkArgs | DynamicsCrmSinkArgs | DynamicsSinkArgs | FileSystemSinkArgs | InformixSinkArgs | JsonSinkArgs | MicrosoftAccessSinkArgs | MongoDbAtlasSinkArgs | MongoDbV2SinkArgs | OdbcSinkArgs | OracleSinkArgs | OrcSinkArgs | ParquetSinkArgs | RestSinkArgs | SalesforceServiceCloudSinkArgs | SalesforceSinkArgs | SapCloudForCustomerSinkArgs | SnowflakeSinkArgs | SqlDWSinkArgs | SqlMISinkArgs | SqlServerSinkArgs | SqlSinkArgs>;
+    sink: pulumi.Input<AvroSinkArgs | AzureBlobFSSinkArgs | AzureDataExplorerSinkArgs | AzureDataLakeStoreSinkArgs | AzureDatabricksDeltaLakeSinkArgs | AzureMySqlSinkArgs | AzurePostgreSqlSinkArgs | AzureQueueSinkArgs | AzureSearchIndexSinkArgs | AzureSqlSinkArgs | AzureTableSinkArgs | BinarySinkArgs | BlobSinkArgs | CommonDataServiceForAppsSinkArgs | CosmosDbMongoDbApiSinkArgs | CosmosDbSqlApiSinkArgs | DelimitedTextSinkArgs | DocumentDbCollectionSinkArgs | DynamicsCrmSinkArgs | DynamicsSinkArgs | FileSystemSinkArgs | InformixSinkArgs | JsonSinkArgs | LakeHouseTableSinkArgs | MicrosoftAccessSinkArgs | MongoDbAtlasSinkArgs | MongoDbV2SinkArgs | OdbcSinkArgs | OracleSinkArgs | OrcSinkArgs | ParquetSinkArgs | RestSinkArgs | SalesforceServiceCloudSinkArgs | SalesforceSinkArgs | SapCloudForCustomerSinkArgs | SnowflakeSinkArgs | SqlDWSinkArgs | SqlMISinkArgs | SqlServerSinkArgs | SqlSinkArgs>;
     /**
      * Specify the fault tolerance for data consistency.
      */
@@ -5829,7 +5829,7 @@ export interface CopyActivityArgs {
     /**
      * Copy activity source.
      */
-    source: pulumi.Input<AmazonMWSSourceArgs | AmazonRdsForOracleSourceArgs | AmazonRdsForSqlServerSourceArgs | AmazonRedshiftSourceArgs | AvroSourceArgs | AzureBlobFSSourceArgs | AzureDataExplorerSourceArgs | AzureDataLakeStoreSourceArgs | AzureDatabricksDeltaLakeSourceArgs | AzureMariaDBSourceArgs | AzureMySqlSourceArgs | AzurePostgreSqlSourceArgs | AzureSqlSourceArgs | AzureTableSourceArgs | BinarySourceArgs | BlobSourceArgs | CassandraSourceArgs | CommonDataServiceForAppsSourceArgs | ConcurSourceArgs | CosmosDbMongoDbApiSourceArgs | CosmosDbSqlApiSourceArgs | CouchbaseSourceArgs | Db2SourceArgs | DelimitedTextSourceArgs | DocumentDbCollectionSourceArgs | DrillSourceArgs | DynamicsAXSourceArgs | DynamicsCrmSourceArgs | DynamicsSourceArgs | EloquaSourceArgs | ExcelSourceArgs | FileSystemSourceArgs | GoogleAdWordsSourceArgs | GoogleBigQuerySourceArgs | GreenplumSourceArgs | HBaseSourceArgs | HdfsSourceArgs | HiveSourceArgs | HttpSourceArgs | HubspotSourceArgs | ImpalaSourceArgs | InformixSourceArgs | JiraSourceArgs | JsonSourceArgs | MagentoSourceArgs | MariaDBSourceArgs | MarketoSourceArgs | MicrosoftAccessSourceArgs | MongoDbAtlasSourceArgs | MongoDbSourceArgs | MongoDbV2SourceArgs | MySqlSourceArgs | NetezzaSourceArgs | ODataSourceArgs | OdbcSourceArgs | Office365SourceArgs | OracleServiceCloudSourceArgs | OracleSourceArgs | OrcSourceArgs | ParquetSourceArgs | PaypalSourceArgs | PhoenixSourceArgs | PostgreSqlSourceArgs | PrestoSourceArgs | QuickBooksSourceArgs | RelationalSourceArgs | ResponsysSourceArgs | RestSourceArgs | SalesforceMarketingCloudSourceArgs | SalesforceServiceCloudSourceArgs | SalesforceSourceArgs | SapBwSourceArgs | SapCloudForCustomerSourceArgs | SapEccSourceArgs | SapHanaSourceArgs | SapOdpSourceArgs | SapOpenHubSourceArgs | SapTableSourceArgs | ServiceNowSourceArgs | SharePointOnlineListSourceArgs | ShopifySourceArgs | SnowflakeSourceArgs | SparkSourceArgs | SqlDWSourceArgs | SqlMISourceArgs | SqlServerSourceArgs | SqlSourceArgs | SquareSourceArgs | SybaseSourceArgs | TabularSourceArgs | TeradataSourceArgs | VerticaSourceArgs | WebSourceArgs | XeroSourceArgs | XmlSourceArgs | ZohoSourceArgs>;
+    source: pulumi.Input<AmazonMWSSourceArgs | AmazonRdsForOracleSourceArgs | AmazonRdsForSqlServerSourceArgs | AmazonRedshiftSourceArgs | AvroSourceArgs | AzureBlobFSSourceArgs | AzureDataExplorerSourceArgs | AzureDataLakeStoreSourceArgs | AzureDatabricksDeltaLakeSourceArgs | AzureMariaDBSourceArgs | AzureMySqlSourceArgs | AzurePostgreSqlSourceArgs | AzureSqlSourceArgs | AzureTableSourceArgs | BinarySourceArgs | BlobSourceArgs | CassandraSourceArgs | CommonDataServiceForAppsSourceArgs | ConcurSourceArgs | CosmosDbMongoDbApiSourceArgs | CosmosDbSqlApiSourceArgs | CouchbaseSourceArgs | Db2SourceArgs | DelimitedTextSourceArgs | DocumentDbCollectionSourceArgs | DrillSourceArgs | DynamicsAXSourceArgs | DynamicsCrmSourceArgs | DynamicsSourceArgs | EloquaSourceArgs | ExcelSourceArgs | FileSystemSourceArgs | GoogleAdWordsSourceArgs | GoogleBigQuerySourceArgs | GreenplumSourceArgs | HBaseSourceArgs | HdfsSourceArgs | HiveSourceArgs | HttpSourceArgs | HubspotSourceArgs | ImpalaSourceArgs | InformixSourceArgs | JiraSourceArgs | JsonSourceArgs | LakeHouseTableSourceArgs | MagentoSourceArgs | MariaDBSourceArgs | MarketoSourceArgs | MicrosoftAccessSourceArgs | MongoDbAtlasSourceArgs | MongoDbSourceArgs | MongoDbV2SourceArgs | MySqlSourceArgs | NetezzaSourceArgs | ODataSourceArgs | OdbcSourceArgs | Office365SourceArgs | OracleServiceCloudSourceArgs | OracleSourceArgs | OrcSourceArgs | ParquetSourceArgs | PaypalSourceArgs | PhoenixSourceArgs | PostgreSqlSourceArgs | PrestoSourceArgs | QuickBooksSourceArgs | RelationalSourceArgs | ResponsysSourceArgs | RestSourceArgs | SalesforceMarketingCloudSourceArgs | SalesforceServiceCloudSourceArgs | SalesforceSourceArgs | SapBwSourceArgs | SapCloudForCustomerSourceArgs | SapEccSourceArgs | SapHanaSourceArgs | SapOdpSourceArgs | SapOpenHubSourceArgs | SapTableSourceArgs | ServiceNowSourceArgs | SharePointOnlineListSourceArgs | ShopifySourceArgs | SnowflakeSourceArgs | SparkSourceArgs | SqlDWSourceArgs | SqlMISourceArgs | SqlServerSourceArgs | SqlSourceArgs | SquareSourceArgs | SybaseSourceArgs | TabularSourceArgs | TeradataSourceArgs | VerticaSourceArgs | WebSourceArgs | XeroSourceArgs | XmlSourceArgs | ZohoSourceArgs>;
     /**
      * Specifies interim staging settings when EnableStaging is true.
      */
@@ -7263,7 +7263,7 @@ export interface DeleteActivityArgs {
     /**
      * Delete activity store settings.
      */
-    storeSettings?: pulumi.Input<AmazonS3CompatibleReadSettingsArgs | AmazonS3ReadSettingsArgs | AzureBlobFSReadSettingsArgs | AzureBlobStorageReadSettingsArgs | AzureDataLakeStoreReadSettingsArgs | AzureFileStorageReadSettingsArgs | FileServerReadSettingsArgs | FtpReadSettingsArgs | GoogleCloudStorageReadSettingsArgs | HdfsReadSettingsArgs | HttpReadSettingsArgs | OracleCloudStorageReadSettingsArgs | SftpReadSettingsArgs>;
+    storeSettings?: pulumi.Input<AmazonS3CompatibleReadSettingsArgs | AmazonS3ReadSettingsArgs | AzureBlobFSReadSettingsArgs | AzureBlobStorageReadSettingsArgs | AzureDataLakeStoreReadSettingsArgs | AzureFileStorageReadSettingsArgs | FileServerReadSettingsArgs | FtpReadSettingsArgs | GoogleCloudStorageReadSettingsArgs | HdfsReadSettingsArgs | HttpReadSettingsArgs | LakeHouseReadSettingsArgs | OracleCloudStorageReadSettingsArgs | SftpReadSettingsArgs>;
     /**
      * Type of activity.
      * Expected value is 'Delete'.
@@ -7322,7 +7322,7 @@ export interface DelimitedTextDatasetArgs {
     /**
      * The location of the delimited text storage.
      */
-    location: pulumi.Input<AmazonS3CompatibleLocationArgs | AmazonS3LocationArgs | AzureBlobFSLocationArgs | AzureBlobStorageLocationArgs | AzureDataLakeStoreLocationArgs | AzureFileStorageLocationArgs | FileServerLocationArgs | FtpServerLocationArgs | GoogleCloudStorageLocationArgs | HdfsLocationArgs | HttpServerLocationArgs | OracleCloudStorageLocationArgs | SftpLocationArgs>;
+    location: pulumi.Input<AmazonS3CompatibleLocationArgs | AmazonS3LocationArgs | AzureBlobFSLocationArgs | AzureBlobStorageLocationArgs | AzureDataLakeStoreLocationArgs | AzureFileStorageLocationArgs | FileServerLocationArgs | FtpServerLocationArgs | GoogleCloudStorageLocationArgs | HdfsLocationArgs | HttpServerLocationArgs | LakeHouseLocationArgs | OracleCloudStorageLocationArgs | SftpLocationArgs>;
     /**
      * The null value string. Type: string (or Expression with resultType string).
      */
@@ -7400,7 +7400,7 @@ export interface DelimitedTextSinkArgs {
     /**
      * DelimitedText store settings.
      */
-    storeSettings?: pulumi.Input<AzureBlobFSWriteSettingsArgs | AzureBlobStorageWriteSettingsArgs | AzureDataLakeStoreWriteSettingsArgs | AzureFileStorageWriteSettingsArgs | FileServerWriteSettingsArgs | SftpWriteSettingsArgs>;
+    storeSettings?: pulumi.Input<AzureBlobFSWriteSettingsArgs | AzureBlobStorageWriteSettingsArgs | AzureDataLakeStoreWriteSettingsArgs | AzureFileStorageWriteSettingsArgs | FileServerWriteSettingsArgs | LakeHouseWriteSettingsArgs | SftpWriteSettingsArgs>;
     /**
      * Copy sink type.
      * Expected value is 'DelimitedTextSink'.
@@ -7447,7 +7447,7 @@ export interface DelimitedTextSourceArgs {
     /**
      * DelimitedText store settings.
      */
-    storeSettings?: pulumi.Input<AmazonS3CompatibleReadSettingsArgs | AmazonS3ReadSettingsArgs | AzureBlobFSReadSettingsArgs | AzureBlobStorageReadSettingsArgs | AzureDataLakeStoreReadSettingsArgs | AzureFileStorageReadSettingsArgs | FileServerReadSettingsArgs | FtpReadSettingsArgs | GoogleCloudStorageReadSettingsArgs | HdfsReadSettingsArgs | HttpReadSettingsArgs | OracleCloudStorageReadSettingsArgs | SftpReadSettingsArgs>;
+    storeSettings?: pulumi.Input<AmazonS3CompatibleReadSettingsArgs | AmazonS3ReadSettingsArgs | AzureBlobFSReadSettingsArgs | AzureBlobStorageReadSettingsArgs | AzureDataLakeStoreReadSettingsArgs | AzureFileStorageReadSettingsArgs | FileServerReadSettingsArgs | FtpReadSettingsArgs | GoogleCloudStorageReadSettingsArgs | HdfsReadSettingsArgs | HttpReadSettingsArgs | LakeHouseReadSettingsArgs | OracleCloudStorageReadSettingsArgs | SftpReadSettingsArgs>;
     /**
      * Copy source type.
      * Expected value is 'DelimitedTextSource'.
@@ -8518,7 +8518,7 @@ export interface ExcelDatasetArgs {
     /**
      * The location of the excel storage.
      */
-    location: pulumi.Input<AmazonS3CompatibleLocationArgs | AmazonS3LocationArgs | AzureBlobFSLocationArgs | AzureBlobStorageLocationArgs | AzureDataLakeStoreLocationArgs | AzureFileStorageLocationArgs | FileServerLocationArgs | FtpServerLocationArgs | GoogleCloudStorageLocationArgs | HdfsLocationArgs | HttpServerLocationArgs | OracleCloudStorageLocationArgs | SftpLocationArgs>;
+    location: pulumi.Input<AmazonS3CompatibleLocationArgs | AmazonS3LocationArgs | AzureBlobFSLocationArgs | AzureBlobStorageLocationArgs | AzureDataLakeStoreLocationArgs | AzureFileStorageLocationArgs | FileServerLocationArgs | FtpServerLocationArgs | GoogleCloudStorageLocationArgs | HdfsLocationArgs | HttpServerLocationArgs | LakeHouseLocationArgs | OracleCloudStorageLocationArgs | SftpLocationArgs>;
     /**
      * The null value string. Type: string (or Expression with resultType string).
      */
@@ -8581,7 +8581,7 @@ export interface ExcelSourceArgs {
     /**
      * Excel store settings.
      */
-    storeSettings?: pulumi.Input<AmazonS3CompatibleReadSettingsArgs | AmazonS3ReadSettingsArgs | AzureBlobFSReadSettingsArgs | AzureBlobStorageReadSettingsArgs | AzureDataLakeStoreReadSettingsArgs | AzureFileStorageReadSettingsArgs | FileServerReadSettingsArgs | FtpReadSettingsArgs | GoogleCloudStorageReadSettingsArgs | HdfsReadSettingsArgs | HttpReadSettingsArgs | OracleCloudStorageReadSettingsArgs | SftpReadSettingsArgs>;
+    storeSettings?: pulumi.Input<AmazonS3CompatibleReadSettingsArgs | AmazonS3ReadSettingsArgs | AzureBlobFSReadSettingsArgs | AzureBlobStorageReadSettingsArgs | AzureDataLakeStoreReadSettingsArgs | AzureFileStorageReadSettingsArgs | FileServerReadSettingsArgs | FtpReadSettingsArgs | GoogleCloudStorageReadSettingsArgs | HdfsReadSettingsArgs | HttpReadSettingsArgs | LakeHouseReadSettingsArgs | OracleCloudStorageReadSettingsArgs | SftpReadSettingsArgs>;
     /**
      * Copy source type.
      * Expected value is 'ExcelSource'.
@@ -9691,7 +9691,7 @@ export interface GetMetadataActivityArgs {
     /**
      * GetMetadata activity format settings.
      */
-    formatSettings?: pulumi.Input<BinaryReadSettingsArgs | DelimitedTextReadSettingsArgs | JsonReadSettingsArgs | XmlReadSettingsArgs>;
+    formatSettings?: pulumi.Input<BinaryReadSettingsArgs | DelimitedTextReadSettingsArgs | JsonReadSettingsArgs | ParquetReadSettingsArgs | XmlReadSettingsArgs>;
     /**
      * Linked service reference.
      */
@@ -9715,7 +9715,7 @@ export interface GetMetadataActivityArgs {
     /**
      * GetMetadata activity store settings.
      */
-    storeSettings?: pulumi.Input<AmazonS3CompatibleReadSettingsArgs | AmazonS3ReadSettingsArgs | AzureBlobFSReadSettingsArgs | AzureBlobStorageReadSettingsArgs | AzureDataLakeStoreReadSettingsArgs | AzureFileStorageReadSettingsArgs | FileServerReadSettingsArgs | FtpReadSettingsArgs | GoogleCloudStorageReadSettingsArgs | HdfsReadSettingsArgs | HttpReadSettingsArgs | OracleCloudStorageReadSettingsArgs | SftpReadSettingsArgs>;
+    storeSettings?: pulumi.Input<AmazonS3CompatibleReadSettingsArgs | AmazonS3ReadSettingsArgs | AzureBlobFSReadSettingsArgs | AzureBlobStorageReadSettingsArgs | AzureDataLakeStoreReadSettingsArgs | AzureFileStorageReadSettingsArgs | FileServerReadSettingsArgs | FtpReadSettingsArgs | GoogleCloudStorageReadSettingsArgs | HdfsReadSettingsArgs | HttpReadSettingsArgs | LakeHouseReadSettingsArgs | OracleCloudStorageReadSettingsArgs | SftpReadSettingsArgs>;
     /**
      * Type of activity.
      * Expected value is 'GetMetadata'.
@@ -9798,7 +9798,7 @@ export interface GoogleAdWordsLinkedServiceArgs {
      */
     connectVia?: pulumi.Input<IntegrationRuntimeReferenceArgs>;
     /**
-     * Properties used to connect to GoogleAds. It is mutually exclusive with any other properties in the linked service. Type: object.
+     * (Deprecated) Properties used to connect to GoogleAds. It is mutually exclusive with any other properties in the linked service. Type: object.
      */
     connectionProperties?: any;
     /**
@@ -9818,19 +9818,35 @@ export interface GoogleAdWordsLinkedServiceArgs {
      */
     encryptedCredential?: pulumi.Input<string>;
     /**
-     * The full path to the .p12 key file that is used to authenticate the service account email address and can only be used on self-hosted IR. Type: string (or Expression with resultType string).
+     * The Google Ads API major version such as v14. The supported major versions could be found on https://developers.google.com/google-ads/api/docs/release-notes. Type: string (or Expression with resultType string).
+     */
+    googleAdsApiVersion?: any;
+    /**
+     * (Deprecated) The full path to the .p12 key file that is used to authenticate the service account email address and can only be used on self-hosted IR. Type: string (or Expression with resultType string).
      */
     keyFilePath?: any;
+    /**
+     * The customer ID of the Google Ads Manager account through which you want to fetch report data of specific Customer. Type: string (or Expression with resultType string).
+     */
+    loginCustomerID?: any;
     /**
      * Parameters for linked service.
      */
     parameters?: pulumi.Input<{[key: string]: pulumi.Input<ParameterSpecificationArgs>}>;
     /**
+     * The private key that is used to authenticate the service account email address and can only be used on self-hosted IR.
+     */
+    privateKey?: pulumi.Input<AzureKeyVaultSecretReferenceArgs | SecureStringArgs>;
+    /**
      * The refresh token obtained from Google for authorizing access to AdWords for UserAuthentication.
      */
     refreshToken?: pulumi.Input<AzureKeyVaultSecretReferenceArgs | SecureStringArgs>;
     /**
-     * The full path of the .pem file containing trusted CA certificates for verifying the server when connecting over SSL. This property can only be set when using SSL on self-hosted IR. The default value is the cacerts.pem file installed with the IR. Type: string (or Expression with resultType string).
+     * Specifies whether to use the legacy data type mappings, which maps float, int32 and int64 from Google to string. Do not set this to true unless you want to keep backward compatibility with legacy driver's data type mappings. Type: boolean (or Expression with resultType boolean).
+     */
+    supportLegacyDataTypes?: any;
+    /**
+     * (Deprecated) The full path of the .pem file containing trusted CA certificates for verifying the server when connecting over SSL. This property can only be set when using SSL on self-hosted IR. The default value is the cacerts.pem file installed with the IR. Type: string (or Expression with resultType string).
      */
     trustedCertPath?: any;
     /**
@@ -9839,7 +9855,7 @@ export interface GoogleAdWordsLinkedServiceArgs {
      */
     type: pulumi.Input<"GoogleAdWords">;
     /**
-     * Specifies whether to use a CA certificate from the system trust store or from a specified PEM file. The default value is false. Type: boolean (or Expression with resultType boolean).
+     * (Deprecated) Specifies whether to use a CA certificate from the system trust store or from a specified PEM file. The default value is false. Type: boolean (or Expression with resultType boolean).
      */
     useSystemTrustStore?: any;
 }
@@ -12610,7 +12626,7 @@ export interface JsonDatasetArgs {
     /**
      * The location of the json data storage.
      */
-    location: pulumi.Input<AmazonS3CompatibleLocationArgs | AmazonS3LocationArgs | AzureBlobFSLocationArgs | AzureBlobStorageLocationArgs | AzureDataLakeStoreLocationArgs | AzureFileStorageLocationArgs | FileServerLocationArgs | FtpServerLocationArgs | GoogleCloudStorageLocationArgs | HdfsLocationArgs | HttpServerLocationArgs | OracleCloudStorageLocationArgs | SftpLocationArgs>;
+    location: pulumi.Input<AmazonS3CompatibleLocationArgs | AmazonS3LocationArgs | AzureBlobFSLocationArgs | AzureBlobStorageLocationArgs | AzureDataLakeStoreLocationArgs | AzureFileStorageLocationArgs | FileServerLocationArgs | FtpServerLocationArgs | GoogleCloudStorageLocationArgs | HdfsLocationArgs | HttpServerLocationArgs | LakeHouseLocationArgs | OracleCloudStorageLocationArgs | SftpLocationArgs>;
     /**
      * Parameters for dataset.
      */
@@ -12711,7 +12727,7 @@ export interface JsonSinkArgs {
     /**
      * Json store settings.
      */
-    storeSettings?: pulumi.Input<AzureBlobFSWriteSettingsArgs | AzureBlobStorageWriteSettingsArgs | AzureDataLakeStoreWriteSettingsArgs | AzureFileStorageWriteSettingsArgs | FileServerWriteSettingsArgs | SftpWriteSettingsArgs>;
+    storeSettings?: pulumi.Input<AzureBlobFSWriteSettingsArgs | AzureBlobStorageWriteSettingsArgs | AzureDataLakeStoreWriteSettingsArgs | AzureFileStorageWriteSettingsArgs | FileServerWriteSettingsArgs | LakeHouseWriteSettingsArgs | SftpWriteSettingsArgs>;
     /**
      * Copy sink type.
      * Expected value is 'JsonSink'.
@@ -12758,7 +12774,7 @@ export interface JsonSourceArgs {
     /**
      * Json store settings.
      */
-    storeSettings?: pulumi.Input<AmazonS3CompatibleReadSettingsArgs | AmazonS3ReadSettingsArgs | AzureBlobFSReadSettingsArgs | AzureBlobStorageReadSettingsArgs | AzureDataLakeStoreReadSettingsArgs | AzureFileStorageReadSettingsArgs | FileServerReadSettingsArgs | FtpReadSettingsArgs | GoogleCloudStorageReadSettingsArgs | HdfsReadSettingsArgs | HttpReadSettingsArgs | OracleCloudStorageReadSettingsArgs | SftpReadSettingsArgs>;
+    storeSettings?: pulumi.Input<AmazonS3CompatibleReadSettingsArgs | AmazonS3ReadSettingsArgs | AzureBlobFSReadSettingsArgs | AzureBlobStorageReadSettingsArgs | AzureDataLakeStoreReadSettingsArgs | AzureFileStorageReadSettingsArgs | FileServerReadSettingsArgs | FtpReadSettingsArgs | GoogleCloudStorageReadSettingsArgs | HdfsReadSettingsArgs | HttpReadSettingsArgs | LakeHouseReadSettingsArgs | OracleCloudStorageReadSettingsArgs | SftpReadSettingsArgs>;
     /**
      * Copy source type.
      * Expected value is 'JsonSource'.
@@ -12779,6 +12795,291 @@ export interface JsonWriteSettingsArgs {
      * Expected value is 'JsonWriteSettings'.
      */
     type: pulumi.Input<"JsonWriteSettings">;
+}
+
+/**
+ * Microsoft Fabric LakeHouse linked service.
+ */
+export interface LakeHouseLinkedServiceArgs {
+    /**
+     * List of tags that can be used for describing the linked service.
+     */
+    annotations?: pulumi.Input<any[]>;
+    /**
+     * The ID of Microsoft Fabric LakeHouse artifact. Type: string (or Expression with resultType string).
+     */
+    artifactId?: any;
+    /**
+     * The integration runtime reference.
+     */
+    connectVia?: pulumi.Input<IntegrationRuntimeReferenceArgs>;
+    /**
+     * Linked service description.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+     */
+    encryptedCredential?: pulumi.Input<string>;
+    /**
+     * Parameters for linked service.
+     */
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<ParameterSpecificationArgs>}>;
+    /**
+     * The credential of the service principal object in Azure Active Directory. If servicePrincipalCredentialType is 'ServicePrincipalKey', servicePrincipalCredential can be SecureString or AzureKeyVaultSecretReference. If servicePrincipalCredentialType is 'ServicePrincipalCert', servicePrincipalCredential can only be AzureKeyVaultSecretReference.
+     */
+    servicePrincipalCredential?: pulumi.Input<AzureKeyVaultSecretReferenceArgs | SecureStringArgs>;
+    /**
+     * The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
+     */
+    servicePrincipalCredentialType?: any;
+    /**
+     * The ID of the application used to authenticate against Microsoft Fabric LakeHouse. Type: string (or Expression with resultType string).
+     */
+    servicePrincipalId?: any;
+    /**
+     * The Key of the application used to authenticate against Microsoft Fabric LakeHouse.
+     */
+    servicePrincipalKey?: pulumi.Input<AzureKeyVaultSecretReferenceArgs | SecureStringArgs>;
+    /**
+     * The name or ID of the tenant to which the service principal belongs. Type: string (or Expression with resultType string).
+     */
+    tenant?: any;
+    /**
+     * Type of linked service.
+     * Expected value is 'LakeHouse'.
+     */
+    type: pulumi.Input<"LakeHouse">;
+    /**
+     * The ID of Microsoft Fabric workspace. Type: string (or Expression with resultType string).
+     */
+    workspaceId?: any;
+}
+
+/**
+ * The location of Microsoft Fabric LakeHouse Files dataset.
+ */
+export interface LakeHouseLocationArgs {
+    /**
+     * Specify the file name of dataset. Type: string (or Expression with resultType string).
+     */
+    fileName?: any;
+    /**
+     * Specify the folder path of dataset. Type: string (or Expression with resultType string)
+     */
+    folderPath?: any;
+    /**
+     * Type of dataset storage location.
+     * Expected value is 'LakeHouseLocation'.
+     */
+    type: pulumi.Input<"LakeHouseLocation">;
+}
+
+/**
+ * Microsoft Fabric LakeHouse Files read settings.
+ */
+export interface LakeHouseReadSettingsArgs {
+    /**
+     * Indicates whether the source files need to be deleted after copy completion. Default is false. Type: boolean (or Expression with resultType boolean).
+     */
+    deleteFilesAfterCompletion?: any;
+    /**
+     * If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+     */
+    disableMetricsCollection?: any;
+    /**
+     * Indicates whether to enable partition discovery. Type: boolean (or Expression with resultType boolean).
+     */
+    enablePartitionDiscovery?: any;
+    /**
+     * Point to a text file that lists each file (relative path to the path configured in the dataset) that you want to copy. Type: string (or Expression with resultType string).
+     */
+    fileListPath?: any;
+    /**
+     * The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+     */
+    maxConcurrentConnections?: any;
+    /**
+     * The end of file's modified datetime. Type: string (or Expression with resultType string).
+     */
+    modifiedDatetimeEnd?: any;
+    /**
+     * The start of file's modified datetime. Type: string (or Expression with resultType string).
+     */
+    modifiedDatetimeStart?: any;
+    /**
+     * Specify the root path where partition discovery starts from. Type: string (or Expression with resultType string).
+     */
+    partitionRootPath?: any;
+    /**
+     * If true, files under the folder path will be read recursively. Default is true. Type: boolean (or Expression with resultType boolean).
+     */
+    recursive?: any;
+    /**
+     * The read setting type.
+     * Expected value is 'LakeHouseReadSettings'.
+     */
+    type: pulumi.Input<"LakeHouseReadSettings">;
+    /**
+     * Microsoft Fabric LakeHouse Files wildcardFileName. Type: string (or Expression with resultType string).
+     */
+    wildcardFileName?: any;
+    /**
+     * Microsoft Fabric LakeHouse Files wildcardFolderPath. Type: string (or Expression with resultType string).
+     */
+    wildcardFolderPath?: any;
+}
+
+/**
+ * Microsoft Fabric LakeHouse Table.
+ */
+export interface LakeHouseTableDatasetArgs {
+    /**
+     * List of tags that can be used for describing the Dataset.
+     */
+    annotations?: pulumi.Input<any[]>;
+    /**
+     * Dataset description.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+     */
+    folder?: pulumi.Input<DatasetFolderArgs>;
+    /**
+     * Linked service reference.
+     */
+    linkedServiceName: pulumi.Input<LinkedServiceReferenceArgs>;
+    /**
+     * Parameters for dataset.
+     */
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<ParameterSpecificationArgs>}>;
+    /**
+     * Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+     */
+    schema?: any;
+    /**
+     * Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+     */
+    structure?: any;
+    /**
+     * The name of Microsoft Fabric LakeHouse Table. Type: string (or Expression with resultType string).
+     */
+    table?: any;
+    /**
+     * Type of dataset.
+     * Expected value is 'LakeHouseTable'.
+     */
+    type: pulumi.Input<"LakeHouseTable">;
+}
+
+/**
+ * A copy activity for Microsoft Fabric LakeHouse Table sink.
+ */
+export interface LakeHouseTableSinkArgs {
+    /**
+     * If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+     */
+    disableMetricsCollection?: any;
+    /**
+     * The maximum concurrent connection count for the sink data store. Type: integer (or Expression with resultType integer).
+     */
+    maxConcurrentConnections?: any;
+    /**
+     * Specify the partition column names from sink columns. Type: array of objects (or Expression with resultType array of objects).
+     */
+    partitionNameList?: any;
+    /**
+     * Create partitions in folder structure based on one or multiple columns. Each distinct column value (pair) will be a new partition. Possible values include: "None", "PartitionByKey".
+     */
+    partitionOption?: any;
+    /**
+     * Sink retry count. Type: integer (or Expression with resultType integer).
+     */
+    sinkRetryCount?: any;
+    /**
+     * Sink retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+     */
+    sinkRetryWait?: any;
+    /**
+     * The type of table action for LakeHouse Table sink. Possible values include: "None", "Append", "Overwrite".
+     */
+    tableActionOption?: any;
+    /**
+     * Copy sink type.
+     * Expected value is 'LakeHouseTableSink'.
+     */
+    type: pulumi.Input<"LakeHouseTableSink">;
+    /**
+     * Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
+     */
+    writeBatchSize?: any;
+    /**
+     * Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+     */
+    writeBatchTimeout?: any;
+}
+
+/**
+ * A copy activity source for Microsoft Fabric LakeHouse Table.
+ */
+export interface LakeHouseTableSourceArgs {
+    /**
+     * Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+     */
+    additionalColumns?: any;
+    /**
+     * If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+     */
+    disableMetricsCollection?: any;
+    /**
+     * The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+     */
+    maxConcurrentConnections?: any;
+    /**
+     * Source retry count. Type: integer (or Expression with resultType integer).
+     */
+    sourceRetryCount?: any;
+    /**
+     * Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+     */
+    sourceRetryWait?: any;
+    /**
+     * Query an older snapshot by timestamp. Type: string (or Expression with resultType string).
+     */
+    timestampAsOf?: any;
+    /**
+     * Copy source type.
+     * Expected value is 'LakeHouseTableSource'.
+     */
+    type: pulumi.Input<"LakeHouseTableSource">;
+    /**
+     * Query an older snapshot by version. Type: integer (or Expression with resultType integer).
+     */
+    versionAsOf?: any;
+}
+
+/**
+ * Microsoft Fabric LakeHouse Files write settings.
+ */
+export interface LakeHouseWriteSettingsArgs {
+    /**
+     * The type of copy behavior for copy sink.
+     */
+    copyBehavior?: any;
+    /**
+     * If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+     */
+    disableMetricsCollection?: any;
+    /**
+     * The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+     */
+    maxConcurrentConnections?: any;
+    /**
+     * The write setting type.
+     * Expected value is 'LakeHouseWriteSettings'.
+     */
+    type: pulumi.Input<"LakeHouseWriteSettings">;
 }
 
 /**
@@ -12926,7 +13227,7 @@ export interface LookupActivityArgs {
     /**
      * Dataset-specific source properties, same as copy activity source.
      */
-    source: pulumi.Input<AmazonMWSSourceArgs | AmazonRdsForOracleSourceArgs | AmazonRdsForSqlServerSourceArgs | AmazonRedshiftSourceArgs | AvroSourceArgs | AzureBlobFSSourceArgs | AzureDataExplorerSourceArgs | AzureDataLakeStoreSourceArgs | AzureDatabricksDeltaLakeSourceArgs | AzureMariaDBSourceArgs | AzureMySqlSourceArgs | AzurePostgreSqlSourceArgs | AzureSqlSourceArgs | AzureTableSourceArgs | BinarySourceArgs | BlobSourceArgs | CassandraSourceArgs | CommonDataServiceForAppsSourceArgs | ConcurSourceArgs | CosmosDbMongoDbApiSourceArgs | CosmosDbSqlApiSourceArgs | CouchbaseSourceArgs | Db2SourceArgs | DelimitedTextSourceArgs | DocumentDbCollectionSourceArgs | DrillSourceArgs | DynamicsAXSourceArgs | DynamicsCrmSourceArgs | DynamicsSourceArgs | EloquaSourceArgs | ExcelSourceArgs | FileSystemSourceArgs | GoogleAdWordsSourceArgs | GoogleBigQuerySourceArgs | GreenplumSourceArgs | HBaseSourceArgs | HdfsSourceArgs | HiveSourceArgs | HttpSourceArgs | HubspotSourceArgs | ImpalaSourceArgs | InformixSourceArgs | JiraSourceArgs | JsonSourceArgs | MagentoSourceArgs | MariaDBSourceArgs | MarketoSourceArgs | MicrosoftAccessSourceArgs | MongoDbAtlasSourceArgs | MongoDbSourceArgs | MongoDbV2SourceArgs | MySqlSourceArgs | NetezzaSourceArgs | ODataSourceArgs | OdbcSourceArgs | Office365SourceArgs | OracleServiceCloudSourceArgs | OracleSourceArgs | OrcSourceArgs | ParquetSourceArgs | PaypalSourceArgs | PhoenixSourceArgs | PostgreSqlSourceArgs | PrestoSourceArgs | QuickBooksSourceArgs | RelationalSourceArgs | ResponsysSourceArgs | RestSourceArgs | SalesforceMarketingCloudSourceArgs | SalesforceServiceCloudSourceArgs | SalesforceSourceArgs | SapBwSourceArgs | SapCloudForCustomerSourceArgs | SapEccSourceArgs | SapHanaSourceArgs | SapOdpSourceArgs | SapOpenHubSourceArgs | SapTableSourceArgs | ServiceNowSourceArgs | SharePointOnlineListSourceArgs | ShopifySourceArgs | SnowflakeSourceArgs | SparkSourceArgs | SqlDWSourceArgs | SqlMISourceArgs | SqlServerSourceArgs | SqlSourceArgs | SquareSourceArgs | SybaseSourceArgs | TabularSourceArgs | TeradataSourceArgs | VerticaSourceArgs | WebSourceArgs | XeroSourceArgs | XmlSourceArgs | ZohoSourceArgs>;
+    source: pulumi.Input<AmazonMWSSourceArgs | AmazonRdsForOracleSourceArgs | AmazonRdsForSqlServerSourceArgs | AmazonRedshiftSourceArgs | AvroSourceArgs | AzureBlobFSSourceArgs | AzureDataExplorerSourceArgs | AzureDataLakeStoreSourceArgs | AzureDatabricksDeltaLakeSourceArgs | AzureMariaDBSourceArgs | AzureMySqlSourceArgs | AzurePostgreSqlSourceArgs | AzureSqlSourceArgs | AzureTableSourceArgs | BinarySourceArgs | BlobSourceArgs | CassandraSourceArgs | CommonDataServiceForAppsSourceArgs | ConcurSourceArgs | CosmosDbMongoDbApiSourceArgs | CosmosDbSqlApiSourceArgs | CouchbaseSourceArgs | Db2SourceArgs | DelimitedTextSourceArgs | DocumentDbCollectionSourceArgs | DrillSourceArgs | DynamicsAXSourceArgs | DynamicsCrmSourceArgs | DynamicsSourceArgs | EloquaSourceArgs | ExcelSourceArgs | FileSystemSourceArgs | GoogleAdWordsSourceArgs | GoogleBigQuerySourceArgs | GreenplumSourceArgs | HBaseSourceArgs | HdfsSourceArgs | HiveSourceArgs | HttpSourceArgs | HubspotSourceArgs | ImpalaSourceArgs | InformixSourceArgs | JiraSourceArgs | JsonSourceArgs | LakeHouseTableSourceArgs | MagentoSourceArgs | MariaDBSourceArgs | MarketoSourceArgs | MicrosoftAccessSourceArgs | MongoDbAtlasSourceArgs | MongoDbSourceArgs | MongoDbV2SourceArgs | MySqlSourceArgs | NetezzaSourceArgs | ODataSourceArgs | OdbcSourceArgs | Office365SourceArgs | OracleServiceCloudSourceArgs | OracleSourceArgs | OrcSourceArgs | ParquetSourceArgs | PaypalSourceArgs | PhoenixSourceArgs | PostgreSqlSourceArgs | PrestoSourceArgs | QuickBooksSourceArgs | RelationalSourceArgs | ResponsysSourceArgs | RestSourceArgs | SalesforceMarketingCloudSourceArgs | SalesforceServiceCloudSourceArgs | SalesforceSourceArgs | SapBwSourceArgs | SapCloudForCustomerSourceArgs | SapEccSourceArgs | SapHanaSourceArgs | SapOdpSourceArgs | SapOpenHubSourceArgs | SapTableSourceArgs | ServiceNowSourceArgs | SharePointOnlineListSourceArgs | ShopifySourceArgs | SnowflakeSourceArgs | SparkSourceArgs | SqlDWSourceArgs | SqlMISourceArgs | SqlServerSourceArgs | SqlSourceArgs | SquareSourceArgs | SybaseSourceArgs | TabularSourceArgs | TeradataSourceArgs | VerticaSourceArgs | WebSourceArgs | XeroSourceArgs | XmlSourceArgs | ZohoSourceArgs>;
     /**
      * Activity state. This is an optional property and if not provided, the state will be Active by default.
      */
@@ -15625,7 +15926,7 @@ export interface OrcDatasetArgs {
     /**
      * The location of the ORC data storage.
      */
-    location: pulumi.Input<AmazonS3CompatibleLocationArgs | AmazonS3LocationArgs | AzureBlobFSLocationArgs | AzureBlobStorageLocationArgs | AzureDataLakeStoreLocationArgs | AzureFileStorageLocationArgs | FileServerLocationArgs | FtpServerLocationArgs | GoogleCloudStorageLocationArgs | HdfsLocationArgs | HttpServerLocationArgs | OracleCloudStorageLocationArgs | SftpLocationArgs>;
+    location: pulumi.Input<AmazonS3CompatibleLocationArgs | AmazonS3LocationArgs | AzureBlobFSLocationArgs | AzureBlobStorageLocationArgs | AzureDataLakeStoreLocationArgs | AzureFileStorageLocationArgs | FileServerLocationArgs | FtpServerLocationArgs | GoogleCloudStorageLocationArgs | HdfsLocationArgs | HttpServerLocationArgs | LakeHouseLocationArgs | OracleCloudStorageLocationArgs | SftpLocationArgs>;
     /**
      * The data orcCompressionCodec. Type: string (or Expression with resultType string).
      */
@@ -15695,7 +15996,7 @@ export interface OrcSinkArgs {
     /**
      * ORC store settings.
      */
-    storeSettings?: pulumi.Input<AzureBlobFSWriteSettingsArgs | AzureBlobStorageWriteSettingsArgs | AzureDataLakeStoreWriteSettingsArgs | AzureFileStorageWriteSettingsArgs | FileServerWriteSettingsArgs | SftpWriteSettingsArgs>;
+    storeSettings?: pulumi.Input<AzureBlobFSWriteSettingsArgs | AzureBlobStorageWriteSettingsArgs | AzureDataLakeStoreWriteSettingsArgs | AzureFileStorageWriteSettingsArgs | FileServerWriteSettingsArgs | LakeHouseWriteSettingsArgs | SftpWriteSettingsArgs>;
     /**
      * Copy sink type.
      * Expected value is 'OrcSink'.
@@ -15738,7 +16039,7 @@ export interface OrcSourceArgs {
     /**
      * ORC store settings.
      */
-    storeSettings?: pulumi.Input<AmazonS3CompatibleReadSettingsArgs | AmazonS3ReadSettingsArgs | AzureBlobFSReadSettingsArgs | AzureBlobStorageReadSettingsArgs | AzureDataLakeStoreReadSettingsArgs | AzureFileStorageReadSettingsArgs | FileServerReadSettingsArgs | FtpReadSettingsArgs | GoogleCloudStorageReadSettingsArgs | HdfsReadSettingsArgs | HttpReadSettingsArgs | OracleCloudStorageReadSettingsArgs | SftpReadSettingsArgs>;
+    storeSettings?: pulumi.Input<AmazonS3CompatibleReadSettingsArgs | AmazonS3ReadSettingsArgs | AzureBlobFSReadSettingsArgs | AzureBlobStorageReadSettingsArgs | AzureDataLakeStoreReadSettingsArgs | AzureFileStorageReadSettingsArgs | FileServerReadSettingsArgs | FtpReadSettingsArgs | GoogleCloudStorageReadSettingsArgs | HdfsReadSettingsArgs | HttpReadSettingsArgs | LakeHouseReadSettingsArgs | OracleCloudStorageReadSettingsArgs | SftpReadSettingsArgs>;
     /**
      * Copy source type.
      * Expected value is 'OrcSource'.
@@ -15820,7 +16121,7 @@ export interface ParquetDatasetArgs {
     /**
      * The location of the parquet storage.
      */
-    location: pulumi.Input<AmazonS3CompatibleLocationArgs | AmazonS3LocationArgs | AzureBlobFSLocationArgs | AzureBlobStorageLocationArgs | AzureDataLakeStoreLocationArgs | AzureFileStorageLocationArgs | FileServerLocationArgs | FtpServerLocationArgs | GoogleCloudStorageLocationArgs | HdfsLocationArgs | HttpServerLocationArgs | OracleCloudStorageLocationArgs | SftpLocationArgs>;
+    location: pulumi.Input<AmazonS3CompatibleLocationArgs | AmazonS3LocationArgs | AzureBlobFSLocationArgs | AzureBlobStorageLocationArgs | AzureDataLakeStoreLocationArgs | AzureFileStorageLocationArgs | FileServerLocationArgs | FtpServerLocationArgs | GoogleCloudStorageLocationArgs | HdfsLocationArgs | HttpServerLocationArgs | LakeHouseLocationArgs | OracleCloudStorageLocationArgs | SftpLocationArgs>;
     /**
      * Parameters for dataset.
      */
@@ -15860,6 +16161,21 @@ export interface ParquetFormatArgs {
 }
 
 /**
+ * Parquet read settings.
+ */
+export interface ParquetReadSettingsArgs {
+    /**
+     * Compression settings.
+     */
+    compressionProperties?: pulumi.Input<TarGZipReadSettingsArgs | TarReadSettingsArgs | ZipDeflateReadSettingsArgs>;
+    /**
+     * The read setting type.
+     * Expected value is 'ParquetReadSettings'.
+     */
+    type: pulumi.Input<"ParquetReadSettings">;
+}
+
+/**
  * A copy activity Parquet sink.
  */
 export interface ParquetSinkArgs {
@@ -15886,7 +16202,7 @@ export interface ParquetSinkArgs {
     /**
      * Parquet store settings.
      */
-    storeSettings?: pulumi.Input<AzureBlobFSWriteSettingsArgs | AzureBlobStorageWriteSettingsArgs | AzureDataLakeStoreWriteSettingsArgs | AzureFileStorageWriteSettingsArgs | FileServerWriteSettingsArgs | SftpWriteSettingsArgs>;
+    storeSettings?: pulumi.Input<AzureBlobFSWriteSettingsArgs | AzureBlobStorageWriteSettingsArgs | AzureDataLakeStoreWriteSettingsArgs | AzureFileStorageWriteSettingsArgs | FileServerWriteSettingsArgs | LakeHouseWriteSettingsArgs | SftpWriteSettingsArgs>;
     /**
      * Copy sink type.
      * Expected value is 'ParquetSink'.
@@ -15915,6 +16231,10 @@ export interface ParquetSourceArgs {
      */
     disableMetricsCollection?: any;
     /**
+     * Parquet format settings.
+     */
+    formatSettings?: pulumi.Input<ParquetReadSettingsArgs>;
+    /**
      * The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
      */
     maxConcurrentConnections?: any;
@@ -15929,7 +16249,7 @@ export interface ParquetSourceArgs {
     /**
      * Parquet store settings.
      */
-    storeSettings?: pulumi.Input<AmazonS3CompatibleReadSettingsArgs | AmazonS3ReadSettingsArgs | AzureBlobFSReadSettingsArgs | AzureBlobStorageReadSettingsArgs | AzureDataLakeStoreReadSettingsArgs | AzureFileStorageReadSettingsArgs | FileServerReadSettingsArgs | FtpReadSettingsArgs | GoogleCloudStorageReadSettingsArgs | HdfsReadSettingsArgs | HttpReadSettingsArgs | OracleCloudStorageReadSettingsArgs | SftpReadSettingsArgs>;
+    storeSettings?: pulumi.Input<AmazonS3CompatibleReadSettingsArgs | AmazonS3ReadSettingsArgs | AzureBlobFSReadSettingsArgs | AzureBlobStorageReadSettingsArgs | AzureDataLakeStoreReadSettingsArgs | AzureFileStorageReadSettingsArgs | FileServerReadSettingsArgs | FtpReadSettingsArgs | GoogleCloudStorageReadSettingsArgs | HdfsReadSettingsArgs | HttpReadSettingsArgs | LakeHouseReadSettingsArgs | OracleCloudStorageReadSettingsArgs | SftpReadSettingsArgs>;
     /**
      * Copy source type.
      * Expected value is 'ParquetSource'.
@@ -23418,7 +23738,7 @@ export interface XmlDatasetArgs {
     /**
      * The location of the json data storage.
      */
-    location: pulumi.Input<AmazonS3CompatibleLocationArgs | AmazonS3LocationArgs | AzureBlobFSLocationArgs | AzureBlobStorageLocationArgs | AzureDataLakeStoreLocationArgs | AzureFileStorageLocationArgs | FileServerLocationArgs | FtpServerLocationArgs | GoogleCloudStorageLocationArgs | HdfsLocationArgs | HttpServerLocationArgs | OracleCloudStorageLocationArgs | SftpLocationArgs>;
+    location: pulumi.Input<AmazonS3CompatibleLocationArgs | AmazonS3LocationArgs | AzureBlobFSLocationArgs | AzureBlobStorageLocationArgs | AzureDataLakeStoreLocationArgs | AzureFileStorageLocationArgs | FileServerLocationArgs | FtpServerLocationArgs | GoogleCloudStorageLocationArgs | HdfsLocationArgs | HttpServerLocationArgs | LakeHouseLocationArgs | OracleCloudStorageLocationArgs | SftpLocationArgs>;
     /**
      * The null value string. Type: string (or Expression with resultType string).
      */
@@ -23504,7 +23824,7 @@ export interface XmlSourceArgs {
     /**
      * Xml store settings.
      */
-    storeSettings?: pulumi.Input<AmazonS3CompatibleReadSettingsArgs | AmazonS3ReadSettingsArgs | AzureBlobFSReadSettingsArgs | AzureBlobStorageReadSettingsArgs | AzureDataLakeStoreReadSettingsArgs | AzureFileStorageReadSettingsArgs | FileServerReadSettingsArgs | FtpReadSettingsArgs | GoogleCloudStorageReadSettingsArgs | HdfsReadSettingsArgs | HttpReadSettingsArgs | OracleCloudStorageReadSettingsArgs | SftpReadSettingsArgs>;
+    storeSettings?: pulumi.Input<AmazonS3CompatibleReadSettingsArgs | AmazonS3ReadSettingsArgs | AzureBlobFSReadSettingsArgs | AzureBlobStorageReadSettingsArgs | AzureDataLakeStoreReadSettingsArgs | AzureFileStorageReadSettingsArgs | FileServerReadSettingsArgs | FtpReadSettingsArgs | GoogleCloudStorageReadSettingsArgs | HdfsReadSettingsArgs | HttpReadSettingsArgs | LakeHouseReadSettingsArgs | OracleCloudStorageReadSettingsArgs | SftpReadSettingsArgs>;
     /**
      * Copy source type.
      * Expected value is 'XmlSource'.

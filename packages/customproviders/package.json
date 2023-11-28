@@ -1,6 +1,6 @@
 {
     "name": "@kengachu-pulumi/azure-native-customproviders",
-    "version": "2.14.1",
+    "version": "2.19.0",
     "description": "Pulumi Azure Native package for customproviders",
     "keywords": [
         "pulumi",

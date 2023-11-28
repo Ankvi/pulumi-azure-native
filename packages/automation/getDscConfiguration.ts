@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Retrieve the configuration identified by configuration name.
  * Azure REST API version: 2022-08-08.
+ *
+ * Other available API versions: 2023-05-15-preview, 2023-11-01.
  */
 export function getDscConfiguration(args: GetDscConfigurationArgs, opts?: pulumi.InvokeOptions): Promise<GetDscConfigurationResult> {
 
@@ -102,6 +104,8 @@ export interface GetDscConfigurationResult {
 /**
  * Retrieve the configuration identified by configuration name.
  * Azure REST API version: 2022-08-08.
+ *
+ * Other available API versions: 2023-05-15-preview, 2023-11-01.
  */
 export function getDscConfigurationOutput(args: GetDscConfigurationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDscConfigurationResult> {
     return pulumi.output(args).apply((a: any) => getDscConfiguration(a, opts))

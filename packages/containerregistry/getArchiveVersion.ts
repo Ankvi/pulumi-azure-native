@@ -5,7 +5,7 @@ import * as types from "./types";
  * Gets the properties of the archive version.
  * Azure REST API version: 2023-06-01-preview.
  *
- * Other available API versions: 2023-08-01-preview.
+ * Other available API versions: 2023-08-01-preview, 2023-11-01-preview.
  */
 export function getArchiveVersion(args: GetArchiveVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetArchiveVersionResult> {
 
@@ -75,7 +75,7 @@ export interface GetArchiveVersionResult {
  * Gets the properties of the archive version.
  * Azure REST API version: 2023-06-01-preview.
  *
- * Other available API versions: 2023-08-01-preview.
+ * Other available API versions: 2023-08-01-preview, 2023-11-01-preview.
  */
 export function getArchiveVersionOutput(args: GetArchiveVersionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetArchiveVersionResult> {
     return pulumi.output(args).apply((a: any) => getArchiveVersion(a, opts))

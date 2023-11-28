@@ -5,7 +5,7 @@ import * as types from "./types";
  * The private endpoint connection resource.
  * Azure REST API version: 2022-11-08. Prior API version in Azure Native 1.x: 2018-06-01.
  *
- * Other available API versions: 2018-06-01-privatepreview.
+ * Other available API versions: 2018-06-01-privatepreview, 2023-06-01-preview.
  */
 export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**

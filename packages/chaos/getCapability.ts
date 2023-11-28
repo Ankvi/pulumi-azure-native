@@ -5,7 +5,7 @@ import * as types from "./types";
  * Get a Capability resource that extends a Target resource.
  * Azure REST API version: 2023-04-15-preview.
  *
- * Other available API versions: 2023-09-01-preview, 2023-10-27-preview.
+ * Other available API versions: 2023-09-01-preview, 2023-10-27-preview, 2023-11-01.
  */
 export function getCapability(args: GetCapabilityArgs, opts?: pulumi.InvokeOptions): Promise<GetCapabilityResult> {
 
@@ -76,7 +76,7 @@ export interface GetCapabilityResult {
  * Get a Capability resource that extends a Target resource.
  * Azure REST API version: 2023-04-15-preview.
  *
- * Other available API versions: 2023-09-01-preview, 2023-10-27-preview.
+ * Other available API versions: 2023-09-01-preview, 2023-10-27-preview, 2023-11-01.
  */
 export function getCapabilityOutput(args: GetCapabilityOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCapabilityResult> {
     return pulumi.output(args).apply((a: any) => getCapability(a, opts))

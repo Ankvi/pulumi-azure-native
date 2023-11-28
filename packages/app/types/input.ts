@@ -268,6 +268,32 @@ export interface AzureStaticWebAppsRegistrationArgs {
 }
 
 /**
+ * Configuration of the build.
+ */
+export interface BuildConfigurationArgs {
+    /**
+     * Base OS used to build and run the app.
+     */
+    baseOs?: pulumi.Input<string>;
+    /**
+     * List of environment variables to be passed to the build and application runtime.
+     */
+    environmentVariables?: pulumi.Input<pulumi.Input<EnvironmentVariableArgs>[]>;
+    /**
+     * Platform to be used to build and run the app.
+     */
+    platform?: pulumi.Input<string>;
+    /**
+     * Platform version to be used to build and run the app.
+     */
+    platformVersion?: pulumi.Input<string>;
+    /**
+     * List of steps to perform before the build.
+     */
+    preBuildSteps?: pulumi.Input<pulumi.Input<PreBuildStepArgs>[]>;
+}
+
+/**
  * Certificate resource specific properties
  */
 export interface CertificatePropertiesArgs {
@@ -279,6 +305,24 @@ export interface CertificatePropertiesArgs {
      * PFX or PEM blob
      */
     value?: pulumi.Input<string>;
+}
+
+/**
+ * Policy that defines circuit breaker conditions
+ */
+export interface CircuitBreakerPolicyArgs {
+    /**
+     * Number of consecutive errors before the circuit breaker opens
+     */
+    consecutiveErrors?: pulumi.Input<number>;
+    /**
+     * The time interval, in seconds, between endpoint checks. This can result in opening the circuit breaker if the check fails as well as closing the circuit breaker if the check succeeds. Defaults to 10s.
+     */
+    intervalInSeconds?: pulumi.Input<number>;
+    /**
+     * Maximum percentage of hosts that will be ejected after failure threshold has been met
+     */
+    maxEjectionPercent?: pulumi.Input<number>;
 }
 
 /**
@@ -482,6 +526,34 @@ export interface ContainerAppProbeTcpSocketArgs {
 }
 
 /**
+ * Model representing a mapping from a container registry to the identity used to connect to it.
+ */
+export interface ContainerRegistryArgs {
+    /**
+     * Login server of the container registry.
+     */
+    containerRegistryServer: pulumi.Input<string>;
+    /**
+     * Resource ID of the managed identity.
+     */
+    identityResourceId: pulumi.Input<string>;
+}
+
+/**
+ * Container registry that the final image will be uploaded to.
+ */
+export interface ContainerRegistryWithCustomImageArgs {
+    /**
+     * Full name that the final image should be uploaded as, including both image name and tag.
+     */
+    image?: pulumi.Input<string>;
+    /**
+     * Login server of the container registry that the final image should be uploaded to. Builder resource needs to have this container registry defined along with an identity to use to access it.
+     */
+    server: pulumi.Input<string>;
+}
+
+/**
  * Container App container resource requirements.
  */
 export interface ContainerResourcesArgs {
@@ -661,6 +733,58 @@ export function daprArgsProvideDefaults(val: DaprArgs): DaprArgs {
 }
 
 /**
+ * Dapr Component Resiliency Policy Configuration.
+ */
+export interface DaprComponentResiliencyPolicyConfigurationArgs {
+    /**
+     * The optional HTTP retry policy configuration
+     */
+    httpRetryPolicy?: pulumi.Input<DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationArgs>;
+    /**
+     * The optional timeout policy configuration
+     */
+    timeoutPolicy?: pulumi.Input<DaprComponentResiliencyPolicyTimeoutPolicyConfigurationArgs>;
+}
+
+/**
+ * Dapr Component Resiliency Policy HTTP Retry Backoff Configuration.
+ */
+export interface DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationArgs {
+    /**
+     * The optional initial delay in milliseconds before an operation is retried
+     */
+    initialDelayInMilliseconds?: pulumi.Input<number>;
+    /**
+     * The optional maximum time interval in milliseconds between retry attempts
+     */
+    maxIntervalInMilliseconds?: pulumi.Input<number>;
+}
+
+/**
+ * Dapr Component Resiliency Policy HTTP Retry Policy Configuration.
+ */
+export interface DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationArgs {
+    /**
+     * The optional maximum number of retries
+     */
+    maxRetries?: pulumi.Input<number>;
+    /**
+     * The optional retry backoff configuration
+     */
+    retryBackOff?: pulumi.Input<DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationArgs>;
+}
+
+/**
+ * Dapr Component Resiliency Policy Timeout Policy Configuration.
+ */
+export interface DaprComponentResiliencyPolicyTimeoutPolicyConfigurationArgs {
+    /**
+     * The optional response timeout in seconds
+     */
+    responseTimeoutInSeconds?: pulumi.Input<number>;
+}
+
+/**
  * Dapr component metadata.
  */
 export interface DaprMetadataArgs {
@@ -676,6 +800,61 @@ export interface DaprMetadataArgs {
      * Metadata property value.
      */
     value?: pulumi.Input<string>;
+}
+
+/**
+ * Dapr PubSub Bulk Subscription Options.
+ */
+export interface DaprSubscriptionBulkSubscribeOptionsArgs {
+    /**
+     * Enable bulk subscription
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Maximum duration in milliseconds to wait before a bulk message is sent to the app.
+     */
+    maxAwaitDurationMs?: pulumi.Input<number>;
+    /**
+     * Maximum number of messages to deliver in a bulk message.
+     */
+    maxMessagesCount?: pulumi.Input<number>;
+}
+/**
+ * daprSubscriptionBulkSubscribeOptionsArgsProvideDefaults sets the appropriate defaults for DaprSubscriptionBulkSubscribeOptionsArgs
+ */
+export function daprSubscriptionBulkSubscribeOptionsArgsProvideDefaults(val: DaprSubscriptionBulkSubscribeOptionsArgs): DaprSubscriptionBulkSubscribeOptionsArgs {
+    return {
+        ...val,
+        enabled: (val.enabled) ?? false,
+    };
+}
+
+/**
+ * Dapr Pubsub Event Subscription Route Rule is used to specify the condition for sending a message to a specific path.
+ */
+export interface DaprSubscriptionRouteRuleArgs {
+    /**
+     * The optional CEL expression used to match the event. If the match is not specified, then the route is considered the default. The rules are tested in the order specified, so they should be define from most-to-least specific. The default route should appear last in the list.
+     */
+    match?: pulumi.Input<string>;
+    /**
+     * The path for events that match this rule
+     */
+    path?: pulumi.Input<string>;
+}
+
+/**
+ * Dapr PubSub Event Subscription Routes configuration.
+ */
+export interface DaprSubscriptionRoutesArgs {
+    /**
+     * The default path to deliver events that do not match any of the rules.
+     */
+    default?: pulumi.Input<string>;
+    /**
+     * The list of Dapr PubSub Event Subscription Route Rules.
+     */
+    rules?: pulumi.Input<pulumi.Input<DaprSubscriptionRouteRuleArgs>[]>;
 }
 
 /**
@@ -718,6 +897,20 @@ export interface EnvironmentVarArgs {
      * Non-secret environment variable value.
      */
     value?: pulumi.Input<string>;
+}
+
+/**
+ * Model representing an environment variable.
+ */
+export interface EnvironmentVariableArgs {
+    /**
+     * Environment variable name.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Environment variable value.
+     */
+    value: pulumi.Input<string>;
 }
 
 /**
@@ -870,6 +1063,94 @@ export interface GoogleArgs {
      * The configuration settings of the Azure Active Directory token validation flow.
      */
     validation?: pulumi.Input<AllowedAudiencesValidationArgs>;
+}
+
+/**
+ * Conditions required to match a header
+ */
+export interface HeaderMatchArgs {
+    /**
+     * Exact value of the header
+     */
+    exactMatch?: pulumi.Input<string>;
+    /**
+     * Name of the header
+     */
+    header?: pulumi.Input<string>;
+    /**
+     * Prefix value of the header
+     */
+    prefixMatch?: pulumi.Input<string>;
+    /**
+     * Regex value of the header
+     */
+    regexMatch?: pulumi.Input<string>;
+    /**
+     * Suffix value of the header
+     */
+    suffixMatch?: pulumi.Input<string>;
+}
+
+/**
+ * Defines parameters for http connection pooling
+ */
+export interface HttpConnectionPoolArgs {
+    /**
+     * Maximum number of pending http1 requests allowed
+     */
+    http1MaxPendingRequests?: pulumi.Input<number>;
+    /**
+     * Maximum number of http2 requests allowed
+     */
+    http2MaxRequests?: pulumi.Input<number>;
+}
+
+/**
+ * Model representing a http get request.
+ */
+export interface HttpGetArgs {
+    /**
+     * Name of the file that the request should be saved to.
+     */
+    fileName?: pulumi.Input<string>;
+    /**
+     * List of headers to send with the request.
+     */
+    headers?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * URL to make HTTP GET request against.
+     */
+    url: pulumi.Input<string>;
+}
+
+/**
+ * Policy that defines http request retry conditions
+ */
+export interface HttpRetryPolicyArgs {
+    /**
+     * Errors that can trigger a retry
+     */
+    errors?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Headers that must be present for a request to be retried
+     */
+    headers?: pulumi.Input<pulumi.Input<HeaderMatchArgs>[]>;
+    /**
+     * Additional http status codes that can trigger a retry
+     */
+    httpStatusCodes?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * Initial delay, in milliseconds, before retrying a request
+     */
+    initialDelayInMilliseconds?: pulumi.Input<number>;
+    /**
+     * Maximum interval, in milliseconds, between retries
+     */
+    maxIntervalInMilliseconds?: pulumi.Input<number>;
+    /**
+     * Maximum number of times a request will retry
+     */
+    maxRetries?: pulumi.Input<number>;
 }
 
 /**
@@ -1461,6 +1742,24 @@ export interface OpenIdConnectRegistrationArgs {
 }
 
 /**
+ * Model representing a pre-build step.
+ */
+export interface PreBuildStepArgs {
+    /**
+     * Description of the pre-build step.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Http get request to send before the build.
+     */
+    httpGet?: pulumi.Input<HttpGetArgs>;
+    /**
+     * List of custom commands to run.
+     */
+    scripts?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+/**
  * Container App container Azure Queue based scaling rule.
  */
 export interface QueueScaleRuleArgs {
@@ -1622,6 +1921,26 @@ export interface SecretVolumeItemArgs {
 }
 
 /**
+ * Defines parameters for tcp connection pooling
+ */
+export interface TcpConnectionPoolArgs {
+    /**
+     * Maximum number of tcp connections allowed
+     */
+    maxConnections?: pulumi.Input<number>;
+}
+
+/**
+ * Policy that defines tcp request retry conditions
+ */
+export interface TcpRetryPolicyArgs {
+    /**
+     * Maximum number of attempts to connect to the tcp service
+     */
+    maxConnectAttempts?: pulumi.Input<number>;
+}
+
+/**
  * Container App container Tcp scaling rule.
  */
 export interface TcpScaleRuleArgs {
@@ -1670,6 +1989,20 @@ export function templateArgsProvideDefaults(val: TemplateArgs): TemplateArgs {
         ...val,
         scale: (val.scale ? pulumi.output(val.scale).apply(scaleArgsProvideDefaults) : undefined),
     };
+}
+
+/**
+ * Policy to set request timeouts
+ */
+export interface TimeoutPolicyArgs {
+    /**
+     * Timeout, in seconds, for a request to initiate a connection
+     */
+    connectionTimeoutInSeconds?: pulumi.Input<number>;
+    /**
+     * Timeout, in seconds, for a request to respond
+     */
+    responseTimeoutInSeconds?: pulumi.Input<number>;
 }
 
 /**
@@ -1829,6 +2162,7 @@ export interface WorkloadProfileArgs {
      */
     workloadProfileType: pulumi.Input<string>;
 }
+
 
 
 

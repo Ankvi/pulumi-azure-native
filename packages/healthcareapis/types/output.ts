@@ -583,3 +583,5 @@ export interface WorkspaceResponseProperties {
     publicNetworkAccess: string;
 }
 
+
+

@@ -5,7 +5,7 @@ import * as types from "./types";
  * Get a Experiment resource.
  * Azure REST API version: 2023-04-15-preview.
  *
- * Other available API versions: 2023-09-01-preview, 2023-10-27-preview.
+ * Other available API versions: 2023-09-01-preview, 2023-10-27-preview, 2023-11-01.
  */
 export function getExperiment(args: GetExperimentArgs, opts?: pulumi.InvokeOptions): Promise<GetExperimentResult> {
 
@@ -68,7 +68,7 @@ export interface GetExperimentResult {
  * Get a Experiment resource.
  * Azure REST API version: 2023-04-15-preview.
  *
- * Other available API versions: 2023-09-01-preview, 2023-10-27-preview.
+ * Other available API versions: 2023-09-01-preview, 2023-10-27-preview, 2023-11-01.
  */
 export function getExperimentOutput(args: GetExperimentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExperimentResult> {
     return pulumi.output(args).apply((a: any) => getExperiment(a, opts))

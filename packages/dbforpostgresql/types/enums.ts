@@ -190,3 +190,12 @@ export const TriggerCutoverEnum = {
  * To trigger cutover for entire migration we need to send this flag as True
  */
 export type TriggerCutoverEnum = (typeof TriggerCutoverEnum)[keyof typeof TriggerCutoverEnum];
+
+export const VirtualEndpointType = {
+    ReadWrite: "ReadWrite",
+} as const;
+
+/**
+ * The endpoint type for the virtual endpoint.
+ */
+export type VirtualEndpointType = (typeof VirtualEndpointType)[keyof typeof VirtualEndpointType];

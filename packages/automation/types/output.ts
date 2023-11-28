@@ -115,6 +115,48 @@ export interface ContentSourceResponse {
 }
 
 /**
+ * Definition of deleted runbook.
+ */
+export interface DeletedRunbookResponse {
+    /**
+     * Gets or sets the creation time.
+     */
+    creationTime?: string;
+    /**
+     * Gets or sets the last modified time.
+     */
+    deletionTime?: string;
+    /**
+     * The resource id.
+     */
+    id?: string;
+    /**
+     * Gets or sets the location of the resource.
+     */
+    location?: string;
+    /**
+     * Gets or sets name of the resource.
+     */
+    name?: string;
+    /**
+     * Gets or sets the Runbook Id.
+     */
+    runbookId?: string;
+    /**
+     * Type of the runbook.
+     */
+    runbookType?: string;
+    /**
+     * Gets or sets runtime of the runbook.
+     */
+    runtime?: string;
+    /**
+     * Environment of the runbook.
+     */
+    runtimeEnvironment?: string;
+}
+
+/**
  * The Dsc configuration property associated with the entity.
  */
 export interface DscConfigurationAssociationPropertyResponse {
@@ -312,6 +354,20 @@ export interface NonAzureQueryPropertiesResponse {
      * Workspace Id for Log Analytics in which the saved Search is resided.
      */
     workspaceId?: string;
+}
+
+/**
+ * Definition of the package error info type.
+ */
+export interface PackageErrorInfoResponse {
+    /**
+     * Package import error code.
+     */
+    code?: string;
+    /**
+     * Package import error message.
+     */
+    message?: string;
 }
 
 /**
@@ -692,6 +748,8 @@ export interface WindowsPropertiesResponse {
      */
     rebootSetting?: string;
 }
+
+
 
 
 

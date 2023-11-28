@@ -71,6 +71,11 @@ export const getServer: typeof import("./getServer").getServer = null as any;
 export const getServerOutput: typeof import("./getServer").getServerOutput = null as any;
 utilities.lazyLoad(exports, ["getServer","getServerOutput"], () => require("./getServer"));
 
+export { GetVirtualEndpointArgs, GetVirtualEndpointResult, GetVirtualEndpointOutputArgs } from "./getVirtualEndpoint";
+export const getVirtualEndpoint: typeof import("./getVirtualEndpoint").getVirtualEndpoint = null as any;
+export const getVirtualEndpointOutput: typeof import("./getVirtualEndpoint").getVirtualEndpointOutput = null as any;
+utilities.lazyLoad(exports, ["getVirtualEndpoint","getVirtualEndpointOutput"], () => require("./getVirtualEndpoint"));
+
 export { MigrationArgs } from "./migration";
 export type Migration = import("./migration").Migration;
 export const Migration: typeof import("./migration").Migration = null as any;
@@ -91,6 +96,11 @@ export type Server = import("./server").Server;
 export const Server: typeof import("./server").Server = null as any;
 utilities.lazyLoad(exports, ["Server"], () => require("./server"));
 
+export { VirtualEndpointArgs } from "./virtualEndpoint";
+export type VirtualEndpoint = import("./virtualEndpoint").VirtualEndpoint;
+export const VirtualEndpoint: typeof import("./virtualEndpoint").VirtualEndpoint = null as any;
+utilities.lazyLoad(exports, ["VirtualEndpoint"], () => require("./virtualEndpoint"));
+
 
 // Export enums:
 export * from "./types/enums";
@@ -110,6 +120,7 @@ import * as v20220501preview from "./v20220501preview";
 import * as v20221108 from "./v20221108";
 import * as v20221201 from "./v20221201";
 import * as v20230301preview from "./v20230301preview";
+import * as v20230601preview from "./v20230601preview";
 
 export {
     v20171201,
@@ -126,6 +137,7 @@ export {
     v20221108,
     v20221201,
     v20230301preview,
+    v20230601preview,
 };
 
 const _module = {
@@ -150,6 +162,8 @@ const _module = {
                 return new Role(name, <any>undefined, { urn })
             case "azure-native:dbforpostgresql:Server":
                 return new Server(name, <any>undefined, { urn })
+            case "azure-native:dbforpostgresql:VirtualEndpoint":
+                return new VirtualEndpoint(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

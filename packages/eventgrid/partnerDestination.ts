@@ -5,7 +5,7 @@ import * as types from "./types";
  * Event Grid Partner Destination.
  * Azure REST API version: 2023-06-01-preview. Prior API version in Azure Native 1.x: 2021-10-15-preview.
  *
- * Other available API versions: 2021-10-15-preview.
+ * Other available API versions: 2021-10-15-preview, 2023-12-15-preview.
  */
 export class PartnerDestination extends pulumi.CustomResource {
     /**
@@ -127,7 +127,7 @@ export class PartnerDestination extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:eventgrid/v20211015preview:PartnerDestination" }, { type: "azure-native:eventgrid/v20230601preview:PartnerDestination" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:eventgrid/v20211015preview:PartnerDestination" }, { type: "azure-native:eventgrid/v20230601preview:PartnerDestination" }, { type: "azure-native:eventgrid/v20231215preview:PartnerDestination" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PartnerDestination.__pulumiType, name, resourceInputs, opts);
     }

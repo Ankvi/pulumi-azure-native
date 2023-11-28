@@ -147,6 +147,32 @@ export interface EsuKeyResponse {
 }
 
 /**
+ * Instance view status.
+ */
+export interface ExtensionsResourceStatusResponse {
+    /**
+     * The status code.
+     */
+    code?: string;
+    /**
+     * The short localizable label for the status.
+     */
+    displayStatus?: string;
+    /**
+     * The level code.
+     */
+    level?: string;
+    /**
+     * The detailed status message, including for alerts and error messages.
+     */
+    message?: string;
+    /**
+     * The time of the status.
+     */
+    time?: string;
+}
+
+/**
  * Properties that define a Azure Arc PrivateLinkScope resource.
  */
 export interface HybridComputePrivateLinkScopePropertiesResponse {
@@ -371,6 +397,66 @@ export interface MachineExtensionResponse {
 }
 
 /**
+ * The instance view of a machine run command.
+ */
+export interface MachineRunCommandInstanceViewResponse {
+    /**
+     * Script end time.
+     */
+    endTime?: string;
+    /**
+     * Script error stream.
+     */
+    error?: string;
+    /**
+     * Communicate script configuration errors or execution messages.
+     */
+    executionMessage?: string;
+    /**
+     * Script execution status.
+     */
+    executionState?: string;
+    /**
+     * Exit code returned from script execution.
+     */
+    exitCode?: number;
+    /**
+     * Script output stream.
+     */
+    output?: string;
+    /**
+     * Script start time.
+     */
+    startTime?: string;
+    /**
+     * The  status information.
+     */
+    statuses?: ExtensionsResourceStatusResponse[];
+}
+
+/**
+ * Describes the script sources for run command. Use only one of script, scriptUri, commandId.
+ */
+export interface MachineRunCommandScriptSourceResponse {
+    /**
+     * Specifies the commandId of predefined built-in script.
+     */
+    commandId?: string;
+    /**
+     * Specifies the script content to be executed on the machine.
+     */
+    script?: string;
+    /**
+     * Specifies the script download location. It can be either SAS URI of an Azure storage blob with read access or public URI.
+     */
+    scriptUri?: string;
+    /**
+     * User-assigned managed identity that has access to scriptUri in case of Azure storage blob. Use an empty object in case of system-assigned identity. Make sure the Azure storage blob exists, and managed identity has been given access to blob's container with 'Storage Blob Data Reader' role assignment. In case of user-assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged.
+     */
+    scriptUriManagedIdentity?: RunCommandManagedIdentityResponse;
+}
+
+/**
  * Specifies the operating system settings for the hybrid machine.
  */
 export interface OSProfileResponse {
@@ -489,6 +575,34 @@ export interface PrivateLinkServiceConnectionStatePropertyResponse {
 }
 
 /**
+ * Describes the properties of a run command parameter.
+ */
+export interface RunCommandInputParameterResponse {
+    /**
+     * The run command parameter name.
+     */
+    name: string;
+    /**
+     * The run command parameter value.
+     */
+    value: string;
+}
+
+/**
+ *  Contains clientId or objectId (use only one, not both) of a user-assigned managed identity that has access to storage blob used in Run Command. Use an empty RunCommandManagedIdentity object in case of system-assigned identity. Make sure the Azure storage blob exists in case of scriptUri, and managed identity has been given access to blob's container with 'Storage Blob Data Reader' role assignment with scriptUri blob and 'Storage Blob Data Contributor' for Append blobs(outputBlobUri, errorBlobUri). In case of user assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged.
+ */
+export interface RunCommandManagedIdentityResponse {
+    /**
+     * Client Id (GUID value) of the user-assigned managed identity. ObjectId should not be used if this is provided.
+     */
+    clientId?: string;
+    /**
+     * Object Id (GUID value) of the user-assigned managed identity. ClientId should not be used if this is provided.
+     */
+    objectId?: string;
+}
+
+/**
  * Describes the status and behavior of a service.
  */
 export interface ServiceStatusResponse {
@@ -545,6 +659,7 @@ export interface SystemDataResponse {
      */
     lastModifiedByType?: string;
 }
+
 
 
 

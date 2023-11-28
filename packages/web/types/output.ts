@@ -850,6 +850,38 @@ export interface ClientRegistrationResponse {
 }
 
 /**
+ * Non versioned Container App configuration properties that define the mutable settings of a Container app
+ */
+export interface ConfigurationResponse {
+    /**
+     * ActiveRevisionsMode controls how active revisions are handled for the Container app:
+     * <list><item>Multiple: multiple revisions can be active. If no value if provided, this is the default</item><item>Single: Only one revision can be active at a time. Revision weights can not be used in this mode</item></list>
+     */
+    activeRevisionsMode?: string;
+    /**
+     * Ingress configurations.
+     */
+    ingress?: IngressResponse;
+    /**
+     * Collection of private container registry credentials for containers used by the Container app
+     */
+    registries?: RegistryCredentialsResponse[];
+    /**
+     * Collection of secrets used by a Container app
+     */
+    secrets?: SecretResponse[];
+}
+/**
+ * configurationResponseProvideDefaults sets the appropriate defaults for ConfigurationResponse
+ */
+export function configurationResponseProvideDefaults(val: ConfigurationResponse): ConfigurationResponse {
+    return {
+        ...val,
+        ingress: (val.ingress ? ingressResponseProvideDefaults(val.ingress) : undefined),
+    };
+}
+
+/**
  * Database connection string information.
  */
 export interface ConnStringInfoResponse {
@@ -1026,6 +1058,20 @@ export interface ConsentLinkDefinitionResponse {
     status?: string;
 }
 
+/**
+ * Container App Secret.
+ */
+export interface ContainerAppSecretResponse {
+    /**
+     * Secret Name.
+     */
+    name: string;
+    /**
+     * Secret Value.
+     */
+    value: string;
+}
+
 export interface ContainerAppsConfigurationResponse {
     /**
      * Resource ID of a subnet for control plane infrastructure components. This subnet must be in the same VNET as the subnet defined in appSubnetResourceId. Must not overlap with the IP range defined in platformReservedCidr, if defined.
@@ -1051,6 +1097,50 @@ export interface ContainerAppsConfigurationResponse {
      * An IP address from the IP range defined by platformReservedCidr that will be reserved for the internal DNS server
      */
     platformReservedDnsIP?: string;
+}
+
+/**
+ * Container App container resource requirements.
+ */
+export interface ContainerResourcesResponse {
+    /**
+     * Required CPU in cores, e.g. 0.5
+     */
+    cpu?: number;
+    /**
+     * Required memory, e.g. "250Mb"
+     */
+    memory?: string;
+}
+
+/**
+ * Container App container definition.
+ */
+export interface ContainerResponse {
+    /**
+     * Container start command arguments.
+     */
+    args?: string[];
+    /**
+     * Container start command.
+     */
+    command?: string[];
+    /**
+     * Container environment variables.
+     */
+    env?: EnvironmentVarResponse[];
+    /**
+     * Container image tag.
+     */
+    image?: string;
+    /**
+     * Custom container name.
+     */
+    name?: string;
+    /**
+     * Container resource requirements.
+     */
+    resources?: ContainerResourcesResponse;
 }
 
 /**
@@ -1193,6 +1283,87 @@ export interface CustomOpenIdConnectProviderResponse {
 }
 
 /**
+ * Container App container Custom scaling rule.
+ */
+export interface CustomScaleRuleResponse {
+    /**
+     * Authentication secrets for the custom scale rule.
+     */
+    auth?: ScaleRuleAuthResponse[];
+    /**
+     * Metadata properties to describe custom scale rule.
+     */
+    metadata?: {[key: string]: string};
+    /**
+     * Type of the custom scale rule
+     * eg: azure-servicebus, redis etc.
+     */
+    type?: string;
+}
+
+/**
+ * Dapr component configuration
+ */
+export interface DaprComponentResponse {
+    /**
+     * Component metadata
+     */
+    metadata?: DaprMetadataResponse[];
+    /**
+     * Component name
+     */
+    name?: string;
+    /**
+     * Component type
+     */
+    type?: string;
+    /**
+     * Component version
+     */
+    version?: string;
+}
+
+/**
+ * Container App Dapr component metadata.
+ */
+export interface DaprMetadataResponse {
+    /**
+     * Metadata property name.
+     */
+    name?: string;
+    /**
+     * Name of the Container App secret from which to pull the metadata property value.
+     */
+    secretRef?: string;
+    /**
+     * Metadata property value.
+     */
+    value?: string;
+}
+
+/**
+ * Container App Dapr configuration.
+ */
+export interface DaprResponse {
+    /**
+     * Dapr application identifier
+     */
+    appId?: string;
+    /**
+     * Port on which the Dapr side car
+     */
+    appPort?: number;
+    /**
+     * Collection of Dapr components
+     */
+    components?: DaprComponentResponse[];
+    /**
+     * Boolean indicating if the Dapr side car is enabled
+     */
+    enabled?: boolean;
+}
+
+/**
  * Database backup settings.
  */
 export interface DatabaseBackupSettingResponse {
@@ -1260,6 +1431,24 @@ export interface EnabledConfigResponse {
      * True if configuration is enabled, false if it is disabled and null if configuration is not set.
      */
     enabled?: boolean;
+}
+
+/**
+ * Container App container environment variable.
+ */
+export interface EnvironmentVarResponse {
+    /**
+     * Environment variable name.
+     */
+    name?: string;
+    /**
+     * Name of the Container App secret from which to pull the environment variable value.
+     */
+    secretRef?: string;
+    /**
+     * Non-secret environment variable value.
+     */
+    value?: string;
 }
 
 /**
@@ -1665,6 +1854,20 @@ export interface HttpLogsConfigResponse {
 }
 
 /**
+ * Container App container Custom scaling rule.
+ */
+export interface HttpScaleRuleResponse {
+    /**
+     * Authentication secrets for the custom scale rule.
+     */
+    auth?: ScaleRuleAuthResponse[];
+    /**
+     * Metadata properties to describe http scale rule.
+     */
+    metadata?: {[key: string]: string};
+}
+
+/**
  * The configuration settings of the HTTP requests for authentication and authorization requests made against App Service Authentication/Authorization.
  */
 export interface HttpSettingsResponse {
@@ -1759,6 +1962,42 @@ export interface IdentityProvidersResponse {
      * The configuration settings of the Twitter provider.
      */
     twitter?: TwitterResponse;
+}
+
+/**
+ * Container App Ingress configuration.
+ */
+export interface IngressResponse {
+    /**
+     * Bool indicating if HTTP connections to is allowed. If set to false HTTP connections are automatically redirected to HTTPS connections
+     */
+    allowInsecure?: boolean;
+    /**
+     * Bool indicating if app exposes an external http endpoint
+     */
+    external?: boolean;
+    /**
+     * Hostname.
+     */
+    fqdn: string;
+    /**
+     * Target Port in containers for traffic from ingress
+     */
+    targetPort?: number;
+    traffic?: TrafficWeightResponse[];
+    /**
+     * Ingress transport protocol
+     */
+    transport?: string;
+}
+/**
+ * ingressResponseProvideDefaults sets the appropriate defaults for IngressResponse
+ */
+export function ingressResponseProvideDefaults(val: IngressResponse): IngressResponse {
+    return {
+        ...val,
+        external: (val.external) ?? false,
+    };
 }
 
 /**
@@ -2121,6 +2360,24 @@ export interface PushSettingsResponse {
 }
 
 /**
+ * Container App container Azure Queue based scaling rule.
+ */
+export interface QueueScaleRuleResponse {
+    /**
+     * Authentication secrets for the queue scale rule.
+     */
+    auth?: ScaleRuleAuthResponse[];
+    /**
+     * Queue length.
+     */
+    queueLength?: number;
+    /**
+     * Queue name.
+     */
+    queueName?: string;
+}
+
+/**
  * Routing rules for ramp up testing. This rule allows to redirect static traffic % to a slot or to gradually change routing % based on performance.
  */
 export interface RampUpRuleResponse {
@@ -2159,6 +2416,24 @@ export interface RampUpRuleResponse {
      * Percentage of the traffic which will be redirected to <code>ActionHostName</code>.
      */
     reroutePercentage?: number;
+}
+
+/**
+ * Container App Private Registry
+ */
+export interface RegistryCredentialsResponse {
+    /**
+     * The name of the Secret that contains the registry login password
+     */
+    passwordSecretRef?: string;
+    /**
+     * Container Registry Server
+     */
+    server?: string;
+    /**
+     * Container Registry Username
+     */
+    username?: string;
 }
 
 /**
@@ -2264,6 +2539,70 @@ export interface ResponseMessageEnvelopeRemotePrivateEndpointConnectionResponse 
      * Logical Availability Zones the service is hosted in
      */
     zones?: string[];
+}
+
+/**
+ * Container App scaling configurations.
+ */
+export interface ScaleResponse {
+    /**
+     * Optional. Maximum number of container replicas. Defaults to 10 if not set.
+     */
+    maxReplicas?: number;
+    /**
+     * Optional. Minimum number of container replicas.
+     */
+    minReplicas?: number;
+    /**
+     * Scaling rules.
+     */
+    rules?: ScaleRuleResponse[];
+}
+
+/**
+ * Auth Secrets for Container App Scale Rule
+ */
+export interface ScaleRuleAuthResponse {
+    /**
+     * Name of the Container App secret from which to pull the auth params.
+     */
+    secretRef?: string;
+    /**
+     * Trigger Parameter that uses the secret
+     */
+    triggerParameter?: string;
+}
+
+/**
+ * Container App container scaling rule.
+ */
+export interface ScaleRuleResponse {
+    /**
+     * Azure Queue based scaling.
+     */
+    azureQueue?: QueueScaleRuleResponse;
+    /**
+     * Custom scale rule.
+     */
+    custom?: CustomScaleRuleResponse;
+    /**
+     * HTTP requests based scaling.
+     */
+    http?: HttpScaleRuleResponse;
+    /**
+     * Scale Rule Name
+     */
+    name?: string;
+}
+
+/**
+ * Container App Secret.
+ */
+export interface SecretResponse {
+    /**
+     * Secret Name.
+     */
+    name?: string;
 }
 
 /**
@@ -2939,6 +3278,30 @@ export interface StatusCodesRangeBasedTriggerResponse {
 }
 
 /**
+ * Container App versioned application definition.
+ * Defines the desired state of an immutable revision.
+ * Any changes to this section Will result in a new revision being created
+ */
+export interface TemplateResponse {
+    /**
+     * List of container definitions for the Container App.
+     */
+    containers?: ContainerResponse[];
+    /**
+     * Dapr configuration for the Container App.
+     */
+    dapr?: DaprResponse;
+    /**
+     * User friendly suffix that is appended to the revision name
+     */
+    revisionSuffix?: string;
+    /**
+     * Scaling properties for the Container App.
+     */
+    scale?: ScaleResponse;
+}
+
+/**
  * The configuration settings of the token store.
  */
 export interface TokenStoreResponse {
@@ -2960,6 +3323,33 @@ export interface TokenStoreResponse {
      * call the token refresh API. The default is 72 hours.
      */
     tokenRefreshExtensionHours?: number;
+}
+
+/**
+ * Traffic weight assigned to a revision
+ */
+export interface TrafficWeightResponse {
+    /**
+     * Indicates that the traffic weight belongs to a latest stable revision
+     */
+    latestRevision?: boolean;
+    /**
+     * Name of a revision
+     */
+    revisionName?: string;
+    /**
+     * Traffic weight assigned to a revision
+     */
+    weight?: number;
+}
+/**
+ * trafficWeightResponseProvideDefaults sets the appropriate defaults for TrafficWeightResponse
+ */
+export function trafficWeightResponseProvideDefaults(val: TrafficWeightResponse): TrafficWeightResponse {
+    return {
+        ...val,
+        latestRevision: (val.latestRevision) ?? false,
+    };
 }
 
 /**
@@ -3197,6 +3587,7 @@ export interface WsdlServiceResponse {
      */
     qualifiedName: string;
 }
+
 
 
 

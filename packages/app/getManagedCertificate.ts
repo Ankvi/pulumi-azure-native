@@ -5,7 +5,7 @@ import * as types from "./types";
  * Managed certificates used for Custom Domain bindings of Container Apps in a Managed Environment
  * Azure REST API version: 2023-04-01-preview.
  *
- * Other available API versions: 2023-05-01, 2023-05-02-preview.
+ * Other available API versions: 2023-05-01, 2023-05-02-preview, 2023-08-01-preview.
  */
 export function getManagedCertificate(args: GetManagedCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetManagedCertificateResult> {
 
@@ -69,7 +69,7 @@ export interface GetManagedCertificateResult {
  * Managed certificates used for Custom Domain bindings of Container Apps in a Managed Environment
  * Azure REST API version: 2023-04-01-preview.
  *
- * Other available API versions: 2023-05-01, 2023-05-02-preview.
+ * Other available API versions: 2023-05-01, 2023-05-02-preview, 2023-08-01-preview.
  */
 export function getManagedCertificateOutput(args: GetManagedCertificateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetManagedCertificateResult> {
     return pulumi.output(args).apply((a: any) => getManagedCertificate(a, opts))

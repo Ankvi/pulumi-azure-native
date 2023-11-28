@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets details of the specific container registered to your Recovery Services Vault.
  * Azure REST API version: 2023-04-01.
+ *
+ * Other available API versions: 2023-06-01.
  */
 export function getProtectionContainer(args: GetProtectionContainerArgs, opts?: pulumi.InvokeOptions): Promise<GetProtectionContainerResult> {
 
@@ -71,6 +73,8 @@ export interface GetProtectionContainerResult {
 /**
  * Gets details of the specific container registered to your Recovery Services Vault.
  * Azure REST API version: 2023-04-01.
+ *
+ * Other available API versions: 2023-06-01.
  */
 export function getProtectionContainerOutput(args: GetProtectionContainerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProtectionContainerResult> {
     return pulumi.output(args).apply((a: any) => getProtectionContainer(a, opts))

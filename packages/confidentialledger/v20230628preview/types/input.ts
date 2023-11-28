@@ -69,6 +69,10 @@ import * as pulumi from "@pulumi/pulumi";
          */
         certBasedSecurityPrincipals?: pulumi.Input<pulumi.Input<CertBasedSecurityPrincipalArgs>[]>;
         /**
+         * SKU associated with the ledger
+         */
+        ledgerSku?: pulumi.Input<string | enums.LedgerSku>;
+        /**
          * Type of Confidential Ledger
          */
         ledgerType?: pulumi.Input<string | enums.LedgerType>;

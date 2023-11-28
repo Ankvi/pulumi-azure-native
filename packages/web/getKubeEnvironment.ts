@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Description for Get the properties of a Kubernetes Environment.
  * Azure REST API version: 2022-09-01.
+ *
+ * Other available API versions: 2023-01-01.
  */
 export function getKubeEnvironment(args: GetKubeEnvironmentArgs, opts?: pulumi.InvokeOptions): Promise<GetKubeEnvironmentResult> {
 
@@ -102,6 +104,8 @@ export interface GetKubeEnvironmentResult {
 /**
  * Description for Get the properties of a Kubernetes Environment.
  * Azure REST API version: 2022-09-01.
+ *
+ * Other available API versions: 2023-01-01.
  */
 export function getKubeEnvironmentOutput(args: GetKubeEnvironmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubeEnvironmentResult> {
     return pulumi.output(args).apply((a: any) => getKubeEnvironment(a, opts))

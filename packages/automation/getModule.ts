@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Retrieve the module identified by module name.
  * Azure REST API version: 2022-08-08.
+ *
+ * Other available API versions: 2023-05-15-preview, 2023-11-01.
  */
 export function getModule(args: GetModuleArgs, opts?: pulumi.InvokeOptions): Promise<GetModuleResult> {
 
@@ -106,6 +108,8 @@ export interface GetModuleResult {
 /**
  * Retrieve the module identified by module name.
  * Azure REST API version: 2022-08-08.
+ *
+ * Other available API versions: 2023-05-15-preview, 2023-11-01.
  */
 export function getModuleOutput(args: GetModuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetModuleResult> {
     return pulumi.output(args).apply((a: any) => getModule(a, opts))

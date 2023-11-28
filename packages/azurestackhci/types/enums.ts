@@ -19,6 +19,22 @@ export const CloudInitDataSource = {
  */
 export type CloudInitDataSource = (typeof CloudInitDataSource)[keyof typeof CloudInitDataSource];
 
+export const DeploymentMode = {
+    /**
+     * Validate deployment settings for cluster.
+     */
+    Validate: "Validate",
+    /**
+     * Deploy cluster using deployment settings.
+     */
+    Deploy: "Deploy",
+} as const;
+
+/**
+ * The deployment mode for cluster deployment.
+ */
+export type DeploymentMode = (typeof DeploymentMode)[keyof typeof DeploymentMode];
+
 export const DiagnosticLevel = {
     Off: "Off",
     Basic: "Basic",

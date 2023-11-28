@@ -5,7 +5,7 @@ import * as types from "./types";
  * Container App Auth Token.
  * Azure REST API version: 2022-10-01.
  *
- * Other available API versions: 2023-04-01-preview, 2023-05-01, 2023-05-02-preview.
+ * Other available API versions: 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview.
  */
 export function getContainerAppAuthToken(args: GetContainerAppAuthTokenArgs, opts?: pulumi.InvokeOptions): Promise<GetContainerAppAuthTokenResult> {
 
@@ -68,7 +68,7 @@ export interface GetContainerAppAuthTokenResult {
  * Container App Auth Token.
  * Azure REST API version: 2022-10-01.
  *
- * Other available API versions: 2023-04-01-preview, 2023-05-01, 2023-05-02-preview.
+ * Other available API versions: 2023-04-01-preview, 2023-05-01, 2023-05-02-preview, 2023-08-01-preview.
  */
 export function getContainerAppAuthTokenOutput(args: GetContainerAppAuthTokenOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContainerAppAuthTokenResult> {
     return pulumi.output(args).apply((a: any) => getContainerAppAuthToken(a, opts))

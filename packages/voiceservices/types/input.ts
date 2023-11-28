@@ -50,3 +50,4 @@ export interface ServiceRegionPropertiesArgs {
     primaryRegionProperties: pulumi.Input<PrimaryRegionPropertiesArgs>;
 }
 
+

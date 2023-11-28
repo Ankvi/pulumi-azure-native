@@ -4,7 +4,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Gets a specific Azure Active Directory only authentication property.
  * Azure REST API version: 2021-11-01.
  *
- * Other available API versions: 2022-11-01-preview, 2023-02-01-preview.
+ * Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview.
  */
 export function getManagedInstanceAzureADOnlyAuthentication(args: GetManagedInstanceAzureADOnlyAuthenticationArgs, opts?: pulumi.InvokeOptions): Promise<GetManagedInstanceAzureADOnlyAuthenticationResult> {
 
@@ -56,7 +56,7 @@ export interface GetManagedInstanceAzureADOnlyAuthenticationResult {
  * Gets a specific Azure Active Directory only authentication property.
  * Azure REST API version: 2021-11-01.
  *
- * Other available API versions: 2022-11-01-preview, 2023-02-01-preview.
+ * Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview.
  */
 export function getManagedInstanceAzureADOnlyAuthenticationOutput(args: GetManagedInstanceAzureADOnlyAuthenticationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetManagedInstanceAzureADOnlyAuthenticationResult> {
     return pulumi.output(args).apply((a: any) => getManagedInstanceAzureADOnlyAuthentication(a, opts))

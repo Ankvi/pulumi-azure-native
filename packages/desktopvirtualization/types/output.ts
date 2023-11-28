@@ -23,6 +23,102 @@ export interface AgentUpdatePropertiesResponse {
 }
 
 /**
+ * Schema for Import Package Information properties.
+ */
+export interface AppAttachPackageInfoPropertiesResponse {
+    /**
+     * Date certificate expires, found in the appxmanifest.xml. 
+     */
+    certificateExpiry?: string;
+    /**
+     * Certificate name found in the appxmanifest.xml. 
+     */
+    certificateName?: string;
+    /**
+     * User friendly Name to be displayed in the portal. 
+     */
+    displayName?: string;
+    /**
+     * VHD/CIM image path on Network Share.
+     */
+    imagePath?: string;
+    /**
+     * Make this version of the package the active one across the hostpool. 
+     */
+    isActive?: boolean;
+    /**
+     * Is package timestamped so it can ignore the certificate expiry date
+     */
+    isPackageTimestamped?: string;
+    /**
+     * Specifies how to register Package in feed.
+     */
+    isRegularRegistration?: boolean;
+    /**
+     * Date Package was last updated, found in the appxmanifest.xml. 
+     */
+    lastUpdated?: string;
+    /**
+     * Alias of App Attach Package. Assigned at import time
+     */
+    packageAlias?: string;
+    /**
+     * List of package applications. 
+     */
+    packageApplications?: MsixPackageApplicationsResponse[];
+    /**
+     * List of package dependencies. 
+     */
+    packageDependencies?: MsixPackageDependenciesResponse[];
+    /**
+     * Package Family Name from appxmanifest.xml. Contains Package Name and Publisher name. 
+     */
+    packageFamilyName?: string;
+    /**
+     * Package Full Name from appxmanifest.xml. 
+     */
+    packageFullName?: string;
+    /**
+     * Package Name from appxmanifest.xml. 
+     */
+    packageName?: string;
+    /**
+     * Relative Path to the package inside the image. 
+     */
+    packageRelativePath?: string;
+    /**
+     * Package Version found in the appxmanifest.xml. 
+     */
+    version?: string;
+}
+
+/**
+ * Schema for App Attach Package properties.
+ */
+export interface AppAttachPackagePropertiesResponse {
+    /**
+     * Parameter indicating how the health check should behave if this package fails staging
+     */
+    failHealthCheckOnStagingFailure?: string;
+    /**
+     * List of Hostpool resource Ids.
+     */
+    hostPoolReferences?: string[];
+    /**
+     * Detailed properties for App Attach Package
+     */
+    image?: AppAttachPackageInfoPropertiesResponse;
+    /**
+     * URL of keyvault location to store certificate
+     */
+    keyVaultURL?: string;
+    /**
+     * The provisioning state of the App Attach Package.
+     */
+    provisioningState: string;
+}
+
+/**
  * Maintenance window starting hour and day of week.
  */
 export interface MaintenanceWindowPropertiesResponse {
@@ -330,6 +426,7 @@ export interface TimeResponse {
      */
     minute: number;
 }
+
 
 
 

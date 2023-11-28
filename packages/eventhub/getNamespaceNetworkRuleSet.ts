@@ -5,7 +5,7 @@ import * as types from "./types";
  * Gets NetworkRuleSet for a Namespace.
  * Azure REST API version: 2022-10-01-preview.
  *
- * Other available API versions: 2023-01-01-preview.
+ * Other available API versions: 2023-01-01-preview, 2024-01-01.
  */
 export function getNamespaceNetworkRuleSet(args: GetNamespaceNetworkRuleSetArgs, opts?: pulumi.InvokeOptions): Promise<GetNamespaceNetworkRuleSetResult> {
 
@@ -76,7 +76,7 @@ export interface GetNamespaceNetworkRuleSetResult {
  * Gets NetworkRuleSet for a Namespace.
  * Azure REST API version: 2022-10-01-preview.
  *
- * Other available API versions: 2023-01-01-preview.
+ * Other available API versions: 2023-01-01-preview, 2024-01-01.
  */
 export function getNamespaceNetworkRuleSetOutput(args: GetNamespaceNetworkRuleSetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNamespaceNetworkRuleSetResult> {
     return pulumi.output(args).apply((a: any) => getNamespaceNetworkRuleSet(a, opts))

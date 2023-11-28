@@ -177,6 +177,28 @@ export interface MachineExtensionPropertiesArgs {
 }
 
 /**
+ * Describes the script sources for run command. Use only one of script, scriptUri, commandId.
+ */
+export interface MachineRunCommandScriptSourceArgs {
+    /**
+     * Specifies the commandId of predefined built-in script.
+     */
+    commandId?: pulumi.Input<string>;
+    /**
+     * Specifies the script content to be executed on the machine.
+     */
+    script?: pulumi.Input<string>;
+    /**
+     * Specifies the script download location. It can be either SAS URI of an Azure storage blob with read access or public URI.
+     */
+    scriptUri?: pulumi.Input<string>;
+    /**
+     * User-assigned managed identity that has access to scriptUri in case of Azure storage blob. Use an empty object in case of system-assigned identity. Make sure the Azure storage blob exists, and managed identity has been given access to blob's container with 'Storage Blob Data Reader' role assignment. In case of user-assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged.
+     */
+    scriptUriManagedIdentity?: pulumi.Input<RunCommandManagedIdentityArgs>;
+}
+
+/**
  * Specifies the operating system settings for the hybrid machine.
  */
 export interface OSProfileArgs {
@@ -257,6 +279,34 @@ export interface PrivateLinkServiceConnectionStatePropertyArgs {
 }
 
 /**
+ * Describes the properties of a run command parameter.
+ */
+export interface RunCommandInputParameterArgs {
+    /**
+     * The run command parameter name.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The run command parameter value.
+     */
+    value: pulumi.Input<string>;
+}
+
+/**
+ *  Contains clientId or objectId (use only one, not both) of a user-assigned managed identity that has access to storage blob used in Run Command. Use an empty RunCommandManagedIdentity object in case of system-assigned identity. Make sure the Azure storage blob exists in case of scriptUri, and managed identity has been given access to blob's container with 'Storage Blob Data Reader' role assignment with scriptUri blob and 'Storage Blob Data Contributor' for Append blobs(outputBlobUri, errorBlobUri). In case of user assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged.
+ */
+export interface RunCommandManagedIdentityArgs {
+    /**
+     * Client Id (GUID value) of the user-assigned managed identity. ObjectId should not be used if this is provided.
+     */
+    clientId?: pulumi.Input<string>;
+    /**
+     * Object Id (GUID value) of the user-assigned managed identity. ClientId should not be used if this is provided.
+     */
+    objectId?: pulumi.Input<string>;
+}
+
+/**
  * Describes the status and behavior of a service.
  */
 export interface ServiceStatusArgs {
@@ -283,6 +333,7 @@ export interface ServiceStatusesArgs {
      */
     guestConfigurationService?: pulumi.Input<ServiceStatusArgs>;
 }
+
 
 
 

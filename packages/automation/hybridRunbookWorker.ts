@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Definition of hybrid runbook worker.
  * Azure REST API version: 2022-08-08. Prior API version in Azure Native 1.x: 2021-06-22.
+ *
+ * Other available API versions: 2023-05-15-preview, 2023-11-01.
  */
 export class HybridRunbookWorker extends pulumi.CustomResource {
     /**
@@ -114,7 +116,7 @@ export class HybridRunbookWorker extends pulumi.CustomResource {
             resourceInputs["workerType"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:automation/v20210622:HybridRunbookWorker" }, { type: "azure-native:automation/v20220808:HybridRunbookWorker" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:automation/v20210622:HybridRunbookWorker" }, { type: "azure-native:automation/v20220808:HybridRunbookWorker" }, { type: "azure-native:automation/v20230515preview:HybridRunbookWorker" }, { type: "azure-native:automation/v20231101:HybridRunbookWorker" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(HybridRunbookWorker.__pulumiType, name, resourceInputs, opts);
     }

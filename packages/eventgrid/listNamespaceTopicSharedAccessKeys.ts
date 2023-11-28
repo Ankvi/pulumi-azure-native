@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * List the two keys used to publish to a namespace topic.
  * Azure REST API version: 2023-06-01-preview.
+ *
+ * Other available API versions: 2023-12-15-preview.
  */
 export function listNamespaceTopicSharedAccessKeys(args: ListNamespaceTopicSharedAccessKeysArgs, opts?: pulumi.InvokeOptions): Promise<ListNamespaceTopicSharedAccessKeysResult> {
 
@@ -45,6 +47,8 @@ export interface ListNamespaceTopicSharedAccessKeysResult {
 /**
  * List the two keys used to publish to a namespace topic.
  * Azure REST API version: 2023-06-01-preview.
+ *
+ * Other available API versions: 2023-12-15-preview.
  */
 export function listNamespaceTopicSharedAccessKeysOutput(args: ListNamespaceTopicSharedAccessKeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListNamespaceTopicSharedAccessKeysResult> {
     return pulumi.output(args).apply((a: any) => listNamespaceTopicSharedAccessKeys(a, opts))

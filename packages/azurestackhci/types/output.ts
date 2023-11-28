@@ -1,6 +1,24 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
+ * The AdapterPropertyOverrides of a cluster.
+ */
+export interface AdapterPropertyOverridesResponse {
+    /**
+     * This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+     */
+    jumboPacket?: string;
+    /**
+     * This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+     */
+    networkDirect?: string;
+    /**
+     * This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation. Expected values are 'iWARP', 'RoCEv2', 'RoCE'
+     */
+    networkDirectTechnology?: string;
+}
+
+/**
  * Connectivity related configuration required by arc server.
  */
 export interface ArcConnectivityPropertiesResponse {
@@ -133,6 +151,32 @@ export interface ClusterReportedPropertiesResponse {
 }
 
 /**
+ * AzureStackHCI Cluster deployment properties.
+ */
+export interface ClusterResponse {
+    /**
+     * For Azure blob service endpoint type, select either Default or Custom domain. If you selected **Custom domain, enter the domain for the blob service in this format core.windows.net.
+     */
+    azureServiceEndpoint?: string;
+    /**
+     * Specify the Azure Storage account name for cloud witness for your Azure Stack HCI cluster.
+     */
+    cloudAccountName?: string;
+    /**
+     * The cluster name provided when preparing Active Directory.
+     */
+    name?: string;
+    /**
+     * Specify the fileshare path for the local witness for your Azure Stack HCI cluster.
+     */
+    witnessPath?: string;
+    /**
+     * Use a cloud witness if you have internet access and if you use an Azure Storage account to provide a vote on cluster quorum. A cloud witness uses Azure Blob Storage to read or write a blob file and then uses it to arbitrate in split-brain resolution. Only allowed values are 'Cloud', 'FileShare'. 
+     */
+    witnessType?: string;
+}
+
+/**
  * Properties for a particular default extension category.
  */
 export interface DefaultExtensionDetailsResponse {
@@ -144,6 +188,114 @@ export interface DefaultExtensionDetailsResponse {
      * Consent time for extension category
      */
     consentTime: string;
+}
+
+/**
+ * Deployment Configuration
+ */
+export interface DeploymentConfigurationResponse {
+    /**
+     * Scale units will contains list of deployment data
+     */
+    scaleUnits: ScaleUnitsResponse[];
+    /**
+     * deployment template version 
+     */
+    version?: string;
+}
+
+/**
+ * The Deployment data of AzureStackHCI Cluster.
+ */
+export interface DeploymentDataResponse {
+    /**
+     * The path to the Active Directory Organizational Unit container object prepared for the deployment. 
+     */
+    adouPath?: string;
+    /**
+     * Observability config to deploy AzureStackHCI Cluster.
+     */
+    cluster?: ClusterResponse;
+    /**
+     * FQDN to deploy cluster
+     */
+    domainFqdn?: string;
+    /**
+     * HostNetwork config to deploy AzureStackHCI Cluster.
+     */
+    hostNetwork?: HostNetworkResponse;
+    /**
+     * InfrastructureNetwork config to deploy AzureStackHCI Cluster.
+     */
+    infrastructureNetwork?: InfrastructureNetworkResponse[];
+    /**
+     * naming prefix to deploy cluster.
+     */
+    namingPrefix?: string;
+    /**
+     * Observability config to deploy AzureStackHCI Cluster.
+     */
+    observability?: ObservabilityResponse;
+    /**
+     * OptionalServices config to deploy AzureStackHCI Cluster.
+     */
+    optionalServices?: OptionalServicesResponse;
+    /**
+     * list of physical nodes config to deploy AzureStackHCI Cluster.
+     */
+    physicalNodes?: PhysicalNodesResponse[];
+    /**
+     * The URI to the keyvault / secret store.
+     */
+    secretsLocation?: string;
+    /**
+     * SecuritySettings to deploy AzureStackHCI Cluster.
+     */
+    securitySettings?: SecuritySettingsResponse;
+    /**
+     * Storage config to deploy AzureStackHCI Cluster.
+     */
+    storage?: StorageResponse;
+}
+/**
+ * deploymentDataResponseProvideDefaults sets the appropriate defaults for DeploymentDataResponse
+ */
+export function deploymentDataResponseProvideDefaults(val: DeploymentDataResponse): DeploymentDataResponse {
+    return {
+        ...val,
+        hostNetwork: (val.hostNetwork ? hostNetworkResponseProvideDefaults(val.hostNetwork) : undefined),
+        observability: (val.observability ? observabilityResponseProvideDefaults(val.observability) : undefined),
+        securitySettings: (val.securitySettings ? securitySettingsResponseProvideDefaults(val.securitySettings) : undefined),
+        storage: (val.storage ? storageResponseProvideDefaults(val.storage) : undefined),
+    };
+}
+
+/**
+ * The DeploymentStatus of AzureStackHCI Cluster.
+ */
+export interface DeploymentStatusResponse {
+    /**
+     * Status of AzureStackHCI Cluster Deployment.
+     */
+    status: string;
+    /**
+     * List of steps of AzureStackHCI Cluster Deployment.
+     */
+    steps: StepResponse[];
+}
+
+/**
+ * The device Configuration of a device.
+ */
+export interface DeviceConfigurationResponse {
+    /**
+     * device metadata details.
+     */
+    deviceMetadata?: string;
+    /**
+     * NIC Details of device
+     */
+    nicDetails: NicDetailResponse[];
 }
 
 /**
@@ -407,6 +559,38 @@ export interface GuestCredentialResponse {
 }
 
 /**
+ * The HostNetwork of a cluster.
+ */
+export interface HostNetworkResponse {
+    /**
+     * Optional parameter required only for 3 Nodes Switchless deployments. This allows users to specify IPs and Mask for Storage NICs when Network ATC is not assigning the IPs for storage automatically.
+     */
+    enableStorageAutoIp?: boolean;
+    /**
+     * The network intents assigned to the network reference pattern used for the deployment. Each intent will define its own name, traffic type, adapter names, and overrides as recommended by your OEM.
+     */
+    intents?: IntentsResponse[];
+    /**
+     * Defines how the storage adapters between nodes are connected either switch or switch less..
+     */
+    storageConnectivitySwitchless?: boolean;
+    /**
+     * List of StorageNetworks config to deploy AzureStackHCI Cluster.
+     */
+    storageNetworks?: StorageNetworksResponse[];
+}
+/**
+ * hostNetworkResponseProvideDefaults sets the appropriate defaults for HostNetworkResponse
+ */
+export function hostNetworkResponseProvideDefaults(val: HostNetworkResponse): HostNetworkResponse {
+    return {
+        ...val,
+        enableStorageAutoIp: (val.enableStorageAutoIp) ?? false,
+        storageConnectivitySwitchless: (val.storageConnectivitySwitchless) ?? false,
+    };
+}
+
+/**
  * HTTP Proxy configuration for the VM.
  */
 export interface HttpProxyConfigurationResponse {
@@ -512,6 +696,32 @@ export interface IdentityResponse {
 }
 
 /**
+ * The InfrastructureNetwork of a AzureStackHCI Cluster.
+ */
+export interface InfrastructureNetworkResponse {
+    /**
+     * IPv4 address of the DNS servers in your environment.
+     */
+    dnsServers?: string[];
+    /**
+     * Default gateway that should be used for the provided IP address space.
+     */
+    gateway?: string;
+    /**
+     * Range of IP addresses from which addresses are allocated for nodes within a subnet.
+     */
+    ipPools?: IpPoolsResponse[];
+    /**
+     * Subnet mask that matches the provided IP address space.
+     */
+    subnetMask?: string;
+    /**
+     * Allows customers to use DHCP for Hosts and Cluster IPs. If not declared, the deployment will default to static IPs. When true, GW and DNS servers are not required
+     */
+    useDhcp?: boolean;
+}
+
+/**
  * Instance view status.
  */
 export interface InstanceViewStatusResponse {
@@ -537,11 +747,78 @@ export interface InstanceViewStatusResponse {
     time?: string;
 }
 
+/**
+ * The Intents of a cluster.
+ */
+export interface IntentsResponse {
+    /**
+     * Array of network interfaces used for the network intent.
+     */
+    adapter?: string[];
+    /**
+     * Set Adapter PropertyOverrides for cluster.
+     */
+    adapterPropertyOverrides?: AdapterPropertyOverridesResponse;
+    /**
+     * Name of the network intent you wish to create.
+     */
+    name?: string;
+    /**
+     * This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+     */
+    overrideAdapterProperty?: boolean;
+    /**
+     * This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+     */
+    overrideQosPolicy?: boolean;
+    /**
+     * This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+     */
+    overrideVirtualSwitchConfiguration?: boolean;
+    /**
+     * Set QoS PolicyOverrides for cluster.
+     */
+    qosPolicyOverrides?: QosPolicyOverridesResponse;
+    /**
+     * List of network traffic types. Only allowed values are 'Compute', 'Storage', 'Management'.
+     */
+    trafficType?: string[];
+    /**
+     * Set virtualSwitch ConfigurationOverrides for cluster.
+     */
+    virtualSwitchConfigurationOverrides?: VirtualSwitchConfigurationOverridesResponse;
+}
+/**
+ * intentsResponseProvideDefaults sets the appropriate defaults for IntentsResponse
+ */
+export function intentsResponseProvideDefaults(val: IntentsResponse): IntentsResponse {
+    return {
+        ...val,
+        overrideAdapterProperty: (val.overrideAdapterProperty) ?? false,
+        overrideQosPolicy: (val.overrideQosPolicy) ?? false,
+        overrideVirtualSwitchConfiguration: (val.overrideVirtualSwitchConfiguration) ?? false,
+    };
+}
+
 export interface InterfaceDNSSettingsResponse {
     /**
      * List of DNS server IP Addresses for the interface
      */
     dnsServers?: string[];
+}
+
+/**
+ * The dnsServers of a device.
+ */
+export interface IpPoolsResponse {
+    /**
+     * Ending IP address for the management network. A minimum of six free, contiguous IPv4 addresses (excluding your host IPs) are needed for infrastructure services such as clustering.
+     */
+    endingAddress?: string;
+    /**
+     * Starting IP address for the management network. A minimum of six free, contiguous IPv4 addresses (excluding your host IPs) are needed for infrastructure services such as clustering.
+     */
+    startingAddress?: string;
 }
 
 /**
@@ -699,6 +976,87 @@ export interface NetworkInterfaceStatusResponseProvisioningStatus {
 }
 
 /**
+ * The NIC Detail of a device.
+ */
+export interface NicDetailResponse {
+    /**
+     * Adapter Name of NIC
+     */
+    adapterName: string;
+    /**
+     * Component Id of NIC
+     */
+    componentId?: string;
+    /**
+     * Default Gateway of NIC
+     */
+    defaultGateway?: string;
+    /**
+     * Default Isolation of Management NIC
+     */
+    defaultIsolationId?: string;
+    /**
+     * DNS Servers for NIC
+     */
+    dnsServers?: string[];
+    /**
+     * Driver Version of NIC
+     */
+    driverVersion?: string;
+    /**
+     * Interface Description of NIC
+     */
+    interfaceDescription?: string;
+    /**
+     * Subnet Mask of NIC
+     */
+    ip4Address?: string;
+    /**
+     * Subnet Mask of NIC
+     */
+    subnetMask?: string;
+}
+
+/**
+ * The Observability of AzureStackHCI Cluster.
+ */
+export interface ObservabilityResponse {
+    /**
+     * When set to true, collects log data to facilitate quicker issue resolution.
+     */
+    episodicDataUpload?: boolean;
+    /**
+     * Location of your cluster. The log and diagnostic data is sent to the appropriate diagnostics servers depending upon where your cluster resides. Setting this to false results in all data sent to Microsoft to be stored outside of the EU.
+     */
+    euLocation?: boolean;
+    /**
+     * Enables telemetry data to be sent to Microsoft
+     */
+    streamingDataClient?: boolean;
+}
+/**
+ * observabilityResponseProvideDefaults sets the appropriate defaults for ObservabilityResponse
+ */
+export function observabilityResponseProvideDefaults(val: ObservabilityResponse): ObservabilityResponse {
+    return {
+        ...val,
+        episodicDataUpload: (val.episodicDataUpload) ?? true,
+        euLocation: (val.euLocation) ?? false,
+        streamingDataClient: (val.streamingDataClient) ?? true,
+    };
+}
+
+/**
+ * The OptionalServices of AzureStackHCI Cluster.
+ */
+export interface OptionalServicesResponse {
+    /**
+     * The name of custom location.
+     */
+    customLocation?: string;
+}
+
+/**
  * Status of Arc Extension for a particular node in HCI Cluster.
  */
 export interface PerNodeExtensionStateResponse {
@@ -743,6 +1101,52 @@ export interface PerNodeStateResponse {
 }
 
 /**
+ * The PhysicalNodes of a cluster.
+ */
+export interface PhysicalNodesResponse {
+    /**
+     * The IPv4 address assigned to each physical server on your Azure Stack HCI cluster.
+     */
+    ipv4Address?: string;
+    /**
+     * NETBIOS name of each physical server on your Azure Stack HCI cluster.
+     */
+    name?: string;
+}
+
+/**
+ * The QoSPolicyOverrides of a cluster.
+ */
+export interface QosPolicyOverridesResponse {
+    /**
+     * This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+     */
+    bandwidthPercentageSMB?: string;
+    /**
+     * This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+     */
+    priorityValue8021ActionCluster?: string;
+    /**
+     * This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+     */
+    priorityValue8021ActionSMB?: string;
+}
+
+/**
+ * The DeploymentStatus of AzureStackHCI Cluster.
+ */
+export interface ReportedPropertiesResponse {
+    /**
+     * Deployment status of AzureStackHCI Cluster Deployment.
+     */
+    deploymentStatus: DeploymentStatusResponse;
+    /**
+     * validation status of AzureStackHCI Cluster Deployment.
+     */
+    validationStatus: ValidationStatusResponse;
+}
+
+/**
  * Route - Route resource.
  */
 export interface RouteResponse {
@@ -780,6 +1184,89 @@ export interface RouteTableResponse {
      * Resource type.
      */
     type: string;
+}
+
+/**
+ * Scale units will contains list of deployment data
+ */
+export interface ScaleUnitsResponse {
+    /**
+     * Deployment Data to deploy AzureStackHCI Cluster.
+     */
+    deploymentData: DeploymentDataResponse;
+}
+/**
+ * scaleUnitsResponseProvideDefaults sets the appropriate defaults for ScaleUnitsResponse
+ */
+export function scaleUnitsResponseProvideDefaults(val: ScaleUnitsResponse): ScaleUnitsResponse {
+    return {
+        ...val,
+        deploymentData: deploymentDataResponseProvideDefaults(val.deploymentData),
+    };
+}
+
+/**
+ * The SecuritySettings of AzureStackHCI Cluster.
+ */
+export interface SecuritySettingsResponse {
+    /**
+     * When set to true, BitLocker XTS_AES 256-bit encryption is enabled for all data-at-rest on the OS volume of your Azure Stack HCI cluster. This setting is TPM-hardware dependent. 
+     */
+    bitlockerBootVolume?: boolean;
+    /**
+     * When set to true, BitLocker XTS-AES 256-bit encryption is enabled for all data-at-rest on your Azure Stack HCI cluster shared volumes.
+     */
+    bitlockerDataVolumes?: boolean;
+    /**
+     * When set to true, Credential Guard is enabled.
+     */
+    credentialGuardEnforced?: boolean;
+    /**
+     * When set to true, the security baseline is re-applied regularly.
+     */
+    driftControlEnforced?: boolean;
+    /**
+     * By default, Secure Boot is enabled on your Azure HCI cluster. This setting is hardware dependent.
+     */
+    drtmProtection?: boolean;
+    /**
+     * By default, Hypervisor-protected Code Integrity is enabled on your Azure HCI cluster.
+     */
+    hvciProtection?: boolean;
+    /**
+     * When set to true, all the side channel mitigations are enabled
+     */
+    sideChannelMitigationEnforced?: boolean;
+    /**
+     * When set to true, cluster east-west traffic is encrypted.
+     */
+    smbClusterEncryption?: boolean;
+    /**
+     * When set to true, the SMB default instance requires sign in for the client and server services.
+     */
+    smbSigningEnforced?: boolean;
+    /**
+     * WDAC is enabled by default and limits the applications and the code that you can run on your Azure Stack HCI cluster.
+     */
+    wdacEnforced?: boolean;
+}
+/**
+ * securitySettingsResponseProvideDefaults sets the appropriate defaults for SecuritySettingsResponse
+ */
+export function securitySettingsResponseProvideDefaults(val: SecuritySettingsResponse): SecuritySettingsResponse {
+    return {
+        ...val,
+        bitlockerBootVolume: (val.bitlockerBootVolume) ?? true,
+        bitlockerDataVolumes: (val.bitlockerDataVolumes) ?? true,
+        credentialGuardEnforced: (val.credentialGuardEnforced) ?? false,
+        driftControlEnforced: (val.driftControlEnforced) ?? true,
+        drtmProtection: (val.drtmProtection) ?? true,
+        hvciProtection: (val.hvciProtection) ?? true,
+        sideChannelMitigationEnforced: (val.sideChannelMitigationEnforced) ?? true,
+        smbClusterEncryption: (val.smbClusterEncryption) ?? false,
+        smbSigningEnforced: (val.smbSigningEnforced) ?? true,
+        wdacEnforced: (val.wdacEnforced) ?? true,
+    };
 }
 
 /**
@@ -841,6 +1328,14 @@ export interface StepResponse {
      */
     errorMessage?: string;
     /**
+     * List of exceptions in AzureStackHCI Cluster Deployment.
+     */
+    exception?: string[];
+    /**
+     * FullStepIndex of step.
+     */
+    fullStepIndex?: string;
+    /**
      * Completion time of this step or the last completed sub-step.
      */
     lastUpdatedTimeUtc?: string;
@@ -894,6 +1389,43 @@ export interface StorageContainerStatusResponseProvisioningStatus {
      * The status of the operation performed on the storage container [Succeeded, Failed, InProgress]
      */
     status?: string;
+}
+
+/**
+ * The StorageNetworks of a cluster.
+ */
+export interface StorageNetworksResponse {
+    /**
+     * Name of the storage network.
+     */
+    name?: string;
+    /**
+     * Name of the storage network adapter.
+     */
+    networkAdapterName?: string;
+    /**
+     * ID specified for the VLAN storage network. This setting is applied to the network interfaces that route the storage and VM migration traffic. 
+     */
+    vlanId?: string;
+}
+
+/**
+ * The Storage config of AzureStackHCI Cluster.
+ */
+export interface StorageResponse {
+    /**
+     * By default, this mode is set to Express and your storage is configured as per best practices based on the number of nodes in the cluster. Allowed values are 'Express','InfraOnly', 'KeepStorage'
+     */
+    configurationMode?: string;
+}
+/**
+ * storageResponseProvideDefaults sets the appropriate defaults for StorageResponse
+ */
+export function storageResponseProvideDefaults(val: StorageResponse): StorageResponse {
+    return {
+        ...val,
+        configurationMode: (val.configurationMode) ?? "Express",
+    };
 }
 
 /**
@@ -1001,6 +1533,20 @@ export interface UserAssignedIdentityResponse {
      * The principal ID of the assigned identity.
      */
     principalId: string;
+}
+
+/**
+ * The ValidationStatus of AzureStackHCI Cluster.
+ */
+export interface ValidationStatusResponse {
+    /**
+     * Status of AzureStackHCI Cluster Deployment.
+     */
+    status: string;
+    /**
+     * List of steps of AzureStackHCI Cluster Deployment.
+     */
+    steps: StepResponse[];
 }
 
 /**
@@ -1720,6 +2266,21 @@ export interface VirtualNetworkStatusResponseProvisioningStatus {
      */
     status?: string;
 }
+
+/**
+ * The VirtualSwitchConfigurationOverrides of a cluster.
+ */
+export interface VirtualSwitchConfigurationOverridesResponse {
+    /**
+     * Enable IoV for Virtual Switch
+     */
+    enableIov?: string;
+    /**
+     * Load Balancing Algorithm for Virtual Switch
+     */
+    loadBalancingAlgorithm?: string;
+}
+
 
 
 

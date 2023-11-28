@@ -136,6 +136,53 @@ import * as pulumi from "@pulumi/pulumi";
     }
 
     /**
+     * Gets or sets the DB2 provider properties.
+     */
+    export interface DB2ProviderInstancePropertiesResponse {
+        /**
+         * Gets or sets the db2 database name.
+         */
+        dbName?: string;
+        /**
+         * Gets or sets the db2 database password.
+         */
+        dbPassword?: string;
+        /**
+         * Gets or sets the key vault URI to secret with the database password.
+         */
+        dbPasswordUri?: string;
+        /**
+         * Gets or sets the db2 database sql port.
+         */
+        dbPort?: string;
+        /**
+         * Gets or sets the db2 database user name.
+         */
+        dbUsername?: string;
+        /**
+         * Gets or sets the target virtual machine name.
+         */
+        hostname?: string;
+        /**
+         * The provider type. For example, the value can be SapHana.
+         * Expected value is 'Db2'.
+         */
+        providerType: "Db2";
+        /**
+         * Gets or sets the SAP System Identifier
+         */
+        sapSid?: string;
+        /**
+         * Gets or sets the blob URI to SSL certificate for the DB2 Database.
+         */
+        sslCertificateUri?: string;
+        /**
+         * Gets or sets certificate preference if secure communication is enabled.
+         */
+        sslPreference?: string;
+    }
+
+    /**
      * Defines the policy properties for database backup.
      */
     export interface DBBackupPolicyPropertiesResponse {
@@ -529,6 +576,42 @@ import * as pulumi from "@pulumi/pulumi";
     }
 
     /**
+     * Standard error object.
+     */
+    export interface ErrorResponse {
+        /**
+         * Server-defined set of error codes.
+         */
+        code: string;
+        /**
+         * Array of details about specific errors that led to this reported error.
+         */
+        details: ErrorResponse[];
+        /**
+         * Object containing more specific information than  the current object about the error.
+         */
+        innerError: ErrorResponseInnerError;
+        /**
+         * Human-readable representation of the error.
+         */
+        message: string;
+        /**
+         * Target of the error.
+         */
+        target: string;
+    }
+
+    /**
+     * Object containing more specific information than  the current object about the error.
+     */
+    export interface ErrorResponseInnerError {
+        /**
+         * Standard error object.
+         */
+        innerError?: ErrorResponse;
+    }
+
+    /**
      * Existing recovery services vault.
      */
     export interface ExistingRecoveryServicesVaultResponse {
@@ -605,6 +688,75 @@ import * as pulumi from "@pulumi/pulumi";
          * Path of the SSL key store.
          */
         sslConfiguration?: SSLConfigurationResponse;
+    }
+
+    /**
+     * Gets or sets the provider properties.
+     */
+    export interface HanaDbProviderInstancePropertiesResponse {
+        /**
+         * Gets or sets the hana database name.
+         */
+        dbName?: string;
+        /**
+         * Gets or sets the database password.
+         */
+        dbPassword?: string;
+        /**
+         * Gets or sets the key vault URI to secret with the database password.
+         */
+        dbPasswordUri?: string;
+        /**
+         * Gets or sets the database user name.
+         */
+        dbUsername?: string;
+        /**
+         * Gets or sets the target virtual machine size.
+         */
+        hostname?: string;
+        /**
+         * Gets or sets the database instance number.
+         */
+        instanceNumber?: string;
+        /**
+         * The provider type. For example, the value can be SapHana.
+         * Expected value is 'SapHana'.
+         */
+        providerType: "SapHana";
+        /**
+         * Gets or sets the SAP System Identifier.
+         */
+        sapSid?: string;
+        /**
+         * Gets or sets the database sql port.
+         */
+        sqlPort?: string;
+        /**
+         * Gets or sets the blob URI to SSL certificate for the DB.
+         */
+        sslCertificateUri?: string;
+        /**
+         * Gets or sets the hostname(s) in the SSL certificate.
+         */
+        sslHostNameInCertificate?: string;
+        /**
+         * Gets or sets certificate preference if secure communication is enabled.
+         */
+        sslPreference?: string;
+    }
+
+    /**
+     * Resource health details
+     */
+    export interface HealthResponse {
+        /**
+         * State of health of the provider instance
+         */
+        healthState: string;
+        /**
+         * Reasons impacting health state
+         */
+        impactingReasons: string;
     }
 
     /**
@@ -806,6 +958,28 @@ import * as pulumi from "@pulumi/pulumi";
     }
 
     /**
+     * The Managed service identity.
+     */
+    export interface ManagedServiceIdentityResponse {
+        /**
+         * The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+         */
+        principalId: string;
+        /**
+         * The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+         */
+        tenantId: string;
+        /**
+         * The managed service identity for all identities.
+         */
+        type: string;
+        /**
+         * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+         */
+        userAssignedIdentities?: {[key: string]: UserAssignedIdentityResponse};
+    }
+
+    /**
      * Defines the SAP message server properties.
      */
     export interface MessageServerPropertiesResponse {
@@ -837,6 +1011,32 @@ import * as pulumi from "@pulumi/pulumi";
          * message server port.
          */
         msPort: number;
+    }
+
+    /**
+     * Defines the SAP monitor errors.
+     */
+    export interface MonitorPropertiesResponseErrors {
+        /**
+         * Server-defined set of error codes.
+         */
+        code: string;
+        /**
+         * Array of details about specific errors that led to this reported error.
+         */
+        details: ErrorResponse[];
+        /**
+         * Object containing more specific information than  the current object about the error.
+         */
+        innerError: ErrorResponseInnerError;
+        /**
+         * Human-readable representation of the error.
+         */
+        message: string;
+        /**
+         * Target of the error.
+         */
+        target: string;
     }
 
     /**
@@ -882,6 +1082,49 @@ import * as pulumi from "@pulumi/pulumi";
          * The private endpoint resource ID
          */
         privateEndpointId: string;
+    }
+
+    /**
+     * Gets or sets the SQL server provider properties.
+     */
+    export interface MsSqlServerProviderInstancePropertiesResponse {
+        /**
+         * Gets or sets the database password.
+         */
+        dbPassword?: string;
+        /**
+         * Gets or sets the key vault URI to secret with the database password.
+         */
+        dbPasswordUri?: string;
+        /**
+         * Gets or sets the database sql port.
+         */
+        dbPort?: string;
+        /**
+         * Gets or sets the database user name.
+         */
+        dbUsername?: string;
+        /**
+         * Gets or sets the SQL server host name.
+         */
+        hostname?: string;
+        /**
+         * The provider type. For example, the value can be SapHana.
+         * Expected value is 'MsSqlServer'.
+         */
+        providerType: "MsSqlServer";
+        /**
+         * Gets or sets the SAP System Identifier
+         */
+        sapSid?: string;
+        /**
+         * Gets or sets the blob URI to SSL certificate for the SQL Database.
+         */
+        sslCertificateUri?: string;
+        /**
+         * Gets or sets certificate preference if secure communication is enabled.
+         */
+        sslPreference?: string;
     }
 
     /**
@@ -962,6 +1205,94 @@ import * as pulumi from "@pulumi/pulumi";
          * The FQDN to set for the SAP system
          */
         sapFqdn?: string;
+    }
+
+    /**
+     * Gets or sets the PrometheusHaCluster provider properties.
+     */
+    export interface PrometheusHaClusterProviderInstancePropertiesResponse {
+        /**
+         * Gets or sets the clusterName.
+         */
+        clusterName?: string;
+        /**
+         * Gets or sets the target machine name.
+         */
+        hostname?: string;
+        /**
+         * URL of the Node Exporter endpoint.
+         */
+        prometheusUrl?: string;
+        /**
+         * The provider type. For example, the value can be SapHana.
+         * Expected value is 'PrometheusHaCluster'.
+         */
+        providerType: "PrometheusHaCluster";
+        /**
+         * Gets or sets the cluster sid.
+         */
+        sid?: string;
+        /**
+         * Gets or sets the blob URI to SSL certificate for the HA cluster exporter.
+         */
+        sslCertificateUri?: string;
+        /**
+         * Gets or sets certificate preference if secure communication is enabled.
+         */
+        sslPreference?: string;
+    }
+
+    /**
+     * Gets or sets the PrometheusOS provider properties.
+     */
+    export interface PrometheusOSProviderInstancePropertiesResponse {
+        /**
+         * URL of the Node Exporter endpoint
+         */
+        prometheusUrl?: string;
+        /**
+         * The provider type. For example, the value can be SapHana.
+         * Expected value is 'PrometheusOS'.
+         */
+        providerType: "PrometheusOS";
+        /**
+         * Gets or sets the SAP System Identifier
+         */
+        sapSid?: string;
+        /**
+         * Gets or sets the blob URI to SSL certificate for the prometheus node exporter.
+         */
+        sslCertificateUri?: string;
+        /**
+         * Gets or sets certificate preference if secure communication is enabled.
+         */
+        sslPreference?: string;
+    }
+
+    /**
+     * Defines the provider instance errors.
+     */
+    export interface ProviderInstancePropertiesResponseErrors {
+        /**
+         * Server-defined set of error codes.
+         */
+        code: string;
+        /**
+         * Array of details about specific errors that led to this reported error.
+         */
+        details: ErrorResponse[];
+        /**
+         * Object containing more specific information than  the current object about the error.
+         */
+        innerError: ErrorResponseInnerError;
+        /**
+         * Human-readable representation of the error.
+         */
+        message: string;
+        /**
+         * Target of the error.
+         */
+        target: string;
     }
 
     /**
@@ -1082,6 +1413,111 @@ import * as pulumi from "@pulumi/pulumi";
          * Specify the name of the trust store file that contains the server’s public certificates (eg. sapsrv.pse). The script will search for the file in the appropriate directory depending on the crypto provider mentioned. If this argument is not provided, it is automatically determined by searching in the configuration files.
          */
         sslTrustStore?: string;
+    }
+
+    /**
+     * Gets or sets the Threshold Values for Top Metrics Health.
+     */
+    export interface SapLandscapeMonitorMetricThresholdsResponse {
+        /**
+         * Gets or sets the threshold value for Green.
+         */
+        green?: number;
+        /**
+         * Gets or sets the name of the threshold.
+         */
+        name?: string;
+        /**
+         * Gets or sets the threshold value for Red.
+         */
+        red?: number;
+        /**
+         * Gets or sets the threshold value for Yellow.
+         */
+        yellow?: number;
+    }
+
+    /**
+     * Gets or sets the SID groupings by landscape and Environment.
+     */
+    export interface SapLandscapeMonitorPropertiesResponseGrouping {
+        /**
+         * Gets or sets the list of landscape to SID mappings.
+         */
+        landscape?: SapLandscapeMonitorSidMappingResponse[];
+        /**
+         * Gets or sets the list of Sap Applications to SID mappings.
+         */
+        sapApplication?: SapLandscapeMonitorSidMappingResponse[];
+    }
+
+    /**
+     * Gets or sets the mapping for SID to Environment/Applications.
+     */
+    export interface SapLandscapeMonitorSidMappingResponse {
+        /**
+         * Gets or sets the name of the grouping.
+         */
+        name?: string;
+        /**
+         * Gets or sets the list of SID's.
+         */
+        topSid?: string[];
+    }
+
+    /**
+     * Gets or sets the provider properties.
+     */
+    export interface SapNetWeaverProviderInstancePropertiesResponse {
+        /**
+         * The provider type. For example, the value can be SapHana.
+         * Expected value is 'SapNetWeaver'.
+         */
+        providerType: "SapNetWeaver";
+        /**
+         * Gets or sets the SAP Client ID.
+         */
+        sapClientId?: string;
+        /**
+         * Gets or sets the list of HostFile Entries
+         */
+        sapHostFileEntries?: string[];
+        /**
+         * Gets or sets the target virtual machine IP Address/FQDN.
+         */
+        sapHostname?: string;
+        /**
+         * Gets or sets the instance number of SAP NetWeaver.
+         */
+        sapInstanceNr?: string;
+        /**
+         * Sets the SAP password.
+         */
+        sapPassword?: string;
+        /**
+         * Gets or sets the key vault URI to secret with the SAP password.
+         */
+        sapPasswordUri?: string;
+        /**
+         * Gets or sets the SAP HTTP port number.
+         */
+        sapPortNumber?: string;
+        /**
+         * Gets or sets the SAP System Identifier
+         */
+        sapSid?: string;
+        /**
+         * Gets or sets the SAP user name.
+         */
+        sapUsername?: string;
+        /**
+         * Gets or sets the blob URI to SSL certificate for the SAP system.
+         */
+        sslCertificateUri?: string;
+        /**
+         * Gets or sets certificate preference if secure communication is enabled.
+         */
+        sslPreference?: string;
     }
 
     /**

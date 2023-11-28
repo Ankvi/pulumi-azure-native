@@ -1127,7 +1127,7 @@ export interface AvroDatasetResponse {
     /**
      * The location of the avro storage.
      */
-    location: AmazonS3CompatibleLocationResponse | AmazonS3LocationResponse | AzureBlobFSLocationResponse | AzureBlobStorageLocationResponse | AzureDataLakeStoreLocationResponse | AzureFileStorageLocationResponse | FileServerLocationResponse | FtpServerLocationResponse | GoogleCloudStorageLocationResponse | HdfsLocationResponse | HttpServerLocationResponse | OracleCloudStorageLocationResponse | SftpLocationResponse;
+    location: AmazonS3CompatibleLocationResponse | AmazonS3LocationResponse | AzureBlobFSLocationResponse | AzureBlobStorageLocationResponse | AzureDataLakeStoreLocationResponse | AzureFileStorageLocationResponse | FileServerLocationResponse | FtpServerLocationResponse | GoogleCloudStorageLocationResponse | HdfsLocationResponse | HttpServerLocationResponse | LakeHouseLocationResponse | OracleCloudStorageLocationResponse | SftpLocationResponse;
     /**
      * Parameters for dataset.
      */
@@ -1193,7 +1193,7 @@ export interface AvroSinkResponse {
     /**
      * Avro store settings.
      */
-    storeSettings?: AzureBlobFSWriteSettingsResponse | AzureBlobStorageWriteSettingsResponse | AzureDataLakeStoreWriteSettingsResponse | AzureFileStorageWriteSettingsResponse | FileServerWriteSettingsResponse | SftpWriteSettingsResponse;
+    storeSettings?: AzureBlobFSWriteSettingsResponse | AzureBlobStorageWriteSettingsResponse | AzureDataLakeStoreWriteSettingsResponse | AzureFileStorageWriteSettingsResponse | FileServerWriteSettingsResponse | LakeHouseWriteSettingsResponse | SftpWriteSettingsResponse;
     /**
      * Copy sink type.
      * Expected value is 'AvroSink'.
@@ -1236,7 +1236,7 @@ export interface AvroSourceResponse {
     /**
      * Avro store settings.
      */
-    storeSettings?: AmazonS3CompatibleReadSettingsResponse | AmazonS3ReadSettingsResponse | AzureBlobFSReadSettingsResponse | AzureBlobStorageReadSettingsResponse | AzureDataLakeStoreReadSettingsResponse | AzureFileStorageReadSettingsResponse | FileServerReadSettingsResponse | FtpReadSettingsResponse | GoogleCloudStorageReadSettingsResponse | HdfsReadSettingsResponse | HttpReadSettingsResponse | OracleCloudStorageReadSettingsResponse | SftpReadSettingsResponse;
+    storeSettings?: AmazonS3CompatibleReadSettingsResponse | AmazonS3ReadSettingsResponse | AzureBlobFSReadSettingsResponse | AzureBlobStorageReadSettingsResponse | AzureDataLakeStoreReadSettingsResponse | AzureFileStorageReadSettingsResponse | FileServerReadSettingsResponse | FtpReadSettingsResponse | GoogleCloudStorageReadSettingsResponse | HdfsReadSettingsResponse | HttpReadSettingsResponse | LakeHouseReadSettingsResponse | OracleCloudStorageReadSettingsResponse | SftpReadSettingsResponse;
     /**
      * Copy source type.
      * Expected value is 'AvroSource'.
@@ -4862,7 +4862,7 @@ export interface BinaryDatasetResponse {
     /**
      * The location of the Binary storage.
      */
-    location: AmazonS3CompatibleLocationResponse | AmazonS3LocationResponse | AzureBlobFSLocationResponse | AzureBlobStorageLocationResponse | AzureDataLakeStoreLocationResponse | AzureFileStorageLocationResponse | FileServerLocationResponse | FtpServerLocationResponse | GoogleCloudStorageLocationResponse | HdfsLocationResponse | HttpServerLocationResponse | OracleCloudStorageLocationResponse | SftpLocationResponse;
+    location: AmazonS3CompatibleLocationResponse | AmazonS3LocationResponse | AzureBlobFSLocationResponse | AzureBlobStorageLocationResponse | AzureDataLakeStoreLocationResponse | AzureFileStorageLocationResponse | FileServerLocationResponse | FtpServerLocationResponse | GoogleCloudStorageLocationResponse | HdfsLocationResponse | HttpServerLocationResponse | LakeHouseLocationResponse | OracleCloudStorageLocationResponse | SftpLocationResponse;
     /**
      * Parameters for dataset.
      */
@@ -4920,7 +4920,7 @@ export interface BinarySinkResponse {
     /**
      * Binary store settings.
      */
-    storeSettings?: AzureBlobFSWriteSettingsResponse | AzureBlobStorageWriteSettingsResponse | AzureDataLakeStoreWriteSettingsResponse | AzureFileStorageWriteSettingsResponse | FileServerWriteSettingsResponse | SftpWriteSettingsResponse;
+    storeSettings?: AzureBlobFSWriteSettingsResponse | AzureBlobStorageWriteSettingsResponse | AzureDataLakeStoreWriteSettingsResponse | AzureFileStorageWriteSettingsResponse | FileServerWriteSettingsResponse | LakeHouseWriteSettingsResponse | SftpWriteSettingsResponse;
     /**
      * Copy sink type.
      * Expected value is 'BinarySink'.
@@ -4963,7 +4963,7 @@ export interface BinarySourceResponse {
     /**
      * Binary store settings.
      */
-    storeSettings?: AmazonS3CompatibleReadSettingsResponse | AmazonS3ReadSettingsResponse | AzureBlobFSReadSettingsResponse | AzureBlobStorageReadSettingsResponse | AzureDataLakeStoreReadSettingsResponse | AzureFileStorageReadSettingsResponse | FileServerReadSettingsResponse | FtpReadSettingsResponse | GoogleCloudStorageReadSettingsResponse | HdfsReadSettingsResponse | HttpReadSettingsResponse | OracleCloudStorageReadSettingsResponse | SftpReadSettingsResponse;
+    storeSettings?: AmazonS3CompatibleReadSettingsResponse | AmazonS3ReadSettingsResponse | AzureBlobFSReadSettingsResponse | AzureBlobStorageReadSettingsResponse | AzureDataLakeStoreReadSettingsResponse | AzureFileStorageReadSettingsResponse | FileServerReadSettingsResponse | FtpReadSettingsResponse | GoogleCloudStorageReadSettingsResponse | HdfsReadSettingsResponse | HttpReadSettingsResponse | LakeHouseReadSettingsResponse | OracleCloudStorageReadSettingsResponse | SftpReadSettingsResponse;
     /**
      * Copy source type.
      * Expected value is 'BinarySource'.
@@ -5872,7 +5872,7 @@ export interface CopyActivityResponse {
     /**
      * Copy activity sink.
      */
-    sink: AvroSinkResponse | AzureBlobFSSinkResponse | AzureDataExplorerSinkResponse | AzureDataLakeStoreSinkResponse | AzureDatabricksDeltaLakeSinkResponse | AzureMySqlSinkResponse | AzurePostgreSqlSinkResponse | AzureQueueSinkResponse | AzureSearchIndexSinkResponse | AzureSqlSinkResponse | AzureTableSinkResponse | BinarySinkResponse | BlobSinkResponse | CommonDataServiceForAppsSinkResponse | CosmosDbMongoDbApiSinkResponse | CosmosDbSqlApiSinkResponse | DelimitedTextSinkResponse | DocumentDbCollectionSinkResponse | DynamicsCrmSinkResponse | DynamicsSinkResponse | FileSystemSinkResponse | InformixSinkResponse | JsonSinkResponse | MicrosoftAccessSinkResponse | MongoDbAtlasSinkResponse | MongoDbV2SinkResponse | OdbcSinkResponse | OracleSinkResponse | OrcSinkResponse | ParquetSinkResponse | RestSinkResponse | SalesforceServiceCloudSinkResponse | SalesforceSinkResponse | SapCloudForCustomerSinkResponse | SnowflakeSinkResponse | SqlDWSinkResponse | SqlMISinkResponse | SqlServerSinkResponse | SqlSinkResponse;
+    sink: AvroSinkResponse | AzureBlobFSSinkResponse | AzureDataExplorerSinkResponse | AzureDataLakeStoreSinkResponse | AzureDatabricksDeltaLakeSinkResponse | AzureMySqlSinkResponse | AzurePostgreSqlSinkResponse | AzureQueueSinkResponse | AzureSearchIndexSinkResponse | AzureSqlSinkResponse | AzureTableSinkResponse | BinarySinkResponse | BlobSinkResponse | CommonDataServiceForAppsSinkResponse | CosmosDbMongoDbApiSinkResponse | CosmosDbSqlApiSinkResponse | DelimitedTextSinkResponse | DocumentDbCollectionSinkResponse | DynamicsCrmSinkResponse | DynamicsSinkResponse | FileSystemSinkResponse | InformixSinkResponse | JsonSinkResponse | LakeHouseTableSinkResponse | MicrosoftAccessSinkResponse | MongoDbAtlasSinkResponse | MongoDbV2SinkResponse | OdbcSinkResponse | OracleSinkResponse | OrcSinkResponse | ParquetSinkResponse | RestSinkResponse | SalesforceServiceCloudSinkResponse | SalesforceSinkResponse | SapCloudForCustomerSinkResponse | SnowflakeSinkResponse | SqlDWSinkResponse | SqlMISinkResponse | SqlServerSinkResponse | SqlSinkResponse;
     /**
      * Specify the fault tolerance for data consistency.
      */
@@ -5880,7 +5880,7 @@ export interface CopyActivityResponse {
     /**
      * Copy activity source.
      */
-    source: AmazonMWSSourceResponse | AmazonRdsForOracleSourceResponse | AmazonRdsForSqlServerSourceResponse | AmazonRedshiftSourceResponse | AvroSourceResponse | AzureBlobFSSourceResponse | AzureDataExplorerSourceResponse | AzureDataLakeStoreSourceResponse | AzureDatabricksDeltaLakeSourceResponse | AzureMariaDBSourceResponse | AzureMySqlSourceResponse | AzurePostgreSqlSourceResponse | AzureSqlSourceResponse | AzureTableSourceResponse | BinarySourceResponse | BlobSourceResponse | CassandraSourceResponse | CommonDataServiceForAppsSourceResponse | ConcurSourceResponse | CosmosDbMongoDbApiSourceResponse | CosmosDbSqlApiSourceResponse | CouchbaseSourceResponse | Db2SourceResponse | DelimitedTextSourceResponse | DocumentDbCollectionSourceResponse | DrillSourceResponse | DynamicsAXSourceResponse | DynamicsCrmSourceResponse | DynamicsSourceResponse | EloquaSourceResponse | ExcelSourceResponse | FileSystemSourceResponse | GoogleAdWordsSourceResponse | GoogleBigQuerySourceResponse | GreenplumSourceResponse | HBaseSourceResponse | HdfsSourceResponse | HiveSourceResponse | HttpSourceResponse | HubspotSourceResponse | ImpalaSourceResponse | InformixSourceResponse | JiraSourceResponse | JsonSourceResponse | MagentoSourceResponse | MariaDBSourceResponse | MarketoSourceResponse | MicrosoftAccessSourceResponse | MongoDbAtlasSourceResponse | MongoDbSourceResponse | MongoDbV2SourceResponse | MySqlSourceResponse | NetezzaSourceResponse | ODataSourceResponse | OdbcSourceResponse | Office365SourceResponse | OracleServiceCloudSourceResponse | OracleSourceResponse | OrcSourceResponse | ParquetSourceResponse | PaypalSourceResponse | PhoenixSourceResponse | PostgreSqlSourceResponse | PrestoSourceResponse | QuickBooksSourceResponse | RelationalSourceResponse | ResponsysSourceResponse | RestSourceResponse | SalesforceMarketingCloudSourceResponse | SalesforceServiceCloudSourceResponse | SalesforceSourceResponse | SapBwSourceResponse | SapCloudForCustomerSourceResponse | SapEccSourceResponse | SapHanaSourceResponse | SapOdpSourceResponse | SapOpenHubSourceResponse | SapTableSourceResponse | ServiceNowSourceResponse | SharePointOnlineListSourceResponse | ShopifySourceResponse | SnowflakeSourceResponse | SparkSourceResponse | SqlDWSourceResponse | SqlMISourceResponse | SqlServerSourceResponse | SqlSourceResponse | SquareSourceResponse | SybaseSourceResponse | TabularSourceResponse | TeradataSourceResponse | VerticaSourceResponse | WebSourceResponse | XeroSourceResponse | XmlSourceResponse | ZohoSourceResponse;
+    source: AmazonMWSSourceResponse | AmazonRdsForOracleSourceResponse | AmazonRdsForSqlServerSourceResponse | AmazonRedshiftSourceResponse | AvroSourceResponse | AzureBlobFSSourceResponse | AzureDataExplorerSourceResponse | AzureDataLakeStoreSourceResponse | AzureDatabricksDeltaLakeSourceResponse | AzureMariaDBSourceResponse | AzureMySqlSourceResponse | AzurePostgreSqlSourceResponse | AzureSqlSourceResponse | AzureTableSourceResponse | BinarySourceResponse | BlobSourceResponse | CassandraSourceResponse | CommonDataServiceForAppsSourceResponse | ConcurSourceResponse | CosmosDbMongoDbApiSourceResponse | CosmosDbSqlApiSourceResponse | CouchbaseSourceResponse | Db2SourceResponse | DelimitedTextSourceResponse | DocumentDbCollectionSourceResponse | DrillSourceResponse | DynamicsAXSourceResponse | DynamicsCrmSourceResponse | DynamicsSourceResponse | EloquaSourceResponse | ExcelSourceResponse | FileSystemSourceResponse | GoogleAdWordsSourceResponse | GoogleBigQuerySourceResponse | GreenplumSourceResponse | HBaseSourceResponse | HdfsSourceResponse | HiveSourceResponse | HttpSourceResponse | HubspotSourceResponse | ImpalaSourceResponse | InformixSourceResponse | JiraSourceResponse | JsonSourceResponse | LakeHouseTableSourceResponse | MagentoSourceResponse | MariaDBSourceResponse | MarketoSourceResponse | MicrosoftAccessSourceResponse | MongoDbAtlasSourceResponse | MongoDbSourceResponse | MongoDbV2SourceResponse | MySqlSourceResponse | NetezzaSourceResponse | ODataSourceResponse | OdbcSourceResponse | Office365SourceResponse | OracleServiceCloudSourceResponse | OracleSourceResponse | OrcSourceResponse | ParquetSourceResponse | PaypalSourceResponse | PhoenixSourceResponse | PostgreSqlSourceResponse | PrestoSourceResponse | QuickBooksSourceResponse | RelationalSourceResponse | ResponsysSourceResponse | RestSourceResponse | SalesforceMarketingCloudSourceResponse | SalesforceServiceCloudSourceResponse | SalesforceSourceResponse | SapBwSourceResponse | SapCloudForCustomerSourceResponse | SapEccSourceResponse | SapHanaSourceResponse | SapOdpSourceResponse | SapOpenHubSourceResponse | SapTableSourceResponse | ServiceNowSourceResponse | SharePointOnlineListSourceResponse | ShopifySourceResponse | SnowflakeSourceResponse | SparkSourceResponse | SqlDWSourceResponse | SqlMISourceResponse | SqlServerSourceResponse | SqlSourceResponse | SquareSourceResponse | SybaseSourceResponse | TabularSourceResponse | TeradataSourceResponse | VerticaSourceResponse | WebSourceResponse | XeroSourceResponse | XmlSourceResponse | ZohoSourceResponse;
     /**
      * Specifies interim staging settings when EnableStaging is true.
      */
@@ -7304,7 +7304,7 @@ export interface DeleteActivityResponse {
     /**
      * Delete activity store settings.
      */
-    storeSettings?: AmazonS3CompatibleReadSettingsResponse | AmazonS3ReadSettingsResponse | AzureBlobFSReadSettingsResponse | AzureBlobStorageReadSettingsResponse | AzureDataLakeStoreReadSettingsResponse | AzureFileStorageReadSettingsResponse | FileServerReadSettingsResponse | FtpReadSettingsResponse | GoogleCloudStorageReadSettingsResponse | HdfsReadSettingsResponse | HttpReadSettingsResponse | OracleCloudStorageReadSettingsResponse | SftpReadSettingsResponse;
+    storeSettings?: AmazonS3CompatibleReadSettingsResponse | AmazonS3ReadSettingsResponse | AzureBlobFSReadSettingsResponse | AzureBlobStorageReadSettingsResponse | AzureDataLakeStoreReadSettingsResponse | AzureFileStorageReadSettingsResponse | FileServerReadSettingsResponse | FtpReadSettingsResponse | GoogleCloudStorageReadSettingsResponse | HdfsReadSettingsResponse | HttpReadSettingsResponse | LakeHouseReadSettingsResponse | OracleCloudStorageReadSettingsResponse | SftpReadSettingsResponse;
     /**
      * Type of activity.
      * Expected value is 'Delete'.
@@ -7363,7 +7363,7 @@ export interface DelimitedTextDatasetResponse {
     /**
      * The location of the delimited text storage.
      */
-    location: AmazonS3CompatibleLocationResponse | AmazonS3LocationResponse | AzureBlobFSLocationResponse | AzureBlobStorageLocationResponse | AzureDataLakeStoreLocationResponse | AzureFileStorageLocationResponse | FileServerLocationResponse | FtpServerLocationResponse | GoogleCloudStorageLocationResponse | HdfsLocationResponse | HttpServerLocationResponse | OracleCloudStorageLocationResponse | SftpLocationResponse;
+    location: AmazonS3CompatibleLocationResponse | AmazonS3LocationResponse | AzureBlobFSLocationResponse | AzureBlobStorageLocationResponse | AzureDataLakeStoreLocationResponse | AzureFileStorageLocationResponse | FileServerLocationResponse | FtpServerLocationResponse | GoogleCloudStorageLocationResponse | HdfsLocationResponse | HttpServerLocationResponse | LakeHouseLocationResponse | OracleCloudStorageLocationResponse | SftpLocationResponse;
     /**
      * The null value string. Type: string (or Expression with resultType string).
      */
@@ -7441,7 +7441,7 @@ export interface DelimitedTextSinkResponse {
     /**
      * DelimitedText store settings.
      */
-    storeSettings?: AzureBlobFSWriteSettingsResponse | AzureBlobStorageWriteSettingsResponse | AzureDataLakeStoreWriteSettingsResponse | AzureFileStorageWriteSettingsResponse | FileServerWriteSettingsResponse | SftpWriteSettingsResponse;
+    storeSettings?: AzureBlobFSWriteSettingsResponse | AzureBlobStorageWriteSettingsResponse | AzureDataLakeStoreWriteSettingsResponse | AzureFileStorageWriteSettingsResponse | FileServerWriteSettingsResponse | LakeHouseWriteSettingsResponse | SftpWriteSettingsResponse;
     /**
      * Copy sink type.
      * Expected value is 'DelimitedTextSink'.
@@ -7488,7 +7488,7 @@ export interface DelimitedTextSourceResponse {
     /**
      * DelimitedText store settings.
      */
-    storeSettings?: AmazonS3CompatibleReadSettingsResponse | AmazonS3ReadSettingsResponse | AzureBlobFSReadSettingsResponse | AzureBlobStorageReadSettingsResponse | AzureDataLakeStoreReadSettingsResponse | AzureFileStorageReadSettingsResponse | FileServerReadSettingsResponse | FtpReadSettingsResponse | GoogleCloudStorageReadSettingsResponse | HdfsReadSettingsResponse | HttpReadSettingsResponse | OracleCloudStorageReadSettingsResponse | SftpReadSettingsResponse;
+    storeSettings?: AmazonS3CompatibleReadSettingsResponse | AmazonS3ReadSettingsResponse | AzureBlobFSReadSettingsResponse | AzureBlobStorageReadSettingsResponse | AzureDataLakeStoreReadSettingsResponse | AzureFileStorageReadSettingsResponse | FileServerReadSettingsResponse | FtpReadSettingsResponse | GoogleCloudStorageReadSettingsResponse | HdfsReadSettingsResponse | HttpReadSettingsResponse | LakeHouseReadSettingsResponse | OracleCloudStorageReadSettingsResponse | SftpReadSettingsResponse;
     /**
      * Copy source type.
      * Expected value is 'DelimitedTextSource'.
@@ -8559,7 +8559,7 @@ export interface ExcelDatasetResponse {
     /**
      * The location of the excel storage.
      */
-    location: AmazonS3CompatibleLocationResponse | AmazonS3LocationResponse | AzureBlobFSLocationResponse | AzureBlobStorageLocationResponse | AzureDataLakeStoreLocationResponse | AzureFileStorageLocationResponse | FileServerLocationResponse | FtpServerLocationResponse | GoogleCloudStorageLocationResponse | HdfsLocationResponse | HttpServerLocationResponse | OracleCloudStorageLocationResponse | SftpLocationResponse;
+    location: AmazonS3CompatibleLocationResponse | AmazonS3LocationResponse | AzureBlobFSLocationResponse | AzureBlobStorageLocationResponse | AzureDataLakeStoreLocationResponse | AzureFileStorageLocationResponse | FileServerLocationResponse | FtpServerLocationResponse | GoogleCloudStorageLocationResponse | HdfsLocationResponse | HttpServerLocationResponse | LakeHouseLocationResponse | OracleCloudStorageLocationResponse | SftpLocationResponse;
     /**
      * The null value string. Type: string (or Expression with resultType string).
      */
@@ -8622,7 +8622,7 @@ export interface ExcelSourceResponse {
     /**
      * Excel store settings.
      */
-    storeSettings?: AmazonS3CompatibleReadSettingsResponse | AmazonS3ReadSettingsResponse | AzureBlobFSReadSettingsResponse | AzureBlobStorageReadSettingsResponse | AzureDataLakeStoreReadSettingsResponse | AzureFileStorageReadSettingsResponse | FileServerReadSettingsResponse | FtpReadSettingsResponse | GoogleCloudStorageReadSettingsResponse | HdfsReadSettingsResponse | HttpReadSettingsResponse | OracleCloudStorageReadSettingsResponse | SftpReadSettingsResponse;
+    storeSettings?: AmazonS3CompatibleReadSettingsResponse | AmazonS3ReadSettingsResponse | AzureBlobFSReadSettingsResponse | AzureBlobStorageReadSettingsResponse | AzureDataLakeStoreReadSettingsResponse | AzureFileStorageReadSettingsResponse | FileServerReadSettingsResponse | FtpReadSettingsResponse | GoogleCloudStorageReadSettingsResponse | HdfsReadSettingsResponse | HttpReadSettingsResponse | LakeHouseReadSettingsResponse | OracleCloudStorageReadSettingsResponse | SftpReadSettingsResponse;
     /**
      * Copy source type.
      * Expected value is 'ExcelSource'.
@@ -9740,7 +9740,7 @@ export interface GetMetadataActivityResponse {
     /**
      * GetMetadata activity format settings.
      */
-    formatSettings?: BinaryReadSettingsResponse | DelimitedTextReadSettingsResponse | JsonReadSettingsResponse | XmlReadSettingsResponse;
+    formatSettings?: BinaryReadSettingsResponse | DelimitedTextReadSettingsResponse | JsonReadSettingsResponse | ParquetReadSettingsResponse | XmlReadSettingsResponse;
     /**
      * Linked service reference.
      */
@@ -9764,7 +9764,7 @@ export interface GetMetadataActivityResponse {
     /**
      * GetMetadata activity store settings.
      */
-    storeSettings?: AmazonS3CompatibleReadSettingsResponse | AmazonS3ReadSettingsResponse | AzureBlobFSReadSettingsResponse | AzureBlobStorageReadSettingsResponse | AzureDataLakeStoreReadSettingsResponse | AzureFileStorageReadSettingsResponse | FileServerReadSettingsResponse | FtpReadSettingsResponse | GoogleCloudStorageReadSettingsResponse | HdfsReadSettingsResponse | HttpReadSettingsResponse | OracleCloudStorageReadSettingsResponse | SftpReadSettingsResponse;
+    storeSettings?: AmazonS3CompatibleReadSettingsResponse | AmazonS3ReadSettingsResponse | AzureBlobFSReadSettingsResponse | AzureBlobStorageReadSettingsResponse | AzureDataLakeStoreReadSettingsResponse | AzureFileStorageReadSettingsResponse | FileServerReadSettingsResponse | FtpReadSettingsResponse | GoogleCloudStorageReadSettingsResponse | HdfsReadSettingsResponse | HttpReadSettingsResponse | LakeHouseReadSettingsResponse | OracleCloudStorageReadSettingsResponse | SftpReadSettingsResponse;
     /**
      * Type of activity.
      * Expected value is 'GetMetadata'.
@@ -9833,7 +9833,7 @@ export interface GoogleAdWordsLinkedServiceResponse {
      */
     connectVia?: IntegrationRuntimeReferenceResponse;
     /**
-     * Properties used to connect to GoogleAds. It is mutually exclusive with any other properties in the linked service. Type: object.
+     * (Deprecated) Properties used to connect to GoogleAds. It is mutually exclusive with any other properties in the linked service. Type: object.
      */
     connectionProperties?: any;
     /**
@@ -9853,19 +9853,35 @@ export interface GoogleAdWordsLinkedServiceResponse {
      */
     encryptedCredential?: string;
     /**
-     * The full path to the .p12 key file that is used to authenticate the service account email address and can only be used on self-hosted IR. Type: string (or Expression with resultType string).
+     * The Google Ads API major version such as v14. The supported major versions could be found on https://developers.google.com/google-ads/api/docs/release-notes. Type: string (or Expression with resultType string).
+     */
+    googleAdsApiVersion?: any;
+    /**
+     * (Deprecated) The full path to the .p12 key file that is used to authenticate the service account email address and can only be used on self-hosted IR. Type: string (or Expression with resultType string).
      */
     keyFilePath?: any;
+    /**
+     * The customer ID of the Google Ads Manager account through which you want to fetch report data of specific Customer. Type: string (or Expression with resultType string).
+     */
+    loginCustomerID?: any;
     /**
      * Parameters for linked service.
      */
     parameters?: {[key: string]: ParameterSpecificationResponse};
     /**
+     * The private key that is used to authenticate the service account email address and can only be used on self-hosted IR.
+     */
+    privateKey?: AzureKeyVaultSecretReferenceResponse | SecureStringResponse;
+    /**
      * The refresh token obtained from Google for authorizing access to AdWords for UserAuthentication.
      */
     refreshToken?: AzureKeyVaultSecretReferenceResponse | SecureStringResponse;
     /**
-     * The full path of the .pem file containing trusted CA certificates for verifying the server when connecting over SSL. This property can only be set when using SSL on self-hosted IR. The default value is the cacerts.pem file installed with the IR. Type: string (or Expression with resultType string).
+     * Specifies whether to use the legacy data type mappings, which maps float, int32 and int64 from Google to string. Do not set this to true unless you want to keep backward compatibility with legacy driver's data type mappings. Type: boolean (or Expression with resultType boolean).
+     */
+    supportLegacyDataTypes?: any;
+    /**
+     * (Deprecated) The full path of the .pem file containing trusted CA certificates for verifying the server when connecting over SSL. This property can only be set when using SSL on self-hosted IR. The default value is the cacerts.pem file installed with the IR. Type: string (or Expression with resultType string).
      */
     trustedCertPath?: any;
     /**
@@ -9874,7 +9890,7 @@ export interface GoogleAdWordsLinkedServiceResponse {
      */
     type: "GoogleAdWords";
     /**
-     * Specifies whether to use a CA certificate from the system trust store or from a specified PEM file. The default value is false. Type: boolean (or Expression with resultType boolean).
+     * (Deprecated) Specifies whether to use a CA certificate from the system trust store or from a specified PEM file. The default value is false. Type: boolean (or Expression with resultType boolean).
      */
     useSystemTrustStore?: any;
 }
@@ -12645,7 +12661,7 @@ export interface JsonDatasetResponse {
     /**
      * The location of the json data storage.
      */
-    location: AmazonS3CompatibleLocationResponse | AmazonS3LocationResponse | AzureBlobFSLocationResponse | AzureBlobStorageLocationResponse | AzureDataLakeStoreLocationResponse | AzureFileStorageLocationResponse | FileServerLocationResponse | FtpServerLocationResponse | GoogleCloudStorageLocationResponse | HdfsLocationResponse | HttpServerLocationResponse | OracleCloudStorageLocationResponse | SftpLocationResponse;
+    location: AmazonS3CompatibleLocationResponse | AmazonS3LocationResponse | AzureBlobFSLocationResponse | AzureBlobStorageLocationResponse | AzureDataLakeStoreLocationResponse | AzureFileStorageLocationResponse | FileServerLocationResponse | FtpServerLocationResponse | GoogleCloudStorageLocationResponse | HdfsLocationResponse | HttpServerLocationResponse | LakeHouseLocationResponse | OracleCloudStorageLocationResponse | SftpLocationResponse;
     /**
      * Parameters for dataset.
      */
@@ -12746,7 +12762,7 @@ export interface JsonSinkResponse {
     /**
      * Json store settings.
      */
-    storeSettings?: AzureBlobFSWriteSettingsResponse | AzureBlobStorageWriteSettingsResponse | AzureDataLakeStoreWriteSettingsResponse | AzureFileStorageWriteSettingsResponse | FileServerWriteSettingsResponse | SftpWriteSettingsResponse;
+    storeSettings?: AzureBlobFSWriteSettingsResponse | AzureBlobStorageWriteSettingsResponse | AzureDataLakeStoreWriteSettingsResponse | AzureFileStorageWriteSettingsResponse | FileServerWriteSettingsResponse | LakeHouseWriteSettingsResponse | SftpWriteSettingsResponse;
     /**
      * Copy sink type.
      * Expected value is 'JsonSink'.
@@ -12793,7 +12809,7 @@ export interface JsonSourceResponse {
     /**
      * Json store settings.
      */
-    storeSettings?: AmazonS3CompatibleReadSettingsResponse | AmazonS3ReadSettingsResponse | AzureBlobFSReadSettingsResponse | AzureBlobStorageReadSettingsResponse | AzureDataLakeStoreReadSettingsResponse | AzureFileStorageReadSettingsResponse | FileServerReadSettingsResponse | FtpReadSettingsResponse | GoogleCloudStorageReadSettingsResponse | HdfsReadSettingsResponse | HttpReadSettingsResponse | OracleCloudStorageReadSettingsResponse | SftpReadSettingsResponse;
+    storeSettings?: AmazonS3CompatibleReadSettingsResponse | AmazonS3ReadSettingsResponse | AzureBlobFSReadSettingsResponse | AzureBlobStorageReadSettingsResponse | AzureDataLakeStoreReadSettingsResponse | AzureFileStorageReadSettingsResponse | FileServerReadSettingsResponse | FtpReadSettingsResponse | GoogleCloudStorageReadSettingsResponse | HdfsReadSettingsResponse | HttpReadSettingsResponse | LakeHouseReadSettingsResponse | OracleCloudStorageReadSettingsResponse | SftpReadSettingsResponse;
     /**
      * Copy source type.
      * Expected value is 'JsonSource'.
@@ -12814,6 +12830,291 @@ export interface JsonWriteSettingsResponse {
      * Expected value is 'JsonWriteSettings'.
      */
     type: "JsonWriteSettings";
+}
+
+/**
+ * Microsoft Fabric LakeHouse linked service.
+ */
+export interface LakeHouseLinkedServiceResponse {
+    /**
+     * List of tags that can be used for describing the linked service.
+     */
+    annotations?: any[];
+    /**
+     * The ID of Microsoft Fabric LakeHouse artifact. Type: string (or Expression with resultType string).
+     */
+    artifactId?: any;
+    /**
+     * The integration runtime reference.
+     */
+    connectVia?: IntegrationRuntimeReferenceResponse;
+    /**
+     * Linked service description.
+     */
+    description?: string;
+    /**
+     * The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+     */
+    encryptedCredential?: string;
+    /**
+     * Parameters for linked service.
+     */
+    parameters?: {[key: string]: ParameterSpecificationResponse};
+    /**
+     * The credential of the service principal object in Azure Active Directory. If servicePrincipalCredentialType is 'ServicePrincipalKey', servicePrincipalCredential can be SecureString or AzureKeyVaultSecretReference. If servicePrincipalCredentialType is 'ServicePrincipalCert', servicePrincipalCredential can only be AzureKeyVaultSecretReference.
+     */
+    servicePrincipalCredential?: AzureKeyVaultSecretReferenceResponse | SecureStringResponse;
+    /**
+     * The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
+     */
+    servicePrincipalCredentialType?: any;
+    /**
+     * The ID of the application used to authenticate against Microsoft Fabric LakeHouse. Type: string (or Expression with resultType string).
+     */
+    servicePrincipalId?: any;
+    /**
+     * The Key of the application used to authenticate against Microsoft Fabric LakeHouse.
+     */
+    servicePrincipalKey?: AzureKeyVaultSecretReferenceResponse | SecureStringResponse;
+    /**
+     * The name or ID of the tenant to which the service principal belongs. Type: string (or Expression with resultType string).
+     */
+    tenant?: any;
+    /**
+     * Type of linked service.
+     * Expected value is 'LakeHouse'.
+     */
+    type: "LakeHouse";
+    /**
+     * The ID of Microsoft Fabric workspace. Type: string (or Expression with resultType string).
+     */
+    workspaceId?: any;
+}
+
+/**
+ * The location of Microsoft Fabric LakeHouse Files dataset.
+ */
+export interface LakeHouseLocationResponse {
+    /**
+     * Specify the file name of dataset. Type: string (or Expression with resultType string).
+     */
+    fileName?: any;
+    /**
+     * Specify the folder path of dataset. Type: string (or Expression with resultType string)
+     */
+    folderPath?: any;
+    /**
+     * Type of dataset storage location.
+     * Expected value is 'LakeHouseLocation'.
+     */
+    type: "LakeHouseLocation";
+}
+
+/**
+ * Microsoft Fabric LakeHouse Files read settings.
+ */
+export interface LakeHouseReadSettingsResponse {
+    /**
+     * Indicates whether the source files need to be deleted after copy completion. Default is false. Type: boolean (or Expression with resultType boolean).
+     */
+    deleteFilesAfterCompletion?: any;
+    /**
+     * If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+     */
+    disableMetricsCollection?: any;
+    /**
+     * Indicates whether to enable partition discovery. Type: boolean (or Expression with resultType boolean).
+     */
+    enablePartitionDiscovery?: any;
+    /**
+     * Point to a text file that lists each file (relative path to the path configured in the dataset) that you want to copy. Type: string (or Expression with resultType string).
+     */
+    fileListPath?: any;
+    /**
+     * The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+     */
+    maxConcurrentConnections?: any;
+    /**
+     * The end of file's modified datetime. Type: string (or Expression with resultType string).
+     */
+    modifiedDatetimeEnd?: any;
+    /**
+     * The start of file's modified datetime. Type: string (or Expression with resultType string).
+     */
+    modifiedDatetimeStart?: any;
+    /**
+     * Specify the root path where partition discovery starts from. Type: string (or Expression with resultType string).
+     */
+    partitionRootPath?: any;
+    /**
+     * If true, files under the folder path will be read recursively. Default is true. Type: boolean (or Expression with resultType boolean).
+     */
+    recursive?: any;
+    /**
+     * The read setting type.
+     * Expected value is 'LakeHouseReadSettings'.
+     */
+    type: "LakeHouseReadSettings";
+    /**
+     * Microsoft Fabric LakeHouse Files wildcardFileName. Type: string (or Expression with resultType string).
+     */
+    wildcardFileName?: any;
+    /**
+     * Microsoft Fabric LakeHouse Files wildcardFolderPath. Type: string (or Expression with resultType string).
+     */
+    wildcardFolderPath?: any;
+}
+
+/**
+ * Microsoft Fabric LakeHouse Table.
+ */
+export interface LakeHouseTableDatasetResponse {
+    /**
+     * List of tags that can be used for describing the Dataset.
+     */
+    annotations?: any[];
+    /**
+     * Dataset description.
+     */
+    description?: string;
+    /**
+     * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+     */
+    folder?: DatasetResponseFolder;
+    /**
+     * Linked service reference.
+     */
+    linkedServiceName: LinkedServiceReferenceResponse;
+    /**
+     * Parameters for dataset.
+     */
+    parameters?: {[key: string]: ParameterSpecificationResponse};
+    /**
+     * Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+     */
+    schema?: any;
+    /**
+     * Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+     */
+    structure?: any;
+    /**
+     * The name of Microsoft Fabric LakeHouse Table. Type: string (or Expression with resultType string).
+     */
+    table?: any;
+    /**
+     * Type of dataset.
+     * Expected value is 'LakeHouseTable'.
+     */
+    type: "LakeHouseTable";
+}
+
+/**
+ * A copy activity for Microsoft Fabric LakeHouse Table sink.
+ */
+export interface LakeHouseTableSinkResponse {
+    /**
+     * If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+     */
+    disableMetricsCollection?: any;
+    /**
+     * The maximum concurrent connection count for the sink data store. Type: integer (or Expression with resultType integer).
+     */
+    maxConcurrentConnections?: any;
+    /**
+     * Specify the partition column names from sink columns. Type: array of objects (or Expression with resultType array of objects).
+     */
+    partitionNameList?: any;
+    /**
+     * Create partitions in folder structure based on one or multiple columns. Each distinct column value (pair) will be a new partition. Possible values include: "None", "PartitionByKey".
+     */
+    partitionOption?: any;
+    /**
+     * Sink retry count. Type: integer (or Expression with resultType integer).
+     */
+    sinkRetryCount?: any;
+    /**
+     * Sink retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+     */
+    sinkRetryWait?: any;
+    /**
+     * The type of table action for LakeHouse Table sink. Possible values include: "None", "Append", "Overwrite".
+     */
+    tableActionOption?: any;
+    /**
+     * Copy sink type.
+     * Expected value is 'LakeHouseTableSink'.
+     */
+    type: "LakeHouseTableSink";
+    /**
+     * Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
+     */
+    writeBatchSize?: any;
+    /**
+     * Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+     */
+    writeBatchTimeout?: any;
+}
+
+/**
+ * A copy activity source for Microsoft Fabric LakeHouse Table.
+ */
+export interface LakeHouseTableSourceResponse {
+    /**
+     * Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+     */
+    additionalColumns?: any;
+    /**
+     * If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+     */
+    disableMetricsCollection?: any;
+    /**
+     * The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+     */
+    maxConcurrentConnections?: any;
+    /**
+     * Source retry count. Type: integer (or Expression with resultType integer).
+     */
+    sourceRetryCount?: any;
+    /**
+     * Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+     */
+    sourceRetryWait?: any;
+    /**
+     * Query an older snapshot by timestamp. Type: string (or Expression with resultType string).
+     */
+    timestampAsOf?: any;
+    /**
+     * Copy source type.
+     * Expected value is 'LakeHouseTableSource'.
+     */
+    type: "LakeHouseTableSource";
+    /**
+     * Query an older snapshot by version. Type: integer (or Expression with resultType integer).
+     */
+    versionAsOf?: any;
+}
+
+/**
+ * Microsoft Fabric LakeHouse Files write settings.
+ */
+export interface LakeHouseWriteSettingsResponse {
+    /**
+     * The type of copy behavior for copy sink.
+     */
+    copyBehavior?: any;
+    /**
+     * If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+     */
+    disableMetricsCollection?: any;
+    /**
+     * The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+     */
+    maxConcurrentConnections?: any;
+    /**
+     * The write setting type.
+     * Expected value is 'LakeHouseWriteSettings'.
+     */
+    type: "LakeHouseWriteSettings";
 }
 
 /**
@@ -12987,7 +13288,7 @@ export interface LookupActivityResponse {
     /**
      * Dataset-specific source properties, same as copy activity source.
      */
-    source: AmazonMWSSourceResponse | AmazonRdsForOracleSourceResponse | AmazonRdsForSqlServerSourceResponse | AmazonRedshiftSourceResponse | AvroSourceResponse | AzureBlobFSSourceResponse | AzureDataExplorerSourceResponse | AzureDataLakeStoreSourceResponse | AzureDatabricksDeltaLakeSourceResponse | AzureMariaDBSourceResponse | AzureMySqlSourceResponse | AzurePostgreSqlSourceResponse | AzureSqlSourceResponse | AzureTableSourceResponse | BinarySourceResponse | BlobSourceResponse | CassandraSourceResponse | CommonDataServiceForAppsSourceResponse | ConcurSourceResponse | CosmosDbMongoDbApiSourceResponse | CosmosDbSqlApiSourceResponse | CouchbaseSourceResponse | Db2SourceResponse | DelimitedTextSourceResponse | DocumentDbCollectionSourceResponse | DrillSourceResponse | DynamicsAXSourceResponse | DynamicsCrmSourceResponse | DynamicsSourceResponse | EloquaSourceResponse | ExcelSourceResponse | FileSystemSourceResponse | GoogleAdWordsSourceResponse | GoogleBigQuerySourceResponse | GreenplumSourceResponse | HBaseSourceResponse | HdfsSourceResponse | HiveSourceResponse | HttpSourceResponse | HubspotSourceResponse | ImpalaSourceResponse | InformixSourceResponse | JiraSourceResponse | JsonSourceResponse | MagentoSourceResponse | MariaDBSourceResponse | MarketoSourceResponse | MicrosoftAccessSourceResponse | MongoDbAtlasSourceResponse | MongoDbSourceResponse | MongoDbV2SourceResponse | MySqlSourceResponse | NetezzaSourceResponse | ODataSourceResponse | OdbcSourceResponse | Office365SourceResponse | OracleServiceCloudSourceResponse | OracleSourceResponse | OrcSourceResponse | ParquetSourceResponse | PaypalSourceResponse | PhoenixSourceResponse | PostgreSqlSourceResponse | PrestoSourceResponse | QuickBooksSourceResponse | RelationalSourceResponse | ResponsysSourceResponse | RestSourceResponse | SalesforceMarketingCloudSourceResponse | SalesforceServiceCloudSourceResponse | SalesforceSourceResponse | SapBwSourceResponse | SapCloudForCustomerSourceResponse | SapEccSourceResponse | SapHanaSourceResponse | SapOdpSourceResponse | SapOpenHubSourceResponse | SapTableSourceResponse | ServiceNowSourceResponse | SharePointOnlineListSourceResponse | ShopifySourceResponse | SnowflakeSourceResponse | SparkSourceResponse | SqlDWSourceResponse | SqlMISourceResponse | SqlServerSourceResponse | SqlSourceResponse | SquareSourceResponse | SybaseSourceResponse | TabularSourceResponse | TeradataSourceResponse | VerticaSourceResponse | WebSourceResponse | XeroSourceResponse | XmlSourceResponse | ZohoSourceResponse;
+    source: AmazonMWSSourceResponse | AmazonRdsForOracleSourceResponse | AmazonRdsForSqlServerSourceResponse | AmazonRedshiftSourceResponse | AvroSourceResponse | AzureBlobFSSourceResponse | AzureDataExplorerSourceResponse | AzureDataLakeStoreSourceResponse | AzureDatabricksDeltaLakeSourceResponse | AzureMariaDBSourceResponse | AzureMySqlSourceResponse | AzurePostgreSqlSourceResponse | AzureSqlSourceResponse | AzureTableSourceResponse | BinarySourceResponse | BlobSourceResponse | CassandraSourceResponse | CommonDataServiceForAppsSourceResponse | ConcurSourceResponse | CosmosDbMongoDbApiSourceResponse | CosmosDbSqlApiSourceResponse | CouchbaseSourceResponse | Db2SourceResponse | DelimitedTextSourceResponse | DocumentDbCollectionSourceResponse | DrillSourceResponse | DynamicsAXSourceResponse | DynamicsCrmSourceResponse | DynamicsSourceResponse | EloquaSourceResponse | ExcelSourceResponse | FileSystemSourceResponse | GoogleAdWordsSourceResponse | GoogleBigQuerySourceResponse | GreenplumSourceResponse | HBaseSourceResponse | HdfsSourceResponse | HiveSourceResponse | HttpSourceResponse | HubspotSourceResponse | ImpalaSourceResponse | InformixSourceResponse | JiraSourceResponse | JsonSourceResponse | LakeHouseTableSourceResponse | MagentoSourceResponse | MariaDBSourceResponse | MarketoSourceResponse | MicrosoftAccessSourceResponse | MongoDbAtlasSourceResponse | MongoDbSourceResponse | MongoDbV2SourceResponse | MySqlSourceResponse | NetezzaSourceResponse | ODataSourceResponse | OdbcSourceResponse | Office365SourceResponse | OracleServiceCloudSourceResponse | OracleSourceResponse | OrcSourceResponse | ParquetSourceResponse | PaypalSourceResponse | PhoenixSourceResponse | PostgreSqlSourceResponse | PrestoSourceResponse | QuickBooksSourceResponse | RelationalSourceResponse | ResponsysSourceResponse | RestSourceResponse | SalesforceMarketingCloudSourceResponse | SalesforceServiceCloudSourceResponse | SalesforceSourceResponse | SapBwSourceResponse | SapCloudForCustomerSourceResponse | SapEccSourceResponse | SapHanaSourceResponse | SapOdpSourceResponse | SapOpenHubSourceResponse | SapTableSourceResponse | ServiceNowSourceResponse | SharePointOnlineListSourceResponse | ShopifySourceResponse | SnowflakeSourceResponse | SparkSourceResponse | SqlDWSourceResponse | SqlMISourceResponse | SqlServerSourceResponse | SqlSourceResponse | SquareSourceResponse | SybaseSourceResponse | TabularSourceResponse | TeradataSourceResponse | VerticaSourceResponse | WebSourceResponse | XeroSourceResponse | XmlSourceResponse | ZohoSourceResponse;
     /**
      * Activity state. This is an optional property and if not provided, the state will be Active by default.
      */
@@ -15811,7 +16112,7 @@ export interface OrcDatasetResponse {
     /**
      * The location of the ORC data storage.
      */
-    location: AmazonS3CompatibleLocationResponse | AmazonS3LocationResponse | AzureBlobFSLocationResponse | AzureBlobStorageLocationResponse | AzureDataLakeStoreLocationResponse | AzureFileStorageLocationResponse | FileServerLocationResponse | FtpServerLocationResponse | GoogleCloudStorageLocationResponse | HdfsLocationResponse | HttpServerLocationResponse | OracleCloudStorageLocationResponse | SftpLocationResponse;
+    location: AmazonS3CompatibleLocationResponse | AmazonS3LocationResponse | AzureBlobFSLocationResponse | AzureBlobStorageLocationResponse | AzureDataLakeStoreLocationResponse | AzureFileStorageLocationResponse | FileServerLocationResponse | FtpServerLocationResponse | GoogleCloudStorageLocationResponse | HdfsLocationResponse | HttpServerLocationResponse | LakeHouseLocationResponse | OracleCloudStorageLocationResponse | SftpLocationResponse;
     /**
      * The data orcCompressionCodec. Type: string (or Expression with resultType string).
      */
@@ -15881,7 +16182,7 @@ export interface OrcSinkResponse {
     /**
      * ORC store settings.
      */
-    storeSettings?: AzureBlobFSWriteSettingsResponse | AzureBlobStorageWriteSettingsResponse | AzureDataLakeStoreWriteSettingsResponse | AzureFileStorageWriteSettingsResponse | FileServerWriteSettingsResponse | SftpWriteSettingsResponse;
+    storeSettings?: AzureBlobFSWriteSettingsResponse | AzureBlobStorageWriteSettingsResponse | AzureDataLakeStoreWriteSettingsResponse | AzureFileStorageWriteSettingsResponse | FileServerWriteSettingsResponse | LakeHouseWriteSettingsResponse | SftpWriteSettingsResponse;
     /**
      * Copy sink type.
      * Expected value is 'OrcSink'.
@@ -15924,7 +16225,7 @@ export interface OrcSourceResponse {
     /**
      * ORC store settings.
      */
-    storeSettings?: AmazonS3CompatibleReadSettingsResponse | AmazonS3ReadSettingsResponse | AzureBlobFSReadSettingsResponse | AzureBlobStorageReadSettingsResponse | AzureDataLakeStoreReadSettingsResponse | AzureFileStorageReadSettingsResponse | FileServerReadSettingsResponse | FtpReadSettingsResponse | GoogleCloudStorageReadSettingsResponse | HdfsReadSettingsResponse | HttpReadSettingsResponse | OracleCloudStorageReadSettingsResponse | SftpReadSettingsResponse;
+    storeSettings?: AmazonS3CompatibleReadSettingsResponse | AmazonS3ReadSettingsResponse | AzureBlobFSReadSettingsResponse | AzureBlobStorageReadSettingsResponse | AzureDataLakeStoreReadSettingsResponse | AzureFileStorageReadSettingsResponse | FileServerReadSettingsResponse | FtpReadSettingsResponse | GoogleCloudStorageReadSettingsResponse | HdfsReadSettingsResponse | HttpReadSettingsResponse | LakeHouseReadSettingsResponse | OracleCloudStorageReadSettingsResponse | SftpReadSettingsResponse;
     /**
      * Copy source type.
      * Expected value is 'OrcSource'.
@@ -16006,7 +16307,7 @@ export interface ParquetDatasetResponse {
     /**
      * The location of the parquet storage.
      */
-    location: AmazonS3CompatibleLocationResponse | AmazonS3LocationResponse | AzureBlobFSLocationResponse | AzureBlobStorageLocationResponse | AzureDataLakeStoreLocationResponse | AzureFileStorageLocationResponse | FileServerLocationResponse | FtpServerLocationResponse | GoogleCloudStorageLocationResponse | HdfsLocationResponse | HttpServerLocationResponse | OracleCloudStorageLocationResponse | SftpLocationResponse;
+    location: AmazonS3CompatibleLocationResponse | AmazonS3LocationResponse | AzureBlobFSLocationResponse | AzureBlobStorageLocationResponse | AzureDataLakeStoreLocationResponse | AzureFileStorageLocationResponse | FileServerLocationResponse | FtpServerLocationResponse | GoogleCloudStorageLocationResponse | HdfsLocationResponse | HttpServerLocationResponse | LakeHouseLocationResponse | OracleCloudStorageLocationResponse | SftpLocationResponse;
     /**
      * Parameters for dataset.
      */
@@ -16046,6 +16347,21 @@ export interface ParquetFormatResponse {
 }
 
 /**
+ * Parquet read settings.
+ */
+export interface ParquetReadSettingsResponse {
+    /**
+     * Compression settings.
+     */
+    compressionProperties?: TarGZipReadSettingsResponse | TarReadSettingsResponse | ZipDeflateReadSettingsResponse;
+    /**
+     * The read setting type.
+     * Expected value is 'ParquetReadSettings'.
+     */
+    type: "ParquetReadSettings";
+}
+
+/**
  * A copy activity Parquet sink.
  */
 export interface ParquetSinkResponse {
@@ -16072,7 +16388,7 @@ export interface ParquetSinkResponse {
     /**
      * Parquet store settings.
      */
-    storeSettings?: AzureBlobFSWriteSettingsResponse | AzureBlobStorageWriteSettingsResponse | AzureDataLakeStoreWriteSettingsResponse | AzureFileStorageWriteSettingsResponse | FileServerWriteSettingsResponse | SftpWriteSettingsResponse;
+    storeSettings?: AzureBlobFSWriteSettingsResponse | AzureBlobStorageWriteSettingsResponse | AzureDataLakeStoreWriteSettingsResponse | AzureFileStorageWriteSettingsResponse | FileServerWriteSettingsResponse | LakeHouseWriteSettingsResponse | SftpWriteSettingsResponse;
     /**
      * Copy sink type.
      * Expected value is 'ParquetSink'.
@@ -16101,6 +16417,10 @@ export interface ParquetSourceResponse {
      */
     disableMetricsCollection?: any;
     /**
+     * Parquet format settings.
+     */
+    formatSettings?: ParquetReadSettingsResponse;
+    /**
      * The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
      */
     maxConcurrentConnections?: any;
@@ -16115,7 +16435,7 @@ export interface ParquetSourceResponse {
     /**
      * Parquet store settings.
      */
-    storeSettings?: AmazonS3CompatibleReadSettingsResponse | AmazonS3ReadSettingsResponse | AzureBlobFSReadSettingsResponse | AzureBlobStorageReadSettingsResponse | AzureDataLakeStoreReadSettingsResponse | AzureFileStorageReadSettingsResponse | FileServerReadSettingsResponse | FtpReadSettingsResponse | GoogleCloudStorageReadSettingsResponse | HdfsReadSettingsResponse | HttpReadSettingsResponse | OracleCloudStorageReadSettingsResponse | SftpReadSettingsResponse;
+    storeSettings?: AmazonS3CompatibleReadSettingsResponse | AmazonS3ReadSettingsResponse | AzureBlobFSReadSettingsResponse | AzureBlobStorageReadSettingsResponse | AzureDataLakeStoreReadSettingsResponse | AzureFileStorageReadSettingsResponse | FileServerReadSettingsResponse | FtpReadSettingsResponse | GoogleCloudStorageReadSettingsResponse | HdfsReadSettingsResponse | HttpReadSettingsResponse | LakeHouseReadSettingsResponse | OracleCloudStorageReadSettingsResponse | SftpReadSettingsResponse;
     /**
      * Copy source type.
      * Expected value is 'ParquetSource'.
@@ -24040,7 +24360,7 @@ export interface XmlDatasetResponse {
     /**
      * The location of the json data storage.
      */
-    location: AmazonS3CompatibleLocationResponse | AmazonS3LocationResponse | AzureBlobFSLocationResponse | AzureBlobStorageLocationResponse | AzureDataLakeStoreLocationResponse | AzureFileStorageLocationResponse | FileServerLocationResponse | FtpServerLocationResponse | GoogleCloudStorageLocationResponse | HdfsLocationResponse | HttpServerLocationResponse | OracleCloudStorageLocationResponse | SftpLocationResponse;
+    location: AmazonS3CompatibleLocationResponse | AmazonS3LocationResponse | AzureBlobFSLocationResponse | AzureBlobStorageLocationResponse | AzureDataLakeStoreLocationResponse | AzureFileStorageLocationResponse | FileServerLocationResponse | FtpServerLocationResponse | GoogleCloudStorageLocationResponse | HdfsLocationResponse | HttpServerLocationResponse | LakeHouseLocationResponse | OracleCloudStorageLocationResponse | SftpLocationResponse;
     /**
      * The null value string. Type: string (or Expression with resultType string).
      */
@@ -24126,7 +24446,7 @@ export interface XmlSourceResponse {
     /**
      * Xml store settings.
      */
-    storeSettings?: AmazonS3CompatibleReadSettingsResponse | AmazonS3ReadSettingsResponse | AzureBlobFSReadSettingsResponse | AzureBlobStorageReadSettingsResponse | AzureDataLakeStoreReadSettingsResponse | AzureFileStorageReadSettingsResponse | FileServerReadSettingsResponse | FtpReadSettingsResponse | GoogleCloudStorageReadSettingsResponse | HdfsReadSettingsResponse | HttpReadSettingsResponse | OracleCloudStorageReadSettingsResponse | SftpReadSettingsResponse;
+    storeSettings?: AmazonS3CompatibleReadSettingsResponse | AmazonS3ReadSettingsResponse | AzureBlobFSReadSettingsResponse | AzureBlobStorageReadSettingsResponse | AzureDataLakeStoreReadSettingsResponse | AzureFileStorageReadSettingsResponse | FileServerReadSettingsResponse | FtpReadSettingsResponse | GoogleCloudStorageReadSettingsResponse | HdfsReadSettingsResponse | HttpReadSettingsResponse | LakeHouseReadSettingsResponse | OracleCloudStorageReadSettingsResponse | SftpReadSettingsResponse;
     /**
      * Copy source type.
      * Expected value is 'XmlSource'.

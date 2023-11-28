@@ -341,6 +341,17 @@ export const ReadWriteEndpointFailoverPolicy = {
  */
 export type ReadWriteEndpointFailoverPolicy = (typeof ReadWriteEndpointFailoverPolicy)[keyof typeof ReadWriteEndpointFailoverPolicy];
 
+export const ReplicationLinkType = {
+    GEO: "GEO",
+    NAMED: "NAMED",
+    STANDBY: "STANDBY",
+} as const;
+
+/**
+ * Link type (GEO, NAMED, STANDBY). Update operation does not support NAMED.
+ */
+export type ReplicationLinkType = (typeof ReplicationLinkType)[keyof typeof ReplicationLinkType];
+
 export const ReplicationMode = {
     Async: "Async",
     Sync: "Sync",

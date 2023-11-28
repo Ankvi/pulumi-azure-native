@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * The Client group resource.
  * Azure REST API version: 2023-06-01-preview.
+ *
+ * Other available API versions: 2023-12-15-preview.
  */
 export class ClientGroup extends pulumi.CustomResource {
     /**
@@ -93,7 +95,7 @@ export class ClientGroup extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:eventgrid/v20230601preview:ClientGroup" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:eventgrid/v20230601preview:ClientGroup" }, { type: "azure-native:eventgrid/v20231215preview:ClientGroup" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ClientGroup.__pulumiType, name, resourceInputs, opts);
     }

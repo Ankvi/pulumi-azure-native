@@ -1,6 +1,36 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
+ * Model that represents the an action and its status.
+ */
+export interface ActionStatusResponse {
+    /**
+     * The id of the action status.
+     */
+    actionId: string;
+    /**
+     * The name of the action status.
+     */
+    actionName: string;
+    /**
+     * String that represents the end time of the action.
+     */
+    endTime: string;
+    /**
+     * String that represents the start time of the action.
+     */
+    startTime: string;
+    /**
+     * The status of the action.
+     */
+    status: string;
+    /**
+     * The array of targets.
+     */
+    targets: ExperimentExecutionActionTargetDetailsPropertiesResponse[];
+}
+
+/**
  * Model that represents a branch in the step.
  */
 export interface BranchResponse {
@@ -12,6 +42,28 @@ export interface BranchResponse {
      * String of the branch name.
      */
     name: string;
+}
+
+/**
+ * Model that represents the a list of actions and action statuses.
+ */
+export interface BranchStatusResponse {
+    /**
+     * The array of actions.
+     */
+    actions: ActionStatusResponse[];
+    /**
+     * The id of the branch status.
+     */
+    branchId: string;
+    /**
+     * The name of the branch status.
+     */
+    branchName: string;
+    /**
+     * The status of the branch.
+     */
+    status: string;
 }
 
 /**
@@ -110,6 +162,56 @@ export interface DiscreteActionResponse {
 }
 
 /**
+ * Model that represents the Experiment action target details error model.
+ */
+export interface ExperimentExecutionActionTargetDetailsErrorResponse {
+    /**
+     * The error code.
+     */
+    code: string;
+    /**
+     * The error message
+     */
+    message: string;
+}
+
+/**
+ * Model that represents the Experiment action target details properties model.
+ */
+export interface ExperimentExecutionActionTargetDetailsPropertiesResponse {
+    /**
+     * The error of the action.
+     */
+    error: ExperimentExecutionActionTargetDetailsErrorResponse;
+    /**
+     * The status of the execution.
+     */
+    status: string;
+    /**
+     * The target for the action.
+     */
+    target: string;
+    /**
+     * String that represents the completed date time.
+     */
+    targetCompletedTime: string;
+    /**
+     * String that represents the failed date time.
+     */
+    targetFailedTime: string;
+}
+
+/**
+ * The information of the experiment run.
+ */
+export interface ExperimentExecutionDetailsPropertiesResponseRunInformation {
+    /**
+     * The steps of the experiment run.
+     */
+    steps: StepStatusResponse[];
+}
+
+/**
  * Model that represents the Experiment properties model.
  */
 export interface ExperimentPropertiesResponse {
@@ -162,6 +264,72 @@ export interface ListSelectorResponse {
      * Expected value is 'List'.
      */
     type: "List";
+}
+
+/**
+ * The private endpoint connection resource.
+ */
+export interface PrivateEndpointConnectionResponse {
+    /**
+     * The group ids for the private endpoint resource.
+     */
+    groupIds: string[];
+    /**
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+     */
+    id: string;
+    /**
+     * The name of the resource
+     */
+    name: string;
+    /**
+     * The private endpoint resource.
+     */
+    privateEndpoint?: PrivateEndpointResponse;
+    /**
+     * A collection of information about the state of the connection between service consumer and provider.
+     */
+    privateLinkServiceConnectionState: PrivateLinkServiceConnectionStateResponse;
+    /**
+     * The provisioning state of the private endpoint connection resource.
+     */
+    provisioningState: string;
+    /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    systemData: SystemDataResponse;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+     */
+    type: string;
+}
+
+/**
+ * The private endpoint resource.
+ */
+export interface PrivateEndpointResponse {
+    /**
+     * The ARM identifier for private endpoint.
+     */
+    id: string;
+}
+
+/**
+ * A collection of information about the state of the connection between service consumer and provider.
+ */
+export interface PrivateLinkServiceConnectionStateResponse {
+    /**
+     * A message indicating if changes on the service provider require any updates on the consumer.
+     */
+    actionsRequired?: string;
+    /**
+     * The reason for approval/rejection of the connection.
+     */
+    description?: string;
+    /**
+     * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+     */
+    status?: string;
 }
 
 /**
@@ -253,6 +421,28 @@ export interface StepResponse {
 }
 
 /**
+ * Model that represents the a list of branches and branch statuses.
+ */
+export interface StepStatusResponse {
+    /**
+     * The array of branches.
+     */
+    branches: BranchStatusResponse[];
+    /**
+     * The value of the status of the step.
+     */
+    status: string;
+    /**
+     * The id of the step.
+     */
+    stepId: string;
+    /**
+     * The name of the step.
+     */
+    stepName: string;
+}
+
+/**
  * Metadata pertaining to creation and last modification of the resource.
  */
 export interface SystemDataResponse {
@@ -309,5 +499,6 @@ export interface UserAssignedIdentityResponse {
      */
     principalId: string;
 }
+
 
 

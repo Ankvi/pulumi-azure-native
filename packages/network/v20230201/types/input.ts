@@ -4384,20 +4384,6 @@ import * as pulumi from "@pulumi/pulumi";
     }
 
     /**
-     * Nfv version of the list of RouteTables to advertise the routes to.
-     */
-    export interface PropagatedRouteTableNfvArgs {
-        /**
-         * The list of resource ids of all the RouteTables.
-         */
-        ids?: pulumi.Input<pulumi.Input<RoutingConfigurationNfvSubResourceArgs>[]>;
-        /**
-         * The list of labels.
-         */
-        labels?: pulumi.Input<pulumi.Input<string>[]>;
-    }
-
-    /**
      * Public IP address resource.
      */
     export interface PublicIPAddressArgs {
@@ -4765,38 +4751,6 @@ import * as pulumi from "@pulumi/pulumi";
          * List of routes that control routing from VirtualHub into a virtual network connection.
          */
         vnetRoutes?: pulumi.Input<VnetRouteArgs>;
-    }
-
-    /**
-     * NFV version of Routing Configuration indicating the associated and propagated route tables for this connection.
-     */
-    export interface RoutingConfigurationNfvArgs {
-        /**
-         * The resource id RouteTable associated with this RoutingConfiguration.
-         */
-        associatedRouteTable?: pulumi.Input<RoutingConfigurationNfvSubResourceArgs>;
-        /**
-         * The resource id of the RouteMap associated with this RoutingConfiguration for inbound learned routes.
-         */
-        inboundRouteMap?: pulumi.Input<RoutingConfigurationNfvSubResourceArgs>;
-        /**
-         * The resource id of the RouteMap associated with this RoutingConfiguration for outbound advertised routes.
-         */
-        outboundRouteMap?: pulumi.Input<RoutingConfigurationNfvSubResourceArgs>;
-        /**
-         * The list of RouteTables to advertise the routes to.
-         */
-        propagatedRouteTables?: pulumi.Input<PropagatedRouteTableNfvArgs>;
-    }
-
-    /**
-     * Reference to RouteTableV3 associated with the connection.
-     */
-    export interface RoutingConfigurationNfvSubResourceArgs {
-        /**
-         * Resource ID.
-         */
-        resourceUri?: pulumi.Input<string>;
     }
 
     /**

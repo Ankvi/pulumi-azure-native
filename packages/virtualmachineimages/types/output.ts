@@ -777,3 +777,4 @@ export function virtualNetworkConfigResponseProvideDefaults(val: VirtualNetworkC
         proxyVmSize: (val.proxyVmSize) ?? "",
     };
 }
+

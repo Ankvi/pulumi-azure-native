@@ -534,6 +534,20 @@ export interface TaskPropertiesArgs {
 }
 
 /**
+ * The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'
+ */
+export interface TrackedResourceArgs {
+    /**
+     * The geo-location where the resource lives
+     */
+    location: pulumi.Input<string>;
+    /**
+     * Resource tags.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+/**
  * Update specific properties of the software update configuration.
  */
 export interface UpdateConfigurationArgs {
@@ -588,6 +602,8 @@ export interface WindowsPropertiesArgs {
      */
     rebootSetting?: pulumi.Input<string>;
 }
+
+
 
 
 

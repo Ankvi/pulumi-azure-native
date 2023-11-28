@@ -256,6 +256,32 @@ export interface AzureStaticWebAppsResponse {
 }
 
 /**
+ * Configuration of the build.
+ */
+export interface BuildConfigurationResponse {
+    /**
+     * Base OS used to build and run the app.
+     */
+    baseOs?: string;
+    /**
+     * List of environment variables to be passed to the build and application runtime.
+     */
+    environmentVariables?: EnvironmentVariableResponse[];
+    /**
+     * Platform to be used to build and run the app.
+     */
+    platform?: string;
+    /**
+     * Platform version to be used to build and run the app.
+     */
+    platformVersion?: string;
+    /**
+     * List of steps to perform before the build.
+     */
+    preBuildSteps?: PreBuildStepResponse[];
+}
+
+/**
  * Certificate resource specific properties
  */
 export interface CertificateResponseProperties {
@@ -295,6 +321,24 @@ export interface CertificateResponseProperties {
      * Is the certificate valid?.
      */
     valid: boolean;
+}
+
+/**
+ * Policy that defines circuit breaker conditions
+ */
+export interface CircuitBreakerPolicyResponse {
+    /**
+     * Number of consecutive errors before the circuit breaker opens
+     */
+    consecutiveErrors?: number;
+    /**
+     * The time interval, in seconds, between endpoint checks. This can result in opening the circuit breaker if the check fails as well as closing the circuit breaker if the check succeeds. Defaults to 10s.
+     */
+    intervalInSeconds?: number;
+    /**
+     * Maximum percentage of hosts that will be ejected after failure threshold has been met
+     */
+    maxEjectionPercent?: number;
 }
 
 /**
@@ -471,6 +515,34 @@ export interface ContainerAppSecretResponse {
      * Secret Value.
      */
     value: string;
+}
+
+/**
+ * Model representing a mapping from a container registry to the identity used to connect to it.
+ */
+export interface ContainerRegistryResponse {
+    /**
+     * Login server of the container registry.
+     */
+    containerRegistryServer: string;
+    /**
+     * Resource ID of the managed identity.
+     */
+    identityResourceId: string;
+}
+
+/**
+ * Container registry that the final image will be uploaded to.
+ */
+export interface ContainerRegistryWithCustomImageResponse {
+    /**
+     * Full name that the final image should be uploaded as, including both image name and tag.
+     */
+    image?: string;
+    /**
+     * Login server of the container registry that the final image should be uploaded to. Builder resource needs to have this container registry defined along with an identity to use to access it.
+     */
+    server: string;
 }
 
 /**
@@ -703,6 +775,58 @@ export interface CustomScaleRuleResponse {
 }
 
 /**
+ * Dapr Component Resiliency Policy Configuration.
+ */
+export interface DaprComponentResiliencyPolicyConfigurationResponse {
+    /**
+     * The optional HTTP retry policy configuration
+     */
+    httpRetryPolicy?: DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponse;
+    /**
+     * The optional timeout policy configuration
+     */
+    timeoutPolicy?: DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponse;
+}
+
+/**
+ * Dapr Component Resiliency Policy HTTP Retry Backoff Configuration.
+ */
+export interface DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponse {
+    /**
+     * The optional initial delay in milliseconds before an operation is retried
+     */
+    initialDelayInMilliseconds?: number;
+    /**
+     * The optional maximum time interval in milliseconds between retry attempts
+     */
+    maxIntervalInMilliseconds?: number;
+}
+
+/**
+ * Dapr Component Resiliency Policy HTTP Retry Policy Configuration.
+ */
+export interface DaprComponentResiliencyPolicyHttpRetryPolicyConfigurationResponse {
+    /**
+     * The optional maximum number of retries
+     */
+    maxRetries?: number;
+    /**
+     * The optional retry backoff configuration
+     */
+    retryBackOff?: DaprComponentResiliencyPolicyHttpRetryBackOffConfigurationResponse;
+}
+
+/**
+ * Dapr Component Resiliency Policy Timeout Policy Configuration.
+ */
+export interface DaprComponentResiliencyPolicyTimeoutPolicyConfigurationResponse {
+    /**
+     * The optional response timeout in seconds
+     */
+    responseTimeoutInSeconds?: number;
+}
+
+/**
  * Dapr component metadata.
  */
 export interface DaprMetadataResponse {
@@ -783,6 +907,61 @@ export interface DaprSecretResponse {
 }
 
 /**
+ * Dapr PubSub Bulk Subscription Options.
+ */
+export interface DaprSubscriptionBulkSubscribeOptionsResponse {
+    /**
+     * Enable bulk subscription
+     */
+    enabled?: boolean;
+    /**
+     * Maximum duration in milliseconds to wait before a bulk message is sent to the app.
+     */
+    maxAwaitDurationMs?: number;
+    /**
+     * Maximum number of messages to deliver in a bulk message.
+     */
+    maxMessagesCount?: number;
+}
+/**
+ * daprSubscriptionBulkSubscribeOptionsResponseProvideDefaults sets the appropriate defaults for DaprSubscriptionBulkSubscribeOptionsResponse
+ */
+export function daprSubscriptionBulkSubscribeOptionsResponseProvideDefaults(val: DaprSubscriptionBulkSubscribeOptionsResponse): DaprSubscriptionBulkSubscribeOptionsResponse {
+    return {
+        ...val,
+        enabled: (val.enabled) ?? false,
+    };
+}
+
+/**
+ * Dapr Pubsub Event Subscription Route Rule is used to specify the condition for sending a message to a specific path.
+ */
+export interface DaprSubscriptionRouteRuleResponse {
+    /**
+     * The optional CEL expression used to match the event. If the match is not specified, then the route is considered the default. The rules are tested in the order specified, so they should be define from most-to-least specific. The default route should appear last in the list.
+     */
+    match?: string;
+    /**
+     * The path for events that match this rule
+     */
+    path?: string;
+}
+
+/**
+ * Dapr PubSub Event Subscription Routes configuration.
+ */
+export interface DaprSubscriptionRoutesResponse {
+    /**
+     * The default path to deliver events that do not match any of the rules.
+     */
+    default?: string;
+    /**
+     * The list of Dapr PubSub Event Subscription Route Rules.
+     */
+    rules?: DaprSubscriptionRouteRuleResponse[];
+}
+
+/**
  * The configuration settings of the Azure Active Directory default authorization policy.
  */
 export interface DefaultAuthorizationPolicyResponse {
@@ -822,6 +1001,20 @@ export interface EnvironmentVarResponse {
      * Non-secret environment variable value.
      */
     value?: string;
+}
+
+/**
+ * Model representing an environment variable.
+ */
+export interface EnvironmentVariableResponse {
+    /**
+     * Environment variable name.
+     */
+    name: string;
+    /**
+     * Environment variable value.
+     */
+    value: string;
 }
 
 /**
@@ -974,6 +1167,94 @@ export interface GoogleResponse {
      * The configuration settings of the Azure Active Directory token validation flow.
      */
     validation?: AllowedAudiencesValidationResponse;
+}
+
+/**
+ * Conditions required to match a header
+ */
+export interface HeaderMatchResponse {
+    /**
+     * Exact value of the header
+     */
+    exactMatch?: string;
+    /**
+     * Name of the header
+     */
+    header?: string;
+    /**
+     * Prefix value of the header
+     */
+    prefixMatch?: string;
+    /**
+     * Regex value of the header
+     */
+    regexMatch?: string;
+    /**
+     * Suffix value of the header
+     */
+    suffixMatch?: string;
+}
+
+/**
+ * Defines parameters for http connection pooling
+ */
+export interface HttpConnectionPoolResponse {
+    /**
+     * Maximum number of pending http1 requests allowed
+     */
+    http1MaxPendingRequests?: number;
+    /**
+     * Maximum number of http2 requests allowed
+     */
+    http2MaxRequests?: number;
+}
+
+/**
+ * Model representing a http get request.
+ */
+export interface HttpGetResponse {
+    /**
+     * Name of the file that the request should be saved to.
+     */
+    fileName?: string;
+    /**
+     * List of headers to send with the request.
+     */
+    headers?: string[];
+    /**
+     * URL to make HTTP GET request against.
+     */
+    url: string;
+}
+
+/**
+ * Policy that defines http request retry conditions
+ */
+export interface HttpRetryPolicyResponse {
+    /**
+     * Errors that can trigger a retry
+     */
+    errors?: string[];
+    /**
+     * Headers that must be present for a request to be retried
+     */
+    headers?: HeaderMatchResponse[];
+    /**
+     * Additional http status codes that can trigger a retry
+     */
+    httpStatusCodes?: number[];
+    /**
+     * Initial delay, in milliseconds, before retrying a request
+     */
+    initialDelayInMilliseconds?: number;
+    /**
+     * Maximum interval, in milliseconds, between retries
+     */
+    maxIntervalInMilliseconds?: number;
+    /**
+     * Maximum number of times a request will retry
+     */
+    maxRetries?: number;
 }
 
 /**
@@ -1585,6 +1866,24 @@ export interface OpenIdConnectRegistrationResponse {
 }
 
 /**
+ * Model representing a pre-build step.
+ */
+export interface PreBuildStepResponse {
+    /**
+     * Description of the pre-build step.
+     */
+    description?: string;
+    /**
+     * Http get request to send before the build.
+     */
+    httpGet?: HttpGetResponse;
+    /**
+     * List of custom commands to run.
+     */
+    scripts?: string[];
+}
+
+/**
  * Container App container Azure Queue based scaling rule.
  */
 export interface QueueScaleRuleResponse {
@@ -1768,6 +2067,26 @@ export interface SystemDataResponse {
 }
 
 /**
+ * Defines parameters for tcp connection pooling
+ */
+export interface TcpConnectionPoolResponse {
+    /**
+     * Maximum number of tcp connections allowed
+     */
+    maxConnections?: number;
+}
+
+/**
+ * Policy that defines tcp request retry conditions
+ */
+export interface TcpRetryPolicyResponse {
+    /**
+     * Maximum number of attempts to connect to the tcp service
+     */
+    maxConnectAttempts?: number;
+}
+
+/**
  * Container App container Tcp scaling rule.
  */
 export interface TcpScaleRuleResponse {
@@ -1816,6 +2135,20 @@ export function templateResponseProvideDefaults(val: TemplateResponse): Template
         ...val,
         scale: (val.scale ? scaleResponseProvideDefaults(val.scale) : undefined),
     };
+}
+
+/**
+ * Policy to set request timeouts
+ */
+export interface TimeoutPolicyResponse {
+    /**
+     * Timeout, in seconds, for a request to initiate a connection
+     */
+    connectionTimeoutInSeconds?: number;
+    /**
+     * Timeout, in seconds, for a request to respond
+     */
+    responseTimeoutInSeconds?: number;
 }
 
 /**
@@ -1989,6 +2322,7 @@ export interface WorkloadProfileResponse {
      */
     workloadProfileType: string;
 }
+
 
 
 

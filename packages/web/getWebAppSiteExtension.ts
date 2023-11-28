@@ -4,7 +4,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Description for Get site extension information by its ID for a web site, or a deployment slot.
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2016-08-01, 2020-10-01.
+ * Other available API versions: 2016-08-01, 2020-10-01, 2023-01-01.
  */
 export function getWebAppSiteExtension(args: GetWebAppSiteExtensionArgs, opts?: pulumi.InvokeOptions): Promise<GetWebAppSiteExtensionResult> {
 
@@ -133,7 +133,7 @@ export interface GetWebAppSiteExtensionResult {
  * Description for Get site extension information by its ID for a web site, or a deployment slot.
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2016-08-01, 2020-10-01.
+ * Other available API versions: 2016-08-01, 2020-10-01, 2023-01-01.
  */
 export function getWebAppSiteExtensionOutput(args: GetWebAppSiteExtensionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebAppSiteExtensionResult> {
     return pulumi.output(args).apply((a: any) => getWebAppSiteExtension(a, opts))

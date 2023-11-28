@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets configuration values for Single Pane Of Glass for SAP monitor for the specified subscription, resource group, and resource name.
  * Azure REST API version: 2023-04-01.
+ *
+ * Other available API versions: 2023-10-01-preview.
  */
 export function getSapLandscapeMonitor(args: GetSapLandscapeMonitorArgs, opts?: pulumi.InvokeOptions): Promise<GetSapLandscapeMonitorResult> {
 
@@ -61,6 +63,8 @@ export interface GetSapLandscapeMonitorResult {
 /**
  * Gets configuration values for Single Pane Of Glass for SAP monitor for the specified subscription, resource group, and resource name.
  * Azure REST API version: 2023-04-01.
+ *
+ * Other available API versions: 2023-10-01-preview.
  */
 export function getSapLandscapeMonitorOutput(args: GetSapLandscapeMonitorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSapLandscapeMonitorResult> {
     return pulumi.output(args).apply((a: any) => getSapLandscapeMonitor(a, opts))

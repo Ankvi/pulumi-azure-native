@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets the properties of the specified IoT Connector.
  * Azure REST API version: 2023-02-28.
+ *
+ * Other available API versions: 2023-09-06, 2023-11-01.
  */
 export function getIotConnector(args: GetIotConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetIotConnectorResult> {
 
@@ -82,6 +84,8 @@ export interface GetIotConnectorResult {
 /**
  * Gets the properties of the specified IoT Connector.
  * Azure REST API version: 2023-02-28.
+ *
+ * Other available API versions: 2023-09-06, 2023-11-01.
  */
 export function getIotConnectorOutput(args: GetIotConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIotConnectorResult> {
     return pulumi.output(args).apply((a: any) => getIotConnector(a, opts))

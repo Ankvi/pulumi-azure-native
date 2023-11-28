@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Static Site Database Connection resource.
  * Azure REST API version: 2022-09-01.
+ *
+ * Other available API versions: 2023-01-01.
  */
 export class StaticSiteDatabaseConnection extends pulumi.CustomResource {
     /**
@@ -109,7 +111,7 @@ export class StaticSiteDatabaseConnection extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:web/v20220901:StaticSiteDatabaseConnection" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:web/v20220901:StaticSiteDatabaseConnection" }, { type: "azure-native:web/v20230101:StaticSiteDatabaseConnection" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(StaticSiteDatabaseConnection.__pulumiType, name, resourceInputs, opts);
     }

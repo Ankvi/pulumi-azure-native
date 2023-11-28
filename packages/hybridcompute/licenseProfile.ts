@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Describes a license profile in a hybrid machine.
  * Azure REST API version: 2023-06-20-preview.
+ *
+ * Other available API versions: 2023-10-03-preview.
  */
 export class LicenseProfile extends pulumi.CustomResource {
     /**
@@ -128,7 +130,7 @@ export class LicenseProfile extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:hybridcompute/v20230620preview:LicenseProfile" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:hybridcompute/v20230620preview:LicenseProfile" }, { type: "azure-native:hybridcompute/v20231003preview:LicenseProfile" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(LicenseProfile.__pulumiType, name, resourceInputs, opts);
     }

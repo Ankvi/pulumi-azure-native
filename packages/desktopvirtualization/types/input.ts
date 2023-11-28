@@ -23,6 +23,98 @@ export interface AgentUpdatePropertiesArgs {
 }
 
 /**
+ * Schema for Import Package Information properties.
+ */
+export interface AppAttachPackageInfoPropertiesArgs {
+    /**
+     * Date certificate expires, found in the appxmanifest.xml. 
+     */
+    certificateExpiry?: pulumi.Input<string>;
+    /**
+     * Certificate name found in the appxmanifest.xml. 
+     */
+    certificateName?: pulumi.Input<string>;
+    /**
+     * User friendly Name to be displayed in the portal. 
+     */
+    displayName?: pulumi.Input<string>;
+    /**
+     * VHD/CIM image path on Network Share.
+     */
+    imagePath?: pulumi.Input<string>;
+    /**
+     * Make this version of the package the active one across the hostpool. 
+     */
+    isActive?: pulumi.Input<boolean>;
+    /**
+     * Is package timestamped so it can ignore the certificate expiry date
+     */
+    isPackageTimestamped?: pulumi.Input<string | enums.PackageTimestamped>;
+    /**
+     * Specifies how to register Package in feed.
+     */
+    isRegularRegistration?: pulumi.Input<boolean>;
+    /**
+     * Date Package was last updated, found in the appxmanifest.xml. 
+     */
+    lastUpdated?: pulumi.Input<string>;
+    /**
+     * Alias of App Attach Package. Assigned at import time
+     */
+    packageAlias?: pulumi.Input<string>;
+    /**
+     * List of package applications. 
+     */
+    packageApplications?: pulumi.Input<pulumi.Input<MsixPackageApplicationsArgs>[]>;
+    /**
+     * List of package dependencies. 
+     */
+    packageDependencies?: pulumi.Input<pulumi.Input<MsixPackageDependenciesArgs>[]>;
+    /**
+     * Package Family Name from appxmanifest.xml. Contains Package Name and Publisher name. 
+     */
+    packageFamilyName?: pulumi.Input<string>;
+    /**
+     * Package Full Name from appxmanifest.xml. 
+     */
+    packageFullName?: pulumi.Input<string>;
+    /**
+     * Package Name from appxmanifest.xml. 
+     */
+    packageName?: pulumi.Input<string>;
+    /**
+     * Relative Path to the package inside the image. 
+     */
+    packageRelativePath?: pulumi.Input<string>;
+    /**
+     * Package Version found in the appxmanifest.xml. 
+     */
+    version?: pulumi.Input<string>;
+}
+
+/**
+ * Schema for App Attach Package properties.
+ */
+export interface AppAttachPackagePropertiesArgs {
+    /**
+     * Parameter indicating how the health check should behave if this package fails staging
+     */
+    failHealthCheckOnStagingFailure?: pulumi.Input<string | enums.FailHealthCheckOnStagingFailure>;
+    /**
+     * List of Hostpool resource Ids.
+     */
+    hostPoolReferences?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Detailed properties for App Attach Package
+     */
+    image?: pulumi.Input<AppAttachPackageInfoPropertiesArgs>;
+    /**
+     * URL of keyvault location to store certificate
+     */
+    keyVaultURL?: pulumi.Input<string>;
+}
+
+/**
  * Maintenance window starting hour and day of week.
  */
 export interface MaintenanceWindowPropertiesArgs {
@@ -282,6 +374,7 @@ export interface TimeArgs {
      */
     minute: pulumi.Input<number>;
 }
+
 
 
 

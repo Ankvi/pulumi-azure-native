@@ -953,6 +953,10 @@ import * as pulumi from "@pulumi/pulumi";
          */
         sourceResourceId?: string;
         /**
+         * ID of the vault which protects this item
+         */
+        vaultId: string;
+        /**
          * Type of workload this item represents.
          */
         workloadType: string;
@@ -1121,6 +1125,10 @@ import * as pulumi from "@pulumi/pulumi";
          * ARM ID of the resource to be backed up.
          */
         sourceResourceId?: string;
+        /**
+         * ID of the vault which protects this item
+         */
+        vaultId: string;
         /**
          * Fully qualified ARM ID of the virtual machine represented by this item.
          */
@@ -1294,6 +1302,10 @@ import * as pulumi from "@pulumi/pulumi";
          * ARM ID of the resource to be backed up.
          */
         sourceResourceId?: string;
+        /**
+         * ID of the vault which protects this item
+         */
+        vaultId: string;
         /**
          * Fully qualified ARM ID of the virtual machine represented by this item.
          */
@@ -1473,6 +1485,10 @@ import * as pulumi from "@pulumi/pulumi";
          * ARM ID of the resource to be backed up.
          */
         sourceResourceId?: string;
+        /**
+         * ID of the vault which protects this item
+         */
+        vaultId: string;
         /**
          * Fully qualified ARM ID of the virtual machine represented by this item.
          */
@@ -1790,6 +1806,10 @@ import * as pulumi from "@pulumi/pulumi";
          * ARM ID of the resource to be backed up.
          */
         sourceResourceId?: string;
+        /**
+         * ID of the vault which protects this item
+         */
+        vaultId: string;
         /**
          * Type of workload this item represents.
          */
@@ -2170,6 +2190,10 @@ import * as pulumi from "@pulumi/pulumi";
          */
         sourceResourceId?: string;
         /**
+         * ID of the vault which protects this item
+         */
+        vaultId: string;
+        /**
          * Type of workload this item represents.
          */
         workloadType: string;
@@ -2340,6 +2364,10 @@ import * as pulumi from "@pulumi/pulumi";
          */
         sourceResourceId?: string;
         /**
+         * ID of the vault which protects this item
+         */
+        vaultId: string;
+        /**
          * Type of workload this item represents.
          */
         workloadType: string;
@@ -2474,6 +2502,10 @@ import * as pulumi from "@pulumi/pulumi";
          * ARM ID of the resource to be backed up.
          */
         sourceResourceId?: string;
+        /**
+         * ID of the vault which protects this item
+         */
+        vaultId: string;
         /**
          * Type of workload this item represents.
          */
@@ -2610,6 +2642,10 @@ import * as pulumi from "@pulumi/pulumi";
          */
         sourceResourceId?: string;
         /**
+         * ID of the vault which protects this item
+         */
+        vaultId: string;
+        /**
          * Type of workload this item represents.
          */
         workloadType: string;
@@ -2744,6 +2780,10 @@ import * as pulumi from "@pulumi/pulumi";
          * ARM ID of the resource to be backed up.
          */
         sourceResourceId?: string;
+        /**
+         * ID of the vault which protects this item
+         */
+        vaultId: string;
         /**
          * Type of workload this item represents.
          */
@@ -3198,6 +3238,10 @@ import * as pulumi from "@pulumi/pulumi";
          * ARM ID of the resource to be backed up.
          */
         sourceResourceId?: string;
+        /**
+         * ID of the vault which protects this item
+         */
+        vaultId: string;
         /**
          * Type of workload this item represents.
          */
@@ -3698,6 +3742,10 @@ import * as pulumi from "@pulumi/pulumi";
          * ARM ID of the resource to be backed up.
          */
         sourceResourceId?: string;
+        /**
+         * ID of the vault which protects this item
+         */
+        vaultId: string;
         /**
          * Type of workload this item represents.
          */
@@ -6736,6 +6784,10 @@ import * as pulumi from "@pulumi/pulumi";
          * ARM ID of the resource to be backed up.
          */
         sourceResourceId?: string;
+        /**
+         * ID of the vault which protects this item
+         */
+        vaultId: string;
         /**
          * Type of workload this item represents.
          */

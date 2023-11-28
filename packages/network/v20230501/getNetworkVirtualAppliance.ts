@@ -114,10 +114,6 @@ export interface GetNetworkVirtualApplianceResult {
      */
     readonly virtualApplianceAsn?: number;
     /**
-     * List of references to VirtualApplianceConnections.
-     */
-    readonly virtualApplianceConnections: types.outputs.SubResourceResponse[];
-    /**
      * List of Virtual Appliance Network Interfaces.
      */
     readonly virtualApplianceNics: types.outputs.VirtualApplianceNicPropertiesResponse[];

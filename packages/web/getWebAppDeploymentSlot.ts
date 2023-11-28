@@ -4,7 +4,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Description for Get a deployment by its ID for an app, or a deployment slot.
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2020-10-01.
+ * Other available API versions: 2020-10-01, 2023-01-01.
  */
 export function getWebAppDeploymentSlot(args: GetWebAppDeploymentSlotArgs, opts?: pulumi.InvokeOptions): Promise<GetWebAppDeploymentSlotResult> {
 
@@ -97,7 +97,7 @@ export interface GetWebAppDeploymentSlotResult {
  * Description for Get a deployment by its ID for an app, or a deployment slot.
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2020-10-01.
+ * Other available API versions: 2020-10-01, 2023-01-01.
  */
 export function getWebAppDeploymentSlotOutput(args: GetWebAppDeploymentSlotOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebAppDeploymentSlotResult> {
     return pulumi.output(args).apply((a: any) => getWebAppDeploymentSlot(a, opts))

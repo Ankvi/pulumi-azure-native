@@ -5,7 +5,7 @@ import * as types from "./types";
  * EventGrid Partner Namespace.
  * Azure REST API version: 2022-06-15. Prior API version in Azure Native 1.x: 2021-06-01-preview.
  *
- * Other available API versions: 2023-06-01-preview.
+ * Other available API versions: 2023-06-01-preview, 2023-12-15-preview.
  */
 export class PartnerNamespace extends pulumi.CustomResource {
     /**
@@ -132,7 +132,7 @@ export class PartnerNamespace extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:eventgrid/v20200401preview:PartnerNamespace" }, { type: "azure-native:eventgrid/v20201015preview:PartnerNamespace" }, { type: "azure-native:eventgrid/v20210601preview:PartnerNamespace" }, { type: "azure-native:eventgrid/v20211015preview:PartnerNamespace" }, { type: "azure-native:eventgrid/v20220615:PartnerNamespace" }, { type: "azure-native:eventgrid/v20230601preview:PartnerNamespace" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:eventgrid/v20200401preview:PartnerNamespace" }, { type: "azure-native:eventgrid/v20201015preview:PartnerNamespace" }, { type: "azure-native:eventgrid/v20210601preview:PartnerNamespace" }, { type: "azure-native:eventgrid/v20211015preview:PartnerNamespace" }, { type: "azure-native:eventgrid/v20220615:PartnerNamespace" }, { type: "azure-native:eventgrid/v20230601preview:PartnerNamespace" }, { type: "azure-native:eventgrid/v20231215preview:PartnerNamespace" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PartnerNamespace.__pulumiType, name, resourceInputs, opts);
     }

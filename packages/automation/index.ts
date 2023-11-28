@@ -91,6 +91,16 @@ export const getModule: typeof import("./getModule").getModule = null as any;
 export const getModuleOutput: typeof import("./getModule").getModuleOutput = null as any;
 utilities.lazyLoad(exports, ["getModule","getModuleOutput"], () => require("./getModule"));
 
+export { GetPackageArgs, GetPackageResult, GetPackageOutputArgs } from "./getPackage";
+export const getPackage: typeof import("./getPackage").getPackage = null as any;
+export const getPackageOutput: typeof import("./getPackage").getPackageOutput = null as any;
+utilities.lazyLoad(exports, ["getPackage","getPackageOutput"], () => require("./getPackage"));
+
+export { GetPowerShell72ModuleArgs, GetPowerShell72ModuleResult, GetPowerShell72ModuleOutputArgs } from "./getPowerShell72Module";
+export const getPowerShell72Module: typeof import("./getPowerShell72Module").getPowerShell72Module = null as any;
+export const getPowerShell72ModuleOutput: typeof import("./getPowerShell72Module").getPowerShell72ModuleOutput = null as any;
+utilities.lazyLoad(exports, ["getPowerShell72Module","getPowerShell72ModuleOutput"], () => require("./getPowerShell72Module"));
+
 export { GetPrivateEndpointConnectionArgs, GetPrivateEndpointConnectionResult, GetPrivateEndpointConnectionOutputArgs } from "./getPrivateEndpointConnection";
 export const getPrivateEndpointConnection: typeof import("./getPrivateEndpointConnection").getPrivateEndpointConnection = null as any;
 export const getPrivateEndpointConnectionOutput: typeof import("./getPrivateEndpointConnection").getPrivateEndpointConnectionOutput = null as any;
@@ -110,6 +120,11 @@ export { GetRunbookArgs, GetRunbookResult, GetRunbookOutputArgs } from "./getRun
 export const getRunbook: typeof import("./getRunbook").getRunbook = null as any;
 export const getRunbookOutput: typeof import("./getRunbook").getRunbookOutput = null as any;
 utilities.lazyLoad(exports, ["getRunbook","getRunbookOutput"], () => require("./getRunbook"));
+
+export { GetRuntimeEnvironmentArgs, GetRuntimeEnvironmentResult, GetRuntimeEnvironmentOutputArgs } from "./getRuntimeEnvironment";
+export const getRuntimeEnvironment: typeof import("./getRuntimeEnvironment").getRuntimeEnvironment = null as any;
+export const getRuntimeEnvironmentOutput: typeof import("./getRuntimeEnvironment").getRuntimeEnvironmentOutput = null as any;
+utilities.lazyLoad(exports, ["getRuntimeEnvironment","getRuntimeEnvironmentOutput"], () => require("./getRuntimeEnvironment"));
 
 export { GetScheduleArgs, GetScheduleResult, GetScheduleOutputArgs } from "./getSchedule";
 export const getSchedule: typeof import("./getSchedule").getSchedule = null as any;
@@ -156,6 +171,11 @@ export type JobSchedule = import("./jobSchedule").JobSchedule;
 export const JobSchedule: typeof import("./jobSchedule").JobSchedule = null as any;
 utilities.lazyLoad(exports, ["JobSchedule"], () => require("./jobSchedule"));
 
+export { ListAutomationAccountDeletedRunbooksArgs, ListAutomationAccountDeletedRunbooksResult, ListAutomationAccountDeletedRunbooksOutputArgs } from "./listAutomationAccountDeletedRunbooks";
+export const listAutomationAccountDeletedRunbooks: typeof import("./listAutomationAccountDeletedRunbooks").listAutomationAccountDeletedRunbooks = null as any;
+export const listAutomationAccountDeletedRunbooksOutput: typeof import("./listAutomationAccountDeletedRunbooks").listAutomationAccountDeletedRunbooksOutput = null as any;
+utilities.lazyLoad(exports, ["listAutomationAccountDeletedRunbooks","listAutomationAccountDeletedRunbooksOutput"], () => require("./listAutomationAccountDeletedRunbooks"));
+
 export { ListKeyByAutomationAccountArgs, ListKeyByAutomationAccountResult, ListKeyByAutomationAccountOutputArgs } from "./listKeyByAutomationAccount";
 export const listKeyByAutomationAccount: typeof import("./listKeyByAutomationAccount").listKeyByAutomationAccount = null as any;
 export const listKeyByAutomationAccountOutput: typeof import("./listKeyByAutomationAccount").listKeyByAutomationAccountOutput = null as any;
@@ -165,6 +185,16 @@ export { ModuleArgs } from "./module";
 export type Module = import("./module").Module;
 export const Module: typeof import("./module").Module = null as any;
 utilities.lazyLoad(exports, ["Module"], () => require("./module"));
+
+export { PackageArgs } from "./package";
+export type Package = import("./package").Package;
+export const Package: typeof import("./package").Package = null as any;
+utilities.lazyLoad(exports, ["Package"], () => require("./package"));
+
+export { PowerShell72ModuleArgs } from "./powerShell72Module";
+export type PowerShell72Module = import("./powerShell72Module").PowerShell72Module;
+export const PowerShell72Module: typeof import("./powerShell72Module").PowerShell72Module = null as any;
+utilities.lazyLoad(exports, ["PowerShell72Module"], () => require("./powerShell72Module"));
 
 export { PrivateEndpointConnectionArgs } from "./privateEndpointConnection";
 export type PrivateEndpointConnection = import("./privateEndpointConnection").PrivateEndpointConnection;
@@ -185,6 +215,11 @@ export { RunbookArgs } from "./runbook";
 export type Runbook = import("./runbook").Runbook;
 export const Runbook: typeof import("./runbook").Runbook = null as any;
 utilities.lazyLoad(exports, ["Runbook"], () => require("./runbook"));
+
+export { RuntimeEnvironmentArgs } from "./runtimeEnvironment";
+export type RuntimeEnvironment = import("./runtimeEnvironment").RuntimeEnvironment;
+export const RuntimeEnvironment: typeof import("./runtimeEnvironment").RuntimeEnvironment = null as any;
+utilities.lazyLoad(exports, ["RuntimeEnvironment"], () => require("./runtimeEnvironment"));
 
 export { ScheduleArgs } from "./schedule";
 export type Schedule = import("./schedule").Schedule;
@@ -227,6 +262,8 @@ import * as v20190601 from "./v20190601";
 import * as v20200113preview from "./v20200113preview";
 import * as v20210622 from "./v20210622";
 import * as v20220808 from "./v20220808";
+import * as v20230515preview from "./v20230515preview";
+import * as v20231101 from "./v20231101";
 
 export {
     v20151031,
@@ -235,6 +272,8 @@ export {
     v20200113preview,
     v20210622,
     v20220808,
+    v20230515preview,
+    v20231101,
 };
 
 const _module = {
@@ -263,6 +302,10 @@ const _module = {
                 return new JobSchedule(name, <any>undefined, { urn })
             case "azure-native:automation:Module":
                 return new Module(name, <any>undefined, { urn })
+            case "azure-native:automation:Package":
+                return new Package(name, <any>undefined, { urn })
+            case "azure-native:automation:PowerShell72Module":
+                return new PowerShell72Module(name, <any>undefined, { urn })
             case "azure-native:automation:PrivateEndpointConnection":
                 return new PrivateEndpointConnection(name, <any>undefined, { urn })
             case "azure-native:automation:Python2Package":
@@ -271,6 +314,8 @@ const _module = {
                 return new Python3Package(name, <any>undefined, { urn })
             case "azure-native:automation:Runbook":
                 return new Runbook(name, <any>undefined, { urn })
+            case "azure-native:automation:RuntimeEnvironment":
+                return new RuntimeEnvironment(name, <any>undefined, { urn })
             case "azure-native:automation:Schedule":
                 return new Schedule(name, <any>undefined, { urn })
             case "azure-native:automation:SoftwareUpdateConfigurationByName":

@@ -81,6 +81,10 @@ import * as pulumi from "@pulumi/pulumi";
          */
         ledgerName: string;
         /**
+         * SKU associated with the ledger
+         */
+        ledgerSku?: string;
+        /**
          * Type of Confidential Ledger
          */
         ledgerType?: string;

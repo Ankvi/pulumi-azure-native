@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets the specified private endpoint connection associated with the workspace.
  * Azure REST API version: 2023-02-28.
+ *
+ * Other available API versions: 2023-09-06, 2023-11-01.
  */
 export function getWorkspacePrivateEndpointConnection(args: GetWorkspacePrivateEndpointConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkspacePrivateEndpointConnectionResult> {
 
@@ -66,6 +68,8 @@ export interface GetWorkspacePrivateEndpointConnectionResult {
 /**
  * Gets the specified private endpoint connection associated with the workspace.
  * Azure REST API version: 2023-02-28.
+ *
+ * Other available API versions: 2023-09-06, 2023-11-01.
  */
 export function getWorkspacePrivateEndpointConnectionOutput(args: GetWorkspacePrivateEndpointConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkspacePrivateEndpointConnectionResult> {
     return pulumi.output(args).apply((a: any) => getWorkspacePrivateEndpointConnection(a, opts))

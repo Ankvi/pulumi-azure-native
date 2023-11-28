@@ -6735,20 +6735,6 @@ import * as pulumi from "@pulumi/pulumi";
     }
 
     /**
-     * Nfv version of the list of RouteTables to advertise the routes to.
-     */
-    export interface PropagatedRouteTableNfvResponse {
-        /**
-         * The list of resource ids of all the RouteTables.
-         */
-        ids?: RoutingConfigurationNfvSubResourceResponse[];
-        /**
-         * The list of labels.
-         */
-        labels?: string[];
-    }
-
-    /**
      * The list of RouteTables to advertise the routes to.
      */
     export interface PropagatedRouteTableResponse {
@@ -7253,38 +7239,6 @@ import * as pulumi from "@pulumi/pulumi";
          * Resource type.
          */
         type: string;
-    }
-
-    /**
-     * NFV version of Routing Configuration indicating the associated and propagated route tables for this connection.
-     */
-    export interface RoutingConfigurationNfvResponse {
-        /**
-         * The resource id RouteTable associated with this RoutingConfiguration.
-         */
-        associatedRouteTable?: RoutingConfigurationNfvSubResourceResponse;
-        /**
-         * The resource id of the RouteMap associated with this RoutingConfiguration for inbound learned routes.
-         */
-        inboundRouteMap?: RoutingConfigurationNfvSubResourceResponse;
-        /**
-         * The resource id of the RouteMap associated with this RoutingConfiguration for outbound advertised routes.
-         */
-        outboundRouteMap?: RoutingConfigurationNfvSubResourceResponse;
-        /**
-         * The list of RouteTables to advertise the routes to.
-         */
-        propagatedRouteTables?: PropagatedRouteTableNfvResponse;
-    }
-
-    /**
-     * Reference to RouteTableV3 associated with the connection.
-     */
-    export interface RoutingConfigurationNfvSubResourceResponse {
-        /**
-         * Resource ID.
-         */
-        resourceUri?: string;
     }
 
     /**

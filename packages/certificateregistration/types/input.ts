@@ -14,3 +14,4 @@ export interface AppServiceCertificateArgs {
     keyVaultSecretName?: pulumi.Input<string>;
 }
 
+
