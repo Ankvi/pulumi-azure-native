@@ -32,3 +32,9 @@ jobs:
       - name: Lint
         run: |
           make lint
+
+      - name: Publish packages
+        run: |
+          make publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
