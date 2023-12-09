@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Retrieves information about a gallery Application Definition.
  * Azure REST API version: 2022-03-03.
+ *
+ * Other available API versions: 2022-08-03.
  */
 export function getGalleryApplication(args: GetGalleryApplicationArgs, opts?: pulumi.InvokeOptions): Promise<GetGalleryApplicationResult> {
 
@@ -86,6 +88,8 @@ export interface GetGalleryApplicationResult {
 /**
  * Retrieves information about a gallery Application Definition.
  * Azure REST API version: 2022-03-03.
+ *
+ * Other available API versions: 2022-08-03.
  */
 export function getGalleryApplicationOutput(args: GetGalleryApplicationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGalleryApplicationResult> {
     return pulumi.output(args).apply((a: any) => getGalleryApplication(a, opts))

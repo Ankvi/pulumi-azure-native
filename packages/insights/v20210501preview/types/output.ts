@@ -1,5 +1,35 @@
 import * as pulumi from "@pulumi/pulumi";
     /**
+     * The diagnostic settings category resource.
+     */
+    export interface DiagnosticSettingsCategoryResourceResponse {
+        /**
+         * the collection of what category groups are supported.
+         */
+        categoryGroups?: string[];
+        /**
+         * The type of the diagnostic settings category.
+         */
+        categoryType?: string;
+        /**
+         * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+         */
+        id: string;
+        /**
+         * The name of the resource
+         */
+        name: string;
+        /**
+         * The system metadata related to this resource.
+         */
+        systemData: SystemDataResponse;
+        /**
+         * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+         */
+        type: string;
+    }
+
+    /**
      * Part of MultiTenantDiagnosticSettings. Specifies the settings for a particular log.
      */
     export interface LogSettingsResponse {

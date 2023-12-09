@@ -91,7 +91,7 @@ export class BackupVault extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:netapp:BackupVault" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:netapp:BackupVault" }, { type: "azure-native:netapp/v20230501preview:BackupVault" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(BackupVault.__pulumiType, name, resourceInputs, opts);
     }

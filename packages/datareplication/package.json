@@ -1,6 +1,6 @@
 {
     "name": "@kengachu-pulumi/azure-native-datareplication",
-    "version": "2.19.0",
+    "version": "2.21.2",
     "description": "Pulumi Azure Native package for datareplication",
     "keywords": [
         "pulumi",

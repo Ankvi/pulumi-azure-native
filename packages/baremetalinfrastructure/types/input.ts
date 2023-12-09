@@ -48,3 +48,4 @@ export interface StoragePropertiesArgs {
     workloadType?: pulumi.Input<string>;
 }
 
+

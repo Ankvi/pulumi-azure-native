@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Azure REST API version: 2022-04-01-preview.
+ *
+ * Other available API versions: 2023-11-01-preview.
  */
 export function getBillingHubServiceUsage(args: GetBillingHubServiceUsageArgs, opts?: pulumi.InvokeOptions): Promise<GetBillingHubServiceUsageResult> {
 
@@ -41,6 +43,8 @@ export interface GetBillingHubServiceUsageResult {
 }
 /**
  * Azure REST API version: 2022-04-01-preview.
+ *
+ * Other available API versions: 2023-11-01-preview.
  */
 export function getBillingHubServiceUsageOutput(args: GetBillingHubServiceUsageOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBillingHubServiceUsageResult> {
     return pulumi.output(args).apply((a: any) => getBillingHubServiceUsage(a, opts))

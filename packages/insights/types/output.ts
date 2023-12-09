@@ -45,10 +45,6 @@ export interface ActionGroupResponse {
      */
     actionGroupId: string;
     /**
-     * Predefined list of properties and configuration items for the action group.
-     */
-    actionProperties?: {[key: string]: string};
-    /**
      * the dictionary of custom properties to include with the post operation. These data are appended to the webhook payload.
      */
     webhookProperties?: {[key: string]: string};
@@ -886,6 +882,36 @@ export interface DestinationsSpecResponseAzureMonitorMetrics {
      * This name should be unique across all destinations (regardless of type) within the data collection rule.
      */
     name?: string;
+}
+
+/**
+ * The diagnostic settings category resource.
+ */
+export interface DiagnosticSettingsCategoryResourceResponse {
+    /**
+     * the collection of what category groups are supported.
+     */
+    categoryGroups?: string[];
+    /**
+     * The type of the diagnostic settings category.
+     */
+    categoryType?: string;
+    /**
+     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     */
+    id: string;
+    /**
+     * The name of the resource
+     */
+    name: string;
+    /**
+     * The system metadata related to this resource.
+     */
+    systemData: SystemDataResponse;
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+     */
+    type: string;
 }
 
 /**

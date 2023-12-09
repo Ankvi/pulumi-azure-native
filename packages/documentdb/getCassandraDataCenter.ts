@@ -5,7 +5,7 @@ import * as types from "./types";
  * Get the properties of a managed Cassandra data center.
  * Azure REST API version: 2023-04-15.
  *
- * Other available API versions: 2023-09-15, 2023-09-15-preview.
+ * Other available API versions: 2023-09-15, 2023-09-15-preview, 2023-11-15.
  */
 export function getCassandraDataCenter(args: GetCassandraDataCenterArgs, opts?: pulumi.InvokeOptions): Promise<GetCassandraDataCenterResult> {
 
@@ -57,7 +57,7 @@ export interface GetCassandraDataCenterResult {
  * Get the properties of a managed Cassandra data center.
  * Azure REST API version: 2023-04-15.
  *
- * Other available API versions: 2023-09-15, 2023-09-15-preview.
+ * Other available API versions: 2023-09-15, 2023-09-15-preview, 2023-11-15.
  */
 export function getCassandraDataCenterOutput(args: GetCassandraDataCenterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCassandraDataCenterResult> {
     return pulumi.output(args).apply((a: any) => getCassandraDataCenter(a, opts))

@@ -8586,6 +8586,9 @@ import * as pulumi from "@pulumi/pulumi";
     export interface SnapshotBackupAdditionalDetailsResponse {
         instantRPDetails?: string;
         instantRpRetentionRangeInDays?: number;
+        /**
+         * User assigned managed identity details
+         */
         userAssignedManagedIdentityDetails?: UserAssignedManagedIdentityDetailsResponse;
     }
 
@@ -8735,26 +8738,35 @@ import * as pulumi from "@pulumi/pulumi";
     }
 
     /**
-     * User assigned identity properties
+     * User assigned managed identity properties
      */
-    export interface UserAssignedIdentityResponse {
+    export interface UserAssignedIdentityPropertiesResponse {
         /**
          * The client ID of the assigned identity.
          */
-        clientId: string;
+        clientId?: string;
         /**
          * The principal ID of the assigned identity.
          */
-        principalId: string;
+        principalId?: string;
     }
 
+    /**
+     * User assigned managed identity details
+     */
     export interface UserAssignedManagedIdentityDetailsResponse {
+        /**
+         * The ARM id of the assigned identity.
+         */
         identityArmId?: string;
+        /**
+         * The name of the assigned identity.
+         */
         identityName?: string;
         /**
-         * User assigned identity properties
+         * User assigned managed identity properties
          */
-        userAssignedIdentityProperties?: UserAssignedIdentityResponse;
+        userAssignedIdentityProperties?: UserAssignedIdentityPropertiesResponse;
     }
 
     /**

@@ -71,7 +71,7 @@ export interface AlertProcessingRulePropertiesArgs {
     /**
      * Actions to be applied.
      */
-    actions: pulumi.Input<pulumi.Input<AddActionGroupsArgs | CorrelateAlertsArgs | RemoveAllActionGroupsArgs>[]>;
+    actions: pulumi.Input<pulumi.Input<AddActionGroupsArgs | RemoveAllActionGroupsArgs>[]>;
     /**
      * Conditions on which alerts will be filtered.
      */
@@ -157,52 +157,6 @@ export interface ConditionsArgs {
      * filter alerts by target resource type
      */
     targetResourceType?: pulumi.Input<ConditionArgs>;
-}
-
-/**
- * Add logic for alerts correlation.
- */
-export interface CorrelateAlertsArgs {
-    /**
-     * Action that should be applied.
-     * Expected value is 'CorrelateAlerts'.
-     */
-    actionType: pulumi.Input<"CorrelateAlerts">;
-    /**
-     * The list of conditions for the alerts correlations.
-     */
-    correlateBy: pulumi.Input<pulumi.Input<CorrelateByArgs>[]>;
-    /**
-     * The required duration (in ISO8601 format) for the alerts correlation.
-     */
-    correlationInterval: pulumi.Input<string>;
-    /**
-     * Indicates how to handle child alerts notifications.
-     */
-    notificationsForCorrelatedAlerts?: pulumi.Input<string | enums.NotificationsForCorrelatedAlerts>;
-    /**
-     * The priority of this correlation.
-     */
-    priority: pulumi.Input<number>;
-}
-/**
- * correlateAlertsArgsProvideDefaults sets the appropriate defaults for CorrelateAlertsArgs
- */
-export function correlateAlertsArgsProvideDefaults(val: CorrelateAlertsArgs): CorrelateAlertsArgs {
-    return {
-        ...val,
-        notificationsForCorrelatedAlerts: (val.notificationsForCorrelatedAlerts) ?? "SuppressAlways",
-    };
-}
-
-/**
- * The logic for the correlation.
- */
-export interface CorrelateByArgs {
-    /**
-     * The JPath of the property that the alerts should be correlated by.
-     */
-    field?: pulumi.Input<string>;
 }
 
 /**
@@ -512,6 +466,7 @@ export interface WeeklyRecurrenceArgs {
      */
     startTime?: pulumi.Input<string>;
 }
+
 
 
 

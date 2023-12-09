@@ -6,7 +6,7 @@ import * as types from "./types";
  * PNS credentials.
  * Azure REST API version: 2023-01-01-preview.
  *
- * Other available API versions: 2023-09-01.
+ * Other available API versions: 2023-09-01, 2023-10-01-preview.
  */
 export function getNamespacePnsCredentials(args: GetNamespacePnsCredentialsArgs, opts?: pulumi.InvokeOptions): Promise<GetNamespacePnsCredentialsResult> {
 
@@ -67,7 +67,7 @@ export interface GetNamespacePnsCredentialsResult {
  * PNS credentials.
  * Azure REST API version: 2023-01-01-preview.
  *
- * Other available API versions: 2023-09-01.
+ * Other available API versions: 2023-09-01, 2023-10-01-preview.
  */
 export function getNamespacePnsCredentialsOutput(args: GetNamespacePnsCredentialsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNamespacePnsCredentialsResult> {
     return pulumi.output(args).apply((a: any) => getNamespacePnsCredentials(a, opts))

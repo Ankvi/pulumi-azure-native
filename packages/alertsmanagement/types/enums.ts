@@ -22,7 +22,6 @@ export type ActionRuleType = (typeof ActionRuleType)[keyof typeof ActionRuleType
 export const ActionType = {
     AddActionGroups: "AddActionGroups",
     RemoveAllActionGroups: "RemoveAllActionGroups",
-    CorrelateAlerts: "CorrelateAlerts",
 } as const;
 
 /**
@@ -73,16 +72,6 @@ export const Field = {
  * Field for a given condition.
  */
 export type Field = (typeof Field)[keyof typeof Field];
-
-export const NotificationsForCorrelatedAlerts = {
-    NotifyAlways: "NotifyAlways",
-    SuppressAlways: "SuppressAlways",
-} as const;
-
-/**
- * Indicates how to handle child alerts notifications.
- */
-export type NotificationsForCorrelatedAlerts = (typeof NotificationsForCorrelatedAlerts)[keyof typeof NotificationsForCorrelatedAlerts];
 
 export const Operator = {
     Equals: "Equals",

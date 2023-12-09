@@ -5,7 +5,7 @@ import * as types from "./types";
  * Get a cost allocation rule by rule name and billing account or enterprise enrollment.
  * Azure REST API version: 2020-03-01-preview.
  *
- * Other available API versions: 2023-08-01.
+ * Other available API versions: 2023-08-01, 2023-11-01.
  */
 export function getCostAllocationRule(args: GetCostAllocationRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetCostAllocationRuleResult> {
 
@@ -52,7 +52,7 @@ export interface GetCostAllocationRuleResult {
  * Get a cost allocation rule by rule name and billing account or enterprise enrollment.
  * Azure REST API version: 2020-03-01-preview.
  *
- * Other available API versions: 2023-08-01.
+ * Other available API versions: 2023-08-01, 2023-11-01.
  */
 export function getCostAllocationRuleOutput(args: GetCostAllocationRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCostAllocationRuleResult> {
     return pulumi.output(args).apply((a: any) => getCostAllocationRule(a, opts))

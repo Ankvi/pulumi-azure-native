@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets the private endpoint connection for the Cloud Hsm Cluster.
  * Azure REST API version: 2022-08-31-preview.
+ *
+ * Other available API versions: 2023-12-10-preview.
  */
 export function getCloudHsmClusterPrivateEndpointConnection(args: GetCloudHsmClusterPrivateEndpointConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudHsmClusterPrivateEndpointConnectionResult> {
 
@@ -74,6 +76,8 @@ export interface GetCloudHsmClusterPrivateEndpointConnectionResult {
 /**
  * Gets the private endpoint connection for the Cloud Hsm Cluster.
  * Azure REST API version: 2022-08-31-preview.
+ *
+ * Other available API versions: 2023-12-10-preview.
  */
 export function getCloudHsmClusterPrivateEndpointConnectionOutput(args: GetCloudHsmClusterPrivateEndpointConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCloudHsmClusterPrivateEndpointConnectionResult> {
     return pulumi.output(args).apply((a: any) => getCloudHsmClusterPrivateEndpointConnection(a, opts))

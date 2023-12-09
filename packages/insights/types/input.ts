@@ -45,10 +45,6 @@ export interface ActionGroupArgs {
      */
     actionGroupId: pulumi.Input<string>;
     /**
-     * Predefined list of properties and configuration items for the action group.
-     */
-    actionProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
      * the dictionary of custom properties to include with the post operation. These data are appended to the webhook payload.
      */
     webhookProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;

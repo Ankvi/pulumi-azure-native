@@ -87,7 +87,7 @@ export interface AlertProcessingRulePropertiesResponse {
     /**
      * Actions to be applied.
      */
-    actions: (AddActionGroupsResponse | CorrelateAlertsResponse | RemoveAllActionGroupsResponse)[];
+    actions: (AddActionGroupsResponse | RemoveAllActionGroupsResponse)[];
     /**
      * Conditions on which alerts will be filtered.
      */
@@ -173,52 +173,6 @@ export interface ConditionsResponse {
      * filter alerts by target resource type
      */
     targetResourceType?: ConditionResponse;
-}
-
-/**
- * Add logic for alerts correlation.
- */
-export interface CorrelateAlertsResponse {
-    /**
-     * Action that should be applied.
-     * Expected value is 'CorrelateAlerts'.
-     */
-    actionType: "CorrelateAlerts";
-    /**
-     * The list of conditions for the alerts correlations.
-     */
-    correlateBy: CorrelateByResponse[];
-    /**
-     * The required duration (in ISO8601 format) for the alerts correlation.
-     */
-    correlationInterval: string;
-    /**
-     * Indicates how to handle child alerts notifications.
-     */
-    notificationsForCorrelatedAlerts?: string;
-    /**
-     * The priority of this correlation.
-     */
-    priority: number;
-}
-/**
- * correlateAlertsResponseProvideDefaults sets the appropriate defaults for CorrelateAlertsResponse
- */
-export function correlateAlertsResponseProvideDefaults(val: CorrelateAlertsResponse): CorrelateAlertsResponse {
-    return {
-        ...val,
-        notificationsForCorrelatedAlerts: (val.notificationsForCorrelatedAlerts) ?? "SuppressAlways",
-    };
-}
-
-/**
- * The logic for the correlation.
- */
-export interface CorrelateByResponse {
-    /**
-     * The JPath of the property that the alerts should be correlated by.
-     */
-    field?: string;
 }
 
 /**
@@ -640,6 +594,7 @@ export interface WeeklyRecurrenceResponse {
      */
     startTime?: string;
 }
+
 
 
 

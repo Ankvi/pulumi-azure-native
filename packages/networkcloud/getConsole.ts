@@ -5,7 +5,7 @@ import * as types from "./types";
  * Get properties of the provided virtual machine console.
  * Azure REST API version: 2023-05-01-preview.
  *
- * Other available API versions: 2023-07-01.
+ * Other available API versions: 2023-07-01, 2023-10-01-preview.
  */
 export function getConsole(args: GetConsoleArgs, opts?: pulumi.InvokeOptions): Promise<GetConsoleResult> {
 
@@ -98,7 +98,7 @@ export interface GetConsoleResult {
  * Get properties of the provided virtual machine console.
  * Azure REST API version: 2023-05-01-preview.
  *
- * Other available API versions: 2023-07-01.
+ * Other available API versions: 2023-07-01, 2023-10-01-preview.
  */
 export function getConsoleOutput(args: GetConsoleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConsoleResult> {
     return pulumi.output(args).apply((a: any) => getConsole(a, opts))

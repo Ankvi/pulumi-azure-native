@@ -1,6 +1,6 @@
 {
     "name": "@kengachu-pulumi/azure-native-migrate",
-    "version": "2.19.0",
+    "version": "2.21.2",
     "description": "Pulumi Azure Native package for migrate",
     "keywords": [
         "pulumi",

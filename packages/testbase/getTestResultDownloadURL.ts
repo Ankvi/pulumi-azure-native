@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Gets the download URL of the test result.
  * Azure REST API version: 2022-04-01-preview.
+ *
+ * Other available API versions: 2023-11-01-preview.
  */
 export function getTestResultDownloadURL(args: GetTestResultDownloadURLArgs, opts?: pulumi.InvokeOptions): Promise<GetTestResultDownloadURLResult> {
 
@@ -50,6 +52,8 @@ export interface GetTestResultDownloadURLResult {
 /**
  * Gets the download URL of the test result.
  * Azure REST API version: 2022-04-01-preview.
+ *
+ * Other available API versions: 2023-11-01-preview.
  */
 export function getTestResultDownloadURLOutput(args: GetTestResultDownloadURLOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTestResultDownloadURLResult> {
     return pulumi.output(args).apply((a: any) => getTestResultDownloadURL(a, opts))

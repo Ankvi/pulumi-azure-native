@@ -208,10 +208,21 @@ import * as pulumi from "@pulumi/pulumi";
         supportPlan?: string[];
     }
 
+    export interface KubernetesVersionProfileResponseProperties {
+        /**
+         * Provisioning state of the resource
+         */
+        provisioningState: string;
+        /**
+         * List of supported Kubernetes versions
+         */
+        values?: KubernetesVersionPropertiesResponse[];
+    }
+
     /**
      * Kubernetes version profile for given major.minor release
      */
-    export interface KubernetesVersionProfilePropertiesResponse {
+    export interface KubernetesVersionPropertiesResponse {
         /**
          * Capabilities on this kubernetes version
          */
@@ -230,17 +241,6 @@ import * as pulumi from "@pulumi/pulumi";
         version: string;
     }
 
-    export interface KubernetesVersionProfileResponseProperties {
-        /**
-         * Provisioning state of the resource
-         */
-        provisioningState: string;
-        /**
-         * List of supported Kubernetes versions
-         */
-        values?: KubernetesVersionProfilePropertiesResponse[];
-    }
-
     /**
      * Whether a particular kubernetes version's variant (CBLMariner, Windows, Windows2022) is ready or not 
      */
@@ -250,9 +250,9 @@ import * as pulumi from "@pulumi/pulumi";
          */
         errorMessage: string;
         /**
-         * The particular KubernetesVersion's Image's OS SKU (CBLMariner, Windows, Windows2022)
+         * Specifies the OS SKU used by the agent pool. The default is CBLMariner if OSType is Linux. The default is Windows2019 when OSType is Windows.
          */
-        osSku: string;
+        osSku?: string;
         /**
          * The particular KubernetesVersion's Image's OS Type (Linux, Windows)
          */
@@ -268,7 +268,6 @@ import * as pulumi from "@pulumi/pulumi";
     export function kubernetesVersionReadinessResponseProvideDefaults(val: KubernetesVersionReadinessResponse): KubernetesVersionReadinessResponse {
         return {
             ...val,
-            osSku: (val.osSku) ?? "CBLMariner",
             osType: (val.osType) ?? "Linux",
         };
     }
@@ -690,10 +689,21 @@ import * as pulumi from "@pulumi/pulumi";
         value: string;
     }
 
+    export interface VmSkuProfileResponseProperties {
+        /**
+         * Provisioning state of the resource
+         */
+        provisioningState: string;
+        /**
+         * Array of HybridAKS Support VM Skus
+         */
+        values?: VmSkuPropertiesResponse[];
+    }
+
     /**
      * The profile for supported VM skus
      */
-    export interface VmSkuProfilePropertiesResponse {
+    export interface VmSkuPropertiesResponse {
         /**
          * A name value pair to describe the specific vm's capability
          */
@@ -714,15 +724,4 @@ import * as pulumi from "@pulumi/pulumi";
          * The tier of the VM Family
          */
         tier: string;
-    }
-
-    export interface VmSkuProfileResponseProperties {
-        /**
-         * Provisioning state of the resource
-         */
-        provisioningState: string;
-        /**
-         * Array of HybridAKS Support VM Skus
-         */
-        values?: VmSkuProfilePropertiesResponse[];
     }

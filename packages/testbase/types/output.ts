@@ -88,6 +88,14 @@ export interface CommandResponse {
      */
     contentType: string;
     /**
+     * Specifies whether to enroll Intune before the command.
+     */
+    enrollIntuneBefore?: boolean;
+    /**
+     * Specifies whether to install first party applications before running the command.
+     */
+    install1PAppBefore?: boolean;
+    /**
      * Specifies the max run time of the command.
      */
     maxRunTime?: number;
@@ -95,6 +103,14 @@ export interface CommandResponse {
      * The name of the command.
      */
     name: string;
+    /**
+     * Specifies whether the command is assigned to be executed after in-place upgrade.
+     */
+    postUpgrade?: boolean;
+    /**
+     * Specifies whether the command is assigned to be executed before in-place upgrade.
+     */
+    preUpgrade?: boolean;
     /**
      * Specifies whether to restart the VM after the command executed.
      */
@@ -117,6 +133,235 @@ export interface DistributionGroupListReceiverValueResponse {
      * The list of distribution groups.
      */
     distributionGroups?: string[];
+}
+
+/**
+ * The Metadata of a single Intune App.
+ */
+export interface DraftPackageIntuneAppMetadataItemResponse {
+    /**
+     * Intune app id.
+     */
+    appId?: string;
+    /**
+     * Intune app name.
+     */
+    appName?: string;
+    /**
+     * Creation date of the app.
+     */
+    createDate?: string;
+    /**
+     * Ids of dependency apps.
+     */
+    dependencyIds?: string[];
+    /**
+     * Count of dependency apps.
+     */
+    dependentAppCount?: number;
+    /**
+     * Description of the app.
+     */
+    description?: string;
+    /**
+     * Expected exit codes returned from Intune App.
+     */
+    expectedExitCodes?: string[];
+    /**
+     * Install command.
+     */
+    installCommand?: string;
+    /**
+     * last processed time tickets.
+     */
+    lastProcessed?: number;
+    /**
+     * Minimum supported OS. The OS version must be greater than this version to run this app.
+     */
+    minimumSupportedOS?: string;
+    /**
+     * Owner of the app.
+     */
+    owner?: string;
+    /**
+     * Publisher of the app.
+     */
+    publisher?: string;
+    /**
+     * Setup file path.
+     */
+    setupFile?: string;
+    /**
+     * Extract status.
+     */
+    status?: string;
+    /**
+     * Uninstall command.
+     */
+    uninstallCommand?: string;
+    /**
+     * Intune app version.
+     */
+    version?: string;
+}
+
+/**
+ * The metadata of Intune app(s) used for generation.
+ */
+export interface DraftPackageIntuneAppMetadataResponse {
+    /**
+     * The Metadata of the Intune App through intunewin file uploading.
+     */
+    intuneApp?: DraftPackageIntuneAppMetadataItemResponse;
+    /**
+     * The Metadata of dependencies of the Intune App through intunewin file uploading.
+     */
+    intuneAppDependencies?: DraftPackageIntuneAppMetadataItemResponse[];
+}
+
+/**
+ * Metadata of the enrolled Intune app.
+ */
+export interface EnrolledIntuneAppResponse {
+    /**
+     * Intune app id.
+     */
+    appId: string;
+    /**
+     * Intune app name.
+     */
+    appName: string;
+    /**
+     * Intune app expected installation path.
+     */
+    expectedInstallationPath: string;
+}
+
+/**
+ * Properties of the definition of a first party application of the Test Base package.
+ */
+export interface FirstPartyAppDefinitionResponse {
+    /**
+     * The architecture of a first party application of a Test Base Account.
+     */
+    architecture?: string;
+    /**
+     * The channel info of a first party application of a Test Base Account.
+     */
+    channel?: string;
+    /**
+     * Specifies how the first party applications should be inter-operated with user's application.
+     */
+    interopExecutionMode?: string;
+    /**
+     * The media name of a first party application of a Test Base Account.
+     */
+    name?: string;
+    /**
+     * The ring info of a first party application of a Test Base Account.
+     */
+    ring?: string;
+}
+/**
+ * firstPartyAppDefinitionResponseProvideDefaults sets the appropriate defaults for FirstPartyAppDefinitionResponse
+ */
+export function firstPartyAppDefinitionResponseProvideDefaults(val: FirstPartyAppDefinitionResponse): FirstPartyAppDefinitionResponse {
+    return {
+        ...val,
+        interopExecutionMode: (val.interopExecutionMode) ?? "firstPartyAppWithTests",
+    };
+}
+
+/**
+ * Properties of the definition of a gallery application used in Test Base package.
+ */
+export interface GalleryAppDefinitionResponse {
+    /**
+     * Whether the disclaimer of the gallery application is accepted.
+     */
+    isConsented?: boolean;
+    /**
+     * The SKU id of the gallery application.
+     */
+    skuId: string;
+}
+/**
+ * galleryAppDefinitionResponseProvideDefaults sets the appropriate defaults for GalleryAppDefinitionResponse
+ */
+export function galleryAppDefinitionResponseProvideDefaults(val: GalleryAppDefinitionResponse): GalleryAppDefinitionResponse {
+    return {
+        ...val,
+        isConsented: (val.isConsented) ?? false,
+    };
+}
+
+/**
+ * The information of a highlighted file that user should pay attention to.
+ */
+export interface HighlightedFileResponse {
+    /**
+     * The path of the highlighted file.
+     */
+    path: string;
+    /**
+     * The name of sections to highlight.
+     */
+    sections?: string[];
+    /**
+     * A flag to save whether this file is viewed by user.
+     */
+    visited?: boolean;
+}
+/**
+ * highlightedFileResponseProvideDefaults sets the appropriate defaults for HighlightedFileResponse
+ */
+export function highlightedFileResponseProvideDefaults(val: HighlightedFileResponse): HighlightedFileResponse {
+    return {
+        ...val,
+        visited: (val.visited) ?? false,
+    };
+}
+
+/**
+ * The image validation result.
+ */
+export interface ImageValidationResultsResponse {
+    /**
+     * The validation results of the image.
+     */
+    results?: VerificationResultResponse[];
+}
+
+/**
+ * Specifies the baseline os and target os for in-place upgrade tests.
+ */
+export interface InplaceUpgradeOSInfoResponse {
+    /**
+     * Specifies the baseline os for in-place upgrade tests.
+     */
+    baselineOS?: OsPropertiesResponse;
+    /**
+     * Specifies the target os for in-place upgrade tests.
+     */
+    targetOS?: string;
+}
+
+/**
+ * The metadata of Intune enrollment.
+ */
+export interface IntuneEnrollmentMetadataResponse {
+    /**
+     * The enrolled Intune apps.
+     */
+    appList?: EnrolledIntuneAppResponse[];
+    /**
+     * The id of the Intune enrollment credential.
+     */
+    credentialId?: string;
+    /**
+     * The expected duration of Intune applications and policies deployment.
+     */
+    expectedDeploymentDurationInMinute?: number;
 }
 
 /**
@@ -152,6 +397,28 @@ export interface NotificationReceiverValueResponse {
 }
 
 /**
+ * The properties of an operating system.
+ */
+export interface OsPropertiesResponse {
+    /**
+     * The name of the custom image resource.
+     */
+    customImageDisplayName: string;
+    /**
+     * Specify the referenced Test Base Custom Image Id if available.
+     */
+    customImageId?: string;
+    /**
+     * The name of the OS.
+     */
+    osName?: string;
+    /**
+     * The properties of the OS release.
+     */
+    releaseProperties?: ReleasePropertiesResponse;
+}
+
+/**
  * The validation results. There's validation on package when it's created or updated.
  */
 export interface PackageValidationResultResponse {
@@ -167,6 +434,40 @@ export interface PackageValidationResultResponse {
      * Validation name.
      */
     validationName: string;
+}
+
+export interface PreReleaseAccessRequestSpecResponse {
+    city?: string;
+    companyWebsite?: string;
+    countryAndRegion?: string;
+    email?: string;
+    engagements?: string[];
+    organizationName?: string;
+    stateOrProvince?: string;
+    streetAddress?: string;
+    zipCode?: string;
+}
+
+/**
+ * The properties of an operating system release.
+ */
+export interface ReleasePropertiesResponse {
+    /**
+     * The build number of the OS release.
+     */
+    buildNumber?: string;
+    /**
+     * The build revision of the OS release.
+     */
+    buildRevision?: string;
+    /**
+     * The name of the OS release.
+     */
+    releaseName?: string;
+    /**
+     * The release version date of the OS release.
+     */
+    releaseVersionDate?: string;
 }
 
 /**
@@ -218,6 +519,20 @@ export interface SystemDataResponse {
 }
 
 /**
+ * Specifies current state of tabs.
+ */
+export interface TabStateResponse {
+    /**
+     * Current tab.
+     */
+    currentTab?: string;
+    /**
+     * visited tabs.
+     */
+    visitedTabs?: string[];
+}
+
+/**
  * The information of the target OS to be tested.
  */
 export interface TargetOSInfoResponse {
@@ -226,9 +541,17 @@ export interface TargetOSInfoResponse {
      */
     baselineOSs?: string[];
     /**
+     * Insider Channel Ids. Only used for feature update.
+     */
+    insiderChannelIds?: string[];
+    /**
      * Specifies the OS update type to test against, e.g., 'Security updates' or 'Feature updates'.
      */
     osUpdateType: string;
+    /**
+     * Specifies the ids of the target OSs from Custom Images to be tested.
+     */
+    targetOSImageIds?: string[];
     /**
      * Specifies the target OSs to be tested.
      */
@@ -310,3 +633,22 @@ export interface UserObjectReceiverValueResponse {
      */
     userObjectIds?: string[];
 }
+
+/**
+ * The detailed result of a validation or rule checking.
+ */
+export interface VerificationResultResponse {
+    /**
+     * Message for clarification.
+     */
+    message?: string;
+    /**
+     * Indicates if the validation or rule checking is passed.
+     */
+    result: string;
+    /**
+     * The name of the verification rule.
+     */
+    verificationName?: string;
+}
+

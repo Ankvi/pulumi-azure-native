@@ -1,6 +1,6 @@
 {
     "name": "@kengachu-pulumi/azure-native-blueprint",
-    "version": "2.19.0",
+    "version": "2.21.2",
     "description": "Pulumi Azure Native package for blueprint",
     "keywords": [
         "pulumi",

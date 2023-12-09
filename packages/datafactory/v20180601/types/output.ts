@@ -3022,7 +3022,7 @@ import * as pulumi from "@pulumi/pulumi";
          */
         functionName: any;
         /**
-         * Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
+         * Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: dictionary (or Expression with resultType dictionary).
          */
         headers?: any;
         /**
@@ -3089,7 +3089,7 @@ import * as pulumi from "@pulumi/pulumi";
          */
         encryptedCredential?: string;
         /**
-         * The endpoint of the Azure Function App. URL will be in the format https://<accountName>.azurewebsites.net.
+         * The endpoint of the Azure Function App. URL will be in the format https://<accountName>.azurewebsites.net. Type: string (or Expression with resultType string).
          */
         functionAppUrl: any;
         /**
@@ -3101,7 +3101,7 @@ import * as pulumi from "@pulumi/pulumi";
          */
         parameters?: {[key: string]: ParameterSpecificationResponse};
         /**
-         * Allowed token audiences for azure function.
+         * Allowed token audiences for azure function. Type: string (or Expression with resultType string).
          */
         resourceId?: any;
         /**
@@ -3233,7 +3233,7 @@ import * as pulumi from "@pulumi/pulumi";
          */
         continueOnStepFailure?: any;
         /**
-         * Dictionary used for changing data path assignments without retraining. Values will be passed in the dataPathAssignments property of the published pipeline execution request. Type: object with key value pairs (or Expression with resultType object).
+         * Dictionary used for changing data path assignments without retraining. Values will be passed in the dataPathAssignments property of the published pipeline execution request. Type: object (or Expression with resultType object).
          */
         dataPathAssignments?: any;
         /**
@@ -4462,7 +4462,7 @@ import * as pulumi from "@pulumi/pulumi";
          */
         maxConcurrentConnections?: any;
         /**
-         * The partition mechanism that will be used for Sql read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange".
+         * The partition mechanism that will be used for Sql read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange". Type: string (or Expression with resultType string).
          */
         partitionOption?: any;
         /**
@@ -5356,7 +5356,7 @@ import * as pulumi from "@pulumi/pulumi";
          */
         password: AzureKeyVaultSecretReferenceResponse | SecureStringResponse;
         /**
-         * The server name of data source access.
+         * The server name of data source access. Type: string.
          */
         targetName: any;
         /**
@@ -5365,7 +5365,7 @@ import * as pulumi from "@pulumi/pulumi";
          */
         type: "CmdkeySetup";
         /**
-         * The user name of data source access.
+         * The user name of data source access. Type: string.
          */
         userName: any;
     }
@@ -10818,7 +10818,7 @@ import * as pulumi from "@pulumi/pulumi";
          */
         clusterResourceGroup: any;
         /**
-         * Number of worker/data nodes in the cluster. Suggestion value: 4. Type: string (or Expression with resultType string).
+         * Number of worker/data nodes in the cluster. Suggestion value: 4. Type: int (or Expression with resultType int).
          */
         clusterSize: any;
         /**
@@ -11604,7 +11604,7 @@ import * as pulumi from "@pulumi/pulumi";
          */
         annotations?: any[];
         /**
-         * The additional HTTP headers in the request to RESTful API used for authorization. Type: object (or Expression with resultType object).
+         * The additional HTTP headers in the request to RESTful API used for authorization. Type: key value pairs (value should be string type).
          */
         authHeaders?: any;
         /**
@@ -15164,7 +15164,7 @@ import * as pulumi from "@pulumi/pulumi";
          */
         annotations?: any[];
         /**
-         * The additional HTTP headers in the request to RESTful API used for authorization. Type: object (or Expression with resultType object).
+         * The additional HTTP headers in the request to RESTful API used for authorization. Type: key value pairs (value should be string type).
          */
         authHeaders?: any;
         /**
@@ -17940,7 +17940,7 @@ import * as pulumi from "@pulumi/pulumi";
      */
     export interface RestSinkResponse {
         /**
-         * The additional HTTP headers in the request to the RESTful API. Type: string (or Expression with resultType string).
+         * The additional HTTP headers in the request to the RESTful API. Type: key value pairs (value should be string type).
          */
         additionalHeaders?: any;
         /**
@@ -17948,7 +17948,7 @@ import * as pulumi from "@pulumi/pulumi";
          */
         disableMetricsCollection?: any;
         /**
-         * Http Compression Type to Send data in compressed format with Optimal Compression Level, Default is None. And The Only Supported option is Gzip. 
+         * Http Compression Type to Send data in compressed format with Optimal Compression Level, Default is None. And The Only Supported option is Gzip. Type: string (or Expression with resultType string).
          */
         httpCompressionType?: any;
         /**
@@ -17995,7 +17995,7 @@ import * as pulumi from "@pulumi/pulumi";
      */
     export interface RestSourceResponse {
         /**
-         * Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+         * Specifies the additional columns to be added to source data. Type: key value pairs (value should be string type).
          */
         additionalColumns?: any;
         /**
@@ -21510,7 +21510,7 @@ import * as pulumi from "@pulumi/pulumi";
          */
         maxConcurrentConnections?: any;
         /**
-         * The partition mechanism that will be used for Sql read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange".
+         * The partition mechanism that will be used for Sql read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange". Type: string (or Expression with resultType string).
          */
         partitionOption?: any;
         /**
@@ -21628,7 +21628,7 @@ import * as pulumi from "@pulumi/pulumi";
          */
         writeBatchTimeout?: any;
         /**
-         * White behavior when copying data into azure SQL MI. Type: SqlWriteBehaviorEnum (or Expression with resultType SqlWriteBehaviorEnum)
+         * White behavior when copying data into azure SQL MI. Type: string (or Expression with resultType string)
          */
         writeBehavior?: any;
     }
@@ -21654,7 +21654,7 @@ import * as pulumi from "@pulumi/pulumi";
          */
         maxConcurrentConnections?: any;
         /**
-         * The partition mechanism that will be used for Sql read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange".
+         * The partition mechanism that will be used for Sql read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange". Type: string (or Expression with resultType string).
          */
         partitionOption?: any;
         /**
@@ -21827,7 +21827,7 @@ import * as pulumi from "@pulumi/pulumi";
          */
         writeBatchTimeout?: any;
         /**
-         * Write behavior when copying data into sql server. Type: SqlWriteBehaviorEnum (or Expression with resultType SqlWriteBehaviorEnum)
+         * Write behavior when copying data into sql server. Type: string (or Expression with resultType string).
          */
         writeBehavior?: any;
     }
@@ -21853,7 +21853,7 @@ import * as pulumi from "@pulumi/pulumi";
          */
         maxConcurrentConnections?: any;
         /**
-         * The partition mechanism that will be used for Sql read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange".
+         * The partition mechanism that will be used for Sql read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange". Type: string (or Expression with resultType string).
          */
         partitionOption?: any;
         /**
@@ -22059,7 +22059,7 @@ import * as pulumi from "@pulumi/pulumi";
          */
         writeBatchTimeout?: any;
         /**
-         * Write behavior when copying data into sql. Type: SqlWriteBehaviorEnum (or Expression with resultType SqlWriteBehaviorEnum)
+         * Write behavior when copying data into sql. Type: string (or Expression with resultType string).
          */
         writeBehavior?: any;
     }
@@ -22085,7 +22085,7 @@ import * as pulumi from "@pulumi/pulumi";
          */
         maxConcurrentConnections?: any;
         /**
-         * The partition mechanism that will be used for Sql read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange".
+         * The partition mechanism that will be used for Sql read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange". Type: string (or Expression with resultType string).
          */
         partitionOption?: any;
         /**
@@ -23869,9 +23869,13 @@ import * as pulumi from "@pulumi/pulumi";
          */
         disableCertValidation?: boolean;
         /**
-         * Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
+         * Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: dictionary (or Expression with resultType dictionary).
          */
         headers?: any;
+        /**
+         * Timeout for the HTTP request to get a response. Format is in TimeSpan (hh:mm:ss). This value is the timeout to get a response, not the activity timeout. The default value is 00:01:00 (1 minute). The range is from 1 to 10 minutes
+         */
+        httpRequestTimeout?: any;
         /**
          * Linked service reference.
          */
@@ -23900,6 +23904,10 @@ import * as pulumi from "@pulumi/pulumi";
          * Activity state. This is an optional property and if not provided, the state will be Active by default.
          */
         state?: string;
+        /**
+         * Option to disable invoking HTTP GET on location given in response header of a HTTP 202 Response. If set true, it stops invoking HTTP GET on http location given in response header. If set false then continues to invoke HTTP GET call on location given in http response headers.
+         */
+        turnOffAsync?: boolean;
         /**
          * Type of activity.
          * Expected value is 'WebActivity'.
@@ -23997,7 +24005,7 @@ import * as pulumi from "@pulumi/pulumi";
          */
         description?: string;
         /**
-         * Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
+         * Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: dictionary (or Expression with resultType dictionary).
          */
         headers?: any;
         /**

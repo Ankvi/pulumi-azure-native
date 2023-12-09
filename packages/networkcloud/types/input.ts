@@ -140,21 +140,6 @@ export function bgpAdvertisementArgsProvideDefaults(val: BgpAdvertisementArgs): 
     };
 }
 
-export interface BgpPeerArgs {
-    /**
-     * The ASN (Autonomous System Number) of the BGP peer.
-     */
-    asNumber: pulumi.Input<number>;
-    /**
-     * The password for this peering neighbor. It defaults to no password if not specified.
-     */
-    password?: pulumi.Input<string>;
-    /**
-     * The IPv4 or IPv6 address to peer with the associated CNI Network. The IP version type will drive a peering with the same version type from the Default CNI Network. For example, IPv4 to IPv4 or IPv6 to IPv6.
-     */
-    peerIp: pulumi.Input<string>;
-}
-
 export interface BgpServiceLoadBalancerConfigurationArgs {
     /**
      * The association of IP address pools to the communities and peers, allowing for announcement of IPs.
@@ -181,42 +166,6 @@ export function bgpServiceLoadBalancerConfigurationArgsProvideDefaults(val: BgpS
         ...val,
         fabricPeeringEnabled: (val.fabricPeeringEnabled) ?? "True",
     };
-}
-
-export interface CniBgpConfigurationArgs {
-    /**
-     * The list of BgpPeer entities that the Hybrid AKS cluster will peer with in addition to peering that occurs automatically with the switch fabric.
-     */
-    bgpPeers?: pulumi.Input<pulumi.Input<BgpPeerArgs>[]>;
-    /**
-     * The list of prefix community advertisement properties. Each prefix community specifies a prefix, and the
-     * communities that should be associated with that prefix when it is announced.
-     */
-    communityAdvertisements?: pulumi.Input<pulumi.Input<CommunityAdvertisementArgs>[]>;
-    /**
-     * The password of the Calico node mesh. It defaults to a randomly-generated string when not provided.
-     */
-    nodeMeshPassword?: pulumi.Input<string>;
-    /**
-     * The subnet blocks in CIDR format for Kubernetes service external IPs to be advertised over BGP.
-     */
-    serviceExternalPrefixes?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The subnet blocks in CIDR format for Kubernetes load balancers. Load balancer IPs will only be advertised if they
-     * are within one of these blocks.
-     */
-    serviceLoadBalancerPrefixes?: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-export interface CommunityAdvertisementArgs {
-    /**
-     * The list of community strings to announce with this prefix.
-     */
-    communities: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The subnet in CIDR format for which properties should be advertised.
-     */
-    subnetPrefix: pulumi.Input<string>;
 }
 
 export interface ControlPlaneNodeConfigurationArgs {

@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Get the Backup Vault
  * Azure REST API version: 2022-11-01-preview.
+ *
+ * Other available API versions: 2023-05-01-preview.
  */
 export function getBackupVault(args: GetBackupVaultArgs, opts?: pulumi.InvokeOptions): Promise<GetBackupVaultResult> {
 
@@ -66,6 +68,8 @@ export interface GetBackupVaultResult {
 /**
  * Get the Backup Vault
  * Azure REST API version: 2022-11-01-preview.
+ *
+ * Other available API versions: 2023-05-01-preview.
  */
 export function getBackupVaultOutput(args: GetBackupVaultOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackupVaultResult> {
     return pulumi.output(args).apply((a: any) => getBackupVault(a, opts))

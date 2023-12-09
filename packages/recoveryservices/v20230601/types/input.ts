@@ -4544,6 +4544,9 @@ import * as pulumi from "@pulumi/pulumi";
     export interface SnapshotBackupAdditionalDetailsArgs {
         instantRPDetails?: pulumi.Input<string>;
         instantRpRetentionRangeInDays?: pulumi.Input<number>;
+        /**
+         * User assigned managed identity details
+         */
         userAssignedManagedIdentityDetails?: pulumi.Input<UserAssignedManagedIdentityDetailsArgs>;
     }
 
@@ -4620,9 +4623,36 @@ import * as pulumi from "@pulumi/pulumi";
         tieringMode?: pulumi.Input<string | enums.TieringMode>;
     }
 
+    /**
+     * User assigned managed identity properties
+     */
+    export interface UserAssignedIdentityPropertiesArgs {
+        /**
+         * The client ID of the assigned identity.
+         */
+        clientId?: pulumi.Input<string>;
+        /**
+         * The principal ID of the assigned identity.
+         */
+        principalId?: pulumi.Input<string>;
+    }
+
+    /**
+     * User assigned managed identity details
+     */
     export interface UserAssignedManagedIdentityDetailsArgs {
+        /**
+         * The ARM id of the assigned identity.
+         */
         identityArmId?: pulumi.Input<string>;
+        /**
+         * The name of the assigned identity.
+         */
         identityName?: pulumi.Input<string>;
+        /**
+         * User assigned managed identity properties
+         */
+        userAssignedIdentityProperties?: pulumi.Input<UserAssignedIdentityPropertiesArgs>;
     }
 
     /**

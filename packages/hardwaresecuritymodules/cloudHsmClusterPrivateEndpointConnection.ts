@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * The private endpoint connection resource.
  * Azure REST API version: 2022-08-31-preview.
+ *
+ * Other available API versions: 2023-12-10-preview.
  */
 export class CloudHsmClusterPrivateEndpointConnection extends pulumi.CustomResource {
     /**
@@ -107,7 +109,7 @@ export class CloudHsmClusterPrivateEndpointConnection extends pulumi.CustomResou
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:hardwaresecuritymodules/v20220831preview:CloudHsmClusterPrivateEndpointConnection" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:hardwaresecuritymodules/v20220831preview:CloudHsmClusterPrivateEndpointConnection" }, { type: "azure-native:hardwaresecuritymodules/v20231210preview:CloudHsmClusterPrivateEndpointConnection" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(CloudHsmClusterPrivateEndpointConnection.__pulumiType, name, resourceInputs, opts);
     }

@@ -155,17 +155,6 @@ export function bgpAdvertisementResponseProvideDefaults(val: BgpAdvertisementRes
     };
 }
 
-export interface BgpPeerResponse {
-    /**
-     * The ASN (Autonomous System Number) of the BGP peer.
-     */
-    asNumber: number;
-    /**
-     * The IPv4 or IPv6 address to peer with the associated CNI Network. The IP version type will drive a peering with the same version type from the Default CNI Network. For example, IPv4 to IPv4 or IPv6 to IPv6.
-     */
-    peerIp: string;
-}
-
 export interface BgpServiceLoadBalancerConfigurationResponse {
     /**
      * The association of IP address pools to the communities and peers, allowing for announcement of IPs.
@@ -265,38 +254,6 @@ export interface ClusterCapacityResponse {
      * The total memory supported by this cluster for workload use.
      */
     totalMemoryGB?: number;
-}
-
-export interface CniBgpConfigurationResponse {
-    /**
-     * The list of BgpPeer entities that the Hybrid AKS cluster will peer with in addition to peering that occurs automatically with the switch fabric.
-     */
-    bgpPeers?: BgpPeerResponse[];
-    /**
-     * The list of prefix community advertisement properties. Each prefix community specifies a prefix, and the
-     * communities that should be associated with that prefix when it is announced.
-     */
-    communityAdvertisements?: CommunityAdvertisementResponse[];
-    /**
-     * The subnet blocks in CIDR format for Kubernetes service external IPs to be advertised over BGP.
-     */
-    serviceExternalPrefixes?: string[];
-    /**
-     * The subnet blocks in CIDR format for Kubernetes load balancers. Load balancer IPs will only be advertised if they
-     * are within one of these blocks.
-     */
-    serviceLoadBalancerPrefixes?: string[];
-}
-
-export interface CommunityAdvertisementResponse {
-    /**
-     * The list of community strings to announce with this prefix.
-     */
-    communities: string[];
-    /**
-     * The subnet in CIDR format for which properties should be advertised.
-     */
-    subnetPrefix: string;
 }
 
 export interface ControlPlaneNodeConfigurationResponse {
@@ -812,68 +769,6 @@ export interface NicResponse {
      * The name of the NIC/interface.
      */
     name: string;
-}
-
-export interface NodeConfigurationResponse {
-    /**
-     * The resource ID of the agent pool that contains the nodes in this configuration.
-     */
-    agentPoolId: string;
-    /**
-     * The name of the agent pool that contains the nodes in this configuration.
-     */
-    agentPoolName: string;
-    /**
-     * The number of CPU cores in the virtual machine.
-     */
-    cpuCores: number;
-    /**
-     * The root disk size of the virtual machine in GB.
-     */
-    diskSizeGB: number;
-    /**
-     * The memory size of the virtual machine in GB.
-     */
-    memorySizeGB: number;
-    /**
-     * Field deprecated, use agentPoolName instead. This field will be removed in a future version but will reflect the name of the agent pool that contains the nodes in this configuration.
-     */
-    nodePoolName: string;
-    /**
-     * The list of nodes that utilize this configuration.
-     */
-    nodes: NodeResponse[];
-    /**
-     * The number of virtual machines that use this configuration.
-     */
-    vmCount: number;
-    /**
-     * The name of the VM size supplied during the creation of the cluster.
-     */
-    vmSize: string;
-}
-
-export interface NodeResponse {
-    /**
-     * The resource ID of the bare metal machine that hosts this node.
-     */
-    bareMetalMachineId: string;
-    /**
-     * The machine image last used to deploy this node.
-     */
-    imageId: string;
-    /**
-     * The list of network attachments to the virtual machine.
-     */
-    networkAttachments: NetworkAttachmentResponse[];
-    /**
-     * The name of this node, as realized in the Hybrid AKS cluster.
-     */
-    nodeName: string;
-    /**
-     * The power state (On | Off) of the node.
-     */
-    powerState: string;
 }
 
 export interface OsDiskResponse {
