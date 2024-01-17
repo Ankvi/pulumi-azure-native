@@ -63,6 +63,7 @@ utilities.lazyLoad(exports, ["Space"], () => require("./space"));
 
 
 
+
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {

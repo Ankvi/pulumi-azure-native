@@ -41,6 +41,7 @@ utilities.lazyLoad(exports, ["TransactionNode"], () => require("./transactionNod
 export * from "./types/enums";
 
 
+
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {

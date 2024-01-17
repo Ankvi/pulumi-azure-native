@@ -326,6 +326,7 @@ utilities.lazyLoad(exports, ["WorkloadInstance"], () => require("./workloadInsta
 export * from "./types/enums";
 
 
+
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {

@@ -56,6 +56,7 @@ utilities.lazyLoad(exports, ["ResourceGuard"], () => require("./resourceGuard"))
 export * from "./types/enums";
 
 
+
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {

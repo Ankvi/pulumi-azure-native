@@ -41,6 +41,7 @@ utilities.lazyLoad(exports, ["StorageTarget"], () => require("./storageTarget"))
 export * from "./types/enums";
 
 
+
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {

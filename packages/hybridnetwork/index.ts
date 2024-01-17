@@ -181,6 +181,7 @@ utilities.lazyLoad(exports, ["VendorSkus"], () => require("./vendorSkus"));
 export * from "./types/enums";
 
 
+
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {

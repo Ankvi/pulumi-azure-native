@@ -33,6 +33,7 @@ utilities.lazyLoad(exports, ["Pipeline"], () => require("./pipeline"));
 
 
 
+
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {

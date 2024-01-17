@@ -226,6 +226,7 @@ utilities.lazyLoad(exports, ["ManagedEnvironmentsStorage"], () => require("./man
 export * from "./types/enums";
 
 
+
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
