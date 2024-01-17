@@ -70,34 +70,7 @@ utilities.lazyLoad(exports, ["Server"], () => require("./server"));
 // Export enums:
 export * from "./types/enums";
 
-// Export sub-modules:
-import * as v20171201 from "./v20171201";
-import * as v20180601privatepreview from "./v20180601privatepreview";
-import * as v20200701preview from "./v20200701preview";
-import * as v20200701privatepreview from "./v20200701privatepreview";
-import * as v20210501 from "./v20210501";
-import * as v20210501preview from "./v20210501preview";
-import * as v20211201preview from "./v20211201preview";
-import * as v20220101 from "./v20220101";
-import * as v20220930preview from "./v20220930preview";
-import * as v20230601preview from "./v20230601preview";
-import * as v20230630 from "./v20230630";
-import * as v20231001preview from "./v20231001preview";
 
-export {
-    v20171201,
-    v20180601privatepreview,
-    v20200701preview,
-    v20200701privatepreview,
-    v20210501,
-    v20210501preview,
-    v20211201preview,
-    v20220101,
-    v20220930preview,
-    v20230601preview,
-    v20230630,
-    v20231001preview,
-};
 
 const _module = {
     version: utilities.getVersion(),
