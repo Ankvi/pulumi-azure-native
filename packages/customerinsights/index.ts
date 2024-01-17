@@ -135,12 +135,6 @@ utilities.lazyLoad(exports, ["View"], () => require("./view"));
 // Export enums:
 export * from "./types/enums";
 
-// Export sub-modules:
-import * as v20170426 from "./v20170426";
-
-export {
-    v20170426,
-};
 
 const _module = {
     version: utilities.getVersion(),

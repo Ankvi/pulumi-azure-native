@@ -12,12 +12,6 @@ export const getDocumentProcessorOutput: typeof import("./getDocumentProcessor")
 utilities.lazyLoad(exports, ["getDocumentProcessor","getDocumentProcessorOutput"], () => require("./getDocumentProcessor"));
 
 
-// Export sub-modules:
-import * as v20220915preview from "./v20220915preview";
-
-export {
-    v20220915preview,
-};
 
 const _module = {
     version: utilities.getVersion(),

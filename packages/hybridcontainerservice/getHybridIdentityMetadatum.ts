@@ -5,7 +5,7 @@ import * as types from "./types";
  * Get the hybrid identity metadata proxy resource.
  * Azure REST API version: 2022-09-01-preview.
  *
- * Other available API versions: 2022-05-01-preview, 2023-11-15-preview.
+ * Other available API versions: 2022-05-01-preview, 2023-11-15-preview, 2024-01-01.
  */
 export function getHybridIdentityMetadatum(args: GetHybridIdentityMetadatumArgs, opts?: pulumi.InvokeOptions): Promise<GetHybridIdentityMetadatumResult> {
 
@@ -73,7 +73,7 @@ export interface GetHybridIdentityMetadatumResult {
  * Get the hybrid identity metadata proxy resource.
  * Azure REST API version: 2022-09-01-preview.
  *
- * Other available API versions: 2022-05-01-preview, 2023-11-15-preview.
+ * Other available API versions: 2022-05-01-preview, 2023-11-15-preview, 2024-01-01.
  */
 export function getHybridIdentityMetadatumOutput(args: GetHybridIdentityMetadatumOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHybridIdentityMetadatumResult> {
     return pulumi.output(args).apply((a: any) => getHybridIdentityMetadatum(a, opts))

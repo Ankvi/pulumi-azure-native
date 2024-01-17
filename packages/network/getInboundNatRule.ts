@@ -5,7 +5,7 @@ import * as types from "./types";
  * Gets the specified load balancer inbound NAT rule.
  * Azure REST API version: 2023-02-01.
  *
- * Other available API versions: 2019-06-01, 2023-04-01, 2023-05-01, 2023-06-01.
+ * Other available API versions: 2019-06-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01.
  */
 export function getInboundNatRule(args: GetInboundNatRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetInboundNatRuleResult> {
 
@@ -110,7 +110,7 @@ export interface GetInboundNatRuleResult {
  * Gets the specified load balancer inbound NAT rule.
  * Azure REST API version: 2023-02-01.
  *
- * Other available API versions: 2019-06-01, 2023-04-01, 2023-05-01, 2023-06-01.
+ * Other available API versions: 2019-06-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01.
  */
 export function getInboundNatRuleOutput(args: GetInboundNatRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInboundNatRuleResult> {
     return pulumi.output(args).apply((a: any) => getInboundNatRule(a, opts))

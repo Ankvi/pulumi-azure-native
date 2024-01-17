@@ -12,12 +12,6 @@ export const getAzureMonitorWorkspaceOutput: typeof import("./getAzureMonitorWor
 utilities.lazyLoad(exports, ["getAzureMonitorWorkspace","getAzureMonitorWorkspaceOutput"], () => require("./getAzureMonitorWorkspace"));
 
 
-// Export sub-modules:
-import * as v20230403 from "./v20230403";
-
-export {
-    v20230403,
-};
 
 const _module = {
     version: utilities.getVersion(),

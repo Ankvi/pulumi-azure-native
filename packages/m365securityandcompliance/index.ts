@@ -125,12 +125,6 @@ utilities.lazyLoad(exports, ["PrivateLinkServicesForSCCPowershell"], () => requi
 // Export enums:
 export * from "./types/enums";
 
-// Export sub-modules:
-import * as v20210325preview from "./v20210325preview";
-
-export {
-    v20210325preview,
-};
 
 const _module = {
     version: utilities.getVersion(),

@@ -5,7 +5,7 @@ import * as types from "./types";
  * API details.
  * Azure REST API version: 2022-09-01-preview.
  *
- * Other available API versions: 2023-03-01-preview.
+ * Other available API versions: 2023-03-01-preview, 2023-05-01-preview.
  */
 export class WorkspaceApi extends pulumi.CustomResource {
     /**
@@ -208,7 +208,7 @@ export class WorkspaceApi extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20220901preview:WorkspaceApi" }, { type: "azure-native:apimanagement/v20230301preview:WorkspaceApi" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20220901preview:WorkspaceApi" }, { type: "azure-native:apimanagement/v20230301preview:WorkspaceApi" }, { type: "azure-native:apimanagement/v20230501preview:WorkspaceApi" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(WorkspaceApi.__pulumiType, name, resourceInputs, opts);
     }

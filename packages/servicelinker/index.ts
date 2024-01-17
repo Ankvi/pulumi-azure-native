@@ -50,14 +50,6 @@ utilities.lazyLoad(exports, ["listLinkerConfigurations","listLinkerConfiguration
 // Export enums:
 export * from "./types/enums";
 
-// Export sub-modules:
-import * as v20211101preview from "./v20211101preview";
-import * as v20221101preview from "./v20221101preview";
-
-export {
-    v20211101preview,
-    v20221101preview,
-};
 
 const _module = {
     version: utilities.getVersion(),

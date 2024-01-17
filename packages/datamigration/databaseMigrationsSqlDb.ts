@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Database Migration Resource for SQL Database.
  * Azure REST API version: 2022-03-30-preview. Prior API version in Azure Native 1.x: 2022-03-30-preview.
+ *
+ * Other available API versions: 2023-07-15-preview.
  */
 export class DatabaseMigrationsSqlDb extends pulumi.CustomResource {
     /**
@@ -74,7 +76,7 @@ export class DatabaseMigrationsSqlDb extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:datamigration/v20220330preview:DatabaseMigrationsSqlDb" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:datamigration/v20220330preview:DatabaseMigrationsSqlDb" }, { type: "azure-native:datamigration/v20230715preview:DatabaseMigrationsSqlDb" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(DatabaseMigrationsSqlDb.__pulumiType, name, resourceInputs, opts);
     }

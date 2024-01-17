@@ -305,18 +305,6 @@ utilities.lazyLoad(exports, ["WorkspaceSqlAadAdmin"], () => require("./workspace
 // Export enums:
 export * from "./types/enums";
 
-// Export sub-modules:
-import * as v20210401preview from "./v20210401preview";
-import * as v20210501 from "./v20210501";
-import * as v20210601 from "./v20210601";
-import * as v20210601preview from "./v20210601preview";
-
-export {
-    v20210401preview,
-    v20210501,
-    v20210601,
-    v20210601preview,
-};
 
 const _module = {
     version: utilities.getVersion(),

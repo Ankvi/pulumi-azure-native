@@ -5,7 +5,7 @@ import * as types from "./types";
  * Retrieves the current status of IDPS signatures for the relevant policy
  * Azure REST API version: 2023-02-01.
  *
- * Other available API versions: 2021-08-01, 2023-04-01, 2023-05-01, 2023-06-01.
+ * Other available API versions: 2021-08-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01.
  */
 export function listFirewallPolicyIdpsSignature(args: ListFirewallPolicyIdpsSignatureArgs, opts?: pulumi.InvokeOptions): Promise<ListFirewallPolicyIdpsSignatureResult> {
 
@@ -69,7 +69,7 @@ export interface ListFirewallPolicyIdpsSignatureResult {
  * Retrieves the current status of IDPS signatures for the relevant policy
  * Azure REST API version: 2023-02-01.
  *
- * Other available API versions: 2021-08-01, 2023-04-01, 2023-05-01, 2023-06-01.
+ * Other available API versions: 2021-08-01, 2023-04-01, 2023-05-01, 2023-06-01, 2023-09-01.
  */
 export function listFirewallPolicyIdpsSignatureOutput(args: ListFirewallPolicyIdpsSignatureOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListFirewallPolicyIdpsSignatureResult> {
     return pulumi.output(args).apply((a: any) => listFirewallPolicyIdpsSignature(a, opts))

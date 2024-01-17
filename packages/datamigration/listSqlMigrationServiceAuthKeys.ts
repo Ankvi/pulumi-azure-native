@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Retrieve the List of Authentication Keys for Self Hosted Integration Runtime.
  * Azure REST API version: 2022-03-30-preview.
+ *
+ * Other available API versions: 2023-07-15-preview.
  */
 export function listSqlMigrationServiceAuthKeys(args: ListSqlMigrationServiceAuthKeysArgs, opts?: pulumi.InvokeOptions): Promise<ListSqlMigrationServiceAuthKeysResult> {
 
@@ -40,6 +42,8 @@ export interface ListSqlMigrationServiceAuthKeysResult {
 /**
  * Retrieve the List of Authentication Keys for Self Hosted Integration Runtime.
  * Azure REST API version: 2022-03-30-preview.
+ *
+ * Other available API versions: 2023-07-15-preview.
  */
 export function listSqlMigrationServiceAuthKeysOutput(args: ListSqlMigrationServiceAuthKeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListSqlMigrationServiceAuthKeysResult> {
     return pulumi.output(args).apply((a: any) => listSqlMigrationServiceAuthKeys(a, opts))

@@ -45,12 +45,6 @@ utilities.lazyLoad(exports, ["GuestConfigurationHCRPAssignment"], () => require(
 // Export enums:
 export * from "./types/enums";
 
-// Export sub-modules:
-import * as v20220125 from "./v20220125";
-
-export {
-    v20220125,
-};
 
 const _module = {
     version: utilities.getVersion(),

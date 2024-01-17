@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Gets details from a list of feature names.
  * Azure REST API version: 2021-12-01.
+ *
+ * Other available API versions: 2023-05-01-preview.
  */
 export function listFeatureSubscription(args: ListFeatureSubscriptionArgs, opts?: pulumi.InvokeOptions): Promise<ListFeatureSubscriptionResult> {
 
@@ -36,6 +38,8 @@ export interface ListFeatureSubscriptionResult {
 /**
  * Gets details from a list of feature names.
  * Azure REST API version: 2021-12-01.
+ *
+ * Other available API versions: 2023-05-01-preview.
  */
 export function listFeatureSubscriptionOutput(args: ListFeatureSubscriptionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListFeatureSubscriptionResult> {
     return pulumi.output(args).apply((a: any) => listFeatureSubscription(a, opts))

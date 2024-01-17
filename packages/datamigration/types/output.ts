@@ -5131,6 +5131,20 @@ export interface MigrationValidationResultResponse {
 }
 
 /**
+ * Mongo Connection
+ */
+export interface MongoConnectionInformationResponse {
+    /**
+     * Host of mongo connection.
+     */
+    host?: string;
+    /**
+     * Port of mongo connection.
+     */
+    port?: number;
+}
+
+/**
  * Describes a MongoDB data source
  */
 export interface MongoDbClusterInfoResponse {
@@ -5593,6 +5607,58 @@ export interface MongoDbThrottlingSettingsResponse {
      * The number of megabytes of RAM that the migrator will try to avoid using
      */
     minFreeMemoryMb?: number;
+}
+
+/**
+ * Mongo source and target database and collection details.
+ */
+export interface MongoMigrationCollectionResponse {
+    /**
+     * Detailed migration status. Not included by default.
+     */
+    migrationProgressDetails: MongoMigrationProgressDetailsResponse;
+    /**
+     * Source collection name.
+     */
+    sourceCollection?: string;
+    /**
+     * Source database name.
+     */
+    sourceDatabase?: string;
+    /**
+     * Target collection name.
+     */
+    targetCollection?: string;
+    /**
+     * Target database name.
+     */
+    targetDatabase?: string;
+}
+
+/**
+ * Detailed status of collection migration.
+ */
+export interface MongoMigrationProgressDetailsResponse {
+    /**
+     * Migration duration
+     */
+    durationInSeconds: number;
+    /**
+     * Migration Error
+     */
+    migrationError: string;
+    /**
+     * Migration Status
+     */
+    migrationStatus: string;
+    /**
+     * Processed Document Count
+     */
+    processedDocumentCount: number;
+    /**
+     * Source Document Count
+     */
+    sourceDocumentCount: number;
 }
 
 /**
@@ -6621,5 +6687,6 @@ export function waitStatisticsResponseProvideDefaults(val: WaitStatisticsRespons
         waitTimeMs: (val.waitTimeMs) ?? 0,
     };
 }
+
 
 

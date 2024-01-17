@@ -22,14 +22,6 @@ export const SapMonitor: typeof import("./sapMonitor").SapMonitor = null as any;
 utilities.lazyLoad(exports, ["SapMonitor"], () => require("./sapMonitor"));
 
 
-// Export sub-modules:
-import * as v20171103preview from "./v20171103preview";
-import * as v20200207preview from "./v20200207preview";
-
-export {
-    v20171103preview,
-    v20200207preview,
-};
 
 const _module = {
     version: utilities.getVersion(),

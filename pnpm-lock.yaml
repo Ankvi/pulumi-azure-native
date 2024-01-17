@@ -11,7 +11,7 @@ importers:
   packages/aad:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -27,7 +27,7 @@ importers:
   packages/aadiam:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -43,7 +43,7 @@ importers:
   packages/addons:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -59,7 +59,7 @@ importers:
   packages/advisor:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -75,7 +75,7 @@ importers:
   packages/agfoodplatform:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -91,7 +91,7 @@ importers:
   packages/alertsmanagement:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -107,7 +107,7 @@ importers:
   packages/analysisservices:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -123,7 +123,7 @@ importers:
   packages/apicenter:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -139,7 +139,7 @@ importers:
   packages/apimanagement:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -155,7 +155,7 @@ importers:
   packages/app:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -171,7 +171,7 @@ importers:
   packages/appcomplianceautomation:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -187,7 +187,7 @@ importers:
   packages/appconfiguration:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -203,7 +203,7 @@ importers:
   packages/appplatform:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -219,7 +219,7 @@ importers:
   packages/attestation:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -235,7 +235,7 @@ importers:
   packages/authorization:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -251,7 +251,7 @@ importers:
   packages/automanage:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -267,7 +267,7 @@ importers:
   packages/automation:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -283,7 +283,7 @@ importers:
   packages/autonomousdevelopmentplatform:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -299,7 +299,7 @@ importers:
   packages/avs:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -315,7 +315,7 @@ importers:
   packages/azureactivedirectory:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -331,7 +331,7 @@ importers:
   packages/azurearcdata:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -347,7 +347,23 @@ importers:
   packages/azuredata:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
+        version: link:../core
+      '@pulumi/pulumi':
+        specifier: ^3.0.0
+        version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
+
+  packages/azuredatatransfer:
+    dependencies:
+      '@kengachu-pulumi/azure-native-core':
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -363,7 +379,7 @@ importers:
   packages/azureplaywrightservice:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -379,7 +395,7 @@ importers:
   packages/azuresphere:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -395,7 +411,7 @@ importers:
   packages/azurestack:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -411,7 +427,7 @@ importers:
   packages/azurestackhci:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -427,7 +443,7 @@ importers:
   packages/baremetalinfrastructure:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -443,7 +459,7 @@ importers:
   packages/batch:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -459,7 +475,7 @@ importers:
   packages/billing:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -475,7 +491,7 @@ importers:
   packages/blockchain:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -491,7 +507,7 @@ importers:
   packages/blueprint:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -507,7 +523,7 @@ importers:
   packages/botservice:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -523,7 +539,7 @@ importers:
   packages/cache:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -539,7 +555,7 @@ importers:
   packages/cdn:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -555,7 +571,7 @@ importers:
   packages/certificateregistration:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -571,7 +587,7 @@ importers:
   packages/changeanalysis:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -587,7 +603,7 @@ importers:
   packages/chaos:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -603,7 +619,7 @@ importers:
   packages/cognitiveservices:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -619,7 +635,7 @@ importers:
   packages/communication:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -635,7 +651,7 @@ importers:
   packages/community:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -651,7 +667,7 @@ importers:
   packages/compute:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -667,7 +683,7 @@ importers:
   packages/confidentialledger:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -683,7 +699,7 @@ importers:
   packages/config:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -699,7 +715,7 @@ importers:
   packages/confluent:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -715,7 +731,7 @@ importers:
   packages/connectedvmwarevsphere:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -731,7 +747,7 @@ importers:
   packages/consumption:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -747,7 +763,7 @@ importers:
   packages/containerinstance:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -763,7 +779,7 @@ importers:
   packages/containerregistry:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -779,7 +795,7 @@ importers:
   packages/containerservice:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -795,7 +811,7 @@ importers:
   packages/containerstorage:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -824,7 +840,7 @@ importers:
   packages/costmanagement:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -840,7 +856,7 @@ importers:
   packages/customerinsights:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -856,7 +872,7 @@ importers:
   packages/customproviders:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -872,7 +888,7 @@ importers:
   packages/dashboard:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -888,7 +904,7 @@ importers:
   packages/databox:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -904,7 +920,7 @@ importers:
   packages/databoxedge:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -920,7 +936,7 @@ importers:
   packages/databricks:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -936,7 +952,7 @@ importers:
   packages/datacatalog:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -952,7 +968,7 @@ importers:
   packages/datadog:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -968,7 +984,7 @@ importers:
   packages/datafactory:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -984,7 +1000,7 @@ importers:
   packages/datalakeanalytics:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1000,7 +1016,7 @@ importers:
   packages/datalakestore:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1016,7 +1032,7 @@ importers:
   packages/datamigration:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1032,7 +1048,7 @@ importers:
   packages/dataprotection:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1048,7 +1064,7 @@ importers:
   packages/datareplication:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1064,7 +1080,7 @@ importers:
   packages/datashare:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1080,7 +1096,7 @@ importers:
   packages/dbformariadb:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1096,7 +1112,7 @@ importers:
   packages/dbformysql:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1112,7 +1128,7 @@ importers:
   packages/dbforpostgresql:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1128,7 +1144,7 @@ importers:
   packages/delegatednetwork:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1144,7 +1160,7 @@ importers:
   packages/deploymentmanager:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1160,7 +1176,7 @@ importers:
   packages/desktopvirtualization:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1176,7 +1192,7 @@ importers:
   packages/devcenter:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1192,7 +1208,7 @@ importers:
   packages/devhub:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1208,7 +1224,7 @@ importers:
   packages/deviceregistry:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1224,7 +1240,7 @@ importers:
   packages/devices:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1240,7 +1256,7 @@ importers:
   packages/deviceupdate:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1256,7 +1272,7 @@ importers:
   packages/devopsinfrastructure:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1272,7 +1288,7 @@ importers:
   packages/devspaces:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1288,7 +1304,7 @@ importers:
   packages/devtestlab:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1304,7 +1320,7 @@ importers:
   packages/digitaltwins:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1320,7 +1336,7 @@ importers:
   packages/documentdb:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1336,7 +1352,7 @@ importers:
   packages/domainregistration:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1352,7 +1368,7 @@ importers:
   packages/dynamics365fraudprotection:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1368,7 +1384,7 @@ importers:
   packages/easm:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1384,7 +1400,7 @@ importers:
   packages/edgemarketplace:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1400,7 +1416,7 @@ importers:
   packages/edgeorder:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1416,7 +1432,7 @@ importers:
   packages/education:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1432,7 +1448,7 @@ importers:
   packages/elastic:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1448,7 +1464,7 @@ importers:
   packages/elasticsan:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1464,7 +1480,7 @@ importers:
   packages/engagementfabric:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1480,7 +1496,7 @@ importers:
   packages/enterpriseknowledgegraph:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1496,7 +1512,7 @@ importers:
   packages/eventgrid:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1512,7 +1528,7 @@ importers:
   packages/eventhub:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1528,7 +1544,7 @@ importers:
   packages/extendedlocation:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1544,7 +1560,7 @@ importers:
   packages/features:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1560,7 +1576,7 @@ importers:
   packages/fluidrelay:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1576,7 +1592,7 @@ importers:
   packages/graphservices:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1592,7 +1608,7 @@ importers:
   packages/guestconfiguration:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1608,7 +1624,7 @@ importers:
   packages/hanaonazure:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1624,7 +1640,7 @@ importers:
   packages/hardwaresecuritymodules:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1640,7 +1656,7 @@ importers:
   packages/hdinsight:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1656,7 +1672,7 @@ importers:
   packages/healthbot:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1672,7 +1688,7 @@ importers:
   packages/healthcareapis:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1688,7 +1704,7 @@ importers:
   packages/hybridcloud:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1704,7 +1720,7 @@ importers:
   packages/hybridcompute:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1720,7 +1736,7 @@ importers:
   packages/hybridconnectivity:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1736,7 +1752,7 @@ importers:
   packages/hybridcontainerservice:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1752,7 +1768,7 @@ importers:
   packages/hybriddata:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1768,7 +1784,7 @@ importers:
   packages/hybridnetwork:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1784,7 +1800,7 @@ importers:
   packages/importexport:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1800,7 +1816,7 @@ importers:
   packages/insights:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1816,7 +1832,7 @@ importers:
   packages/integrationspaces:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1832,7 +1848,7 @@ importers:
   packages/intune:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1848,7 +1864,7 @@ importers:
   packages/iotcentral:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1864,7 +1880,7 @@ importers:
   packages/iotfirmwaredefense:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1880,7 +1896,7 @@ importers:
   packages/iotoperationsdataprocessor:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1896,7 +1912,7 @@ importers:
   packages/iotoperationsmq:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1912,7 +1928,7 @@ importers:
   packages/iotoperationsorchestrator:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1928,7 +1944,7 @@ importers:
   packages/keyvault:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1944,7 +1960,7 @@ importers:
   packages/kubernetes:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1960,7 +1976,7 @@ importers:
   packages/kubernetesconfiguration:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1976,7 +1992,7 @@ importers:
   packages/kusto:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -1992,7 +2008,7 @@ importers:
   packages/labservices:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2008,7 +2024,7 @@ importers:
   packages/loadtestservice:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2024,7 +2040,7 @@ importers:
   packages/logic:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2040,7 +2056,7 @@ importers:
   packages/logz:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2056,7 +2072,7 @@ importers:
   packages/m365securityandcompliance:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2072,7 +2088,7 @@ importers:
   packages/machinelearning:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2088,7 +2104,7 @@ importers:
   packages/machinelearningcompute:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2104,7 +2120,7 @@ importers:
   packages/machinelearningexperimentation:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2120,7 +2136,7 @@ importers:
   packages/machinelearningservices:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2136,7 +2152,7 @@ importers:
   packages/maintenance:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2152,7 +2168,7 @@ importers:
   packages/managedidentity:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2168,7 +2184,7 @@ importers:
   packages/managednetwork:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2184,7 +2200,7 @@ importers:
   packages/managednetworkfabric:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2200,7 +2216,7 @@ importers:
   packages/managedservices:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2216,7 +2232,7 @@ importers:
   packages/management:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2232,7 +2248,7 @@ importers:
   packages/managementpartner:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2248,7 +2264,7 @@ importers:
   packages/maps:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2264,7 +2280,7 @@ importers:
   packages/marketplace:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2280,7 +2296,7 @@ importers:
   packages/media:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2296,7 +2312,7 @@ importers:
   packages/migrate:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2312,7 +2328,7 @@ importers:
   packages/mixedreality:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2328,7 +2344,7 @@ importers:
   packages/mobilenetwork:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2344,7 +2360,7 @@ importers:
   packages/mobilepacketcore:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2360,7 +2376,7 @@ importers:
   packages/monitor:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2376,7 +2392,7 @@ importers:
   packages/netapp:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2392,7 +2408,7 @@ importers:
   packages/network:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2408,7 +2424,7 @@ importers:
   packages/networkanalytics:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2424,7 +2440,7 @@ importers:
   packages/networkcloud:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2440,7 +2456,7 @@ importers:
   packages/networkfunction:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2456,7 +2472,7 @@ importers:
   packages/notificationhubs:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2472,7 +2488,7 @@ importers:
   packages/offazure:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2488,7 +2504,7 @@ importers:
   packages/offazurespringboot:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2504,7 +2520,7 @@ importers:
   packages/openenergyplatform:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2520,7 +2536,7 @@ importers:
   packages/operationalinsights:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2536,7 +2552,7 @@ importers:
   packages/operationsmanagement:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2552,7 +2568,7 @@ importers:
   packages/orbital:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2568,7 +2584,7 @@ importers:
   packages/peering:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2584,7 +2600,7 @@ importers:
   packages/policyinsights:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2600,7 +2616,7 @@ importers:
   packages/portal:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2616,7 +2632,7 @@ importers:
   packages/powerbi:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2632,7 +2648,7 @@ importers:
   packages/powerbidedicated:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2648,7 +2664,7 @@ importers:
   packages/powerplatform:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2664,7 +2680,7 @@ importers:
   packages/professionalservice:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2680,7 +2696,7 @@ importers:
   packages/providerhub:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2696,7 +2712,7 @@ importers:
   packages/purview:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2712,7 +2728,7 @@ importers:
   packages/quantum:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2728,7 +2744,7 @@ importers:
   packages/quota:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2744,7 +2760,7 @@ importers:
   packages/recommendationsservice:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2760,7 +2776,7 @@ importers:
   packages/recoveryservices:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2776,7 +2792,7 @@ importers:
   packages/redhatopenshift:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2792,7 +2808,7 @@ importers:
   packages/relay:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2808,7 +2824,7 @@ importers:
   packages/resourceconnector:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2824,7 +2840,7 @@ importers:
   packages/resourcegraph:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2840,7 +2856,7 @@ importers:
   packages/resourcehealth:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2856,7 +2872,7 @@ importers:
   packages/resources:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2872,7 +2888,7 @@ importers:
   packages/saas:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2888,7 +2904,7 @@ importers:
   packages/scheduler:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2904,7 +2920,7 @@ importers:
   packages/scom:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2920,7 +2936,7 @@ importers:
   packages/scvmm:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2936,7 +2952,7 @@ importers:
   packages/search:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2952,7 +2968,7 @@ importers:
   packages/security:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2968,7 +2984,7 @@ importers:
   packages/securityandcompliance:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -2984,7 +3000,7 @@ importers:
   packages/securitydevops:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -3000,7 +3016,7 @@ importers:
   packages/securityinsights:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -3016,7 +3032,7 @@ importers:
   packages/serialconsole:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -3032,7 +3048,7 @@ importers:
   packages/servicebus:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -3048,7 +3064,7 @@ importers:
   packages/servicefabric:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -3064,7 +3080,7 @@ importers:
   packages/servicefabricmesh:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -3080,7 +3096,7 @@ importers:
   packages/servicelinker:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -3096,7 +3112,7 @@ importers:
   packages/servicenetworking:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -3112,7 +3128,7 @@ importers:
   packages/signalrservice:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -3128,7 +3144,7 @@ importers:
   packages/softwareplan:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -3144,7 +3160,7 @@ importers:
   packages/solutions:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -3160,7 +3176,7 @@ importers:
   packages/sql:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -3176,7 +3192,7 @@ importers:
   packages/sqlvirtualmachine:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -3192,7 +3208,7 @@ importers:
   packages/storage:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -3208,7 +3224,7 @@ importers:
   packages/storageactions:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -3224,7 +3240,7 @@ importers:
   packages/storagecache:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -3240,7 +3256,7 @@ importers:
   packages/storagemover:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -3256,7 +3272,7 @@ importers:
   packages/storagepool:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -3272,7 +3288,7 @@ importers:
   packages/storagesync:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -3288,7 +3304,7 @@ importers:
   packages/storsimple:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -3304,7 +3320,7 @@ importers:
   packages/streamanalytics:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -3320,7 +3336,7 @@ importers:
   packages/subscription:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -3336,7 +3352,7 @@ importers:
   packages/synapse:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -3352,7 +3368,7 @@ importers:
   packages/syntex:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -3368,7 +3384,7 @@ importers:
   packages/testbase:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -3384,7 +3400,7 @@ importers:
   packages/timeseriesinsights:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -3400,7 +3416,7 @@ importers:
   packages/videoanalyzer:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -3416,7 +3432,7 @@ importers:
   packages/videoindexer:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -3432,7 +3448,7 @@ importers:
   packages/virtualmachineimages:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -3448,7 +3464,7 @@ importers:
   packages/visualstudio:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -3464,7 +3480,7 @@ importers:
   packages/vmwarecloudsimple:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -3480,7 +3496,7 @@ importers:
   packages/voiceservices:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -3496,7 +3512,7 @@ importers:
   packages/web:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -3512,7 +3528,7 @@ importers:
   packages/webpubsub:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -3528,7 +3544,7 @@ importers:
   packages/windowsesu:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -3544,7 +3560,7 @@ importers:
   packages/windowsiot:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0
@@ -3560,7 +3576,7 @@ importers:
   packages/workloads:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../core
       '@pulumi/pulumi':
         specifier: ^3.0.0

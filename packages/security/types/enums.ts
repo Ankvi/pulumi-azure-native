@@ -186,6 +186,22 @@ export const DevOpsProvisioningState = {
  */
 export type DevOpsProvisioningState = (typeof DevOpsProvisioningState)[keyof typeof DevOpsProvisioningState];
 
+export const Enforce = {
+    /**
+     * Allows the descendants of this scope to override the pricing configuration set on this scope (allows setting inherited="False")
+     */
+    False: "False",
+    /**
+     * Prevents overrides and forces the current scope's pricing configuration to all descendants
+     */
+    True: "True",
+} as const;
+
+/**
+ * If set to "False", it allows the descendants of this scope to override the pricing configuration set on this scope (allows setting inherited="False"). If set to "True", it prevents overrides and forces this pricing configuration on all the descendants of this scope. This field is only available for subscription-level pricing.
+ */
+export type Enforce = (typeof Enforce)[keyof typeof Enforce];
+
 export const EnvironmentType = {
     AwsAccount: "AwsAccount",
     GcpProject: "GcpProject",
@@ -281,6 +297,22 @@ export const ImplementationEffort = {
  * The implementation effort required to remediate this assessment
  */
 export type ImplementationEffort = (typeof ImplementationEffort)[keyof typeof ImplementationEffort];
+
+export const IsEnabled = {
+    /**
+     * Indicates the extension is enabled
+     */
+    True: "True",
+    /**
+     * Indicates the extension is disabled
+     */
+    False: "False",
+} as const;
+
+/**
+ * Indicates whether the extension is enabled.
+ */
+export type IsEnabled = (typeof IsEnabled)[keyof typeof IsEnabled];
 
 export const MinimalSeverity = {
     /**
@@ -380,6 +412,22 @@ export const OrganizationMembershipType = {
  * The multi cloud account's membership type in the organization
  */
 export type OrganizationMembershipType = (typeof OrganizationMembershipType)[keyof typeof OrganizationMembershipType];
+
+export const PricingTier = {
+    /**
+     * Get free Microsoft Defender for Cloud experience with basic security features
+     */
+    Free: "Free",
+    /**
+     * Get the standard Microsoft Defender for Cloud experience with advanced security features
+     */
+    Standard: "Standard",
+} as const;
+
+/**
+ * Indicates whether the Defender plan is enabled on the selected scope. Microsoft Defender for Cloud is provided in two pricing tiers: free and standard. The standard tier offers advanced security capabilities, while the free tier offers basic security features.
+ */
+export type PricingTier = (typeof PricingTier)[keyof typeof PricingTier];
 
 export const PropertyType = {
     String: "String",

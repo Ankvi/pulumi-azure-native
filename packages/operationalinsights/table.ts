@@ -81,7 +81,7 @@ export class Table extends pulumi.CustomResource {
      */
     public /*out*/ readonly systemData!: pulumi.Output<types.outputs.SystemDataResponse>;
     /**
-     * The table total retention in days, between 4 and 2556. Setting this property to -1 will default to table retention.
+     * The table total retention in days, between 4 and 4383. Setting this property to -1 will default to table retention.
      */
     public readonly totalRetentionInDays!: pulumi.Output<number | undefined>;
     /**
@@ -185,7 +185,7 @@ export interface TableArgs {
      */
     tableName?: pulumi.Input<string>;
     /**
-     * The table total retention in days, between 4 and 2556. Setting this property to -1 will default to table retention.
+     * The table total retention in days, between 4 and 4383. Setting this property to -1 will default to table retention.
      */
     totalRetentionInDays?: pulumi.Input<number>;
     /**

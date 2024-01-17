@@ -361,6 +361,11 @@ export const getPolicyFragment: typeof import("./getPolicyFragment").getPolicyFr
 export const getPolicyFragmentOutput: typeof import("./getPolicyFragment").getPolicyFragmentOutput = null as any;
 utilities.lazyLoad(exports, ["getPolicyFragment","getPolicyFragmentOutput"], () => require("./getPolicyFragment"));
 
+export { GetPolicyRestrictionArgs, GetPolicyRestrictionResult, GetPolicyRestrictionOutputArgs } from "./getPolicyRestriction";
+export const getPolicyRestriction: typeof import("./getPolicyRestriction").getPolicyRestriction = null as any;
+export const getPolicyRestrictionOutput: typeof import("./getPolicyRestriction").getPolicyRestrictionOutput = null as any;
+utilities.lazyLoad(exports, ["getPolicyRestriction","getPolicyRestrictionOutput"], () => require("./getPolicyRestriction"));
+
 export { GetPrivateEndpointConnectionByNameArgs, GetPrivateEndpointConnectionByNameResult, GetPrivateEndpointConnectionByNameOutputArgs } from "./getPrivateEndpointConnectionByName";
 export const getPrivateEndpointConnectionByName: typeof import("./getPrivateEndpointConnectionByName").getPrivateEndpointConnectionByName = null as any;
 export const getPrivateEndpointConnectionByNameOutput: typeof import("./getPrivateEndpointConnectionByName").getPrivateEndpointConnectionByNameOutput = null as any;
@@ -686,6 +691,11 @@ export type PolicyFragment = import("./policyFragment").PolicyFragment;
 export const PolicyFragment: typeof import("./policyFragment").PolicyFragment = null as any;
 utilities.lazyLoad(exports, ["PolicyFragment"], () => require("./policyFragment"));
 
+export { PolicyRestrictionArgs } from "./policyRestriction";
+export type PolicyRestriction = import("./policyRestriction").PolicyRestriction;
+export const PolicyRestriction: typeof import("./policyRestriction").PolicyRestriction = null as any;
+utilities.lazyLoad(exports, ["PolicyRestriction"], () => require("./policyRestriction"));
+
 export { PrivateEndpointConnectionByNameArgs } from "./privateEndpointConnectionByName";
 export type PrivateEndpointConnectionByName = import("./privateEndpointConnectionByName").PrivateEndpointConnectionByName;
 export const PrivateEndpointConnectionByName: typeof import("./privateEndpointConnectionByName").PrivateEndpointConnectionByName = null as any;
@@ -905,42 +915,6 @@ utilities.lazyLoad(exports, ["WorkspaceTagProductLink"], () => require("./worksp
 // Export enums:
 export * from "./types/enums";
 
-// Export sub-modules:
-import * as v20161010 from "./v20161010";
-import * as v20170301 from "./v20170301";
-import * as v20180101 from "./v20180101";
-import * as v20180601preview from "./v20180601preview";
-import * as v20190101 from "./v20190101";
-import * as v20191201preview from "./v20191201preview";
-import * as v20200601preview from "./v20200601preview";
-import * as v20201201 from "./v20201201";
-import * as v20210101preview from "./v20210101preview";
-import * as v20210401preview from "./v20210401preview";
-import * as v20210801 from "./v20210801";
-import * as v20211201preview from "./v20211201preview";
-import * as v20220401preview from "./v20220401preview";
-import * as v20220801 from "./v20220801";
-import * as v20220901preview from "./v20220901preview";
-import * as v20230301preview from "./v20230301preview";
-
-export {
-    v20161010,
-    v20170301,
-    v20180101,
-    v20180601preview,
-    v20190101,
-    v20191201preview,
-    v20200601preview,
-    v20201201,
-    v20210101preview,
-    v20210401preview,
-    v20210801,
-    v20211201preview,
-    v20220401preview,
-    v20220801,
-    v20220901preview,
-    v20230301preview,
-};
 
 const _module = {
     version: utilities.getVersion(),
@@ -1032,6 +1006,8 @@ const _module = {
                 return new Policy(name, <any>undefined, { urn })
             case "azure-native:apimanagement:PolicyFragment":
                 return new PolicyFragment(name, <any>undefined, { urn })
+            case "azure-native:apimanagement:PolicyRestriction":
+                return new PolicyRestriction(name, <any>undefined, { urn })
             case "azure-native:apimanagement:PrivateEndpointConnectionByName":
                 return new PrivateEndpointConnectionByName(name, <any>undefined, { urn })
             case "azure-native:apimanagement:Product":

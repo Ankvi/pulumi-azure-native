@@ -3,6 +3,28 @@ import * as pulumi from "@pulumi/pulumi";
 /**
  * An identity that have access to the key vault. All identities in the array must use the same tenant ID as the key vault's tenant ID.
  */
+export interface AccessPolicyEntry {
+    /**
+     *  Application ID of the client making request on behalf of a principal
+     */
+    applicationId?: string;
+    /**
+     * The object ID of a user, service principal or security group in the Azure Active Directory tenant for the vault. The object ID must be unique for the list of access policies.
+     */
+    objectId: string;
+    /**
+     * Permissions the identity has for keys, secrets and certificates.
+     */
+    permissions: Permissions;
+    /**
+     * The Azure Active Directory tenant ID that should be used for authenticating requests to the key vault.
+     */
+    tenantId: string;
+}
+
+/**
+ * An identity that have access to the key vault. All identities in the array must use the same tenant ID as the key vault's tenant ID.
+ */
 export interface AccessPolicyEntryResponse {
     /**
      *  Application ID of the client making request on behalf of a principal
@@ -369,6 +391,28 @@ export interface NetworkRuleSetResponse {
 /**
  * Permissions the identity has for keys, secrets, certificates and storage.
  */
+export interface Permissions {
+    /**
+     * Permissions to certificates
+     */
+    certificates?: (string | enums.CertificatePermissions)[];
+    /**
+     * Permissions to keys
+     */
+    keys?: (string | enums.KeyPermissions)[];
+    /**
+     * Permissions to secrets
+     */
+    secrets?: (string | enums.SecretPermissions)[];
+    /**
+     * Permissions to storage accounts
+     */
+    storage?: (string | enums.StoragePermissions)[];
+}
+
+/**
+ * Permissions the identity has for keys, secrets, certificates and storage.
+ */
 export interface PermissionsResponse {
     /**
      * Permissions to certificates
@@ -566,6 +610,7 @@ export interface TriggerResponse {
 export interface VaultPropertiesResponse {
     /**
      * An array of 0 to 1024 identities that have access to the key vault. All identities in the array must use the same tenant ID as the key vault's tenant ID. When `createMode` is set to `recover`, access policies are not required. Otherwise, access policies are required.
+     * These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
      */
     accessPolicies?: AccessPolicyEntryResponse[];
     /**

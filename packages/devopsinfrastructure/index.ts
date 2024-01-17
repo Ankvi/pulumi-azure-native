@@ -15,12 +15,6 @@ utilities.lazyLoad(exports, ["Pool"], () => require("./pool"));
 // Export enums:
 export * from "./types/enums";
 
-// Export sub-modules:
-import * as v20231030preview from "./v20231030preview";
-
-export {
-    v20231030preview,
-};
 
 const _module = {
     version: utilities.getVersion(),

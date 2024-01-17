@@ -1719,6 +1719,10 @@ export interface AzureBlobFSWriteSettingsResponse {
      */
     maxConcurrentConnections?: any;
     /**
+     * Specify the custom metadata to be added to sink data. Type: array of objects (or Expression with resultType array of objects).
+     */
+    metadata?: MetadataItemResponse[];
+    /**
      * The write setting type.
      * Expected value is 'AzureBlobFSWriteSettings'.
      */
@@ -1910,6 +1914,10 @@ export interface AzureBlobStorageWriteSettingsResponse {
      * The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
      */
     maxConcurrentConnections?: any;
+    /**
+     * Specify the custom metadata to be added to sink data. Type: array of objects (or Expression with resultType array of objects).
+     */
+    metadata?: MetadataItemResponse[];
     /**
      * The write setting type.
      * Expected value is 'AzureBlobStorageWriteSettings'.
@@ -2510,6 +2518,10 @@ export interface AzureDataLakeStoreWriteSettingsResponse {
      */
     maxConcurrentConnections?: any;
     /**
+     * Specify the custom metadata to be added to sink data. Type: array of objects (or Expression with resultType array of objects).
+     */
+    metadata?: MetadataItemResponse[];
+    /**
      * The write setting type.
      * Expected value is 'AzureDataLakeStoreWriteSettings'.
      */
@@ -2994,6 +3006,10 @@ export interface AzureFileStorageWriteSettingsResponse {
      * The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
      */
     maxConcurrentConnections?: any;
+    /**
+     * Specify the custom metadata to be added to sink data. Type: array of objects (or Expression with resultType array of objects).
+     */
+    metadata?: MetadataItemResponse[];
     /**
      * The write setting type.
      * Expected value is 'AzureFileStorageWriteSettings'.
@@ -5872,7 +5888,7 @@ export interface CopyActivityResponse {
     /**
      * Copy activity sink.
      */
-    sink: AvroSinkResponse | AzureBlobFSSinkResponse | AzureDataExplorerSinkResponse | AzureDataLakeStoreSinkResponse | AzureDatabricksDeltaLakeSinkResponse | AzureMySqlSinkResponse | AzurePostgreSqlSinkResponse | AzureQueueSinkResponse | AzureSearchIndexSinkResponse | AzureSqlSinkResponse | AzureTableSinkResponse | BinarySinkResponse | BlobSinkResponse | CommonDataServiceForAppsSinkResponse | CosmosDbMongoDbApiSinkResponse | CosmosDbSqlApiSinkResponse | DelimitedTextSinkResponse | DocumentDbCollectionSinkResponse | DynamicsCrmSinkResponse | DynamicsSinkResponse | FileSystemSinkResponse | InformixSinkResponse | JsonSinkResponse | LakeHouseTableSinkResponse | MicrosoftAccessSinkResponse | MongoDbAtlasSinkResponse | MongoDbV2SinkResponse | OdbcSinkResponse | OracleSinkResponse | OrcSinkResponse | ParquetSinkResponse | RestSinkResponse | SalesforceServiceCloudSinkResponse | SalesforceSinkResponse | SapCloudForCustomerSinkResponse | SnowflakeSinkResponse | SqlDWSinkResponse | SqlMISinkResponse | SqlServerSinkResponse | SqlSinkResponse;
+    sink: AvroSinkResponse | AzureBlobFSSinkResponse | AzureDataExplorerSinkResponse | AzureDataLakeStoreSinkResponse | AzureDatabricksDeltaLakeSinkResponse | AzureMySqlSinkResponse | AzurePostgreSqlSinkResponse | AzureQueueSinkResponse | AzureSearchIndexSinkResponse | AzureSqlSinkResponse | AzureTableSinkResponse | BinarySinkResponse | BlobSinkResponse | CommonDataServiceForAppsSinkResponse | CosmosDbMongoDbApiSinkResponse | CosmosDbSqlApiSinkResponse | DelimitedTextSinkResponse | DocumentDbCollectionSinkResponse | DynamicsCrmSinkResponse | DynamicsSinkResponse | FileSystemSinkResponse | InformixSinkResponse | JsonSinkResponse | LakeHouseTableSinkResponse | MicrosoftAccessSinkResponse | MongoDbAtlasSinkResponse | MongoDbV2SinkResponse | OdbcSinkResponse | OracleSinkResponse | OrcSinkResponse | ParquetSinkResponse | RestSinkResponse | SalesforceServiceCloudSinkResponse | SalesforceServiceCloudV2SinkResponse | SalesforceSinkResponse | SalesforceV2SinkResponse | SapCloudForCustomerSinkResponse | SnowflakeSinkResponse | SqlDWSinkResponse | SqlMISinkResponse | SqlServerSinkResponse | SqlSinkResponse | WarehouseSinkResponse;
     /**
      * Specify the fault tolerance for data consistency.
      */
@@ -5880,7 +5896,7 @@ export interface CopyActivityResponse {
     /**
      * Copy activity source.
      */
-    source: AmazonMWSSourceResponse | AmazonRdsForOracleSourceResponse | AmazonRdsForSqlServerSourceResponse | AmazonRedshiftSourceResponse | AvroSourceResponse | AzureBlobFSSourceResponse | AzureDataExplorerSourceResponse | AzureDataLakeStoreSourceResponse | AzureDatabricksDeltaLakeSourceResponse | AzureMariaDBSourceResponse | AzureMySqlSourceResponse | AzurePostgreSqlSourceResponse | AzureSqlSourceResponse | AzureTableSourceResponse | BinarySourceResponse | BlobSourceResponse | CassandraSourceResponse | CommonDataServiceForAppsSourceResponse | ConcurSourceResponse | CosmosDbMongoDbApiSourceResponse | CosmosDbSqlApiSourceResponse | CouchbaseSourceResponse | Db2SourceResponse | DelimitedTextSourceResponse | DocumentDbCollectionSourceResponse | DrillSourceResponse | DynamicsAXSourceResponse | DynamicsCrmSourceResponse | DynamicsSourceResponse | EloquaSourceResponse | ExcelSourceResponse | FileSystemSourceResponse | GoogleAdWordsSourceResponse | GoogleBigQuerySourceResponse | GreenplumSourceResponse | HBaseSourceResponse | HdfsSourceResponse | HiveSourceResponse | HttpSourceResponse | HubspotSourceResponse | ImpalaSourceResponse | InformixSourceResponse | JiraSourceResponse | JsonSourceResponse | LakeHouseTableSourceResponse | MagentoSourceResponse | MariaDBSourceResponse | MarketoSourceResponse | MicrosoftAccessSourceResponse | MongoDbAtlasSourceResponse | MongoDbSourceResponse | MongoDbV2SourceResponse | MySqlSourceResponse | NetezzaSourceResponse | ODataSourceResponse | OdbcSourceResponse | Office365SourceResponse | OracleServiceCloudSourceResponse | OracleSourceResponse | OrcSourceResponse | ParquetSourceResponse | PaypalSourceResponse | PhoenixSourceResponse | PostgreSqlSourceResponse | PrestoSourceResponse | QuickBooksSourceResponse | RelationalSourceResponse | ResponsysSourceResponse | RestSourceResponse | SalesforceMarketingCloudSourceResponse | SalesforceServiceCloudSourceResponse | SalesforceSourceResponse | SapBwSourceResponse | SapCloudForCustomerSourceResponse | SapEccSourceResponse | SapHanaSourceResponse | SapOdpSourceResponse | SapOpenHubSourceResponse | SapTableSourceResponse | ServiceNowSourceResponse | SharePointOnlineListSourceResponse | ShopifySourceResponse | SnowflakeSourceResponse | SparkSourceResponse | SqlDWSourceResponse | SqlMISourceResponse | SqlServerSourceResponse | SqlSourceResponse | SquareSourceResponse | SybaseSourceResponse | TabularSourceResponse | TeradataSourceResponse | VerticaSourceResponse | WebSourceResponse | XeroSourceResponse | XmlSourceResponse | ZohoSourceResponse;
+    source: AmazonMWSSourceResponse | AmazonRdsForOracleSourceResponse | AmazonRdsForSqlServerSourceResponse | AmazonRedshiftSourceResponse | AvroSourceResponse | AzureBlobFSSourceResponse | AzureDataExplorerSourceResponse | AzureDataLakeStoreSourceResponse | AzureDatabricksDeltaLakeSourceResponse | AzureMariaDBSourceResponse | AzureMySqlSourceResponse | AzurePostgreSqlSourceResponse | AzureSqlSourceResponse | AzureTableSourceResponse | BinarySourceResponse | BlobSourceResponse | CassandraSourceResponse | CommonDataServiceForAppsSourceResponse | ConcurSourceResponse | CosmosDbMongoDbApiSourceResponse | CosmosDbSqlApiSourceResponse | CouchbaseSourceResponse | Db2SourceResponse | DelimitedTextSourceResponse | DocumentDbCollectionSourceResponse | DrillSourceResponse | DynamicsAXSourceResponse | DynamicsCrmSourceResponse | DynamicsSourceResponse | EloquaSourceResponse | ExcelSourceResponse | FileSystemSourceResponse | GoogleAdWordsSourceResponse | GoogleBigQuerySourceResponse | GreenplumSourceResponse | HBaseSourceResponse | HdfsSourceResponse | HiveSourceResponse | HttpSourceResponse | HubspotSourceResponse | ImpalaSourceResponse | InformixSourceResponse | JiraSourceResponse | JsonSourceResponse | LakeHouseTableSourceResponse | MagentoSourceResponse | MariaDBSourceResponse | MarketoSourceResponse | MicrosoftAccessSourceResponse | MongoDbAtlasSourceResponse | MongoDbSourceResponse | MongoDbV2SourceResponse | MySqlSourceResponse | NetezzaSourceResponse | ODataSourceResponse | OdbcSourceResponse | Office365SourceResponse | OracleServiceCloudSourceResponse | OracleSourceResponse | OrcSourceResponse | ParquetSourceResponse | PaypalSourceResponse | PhoenixSourceResponse | PostgreSqlSourceResponse | PrestoSourceResponse | QuickBooksSourceResponse | RelationalSourceResponse | ResponsysSourceResponse | RestSourceResponse | SalesforceMarketingCloudSourceResponse | SalesforceServiceCloudSourceResponse | SalesforceServiceCloudV2SourceResponse | SalesforceSourceResponse | SalesforceV2SourceResponse | SapBwSourceResponse | SapCloudForCustomerSourceResponse | SapEccSourceResponse | SapHanaSourceResponse | SapOdpSourceResponse | SapOpenHubSourceResponse | SapTableSourceResponse | ServiceNowSourceResponse | SharePointOnlineListSourceResponse | ShopifySourceResponse | SnowflakeSourceResponse | SparkSourceResponse | SqlDWSourceResponse | SqlMISourceResponse | SqlServerSourceResponse | SqlSourceResponse | SquareSourceResponse | SybaseSourceResponse | TabularSourceResponse | TeradataSourceResponse | VerticaSourceResponse | WarehouseSourceResponse | WebSourceResponse | XeroSourceResponse | XmlSourceResponse | ZohoSourceResponse;
     /**
      * Specifies interim staging settings when EnableStaging is true.
      */
@@ -9299,6 +9315,10 @@ export interface FileServerWriteSettingsResponse {
      * The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
      */
     maxConcurrentConnections?: any;
+    /**
+     * Specify the custom metadata to be added to sink data. Type: array of objects (or Expression with resultType array of objects).
+     */
+    metadata?: MetadataItemResponse[];
     /**
      * The write setting type.
      * Expected value is 'FileServerWriteSettings'.
@@ -13111,6 +13131,10 @@ export interface LakeHouseWriteSettingsResponse {
      */
     maxConcurrentConnections?: any;
     /**
+     * Specify the custom metadata to be added to sink data. Type: array of objects (or Expression with resultType array of objects).
+     */
+    metadata?: MetadataItemResponse[];
+    /**
      * The write setting type.
      * Expected value is 'LakeHouseWriteSettings'.
      */
@@ -13288,7 +13312,7 @@ export interface LookupActivityResponse {
     /**
      * Dataset-specific source properties, same as copy activity source.
      */
-    source: AmazonMWSSourceResponse | AmazonRdsForOracleSourceResponse | AmazonRdsForSqlServerSourceResponse | AmazonRedshiftSourceResponse | AvroSourceResponse | AzureBlobFSSourceResponse | AzureDataExplorerSourceResponse | AzureDataLakeStoreSourceResponse | AzureDatabricksDeltaLakeSourceResponse | AzureMariaDBSourceResponse | AzureMySqlSourceResponse | AzurePostgreSqlSourceResponse | AzureSqlSourceResponse | AzureTableSourceResponse | BinarySourceResponse | BlobSourceResponse | CassandraSourceResponse | CommonDataServiceForAppsSourceResponse | ConcurSourceResponse | CosmosDbMongoDbApiSourceResponse | CosmosDbSqlApiSourceResponse | CouchbaseSourceResponse | Db2SourceResponse | DelimitedTextSourceResponse | DocumentDbCollectionSourceResponse | DrillSourceResponse | DynamicsAXSourceResponse | DynamicsCrmSourceResponse | DynamicsSourceResponse | EloquaSourceResponse | ExcelSourceResponse | FileSystemSourceResponse | GoogleAdWordsSourceResponse | GoogleBigQuerySourceResponse | GreenplumSourceResponse | HBaseSourceResponse | HdfsSourceResponse | HiveSourceResponse | HttpSourceResponse | HubspotSourceResponse | ImpalaSourceResponse | InformixSourceResponse | JiraSourceResponse | JsonSourceResponse | LakeHouseTableSourceResponse | MagentoSourceResponse | MariaDBSourceResponse | MarketoSourceResponse | MicrosoftAccessSourceResponse | MongoDbAtlasSourceResponse | MongoDbSourceResponse | MongoDbV2SourceResponse | MySqlSourceResponse | NetezzaSourceResponse | ODataSourceResponse | OdbcSourceResponse | Office365SourceResponse | OracleServiceCloudSourceResponse | OracleSourceResponse | OrcSourceResponse | ParquetSourceResponse | PaypalSourceResponse | PhoenixSourceResponse | PostgreSqlSourceResponse | PrestoSourceResponse | QuickBooksSourceResponse | RelationalSourceResponse | ResponsysSourceResponse | RestSourceResponse | SalesforceMarketingCloudSourceResponse | SalesforceServiceCloudSourceResponse | SalesforceSourceResponse | SapBwSourceResponse | SapCloudForCustomerSourceResponse | SapEccSourceResponse | SapHanaSourceResponse | SapOdpSourceResponse | SapOpenHubSourceResponse | SapTableSourceResponse | ServiceNowSourceResponse | SharePointOnlineListSourceResponse | ShopifySourceResponse | SnowflakeSourceResponse | SparkSourceResponse | SqlDWSourceResponse | SqlMISourceResponse | SqlServerSourceResponse | SqlSourceResponse | SquareSourceResponse | SybaseSourceResponse | TabularSourceResponse | TeradataSourceResponse | VerticaSourceResponse | WebSourceResponse | XeroSourceResponse | XmlSourceResponse | ZohoSourceResponse;
+    source: AmazonMWSSourceResponse | AmazonRdsForOracleSourceResponse | AmazonRdsForSqlServerSourceResponse | AmazonRedshiftSourceResponse | AvroSourceResponse | AzureBlobFSSourceResponse | AzureDataExplorerSourceResponse | AzureDataLakeStoreSourceResponse | AzureDatabricksDeltaLakeSourceResponse | AzureMariaDBSourceResponse | AzureMySqlSourceResponse | AzurePostgreSqlSourceResponse | AzureSqlSourceResponse | AzureTableSourceResponse | BinarySourceResponse | BlobSourceResponse | CassandraSourceResponse | CommonDataServiceForAppsSourceResponse | ConcurSourceResponse | CosmosDbMongoDbApiSourceResponse | CosmosDbSqlApiSourceResponse | CouchbaseSourceResponse | Db2SourceResponse | DelimitedTextSourceResponse | DocumentDbCollectionSourceResponse | DrillSourceResponse | DynamicsAXSourceResponse | DynamicsCrmSourceResponse | DynamicsSourceResponse | EloquaSourceResponse | ExcelSourceResponse | FileSystemSourceResponse | GoogleAdWordsSourceResponse | GoogleBigQuerySourceResponse | GreenplumSourceResponse | HBaseSourceResponse | HdfsSourceResponse | HiveSourceResponse | HttpSourceResponse | HubspotSourceResponse | ImpalaSourceResponse | InformixSourceResponse | JiraSourceResponse | JsonSourceResponse | LakeHouseTableSourceResponse | MagentoSourceResponse | MariaDBSourceResponse | MarketoSourceResponse | MicrosoftAccessSourceResponse | MongoDbAtlasSourceResponse | MongoDbSourceResponse | MongoDbV2SourceResponse | MySqlSourceResponse | NetezzaSourceResponse | ODataSourceResponse | OdbcSourceResponse | Office365SourceResponse | OracleServiceCloudSourceResponse | OracleSourceResponse | OrcSourceResponse | ParquetSourceResponse | PaypalSourceResponse | PhoenixSourceResponse | PostgreSqlSourceResponse | PrestoSourceResponse | QuickBooksSourceResponse | RelationalSourceResponse | ResponsysSourceResponse | RestSourceResponse | SalesforceMarketingCloudSourceResponse | SalesforceServiceCloudSourceResponse | SalesforceServiceCloudV2SourceResponse | SalesforceSourceResponse | SalesforceV2SourceResponse | SapBwSourceResponse | SapCloudForCustomerSourceResponse | SapEccSourceResponse | SapHanaSourceResponse | SapOdpSourceResponse | SapOpenHubSourceResponse | SapTableSourceResponse | ServiceNowSourceResponse | SharePointOnlineListSourceResponse | ShopifySourceResponse | SnowflakeSourceResponse | SparkSourceResponse | SqlDWSourceResponse | SqlMISourceResponse | SqlServerSourceResponse | SqlSourceResponse | SquareSourceResponse | SybaseSourceResponse | TabularSourceResponse | TeradataSourceResponse | VerticaSourceResponse | WarehouseSourceResponse | WebSourceResponse | XeroSourceResponse | XmlSourceResponse | ZohoSourceResponse;
     /**
      * Activity state. This is an optional property and if not provided, the state will be Active by default.
      */
@@ -13912,9 +13936,17 @@ export interface MariaDBLinkedServiceResponse {
      */
     connectionString?: any;
     /**
+     * Database name for connection. Type: string.
+     */
+    database?: any;
+    /**
      * Linked service description.
      */
     description?: string;
+    /**
+     * The version of the MariaDB driver. Type: string. V1 or empty for legacy driver, V2 for new driver. V1 can support connection string and property bag, V2 can only support connection string.
+     */
+    driverVersion?: any;
     /**
      * The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
      */
@@ -13926,12 +13958,24 @@ export interface MariaDBLinkedServiceResponse {
     /**
      * The Azure key vault secret reference of password in connection string.
      */
-    pwd?: AzureKeyVaultSecretReferenceResponse;
+    password?: AzureKeyVaultSecretReferenceResponse;
+    /**
+     * The port for the connection. Type: integer.
+     */
+    port?: any;
+    /**
+     * Server name for connection. Type: string.
+     */
+    server?: any;
     /**
      * Type of linked service.
      * Expected value is 'MariaDB'.
      */
     type: "MariaDB";
+    /**
+     * Username for authentication. Type: string.
+     */
+    username?: any;
 }
 
 /**
@@ -14876,11 +14920,19 @@ export interface MySqlLinkedServiceResponse {
     /**
      * The connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
      */
-    connectionString: any;
+    connectionString?: any;
+    /**
+     * Database name for connection. Type: string.
+     */
+    database?: any;
     /**
      * Linked service description.
      */
     description?: string;
+    /**
+     * The version of the MySQL driver. Type: string. V1 or empty for legacy driver, V2 for new driver. V1 can support connection string and property bag, V2 can only support connection string.
+     */
+    driverVersion?: any;
     /**
      * The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
      */
@@ -14894,10 +14946,30 @@ export interface MySqlLinkedServiceResponse {
      */
     password?: AzureKeyVaultSecretReferenceResponse;
     /**
+     * The port for the connection. Type: integer.
+     */
+    port?: any;
+    /**
+     * Server name for connection. Type: string.
+     */
+    server?: any;
+    /**
+     * SSL mode for connection. Type: integer. 0: disable, 1: prefer, 2: require, 3: verify-ca, 4: verify-full.
+     */
+    sslMode?: any;
+    /**
      * Type of linked service.
      * Expected value is 'MySql'.
      */
     type: "MySql";
+    /**
+     * Use system trust store for connection. Type: integer. 0: enable, 1: disable.
+     */
+    useSystemTrustStore?: any;
+    /**
+     * Username for authentication. Type: string.
+     */
+    username?: any;
 }
 
 /**
@@ -18625,6 +18697,186 @@ export interface SalesforceServiceCloudSourceResponse {
 }
 
 /**
+ * Linked service for Salesforce Service Cloud V2.
+ */
+export interface SalesforceServiceCloudV2LinkedServiceResponse {
+    /**
+     * List of tags that can be used for describing the linked service.
+     */
+    annotations?: any[];
+    /**
+     * The Salesforce API version used in ADF. The version must be larger than or equal to 47.0 which is required by Salesforce BULK API 2.0. Type: string (or Expression with resultType string).
+     */
+    apiVersion?: any;
+    /**
+     * The client Id for OAuth 2.0 Client Credentials Flow authentication of the Salesforce instance. Type: string (or Expression with resultType string).
+     */
+    clientId?: any;
+    /**
+     * The client secret for OAuth 2.0 Client Credentials Flow authentication of the Salesforce instance.
+     */
+    clientSecret?: AzureKeyVaultSecretReferenceResponse | SecureStringResponse;
+    /**
+     * The integration runtime reference.
+     */
+    connectVia?: IntegrationRuntimeReferenceResponse;
+    /**
+     * Linked service description.
+     */
+    description?: string;
+    /**
+     * The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+     */
+    encryptedCredential?: string;
+    /**
+     * The URL of Salesforce Service Cloud instance. For example, 'https://[domain].my.salesforce.com'. Type: string (or Expression with resultType string).
+     */
+    environmentUrl?: any;
+    /**
+     * Parameters for linked service.
+     */
+    parameters?: {[key: string]: ParameterSpecificationResponse};
+    /**
+     * Type of linked service.
+     * Expected value is 'SalesforceServiceCloudV2'.
+     */
+    type: "SalesforceServiceCloudV2";
+}
+
+/**
+ * The Salesforce Service Cloud V2 object dataset.
+ */
+export interface SalesforceServiceCloudV2ObjectDatasetResponse {
+    /**
+     * List of tags that can be used for describing the Dataset.
+     */
+    annotations?: any[];
+    /**
+     * Dataset description.
+     */
+    description?: string;
+    /**
+     * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+     */
+    folder?: DatasetResponseFolder;
+    /**
+     * Linked service reference.
+     */
+    linkedServiceName: LinkedServiceReferenceResponse;
+    /**
+     * The Salesforce Service Cloud V2 object API name. Type: string (or Expression with resultType string).
+     */
+    objectApiName?: any;
+    /**
+     * Parameters for dataset.
+     */
+    parameters?: {[key: string]: ParameterSpecificationResponse};
+    /**
+     * The Salesforce Service Cloud V2 reportId. Type: string (or Expression with resultType string).
+     */
+    reportId?: any;
+    /**
+     * Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+     */
+    schema?: any;
+    /**
+     * Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+     */
+    structure?: any;
+    /**
+     * Type of dataset.
+     * Expected value is 'SalesforceServiceCloudV2Object'.
+     */
+    type: "SalesforceServiceCloudV2Object";
+}
+
+/**
+ * A copy activity Salesforce Service Cloud V2 sink.
+ */
+export interface SalesforceServiceCloudV2SinkResponse {
+    /**
+     * If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+     */
+    disableMetricsCollection?: any;
+    /**
+     * The name of the external ID field for upsert operation. Default value is 'Id' column. Type: string (or Expression with resultType string).
+     */
+    externalIdFieldName?: any;
+    /**
+     * The flag indicating whether or not to ignore null values from input dataset (except key fields) during write operation. Default value is false. If set it to true, it means ADF will leave the data in the destination object unchanged when doing upsert/update operation and insert defined default value when doing insert operation, versus ADF will update the data in the destination object to NULL when doing upsert/update operation and insert NULL value when doing insert operation. Type: boolean (or Expression with resultType boolean).
+     */
+    ignoreNullValues?: any;
+    /**
+     * The maximum concurrent connection count for the sink data store. Type: integer (or Expression with resultType integer).
+     */
+    maxConcurrentConnections?: any;
+    /**
+     * Sink retry count. Type: integer (or Expression with resultType integer).
+     */
+    sinkRetryCount?: any;
+    /**
+     * Sink retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+     */
+    sinkRetryWait?: any;
+    /**
+     * Copy sink type.
+     * Expected value is 'SalesforceServiceCloudV2Sink'.
+     */
+    type: "SalesforceServiceCloudV2Sink";
+    /**
+     * Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
+     */
+    writeBatchSize?: any;
+    /**
+     * Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+     */
+    writeBatchTimeout?: any;
+    /**
+     * The write behavior for the operation. Default is Insert.
+     */
+    writeBehavior?: string;
+}
+
+/**
+ * A copy activity Salesforce Service Cloud V2 source.
+ */
+export interface SalesforceServiceCloudV2SourceResponse {
+    /**
+     * Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+     */
+    additionalColumns?: any;
+    /**
+     * If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+     */
+    disableMetricsCollection?: any;
+    /**
+     * The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+     */
+    maxConcurrentConnections?: any;
+    /**
+     * The read behavior for the operation. Default is query. Allowed values: query/queryAll. Type: string (or Expression with resultType string).
+     */
+    readBehavior?: any;
+    /**
+     * Database query. Type: string (or Expression with resultType string).
+     */
+    sOQLQuery?: any;
+    /**
+     * Source retry count. Type: integer (or Expression with resultType integer).
+     */
+    sourceRetryCount?: any;
+    /**
+     * Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+     */
+    sourceRetryWait?: any;
+    /**
+     * Copy source type.
+     * Expected value is 'SalesforceServiceCloudV2Source'.
+     */
+    type: "SalesforceServiceCloudV2Source";
+}
+
+/**
  * A copy activity Salesforce sink.
  */
 export interface SalesforceSinkResponse {
@@ -18712,6 +18964,190 @@ export interface SalesforceSourceResponse {
      * Expected value is 'SalesforceSource'.
      */
     type: "SalesforceSource";
+}
+
+/**
+ * Linked service for Salesforce V2.
+ */
+export interface SalesforceV2LinkedServiceResponse {
+    /**
+     * List of tags that can be used for describing the linked service.
+     */
+    annotations?: any[];
+    /**
+     * The Salesforce API version used in ADF. The version must be larger than or equal to 47.0 which is required by Salesforce BULK API 2.0. Type: string (or Expression with resultType string).
+     */
+    apiVersion?: any;
+    /**
+     * The client Id for OAuth 2.0 Client Credentials Flow authentication of the Salesforce instance. Type: string (or Expression with resultType string).
+     */
+    clientId?: any;
+    /**
+     * The client secret for OAuth 2.0 Client Credentials Flow authentication of the Salesforce instance.
+     */
+    clientSecret?: AzureKeyVaultSecretReferenceResponse | SecureStringResponse;
+    /**
+     * The integration runtime reference.
+     */
+    connectVia?: IntegrationRuntimeReferenceResponse;
+    /**
+     * Linked service description.
+     */
+    description?: string;
+    /**
+     * The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+     */
+    encryptedCredential?: string;
+    /**
+     * The URL of Salesforce instance. For example, 'https://[domain].my.salesforce.com'. Type: string (or Expression with resultType string).
+     */
+    environmentUrl?: any;
+    /**
+     * Parameters for linked service.
+     */
+    parameters?: {[key: string]: ParameterSpecificationResponse};
+    /**
+     * Type of linked service.
+     * Expected value is 'SalesforceV2'.
+     */
+    type: "SalesforceV2";
+}
+
+/**
+ * The Salesforce V2 object dataset.
+ */
+export interface SalesforceV2ObjectDatasetResponse {
+    /**
+     * List of tags that can be used for describing the Dataset.
+     */
+    annotations?: any[];
+    /**
+     * Dataset description.
+     */
+    description?: string;
+    /**
+     * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+     */
+    folder?: DatasetResponseFolder;
+    /**
+     * Linked service reference.
+     */
+    linkedServiceName: LinkedServiceReferenceResponse;
+    /**
+     * The Salesforce V2 object API name. Type: string (or Expression with resultType string).
+     */
+    objectApiName?: any;
+    /**
+     * Parameters for dataset.
+     */
+    parameters?: {[key: string]: ParameterSpecificationResponse};
+    /**
+     * The Salesforce V2 report Id. Type: string (or Expression with resultType string).
+     */
+    reportId?: any;
+    /**
+     * Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+     */
+    schema?: any;
+    /**
+     * Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+     */
+    structure?: any;
+    /**
+     * Type of dataset.
+     * Expected value is 'SalesforceV2Object'.
+     */
+    type: "SalesforceV2Object";
+}
+
+/**
+ * A copy activity Salesforce V2 sink.
+ */
+export interface SalesforceV2SinkResponse {
+    /**
+     * If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+     */
+    disableMetricsCollection?: any;
+    /**
+     * The name of the external ID field for upsert operation. Default value is 'Id' column. Type: string (or Expression with resultType string).
+     */
+    externalIdFieldName?: any;
+    /**
+     * The flag indicating whether or not to ignore null values from input dataset (except key fields) during write operation. Default value is false. If set it to true, it means ADF will leave the data in the destination object unchanged when doing upsert/update operation and insert defined default value when doing insert operation, versus ADF will update the data in the destination object to NULL when doing upsert/update operation and insert NULL value when doing insert operation. Type: boolean (or Expression with resultType boolean).
+     */
+    ignoreNullValues?: any;
+    /**
+     * The maximum concurrent connection count for the sink data store. Type: integer (or Expression with resultType integer).
+     */
+    maxConcurrentConnections?: any;
+    /**
+     * Sink retry count. Type: integer (or Expression with resultType integer).
+     */
+    sinkRetryCount?: any;
+    /**
+     * Sink retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+     */
+    sinkRetryWait?: any;
+    /**
+     * Copy sink type.
+     * Expected value is 'SalesforceV2Sink'.
+     */
+    type: "SalesforceV2Sink";
+    /**
+     * Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
+     */
+    writeBatchSize?: any;
+    /**
+     * Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+     */
+    writeBatchTimeout?: any;
+    /**
+     * The write behavior for the operation. Default is Insert.
+     */
+    writeBehavior?: string;
+}
+
+/**
+ * A copy activity Salesforce V2 source.
+ */
+export interface SalesforceV2SourceResponse {
+    /**
+     * Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+     */
+    additionalColumns?: any;
+    /**
+     * If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+     */
+    disableMetricsCollection?: any;
+    /**
+     * The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+     */
+    maxConcurrentConnections?: any;
+    /**
+     * Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+     */
+    queryTimeout?: any;
+    /**
+     * The read behavior for the operation. Default is query. Allowed values: query/queryAll. Type: string (or Expression with resultType string).
+     */
+    readBehavior?: any;
+    /**
+     * Database query. Type: string (or Expression with resultType string).
+     */
+    sOQLQuery?: any;
+    /**
+     * Source retry count. Type: integer (or Expression with resultType integer).
+     */
+    sourceRetryCount?: any;
+    /**
+     * Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+     */
+    sourceRetryWait?: any;
+    /**
+     * Copy source type.
+     * Expected value is 'SalesforceV2Source'.
+     */
+    type: "SalesforceV2Source";
 }
 
 /**
@@ -20693,6 +21129,10 @@ export interface SftpWriteSettingsResponse {
      * The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
      */
     maxConcurrentConnections?: any;
+    /**
+     * Specify the custom metadata to be added to sink data. Type: array of objects (or Expression with resultType array of objects).
+     */
+    metadata?: MetadataItemResponse[];
     /**
      * Specifies the timeout for writing each chunk to SFTP server. Default value: 01:00:00 (one hour). Type: string (or Expression with resultType string).
      */
@@ -23800,6 +24240,226 @@ export interface WaitActivityResponse {
      * Duration in seconds. Type: integer (or Expression with resultType integer).
      */
     waitTimeInSeconds: any;
+}
+
+/**
+ * Microsoft Fabric Warehouse linked service.
+ */
+export interface WarehouseLinkedServiceResponse {
+    /**
+     * List of tags that can be used for describing the linked service.
+     */
+    annotations?: any[];
+    /**
+     * The ID of Microsoft Fabric Warehouse artifact. Type: string (or Expression with resultType string).
+     */
+    artifactId: any;
+    /**
+     * The integration runtime reference.
+     */
+    connectVia?: IntegrationRuntimeReferenceResponse;
+    /**
+     * Linked service description.
+     */
+    description?: string;
+    /**
+     * The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+     */
+    encryptedCredential?: string;
+    /**
+     * The endpoint of Microsoft Fabric Warehouse server. Type: string (or Expression with resultType string).
+     */
+    endpoint: any;
+    /**
+     * Parameters for linked service.
+     */
+    parameters?: {[key: string]: ParameterSpecificationResponse};
+    /**
+     * The credential of the service principal object in Azure Active Directory. If servicePrincipalCredentialType is 'ServicePrincipalKey', servicePrincipalCredential can be SecureString or AzureKeyVaultSecretReference. If servicePrincipalCredentialType is 'ServicePrincipalCert', servicePrincipalCredential can only be AzureKeyVaultSecretReference.
+     */
+    servicePrincipalCredential?: AzureKeyVaultSecretReferenceResponse | SecureStringResponse;
+    /**
+     * The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
+     */
+    servicePrincipalCredentialType?: any;
+    /**
+     * The ID of the application used to authenticate against Microsoft Fabric Warehouse. Type: string (or Expression with resultType string).
+     */
+    servicePrincipalId?: any;
+    /**
+     * The Key of the application used to authenticate against Microsoft Fabric Warehouse.
+     */
+    servicePrincipalKey?: AzureKeyVaultSecretReferenceResponse | SecureStringResponse;
+    /**
+     * The name or ID of the tenant to which the service principal belongs. Type: string (or Expression with resultType string).
+     */
+    tenant?: any;
+    /**
+     * Type of linked service.
+     * Expected value is 'Warehouse'.
+     */
+    type: "Warehouse";
+    /**
+     * The ID of Microsoft Fabric workspace. Type: string (or Expression with resultType string).
+     */
+    workspaceId?: any;
+}
+
+/**
+ * A copy activity Microsoft Fabric Warehouse sink.
+ */
+export interface WarehouseSinkResponse {
+    /**
+     * Indicates to use Copy Command to copy data into SQL Data Warehouse. Type: boolean (or Expression with resultType boolean).
+     */
+    allowCopyCommand?: any;
+    /**
+     * Specifies Copy Command related settings when allowCopyCommand is true.
+     */
+    copyCommandSettings?: DWCopyCommandSettingsResponse;
+    /**
+     * If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+     */
+    disableMetricsCollection?: any;
+    /**
+     * The maximum concurrent connection count for the sink data store. Type: integer (or Expression with resultType integer).
+     */
+    maxConcurrentConnections?: any;
+    /**
+     * SQL pre-copy script. Type: string (or Expression with resultType string).
+     */
+    preCopyScript?: any;
+    /**
+     * Sink retry count. Type: integer (or Expression with resultType integer).
+     */
+    sinkRetryCount?: any;
+    /**
+     * Sink retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+     */
+    sinkRetryWait?: any;
+    /**
+     * The option to handle sink table, such as autoCreate. For now only 'autoCreate' value is supported. Type: string (or Expression with resultType string).
+     */
+    tableOption?: any;
+    /**
+     * Copy sink type.
+     * Expected value is 'WarehouseSink'.
+     */
+    type: "WarehouseSink";
+    /**
+     * Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
+     */
+    writeBatchSize?: any;
+    /**
+     * Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+     */
+    writeBatchTimeout?: any;
+    /**
+     * Write behavior when copying data into azure Microsoft Fabric Data Warehouse. Type: DWWriteBehaviorEnum (or Expression with resultType DWWriteBehaviorEnum)
+     */
+    writeBehavior?: any;
+}
+
+/**
+ * A copy activity Microsoft Fabric Warehouse source.
+ */
+export interface WarehouseSourceResponse {
+    /**
+     * Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+     */
+    additionalColumns?: any;
+    /**
+     * If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+     */
+    disableMetricsCollection?: any;
+    /**
+     * Specifies the transaction locking behavior for the Microsoft Fabric Warehouse source. Allowed values: ReadCommitted/ReadUncommitted/RepeatableRead/Serializable/Snapshot. The default value is ReadCommitted. Type: string (or Expression with resultType string).
+     */
+    isolationLevel?: any;
+    /**
+     * The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+     */
+    maxConcurrentConnections?: any;
+    /**
+     * The partition mechanism that will be used for Sql read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange".
+     */
+    partitionOption?: any;
+    /**
+     * The settings that will be leveraged for Sql source partitioning.
+     */
+    partitionSettings?: SqlPartitionSettingsResponse;
+    /**
+     * Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+     */
+    queryTimeout?: any;
+    /**
+     * Source retry count. Type: integer (or Expression with resultType integer).
+     */
+    sourceRetryCount?: any;
+    /**
+     * Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+     */
+    sourceRetryWait?: any;
+    /**
+     * Microsoft Fabric Warehouse reader query. Type: string (or Expression with resultType string).
+     */
+    sqlReaderQuery?: any;
+    /**
+     * Name of the stored procedure for a Microsoft Fabric Warehouse source. This cannot be used at the same time as SqlReaderQuery. Type: string (or Expression with resultType string).
+     */
+    sqlReaderStoredProcedureName?: any;
+    /**
+     * Value and type setting for stored procedure parameters. Example: "{Parameter1: {value: "1", type: "int"}}". Type: object (or Expression with resultType object), itemType: StoredProcedureParameter.
+     */
+    storedProcedureParameters?: any;
+    /**
+     * Copy source type.
+     * Expected value is 'WarehouseSource'.
+     */
+    type: "WarehouseSource";
+}
+
+/**
+ * Microsoft Fabric Warehouse dataset.
+ */
+export interface WarehouseTableDatasetResponse {
+    /**
+     * List of tags that can be used for describing the Dataset.
+     */
+    annotations?: any[];
+    /**
+     * Dataset description.
+     */
+    description?: string;
+    /**
+     * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+     */
+    folder?: DatasetResponseFolder;
+    /**
+     * Linked service reference.
+     */
+    linkedServiceName: LinkedServiceReferenceResponse;
+    /**
+     * Parameters for dataset.
+     */
+    parameters?: {[key: string]: ParameterSpecificationResponse};
+    /**
+     * Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+     */
+    schema?: any;
+    /**
+     * Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+     */
+    structure?: any;
+    /**
+     * The table name of the Microsoft Fabric Warehouse. Type: string (or Expression with resultType string).
+     */
+    table?: any;
+    /**
+     * Type of dataset.
+     * Expected value is 'WarehouseTable'.
+     */
+    type: "WarehouseTable";
 }
 
 /**

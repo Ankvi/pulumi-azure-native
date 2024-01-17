@@ -25,12 +25,6 @@ utilities.lazyLoad(exports, ["Workspace"], () => require("./workspace"));
 // Export enums:
 export * from "./types/enums";
 
-// Export sub-modules:
-import * as v20230208preview from "./v20230208preview";
-
-export {
-    v20230208preview,
-};
 
 const _module = {
     version: utilities.getVersion(),

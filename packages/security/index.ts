@@ -191,6 +191,11 @@ export const getJitNetworkAccessPolicy: typeof import("./getJitNetworkAccessPoli
 export const getJitNetworkAccessPolicyOutput: typeof import("./getJitNetworkAccessPolicy").getJitNetworkAccessPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getJitNetworkAccessPolicy","getJitNetworkAccessPolicyOutput"], () => require("./getJitNetworkAccessPolicy"));
 
+export { GetPricingArgs, GetPricingResult, GetPricingOutputArgs } from "./getPricing";
+export const getPricing: typeof import("./getPricing").getPricing = null as any;
+export const getPricingOutput: typeof import("./getPricing").getPricingOutput = null as any;
+utilities.lazyLoad(exports, ["getPricing","getPricingOutput"], () => require("./getPricing"));
+
 export { GetSecurityConnectorArgs, GetSecurityConnectorResult, GetSecurityConnectorOutputArgs } from "./getSecurityConnector";
 export const getSecurityConnector: typeof import("./getSecurityConnector").getSecurityConnector = null as any;
 export const getSecurityConnectorOutput: typeof import("./getSecurityConnector").getSecurityConnectorOutput = null as any;
@@ -271,6 +276,11 @@ export const listGitLabSubgroup: typeof import("./listGitLabSubgroup").listGitLa
 export const listGitLabSubgroupOutput: typeof import("./listGitLabSubgroup").listGitLabSubgroupOutput = null as any;
 utilities.lazyLoad(exports, ["listGitLabSubgroup","listGitLabSubgroupOutput"], () => require("./listGitLabSubgroup"));
 
+export { PricingArgs } from "./pricing";
+export type Pricing = import("./pricing").Pricing;
+export const Pricing: typeof import("./pricing").Pricing = null as any;
+utilities.lazyLoad(exports, ["Pricing"], () => require("./pricing"));
+
 export { SecurityConnectorArgs } from "./securityConnector";
 export type SecurityConnector = import("./securityConnector").SecurityConnector;
 export const SecurityConnector: typeof import("./securityConnector").SecurityConnector = null as any;
@@ -315,48 +325,6 @@ utilities.lazyLoad(exports, ["WorkspaceSetting"], () => require("./workspaceSett
 // Export enums:
 export * from "./types/enums";
 
-// Export sub-modules:
-import * as v20170801preview from "./v20170801preview";
-import * as v20190101 from "./v20190101";
-import * as v20190101preview from "./v20190101preview";
-import * as v20190801 from "./v20190801";
-import * as v20200101 from "./v20200101";
-import * as v20200101preview from "./v20200101preview";
-import * as v20210601 from "./v20210601";
-import * as v20210701preview from "./v20210701preview";
-import * as v20210801preview from "./v20210801preview";
-import * as v20220101preview from "./v20220101preview";
-import * as v20220701preview from "./v20220701preview";
-import * as v20221120preview from "./v20221120preview";
-import * as v20230101preview from "./v20230101preview";
-import * as v20230201preview from "./v20230201preview";
-import * as v20230301preview from "./v20230301preview";
-import * as v20230501 from "./v20230501";
-import * as v20230901preview from "./v20230901preview";
-import * as v20231001preview from "./v20231001preview";
-import * as v20231115 from "./v20231115";
-
-export {
-    v20170801preview,
-    v20190101,
-    v20190101preview,
-    v20190801,
-    v20200101,
-    v20200101preview,
-    v20210601,
-    v20210701preview,
-    v20210801preview,
-    v20220101preview,
-    v20220701preview,
-    v20221120preview,
-    v20230101preview,
-    v20230201preview,
-    v20230301preview,
-    v20230501,
-    v20230901preview,
-    v20231001preview,
-    v20231115,
-};
 
 const _module = {
     version: utilities.getVersion(),
@@ -404,6 +372,8 @@ const _module = {
                 return new IotSecuritySolution(name, <any>undefined, { urn })
             case "azure-native:security:JitNetworkAccessPolicy":
                 return new JitNetworkAccessPolicy(name, <any>undefined, { urn })
+            case "azure-native:security:Pricing":
+                return new Pricing(name, <any>undefined, { urn })
             case "azure-native:security:SecurityConnector":
                 return new SecurityConnector(name, <any>undefined, { urn })
             case "azure-native:security:SecurityConnectorApplication":

@@ -25,16 +25,6 @@ utilities.lazyLoad(exports, ["ManagedCCF"], () => require("./managedCCF"));
 // Export enums:
 export * from "./types/enums";
 
-// Export sub-modules:
-import * as v20220513 from "./v20220513";
-import * as v20230126preview from "./v20230126preview";
-import * as v20230628preview from "./v20230628preview";
-
-export {
-    v20220513,
-    v20230126preview,
-    v20230628preview,
-};
 
 const _module = {
     version: utilities.getVersion(),

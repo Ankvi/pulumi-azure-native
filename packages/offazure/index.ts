@@ -180,14 +180,6 @@ utilities.lazyLoad(exports, ["WebAppSitesController"], () => require("./webAppSi
 // Export enums:
 export * from "./types/enums";
 
-// Export sub-modules:
-import * as v20200707 from "./v20200707";
-import * as v20230606 from "./v20230606";
-
-export {
-    v20200707,
-    v20230606,
-};
 
 const _module = {
     version: utilities.getVersion(),

@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Retrieve the Database Migration resource.
  * Azure REST API version: 2022-03-30-preview.
+ *
+ * Other available API versions: 2023-07-15-preview.
  */
 export function getDatabaseMigrationsSqlDb(args: GetDatabaseMigrationsSqlDbArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseMigrationsSqlDbResult> {
 
@@ -56,6 +58,8 @@ export interface GetDatabaseMigrationsSqlDbResult {
 /**
  * Retrieve the Database Migration resource.
  * Azure REST API version: 2022-03-30-preview.
+ *
+ * Other available API versions: 2023-07-15-preview.
  */
 export function getDatabaseMigrationsSqlDbOutput(args: GetDatabaseMigrationsSqlDbOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseMigrationsSqlDbResult> {
     return pulumi.output(args).apply((a: any) => getDatabaseMigrationsSqlDb(a, opts))

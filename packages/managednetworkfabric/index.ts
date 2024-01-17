@@ -230,14 +230,6 @@ utilities.lazyLoad(exports, ["RoutePolicy"], () => require("./routePolicy"));
 // Export enums:
 export * from "./types/enums";
 
-// Export sub-modules:
-import * as v20230201preview from "./v20230201preview";
-import * as v20230615 from "./v20230615";
-
-export {
-    v20230201preview,
-    v20230615,
-};
 
 const _module = {
     version: utilities.getVersion(),

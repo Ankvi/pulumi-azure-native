@@ -25,12 +25,6 @@ utilities.lazyLoad(exports, ["GroupQuotaSubscription"], () => require("./groupQu
 // Export enums:
 export * from "./types/enums";
 
-// Export sub-modules:
-import * as v20230601preview from "./v20230601preview";
-
-export {
-    v20230601preview,
-};
 
 const _module = {
     version: utilities.getVersion(),

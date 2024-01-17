@@ -1712,6 +1712,10 @@ export interface AzureBlobFSWriteSettingsArgs {
      */
     maxConcurrentConnections?: any;
     /**
+     * Specify the custom metadata to be added to sink data. Type: array of objects (or Expression with resultType array of objects).
+     */
+    metadata?: pulumi.Input<pulumi.Input<MetadataItemArgs>[]>;
+    /**
      * The write setting type.
      * Expected value is 'AzureBlobFSWriteSettings'.
      */
@@ -1903,6 +1907,10 @@ export interface AzureBlobStorageWriteSettingsArgs {
      * The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
      */
     maxConcurrentConnections?: any;
+    /**
+     * Specify the custom metadata to be added to sink data. Type: array of objects (or Expression with resultType array of objects).
+     */
+    metadata?: pulumi.Input<pulumi.Input<MetadataItemArgs>[]>;
     /**
      * The write setting type.
      * Expected value is 'AzureBlobStorageWriteSettings'.
@@ -2503,6 +2511,10 @@ export interface AzureDataLakeStoreWriteSettingsArgs {
      */
     maxConcurrentConnections?: any;
     /**
+     * Specify the custom metadata to be added to sink data. Type: array of objects (or Expression with resultType array of objects).
+     */
+    metadata?: pulumi.Input<pulumi.Input<MetadataItemArgs>[]>;
+    /**
      * The write setting type.
      * Expected value is 'AzureDataLakeStoreWriteSettings'.
      */
@@ -2987,6 +2999,10 @@ export interface AzureFileStorageWriteSettingsArgs {
      * The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
      */
     maxConcurrentConnections?: any;
+    /**
+     * Specify the custom metadata to be added to sink data. Type: array of objects (or Expression with resultType array of objects).
+     */
+    metadata?: pulumi.Input<pulumi.Input<MetadataItemArgs>[]>;
     /**
      * The write setting type.
      * Expected value is 'AzureFileStorageWriteSettings'.
@@ -5821,7 +5837,7 @@ export interface CopyActivityArgs {
     /**
      * Copy activity sink.
      */
-    sink: pulumi.Input<AvroSinkArgs | AzureBlobFSSinkArgs | AzureDataExplorerSinkArgs | AzureDataLakeStoreSinkArgs | AzureDatabricksDeltaLakeSinkArgs | AzureMySqlSinkArgs | AzurePostgreSqlSinkArgs | AzureQueueSinkArgs | AzureSearchIndexSinkArgs | AzureSqlSinkArgs | AzureTableSinkArgs | BinarySinkArgs | BlobSinkArgs | CommonDataServiceForAppsSinkArgs | CosmosDbMongoDbApiSinkArgs | CosmosDbSqlApiSinkArgs | DelimitedTextSinkArgs | DocumentDbCollectionSinkArgs | DynamicsCrmSinkArgs | DynamicsSinkArgs | FileSystemSinkArgs | InformixSinkArgs | JsonSinkArgs | LakeHouseTableSinkArgs | MicrosoftAccessSinkArgs | MongoDbAtlasSinkArgs | MongoDbV2SinkArgs | OdbcSinkArgs | OracleSinkArgs | OrcSinkArgs | ParquetSinkArgs | RestSinkArgs | SalesforceServiceCloudSinkArgs | SalesforceSinkArgs | SapCloudForCustomerSinkArgs | SnowflakeSinkArgs | SqlDWSinkArgs | SqlMISinkArgs | SqlServerSinkArgs | SqlSinkArgs>;
+    sink: pulumi.Input<AvroSinkArgs | AzureBlobFSSinkArgs | AzureDataExplorerSinkArgs | AzureDataLakeStoreSinkArgs | AzureDatabricksDeltaLakeSinkArgs | AzureMySqlSinkArgs | AzurePostgreSqlSinkArgs | AzureQueueSinkArgs | AzureSearchIndexSinkArgs | AzureSqlSinkArgs | AzureTableSinkArgs | BinarySinkArgs | BlobSinkArgs | CommonDataServiceForAppsSinkArgs | CosmosDbMongoDbApiSinkArgs | CosmosDbSqlApiSinkArgs | DelimitedTextSinkArgs | DocumentDbCollectionSinkArgs | DynamicsCrmSinkArgs | DynamicsSinkArgs | FileSystemSinkArgs | InformixSinkArgs | JsonSinkArgs | LakeHouseTableSinkArgs | MicrosoftAccessSinkArgs | MongoDbAtlasSinkArgs | MongoDbV2SinkArgs | OdbcSinkArgs | OracleSinkArgs | OrcSinkArgs | ParquetSinkArgs | RestSinkArgs | SalesforceServiceCloudSinkArgs | SalesforceServiceCloudV2SinkArgs | SalesforceSinkArgs | SalesforceV2SinkArgs | SapCloudForCustomerSinkArgs | SnowflakeSinkArgs | SqlDWSinkArgs | SqlMISinkArgs | SqlServerSinkArgs | SqlSinkArgs | WarehouseSinkArgs>;
     /**
      * Specify the fault tolerance for data consistency.
      */
@@ -5829,7 +5845,7 @@ export interface CopyActivityArgs {
     /**
      * Copy activity source.
      */
-    source: pulumi.Input<AmazonMWSSourceArgs | AmazonRdsForOracleSourceArgs | AmazonRdsForSqlServerSourceArgs | AmazonRedshiftSourceArgs | AvroSourceArgs | AzureBlobFSSourceArgs | AzureDataExplorerSourceArgs | AzureDataLakeStoreSourceArgs | AzureDatabricksDeltaLakeSourceArgs | AzureMariaDBSourceArgs | AzureMySqlSourceArgs | AzurePostgreSqlSourceArgs | AzureSqlSourceArgs | AzureTableSourceArgs | BinarySourceArgs | BlobSourceArgs | CassandraSourceArgs | CommonDataServiceForAppsSourceArgs | ConcurSourceArgs | CosmosDbMongoDbApiSourceArgs | CosmosDbSqlApiSourceArgs | CouchbaseSourceArgs | Db2SourceArgs | DelimitedTextSourceArgs | DocumentDbCollectionSourceArgs | DrillSourceArgs | DynamicsAXSourceArgs | DynamicsCrmSourceArgs | DynamicsSourceArgs | EloquaSourceArgs | ExcelSourceArgs | FileSystemSourceArgs | GoogleAdWordsSourceArgs | GoogleBigQuerySourceArgs | GreenplumSourceArgs | HBaseSourceArgs | HdfsSourceArgs | HiveSourceArgs | HttpSourceArgs | HubspotSourceArgs | ImpalaSourceArgs | InformixSourceArgs | JiraSourceArgs | JsonSourceArgs | LakeHouseTableSourceArgs | MagentoSourceArgs | MariaDBSourceArgs | MarketoSourceArgs | MicrosoftAccessSourceArgs | MongoDbAtlasSourceArgs | MongoDbSourceArgs | MongoDbV2SourceArgs | MySqlSourceArgs | NetezzaSourceArgs | ODataSourceArgs | OdbcSourceArgs | Office365SourceArgs | OracleServiceCloudSourceArgs | OracleSourceArgs | OrcSourceArgs | ParquetSourceArgs | PaypalSourceArgs | PhoenixSourceArgs | PostgreSqlSourceArgs | PrestoSourceArgs | QuickBooksSourceArgs | RelationalSourceArgs | ResponsysSourceArgs | RestSourceArgs | SalesforceMarketingCloudSourceArgs | SalesforceServiceCloudSourceArgs | SalesforceSourceArgs | SapBwSourceArgs | SapCloudForCustomerSourceArgs | SapEccSourceArgs | SapHanaSourceArgs | SapOdpSourceArgs | SapOpenHubSourceArgs | SapTableSourceArgs | ServiceNowSourceArgs | SharePointOnlineListSourceArgs | ShopifySourceArgs | SnowflakeSourceArgs | SparkSourceArgs | SqlDWSourceArgs | SqlMISourceArgs | SqlServerSourceArgs | SqlSourceArgs | SquareSourceArgs | SybaseSourceArgs | TabularSourceArgs | TeradataSourceArgs | VerticaSourceArgs | WebSourceArgs | XeroSourceArgs | XmlSourceArgs | ZohoSourceArgs>;
+    source: pulumi.Input<AmazonMWSSourceArgs | AmazonRdsForOracleSourceArgs | AmazonRdsForSqlServerSourceArgs | AmazonRedshiftSourceArgs | AvroSourceArgs | AzureBlobFSSourceArgs | AzureDataExplorerSourceArgs | AzureDataLakeStoreSourceArgs | AzureDatabricksDeltaLakeSourceArgs | AzureMariaDBSourceArgs | AzureMySqlSourceArgs | AzurePostgreSqlSourceArgs | AzureSqlSourceArgs | AzureTableSourceArgs | BinarySourceArgs | BlobSourceArgs | CassandraSourceArgs | CommonDataServiceForAppsSourceArgs | ConcurSourceArgs | CosmosDbMongoDbApiSourceArgs | CosmosDbSqlApiSourceArgs | CouchbaseSourceArgs | Db2SourceArgs | DelimitedTextSourceArgs | DocumentDbCollectionSourceArgs | DrillSourceArgs | DynamicsAXSourceArgs | DynamicsCrmSourceArgs | DynamicsSourceArgs | EloquaSourceArgs | ExcelSourceArgs | FileSystemSourceArgs | GoogleAdWordsSourceArgs | GoogleBigQuerySourceArgs | GreenplumSourceArgs | HBaseSourceArgs | HdfsSourceArgs | HiveSourceArgs | HttpSourceArgs | HubspotSourceArgs | ImpalaSourceArgs | InformixSourceArgs | JiraSourceArgs | JsonSourceArgs | LakeHouseTableSourceArgs | MagentoSourceArgs | MariaDBSourceArgs | MarketoSourceArgs | MicrosoftAccessSourceArgs | MongoDbAtlasSourceArgs | MongoDbSourceArgs | MongoDbV2SourceArgs | MySqlSourceArgs | NetezzaSourceArgs | ODataSourceArgs | OdbcSourceArgs | Office365SourceArgs | OracleServiceCloudSourceArgs | OracleSourceArgs | OrcSourceArgs | ParquetSourceArgs | PaypalSourceArgs | PhoenixSourceArgs | PostgreSqlSourceArgs | PrestoSourceArgs | QuickBooksSourceArgs | RelationalSourceArgs | ResponsysSourceArgs | RestSourceArgs | SalesforceMarketingCloudSourceArgs | SalesforceServiceCloudSourceArgs | SalesforceServiceCloudV2SourceArgs | SalesforceSourceArgs | SalesforceV2SourceArgs | SapBwSourceArgs | SapCloudForCustomerSourceArgs | SapEccSourceArgs | SapHanaSourceArgs | SapOdpSourceArgs | SapOpenHubSourceArgs | SapTableSourceArgs | ServiceNowSourceArgs | SharePointOnlineListSourceArgs | ShopifySourceArgs | SnowflakeSourceArgs | SparkSourceArgs | SqlDWSourceArgs | SqlMISourceArgs | SqlServerSourceArgs | SqlSourceArgs | SquareSourceArgs | SybaseSourceArgs | TabularSourceArgs | TeradataSourceArgs | VerticaSourceArgs | WarehouseSourceArgs | WebSourceArgs | XeroSourceArgs | XmlSourceArgs | ZohoSourceArgs>;
     /**
      * Specifies interim staging settings when EnableStaging is true.
      */
@@ -9250,6 +9266,10 @@ export interface FileServerWriteSettingsArgs {
      * The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
      */
     maxConcurrentConnections?: any;
+    /**
+     * Specify the custom metadata to be added to sink data. Type: array of objects (or Expression with resultType array of objects).
+     */
+    metadata?: pulumi.Input<pulumi.Input<MetadataItemArgs>[]>;
     /**
      * The write setting type.
      * Expected value is 'FileServerWriteSettings'.
@@ -13076,6 +13096,10 @@ export interface LakeHouseWriteSettingsArgs {
      */
     maxConcurrentConnections?: any;
     /**
+     * Specify the custom metadata to be added to sink data. Type: array of objects (or Expression with resultType array of objects).
+     */
+    metadata?: pulumi.Input<pulumi.Input<MetadataItemArgs>[]>;
+    /**
      * The write setting type.
      * Expected value is 'LakeHouseWriteSettings'.
      */
@@ -13227,7 +13251,7 @@ export interface LookupActivityArgs {
     /**
      * Dataset-specific source properties, same as copy activity source.
      */
-    source: pulumi.Input<AmazonMWSSourceArgs | AmazonRdsForOracleSourceArgs | AmazonRdsForSqlServerSourceArgs | AmazonRedshiftSourceArgs | AvroSourceArgs | AzureBlobFSSourceArgs | AzureDataExplorerSourceArgs | AzureDataLakeStoreSourceArgs | AzureDatabricksDeltaLakeSourceArgs | AzureMariaDBSourceArgs | AzureMySqlSourceArgs | AzurePostgreSqlSourceArgs | AzureSqlSourceArgs | AzureTableSourceArgs | BinarySourceArgs | BlobSourceArgs | CassandraSourceArgs | CommonDataServiceForAppsSourceArgs | ConcurSourceArgs | CosmosDbMongoDbApiSourceArgs | CosmosDbSqlApiSourceArgs | CouchbaseSourceArgs | Db2SourceArgs | DelimitedTextSourceArgs | DocumentDbCollectionSourceArgs | DrillSourceArgs | DynamicsAXSourceArgs | DynamicsCrmSourceArgs | DynamicsSourceArgs | EloquaSourceArgs | ExcelSourceArgs | FileSystemSourceArgs | GoogleAdWordsSourceArgs | GoogleBigQuerySourceArgs | GreenplumSourceArgs | HBaseSourceArgs | HdfsSourceArgs | HiveSourceArgs | HttpSourceArgs | HubspotSourceArgs | ImpalaSourceArgs | InformixSourceArgs | JiraSourceArgs | JsonSourceArgs | LakeHouseTableSourceArgs | MagentoSourceArgs | MariaDBSourceArgs | MarketoSourceArgs | MicrosoftAccessSourceArgs | MongoDbAtlasSourceArgs | MongoDbSourceArgs | MongoDbV2SourceArgs | MySqlSourceArgs | NetezzaSourceArgs | ODataSourceArgs | OdbcSourceArgs | Office365SourceArgs | OracleServiceCloudSourceArgs | OracleSourceArgs | OrcSourceArgs | ParquetSourceArgs | PaypalSourceArgs | PhoenixSourceArgs | PostgreSqlSourceArgs | PrestoSourceArgs | QuickBooksSourceArgs | RelationalSourceArgs | ResponsysSourceArgs | RestSourceArgs | SalesforceMarketingCloudSourceArgs | SalesforceServiceCloudSourceArgs | SalesforceSourceArgs | SapBwSourceArgs | SapCloudForCustomerSourceArgs | SapEccSourceArgs | SapHanaSourceArgs | SapOdpSourceArgs | SapOpenHubSourceArgs | SapTableSourceArgs | ServiceNowSourceArgs | SharePointOnlineListSourceArgs | ShopifySourceArgs | SnowflakeSourceArgs | SparkSourceArgs | SqlDWSourceArgs | SqlMISourceArgs | SqlServerSourceArgs | SqlSourceArgs | SquareSourceArgs | SybaseSourceArgs | TabularSourceArgs | TeradataSourceArgs | VerticaSourceArgs | WebSourceArgs | XeroSourceArgs | XmlSourceArgs | ZohoSourceArgs>;
+    source: pulumi.Input<AmazonMWSSourceArgs | AmazonRdsForOracleSourceArgs | AmazonRdsForSqlServerSourceArgs | AmazonRedshiftSourceArgs | AvroSourceArgs | AzureBlobFSSourceArgs | AzureDataExplorerSourceArgs | AzureDataLakeStoreSourceArgs | AzureDatabricksDeltaLakeSourceArgs | AzureMariaDBSourceArgs | AzureMySqlSourceArgs | AzurePostgreSqlSourceArgs | AzureSqlSourceArgs | AzureTableSourceArgs | BinarySourceArgs | BlobSourceArgs | CassandraSourceArgs | CommonDataServiceForAppsSourceArgs | ConcurSourceArgs | CosmosDbMongoDbApiSourceArgs | CosmosDbSqlApiSourceArgs | CouchbaseSourceArgs | Db2SourceArgs | DelimitedTextSourceArgs | DocumentDbCollectionSourceArgs | DrillSourceArgs | DynamicsAXSourceArgs | DynamicsCrmSourceArgs | DynamicsSourceArgs | EloquaSourceArgs | ExcelSourceArgs | FileSystemSourceArgs | GoogleAdWordsSourceArgs | GoogleBigQuerySourceArgs | GreenplumSourceArgs | HBaseSourceArgs | HdfsSourceArgs | HiveSourceArgs | HttpSourceArgs | HubspotSourceArgs | ImpalaSourceArgs | InformixSourceArgs | JiraSourceArgs | JsonSourceArgs | LakeHouseTableSourceArgs | MagentoSourceArgs | MariaDBSourceArgs | MarketoSourceArgs | MicrosoftAccessSourceArgs | MongoDbAtlasSourceArgs | MongoDbSourceArgs | MongoDbV2SourceArgs | MySqlSourceArgs | NetezzaSourceArgs | ODataSourceArgs | OdbcSourceArgs | Office365SourceArgs | OracleServiceCloudSourceArgs | OracleSourceArgs | OrcSourceArgs | ParquetSourceArgs | PaypalSourceArgs | PhoenixSourceArgs | PostgreSqlSourceArgs | PrestoSourceArgs | QuickBooksSourceArgs | RelationalSourceArgs | ResponsysSourceArgs | RestSourceArgs | SalesforceMarketingCloudSourceArgs | SalesforceServiceCloudSourceArgs | SalesforceServiceCloudV2SourceArgs | SalesforceSourceArgs | SalesforceV2SourceArgs | SapBwSourceArgs | SapCloudForCustomerSourceArgs | SapEccSourceArgs | SapHanaSourceArgs | SapOdpSourceArgs | SapOpenHubSourceArgs | SapTableSourceArgs | ServiceNowSourceArgs | SharePointOnlineListSourceArgs | ShopifySourceArgs | SnowflakeSourceArgs | SparkSourceArgs | SqlDWSourceArgs | SqlMISourceArgs | SqlServerSourceArgs | SqlSourceArgs | SquareSourceArgs | SybaseSourceArgs | TabularSourceArgs | TeradataSourceArgs | VerticaSourceArgs | WarehouseSourceArgs | WebSourceArgs | XeroSourceArgs | XmlSourceArgs | ZohoSourceArgs>;
     /**
      * Activity state. This is an optional property and if not provided, the state will be Active by default.
      */
@@ -13730,9 +13754,17 @@ export interface MariaDBLinkedServiceArgs {
      */
     connectionString?: any;
     /**
+     * Database name for connection. Type: string.
+     */
+    database?: any;
+    /**
      * Linked service description.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The version of the MariaDB driver. Type: string. V1 or empty for legacy driver, V2 for new driver. V1 can support connection string and property bag, V2 can only support connection string.
+     */
+    driverVersion?: any;
     /**
      * The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
      */
@@ -13744,12 +13776,24 @@ export interface MariaDBLinkedServiceArgs {
     /**
      * The Azure key vault secret reference of password in connection string.
      */
-    pwd?: pulumi.Input<AzureKeyVaultSecretReferenceArgs>;
+    password?: pulumi.Input<AzureKeyVaultSecretReferenceArgs>;
+    /**
+     * The port for the connection. Type: integer.
+     */
+    port?: any;
+    /**
+     * Server name for connection. Type: string.
+     */
+    server?: any;
     /**
      * Type of linked service.
      * Expected value is 'MariaDB'.
      */
     type: pulumi.Input<"MariaDB">;
+    /**
+     * Username for authentication. Type: string.
+     */
+    username?: any;
 }
 
 /**
@@ -14690,11 +14734,19 @@ export interface MySqlLinkedServiceArgs {
     /**
      * The connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
      */
-    connectionString: any;
+    connectionString?: any;
+    /**
+     * Database name for connection. Type: string.
+     */
+    database?: any;
     /**
      * Linked service description.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The version of the MySQL driver. Type: string. V1 or empty for legacy driver, V2 for new driver. V1 can support connection string and property bag, V2 can only support connection string.
+     */
+    driverVersion?: any;
     /**
      * The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
      */
@@ -14708,10 +14760,30 @@ export interface MySqlLinkedServiceArgs {
      */
     password?: pulumi.Input<AzureKeyVaultSecretReferenceArgs>;
     /**
+     * The port for the connection. Type: integer.
+     */
+    port?: any;
+    /**
+     * Server name for connection. Type: string.
+     */
+    server?: any;
+    /**
+     * SSL mode for connection. Type: integer. 0: disable, 1: prefer, 2: require, 3: verify-ca, 4: verify-full.
+     */
+    sslMode?: any;
+    /**
      * Type of linked service.
      * Expected value is 'MySql'.
      */
     type: pulumi.Input<"MySql">;
+    /**
+     * Use system trust store for connection. Type: integer. 0: enable, 1: disable.
+     */
+    useSystemTrustStore?: any;
+    /**
+     * Username for authentication. Type: string.
+     */
+    username?: any;
 }
 
 /**
@@ -18444,6 +18516,186 @@ export interface SalesforceServiceCloudSourceArgs {
 }
 
 /**
+ * Linked service for Salesforce Service Cloud V2.
+ */
+export interface SalesforceServiceCloudV2LinkedServiceArgs {
+    /**
+     * List of tags that can be used for describing the linked service.
+     */
+    annotations?: pulumi.Input<any[]>;
+    /**
+     * The Salesforce API version used in ADF. The version must be larger than or equal to 47.0 which is required by Salesforce BULK API 2.0. Type: string (or Expression with resultType string).
+     */
+    apiVersion?: any;
+    /**
+     * The client Id for OAuth 2.0 Client Credentials Flow authentication of the Salesforce instance. Type: string (or Expression with resultType string).
+     */
+    clientId?: any;
+    /**
+     * The client secret for OAuth 2.0 Client Credentials Flow authentication of the Salesforce instance.
+     */
+    clientSecret?: pulumi.Input<AzureKeyVaultSecretReferenceArgs | SecureStringArgs>;
+    /**
+     * The integration runtime reference.
+     */
+    connectVia?: pulumi.Input<IntegrationRuntimeReferenceArgs>;
+    /**
+     * Linked service description.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+     */
+    encryptedCredential?: pulumi.Input<string>;
+    /**
+     * The URL of Salesforce Service Cloud instance. For example, 'https://[domain].my.salesforce.com'. Type: string (or Expression with resultType string).
+     */
+    environmentUrl?: any;
+    /**
+     * Parameters for linked service.
+     */
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<ParameterSpecificationArgs>}>;
+    /**
+     * Type of linked service.
+     * Expected value is 'SalesforceServiceCloudV2'.
+     */
+    type: pulumi.Input<"SalesforceServiceCloudV2">;
+}
+
+/**
+ * The Salesforce Service Cloud V2 object dataset.
+ */
+export interface SalesforceServiceCloudV2ObjectDatasetArgs {
+    /**
+     * List of tags that can be used for describing the Dataset.
+     */
+    annotations?: pulumi.Input<any[]>;
+    /**
+     * Dataset description.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+     */
+    folder?: pulumi.Input<DatasetFolderArgs>;
+    /**
+     * Linked service reference.
+     */
+    linkedServiceName: pulumi.Input<LinkedServiceReferenceArgs>;
+    /**
+     * The Salesforce Service Cloud V2 object API name. Type: string (or Expression with resultType string).
+     */
+    objectApiName?: any;
+    /**
+     * Parameters for dataset.
+     */
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<ParameterSpecificationArgs>}>;
+    /**
+     * The Salesforce Service Cloud V2 reportId. Type: string (or Expression with resultType string).
+     */
+    reportId?: any;
+    /**
+     * Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+     */
+    schema?: any;
+    /**
+     * Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+     */
+    structure?: any;
+    /**
+     * Type of dataset.
+     * Expected value is 'SalesforceServiceCloudV2Object'.
+     */
+    type: pulumi.Input<"SalesforceServiceCloudV2Object">;
+}
+
+/**
+ * A copy activity Salesforce Service Cloud V2 sink.
+ */
+export interface SalesforceServiceCloudV2SinkArgs {
+    /**
+     * If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+     */
+    disableMetricsCollection?: any;
+    /**
+     * The name of the external ID field for upsert operation. Default value is 'Id' column. Type: string (or Expression with resultType string).
+     */
+    externalIdFieldName?: any;
+    /**
+     * The flag indicating whether or not to ignore null values from input dataset (except key fields) during write operation. Default value is false. If set it to true, it means ADF will leave the data in the destination object unchanged when doing upsert/update operation and insert defined default value when doing insert operation, versus ADF will update the data in the destination object to NULL when doing upsert/update operation and insert NULL value when doing insert operation. Type: boolean (or Expression with resultType boolean).
+     */
+    ignoreNullValues?: any;
+    /**
+     * The maximum concurrent connection count for the sink data store. Type: integer (or Expression with resultType integer).
+     */
+    maxConcurrentConnections?: any;
+    /**
+     * Sink retry count. Type: integer (or Expression with resultType integer).
+     */
+    sinkRetryCount?: any;
+    /**
+     * Sink retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+     */
+    sinkRetryWait?: any;
+    /**
+     * Copy sink type.
+     * Expected value is 'SalesforceServiceCloudV2Sink'.
+     */
+    type: pulumi.Input<"SalesforceServiceCloudV2Sink">;
+    /**
+     * Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
+     */
+    writeBatchSize?: any;
+    /**
+     * Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+     */
+    writeBatchTimeout?: any;
+    /**
+     * The write behavior for the operation. Default is Insert.
+     */
+    writeBehavior?: pulumi.Input<string | enums.SalesforceV2SinkWriteBehavior>;
+}
+
+/**
+ * A copy activity Salesforce Service Cloud V2 source.
+ */
+export interface SalesforceServiceCloudV2SourceArgs {
+    /**
+     * Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+     */
+    additionalColumns?: any;
+    /**
+     * If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+     */
+    disableMetricsCollection?: any;
+    /**
+     * The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+     */
+    maxConcurrentConnections?: any;
+    /**
+     * The read behavior for the operation. Default is query. Allowed values: query/queryAll. Type: string (or Expression with resultType string).
+     */
+    readBehavior?: any;
+    /**
+     * Database query. Type: string (or Expression with resultType string).
+     */
+    sOQLQuery?: any;
+    /**
+     * Source retry count. Type: integer (or Expression with resultType integer).
+     */
+    sourceRetryCount?: any;
+    /**
+     * Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+     */
+    sourceRetryWait?: any;
+    /**
+     * Copy source type.
+     * Expected value is 'SalesforceServiceCloudV2Source'.
+     */
+    type: pulumi.Input<"SalesforceServiceCloudV2Source">;
+}
+
+/**
  * A copy activity Salesforce sink.
  */
 export interface SalesforceSinkArgs {
@@ -18531,6 +18783,190 @@ export interface SalesforceSourceArgs {
      * Expected value is 'SalesforceSource'.
      */
     type: pulumi.Input<"SalesforceSource">;
+}
+
+/**
+ * Linked service for Salesforce V2.
+ */
+export interface SalesforceV2LinkedServiceArgs {
+    /**
+     * List of tags that can be used for describing the linked service.
+     */
+    annotations?: pulumi.Input<any[]>;
+    /**
+     * The Salesforce API version used in ADF. The version must be larger than or equal to 47.0 which is required by Salesforce BULK API 2.0. Type: string (or Expression with resultType string).
+     */
+    apiVersion?: any;
+    /**
+     * The client Id for OAuth 2.0 Client Credentials Flow authentication of the Salesforce instance. Type: string (or Expression with resultType string).
+     */
+    clientId?: any;
+    /**
+     * The client secret for OAuth 2.0 Client Credentials Flow authentication of the Salesforce instance.
+     */
+    clientSecret?: pulumi.Input<AzureKeyVaultSecretReferenceArgs | SecureStringArgs>;
+    /**
+     * The integration runtime reference.
+     */
+    connectVia?: pulumi.Input<IntegrationRuntimeReferenceArgs>;
+    /**
+     * Linked service description.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+     */
+    encryptedCredential?: pulumi.Input<string>;
+    /**
+     * The URL of Salesforce instance. For example, 'https://[domain].my.salesforce.com'. Type: string (or Expression with resultType string).
+     */
+    environmentUrl?: any;
+    /**
+     * Parameters for linked service.
+     */
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<ParameterSpecificationArgs>}>;
+    /**
+     * Type of linked service.
+     * Expected value is 'SalesforceV2'.
+     */
+    type: pulumi.Input<"SalesforceV2">;
+}
+
+/**
+ * The Salesforce V2 object dataset.
+ */
+export interface SalesforceV2ObjectDatasetArgs {
+    /**
+     * List of tags that can be used for describing the Dataset.
+     */
+    annotations?: pulumi.Input<any[]>;
+    /**
+     * Dataset description.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+     */
+    folder?: pulumi.Input<DatasetFolderArgs>;
+    /**
+     * Linked service reference.
+     */
+    linkedServiceName: pulumi.Input<LinkedServiceReferenceArgs>;
+    /**
+     * The Salesforce V2 object API name. Type: string (or Expression with resultType string).
+     */
+    objectApiName?: any;
+    /**
+     * Parameters for dataset.
+     */
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<ParameterSpecificationArgs>}>;
+    /**
+     * The Salesforce V2 report Id. Type: string (or Expression with resultType string).
+     */
+    reportId?: any;
+    /**
+     * Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+     */
+    schema?: any;
+    /**
+     * Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+     */
+    structure?: any;
+    /**
+     * Type of dataset.
+     * Expected value is 'SalesforceV2Object'.
+     */
+    type: pulumi.Input<"SalesforceV2Object">;
+}
+
+/**
+ * A copy activity Salesforce V2 sink.
+ */
+export interface SalesforceV2SinkArgs {
+    /**
+     * If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+     */
+    disableMetricsCollection?: any;
+    /**
+     * The name of the external ID field for upsert operation. Default value is 'Id' column. Type: string (or Expression with resultType string).
+     */
+    externalIdFieldName?: any;
+    /**
+     * The flag indicating whether or not to ignore null values from input dataset (except key fields) during write operation. Default value is false. If set it to true, it means ADF will leave the data in the destination object unchanged when doing upsert/update operation and insert defined default value when doing insert operation, versus ADF will update the data in the destination object to NULL when doing upsert/update operation and insert NULL value when doing insert operation. Type: boolean (or Expression with resultType boolean).
+     */
+    ignoreNullValues?: any;
+    /**
+     * The maximum concurrent connection count for the sink data store. Type: integer (or Expression with resultType integer).
+     */
+    maxConcurrentConnections?: any;
+    /**
+     * Sink retry count. Type: integer (or Expression with resultType integer).
+     */
+    sinkRetryCount?: any;
+    /**
+     * Sink retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+     */
+    sinkRetryWait?: any;
+    /**
+     * Copy sink type.
+     * Expected value is 'SalesforceV2Sink'.
+     */
+    type: pulumi.Input<"SalesforceV2Sink">;
+    /**
+     * Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
+     */
+    writeBatchSize?: any;
+    /**
+     * Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+     */
+    writeBatchTimeout?: any;
+    /**
+     * The write behavior for the operation. Default is Insert.
+     */
+    writeBehavior?: pulumi.Input<string | enums.SalesforceV2SinkWriteBehavior>;
+}
+
+/**
+ * A copy activity Salesforce V2 source.
+ */
+export interface SalesforceV2SourceArgs {
+    /**
+     * Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+     */
+    additionalColumns?: any;
+    /**
+     * If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+     */
+    disableMetricsCollection?: any;
+    /**
+     * The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+     */
+    maxConcurrentConnections?: any;
+    /**
+     * Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+     */
+    queryTimeout?: any;
+    /**
+     * The read behavior for the operation. Default is query. Allowed values: query/queryAll. Type: string (or Expression with resultType string).
+     */
+    readBehavior?: any;
+    /**
+     * Database query. Type: string (or Expression with resultType string).
+     */
+    sOQLQuery?: any;
+    /**
+     * Source retry count. Type: integer (or Expression with resultType integer).
+     */
+    sourceRetryCount?: any;
+    /**
+     * Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+     */
+    sourceRetryWait?: any;
+    /**
+     * Copy source type.
+     * Expected value is 'SalesforceV2Source'.
+     */
+    type: pulumi.Input<"SalesforceV2Source">;
 }
 
 /**
@@ -20343,6 +20779,10 @@ export interface SftpWriteSettingsArgs {
      * The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
      */
     maxConcurrentConnections?: any;
+    /**
+     * Specify the custom metadata to be added to sink data. Type: array of objects (or Expression with resultType array of objects).
+     */
+    metadata?: pulumi.Input<pulumi.Input<MetadataItemArgs>[]>;
     /**
      * Specifies the timeout for writing each chunk to SFTP server. Default value: 01:00:00 (one hour). Type: string (or Expression with resultType string).
      */
@@ -23178,6 +23618,226 @@ export interface WaitActivityArgs {
      * Duration in seconds. Type: integer (or Expression with resultType integer).
      */
     waitTimeInSeconds: any;
+}
+
+/**
+ * Microsoft Fabric Warehouse linked service.
+ */
+export interface WarehouseLinkedServiceArgs {
+    /**
+     * List of tags that can be used for describing the linked service.
+     */
+    annotations?: pulumi.Input<any[]>;
+    /**
+     * The ID of Microsoft Fabric Warehouse artifact. Type: string (or Expression with resultType string).
+     */
+    artifactId: any;
+    /**
+     * The integration runtime reference.
+     */
+    connectVia?: pulumi.Input<IntegrationRuntimeReferenceArgs>;
+    /**
+     * Linked service description.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+     */
+    encryptedCredential?: pulumi.Input<string>;
+    /**
+     * The endpoint of Microsoft Fabric Warehouse server. Type: string (or Expression with resultType string).
+     */
+    endpoint: any;
+    /**
+     * Parameters for linked service.
+     */
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<ParameterSpecificationArgs>}>;
+    /**
+     * The credential of the service principal object in Azure Active Directory. If servicePrincipalCredentialType is 'ServicePrincipalKey', servicePrincipalCredential can be SecureString or AzureKeyVaultSecretReference. If servicePrincipalCredentialType is 'ServicePrincipalCert', servicePrincipalCredential can only be AzureKeyVaultSecretReference.
+     */
+    servicePrincipalCredential?: pulumi.Input<AzureKeyVaultSecretReferenceArgs | SecureStringArgs>;
+    /**
+     * The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
+     */
+    servicePrincipalCredentialType?: any;
+    /**
+     * The ID of the application used to authenticate against Microsoft Fabric Warehouse. Type: string (or Expression with resultType string).
+     */
+    servicePrincipalId?: any;
+    /**
+     * The Key of the application used to authenticate against Microsoft Fabric Warehouse.
+     */
+    servicePrincipalKey?: pulumi.Input<AzureKeyVaultSecretReferenceArgs | SecureStringArgs>;
+    /**
+     * The name or ID of the tenant to which the service principal belongs. Type: string (or Expression with resultType string).
+     */
+    tenant?: any;
+    /**
+     * Type of linked service.
+     * Expected value is 'Warehouse'.
+     */
+    type: pulumi.Input<"Warehouse">;
+    /**
+     * The ID of Microsoft Fabric workspace. Type: string (or Expression with resultType string).
+     */
+    workspaceId?: any;
+}
+
+/**
+ * A copy activity Microsoft Fabric Warehouse sink.
+ */
+export interface WarehouseSinkArgs {
+    /**
+     * Indicates to use Copy Command to copy data into SQL Data Warehouse. Type: boolean (or Expression with resultType boolean).
+     */
+    allowCopyCommand?: any;
+    /**
+     * Specifies Copy Command related settings when allowCopyCommand is true.
+     */
+    copyCommandSettings?: pulumi.Input<DWCopyCommandSettingsArgs>;
+    /**
+     * If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+     */
+    disableMetricsCollection?: any;
+    /**
+     * The maximum concurrent connection count for the sink data store. Type: integer (or Expression with resultType integer).
+     */
+    maxConcurrentConnections?: any;
+    /**
+     * SQL pre-copy script. Type: string (or Expression with resultType string).
+     */
+    preCopyScript?: any;
+    /**
+     * Sink retry count. Type: integer (or Expression with resultType integer).
+     */
+    sinkRetryCount?: any;
+    /**
+     * Sink retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+     */
+    sinkRetryWait?: any;
+    /**
+     * The option to handle sink table, such as autoCreate. For now only 'autoCreate' value is supported. Type: string (or Expression with resultType string).
+     */
+    tableOption?: any;
+    /**
+     * Copy sink type.
+     * Expected value is 'WarehouseSink'.
+     */
+    type: pulumi.Input<"WarehouseSink">;
+    /**
+     * Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
+     */
+    writeBatchSize?: any;
+    /**
+     * Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+     */
+    writeBatchTimeout?: any;
+    /**
+     * Write behavior when copying data into azure Microsoft Fabric Data Warehouse. Type: DWWriteBehaviorEnum (or Expression with resultType DWWriteBehaviorEnum)
+     */
+    writeBehavior?: any;
+}
+
+/**
+ * A copy activity Microsoft Fabric Warehouse source.
+ */
+export interface WarehouseSourceArgs {
+    /**
+     * Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+     */
+    additionalColumns?: any;
+    /**
+     * If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+     */
+    disableMetricsCollection?: any;
+    /**
+     * Specifies the transaction locking behavior for the Microsoft Fabric Warehouse source. Allowed values: ReadCommitted/ReadUncommitted/RepeatableRead/Serializable/Snapshot. The default value is ReadCommitted. Type: string (or Expression with resultType string).
+     */
+    isolationLevel?: any;
+    /**
+     * The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+     */
+    maxConcurrentConnections?: any;
+    /**
+     * The partition mechanism that will be used for Sql read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange".
+     */
+    partitionOption?: any;
+    /**
+     * The settings that will be leveraged for Sql source partitioning.
+     */
+    partitionSettings?: pulumi.Input<SqlPartitionSettingsArgs>;
+    /**
+     * Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+     */
+    queryTimeout?: any;
+    /**
+     * Source retry count. Type: integer (or Expression with resultType integer).
+     */
+    sourceRetryCount?: any;
+    /**
+     * Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+     */
+    sourceRetryWait?: any;
+    /**
+     * Microsoft Fabric Warehouse reader query. Type: string (or Expression with resultType string).
+     */
+    sqlReaderQuery?: any;
+    /**
+     * Name of the stored procedure for a Microsoft Fabric Warehouse source. This cannot be used at the same time as SqlReaderQuery. Type: string (or Expression with resultType string).
+     */
+    sqlReaderStoredProcedureName?: any;
+    /**
+     * Value and type setting for stored procedure parameters. Example: "{Parameter1: {value: "1", type: "int"}}". Type: object (or Expression with resultType object), itemType: StoredProcedureParameter.
+     */
+    storedProcedureParameters?: any;
+    /**
+     * Copy source type.
+     * Expected value is 'WarehouseSource'.
+     */
+    type: pulumi.Input<"WarehouseSource">;
+}
+
+/**
+ * Microsoft Fabric Warehouse dataset.
+ */
+export interface WarehouseTableDatasetArgs {
+    /**
+     * List of tags that can be used for describing the Dataset.
+     */
+    annotations?: pulumi.Input<any[]>;
+    /**
+     * Dataset description.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+     */
+    folder?: pulumi.Input<DatasetFolderArgs>;
+    /**
+     * Linked service reference.
+     */
+    linkedServiceName: pulumi.Input<LinkedServiceReferenceArgs>;
+    /**
+     * Parameters for dataset.
+     */
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<ParameterSpecificationArgs>}>;
+    /**
+     * Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+     */
+    schema?: any;
+    /**
+     * Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+     */
+    structure?: any;
+    /**
+     * The table name of the Microsoft Fabric Warehouse. Type: string (or Expression with resultType string).
+     */
+    table?: any;
+    /**
+     * Type of dataset.
+     * Expected value is 'WarehouseTable'.
+     */
+    type: pulumi.Input<"WarehouseTable">;
 }
 
 /**

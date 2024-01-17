@@ -50,16 +50,6 @@ utilities.lazyLoad(exports, ["MonitoredSubscription"], () => require("./monitore
 // Export enums:
 export * from "./types/enums";
 
-// Export sub-modules:
-import * as v20220601 from "./v20220601";
-import * as v20220801 from "./v20220801";
-import * as v20230101 from "./v20230101";
-
-export {
-    v20220601,
-    v20220801,
-    v20230101,
-};
 
 const _module = {
     version: utilities.getVersion(),

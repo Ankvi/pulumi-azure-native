@@ -42,16 +42,6 @@ export const Organization: typeof import("./organization").Organization = null a
 utilities.lazyLoad(exports, ["Organization"], () => require("./organization"));
 
 
-// Export sub-modules:
-import * as v20200301preview from "./v20200301preview";
-import * as v20211201 from "./v20211201";
-import * as v20230822 from "./v20230822";
-
-export {
-    v20200301preview,
-    v20211201,
-    v20230822,
-};
 
 const _module = {
     version: utilities.getVersion(),

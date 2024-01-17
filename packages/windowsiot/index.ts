@@ -12,12 +12,6 @@ export const Service: typeof import("./service").Service = null as any;
 utilities.lazyLoad(exports, ["Service"], () => require("./service"));
 
 
-// Export sub-modules:
-import * as v20190601 from "./v20190601";
-
-export {
-    v20190601,
-};
 
 const _module = {
     version: utilities.getVersion(),

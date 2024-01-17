@@ -15,12 +15,6 @@ utilities.lazyLoad(exports, ["StorageTask"], () => require("./storageTask"));
 // Export enums:
 export * from "./types/enums";
 
-// Export sub-modules:
-import * as v20230101 from "./v20230101";
-
-export {
-    v20230101,
-};
 
 const _module = {
     version: utilities.getVersion(),

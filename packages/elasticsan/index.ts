@@ -55,16 +55,6 @@ utilities.lazyLoad(exports, ["VolumeSnapshot"], () => require("./volumeSnapshot"
 // Export enums:
 export * from "./types/enums";
 
-// Export sub-modules:
-import * as v20211120preview from "./v20211120preview";
-import * as v20221201preview from "./v20221201preview";
-import * as v20230101 from "./v20230101";
-
-export {
-    v20211120preview,
-    v20221201preview,
-    v20230101,
-};
 
 const _module = {
     version: utilities.getVersion(),

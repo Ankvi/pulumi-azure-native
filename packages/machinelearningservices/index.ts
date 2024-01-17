@@ -585,38 +585,6 @@ utilities.lazyLoad(exports, ["WorkspaceConnection"], () => require("./workspaceC
 // Export enums:
 export * from "./types/enums";
 
-// Export sub-modules:
-import * as v20200501preview from "./v20200501preview";
-import * as v20200515preview from "./v20200515preview";
-import * as v20200801 from "./v20200801";
-import * as v20200901preview from "./v20200901preview";
-import * as v20210301preview from "./v20210301preview";
-import * as v20210401 from "./v20210401";
-import * as v20220101preview from "./v20220101preview";
-import * as v20220201preview from "./v20220201preview";
-import * as v20230201preview from "./v20230201preview";
-import * as v20230401 from "./v20230401";
-import * as v20230401preview from "./v20230401preview";
-import * as v20230601preview from "./v20230601preview";
-import * as v20230801preview from "./v20230801preview";
-import * as v20231001 from "./v20231001";
-
-export {
-    v20200501preview,
-    v20200515preview,
-    v20200801,
-    v20200901preview,
-    v20210301preview,
-    v20210401,
-    v20220101preview,
-    v20220201preview,
-    v20230201preview,
-    v20230401,
-    v20230401preview,
-    v20230601preview,
-    v20230801preview,
-    v20231001,
-};
 
 const _module = {
     version: utilities.getVersion(),

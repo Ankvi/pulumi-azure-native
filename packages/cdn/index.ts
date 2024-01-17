@@ -170,16 +170,6 @@ utilities.lazyLoad(exports, ["SecurityPolicy"], () => require("./securityPolicy"
 // Export enums:
 export * from "./types/enums";
 
-// Export sub-modules:
-import * as v20200901 from "./v20200901";
-import * as v20230501 from "./v20230501";
-import * as v20230701preview from "./v20230701preview";
-
-export {
-    v20200901,
-    v20230501,
-    v20230701preview,
-};
 
 const _module = {
     version: utilities.getVersion(),

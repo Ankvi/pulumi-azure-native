@@ -4,7 +4,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Tag-product link details.
  * Azure REST API version: 2022-09-01-preview.
  *
- * Other available API versions: 2023-03-01-preview.
+ * Other available API versions: 2023-03-01-preview, 2023-05-01-preview.
  */
 export class TagProductLink extends pulumi.CustomResource {
     /**
@@ -82,7 +82,7 @@ export class TagProductLink extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20220901preview:TagProductLink" }, { type: "azure-native:apimanagement/v20230301preview:TagProductLink" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20220901preview:TagProductLink" }, { type: "azure-native:apimanagement/v20230301preview:TagProductLink" }, { type: "azure-native:apimanagement/v20230501preview:TagProductLink" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(TagProductLink.__pulumiType, name, resourceInputs, opts);
     }

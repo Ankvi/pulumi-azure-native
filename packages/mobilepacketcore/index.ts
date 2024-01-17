@@ -15,12 +15,6 @@ utilities.lazyLoad(exports, ["NetworkFunction"], () => require("./networkFunctio
 // Export enums:
 export * from "./types/enums";
 
-// Export sub-modules:
-import * as v20230515preview from "./v20230515preview";
-
-export {
-    v20230515preview,
-};
 
 const _module = {
     version: utilities.getVersion(),

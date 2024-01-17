@@ -1,6 +1,6 @@
 {
     "name": "@kengachu-pulumi/azure-native-appplatform",
-    "version": "2.21.2",
+    "version": "2.25.0",
     "description": "Pulumi Azure Native package for appplatform",
     "keywords": [
         "pulumi",
@@ -16,7 +16,7 @@
     },
     "dependencies": {
         "@pulumi/pulumi": "^3.0.0",
-        "@kengachu-pulumi/azure-native-core": "workspace:^"
+        "@kengachu-pulumi/azure-native-core": "workspace:*"
     },
     "publishConfig": {
         "access": "public"

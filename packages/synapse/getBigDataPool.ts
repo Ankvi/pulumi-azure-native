@@ -47,7 +47,7 @@ export interface GetBigDataPoolResult {
     /**
      * The cache size
      */
-    readonly cacheSize: number;
+    readonly cacheSize?: number;
     /**
      * The time when the Big Data pool was created.
      */

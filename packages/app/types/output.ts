@@ -264,7 +264,7 @@ export interface BuildConfigurationResponse {
      */
     baseOs?: string;
     /**
-     * List of environment variables to be passed to the build and application runtime.
+     * List of environment variables to be passed to the build.
      */
     environmentVariables?: EnvironmentVariableResponse[];
     /**

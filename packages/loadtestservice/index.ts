@@ -15,14 +15,6 @@ utilities.lazyLoad(exports, ["LoadTest"], () => require("./loadTest"));
 // Export enums:
 export * from "./types/enums";
 
-// Export sub-modules:
-import * as v20211201preview from "./v20211201preview";
-import * as v20221201 from "./v20221201";
-
-export {
-    v20211201preview,
-    v20221201,
-};
 
 const _module = {
     version: utilities.getVersion(),

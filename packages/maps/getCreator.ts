@@ -5,7 +5,7 @@ import * as types from "./types";
  * Get a Maps Creator resource.
  * Azure REST API version: 2021-02-01.
  *
- * Other available API versions: 2020-02-01-preview, 2021-12-01-preview, 2023-06-01, 2023-08-01-preview.
+ * Other available API versions: 2020-02-01-preview, 2021-12-01-preview, 2023-06-01, 2023-08-01-preview, 2023-12-01-preview.
  */
 export function getCreator(args: GetCreatorArgs, opts?: pulumi.InvokeOptions): Promise<GetCreatorResult> {
 
@@ -65,7 +65,7 @@ export interface GetCreatorResult {
  * Get a Maps Creator resource.
  * Azure REST API version: 2021-02-01.
  *
- * Other available API versions: 2020-02-01-preview, 2021-12-01-preview, 2023-06-01, 2023-08-01-preview.
+ * Other available API versions: 2020-02-01-preview, 2021-12-01-preview, 2023-06-01, 2023-08-01-preview, 2023-12-01-preview.
  */
 export function getCreatorOutput(args: GetCreatorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCreatorResult> {
     return pulumi.output(args).apply((a: any) => getCreator(a, opts))

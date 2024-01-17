@@ -30,12 +30,6 @@ utilities.lazyLoad(exports, ["listDataProductRolesAssignments","listDataProductR
 // Export enums:
 export * from "./types/enums";
 
-// Export sub-modules:
-import * as v20231115 from "./v20231115";
-
-export {
-    v20231115,
-};
 
 const _module = {
     version: utilities.getVersion(),

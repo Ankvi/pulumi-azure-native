@@ -204,3 +204,4 @@ export function vmssFabricProfileArgsProvideDefaults(val: VmssFabricProfileArgs)
         sku: pulumi.output(val.sku).apply(devOpsAzureSkuArgsProvideDefaults),
     };
 }
+

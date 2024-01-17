@@ -461,6 +461,22 @@ export const PolicyFragmentContentFormat = {
  */
 export type PolicyFragmentContentFormat = (typeof PolicyFragmentContentFormat)[keyof typeof PolicyFragmentContentFormat];
 
+export const PolicyRestrictionRequireBase = {
+    /**
+     * The policy is required to have base policy
+     */
+    True: "true",
+    /**
+     * The policy does not require to have base policy
+     */
+    False: "false",
+} as const;
+
+/**
+ * Indicates if base policy should be enforced for the policy document.
+ */
+export type PolicyRestrictionRequireBase = (typeof PolicyRestrictionRequireBase)[keyof typeof PolicyRestrictionRequireBase];
+
 export const PrivateEndpointServiceConnectionStatus = {
     Pending: "Pending",
     Approved: "Approved",

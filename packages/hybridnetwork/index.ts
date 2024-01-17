@@ -180,14 +180,6 @@ utilities.lazyLoad(exports, ["VendorSkus"], () => require("./vendorSkus"));
 // Export enums:
 export * from "./types/enums";
 
-// Export sub-modules:
-import * as v20220101preview from "./v20220101preview";
-import * as v20230901 from "./v20230901";
-
-export {
-    v20220101preview,
-    v20230901,
-};
 
 const _module = {
     version: utilities.getVersion(),

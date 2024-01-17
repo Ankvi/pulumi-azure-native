@@ -40,14 +40,6 @@ utilities.lazyLoad(exports, ["Spacecraft"], () => require("./spacecraft"));
 // Export enums:
 export * from "./types/enums";
 
-// Export sub-modules:
-import * as v20220301 from "./v20220301";
-import * as v20221101 from "./v20221101";
-
-export {
-    v20220301,
-    v20221101,
-};
 
 const _module = {
     version: utilities.getVersion(),

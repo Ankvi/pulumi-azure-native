@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * A private endpoint connection
  * Azure REST API version: 2023-03-01. Prior API version in Azure Native 1.x: 2020-06-01.
+ *
+ * Other available API versions: 2023-08-01-preview.
  */
 export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
@@ -89,7 +91,7 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:appconfiguration/v20191101preview:PrivateEndpointConnection" }, { type: "azure-native:appconfiguration/v20200601:PrivateEndpointConnection" }, { type: "azure-native:appconfiguration/v20200701preview:PrivateEndpointConnection" }, { type: "azure-native:appconfiguration/v20210301preview:PrivateEndpointConnection" }, { type: "azure-native:appconfiguration/v20211001preview:PrivateEndpointConnection" }, { type: "azure-native:appconfiguration/v20220301preview:PrivateEndpointConnection" }, { type: "azure-native:appconfiguration/v20220501:PrivateEndpointConnection" }, { type: "azure-native:appconfiguration/v20230301:PrivateEndpointConnection" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:appconfiguration/v20191101preview:PrivateEndpointConnection" }, { type: "azure-native:appconfiguration/v20200601:PrivateEndpointConnection" }, { type: "azure-native:appconfiguration/v20200701preview:PrivateEndpointConnection" }, { type: "azure-native:appconfiguration/v20210301preview:PrivateEndpointConnection" }, { type: "azure-native:appconfiguration/v20211001preview:PrivateEndpointConnection" }, { type: "azure-native:appconfiguration/v20220301preview:PrivateEndpointConnection" }, { type: "azure-native:appconfiguration/v20220501:PrivateEndpointConnection" }, { type: "azure-native:appconfiguration/v20230301:PrivateEndpointConnection" }, { type: "azure-native:appconfiguration/v20230801preview:PrivateEndpointConnection" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PrivateEndpointConnection.__pulumiType, name, resourceInputs, opts);
     }

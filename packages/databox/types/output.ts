@@ -2067,3 +2067,4 @@ export interface UserAssignedPropertiesResponse {
     resourceId?: string;
 }
 
+

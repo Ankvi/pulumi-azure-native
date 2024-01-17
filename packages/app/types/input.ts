@@ -276,7 +276,7 @@ export interface BuildConfigurationArgs {
      */
     baseOs?: pulumi.Input<string>;
     /**
-     * List of environment variables to be passed to the build and application runtime.
+     * List of environment variables to be passed to the build.
      */
     environmentVariables?: pulumi.Input<pulumi.Input<EnvironmentVariableArgs>[]>;
     /**

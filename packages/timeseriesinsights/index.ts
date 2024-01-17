@@ -75,16 +75,6 @@ utilities.lazyLoad(exports, ["ReferenceDataSet"], () => require("./referenceData
 // Export enums:
 export * from "./types/enums";
 
-// Export sub-modules:
-import * as v20200515 from "./v20200515";
-import * as v20210331preview from "./v20210331preview";
-import * as v20210630preview from "./v20210630preview";
-
-export {
-    v20200515,
-    v20210331preview,
-    v20210630preview,
-};
 
 const _module = {
     version: utilities.getVersion(),

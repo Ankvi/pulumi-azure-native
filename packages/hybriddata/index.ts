@@ -35,12 +35,6 @@ utilities.lazyLoad(exports, ["JobDefinition"], () => require("./jobDefinition"))
 // Export enums:
 export * from "./types/enums";
 
-// Export sub-modules:
-import * as v20190601 from "./v20190601";
-
-export {
-    v20190601,
-};
 
 const _module = {
     version: utilities.getVersion(),

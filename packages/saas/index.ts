@@ -25,12 +25,6 @@ utilities.lazyLoad(exports, ["SaasSubscriptionLevel"], () => require("./saasSubs
 // Export enums:
 export * from "./types/enums";
 
-// Export sub-modules:
-import * as v20180301beta from "./v20180301beta";
-
-export {
-    v20180301beta,
-};
 
 const _module = {
     version: utilities.getVersion(),

@@ -20,14 +20,6 @@ utilities.lazyLoad(exports, ["listJobCredentials","listJobCredentialsOutput"], (
 // Export enums:
 export * from "./types/enums";
 
-// Export sub-modules:
-import * as v20221201 from "./v20221201";
-import * as v20230301 from "./v20230301";
-
-export {
-    v20221201,
-    v20230301,
-};
 
 const _module = {
     version: utilities.getVersion(),

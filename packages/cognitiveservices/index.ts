@@ -110,16 +110,6 @@ utilities.lazyLoad(exports, ["SharedCommitmentPlan"], () => require("./sharedCom
 // Export enums:
 export * from "./types/enums";
 
-// Export sub-modules:
-import * as v20170418 from "./v20170418";
-import * as v20230501 from "./v20230501";
-import * as v20231001preview from "./v20231001preview";
-
-export {
-    v20170418,
-    v20230501,
-    v20231001preview,
-};
 
 const _module = {
     version: utilities.getVersion(),

@@ -1495,6 +1495,32 @@ export interface DevOpsConfigurationPropertiesResponse {
 }
 
 /**
+ * A plan's extension properties
+ */
+export interface ExtensionResponse {
+    /**
+     * Property values associated with the extension.
+     */
+    additionalExtensionProperties?: any;
+    /**
+     * Indicates whether the extension is enabled.
+     */
+    isEnabled: string;
+    /**
+     * The extension name. Supported values are: <br><br>**AgentlessDiscoveryForKubernetes** - API-based discovery of information about Kubernetes cluster architecture, workload objects, and setup. Required for Kubernetes inventory, identity and network exposure detection, attack path analysis and risk hunting as part of the cloud security explorer.
+     * Available for CloudPosture plan.<br><br>**OnUploadMalwareScanning** - Limits the GB to be scanned per month for each storage account within the subscription. Once this limit reached on a given storage account, Blobs won't be scanned during current calendar month.
+     * Available for StorageAccounts plan.<br><br>**SensitiveDataDiscovery** - Sensitive data discovery identifies Blob storage container with sensitive data such as credentials, credit cards, and more, to help prioritize and investigate security events.
+     * Available for StorageAccounts and CloudPosture plans.<br><br>**ContainerRegistriesVulnerabilityAssessments** - Provides vulnerability management for images stored in your container registries.
+     * Available for CloudPosture and Containers plans.
+     */
+    name: string;
+    /**
+     * Optional. A status describing the success/failure of the extension's enablement/disablement operation.
+     */
+    operationStatus: OperationStatusResponse;
+}
+
+/**
  * GCP cloud account connector based service to service credentials, the credentials are composed of the organization ID and a JSON API key (write only)
  */
 export interface GcpCredentialsDetailsPropertiesResponse {
@@ -2121,6 +2147,20 @@ export interface OnPremiseSqlResourceDetailsResponse {
 }
 
 /**
+ * A status describing the success/failure of the extension's enablement/disablement operation.
+ */
+export interface OperationStatusResponse {
+    /**
+     * The operation status code.
+     */
+    code?: string;
+    /**
+     * Additional information regarding the success/failure of the operation.
+     */
+    message?: string;
+}
+
+/**
  * Represents a path that is recommended to be allowed and its properties
  */
 export interface PathRecommendationResponse {
@@ -2578,6 +2618,7 @@ export interface VmRecommendationResponse {
      */
     resourceId?: string;
 }
+
 
 
 

@@ -25,12 +25,6 @@ utilities.lazyLoad(exports, ["OuContainer"], () => require("./ouContainer"));
 // Export enums:
 export * from "./types/enums";
 
-// Export sub-modules:
-import * as v20221201 from "./v20221201";
-
-export {
-    v20221201,
-};
 
 const _module = {
     version: utilities.getVersion(),

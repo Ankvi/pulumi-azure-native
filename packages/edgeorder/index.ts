@@ -65,14 +65,6 @@ utilities.lazyLoad(exports, ["OrderItemByName"], () => require("./orderItemByNam
 // Export enums:
 export * from "./types/enums";
 
-// Export sub-modules:
-import * as v20211201 from "./v20211201";
-import * as v20220501preview from "./v20220501preview";
-
-export {
-    v20211201,
-    v20220501preview,
-};
 
 const _module = {
     version: utilities.getVersion(),

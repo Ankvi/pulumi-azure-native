@@ -4,7 +4,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Get the schema configuration at the API level.
  * Azure REST API version: 2022-09-01-preview.
  *
- * Other available API versions: 2023-03-01-preview.
+ * Other available API versions: 2023-03-01-preview, 2023-05-01-preview.
  */
 export function getWorkspaceApiSchema(args: GetWorkspaceApiSchemaArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkspaceApiSchemaResult> {
 
@@ -78,7 +78,7 @@ export interface GetWorkspaceApiSchemaResult {
  * Get the schema configuration at the API level.
  * Azure REST API version: 2022-09-01-preview.
  *
- * Other available API versions: 2023-03-01-preview.
+ * Other available API versions: 2023-03-01-preview, 2023-05-01-preview.
  */
 export function getWorkspaceApiSchemaOutput(args: GetWorkspaceApiSchemaOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkspaceApiSchemaResult> {
     return pulumi.output(args).apply((a: any) => getWorkspaceApiSchema(a, opts))

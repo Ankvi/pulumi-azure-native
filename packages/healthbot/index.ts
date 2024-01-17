@@ -20,14 +20,6 @@ utilities.lazyLoad(exports, ["listBotSecrets","listBotSecretsOutput"], () => req
 // Export enums:
 export * from "./types/enums";
 
-// Export sub-modules:
-import * as v20201208preview from "./v20201208preview";
-import * as v20230501 from "./v20230501";
-
-export {
-    v20201208preview,
-    v20230501,
-};
 
 const _module = {
     version: utilities.getVersion(),

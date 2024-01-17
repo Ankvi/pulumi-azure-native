@@ -4,7 +4,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Tag Contract details.
  * Azure REST API version: 2022-09-01-preview.
  *
- * Other available API versions: 2023-03-01-preview.
+ * Other available API versions: 2023-03-01-preview, 2023-05-01-preview.
  */
 export class WorkspaceTag extends pulumi.CustomResource {
     /**
@@ -82,7 +82,7 @@ export class WorkspaceTag extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20220901preview:WorkspaceTag" }, { type: "azure-native:apimanagement/v20230301preview:WorkspaceTag" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20220901preview:WorkspaceTag" }, { type: "azure-native:apimanagement/v20230301preview:WorkspaceTag" }, { type: "azure-native:apimanagement/v20230501preview:WorkspaceTag" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(WorkspaceTag.__pulumiType, name, resourceInputs, opts);
     }

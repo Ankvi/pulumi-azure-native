@@ -25,12 +25,6 @@ utilities.lazyLoad(exports, ["getDataPool","getDataPoolOutput"], () => require("
 // Export enums:
 export * from "./types/enums";
 
-// Export sub-modules:
-import * as v20211101preview from "./v20211101preview";
-
-export {
-    v20211101preview,
-};
 
 const _module = {
     version: utilities.getVersion(),

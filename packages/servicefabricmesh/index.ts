@@ -70,12 +70,6 @@ utilities.lazyLoad(exports, ["Volume"], () => require("./volume"));
 // Export enums:
 export * from "./types/enums";
 
-// Export sub-modules:
-import * as v20180901preview from "./v20180901preview";
-
-export {
-    v20180901preview,
-};
 
 const _module = {
     version: utilities.getVersion(),

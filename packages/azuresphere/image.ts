@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * An image resource belonging to a catalog resource.
  * Azure REST API version: 2022-09-01-preview. Prior API version in Azure Native 1.x: 2022-09-01-preview.
+ *
+ * Other available API versions: 2024-04-01.
  */
 export class Image extends pulumi.CustomResource {
     /**
@@ -127,7 +129,7 @@ export class Image extends pulumi.CustomResource {
             resourceInputs["uri"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:azuresphere/v20220901preview:Image" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:azuresphere/v20220901preview:Image" }, { type: "azure-native:azuresphere/v20240401:Image" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Image.__pulumiType, name, resourceInputs, opts);
     }
@@ -150,7 +152,7 @@ export interface ImageArgs {
      */
     imageId?: pulumi.Input<string>;
     /**
-     * Image name. Use .default for image creation.
+     * Image name. Use an image GUID for GA versions of the API.
      */
     imageName?: pulumi.Input<string>;
     /**

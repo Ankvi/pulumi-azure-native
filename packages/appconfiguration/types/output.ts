@@ -187,3 +187,4 @@ export interface UserIdentityResponse {
      */
     principalId: string;
 }
+

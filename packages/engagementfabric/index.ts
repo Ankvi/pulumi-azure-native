@@ -32,12 +32,6 @@ export const listAccountKeysOutput: typeof import("./listAccountKeys").listAccou
 utilities.lazyLoad(exports, ["listAccountKeys","listAccountKeysOutput"], () => require("./listAccountKeys"));
 
 
-// Export sub-modules:
-import * as v20180901preview from "./v20180901preview";
-
-export {
-    v20180901preview,
-};
 
 const _module = {
     version: utilities.getVersion(),

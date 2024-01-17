@@ -256,3 +256,4 @@ export function vmssFabricProfileResponseProvideDefaults(val: VmssFabricProfileR
         sku: devOpsAzureSkuResponseProvideDefaults(val.sku),
     };
 }
+

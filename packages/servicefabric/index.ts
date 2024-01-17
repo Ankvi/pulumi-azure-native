@@ -75,28 +75,6 @@ utilities.lazyLoad(exports, ["NodeType"], () => require("./nodeType"));
 // Export enums:
 export * from "./types/enums";
 
-// Export sub-modules:
-import * as v20200101preview from "./v20200101preview";
-import * as v20201201preview from "./v20201201preview";
-import * as v20210601 from "./v20210601";
-import * as v20220101 from "./v20220101";
-import * as v20221001preview from "./v20221001preview";
-import * as v20230301preview from "./v20230301preview";
-import * as v20230701preview from "./v20230701preview";
-import * as v20230901preview from "./v20230901preview";
-import * as v20231101preview from "./v20231101preview";
-
-export {
-    v20200101preview,
-    v20201201preview,
-    v20210601,
-    v20220101,
-    v20221001preview,
-    v20230301preview,
-    v20230701preview,
-    v20230901preview,
-    v20231101preview,
-};
 
 const _module = {
     version: utilities.getVersion(),

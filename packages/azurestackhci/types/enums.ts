@@ -19,6 +19,22 @@ export const CloudInitDataSource = {
  */
 export type CloudInitDataSource = (typeof CloudInitDataSource)[keyof typeof CloudInitDataSource];
 
+export const ComplianceAssignmentType = {
+    /**
+     * Report on the state of the machine, but don't make changes.
+     */
+    Audit: "Audit",
+    /**
+     * Applied to the machine. If it drifts, the local service inside the machine makes a correction at the next evaluation.
+     */
+    ApplyAndAutoCorrect: "ApplyAndAutoCorrect",
+} as const;
+
+/**
+ * Secured Core Compliance Assignment
+ */
+export type ComplianceAssignmentType = (typeof ComplianceAssignmentType)[keyof typeof ComplianceAssignmentType];
+
 export const DeploymentMode = {
     /**
      * Validate deployment settings for cluster.

@@ -1843,6 +1843,36 @@ export interface MigrationValidationOptionsArgs {
 }
 
 /**
+ * Mongo Connection
+ */
+export interface MongoConnectionInformationArgs {
+    /**
+     * ConnectionString to connect to Mongo.
+     */
+    connectionString?: pulumi.Input<string>;
+    /**
+     * Host of mongo connection.
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * Password to connect to Mongo.
+     */
+    password?: pulumi.Input<string>;
+    /**
+     * Port of mongo connection.
+     */
+    port?: pulumi.Input<number>;
+    /**
+     * Whether to UseSsl or UseTls to connect to Mongo. Default is true.
+     */
+    useSsl?: pulumi.Input<boolean>;
+    /**
+     * User name to connect to Mongo.
+     */
+    userName?: pulumi.Input<string>;
+}
+
+/**
  * Describes how an individual MongoDB collection should be migrated
  */
 export interface MongoDbCollectionSettingsArgs {
@@ -1971,6 +2001,28 @@ export interface MongoDbThrottlingSettingsArgs {
      * The number of megabytes of RAM that the migrator will try to avoid using
      */
     minFreeMemoryMb?: pulumi.Input<number>;
+}
+
+/**
+ * Mongo source and target database and collection details.
+ */
+export interface MongoMigrationCollectionArgs {
+    /**
+     * Source collection name.
+     */
+    sourceCollection?: pulumi.Input<string>;
+    /**
+     * Source database name.
+     */
+    sourceDatabase?: pulumi.Input<string>;
+    /**
+     * Target collection name.
+     */
+    targetCollection?: pulumi.Input<string>;
+    /**
+     * Target database name.
+     */
+    targetDatabase?: pulumi.Input<string>;
 }
 
 /**
@@ -2485,5 +2537,6 @@ export function validateSyncMigrationInputSqlServerTaskInputArgsProvideDefaults(
         targetConnectionInfo: pulumi.output(val.targetConnectionInfo).apply(sqlConnectionInfoArgsProvideDefaults),
     };
 }
+
 
 

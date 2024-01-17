@@ -35,12 +35,6 @@ utilities.lazyLoad(exports, ["MonitoredResource"], () => require("./monitoredRes
 // Export enums:
 export * from "./types/enums";
 
-// Export sub-modules:
-import * as v20230707preview from "./v20230707preview";
-
-export {
-    v20230707preview,
-};
 
 const _module = {
     version: utilities.getVersion(),

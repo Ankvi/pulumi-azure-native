@@ -5,7 +5,7 @@ import * as types from "./types";
  * Get configuration assignment for resource..
  * Azure REST API version: 2023-04-01.
  *
- * Other available API versions: 2023-09-01-preview.
+ * Other available API versions: 2023-09-01-preview, 2023-10-01-preview.
  */
 export function getConfigurationAssignmentsForResourceGroup(args: GetConfigurationAssignmentsForResourceGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetConfigurationAssignmentsForResourceGroupResult> {
 
@@ -68,7 +68,7 @@ export interface GetConfigurationAssignmentsForResourceGroupResult {
  * Get configuration assignment for resource..
  * Azure REST API version: 2023-04-01.
  *
- * Other available API versions: 2023-09-01-preview.
+ * Other available API versions: 2023-09-01-preview, 2023-10-01-preview.
  */
 export function getConfigurationAssignmentsForResourceGroupOutput(args: GetConfigurationAssignmentsForResourceGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConfigurationAssignmentsForResourceGroupResult> {
     return pulumi.output(args).apply((a: any) => getConfigurationAssignmentsForResourceGroup(a, opts))

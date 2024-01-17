@@ -17,3 +17,4 @@ export interface ImageArgs {
      */
     regionalDataBoundary?: pulumi.Input<string | enums.RegionalDataBoundary>;
 }
+

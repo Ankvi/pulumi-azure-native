@@ -50,12 +50,6 @@ utilities.lazyLoad(exports, ["Replica"], () => require("./replica"));
 // Export enums:
 export * from "./types/enums";
 
-// Export sub-modules:
-import * as v20230301 from "./v20230301";
-
-export {
-    v20230301,
-};
 
 const _module = {
     version: utilities.getVersion(),

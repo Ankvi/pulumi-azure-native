@@ -150,60 +150,6 @@ utilities.lazyLoad(exports, ["UpdateRun"], () => require("./updateRun"));
 // Export enums:
 export * from "./types/enums";
 
-// Export sub-modules:
-import * as v20190601 from "./v20190601";
-import * as v20191027preview from "./v20191027preview";
-import * as v20200301 from "./v20200301";
-import * as v20200601 from "./v20200601";
-import * as v20210201 from "./v20210201";
-import * as v20210501 from "./v20210501";
-import * as v20210801 from "./v20210801";
-import * as v20220402preview from "./v20220402preview";
-import * as v20220702preview from "./v20220702preview";
-import * as v20230315preview from "./v20230315preview";
-import * as v20230401 from "./v20230401";
-import * as v20230502preview from "./v20230502preview";
-import * as v20230601 from "./v20230601";
-import * as v20230602preview from "./v20230602preview";
-import * as v20230615preview from "./v20230615preview";
-import * as v20230701 from "./v20230701";
-import * as v20230702preview from "./v20230702preview";
-import * as v20230801 from "./v20230801";
-import * as v20230802preview from "./v20230802preview";
-import * as v20230815preview from "./v20230815preview";
-import * as v20230901 from "./v20230901";
-import * as v20230902preview from "./v20230902preview";
-import * as v20231001 from "./v20231001";
-import * as v20231002preview from "./v20231002preview";
-import * as v20231015 from "./v20231015";
-
-export {
-    v20190601,
-    v20191027preview,
-    v20200301,
-    v20200601,
-    v20210201,
-    v20210501,
-    v20210801,
-    v20220402preview,
-    v20220702preview,
-    v20230315preview,
-    v20230401,
-    v20230502preview,
-    v20230601,
-    v20230602preview,
-    v20230615preview,
-    v20230701,
-    v20230702preview,
-    v20230801,
-    v20230802preview,
-    v20230815preview,
-    v20230901,
-    v20230902preview,
-    v20231001,
-    v20231002preview,
-    v20231015,
-};
 
 const _module = {
     version: utilities.getVersion(),

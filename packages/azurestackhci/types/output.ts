@@ -1206,6 +1206,32 @@ export function scaleUnitsResponseProvideDefaults(val: ScaleUnitsResponse): Scal
 }
 
 /**
+ * Security compliance properties of the resource
+ */
+export interface SecurityComplianceStatusResponse {
+    /**
+     * Indicates whether data at-rest encryption is enabled on Azure Stack HCI clustered volumes.
+     */
+    dataAtRestEncrypted: string;
+    /**
+     * Indicates whether HCI cluster has data in-transit protection.
+     */
+    dataInTransitProtected: string;
+    /**
+     * Time in UTC when compliance status was last updated.
+     */
+    lastUpdated: string;
+    /**
+     * Indicates whether HCI hosts meets secured-core server requirements.
+     */
+    securedCoreCompliance: string;
+    /**
+     * Indicates whether HCI hosts have enforced consistent Windows Defender Application Control.
+     */
+    wdacCompliance: string;
+}
+
+/**
  * The SecuritySettings of AzureStackHCI Cluster.
  */
 export interface SecuritySettingsResponse {
@@ -2280,6 +2306,7 @@ export interface VirtualSwitchConfigurationOverridesResponse {
      */
     loadBalancingAlgorithm?: string;
 }
+
 
 
 

@@ -91,6 +91,11 @@ export const getNetworkInterface: typeof import("./getNetworkInterface").getNetw
 export const getNetworkInterfaceOutput: typeof import("./getNetworkInterface").getNetworkInterfaceOutput = null as any;
 utilities.lazyLoad(exports, ["getNetworkInterface","getNetworkInterfaceOutput"], () => require("./getNetworkInterface"));
 
+export { GetSecuritySettingArgs, GetSecuritySettingResult, GetSecuritySettingOutputArgs } from "./getSecuritySetting";
+export const getSecuritySetting: typeof import("./getSecuritySetting").getSecuritySetting = null as any;
+export const getSecuritySettingOutput: typeof import("./getSecuritySetting").getSecuritySettingOutput = null as any;
+utilities.lazyLoad(exports, ["getSecuritySetting","getSecuritySettingOutput"], () => require("./getSecuritySetting"));
+
 export { GetStorageContainerArgs, GetStorageContainerResult, GetStorageContainerOutputArgs } from "./getStorageContainer";
 export const getStorageContainer: typeof import("./getStorageContainer").getStorageContainer = null as any;
 export const getStorageContainerOutput: typeof import("./getStorageContainer").getStorageContainerOutput = null as any;
@@ -161,6 +166,11 @@ export type NetworkInterface = import("./networkInterface").NetworkInterface;
 export const NetworkInterface: typeof import("./networkInterface").NetworkInterface = null as any;
 utilities.lazyLoad(exports, ["NetworkInterface"], () => require("./networkInterface"));
 
+export { SecuritySettingArgs } from "./securitySetting";
+export type SecuritySetting = import("./securitySetting").SecuritySetting;
+export const SecuritySetting: typeof import("./securitySetting").SecuritySetting = null as any;
+utilities.lazyLoad(exports, ["SecuritySetting"], () => require("./securitySetting"));
+
 export { StorageContainerArgs } from "./storageContainer";
 export type StorageContainer = import("./storageContainer").StorageContainer;
 export const StorageContainer: typeof import("./storageContainer").StorageContainer = null as any;
@@ -205,30 +215,6 @@ utilities.lazyLoad(exports, ["VirtualNetwork"], () => require("./virtualNetwork"
 // Export enums:
 export * from "./types/enums";
 
-// Export sub-modules:
-import * as v20210901preview from "./v20210901preview";
-import * as v20220101 from "./v20220101";
-import * as v20220901 from "./v20220901";
-import * as v20221215preview from "./v20221215preview";
-import * as v20230301 from "./v20230301";
-import * as v20230601 from "./v20230601";
-import * as v20230701preview from "./v20230701preview";
-import * as v20230801 from "./v20230801";
-import * as v20230801preview from "./v20230801preview";
-import * as v20230901preview from "./v20230901preview";
-
-export {
-    v20210901preview,
-    v20220101,
-    v20220901,
-    v20221215preview,
-    v20230301,
-    v20230601,
-    v20230701preview,
-    v20230801,
-    v20230801preview,
-    v20230901preview,
-};
 
 const _module = {
     version: utilities.getVersion(),
@@ -258,6 +244,8 @@ const _module = {
                 return new MarketplaceGalleryImage(name, <any>undefined, { urn })
             case "azure-native:azurestackhci:NetworkInterface":
                 return new NetworkInterface(name, <any>undefined, { urn })
+            case "azure-native:azurestackhci:SecuritySetting":
+                return new SecuritySetting(name, <any>undefined, { urn })
             case "azure-native:azurestackhci:StorageContainer":
                 return new StorageContainer(name, <any>undefined, { urn })
             case "azure-native:azurestackhci:Update":

@@ -5,7 +5,7 @@ import * as types from "./types";
  * Gets a Log Analytics cluster instance.
  * Azure REST API version: 2021-06-01.
  *
- * Other available API versions: 2019-08-01-preview, 2020-08-01.
+ * Other available API versions: 2019-08-01-preview, 2020-08-01, 2022-10-01.
  */
 export function getCluster(args: GetClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterResult> {
 
@@ -100,7 +100,7 @@ export interface GetClusterResult {
  * Gets a Log Analytics cluster instance.
  * Azure REST API version: 2021-06-01.
  *
- * Other available API versions: 2019-08-01-preview, 2020-08-01.
+ * Other available API versions: 2019-08-01-preview, 2020-08-01, 2022-10-01.
  */
 export function getClusterOutput(args: GetClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterResult> {
     return pulumi.output(args).apply((a: any) => getCluster(a, opts))
