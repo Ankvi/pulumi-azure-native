@@ -5888,7 +5888,7 @@ export interface CopyActivityResponse {
     /**
      * Copy activity sink.
      */
-    sink: AvroSinkResponse | AzureBlobFSSinkResponse | AzureDataExplorerSinkResponse | AzureDataLakeStoreSinkResponse | AzureDatabricksDeltaLakeSinkResponse | AzureMySqlSinkResponse | AzurePostgreSqlSinkResponse | AzureQueueSinkResponse | AzureSearchIndexSinkResponse | AzureSqlSinkResponse | AzureTableSinkResponse | BinarySinkResponse | BlobSinkResponse | CommonDataServiceForAppsSinkResponse | CosmosDbMongoDbApiSinkResponse | CosmosDbSqlApiSinkResponse | DelimitedTextSinkResponse | DocumentDbCollectionSinkResponse | DynamicsCrmSinkResponse | DynamicsSinkResponse | FileSystemSinkResponse | InformixSinkResponse | JsonSinkResponse | LakeHouseTableSinkResponse | MicrosoftAccessSinkResponse | MongoDbAtlasSinkResponse | MongoDbV2SinkResponse | OdbcSinkResponse | OracleSinkResponse | OrcSinkResponse | ParquetSinkResponse | RestSinkResponse | SalesforceServiceCloudSinkResponse | SalesforceServiceCloudV2SinkResponse | SalesforceSinkResponse | SalesforceV2SinkResponse | SapCloudForCustomerSinkResponse | SnowflakeSinkResponse | SqlDWSinkResponse | SqlMISinkResponse | SqlServerSinkResponse | SqlSinkResponse | WarehouseSinkResponse;
+    sink: AvroSinkResponse | AzureBlobFSSinkResponse | AzureDataExplorerSinkResponse | AzureDataLakeStoreSinkResponse | AzureDatabricksDeltaLakeSinkResponse | AzureMySqlSinkResponse | AzurePostgreSqlSinkResponse | AzureQueueSinkResponse | AzureSearchIndexSinkResponse | AzureSqlSinkResponse | AzureTableSinkResponse | BinarySinkResponse | BlobSinkResponse | CommonDataServiceForAppsSinkResponse | CosmosDbMongoDbApiSinkResponse | CosmosDbSqlApiSinkResponse | DelimitedTextSinkResponse | DocumentDbCollectionSinkResponse | DynamicsCrmSinkResponse | DynamicsSinkResponse | FileSystemSinkResponse | InformixSinkResponse | JsonSinkResponse | LakeHouseTableSinkResponse | MicrosoftAccessSinkResponse | MongoDbAtlasSinkResponse | MongoDbV2SinkResponse | OdbcSinkResponse | OracleSinkResponse | OrcSinkResponse | ParquetSinkResponse | RestSinkResponse | SalesforceServiceCloudSinkResponse | SalesforceServiceCloudV2SinkResponse | SalesforceSinkResponse | SalesforceV2SinkResponse | SapCloudForCustomerSinkResponse | SnowflakeSinkResponse | SnowflakeV2SinkResponse | SqlDWSinkResponse | SqlMISinkResponse | SqlServerSinkResponse | SqlSinkResponse | WarehouseSinkResponse;
     /**
      * Specify the fault tolerance for data consistency.
      */
@@ -5896,7 +5896,7 @@ export interface CopyActivityResponse {
     /**
      * Copy activity source.
      */
-    source: AmazonMWSSourceResponse | AmazonRdsForOracleSourceResponse | AmazonRdsForSqlServerSourceResponse | AmazonRedshiftSourceResponse | AvroSourceResponse | AzureBlobFSSourceResponse | AzureDataExplorerSourceResponse | AzureDataLakeStoreSourceResponse | AzureDatabricksDeltaLakeSourceResponse | AzureMariaDBSourceResponse | AzureMySqlSourceResponse | AzurePostgreSqlSourceResponse | AzureSqlSourceResponse | AzureTableSourceResponse | BinarySourceResponse | BlobSourceResponse | CassandraSourceResponse | CommonDataServiceForAppsSourceResponse | ConcurSourceResponse | CosmosDbMongoDbApiSourceResponse | CosmosDbSqlApiSourceResponse | CouchbaseSourceResponse | Db2SourceResponse | DelimitedTextSourceResponse | DocumentDbCollectionSourceResponse | DrillSourceResponse | DynamicsAXSourceResponse | DynamicsCrmSourceResponse | DynamicsSourceResponse | EloquaSourceResponse | ExcelSourceResponse | FileSystemSourceResponse | GoogleAdWordsSourceResponse | GoogleBigQuerySourceResponse | GreenplumSourceResponse | HBaseSourceResponse | HdfsSourceResponse | HiveSourceResponse | HttpSourceResponse | HubspotSourceResponse | ImpalaSourceResponse | InformixSourceResponse | JiraSourceResponse | JsonSourceResponse | LakeHouseTableSourceResponse | MagentoSourceResponse | MariaDBSourceResponse | MarketoSourceResponse | MicrosoftAccessSourceResponse | MongoDbAtlasSourceResponse | MongoDbSourceResponse | MongoDbV2SourceResponse | MySqlSourceResponse | NetezzaSourceResponse | ODataSourceResponse | OdbcSourceResponse | Office365SourceResponse | OracleServiceCloudSourceResponse | OracleSourceResponse | OrcSourceResponse | ParquetSourceResponse | PaypalSourceResponse | PhoenixSourceResponse | PostgreSqlSourceResponse | PrestoSourceResponse | QuickBooksSourceResponse | RelationalSourceResponse | ResponsysSourceResponse | RestSourceResponse | SalesforceMarketingCloudSourceResponse | SalesforceServiceCloudSourceResponse | SalesforceServiceCloudV2SourceResponse | SalesforceSourceResponse | SalesforceV2SourceResponse | SapBwSourceResponse | SapCloudForCustomerSourceResponse | SapEccSourceResponse | SapHanaSourceResponse | SapOdpSourceResponse | SapOpenHubSourceResponse | SapTableSourceResponse | ServiceNowSourceResponse | SharePointOnlineListSourceResponse | ShopifySourceResponse | SnowflakeSourceResponse | SparkSourceResponse | SqlDWSourceResponse | SqlMISourceResponse | SqlServerSourceResponse | SqlSourceResponse | SquareSourceResponse | SybaseSourceResponse | TabularSourceResponse | TeradataSourceResponse | VerticaSourceResponse | WarehouseSourceResponse | WebSourceResponse | XeroSourceResponse | XmlSourceResponse | ZohoSourceResponse;
+    source: AmazonMWSSourceResponse | AmazonRdsForOracleSourceResponse | AmazonRdsForSqlServerSourceResponse | AmazonRedshiftSourceResponse | AvroSourceResponse | AzureBlobFSSourceResponse | AzureDataExplorerSourceResponse | AzureDataLakeStoreSourceResponse | AzureDatabricksDeltaLakeSourceResponse | AzureMariaDBSourceResponse | AzureMySqlSourceResponse | AzurePostgreSqlSourceResponse | AzureSqlSourceResponse | AzureTableSourceResponse | BinarySourceResponse | BlobSourceResponse | CassandraSourceResponse | CommonDataServiceForAppsSourceResponse | ConcurSourceResponse | CosmosDbMongoDbApiSourceResponse | CosmosDbSqlApiSourceResponse | CouchbaseSourceResponse | Db2SourceResponse | DelimitedTextSourceResponse | DocumentDbCollectionSourceResponse | DrillSourceResponse | DynamicsAXSourceResponse | DynamicsCrmSourceResponse | DynamicsSourceResponse | EloquaSourceResponse | ExcelSourceResponse | FileSystemSourceResponse | GoogleAdWordsSourceResponse | GoogleBigQuerySourceResponse | GreenplumSourceResponse | HBaseSourceResponse | HdfsSourceResponse | HiveSourceResponse | HttpSourceResponse | HubspotSourceResponse | ImpalaSourceResponse | InformixSourceResponse | JiraSourceResponse | JsonSourceResponse | LakeHouseTableSourceResponse | MagentoSourceResponse | MariaDBSourceResponse | MarketoSourceResponse | MicrosoftAccessSourceResponse | MongoDbAtlasSourceResponse | MongoDbSourceResponse | MongoDbV2SourceResponse | MySqlSourceResponse | NetezzaSourceResponse | ODataSourceResponse | OdbcSourceResponse | Office365SourceResponse | OracleServiceCloudSourceResponse | OracleSourceResponse | OrcSourceResponse | ParquetSourceResponse | PaypalSourceResponse | PhoenixSourceResponse | PostgreSqlSourceResponse | PrestoSourceResponse | QuickBooksSourceResponse | RelationalSourceResponse | ResponsysSourceResponse | RestSourceResponse | SalesforceMarketingCloudSourceResponse | SalesforceServiceCloudSourceResponse | SalesforceServiceCloudV2SourceResponse | SalesforceSourceResponse | SalesforceV2SourceResponse | SapBwSourceResponse | SapCloudForCustomerSourceResponse | SapEccSourceResponse | SapHanaSourceResponse | SapOdpSourceResponse | SapOpenHubSourceResponse | SapTableSourceResponse | ServiceNowSourceResponse | SharePointOnlineListSourceResponse | ShopifySourceResponse | SnowflakeSourceResponse | SnowflakeV2SourceResponse | SparkSourceResponse | SqlDWSourceResponse | SqlMISourceResponse | SqlServerSourceResponse | SqlSourceResponse | SquareSourceResponse | SybaseSourceResponse | TabularSourceResponse | TeradataSourceResponse | VerticaSourceResponse | WarehouseSourceResponse | WebSourceResponse | XeroSourceResponse | XmlSourceResponse | ZohoSourceResponse;
     /**
      * Specifies interim staging settings when EnableStaging is true.
      */
@@ -13312,7 +13312,7 @@ export interface LookupActivityResponse {
     /**
      * Dataset-specific source properties, same as copy activity source.
      */
-    source: AmazonMWSSourceResponse | AmazonRdsForOracleSourceResponse | AmazonRdsForSqlServerSourceResponse | AmazonRedshiftSourceResponse | AvroSourceResponse | AzureBlobFSSourceResponse | AzureDataExplorerSourceResponse | AzureDataLakeStoreSourceResponse | AzureDatabricksDeltaLakeSourceResponse | AzureMariaDBSourceResponse | AzureMySqlSourceResponse | AzurePostgreSqlSourceResponse | AzureSqlSourceResponse | AzureTableSourceResponse | BinarySourceResponse | BlobSourceResponse | CassandraSourceResponse | CommonDataServiceForAppsSourceResponse | ConcurSourceResponse | CosmosDbMongoDbApiSourceResponse | CosmosDbSqlApiSourceResponse | CouchbaseSourceResponse | Db2SourceResponse | DelimitedTextSourceResponse | DocumentDbCollectionSourceResponse | DrillSourceResponse | DynamicsAXSourceResponse | DynamicsCrmSourceResponse | DynamicsSourceResponse | EloquaSourceResponse | ExcelSourceResponse | FileSystemSourceResponse | GoogleAdWordsSourceResponse | GoogleBigQuerySourceResponse | GreenplumSourceResponse | HBaseSourceResponse | HdfsSourceResponse | HiveSourceResponse | HttpSourceResponse | HubspotSourceResponse | ImpalaSourceResponse | InformixSourceResponse | JiraSourceResponse | JsonSourceResponse | LakeHouseTableSourceResponse | MagentoSourceResponse | MariaDBSourceResponse | MarketoSourceResponse | MicrosoftAccessSourceResponse | MongoDbAtlasSourceResponse | MongoDbSourceResponse | MongoDbV2SourceResponse | MySqlSourceResponse | NetezzaSourceResponse | ODataSourceResponse | OdbcSourceResponse | Office365SourceResponse | OracleServiceCloudSourceResponse | OracleSourceResponse | OrcSourceResponse | ParquetSourceResponse | PaypalSourceResponse | PhoenixSourceResponse | PostgreSqlSourceResponse | PrestoSourceResponse | QuickBooksSourceResponse | RelationalSourceResponse | ResponsysSourceResponse | RestSourceResponse | SalesforceMarketingCloudSourceResponse | SalesforceServiceCloudSourceResponse | SalesforceServiceCloudV2SourceResponse | SalesforceSourceResponse | SalesforceV2SourceResponse | SapBwSourceResponse | SapCloudForCustomerSourceResponse | SapEccSourceResponse | SapHanaSourceResponse | SapOdpSourceResponse | SapOpenHubSourceResponse | SapTableSourceResponse | ServiceNowSourceResponse | SharePointOnlineListSourceResponse | ShopifySourceResponse | SnowflakeSourceResponse | SparkSourceResponse | SqlDWSourceResponse | SqlMISourceResponse | SqlServerSourceResponse | SqlSourceResponse | SquareSourceResponse | SybaseSourceResponse | TabularSourceResponse | TeradataSourceResponse | VerticaSourceResponse | WarehouseSourceResponse | WebSourceResponse | XeroSourceResponse | XmlSourceResponse | ZohoSourceResponse;
+    source: AmazonMWSSourceResponse | AmazonRdsForOracleSourceResponse | AmazonRdsForSqlServerSourceResponse | AmazonRedshiftSourceResponse | AvroSourceResponse | AzureBlobFSSourceResponse | AzureDataExplorerSourceResponse | AzureDataLakeStoreSourceResponse | AzureDatabricksDeltaLakeSourceResponse | AzureMariaDBSourceResponse | AzureMySqlSourceResponse | AzurePostgreSqlSourceResponse | AzureSqlSourceResponse | AzureTableSourceResponse | BinarySourceResponse | BlobSourceResponse | CassandraSourceResponse | CommonDataServiceForAppsSourceResponse | ConcurSourceResponse | CosmosDbMongoDbApiSourceResponse | CosmosDbSqlApiSourceResponse | CouchbaseSourceResponse | Db2SourceResponse | DelimitedTextSourceResponse | DocumentDbCollectionSourceResponse | DrillSourceResponse | DynamicsAXSourceResponse | DynamicsCrmSourceResponse | DynamicsSourceResponse | EloquaSourceResponse | ExcelSourceResponse | FileSystemSourceResponse | GoogleAdWordsSourceResponse | GoogleBigQuerySourceResponse | GreenplumSourceResponse | HBaseSourceResponse | HdfsSourceResponse | HiveSourceResponse | HttpSourceResponse | HubspotSourceResponse | ImpalaSourceResponse | InformixSourceResponse | JiraSourceResponse | JsonSourceResponse | LakeHouseTableSourceResponse | MagentoSourceResponse | MariaDBSourceResponse | MarketoSourceResponse | MicrosoftAccessSourceResponse | MongoDbAtlasSourceResponse | MongoDbSourceResponse | MongoDbV2SourceResponse | MySqlSourceResponse | NetezzaSourceResponse | ODataSourceResponse | OdbcSourceResponse | Office365SourceResponse | OracleServiceCloudSourceResponse | OracleSourceResponse | OrcSourceResponse | ParquetSourceResponse | PaypalSourceResponse | PhoenixSourceResponse | PostgreSqlSourceResponse | PrestoSourceResponse | QuickBooksSourceResponse | RelationalSourceResponse | ResponsysSourceResponse | RestSourceResponse | SalesforceMarketingCloudSourceResponse | SalesforceServiceCloudSourceResponse | SalesforceServiceCloudV2SourceResponse | SalesforceSourceResponse | SalesforceV2SourceResponse | SapBwSourceResponse | SapCloudForCustomerSourceResponse | SapEccSourceResponse | SapHanaSourceResponse | SapOdpSourceResponse | SapOpenHubSourceResponse | SapTableSourceResponse | ServiceNowSourceResponse | SharePointOnlineListSourceResponse | ShopifySourceResponse | SnowflakeSourceResponse | SnowflakeV2SourceResponse | SparkSourceResponse | SqlDWSourceResponse | SqlMISourceResponse | SqlServerSourceResponse | SqlSourceResponse | SquareSourceResponse | SybaseSourceResponse | TabularSourceResponse | TeradataSourceResponse | VerticaSourceResponse | WarehouseSourceResponse | WebSourceResponse | XeroSourceResponse | XmlSourceResponse | ZohoSourceResponse;
     /**
      * Activity state. This is an optional property and if not provided, the state will be Active by default.
      */
@@ -21651,6 +21651,215 @@ export interface SnowflakeSourceResponse {
      * Expected value is 'SnowflakeSource'.
      */
     type: "SnowflakeSource";
+}
+
+/**
+ * The snowflake dataset.
+ */
+export interface SnowflakeV2DatasetResponse {
+    /**
+     * List of tags that can be used for describing the Dataset.
+     */
+    annotations?: any[];
+    /**
+     * Dataset description.
+     */
+    description?: string;
+    /**
+     * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+     */
+    folder?: DatasetResponseFolder;
+    /**
+     * Linked service reference.
+     */
+    linkedServiceName: LinkedServiceReferenceResponse;
+    /**
+     * Parameters for dataset.
+     */
+    parameters?: {[key: string]: ParameterSpecificationResponse};
+    /**
+     * Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+     */
+    schema?: any;
+    /**
+     * Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+     */
+    structure?: any;
+    /**
+     * The table name of the Snowflake database. Type: string (or Expression with resultType string).
+     */
+    table?: any;
+    /**
+     * Type of dataset.
+     * Expected value is 'SnowflakeV2Table'.
+     */
+    type: "SnowflakeV2Table";
+}
+
+/**
+ * Snowflake linked service.
+ */
+export interface SnowflakeV2LinkedServiceResponse {
+    /**
+     * The account identifier of your Snowflake account, e.g. xy12345.east-us-2.azure
+     */
+    accountIdentifier: any;
+    /**
+     * List of tags that can be used for describing the linked service.
+     */
+    annotations?: any[];
+    /**
+     * The type used for authentication. Type: string.
+     */
+    authenticationType?: string;
+    /**
+     * The client ID of the application registered in Azure Active Directory for AADServicePrincipal authentication.
+     */
+    clientId?: any;
+    /**
+     * The Azure key vault secret reference of client secret for AADServicePrincipal authentication.
+     */
+    clientSecret?: AzureKeyVaultSecretReferenceResponse | SecureStringResponse;
+    /**
+     * The integration runtime reference.
+     */
+    connectVia?: IntegrationRuntimeReferenceResponse;
+    /**
+     * The name of the Snowflake database.
+     */
+    database: any;
+    /**
+     * Linked service description.
+     */
+    description?: string;
+    /**
+     * The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+     */
+    encryptedCredential?: string;
+    /**
+     * Parameters for linked service.
+     */
+    parameters?: {[key: string]: ParameterSpecificationResponse};
+    /**
+     * The Azure key vault secret reference of password in connection string.
+     */
+    password?: AzureKeyVaultSecretReferenceResponse | SecureStringResponse;
+    /**
+     * The Azure key vault secret reference of privateKey for KeyPair auth.
+     */
+    privateKey?: AzureKeyVaultSecretReferenceResponse | SecureStringResponse;
+    /**
+     * The Azure key vault secret reference of private key password for KeyPair auth with encrypted private key.
+     */
+    privateKeyPassphrase?: AzureKeyVaultSecretReferenceResponse | SecureStringResponse;
+    /**
+     * The scope of the application registered in Azure Active Directory for AADServicePrincipal authentication.
+     */
+    scope?: any;
+    /**
+     * The tenant ID of the application registered in Azure Active Directory for AADServicePrincipal authentication.
+     */
+    tenantId?: any;
+    /**
+     * Type of linked service.
+     * Expected value is 'SnowflakeV2'.
+     */
+    type: "SnowflakeV2";
+    /**
+     * The name of the Snowflake user.
+     */
+    user?: any;
+    /**
+     * The name of the Snowflake warehouse.
+     */
+    warehouse: any;
+}
+/**
+ * snowflakeV2LinkedServiceResponseProvideDefaults sets the appropriate defaults for SnowflakeV2LinkedServiceResponse
+ */
+export function snowflakeV2LinkedServiceResponseProvideDefaults(val: SnowflakeV2LinkedServiceResponse): SnowflakeV2LinkedServiceResponse {
+    return {
+        ...val,
+        authenticationType: (val.authenticationType) ?? "Basic",
+    };
+}
+
+/**
+ * A copy activity snowflake sink.
+ */
+export interface SnowflakeV2SinkResponse {
+    /**
+     * If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+     */
+    disableMetricsCollection?: any;
+    /**
+     * Snowflake import settings.
+     */
+    importSettings?: SnowflakeImportCopyCommandResponse;
+    /**
+     * The maximum concurrent connection count for the sink data store. Type: integer (or Expression with resultType integer).
+     */
+    maxConcurrentConnections?: any;
+    /**
+     * SQL pre-copy script. Type: string (or Expression with resultType string).
+     */
+    preCopyScript?: any;
+    /**
+     * Sink retry count. Type: integer (or Expression with resultType integer).
+     */
+    sinkRetryCount?: any;
+    /**
+     * Sink retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+     */
+    sinkRetryWait?: any;
+    /**
+     * Copy sink type.
+     * Expected value is 'SnowflakeV2Sink'.
+     */
+    type: "SnowflakeV2Sink";
+    /**
+     * Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
+     */
+    writeBatchSize?: any;
+    /**
+     * Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+     */
+    writeBatchTimeout?: any;
+}
+
+/**
+ * A copy activity snowflake source.
+ */
+export interface SnowflakeV2SourceResponse {
+    /**
+     * If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+     */
+    disableMetricsCollection?: any;
+    /**
+     * Snowflake export settings.
+     */
+    exportSettings: SnowflakeExportCopyCommandResponse;
+    /**
+     * The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+     */
+    maxConcurrentConnections?: any;
+    /**
+     * Snowflake Sql query. Type: string (or Expression with resultType string).
+     */
+    query?: any;
+    /**
+     * Source retry count. Type: integer (or Expression with resultType integer).
+     */
+    sourceRetryCount?: any;
+    /**
+     * Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+     */
+    sourceRetryWait?: any;
+    /**
+     * Copy source type.
+     * Expected value is 'SnowflakeV2Source'.
+     */
+    type: "SnowflakeV2Source";
 }
 
 /**

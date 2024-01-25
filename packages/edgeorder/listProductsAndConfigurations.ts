@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * List configurations for the given product family, product line and product for the given subscription.
  * Azure REST API version: 2022-05-01-preview.
+ *
+ * Other available API versions: 2024-02-01.
  */
 export function listProductsAndConfigurations(args?: ListProductsAndConfigurationsArgs, opts?: pulumi.InvokeOptions): Promise<ListProductsAndConfigurationsResult> {
     args = args || {};
@@ -47,6 +49,8 @@ export interface ListProductsAndConfigurationsResult {
 /**
  * List configurations for the given product family, product line and product for the given subscription.
  * Azure REST API version: 2022-05-01-preview.
+ *
+ * Other available API versions: 2024-02-01.
  */
 export function listProductsAndConfigurationsOutput(args?: ListProductsAndConfigurationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListProductsAndConfigurationsResult> {
     return pulumi.output(args).apply((a: any) => listProductsAndConfigurations(a, opts))

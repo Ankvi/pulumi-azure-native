@@ -1590,6 +1590,24 @@ export interface JitNetworkAccessRequestVirtualMachineArgs {
 }
 
 /**
+ * Properties of Malware Scanning.
+ */
+export interface MalwareScanningPropertiesArgs {
+    /**
+     * Defines the max GB to be scanned per Month. Set to -1 if no capping is needed.
+     */
+    capGBPerMonth?: pulumi.Input<number>;
+    /**
+     * Indicates whether On Upload malware scanning should be enabled.
+     */
+    isEnabled?: pulumi.Input<boolean>;
+    /**
+     * Optional. Resource id of an Event Grid Topic to send scan results to.
+     */
+    scanResultsEventGridTopicResourceId?: pulumi.Input<string>;
+}
+
+/**
  * Details of the On Premise resource that was assessed
  */
 export interface OnPremiseResourceDetailsArgs {
@@ -1902,6 +1920,16 @@ export interface SecurityContactPropertiesNotificationsByRoleArgs {
 }
 
 /**
+ * Properties of Sensitive Data Discovery.
+ */
+export interface SensitiveDataDiscoveryPropertiesArgs {
+    /**
+     * Indicates whether Sensitive Data Discovery should be enabled.
+     */
+    isEnabled?: pulumi.Input<boolean>;
+}
+
+/**
  * Details of the service principal.
  */
 export interface ServicePrincipalPropertiesArgs {
@@ -2031,6 +2059,7 @@ export interface VmRecommendationArgs {
      */
     resourceId?: pulumi.Input<string>;
 }
+
 
 
 

@@ -2085,6 +2085,28 @@ export interface JitNetworkAccessRequestVirtualMachineResponse {
 }
 
 /**
+ * Properties of Malware Scanning.
+ */
+export interface MalwareScanningPropertiesResponse {
+    /**
+     * Defines the max GB to be scanned per Month. Set to -1 if no capping is needed.
+     */
+    capGBPerMonth?: number;
+    /**
+     * Indicates whether On Upload malware scanning should be enabled.
+     */
+    isEnabled?: boolean;
+    /**
+     * Upon failure or partial success. Additional data describing Malware Scanning enable/disable operation.
+     */
+    operationStatus: OperationStatusResponse;
+    /**
+     * Optional. Resource id of an Event Grid Topic to send scan results to.
+     */
+    scanResultsEventGridTopicResourceId?: string;
+}
+
+/**
  * Details of the On Premise resource that was assessed
  */
 export interface OnPremiseResourceDetailsResponse {
@@ -2426,6 +2448,20 @@ export interface SecurityContactPropertiesResponseNotificationsByRole {
 }
 
 /**
+ * Properties of Sensitive Data Discovery.
+ */
+export interface SensitiveDataDiscoveryPropertiesResponse {
+    /**
+     * Indicates whether Sensitive Data Discovery should be enabled.
+     */
+    isEnabled?: boolean;
+    /**
+     * Upon failure or partial success. Additional data describing Sensitive Data Discovery enable/disable operation.
+     */
+    operationStatus: OperationStatusResponse;
+}
+
+/**
  * Details of the service principal.
  */
 export interface ServicePrincipalPropertiesResponse {
@@ -2618,6 +2654,7 @@ export interface VmRecommendationResponse {
      */
     resourceId?: string;
 }
+
 
 
 

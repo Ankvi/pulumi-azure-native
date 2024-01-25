@@ -1,6 +1,6 @@
 {
     "name": "@kengachu-pulumi/azure-native-providerhub",
-    "version": "2.25.0",
+    "version": "2.26.0",
     "description": "Pulumi Azure Native package for providerhub",
     "keywords": [
         "pulumi",

@@ -1048,3 +1048,4 @@ export interface TransportPreferencesResponse {
     preferredShipmentType: string;
 }
 
+

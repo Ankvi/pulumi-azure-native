@@ -5837,7 +5837,7 @@ export interface CopyActivityArgs {
     /**
      * Copy activity sink.
      */
-    sink: pulumi.Input<AvroSinkArgs | AzureBlobFSSinkArgs | AzureDataExplorerSinkArgs | AzureDataLakeStoreSinkArgs | AzureDatabricksDeltaLakeSinkArgs | AzureMySqlSinkArgs | AzurePostgreSqlSinkArgs | AzureQueueSinkArgs | AzureSearchIndexSinkArgs | AzureSqlSinkArgs | AzureTableSinkArgs | BinarySinkArgs | BlobSinkArgs | CommonDataServiceForAppsSinkArgs | CosmosDbMongoDbApiSinkArgs | CosmosDbSqlApiSinkArgs | DelimitedTextSinkArgs | DocumentDbCollectionSinkArgs | DynamicsCrmSinkArgs | DynamicsSinkArgs | FileSystemSinkArgs | InformixSinkArgs | JsonSinkArgs | LakeHouseTableSinkArgs | MicrosoftAccessSinkArgs | MongoDbAtlasSinkArgs | MongoDbV2SinkArgs | OdbcSinkArgs | OracleSinkArgs | OrcSinkArgs | ParquetSinkArgs | RestSinkArgs | SalesforceServiceCloudSinkArgs | SalesforceServiceCloudV2SinkArgs | SalesforceSinkArgs | SalesforceV2SinkArgs | SapCloudForCustomerSinkArgs | SnowflakeSinkArgs | SqlDWSinkArgs | SqlMISinkArgs | SqlServerSinkArgs | SqlSinkArgs | WarehouseSinkArgs>;
+    sink: pulumi.Input<AvroSinkArgs | AzureBlobFSSinkArgs | AzureDataExplorerSinkArgs | AzureDataLakeStoreSinkArgs | AzureDatabricksDeltaLakeSinkArgs | AzureMySqlSinkArgs | AzurePostgreSqlSinkArgs | AzureQueueSinkArgs | AzureSearchIndexSinkArgs | AzureSqlSinkArgs | AzureTableSinkArgs | BinarySinkArgs | BlobSinkArgs | CommonDataServiceForAppsSinkArgs | CosmosDbMongoDbApiSinkArgs | CosmosDbSqlApiSinkArgs | DelimitedTextSinkArgs | DocumentDbCollectionSinkArgs | DynamicsCrmSinkArgs | DynamicsSinkArgs | FileSystemSinkArgs | InformixSinkArgs | JsonSinkArgs | LakeHouseTableSinkArgs | MicrosoftAccessSinkArgs | MongoDbAtlasSinkArgs | MongoDbV2SinkArgs | OdbcSinkArgs | OracleSinkArgs | OrcSinkArgs | ParquetSinkArgs | RestSinkArgs | SalesforceServiceCloudSinkArgs | SalesforceServiceCloudV2SinkArgs | SalesforceSinkArgs | SalesforceV2SinkArgs | SapCloudForCustomerSinkArgs | SnowflakeSinkArgs | SnowflakeV2SinkArgs | SqlDWSinkArgs | SqlMISinkArgs | SqlServerSinkArgs | SqlSinkArgs | WarehouseSinkArgs>;
     /**
      * Specify the fault tolerance for data consistency.
      */
@@ -5845,7 +5845,7 @@ export interface CopyActivityArgs {
     /**
      * Copy activity source.
      */
-    source: pulumi.Input<AmazonMWSSourceArgs | AmazonRdsForOracleSourceArgs | AmazonRdsForSqlServerSourceArgs | AmazonRedshiftSourceArgs | AvroSourceArgs | AzureBlobFSSourceArgs | AzureDataExplorerSourceArgs | AzureDataLakeStoreSourceArgs | AzureDatabricksDeltaLakeSourceArgs | AzureMariaDBSourceArgs | AzureMySqlSourceArgs | AzurePostgreSqlSourceArgs | AzureSqlSourceArgs | AzureTableSourceArgs | BinarySourceArgs | BlobSourceArgs | CassandraSourceArgs | CommonDataServiceForAppsSourceArgs | ConcurSourceArgs | CosmosDbMongoDbApiSourceArgs | CosmosDbSqlApiSourceArgs | CouchbaseSourceArgs | Db2SourceArgs | DelimitedTextSourceArgs | DocumentDbCollectionSourceArgs | DrillSourceArgs | DynamicsAXSourceArgs | DynamicsCrmSourceArgs | DynamicsSourceArgs | EloquaSourceArgs | ExcelSourceArgs | FileSystemSourceArgs | GoogleAdWordsSourceArgs | GoogleBigQuerySourceArgs | GreenplumSourceArgs | HBaseSourceArgs | HdfsSourceArgs | HiveSourceArgs | HttpSourceArgs | HubspotSourceArgs | ImpalaSourceArgs | InformixSourceArgs | JiraSourceArgs | JsonSourceArgs | LakeHouseTableSourceArgs | MagentoSourceArgs | MariaDBSourceArgs | MarketoSourceArgs | MicrosoftAccessSourceArgs | MongoDbAtlasSourceArgs | MongoDbSourceArgs | MongoDbV2SourceArgs | MySqlSourceArgs | NetezzaSourceArgs | ODataSourceArgs | OdbcSourceArgs | Office365SourceArgs | OracleServiceCloudSourceArgs | OracleSourceArgs | OrcSourceArgs | ParquetSourceArgs | PaypalSourceArgs | PhoenixSourceArgs | PostgreSqlSourceArgs | PrestoSourceArgs | QuickBooksSourceArgs | RelationalSourceArgs | ResponsysSourceArgs | RestSourceArgs | SalesforceMarketingCloudSourceArgs | SalesforceServiceCloudSourceArgs | SalesforceServiceCloudV2SourceArgs | SalesforceSourceArgs | SalesforceV2SourceArgs | SapBwSourceArgs | SapCloudForCustomerSourceArgs | SapEccSourceArgs | SapHanaSourceArgs | SapOdpSourceArgs | SapOpenHubSourceArgs | SapTableSourceArgs | ServiceNowSourceArgs | SharePointOnlineListSourceArgs | ShopifySourceArgs | SnowflakeSourceArgs | SparkSourceArgs | SqlDWSourceArgs | SqlMISourceArgs | SqlServerSourceArgs | SqlSourceArgs | SquareSourceArgs | SybaseSourceArgs | TabularSourceArgs | TeradataSourceArgs | VerticaSourceArgs | WarehouseSourceArgs | WebSourceArgs | XeroSourceArgs | XmlSourceArgs | ZohoSourceArgs>;
+    source: pulumi.Input<AmazonMWSSourceArgs | AmazonRdsForOracleSourceArgs | AmazonRdsForSqlServerSourceArgs | AmazonRedshiftSourceArgs | AvroSourceArgs | AzureBlobFSSourceArgs | AzureDataExplorerSourceArgs | AzureDataLakeStoreSourceArgs | AzureDatabricksDeltaLakeSourceArgs | AzureMariaDBSourceArgs | AzureMySqlSourceArgs | AzurePostgreSqlSourceArgs | AzureSqlSourceArgs | AzureTableSourceArgs | BinarySourceArgs | BlobSourceArgs | CassandraSourceArgs | CommonDataServiceForAppsSourceArgs | ConcurSourceArgs | CosmosDbMongoDbApiSourceArgs | CosmosDbSqlApiSourceArgs | CouchbaseSourceArgs | Db2SourceArgs | DelimitedTextSourceArgs | DocumentDbCollectionSourceArgs | DrillSourceArgs | DynamicsAXSourceArgs | DynamicsCrmSourceArgs | DynamicsSourceArgs | EloquaSourceArgs | ExcelSourceArgs | FileSystemSourceArgs | GoogleAdWordsSourceArgs | GoogleBigQuerySourceArgs | GreenplumSourceArgs | HBaseSourceArgs | HdfsSourceArgs | HiveSourceArgs | HttpSourceArgs | HubspotSourceArgs | ImpalaSourceArgs | InformixSourceArgs | JiraSourceArgs | JsonSourceArgs | LakeHouseTableSourceArgs | MagentoSourceArgs | MariaDBSourceArgs | MarketoSourceArgs | MicrosoftAccessSourceArgs | MongoDbAtlasSourceArgs | MongoDbSourceArgs | MongoDbV2SourceArgs | MySqlSourceArgs | NetezzaSourceArgs | ODataSourceArgs | OdbcSourceArgs | Office365SourceArgs | OracleServiceCloudSourceArgs | OracleSourceArgs | OrcSourceArgs | ParquetSourceArgs | PaypalSourceArgs | PhoenixSourceArgs | PostgreSqlSourceArgs | PrestoSourceArgs | QuickBooksSourceArgs | RelationalSourceArgs | ResponsysSourceArgs | RestSourceArgs | SalesforceMarketingCloudSourceArgs | SalesforceServiceCloudSourceArgs | SalesforceServiceCloudV2SourceArgs | SalesforceSourceArgs | SalesforceV2SourceArgs | SapBwSourceArgs | SapCloudForCustomerSourceArgs | SapEccSourceArgs | SapHanaSourceArgs | SapOdpSourceArgs | SapOpenHubSourceArgs | SapTableSourceArgs | ServiceNowSourceArgs | SharePointOnlineListSourceArgs | ShopifySourceArgs | SnowflakeSourceArgs | SnowflakeV2SourceArgs | SparkSourceArgs | SqlDWSourceArgs | SqlMISourceArgs | SqlServerSourceArgs | SqlSourceArgs | SquareSourceArgs | SybaseSourceArgs | TabularSourceArgs | TeradataSourceArgs | VerticaSourceArgs | WarehouseSourceArgs | WebSourceArgs | XeroSourceArgs | XmlSourceArgs | ZohoSourceArgs>;
     /**
      * Specifies interim staging settings when EnableStaging is true.
      */
@@ -13251,7 +13251,7 @@ export interface LookupActivityArgs {
     /**
      * Dataset-specific source properties, same as copy activity source.
      */
-    source: pulumi.Input<AmazonMWSSourceArgs | AmazonRdsForOracleSourceArgs | AmazonRdsForSqlServerSourceArgs | AmazonRedshiftSourceArgs | AvroSourceArgs | AzureBlobFSSourceArgs | AzureDataExplorerSourceArgs | AzureDataLakeStoreSourceArgs | AzureDatabricksDeltaLakeSourceArgs | AzureMariaDBSourceArgs | AzureMySqlSourceArgs | AzurePostgreSqlSourceArgs | AzureSqlSourceArgs | AzureTableSourceArgs | BinarySourceArgs | BlobSourceArgs | CassandraSourceArgs | CommonDataServiceForAppsSourceArgs | ConcurSourceArgs | CosmosDbMongoDbApiSourceArgs | CosmosDbSqlApiSourceArgs | CouchbaseSourceArgs | Db2SourceArgs | DelimitedTextSourceArgs | DocumentDbCollectionSourceArgs | DrillSourceArgs | DynamicsAXSourceArgs | DynamicsCrmSourceArgs | DynamicsSourceArgs | EloquaSourceArgs | ExcelSourceArgs | FileSystemSourceArgs | GoogleAdWordsSourceArgs | GoogleBigQuerySourceArgs | GreenplumSourceArgs | HBaseSourceArgs | HdfsSourceArgs | HiveSourceArgs | HttpSourceArgs | HubspotSourceArgs | ImpalaSourceArgs | InformixSourceArgs | JiraSourceArgs | JsonSourceArgs | LakeHouseTableSourceArgs | MagentoSourceArgs | MariaDBSourceArgs | MarketoSourceArgs | MicrosoftAccessSourceArgs | MongoDbAtlasSourceArgs | MongoDbSourceArgs | MongoDbV2SourceArgs | MySqlSourceArgs | NetezzaSourceArgs | ODataSourceArgs | OdbcSourceArgs | Office365SourceArgs | OracleServiceCloudSourceArgs | OracleSourceArgs | OrcSourceArgs | ParquetSourceArgs | PaypalSourceArgs | PhoenixSourceArgs | PostgreSqlSourceArgs | PrestoSourceArgs | QuickBooksSourceArgs | RelationalSourceArgs | ResponsysSourceArgs | RestSourceArgs | SalesforceMarketingCloudSourceArgs | SalesforceServiceCloudSourceArgs | SalesforceServiceCloudV2SourceArgs | SalesforceSourceArgs | SalesforceV2SourceArgs | SapBwSourceArgs | SapCloudForCustomerSourceArgs | SapEccSourceArgs | SapHanaSourceArgs | SapOdpSourceArgs | SapOpenHubSourceArgs | SapTableSourceArgs | ServiceNowSourceArgs | SharePointOnlineListSourceArgs | ShopifySourceArgs | SnowflakeSourceArgs | SparkSourceArgs | SqlDWSourceArgs | SqlMISourceArgs | SqlServerSourceArgs | SqlSourceArgs | SquareSourceArgs | SybaseSourceArgs | TabularSourceArgs | TeradataSourceArgs | VerticaSourceArgs | WarehouseSourceArgs | WebSourceArgs | XeroSourceArgs | XmlSourceArgs | ZohoSourceArgs>;
+    source: pulumi.Input<AmazonMWSSourceArgs | AmazonRdsForOracleSourceArgs | AmazonRdsForSqlServerSourceArgs | AmazonRedshiftSourceArgs | AvroSourceArgs | AzureBlobFSSourceArgs | AzureDataExplorerSourceArgs | AzureDataLakeStoreSourceArgs | AzureDatabricksDeltaLakeSourceArgs | AzureMariaDBSourceArgs | AzureMySqlSourceArgs | AzurePostgreSqlSourceArgs | AzureSqlSourceArgs | AzureTableSourceArgs | BinarySourceArgs | BlobSourceArgs | CassandraSourceArgs | CommonDataServiceForAppsSourceArgs | ConcurSourceArgs | CosmosDbMongoDbApiSourceArgs | CosmosDbSqlApiSourceArgs | CouchbaseSourceArgs | Db2SourceArgs | DelimitedTextSourceArgs | DocumentDbCollectionSourceArgs | DrillSourceArgs | DynamicsAXSourceArgs | DynamicsCrmSourceArgs | DynamicsSourceArgs | EloquaSourceArgs | ExcelSourceArgs | FileSystemSourceArgs | GoogleAdWordsSourceArgs | GoogleBigQuerySourceArgs | GreenplumSourceArgs | HBaseSourceArgs | HdfsSourceArgs | HiveSourceArgs | HttpSourceArgs | HubspotSourceArgs | ImpalaSourceArgs | InformixSourceArgs | JiraSourceArgs | JsonSourceArgs | LakeHouseTableSourceArgs | MagentoSourceArgs | MariaDBSourceArgs | MarketoSourceArgs | MicrosoftAccessSourceArgs | MongoDbAtlasSourceArgs | MongoDbSourceArgs | MongoDbV2SourceArgs | MySqlSourceArgs | NetezzaSourceArgs | ODataSourceArgs | OdbcSourceArgs | Office365SourceArgs | OracleServiceCloudSourceArgs | OracleSourceArgs | OrcSourceArgs | ParquetSourceArgs | PaypalSourceArgs | PhoenixSourceArgs | PostgreSqlSourceArgs | PrestoSourceArgs | QuickBooksSourceArgs | RelationalSourceArgs | ResponsysSourceArgs | RestSourceArgs | SalesforceMarketingCloudSourceArgs | SalesforceServiceCloudSourceArgs | SalesforceServiceCloudV2SourceArgs | SalesforceSourceArgs | SalesforceV2SourceArgs | SapBwSourceArgs | SapCloudForCustomerSourceArgs | SapEccSourceArgs | SapHanaSourceArgs | SapOdpSourceArgs | SapOpenHubSourceArgs | SapTableSourceArgs | ServiceNowSourceArgs | SharePointOnlineListSourceArgs | ShopifySourceArgs | SnowflakeSourceArgs | SnowflakeV2SourceArgs | SparkSourceArgs | SqlDWSourceArgs | SqlMISourceArgs | SqlServerSourceArgs | SqlSourceArgs | SquareSourceArgs | SybaseSourceArgs | TabularSourceArgs | TeradataSourceArgs | VerticaSourceArgs | WarehouseSourceArgs | WebSourceArgs | XeroSourceArgs | XmlSourceArgs | ZohoSourceArgs>;
     /**
      * Activity state. This is an optional property and if not provided, the state will be Active by default.
      */
@@ -21301,6 +21301,215 @@ export interface SnowflakeSourceArgs {
      * Expected value is 'SnowflakeSource'.
      */
     type: pulumi.Input<"SnowflakeSource">;
+}
+
+/**
+ * The snowflake dataset.
+ */
+export interface SnowflakeV2DatasetArgs {
+    /**
+     * List of tags that can be used for describing the Dataset.
+     */
+    annotations?: pulumi.Input<any[]>;
+    /**
+     * Dataset description.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+     */
+    folder?: pulumi.Input<DatasetFolderArgs>;
+    /**
+     * Linked service reference.
+     */
+    linkedServiceName: pulumi.Input<LinkedServiceReferenceArgs>;
+    /**
+     * Parameters for dataset.
+     */
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<ParameterSpecificationArgs>}>;
+    /**
+     * Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+     */
+    schema?: any;
+    /**
+     * Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+     */
+    structure?: any;
+    /**
+     * The table name of the Snowflake database. Type: string (or Expression with resultType string).
+     */
+    table?: any;
+    /**
+     * Type of dataset.
+     * Expected value is 'SnowflakeV2Table'.
+     */
+    type: pulumi.Input<"SnowflakeV2Table">;
+}
+
+/**
+ * Snowflake linked service.
+ */
+export interface SnowflakeV2LinkedServiceArgs {
+    /**
+     * The account identifier of your Snowflake account, e.g. xy12345.east-us-2.azure
+     */
+    accountIdentifier: any;
+    /**
+     * List of tags that can be used for describing the linked service.
+     */
+    annotations?: pulumi.Input<any[]>;
+    /**
+     * The type used for authentication. Type: string.
+     */
+    authenticationType?: pulumi.Input<string | enums.SnowflakeAuthenticationType>;
+    /**
+     * The client ID of the application registered in Azure Active Directory for AADServicePrincipal authentication.
+     */
+    clientId?: any;
+    /**
+     * The Azure key vault secret reference of client secret for AADServicePrincipal authentication.
+     */
+    clientSecret?: pulumi.Input<AzureKeyVaultSecretReferenceArgs | SecureStringArgs>;
+    /**
+     * The integration runtime reference.
+     */
+    connectVia?: pulumi.Input<IntegrationRuntimeReferenceArgs>;
+    /**
+     * The name of the Snowflake database.
+     */
+    database: any;
+    /**
+     * Linked service description.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+     */
+    encryptedCredential?: pulumi.Input<string>;
+    /**
+     * Parameters for linked service.
+     */
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<ParameterSpecificationArgs>}>;
+    /**
+     * The Azure key vault secret reference of password in connection string.
+     */
+    password?: pulumi.Input<AzureKeyVaultSecretReferenceArgs | SecureStringArgs>;
+    /**
+     * The Azure key vault secret reference of privateKey for KeyPair auth.
+     */
+    privateKey?: pulumi.Input<AzureKeyVaultSecretReferenceArgs | SecureStringArgs>;
+    /**
+     * The Azure key vault secret reference of private key password for KeyPair auth with encrypted private key.
+     */
+    privateKeyPassphrase?: pulumi.Input<AzureKeyVaultSecretReferenceArgs | SecureStringArgs>;
+    /**
+     * The scope of the application registered in Azure Active Directory for AADServicePrincipal authentication.
+     */
+    scope?: any;
+    /**
+     * The tenant ID of the application registered in Azure Active Directory for AADServicePrincipal authentication.
+     */
+    tenantId?: any;
+    /**
+     * Type of linked service.
+     * Expected value is 'SnowflakeV2'.
+     */
+    type: pulumi.Input<"SnowflakeV2">;
+    /**
+     * The name of the Snowflake user.
+     */
+    user?: any;
+    /**
+     * The name of the Snowflake warehouse.
+     */
+    warehouse: any;
+}
+/**
+ * snowflakeV2LinkedServiceArgsProvideDefaults sets the appropriate defaults for SnowflakeV2LinkedServiceArgs
+ */
+export function snowflakeV2LinkedServiceArgsProvideDefaults(val: SnowflakeV2LinkedServiceArgs): SnowflakeV2LinkedServiceArgs {
+    return {
+        ...val,
+        authenticationType: (val.authenticationType) ?? "Basic",
+    };
+}
+
+/**
+ * A copy activity snowflake sink.
+ */
+export interface SnowflakeV2SinkArgs {
+    /**
+     * If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+     */
+    disableMetricsCollection?: any;
+    /**
+     * Snowflake import settings.
+     */
+    importSettings?: pulumi.Input<SnowflakeImportCopyCommandArgs>;
+    /**
+     * The maximum concurrent connection count for the sink data store. Type: integer (or Expression with resultType integer).
+     */
+    maxConcurrentConnections?: any;
+    /**
+     * SQL pre-copy script. Type: string (or Expression with resultType string).
+     */
+    preCopyScript?: any;
+    /**
+     * Sink retry count. Type: integer (or Expression with resultType integer).
+     */
+    sinkRetryCount?: any;
+    /**
+     * Sink retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+     */
+    sinkRetryWait?: any;
+    /**
+     * Copy sink type.
+     * Expected value is 'SnowflakeV2Sink'.
+     */
+    type: pulumi.Input<"SnowflakeV2Sink">;
+    /**
+     * Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
+     */
+    writeBatchSize?: any;
+    /**
+     * Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+     */
+    writeBatchTimeout?: any;
+}
+
+/**
+ * A copy activity snowflake source.
+ */
+export interface SnowflakeV2SourceArgs {
+    /**
+     * If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+     */
+    disableMetricsCollection?: any;
+    /**
+     * Snowflake export settings.
+     */
+    exportSettings: pulumi.Input<SnowflakeExportCopyCommandArgs>;
+    /**
+     * The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+     */
+    maxConcurrentConnections?: any;
+    /**
+     * Snowflake Sql query. Type: string (or Expression with resultType string).
+     */
+    query?: any;
+    /**
+     * Source retry count. Type: integer (or Expression with resultType integer).
+     */
+    sourceRetryCount?: any;
+    /**
+     * Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+     */
+    sourceRetryWait?: any;
+    /**
+     * Copy source type.
+     * Expected value is 'SnowflakeV2Source'.
+     */
+    type: pulumi.Input<"SnowflakeV2Source">;
 }
 
 /**

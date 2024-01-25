@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Address Resource.
  * Azure REST API version: 2022-05-01-preview.
+ *
+ * Other available API versions: 2024-02-01.
  */
 export class Address extends pulumi.CustomResource {
     /**
@@ -103,7 +105,7 @@ export class Address extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:edgeorder/v20201201preview:Address" }, { type: "azure-native:edgeorder/v20211201:Address" }, { type: "azure-native:edgeorder/v20220501preview:Address" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:edgeorder/v20201201preview:Address" }, { type: "azure-native:edgeorder/v20211201:Address" }, { type: "azure-native:edgeorder/v20220501preview:Address" }, { type: "azure-native:edgeorder/v20240201:Address" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Address.__pulumiType, name, resourceInputs, opts);
     }
