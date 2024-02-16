@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * A VmwareSite
  * Azure REST API version: 2023-06-06.
+ *
+ * Other available API versions: 2023-10-01-preview.
  */
 export class SitesController extends pulumi.CustomResource {
     /**
@@ -132,7 +134,7 @@ export class SitesController extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:offazure/v20200101:SitesController" }, { type: "azure-native:offazure/v20200707:SitesController" }, { type: "azure-native:offazure/v20230606:SitesController" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:offazure/v20200101:SitesController" }, { type: "azure-native:offazure/v20200707:SitesController" }, { type: "azure-native:offazure/v20230606:SitesController" }, { type: "azure-native:offazure/v20231001preview:SitesController" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(SitesController.__pulumiType, name, resourceInputs, opts);
     }

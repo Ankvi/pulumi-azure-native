@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * SQL site web model.
  * Azure REST API version: 2023-06-06.
+ *
+ * Other available API versions: 2023-10-01-preview.
  */
 export class SqlSitesController extends pulumi.CustomResource {
     /**
@@ -100,7 +102,7 @@ export class SqlSitesController extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:offazure/v20230606:SqlSitesController" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:offazure/v20230606:SqlSitesController" }, { type: "azure-native:offazure/v20231001preview:SqlSitesController" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(SqlSitesController.__pulumiType, name, resourceInputs, opts);
     }

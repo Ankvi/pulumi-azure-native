@@ -1,6 +1,6 @@
 {
     "name": "@kengachu-pulumi/azure-native-core",
-    "version": "2.26.0",
+    "version": "2.28.0",
     "description": "Pulumi Azure Native package for core",
     "keywords": [
         "pulumi",
@@ -28,6 +28,6 @@
         "build": "tsc",
         "lint": "tsc --noEmit",
         "prepublishOnly": "./prepublish.sh",
-        "install": "node scripts/install-pulumi-plugin.js resource azure-native v2.26.0"
+        "install": "node scripts/install-pulumi-plugin.js resource azure-native v2.28.0"
     }
 }

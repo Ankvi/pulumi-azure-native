@@ -414,7 +414,7 @@ export interface RaiPolicyContentFilterArgs {
     /**
      * Name of ContentFilter.
      */
-    policyName?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Content source to apply the Content Filters.
      */

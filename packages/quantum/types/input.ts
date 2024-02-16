@@ -39,3 +39,4 @@ export interface QuantumWorkspaceIdentityArgs {
      */
     type?: pulumi.Input<string | enums.ResourceIdentityType>;
 }
+

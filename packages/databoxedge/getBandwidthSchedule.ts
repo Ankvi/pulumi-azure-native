@@ -5,7 +5,7 @@ import * as types from "./types";
  * Gets the properties of the specified bandwidth schedule.
  * Azure REST API version: 2022-03-01.
  *
- * Other available API versions: 2023-01-01-preview, 2023-07-01.
+ * Other available API versions: 2023-01-01-preview, 2023-07-01, 2023-12-01.
  */
 export function getBandwidthSchedule(args: GetBandwidthScheduleArgs, opts?: pulumi.InvokeOptions): Promise<GetBandwidthScheduleResult> {
 
@@ -73,7 +73,7 @@ export interface GetBandwidthScheduleResult {
  * Gets the properties of the specified bandwidth schedule.
  * Azure REST API version: 2022-03-01.
  *
- * Other available API versions: 2023-01-01-preview, 2023-07-01.
+ * Other available API versions: 2023-01-01-preview, 2023-07-01, 2023-12-01.
  */
 export function getBandwidthScheduleOutput(args: GetBandwidthScheduleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBandwidthScheduleResult> {
     return pulumi.output(args).apply((a: any) => getBandwidthSchedule(a, opts))

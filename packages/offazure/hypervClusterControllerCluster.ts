@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * A cluster resource belonging to a site resource.
  * Azure REST API version: 2023-06-06.
+ *
+ * Other available API versions: 2023-10-01-preview.
  */
 export class HypervClusterControllerCluster extends pulumi.CustomResource {
     /**
@@ -128,7 +130,7 @@ export class HypervClusterControllerCluster extends pulumi.CustomResource {
             resourceInputs["updatedTimestamp"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:offazure/v20230606:HypervClusterControllerCluster" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:offazure/v20230606:HypervClusterControllerCluster" }, { type: "azure-native:offazure/v20231001preview:HypervClusterControllerCluster" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(HypervClusterControllerCluster.__pulumiType, name, resourceInputs, opts);
     }

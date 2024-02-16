@@ -3038,9 +3038,9 @@ export interface AzureFunctionActivityResponse {
      */
     functionName: any;
     /**
-     * Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: dictionary (or Expression with resultType dictionary).
+     * Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
      */
-    headers?: any;
+    headers?: {[key: string]: string};
     /**
      * Linked service reference.
      */
@@ -18709,6 +18709,10 @@ export interface SalesforceServiceCloudV2LinkedServiceResponse {
      */
     apiVersion?: any;
     /**
+     * The authentication type to be used to connect to the Salesforce. Currently, we only support OAuth2ClientCredentials, it is also the default value
+     */
+    authenticationType?: any;
+    /**
      * The client Id for OAuth 2.0 Client Credentials Flow authentication of the Salesforce instance. Type: string (or Expression with resultType string).
      */
     clientId?: any;
@@ -18850,13 +18854,13 @@ export interface SalesforceServiceCloudV2SourceResponse {
      */
     disableMetricsCollection?: any;
     /**
+     * This property control whether query result contains Deleted objects. Default is false. Type: boolean (or Expression with resultType boolean).
+     */
+    includeDeletedObjects?: any;
+    /**
      * The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
      */
     maxConcurrentConnections?: any;
-    /**
-     * The read behavior for the operation. Default is query. Allowed values: query/queryAll. Type: string (or Expression with resultType string).
-     */
-    readBehavior?: any;
     /**
      * Database query. Type: string (or Expression with resultType string).
      */
@@ -18978,6 +18982,10 @@ export interface SalesforceV2LinkedServiceResponse {
      * The Salesforce API version used in ADF. The version must be larger than or equal to 47.0 which is required by Salesforce BULK API 2.0. Type: string (or Expression with resultType string).
      */
     apiVersion?: any;
+    /**
+     * The authentication type to be used to connect to the Salesforce. Currently, we only support OAuth2ClientCredentials, it is also the default value
+     */
+    authenticationType?: any;
     /**
      * The client Id for OAuth 2.0 Client Credentials Flow authentication of the Salesforce instance. Type: string (or Expression with resultType string).
      */
@@ -19120,6 +19128,10 @@ export interface SalesforceV2SourceResponse {
      */
     disableMetricsCollection?: any;
     /**
+     * This property control whether query result contains Deleted objects. Default is false. Type: boolean (or Expression with resultType boolean).
+     */
+    includeDeletedObjects?: any;
+    /**
      * The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
      */
     maxConcurrentConnections?: any;
@@ -19127,10 +19139,6 @@ export interface SalesforceV2SourceResponse {
      * Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
      */
     queryTimeout?: any;
-    /**
-     * The read behavior for the operation. Default is query. Allowed values: query/queryAll. Type: string (or Expression with resultType string).
-     */
-    readBehavior?: any;
     /**
      * Database query. Type: string (or Expression with resultType string).
      */
@@ -24738,9 +24746,9 @@ export interface WebActivityResponse {
      */
     disableCertValidation?: boolean;
     /**
-     * Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: dictionary (or Expression with resultType dictionary).
+     * Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
      */
-    headers?: any;
+    headers?: {[key: string]: string};
     /**
      * Timeout for the HTTP request to get a response. Format is in TimeSpan (hh:mm:ss). This value is the timeout to get a response, not the activity timeout. The default value is 00:01:00 (1 minute). The range is from 1 to 10 minutes
      */
@@ -24874,9 +24882,9 @@ export interface WebHookActivityResponse {
      */
     description?: string;
     /**
-     * Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: dictionary (or Expression with resultType dictionary).
+     * Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
      */
-    headers?: any;
+    headers?: {[key: string]: string};
     /**
      * Rest API method for target endpoint.
      */

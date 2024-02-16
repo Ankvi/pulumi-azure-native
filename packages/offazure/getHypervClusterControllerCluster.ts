@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Method to get a Hyper-V cluster.
  * Azure REST API version: 2023-06-06.
+ *
+ * Other available API versions: 2023-10-01-preview.
  */
 export function getHypervClusterControllerCluster(args: GetHypervClusterControllerClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetHypervClusterControllerClusterResult> {
 
@@ -90,6 +92,8 @@ export interface GetHypervClusterControllerClusterResult {
 /**
  * Method to get a Hyper-V cluster.
  * Azure REST API version: 2023-06-06.
+ *
+ * Other available API versions: 2023-10-01-preview.
  */
 export function getHypervClusterControllerClusterOutput(args: GetHypervClusterControllerClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHypervClusterControllerClusterResult> {
     return pulumi.output(args).apply((a: any) => getHypervClusterControllerCluster(a, opts))

@@ -1,6 +1,6 @@
 {
     "name": "@kengachu-pulumi/azure-native-scom",
-    "version": "2.26.0",
+    "version": "2.28.0",
     "description": "Pulumi Azure Native package for scom",
     "keywords": [
         "pulumi",

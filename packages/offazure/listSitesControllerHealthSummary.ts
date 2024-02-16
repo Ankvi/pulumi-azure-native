@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Method to get site health summary.
  * Azure REST API version: 2023-06-06.
+ *
+ * Other available API versions: 2023-10-01-preview.
  */
 export function listSitesControllerHealthSummary(args: ListSitesControllerHealthSummaryArgs, opts?: pulumi.InvokeOptions): Promise<ListSitesControllerHealthSummaryResult> {
 
@@ -41,6 +43,8 @@ export interface ListSitesControllerHealthSummaryResult {
 /**
  * Method to get site health summary.
  * Azure REST API version: 2023-06-06.
+ *
+ * Other available API versions: 2023-10-01-preview.
  */
 export function listSitesControllerHealthSummaryOutput(args: ListSitesControllerHealthSummaryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListSitesControllerHealthSummaryResult> {
     return pulumi.output(args).apply((a: any) => listSitesControllerHealthSummary(a, opts))

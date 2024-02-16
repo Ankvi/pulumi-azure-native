@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Method to get a site.
  * Azure REST API version: 2023-06-06.
+ *
+ * Other available API versions: 2023-10-01-preview.
  */
 export function getSqlSitesController(args: GetSqlSitesControllerArgs, opts?: pulumi.InvokeOptions): Promise<GetSqlSitesControllerResult> {
 
@@ -72,6 +74,8 @@ export interface GetSqlSitesControllerResult {
 /**
  * Method to get a site.
  * Azure REST API version: 2023-06-06.
+ *
+ * Other available API versions: 2023-10-01-preview.
  */
 export function getSqlSitesControllerOutput(args: GetSqlSitesControllerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSqlSitesControllerResult> {
     return pulumi.output(args).apply((a: any) => getSqlSitesController(a, opts))

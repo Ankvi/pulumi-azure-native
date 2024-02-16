@@ -643,7 +643,7 @@ export interface RaiPolicyContentFilterResponse {
     /**
      * Name of ContentFilter.
      */
-    policyName?: string;
+    name?: string;
     /**
      * Content source to apply the Content Filters.
      */

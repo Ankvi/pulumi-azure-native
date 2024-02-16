@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Method to get a Web app data source in site.
  * Azure REST API version: 2023-06-06.
+ *
+ * Other available API versions: 2023-10-01-preview.
  */
 export function getWebAppDiscoverySiteDataSourcesController(args: GetWebAppDiscoverySiteDataSourcesControllerArgs, opts?: pulumi.InvokeOptions): Promise<GetWebAppDiscoverySiteDataSourcesControllerResult> {
 
@@ -67,6 +69,8 @@ export interface GetWebAppDiscoverySiteDataSourcesControllerResult {
 /**
  * Method to get a Web app data source in site.
  * Azure REST API version: 2023-06-06.
+ *
+ * Other available API versions: 2023-10-01-preview.
  */
 export function getWebAppDiscoverySiteDataSourcesControllerOutput(args: GetWebAppDiscoverySiteDataSourcesControllerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebAppDiscoverySiteDataSourcesControllerResult> {
     return pulumi.output(args).apply((a: any) => getWebAppDiscoverySiteDataSourcesController(a, opts))

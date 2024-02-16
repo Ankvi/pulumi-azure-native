@@ -1,6 +1,20 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
+ * Azure quantum workspace Api key details.
+ */
+export interface ApiKeyResponse {
+    /**
+     * The creation time of the api key.
+     */
+    createdAt?: string;
+    /**
+     * The Api key.
+     */
+    key: string;
+}
+
+/**
  * Information about a Provider. A Provider is an entity that offers Targets to run Azure Quantum Jobs.
  */
 export interface ProviderResponse {
@@ -77,3 +91,4 @@ export interface SystemDataResponse {
      */
     lastModifiedByType?: string;
 }
+

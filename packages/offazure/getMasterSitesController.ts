@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Get a MasterSite
  * Azure REST API version: 2023-06-06.
+ *
+ * Other available API versions: 2023-10-01-preview.
  */
 export function getMasterSitesController(args: GetMasterSitesControllerArgs, opts?: pulumi.InvokeOptions): Promise<GetMasterSitesControllerResult> {
 
@@ -88,6 +90,8 @@ export interface GetMasterSitesControllerResult {
 /**
  * Get a MasterSite
  * Azure REST API version: 2023-06-06.
+ *
+ * Other available API versions: 2023-10-01-preview.
  */
 export function getMasterSitesControllerOutput(args: GetMasterSitesControllerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMasterSitesControllerResult> {
     return pulumi.output(args).apply((a: any) => getMasterSitesController(a, opts))

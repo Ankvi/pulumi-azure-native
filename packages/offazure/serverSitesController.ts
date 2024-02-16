@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * A ServerSiteResource
  * Azure REST API version: 2023-06-06.
+ *
+ * Other available API versions: 2023-10-01-preview.
  */
 export class ServerSitesController extends pulumi.CustomResource {
     /**
@@ -126,7 +128,7 @@ export class ServerSitesController extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:offazure/v20230606:ServerSitesController" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:offazure/v20230606:ServerSitesController" }, { type: "azure-native:offazure/v20231001preview:ServerSitesController" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ServerSitesController.__pulumiType, name, resourceInputs, opts);
     }

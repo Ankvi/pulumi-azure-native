@@ -5,7 +5,7 @@ import * as types from "./types";
  * The storage account credential.
  * Azure REST API version: 2022-03-01. Prior API version in Azure Native 1.x: 2020-12-01.
  *
- * Other available API versions: 2023-01-01-preview, 2023-07-01.
+ * Other available API versions: 2023-01-01-preview, 2023-07-01, 2023-12-01.
  */
 export class StorageAccountCredential extends pulumi.CustomResource {
     /**
@@ -132,7 +132,7 @@ export class StorageAccountCredential extends pulumi.CustomResource {
             resourceInputs["userName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:databoxedge/v20190301:StorageAccountCredential" }, { type: "azure-native:databoxedge/v20190701:StorageAccountCredential" }, { type: "azure-native:databoxedge/v20190801:StorageAccountCredential" }, { type: "azure-native:databoxedge/v20200501preview:StorageAccountCredential" }, { type: "azure-native:databoxedge/v20200901:StorageAccountCredential" }, { type: "azure-native:databoxedge/v20200901preview:StorageAccountCredential" }, { type: "azure-native:databoxedge/v20201201:StorageAccountCredential" }, { type: "azure-native:databoxedge/v20210201:StorageAccountCredential" }, { type: "azure-native:databoxedge/v20210201preview:StorageAccountCredential" }, { type: "azure-native:databoxedge/v20210601:StorageAccountCredential" }, { type: "azure-native:databoxedge/v20210601preview:StorageAccountCredential" }, { type: "azure-native:databoxedge/v20220301:StorageAccountCredential" }, { type: "azure-native:databoxedge/v20220401preview:StorageAccountCredential" }, { type: "azure-native:databoxedge/v20221201preview:StorageAccountCredential" }, { type: "azure-native:databoxedge/v20230101preview:StorageAccountCredential" }, { type: "azure-native:databoxedge/v20230701:StorageAccountCredential" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:databoxedge/v20190301:StorageAccountCredential" }, { type: "azure-native:databoxedge/v20190701:StorageAccountCredential" }, { type: "azure-native:databoxedge/v20190801:StorageAccountCredential" }, { type: "azure-native:databoxedge/v20200501preview:StorageAccountCredential" }, { type: "azure-native:databoxedge/v20200901:StorageAccountCredential" }, { type: "azure-native:databoxedge/v20200901preview:StorageAccountCredential" }, { type: "azure-native:databoxedge/v20201201:StorageAccountCredential" }, { type: "azure-native:databoxedge/v20210201:StorageAccountCredential" }, { type: "azure-native:databoxedge/v20210201preview:StorageAccountCredential" }, { type: "azure-native:databoxedge/v20210601:StorageAccountCredential" }, { type: "azure-native:databoxedge/v20210601preview:StorageAccountCredential" }, { type: "azure-native:databoxedge/v20220301:StorageAccountCredential" }, { type: "azure-native:databoxedge/v20220401preview:StorageAccountCredential" }, { type: "azure-native:databoxedge/v20221201preview:StorageAccountCredential" }, { type: "azure-native:databoxedge/v20230101preview:StorageAccountCredential" }, { type: "azure-native:databoxedge/v20230701:StorageAccountCredential" }, { type: "azure-native:databoxedge/v20231201:StorageAccountCredential" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(StorageAccountCredential.__pulumiType, name, resourceInputs, opts);
     }

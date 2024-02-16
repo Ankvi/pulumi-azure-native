@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Cluster pool.
  * Azure REST API version: 2023-06-01-preview.
+ *
+ * Other available API versions: 2023-11-01-preview.
  */
 export class ClusterPool extends pulumi.CustomResource {
     /**
@@ -145,7 +147,7 @@ export class ClusterPool extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:hdinsight/v20230601preview:ClusterPool" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:hdinsight/v20230601preview:ClusterPool" }, { type: "azure-native:hdinsight/v20231101preview:ClusterPool" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ClusterPool.__pulumiType, name, resourceInputs, opts);
     }
