@@ -5,7 +5,7 @@ import * as types from "./types";
  * Gets information about a mongo cluster.
  * Azure REST API version: 2023-03-15-preview.
  *
- * Other available API versions: 2023-09-15-preview, 2023-11-15-preview.
+ * Other available API versions: 2023-09-15-preview, 2023-11-15-preview, 2024-02-15-preview.
  */
 export function getMongoCluster(args: GetMongoClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetMongoClusterResult> {
 
@@ -88,7 +88,7 @@ export interface GetMongoClusterResult {
  * Gets information about a mongo cluster.
  * Azure REST API version: 2023-03-15-preview.
  *
- * Other available API versions: 2023-09-15-preview, 2023-11-15-preview.
+ * Other available API versions: 2023-09-15-preview, 2023-11-15-preview, 2024-02-15-preview.
  */
 export function getMongoClusterOutput(args: GetMongoClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMongoClusterResult> {
     return pulumi.output(args).apply((a: any) => getMongoCluster(a, opts))

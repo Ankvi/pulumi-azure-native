@@ -43,6 +43,9 @@ export interface GetEnvironmentResult {
      * The custom metadata defined for API catalog entities.
      */
     readonly customProperties?: any;
+    /**
+     * The environment description.
+     */
     readonly description?: string;
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -56,6 +59,9 @@ export interface GetEnvironmentResult {
      * The name of the resource
      */
     readonly name: string;
+    /**
+     * Environment onboarding information
+     */
     readonly onboarding?: types.outputs.OnboardingResponse;
     /**
      * Server information of the environment.

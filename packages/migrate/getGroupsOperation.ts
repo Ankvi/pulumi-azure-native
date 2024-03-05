@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Get a Group
  * Azure REST API version: 2023-03-15.
+ *
+ * Other available API versions: 2023-04-01-preview.
  */
 export function getGroupsOperation(args: GetGroupsOperationArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupsOperationResult> {
 
@@ -90,6 +92,8 @@ export interface GetGroupsOperationResult {
 /**
  * Get a Group
  * Azure REST API version: 2023-03-15.
+ *
+ * Other available API versions: 2023-04-01-preview.
  */
 export function getGroupsOperationOutput(args: GetGroupsOperationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupsOperationResult> {
     return pulumi.output(args).apply((a: any) => getGroupsOperation(a, opts))

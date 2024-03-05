@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets information about a cluster role.
  * Azure REST API version: 2022-11-08.
+ *
+ * Other available API versions: 2023-03-02-preview.
  */
 export function getRole(args: GetRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetRoleResult> {
 
@@ -58,6 +60,8 @@ export interface GetRoleResult {
 /**
  * Gets information about a cluster role.
  * Azure REST API version: 2022-11-08.
+ *
+ * Other available API versions: 2023-03-02-preview.
  */
 export function getRoleOutput(args: GetRoleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRoleResult> {
     return pulumi.output(args).apply((a: any) => getRole(a, opts))

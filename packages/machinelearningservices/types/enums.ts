@@ -390,6 +390,17 @@ export const DatastoreTypeArm = {
  */
 export type DatastoreTypeArm = (typeof DatastoreTypeArm)[keyof typeof DatastoreTypeArm];
 
+export const DeploymentModelVersionUpgradeOption = {
+    OnceNewDefaultVersionAvailable: "OnceNewDefaultVersionAvailable",
+    OnceCurrentVersionExpired: "OnceCurrentVersionExpired",
+    NoAutoUpgrade: "NoAutoUpgrade",
+} as const;
+
+/**
+ * Deployment model version upgrade option.
+ */
+export type DeploymentModelVersionUpgradeOption = (typeof DeploymentModelVersionUpgradeOption)[keyof typeof DeploymentModelVersionUpgradeOption];
+
 export const DistributionType = {
     PyTorch: "PyTorch",
     TensorFlow: "TensorFlow",

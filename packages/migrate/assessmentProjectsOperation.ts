@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * An Assessment project site resource.
  * Azure REST API version: 2023-03-15.
+ *
+ * Other available API versions: 2023-04-01-preview.
  */
 export class AssessmentProjectsOperation extends pulumi.CustomResource {
     /**
@@ -153,7 +155,7 @@ export class AssessmentProjectsOperation extends pulumi.CustomResource {
             resourceInputs["updatedTimestamp"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:migrate/v20191001:AssessmentProjectsOperation" }, { type: "azure-native:migrate/v20230315:AssessmentProjectsOperation" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:migrate/v20191001:AssessmentProjectsOperation" }, { type: "azure-native:migrate/v20230315:AssessmentProjectsOperation" }, { type: "azure-native:migrate/v20230401preview:AssessmentProjectsOperation" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(AssessmentProjectsOperation.__pulumiType, name, resourceInputs, opts);
     }

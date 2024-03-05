@@ -901,6 +901,22 @@ importers:
         specifier: ^5.0.0
         version: 5.2.2
 
+  packages/databasewatcher:
+    dependencies:
+      '@kengachu-pulumi/azure-native-core':
+        specifier: workspace:*
+        version: link:../core
+      '@pulumi/pulumi':
+        specifier: ^3.0.0
+        version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
+
   packages/databox:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
@@ -3174,6 +3190,22 @@ importers:
         version: 5.2.2
 
   packages/sqlvirtualmachine:
+    dependencies:
+      '@kengachu-pulumi/azure-native-core':
+        specifier: workspace:*
+        version: link:../core
+      '@pulumi/pulumi':
+        specifier: ^3.0.0
+        version: 3.82.1
+    devDependencies:
+      '@types/node':
+        specifier: ^20.0.0
+        version: 20.6.2
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
+
+  packages/standbypool:
     dependencies:
       '@kengachu-pulumi/azure-native-core':
         specifier: workspace:*

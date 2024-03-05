@@ -5,7 +5,7 @@ import * as types from "./types";
  *  List of all active elastic deployments.
  * Azure REST API version: 2023-07-01-preview.
  *
- * Other available API versions: 2023-10-01-preview, 2023-11-01-preview.
+ * Other available API versions: 2023-10-01-preview, 2023-11-01-preview, 2024-01-01-preview, 2024-03-01.
  */
 export function listConnectedPartnerResource(args: ListConnectedPartnerResourceArgs, opts?: pulumi.InvokeOptions): Promise<ListConnectedPartnerResourceResult> {
 
@@ -44,7 +44,7 @@ export interface ListConnectedPartnerResourceResult {
  *  List of all active elastic deployments.
  * Azure REST API version: 2023-07-01-preview.
  *
- * Other available API versions: 2023-10-01-preview, 2023-11-01-preview.
+ * Other available API versions: 2023-10-01-preview, 2023-11-01-preview, 2024-01-01-preview, 2024-03-01.
  */
 export function listConnectedPartnerResourceOutput(args: ListConnectedPartnerResourceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListConnectedPartnerResourceResult> {
     return pulumi.output(args).apply((a: any) => listConnectedPartnerResource(a, opts))

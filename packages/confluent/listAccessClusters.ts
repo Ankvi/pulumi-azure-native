@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * List cluster success response
  * Azure REST API version: 2023-08-22.
+ *
+ * Other available API versions: 2024-02-13.
  */
 export function listAccessClusters(args: ListAccessClustersArgs, opts?: pulumi.InvokeOptions): Promise<ListAccessClustersResult> {
 
@@ -50,6 +52,8 @@ export interface ListAccessClustersResult {
 /**
  * List cluster success response
  * Azure REST API version: 2023-08-22.
+ *
+ * Other available API versions: 2024-02-13.
  */
 export function listAccessClustersOutput(args: ListAccessClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListAccessClustersResult> {
     return pulumi.output(args).apply((a: any) => listAccessClusters(a, opts))

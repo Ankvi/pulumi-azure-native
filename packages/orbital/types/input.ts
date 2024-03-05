@@ -123,6 +123,16 @@ export interface ContactsPropertiesContactProfileArgs {
 }
 
 /**
+ * A reference to global communications site.
+ */
+export interface EdgeSitesPropertiesGlobalCommunicationsSiteArgs {
+    /**
+     * Resource ID.
+     */
+    id: pulumi.Input<string>;
+}
+
+/**
  * Customer end point to store and retrieve data during a contact with the spacecraft.
  */
 export interface EndPointArgs {
@@ -142,6 +152,36 @@ export interface EndPointArgs {
      * Protocol either UDP or TCP.
      */
     protocol: pulumi.Input<string | enums.Protocol>;
+}
+
+/**
+ * A reference to global communications site.
+ */
+export interface GroundStationsPropertiesGlobalCommunicationsSiteArgs {
+    /**
+     * Resource ID.
+     */
+    id: pulumi.Input<string>;
+}
+
+/**
+ * A reference to an Microsoft.Orbital/edgeSites resource to route traffic for.
+ */
+export interface L2ConnectionsPropertiesEdgeSiteArgs {
+    /**
+     * Resource ID.
+     */
+    id: pulumi.Input<string>;
+}
+
+/**
+ * A reference to an Microsoft.Orbital/groundStations resource to route traffic for.
+ */
+export interface L2ConnectionsPropertiesGroundStationArgs {
+    /**
+     * Resource ID.
+     */
+    id: pulumi.Input<string>;
 }
 
 /**
@@ -169,4 +209,5 @@ export interface SpacecraftLinkArgs {
      */
     polarization: pulumi.Input<string | enums.Polarization>;
 }
+
 

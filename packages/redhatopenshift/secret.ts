@@ -5,7 +5,7 @@ import * as types from "./types";
  * Secret represents a secret.
  * Azure REST API version: 2022-09-04.
  *
- * Other available API versions: 2023-04-01, 2023-07-01-preview, 2023-09-04.
+ * Other available API versions: 2023-04-01, 2023-07-01-preview, 2023-09-04, 2023-11-22.
  */
 export class Secret extends pulumi.CustomResource {
     /**
@@ -82,7 +82,7 @@ export class Secret extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:redhatopenshift/v20220904:Secret" }, { type: "azure-native:redhatopenshift/v20230401:Secret" }, { type: "azure-native:redhatopenshift/v20230701preview:Secret" }, { type: "azure-native:redhatopenshift/v20230904:Secret" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:redhatopenshift/v20220904:Secret" }, { type: "azure-native:redhatopenshift/v20230401:Secret" }, { type: "azure-native:redhatopenshift/v20230701preview:Secret" }, { type: "azure-native:redhatopenshift/v20230904:Secret" }, { type: "azure-native:redhatopenshift/v20231122:Secret" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Secret.__pulumiType, name, resourceInputs, opts);
     }

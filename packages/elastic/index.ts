@@ -11,6 +11,16 @@ export const getMonitor: typeof import("./getMonitor").getMonitor = null as any;
 export const getMonitorOutput: typeof import("./getMonitor").getMonitorOutput = null as any;
 utilities.lazyLoad(exports, ["getMonitor","getMonitorOutput"], () => require("./getMonitor"));
 
+export { GetOpenAIArgs, GetOpenAIResult, GetOpenAIOutputArgs } from "./getOpenAI";
+export const getOpenAI: typeof import("./getOpenAI").getOpenAI = null as any;
+export const getOpenAIOutput: typeof import("./getOpenAI").getOpenAIOutput = null as any;
+utilities.lazyLoad(exports, ["getOpenAI","getOpenAIOutput"], () => require("./getOpenAI"));
+
+export { GetOpenAIStatusArgs, GetOpenAIStatusResult, GetOpenAIStatusOutputArgs } from "./getOpenAIStatus";
+export const getOpenAIStatus: typeof import("./getOpenAIStatus").getOpenAIStatus = null as any;
+export const getOpenAIStatusOutput: typeof import("./getOpenAIStatus").getOpenAIStatusOutput = null as any;
+utilities.lazyLoad(exports, ["getOpenAIStatus","getOpenAIStatusOutput"], () => require("./getOpenAIStatus"));
+
 export { GetOrganizationApiKeyArgs, GetOrganizationApiKeyResult, GetOrganizationApiKeyOutputArgs } from "./getOrganizationApiKey";
 export const getOrganizationApiKey: typeof import("./getOrganizationApiKey").getOrganizationApiKey = null as any;
 export const getOrganizationApiKeyOutput: typeof import("./getOrganizationApiKey").getOrganizationApiKeyOutput = null as any;
@@ -66,6 +76,11 @@ export type Monitor = import("./monitor").Monitor;
 export const Monitor: typeof import("./monitor").Monitor = null as any;
 utilities.lazyLoad(exports, ["Monitor"], () => require("./monitor"));
 
+export { OpenAIArgs } from "./openAI";
+export type OpenAI = import("./openAI").OpenAI;
+export const OpenAI: typeof import("./openAI").OpenAI = null as any;
+utilities.lazyLoad(exports, ["OpenAI"], () => require("./openAI"));
+
 export { TagRuleArgs } from "./tagRule";
 export type TagRule = import("./tagRule").TagRule;
 export const TagRule: typeof import("./tagRule").TagRule = null as any;
@@ -83,6 +98,8 @@ const _module = {
         switch (type) {
             case "azure-native:elastic:Monitor":
                 return new Monitor(name, <any>undefined, { urn })
+            case "azure-native:elastic:OpenAI":
+                return new OpenAI(name, <any>undefined, { urn })
             case "azure-native:elastic:TagRule":
                 return new TagRule(name, <any>undefined, { urn })
             default:

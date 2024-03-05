@@ -5,7 +5,7 @@ import * as types from "./types";
  * Diagnostics package resource.
  * Azure REST API version: 2023-06-01.
  *
- * Other available API versions: 2023-09-01.
+ * Other available API versions: 2023-09-01, 2024-02-01.
  */
 export class DiagnosticsPackage extends pulumi.CustomResource {
     /**
@@ -94,7 +94,7 @@ export class DiagnosticsPackage extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:mobilenetwork/v20230601:DiagnosticsPackage" }, { type: "azure-native:mobilenetwork/v20230901:DiagnosticsPackage" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:mobilenetwork/v20230601:DiagnosticsPackage" }, { type: "azure-native:mobilenetwork/v20230901:DiagnosticsPackage" }, { type: "azure-native:mobilenetwork/v20240201:DiagnosticsPackage" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(DiagnosticsPackage.__pulumiType, name, resourceInputs, opts);
     }

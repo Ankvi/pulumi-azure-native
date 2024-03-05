@@ -23,6 +23,60 @@ export interface ACRPropertiesArgs {
 }
 
 /**
+ * Data model of AKS Assessment Settings.
+ */
+export interface AKSAssessmentSettingsArgs {
+    /**
+     * Gets or sets azure location.
+     */
+    azureLocation: pulumi.Input<string>;
+    /**
+     * Gets or sets azure VM category.
+     */
+    category: pulumi.Input<string | enums.AzureVmCategory>;
+    /**
+     * Gets or sets consolidation type.
+     */
+    consolidation: pulumi.Input<string | enums.ConsolidationType>;
+    /**
+     * Gets or sets currency.
+     */
+    currency: pulumi.Input<string | enums.AzureCurrency>;
+    /**
+     * Gets or sets discount percentage.
+     */
+    discountPercentage?: pulumi.Input<number>;
+    /**
+     * Gets or sets environment type.
+     */
+    environmentType: pulumi.Input<string | enums.AzureEnvironmentType>;
+    /**
+     * Gets or sets licensing program.
+     */
+    licensingProgram: pulumi.Input<string | enums.LicensingProgram>;
+    /**
+     * Gets or sets performance data settings.
+     */
+    performanceData?: pulumi.Input<PerfDataSettingsArgs>;
+    /**
+     * Gets or sets pricing tier.
+     */
+    pricingTier: pulumi.Input<string | enums.PricingTier>;
+    /**
+     * Gets or sets savings options.
+     */
+    savingsOptions: pulumi.Input<string | enums.SavingsOptions>;
+    /**
+     * Gets or sets scaling factor.
+     */
+    scalingFactor?: pulumi.Input<number>;
+    /**
+     * Gets or sets sizing criteria.
+     */
+    sizingCriteria: pulumi.Input<string | enums.AssessmentSizingCriterion>;
+}
+
+/**
  * Class for AKSDeployment Properties.
  */
 export interface AKSDeploymentPropertiesArgs {
@@ -248,6 +302,26 @@ export interface AppInsightMonitoringPropertiesArgs {
 }
 
 /**
+ * App service container settings.
+ */
+export interface AppSvcContainerSettingsArgs {
+    /**
+     * Gets or sets the isolation required.
+     */
+    isolationRequired: pulumi.Input<boolean>;
+}
+
+/**
+ * App service native settings.
+ */
+export interface AppSvcNativeSettingsArgs {
+    /**
+     * Gets or sets the isolation required.
+     */
+    isolationRequired: pulumi.Input<boolean>;
+}
+
+/**
  * Properties of an assessment.
  */
 export interface AssessmentPropertiesArgs {
@@ -315,6 +389,16 @@ export interface AssessmentPropertiesArgs {
      * Specify the duration for which the VMs are up in the on-premises environment.
      */
     vmUptime: pulumi.Input<VmUptimeArgs>;
+}
+
+/**
+ * Data model of Assessment Scope Parameters.
+ */
+export interface AssessmentScopeParametersArgs {
+    /**
+     * Gets or sets the server group id.
+     */
+    serverGroupId?: pulumi.Input<string>;
 }
 
 /**
@@ -392,6 +476,99 @@ export interface AzureFileShareHydrationProfileArgs {
      * Gets or sets the subscription id of the azure file share.
      */
     azureFileShareSubscriptionId?: pulumi.Input<string>;
+}
+
+/**
+ * Azure settings for a business case.
+ */
+export interface AzureSettingsArgs {
+    /**
+     * Gets Avs labour cost percentage.
+     */
+    avsLaborCostPercentage?: pulumi.Input<number>;
+    /**
+     * Migration Strategy.
+     */
+    businessCaseType?: pulumi.Input<string | enums.MigrationStrategy>;
+    /**
+     * Gets comfort factor.
+     */
+    comfortFactor?: pulumi.Input<number>;
+    /**
+     * Business case Currency.
+     */
+    currency: pulumi.Input<string | enums.BusinessCaseCurrency>;
+    /**
+     * Gets azure Discount percentage.
+     */
+    discountPercentage?: pulumi.Input<number>;
+    /**
+     * Gets IaaS labour cost percentage.
+     */
+    iaasLaborCostPercentage?: pulumi.Input<number>;
+    /**
+     * Gets infrastructure growth rate.
+     */
+    infrastructureGrowthRate?: pulumi.Input<number>;
+    /**
+     * Gets network cost percentage.
+     */
+    networkCostPercentage?: pulumi.Input<number>;
+    /**
+     * Gets PaaS labour cost percentage.
+     */
+    paasLaborCostPercentage?: pulumi.Input<number>;
+    /**
+     * Gets migration completion percentage per year.
+     */
+    perYearMigrationCompletionPercentage?: pulumi.Input<{[key: string]: pulumi.Input<number>}>;
+    /**
+     * Gets end time to use for performance.
+     */
+    performanceDataEndTime?: pulumi.Input<string>;
+    /**
+     * Gets start time to use for performance.
+     */
+    performanceDataStartTime?: pulumi.Input<string>;
+    /**
+     * Gets utilization percentile for performance.
+     */
+    performanceUtilizationPercentile?: pulumi.Input<number>;
+    /**
+     * Gets the business case savings option type.
+     */
+    savingsOption?: pulumi.Input<string | enums.SavingsOption>;
+    /**
+     * Gets or sets azure location.
+     */
+    targetLocation: pulumi.Input<string>;
+    /**
+     * Gets wACC percentage.
+     */
+    wacc?: pulumi.Input<number>;
+    /**
+     * Workload discovery source.
+     */
+    workloadDiscoverySource?: pulumi.Input<string | enums.DiscoverySource>;
+}
+/**
+ * azureSettingsArgsProvideDefaults sets the appropriate defaults for AzureSettingsArgs
+ */
+export function azureSettingsArgsProvideDefaults(val: AzureSettingsArgs): AzureSettingsArgs {
+    return {
+        ...val,
+        avsLaborCostPercentage: (val.avsLaborCostPercentage) ?? 75,
+        businessCaseType: (val.businessCaseType) ?? "OptimizeForCost",
+        comfortFactor: (val.comfortFactor) ?? 1,
+        currency: (val.currency) ?? "USD",
+        iaasLaborCostPercentage: (val.iaasLaborCostPercentage) ?? 75,
+        infrastructureGrowthRate: (val.infrastructureGrowthRate) ?? 5,
+        networkCostPercentage: (val.networkCostPercentage) ?? 5,
+        paasLaborCostPercentage: (val.paasLaborCostPercentage) ?? 60,
+        performanceUtilizationPercentile: (val.performanceUtilizationPercentile) ?? 95,
+        savingsOption: (val.savingsOption) ?? "RI3Year",
+        workloadDiscoverySource: (val.workloadDiscoverySource) ?? "Appliance",
+    };
 }
 
 /**
@@ -530,6 +707,32 @@ export interface CollectorPropertiesArgs {
 }
 
 /**
+ * Compute settings.
+ */
+export interface ComputeSettingsArgs {
+    /**
+     * Hyperthread core to memory ratio.
+     */
+    hyperthreadCoreToMemoryRatio: pulumi.Input<number>;
+    /**
+     * Compute Price.
+     */
+    price: pulumi.Input<number>;
+    /**
+     * SQL Server licensing settings.
+     */
+    sqlServerLicensing: pulumi.Input<pulumi.Input<SqlServerLicensingSettingsArgs>[]>;
+    /**
+     * Virtualization software settings.
+     */
+    virtualizationSoftwareSettings: pulumi.Input<VirtualizationSoftwareSettingsArgs>;
+    /**
+     * Windows Server licensing settings.
+     */
+    windowsServerLicensing: pulumi.Input<WindowsServerLicensingSettingsArgs>;
+}
+
+/**
  * Properties of Connection state request.
  */
 export interface ConnectionStateRequestBodyPropertiesArgs {
@@ -584,6 +787,24 @@ export interface DirectoryPathArgs {
 }
 
 /**
+ * Discovered entity light summary.
+ */
+export interface DiscoveredEntityLightSummaryArgs {
+    /**
+     * Gets or sets the number of machines.
+     */
+    numberOfMachines: pulumi.Input<number>;
+    /**
+     * Gets or sets the number of servers.
+     */
+    numberOfServers: pulumi.Input<number>;
+    /**
+     * Gets or sets the number of web apps.
+     */
+    numberOfWebApps: pulumi.Input<number>;
+}
+
+/**
  * Defines the disk encryption set resource settings.
  */
 export interface DiskEncryptionSetResourceSettingsArgs {
@@ -614,6 +835,16 @@ export interface EntityUptimeArgs {
      * Gets the hours per day.
      */
     hoursPerDay?: pulumi.Input<number>;
+}
+
+/**
+ * Facility settings.
+ */
+export interface FacilitySettingsArgs {
+    /**
+     * The facilities cost.
+     */
+    facilitiesCost: pulumi.Input<number>;
 }
 
 /**
@@ -663,6 +894,38 @@ export interface GroupPropertiesArgs {
      * The type of group.
      */
     groupType?: pulumi.Input<string>;
+}
+
+/**
+ * Representation of a licence.
+ */
+export interface HypervLicenseArgs {
+    /**
+     * Cost of a licence.
+     */
+    licenseCost: pulumi.Input<number>;
+    /**
+     * HyperV licence type.
+     */
+    licenseType: pulumi.Input<string | enums.HyperVLicenseType>;
+}
+
+/**
+ * HyperV Virtualization Management Settings.
+ */
+export interface HypervVirtualizationManagementSettingsArgs {
+    /**
+     * Licence and support list.
+     */
+    licenseAndSupportList: pulumi.Input<pulumi.Input<HypervLicenseArgs>[]>;
+    /**
+     * Number of physical cores per licence.
+     */
+    numberOfPhysicalCoresPerLicense: pulumi.Input<number>;
+    /**
+     * Software Assurance Cost.
+     */
+    softwareAssuranceCost: pulumi.Input<number>;
 }
 
 /**
@@ -1053,6 +1316,24 @@ export interface LBFrontendIPConfigurationResourceSettingsArgs {
 }
 
 /**
+ * Labour settings.
+ */
+export interface LaborSettingsArgs {
+    /**
+     * Hourly administrator cost.
+     */
+    hourlyAdminCost: pulumi.Input<number>;
+    /**
+     * Physical servers per administrator.
+     */
+    physicalServersPerAdmin: pulumi.Input<number>;
+    /**
+     * Virtual machines per administrator.
+     */
+    virtualMachinesPerAdmin: pulumi.Input<number>;
+}
+
+/**
  * Defines reference to load balancer backend address pools.
  */
 export interface LoadBalancerBackendAddressPoolReferenceArgs {
@@ -1127,6 +1408,28 @@ export interface ManagedIdentityPropertiesArgs {
     resourceGroup?: pulumi.Input<string>;
     subscriptionId?: pulumi.Input<string>;
     tenantId?: pulumi.Input<string>;
+}
+
+/**
+ * Management settings.
+ */
+export interface ManagementSettingsArgs {
+    /**
+     * HyperV Virtualization Management Settings.
+     */
+    hypervVirtualizationManagementSettings: pulumi.Input<HypervVirtualizationManagementSettingsArgs>;
+    /**
+     * Other Management Costs Settings.
+     */
+    otherManagementCostsSettings: pulumi.Input<OtherManagementCostsSettingsArgs>;
+    /**
+     * Third Party Management Settings.
+     */
+    thirdPartyManagementSettings: pulumi.Input<ThirdPartyManagementSettingsArgs>;
+    /**
+     * vSphere Management Settings.
+     */
+    vsphereManagementSettings: pulumi.Input<VsphereManagementSettingsArgs>;
 }
 
 /**
@@ -1326,6 +1629,20 @@ export interface NetworkSecurityGroupResourceSettingsArgs {
 }
 
 /**
+ * Network settings.
+ */
+export interface NetworkSettingsArgs {
+    /**
+     * Network hardware and software cost percentage.
+     */
+    hardwareSoftwareCostPercentage: pulumi.Input<number>;
+    /**
+     * Network maintenance cost percentage.
+     */
+    maintenanceCostPercentage: pulumi.Input<number>;
+}
+
+/**
  * Defines NIC IP configuration properties.
  */
 export interface NicIpConfigurationResourceSettingsArgs {
@@ -1430,11 +1747,85 @@ export interface NsgSecurityRuleArgs {
     sourcePortRange?: pulumi.Input<string>;
 }
 
+/**
+ * On-premise settings.
+ */
+export interface OnPremiseSettingsArgs {
+    /**
+     * Compute settings.
+     */
+    computeSettings: pulumi.Input<ComputeSettingsArgs>;
+    /**
+     * Facility settings.
+     */
+    facilitySettings: pulumi.Input<FacilitySettingsArgs>;
+    /**
+     * Labour settings.
+     */
+    laborSettings: pulumi.Input<LaborSettingsArgs>;
+    /**
+     * Management settings.
+     */
+    managementSettings?: pulumi.Input<ManagementSettingsArgs>;
+    /**
+     * Network settings.
+     */
+    networkSettings: pulumi.Input<NetworkSettingsArgs>;
+    /**
+     * Security settings.
+     */
+    securitySettings: pulumi.Input<SecuritySettingsArgs>;
+    /**
+     * Storage settings.
+     */
+    storageSettings: pulumi.Input<StorageSettingsArgs>;
+}
+
 export interface OperatingSystemDetailsArgs {
     os?: pulumi.Input<string | enums.OperatingSystemType>;
     osArchitecture?: pulumi.Input<string>;
     osName?: pulumi.Input<string>;
     osVersion?: pulumi.Input<string>;
+}
+
+/**
+ * Other Management Costs Settings.
+ */
+export interface OtherManagementCostsSettingsArgs {
+    /**
+     * Data Protection Cost Per Server Per Year.
+     */
+    dataProtectionCostPerServerPerYear: pulumi.Input<number>;
+    /**
+     * Monitoring Cost Per Server Per Year.
+     */
+    monitoringCostPerServerPerYear: pulumi.Input<number>;
+    /**
+     * Patching Cost Per Server Per Year.
+     */
+    patchingCostPerServerPerYear: pulumi.Input<number>;
+}
+
+/**
+ * Data model of Performance Data Settings.
+ */
+export interface PerfDataSettingsArgs {
+    /**
+     * Gets percentile utilization for performance data.
+     */
+    percentile: pulumi.Input<string | enums.Percentile>;
+    /**
+     * Gets or sets perf data end time.
+     */
+    perfDataEndTime?: pulumi.Input<string>;
+    /**
+     * Gets or sets perf data start time.
+     */
+    perfDataStartTime?: pulumi.Input<string>;
+    /**
+     * Gets perf data time range.
+     */
+    timeRange: pulumi.Input<string | enums.TimeRange>;
 }
 
 /**
@@ -1612,6 +2003,43 @@ export interface SecretStorePropertiesArgs {
 }
 
 /**
+ * Security settings.
+ */
+export interface SecuritySettingsArgs {
+    /**
+     * Physical servers per administrator.
+     */
+    serverSecurityCostPerServerPerYear: pulumi.Input<number>;
+    /**
+     * Virtual machines per administrator.
+     */
+    sqlServerSecurityCostPerServerPerYear: pulumi.Input<number>;
+}
+
+/**
+ * Business case settings.
+ */
+export interface SettingsArgs {
+    /**
+     * Azure settings for a business case.
+     */
+    azureSettings: pulumi.Input<AzureSettingsArgs>;
+    /**
+     * On-premise settings.
+     */
+    onPremiseSettings?: pulumi.Input<OnPremiseSettingsArgs>;
+}
+/**
+ * settingsArgsProvideDefaults sets the appropriate defaults for SettingsArgs
+ */
+export function settingsArgsProvideDefaults(val: SettingsArgs): SettingsArgs {
+    return {
+        ...val,
+        azureSettings: pulumi.output(val.azureSettings).apply(azureSettingsArgsProvideDefaults),
+    };
+}
+
+/**
  * Class representing the details of the solution.
  */
 export interface SolutionDetailsArgs {
@@ -1750,6 +2178,24 @@ export interface SqlMiSettingsArgs {
 }
 
 /**
+ * SQL Server licensing settings.
+ */
+export interface SqlServerLicensingSettingsArgs {
+    /**
+     * Licence cost.
+     */
+    licenseCost: pulumi.Input<number>;
+    /**
+     * Software assurance (SA) cost.
+     */
+    softwareAssuranceCost: pulumi.Input<number>;
+    /**
+     * SQL Server version.
+     */
+    version: pulumi.Input<string | enums.SqlServerLicenseType>;
+}
+
+/**
  * Defines the SQL Server resource settings.
  */
 export interface SqlServerResourceSettingsArgs {
@@ -1777,6 +2223,20 @@ export interface SqlVmSettingsArgs {
      * consistent with other targets).
      */
     instanceSeries?: pulumi.Input<pulumi.Input<string | enums.AzureVmFamily>[]>;
+}
+
+/**
+ * Storage settings.
+ */
+export interface StorageSettingsArgs {
+    /**
+     * Cost per gigabyte per month.
+     */
+    costPerGbPerMonth: pulumi.Input<number>;
+    /**
+     * Maintenance cost percentage.
+     */
+    maintainanceCostPercentageToAcquisitionCost: pulumi.Input<number>;
 }
 
 /**
@@ -1849,6 +2309,20 @@ export interface TargetStorageProfileArgs {
      * PersistentVolume.
      */
     targetSize?: pulumi.Input<string>;
+}
+
+/**
+ * Third Party Management settings.
+ */
+export interface ThirdPartyManagementSettingsArgs {
+    /**
+     * License Cost.
+     */
+    licenseCost: pulumi.Input<number>;
+    /**
+     * Support Cost.
+     */
+    supportCost: pulumi.Input<number>;
 }
 
 export interface UserAssignedIdentityArgs {
@@ -1955,6 +2429,27 @@ export interface VirtualNetworkResourceSettingsArgs {
     targetResourceName: pulumi.Input<string>;
 }
 
+/**
+ * Virtualization software settings.
+ */
+export interface VirtualizationSoftwareSettingsArgs {
+    /**
+     * Licence and support list.
+     */
+    licenseAndSupportList: pulumi.Input<pulumi.Input<VsphereLicenseArgs>[]>;
+    /**
+     * Number of physical cores per licence.
+     */
+    numberOfPhysicalCoresPerLicense: pulumi.Input<number>;
+    /**
+     * Software Assurance cost.
+     */
+    softwareAssuranceCost: pulumi.Input<number>;
+}
+
+/**
+ * Details on the total up-time for the VM.
+ */
 export interface VmUptimeArgs {
     /**
      * Number of days in a month for VM uptime.
@@ -1964,6 +2459,60 @@ export interface VmUptimeArgs {
      * Number of hours per day for VM uptime.
      */
     hoursPerDay?: pulumi.Input<number>;
+}
+
+/**
+ * Representation of a vsphere licence.
+ */
+export interface VsphereLicenseArgs {
+    /**
+     * Basic support cost.
+     */
+    basicSupportCost: pulumi.Input<number>;
+    /**
+     * Cost of a licence.
+     */
+    licenseCost: pulumi.Input<number>;
+    /**
+     * VSphere licence type.
+     */
+    licenseType: pulumi.Input<string | enums.LicenseType>;
+    /**
+     * Production support cost.
+     */
+    productionSupportCost: pulumi.Input<number>;
+}
+
+/**
+ * Representation of a vsphere management licence.
+ */
+export interface VsphereManagementLicenseArgs {
+    /**
+     * Basic support cost.
+     */
+    basicSupportCost: pulumi.Input<number>;
+    /**
+     * Cost of a licence.
+     */
+    licenseCost: pulumi.Input<number>;
+    /**
+     * VSphere licence type.
+     */
+    licenseType: pulumi.Input<string | enums.VsphereManagementLicenseType>;
+    /**
+     * Production support cost.
+     */
+    productionSupportCost: pulumi.Input<number>;
+}
+
+/**
+ * Vsphere management settings.
+ */
+export interface VsphereManagementSettingsArgs {
+    /**
+     * Licence and support list.
+     */
+    licenseAndSupportList: pulumi.Input<pulumi.Input<VsphereManagementLicenseArgs>[]>;
 }
 
 /**
@@ -2048,6 +2597,24 @@ export interface WebApplicationFrameworkArgs {
 }
 
 /**
+ * Windows Server licensing settings.
+ */
+export interface WindowsServerLicensingSettingsArgs {
+    /**
+     * Licence Cost.
+     */
+    licenseCost: pulumi.Input<number>;
+    /**
+     * Licenses per core.
+     */
+    licensesPerCore: pulumi.Input<number>;
+    /**
+     * Software assurance (SA) cost.
+     */
+    softwareAssuranceCost: pulumi.Input<number>;
+}
+
+/**
  * Workload deployment model properties.
  */
 export interface WorkloadDeploymentModelPropertiesArgs {
@@ -2102,6 +2669,7 @@ export interface WorkloadInstanceModelPropertiesArgs {
      */
     sourcePlatform?: pulumi.Input<string>;
 }
+
 
 
 

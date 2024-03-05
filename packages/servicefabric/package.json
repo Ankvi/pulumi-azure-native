@@ -1,6 +1,6 @@
 {
     "name": "@kengachu-pulumi/azure-native-servicefabric",
-    "version": "2.28.0",
+    "version": "2.30.0",
     "description": "Pulumi Azure Native package for servicefabric",
     "keywords": [
         "pulumi",

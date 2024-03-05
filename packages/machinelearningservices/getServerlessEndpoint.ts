@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Azure REST API version: 2023-08-01-preview.
+ *
+ * Other available API versions: 2024-01-01-preview.
  */
 export function getServerlessEndpoint(args: GetServerlessEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetServerlessEndpointResult> {
 
@@ -73,6 +75,8 @@ export interface GetServerlessEndpointResult {
 }
 /**
  * Azure REST API version: 2023-08-01-preview.
+ *
+ * Other available API versions: 2024-01-01-preview.
  */
 export function getServerlessEndpointOutput(args: GetServerlessEndpointOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerlessEndpointResult> {
     return pulumi.output(args).apply((a: any) => getServerlessEndpoint(a, opts))

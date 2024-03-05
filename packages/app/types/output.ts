@@ -976,6 +976,34 @@ export interface DefaultAuthorizationPolicyResponse {
 }
 
 /**
+ * Configuration properties for a .NET Component
+ */
+export interface DotNetComponentConfigurationPropertyResponse {
+    /**
+     * The name of the property
+     */
+    propertyName?: string;
+    /**
+     * The value of the property
+     */
+    value?: string;
+}
+
+/**
+ * Configuration to bind a .NET Component to another .NET Component
+ */
+export interface DotNetComponentServiceBindResponse {
+    /**
+     * Name of the service bind
+     */
+    name?: string;
+    /**
+     * Resource id of the target service
+     */
+    serviceId?: string;
+}
+
+/**
  * Managed Environment resource SKU properties.
  */
 export interface EnvironmentSkuPropertiesResponse {
@@ -1453,6 +1481,34 @@ export interface IpSecurityRestrictionRuleResponse {
      * Name for the IP restriction rule.
      */
     name: string;
+}
+
+/**
+ * Configuration properties for a Java Component
+ */
+export interface JavaComponentConfigurationPropertyResponse {
+    /**
+     * The name of the property
+     */
+    propertyName?: string;
+    /**
+     * The value of the property
+     */
+    value?: string;
+}
+
+/**
+ * Configuration to bind a Java Component to another Java Component
+ */
+export interface JavaComponentServiceBindResponse {
+    /**
+     * Name of the service bind
+     */
+    name?: string;
+    /**
+     * Resource id of the target service
+     */
+    serviceId?: string;
 }
 
 /**
@@ -2322,6 +2378,7 @@ export interface WorkloadProfileResponse {
      */
     workloadProfileType: string;
 }
+
 
 
 

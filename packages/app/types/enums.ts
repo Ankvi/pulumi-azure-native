@@ -68,6 +68,16 @@ export const CookieExpirationConvention = {
  */
 export type CookieExpirationConvention = (typeof CookieExpirationConvention)[keyof typeof CookieExpirationConvention];
 
+export const DotNetComponentType = {
+    AspireDashboard: "AspireDashboard",
+    AspireResourceServerApi: "AspireResourceServerApi",
+} as const;
+
+/**
+ * Type of the .NET Component.
+ */
+export type DotNetComponentType = (typeof DotNetComponentType)[keyof typeof DotNetComponentType];
+
 export const ExtendedLocationTypes = {
     CustomLocation: "CustomLocation",
 } as const;
@@ -110,6 +120,17 @@ export const IngressTransportMethod = {
  * Ingress transport protocol
  */
 export type IngressTransportMethod = (typeof IngressTransportMethod)[keyof typeof IngressTransportMethod];
+
+export const JavaComponentType = {
+    SpringBootAdmin: "SpringBootAdmin",
+    SpringCloudEureka: "SpringCloudEureka",
+    SpringCloudConfig: "SpringCloudConfig",
+} as const;
+
+/**
+ * Type of the Java Component.
+ */
+export type JavaComponentType = (typeof JavaComponentType)[keyof typeof JavaComponentType];
 
 export const LogLevel = {
     Info: "info",

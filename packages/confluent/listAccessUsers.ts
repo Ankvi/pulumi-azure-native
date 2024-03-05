@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * List users success response
  * Azure REST API version: 2023-08-22.
+ *
+ * Other available API versions: 2024-02-13.
  */
 export function listAccessUsers(args: ListAccessUsersArgs, opts?: pulumi.InvokeOptions): Promise<ListAccessUsersResult> {
 
@@ -50,6 +52,8 @@ export interface ListAccessUsersResult {
 /**
  * List users success response
  * Azure REST API version: 2023-08-22.
+ *
+ * Other available API versions: 2024-02-13.
  */
 export function listAccessUsersOutput(args: ListAccessUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListAccessUsersResult> {
     return pulumi.output(args).apply((a: any) => listAccessUsers(a, opts))

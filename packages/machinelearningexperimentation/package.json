@@ -1,6 +1,6 @@
 {
     "name": "@kengachu-pulumi/azure-native-machinelearningexperimentation",
-    "version": "2.28.0",
+    "version": "2.30.0",
     "description": "Pulumi Azure Native package for machinelearningexperimentation",
     "keywords": [
         "pulumi",

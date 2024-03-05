@@ -5896,7 +5896,7 @@ export interface CopyActivityResponse {
     /**
      * Copy activity source.
      */
-    source: AmazonMWSSourceResponse | AmazonRdsForOracleSourceResponse | AmazonRdsForSqlServerSourceResponse | AmazonRedshiftSourceResponse | AvroSourceResponse | AzureBlobFSSourceResponse | AzureDataExplorerSourceResponse | AzureDataLakeStoreSourceResponse | AzureDatabricksDeltaLakeSourceResponse | AzureMariaDBSourceResponse | AzureMySqlSourceResponse | AzurePostgreSqlSourceResponse | AzureSqlSourceResponse | AzureTableSourceResponse | BinarySourceResponse | BlobSourceResponse | CassandraSourceResponse | CommonDataServiceForAppsSourceResponse | ConcurSourceResponse | CosmosDbMongoDbApiSourceResponse | CosmosDbSqlApiSourceResponse | CouchbaseSourceResponse | Db2SourceResponse | DelimitedTextSourceResponse | DocumentDbCollectionSourceResponse | DrillSourceResponse | DynamicsAXSourceResponse | DynamicsCrmSourceResponse | DynamicsSourceResponse | EloquaSourceResponse | ExcelSourceResponse | FileSystemSourceResponse | GoogleAdWordsSourceResponse | GoogleBigQuerySourceResponse | GreenplumSourceResponse | HBaseSourceResponse | HdfsSourceResponse | HiveSourceResponse | HttpSourceResponse | HubspotSourceResponse | ImpalaSourceResponse | InformixSourceResponse | JiraSourceResponse | JsonSourceResponse | LakeHouseTableSourceResponse | MagentoSourceResponse | MariaDBSourceResponse | MarketoSourceResponse | MicrosoftAccessSourceResponse | MongoDbAtlasSourceResponse | MongoDbSourceResponse | MongoDbV2SourceResponse | MySqlSourceResponse | NetezzaSourceResponse | ODataSourceResponse | OdbcSourceResponse | Office365SourceResponse | OracleServiceCloudSourceResponse | OracleSourceResponse | OrcSourceResponse | ParquetSourceResponse | PaypalSourceResponse | PhoenixSourceResponse | PostgreSqlSourceResponse | PrestoSourceResponse | QuickBooksSourceResponse | RelationalSourceResponse | ResponsysSourceResponse | RestSourceResponse | SalesforceMarketingCloudSourceResponse | SalesforceServiceCloudSourceResponse | SalesforceServiceCloudV2SourceResponse | SalesforceSourceResponse | SalesforceV2SourceResponse | SapBwSourceResponse | SapCloudForCustomerSourceResponse | SapEccSourceResponse | SapHanaSourceResponse | SapOdpSourceResponse | SapOpenHubSourceResponse | SapTableSourceResponse | ServiceNowSourceResponse | SharePointOnlineListSourceResponse | ShopifySourceResponse | SnowflakeSourceResponse | SnowflakeV2SourceResponse | SparkSourceResponse | SqlDWSourceResponse | SqlMISourceResponse | SqlServerSourceResponse | SqlSourceResponse | SquareSourceResponse | SybaseSourceResponse | TabularSourceResponse | TeradataSourceResponse | VerticaSourceResponse | WarehouseSourceResponse | WebSourceResponse | XeroSourceResponse | XmlSourceResponse | ZohoSourceResponse;
+    source: AmazonMWSSourceResponse | AmazonRdsForOracleSourceResponse | AmazonRdsForSqlServerSourceResponse | AmazonRedshiftSourceResponse | AvroSourceResponse | AzureBlobFSSourceResponse | AzureDataExplorerSourceResponse | AzureDataLakeStoreSourceResponse | AzureDatabricksDeltaLakeSourceResponse | AzureMariaDBSourceResponse | AzureMySqlSourceResponse | AzurePostgreSqlSourceResponse | AzureSqlSourceResponse | AzureTableSourceResponse | BinarySourceResponse | BlobSourceResponse | CassandraSourceResponse | CommonDataServiceForAppsSourceResponse | ConcurSourceResponse | CosmosDbMongoDbApiSourceResponse | CosmosDbSqlApiSourceResponse | CouchbaseSourceResponse | Db2SourceResponse | DelimitedTextSourceResponse | DocumentDbCollectionSourceResponse | DrillSourceResponse | DynamicsAXSourceResponse | DynamicsCrmSourceResponse | DynamicsSourceResponse | EloquaSourceResponse | ExcelSourceResponse | FileSystemSourceResponse | GoogleAdWordsSourceResponse | GoogleBigQuerySourceResponse | GoogleBigQueryV2SourceResponse | GreenplumSourceResponse | HBaseSourceResponse | HdfsSourceResponse | HiveSourceResponse | HttpSourceResponse | HubspotSourceResponse | ImpalaSourceResponse | InformixSourceResponse | JiraSourceResponse | JsonSourceResponse | LakeHouseTableSourceResponse | MagentoSourceResponse | MariaDBSourceResponse | MarketoSourceResponse | MicrosoftAccessSourceResponse | MongoDbAtlasSourceResponse | MongoDbSourceResponse | MongoDbV2SourceResponse | MySqlSourceResponse | NetezzaSourceResponse | ODataSourceResponse | OdbcSourceResponse | Office365SourceResponse | OracleServiceCloudSourceResponse | OracleSourceResponse | OrcSourceResponse | ParquetSourceResponse | PaypalSourceResponse | PhoenixSourceResponse | PostgreSqlSourceResponse | PostgreSqlV2SourceResponse | PrestoSourceResponse | QuickBooksSourceResponse | RelationalSourceResponse | ResponsysSourceResponse | RestSourceResponse | SalesforceMarketingCloudSourceResponse | SalesforceServiceCloudSourceResponse | SalesforceServiceCloudV2SourceResponse | SalesforceSourceResponse | SalesforceV2SourceResponse | SapBwSourceResponse | SapCloudForCustomerSourceResponse | SapEccSourceResponse | SapHanaSourceResponse | SapOdpSourceResponse | SapOpenHubSourceResponse | SapTableSourceResponse | ServiceNowSourceResponse | ServiceNowV2SourceResponse | SharePointOnlineListSourceResponse | ShopifySourceResponse | SnowflakeSourceResponse | SnowflakeV2SourceResponse | SparkSourceResponse | SqlDWSourceResponse | SqlMISourceResponse | SqlServerSourceResponse | SqlSourceResponse | SquareSourceResponse | SybaseSourceResponse | TabularSourceResponse | TeradataSourceResponse | VerticaSourceResponse | WarehouseSourceResponse | WebSourceResponse | XeroSourceResponse | XmlSourceResponse | ZohoSourceResponse;
     /**
      * Specifies interim staging settings when EnableStaging is true.
      */
@@ -9024,6 +9024,28 @@ export interface ExpressionResponse {
 }
 
 /**
+ * Nested representation of a complex expression.
+ */
+export interface ExpressionV2Response {
+    /**
+     * List of nested expressions.
+     */
+    operands?: ExpressionV2Response[];
+    /**
+     * Expression operator value Type: string.
+     */
+    operator?: string;
+    /**
+     * Type of expressions supported by the system. Type: string.
+     */
+    type?: string;
+    /**
+     * Value for Constant/Field Type: string.
+     */
+    value?: string;
+}
+
+/**
  * Factory's GitHub repo information.
  */
 export interface FactoryGitHubConfigurationResponse {
@@ -10160,6 +10182,147 @@ export interface GoogleBigQuerySourceResponse {
      * Expected value is 'GoogleBigQuerySource'.
      */
     type: "GoogleBigQuerySource";
+}
+
+/**
+ * Google BigQuery service linked service.
+ */
+export interface GoogleBigQueryV2LinkedServiceResponse {
+    /**
+     * List of tags that can be used for describing the linked service.
+     */
+    annotations?: any[];
+    /**
+     * The OAuth 2.0 authentication mechanism used for authentication.
+     */
+    authenticationType: string;
+    /**
+     * The client id of the google application used to acquire the refresh token. Type: string (or Expression with resultType string).
+     */
+    clientId?: any;
+    /**
+     * The client secret of the google application used to acquire the refresh token.
+     */
+    clientSecret?: AzureKeyVaultSecretReferenceResponse | SecureStringResponse;
+    /**
+     * The integration runtime reference.
+     */
+    connectVia?: IntegrationRuntimeReferenceResponse;
+    /**
+     * Linked service description.
+     */
+    description?: string;
+    /**
+     * The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+     */
+    encryptedCredential?: string;
+    /**
+     * The content of the .json key file that is used to authenticate the service account. Type: string (or Expression with resultType string).
+     */
+    keyFileContent?: AzureKeyVaultSecretReferenceResponse | SecureStringResponse;
+    /**
+     * Parameters for linked service.
+     */
+    parameters?: {[key: string]: ParameterSpecificationResponse};
+    /**
+     * The default BigQuery project id to query against. Type: string (or Expression with resultType string).
+     */
+    projectId: any;
+    /**
+     * The refresh token obtained from Google for authorizing access to BigQuery for UserAuthentication.
+     */
+    refreshToken?: AzureKeyVaultSecretReferenceResponse | SecureStringResponse;
+    /**
+     * Type of linked service.
+     * Expected value is 'GoogleBigQueryV2'.
+     */
+    type: "GoogleBigQueryV2";
+}
+
+/**
+ * Google BigQuery service dataset.
+ */
+export interface GoogleBigQueryV2ObjectDatasetResponse {
+    /**
+     * List of tags that can be used for describing the Dataset.
+     */
+    annotations?: any[];
+    /**
+     * The database name of the Google BigQuery. Type: string (or Expression with resultType string).
+     */
+    dataset?: any;
+    /**
+     * Dataset description.
+     */
+    description?: string;
+    /**
+     * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+     */
+    folder?: DatasetResponseFolder;
+    /**
+     * Linked service reference.
+     */
+    linkedServiceName: LinkedServiceReferenceResponse;
+    /**
+     * Parameters for dataset.
+     */
+    parameters?: {[key: string]: ParameterSpecificationResponse};
+    /**
+     * Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+     */
+    schema?: any;
+    /**
+     * Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+     */
+    structure?: any;
+    /**
+     * The table name of the Google BigQuery. Type: string (or Expression with resultType string).
+     */
+    table?: any;
+    /**
+     * Type of dataset.
+     * Expected value is 'GoogleBigQueryV2Object'.
+     */
+    type: "GoogleBigQueryV2Object";
+}
+
+/**
+ * A copy activity Google BigQuery service source.
+ */
+export interface GoogleBigQueryV2SourceResponse {
+    /**
+     * Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+     */
+    additionalColumns?: any;
+    /**
+     * If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+     */
+    disableMetricsCollection?: any;
+    /**
+     * The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+     */
+    maxConcurrentConnections?: any;
+    /**
+     * A query to retrieve data from source. Type: string (or Expression with resultType string).
+     */
+    query?: any;
+    /**
+     * Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+     */
+    queryTimeout?: any;
+    /**
+     * Source retry count. Type: integer (or Expression with resultType integer).
+     */
+    sourceRetryCount?: any;
+    /**
+     * Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+     */
+    sourceRetryWait?: any;
+    /**
+     * Copy source type.
+     * Expected value is 'GoogleBigQueryV2Source'.
+     */
+    type: "GoogleBigQueryV2Source";
 }
 
 /**
@@ -13312,7 +13475,7 @@ export interface LookupActivityResponse {
     /**
      * Dataset-specific source properties, same as copy activity source.
      */
-    source: AmazonMWSSourceResponse | AmazonRdsForOracleSourceResponse | AmazonRdsForSqlServerSourceResponse | AmazonRedshiftSourceResponse | AvroSourceResponse | AzureBlobFSSourceResponse | AzureDataExplorerSourceResponse | AzureDataLakeStoreSourceResponse | AzureDatabricksDeltaLakeSourceResponse | AzureMariaDBSourceResponse | AzureMySqlSourceResponse | AzurePostgreSqlSourceResponse | AzureSqlSourceResponse | AzureTableSourceResponse | BinarySourceResponse | BlobSourceResponse | CassandraSourceResponse | CommonDataServiceForAppsSourceResponse | ConcurSourceResponse | CosmosDbMongoDbApiSourceResponse | CosmosDbSqlApiSourceResponse | CouchbaseSourceResponse | Db2SourceResponse | DelimitedTextSourceResponse | DocumentDbCollectionSourceResponse | DrillSourceResponse | DynamicsAXSourceResponse | DynamicsCrmSourceResponse | DynamicsSourceResponse | EloquaSourceResponse | ExcelSourceResponse | FileSystemSourceResponse | GoogleAdWordsSourceResponse | GoogleBigQuerySourceResponse | GreenplumSourceResponse | HBaseSourceResponse | HdfsSourceResponse | HiveSourceResponse | HttpSourceResponse | HubspotSourceResponse | ImpalaSourceResponse | InformixSourceResponse | JiraSourceResponse | JsonSourceResponse | LakeHouseTableSourceResponse | MagentoSourceResponse | MariaDBSourceResponse | MarketoSourceResponse | MicrosoftAccessSourceResponse | MongoDbAtlasSourceResponse | MongoDbSourceResponse | MongoDbV2SourceResponse | MySqlSourceResponse | NetezzaSourceResponse | ODataSourceResponse | OdbcSourceResponse | Office365SourceResponse | OracleServiceCloudSourceResponse | OracleSourceResponse | OrcSourceResponse | ParquetSourceResponse | PaypalSourceResponse | PhoenixSourceResponse | PostgreSqlSourceResponse | PrestoSourceResponse | QuickBooksSourceResponse | RelationalSourceResponse | ResponsysSourceResponse | RestSourceResponse | SalesforceMarketingCloudSourceResponse | SalesforceServiceCloudSourceResponse | SalesforceServiceCloudV2SourceResponse | SalesforceSourceResponse | SalesforceV2SourceResponse | SapBwSourceResponse | SapCloudForCustomerSourceResponse | SapEccSourceResponse | SapHanaSourceResponse | SapOdpSourceResponse | SapOpenHubSourceResponse | SapTableSourceResponse | ServiceNowSourceResponse | SharePointOnlineListSourceResponse | ShopifySourceResponse | SnowflakeSourceResponse | SnowflakeV2SourceResponse | SparkSourceResponse | SqlDWSourceResponse | SqlMISourceResponse | SqlServerSourceResponse | SqlSourceResponse | SquareSourceResponse | SybaseSourceResponse | TabularSourceResponse | TeradataSourceResponse | VerticaSourceResponse | WarehouseSourceResponse | WebSourceResponse | XeroSourceResponse | XmlSourceResponse | ZohoSourceResponse;
+    source: AmazonMWSSourceResponse | AmazonRdsForOracleSourceResponse | AmazonRdsForSqlServerSourceResponse | AmazonRedshiftSourceResponse | AvroSourceResponse | AzureBlobFSSourceResponse | AzureDataExplorerSourceResponse | AzureDataLakeStoreSourceResponse | AzureDatabricksDeltaLakeSourceResponse | AzureMariaDBSourceResponse | AzureMySqlSourceResponse | AzurePostgreSqlSourceResponse | AzureSqlSourceResponse | AzureTableSourceResponse | BinarySourceResponse | BlobSourceResponse | CassandraSourceResponse | CommonDataServiceForAppsSourceResponse | ConcurSourceResponse | CosmosDbMongoDbApiSourceResponse | CosmosDbSqlApiSourceResponse | CouchbaseSourceResponse | Db2SourceResponse | DelimitedTextSourceResponse | DocumentDbCollectionSourceResponse | DrillSourceResponse | DynamicsAXSourceResponse | DynamicsCrmSourceResponse | DynamicsSourceResponse | EloquaSourceResponse | ExcelSourceResponse | FileSystemSourceResponse | GoogleAdWordsSourceResponse | GoogleBigQuerySourceResponse | GoogleBigQueryV2SourceResponse | GreenplumSourceResponse | HBaseSourceResponse | HdfsSourceResponse | HiveSourceResponse | HttpSourceResponse | HubspotSourceResponse | ImpalaSourceResponse | InformixSourceResponse | JiraSourceResponse | JsonSourceResponse | LakeHouseTableSourceResponse | MagentoSourceResponse | MariaDBSourceResponse | MarketoSourceResponse | MicrosoftAccessSourceResponse | MongoDbAtlasSourceResponse | MongoDbSourceResponse | MongoDbV2SourceResponse | MySqlSourceResponse | NetezzaSourceResponse | ODataSourceResponse | OdbcSourceResponse | Office365SourceResponse | OracleServiceCloudSourceResponse | OracleSourceResponse | OrcSourceResponse | ParquetSourceResponse | PaypalSourceResponse | PhoenixSourceResponse | PostgreSqlSourceResponse | PostgreSqlV2SourceResponse | PrestoSourceResponse | QuickBooksSourceResponse | RelationalSourceResponse | ResponsysSourceResponse | RestSourceResponse | SalesforceMarketingCloudSourceResponse | SalesforceServiceCloudSourceResponse | SalesforceServiceCloudV2SourceResponse | SalesforceSourceResponse | SalesforceV2SourceResponse | SapBwSourceResponse | SapCloudForCustomerSourceResponse | SapEccSourceResponse | SapHanaSourceResponse | SapOdpSourceResponse | SapOpenHubSourceResponse | SapTableSourceResponse | ServiceNowSourceResponse | ServiceNowV2SourceResponse | SharePointOnlineListSourceResponse | ShopifySourceResponse | SnowflakeSourceResponse | SnowflakeV2SourceResponse | SparkSourceResponse | SqlDWSourceResponse | SqlMISourceResponse | SqlServerSourceResponse | SqlSourceResponse | SquareSourceResponse | SybaseSourceResponse | TabularSourceResponse | TeradataSourceResponse | VerticaSourceResponse | WarehouseSourceResponse | WebSourceResponse | XeroSourceResponse | XmlSourceResponse | ZohoSourceResponse;
     /**
      * Activity state. This is an optional property and if not provided, the state will be Active by default.
      */
@@ -17043,6 +17206,191 @@ export interface PostgreSqlTableDatasetResponse {
      * Expected value is 'PostgreSqlTable'.
      */
     type: "PostgreSqlTable";
+}
+
+/**
+ * Linked service for PostgreSQLV2 data source.
+ */
+export interface PostgreSqlV2LinkedServiceResponse {
+    /**
+     * List of tags that can be used for describing the linked service.
+     */
+    annotations?: any[];
+    /**
+     * The time to wait (in seconds) while trying to execute a command before terminating the attempt and generating an error. Set to zero for infinity. Type: integer.
+     */
+    commandTimeout?: any;
+    /**
+     * The integration runtime reference.
+     */
+    connectVia?: IntegrationRuntimeReferenceResponse;
+    /**
+     * The time to wait (in seconds) while trying to establish a connection before terminating the attempt and generating an error. Type: integer.
+     */
+    connectionTimeout?: any;
+    /**
+     * Database name for connection. Type: string.
+     */
+    database: any;
+    /**
+     * Linked service description.
+     */
+    description?: string;
+    /**
+     * Gets or sets the .NET encoding that will be used to encode/decode PostgreSQL string data. Type: string
+     */
+    encoding?: any;
+    /**
+     * The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+     */
+    encryptedCredential?: string;
+    /**
+     * When enabled, parameter values are logged when commands are executed. Type: boolean.
+     */
+    logParameters?: any;
+    /**
+     * Parameters for linked service.
+     */
+    parameters?: {[key: string]: ParameterSpecificationResponse};
+    /**
+     * The Azure key vault secret reference of password in connection string. Type: string.
+     */
+    password?: AzureKeyVaultSecretReferenceResponse;
+    /**
+     * Whether connection pooling should be used. Type: boolean.
+     */
+    pooling?: any;
+    /**
+     * The port for the connection. Type: integer.
+     */
+    port?: any;
+    /**
+     * Determines the size of the internal buffer uses when reading. Increasing may improve performance if transferring large values from the database. Type: integer.
+     */
+    readBufferSize?: any;
+    /**
+     * Sets the schema search path. Type: string.
+     */
+    schema?: any;
+    /**
+     * Server name for connection. Type: string.
+     */
+    server: any;
+    /**
+     * Location of a client certificate to be sent to the server. Type: string.
+     */
+    sslCertificate?: any;
+    /**
+     * Location of a client key for a client certificate to be sent to the server. Type: string.
+     */
+    sslKey?: any;
+    /**
+     * SSL mode for connection. Type: integer. 0: disable, 1:allow, 2: prefer, 3: require, 4: verify-ca, 5: verify-full. Type: integer.
+     */
+    sslMode: any;
+    /**
+     * Password for a key for a client certificate. Type: string.
+     */
+    sslPassword?: any;
+    /**
+     * Gets or sets the session timezone. Type: string.
+     */
+    timezone?: any;
+    /**
+     * Whether to trust the server certificate without validating it. Type: boolean.
+     */
+    trustServerCertificate?: any;
+    /**
+     * Type of linked service.
+     * Expected value is 'PostgreSqlV2'.
+     */
+    type: "PostgreSqlV2";
+    /**
+     * Username for authentication. Type: string.
+     */
+    username: any;
+}
+
+/**
+ * A copy activity source for PostgreSQL databases.
+ */
+export interface PostgreSqlV2SourceResponse {
+    /**
+     * Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+     */
+    additionalColumns?: any;
+    /**
+     * If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+     */
+    disableMetricsCollection?: any;
+    /**
+     * The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+     */
+    maxConcurrentConnections?: any;
+    /**
+     * Database query. Type: string (or Expression with resultType string).
+     */
+    query?: any;
+    /**
+     * Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+     */
+    queryTimeout?: any;
+    /**
+     * Source retry count. Type: integer (or Expression with resultType integer).
+     */
+    sourceRetryCount?: any;
+    /**
+     * Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+     */
+    sourceRetryWait?: any;
+    /**
+     * Copy source type.
+     * Expected value is 'PostgreSqlV2Source'.
+     */
+    type: "PostgreSqlV2Source";
+}
+
+/**
+ * The PostgreSQLV2 table dataset.
+ */
+export interface PostgreSqlV2TableDatasetResponse {
+    /**
+     * List of tags that can be used for describing the Dataset.
+     */
+    annotations?: any[];
+    /**
+     * Dataset description.
+     */
+    description?: string;
+    /**
+     * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+     */
+    folder?: DatasetResponseFolder;
+    /**
+     * Linked service reference.
+     */
+    linkedServiceName: LinkedServiceReferenceResponse;
+    /**
+     * Parameters for dataset.
+     */
+    parameters?: {[key: string]: ParameterSpecificationResponse};
+    /**
+     * Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+     */
+    schema?: any;
+    /**
+     * Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+     */
+    structure?: any;
+    /**
+     * The PostgreSQL table name. Type: string (or Expression with resultType string).
+     */
+    table?: any;
+    /**
+     * Type of dataset.
+     * Expected value is 'PostgreSqlV2Table'.
+     */
+    type: "PostgreSqlV2Table";
 }
 
 /**
@@ -20919,6 +21267,147 @@ export interface ServiceNowSourceResponse {
      * Expected value is 'ServiceNowSource'.
      */
     type: "ServiceNowSource";
+}
+
+/**
+ * ServiceNowV2 server linked service.
+ */
+export interface ServiceNowV2LinkedServiceResponse {
+    /**
+     * List of tags that can be used for describing the linked service.
+     */
+    annotations?: any[];
+    /**
+     * The authentication type to use.
+     */
+    authenticationType: string;
+    /**
+     * The client id for OAuth2 authentication.
+     */
+    clientId?: any;
+    /**
+     * The client secret for OAuth2 authentication.
+     */
+    clientSecret?: AzureKeyVaultSecretReferenceResponse | SecureStringResponse;
+    /**
+     * The integration runtime reference.
+     */
+    connectVia?: IntegrationRuntimeReferenceResponse;
+    /**
+     * Linked service description.
+     */
+    description?: string;
+    /**
+     * The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
+     */
+    encryptedCredential?: string;
+    /**
+     * The endpoint of the ServiceNowV2 server. (i.e. <instance>.service-now.com)
+     */
+    endpoint: any;
+    /**
+     * GrantType for OAuth2 authentication. Default value is password.
+     */
+    grantType?: any;
+    /**
+     * Parameters for linked service.
+     */
+    parameters?: {[key: string]: ParameterSpecificationResponse};
+    /**
+     * The password corresponding to the user name for Basic and OAuth2 authentication.
+     */
+    password?: AzureKeyVaultSecretReferenceResponse | SecureStringResponse;
+    /**
+     * Type of linked service.
+     * Expected value is 'ServiceNowV2'.
+     */
+    type: "ServiceNowV2";
+    /**
+     * The user name used to connect to the ServiceNowV2 server for Basic and OAuth2 authentication.
+     */
+    username?: any;
+}
+
+/**
+ * ServiceNowV2 server dataset.
+ */
+export interface ServiceNowV2ObjectDatasetResponse {
+    /**
+     * List of tags that can be used for describing the Dataset.
+     */
+    annotations?: any[];
+    /**
+     * Dataset description.
+     */
+    description?: string;
+    /**
+     * The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+     */
+    folder?: DatasetResponseFolder;
+    /**
+     * Linked service reference.
+     */
+    linkedServiceName: LinkedServiceReferenceResponse;
+    /**
+     * Parameters for dataset.
+     */
+    parameters?: {[key: string]: ParameterSpecificationResponse};
+    /**
+     * Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
+     */
+    schema?: any;
+    /**
+     * Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
+     */
+    structure?: any;
+    /**
+     * The table name. Type: string (or Expression with resultType string).
+     */
+    tableName?: any;
+    /**
+     * Type of dataset.
+     * Expected value is 'ServiceNowV2Object'.
+     */
+    type: "ServiceNowV2Object";
+}
+
+/**
+ * A copy activity ServiceNowV2 server source.
+ */
+export interface ServiceNowV2SourceResponse {
+    /**
+     * Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
+     */
+    additionalColumns?: any;
+    /**
+     * If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
+     */
+    disableMetricsCollection?: any;
+    /**
+     * Expression to filter data from source.
+     */
+    expression?: ExpressionV2Response;
+    /**
+     * The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
+     */
+    maxConcurrentConnections?: any;
+    /**
+     * Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+     */
+    queryTimeout?: any;
+    /**
+     * Source retry count. Type: integer (or Expression with resultType integer).
+     */
+    sourceRetryCount?: any;
+    /**
+     * Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
+     */
+    sourceRetryWait?: any;
+    /**
+     * Copy source type.
+     * Expected value is 'ServiceNowV2Source'.
+     */
+    type: "ServiceNowV2Source";
 }
 
 /**

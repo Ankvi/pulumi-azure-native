@@ -128,6 +128,11 @@ export interface AccessKeyAuthTypeWorkspaceConnectionPropertiesResponse {
     target?: string;
 }
 
+export interface AccountApiKeysResponse {
+    key1?: string;
+    key2?: string;
+}
+
 /**
  * Account key datastore credentials configuration.
  */
@@ -1826,6 +1831,14 @@ export function codeVersionResponseProvideDefaults(val: CodeVersionResponse): Co
     };
 }
 
+export interface CognitiveServicesSkuResponse {
+    capacity?: number;
+    family?: string;
+    name?: string;
+    size?: string;
+    tier?: string;
+}
+
 /**
  * Column transformer parameters.
  */
@@ -2528,6 +2541,35 @@ export interface ContainerResourceSettingsResponse {
      * https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
      */
     memory?: string;
+}
+
+export interface ContentSafetyEndpointDeploymentResourcePropertiesResponse {
+    /**
+     * The failure reason if the creation failed.
+     */
+    failureReason?: string;
+    /**
+     * Model used for the endpoint deployment.
+     */
+    model: EndpointDeploymentModelResponse;
+    /**
+     * Read-only provision state status property.
+     */
+    provisioningState: string;
+    /**
+     * The name of RAI policy.
+     */
+    raiPolicyName?: string;
+    sku?: CognitiveServicesSkuResponse;
+    /**
+     * Kind of the deployment.
+     * Expected value is 'Azure.ContentSafety'.
+     */
+    type: "Azure.ContentSafety";
+    /**
+     * Deployment model version upgrade option.
+     */
+    versionUpgradeOption?: string;
 }
 
 export interface CosmosDbSettingsResponse {
@@ -3443,6 +3485,25 @@ export interface EncryptionPropertyResponse {
      * Indicates whether or not the encryption is enabled for the workspace.
      */
     status: string;
+}
+
+export interface EndpointDeploymentModelResponse {
+    /**
+     * Model format
+     */
+    format?: string;
+    /**
+     * Model name.
+     */
+    name?: string;
+    /**
+     * Optional. Deployment model source ARM resource ID.
+     */
+    source?: string;
+    /**
+     * Model version.
+     */
+    version?: string;
 }
 
 /**
@@ -6699,6 +6760,22 @@ export function managedOnlineDeploymentResponseProvideDefaults(val: ManagedOnlin
     };
 }
 
+export interface ManagedOnlineEndpointDeploymentResourcePropertiesResponse {
+    /**
+     * The failure reason if the creation failed.
+     */
+    failureReason?: string;
+    /**
+     * Read-only provision state status property.
+     */
+    provisioningState: string;
+    /**
+     * Kind of the deployment.
+     * Expected value is 'managedOnlineEndpoint'.
+     */
+    type: "managedOnlineEndpoint";
+}
+
 /**
  * Managed service identity (system assigned and/or user assigned identities)
  */
@@ -6719,6 +6796,40 @@ export interface ManagedServiceIdentityResponse {
      * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
      */
     userAssignedIdentities?: {[key: string]: UserAssignedIdentityResponse};
+}
+
+export interface MarketplacePlanResponse {
+    /**
+     * The Offer ID of the Marketplace Plan.
+     */
+    offerId: string;
+    /**
+     * The Plan ID of the Marketplace Plan.
+     */
+    planId: string;
+    /**
+     * The Publisher ID of the Marketplace Plan.
+     */
+    publisherId: string;
+}
+
+export interface MarketplaceSubscriptionResponse {
+    /**
+     * Marketplace Plan associated with the Marketplace Subscription.
+     */
+    marketplacePlan: MarketplacePlanResponse;
+    /**
+     * Current status of the Marketplace Subscription.
+     */
+    marketplaceSubscriptionStatus: string;
+    /**
+     * [Required] Target Marketplace Model ID to create a Marketplace Subscription for.
+     */
+    modelId: string;
+    /**
+     * Provisioning State of the Marketplace Subscription.
+     */
+    provisioningState: string;
 }
 
 /**
@@ -7142,6 +7253,35 @@ export function onlineRequestSettingsResponseProvideDefaults(val: OnlineRequestS
         maxQueueWait: (val.maxQueueWait) ?? "PT0.5S",
         requestTimeout: (val.requestTimeout) ?? "PT5S",
     };
+}
+
+export interface OpenAIEndpointDeploymentResourcePropertiesResponse {
+    /**
+     * The failure reason if the creation failed.
+     */
+    failureReason?: string;
+    /**
+     * Model used for the endpoint deployment.
+     */
+    model: EndpointDeploymentModelResponse;
+    /**
+     * Read-only provision state status property.
+     */
+    provisioningState: string;
+    /**
+     * The name of RAI policy.
+     */
+    raiPolicyName?: string;
+    sku?: CognitiveServicesSkuResponse;
+    /**
+     * Kind of the deployment.
+     * Expected value is 'Azure.OpenAI'.
+     */
+    type: "Azure.OpenAI";
+    /**
+     * Deployment model version upgrade option.
+     */
+    versionUpgradeOption?: string;
 }
 
 /**
@@ -8348,6 +8488,35 @@ export interface SkuResponse {
      * This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
      */
     tier?: string;
+}
+
+export interface SpeechEndpointDeploymentResourcePropertiesResponse {
+    /**
+     * The failure reason if the creation failed.
+     */
+    failureReason?: string;
+    /**
+     * Model used for the endpoint deployment.
+     */
+    model: EndpointDeploymentModelResponse;
+    /**
+     * Read-only provision state status property.
+     */
+    provisioningState: string;
+    /**
+     * The name of RAI policy.
+     */
+    raiPolicyName?: string;
+    sku?: CognitiveServicesSkuResponse;
+    /**
+     * Kind of the deployment.
+     * Expected value is 'Azure.Speech'.
+     */
+    type: "Azure.Speech";
+    /**
+     * Deployment model version upgrade option.
+     */
+    versionUpgradeOption?: string;
 }
 
 /**
@@ -9788,6 +9957,7 @@ export interface WorkspaceConnectionUsernamePasswordResponse {
     password?: string;
     username?: string;
 }
+
 
 
 

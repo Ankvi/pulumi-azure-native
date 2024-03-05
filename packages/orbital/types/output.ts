@@ -191,6 +191,16 @@ export interface ContactsPropertiesResponseContactProfile {
 }
 
 /**
+ * A reference to global communications site.
+ */
+export interface EdgeSitesPropertiesResponseGlobalCommunicationsSite {
+    /**
+     * Resource ID.
+     */
+    id: string;
+}
+
+/**
  * Customer end point to store and retrieve data during a contact with the spacecraft.
  */
 export interface EndPointResponse {
@@ -210,6 +220,43 @@ export interface EndPointResponse {
      * Protocol either UDP or TCP.
      */
     protocol: string;
+}
+
+/**
+ * A reference to global communications site.
+ */
+export interface GroundStationsPropertiesResponseGlobalCommunicationsSite {
+    /**
+     * Resource ID.
+     */
+    id: string;
+}
+
+/**
+ * A reference to an Microsoft.Orbital/edgeSites resource to route traffic for.
+ */
+export interface L2ConnectionsPropertiesResponseEdgeSite {
+    /**
+     * Resource ID.
+     */
+    id: string;
+}
+
+/**
+ * A reference to an Microsoft.Orbital/groundStations resource to route traffic for.
+ */
+export interface L2ConnectionsPropertiesResponseGroundStation {
+    /**
+     * Resource ID.
+     */
+    id: string;
+}
+
+export interface ResourceIdListResultResponseValue {
+    /**
+     * The Azure Resource ID.
+     */
+    id?: string;
 }
 
 /**
@@ -271,4 +318,5 @@ export interface SystemDataResponse {
      */
     lastModifiedByType?: string;
 }
+
 

@@ -21,6 +21,11 @@ export const listAccessInvitations: typeof import("./listAccessInvitations").lis
 export const listAccessInvitationsOutput: typeof import("./listAccessInvitations").listAccessInvitationsOutput = null as any;
 utilities.lazyLoad(exports, ["listAccessInvitations","listAccessInvitationsOutput"], () => require("./listAccessInvitations"));
 
+export { ListAccessRoleBindingNameArgs, ListAccessRoleBindingNameResult, ListAccessRoleBindingNameOutputArgs } from "./listAccessRoleBindingName";
+export const listAccessRoleBindingName: typeof import("./listAccessRoleBindingName").listAccessRoleBindingName = null as any;
+export const listAccessRoleBindingNameOutput: typeof import("./listAccessRoleBindingName").listAccessRoleBindingNameOutput = null as any;
+utilities.lazyLoad(exports, ["listAccessRoleBindingName","listAccessRoleBindingNameOutput"], () => require("./listAccessRoleBindingName"));
+
 export { ListAccessRoleBindingsArgs, ListAccessRoleBindingsResult, ListAccessRoleBindingsOutputArgs } from "./listAccessRoleBindings";
 export const listAccessRoleBindings: typeof import("./listAccessRoleBindings").listAccessRoleBindings = null as any;
 export const listAccessRoleBindingsOutput: typeof import("./listAccessRoleBindings").listAccessRoleBindingsOutput = null as any;
@@ -35,6 +40,11 @@ export { ListAccessUsersArgs, ListAccessUsersResult, ListAccessUsersOutputArgs }
 export const listAccessUsers: typeof import("./listAccessUsers").listAccessUsers = null as any;
 export const listAccessUsersOutput: typeof import("./listAccessUsers").listAccessUsersOutput = null as any;
 utilities.lazyLoad(exports, ["listAccessUsers","listAccessUsersOutput"], () => require("./listAccessUsers"));
+
+export { ListOrganizationRegionsArgs, ListOrganizationRegionsResult, ListOrganizationRegionsOutputArgs } from "./listOrganizationRegions";
+export const listOrganizationRegions: typeof import("./listOrganizationRegions").listOrganizationRegions = null as any;
+export const listOrganizationRegionsOutput: typeof import("./listOrganizationRegions").listOrganizationRegionsOutput = null as any;
+utilities.lazyLoad(exports, ["listOrganizationRegions","listOrganizationRegionsOutput"], () => require("./listOrganizationRegions"));
 
 export { OrganizationArgs } from "./organization";
 export type Organization = import("./organization").Organization;

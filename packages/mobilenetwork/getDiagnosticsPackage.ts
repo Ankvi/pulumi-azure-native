@@ -5,7 +5,7 @@ import * as types from "./types";
  * Gets information about the specified diagnostics package.
  * Azure REST API version: 2023-06-01.
  *
- * Other available API versions: 2023-09-01.
+ * Other available API versions: 2023-09-01, 2024-02-01.
  */
 export function getDiagnosticsPackage(args: GetDiagnosticsPackageArgs, opts?: pulumi.InvokeOptions): Promise<GetDiagnosticsPackageResult> {
 
@@ -69,7 +69,7 @@ export interface GetDiagnosticsPackageResult {
  * Gets information about the specified diagnostics package.
  * Azure REST API version: 2023-06-01.
  *
- * Other available API versions: 2023-09-01.
+ * Other available API versions: 2023-09-01, 2024-02-01.
  */
 export function getDiagnosticsPackageOutput(args: GetDiagnosticsPackageOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDiagnosticsPackageResult> {
     return pulumi.output(args).apply((a: any) => getDiagnosticsPackage(a, opts))

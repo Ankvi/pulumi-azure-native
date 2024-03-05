@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Azure REST API version: 2023-08-01-preview.
+ *
+ * Other available API versions: 2024-01-01-preview.
  */
 export class InferenceGroup extends pulumi.CustomResource {
     /**
@@ -116,7 +118,7 @@ export class InferenceGroup extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:machinelearningservices/v20230801preview:InferenceGroup" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:machinelearningservices/v20230801preview:InferenceGroup" }, { type: "azure-native:machinelearningservices/v20240101preview:InferenceGroup" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(InferenceGroup.__pulumiType, name, resourceInputs, opts);
     }

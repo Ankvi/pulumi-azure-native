@@ -312,6 +312,47 @@ export interface OfferDetailResponse {
 }
 
 /**
+ * Details of region record
+ */
+export interface RegionRecordResponse {
+    /**
+     * Id of the cluster
+     */
+    id?: string;
+    /**
+     * Kind of the cluster
+     */
+    kind?: string;
+    /**
+     * Metadata of the record
+     */
+    metadata?: SCMetadataEntityResponse;
+    /**
+     * Specification of the region
+     */
+    spec?: RegionSpecEntityResponse;
+}
+
+/**
+ * Region spec details
+ */
+export interface RegionSpecEntityResponse {
+    /**
+     * Cloud provider name
+     */
+    cloud?: string;
+    /**
+     * Display Name of the region
+     */
+    name?: string;
+    packages?: string[];
+    /**
+     * Region name
+     */
+    regionName?: string;
+}
+
+/**
  * Record of the environment
  */
 export interface RoleBindingRecordResponse {
@@ -339,6 +380,32 @@ export interface RoleBindingRecordResponse {
      * The name of the role to bind to the principal
      */
     roleName?: string;
+}
+
+/**
+ * Metadata of the data record
+ */
+export interface SCMetadataEntityResponse {
+    /**
+     * Created Date Time
+     */
+    createdTimestamp?: string;
+    /**
+     * Deleted Date time
+     */
+    deletedTimestamp?: string;
+    /**
+     * Resource name of the record
+     */
+    resourceName?: string;
+    /**
+     * Self lookup url
+     */
+    self?: string;
+    /**
+     * Updated Date time
+     */
+    updatedTimestamp?: string;
 }
 
 /**
@@ -444,5 +511,6 @@ export interface UserRecordResponse {
      */
     metadata?: MetadataEntityResponse;
 }
+
 
 

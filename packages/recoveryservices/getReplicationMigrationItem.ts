@@ -5,7 +5,7 @@ import * as types from "./types";
  * Migration item.
  * Azure REST API version: 2023-04-01.
  *
- * Other available API versions: 2023-06-01.
+ * Other available API versions: 2023-06-01, 2023-08-01.
  */
 export function getReplicationMigrationItem(args: GetReplicationMigrationItemArgs, opts?: pulumi.InvokeOptions): Promise<GetReplicationMigrationItemResult> {
 
@@ -71,7 +71,7 @@ export interface GetReplicationMigrationItemResult {
  * Migration item.
  * Azure REST API version: 2023-04-01.
  *
- * Other available API versions: 2023-06-01.
+ * Other available API versions: 2023-06-01, 2023-08-01.
  */
 export function getReplicationMigrationItemOutput(args: GetReplicationMigrationItemOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReplicationMigrationItemResult> {
     return pulumi.output(args).apply((a: any) => getReplicationMigrationItem(a, opts))

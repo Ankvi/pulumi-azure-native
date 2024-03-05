@@ -1245,6 +1245,14 @@ export function codeVersionArgsProvideDefaults(val: CodeVersionArgs): CodeVersio
     };
 }
 
+export interface CognitiveServicesSkuArgs {
+    capacity?: pulumi.Input<number>;
+    family?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    size?: pulumi.Input<string>;
+    tier?: pulumi.Input<string>;
+}
+
 /**
  * Column transformer parameters.
  */
@@ -1648,6 +1656,31 @@ export interface ContainerResourceSettingsArgs {
      * https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
      */
     memory?: pulumi.Input<string>;
+}
+
+export interface ContentSafetyEndpointDeploymentResourcePropertiesArgs {
+    /**
+     * The failure reason if the creation failed.
+     */
+    failureReason?: pulumi.Input<string>;
+    /**
+     * Model used for the endpoint deployment.
+     */
+    model: pulumi.Input<EndpointDeploymentModelArgs>;
+    /**
+     * The name of RAI policy.
+     */
+    raiPolicyName?: pulumi.Input<string>;
+    sku?: pulumi.Input<CognitiveServicesSkuArgs>;
+    /**
+     * Kind of the deployment.
+     * Expected value is 'Azure.ContentSafety'.
+     */
+    type: pulumi.Input<"Azure.ContentSafety">;
+    /**
+     * Deployment model version upgrade option.
+     */
+    versionUpgradeOption?: pulumi.Input<string | enums.DeploymentModelVersionUpgradeOption>;
 }
 
 export interface CosmosDbSettingsArgs {
@@ -2309,6 +2342,25 @@ export interface EndpointAuthKeysArgs {
      * The secondary key.
      */
     secondaryKey?: pulumi.Input<string>;
+}
+
+export interface EndpointDeploymentModelArgs {
+    /**
+     * Model format
+     */
+    format?: pulumi.Input<string>;
+    /**
+     * Model name.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Optional. Deployment model source ARM resource ID.
+     */
+    source?: pulumi.Input<string>;
+    /**
+     * Model version.
+     */
+    version?: pulumi.Input<string>;
 }
 
 export interface EndpointScheduleActionArgs {
@@ -5128,6 +5180,18 @@ export function managedOnlineDeploymentArgsProvideDefaults(val: ManagedOnlineDep
     };
 }
 
+export interface ManagedOnlineEndpointDeploymentResourcePropertiesArgs {
+    /**
+     * The failure reason if the creation failed.
+     */
+    failureReason?: pulumi.Input<string>;
+    /**
+     * Kind of the deployment.
+     * Expected value is 'managedOnlineEndpoint'.
+     */
+    type: pulumi.Input<"managedOnlineEndpoint">;
+}
+
 /**
  * Managed service identity (system assigned and/or user assigned identities)
  */
@@ -5140,6 +5204,13 @@ export interface ManagedServiceIdentityArgs {
      * The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
      */
     userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface MarketplaceSubscriptionArgs {
+    /**
+     * [Required] Target Marketplace Model ID to create a Marketplace Subscription for.
+     */
+    modelId: pulumi.Input<string>;
 }
 
 /**
@@ -5491,6 +5562,31 @@ export function onlineRequestSettingsArgsProvideDefaults(val: OnlineRequestSetti
         maxQueueWait: (val.maxQueueWait) ?? "PT0.5S",
         requestTimeout: (val.requestTimeout) ?? "PT5S",
     };
+}
+
+export interface OpenAIEndpointDeploymentResourcePropertiesArgs {
+    /**
+     * The failure reason if the creation failed.
+     */
+    failureReason?: pulumi.Input<string>;
+    /**
+     * Model used for the endpoint deployment.
+     */
+    model: pulumi.Input<EndpointDeploymentModelArgs>;
+    /**
+     * The name of RAI policy.
+     */
+    raiPolicyName?: pulumi.Input<string>;
+    sku?: pulumi.Input<CognitiveServicesSkuArgs>;
+    /**
+     * Kind of the deployment.
+     * Expected value is 'Azure.OpenAI'.
+     */
+    type: pulumi.Input<"Azure.OpenAI">;
+    /**
+     * Deployment model version upgrade option.
+     */
+    versionUpgradeOption?: pulumi.Input<string | enums.DeploymentModelVersionUpgradeOption>;
 }
 
 /**
@@ -6591,6 +6687,31 @@ export interface SkuArgs {
      * This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
      */
     tier?: pulumi.Input<enums.SkuTier>;
+}
+
+export interface SpeechEndpointDeploymentResourcePropertiesArgs {
+    /**
+     * The failure reason if the creation failed.
+     */
+    failureReason?: pulumi.Input<string>;
+    /**
+     * Model used for the endpoint deployment.
+     */
+    model: pulumi.Input<EndpointDeploymentModelArgs>;
+    /**
+     * The name of RAI policy.
+     */
+    raiPolicyName?: pulumi.Input<string>;
+    sku?: pulumi.Input<CognitiveServicesSkuArgs>;
+    /**
+     * Kind of the deployment.
+     * Expected value is 'Azure.Speech'.
+     */
+    type: pulumi.Input<"Azure.Speech">;
+    /**
+     * Deployment model version upgrade option.
+     */
+    versionUpgradeOption?: pulumi.Input<string | enums.DeploymentModelVersionUpgradeOption>;
 }
 
 /**
@@ -7785,6 +7906,7 @@ export interface WorkspaceConnectionUsernamePasswordArgs {
     password?: pulumi.Input<string>;
     username?: pulumi.Input<string>;
 }
+
 
 
 

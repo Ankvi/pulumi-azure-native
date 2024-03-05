@@ -1,223 +1,9 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
- * The extended location.
+ * Defines the data point properties.
  */
-export interface AssetEndpointProfileExtendedLocationArgs {
-    /**
-     * The extended location name.
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * The extended location type.
-     */
-    type?: pulumi.Input<string>;
-}
-
-/**
- * Defines the Asset Endpoint Profile properties.
- */
-export interface AssetEndpointProfilePropertiesArgs {
-    /**
-     * Contains connectivity type specific further configuration (e.g. OPC UA, Modbus, ONVIF).
-     */
-    additionalConfiguration?: pulumi.Input<string>;
-    /**
-     * The local valid URI specifying the network address/DNS name of a southbound device. The scheme part of the targetAddress URI specifies the type of the device. The additionalConfiguration field holds further connector type specific configuration.
-     */
-    targetAddress: pulumi.Input<string>;
-    /**
-     * Defines the authentication mechanism for the southbound connector connecting to the shop floor/OT device.
-     */
-    transportAuthentication?: pulumi.Input<AssetEndpointProfilePropertiesTransportAuthenticationArgs>;
-    /**
-     * Defines the client authentication mechanism to the server.
-     */
-    userAuthentication?: pulumi.Input<AssetEndpointProfilePropertiesUserAuthenticationArgs>;
-}
-/**
- * assetEndpointProfilePropertiesArgsProvideDefaults sets the appropriate defaults for AssetEndpointProfilePropertiesArgs
- */
-export function assetEndpointProfilePropertiesArgsProvideDefaults(val: AssetEndpointProfilePropertiesArgs): AssetEndpointProfilePropertiesArgs {
-    return {
-        ...val,
-        userAuthentication: (val.userAuthentication ? pulumi.output(val.userAuthentication).apply(assetEndpointProfilePropertiesUserAuthenticationArgsProvideDefaults) : undefined),
-    };
-}
-
-export interface AssetEndpointProfilePropertiesOwnCertificatesArgs {
-    /**
-     * Secret Reference Name (Pfx or Pem password)
-     */
-    certPasswordReference?: pulumi.Input<string>;
-    /**
-     * Secret Reference name (cert and private key).
-     */
-    certSecretReference?: pulumi.Input<string>;
-    /**
-     * Certificate thumbprint.
-     */
-    certThumbprint?: pulumi.Input<string>;
-}
-
-/**
- * Defines the authentication mechanism for the southbound connector connecting to the shop floor/OT device.
- */
-export interface AssetEndpointProfilePropertiesTransportAuthenticationArgs {
-    /**
-     * Defines a reference to a secret which contains all certificates and private keys that can be used by the southbound connector connecting to the shop floor/OT device. The accepted extensions are .der for certificates and .pfx/.pem for private keys.
-     */
-    ownCertificates: pulumi.Input<pulumi.Input<AssetEndpointProfilePropertiesOwnCertificatesArgs>[]>;
-}
-
-/**
- * Defines the client authentication mechanism to the server.
- */
-export interface AssetEndpointProfilePropertiesUserAuthenticationArgs {
-    /**
-     * Defines the mode to authenticate the user of the client at the server.
-     */
-    mode: pulumi.Input<string | enums.Mode>;
-    /**
-     * Defines the username and password references when UsernamePassword user authentication mode is selected.
-     */
-    usernamePasswordCredentials?: pulumi.Input<AssetEndpointProfilePropertiesUsernamePasswordCredentialsArgs>;
-    /**
-     * Defines the certificate reference when Certificate user authentication mode is selected.
-     */
-    x509Credentials?: pulumi.Input<AssetEndpointProfilePropertiesX509CredentialsArgs>;
-}
-/**
- * assetEndpointProfilePropertiesUserAuthenticationArgsProvideDefaults sets the appropriate defaults for AssetEndpointProfilePropertiesUserAuthenticationArgs
- */
-export function assetEndpointProfilePropertiesUserAuthenticationArgsProvideDefaults(val: AssetEndpointProfilePropertiesUserAuthenticationArgs): AssetEndpointProfilePropertiesUserAuthenticationArgs {
-    return {
-        ...val,
-        mode: (val.mode) ?? "Certificate",
-    };
-}
-
-/**
- * Defines the username and password references when UsernamePassword user authentication mode is selected.
- */
-export interface AssetEndpointProfilePropertiesUsernamePasswordCredentialsArgs {
-    /**
-     * A reference to secret containing the password.
-     */
-    passwordReference: pulumi.Input<string>;
-    /**
-     * A reference to secret containing the username.
-     */
-    usernameReference: pulumi.Input<string>;
-}
-
-/**
- * Defines the certificate reference when Certificate user authentication mode is selected.
- */
-export interface AssetEndpointProfilePropertiesX509CredentialsArgs {
-    /**
-     * A reference to secret containing the certificate and private key (e.g. stored as .der/.pem or .der/.pfx).
-     */
-    certificateReference: pulumi.Input<string>;
-}
-
-/**
- * The extended location.
- */
-export interface AssetExtendedLocationArgs {
-    /**
-     * The extended location name.
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * The extended location type.
-     */
-    type?: pulumi.Input<string>;
-}
-
-/**
- * Asset resource properties.
- */
-export interface AssetPropertiesArgs {
-    /**
-     * A reference to the asset endpoint profile (connection information) used by brokers to connect to an endpoint that provides data points for this asset. Must have the format <ModuleCR.metadata.namespace>/<ModuleCR.metadata.name>.
-     */
-    assetEndpointProfileUri: pulumi.Input<string>;
-    /**
-     * Resource path to asset type (model) definition.
-     */
-    assetType?: pulumi.Input<string>;
-    /**
-     * A set of key-value pairs that contain custom attributes set by the customer.
-     */
-    attributes?: any;
-    /**
-     * Array of data points that are part of the asset. Each data point can reference an asset type capability and have per-data point configuration. See below for more details for the definition of the dataPoints element.
-     */
-    dataPoints?: pulumi.Input<pulumi.Input<AssetPropertiesDataPointsArgs>[]>;
-    /**
-     * Protocol-specific default configuration for all data points. Each data point can have its own configuration that overrides the default settings here. This assumes that each asset instance has one protocol.
-     */
-    defaultDataPointsConfiguration?: pulumi.Input<string>;
-    /**
-     * Protocol-specific default configuration for all events. Each event can have its own configuration that overrides the default settings here. This assumes that each asset instance has one protocol.
-     */
-    defaultEventsConfiguration?: pulumi.Input<string>;
-    /**
-     * Human-readable description of the asset.
-     */
-    description?: pulumi.Input<string>;
-    /**
-     * Human-readable display name.
-     */
-    displayName?: pulumi.Input<string>;
-    /**
-     * Reference to the documentation.
-     */
-    documentationUri?: pulumi.Input<string>;
-    /**
-     * Enabled/Disabled status of the asset.
-     */
-    enabled?: pulumi.Input<boolean>;
-    /**
-     * Array of events that are part of the asset. Each event can reference an asset type capability and have per-event configuration. See below for more details about the definition of the events element.
-     */
-    events?: pulumi.Input<pulumi.Input<AssetPropertiesEventsArgs>[]>;
-    /**
-     * Asset id provided by the customer.
-     */
-    externalAssetId?: pulumi.Input<string>;
-    /**
-     * Revision number of the hardware.
-     */
-    hardwareRevision?: pulumi.Input<string>;
-    /**
-     * Asset manufacturer name.
-     */
-    manufacturer?: pulumi.Input<string>;
-    /**
-     * Asset manufacturer URI.
-     */
-    manufacturerUri?: pulumi.Input<string>;
-    /**
-     * Asset model name.
-     */
-    model?: pulumi.Input<string>;
-    /**
-     * Asset product code.
-     */
-    productCode?: pulumi.Input<string>;
-    /**
-     * Asset serial number.
-     */
-    serialNumber?: pulumi.Input<string>;
-    /**
-     * Revision number of the software.
-     */
-    softwareRevision?: pulumi.Input<string>;
-}
-
-export interface AssetPropertiesDataPointsArgs {
+export interface DataPointArgs {
     /**
      * The path to the type definition of the capability (e.g. DTMI, OPC UA information model node id, etc.), for example dtmi:com:example:Robot:_contents:__prop1;1.
      */
@@ -240,16 +26,19 @@ export interface AssetPropertiesDataPointsArgs {
     observabilityMode?: pulumi.Input<string | enums.DataPointsObservabilityMode>;
 }
 /**
- * assetPropertiesDataPointsArgsProvideDefaults sets the appropriate defaults for AssetPropertiesDataPointsArgs
+ * dataPointArgsProvideDefaults sets the appropriate defaults for DataPointArgs
  */
-export function assetPropertiesDataPointsArgsProvideDefaults(val: AssetPropertiesDataPointsArgs): AssetPropertiesDataPointsArgs {
+export function dataPointArgsProvideDefaults(val: DataPointArgs): DataPointArgs {
     return {
         ...val,
         observabilityMode: (val.observabilityMode) ?? "none",
     };
 }
 
-export interface AssetPropertiesEventsArgs {
+/**
+ * Defines the event properties.
+ */
+export interface EventArgs {
     /**
      * The path to the type definition of the capability (e.g. DTMI, OPC UA information model node id, etc.), for example dtmi:com:example:Robot:_contents:__prop1;1.
      */
@@ -272,11 +61,104 @@ export interface AssetPropertiesEventsArgs {
     observabilityMode?: pulumi.Input<string | enums.EventsObservabilityMode>;
 }
 /**
- * assetPropertiesEventsArgsProvideDefaults sets the appropriate defaults for AssetPropertiesEventsArgs
+ * eventArgsProvideDefaults sets the appropriate defaults for EventArgs
  */
-export function assetPropertiesEventsArgsProvideDefaults(val: AssetPropertiesEventsArgs): AssetPropertiesEventsArgs {
+export function eventArgsProvideDefaults(val: EventArgs): EventArgs {
     return {
         ...val,
         observabilityMode: (val.observabilityMode) ?? "none",
     };
+}
+
+/**
+ * The extended location.
+ */
+export interface ExtendedLocationArgs {
+    /**
+     * The extended location name.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The extended location type.
+     */
+    type: pulumi.Input<string>;
+}
+
+/**
+ * Certificate or private key that can be used by the southbound connector connecting to the shop floor/OT device. The accepted extensions are .der for certificates and .pfx/.pem for private keys.
+ */
+export interface OwnCertificateArgs {
+    /**
+     * Secret Reference Name (Pfx or Pem password).
+     */
+    certPasswordReference?: pulumi.Input<string>;
+    /**
+     * Secret Reference name (cert and private key).
+     */
+    certSecretReference?: pulumi.Input<string>;
+    /**
+     * Certificate thumbprint.
+     */
+    certThumbprint?: pulumi.Input<string>;
+}
+
+/**
+ * Definition of the authentication mechanism for the southbound connector.
+ */
+export interface TransportAuthenticationArgs {
+    /**
+     * Defines a reference to a secret which contains all certificates and private keys that can be used by the southbound connector connecting to the shop floor/OT device. The accepted extensions are .der for certificates and .pfx/.pem for private keys.
+     */
+    ownCertificates: pulumi.Input<pulumi.Input<OwnCertificateArgs>[]>;
+}
+
+/**
+ * Definition of the client authentication mechanism to the server.
+ */
+export interface UserAuthenticationArgs {
+    /**
+     * Defines the mode to authenticate the user of the client at the server.
+     */
+    mode: pulumi.Input<string | enums.UserAuthenticationMode>;
+    /**
+     * Defines the username and password references when UsernamePassword user authentication mode is selected.
+     */
+    usernamePasswordCredentials?: pulumi.Input<UsernamePasswordCredentialsArgs>;
+    /**
+     * Defines the certificate reference when Certificate user authentication mode is selected.
+     */
+    x509Credentials?: pulumi.Input<X509CredentialsArgs>;
+}
+/**
+ * userAuthenticationArgsProvideDefaults sets the appropriate defaults for UserAuthenticationArgs
+ */
+export function userAuthenticationArgsProvideDefaults(val: UserAuthenticationArgs): UserAuthenticationArgs {
+    return {
+        ...val,
+        mode: (val.mode) ?? "Certificate",
+    };
+}
+
+/**
+ * The credentials for authentication mode UsernamePassword.
+ */
+export interface UsernamePasswordCredentialsArgs {
+    /**
+     * A reference to secret containing the password.
+     */
+    passwordReference: pulumi.Input<string>;
+    /**
+     * A reference to secret containing the username.
+     */
+    usernameReference: pulumi.Input<string>;
+}
+
+/**
+ * The x509 certificate for authentication mode Certificate.
+ */
+export interface X509CredentialsArgs {
+    /**
+     * A reference to secret containing the certificate and private key (e.g. stored as .der/.pem or .der/.pfx).
+     */
+    certificateReference: pulumi.Input<string>;
 }

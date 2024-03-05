@@ -34,6 +34,9 @@ export interface GetMetadataSchemaArgs {
  * Metadata schema entity. Used to define metadata for the entities in API catalog.
  */
 export interface GetMetadataSchemaResult {
+    /**
+     * The assignees
+     */
     readonly assignedTo?: types.outputs.MetadataAssignmentResponse[];
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

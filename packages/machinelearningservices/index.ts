@@ -56,6 +56,11 @@ export type Datastore = import("./datastore").Datastore;
 export const Datastore: typeof import("./datastore").Datastore = null as any;
 utilities.lazyLoad(exports, ["Datastore"], () => require("./datastore"));
 
+export { EndpointDeploymentArgs } from "./endpointDeployment";
+export type EndpointDeployment = import("./endpointDeployment").EndpointDeployment;
+export const EndpointDeployment: typeof import("./endpointDeployment").EndpointDeployment = null as any;
+utilities.lazyLoad(exports, ["EndpointDeployment"], () => require("./endpointDeployment"));
+
 export { EnvironmentContainerArgs } from "./environmentContainer";
 export type EnvironmentContainer = import("./environmentContainer").EnvironmentContainer;
 export const EnvironmentContainer: typeof import("./environmentContainer").EnvironmentContainer = null as any;
@@ -150,6 +155,11 @@ export { GetDatastoreArgs, GetDatastoreResult, GetDatastoreOutputArgs } from "./
 export const getDatastore: typeof import("./getDatastore").getDatastore = null as any;
 export const getDatastoreOutput: typeof import("./getDatastore").getDatastoreOutput = null as any;
 utilities.lazyLoad(exports, ["getDatastore","getDatastoreOutput"], () => require("./getDatastore"));
+
+export { GetEndpointDeploymentArgs, GetEndpointDeploymentResult, GetEndpointDeploymentOutputArgs } from "./getEndpointDeployment";
+export const getEndpointDeployment: typeof import("./getEndpointDeployment").getEndpointDeployment = null as any;
+export const getEndpointDeploymentOutput: typeof import("./getEndpointDeployment").getEndpointDeploymentOutput = null as any;
+utilities.lazyLoad(exports, ["getEndpointDeployment","getEndpointDeploymentOutput"], () => require("./getEndpointDeployment"));
 
 export { GetEnvironmentContainerArgs, GetEnvironmentContainerResult, GetEnvironmentContainerOutputArgs } from "./getEnvironmentContainer";
 export const getEnvironmentContainer: typeof import("./getEnvironmentContainer").getEnvironmentContainer = null as any;
@@ -250,6 +260,11 @@ export { GetManagedNetworkSettingsRuleArgs, GetManagedNetworkSettingsRuleResult,
 export const getManagedNetworkSettingsRule: typeof import("./getManagedNetworkSettingsRule").getManagedNetworkSettingsRule = null as any;
 export const getManagedNetworkSettingsRuleOutput: typeof import("./getManagedNetworkSettingsRule").getManagedNetworkSettingsRuleOutput = null as any;
 utilities.lazyLoad(exports, ["getManagedNetworkSettingsRule","getManagedNetworkSettingsRuleOutput"], () => require("./getManagedNetworkSettingsRule"));
+
+export { GetMarketplaceSubscriptionArgs, GetMarketplaceSubscriptionResult, GetMarketplaceSubscriptionOutputArgs } from "./getMarketplaceSubscription";
+export const getMarketplaceSubscription: typeof import("./getMarketplaceSubscription").getMarketplaceSubscription = null as any;
+export const getMarketplaceSubscriptionOutput: typeof import("./getMarketplaceSubscription").getMarketplaceSubscriptionOutput = null as any;
+utilities.lazyLoad(exports, ["getMarketplaceSubscription","getMarketplaceSubscriptionOutput"], () => require("./getMarketplaceSubscription"));
 
 export { GetModelContainerArgs, GetModelContainerResult, GetModelContainerOutputArgs } from "./getModelContainer";
 export const getModelContainer: typeof import("./getModelContainer").getModelContainer = null as any;
@@ -421,6 +436,11 @@ export const listDatastoreSecrets: typeof import("./listDatastoreSecrets").listD
 export const listDatastoreSecretsOutput: typeof import("./listDatastoreSecrets").listDatastoreSecretsOutput = null as any;
 utilities.lazyLoad(exports, ["listDatastoreSecrets","listDatastoreSecretsOutput"], () => require("./listDatastoreSecrets"));
 
+export { ListEndpointKeysArgs, ListEndpointKeysResult, ListEndpointKeysOutputArgs } from "./listEndpointKeys";
+export const listEndpointKeys: typeof import("./listEndpointKeys").listEndpointKeys = null as any;
+export const listEndpointKeysOutput: typeof import("./listEndpointKeys").listEndpointKeysOutput = null as any;
+utilities.lazyLoad(exports, ["listEndpointKeys","listEndpointKeysOutput"], () => require("./listEndpointKeys"));
+
 export { ListFeaturesetVersionFeaturesArgs, ListFeaturesetVersionFeaturesResult, ListFeaturesetVersionFeaturesOutputArgs } from "./listFeaturesetVersionFeatures";
 export const listFeaturesetVersionFeatures: typeof import("./listFeaturesetVersionFeatures").listFeaturesetVersionFeatures = null as any;
 export const listFeaturesetVersionFeaturesOutput: typeof import("./listFeaturesetVersionFeatures").listFeaturesetVersionFeaturesOutput = null as any;
@@ -480,6 +500,11 @@ export { ManagedNetworkSettingsRuleArgs } from "./managedNetworkSettingsRule";
 export type ManagedNetworkSettingsRule = import("./managedNetworkSettingsRule").ManagedNetworkSettingsRule;
 export const ManagedNetworkSettingsRule: typeof import("./managedNetworkSettingsRule").ManagedNetworkSettingsRule = null as any;
 utilities.lazyLoad(exports, ["ManagedNetworkSettingsRule"], () => require("./managedNetworkSettingsRule"));
+
+export { MarketplaceSubscriptionArgs } from "./marketplaceSubscription";
+export type MarketplaceSubscription = import("./marketplaceSubscription").MarketplaceSubscription;
+export const MarketplaceSubscription: typeof import("./marketplaceSubscription").MarketplaceSubscription = null as any;
+utilities.lazyLoad(exports, ["MarketplaceSubscription"], () => require("./marketplaceSubscription"));
 
 export { ModelContainerArgs } from "./modelContainer";
 export type ModelContainer = import("./modelContainer").ModelContainer;
@@ -613,6 +638,8 @@ const _module = {
                 return new DataVersion(name, <any>undefined, { urn })
             case "azure-native:machinelearningservices:Datastore":
                 return new Datastore(name, <any>undefined, { urn })
+            case "azure-native:machinelearningservices:EndpointDeployment":
+                return new EndpointDeployment(name, <any>undefined, { urn })
             case "azure-native:machinelearningservices:EnvironmentContainer":
                 return new EnvironmentContainer(name, <any>undefined, { urn })
             case "azure-native:machinelearningservices:EnvironmentSpecificationVersion":
@@ -647,6 +674,8 @@ const _module = {
                 return new MachineLearningDatastore(name, <any>undefined, { urn })
             case "azure-native:machinelearningservices:ManagedNetworkSettingsRule":
                 return new ManagedNetworkSettingsRule(name, <any>undefined, { urn })
+            case "azure-native:machinelearningservices:MarketplaceSubscription":
+                return new MarketplaceSubscription(name, <any>undefined, { urn })
             case "azure-native:machinelearningservices:ModelContainer":
                 return new ModelContainer(name, <any>undefined, { urn })
             case "azure-native:machinelearningservices:ModelVersion":

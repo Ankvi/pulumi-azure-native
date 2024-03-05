@@ -4,7 +4,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Gets the primary and secondary admin API keys for the specified Azure Cognitive Search service.
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2015-02-28, 2021-04-01-preview, 2023-11-01.
+ * Other available API versions: 2015-02-28, 2021-04-01-preview, 2023-11-01, 2024-03-01-preview.
  */
 export function listAdminKey(args: ListAdminKeyArgs, opts?: pulumi.InvokeOptions): Promise<ListAdminKeyResult> {
 
@@ -43,7 +43,7 @@ export interface ListAdminKeyResult {
  * Gets the primary and secondary admin API keys for the specified Azure Cognitive Search service.
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2015-02-28, 2021-04-01-preview, 2023-11-01.
+ * Other available API versions: 2015-02-28, 2021-04-01-preview, 2023-11-01, 2024-03-01-preview.
  */
 export function listAdminKeyOutput(args: ListAdminKeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListAdminKeyResult> {
     return pulumi.output(args).apply((a: any) => listAdminKey(a, opts))

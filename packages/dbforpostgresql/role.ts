@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Represents a cluster role.
  * Azure REST API version: 2022-11-08.
+ *
+ * Other available API versions: 2023-03-02-preview.
  */
 export class Role extends pulumi.CustomResource {
     /**
@@ -84,7 +86,7 @@ export class Role extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:dbforpostgresql/v20221108:Role" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:dbforpostgresql/v20221108:Role" }, { type: "azure-native:dbforpostgresql/v20230302preview:Role" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Role.__pulumiType, name, resourceInputs, opts);
     }

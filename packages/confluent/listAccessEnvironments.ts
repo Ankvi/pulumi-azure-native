@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * List environments success response
  * Azure REST API version: 2023-08-22.
+ *
+ * Other available API versions: 2024-02-13.
  */
 export function listAccessEnvironments(args: ListAccessEnvironmentsArgs, opts?: pulumi.InvokeOptions): Promise<ListAccessEnvironmentsResult> {
 
@@ -50,6 +52,8 @@ export interface ListAccessEnvironmentsResult {
 /**
  * List environments success response
  * Azure REST API version: 2023-08-22.
+ *
+ * Other available API versions: 2024-02-13.
  */
 export function listAccessEnvironmentsOutput(args: ListAccessEnvironmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListAccessEnvironmentsResult> {
     return pulumi.output(args).apply((a: any) => listAccessEnvironments(a, opts))

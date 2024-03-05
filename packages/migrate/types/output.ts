@@ -23,6 +23,102 @@ export interface ACRPropertiesResponse {
 }
 
 /**
+ * Data model of AKS Assessment Details.
+ */
+export interface AKSAssessmentDetailsResponse {
+    /**
+     * Gets Confidence score.
+     */
+    confidenceRatingInPercentage: number;
+    /**
+     * Gets date and time when assessment was created.
+     */
+    createdTimestamp: string;
+    /**
+     * Gets the number of machines.
+     */
+    machineCount: number;
+    /**
+     * Gets last time when rates were queried.
+     */
+    pricesTimestamp: string;
+    /**
+     * Gets assessment status.
+     */
+    status: string;
+    /**
+     * Gets the total monthly cost.
+     */
+    totalMonthlyCost: number;
+    /**
+     * Gets date and time when assessment was last updated.
+     */
+    updatedTimestamp: string;
+    /**
+     * Gets the number of web apps.
+     */
+    webAppCount: number;
+    /**
+     * Gets the number of web servers.
+     */
+    webServerCount: number;
+}
+
+/**
+ * Data model of AKS Assessment Settings.
+ */
+export interface AKSAssessmentSettingsResponse {
+    /**
+     * Gets or sets azure location.
+     */
+    azureLocation: string;
+    /**
+     * Gets or sets azure VM category.
+     */
+    category: string;
+    /**
+     * Gets or sets consolidation type.
+     */
+    consolidation: string;
+    /**
+     * Gets or sets currency.
+     */
+    currency: string;
+    /**
+     * Gets or sets discount percentage.
+     */
+    discountPercentage?: number;
+    /**
+     * Gets or sets environment type.
+     */
+    environmentType: string;
+    /**
+     * Gets or sets licensing program.
+     */
+    licensingProgram: string;
+    /**
+     * Gets or sets performance data settings.
+     */
+    performanceData?: PerfDataSettingsResponse;
+    /**
+     * Gets or sets pricing tier.
+     */
+    pricingTier: string;
+    /**
+     * Gets or sets savings options.
+     */
+    savingsOptions: string;
+    /**
+     * Gets or sets scaling factor.
+     */
+    scalingFactor?: number;
+    /**
+     * Gets or sets sizing criteria.
+     */
+    sizingCriteria: string;
+}
+
+/**
  * Class for AKSDeployment Properties.
  */
 export interface AKSDeploymentPropertiesResponse {
@@ -252,6 +348,26 @@ export interface AppInsightMonitoringPropertiesResponse {
 }
 
 /**
+ * App service container settings.
+ */
+export interface AppSvcContainerSettingsResponse {
+    /**
+     * Gets or sets the isolation required.
+     */
+    isolationRequired: boolean;
+}
+
+/**
+ * App service native settings.
+ */
+export interface AppSvcNativeSettingsResponse {
+    /**
+     * Gets or sets the isolation required.
+     */
+    isolationRequired: boolean;
+}
+
+/**
  * Properties of an assessment.
  */
 export interface AssessmentPropertiesResponse {
@@ -378,6 +494,16 @@ export interface AssessmentPropertiesResponse {
 }
 
 /**
+ * Data model of Assessment Scope Parameters.
+ */
+export interface AssessmentScopeParametersResponse {
+    /**
+     * Gets or sets the server group id.
+     */
+    serverGroupId?: string;
+}
+
+/**
  * Defines the properties for automatic resolution.
  */
 export interface AutomaticResolutionPropertiesResponse {
@@ -463,6 +589,99 @@ export interface AzureFileShareHydrationProfileResponse {
      * Gets or sets the subscription id of the azure file share.
      */
     azureFileShareSubscriptionId?: string;
+}
+
+/**
+ * Azure settings for a business case.
+ */
+export interface AzureSettingsResponse {
+    /**
+     * Gets Avs labour cost percentage.
+     */
+    avsLaborCostPercentage?: number;
+    /**
+     * Migration Strategy.
+     */
+    businessCaseType?: string;
+    /**
+     * Gets comfort factor.
+     */
+    comfortFactor?: number;
+    /**
+     * Business case Currency.
+     */
+    currency: string;
+    /**
+     * Gets azure Discount percentage.
+     */
+    discountPercentage?: number;
+    /**
+     * Gets IaaS labour cost percentage.
+     */
+    iaasLaborCostPercentage?: number;
+    /**
+     * Gets infrastructure growth rate.
+     */
+    infrastructureGrowthRate?: number;
+    /**
+     * Gets network cost percentage.
+     */
+    networkCostPercentage?: number;
+    /**
+     * Gets PaaS labour cost percentage.
+     */
+    paasLaborCostPercentage?: number;
+    /**
+     * Gets migration completion percentage per year.
+     */
+    perYearMigrationCompletionPercentage?: {[key: string]: number};
+    /**
+     * Gets end time to use for performance.
+     */
+    performanceDataEndTime?: string;
+    /**
+     * Gets start time to use for performance.
+     */
+    performanceDataStartTime?: string;
+    /**
+     * Gets utilization percentile for performance.
+     */
+    performanceUtilizationPercentile?: number;
+    /**
+     * Gets the business case savings option type.
+     */
+    savingsOption?: string;
+    /**
+     * Gets or sets azure location.
+     */
+    targetLocation: string;
+    /**
+     * Gets wACC percentage.
+     */
+    wacc?: number;
+    /**
+     * Workload discovery source.
+     */
+    workloadDiscoverySource?: string;
+}
+/**
+ * azureSettingsResponseProvideDefaults sets the appropriate defaults for AzureSettingsResponse
+ */
+export function azureSettingsResponseProvideDefaults(val: AzureSettingsResponse): AzureSettingsResponse {
+    return {
+        ...val,
+        avsLaborCostPercentage: (val.avsLaborCostPercentage) ?? 75,
+        businessCaseType: (val.businessCaseType) ?? "OptimizeForCost",
+        comfortFactor: (val.comfortFactor) ?? 1,
+        currency: (val.currency) ?? "USD",
+        iaasLaborCostPercentage: (val.iaasLaborCostPercentage) ?? 75,
+        infrastructureGrowthRate: (val.infrastructureGrowthRate) ?? 5,
+        networkCostPercentage: (val.networkCostPercentage) ?? 5,
+        paasLaborCostPercentage: (val.paasLaborCostPercentage) ?? 60,
+        performanceUtilizationPercentile: (val.performanceUtilizationPercentile) ?? 95,
+        savingsOption: (val.savingsOption) ?? "RI3Year",
+        workloadDiscoverySource: (val.workloadDiscoverySource) ?? "Appliance",
+    };
 }
 
 /**
@@ -616,6 +835,32 @@ export interface CollectorPropertiesResponse {
 }
 
 /**
+ * Compute settings.
+ */
+export interface ComputeSettingsResponse {
+    /**
+     * Hyperthread core to memory ratio.
+     */
+    hyperthreadCoreToMemoryRatio: number;
+    /**
+     * Compute Price.
+     */
+    price: number;
+    /**
+     * SQL Server licensing settings.
+     */
+    sqlServerLicensing: SqlServerLicensingSettingsResponse[];
+    /**
+     * Virtualization software settings.
+     */
+    virtualizationSoftwareSettings: VirtualizationSoftwareSettingsResponse;
+    /**
+     * Windows Server licensing settings.
+     */
+    windowsServerLicensing: WindowsServerLicensingSettingsResponse;
+}
+
+/**
  * Class for container image properties.
  */
 export interface ContainerImagePropertiesResponse {
@@ -647,6 +892,24 @@ export interface ContainerImagePropertiesResponse {
      * Gets or sets the RunStatus.
      */
     runStatus?: string;
+}
+
+/**
+ * Class to represent the component of the cost.
+ */
+export interface CostComponentResponse {
+    /**
+     * The textual description of the component.
+     */
+    description?: string;
+    /**
+     * Gets the name of the component.
+     */
+    name: string;
+    /**
+     * The value of the component.
+     */
+    value?: number;
 }
 
 /**
@@ -756,6 +1019,24 @@ export interface DirectoryPathResponse {
 }
 
 /**
+ * Discovered entity light summary.
+ */
+export interface DiscoveredEntityLightSummaryResponse {
+    /**
+     * Gets or sets the number of machines.
+     */
+    numberOfMachines: number;
+    /**
+     * Gets or sets the number of servers.
+     */
+    numberOfServers: number;
+    /**
+     * Gets or sets the number of web apps.
+     */
+    numberOfWebApps: number;
+}
+
+/**
  * Defines the disk encryption set resource settings.
  */
 export interface DiskEncryptionSetResourceSettingsResponse {
@@ -786,6 +1067,16 @@ export interface EntityUptimeResponse {
      * Gets the hours per day.
      */
     hoursPerDay?: number;
+}
+
+/**
+ * Facility settings.
+ */
+export interface FacilitySettingsResponse {
+    /**
+     * The facilities cost.
+     */
+    facilitiesCost: number;
 }
 
 /**
@@ -952,6 +1243,38 @@ export interface HealthErrorModelResponse {
      * Gets or sets the error summary.
      */
     summary: string;
+}
+
+/**
+ * Representation of a licence.
+ */
+export interface HypervLicenseResponse {
+    /**
+     * Cost of a licence.
+     */
+    licenseCost: number;
+    /**
+     * HyperV licence type.
+     */
+    licenseType: string;
+}
+
+/**
+ * HyperV Virtualization Management Settings.
+ */
+export interface HypervVirtualizationManagementSettingsResponse {
+    /**
+     * Licence and support list.
+     */
+    licenseAndSupportList: HypervLicenseResponse[];
+    /**
+     * Number of physical cores per licence.
+     */
+    numberOfPhysicalCoresPerLicense: number;
+    /**
+     * Software Assurance Cost.
+     */
+    softwareAssuranceCost: number;
 }
 
 /**
@@ -1440,6 +1763,24 @@ export interface LBFrontendIPConfigurationResourceSettingsResponse {
 }
 
 /**
+ * Labour settings.
+ */
+export interface LaborSettingsResponse {
+    /**
+     * Hourly administrator cost.
+     */
+    hourlyAdminCost: number;
+    /**
+     * Physical servers per administrator.
+     */
+    physicalServersPerAdmin: number;
+    /**
+     * Virtual machines per administrator.
+     */
+    virtualMachinesPerAdmin: number;
+}
+
+/**
  * Defines reference to load balancer backend address pools.
  */
 export interface LoadBalancerBackendAddressPoolReferenceResponse {
@@ -1514,6 +1855,28 @@ export interface ManagedIdentityPropertiesResponse {
     resourceGroup?: string;
     subscriptionId?: string;
     tenantId?: string;
+}
+
+/**
+ * Management settings.
+ */
+export interface ManagementSettingsResponse {
+    /**
+     * HyperV Virtualization Management Settings.
+     */
+    hypervVirtualizationManagementSettings: HypervVirtualizationManagementSettingsResponse;
+    /**
+     * Other Management Costs Settings.
+     */
+    otherManagementCostsSettings: OtherManagementCostsSettingsResponse;
+    /**
+     * Third Party Management Settings.
+     */
+    thirdPartyManagementSettings: ThirdPartyManagementSettingsResponse;
+    /**
+     * vSphere Management Settings.
+     */
+    vsphereManagementSettings: VsphereManagementSettingsResponse;
 }
 
 /**
@@ -1973,6 +2336,20 @@ export interface NetworkSecurityGroupResourceSettingsResponse {
 }
 
 /**
+ * Network settings.
+ */
+export interface NetworkSettingsResponse {
+    /**
+     * Network hardware and software cost percentage.
+     */
+    hardwareSoftwareCostPercentage: number;
+    /**
+     * Network maintenance cost percentage.
+     */
+    maintenanceCostPercentage: number;
+}
+
+/**
  * Defines NIC IP configuration properties.
  */
 export interface NicIpConfigurationResourceSettingsResponse {
@@ -2077,11 +2454,85 @@ export interface NsgSecurityRuleResponse {
     sourcePortRange?: string;
 }
 
+/**
+ * On-premise settings.
+ */
+export interface OnPremiseSettingsResponse {
+    /**
+     * Compute settings.
+     */
+    computeSettings: ComputeSettingsResponse;
+    /**
+     * Facility settings.
+     */
+    facilitySettings: FacilitySettingsResponse;
+    /**
+     * Labour settings.
+     */
+    laborSettings: LaborSettingsResponse;
+    /**
+     * Management settings.
+     */
+    managementSettings?: ManagementSettingsResponse;
+    /**
+     * Network settings.
+     */
+    networkSettings: NetworkSettingsResponse;
+    /**
+     * Security settings.
+     */
+    securitySettings: SecuritySettingsResponse;
+    /**
+     * Storage settings.
+     */
+    storageSettings: StorageSettingsResponse;
+}
+
 export interface OperatingSystemDetailsResponse {
     os?: string;
     osArchitecture?: string;
     osName?: string;
     osVersion?: string;
+}
+
+/**
+ * Other Management Costs Settings.
+ */
+export interface OtherManagementCostsSettingsResponse {
+    /**
+     * Data Protection Cost Per Server Per Year.
+     */
+    dataProtectionCostPerServerPerYear: number;
+    /**
+     * Monitoring Cost Per Server Per Year.
+     */
+    monitoringCostPerServerPerYear: number;
+    /**
+     * Patching Cost Per Server Per Year.
+     */
+    patchingCostPerServerPerYear: number;
+}
+
+/**
+ * Data model of Performance Data Settings.
+ */
+export interface PerfDataSettingsResponse {
+    /**
+     * Gets percentile utilization for performance data.
+     */
+    percentile: string;
+    /**
+     * Gets or sets perf data end time.
+     */
+    perfDataEndTime?: string;
+    /**
+     * Gets or sets perf data start time.
+     */
+    perfDataStartTime?: string;
+    /**
+     * Gets perf data time range.
+     */
+    timeRange: string;
 }
 
 /**
@@ -2380,6 +2831,20 @@ export interface PublicIpReferenceResponse {
 }
 
 /**
+ * Business case report details.
+ */
+export interface ReportDetailsResponse {
+    /**
+     * Report status.
+     */
+    reportStatus: string;
+    /**
+     * Report type.
+     */
+    reportType: string;
+}
+
+/**
  * Defines the resource group resource settings.
  */
 export interface ResourceGroupResourceSettingsResponse {
@@ -2434,6 +2899,20 @@ export interface SecretStoreDetailsResponse {
 export interface SecretStorePropertiesResponse {
     inputType: string;
     secretStoreId?: string;
+}
+
+/**
+ * Security settings.
+ */
+export interface SecuritySettingsResponse {
+    /**
+     * Physical servers per administrator.
+     */
+    serverSecurityCostPerServerPerYear: number;
+    /**
+     * Virtual machines per administrator.
+     */
+    sqlServerSecurityCostPerServerPerYear: number;
 }
 
 /**
@@ -2508,6 +2987,29 @@ export interface ServersSolutionSummaryResponse {
      * Gets or sets the count of servers test migrated.
      */
     testMigratedCount?: number;
+}
+
+/**
+ * Business case settings.
+ */
+export interface SettingsResponse {
+    /**
+     * Azure settings for a business case.
+     */
+    azureSettings: AzureSettingsResponse;
+    /**
+     * On-premise settings.
+     */
+    onPremiseSettings?: OnPremiseSettingsResponse;
+}
+/**
+ * settingsResponseProvideDefaults sets the appropriate defaults for SettingsResponse
+ */
+export function settingsResponseProvideDefaults(val: SettingsResponse): SettingsResponse {
+    return {
+        ...val,
+        azureSettings: azureSettingsResponseProvideDefaults(val.azureSettings),
+    };
 }
 
 /**
@@ -2663,6 +3165,24 @@ export interface SqlMiSettingsResponse {
 }
 
 /**
+ * SQL Server licensing settings.
+ */
+export interface SqlServerLicensingSettingsResponse {
+    /**
+     * Licence cost.
+     */
+    licenseCost: number;
+    /**
+     * Software assurance (SA) cost.
+     */
+    softwareAssuranceCost: number;
+    /**
+     * SQL Server version.
+     */
+    version: string;
+}
+
+/**
  * Defines the SQL Server resource settings.
  */
 export interface SqlServerResourceSettingsResponse {
@@ -2690,6 +3210,20 @@ export interface SqlVmSettingsResponse {
      * consistent with other targets).
      */
     instanceSeries?: string[];
+}
+
+/**
+ * Storage settings.
+ */
+export interface StorageSettingsResponse {
+    /**
+     * Cost per gigabyte per month.
+     */
+    costPerGbPerMonth: number;
+    /**
+     * Maintenance cost percentage.
+     */
+    maintainanceCostPercentageToAcquisitionCost: number;
 }
 
 /**
@@ -2792,6 +3326,20 @@ export interface TargetStorageProfileResponse {
      * PersistentVolume.
      */
     targetSize?: string;
+}
+
+/**
+ * Third Party Management settings.
+ */
+export interface ThirdPartyManagementSettingsResponse {
+    /**
+     * License Cost.
+     */
+    licenseCost: number;
+    /**
+     * Support Cost.
+     */
+    supportCost: number;
 }
 
 export interface UserAssignedIdentityResponse {
@@ -2898,6 +3446,27 @@ export interface VirtualNetworkResourceSettingsResponse {
     targetResourceName: string;
 }
 
+/**
+ * Virtualization software settings.
+ */
+export interface VirtualizationSoftwareSettingsResponse {
+    /**
+     * Licence and support list.
+     */
+    licenseAndSupportList: VsphereLicenseResponse[];
+    /**
+     * Number of physical cores per licence.
+     */
+    numberOfPhysicalCoresPerLicense: number;
+    /**
+     * Software Assurance cost.
+     */
+    softwareAssuranceCost: number;
+}
+
+/**
+ * Details on the total up-time for the VM.
+ */
 export interface VmUptimeResponse {
     /**
      * Number of days in a month for VM uptime.
@@ -2907,6 +3476,60 @@ export interface VmUptimeResponse {
      * Number of hours per day for VM uptime.
      */
     hoursPerDay?: number;
+}
+
+/**
+ * Representation of a vsphere licence.
+ */
+export interface VsphereLicenseResponse {
+    /**
+     * Basic support cost.
+     */
+    basicSupportCost: number;
+    /**
+     * Cost of a licence.
+     */
+    licenseCost: number;
+    /**
+     * VSphere licence type.
+     */
+    licenseType: string;
+    /**
+     * Production support cost.
+     */
+    productionSupportCost: number;
+}
+
+/**
+ * Representation of a vsphere management licence.
+ */
+export interface VsphereManagementLicenseResponse {
+    /**
+     * Basic support cost.
+     */
+    basicSupportCost: number;
+    /**
+     * Cost of a licence.
+     */
+    licenseCost: number;
+    /**
+     * VSphere licence type.
+     */
+    licenseType: string;
+    /**
+     * Production support cost.
+     */
+    productionSupportCost: number;
+}
+
+/**
+ * Vsphere management settings.
+ */
+export interface VsphereManagementSettingsResponse {
+    /**
+     * Licence and support list.
+     */
+    licenseAndSupportList: VsphereManagementLicenseResponse[];
 }
 
 /**
@@ -3000,6 +3623,24 @@ export interface WebApplicationFrameworkResponse {
      * Gets or sets Version of the framework.
      */
     version?: string;
+}
+
+/**
+ * Windows Server licensing settings.
+ */
+export interface WindowsServerLicensingSettingsResponse {
+    /**
+     * Licence Cost.
+     */
+    licenseCost: number;
+    /**
+     * Licenses per core.
+     */
+    licensesPerCore: number;
+    /**
+     * Software assurance (SA) cost.
+     */
+    softwareAssuranceCost: number;
 }
 
 /**
@@ -3255,6 +3896,7 @@ export interface WorkloadInstanceModelResponseSystemData {
      */
     lastModifiedByType?: string;
 }
+
 
 
 

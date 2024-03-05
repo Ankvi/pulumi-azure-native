@@ -5,7 +5,7 @@ import * as types from "./types";
  * The private endpoint connection resource.
  * Azure REST API version: 2022-11-08. Prior API version in Azure Native 1.x: 2018-06-01.
  *
- * Other available API versions: 2018-06-01-privatepreview, 2023-06-01-preview.
+ * Other available API versions: 2018-06-01-privatepreview, 2023-03-02-preview, 2023-06-01-preview.
  */
 export class PrivateEndpointConnection extends pulumi.CustomResource {
     /**
@@ -103,7 +103,7 @@ export class PrivateEndpointConnection extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:dbforpostgresql/v20221108:PrivateEndpointConnection" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:dbforpostgresql/v20221108:PrivateEndpointConnection" }, { type: "azure-native:dbforpostgresql/v20230302preview:PrivateEndpointConnection" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PrivateEndpointConnection.__pulumiType, name, resourceInputs, opts);
     }

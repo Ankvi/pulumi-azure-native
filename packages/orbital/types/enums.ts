@@ -9,6 +9,16 @@ export const AutoTrackingConfiguration = {
  */
 export type AutoTrackingConfiguration = (typeof AutoTrackingConfiguration)[keyof typeof AutoTrackingConfiguration];
 
+export const Capability = {
+    EarthObservation: "EarthObservation",
+    Communication: "Communication",
+} as const;
+
+/**
+ * Capability of the Ground Station.
+ */
+export type Capability = (typeof Capability)[keyof typeof Capability];
+
 export const Direction = {
     Uplink: "Uplink",
     Downlink: "Downlink",

@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Get a AvsAssessment
  * Azure REST API version: 2023-03-15.
+ *
+ * Other available API versions: 2023-04-01-preview.
  */
 export function getAvsAssessmentsOperation(args: GetAvsAssessmentsOperationArgs, opts?: pulumi.InvokeOptions): Promise<GetAvsAssessmentsOperationResult> {
 
@@ -229,6 +231,8 @@ export interface GetAvsAssessmentsOperationResult {
 /**
  * Get a AvsAssessment
  * Azure REST API version: 2023-03-15.
+ *
+ * Other available API versions: 2023-04-01-preview.
  */
 export function getAvsAssessmentsOperationOutput(args: GetAvsAssessmentsOperationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAvsAssessmentsOperationResult> {
     return pulumi.output(args).apply((a: any) => getAvsAssessmentsOperation(a, opts))

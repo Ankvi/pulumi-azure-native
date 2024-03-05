@@ -117,6 +117,16 @@ export interface MonitoringTagRulesPropertiesArgs {
 }
 
 /**
+ * Open AI Integration details.
+ */
+export interface OpenAIIntegrationPropertiesArgs {
+    /**
+     * Value of API key for Open AI resource
+     */
+    key?: pulumi.Input<string>;
+}
+
+/**
  * Microsoft.Elastic SKU.
  */
 export interface ResourceSkuArgs {
@@ -151,6 +161,8 @@ export interface UserInfoArgs {
      */
     lastName?: pulumi.Input<string>;
 }
+
+
 
 
 

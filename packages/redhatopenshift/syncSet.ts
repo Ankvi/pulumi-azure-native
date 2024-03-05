@@ -5,7 +5,7 @@ import * as types from "./types";
  * SyncSet represents a SyncSet for an Azure Red Hat OpenShift Cluster.
  * Azure REST API version: 2022-09-04.
  *
- * Other available API versions: 2023-04-01, 2023-07-01-preview, 2023-09-04.
+ * Other available API versions: 2023-04-01, 2023-07-01-preview, 2023-09-04, 2023-11-22.
  */
 export class SyncSet extends pulumi.CustomResource {
     /**
@@ -82,7 +82,7 @@ export class SyncSet extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:redhatopenshift/v20220904:SyncSet" }, { type: "azure-native:redhatopenshift/v20230401:SyncSet" }, { type: "azure-native:redhatopenshift/v20230701preview:SyncSet" }, { type: "azure-native:redhatopenshift/v20230904:SyncSet" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:redhatopenshift/v20220904:SyncSet" }, { type: "azure-native:redhatopenshift/v20230401:SyncSet" }, { type: "azure-native:redhatopenshift/v20230701preview:SyncSet" }, { type: "azure-native:redhatopenshift/v20230904:SyncSet" }, { type: "azure-native:redhatopenshift/v20231122:SyncSet" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(SyncSet.__pulumiType, name, resourceInputs, opts);
     }

@@ -342,6 +342,38 @@ export interface MonitoringTagRulesPropertiesResponse {
 }
 
 /**
+ * Open AI Integration details.
+ */
+export interface OpenAIIntegrationPropertiesResponse {
+    /**
+     * Value of API key for Open AI resource
+     */
+    key?: string;
+    /**
+     * Last Update Timestamp for key updation
+     */
+    lastRefreshAt: string;
+    /**
+     * The API endpoint for Open AI resource
+     */
+    openAIResourceEndpoint: string;
+    /**
+     * The resource id of Open AI resource
+     */
+    openAIResourceId: string;
+}
+
+/**
+ * Status of the OpenAI Integration
+ */
+export interface OpenAIIntegrationStatusResponsePropertiesResponse {
+    /**
+     * Status of the OpenAI Integration
+     */
+    status?: string;
+}
+
+/**
  * Partner Billing details associated with the resource.
  */
 export interface PartnerBillingEntityResponse {
@@ -415,6 +447,8 @@ export interface VMResourcesResponse {
      */
     vmResourceId?: string;
 }
+
+
 
 
 

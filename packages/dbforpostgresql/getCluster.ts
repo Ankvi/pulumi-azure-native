@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets information about a cluster such as compute and storage configuration and cluster lifecycle metadata such as cluster creation date and time.
  * Azure REST API version: 2022-11-08.
+ *
+ * Other available API versions: 2023-03-02-preview.
  */
 export function getCluster(args: GetClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterResult> {
 
@@ -157,6 +159,8 @@ export interface GetClusterResult {
 /**
  * Gets information about a cluster such as compute and storage configuration and cluster lifecycle metadata such as cluster creation date and time.
  * Azure REST API version: 2022-11-08.
+ *
+ * Other available API versions: 2023-03-02-preview.
  */
 export function getClusterOutput(args: GetClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterResult> {
     return pulumi.output(args).apply((a: any) => getCluster(a, opts))

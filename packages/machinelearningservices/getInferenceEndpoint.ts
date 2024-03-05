@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Azure REST API version: 2023-08-01-preview.
+ *
+ * Other available API versions: 2024-01-01-preview.
  */
 export function getInferenceEndpoint(args: GetInferenceEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetInferenceEndpointResult> {
 
@@ -78,6 +80,8 @@ export interface GetInferenceEndpointResult {
 }
 /**
  * Azure REST API version: 2023-08-01-preview.
+ *
+ * Other available API versions: 2024-01-01-preview.
  */
 export function getInferenceEndpointOutput(args: GetInferenceEndpointOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInferenceEndpointResult> {
     return pulumi.output(args).apply((a: any) => getInferenceEndpoint(a, opts))

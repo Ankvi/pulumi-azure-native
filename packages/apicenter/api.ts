@@ -32,6 +32,9 @@ export class Api extends pulumi.CustomResource {
         return obj['__pulumiType'] === Api.__pulumiType;
     }
 
+    /**
+     * The set of contacts
+     */
     public readonly contacts!: pulumi.Output<types.outputs.ContactResponse[] | undefined>;
     /**
      * The custom metadata defined for API catalog entities.
@@ -41,6 +44,9 @@ export class Api extends pulumi.CustomResource {
      * Description of the API.
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * The set of external documentation
+     */
     public readonly externalDocumentation!: pulumi.Output<types.outputs.ExternalDocumentationResponse[] | undefined>;
     /**
      * Kind of API. For example, REST or GraphQL.
@@ -152,6 +158,9 @@ export interface ApiArgs {
      * The name of the API.
      */
     apiName?: pulumi.Input<string>;
+    /**
+     * The set of contacts
+     */
     contacts?: pulumi.Input<pulumi.Input<types.inputs.ContactArgs>[]>;
     /**
      * The custom metadata defined for API catalog entities.
@@ -161,6 +170,9 @@ export interface ApiArgs {
      * Description of the API.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The set of external documentation
+     */
     externalDocumentation?: pulumi.Input<pulumi.Input<types.inputs.ExternalDocumentationArgs>[]>;
     /**
      * Kind of API. For example, REST or GraphQL.

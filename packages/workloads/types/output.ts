@@ -99,6 +99,56 @@ export interface CentralServerVmDetailsResponse {
 }
 
 /**
+ * The SAP instance specific configuration data.
+ */
+export interface ConfigurationDataResponse {
+    /**
+     * Provide the CPU value of the server. For example, 16, 32 etc.
+     */
+    cpu: number;
+    /**
+     * Provide the CPU clock speed of the server in MHz. This should be a non-zero value. For example, 2100.
+     */
+    cpuInMhz: number;
+    /**
+     * Provide the CPU architecture type of the server. For example, Xeon Platinum 8171M, Xeon E5-2673 v3.
+     */
+    cpuType: string;
+    /**
+     * The database of this is a server instance. Applicable only if SAP instance type for this server instance is 'DB'.
+     */
+    databaseType: string;
+    /**
+     * Provide the HW manufacturer company of the server.  For example, Microsoft Corporation.
+     */
+    hardwareManufacturer: string;
+    /**
+     * Specify if the Hardware is a physical server or virtual machine.
+     */
+    model: string;
+    /**
+     * Provide the RAM of the server. This should be a non-zero value. For example, 256.
+     */
+    ram: number;
+    /**
+     * Provide the SAPS for each server of the SAP system. This should be a non-zero value. For example, 1000.
+     */
+    saps: number;
+    /**
+     * Provide the target HANA database size you need. Applicable only if SAP instance type for this server instance is 'DB' and you are migrating an AnyDb database to SAP S/4HANA.
+     */
+    targetHanaRamSizeGB: number;
+    /**
+     * Provide the total disk IOPS capacity. Add the disk volume for each individual disk and provide the sum total in this field.
+     */
+    totalDiskIops: number;
+    /**
+     * Provide the total disk volume capacity in GB. Add the disk volume for each individual disks and provide the total sum in this field.
+     */
+    totalDiskSizeGB: number;
+}
+
+/**
  * Error definition.
  */
 export interface ConnectorErrorDefinitionResponse {
@@ -573,6 +623,10 @@ export interface ErrorDefinitionResponse {
      * Description of the error.
      */
     message: string;
+    /**
+     * Description of the recommendation.
+     */
+    recommendation: string;
 }
 
 /**
@@ -612,6 +666,25 @@ export interface ErrorResponseInnerError {
 }
 
 /**
+ * The SAP instance specific performance data for Excel import.
+ */
+export interface ExcelPerformanceDataResponse {
+    /**
+     * The data source for this resource.
+     * Expected value is 'Excel'.
+     */
+    dataSource: "Excel";
+    /**
+     * Provide the max CPU percentage load on the server. Omit the percentage symbol while filling this value.
+     */
+    maxCpuLoad: number;
+    /**
+     * Provide the source Database size in GB. Applicable only if SAP instance type for this server instance is 'DB'.
+     */
+    totalSourceDbSizeGB: number;
+}
+
+/**
  * Existing recovery services vault.
  */
 export interface ExistingRecoveryServicesVaultResponse {
@@ -624,6 +697,20 @@ export interface ExistingRecoveryServicesVaultResponse {
      * Expected value is 'Existing'.
      */
     vaultType: "Existing";
+}
+
+/**
+ * The extended location definition.
+ */
+export interface ExtendedLocationResponse {
+    /**
+     * The extended location name.
+     */
+    name: string;
+    /**
+     * The extended location type.
+     */
+    type: string;
 }
 
 /**
@@ -1088,6 +1175,17 @@ export interface MsSqlServerProviderInstancePropertiesResponse {
 }
 
 /**
+ * The SAP instance specific performance data for native discovery.
+ */
+export interface NativePerformanceDataResponse {
+    /**
+     * The data source for this resource.
+     * Expected value is 'Native'.
+     */
+    dataSource: "Native";
+}
+
+/**
  * Defines the network configuration type for SAP system infrastructure that is being deployed 
  */
 export interface NetworkConfigurationResponse {
@@ -1323,6 +1421,28 @@ export interface SAPInstallWithoutOSConfigSoftwareConfigurationResponse {
      * The software version to install.
      */
     softwareVersion: string;
+}
+
+/**
+ * An error response from the SAP migrate resources.
+ */
+export interface SAPMigrateErrorResponse {
+    /**
+     * Service specific error code which serves as the substatus for the HTTP error code.
+     */
+    code: string;
+    /**
+     * Internal error details.
+     */
+    details: ErrorDefinitionResponse[];
+    /**
+     * Description of the error.
+     */
+    message: string;
+    /**
+     * Description of the recommendation.
+     */
+    recommendation: string;
 }
 
 /**

@@ -1,5 +1,8 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
+/**
+ * Contact information
+ */
 export interface ContactArgs {
     /**
      * Email address of the contact.
@@ -15,6 +18,9 @@ export interface ContactArgs {
     url?: pulumi.Input<string>;
 }
 
+/**
+ * Server
+ */
 export interface DeploymentServerArgs {
     /**
      * Base runtime URLs for this deployment.
@@ -26,6 +32,9 @@ export interface DeploymentServerArgs {
  * Server information of the environment.
  */
 export interface EnvironmentServerArgs {
+    /**
+     * The location of the management portal
+     */
     managementPortalUri?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Type of the server that represents the environment.
@@ -56,7 +65,8 @@ export interface ExternalDocumentationArgs {
  */
 export interface LicenseArgs {
     /**
-     * SPDX license information for the API. The identifier field is mutually exclusive of the URL field.
+     * SPDX license information for the API. The identifier field is mutually
+     * exclusive of the URL field.
      */
     identifier?: pulumi.Input<string>;
     /**
@@ -64,7 +74,8 @@ export interface LicenseArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * URL pointing to the license details. The URL field is mutually exclusive of the identifier field.
+     * URL pointing to the license details. The URL field is mutually exclusive of the
+     * identifier field.
      */
     url?: pulumi.Input<string>;
 }
@@ -83,16 +94,31 @@ export interface ManagedServiceIdentityArgs {
     userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+/**
+ * Assignment metadata
+ */
 export interface MetadataAssignmentArgs {
+    /**
+     * Deprecated assignment
+     */
     deprecated?: pulumi.Input<boolean>;
     /**
      * The entities this metadata schema component gets applied to.
      */
     entity?: pulumi.Input<string | enums.MetadataAssignmentEntity>;
+    /**
+     * Required assignment
+     */
     required?: pulumi.Input<boolean>;
 }
 
+/**
+ * Onboarding information
+ */
 export interface OnboardingArgs {
+    /**
+     * The location of the development portal
+     */
     developerPortalUri?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Onboarding guide.

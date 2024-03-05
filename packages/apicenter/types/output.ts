@@ -3,7 +3,7 @@ import * as pulumi from "@pulumi/pulumi";
 /**
  * API specification details.
  */
-export interface ApiDefinitionPropertiesResponseSpecification {
+export interface ApiDefinitionPropertiesSpecificationResponse {
     /**
      * Specification name.
      */
@@ -14,6 +14,9 @@ export interface ApiDefinitionPropertiesResponseSpecification {
     version?: string;
 }
 
+/**
+ * Contact information
+ */
 export interface ContactResponse {
     /**
      * Email address of the contact.
@@ -29,6 +32,9 @@ export interface ContactResponse {
     url?: string;
 }
 
+/**
+ * Server
+ */
 export interface DeploymentServerResponse {
     /**
      * Base runtime URLs for this deployment.
@@ -40,6 +46,9 @@ export interface DeploymentServerResponse {
  * Server information of the environment.
  */
 export interface EnvironmentServerResponse {
+    /**
+     * The location of the management portal
+     */
     managementPortalUri?: string[];
     /**
      * Type of the server that represents the environment.
@@ -70,7 +79,8 @@ export interface ExternalDocumentationResponse {
  */
 export interface LicenseResponse {
     /**
-     * SPDX license information for the API. The identifier field is mutually exclusive of the URL field.
+     * SPDX license information for the API. The identifier field is mutually
+     * exclusive of the URL field.
      */
     identifier?: string;
     /**
@@ -78,7 +88,8 @@ export interface LicenseResponse {
      */
     name?: string;
     /**
-     * URL pointing to the license details. The URL field is mutually exclusive of the identifier field.
+     * URL pointing to the license details. The URL field is mutually exclusive of the
+     * identifier field.
      */
     url?: string;
 }
@@ -105,16 +116,31 @@ export interface ManagedServiceIdentityResponse {
     userAssignedIdentities?: {[key: string]: UserAssignedIdentityResponse};
 }
 
+/**
+ * Assignment metadata
+ */
 export interface MetadataAssignmentResponse {
+    /**
+     * Deprecated assignment
+     */
     deprecated?: boolean;
     /**
      * The entities this metadata schema component gets applied to.
      */
     entity?: string;
+    /**
+     * Required assignment
+     */
     required?: boolean;
 }
 
+/**
+ * Onboarding information
+ */
 export interface OnboardingResponse {
+    /**
+     * The location of the development portal
+     */
     developerPortalUri?: string[];
     /**
      * Onboarding guide.

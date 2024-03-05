@@ -33,9 +33,13 @@ export class AssetEndpointProfile extends pulumi.CustomResource {
     }
 
     /**
+     * Contains connectivity type specific further configuration (e.g. OPC UA, Modbus, ONVIF).
+     */
+    public readonly additionalConfiguration!: pulumi.Output<string | undefined>;
+    /**
      * The extended location.
      */
-    public readonly extendedLocation!: pulumi.Output<types.outputs.AssetEndpointProfileResponseExtendedLocation>;
+    public readonly extendedLocation!: pulumi.Output<types.outputs.ExtendedLocationResponse>;
     /**
      * The geo-location where the resource lives
      */
@@ -45,9 +49,9 @@ export class AssetEndpointProfile extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * Asset Endpoint Profile resource properties.
+     * Provisioning state of the resource.
      */
-    public readonly properties!: pulumi.Output<types.outputs.AssetEndpointProfilePropertiesResponse>;
+    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
@@ -57,9 +61,25 @@ export class AssetEndpointProfile extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
+     * The local valid URI specifying the network address/DNS name of a southbound device. The scheme part of the targetAddress URI specifies the type of the device. The additionalConfiguration field holds further connector type specific configuration.
+     */
+    public readonly targetAddress!: pulumi.Output<string>;
+    /**
+     * Defines the authentication mechanism for the southbound connector connecting to the shop floor/OT device.
+     */
+    public readonly transportAuthentication!: pulumi.Output<types.outputs.TransportAuthenticationResponse | undefined>;
+    /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
+    /**
+     * Defines the client authentication mechanism to the server.
+     */
+    public readonly userAuthentication!: pulumi.Output<types.outputs.UserAuthenticationResponse | undefined>;
+    /**
+     * Globally unique, immutable, non-reusable id.
+     */
+    public /*out*/ readonly uuid!: pulumi.Output<string>;
 
     /**
      * Create a AssetEndpointProfile resource with the given unique name, arguments, and options.
@@ -78,23 +98,36 @@ export class AssetEndpointProfile extends pulumi.CustomResource {
             if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
+            if ((!args || args.targetAddress === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'targetAddress'");
+            }
+            resourceInputs["additionalConfiguration"] = args ? args.additionalConfiguration : undefined;
             resourceInputs["assetEndpointProfileName"] = args ? args.assetEndpointProfileName : undefined;
             resourceInputs["extendedLocation"] = args ? args.extendedLocation : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["properties"] = args ? (args.properties ? pulumi.output(args.properties).apply(types.inputs.assetEndpointProfilePropertiesArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["targetAddress"] = args ? args.targetAddress : undefined;
+            resourceInputs["transportAuthentication"] = args ? args.transportAuthentication : undefined;
+            resourceInputs["userAuthentication"] = args ? (args.userAuthentication ? pulumi.output(args.userAuthentication).apply(types.inputs.userAuthenticationArgsProvideDefaults) : undefined) : undefined;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
+            resourceInputs["uuid"] = undefined /*out*/;
         } else {
+            resourceInputs["additionalConfiguration"] = undefined /*out*/;
             resourceInputs["extendedLocation"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
-            resourceInputs["properties"] = undefined /*out*/;
+            resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["tags"] = undefined /*out*/;
+            resourceInputs["targetAddress"] = undefined /*out*/;
+            resourceInputs["transportAuthentication"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
+            resourceInputs["userAuthentication"] = undefined /*out*/;
+            resourceInputs["uuid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const aliasOpts = { aliases: [{ type: "azure-native:deviceregistry/v20231101preview:AssetEndpointProfile" }] };
@@ -108,21 +141,21 @@ export class AssetEndpointProfile extends pulumi.CustomResource {
  */
 export interface AssetEndpointProfileArgs {
     /**
+     * Contains connectivity type specific further configuration (e.g. OPC UA, Modbus, ONVIF).
+     */
+    additionalConfiguration?: pulumi.Input<string>;
+    /**
      * Asset Endpoint Profile name parameter.
      */
     assetEndpointProfileName?: pulumi.Input<string>;
     /**
      * The extended location.
      */
-    extendedLocation: pulumi.Input<types.inputs.AssetEndpointProfileExtendedLocationArgs>;
+    extendedLocation: pulumi.Input<types.inputs.ExtendedLocationArgs>;
     /**
      * The geo-location where the resource lives
      */
     location?: pulumi.Input<string>;
-    /**
-     * Asset Endpoint Profile resource properties.
-     */
-    properties?: pulumi.Input<types.inputs.AssetEndpointProfilePropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */
@@ -131,4 +164,16 @@ export interface AssetEndpointProfileArgs {
      * Resource tags.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The local valid URI specifying the network address/DNS name of a southbound device. The scheme part of the targetAddress URI specifies the type of the device. The additionalConfiguration field holds further connector type specific configuration.
+     */
+    targetAddress: pulumi.Input<string>;
+    /**
+     * Defines the authentication mechanism for the southbound connector connecting to the shop floor/OT device.
+     */
+    transportAuthentication?: pulumi.Input<types.inputs.TransportAuthenticationArgs>;
+    /**
+     * Defines the client authentication mechanism to the server.
+     */
+    userAuthentication?: pulumi.Input<types.inputs.UserAuthenticationArgs>;
 }

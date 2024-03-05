@@ -872,6 +872,34 @@ export interface DefaultAuthorizationPolicyArgs {
 }
 
 /**
+ * Configuration properties for a .NET Component
+ */
+export interface DotNetComponentConfigurationPropertyArgs {
+    /**
+     * The name of the property
+     */
+    propertyName?: pulumi.Input<string>;
+    /**
+     * The value of the property
+     */
+    value?: pulumi.Input<string>;
+}
+
+/**
+ * Configuration to bind a .NET Component to another .NET Component
+ */
+export interface DotNetComponentServiceBindArgs {
+    /**
+     * Name of the service bind
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Resource id of the target service
+     */
+    serviceId?: pulumi.Input<string>;
+}
+
+/**
  * Managed Environment resource SKU properties.
  */
 export interface EnvironmentSkuPropertiesArgs {
@@ -1345,6 +1373,34 @@ export interface IpSecurityRestrictionRuleArgs {
      * Name for the IP restriction rule.
      */
     name: pulumi.Input<string>;
+}
+
+/**
+ * Configuration properties for a Java Component
+ */
+export interface JavaComponentConfigurationPropertyArgs {
+    /**
+     * The name of the property
+     */
+    propertyName?: pulumi.Input<string>;
+    /**
+     * The value of the property
+     */
+    value?: pulumi.Input<string>;
+}
+
+/**
+ * Configuration to bind a Java Component to another Java Component
+ */
+export interface JavaComponentServiceBindArgs {
+    /**
+     * Name of the service bind
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Resource id of the target service
+     */
+    serviceId?: pulumi.Input<string>;
 }
 
 /**
@@ -2162,6 +2218,7 @@ export interface WorkloadProfileArgs {
      */
     workloadProfileType: pulumi.Input<string>;
 }
+
 
 
 

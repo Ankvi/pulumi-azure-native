@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Firmware definition
  * Azure REST API version: 2023-02-08-preview.
+ *
+ * Other available API versions: 2024-01-10.
  */
 export class Firmware extends pulumi.CustomResource {
     /**
@@ -128,7 +130,7 @@ export class Firmware extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:iotfirmwaredefense/v20230208preview:Firmware" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:iotfirmwaredefense/v20230208preview:Firmware" }, { type: "azure-native:iotfirmwaredefense/v20240110:Firmware" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Firmware.__pulumiType, name, resourceInputs, opts);
     }

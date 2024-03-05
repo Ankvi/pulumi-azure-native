@@ -5,7 +5,7 @@ import * as types from "./types";
  * Gets information about the specified packet core control plane.
  * Azure REST API version: 2023-06-01.
  *
- * Other available API versions: 2022-03-01-preview, 2022-04-01-preview, 2022-11-01, 2023-09-01.
+ * Other available API versions: 2022-03-01-preview, 2022-04-01-preview, 2022-11-01, 2023-09-01, 2024-02-01.
  */
 export function getPacketCoreControlPlane(args: GetPacketCoreControlPlaneArgs, opts?: pulumi.InvokeOptions): Promise<GetPacketCoreControlPlaneResult> {
 
@@ -120,7 +120,7 @@ export interface GetPacketCoreControlPlaneResult {
  * Gets information about the specified packet core control plane.
  * Azure REST API version: 2023-06-01.
  *
- * Other available API versions: 2022-03-01-preview, 2022-04-01-preview, 2022-11-01, 2023-09-01.
+ * Other available API versions: 2022-03-01-preview, 2022-04-01-preview, 2022-11-01, 2023-09-01, 2024-02-01.
  */
 export function getPacketCoreControlPlaneOutput(args: GetPacketCoreControlPlaneOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPacketCoreControlPlaneResult> {
     return pulumi.output(args).apply((a: any) => getPacketCoreControlPlane(a, opts))

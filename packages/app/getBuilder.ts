@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Get a BuilderResource
  * Azure REST API version: 2023-08-01-preview.
+ *
+ * Other available API versions: 2023-11-02-preview.
  */
 export function getBuilder(args: GetBuilderArgs, opts?: pulumi.InvokeOptions): Promise<GetBuilderResult> {
 
@@ -73,6 +75,8 @@ export interface GetBuilderResult {
 /**
  * Get a BuilderResource
  * Azure REST API version: 2023-08-01-preview.
+ *
+ * Other available API versions: 2023-11-02-preview.
  */
 export function getBuilderOutput(args: GetBuilderOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBuilderResult> {
     return pulumi.output(args).apply((a: any) => getBuilder(a, opts))

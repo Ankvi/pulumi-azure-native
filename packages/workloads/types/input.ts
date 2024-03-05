@@ -416,6 +416,20 @@ export interface ExistingRecoveryServicesVaultArgs {
 }
 
 /**
+ * The extended location definition.
+ */
+export interface ExtendedLocationArgs {
+    /**
+     * The extended location name.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The extended location type.
+     */
+    type: pulumi.Input<string>;
+}
+
+/**
  * The SAP Software configuration Input when the software is installed externally outside the service.
  */
 export interface ExternalInstallationSoftwareConfigurationArgs {

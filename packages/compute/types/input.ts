@@ -3237,3 +3237,4 @@ export interface WindowsVMGuestPatchAutomaticByPlatformSettingsArgs {
 
 
 
+

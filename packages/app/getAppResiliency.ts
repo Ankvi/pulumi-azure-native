@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Get container app resiliency policy.
  * Azure REST API version: 2023-08-01-preview.
+ *
+ * Other available API versions: 2023-11-02-preview.
  */
 export function getAppResiliency(args: GetAppResiliencyArgs, opts?: pulumi.InvokeOptions): Promise<GetAppResiliencyResult> {
 
@@ -78,6 +80,8 @@ export interface GetAppResiliencyResult {
 /**
  * Get container app resiliency policy.
  * Azure REST API version: 2023-08-01-preview.
+ *
+ * Other available API versions: 2023-11-02-preview.
  */
 export function getAppResiliencyOutput(args: GetAppResiliencyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppResiliencyResult> {
     return pulumi.output(args).apply((a: any) => getAppResiliency(a, opts))

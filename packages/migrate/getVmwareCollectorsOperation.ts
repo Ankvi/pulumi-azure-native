@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Get a VmwareCollector
  * Azure REST API version: 2023-03-15.
+ *
+ * Other available API versions: 2023-04-01-preview.
  */
 export function getVmwareCollectorsOperation(args: GetVmwareCollectorsOperationArgs, opts?: pulumi.InvokeOptions): Promise<GetVmwareCollectorsOperationResult> {
 
@@ -74,6 +76,8 @@ export interface GetVmwareCollectorsOperationResult {
 /**
  * Get a VmwareCollector
  * Azure REST API version: 2023-03-15.
+ *
+ * Other available API versions: 2023-04-01-preview.
  */
 export function getVmwareCollectorsOperationOutput(args: GetVmwareCollectorsOperationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVmwareCollectorsOperationResult> {
     return pulumi.output(args).apply((a: any) => getVmwareCollectorsOperation(a, opts))
