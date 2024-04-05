@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Ground Station contains one or more antennas.
  * Azure REST API version: 2024-03-01-preview.
+ *
+ * Other available API versions: 2024-03-01.
  */
 export class GroundStation extends pulumi.CustomResource {
     /**
@@ -136,7 +138,7 @@ export class GroundStation extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:orbital/v20240301preview:GroundStation" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:orbital/v20240301:GroundStation" }, { type: "azure-native:orbital/v20240301preview:GroundStation" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(GroundStation.__pulumiType, name, resourceInputs, opts);
     }

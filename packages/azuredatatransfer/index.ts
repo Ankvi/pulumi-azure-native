@@ -55,7 +55,14 @@ utilities.lazyLoad(exports, ["Pipeline"], () => require("./pipeline"));
 // Export enums:
 export * from "./types/enums";
 
+// Export sub-modules:
+import * as v20231011preview from "./v20231011preview";
+import * as v20240125 from "./v20240125";
 
+export {
+    v20231011preview,
+    v20240125,
+};
 
 const _module = {
     version: utilities.getVersion(),

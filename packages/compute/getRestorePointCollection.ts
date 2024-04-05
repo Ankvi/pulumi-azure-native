@@ -5,7 +5,7 @@ import * as types from "./types";
  * The operation to get the restore point collection.
  * Azure REST API version: 2023-03-01.
  *
- * Other available API versions: 2023-07-01, 2023-09-01.
+ * Other available API versions: 2023-07-01, 2023-09-01, 2024-03-01.
  */
 export function getRestorePointCollection(args: GetRestorePointCollectionArgs, opts?: pulumi.InvokeOptions): Promise<GetRestorePointCollectionResult> {
 
@@ -77,7 +77,7 @@ export interface GetRestorePointCollectionResult {
  * The operation to get the restore point collection.
  * Azure REST API version: 2023-03-01.
  *
- * Other available API versions: 2023-07-01, 2023-09-01.
+ * Other available API versions: 2023-07-01, 2023-09-01, 2024-03-01.
  */
 export function getRestorePointCollectionOutput(args: GetRestorePointCollectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRestorePointCollectionResult> {
     return pulumi.output(args).apply((a: any) => getRestorePointCollection(a, opts))

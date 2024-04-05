@@ -35,7 +35,12 @@ utilities.lazyLoad(exports, ["Watcher"], () => require("./watcher"));
 // Export enums:
 export * from "./types/enums";
 
+// Export sub-modules:
+import * as v20230901preview from "./v20230901preview";
 
+export {
+    v20230901preview,
+};
 
 const _module = {
     version: utilities.getVersion(),

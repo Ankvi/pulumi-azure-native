@@ -25,7 +25,12 @@ utilities.lazyLoad(exports, ["GitHubConnector"], () => require("./gitHubConnecto
 // Export enums:
 export * from "./types/enums";
 
+// Export sub-modules:
+import * as v20220901preview from "./v20220901preview";
 
+export {
+    v20220901preview,
+};
 
 const _module = {
     version: utilities.getVersion(),

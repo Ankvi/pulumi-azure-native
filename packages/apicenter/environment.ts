@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Environment entity.
  * Azure REST API version: 2024-03-01.
+ *
+ * Other available API versions: 2024-03-15-preview.
  */
 export class Environment extends pulumi.CustomResource {
     /**
@@ -120,7 +122,7 @@ export class Environment extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:apicenter/v20240301:Environment" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:apicenter/v20240301:Environment" }, { type: "azure-native:apicenter/v20240315preview:Environment" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Environment.__pulumiType, name, resourceInputs, opts);
     }

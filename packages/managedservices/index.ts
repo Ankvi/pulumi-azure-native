@@ -25,7 +25,12 @@ utilities.lazyLoad(exports, ["RegistrationDefinition"], () => require("./registr
 // Export enums:
 export * from "./types/enums";
 
+// Export sub-modules:
+import * as v20221001 from "./v20221001";
 
+export {
+    v20221001,
+};
 
 const _module = {
     version: utilities.getVersion(),

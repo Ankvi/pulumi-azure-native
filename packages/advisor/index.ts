@@ -12,7 +12,12 @@ export const Suppression: typeof import("./suppression").Suppression = null as a
 utilities.lazyLoad(exports, ["Suppression"], () => require("./suppression"));
 
 
+// Export sub-modules:
+import * as v20230101 from "./v20230101";
 
+export {
+    v20230101,
+};
 
 const _module = {
     version: utilities.getVersion(),

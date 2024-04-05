@@ -5,7 +5,7 @@ import * as types from "./types";
  * The operation to get the extension.
  * Azure REST API version: 2023-03-01.
  *
- * Other available API versions: 2021-11-01, 2023-07-01, 2023-09-01.
+ * Other available API versions: 2021-11-01, 2023-07-01, 2023-09-01, 2024-03-01.
  */
 export function getVirtualMachineScaleSetExtension(args: GetVirtualMachineScaleSetExtensionArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualMachineScaleSetExtensionResult> {
 
@@ -102,7 +102,7 @@ export interface GetVirtualMachineScaleSetExtensionResult {
  * The operation to get the extension.
  * Azure REST API version: 2023-03-01.
  *
- * Other available API versions: 2021-11-01, 2023-07-01, 2023-09-01.
+ * Other available API versions: 2021-11-01, 2023-07-01, 2023-09-01, 2024-03-01.
  */
 export function getVirtualMachineScaleSetExtensionOutput(args: GetVirtualMachineScaleSetExtensionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVirtualMachineScaleSetExtensionResult> {
     return pulumi.output(args).apply((a: any) => getVirtualMachineScaleSetExtension(a, opts))

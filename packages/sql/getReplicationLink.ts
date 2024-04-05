@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Gets a replication link.
  * Azure REST API version: 2023-05-01-preview.
+ *
+ * Other available API versions: 2023-08-01-preview.
  */
 export function getReplicationLink(args: GetReplicationLinkArgs, opts?: pulumi.InvokeOptions): Promise<GetReplicationLinkResult> {
 
@@ -102,6 +104,8 @@ export interface GetReplicationLinkResult {
 /**
  * Gets a replication link.
  * Azure REST API version: 2023-05-01-preview.
+ *
+ * Other available API versions: 2023-08-01-preview.
  */
 export function getReplicationLinkOutput(args: GetReplicationLinkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReplicationLinkResult> {
     return pulumi.output(args).apply((a: any) => getReplicationLink(a, opts))

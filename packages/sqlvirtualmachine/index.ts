@@ -35,7 +35,14 @@ utilities.lazyLoad(exports, ["SqlVirtualMachineGroup"], () => require("./sqlVirt
 // Export enums:
 export * from "./types/enums";
 
+// Export sub-modules:
+import * as v20220201 from "./v20220201";
+import * as v20230101preview from "./v20230101preview";
 
+export {
+    v20220201,
+    v20230101preview,
+};
 
 const _module = {
     version: utilities.getVersion(),

@@ -1,0 +1,85 @@
+import * as pulumi from "@pulumi/pulumi";
+import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
+import * as types from "./types";
+/**
+ * Gets the specified custom blocklist associated with the Azure OpenAI account.
+ */
+export function getRaiBlocklist(args: GetRaiBlocklistArgs, opts?: pulumi.InvokeOptions): Promise<GetRaiBlocklistResult> {
+
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invoke("azure-native:cognitiveservices/v20231001preview:getRaiBlocklist", {
+        "accountName": args.accountName,
+        "raiBlocklistName": args.raiBlocklistName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
+}
+
+export interface GetRaiBlocklistArgs {
+    /**
+     * The name of Cognitive Services account.
+     */
+    accountName: string;
+    /**
+     * The name of the RaiBlocklist associated with the Cognitive Services Account
+     */
+    raiBlocklistName: string;
+    /**
+     * The name of the resource group. The name is case insensitive.
+     */
+    resourceGroupName: string;
+}
+
+/**
+ * Cognitive Services RaiBlocklist.
+ */
+export interface GetRaiBlocklistResult {
+    /**
+     * Resource Etag.
+     */
+    readonly etag: string;
+    /**
+     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     */
+    readonly id: string;
+    /**
+     * The name of the resource
+     */
+    readonly name: string;
+    /**
+     * Properties of Cognitive Services RaiBlocklist.
+     */
+    readonly properties: types.outputs.RaiBlocklistPropertiesResponse;
+    /**
+     * Metadata pertaining to creation and last modification of the resource.
+     */
+    readonly systemData: types.outputs.SystemDataResponse;
+    /**
+     * Resource tags.
+     */
+    readonly tags?: {[key: string]: string};
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+     */
+    readonly type: string;
+}
+/**
+ * Gets the specified custom blocklist associated with the Azure OpenAI account.
+ */
+export function getRaiBlocklistOutput(args: GetRaiBlocklistOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRaiBlocklistResult> {
+    return pulumi.output(args).apply((a: any) => getRaiBlocklist(a, opts))
+}
+
+export interface GetRaiBlocklistOutputArgs {
+    /**
+     * The name of Cognitive Services account.
+     */
+    accountName: pulumi.Input<string>;
+    /**
+     * The name of the RaiBlocklist associated with the Cognitive Services Account
+     */
+    raiBlocklistName: pulumi.Input<string>;
+    /**
+     * The name of the resource group. The name is case insensitive.
+     */
+    resourceGroupName: pulumi.Input<string>;
+}

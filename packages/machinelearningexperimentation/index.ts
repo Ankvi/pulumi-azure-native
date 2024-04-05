@@ -32,7 +32,12 @@ export const Workspace: typeof import("./workspace").Workspace = null as any;
 utilities.lazyLoad(exports, ["Workspace"], () => require("./workspace"));
 
 
+// Export sub-modules:
+import * as v20170501preview from "./v20170501preview";
 
+export {
+    v20170501preview,
+};
 
 const _module = {
     version: utilities.getVersion(),

@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Returns details of the API.
  * Azure REST API version: 2024-03-01.
+ *
+ * Other available API versions: 2024-03-15-preview.
  */
 export function getApi(args: GetApiArgs, opts?: pulumi.InvokeOptions): Promise<GetApiResult> {
 
@@ -99,6 +101,8 @@ export interface GetApiResult {
 /**
  * Returns details of the API.
  * Azure REST API version: 2024-03-01.
+ *
+ * Other available API versions: 2024-03-15-preview.
  */
 export function getApiOutput(args: GetApiOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApiResult> {
     return pulumi.output(args).apply((a: any) => getApi(a, opts))

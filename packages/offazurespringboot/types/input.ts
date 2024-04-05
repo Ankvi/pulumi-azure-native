@@ -43,6 +43,157 @@ export interface ErrorArgs {
 }
 
 /**
+ * The springbootapps resource definition.
+ */
+export interface SpringbootappsPropertiesArgs {
+    /**
+     * The name of SpringBootApp.
+     */
+    appName?: pulumi.Input<string>;
+    /**
+     * The application port.
+     */
+    appPort?: pulumi.Input<number>;
+    /**
+     * The application type, whether it is a SpringBoot app.
+     */
+    appType?: pulumi.Input<string>;
+    /**
+     * The application configuration file list.
+     */
+    applicationConfigurations?: pulumi.Input<pulumi.Input<SpringbootappsPropertiesApplicationConfigurationsArgs>[]>;
+    /**
+     * The artifact name of SpringBootApp.
+     */
+    artifactName?: pulumi.Input<string>;
+    /**
+     * The application binding port list.
+     */
+    bindingPorts?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * The jdk version in build.
+     */
+    buildJdkVersion?: pulumi.Input<string>;
+    /**
+     * The certificate file list.
+     */
+    certificates?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The checksum of jar file.
+     */
+    checksum?: pulumi.Input<string>;
+    /**
+     * The connection string list.
+     */
+    connectionStrings?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The dependency list.
+     */
+    dependencies?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The environment variable list.
+     */
+    environments?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The list of errors.
+     */
+    errors?: pulumi.Input<pulumi.Input<ErrorArgs>[]>;
+    /**
+     * The total instance count the app deployed.
+     */
+    instanceCount?: pulumi.Input<number>;
+    /**
+     * The breakdown info for app instances on all the servers
+     */
+    instances?: pulumi.Input<pulumi.Input<SpringbootappsPropertiesInstancesArgs>[]>;
+    /**
+     * The jar file location on the server.
+     */
+    jarFileLocation?: pulumi.Input<string>;
+    /**
+     * The jvm heap memory allocated.
+     */
+    jvmMemoryInMB?: pulumi.Input<number>;
+    /**
+     * The jvm options.
+     */
+    jvmOptions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Resource labels
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Time when this springbootapps jar file was last modified.
+     */
+    lastModifiedTime?: pulumi.Input<string>;
+    /**
+     * Time when this springbootapps instance was last refreshed.
+     */
+    lastUpdatedTime?: pulumi.Input<string>;
+    /**
+     * The machine ARM id list the app belongs to.
+     */
+    machineArmIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The other types of date collected.
+     */
+    miscs?: pulumi.Input<pulumi.Input<SpringbootappsPropertiesMiscsArgs>[]>;
+    /**
+     * The jdk version installed on server
+     */
+    runtimeJdkVersion?: pulumi.Input<string>;
+    /**
+     * The server list the app installed
+     */
+    servers?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The spring boot version.
+     */
+    springBootVersion?: pulumi.Input<string>;
+    /**
+     * The static content location list.
+     */
+    staticContentLocations?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface SpringbootappsPropertiesApplicationConfigurationsArgs {
+    /**
+     * The application config file name.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * The application config file content, only contains config keys.
+     */
+    value?: pulumi.Input<string>;
+}
+
+export interface SpringbootappsPropertiesInstancesArgs {
+    /**
+     * The instance count of this app instance
+     */
+    instanceCount?: pulumi.Input<number>;
+    /**
+     * The jvm heap memory allocated of this app instance
+     */
+    jvmMemoryInMB?: pulumi.Input<number>;
+    /**
+     * The machine ARM resource Id of this app instance
+     */
+    machineArmId: pulumi.Input<string>;
+}
+
+export interface SpringbootappsPropertiesMiscsArgs {
+    /**
+     * The miscs. key.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * The miscs. value.
+     */
+    value?: pulumi.Input<string>;
+}
+
+/**
  * The springbootservers resource definition.
  */
 export interface SpringbootserversPropertiesArgs {
@@ -111,3 +262,4 @@ export interface SpringbootsitesPropertiesArgs {
      */
     provisioningState?: pulumi.Input<string | enums.ProvisioningState>;
 }
+

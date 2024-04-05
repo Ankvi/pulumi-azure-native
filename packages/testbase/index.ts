@@ -135,7 +135,14 @@ utilities.lazyLoad(exports, ["TestBaseAccount"], () => require("./testBaseAccoun
 // Export enums:
 export * from "./types/enums";
 
+// Export sub-modules:
+import * as v20220401preview from "./v20220401preview";
+import * as v20231101preview from "./v20231101preview";
 
+export {
+    v20220401preview,
+    v20231101preview,
+};
 
 const _module = {
     version: utilities.getVersion(),

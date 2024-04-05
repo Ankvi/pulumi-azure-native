@@ -35,7 +35,16 @@ utilities.lazyLoad(exports, ["TestLine"], () => require("./testLine"));
 // Export enums:
 export * from "./types/enums";
 
+// Export sub-modules:
+import * as v20221201preview from "./v20221201preview";
+import * as v20230403 from "./v20230403";
+import * as v20230901 from "./v20230901";
 
+export {
+    v20221201preview,
+    v20230403,
+    v20230901,
+};
 
 const _module = {
     version: utilities.getVersion(),

@@ -335,7 +335,56 @@ utilities.lazyLoad(exports, ["WorkspaceSetting"], () => require("./workspaceSett
 // Export enums:
 export * from "./types/enums";
 
+// Export sub-modules:
+import * as v20170801preview from "./v20170801preview";
+import * as v20190101 from "./v20190101";
+import * as v20190101preview from "./v20190101preview";
+import * as v20190801 from "./v20190801";
+import * as v20200101 from "./v20200101";
+import * as v20200101preview from "./v20200101preview";
+import * as v20210601 from "./v20210601";
+import * as v20210701preview from "./v20210701preview";
+import * as v20210801preview from "./v20210801preview";
+import * as v20220101preview from "./v20220101preview";
+import * as v20220701preview from "./v20220701preview";
+import * as v20221120preview from "./v20221120preview";
+import * as v20221201preview from "./v20221201preview";
+import * as v20230101preview from "./v20230101preview";
+import * as v20230201preview from "./v20230201preview";
+import * as v20230301preview from "./v20230301preview";
+import * as v20230501 from "./v20230501";
+import * as v20230901preview from "./v20230901preview";
+import * as v20231001preview from "./v20231001preview";
+import * as v20231115 from "./v20231115";
+import * as v20231201preview from "./v20231201preview";
+import * as v20240101 from "./v20240101";
+import * as v20240301preview from "./v20240301preview";
 
+export {
+    v20170801preview,
+    v20190101,
+    v20190101preview,
+    v20190801,
+    v20200101,
+    v20200101preview,
+    v20210601,
+    v20210701preview,
+    v20210801preview,
+    v20220101preview,
+    v20220701preview,
+    v20221120preview,
+    v20221201preview,
+    v20230101preview,
+    v20230201preview,
+    v20230301preview,
+    v20230501,
+    v20230901preview,
+    v20231001preview,
+    v20231115,
+    v20231201preview,
+    v20240101,
+    v20240301preview,
+};
 
 const _module = {
     version: utilities.getVersion(),

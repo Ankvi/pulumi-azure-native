@@ -47,9 +47,9 @@ export interface GetCredentialOperationResult {
      */
     readonly name: string;
     /**
-     * Managed Identity Credential properties.
+     * Properties of credentials.
      */
-    readonly properties: types.outputs.ManagedIdentityCredentialResponse;
+    readonly properties: types.outputs.ManagedIdentityCredentialResponse | types.outputs.ServicePrincipalCredentialResponse | types.outputs.SystemAssignedManagedIdentityCredentialResponse | types.outputs.UserAssignedManagedIdentityCredentialResponse;
     /**
      * The resource type.
      */

@@ -85,7 +85,14 @@ utilities.lazyLoad(exports, ["UpfDeployment"], () => require("./upfDeployment"))
 // Export enums:
 export * from "./types/enums";
 
+// Export sub-modules:
+import * as v20230515preview from "./v20230515preview";
+import * as v20231015preview from "./v20231015preview";
 
+export {
+    v20230515preview,
+    v20231015preview,
+};
 
 const _module = {
     version: utilities.getVersion(),

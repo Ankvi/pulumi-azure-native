@@ -61,6 +61,11 @@ export const getHcxEnterpriseSite: typeof import("./getHcxEnterpriseSite").getHc
 export const getHcxEnterpriseSiteOutput: typeof import("./getHcxEnterpriseSite").getHcxEnterpriseSiteOutput = null as any;
 utilities.lazyLoad(exports, ["getHcxEnterpriseSite","getHcxEnterpriseSiteOutput"], () => require("./getHcxEnterpriseSite"));
 
+export { GetIscsiPathArgs, GetIscsiPathResult, GetIscsiPathOutputArgs } from "./getIscsiPath";
+export const getIscsiPath: typeof import("./getIscsiPath").getIscsiPath = null as any;
+export const getIscsiPathOutput: typeof import("./getIscsiPath").getIscsiPathOutput = null as any;
+utilities.lazyLoad(exports, ["getIscsiPath","getIscsiPathOutput"], () => require("./getIscsiPath"));
+
 export { GetPlacementPolicyArgs, GetPlacementPolicyResult, GetPlacementPolicyOutputArgs } from "./getPlacementPolicy";
 export const getPlacementPolicy: typeof import("./getPlacementPolicy").getPlacementPolicy = null as any;
 export const getPlacementPolicyOutput: typeof import("./getPlacementPolicy").getPlacementPolicyOutput = null as any;
@@ -126,6 +131,11 @@ export type HcxEnterpriseSite = import("./hcxEnterpriseSite").HcxEnterpriseSite;
 export const HcxEnterpriseSite: typeof import("./hcxEnterpriseSite").HcxEnterpriseSite = null as any;
 utilities.lazyLoad(exports, ["HcxEnterpriseSite"], () => require("./hcxEnterpriseSite"));
 
+export { IscsiPathArgs } from "./iscsiPath";
+export type IscsiPath = import("./iscsiPath").IscsiPath;
+export const IscsiPath: typeof import("./iscsiPath").IscsiPath = null as any;
+utilities.lazyLoad(exports, ["IscsiPath"], () => require("./iscsiPath"));
+
 export { ListClusterZonesArgs, ListClusterZonesResult, ListClusterZonesOutputArgs } from "./listClusterZones";
 export const listClusterZones: typeof import("./listClusterZones").listClusterZones = null as any;
 export const listClusterZonesOutput: typeof import("./listClusterZones").listClusterZonesOutput = null as any;
@@ -190,7 +200,22 @@ utilities.lazyLoad(exports, ["WorkloadNetworkVMGroup"], () => require("./workloa
 // Export enums:
 export * from "./types/enums";
 
+// Export sub-modules:
+import * as v20200320 from "./v20200320";
+import * as v20210101preview from "./v20210101preview";
+import * as v20210601 from "./v20210601";
+import * as v20220501 from "./v20220501";
+import * as v20230301 from "./v20230301";
+import * as v20230901 from "./v20230901";
 
+export {
+    v20200320,
+    v20210101preview,
+    v20210601,
+    v20220501,
+    v20230301,
+    v20230901,
+};
 
 const _module = {
     version: utilities.getVersion(),
@@ -210,6 +235,8 @@ const _module = {
                 return new GlobalReachConnection(name, <any>undefined, { urn })
             case "azure-native:avs:HcxEnterpriseSite":
                 return new HcxEnterpriseSite(name, <any>undefined, { urn })
+            case "azure-native:avs:IscsiPath":
+                return new IscsiPath(name, <any>undefined, { urn })
             case "azure-native:avs:PlacementPolicy":
                 return new PlacementPolicy(name, <any>undefined, { urn })
             case "azure-native:avs:PrivateCloud":

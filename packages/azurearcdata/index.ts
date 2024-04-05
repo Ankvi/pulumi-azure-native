@@ -75,7 +75,12 @@ utilities.lazyLoad(exports, ["SqlServerInstance"], () => require("./sqlServerIns
 // Export enums:
 export * from "./types/enums";
 
+// Export sub-modules:
+import * as v20230115preview from "./v20230115preview";
 
+export {
+    v20230115preview,
+};
 
 const _module = {
     version: utilities.getVersion(),

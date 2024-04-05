@@ -17,7 +17,12 @@ export const listEnergyServicePartitionsOutput: typeof import("./listEnergyServi
 utilities.lazyLoad(exports, ["listEnergyServicePartitions","listEnergyServicePartitionsOutput"], () => require("./listEnergyServicePartitions"));
 
 
+// Export sub-modules:
+import * as v20220404preview from "./v20220404preview";
 
+export {
+    v20220404preview,
+};
 
 const _module = {
     version: utilities.getVersion(),

@@ -5,7 +5,7 @@ import * as types from "./types";
  * An instance of a script executed by a user - custom or AVS
  * Azure REST API version: 2022-05-01.
  *
- * Other available API versions: 2023-03-01.
+ * Other available API versions: 2023-03-01, 2023-09-01.
  */
 export function getScriptExecution(args: GetScriptExecutionArgs, opts?: pulumi.InvokeOptions): Promise<GetScriptExecutionResult> {
 
@@ -113,7 +113,7 @@ export interface GetScriptExecutionResult {
  * An instance of a script executed by a user - custom or AVS
  * Azure REST API version: 2022-05-01.
  *
- * Other available API versions: 2023-03-01.
+ * Other available API versions: 2023-03-01, 2023-09-01.
  */
 export function getScriptExecutionOutput(args: GetScriptExecutionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetScriptExecutionResult> {
     return pulumi.output(args).apply((a: any) => getScriptExecution(a, opts))

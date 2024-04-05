@@ -25,7 +25,12 @@ utilities.lazyLoad(exports, ["getCloudConnector","getCloudConnectorOutput"], () 
 // Export enums:
 export * from "./types/enums";
 
+// Export sub-modules:
+import * as v20230101preview from "./v20230101preview";
 
+export {
+    v20230101preview,
+};
 
 const _module = {
     version: utilities.getVersion(),

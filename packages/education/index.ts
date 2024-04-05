@@ -25,7 +25,12 @@ utilities.lazyLoad(exports, ["Student"], () => require("./student"));
 // Export enums:
 export * from "./types/enums";
 
+// Export sub-modules:
+import * as v20211201preview from "./v20211201preview";
 
+export {
+    v20211201preview,
+};
 
 const _module = {
     version: utilities.getVersion(),

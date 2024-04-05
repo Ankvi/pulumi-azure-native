@@ -1251,9 +1251,7 @@ export interface ManagedClusterUpgradeSpecResponse {
      */
     kubernetesVersion?: string;
     /**
-     * The upgrade type.
-     * Full requires the KubernetesVersion property to be set.
-     * NodeImageOnly requires the KubernetesVersion property not to be set.
+     * ManagedClusterUpgradeType is the type of upgrade to be applied.
      */
     type: string;
 }
@@ -1975,6 +1973,8 @@ export interface WindowsGmsaProfileResponse {
      */
     rootDomainName?: string;
 }
+
+
 
 
 

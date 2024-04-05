@@ -5,7 +5,7 @@ import * as types from "./types";
  * Specifies information about the capacity reservation.
  * Azure REST API version: 2023-03-01. Prior API version in Azure Native 1.x: 2021-04-01.
  *
- * Other available API versions: 2023-07-01, 2023-09-01.
+ * Other available API versions: 2023-07-01, 2023-09-01, 2024-03-01.
  */
 export class CapacityReservation extends pulumi.CustomResource {
     /**
@@ -139,7 +139,7 @@ export class CapacityReservation extends pulumi.CustomResource {
             resourceInputs["zones"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20210401:CapacityReservation" }, { type: "azure-native:compute/v20210701:CapacityReservation" }, { type: "azure-native:compute/v20211101:CapacityReservation" }, { type: "azure-native:compute/v20220301:CapacityReservation" }, { type: "azure-native:compute/v20220801:CapacityReservation" }, { type: "azure-native:compute/v20221101:CapacityReservation" }, { type: "azure-native:compute/v20230301:CapacityReservation" }, { type: "azure-native:compute/v20230701:CapacityReservation" }, { type: "azure-native:compute/v20230901:CapacityReservation" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20210401:CapacityReservation" }, { type: "azure-native:compute/v20210701:CapacityReservation" }, { type: "azure-native:compute/v20211101:CapacityReservation" }, { type: "azure-native:compute/v20220301:CapacityReservation" }, { type: "azure-native:compute/v20220801:CapacityReservation" }, { type: "azure-native:compute/v20221101:CapacityReservation" }, { type: "azure-native:compute/v20230301:CapacityReservation" }, { type: "azure-native:compute/v20230701:CapacityReservation" }, { type: "azure-native:compute/v20230901:CapacityReservation" }, { type: "azure-native:compute/v20240301:CapacityReservation" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(CapacityReservation.__pulumiType, name, resourceInputs, opts);
     }

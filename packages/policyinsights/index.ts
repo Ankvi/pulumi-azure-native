@@ -95,7 +95,14 @@ utilities.lazyLoad(exports, ["RemediationAtSubscription"], () => require("./reme
 // Export enums:
 export * from "./types/enums";
 
+// Export sub-modules:
+import * as v20211001 from "./v20211001";
+import * as v20220901 from "./v20220901";
 
+export {
+    v20211001,
+    v20220901,
+};
 
 const _module = {
     version: utilities.getVersion(),

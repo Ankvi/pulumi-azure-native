@@ -45,7 +45,12 @@ utilities.lazyLoad(exports, ["listApplicationTokens","listApplicationTokensOutpu
 // Export enums:
 export * from "./types/enums";
 
+// Export sub-modules:
+import * as v20210701 from "./v20210701";
 
+export {
+    v20210701,
+};
 
 const _module = {
     version: utilities.getVersion(),

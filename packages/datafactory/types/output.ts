@@ -3040,7 +3040,7 @@ export interface AzureFunctionActivityResponse {
     /**
      * Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
      */
-    headers?: {[key: string]: string};
+    headers?: {[key: string]: any};
     /**
      * Linked service reference.
      */
@@ -13637,10 +13637,6 @@ export interface ManagedIdentityCredentialResponse {
      */
     description?: string;
     /**
-     * The resource id of user assigned managed identity
-     */
-    resourceId?: string;
-    /**
      * Type of credential.
      * Expected value is 'ManagedIdentity'.
      */
@@ -21411,6 +21407,37 @@ export interface ServiceNowV2SourceResponse {
 }
 
 /**
+ * Service principal credential.
+ */
+export interface ServicePrincipalCredentialResponse {
+    /**
+     * List of tags that can be used for describing the Credential.
+     */
+    annotations?: any[];
+    /**
+     * Credential description.
+     */
+    description?: string;
+    /**
+     * The app ID of the service principal used to authenticate
+     */
+    servicePrincipalId?: any;
+    /**
+     * The key of the service principal used to authenticate.
+     */
+    servicePrincipalKey?: AzureKeyVaultSecretReferenceResponse;
+    /**
+     * The ID of the tenant to which the service principal belongs
+     */
+    tenant?: any;
+    /**
+     * Type of credential.
+     * Expected value is 'ServicePrincipal'.
+     */
+    type: "ServicePrincipal";
+}
+
+/**
  * Set value for a Variable.
  */
 export interface SetVariableActivityResponse {
@@ -24109,6 +24136,25 @@ export interface SynapseSparkJobReferenceResponse {
 }
 
 /**
+ * System Assigned Managed identity credential.
+ */
+export interface SystemAssignedManagedIdentityCredentialResponse {
+    /**
+     * List of tags that can be used for describing the Credential.
+     */
+    annotations?: any[];
+    /**
+     * Credential description.
+     */
+    description?: string;
+    /**
+     * Type of credential.
+     * Expected value is 'SystemAssignedManagedIdentityCredential'.
+     */
+    type: "SystemAssignedManagedIdentityCredential";
+}
+
+/**
  * Copy activity sources of tabular type.
  */
 export interface TabularSourceResponse {
@@ -24702,6 +24748,25 @@ export interface UserAccessPolicyResponse {
 }
 
 /**
+ * User Assigned Managed identity credential.
+ */
+export interface UserAssignedManagedIdentityCredentialResponse {
+    /**
+     * List of tags that can be used for describing the Credential.
+     */
+    annotations?: any[];
+    /**
+     * Credential description.
+     */
+    description?: string;
+    /**
+     * Type of credential.
+     * Expected value is 'UserAssignedManagedIdentityCredential'.
+     */
+    type: "UserAssignedManagedIdentityCredential";
+}
+
+/**
  * User property.
  */
 export interface UserPropertyResponse {
@@ -25237,7 +25302,7 @@ export interface WebActivityResponse {
     /**
      * Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
      */
-    headers?: {[key: string]: string};
+    headers?: {[key: string]: any};
     /**
      * Timeout for the HTTP request to get a response. Format is in TimeSpan (hh:mm:ss). This value is the timeout to get a response, not the activity timeout. The default value is 00:01:00 (1 minute). The range is from 1 to 10 minutes
      */
@@ -25373,7 +25438,7 @@ export interface WebHookActivityResponse {
     /**
      * Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
      */
-    headers?: {[key: string]: string};
+    headers?: {[key: string]: any};
     /**
      * Rest API method for target endpoint.
      */

@@ -5,7 +5,7 @@ import * as types from "./types";
  * Gets a gallery
  * Azure REST API version: 2023-04-01.
  *
- * Other available API versions: 2023-08-01-preview, 2023-10-01-preview.
+ * Other available API versions: 2023-08-01-preview, 2023-10-01-preview, 2024-02-01.
  */
 export function getGallery(args: GetGalleryArgs, opts?: pulumi.InvokeOptions): Promise<GetGalleryResult> {
 
@@ -65,7 +65,7 @@ export interface GetGalleryResult {
  * Gets a gallery
  * Azure REST API version: 2023-04-01.
  *
- * Other available API versions: 2023-08-01-preview, 2023-10-01-preview.
+ * Other available API versions: 2023-08-01-preview, 2023-10-01-preview, 2024-02-01.
  */
 export function getGalleryOutput(args: GetGalleryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGalleryResult> {
     return pulumi.output(args).apply((a: any) => getGallery(a, opts))

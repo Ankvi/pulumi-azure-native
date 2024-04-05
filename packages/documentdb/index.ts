@@ -305,7 +305,30 @@ utilities.lazyLoad(exports, ["ThroughputPoolAccount"], () => require("./throughp
 // Export enums:
 export * from "./types/enums";
 
+// Export sub-modules:
+import * as v20210401preview from "./v20210401preview";
+import * as v20210701preview from "./v20210701preview";
+import * as v20230301preview from "./v20230301preview";
+import * as v20230315preview from "./v20230315preview";
+import * as v20230415 from "./v20230415";
+import * as v20230915 from "./v20230915";
+import * as v20230915preview from "./v20230915preview";
+import * as v20231115 from "./v20231115";
+import * as v20231115preview from "./v20231115preview";
+import * as v20240215preview from "./v20240215preview";
 
+export {
+    v20210401preview,
+    v20210701preview,
+    v20230301preview,
+    v20230315preview,
+    v20230415,
+    v20230915,
+    v20230915preview,
+    v20231115,
+    v20231115preview,
+    v20240215preview,
+};
 
 const _module = {
     version: utilities.getVersion(),

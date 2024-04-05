@@ -1,6 +1,6 @@
 {
     "name": "@kengachu-pulumi/azure-native-recommendationsservice",
-    "version": "2.30.0",
+    "version": "2.35.0",
     "description": "Pulumi Azure Native package for recommendationsservice",
     "keywords": [
         "pulumi",

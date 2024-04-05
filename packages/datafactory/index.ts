@@ -170,7 +170,12 @@ utilities.lazyLoad(exports, ["Trigger"], () => require("./trigger"));
 // Export enums:
 export * from "./types/enums";
 
+// Export sub-modules:
+import * as v20180601 from "./v20180601";
 
+export {
+    v20180601,
+};
 
 const _module = {
     version: utilities.getVersion(),

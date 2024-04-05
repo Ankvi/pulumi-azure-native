@@ -380,7 +380,30 @@ utilities.lazyLoad(exports, ["WorkloadInstance"], () => require("./workloadInsta
 // Export enums:
 export * from "./types/enums";
 
+// Export sub-modules:
+import * as v20180202 from "./v20180202";
+import * as v20180901preview from "./v20180901preview";
+import * as v20191001 from "./v20191001";
+import * as v20200501 from "./v20200501";
+import * as v20220501preview from "./v20220501preview";
+import * as v20220801 from "./v20220801";
+import * as v20230101 from "./v20230101";
+import * as v20230315 from "./v20230315";
+import * as v20230401preview from "./v20230401preview";
+import * as v20230801 from "./v20230801";
 
+export {
+    v20180202,
+    v20180901preview,
+    v20191001,
+    v20200501,
+    v20220501preview,
+    v20220801,
+    v20230101,
+    v20230315,
+    v20230401preview,
+    v20230801,
+};
 
 const _module = {
     version: utilities.getVersion(),

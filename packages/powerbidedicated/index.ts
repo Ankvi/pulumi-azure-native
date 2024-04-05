@@ -25,7 +25,12 @@ utilities.lazyLoad(exports, ["getCapacityDetails","getCapacityDetailsOutput"], (
 // Export enums:
 export * from "./types/enums";
 
+// Export sub-modules:
+import * as v20210101 from "./v20210101";
 
+export {
+    v20210101,
+};
 
 const _module = {
     version: utilities.getVersion(),

@@ -25,7 +25,12 @@ utilities.lazyLoad(exports, ["getAssetEndpointProfile","getAssetEndpointProfileO
 // Export enums:
 export * from "./types/enums";
 
+// Export sub-modules:
+import * as v20231101preview from "./v20231101preview";
 
+export {
+    v20231101preview,
+};
 
 const _module = {
     version: utilities.getVersion(),

@@ -85,7 +85,22 @@ utilities.lazyLoad(exports, ["PrivateLinkScopedResource"], () => require("./priv
 // Export enums:
 export * from "./types/enums";
 
+// Export sub-modules:
+import * as v20200802 from "./v20200802";
+import * as v20200815preview from "./v20200815preview";
+import * as v20220510preview from "./v20220510preview";
+import * as v20221227 from "./v20221227";
+import * as v20230620preview from "./v20230620preview";
+import * as v20231003preview from "./v20231003preview";
 
+export {
+    v20200802,
+    v20200815preview,
+    v20220510preview,
+    v20221227,
+    v20230620preview,
+    v20231003preview,
+};
 
 const _module = {
     version: utilities.getVersion(),

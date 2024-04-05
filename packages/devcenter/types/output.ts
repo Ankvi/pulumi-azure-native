@@ -193,6 +193,40 @@ export interface StopOnDisconnectConfigurationResponse {
 }
 
 /**
+ * Stats of the synchronization.
+ */
+export interface SyncStatsResponse {
+    /**
+     * Count of catalog items added during synchronization.
+     */
+    added: number;
+    /**
+     * Count of catalog items removed during synchronization.
+     */
+    removed: number;
+    /**
+     * Indicates catalog item types that were synced.
+     */
+    syncedCatalogItemTypes?: string[];
+    /**
+     * Count of synchronization errors that occured during synchronization.
+     */
+    synchronizationErrors: number;
+    /**
+     * Count of catalog items that were unchanged during synchronization.
+     */
+    unchanged: number;
+    /**
+     * Count of catalog items updated during synchronization.
+     */
+    updated: number;
+    /**
+     * Count of catalog items that had validation errors during synchronization.
+     */
+    validationErrors: number;
+}
+
+/**
  * Metadata pertaining to creation and last modification of the resource.
  */
 export interface SystemDataResponse {
@@ -245,6 +279,7 @@ export interface UserRoleAssignmentResponse {
      */
     roles?: {[key: string]: EnvironmentRoleResponse};
 }
+
 
 
 

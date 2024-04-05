@@ -25,7 +25,12 @@ utilities.lazyLoad(exports, ["StandbyVirtualMachinePool"], () => require("./stan
 // Export enums:
 export * from "./types/enums";
 
+// Export sub-modules:
+import * as v20231201preview from "./v20231201preview";
 
+export {
+    v20231201preview,
+};
 
 const _module = {
     version: utilities.getVersion(),

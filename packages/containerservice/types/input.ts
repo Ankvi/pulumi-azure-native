@@ -1052,9 +1052,7 @@ export interface ManagedClusterUpgradeSpecArgs {
      */
     kubernetesVersion?: pulumi.Input<string>;
     /**
-     * The upgrade type.
-     * Full requires the KubernetesVersion property to be set.
-     * NodeImageOnly requires the KubernetesVersion property not to be set.
+     * ManagedClusterUpgradeType is the type of upgrade to be applied.
      */
     type: pulumi.Input<string | enums.ManagedClusterUpgradeType>;
 }
@@ -1596,6 +1594,8 @@ export interface WindowsGmsaProfileArgs {
      */
     rootDomainName?: pulumi.Input<string>;
 }
+
+
 
 
 

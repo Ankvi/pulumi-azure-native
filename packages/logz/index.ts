@@ -90,7 +90,12 @@ utilities.lazyLoad(exports, ["TagRule"], () => require("./tagRule"));
 // Export enums:
 export * from "./types/enums";
 
+// Export sub-modules:
+import * as v20220101preview from "./v20220101preview";
 
+export {
+    v20220101preview,
+};
 
 const _module = {
     version: utilities.getVersion(),

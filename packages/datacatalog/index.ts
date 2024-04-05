@@ -15,7 +15,12 @@ utilities.lazyLoad(exports, ["getADCCatalog","getADCCatalogOutput"], () => requi
 // Export enums:
 export * from "./types/enums";
 
+// Export sub-modules:
+import * as v20160330 from "./v20160330";
 
+export {
+    v20160330,
+};
 
 const _module = {
     version: utilities.getVersion(),

@@ -70,7 +70,14 @@ utilities.lazyLoad(exports, ["Vault"], () => require("./vault"));
 // Export enums:
 export * from "./types/enums";
 
+// Export sub-modules:
+import * as v20230201 from "./v20230201";
+import * as v20230701 from "./v20230701";
 
+export {
+    v20230201,
+    v20230701,
+};
 
 const _module = {
     version: utilities.getVersion(),

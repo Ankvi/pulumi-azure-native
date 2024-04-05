@@ -15,7 +15,12 @@ utilities.lazyLoad(exports, ["getEnterpriseKnowledgeGraph","getEnterpriseKnowled
 // Export enums:
 export * from "./types/enums";
 
+// Export sub-modules:
+import * as v20181203 from "./v20181203";
 
+export {
+    v20181203,
+};
 
 const _module = {
     version: utilities.getVersion(),

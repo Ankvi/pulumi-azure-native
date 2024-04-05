@@ -50,7 +50,18 @@ utilities.lazyLoad(exports, ["PrivateEndpointConnection"], () => require("./priv
 // Export enums:
 export * from "./types/enums";
 
+// Export sub-modules:
+import * as v20201201preview from "./v20201201preview";
+import * as v20210701 from "./v20210701";
+import * as v20211201 from "./v20211201";
+import * as v20230501preview from "./v20230501preview";
 
+export {
+    v20201201preview,
+    v20210701,
+    v20211201,
+    v20230501preview,
+};
 
 const _module = {
     version: utilities.getVersion(),

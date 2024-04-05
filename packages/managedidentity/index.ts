@@ -27,7 +27,16 @@ export const UserAssignedIdentity: typeof import("./userAssignedIdentity").UserA
 utilities.lazyLoad(exports, ["UserAssignedIdentity"], () => require("./userAssignedIdentity"));
 
 
+// Export sub-modules:
+import * as v20220131preview from "./v20220131preview";
+import * as v20230131 from "./v20230131";
+import * as v20230731preview from "./v20230731preview";
 
+export {
+    v20220131preview,
+    v20230131,
+    v20230731preview,
+};
 
 const _module = {
     version: utilities.getVersion(),

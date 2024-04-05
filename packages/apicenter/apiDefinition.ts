@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * API definition entity.
  * Azure REST API version: 2024-03-01.
+ *
+ * Other available API versions: 2024-03-15-preview.
  */
 export class ApiDefinition extends pulumi.CustomResource {
     /**
@@ -107,7 +109,7 @@ export class ApiDefinition extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:apicenter/v20240301:ApiDefinition" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:apicenter/v20240301:ApiDefinition" }, { type: "azure-native:apicenter/v20240315preview:ApiDefinition" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ApiDefinition.__pulumiType, name, resourceInputs, opts);
     }

@@ -210,7 +210,12 @@ utilities.lazyLoad(exports, ["VirtualNetwork"], () => require("./virtualNetwork"
 // Export enums:
 export * from "./types/enums";
 
+// Export sub-modules:
+import * as v20180915 from "./v20180915";
 
+export {
+    v20180915,
+};
 
 const _module = {
     version: utilities.getVersion(),

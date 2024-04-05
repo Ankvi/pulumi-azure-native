@@ -5,7 +5,7 @@ import * as types from "./types";
  * Gets details of the Flux Configuration.
  * Azure REST API version: 2023-05-01.
  *
- * Other available API versions: 2021-11-01-preview, 2022-01-01-preview.
+ * Other available API versions: 2021-11-01-preview, 2022-01-01-preview, 2024-04-01-preview.
  */
 export function getFluxConfiguration(args: GetFluxConfigurationArgs, opts?: pulumi.InvokeOptions): Promise<GetFluxConfigurationResult> {
 
@@ -143,7 +143,7 @@ export interface GetFluxConfigurationResult {
  * Gets details of the Flux Configuration.
  * Azure REST API version: 2023-05-01.
  *
- * Other available API versions: 2021-11-01-preview, 2022-01-01-preview.
+ * Other available API versions: 2021-11-01-preview, 2022-01-01-preview, 2024-04-01-preview.
  */
 export function getFluxConfigurationOutput(args: GetFluxConfigurationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFluxConfigurationResult> {
     return pulumi.output(args).apply((a: any) => getFluxConfiguration(a, opts))

@@ -5,7 +5,7 @@ import * as types from "./types";
  * The Flux Configuration object returned in Get & Put response.
  * Azure REST API version: 2023-05-01. Prior API version in Azure Native 1.x: 2021-11-01-preview.
  *
- * Other available API versions: 2021-11-01-preview, 2022-01-01-preview.
+ * Other available API versions: 2021-11-01-preview, 2022-01-01-preview, 2024-04-01-preview.
  */
 export class FluxConfiguration extends pulumi.CustomResource {
     /**
@@ -198,7 +198,7 @@ export class FluxConfiguration extends pulumi.CustomResource {
             resourceInputs["waitForReconciliation"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:kubernetesconfiguration/v20211101preview:FluxConfiguration" }, { type: "azure-native:kubernetesconfiguration/v20220101preview:FluxConfiguration" }, { type: "azure-native:kubernetesconfiguration/v20220301:FluxConfiguration" }, { type: "azure-native:kubernetesconfiguration/v20220701:FluxConfiguration" }, { type: "azure-native:kubernetesconfiguration/v20221101:FluxConfiguration" }, { type: "azure-native:kubernetesconfiguration/v20230501:FluxConfiguration" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:kubernetesconfiguration/v20211101preview:FluxConfiguration" }, { type: "azure-native:kubernetesconfiguration/v20220101preview:FluxConfiguration" }, { type: "azure-native:kubernetesconfiguration/v20220301:FluxConfiguration" }, { type: "azure-native:kubernetesconfiguration/v20220701:FluxConfiguration" }, { type: "azure-native:kubernetesconfiguration/v20221101:FluxConfiguration" }, { type: "azure-native:kubernetesconfiguration/v20230501:FluxConfiguration" }, { type: "azure-native:kubernetesconfiguration/v20240401preview:FluxConfiguration" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(FluxConfiguration.__pulumiType, name, resourceInputs, opts);
     }

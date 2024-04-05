@@ -12,7 +12,12 @@ export const ProfessionalServiceSubscriptionLevel: typeof import("./professional
 utilities.lazyLoad(exports, ["ProfessionalServiceSubscriptionLevel"], () => require("./professionalServiceSubscriptionLevel"));
 
 
+// Export sub-modules:
+import * as v20230701preview from "./v20230701preview";
 
+export {
+    v20230701preview,
+};
 
 const _module = {
     version: utilities.getVersion(),

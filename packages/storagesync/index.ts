@@ -65,7 +65,14 @@ utilities.lazyLoad(exports, ["SyncGroup"], () => require("./syncGroup"));
 // Export enums:
 export * from "./types/enums";
 
+// Export sub-modules:
+import * as v20220601 from "./v20220601";
+import * as v20220901 from "./v20220901";
 
+export {
+    v20220601,
+    v20220901,
+};
 
 const _module = {
     version: utilities.getVersion(),

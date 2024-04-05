@@ -12,7 +12,12 @@ export const Report: typeof import("./report").Report = null as any;
 utilities.lazyLoad(exports, ["Report"], () => require("./report"));
 
 
+// Export sub-modules:
+import * as v20221116preview from "./v20221116preview";
 
+export {
+    v20221116preview,
+};
 
 const _module = {
     version: utilities.getVersion(),

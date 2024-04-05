@@ -180,7 +180,30 @@ utilities.lazyLoad(exports, ["Vault"], () => require("./vault"));
 // Export enums:
 export * from "./types/enums";
 
+// Export sub-modules:
+import * as v20181220 from "./v20181220";
+import * as v20200202 from "./v20200202";
+import * as v20210301 from "./v20210301";
+import * as v20211115 from "./v20211115";
+import * as v20230115 from "./v20230115";
+import * as v20230401 from "./v20230401";
+import * as v20230601 from "./v20230601";
+import * as v20230801 from "./v20230801";
+import * as v20240101 from "./v20240101";
+import * as v20240201 from "./v20240201";
 
+export {
+    v20181220,
+    v20200202,
+    v20210301,
+    v20211115,
+    v20230115,
+    v20230401,
+    v20230601,
+    v20230801,
+    v20240101,
+    v20240201,
+};
 
 const _module = {
     version: utilities.getVersion(),

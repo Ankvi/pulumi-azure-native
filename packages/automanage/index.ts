@@ -75,7 +75,14 @@ utilities.lazyLoad(exports, ["getConfigurationProfilesVersion","getConfiguration
 // Export enums:
 export * from "./types/enums";
 
+// Export sub-modules:
+import * as v20200630preview from "./v20200630preview";
+import * as v20220504 from "./v20220504";
 
+export {
+    v20200630preview,
+    v20220504,
+};
 
 const _module = {
     version: utilities.getVersion(),
