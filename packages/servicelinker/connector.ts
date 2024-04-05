@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Linker of source and target resource
  * Azure REST API version: 2022-11-01-preview.
+ *
+ * Other available API versions: 2023-04-01-preview.
  */
 export class Connector extends pulumi.CustomResource {
     /**
@@ -129,7 +131,7 @@ export class Connector extends pulumi.CustomResource {
             resourceInputs["vNetSolution"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:servicelinker/v20221101preview:Connector" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:servicelinker/v20221101preview:Connector" }, { type: "azure-native:servicelinker/v20230401preview:Connector" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Connector.__pulumiType, name, resourceInputs, opts);
     }

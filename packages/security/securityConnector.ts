@@ -5,7 +5,7 @@ import * as types from "./types";
  * The security connector resource.
  * Azure REST API version: 2023-03-01-preview. Prior API version in Azure Native 1.x: 2021-07-01-preview.
  *
- * Other available API versions: 2021-07-01-preview, 2023-10-01-preview.
+ * Other available API versions: 2021-07-01-preview, 2023-10-01-preview, 2024-03-01-preview.
  */
 export class SecurityConnector extends pulumi.CustomResource {
     /**
@@ -126,7 +126,7 @@ export class SecurityConnector extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:security/v20210701preview:SecurityConnector" }, { type: "azure-native:security/v20211201preview:SecurityConnector" }, { type: "azure-native:security/v20220501preview:SecurityConnector" }, { type: "azure-native:security/v20220801preview:SecurityConnector" }, { type: "azure-native:security/v20230301preview:SecurityConnector" }, { type: "azure-native:security/v20231001preview:SecurityConnector" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:security/v20210701preview:SecurityConnector" }, { type: "azure-native:security/v20211201preview:SecurityConnector" }, { type: "azure-native:security/v20220501preview:SecurityConnector" }, { type: "azure-native:security/v20220801preview:SecurityConnector" }, { type: "azure-native:security/v20230301preview:SecurityConnector" }, { type: "azure-native:security/v20231001preview:SecurityConnector" }, { type: "azure-native:security/v20240301preview:SecurityConnector" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(SecurityConnector.__pulumiType, name, resourceInputs, opts);
     }

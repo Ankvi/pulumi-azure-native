@@ -1,3 +1,13 @@
+export const CatalogSyncType = {
+    Manual: "Manual",
+    Scheduled: "Scheduled",
+} as const;
+
+/**
+ * Indicates the type of sync that is configured for the catalog.
+ */
+export type CatalogSyncType = (typeof CatalogSyncType)[keyof typeof CatalogSyncType];
+
 export const DomainJoinType = {
     HybridAzureADJoin: "HybridAzureADJoin",
     AzureADJoin: "AzureADJoin",

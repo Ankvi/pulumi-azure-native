@@ -43,6 +43,161 @@ export interface ErrorResponse {
 }
 
 /**
+ * The springbootapps resource definition.
+ */
+export interface SpringbootappsPropertiesResponse {
+    /**
+     * The name of SpringBootApp.
+     */
+    appName?: string;
+    /**
+     * The application port.
+     */
+    appPort?: number;
+    /**
+     * The application type, whether it is a SpringBoot app.
+     */
+    appType?: string;
+    /**
+     * The application configuration file list.
+     */
+    applicationConfigurations?: SpringbootappsPropertiesResponseApplicationConfigurations[];
+    /**
+     * The artifact name of SpringBootApp.
+     */
+    artifactName?: string;
+    /**
+     * The application binding port list.
+     */
+    bindingPorts?: number[];
+    /**
+     * The jdk version in build.
+     */
+    buildJdkVersion?: string;
+    /**
+     * The certificate file list.
+     */
+    certificates?: string[];
+    /**
+     * The checksum of jar file.
+     */
+    checksum?: string;
+    /**
+     * The connection string list.
+     */
+    connectionStrings?: string[];
+    /**
+     * The dependency list.
+     */
+    dependencies?: string[];
+    /**
+     * The environment variable list.
+     */
+    environments?: string[];
+    /**
+     * The list of errors.
+     */
+    errors?: ErrorResponse[];
+    /**
+     * The total instance count the app deployed.
+     */
+    instanceCount?: number;
+    /**
+     * The breakdown info for app instances on all the servers
+     */
+    instances?: SpringbootappsPropertiesResponseInstances[];
+    /**
+     * The jar file location on the server.
+     */
+    jarFileLocation?: string;
+    /**
+     * The jvm heap memory allocated.
+     */
+    jvmMemoryInMB?: number;
+    /**
+     * The jvm options.
+     */
+    jvmOptions?: string[];
+    /**
+     * Resource labels
+     */
+    labels?: {[key: string]: string};
+    /**
+     * Time when this springbootapps jar file was last modified.
+     */
+    lastModifiedTime?: string;
+    /**
+     * Time when this springbootapps instance was last refreshed.
+     */
+    lastUpdatedTime?: string;
+    /**
+     * The machine ARM id list the app belongs to.
+     */
+    machineArmIds?: string[];
+    /**
+     * The other types of date collected.
+     */
+    miscs?: SpringbootappsPropertiesResponseMiscs[];
+    /**
+     * The resource provisioning state.
+     */
+    provisioningState: string;
+    /**
+     * The jdk version installed on server
+     */
+    runtimeJdkVersion?: string;
+    /**
+     * The server list the app installed
+     */
+    servers?: string[];
+    /**
+     * The spring boot version.
+     */
+    springBootVersion?: string;
+    /**
+     * The static content location list.
+     */
+    staticContentLocations?: string[];
+}
+
+export interface SpringbootappsPropertiesResponseApplicationConfigurations {
+    /**
+     * The application config file name.
+     */
+    key: string;
+    /**
+     * The application config file content, only contains config keys.
+     */
+    value?: string;
+}
+
+export interface SpringbootappsPropertiesResponseInstances {
+    /**
+     * The instance count of this app instance
+     */
+    instanceCount?: number;
+    /**
+     * The jvm heap memory allocated of this app instance
+     */
+    jvmMemoryInMB?: number;
+    /**
+     * The machine ARM resource Id of this app instance
+     */
+    machineArmId: string;
+}
+
+export interface SpringbootappsPropertiesResponseMiscs {
+    /**
+     * The miscs. key.
+     */
+    key: string;
+    /**
+     * The miscs. value.
+     */
+    value?: string;
+}
+
+/**
  * The springbootservers resource definition.
  */
 export interface SpringbootserversPropertiesResponse {
@@ -141,3 +296,4 @@ export interface SystemDataResponse {
      */
     lastModifiedByType?: string;
 }
+

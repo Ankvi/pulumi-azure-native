@@ -96,6 +96,21 @@ export const getProject: typeof import("./getProject").getProject = null as any;
 export const getProjectOutput: typeof import("./getProject").getProjectOutput = null as any;
 utilities.lazyLoad(exports, ["getProject","getProjectOutput"], () => require("./getProject"));
 
+export { GetProjectCatalogArgs, GetProjectCatalogResult, GetProjectCatalogOutputArgs } from "./getProjectCatalog";
+export const getProjectCatalog: typeof import("./getProjectCatalog").getProjectCatalog = null as any;
+export const getProjectCatalogOutput: typeof import("./getProjectCatalog").getProjectCatalogOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectCatalog","getProjectCatalogOutput"], () => require("./getProjectCatalog"));
+
+export { GetProjectCatalogEnvironmentDefinitionErrorDetailsArgs, GetProjectCatalogEnvironmentDefinitionErrorDetailsResult, GetProjectCatalogEnvironmentDefinitionErrorDetailsOutputArgs } from "./getProjectCatalogEnvironmentDefinitionErrorDetails";
+export const getProjectCatalogEnvironmentDefinitionErrorDetails: typeof import("./getProjectCatalogEnvironmentDefinitionErrorDetails").getProjectCatalogEnvironmentDefinitionErrorDetails = null as any;
+export const getProjectCatalogEnvironmentDefinitionErrorDetailsOutput: typeof import("./getProjectCatalogEnvironmentDefinitionErrorDetails").getProjectCatalogEnvironmentDefinitionErrorDetailsOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectCatalogEnvironmentDefinitionErrorDetails","getProjectCatalogEnvironmentDefinitionErrorDetailsOutput"], () => require("./getProjectCatalogEnvironmentDefinitionErrorDetails"));
+
+export { GetProjectCatalogSyncErrorDetailsArgs, GetProjectCatalogSyncErrorDetailsResult, GetProjectCatalogSyncErrorDetailsOutputArgs } from "./getProjectCatalogSyncErrorDetails";
+export const getProjectCatalogSyncErrorDetails: typeof import("./getProjectCatalogSyncErrorDetails").getProjectCatalogSyncErrorDetails = null as any;
+export const getProjectCatalogSyncErrorDetailsOutput: typeof import("./getProjectCatalogSyncErrorDetails").getProjectCatalogSyncErrorDetailsOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectCatalogSyncErrorDetails","getProjectCatalogSyncErrorDetailsOutput"], () => require("./getProjectCatalogSyncErrorDetails"));
+
 export { GetProjectEnvironmentTypeArgs, GetProjectEnvironmentTypeResult, GetProjectEnvironmentTypeOutputArgs } from "./getProjectEnvironmentType";
 export const getProjectEnvironmentType: typeof import("./getProjectEnvironmentType").getProjectEnvironmentType = null as any;
 export const getProjectEnvironmentTypeOutput: typeof import("./getProjectEnvironmentType").getProjectEnvironmentTypeOutput = null as any;
@@ -120,6 +135,11 @@ export { ProjectArgs } from "./project";
 export type Project = import("./project").Project;
 export const Project: typeof import("./project").Project = null as any;
 utilities.lazyLoad(exports, ["Project"], () => require("./project"));
+
+export { ProjectCatalogArgs } from "./projectCatalog";
+export type ProjectCatalog = import("./projectCatalog").ProjectCatalog;
+export const ProjectCatalog: typeof import("./projectCatalog").ProjectCatalog = null as any;
+utilities.lazyLoad(exports, ["ProjectCatalog"], () => require("./projectCatalog"));
 
 export { ProjectEnvironmentTypeArgs } from "./projectEnvironmentType";
 export type ProjectEnvironmentType = import("./projectEnvironmentType").ProjectEnvironmentType;
@@ -159,6 +179,8 @@ const _module = {
                 return new Pool(name, <any>undefined, { urn })
             case "azure-native:devcenter:Project":
                 return new Project(name, <any>undefined, { urn })
+            case "azure-native:devcenter:ProjectCatalog":
+                return new ProjectCatalog(name, <any>undefined, { urn })
             case "azure-native:devcenter:ProjectEnvironmentType":
                 return new ProjectEnvironmentType(name, <any>undefined, { urn })
             case "azure-native:devcenter:Schedule":

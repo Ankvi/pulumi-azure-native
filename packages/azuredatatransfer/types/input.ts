@@ -224,3 +224,4 @@ export interface SubscriberArgs {
      */
     notifications?: pulumi.Input<number>;
 }
+

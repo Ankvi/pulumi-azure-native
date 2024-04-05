@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * A customer's reference to a global communications site site.
  * Azure REST API version: 2024-03-01-preview.
+ *
+ * Other available API versions: 2024-03-01.
  */
 export class EdgeSite extends pulumi.CustomResource {
     /**
@@ -91,7 +93,7 @@ export class EdgeSite extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:orbital/v20240301preview:EdgeSite" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:orbital/v20240301:EdgeSite" }, { type: "azure-native:orbital/v20240301preview:EdgeSite" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(EdgeSite.__pulumiType, name, resourceInputs, opts);
     }

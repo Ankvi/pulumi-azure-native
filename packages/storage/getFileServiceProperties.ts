@@ -5,7 +5,7 @@ import * as types from "./types";
  * Gets the properties of file services in storage accounts, including CORS (Cross-Origin Resource Sharing) rules.
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2023-01-01.
+ * Other available API versions: 2023-01-01, 2023-04-01.
  */
 export function getFileServiceProperties(args: GetFileServicePropertiesArgs, opts?: pulumi.InvokeOptions): Promise<GetFileServicePropertiesResult> {
 
@@ -69,7 +69,7 @@ export interface GetFileServicePropertiesResult {
  * Gets the properties of file services in storage accounts, including CORS (Cross-Origin Resource Sharing) rules.
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2023-01-01.
+ * Other available API versions: 2023-01-01, 2023-04-01.
  */
 export function getFileServicePropertiesOutput(args: GetFileServicePropertiesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFileServicePropertiesResult> {
     return pulumi.output(args).apply((a: any) => getFileServiceProperties(a, opts))

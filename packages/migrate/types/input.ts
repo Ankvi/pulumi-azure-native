@@ -719,9 +719,17 @@ export interface ComputeSettingsArgs {
      */
     price: pulumi.Input<number>;
     /**
+     * Linux Rhel Server licensing settings.
+     */
+    rhelLinuxServerLicensing: pulumi.Input<LinuxServerLicensingSettingsArgs>;
+    /**
      * SQL Server licensing settings.
      */
     sqlServerLicensing: pulumi.Input<pulumi.Input<SqlServerLicensingSettingsArgs>[]>;
+    /**
+     * Linux Suse Server licensing settings.
+     */
+    suseLinuxServerLicensing: pulumi.Input<LinuxServerLicensingSettingsArgs>;
     /**
      * Virtualization software settings.
      */
@@ -1331,6 +1339,16 @@ export interface LaborSettingsArgs {
      * Virtual machines per administrator.
      */
     virtualMachinesPerAdmin: pulumi.Input<number>;
+}
+
+/**
+ * Linux Server licensing settings.
+ */
+export interface LinuxServerLicensingSettingsArgs {
+    /**
+     * Licence Cost.
+     */
+    licenseCost: pulumi.Input<number>;
 }
 
 /**

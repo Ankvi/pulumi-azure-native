@@ -61,6 +61,11 @@ export const getHcxEnterpriseSite: typeof import("./getHcxEnterpriseSite").getHc
 export const getHcxEnterpriseSiteOutput: typeof import("./getHcxEnterpriseSite").getHcxEnterpriseSiteOutput = null as any;
 utilities.lazyLoad(exports, ["getHcxEnterpriseSite","getHcxEnterpriseSiteOutput"], () => require("./getHcxEnterpriseSite"));
 
+export { GetIscsiPathArgs, GetIscsiPathResult, GetIscsiPathOutputArgs } from "./getIscsiPath";
+export const getIscsiPath: typeof import("./getIscsiPath").getIscsiPath = null as any;
+export const getIscsiPathOutput: typeof import("./getIscsiPath").getIscsiPathOutput = null as any;
+utilities.lazyLoad(exports, ["getIscsiPath","getIscsiPathOutput"], () => require("./getIscsiPath"));
+
 export { GetPlacementPolicyArgs, GetPlacementPolicyResult, GetPlacementPolicyOutputArgs } from "./getPlacementPolicy";
 export const getPlacementPolicy: typeof import("./getPlacementPolicy").getPlacementPolicy = null as any;
 export const getPlacementPolicyOutput: typeof import("./getPlacementPolicy").getPlacementPolicyOutput = null as any;
@@ -125,6 +130,11 @@ export { HcxEnterpriseSiteArgs } from "./hcxEnterpriseSite";
 export type HcxEnterpriseSite = import("./hcxEnterpriseSite").HcxEnterpriseSite;
 export const HcxEnterpriseSite: typeof import("./hcxEnterpriseSite").HcxEnterpriseSite = null as any;
 utilities.lazyLoad(exports, ["HcxEnterpriseSite"], () => require("./hcxEnterpriseSite"));
+
+export { IscsiPathArgs } from "./iscsiPath";
+export type IscsiPath = import("./iscsiPath").IscsiPath;
+export const IscsiPath: typeof import("./iscsiPath").IscsiPath = null as any;
+utilities.lazyLoad(exports, ["IscsiPath"], () => require("./iscsiPath"));
 
 export { ListClusterZonesArgs, ListClusterZonesResult, ListClusterZonesOutputArgs } from "./listClusterZones";
 export const listClusterZones: typeof import("./listClusterZones").listClusterZones = null as any;
@@ -210,6 +220,8 @@ const _module = {
                 return new GlobalReachConnection(name, <any>undefined, { urn })
             case "azure-native:avs:HcxEnterpriseSite":
                 return new HcxEnterpriseSite(name, <any>undefined, { urn })
+            case "azure-native:avs:IscsiPath":
+                return new IscsiPath(name, <any>undefined, { urn })
             case "azure-native:avs:PlacementPolicy":
                 return new PlacementPolicy(name, <any>undefined, { urn })
             case "azure-native:avs:PrivateCloud":

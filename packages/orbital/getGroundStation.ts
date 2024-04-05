@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets the specified ground station in a specified resource group.
  * Azure REST API version: 2024-03-01-preview.
+ *
+ * Other available API versions: 2024-03-01.
  */
 export function getGroundStation(args: GetGroundStationArgs, opts?: pulumi.InvokeOptions): Promise<GetGroundStationResult> {
 
@@ -89,6 +91,8 @@ export interface GetGroundStationResult {
 /**
  * Gets the specified ground station in a specified resource group.
  * Azure REST API version: 2024-03-01-preview.
+ *
+ * Other available API versions: 2024-03-01.
  */
 export function getGroundStationOutput(args: GetGroundStationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroundStationResult> {
     return pulumi.output(args).apply((a: any) => getGroundStation(a, opts))

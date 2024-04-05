@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Returns a list of L2 Connections attached to an ground station.
  * Azure REST API version: 2024-03-01-preview.
+ *
+ * Other available API versions: 2024-03-01.
  */
 export function listGroundStationL2Connections(args: ListGroundStationL2ConnectionsArgs, opts?: pulumi.InvokeOptions): Promise<ListGroundStationL2ConnectionsResult> {
 
@@ -41,6 +43,8 @@ export interface ListGroundStationL2ConnectionsResult {
 /**
  * Returns a list of L2 Connections attached to an ground station.
  * Azure REST API version: 2024-03-01-preview.
+ *
+ * Other available API versions: 2024-03-01.
  */
 export function listGroundStationL2ConnectionsOutput(args: ListGroundStationL2ConnectionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListGroundStationL2ConnectionsResult> {
     return pulumi.output(args).apply((a: any) => listGroundStationL2Connections(a, opts))

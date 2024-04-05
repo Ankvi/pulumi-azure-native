@@ -5,7 +5,7 @@ import * as types from "./types";
  * Network related settings
  * Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2022-09-01-preview.
  *
- * Other available API versions: 2023-08-01-preview, 2023-10-01-preview.
+ * Other available API versions: 2023-08-01-preview, 2023-10-01-preview, 2024-02-01.
  */
 export class NetworkConnection extends pulumi.CustomResource {
     /**
@@ -144,7 +144,7 @@ export class NetworkConnection extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:devcenter/v20220801preview:NetworkConnection" }, { type: "azure-native:devcenter/v20220901preview:NetworkConnection" }, { type: "azure-native:devcenter/v20221012preview:NetworkConnection" }, { type: "azure-native:devcenter/v20221111preview:NetworkConnection" }, { type: "azure-native:devcenter/v20230101preview:NetworkConnection" }, { type: "azure-native:devcenter/v20230401:NetworkConnection" }, { type: "azure-native:devcenter/v20230801preview:NetworkConnection" }, { type: "azure-native:devcenter/v20231001preview:NetworkConnection" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:devcenter/v20220801preview:NetworkConnection" }, { type: "azure-native:devcenter/v20220901preview:NetworkConnection" }, { type: "azure-native:devcenter/v20221012preview:NetworkConnection" }, { type: "azure-native:devcenter/v20221111preview:NetworkConnection" }, { type: "azure-native:devcenter/v20230101preview:NetworkConnection" }, { type: "azure-native:devcenter/v20230401:NetworkConnection" }, { type: "azure-native:devcenter/v20230801preview:NetworkConnection" }, { type: "azure-native:devcenter/v20231001preview:NetworkConnection" }, { type: "azure-native:devcenter/v20240201:NetworkConnection" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(NetworkConnection.__pulumiType, name, resourceInputs, opts);
     }

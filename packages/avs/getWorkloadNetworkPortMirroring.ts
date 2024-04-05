@@ -4,7 +4,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * NSX Port Mirroring
  * Azure REST API version: 2022-05-01.
  *
- * Other available API versions: 2023-03-01.
+ * Other available API versions: 2023-03-01, 2023-09-01.
  */
 export function getWorkloadNetworkPortMirroring(args: GetWorkloadNetworkPortMirroringArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkloadNetworkPortMirroringResult> {
 
@@ -80,7 +80,7 @@ export interface GetWorkloadNetworkPortMirroringResult {
  * NSX Port Mirroring
  * Azure REST API version: 2022-05-01.
  *
- * Other available API versions: 2023-03-01.
+ * Other available API versions: 2023-03-01, 2023-09-01.
  */
 export function getWorkloadNetworkPortMirroringOutput(args: GetWorkloadNetworkPortMirroringOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkloadNetworkPortMirroringResult> {
     return pulumi.output(args).apply((a: any) => getWorkloadNetworkPortMirroring(a, opts))

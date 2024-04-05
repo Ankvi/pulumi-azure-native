@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * The flow resource definition.
  * Azure REST API version: 2023-10-11-preview.
+ *
+ * Other available API versions: 2024-01-25.
  */
 export class Flow extends pulumi.CustomResource {
     /**
@@ -104,7 +106,7 @@ export class Flow extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:azuredatatransfer/v20231011preview:Flow" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:azuredatatransfer/v20231011preview:Flow" }, { type: "azure-native:azuredatatransfer/v20240125:Flow" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Flow.__pulumiType, name, resourceInputs, opts);
     }

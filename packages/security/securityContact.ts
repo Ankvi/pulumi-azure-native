@@ -5,7 +5,7 @@ import * as types from "./types";
  * Contact details and configurations for notifications coming from Microsoft Defender for Cloud.
  * Azure REST API version: 2020-01-01-preview. Prior API version in Azure Native 1.x: 2020-01-01-preview.
  *
- * Other available API versions: 2017-08-01-preview.
+ * Other available API versions: 2017-08-01-preview, 2023-12-01-preview.
  */
 export class SecurityContact extends pulumi.CustomResource {
     /**
@@ -86,7 +86,7 @@ export class SecurityContact extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:security/v20170801preview:SecurityContact" }, { type: "azure-native:security/v20200101preview:SecurityContact" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:security/v20170801preview:SecurityContact" }, { type: "azure-native:security/v20200101preview:SecurityContact" }, { type: "azure-native:security/v20231201preview:SecurityContact" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(SecurityContact.__pulumiType, name, resourceInputs, opts);
     }

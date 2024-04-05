@@ -847,9 +847,17 @@ export interface ComputeSettingsResponse {
      */
     price: number;
     /**
+     * Linux Rhel Server licensing settings.
+     */
+    rhelLinuxServerLicensing: LinuxServerLicensingSettingsResponse;
+    /**
      * SQL Server licensing settings.
      */
     sqlServerLicensing: SqlServerLicensingSettingsResponse[];
+    /**
+     * Linux Suse Server licensing settings.
+     */
+    suseLinuxServerLicensing: LinuxServerLicensingSettingsResponse;
     /**
      * Virtualization software settings.
      */
@@ -1778,6 +1786,16 @@ export interface LaborSettingsResponse {
      * Virtual machines per administrator.
      */
     virtualMachinesPerAdmin: number;
+}
+
+/**
+ * Linux Server licensing settings.
+ */
+export interface LinuxServerLicensingSettingsResponse {
+    /**
+     * Licence Cost.
+     */
+    licenseCost: number;
 }
 
 /**

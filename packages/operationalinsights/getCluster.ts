@@ -64,6 +64,10 @@ export interface GetClusterResult {
      */
     readonly isAvailabilityZonesEnabled?: boolean;
     /**
+     * Configures whether cluster will use double encryption. This Property can not be modified after cluster creation. Default value is 'true'
+     */
+    readonly isDoubleEncryptionEnabled?: boolean;
+    /**
      * The associated key properties.
      */
     readonly keyVaultProperties?: types.outputs.KeyVaultPropertiesResponse;

@@ -5,7 +5,7 @@ import * as types from "./types";
  * Represents a project resource.
  * Azure REST API version: 2023-04-01. Prior API version in Azure Native 1.x: 2022-09-01-preview.
  *
- * Other available API versions: 2023-08-01-preview, 2023-10-01-preview.
+ * Other available API versions: 2023-08-01-preview, 2023-10-01-preview, 2024-02-01.
  */
 export class Project extends pulumi.CustomResource {
     /**
@@ -114,7 +114,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:devcenter/v20220801preview:Project" }, { type: "azure-native:devcenter/v20220901preview:Project" }, { type: "azure-native:devcenter/v20221012preview:Project" }, { type: "azure-native:devcenter/v20221111preview:Project" }, { type: "azure-native:devcenter/v20230101preview:Project" }, { type: "azure-native:devcenter/v20230401:Project" }, { type: "azure-native:devcenter/v20230801preview:Project" }, { type: "azure-native:devcenter/v20231001preview:Project" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:devcenter/v20220801preview:Project" }, { type: "azure-native:devcenter/v20220901preview:Project" }, { type: "azure-native:devcenter/v20221012preview:Project" }, { type: "azure-native:devcenter/v20221111preview:Project" }, { type: "azure-native:devcenter/v20230101preview:Project" }, { type: "azure-native:devcenter/v20230401:Project" }, { type: "azure-native:devcenter/v20230801preview:Project" }, { type: "azure-native:devcenter/v20231001preview:Project" }, { type: "azure-native:devcenter/v20240201:Project" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Project.__pulumiType, name, resourceInputs, opts);
     }

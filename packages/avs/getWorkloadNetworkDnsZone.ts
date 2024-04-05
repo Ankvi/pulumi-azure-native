@@ -4,7 +4,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * NSX DNS Zone
  * Azure REST API version: 2022-05-01.
  *
- * Other available API versions: 2023-03-01.
+ * Other available API versions: 2023-03-01, 2023-09-01.
  */
 export function getWorkloadNetworkDnsZone(args: GetWorkloadNetworkDnsZoneArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkloadNetworkDnsZoneResult> {
 
@@ -80,7 +80,7 @@ export interface GetWorkloadNetworkDnsZoneResult {
  * NSX DNS Zone
  * Azure REST API version: 2022-05-01.
  *
- * Other available API versions: 2023-03-01.
+ * Other available API versions: 2023-03-01, 2023-09-01.
  */
 export function getWorkloadNetworkDnsZoneOutput(args: GetWorkloadNetworkDnsZoneOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkloadNetworkDnsZoneResult> {
     return pulumi.output(args).apply((a: any) => getWorkloadNetworkDnsZone(a, opts))

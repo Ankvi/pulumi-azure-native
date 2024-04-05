@@ -586,6 +586,126 @@ export interface DeploymentResponse {
 }
 
 /**
+ * An individual contact associated with this domain
+ */
+export interface EnrichmentDomainWhoisContactResponse {
+    /**
+     * The city for this contact
+     */
+    city?: string;
+    /**
+     * The country for this contact
+     */
+    country?: string;
+    /**
+     * The email address for this contact
+     */
+    email?: string;
+    /**
+     * The fax number for this contact
+     */
+    fax?: string;
+    /**
+     * The name of this contact
+     */
+    name?: string;
+    /**
+     * The organization for this contact
+     */
+    org?: string;
+    /**
+     * The phone number for this contact
+     */
+    phone?: string;
+    /**
+     * The postal code for this contact
+     */
+    postal?: string;
+    /**
+     * The state for this contact
+     */
+    state?: string;
+    /**
+     * A list describing the street address for this contact
+     */
+    street?: string[];
+}
+
+/**
+ * The set of contacts associated with this domain
+ */
+export interface EnrichmentDomainWhoisContactsResponse {
+    /**
+     * The admin contact for this whois record
+     */
+    admin?: EnrichmentDomainWhoisContactResponse;
+    /**
+     * The billing contact for this whois record
+     */
+    billing?: EnrichmentDomainWhoisContactResponse;
+    /**
+     * The registrant contact for this whois record
+     */
+    registrant?: EnrichmentDomainWhoisContactResponse;
+    /**
+     * The technical contact for this whois record
+     */
+    tech?: EnrichmentDomainWhoisContactResponse;
+}
+
+/**
+ * The whois record for a given domain
+ */
+export interface EnrichmentDomainWhoisDetailsResponse {
+    /**
+     * The set of contacts associated with this domain
+     */
+    contacts?: EnrichmentDomainWhoisContactsResponse;
+    /**
+     * A list of name servers associated with this domain
+     */
+    nameServers?: string[];
+    /**
+     * The registrar associated with this domain
+     */
+    registrar?: EnrichmentDomainWhoisRegistrarDetailsResponse;
+    /**
+     * The set of status flags for this whois record
+     */
+    statuses?: string[];
+}
+
+/**
+ * The registrar associated with this domain
+ */
+export interface EnrichmentDomainWhoisRegistrarDetailsResponse {
+    /**
+     * This registrar's abuse contact email
+     */
+    abuseContactEmail?: string;
+    /**
+     * This registrar's abuse contact phone number
+     */
+    abuseContactPhone?: string;
+    /**
+     * This registrar's Internet Assigned Numbers Authority id
+     */
+    ianaId?: string;
+    /**
+     * The name of this registrar
+     */
+    name?: string;
+    /**
+     * This registrar's URL
+     */
+    url?: string;
+    /**
+     * The hostname of this registrar's whois server
+     */
+    whoisServer?: string;
+}
+
+/**
  * Entity insight Item.
  */
 export interface EntityInsightItemResponse {
@@ -1555,6 +1675,8 @@ export interface WebhookResponse {
      */
     webhookUrl?: string;
 }
+
+
 
 
 
