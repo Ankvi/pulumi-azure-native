@@ -2278,3 +2278,4 @@ export interface WorkbookTemplateLocalizedGalleryArgs {
 
 
 
+

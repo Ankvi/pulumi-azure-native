@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Definition of generic ARM proxy resource.
  * Azure REST API version: 2022-06-01.
+ *
+ * Other available API versions: 2023-03-11.
  */
 export function getDataCollectionRuleAssociation(args: GetDataCollectionRuleAssociationArgs, opts?: pulumi.InvokeOptions): Promise<GetDataCollectionRuleAssociationResult> {
 
@@ -73,6 +75,8 @@ export interface GetDataCollectionRuleAssociationResult {
 /**
  * Definition of generic ARM proxy resource.
  * Azure REST API version: 2022-06-01.
+ *
+ * Other available API versions: 2023-03-11.
  */
 export function getDataCollectionRuleAssociationOutput(args: GetDataCollectionRuleAssociationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDataCollectionRuleAssociationResult> {
     return pulumi.output(args).apply((a: any) => getDataCollectionRuleAssociation(a, opts))

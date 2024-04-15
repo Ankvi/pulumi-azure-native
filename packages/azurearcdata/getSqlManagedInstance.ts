@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Retrieves a SQL Managed Instance resource
  * Azure REST API version: 2023-01-15-preview.
+ *
+ * Other available API versions: 2024-01-01.
  */
 export function getSqlManagedInstance(args: GetSqlManagedInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetSqlManagedInstanceResult> {
 
@@ -69,6 +71,8 @@ export interface GetSqlManagedInstanceResult {
 /**
  * Retrieves a SQL Managed Instance resource
  * Azure REST API version: 2023-01-15-preview.
+ *
+ * Other available API versions: 2024-01-01.
  */
 export function getSqlManagedInstanceOutput(args: GetSqlManagedInstanceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSqlManagedInstanceResult> {
     return pulumi.output(args).apply((a: any) => getSqlManagedInstance(a, opts))

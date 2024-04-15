@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Definition of generic ARM proxy resource.
  * Azure REST API version: 2022-06-01. Prior API version in Azure Native 1.x: 2019-11-01-preview.
+ *
+ * Other available API versions: 2023-03-11.
  */
 export class DataCollectionRuleAssociation extends pulumi.CustomResource {
     /**
@@ -106,7 +108,7 @@ export class DataCollectionRuleAssociation extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:insights/v20191101preview:DataCollectionRuleAssociation" }, { type: "azure-native:insights/v20210401:DataCollectionRuleAssociation" }, { type: "azure-native:insights/v20210901preview:DataCollectionRuleAssociation" }, { type: "azure-native:insights/v20220601:DataCollectionRuleAssociation" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:insights/v20191101preview:DataCollectionRuleAssociation" }, { type: "azure-native:insights/v20210401:DataCollectionRuleAssociation" }, { type: "azure-native:insights/v20210901preview:DataCollectionRuleAssociation" }, { type: "azure-native:insights/v20220601:DataCollectionRuleAssociation" }, { type: "azure-native:insights/v20230311:DataCollectionRuleAssociation" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(DataCollectionRuleAssociation.__pulumiType, name, resourceInputs, opts);
     }

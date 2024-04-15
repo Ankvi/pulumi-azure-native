@@ -1,6 +1,6 @@
 {
     "name": "@kengachu-pulumi/azure-native-automanage",
-    "version": "2.35.0",
+    "version": "2.36.0",
     "description": "Pulumi Azure Native package for automanage",
     "keywords": [
         "pulumi",

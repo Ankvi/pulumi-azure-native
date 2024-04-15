@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * List of RP resources which supports pagination.
  * Azure REST API version: 2023-09-01-preview.
+ *
+ * Other available API versions: 2024-04-01.
  */
 export function listAzureDevOpsOrgAvailable(args: ListAzureDevOpsOrgAvailableArgs, opts?: pulumi.InvokeOptions): Promise<ListAzureDevOpsOrgAvailableResult> {
 
@@ -41,6 +43,8 @@ export interface ListAzureDevOpsOrgAvailableResult {
 /**
  * List of RP resources which supports pagination.
  * Azure REST API version: 2023-09-01-preview.
+ *
+ * Other available API versions: 2024-04-01.
  */
 export function listAzureDevOpsOrgAvailableOutput(args: ListAzureDevOpsOrgAvailableOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListAzureDevOpsOrgAvailableResult> {
     return pulumi.output(args).apply((a: any) => listAzureDevOpsOrgAvailable(a, opts))

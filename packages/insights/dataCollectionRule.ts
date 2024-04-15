@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Definition of ARM tracked top level resource.
  * Azure REST API version: 2022-06-01. Prior API version in Azure Native 1.x: 2019-11-01-preview.
+ *
+ * Other available API versions: 2023-03-11.
  */
 export class DataCollectionRule extends pulumi.CustomResource {
     /**
@@ -155,7 +157,7 @@ export class DataCollectionRule extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:insights/v20191101preview:DataCollectionRule" }, { type: "azure-native:insights/v20210401:DataCollectionRule" }, { type: "azure-native:insights/v20210901preview:DataCollectionRule" }, { type: "azure-native:insights/v20220601:DataCollectionRule" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:insights/v20191101preview:DataCollectionRule" }, { type: "azure-native:insights/v20210401:DataCollectionRule" }, { type: "azure-native:insights/v20210901preview:DataCollectionRule" }, { type: "azure-native:insights/v20220601:DataCollectionRule" }, { type: "azure-native:insights/v20230311:DataCollectionRule" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(DataCollectionRule.__pulumiType, name, resourceInputs, opts);
     }

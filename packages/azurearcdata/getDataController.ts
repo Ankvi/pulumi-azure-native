@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Retrieves a dataController resource
  * Azure REST API version: 2023-01-15-preview.
+ *
+ * Other available API versions: 2024-01-01.
  */
 export function getDataController(args: GetDataControllerArgs, opts?: pulumi.InvokeOptions): Promise<GetDataControllerResult> {
 
@@ -65,6 +67,8 @@ export interface GetDataControllerResult {
 /**
  * Retrieves a dataController resource
  * Azure REST API version: 2023-01-15-preview.
+ *
+ * Other available API versions: 2024-01-01.
  */
 export function getDataControllerOutput(args: GetDataControllerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDataControllerResult> {
     return pulumi.output(args).apply((a: any) => getDataController(a, opts))

@@ -2,7 +2,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * LoadTest details
+ * LoadTest details.
  * Azure REST API version: 2022-12-01. Prior API version in Azure Native 1.x: 2021-12-01-preview.
  *
  * Other available API versions: 2021-12-01-preview.
@@ -47,7 +47,7 @@ export class LoadTest extends pulumi.CustomResource {
      */
     public readonly encryption!: pulumi.Output<types.outputs.EncryptionPropertiesResponse | undefined>;
     /**
-     * The type of identity used for the resource.
+     * The managed service identities assigned to this resource.
      */
     public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
     /**
@@ -133,11 +133,11 @@ export interface LoadTestArgs {
      */
     encryption?: pulumi.Input<types.inputs.EncryptionPropertiesArgs>;
     /**
-     * The type of identity used for the resource.
+     * The managed service identities assigned to this resource.
      */
     identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
-     * Load Test name.
+     * Load Test name
      */
     loadTestName?: pulumi.Input<string>;
     /**

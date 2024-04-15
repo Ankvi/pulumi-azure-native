@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Retrieves an Arc Sql Server database.
  * Azure REST API version: 2023-01-15-preview.
+ *
+ * Other available API versions: 2024-01-01.
  */
 export function getSqlServerDatabase(args: GetSqlServerDatabaseArgs, opts?: pulumi.InvokeOptions): Promise<GetSqlServerDatabaseResult> {
 
@@ -66,6 +68,8 @@ export interface GetSqlServerDatabaseResult {
 /**
  * Retrieves an Arc Sql Server database.
  * Azure REST API version: 2023-01-15-preview.
+ *
+ * Other available API versions: 2024-01-01.
  */
 export function getSqlServerDatabaseOutput(args: GetSqlServerDatabaseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSqlServerDatabaseResult> {
     return pulumi.output(args).apply((a: any) => getSqlServerDatabase(a, opts))

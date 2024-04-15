@@ -2,7 +2,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Returns the subscriptionId along with its provisioning state for being associated with the GroupQuotasEntity.
+ * Returns the subscriptionIds along with its provisioning state for being associated with the GroupQuota. If the subscription is not a member of GroupQuota, it will return 404, else 200.
  * Azure REST API version: 2023-06-01-preview.
  */
 export function getGroupQuotaSubscription(args: GetGroupQuotaSubscriptionArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupQuotaSubscriptionResult> {
@@ -10,7 +10,7 @@ export function getGroupQuotaSubscription(args: GetGroupQuotaSubscriptionArgs, o
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azure-native:quota:getGroupQuotaSubscription", {
         "groupQuotaName": args.groupQuotaName,
-        "mgId": args.mgId,
+        "managementGroupId": args.managementGroupId,
     }, opts);
 }
 
@@ -22,11 +22,11 @@ export interface GetGroupQuotaSubscriptionArgs {
     /**
      * Management Group Id.
      */
-    mgId: string;
+    managementGroupId: string;
 }
 
 /**
- * This represents a Azure subscriptionId that is associated with a GroupQuotaSEntity.
+ * This represents a Azure subscriptionId that is associated with a GroupQuotasEntity.
  */
 export interface GetGroupQuotaSubscriptionResult {
     /**
@@ -48,7 +48,7 @@ export interface GetGroupQuotaSubscriptionResult {
     readonly type: string;
 }
 /**
- * Returns the subscriptionId along with its provisioning state for being associated with the GroupQuotasEntity.
+ * Returns the subscriptionIds along with its provisioning state for being associated with the GroupQuota. If the subscription is not a member of GroupQuota, it will return 404, else 200.
  * Azure REST API version: 2023-06-01-preview.
  */
 export function getGroupQuotaSubscriptionOutput(args: GetGroupQuotaSubscriptionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupQuotaSubscriptionResult> {
@@ -63,5 +63,5 @@ export interface GetGroupQuotaSubscriptionOutputArgs {
     /**
      * Management Group Id.
      */
-    mgId: pulumi.Input<string>;
+    managementGroupId: pulumi.Input<string>;
 }

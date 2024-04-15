@@ -1,7 +1,7 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
- * Key and identity details for Customer Managed Key encryption of load test resource
+ * Key and identity details for Customer Managed Key encryption of load test resource.
  */
 export interface EncryptionPropertiesArgs {
     /**
@@ -19,11 +19,11 @@ export interface EncryptionPropertiesArgs {
  */
 export interface EncryptionPropertiesIdentityArgs {
     /**
-     * user assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId
+     * User assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId.
      */
     resourceId?: pulumi.Input<string>;
     /**
-     * Managed identity type to use for accessing encryption key Url
+     * Managed identity type to use for accessing encryption key Url.
      */
     type?: pulumi.Input<string | enums.Type>;
 }

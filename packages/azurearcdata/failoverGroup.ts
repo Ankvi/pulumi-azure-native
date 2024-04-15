@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * A failover group resource.
  * Azure REST API version: 2023-01-15-preview.
+ *
+ * Other available API versions: 2024-01-01.
  */
 export class FailoverGroup extends pulumi.CustomResource {
     /**
@@ -83,7 +85,7 @@ export class FailoverGroup extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:azurearcdata/v20230115preview:FailoverGroup" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:azurearcdata/v20230115preview:FailoverGroup" }, { type: "azure-native:azurearcdata/v20240101:FailoverGroup" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(FailoverGroup.__pulumiType, name, resourceInputs, opts);
     }

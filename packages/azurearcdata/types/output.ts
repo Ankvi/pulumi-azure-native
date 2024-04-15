@@ -165,6 +165,161 @@ export interface ActiveDirectoryDomainControllersResponse {
 }
 
 /**
+ * The specifications of the availability group replica configuration
+ */
+export interface AvailabilityGroupConfigureResponse {
+    /**
+     * The Availability Synchronization mode of the availability group replica.
+     */
+    availabilityModeDescription: string;
+    /**
+     * Represents the user-specified priority for performing backups on this replica relative to the other replicas in the same availability group.
+     */
+    backupPriority?: number;
+    /**
+     * Mirroring endpoint URL of availability group replica
+     */
+    endpointUrl?: string;
+    /**
+     * The failover mode of the availability group replica.
+     */
+    failoverModeDescription: string;
+    /**
+     * Whether the availability allows all connections or only read-write connections.
+     */
+    primaryRoleAllowConnectionsDescription: string;
+    /**
+     * Connectivity endpoint (URL) of the read only availability replica.
+     */
+    readOnlyRoutingUrl?: string;
+    /**
+     * Connectivity endpoint (URL) of the read write availability replica.
+     */
+    readWriteRoutingUrl?: string;
+    /**
+     * Date that the replica was created.
+     */
+    replicaCreateDate: string;
+    /**
+     * Date that the replica was modified.
+     */
+    replicaModifyDate: string;
+    /**
+     * Whether an availability replica that is performing the secondary role (that is, a secondary replica) can accept connections from clients.
+     */
+    secondaryRoleAllowConnectionsDescription: string;
+    /**
+     * Describes seeding mode.
+     */
+    seedingModeDescription: string;
+    /**
+     * The time-out period of availability group session replica, in seconds.
+     */
+    sessionTimeout?: number;
+}
+
+/**
+ * The specifications of the availability group state
+ */
+export interface AvailabilityGroupInfoResponse {
+    /**
+     * Preferred location for performing backups on the availability databases in this availability group.
+     */
+    automatedBackupPreferenceDescription: string;
+    /**
+     * Specifies whether this is a basic availability group.
+     */
+    basicFeatures?: boolean;
+    /**
+     * SQL Server availability group cluster type description
+     */
+    clusterTypeDescription: string;
+    /**
+     * Specifies whether the availability group supports failover for database health conditions.
+     */
+    dbFailover?: boolean;
+    /**
+     * Specifies whether DTC support has been enabled for this availability group.
+     */
+    dtcSupport?: boolean;
+    /**
+     * User-defined failure condition level under which an automatic failover must be triggered.
+     */
+    failureConditionLevel?: number;
+    /**
+     * Wait time (in milliseconds) for the sp_server_diagnostics system stored procedure to return server-health information, before the server instance is assumed to be slow or not responding.
+     */
+    healthCheckTimeout?: number;
+    /**
+     * SQL Server availability group contained system databases.
+     */
+    isContained?: boolean;
+    /**
+     * Specifies whether this is a distributed availability group.
+     */
+    isDistributed?: boolean;
+    /**
+     * Indicates the recovery health of the primary replica.
+     */
+    primaryRecoveryHealthDescription: string;
+    /**
+     * Name of the server instance that is hosting the current primary replica.
+     */
+    primaryReplica: string;
+    replicationPartnerType: string;
+    /**
+     * The number of secondary replicas that must be in a synchronized state for a commit to complete.
+     */
+    requiredSynchronizedSecondariesToCommit?: number;
+    /**
+     * Indicates the recovery health of a secondary replica.
+     */
+    secondaryRecoveryHealthDescription: string;
+    /**
+     * Reflects a roll-up of the synchronization health of all availability replicas in the availability group.
+     */
+    synchronizationHealthDescription: string;
+    /**
+     * SQL Server availability group current version.
+     */
+    version: number;
+}
+
+/**
+ * The specifications of the availability group state
+ */
+export interface AvailabilityGroupStateResponse {
+    /**
+     * Current Always On availability groups role of the availability group replica.
+     */
+    availabilityGroupReplicaRole: string;
+    /**
+     * Whether a secondary replica is currently connected to the primary replica.
+     */
+    connectedStateDescription: string;
+    /**
+     * Text description of the last connection error of the availability group replica.
+     */
+    lastConnectErrorDescription: string;
+    /**
+     * Date and time timestamp indicating when the last connect error occurred.
+     */
+    lastConnectErrorTimestamp: string;
+    /**
+     * Current operational state of the availability group replica
+     */
+    operationalStateDescription: string;
+    /**
+     * Recovery health of the availability group replica.
+     */
+    recoveryHealthDescription: string;
+    /**
+     * Reflects a rollup of the database synchronization state (synchronization_state) of all joined availability databases (also known as replicas) and the availability mode of the replica (synchronous-commit or asynchronous-commit mode). The rollup will reflect the least healthy accumulated state the databases on the replica.
+     */
+    synchronizationHealthDescription: string;
+}
+
+/**
  * Username and password for basic login authentication.
  */
 export interface BasicLoginInformationResponse {
@@ -557,6 +712,74 @@ export function postgresInstanceSkuResponseProvideDefaults(val: PostgresInstance
 }
 
 /**
+ * The properties of Arc Sql availability group database replica resource
+ */
+export interface SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse {
+    /**
+     * the database name.
+     */
+    databaseName?: string;
+    /**
+     * Description of the database state of the availability replica.
+     */
+    databaseStateDescription: string;
+    /**
+     * Whether this replica is transaction committer.
+     */
+    isCommitParticipant: boolean;
+    /**
+     * Whether the availability database is local.
+     */
+    isLocal: boolean;
+    /**
+     * Returns 1 if the replica is primary, or 0 if it is a secondary replica.
+     */
+    isPrimaryReplica: boolean;
+    /**
+     * Whether this data movement is suspended.
+     */
+    isSuspended: boolean;
+    /**
+     * the database replica name.
+     */
+    replicaName: string;
+    /**
+     * Description of the database suspended state reason.
+     */
+    suspendReasonDescription: string;
+    /**
+     * Description of the health of database.
+     */
+    synchronizationHealthDescription: string;
+    /**
+     * Description of the data-movement state.
+     */
+    synchronizationStateDescription: string;
+}
+
+/**
+ * The properties of Arc Sql availability group replica resource
+ */
+export interface SqlAvailabilityGroupReplicaResourcePropertiesResponse {
+    /**
+     * null
+     */
+    configure?: AvailabilityGroupConfigureResponse;
+    /**
+     * ID GUID of the availability group.
+     */
+    replicaId: string;
+    /**
+     * the replica name.
+     */
+    replicaName?: string;
+    /**
+     * null
+     */
+    state?: AvailabilityGroupStateResponse;
+}
+
+/**
  * The raw kubernetes information.
  */
 export interface SqlManagedInstanceK8sRawResponse {
@@ -685,6 +908,72 @@ export function sqlManagedInstanceSkuResponseProvideDefaults(val: SqlManagedInst
         dev: (val.dev) ?? true,
         tier: (val.tier) ?? "GeneralPurpose",
     };
+}
+
+/**
+ * The properties of Arc Sql Server availability group resource
+ */
+export interface SqlServerAvailabilityGroupResourcePropertiesResponse {
+    /**
+     * ID GUID of the availability group.
+     */
+    availabilityGroupId: string;
+    /**
+     * Timestamp for when the data was collected from the client machine.
+     */
+    collectionTimestamp: string;
+    /**
+     * A list of Availability Group Database Replicas.
+     */
+    databases?: SqlServerAvailabilityGroupResourcePropertiesResponseDatabases;
+    /**
+     * Availability Group Info
+     */
+    info?: AvailabilityGroupInfoResponse;
+    /**
+     * the SQL Server Instance name.
+     */
+    instanceName: string;
+    /**
+     * The provisioning state of the Arc-enabled SQL Server availability group resource.
+     */
+    provisioningState: string;
+    /**
+     * A list of Availability Group Replicas.
+     */
+    replicas?: SqlServerAvailabilityGroupResourcePropertiesResponseReplicas;
+    /**
+     * the SQL server name.
+     */
+    serverName: string;
+}
+
+/**
+ * A list of Availability Group Database Replicas.
+ */
+export interface SqlServerAvailabilityGroupResourcePropertiesResponseDatabases {
+    /**
+     * Link to retrieve next page of results.
+     */
+    nextLink: string;
+    /**
+     * Array of Availability Group Database Replicas.
+     */
+    value?: SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse[];
+}
+
+/**
+ * A list of Availability Group Replicas.
+ */
+export interface SqlServerAvailabilityGroupResourcePropertiesResponseReplicas {
+    /**
+     * Link to retrieve next page of results.
+     */
+    nextLink: string;
+    /**
+     * Array of Availability Group Replicas.
+     */
+    value?: SqlAvailabilityGroupReplicaResourcePropertiesResponse[];
 }
 
 /**
@@ -842,6 +1131,20 @@ export interface SqlServerInstancePropertiesResponse {
 }
 
 /**
+ * The telemetry column for the SQL Server instance.
+ */
+export interface SqlServerInstanceTelemetryColumnResponse {
+    /**
+     * The name of the telemetry column.
+     */
+    name?: string;
+    /**
+     * The type of the telemetry column.
+     */
+    type?: string;
+}
+
+/**
  * Metadata pertaining to creation and last modification of the resource.
  */
 export interface SystemDataResponse {
@@ -906,3 +1209,4 @@ export interface UploadWatermarkResponse {
      */
     usages?: string;
 }
+

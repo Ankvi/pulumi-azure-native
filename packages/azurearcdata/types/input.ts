@@ -171,6 +171,70 @@ export interface ActiveDirectoryInformationArgs {
 }
 
 /**
+ * The specifications of the availability group replica configuration
+ */
+export interface AvailabilityGroupConfigureArgs {
+    /**
+     * Represents the user-specified priority for performing backups on this replica relative to the other replicas in the same availability group.
+     */
+    backupPriority?: pulumi.Input<number>;
+    /**
+     * Mirroring endpoint URL of availability group replica
+     */
+    endpointUrl?: pulumi.Input<string>;
+    /**
+     * Connectivity endpoint (URL) of the read only availability replica.
+     */
+    readOnlyRoutingUrl?: pulumi.Input<string>;
+    /**
+     * Connectivity endpoint (URL) of the read write availability replica.
+     */
+    readWriteRoutingUrl?: pulumi.Input<string>;
+    /**
+     * The time-out period of availability group session replica, in seconds.
+     */
+    sessionTimeout?: pulumi.Input<number>;
+}
+
+/**
+ * The specifications of the availability group state
+ */
+export interface AvailabilityGroupInfoArgs {
+    /**
+     * Specifies whether this is a basic availability group.
+     */
+    basicFeatures?: pulumi.Input<boolean>;
+    /**
+     * Specifies whether the availability group supports failover for database health conditions.
+     */
+    dbFailover?: pulumi.Input<boolean>;
+    /**
+     * Specifies whether DTC support has been enabled for this availability group.
+     */
+    dtcSupport?: pulumi.Input<boolean>;
+    /**
+     * User-defined failure condition level under which an automatic failover must be triggered.
+     */
+    failureConditionLevel?: pulumi.Input<number>;
+    /**
+     * Wait time (in milliseconds) for the sp_server_diagnostics system stored procedure to return server-health information, before the server instance is assumed to be slow or not responding.
+     */
+    healthCheckTimeout?: pulumi.Input<number>;
+    /**
+     * SQL Server availability group contained system databases.
+     */
+    isContained?: pulumi.Input<boolean>;
+    /**
+     * Specifies whether this is a distributed availability group.
+     */
+    isDistributed?: pulumi.Input<boolean>;
+    /**
+     * The number of secondary replicas that must be in a synchronized state for a commit to complete.
+     */
+    requiredSynchronizedSecondariesToCommit?: pulumi.Input<number>;
+}
+
+/**
  * Username and password for basic login authentication.
  */
 export interface BasicLoginInformationArgs {
@@ -569,6 +633,30 @@ export function postgresInstanceSkuArgsProvideDefaults(val: PostgresInstanceSkuA
 }
 
 /**
+ * The properties of Arc Sql availability group database replica resource
+ */
+export interface SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArgs {
+    /**
+     * the database name.
+     */
+    databaseName?: pulumi.Input<string>;
+}
+
+/**
+ * The properties of Arc Sql availability group replica resource
+ */
+export interface SqlAvailabilityGroupReplicaResourcePropertiesArgs {
+    /**
+     * null
+     */
+    configure?: pulumi.Input<AvailabilityGroupConfigureArgs>;
+    /**
+     * the replica name.
+     */
+    replicaName?: pulumi.Input<string>;
+}
+
+/**
  * The raw kubernetes information.
  */
 export interface SqlManagedInstanceK8sRawArgs {
@@ -697,6 +785,44 @@ export function sqlManagedInstanceSkuArgsProvideDefaults(val: SqlManagedInstance
         dev: (val.dev) ?? true,
         tier: (val.tier) ?? "GeneralPurpose",
     };
+}
+
+/**
+ * The properties of Arc Sql Server availability group resource
+ */
+export interface SqlServerAvailabilityGroupResourcePropertiesArgs {
+    /**
+     * A list of Availability Group Database Replicas.
+     */
+    databases?: pulumi.Input<SqlServerAvailabilityGroupResourcePropertiesDatabasesArgs>;
+    /**
+     * Availability Group Info
+     */
+    info?: pulumi.Input<AvailabilityGroupInfoArgs>;
+    /**
+     * A list of Availability Group Replicas.
+     */
+    replicas?: pulumi.Input<SqlServerAvailabilityGroupResourcePropertiesReplicasArgs>;
+}
+
+/**
+ * A list of Availability Group Database Replicas.
+ */
+export interface SqlServerAvailabilityGroupResourcePropertiesDatabasesArgs {
+    /**
+     * Array of Availability Group Database Replicas.
+     */
+    value?: pulumi.Input<pulumi.Input<SqlAvailabilityGroupDatabaseReplicaResourcePropertiesArgs>[]>;
+}
+
+/**
+ * A list of Availability Group Replicas.
+ */
+export interface SqlServerAvailabilityGroupResourcePropertiesReplicasArgs {
+    /**
+     * Array of Availability Group Replicas.
+     */
+    value?: pulumi.Input<pulumi.Input<SqlAvailabilityGroupReplicaResourcePropertiesArgs>[]>;
 }
 
 /**
@@ -880,3 +1006,4 @@ export interface UploadWatermarkArgs {
      */
     usages?: pulumi.Input<string>;
 }
+

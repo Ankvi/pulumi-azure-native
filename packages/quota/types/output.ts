@@ -1,12 +1,12 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
- * Additional attribute to allow subscriptions to be part of the GroupQuota.
+ * Additional attribute or filter to allow subscriptions meeting the requirements to be part of the GroupQuota.
  */
 export interface AdditionalAttributesResponse {
     environment?: any;
     /**
-     * The grouping Id for the group quota. It can be management Group Id or ServiceTreeId if applicable. 
+     * The grouping Id for the group quota. It can be Billing Id or ServiceTreeId if applicable. 
      */
     groupId: GroupingIdResponse;
 }
@@ -27,7 +27,7 @@ export interface GroupQuotaSubscriptionIdResponseProperties {
  */
 export interface GroupQuotasEntityBaseResponse {
     /**
-     * Additional attributes to allow subscription, which can be added to the subscriptionIds.
+     * Additional attributes to filter/restrict the subscriptions, which can be added to the subscriptionIds.
      */
     additionalAttributes?: AdditionalAttributesResponse;
     /**
@@ -41,15 +41,15 @@ export interface GroupQuotasEntityBaseResponse {
 }
 
 /**
- * The grouping Id for the group quota. It can be management Group Id or ServiceTreeId if applicable. 
+ * The grouping Id for the group quota. It can be Billing Id or ServiceTreeId if applicable. 
  */
 export interface GroupingIdResponse {
     /**
-     * GroupingId type. It is a required property. More types of groupIds can be supported in future. MGID is already in the URI, so it's not needed.'
+     * GroupingId type. It is a required property. More types of groupIds can be supported in future.
      */
     groupingIdType?: string;
     /**
-     * GroupId value based on the groupingType selected - management Group Id or ServiceTreeId.
+     * GroupId value based on the groupingType selected - Billing Id or ServiceTreeId.
      */
     value?: string;
 }

@@ -47,7 +47,7 @@ export interface StandbyContainerGroupPoolElasticityProfileArgs {
  */
 export interface StandbyVirtualMachinePoolElasticityProfileArgs {
     /**
-     * Specifies maximum number of virtual machines in the standby virtual machine pool.
+     * Specifies the maximum number of virtual machines in the standby virtual machine pool.
      */
     maxReadyCapacity: pulumi.Input<number>;
 }
