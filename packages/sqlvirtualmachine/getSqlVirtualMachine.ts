@@ -5,7 +5,7 @@ import * as types from "./types";
  * Gets a SQL virtual machine.
  * Azure REST API version: 2022-02-01.
  *
- * Other available API versions: 2023-01-01-preview.
+ * Other available API versions: 2023-01-01-preview, 2023-10-01.
  */
 export function getSqlVirtualMachine(args: GetSqlVirtualMachineArgs, opts?: pulumi.InvokeOptions): Promise<GetSqlVirtualMachineResult> {
 
@@ -129,7 +129,7 @@ export interface GetSqlVirtualMachineResult {
  * Gets a SQL virtual machine.
  * Azure REST API version: 2022-02-01.
  *
- * Other available API versions: 2023-01-01-preview.
+ * Other available API versions: 2023-01-01-preview, 2023-10-01.
  */
 export function getSqlVirtualMachineOutput(args: GetSqlVirtualMachineOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSqlVirtualMachineResult> {
     return pulumi.output(args).apply((a: any) => getSqlVirtualMachine(a, opts))

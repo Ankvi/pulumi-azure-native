@@ -4,7 +4,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Description for This is to allow calling via powershell and ARM template.
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2016-08-01, 2018-11-01, 2020-10-01, 2023-01-01.
+ * Other available API versions: 2016-08-01, 2018-11-01, 2020-10-01, 2023-01-01, 2023-12-01.
  */
 export function listWebAppSyncFunctionTriggersSlot(args: ListWebAppSyncFunctionTriggersSlotArgs, opts?: pulumi.InvokeOptions): Promise<ListWebAppSyncFunctionTriggersSlotResult> {
 
@@ -48,7 +48,7 @@ export interface ListWebAppSyncFunctionTriggersSlotResult {
  * Description for This is to allow calling via powershell and ARM template.
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2016-08-01, 2018-11-01, 2020-10-01, 2023-01-01.
+ * Other available API versions: 2016-08-01, 2018-11-01, 2020-10-01, 2023-01-01, 2023-12-01.
  */
 export function listWebAppSyncFunctionTriggersSlotOutput(args: ListWebAppSyncFunctionTriggersSlotOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListWebAppSyncFunctionTriggersSlotResult> {
     return pulumi.output(args).apply((a: any) => listWebAppSyncFunctionTriggersSlot(a, opts))

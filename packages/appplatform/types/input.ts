@@ -780,7 +780,7 @@ export interface CustomContainerArgs {
      */
     imageRegistryCredential?: pulumi.Input<ImageRegistryCredentialArgs>;
     /**
-     * Language framework of the container image uploaded
+     * Language framework of the container image uploaded. Supported values: "springboot", "", null.
      */
     languageFramework?: pulumi.Input<string>;
     /**
@@ -1052,6 +1052,24 @@ export interface DevToolPortalSsoPropertiesArgs {
      * It defines the specific actions applications can be allowed to do on a user's behalf
      */
     scopes?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+/**
+ * Azure Spring Apps components' environment variable.
+ */
+export interface EnvVarArgs {
+    /**
+     * Environment variable name.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * secret environment variable value.
+     */
+    secretValue?: pulumi.Input<string>;
+    /**
+     * Non-secret environment variable value.
+     */
+    value?: pulumi.Input<string>;
 }
 
 /**
@@ -1546,6 +1564,89 @@ export interface JarUploadedUserSourceInfoArgs {
 }
 
 /**
+ * Job's execution template, containing configuration for an execution
+ */
+export interface JobExecutionTemplateArgs {
+    /**
+     * Arguments for the Job execution.
+     */
+    args?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Environment variables of Job execution
+     */
+    environmentVariables?: pulumi.Input<pulumi.Input<EnvVarArgs>[]>;
+    /**
+     * The requested resource quantity for required CPU and Memory.
+     */
+    resourceRequests?: pulumi.Input<JobResourceRequestsArgs>;
+}
+/**
+ * jobExecutionTemplateArgsProvideDefaults sets the appropriate defaults for JobExecutionTemplateArgs
+ */
+export function jobExecutionTemplateArgsProvideDefaults(val: JobExecutionTemplateArgs): JobExecutionTemplateArgs {
+    return {
+        ...val,
+        resourceRequests: (val.resourceRequests ? pulumi.output(val.resourceRequests).apply(jobResourceRequestsArgsProvideDefaults) : undefined),
+    };
+}
+
+/**
+ * Job resource properties payload
+ */
+export interface JobResourcePropertiesArgs {
+    /**
+     * Referenced managed components collection
+     */
+    managedComponentReferences?: pulumi.Input<pulumi.Input<ManagedComponentReferenceArgs>[]>;
+    /**
+     * Uploaded source information of the Job.
+     */
+    source?: pulumi.Input<BuildResultUserSourceInfoArgs | CustomContainerUserSourceInfoArgs | JarUploadedUserSourceInfoArgs | NetCoreZipUploadedUserSourceInfoArgs | SourceUploadedUserSourceInfoArgs | UploadedUserSourceInfoArgs | WarUploadedUserSourceInfoArgs>;
+    /**
+     * The template which is applied for all executions of the Job.
+     */
+    template?: pulumi.Input<JobExecutionTemplateArgs>;
+    /**
+     * The Job trigger related configuration.
+     */
+    triggerConfig?: pulumi.Input<ManualJobTriggerConfigArgs>;
+}
+/**
+ * jobResourcePropertiesArgsProvideDefaults sets the appropriate defaults for JobResourcePropertiesArgs
+ */
+export function jobResourcePropertiesArgsProvideDefaults(val: JobResourcePropertiesArgs): JobResourcePropertiesArgs {
+    return {
+        ...val,
+        template: (val.template ? pulumi.output(val.template).apply(jobExecutionTemplateArgsProvideDefaults) : undefined),
+        triggerConfig: (val.triggerConfig ? pulumi.output(val.triggerConfig).apply(manualJobTriggerConfigArgsProvideDefaults) : undefined),
+    };
+}
+
+/**
+ * Job resource request payload
+ */
+export interface JobResourceRequestsArgs {
+    /**
+     * CPU allocated to each job execution instance.
+     */
+    cpu?: pulumi.Input<string>;
+    /**
+     * Memory allocated to each job execution instance.
+     */
+    memory?: pulumi.Input<string>;
+}
+/**
+ * jobResourceRequestsArgsProvideDefaults sets the appropriate defaults for JobResourceRequestsArgs
+ */
+export function jobResourceRequestsArgsProvideDefaults(val: JobResourceRequestsArgs): JobResourceRequestsArgs {
+    return {
+        ...val,
+        cpu: (val.cpu) ?? "1",
+        memory: (val.memory) ?? "2Gi",
+    };
+}
+
+/**
  * Properties of certificate imported from key vault.
  */
 export interface KeyVaultCertificatePropertiesArgs {
@@ -1605,6 +1706,16 @@ export function loadedCertificateArgsProvideDefaults(val: LoadedCertificateArgs)
 }
 
 /**
+ * A reference to the managed component like Config Server.
+ */
+export interface ManagedComponentReferenceArgs {
+    /**
+     * Resource Id of the managed component
+     */
+    resourceId: pulumi.Input<string>;
+}
+
+/**
  * Managed identity properties retrieved from ARM request headers.
  */
 export interface ManagedIdentityPropertiesArgs {
@@ -1624,6 +1735,38 @@ export interface ManagedIdentityPropertiesArgs {
      * Properties of user-assigned managed identities
      */
     userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+/**
+ * Configuration for manual triggered job
+ */
+export interface ManualJobTriggerConfigArgs {
+    /**
+     * Number of parallel replicas of a job execution can run.
+     */
+    parallelism?: pulumi.Input<number>;
+    /**
+     * Maximum number of retries before failing the job.
+     */
+    retryLimit?: pulumi.Input<number>;
+    /**
+     * Maximum number of seconds an execution is allowed to run.
+     */
+    timeoutInSeconds?: pulumi.Input<number>;
+    /**
+     * Type of job trigger
+     * Expected value is 'Manual'.
+     */
+    triggerType: pulumi.Input<"Manual">;
+}
+/**
+ * manualJobTriggerConfigArgsProvideDefaults sets the appropriate defaults for ManualJobTriggerConfigArgs
+ */
+export function manualJobTriggerConfigArgsProvideDefaults(val: ManualJobTriggerConfigArgs): ManualJobTriggerConfigArgs {
+    return {
+        ...val,
+        triggerType: (val.triggerType) ?? "Manual",
+    };
 }
 
 /**
@@ -2098,6 +2241,38 @@ export interface UploadedUserSourceInfoArgs {
      */
     version?: pulumi.Input<string>;
 }
+
+/**
+ * Uploaded War binary for a deployment
+ */
+export interface WarUploadedUserSourceInfoArgs {
+    /**
+     * JVM parameter
+     */
+    jvmOptions?: pulumi.Input<string>;
+    /**
+     * Relative path of the storage which stores the source
+     */
+    relativePath?: pulumi.Input<string>;
+    /**
+     * Runtime version of the war file
+     */
+    runtimeVersion?: pulumi.Input<string>;
+    /**
+     * Server version, currently only Apache Tomcat is supported
+     */
+    serverVersion?: pulumi.Input<string>;
+    /**
+     * Type of the source uploaded
+     * Expected value is 'War'.
+     */
+    type: pulumi.Input<"War">;
+    /**
+     * Version of the source
+     */
+    version?: pulumi.Input<string>;
+}
+
 
 
 

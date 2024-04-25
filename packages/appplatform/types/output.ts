@@ -1088,7 +1088,7 @@ export interface CustomContainerResponse {
      */
     imageRegistryCredential?: ImageRegistryCredentialResponse;
     /**
-     * Language framework of the container image uploaded
+     * Language framework of the container image uploaded. Supported values: "springboot", "", null.
      */
     languageFramework?: string;
     /**
@@ -1474,6 +1474,24 @@ export interface DevToolPortalSsoPropertiesResponse {
      * It defines the specific actions applications can be allowed to do on a user's behalf
      */
     scopes?: string[];
+}
+
+/**
+ * Azure Spring Apps components' environment variable.
+ */
+export interface EnvVarResponse {
+    /**
+     * Environment variable name.
+     */
+    name?: string;
+    /**
+     * secret environment variable value.
+     */
+    secretValue?: string;
+    /**
+     * Non-secret environment variable value.
+     */
+    value?: string;
 }
 
 /**
@@ -2034,6 +2052,93 @@ export interface JarUploadedUserSourceInfoResponse {
 }
 
 /**
+ * Job's execution template, containing configuration for an execution
+ */
+export interface JobExecutionTemplateResponse {
+    /**
+     * Arguments for the Job execution.
+     */
+    args?: string[];
+    /**
+     * Environment variables of Job execution
+     */
+    environmentVariables?: EnvVarResponse[];
+    /**
+     * The requested resource quantity for required CPU and Memory.
+     */
+    resourceRequests?: JobResourceRequestsResponse;
+}
+/**
+ * jobExecutionTemplateResponseProvideDefaults sets the appropriate defaults for JobExecutionTemplateResponse
+ */
+export function jobExecutionTemplateResponseProvideDefaults(val: JobExecutionTemplateResponse): JobExecutionTemplateResponse {
+    return {
+        ...val,
+        resourceRequests: (val.resourceRequests ? jobResourceRequestsResponseProvideDefaults(val.resourceRequests) : undefined),
+    };
+}
+
+/**
+ * Job resource properties payload
+ */
+export interface JobResourcePropertiesResponse {
+    /**
+     * Referenced managed components collection
+     */
+    managedComponentReferences?: ManagedComponentReferenceResponse[];
+    /**
+     * Provisioning state of the Job
+     */
+    provisioningState: string;
+    /**
+     * Uploaded source information of the Job.
+     */
+    source?: BuildResultUserSourceInfoResponse | CustomContainerUserSourceInfoResponse | JarUploadedUserSourceInfoResponse | NetCoreZipUploadedUserSourceInfoResponse | SourceUploadedUserSourceInfoResponse | UploadedUserSourceInfoResponse | WarUploadedUserSourceInfoResponse;
+    /**
+     * The template which is applied for all executions of the Job.
+     */
+    template?: JobExecutionTemplateResponse;
+    /**
+     * The Job trigger related configuration.
+     */
+    triggerConfig?: ManualJobTriggerConfigResponse;
+}
+/**
+ * jobResourcePropertiesResponseProvideDefaults sets the appropriate defaults for JobResourcePropertiesResponse
+ */
+export function jobResourcePropertiesResponseProvideDefaults(val: JobResourcePropertiesResponse): JobResourcePropertiesResponse {
+    return {
+        ...val,
+        template: (val.template ? jobExecutionTemplateResponseProvideDefaults(val.template) : undefined),
+        triggerConfig: (val.triggerConfig ? manualJobTriggerConfigResponseProvideDefaults(val.triggerConfig) : undefined),
+    };
+}
+
+/**
+ * Job resource request payload
+ */
+export interface JobResourceRequestsResponse {
+    /**
+     * CPU allocated to each job execution instance.
+     */
+    cpu?: string;
+    /**
+     * Memory allocated to each job execution instance.
+     */
+    memory?: string;
+}
+/**
+ * jobResourceRequestsResponseProvideDefaults sets the appropriate defaults for JobResourceRequestsResponse
+ */
+export function jobResourceRequestsResponseProvideDefaults(val: JobResourceRequestsResponse): JobResourceRequestsResponse {
+    return {
+        ...val,
+        cpu: (val.cpu) ?? "1",
+        memory: (val.memory) ?? "2Gi",
+    };
+}
+
+/**
  * Properties of certificate imported from key vault.
  */
 export interface KeyVaultCertificatePropertiesResponse {
@@ -2125,6 +2230,16 @@ export function loadedCertificateResponseProvideDefaults(val: LoadedCertificateR
 }
 
 /**
+ * A reference to the managed component like Config Server.
+ */
+export interface ManagedComponentReferenceResponse {
+    /**
+     * Resource Id of the managed component
+     */
+    resourceId: string;
+}
+
+/**
  * Managed identity properties retrieved from ARM request headers.
  */
 export interface ManagedIdentityPropertiesResponse {
@@ -2144,6 +2259,38 @@ export interface ManagedIdentityPropertiesResponse {
      * Properties of user-assigned managed identities
      */
     userAssignedIdentities?: {[key: string]: UserAssignedManagedIdentityResponse};
+}
+
+/**
+ * Configuration for manual triggered job
+ */
+export interface ManualJobTriggerConfigResponse {
+    /**
+     * Number of parallel replicas of a job execution can run.
+     */
+    parallelism?: number;
+    /**
+     * Maximum number of retries before failing the job.
+     */
+    retryLimit?: number;
+    /**
+     * Maximum number of seconds an execution is allowed to run.
+     */
+    timeoutInSeconds?: number;
+    /**
+     * Type of job trigger
+     * Expected value is 'Manual'.
+     */
+    triggerType: "Manual";
+}
+/**
+ * manualJobTriggerConfigResponseProvideDefaults sets the appropriate defaults for ManualJobTriggerConfigResponse
+ */
+export function manualJobTriggerConfigResponseProvideDefaults(val: ManualJobTriggerConfigResponse): ManualJobTriggerConfigResponse {
+    return {
+        ...val,
+        triggerType: (val.triggerType) ?? "Manual",
+    };
 }
 
 /**
@@ -2770,6 +2917,38 @@ export interface UserAssignedManagedIdentityResponse {
      */
     principalId: string;
 }
+
+/**
+ * Uploaded War binary for a deployment
+ */
+export interface WarUploadedUserSourceInfoResponse {
+    /**
+     * JVM parameter
+     */
+    jvmOptions?: string;
+    /**
+     * Relative path of the storage which stores the source
+     */
+    relativePath?: string;
+    /**
+     * Runtime version of the war file
+     */
+    runtimeVersion?: string;
+    /**
+     * Server version, currently only Apache Tomcat is supported
+     */
+    serverVersion?: string;
+    /**
+     * Type of the source uploaded
+     * Expected value is 'War'.
+     */
+    type: "War";
+    /**
+     * Version of the source
+     */
+    version?: string;
+}
+
 
 
 

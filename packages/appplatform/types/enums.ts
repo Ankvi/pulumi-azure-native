@@ -170,6 +170,15 @@ export const StorageType = {
  */
 export type StorageType = (typeof StorageType)[keyof typeof StorageType];
 
+export const TriggerType = {
+    Manual: "Manual",
+} as const;
+
+/**
+ * Type of job trigger
+ */
+export type TriggerType = (typeof TriggerType)[keyof typeof TriggerType];
+
 export const Type = {
     AzureFileVolume: "AzureFileVolume",
 } as const;

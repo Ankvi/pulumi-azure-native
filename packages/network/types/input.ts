@@ -3076,9 +3076,13 @@ export interface FirewallPolicyIntrusionDetectionArgs {
      */
     configuration?: pulumi.Input<FirewallPolicyIntrusionDetectionConfigurationArgs>;
     /**
-     * Intrusion detection general state.
+     * Intrusion detection general state. When attached to a parent policy, the firewall's effective IDPS mode is the stricter mode of the two.
      */
     mode?: pulumi.Input<string | enums.FirewallPolicyIntrusionDetectionStateType>;
+    /**
+     * IDPS profile name. When attached to a parent policy, the firewall's effective profile is the profile name of the parent policy.
+     */
+    profile?: pulumi.Input<string | enums.FirewallPolicyIntrusionDetectionProfileType>;
 }
 
 /**
@@ -7648,6 +7652,7 @@ export interface WebApplicationFirewallScrubbingRulesArgs {
      */
     state?: pulumi.Input<string | enums.ScrubbingRuleEntryState>;
 }
+
 
 
 

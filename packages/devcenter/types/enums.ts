@@ -8,6 +8,16 @@ export const CatalogSyncType = {
  */
 export type CatalogSyncType = (typeof CatalogSyncType)[keyof typeof CatalogSyncType];
 
+export const DevboxDisksEncryptionEnableStatus = {
+    Enabled: "Enabled",
+    Disabled: "Disabled",
+} as const;
+
+/**
+ * Devbox disk encryption enable or disable status. Indicates if Devbox disks encryption using DevCenter CMK is enabled or not.
+ */
+export type DevboxDisksEncryptionEnableStatus = (typeof DevboxDisksEncryptionEnableStatus)[keyof typeof DevboxDisksEncryptionEnableStatus];
+
 export const DomainJoinType = {
     HybridAzureADJoin: "HybridAzureADJoin",
     AzureADJoin: "AzureADJoin",
@@ -68,6 +78,16 @@ export const ManagedServiceIdentityType = {
  * Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
  */
 export type ManagedServiceIdentityType = (typeof ManagedServiceIdentityType)[keyof typeof ManagedServiceIdentityType];
+
+export const PlanMemberType = {
+    User: "User",
+    Group: "Group",
+} as const;
+
+/**
+ * The type of the member (user, group)
+ */
+export type PlanMemberType = (typeof PlanMemberType)[keyof typeof PlanMemberType];
 
 export const ScheduleEnableStatus = {
     Enabled: "Enabled",

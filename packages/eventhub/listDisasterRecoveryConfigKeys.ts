@@ -4,7 +4,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Gets the primary and secondary connection strings for the Namespace.
  * Azure REST API version: 2022-10-01-preview.
  *
- * Other available API versions: 2023-01-01-preview, 2024-01-01.
+ * Other available API versions: 2023-01-01-preview, 2024-01-01, 2024-05-01-preview.
  */
 export function listDisasterRecoveryConfigKeys(args: ListDisasterRecoveryConfigKeysArgs, opts?: pulumi.InvokeOptions): Promise<ListDisasterRecoveryConfigKeysResult> {
 
@@ -73,7 +73,7 @@ export interface ListDisasterRecoveryConfigKeysResult {
  * Gets the primary and secondary connection strings for the Namespace.
  * Azure REST API version: 2022-10-01-preview.
  *
- * Other available API versions: 2023-01-01-preview, 2024-01-01.
+ * Other available API versions: 2023-01-01-preview, 2024-01-01, 2024-05-01-preview.
  */
 export function listDisasterRecoveryConfigKeysOutput(args: ListDisasterRecoveryConfigKeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListDisasterRecoveryConfigKeysResult> {
     return pulumi.output(args).apply((a: any) => listDisasterRecoveryConfigKeys(a, opts))

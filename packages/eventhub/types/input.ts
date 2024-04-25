@@ -285,3 +285,4 @@ export interface UserAssignedIdentityPropertiesArgs {
 }
 
 
+

@@ -43,6 +43,16 @@ export interface CatalogSyncErrorResponse {
 }
 
 /**
+ * Project catalog settings for project catalogs under a project associated to this dev center.
+ */
+export interface DevCenterProjectCatalogSettingsResponse {
+    /**
+     * Whether project catalogs associated with projects in this dev center can be configured to sync catalog items.
+     */
+    catalogItemSyncEnableStatus?: string;
+}
+
+/**
  * A role that can be assigned to a user.
  */
 export interface EnvironmentRoleResponse {
@@ -153,6 +163,16 @@ export interface ProjectEnvironmentTypeUpdatePropertiesResponseCreatorRoleAssign
 }
 
 /**
+ * Network settings for the project.
+ */
+export interface ProjectNetworkSettingsResponse {
+    /**
+     * Indicates whether pools in this Dev Center can use Microsoft Hosted Networks. Defaults to Enabled if not set.
+     */
+    microsoftHostedNetworkEnableStatus: string;
+}
+
+/**
  * The resource model definition representing SKU
  */
 export interface SkuResponse {
@@ -165,7 +185,7 @@ export interface SkuResponse {
      */
     family?: string;
     /**
-     * The name of the SKU. Ex - P3. It is typically a letter+number code
+     * The name of the SKU. E.g. P3. It is typically a letter+number code
      */
     name: string;
     /**
@@ -279,6 +299,7 @@ export interface UserRoleAssignmentResponse {
      */
     roles?: {[key: string]: EnvironmentRoleResponse};
 }
+
 
 
 

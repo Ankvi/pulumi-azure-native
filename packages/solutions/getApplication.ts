@@ -5,7 +5,7 @@ import * as types from "./types";
  * Gets the managed application.
  * Azure REST API version: 2021-07-01.
  *
- * Other available API versions: 2017-12-01, 2018-06-01.
+ * Other available API versions: 2017-12-01, 2018-06-01, 2023-12-01-preview.
  */
 export function getApplication(args: GetApplicationArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationResult> {
 
@@ -140,7 +140,7 @@ export interface GetApplicationResult {
  * Gets the managed application.
  * Azure REST API version: 2021-07-01.
  *
- * Other available API versions: 2017-12-01, 2018-06-01.
+ * Other available API versions: 2017-12-01, 2018-06-01, 2023-12-01-preview.
  */
 export function getApplicationOutput(args: GetApplicationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationResult> {
     return pulumi.output(args).apply((a: any) => getApplication(a, opts))

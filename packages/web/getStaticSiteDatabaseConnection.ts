@@ -5,7 +5,7 @@ import * as types from "./types";
  * Static Site Database Connection resource.
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2023-01-01.
+ * Other available API versions: 2023-01-01, 2023-12-01.
  */
 export function getStaticSiteDatabaseConnection(args: GetStaticSiteDatabaseConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetStaticSiteDatabaseConnectionResult> {
 
@@ -77,7 +77,7 @@ export interface GetStaticSiteDatabaseConnectionResult {
  * Static Site Database Connection resource.
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2023-01-01.
+ * Other available API versions: 2023-01-01, 2023-12-01.
  */
 export function getStaticSiteDatabaseConnectionOutput(args: GetStaticSiteDatabaseConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStaticSiteDatabaseConnectionResult> {
     return pulumi.output(args).apply((a: any) => getStaticSiteDatabaseConnection(a, opts))

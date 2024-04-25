@@ -4852,9 +4852,13 @@ export interface FirewallPolicyIntrusionDetectionResponse {
      */
     configuration?: FirewallPolicyIntrusionDetectionConfigurationResponse;
     /**
-     * Intrusion detection general state.
+     * Intrusion detection general state. When attached to a parent policy, the firewall's effective IDPS mode is the stricter mode of the two.
      */
     mode?: string;
+    /**
+     * IDPS profile name. When attached to a parent policy, the firewall's effective profile is the profile name of the parent policy.
+     */
+    profile?: string;
 }
 
 /**
@@ -11162,6 +11166,7 @@ export interface WebApplicationFirewallScrubbingRulesResponse {
      */
     state?: string;
 }
+
 
 
 

@@ -1,6 +1,6 @@
 {
     "name": "@kengachu-pulumi/azure-native-scheduler",
-    "version": "2.36.0",
+    "version": "2.38.0",
     "description": "Pulumi Azure Native package for scheduler",
     "keywords": [
         "pulumi",

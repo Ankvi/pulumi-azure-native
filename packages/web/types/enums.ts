@@ -20,6 +20,18 @@ export const ApiType = {
  */
 export type ApiType = (typeof ApiType)[keyof typeof ApiType];
 
+export const AuthType = {
+    Anonymous: "Anonymous",
+    UserCredentials: "UserCredentials",
+    SystemIdentity: "SystemIdentity",
+    UserAssigned: "UserAssigned",
+} as const;
+
+/**
+ * Auth Type
+ */
+export type AuthType = (typeof AuthType)[keyof typeof AuthType];
+
 export const AutoHealActionType = {
     Recycle: "Recycle",
     LogEvent: "LogEvent",

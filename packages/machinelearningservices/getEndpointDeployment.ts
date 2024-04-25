@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Azure REST API version: 2024-01-01-preview.
+ *
+ * Other available API versions: 2024-04-01-preview.
  */
 export function getEndpointDeployment(args: GetEndpointDeploymentArgs, opts?: pulumi.InvokeOptions): Promise<GetEndpointDeploymentResult> {
 
@@ -55,6 +57,8 @@ export interface GetEndpointDeploymentResult {
 }
 /**
  * Azure REST API version: 2024-01-01-preview.
+ *
+ * Other available API versions: 2024-04-01-preview.
  */
 export function getEndpointDeploymentOutput(args: GetEndpointDeploymentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEndpointDeploymentResult> {
     return pulumi.output(args).apply((a: any) => getEndpointDeployment(a, opts))

@@ -4,7 +4,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Static Site User Provided Function App ARM resource.
  * Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2020-12-01.
  *
- * Other available API versions: 2023-01-01.
+ * Other available API versions: 2023-01-01, 2023-12-01.
  */
 export class StaticSiteUserProvidedFunctionAppForStaticSite extends pulumi.CustomResource {
     /**
@@ -93,7 +93,7 @@ export class StaticSiteUserProvidedFunctionAppForStaticSite extends pulumi.Custo
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:web/v20201201:StaticSiteUserProvidedFunctionAppForStaticSite" }, { type: "azure-native:web/v20210101:StaticSiteUserProvidedFunctionAppForStaticSite" }, { type: "azure-native:web/v20210115:StaticSiteUserProvidedFunctionAppForStaticSite" }, { type: "azure-native:web/v20210201:StaticSiteUserProvidedFunctionAppForStaticSite" }, { type: "azure-native:web/v20210301:StaticSiteUserProvidedFunctionAppForStaticSite" }, { type: "azure-native:web/v20220301:StaticSiteUserProvidedFunctionAppForStaticSite" }, { type: "azure-native:web/v20220901:StaticSiteUserProvidedFunctionAppForStaticSite" }, { type: "azure-native:web/v20230101:StaticSiteUserProvidedFunctionAppForStaticSite" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:web/v20201201:StaticSiteUserProvidedFunctionAppForStaticSite" }, { type: "azure-native:web/v20210101:StaticSiteUserProvidedFunctionAppForStaticSite" }, { type: "azure-native:web/v20210115:StaticSiteUserProvidedFunctionAppForStaticSite" }, { type: "azure-native:web/v20210201:StaticSiteUserProvidedFunctionAppForStaticSite" }, { type: "azure-native:web/v20210301:StaticSiteUserProvidedFunctionAppForStaticSite" }, { type: "azure-native:web/v20220301:StaticSiteUserProvidedFunctionAppForStaticSite" }, { type: "azure-native:web/v20220901:StaticSiteUserProvidedFunctionAppForStaticSite" }, { type: "azure-native:web/v20230101:StaticSiteUserProvidedFunctionAppForStaticSite" }, { type: "azure-native:web/v20231201:StaticSiteUserProvidedFunctionAppForStaticSite" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(StaticSiteUserProvidedFunctionAppForStaticSite.__pulumiType, name, resourceInputs, opts);
     }

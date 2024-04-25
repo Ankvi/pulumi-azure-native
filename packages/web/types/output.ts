@@ -1451,6 +1451,17 @@ export interface EnvironmentVarResponse {
     value?: string;
 }
 
+export interface EnvironmentVariableResponse {
+    /**
+     * Environment variable name
+     */
+    name: string;
+    /**
+     * Environment variable value
+     */
+    value: string;
+}
+
 /**
  * Body of the error response returned from the API.
  */
@@ -3494,6 +3505,25 @@ export interface VnetRouteResponse {
     type: string;
 }
 
+export interface VolumeMountResponse {
+    /**
+     * Target path on the container where volume is mounted on
+     */
+    containerMountPath: string;
+    /**
+     * Config Data to be mounted on the volume
+     */
+    data?: string;
+    /**
+     * Boolean to specify if the mount is read only on the container
+     */
+    readOnly?: boolean;
+    /**
+     * Sub path in the volume where volume is mounted from.
+     */
+    volumeSubPath: string;
+}
+
 /**
  * Additional workflow properties.
  */
@@ -3587,6 +3617,7 @@ export interface WsdlServiceResponse {
      */
     qualifiedName: string;
 }
+
 
 
 

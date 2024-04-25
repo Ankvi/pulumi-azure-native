@@ -1372,6 +1372,17 @@ export interface EnvironmentVarArgs {
     value?: pulumi.Input<string>;
 }
 
+export interface EnvironmentVariableArgs {
+    /**
+     * Environment variable name
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Environment variable value
+     */
+    value: pulumi.Input<string>;
+}
+
 /**
  * Routing rules in production experiments.
  */
@@ -2966,6 +2977,25 @@ export interface VirtualNetworkProfileArgs {
     subnet?: pulumi.Input<string>;
 }
 
+export interface VolumeMountArgs {
+    /**
+     * Target path on the container where volume is mounted on
+     */
+    containerMountPath: pulumi.Input<string>;
+    /**
+     * Config Data to be mounted on the volume
+     */
+    data?: pulumi.Input<string>;
+    /**
+     * Boolean to specify if the mount is read only on the container
+     */
+    readOnly?: pulumi.Input<boolean>;
+    /**
+     * Sub path in the volume where volume is mounted from.
+     */
+    volumeSubPath: pulumi.Input<string>;
+}
+
 /**
  * The WSDL definition
  */
@@ -3015,6 +3045,7 @@ export interface WsdlServiceArgs {
      */
     qualifiedName: pulumi.Input<string>;
 }
+
 
 
 

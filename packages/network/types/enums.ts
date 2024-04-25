@@ -792,6 +792,18 @@ export const FirewallPolicyIDPSQuerySortOrder = {
  */
 export type FirewallPolicyIDPSQuerySortOrder = (typeof FirewallPolicyIDPSQuerySortOrder)[keyof typeof FirewallPolicyIDPSQuerySortOrder];
 
+export const FirewallPolicyIntrusionDetectionProfileType = {
+    Basic: "Basic",
+    Standard: "Standard",
+    Advanced: "Advanced",
+    Extended: "Extended",
+} as const;
+
+/**
+ * IDPS profile name. When attached to a parent policy, the firewall's effective profile is the profile name of the parent policy.
+ */
+export type FirewallPolicyIntrusionDetectionProfileType = (typeof FirewallPolicyIntrusionDetectionProfileType)[keyof typeof FirewallPolicyIntrusionDetectionProfileType];
+
 export const FirewallPolicyIntrusionDetectionProtocol = {
     TCP: "TCP",
     UDP: "UDP",
@@ -811,7 +823,7 @@ export const FirewallPolicyIntrusionDetectionStateType = {
 } as const;
 
 /**
- * Intrusion detection general state.
+ * Intrusion detection general state. When attached to a parent policy, the firewall's effective IDPS mode is the stricter mode of the two.
  */
 export type FirewallPolicyIntrusionDetectionStateType = (typeof FirewallPolicyIntrusionDetectionStateType)[keyof typeof FirewallPolicyIntrusionDetectionStateType];
 

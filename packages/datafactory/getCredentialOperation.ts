@@ -49,7 +49,7 @@ export interface GetCredentialOperationResult {
     /**
      * Properties of credentials.
      */
-    readonly properties: types.outputs.ManagedIdentityCredentialResponse | types.outputs.ServicePrincipalCredentialResponse | types.outputs.SystemAssignedManagedIdentityCredentialResponse | types.outputs.UserAssignedManagedIdentityCredentialResponse;
+    readonly properties: types.outputs.ManagedIdentityCredentialResponse | types.outputs.ServicePrincipalCredentialResponse;
     /**
      * The resource type.
      */

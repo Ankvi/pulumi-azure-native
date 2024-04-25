@@ -13576,6 +13576,10 @@ export interface ManagedIdentityCredentialArgs {
      */
     description?: pulumi.Input<string>;
     /**
+     * The resource id of user assigned managed identity
+     */
+    resourceId?: pulumi.Input<string>;
+    /**
      * Type of credential.
      * Expected value is 'ManagedIdentity'.
      */
@@ -20676,9 +20680,9 @@ export interface ScriptActivityScriptBlockArgs {
      */
     text: any;
     /**
-     * The type of the query. Type: string.
+     * The type of the query. Please refer to the ScriptType for valid options. Type: string (or Expression with resultType string).
      */
-    type: pulumi.Input<string | enums.ScriptType>;
+    type: any;
 }
 
 /**
@@ -23544,25 +23548,6 @@ export interface SynapseSparkJobReferenceArgs {
 }
 
 /**
- * System Assigned Managed identity credential.
- */
-export interface SystemAssignedManagedIdentityCredentialArgs {
-    /**
-     * List of tags that can be used for describing the Credential.
-     */
-    annotations?: pulumi.Input<any[]>;
-    /**
-     * Credential description.
-     */
-    description?: pulumi.Input<string>;
-    /**
-     * Type of credential.
-     * Expected value is 'SystemAssignedManagedIdentityCredential'.
-     */
-    type: pulumi.Input<"SystemAssignedManagedIdentityCredential">;
-}
-
-/**
  * Copy activity sources of tabular type.
  */
 export interface TabularSourceArgs {
@@ -24123,25 +24108,6 @@ export interface UntilActivityArgs {
      * Activity user properties.
      */
     userProperties?: pulumi.Input<pulumi.Input<UserPropertyArgs>[]>;
-}
-
-/**
- * User Assigned Managed identity credential.
- */
-export interface UserAssignedManagedIdentityCredentialArgs {
-    /**
-     * List of tags that can be used for describing the Credential.
-     */
-    annotations?: pulumi.Input<any[]>;
-    /**
-     * Credential description.
-     */
-    description?: pulumi.Input<string>;
-    /**
-     * Type of credential.
-     * Expected value is 'UserAssignedManagedIdentityCredential'.
-     */
-    type: pulumi.Input<"UserAssignedManagedIdentityCredential">;
 }
 
 /**

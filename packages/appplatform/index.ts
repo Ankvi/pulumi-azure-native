@@ -246,6 +246,11 @@ export const getGatewayRouteConfig: typeof import("./getGatewayRouteConfig").get
 export const getGatewayRouteConfigOutput: typeof import("./getGatewayRouteConfig").getGatewayRouteConfigOutput = null as any;
 utilities.lazyLoad(exports, ["getGatewayRouteConfig","getGatewayRouteConfigOutput"], () => require("./getGatewayRouteConfig"));
 
+export { GetJobArgs, GetJobResult, GetJobOutputArgs } from "./getJob";
+export const getJob: typeof import("./getJob").getJob = null as any;
+export const getJobOutput: typeof import("./getJob").getJobOutput = null as any;
+utilities.lazyLoad(exports, ["getJob","getJobOutput"], () => require("./getJob"));
+
 export { GetMonitoringSettingArgs, GetMonitoringSettingResult, GetMonitoringSettingOutputArgs } from "./getMonitoringSetting";
 export const getMonitoringSetting: typeof import("./getMonitoringSetting").getMonitoringSetting = null as any;
 export const getMonitoringSettingOutput: typeof import("./getMonitoringSetting").getMonitoringSettingOutput = null as any;
@@ -266,6 +271,11 @@ export const getStorage: typeof import("./getStorage").getStorage = null as any;
 export const getStorageOutput: typeof import("./getStorage").getStorageOutput = null as any;
 utilities.lazyLoad(exports, ["getStorage","getStorageOutput"], () => require("./getStorage"));
 
+export { JobArgs } from "./job";
+export type Job = import("./job").Job;
+export const Job: typeof import("./job").Job = null as any;
+utilities.lazyLoad(exports, ["Job"], () => require("./job"));
+
 export { ListApmSecretKeysArgs, ListApmSecretKeysResult, ListApmSecretKeysOutputArgs } from "./listApmSecretKeys";
 export const listApmSecretKeys: typeof import("./listApmSecretKeys").listApmSecretKeys = null as any;
 export const listApmSecretKeysOutput: typeof import("./listApmSecretKeys").listApmSecretKeysOutput = null as any;
@@ -275,6 +285,16 @@ export { ListBuildServiceBuilderDeploymentsArgs, ListBuildServiceBuilderDeployme
 export const listBuildServiceBuilderDeployments: typeof import("./listBuildServiceBuilderDeployments").listBuildServiceBuilderDeployments = null as any;
 export const listBuildServiceBuilderDeploymentsOutput: typeof import("./listBuildServiceBuilderDeployments").listBuildServiceBuilderDeploymentsOutput = null as any;
 utilities.lazyLoad(exports, ["listBuildServiceBuilderDeployments","listBuildServiceBuilderDeploymentsOutput"], () => require("./listBuildServiceBuilderDeployments"));
+
+export { ListJobEnvSecretsArgs, ListJobEnvSecretsResult, ListJobEnvSecretsOutputArgs } from "./listJobEnvSecrets";
+export const listJobEnvSecrets: typeof import("./listJobEnvSecrets").listJobEnvSecrets = null as any;
+export const listJobEnvSecretsOutput: typeof import("./listJobEnvSecrets").listJobEnvSecretsOutput = null as any;
+utilities.lazyLoad(exports, ["listJobEnvSecrets","listJobEnvSecretsOutput"], () => require("./listJobEnvSecrets"));
+
+export { ListJobExecutionEnvSecretsArgs, ListJobExecutionEnvSecretsResult, ListJobExecutionEnvSecretsOutputArgs } from "./listJobExecutionEnvSecrets";
+export const listJobExecutionEnvSecrets: typeof import("./listJobExecutionEnvSecrets").listJobExecutionEnvSecrets = null as any;
+export const listJobExecutionEnvSecretsOutput: typeof import("./listJobExecutionEnvSecrets").listJobExecutionEnvSecretsOutput = null as any;
+utilities.lazyLoad(exports, ["listJobExecutionEnvSecrets","listJobExecutionEnvSecretsOutput"], () => require("./listJobExecutionEnvSecrets"));
 
 export { ListServiceGloballyEnabledApmsArgs, ListServiceGloballyEnabledApmsResult, ListServiceGloballyEnabledApmsOutputArgs } from "./listServiceGloballyEnabledApms";
 export const listServiceGloballyEnabledApms: typeof import("./listServiceGloballyEnabledApms").listServiceGloballyEnabledApms = null as any;
@@ -360,6 +380,8 @@ const _module = {
                 return new GatewayCustomDomain(name, <any>undefined, { urn })
             case "azure-native:appplatform:GatewayRouteConfig":
                 return new GatewayRouteConfig(name, <any>undefined, { urn })
+            case "azure-native:appplatform:Job":
+                return new Job(name, <any>undefined, { urn })
             case "azure-native:appplatform:MonitoringSetting":
                 return new MonitoringSetting(name, <any>undefined, { urn })
             case "azure-native:appplatform:Service":

@@ -124,6 +124,14 @@ export interface OpenAIIntegrationPropertiesArgs {
      * Value of API key for Open AI resource
      */
     key?: pulumi.Input<string>;
+    /**
+     * The API endpoint for Open AI resource
+     */
+    openAIResourceEndpoint?: pulumi.Input<string>;
+    /**
+     * The resource id of Open AI resource
+     */
+    openAIResourceId?: pulumi.Input<string>;
 }
 
 /**

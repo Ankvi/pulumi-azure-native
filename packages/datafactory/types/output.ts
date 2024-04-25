@@ -13637,6 +13637,10 @@ export interface ManagedIdentityCredentialResponse {
      */
     description?: string;
     /**
+     * The resource id of user assigned managed identity
+     */
+    resourceId?: string;
+    /**
      * Type of credential.
      * Expected value is 'ManagedIdentity'.
      */
@@ -20861,9 +20865,9 @@ export interface ScriptActivityScriptBlockResponse {
      */
     text: any;
     /**
-     * The type of the query. Type: string.
+     * The type of the query. Please refer to the ScriptType for valid options. Type: string (or Expression with resultType string).
      */
-    type: string;
+    type: any;
 }
 
 /**
@@ -24136,25 +24140,6 @@ export interface SynapseSparkJobReferenceResponse {
 }
 
 /**
- * System Assigned Managed identity credential.
- */
-export interface SystemAssignedManagedIdentityCredentialResponse {
-    /**
-     * List of tags that can be used for describing the Credential.
-     */
-    annotations?: any[];
-    /**
-     * Credential description.
-     */
-    description?: string;
-    /**
-     * Type of credential.
-     * Expected value is 'SystemAssignedManagedIdentityCredential'.
-     */
-    type: "SystemAssignedManagedIdentityCredential";
-}
-
-/**
  * Copy activity sources of tabular type.
  */
 export interface TabularSourceResponse {
@@ -24745,25 +24730,6 @@ export interface UserAccessPolicyResponse {
      * Start time for the token. If not specified the current time will be used.
      */
     startTime?: string;
-}
-
-/**
- * User Assigned Managed identity credential.
- */
-export interface UserAssignedManagedIdentityCredentialResponse {
-    /**
-     * List of tags that can be used for describing the Credential.
-     */
-    annotations?: any[];
-    /**
-     * Credential description.
-     */
-    description?: string;
-    /**
-     * Type of credential.
-     * Expected value is 'UserAssignedManagedIdentityCredential'.
-     */
-    type: "UserAssignedManagedIdentityCredential";
 }
 
 /**

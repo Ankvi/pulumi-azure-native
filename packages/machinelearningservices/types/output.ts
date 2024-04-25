@@ -145,6 +145,68 @@ export interface AccountKeyDatastoreCredentialsResponse {
 }
 
 /**
+ * Cognitive Services account Model.
+ */
+export interface AccountModelResponse {
+    /**
+     * Base Model Identifier.
+     */
+    baseModel?: DeploymentModelResponse;
+    /**
+     * The call rate limit Cognitive Services account.
+     */
+    callRateLimit: CallRateLimitResponse;
+    /**
+     * The capabilities.
+     */
+    capabilities?: {[key: string]: string};
+    /**
+     * Cognitive Services account ModelDeprecationInfo.
+     */
+    deprecation?: ModelDeprecationInfoResponse;
+    /**
+     * The capabilities for finetune models.
+     */
+    finetuneCapabilities?: {[key: string]: string};
+    /**
+     * Deployment model format.
+     */
+    format?: string;
+    /**
+     * If the model is default version.
+     */
+    isDefaultVersion?: boolean;
+    /**
+     * Model lifecycle status.
+     */
+    lifecycleStatus?: string;
+    /**
+     * The max capacity.
+     */
+    maxCapacity?: number;
+    /**
+     * Deployment model name.
+     */
+    name?: string;
+    /**
+     * The list of Model Sku.
+     */
+    skus?: ModelSkuResponse[];
+    /**
+     * Optional. Deployment model source ARM resource ID.
+     */
+    source?: string;
+    /**
+     * Metadata pertaining to creation and last modification of the resource.
+     */
+    systemData: SystemDataResponse;
+    /**
+     * Optional. Deployment model version. If version is not specified, a default version will be assigned. The default version is different for different models and might change when there is new version available for a model. Default version for a model could be found from list models API.
+     */
+    version?: string;
+}
+
+/**
  * Details of ACR account to be used for the Registry
  */
 export interface AcrDetailsResponse {
@@ -1488,6 +1550,47 @@ export function buildContextResponseProvideDefaults(val: BuildContextResponse): 
         ...val,
         dockerfilePath: (val.dockerfilePath) ?? "Dockerfile",
     };
+}
+
+/**
+ * The call rate limit Cognitive Services account.
+ */
+export interface CallRateLimitResponse {
+    /**
+     * The count value of Call Rate Limit.
+     */
+    count?: number;
+    /**
+     * The renewal period in seconds of Call Rate Limit.
+     */
+    renewalPeriod?: number;
+    rules?: ThrottlingRuleResponse[];
+}
+
+/**
+ * The capacity configuration.
+ */
+export interface CapacityConfigResponse {
+    /**
+     * The array of allowed values for capacity.
+     */
+    allowedValues?: number[];
+    /**
+     * The default capacity.
+     */
+    default?: number;
+    /**
+     * The maximum capacity.
+     */
+    maximum?: number;
+    /**
+     * The minimum capacity.
+     */
+    minimum?: number;
+    /**
+     * The minimal incremental between allowed values for capacity.
+     */
+    step?: number;
 }
 
 export interface CapacityReservationGroupResponse {
@@ -3368,6 +3471,32 @@ export interface DefaultScaleSettingsResponse {
      * Expected value is 'Default'.
      */
     scaleType: "Default";
+}
+
+/**
+ * Properties of Cognitive Services account deployment model.
+ */
+export interface DeploymentModelResponse {
+    /**
+     * The call rate limit Cognitive Services account.
+     */
+    callRateLimit: CallRateLimitResponse;
+    /**
+     * Deployment model format.
+     */
+    format?: string;
+    /**
+     * Deployment model name.
+     */
+    name?: string;
+    /**
+     * Optional. Deployment model source ARM resource ID.
+     */
+    source?: string;
+    /**
+     * Optional. Deployment model version. If version is not specified, a default version will be assigned. The default version is different for different models and might change when there is new version available for a model. Default version for a model could be found from list models API.
+     */
+    version?: string;
 }
 
 export interface DeploymentResourceConfigurationResponse {
@@ -6945,6 +7074,50 @@ export function modelContainerResponseProvideDefaults(val: ModelContainerRespons
 }
 
 /**
+ * Cognitive Services account ModelDeprecationInfo.
+ */
+export interface ModelDeprecationInfoResponse {
+    /**
+     * The datetime of deprecation of the fineTune Model.
+     */
+    fineTune?: string;
+    /**
+     * The datetime of deprecation of the inference Model.
+     */
+    inference?: string;
+}
+
+/**
+ * Describes an available Cognitive Services Model SKU.
+ */
+export interface ModelSkuResponse {
+    /**
+     * The capacity configuration.
+     */
+    capacity?: CapacityConfigResponse;
+    /**
+     * The list of connection ids.
+     */
+    connectionIds?: string[];
+    /**
+     * The datetime of deprecation of the model SKU.
+     */
+    deprecationDate?: string;
+    /**
+     * The name of the model SKU.
+     */
+    name?: string;
+    /**
+     * The list of rateLimit.
+     */
+    rateLimits?: CallRateLimitResponse[];
+    /**
+     * The usage name of the model SKU.
+     */
+    usageName?: string;
+}
+
+/**
  * Model asset version details.
  */
 export interface ModelVersionResponse {
@@ -7680,6 +7853,91 @@ export interface PyTorchResponse {
 }
 
 /**
+ * Azure OpenAI blocklist config.
+ */
+export interface RaiBlocklistConfigResponse {
+    /**
+     * If blocking would occur.
+     */
+    blocking?: boolean;
+    /**
+     * Name of ContentFilter.
+     */
+    blocklistName?: string;
+}
+
+/**
+ * RAI Custom Blocklist Item properties.
+ */
+export interface RaiBlocklistItemPropertiesResponse {
+    /**
+     * If the pattern is a regex pattern.
+     */
+    isRegex?: boolean;
+    /**
+     * Pattern to match against.
+     */
+    pattern?: string;
+}
+
+/**
+ * RAI Custom Blocklist properties.
+ */
+export interface RaiBlocklistPropertiesResponse {
+    /**
+     * Description of the block list.
+     */
+    description?: string;
+}
+
+/**
+ * Azure OpenAI Content Filter.
+ */
+export interface RaiPolicyContentFilterResponse {
+    /**
+     * Level at which content is filtered.
+     */
+    allowedContentLevel?: string;
+    /**
+     * If blocking would occur.
+     */
+    blocking?: boolean;
+    /**
+     * If the ContentFilter is enabled.
+     */
+    enabled?: boolean;
+    /**
+     * Name of ContentFilter.
+     */
+    name?: string;
+    /**
+     * Content source to apply the Content Filters.
+     */
+    source?: string;
+}
+
+/**
+ * Azure OpenAI Content Filters properties.
+ */
+export interface RaiPolicyPropertiesResponse {
+    /**
+     * Name of the base Content Filters.
+     */
+    basePolicyName?: string;
+    completionBlocklists?: RaiBlocklistConfigResponse[];
+    contentFilters?: RaiPolicyContentFilterResponse[];
+    /**
+     * Content Filters mode.
+     */
+    mode?: string;
+    promptBlocklists?: RaiBlocklistConfigResponse[];
+    /**
+     * Content Filters policy type.
+     */
+    type?: string;
+}
+
+/**
  * Defines a Sampling Algorithm that generates values randomly
  */
 export interface RandomSamplingAlgorithmResponse {
@@ -8094,6 +8352,11 @@ export function requestConfigurationResponseProvideDefaults(val: RequestConfigur
         maxConcurrentRequestsPerInstance: (val.maxConcurrentRequestsPerInstance) ?? 1,
         requestTimeout: (val.requestTimeout) ?? "PT5S",
     };
+}
+
+export interface RequestMatchPatternResponse {
+    method?: string;
+    path?: string;
 }
 
 /**
@@ -9242,6 +9505,15 @@ export function textNerResponseProvideDefaults(val: TextNerResponse): TextNerRes
     };
 }
 
+export interface ThrottlingRuleResponse {
+    count?: number;
+    dynamicThrottlingEnabled?: boolean;
+    key?: string;
+    matchPatterns?: RequestMatchPatternResponse[];
+    minCount?: number;
+    renewalPeriod?: number;
+}
+
 /**
  * Describes the tmpfs options for the container
  */
@@ -9957,6 +10229,7 @@ export interface WorkspaceConnectionUsernamePasswordResponse {
     password?: string;
     username?: string;
 }
+
 
 
 

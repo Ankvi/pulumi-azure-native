@@ -4,7 +4,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Full view of the custom domain suffix configuration for ASEv3.
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2023-01-01.
+ * Other available API versions: 2023-01-01, 2023-12-01.
  */
 export function getAppServiceEnvironmentAseCustomDnsSuffixConfiguration(args: GetAppServiceEnvironmentAseCustomDnsSuffixConfigurationArgs, opts?: pulumi.InvokeOptions): Promise<GetAppServiceEnvironmentAseCustomDnsSuffixConfigurationResult> {
 
@@ -65,7 +65,7 @@ export interface GetAppServiceEnvironmentAseCustomDnsSuffixConfigurationResult {
  * Full view of the custom domain suffix configuration for ASEv3.
  * Azure REST API version: 2022-09-01.
  *
- * Other available API versions: 2023-01-01.
+ * Other available API versions: 2023-01-01, 2023-12-01.
  */
 export function getAppServiceEnvironmentAseCustomDnsSuffixConfigurationOutput(args: GetAppServiceEnvironmentAseCustomDnsSuffixConfigurationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppServiceEnvironmentAseCustomDnsSuffixConfigurationResult> {
     return pulumi.output(args).apply((a: any) => getAppServiceEnvironmentAseCustomDnsSuffixConfiguration(a, opts))

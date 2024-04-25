@@ -3,7 +3,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Azure REST API version: 2023-08-01-preview.
  *
- * Other available API versions: 2024-01-01-preview.
+ * Other available API versions: 2024-01-01-preview, 2024-04-01-preview.
  */
 export function getInferencePoolStatus(args: GetInferencePoolStatusArgs, opts?: pulumi.InvokeOptions): Promise<GetInferencePoolStatusResult> {
 
@@ -51,7 +51,7 @@ export interface GetInferencePoolStatusResult {
 /**
  * Azure REST API version: 2023-08-01-preview.
  *
- * Other available API versions: 2024-01-01-preview.
+ * Other available API versions: 2024-01-01-preview, 2024-04-01-preview.
  */
 export function getInferencePoolStatusOutput(args: GetInferencePoolStatusOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInferencePoolStatusResult> {
     return pulumi.output(args).apply((a: any) => getInferencePoolStatus(a, opts))

@@ -4,7 +4,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Full view of the custom domain suffix configuration for ASEv3.
  * Azure REST API version: 2022-09-01. Prior API version in Azure Native 1.x: 2022-03-01.
  *
- * Other available API versions: 2023-01-01.
+ * Other available API versions: 2023-01-01, 2023-12-01.
  */
 export class AppServiceEnvironmentAseCustomDnsSuffixConfiguration extends pulumi.CustomResource {
     /**
@@ -97,7 +97,7 @@ export class AppServiceEnvironmentAseCustomDnsSuffixConfiguration extends pulumi
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:web/v20220301:AppServiceEnvironmentAseCustomDnsSuffixConfiguration" }, { type: "azure-native:web/v20220901:AppServiceEnvironmentAseCustomDnsSuffixConfiguration" }, { type: "azure-native:web/v20230101:AppServiceEnvironmentAseCustomDnsSuffixConfiguration" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:web/v20220301:AppServiceEnvironmentAseCustomDnsSuffixConfiguration" }, { type: "azure-native:web/v20220901:AppServiceEnvironmentAseCustomDnsSuffixConfiguration" }, { type: "azure-native:web/v20230101:AppServiceEnvironmentAseCustomDnsSuffixConfiguration" }, { type: "azure-native:web/v20231201:AppServiceEnvironmentAseCustomDnsSuffixConfiguration" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(AppServiceEnvironmentAseCustomDnsSuffixConfiguration.__pulumiType, name, resourceInputs, opts);
     }

@@ -356,11 +356,11 @@ export interface OpenAIIntegrationPropertiesResponse {
     /**
      * The API endpoint for Open AI resource
      */
-    openAIResourceEndpoint: string;
+    openAIResourceEndpoint?: string;
     /**
      * The resource id of Open AI resource
      */
-    openAIResourceId: string;
+    openAIResourceId?: string;
 }
 
 /**

@@ -69,7 +69,7 @@ export interface SkuArgs {
      */
     family?: pulumi.Input<string>;
     /**
-     * The name of the SKU. Ex - P3. It is typically a letter+number code
+     * The name of the SKU. E.g. P3. It is typically a letter+number code
      */
     name: pulumi.Input<string>;
     /**
@@ -105,6 +105,7 @@ export interface UserRoleAssignmentArgs {
      */
     roles?: pulumi.Input<pulumi.Input<string>[]>;
 }
+
 
 
 

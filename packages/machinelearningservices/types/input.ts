@@ -5888,6 +5888,91 @@ export interface PyTorchArgs {
 }
 
 /**
+ * Azure OpenAI blocklist config.
+ */
+export interface RaiBlocklistConfigArgs {
+    /**
+     * If blocking would occur.
+     */
+    blocking?: pulumi.Input<boolean>;
+    /**
+     * Name of ContentFilter.
+     */
+    blocklistName?: pulumi.Input<string>;
+}
+
+/**
+ * RAI Custom Blocklist Item properties.
+ */
+export interface RaiBlocklistItemPropertiesArgs {
+    /**
+     * If the pattern is a regex pattern.
+     */
+    isRegex?: pulumi.Input<boolean>;
+    /**
+     * Pattern to match against.
+     */
+    pattern?: pulumi.Input<string>;
+}
+
+/**
+ * RAI Custom Blocklist properties.
+ */
+export interface RaiBlocklistPropertiesArgs {
+    /**
+     * Description of the block list.
+     */
+    description?: pulumi.Input<string>;
+}
+
+/**
+ * Azure OpenAI Content Filter.
+ */
+export interface RaiPolicyContentFilterArgs {
+    /**
+     * Level at which content is filtered.
+     */
+    allowedContentLevel?: pulumi.Input<string | enums.AllowedContentLevel>;
+    /**
+     * If blocking would occur.
+     */
+    blocking?: pulumi.Input<boolean>;
+    /**
+     * If the ContentFilter is enabled.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Name of ContentFilter.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Content source to apply the Content Filters.
+     */
+    source?: pulumi.Input<string | enums.RaiPolicyContentSource>;
+}
+
+/**
+ * Azure OpenAI Content Filters properties.
+ */
+export interface RaiPolicyPropertiesArgs {
+    /**
+     * Name of the base Content Filters.
+     */
+    basePolicyName?: pulumi.Input<string>;
+    completionBlocklists?: pulumi.Input<pulumi.Input<RaiBlocklistConfigArgs>[]>;
+    contentFilters?: pulumi.Input<pulumi.Input<RaiPolicyContentFilterArgs>[]>;
+    /**
+     * Content Filters mode.
+     */
+    mode?: pulumi.Input<string | enums.RaiPolicyMode>;
+    promptBlocklists?: pulumi.Input<pulumi.Input<RaiBlocklistConfigArgs>[]>;
+    /**
+     * Content Filters policy type.
+     */
+    type?: pulumi.Input<string | enums.RaiPolicyType>;
+}
+
+/**
  * Defines a Sampling Algorithm that generates values randomly
  */
 export interface RandomSamplingAlgorithmArgs {
@@ -7906,6 +7991,7 @@ export interface WorkspaceConnectionUsernamePasswordArgs {
     password?: pulumi.Input<string>;
     username?: pulumi.Input<string>;
 }
+
 
 
 
