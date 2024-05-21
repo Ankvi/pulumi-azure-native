@@ -399,6 +399,34 @@ export interface EncryptionServicesArgs {
 }
 
 /**
+ * Target helps provide filter parameters for the objects in the storage account and forms the execution context for the storage task
+ */
+export interface ExecutionTargetArgs {
+    /**
+     * List of object prefixes to be excluded from task execution. If there is a conflict between include and exclude prefixes, the exclude prefix will be the determining factor
+     */
+    excludePrefix?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Required list of object prefixes to be included for task execution
+     */
+    prefix: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+/**
+ * Execution trigger for storage task assignment
+ */
+export interface ExecutionTriggerArgs {
+    /**
+     * The trigger parameters of the storage task assignment execution
+     */
+    parameters: pulumi.Input<TriggerParametersArgs>;
+    /**
+     * The trigger type of the storage task assignment execution
+     */
+    type: pulumi.Input<enums.TriggerType>;
+}
+
+/**
  * The complex type of the extended location.
  */
 export interface ExtendedLocationArgs {
@@ -940,6 +968,56 @@ export interface SshPublicKeyArgs {
 }
 
 /**
+ * Execution context of the storage task assignment.
+ */
+export interface StorageTaskAssignmentExecutionContextArgs {
+    /**
+     * Execution target of the storage task assignment
+     */
+    target: pulumi.Input<ExecutionTargetArgs>;
+    /**
+     * Execution trigger of the storage task assignment
+     */
+    trigger: pulumi.Input<ExecutionTriggerArgs>;
+}
+
+/**
+ * Properties of the storage task assignment.
+ */
+export interface StorageTaskAssignmentPropertiesArgs {
+    /**
+     * Text that describes the purpose of the storage task assignment
+     */
+    description: pulumi.Input<string>;
+    /**
+     * Whether the storage task assignment is enabled or not
+     */
+    enabled: pulumi.Input<boolean>;
+    /**
+     * The storage task assignment execution context
+     */
+    executionContext: pulumi.Input<StorageTaskAssignmentExecutionContextArgs>;
+    /**
+     * The storage task assignment report
+     */
+    report: pulumi.Input<StorageTaskAssignmentReportArgs>;
+    /**
+     * Id of the corresponding storage task
+     */
+    taskId: pulumi.Input<string>;
+}
+
+/**
+ * The storage task assignment report
+ */
+export interface StorageTaskAssignmentReportArgs {
+    /**
+     * The container prefix for the location of storage task assignment report
+     */
+    prefix: pulumi.Input<string>;
+}
+
+/**
  * Table Access Policy Properties Object.
  */
 export interface TableAccessPolicyArgs {
@@ -990,6 +1068,32 @@ export interface TagFilterArgs {
 }
 
 /**
+ * The trigger parameters update for the storage task assignment execution
+ */
+export interface TriggerParametersArgs {
+    /**
+     * When to end task execution. This is a required field when ExecutionTrigger.properties.type is 'OnSchedule'; this property should not be present when ExecutionTrigger.properties.type is 'RunOnce'
+     */
+    endBy?: pulumi.Input<string>;
+    /**
+     * Run interval of task execution. This is a required field when ExecutionTrigger.properties.type is 'OnSchedule'; this property should not be present when ExecutionTrigger.properties.type is 'RunOnce'
+     */
+    interval?: pulumi.Input<number>;
+    /**
+     * Run interval unit of task execution. This is a required field when ExecutionTrigger.properties.type is 'OnSchedule'; this property should not be present when ExecutionTrigger.properties.type is 'RunOnce'
+     */
+    intervalUnit?: pulumi.Input<enums.IntervalUnit>;
+    /**
+     * When to start task execution. This is a required field when ExecutionTrigger.properties.type is 'OnSchedule'; this property should not be present when ExecutionTrigger.properties.type is 'RunOnce'
+     */
+    startFrom?: pulumi.Input<string>;
+    /**
+     * When to start task execution. This is an optional field when ExecutionTrigger.properties.type is 'RunOnce'; this property should not be present when ExecutionTrigger.properties.type is 'OnSchedule'
+     */
+    startOn?: pulumi.Input<string>;
+}
+
+/**
  * Virtual Network rule.
  */
 export interface VirtualNetworkRuleArgs {
@@ -1015,5 +1119,6 @@ export function virtualNetworkRuleArgsProvideDefaults(val: VirtualNetworkRuleArg
         action: (val.action) ?? "Allow",
     };
 }
+
 
 

@@ -1,3 +1,19 @@
+export const AppServicePlanTier = {
+    /**
+     * Elastic Premium plan
+     */
+    ElasticPremium: "ElasticPremium",
+    /**
+     * Dedicated Premium V3 plan
+     */
+    PremiumV3: "PremiumV3",
+} as const;
+
+/**
+ * The App Service plan tier.
+ */
+export type AppServicePlanTier = (typeof AppServicePlanTier)[keyof typeof AppServicePlanTier];
+
 export const BackupType = {
     VM: "VM",
     SQL: "SQL",

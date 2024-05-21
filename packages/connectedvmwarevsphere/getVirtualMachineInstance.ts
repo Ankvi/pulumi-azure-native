@@ -5,7 +5,7 @@ import * as types from "./types";
  * Retrieves information about a virtual machine instance.
  * Azure REST API version: 2023-03-01-preview.
  *
- * Other available API versions: 2023-10-01.
+ * Other available API versions: 2023-10-01, 2023-12-01.
  */
 export function getVirtualMachineInstance(args: GetVirtualMachineInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualMachineInstanceResult> {
 
@@ -95,7 +95,7 @@ export interface GetVirtualMachineInstanceResult {
  * Retrieves information about a virtual machine instance.
  * Azure REST API version: 2023-03-01-preview.
  *
- * Other available API versions: 2023-10-01.
+ * Other available API versions: 2023-10-01, 2023-12-01.
  */
 export function getVirtualMachineInstanceOutput(args: GetVirtualMachineInstanceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVirtualMachineInstanceResult> {
     return pulumi.output(args).apply((a: any) => getVirtualMachineInstance(a, opts))

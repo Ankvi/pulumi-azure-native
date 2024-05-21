@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * PrivateAccesses tracked resource.
  * Azure REST API version: 2023-10-27-preview.
+ *
+ * Other available API versions: 2024-03-22-preview.
  */
 export class PrivateAccess extends pulumi.CustomResource {
     /**
@@ -88,7 +90,7 @@ export class PrivateAccess extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:chaos/v20231027preview:PrivateAccess" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:chaos/v20231027preview:PrivateAccess" }, { type: "azure-native:chaos/v20240322preview:PrivateAccess" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PrivateAccess.__pulumiType, name, resourceInputs, opts);
     }

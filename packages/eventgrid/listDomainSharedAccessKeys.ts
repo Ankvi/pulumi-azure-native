@@ -4,7 +4,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * List the two keys used to publish to a domain.
  * Azure REST API version: 2022-06-15.
  *
- * Other available API versions: 2020-04-01-preview, 2023-06-01-preview, 2023-12-15-preview.
+ * Other available API versions: 2020-04-01-preview, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview.
  */
 export function listDomainSharedAccessKeys(args: ListDomainSharedAccessKeysArgs, opts?: pulumi.InvokeOptions): Promise<ListDomainSharedAccessKeysResult> {
 
@@ -43,7 +43,7 @@ export interface ListDomainSharedAccessKeysResult {
  * List the two keys used to publish to a domain.
  * Azure REST API version: 2022-06-15.
  *
- * Other available API versions: 2020-04-01-preview, 2023-06-01-preview, 2023-12-15-preview.
+ * Other available API versions: 2020-04-01-preview, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview.
  */
 export function listDomainSharedAccessKeysOutput(args: ListDomainSharedAccessKeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListDomainSharedAccessKeysResult> {
     return pulumi.output(args).apply((a: any) => listDomainSharedAccessKeys(a, opts))

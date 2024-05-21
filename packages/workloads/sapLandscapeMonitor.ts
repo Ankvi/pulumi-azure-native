@@ -5,7 +5,7 @@ import * as types from "./types";
  * configuration associated with SAP Landscape Monitor Dashboard.
  * Azure REST API version: 2023-04-01.
  *
- * Other available API versions: 2023-10-01-preview.
+ * Other available API versions: 2023-10-01-preview, 2023-12-01-preview.
  */
 export class SapLandscapeMonitor extends pulumi.CustomResource {
     /**
@@ -93,7 +93,7 @@ export class SapLandscapeMonitor extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:workloads/v20221101preview:SapLandscapeMonitor" }, { type: "azure-native:workloads/v20230401:SapLandscapeMonitor" }, { type: "azure-native:workloads/v20231001preview:SapLandscapeMonitor" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:workloads/v20221101preview:SapLandscapeMonitor" }, { type: "azure-native:workloads/v20230401:SapLandscapeMonitor" }, { type: "azure-native:workloads/v20231001preview:SapLandscapeMonitor" }, { type: "azure-native:workloads/v20231201preview:SapLandscapeMonitor" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(SapLandscapeMonitor.__pulumiType, name, resourceInputs, opts);
     }

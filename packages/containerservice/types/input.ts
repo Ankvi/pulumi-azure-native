@@ -241,6 +241,38 @@ export interface KubeletConfigArgs {
 }
 
 /**
+ * A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.
+ */
+export interface LabelSelectorArgs {
+    /**
+     * matchExpressions is a list of label selector requirements. The requirements are ANDed.
+     */
+    matchExpressions?: pulumi.Input<pulumi.Input<LabelSelectorRequirementArgs>[]>;
+    /**
+     * matchLabels is an array of {key=value} pairs. A single {key=value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is `key`, the operator is `In`, and the values array contains only `value`. The requirements are ANDed.
+     */
+    matchLabels?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+/**
+ * A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+ */
+export interface LabelSelectorRequirementArgs {
+    /**
+     * key is the label key that the selector applies to.
+     */
+    key?: pulumi.Input<string>;
+    /**
+     * operator represents a key's relationship to a set of values. Valid operators are In and NotIn
+     */
+    operator?: pulumi.Input<string | enums.Operator>;
+    /**
+     * values is an array of string values, the values array must be non-empty.
+     */
+    values?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+/**
  * See [AKS custom node configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration) for more details.
  */
 export interface LinuxOSConfigArgs {
@@ -1594,6 +1626,8 @@ export interface WindowsGmsaProfileArgs {
      */
     rootDomainName?: pulumi.Input<string>;
 }
+
+
 
 
 

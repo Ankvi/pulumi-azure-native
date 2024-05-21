@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets a Deployment Stack with a given name.
  * Azure REST API version: 2022-08-01-preview.
+ *
+ * Other available API versions: 2024-03-01.
  */
 export function getDeploymentStackAtSubscription(args: GetDeploymentStackAtSubscriptionArgs, opts?: pulumi.InvokeOptions): Promise<GetDeploymentStackAtSubscriptionResult> {
 
@@ -116,6 +118,8 @@ export interface GetDeploymentStackAtSubscriptionResult {
 /**
  * Gets a Deployment Stack with a given name.
  * Azure REST API version: 2022-08-01-preview.
+ *
+ * Other available API versions: 2024-03-01.
  */
 export function getDeploymentStackAtSubscriptionOutput(args: GetDeploymentStackAtSubscriptionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDeploymentStackAtSubscriptionResult> {
     return pulumi.output(args).apply((a: any) => getDeploymentStackAtSubscription(a, opts))

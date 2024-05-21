@@ -8,6 +8,15 @@ export const AssessmentModeTypes = {
  */
 export type AssessmentModeTypes = (typeof AssessmentModeTypes)[keyof typeof AssessmentModeTypes];
 
+export const GatewayType = {
+    Public: "Public",
+} as const;
+
+/**
+ * The type of the Gateway resource.
+ */
+export type GatewayType = (typeof GatewayType)[keyof typeof GatewayType];
+
 export const LicenseCoreType = {
     PCore: "pCore",
     VCore: "vCore",

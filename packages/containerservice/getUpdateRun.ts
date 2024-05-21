@@ -5,7 +5,7 @@ import * as types from "./types";
  * Get a UpdateRun
  * Azure REST API version: 2023-03-15-preview.
  *
- * Other available API versions: 2023-06-15-preview, 2023-08-15-preview, 2023-10-15, 2024-02-02-preview.
+ * Other available API versions: 2023-06-15-preview, 2023-08-15-preview, 2023-10-15, 2024-02-02-preview, 2024-04-01.
  */
 export function getUpdateRun(args: GetUpdateRunArgs, opts?: pulumi.InvokeOptions): Promise<GetUpdateRunResult> {
 
@@ -79,7 +79,7 @@ export interface GetUpdateRunResult {
  * Get a UpdateRun
  * Azure REST API version: 2023-03-15-preview.
  *
- * Other available API versions: 2023-06-15-preview, 2023-08-15-preview, 2023-10-15, 2024-02-02-preview.
+ * Other available API versions: 2023-06-15-preview, 2023-08-15-preview, 2023-10-15, 2024-02-02-preview, 2024-04-01.
  */
 export function getUpdateRunOutput(args: GetUpdateRunOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUpdateRunResult> {
     return pulumi.output(args).apply((a: any) => getUpdateRun(a, opts))

@@ -503,6 +503,34 @@ export interface EndpointsResponse {
 }
 
 /**
+ * Target helps provide filter parameters for the objects in the storage account and forms the execution context for the storage task
+ */
+export interface ExecutionTargetResponse {
+    /**
+     * List of object prefixes to be excluded from task execution. If there is a conflict between include and exclude prefixes, the exclude prefix will be the determining factor
+     */
+    excludePrefix?: string[];
+    /**
+     * Required list of object prefixes to be included for task execution
+     */
+    prefix: string[];
+}
+
+/**
+ * Execution trigger for storage task assignment
+ */
+export interface ExecutionTriggerResponse {
+    /**
+     * The trigger parameters of the storage task assignment execution
+     */
+    parameters: TriggerParametersResponse;
+    /**
+     * The trigger type of the storage task assignment execution
+     */
+    type: string;
+}
+
+/**
  * The complex type of the extended location.
  */
 export interface ExtendedLocationResponse {
@@ -1308,6 +1336,126 @@ export interface StorageAccountSkuConversionStatusResponse {
 }
 
 /**
+ * Execution context of the storage task assignment.
+ */
+export interface StorageTaskAssignmentExecutionContextResponse {
+    /**
+     * Execution target of the storage task assignment
+     */
+    target: ExecutionTargetResponse;
+    /**
+     * Execution trigger of the storage task assignment
+     */
+    trigger: ExecutionTriggerResponse;
+}
+
+/**
+ * Properties of the storage task assignment.
+ */
+export interface StorageTaskAssignmentPropertiesResponse {
+    /**
+     * Text that describes the purpose of the storage task assignment
+     */
+    description: string;
+    /**
+     * Whether the storage task assignment is enabled or not
+     */
+    enabled: boolean;
+    /**
+     * The storage task assignment execution context
+     */
+    executionContext: StorageTaskAssignmentExecutionContextResponse;
+    /**
+     * Represents the provisioning state of the storage task assignment.
+     */
+    provisioningState: string;
+    /**
+     * The storage task assignment report
+     */
+    report: StorageTaskAssignmentReportResponse;
+    /**
+     * Run status of storage task assignment
+     */
+    runStatus?: StorageTaskReportPropertiesResponse;
+    /**
+     * Id of the corresponding storage task
+     */
+    taskId: string;
+}
+
+/**
+ * The storage task assignment report
+ */
+export interface StorageTaskAssignmentReportResponse {
+    /**
+     * The container prefix for the location of storage task assignment report
+     */
+    prefix: string;
+}
+
+/**
+ * Storage task execution report for a run instance.
+ */
+export interface StorageTaskReportPropertiesResponse {
+    /**
+     * End time of the run instance. Filter options such as startTime gt '2023-06-26T20:51:24.4494016Z' and other comparison operators can be used as described for DateTime properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+     */
+    finishTime: string;
+    /**
+     * Total number of objects where task operation failed when was attempted. Filter options such as objectFailedCount eq 0 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+     */
+    objectFailedCount: string;
+    /**
+     * Total number of objects that meet the storage tasks condition and were operated upon. Filter options such as objectsOperatedOnCount ge 100 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+     */
+    objectsOperatedOnCount: string;
+    /**
+     * Total number of objects where task operation succeeded when was attempted.Filter options such as objectsSucceededCount gt 150 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+     */
+    objectsSucceededCount: string;
+    /**
+     * Total number of objects that meet the condition as defined in the storage task assignment execution context. Filter options such as objectsTargetedCount gt 50 and other comparison operators can be used as described for Numerical properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+     */
+    objectsTargetedCount: string;
+    /**
+     * Represents the overall result of the execution for the run instance
+     */
+    runResult: string;
+    /**
+     * Represents the status of the execution.
+     */
+    runStatusEnum: string;
+    /**
+     * Well known Azure Storage error code that represents the error encountered during execution of the run instance.
+     */
+    runStatusError: string;
+    /**
+     * Start time of the run instance. Filter options such as startTime gt '2023-06-26T20:51:24.4494016Z' and other comparison operators can be used as described for DateTime properties in https://learn.microsoft.com/en-us/rest/api/storageservices/querying-tables-and-entities#supported-comparison-operators
+     */
+    startTime: string;
+    /**
+     * Represents the Storage Account Id where the storage task definition was applied and executed.
+     */
+    storageAccountId: string;
+    /**
+     * Full path to the verbose report stored in the reporting container as specified in the assignment execution context for the storage account. 
+     */
+    summaryReportPath: string;
+    /**
+     * Represents the Storage Task Assignment Id associated with the storage task that provided an execution context.
+     */
+    taskAssignmentId: string;
+    /**
+     * Storage Task Arm Id.
+     */
+    taskId: string;
+    /**
+     * Storage Task Version
+     */
+    taskVersion: string;
+}
+
+/**
  * Metadata pertaining to creation and last modification of the resource.
  */
 export interface SystemDataResponse {
@@ -1414,6 +1562,32 @@ export interface TagPropertyResponse {
 }
 
 /**
+ * The trigger parameters update for the storage task assignment execution
+ */
+export interface TriggerParametersResponse {
+    /**
+     * When to end task execution. This is a required field when ExecutionTrigger.properties.type is 'OnSchedule'; this property should not be present when ExecutionTrigger.properties.type is 'RunOnce'
+     */
+    endBy?: string;
+    /**
+     * Run interval of task execution. This is a required field when ExecutionTrigger.properties.type is 'OnSchedule'; this property should not be present when ExecutionTrigger.properties.type is 'RunOnce'
+     */
+    interval?: number;
+    /**
+     * Run interval unit of task execution. This is a required field when ExecutionTrigger.properties.type is 'OnSchedule'; this property should not be present when ExecutionTrigger.properties.type is 'RunOnce'
+     */
+    intervalUnit?: string;
+    /**
+     * When to start task execution. This is a required field when ExecutionTrigger.properties.type is 'OnSchedule'; this property should not be present when ExecutionTrigger.properties.type is 'RunOnce'
+     */
+    startFrom?: string;
+    /**
+     * When to start task execution. This is an optional field when ExecutionTrigger.properties.type is 'RunOnce'; this property should not be present when ExecutionTrigger.properties.type is 'OnSchedule'
+     */
+    startOn?: string;
+}
+
+/**
  * An update history of the ImmutabilityPolicy of a blob container.
  */
 export interface UpdateHistoryPropertyResponse {
@@ -1491,5 +1665,6 @@ export function virtualNetworkRuleResponseProvideDefaults(val: VirtualNetworkRul
         action: (val.action) ?? "Allow",
     };
 }
+
 
 

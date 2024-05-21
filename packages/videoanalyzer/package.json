@@ -1,6 +1,6 @@
 {
     "name": "@kengachu-pulumi/azure-native-videoanalyzer",
-    "version": "2.38.0",
+    "version": "2.42.0",
     "description": "Pulumi Azure Native package for videoanalyzer",
     "keywords": [
         "pulumi",

@@ -146,6 +146,11 @@ export const getNamespaceTopicEventSubscriptionDeliveryAttributes: typeof import
 export const getNamespaceTopicEventSubscriptionDeliveryAttributesOutput: typeof import("./getNamespaceTopicEventSubscriptionDeliveryAttributes").getNamespaceTopicEventSubscriptionDeliveryAttributesOutput = null as any;
 utilities.lazyLoad(exports, ["getNamespaceTopicEventSubscriptionDeliveryAttributes","getNamespaceTopicEventSubscriptionDeliveryAttributesOutput"], () => require("./getNamespaceTopicEventSubscriptionDeliveryAttributes"));
 
+export { GetNamespaceTopicEventSubscriptionFullUrlArgs, GetNamespaceTopicEventSubscriptionFullUrlResult, GetNamespaceTopicEventSubscriptionFullUrlOutputArgs } from "./getNamespaceTopicEventSubscriptionFullUrl";
+export const getNamespaceTopicEventSubscriptionFullUrl: typeof import("./getNamespaceTopicEventSubscriptionFullUrl").getNamespaceTopicEventSubscriptionFullUrl = null as any;
+export const getNamespaceTopicEventSubscriptionFullUrlOutput: typeof import("./getNamespaceTopicEventSubscriptionFullUrl").getNamespaceTopicEventSubscriptionFullUrlOutput = null as any;
+utilities.lazyLoad(exports, ["getNamespaceTopicEventSubscriptionFullUrl","getNamespaceTopicEventSubscriptionFullUrlOutput"], () => require("./getNamespaceTopicEventSubscriptionFullUrl"));
+
 export { GetPartnerConfigurationArgs, GetPartnerConfigurationResult, GetPartnerConfigurationOutputArgs } from "./getPartnerConfiguration";
 export const getPartnerConfiguration: typeof import("./getPartnerConfiguration").getPartnerConfiguration = null as any;
 export const getPartnerConfigurationOutput: typeof import("./getPartnerConfiguration").getPartnerConfigurationOutput = null as any;

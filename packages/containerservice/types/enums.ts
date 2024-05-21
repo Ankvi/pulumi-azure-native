@@ -425,6 +425,30 @@ export const OpenShiftContainerServiceVMSize = {
  */
 export type OpenShiftContainerServiceVMSize = (typeof OpenShiftContainerServiceVMSize)[keyof typeof OpenShiftContainerServiceVMSize];
 
+export const Operator = {
+    /**
+     * The value of the key should be in the given list.
+     */
+    In: "In",
+    /**
+     * The value of the key should not be in the given list.
+     */
+    NotIn: "NotIn",
+    /**
+     * The value of the key should exist.
+     */
+    Exists: "Exists",
+    /**
+     * The value of the key should not exist.
+     */
+    DoesNotExist: "DoesNotExist",
+} as const;
+
+/**
+ * operator represents a key's relationship to a set of values. Valid operators are In and NotIn
+ */
+export type Operator = (typeof Operator)[keyof typeof Operator];
+
 export const OutboundType = {
     /**
      * The load balancer is used for egress through an AKS assigned public IP. This supports Kubernetes services of type 'loadBalancer'. For more information see [outbound type loadbalancer](https://docs.microsoft.com/azure/aks/egress-outboundtype#outbound-type-of-loadbalancer).

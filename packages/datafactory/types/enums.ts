@@ -19,6 +19,16 @@ export const ActivityState = {
  */
 export type ActivityState = (typeof ActivityState)[keyof typeof ActivityState];
 
+export const AmazonRdsForSqlAuthenticationType = {
+    SQL: "SQL",
+    Windows: "Windows",
+} as const;
+
+/**
+ * The type used for authentication. Type: string.
+ */
+export type AmazonRdsForSqlAuthenticationType = (typeof AmazonRdsForSqlAuthenticationType)[keyof typeof AmazonRdsForSqlAuthenticationType];
+
 export const AzureFunctionActivityMethod = {
     GET: "GET",
     POST: "POST",
@@ -43,6 +53,42 @@ export const AzureSearchIndexWriteBehaviorType = {
  * Specify the write behavior when upserting documents into Azure Search Index.
  */
 export type AzureSearchIndexWriteBehaviorType = (typeof AzureSearchIndexWriteBehaviorType)[keyof typeof AzureSearchIndexWriteBehaviorType];
+
+export const AzureSqlDWAuthenticationType = {
+    SQL: "SQL",
+    ServicePrincipal: "ServicePrincipal",
+    SystemAssignedManagedIdentity: "SystemAssignedManagedIdentity",
+    UserAssignedManagedIdentity: "UserAssignedManagedIdentity",
+} as const;
+
+/**
+ * The type used for authentication. Type: string.
+ */
+export type AzureSqlDWAuthenticationType = (typeof AzureSqlDWAuthenticationType)[keyof typeof AzureSqlDWAuthenticationType];
+
+export const AzureSqlDatabaseAuthenticationType = {
+    SQL: "SQL",
+    ServicePrincipal: "ServicePrincipal",
+    SystemAssignedManagedIdentity: "SystemAssignedManagedIdentity",
+    UserAssignedManagedIdentity: "UserAssignedManagedIdentity",
+} as const;
+
+/**
+ * The type used for authentication. Type: string.
+ */
+export type AzureSqlDatabaseAuthenticationType = (typeof AzureSqlDatabaseAuthenticationType)[keyof typeof AzureSqlDatabaseAuthenticationType];
+
+export const AzureSqlMIAuthenticationType = {
+    SQL: "SQL",
+    ServicePrincipal: "ServicePrincipal",
+    SystemAssignedManagedIdentity: "SystemAssignedManagedIdentity",
+    UserAssignedManagedIdentity: "UserAssignedManagedIdentity",
+} as const;
+
+/**
+ * The type used for authentication. Type: string.
+ */
+export type AzureSqlMIAuthenticationType = (typeof AzureSqlMIAuthenticationType)[keyof typeof AzureSqlMIAuthenticationType];
 
 export const AzureStorageAuthenticationType = {
     Anonymous: "Anonymous",
@@ -209,6 +255,7 @@ export const ExpressionV2Type = {
     Field: "Field",
     Unary: "Unary",
     Binary: "Binary",
+    NAry: "NAry",
 } as const;
 
 /**
@@ -766,6 +813,16 @@ export const SqlAlwaysEncryptedAkvAuthType = {
  * Sql always encrypted AKV authentication type. Type: string.
  */
 export type SqlAlwaysEncryptedAkvAuthType = (typeof SqlAlwaysEncryptedAkvAuthType)[keyof typeof SqlAlwaysEncryptedAkvAuthType];
+
+export const SqlServerAuthenticationType = {
+    SQL: "SQL",
+    Windows: "Windows",
+} as const;
+
+/**
+ * The type used for authentication. Type: string.
+ */
+export type SqlServerAuthenticationType = (typeof SqlServerAuthenticationType)[keyof typeof SqlServerAuthenticationType];
 
 export const SsisLogLocationType = {
     File: "File",

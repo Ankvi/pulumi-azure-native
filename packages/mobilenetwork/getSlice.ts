@@ -5,7 +5,7 @@ import * as types from "./types";
  * Gets information about the specified network slice.
  * Azure REST API version: 2023-06-01.
  *
- * Other available API versions: 2022-04-01-preview, 2022-11-01, 2023-09-01, 2024-02-01.
+ * Other available API versions: 2022-04-01-preview, 2022-11-01, 2023-09-01, 2024-02-01, 2024-04-01.
  */
 export function getSlice(args: GetSliceArgs, opts?: pulumi.InvokeOptions): Promise<GetSliceResult> {
 
@@ -77,7 +77,7 @@ export interface GetSliceResult {
  * Gets information about the specified network slice.
  * Azure REST API version: 2023-06-01.
  *
- * Other available API versions: 2022-04-01-preview, 2022-11-01, 2023-09-01, 2024-02-01.
+ * Other available API versions: 2022-04-01-preview, 2022-11-01, 2023-09-01, 2024-02-01, 2024-04-01.
  */
 export function getSliceOutput(args: GetSliceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSliceResult> {
     return pulumi.output(args).apply((a: any) => getSlice(a, opts))

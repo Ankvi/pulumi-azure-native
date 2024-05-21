@@ -5,7 +5,7 @@ import * as types from "./types";
  * Lists the user credentials of a Fleet.
  * Azure REST API version: 2023-03-15-preview.
  *
- * Other available API versions: 2022-07-02-preview, 2023-06-15-preview, 2023-08-15-preview, 2023-10-15, 2024-02-02-preview.
+ * Other available API versions: 2022-07-02-preview, 2023-06-15-preview, 2023-08-15-preview, 2023-10-15, 2024-02-02-preview, 2024-04-01.
  */
 export function listFleetCredentials(args: ListFleetCredentialsArgs, opts?: pulumi.InvokeOptions): Promise<ListFleetCredentialsResult> {
 
@@ -40,7 +40,7 @@ export interface ListFleetCredentialsResult {
  * Lists the user credentials of a Fleet.
  * Azure REST API version: 2023-03-15-preview.
  *
- * Other available API versions: 2022-07-02-preview, 2023-06-15-preview, 2023-08-15-preview, 2023-10-15, 2024-02-02-preview.
+ * Other available API versions: 2022-07-02-preview, 2023-06-15-preview, 2023-08-15-preview, 2023-10-15, 2024-02-02-preview, 2024-04-01.
  */
 export function listFleetCredentialsOutput(args: ListFleetCredentialsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListFleetCredentialsResult> {
     return pulumi.output(args).apply((a: any) => listFleetCredentials(a, opts))

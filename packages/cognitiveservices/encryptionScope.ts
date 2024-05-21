@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Cognitive Services EncryptionScope
  * Azure REST API version: 2023-10-01-preview.
+ *
+ * Other available API versions: 2024-04-01-preview.
  */
 export class EncryptionScope extends pulumi.CustomResource {
     /**
@@ -92,7 +94,7 @@ export class EncryptionScope extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:cognitiveservices/v20231001preview:EncryptionScope" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:cognitiveservices/v20231001preview:EncryptionScope" }, { type: "azure-native:cognitiveservices/v20240401preview:EncryptionScope" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(EncryptionScope.__pulumiType, name, resourceInputs, opts);
     }

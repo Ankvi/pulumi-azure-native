@@ -173,6 +173,280 @@ export interface A2APolicyCreationInputArgs {
 }
 
 /**
+ * A2A protected managed disk details.
+ */
+export interface A2AProtectedManagedDiskDetailsArgs {
+    /**
+     * The disk level operations list.
+     */
+    allowedDiskLevelOperation?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The data pending at source virtual machine in MB.
+     */
+    dataPendingAtSourceAgentInMB?: pulumi.Input<number>;
+    /**
+     * The data pending for replication in MB at staging account.
+     */
+    dataPendingInStagingStorageAccountInMB?: pulumi.Input<number>;
+    /**
+     * The KeyVault resource id for secret (BEK).
+     */
+    dekKeyVaultArmId?: pulumi.Input<string>;
+    /**
+     * The disk capacity in bytes.
+     */
+    diskCapacityInBytes?: pulumi.Input<number>;
+    /**
+     * The managed disk Arm id.
+     */
+    diskId?: pulumi.Input<string>;
+    /**
+     * The disk name.
+     */
+    diskName?: pulumi.Input<string>;
+    /**
+     * The disk state.
+     */
+    diskState?: pulumi.Input<string>;
+    /**
+     * The type of disk.
+     */
+    diskType?: pulumi.Input<string>;
+    /**
+     * The failover name for the managed disk.
+     */
+    failoverDiskName?: pulumi.Input<string>;
+    /**
+     * A value indicating whether vm has encrypted os disk or not.
+     */
+    isDiskEncrypted?: pulumi.Input<boolean>;
+    /**
+     * A value indicating whether disk key got encrypted or not.
+     */
+    isDiskKeyEncrypted?: pulumi.Input<boolean>;
+    /**
+     * The KeyVault resource id for key (KEK).
+     */
+    kekKeyVaultArmId?: pulumi.Input<string>;
+    /**
+     * The key URL / identifier (KEK).
+     */
+    keyIdentifier?: pulumi.Input<string>;
+    /**
+     * The type of the monitoring job. The progress is contained in MonitoringPercentageCompletion property.
+     */
+    monitoringJobType?: pulumi.Input<string>;
+    /**
+     * The percentage of the monitoring job. The type of the monitoring job is defined by MonitoringJobType property.
+     */
+    monitoringPercentageCompletion?: pulumi.Input<number>;
+    /**
+     * The primary disk encryption set Id.
+     */
+    primaryDiskEncryptionSetId?: pulumi.Input<string>;
+    /**
+     * The primary staging storage account.
+     */
+    primaryStagingAzureStorageAccountId?: pulumi.Input<string>;
+    /**
+     * The recovery disk encryption set Id.
+     */
+    recoveryDiskEncryptionSetId?: pulumi.Input<string>;
+    /**
+     * Recovery original target disk Arm Id.
+     */
+    recoveryOrignalTargetDiskId?: pulumi.Input<string>;
+    /**
+     * The replica disk type. Its an optional value and will be same as source disk type if not user provided.
+     */
+    recoveryReplicaDiskAccountType?: pulumi.Input<string>;
+    /**
+     * Recovery replica disk Arm Id.
+     */
+    recoveryReplicaDiskId?: pulumi.Input<string>;
+    /**
+     * The recovery disk resource group Arm Id.
+     */
+    recoveryResourceGroupId?: pulumi.Input<string>;
+    /**
+     * The target disk type after failover. Its an optional value and will be same as source disk type if not user provided.
+     */
+    recoveryTargetDiskAccountType?: pulumi.Input<string>;
+    /**
+     * Recovery target disk Arm Id.
+     */
+    recoveryTargetDiskId?: pulumi.Input<string>;
+    /**
+     * A value indicating whether resync is required for this disk.
+     */
+    resyncRequired?: pulumi.Input<boolean>;
+    /**
+     * The secret URL / identifier (BEK).
+     */
+    secretIdentifier?: pulumi.Input<string>;
+    /**
+     * The test failover name for the managed disk.
+     */
+    tfoDiskName?: pulumi.Input<string>;
+}
+
+/**
+ * A2A provider specific settings.
+ */
+export interface A2AReplicationProtectionClusterDetailsArgs {
+    /**
+     * The cluster management Id.
+     */
+    clusterManagementId?: pulumi.Input<string>;
+    /**
+     * The recovery point Id to which the cluster was failed over.
+     */
+    failoverRecoveryPointId?: pulumi.Input<string>;
+    /**
+     * The initial primary extended location.
+     */
+    initialPrimaryExtendedLocation?: pulumi.Input<ExtendedLocationArgs>;
+    /**
+     * The initial primary fabric location.
+     */
+    initialPrimaryFabricLocation?: pulumi.Input<string>;
+    /**
+     * The initial primary availability zone.
+     */
+    initialPrimaryZone?: pulumi.Input<string>;
+    /**
+     * The initial recovery extended location.
+     */
+    initialRecoveryExtendedLocation?: pulumi.Input<ExtendedLocationArgs>;
+    /**
+     * The initial recovery fabric location.
+     */
+    initialRecoveryFabricLocation?: pulumi.Input<string>;
+    /**
+     * The initial recovery availability zone.
+     */
+    initialRecoveryZone?: pulumi.Input<string>;
+    /**
+     * Gets the Instance type.
+     * Expected value is 'A2A'.
+     */
+    instanceType: pulumi.Input<"A2A">;
+    /**
+     * The time (in UTC) when the last RPO value was calculated by Protection Service.
+     */
+    lastRpoCalculatedTime?: pulumi.Input<string>;
+    /**
+     * An id that survives actions like switch protection which change the backing PE/CPE objects internally.The lifecycle id gets carried forward to have a link/continuity in being able to have an Id that denotes the "same" protected cluster even though other internal Ids/ARM Id might be changing.
+     */
+    lifecycleId?: pulumi.Input<string>;
+    /**
+     * Whether Multi VM group is auto created or specified by user.
+     */
+    multiVmGroupCreateOption?: pulumi.Input<string | enums.MultiVmGroupCreateOption>;
+    /**
+     * The multi vm group Id.
+     */
+    multiVmGroupId?: pulumi.Input<string>;
+    /**
+     * The multi vm group name.
+     */
+    multiVmGroupName?: pulumi.Input<string>;
+    /**
+     * The primary availability zone.
+     */
+    primaryAvailabilityZone?: pulumi.Input<string>;
+    /**
+     * The primary Extended Location.
+     */
+    primaryExtendedLocation?: pulumi.Input<ExtendedLocationArgs>;
+    /**
+     * Primary fabric location.
+     */
+    primaryFabricLocation?: pulumi.Input<string>;
+    /**
+     * The recovery availability zone.
+     */
+    recoveryAvailabilityZone?: pulumi.Input<string>;
+    /**
+     * The recovery Extended Location.
+     */
+    recoveryExtendedLocation?: pulumi.Input<ExtendedLocationArgs>;
+    /**
+     * The recovery fabric location.
+     */
+    recoveryFabricLocation?: pulumi.Input<string>;
+    /**
+     * The last RPO value in seconds.
+     */
+    rpoInSeconds?: pulumi.Input<number>;
+}
+
+/**
+ * A2A provider specific settings.
+ */
+export interface A2ASharedDiskReplicationDetailsArgs {
+    /**
+     * The recovery point id to which the Virtual node was failed over.
+     */
+    failoverRecoveryPointId?: pulumi.Input<string>;
+    /**
+     * Gets the Instance type.
+     * Expected value is 'A2A'.
+     */
+    instanceType: pulumi.Input<"A2A">;
+    /**
+     * The time (in UTC) when the last RPO value was calculated by Protection Service.
+     */
+    lastRpoCalculatedTime?: pulumi.Input<string>;
+    /**
+     * The management Id.
+     */
+    managementId?: pulumi.Input<string>;
+    /**
+     * The type of the monitoring job. The progress is contained in MonitoringPercentageCompletion property.
+     */
+    monitoringJobType?: pulumi.Input<string>;
+    /**
+     * The percentage of the monitoring job. The type of the monitoring job is defined by MonitoringJobType property.
+     */
+    monitoringPercentageCompletion?: pulumi.Input<number>;
+    /**
+     * Primary fabric location.
+     */
+    primaryFabricLocation?: pulumi.Input<string>;
+    /**
+     * The list of protected managed disks.
+     */
+    protectedManagedDisks?: pulumi.Input<pulumi.Input<A2AProtectedManagedDiskDetailsArgs>[]>;
+    /**
+     * The recovery fabric location.
+     */
+    recoveryFabricLocation?: pulumi.Input<string>;
+    /**
+     * The last RPO value in seconds.
+     */
+    rpoInSeconds?: pulumi.Input<number>;
+    /**
+     * The list of unprotected disks.
+     */
+    unprotectedDisks?: pulumi.Input<pulumi.Input<A2AUnprotectedDiskDetailsArgs>[]>;
+}
+
+/**
+ * A2A unprotected disk details.
+ */
+export interface A2AUnprotectedDiskDetailsArgs {
+    /**
+     * A value indicating whether the disk auto protection is enabled.
+     */
+    diskAutoProtectionStatus?: pulumi.Input<string | enums.AutoProtectionOfDataDisk>;
+    /**
+     * The source lun Id for the data disk.
+     */
+    diskLunId?: pulumi.Input<number>;
+}
+
+/**
  * A2A disk input details.
  */
 export interface A2AVmDiskInputDetailsArgs {
@@ -2333,6 +2607,24 @@ export interface CrossSubscriptionRestoreSettingsArgs {
 }
 
 /**
+ * Current scenario details of the protected entity.
+ */
+export interface CurrentScenarioDetailsArgs {
+    /**
+     * ARM Id of the job being executed.
+     */
+    jobId?: pulumi.Input<string>;
+    /**
+     * Scenario name.
+     */
+    scenarioName?: pulumi.Input<string>;
+    /**
+     * Start time of the workflow.
+     */
+    startTime?: pulumi.Input<string>;
+}
+
+/**
  * Additional information of the DPMContainer.
  */
 export interface DPMContainerExtendedInfoArgs {
@@ -2914,6 +3206,72 @@ export interface GenericProtectionPolicyArgs {
      * TimeZone optional input as string. For example: TimeZone = "Pacific Standard Time".
      */
     timeZone?: pulumi.Input<string>;
+}
+
+/**
+ * Health Error.
+ */
+export interface HealthErrorArgs {
+    /**
+     * Error creation time (UTC).
+     */
+    creationTimeUtc?: pulumi.Input<string>;
+    /**
+     * Value indicating whether the health error is customer resolvable.
+     */
+    customerResolvability?: pulumi.Input<string | enums.HealthErrorCustomerResolvability>;
+    /**
+     * ID of the entity.
+     */
+    entityId?: pulumi.Input<string>;
+    /**
+     * Category of error.
+     */
+    errorCategory?: pulumi.Input<string>;
+    /**
+     * Error code.
+     */
+    errorCode?: pulumi.Input<string>;
+    /**
+     * The health error unique id.
+     */
+    errorId?: pulumi.Input<string>;
+    /**
+     * Level of error.
+     */
+    errorLevel?: pulumi.Input<string>;
+    /**
+     * Error message.
+     */
+    errorMessage?: pulumi.Input<string>;
+    /**
+     * Source of error.
+     */
+    errorSource?: pulumi.Input<string>;
+    /**
+     * Type of error.
+     */
+    errorType?: pulumi.Input<string>;
+    /**
+     * The inner health errors. HealthError having a list of HealthError as child errors is problematic. InnerHealthError is used because this will prevent an infinite loop of structures when Hydra tries to auto-generate the contract. We are exposing the related health errors as inner health errors and all API consumers can utilize this in the same fashion as Exception -&gt; InnerException.
+     */
+    innerHealthErrors?: pulumi.Input<pulumi.Input<InnerHealthErrorArgs>[]>;
+    /**
+     * Possible causes of error.
+     */
+    possibleCauses?: pulumi.Input<string>;
+    /**
+     * Recommended action to resolve error.
+     */
+    recommendedAction?: pulumi.Input<string>;
+    /**
+     * DRA error message.
+     */
+    recoveryProviderErrorMessage?: pulumi.Input<string>;
+    /**
+     * Summary message of the entity.
+     */
+    summaryMessage?: pulumi.Input<string>;
 }
 
 export interface HourlyScheduleArgs {
@@ -3784,6 +4142,68 @@ export interface InMageVolumeExclusionOptionsArgs {
 }
 
 /**
+ * Implements InnerHealthError class. HealthError object has a list of InnerHealthErrors as child errors. InnerHealthError is used because this will prevent an infinite loop of structures when Hydra tries to auto-generate the contract. We are exposing the related health errors as inner health errors and all API consumers can utilize this in the same fashion as Exception -&gt; InnerException.
+ */
+export interface InnerHealthErrorArgs {
+    /**
+     * Error creation time (UTC).
+     */
+    creationTimeUtc?: pulumi.Input<string>;
+    /**
+     * Value indicating whether the health error is customer resolvable.
+     */
+    customerResolvability?: pulumi.Input<string | enums.HealthErrorCustomerResolvability>;
+    /**
+     * ID of the entity.
+     */
+    entityId?: pulumi.Input<string>;
+    /**
+     * Category of error.
+     */
+    errorCategory?: pulumi.Input<string>;
+    /**
+     * Error code.
+     */
+    errorCode?: pulumi.Input<string>;
+    /**
+     * The health error unique id.
+     */
+    errorId?: pulumi.Input<string>;
+    /**
+     * Level of error.
+     */
+    errorLevel?: pulumi.Input<string>;
+    /**
+     * Error message.
+     */
+    errorMessage?: pulumi.Input<string>;
+    /**
+     * Source of error.
+     */
+    errorSource?: pulumi.Input<string>;
+    /**
+     * Type of error.
+     */
+    errorType?: pulumi.Input<string>;
+    /**
+     * Possible causes of error.
+     */
+    possibleCauses?: pulumi.Input<string>;
+    /**
+     * Recommended action to resolve error.
+     */
+    recommendedAction?: pulumi.Input<string>;
+    /**
+     * DRA error message.
+     */
+    recoveryProviderErrorMessage?: pulumi.Input<string>;
+    /**
+     * Summary message of the entity.
+     */
+    summaryMessage?: pulumi.Input<string>;
+}
+
+/**
  * Details about inquired protectable items under a given container.
  */
 export interface InquiryInfoArgs {
@@ -4381,6 +4801,150 @@ export interface RecoveryPlanScriptActionDetailsArgs {
     timeout?: pulumi.Input<string>;
 }
 
+/**
+ * Extended location of the resource.
+ */
+export interface RegisteredClusterNodesArgs {
+    /**
+     * The BIOS ID.
+     */
+    biosId?: pulumi.Input<string>;
+    /**
+     * The cluster node name.
+     */
+    clusterNodeFqdn?: pulumi.Input<string>;
+    /**
+     * A value indicating whether this represents virtual entity hosting all the shared disks.
+     */
+    isSharedDiskVirtualNode?: pulumi.Input<boolean>;
+    /**
+     * The machine ID.
+     */
+    machineId?: pulumi.Input<string>;
+}
+
+/**
+ * Replication protection cluster custom data details.
+ */
+export interface ReplicationProtectionClusterPropertiesArgs {
+    /**
+     * The Current active location of the Protection cluster.
+     */
+    activeLocation?: pulumi.Input<string>;
+    /**
+     * The Agent cluster Id.
+     */
+    agentClusterId?: pulumi.Input<string>;
+    /**
+     * The allowed operations on the Replication protection cluster.
+     */
+    allowedOperations?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A value indicating whether all nodes of the cluster are registered or not.
+     */
+    areAllClusterNodesRegistered?: pulumi.Input<boolean>;
+    /**
+     * The cluster FQDN.
+     */
+    clusterFqdn?: pulumi.Input<string>;
+    /**
+     * The List of cluster Node FQDNs.
+     */
+    clusterNodeFqdns?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The List of Protected Item Id's.
+     */
+    clusterProtectedItemIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The registered node details.
+     */
+    clusterRegisteredNodes?: pulumi.Input<pulumi.Input<RegisteredClusterNodesArgs>[]>;
+    /**
+     * The current scenario.
+     */
+    currentScenario?: pulumi.Input<CurrentScenarioDetailsArgs>;
+    /**
+     * List of health errors.
+     */
+    healthErrors?: pulumi.Input<pulumi.Input<HealthErrorArgs>[]>;
+    /**
+     * The last successful failover time.
+     */
+    lastSuccessfulFailoverTime?: pulumi.Input<string>;
+    /**
+     * The last successful test failover time.
+     */
+    lastSuccessfulTestFailoverTime?: pulumi.Input<string>;
+    /**
+     * The name of Policy governing this PE.
+     */
+    policyFriendlyName?: pulumi.Input<string>;
+    /**
+     * The Policy Id.
+     */
+    policyId?: pulumi.Input<string>;
+    /**
+     * The friendly name of the primary fabric.
+     */
+    primaryFabricFriendlyName?: pulumi.Input<string>;
+    /**
+     * The fabric provider of the primary fabric.
+     */
+    primaryFabricProvider?: pulumi.Input<string>;
+    /**
+     * The name of primary protection container friendly name.
+     */
+    primaryProtectionContainerFriendlyName?: pulumi.Input<string>;
+    /**
+     * The type of protection cluster type.
+     */
+    protectionClusterType?: pulumi.Input<string>;
+    /**
+     * The protection status.
+     */
+    protectionState?: pulumi.Input<string>;
+    /**
+     * The protection state description.
+     */
+    protectionStateDescription?: pulumi.Input<string>;
+    /**
+     * The Replication cluster provider custom settings.
+     */
+    providerSpecificDetails?: pulumi.Input<A2AReplicationProtectionClusterDetailsArgs>;
+    /**
+     * The recovery container Id.
+     */
+    recoveryContainerId?: pulumi.Input<string>;
+    /**
+     * The friendly name of recovery fabric.
+     */
+    recoveryFabricFriendlyName?: pulumi.Input<string>;
+    /**
+     * The Arm Id of recovery fabric.
+     */
+    recoveryFabricId?: pulumi.Input<string>;
+    /**
+     * The name of recovery container friendly name.
+     */
+    recoveryProtectionContainerFriendlyName?: pulumi.Input<string>;
+    /**
+     * The consolidated protection health for the VM taking any issues with SRS as well as all the replication units associated with the VM's replication group into account. This is a string representation of the ProtectionHealth enumeration.
+     */
+    replicationHealth?: pulumi.Input<string>;
+    /**
+     * The shared disk properties.
+     */
+    sharedDiskProperties?: pulumi.Input<SharedDiskReplicationItemPropertiesArgs>;
+    /**
+     * The Test failover state.
+     */
+    testFailoverState?: pulumi.Input<string>;
+    /**
+     * The Test failover state description.
+     */
+    testFailoverStateDescription?: pulumi.Input<string>;
+}
+
 export interface ResourceGuardOperationDetailArgs {
     defaultResourceRequest?: pulumi.Input<string>;
     vaultCriticalOperation?: pulumi.Input<string>;
@@ -4449,6 +5013,44 @@ export interface SettingsArgs {
      * TimeZone optional input as string. For example: TimeZone = "Pacific Standard Time".
      */
     timeZone?: pulumi.Input<string>;
+}
+
+/**
+ * Shared Disk Replication item custom data details.
+ */
+export interface SharedDiskReplicationItemPropertiesArgs {
+    /**
+     * The Current active location of the PE.
+     */
+    activeLocation?: pulumi.Input<string>;
+    /**
+     * The allowed operations on the Replication protected item.
+     */
+    allowedOperations?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The current scenario.
+     */
+    currentScenario?: pulumi.Input<CurrentScenarioDetailsArgs>;
+    /**
+     * List of health errors.
+     */
+    healthErrors?: pulumi.Input<pulumi.Input<HealthErrorArgs>[]>;
+    /**
+     * The protection state of shared disk.
+     */
+    protectionState?: pulumi.Input<string>;
+    /**
+     * The consolidated protection health for the VM taking any issues with SRS as well as all the replication units associated with the VM's replication group into account. This is a string representation of the ProtectionHealth enumeration.
+     */
+    replicationHealth?: pulumi.Input<string>;
+    /**
+     * The Replication provider custom settings.
+     */
+    sharedDiskProviderSpecificDetails?: pulumi.Input<A2ASharedDiskReplicationDetailsArgs>;
+    /**
+     * The tfo state of shared disk.
+     */
+    testFailoverState?: pulumi.Input<string>;
 }
 
 /**
@@ -5020,6 +5622,7 @@ export interface YearlyRetentionScheduleArgs {
      */
     retentionTimes?: pulumi.Input<pulumi.Input<string>[]>;
 }
+
 
 
 

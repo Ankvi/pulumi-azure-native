@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Get all delivery attributes for an event subscription of a namespace topic.
  * Azure REST API version: 2023-12-15-preview.
+ *
+ * Other available API versions: 2024-06-01-preview.
  */
 export function getNamespaceTopicEventSubscriptionDeliveryAttributes(args: GetNamespaceTopicEventSubscriptionDeliveryAttributesArgs, opts?: pulumi.InvokeOptions): Promise<GetNamespaceTopicEventSubscriptionDeliveryAttributesResult> {
 
@@ -47,6 +49,8 @@ export interface GetNamespaceTopicEventSubscriptionDeliveryAttributesResult {
 /**
  * Get all delivery attributes for an event subscription of a namespace topic.
  * Azure REST API version: 2023-12-15-preview.
+ *
+ * Other available API versions: 2024-06-01-preview.
  */
 export function getNamespaceTopicEventSubscriptionDeliveryAttributesOutput(args: GetNamespaceTopicEventSubscriptionDeliveryAttributesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNamespaceTopicEventSubscriptionDeliveryAttributesResult> {
     return pulumi.output(args).apply((a: any) => getNamespaceTopicEventSubscriptionDeliveryAttributes(a, opts))

@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * The operation to get a run command.
  * Azure REST API version: 2023-10-03-preview.
+ *
+ * Other available API versions: 2024-03-31-preview.
  */
 export function getMachineRunCommand(args: GetMachineRunCommandArgs, opts?: pulumi.InvokeOptions): Promise<GetMachineRunCommandResult> {
 
@@ -114,6 +116,8 @@ export interface GetMachineRunCommandResult {
 /**
  * The operation to get a run command.
  * Azure REST API version: 2023-10-03-preview.
+ *
+ * Other available API versions: 2024-03-31-preview.
  */
 export function getMachineRunCommandOutput(args: GetMachineRunCommandOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMachineRunCommandResult> {
     return pulumi.output(args).apply((a: any) => getMachineRunCommand(a, opts))

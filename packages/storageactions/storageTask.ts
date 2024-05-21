@@ -51,7 +51,7 @@ export class StorageTask extends pulumi.CustomResource {
     /**
      * The managed service identity of the resource.
      */
-    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse | undefined>;
+    public readonly identity!: pulumi.Output<types.outputs.ManagedServiceIdentityResponse>;
     /**
      * The geo-location where the resource lives
      */
@@ -100,6 +100,9 @@ export class StorageTask extends pulumi.CustomResource {
             }
             if ((!args || args.enabled === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'enabled'");
+            }
+            if ((!args || args.identity === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'identity'");
             }
             if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
@@ -158,7 +161,7 @@ export interface StorageTaskArgs {
     /**
      * The managed service identity of the resource.
      */
-    identity?: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
+    identity: pulumi.Input<types.inputs.ManagedServiceIdentityArgs>;
     /**
      * The geo-location where the resource lives
      */

@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Deployment stack object.
  * Azure REST API version: 2022-08-01-preview.
+ *
+ * Other available API versions: 2024-03-01.
  */
 export class DeploymentStackAtSubscription extends pulumi.CustomResource {
     /**
@@ -182,7 +184,7 @@ export class DeploymentStackAtSubscription extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:resources/v20220801preview:DeploymentStackAtSubscription" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:resources/v20220801preview:DeploymentStackAtSubscription" }, { type: "azure-native:resources/v20240301:DeploymentStackAtSubscription" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(DeploymentStackAtSubscription.__pulumiType, name, resourceInputs, opts);
     }

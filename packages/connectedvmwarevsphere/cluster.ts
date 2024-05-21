@@ -5,7 +5,7 @@ import * as types from "./types";
  * Define the cluster.
  * Azure REST API version: 2022-07-15-preview. Prior API version in Azure Native 1.x: 2020-10-01-preview.
  *
- * Other available API versions: 2023-03-01-preview, 2023-10-01.
+ * Other available API versions: 2023-03-01-preview, 2023-10-01, 2023-12-01.
  */
 export class Cluster extends pulumi.CustomResource {
     /**
@@ -156,7 +156,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["vCenterId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:connectedvmwarevsphere/v20201001preview:Cluster" }, { type: "azure-native:connectedvmwarevsphere/v20220110preview:Cluster" }, { type: "azure-native:connectedvmwarevsphere/v20220715preview:Cluster" }, { type: "azure-native:connectedvmwarevsphere/v20230301preview:Cluster" }, { type: "azure-native:connectedvmwarevsphere/v20231001:Cluster" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:connectedvmwarevsphere/v20201001preview:Cluster" }, { type: "azure-native:connectedvmwarevsphere/v20220110preview:Cluster" }, { type: "azure-native:connectedvmwarevsphere/v20220715preview:Cluster" }, { type: "azure-native:connectedvmwarevsphere/v20230301preview:Cluster" }, { type: "azure-native:connectedvmwarevsphere/v20231001:Cluster" }, { type: "azure-native:connectedvmwarevsphere/v20231201:Cluster" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Cluster.__pulumiType, name, resourceInputs, opts);
     }

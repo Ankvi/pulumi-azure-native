@@ -31,6 +31,11 @@ export type DatabaseAccount = import("./databaseAccount").DatabaseAccount;
 export const DatabaseAccount: typeof import("./databaseAccount").DatabaseAccount = null as any;
 utilities.lazyLoad(exports, ["DatabaseAccount"], () => require("./databaseAccount"));
 
+export { FirewallRuleArgs } from "./firewallRule";
+export type FirewallRule = import("./firewallRule").FirewallRule;
+export const FirewallRule: typeof import("./firewallRule").FirewallRule = null as any;
+utilities.lazyLoad(exports, ["FirewallRule"], () => require("./firewallRule"));
+
 export { GetCassandraClusterArgs, GetCassandraClusterResult, GetCassandraClusterOutputArgs } from "./getCassandraCluster";
 export const getCassandraCluster: typeof import("./getCassandraCluster").getCassandraCluster = null as any;
 export const getCassandraClusterOutput: typeof import("./getCassandraCluster").getCassandraClusterOutput = null as any;
@@ -60,6 +65,11 @@ export { GetDatabaseAccountArgs, GetDatabaseAccountResult, GetDatabaseAccountOut
 export const getDatabaseAccount: typeof import("./getDatabaseAccount").getDatabaseAccount = null as any;
 export const getDatabaseAccountOutput: typeof import("./getDatabaseAccount").getDatabaseAccountOutput = null as any;
 utilities.lazyLoad(exports, ["getDatabaseAccount","getDatabaseAccountOutput"], () => require("./getDatabaseAccount"));
+
+export { GetFirewallRuleArgs, GetFirewallRuleResult, GetFirewallRuleOutputArgs } from "./getFirewallRule";
+export const getFirewallRule: typeof import("./getFirewallRule").getFirewallRule = null as any;
+export const getFirewallRuleOutput: typeof import("./getFirewallRule").getFirewallRuleOutput = null as any;
+utilities.lazyLoad(exports, ["getFirewallRule","getFirewallRuleOutput"], () => require("./getFirewallRule"));
 
 export { GetGraphResourceGraphArgs, GetGraphResourceGraphResult, GetGraphResourceGraphOutputArgs } from "./getGraphResourceGraph";
 export const getGraphResourceGraph: typeof import("./getGraphResourceGraph").getGraphResourceGraph = null as any;
@@ -323,6 +333,8 @@ const _module = {
                 return new CassandraResourceCassandraView(name, <any>undefined, { urn })
             case "azure-native:documentdb:DatabaseAccount":
                 return new DatabaseAccount(name, <any>undefined, { urn })
+            case "azure-native:documentdb:FirewallRule":
+                return new FirewallRule(name, <any>undefined, { urn })
             case "azure-native:documentdb:GraphResourceGraph":
                 return new GraphResourceGraph(name, <any>undefined, { urn })
             case "azure-native:documentdb:GremlinResourceGremlinDatabase":

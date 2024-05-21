@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * An Azure Monitor Workspace definition
  * Azure REST API version: 2023-04-03. Prior API version in Azure Native 1.x: 2021-06-03-preview.
+ *
+ * Other available API versions: 2023-10-01-preview.
  */
 export class AzureMonitorWorkspace extends pulumi.CustomResource {
     /**
@@ -67,7 +69,7 @@ export class AzureMonitorWorkspace extends pulumi.CustomResource {
     /**
      * Gets or sets allow or disallow public network access to Azure Monitor Workspace
      */
-    public /*out*/ readonly publicNetworkAccess!: pulumi.Output<string>;
+    public readonly publicNetworkAccess!: pulumi.Output<string | undefined>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
@@ -97,6 +99,7 @@ export class AzureMonitorWorkspace extends pulumi.CustomResource {
             }
             resourceInputs["azureMonitorWorkspaceName"] = args ? args.azureMonitorWorkspaceName : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["publicNetworkAccess"] = args ? args.publicNetworkAccess : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["accountId"] = undefined /*out*/;
@@ -106,7 +109,6 @@ export class AzureMonitorWorkspace extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["privateEndpointConnections"] = undefined /*out*/;
             resourceInputs["provisioningState"] = undefined /*out*/;
-            resourceInputs["publicNetworkAccess"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
@@ -124,7 +126,7 @@ export class AzureMonitorWorkspace extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:monitor/v20210603preview:AzureMonitorWorkspace" }, { type: "azure-native:monitor/v20230403:AzureMonitorWorkspace" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:monitor/v20210603preview:AzureMonitorWorkspace" }, { type: "azure-native:monitor/v20230403:AzureMonitorWorkspace" }, { type: "azure-native:monitor/v20231001preview:AzureMonitorWorkspace" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(AzureMonitorWorkspace.__pulumiType, name, resourceInputs, opts);
     }
@@ -142,6 +144,10 @@ export interface AzureMonitorWorkspaceArgs {
      * The geo-location where the resource lives
      */
     location?: pulumi.Input<string>;
+    /**
+     * Gets or sets allow or disallow public network access to Azure Monitor Workspace
+     */
+    publicNetworkAccess?: pulumi.Input<string | types.enums.PublicNetworkAccess>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

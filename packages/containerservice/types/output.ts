@@ -317,6 +317,38 @@ export interface KubeletConfigResponse {
 }
 
 /**
+ * A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.
+ */
+export interface LabelSelectorRequirementResponse {
+    /**
+     * key is the label key that the selector applies to.
+     */
+    key?: string;
+    /**
+     * operator represents a key's relationship to a set of values. Valid operators are In and NotIn
+     */
+    operator?: string;
+    /**
+     * values is an array of string values, the values array must be non-empty.
+     */
+    values?: string[];
+}
+
+/**
+ * A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.
+ */
+export interface LabelSelectorResponse {
+    /**
+     * matchExpressions is a list of label selector requirements. The requirements are ANDed.
+     */
+    matchExpressions?: LabelSelectorRequirementResponse[];
+    /**
+     * matchLabels is an array of {key=value} pairs. A single {key=value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is `key`, the operator is `In`, and the values array contains only `value`. The requirements are ANDed.
+     */
+    matchLabels?: string[];
+}
+
+/**
  * See [AKS custom node configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration) for more details.
  */
 export interface LinuxOSConfigResponse {
@@ -1973,6 +2005,8 @@ export interface WindowsGmsaProfileResponse {
      */
     rootDomainName?: string;
 }
+
+
 
 
 

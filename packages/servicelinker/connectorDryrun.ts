@@ -5,7 +5,7 @@ import * as types from "./types";
  * a dryrun job resource
  * Azure REST API version: 2022-11-01-preview.
  *
- * Other available API versions: 2023-04-01-preview.
+ * Other available API versions: 2023-04-01-preview, 2024-04-01.
  */
 export class ConnectorDryrun extends pulumi.CustomResource {
     /**
@@ -101,7 +101,7 @@ export class ConnectorDryrun extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:servicelinker/v20221101preview:ConnectorDryrun" }, { type: "azure-native:servicelinker/v20230401preview:ConnectorDryrun" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:servicelinker/v20221101preview:ConnectorDryrun" }, { type: "azure-native:servicelinker/v20230401preview:ConnectorDryrun" }, { type: "azure-native:servicelinker/v20240401:ConnectorDryrun" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ConnectorDryrun.__pulumiType, name, resourceInputs, opts);
     }

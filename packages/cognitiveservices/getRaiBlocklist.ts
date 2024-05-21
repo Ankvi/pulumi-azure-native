@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets the specified custom blocklist associated with the Azure OpenAI account.
  * Azure REST API version: 2023-10-01-preview.
+ *
+ * Other available API versions: 2024-04-01-preview.
  */
 export function getRaiBlocklist(args: GetRaiBlocklistArgs, opts?: pulumi.InvokeOptions): Promise<GetRaiBlocklistResult> {
 
@@ -66,6 +68,8 @@ export interface GetRaiBlocklistResult {
 /**
  * Gets the specified custom blocklist associated with the Azure OpenAI account.
  * Azure REST API version: 2023-10-01-preview.
+ *
+ * Other available API versions: 2024-04-01-preview.
  */
 export function getRaiBlocklistOutput(args: GetRaiBlocklistOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRaiBlocklistResult> {
     return pulumi.output(args).apply((a: any) => getRaiBlocklist(a, opts))

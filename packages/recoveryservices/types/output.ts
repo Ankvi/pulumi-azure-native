@@ -614,6 +614,178 @@ export interface A2AReplicationDetailsResponse {
 }
 
 /**
+ * A2A provider specific settings.
+ */
+export interface A2AReplicationProtectionClusterDetailsResponse {
+    /**
+     * The cluster management Id.
+     */
+    clusterManagementId?: string;
+    /**
+     * The recovery point Id to which the cluster was failed over.
+     */
+    failoverRecoveryPointId?: string;
+    /**
+     * The initial primary extended location.
+     */
+    initialPrimaryExtendedLocation?: ExtendedLocationResponse;
+    /**
+     * The initial primary fabric location.
+     */
+    initialPrimaryFabricLocation?: string;
+    /**
+     * The initial primary availability zone.
+     */
+    initialPrimaryZone?: string;
+    /**
+     * The initial recovery extended location.
+     */
+    initialRecoveryExtendedLocation?: ExtendedLocationResponse;
+    /**
+     * The initial recovery fabric location.
+     */
+    initialRecoveryFabricLocation?: string;
+    /**
+     * The initial recovery availability zone.
+     */
+    initialRecoveryZone?: string;
+    /**
+     * Gets the Instance type.
+     * Expected value is 'A2A'.
+     */
+    instanceType: "A2A";
+    /**
+     * The time (in UTC) when the last RPO value was calculated by Protection Service.
+     */
+    lastRpoCalculatedTime?: string;
+    /**
+     * An id that survives actions like switch protection which change the backing PE/CPE objects internally.The lifecycle id gets carried forward to have a link/continuity in being able to have an Id that denotes the "same" protected cluster even though other internal Ids/ARM Id might be changing.
+     */
+    lifecycleId?: string;
+    /**
+     * Whether Multi VM group is auto created or specified by user.
+     */
+    multiVmGroupCreateOption?: string;
+    /**
+     * The multi vm group Id.
+     */
+    multiVmGroupId?: string;
+    /**
+     * The multi vm group name.
+     */
+    multiVmGroupName?: string;
+    /**
+     * The primary availability zone.
+     */
+    primaryAvailabilityZone?: string;
+    /**
+     * The primary Extended Location.
+     */
+    primaryExtendedLocation?: ExtendedLocationResponse;
+    /**
+     * Primary fabric location.
+     */
+    primaryFabricLocation?: string;
+    /**
+     * The recovery availability zone.
+     */
+    recoveryAvailabilityZone?: string;
+    /**
+     * The recovery Extended Location.
+     */
+    recoveryExtendedLocation?: ExtendedLocationResponse;
+    /**
+     * The recovery fabric location.
+     */
+    recoveryFabricLocation?: string;
+    /**
+     * The last RPO value in seconds.
+     */
+    rpoInSeconds?: number;
+}
+
+/**
+ * Extended location of the resource.
+ */
+export interface A2ASharedDiskIRErrorDetailsResponse {
+    /**
+     * The error code.
+     */
+    errorCode: string;
+    /**
+     * The error code enum.
+     */
+    errorCodeEnum: string;
+    /**
+     * The error message.
+     */
+    errorMessage: string;
+    /**
+     * The possible causes.
+     */
+    possibleCauses: string;
+    /**
+     * The recommended action.
+     */
+    recommendedAction: string;
+}
+
+/**
+ * A2A provider specific settings.
+ */
+export interface A2ASharedDiskReplicationDetailsResponse {
+    /**
+     * The recovery point id to which the Virtual node was failed over.
+     */
+    failoverRecoveryPointId?: string;
+    /**
+     * Gets the Instance type.
+     * Expected value is 'A2A'.
+     */
+    instanceType: "A2A";
+    /**
+     * The time (in UTC) when the last RPO value was calculated by Protection Service.
+     */
+    lastRpoCalculatedTime?: string;
+    /**
+     * The management Id.
+     */
+    managementId?: string;
+    /**
+     * The type of the monitoring job. The progress is contained in MonitoringPercentageCompletion property.
+     */
+    monitoringJobType?: string;
+    /**
+     * The percentage of the monitoring job. The type of the monitoring job is defined by MonitoringJobType property.
+     */
+    monitoringPercentageCompletion?: number;
+    /**
+     * Primary fabric location.
+     */
+    primaryFabricLocation?: string;
+    /**
+     * The list of protected managed disks.
+     */
+    protectedManagedDisks?: A2AProtectedManagedDiskDetailsResponse[];
+    /**
+     * The recovery fabric location.
+     */
+    recoveryFabricLocation?: string;
+    /**
+     * The last RPO value in seconds.
+     */
+    rpoInSeconds?: number;
+    /**
+     * The IR Errors.
+     */
+    sharedDiskIRErrors?: A2ASharedDiskIRErrorDetailsResponse[];
+    /**
+     * The list of unprotected disks.
+     */
+    unprotectedDisks?: A2AUnprotectedDiskDetailsResponse[];
+}
+
+/**
  * A2A unprotected disk details.
  */
 export interface A2AUnprotectedDiskDetailsResponse {
@@ -7978,6 +8150,28 @@ export interface RecoveryServicesProviderPropertiesResponse {
 }
 
 /**
+ * Extended location of the resource.
+ */
+export interface RegisteredClusterNodesResponse {
+    /**
+     * The BIOS ID.
+     */
+    biosId?: string;
+    /**
+     * The cluster node name.
+     */
+    clusterNodeFqdn?: string;
+    /**
+     * A value indicating whether this represents virtual entity hosting all the shared disks.
+     */
+    isSharedDiskVirtualNode?: boolean;
+    /**
+     * The machine ID.
+     */
+    machineId?: string;
+}
+
+/**
  * Replication agent details.
  */
 export interface ReplicationAgentDetailsResponse {
@@ -8135,6 +8329,132 @@ export interface ReplicationProtectedItemPropertiesResponse {
      * The switch provider state description.
      */
     switchProviderStateDescription?: string;
+    /**
+     * The Test failover state.
+     */
+    testFailoverState?: string;
+    /**
+     * The Test failover state description.
+     */
+    testFailoverStateDescription?: string;
+}
+
+/**
+ * Replication protection cluster custom data details.
+ */
+export interface ReplicationProtectionClusterPropertiesResponse {
+    /**
+     * The Current active location of the Protection cluster.
+     */
+    activeLocation?: string;
+    /**
+     * The Agent cluster Id.
+     */
+    agentClusterId?: string;
+    /**
+     * The allowed operations on the Replication protection cluster.
+     */
+    allowedOperations?: string[];
+    /**
+     * A value indicating whether all nodes of the cluster are registered or not.
+     */
+    areAllClusterNodesRegistered?: boolean;
+    /**
+     * The cluster FQDN.
+     */
+    clusterFqdn?: string;
+    /**
+     * The List of cluster Node FQDNs.
+     */
+    clusterNodeFqdns?: string[];
+    /**
+     * The List of Protected Item Id's.
+     */
+    clusterProtectedItemIds?: string[];
+    /**
+     * The registered node details.
+     */
+    clusterRegisteredNodes?: RegisteredClusterNodesResponse[];
+    /**
+     * The current scenario.
+     */
+    currentScenario?: CurrentScenarioDetailsResponse;
+    /**
+     * List of health errors.
+     */
+    healthErrors?: HealthErrorResponse[];
+    /**
+     * The last successful failover time.
+     */
+    lastSuccessfulFailoverTime?: string;
+    /**
+     * The last successful test failover time.
+     */
+    lastSuccessfulTestFailoverTime?: string;
+    /**
+     * The name of Policy governing this PE.
+     */
+    policyFriendlyName?: string;
+    /**
+     * The Policy Id.
+     */
+    policyId?: string;
+    /**
+     * The friendly name of the primary fabric.
+     */
+    primaryFabricFriendlyName?: string;
+    /**
+     * The fabric provider of the primary fabric.
+     */
+    primaryFabricProvider?: string;
+    /**
+     * The name of primary protection container friendly name.
+     */
+    primaryProtectionContainerFriendlyName?: string;
+    /**
+     * The type of protection cluster type.
+     */
+    protectionClusterType?: string;
+    /**
+     * The protection status.
+     */
+    protectionState?: string;
+    /**
+     * The protection state description.
+     */
+    protectionStateDescription?: string;
+    /**
+     * The Replication cluster provider custom settings.
+     */
+    providerSpecificDetails?: A2AReplicationProtectionClusterDetailsResponse;
+    /**
+     * The provisioning state of the cluster.
+     */
+    provisioningState: string;
+    /**
+     * The recovery container Id.
+     */
+    recoveryContainerId?: string;
+    /**
+     * The friendly name of recovery fabric.
+     */
+    recoveryFabricFriendlyName?: string;
+    /**
+     * The Arm Id of recovery fabric.
+     */
+    recoveryFabricId?: string;
+    /**
+     * The name of recovery container friendly name.
+     */
+    recoveryProtectionContainerFriendlyName?: string;
+    /**
+     * The consolidated protection health for the VM taking any issues with SRS as well as all the replication units associated with the VM's replication group into account. This is a string representation of the ProtectionHealth enumeration.
+     */
+    replicationHealth?: string;
+    /**
+     * The shared disk properties.
+     */
+    sharedDiskProperties?: SharedDiskReplicationItemPropertiesResponse;
     /**
      * The Test failover state.
      */
@@ -8333,6 +8653,44 @@ export interface SettingsResponse {
      * TimeZone optional input as string. For example: TimeZone = "Pacific Standard Time".
      */
     timeZone?: string;
+}
+
+/**
+ * Shared Disk Replication item custom data details.
+ */
+export interface SharedDiskReplicationItemPropertiesResponse {
+    /**
+     * The Current active location of the PE.
+     */
+    activeLocation?: string;
+    /**
+     * The allowed operations on the Replication protected item.
+     */
+    allowedOperations?: string[];
+    /**
+     * The current scenario.
+     */
+    currentScenario?: CurrentScenarioDetailsResponse;
+    /**
+     * List of health errors.
+     */
+    healthErrors?: HealthErrorResponse[];
+    /**
+     * The protection state of shared disk.
+     */
+    protectionState?: string;
+    /**
+     * The consolidated protection health for the VM taking any issues with SRS as well as all the replication units associated with the VM's replication group into account. This is a string representation of the ProtectionHealth enumeration.
+     */
+    replicationHealth?: string;
+    /**
+     * The Replication provider custom settings.
+     */
+    sharedDiskProviderSpecificDetails?: A2ASharedDiskReplicationDetailsResponse;
+    /**
+     * The tfo state of shared disk.
+     */
+    testFailoverState?: string;
 }
 
 /**
@@ -9736,6 +10094,7 @@ export interface YearlyRetentionScheduleResponse {
      */
     retentionTimes?: string[];
 }
+
 
 
 

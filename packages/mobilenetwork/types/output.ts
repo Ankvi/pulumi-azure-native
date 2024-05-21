@@ -603,6 +603,52 @@ export interface ServiceResourceIdResponse {
 }
 
 /**
+ * SIM group resource.
+ */
+export interface SimGroupResponse {
+    /**
+     * A key to encrypt the SIM data that belongs to this SIM group.
+     */
+    encryptionKey?: KeyVaultKeyResponse;
+    /**
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+     */
+    id: string;
+    /**
+     * The identity used to retrieve the encryption key from Azure key vault.
+     */
+    identity?: ManagedServiceIdentityResponse;
+    /**
+     * The geo-location where the resource lives
+     */
+    location: string;
+    /**
+     * Mobile network that this SIM group belongs to. The mobile network must be in the same location as the SIM group.
+     */
+    mobileNetwork?: MobileNetworkResourceIdResponse;
+    /**
+     * The name of the resource
+     */
+    name: string;
+    /**
+     * The provisioning state of the SIM group resource.
+     */
+    provisioningState: string;
+    /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    systemData: SystemDataResponse;
+    /**
+     * Resource tags.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+     */
+    type: string;
+}
+
+/**
  * Reference to a SIM policy resource.
  */
 export interface SimPolicyResourceIdResponse {
@@ -745,6 +791,7 @@ export interface UserAssignedIdentityResponse {
      */
     principalId: string;
 }
+
 
 
 

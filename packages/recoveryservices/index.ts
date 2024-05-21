@@ -56,6 +56,11 @@ export const getReplicationProtectedItem: typeof import("./getReplicationProtect
 export const getReplicationProtectedItemOutput: typeof import("./getReplicationProtectedItem").getReplicationProtectedItemOutput = null as any;
 utilities.lazyLoad(exports, ["getReplicationProtectedItem","getReplicationProtectedItemOutput"], () => require("./getReplicationProtectedItem"));
 
+export { GetReplicationProtectionClusterArgs, GetReplicationProtectionClusterResult, GetReplicationProtectionClusterOutputArgs } from "./getReplicationProtectionCluster";
+export const getReplicationProtectionCluster: typeof import("./getReplicationProtectionCluster").getReplicationProtectionCluster = null as any;
+export const getReplicationProtectionClusterOutput: typeof import("./getReplicationProtectionCluster").getReplicationProtectionClusterOutput = null as any;
+utilities.lazyLoad(exports, ["getReplicationProtectionCluster","getReplicationProtectionClusterOutput"], () => require("./getReplicationProtectionCluster"));
+
 export { GetReplicationProtectionContainerMappingArgs, GetReplicationProtectionContainerMappingResult, GetReplicationProtectionContainerMappingOutputArgs } from "./getReplicationProtectionContainerMapping";
 export const getReplicationProtectionContainerMapping: typeof import("./getReplicationProtectionContainerMapping").getReplicationProtectionContainerMapping = null as any;
 export const getReplicationProtectionContainerMappingOutput: typeof import("./getReplicationProtectionContainerMapping").getReplicationProtectionContainerMappingOutput = null as any;
@@ -141,6 +146,11 @@ export type ReplicationProtectedItem = import("./replicationProtectedItem").Repl
 export const ReplicationProtectedItem: typeof import("./replicationProtectedItem").ReplicationProtectedItem = null as any;
 utilities.lazyLoad(exports, ["ReplicationProtectedItem"], () => require("./replicationProtectedItem"));
 
+export { ReplicationProtectionClusterArgs } from "./replicationProtectionCluster";
+export type ReplicationProtectionCluster = import("./replicationProtectionCluster").ReplicationProtectionCluster;
+export const ReplicationProtectionCluster: typeof import("./replicationProtectionCluster").ReplicationProtectionCluster = null as any;
+utilities.lazyLoad(exports, ["ReplicationProtectionCluster"], () => require("./replicationProtectionCluster"));
+
 export { ReplicationProtectionContainerMappingArgs } from "./replicationProtectionContainerMapping";
 export type ReplicationProtectionContainerMapping = import("./replicationProtectionContainerMapping").ReplicationProtectionContainerMapping;
 export const ReplicationProtectionContainerMapping: typeof import("./replicationProtectionContainerMapping").ReplicationProtectionContainerMapping = null as any;
@@ -206,6 +216,8 @@ const _module = {
                 return new ReplicationPolicy(name, <any>undefined, { urn })
             case "azure-native:recoveryservices:ReplicationProtectedItem":
                 return new ReplicationProtectedItem(name, <any>undefined, { urn })
+            case "azure-native:recoveryservices:ReplicationProtectionCluster":
+                return new ReplicationProtectionCluster(name, <any>undefined, { urn })
             case "azure-native:recoveryservices:ReplicationProtectionContainerMapping":
                 return new ReplicationProtectionContainerMapping(name, <any>undefined, { urn })
             case "azure-native:recoveryservices:ReplicationRecoveryPlan":
