@@ -1,4 +1,5 @@
 {
     "name": "@kengachu-pulumi/azure-native",
+    "packageManager": "pnpm@9.1.2",
     "private": true
 }
