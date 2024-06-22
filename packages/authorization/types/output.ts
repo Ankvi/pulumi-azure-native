@@ -474,6 +474,10 @@ export interface PolicyDefinitionGroupResponse {
  */
 export interface PolicyDefinitionReferenceResponse {
     /**
+     * The version of the policy definition to use.
+     */
+    definitionVersion?: string;
+    /**
      * The name of the groups that this policy definition reference belongs to.
      */
     groupNames?: string[];

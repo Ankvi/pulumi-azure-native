@@ -184,19 +184,19 @@ export interface TrackingDataStoreResponse {
     /**
      * The data store ingestion URI.
      */
-    dataStoreIngestionUri: string;
+    dataStoreIngestionUri?: string;
     /**
      * The data store resource id.
      */
-    dataStoreResourceId: string;
+    dataStoreResourceId?: string;
     /**
      * The data store URI.
      */
-    dataStoreUri: string;
+    dataStoreUri?: string;
     /**
      * The database name.
      */
-    databaseName: string;
+    databaseName?: string;
 }
 
 /**

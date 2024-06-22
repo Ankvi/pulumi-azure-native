@@ -4,7 +4,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Gets the API link for the product.
  * Azure REST API version: 2022-09-01-preview.
  *
- * Other available API versions: 2023-03-01-preview, 2023-05-01-preview.
+ * Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview.
  */
 export function getProductApiLink(args: GetProductApiLinkArgs, opts?: pulumi.InvokeOptions): Promise<GetProductApiLinkResult> {
 
@@ -61,7 +61,7 @@ export interface GetProductApiLinkResult {
  * Gets the API link for the product.
  * Azure REST API version: 2022-09-01-preview.
  *
- * Other available API versions: 2023-03-01-preview, 2023-05-01-preview.
+ * Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview.
  */
 export function getProductApiLinkOutput(args: GetProductApiLinkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProductApiLinkResult> {
     return pulumi.output(args).apply((a: any) => getProductApiLink(a, opts))

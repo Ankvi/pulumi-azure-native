@@ -1,3 +1,4 @@
+import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
  * The overview of the compliance result for one report.
@@ -113,6 +114,86 @@ export interface ResourceMetadataResponse {
 }
 
 /**
+ * Scoping answer.
+ */
+export interface ScopingAnswerResponse {
+    /**
+     * Question answer value list.
+     */
+    answers: string[];
+    /**
+     * Question id.
+     */
+    questionId: string;
+}
+
+/**
+ * The definition of a scoping question.
+ */
+export interface ScopingQuestionResponse {
+    /**
+     * Input type of the question answer.
+     */
+    inputType: string;
+    /**
+     * Option id list.
+     */
+    optionIds: string[];
+    /**
+     * Question id.
+     */
+    questionId: string;
+    /**
+     * The rule of the question.
+     */
+    rules: string[];
+    /**
+     * The answer value to show the sub questions.
+     */
+    showSubQuestionsValue: string;
+    /**
+     * Superior question id.
+     */
+    superiorQuestionId: string;
+}
+
+/**
+ * Single status.
+ */
+export interface StatusItemResponse {
+    /**
+     * Status name - e.g. "Active", "Failed".
+     */
+    statusName?: string;
+    /**
+     * Status value. e.g. "100", or "100%".
+     */
+    statusValue?: string;
+}
+
+/**
+ * The information of 'bring your own storage' account binding to the report
+ */
+export interface StorageInfoResponse {
+    /**
+     * 'bring your own storage' account name
+     */
+    accountName?: string;
+    /**
+     * The region of 'bring your own storage' account
+     */
+    location?: string;
+    /**
+     * The resourceGroup which 'bring your own storage' account belongs to
+     */
+    resourceGroup?: string;
+    /**
+     * The subscription id which 'bring your own storage' account belongs to
+     */
+    subscriptionId?: string;
+}
+
+/**
  * Metadata pertaining to creation and last modification of the resource.
  */
 export interface SystemDataResponse {
@@ -141,3 +222,4 @@ export interface SystemDataResponse {
      */
     lastModifiedByType?: string;
 }
+

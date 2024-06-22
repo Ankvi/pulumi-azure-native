@@ -163,6 +163,27 @@ export const DataSource = {
 
 export type DataSource = (typeof DataSource)[keyof typeof DataSource];
 
+export const DescendantBehavior = {
+    Unknown: "Unknown",
+    Override: "Override",
+    FallBack: "FallBack",
+} as const;
+
+/**
+ * The behavior of a policy on descendant resources.
+ */
+export type DescendantBehavior = (typeof DescendantBehavior)[keyof typeof DescendantBehavior];
+
+export const DevOpsPolicyType = {
+    Unknown: "Unknown",
+    Pipeline: "Pipeline",
+} as const;
+
+/**
+ * DevOps Policy resource types.
+ */
+export type DevOpsPolicyType = (typeof DevOpsPolicyType)[keyof typeof DevOpsPolicyType];
+
 export const DevOpsProvisioningState = {
     Succeeded: "Succeeded",
     Failed: "Failed",

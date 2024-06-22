@@ -5,7 +5,7 @@ import * as types from "./types";
  * DevOps Configuration resource.
  * Azure REST API version: 2023-09-01-preview.
  *
- * Other available API versions: 2024-04-01.
+ * Other available API versions: 2024-04-01, 2024-05-15-preview.
  */
 export function getDevOpsConfiguration(args: GetDevOpsConfigurationArgs, opts?: pulumi.InvokeOptions): Promise<GetDevOpsConfigurationResult> {
 
@@ -56,7 +56,7 @@ export interface GetDevOpsConfigurationResult {
  * DevOps Configuration resource.
  * Azure REST API version: 2023-09-01-preview.
  *
- * Other available API versions: 2024-04-01.
+ * Other available API versions: 2024-04-01, 2024-05-15-preview.
  */
 export function getDevOpsConfigurationOutput(args: GetDevOpsConfigurationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDevOpsConfigurationResult> {
     return pulumi.output(args).apply((a: any) => getDevOpsConfiguration(a, opts))

@@ -91,6 +91,20 @@ export interface ApiLicenseInformationArgs {
 }
 
 /**
+ * API Management gateway resource SKU properties.
+ */
+export interface ApiManagementGatewaySkuPropertiesArgs {
+    /**
+     * Capacity of the SKU (number of deployed units of the SKU)
+     */
+    capacity?: pulumi.Input<number>;
+    /**
+     * Name of the Sku.
+     */
+    name: pulumi.Input<string | enums.SkuType>;
+}
+
+/**
  * Identity properties of the Api Management service resource.
  */
 export interface ApiManagementServiceIdentityArgs {
@@ -239,6 +253,33 @@ export interface BackendAuthorizationHeaderCredentialsArgs {
     scheme: pulumi.Input<string>;
 }
 
+export interface BackendBaseParametersPoolArgs {
+    /**
+     * The list of backend entities belonging to a pool.
+     */
+    services?: pulumi.Input<pulumi.Input<BackendPoolItemArgs>[]>;
+}
+
+/**
+ * The configuration of the backend circuit breaker
+ */
+export interface BackendCircuitBreakerArgs {
+    /**
+     * The rules for tripping the backend.
+     */
+    rules?: pulumi.Input<pulumi.Input<CircuitBreakerRuleArgs>[]>;
+}
+
+/**
+ * Information regarding how the gateway should integrate with backend systems.
+ */
+export interface BackendConfigurationArgs {
+    /**
+     * The default hostname of the data-plane gateway to which requests can be sent.
+     */
+    subnet?: pulumi.Input<BackendSubnetConfigurationArgs>;
+}
+
 /**
  * Details of the Credentials used to connect to Backend.
  */
@@ -263,6 +304,24 @@ export interface BackendCredentialsContractArgs {
      * Query Parameter description.
      */
     query?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>}>;
+}
+
+/**
+ * Backend pool service information
+ */
+export interface BackendPoolItemArgs {
+    /**
+     * The unique ARM id of the backend entity. The ARM id should refer to an already existing backend entity.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * The priority of the backend entity in the backend pool. Must be between 0 and 100. It can be also null if the value not specified.
+     */
+    priority?: pulumi.Input<number>;
+    /**
+     * The weight of the backend entity in the backend pool. Must be between 0 and 100. It can be also null if the value not specified.
+     */
+    weight?: pulumi.Input<number>;
 }
 
 /**
@@ -321,6 +380,16 @@ export interface BackendServiceFabricClusterPropertiesArgs {
      * Server X509 Certificate Names Collection
      */
     serverX509Names?: pulumi.Input<pulumi.Input<X509CertificateNameArgs>[]>;
+}
+
+/**
+ * Information regarding how the subnet to which the gateway should be injected.
+ */
+export interface BackendSubnetConfigurationArgs {
+    /**
+     * The ARM ID of the subnet in which the backend systems are hosted.
+     */
+    id?: pulumi.Input<string>;
 }
 
 /**
@@ -397,6 +466,54 @@ export interface CertificateInformationArgs {
     thumbprint: pulumi.Input<string>;
 }
 
+/**
+ * The trip conditions of the circuit breaker
+ */
+export interface CircuitBreakerFailureConditionArgs {
+    /**
+     * The threshold for opening the circuit.
+     */
+    count?: pulumi.Input<number>;
+    /**
+     * The error reasons which are considered as failure.
+     */
+    errorReasons?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The interval during which the failures are counted.
+     */
+    interval?: pulumi.Input<string>;
+    /**
+     * The threshold for opening the circuit.
+     */
+    percentage?: pulumi.Input<number>;
+    /**
+     * The status code ranges which are considered as failure.
+     */
+    statusCodeRanges?: pulumi.Input<pulumi.Input<FailureStatusCodeRangeArgs>[]>;
+}
+
+/**
+ * Rule configuration to trip the backend.
+ */
+export interface CircuitBreakerRuleArgs {
+    /**
+     * flag to accept Retry-After header from the backend.
+     */
+    acceptRetryAfter?: pulumi.Input<boolean>;
+    /**
+     * The conditions for tripping the circuit breaker.
+     */
+    failureCondition?: pulumi.Input<CircuitBreakerFailureConditionArgs>;
+    /**
+     * The rule name.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The duration for which the circuit will be tripped.
+     */
+    tripDuration?: pulumi.Input<string>;
+}
+
 export interface DataMaskingArgs {
     /**
      * Masking settings for headers
@@ -435,6 +552,20 @@ export interface EmailTemplateParametersContractPropertiesArgs {
      * Template parameter title.
      */
     title?: pulumi.Input<string>;
+}
+
+/**
+ * The failure http status code range
+ */
+export interface FailureStatusCodeRangeArgs {
+    /**
+     * The maximum http status code.
+     */
+    max?: pulumi.Input<number>;
+    /**
+     * The minimum http status code.
+     */
+    min?: pulumi.Input<number>;
 }
 
 /**
@@ -877,6 +1008,7 @@ export interface X509CertificateNameArgs {
      */
     name?: pulumi.Input<string>;
 }
+
 
 
 

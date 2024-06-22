@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Get the policy restriction of the Api Management service.
  * Azure REST API version: 2023-05-01-preview.
+ *
+ * Other available API versions: 2023-09-01-preview.
  */
 export function getPolicyRestriction(args: GetPolicyRestrictionArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyRestrictionResult> {
 
@@ -57,6 +59,8 @@ export interface GetPolicyRestrictionResult {
 /**
  * Get the policy restriction of the Api Management service.
  * Azure REST API version: 2023-05-01-preview.
+ *
+ * Other available API versions: 2023-09-01-preview.
  */
 export function getPolicyRestrictionOutput(args: GetPolicyRestrictionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPolicyRestrictionResult> {
     return pulumi.output(args).apply((a: any) => getPolicyRestriction(a, opts))

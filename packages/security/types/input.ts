@@ -1218,6 +1218,50 @@ export interface DevOpsConfigurationPropertiesArgs {
 }
 
 /**
+ * Properties of the DevOps policy assignment resource.
+ */
+export interface DevOpsPolicyAssignmentPropertiesArgs {
+    /**
+     * Gets or sets time when the assignment was created in UTC.
+     */
+    assignedAt?: pulumi.Input<string>;
+    /**
+     * The behavior of a policy on descendant resources.
+     */
+    descendantBehavior?: pulumi.Input<string | enums.DescendantBehavior>;
+    /**
+     * Condensed information to identify a DevOps Policy resource.
+     */
+    policy?: pulumi.Input<DevOpsPolicyDescriptorArgs>;
+    /**
+     * Gets or sets the Azure resource id.
+     */
+    resourceId?: pulumi.Input<string>;
+}
+
+/**
+ * Condensed information to identify a DevOps Policy resource.
+ */
+export interface DevOpsPolicyDescriptorArgs {
+    /**
+     * Gets or sets the policy GUID.
+     */
+    policyId?: pulumi.Input<string>;
+    /**
+     * Gets or sets the policy name.
+     */
+    policyName?: pulumi.Input<string>;
+    /**
+     * DevOps Policy resource types.
+     */
+    policyType?: pulumi.Input<string | enums.DevOpsPolicyType>;
+    /**
+     * Gets or sets the version.
+     */
+    policyVersion?: pulumi.Input<string>;
+}
+
+/**
  * A plan's extension properties
  */
 export interface ExtensionArgs {
@@ -2059,6 +2103,7 @@ export interface VmRecommendationArgs {
      */
     resourceId?: pulumi.Input<string>;
 }
+
 
 
 

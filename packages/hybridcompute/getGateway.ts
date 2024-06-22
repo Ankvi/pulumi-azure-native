@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Retrieves information about the view of a gateway.
  * Azure REST API version: 2024-03-31-preview.
+ *
+ * Other available API versions: 2024-05-20-preview.
  */
 export function getGateway(args: GetGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewayResult> {
 
@@ -77,6 +79,8 @@ export interface GetGatewayResult {
 /**
  * Retrieves information about the view of a gateway.
  * Azure REST API version: 2024-03-31-preview.
+ *
+ * Other available API versions: 2024-05-20-preview.
  */
 export function getGatewayOutput(args: GetGatewayOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewayResult> {
     return pulumi.output(args).apply((a: any) => getGateway(a, opts))

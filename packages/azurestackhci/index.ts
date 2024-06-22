@@ -91,6 +91,16 @@ export const getNetworkInterface: typeof import("./getNetworkInterface").getNetw
 export const getNetworkInterfaceOutput: typeof import("./getNetworkInterface").getNetworkInterfaceOutput = null as any;
 utilities.lazyLoad(exports, ["getNetworkInterface","getNetworkInterfaceOutput"], () => require("./getNetworkInterface"));
 
+export { GetNetworkSecurityGroupArgs, GetNetworkSecurityGroupResult, GetNetworkSecurityGroupOutputArgs } from "./getNetworkSecurityGroup";
+export const getNetworkSecurityGroup: typeof import("./getNetworkSecurityGroup").getNetworkSecurityGroup = null as any;
+export const getNetworkSecurityGroupOutput: typeof import("./getNetworkSecurityGroup").getNetworkSecurityGroupOutput = null as any;
+utilities.lazyLoad(exports, ["getNetworkSecurityGroup","getNetworkSecurityGroupOutput"], () => require("./getNetworkSecurityGroup"));
+
+export { GetSecurityRuleArgs, GetSecurityRuleResult, GetSecurityRuleOutputArgs } from "./getSecurityRule";
+export const getSecurityRule: typeof import("./getSecurityRule").getSecurityRule = null as any;
+export const getSecurityRuleOutput: typeof import("./getSecurityRule").getSecurityRuleOutput = null as any;
+utilities.lazyLoad(exports, ["getSecurityRule","getSecurityRuleOutput"], () => require("./getSecurityRule"));
+
 export { GetSecuritySettingArgs, GetSecuritySettingResult, GetSecuritySettingOutputArgs } from "./getSecuritySetting";
 export const getSecuritySetting: typeof import("./getSecuritySetting").getSecuritySetting = null as any;
 export const getSecuritySettingOutput: typeof import("./getSecuritySetting").getSecuritySettingOutput = null as any;
@@ -165,6 +175,16 @@ export { NetworkInterfaceArgs } from "./networkInterface";
 export type NetworkInterface = import("./networkInterface").NetworkInterface;
 export const NetworkInterface: typeof import("./networkInterface").NetworkInterface = null as any;
 utilities.lazyLoad(exports, ["NetworkInterface"], () => require("./networkInterface"));
+
+export { NetworkSecurityGroupArgs } from "./networkSecurityGroup";
+export type NetworkSecurityGroup = import("./networkSecurityGroup").NetworkSecurityGroup;
+export const NetworkSecurityGroup: typeof import("./networkSecurityGroup").NetworkSecurityGroup = null as any;
+utilities.lazyLoad(exports, ["NetworkSecurityGroup"], () => require("./networkSecurityGroup"));
+
+export { SecurityRuleArgs } from "./securityRule";
+export type SecurityRule = import("./securityRule").SecurityRule;
+export const SecurityRule: typeof import("./securityRule").SecurityRule = null as any;
+utilities.lazyLoad(exports, ["SecurityRule"], () => require("./securityRule"));
 
 export { SecuritySettingArgs } from "./securitySetting";
 export type SecuritySetting = import("./securitySetting").SecuritySetting;
@@ -245,6 +265,10 @@ const _module = {
                 return new MarketplaceGalleryImage(name, <any>undefined, { urn })
             case "azure-native:azurestackhci:NetworkInterface":
                 return new NetworkInterface(name, <any>undefined, { urn })
+            case "azure-native:azurestackhci:NetworkSecurityGroup":
+                return new NetworkSecurityGroup(name, <any>undefined, { urn })
+            case "azure-native:azurestackhci:SecurityRule":
+                return new SecurityRule(name, <any>undefined, { urn })
             case "azure-native:azurestackhci:SecuritySetting":
                 return new SecuritySetting(name, <any>undefined, { urn })
             case "azure-native:azurestackhci:StorageContainer":

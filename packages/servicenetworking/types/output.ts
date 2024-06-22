@@ -50,4 +50,15 @@ export interface SystemDataResponse {
     lastModifiedByType?: string;
 }
 
+/**
+ * Web Application Firewall Policy
+ */
+export interface WafPolicyResponse {
+    /**
+     * Resource ID of the WAF
+     */
+    id: string;
+}
+
+
 

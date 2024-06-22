@@ -1,3 +1,4 @@
+import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
  * Report's properties.
@@ -47,3 +48,18 @@ export interface ResourceMetadataArgs {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
+
+/**
+ * Scoping answer.
+ */
+export interface ScopingAnswerArgs {
+    /**
+     * Question answer value list.
+     */
+    answers: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Question id.
+     */
+    questionId: pulumi.Input<string>;
+}
+

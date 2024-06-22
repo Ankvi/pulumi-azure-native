@@ -6084,6 +6084,24 @@ export interface ConcurSourceArgs {
 }
 
 /**
+ * Continuation settings for execute data flow activity.
+ */
+export interface ContinuationSettingsReferenceArgs {
+    /**
+     * Continuation TTL in minutes.
+     */
+    continuationTtlInMinutes?: any;
+    /**
+     * Customized checkpoint key.
+     */
+    customizedCheckpointKey?: any;
+    /**
+     * Idle condition.
+     */
+    idleCondition?: any;
+}
+
+/**
  * Base class for all control activities like IfCondition, ForEach , Until.
  */
 export interface ControlActivityArgs {
@@ -8323,6 +8341,10 @@ export interface DynamicsCrmLinkedServiceArgs {
      */
     connectVia?: pulumi.Input<IntegrationRuntimeReferenceArgs>;
     /**
+     * The credential reference containing authentication information.
+     */
+    credential?: pulumi.Input<CredentialReferenceArgs>;
+    /**
      * The deployment type of the Dynamics CRM instance. 'Online' for Dynamics CRM Online and 'OnPremisesWithIfd' for Dynamics CRM on-premises with Ifd. Type: string (or Expression with resultType string).
      */
     deploymentType: any;
@@ -8970,6 +8992,10 @@ export interface ExecuteDataFlowActivityArgs {
      */
     compute?: pulumi.Input<ExecuteDataFlowActivityTypePropertiesComputeArgs>;
     /**
+     * Continuation settings for execute data flow activity.
+     */
+    continuationSettings?: pulumi.Input<ContinuationSettingsReferenceArgs>;
+    /**
      * Continue on error setting used for data flow execution. Enables processing to continue if a sink fails. Type: boolean (or Expression with resultType boolean)
      */
     continueOnError?: any;
@@ -9210,6 +9236,10 @@ export interface ExecuteWranglingDataflowActivityArgs {
      * Compute properties for data flow activity.
      */
     compute?: pulumi.Input<ExecuteDataFlowActivityTypePropertiesComputeArgs>;
+    /**
+     * Continuation settings for execute data flow activity.
+     */
+    continuationSettings?: pulumi.Input<ContinuationSettingsReferenceArgs>;
     /**
      * Continue on error setting used for data flow execution. Enables processing to continue if a sink fails. Type: boolean (or Expression with resultType boolean)
      */
@@ -22053,6 +22083,10 @@ export interface SnowflakeExportCopyCommandArgs {
      */
     additionalFormatOptions?: pulumi.Input<{[key: string]: any}>;
     /**
+     * The name of the snowflake storage integration to use for the copy operation. Type: string (or Expression with resultType string).
+     */
+    storageIntegration?: any;
+    /**
      * The export setting type.
      * Expected value is 'SnowflakeExportCopyCommand'.
      */
@@ -22071,6 +22105,10 @@ export interface SnowflakeImportCopyCommandArgs {
      * Additional format options directly passed to snowflake Copy Command. Type: key value pairs (value should be string type) (or Expression with resultType object). Example: "additionalFormatOptions": { "FORCE": "TRUE", "LOAD_UNCERTAIN_FILES": "'FALSE'" }
      */
     additionalFormatOptions?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The name of the snowflake storage integration to use for the copy operation. Type: string (or Expression with resultType string).
+     */
+    storageIntegration?: any;
     /**
      * The import setting type.
      * Expected value is 'SnowflakeImportCopyCommand'.
@@ -22949,6 +22987,10 @@ export interface SqlServerLinkedServiceArgs {
      * The connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
      */
     connectionString?: any;
+    /**
+     * The credential reference containing authentication information.
+     */
+    credential?: pulumi.Input<CredentialReferenceArgs>;
     /**
      * The name of the database, used by recommended version. Type: string (or Expression with resultType string).
      */

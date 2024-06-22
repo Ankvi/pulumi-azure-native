@@ -822,6 +822,16 @@ export interface IpPoolsResponse {
 }
 
 /**
+ * The ARM ID for a Logical Network.
+ */
+export interface LogicalNetworkArmReferenceResponse {
+    /**
+     * The ARM ID for a Logical Network.
+     */
+    id?: string;
+}
+
+/**
  * DhcpOptions contains an array of DNS servers available to VMs deployed in the logical network. Standard DHCP option for a subnet overrides logical network DHCP options.
  */
 export interface LogicalNetworkPropertiesResponseDhcpOptions {
@@ -947,6 +957,16 @@ export interface MarketplaceGalleryImageStatusResponseProvisioningStatus {
      * The status of the operation performed on the gallery image [Succeeded, Failed, InProgress]
      */
     status?: string;
+}
+
+/**
+ * The ARM ID for a Network Interface.
+ */
+export interface NetworkInterfaceArmReferenceResponse {
+    /**
+     * The ARM ID for a Network Interface.
+     */
+    id?: string;
 }
 
 /**
@@ -2306,6 +2326,8 @@ export interface VirtualSwitchConfigurationOverridesResponse {
      */
     loadBalancingAlgorithm?: string;
 }
+
+
 
 
 

@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Get a Volume Snapshot.
  * Azure REST API version: 2023-01-01.
+ *
+ * Other available API versions: 2024-05-01.
  */
 export function getVolumeSnapshot(args: GetVolumeSnapshotArgs, opts?: pulumi.InvokeOptions): Promise<GetVolumeSnapshotResult> {
 
@@ -75,6 +77,8 @@ export interface GetVolumeSnapshotResult {
 /**
  * Get a Volume Snapshot.
  * Azure REST API version: 2023-01-01.
+ *
+ * Other available API versions: 2024-05-01.
  */
 export function getVolumeSnapshotOutput(args: GetVolumeSnapshotOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVolumeSnapshotResult> {
     return pulumi.output(args).apply((a: any) => getVolumeSnapshot(a, opts))

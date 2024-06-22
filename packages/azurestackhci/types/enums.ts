@@ -190,6 +190,62 @@ export const ResourceIdentityType = {
  */
 export type ResourceIdentityType = (typeof ResourceIdentityType)[keyof typeof ResourceIdentityType];
 
+export const SecurityRuleAccess = {
+    /**
+     * Network traffic is allowed
+     */
+    Allow: "Allow",
+    /**
+     * Network traffic is denied
+     */
+    Deny: "Deny",
+} as const;
+
+/**
+ * The network traffic is allowed or denied.
+ */
+export type SecurityRuleAccess = (typeof SecurityRuleAccess)[keyof typeof SecurityRuleAccess];
+
+export const SecurityRuleDirection = {
+    /**
+     * Rule is evaluated on incoming traffic
+     */
+    Inbound: "Inbound",
+    /**
+     * Rule is evaluated on outgoing traffic
+     */
+    Outbound: "Outbound",
+} as const;
+
+/**
+ * The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic.
+ */
+export type SecurityRuleDirection = (typeof SecurityRuleDirection)[keyof typeof SecurityRuleDirection];
+
+export const SecurityRuleProtocol = {
+    /**
+     * Transmission Control Protocol
+     */
+    Tcp: "Tcp",
+    /**
+     * User Datagram Protocol
+     */
+    Udp: "Udp",
+    /**
+     * Internet Control Message Protocol
+     */
+    Icmp: "Icmp",
+    /**
+     * Wildcard rule for all protocols
+     */
+    Asterisk: "*",
+} as const;
+
+/**
+ * Network protocol this rule applies to.
+ */
+export type SecurityRuleProtocol = (typeof SecurityRuleProtocol)[keyof typeof SecurityRuleProtocol];
+
 export const SecurityTypes = {
     TrustedLaunch: "TrustedLaunch",
     ConfidentialVM: "ConfidentialVM",

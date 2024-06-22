@@ -97,6 +97,20 @@ export interface ApiLicenseInformationResponse {
 }
 
 /**
+ * API Management gateway resource SKU properties.
+ */
+export interface ApiManagementGatewaySkuPropertiesResponse {
+    /**
+     * Capacity of the SKU (number of deployed units of the SKU)
+     */
+    capacity?: number;
+    /**
+     * Name of the Sku.
+     */
+    name: string;
+}
+
+/**
  * Identity properties of the Api Management service resource.
  */
 export interface ApiManagementServiceIdentityResponse {
@@ -260,6 +274,33 @@ export interface BackendAuthorizationHeaderCredentialsResponse {
     scheme: string;
 }
 
+export interface BackendBaseParametersResponsePool {
+    /**
+     * The list of backend entities belonging to a pool.
+     */
+    services?: BackendPoolItemResponse[];
+}
+
+/**
+ * The configuration of the backend circuit breaker
+ */
+export interface BackendCircuitBreakerResponse {
+    /**
+     * The rules for tripping the backend.
+     */
+    rules?: CircuitBreakerRuleResponse[];
+}
+
+/**
+ * Information regarding how the gateway should integrate with backend systems.
+ */
+export interface BackendConfigurationResponse {
+    /**
+     * The default hostname of the data-plane gateway to which requests can be sent.
+     */
+    subnet?: BackendSubnetConfigurationResponse;
+}
+
 /**
  * Details of the Credentials used to connect to Backend.
  */
@@ -284,6 +325,24 @@ export interface BackendCredentialsContractResponse {
      * Query Parameter description.
      */
     query?: {[key: string]: string[]};
+}
+
+/**
+ * Backend pool service information
+ */
+export interface BackendPoolItemResponse {
+    /**
+     * The unique ARM id of the backend entity. The ARM id should refer to an already existing backend entity.
+     */
+    id: string;
+    /**
+     * The priority of the backend entity in the backend pool. Must be between 0 and 100. It can be also null if the value not specified.
+     */
+    priority?: number;
+    /**
+     * The weight of the backend entity in the backend pool. Must be between 0 and 100. It can be also null if the value not specified.
+     */
+    weight?: number;
 }
 
 /**
@@ -342,6 +401,16 @@ export interface BackendServiceFabricClusterPropertiesResponse {
      * Server X509 Certificate Names Collection
      */
     serverX509Names?: X509CertificateNameResponse[];
+}
+
+/**
+ * Information regarding how the subnet to which the gateway should be injected.
+ */
+export interface BackendSubnetConfigurationResponse {
+    /**
+     * The ARM ID of the subnet in which the backend systems are hosted.
+     */
+    id?: string;
 }
 
 /**
@@ -418,6 +487,54 @@ export interface CertificateInformationResponse {
     thumbprint: string;
 }
 
+/**
+ * The trip conditions of the circuit breaker
+ */
+export interface CircuitBreakerFailureConditionResponse {
+    /**
+     * The threshold for opening the circuit.
+     */
+    count?: number;
+    /**
+     * The error reasons which are considered as failure.
+     */
+    errorReasons?: string[];
+    /**
+     * The interval during which the failures are counted.
+     */
+    interval?: string;
+    /**
+     * The threshold for opening the circuit.
+     */
+    percentage?: number;
+    /**
+     * The status code ranges which are considered as failure.
+     */
+    statusCodeRanges?: FailureStatusCodeRangeResponse[];
+}
+
+/**
+ * Rule configuration to trip the backend.
+ */
+export interface CircuitBreakerRuleResponse {
+    /**
+     * flag to accept Retry-After header from the backend.
+     */
+    acceptRetryAfter?: boolean;
+    /**
+     * The conditions for tripping the circuit breaker.
+     */
+    failureCondition?: CircuitBreakerFailureConditionResponse;
+    /**
+     * The rule name.
+     */
+    name?: string;
+    /**
+     * The duration for which the circuit will be tripped.
+     */
+    tripDuration?: string;
+}
+
 export interface DataMaskingEntityResponse {
     /**
      * Data masking mode.
@@ -456,6 +573,40 @@ export interface EmailTemplateParametersContractPropertiesResponse {
      * Template parameter title.
      */
     title?: string;
+}
+
+/**
+ * The failure http status code range
+ */
+export interface FailureStatusCodeRangeResponse {
+    /**
+     * The maximum http status code.
+     */
+    max?: number;
+    /**
+     * The minimum http status code.
+     */
+    min?: number;
+}
+
+/**
+ * Information regarding how the gateway should be exposed.
+ */
+export interface FrontendConfigurationResponse {
+    /**
+     * The default hostname of the data-plane gateway to which requests can be sent. This is only applicable for API gateway with Standard SKU.
+     */
+    defaultHostname: string;
+}
+
+/**
+ * Information regarding the Configuration API of the API Management gateway. This is only applicable for API gateway with Standard SKU.
+ */
+export interface GatewayConfigurationApiResponse {
+    /**
+     * Hostname to which the agent connects to propagate configuration to the cloud.
+     */
+    hostname: string;
 }
 
 /**
@@ -1011,6 +1162,7 @@ export interface X509CertificateNameResponse {
      */
     name?: string;
 }
+
 
 
 

@@ -5,7 +5,7 @@ import * as types from "./types";
  * NamedValue details.
  * Azure REST API version: 2022-09-01-preview.
  *
- * Other available API versions: 2023-03-01-preview, 2023-05-01-preview.
+ * Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview.
  */
 export class WorkspaceNamedValue extends pulumi.CustomResource {
     /**
@@ -107,7 +107,7 @@ export class WorkspaceNamedValue extends pulumi.CustomResource {
             resourceInputs["value"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20220901preview:WorkspaceNamedValue" }, { type: "azure-native:apimanagement/v20230301preview:WorkspaceNamedValue" }, { type: "azure-native:apimanagement/v20230501preview:WorkspaceNamedValue" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:apimanagement/v20220901preview:WorkspaceNamedValue" }, { type: "azure-native:apimanagement/v20230301preview:WorkspaceNamedValue" }, { type: "azure-native:apimanagement/v20230501preview:WorkspaceNamedValue" }, { type: "azure-native:apimanagement/v20230901preview:WorkspaceNamedValue" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(WorkspaceNamedValue.__pulumiType, name, resourceInputs, opts);
     }

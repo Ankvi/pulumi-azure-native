@@ -103,6 +103,28 @@ export interface MonitorPropertiesArgs {
 }
 
 /**
+ * The list of subscriptions and it's monitoring status by current Elastic monitor.
+ */
+export interface MonitoredSubscriptionArgs {
+    /**
+     * The reason of not monitoring the subscription.
+     */
+    error?: pulumi.Input<string>;
+    /**
+     * The state of monitoring.
+     */
+    status?: pulumi.Input<string | enums.Status>;
+    /**
+     * The subscriptionId to be monitored.
+     */
+    subscriptionId?: pulumi.Input<string>;
+    /**
+     * Definition of the properties for a TagRules resource.
+     */
+    tagRules?: pulumi.Input<MonitoringTagRulesPropertiesArgs>;
+}
+
+/**
  * Definition of the properties for a TagRules resource.
  */
 export interface MonitoringTagRulesPropertiesArgs {
@@ -145,6 +167,20 @@ export interface ResourceSkuArgs {
 }
 
 /**
+ * The request to update subscriptions needed to be monitored by the Elastic monitor resource.
+ */
+export interface SubscriptionListArgs {
+    /**
+     * List of subscriptions and the state of the monitoring.
+     */
+    monitoredSubscriptionList?: pulumi.Input<pulumi.Input<MonitoredSubscriptionArgs>[]>;
+    /**
+     * The operation for the patch on the resource.
+     */
+    operation?: pulumi.Input<string | enums.Operation>;
+}
+
+/**
  * User Information to be passed to partners.
  */
 export interface UserInfoArgs {
@@ -169,6 +205,7 @@ export interface UserInfoArgs {
      */
     lastName?: pulumi.Input<string>;
 }
+
 
 
 
