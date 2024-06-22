@@ -5,7 +5,7 @@ import * as types from "./types";
  * Resource representation of a workflow
  * Azure REST API version: 2022-10-11-preview.
  *
- * Other available API versions: 2023-08-01.
+ * Other available API versions: 2023-08-01, 2024-05-01-preview.
  */
 export function getWorkflow(args: GetWorkflowArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkflowResult> {
 
@@ -162,7 +162,7 @@ export interface GetWorkflowResult {
  * Resource representation of a workflow
  * Azure REST API version: 2022-10-11-preview.
  *
- * Other available API versions: 2023-08-01.
+ * Other available API versions: 2023-08-01, 2024-05-01-preview.
  */
 export function getWorkflowOutput(args: GetWorkflowOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkflowResult> {
     return pulumi.output(args).apply((a: any) => getWorkflow(a, opts))

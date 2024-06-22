@@ -11,6 +11,11 @@ export const getMonitor: typeof import("./getMonitor").getMonitor = null as any;
 export const getMonitorOutput: typeof import("./getMonitor").getMonitorOutput = null as any;
 utilities.lazyLoad(exports, ["getMonitor","getMonitorOutput"], () => require("./getMonitor"));
 
+export { GetMonitoredSubscriptionArgs, GetMonitoredSubscriptionResult, GetMonitoredSubscriptionOutputArgs } from "./getMonitoredSubscription";
+export const getMonitoredSubscription: typeof import("./getMonitoredSubscription").getMonitoredSubscription = null as any;
+export const getMonitoredSubscriptionOutput: typeof import("./getMonitoredSubscription").getMonitoredSubscriptionOutput = null as any;
+utilities.lazyLoad(exports, ["getMonitoredSubscription","getMonitoredSubscriptionOutput"], () => require("./getMonitoredSubscription"));
+
 export { GetOpenAIArgs, GetOpenAIResult, GetOpenAIOutputArgs } from "./getOpenAI";
 export const getOpenAI: typeof import("./getOpenAI").getOpenAI = null as any;
 export const getOpenAIOutput: typeof import("./getOpenAI").getOpenAIOutput = null as any;
@@ -76,6 +81,11 @@ export type Monitor = import("./monitor").Monitor;
 export const Monitor: typeof import("./monitor").Monitor = null as any;
 utilities.lazyLoad(exports, ["Monitor"], () => require("./monitor"));
 
+export { MonitoredSubscriptionArgs } from "./monitoredSubscription";
+export type MonitoredSubscription = import("./monitoredSubscription").MonitoredSubscription;
+export const MonitoredSubscription: typeof import("./monitoredSubscription").MonitoredSubscription = null as any;
+utilities.lazyLoad(exports, ["MonitoredSubscription"], () => require("./monitoredSubscription"));
+
 export { OpenAIArgs } from "./openAI";
 export type OpenAI = import("./openAI").OpenAI;
 export const OpenAI: typeof import("./openAI").OpenAI = null as any;
@@ -98,6 +108,8 @@ const _module = {
         switch (type) {
             case "azure-native:elastic:Monitor":
                 return new Monitor(name, <any>undefined, { urn })
+            case "azure-native:elastic:MonitoredSubscription":
+                return new MonitoredSubscription(name, <any>undefined, { urn })
             case "azure-native:elastic:OpenAI":
                 return new OpenAI(name, <any>undefined, { urn })
             case "azure-native:elastic:TagRule":

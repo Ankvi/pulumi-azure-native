@@ -5,7 +5,7 @@ import * as types from "./types";
  * Get a SecuritySetting
  * Azure REST API version: 2023-11-01-preview.
  *
- * Other available API versions: 2024-01-01, 2024-02-15-preview.
+ * Other available API versions: 2024-01-01, 2024-02-15-preview, 2024-04-01.
  */
 export function getSecuritySetting(args: GetSecuritySettingArgs, opts?: pulumi.InvokeOptions): Promise<GetSecuritySettingResult> {
 
@@ -69,7 +69,7 @@ export interface GetSecuritySettingResult {
  * Get a SecuritySetting
  * Azure REST API version: 2023-11-01-preview.
  *
- * Other available API versions: 2024-01-01, 2024-02-15-preview.
+ * Other available API versions: 2024-01-01, 2024-02-15-preview, 2024-04-01.
  */
 export function getSecuritySettingOutput(args: GetSecuritySettingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecuritySettingResult> {
     return pulumi.output(args).apply((a: any) => getSecuritySetting(a, opts))

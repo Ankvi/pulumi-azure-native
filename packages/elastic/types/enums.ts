@@ -17,6 +17,19 @@ export const MonitoringStatus = {
  */
 export type MonitoringStatus = (typeof MonitoringStatus)[keyof typeof MonitoringStatus];
 
+export const Operation = {
+    AddBegin: "AddBegin",
+    AddComplete: "AddComplete",
+    DeleteBegin: "DeleteBegin",
+    DeleteComplete: "DeleteComplete",
+    Active: "Active",
+} as const;
+
+/**
+ * The operation for the patch on the resource.
+ */
+export type Operation = (typeof Operation)[keyof typeof Operation];
+
 export const ProvisioningState = {
     Accepted: "Accepted",
     Creating: "Creating",
@@ -33,6 +46,18 @@ export const ProvisioningState = {
  * Provisioning state of the monitoring tag rules.
  */
 export type ProvisioningState = (typeof ProvisioningState)[keyof typeof ProvisioningState];
+
+export const Status = {
+    InProgress: "InProgress",
+    Active: "Active",
+    Failed: "Failed",
+    Deleting: "Deleting",
+} as const;
+
+/**
+ * The state of monitoring.
+ */
+export type Status = (typeof Status)[keyof typeof Status];
 
 export const TagAction = {
     Include: "Include",

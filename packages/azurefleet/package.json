@@ -1,7 +1,7 @@
 {
-    "name": "@kengachu-pulumi/azure-native-securitydevops",
-    "version": "2.42.0",
-    "description": "Pulumi Azure Native package for securitydevops",
+    "name": "@kengachu-pulumi/azure-native-azurefleet",
+    "version": "2.46.0",
+    "description": "Pulumi Azure Native package for azurefleet",
     "keywords": [
         "pulumi",
         "azure",

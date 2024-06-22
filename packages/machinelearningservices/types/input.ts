@@ -2363,6 +2363,21 @@ export interface EndpointDeploymentModelArgs {
     version?: pulumi.Input<string>;
 }
 
+export interface EndpointDeploymentResourcePropertiesArgs {
+    /**
+     * Model used for the endpoint deployment.
+     */
+    model: pulumi.Input<EndpointDeploymentModelArgs>;
+    /**
+     * The name of RAI policy.
+     */
+    raiPolicyName?: pulumi.Input<string>;
+    /**
+     * Deployment model version upgrade option.
+     */
+    versionUpgradeOption?: pulumi.Input<string | enums.DeploymentModelVersionUpgradeOption>;
+}
+
 export interface EndpointScheduleActionArgs {
     /**
      *

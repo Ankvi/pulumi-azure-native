@@ -60,17 +60,17 @@ export interface TrackingDataStoreArgs {
     /**
      * The data store ingestion URI.
      */
-    dataStoreIngestionUri: pulumi.Input<string>;
+    dataStoreIngestionUri?: pulumi.Input<string>;
     /**
      * The data store resource id.
      */
-    dataStoreResourceId: pulumi.Input<string>;
+    dataStoreResourceId?: pulumi.Input<string>;
     /**
      * The data store URI.
      */
-    dataStoreUri: pulumi.Input<string>;
+    dataStoreUri?: pulumi.Input<string>;
     /**
      * The database name.
      */
-    databaseName: pulumi.Input<string>;
+    databaseName?: pulumi.Input<string>;
 }

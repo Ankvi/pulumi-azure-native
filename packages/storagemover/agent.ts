@@ -5,7 +5,7 @@ import * as types from "./types";
  * The Agent resource.
  * Azure REST API version: 2023-03-01. Prior API version in Azure Native 1.x: 2022-07-01-preview.
  *
- * Other available API versions: 2023-07-01-preview, 2023-10-01.
+ * Other available API versions: 2023-07-01-preview, 2023-10-01, 2024-07-01.
  */
 export class Agent extends pulumi.CustomResource {
     /**
@@ -151,7 +151,7 @@ export class Agent extends pulumi.CustomResource {
             resourceInputs["uptimeInSeconds"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:storagemover/v20220701preview:Agent" }, { type: "azure-native:storagemover/v20230301:Agent" }, { type: "azure-native:storagemover/v20230701preview:Agent" }, { type: "azure-native:storagemover/v20231001:Agent" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:storagemover/v20220701preview:Agent" }, { type: "azure-native:storagemover/v20230301:Agent" }, { type: "azure-native:storagemover/v20230701preview:Agent" }, { type: "azure-native:storagemover/v20231001:Agent" }, { type: "azure-native:storagemover/v20240701:Agent" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Agent.__pulumiType, name, resourceInputs, opts);
     }

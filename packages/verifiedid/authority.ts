@@ -2,33 +2,34 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
- * Azure REST API version: 2022-09-01-preview. Prior API version in Azure Native 1.x: 2022-09-01-preview.
+ * A VerifiedId authority resource
+ * Azure REST API version: 2024-01-26-preview.
  */
-export class AzureDevOpsConnector extends pulumi.CustomResource {
+export class Authority extends pulumi.CustomResource {
     /**
-     * Get an existing AzureDevOpsConnector resource's state with the given name, ID, and optional extra
+     * Get an existing Authority resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, opts?: pulumi.CustomResourceOptions): AzureDevOpsConnector {
-        return new AzureDevOpsConnector(name, undefined as any, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, opts?: pulumi.CustomResourceOptions): Authority {
+        return new Authority(name, undefined as any, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'azure-native:securitydevops:AzureDevOpsConnector';
+    public static readonly __pulumiType = 'azure-native:verifiedid:Authority';
 
     /**
-     * Returns true if the given object is an instance of AzureDevOpsConnector.  This is designed to work even
+     * Returns true if the given object is an instance of Authority.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is AzureDevOpsConnector {
+    public static isInstance(obj: any): obj is Authority {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === AzureDevOpsConnector.__pulumiType;
+        return obj['__pulumiType'] === Authority.__pulumiType;
     }
 
     /**
@@ -39,7 +40,10 @@ export class AzureDevOpsConnector extends pulumi.CustomResource {
      * The name of the resource
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
-    public readonly properties!: pulumi.Output<types.outputs.AzureDevOpsConnectorPropertiesResponse>;
+    /**
+     * The status of the last operation.
+     */
+    public /*out*/ readonly provisioningState!: pulumi.Output<string>;
     /**
      * Azure Resource Manager metadata containing createdBy and modifiedBy information.
      */
@@ -54,55 +58,54 @@ export class AzureDevOpsConnector extends pulumi.CustomResource {
     public /*out*/ readonly type!: pulumi.Output<string>;
 
     /**
-     * Create a AzureDevOpsConnector resource with the given unique name, arguments, and options.
+     * Create a Authority resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: AzureDevOpsConnectorArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: AuthorityArgs, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
             if ((!args || args.resourceGroupName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resourceGroupName'");
             }
-            resourceInputs["azureDevOpsConnectorName"] = args ? args.azureDevOpsConnectorName : undefined;
+            resourceInputs["authorityName"] = args ? args.authorityName : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
-            resourceInputs["properties"] = args ? args.properties : undefined;
             resourceInputs["resourceGroupName"] = args ? args.resourceGroupName : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
-            resourceInputs["properties"] = undefined /*out*/;
+            resourceInputs["provisioningState"] = undefined /*out*/;
             resourceInputs["systemData"] = undefined /*out*/;
             resourceInputs["tags"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:securitydevops/v20220901preview:AzureDevOpsConnector" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:verifiedid/v20240126preview:Authority" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
-        super(AzureDevOpsConnector.__pulumiType, name, resourceInputs, opts);
+        super(Authority.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * The set of arguments for constructing a AzureDevOpsConnector resource.
+ * The set of arguments for constructing a Authority resource.
  */
-export interface AzureDevOpsConnectorArgs {
+export interface AuthorityArgs {
     /**
-     * Name of the AzureDevOps Connector.
+     * The ID of the authority
      */
-    azureDevOpsConnectorName?: pulumi.Input<string>;
+    authorityName?: pulumi.Input<string>;
     /**
      * The geo-location where the resource lives
      */
     location?: pulumi.Input<string>;
-    properties?: pulumi.Input<types.inputs.AzureDevOpsConnectorPropertiesArgs>;
     /**
      * The name of the resource group. The name is case insensitive.
      */

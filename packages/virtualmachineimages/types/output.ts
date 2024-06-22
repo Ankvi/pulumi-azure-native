@@ -778,3 +778,4 @@ export function virtualNetworkConfigResponseProvideDefaults(val: VirtualNetworkC
     };
 }
 
+

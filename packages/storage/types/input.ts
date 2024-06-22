@@ -409,7 +409,7 @@ export interface ExecutionTargetArgs {
     /**
      * Required list of object prefixes to be included for task execution
      */
-    prefix: pulumi.Input<pulumi.Input<string>[]>;
+    prefix?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -974,7 +974,7 @@ export interface StorageTaskAssignmentExecutionContextArgs {
     /**
      * Execution target of the storage task assignment
      */
-    target: pulumi.Input<ExecutionTargetArgs>;
+    target?: pulumi.Input<ExecutionTargetArgs>;
     /**
      * Execution trigger of the storage task assignment
      */

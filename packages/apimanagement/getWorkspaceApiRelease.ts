@@ -4,7 +4,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Returns the details of an API release.
  * Azure REST API version: 2022-09-01-preview.
  *
- * Other available API versions: 2023-03-01-preview, 2023-05-01-preview.
+ * Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview.
  */
 export function getWorkspaceApiRelease(args: GetWorkspaceApiReleaseArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkspaceApiReleaseResult> {
 
@@ -78,7 +78,7 @@ export interface GetWorkspaceApiReleaseResult {
  * Returns the details of an API release.
  * Azure REST API version: 2022-09-01-preview.
  *
- * Other available API versions: 2023-03-01-preview, 2023-05-01-preview.
+ * Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview.
  */
 export function getWorkspaceApiReleaseOutput(args: GetWorkspaceApiReleaseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkspaceApiReleaseResult> {
     return pulumi.output(args).apply((a: any) => getWorkspaceApiRelease(a, opts))

@@ -91,6 +91,22 @@ export const BackendProtocol = {
  */
 export type BackendProtocol = (typeof BackendProtocol)[keyof typeof BackendProtocol];
 
+export const BackendType = {
+    /**
+     * supports single backend
+     */
+    Single: "Single",
+    /**
+     * supports pool backend
+     */
+    Pool: "Pool",
+} as const;
+
+/**
+ * Type of the backend. A backend can be either Single or Pool.
+ */
+export type BackendType = (typeof BackendType)[keyof typeof BackendType];
+
 export const BearerTokenSendingMethod = {
     AuthorizationHeader: "authorizationHeader",
     Query: "query",

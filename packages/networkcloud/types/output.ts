@@ -256,6 +256,59 @@ export interface ClusterCapacityResponse {
     totalMemoryGB?: number;
 }
 
+export interface ClusterSecretArchiveResponse {
+    /**
+     * The resource ID of the key vault to archive the secrets of the cluster.
+     */
+    keyVaultId: string;
+    /**
+     * The indicator if the specified key vault should be used to archive the secrets of the cluster.
+     */
+    useKeyVault?: string;
+}
+/**
+ * clusterSecretArchiveResponseProvideDefaults sets the appropriate defaults for ClusterSecretArchiveResponse
+ */
+export function clusterSecretArchiveResponseProvideDefaults(val: ClusterSecretArchiveResponse): ClusterSecretArchiveResponse {
+    return {
+        ...val,
+        useKeyVault: (val.useKeyVault) ?? "False",
+    };
+}
+
+export interface ClusterUpdateStrategyResponse {
+    /**
+     * The maximum number of worker nodes that can be offline within the increment of update, e.g., rack-by-rack.
+     * Limited by the maximum number of machines in the increment. Defaults to the whole increment size.
+     */
+    maxUnavailable?: number;
+    /**
+     * The mode of operation for runtime protection.
+     */
+    strategyType: string;
+    /**
+     * Selection of how the threshold should be evaluated.
+     */
+    thresholdType: string;
+    /**
+     * The numeric threshold value.
+     */
+    thresholdValue: number;
+    /**
+     * The time to wait between the increments of update defined by the strategy.
+     */
+    waitTimeMinutes?: number;
+}
+/**
+ * clusterUpdateStrategyResponseProvideDefaults sets the appropriate defaults for ClusterUpdateStrategyResponse
+ */
+export function clusterUpdateStrategyResponseProvideDefaults(val: ClusterUpdateStrategyResponse): ClusterUpdateStrategyResponse {
+    return {
+        ...val,
+        waitTimeMinutes: (val.waitTimeMinutes) ?? 15,
+    };
+}
+
 export interface ControlPlaneNodeConfigurationResponse {
     /**
      * The administrator credentials to be used for the nodes in the control plane.
@@ -486,6 +539,10 @@ export interface KeySetUserResponse {
      * The SSH public key that will be provisioned for user access. The user is expected to have the corresponding SSH private key for logging in.
      */
     sshPublicKey: SshPublicKeyResponse;
+    /**
+     * The user principal name (email format) used to validate this user's group membership.
+     */
+    userPrincipalName?: string;
 }
 
 export interface KeySetUserStatusResponse {
@@ -827,6 +884,45 @@ export interface RackDefinitionResponse {
     storageApplianceConfigurationData?: StorageApplianceConfigurationDataResponse[];
 }
 
+export interface RuntimeProtectionConfigurationResponse {
+    /**
+     * The mode of operation for runtime protection.
+     */
+    enforcementLevel?: string;
+}
+/**
+ * runtimeProtectionConfigurationResponseProvideDefaults sets the appropriate defaults for RuntimeProtectionConfigurationResponse
+ */
+export function runtimeProtectionConfigurationResponseProvideDefaults(val: RuntimeProtectionConfigurationResponse): RuntimeProtectionConfigurationResponse {
+    return {
+        ...val,
+        enforcementLevel: (val.enforcementLevel) ?? "Disabled",
+    };
+}
+
+export interface RuntimeProtectionStatusResponse {
+    /**
+     * The timestamp when the malware definitions were last updated.
+     */
+    definitionsLastUpdated: string;
+    /**
+     * The version of the malware definitions.
+     */
+    definitionsVersion: string;
+    /**
+     * The timestamp of the most recently completed scan, or empty if there has never been a scan.
+     */
+    scanCompletedTime: string;
+    /**
+     * The timestamp of the most recently scheduled scan, or empty if no scan has been scheduled.
+     */
+    scanScheduledTime: string;
+    /**
+     * The timestamp of the most recently started scan, or empty if there has never been a scan.
+     */
+    scanStartedTime: string;
+}
+
 export interface ServiceLoadBalancerBgpPeerResponse {
     /**
      * The indicator of BFD enablement for this BgpPeer.
@@ -1025,5 +1121,4 @@ export interface VirtualMachinePlacementHintResponse {
      */
     scope: string;
 }
-
 

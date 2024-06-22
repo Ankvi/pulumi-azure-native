@@ -5,7 +5,7 @@ import * as types from "./types";
  * Get a custom certificate.
  * Azure REST API version: 2023-02-01.
  *
- * Other available API versions: 2023-03-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2024-01-01-preview.
+ * Other available API versions: 2023-03-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2024-01-01-preview, 2024-03-01.
  */
 export function getWebPubSubCustomCertificate(args: GetWebPubSubCustomCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetWebPubSubCustomCertificateResult> {
 
@@ -73,7 +73,7 @@ export interface GetWebPubSubCustomCertificateResult {
  * Get a custom certificate.
  * Azure REST API version: 2023-02-01.
  *
- * Other available API versions: 2023-03-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2024-01-01-preview.
+ * Other available API versions: 2023-03-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2024-01-01-preview, 2024-03-01.
  */
 export function getWebPubSubCustomCertificateOutput(args: GetWebPubSubCustomCertificateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebPubSubCustomCertificateResult> {
     return pulumi.output(args).apply((a: any) => getWebPubSubCustomCertificate(a, opts))

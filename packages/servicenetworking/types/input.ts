@@ -10,4 +10,15 @@ export interface AssociationSubnetArgs {
     id: pulumi.Input<string>;
 }
 
+/**
+ * Web Application Firewall Policy
+ */
+export interface WafPolicyArgs {
+    /**
+     * Resource ID of the WAF
+     */
+    id: pulumi.Input<string>;
+}
+
+
 

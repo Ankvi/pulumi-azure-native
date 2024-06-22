@@ -513,7 +513,7 @@ export interface ExecutionTargetResponse {
     /**
      * Required list of object prefixes to be included for task execution
      */
-    prefix: string[];
+    prefix?: string[];
 }
 
 /**
@@ -1342,7 +1342,7 @@ export interface StorageTaskAssignmentExecutionContextResponse {
     /**
      * Execution target of the storage task assignment
      */
-    target: ExecutionTargetResponse;
+    target?: ExecutionTargetResponse;
     /**
      * Execution trigger of the storage task assignment
      */

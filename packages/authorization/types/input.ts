@@ -259,6 +259,10 @@ export interface PolicyDefinitionGroupArgs {
  */
 export interface PolicyDefinitionReferenceArgs {
     /**
+     * The version of the policy definition to use.
+     */
+    definitionVersion?: pulumi.Input<string>;
+    /**
      * The name of the groups that this policy definition reference belongs to.
      */
     groupNames?: pulumi.Input<pulumi.Input<string>[]>;

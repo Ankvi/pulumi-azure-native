@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * A class represent an AppComplianceAutomation report resource.
  * Azure REST API version: 2022-11-16-preview. Prior API version in Azure Native 1.x: 2022-11-16-preview.
+ *
+ * Other available API versions: 2024-06-27.
  */
 export class Report extends pulumi.CustomResource {
     /**
@@ -75,7 +77,7 @@ export class Report extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:appcomplianceautomation/v20221116preview:Report" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:appcomplianceautomation/v20221116preview:Report" }, { type: "azure-native:appcomplianceautomation/v20240627:Report" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Report.__pulumiType, name, resourceInputs, opts);
     }

@@ -1495,6 +1495,70 @@ export interface DevOpsConfigurationPropertiesResponse {
 }
 
 /**
+ * Properties of the DevOps policy assignment resource.
+ */
+export interface DevOpsPolicyAssignmentPropertiesResponse {
+    /**
+     * Gets or sets time when the assignment was created in UTC.
+     */
+    assignedAt?: string;
+    /**
+     * The behavior of a policy on descendant resources.
+     */
+    descendantBehavior?: string;
+    /**
+     * Condensed information to identify a DevOps Policy resource.
+     */
+    policy?: DevOpsPolicyDescriptorResponse;
+    /**
+     * The provisioning state of the resource.
+     * 
+     * Pending - Provisioning pending.
+     * Failed - Provisioning failed.
+     * Succeeded - Successful provisioning.
+     * Canceled - Provisioning canceled.
+     * PendingDeletion - Deletion pending.
+     * DeletionSuccess - Deletion successful.
+     * DeletionFailure - Deletion failure.
+     */
+    provisioningState: string;
+    /**
+     * Gets the resource status message.
+     */
+    provisioningStatusMessage: string;
+    /**
+     * Gets the time when resource was last checked.
+     */
+    provisioningStatusUpdateTimeUtc: string;
+    /**
+     * Gets or sets the Azure resource id.
+     */
+    resourceId?: string;
+}
+
+/**
+ * Condensed information to identify a DevOps Policy resource.
+ */
+export interface DevOpsPolicyDescriptorResponse {
+    /**
+     * Gets or sets the policy GUID.
+     */
+    policyId?: string;
+    /**
+     * Gets or sets the policy name.
+     */
+    policyName?: string;
+    /**
+     * DevOps Policy resource types.
+     */
+    policyType?: string;
+    /**
+     * Gets or sets the version.
+     */
+    policyVersion?: string;
+}
+
+/**
  * A plan's extension properties
  */
 export interface ExtensionResponse {
@@ -2654,6 +2718,7 @@ export interface VmRecommendationResponse {
      */
     resourceId?: string;
 }
+
 
 
 

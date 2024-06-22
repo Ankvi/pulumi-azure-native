@@ -328,6 +328,28 @@ export interface MonitoredResourceResponse {
 }
 
 /**
+ * The list of subscriptions and it's monitoring status by current Elastic monitor.
+ */
+export interface MonitoredSubscriptionResponse {
+    /**
+     * The reason of not monitoring the subscription.
+     */
+    error?: string;
+    /**
+     * The state of monitoring.
+     */
+    status?: string;
+    /**
+     * The subscriptionId to be monitored.
+     */
+    subscriptionId?: string;
+    /**
+     * Definition of the properties for a TagRules resource.
+     */
+    tagRules?: MonitoringTagRulesPropertiesResponse;
+}
+
+/**
  * Definition of the properties for a TagRules resource.
  */
 export interface MonitoringTagRulesPropertiesResponse {
@@ -402,6 +424,20 @@ export interface ResourceSkuResponse {
 }
 
 /**
+ * The request to update subscriptions needed to be monitored by the Elastic monitor resource.
+ */
+export interface SubscriptionListResponse {
+    /**
+     * List of subscriptions and the state of the monitoring.
+     */
+    monitoredSubscriptionList?: MonitoredSubscriptionResponse[];
+    /**
+     * Provisioning State of the resource
+     */
+    provisioningState: string;
+}
+
+/**
  * Metadata pertaining to creation and last modification of the resource.
  */
 export interface SystemDataResponse {
@@ -447,6 +483,7 @@ export interface VMResourcesResponse {
      */
     vmResourceId?: string;
 }
+
 
 
 

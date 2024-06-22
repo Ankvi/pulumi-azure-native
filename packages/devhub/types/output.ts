@@ -56,6 +56,60 @@ export interface GitHubWorkflowProfileResponseOidcCredentials {
     azureTenantId?: string;
 }
 
+export interface IacTemplateDetailsResponse {
+    /**
+     * Count of the product
+     */
+    count?: number;
+    /**
+     * Naming convention of this product
+     */
+    namingConvention?: string;
+    /**
+     * The name of the products.
+     */
+    productName?: string;
+}
+
+/**
+ * Properties of a IacTemplate.
+ */
+export interface IacTemplatePropertiesResponse {
+    /**
+     * the sample instance name of the template
+     */
+    instanceName?: string;
+    /**
+     * the source stage of the template
+     */
+    instanceStage?: string;
+    /**
+     * Determines the authorization status of requests.
+     */
+    quickStartTemplateType: string;
+    /**
+     * the source store of the template
+     */
+    sourceResourceId?: string;
+    templateDetails?: IacTemplateDetailsResponse[];
+    /**
+     * Template Name
+     */
+    templateName?: string;
+}
+
+/**
+ * Properties of a Stage.
+ */
+export interface StagePropertiesResponse {
+    dependencies?: string[];
+    gitEnvironment?: string;
+    /**
+     * Stage Name
+     */
+    stageName?: string;
+}
+
 /**
  * Metadata pertaining to creation and last modification of the resource.
  */
@@ -104,4 +158,5 @@ export interface WorkflowRunResponse {
      */
     workflowRunURL: string;
 }
+
 

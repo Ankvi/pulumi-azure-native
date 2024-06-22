@@ -5,7 +5,7 @@ import * as types from "./types";
  * Get an VolumeGroups.
  * Azure REST API version: 2021-11-20-preview.
  *
- * Other available API versions: 2022-12-01-preview, 2023-01-01.
+ * Other available API versions: 2022-12-01-preview, 2023-01-01, 2024-05-01.
  */
 export function getVolumeGroup(args: GetVolumeGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetVolumeGroupResult> {
 
@@ -77,7 +77,7 @@ export interface GetVolumeGroupResult {
  * Get an VolumeGroups.
  * Azure REST API version: 2021-11-20-preview.
  *
- * Other available API versions: 2022-12-01-preview, 2023-01-01.
+ * Other available API versions: 2022-12-01-preview, 2023-01-01, 2024-05-01.
  */
 export function getVolumeGroupOutput(args: GetVolumeGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVolumeGroupResult> {
     return pulumi.output(args).apply((a: any) => getVolumeGroup(a, opts))

@@ -168,6 +168,59 @@ export function bgpServiceLoadBalancerConfigurationArgsProvideDefaults(val: BgpS
     };
 }
 
+export interface ClusterSecretArchiveArgs {
+    /**
+     * The resource ID of the key vault to archive the secrets of the cluster.
+     */
+    keyVaultId: pulumi.Input<string>;
+    /**
+     * The indicator if the specified key vault should be used to archive the secrets of the cluster.
+     */
+    useKeyVault?: pulumi.Input<string | enums.ClusterSecretArchiveEnabled>;
+}
+/**
+ * clusterSecretArchiveArgsProvideDefaults sets the appropriate defaults for ClusterSecretArchiveArgs
+ */
+export function clusterSecretArchiveArgsProvideDefaults(val: ClusterSecretArchiveArgs): ClusterSecretArchiveArgs {
+    return {
+        ...val,
+        useKeyVault: (val.useKeyVault) ?? "False",
+    };
+}
+
+export interface ClusterUpdateStrategyArgs {
+    /**
+     * The maximum number of worker nodes that can be offline within the increment of update, e.g., rack-by-rack.
+     * Limited by the maximum number of machines in the increment. Defaults to the whole increment size.
+     */
+    maxUnavailable?: pulumi.Input<number>;
+    /**
+     * The mode of operation for runtime protection.
+     */
+    strategyType: pulumi.Input<string | enums.ClusterUpdateStrategyType>;
+    /**
+     * Selection of how the threshold should be evaluated.
+     */
+    thresholdType: pulumi.Input<string | enums.ValidationThresholdType>;
+    /**
+     * The numeric threshold value.
+     */
+    thresholdValue: pulumi.Input<number>;
+    /**
+     * The time to wait between the increments of update defined by the strategy.
+     */
+    waitTimeMinutes?: pulumi.Input<number>;
+}
+/**
+ * clusterUpdateStrategyArgsProvideDefaults sets the appropriate defaults for ClusterUpdateStrategyArgs
+ */
+export function clusterUpdateStrategyArgsProvideDefaults(val: ClusterUpdateStrategyArgs): ClusterUpdateStrategyArgs {
+    return {
+        ...val,
+        waitTimeMinutes: (val.waitTimeMinutes) ?? 15,
+    };
+}
+
 export interface ControlPlaneNodeConfigurationArgs {
     /**
      * The administrator credentials to be used for the nodes in the control plane.
@@ -334,6 +387,10 @@ export interface KeySetUserArgs {
      * The SSH public key that will be provisioned for user access. The user is expected to have the corresponding SSH private key for logging in.
      */
     sshPublicKey: pulumi.Input<SshPublicKeyArgs>;
+    /**
+     * The user principal name (email format) used to validate this user's group membership.
+     */
+    userPrincipalName?: pulumi.Input<string>;
 }
 
 export interface KubernetesLabelArgs {
@@ -547,6 +604,22 @@ export interface RackDefinitionArgs {
     storageApplianceConfigurationData?: pulumi.Input<pulumi.Input<StorageApplianceConfigurationDataArgs>[]>;
 }
 
+export interface RuntimeProtectionConfigurationArgs {
+    /**
+     * The mode of operation for runtime protection.
+     */
+    enforcementLevel?: pulumi.Input<string | enums.RuntimeProtectionEnforcementLevel>;
+}
+/**
+ * runtimeProtectionConfigurationArgsProvideDefaults sets the appropriate defaults for RuntimeProtectionConfigurationArgs
+ */
+export function runtimeProtectionConfigurationArgsProvideDefaults(val: RuntimeProtectionConfigurationArgs): RuntimeProtectionConfigurationArgs {
+    return {
+        ...val,
+        enforcementLevel: (val.enforcementLevel) ?? "Disabled",
+    };
+}
+
 export interface ServiceLoadBalancerBgpPeerArgs {
     /**
      * The indicator of BFD enablement for this BgpPeer.
@@ -719,5 +792,4 @@ export interface VirtualMachinePlacementHintArgs {
      */
     scope: pulumi.Input<string | enums.VirtualMachinePlacementHintPodAffinityScope>;
 }
-
 

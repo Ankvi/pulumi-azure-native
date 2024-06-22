@@ -3635,6 +3635,25 @@ export interface EndpointDeploymentModelResponse {
     version?: string;
 }
 
+export interface EndpointDeploymentResourcePropertiesResponse {
+    /**
+     * Model used for the endpoint deployment.
+     */
+    model: EndpointDeploymentModelResponse;
+    /**
+     * Read-only provision state status property.
+     */
+    provisioningState: string;
+    /**
+     * The name of RAI policy.
+     */
+    raiPolicyName?: string;
+    /**
+     * Deployment model version upgrade option.
+     */
+    versionUpgradeOption?: string;
+}
+
 /**
  * Describes the endpoint configuration for the container
  */
