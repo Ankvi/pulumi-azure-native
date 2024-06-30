@@ -1,6 +1,20 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
+ * A name/value pair to describe a capability.
+ */
+export interface CapabilityResponse {
+    /**
+     * Name of the capability.
+     */
+    name: string;
+    /**
+     * Value of the capability.
+     */
+    value: string;
+}
+
+/**
  * An individual conflict error.
  */
 export interface CatalogConflictErrorResponse {
@@ -50,6 +64,44 @@ export interface DevCenterProjectCatalogSettingsResponse {
      * Whether project catalogs associated with projects in this dev center can be configured to sync catalog items.
      */
     catalogItemSyncEnableStatus?: string;
+}
+
+/**
+ * The resource model definition representing SKU for DevCenter resources
+ */
+export interface DevCenterSkuResponse {
+    /**
+     * Collection of name/value pairs to describe the SKU capabilities.
+     */
+    capabilities: CapabilityResponse[];
+    /**
+     * If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+     */
+    capacity?: number;
+    /**
+     * If the service has different generations of hardware, for the same SKU, then that can be captured here.
+     */
+    family?: string;
+    /**
+     * SKU supported locations.
+     */
+    locations: string[];
+    /**
+     * The name of the SKU. E.g. P3. It is typically a letter+number code
+     */
+    name: string;
+    /**
+     * The name of the resource type
+     */
+    resourceType: string;
+    /**
+     * The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code. 
+     */
+    size?: string;
+    /**
+     * This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+     */
+    tier?: string;
 }
 
 /**
@@ -299,6 +351,7 @@ export interface UserRoleAssignmentResponse {
      */
     roles?: {[key: string]: EnvironmentRoleResponse};
 }
+
 
 
 

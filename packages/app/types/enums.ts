@@ -58,6 +58,16 @@ export const ClientCredentialMethod = {
  */
 export type ClientCredentialMethod = (typeof ClientCredentialMethod)[keyof typeof ClientCredentialMethod];
 
+export const ContainerType = {
+    CustomContainer: "CustomContainer",
+    PythonLTS: "PythonLTS",
+} as const;
+
+/**
+ * The container type of the sessions.
+ */
+export type ContainerType = (typeof ContainerType)[keyof typeof ContainerType];
+
 export const CookieExpirationConvention = {
     FixedTime: "FixedTime",
     IdentityProviderDerived: "IdentityProviderDerived",
@@ -77,6 +87,15 @@ export const DotNetComponentType = {
  * Type of the .NET Component.
  */
 export type DotNetComponentType = (typeof DotNetComponentType)[keyof typeof DotNetComponentType];
+
+export const ExecutionType = {
+    Timed: "Timed",
+} as const;
+
+/**
+ * The execution type of the session pool.
+ */
+export type ExecutionType = (typeof ExecutionType)[keyof typeof ExecutionType];
 
 export const ExtendedLocationTypes = {
     CustomLocation: "CustomLocation",
@@ -177,6 +196,28 @@ export const ManagedServiceIdentityType = {
  */
 export type ManagedServiceIdentityType = (typeof ManagedServiceIdentityType)[keyof typeof ManagedServiceIdentityType];
 
+export const PoolManagementType = {
+    Manual: "Manual",
+    Dynamic: "Dynamic",
+} as const;
+
+/**
+ * The pool management type of the session pool.
+ */
+export type PoolManagementType = (typeof PoolManagementType)[keyof typeof PoolManagementType];
+
+export const PrivateEndpointServiceConnectionStatus = {
+    Pending: "Pending",
+    Approved: "Approved",
+    Rejected: "Rejected",
+    Disconnected: "Disconnected",
+} as const;
+
+/**
+ * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+ */
+export type PrivateEndpointServiceConnectionStatus = (typeof PrivateEndpointServiceConnectionStatus)[keyof typeof PrivateEndpointServiceConnectionStatus];
+
 export const Scheme = {
     HTTP: "HTTP",
     HTTPS: "HTTPS",
@@ -186,6 +227,16 @@ export const Scheme = {
  * Scheme to use for connecting to the host. Defaults to HTTP.
  */
 export type Scheme = (typeof Scheme)[keyof typeof Scheme];
+
+export const SessionNetworkStatus = {
+    EgressEnabled: "EgressEnabled",
+    EgressDisabled: "EgressDisabled",
+} as const;
+
+/**
+ * Network status for the sessions.
+ */
+export type SessionNetworkStatus = (typeof SessionNetworkStatus)[keyof typeof SessionNetworkStatus];
 
 export const SkuName = {
     /**

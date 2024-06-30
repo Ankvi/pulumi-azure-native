@@ -1,0 +1,83 @@
+import * as pulumi from "@pulumi/pulumi";
+import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
+import * as types from "./types";
+/**
+ * Workflow properties definition.
+ * Azure REST API version: 2024-02-02-preview.
+ */
+export function listLogicAppWorkflowsConnections(args: ListLogicAppWorkflowsConnectionsArgs, opts?: pulumi.InvokeOptions): Promise<ListLogicAppWorkflowsConnectionsResult> {
+
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invoke("azure-native:app:listLogicAppWorkflowsConnections", {
+        "containerAppName": args.containerAppName,
+        "logicAppName": args.logicAppName,
+        "resourceGroupName": args.resourceGroupName,
+    }, opts);
+}
+
+export interface ListLogicAppWorkflowsConnectionsArgs {
+    /**
+     * Name of the Container App.
+     */
+    containerAppName: string;
+    /**
+     * Name of the Logic App, the extension resource.
+     */
+    logicAppName: string;
+    /**
+     * The name of the resource group. The name is case insensitive.
+     */
+    resourceGroupName: string;
+}
+
+/**
+ * Workflow properties definition.
+ */
+export interface ListLogicAppWorkflowsConnectionsResult {
+    /**
+     * The resource id.
+     */
+    readonly id: string;
+    /**
+     * The resource kind.
+     */
+    readonly kind?: string;
+    /**
+     * The resource location.
+     */
+    readonly location?: string;
+    /**
+     * Gets the resource name.
+     */
+    readonly name: string;
+    /**
+     * Additional workflow properties.
+     */
+    readonly properties: types.outputs.WorkflowEnvelopeResponseProperties;
+    /**
+     * Gets the resource type.
+     */
+    readonly type: string;
+}
+/**
+ * Workflow properties definition.
+ * Azure REST API version: 2024-02-02-preview.
+ */
+export function listLogicAppWorkflowsConnectionsOutput(args: ListLogicAppWorkflowsConnectionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListLogicAppWorkflowsConnectionsResult> {
+    return pulumi.output(args).apply((a: any) => listLogicAppWorkflowsConnections(a, opts))
+}
+
+export interface ListLogicAppWorkflowsConnectionsOutputArgs {
+    /**
+     * Name of the Container App.
+     */
+    containerAppName: pulumi.Input<string>;
+    /**
+     * Name of the Logic App, the extension resource.
+     */
+    logicAppName: pulumi.Input<string>;
+    /**
+     * The name of the resource group. The name is case insensitive.
+     */
+    resourceGroupName: pulumi.Input<string>;
+}

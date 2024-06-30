@@ -51,6 +51,11 @@ export type ContainerAppsAuthConfig = import("./containerAppsAuthConfig").Contai
 export const ContainerAppsAuthConfig: typeof import("./containerAppsAuthConfig").ContainerAppsAuthConfig = null as any;
 utilities.lazyLoad(exports, ["ContainerAppsAuthConfig"], () => require("./containerAppsAuthConfig"));
 
+export { ContainerAppsSessionPoolArgs } from "./containerAppsSessionPool";
+export type ContainerAppsSessionPool = import("./containerAppsSessionPool").ContainerAppsSessionPool;
+export const ContainerAppsSessionPool: typeof import("./containerAppsSessionPool").ContainerAppsSessionPool = null as any;
+utilities.lazyLoad(exports, ["ContainerAppsSessionPool"], () => require("./containerAppsSessionPool"));
+
 export { ContainerAppsSourceControlArgs } from "./containerAppsSourceControl";
 export type ContainerAppsSourceControl = import("./containerAppsSourceControl").ContainerAppsSourceControl;
 export const ContainerAppsSourceControl: typeof import("./containerAppsSourceControl").ContainerAppsSourceControl = null as any;
@@ -131,6 +136,11 @@ export const getContainerAppsAuthConfig: typeof import("./getContainerAppsAuthCo
 export const getContainerAppsAuthConfigOutput: typeof import("./getContainerAppsAuthConfig").getContainerAppsAuthConfigOutput = null as any;
 utilities.lazyLoad(exports, ["getContainerAppsAuthConfig","getContainerAppsAuthConfigOutput"], () => require("./getContainerAppsAuthConfig"));
 
+export { GetContainerAppsSessionPoolArgs, GetContainerAppsSessionPoolResult, GetContainerAppsSessionPoolOutputArgs } from "./getContainerAppsSessionPool";
+export const getContainerAppsSessionPool: typeof import("./getContainerAppsSessionPool").getContainerAppsSessionPool = null as any;
+export const getContainerAppsSessionPoolOutput: typeof import("./getContainerAppsSessionPool").getContainerAppsSessionPoolOutput = null as any;
+utilities.lazyLoad(exports, ["getContainerAppsSessionPool","getContainerAppsSessionPoolOutput"], () => require("./getContainerAppsSessionPool"));
+
 export { GetContainerAppsSourceControlArgs, GetContainerAppsSourceControlResult, GetContainerAppsSourceControlOutputArgs } from "./getContainerAppsSourceControl";
 export const getContainerAppsSourceControl: typeof import("./getContainerAppsSourceControl").getContainerAppsSourceControl = null as any;
 export const getContainerAppsSourceControlOutput: typeof import("./getContainerAppsSourceControl").getContainerAppsSourceControlOutput = null as any;
@@ -171,6 +181,11 @@ export const getJob: typeof import("./getJob").getJob = null as any;
 export const getJobOutput: typeof import("./getJob").getJobOutput = null as any;
 utilities.lazyLoad(exports, ["getJob","getJobOutput"], () => require("./getJob"));
 
+export { GetLogicAppArgs, GetLogicAppResult, GetLogicAppOutputArgs } from "./getLogicApp";
+export const getLogicApp: typeof import("./getLogicApp").getLogicApp = null as any;
+export const getLogicAppOutput: typeof import("./getLogicApp").getLogicAppOutput = null as any;
+utilities.lazyLoad(exports, ["getLogicApp","getLogicAppOutput"], () => require("./getLogicApp"));
+
 export { GetManagedCertificateArgs, GetManagedCertificateResult, GetManagedCertificateOutputArgs } from "./getManagedCertificate";
 export const getManagedCertificate: typeof import("./getManagedCertificate").getManagedCertificate = null as any;
 export const getManagedCertificateOutput: typeof import("./getManagedCertificate").getManagedCertificateOutput = null as any;
@@ -185,6 +200,11 @@ export { GetManagedEnvironmentAuthTokenArgs, GetManagedEnvironmentAuthTokenResul
 export const getManagedEnvironmentAuthToken: typeof import("./getManagedEnvironmentAuthToken").getManagedEnvironmentAuthToken = null as any;
 export const getManagedEnvironmentAuthTokenOutput: typeof import("./getManagedEnvironmentAuthToken").getManagedEnvironmentAuthTokenOutput = null as any;
 utilities.lazyLoad(exports, ["getManagedEnvironmentAuthToken","getManagedEnvironmentAuthTokenOutput"], () => require("./getManagedEnvironmentAuthToken"));
+
+export { GetManagedEnvironmentPrivateEndpointConnectionArgs, GetManagedEnvironmentPrivateEndpointConnectionResult, GetManagedEnvironmentPrivateEndpointConnectionOutputArgs } from "./getManagedEnvironmentPrivateEndpointConnection";
+export const getManagedEnvironmentPrivateEndpointConnection: typeof import("./getManagedEnvironmentPrivateEndpointConnection").getManagedEnvironmentPrivateEndpointConnection = null as any;
+export const getManagedEnvironmentPrivateEndpointConnectionOutput: typeof import("./getManagedEnvironmentPrivateEndpointConnection").getManagedEnvironmentPrivateEndpointConnectionOutput = null as any;
+utilities.lazyLoad(exports, ["getManagedEnvironmentPrivateEndpointConnection","getManagedEnvironmentPrivateEndpointConnectionOutput"], () => require("./getManagedEnvironmentPrivateEndpointConnection"));
 
 export { GetManagedEnvironmentsStorageArgs, GetManagedEnvironmentsStorageResult, GetManagedEnvironmentsStorageOutputArgs } from "./getManagedEnvironmentsStorage";
 export const getManagedEnvironmentsStorage: typeof import("./getManagedEnvironmentsStorage").getManagedEnvironmentsStorage = null as any;
@@ -231,6 +251,16 @@ export const listJobSecrets: typeof import("./listJobSecrets").listJobSecrets = 
 export const listJobSecretsOutput: typeof import("./listJobSecrets").listJobSecretsOutput = null as any;
 utilities.lazyLoad(exports, ["listJobSecrets","listJobSecretsOutput"], () => require("./listJobSecrets"));
 
+export { ListLogicAppWorkflowsConnectionsArgs, ListLogicAppWorkflowsConnectionsResult, ListLogicAppWorkflowsConnectionsOutputArgs } from "./listLogicAppWorkflowsConnections";
+export const listLogicAppWorkflowsConnections: typeof import("./listLogicAppWorkflowsConnections").listLogicAppWorkflowsConnections = null as any;
+export const listLogicAppWorkflowsConnectionsOutput: typeof import("./listLogicAppWorkflowsConnections").listLogicAppWorkflowsConnectionsOutput = null as any;
+utilities.lazyLoad(exports, ["listLogicAppWorkflowsConnections","listLogicAppWorkflowsConnectionsOutput"], () => require("./listLogicAppWorkflowsConnections"));
+
+export { LogicAppArgs } from "./logicApp";
+export type LogicApp = import("./logicApp").LogicApp;
+export const LogicApp: typeof import("./logicApp").LogicApp = null as any;
+utilities.lazyLoad(exports, ["LogicApp"], () => require("./logicApp"));
+
 export { ManagedCertificateArgs } from "./managedCertificate";
 export type ManagedCertificate = import("./managedCertificate").ManagedCertificate;
 export const ManagedCertificate: typeof import("./managedCertificate").ManagedCertificate = null as any;
@@ -240,6 +270,11 @@ export { ManagedEnvironmentArgs } from "./managedEnvironment";
 export type ManagedEnvironment = import("./managedEnvironment").ManagedEnvironment;
 export const ManagedEnvironment: typeof import("./managedEnvironment").ManagedEnvironment = null as any;
 utilities.lazyLoad(exports, ["ManagedEnvironment"], () => require("./managedEnvironment"));
+
+export { ManagedEnvironmentPrivateEndpointConnectionArgs } from "./managedEnvironmentPrivateEndpointConnection";
+export type ManagedEnvironmentPrivateEndpointConnection = import("./managedEnvironmentPrivateEndpointConnection").ManagedEnvironmentPrivateEndpointConnection;
+export const ManagedEnvironmentPrivateEndpointConnection: typeof import("./managedEnvironmentPrivateEndpointConnection").ManagedEnvironmentPrivateEndpointConnection = null as any;
+utilities.lazyLoad(exports, ["ManagedEnvironmentPrivateEndpointConnection"], () => require("./managedEnvironmentPrivateEndpointConnection"));
 
 export { ManagedEnvironmentsStorageArgs } from "./managedEnvironmentsStorage";
 export type ManagedEnvironmentsStorage = import("./managedEnvironmentsStorage").ManagedEnvironmentsStorage;
@@ -276,6 +311,8 @@ const _module = {
                 return new ContainerApp(name, <any>undefined, { urn })
             case "azure-native:app:ContainerAppsAuthConfig":
                 return new ContainerAppsAuthConfig(name, <any>undefined, { urn })
+            case "azure-native:app:ContainerAppsSessionPool":
+                return new ContainerAppsSessionPool(name, <any>undefined, { urn })
             case "azure-native:app:ContainerAppsSourceControl":
                 return new ContainerAppsSourceControl(name, <any>undefined, { urn })
             case "azure-native:app:DaprComponent":
@@ -290,10 +327,14 @@ const _module = {
                 return new JavaComponent(name, <any>undefined, { urn })
             case "azure-native:app:Job":
                 return new Job(name, <any>undefined, { urn })
+            case "azure-native:app:LogicApp":
+                return new LogicApp(name, <any>undefined, { urn })
             case "azure-native:app:ManagedCertificate":
                 return new ManagedCertificate(name, <any>undefined, { urn })
             case "azure-native:app:ManagedEnvironment":
                 return new ManagedEnvironment(name, <any>undefined, { urn })
+            case "azure-native:app:ManagedEnvironmentPrivateEndpointConnection":
+                return new ManagedEnvironmentPrivateEndpointConnection(name, <any>undefined, { urn })
             case "azure-native:app:ManagedEnvironmentsStorage":
                 return new ManagedEnvironmentsStorage(name, <any>undefined, { urn })
             default:

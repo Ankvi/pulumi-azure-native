@@ -612,6 +612,24 @@ export interface CorsPolicyArgs {
 }
 
 /**
+ * Custom container configuration.
+ */
+export interface CustomContainerTemplateArgs {
+    /**
+     * List of container definitions for the sessions of the session pool.
+     */
+    containers?: pulumi.Input<pulumi.Input<SessionContainerArgs>[]>;
+    /**
+     * Session pool ingress configuration.
+     */
+    ingress?: pulumi.Input<SessionIngressArgs>;
+    /**
+     * Private container registry credentials for containers used by the sessions of the session pool.
+     */
+    registryCredentials?: pulumi.Input<SessionRegistryCredentialsArgs>;
+}
+
+/**
  * Custom Domain of a Container App
  */
 export interface CustomDomainArgs {
@@ -897,6 +915,20 @@ export interface DotNetComponentServiceBindArgs {
      * Resource id of the target service
      */
     serviceId?: pulumi.Input<string>;
+}
+
+/**
+ * Dynamic pool configuration.
+ */
+export interface DynamicPoolConfigurationArgs {
+    /**
+     * The cooldown period of a session in seconds.
+     */
+    cooldownPeriodInSeconds?: pulumi.Input<number>;
+    /**
+     * The execution type of the session pool.
+     */
+    executionType?: pulumi.Input<string | enums.ExecutionType>;
 }
 
 /**
@@ -1816,6 +1848,24 @@ export interface PreBuildStepArgs {
 }
 
 /**
+ * A collection of information about the state of the connection between service consumer and provider.
+ */
+export interface PrivateLinkServiceConnectionStateArgs {
+    /**
+     * A message indicating if changes on the service provider require any updates on the consumer.
+     */
+    actionsRequired?: pulumi.Input<string>;
+    /**
+     * The reason for approval/rejection of the connection.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+     */
+    status?: pulumi.Input<string | enums.PrivateEndpointServiceConnectionStatus>;
+}
+
+/**
  * Container App container Azure Queue based scaling rule.
  */
 export interface QueueScaleRuleArgs {
@@ -1901,6 +1951,20 @@ export function scaleArgsProvideDefaults(val: ScaleArgs): ScaleArgs {
 }
 
 /**
+ * Scale configuration.
+ */
+export interface ScaleConfigurationArgs {
+    /**
+     * The maximum count of sessions at the same time.
+     */
+    maxConcurrentSessions?: pulumi.Input<number>;
+    /**
+     * The minimum count of ready session instances.
+     */
+    readySessionInstances?: pulumi.Input<number>;
+}
+
+/**
  * Container App container scaling rule.
  */
 export interface ScaleRuleArgs {
@@ -1974,6 +2038,102 @@ export interface SecretVolumeItemArgs {
      * Name of the Container App secret from which to pull the secret value.
      */
     secretRef?: pulumi.Input<string>;
+}
+
+/**
+ * Container definitions for the sessions of the session pool.
+ */
+export interface SessionContainerArgs {
+    /**
+     * Container start command arguments.
+     */
+    args?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Container start command.
+     */
+    command?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Container environment variables.
+     */
+    env?: pulumi.Input<pulumi.Input<EnvironmentVarArgs>[]>;
+    /**
+     * Container image tag.
+     */
+    image?: pulumi.Input<string>;
+    /**
+     * Custom container name.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Container resource requirements.
+     */
+    resources?: pulumi.Input<SessionContainerResourcesArgs>;
+}
+
+/**
+ * Container resource requirements for sessions of the session pool.
+ */
+export interface SessionContainerResourcesArgs {
+    /**
+     * Required CPU in cores, e.g. 0.5
+     */
+    cpu?: pulumi.Input<number>;
+    /**
+     * Required memory, e.g. "250Mb"
+     */
+    memory?: pulumi.Input<string>;
+}
+
+/**
+ * Session pool ingress configuration.
+ */
+export interface SessionIngressArgs {
+    /**
+     * Target port in containers for traffic from ingress
+     */
+    targetPort?: pulumi.Input<number>;
+}
+
+/**
+ * Session network configuration.
+ */
+export interface SessionNetworkConfigurationArgs {
+    /**
+     * Network status for the sessions.
+     */
+    status?: pulumi.Input<string | enums.SessionNetworkStatus>;
+}
+
+/**
+ * Secret definition.
+ */
+export interface SessionPoolSecretArgs {
+    /**
+     * Secret Name.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Secret Value.
+     */
+    value?: pulumi.Input<string>;
+}
+
+/**
+ * Session pool private registry credentials.
+ */
+export interface SessionRegistryCredentialsArgs {
+    /**
+     * The name of the secret that contains the registry login password
+     */
+    passwordSecretRef?: pulumi.Input<string>;
+    /**
+     * Container registry server.
+     */
+    registryServer?: pulumi.Input<string>;
+    /**
+     * Container registry username.
+     */
+    username?: pulumi.Input<string>;
 }
 
 /**
@@ -2218,6 +2378,7 @@ export interface WorkloadProfileArgs {
      */
     workloadProfileType: pulumi.Input<string>;
 }
+
 
 
 

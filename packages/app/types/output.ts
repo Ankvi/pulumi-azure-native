@@ -646,6 +646,24 @@ export interface CorsPolicyResponse {
 }
 
 /**
+ * Custom container configuration.
+ */
+export interface CustomContainerTemplateResponse {
+    /**
+     * List of container definitions for the sessions of the session pool.
+     */
+    containers?: SessionContainerResponse[];
+    /**
+     * Session pool ingress configuration.
+     */
+    ingress?: SessionIngressResponse;
+    /**
+     * Private container registry credentials for containers used by the sessions of the session pool.
+     */
+    registryCredentials?: SessionRegistryCredentialsResponse;
+}
+
+/**
  * Configuration properties for apps environment custom domain
  */
 export interface CustomDomainConfigurationResponse {
@@ -1004,6 +1022,20 @@ export interface DotNetComponentServiceBindResponse {
 }
 
 /**
+ * Dynamic pool configuration.
+ */
+export interface DynamicPoolConfigurationResponse {
+    /**
+     * The cooldown period of a session in seconds.
+     */
+    cooldownPeriodInSeconds?: number;
+    /**
+     * The execution type of the session pool.
+     */
+    executionType?: string;
+}
+
+/**
  * Managed Environment resource SKU properties.
  */
 export interface EnvironmentSkuPropertiesResponse {
@@ -1043,6 +1075,44 @@ export interface EnvironmentVariableResponse {
      * Environment variable value.
      */
     value: string;
+}
+
+/**
+ * Body of the error response returned from the API.
+ */
+export interface ErrorEntityResponse {
+    /**
+     * Basic error code.
+     */
+    code?: string;
+    /**
+     * Error Details.
+     */
+    details?: ErrorEntityResponse[];
+    /**
+     * Type of error.
+     */
+    extendedCode?: string;
+    /**
+     * Inner errors.
+     */
+    innerErrors?: ErrorEntityResponse[];
+    /**
+     * Any details of the error.
+     */
+    message?: string;
+    /**
+     * Message template.
+     */
+    messageTemplate?: string;
+    /**
+     * Parameters for the template.
+     */
+    parameters?: string[];
+    /**
+     * The error target.
+     */
+    target?: string;
 }
 
 /**
@@ -1940,6 +2010,34 @@ export interface PreBuildStepResponse {
 }
 
 /**
+ * The Private Endpoint resource.
+ */
+export interface PrivateEndpointResponse {
+    /**
+     * The ARM identifier for Private Endpoint
+     */
+    id: string;
+}
+
+/**
+ * A collection of information about the state of the connection between service consumer and provider.
+ */
+export interface PrivateLinkServiceConnectionStateResponse {
+    /**
+     * A message indicating if changes on the service provider require any updates on the consumer.
+     */
+    actionsRequired?: string;
+    /**
+     * The reason for approval/rejection of the connection.
+     */
+    description?: string;
+    /**
+     * Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
+     */
+    status?: string;
+}
+
+/**
  * Container App container Azure Queue based scaling rule.
  */
 export interface QueueScaleRuleResponse {
@@ -1991,6 +2089,20 @@ export interface RegistryInfoResponse {
      * registry username.
      */
     registryUserName?: string;
+}
+
+/**
+ * Scale configuration.
+ */
+export interface ScaleConfigurationResponse {
+    /**
+     * The maximum count of sessions at the same time.
+     */
+    maxConcurrentSessions?: number;
+    /**
+     * The minimum count of ready session instances.
+     */
+    readySessionInstances?: number;
 }
 
 /**
@@ -2090,6 +2202,98 @@ export interface SecretVolumeItemResponse {
      * Name of the Container App secret from which to pull the secret value.
      */
     secretRef?: string;
+}
+
+/**
+ * Container resource requirements for sessions of the session pool.
+ */
+export interface SessionContainerResourcesResponse {
+    /**
+     * Required CPU in cores, e.g. 0.5
+     */
+    cpu?: number;
+    /**
+     * Required memory, e.g. "250Mb"
+     */
+    memory?: string;
+}
+
+/**
+ * Container definitions for the sessions of the session pool.
+ */
+export interface SessionContainerResponse {
+    /**
+     * Container start command arguments.
+     */
+    args?: string[];
+    /**
+     * Container start command.
+     */
+    command?: string[];
+    /**
+     * Container environment variables.
+     */
+    env?: EnvironmentVarResponse[];
+    /**
+     * Container image tag.
+     */
+    image?: string;
+    /**
+     * Custom container name.
+     */
+    name?: string;
+    /**
+     * Container resource requirements.
+     */
+    resources?: SessionContainerResourcesResponse;
+}
+
+/**
+ * Session pool ingress configuration.
+ */
+export interface SessionIngressResponse {
+    /**
+     * Target port in containers for traffic from ingress
+     */
+    targetPort?: number;
+}
+
+/**
+ * Session network configuration.
+ */
+export interface SessionNetworkConfigurationResponse {
+    /**
+     * Network status for the sessions.
+     */
+    status?: string;
+}
+
+/**
+ * Secret definition.
+ */
+export interface SessionPoolSecretResponse {
+    /**
+     * Secret Name.
+     */
+    name?: string;
+}
+
+/**
+ * Session pool private registry credentials.
+ */
+export interface SessionRegistryCredentialsResponse {
+    /**
+     * The name of the secret that contains the registry login password
+     */
+    passwordSecretRef?: string;
+    /**
+     * Container registry server.
+     */
+    registryServer?: string;
+    /**
+     * Container registry username.
+     */
+    username?: string;
 }
 
 /**
@@ -2362,6 +2566,38 @@ export interface VolumeResponse {
 }
 
 /**
+ * Additional workflow properties.
+ */
+export interface WorkflowEnvelopeResponseProperties {
+    /**
+     * Gets or sets the files.
+     */
+    files?: any;
+    /**
+     * Gets or sets the state of the workflow.
+     */
+    flowState?: string;
+    /**
+     * Gets or sets workflow health.
+     */
+    health?: WorkflowHealthResponse;
+}
+
+/**
+ * Represents the workflow health.
+ */
+export interface WorkflowHealthResponse {
+    /**
+     * Gets or sets the workflow error.
+     */
+    error?: ErrorEntityResponse;
+    /**
+     * Gets or sets the workflow health state.
+     */
+    state: string;
+}
+
+/**
  * Workload profile to scope container app execution.
  */
 export interface WorkloadProfileResponse {
@@ -2378,6 +2614,7 @@ export interface WorkloadProfileResponse {
      */
     workloadProfileType: string;
 }
+
 
 
 

@@ -5,7 +5,7 @@ import * as types from "./types";
  * Dapr PubSub Event Subscription.
  * Azure REST API version: 2023-08-01-preview.
  *
- * Other available API versions: 2023-11-02-preview.
+ * Other available API versions: 2023-11-02-preview, 2024-02-02-preview.
  */
 export function getDaprSubscription(args: GetDaprSubscriptionArgs, opts?: pulumi.InvokeOptions): Promise<GetDaprSubscriptionResult> {
 
@@ -85,7 +85,7 @@ export interface GetDaprSubscriptionResult {
  * Dapr PubSub Event Subscription.
  * Azure REST API version: 2023-08-01-preview.
  *
- * Other available API versions: 2023-11-02-preview.
+ * Other available API versions: 2023-11-02-preview, 2024-02-02-preview.
  */
 export function getDaprSubscriptionOutput(args: GetDaprSubscriptionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDaprSubscriptionResult> {
     return pulumi.output(args).apply((a: any) => getDaprSubscription(a, opts))

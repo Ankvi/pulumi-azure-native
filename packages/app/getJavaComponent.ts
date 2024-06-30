@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Java Component.
  * Azure REST API version: 2023-11-02-preview.
+ *
+ * Other available API versions: 2024-02-02-preview.
  */
 export function getJavaComponent(args: GetJavaComponentArgs, opts?: pulumi.InvokeOptions): Promise<GetJavaComponentResult> {
 
@@ -70,6 +72,8 @@ export interface GetJavaComponentResult {
 /**
  * Java Component.
  * Azure REST API version: 2023-11-02-preview.
+ *
+ * Other available API versions: 2024-02-02-preview.
  */
 export function getJavaComponentOutput(args: GetJavaComponentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetJavaComponentResult> {
     return pulumi.output(args).apply((a: any) => getJavaComponent(a, opts))

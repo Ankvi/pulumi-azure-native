@@ -37,13 +37,31 @@ export interface DashboardLensArgs {
 }
 
 /**
+ * A dashboard part metadata.
+ */
+export interface DashboardPartMetadataArgs {
+    /**
+     * Inputs to dashboard part.
+     */
+    inputs?: pulumi.Input<any[]>;
+    /**
+     * Settings of dashboard part.
+     */
+    settings?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * The type of dashboard part.
+     */
+    type: pulumi.Input<string>;
+}
+
+/**
  * A dashboard part.
  */
 export interface DashboardPartsArgs {
     /**
-     * The dashboard part's metadata.
+     * The dashboard's part metadata.
      */
-    metadata?: pulumi.Input<MarkdownPartMetadataArgs>;
+    metadata?: pulumi.Input<DashboardPartMetadataArgs>;
     /**
      * The dashboard's part position.
      */
@@ -74,71 +92,6 @@ export interface DashboardPartsPositionArgs {
      * The dashboard's part y coordinate.
      */
     y: pulumi.Input<number>;
-}
-
-/**
- * Markdown part metadata.
- */
-export interface MarkdownPartMetadataArgs {
-    /**
-     * Input to dashboard part.
-     */
-    inputs?: pulumi.Input<any[]>;
-    /**
-     * Markdown part settings.
-     */
-    settings?: pulumi.Input<MarkdownPartMetadataSettingsArgs>;
-    /**
-     * The type of dashboard part.
-     * Expected value is 'Extension/HubsExtension/PartType/MarkdownPart'.
-     */
-    type: pulumi.Input<"Extension/HubsExtension/PartType/MarkdownPart">;
-}
-
-/**
- * The content of markdown part.
- */
-export interface MarkdownPartMetadataContentArgs {
-    /**
-     * The setting of the content of markdown part.
-     */
-    settings?: pulumi.Input<MarkdownPartMetadataSettingsSettingsArgs>;
-}
-
-/**
- * Markdown part settings.
- */
-export interface MarkdownPartMetadataSettingsArgs {
-    /**
-     * The content of markdown part.
-     */
-    content?: pulumi.Input<MarkdownPartMetadataContentArgs>;
-}
-
-/**
- * The setting of the content of markdown part.
- */
-export interface MarkdownPartMetadataSettingsSettingsArgs {
-    /**
-     * The content of the markdown part.
-     */
-    content?: pulumi.Input<string>;
-    /**
-     * The source of the content of the markdown part.
-     */
-    markdownSource?: pulumi.Input<number>;
-    /**
-     * The uri of markdown content.
-     */
-    markdownUri?: pulumi.Input<string>;
-    /**
-     * The subtitle of the markdown part.
-     */
-    subtitle?: pulumi.Input<string>;
-    /**
-     * The title of the markdown part.
-     */
-    title?: pulumi.Input<string>;
 }
 
 /**

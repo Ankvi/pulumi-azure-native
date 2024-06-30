@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Represents a devcenter encryption set resource.
  * Azure REST API version: 2024-05-01-preview.
+ *
+ * Other available API versions: 2024-06-01-preview.
  */
 export class EncryptionSet extends pulumi.CustomResource {
     /**
@@ -110,7 +112,7 @@ export class EncryptionSet extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:devcenter/v20240501preview:EncryptionSet" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:devcenter/v20240501preview:EncryptionSet" }, { type: "azure-native:devcenter/v20240601preview:EncryptionSet" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(EncryptionSet.__pulumiType, name, resourceInputs, opts);
     }

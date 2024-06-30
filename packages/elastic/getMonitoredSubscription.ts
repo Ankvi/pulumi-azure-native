@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * The request to update subscriptions needed to be monitored by the Elastic monitor resource.
  * Azure REST API version: 2024-05-01-preview.
+ *
+ * Other available API versions: 2024-06-15-preview.
  */
 export function getMonitoredSubscription(args: GetMonitoredSubscriptionArgs, opts?: pulumi.InvokeOptions): Promise<GetMonitoredSubscriptionResult> {
 
@@ -54,6 +56,8 @@ export interface GetMonitoredSubscriptionResult {
 /**
  * The request to update subscriptions needed to be monitored by the Elastic monitor resource.
  * Azure REST API version: 2024-05-01-preview.
+ *
+ * Other available API versions: 2024-06-15-preview.
  */
 export function getMonitoredSubscriptionOutput(args: GetMonitoredSubscriptionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMonitoredSubscriptionResult> {
     return pulumi.output(args).apply((a: any) => getMonitoredSubscription(a, opts))

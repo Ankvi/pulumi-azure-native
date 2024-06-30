@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * .NET Component.
  * Azure REST API version: 2023-11-02-preview.
+ *
+ * Other available API versions: 2024-02-02-preview.
  */
 export class DotNetComponent extends pulumi.CustomResource {
     /**
@@ -97,7 +99,7 @@ export class DotNetComponent extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:app/v20231102preview:DotNetComponent" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:app/v20231102preview:DotNetComponent" }, { type: "azure-native:app/v20240202preview:DotNetComponent" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(DotNetComponent.__pulumiType, name, resourceInputs, opts);
     }

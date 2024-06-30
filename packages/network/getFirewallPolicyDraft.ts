@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Get a draft Firewall Policy.
  * Azure REST API version: 2023-11-01.
+ *
+ * Other available API versions: 2024-01-01.
  */
 export function getFirewallPolicyDraft(args: GetFirewallPolicyDraftArgs, opts?: pulumi.InvokeOptions): Promise<GetFirewallPolicyDraftResult> {
 
@@ -89,6 +91,8 @@ export interface GetFirewallPolicyDraftResult {
 /**
  * Get a draft Firewall Policy.
  * Azure REST API version: 2023-11-01.
+ *
+ * Other available API versions: 2024-01-01.
  */
 export function getFirewallPolicyDraftOutput(args: GetFirewallPolicyDraftOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFirewallPolicyDraftResult> {
     return pulumi.output(args).apply((a: any) => getFirewallPolicyDraft(a, opts))

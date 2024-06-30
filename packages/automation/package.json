@@ -1,6 +1,6 @@
 {
     "name": "@kengachu-pulumi/azure-native-automation",
-    "version": "2.46.0",
+    "version": "2.47.1",
     "description": "Pulumi Azure Native package for automation",
     "keywords": [
         "pulumi",

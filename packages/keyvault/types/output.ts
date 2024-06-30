@@ -701,3 +701,4 @@ export interface VirtualNetworkRuleResponse {
     ignoreMissingVnetServiceEndpoint?: boolean;
 }
 
+
