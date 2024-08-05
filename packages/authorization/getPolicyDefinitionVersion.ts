@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * This operation retrieves the policy definition version in the given subscription with the given name.
  * Azure REST API version: 2023-04-01.
+ *
+ * Other available API versions: 2024-05-01.
  */
 export function getPolicyDefinitionVersion(args: GetPolicyDefinitionVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyDefinitionVersionResult> {
 
@@ -81,6 +83,8 @@ export interface GetPolicyDefinitionVersionResult {
 /**
  * This operation retrieves the policy definition version in the given subscription with the given name.
  * Azure REST API version: 2023-04-01.
+ *
+ * Other available API versions: 2024-05-01.
  */
 export function getPolicyDefinitionVersionOutput(args: GetPolicyDefinitionVersionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPolicyDefinitionVersionResult> {
     return pulumi.output(args).apply((a: any) => getPolicyDefinitionVersion(a, opts))

@@ -5,7 +5,7 @@ import * as types from "./types";
  * Get the specified role management policy assignment for a resource scope
  * Azure REST API version: 2020-10-01.
  *
- * Other available API versions: 2020-10-01-preview.
+ * Other available API versions: 2020-10-01-preview, 2024-02-01-preview.
  */
 export function getRoleManagementPolicyAssignment(args: GetRoleManagementPolicyAssignmentArgs, opts?: pulumi.InvokeOptions): Promise<GetRoleManagementPolicyAssignmentResult> {
 
@@ -68,7 +68,7 @@ export interface GetRoleManagementPolicyAssignmentResult {
  * Get the specified role management policy assignment for a resource scope
  * Azure REST API version: 2020-10-01.
  *
- * Other available API versions: 2020-10-01-preview.
+ * Other available API versions: 2020-10-01-preview, 2024-02-01-preview.
  */
 export function getRoleManagementPolicyAssignmentOutput(args: GetRoleManagementPolicyAssignmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRoleManagementPolicyAssignmentResult> {
     return pulumi.output(args).apply((a: any) => getRoleManagementPolicyAssignment(a, opts))

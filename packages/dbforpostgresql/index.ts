@@ -6,6 +6,11 @@ export type Administrator = import("./administrator").Administrator;
 export const Administrator: typeof import("./administrator").Administrator = null as any;
 utilities.lazyLoad(exports, ["Administrator"], () => require("./administrator"));
 
+export { BackupArgs } from "./backup";
+export type Backup = import("./backup").Backup;
+export const Backup: typeof import("./backup").Backup = null as any;
+utilities.lazyLoad(exports, ["Backup"], () => require("./backup"));
+
 export { ClusterArgs } from "./cluster";
 export type Cluster = import("./cluster").Cluster;
 export const Cluster: typeof import("./cluster").Cluster = null as any;
@@ -30,6 +35,11 @@ export { GetAdministratorArgs, GetAdministratorResult, GetAdministratorOutputArg
 export const getAdministrator: typeof import("./getAdministrator").getAdministrator = null as any;
 export const getAdministratorOutput: typeof import("./getAdministrator").getAdministratorOutput = null as any;
 utilities.lazyLoad(exports, ["getAdministrator","getAdministratorOutput"], () => require("./getAdministrator"));
+
+export { GetBackupArgs, GetBackupResult, GetBackupOutputArgs } from "./getBackup";
+export const getBackup: typeof import("./getBackup").getBackup = null as any;
+export const getBackupOutput: typeof import("./getBackup").getBackupOutput = null as any;
+utilities.lazyLoad(exports, ["getBackup","getBackupOutput"], () => require("./getBackup"));
 
 export { GetClusterArgs, GetClusterResult, GetClusterOutputArgs } from "./getCluster";
 export const getCluster: typeof import("./getCluster").getCluster = null as any;
@@ -118,6 +128,8 @@ const _module = {
         switch (type) {
             case "azure-native:dbforpostgresql:Administrator":
                 return new Administrator(name, <any>undefined, { urn })
+            case "azure-native:dbforpostgresql:Backup":
+                return new Backup(name, <any>undefined, { urn })
             case "azure-native:dbforpostgresql:Cluster":
                 return new Cluster(name, <any>undefined, { urn })
             case "azure-native:dbforpostgresql:Configuration":

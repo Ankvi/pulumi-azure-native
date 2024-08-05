@@ -348,3 +348,4 @@ export interface VMSSVMInfoResponse {
      */
     vmResourceId: string;
 }
+

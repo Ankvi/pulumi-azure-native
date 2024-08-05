@@ -5,7 +5,7 @@ import * as types from "./types";
  * Shows an inventory item.
  * Azure REST API version: 2022-05-21-preview.
  *
- * Other available API versions: 2023-04-01-preview, 2023-10-07.
+ * Other available API versions: 2023-04-01-preview, 2023-10-07, 2024-06-01.
  */
 export function getInventoryItem(args: GetInventoryItemArgs, opts?: pulumi.InvokeOptions): Promise<GetInventoryItemResult> {
 
@@ -81,7 +81,7 @@ export interface GetInventoryItemResult {
  * Shows an inventory item.
  * Azure REST API version: 2022-05-21-preview.
  *
- * Other available API versions: 2023-04-01-preview, 2023-10-07.
+ * Other available API versions: 2023-04-01-preview, 2023-10-07, 2024-06-01.
  */
 export function getInventoryItemOutput(args: GetInventoryItemOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInventoryItemResult> {
     return pulumi.output(args).apply((a: any) => getInventoryItem(a, opts))

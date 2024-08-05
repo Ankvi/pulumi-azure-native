@@ -3654,6 +3654,128 @@ export interface EndpointDeploymentResourcePropertiesResponse {
     versionUpgradeOption?: string;
 }
 
+export interface EndpointModelDeprecationPropertiesResponse {
+    /**
+     * The datetime of deprecation of the fineTune Model.
+     */
+    fineTune?: string;
+    /**
+     * The datetime of deprecation of the inference Model.
+     */
+    inference?: string;
+}
+
+/**
+ * Endpoint Model properties.
+ */
+export interface EndpointModelPropertiesResponse {
+    /**
+     * The capabilities.
+     */
+    capabilities?: {[key: string]: string};
+    deprecation?: EndpointModelDeprecationPropertiesResponse;
+    /**
+     * The capabilities for finetune models.
+     */
+    finetuneCapabilities?: {[key: string]: string};
+    /**
+     * Deployment model format.
+     */
+    format?: string;
+    /**
+     * If the model is default version.
+     */
+    isDefaultVersion?: boolean;
+    /**
+     * Model lifecycle status.
+     */
+    lifecycleStatus?: string;
+    /**
+     * The max capacity.
+     */
+    maxCapacity?: number;
+    /**
+     * Deployment model name.
+     */
+    name?: string;
+    /**
+     * The list of Model Sku.
+     */
+    skus?: EndpointModelSkuPropertiesResponse[];
+    /**
+     * Metadata pertaining to creation and last modification of the resource.
+     */
+    systemData: SystemDataResponse;
+    /**
+     * Optional. Deployment model version. If version is not specified, a default version will be assigned. The default version is different for different models and might change when there is new version available for a model. Default version for a model could be found from list models API.
+     */
+    version?: string;
+}
+
+export interface EndpointModelSkuCapacityPropertiesResponse {
+    /**
+     * The default capacity.
+     */
+    default?: number;
+    /**
+     * The maximum capacity.
+     */
+    maximum?: number;
+}
+
+export interface EndpointModelSkuPropertiesResponse {
+    capacity?: EndpointModelSkuCapacityPropertiesResponse;
+    /**
+     * The list of ARM id for the connection support this SKU.
+     */
+    connectionIds?: string[];
+    /**
+     * The datetime of deprecation of the model SKU.
+     */
+    deprecationDate?: string;
+    /**
+     * The name of the model SKU.
+     */
+    name?: string;
+    rateLimits?: EndpointModelSkuRateLimitPropertiesResponse[];
+    /**
+     * The usage name of the model SKU.
+     */
+    usageName?: string;
+}
+
+export interface EndpointModelSkuRateLimitPropertiesResponse {
+    /**
+     * The count value of Call Rate Limit.
+     */
+    count?: number;
+    /**
+     * The renewal period in seconds of Call Rate Limit.
+     */
+    renewalPeriod?: number;
+    /**
+     * The call rate limit for the model.
+     */
+    rules?: EndpointModelSkuRateLimitRulePropertiesResponse[];
+}
+
+export interface EndpointModelSkuRateLimitRulePatternPropertiesResponse {
+    method?: string;
+    path?: string;
+}
+
+export interface EndpointModelSkuRateLimitRulePropertiesResponse {
+    count?: number;
+    /**
+     * If the dynamic throttling is enabled.
+     */
+    dynamicThrottlingEnabled?: boolean;
+    key?: string;
+    matchPatterns?: EndpointModelSkuRateLimitRulePatternPropertiesResponse[];
+    minCount?: number;
+    renewalPeriod?: number;
+}
+
 /**
  * Describes the endpoint configuration for the container
  */
@@ -10248,6 +10370,7 @@ export interface WorkspaceConnectionUsernamePasswordResponse {
     password?: string;
     username?: string;
 }
+
 
 
 

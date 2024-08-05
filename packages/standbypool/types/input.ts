@@ -61,3 +61,4 @@ export interface SubnetArgs {
      */
     id: pulumi.Input<string>;
 }
+

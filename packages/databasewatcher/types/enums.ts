@@ -1,3 +1,19 @@
+export const AlertRuleCreationProperties = {
+    /**
+     * The alert rule was created with an action group.
+     */
+    CreatedWithActionGroup: "CreatedWithActionGroup",
+    /**
+     * The alert rule was created with no properties.
+     */
+    None: "None",
+} as const;
+
+/**
+ * The properties with which the alert rule resource was created.
+ */
+export type AlertRuleCreationProperties = (typeof AlertRuleCreationProperties)[keyof typeof AlertRuleCreationProperties];
+
 export const KustoOfferingType = {
     /**
      * The Azure Data Explorer cluster Kusto offering.

@@ -4,7 +4,7 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
  * Gets the primary and secondary connection strings for the namespace.
  * Azure REST API version: 2022-01-01-preview.
  *
- * Other available API versions: 2015-08-01, 2022-10-01-preview.
+ * Other available API versions: 2015-08-01, 2022-10-01-preview, 2023-01-01-preview.
  */
 export function listNamespaceKeys(args: ListNamespaceKeysArgs, opts?: pulumi.InvokeOptions): Promise<ListNamespaceKeysResult> {
 
@@ -68,7 +68,7 @@ export interface ListNamespaceKeysResult {
  * Gets the primary and secondary connection strings for the namespace.
  * Azure REST API version: 2022-01-01-preview.
  *
- * Other available API versions: 2015-08-01, 2022-10-01-preview.
+ * Other available API versions: 2015-08-01, 2022-10-01-preview, 2023-01-01-preview.
  */
 export function listNamespaceKeysOutput(args: ListNamespaceKeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListNamespaceKeysResult> {
     return pulumi.output(args).apply((a: any) => listNamespaceKeys(a, opts))

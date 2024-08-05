@@ -151,7 +151,7 @@ export interface OpenAIIntegrationPropertiesArgs {
      */
     openAIResourceEndpoint?: pulumi.Input<string>;
     /**
-     * The resource id of Open AI resource
+     * The resource name of Open AI resource
      */
     openAIResourceId?: pulumi.Input<string>;
 }

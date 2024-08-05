@@ -155,6 +155,89 @@ export interface HealthStatusDetailResponse {
 }
 
 /**
+ * Image creation error details
+ */
+export interface ImageCreationErrorDetailsResponse {
+    /**
+     * An identifier for the error.
+     */
+    code?: string;
+    /**
+     * A message describing the error.
+     */
+    message?: string;
+}
+
+/**
+ * A task group executed during the image definition build.
+ */
+export interface ImageDefinitionBuildTaskGroupResponse {
+    /**
+     * End time of the task group.
+     */
+    endTime: string;
+    /**
+     * The name of the task group.
+     */
+    name: string;
+    /**
+     * Start time of the task group.
+     */
+    startTime: string;
+    /**
+     * The status of the task group.
+     */
+    status: string;
+    /**
+     * The list of tasks executed during the task group.
+     */
+    tasks: ImageDefinitionBuildTaskResponse[];
+}
+
+/**
+ * A task executed during the image definition build.
+ */
+export interface ImageDefinitionBuildTaskResponse {
+    /**
+     * Display name to help differentiate multiple instances of the same task.
+     */
+    displayName?: string;
+    /**
+     * End time of the task.
+     */
+    endTime: string;
+    /**
+     * ID of the task instance.
+     */
+    id: string;
+    /**
+     * The URI for retrieving logs for the task execution.
+     */
+    logUri: string;
+    /**
+     * The name of the task.
+     */
+    name?: string;
+    /**
+     * Parameters for the task.
+     */
+    parameters?: ImageDefinitionBuildTaskResponseParameters[];
+    /**
+     * Start time of the task.
+     */
+    startTime: string;
+    /**
+     * The status of the task.
+     */
+    status: string;
+}
+
+export interface ImageDefinitionBuildTaskResponseParameters {
+    key: string;
+    value: string;
+}
+
+/**
  * Image reference information
  */
 export interface ImageReferenceResponse {
@@ -351,6 +434,7 @@ export interface UserRoleAssignmentResponse {
      */
     roles?: {[key: string]: EnvironmentRoleResponse};
 }
+
 
 
 

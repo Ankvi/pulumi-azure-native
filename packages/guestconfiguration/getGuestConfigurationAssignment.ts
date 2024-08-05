@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Get information about a guest configuration assignment
  * Azure REST API version: 2022-01-25.
+ *
+ * Other available API versions: 2024-04-05.
  */
 export function getGuestConfigurationAssignment(args: GetGuestConfigurationAssignmentArgs, opts?: pulumi.InvokeOptions): Promise<GetGuestConfigurationAssignmentResult> {
 
@@ -62,6 +64,8 @@ export interface GetGuestConfigurationAssignmentResult {
 /**
  * Get information about a guest configuration assignment
  * Azure REST API version: 2022-01-25.
+ *
+ * Other available API versions: 2024-04-05.
  */
 export function getGuestConfigurationAssignmentOutput(args: GetGuestConfigurationAssignmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGuestConfigurationAssignmentResult> {
     return pulumi.output(args).apply((a: any) => getGuestConfigurationAssignment(a, opts))

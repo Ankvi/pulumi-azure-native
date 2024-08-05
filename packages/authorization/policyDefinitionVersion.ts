@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * The ID of the policy definition version.
  * Azure REST API version: 2023-04-01.
+ *
+ * Other available API versions: 2024-05-01.
  */
 export class PolicyDefinitionVersion extends pulumi.CustomResource {
     /**
@@ -118,7 +120,7 @@ export class PolicyDefinitionVersion extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:authorization/v20230401:PolicyDefinitionVersion" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:authorization/v20230401:PolicyDefinitionVersion" }, { type: "azure-native:authorization/v20240501:PolicyDefinitionVersion" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(PolicyDefinitionVersion.__pulumiType, name, resourceInputs, opts);
     }

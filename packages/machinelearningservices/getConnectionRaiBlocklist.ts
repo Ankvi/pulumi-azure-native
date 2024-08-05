@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Azure REST API version: 2024-04-01-preview.
+ *
+ * Other available API versions: 2024-07-01-preview.
  */
 export function getConnectionRaiBlocklist(args: GetConnectionRaiBlocklistArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectionRaiBlocklistResult> {
 
@@ -63,6 +65,8 @@ export interface GetConnectionRaiBlocklistResult {
 }
 /**
  * Azure REST API version: 2024-04-01-preview.
+ *
+ * Other available API versions: 2024-07-01-preview.
  */
 export function getConnectionRaiBlocklistOutput(args: GetConnectionRaiBlocklistOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectionRaiBlocklistResult> {
     return pulumi.output(args).apply((a: any) => getConnectionRaiBlocklist(a, opts))

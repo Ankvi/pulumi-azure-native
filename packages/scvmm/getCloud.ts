@@ -5,7 +5,7 @@ import * as types from "./types";
  * Implements Cloud GET method.
  * Azure REST API version: 2022-05-21-preview.
  *
- * Other available API versions: 2023-04-01-preview, 2023-10-07.
+ * Other available API versions: 2023-04-01-preview, 2023-10-07, 2024-06-01.
  */
 export function getCloud(args: GetCloudArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudResult> {
 
@@ -92,7 +92,7 @@ export interface GetCloudResult {
  * Implements Cloud GET method.
  * Azure REST API version: 2022-05-21-preview.
  *
- * Other available API versions: 2023-04-01-preview, 2023-10-07.
+ * Other available API versions: 2023-04-01-preview, 2023-10-07, 2024-06-01.
  */
 export function getCloudOutput(args: GetCloudOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCloudResult> {
     return pulumi.output(args).apply((a: any) => getCloud(a, opts))

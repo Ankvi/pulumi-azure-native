@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Get a StandbyContainerGroupPoolResource
  * Azure REST API version: 2023-12-01-preview.
+ *
+ * Other available API versions: 2024-03-01-preview.
  */
 export function getStandbyContainerGroupPool(args: GetStandbyContainerGroupPoolArgs, opts?: pulumi.InvokeOptions): Promise<GetStandbyContainerGroupPoolResult> {
 
@@ -69,6 +71,8 @@ export interface GetStandbyContainerGroupPoolResult {
 /**
  * Get a StandbyContainerGroupPoolResource
  * Azure REST API version: 2023-12-01-preview.
+ *
+ * Other available API versions: 2024-03-01-preview.
  */
 export function getStandbyContainerGroupPoolOutput(args: GetStandbyContainerGroupPoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStandbyContainerGroupPoolResult> {
     return pulumi.output(args).apply((a: any) => getStandbyContainerGroupPool(a, opts))

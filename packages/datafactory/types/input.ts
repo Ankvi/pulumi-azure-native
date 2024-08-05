@@ -2939,6 +2939,10 @@ export interface AzureFileStorageLinkedServiceArgs {
      */
     connectionString?: any;
     /**
+     * The credential reference containing authentication information.
+     */
+    credential?: pulumi.Input<CredentialReferenceArgs>;
+    /**
      * Linked service description.
      */
     description?: pulumi.Input<string>;
@@ -2970,6 +2974,10 @@ export interface AzureFileStorageLinkedServiceArgs {
      * SAS URI of the Azure File resource. It is mutually exclusive with connectionString property. Type: string, SecureString or AzureKeyVaultSecretReference.
      */
     sasUri?: any;
+    /**
+     * File service endpoint of the Azure File Storage resource. It is mutually exclusive with connectionString, sasUri property.
+     */
+    serviceEndpoint?: any;
     /**
      * The azure file share snapshot version. Type: string (or Expression with resultType string).
      */
@@ -5160,6 +5168,10 @@ export interface AzureTableStorageLinkedServiceArgs {
      */
     connectionString?: any;
     /**
+     * The credential reference containing authentication information.
+     */
+    credential?: pulumi.Input<CredentialReferenceArgs>;
+    /**
      * Linked service description.
      */
     description?: pulumi.Input<string>;
@@ -5179,6 +5191,10 @@ export interface AzureTableStorageLinkedServiceArgs {
      * SAS URI of the Azure Storage resource. It is mutually exclusive with connectionString property. Type: string, SecureString or AzureKeyVaultSecretReference.
      */
     sasUri?: any;
+    /**
+     * Table service endpoint of the Azure Table Storage resource. It is mutually exclusive with connectionString, sasUri property.
+     */
+    serviceEndpoint?: any;
     /**
      * Type of linked service.
      * Expected value is 'AzureTableStorage'.
@@ -5775,7 +5791,7 @@ export interface CommonDataServiceForAppsLinkedServiceArgs {
      */
     annotations?: pulumi.Input<any[]>;
     /**
-     * The authentication type to connect to Common Data Service for Apps server. 'Office365' for online scenario, 'Ifd' for on-premises with Ifd scenario. 'AADServicePrincipal' for Server-To-Server authentication in online scenario. Type: string (or Expression with resultType string).
+     * The authentication type to connect to Common Data Service for Apps server. 'Office365' for online scenario, 'Ifd' for on-premises with Ifd scenario. 'AADServicePrincipal' for Server-To-Server authentication in online scenario, 'Active Directory' for Dynamics on-premises with IFD. Type: string (or Expression with resultType string).
      */
     authenticationType: any;
     /**
@@ -5790,6 +5806,10 @@ export interface CommonDataServiceForAppsLinkedServiceArgs {
      * Linked service description.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The Active Directory domain that will verify user credentials. Type: string (or Expression with resultType string).
+     */
+    domain?: any;
     /**
      * The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
      */
@@ -8333,7 +8353,7 @@ export interface DynamicsCrmLinkedServiceArgs {
      */
     annotations?: pulumi.Input<any[]>;
     /**
-     * The authentication type to connect to Dynamics CRM server. 'Office365' for online scenario, 'Ifd' for on-premises with Ifd scenario, 'AADServicePrincipal' for Server-To-Server authentication in online scenario. Type: string (or Expression with resultType string).
+     * The authentication type to connect to Dynamics CRM server. 'Office365' for online scenario, 'Ifd' for on-premises with Ifd scenario, 'AADServicePrincipal' for Server-To-Server authentication in online scenario, 'Active Directory' for Dynamics on-premises with IFD. Type: string (or Expression with resultType string).
      */
     authenticationType: any;
     /**
@@ -8352,6 +8372,10 @@ export interface DynamicsCrmLinkedServiceArgs {
      * Linked service description.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The Active Directory domain that will verify user credentials. Type: string (or Expression with resultType string).
+     */
+    domain?: any;
     /**
      * The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
      */
@@ -8537,7 +8561,7 @@ export interface DynamicsLinkedServiceArgs {
      */
     annotations?: pulumi.Input<any[]>;
     /**
-     * The authentication type to connect to Dynamics server. 'Office365' for online scenario, 'Ifd' for on-premises with Ifd scenario, 'AADServicePrincipal' for Server-To-Server authentication in online scenario. Type: string (or Expression with resultType string).
+     * The authentication type to connect to Dynamics server. 'Office365' for online scenario, 'Ifd' for on-premises with Ifd scenario, 'AADServicePrincipal' for Server-To-Server authentication in online scenario, 'Active Directory' for Dynamics on-premises with IFD. Type: string (or Expression with resultType string).
      */
     authenticationType: any;
     /**
@@ -8556,6 +8580,10 @@ export interface DynamicsLinkedServiceArgs {
      * Linked service description.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The Active Directory domain that will verify user credentials. Type: string (or Expression with resultType string).
+     */
+    domain?: any;
     /**
      * The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
      */
@@ -24696,6 +24724,10 @@ export interface VerticaLinkedServiceArgs {
      */
     connectionString?: any;
     /**
+     * Database name for connection. Type: string.
+     */
+    database?: any;
+    /**
      * Linked service description.
      */
     description?: pulumi.Input<string>;
@@ -24708,14 +24740,26 @@ export interface VerticaLinkedServiceArgs {
      */
     parameters?: pulumi.Input<{[key: string]: pulumi.Input<ParameterSpecificationArgs>}>;
     /**
+     * The port for the connection. Type: integer.
+     */
+    port?: any;
+    /**
      * The Azure key vault secret reference of password in connection string.
      */
     pwd?: pulumi.Input<AzureKeyVaultSecretReferenceArgs>;
+    /**
+     * Server name for connection. Type: string.
+     */
+    server?: any;
     /**
      * Type of linked service.
      * Expected value is 'Vertica'.
      */
     type: pulumi.Input<"Vertica">;
+    /**
+     * Username for authentication. Type: string.
+     */
+    uid?: any;
 }
 
 /**

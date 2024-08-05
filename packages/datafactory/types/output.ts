@@ -2946,6 +2946,10 @@ export interface AzureFileStorageLinkedServiceResponse {
      */
     connectionString?: any;
     /**
+     * The credential reference containing authentication information.
+     */
+    credential?: CredentialReferenceResponse;
+    /**
      * Linked service description.
      */
     description?: string;
@@ -2977,6 +2981,10 @@ export interface AzureFileStorageLinkedServiceResponse {
      * SAS URI of the Azure File resource. It is mutually exclusive with connectionString property. Type: string, SecureString or AzureKeyVaultSecretReference.
      */
     sasUri?: any;
+    /**
+     * File service endpoint of the Azure File Storage resource. It is mutually exclusive with connectionString, sasUri property.
+     */
+    serviceEndpoint?: any;
     /**
      * The azure file share snapshot version. Type: string (or Expression with resultType string).
      */
@@ -5167,6 +5175,10 @@ export interface AzureTableStorageLinkedServiceResponse {
      */
     connectionString?: any;
     /**
+     * The credential reference containing authentication information.
+     */
+    credential?: CredentialReferenceResponse;
+    /**
      * Linked service description.
      */
     description?: string;
@@ -5186,6 +5198,10 @@ export interface AzureTableStorageLinkedServiceResponse {
      * SAS URI of the Azure Storage resource. It is mutually exclusive with connectionString property. Type: string, SecureString or AzureKeyVaultSecretReference.
      */
     sasUri?: any;
+    /**
+     * Table service endpoint of the Azure Table Storage resource. It is mutually exclusive with connectionString, sasUri property.
+     */
+    serviceEndpoint?: any;
     /**
      * Type of linked service.
      * Expected value is 'AzureTableStorage'.
@@ -5794,7 +5810,7 @@ export interface CommonDataServiceForAppsLinkedServiceResponse {
      */
     annotations?: any[];
     /**
-     * The authentication type to connect to Common Data Service for Apps server. 'Office365' for online scenario, 'Ifd' for on-premises with Ifd scenario. 'AADServicePrincipal' for Server-To-Server authentication in online scenario. Type: string (or Expression with resultType string).
+     * The authentication type to connect to Common Data Service for Apps server. 'Office365' for online scenario, 'Ifd' for on-premises with Ifd scenario. 'AADServicePrincipal' for Server-To-Server authentication in online scenario, 'Active Directory' for Dynamics on-premises with IFD. Type: string (or Expression with resultType string).
      */
     authenticationType: any;
     /**
@@ -5809,6 +5825,10 @@ export interface CommonDataServiceForAppsLinkedServiceResponse {
      * Linked service description.
      */
     description?: string;
+    /**
+     * The Active Directory domain that will verify user credentials. Type: string (or Expression with resultType string).
+     */
+    domain?: any;
     /**
      * The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
      */
@@ -8374,7 +8394,7 @@ export interface DynamicsCrmLinkedServiceResponse {
      */
     annotations?: any[];
     /**
-     * The authentication type to connect to Dynamics CRM server. 'Office365' for online scenario, 'Ifd' for on-premises with Ifd scenario, 'AADServicePrincipal' for Server-To-Server authentication in online scenario. Type: string (or Expression with resultType string).
+     * The authentication type to connect to Dynamics CRM server. 'Office365' for online scenario, 'Ifd' for on-premises with Ifd scenario, 'AADServicePrincipal' for Server-To-Server authentication in online scenario, 'Active Directory' for Dynamics on-premises with IFD. Type: string (or Expression with resultType string).
      */
     authenticationType: any;
     /**
@@ -8393,6 +8413,10 @@ export interface DynamicsCrmLinkedServiceResponse {
      * Linked service description.
      */
     description?: string;
+    /**
+     * The Active Directory domain that will verify user credentials. Type: string (or Expression with resultType string).
+     */
+    domain?: any;
     /**
      * The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
      */
@@ -8578,7 +8602,7 @@ export interface DynamicsLinkedServiceResponse {
      */
     annotations?: any[];
     /**
-     * The authentication type to connect to Dynamics server. 'Office365' for online scenario, 'Ifd' for on-premises with Ifd scenario, 'AADServicePrincipal' for Server-To-Server authentication in online scenario. Type: string (or Expression with resultType string).
+     * The authentication type to connect to Dynamics server. 'Office365' for online scenario, 'Ifd' for on-premises with Ifd scenario, 'AADServicePrincipal' for Server-To-Server authentication in online scenario, 'Active Directory' for Dynamics on-premises with IFD. Type: string (or Expression with resultType string).
      */
     authenticationType: any;
     /**
@@ -8597,6 +8621,10 @@ export interface DynamicsLinkedServiceResponse {
      * Linked service description.
      */
     description?: string;
+    /**
+     * The Active Directory domain that will verify user credentials. Type: string (or Expression with resultType string).
+     */
+    domain?: any;
     /**
      * The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
      */
@@ -25318,6 +25346,10 @@ export interface VerticaLinkedServiceResponse {
      */
     connectionString?: any;
     /**
+     * Database name for connection. Type: string.
+     */
+    database?: any;
+    /**
      * Linked service description.
      */
     description?: string;
@@ -25330,14 +25362,26 @@ export interface VerticaLinkedServiceResponse {
      */
     parameters?: {[key: string]: ParameterSpecificationResponse};
     /**
+     * The port for the connection. Type: integer.
+     */
+    port?: any;
+    /**
      * The Azure key vault secret reference of password in connection string.
      */
     pwd?: AzureKeyVaultSecretReferenceResponse;
+    /**
+     * Server name for connection. Type: string.
+     */
+    server?: any;
     /**
      * Type of linked service.
      * Expected value is 'Vertica'.
      */
     type: "Vertica";
+    /**
+     * Username for authentication. Type: string.
+     */
+    uid?: any;
 }
 
 /**

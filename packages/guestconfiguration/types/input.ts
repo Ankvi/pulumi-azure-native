@@ -65,3 +65,4 @@ export interface GuestConfigurationNavigationArgs {
      */
     version?: pulumi.Input<string>;
 }
+

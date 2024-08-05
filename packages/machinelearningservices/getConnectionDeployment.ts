@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 import * as types from "./types";
 /**
  * Azure REST API version: 2024-04-01-preview.
+ *
+ * Other available API versions: 2024-07-01-preview.
  */
 export function getConnectionDeployment(args: GetConnectionDeploymentArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectionDeploymentResult> {
 
@@ -56,6 +58,8 @@ export interface GetConnectionDeploymentResult {
 }
 /**
  * Azure REST API version: 2024-04-01-preview.
+ *
+ * Other available API versions: 2024-07-01-preview.
  */
 export function getConnectionDeploymentOutput(args: GetConnectionDeploymentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectionDeploymentResult> {
     return pulumi.output(args).apply((a: any) => getConnectionDeployment(a, opts))

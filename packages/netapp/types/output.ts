@@ -399,6 +399,36 @@ export interface PlacementKeyValuePairsResponse {
 }
 
 /**
+ * Quota report record properties
+ */
+export interface QuotaReportResponse {
+    /**
+     * Flag to indicate whether the quota is derived from default quota.
+     */
+    isDerivedQuota?: boolean;
+    /**
+     * Percentage of used size compared to total size.
+     */
+    percentageUsed?: number;
+    /**
+     * Specifies the total size limit in kibibytes for the user/group quota.
+     */
+    quotaLimitTotalInKiBs?: number;
+    /**
+     * Specifies the current usage in kibibytes for the user/group quota.
+     */
+    quotaLimitUsedInKiBs?: number;
+    /**
+     * UserID/GroupID/SID based on the quota target type. UserID and groupID can be found by running ‘id’ or ‘getent’ command for the user or group and SID can be found by running <wmic useraccount where name='user-name' get sid>
+     */
+    quotaTarget?: string;
+    /**
+     * Type of quota
+     */
+    quotaType?: string;
+}
+
+/**
  * Replication properties
  */
 export interface ReplicationObjectResponse {
@@ -894,6 +924,8 @@ export interface WeeklyScheduleResponse {
      */
     usedBytes?: number;
 }
+
+
 
 
 

@@ -5,7 +5,7 @@ import * as types from "./types";
  * The operation that retrieves information about a capacity reservation group.
  * Azure REST API version: 2023-03-01.
  *
- * Other available API versions: 2023-07-01, 2023-09-01, 2024-03-01.
+ * Other available API versions: 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01.
  */
 export function getCapacityReservationGroup(args: GetCapacityReservationGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetCapacityReservationGroupResult> {
 
@@ -77,7 +77,7 @@ export interface GetCapacityReservationGroupResult {
  * The operation that retrieves information about a capacity reservation group.
  * Azure REST API version: 2023-03-01.
  *
- * Other available API versions: 2023-07-01, 2023-09-01, 2024-03-01.
+ * Other available API versions: 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01.
  */
 export function getCapacityReservationGroupOutput(args: GetCapacityReservationGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCapacityReservationGroupResult> {
     return pulumi.output(args).apply((a: any) => getCapacityReservationGroup(a, opts))

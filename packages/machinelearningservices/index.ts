@@ -476,6 +476,11 @@ export const listComputeNodes: typeof import("./listComputeNodes").listComputeNo
 export const listComputeNodesOutput: typeof import("./listComputeNodes").listComputeNodesOutput = null as any;
 utilities.lazyLoad(exports, ["listComputeNodes","listComputeNodesOutput"], () => require("./listComputeNodes"));
 
+export { ListConnectionModelsArgs, ListConnectionModelsResult, ListConnectionModelsOutputArgs } from "./listConnectionModels";
+export const listConnectionModels: typeof import("./listConnectionModels").listConnectionModels = null as any;
+export const listConnectionModelsOutput: typeof import("./listConnectionModels").listConnectionModelsOutput = null as any;
+utilities.lazyLoad(exports, ["listConnectionModels","listConnectionModelsOutput"], () => require("./listConnectionModels"));
+
 export { ListDatastoreSecretsArgs, ListDatastoreSecretsResult, ListDatastoreSecretsOutputArgs } from "./listDatastoreSecrets";
 export const listDatastoreSecrets: typeof import("./listDatastoreSecrets").listDatastoreSecrets = null as any;
 export const listDatastoreSecretsOutput: typeof import("./listDatastoreSecrets").listDatastoreSecretsOutput = null as any;

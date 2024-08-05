@@ -230,6 +230,20 @@ export interface RegistrationInfoResponse {
     token?: string;
 }
 
+/**
+ * Represents a Minimal set of properties for RegistrationToken definition.
+ */
+export interface RegistrationTokenMinimalResponse {
+    /**
+     * Expiration time of registration token.
+     */
+    expirationTime?: string;
+    /**
+     * The registration token base64 encoded string.
+     */
+    token?: string;
+}
+
 export interface ResourceModelWithAllowedPropertySetResponseIdentity {
     /**
      * The principal ID of resource identity.

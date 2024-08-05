@@ -1425,6 +1425,28 @@ export interface DefenderForServersGcpOfferingResponseVmScanners {
 }
 
 /**
+ * Defender for Storage resource properties.
+ */
+export interface DefenderForStorageSettingPropertiesResponse {
+    /**
+     * Indicates whether Defender for Storage is enabled on this storage account.
+     */
+    isEnabled?: boolean;
+    /**
+     * Properties of Malware Scanning.
+     */
+    malwareScanning?: MalwareScanningPropertiesResponse;
+    /**
+     * Indicates whether the settings defined for this storage account should override the settings defined for the subscription.
+     */
+    overrideSubscriptionLevelSettings?: boolean;
+    /**
+     * Properties of Sensitive Data Discovery.
+     */
+    sensitiveDataDiscovery?: SensitiveDataDiscoveryPropertiesResponse;
+}
+
+/**
  * A custom alert rule that checks if a value (depends on the custom alert type) is denied.
  */
 export interface DenylistCustomAlertRuleResponse {
@@ -2153,13 +2175,9 @@ export interface JitNetworkAccessRequestVirtualMachineResponse {
  */
 export interface MalwareScanningPropertiesResponse {
     /**
-     * Defines the max GB to be scanned per Month. Set to -1 if no capping is needed.
+     * Properties of On Upload malware scanning.
      */
-    capGBPerMonth?: number;
-    /**
-     * Indicates whether On Upload malware scanning should be enabled.
-     */
-    isEnabled?: boolean;
+    onUpload?: OnUploadPropertiesResponse;
     /**
      * Upon failure or partial success. Additional data describing Malware Scanning enable/disable operation.
      */
@@ -2230,6 +2248,20 @@ export interface OnPremiseSqlResourceDetailsResponse {
      * Azure resource Id of the workspace the machine is attached to
      */
     workspaceId: string;
+}
+
+/**
+ * Properties of On Upload malware scanning.
+ */
+export interface OnUploadPropertiesResponse {
+    /**
+     * Defines the max GB to be scanned per Month. Set to -1 if no capping is needed.
+     */
+    capGBPerMonth?: number;
+    /**
+     * Indicates whether On Upload malware scanning should be enabled.
+     */
+    isEnabled?: boolean;
 }
 
 /**

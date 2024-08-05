@@ -5,7 +5,7 @@ import * as types from "./types";
  * The configurations regarding multiple standard load balancers. If not supplied, single load balancer mode will be used. Multiple standard load balancers mode will be used if at lease one configuration is supplied. There has to be a configuration named `kubernetes`.
  * Azure REST API version: 2024-03-02-preview.
  *
- * Other available API versions: 2024-04-02-preview.
+ * Other available API versions: 2024-04-02-preview, 2024-05-02-preview.
  */
 export function getLoadBalancer(args: GetLoadBalancerArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadBalancerResult> {
 
@@ -81,7 +81,7 @@ export interface GetLoadBalancerResult {
  * The configurations regarding multiple standard load balancers. If not supplied, single load balancer mode will be used. Multiple standard load balancers mode will be used if at lease one configuration is supplied. There has to be a configuration named `kubernetes`.
  * Azure REST API version: 2024-03-02-preview.
  *
- * Other available API versions: 2024-04-02-preview.
+ * Other available API versions: 2024-04-02-preview, 2024-05-02-preview.
  */
 export function getLoadBalancerOutput(args: GetLoadBalancerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLoadBalancerResult> {
     return pulumi.output(args).apply((a: any) => getLoadBalancer(a, opts))

@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Gets a role assignment for the caller on a enrollment Account. The operation is supported only for billing accounts with agreement type Enterprise Agreement.
  * Azure REST API version: 2019-10-01-preview.
+ *
+ * Other available API versions: 2024-04-01.
  */
 export function getBillingRoleAssignmentByEnrollmentAccount(args: GetBillingRoleAssignmentByEnrollmentAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetBillingRoleAssignmentByEnrollmentAccountResult> {
 
@@ -89,6 +91,8 @@ export interface GetBillingRoleAssignmentByEnrollmentAccountResult {
 /**
  * Gets a role assignment for the caller on a enrollment Account. The operation is supported only for billing accounts with agreement type Enterprise Agreement.
  * Azure REST API version: 2019-10-01-preview.
+ *
+ * Other available API versions: 2024-04-01.
  */
 export function getBillingRoleAssignmentByEnrollmentAccountOutput(args: GetBillingRoleAssignmentByEnrollmentAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBillingRoleAssignmentByEnrollmentAccountResult> {
     return pulumi.output(args).apply((a: any) => getBillingRoleAssignmentByEnrollmentAccount(a, opts))

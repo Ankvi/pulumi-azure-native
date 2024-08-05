@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * A StandbyContainerGroupPoolResource.
  * Azure REST API version: 2023-12-01-preview.
+ *
+ * Other available API versions: 2024-03-01-preview.
  */
 export class StandbyContainerGroupPool extends pulumi.CustomResource {
     /**
@@ -106,7 +108,7 @@ export class StandbyContainerGroupPool extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:standbypool/v20231201preview:StandbyContainerGroupPool" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:standbypool/v20231201preview:StandbyContainerGroupPool" }, { type: "azure-native:standbypool/v20240301preview:StandbyContainerGroupPool" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(StandbyContainerGroupPool.__pulumiType, name, resourceInputs, opts);
     }

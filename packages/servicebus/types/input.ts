@@ -301,3 +301,4 @@ export interface UserAssignedIdentityPropertiesArgs {
     userAssignedIdentity?: pulumi.Input<string>;
 }
 
+

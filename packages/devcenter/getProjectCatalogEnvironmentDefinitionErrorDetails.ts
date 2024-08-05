@@ -5,7 +5,7 @@ import * as types from "./types";
  * Gets Environment Definition error details
  * Azure REST API version: 2024-02-01.
  *
- * Other available API versions: 2024-05-01-preview, 2024-06-01-preview.
+ * Other available API versions: 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview.
  */
 export function getProjectCatalogEnvironmentDefinitionErrorDetails(args: GetProjectCatalogEnvironmentDefinitionErrorDetailsArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectCatalogEnvironmentDefinitionErrorDetailsResult> {
 
@@ -50,7 +50,7 @@ export interface GetProjectCatalogEnvironmentDefinitionErrorDetailsResult {
  * Gets Environment Definition error details
  * Azure REST API version: 2024-02-01.
  *
- * Other available API versions: 2024-05-01-preview, 2024-06-01-preview.
+ * Other available API versions: 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview.
  */
 export function getProjectCatalogEnvironmentDefinitionErrorDetailsOutput(args: GetProjectCatalogEnvironmentDefinitionErrorDetailsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectCatalogEnvironmentDefinitionErrorDetailsResult> {
     return pulumi.output(args).apply((a: any) => getProjectCatalogEnvironmentDefinitionErrorDetails(a, opts))

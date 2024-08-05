@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Lists SKUs available to the project
  * Azure REST API version: 2024-06-01-preview.
+ *
+ * Other available API versions: 2024-07-01-preview.
  */
 export function listSkusByProject(args: ListSkusByProjectArgs, opts?: pulumi.InvokeOptions): Promise<ListSkusByProjectResult> {
 
@@ -41,6 +43,8 @@ export interface ListSkusByProjectResult {
 /**
  * Lists SKUs available to the project
  * Azure REST API version: 2024-06-01-preview.
+ *
+ * Other available API versions: 2024-07-01-preview.
  */
 export function listSkusByProjectOutput(args: ListSkusByProjectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListSkusByProjectResult> {
     return pulumi.output(args).apply((a: any) => listSkusByProject(a, opts))

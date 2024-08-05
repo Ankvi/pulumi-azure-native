@@ -126,6 +126,11 @@ export const getProjectCatalogEnvironmentDefinitionErrorDetails: typeof import("
 export const getProjectCatalogEnvironmentDefinitionErrorDetailsOutput: typeof import("./getProjectCatalogEnvironmentDefinitionErrorDetails").getProjectCatalogEnvironmentDefinitionErrorDetailsOutput = null as any;
 utilities.lazyLoad(exports, ["getProjectCatalogEnvironmentDefinitionErrorDetails","getProjectCatalogEnvironmentDefinitionErrorDetailsOutput"], () => require("./getProjectCatalogEnvironmentDefinitionErrorDetails"));
 
+export { GetProjectCatalogImageDefinitionBuildDetailsArgs, GetProjectCatalogImageDefinitionBuildDetailsResult, GetProjectCatalogImageDefinitionBuildDetailsOutputArgs } from "./getProjectCatalogImageDefinitionBuildDetails";
+export const getProjectCatalogImageDefinitionBuildDetails: typeof import("./getProjectCatalogImageDefinitionBuildDetails").getProjectCatalogImageDefinitionBuildDetails = null as any;
+export const getProjectCatalogImageDefinitionBuildDetailsOutput: typeof import("./getProjectCatalogImageDefinitionBuildDetails").getProjectCatalogImageDefinitionBuildDetailsOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectCatalogImageDefinitionBuildDetails","getProjectCatalogImageDefinitionBuildDetailsOutput"], () => require("./getProjectCatalogImageDefinitionBuildDetails"));
+
 export { GetProjectCatalogSyncErrorDetailsArgs, GetProjectCatalogSyncErrorDetailsResult, GetProjectCatalogSyncErrorDetailsOutputArgs } from "./getProjectCatalogSyncErrorDetails";
 export const getProjectCatalogSyncErrorDetails: typeof import("./getProjectCatalogSyncErrorDetails").getProjectCatalogSyncErrorDetails = null as any;
 export const getProjectCatalogSyncErrorDetailsOutput: typeof import("./getProjectCatalogSyncErrorDetails").getProjectCatalogSyncErrorDetailsOutput = null as any;

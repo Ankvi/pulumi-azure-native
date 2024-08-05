@@ -1,6 +1,6 @@
 {
     "name": "@kengachu-pulumi/azure-native-certificateregistration",
-    "version": "2.47.1",
+    "version": "2.52.0",
     "description": "Pulumi Azure Native package for certificateregistration",
     "keywords": [
         "pulumi",

@@ -345,3 +345,4 @@ export interface VirtualMachinePropertiesAvailabilitySetsArgs {
 }
 
 
+

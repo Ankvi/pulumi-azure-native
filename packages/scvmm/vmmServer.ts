@@ -5,7 +5,7 @@ import * as types from "./types";
  * The VmmServers resource definition.
  * Azure REST API version: 2022-05-21-preview. Prior API version in Azure Native 1.x: 2020-06-05-preview.
  *
- * Other available API versions: 2023-04-01-preview, 2023-10-07.
+ * Other available API versions: 2023-04-01-preview, 2023-10-07, 2024-06-01.
  */
 export class VmmServer extends pulumi.CustomResource {
     /**
@@ -144,7 +144,7 @@ export class VmmServer extends pulumi.CustomResource {
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:scvmm/v20200605preview:VmmServer" }, { type: "azure-native:scvmm/v20220521preview:VmmServer" }, { type: "azure-native:scvmm/v20230401preview:VmmServer" }, { type: "azure-native:scvmm/v20231007:VmmServer" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:scvmm/v20200605preview:VmmServer" }, { type: "azure-native:scvmm/v20220521preview:VmmServer" }, { type: "azure-native:scvmm/v20230401preview:VmmServer" }, { type: "azure-native:scvmm/v20231007:VmmServer" }, { type: "azure-native:scvmm/v20240601:VmmServer" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(VmmServer.__pulumiType, name, resourceInputs, opts);
     }

@@ -1168,6 +1168,28 @@ export interface DefenderForServersGcpOfferingVmScannersArgs {
 }
 
 /**
+ * Defender for Storage resource properties.
+ */
+export interface DefenderForStorageSettingPropertiesArgs {
+    /**
+     * Indicates whether Defender for Storage is enabled on this storage account.
+     */
+    isEnabled?: pulumi.Input<boolean>;
+    /**
+     * Properties of Malware Scanning.
+     */
+    malwareScanning?: pulumi.Input<MalwareScanningPropertiesArgs>;
+    /**
+     * Indicates whether the settings defined for this storage account should override the settings defined for the subscription.
+     */
+    overrideSubscriptionLevelSettings?: pulumi.Input<boolean>;
+    /**
+     * Properties of Sensitive Data Discovery.
+     */
+    sensitiveDataDiscovery?: pulumi.Input<SensitiveDataDiscoveryPropertiesArgs>;
+}
+
+/**
  * A custom alert rule that checks if a value (depends on the custom alert type) is denied.
  */
 export interface DenylistCustomAlertRuleArgs {
@@ -1638,13 +1660,9 @@ export interface JitNetworkAccessRequestVirtualMachineArgs {
  */
 export interface MalwareScanningPropertiesArgs {
     /**
-     * Defines the max GB to be scanned per Month. Set to -1 if no capping is needed.
+     * Properties of On Upload malware scanning.
      */
-    capGBPerMonth?: pulumi.Input<number>;
-    /**
-     * Indicates whether On Upload malware scanning should be enabled.
-     */
-    isEnabled?: pulumi.Input<boolean>;
+    onUpload?: pulumi.Input<OnUploadPropertiesArgs>;
     /**
      * Optional. Resource id of an Event Grid Topic to send scan results to.
      */
@@ -1711,6 +1729,20 @@ export interface OnPremiseSqlResourceDetailsArgs {
      * Azure resource Id of the workspace the machine is attached to
      */
     workspaceId: pulumi.Input<string>;
+}
+
+/**
+ * Properties of On Upload malware scanning.
+ */
+export interface OnUploadPropertiesArgs {
+    /**
+     * Defines the max GB to be scanned per Month. Set to -1 if no capping is needed.
+     */
+    capGBPerMonth?: pulumi.Input<number>;
+    /**
+     * Indicates whether On Upload malware scanning should be enabled.
+     */
+    isEnabled?: pulumi.Input<boolean>;
 }
 
 /**

@@ -1,25 +1,31 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
- * Specifies additional XML formatted information that can be included in the Unattend.xml file, which is used by Windows Setup. Contents are defined by setting name, component name, and the pass in which the content is applied.
+ * Specifies additional XML formatted information that can be included in the
+ * Unattend.xml file, which is used by Windows Setup. Contents are defined by
+ * setting name, component name, and the pass in which the content is applied.
  */
 export interface AdditionalUnattendContentArgs {
     /**
-     * The component name. Currently, the only allowable value is Microsoft-Windows-Shell-Setup.
+     * The component name. Currently, the only allowable value is
+     * Microsoft-Windows-Shell-Setup.
      */
-    componentName?: pulumi.Input<enums.ComponentNames>;
+    componentName?: pulumi.Input<enums.ComponentName>;
     /**
-     * Specifies the XML formatted content that is added to the unattend.xml file for the specified path and component. The XML must be less than 4KB and must include the root element for the setting or feature that is being inserted.
+     * Specifies the XML formatted content that is added to the unattend.xml file for
+     * the specified path and component. The XML must be less than 4KB and must
+     * include the root element for the setting or feature that is being inserted.
      */
     content?: pulumi.Input<string>;
     /**
      * The pass name. Currently, the only allowable value is OobeSystem.
      */
-    passName?: pulumi.Input<enums.PassNames>;
+    passName?: pulumi.Input<enums.PassName>;
     /**
-     * Specifies the name of the setting to which the content applies. Possible values are: FirstLogonCommands and AutoLogon.
+     * Specifies the name of the setting to which the content applies. Possible values
+     * are: FirstLogonCommands and AutoLogon.
      */
-    settingName?: pulumi.Input<enums.SettingNames>;
+    settingName?: pulumi.Input<string | enums.SettingNames>;
 }
 
 /**
@@ -27,13 +33,15 @@ export interface AdditionalUnattendContentArgs {
  */
 export interface ApiEntityReferenceArgs {
     /**
-     * The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
+     * The ARM resource id in the form of
+     * /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
      */
     id?: pulumi.Input<string>;
 }
 
 /**
- * Contains the list of gallery applications that should be made available to the VM/VMSS
+ * Contains the list of gallery applications that should be made available to the
+ * VM/VMSS
  */
 export interface ApplicationProfileArgs {
     /**
@@ -43,17 +51,92 @@ export interface ApplicationProfileArgs {
 }
 
 /**
- * Specifies the billing related details of a Azure Spot VM or VMSS. Minimum api-version: 2019-03-01.
+ * Describes the base virtual machine profile for fleet
  */
-export interface BillingProfileArgs {
+export interface BaseVirtualMachineProfileArgs {
     /**
-     * Specifies the maximum price you are willing to pay for a Azure Spot VM/VMSS. This price is in US Dollars. <br><br> This price will be compared with the current Azure Spot price for the VM size. Also, the prices are compared at the time of create/update of Azure Spot VM/VMSS and the operation will only succeed if  the maxPrice is greater than the current Azure Spot price. <br><br> The maxPrice will also be used for evicting a Azure Spot VM/VMSS if the current Azure Spot price goes beyond the maxPrice after creation of VM/VMSS. <br><br> Possible values are: <br><br> - Any decimal value greater than zero. Example: 0.01538 <br><br> -1 – indicates default price to be up-to on-demand. <br><br> You can set the maxPrice to -1 to indicate that the Azure Spot VM/VMSS should not be evicted for price reasons. Also, the default max price is -1 if it is not provided by you. <br><br>Minimum api-version: 2019-03-01.
+     * Specifies the gallery applications that should be made available to the VM/VMSS
      */
-    maxPrice?: pulumi.Input<number>;
+    applicationProfile?: pulumi.Input<ApplicationProfileArgs>;
+    /**
+     * Specifies the capacity reservation related details of a scale set. Minimum
+     * api-version: 2021-04-01.
+     */
+    capacityReservation?: pulumi.Input<CapacityReservationProfileArgs>;
+    /**
+     * Specifies the boot diagnostic settings state.
+     */
+    diagnosticsProfile?: pulumi.Input<DiagnosticsProfileArgs>;
+    /**
+     * Specifies a collection of settings for extensions installed on virtual machines
+     * in the scale set.
+     */
+    extensionProfile?: pulumi.Input<VirtualMachineScaleSetExtensionProfileArgs>;
+    /**
+     * Specifies the hardware profile related details of a scale set. Minimum
+     * api-version: 2021-11-01.
+     */
+    hardwareProfile?: pulumi.Input<VirtualMachineScaleSetHardwareProfileArgs>;
+    /**
+     * Specifies that the image or disk that is being used was licensed on-premises.
+     * <br><br> Possible values for Windows Server operating system are: <br><br>
+     * Windows_Client <br><br> Windows_Server <br><br> Possible values for Linux
+     * Server operating system are: <br><br> RHEL_BYOS (for RHEL) <br><br> SLES_BYOS
+     * (for SUSE) <br><br> For more information, see [Azure Hybrid Use Benefit for
+     * Windows
+     * Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing)
+     * <br><br> [Azure Hybrid Use Benefit for Linux
+     * Server](https://docs.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux)
+     * <br><br> Minimum api-version: 2015-06-15
+     */
+    licenseType?: pulumi.Input<string>;
+    /**
+     * Specifies properties of the network interfaces of the virtual machines in the
+     * scale set.
+     */
+    networkProfile?: pulumi.Input<VirtualMachineScaleSetNetworkProfileArgs>;
+    /**
+     * Specifies the operating system settings for the virtual machines in the scale
+     * set.
+     */
+    osProfile?: pulumi.Input<VirtualMachineScaleSetOSProfileArgs>;
+    /**
+     * Specifies Scheduled Event related configurations.
+     */
+    scheduledEventsProfile?: pulumi.Input<ScheduledEventsProfileArgs>;
+    /**
+     * Specifies the security posture to be used for all virtual machines in the scale
+     * set. Minimum api-version: 2023-03-01
+     */
+    securityPostureReference?: pulumi.Input<SecurityPostureReferenceArgs>;
+    /**
+     * Specifies the Security related profile settings for the virtual machines in the
+     * scale set.
+     */
+    securityProfile?: pulumi.Input<SecurityProfileArgs>;
+    /**
+     * Specifies the service artifact reference id used to set same image version for
+     * all virtual machines in the scale set when using 'latest' image version.
+     * Minimum api-version: 2022-11-01
+     */
+    serviceArtifactReference?: pulumi.Input<ServiceArtifactReferenceArgs>;
+    /**
+     * Specifies the storage settings for the virtual machine disks.
+     */
+    storageProfile?: pulumi.Input<VirtualMachineScaleSetStorageProfileArgs>;
+    /**
+     * UserData for the virtual machines in the scale set, which must be base-64
+     * encoded. Customer should not pass any secrets in here. Minimum api-version:
+     * 2021-03-01.
+     */
+    userData?: pulumi.Input<string>;
 }
 
 /**
- * Boot Diagnostics is a debugging feature which allows you to view Console Output and Screenshot to diagnose VM status. You can easily view the output of your console log. Azure also enables you to see a screenshot of the VM from the hypervisor.
+ * Boot Diagnostics is a debugging feature which allows you to view Console Output
+ * and Screenshot to diagnose VM status. You can easily view the output of your
+ * console log. Azure also enables you to see a screenshot of the VM from the
+ * hypervisor.
  */
 export interface BootDiagnosticsArgs {
     /**
@@ -61,7 +144,9 @@ export interface BootDiagnosticsArgs {
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * Uri of the storage account to use for placing the console output and screenshot. If storageUri is not specified while enabling boot diagnostics, managed storage will be used.
+     * Uri of the storage account to use for placing the console output and
+     * screenshot. If storageUri is not specified while enabling boot diagnostics,
+     * managed storage will be used.
      */
     storageUri?: pulumi.Input<string>;
 }
@@ -71,7 +156,10 @@ export interface BootDiagnosticsArgs {
  */
 export interface CapacityReservationProfileArgs {
     /**
-     * Specifies the capacity reservation group resource id that should be used for allocating the virtual machine or scaleset vm instances provided enough capacity has been reserved. Please refer to https://aka.ms/CapacityReservation for more details.
+     * Specifies the capacity reservation group resource id that should be used for
+     * allocating the virtual machine or scaleset vm instances provided enough
+     * capacity has been reserved. Please refer to https://aka.ms/CapacityReservation
+     * for more details.
      */
     capacityReservationGroup?: pulumi.Input<SubResourceArgs>;
 }
@@ -83,7 +171,7 @@ export interface ComputeProfileArgs {
     /**
      * Base Virtual Machine Profile Properties to be specified according to "specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/{computeApiVersion}/virtualMachineScaleSet.json#/definitions/VirtualMachineScaleSetVMProfile"
      */
-    baseVirtualMachineProfile: pulumi.Input<VirtualMachineScaleSetVMProfileArgs>;
+    baseVirtualMachineProfile: pulumi.Input<BaseVirtualMachineProfileArgs>;
     /**
      * Specifies the Microsoft.Compute API version to use when creating underlying Virtual Machine scale sets and Virtual Machines.
      * The default value will be the latest supported computeApiVersion by Compute Fleet.
@@ -104,13 +192,19 @@ export interface ComputeProfileArgs {
  */
 export interface DiagnosticsProfileArgs {
     /**
-     * Boot Diagnostics is a debugging feature which allows you to view Console Output and Screenshot to diagnose VM status. **NOTE**: If storageUri is being specified then ensure that the storage account is in the same region and subscription as the VM. You can easily view the output of your console log. Azure also enables you to see a screenshot of the VM from the hypervisor.
+     * Boot Diagnostics is a debugging feature which allows you to view Console Output
+     * and Screenshot to diagnose VM status. **NOTE**: If storageUri is being
+     * specified then ensure that the storage account is in the same region and
+     * subscription as the VM. You can easily view the output of your console log.
+     * Azure also enables you to see a screenshot of the VM from the hypervisor.
      */
     bootDiagnostics?: pulumi.Input<BootDiagnosticsArgs>;
 }
 
 /**
- * Describes the parameters of ephemeral disk settings that can be specified for operating system disk. **Note:** The ephemeral disk settings can only be specified for managed disk.
+ * Describes the parameters of ephemeral disk settings that can be specified for
+ * operating system disk. **Note:** The ephemeral disk settings can only be
+ * specified for managed disk.
  */
 export interface DiffDiskSettingsArgs {
     /**
@@ -118,13 +212,22 @@ export interface DiffDiskSettingsArgs {
      */
     option?: pulumi.Input<string | enums.DiffDiskOptions>;
     /**
-     * Specifies the ephemeral disk placement for operating system disk. Possible values are: **CacheDisk,** **ResourceDisk.** The defaulting behavior is: **CacheDisk** if one is configured for the VM size otherwise **ResourceDisk** is used. Refer to the VM size documentation for Windows VM at https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at https://docs.microsoft.com/azure/virtual-machines/linux/sizes to check which VM sizes exposes a cache disk.
+     * Specifies the ephemeral disk placement for operating system disk. Possible
+     * values are: **CacheDisk,** **ResourceDisk.** The defaulting behavior is:
+     * **CacheDisk** if one is configured for the VM size otherwise **ResourceDisk**
+     * is used. Refer to the VM size documentation for Windows VM at
+     * https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at
+     * https://docs.microsoft.com/azure/virtual-machines/linux/sizes to check which VM
+     * sizes exposes a cache disk.
      */
     placement?: pulumi.Input<string | enums.DiffDiskPlacement>;
 }
 
 /**
- * Describes the parameter of customer managed disk encryption set resource id that can be specified for disk. **Note:** The disk encryption set resource id can only be specified for managed disk. Please refer https://aka.ms/mdssewithcmkoverview for more details.
+ * Describes the parameter of customer managed disk encryption set resource id
+ * that can be specified for disk. **Note:** The disk encryption set resource id
+ * can only be specified for managed disk. Please refer
+ * https://aka.ms/mdssewithcmkoverview for more details.
  */
 export interface DiskEncryptionSetParametersArgs {
     /**
@@ -134,7 +237,8 @@ export interface DiskEncryptionSetParametersArgs {
 }
 
 /**
- * Specifies the Managed Identity used by ADE to get access token for keyvault operations.
+ * Specifies the Managed Identity used by ADE to get access token for keyvault
+ * operations.
  */
 export interface EncryptionIdentityArgs {
     /**
@@ -144,11 +248,16 @@ export interface EncryptionIdentityArgs {
 }
 
 /**
- * Specifies information about the image to use. You can specify information about platform images, marketplace images, or virtual machine images. This element is required when you want to use a platform image, marketplace image, or virtual machine image, but is not used in other creation operations. NOTE: Image reference publisher and offer can only be set when you create the scale set.
+ * Specifies information about the image to use. You can specify information about
+ * platform images, marketplace images, or virtual machine images. This element is
+ * required when you want to use a platform image, marketplace image, or virtual
+ * machine image, but is not used in other creation operations. NOTE: Image
+ * reference publisher and offer can only be set when you create the scale set.
  */
 export interface ImageReferenceArgs {
     /**
-     * Specified the community gallery image unique id for vm deployment. This can be fetched from community gallery image GET call.
+     * Specified the community gallery image unique id for vm deployment. This can be
+     * fetched from community gallery image GET call.
      */
     communityGalleryImageId?: pulumi.Input<string>;
     /**
@@ -156,7 +265,8 @@ export interface ImageReferenceArgs {
      */
     id?: pulumi.Input<string>;
     /**
-     * Specifies the offer of the platform image or marketplace image used to create the virtual machine.
+     * Specifies the offer of the platform image or marketplace image used to create
+     * the virtual machine.
      */
     offer?: pulumi.Input<string>;
     /**
@@ -164,7 +274,8 @@ export interface ImageReferenceArgs {
      */
     publisher?: pulumi.Input<string>;
     /**
-     * Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.
+     * Specified the shared gallery image unique id for vm deployment. This can be
+     * fetched from shared gallery image GET call.
      */
     sharedGalleryImageId?: pulumi.Input<string>;
     /**
@@ -172,35 +283,18 @@ export interface ImageReferenceArgs {
      */
     sku?: pulumi.Input<string>;
     /**
-     * Specifies the version of the platform image or marketplace image used to create the virtual machine. The allowed formats are Major.Minor.Build or 'latest'. Major, Minor, and Build are decimal numbers. Specify 'latest' to use the latest version of an image available at deploy time. Even if you use 'latest', the VM image will not automatically update after deploy time even if a new version becomes available. Please do not use field 'version' for gallery image deployment, gallery image should always use 'id' field for deployment, to use 'latest' version of gallery image, just set '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageName}' in the 'id' field without version input.
+     * Specifies the version of the platform image or marketplace image used to create
+     * the virtual machine. The allowed formats are Major.Minor.Build or 'latest'.
+     * Major, Minor, and Build are decimal numbers. Specify 'latest' to use the latest
+     * version of an image available at deploy time. Even if you use 'latest', the VM
+     * image will not automatically update after deploy time even if a new version
+     * becomes available. Please do not use field 'version' for gallery image
+     * deployment, gallery image should always use 'id' field for deployment, to use 'latest'
+     * version of gallery image, just set
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageName}'
+     * in the 'id' field without version input.
      */
     version?: pulumi.Input<string>;
-}
-
-/**
- * Instance view status.
- */
-export interface InstanceViewStatusArgs {
-    /**
-     * The status code.
-     */
-    code?: pulumi.Input<string>;
-    /**
-     * The short localizable label for the status.
-     */
-    displayStatus?: pulumi.Input<string>;
-    /**
-     * The level code.
-     */
-    level?: pulumi.Input<enums.StatusLevelTypes>;
-    /**
-     * The detailed status message, including for alerts and error messages.
-     */
-    message?: pulumi.Input<string>;
-    /**
-     * The time of the status.
-     */
-    time?: pulumi.Input<string>;
 }
 
 /**
@@ -218,7 +312,9 @@ export interface KeyVaultSecretReferenceArgs {
 }
 
 /**
- * Specifies the Linux operating system settings on the virtual machine. For a list of supported Linux distributions, see [Linux on Azure-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+ * Specifies the Linux operating system settings on the virtual machine. For a
+ * list of supported Linux distributions, see [Linux on Azure-Endorsed
+ * Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
  */
 export interface LinuxConfigurationArgs {
     /**
@@ -226,7 +322,8 @@ export interface LinuxConfigurationArgs {
      */
     disablePasswordAuthentication?: pulumi.Input<boolean>;
     /**
-     * Indicates whether VMAgent Platform Updates is enabled for the Linux virtual machine. Default value is false.
+     * Indicates whether VMAgent Platform Updates is enabled for the Linux virtual
+     * machine. Default value is false.
      */
     enableVMAgentPlatformUpdates?: pulumi.Input<boolean>;
     /**
@@ -234,7 +331,10 @@ export interface LinuxConfigurationArgs {
      */
     patchSettings?: pulumi.Input<LinuxPatchSettingsArgs>;
     /**
-     * Indicates whether virtual machine agent should be provisioned on the virtual machine. When this property is not specified in the request body, default behavior is to set it to true. This will ensure that VM Agent is installed on the VM so that extensions can be added to the VM later.
+     * Indicates whether virtual machine agent should be provisioned on the virtual
+     * machine. When this property is not specified in the request body, default
+     * behavior is to set it to true. This will ensure that VM Agent is installed on
+     * the VM so that extensions can be added to the VM later.
      */
     provisionVMAgent?: pulumi.Input<boolean>;
     /**
@@ -248,21 +348,32 @@ export interface LinuxConfigurationArgs {
  */
 export interface LinuxPatchSettingsArgs {
     /**
-     * Specifies the mode of VM Guest Patch Assessment for the IaaS virtual machine.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - You control the timing of patch assessments on a virtual machine. <br /><br /> **AutomaticByPlatform** - The platform will trigger periodic patch assessments. The property provisionVMAgent must be true.
+     * Specifies the mode of VM Guest Patch Assessment for the IaaS virtual
+     * machine.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - You
+     * control the timing of patch assessments on a virtual machine. <br /><br />
+     * **AutomaticByPlatform** - The platform will trigger periodic patch assessments.
+     * The property provisionVMAgent must be true.
      */
     assessmentMode?: pulumi.Input<string | enums.LinuxPatchAssessmentMode>;
     /**
-     * Specifies additional settings for patch mode AutomaticByPlatform in VM Guest Patching on Linux.
+     * Specifies additional settings for patch mode AutomaticByPlatform in VM Guest
+     * Patching on Linux.
      */
     automaticByPlatformSettings?: pulumi.Input<LinuxVMGuestPatchAutomaticByPlatformSettingsArgs>;
     /**
-     * Specifies the mode of VM Guest Patching to IaaS virtual machine or virtual machines associated to virtual machine scale set with OrchestrationMode as Flexible.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - The virtual machine's default patching configuration is used. <br /><br /> **AutomaticByPlatform** - The virtual machine will be automatically updated by the platform. The property provisionVMAgent must be true
+     * Specifies the mode of VM Guest Patching to IaaS virtual machine or virtual
+     * machines associated to virtual machine scale set with OrchestrationMode as
+     * Flexible.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - The
+     * virtual machine's default patching configuration is used. <br /><br />
+     * **AutomaticByPlatform** - The virtual machine will be automatically updated by
+     * the platform. The property provisionVMAgent must be true
      */
     patchMode?: pulumi.Input<string | enums.LinuxVMGuestPatchMode>;
 }
 
 /**
- * Specifies additional settings to be applied when patch mode AutomaticByPlatform is selected in Linux patch settings.
+ * Specifies additional settings to be applied when patch mode AutomaticByPlatform
+ * is selected in Linux patch settings.
  */
 export interface LinuxVMGuestPatchAutomaticByPlatformSettingsArgs {
     /**
@@ -270,7 +381,8 @@ export interface LinuxVMGuestPatchAutomaticByPlatformSettingsArgs {
      */
     bypassPlatformSafetyChecksOnUserSchedule?: pulumi.Input<boolean>;
     /**
-     * Specifies the reboot setting for all AutomaticByPlatform patch installation operations.
+     * Specifies the reboot setting for all AutomaticByPlatform patch installation
+     * operations.
      */
     rebootSetting?: pulumi.Input<string | enums.LinuxVMGuestPatchAutomaticByPlatformRebootSetting>;
 }
@@ -289,13 +401,19 @@ export interface ManagedServiceIdentityArgs {
     userAssignedIdentities?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+/**
+ * Specifies OS Image Scheduled Event related configurations.
+ */
 export interface OSImageNotificationProfileArgs {
     /**
      * Specifies whether the OS Image Scheduled event is enabled or disabled.
      */
     enable?: pulumi.Input<boolean>;
     /**
-     * Length of time a Virtual Machine being reimaged or having its OS upgraded will have to potentially approve the OS Image Scheduled Event before the event is auto approved (timed out). The configuration is specified in ISO 8601 format, and the value must be 15 minutes (PT15M)
+     * Length of time a Virtual Machine being reimaged or having its OS upgraded will
+     * have to potentially approve the OS Image Scheduled Event before the event is
+     * auto approved (timed out). The configuration is specified in ISO 8601 format,
+     * and the value must not exceed 15 minutes (PT15M)
      */
     notBeforeTimeout?: pulumi.Input<string>;
 }
@@ -305,19 +423,36 @@ export interface OSImageNotificationProfileArgs {
  */
 export interface PatchSettingsArgs {
     /**
-     * Specifies the mode of VM Guest patch assessment for the IaaS virtual machine.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - You control the timing of patch assessments on a virtual machine.<br /><br /> **AutomaticByPlatform** - The platform will trigger periodic patch assessments. The property provisionVMAgent must be true. 
+     * Specifies the mode of VM Guest patch assessment for the IaaS virtual
+     * machine.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - You
+     * control the timing of patch assessments on a virtual machine.<br /><br />
+     * **AutomaticByPlatform** - The platform will trigger periodic patch assessments.
+     * The property provisionVMAgent must be true.
      */
     assessmentMode?: pulumi.Input<string | enums.WindowsPatchAssessmentMode>;
     /**
-     * Specifies additional settings for patch mode AutomaticByPlatform in VM Guest Patching on Windows.
+     * Specifies additional settings for patch mode AutomaticByPlatform in VM Guest
+     * Patching on Windows.
      */
     automaticByPlatformSettings?: pulumi.Input<WindowsVMGuestPatchAutomaticByPlatformSettingsArgs>;
     /**
-     * Enables customers to patch their Azure VMs without requiring a reboot. For enableHotpatching, the 'provisionVMAgent' must be set to true and 'patchMode' must be set to 'AutomaticByPlatform'.
+     * Enables customers to patch their Azure VMs without requiring a reboot. For
+     * enableHotpatching, the 'provisionVMAgent' must be set to true and 'patchMode'
+     * must be set to 'AutomaticByPlatform'.
      */
     enableHotpatching?: pulumi.Input<boolean>;
     /**
-     * Specifies the mode of VM Guest Patching to IaaS virtual machine or virtual machines associated to virtual machine scale set with OrchestrationMode as Flexible.<br /><br /> Possible values are:<br /><br /> **Manual** - You  control the application of patches to a virtual machine. You do this by applying patches manually inside the VM. In this mode, automatic updates are disabled; the property WindowsConfiguration.enableAutomaticUpdates must be false<br /><br /> **AutomaticByOS** - The virtual machine will automatically be updated by the OS. The property WindowsConfiguration.enableAutomaticUpdates must be true. <br /><br /> **AutomaticByPlatform** - the virtual machine will automatically updated by the platform. The properties provisionVMAgent and WindowsConfiguration.enableAutomaticUpdates must be true 
+     * Specifies the mode of VM Guest Patching to IaaS virtual machine or virtual
+     * machines associated to virtual machine scale set with OrchestrationMode as
+     * Flexible.<br /><br /> Possible values are:<br /><br /> **Manual** - You
+     * control the application of patches to a virtual machine. You do this by
+     * applying patches manually inside the VM. In this mode, automatic updates are
+     * disabled; the property WindowsConfiguration.enableAutomaticUpdates must be
+     * false<br /><br /> **AutomaticByOS** - The virtual machine will automatically be
+     * updated by the OS. The property WindowsConfiguration.enableAutomaticUpdates
+     * must be true. <br /><br /> **AutomaticByPlatform** - the virtual machine will
+     * automatically updated by the platform. The properties provisionVMAgent and
+     * WindowsConfiguration.enableAutomaticUpdates must be true
      */
     patchMode?: pulumi.Input<string | enums.WindowsVMGuestPatchMode>;
 }
@@ -349,25 +484,32 @@ export interface PlanArgs {
 }
 
 /**
- * Specifies ProxyAgent settings while creating the virtual machine. Minimum api-version: 2023-09-01.
+ * Specifies ProxyAgent settings while creating the virtual machine. Minimum
+ * api-version: 2023-09-01.
  */
 export interface ProxyAgentSettingsArgs {
     /**
-     * Specifies whether ProxyAgent feature should be enabled on the virtual machine or virtual machine scale set.
+     * Specifies whether ProxyAgent feature should be enabled on the virtual machine
+     * or virtual machine scale set.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * Increase the value of this property allows user to reset the key used for securing communication channel between guest and host.
+     * Increase the value of this property allows user to reset the key used for
+     * securing communication channel between guest and host.
      */
     keyIncarnationId?: pulumi.Input<number>;
     /**
-     * Specifies the mode that ProxyAgent will execute on if the feature is enabled. ProxyAgent will start to audit or monitor but not enforce access control over requests to host endpoints in Audit mode, while in Enforce mode it will enforce access control. The default value is Enforce mode.
+     * Specifies the mode that ProxyAgent will execute on if the feature is enabled.
+     * ProxyAgent will start to audit or monitor but not enforce access control over
+     * requests to host endpoints in Audit mode, while in Enforce mode it will enforce
+     * access control. The default value is Enforce mode.
      */
     mode?: pulumi.Input<string | enums.Mode>;
 }
 
 /**
- * Describes the public IP Sku. It can only be set with OrchestrationMode as Flexible.
+ * Describes the public IP Sku. It can only be set with OrchestrationMode as
+ * Flexible.
  */
 export interface PublicIPAddressSkuArgs {
     /**
@@ -398,6 +540,9 @@ export interface RegularPriorityProfileArgs {
     minCapacity?: pulumi.Input<number>;
 }
 
+/**
+ * Specifies Scheduled Event related configurations.
+ */
 export interface ScheduledEventsProfileArgs {
     /**
      * Specifies OS Image Scheduled Event related configurations.
@@ -410,51 +555,71 @@ export interface ScheduledEventsProfileArgs {
 }
 
 /**
- * Specifies the security posture to be used for all virtual machines in the scale set. Minimum api-version: 2023-03-01
+ * Specifies the security posture to be used for all virtual machines in the scale
+ * set. Minimum api-version: 2023-03-01
  */
 export interface SecurityPostureReferenceArgs {
     /**
-     * List of virtual machine extensions to exclude when applying the Security Posture.
+     * List of virtual machine extension names to exclude when applying the security
+     * posture.
      */
-    excludeExtensions?: pulumi.Input<pulumi.Input<VirtualMachineExtensionArgs>[]>;
+    excludeExtensions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The security posture reference id in the form of /CommunityGalleries/{communityGalleryName}/securityPostures/{securityPostureName}/versions/{major.minor.patch}|{major.*}|latest
+     * The security posture reference id in the form of
+     * /CommunityGalleries/{communityGalleryName}/securityPostures/{securityPostureName}/versions/{major.minor.patch}|{major.*}|latest
      */
     id?: pulumi.Input<string>;
+    /**
+     * Whether the security posture can be overridden by the user.
+     */
+    isOverridable?: pulumi.Input<boolean>;
 }
 
 /**
- * Specifies the Security profile settings for the virtual machine or virtual machine scale set.
+ * Specifies the Security profile settings for the virtual machine or virtual
+ * machine scale set.
  */
 export interface SecurityProfileArgs {
     /**
-     * This property can be used by user in the request to enable or disable the Host Encryption for the virtual machine or virtual machine scale set. This will enable the encryption for all the disks including Resource/Temp disk at host itself. The default behavior is: The Encryption at host will be disabled unless this property is set to true for the resource.
+     * This property can be used by user in the request to enable or disable the Host
+     * Encryption for the virtual machine or virtual machine scale set. This will
+     * enable the encryption for all the disks including Resource/Temp disk at host
+     * itself. The default behavior is: The Encryption at host will be disabled unless
+     * this property is set to true for the resource.
      */
     encryptionAtHost?: pulumi.Input<boolean>;
     /**
-     * Specifies the Managed Identity used by ADE to get access token for keyvault operations.
+     * Specifies the Managed Identity used by ADE to get access token for keyvault
+     * operations.
      */
     encryptionIdentity?: pulumi.Input<EncryptionIdentityArgs>;
     /**
-     * Specifies ProxyAgent settings while creating the virtual machine. Minimum api-version: 2023-09-01.
+     * Specifies ProxyAgent settings while creating the virtual machine. Minimum
+     * api-version: 2023-09-01.
      */
     proxyAgentSettings?: pulumi.Input<ProxyAgentSettingsArgs>;
     /**
-     * Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. The default behavior is: UefiSettings will not be enabled unless this property is set.
+     * Specifies the SecurityType of the virtual machine. It has to be set to any
+     * specified value to enable UefiSettings. The default behavior is: UefiSettings
+     * will not be enabled unless this property is set.
      */
     securityType?: pulumi.Input<string | enums.SecurityTypes>;
     /**
-     * Specifies the security settings like secure boot and vTPM used while creating the virtual machine. Minimum api-version: 2020-12-01.
+     * Specifies the security settings like secure boot and vTPM used while creating
+     * the virtual machine. Minimum api-version: 2020-12-01.
      */
     uefiSettings?: pulumi.Input<UefiSettingsArgs>;
 }
 
 /**
- * Specifies the service artifact reference id used to set same image version for all virtual machines in the scale set when using 'latest' image version. Minimum api-version: 2022-11-01
+ * Specifies the service artifact reference id used to set same image version for
+ * all virtual machines in the scale set when using 'latest' image version.
+ * Minimum api-version: 2022-11-01
  */
 export interface ServiceArtifactReferenceArgs {
     /**
-     * The service artifact reference id in the form of /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/serviceArtifacts/{serviceArtifactName}/vmArtifactsProfiles/{vmArtifactsProfilesName}
+     * The service artifact reference id in the form of
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/serviceArtifacts/{serviceArtifactName}/vmArtifactsProfiles/{vmArtifactsProfilesName}
      */
     id?: pulumi.Input<string>;
 }
@@ -503,19 +668,28 @@ export interface SshConfigurationArgs {
 }
 
 /**
- * Contains information about SSH certificate public key and the path on the Linux VM where the public key is placed.
+ * Contains information about SSH certificate public key and the path on the Linux
+ * VM where the public key is placed.
  */
 export interface SshPublicKeyArgs {
     /**
-     * SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure]https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
+     * SSH public key certificate used to authenticate with the VM through ssh. The
+     * key needs to be at least 2048-bit and in ssh-rsa format. For creating ssh keys,
+     * see [Create SSH keys on Linux and Mac for Linux VMs in
+     * Azure]https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
      */
     keyData?: pulumi.Input<string>;
     /**
-     * Specifies the full path on the created VM where ssh public key is stored. If the file already exists, the specified key is appended to the file. Example: /home/user/.ssh/authorized_keys
+     * Specifies the full path on the created VM where ssh public key is stored. If
+     * the file already exists, the specified key is appended to the file. Example:
+     * /home/user/.ssh/authorized_keys
      */
     path?: pulumi.Input<string>;
 }
 
+/**
+ * Describes SubResource
+ */
 export interface SubResourceArgs {
     /**
      * Sub-resource ID. Both absolute resource ID and a relative resource ID are accepted.
@@ -526,55 +700,74 @@ export interface SubResourceArgs {
     id?: pulumi.Input<string>;
 }
 
+/**
+ * Specifies Terminate Scheduled Event related configurations.
+ */
 export interface TerminateNotificationProfileArgs {
     /**
      * Specifies whether the Terminate Scheduled event is enabled or disabled.
      */
     enable?: pulumi.Input<boolean>;
     /**
-     * Configurable length of time a Virtual Machine being deleted will have to potentially approve the Terminate Scheduled Event before the event is auto approved (timed out). The configuration must be specified in ISO 8601 format, the default value is 5 minutes (PT5M)
+     * Configurable length of time a Virtual Machine being deleted will have to
+     * potentially approve the Terminate Scheduled Event before the event is auto
+     * approved (timed out). The configuration must be specified in ISO 8601 format,
+     * the default value is 5 minutes (PT5M)
      */
     notBeforeTimeout?: pulumi.Input<string>;
 }
 
 /**
- * Specifies the security settings like secure boot and vTPM used while creating the virtual machine. Minimum api-version: 2020-12-01.
+ * Specifies the security settings like secure boot and vTPM used while creating
+ * the virtual machine. Minimum api-version: 2020-12-01.
  */
 export interface UefiSettingsArgs {
     /**
-     * Specifies whether secure boot should be enabled on the virtual machine. Minimum api-version: 2020-12-01.
+     * Specifies whether secure boot should be enabled on the virtual machine. Minimum
+     * api-version: 2020-12-01.
      */
     secureBootEnabled?: pulumi.Input<boolean>;
     /**
-     * Specifies whether vTPM should be enabled on the virtual machine. Minimum api-version: 2020-12-01.
+     * Specifies whether vTPM should be enabled on the virtual machine. Minimum
+     * api-version: 2020-12-01.
      */
     vTpmEnabled?: pulumi.Input<boolean>;
 }
 
 /**
- * Specifies the security profile settings for the managed disk. **Note:** It can only be set for Confidential VMs.
+ * Specifies the security profile settings for the managed disk. **Note:** It can
+ * only be set for Confidential VMs.
  */
 export interface VMDiskSecurityProfileArgs {
     /**
-     * Specifies the customer managed disk encryption set resource id for the managed disk that is used for Customer Managed Key encrypted ConfidentialVM OS Disk and VMGuest blob.
+     * Specifies the customer managed disk encryption set resource id for the managed
+     * disk that is used for Customer Managed Key encrypted ConfidentialVM OS Disk and
+     * VMGuest blob.
      */
     diskEncryptionSet?: pulumi.Input<DiskEncryptionSetParametersArgs>;
     /**
-     * Specifies the EncryptionType of the managed disk. It is set to DiskWithVMGuestState for encryption of the managed disk along with VMGuestState blob, VMGuestStateOnly for encryption of just the VMGuestState blob, and NonPersistedTPM for not persisting firmware state in the VMGuestState blob.. **Note:** It can be set for only Confidential VMs.
+     * Specifies the EncryptionType of the managed disk. It is set to
+     * DiskWithVMGuestState for encryption of the managed disk along with VMGuestState
+     * blob, VMGuestStateOnly for encryption of just the VMGuestState blob, and
+     * NonPersistedTPM for not persisting firmware state in the VMGuestState blob..
+     * **Note:** It can be set for only Confidential VMs.
      */
     securityEncryptionType?: pulumi.Input<string | enums.SecurityEncryptionTypes>;
 }
 
 /**
- * Specifies the required information to reference a compute gallery application version
+ * Specifies the required information to reference a compute gallery application
+ * version
  */
 export interface VMGalleryApplicationArgs {
     /**
-     * Optional, Specifies the uri to an azure blob that will replace the default configuration for the package if provided
+     * Optional, Specifies the uri to an azure blob that will replace the default
+     * configuration for the package if provided
      */
     configurationReference?: pulumi.Input<string>;
     /**
-     * If set to true, when a new Gallery Application version is available in PIR/SIG, it will be automatically updated for the VM/VMSS
+     * If set to true, when a new Gallery Application version is available in PIR/SIG,
+     * it will be automatically updated for the VM/VMSS
      */
     enableAutomaticUpgrade?: pulumi.Input<boolean>;
     /**
@@ -582,7 +775,8 @@ export interface VMGalleryApplicationArgs {
      */
     order?: pulumi.Input<number>;
     /**
-     * Specifies the GalleryApplicationVersion resource id on the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{application}/versions/{version}
+     * Specifies the GalleryApplicationVersion resource id on the form of
+     * /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{application}/versions/{version}
      */
     packageReferenceId: pulumi.Input<string>;
     /**
@@ -590,7 +784,8 @@ export interface VMGalleryApplicationArgs {
      */
     tags?: pulumi.Input<string>;
     /**
-     * Optional, If true, any failure for any operation in the VmApplication will fail the deployment
+     * Optional, If true, any failure for any operation in the VmApplication will fail
+     * the deployment
      */
     treatFailureAsDeploymentFailure?: pulumi.Input<boolean>;
 }
@@ -600,25 +795,53 @@ export interface VMGalleryApplicationArgs {
  */
 export interface VMSizePropertiesArgs {
     /**
-     * Specifies the number of vCPUs available for the VM. When this property is not specified in the request body the default behavior is to set it to the value of vCPUs available for that VM size exposed in api response of [List all available virtual machine sizes in a region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).
+     * Specifies the number of vCPUs available for the VM. When this property is not
+     * specified in the request body the default behavior is to set it to the value of
+     * vCPUs available for that VM size exposed in api response of [List all available
+     * virtual machine sizes in a
+     * region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).
      */
     vCPUsAvailable?: pulumi.Input<number>;
     /**
-     * Specifies the vCPU to physical core ratio. When this property is not specified in the request body the default behavior is set to the value of vCPUsPerCore for the VM Size exposed in api response of [List all available virtual machine sizes in a region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list). **Setting this property to 1 also means that hyper-threading is disabled.**
+     * Specifies the vCPU to physical core ratio. When this property is not specified
+     * in the request body the default behavior is set to the value of vCPUsPerCore
+     * for the VM Size exposed in api response of [List all available virtual machine
+     * sizes in a
+     * region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).
+     * **Setting this property to 1 also means that hyper-threading is disabled.**
      */
     vCPUsPerCore?: pulumi.Input<number>;
 }
 
 /**
- * Describes a single certificate reference in a Key Vault, and where the certificate should reside on the VM.
+ * Describes a single certificate reference in a Key Vault, and where the
+ * certificate should reside on the VM.
  */
 export interface VaultCertificateArgs {
     /**
-     * For Windows VMs, specifies the certificate store on the Virtual Machine to which the certificate should be added. The specified certificate store is implicitly in the LocalMachine account. For Linux VMs, the certificate file is placed under the /var/lib/waagent directory, with the file name &lt;UppercaseThumbprint&gt;.crt for the X509 certificate file and &lt;UppercaseThumbprint&gt;.prv for private key. Both of these files are .pem formatted.
+     * For Windows VMs, specifies the certificate store on the Virtual Machine to
+     * which the certificate should be added. The specified certificate store is
+     * implicitly in the LocalMachine account. For Linux VMs, the certificate file is
+     * placed under the /var/lib/waagent directory, with the file name
+     * &lt;UppercaseThumbprint&gt;.crt for the X509 certificate file and
+     * &lt;UppercaseThumbprint&gt;.prv for private key. Both of these files are .pem
+     * formatted.
      */
     certificateStore?: pulumi.Input<string>;
     /**
-     * This is the URL of a certificate that has been uploaded to Key Vault as a secret. For adding a secret to the Key Vault, see [Add a key or secret to the key vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add). In this case, your certificate needs to be It is the Base64 encoding of the following JSON Object which is encoded in UTF-8: <br><br> {<br>  "data":"<Base64-encoded-certificate>",<br>  "dataType":"pfx",<br>  "password":"<pfx-file-password>"<br>} <br> To install certificates on a virtual machine it is recommended to use the [Azure Key Vault virtual machine extension for Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux) or the [Azure Key Vault virtual machine extension for Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
+     * This is the URL of a certificate that has been uploaded to Key Vault as a
+     * secret. For adding a secret to the Key Vault, see [Add a key or secret to the
+     * key
+     * vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add).
+     * In this case, your certificate needs to be It is the Base64 encoding of the
+     * following JSON Object which is encoded in UTF-8: <br><br> {<br>
+     * "data":"<Base64-encoded-certificate>",<br>  "dataType":"pfx",<br>
+     * "password":"<pfx-file-password>"<br>} <br> To install certificates on a virtual
+     * machine it is recommended to use the [Azure Key Vault virtual machine extension
+     * for
+     * Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
+     * or the [Azure Key Vault virtual machine extension for
+     * Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
      */
     certificateUrl?: pulumi.Input<string>;
 }
@@ -628,7 +851,8 @@ export interface VaultCertificateArgs {
  */
 export interface VaultSecretGroupArgs {
     /**
-     * The relative URL of the Key Vault containing all of the certificates in VaultCertificates.
+     * The relative URL of the Key Vault containing all of the certificates in
+     * VaultCertificates.
      */
     sourceVault?: pulumi.Input<SubResourceArgs>;
     /**
@@ -648,123 +872,51 @@ export interface VirtualHardDiskArgs {
 }
 
 /**
- * Describes a Virtual Machine Extension.
- */
-export interface VirtualMachineExtensionArgs {
-    /**
-     * Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
-     */
-    autoUpgradeMinorVersion?: pulumi.Input<boolean>;
-    /**
-     * Indicates whether the extension should be automatically upgraded by the platform if there is a newer version of the extension available.
-     */
-    enableAutomaticUpgrade?: pulumi.Input<boolean>;
-    /**
-     * How the extension handler should be forced to update even if the extension configuration has not changed.
-     */
-    forceUpdateTag?: pulumi.Input<string>;
-    /**
-     * The virtual machine extension instance view.
-     */
-    instanceView?: pulumi.Input<VirtualMachineExtensionInstanceViewArgs>;
-    /**
-     * Resource location
-     */
-    location?: pulumi.Input<string>;
-    /**
-     * The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
-     */
-    protectedSettings?: any;
-    /**
-     * The extensions protected settings that are passed by reference, and consumed from key vault
-     */
-    protectedSettingsFromKeyVault?: pulumi.Input<KeyVaultSecretReferenceArgs>;
-    /**
-     * Collection of extension names after which this extension needs to be provisioned.
-     */
-    provisionAfterExtensions?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The name of the extension handler publisher.
-     */
-    publisher?: pulumi.Input<string>;
-    /**
-     * Json formatted public settings for the extension.
-     */
-    settings?: any;
-    /**
-     * Indicates whether failures stemming from the extension will be suppressed (Operational failures such as not connecting to the VM will not be suppressed regardless of this value). The default is false.
-     */
-    suppressFailures?: pulumi.Input<boolean>;
-    /**
-     * Resource tags
-     */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Specifies the type of the extension; an example is "CustomScriptExtension".
-     */
-    type?: pulumi.Input<string>;
-    /**
-     * Specifies the version of the script handler.
-     */
-    typeHandlerVersion?: pulumi.Input<string>;
-}
-
-/**
- * The instance view of a virtual machine extension.
- */
-export interface VirtualMachineExtensionInstanceViewArgs {
-    /**
-     * The virtual machine extension name.
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * The resource status information.
-     */
-    statuses?: pulumi.Input<pulumi.Input<InstanceViewStatusArgs>[]>;
-    /**
-     * The resource status information.
-     */
-    substatuses?: pulumi.Input<pulumi.Input<InstanceViewStatusArgs>[]>;
-    /**
-     * Specifies the type of the extension; an example is "CustomScriptExtension".
-     */
-    type?: pulumi.Input<string>;
-    /**
-     * Specifies the version of the script handler.
-     */
-    typeHandlerVersion?: pulumi.Input<string>;
-}
-
-/**
  * Describes a virtual machine scale set data disk.
  */
 export interface VirtualMachineScaleSetDataDiskArgs {
     /**
-     * Specifies the caching requirements. Possible values are: **None,** **ReadOnly,** **ReadWrite.** The default values are: **None for Standard storage. ReadOnly for Premium storage.**
+     * Specifies the caching requirements. Possible values are: **None,**
+     * **ReadOnly,** **ReadWrite.** The default values are: **None for Standard
+     * storage. ReadOnly for Premium storage.**
      */
-    caching?: pulumi.Input<enums.CachingTypes>;
+    caching?: pulumi.Input<string | enums.CachingTypes>;
     /**
      * The create option.
      */
     createOption: pulumi.Input<string | enums.DiskCreateOptionTypes>;
     /**
-     * Specifies whether data disk should be deleted or detached upon VMSS Flex deletion (This feature is available for VMSS with Flexible OrchestrationMode only).<br><br> Possible values: <br><br> **Delete** If this value is used, the data disk is deleted when the VMSS Flex VM is deleted.<br><br> **Detach** If this value is used, the data disk is retained after VMSS Flex VM is deleted.<br><br> The default value is set to **Delete**.
+     * Specifies whether data disk should be deleted or detached upon VMSS Flex
+     * deletion (This feature is available for VMSS with Flexible OrchestrationMode
+     * only).<br><br> Possible values: <br><br> **Delete** If this value is used, the
+     * data disk is deleted when the VMSS Flex VM is deleted.<br><br> **Detach** If
+     * this value is used, the data disk is retained after VMSS Flex VM is
+     * deleted.<br><br> The default value is set to **Delete**.
      */
     deleteOption?: pulumi.Input<string | enums.DiskDeleteOptionTypes>;
     /**
-     * Specifies the Read-Write IOPS for the managed disk. Should be used only when StorageAccountType is UltraSSD_LRS. If not specified, a default value would be assigned based on diskSizeGB.
+     * Specifies the Read-Write IOPS for the managed disk. Should be used only when
+     * StorageAccountType is UltraSSD_LRS. If not specified, a default value would be
+     * assigned based on diskSizeGB.
      */
     diskIOPSReadWrite?: pulumi.Input<number>;
     /**
-     * Specifies the bandwidth in MB per second for the managed disk. Should be used only when StorageAccountType is UltraSSD_LRS. If not specified, a default value would be assigned based on diskSizeGB.
+     * Specifies the bandwidth in MB per second for the managed disk. Should be used
+     * only when StorageAccountType is UltraSSD_LRS. If not specified, a default value
+     * would be assigned based on diskSizeGB.
      */
     diskMBpsReadWrite?: pulumi.Input<number>;
     /**
-     * Specifies the size of an empty data disk in gigabytes. This element can be used to overwrite the size of the disk in a virtual machine image. The property diskSizeGB is the number of bytes x 1024^3 for the disk and the value cannot be larger than 1023.
+     * Specifies the size of an empty data disk in gigabytes. This element can be used
+     * to overwrite the size of the disk in a virtual machine image. The property
+     * diskSizeGB is the number of bytes x 1024^3 for the disk and the value cannot be
+     * larger than 1023.
      */
     diskSizeGB?: pulumi.Input<number>;
     /**
-     * Specifies the logical unit number of the data disk. This value is used to identify data disks within the VM and therefore must be unique for each data disk attached to a VM.
+     * Specifies the logical unit number of the data disk. This value is used to
+     * identify data disks within the VM and therefore must be unique for each data
+     * disk attached to a VM.
      */
     lun: pulumi.Input<number>;
     /**
@@ -786,31 +938,66 @@ export interface VirtualMachineScaleSetDataDiskArgs {
  */
 export interface VirtualMachineScaleSetExtensionArgs {
     /**
-     * Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
-     */
-    autoUpgradeMinorVersion?: pulumi.Input<boolean>;
-    /**
-     * Indicates whether the extension should be automatically upgraded by the platform if there is a newer version of the extension available.
-     */
-    enableAutomaticUpgrade?: pulumi.Input<boolean>;
-    /**
-     * If a value is provided and is different from the previous value, the extension handler will be forced to update even if the extension configuration has not changed.
-     */
-    forceUpdateTag?: pulumi.Input<string>;
-    /**
      * The name of the extension.
      */
     name?: pulumi.Input<string>;
     /**
-     * The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
+     * Describes the properties of a Virtual Machine Scale Set Extension.
+     */
+    properties?: pulumi.Input<VirtualMachineScaleSetExtensionPropertiesArgs>;
+}
+
+/**
+ * Describes a virtual machine scale set extension profile.
+ */
+export interface VirtualMachineScaleSetExtensionProfileArgs {
+    /**
+     * The virtual machine scale set child extension resources.
+     */
+    extensions?: pulumi.Input<pulumi.Input<VirtualMachineScaleSetExtensionArgs>[]>;
+    /**
+     * Specifies the time alloted for all extensions to start. The time duration
+     * should be between 15 minutes and 120 minutes (inclusive) and should be
+     * specified in ISO 8601 format. The default value is 90 minutes (PT1H30M).
+     * Minimum api-version: 2020-06-01.
+     */
+    extensionsTimeBudget?: pulumi.Input<string>;
+}
+
+/**
+ * Describes the properties of a Virtual Machine Scale Set Extension.
+ */
+export interface VirtualMachineScaleSetExtensionPropertiesArgs {
+    /**
+     * Indicates whether the extension should use a newer minor version if one is
+     * available at deployment time. Once deployed, however, the extension will not
+     * upgrade minor versions unless redeployed, even with this property set to true.
+     */
+    autoUpgradeMinorVersion?: pulumi.Input<boolean>;
+    /**
+     * Indicates whether the extension should be automatically upgraded by the
+     * platform if there is a newer version of the extension available.
+     */
+    enableAutomaticUpgrade?: pulumi.Input<boolean>;
+    /**
+     * If a value is provided and is different from the previous value, the extension
+     * handler will be forced to update even if the extension configuration has not
+     * changed.
+     */
+    forceUpdateTag?: pulumi.Input<string>;
+    /**
+     * The extension can contain either protectedSettings or
+     * protectedSettingsFromKeyVault or no protected settings at all.
      */
     protectedSettings?: any;
     /**
-     * The extensions protected settings that are passed by reference, and consumed from key vault
+     * The extensions protected settings that are passed by reference, and consumed
+     * from key vault
      */
     protectedSettingsFromKeyVault?: pulumi.Input<KeyVaultSecretReferenceArgs>;
     /**
-     * Collection of extension names after which this extension needs to be provisioned.
+     * Collection of extension names after which this extension needs to be
+     * provisioned.
      */
     provisionAfterExtensions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -822,7 +1009,9 @@ export interface VirtualMachineScaleSetExtensionArgs {
      */
     settings?: any;
     /**
-     * Indicates whether failures stemming from the extension will be suppressed (Operational failures such as not connecting to the VM will not be suppressed regardless of this value). The default is false.
+     * Indicates whether failures stemming from the extension will be suppressed
+     * (Operational failures such as not connecting to the VM will not be suppressed
+     * regardless of this value). The default is false.
      */
     suppressFailures?: pulumi.Input<boolean>;
     /**
@@ -836,25 +1025,13 @@ export interface VirtualMachineScaleSetExtensionArgs {
 }
 
 /**
- * Describes a virtual machine scale set extension profile.
- */
-export interface VirtualMachineScaleSetExtensionProfileArgs {
-    /**
-     * The virtual machine scale set child extension resources.
-     */
-    extensions?: pulumi.Input<pulumi.Input<VirtualMachineScaleSetExtensionArgs>[]>;
-    /**
-     * Specifies the time alloted for all extensions to start. The time duration should be between 15 minutes and 120 minutes (inclusive) and should be specified in ISO 8601 format. The default value is 90 minutes (PT1H30M). Minimum api-version: 2020-06-01.
-     */
-    extensionsTimeBudget?: pulumi.Input<string>;
-}
-
-/**
  * Specifies the hardware settings for the virtual machine scale set.
  */
 export interface VirtualMachineScaleSetHardwareProfileArgs {
     /**
-     * Specifies the properties for customizing the size of the virtual machine. Minimum api-version: 2021-11-01. Please follow the instructions in [VM Customization](https://aka.ms/vmcustomization) for more details.
+     * Specifies the properties for customizing the size of the virtual machine.
+     * Minimum api-version: 2021-11-01. Please follow the instructions in [VM
+     * Customization](https://aka.ms/vmcustomization) for more details.
      */
     vmSizeProperties?: pulumi.Input<VMSizePropertiesArgs>;
 }
@@ -864,7 +1041,26 @@ export interface VirtualMachineScaleSetHardwareProfileArgs {
  */
 export interface VirtualMachineScaleSetIPConfigurationArgs {
     /**
-     * Specifies an array of references to backend address pools of application gateways. A scale set can reference backend address pools of multiple application gateways. Multiple scale sets cannot use the same application gateway.
+     * The IP configuration name.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Describes a virtual machine scale set network profile's IP configuration
+     * properties.
+     */
+    properties?: pulumi.Input<VirtualMachineScaleSetIPConfigurationPropertiesArgs>;
+}
+
+/**
+ * Describes a virtual machine scale set network profile's IP configuration
+ * properties.
+ */
+export interface VirtualMachineScaleSetIPConfigurationPropertiesArgs {
+    /**
+     * Specifies an array of references to backend address pools of application
+     * gateways. A scale set can reference backend address pools of multiple
+     * application gateways. Multiple scale sets cannot use the same application
+     * gateway.
      */
     applicationGatewayBackendAddressPools?: pulumi.Input<pulumi.Input<SubResourceArgs>[]>;
     /**
@@ -872,23 +1068,26 @@ export interface VirtualMachineScaleSetIPConfigurationArgs {
      */
     applicationSecurityGroups?: pulumi.Input<pulumi.Input<SubResourceArgs>[]>;
     /**
-     * Specifies an array of references to backend address pools of load balancers. A scale set can reference backend address pools of one public and one internal load balancer. Multiple scale sets cannot use the same basic sku load balancer.
+     * Specifies an array of references to backend address pools of load balancers. A
+     * scale set can reference backend address pools of one public and one internal
+     * load balancer. Multiple scale sets cannot use the same basic sku load balancer.
      */
     loadBalancerBackendAddressPools?: pulumi.Input<pulumi.Input<SubResourceArgs>[]>;
     /**
-     * Specifies an array of references to inbound Nat pools of the load balancers. A scale set can reference inbound nat pools of one public and one internal load balancer. Multiple scale sets cannot use the same basic sku load balancer.
+     * Specifies an array of references to inbound Nat pools of the load balancers. A
+     * scale set can reference inbound nat pools of one public and one internal load
+     * balancer. Multiple scale sets cannot use the same basic sku load balancer.
      */
     loadBalancerInboundNatPools?: pulumi.Input<pulumi.Input<SubResourceArgs>[]>;
     /**
-     * The IP configuration name.
-     */
-    name: pulumi.Input<string>;
-    /**
-     * Specifies the primary network interface in case the virtual machine has more than 1 network interface.
+     * Specifies the primary network interface in case the virtual machine has more
+     * than 1 network interface.
      */
     primary?: pulumi.Input<boolean>;
     /**
-     * Available from Api-Version 2017-03-30 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.  Possible values are: 'IPv4' and 'IPv6'.
+     * Available from Api-Version 2017-03-30 onwards, it represents whether the
+     * specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.  Possible
+     * values are: 'IPv4' and 'IPv6'.
      */
     privateIPAddressVersion?: pulumi.Input<string | enums.IPVersion>;
     /**
@@ -920,7 +1119,8 @@ export interface VirtualMachineScaleSetIpTagArgs {
  */
 export interface VirtualMachineScaleSetManagedDiskParametersArgs {
     /**
-     * Specifies the customer managed disk encryption set resource id for the managed disk.
+     * Specifies the customer managed disk encryption set resource id for the managed
+     * disk.
      */
     diskEncryptionSet?: pulumi.Input<DiskEncryptionSetParametersArgs>;
     /**
@@ -928,7 +1128,8 @@ export interface VirtualMachineScaleSetManagedDiskParametersArgs {
      */
     securityProfile?: pulumi.Input<VMDiskSecurityProfileArgs>;
     /**
-     * Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS can only be used with data disks, it cannot be used with OS Disk.
+     * Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS can
+     * only be used with data disks, it cannot be used with OS Disk.
      */
     storageAccountType?: pulumi.Input<string | enums.StorageAccountTypes>;
 }
@@ -938,11 +1139,37 @@ export interface VirtualMachineScaleSetManagedDiskParametersArgs {
  */
 export interface VirtualMachineScaleSetNetworkConfigurationArgs {
     /**
-     * Specifies whether the Auxiliary mode is enabled for the Network Interface resource.
+     * The network configuration name.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Describes a virtual machine scale set network profile's IP configuration.
+     */
+    properties?: pulumi.Input<VirtualMachineScaleSetNetworkConfigurationPropertiesArgs>;
+}
+
+/**
+ * Describes a virtual machines scale sets network configuration's DNS settings.
+ */
+export interface VirtualMachineScaleSetNetworkConfigurationDnsSettingsArgs {
+    /**
+     * List of DNS servers IP addresses
+     */
+    dnsServers?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+/**
+ * Describes a virtual machine scale set network profile's IP configuration.
+ */
+export interface VirtualMachineScaleSetNetworkConfigurationPropertiesArgs {
+    /**
+     * Specifies whether the Auxiliary mode is enabled for the Network Interface
+     * resource.
      */
     auxiliaryMode?: pulumi.Input<string | enums.NetworkInterfaceAuxiliaryMode>;
     /**
-     * Specifies whether the Auxiliary sku is enabled for the Network Interface resource.
+     * Specifies whether the Auxiliary sku is enabled for the Network Interface
+     * resource.
      */
     auxiliarySku?: pulumi.Input<string | enums.NetworkInterfaceAuxiliarySku>;
     /**
@@ -974,27 +1201,14 @@ export interface VirtualMachineScaleSetNetworkConfigurationArgs {
      */
     ipConfigurations: pulumi.Input<pulumi.Input<VirtualMachineScaleSetIPConfigurationArgs>[]>;
     /**
-     * The network configuration name.
-     */
-    name: pulumi.Input<string>;
-    /**
      * The network security group.
      */
     networkSecurityGroup?: pulumi.Input<SubResourceArgs>;
     /**
-     * Specifies the primary network interface in case the virtual machine has more than 1 network interface.
+     * Specifies the primary network interface in case the virtual machine has more
+     * than 1 network interface.
      */
     primary?: pulumi.Input<boolean>;
-}
-
-/**
- * Describes a virtual machines scale sets network configuration's DNS settings.
- */
-export interface VirtualMachineScaleSetNetworkConfigurationDnsSettingsArgs {
-    /**
-     * List of DNS servers IP addresses
-     */
-    dnsServers?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -1002,11 +1216,15 @@ export interface VirtualMachineScaleSetNetworkConfigurationDnsSettingsArgs {
  */
 export interface VirtualMachineScaleSetNetworkProfileArgs {
     /**
-     * A reference to a load balancer probe used to determine the health of an instance in the virtual machine scale set. The reference will be in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/probes/{probeName}'.
+     * A reference to a load balancer probe used to determine the health of an
+     * instance in the virtual machine scale set. The reference will be in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/probes/{probeName}'.
      */
     healthProbe?: pulumi.Input<ApiEntityReferenceArgs>;
     /**
-     * specifies the Microsoft.Network API version used when creating networking resources in the Network Interface Configurations for Virtual Machine Scale Set with orchestration mode 'Flexible'
+     * specifies the Microsoft.Network API version used when creating networking
+     * resources in the Network Interface Configurations for Virtual Machine Scale Set
+     * with orchestration mode 'Flexible'
      */
     networkApiVersion?: pulumi.Input<string | enums.NetworkApiVersion>;
     /**
@@ -1020,23 +1238,40 @@ export interface VirtualMachineScaleSetNetworkProfileArgs {
  */
 export interface VirtualMachineScaleSetOSDiskArgs {
     /**
-     * Specifies the caching requirements. Possible values are: **None,** **ReadOnly,** **ReadWrite.** The default values are: **None for Standard storage. ReadOnly for Premium storage.**
+     * Specifies the caching requirements. Possible values are: **None,**
+     * **ReadOnly,** **ReadWrite.** The default values are: **None for Standard
+     * storage. ReadOnly for Premium storage.**
      */
-    caching?: pulumi.Input<enums.CachingTypes>;
+    caching?: pulumi.Input<string | enums.CachingTypes>;
     /**
-     * Specifies how the virtual machines in the scale set should be created. The only allowed value is: **FromImage.** This value is used when you are using an image to create the virtual machine. If you are using a platform image, you also use the imageReference element described above. If you are using a marketplace image, you  also use the plan element previously described.
+     * Specifies how the virtual machines in the scale set should be created. The only
+     * allowed value is: **FromImage.** This value is used when you are using an image
+     * to create the virtual machine. If you are using a platform image, you also use
+     * the imageReference element described above. If you are using a marketplace
+     * image, you  also use the plan element previously described.
      */
     createOption: pulumi.Input<string | enums.DiskCreateOptionTypes>;
     /**
-     * Specifies whether OS Disk should be deleted or detached upon VMSS Flex deletion (This feature is available for VMSS with Flexible OrchestrationMode only). <br><br> Possible values: <br><br> **Delete** If this value is used, the OS disk is deleted when VMSS Flex VM is deleted.<br><br> **Detach** If this value is used, the OS disk is retained after VMSS Flex VM is deleted. <br><br> The default value is set to **Delete**. For an Ephemeral OS Disk, the default value is set to **Delete**. User cannot change the delete option for Ephemeral OS Disk.
+     * Specifies whether OS Disk should be deleted or detached upon VMSS Flex deletion
+     * (This feature is available for VMSS with Flexible OrchestrationMode only).
+     * <br><br> Possible values: <br><br> **Delete** If this value is used, the OS
+     * disk is deleted when VMSS Flex VM is deleted.<br><br> **Detach** If this value
+     * is used, the OS disk is retained after VMSS Flex VM is deleted. <br><br> The
+     * default value is set to **Delete**. For an Ephemeral OS Disk, the default value
+     * is set to **Delete**. User cannot change the delete option for Ephemeral OS
+     * Disk.
      */
     deleteOption?: pulumi.Input<string | enums.DiskDeleteOptionTypes>;
     /**
-     * Specifies the ephemeral disk Settings for the operating system disk used by the virtual machine scale set.
+     * Specifies the ephemeral disk Settings for the operating system disk used by the
+     * virtual machine scale set.
      */
     diffDiskSettings?: pulumi.Input<DiffDiskSettingsArgs>;
     /**
-     * Specifies the size of an empty data disk in gigabytes. This element can be used to overwrite the size of the disk in a virtual machine image. The property 'diskSizeGB' is the number of bytes x 1024^3 for the disk and the value cannot be larger than 1023.
+     * Specifies the size of an empty data disk in gigabytes. This element can be used
+     * to overwrite the size of the disk in a virtual machine image. The property 'diskSizeGB'
+     * is the number of bytes x 1024^3 for the disk and the value cannot
+     * be larger than 1023.
      */
     diskSizeGB?: pulumi.Input<number>;
     /**
@@ -1052,11 +1287,14 @@ export interface VirtualMachineScaleSetOSDiskArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * This property allows you to specify the type of the OS that is included in the disk if creating a VM from user-image or a specialized VHD. Possible values are: **Windows,** **Linux.**
+     * This property allows you to specify the type of the OS that is included in the
+     * disk if creating a VM from user-image or a specialized VHD. Possible values
+     * are: **Windows,** **Linux.**
      */
-    osType?: pulumi.Input<enums.OperatingSystemTypes>;
+    osType?: pulumi.Input<string | enums.OperatingSystemTypes>;
     /**
-     * Specifies the container urls that are used to store operating system disks for the scale set.
+     * Specifies the container urls that are used to store operating system disks for
+     * the scale set.
      */
     vhdContainers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1070,27 +1308,56 @@ export interface VirtualMachineScaleSetOSDiskArgs {
  */
 export interface VirtualMachineScaleSetOSProfileArgs {
     /**
-     * Specifies the password of the administrator account. <br><br> **Minimum-length (Windows):** 8 characters <br><br> **Minimum-length (Linux):** 6 characters <br><br> **Max-length (Windows):** 123 characters <br><br> **Max-length (Linux):** 72 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!" <br><br> For resetting the password, see [How to reset the Remote Desktop service or its login password in a Windows VM](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/reset-rdp) <br><br> For resetting root password, see [Manage users, SSH, and check or repair disks on Azure Linux VMs using the VMAccess Extension](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)
+     * Specifies the password of the administrator account. <br><br> **Minimum-length
+     * (Windows):** 8 characters <br><br> **Minimum-length (Linux):** 6 characters
+     * <br><br> **Max-length (Windows):** 123 characters <br><br> **Max-length
+     * (Linux):** 72 characters <br><br> **Complexity requirements:** 3 out of 4
+     * conditions below need to be fulfilled <br> Has lower characters <br>Has upper
+     * characters <br> Has a digit <br> Has a special character (Regex match [\W_])
+     * <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd",
+     * "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1",
+     * "Password22", "iloveyou!" <br><br> For resetting the password, see [How to
+     * reset the Remote Desktop service or its login password in a Windows
+     * VM](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/reset-rdp)
+     * <br><br> For resetting root password, see [Manage users, SSH, and check or
+     * repair disks on Azure Linux VMs using the VMAccess
+     * Extension](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)
      */
     adminPassword?: pulumi.Input<string>;
     /**
-     * Specifies the name of the administrator account. <br><br> **Windows-only restriction:** Cannot end in "." <br><br> **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length (Linux):** 1  character <br><br> **Max-length (Linux):** 64 characters <br><br> **Max-length (Windows):** 20 characters
+     * Specifies the name of the administrator account. <br><br> **Windows-only
+     * restriction:** Cannot end in "." <br><br> **Disallowed values:**
+     * "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3",
+     * "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup",
+     * "console", "david", "guest", "john", "owner", "root", "server", "sql",
+     * "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5".
+     * <br><br> **Minimum-length (Linux):** 1  character <br><br> **Max-length
+     * (Linux):** 64 characters <br><br> **Max-length (Windows):** 20 characters
      */
     adminUsername?: pulumi.Input<string>;
     /**
-     * Specifies whether extension operations should be allowed on the virtual machine scale set. This may only be set to False when no extensions are present on the virtual machine scale set.
+     * Specifies whether extension operations should be allowed on the virtual machine
+     * scale set. This may only be set to False when no extensions are present on the
+     * virtual machine scale set.
      */
     allowExtensionOperations?: pulumi.Input<boolean>;
     /**
-     * Specifies the computer name prefix for all of the virtual machines in the scale set. Computer name prefixes must be 1 to 15 characters long.
+     * Specifies the computer name prefix for all of the virtual machines in the scale
+     * set. Computer name prefixes must be 1 to 15 characters long.
      */
     computerNamePrefix?: pulumi.Input<string>;
     /**
-     * Specifies a base-64 encoded string of custom data. The base-64 encoded string is decoded to a binary array that is saved as a file on the Virtual Machine. The maximum length of the binary array is 65535 bytes. For using cloud-init for your VM, see [Using cloud-init to customize a Linux VM during creation](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init)
+     * Specifies a base-64 encoded string of custom data. The base-64 encoded string
+     * is decoded to a binary array that is saved as a file on the Virtual Machine.
+     * The maximum length of the binary array is 65535 bytes. For using cloud-init for
+     * your VM, see [Using cloud-init to customize a Linux VM during
+     * creation](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init)
      */
     customData?: pulumi.Input<string>;
     /**
-     * Specifies the Linux operating system settings on the virtual machine. For a list of supported Linux distributions, see [Linux on Azure-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+     * Specifies the Linux operating system settings on the virtual machine. For a
+     * list of supported Linux distributions, see [Linux on Azure-Endorsed
+     * Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
      */
     linuxConfiguration?: pulumi.Input<LinuxConfigurationArgs>;
     /**
@@ -1098,7 +1365,12 @@ export interface VirtualMachineScaleSetOSProfileArgs {
      */
     requireGuestProvisionSignal?: pulumi.Input<boolean>;
     /**
-     * Specifies set of certificates that should be installed onto the virtual machines in the scale set. To install certificates on a virtual machine it is recommended to use the [Azure Key Vault virtual machine extension for Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux) or the [Azure Key Vault virtual machine extension for Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
+     * Specifies set of certificates that should be installed onto the virtual
+     * machines in the scale set. To install certificates on a virtual machine it is
+     * recommended to use the [Azure Key Vault virtual machine extension for
+     * Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
+     * or the [Azure Key Vault virtual machine extension for
+     * Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
      */
     secrets?: pulumi.Input<pulumi.Input<VaultSecretGroupArgs>[]>;
     /**
@@ -1108,9 +1380,50 @@ export interface VirtualMachineScaleSetOSProfileArgs {
 }
 
 /**
- * Describes a virtual machines scale set IP Configuration's PublicIPAddress configuration
+ * Describes a virtual machines scale set IP Configuration's PublicIPAddress
+ * configuration
  */
 export interface VirtualMachineScaleSetPublicIPAddressConfigurationArgs {
+    /**
+     * The publicIP address configuration name.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Describes a virtual machines scale set IP Configuration's PublicIPAddress
+     * configuration
+     */
+    properties?: pulumi.Input<VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesArgs>;
+    /**
+     * Describes the public IP Sku. It can only be set with OrchestrationMode as
+     * Flexible.
+     */
+    sku?: pulumi.Input<PublicIPAddressSkuArgs>;
+}
+
+/**
+ * Describes a virtual machines scale sets network configuration's DNS settings.
+ */
+export interface VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsArgs {
+    /**
+     * The Domain name label.The concatenation of the domain name label and vm index
+     * will be the domain name labels of the PublicIPAddress resources that will be
+     * created
+     */
+    domainNameLabel: pulumi.Input<string>;
+    /**
+     * The Domain name label scope.The concatenation of the hashed domain name label
+     * that generated according to the policy from domain name label scope and vm
+     * index will be the domain name labels of the PublicIPAddress resources that will
+     * be created
+     */
+    domainNameLabelScope?: pulumi.Input<string | enums.DomainNameLabelScopeTypes>;
+}
+
+/**
+ * Describes a virtual machines scale set IP Configuration's PublicIPAddress
+ * configuration
+ */
+export interface VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesArgs {
     /**
      * Specify what happens to the public IP when the VM is deleted
      */
@@ -1128,35 +1441,15 @@ export interface VirtualMachineScaleSetPublicIPAddressConfigurationArgs {
      */
     ipTags?: pulumi.Input<pulumi.Input<VirtualMachineScaleSetIpTagArgs>[]>;
     /**
-     * The publicIP address configuration name.
-     */
-    name: pulumi.Input<string>;
-    /**
-     * Available from Api-Version 2019-07-01 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4. Possible values are: 'IPv4' and 'IPv6'.
+     * Available from Api-Version 2019-07-01 onwards, it represents whether the
+     * specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4. Possible
+     * values are: 'IPv4' and 'IPv6'.
      */
     publicIPAddressVersion?: pulumi.Input<string | enums.IPVersion>;
     /**
      * The PublicIPPrefix from which to allocate publicIP addresses.
      */
     publicIPPrefix?: pulumi.Input<SubResourceArgs>;
-    /**
-     * Describes the public IP Sku. It can only be set with OrchestrationMode as Flexible.
-     */
-    sku?: pulumi.Input<PublicIPAddressSkuArgs>;
-}
-
-/**
- * Describes a virtual machines scale sets network configuration's DNS settings.
- */
-export interface VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsArgs {
-    /**
-     * The Domain name label.The concatenation of the domain name label and vm index will be the domain name labels of the PublicIPAddress resources that will be created
-     */
-    domainNameLabel: pulumi.Input<string>;
-    /**
-     * The Domain name label scope.The concatenation of the hashed domain name label that generated according to the policy from domain name label scope and vm index will be the domain name labels of the PublicIPAddress resources that will be created
-     */
-    domainNameLabelScope?: pulumi.Input<string | enums.DomainNameLabelScopeTypes>;
 }
 
 /**
@@ -1164,92 +1457,30 @@ export interface VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsAr
  */
 export interface VirtualMachineScaleSetStorageProfileArgs {
     /**
-     * Specifies the parameters that are used to add data disks to the virtual machines in the scale set. For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
+     * Specifies the parameters that are used to add data disks to the virtual
+     * machines in the scale set. For more information about disks, see [About disks
+     * and VHDs for Azure virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
      */
     dataDisks?: pulumi.Input<pulumi.Input<VirtualMachineScaleSetDataDiskArgs>[]>;
-    diskControllerType?: pulumi.Input<pulumi.Input<string | enums.DiskControllerTypes>[]>;
     /**
-     * Specifies information about the image to use. You can specify information about platform images, marketplace images, or virtual machine images. This element is required when you want to use a platform image, marketplace image, or virtual machine image, but is not used in other creation operations.
+     * Specifies the disk controller type configured for the virtual machines in the scale set. Minimum api-version: 2022-08-01
+     */
+    diskControllerType?: pulumi.Input<string | enums.DiskControllerTypes>;
+    /**
+     * Specifies information about the image to use. You can specify information about
+     * platform images, marketplace images, or virtual machine images. This element is
+     * required when you want to use a platform image, marketplace image, or virtual
+     * machine image, but is not used in other creation operations.
      */
     imageReference?: pulumi.Input<ImageReferenceArgs>;
     /**
-     * Specifies information about the operating system disk used by the virtual machines in the scale set. For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
+     * Specifies information about the operating system disk used by the virtual
+     * machines in the scale set. For more information about disks, see [About disks
+     * and VHDs for Azure virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
      */
     osDisk?: pulumi.Input<VirtualMachineScaleSetOSDiskArgs>;
-}
-
-/**
- * Describes a virtual machine scale set virtual machine profile.
- */
-export interface VirtualMachineScaleSetVMProfileArgs {
-    /**
-     * Specifies the gallery applications that should be made available to the VM/VMSS
-     */
-    applicationProfile?: pulumi.Input<ApplicationProfileArgs>;
-    /**
-     * Specifies the billing related details of a Azure Spot VMSS. Minimum api-version: 2019-03-01.
-     */
-    billingProfile?: pulumi.Input<BillingProfileArgs>;
-    /**
-     * Specifies the capacity reservation related details of a scale set. Minimum api-version: 2021-04-01.
-     */
-    capacityReservation?: pulumi.Input<CapacityReservationProfileArgs>;
-    /**
-     * Specifies the boot diagnostic settings state. Minimum api-version: 2015-06-15.
-     */
-    diagnosticsProfile?: pulumi.Input<DiagnosticsProfileArgs>;
-    /**
-     * Specifies the eviction policy for the Azure Spot virtual machine and Azure Spot scale set. For Azure Spot virtual machines, both 'Deallocate' and 'Delete' are supported and the minimum api-version is 2019-03-01. For Azure Spot scale sets, both 'Deallocate' and 'Delete' are supported and the minimum api-version is 2017-10-30-preview.
-     */
-    evictionPolicy?: pulumi.Input<string | enums.VirtualMachineEvictionPolicyTypes>;
-    /**
-     * Specifies a collection of settings for extensions installed on virtual machines in the scale set.
-     */
-    extensionProfile?: pulumi.Input<VirtualMachineScaleSetExtensionProfileArgs>;
-    /**
-     * Specifies the hardware profile related details of a scale set. Minimum api-version: 2021-11-01.
-     */
-    hardwareProfile?: pulumi.Input<VirtualMachineScaleSetHardwareProfileArgs>;
-    /**
-     * Specifies that the image or disk that is being used was licensed on-premises. <br><br> Possible values for Windows Server operating system are: <br><br> Windows_Client <br><br> Windows_Server <br><br> Possible values for Linux Server operating system are: <br><br> RHEL_BYOS (for RHEL) <br><br> SLES_BYOS (for SUSE) <br><br> For more information, see [Azure Hybrid Use Benefit for Windows Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) <br><br> [Azure Hybrid Use Benefit for Linux Server](https://docs.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux) <br><br> Minimum api-version: 2015-06-15
-     */
-    licenseType?: pulumi.Input<string>;
-    /**
-     * Specifies properties of the network interfaces of the virtual machines in the scale set.
-     */
-    networkProfile?: pulumi.Input<VirtualMachineScaleSetNetworkProfileArgs>;
-    /**
-     * Specifies the operating system settings for the virtual machines in the scale set.
-     */
-    osProfile?: pulumi.Input<VirtualMachineScaleSetOSProfileArgs>;
-    /**
-     * Specifies the priority for the virtual machines in the scale set. Minimum api-version: 2017-10-30-preview.
-     */
-    priority?: pulumi.Input<string | enums.VirtualMachinePriorityTypes>;
-    /**
-     * Specifies Scheduled Event related configurations.
-     */
-    scheduledEventsProfile?: pulumi.Input<ScheduledEventsProfileArgs>;
-    /**
-     * Specifies the security posture to be used for all virtual machines in the scale set. Minimum api-version: 2023-03-01
-     */
-    securityPostureReference?: pulumi.Input<SecurityPostureReferenceArgs>;
-    /**
-     * Specifies the Security related profile settings for the virtual machines in the scale set.
-     */
-    securityProfile?: pulumi.Input<SecurityProfileArgs>;
-    /**
-     * Specifies the service artifact reference id used to set same image version for all virtual machines in the scale set when using 'latest' image version. Minimum api-version: 2022-11-01
-     */
-    serviceArtifactReference?: pulumi.Input<ServiceArtifactReferenceArgs>;
-    /**
-     * Specifies the storage settings for the virtual machine disks.
-     */
-    storageProfile?: pulumi.Input<VirtualMachineScaleSetStorageProfileArgs>;
-    /**
-     * UserData for the virtual machines in the scale set, which must be base-64 encoded. Customer should not pass any secrets in here. Minimum api-version: 2021-03-01.
-     */
-    userData?: pulumi.Input<string>;
 }
 
 /**
@@ -1282,13 +1513,26 @@ export interface WinRMConfigurationArgs {
  */
 export interface WinRMListenerArgs {
     /**
-     * This is the URL of a certificate that has been uploaded to Key Vault as a secret. For adding a secret to the Key Vault, see [Add a key or secret to the key vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add). In this case, your certificate needs to be the Base64 encoding of the following JSON Object which is encoded in UTF-8: <br><br> {<br>  "data":"<Base64-encoded-certificate>",<br>  "dataType":"pfx",<br>  "password":"<pfx-file-password>"<br>} <br> To install certificates on a virtual machine it is recommended to use the [Azure Key Vault virtual machine extension for Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux) or the [Azure Key Vault virtual machine extension for Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
+     * This is the URL of a certificate that has been uploaded to Key Vault as a
+     * secret. For adding a secret to the Key Vault, see [Add a key or secret to the
+     * key
+     * vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add).
+     * In this case, your certificate needs to be the Base64 encoding of the following
+     * JSON Object which is encoded in UTF-8: <br><br> {<br>
+     * "data":"<Base64-encoded-certificate>",<br>  "dataType":"pfx",<br>
+     * "password":"<pfx-file-password>"<br>} <br> To install certificates on a virtual
+     * machine it is recommended to use the [Azure Key Vault virtual machine extension
+     * for
+     * Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
+     * or the [Azure Key Vault virtual machine extension for
+     * Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
      */
     certificateUrl?: pulumi.Input<string>;
     /**
-     * Specifies the protocol of WinRM listener. Possible values are: **http,** **https.**
+     * Specifies the protocol of WinRM listener. Possible values are: **http,**
+     * **https.**
      */
-    protocol?: pulumi.Input<enums.ProtocolTypes>;
+    protocol?: pulumi.Input<string | enums.ProtocolTypes>;
 }
 
 /**
@@ -1296,15 +1540,19 @@ export interface WinRMListenerArgs {
  */
 export interface WindowsConfigurationArgs {
     /**
-     * Specifies additional base-64 encoded XML formatted information that can be included in the Unattend.xml file, which is used by Windows Setup.
+     * Specifies additional base-64 encoded XML formatted information that can be
+     * included in the Unattend.xml file, which is used by Windows Setup.
      */
     additionalUnattendContent?: pulumi.Input<pulumi.Input<AdditionalUnattendContentArgs>[]>;
     /**
-     * Indicates whether Automatic Updates is enabled for the Windows virtual machine. Default value is true. For virtual machine scale sets, this property can be updated and updates will take effect on OS reprovisioning.
+     * Indicates whether Automatic Updates is enabled for the Windows virtual machine.
+     * Default value is true. For virtual machine scale sets, this property can be
+     * updated and updates will take effect on OS reprovisioning.
      */
     enableAutomaticUpdates?: pulumi.Input<boolean>;
     /**
-     * Indicates whether VMAgent Platform Updates is enabled for the Windows virtual machine. Default value is false.
+     * Indicates whether VMAgent Platform Updates is enabled for the Windows virtual
+     * machine. Default value is false.
      */
     enableVMAgentPlatformUpdates?: pulumi.Input<boolean>;
     /**
@@ -1312,21 +1560,30 @@ export interface WindowsConfigurationArgs {
      */
     patchSettings?: pulumi.Input<PatchSettingsArgs>;
     /**
-     * Indicates whether virtual machine agent should be provisioned on the virtual machine. When this property is not specified in the request body, it is set to true by default. This will ensure that VM Agent is installed on the VM so that extensions can be added to the VM later.
+     * Indicates whether virtual machine agent should be provisioned on the virtual
+     * machine. When this property is not specified in the request body, it is set to
+     * true by default. This will ensure that VM Agent is installed on the VM so that
+     * extensions can be added to the VM later.
      */
     provisionVMAgent?: pulumi.Input<boolean>;
     /**
-     * Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time". Possible values can be [TimeZoneInfo.Id](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id) value from time zones returned by [TimeZoneInfo.GetSystemTimeZones](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.getsystemtimezones).
+     * Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time".
+     * Possible values can be
+     * [TimeZoneInfo.Id](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id)
+     * value from time zones returned by
+     * [TimeZoneInfo.GetSystemTimeZones](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.getsystemtimezones).
      */
     timeZone?: pulumi.Input<string>;
     /**
-     * Specifies the Windows Remote Management listeners. This enables remote Windows PowerShell.
+     * Specifies the Windows Remote Management listeners. This enables remote Windows
+     * PowerShell.
      */
     winRM?: pulumi.Input<WinRMConfigurationArgs>;
 }
 
 /**
- * Specifies additional settings to be applied when patch mode AutomaticByPlatform is selected in Windows patch settings.
+ * Specifies additional settings to be applied when patch mode AutomaticByPlatform
+ * is selected in Windows patch settings.
  */
 export interface WindowsVMGuestPatchAutomaticByPlatformSettingsArgs {
     /**
@@ -1334,7 +1591,8 @@ export interface WindowsVMGuestPatchAutomaticByPlatformSettingsArgs {
      */
     bypassPlatformSafetyChecksOnUserSchedule?: pulumi.Input<boolean>;
     /**
-     * Specifies the reboot setting for all AutomaticByPlatform patch installation operations.
+     * Specifies the reboot setting for all AutomaticByPlatform patch installation
+     * operations.
      */
     rebootSetting?: pulumi.Input<string | enums.WindowsVMGuestPatchAutomaticByPlatformRebootSetting>;
 }

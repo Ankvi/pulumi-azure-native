@@ -1,23 +1,23 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
- * Specifies additional XML formatted information that can be included in the Unattend.xml file, which is used by Windows Setup. Contents are defined by setting name, component name, and the pass in which the content is applied.
+ * Specifies additional XML formatted information that can be included in the
+ * Unattend.xml file, which is used by Windows Setup. Contents are defined by
+ * setting name, component name, and the pass in which the content is applied.
  */
 export interface AdditionalUnattendContentResponse {
     /**
-     * The component name. Currently, the only allowable value is Microsoft-Windows-Shell-Setup.
+     * The component name. Currently, the only allowable value is
+     * Microsoft-Windows-Shell-Setup.
      */
     componentName?: string;
-    /**
-     * Specifies the XML formatted content that is added to the unattend.xml file for the specified path and component. The XML must be less than 4KB and must include the root element for the setting or feature that is being inserted.
-     */
-    content?: string;
     /**
      * The pass name. Currently, the only allowable value is OobeSystem.
      */
     passName?: string;
     /**
-     * Specifies the name of the setting to which the content applies. Possible values are: FirstLogonCommands and AutoLogon.
+     * Specifies the name of the setting to which the content applies. Possible values
+     * are: FirstLogonCommands and AutoLogon.
      */
     settingName?: string;
 }
@@ -27,13 +27,15 @@ export interface AdditionalUnattendContentResponse {
  */
 export interface ApiEntityReferenceResponse {
     /**
-     * The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
+     * The ARM resource id in the form of
+     * /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
      */
     id?: string;
 }
 
 /**
- * Contains the list of gallery applications that should be made available to the VM/VMSS
+ * Contains the list of gallery applications that should be made available to the
+ * VM/VMSS
  */
 export interface ApplicationProfileResponse {
     /**
@@ -43,17 +45,99 @@ export interface ApplicationProfileResponse {
 }
 
 /**
- * Specifies the billing related details of a Azure Spot VM or VMSS. Minimum api-version: 2019-03-01.
+ * Describes the base virtual machine profile for fleet
  */
-export interface BillingProfileResponse {
+export interface BaseVirtualMachineProfileResponse {
     /**
-     * Specifies the maximum price you are willing to pay for a Azure Spot VM/VMSS. This price is in US Dollars. <br><br> This price will be compared with the current Azure Spot price for the VM size. Also, the prices are compared at the time of create/update of Azure Spot VM/VMSS and the operation will only succeed if  the maxPrice is greater than the current Azure Spot price. <br><br> The maxPrice will also be used for evicting a Azure Spot VM/VMSS if the current Azure Spot price goes beyond the maxPrice after creation of VM/VMSS. <br><br> Possible values are: <br><br> - Any decimal value greater than zero. Example: 0.01538 <br><br> -1 – indicates default price to be up-to on-demand. <br><br> You can set the maxPrice to -1 to indicate that the Azure Spot VM/VMSS should not be evicted for price reasons. Also, the default max price is -1 if it is not provided by you. <br><br>Minimum api-version: 2019-03-01.
+     * Specifies the gallery applications that should be made available to the VM/VMSS
      */
-    maxPrice?: number;
+    applicationProfile?: ApplicationProfileResponse;
+    /**
+     * Specifies the capacity reservation related details of a scale set. Minimum
+     * api-version: 2021-04-01.
+     */
+    capacityReservation?: CapacityReservationProfileResponse;
+    /**
+     * Specifies the boot diagnostic settings state.
+     */
+    diagnosticsProfile?: DiagnosticsProfileResponse;
+    /**
+     * Specifies a collection of settings for extensions installed on virtual machines
+     * in the scale set.
+     */
+    extensionProfile?: VirtualMachineScaleSetExtensionProfileResponse;
+    /**
+     * Specifies the hardware profile related details of a scale set. Minimum
+     * api-version: 2021-11-01.
+     */
+    hardwareProfile?: VirtualMachineScaleSetHardwareProfileResponse;
+    /**
+     * Specifies that the image or disk that is being used was licensed on-premises.
+     * <br><br> Possible values for Windows Server operating system are: <br><br>
+     * Windows_Client <br><br> Windows_Server <br><br> Possible values for Linux
+     * Server operating system are: <br><br> RHEL_BYOS (for RHEL) <br><br> SLES_BYOS
+     * (for SUSE) <br><br> For more information, see [Azure Hybrid Use Benefit for
+     * Windows
+     * Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing)
+     * <br><br> [Azure Hybrid Use Benefit for Linux
+     * Server](https://docs.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux)
+     * <br><br> Minimum api-version: 2015-06-15
+     */
+    licenseType?: string;
+    /**
+     * Specifies properties of the network interfaces of the virtual machines in the
+     * scale set.
+     */
+    networkProfile?: VirtualMachineScaleSetNetworkProfileResponse;
+    /**
+     * Specifies the operating system settings for the virtual machines in the scale
+     * set.
+     */
+    osProfile?: VirtualMachineScaleSetOSProfileResponse;
+    /**
+     * Specifies Scheduled Event related configurations.
+     */
+    scheduledEventsProfile?: ScheduledEventsProfileResponse;
+    /**
+     * Specifies the security posture to be used for all virtual machines in the scale
+     * set. Minimum api-version: 2023-03-01
+     */
+    securityPostureReference?: SecurityPostureReferenceResponse;
+    /**
+     * Specifies the Security related profile settings for the virtual machines in the
+     * scale set.
+     */
+    securityProfile?: SecurityProfileResponse;
+    /**
+     * Specifies the service artifact reference id used to set same image version for
+     * all virtual machines in the scale set when using 'latest' image version.
+     * Minimum api-version: 2022-11-01
+     */
+    serviceArtifactReference?: ServiceArtifactReferenceResponse;
+    /**
+     * Specifies the storage settings for the virtual machine disks.
+     */
+    storageProfile?: VirtualMachineScaleSetStorageProfileResponse;
+    /**
+     * Specifies the time in which this VM profile for the Virtual Machine Scale Set
+     * was created. Minimum API version for this property is 2023-09-01. This value
+     * will be added to VMSS Flex VM tags when creating/updating the VMSS VM Profile
+     * with minimum api-version 2023-09-01. Examples: "2024-07-01T00:00:01.1234567+00:00"
+     */
+    timeCreated: string;
+    /**
+     * UserData for the virtual machines in the scale set, which must be base-64
+     * encoded. Customer should not pass any secrets in here. Minimum api-version:
+     * 2021-03-01.
+     */
+    userData?: string;
 }
 
 /**
- * Boot Diagnostics is a debugging feature which allows you to view Console Output and Screenshot to diagnose VM status. You can easily view the output of your console log. Azure also enables you to see a screenshot of the VM from the hypervisor.
+ * Boot Diagnostics is a debugging feature which allows you to view Console Output
+ * and Screenshot to diagnose VM status. You can easily view the output of your
+ * console log. Azure also enables you to see a screenshot of the VM from the
+ * hypervisor.
  */
 export interface BootDiagnosticsResponse {
     /**
@@ -61,7 +145,9 @@ export interface BootDiagnosticsResponse {
      */
     enabled?: boolean;
     /**
-     * Uri of the storage account to use for placing the console output and screenshot. If storageUri is not specified while enabling boot diagnostics, managed storage will be used.
+     * Uri of the storage account to use for placing the console output and
+     * screenshot. If storageUri is not specified while enabling boot diagnostics,
+     * managed storage will be used.
      */
     storageUri?: string;
 }
@@ -71,7 +157,10 @@ export interface BootDiagnosticsResponse {
  */
 export interface CapacityReservationProfileResponse {
     /**
-     * Specifies the capacity reservation group resource id that should be used for allocating the virtual machine or scaleset vm instances provided enough capacity has been reserved. Please refer to https://aka.ms/CapacityReservation for more details.
+     * Specifies the capacity reservation group resource id that should be used for
+     * allocating the virtual machine or scaleset vm instances provided enough
+     * capacity has been reserved. Please refer to https://aka.ms/CapacityReservation
+     * for more details.
      */
     capacityReservationGroup?: SubResourceResponse;
 }
@@ -83,7 +172,7 @@ export interface ComputeProfileResponse {
     /**
      * Base Virtual Machine Profile Properties to be specified according to "specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/{computeApiVersion}/virtualMachineScaleSet.json#/definitions/VirtualMachineScaleSetVMProfile"
      */
-    baseVirtualMachineProfile: VirtualMachineScaleSetVMProfileResponse;
+    baseVirtualMachineProfile: BaseVirtualMachineProfileResponse;
     /**
      * Specifies the Microsoft.Compute API version to use when creating underlying Virtual Machine scale sets and Virtual Machines.
      * The default value will be the latest supported computeApiVersion by Compute Fleet.
@@ -104,13 +193,19 @@ export interface ComputeProfileResponse {
  */
 export interface DiagnosticsProfileResponse {
     /**
-     * Boot Diagnostics is a debugging feature which allows you to view Console Output and Screenshot to diagnose VM status. **NOTE**: If storageUri is being specified then ensure that the storage account is in the same region and subscription as the VM. You can easily view the output of your console log. Azure also enables you to see a screenshot of the VM from the hypervisor.
+     * Boot Diagnostics is a debugging feature which allows you to view Console Output
+     * and Screenshot to diagnose VM status. **NOTE**: If storageUri is being
+     * specified then ensure that the storage account is in the same region and
+     * subscription as the VM. You can easily view the output of your console log.
+     * Azure also enables you to see a screenshot of the VM from the hypervisor.
      */
     bootDiagnostics?: BootDiagnosticsResponse;
 }
 
 /**
- * Describes the parameters of ephemeral disk settings that can be specified for operating system disk. **Note:** The ephemeral disk settings can only be specified for managed disk.
+ * Describes the parameters of ephemeral disk settings that can be specified for
+ * operating system disk. **Note:** The ephemeral disk settings can only be
+ * specified for managed disk.
  */
 export interface DiffDiskSettingsResponse {
     /**
@@ -118,13 +213,22 @@ export interface DiffDiskSettingsResponse {
      */
     option?: string;
     /**
-     * Specifies the ephemeral disk placement for operating system disk. Possible values are: **CacheDisk,** **ResourceDisk.** The defaulting behavior is: **CacheDisk** if one is configured for the VM size otherwise **ResourceDisk** is used. Refer to the VM size documentation for Windows VM at https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at https://docs.microsoft.com/azure/virtual-machines/linux/sizes to check which VM sizes exposes a cache disk.
+     * Specifies the ephemeral disk placement for operating system disk. Possible
+     * values are: **CacheDisk,** **ResourceDisk.** The defaulting behavior is:
+     * **CacheDisk** if one is configured for the VM size otherwise **ResourceDisk**
+     * is used. Refer to the VM size documentation for Windows VM at
+     * https://docs.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at
+     * https://docs.microsoft.com/azure/virtual-machines/linux/sizes to check which VM
+     * sizes exposes a cache disk.
      */
     placement?: string;
 }
 
 /**
- * Describes the parameter of customer managed disk encryption set resource id that can be specified for disk. **Note:** The disk encryption set resource id can only be specified for managed disk. Please refer https://aka.ms/mdssewithcmkoverview for more details.
+ * Describes the parameter of customer managed disk encryption set resource id
+ * that can be specified for disk. **Note:** The disk encryption set resource id
+ * can only be specified for managed disk. Please refer
+ * https://aka.ms/mdssewithcmkoverview for more details.
  */
 export interface DiskEncryptionSetParametersResponse {
     /**
@@ -134,7 +238,8 @@ export interface DiskEncryptionSetParametersResponse {
 }
 
 /**
- * Specifies the Managed Identity used by ADE to get access token for keyvault operations.
+ * Specifies the Managed Identity used by ADE to get access token for keyvault
+ * operations.
  */
 export interface EncryptionIdentityResponse {
     /**
@@ -144,15 +249,22 @@ export interface EncryptionIdentityResponse {
 }
 
 /**
- * Specifies information about the image to use. You can specify information about platform images, marketplace images, or virtual machine images. This element is required when you want to use a platform image, marketplace image, or virtual machine image, but is not used in other creation operations. NOTE: Image reference publisher and offer can only be set when you create the scale set.
+ * Specifies information about the image to use. You can specify information about
+ * platform images, marketplace images, or virtual machine images. This element is
+ * required when you want to use a platform image, marketplace image, or virtual
+ * machine image, but is not used in other creation operations. NOTE: Image
+ * reference publisher and offer can only be set when you create the scale set.
  */
 export interface ImageReferenceResponse {
     /**
-     * Specified the community gallery image unique id for vm deployment. This can be fetched from community gallery image GET call.
+     * Specified the community gallery image unique id for vm deployment. This can be
+     * fetched from community gallery image GET call.
      */
     communityGalleryImageId?: string;
     /**
-     * Specifies in decimal numbers, the version of platform image or marketplace image used to create the virtual machine. This readonly field differs from 'version', only if the value specified in 'version' field is 'latest'.
+     * Specifies in decimal numbers, the version of platform image or marketplace
+     * image used to create the virtual machine. This readonly field differs from 'version',
+     * only if the value specified in 'version' field is 'latest'.
      */
     exactVersion: string;
     /**
@@ -160,7 +272,8 @@ export interface ImageReferenceResponse {
      */
     id?: string;
     /**
-     * Specifies the offer of the platform image or marketplace image used to create the virtual machine.
+     * Specifies the offer of the platform image or marketplace image used to create
+     * the virtual machine.
      */
     offer?: string;
     /**
@@ -168,7 +281,8 @@ export interface ImageReferenceResponse {
      */
     publisher?: string;
     /**
-     * Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.
+     * Specified the shared gallery image unique id for vm deployment. This can be
+     * fetched from shared gallery image GET call.
      */
     sharedGalleryImageId?: string;
     /**
@@ -176,35 +290,18 @@ export interface ImageReferenceResponse {
      */
     sku?: string;
     /**
-     * Specifies the version of the platform image or marketplace image used to create the virtual machine. The allowed formats are Major.Minor.Build or 'latest'. Major, Minor, and Build are decimal numbers. Specify 'latest' to use the latest version of an image available at deploy time. Even if you use 'latest', the VM image will not automatically update after deploy time even if a new version becomes available. Please do not use field 'version' for gallery image deployment, gallery image should always use 'id' field for deployment, to use 'latest' version of gallery image, just set '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageName}' in the 'id' field without version input.
+     * Specifies the version of the platform image or marketplace image used to create
+     * the virtual machine. The allowed formats are Major.Minor.Build or 'latest'.
+     * Major, Minor, and Build are decimal numbers. Specify 'latest' to use the latest
+     * version of an image available at deploy time. Even if you use 'latest', the VM
+     * image will not automatically update after deploy time even if a new version
+     * becomes available. Please do not use field 'version' for gallery image
+     * deployment, gallery image should always use 'id' field for deployment, to use 'latest'
+     * version of gallery image, just set
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageName}'
+     * in the 'id' field without version input.
      */
     version?: string;
-}
-
-/**
- * Instance view status.
- */
-export interface InstanceViewStatusResponse {
-    /**
-     * The status code.
-     */
-    code?: string;
-    /**
-     * The short localizable label for the status.
-     */
-    displayStatus?: string;
-    /**
-     * The level code.
-     */
-    level?: string;
-    /**
-     * The detailed status message, including for alerts and error messages.
-     */
-    message?: string;
-    /**
-     * The time of the status.
-     */
-    time?: string;
 }
 
 /**
@@ -222,7 +319,9 @@ export interface KeyVaultSecretReferenceResponse {
 }
 
 /**
- * Specifies the Linux operating system settings on the virtual machine. For a list of supported Linux distributions, see [Linux on Azure-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+ * Specifies the Linux operating system settings on the virtual machine. For a
+ * list of supported Linux distributions, see [Linux on Azure-Endorsed
+ * Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
  */
 export interface LinuxConfigurationResponse {
     /**
@@ -230,7 +329,8 @@ export interface LinuxConfigurationResponse {
      */
     disablePasswordAuthentication?: boolean;
     /**
-     * Indicates whether VMAgent Platform Updates is enabled for the Linux virtual machine. Default value is false.
+     * Indicates whether VMAgent Platform Updates is enabled for the Linux virtual
+     * machine. Default value is false.
      */
     enableVMAgentPlatformUpdates?: boolean;
     /**
@@ -238,7 +338,10 @@ export interface LinuxConfigurationResponse {
      */
     patchSettings?: LinuxPatchSettingsResponse;
     /**
-     * Indicates whether virtual machine agent should be provisioned on the virtual machine. When this property is not specified in the request body, default behavior is to set it to true. This will ensure that VM Agent is installed on the VM so that extensions can be added to the VM later.
+     * Indicates whether virtual machine agent should be provisioned on the virtual
+     * machine. When this property is not specified in the request body, default
+     * behavior is to set it to true. This will ensure that VM Agent is installed on
+     * the VM so that extensions can be added to the VM later.
      */
     provisionVMAgent?: boolean;
     /**
@@ -252,21 +355,32 @@ export interface LinuxConfigurationResponse {
  */
 export interface LinuxPatchSettingsResponse {
     /**
-     * Specifies the mode of VM Guest Patch Assessment for the IaaS virtual machine.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - You control the timing of patch assessments on a virtual machine. <br /><br /> **AutomaticByPlatform** - The platform will trigger periodic patch assessments. The property provisionVMAgent must be true.
+     * Specifies the mode of VM Guest Patch Assessment for the IaaS virtual
+     * machine.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - You
+     * control the timing of patch assessments on a virtual machine. <br /><br />
+     * **AutomaticByPlatform** - The platform will trigger periodic patch assessments.
+     * The property provisionVMAgent must be true.
      */
     assessmentMode?: string;
     /**
-     * Specifies additional settings for patch mode AutomaticByPlatform in VM Guest Patching on Linux.
+     * Specifies additional settings for patch mode AutomaticByPlatform in VM Guest
+     * Patching on Linux.
      */
     automaticByPlatformSettings?: LinuxVMGuestPatchAutomaticByPlatformSettingsResponse;
     /**
-     * Specifies the mode of VM Guest Patching to IaaS virtual machine or virtual machines associated to virtual machine scale set with OrchestrationMode as Flexible.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - The virtual machine's default patching configuration is used. <br /><br /> **AutomaticByPlatform** - The virtual machine will be automatically updated by the platform. The property provisionVMAgent must be true
+     * Specifies the mode of VM Guest Patching to IaaS virtual machine or virtual
+     * machines associated to virtual machine scale set with OrchestrationMode as
+     * Flexible.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - The
+     * virtual machine's default patching configuration is used. <br /><br />
+     * **AutomaticByPlatform** - The virtual machine will be automatically updated by
+     * the platform. The property provisionVMAgent must be true
      */
     patchMode?: string;
 }
 
 /**
- * Specifies additional settings to be applied when patch mode AutomaticByPlatform is selected in Linux patch settings.
+ * Specifies additional settings to be applied when patch mode AutomaticByPlatform
+ * is selected in Linux patch settings.
  */
 export interface LinuxVMGuestPatchAutomaticByPlatformSettingsResponse {
     /**
@@ -274,7 +388,8 @@ export interface LinuxVMGuestPatchAutomaticByPlatformSettingsResponse {
      */
     bypassPlatformSafetyChecksOnUserSchedule?: boolean;
     /**
-     * Specifies the reboot setting for all AutomaticByPlatform patch installation operations.
+     * Specifies the reboot setting for all AutomaticByPlatform patch installation
+     * operations.
      */
     rebootSetting?: string;
 }
@@ -301,13 +416,19 @@ export interface ManagedServiceIdentityResponse {
     userAssignedIdentities?: {[key: string]: UserAssignedIdentityResponse};
 }
 
+/**
+ * Specifies OS Image Scheduled Event related configurations.
+ */
 export interface OSImageNotificationProfileResponse {
     /**
      * Specifies whether the OS Image Scheduled event is enabled or disabled.
      */
     enable?: boolean;
     /**
-     * Length of time a Virtual Machine being reimaged or having its OS upgraded will have to potentially approve the OS Image Scheduled Event before the event is auto approved (timed out). The configuration is specified in ISO 8601 format, and the value must be 15 minutes (PT15M)
+     * Length of time a Virtual Machine being reimaged or having its OS upgraded will
+     * have to potentially approve the OS Image Scheduled Event before the event is
+     * auto approved (timed out). The configuration is specified in ISO 8601 format,
+     * and the value must not exceed 15 minutes (PT15M)
      */
     notBeforeTimeout?: string;
 }
@@ -317,19 +438,36 @@ export interface OSImageNotificationProfileResponse {
  */
 export interface PatchSettingsResponse {
     /**
-     * Specifies the mode of VM Guest patch assessment for the IaaS virtual machine.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - You control the timing of patch assessments on a virtual machine.<br /><br /> **AutomaticByPlatform** - The platform will trigger periodic patch assessments. The property provisionVMAgent must be true. 
+     * Specifies the mode of VM Guest patch assessment for the IaaS virtual
+     * machine.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - You
+     * control the timing of patch assessments on a virtual machine.<br /><br />
+     * **AutomaticByPlatform** - The platform will trigger periodic patch assessments.
+     * The property provisionVMAgent must be true.
      */
     assessmentMode?: string;
     /**
-     * Specifies additional settings for patch mode AutomaticByPlatform in VM Guest Patching on Windows.
+     * Specifies additional settings for patch mode AutomaticByPlatform in VM Guest
+     * Patching on Windows.
      */
     automaticByPlatformSettings?: WindowsVMGuestPatchAutomaticByPlatformSettingsResponse;
     /**
-     * Enables customers to patch their Azure VMs without requiring a reboot. For enableHotpatching, the 'provisionVMAgent' must be set to true and 'patchMode' must be set to 'AutomaticByPlatform'.
+     * Enables customers to patch their Azure VMs without requiring a reboot. For
+     * enableHotpatching, the 'provisionVMAgent' must be set to true and 'patchMode'
+     * must be set to 'AutomaticByPlatform'.
      */
     enableHotpatching?: boolean;
     /**
-     * Specifies the mode of VM Guest Patching to IaaS virtual machine or virtual machines associated to virtual machine scale set with OrchestrationMode as Flexible.<br /><br /> Possible values are:<br /><br /> **Manual** - You  control the application of patches to a virtual machine. You do this by applying patches manually inside the VM. In this mode, automatic updates are disabled; the property WindowsConfiguration.enableAutomaticUpdates must be false<br /><br /> **AutomaticByOS** - The virtual machine will automatically be updated by the OS. The property WindowsConfiguration.enableAutomaticUpdates must be true. <br /><br /> **AutomaticByPlatform** - the virtual machine will automatically updated by the platform. The properties provisionVMAgent and WindowsConfiguration.enableAutomaticUpdates must be true 
+     * Specifies the mode of VM Guest Patching to IaaS virtual machine or virtual
+     * machines associated to virtual machine scale set with OrchestrationMode as
+     * Flexible.<br /><br /> Possible values are:<br /><br /> **Manual** - You
+     * control the application of patches to a virtual machine. You do this by
+     * applying patches manually inside the VM. In this mode, automatic updates are
+     * disabled; the property WindowsConfiguration.enableAutomaticUpdates must be
+     * false<br /><br /> **AutomaticByOS** - The virtual machine will automatically be
+     * updated by the OS. The property WindowsConfiguration.enableAutomaticUpdates
+     * must be true. <br /><br /> **AutomaticByPlatform** - the virtual machine will
+     * automatically updated by the platform. The properties provisionVMAgent and
+     * WindowsConfiguration.enableAutomaticUpdates must be true
      */
     patchMode?: string;
 }
@@ -361,25 +499,32 @@ export interface PlanResponse {
 }
 
 /**
- * Specifies ProxyAgent settings while creating the virtual machine. Minimum api-version: 2023-09-01.
+ * Specifies ProxyAgent settings while creating the virtual machine. Minimum
+ * api-version: 2023-09-01.
  */
 export interface ProxyAgentSettingsResponse {
     /**
-     * Specifies whether ProxyAgent feature should be enabled on the virtual machine or virtual machine scale set.
+     * Specifies whether ProxyAgent feature should be enabled on the virtual machine
+     * or virtual machine scale set.
      */
     enabled?: boolean;
     /**
-     * Increase the value of this property allows user to reset the key used for securing communication channel between guest and host.
+     * Increase the value of this property allows user to reset the key used for
+     * securing communication channel between guest and host.
      */
     keyIncarnationId?: number;
     /**
-     * Specifies the mode that ProxyAgent will execute on if the feature is enabled. ProxyAgent will start to audit or monitor but not enforce access control over requests to host endpoints in Audit mode, while in Enforce mode it will enforce access control. The default value is Enforce mode.
+     * Specifies the mode that ProxyAgent will execute on if the feature is enabled.
+     * ProxyAgent will start to audit or monitor but not enforce access control over
+     * requests to host endpoints in Audit mode, while in Enforce mode it will enforce
+     * access control. The default value is Enforce mode.
      */
     mode?: string;
 }
 
 /**
- * Describes the public IP Sku. It can only be set with OrchestrationMode as Flexible.
+ * Describes the public IP Sku. It can only be set with OrchestrationMode as
+ * Flexible.
  */
 export interface PublicIPAddressSkuResponse {
     /**
@@ -410,6 +555,9 @@ export interface RegularPriorityProfileResponse {
     minCapacity?: number;
 }
 
+/**
+ * Specifies Scheduled Event related configurations.
+ */
 export interface ScheduledEventsProfileResponse {
     /**
      * Specifies OS Image Scheduled Event related configurations.
@@ -422,51 +570,71 @@ export interface ScheduledEventsProfileResponse {
 }
 
 /**
- * Specifies the security posture to be used for all virtual machines in the scale set. Minimum api-version: 2023-03-01
+ * Specifies the security posture to be used for all virtual machines in the scale
+ * set. Minimum api-version: 2023-03-01
  */
 export interface SecurityPostureReferenceResponse {
     /**
-     * List of virtual machine extensions to exclude when applying the Security Posture.
+     * List of virtual machine extension names to exclude when applying the security
+     * posture.
      */
-    excludeExtensions?: VirtualMachineExtensionResponse[];
+    excludeExtensions?: string[];
     /**
-     * The security posture reference id in the form of /CommunityGalleries/{communityGalleryName}/securityPostures/{securityPostureName}/versions/{major.minor.patch}|{major.*}|latest
+     * The security posture reference id in the form of
+     * /CommunityGalleries/{communityGalleryName}/securityPostures/{securityPostureName}/versions/{major.minor.patch}|{major.*}|latest
      */
     id?: string;
+    /**
+     * Whether the security posture can be overridden by the user.
+     */
+    isOverridable?: boolean;
 }
 
 /**
- * Specifies the Security profile settings for the virtual machine or virtual machine scale set.
+ * Specifies the Security profile settings for the virtual machine or virtual
+ * machine scale set.
  */
 export interface SecurityProfileResponse {
     /**
-     * This property can be used by user in the request to enable or disable the Host Encryption for the virtual machine or virtual machine scale set. This will enable the encryption for all the disks including Resource/Temp disk at host itself. The default behavior is: The Encryption at host will be disabled unless this property is set to true for the resource.
+     * This property can be used by user in the request to enable or disable the Host
+     * Encryption for the virtual machine or virtual machine scale set. This will
+     * enable the encryption for all the disks including Resource/Temp disk at host
+     * itself. The default behavior is: The Encryption at host will be disabled unless
+     * this property is set to true for the resource.
      */
     encryptionAtHost?: boolean;
     /**
-     * Specifies the Managed Identity used by ADE to get access token for keyvault operations.
+     * Specifies the Managed Identity used by ADE to get access token for keyvault
+     * operations.
      */
     encryptionIdentity?: EncryptionIdentityResponse;
     /**
-     * Specifies ProxyAgent settings while creating the virtual machine. Minimum api-version: 2023-09-01.
+     * Specifies ProxyAgent settings while creating the virtual machine. Minimum
+     * api-version: 2023-09-01.
      */
     proxyAgentSettings?: ProxyAgentSettingsResponse;
     /**
-     * Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. The default behavior is: UefiSettings will not be enabled unless this property is set.
+     * Specifies the SecurityType of the virtual machine. It has to be set to any
+     * specified value to enable UefiSettings. The default behavior is: UefiSettings
+     * will not be enabled unless this property is set.
      */
     securityType?: string;
     /**
-     * Specifies the security settings like secure boot and vTPM used while creating the virtual machine. Minimum api-version: 2020-12-01.
+     * Specifies the security settings like secure boot and vTPM used while creating
+     * the virtual machine. Minimum api-version: 2020-12-01.
      */
     uefiSettings?: UefiSettingsResponse;
 }
 
 /**
- * Specifies the service artifact reference id used to set same image version for all virtual machines in the scale set when using 'latest' image version. Minimum api-version: 2022-11-01
+ * Specifies the service artifact reference id used to set same image version for
+ * all virtual machines in the scale set when using 'latest' image version.
+ * Minimum api-version: 2022-11-01
  */
 export interface ServiceArtifactReferenceResponse {
     /**
-     * The service artifact reference id in the form of /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/serviceArtifacts/{serviceArtifactName}/vmArtifactsProfiles/{vmArtifactsProfilesName}
+     * The service artifact reference id in the form of
+     * /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/serviceArtifacts/{serviceArtifactName}/vmArtifactsProfiles/{vmArtifactsProfilesName}
      */
     id?: string;
 }
@@ -515,19 +683,28 @@ export interface SshConfigurationResponse {
 }
 
 /**
- * Contains information about SSH certificate public key and the path on the Linux VM where the public key is placed.
+ * Contains information about SSH certificate public key and the path on the Linux
+ * VM where the public key is placed.
  */
 export interface SshPublicKeyResponse {
     /**
-     * SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure]https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
+     * SSH public key certificate used to authenticate with the VM through ssh. The
+     * key needs to be at least 2048-bit and in ssh-rsa format. For creating ssh keys,
+     * see [Create SSH keys on Linux and Mac for Linux VMs in
+     * Azure]https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
      */
     keyData?: string;
     /**
-     * Specifies the full path on the created VM where ssh public key is stored. If the file already exists, the specified key is appended to the file. Example: /home/user/.ssh/authorized_keys
+     * Specifies the full path on the created VM where ssh public key is stored. If
+     * the file already exists, the specified key is appended to the file. Example:
+     * /home/user/.ssh/authorized_keys
      */
     path?: string;
 }
 
+/**
+ * Describes SubResource
+ */
 export interface SubResourceResponse {
     /**
      * Resource Id
@@ -565,27 +742,36 @@ export interface SystemDataResponse {
     lastModifiedByType?: string;
 }
 
+/**
+ * Specifies Terminate Scheduled Event related configurations.
+ */
 export interface TerminateNotificationProfileResponse {
     /**
      * Specifies whether the Terminate Scheduled event is enabled or disabled.
      */
     enable?: boolean;
     /**
-     * Configurable length of time a Virtual Machine being deleted will have to potentially approve the Terminate Scheduled Event before the event is auto approved (timed out). The configuration must be specified in ISO 8601 format, the default value is 5 minutes (PT5M)
+     * Configurable length of time a Virtual Machine being deleted will have to
+     * potentially approve the Terminate Scheduled Event before the event is auto
+     * approved (timed out). The configuration must be specified in ISO 8601 format,
+     * the default value is 5 minutes (PT5M)
      */
     notBeforeTimeout?: string;
 }
 
 /**
- * Specifies the security settings like secure boot and vTPM used while creating the virtual machine. Minimum api-version: 2020-12-01.
+ * Specifies the security settings like secure boot and vTPM used while creating
+ * the virtual machine. Minimum api-version: 2020-12-01.
  */
 export interface UefiSettingsResponse {
     /**
-     * Specifies whether secure boot should be enabled on the virtual machine. Minimum api-version: 2020-12-01.
+     * Specifies whether secure boot should be enabled on the virtual machine. Minimum
+     * api-version: 2020-12-01.
      */
     secureBootEnabled?: boolean;
     /**
-     * Specifies whether vTPM should be enabled on the virtual machine. Minimum api-version: 2020-12-01.
+     * Specifies whether vTPM should be enabled on the virtual machine. Minimum
+     * api-version: 2020-12-01.
      */
     vTpmEnabled?: boolean;
 }
@@ -605,29 +791,39 @@ export interface UserAssignedIdentityResponse {
 }
 
 /**
- * Specifies the security profile settings for the managed disk. **Note:** It can only be set for Confidential VMs.
+ * Specifies the security profile settings for the managed disk. **Note:** It can
+ * only be set for Confidential VMs.
  */
 export interface VMDiskSecurityProfileResponse {
     /**
-     * Specifies the customer managed disk encryption set resource id for the managed disk that is used for Customer Managed Key encrypted ConfidentialVM OS Disk and VMGuest blob.
+     * Specifies the customer managed disk encryption set resource id for the managed
+     * disk that is used for Customer Managed Key encrypted ConfidentialVM OS Disk and
+     * VMGuest blob.
      */
     diskEncryptionSet?: DiskEncryptionSetParametersResponse;
     /**
-     * Specifies the EncryptionType of the managed disk. It is set to DiskWithVMGuestState for encryption of the managed disk along with VMGuestState blob, VMGuestStateOnly for encryption of just the VMGuestState blob, and NonPersistedTPM for not persisting firmware state in the VMGuestState blob.. **Note:** It can be set for only Confidential VMs.
+     * Specifies the EncryptionType of the managed disk. It is set to
+     * DiskWithVMGuestState for encryption of the managed disk along with VMGuestState
+     * blob, VMGuestStateOnly for encryption of just the VMGuestState blob, and
+     * NonPersistedTPM for not persisting firmware state in the VMGuestState blob..
+     * **Note:** It can be set for only Confidential VMs.
      */
     securityEncryptionType?: string;
 }
 
 /**
- * Specifies the required information to reference a compute gallery application version
+ * Specifies the required information to reference a compute gallery application
+ * version
  */
 export interface VMGalleryApplicationResponse {
     /**
-     * Optional, Specifies the uri to an azure blob that will replace the default configuration for the package if provided
+     * Optional, Specifies the uri to an azure blob that will replace the default
+     * configuration for the package if provided
      */
     configurationReference?: string;
     /**
-     * If set to true, when a new Gallery Application version is available in PIR/SIG, it will be automatically updated for the VM/VMSS
+     * If set to true, when a new Gallery Application version is available in PIR/SIG,
+     * it will be automatically updated for the VM/VMSS
      */
     enableAutomaticUpgrade?: boolean;
     /**
@@ -635,7 +831,8 @@ export interface VMGalleryApplicationResponse {
      */
     order?: number;
     /**
-     * Specifies the GalleryApplicationVersion resource id on the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{application}/versions/{version}
+     * Specifies the GalleryApplicationVersion resource id on the form of
+     * /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{application}/versions/{version}
      */
     packageReferenceId: string;
     /**
@@ -643,7 +840,8 @@ export interface VMGalleryApplicationResponse {
      */
     tags?: string;
     /**
-     * Optional, If true, any failure for any operation in the VmApplication will fail the deployment
+     * Optional, If true, any failure for any operation in the VmApplication will fail
+     * the deployment
      */
     treatFailureAsDeploymentFailure?: boolean;
 }
@@ -653,25 +851,53 @@ export interface VMGalleryApplicationResponse {
  */
 export interface VMSizePropertiesResponse {
     /**
-     * Specifies the number of vCPUs available for the VM. When this property is not specified in the request body the default behavior is to set it to the value of vCPUs available for that VM size exposed in api response of [List all available virtual machine sizes in a region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).
+     * Specifies the number of vCPUs available for the VM. When this property is not
+     * specified in the request body the default behavior is to set it to the value of
+     * vCPUs available for that VM size exposed in api response of [List all available
+     * virtual machine sizes in a
+     * region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).
      */
     vCPUsAvailable?: number;
     /**
-     * Specifies the vCPU to physical core ratio. When this property is not specified in the request body the default behavior is set to the value of vCPUsPerCore for the VM Size exposed in api response of [List all available virtual machine sizes in a region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list). **Setting this property to 1 also means that hyper-threading is disabled.**
+     * Specifies the vCPU to physical core ratio. When this property is not specified
+     * in the request body the default behavior is set to the value of vCPUsPerCore
+     * for the VM Size exposed in api response of [List all available virtual machine
+     * sizes in a
+     * region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).
+     * **Setting this property to 1 also means that hyper-threading is disabled.**
      */
     vCPUsPerCore?: number;
 }
 
 /**
- * Describes a single certificate reference in a Key Vault, and where the certificate should reside on the VM.
+ * Describes a single certificate reference in a Key Vault, and where the
+ * certificate should reside on the VM.
  */
 export interface VaultCertificateResponse {
     /**
-     * For Windows VMs, specifies the certificate store on the Virtual Machine to which the certificate should be added. The specified certificate store is implicitly in the LocalMachine account. For Linux VMs, the certificate file is placed under the /var/lib/waagent directory, with the file name &lt;UppercaseThumbprint&gt;.crt for the X509 certificate file and &lt;UppercaseThumbprint&gt;.prv for private key. Both of these files are .pem formatted.
+     * For Windows VMs, specifies the certificate store on the Virtual Machine to
+     * which the certificate should be added. The specified certificate store is
+     * implicitly in the LocalMachine account. For Linux VMs, the certificate file is
+     * placed under the /var/lib/waagent directory, with the file name
+     * &lt;UppercaseThumbprint&gt;.crt for the X509 certificate file and
+     * &lt;UppercaseThumbprint&gt;.prv for private key. Both of these files are .pem
+     * formatted.
      */
     certificateStore?: string;
     /**
-     * This is the URL of a certificate that has been uploaded to Key Vault as a secret. For adding a secret to the Key Vault, see [Add a key or secret to the key vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add). In this case, your certificate needs to be It is the Base64 encoding of the following JSON Object which is encoded in UTF-8: <br><br> {<br>  "data":"<Base64-encoded-certificate>",<br>  "dataType":"pfx",<br>  "password":"<pfx-file-password>"<br>} <br> To install certificates on a virtual machine it is recommended to use the [Azure Key Vault virtual machine extension for Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux) or the [Azure Key Vault virtual machine extension for Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
+     * This is the URL of a certificate that has been uploaded to Key Vault as a
+     * secret. For adding a secret to the Key Vault, see [Add a key or secret to the
+     * key
+     * vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add).
+     * In this case, your certificate needs to be It is the Base64 encoding of the
+     * following JSON Object which is encoded in UTF-8: <br><br> {<br>
+     * "data":"<Base64-encoded-certificate>",<br>  "dataType":"pfx",<br>
+     * "password":"<pfx-file-password>"<br>} <br> To install certificates on a virtual
+     * machine it is recommended to use the [Azure Key Vault virtual machine extension
+     * for
+     * Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
+     * or the [Azure Key Vault virtual machine extension for
+     * Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
      */
     certificateUrl?: string;
 }
@@ -681,7 +907,8 @@ export interface VaultCertificateResponse {
  */
 export interface VaultSecretGroupResponse {
     /**
-     * The relative URL of the Key Vault containing all of the certificates in VaultCertificates.
+     * The relative URL of the Key Vault containing all of the certificates in
+     * VaultCertificates.
      */
     sourceVault?: SubResourceResponse;
     /**
@@ -701,111 +928,13 @@ export interface VirtualHardDiskResponse {
 }
 
 /**
- * The instance view of a virtual machine extension.
- */
-export interface VirtualMachineExtensionInstanceViewResponse {
-    /**
-     * The virtual machine extension name.
-     */
-    name?: string;
-    /**
-     * The resource status information.
-     */
-    statuses?: InstanceViewStatusResponse[];
-    /**
-     * The resource status information.
-     */
-    substatuses?: InstanceViewStatusResponse[];
-    /**
-     * Specifies the type of the extension; an example is "CustomScriptExtension".
-     */
-    type?: string;
-    /**
-     * Specifies the version of the script handler.
-     */
-    typeHandlerVersion?: string;
-}
-
-/**
- * Describes a Virtual Machine Extension.
- */
-export interface VirtualMachineExtensionResponse {
-    /**
-     * Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
-     */
-    autoUpgradeMinorVersion?: boolean;
-    /**
-     * Indicates whether the extension should be automatically upgraded by the platform if there is a newer version of the extension available.
-     */
-    enableAutomaticUpgrade?: boolean;
-    /**
-     * How the extension handler should be forced to update even if the extension configuration has not changed.
-     */
-    forceUpdateTag?: string;
-    /**
-     * Resource Id
-     */
-    id: string;
-    /**
-     * The virtual machine extension instance view.
-     */
-    instanceView?: VirtualMachineExtensionInstanceViewResponse;
-    /**
-     * Resource location
-     */
-    location?: string;
-    /**
-     * Resource name
-     */
-    name: string;
-    /**
-     * The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
-     */
-    protectedSettings?: any;
-    /**
-     * The extensions protected settings that are passed by reference, and consumed from key vault
-     */
-    protectedSettingsFromKeyVault?: KeyVaultSecretReferenceResponse;
-    /**
-     * Collection of extension names after which this extension needs to be provisioned.
-     */
-    provisionAfterExtensions?: string[];
-    /**
-     * The provisioning state, which only appears in the response.
-     */
-    provisioningState: string;
-    /**
-     * The name of the extension handler publisher.
-     */
-    publisher?: string;
-    /**
-     * Json formatted public settings for the extension.
-     */
-    settings?: any;
-    /**
-     * Indicates whether failures stemming from the extension will be suppressed (Operational failures such as not connecting to the VM will not be suppressed regardless of this value). The default is false.
-     */
-    suppressFailures?: boolean;
-    /**
-     * Resource tags
-     */
-    tags?: {[key: string]: string};
-    /**
-     * Resource type
-     */
-    type: string;
-    /**
-     * Specifies the version of the script handler.
-     */
-    typeHandlerVersion?: string;
-}
-
-/**
  * Describes a virtual machine scale set data disk.
  */
 export interface VirtualMachineScaleSetDataDiskResponse {
     /**
-     * Specifies the caching requirements. Possible values are: **None,** **ReadOnly,** **ReadWrite.** The default values are: **None for Standard storage. ReadOnly for Premium storage.**
+     * Specifies the caching requirements. Possible values are: **None,**
+     * **ReadOnly,** **ReadWrite.** The default values are: **None for Standard
+     * storage. ReadOnly for Premium storage.**
      */
     caching?: string;
     /**
@@ -813,23 +942,37 @@ export interface VirtualMachineScaleSetDataDiskResponse {
      */
     createOption: string;
     /**
-     * Specifies whether data disk should be deleted or detached upon VMSS Flex deletion (This feature is available for VMSS with Flexible OrchestrationMode only).<br><br> Possible values: <br><br> **Delete** If this value is used, the data disk is deleted when the VMSS Flex VM is deleted.<br><br> **Detach** If this value is used, the data disk is retained after VMSS Flex VM is deleted.<br><br> The default value is set to **Delete**.
+     * Specifies whether data disk should be deleted or detached upon VMSS Flex
+     * deletion (This feature is available for VMSS with Flexible OrchestrationMode
+     * only).<br><br> Possible values: <br><br> **Delete** If this value is used, the
+     * data disk is deleted when the VMSS Flex VM is deleted.<br><br> **Detach** If
+     * this value is used, the data disk is retained after VMSS Flex VM is
+     * deleted.<br><br> The default value is set to **Delete**.
      */
     deleteOption?: string;
     /**
-     * Specifies the Read-Write IOPS for the managed disk. Should be used only when StorageAccountType is UltraSSD_LRS. If not specified, a default value would be assigned based on diskSizeGB.
+     * Specifies the Read-Write IOPS for the managed disk. Should be used only when
+     * StorageAccountType is UltraSSD_LRS. If not specified, a default value would be
+     * assigned based on diskSizeGB.
      */
     diskIOPSReadWrite?: number;
     /**
-     * Specifies the bandwidth in MB per second for the managed disk. Should be used only when StorageAccountType is UltraSSD_LRS. If not specified, a default value would be assigned based on diskSizeGB.
+     * Specifies the bandwidth in MB per second for the managed disk. Should be used
+     * only when StorageAccountType is UltraSSD_LRS. If not specified, a default value
+     * would be assigned based on diskSizeGB.
      */
     diskMBpsReadWrite?: number;
     /**
-     * Specifies the size of an empty data disk in gigabytes. This element can be used to overwrite the size of the disk in a virtual machine image. The property diskSizeGB is the number of bytes x 1024^3 for the disk and the value cannot be larger than 1023.
+     * Specifies the size of an empty data disk in gigabytes. This element can be used
+     * to overwrite the size of the disk in a virtual machine image. The property
+     * diskSizeGB is the number of bytes x 1024^3 for the disk and the value cannot be
+     * larger than 1023.
      */
     diskSizeGB?: number;
     /**
-     * Specifies the logical unit number of the data disk. This value is used to identify data disks within the VM and therefore must be unique for each data disk attached to a VM.
+     * Specifies the logical unit number of the data disk. This value is used to
+     * identify data disks within the VM and therefore must be unique for each data
+     * disk attached to a VM.
      */
     lun: number;
     /**
@@ -855,45 +998,43 @@ export interface VirtualMachineScaleSetExtensionProfileResponse {
      */
     extensions?: VirtualMachineScaleSetExtensionResponse[];
     /**
-     * Specifies the time alloted for all extensions to start. The time duration should be between 15 minutes and 120 minutes (inclusive) and should be specified in ISO 8601 format. The default value is 90 minutes (PT1H30M). Minimum api-version: 2020-06-01.
+     * Specifies the time alloted for all extensions to start. The time duration
+     * should be between 15 minutes and 120 minutes (inclusive) and should be
+     * specified in ISO 8601 format. The default value is 90 minutes (PT1H30M).
+     * Minimum api-version: 2020-06-01.
      */
     extensionsTimeBudget?: string;
 }
 
 /**
- * Describes a Virtual Machine Scale Set Extension.
+ * Describes the properties of a Virtual Machine Scale Set Extension.
  */
-export interface VirtualMachineScaleSetExtensionResponse {
+export interface VirtualMachineScaleSetExtensionPropertiesResponse {
     /**
-     * Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
+     * Indicates whether the extension should use a newer minor version if one is
+     * available at deployment time. Once deployed, however, the extension will not
+     * upgrade minor versions unless redeployed, even with this property set to true.
      */
     autoUpgradeMinorVersion?: boolean;
     /**
-     * Indicates whether the extension should be automatically upgraded by the platform if there is a newer version of the extension available.
+     * Indicates whether the extension should be automatically upgraded by the
+     * platform if there is a newer version of the extension available.
      */
     enableAutomaticUpgrade?: boolean;
     /**
-     * If a value is provided and is different from the previous value, the extension handler will be forced to update even if the extension configuration has not changed.
+     * If a value is provided and is different from the previous value, the extension
+     * handler will be forced to update even if the extension configuration has not
+     * changed.
      */
     forceUpdateTag?: string;
     /**
-     * Resource Id
-     */
-    id: string;
-    /**
-     * The name of the extension.
-     */
-    name?: string;
-    /**
-     * The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
-     */
-    protectedSettings?: any;
-    /**
-     * The extensions protected settings that are passed by reference, and consumed from key vault
+     * The extensions protected settings that are passed by reference, and consumed
+     * from key vault
      */
     protectedSettingsFromKeyVault?: KeyVaultSecretReferenceResponse;
     /**
-     * Collection of extension names after which this extension needs to be provisioned.
+     * Collection of extension names after which this extension needs to be
+     * provisioned.
      */
     provisionAfterExtensions?: string[];
     /**
@@ -909,13 +1050,15 @@ export interface VirtualMachineScaleSetExtensionResponse {
      */
     settings?: any;
     /**
-     * Indicates whether failures stemming from the extension will be suppressed (Operational failures such as not connecting to the VM will not be suppressed regardless of this value). The default is false.
+     * Indicates whether failures stemming from the extension will be suppressed
+     * (Operational failures such as not connecting to the VM will not be suppressed
+     * regardless of this value). The default is false.
      */
     suppressFailures?: boolean;
     /**
-     * Resource type
+     * Specifies the type of the extension; an example is "CustomScriptExtension".
      */
-    type: string;
+    type?: string;
     /**
      * Specifies the version of the script handler.
      */
@@ -923,21 +1066,49 @@ export interface VirtualMachineScaleSetExtensionResponse {
 }
 
 /**
+ * Describes a Virtual Machine Scale Set Extension.
+ */
+export interface VirtualMachineScaleSetExtensionResponse {
+    /**
+     * Resource Id
+     */
+    id: string;
+    /**
+     * The name of the extension.
+     */
+    name?: string;
+    /**
+     * Describes the properties of a Virtual Machine Scale Set Extension.
+     */
+    properties?: VirtualMachineScaleSetExtensionPropertiesResponse;
+    /**
+     * Resource type
+     */
+    type: string;
+}
+
+/**
  * Specifies the hardware settings for the virtual machine scale set.
  */
 export interface VirtualMachineScaleSetHardwareProfileResponse {
     /**
-     * Specifies the properties for customizing the size of the virtual machine. Minimum api-version: 2021-11-01. Please follow the instructions in [VM Customization](https://aka.ms/vmcustomization) for more details.
+     * Specifies the properties for customizing the size of the virtual machine.
+     * Minimum api-version: 2021-11-01. Please follow the instructions in [VM
+     * Customization](https://aka.ms/vmcustomization) for more details.
      */
     vmSizeProperties?: VMSizePropertiesResponse;
 }
 
 /**
- * Describes a virtual machine scale set network profile's IP configuration.
+ * Describes a virtual machine scale set network profile's IP configuration
+ * properties.
  */
-export interface VirtualMachineScaleSetIPConfigurationResponse {
+export interface VirtualMachineScaleSetIPConfigurationPropertiesResponse {
     /**
-     * Specifies an array of references to backend address pools of application gateways. A scale set can reference backend address pools of multiple application gateways. Multiple scale sets cannot use the same application gateway.
+     * Specifies an array of references to backend address pools of application
+     * gateways. A scale set can reference backend address pools of multiple
+     * application gateways. Multiple scale sets cannot use the same application
+     * gateway.
      */
     applicationGatewayBackendAddressPools?: SubResourceResponse[];
     /**
@@ -945,23 +1116,26 @@ export interface VirtualMachineScaleSetIPConfigurationResponse {
      */
     applicationSecurityGroups?: SubResourceResponse[];
     /**
-     * Specifies an array of references to backend address pools of load balancers. A scale set can reference backend address pools of one public and one internal load balancer. Multiple scale sets cannot use the same basic sku load balancer.
+     * Specifies an array of references to backend address pools of load balancers. A
+     * scale set can reference backend address pools of one public and one internal
+     * load balancer. Multiple scale sets cannot use the same basic sku load balancer.
      */
     loadBalancerBackendAddressPools?: SubResourceResponse[];
     /**
-     * Specifies an array of references to inbound Nat pools of the load balancers. A scale set can reference inbound nat pools of one public and one internal load balancer. Multiple scale sets cannot use the same basic sku load balancer.
+     * Specifies an array of references to inbound Nat pools of the load balancers. A
+     * scale set can reference inbound nat pools of one public and one internal load
+     * balancer. Multiple scale sets cannot use the same basic sku load balancer.
      */
     loadBalancerInboundNatPools?: SubResourceResponse[];
     /**
-     * The IP configuration name.
-     */
-    name: string;
-    /**
-     * Specifies the primary network interface in case the virtual machine has more than 1 network interface.
+     * Specifies the primary network interface in case the virtual machine has more
+     * than 1 network interface.
      */
     primary?: boolean;
     /**
-     * Available from Api-Version 2017-03-30 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.  Possible values are: 'IPv4' and 'IPv6'.
+     * Available from Api-Version 2017-03-30 onwards, it represents whether the
+     * specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.  Possible
+     * values are: 'IPv4' and 'IPv6'.
      */
     privateIPAddressVersion?: string;
     /**
@@ -972,6 +1146,21 @@ export interface VirtualMachineScaleSetIPConfigurationResponse {
      * Specifies the identifier of the subnet.
      */
     subnet?: ApiEntityReferenceResponse;
+}
+
+/**
+ * Describes a virtual machine scale set network profile's IP configuration.
+ */
+export interface VirtualMachineScaleSetIPConfigurationResponse {
+    /**
+     * The IP configuration name.
+     */
+    name: string;
+    /**
+     * Describes a virtual machine scale set network profile's IP configuration
+     * properties.
+     */
+    properties?: VirtualMachineScaleSetIPConfigurationPropertiesResponse;
 }
 
 /**
@@ -993,7 +1182,8 @@ export interface VirtualMachineScaleSetIpTagResponse {
  */
 export interface VirtualMachineScaleSetManagedDiskParametersResponse {
     /**
-     * Specifies the customer managed disk encryption set resource id for the managed disk.
+     * Specifies the customer managed disk encryption set resource id for the managed
+     * disk.
      */
     diskEncryptionSet?: DiskEncryptionSetParametersResponse;
     /**
@@ -1001,7 +1191,8 @@ export interface VirtualMachineScaleSetManagedDiskParametersResponse {
      */
     securityProfile?: VMDiskSecurityProfileResponse;
     /**
-     * Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS can only be used with data disks, it cannot be used with OS Disk.
+     * Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS can
+     * only be used with data disks, it cannot be used with OS Disk.
      */
     storageAccountType?: string;
 }
@@ -1017,15 +1208,17 @@ export interface VirtualMachineScaleSetNetworkConfigurationDnsSettingsResponse {
 }
 
 /**
- * Describes a virtual machine scale set network profile's network configurations.
+ * Describes a virtual machine scale set network profile's IP configuration.
  */
-export interface VirtualMachineScaleSetNetworkConfigurationResponse {
+export interface VirtualMachineScaleSetNetworkConfigurationPropertiesResponse {
     /**
-     * Specifies whether the Auxiliary mode is enabled for the Network Interface resource.
+     * Specifies whether the Auxiliary mode is enabled for the Network Interface
+     * resource.
      */
     auxiliaryMode?: string;
     /**
-     * Specifies whether the Auxiliary sku is enabled for the Network Interface resource.
+     * Specifies whether the Auxiliary sku is enabled for the Network Interface
+     * resource.
      */
     auxiliarySku?: string;
     /**
@@ -1057,17 +1250,28 @@ export interface VirtualMachineScaleSetNetworkConfigurationResponse {
      */
     ipConfigurations: VirtualMachineScaleSetIPConfigurationResponse[];
     /**
-     * The network configuration name.
-     */
-    name: string;
-    /**
      * The network security group.
      */
     networkSecurityGroup?: SubResourceResponse;
     /**
-     * Specifies the primary network interface in case the virtual machine has more than 1 network interface.
+     * Specifies the primary network interface in case the virtual machine has more
+     * than 1 network interface.
      */
     primary?: boolean;
+}
+
+/**
+ * Describes a virtual machine scale set network profile's network configurations.
+ */
+export interface VirtualMachineScaleSetNetworkConfigurationResponse {
+    /**
+     * The network configuration name.
+     */
+    name: string;
+    /**
+     * Describes a virtual machine scale set network profile's IP configuration.
+     */
+    properties?: VirtualMachineScaleSetNetworkConfigurationPropertiesResponse;
 }
 
 /**
@@ -1075,11 +1279,15 @@ export interface VirtualMachineScaleSetNetworkConfigurationResponse {
  */
 export interface VirtualMachineScaleSetNetworkProfileResponse {
     /**
-     * A reference to a load balancer probe used to determine the health of an instance in the virtual machine scale set. The reference will be in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/probes/{probeName}'.
+     * A reference to a load balancer probe used to determine the health of an
+     * instance in the virtual machine scale set. The reference will be in the form:
+     * '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/probes/{probeName}'.
      */
     healthProbe?: ApiEntityReferenceResponse;
     /**
-     * specifies the Microsoft.Network API version used when creating networking resources in the Network Interface Configurations for Virtual Machine Scale Set with orchestration mode 'Flexible'
+     * specifies the Microsoft.Network API version used when creating networking
+     * resources in the Network Interface Configurations for Virtual Machine Scale Set
+     * with orchestration mode 'Flexible'
      */
     networkApiVersion?: string;
     /**
@@ -1093,23 +1301,40 @@ export interface VirtualMachineScaleSetNetworkProfileResponse {
  */
 export interface VirtualMachineScaleSetOSDiskResponse {
     /**
-     * Specifies the caching requirements. Possible values are: **None,** **ReadOnly,** **ReadWrite.** The default values are: **None for Standard storage. ReadOnly for Premium storage.**
+     * Specifies the caching requirements. Possible values are: **None,**
+     * **ReadOnly,** **ReadWrite.** The default values are: **None for Standard
+     * storage. ReadOnly for Premium storage.**
      */
     caching?: string;
     /**
-     * Specifies how the virtual machines in the scale set should be created. The only allowed value is: **FromImage.** This value is used when you are using an image to create the virtual machine. If you are using a platform image, you also use the imageReference element described above. If you are using a marketplace image, you  also use the plan element previously described.
+     * Specifies how the virtual machines in the scale set should be created. The only
+     * allowed value is: **FromImage.** This value is used when you are using an image
+     * to create the virtual machine. If you are using a platform image, you also use
+     * the imageReference element described above. If you are using a marketplace
+     * image, you  also use the plan element previously described.
      */
     createOption: string;
     /**
-     * Specifies whether OS Disk should be deleted or detached upon VMSS Flex deletion (This feature is available for VMSS with Flexible OrchestrationMode only). <br><br> Possible values: <br><br> **Delete** If this value is used, the OS disk is deleted when VMSS Flex VM is deleted.<br><br> **Detach** If this value is used, the OS disk is retained after VMSS Flex VM is deleted. <br><br> The default value is set to **Delete**. For an Ephemeral OS Disk, the default value is set to **Delete**. User cannot change the delete option for Ephemeral OS Disk.
+     * Specifies whether OS Disk should be deleted or detached upon VMSS Flex deletion
+     * (This feature is available for VMSS with Flexible OrchestrationMode only).
+     * <br><br> Possible values: <br><br> **Delete** If this value is used, the OS
+     * disk is deleted when VMSS Flex VM is deleted.<br><br> **Detach** If this value
+     * is used, the OS disk is retained after VMSS Flex VM is deleted. <br><br> The
+     * default value is set to **Delete**. For an Ephemeral OS Disk, the default value
+     * is set to **Delete**. User cannot change the delete option for Ephemeral OS
+     * Disk.
      */
     deleteOption?: string;
     /**
-     * Specifies the ephemeral disk Settings for the operating system disk used by the virtual machine scale set.
+     * Specifies the ephemeral disk Settings for the operating system disk used by the
+     * virtual machine scale set.
      */
     diffDiskSettings?: DiffDiskSettingsResponse;
     /**
-     * Specifies the size of an empty data disk in gigabytes. This element can be used to overwrite the size of the disk in a virtual machine image. The property 'diskSizeGB' is the number of bytes x 1024^3 for the disk and the value cannot be larger than 1023.
+     * Specifies the size of an empty data disk in gigabytes. This element can be used
+     * to overwrite the size of the disk in a virtual machine image. The property 'diskSizeGB'
+     * is the number of bytes x 1024^3 for the disk and the value cannot
+     * be larger than 1023.
      */
     diskSizeGB?: number;
     /**
@@ -1125,11 +1350,14 @@ export interface VirtualMachineScaleSetOSDiskResponse {
      */
     name?: string;
     /**
-     * This property allows you to specify the type of the OS that is included in the disk if creating a VM from user-image or a specialized VHD. Possible values are: **Windows,** **Linux.**
+     * This property allows you to specify the type of the OS that is included in the
+     * disk if creating a VM from user-image or a specialized VHD. Possible values
+     * are: **Windows,** **Linux.**
      */
     osType?: string;
     /**
-     * Specifies the container urls that are used to store operating system disks for the scale set.
+     * Specifies the container urls that are used to store operating system disks for
+     * the scale set.
      */
     vhdContainers?: string[];
     /**
@@ -1143,27 +1371,31 @@ export interface VirtualMachineScaleSetOSDiskResponse {
  */
 export interface VirtualMachineScaleSetOSProfileResponse {
     /**
-     * Specifies the password of the administrator account. <br><br> **Minimum-length (Windows):** 8 characters <br><br> **Minimum-length (Linux):** 6 characters <br><br> **Max-length (Windows):** 123 characters <br><br> **Max-length (Linux):** 72 characters <br><br> **Complexity requirements:** 3 out of 4 conditions below need to be fulfilled <br> Has lower characters <br>Has upper characters <br> Has a digit <br> Has a special character (Regex match [\W_]) <br><br> **Disallowed values:** "abc@123", "P@$$w0rd", "P@ssw0rd", "P@ssword123", "Pa$$word", "pass@word1", "Password!", "Password1", "Password22", "iloveyou!" <br><br> For resetting the password, see [How to reset the Remote Desktop service or its login password in a Windows VM](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/reset-rdp) <br><br> For resetting root password, see [Manage users, SSH, and check or repair disks on Azure Linux VMs using the VMAccess Extension](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)
-     */
-    adminPassword?: string;
-    /**
-     * Specifies the name of the administrator account. <br><br> **Windows-only restriction:** Cannot end in "." <br><br> **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length (Linux):** 1  character <br><br> **Max-length (Linux):** 64 characters <br><br> **Max-length (Windows):** 20 characters
+     * Specifies the name of the administrator account. <br><br> **Windows-only
+     * restriction:** Cannot end in "." <br><br> **Disallowed values:**
+     * "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3",
+     * "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup",
+     * "console", "david", "guest", "john", "owner", "root", "server", "sql",
+     * "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5".
+     * <br><br> **Minimum-length (Linux):** 1  character <br><br> **Max-length
+     * (Linux):** 64 characters <br><br> **Max-length (Windows):** 20 characters
      */
     adminUsername?: string;
     /**
-     * Specifies whether extension operations should be allowed on the virtual machine scale set. This may only be set to False when no extensions are present on the virtual machine scale set.
+     * Specifies whether extension operations should be allowed on the virtual machine
+     * scale set. This may only be set to False when no extensions are present on the
+     * virtual machine scale set.
      */
     allowExtensionOperations?: boolean;
     /**
-     * Specifies the computer name prefix for all of the virtual machines in the scale set. Computer name prefixes must be 1 to 15 characters long.
+     * Specifies the computer name prefix for all of the virtual machines in the scale
+     * set. Computer name prefixes must be 1 to 15 characters long.
      */
     computerNamePrefix?: string;
     /**
-     * Specifies a base-64 encoded string of custom data. The base-64 encoded string is decoded to a binary array that is saved as a file on the Virtual Machine. The maximum length of the binary array is 65535 bytes. For using cloud-init for your VM, see [Using cloud-init to customize a Linux VM during creation](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init)
-     */
-    customData?: string;
-    /**
-     * Specifies the Linux operating system settings on the virtual machine. For a list of supported Linux distributions, see [Linux on Azure-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+     * Specifies the Linux operating system settings on the virtual machine. For a
+     * list of supported Linux distributions, see [Linux on Azure-Endorsed
+     * Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
      */
     linuxConfiguration?: LinuxConfigurationResponse;
     /**
@@ -1171,7 +1403,12 @@ export interface VirtualMachineScaleSetOSProfileResponse {
      */
     requireGuestProvisionSignal?: boolean;
     /**
-     * Specifies set of certificates that should be installed onto the virtual machines in the scale set. To install certificates on a virtual machine it is recommended to use the [Azure Key Vault virtual machine extension for Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux) or the [Azure Key Vault virtual machine extension for Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
+     * Specifies set of certificates that should be installed onto the virtual
+     * machines in the scale set. To install certificates on a virtual machine it is
+     * recommended to use the [Azure Key Vault virtual machine extension for
+     * Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
+     * or the [Azure Key Vault virtual machine extension for
+     * Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
      */
     secrets?: VaultSecretGroupResponse[];
     /**
@@ -1185,19 +1422,25 @@ export interface VirtualMachineScaleSetOSProfileResponse {
  */
 export interface VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettingsResponse {
     /**
-     * The Domain name label.The concatenation of the domain name label and vm index will be the domain name labels of the PublicIPAddress resources that will be created
+     * The Domain name label.The concatenation of the domain name label and vm index
+     * will be the domain name labels of the PublicIPAddress resources that will be
+     * created
      */
     domainNameLabel: string;
     /**
-     * The Domain name label scope.The concatenation of the hashed domain name label that generated according to the policy from domain name label scope and vm index will be the domain name labels of the PublicIPAddress resources that will be created
+     * The Domain name label scope.The concatenation of the hashed domain name label
+     * that generated according to the policy from domain name label scope and vm
+     * index will be the domain name labels of the PublicIPAddress resources that will
+     * be created
      */
     domainNameLabelScope?: string;
 }
 
 /**
- * Describes a virtual machines scale set IP Configuration's PublicIPAddress configuration
+ * Describes a virtual machines scale set IP Configuration's PublicIPAddress
+ * configuration
  */
-export interface VirtualMachineScaleSetPublicIPAddressConfigurationResponse {
+export interface VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponse {
     /**
      * Specify what happens to the public IP when the VM is deleted
      */
@@ -1215,19 +1458,34 @@ export interface VirtualMachineScaleSetPublicIPAddressConfigurationResponse {
      */
     ipTags?: VirtualMachineScaleSetIpTagResponse[];
     /**
-     * The publicIP address configuration name.
-     */
-    name: string;
-    /**
-     * Available from Api-Version 2019-07-01 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4. Possible values are: 'IPv4' and 'IPv6'.
+     * Available from Api-Version 2019-07-01 onwards, it represents whether the
+     * specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4. Possible
+     * values are: 'IPv4' and 'IPv6'.
      */
     publicIPAddressVersion?: string;
     /**
      * The PublicIPPrefix from which to allocate publicIP addresses.
      */
     publicIPPrefix?: SubResourceResponse;
+}
+
+/**
+ * Describes a virtual machines scale set IP Configuration's PublicIPAddress
+ * configuration
+ */
+export interface VirtualMachineScaleSetPublicIPAddressConfigurationResponse {
     /**
-     * Describes the public IP Sku. It can only be set with OrchestrationMode as Flexible.
+     * The publicIP address configuration name.
+     */
+    name: string;
+    /**
+     * Describes a virtual machines scale set IP Configuration's PublicIPAddress
+     * configuration
+     */
+    properties?: VirtualMachineScaleSetPublicIPAddressConfigurationPropertiesResponse;
+    /**
+     * Describes the public IP Sku. It can only be set with OrchestrationMode as
+     * Flexible.
      */
     sku?: PublicIPAddressSkuResponse;
 }
@@ -1237,96 +1495,30 @@ export interface VirtualMachineScaleSetPublicIPAddressConfigurationResponse {
  */
 export interface VirtualMachineScaleSetStorageProfileResponse {
     /**
-     * Specifies the parameters that are used to add data disks to the virtual machines in the scale set. For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
+     * Specifies the parameters that are used to add data disks to the virtual
+     * machines in the scale set. For more information about disks, see [About disks
+     * and VHDs for Azure virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
      */
     dataDisks?: VirtualMachineScaleSetDataDiskResponse[];
-    diskControllerType?: string[];
     /**
-     * Specifies information about the image to use. You can specify information about platform images, marketplace images, or virtual machine images. This element is required when you want to use a platform image, marketplace image, or virtual machine image, but is not used in other creation operations.
+     * Specifies the disk controller type configured for the virtual machines in the scale set. Minimum api-version: 2022-08-01
+     */
+    diskControllerType?: string;
+    /**
+     * Specifies information about the image to use. You can specify information about
+     * platform images, marketplace images, or virtual machine images. This element is
+     * required when you want to use a platform image, marketplace image, or virtual
+     * machine image, but is not used in other creation operations.
      */
     imageReference?: ImageReferenceResponse;
     /**
-     * Specifies information about the operating system disk used by the virtual machines in the scale set. For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
+     * Specifies information about the operating system disk used by the virtual
+     * machines in the scale set. For more information about disks, see [About disks
+     * and VHDs for Azure virtual
+     * machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
      */
     osDisk?: VirtualMachineScaleSetOSDiskResponse;
-}
-
-/**
- * Describes a virtual machine scale set virtual machine profile.
- */
-export interface VirtualMachineScaleSetVMProfileResponse {
-    /**
-     * Specifies the gallery applications that should be made available to the VM/VMSS
-     */
-    applicationProfile?: ApplicationProfileResponse;
-    /**
-     * Specifies the billing related details of a Azure Spot VMSS. Minimum api-version: 2019-03-01.
-     */
-    billingProfile?: BillingProfileResponse;
-    /**
-     * Specifies the capacity reservation related details of a scale set. Minimum api-version: 2021-04-01.
-     */
-    capacityReservation?: CapacityReservationProfileResponse;
-    /**
-     * Specifies the boot diagnostic settings state. Minimum api-version: 2015-06-15.
-     */
-    diagnosticsProfile?: DiagnosticsProfileResponse;
-    /**
-     * Specifies the eviction policy for the Azure Spot virtual machine and Azure Spot scale set. For Azure Spot virtual machines, both 'Deallocate' and 'Delete' are supported and the minimum api-version is 2019-03-01. For Azure Spot scale sets, both 'Deallocate' and 'Delete' are supported and the minimum api-version is 2017-10-30-preview.
-     */
-    evictionPolicy?: string;
-    /**
-     * Specifies a collection of settings for extensions installed on virtual machines in the scale set.
-     */
-    extensionProfile?: VirtualMachineScaleSetExtensionProfileResponse;
-    /**
-     * Specifies the hardware profile related details of a scale set. Minimum api-version: 2021-11-01.
-     */
-    hardwareProfile?: VirtualMachineScaleSetHardwareProfileResponse;
-    /**
-     * Specifies that the image or disk that is being used was licensed on-premises. <br><br> Possible values for Windows Server operating system are: <br><br> Windows_Client <br><br> Windows_Server <br><br> Possible values for Linux Server operating system are: <br><br> RHEL_BYOS (for RHEL) <br><br> SLES_BYOS (for SUSE) <br><br> For more information, see [Azure Hybrid Use Benefit for Windows Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) <br><br> [Azure Hybrid Use Benefit for Linux Server](https://docs.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux) <br><br> Minimum api-version: 2015-06-15
-     */
-    licenseType?: string;
-    /**
-     * Specifies properties of the network interfaces of the virtual machines in the scale set.
-     */
-    networkProfile?: VirtualMachineScaleSetNetworkProfileResponse;
-    /**
-     * Specifies the operating system settings for the virtual machines in the scale set.
-     */
-    osProfile?: VirtualMachineScaleSetOSProfileResponse;
-    /**
-     * Specifies the priority for the virtual machines in the scale set. Minimum api-version: 2017-10-30-preview.
-     */
-    priority?: string;
-    /**
-     * Specifies Scheduled Event related configurations.
-     */
-    scheduledEventsProfile?: ScheduledEventsProfileResponse;
-    /**
-     * Specifies the security posture to be used for all virtual machines in the scale set. Minimum api-version: 2023-03-01
-     */
-    securityPostureReference?: SecurityPostureReferenceResponse;
-    /**
-     * Specifies the Security related profile settings for the virtual machines in the scale set.
-     */
-    securityProfile?: SecurityProfileResponse;
-    /**
-     * Specifies the service artifact reference id used to set same image version for all virtual machines in the scale set when using 'latest' image version. Minimum api-version: 2022-11-01
-     */
-    serviceArtifactReference?: ServiceArtifactReferenceResponse;
-    /**
-     * Specifies the storage settings for the virtual machine disks.
-     */
-    storageProfile?: VirtualMachineScaleSetStorageProfileResponse;
-    /**
-     * Specifies the time in which this VM profile for the Virtual Machine Scale Set was created. Minimum API version for this property is 2023-09-01. This value will be added to VMSS Flex VM tags when creating/updating the VMSS VM Profile with minimum api-version 2023-09-01.
-     */
-    timeCreated: string;
-    /**
-     * UserData for the virtual machines in the scale set, which must be base-64 encoded. Customer should not pass any secrets in here. Minimum api-version: 2021-03-01.
-     */
-    userData?: string;
 }
 
 /**
@@ -1359,11 +1551,24 @@ export interface WinRMConfigurationResponse {
  */
 export interface WinRMListenerResponse {
     /**
-     * This is the URL of a certificate that has been uploaded to Key Vault as a secret. For adding a secret to the Key Vault, see [Add a key or secret to the key vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add). In this case, your certificate needs to be the Base64 encoding of the following JSON Object which is encoded in UTF-8: <br><br> {<br>  "data":"<Base64-encoded-certificate>",<br>  "dataType":"pfx",<br>  "password":"<pfx-file-password>"<br>} <br> To install certificates on a virtual machine it is recommended to use the [Azure Key Vault virtual machine extension for Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux) or the [Azure Key Vault virtual machine extension for Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
+     * This is the URL of a certificate that has been uploaded to Key Vault as a
+     * secret. For adding a secret to the Key Vault, see [Add a key or secret to the
+     * key
+     * vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add).
+     * In this case, your certificate needs to be the Base64 encoding of the following
+     * JSON Object which is encoded in UTF-8: <br><br> {<br>
+     * "data":"<Base64-encoded-certificate>",<br>  "dataType":"pfx",<br>
+     * "password":"<pfx-file-password>"<br>} <br> To install certificates on a virtual
+     * machine it is recommended to use the [Azure Key Vault virtual machine extension
+     * for
+     * Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
+     * or the [Azure Key Vault virtual machine extension for
+     * Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
      */
     certificateUrl?: string;
     /**
-     * Specifies the protocol of WinRM listener. Possible values are: **http,** **https.**
+     * Specifies the protocol of WinRM listener. Possible values are: **http,**
+     * **https.**
      */
     protocol?: string;
 }
@@ -1373,15 +1578,19 @@ export interface WinRMListenerResponse {
  */
 export interface WindowsConfigurationResponse {
     /**
-     * Specifies additional base-64 encoded XML formatted information that can be included in the Unattend.xml file, which is used by Windows Setup.
+     * Specifies additional base-64 encoded XML formatted information that can be
+     * included in the Unattend.xml file, which is used by Windows Setup.
      */
     additionalUnattendContent?: AdditionalUnattendContentResponse[];
     /**
-     * Indicates whether Automatic Updates is enabled for the Windows virtual machine. Default value is true. For virtual machine scale sets, this property can be updated and updates will take effect on OS reprovisioning.
+     * Indicates whether Automatic Updates is enabled for the Windows virtual machine.
+     * Default value is true. For virtual machine scale sets, this property can be
+     * updated and updates will take effect on OS reprovisioning.
      */
     enableAutomaticUpdates?: boolean;
     /**
-     * Indicates whether VMAgent Platform Updates is enabled for the Windows virtual machine. Default value is false.
+     * Indicates whether VMAgent Platform Updates is enabled for the Windows virtual
+     * machine. Default value is false.
      */
     enableVMAgentPlatformUpdates?: boolean;
     /**
@@ -1389,21 +1598,30 @@ export interface WindowsConfigurationResponse {
      */
     patchSettings?: PatchSettingsResponse;
     /**
-     * Indicates whether virtual machine agent should be provisioned on the virtual machine. When this property is not specified in the request body, it is set to true by default. This will ensure that VM Agent is installed on the VM so that extensions can be added to the VM later.
+     * Indicates whether virtual machine agent should be provisioned on the virtual
+     * machine. When this property is not specified in the request body, it is set to
+     * true by default. This will ensure that VM Agent is installed on the VM so that
+     * extensions can be added to the VM later.
      */
     provisionVMAgent?: boolean;
     /**
-     * Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time". Possible values can be [TimeZoneInfo.Id](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id) value from time zones returned by [TimeZoneInfo.GetSystemTimeZones](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.getsystemtimezones).
+     * Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time".
+     * Possible values can be
+     * [TimeZoneInfo.Id](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id)
+     * value from time zones returned by
+     * [TimeZoneInfo.GetSystemTimeZones](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.getsystemtimezones).
      */
     timeZone?: string;
     /**
-     * Specifies the Windows Remote Management listeners. This enables remote Windows PowerShell.
+     * Specifies the Windows Remote Management listeners. This enables remote Windows
+     * PowerShell.
      */
     winRM?: WinRMConfigurationResponse;
 }
 
 /**
- * Specifies additional settings to be applied when patch mode AutomaticByPlatform is selected in Windows patch settings.
+ * Specifies additional settings to be applied when patch mode AutomaticByPlatform
+ * is selected in Windows patch settings.
  */
 export interface WindowsVMGuestPatchAutomaticByPlatformSettingsResponse {
     /**
@@ -1411,7 +1629,8 @@ export interface WindowsVMGuestPatchAutomaticByPlatformSettingsResponse {
      */
     bypassPlatformSafetyChecksOnUserSchedule?: boolean;
     /**
-     * Specifies the reboot setting for all AutomaticByPlatform patch installation operations.
+     * Specifies the reboot setting for all AutomaticByPlatform patch installation
+     * operations.
      */
     rebootSetting?: string;
 }

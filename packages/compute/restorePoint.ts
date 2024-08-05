@@ -5,7 +5,7 @@ import * as types from "./types";
  * Restore Point details.
  * Azure REST API version: 2023-03-01. Prior API version in Azure Native 1.x: 2021-03-01.
  *
- * Other available API versions: 2021-11-01, 2022-11-01, 2023-07-01, 2023-09-01, 2024-03-01.
+ * Other available API versions: 2021-11-01, 2022-11-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01.
  */
 export class RestorePoint extends pulumi.CustomResource {
     /**
@@ -112,7 +112,7 @@ export class RestorePoint extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20210301:RestorePoint" }, { type: "azure-native:compute/v20210401:RestorePoint" }, { type: "azure-native:compute/v20210701:RestorePoint" }, { type: "azure-native:compute/v20211101:RestorePoint" }, { type: "azure-native:compute/v20220301:RestorePoint" }, { type: "azure-native:compute/v20220801:RestorePoint" }, { type: "azure-native:compute/v20221101:RestorePoint" }, { type: "azure-native:compute/v20230301:RestorePoint" }, { type: "azure-native:compute/v20230701:RestorePoint" }, { type: "azure-native:compute/v20230901:RestorePoint" }, { type: "azure-native:compute/v20240301:RestorePoint" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:compute/v20210301:RestorePoint" }, { type: "azure-native:compute/v20210401:RestorePoint" }, { type: "azure-native:compute/v20210701:RestorePoint" }, { type: "azure-native:compute/v20211101:RestorePoint" }, { type: "azure-native:compute/v20220301:RestorePoint" }, { type: "azure-native:compute/v20220801:RestorePoint" }, { type: "azure-native:compute/v20221101:RestorePoint" }, { type: "azure-native:compute/v20230301:RestorePoint" }, { type: "azure-native:compute/v20230701:RestorePoint" }, { type: "azure-native:compute/v20230901:RestorePoint" }, { type: "azure-native:compute/v20240301:RestorePoint" }, { type: "azure-native:compute/v20240701:RestorePoint" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(RestorePoint.__pulumiType, name, resourceInputs, opts);
     }

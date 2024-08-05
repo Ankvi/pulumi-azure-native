@@ -5,7 +5,7 @@ import * as types from "./types";
  * Azure Resource Manager resource envelope.
  * Azure REST API version: 2024-01-01-preview.
  *
- * Other available API versions: 2024-04-01, 2024-04-01-preview.
+ * Other available API versions: 2024-04-01, 2024-04-01-preview, 2024-07-01-preview.
  */
 export class MarketplaceSubscription extends pulumi.CustomResource {
     /**
@@ -84,7 +84,7 @@ export class MarketplaceSubscription extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:machinelearningservices/v20240101preview:MarketplaceSubscription" }, { type: "azure-native:machinelearningservices/v20240401:MarketplaceSubscription" }, { type: "azure-native:machinelearningservices/v20240401preview:MarketplaceSubscription" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:machinelearningservices/v20240101preview:MarketplaceSubscription" }, { type: "azure-native:machinelearningservices/v20240401:MarketplaceSubscription" }, { type: "azure-native:machinelearningservices/v20240401preview:MarketplaceSubscription" }, { type: "azure-native:machinelearningservices/v20240701preview:MarketplaceSubscription" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(MarketplaceSubscription.__pulumiType, name, resourceInputs, opts);
     }

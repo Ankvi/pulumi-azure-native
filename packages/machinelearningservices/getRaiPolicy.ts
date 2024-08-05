@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Azure OpenAI Content Filters resource.
  * Azure REST API version: 2024-04-01-preview.
+ *
+ * Other available API versions: 2024-07-01-preview.
  */
 export function getRaiPolicy(args: GetRaiPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetRaiPolicyResult> {
 
@@ -63,6 +65,8 @@ export interface GetRaiPolicyResult {
 /**
  * Azure OpenAI Content Filters resource.
  * Azure REST API version: 2024-04-01-preview.
+ *
+ * Other available API versions: 2024-07-01-preview.
  */
 export function getRaiPolicyOutput(args: GetRaiPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRaiPolicyResult> {
     return pulumi.output(args).apply((a: any) => getRaiPolicy(a, opts))

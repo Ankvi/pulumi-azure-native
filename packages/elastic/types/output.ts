@@ -380,7 +380,7 @@ export interface OpenAIIntegrationPropertiesResponse {
      */
     openAIResourceEndpoint?: string;
     /**
-     * The resource id of Open AI resource
+     * The resource name of Open AI resource
      */
     openAIResourceId?: string;
 }

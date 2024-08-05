@@ -3,6 +3,8 @@ import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
 /**
  * Gets a role assignment for the caller on a department. The operation is supported only for billing accounts with agreement type Enterprise Agreement.
  * Azure REST API version: 2019-10-01-preview.
+ *
+ * Other available API versions: 2024-04-01.
  */
 export function getBillingRoleAssignmentByDepartment(args: GetBillingRoleAssignmentByDepartmentArgs, opts?: pulumi.InvokeOptions): Promise<GetBillingRoleAssignmentByDepartmentResult> {
 
@@ -89,6 +91,8 @@ export interface GetBillingRoleAssignmentByDepartmentResult {
 /**
  * Gets a role assignment for the caller on a department. The operation is supported only for billing accounts with agreement type Enterprise Agreement.
  * Azure REST API version: 2019-10-01-preview.
+ *
+ * Other available API versions: 2024-04-01.
  */
 export function getBillingRoleAssignmentByDepartmentOutput(args: GetBillingRoleAssignmentByDepartmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBillingRoleAssignmentByDepartmentResult> {
     return pulumi.output(args).apply((a: any) => getBillingRoleAssignmentByDepartment(a, opts))

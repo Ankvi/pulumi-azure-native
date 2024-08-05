@@ -86,6 +86,11 @@ export const getVolumeQuotaRule: typeof import("./getVolumeQuotaRule").getVolume
 export const getVolumeQuotaRuleOutput: typeof import("./getVolumeQuotaRule").getVolumeQuotaRuleOutput = null as any;
 utilities.lazyLoad(exports, ["getVolumeQuotaRule","getVolumeQuotaRuleOutput"], () => require("./getVolumeQuotaRule"));
 
+export { ListVolumeQuotaReportArgs, ListVolumeQuotaReportResult, ListVolumeQuotaReportOutputArgs } from "./listVolumeQuotaReport";
+export const listVolumeQuotaReport: typeof import("./listVolumeQuotaReport").listVolumeQuotaReport = null as any;
+export const listVolumeQuotaReportOutput: typeof import("./listVolumeQuotaReport").listVolumeQuotaReportOutput = null as any;
+utilities.lazyLoad(exports, ["listVolumeQuotaReport","listVolumeQuotaReportOutput"], () => require("./listVolumeQuotaReport"));
+
 export { ListVolumeReplicationsArgs, ListVolumeReplicationsResult, ListVolumeReplicationsOutputArgs } from "./listVolumeReplications";
 export const listVolumeReplications: typeof import("./listVolumeReplications").listVolumeReplications = null as any;
 export const listVolumeReplicationsOutput: typeof import("./listVolumeReplications").listVolumeReplicationsOutput = null as any;

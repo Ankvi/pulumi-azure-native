@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Concrete proxy resource types can be created by aliasing this type using a specific property type.
  * Azure REST API version: 2023-09-01-preview.
+ *
+ * Other available API versions: 2024-07-19-preview.
  */
 export class Target extends pulumi.CustomResource {
     /**
@@ -113,7 +115,7 @@ export class Target extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:databasewatcher/v20230901preview:Target" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:databasewatcher/v20230901preview:Target" }, { type: "azure-native:databasewatcher/v20240719preview:Target" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Target.__pulumiType, name, resourceInputs, opts);
     }
