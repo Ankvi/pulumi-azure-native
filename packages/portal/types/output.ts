@@ -1,6 +1,20 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
+ * Tenant Configuration Properties with Provisioning state
+ */
+export interface ConfigurationPropertiesResponse {
+    /**
+     * When flag is set to true Markdown tile will require external storage configuration (URI). The inline content configuration will be prohibited.
+     */
+    enforcePrivateMarkdownStorage?: boolean;
+    /**
+     * The status of the last operation.
+     */
+    provisioningState: string;
+}
+
+/**
  * Cloud shell console properties.
  */
 export interface ConsolePropertiesResponse {
@@ -25,7 +39,7 @@ export interface DashboardLensResponse {
     /**
      * The dashboard len's metadata.
      */
-    metadata?: {[key: string]: any};
+    metadata?: any;
     /**
      * The lens order.
      */
@@ -37,41 +51,9 @@ export interface DashboardLensResponse {
 }
 
 /**
- * A dashboard part metadata.
- */
-export interface DashboardPartMetadataResponse {
-    /**
-     * Inputs to dashboard part.
-     */
-    inputs?: any[];
-    /**
-     * Settings of dashboard part.
-     */
-    settings?: {[key: string]: any};
-    /**
-     * The type of dashboard part.
-     */
-    type: string;
-}
-
-/**
- * A dashboard part.
- */
-export interface DashboardPartsResponse {
-    /**
-     * The dashboard's part metadata.
-     */
-    metadata?: DashboardPartMetadataResponse;
-    /**
-     * The dashboard's part position.
-     */
-    position: DashboardPartsResponsePosition;
-}
-
-/**
  * The dashboard's part position.
  */
-export interface DashboardPartsResponsePosition {
+export interface DashboardPartsPositionResponse {
     /**
      * The dashboard's part column span.
      */
@@ -79,7 +61,7 @@ export interface DashboardPartsResponsePosition {
     /**
      * The dashboard part's metadata.
      */
-    metadata?: {[key: string]: any};
+    metadata?: any;
     /**
      * The dashboard's part row span.
      */
@@ -92,6 +74,103 @@ export interface DashboardPartsResponsePosition {
      * The dashboard's part y coordinate.
      */
     y: number;
+}
+
+/**
+ * A dashboard part.
+ */
+export interface DashboardPartsResponse {
+    /**
+     * The dashboard part's metadata.
+     */
+    metadata?: MarkdownPartMetadataResponse;
+    /**
+     * The dashboard's part position.
+     */
+    position: DashboardPartsPositionResponse;
+}
+
+/**
+ * Dashboard Properties with Provisioning state
+ */
+export interface DashboardPropertiesWithProvisioningStateResponse {
+    /**
+     * The dashboard lenses.
+     */
+    lenses?: DashboardLensResponse[];
+    /**
+     * The dashboard metadata.
+     */
+    metadata?: any;
+    /**
+     * The status of the last operation.
+     */
+    provisioningState: string;
+}
+
+/**
+ * Markdown part metadata.
+ */
+export interface MarkdownPartMetadataResponse {
+    /**
+     * Input to dashboard part.
+     */
+    inputs?: any[];
+    /**
+     * Markdown part settings.
+     */
+    settings?: MarkdownPartMetadataSettingsResponse;
+    /**
+     * The dashboard part metadata type.
+     * Expected value is 'Extension/HubsExtension/PartType/MarkdownPart'.
+     */
+    type: "Extension/HubsExtension/PartType/MarkdownPart";
+}
+
+/**
+ * The content of markdown part.
+ */
+export interface MarkdownPartMetadataSettingsContentResponse {
+    /**
+     * The setting of the content of markdown part.
+     */
+    settings?: MarkdownPartMetadataSettingsContentSettingsResponse;
+}
+
+/**
+ * The setting of the content of markdown part.
+ */
+export interface MarkdownPartMetadataSettingsContentSettingsResponse {
+    /**
+     * The content of the markdown part.
+     */
+    content?: string;
+    /**
+     * The source of the content of the markdown part.
+     */
+    markdownSource?: number;
+    /**
+     * The uri of markdown content.
+     */
+    markdownUri?: string;
+    /**
+     * The subtitle of the markdown part.
+     */
+    subtitle?: string;
+    /**
+     * The title of the markdown part.
+     */
+    title?: string;
+}
+
+/**
+ * Markdown part settings.
+ */
+export interface MarkdownPartMetadataSettingsResponse {
+    /**
+     * The content of markdown part.
+     */
+    content?: MarkdownPartMetadataSettingsContentResponse;
 }
 
 /**
@@ -110,6 +189,36 @@ export interface StorageProfileResponse {
      * Full resource ID of storage account.
      */
     storageAccountResourceId?: string;
+}
+
+/**
+ * Metadata pertaining to creation and last modification of the resource.
+ */
+export interface SystemDataResponse {
+    /**
+     * The timestamp of resource creation (UTC).
+     */
+    createdAt?: string;
+    /**
+     * The identity that created the resource.
+     */
+    createdBy?: string;
+    /**
+     * The type of identity that created the resource.
+     */
+    createdByType?: string;
+    /**
+     * The timestamp of resource last modification (UTC)
+     */
+    lastModifiedAt?: string;
+    /**
+     * The identity that last modified the resource.
+     */
+    lastModifiedBy?: string;
+    /**
+     * The type of identity that last modified the resource.
+     */
+    lastModifiedByType?: string;
 }
 
 /**

@@ -22,7 +22,7 @@ export interface GetDashboardArgs {
      */
     dashboardName: string;
     /**
-     * The name of the resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: string;
 }
@@ -32,31 +32,31 @@ export interface GetDashboardArgs {
  */
 export interface GetDashboardResult {
     /**
-     * Resource Id
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
-     * The dashboard lenses.
-     */
-    readonly lenses?: types.outputs.DashboardLensResponse[];
-    /**
-     * Resource location
+     * The geo-location where the resource lives
      */
     readonly location: string;
     /**
-     * The dashboard metadata.
-     */
-    readonly metadata?: {[key: string]: any};
-    /**
-     * Resource name
+     * The name of the resource
      */
     readonly name: string;
     /**
-     * Resource tags
+     * The resource-specific properties for this resource.
+     */
+    readonly properties: types.outputs.DashboardPropertiesWithProvisioningStateResponse;
+    /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    readonly systemData: types.outputs.SystemDataResponse;
+    /**
+     * Resource tags.
      */
     readonly tags?: {[key: string]: string};
     /**
-     * Resource type
+     * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
     readonly type: string;
 }
@@ -76,7 +76,7 @@ export interface GetDashboardOutputArgs {
      */
     dashboardName: pulumi.Input<string>;
     /**
-     * The name of the resource group.
+     * The name of the resource group. The name is case insensitive.
      */
     resourceGroupName: pulumi.Input<string>;
 }

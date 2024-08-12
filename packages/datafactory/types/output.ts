@@ -105,6 +105,10 @@ export interface AmazonMWSLinkedServiceResponse {
      * Specifies whether to verify the identity of the server when connecting over SSL. The default value is true.
      */
     usePeerVerification?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -226,6 +230,10 @@ export interface AmazonRdsForOracleLinkedServiceResponse {
      * Expected value is 'AmazonRdsForOracle'.
      */
     type: "AmazonRdsForOracle";
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -465,6 +473,10 @@ export interface AmazonRdsForSqlServerLinkedServiceResponse {
      * The on-premises Windows authentication user name. Type: string (or Expression with resultType string).
      */
     userName?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -622,6 +634,10 @@ export interface AmazonRedshiftLinkedServiceResponse {
      * The username of the Amazon Redshift source. Type: string (or Expression with resultType string).
      */
     username?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -759,6 +775,10 @@ export interface AmazonS3CompatibleLinkedServiceResponse {
      * Expected value is 'AmazonS3Compatible'.
      */
     type: "AmazonS3Compatible";
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -967,6 +987,10 @@ export interface AmazonS3LinkedServiceResponse {
      * Expected value is 'AmazonS3'.
      */
     type: "AmazonS3";
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -1092,6 +1116,10 @@ export interface AppFiguresLinkedServiceResponse {
      * The username of the Appfigures source. Type: string (or Expression with resultType string).
      */
     userName: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -1177,6 +1205,10 @@ export interface AsanaLinkedServiceResponse {
      * Expected value is 'Asana'.
      */
     type: "Asana";
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -1419,6 +1451,10 @@ export interface AzureBatchLinkedServiceResponse {
      * Expected value is 'AzureBatch'.
      */
     type: "AzureBatch";
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -1616,6 +1652,10 @@ export interface AzureBlobFSLinkedServiceResponse {
      * Endpoint for the Azure Data Lake Storage Gen2 service. Type: string (or Expression with resultType string).
      */
     url?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -1890,6 +1930,10 @@ export interface AzureBlobStorageLinkedServiceResponse {
      * Expected value is 'AzureBlobStorage'.
      */
     type: "AzureBlobStorage";
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -2105,6 +2149,10 @@ export interface AzureDataExplorerLinkedServiceResponse {
      * Expected value is 'AzureDataExplorer'.
      */
     type: "AzureDataExplorer";
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -2297,6 +2345,10 @@ export interface AzureDataLakeAnalyticsLinkedServiceResponse {
      * Expected value is 'AzureDataLakeAnalytics'.
      */
     type: "AzureDataLakeAnalytics";
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -2419,6 +2471,10 @@ export interface AzureDataLakeStoreLinkedServiceResponse {
      * Expected value is 'AzureDataLakeStore'.
      */
     type: "AzureDataLakeStore";
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -2739,6 +2795,10 @@ export interface AzureDatabricksDeltaLakeLinkedServiceResponse {
      */
     type: "AzureDatabricksDeltaLake";
     /**
+     * Version of the linked service.
+     */
+    version?: string;
+    /**
      * Workspace resource id for databricks REST API. Type: string (or Expression with resultType string).
      */
     workspaceResourceId?: any;
@@ -2920,6 +2980,10 @@ export interface AzureDatabricksLinkedServiceResponse {
      */
     type: "AzureDatabricks";
     /**
+     * Version of the linked service.
+     */
+    version?: string;
+    /**
      * Workspace resource id for databricks REST API. Type: string (or Expression with resultType string).
      */
     workspaceResourceId?: any;
@@ -2998,6 +3062,10 @@ export interface AzureFileStorageLinkedServiceResponse {
      * User ID to logon the server. Type: string (or Expression with resultType string).
      */
     userId?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -3213,6 +3281,10 @@ export interface AzureFunctionLinkedServiceResponse {
      * Expected value is 'AzureFunction'.
      */
     type: "AzureFunction";
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -3248,6 +3320,10 @@ export interface AzureKeyVaultLinkedServiceResponse {
      * Expected value is 'AzureKeyVault'.
      */
     type: "AzureKeyVault";
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -3460,6 +3536,10 @@ export interface AzureMLLinkedServiceResponse {
      * The Update Resource REST URL for an Azure ML Studio Web Service endpoint. Type: string (or Expression with resultType string).
      */
     updateResourceEndpoint?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -3519,6 +3599,10 @@ export interface AzureMLServiceLinkedServiceResponse {
      * Expected value is 'AzureMLService'.
      */
     type: "AzureMLService";
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -3627,6 +3711,10 @@ export interface AzureMariaDBLinkedServiceResponse {
      * Expected value is 'AzureMariaDB'.
      */
     type: "AzureMariaDB";
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -3748,6 +3836,10 @@ export interface AzureMySqlLinkedServiceResponse {
      * Expected value is 'AzureMySql'.
      */
     type: "AzureMySql";
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -3912,6 +4004,10 @@ export interface AzurePostgreSqlLinkedServiceResponse {
      * Expected value is 'AzurePostgreSql'.
      */
     type: "AzurePostgreSql";
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -4193,6 +4289,10 @@ export interface AzureSearchLinkedServiceResponse {
      * URL for Azure Search service. Type: string (or Expression with resultType string).
      */
     url: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -4344,6 +4444,10 @@ export interface AzureSqlDWLinkedServiceResponse {
      * The user name to be used when connecting to server. Type: string (or Expression with resultType string).
      */
     userName?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -4546,6 +4650,10 @@ export interface AzureSqlDatabaseLinkedServiceResponse {
      * The user name to be used when connecting to server. Type: string (or Expression with resultType string).
      */
     userName?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -4701,6 +4809,10 @@ export interface AzureSqlMILinkedServiceResponse {
      * The user name to be used when connecting to server. Type: string (or Expression with resultType string).
      */
     userName?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -4976,6 +5088,10 @@ export interface AzureStorageLinkedServiceResponse {
      * Expected value is 'AzureStorage'.
      */
     type: "AzureStorage";
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -5011,6 +5127,10 @@ export interface AzureSynapseArtifactsLinkedServiceResponse {
      * Expected value is 'AzureSynapseArtifacts'.
      */
     type: "AzureSynapseArtifacts";
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
     /**
      * The resource ID of the Synapse workspace. The format should be: /subscriptions/{subscriptionID}/resourceGroups/{resourceGroup}/providers/Microsoft.Synapse/workspaces/{workspaceName}. Type: string (or Expression with resultType string).
      */
@@ -5207,6 +5327,10 @@ export interface AzureTableStorageLinkedServiceResponse {
      * Expected value is 'AzureTableStorage'.
      */
     type: "AzureTableStorage";
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -5598,6 +5722,10 @@ export interface CassandraLinkedServiceResponse {
      * Username for authentication. Type: string (or Expression with resultType string).
      */
     username?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -5878,6 +6006,10 @@ export interface CommonDataServiceForAppsLinkedServiceResponse {
      * User name to access the Common Data Service for Apps instance. Type: string (or Expression with resultType string).
      */
     username?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -6038,6 +6170,10 @@ export interface ConcurLinkedServiceResponse {
      * The user name that you use to access Concur Service.
      */
     username: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -6405,6 +6541,10 @@ export interface CosmosDbLinkedServiceResponse {
      * Expected value is 'CosmosDb'.
      */
     type: "CosmosDb";
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -6487,6 +6627,10 @@ export interface CosmosDbMongoDbApiLinkedServiceResponse {
      * Expected value is 'CosmosDbMongoDbApi'.
      */
     type: "CosmosDbMongoDbApi";
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -6741,6 +6885,10 @@ export interface CouchbaseLinkedServiceResponse {
      * Expected value is 'Couchbase'.
      */
     type: "Couchbase";
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -6949,6 +7097,10 @@ export interface CustomDataSourceLinkedServiceResponse {
      * Expected value is 'CustomDataSource'.
      */
     type: "CustomDataSource";
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -7508,6 +7660,10 @@ export interface DataworldLinkedServiceResponse {
      * Expected value is 'Dataworld'.
      */
     type: "Dataworld";
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -7571,6 +7727,10 @@ export interface Db2LinkedServiceResponse {
      * Username for authentication. It is mutually exclusive with connectionString property. Type: string (or Expression with resultType string).
      */
     username?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -8117,6 +8277,10 @@ export interface DrillLinkedServiceResponse {
      * Expected value is 'Drill'.
      */
     type: "Drill";
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -8254,6 +8418,10 @@ export interface DynamicsAXLinkedServiceResponse {
      * The Dynamics AX (or Dynamics 365 Finance and Operations) instance OData endpoint.
      */
     url: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -8466,6 +8634,10 @@ export interface DynamicsCrmLinkedServiceResponse {
      * User name to access the Dynamics CRM instance. Type: string (or Expression with resultType string).
      */
     username?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -8674,6 +8846,10 @@ export interface DynamicsLinkedServiceResponse {
      * User name to access the Dynamics instance. Type: string (or Expression with resultType string).
      */
     username?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -8811,6 +8987,10 @@ export interface EloquaLinkedServiceResponse {
      * The site name and user name of your Eloqua account in the form: sitename/username. (i.e. Eloqua/Alice)
      */
     username: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -9655,6 +9835,10 @@ export interface FileServerLinkedServiceResponse {
      * User ID to logon the server. Type: string (or Expression with resultType string).
      */
     userId?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -10152,6 +10336,10 @@ export interface FtpServerLinkedServiceResponse {
      * Username to logon the FTP server. Type: string (or Expression with resultType string).
      */
     userName?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -10349,6 +10537,10 @@ export interface GoogleAdWordsLinkedServiceResponse {
      * (Deprecated) Specifies whether to use a CA certificate from the system trust store or from a specified PEM file. The default value is false. Type: boolean (or Expression with resultType boolean).
      */
     useSystemTrustStore?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -10506,6 +10698,10 @@ export interface GoogleBigQueryLinkedServiceResponse {
      * Specifies whether to use a CA certificate from the system trust store or from a specified PEM file. The default value is false.Type: boolean (or Expression with resultType boolean).
      */
     useSystemTrustStore?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -10651,6 +10847,10 @@ export interface GoogleBigQueryV2LinkedServiceResponse {
      * Expected value is 'GoogleBigQueryV2'.
      */
     type: "GoogleBigQueryV2";
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -10780,6 +10980,10 @@ export interface GoogleCloudStorageLinkedServiceResponse {
      * Expected value is 'GoogleCloudStorage'.
      */
     type: "GoogleCloudStorage";
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -10901,6 +11105,10 @@ export interface GoogleSheetsLinkedServiceResponse {
      * Expected value is 'GoogleSheets'.
      */
     type: "GoogleSheets";
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -10940,6 +11148,10 @@ export interface GreenplumLinkedServiceResponse {
      * Expected value is 'Greenplum'.
      */
     type: "Greenplum";
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -11097,6 +11309,10 @@ export interface HBaseLinkedServiceResponse {
      * The user name used to connect to the HBase instance.
      */
     username?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -11313,6 +11529,10 @@ export interface HDInsightLinkedServiceResponse {
      * HDInsight cluster user name. Type: string (or Expression with resultType string).
      */
     userName?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -11536,9 +11756,9 @@ export interface HDInsightOnDemandLinkedServiceResponse {
      */
     type: "HDInsightOnDemand";
     /**
-     * Version of the HDInsight cluster.  Type: string (or Expression with resultType string).
+     * Version of the linked service.
      */
-    version: any;
+    version: string;
     /**
      * The ARM resource ID for the vNet to which the cluster should be joined after creation. Type: string (or Expression with resultType string).
      */
@@ -11831,6 +12051,10 @@ export interface HdfsLinkedServiceResponse {
      * User name for Windows authentication. Type: string (or Expression with resultType string).
      */
     userName?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -12035,6 +12259,10 @@ export interface HiveLinkedServiceResponse {
      * The user name that you use to access Hive Server.
      */
     username?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
     /**
      * The namespace on ZooKeeper under which Hive Server 2 nodes are added.
      */
@@ -12253,6 +12481,10 @@ export interface HttpLinkedServiceResponse {
      * User name for Basic, Digest, or Windows authentication. Type: string (or Expression with resultType string).
      */
     userName?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -12405,6 +12637,10 @@ export interface HubspotLinkedServiceResponse {
      * Specifies whether to verify the identity of the server when connecting over SSL. The default value is true.
      */
     usePeerVerification?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -12605,6 +12841,10 @@ export interface ImpalaLinkedServiceResponse {
      * The user name used to access the Impala server. The default value is anonymous when using SASLUsername.
      */
     username?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -12742,6 +12982,10 @@ export interface InformixLinkedServiceResponse {
      * User name for Basic authentication. Type: string (or Expression with resultType string).
      */
     userName?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -13143,6 +13387,10 @@ export interface JiraLinkedServiceResponse {
      * The user name that you use to access Jira Service.
      */
     username: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -13482,6 +13730,10 @@ export interface LakeHouseLinkedServiceResponse {
      * Expected value is 'LakeHouse'.
      */
     type: "LakeHouse";
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
     /**
      * The ID of Microsoft Fabric workspace. Type: string (or Expression with resultType string).
      */
@@ -13954,6 +14206,10 @@ export interface MagentoLinkedServiceResponse {
      * Specifies whether to verify the identity of the server when connecting over SSL. The default value is true.
      */
     usePeerVerification?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -14553,6 +14809,10 @@ export interface MariaDBLinkedServiceResponse {
      * Username for authentication. Type: string.
      */
     username?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -14690,6 +14950,10 @@ export interface MarketoLinkedServiceResponse {
      * Specifies whether to verify the identity of the server when connecting over SSL. The default value is true.
      */
     usePeerVerification?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -14837,6 +15101,10 @@ export interface MicrosoftAccessLinkedServiceResponse {
      * User name for Basic authentication. Type: string (or Expression with resultType string).
      */
     userName?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -15036,6 +15304,10 @@ export interface MongoDbAtlasLinkedServiceResponse {
      * Expected value is 'MongoDbAtlas'.
      */
     type: "MongoDbAtlas";
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -15254,6 +15526,10 @@ export interface MongoDbLinkedServiceResponse {
      * Username for authentication. Type: string (or Expression with resultType string).
      */
     username?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -15367,6 +15643,10 @@ export interface MongoDbV2LinkedServiceResponse {
      * Expected value is 'MongoDbV2'.
      */
     type: "MongoDbV2";
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -15547,6 +15827,10 @@ export interface MySqlLinkedServiceResponse {
      * Username for authentication. Type: string.
      */
     username?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -15668,6 +15952,10 @@ export interface NetezzaLinkedServiceResponse {
      * Expected value is 'Netezza'.
      */
     type: "Netezza";
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -15877,6 +16165,10 @@ export interface ODataLinkedServiceResponse {
      * User name of the OData service. Type: string (or Expression with resultType string).
      */
     userName?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -16010,6 +16302,10 @@ export interface OdbcLinkedServiceResponse {
      * User name for Basic authentication. Type: string (or Expression with resultType string).
      */
     userName?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -16225,6 +16521,10 @@ export interface Office365LinkedServiceResponse {
      * Expected value is 'Office365'.
      */
     type: "Office365";
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -16319,6 +16619,10 @@ export interface OracleCloudStorageLinkedServiceResponse {
      * Expected value is 'OracleCloudStorage'.
      */
     type: "OracleCloudStorage";
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -16444,6 +16748,10 @@ export interface OracleLinkedServiceResponse {
      * Expected value is 'Oracle'.
      */
     type: "Oracle";
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -16521,6 +16829,10 @@ export interface OracleServiceCloudLinkedServiceResponse {
      * The user name that you use to access Oracle Service Cloud server.
      */
     username: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -17164,6 +17476,10 @@ export interface PaypalLinkedServiceResponse {
      * Specifies whether to verify the identity of the server when connecting over SSL. The default value is true.
      */
     usePeerVerification?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -17321,6 +17637,10 @@ export interface PhoenixLinkedServiceResponse {
      * The user name used to connect to the Phoenix server.
      */
     username?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -17534,6 +17854,10 @@ export interface PostgreSqlLinkedServiceResponse {
      * Expected value is 'PostgreSql'.
      */
     type: "PostgreSql";
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -17723,6 +18047,10 @@ export interface PostgreSqlV2LinkedServiceResponse {
      * Username for authentication. Type: string.
      */
     username: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -17974,6 +18302,10 @@ export interface PrestoLinkedServiceResponse {
      * The user name used to connect to the Presto server.
      */
     username?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -18151,6 +18483,10 @@ export interface QuickBooksLinkedServiceResponse {
      * Specifies whether the data source endpoints are encrypted using HTTPS. The default value is true.
      */
     useEncryptedEndpoints?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -18272,6 +18608,10 @@ export interface QuickbaseLinkedServiceResponse {
      * The user token for the Quickbase source.
      */
     userToken: AzureKeyVaultSecretReferenceResponse | SecureStringResponse;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -18527,6 +18867,10 @@ export interface ResponsysLinkedServiceResponse {
      * Specifies whether to verify the identity of the server when connecting over SSL. The default value is true. Type: boolean (or Expression with resultType boolean).
      */
     usePeerVerification?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -18767,6 +19111,10 @@ export interface RestServiceLinkedServiceResponse {
      * The user name used in Basic authentication type. Type: string (or Expression with resultType string).
      */
     userName?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -19092,6 +19440,10 @@ export interface SalesforceLinkedServiceResponse {
      * The username for Basic authentication of the Salesforce instance. Type: string (or Expression with resultType string).
      */
     username?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -19147,6 +19499,10 @@ export interface SalesforceMarketingCloudLinkedServiceResponse {
      * Specifies whether to verify the identity of the server when connecting over SSL. The default value is true. Type: boolean (or Expression with resultType boolean).
      */
     usePeerVerification?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -19327,6 +19683,10 @@ export interface SalesforceServiceCloudLinkedServiceResponse {
      * The username for Basic authentication of the Salesforce instance. Type: string (or Expression with resultType string).
      */
     username?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -19507,6 +19867,10 @@ export interface SalesforceServiceCloudV2LinkedServiceResponse {
      * Expected value is 'SalesforceServiceCloudV2'.
      */
     type: "SalesforceServiceCloudV2";
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -19785,6 +20149,10 @@ export interface SalesforceV2LinkedServiceResponse {
      * Expected value is 'SalesforceV2'.
      */
     type: "SalesforceV2";
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -19977,6 +20345,10 @@ export interface SapBWLinkedServiceResponse {
      * Username to access the SAP BW server. Type: string (or Expression with resultType string).
      */
     userName?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -20098,6 +20470,10 @@ export interface SapCloudForCustomerLinkedServiceResponse {
      * The username for Basic authentication. Type: string (or Expression with resultType string).
      */
     username?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -20270,6 +20646,10 @@ export interface SapEccLinkedServiceResponse {
      * The username for Basic authentication. Type: string (or Expression with resultType string).
      */
     username?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -20407,6 +20787,10 @@ export interface SapHanaLinkedServiceResponse {
      * Username to access the SAP HANA server. Type: string (or Expression with resultType string).
      */
     userName?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -20607,6 +20991,10 @@ export interface SapOdpLinkedServiceResponse {
      */
     userName?: any;
     /**
+     * Version of the linked service.
+     */
+    version?: string;
+    /**
      * SNC X509 certificate file path. Type: string (or Expression with resultType string).
      */
     x509CertificatePath?: any;
@@ -20779,6 +21167,10 @@ export interface SapOpenHubLinkedServiceResponse {
      * Username to access the SAP BW server where the open hub destination is located. Type: string (or Expression with resultType string).
      */
     userName?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -20972,6 +21364,10 @@ export interface SapTableLinkedServiceResponse {
      * Username to access the SAP server where the table is located. Type: string (or Expression with resultType string).
      */
     userName?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -21607,6 +22003,10 @@ export interface ServiceNowLinkedServiceResponse {
      * The user name used to connect to the ServiceNow server for Basic and OAuth2 authentication.
      */
     username?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -21748,6 +22148,10 @@ export interface ServiceNowV2LinkedServiceResponse {
      * The user name used to connect to the ServiceNowV2 server for Basic and OAuth2 authentication.
      */
     username?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -22061,6 +22465,10 @@ export interface SftpServerLinkedServiceResponse {
      * The username used to log on to the SFTP server. Type: string (or Expression with resultType string).
      */
     userName?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -22143,6 +22551,10 @@ export interface SharePointOnlineListLinkedServiceResponse {
      * Expected value is 'SharePointOnlineList'.
      */
     type: "SharePointOnlineList";
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -22272,6 +22684,10 @@ export interface ShopifyLinkedServiceResponse {
      * Specifies whether to verify the identity of the server when connecting over SSL. The default value is true.
      */
     usePeerVerification?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -22403,6 +22819,10 @@ export interface SmartsheetLinkedServiceResponse {
      * Expected value is 'Smartsheet'.
      */
     type: "Smartsheet";
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -22531,6 +22951,10 @@ export interface SnowflakeLinkedServiceResponse {
      * Expected value is 'Snowflake'.
      */
     type: "Snowflake";
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -22728,6 +23152,10 @@ export interface SnowflakeV2LinkedServiceResponse {
      */
     user?: any;
     /**
+     * Version of the linked service.
+     */
+    version?: string;
+    /**
      * The name of the Snowflake warehouse.
      */
     warehouse: any;
@@ -22915,6 +23343,10 @@ export interface SparkLinkedServiceResponse {
      * The user name that you use to access Spark Server.
      */
     username?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -23450,6 +23882,10 @@ export interface SqlServerLinkedServiceResponse {
      * The on-premises Windows authentication user name. Type: string (or Expression with resultType string).
      */
     userName?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -23893,6 +24329,10 @@ export interface SquareLinkedServiceResponse {
      * Specifies whether to verify the identity of the server when connecting over SSL. The default value is true.
      */
     usePeerVerification?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -24351,6 +24791,10 @@ export interface SybaseLinkedServiceResponse {
      * Username for authentication. Type: string (or Expression with resultType string).
      */
     username?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -24767,6 +25211,10 @@ export interface TeamDeskLinkedServiceResponse {
      * The username of the TeamDesk source. Type: string (or Expression with resultType string).
      */
     userName?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -24818,6 +25266,10 @@ export interface TeradataLinkedServiceResponse {
      * Username for authentication. Type: string (or Expression with resultType string).
      */
     username?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -25171,6 +25623,10 @@ export interface TwilioLinkedServiceResponse {
      * The Account SID of Twilio service. Type: string (or Expression with resultType string).
      */
     userName: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -25382,6 +25838,10 @@ export interface VerticaLinkedServiceResponse {
      * Username for authentication. Type: string.
      */
     uid?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -25566,6 +26026,10 @@ export interface WarehouseLinkedServiceResponse {
      * Expected value is 'Warehouse'.
      */
     type: "Warehouse";
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
     /**
      * The ID of Microsoft Fabric workspace. Type: string (or Expression with resultType string).
      */
@@ -26007,6 +26471,10 @@ export interface WebLinkedServiceResponse {
      * Web linked service properties.
      */
     typeProperties: WebAnonymousAuthenticationResponse | WebBasicAuthenticationResponse | WebClientCertificateAuthenticationResponse;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -26180,6 +26648,10 @@ export interface XeroLinkedServiceResponse {
      * Specifies whether to verify the identity of the server when connecting over SSL. The default value is true.
      */
     usePeerVerification?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -26438,6 +26910,10 @@ export interface ZendeskLinkedServiceResponse {
      * The username of the Zendesk source. Type: string (or Expression with resultType string).
      */
     userName?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**
@@ -26508,6 +26984,10 @@ export interface ZohoLinkedServiceResponse {
      * Specifies whether to verify the identity of the server when connecting over SSL. The default value is true.
      */
     usePeerVerification?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: string;
 }
 
 /**

@@ -1,5 +1,5 @@
 node_modules:
-	pnpm install
+	IGNORE_PULUMI_SCRIPTS=1 pnpm install
 
 node_modules/ci:
 	IGNORE_PULUMI_SCRIPTS=1 pnpm install --frozen-lockfile
@@ -18,3 +18,4 @@ build:
 
 publish:
 	pnpm -r publish
+

@@ -105,6 +105,10 @@ export interface AmazonMWSLinkedServiceArgs {
      * Specifies whether to verify the identity of the server when connecting over SSL. The default value is true.
      */
     usePeerVerification?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -226,6 +230,10 @@ export interface AmazonRdsForOracleLinkedServiceArgs {
      * Expected value is 'AmazonRdsForOracle'.
      */
     type: pulumi.Input<"AmazonRdsForOracle">;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -465,6 +473,10 @@ export interface AmazonRdsForSqlServerLinkedServiceArgs {
      * The on-premises Windows authentication user name. Type: string (or Expression with resultType string).
      */
     userName?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -622,6 +634,10 @@ export interface AmazonRedshiftLinkedServiceArgs {
      * The username of the Amazon Redshift source. Type: string (or Expression with resultType string).
      */
     username?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -759,6 +775,10 @@ export interface AmazonS3CompatibleLinkedServiceArgs {
      * Expected value is 'AmazonS3Compatible'.
      */
     type: pulumi.Input<"AmazonS3Compatible">;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -967,6 +987,10 @@ export interface AmazonS3LinkedServiceArgs {
      * Expected value is 'AmazonS3'.
      */
     type: pulumi.Input<"AmazonS3">;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -1092,6 +1116,10 @@ export interface AppFiguresLinkedServiceArgs {
      * The username of the Appfigures source. Type: string (or Expression with resultType string).
      */
     userName: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -1170,6 +1198,10 @@ export interface AsanaLinkedServiceArgs {
      * Expected value is 'Asana'.
      */
     type: pulumi.Input<"Asana">;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -1412,6 +1444,10 @@ export interface AzureBatchLinkedServiceArgs {
      * Expected value is 'AzureBatch'.
      */
     type: pulumi.Input<"AzureBatch">;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -1609,6 +1645,10 @@ export interface AzureBlobFSLinkedServiceArgs {
      * Endpoint for the Azure Data Lake Storage Gen2 service. Type: string (or Expression with resultType string).
      */
     url?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -1883,6 +1923,10 @@ export interface AzureBlobStorageLinkedServiceArgs {
      * Expected value is 'AzureBlobStorage'.
      */
     type: pulumi.Input<"AzureBlobStorage">;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -2098,6 +2142,10 @@ export interface AzureDataExplorerLinkedServiceArgs {
      * Expected value is 'AzureDataExplorer'.
      */
     type: pulumi.Input<"AzureDataExplorer">;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -2290,6 +2338,10 @@ export interface AzureDataLakeAnalyticsLinkedServiceArgs {
      * Expected value is 'AzureDataLakeAnalytics'.
      */
     type: pulumi.Input<"AzureDataLakeAnalytics">;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -2412,6 +2464,10 @@ export interface AzureDataLakeStoreLinkedServiceArgs {
      * Expected value is 'AzureDataLakeStore'.
      */
     type: pulumi.Input<"AzureDataLakeStore">;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -2732,6 +2788,10 @@ export interface AzureDatabricksDeltaLakeLinkedServiceArgs {
      */
     type: pulumi.Input<"AzureDatabricksDeltaLake">;
     /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
+    /**
      * Workspace resource id for databricks REST API. Type: string (or Expression with resultType string).
      */
     workspaceResourceId?: any;
@@ -2913,6 +2973,10 @@ export interface AzureDatabricksLinkedServiceArgs {
      */
     type: pulumi.Input<"AzureDatabricks">;
     /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
+    /**
      * Workspace resource id for databricks REST API. Type: string (or Expression with resultType string).
      */
     workspaceResourceId?: any;
@@ -2991,6 +3055,10 @@ export interface AzureFileStorageLinkedServiceArgs {
      * User ID to logon the server. Type: string (or Expression with resultType string).
      */
     userId?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -3206,6 +3274,10 @@ export interface AzureFunctionLinkedServiceArgs {
      * Expected value is 'AzureFunction'.
      */
     type: pulumi.Input<"AzureFunction">;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -3241,6 +3313,10 @@ export interface AzureKeyVaultLinkedServiceArgs {
      * Expected value is 'AzureKeyVault'.
      */
     type: pulumi.Input<"AzureKeyVault">;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -3453,6 +3529,10 @@ export interface AzureMLLinkedServiceArgs {
      * The Update Resource REST URL for an Azure ML Studio Web Service endpoint. Type: string (or Expression with resultType string).
      */
     updateResourceEndpoint?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -3512,6 +3592,10 @@ export interface AzureMLServiceLinkedServiceArgs {
      * Expected value is 'AzureMLService'.
      */
     type: pulumi.Input<"AzureMLService">;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -3620,6 +3704,10 @@ export interface AzureMariaDBLinkedServiceArgs {
      * Expected value is 'AzureMariaDB'.
      */
     type: pulumi.Input<"AzureMariaDB">;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -3741,6 +3829,10 @@ export interface AzureMySqlLinkedServiceArgs {
      * Expected value is 'AzureMySql'.
      */
     type: pulumi.Input<"AzureMySql">;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -3905,6 +3997,10 @@ export interface AzurePostgreSqlLinkedServiceArgs {
      * Expected value is 'AzurePostgreSql'.
      */
     type: pulumi.Input<"AzurePostgreSql">;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -4186,6 +4282,10 @@ export interface AzureSearchLinkedServiceArgs {
      * URL for Azure Search service. Type: string (or Expression with resultType string).
      */
     url: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -4337,6 +4437,10 @@ export interface AzureSqlDWLinkedServiceArgs {
      * The user name to be used when connecting to server. Type: string (or Expression with resultType string).
      */
     userName?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -4539,6 +4643,10 @@ export interface AzureSqlDatabaseLinkedServiceArgs {
      * The user name to be used when connecting to server. Type: string (or Expression with resultType string).
      */
     userName?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -4694,6 +4802,10 @@ export interface AzureSqlMILinkedServiceArgs {
      * The user name to be used when connecting to server. Type: string (or Expression with resultType string).
      */
     userName?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -4969,6 +5081,10 @@ export interface AzureStorageLinkedServiceArgs {
      * Expected value is 'AzureStorage'.
      */
     type: pulumi.Input<"AzureStorage">;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -5004,6 +5120,10 @@ export interface AzureSynapseArtifactsLinkedServiceArgs {
      * Expected value is 'AzureSynapseArtifacts'.
      */
     type: pulumi.Input<"AzureSynapseArtifacts">;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
     /**
      * The resource ID of the Synapse workspace. The format should be: /subscriptions/{subscriptionID}/resourceGroups/{resourceGroup}/providers/Microsoft.Synapse/workspaces/{workspaceName}. Type: string (or Expression with resultType string).
      */
@@ -5200,6 +5320,10 @@ export interface AzureTableStorageLinkedServiceArgs {
      * Expected value is 'AzureTableStorage'.
      */
     type: pulumi.Input<"AzureTableStorage">;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -5583,6 +5707,10 @@ export interface CassandraLinkedServiceArgs {
      * Username for authentication. Type: string (or Expression with resultType string).
      */
     username?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -5859,6 +5987,10 @@ export interface CommonDataServiceForAppsLinkedServiceArgs {
      * User name to access the Common Data Service for Apps instance. Type: string (or Expression with resultType string).
      */
     username?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -6019,6 +6151,10 @@ export interface ConcurLinkedServiceArgs {
      * The user name that you use to access Concur Service.
      */
     username: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -6368,6 +6504,10 @@ export interface CosmosDbLinkedServiceArgs {
      * Expected value is 'CosmosDb'.
      */
     type: pulumi.Input<"CosmosDb">;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -6450,6 +6590,10 @@ export interface CosmosDbMongoDbApiLinkedServiceArgs {
      * Expected value is 'CosmosDbMongoDbApi'.
      */
     type: pulumi.Input<"CosmosDbMongoDbApi">;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -6704,6 +6848,10 @@ export interface CouchbaseLinkedServiceArgs {
      * Expected value is 'Couchbase'.
      */
     type: pulumi.Input<"Couchbase">;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -6912,6 +7060,10 @@ export interface CustomDataSourceLinkedServiceArgs {
      * Expected value is 'CustomDataSource'.
      */
     type: pulumi.Input<"CustomDataSource">;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -7467,6 +7619,10 @@ export interface DataworldLinkedServiceArgs {
      * Expected value is 'Dataworld'.
      */
     type: pulumi.Input<"Dataworld">;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -7530,6 +7686,10 @@ export interface Db2LinkedServiceArgs {
      * Username for authentication. It is mutually exclusive with connectionString property. Type: string (or Expression with resultType string).
      */
     username?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -8076,6 +8236,10 @@ export interface DrillLinkedServiceArgs {
      * Expected value is 'Drill'.
      */
     type: pulumi.Input<"Drill">;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -8213,6 +8377,10 @@ export interface DynamicsAXLinkedServiceArgs {
      * The Dynamics AX (or Dynamics 365 Finance and Operations) instance OData endpoint.
      */
     url: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -8425,6 +8593,10 @@ export interface DynamicsCrmLinkedServiceArgs {
      * User name to access the Dynamics CRM instance. Type: string (or Expression with resultType string).
      */
     username?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -8633,6 +8805,10 @@ export interface DynamicsLinkedServiceArgs {
      * User name to access the Dynamics instance. Type: string (or Expression with resultType string).
      */
     username?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -8770,6 +8946,10 @@ export interface EloquaLinkedServiceArgs {
      * The site name and user name of your Eloqua account in the form: sitename/username. (i.e. Eloqua/Alice)
      */
     username: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -9606,6 +9786,10 @@ export interface FileServerLinkedServiceArgs {
      * User ID to logon the server. Type: string (or Expression with resultType string).
      */
     userId?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -10103,6 +10287,10 @@ export interface FtpServerLinkedServiceArgs {
      * Username to logon the FTP server. Type: string (or Expression with resultType string).
      */
     userName?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -10314,6 +10502,10 @@ export interface GoogleAdWordsLinkedServiceArgs {
      * (Deprecated) Specifies whether to use a CA certificate from the system trust store or from a specified PEM file. The default value is false. Type: boolean (or Expression with resultType boolean).
      */
     useSystemTrustStore?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -10471,6 +10663,10 @@ export interface GoogleBigQueryLinkedServiceArgs {
      * Specifies whether to use a CA certificate from the system trust store or from a specified PEM file. The default value is false.Type: boolean (or Expression with resultType boolean).
      */
     useSystemTrustStore?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -10616,6 +10812,10 @@ export interface GoogleBigQueryV2LinkedServiceArgs {
      * Expected value is 'GoogleBigQueryV2'.
      */
     type: pulumi.Input<"GoogleBigQueryV2">;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -10745,6 +10945,10 @@ export interface GoogleCloudStorageLinkedServiceArgs {
      * Expected value is 'GoogleCloudStorage'.
      */
     type: pulumi.Input<"GoogleCloudStorage">;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -10866,6 +11070,10 @@ export interface GoogleSheetsLinkedServiceArgs {
      * Expected value is 'GoogleSheets'.
      */
     type: pulumi.Input<"GoogleSheets">;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -10905,6 +11113,10 @@ export interface GreenplumLinkedServiceArgs {
      * Expected value is 'Greenplum'.
      */
     type: pulumi.Input<"Greenplum">;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -11062,6 +11274,10 @@ export interface HBaseLinkedServiceArgs {
      * The user name used to connect to the HBase instance.
      */
     username?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -11278,6 +11494,10 @@ export interface HDInsightLinkedServiceArgs {
      * HDInsight cluster user name. Type: string (or Expression with resultType string).
      */
     userName?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -11501,9 +11721,9 @@ export interface HDInsightOnDemandLinkedServiceArgs {
      */
     type: pulumi.Input<"HDInsightOnDemand">;
     /**
-     * Version of the HDInsight cluster.  Type: string (or Expression with resultType string).
+     * Version of the linked service.
      */
-    version: any;
+    version: pulumi.Input<string>;
     /**
      * The ARM resource ID for the vNet to which the cluster should be joined after creation. Type: string (or Expression with resultType string).
      */
@@ -11796,6 +12016,10 @@ export interface HdfsLinkedServiceArgs {
      * User name for Windows authentication. Type: string (or Expression with resultType string).
      */
     userName?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -12000,6 +12224,10 @@ export interface HiveLinkedServiceArgs {
      * The user name that you use to access Hive Server.
      */
     username?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
     /**
      * The namespace on ZooKeeper under which Hive Server 2 nodes are added.
      */
@@ -12218,6 +12446,10 @@ export interface HttpLinkedServiceArgs {
      * User name for Basic, Digest, or Windows authentication. Type: string (or Expression with resultType string).
      */
     userName?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -12370,6 +12602,10 @@ export interface HubspotLinkedServiceArgs {
      * Specifies whether to verify the identity of the server when connecting over SSL. The default value is true.
      */
     usePeerVerification?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -12570,6 +12806,10 @@ export interface ImpalaLinkedServiceArgs {
      * The user name used to access the Impala server. The default value is anonymous when using SASLUsername.
      */
     username?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -12707,6 +12947,10 @@ export interface InformixLinkedServiceArgs {
      * User name for Basic authentication. Type: string (or Expression with resultType string).
      */
     userName?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -13108,6 +13352,10 @@ export interface JiraLinkedServiceArgs {
      * The user name that you use to access Jira Service.
      */
     username: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -13447,6 +13695,10 @@ export interface LakeHouseLinkedServiceArgs {
      * Expected value is 'LakeHouse'.
      */
     type: pulumi.Input<"LakeHouse">;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
     /**
      * The ID of Microsoft Fabric workspace. Type: string (or Expression with resultType string).
      */
@@ -13893,6 +14145,10 @@ export interface MagentoLinkedServiceArgs {
      * Specifies whether to verify the identity of the server when connecting over SSL. The default value is true.
      */
     usePeerVerification?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -14371,6 +14627,10 @@ export interface MariaDBLinkedServiceArgs {
      * Username for authentication. Type: string.
      */
     username?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -14508,6 +14768,10 @@ export interface MarketoLinkedServiceArgs {
      * Specifies whether to verify the identity of the server when connecting over SSL. The default value is true.
      */
     usePeerVerification?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -14655,6 +14919,10 @@ export interface MicrosoftAccessLinkedServiceArgs {
      * User name for Basic authentication. Type: string (or Expression with resultType string).
      */
     userName?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -14854,6 +15122,10 @@ export interface MongoDbAtlasLinkedServiceArgs {
      * Expected value is 'MongoDbAtlas'.
      */
     type: pulumi.Input<"MongoDbAtlas">;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -15072,6 +15344,10 @@ export interface MongoDbLinkedServiceArgs {
      * Username for authentication. Type: string (or Expression with resultType string).
      */
     username?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -15185,6 +15461,10 @@ export interface MongoDbV2LinkedServiceArgs {
      * Expected value is 'MongoDbV2'.
      */
     type: pulumi.Input<"MongoDbV2">;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -15361,6 +15641,10 @@ export interface MySqlLinkedServiceArgs {
      * Username for authentication. Type: string.
      */
     username?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -15482,6 +15766,10 @@ export interface NetezzaLinkedServiceArgs {
      * Expected value is 'Netezza'.
      */
     type: pulumi.Input<"Netezza">;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -15691,6 +15979,10 @@ export interface ODataLinkedServiceArgs {
      * User name of the OData service. Type: string (or Expression with resultType string).
      */
     userName?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -15824,6 +16116,10 @@ export interface OdbcLinkedServiceArgs {
      * User name for Basic authentication. Type: string (or Expression with resultType string).
      */
     userName?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -16039,6 +16335,10 @@ export interface Office365LinkedServiceArgs {
      * Expected value is 'Office365'.
      */
     type: pulumi.Input<"Office365">;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -16133,6 +16433,10 @@ export interface OracleCloudStorageLinkedServiceArgs {
      * Expected value is 'OracleCloudStorage'.
      */
     type: pulumi.Input<"OracleCloudStorage">;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -16258,6 +16562,10 @@ export interface OracleLinkedServiceArgs {
      * Expected value is 'Oracle'.
      */
     type: pulumi.Input<"Oracle">;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -16335,6 +16643,10 @@ export interface OracleServiceCloudLinkedServiceArgs {
      * The user name that you use to access Oracle Service Cloud server.
      */
     username: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -16978,6 +17290,10 @@ export interface PaypalLinkedServiceArgs {
      * Specifies whether to verify the identity of the server when connecting over SSL. The default value is true.
      */
     usePeerVerification?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -17135,6 +17451,10 @@ export interface PhoenixLinkedServiceArgs {
      * The user name used to connect to the Phoenix server.
      */
     username?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -17348,6 +17668,10 @@ export interface PostgreSqlLinkedServiceArgs {
      * Expected value is 'PostgreSql'.
      */
     type: pulumi.Input<"PostgreSql">;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -17537,6 +17861,10 @@ export interface PostgreSqlV2LinkedServiceArgs {
      * Username for authentication. Type: string.
      */
     username: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -17788,6 +18116,10 @@ export interface PrestoLinkedServiceArgs {
      * The user name used to connect to the Presto server.
      */
     username?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -17989,6 +18321,10 @@ export interface QuickBooksLinkedServiceArgs {
      * Specifies whether the data source endpoints are encrypted using HTTPS. The default value is true.
      */
     useEncryptedEndpoints?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -18110,6 +18446,10 @@ export interface QuickbaseLinkedServiceArgs {
      * The user token for the Quickbase source.
      */
     userToken: pulumi.Input<AzureKeyVaultSecretReferenceArgs | SecureStringArgs>;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -18346,6 +18686,10 @@ export interface ResponsysLinkedServiceArgs {
      * Specifies whether to verify the identity of the server when connecting over SSL. The default value is true. Type: boolean (or Expression with resultType boolean).
      */
     usePeerVerification?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -18586,6 +18930,10 @@ export interface RestServiceLinkedServiceArgs {
      * The user name used in Basic authentication type. Type: string (or Expression with resultType string).
      */
     userName?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -18911,6 +19259,10 @@ export interface SalesforceLinkedServiceArgs {
      * The username for Basic authentication of the Salesforce instance. Type: string (or Expression with resultType string).
      */
     username?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -18966,6 +19318,10 @@ export interface SalesforceMarketingCloudLinkedServiceArgs {
      * Specifies whether to verify the identity of the server when connecting over SSL. The default value is true. Type: boolean (or Expression with resultType boolean).
      */
     usePeerVerification?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -19146,6 +19502,10 @@ export interface SalesforceServiceCloudLinkedServiceArgs {
      * The username for Basic authentication of the Salesforce instance. Type: string (or Expression with resultType string).
      */
     username?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -19326,6 +19686,10 @@ export interface SalesforceServiceCloudV2LinkedServiceArgs {
      * Expected value is 'SalesforceServiceCloudV2'.
      */
     type: pulumi.Input<"SalesforceServiceCloudV2">;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -19604,6 +19968,10 @@ export interface SalesforceV2LinkedServiceArgs {
      * Expected value is 'SalesforceV2'.
      */
     type: pulumi.Input<"SalesforceV2">;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -19796,6 +20164,10 @@ export interface SapBWLinkedServiceArgs {
      * Username to access the SAP BW server. Type: string (or Expression with resultType string).
      */
     userName?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -19917,6 +20289,10 @@ export interface SapCloudForCustomerLinkedServiceArgs {
      * The username for Basic authentication. Type: string (or Expression with resultType string).
      */
     username?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -20089,6 +20465,10 @@ export interface SapEccLinkedServiceArgs {
      * The username for Basic authentication. Type: string (or Expression with resultType string).
      */
     username?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -20226,6 +20606,10 @@ export interface SapHanaLinkedServiceArgs {
      * Username to access the SAP HANA server. Type: string (or Expression with resultType string).
      */
     userName?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -20426,6 +20810,10 @@ export interface SapOdpLinkedServiceArgs {
      */
     userName?: any;
     /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
+    /**
      * SNC X509 certificate file path. Type: string (or Expression with resultType string).
      */
     x509CertificatePath?: any;
@@ -20598,6 +20986,10 @@ export interface SapOpenHubLinkedServiceArgs {
      * Username to access the SAP BW server where the open hub destination is located. Type: string (or Expression with resultType string).
      */
     userName?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -20791,6 +21183,10 @@ export interface SapTableLinkedServiceArgs {
      * Username to access the SAP server where the table is located. Type: string (or Expression with resultType string).
      */
     userName?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -21257,6 +21653,10 @@ export interface ServiceNowLinkedServiceArgs {
      * The user name used to connect to the ServiceNow server for Basic and OAuth2 authentication.
      */
     username?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -21398,6 +21798,10 @@ export interface ServiceNowV2LinkedServiceArgs {
      * The user name used to connect to the ServiceNowV2 server for Basic and OAuth2 authentication.
      */
     username?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -21711,6 +22115,10 @@ export interface SftpServerLinkedServiceArgs {
      * The username used to log on to the SFTP server. Type: string (or Expression with resultType string).
      */
     userName?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -21793,6 +22201,10 @@ export interface SharePointOnlineListLinkedServiceArgs {
      * Expected value is 'SharePointOnlineList'.
      */
     type: pulumi.Input<"SharePointOnlineList">;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -21922,6 +22334,10 @@ export interface ShopifyLinkedServiceArgs {
      * Specifies whether to verify the identity of the server when connecting over SSL. The default value is true.
      */
     usePeerVerification?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -22053,6 +22469,10 @@ export interface SmartsheetLinkedServiceArgs {
      * Expected value is 'Smartsheet'.
      */
     type: pulumi.Input<"Smartsheet">;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -22181,6 +22601,10 @@ export interface SnowflakeLinkedServiceArgs {
      * Expected value is 'Snowflake'.
      */
     type: pulumi.Input<"Snowflake">;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -22378,6 +22802,10 @@ export interface SnowflakeV2LinkedServiceArgs {
      */
     user?: any;
     /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
+    /**
      * The name of the Snowflake warehouse.
      */
     warehouse: any;
@@ -22565,6 +22993,10 @@ export interface SparkLinkedServiceArgs {
      * The user name that you use to access Spark Server.
      */
     username?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -23100,6 +23532,10 @@ export interface SqlServerLinkedServiceArgs {
      * The on-premises Windows authentication user name. Type: string (or Expression with resultType string).
      */
     userName?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -23543,6 +23979,10 @@ export interface SquareLinkedServiceArgs {
      * Specifies whether to verify the identity of the server when connecting over SSL. The default value is true.
      */
     usePeerVerification?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -23759,6 +24199,10 @@ export interface SybaseLinkedServiceArgs {
      * Username for authentication. Type: string (or Expression with resultType string).
      */
     username?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -24175,6 +24619,10 @@ export interface TeamDeskLinkedServiceArgs {
      * The username of the TeamDesk source. Type: string (or Expression with resultType string).
      */
     userName?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -24226,6 +24674,10 @@ export interface TeradataLinkedServiceArgs {
      * Username for authentication. Type: string (or Expression with resultType string).
      */
     username?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -24575,6 +25027,10 @@ export interface TwilioLinkedServiceArgs {
      * The Account SID of Twilio service. Type: string (or Expression with resultType string).
      */
     userName: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -24760,6 +25216,10 @@ export interface VerticaLinkedServiceArgs {
      * Username for authentication. Type: string.
      */
     uid?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -24944,6 +25404,10 @@ export interface WarehouseLinkedServiceArgs {
      * Expected value is 'Warehouse'.
      */
     type: pulumi.Input<"Warehouse">;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
     /**
      * The ID of Microsoft Fabric workspace. Type: string (or Expression with resultType string).
      */
@@ -25385,6 +25849,10 @@ export interface WebLinkedServiceArgs {
      * Web linked service properties.
      */
     typeProperties: pulumi.Input<WebAnonymousAuthenticationArgs | WebBasicAuthenticationArgs | WebClientCertificateAuthenticationArgs>;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -25558,6 +26026,10 @@ export interface XeroLinkedServiceArgs {
      * Specifies whether to verify the identity of the server when connecting over SSL. The default value is true.
      */
     usePeerVerification?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -25816,6 +26288,10 @@ export interface ZendeskLinkedServiceArgs {
      * The username of the Zendesk source. Type: string (or Expression with resultType string).
      */
     userName?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**
@@ -25886,6 +26362,10 @@ export interface ZohoLinkedServiceArgs {
      * Specifies whether to verify the identity of the server when connecting over SSL. The default value is true.
      */
     usePeerVerification?: any;
+    /**
+     * Version of the linked service.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**

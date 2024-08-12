@@ -1,3 +1,15 @@
+export const DashboardPartMetadataType = {
+    /**
+     * The markdown part type.
+     */
+    Markdown: "Extension/HubsExtension/PartType/MarkdownPart",
+} as const;
+
+/**
+ * The dashboard part metadata type.
+ */
+export type DashboardPartMetadataType = (typeof DashboardPartMetadataType)[keyof typeof DashboardPartMetadataType];
+
 export const FontSize = {
     NotSpecified: "NotSpecified",
     Small: "Small",

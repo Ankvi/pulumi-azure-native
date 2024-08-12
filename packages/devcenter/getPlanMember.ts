@@ -5,7 +5,7 @@ import * as types from "./types";
  * Gets a devcenter plan member.
  * Azure REST API version: 2024-05-01-preview.
  *
- * Other available API versions: 2024-06-01-preview, 2024-07-01-preview.
+ * Other available API versions: 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview.
  */
 export function getPlanMember(args: GetPlanMemberArgs, opts?: pulumi.InvokeOptions): Promise<GetPlanMemberResult> {
 
@@ -73,7 +73,7 @@ export interface GetPlanMemberResult {
  * Gets a devcenter plan member.
  * Azure REST API version: 2024-05-01-preview.
  *
- * Other available API versions: 2024-06-01-preview, 2024-07-01-preview.
+ * Other available API versions: 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview.
  */
 export function getPlanMemberOutput(args: GetPlanMemberOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPlanMemberResult> {
     return pulumi.output(args).apply((a: any) => getPlanMember(a, opts))

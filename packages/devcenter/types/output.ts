@@ -308,6 +308,20 @@ export interface ProjectNetworkSettingsResponse {
 }
 
 /**
+ * A resource policy.
+ */
+export interface ResourcePolicyResponse {
+    /**
+     * Optional. When specified, this expression is used to filter the resources.
+     */
+    filter?: string;
+    /**
+     * Resources that are included and shared as a part of a curation profile.
+     */
+    resources?: string;
+}
+
+/**
  * The resource model definition representing SKU
  */
 export interface SkuResponse {
@@ -434,6 +448,7 @@ export interface UserRoleAssignmentResponse {
      */
     roles?: {[key: string]: EnvironmentRoleResponse};
 }
+
 
 
 

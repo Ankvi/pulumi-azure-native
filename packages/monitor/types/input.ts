@@ -50,6 +50,20 @@ export function azureMonitorWorkspaceLogsExporterArgsProvideDefaults(val: AzureM
 }
 
 /**
+ * The complex type of the extended location.
+ */
+export interface AzureResourceManagerCommonTypesExtendedLocationArgs {
+    /**
+     * The name of the extended location.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The type of the extended location.
+     */
+    type: pulumi.Input<string | enums.ExtendedLocationType>;
+}
+
+/**
  * Batch processor.
  */
 export interface BatchProcessorArgs {
@@ -140,20 +154,6 @@ export function exporterArgsProvideDefaults(val: ExporterArgs): ExporterArgs {
         ...val,
         azureMonitorWorkspaceLogs: (val.azureMonitorWorkspaceLogs ? pulumi.output(val.azureMonitorWorkspaceLogs).apply(azureMonitorWorkspaceLogsExporterArgsProvideDefaults) : undefined),
     };
-}
-
-/**
- * The extended location info.
- */
-export interface ExtendedLocationArgs {
-    /**
-     * The name of extended location.
-     */
-    name: pulumi.Input<string>;
-    /**
-     * The type of extended location.
-     */
-    type: pulumi.Input<string | enums.ExtendedLocationType>;
 }
 
 /**

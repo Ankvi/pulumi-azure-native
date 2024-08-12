@@ -1,5 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "@kengachu-pulumi/azure-native-core/utilities";
+import * as types from "./types";
 /**
  * Gets the tenant configuration.
  * Azure REST API version: 2020-09-01-preview.
@@ -14,27 +15,31 @@ export function getTenantConfiguration(args: GetTenantConfigurationArgs, opts?: 
 
 export interface GetTenantConfigurationArgs {
     /**
-     * The configuration name. Value must be 'default'
+     * The name of the Configuration
      */
     configurationName: string;
 }
 
 /**
- * Tenant configuration.
+ * The tenant configuration resource definition.
  */
 export interface GetTenantConfigurationResult {
     /**
-     * When flag is set to true Markdown tile will require external storage configuration (URI). The inline content configuration will be prohibited.
-     */
-    readonly enforcePrivateMarkdownStorage?: boolean;
-    /**
-     * Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+     * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */
     readonly id: string;
     /**
      * The name of the resource
      */
     readonly name: string;
+    /**
+     * The resource-specific properties for this resource.
+     */
+    readonly properties: types.outputs.ConfigurationPropertiesResponse;
+    /**
+     * Azure Resource Manager metadata containing createdBy and modifiedBy information.
+     */
+    readonly systemData: types.outputs.SystemDataResponse;
     /**
      * The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
      */
@@ -50,7 +55,7 @@ export function getTenantConfigurationOutput(args: GetTenantConfigurationOutputA
 
 export interface GetTenantConfigurationOutputArgs {
     /**
-     * The configuration name. Value must be 'default'
+     * The name of the Configuration
      */
     configurationName: pulumi.Input<string>;
 }

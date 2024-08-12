@@ -2,27 +2,22 @@
 
 ### Does the PR have any schema changes?
 
-Looking good! No breaking changes found.
+Found 4 breaking changes:
 
-#### New resources:
+#### Resources
+- "azure-native:monitor:PipelineGroup":
+    - `🟡` inputs: "extendedLocation" type changed from "#/types/azure-native:monitor:ExtendedLocation" to "#/types/azure-native:monitor:AzureResourceManagerCommonTypesExtendedLocation"
+    - `🟡` properties: "extendedLocation" type changed from "#/types/azure-native:monitor:ExtendedLocationResponse" to "#/types/azure-native:monitor:AzureResourceManagerCommonTypesExtendedLocationResponse"
+#### Types
+- `🔴` "azure-native:monitor:ExtendedLocation" missing
+- `🔴` "azure-native:monitor:ExtendedLocationResponse" missing
+No new resources/functions.
 
-- `databasewatcher.AlertRuleResource`
-- `dbforpostgresql.Backup`
-
-#### New functions:
-
-- `databasewatcher.getAlertRuleResource`
-- `dbforpostgresql.getBackup`
-- `machinelearningservices.listConnectionModels`
-
-<!-- Release notes generated using configuration in .github/release.yml at v2.52.0 -->
+<!-- Release notes generated using configuration in .github/release.yml at v2.55.0 -->
 
 ## What's Changed
-* Re-enable postgres test, take 2 by @thomas11 in https://github.com/pulumi/pulumi-azure-native/pull/3467
-* Custom Read for WebApp to get the full siteConfig by @thomas11 in https://github.com/pulumi/pulumi-azure-native/pull/3464
-* Azure-in-Azure integration test that runs Pulumi in Azure to test managed identity auth by @thomas11 in https://github.com/pulumi/pulumi-azure-native/pull/3449
-* Filter REDACTED user name from SiteConfig to avoid meaningless diffs by @thomas11 in https://github.com/pulumi/pulumi-azure-native/pull/3480
-* Expect refresh changes to WebApp.SiteConfig because it's modified by other resources by @thomas11 in https://github.com/pulumi/pulumi-azure-native/pull/3482
+* Manually set JobSchedule.parameters to ForceNew by @thomas11 in https://github.com/pulumi/pulumi-azure-native/pull/3506
+* Add WebApp slot config resources by @danielrbradley in https://github.com/pulumi/pulumi-azure-native/pull/3508
 
 
-**Full Changelog**: https://github.com/pulumi/pulumi-azure-native/compare/v2.51.0...v2.52.0
+**Full Changelog**: https://github.com/pulumi/pulumi-azure-native/compare/v2.54.0...v2.55.0

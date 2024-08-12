@@ -78,6 +78,20 @@ export interface AzureMonitorWorkspaceResponseMetrics {
 }
 
 /**
+ * The complex type of the extended location.
+ */
+export interface AzureResourceManagerCommonTypesExtendedLocationResponse {
+    /**
+     * The name of the extended location.
+     */
+    name: string;
+    /**
+     * The type of the extended location.
+     */
+    type: string;
+}
+
+/**
  * Batch processor.
  */
 export interface BatchProcessorResponse {
@@ -168,20 +182,6 @@ export function exporterResponseProvideDefaults(val: ExporterResponse): Exporter
         ...val,
         azureMonitorWorkspaceLogs: (val.azureMonitorWorkspaceLogs ? azureMonitorWorkspaceLogsExporterResponseProvideDefaults(val.azureMonitorWorkspaceLogs) : undefined),
     };
-}
-
-/**
- * The extended location info.
- */
-export interface ExtendedLocationResponse {
-    /**
-     * The name of extended location.
-     */
-    name: string;
-    /**
-     * The type of extended location.
-     */
-    type: string;
 }
 
 /**

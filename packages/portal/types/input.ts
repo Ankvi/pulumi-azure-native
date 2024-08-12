@@ -1,6 +1,16 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
+ * Tenant Configuration Properties with Provisioning state
+ */
+export interface ConfigurationPropertiesArgs {
+    /**
+     * When flag is set to true Markdown tile will require external storage configuration (URI). The inline content configuration will be prohibited.
+     */
+    enforcePrivateMarkdownStorage?: pulumi.Input<boolean>;
+}
+
+/**
  * Cloud shell properties for creating a console.
  */
 export interface ConsoleCreatePropertiesArgs {
@@ -25,7 +35,7 @@ export interface DashboardLensArgs {
     /**
      * The dashboard len's metadata.
      */
-    metadata?: pulumi.Input<{[key: string]: any}>;
+    metadata?: any;
     /**
      * The lens order.
      */
@@ -37,31 +47,13 @@ export interface DashboardLensArgs {
 }
 
 /**
- * A dashboard part metadata.
- */
-export interface DashboardPartMetadataArgs {
-    /**
-     * Inputs to dashboard part.
-     */
-    inputs?: pulumi.Input<any[]>;
-    /**
-     * Settings of dashboard part.
-     */
-    settings?: pulumi.Input<{[key: string]: any}>;
-    /**
-     * The type of dashboard part.
-     */
-    type: pulumi.Input<string>;
-}
-
-/**
  * A dashboard part.
  */
 export interface DashboardPartsArgs {
     /**
-     * The dashboard's part metadata.
+     * The dashboard part's metadata.
      */
-    metadata?: pulumi.Input<DashboardPartMetadataArgs>;
+    metadata?: pulumi.Input<MarkdownPartMetadataArgs>;
     /**
      * The dashboard's part position.
      */
@@ -79,7 +71,7 @@ export interface DashboardPartsPositionArgs {
     /**
      * The dashboard part's metadata.
      */
-    metadata?: pulumi.Input<{[key: string]: any}>;
+    metadata?: any;
     /**
      * The dashboard's part row span.
      */
@@ -92,6 +84,85 @@ export interface DashboardPartsPositionArgs {
      * The dashboard's part y coordinate.
      */
     y: pulumi.Input<number>;
+}
+
+/**
+ * Dashboard Properties with Provisioning state
+ */
+export interface DashboardPropertiesWithProvisioningStateArgs {
+    /**
+     * The dashboard lenses.
+     */
+    lenses?: pulumi.Input<pulumi.Input<DashboardLensArgs>[]>;
+    /**
+     * The dashboard metadata.
+     */
+    metadata?: any;
+}
+
+/**
+ * Markdown part metadata.
+ */
+export interface MarkdownPartMetadataArgs {
+    /**
+     * Input to dashboard part.
+     */
+    inputs?: pulumi.Input<any[]>;
+    /**
+     * Markdown part settings.
+     */
+    settings?: pulumi.Input<MarkdownPartMetadataSettingsArgs>;
+    /**
+     * The dashboard part metadata type.
+     * Expected value is 'Extension/HubsExtension/PartType/MarkdownPart'.
+     */
+    type: pulumi.Input<"Extension/HubsExtension/PartType/MarkdownPart">;
+}
+
+/**
+ * Markdown part settings.
+ */
+export interface MarkdownPartMetadataSettingsArgs {
+    /**
+     * The content of markdown part.
+     */
+    content?: pulumi.Input<MarkdownPartMetadataSettingsContentArgs>;
+}
+
+/**
+ * The content of markdown part.
+ */
+export interface MarkdownPartMetadataSettingsContentArgs {
+    /**
+     * The setting of the content of markdown part.
+     */
+    settings?: pulumi.Input<MarkdownPartMetadataSettingsContentSettingsArgs>;
+}
+
+/**
+ * The setting of the content of markdown part.
+ */
+export interface MarkdownPartMetadataSettingsContentSettingsArgs {
+    /**
+     * The content of the markdown part.
+     */
+    content?: pulumi.Input<string>;
+    /**
+     * The source of the content of the markdown part.
+     */
+    markdownSource?: pulumi.Input<number>;
+    /**
+     * The uri of markdown content.
+     */
+    markdownUri?: pulumi.Input<string>;
+    /**
+     * The subtitle of the markdown part.
+     */
+    subtitle?: pulumi.Input<string>;
+    /**
+     * The title of the markdown part.
+     */
+    title?: pulumi.Input<string>;
 }
 
 /**

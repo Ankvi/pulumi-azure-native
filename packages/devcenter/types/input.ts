@@ -57,6 +57,20 @@ export interface ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignmentArgs
 }
 
 /**
+ * A resource policy.
+ */
+export interface ResourcePolicyArgs {
+    /**
+     * Optional. When specified, this expression is used to filter the resources.
+     */
+    filter?: pulumi.Input<string>;
+    /**
+     * Resources that are included and shared as a part of a curation profile.
+     */
+    resources?: pulumi.Input<string>;
+}
+
+/**
  * The resource model definition representing SKU
  */
 export interface SkuArgs {
@@ -105,6 +119,7 @@ export interface UserRoleAssignmentArgs {
      */
     roles?: pulumi.Input<pulumi.Input<string>[]>;
 }
+
 
 
 

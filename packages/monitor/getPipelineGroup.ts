@@ -36,7 +36,7 @@ export interface GetPipelineGroupResult {
     /**
      * The extended location for given pipeline group.
      */
-    readonly extendedLocation?: types.outputs.ExtendedLocationResponse;
+    readonly extendedLocation?: types.outputs.AzureResourceManagerCommonTypesExtendedLocationResponse;
     /**
      * Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
      */

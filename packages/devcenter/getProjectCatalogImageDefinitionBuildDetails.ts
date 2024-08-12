@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets Build details
  * Azure REST API version: 2024-07-01-preview.
+ *
+ * Other available API versions: 2024-08-01-preview.
  */
 export function getProjectCatalogImageDefinitionBuildDetails(args: GetProjectCatalogImageDefinitionBuildDetailsArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectCatalogImageDefinitionBuildDetailsResult> {
 
@@ -88,6 +90,8 @@ export interface GetProjectCatalogImageDefinitionBuildDetailsResult {
 /**
  * Gets Build details
  * Azure REST API version: 2024-07-01-preview.
+ *
+ * Other available API versions: 2024-08-01-preview.
  */
 export function getProjectCatalogImageDefinitionBuildDetailsOutput(args: GetProjectCatalogImageDefinitionBuildDetailsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectCatalogImageDefinitionBuildDetailsResult> {
     return pulumi.output(args).apply((a: any) => getProjectCatalogImageDefinitionBuildDetails(a, opts))
