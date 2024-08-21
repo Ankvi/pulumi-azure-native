@@ -18902,6 +18902,18 @@ export interface RestServiceLinkedServiceArgs {
      */
     scope?: any;
     /**
+     * The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
+     */
+    servicePrincipalCredentialType?: any;
+    /**
+     * Specify the base64 encoded certificate of your application registered in Azure Active Directory. Type: string (or Expression with resultType string).
+     */
+    servicePrincipalEmbeddedCert?: pulumi.Input<AzureKeyVaultSecretReferenceArgs | SecureStringArgs>;
+    /**
+     * Specify the password of your certificate if your certificate has a password and you are using AadServicePrincipal authentication. Type: string (or Expression with resultType string).
+     */
+    servicePrincipalEmbeddedCertPassword?: pulumi.Input<AzureKeyVaultSecretReferenceArgs | SecureStringArgs>;
+    /**
      * The application's client ID used in AadServicePrincipal authentication type. Type: string (or Expression with resultType string).
      */
     servicePrincipalId?: any;
@@ -22181,13 +22193,25 @@ export interface SharePointOnlineListLinkedServiceArgs {
      */
     parameters?: pulumi.Input<{[key: string]: pulumi.Input<ParameterSpecificationArgs>}>;
     /**
+     * The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
+     */
+    servicePrincipalCredentialType?: any;
+    /**
+     * Specify the base64 encoded certificate of your application registered in Azure Active Directory. Type: string (or Expression with resultType string).
+     */
+    servicePrincipalEmbeddedCert?: pulumi.Input<AzureKeyVaultSecretReferenceArgs | SecureStringArgs>;
+    /**
+     * Specify the password of your certificate if your certificate has a password and you are using AadServicePrincipal authentication. Type: string (or Expression with resultType string).
+     */
+    servicePrincipalEmbeddedCertPassword?: pulumi.Input<AzureKeyVaultSecretReferenceArgs | SecureStringArgs>;
+    /**
      * The application (client) ID of your application registered in Azure Active Directory. Make sure to grant SharePoint site permission to this application. Type: string (or Expression with resultType string).
      */
     servicePrincipalId: any;
     /**
      * The client secret of your application registered in Azure Active Directory. Type: string (or Expression with resultType string).
      */
-    servicePrincipalKey: pulumi.Input<AzureKeyVaultSecretReferenceArgs | SecureStringArgs>;
+    servicePrincipalKey?: pulumi.Input<AzureKeyVaultSecretReferenceArgs | SecureStringArgs>;
     /**
      * The URL of the SharePoint Online site. For example, https://contoso.sharepoint.com/sites/siteName. Type: string (or Expression with resultType string).
      */

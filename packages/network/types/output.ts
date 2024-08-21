@@ -5835,6 +5835,29 @@ export function ipconfigurationResponseProvideDefaults(val: IPConfigurationRespo
 }
 
 /**
+ * IP traffic information.
+ */
+export interface IPTrafficResponse {
+    /**
+     * List of destination IP addresses of the traffic..
+     */
+    destinationIps: string[];
+    /**
+     * The destination ports of the traffic.
+     */
+    destinationPorts: string[];
+    protocols: string[];
+    /**
+     * List of source IP addresses of the traffic..
+     */
+    sourceIps: string[];
+    /**
+     * The source ports of the traffic.
+     */
+    sourcePorts: string[];
+}
+
+/**
  * IP configuration.
  */
 export interface InboundEndpointIPConfigurationResponse {
@@ -5999,6 +6022,25 @@ export function inboundNatRuleResponseProvideDefaults(val: InboundNatRuleRespons
 }
 
 /**
+ * Intent information.
+ */
+export interface IntentContentResponse {
+    description?: string;
+    /**
+     * Destination resource id of the intent.
+     */
+    destinationResourceId: string;
+    /**
+     * IP traffic information.
+     */
+    ipTraffic: IPTrafficResponse;
+    /**
+     * Source resource id of the intent.
+     */
+    sourceResourceId: string;
+}
+
+/**
  * Interface endpoint resource.
  */
 export interface InterfaceEndpointResponse {
@@ -6073,6 +6115,33 @@ export interface IpTagResponse {
      * The value of the IP tag associated with the public IP. Example: SQL.
      */
     tag?: string;
+}
+
+/**
+ * Properties of IpamPool resource properties which are specific to the Pool resource.
+ */
+export interface IpamPoolPropertiesResponse {
+    /**
+     * List of IP address prefixes of the resource.
+     */
+    addressPrefixes: string[];
+    description?: string;
+    /**
+     * String representing a friendly name for the resource.
+     */
+    displayName?: string;
+    /**
+     * List of IP address type for the IpamPool.
+     */
+    ipAddressType: string[];
+    /**
+     * String representing parent IpamPool resource name. If empty the IpamPool will be a root pool.
+     */
+    parentPoolName?: string;
+    /**
+     * Provisioning states of a resource.
+     */
+    provisioningState: string;
 }
 
 /**
@@ -7894,6 +7963,45 @@ export interface PolicySettingsResponseLogScrubbing {
 }
 
 /**
+ * IpamPool association information.
+ */
+export interface PoolAssociationResponse {
+    /**
+     * List of assigned IP address prefixes in the IpamPool of the associated resource.
+     */
+    addressPrefixes: string[];
+    /**
+     * Creation time of the association.
+     */
+    createdAt: string;
+    description?: string;
+    /**
+     * Total number of reserved IP addresses of the association.
+     */
+    numberOfReservedIPAddresses: string;
+    /**
+     * IpamPool id for which the resource is associated to.
+     */
+    poolId?: string;
+    /**
+     * Expire time for IP addresses reserved.
+     */
+    reservationExpiresAt: string;
+    /**
+     * List of reserved IP address prefixes in the IpamPool of the associated resource.
+     */
+    reservedPrefixes: string[];
+    /**
+     * Resource id of the associated Azure resource.
+     */
+    resourceId: string;
+    /**
+     * Total number of assigned IP addresses of the association.
+     */
+    totalNumberOfIPAddresses: string;
+}
+
+/**
  * PrivateDnsZoneConfig resource.
  */
 export interface PrivateDnsZoneConfigResponse {
@@ -8602,6 +8710,50 @@ export interface RadiusServerResponse {
 }
 
 /**
+ * Represents the Reachability Analysis Intent properties.
+ */
+export interface ReachabilityAnalysisIntentPropertiesResponse {
+    description?: string;
+    /**
+     * Destination resource id to verify the reachability path of.
+     */
+    destinationResourceId: string;
+    /**
+     * IP traffic information.
+     */
+    ipTraffic: IPTrafficResponse;
+    /**
+     * Provisioning states of a resource.
+     */
+    provisioningState: string;
+    /**
+     * Source resource id to verify the reachability path of.
+     */
+    sourceResourceId: string;
+}
+
+/**
+ * Represents the Reachability Analysis Run properties.
+ */
+export interface ReachabilityAnalysisRunPropertiesResponse {
+    analysisResult: string;
+    description?: string;
+    errorMessage: string;
+    /**
+     * Intent information.
+     */
+    intentContent: IntentContentResponse;
+    /**
+     * Id of the intent resource to run analysis on.
+     */
+    intentId: string;
+    /**
+     * Provisioning states of a resource.
+     */
+    provisioningState: string;
+}
+
+/**
  * A collective group of information about the record set information.
  */
 export interface RecordSetResponse {
@@ -8674,6 +8826,20 @@ export interface ReferencedPublicIpAddressResponse {
      * The PublicIPAddress Reference.
      */
     id?: string;
+}
+
+/**
+ * Representation of basic resource information.
+ */
+export interface ResourceBasicsResponse {
+    /**
+     * List of IP address prefixes of the resource.
+     */
+    addressPrefixes?: string[];
+    /**
+     * ResourceId of the Azure resource.
+     */
+    resourceId?: string;
 }
 
 /**
@@ -9466,6 +9632,29 @@ export interface SrvRecordResponse {
 }
 
 /**
+ * Properties of static CIDR resource.
+ */
+export interface StaticCidrPropertiesResponse {
+    /**
+     * List of IP address prefixes of the resource.
+     */
+    addressPrefixes?: string[];
+    description?: string;
+    /**
+     * Number of IP addresses to allocate for a static CIDR resource. The IP addresses will be assigned based on IpamPools available space.
+     */
+    numberOfIPAddressesToAllocate?: string;
+    /**
+     * Provisioning states of a resource.
+     */
+    provisioningState: string;
+    /**
+     * Total number of IP addresses allocated for the static CIDR resource.
+     */
+    totalNumberOfIPAddresses: string;
+}
+
+/**
  * List of all Static Routes.
  */
 export interface StaticRouteResponse {
@@ -9789,6 +9978,17 @@ export interface VMResponse {
      * Resource type.
      */
     type: string;
+}
+
+/**
+ * Properties of Verifier Workspace resource.
+ */
+export interface VerifierWorkspacePropertiesResponse {
+    description?: string;
+    /**
+     * Provisioning states of a resource.
+     */
+    provisioningState: string;
 }
 
 /**
@@ -11166,6 +11366,7 @@ export interface WebApplicationFirewallScrubbingRulesResponse {
      */
     state?: string;
 }
+
 
 
 

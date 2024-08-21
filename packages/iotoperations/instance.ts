@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * A Instance resource is a logical container for a set of child resources.
  * Azure REST API version: 2024-07-01-preview.
+ *
+ * Other available API versions: 2024-08-15-preview.
  */
 export class Instance extends pulumi.CustomResource {
     /**
@@ -97,7 +99,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:iotoperations/v20240701preview:Instance" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:iotoperations/v20240701preview:Instance" }, { type: "azure-native:iotoperations/v20240815preview:Instance" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Instance.__pulumiType, name, resourceInputs, opts);
     }

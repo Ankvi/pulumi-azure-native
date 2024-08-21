@@ -347,7 +347,7 @@ export interface InvoiceSectionPropertiesArgs {
     /**
      * Identifies the cloud environments that are associated with an invoice section. This is a system managed optional field and gets updated as the invoice section gets associated with accounts in various clouds.
      */
-    targetCloud?: pulumi.Input<string | enums.TargetCloud>;
+    targetCloud?: pulumi.Input<string>;
 }
 
 

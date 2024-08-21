@@ -756,6 +756,24 @@ export interface FailoverPolicyResponse {
 }
 
 /**
+ * The properties of a mongo cluster firewall rule.
+ */
+export interface FirewallRulePropertiesResponse {
+    /**
+     * The end IP address of the mongo cluster firewall rule. Must be IPv4 format.
+     */
+    endIpAddress: string;
+    /**
+     * The provisioning state of the firewall rule.
+     */
+    provisioningState: string;
+    /**
+     * The start IP address of the mongo cluster firewall rule. Must be IPv4 format.
+     */
+    startIpAddress: string;
+}
+
+/**
  * Resource for a regional service location.
  */
 export interface GraphAPIComputeRegionalServiceResourceResponse {
@@ -1833,6 +1851,7 @@ export interface VirtualNetworkRuleResponse {
      */
     ignoreMissingVNetServiceEndpoint?: boolean;
 }
+
 
 
 

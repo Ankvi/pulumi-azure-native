@@ -3863,6 +3863,29 @@ export function ipconfigurationProfileArgsProvideDefaults(val: IPConfigurationPr
 }
 
 /**
+ * IP traffic information.
+ */
+export interface IPTrafficArgs {
+    /**
+     * List of destination IP addresses of the traffic..
+     */
+    destinationIps: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The destination ports of the traffic.
+     */
+    destinationPorts: pulumi.Input<pulumi.Input<string>[]>;
+    protocols: pulumi.Input<pulumi.Input<string | enums.NetworkProtocol>[]>;
+    /**
+     * List of source IP addresses of the traffic..
+     */
+    sourceIps: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The source ports of the traffic.
+     */
+    sourcePorts: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+/**
  * IP configuration.
  */
 export interface InboundEndpointIPConfigurationArgs {
@@ -4001,6 +4024,25 @@ export interface IpTagArgs {
      * The value of the IP tag associated with the public IP. Example: SQL.
      */
     tag?: pulumi.Input<string>;
+}
+
+/**
+ * Properties of IpamPool resource properties which are specific to the Pool resource.
+ */
+export interface IpamPoolPropertiesArgs {
+    /**
+     * List of IP address prefixes of the resource.
+     */
+    addressPrefixes: pulumi.Input<pulumi.Input<string>[]>;
+    description?: pulumi.Input<string>;
+    /**
+     * String representing a friendly name for the resource.
+     */
+    displayName?: pulumi.Input<string>;
+    /**
+     * String representing parent IpamPool resource name. If empty the IpamPool will be a root pool.
+     */
+    parentPoolName?: pulumi.Input<string>;
 }
 
 /**
@@ -5729,6 +5771,36 @@ export interface RadiusServerArgs {
 }
 
 /**
+ * Represents the Reachability Analysis Intent properties.
+ */
+export interface ReachabilityAnalysisIntentPropertiesArgs {
+    description?: pulumi.Input<string>;
+    /**
+     * Destination resource id to verify the reachability path of.
+     */
+    destinationResourceId: pulumi.Input<string>;
+    /**
+     * IP traffic information.
+     */
+    ipTraffic: pulumi.Input<IPTrafficArgs>;
+    /**
+     * Source resource id to verify the reachability path of.
+     */
+    sourceResourceId: pulumi.Input<string>;
+}
+
+/**
+ * Represents the Reachability Analysis Run properties.
+ */
+export interface ReachabilityAnalysisRunPropertiesArgs {
+    description?: pulumi.Input<string>;
+    /**
+     * Id of the intent resource to run analysis on.
+     */
+    intentId: pulumi.Input<string>;
+}
+
+/**
  * Describes Redirect Route.
  */
 export interface RedirectConfigurationArgs {
@@ -6368,6 +6440,21 @@ export interface SrvRecordArgs {
 }
 
 /**
+ * Properties of static CIDR resource.
+ */
+export interface StaticCidrPropertiesArgs {
+    /**
+     * List of IP address prefixes of the resource.
+     */
+    addressPrefixes?: pulumi.Input<pulumi.Input<string>[]>;
+    description?: pulumi.Input<string>;
+    /**
+     * Number of IP addresses to allocate for a static CIDR resource. The IP addresses will be assigned based on IpamPools available space.
+     */
+    numberOfIPAddressesToAllocate?: pulumi.Input<string>;
+}
+
+/**
  * List of all Static Routes.
  */
 export interface StaticRouteArgs {
@@ -6637,6 +6724,13 @@ export interface VMArgs {
      * Resource tags.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+/**
+ * Properties of Verifier Workspace resource.
+ */
+export interface VerifierWorkspacePropertiesArgs {
+    description?: pulumi.Input<string>;
 }
 
 /**
@@ -7652,6 +7746,7 @@ export interface WebApplicationFirewallScrubbingRulesArgs {
      */
     state?: pulumi.Input<string | enums.ScrubbingRuleEntryState>;
 }
+
 
 
 

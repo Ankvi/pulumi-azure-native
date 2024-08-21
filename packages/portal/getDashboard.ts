@@ -5,7 +5,7 @@ import * as types from "./types";
  * Gets the Dashboard.
  * Azure REST API version: 2020-09-01-preview.
  *
- * Other available API versions: 2019-01-01-preview.
+ * Other available API versions: 2019-01-01-preview, 2022-12-01-preview.
  */
 export function getDashboard(args: GetDashboardArgs, opts?: pulumi.InvokeOptions): Promise<GetDashboardResult> {
 
@@ -64,7 +64,7 @@ export interface GetDashboardResult {
  * Gets the Dashboard.
  * Azure REST API version: 2020-09-01-preview.
  *
- * Other available API versions: 2019-01-01-preview.
+ * Other available API versions: 2019-01-01-preview, 2022-12-01-preview.
  */
 export function getDashboardOutput(args: GetDashboardOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDashboardResult> {
     return pulumi.output(args).apply((a: any) => getDashboard(a, opts))

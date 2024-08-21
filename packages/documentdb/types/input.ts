@@ -567,6 +567,20 @@ export interface ExcludedPathArgs {
 }
 
 /**
+ * The properties of a mongo cluster firewall rule.
+ */
+export interface FirewallRulePropertiesArgs {
+    /**
+     * The end IP address of the mongo cluster firewall rule. Must be IPv4 format.
+     */
+    endIpAddress: pulumi.Input<string>;
+    /**
+     * The start IP address of the mongo cluster firewall rule. Must be IPv4 format.
+     */
+    startIpAddress: pulumi.Input<string>;
+}
+
+/**
  * Cosmos DB Graph resource object
  */
 export interface GraphResourceArgs {
@@ -1205,6 +1219,7 @@ export interface VirtualNetworkRuleArgs {
      */
     ignoreMissingVNetServiceEndpoint?: pulumi.Input<boolean>;
 }
+
 
 
 

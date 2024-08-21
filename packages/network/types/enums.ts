@@ -1434,6 +1434,18 @@ export const NetworkInterfaceNicType = {
  */
 export type NetworkInterfaceNicType = (typeof NetworkInterfaceNicType)[keyof typeof NetworkInterfaceNicType];
 
+export const NetworkProtocol = {
+    Any: "Any",
+    TCP: "TCP",
+    UDP: "UDP",
+    ICMP: "ICMP",
+} as const;
+
+/**
+ * Network protocol this resource applies to.
+ */
+export type NetworkProtocol = (typeof NetworkProtocol)[keyof typeof NetworkProtocol];
+
 export const NextStep = {
     Unknown: "Unknown",
     Continue: "Continue",

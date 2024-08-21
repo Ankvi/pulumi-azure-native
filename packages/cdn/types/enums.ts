@@ -732,6 +732,15 @@ export const TransformType = {
  */
 export type TransformType = (typeof TransformType)[keyof typeof TransformType];
 
+export const TunnelType = {
+    HttpConnect: "HttpConnect",
+} as const;
+
+/**
+ * Protocol this tunnel will use for allowing traffic to backends.
+ */
+export type TunnelType = (typeof TunnelType)[keyof typeof TunnelType];
+
 export const UrlFileExtensionOperator = {
     Any: "Any",
     Equal: "Equal",

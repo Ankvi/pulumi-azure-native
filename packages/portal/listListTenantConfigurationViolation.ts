@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets list of items that violate tenant's configuration.
  * Azure REST API version: 2020-09-01-preview.
+ *
+ * Other available API versions: 2022-12-01-preview.
  */
 export function listListTenantConfigurationViolation(args?: ListListTenantConfigurationViolationArgs, opts?: pulumi.InvokeOptions): Promise<ListListTenantConfigurationViolationResult> {
     args = args || {};
@@ -32,6 +34,8 @@ export interface ListListTenantConfigurationViolationResult {
 /**
  * Gets list of items that violate tenant's configuration.
  * Azure REST API version: 2020-09-01-preview.
+ *
+ * Other available API versions: 2022-12-01-preview.
  */
 export function listListTenantConfigurationViolationOutput(opts?: pulumi.InvokeOptions): pulumi.Output<ListListTenantConfigurationViolationResult> {
     return pulumi.output(listListTenantConfigurationViolation(opts))

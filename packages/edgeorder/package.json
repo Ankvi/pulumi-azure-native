@@ -1,6 +1,6 @@
 {
     "name": "@kengachu-pulumi/azure-native-edgeorder",
-    "version": "2.55.0",
+    "version": "2.57.0",
     "description": "Pulumi Azure Native package for edgeorder",
     "keywords": [
         "pulumi",

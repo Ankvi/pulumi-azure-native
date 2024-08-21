@@ -1851,6 +1851,20 @@ export function sslProtocolMatchConditionParametersArgsProvideDefaults(val: SslP
 }
 
 /**
+ * TargetEndpoint object that forms a traffic endpoint.
+ */
+export interface TargetEndpointArgs {
+    /**
+     * The Ports to be allowed for the FQDN.
+     */
+    ports?: pulumi.Input<pulumi.Input<number>[]>;
+    /**
+     * The FQDN for traffic endpoint.
+     */
+    targetFqdn?: pulumi.Input<string>;
+}
+
+/**
  * Defines the parameters for UrlFileExtension match conditions
  */
 export interface UrlFileExtensionMatchConditionParametersArgs {
@@ -2106,6 +2120,7 @@ export interface UrlSigningParamIdentifierArgs {
      */
     paramName: pulumi.Input<string>;
 }
+
 
 
 

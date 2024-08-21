@@ -2052,6 +2052,20 @@ export interface SystemDataResponse {
 }
 
 /**
+ * TargetEndpoint object that forms a traffic endpoint.
+ */
+export interface TargetEndpointResponse {
+    /**
+     * The Ports to be allowed for the FQDN.
+     */
+    ports?: number[];
+    /**
+     * The FQDN for traffic endpoint.
+     */
+    targetFqdn?: string;
+}
+
+/**
  * Defines the parameters for UrlFileExtension match conditions
  */
 export interface UrlFileExtensionMatchConditionParametersResponse {
@@ -2344,6 +2358,7 @@ export interface UserManagedHttpsParametersResponse {
      */
     protocolType: string;
 }
+
 
 
 

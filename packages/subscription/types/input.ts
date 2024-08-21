@@ -55,3 +55,4 @@ export interface PutAliasRequestPropertiesArgs {
     workload?: pulumi.Input<string | enums.Workload>;
 }
 
+

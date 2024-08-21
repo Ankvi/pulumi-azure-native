@@ -5,7 +5,7 @@ import * as types from "./types";
  * The shared dashboard resource definition.
  * Azure REST API version: 2020-09-01-preview. Prior API version in Azure Native 1.x: 2020-09-01-preview.
  *
- * Other available API versions: 2019-01-01-preview.
+ * Other available API versions: 2019-01-01-preview, 2022-12-01-preview.
  */
 export class Dashboard extends pulumi.CustomResource {
     /**
@@ -90,7 +90,7 @@ export class Dashboard extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:portal/v20150801preview:Dashboard" }, { type: "azure-native:portal/v20181001preview:Dashboard" }, { type: "azure-native:portal/v20190101preview:Dashboard" }, { type: "azure-native:portal/v20200901preview:Dashboard" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:portal/v20150801preview:Dashboard" }, { type: "azure-native:portal/v20181001preview:Dashboard" }, { type: "azure-native:portal/v20190101preview:Dashboard" }, { type: "azure-native:portal/v20200901preview:Dashboard" }, { type: "azure-native:portal/v20221201preview:Dashboard" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Dashboard.__pulumiType, name, resourceInputs, opts);
     }
