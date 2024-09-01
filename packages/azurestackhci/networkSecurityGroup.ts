@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * NetworkSecurityGroup resource.
  * Azure REST API version: 2024-02-01-preview.
+ *
+ * Other available API versions: 2024-05-01-preview.
  */
 export class NetworkSecurityGroup extends pulumi.CustomResource {
     /**
@@ -112,7 +114,7 @@ export class NetworkSecurityGroup extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:azurestackhci/v20240201preview:NetworkSecurityGroup" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:azurestackhci/v20240201preview:NetworkSecurityGroup" }, { type: "azure-native:azurestackhci/v20240501preview:NetworkSecurityGroup" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(NetworkSecurityGroup.__pulumiType, name, resourceInputs, opts);
     }

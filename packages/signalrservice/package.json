@@ -1,6 +1,6 @@
 {
     "name": "@kengachu-pulumi/azure-native-signalrservice",
-    "version": "2.57.0",
+    "version": "2.58.0",
     "description": "Pulumi Azure Native package for signalrservice",
     "keywords": [
         "pulumi",

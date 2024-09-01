@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets the details about the service to the resource.
  * Azure REST API version: 2023-03-15.
+ *
+ * Other available API versions: 2024-12-01.
  */
 export function getServiceConfiguration(args: GetServiceConfigurationArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceConfigurationResult> {
 
@@ -94,6 +96,8 @@ export interface GetServiceConfigurationResult {
 /**
  * Gets the details about the service to the resource.
  * Azure REST API version: 2023-03-15.
+ *
+ * Other available API versions: 2024-12-01.
  */
 export function getServiceConfigurationOutput(args: GetServiceConfigurationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceConfigurationResult> {
     return pulumi.output(args).apply((a: any) => getServiceConfiguration(a, opts))

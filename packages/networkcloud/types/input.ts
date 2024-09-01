@@ -739,6 +739,17 @@ export function storageProfileArgsProvideDefaults(val: StorageProfileArgs): Stor
     };
 }
 
+export interface StringKeyValuePairArgs {
+    /**
+     * The key to the mapped value.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * The value of the mapping key.
+     */
+    value: pulumi.Input<string>;
+}
+
 export interface TrunkedNetworkAttachmentConfigurationArgs {
     /**
      * The resource ID of the network that is being configured for attachment.
@@ -792,4 +803,5 @@ export interface VirtualMachinePlacementHintArgs {
      */
     scope: pulumi.Input<string | enums.VirtualMachinePlacementHintPodAffinityScope>;
 }
+
 

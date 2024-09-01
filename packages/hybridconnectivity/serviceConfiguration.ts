@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * The service configuration details associated with the target resource.
  * Azure REST API version: 2023-03-15.
+ *
+ * Other available API versions: 2024-12-01.
  */
 export class ServiceConfiguration extends pulumi.CustomResource {
     /**
@@ -137,7 +139,7 @@ export class ServiceConfiguration extends pulumi.CustomResource {
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:hybridconnectivity/v20230315:ServiceConfiguration" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:hybridconnectivity/v20230315:ServiceConfiguration" }, { type: "azure-native:hybridconnectivity/v20241201:ServiceConfiguration" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ServiceConfiguration.__pulumiType, name, resourceInputs, opts);
     }

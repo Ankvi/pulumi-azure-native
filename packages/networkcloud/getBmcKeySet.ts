@@ -5,7 +5,7 @@ import * as types from "./types";
  * Get baseboard management controller key set of the provided cluster.
  * Azure REST API version: 2023-10-01-preview.
  *
- * Other available API versions: 2023-07-01.
+ * Other available API versions: 2023-07-01, 2024-06-01-preview.
  */
 export function getBmcKeySet(args: GetBmcKeySetArgs, opts?: pulumi.InvokeOptions): Promise<GetBmcKeySetResult> {
 
@@ -102,7 +102,7 @@ export interface GetBmcKeySetResult {
  * Get baseboard management controller key set of the provided cluster.
  * Azure REST API version: 2023-10-01-preview.
  *
- * Other available API versions: 2023-07-01.
+ * Other available API versions: 2023-07-01, 2024-06-01-preview.
  */
 export function getBmcKeySetOutput(args: GetBmcKeySetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBmcKeySetResult> {
     return pulumi.output(args).apply((a: any) => getBmcKeySet(a, opts))

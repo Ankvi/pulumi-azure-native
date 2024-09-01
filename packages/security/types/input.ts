@@ -1746,64 +1746,6 @@ export interface OnUploadPropertiesArgs {
 }
 
 /**
- * Represents a path that is recommended to be allowed and its properties
- */
-export interface PathRecommendationArgs {
-    /**
-     * The recommendation action of the machine or rule
-     */
-    action?: pulumi.Input<string>;
-    /**
-     * Whether the application is commonly run on the machine
-     */
-    common?: pulumi.Input<boolean>;
-    /**
-     * The configuration status of the machines group or machine or rule
-     */
-    configurationStatus?: pulumi.Input<string>;
-    /**
-     * The type of the file (for Linux files - Executable is used)
-     */
-    fileType?: pulumi.Input<string>;
-    /**
-     * The full path of the file, or an identifier of the application
-     */
-    path?: pulumi.Input<string>;
-    /**
-     * Represents the publisher information of a process/rule
-     */
-    publisherInfo?: pulumi.Input<PublisherInfoArgs>;
-    /**
-     * The type of the rule to be allowed
-     */
-    type?: pulumi.Input<string>;
-    userSids?: pulumi.Input<pulumi.Input<string>[]>;
-    usernames?: pulumi.Input<pulumi.Input<UserRecommendationArgs>[]>;
-}
-
-/**
- * The protection mode of the collection/file types. Exe/Msi/Script are used for Windows, Executable is used for Linux.
- */
-export interface ProtectionModeArgs {
-    /**
-     * The application control policy enforcement/protection mode of the machine group
-     */
-    exe?: pulumi.Input<string>;
-    /**
-     * The application control policy enforcement/protection mode of the machine group
-     */
-    executable?: pulumi.Input<string>;
-    /**
-     * The application control policy enforcement/protection mode of the machine group
-     */
-    msi?: pulumi.Input<string>;
-    /**
-     * The application control policy enforcement/protection mode of the machine group
-     */
-    script?: pulumi.Input<string>;
-}
-
-/**
  * For a non-Azure machine that is not connected directly to the internet, specify a proxy server that the non-Azure machine can use.
  */
 export interface ProxyServerPropertiesArgs {
@@ -1815,28 +1757,6 @@ export interface ProxyServerPropertiesArgs {
      * Proxy server port
      */
     port?: pulumi.Input<string>;
-}
-
-/**
- * Represents the publisher information of a process/rule
- */
-export interface PublisherInfoArgs {
-    /**
-     * The "OriginalName" field taken from the file's version resource
-     */
-    binaryName?: pulumi.Input<string>;
-    /**
-     * The product name taken from the file's version resource
-     */
-    productName?: pulumi.Input<string>;
-    /**
-     * The Subject field of the x.509 certificate used to sign the code, using the following fields -  O = Organization, L = Locality, S = State or Province, and C = Country
-     */
-    publisherName?: pulumi.Input<string>;
-    /**
-     * The binary file version taken from the file's version resource
-     */
-    version?: pulumi.Input<string>;
 }
 
 /**
@@ -2098,42 +2018,6 @@ export interface UserDefinedResourcesPropertiesArgs {
      * List of Azure subscription ids on which the user defined resources query should be executed.
      */
     querySubscriptions: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-/**
- * Represents a user that is recommended to be allowed for a certain rule
- */
-export interface UserRecommendationArgs {
-    /**
-     * The recommendation action of the machine or rule
-     */
-    recommendationAction?: pulumi.Input<string>;
-    /**
-     * Represents a user that is recommended to be allowed for a certain rule
-     */
-    username?: pulumi.Input<string>;
-}
-
-/**
- * Represents a machine that is part of a machine group
- */
-export interface VmRecommendationArgs {
-    /**
-     * The configuration status of the machines group or machine or rule
-     */
-    configurationStatus?: pulumi.Input<string>;
-    /**
-     * The machine supportability of Enforce feature
-     */
-    enforcementSupport?: pulumi.Input<string>;
-    /**
-     * The recommendation action of the machine or rule
-     */
-    recommendationAction?: pulumi.Input<string>;
-    /**
-     * The full resource id of the machine
-     */
-    resourceId?: pulumi.Input<string>;
 }
 
 

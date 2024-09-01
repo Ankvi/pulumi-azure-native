@@ -1,6 +1,84 @@
 import * as enums from "./enums";
 import * as pulumi from "@pulumi/pulumi";
 /**
+ * Specifies the disk information fo the Azure Bare Metal Instance
+ */
+export interface DiskResponse {
+    /**
+     * Specifies the size of an empty data disk in gigabytes.
+     */
+    diskSizeGB?: number;
+    /**
+     * Specifies the logical unit number of the data disk. This value is used to identify data disks within the VM and therefore must be unique for each data disk attached to a VM.
+     */
+    lun: number;
+    /**
+     * The disk name.
+     */
+    name?: string;
+}
+
+/**
+ * Specifies the hardware settings for the Azure Bare Metal Instance.
+ */
+export interface HardwareProfileResponse {
+    /**
+     * Specifies the Azure Bare Metal Instance SKU.
+     */
+    azureBareMetalInstanceSize?: string;
+    /**
+     * Name of the hardware type (vendor and/or their product name)
+     */
+    hardwareType?: string;
+}
+
+/**
+ * Specifies the network interfaces of a bare metal resource.
+ */
+export interface NetworkInterfaceResponse {
+    /**
+     * Specifies the IP address of the network interface.
+     */
+    ipAddress?: string;
+}
+
+/**
+ * Specifies the network settings for the Azure Bare Metal Instance disks.
+ */
+export interface NetworkProfileResponse {
+    /**
+     * Specifies the circuit id for connecting to express route.
+     */
+    circuitId?: string;
+    /**
+     * Specifies the network interfaces for the Azure Bare Metal Instance.
+     */
+    networkInterfaces?: NetworkInterfaceResponse[];
+}
+
+/**
+ * Specifies the operating system settings for the Azure Bare Metal instance.
+ */
+export interface OSProfileResponse {
+    /**
+     * Specifies the host OS name of the Azure Bare Metal instance.
+     */
+    computerName?: string;
+    /**
+     * This property allows you to specify the type of the OS.
+     */
+    osType?: string;
+    /**
+     * Specifies the SSH public key used to access the operating system.
+     */
+    sshPublicKey?: string;
+    /**
+     * Specifies version of operating system.
+     */
+    version?: string;
+}
+
+/**
  * Describes the billing related details of the AzureBareMetalStorageInstance.
  */
 export interface StorageBillingPropertiesResponse {
@@ -12,6 +90,20 @@ export interface StorageBillingPropertiesResponse {
      * the billing mode for the storage instance
      */
     billingMode?: string;
+}
+
+/**
+ * Specifies the storage settings for the Azure Bare Metal instance disks.
+ */
+export interface StorageProfileResponse {
+    /**
+     * IP Address to connect to storage.
+     */
+    nfsIpAddress?: string;
+    /**
+     * Specifies information about the operating system disk used by bare metal instance.
+     */
+    osDisks?: DiskResponse[];
 }
 
 /**
@@ -77,5 +169,6 @@ export interface SystemDataResponse {
      */
     lastModifiedByType?: string;
 }
+
 
 

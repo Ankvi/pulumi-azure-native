@@ -29,20 +29,6 @@ export interface ActionableRemediationResponse {
 }
 
 /**
- * Represents a summary of the alerts of the machine group
- */
-export interface AdaptiveApplicationControlIssueSummaryResponse {
-    /**
-     * An alert that machines within a group can have
-     */
-    issue?: string;
-    /**
-     * The number of machines in the group that have this alert
-     */
-    numberOfVms?: number;
-}
-
-/**
  * Properties of the additional workspaces.
  */
 export interface AdditionalWorkspacesPropertiesResponse {
@@ -2279,64 +2265,6 @@ export interface OperationStatusResponse {
 }
 
 /**
- * Represents a path that is recommended to be allowed and its properties
- */
-export interface PathRecommendationResponse {
-    /**
-     * The recommendation action of the machine or rule
-     */
-    action?: string;
-    /**
-     * Whether the application is commonly run on the machine
-     */
-    common?: boolean;
-    /**
-     * The configuration status of the machines group or machine or rule
-     */
-    configurationStatus?: string;
-    /**
-     * The type of the file (for Linux files - Executable is used)
-     */
-    fileType?: string;
-    /**
-     * The full path of the file, or an identifier of the application
-     */
-    path?: string;
-    /**
-     * Represents the publisher information of a process/rule
-     */
-    publisherInfo?: PublisherInfoResponse;
-    /**
-     * The type of the rule to be allowed
-     */
-    type?: string;
-    userSids?: string[];
-    usernames?: UserRecommendationResponse[];
-}
-
-/**
- * The protection mode of the collection/file types. Exe/Msi/Script are used for Windows, Executable is used for Linux.
- */
-export interface ProtectionModeResponse {
-    /**
-     * The application control policy enforcement/protection mode of the machine group
-     */
-    exe?: string;
-    /**
-     * The application control policy enforcement/protection mode of the machine group
-     */
-    executable?: string;
-    /**
-     * The application control policy enforcement/protection mode of the machine group
-     */
-    msi?: string;
-    /**
-     * The application control policy enforcement/protection mode of the machine group
-     */
-    script?: string;
-}
-
-/**
  * For a non-Azure machine that is not connected directly to the internet, specify a proxy server that the non-Azure machine can use.
  */
 export interface ProxyServerPropertiesResponse {
@@ -2348,28 +2276,6 @@ export interface ProxyServerPropertiesResponse {
      * Proxy server port
      */
     port?: string;
-}
-
-/**
- * Represents the publisher information of a process/rule
- */
-export interface PublisherInfoResponse {
-    /**
-     * The "OriginalName" field taken from the file's version resource
-     */
-    binaryName?: string;
-    /**
-     * The product name taken from the file's version resource
-     */
-    productName?: string;
-    /**
-     * The Subject field of the x.509 certificate used to sign the code, using the following fields -  O = Organization, L = Locality, S = State or Province, and C = Country
-     */
-    publisherName?: string;
-    /**
-     * The binary file version taken from the file's version resource
-     */
-    version?: string;
 }
 
 /**
@@ -2713,42 +2619,6 @@ export interface UserDefinedResourcesPropertiesResponse {
      * List of Azure subscription ids on which the user defined resources query should be executed.
      */
     querySubscriptions: string[];
-}
-
-/**
- * Represents a user that is recommended to be allowed for a certain rule
- */
-export interface UserRecommendationResponse {
-    /**
-     * The recommendation action of the machine or rule
-     */
-    recommendationAction?: string;
-    /**
-     * Represents a user that is recommended to be allowed for a certain rule
-     */
-    username?: string;
-}
-
-/**
- * Represents a machine that is part of a machine group
- */
-export interface VmRecommendationResponse {
-    /**
-     * The configuration status of the machines group or machine or rule
-     */
-    configurationStatus?: string;
-    /**
-     * The machine supportability of Enforce feature
-     */
-    enforcementSupport?: string;
-    /**
-     * The recommendation action of the machine or rule
-     */
-    recommendationAction?: string;
-    /**
-     * The full resource id of the machine
-     */
-    resourceId?: string;
 }
 
 

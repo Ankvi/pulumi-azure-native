@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Resource information with extended details.
  * Azure REST API version: 2021-11-30. Prior API version in Azure Native 1.x: 2018-10-31-preview.
+ *
+ * Other available API versions: 2024-06-30-preview.
  */
 export class DedicatedHsm extends pulumi.CustomResource {
     /**
@@ -126,7 +128,7 @@ export class DedicatedHsm extends pulumi.CustomResource {
             resourceInputs["zones"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const aliasOpts = { aliases: [{ type: "azure-native:hardwaresecuritymodules/v20181031preview:DedicatedHsm" }, { type: "azure-native:hardwaresecuritymodules/v20211130:DedicatedHsm" }] };
+        const aliasOpts = { aliases: [{ type: "azure-native:hardwaresecuritymodules/v20181031preview:DedicatedHsm" }, { type: "azure-native:hardwaresecuritymodules/v20211130:DedicatedHsm" }, { type: "azure-native:hardwaresecuritymodules/v20240630preview:DedicatedHsm" }] };
         opts = pulumi.mergeOptions(opts, aliasOpts);
         super(DedicatedHsm.__pulumiType, name, resourceInputs, opts);
     }

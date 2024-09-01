@@ -5,7 +5,7 @@ import * as types from "./types";
  * Fetches the managed proxy details
  * Azure REST API version: 2023-03-15.
  *
- * Other available API versions: 2022-05-01-preview.
+ * Other available API versions: 2022-05-01-preview, 2024-12-01.
  */
 export function listEndpointManagedProxyDetails(args: ListEndpointManagedProxyDetailsArgs, opts?: pulumi.InvokeOptions): Promise<ListEndpointManagedProxyDetailsResult> {
 
@@ -59,7 +59,7 @@ export interface ListEndpointManagedProxyDetailsResult {
  * Fetches the managed proxy details
  * Azure REST API version: 2023-03-15.
  *
- * Other available API versions: 2022-05-01-preview.
+ * Other available API versions: 2022-05-01-preview, 2024-12-01.
  */
 export function listEndpointManagedProxyDetailsOutput(args: ListEndpointManagedProxyDetailsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<ListEndpointManagedProxyDetailsResult> {
     return pulumi.output(args).apply((a: any) => listEndpointManagedProxyDetails(a, opts))

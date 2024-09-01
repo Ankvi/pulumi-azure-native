@@ -86,6 +86,11 @@ export const getKubernetesCluster: typeof import("./getKubernetesCluster").getKu
 export const getKubernetesClusterOutput: typeof import("./getKubernetesCluster").getKubernetesClusterOutput = null as any;
 utilities.lazyLoad(exports, ["getKubernetesCluster","getKubernetesClusterOutput"], () => require("./getKubernetesCluster"));
 
+export { GetKubernetesClusterFeatureArgs, GetKubernetesClusterFeatureResult, GetKubernetesClusterFeatureOutputArgs } from "./getKubernetesClusterFeature";
+export const getKubernetesClusterFeature: typeof import("./getKubernetesClusterFeature").getKubernetesClusterFeature = null as any;
+export const getKubernetesClusterFeatureOutput: typeof import("./getKubernetesClusterFeature").getKubernetesClusterFeatureOutput = null as any;
+utilities.lazyLoad(exports, ["getKubernetesClusterFeature","getKubernetesClusterFeatureOutput"], () => require("./getKubernetesClusterFeature"));
+
 export { GetL2NetworkArgs, GetL2NetworkResult, GetL2NetworkOutputArgs } from "./getL2Network";
 export const getL2Network: typeof import("./getL2Network").getL2Network = null as any;
 export const getL2NetworkOutput: typeof import("./getL2Network").getL2NetworkOutput = null as any;
@@ -130,6 +135,11 @@ export { KubernetesClusterArgs } from "./kubernetesCluster";
 export type KubernetesCluster = import("./kubernetesCluster").KubernetesCluster;
 export const KubernetesCluster: typeof import("./kubernetesCluster").KubernetesCluster = null as any;
 utilities.lazyLoad(exports, ["KubernetesCluster"], () => require("./kubernetesCluster"));
+
+export { KubernetesClusterFeatureArgs } from "./kubernetesClusterFeature";
+export type KubernetesClusterFeature = import("./kubernetesClusterFeature").KubernetesClusterFeature;
+export const KubernetesClusterFeature: typeof import("./kubernetesClusterFeature").KubernetesClusterFeature = null as any;
+utilities.lazyLoad(exports, ["KubernetesClusterFeature"], () => require("./kubernetesClusterFeature"));
 
 export { L2NetworkArgs } from "./l2network";
 export type L2Network = import("./l2network").L2Network;
@@ -199,6 +209,8 @@ const _module = {
                 return new Console(name, <any>undefined, { urn })
             case "azure-native:networkcloud:KubernetesCluster":
                 return new KubernetesCluster(name, <any>undefined, { urn })
+            case "azure-native:networkcloud:KubernetesClusterFeature":
+                return new KubernetesClusterFeature(name, <any>undefined, { urn })
             case "azure-native:networkcloud:L2Network":
                 return new L2Network(name, <any>undefined, { urn })
             case "azure-native:networkcloud:L3Network":

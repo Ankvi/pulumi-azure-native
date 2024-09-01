@@ -13,3 +13,4 @@ export interface EndpointPropertiesArgs {
      */
     type: pulumi.Input<string | enums.Type>;
 }
+

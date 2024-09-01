@@ -1038,6 +1038,17 @@ export function storageProfileResponseProvideDefaults(val: StorageProfileRespons
     };
 }
 
+export interface StringKeyValuePairResponse {
+    /**
+     * The key to the mapped value.
+     */
+    key: string;
+    /**
+     * The value of the mapping key.
+     */
+    value: string;
+}
+
 /**
  * Metadata pertaining to creation and last modification of the resource.
  */
@@ -1121,4 +1132,5 @@ export interface VirtualMachinePlacementHintResponse {
      */
     scope: string;
 }
+
 

@@ -4,6 +4,8 @@ import * as types from "./types";
 /**
  * Gets the specified security rule.
  * Azure REST API version: 2024-02-01-preview.
+ *
+ * Other available API versions: 2024-05-01-preview.
  */
 export function getSecurityRule(args: GetSecurityRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetSecurityRuleResult> {
 
@@ -98,6 +100,8 @@ export interface GetSecurityRuleResult {
 /**
  * Gets the specified security rule.
  * Azure REST API version: 2024-02-01-preview.
+ *
+ * Other available API versions: 2024-05-01-preview.
  */
 export function getSecurityRuleOutput(args: GetSecurityRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecurityRuleResult> {
     return pulumi.output(args).apply((a: any) => getSecurityRule(a, opts))
